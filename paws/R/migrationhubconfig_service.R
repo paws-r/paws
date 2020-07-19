@@ -10,23 +10,21 @@ NULL
 #' determine a home region, as well as to create and work with controls
 #' that describe the home region.
 #' 
-#' You can use these APIs within your home region only. If you call these
-#' APIs from outside your home region, your calls are rejected, except for
-#' the ability to register your agents and connectors.
+#' -   You must make API calls for write actions (create, notify,
+#'     associate, disassociate, import, or put) while in your home region,
+#'     or a `HomeRegionNotSetException` error is returned.
 #' 
-#' You must call `GetHomeRegion` at least once before you call any other
-#' AWS Application Discovery Service and AWS Migration Hub APIs, to obtain
-#' the account\'s Migration Hub home region.
+#' -   API calls for read actions (list, describe, stop, and delete) are
+#'     permitted outside of your home region.
 #' 
-#' The `StartDataCollection` API call in AWS Application Discovery Service
-#' allows your agents and connectors to begin collecting data that flows
-#' directly into the home region, and it will prevent you from enabling
-#' data collection information to be sent outside the home region.
+#' -   If you call a write API outside the home region, an
+#'     `InvalidInputException` is returned.
+#' 
+#' -   You can call `GetHomeRegion` action to obtain the account\'s
+#'     Migration Hub home region.
 #' 
 #' For specific API usage, see the sections that follow in this AWS
 #' Migration Hub Home Region API reference.
-#' 
-#' The Migration Hub Home Region APIs do not support AWS Organizations.
 #'
 #' @param
 #' config
@@ -61,7 +59,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=migrationhubconfig_create_home_region_control]{create_home_region_control} \tab This API sets up the home region for the calling account only \cr
-#'  \link[=migrationhubconfig_describe_home_region_controls]{describe_home_region_controls} \tab This API permits filtering on the ControlId, HomeRegion, and RegionControlScope fields\cr
+#'  \link[=migrationhubconfig_describe_home_region_controls]{describe_home_region_controls} \tab This API permits filtering on the ControlId and HomeRegion fields\cr
 #'  \link[=migrationhubconfig_get_home_region]{get_home_region} \tab Returns the calling account’s home region, if configured 
 #' }
 #'
@@ -80,7 +78,7 @@ migrationhubconfig <- function(config = list()) {
 
 .migrationhubconfig$metadata <- list(
   service_name = "migrationhubconfig",
-  endpoints = list("*" = list(endpoint = "migrationhubconfig.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "migrationhubconfig.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "migrationhubconfig.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "migrationhubconfig.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "migrationhubconfig.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "migrationhubconfig.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "MigrationHub Config",
   api_version = "2019-06-30",
   signing_name = "mgh",

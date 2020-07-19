@@ -28,7 +28,10 @@ time, otherwise return a 412 (precondition failed).}
 
 \item{Range}{Downloads the specified range bytes of an object. For more information
 about the HTTP Range header, see
-http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html\\#sec14.35.}
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html\\#sec14.35.
+
+Amazon S3 doesn\'t support retrieving multiple ranges of data per \code{GET}
+request.}
 
 \item{VersionId}{VersionId used to reference a specific version of the object.}
 

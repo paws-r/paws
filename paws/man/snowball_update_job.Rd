@@ -81,7 +81,7 @@ action is no longer available.
   AddressId = "string",
   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
   Description = "string",
-  SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"NoPreference",
+  SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
   ForwardingAddressId = "string"
 )
 }

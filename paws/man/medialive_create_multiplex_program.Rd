@@ -24,6 +24,7 @@ Create a new program in the multiplex.
 \preformatted{svc$create_multiplex_program(
   MultiplexId = "string",
   MultiplexProgramSettings = list(
+    PreferredChannelPipeline = "CURRENTLY_ACTIVE"|"PIPELINE_0"|"PIPELINE_1",
     ProgramNumber = 123,
     ServiceDescriptor = list(
       ProviderName = "string",

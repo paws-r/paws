@@ -2,30 +2,40 @@
 % Please edit documentation in R/fsx_operations.R
 \name{fsx_create_backup}
 \alias{fsx_create_backup}
-\title{Creates a backup of an existing Amazon FSx for Windows File Server file
-system}
+\title{Creates a backup of an existing Amazon FSx file system}
 \usage{
 fsx_create_backup(FileSystemId, ClientRequestToken, Tags)
 }
 \arguments{
 \item{FileSystemId}{[required] The ID of the file system to back up.}
 
-\item{ClientRequestToken}{(Optional) A string of up to 64 ASCII characters that Amazon FSx uses to
-ensure idempotent creation. This string is automatically filled on your
-behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
-SDK.}
+\item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
+idempotent creation. This string is automatically filled on your behalf
+when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.}
 
 \item{Tags}{The tags to apply to the backup at backup creation. The key value of the
-\code{Name} tag appears in the console as the backup name.}
+\code{Name} tag appears in the console as the backup name. If you have set
+\code{CopyTagsToBackups} to true, and you specify one or more tags using the
+\code{CreateBackup} action, no existing tags on the file system are copied
+from the file system to the backup.}
 }
 \description{
-Creates a backup of an existing Amazon FSx for Windows File Server file
-system. Creating regular backups for your file system is a best practice
-that complements the replication that Amazon FSx for Windows File Server
-performs for your file system. It also enables you to restore from user
-modification of data.
+Creates a backup of an existing Amazon FSx file system. Creating regular
+backups for your file system is a best practice, enabling you to restore
+a file system from a backup if an issue arises with the original file
+system.
 }
 \details{
+For Amazon FSx for Lustre file systems, you can create a backup only for
+file systems with the following configuration:
+\itemize{
+\item a Persistent deployment type
+\item is \emph{not} linked to an Amazon S3 data respository.
+}
+
+For more information, see
+\url{https://docs.aws.amazon.com/fsx/latest/LustreGuide/lustre-backups.html}.
+
 If a backup with the specified client request token exists, and the
 parameters match, this operation returns the description of the existing
 backup. If a backup specified client request token exists, and the
@@ -45,10 +55,10 @@ whether a backup was created. If you use the same client request token
 and the initial call created a backup, the operation returns a
 successful result because all the parameters are the same.
 
-The \code{CreateFileSystem} operation returns while the backup\'s lifecycle
-state is still \code{CREATING}. You can check the file system creation status
-by calling the DescribeBackups operation, which returns the backup state
-along with other information.
+The \code{CreateBackup} operation returns while the backup\'s lifecycle state
+is still \code{CREATING}. You can check the backup creation status by calling
+the DescribeBackups operation, which returns the backup state along with
+other information.
 }
 \section{Request syntax}{
 \preformatted{svc$create_backup(

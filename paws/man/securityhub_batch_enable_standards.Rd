@@ -2,23 +2,21 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_batch_enable_standards}
 \alias{securityhub_batch_enable_standards}
-\title{Enables the standards specified by the provided standardsArn}
+\title{Enables the standards specified by the provided StandardsArn}
 \usage{
 securityhub_batch_enable_standards(StandardsSubscriptionRequests)
 }
 \arguments{
-\item{StandardsSubscriptionRequests}{[required] The list of standards compliance checks to enable.
-
-In this release, Security Hub supports only the CIS AWS Foundations
-standard.
-
-The ARN for the standard is
-\verb{arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0}.}
+\item{StandardsSubscriptionRequests}{[required] The list of standards checks to enable.}
 }
 \description{
-Enables the standards specified by the provided \code{standardsArn}. In this
-release, only CIS AWS Foundations standards are supported. For more
-information, see \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html}{Standards Supported in AWS Security Hub}.
+Enables the standards specified by the provided \code{StandardsArn}. To
+obtain the ARN for a standard, use the \verb{<a>DescribeStandards</a>}
+operation.
+}
+\details{
+For more information, see the \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html}{Security Standards}
+section of the \emph{AWS Security Hub User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_enable_standards(

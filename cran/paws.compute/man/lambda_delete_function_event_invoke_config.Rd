@@ -41,4 +41,15 @@ PutFunctionEventInvokeConfig.
 }
 }
 
+\examples{
+\dontrun{
+# The following example deletes the asynchronous invocation configuration
+# for the GREEN alias of a function named my-function.
+svc$delete_function_event_invoke_config(
+  FunctionName = "my-function",
+  Qualifier = "GREEN"
+)
+}
+
+}
 \keyword{internal}

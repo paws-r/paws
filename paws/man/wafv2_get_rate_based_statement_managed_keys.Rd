@@ -16,13 +16,13 @@ Balancer (ALB) or an API Gateway stage.
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
 \itemize{
-\item CLI - Specify the region when you use the CloudFront scope:
+\item CLI - Specify the Region when you use the CloudFront scope:
 \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
-\item{WebACLName}{[required] A friendly name of the Web ACL. You cannot change the name of a Web ACL
-after you create it.}
+\item{WebACLName}{[required] The name of the Web ACL. You cannot change the name of a Web ACL after
+you create it.}
 
 \item{WebACLId}{[required] The unique identifier for the Web ACL. This ID is returned in the
 responses to create and list commands. You provide it to operations like

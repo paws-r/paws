@@ -6,7 +6,7 @@
 \usage{
 lambda_create_function(FunctionName, Runtime, Role, Handler, Code,
   Description, Timeout, MemorySize, Publish, VpcConfig, DeadLetterConfig,
-  Environment, KMSKeyArn, TracingConfig, Tags, Layers)
+  Environment, KMSKeyArn, TracingConfig, Tags, Layers, FileSystemConfigs)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -72,6 +72,8 @@ apply to the function.}
 \item{Layers}{A list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{function layers}
 to add to the function\'s execution environment. Specify each layer by
 its ARN, including the version.}
+
+\item{FileSystemConfigs}{Connection settings for an Amazon EFS file system.}
 }
 \description{
 Creates a Lambda function. To create a function, you need a \href{https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html}{deployment package}
@@ -117,7 +119,7 @@ service. For more information, see \href{https://docs.aws.amazon.com/lambda/late
 \section{Request syntax}{
 \preformatted{svc$create_function(
   FunctionName = "string",
-  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided",
   Role = "string",
   Handler = "string",
   Code = list(
@@ -155,6 +157,12 @@ service. For more information, see \href{https://docs.aws.amazon.com/lambda/late
   ),
   Layers = list(
     "string"
+  ),
+  FileSystemConfigs = list(
+    list(
+      Arn = "string",
+      LocalMountPath = "string"
+    )
   )
 )
 }
@@ -162,27 +170,33 @@ service. For more information, see \href{https://docs.aws.amazon.com/lambda/late
 
 \examples{
 \dontrun{
-# This example creates a Lambda function.
+# The following example creates a function with a deployment package in
+# Amazon S3 and enables X-Ray tracing and environment variable encryption.
 svc$create_function(
-  Code = structure(
-    list(),
-    .Names = character(
-      0
+  Code = list(
+    S3Bucket = "my-bucket-1xpuxmplzrlbh",
+    S3Key = "function.zip"
+  ),
+  Description = "Process image objects from Amazon S3.",
+  Environment = list(
+    Variables = list(
+      BUCKET = "my-bucket-1xpuxmplzrlbh",
+      PREFIX = "inbound"
     )
   ),
-  Description = "",
-  FunctionName = "MyFunction",
-  Handler = "souce_file.handler_name",
-  MemorySize = 128L,
+  FunctionName = "my-function",
+  Handler = "index.handler",
+  KMSKeyArn = "arn:aws:kms:us-west-2:123456789012:key/b0844d6c-xmpl-4463-97a4-d49f50839966",
+  MemorySize = 256L,
   Publish = TRUE,
-  Role = "arn:aws:iam::123456789012:role/service-role/role-name",
-  Runtime = "nodejs8.10",
+  Role = "arn:aws:iam::123456789012:role/lambda-role",
+  Runtime = "nodejs12.x",
+  Tags = list(
+    DEPARTMENT = "Assets"
+  ),
   Timeout = 15L,
-  VpcConfig = structure(
-    list(),
-    .Names = character(
-      0
-    )
+  TracingConfig = list(
+    Mode = "Active"
   )
 )
 }

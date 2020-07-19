@@ -33,8 +33,8 @@ created when you run \code{RegisterTaskWithMaintenanceWindow}.
 For more information, see the following topics in the in the \emph{AWS
 Systems Manager User Guide}:
 \itemize{
-\item \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions}{Service-Linked Role Permissions for Systems Manager}
-\item \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role}{Should I Use a Service-Linked Role or a Custom Service Role to Run Maintenance Window Tasks?}
+\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions}{Using service-linked roles for Systems Manager}
+\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role}{Should I use a service-linked role or a custom service role to run maintenance window tasks?}
 }}
 
 \item{TaskType}{[required] The type of task being registered.}
@@ -60,7 +60,7 @@ parallel.}
 \item{MaxErrors}{[required] The maximum number of errors allowed before this task stops being
 scheduled.}
 
-\item{LoggingInfo}{A structure containing information about an Amazon S3 bucket to write
+\item{LoggingInfo}{A structure containing information about an S3 bucket to write
 instance-level logs to.
 
 \code{LoggingInfo} has been deprecated. To specify an S3 bucket to contain

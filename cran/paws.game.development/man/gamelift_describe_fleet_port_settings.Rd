@@ -2,7 +2,7 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_describe_fleet_port_settings}
 \alias{gamelift_describe_fleet_port_settings}
-\title{Retrieves the inbound connection permissions for a fleet}
+\title{Retrieves a fleet's inbound connection permissions}
 \usage{
 gamelift_describe_fleet_port_settings(FleetId)
 }
@@ -11,18 +11,21 @@ gamelift_describe_fleet_port_settings(FleetId)
 use either the fleet ID or ARN value.}
 }
 \description{
-Retrieves the inbound connection permissions for a fleet. Connection
-permissions include a range of IP addresses and port settings that
-incoming traffic can use to access server processes in the fleet. To get
-a fleet\'s inbound connection permissions, specify a fleet ID. If
-successful, a collection of IpPermission objects is returned for the
-requested fleet ID. If the requested fleet has been deleted, the result
-set is empty.
+Retrieves a fleet\'s inbound connection permissions. Connection
+permissions specify the range of IP addresses and port settings that
+incoming traffic can use to access server processes in the fleet. Game
+sessions that are running on instances in the fleet use connections that
+fall in this range.
 }
 \details{
+To get a fleet\'s inbound connection permissions, specify the fleet\'s
+unique identifier. If successful, a collection of IpPermission objects
+is returned for the requested fleet ID. If the requested fleet has been
+deleted, the result set is empty.
+
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
 
 \strong{Related operations}
 \itemize{
@@ -40,11 +43,7 @@ set is empty.
 \item DescribeFleetEvents
 }
 \item UpdateFleetAttributes
-\item Manage fleet actions:
-\itemize{
-\item StartFleetActions
-\item StopFleetActions
-}
+\item StartFleetActions or StopFleetActions
 }
 }
 \section{Request syntax}{

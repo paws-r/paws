@@ -15,7 +15,8 @@ neptune_modify_db_instance(DBInstanceIdentifier, AllocatedStorage,
   CopyTagsToSnapshot, MonitoringInterval, DBPortNumber,
   PubliclyAccessible, MonitoringRoleArn, DomainIAMRoleName, PromotionTier,
   EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
-  PerformanceInsightsKMSKeyId, CloudwatchLogsExportConfiguration)
+  PerformanceInsightsKMSKeyId, CloudwatchLogsExportConfiguration,
+  DeletionProtection)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This value is stored as a lowercase string.
@@ -139,23 +140,13 @@ parameter doesn\'t result in an outage and the change is applied during
 the next maintenance window unless the \code{ApplyImmediately} parameter is
 set to \code{true} for this request.}
 
-\item{EngineVersion}{The version number of the database engine to upgrade to. Changing this
-parameter results in an outage and the change is applied during the next
-maintenance window unless the \code{ApplyImmediately} parameter is set to
-\code{true} for this request.
-
-For major version upgrades, if a nondefault DB parameter group is
-currently in use, a new DB parameter group in the DB parameter group
-family for the new engine version must be specified. The new DB
-parameter group can be the default for that DB parameter group family.}
+\item{EngineVersion}{The version number of the database engine to upgrade to. Currently,
+setting this parameter has no effect. To upgrade your database engine to
+the most recent release, use the ApplyPendingMaintenanceAction API.}
 
 \item{AllowMajorVersionUpgrade}{Indicates that major version upgrades are allowed. Changing this
 parameter doesn\'t result in an outage and the change is asynchronously
-applied as soon as possible.
-
-Constraints: This parameter must be set to true when specifying a value
-for the EngineVersion parameter that is a different major version than
-the DB instance\'s current version.}
+applied as soon as possible.}
 
 \item{AutoMinorVersionUpgrade}{Indicates that minor version upgrades are applied automatically to the
 DB instance during the maintenance window. Changing this parameter
@@ -176,19 +167,7 @@ parameter is set to \code{true} for this request.
 
 Default: Uses existing setting}
 
-\item{OptionGroupName}{Indicates that the DB instance should be associated with the specified
-option group. Changing this parameter doesn\'t result in an outage
-except in the following case and the change is applied during the next
-maintenance window unless the \code{ApplyImmediately} parameter is set to
-\code{true} for this request. If the parameter change results in an option
-group that enables OEM, this change can cause a brief (sub-second)
-period during which new connections are rejected but existing
-connections are not interrupted.
-
-Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, can\'t be removed from an option group, and that option group
-can\'t be removed from a DB instance once it is associated with a DB
-instance}
+\item{OptionGroupName}{\emph{(Not supported by Neptune)}}
 
 \item{NewDBInstanceIdentifier}{The new DB instance identifier for the DB instance when renaming a DB
 instance. When you change the DB instance identifier, an instance reboot
@@ -268,12 +247,16 @@ by the DB cluster. For more information, see ModifyDBCluster.
 
 Default: \code{false}}
 
-\item{EnablePerformanceInsights}{Not supported.}
+\item{EnablePerformanceInsights}{\emph{(Not supported by Neptune)}}
 
-\item{PerformanceInsightsKMSKeyId}{Not supported.}
+\item{PerformanceInsightsKMSKeyId}{\emph{(Not supported by Neptune)}}
 
 \item{CloudwatchLogsExportConfiguration}{The configuration setting for the log types to be enabled for export to
 CloudWatch Logs for a specific DB instance or DB cluster.}
+
+\item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
+enabled. The database can\'t be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. See \href{https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-instances-delete.html}{Deleting a DB Instance}.}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database
@@ -330,7 +313,8 @@ ModifyDBInstance.
     DisableLogTypes = list(
       "string"
     )
-  )
+  ),
+  DeletionProtection = TRUE|FALSE
 )
 }
 }

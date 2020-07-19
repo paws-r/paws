@@ -7,60 +7,61 @@
 autoscaling_put_scaling_policy(AutoScalingGroupName, PolicyName,
   PolicyType, AdjustmentType, MinAdjustmentStep, MinAdjustmentMagnitude,
   ScalingAdjustment, Cooldown, MetricAggregationType, StepAdjustments,
-  EstimatedInstanceWarmup, TargetTrackingConfiguration)
+  EstimatedInstanceWarmup, TargetTrackingConfiguration, Enabled)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{PolicyName}{[required] The name of the policy.}
 
-\item{PolicyType}{The policy type. The valid values are \code{SimpleScaling}, \code{StepScaling},
-and \code{TargetTrackingScaling}. If the policy type is null, the value is
-treated as \code{SimpleScaling}.}
+\item{PolicyType}{One of the following policy types:
+\itemize{
+\item \code{TargetTrackingScaling}
+\item \code{StepScaling}
+\item \code{SimpleScaling} (default)
+}}
 
-\item{AdjustmentType}{Specifies whether the \code{ScalingAdjustment} parameter is an absolute
-number or a percentage of the current capacity. The valid values are
-\code{ChangeInCapacity}, \code{ExactCapacity}, and \code{PercentChangeInCapacity}.
+\item{AdjustmentType}{Specifies how the scaling adjustment is interpreted (either an absolute
+number or a percentage). The valid values are \code{ChangeInCapacity},
+\code{ExactCapacity}, and \code{PercentChangeInCapacity}.
 
-Valid only if the policy type is \code{StepScaling} or \code{SimpleScaling}. For
+Required if the policy type is \code{StepScaling} or \code{SimpleScaling}. For
 more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html#as-scaling-adjustment}{Scaling Adjustment Types}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MinAdjustmentStep}{Available for backward compatibility. Use \code{MinAdjustmentMagnitude}
 instead.}
 
-\item{MinAdjustmentMagnitude}{The minimum number of instances to scale. If the value of
-\code{AdjustmentType} is \code{PercentChangeInCapacity}, the scaling policy
-changes the \code{DesiredCapacity} of the Auto Scaling group by at least this
-many instances. Otherwise, the error is \code{ValidationError}.
+\item{MinAdjustmentMagnitude}{The minimum value to scale by when the adjustment type is
+\code{PercentChangeInCapacity}. For example, suppose that you create a step
+scaling policy to scale out an Auto Scaling group by 25 percent and you
+specify a \code{MinAdjustmentMagnitude} of 2. If the group has 4 instances
+and the scaling policy is performed, 25 percent of 4 is 1. However,
+because you specified a \code{MinAdjustmentMagnitude} of 2, Amazon EC2 Auto
+Scaling scales out the group by 2 instances.
 
-This property replaces the \code{MinAdjustmentStep} property. For example,
-suppose that you create a step scaling policy to scale out an Auto
-Scaling group by 25 percent and you specify a \code{MinAdjustmentMagnitude}
-of 2. If the group has 4 instances and the scaling policy is performed,
-25 percent of 4 is 1. However, because you specified a
-\code{MinAdjustmentMagnitude} of 2, Amazon EC2 Auto Scaling scales out the
-group by 2 instances.
+Valid only if the policy type is \code{StepScaling} or \code{SimpleScaling}. For
+more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html#as-scaling-adjustment}{Scaling Adjustment Types}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
-Valid only if the policy type is \code{SimpleScaling} or \code{StepScaling}.}
+Some Auto Scaling groups use instance weights. In this case, set the
+\code{MinAdjustmentMagnitude} to a value that is at least as large as your
+largest instance weight.}
 
-\item{ScalingAdjustment}{The amount by which a simple scaling policy scales the Auto Scaling
-group in response to an alarm breach. The adjustment is based on the
-value that you specified in the \code{AdjustmentType} parameter (either an
-absolute number or a percentage). A positive value adds to the current
-capacity and a negative value subtracts from the current capacity. For
-exact capacity, you must specify a positive value.
+\item{ScalingAdjustment}{The amount by which to scale, based on the specified adjustment type. A
+positive value adds to the current capacity while a negative number
+removes from the current capacity. For exact capacity, you must specify
+a positive value.
 
-Conditional: If you specify \code{SimpleScaling} for the policy type, you
-must specify this parameter. (Not used with any other policy type.)}
+Required if the policy type is \code{SimpleScaling}. (Not used with any other
+policy type.)}
 
-\item{Cooldown}{The amount of time, in seconds, after a scaling activity completes
-before any further dynamic scaling activities can start. If this
-parameter is not specified, the default cooldown period for the group
-applies.
+\item{Cooldown}{The duration of the policy\'s cooldown period, in seconds. When a
+cooldown period is specified here, it overrides the default cooldown
+period defined for the Auto Scaling group.
 
 Valid only if the policy type is \code{SimpleScaling}. For more information,
-see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns}
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns for Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MetricAggregationType}{The aggregation type for the CloudWatch metrics. The valid values are
@@ -72,35 +73,49 @@ Valid only if the policy type is \code{StepScaling}.}
 \item{StepAdjustments}{A set of adjustments that enable you to scale based on the size of the
 alarm breach.
 
-Conditional: If you specify \code{StepScaling} for the policy type, you must
-specify this parameter. (Not used with any other policy type.)}
+Required if the policy type is \code{StepScaling}. (Not used with any other
+policy type.)}
 
 \item{EstimatedInstanceWarmup}{The estimated time, in seconds, until a newly launched instance can
-contribute to the CloudWatch metrics. The default is to use the value
-specified for the default cooldown period for the group.
+contribute to the CloudWatch metrics. If not provided, the default is to
+use the value from the default cooldown period for the Auto Scaling
+group.
 
-Valid only if the policy type is \code{StepScaling} or
-\code{TargetTrackingScaling}.}
+Valid only if the policy type is \code{TargetTrackingScaling} or
+\code{StepScaling}.}
 
 \item{TargetTrackingConfiguration}{A target tracking scaling policy. Includes support for predefined or
 customized metrics.
+
+The following predefined metrics are available:
+\itemize{
+\item \code{ASGAverageCPUUtilization}
+\item \code{ASGAverageNetworkIn}
+\item \code{ASGAverageNetworkOut}
+\item \code{ALBRequestCountPerTarget}
+}
+
+If you specify \code{ALBRequestCountPerTarget} for the metric, you must
+specify the \code{ResourceLabel} parameter with the
+\code{PredefinedMetricSpecification}.
 
 For more information, see
 \href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TargetTrackingConfiguration.html}{TargetTrackingConfiguration}
 in the \emph{Amazon EC2 Auto Scaling API Reference}.
 
-Conditional: If you specify \code{TargetTrackingScaling} for the policy type,
-you must specify this parameter. (Not used with any other policy type.)}
+Required if the policy type is \code{TargetTrackingScaling}.}
+
+\item{Enabled}{Indicates whether the scaling policy is enabled or disabled. The default
+is enabled. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enable-disable-scaling-policy.html}{Disabling a Scaling Policy for an Auto Scaling Group}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
-Creates or updates a scaling policy for an Auto Scaling group. To update
-an existing scaling policy, use the existing policy name and set the
-parameters to change. Any existing parameter not changed in an update to
-an existing policy is not changed in this update request.
+Creates or updates a scaling policy for an Auto Scaling group.
 }
 \details{
 For more information about using scaling policies to scale your Auto
-Scaling group automatically, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html}{Dynamic Scaling}
+Scaling group, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-target-tracking.html}{Target Tracking Scaling Policies}
+and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html}{Step and Simple Scaling Policies}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
@@ -141,7 +156,8 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
     ),
     TargetValue = 123.0,
     DisableScaleIn = TRUE|FALSE
-  )
+  ),
+  Enabled = TRUE|FALSE
 )
 }
 }
@@ -151,10 +167,16 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 # This example adds the specified policy to the specified Auto Scaling
 # group.
 svc$put_scaling_policy(
-  AdjustmentType = "ChangeInCapacity",
   AutoScalingGroupName = "my-auto-scaling-group",
-  PolicyName = "ScaleIn",
-  ScalingAdjustment = -1L
+  PolicyName = "alb1000-target-tracking-scaling-policy",
+  PolicyType = "TargetTrackingScaling",
+  TargetTrackingConfiguration = list(
+    PredefinedMetricSpecification = list(
+      PredefinedMetricType = "ALBRequestCountPerTarget",
+      ResourceLabel = "app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targetgroup/EC2Co-Defa..."
+    ),
+    TargetValue = 1000
+  )
 )
 }
 

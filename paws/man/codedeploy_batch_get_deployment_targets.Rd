@@ -23,6 +23,9 @@ IDs are the names of Lambda functions, and their target type is
 IDs are pairs of Amazon ECS clusters and services specified using
 the format \verb{&lt;clustername&gt;:&lt;servicename&gt;}. Their target
 type is \code{ecsTarget}.
+\item For deployments that are deployed with AWS CloudFormation, the
+target IDs are CloudFormation stack IDs. Their target type is
+\code{cloudFormationTarget}.
 }}
 }
 \description{
@@ -33,11 +36,13 @@ targets that can be returned is 25.
 }
 \details{
 The type of targets returned depends on the deployment\'s compute
-platform:
+platform or deployment method:
 \itemize{
 \item \strong{EC2/On-premises}: Information about EC2 instance targets.
 \item \strong{AWS Lambda}: Information about Lambda functions targets.
 \item \strong{Amazon ECS}: Information about Amazon ECS service targets.
+\item \strong{CloudFormation}: Information about targets of blue/green
+deployments initiated by a CloudFormation stack update.
 }
 }
 \section{Request syntax}{

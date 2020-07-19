@@ -15,7 +15,7 @@ Describes auto scaling settings across replicas of the global table at
 once.
 }
 \details{
-This method only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html}{Version 2019.11.21}
+This operation only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html}{Version 2019.11.21}
 of global tables.
 }
 \section{Request syntax}{

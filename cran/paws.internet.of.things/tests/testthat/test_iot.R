@@ -34,6 +34,10 @@ test_that("list_certificates", {
   expect_error(svc$list_certificates(), NA)
 })
 
+test_that("list_dimensions", {
+  expect_error(svc$list_dimensions(), NA)
+})
+
 test_that("list_domain_configurations", {
   expect_error(svc$list_domain_configurations(), NA)
 })

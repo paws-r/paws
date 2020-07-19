@@ -13,7 +13,7 @@ rds_restore_db_cluster_from_s3(AvailabilityZones, BackupRetentionPeriod,
   Tags, StorageEncrypted, KmsKeyId, EnableIAMDatabaseAuthentication,
   SourceEngine, SourceEngineVersion, S3BucketName, S3Prefix,
   S3IngestionRoleArn, BacktrackWindow, EnableCloudwatchLogsExports,
-  DeletionProtection, CopyTagsToSnapshot)
+  DeletionProtection, CopyTagsToSnapshot, Domain, DomainIAMRoleName)
 }
 \arguments{
 \item{AvailabilityZones}{A list of Availability Zones (AZs) where instances in the restored DB
@@ -35,7 +35,7 @@ with the specified CharacterSet.}
 \item{DatabaseName}{The database name for the restored DB cluster.}
 
 \item{DBClusterIdentifier}{[required] The name of the DB cluster to create from the source data in the Amazon
-S3 bucket. This parameter is isn\'t case-sensitive.
+S3 bucket. This parameter isn\'t case-sensitive.
 
 Constraints:
 \itemize{
@@ -185,9 +185,9 @@ Valid values: \code{mysql}}
 
 \item{SourceEngineVersion}{[required] The version of the database that the backup files were created from.
 
-MySQL version 5.5 and 5.6 are supported.
+MySQL versions 5.5, 5.6, and 5.7 are supported.
 
-Example: \verb{5.6.22}}
+Example: \verb{5.6.40}}
 
 \item{S3BucketName}{[required] The name of the Amazon S3 bucket that contains the data used to create
 the Amazon Aurora DB cluster.}
@@ -203,6 +203,8 @@ your behalf.}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
+
+Currently, Backtrack is only supported for Aurora MySQL DB clusters.
 
 Default: 0
 
@@ -224,6 +226,17 @@ enabled. By default, deletion protection is disabled.}
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
 cluster to snapshots of the restored DB cluster. The default is not to
 copy them.}
+
+\item{Domain}{Specify the Active Directory directory ID to restore the DB cluster in.
+The domain must be created prior to this operation.
+
+For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
+Authentication to authenticate users that connect to the DB cluster. For
+more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/kerberos-authentication.html}{Kerberos Authentication}
+in the \emph{Amazon Aurora User Guide}.}
+
+\item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
+Directory Service.}
 }
 \description{
 Creates an Amazon Aurora DB cluster from data stored in an Amazon S3
@@ -233,6 +246,16 @@ described in \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/
 in the \emph{Amazon Aurora User Guide}.
 }
 \details{
+This action only restores the DB cluster, not the DB instances for that
+DB cluster. You must invoke the \code{CreateDBInstance} action to create DB
+instances for the restored DB cluster, specifying the identifier of the
+restored DB cluster in \code{DBClusterIdentifier}. You can create DB
+instances only after the \code{RestoreDBClusterFromS3} action has completed
+and the DB cluster is available.
+
+For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
+in the \emph{Amazon Aurora User Guide.}
+
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{
@@ -276,7 +299,9 @@ This action only applies to Aurora DB clusters.
     "string"
   ),
   DeletionProtection = TRUE|FALSE,
-  CopyTagsToSnapshot = TRUE|FALSE
+  CopyTagsToSnapshot = TRUE|FALSE,
+  Domain = "string",
+  DomainIAMRoleName = "string"
 )
 }
 }

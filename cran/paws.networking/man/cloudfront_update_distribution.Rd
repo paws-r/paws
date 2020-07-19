@@ -123,7 +123,9 @@ propagation is complete, the value of \code{Status} is \code{Deployed}.
             ),
             OriginReadTimeout = 123,
             OriginKeepaliveTimeout = 123
-          )
+          ),
+          ConnectionAttempts = 123,
+          ConnectionTimeout = 123
         )
       )
     ),
@@ -308,7 +310,7 @@ propagation is complete, the value of \code{Status} is \code{Deployed}.
       IAMCertificateId = "string",
       ACMCertificateArn = "string",
       SSLSupportMethod = "sni-only"|"vip",
-      MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018",
+      MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
       Certificate = "string",
       CertificateSource = "cloudfront"|"iam"|"acm"
     ),

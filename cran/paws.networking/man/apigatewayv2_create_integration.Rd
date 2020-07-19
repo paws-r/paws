@@ -8,16 +8,18 @@ apigatewayv2_create_integration(ApiId, ConnectionId, ConnectionType,
   ContentHandlingStrategy, CredentialsArn, Description, IntegrationMethod,
   IntegrationType, IntegrationUri, PassthroughBehavior,
   PayloadFormatVersion, RequestParameters, RequestTemplates,
-  TemplateSelectionExpression, TimeoutInMillis)
+  TemplateSelectionExpression, TimeoutInMillis, TlsConfig)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
 
-\item{ConnectionId}{The connection ID.}
+\item{ConnectionId}{The ID of the VPC link for a private integration. Supported only for
+HTTP APIs.}
 
-\item{ConnectionType}{The type of the network connection to the integration endpoint.
-Currently the only valid value is INTERNET, for connections through the
-public routable internet.}
+\item{ConnectionType}{The type of the network connection to the integration endpoint. Specify
+INTERNET for connections through the public routable internet or
+VPC\\_LINK for private connections between API Gateway and resources in a
+VPC. The default value is INTERNET.}
 
 \item{ContentHandlingStrategy}{Supported only for WebSocket APIs. Specifies how to handle response
 payload content type conversions. Supported values are
@@ -60,15 +62,27 @@ HTTP: for integrating the route or method request with an HTTP endpoint.
 This integration is also referred to as the HTTP custom integration.
 Supported only for WebSocket APIs.
 
-HTTP\\_PROXY: for integrating route or method request with an HTTP
+HTTP\\_PROXY: for integrating the route or method request with an HTTP
 endpoint, with the client request passed through as-is. This is also
-referred to as HTTP proxy integration.
+referred to as HTTP proxy integration. For HTTP API private
+integrations, use an HTTP\\_PROXY integration.
 
 MOCK: for integrating the route or method request with API Gateway as a
 \"loopback\" endpoint without invoking any backend. Supported only for
 WebSocket APIs.}
 
-\item{IntegrationUri}{For a Lambda proxy integration, this is the URI of the Lambda function.}
+\item{IntegrationUri}{For a Lambda integration, specify the URI of a Lambda function.
+
+For an HTTP integration, specify a fully-qualified URL.
+
+For an HTTP API private integration, specify the ARN of an Application
+Load Balancer listener, Network Load Balancer listener, or AWS Cloud Map
+service. If you specify the ARN of an AWS Cloud Map service, API Gateway
+uses DiscoverInstances to identify resources. You can use query
+parameters to target specific resources. To learn more, see
+\href{https://docs.aws.amazon.com/cloud-map/latest/api/API_DiscoverInstances.html}{DiscoverInstances}.
+For private integrations, all resources must be owned by the same AWS
+account.}
 
 \item{PassthroughBehavior}{Specifies the pass-through behavior for incoming requests based on the
 Content-Type header in the request, and the available mapping templates
@@ -88,7 +102,7 @@ content type defined, unmapped content types will be rejected with the
 same HTTP 415 Unsupported Media Type response.}
 
 \item{PayloadFormatVersion}{Specifies the format of the payload sent to an integration. Required for
-HTTP APIs. Currently, the only supported value is 1.0.}
+HTTP APIs.}
 
 \item{RequestParameters}{A key-value map specifying request parameters that are passed from the
 method request to the backend. The key is an integration request
@@ -107,9 +121,13 @@ client. The content type value is the key in this map, and the template
 
 \item{TemplateSelectionExpression}{The template selection expression for the integration.}
 
-\item{TimeoutInMillis}{Custom timeout between 50 and 29,000 milliseconds. The default value is
-29,000 milliseconds or 29 seconds for WebSocket APIs. The default value
-is 5,000 milliseconds, or 5 seconds for HTTP APIs.}
+\item{TimeoutInMillis}{Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs and
+between 50 and 30,000 milliseconds for HTTP APIs. The default timeout is
+29 seconds for WebSocket APIs and 30 seconds for HTTP APIs.}
+
+\item{TlsConfig}{The TLS configuration for a private integration. If you specify a TLS
+configuration, private integration traffic uses the HTTPS protocol.
+Supported only for HTTP APIs.}
 }
 \description{
 Creates an Integration.
@@ -134,7 +152,10 @@ Creates an Integration.
     "string"
   ),
   TemplateSelectionExpression = "string",
-  TimeoutInMillis = 123
+  TimeoutInMillis = 123,
+  TlsConfig = list(
+    ServerNameToVerify = "string"
+  )
 )
 }
 }

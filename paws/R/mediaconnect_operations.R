@@ -5,7 +5,7 @@ NULL
 
 #' Adds outputs to an existing flow
 #'
-#' Adds outputs to an existing flow. You can create up to 20 outputs per flow.
+#' Adds outputs to an existing flow. You can create up to 50 outputs per flow.
 #'
 #' @usage
 #' mediaconnect_add_flow_outputs(FlowArn, Outputs)
@@ -41,7 +41,10 @@ NULL
 #'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
 #'       RemoteId = "string",
 #'       SmoothingLatency = 123,
-#'       StreamId = "string"
+#'       StreamId = "string",
+#'       VpcInterfaceAttachment = list(
+#'         VpcInterfaceName = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -67,19 +70,131 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 }
 .mediaconnect$operations$add_flow_outputs <- mediaconnect_add_flow_outputs
 
+#' Adds Sources to flow
+#'
+#' Adds Sources to flow
+#'
+#' @usage
+#' mediaconnect_add_flow_sources(FlowArn, Sources)
+#'
+#' @param FlowArn &#91;required&#93; The flow that you want to mutate.
+#' @param Sources &#91;required&#93; A list of sources that you want to add.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_flow_sources(
+#'   FlowArn = "string",
+#'   Sources = list(
+#'     list(
+#'       Decryption = list(
+#'         Algorithm = "aes128"|"aes192"|"aes256",
+#'         ConstantInitializationVector = "string",
+#'         DeviceId = "string",
+#'         KeyType = "speke"|"static-key",
+#'         Region = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SecretArn = "string",
+#'         Url = "string"
+#'       ),
+#'       Description = "string",
+#'       EntitlementArn = "string",
+#'       IngestPort = 123,
+#'       MaxBitrate = 123,
+#'       MaxLatency = 123,
+#'       Name = "string",
+#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'       StreamId = "string",
+#'       VpcInterfaceName = "string",
+#'       WhitelistCidr = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediaconnect_add_flow_sources
+mediaconnect_add_flow_sources <- function(FlowArn, Sources) {
+  op <- new_operation(
+    name = "AddFlowSources",
+    http_method = "POST",
+    http_path = "/v1/flows/{flowArn}/source",
+    paginator = list()
+  )
+  input <- .mediaconnect$add_flow_sources_input(FlowArn = FlowArn, Sources = Sources)
+  output <- .mediaconnect$add_flow_sources_output()
+  config <- get_config()
+  svc <- .mediaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediaconnect$operations$add_flow_sources <- mediaconnect_add_flow_sources
+
+#' Adds VPC interfaces to flow
+#'
+#' Adds VPC interfaces to flow
+#'
+#' @usage
+#' mediaconnect_add_flow_vpc_interfaces(FlowArn, VpcInterfaces)
+#'
+#' @param FlowArn &#91;required&#93; The flow that you want to mutate.
+#' @param VpcInterfaces &#91;required&#93; A list of VPC interfaces that you want to add.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_flow_vpc_interfaces(
+#'   FlowArn = "string",
+#'   VpcInterfaces = list(
+#'     list(
+#'       Name = "string",
+#'       RoleArn = "string",
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       SubnetId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediaconnect_add_flow_vpc_interfaces
+mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
+  op <- new_operation(
+    name = "AddFlowVpcInterfaces",
+    http_method = "POST",
+    http_path = "/v1/flows/{flowArn}/vpcInterfaces",
+    paginator = list()
+  )
+  input <- .mediaconnect$add_flow_vpc_interfaces_input(FlowArn = FlowArn, VpcInterfaces = VpcInterfaces)
+  output <- .mediaconnect$add_flow_vpc_interfaces_output()
+  config <- get_config()
+  svc <- .mediaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediaconnect$operations$add_flow_vpc_interfaces <- mediaconnect_add_flow_vpc_interfaces
+
 #' Creates a new flow
 #'
-#' Creates a new flow. The request must include one source. The request optionally can include outputs (up to 20) and entitlements (up to 50).
+#' Creates a new flow. The request must include one source. The request optionally can include outputs (up to 50) and entitlements (up to 50).
 #'
 #' @usage
 #' mediaconnect_create_flow(AvailabilityZone, Entitlements, Name, Outputs,
-#'   Source)
+#'   Source, SourceFailoverConfig, Sources, VpcInterfaces)
 #'
 #' @param AvailabilityZone The Availability Zone that you want to create the flow in. These options are limited to the Availability Zones within the current AWS Region.
 #' @param Entitlements The entitlements that you want to grant on a flow.
 #' @param Name &#91;required&#93; The name of the flow.
 #' @param Outputs The outputs that you want to add to this flow.
-#' @param Source &#91;required&#93; 
+#' @param Source 
+#' @param SourceFailoverConfig 
+#' @param Sources 
+#' @param VpcInterfaces The VPC interfaces you want on the flow.
 #'
 #' @section Request syntax:
 #' ```
@@ -131,7 +246,10 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
 #'       RemoteId = "string",
 #'       SmoothingLatency = 123,
-#'       StreamId = "string"
+#'       StreamId = "string",
+#'       VpcInterfaceAttachment = list(
+#'         VpcInterfaceName = "string"
+#'       )
 #'     )
 #'   ),
 #'   Source = list(
@@ -154,7 +272,47 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #'     Name = "string",
 #'     Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
 #'     StreamId = "string",
+#'     VpcInterfaceName = "string",
 #'     WhitelistCidr = "string"
+#'   ),
+#'   SourceFailoverConfig = list(
+#'     RecoveryWindow = 123,
+#'     State = "ENABLED"|"DISABLED"
+#'   ),
+#'   Sources = list(
+#'     list(
+#'       Decryption = list(
+#'         Algorithm = "aes128"|"aes192"|"aes256",
+#'         ConstantInitializationVector = "string",
+#'         DeviceId = "string",
+#'         KeyType = "speke"|"static-key",
+#'         Region = "string",
+#'         ResourceId = "string",
+#'         RoleArn = "string",
+#'         SecretArn = "string",
+#'         Url = "string"
+#'       ),
+#'       Description = "string",
+#'       EntitlementArn = "string",
+#'       IngestPort = 123,
+#'       MaxBitrate = 123,
+#'       MaxLatency = 123,
+#'       Name = "string",
+#'       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+#'       StreamId = "string",
+#'       VpcInterfaceName = "string",
+#'       WhitelistCidr = "string"
+#'     )
+#'   ),
+#'   VpcInterfaces = list(
+#'     list(
+#'       Name = "string",
+#'       RoleArn = "string",
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       SubnetId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -162,14 +320,14 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 #' @keywords internal
 #'
 #' @rdname mediaconnect_create_flow
-mediaconnect_create_flow <- function(AvailabilityZone = NULL, Entitlements = NULL, Name, Outputs = NULL, Source) {
+mediaconnect_create_flow <- function(AvailabilityZone = NULL, Entitlements = NULL, Name, Outputs = NULL, Source = NULL, SourceFailoverConfig = NULL, Sources = NULL, VpcInterfaces = NULL) {
   op <- new_operation(
     name = "CreateFlow",
     http_method = "POST",
     http_path = "/v1/flows",
     paginator = list()
   )
-  input <- .mediaconnect$create_flow_input(AvailabilityZone = AvailabilityZone, Entitlements = Entitlements, Name = Name, Outputs = Outputs, Source = Source)
+  input <- .mediaconnect$create_flow_input(AvailabilityZone = AvailabilityZone, Entitlements = Entitlements, Name = Name, Outputs = Outputs, Source = Source, SourceFailoverConfig = SourceFailoverConfig, Sources = Sources, VpcInterfaces = VpcInterfaces)
   output <- .mediaconnect$create_flow_output()
   config <- get_config()
   svc <- .mediaconnect$service(config)
@@ -460,6 +618,82 @@ mediaconnect_remove_flow_output <- function(FlowArn, OutputArn) {
 }
 .mediaconnect$operations$remove_flow_output <- mediaconnect_remove_flow_output
 
+#' Removes a source from an existing flow
+#'
+#' Removes a source from an existing flow. This request can be made only if there is more than one source on the flow.
+#'
+#' @usage
+#' mediaconnect_remove_flow_source(FlowArn, SourceArn)
+#'
+#' @param FlowArn &#91;required&#93; The flow that you want to remove a source from.
+#' @param SourceArn &#91;required&#93; The ARN of the source that you want to remove.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_flow_source(
+#'   FlowArn = "string",
+#'   SourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediaconnect_remove_flow_source
+mediaconnect_remove_flow_source <- function(FlowArn, SourceArn) {
+  op <- new_operation(
+    name = "RemoveFlowSource",
+    http_method = "DELETE",
+    http_path = "/v1/flows/{flowArn}/source/{sourceArn}",
+    paginator = list()
+  )
+  input <- .mediaconnect$remove_flow_source_input(FlowArn = FlowArn, SourceArn = SourceArn)
+  output <- .mediaconnect$remove_flow_source_output()
+  config <- get_config()
+  svc <- .mediaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediaconnect$operations$remove_flow_source <- mediaconnect_remove_flow_source
+
+#' Removes a VPC Interface from an existing flow
+#'
+#' Removes a VPC Interface from an existing flow. This request can be made only on a VPC interface that does not have a Source or Output associated with it. If the VPC interface is referenced by a Source or Output, you must first delete or update the Source or Output to no longer reference the VPC interface.
+#'
+#' @usage
+#' mediaconnect_remove_flow_vpc_interface(FlowArn, VpcInterfaceName)
+#'
+#' @param FlowArn &#91;required&#93; The flow that you want to remove a VPC interface from.
+#' @param VpcInterfaceName &#91;required&#93; The name of the VPC interface that you want to remove.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_flow_vpc_interface(
+#'   FlowArn = "string",
+#'   VpcInterfaceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediaconnect_remove_flow_vpc_interface
+mediaconnect_remove_flow_vpc_interface <- function(FlowArn, VpcInterfaceName) {
+  op <- new_operation(
+    name = "RemoveFlowVpcInterface",
+    http_method = "DELETE",
+    http_path = "/v1/flows/{flowArn}/vpcInterfaces/{vpcInterfaceName}",
+    paginator = list()
+  )
+  input <- .mediaconnect$remove_flow_vpc_interface_input(FlowArn = FlowArn, VpcInterfaceName = VpcInterfaceName)
+  output <- .mediaconnect$remove_flow_vpc_interface_output()
+  config <- get_config()
+  svc <- .mediaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediaconnect$operations$remove_flow_vpc_interface <- mediaconnect_remove_flow_vpc_interface
+
 #' Revokes an entitlement from a flow
 #'
 #' Revokes an entitlement from a flow. Once an entitlement is revoked, the content becomes unavailable to the subscriber and the associated output is removed.
@@ -651,6 +885,47 @@ mediaconnect_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .mediaconnect$operations$untag_resource <- mediaconnect_untag_resource
 
+#' Updates flow
+#'
+#' Updates flow
+#'
+#' @usage
+#' mediaconnect_update_flow(FlowArn, SourceFailoverConfig)
+#'
+#' @param FlowArn &#91;required&#93; The flow that you want to update.
+#' @param SourceFailoverConfig 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_flow(
+#'   FlowArn = "string",
+#'   SourceFailoverConfig = list(
+#'     RecoveryWindow = 123,
+#'     State = "ENABLED"|"DISABLED"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediaconnect_update_flow
+mediaconnect_update_flow <- function(FlowArn, SourceFailoverConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateFlow",
+    http_method = "PUT",
+    http_path = "/v1/flows/{flowArn}",
+    paginator = list()
+  )
+  input <- .mediaconnect$update_flow_input(FlowArn = FlowArn, SourceFailoverConfig = SourceFailoverConfig)
+  output <- .mediaconnect$update_flow_output()
+  config <- get_config()
+  svc <- .mediaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediaconnect$operations$update_flow <- mediaconnect_update_flow
+
 #' You can change an entitlement's description, subscribers, and encryption
 #'
 #' You can change an entitlement's description, subscribers, and encryption. If you change the subscribers, the service will remove the outputs that are are used by the subscribers that are removed.
@@ -715,7 +990,7 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #' @usage
 #' mediaconnect_update_flow_output(CidrAllowList, Description, Destination,
 #'   Encryption, FlowArn, MaxLatency, OutputArn, Port, Protocol, RemoteId,
-#'   SmoothingLatency, StreamId)
+#'   SmoothingLatency, StreamId, VpcInterfaceAttachment)
 #'
 #' @param CidrAllowList The range of IP addresses that should be allowed to initiate output requests to this flow. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.
 #' @param Description A description of the output. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the end user.
@@ -729,6 +1004,7 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #' @param RemoteId The remote ID for the Zixi-pull stream.
 #' @param SmoothingLatency The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.
 #' @param StreamId The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.
+#' @param VpcInterfaceAttachment The name of the VPC interface attachment to use for this output.
 #'
 #' @section Request syntax:
 #' ```
@@ -756,21 +1032,24 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 #'   Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
 #'   RemoteId = "string",
 #'   SmoothingLatency = 123,
-#'   StreamId = "string"
+#'   StreamId = "string",
+#'   VpcInterfaceAttachment = list(
+#'     VpcInterfaceName = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname mediaconnect_update_flow_output
-mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = NULL, Destination = NULL, Encryption = NULL, FlowArn, MaxLatency = NULL, OutputArn, Port = NULL, Protocol = NULL, RemoteId = NULL, SmoothingLatency = NULL, StreamId = NULL) {
+mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = NULL, Destination = NULL, Encryption = NULL, FlowArn, MaxLatency = NULL, OutputArn, Port = NULL, Protocol = NULL, RemoteId = NULL, SmoothingLatency = NULL, StreamId = NULL, VpcInterfaceAttachment = NULL) {
   op <- new_operation(
     name = "UpdateFlowOutput",
     http_method = "PUT",
     http_path = "/v1/flows/{flowArn}/outputs/{outputArn}",
     paginator = list()
   )
-  input <- .mediaconnect$update_flow_output_input(CidrAllowList = CidrAllowList, Description = Description, Destination = Destination, Encryption = Encryption, FlowArn = FlowArn, MaxLatency = MaxLatency, OutputArn = OutputArn, Port = Port, Protocol = Protocol, RemoteId = RemoteId, SmoothingLatency = SmoothingLatency, StreamId = StreamId)
+  input <- .mediaconnect$update_flow_output_input(CidrAllowList = CidrAllowList, Description = Description, Destination = Destination, Encryption = Encryption, FlowArn = FlowArn, MaxLatency = MaxLatency, OutputArn = OutputArn, Port = Port, Protocol = Protocol, RemoteId = RemoteId, SmoothingLatency = SmoothingLatency, StreamId = StreamId, VpcInterfaceAttachment = VpcInterfaceAttachment)
   output <- .mediaconnect$update_flow_output_output()
   config <- get_config()
   svc <- .mediaconnect$service(config)
@@ -787,7 +1066,7 @@ mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = 
 #' @usage
 #' mediaconnect_update_flow_source(Decryption, Description, EntitlementArn,
 #'   FlowArn, IngestPort, MaxBitrate, MaxLatency, Protocol, SourceArn,
-#'   StreamId, WhitelistCidr)
+#'   StreamId, VpcInterfaceName, WhitelistCidr)
 #'
 #' @param Decryption The type of encryption used on the content ingested from this source.
 #' @param Description A description for the source. This value is not used or seen outside of the current AWS Elemental MediaConnect account.
@@ -799,6 +1078,7 @@ mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = 
 #' @param Protocol The protocol that is used by the source.
 #' @param SourceArn &#91;required&#93; The ARN of the source that you want to update.
 #' @param StreamId The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.
+#' @param VpcInterfaceName The name of the VPC Interface to configure this Source with.
 #' @param WhitelistCidr The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.
 #'
 #' @section Request syntax:
@@ -824,6 +1104,7 @@ mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = 
 #'   Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
 #'   SourceArn = "string",
 #'   StreamId = "string",
+#'   VpcInterfaceName = "string",
 #'   WhitelistCidr = "string"
 #' )
 #' ```
@@ -831,14 +1112,14 @@ mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = 
 #' @keywords internal
 #'
 #' @rdname mediaconnect_update_flow_source
-mediaconnect_update_flow_source <- function(Decryption = NULL, Description = NULL, EntitlementArn = NULL, FlowArn, IngestPort = NULL, MaxBitrate = NULL, MaxLatency = NULL, Protocol = NULL, SourceArn, StreamId = NULL, WhitelistCidr = NULL) {
+mediaconnect_update_flow_source <- function(Decryption = NULL, Description = NULL, EntitlementArn = NULL, FlowArn, IngestPort = NULL, MaxBitrate = NULL, MaxLatency = NULL, Protocol = NULL, SourceArn, StreamId = NULL, VpcInterfaceName = NULL, WhitelistCidr = NULL) {
   op <- new_operation(
     name = "UpdateFlowSource",
     http_method = "PUT",
     http_path = "/v1/flows/{flowArn}/source/{sourceArn}",
     paginator = list()
   )
-  input <- .mediaconnect$update_flow_source_input(Decryption = Decryption, Description = Description, EntitlementArn = EntitlementArn, FlowArn = FlowArn, IngestPort = IngestPort, MaxBitrate = MaxBitrate, MaxLatency = MaxLatency, Protocol = Protocol, SourceArn = SourceArn, StreamId = StreamId, WhitelistCidr = WhitelistCidr)
+  input <- .mediaconnect$update_flow_source_input(Decryption = Decryption, Description = Description, EntitlementArn = EntitlementArn, FlowArn = FlowArn, IngestPort = IngestPort, MaxBitrate = MaxBitrate, MaxLatency = MaxLatency, Protocol = Protocol, SourceArn = SourceArn, StreamId = StreamId, VpcInterfaceName = VpcInterfaceName, WhitelistCidr = WhitelistCidr)
   output <- .mediaconnect$update_flow_source_output()
   config <- get_config()
   svc <- .mediaconnect$service(config)

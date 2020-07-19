@@ -15,8 +15,11 @@ servicecatalog_create_service_action(Name, DefinitionType, Definition,
 \item{Definition}{[required] The self-service action definition. Can be one of the following:
 \subsection{Name}{
 
-The name of the AWS Systems Manager Document. For example,
-\code{AWS-RestartEC2Instance}.
+The name of the AWS Systems Manager document (SSM document). For
+example, \code{AWS-RestartEC2Instance}.
+
+If you are using a shared SSM document, you must provide the ARN instead
+of the name.
 }
 
 \subsection{Version}{
@@ -39,7 +42,8 @@ To reuse the provisioned product launch role, set to
 
 The list of parameters in JSON format.
 
-For example: \verb{\\\[\\\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\\\}\\\]}.
+For example: \verb{\\\[\\\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\\\}\\\]} or
+\verb{\\\[\\\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TEXT_VALUE\\"\\\}\\\]}.
 }}
 
 \item{Description}{The self-service action description.}

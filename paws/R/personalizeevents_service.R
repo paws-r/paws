@@ -56,7 +56,7 @@ personalizeevents <- function(config = list()) {
 
 .personalizeevents$metadata <- list(
   service_name = "personalizeevents",
-  endpoints = list("*" = list(endpoint = "personalizeevents.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "personalizeevents.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "personalizeevents.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "personalizeevents.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "personalizeevents.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "personalizeevents.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Personalize Events",
   api_version = "2018-03-22",
   signing_name = "personalize",

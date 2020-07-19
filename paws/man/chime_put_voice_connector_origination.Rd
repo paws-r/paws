@@ -15,6 +15,10 @@ chime_put_voice_connector_origination(VoiceConnectorId, Origination)
 Adds origination settings for the specified Amazon Chime Voice
 Connector.
 }
+\details{
+If emergency calling is configured for the Amazon Chime Voice Connector,
+it must be deleted prior to turning off origination settings.
+}
 \section{Request syntax}{
 \preformatted{svc$put_voice_connector_origination(
   VoiceConnectorId = "string",

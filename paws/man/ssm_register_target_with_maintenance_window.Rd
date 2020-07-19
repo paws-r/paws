@@ -44,7 +44,7 @@ the following format
 \verb{Key=resource-groups:ResourceTypeFilters,Values=<i>AWS::EC2::INSTANCE</i>,<i>AWS::EC2::VPC</i> }
 
 For more information about these examples formats, including the best
-use case for each one, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html}{Examples: Register Targets with a Maintenance Window}
+use case for each one, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html}{Examples: Register targets with a maintenance window}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{OwnerInformation}{User-provided value that will be included in any CloudWatch events

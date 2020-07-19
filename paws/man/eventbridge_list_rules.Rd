@@ -2,7 +2,7 @@
 % Please edit documentation in R/eventbridge_operations.R
 \name{eventbridge_list_rules}
 \alias{eventbridge_list_rules}
-\title{Lists your EventBridge rules}
+\title{Lists your Amazon EventBridge rules}
 \usage{
 eventbridge_list_rules(NamePrefix, EventBusName, NextToken, Limit)
 }
@@ -18,11 +18,11 @@ results.}
 \item{Limit}{The maximum number of results to return.}
 }
 \description{
-Lists your EventBridge rules. You can either list all the rules or
-provide a prefix to match to the rule names.
+Lists your Amazon EventBridge rules. You can either list all the rules
+or you can provide a prefix to match to the rule names.
 }
 \details{
-\code{ListRules} doesn\'t list the targets of a rule. To see the targets
+ListRules does not list the targets of a rule. To see the targets
 associated with a rule, use ListTargetsByRule.
 }
 \section{Request syntax}{

@@ -22,7 +22,33 @@ back.}
 \item{GrowthFactor}{The percentage of targets to receive a deployed configuration during
 each interval.}
 
-\item{GrowthType}{The algorithm used to define how percentage grows over time.}
+\item{GrowthType}{The algorithm used to define how percentage grows over time. AWS
+AppConfig supports the following growth types:
+
+\strong{Linear}: For this type, AppConfig processes the deployment by
+increments of the growth factor evenly distributed over the deployment
+time. For example, a linear deployment that uses a growth factor of 20
+initially makes the configuration available to 20 percent of the
+targets. After 1/5th of the deployment time has passed, the system
+updates the percentage to 40 percent. This continues until 100\% of the
+targets are set to receive the deployed configuration.
+
+\strong{Exponential}: For this type, AppConfig processes the deployment
+exponentially using the following formula: \code{G*(2^N)}. In this formula,
+\code{G} is the growth factor specified by the user and \code{N} is the number of
+steps until the configuration is deployed to all targets. For example,
+if you specify a growth factor of 2, then the system rolls out the
+configuration as follows:
+
+\code{2*(2^0)}
+
+\code{2*(2^1)}
+
+\code{2*(2^2)}
+
+Expressed numerically, the deployment rolls out as follows: 2\% of the
+targets, 4\% of the targets, 8\% of the targets, and continues until the
+configuration has been deployed to all targets.}
 }
 \description{
 Updates a deployment strategy.
@@ -34,7 +60,7 @@ Updates a deployment strategy.
   DeploymentDurationInMinutes = 123,
   FinalBakeTimeInMinutes = 123,
   GrowthFactor = 123.0,
-  GrowthType = "LINEAR"
+  GrowthType = "LINEAR"|"EXPONENTIAL"
 )
 }
 }

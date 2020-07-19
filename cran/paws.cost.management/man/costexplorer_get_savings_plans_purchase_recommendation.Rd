@@ -6,16 +6,22 @@
 and Details}
 \usage{
 costexplorer_get_savings_plans_purchase_recommendation(SavingsPlansType,
-  TermInYears, PaymentOption, NextPageToken, PageSize,
-  LookbackPeriodInDays)
+  TermInYears, PaymentOption, AccountScope, NextPageToken, PageSize,
+  LookbackPeriodInDays, Filter)
 }
 \arguments{
 \item{SavingsPlansType}{[required] The Savings Plans recommendation type requested.}
 
-\item{TermInYears}{[required] The savings plan recommendation term used to generated these
+\item{TermInYears}{[required] The savings plan recommendation term used to generate these
 recommendations.}
 
 \item{PaymentOption}{[required] The payment option used to generate these recommendations.}
+
+\item{AccountScope}{The account scope that you want your recommendations for. Amazon Web
+Services calculates recommendations including the payer account and
+linked accounts if the value is set to \code{PAYER}. If the value is
+\code{LINKED}, recommendations are calculated for individual linked accounts
+only.}
 
 \item{NextPageToken}{The token to retrieve the next set of results. Amazon Web Services
 provides the token when the response from a previous call has more
@@ -25,6 +31,19 @@ results than the maximum page size.}
 response object.}
 
 \item{LookbackPeriodInDays}{[required] The lookback period used to generate the recommendation.}
+
+\item{Filter}{You can filter your recommendations by Account ID with the
+\code{LINKED_ACCOUNT} dimension. To filter your recommendations by Account
+ID, specify \code{Key} as \code{LINKED_ACCOUNT} and \code{Value} as the comma-separated
+Acount ID(s) for which you want to see Savings Plans purchase
+recommendations.
+
+For GetSavingsPlansPurchaseRecommendation, the \code{Filter} does not include
+\code{CostCategories} or \code{Tags}. It only includes \code{Dimensions}. With
+\code{Dimensions}, \code{Key} must be \code{LINKED_ACCOUNT} and \code{Value} can be a single
+Account ID or multiple comma-separated Account IDs for which you want to
+see Savings Plans Purchase Recommendations. \code{AND} and \code{OR} operators are
+not supported.}
 }
 \description{
 Retrieves your request parameters, Savings Plan Recommendations Summary
@@ -35,9 +54,43 @@ and Details.
   SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP",
   TermInYears = "ONE_YEAR"|"THREE_YEARS",
   PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
+  AccountScope = "PAYER"|"LINKED",
   NextPageToken = "string",
   PageSize = 123,
-  LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS"
+  LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
+  Filter = list(
+    Or = list(
+      list()
+    ),
+    And = list(
+      list()
+    ),
+    Not = list(),
+    Dimensions = list(
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
+      Values = list(
+        "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+      )
+    ),
+    Tags = list(
+      Key = "string",
+      Values = list(
+        "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+      )
+    ),
+    CostCategories = list(
+      Key = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
 )
 }
 }

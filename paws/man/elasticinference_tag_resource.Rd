@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticinference_operations.R
 \name{elasticinference_tag_resource}
 \alias{elasticinference_tag_resource}
-\title{Adds the specified tag(s) to an Elastic Inference Accelerator}
+\title{Adds the specified tags to an Elastic Inference Accelerator}
 \usage{
 elasticinference_tag_resource(resourceArn, tags)
 }
@@ -12,7 +12,7 @@ elasticinference_tag_resource(resourceArn, tags)
 \item{tags}{[required] The tags to add to the Elastic Inference Accelerator.}
 }
 \description{
-Adds the specified tag(s) to an Elastic Inference Accelerator.
+Adds the specified tags to an Elastic Inference Accelerator.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

@@ -2,16 +2,16 @@
 % Please edit documentation in R/applicationautoscaling_operations.R
 \name{applicationautoscaling_deregister_scalable_target}
 \alias{applicationautoscaling_deregister_scalable_target}
-\title{Deregisters an Application Auto Scaling scalable target}
+\title{Deregisters an Application Auto Scaling scalable target when you have
+finished using it}
 \usage{
 applicationautoscaling_deregister_scalable_target(ServiceNamespace,
   ResourceId, ScalableDimension)
 }
 \arguments{
-\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or
-\code{custom-resource} for a resource provided by your own application or
-service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
-in the \emph{Amazon Web Services General Reference}.}
+\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource. For a
+resource provided by your own application or service, use
+\code{custom-resource} instead.}
 
 \item{ResourceId}{[required] The identifier of the resource associated with the scalable target. This
 string consists of the resource type and unique identifier.
@@ -50,6 +50,9 @@ Example:
 the unique identifier is the function name with a function version
 or alias name suffix that is not \verb{$LATEST}. Example:
 \verb{function:my-function:prod} or \verb{function:my-function:1}.
+\item Amazon Keyspaces table - The resource type is \code{table} and the unique
+identifier is the table name. Example:
+\code{keyspace/mykeyspace/table/mytable}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension associated with the scalable target. This string
@@ -83,23 +86,26 @@ The number of inference units for an Amazon Comprehend document
 classification endpoint.
 \item \verb{lambda:function:ProvisionedConcurrency} - The provisioned
 concurrency for a Lambda function.
+\item \code{cassandra:table:ReadCapacityUnits} - The provisioned read capacity
+for an Amazon Keyspaces table.
+\item \code{cassandra:table:WriteCapacityUnits} - The provisioned write
+capacity for an Amazon Keyspaces table.
 }}
 }
 \description{
-Deregisters an Application Auto Scaling scalable target.
+Deregisters an Application Auto Scaling scalable target when you have
+finished using it. To see which resources have been registered, use
+\href{https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html}{DescribeScalableTargets}.
 }
 \details{
-Deregistering a scalable target deletes the scaling policies that are
-associated with it.
-
-To create a scalable target or update an existing one, see
-RegisterScalableTarget.
+Deregistering a scalable target deletes the scaling policies and the
+scheduled actions that are associated with it.
 }
 \section{Request syntax}{
 \preformatted{svc$deregister_scalable_target(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
   ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"
 )
 }
 }

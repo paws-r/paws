@@ -2,24 +2,34 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_update_emergency_contact_settings}
 \alias{shield_update_emergency_contact_settings}
-\title{Updates the details of the list of email addresses that the DRT can use
-to contact you during a suspected attack}
+\title{Updates the details of the list of email addresses and phone numbers
+that the DDoS Response Team (DRT) can use to contact you if you have
+proactive engagement enabled, for escalations to the DRT and to initiate
+proactive customer support}
 \usage{
 shield_update_emergency_contact_settings(EmergencyContactList)
 }
 \arguments{
-\item{EmergencyContactList}{A list of email addresses that the DRT can use to contact you during a
-suspected attack.}
+\item{EmergencyContactList}{A list of email addresses and phone numbers that the DDoS Response Team
+(DRT) can use to contact you if you have proactive engagement enabled,
+for escalations to the DRT and to initiate proactive customer support.
+
+If you have proactive engagement enabled, the contact list must include
+at least one phone number.}
 }
 \description{
-Updates the details of the list of email addresses that the DRT can use
-to contact you during a suspected attack.
+Updates the details of the list of email addresses and phone numbers
+that the DDoS Response Team (DRT) can use to contact you if you have
+proactive engagement enabled, for escalations to the DRT and to initiate
+proactive customer support.
 }
 \section{Request syntax}{
 \preformatted{svc$update_emergency_contact_settings(
   EmergencyContactList = list(
     list(
-      EmailAddress = "string"
+      EmailAddress = "string",
+      PhoneNumber = "string",
+      ContactNotes = "string"
     )
   )
 )

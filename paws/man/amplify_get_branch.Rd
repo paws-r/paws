@@ -2,17 +2,17 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_get_branch}
 \alias{amplify_get_branch}
-\title{Retrieves a branch for an Amplify App}
+\title{Returns a branch for an Amplify app}
 \usage{
 amplify_get_branch(appId, branchName)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{branchName}{[required] Name for the branch.}
+\item{branchName}{[required] The name for the branch.}
 }
 \description{
-Retrieves a branch for an Amplify App.
+Returns a branch for an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$get_branch(

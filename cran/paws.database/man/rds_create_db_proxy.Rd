@@ -2,8 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_create_db_proxy}
 \alias{rds_create_db_proxy}
-\title{This is prerelease documentation for the RDS Database Proxy feature in
-preview release}
+\title{Creates a new DB proxy}
 \usage{
 rds_create_db_proxy(DBProxyName, EngineFamily, Auth, RoleArn,
   VpcSubnetIds, VpcSecurityGroupIds, RequireTLS, IdleClientTimeout,
@@ -18,9 +17,8 @@ hyphens.}
 
 \item{EngineFamily}{[required] The kinds of databases that the proxy can connect to. This value
 determines which database network protocol the proxy recognizes when it
-interprets network traffic to and from the database. Currently, this
-value is always \code{MYSQL}. The engine family applies to both RDS MySQL and
-Aurora MySQL.}
+interprets network traffic to and from the database. The engine family
+applies to MySQL and PostgreSQL for both RDS and Aurora.}
 
 \item{Auth}{[required] The authorization mechanism that the proxy uses.}
 
@@ -51,16 +49,12 @@ safeguard any sensitive information that appears in the logs.}
 choosing with the proxy.}
 }
 \description{
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-}
-\details{
 Creates a new DB proxy.
 }
 \section{Request syntax}{
 \preformatted{svc$create_db_proxy(
   DBProxyName = "string",
-  EngineFamily = "MYSQL",
+  EngineFamily = "MYSQL"|"POSTGRESQL",
   Auth = list(
     list(
       Description = "string",

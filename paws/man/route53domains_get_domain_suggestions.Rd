@@ -3,32 +3,43 @@
 \name{route53domains_get_domain_suggestions}
 \alias{route53domains_get_domain_suggestions}
 \title{The GetDomainSuggestions operation returns a list of suggested domain
-names given a string, which can either be a domain name or simply a word
-or phrase (without spaces)}
+names}
 \usage{
 route53domains_get_domain_suggestions(DomainName, SuggestionCount,
   OnlyAvailable)
 }
 \arguments{
 \item{DomainName}{[required] A domain name that you want to use as the basis for a list of possible
-domain names. The domain name must contain a top-level domain (TLD),
-such as .com, that Amazon Route 53 supports. For a list of TLDs, see
-\href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
-in the \emph{Amazon Route 53 Developer Guide}.}
+domain names. The top-level domain (TLD), such as .com, must be a TLD
+that Route 53 supports. For a list of supported TLDs, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
+in the \emph{Amazon Route 53 Developer Guide}.
 
-\item{SuggestionCount}{[required] The number of suggested domain names that you want Amazon Route 53 to
-return.}
+The domain name can contain only the following characters:
+\itemize{
+\item Letters a through z. Domain names are not case sensitive.
+\item Numbers 0 through 9.
+\item Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+label.
+\item Period (.) to separate the labels in the name, such as the \code{.} in
+\code{example.com}.
+}
 
-\item{OnlyAvailable}{[required] If \code{OnlyAvailable} is \code{true}, Amazon Route 53 returns only domain names
-that are available. If \code{OnlyAvailable} is \code{false}, Amazon Route 53
-returns domain names without checking whether they\'re available to be
-registered. To determine whether the domain is available, you can call
+Internationalized domain names are not supported for some top-level
+domains. To determine whether the TLD that you want to use supports
+internationalized domain names, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}.}
+
+\item{SuggestionCount}{[required] The number of suggested domain names that you want Route 53 to return.
+Specify a value between 1 and 50.}
+
+\item{OnlyAvailable}{[required] If \code{OnlyAvailable} is \code{true}, Route 53 returns only domain names that
+are available. If \code{OnlyAvailable} is \code{false}, Route 53 returns domain
+names without checking whether they\'re available to be registered. To
+determine whether the domain is available, you can call
 \code{checkDomainAvailability} for each suggestion.}
 }
 \description{
 The GetDomainSuggestions operation returns a list of suggested domain
-names given a string, which can either be a domain name or simply a word
-or phrase (without spaces).
+names.
 }
 \section{Request syntax}{
 \preformatted{svc$get_domain_suggestions(

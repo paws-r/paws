@@ -5,7 +5,7 @@
 \title{Updates the monitoring settings for the cluster}
 \usage{
 kafka_update_monitoring(ClusterArn, CurrentVersion, EnhancedMonitoring,
-  OpenMonitoring)
+  OpenMonitoring, LoggingInfo)
 }
 \arguments{
 \item{ClusterArn}{[required]
@@ -17,6 +17,8 @@ kafka_update_monitoring(ClusterArn, CurrentVersion, EnhancedMonitoring,
 \item{EnhancedMonitoring}{<p>Specifies which Apache Kafka metrics Amazon MSK gathers and sends to Amazon CloudWatch for this cluster.</p>}
 
 \item{OpenMonitoring}{<p>The settings for open monitoring.</p>}
+
+\item{LoggingInfo}{}
 }
 \description{
 \preformatted{        <p>Updates the monitoring settings for the cluster. You can use this operation to specify which Apache Kafka metrics you want Amazon MSK to send to Amazon CloudWatch. You can also specify settings for open monitoring with Prometheus.</p>
@@ -34,6 +36,23 @@ kafka_update_monitoring(ClusterArn, CurrentVersion, EnhancedMonitoring,
       ),
       NodeExporter = list(
         EnabledInBroker = TRUE|FALSE
+      )
+    )
+  ),
+  LoggingInfo = list(
+    BrokerLogs = list(
+      CloudWatchLogs = list(
+        Enabled = TRUE|FALSE,
+        LogGroup = "string"
+      ),
+      Firehose = list(
+        DeliveryStream = "string",
+        Enabled = TRUE|FALSE
+      ),
+      S3 = list(
+        Bucket = "string",
+        Enabled = TRUE|FALSE,
+        Prefix = "string"
       )
     )
   )

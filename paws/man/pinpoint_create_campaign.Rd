@@ -23,6 +23,12 @@ existing campaign for an application.
   WriteCampaignRequest = list(
     AdditionalTreatments = list(
       list(
+        CustomDeliveryConfiguration = list(
+          DeliveryUri = "string",
+          EndpointTypes = list(
+            "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+          )
+        ),
         MessageConfiguration = list(
           ADMMessage = list(
             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
@@ -65,6 +71,9 @@ existing campaign for an application.
             TimeToLive = 123,
             Title = "string",
             Url = "string"
+          ),
+          CustomMessage = list(
+            Data = "string"
           ),
           DefaultMessage = list(
             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
@@ -165,6 +174,12 @@ existing campaign for an application.
         TreatmentName = "string"
       )
     ),
+    CustomDeliveryConfiguration = list(
+      DeliveryUri = "string",
+      EndpointTypes = list(
+        "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+      )
+    ),
     Description = "string",
     HoldoutPercent = 123,
     Hook = list(
@@ -221,6 +236,9 @@ existing campaign for an application.
         TimeToLive = 123,
         Title = "string",
         Url = "string"
+      ),
+      CustomMessage = list(
+        Data = "string"
       ),
       DefaultMessage = list(
         Action = "OPEN_APP"|"DEEP_LINK"|"URL",

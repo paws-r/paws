@@ -3,6 +3,42 @@
 #' @include computeoptimizer_service.R
 NULL
 
+.computeoptimizer$describe_recommendation_export_jobs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.computeoptimizer$describe_recommendation_export_jobs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(recommendationExportJobs = structure(list(structure(list(jobId = structure(logical(0), tags = list(type = "string")), destination = structure(list(s3 = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), metadataKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), resourceType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationTimestamp = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.computeoptimizer$export_auto_scaling_group_recommendations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(accountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), fieldsToExport = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), s3DestinationConfig = structure(list(bucket = structure(logical(0), tags = list(type = "string")), keyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), fileFormat = structure(logical(0), tags = list(type = "string")), includeMemberAccounts = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.computeoptimizer$export_auto_scaling_group_recommendations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobId = structure(logical(0), tags = list(type = "string")), s3Destination = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), metadataKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.computeoptimizer$export_ec2_instance_recommendations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(accountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), fieldsToExport = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), s3DestinationConfig = structure(list(bucket = structure(logical(0), tags = list(type = "string")), keyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), fileFormat = structure(logical(0), tags = list(type = "string")), includeMemberAccounts = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.computeoptimizer$export_ec2_instance_recommendations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(jobId = structure(logical(0), tags = list(type = "string")), s3Destination = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string")), metadataKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .computeoptimizer$get_auto_scaling_group_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(accountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), autoScalingGroupArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))

@@ -58,7 +58,7 @@ workmailmessageflow <- function(config = list()) {
 
 .workmailmessageflow$metadata <- list(
   service_name = "workmailmessageflow",
-  endpoints = list("*" = list(endpoint = "workmailmessageflow.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workmailmessageflow.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "workmailmessageflow.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workmailmessageflow.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "workmailmessageflow.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "workmailmessageflow.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "WorkMailMessageFlow",
   api_version = "2019-05-01",
   signing_name = NULL,

@@ -7,11 +7,12 @@
 kinesisvideo_delete_signaling_channel(ChannelARN, CurrentVersion)
 }
 \arguments{
-\item{ChannelARN}{[required] The ARN of the signaling channel that you want to delete.}
+\item{ChannelARN}{[required] The Amazon Resource Name (ARN) of the signaling channel that you want to
+delete.}
 
 \item{CurrentVersion}{The current version of the signaling channel that you want to delete.
 You can obtain the current version by invoking the
-\code{DescribeSignalingChannel} or \code{ListSignalingChannels} APIs.}
+\code{DescribeSignalingChannel} or \code{ListSignalingChannels} API operations.}
 }
 \description{
 Deletes a specified signaling channel. \code{DeleteSignalingChannel} is an

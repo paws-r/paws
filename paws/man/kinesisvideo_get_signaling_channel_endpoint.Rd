@@ -9,7 +9,8 @@ kinesisvideo_get_signaling_channel_endpoint(ChannelARN,
   SingleMasterChannelEndpointConfiguration)
 }
 \arguments{
-\item{ChannelARN}{[required] The ARN of the signalling channel for which you want to get an endpoint.}
+\item{ChannelARN}{[required] The Amazon Resource Name (ARN) of the signalling channel for which you
+want to get an endpoint.}
 
 \item{SingleMasterChannelEndpointConfiguration}{A structure containing the endpoint configuration for the
 \code{SINGLE_MASTER} channel type.}
@@ -22,9 +23,9 @@ consists of the \code{Protocols} and \code{Role} properties.
 }
 \details{
 \code{Protocols} is used to determine the communication mechanism. For
-example, specifying \code{WSS} as the protocol, results in this API producing
-a secure websocket endpoint, and specifying \code{HTTPS} as the protocol,
-results in this API generating an HTTPS endpoint.
+example, if you specify \code{WSS} as the protocol, this API produces a
+secure websocket endpoint. If you specify \code{HTTPS} as the protocol, this
+API generates an HTTPS endpoint.
 
 \code{Role} determines the messaging permissions. A \code{MASTER} role results in
 this API generating an endpoint that a client can use to communicate

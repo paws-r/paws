@@ -4,12 +4,15 @@
 \alias{iot_list_security_profiles}
 \title{Lists the Device Defender security profiles you have created}
 \usage{
-iot_list_security_profiles(nextToken, maxResults)
+iot_list_security_profiles(nextToken, maxResults, dimensionName)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}
 
 \item{maxResults}{The maximum number of results to return at one time.}
+
+\item{dimensionName}{A filter to limit results to the security profiles that use the defined
+dimension.}
 }
 \description{
 Lists the Device Defender security profiles you have created. You can
@@ -19,7 +22,8 @@ group or only those associated with your account.
 \section{Request syntax}{
 \preformatted{svc$list_security_profiles(
   nextToken = "string",
-  maxResults = 123
+  maxResults = 123,
+  dimensionName = "string"
 )
 }
 }

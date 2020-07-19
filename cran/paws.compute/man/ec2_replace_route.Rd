@@ -5,9 +5,9 @@
 \title{Replaces an existing route within a route table in a VPC}
 \usage{
 ec2_replace_route(DestinationCidrBlock, DestinationIpv6CidrBlock,
-  DryRun, EgressOnlyInternetGatewayId, GatewayId, InstanceId, LocalTarget,
-  NatGatewayId, TransitGatewayId, LocalGatewayId, NetworkInterfaceId,
-  RouteTableId, VpcPeeringConnectionId)
+  DestinationPrefixListId, DryRun, EgressOnlyInternetGatewayId, GatewayId,
+  InstanceId, LocalTarget, NatGatewayId, TransitGatewayId, LocalGatewayId,
+  NetworkInterfaceId, RouteTableId, VpcPeeringConnectionId)
 }
 \arguments{
 \item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. The value
@@ -15,6 +15,8 @@ that you provide must match the CIDR of an existing route in the table.}
 
 \item{DestinationIpv6CidrBlock}{The IPv6 CIDR address block used for the destination match. The value
 that you provide must match the CIDR of an existing route in the table.}
+
+\item{DestinationPrefixListId}{The ID of the prefix list for the route.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -56,6 +58,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 \preformatted{svc$replace_route(
   DestinationCidrBlock = "string",
   DestinationIpv6CidrBlock = "string",
+  DestinationPrefixListId = "string",
   DryRun = TRUE|FALSE,
   EgressOnlyInternetGatewayId = "string",
   GatewayId = "string",

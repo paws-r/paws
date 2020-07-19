@@ -13,6 +13,11 @@ NULL
 #' AWS Marketplace sellers can use this API to submit usage data for custom
 #' usage dimensions.
 #' 
+#' For information on the permissions you need to use this API, see [AWS
+#' Marketing metering and entitlement API
+#' permissions](https://docs.aws.amazon.com/marketplace/latest/userguide/iam-user-policy-for-aws-marketplace-actions.html)
+#' in the *AWS Marketplace Seller Guide.*
+#' 
 #' **Submitting Metering Records**
 #' 
 #' -   *MeterUsage*- Submits the metering record for a Marketplace product.
@@ -103,7 +108,7 @@ marketplacemetering <- function(config = list()) {
 
 .marketplacemetering$metadata <- list(
   service_name = "metering.marketplace",
-  endpoints = list("*" = list(endpoint = "metering.marketplace.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "metering.marketplace.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "metering.marketplace.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "metering.marketplace.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "metering.marketplace.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "metering.marketplace.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Marketplace Metering",
   api_version = "2016-01-14",
   signing_name = "aws-marketplace",

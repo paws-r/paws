@@ -2,21 +2,21 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_list_branches}
 \alias{amplify_list_branches}
-\title{Lists branches for an Amplify App}
+\title{Lists the branches of an Amplify app}
 \usage{
 amplify_list_branches(appId, nextToken, maxResults)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{nextToken}{Pagination token. Set to null to start listing branches from start. If a
-non-null pagination token is returned in a result, then pass its value
-in here to list more branches.}
+\item{nextToken}{A pagination token. Set to null to start listing branches from the
+start. If a non-null pagination token is returned in a result, pass its
+value in here to list more branches.}
 
-\item{maxResults}{Maximum number of records to list in a single response.}
+\item{maxResults}{The maximum number of records to list in a single response.}
 }
 \description{
-Lists branches for an Amplify App.
+Lists the branches of an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$list_branches(

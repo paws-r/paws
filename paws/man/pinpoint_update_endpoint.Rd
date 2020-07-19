@@ -18,8 +18,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Creates a new endpoint for an application or updates the settings and
 attributes of an existing endpoint for an application. You can also use
-this operation to define custom attributes (Attributes, Metrics, and
-UserAttributes properties) for an endpoint.
+this operation to define custom attributes for an endpoint. If an update
+includes one or more values for a custom attribute, Amazon Pinpoint
+replaces (overwrites) any existing values with the new values.
 }
 \section{Request syntax}{
 \preformatted{svc$update_endpoint(
@@ -32,7 +33,7 @@ UserAttributes properties) for an endpoint.
         "string"
       )
     ),
-    ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+    ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
     Demographic = list(
       AppVersion = "string",
       Locale = "string",

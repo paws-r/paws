@@ -7,13 +7,14 @@
 eventbridge_untag_resource(ResourceARN, TagKeys)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the rule that you\'re removing tags from.}
+\item{ResourceARN}{[required] The ARN of the EventBridge resource from which you are removing tags.}
 
 \item{TagKeys}{[required] The list of tag keys to remove from the resource.}
 }
 \description{
 Removes one or more tags from the specified EventBridge resource. In
-EventBridge, rules can be tagged.
+Amazon EventBridge (CloudWatch Events, rules and event buses can be
+tagged.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

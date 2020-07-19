@@ -2,8 +2,7 @@
 % Please edit documentation in R/migrationhubconfig_operations.R
 \name{migrationhubconfig_describe_home_region_controls}
 \alias{migrationhubconfig_describe_home_region_controls}
-\title{This API permits filtering on the ControlId, HomeRegion, and
-RegionControlScope fields}
+\title{This API permits filtering on the ControlId and HomeRegion fields}
 \usage{
 migrationhubconfig_describe_home_region_controls(ControlId, HomeRegion,
   Target, MaxResults, NextToken)
@@ -25,8 +24,7 @@ available. To retrieve the next page of results, make the call again
 using the returned token in \code{NextToken}.}
 }
 \description{
-This API permits filtering on the \code{ControlId}, \code{HomeRegion}, and
-\code{RegionControlScope} fields.
+This API permits filtering on the \code{ControlId} and \code{HomeRegion} fields.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_home_region_controls(

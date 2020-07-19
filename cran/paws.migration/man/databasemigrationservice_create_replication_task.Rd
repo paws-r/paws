@@ -8,14 +8,14 @@ databasemigrationservice_create_replication_task(
   ReplicationTaskIdentifier, SourceEndpointArn, TargetEndpointArn,
   ReplicationInstanceArn, MigrationType, TableMappings,
   ReplicationTaskSettings, CdcStartTime, CdcStartPosition,
-  CdcStopPosition, Tags)
+  CdcStopPosition, Tags, TaskData)
 }
 \arguments{
 \item{ReplicationTaskIdentifier}{[required] An identifier for the replication task.
 
 Constraints:
 \itemize{
-\item Must contain from 1 to 255 alphanumeric characters or hyphens.
+\item Must contain 1-255 alphanumeric characters or hyphens.
 \item First character must be a letter.
 \item Cannot end with a hyphen or contain two consecutive hyphens.
 }}
@@ -32,11 +32,11 @@ endpoint.}
 \code{full-load-and-cdc}}
 
 \item{TableMappings}{[required] The table mappings for the task, in JSON format. For more information,
-see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html}{Table Mapping}
-in the \emph{AWS Database Migration User Guide.}}
+see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html}{Using Table Mapping to Specify Task Settings}
+in the \emph{AWS Database Migration Service User Guide.}}
 
 \item{ReplicationTaskSettings}{Overall settings for the task, in JSON format. For more information, see
-\href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html}{Task Settings}
+\href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html}{Specifying Task Settings for AWS Database Migration Service Tasks}
 in the \emph{AWS Database Migration User Guide.}}
 
 \item{CdcStartTime}{Indicates the start time for a change data capture (CDC) operation. Use
@@ -74,6 +74,11 @@ Commit time example: \\--cdc-stop-position "commit\\_time:
 3018-02-09T12:12:12 "}
 
 \item{Tags}{One or more tags to be assigned to the replication task.}
+
+\item{TaskData}{Supplemental information that the task requires to migrate the data for
+certain source and target endpoints. For more information, see
+\href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.TaskData.html}{Specifying Supplemental Data for Task Settings}
+in the \emph{AWS Database Migration Service User Guide.}}
 }
 \description{
 Creates a replication task using the specified parameters.
@@ -97,7 +102,8 @@ Creates a replication task using the specified parameters.
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  TaskData = "string"
 )
 }
 }

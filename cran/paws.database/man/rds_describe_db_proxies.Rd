@@ -2,8 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_db_proxies}
 \alias{rds_describe_db_proxies}
-\title{This is prerelease documentation for the RDS Database Proxy feature in
-preview release}
+\title{Returns information about DB proxies}
 \usage{
 rds_describe_db_proxies(DBProxyName, Filters, Marker, MaxRecords)
 }
@@ -26,10 +25,6 @@ Default: 100
 Constraints: Minimum 20, maximum 100.}
 }
 \description{
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-}
-\details{
 Returns information about DB proxies.
 }
 \section{Request syntax}{

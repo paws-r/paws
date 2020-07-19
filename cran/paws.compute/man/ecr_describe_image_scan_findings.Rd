@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_describe_image_scan_findings}
 \alias{ecr_describe_image_scan_findings}
-\title{Describes the image scan findings for the specified image}
+\title{Returns the scan findings for the specified image}
 \usage{
 ecr_describe_image_scan_findings(registryId, repositoryName, imageId,
   nextToken, maxResults)
@@ -33,7 +33,7 @@ then \code{DescribeImageScanFindings} returns up to 100 results and a
 \code{nextToken} value, if applicable.}
 }
 \description{
-Describes the image scan findings for the specified image.
+Returns the scan findings for the specified image.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_image_scan_findings(

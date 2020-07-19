@@ -50,6 +50,10 @@ test_that("list_fleets", {
   expect_error(svc$list_fleets(), NA)
 })
 
+test_that("list_game_server_groups", {
+  expect_error(svc$list_game_server_groups(), NA)
+})
+
 test_that("list_scripts", {
   expect_error(svc$list_scripts(), NA)
 })

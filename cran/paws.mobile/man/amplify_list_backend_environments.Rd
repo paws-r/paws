@@ -2,24 +2,24 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_list_backend_environments}
 \alias{amplify_list_backend_environments}
-\title{Lists backend environments for an Amplify App}
+\title{Lists the backend environments for an Amplify app}
 \usage{
 amplify_list_backend_environments(appId, environmentName, nextToken,
   maxResults)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{environmentName}{Name of the backend environment}
+\item{environmentName}{The name of the backend environment}
 
-\item{nextToken}{Pagination token. Set to null to start listing backen environments from
-start. If a non-null pagination token is returned in a result, then pass
-its value in here to list more backend environments.}
+\item{nextToken}{A pagination token. Set to null to start listing backend environments
+from the start. If a non-null pagination token is returned in a result,
+pass its value in here to list more backend environments.}
 
-\item{maxResults}{Maximum number of records to list in a single response.}
+\item{maxResults}{The maximum number of records to list in a single response.}
 }
 \description{
-Lists backend environments for an Amplify App.
+Lists the backend environments for an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$list_backend_environments(

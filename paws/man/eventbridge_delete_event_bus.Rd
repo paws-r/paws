@@ -11,11 +11,8 @@ eventbridge_delete_event_bus(Name)
 }
 \description{
 Deletes the specified custom event bus or partner event bus. All rules
-associated with this event bus are also deleted. You can\'t delete your
-account\'s default event bus.
-}
-\details{
-This operation is performed by AWS customers, not by SaaS partners.
+associated with this event bus need to be deleted. You can\'t delete
+your account\'s default event bus.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_event_bus(

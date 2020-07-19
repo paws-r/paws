@@ -2,6 +2,10 @@ context("backup")
 
 svc <- paws::backup()
 
+test_that("describe_region_settings", {
+  expect_error(svc$describe_region_settings(), NA)
+})
+
 test_that("list_backup_jobs", {
   expect_error(svc$list_backup_jobs(), NA)
 })
@@ -32,6 +36,14 @@ test_that("list_backup_vaults", {
 
 test_that("list_backup_vaults", {
   expect_error(svc$list_backup_vaults(MaxResults = 20), NA)
+})
+
+test_that("list_copy_jobs", {
+  expect_error(svc$list_copy_jobs(), NA)
+})
+
+test_that("list_copy_jobs", {
+  expect_error(svc$list_copy_jobs(MaxResults = 20), NA)
 })
 
 test_that("list_protected_resources", {

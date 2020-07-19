@@ -2,21 +2,26 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_provision_byoip_cidr}
 \alias{ec2_provision_byoip_cidr}
-\title{Provisions an address range for use with your AWS resources through
-bring your own IP addresses (BYOIP) and creates a corresponding address
-pool}
+\title{Provisions an IPv4 or IPv6 address range for use with your AWS resources
+through bring your own IP addresses (BYOIP) and creates a corresponding
+address pool}
 \usage{
-ec2_provision_byoip_cidr(Cidr, CidrAuthorizationContext, Description,
-  DryRun)
+ec2_provision_byoip_cidr(Cidr, CidrAuthorizationContext,
+  PubliclyAdvertisable, Description, DryRun, PoolTagSpecifications)
 }
 \arguments{
-\item{Cidr}{[required] The public IPv4 address range, in CIDR notation. The most specific
-prefix that you can specify is /24. The address range cannot overlap
-with another address range that you\'ve brought to this or another
-Region.}
+\item{Cidr}{[required] The public IPv4 or IPv6 address range, in CIDR notation. The most
+specific IPv4 prefix that you can specify is /24. The most specific IPv6
+prefix you can specify is /56. The address range cannot overlap with
+another address range that you\'ve brought to this or another Region.}
 
 \item{CidrAuthorizationContext}{A signed document that proves that you are authorized to bring the
 specified IP address range to Amazon using BYOIP.}
+
+\item{PubliclyAdvertisable}{(IPv6 only) Indicate whether the address range will be publicly
+advertised to the internet.
+
+Default: true}
 
 \item{Description}{A description for the address range and the address pool.}
 
@@ -24,11 +29,13 @@ specified IP address range to Amazon using BYOIP.}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{PoolTagSpecifications}{The tags to apply to the address pool.}
 }
 \description{
-Provisions an address range for use with your AWS resources through
-bring your own IP addresses (BYOIP) and creates a corresponding address
-pool. After the address range is provisioned, it is ready to be
+Provisions an IPv4 or IPv6 address range for use with your AWS resources
+through bring your own IP addresses (BYOIP) and creates a corresponding
+address pool. After the address range is provisioned, it is ready to be
 advertised using AdvertiseByoipCidr.
 }
 \details{
@@ -42,7 +49,7 @@ Provisioning an address range is an asynchronous operation, so the call
 returns immediately, but the address range is not ready to use until its
 status changes from \code{pending-provision} to \code{provisioned}. To monitor the
 status of an address range, use DescribeByoipCidrs. To allocate an
-Elastic IP address from your address pool, use AllocateAddress with
+Elastic IP address from your IPv4 address pool, use AllocateAddress with
 either the specific address from the address pool or the ID of the
 address pool.
 }
@@ -53,8 +60,20 @@ address pool.
     Message = "string",
     Signature = "string"
   ),
+  PubliclyAdvertisable = TRUE|FALSE,
   Description = "string",
-  DryRun = TRUE|FALSE
+  DryRun = TRUE|FALSE,
+  PoolTagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

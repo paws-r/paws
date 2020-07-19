@@ -6,25 +6,31 @@
 mount target, for a file system}
 \usage{
 efs_describe_mount_targets(MaxItems, Marker, FileSystemId,
-  MountTargetId)
+  MountTargetId, AccessPointId)
 }
 \arguments{
 \item{MaxItems}{(Optional) Maximum number of mount targets to return in the response.
 Currently, this number is automatically set to 10, and other values are
-ignored. The response is paginated at 10 per page if you have more than
-10 mount targets.}
+ignored. The response is paginated at 100 per page if you have more than
+100 mount targets.}
 
 \item{Marker}{(Optional) Opaque pagination token returned from a previous
 \code{DescribeMountTargets} operation (String). If present, it specifies to
 continue the list from where the previous returning call left off.}
 
 \item{FileSystemId}{(Optional) ID of the file system whose mount targets you want to list
-(String). It must be included in your request if \code{MountTargetId} is not
-included.}
+(String). It must be included in your request if an \code{AccessPointId} or
+\code{MountTargetId} is not included. Accepts either a file system ID or ARN
+as input.}
 
 \item{MountTargetId}{(Optional) ID of the mount target that you want to have described
 (String). It must be included in your request if \code{FileSystemId} is not
-included.}
+included. Accepts either a mount target ID or ARN as input.}
+
+\item{AccessPointId}{(Optional) The ID of the access point whose mount targets that you want
+to list. It must be included in your request if a \code{FileSystemId} or
+\code{MountTargetId} is not included in your request. Accepts either an
+access point ID or ARN as input.}
 }
 \description{
 Returns the descriptions of all the current mount targets, or a specific
@@ -43,7 +49,8 @@ the mount target that you specify in \code{MountTargetId}.
   MaxItems = 123,
   Marker = "string",
   FileSystemId = "string",
-  MountTargetId = "string"
+  MountTargetId = "string",
+  AccessPointId = "string"
 )
 }
 }

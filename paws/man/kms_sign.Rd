@@ -37,8 +37,8 @@ If you provide a message, AWS KMS generates a hash digest of the message
 and then signs it.}
 
 \item{MessageType}{Tells AWS KMS whether the value of the \code{Message} parameter is a message
-or message digest. To indicate a message, enter \code{RAW}. To indicate a
-message digest, enter \code{DIGEST}.}
+or message digest. The default value, RAW, indicates a message. To
+indicate a message digest, enter \code{DIGEST}.}
 
 \item{GrantTokens}{A list of grant tokens.
 

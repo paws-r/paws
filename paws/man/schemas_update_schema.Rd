@@ -2,7 +2,8 @@
 % Please edit documentation in R/schemas_operations.R
 \name{schemas_update_schema}
 \alias{schemas_update_schema}
-\title{Updates the schema definition}
+\title{Updates the schema definition Inactive schemas will be deleted after two
+years}
 \usage{
 schemas_update_schema(ClientTokenId, Content, Description, RegistryName,
   SchemaName, Type)
@@ -14,14 +15,17 @@ schemas_update_schema(ClientTokenId, Content, Description, RegistryName,
 
 \item{Description}{The description of the schema.}
 
-\item{RegistryName}{[required]}
+\item{RegistryName}{[required] The name of the registry.}
 
-\item{SchemaName}{[required]}
+\item{SchemaName}{[required] The name of the schema.}
 
 \item{Type}{The schema type for the events schema.}
 }
 \description{
 Updates the schema definition
+}
+\details{
+Inactive schemas will be deleted after two years.
 }
 \section{Request syntax}{
 \preformatted{svc$update_schema(

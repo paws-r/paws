@@ -24,9 +24,8 @@ workdocs_create_user(OrganizationId, Username, EmailAddress, GivenName,
 
 \item{StorageRule}{The amount of storage for the user.}
 
-\item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using
-administrative API actions, as in accessing the API using AWS
-credentials.}
+\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
+administrator credentials to access the API.}
 }
 \description{
 Creates a user in a Simple AD or Microsoft AD directory. The status of a

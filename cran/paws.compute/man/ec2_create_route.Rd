@@ -4,17 +4,21 @@
 \alias{ec2_create_route}
 \title{Creates a route in a route table within a VPC}
 \usage{
-ec2_create_route(DestinationCidrBlock, DestinationIpv6CidrBlock, DryRun,
-  EgressOnlyInternetGatewayId, GatewayId, InstanceId, NatGatewayId,
-  TransitGatewayId, LocalGatewayId, NetworkInterfaceId, RouteTableId,
-  VpcPeeringConnectionId)
+ec2_create_route(DestinationCidrBlock, DestinationIpv6CidrBlock,
+  DestinationPrefixListId, DryRun, EgressOnlyInternetGatewayId, GatewayId,
+  InstanceId, NatGatewayId, TransitGatewayId, LocalGatewayId,
+  NetworkInterfaceId, RouteTableId, VpcPeeringConnectionId)
 }
 \arguments{
 \item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. Routing
-decisions are based on the most specific match.}
+decisions are based on the most specific match. We modify the specified
+CIDR block to its canonical form; for example, if you specify
+\verb{100.68.0.18/18}, we modify it to \verb{100.68.0.0/18}.}
 
 \item{DestinationIpv6CidrBlock}{The IPv6 CIDR block used for the destination match. Routing decisions
 are based on the most specific match.}
+
+\item{DestinationPrefixListId}{The ID of a prefix list used for the destination match.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -70,6 +74,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 \preformatted{svc$create_route(
   DestinationCidrBlock = "string",
   DestinationIpv6CidrBlock = "string",
+  DestinationPrefixListId = "string",
   DryRun = TRUE|FALSE,
   EgressOnlyInternetGatewayId = "string",
   GatewayId = "string",

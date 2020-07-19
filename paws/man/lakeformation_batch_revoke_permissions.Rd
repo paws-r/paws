@@ -30,13 +30,17 @@ Batch operation to revoke permissions from the principal.
       Resource = list(
         Catalog = list(),
         Database = list(
+          CatalogId = "string",
           Name = "string"
         ),
         Table = list(
+          CatalogId = "string",
           DatabaseName = "string",
-          Name = "string"
+          Name = "string",
+          TableWildcard = list()
         ),
         TableWithColumns = list(
+          CatalogId = "string",
           DatabaseName = "string",
           Name = "string",
           ColumnNames = list(
@@ -49,14 +53,15 @@ Batch operation to revoke permissions from the principal.
           )
         ),
         DataLocation = list(
+          CatalogId = "string",
           ResourceArn = "string"
         )
       ),
       Permissions = list(
-        "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+        "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
       ),
       PermissionsWithGrantOption = list(
-        "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+        "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
       )
     )
   )

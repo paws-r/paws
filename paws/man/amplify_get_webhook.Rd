@@ -2,15 +2,17 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_get_webhook}
 \alias{amplify_get_webhook}
-\title{Retrieves webhook info that corresponds to a webhookId}
+\title{Returns the webhook information that corresponds to a specified webhook
+ID}
 \usage{
 amplify_get_webhook(webhookId)
 }
 \arguments{
-\item{webhookId}{[required] Unique Id for a webhook.}
+\item{webhookId}{[required] The unique ID for a webhook.}
 }
 \description{
-Retrieves webhook info that corresponds to a webhookId.
+Returns the webhook information that corresponds to a specified webhook
+ID.
 }
 \section{Request syntax}{
 \preformatted{svc$get_webhook(

@@ -9,7 +9,7 @@ schemas_update_registry(Description, RegistryName)
 \arguments{
 \item{Description}{The description of the registry to update.}
 
-\item{RegistryName}{[required]}
+\item{RegistryName}{[required] The name of the registry.}
 }
 \description{
 Updates a registry.

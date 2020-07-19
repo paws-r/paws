@@ -114,7 +114,7 @@ budgets <- function(config = list()) {
 
 .budgets$metadata <- list(
   service_name = "budgets",
-  endpoints = list("*" = list(endpoint = "https://budgets.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "budgets.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "https://budgets.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "budgets.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "budgets.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "budgets.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Budgets",
   api_version = "2016-10-20",
   signing_name = NULL,

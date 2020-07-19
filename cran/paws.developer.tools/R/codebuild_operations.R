@@ -216,7 +216,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
 #'   cache, environment, serviceRole, timeoutInMinutes,
 #'   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-#'   logsConfig)
+#'   logsConfig, fileSystemLocations)
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' @param description A description that makes the build project easy to identify.
@@ -273,7 +273,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' You can specify either the Amazon Resource Name (ARN) of the CMK or, if
 #' available, the CMK\'s alias (using the format
 #' `alias/<i>alias-name</i> `).
-#' @param tags A set of tags for this build project.
+#' @param tags A list of tag key and value pairs associated with this build project.
 #' 
 #' These tags are available for use by AWS services that support AWS
 #' CodeBuild build project tags.
@@ -282,6 +282,10 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' project\'s build badge.
 #' @param logsConfig Information about logs for the build project. These can be logs in
 #' Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.
+#' @param fileSystemLocations An array of `ProjectFileSystemLocation` objects for a CodeBuild build
+#' project. A `ProjectFileSystemLocation` object specifies the
+#' `identifier`, `location`, `mountOptions`, `mountPoint`, and `type` of a
+#' file system created using Amazon Elastic File System.
 #'
 #' @section Request syntax:
 #' ```
@@ -301,6 +305,10 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       resource = "string"
 #'     ),
 #'     reportBuildStatus = TRUE|FALSE,
+#'     buildStatusConfig = list(
+#'       context = "string",
+#'       targetUrl = "string"
+#'     ),
 #'     insecureSsl = TRUE|FALSE,
 #'     sourceIdentifier = "string"
 #'   ),
@@ -318,6 +326,10 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
+#'       buildStatusConfig = list(
+#'         context = "string",
+#'         targetUrl = "string"
+#'       ),
 #'       insecureSsl = TRUE|FALSE,
 #'       sourceIdentifier = "string"
 #'     )
@@ -410,6 +422,15 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       location = "string",
 #'       encryptionDisabled = TRUE|FALSE
 #'     )
+#'   ),
+#'   fileSystemLocations = list(
+#'     list(
+#'       type = "EFS",
+#'       location = "string",
+#'       mountPoint = "string",
+#'       identifier = "string",
+#'       mountOptions = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -417,14 +438,14 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @keywords internal
 #'
 #' @rdname codebuild_create_project
-codebuild_create_project <- function(name, description = NULL, source, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts, secondaryArtifacts = NULL, cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL) {
+codebuild_create_project <- function(name, description = NULL, source, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts, secondaryArtifacts = NULL, cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig)
+  input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations)
   output <- .codebuild$create_project_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -439,12 +460,16 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #' Creates a report group. A report group contains a collection of reports.
 #'
 #' @usage
-#' codebuild_create_report_group(name, type, exportConfig)
+#' codebuild_create_report_group(name, type, exportConfig, tags)
 #'
 #' @param name &#91;required&#93; The name of the report group.
 #' @param type &#91;required&#93; The type of report group.
 #' @param exportConfig &#91;required&#93; A `ReportExportConfig` object that contains information about where the
 #' report group test results are exported.
+#' @param tags A list of tag key and value pairs associated with this report group.
+#' 
+#' These tags are available for use by AWS services that support AWS
+#' CodeBuild report group tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -460,6 +485,12 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #'       encryptionKey = "string",
 #'       encryptionDisabled = TRUE|FALSE
 #'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -467,14 +498,14 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #' @keywords internal
 #'
 #' @rdname codebuild_create_report_group
-codebuild_create_report_group <- function(name, type, exportConfig) {
+codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL) {
   op <- new_operation(
     name = "CreateReportGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$create_report_group_input(name = name, type = type, exportConfig = exportConfig)
+  input <- .codebuild$create_report_group_input(name = name, type = type, exportConfig = exportConfig, tags = tags)
   output <- .codebuild$create_report_group_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -530,7 +561,7 @@ codebuild_create_report_group <- function(name, type, exportConfig) {
 #'   filterGroups = list(
 #'     list(
 #'       list(
-#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH",
+#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
 #'         pattern = "string",
 #'         excludeMatchedPattern = TRUE|FALSE
 #'       )
@@ -1551,8 +1582,9 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'   secondaryArtifactsOverride, environmentVariablesOverride,
 #'   sourceTypeOverride, sourceLocationOverride, sourceAuthOverride,
 #'   gitCloneDepthOverride, gitSubmodulesConfigOverride, buildspecOverride,
-#'   insecureSslOverride, reportBuildStatusOverride, environmentTypeOverride,
-#'   imageOverride, computeTypeOverride, certificateOverride, cacheOverride,
+#'   insecureSslOverride, reportBuildStatusOverride,
+#'   buildStatusConfigOverride, environmentTypeOverride, imageOverride,
+#'   computeTypeOverride, certificateOverride, cacheOverride,
 #'   serviceRoleOverride, privilegedModeOverride, timeoutInMinutesOverride,
 #'   queuedTimeoutInMinutesOverride, encryptionKeyOverride, idempotencyToken,
 #'   logsConfigOverride, registryCredentialOverride,
@@ -1606,8 +1638,19 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' the build project.
 #' @param gitSubmodulesConfigOverride Information about the Git submodules configuration for this build of an
 #' AWS CodeBuild build project.
-#' @param buildspecOverride A build spec declaration that overrides, for this build only, the latest
-#' one already defined in the build project.
+#' @param buildspecOverride A buildspec file declaration that overrides, for this build only, the
+#' latest one already defined in the build project.
+#' 
+#' If this value is set, it can be either an inline buildspec definition,
+#' the path to an alternate buildspec file relative to the value of the
+#' built-in `CODEBUILD_SRC_DIR` environment variable, or the path to an S3
+#' bucket. The bucket must be in the same AWS Region as the build project.
+#' Specify the buildspec file using its ARN (for example,
+#' `arn:aws:s3:::my-codebuild-sample2/buildspec.yml`). If this value is not
+#' provided or is set to an empty string, the source code must contain a
+#' buildspec file in its root directory. For more information, see
+#' [Buildspec File Name and Storage
+#' Location](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage).
 #' @param insecureSslOverride Enable this flag to override the insecure SSL setting that is specified
 #' in the build project. The insecure SSL setting determines whether to
 #' ignore SSL warnings while connecting to the project source code. This
@@ -1619,6 +1662,9 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' 
 #' The status of a build triggered by a webhook is always reported to your
 #' source provider.
+#' @param buildStatusConfigOverride Contains information that defines how the build project reports the
+#' build status to the source provider. This option is only used when the
+#' source provider is `GITHUB`, `GITHUB_ENTERPRISE`, or `BITBUCKET`.
 #' @param environmentTypeOverride A container type for this build that overrides the one specified in the
 #' build project.
 #' @param imageOverride The name of an image for this build that overrides the one specified in
@@ -1649,7 +1695,7 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' `alias/<i>alias-name</i> `).
 #' @param idempotencyToken A unique, case sensitive identifier you provide to ensure the
 #' idempotency of the StartBuild request. The token is included in the
-#' StartBuild request and is valid for 12 hours. If you repeat the
+#' StartBuild request and is valid for 5 minutes. If you repeat the
 #' StartBuild request with the same token, but change a parameter, AWS
 #' CodeBuild returns a parameter mismatch error.
 #' @param logsConfigOverride Log settings for this build that override the log settings defined in
@@ -1687,6 +1733,10 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
+#'       buildStatusConfig = list(
+#'         context = "string",
+#'         targetUrl = "string"
+#'       ),
 #'       insecureSsl = TRUE|FALSE,
 #'       sourceIdentifier = "string"
 #'     )
@@ -1742,6 +1792,10 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'   buildspecOverride = "string",
 #'   insecureSslOverride = TRUE|FALSE,
 #'   reportBuildStatusOverride = TRUE|FALSE,
+#'   buildStatusConfigOverride = list(
+#'     context = "string",
+#'     targetUrl = "string"
+#'   ),
 #'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER",
 #'   imageOverride = "string",
 #'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
@@ -1782,14 +1836,14 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' @keywords internal
 #'
 #' @rdname codebuild_start_build
-codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildStatusOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, timeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL) {
+codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildStatusOverride = NULL, buildStatusConfigOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, timeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL) {
   op <- new_operation(
     name = "StartBuild",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$start_build_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildStatusOverride = reportBuildStatusOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride)
+  input <- .codebuild$start_build_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildStatusOverride = reportBuildStatusOverride, buildStatusConfigOverride = buildStatusConfigOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride)
   output <- .codebuild$start_build_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -1844,7 +1898,7 @@ codebuild_stop_build <- function(id) {
 #'   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
 #'   cache, environment, serviceRole, timeoutInMinutes,
 #'   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-#'   logsConfig)
+#'   logsConfig, fileSystemLocations)
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' 
@@ -1906,7 +1960,8 @@ codebuild_stop_build <- function(id) {
 #' You can specify either the Amazon Resource Name (ARN) of the CMK or, if
 #' available, the CMK\'s alias (using the format
 #' `alias/<i>alias-name</i> `).
-#' @param tags The replacement set of tags for this build project.
+#' @param tags An updated list of tag key and value pairs associated with this build
+#' project.
 #' 
 #' These tags are available for use by AWS services that support AWS
 #' CodeBuild build project tags.
@@ -1915,6 +1970,10 @@ codebuild_stop_build <- function(id) {
 #' project\'s build badge.
 #' @param logsConfig Information about logs for the build project. A project can create logs
 #' in Amazon CloudWatch Logs, logs in an S3 bucket, or both.
+#' @param fileSystemLocations An array of `ProjectFileSystemLocation` objects for a CodeBuild build
+#' project. A `ProjectFileSystemLocation` object specifies the
+#' `identifier`, `location`, `mountOptions`, `mountPoint`, and `type` of a
+#' file system created using Amazon Elastic File System.
 #'
 #' @section Request syntax:
 #' ```
@@ -1934,6 +1993,10 @@ codebuild_stop_build <- function(id) {
 #'       resource = "string"
 #'     ),
 #'     reportBuildStatus = TRUE|FALSE,
+#'     buildStatusConfig = list(
+#'       context = "string",
+#'       targetUrl = "string"
+#'     ),
 #'     insecureSsl = TRUE|FALSE,
 #'     sourceIdentifier = "string"
 #'   ),
@@ -1951,6 +2014,10 @@ codebuild_stop_build <- function(id) {
 #'         resource = "string"
 #'       ),
 #'       reportBuildStatus = TRUE|FALSE,
+#'       buildStatusConfig = list(
+#'         context = "string",
+#'         targetUrl = "string"
+#'       ),
 #'       insecureSsl = TRUE|FALSE,
 #'       sourceIdentifier = "string"
 #'     )
@@ -2043,6 +2110,15 @@ codebuild_stop_build <- function(id) {
 #'       location = "string",
 #'       encryptionDisabled = TRUE|FALSE
 #'     )
+#'   ),
+#'   fileSystemLocations = list(
+#'     list(
+#'       type = "EFS",
+#'       location = "string",
+#'       mountPoint = "string",
+#'       identifier = "string",
+#'       mountOptions = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2050,14 +2126,14 @@ codebuild_stop_build <- function(id) {
 #' @keywords internal
 #'
 #' @rdname codebuild_update_project
-codebuild_update_project <- function(name, description = NULL, source = NULL, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts = NULL, secondaryArtifacts = NULL, cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL) {
+codebuild_update_project <- function(name, description = NULL, source = NULL, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts = NULL, secondaryArtifacts = NULL, cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL) {
   op <- new_operation(
     name = "UpdateProject",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig)
+  input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations)
   output <- .codebuild$update_project_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -2072,7 +2148,7 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #' Updates a report group.
 #'
 #' @usage
-#' codebuild_update_report_group(arn, exportConfig)
+#' codebuild_update_report_group(arn, exportConfig, tags)
 #'
 #' @param arn &#91;required&#93; The ARN of the report group to update.
 #' @param exportConfig Used to specify an updated export type. Valid values are:
@@ -2080,6 +2156,11 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #' -   `S3`: The report results are exported to an S3 bucket.
 #' 
 #' -   `NO_EXPORT`: The report results are not exported.
+#' @param tags An updated list of tag key and value pairs associated with this report
+#' group.
+#' 
+#' These tags are available for use by AWS services that support AWS
+#' CodeBuild report group tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -2094,6 +2175,12 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #'       encryptionKey = "string",
 #'       encryptionDisabled = TRUE|FALSE
 #'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2101,14 +2188,14 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #' @keywords internal
 #'
 #' @rdname codebuild_update_report_group
-codebuild_update_report_group <- function(arn, exportConfig = NULL) {
+codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "UpdateReportGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codebuild$update_report_group_input(arn = arn, exportConfig = exportConfig)
+  input <- .codebuild$update_report_group_input(arn = arn, exportConfig = exportConfig, tags = tags)
   output <- .codebuild$update_report_group_output()
   config <- get_config()
   svc <- .codebuild$service(config)
@@ -2151,7 +2238,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL) {
 #'   filterGroups = list(
 #'     list(
 #'       list(
-#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH",
+#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
 #'         pattern = "string",
 #'         excludeMatchedPattern = TRUE|FALSE
 #'       )

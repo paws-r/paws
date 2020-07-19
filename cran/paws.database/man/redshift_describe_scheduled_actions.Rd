@@ -47,7 +47,7 @@ Describes properties of scheduled actions.
 \section{Request syntax}{
 \preformatted{svc$describe_scheduled_actions(
   ScheduledActionName = "string",
-  TargetActionType = "ResizeCluster",
+  TargetActionType = "ResizeCluster"|"PauseCluster"|"ResumeCluster",
   StartTime = as.POSIXct(
     "2015-01-01"
   ),

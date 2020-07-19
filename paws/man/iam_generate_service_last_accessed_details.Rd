@@ -6,12 +6,19 @@
 (user, group, role, or policy) was last used in an attempt to access AWS
 services}
 \usage{
-iam_generate_service_last_accessed_details(Arn)
+iam_generate_service_last_accessed_details(Arn, Granularity)
 }
 \arguments{
 \item{Arn}{[required] The ARN of the IAM resource (user, group, role, or managed policy) used
 to generate information about when the resource was last used in an
 attempt to access an AWS service.}
+
+\item{Granularity}{The level of detail that you want to generate. You can specify whether
+you want to generate information about the last attempt to access
+services or actions. If you specify service-level granularity, this
+operation generates only service data. If you specify action-level
+granularity, it generates service and action data. If you don\'t include
+this optional parameter, the operation generates service data.}
 }
 \description{
 Generates a report that includes details about when an IAM resource
@@ -41,6 +48,10 @@ groups, roles, or policies to list every AWS service that the
 resource could access using permissions policies. For each service,
 the response includes information about the most recent access
 attempt.
+
+The \code{JobId} returned by \code{GenerateServiceLastAccessedDetail} must be
+used by the same role within a session, or by the same user when
+used to call \code{GetServiceLastAccessedDetail}.
 \item GetServiceLastAccessedDetailsWithEntities -- Use this operation for
 groups and policies to list information about the associated
 entities (users or roles) that attempted to access a specific AWS
@@ -63,12 +74,14 @@ role policies. It only applies permissions policy logic. For more about
 the evaluation of policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics}{Evaluating Policies}
 in the \emph{IAM User Guide}.
 
-For more information about service last accessed data, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html}{Reducing Policy Scope by Viewing User Activity}
+For more information about service and action last accessed data, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html}{Reducing Permissions Using Service Last Accessed Data}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$generate_service_last_accessed_details(
-  Arn = "string"
+  Arn = "string",
+  Granularity = "SERVICE_LEVEL"|"ACTION_LEVEL"
 )
 }
 }

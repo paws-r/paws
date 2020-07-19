@@ -30,13 +30,17 @@ NULL
 #'       Resource = list(
 #'         Catalog = list(),
 #'         Database = list(
+#'           CatalogId = "string",
 #'           Name = "string"
 #'         ),
 #'         Table = list(
+#'           CatalogId = "string",
 #'           DatabaseName = "string",
-#'           Name = "string"
+#'           Name = "string",
+#'           TableWildcard = list()
 #'         ),
 #'         TableWithColumns = list(
+#'           CatalogId = "string",
 #'           DatabaseName = "string",
 #'           Name = "string",
 #'           ColumnNames = list(
@@ -49,14 +53,15 @@ NULL
 #'           )
 #'         ),
 #'         DataLocation = list(
+#'           CatalogId = "string",
 #'           ResourceArn = "string"
 #'         )
 #'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'       )
 #'     )
 #'   )
@@ -110,13 +115,17 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #'       Resource = list(
 #'         Catalog = list(),
 #'         Database = list(
+#'           CatalogId = "string",
 #'           Name = "string"
 #'         ),
 #'         Table = list(
+#'           CatalogId = "string",
 #'           DatabaseName = "string",
-#'           Name = "string"
+#'           Name = "string",
+#'           TableWildcard = list()
 #'         ),
 #'         TableWithColumns = list(
+#'           CatalogId = "string",
 #'           DatabaseName = "string",
 #'           Name = "string",
 #'           ColumnNames = list(
@@ -129,14 +138,15 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #'           )
 #'         ),
 #'         DataLocation = list(
+#'           CatalogId = "string",
 #'           ResourceArn = "string"
 #'         )
 #'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'       )
 #'     )
 #'   )
@@ -241,9 +251,11 @@ lakeformation_describe_resource <- function(ResourceArn) {
 }
 .lakeformation$operations$describe_resource <- lakeformation_describe_resource
 
-#' The AWS Lake Formation principal
+#' Retrieves the list of the data lake administrators of a Lake
+#' Formation-managed data lake
 #'
-#' The AWS Lake Formation principal.
+#' Retrieves the list of the data lake administrators of a Lake
+#' Formation-managed data lake.
 #'
 #' @usage
 #' lakeformation_get_data_lake_settings(CatalogId)
@@ -280,11 +292,13 @@ lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
 }
 .lakeformation$operations$get_data_lake_settings <- lakeformation_get_data_lake_settings
 
-#' Returns the permissions for a specified table or database resource
-#' located at a path in Amazon S3
+#' Returns the Lake Formation permissions for a specified table or database
+#' resource located at a path in Amazon S3
 #'
-#' Returns the permissions for a specified table or database resource
-#' located at a path in Amazon S3.
+#' Returns the Lake Formation permissions for a specified table or database
+#' resource located at a path in Amazon S3.
+#' `GetEffectivePermissionsForPath` will not return databases and tables if
+#' the catalog is encrypted.
 #'
 #' @usage
 #' lakeformation_get_effective_permissions_for_path(CatalogId, ResourceArn,
@@ -375,13 +389,17 @@ lakeformation_get_effective_permissions_for_path <- function(CatalogId = NULL, R
 #'   Resource = list(
 #'     Catalog = list(),
 #'     Database = list(
+#'       CatalogId = "string",
 #'       Name = "string"
 #'     ),
 #'     Table = list(
+#'       CatalogId = "string",
 #'       DatabaseName = "string",
-#'       Name = "string"
+#'       Name = "string",
+#'       TableWildcard = list()
 #'     ),
 #'     TableWithColumns = list(
+#'       CatalogId = "string",
 #'       DatabaseName = "string",
 #'       Name = "string",
 #'       ColumnNames = list(
@@ -394,14 +412,15 @@ lakeformation_get_effective_permissions_for_path <- function(CatalogId = NULL, R
 #'       )
 #'     ),
 #'     DataLocation = list(
+#'       CatalogId = "string",
 #'       ResourceArn = "string"
 #'     )
 #'   ),
 #'   Permissions = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'   ),
 #'   PermissionsWithGrantOption = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'   )
 #' )
 #' ```
@@ -470,13 +489,17 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
 #'   Resource = list(
 #'     Catalog = list(),
 #'     Database = list(
+#'       CatalogId = "string",
 #'       Name = "string"
 #'     ),
 #'     Table = list(
+#'       CatalogId = "string",
 #'       DatabaseName = "string",
-#'       Name = "string"
+#'       Name = "string",
+#'       TableWildcard = list()
 #'     ),
 #'     TableWithColumns = list(
+#'       CatalogId = "string",
 #'       DatabaseName = "string",
 #'       Name = "string",
 #'       ColumnNames = list(
@@ -489,6 +512,7 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
 #'       )
 #'     ),
 #'     DataLocation = list(
+#'       CatalogId = "string",
 #'       ResourceArn = "string"
 #'     )
 #'   ),
@@ -567,9 +591,17 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
 }
 .lakeformation$operations$list_resources <- lakeformation_list_resources
 
-#' The AWS Lake Formation principal
+#' Sets the list of data lake administrators who have admin privileges on
+#' all resources managed by Lake Formation
 #'
-#' The AWS Lake Formation principal.
+#' Sets the list of data lake administrators who have admin privileges on
+#' all resources managed by Lake Formation. For more information on admin
+#' privileges, see [Granting Lake Formation
+#' Permissions](https://docs.aws.amazon.com/lake-formation/latest/dg/lake-formation-permissions.html).
+#' 
+#' This API replaces the current list of data lake admins with the new list
+#' being passed. To add an admin, fetch the current list and add the new
+#' admin to that list and pass that list in this API.
 #'
 #' @usage
 #' lakeformation_put_data_lake_settings(CatalogId, DataLakeSettings)
@@ -578,7 +610,8 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
 #' Data Catalog is the persistent metadata store. It contains database
 #' definitions, table definitions, and other control information to manage
 #' your AWS Lake Formation environment.
-#' @param DataLakeSettings &#91;required&#93; A list of AWS Lake Formation principals.
+#' @param DataLakeSettings &#91;required&#93; A structure representing a list of AWS Lake Formation principals
+#' designated as data lake administrators.
 #'
 #' @section Request syntax:
 #' ```
@@ -596,7 +629,7 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'         )
 #'       )
 #'     ),
@@ -606,9 +639,12 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'         )
 #'       )
+#'     ),
+#'     TrustedResourceOwners = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -646,6 +682,17 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' Lake Formation adds the first path to the inline policy and attaches it
 #' to the service-linked role. When you register subsequent paths, Lake
 #' Formation adds the path to the existing policy.
+#' 
+#' The following request registers a new location and gives AWS Lake
+#' Formation permission to use the service-linked role to access that
+#' location.
+#' 
+#' `ResourceArn = arn:aws:s3:::my-bucket UseServiceLinkedRole = true`
+#' 
+#' If `UseServiceLinkedRole` is not set to true, you must provide or set
+#' the `RoleArn`:
+#' 
+#' `arn:aws:iam::12345:role/my-data-access-role`
 #'
 #' @usage
 #' lakeformation_register_resource(ResourceArn, UseServiceLinkedRole,
@@ -653,9 +700,13 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to
 #' register.
-#' @param UseServiceLinkedRole Designates a trusted caller, an IAM principal, by registering this
-#' caller with the Data Catalog.
-#' @param RoleArn The identifier for the role.
+#' @param UseServiceLinkedRole Designates an AWS Identity and Access Management (IAM) service-linked
+#' role by registering this role with the Data Catalog. A service-linked
+#' role is a unique type of IAM role that is linked directly to Lake
+#' Formation.
+#' 
+#' For more information, see Using Service-Linked Roles for Lake Formation.
+#' @param RoleArn The identifier for the role that registers the resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -718,13 +769,17 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
 #'   Resource = list(
 #'     Catalog = list(),
 #'     Database = list(
+#'       CatalogId = "string",
 #'       Name = "string"
 #'     ),
 #'     Table = list(
+#'       CatalogId = "string",
 #'       DatabaseName = "string",
-#'       Name = "string"
+#'       Name = "string",
+#'       TableWildcard = list()
 #'     ),
 #'     TableWithColumns = list(
+#'       CatalogId = "string",
 #'       DatabaseName = "string",
 #'       Name = "string",
 #'       ColumnNames = list(
@@ -737,14 +792,15 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
 #'       )
 #'     ),
 #'     DataLocation = list(
+#'       CatalogId = "string",
 #'       ResourceArn = "string"
 #'     )
 #'   ),
 #'   Permissions = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'   ),
 #'   PermissionsWithGrantOption = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'   )
 #' )
 #' ```

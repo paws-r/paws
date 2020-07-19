@@ -191,7 +191,7 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #'       )
 #'     ),
 #'     SupportedTrainingInstanceTypes = list(
-#'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"
+#'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"
 #'     ),
 #'     SupportsDistributedTraining = TRUE|FALSE,
 #'     MetricDefinitions = list(
@@ -289,7 +289,7 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #'             S3OutputPath = "string"
 #'           ),
 #'           ResourceConfig = list(
-#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
 #'             InstanceCount = 123,
 #'             VolumeSizeInGB = 123,
 #'             VolumeKmsKeyId = "string"
@@ -360,13 +360,9 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #'
 #' Creates a running App for the specified UserProfile. Supported Apps are
 #' JupyterServer and KernelGateway. This operation is automatically invoked
-#' by Amazon SageMaker Amazon SageMaker Studio (Studio) upon access to the
-#' associated Studio Domain, and when new kernel configurations are
-#' selected by the user. A user may have multiple Apps active
-#' simultaneously. Apps will automatically terminate and be deleted when
-#' stopped from within Studio, or when the DeleteApp API is manually
-#' called. UserProfiles are limited to 5 concurrently running Apps at a
-#' time.
+#' by Amazon SageMaker Studio upon access to the associated Domain, and
+#' when new kernel configurations are selected by the user. A user may have
+#' multiple Apps active simultaneously.
 #'
 #' @usage
 #' sagemaker_create_app(DomainId, UserProfileName, AppType, AppName, Tags,
@@ -378,7 +374,8 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #' @param AppName &#91;required&#93; The name of the app.
 #' @param Tags Each tag consists of a key and an optional value. Tag keys must be
 #' unique per resource.
-#' @param ResourceSpec The instance type and quantity.
+#' @param ResourceSpec The instance type and the Amazon Resource Name (ARN) of the SageMaker
+#' image created on the instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -394,7 +391,7 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #'     )
 #'   ),
 #'   ResourceSpec = list(
-#'     EnvironmentArn = "string",
+#'     SageMakerImageArn = "string",
 #'     InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'   )
 #' )
@@ -423,6 +420,15 @@ sagemaker_create_app <- function(DomainId, UserProfileName, AppType, AppName, Ta
 #' Creates an AutoPilot job
 #'
 #' Creates an AutoPilot job.
+#' 
+#' After you run an AutoPilot job, you can find the best performing model
+#' by calling , and then deploy that model by following the steps described
+#' in [Step 6.1: Deploy the Model to Amazon SageMaker Hosting
+#' Services](https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html).
+#' 
+#' For information about how to use AutoPilot, see [Use AutoPilot to
+#' Automate Model
+#' Development](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html).
 #'
 #' @usage
 #' sagemaker_create_auto_ml_job(AutoMLJobName, InputDataConfig,
@@ -432,7 +438,7 @@ sagemaker_create_app <- function(DomainId, UserProfileName, AppType, AppName, Ta
 #' @param AutoMLJobName &#91;required&#93; Identifies an AutoPilot job. Must be unique to your account and is
 #' case-insensitive.
 #' @param InputDataConfig &#91;required&#93; Similar to InputDataConfig supported by Tuning. Format(s) supported:
-#' CSV.
+#' CSV. Minimum of 1000 rows.
 #' @param OutputDataConfig &#91;required&#93; Similar to OutputDataConfig supported by Tuning. Format(s) supported:
 #' CSV.
 #' @param ProblemType Defines the kind of preprocessing and algorithms intended for the
@@ -648,11 +654,11 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig) {
 #'   InputConfig = list(
 #'     S3Uri = "string",
 #'     DataInputConfig = "string",
-#'     Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"
+#'     Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"|"TFLITE"
 #'   ),
 #'   OutputConfig = list(
 #'     S3OutputLocation = "string",
-#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"rasp3b"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"
+#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"
 #'   ),
 #'   StoppingCondition = list(
 #'     MaxRuntimeInSeconds = 123,
@@ -681,33 +687,44 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, InputC
 }
 .sagemaker$operations$create_compilation_job <- sagemaker_create_compilation_job
 
-#' Creates a Domain for Amazon SageMaker Amazon SageMaker Studio (Studio),
-#' which can be accessed by end-users in a web browser
+#' Creates a Domain used by SageMaker Studio
 #'
-#' Creates a Domain for Amazon SageMaker Amazon SageMaker Studio (Studio),
-#' which can be accessed by end-users in a web browser. A Domain has an
-#' associated directory, list of authorized users, and a variety of
-#' security, application, policies, and Amazon Virtual Private Cloud
-#' configurations. An AWS account is limited to one Domain, per region.
+#' Creates a `Domain` used by SageMaker Studio. A domain consists of an
+#' associated directory, a list of authorized users, and a variety of
+#' security, application, policy, and Amazon Virtual Private Cloud (VPC)
+#' configurations. An AWS account is limited to one domain per region.
 #' Users within a domain can share notebook files and other artifacts with
-#' each other. When a Domain is created, an Amazon Elastic File System
-#' (EFS) is also created for use by all of the users within the Domain.
-#' Each user receives a private home directory within the EFS for
-#' notebooks, Git repositories, and data files.
+#' each other.
+#' 
+#' When a domain is created, an Amazon Elastic File System (EFS) volume is
+#' also created for use by all of the users within the domain. Each user
+#' receives a private home directory within the EFS for notebooks, Git
+#' repositories, and data files.
+#' 
+#' All traffic between the domain and the EFS volume is communicated
+#' through the specified subnet IDs. All other traffic goes over the
+#' Internet through an Amazon SageMaker system VPC. The EFS traffic uses
+#' the NFS/TCP protocol over port 2049.
+#' 
+#' NFS traffic over TCP on port 2049 needs to be allowed in both inbound
+#' and outbound rules in order to launch a SageMaker Studio app
+#' successfully.
 #'
 #' @usage
 #' sagemaker_create_domain(DomainName, AuthMode, DefaultUserSettings,
 #'   SubnetIds, VpcId, Tags, HomeEfsFileSystemKmsKeyId)
 #'
 #' @param DomainName &#91;required&#93; A name for the domain.
-#' @param AuthMode &#91;required&#93; The mode of authentication that member use to access the domain.
+#' @param AuthMode &#91;required&#93; The mode of authentication that members use to access the domain.
 #' @param DefaultUserSettings &#91;required&#93; The default user settings.
-#' @param SubnetIds &#91;required&#93; Security setting to limit to a set of subnets.
-#' @param VpcId &#91;required&#93; Security setting to limit the domain\'s communication to a Amazon
-#' Virtual Private Cloud.
-#' @param Tags Each tag consists of a key and an optional value. Tag keys must be
-#' unique per resource.
-#' @param HomeEfsFileSystemKmsKeyId The AWS Key Management Service encryption key ID.
+#' @param SubnetIds &#91;required&#93; The VPC subnets to use for communication with the EFS volume.
+#' @param VpcId &#91;required&#93; The ID of the Amazon Virtual Private Cloud (VPC) to use for
+#' communication with the EFS volume.
+#' @param Tags Tags to associated with the Domain. Each tag consists of a key and an
+#' optional value. Tag keys must be unique per resource. Tags are
+#' searchable using the Search API.
+#' @param HomeEfsFileSystemKmsKeyId The AWS Key Management Service (KMS) encryption key ID. Encryption with
+#' a customer master key (CMK) is not supported.
 #'
 #' @section Request syntax:
 #' ```
@@ -726,19 +743,19 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, InputC
 #'     ),
 #'     JupyterServerAppSettings = list(
 #'       DefaultResourceSpec = list(
-#'         EnvironmentArn = "string",
+#'         SageMakerImageArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
-#'         EnvironmentArn = "string",
+#'         SageMakerImageArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     ),
 #'     TensorBoardAppSettings = list(
 #'       DefaultResourceSpec = list(
-#'         EnvironmentArn = "string",
+#'         SageMakerImageArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     )
@@ -783,16 +800,19 @@ sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, S
 #' Creates an endpoint using the endpoint configuration specified in the
 #' request. Amazon SageMaker uses the endpoint to provision resources and
 #' deploy models. You create the endpoint configuration with the
-#' [CreateEndpointConfig](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html)
-#' API.
+#' CreateEndpointConfig API.
 #' 
-#' Use this API only for hosting models using Amazon SageMaker hosting
-#' services.
+#' Use this API to deploy models using Amazon SageMaker hosting services.
 #' 
-#' You must not delete an `EndpointConfig` in use by an endpoint that is
-#' live or while the `UpdateEndpoint` or `CreateEndpoint` operations are
-#' being performed on the endpoint. To update an endpoint, you must create
-#' a new `EndpointConfig`.
+#' For an example that calls this method when deploying a model to Amazon
+#' SageMaker hosting services, see [Deploy the Model to Amazon SageMaker
+#' Hosting Services (AWS SDK for Python (Boto
+#' 3)).](https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto)
+#' 
+#' You must not delete an `EndpointConfig` that is in use by an endpoint
+#' that is live or while the `UpdateEndpoint` or `CreateEndpoint`
+#' operations are being performed on the endpoint. To update an endpoint,
+#' you must create a new `EndpointConfig`.
 #' 
 #' The endpoint name must be unique within an AWS Region in your AWS
 #' account.
@@ -801,16 +821,24 @@ sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, S
 #' launches the resources (ML compute instances), and deploys the model(s)
 #' on them.
 #' 
+#' When you call CreateEndpoint, a load call is made to DynamoDB to verify
+#' that your endpoint configuration exists. When you read data from a
+#' DynamoDB table supporting
+#' [`Eventually Consistent Reads`](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html)
+#' , the response might not reflect the results of a recently completed
+#' write operation. The response might include some stale data. If the
+#' dependent entities are not yet in DynamoDB, this causes a validation
+#' error. If you repeat your read request after a short time, the response
+#' should return the latest data. So retry logic is recommended to handle
+#' these possible issues. We also recommend that customers call
+#' DescribeEndpointConfig before calling CreateEndpoint to minimize the
+#' potential impact of a DynamoDB eventually consistent read.
+#' 
 #' When Amazon SageMaker receives the request, it sets the endpoint status
 #' to `Creating`. After it creates the endpoint, it sets the status to
 #' `InService`. Amazon SageMaker can then process incoming requests for
-#' inferences. To check the status of an endpoint, use the
-#' [DescribeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
+#' inferences. To check the status of an endpoint, use the DescribeEndpoint
 #' API.
-#' 
-#' For an example, see [Exercise 1: Using the K-Means Algorithm Provided by
-#' Amazon
-#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html).
 #' 
 #' If any of the models hosted at this endpoint get model data from an
 #' Amazon S3 location, Amazon SageMaker uses AWS Security Token Service to
@@ -828,7 +856,7 @@ sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, S
 #' @param EndpointName &#91;required&#93; The name of the endpoint. The name must be unique within an AWS Region
 #' in your AWS account.
 #' @param EndpointConfigName &#91;required&#93; The name of an endpoint configuration. For more information, see
-#' [CreateEndpointConfig](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html).
+#' CreateEndpointConfig.
 #' @param Tags An array of key-value pairs. For more information, see [Using Cost
 #' Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)in
@@ -875,16 +903,15 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Tags = N
 #' uses to deploy models. In the configuration, you identify one or more
 #' models, created using the `CreateModel` API, to deploy and the resources
 #' that you want Amazon SageMaker to provision. Then you call the
-#' [CreateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
-#' API.
+#' CreateEndpoint API.
 #' 
-#' Use this API only if you want to use Amazon SageMaker hosting services
-#' to deploy models into production.
+#' Use this API if you want to use Amazon SageMaker hosting services to
+#' deploy models into production.
 #' 
-#' In the request, you define one or more `ProductionVariant`s, each of
-#' which identifies a model. Each `ProductionVariant` parameter also
-#' describes the resources that you want Amazon SageMaker to provision.
-#' This includes the number and type of ML compute instances to deploy.
+#' In the request, you define a `ProductionVariant`, for each model that
+#' you want to deploy. Each `ProductionVariant` parameter also describes
+#' the resources that you want Amazon SageMaker to provision. This includes
+#' the number and type of ML compute instances to deploy.
 #' 
 #' If you are hosting multiple models, you also assign a `VariantWeight` to
 #' specify how much traffic you want to allocate to each model. For
@@ -892,14 +919,31 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Tags = N
 #' assign traffic weight 2 for model A and 1 for model B. Amazon SageMaker
 #' distributes two-thirds of the traffic to Model A, and one-third to model
 #' B.
+#' 
+#' For an example that calls this method when deploying a model to Amazon
+#' SageMaker hosting services, see [Deploy the Model to Amazon SageMaker
+#' Hosting Services (AWS SDK for Python (Boto
+#' 3)).](https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto)
+#' 
+#' When you call CreateEndpoint, a load call is made to DynamoDB to verify
+#' that your endpoint configuration exists. When you read data from a
+#' DynamoDB table supporting
+#' [`Eventually Consistent Reads`](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html)
+#' , the response might not reflect the results of a recently completed
+#' write operation. The response might include some stale data. If the
+#' dependent entities are not yet in DynamoDB, this causes a validation
+#' error. If you repeat your read request after a short time, the response
+#' should return the latest data. So retry logic is recommended to handle
+#' these possible issues. We also recommend that customers call
+#' DescribeEndpointConfig before calling CreateEndpoint to minimize the
+#' potential impact of a DynamoDB eventually consistent read.
 #'
 #' @usage
 #' sagemaker_create_endpoint_config(EndpointConfigName, ProductionVariants,
 #'   DataCaptureConfig, Tags, KmsKeyId)
 #'
 #' @param EndpointConfigName &#91;required&#93; The name of the endpoint configuration. You specify this name in a
-#' [CreateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
-#' request.
+#' CreateEndpoint request.
 #' @param ProductionVariants &#91;required&#93; An list of `ProductionVariant` objects, one for each model that you want
 #' to host at this endpoint.
 #' @param DataCaptureConfig 
@@ -913,21 +957,15 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Tags = N
 #' 
 #' The KmsKeyId can be any of the following formats:
 #' 
-#' -   // KMS Key ID
+#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#'     `"1234abcd-12ab-34cd-56ef-1234567890ab" `
+#' -   Key ARN:
+#'     `arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   // Amazon Resource Name (ARN) (ARN) of a KMS Key
+#' -   Alias name: `alias/ExampleAlias`
 #' 
-#'     \"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab\"
-#' 
-#' -   // KMS Key Alias
-#' 
-#'     \"alias/ExampleAlias\"
-#' 
-#' -   // Amazon Resource Name (ARN) of a KMS Key Alias
-#' 
-#'     `"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias" `
+#' -   Alias name ARN:
+#'     `arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias`
 #' 
 #' The KMS key policy must grant permission to the IAM role that you
 #' specify in your `CreateEndpoint`, `UpdateEndpoint` requests. For more
@@ -1098,9 +1136,13 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #'
 #' @usage
 #' sagemaker_create_flow_definition(FlowDefinitionName,
-#'   HumanLoopActivationConfig, HumanLoopConfig, OutputConfig, RoleArn, Tags)
+#'   HumanLoopRequestSource, HumanLoopActivationConfig, HumanLoopConfig,
+#'   OutputConfig, RoleArn, Tags)
 #'
 #' @param FlowDefinitionName &#91;required&#93; The name of your flow definition.
+#' @param HumanLoopRequestSource Container for configuring the source of human task requests. Use to
+#' specify if Amazon Rekognition or Amazon Textract is used as an
+#' integration source.
 #' @param HumanLoopActivationConfig An object containing information about the events that trigger a human
 #' workflow.
 #' @param HumanLoopConfig &#91;required&#93; An object containing information about the tasks the human reviewers
@@ -1118,10 +1160,10 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #' ```
 #' svc$create_flow_definition(
 #'   FlowDefinitionName = "string",
+#'   HumanLoopRequestSource = list(
+#'     AwsManagedHumanLoopRequestSource = "AWS/Rekognition/DetectModerationLabels/Image/V3"|"AWS/Textract/AnalyzeDocument/Forms/V1"
+#'   ),
 #'   HumanLoopActivationConfig = list(
-#'     HumanLoopRequestSource = list(
-#'       AwsManagedHumanLoopRequestSource = "AWS/Rekognition/DetectModerationLabels/Image/V3"|"AWS/Textract/AnalyzeDocument/Forms/V1"
-#'     ),
 #'     HumanLoopActivationConditionsConfig = list(
 #'       HumanLoopActivationConditions = "string"
 #'     )
@@ -1162,14 +1204,14 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_flow_definition
-sagemaker_create_flow_definition <- function(FlowDefinitionName, HumanLoopActivationConfig = NULL, HumanLoopConfig, OutputConfig, RoleArn, Tags = NULL) {
+sagemaker_create_flow_definition <- function(FlowDefinitionName, HumanLoopRequestSource = NULL, HumanLoopActivationConfig = NULL, HumanLoopConfig, OutputConfig, RoleArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateFlowDefinition",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_flow_definition_input(FlowDefinitionName = FlowDefinitionName, HumanLoopActivationConfig = HumanLoopActivationConfig, HumanLoopConfig = HumanLoopConfig, OutputConfig = OutputConfig, RoleArn = RoleArn, Tags = Tags)
+  input <- .sagemaker$create_flow_definition_input(FlowDefinitionName = FlowDefinitionName, HumanLoopRequestSource = HumanLoopRequestSource, HumanLoopActivationConfig = HumanLoopActivationConfig, HumanLoopConfig = HumanLoopConfig, OutputConfig = OutputConfig, RoleArn = RoleArn, Tags = Tags)
   output <- .sagemaker$create_flow_definition_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -1253,12 +1295,14 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' @param HyperParameterTuningJobConfig &#91;required&#93; The HyperParameterTuningJobConfig object that describes the tuning job,
 #' including the search strategy, the objective metric used to evaluate
 #' training jobs, ranges of parameters to search, and resource limits for
-#' the tuning job. For more information, see automatic-model-tuning
+#' the tuning job. For more information, see [How Hyperparameter Tuning
+#' Works](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html).
 #' @param TrainingJobDefinition The HyperParameterTrainingJobDefinition object that describes the
 #' training jobs that this tuning job launches, including static
 #' hyperparameters, input data configuration, output data configuration,
 #' resource configuration, and stopping condition.
-#' @param TrainingJobDefinitions 
+#' @param TrainingJobDefinitions A list of the HyperParameterTrainingJobDefinition objects launched for
+#' this tuning job.
 #' @param WarmStartConfig Specifies the configuration for starting the hyperparameter tuning job
 #' using one or more previous tuning jobs as a starting point. The results
 #' of previous tuning jobs are used to inform which combinations of
@@ -1416,7 +1460,7 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'       S3OutputPath = "string"
 #'     ),
 #'     ResourceConfig = list(
-#'       InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
+#'       InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
 #'       InstanceCount = 123,
 #'       VolumeSizeInGB = 123,
 #'       VolumeKmsKeyId = "string"
@@ -1522,7 +1566,7 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'         S3OutputPath = "string"
 #'       ),
 #'       ResourceConfig = list(
-#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
+#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
 #'         InstanceCount = 123,
 #'         VolumeSizeInGB = 123,
 #'         VolumeKmsKeyId = "string"
@@ -1637,7 +1681,17 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #' @param LabelCategoryConfigS3Uri The S3 URL of the file that defines the categories used to label the
 #' data objects.
 #' 
-#' The file is a JSON structure in the following format:
+#' For 3D point cloud task types, see [Create a Labeling Category
+#' Configuration File for 3D Point Cloud Labeling
+#' Jobs](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud-label-category-config.html).
+#' 
+#' For all other [built-in task
+#' types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)
+#' and [custom
+#' tasks](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates.html),
+#' your label category configuration file must be a JSON file in the
+#' following format. Identify the labels you want to use by replacing
+#' `label_1`, `label_2`,`...`,`label_n` with your label categories.
 #' 
 #' `\{`
 #' 
@@ -1647,13 +1701,13 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #' 
 #' ` \{`
 #' 
-#' ` "label": "<i>label 1</i>"`
+#' ` "label": "<i>label_1</i>"`
 #' 
 #' ` \},`
 #' 
 #' ` \{`
 #' 
-#' ` "label": "<i>label 2</i>"`
+#' ` "label": "<i>label_2</i>"`
 #' 
 #' ` \},`
 #' 
@@ -1661,7 +1715,7 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #' 
 #' ` \{`
 #' 
-#' ` "label": "<i>label n</i>"`
+#' ` "label": "<i>label_n</i>"`
 #' 
 #' ` \}`
 #' 
@@ -1717,7 +1771,8 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #'   HumanTaskConfig = list(
 #'     WorkteamArn = "string",
 #'     UiConfig = list(
-#'       UiTemplateS3Uri = "string"
+#'       UiTemplateS3Uri = "string",
+#'       HumanTaskUiArn = "string"
 #'     ),
 #'     PreHumanTaskLambdaArn = "string",
 #'     TaskKeywords = list(
@@ -1773,9 +1828,9 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #'
 #' Creates a model in Amazon SageMaker. In the request, you name the model
 #' and describe a primary container. For the primary container, you specify
-#' the docker image containing inference code, artifacts (from prior
-#' training), and custom environment map that the inference code uses when
-#' you deploy the model for predictions.
+#' the Docker image that contains inference code, artifacts (from prior
+#' training), and a custom environment map that the inference code uses
+#' when you deploy the model for predictions.
 #' 
 #' Use this API to create a model if you want to use Amazon SageMaker
 #' hosting services or run a batch transform job.
@@ -1784,6 +1839,11 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #' `CreateEndpointConfig` API, and then create an endpoint with the
 #' `CreateEndpoint` API. Amazon SageMaker then deploys all of the
 #' containers that you defined for the model in the hosting environment.
+#' 
+#' For an example that calls this method when deploying a model to Amazon
+#' SageMaker hosting services, see [Deploy the Model to Amazon SageMaker
+#' Hosting Services (AWS SDK for Python (Boto
+#' 3)).](https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto)
 #' 
 #' To run a batch transform using your model, you start a job with the
 #' `CreateTransformJob` API. Amazon SageMaker uses your model and your
@@ -1822,12 +1882,11 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #' Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 #' in the *AWS Billing and Cost Management User Guide*.
-#' @param VpcConfig A
-#' [VpcConfig](https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html)
-#' object that specifies the VPC that you want your model to connect to.
-#' Control access to and from your model container by configuring the VPC.
-#' `VpcConfig` is used in hosting services and in batch transform. For more
-#' information, see [Protect Endpoints by Using an Amazon Virtual Private
+#' @param VpcConfig A VpcConfig object that specifies the VPC that you want your model to
+#' connect to. Control access to and from your model container by
+#' configuring the VPC. `VpcConfig` is used in hosting services and in
+#' batch transform. For more information, see [Protect Endpoints by Using
+#' an Amazon Virtual Private
 #' Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html)
 #' and [Protect Data in Batch Transform Jobs by Using an Amazon Virtual
 #' Private
@@ -2119,6 +2178,7 @@ sagemaker_create_model_package <- function(ModelPackageName, ModelPackageDescrip
 #'         "string"
 #'       ),
 #'       NetworkConfig = list(
+#'         EnableInterContainerTrafficEncryption = TRUE|FALSE,
 #'         EnableNetworkIsolation = TRUE|FALSE,
 #'         VpcConfig = list(
 #'           SecurityGroupIds = list(
@@ -2410,9 +2470,10 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #'
 #' Creates a URL for a specified UserProfile in a Domain. When accessed in
 #' a web browser, the user will be automatically signed in to Amazon
-#' SageMaker Amazon SageMaker Studio (Studio), and granted access to all of
-#' the Apps and files associated with that Amazon Elastic File System
-#' (EFS). This operation can only be called when AuthMode equals IAM.
+#' SageMaker Studio, and granted access to all of the Apps and files
+#' associated with the Domain\'s Amazon Elastic File System (EFS) volume.
+#' This operation can only be called when the authentication mode equals
+#' IAM.
 #'
 #' @usage
 #' sagemaker_create_presigned_domain_url(DomainId, UserProfileName,
@@ -2460,19 +2521,24 @@ sagemaker_create_presigned_domain_url <- function(DomainId, UserProfileName, Ses
 #' showing the Jupyter server home page from the notebook instance. The
 #' console uses this API to get the URL and show the page.
 #' 
-#' IAM authorization policies for this API are also enforced for every HTTP
-#' request and WebSocket frame that attempts to connect to the notebook
-#' instance.For example, you can restrict access to this API and to the URL
-#' that it returns to a list of IP addresses that you specify. Use the
-#' `NotIpAddress` condition operator and the `aws:SourceIP` condition
-#' context key to specify the list of IP addresses that you want to have
-#' access to the notebook instance. For more information, see [Limit Access
-#' to a Notebook Instance by IP
+#' The IAM role or user used to call this API defines the permissions to
+#' access the notebook instance. Once the presigned URL is created, no
+#' additional permission is required to access this URL. IAM authorization
+#' policies for this API are also enforced for every HTTP request and
+#' WebSocket frame that attempts to connect to the notebook instance.
+#' 
+#' You can restrict access to this API and to the URL that it returns to a
+#' list of IP addresses that you specify. Use the `NotIpAddress` condition
+#' operator and the `aws:SourceIP` condition context key to specify the
+#' list of IP addresses that you want to have access to the notebook
+#' instance. For more information, see [Limit Access to a Notebook Instance
+#' by IP
 #' Address](https://docs.aws.amazon.com/sagemaker/latest/dg/security_iam_id-based-policy-examples.html#nbi-ip-filter).
 #' 
-#' The URL that you get from a call to is valid only for 5 minutes. If you
-#' try to use the URL after the 5-minute limit expires, you are directed to
-#' the AWS console sign-in page.
+#' The URL that you get from a call to CreatePresignedNotebookInstanceUrl
+#' is valid only for 5 minutes. If you try to use the URL after the
+#' 5-minute limit expires, you are directed to the AWS console sign-in
+#' page.
 #'
 #' @usage
 #' sagemaker_create_presigned_notebook_instance_url(NotebookInstanceName,
@@ -2534,9 +2600,10 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' @param NetworkConfig Networking options for a processing job.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
 #' assume to perform tasks on your behalf.
-#' @param Tags (Optional) An array of key-value pairs. For more information, see Using
-#' Cost Allocation Tags in the *AWS Billing and Cost Management User
-#' Guide*.
+#' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
+#' Cost Allocation
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL)
+#' in the *AWS Billing and Cost Management User Guide*.
 #' @param ExperimentConfig 
 #'
 #' @section Request syntax:
@@ -2593,6 +2660,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #'     "string"
 #'   ),
 #'   NetworkConfig = list(
+#'     EnableInterContainerTrafficEncryption = TRUE|FALSE,
 #'     EnableNetworkIsolation = TRUE|FALSE,
 #'     VpcConfig = list(
 #'       SecurityGroupIds = list(
@@ -2857,7 +2925,7 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #'     S3OutputPath = "string"
 #'   ),
 #'   ResourceConfig = list(
-#'     InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge",
+#'     InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
 #'     InstanceCount = 123,
 #'     VolumeSizeInGB = 123,
 #'     VolumeKmsKeyId = "string"
@@ -2980,9 +3048,9 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #'
 #' @usage
 #' sagemaker_create_transform_job(TransformJobName, ModelName,
-#'   MaxConcurrentTransforms, MaxPayloadInMB, BatchStrategy, Environment,
-#'   TransformInput, TransformOutput, TransformResources, DataProcessing,
-#'   Tags, ExperimentConfig)
+#'   MaxConcurrentTransforms, ModelClientConfig, MaxPayloadInMB,
+#'   BatchStrategy, Environment, TransformInput, TransformOutput,
+#'   TransformResources, DataProcessing, Tags, ExperimentConfig)
 #'
 #' @param TransformJobName &#91;required&#93; The name of the transform job. The name must be unique within an AWS
 #' Region in an AWS account.
@@ -2998,6 +3066,8 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' Requests](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests).
 #' For built-in algorithms, you don\'t need to set a value for
 #' `MaxConcurrentTransforms`.
+#' @param ModelClientConfig Configures the timeout and maximum number of retries for processing a
+#' transform job invocation.
 #' @param MaxPayloadInMB The maximum allowed size of the payload, in MB. A *payload* is the data
 #' portion of a record (without metadata). The value in `MaxPayloadInMB`
 #' must be greater than, or equal to, the size of a single record. To
@@ -3015,8 +3085,8 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' inference can be made on. For example, a single line in a CSV file is a
 #' record.
 #' 
-#' To enable the batch strategy, you must set the `SplitType` property of
-#' the DataProcessing object to `Line`, `RecordIO`, or `TFRecord`.
+#' To enable the batch strategy, you must set the `SplitType` property to
+#' `Line`, `RecordIO`, or `TFRecord`.
 #' 
 #' To use only one record when making an HTTP invocation request to a
 #' container, set `BatchStrategy` to `SingleRecord` and `SplitType` to
@@ -3052,6 +3122,10 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #'   TransformJobName = "string",
 #'   ModelName = "string",
 #'   MaxConcurrentTransforms = 123,
+#'   ModelClientConfig = list(
+#'     InvocationsTimeoutInSeconds = 123,
+#'     InvocationsMaxRetries = 123
+#'   ),
 #'   MaxPayloadInMB = 123,
 #'   BatchStrategy = "MultiRecord"|"SingleRecord",
 #'   Environment = list(
@@ -3101,14 +3175,14 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_transform_job
-sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcurrentTransforms = NULL, MaxPayloadInMB = NULL, BatchStrategy = NULL, Environment = NULL, TransformInput, TransformOutput, TransformResources, DataProcessing = NULL, Tags = NULL, ExperimentConfig = NULL) {
+sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcurrentTransforms = NULL, ModelClientConfig = NULL, MaxPayloadInMB = NULL, BatchStrategy = NULL, Environment = NULL, TransformInput, TransformOutput, TransformResources, DataProcessing = NULL, Tags = NULL, ExperimentConfig = NULL) {
   op <- new_operation(
     name = "CreateTransformJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_transform_job_input(TransformJobName = TransformJobName, ModelName = ModelName, MaxConcurrentTransforms = MaxConcurrentTransforms, MaxPayloadInMB = MaxPayloadInMB, BatchStrategy = BatchStrategy, Environment = Environment, TransformInput = TransformInput, TransformOutput = TransformOutput, TransformResources = TransformResources, DataProcessing = DataProcessing, Tags = Tags, ExperimentConfig = ExperimentConfig)
+  input <- .sagemaker$create_transform_job_input(TransformJobName = TransformJobName, ModelName = ModelName, MaxConcurrentTransforms = MaxConcurrentTransforms, ModelClientConfig = ModelClientConfig, MaxPayloadInMB = MaxPayloadInMB, BatchStrategy = BatchStrategy, Environment = Environment, TransformInput = TransformInput, TransformOutput = TransformOutput, TransformResources = TransformResources, DataProcessing = DataProcessing, Tags = Tags, ExperimentConfig = ExperimentConfig)
   output <- .sagemaker$create_transform_job_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -3239,7 +3313,7 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 #'   TrialComponentName = "string",
 #'   DisplayName = "string",
 #'   Status = list(
-#'     PrimaryStatus = "InProgress"|"Completed"|"Failed",
+#'     PrimaryStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
 #'     Message = "string"
 #'   ),
 #'   StartTime = as.POSIXct(
@@ -3295,16 +3369,16 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 }
 .sagemaker$operations$create_trial_component <- sagemaker_create_trial_component
 
-#' Creates a new user profile
+#' Creates a user profile
 #'
-#' Creates a new user profile. A user profile represents a single user
-#' within a Domain, and is the main way to reference a \"person\" for the
-#' purposes of sharing, reporting and other user-oriented features. This
-#' entity is created during on-boarding. If an administrator invites a
-#' person by email or imports them from SSO, a new UserProfile is
-#' automatically created. This entity is the primary holder of settings for
-#' an individual user and has a reference to the user\'s private Amazon
-#' Elastic File System (EFS) home directory.
+#' Creates a user profile. A user profile represents a single user within a
+#' domain, and is the main way to reference a \"person\" for the purposes
+#' of sharing, reporting, and other user-oriented features. This entity is
+#' created when a user onboards to Amazon SageMaker Studio. If an
+#' administrator invites a person by email or imports them from SSO, a user
+#' profile is automatically created. A user profile is the primary holder
+#' of settings for an individual user and has a reference to the user\'s
+#' private Amazon Elastic File System (EFS) home directory.
 #'
 #' @usage
 #' sagemaker_create_user_profile(DomainId, UserProfileName,
@@ -3349,19 +3423,19 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #'     ),
 #'     JupyterServerAppSettings = list(
 #'       DefaultResourceSpec = list(
-#'         EnvironmentArn = "string",
+#'         SageMakerImageArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
-#'         EnvironmentArn = "string",
+#'         SageMakerImageArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     ),
 #'     TensorBoardAppSettings = list(
 #'       DefaultResourceSpec = list(
-#'         EnvironmentArn = "string",
+#'         SageMakerImageArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     )
@@ -3582,8 +3656,8 @@ sagemaker_delete_code_repository <- function(CodeRepositoryName) {
 
 #' Used to delete a domain
 #'
-#' Used to delete a domain. If you on-boarded with IAM mode, you will need
-#' to delete your domain to on-board again using SSO. Use with caution. All
+#' Used to delete a domain. If you onboarded with IAM mode, you will need
+#' to delete your domain to onboard again using SSO. Use with caution. All
 #' of the members of the domain will lose access to their EFS volume,
 #' including data, notebooks, and other artifacts.
 #'
@@ -3591,7 +3665,7 @@ sagemaker_delete_code_repository <- function(CodeRepositoryName) {
 #' sagemaker_delete_domain(DomainId, RetentionPolicy)
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
-#' @param RetentionPolicy The retention policy for this domain, which specifies which resources
+#' @param RetentionPolicy The retention policy for this domain, which specifies whether resources
 #' will be retained after the Domain is deleted. By default, all resources
 #' are retained (not automatically deleted).
 #'
@@ -3672,6 +3746,13 @@ sagemaker_delete_endpoint <- function(EndpointName) {
 #' Deletes an endpoint configuration. The `DeleteEndpointConfig` API
 #' deletes only the specified configuration. It does not delete endpoints
 #' created using the configuration.
+#' 
+#' You must not delete an `EndpointConfig` in use by an endpoint that is
+#' live or while the `UpdateEndpoint` or `CreateEndpoint` operations are
+#' being performed on the endpoint. If you delete the `EndpointConfig` of
+#' an endpoint that is active or being created or updated you may lose
+#' visibility into the instance type the endpoint is using. The endpoint
+#' must be deleted in order to stop incurring charges.
 #'
 #' @usage
 #' sagemaker_delete_endpoint_config(EndpointConfigName)
@@ -3779,13 +3860,53 @@ sagemaker_delete_flow_definition <- function(FlowDefinitionName) {
 }
 .sagemaker$operations$delete_flow_definition <- sagemaker_delete_flow_definition
 
+#' Use this operation to delete a worker task template (HumanTaskUi)
+#'
+#' Use this operation to delete a worker task template (`HumanTaskUi`).
+#' 
+#' To see a list of human task user interfaces (work task templates) in
+#' your account, use . When you delete a worker task template, it no longer
+#' appears when you call `ListHumanTaskUis`.
+#'
+#' @usage
+#' sagemaker_delete_human_task_ui(HumanTaskUiName)
+#'
+#' @param HumanTaskUiName &#91;required&#93; The name of the human task user interface (work task template) you want
+#' to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_human_task_ui(
+#'   HumanTaskUiName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_human_task_ui
+sagemaker_delete_human_task_ui <- function(HumanTaskUiName) {
+  op <- new_operation(
+    name = "DeleteHumanTaskUi",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_human_task_ui_input(HumanTaskUiName = HumanTaskUiName)
+  output <- .sagemaker$delete_human_task_ui_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_human_task_ui <- sagemaker_delete_human_task_ui
+
 #' Deletes a model
 #'
 #' Deletes a model. The `DeleteModel` API deletes only the model entry that
-#' was created in Amazon SageMaker when you called the
-#' [CreateModel](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
-#' API. It does not delete model artifacts, inference code, or the IAM role
-#' that you specified when creating the model.
+#' was created in Amazon SageMaker when you called the CreateModel API. It
+#' does not delete model artifacts, inference code, or the IAM role that
+#' you specified when creating the model.
 #'
 #' @usage
 #' sagemaker_delete_model(ModelName)
@@ -4102,7 +4223,9 @@ sagemaker_delete_trial_component <- function(TrialComponentName) {
 
 #' Deletes a user profile
 #'
-#' Deletes a user profile.
+#' Deletes a user profile. When a user profile is deleted, the user loses
+#' access to their EFS volume, including data, notebooks, and other
+#' artifacts.
 #'
 #' @usage
 #' sagemaker_delete_user_profile(DomainId, UserProfileName)
@@ -4365,9 +4488,9 @@ sagemaker_describe_compilation_job <- function(CompilationJobName) {
 }
 .sagemaker$operations$describe_compilation_job <- sagemaker_describe_compilation_job
 
-#' The desciption of the domain
+#' The description of the domain
 #'
-#' The desciption of the domain.
+#' The description of the domain.
 #'
 #' @usage
 #' sagemaker_describe_domain(DomainId)
@@ -4548,13 +4671,16 @@ sagemaker_describe_flow_definition <- function(FlowDefinitionName) {
 .sagemaker$operations$describe_flow_definition <- sagemaker_describe_flow_definition
 
 #' Returns information about the requested human task user interface
+#' (worker task template)
 #'
-#' Returns information about the requested human task user interface.
+#' Returns information about the requested human task user interface
+#' (worker task template).
 #'
 #' @usage
 #' sagemaker_describe_human_task_ui(HumanTaskUiName)
 #'
-#' @param HumanTaskUiName &#91;required&#93; The name of the human task user interface you want information about.
+#' @param HumanTaskUiName &#91;required&#93; The name of the human task user interface (worker task template) you
+#' want information about.
 #'
 #' @section Request syntax:
 #' ```
@@ -4591,7 +4717,7 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #' sagemaker_describe_hyper_parameter_tuning_job(
 #'   HyperParameterTuningJobName)
 #'
-#' @param HyperParameterTuningJobName &#91;required&#93; The name of the tuning job to describe.
+#' @param HyperParameterTuningJobName &#91;required&#93; The name of the tuning job.
 #'
 #' @section Request syntax:
 #' ```
@@ -5064,9 +5190,9 @@ sagemaker_describe_trial_component <- function(TrialComponentName) {
 }
 .sagemaker$operations$describe_trial_component <- sagemaker_describe_trial_component
 
-#' Describes the user profile
+#' Describes a user profile
 #'
-#' Describes the user profile.
+#' Describes a user profile. For more information, see `CreateUserProfile`.
 #'
 #' @usage
 #' sagemaker_describe_user_profile(DomainId, UserProfileName)
@@ -5101,6 +5227,52 @@ sagemaker_describe_user_profile <- function(DomainId, UserProfileName) {
   return(response)
 }
 .sagemaker$operations$describe_user_profile <- sagemaker_describe_user_profile
+
+#' Lists private workforce information, including workforce name, Amazon
+#' Resource Name (ARN), and, if applicable, allowed IP address ranges
+#' (CIDRs)
+#'
+#' Lists private workforce information, including workforce name, Amazon
+#' Resource Name (ARN), and, if applicable, allowed IP address ranges
+#' ([CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)).
+#' Allowable IP address ranges are the IP addresses that workers can use to
+#' access tasks.
+#' 
+#' This operation applies only to private workforces.
+#'
+#' @usage
+#' sagemaker_describe_workforce(WorkforceName)
+#'
+#' @param WorkforceName &#91;required&#93; The name of the private workforce whose access you want to restrict.
+#' `WorkforceName` is automatically set to `default` when a workforce is
+#' created and cannot be modified.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_workforce(
+#'   WorkforceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_workforce
+sagemaker_describe_workforce <- function(WorkforceName) {
+  op <- new_operation(
+    name = "DescribeWorkforce",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_workforce_input(WorkforceName = WorkforceName)
+  output <- .sagemaker$describe_workforce_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_workforce <- sagemaker_describe_workforce
 
 #' Gets information about a specific work team
 #'
@@ -5147,6 +5319,11 @@ sagemaker_describe_workteam <- function(WorkteamName) {
 #' component, you must disassociate the component from all trials it is
 #' associated with. To associate a trial component with a trial, call the
 #' AssociateTrialComponent API.
+#' 
+#' To get a list of the trials a component is associated with, use the
+#' Search API. Specify `ExperimentTrialComponent` for the `Resource`
+#' parameter. The list appears in the response under
+#' `Results.TrialComponent.Parents`.
 #'
 #' @usage
 #' sagemaker_disassociate_trial_component(TrialComponentName, TrialName)
@@ -5193,7 +5370,7 @@ sagemaker_disassociate_trial_component <- function(TrialComponentName, TrialName
 #' @usage
 #' sagemaker_get_search_suggestions(Resource, SuggestionQuery)
 #'
-#' @param Resource &#91;required&#93; The name of the Amazon SageMaker resource to Search for.
+#' @param Resource &#91;required&#93; The name of the Amazon SageMaker resource to search for.
 #' @param SuggestionQuery Limits the property names that are included in the response.
 #'
 #' @section Request syntax:
@@ -6201,9 +6378,7 @@ sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTime
 
 #' Lists models created with the CreateModel API
 #'
-#' Lists models created with the
-#' [CreateModel](https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
-#' API.
+#' Lists models created with the CreateModel API.
 #'
 #' @usage
 #' sagemaker_list_models(SortBy, SortOrder, NextToken, MaxResults,
@@ -6941,21 +7116,30 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
 
 #' Lists the trial components in your account
 #'
-#' Lists the trial components in your account. You can filter the list to
-#' show only components that were created in a specific time range. You can
-#' sort the list by trial component name or creation time.
+#' Lists the trial components in your account. You can sort the list by
+#' trial component name or creation time. You can filter the list to show
+#' only components that were created in a specific time range. You can also
+#' filter on one of the following:
+#' 
+#' -   `ExperimentName`
+#' 
+#' -   `SourceArn`
+#' 
+#' -   `TrialName`
 #'
 #' @usage
 #' sagemaker_list_trial_components(ExperimentName, TrialName, SourceArn,
 #'   CreatedAfter, CreatedBefore, SortBy, SortOrder, MaxResults, NextToken)
 #'
 #' @param ExperimentName A filter that returns only components that are part of the specified
-#' experiment. If you specify `ExperimentName`, you can\'t specify
-#' `TrialName`.
+#' experiment. If you specify `ExperimentName`, you can\'t filter by
+#' `SourceArn` or `TrialName`.
 #' @param TrialName A filter that returns only components that are part of the specified
-#' trial. If you specify `TrialName`, you can\'t specify `ExperimentName`.
+#' trial. If you specify `TrialName`, you can\'t filter by `ExperimentName`
+#' or `SourceArn`.
 #' @param SourceArn A filter that returns only components that have the specified source
-#' Amazon Resource Name (ARN).
+#' Amazon Resource Name (ARN). If you specify `SourceArn`, you can\'t
+#' filter by `ExperimentName` or `TrialName`.
 #' @param CreatedAfter A filter that returns only components created after the specified time.
 #' @param CreatedBefore A filter that returns only components created before the specified time.
 #' @param SortBy The property used to sort results. The default value is `CreationTime`.
@@ -7008,16 +7192,20 @@ sagemaker_list_trial_components <- function(ExperimentName = NULL, TrialName = N
 #' Lists the trials in your account
 #'
 #' Lists the trials in your account. Specify an experiment name to limit
-#' the list to the trials that are part of that experiment. The list can be
-#' filtered to show only trials that were created in a specific time range.
-#' The list can be sorted by trial name or creation time.
+#' the list to the trials that are part of that experiment. Specify a trial
+#' component name to limit the list to the trials that associated with that
+#' trial component. The list can be filtered to show only trials that were
+#' created in a specific time range. The list can be sorted by trial name
+#' or creation time.
 #'
 #' @usage
-#' sagemaker_list_trials(ExperimentName, CreatedAfter, CreatedBefore,
-#'   SortBy, SortOrder, MaxResults, NextToken)
+#' sagemaker_list_trials(ExperimentName, TrialComponentName, CreatedAfter,
+#'   CreatedBefore, SortBy, SortOrder, MaxResults, NextToken)
 #'
 #' @param ExperimentName A filter that returns only trials that are part of the specified
 #' experiment.
+#' @param TrialComponentName A filter that returns only trials that are associated with the specified
+#' trial component.
 #' @param CreatedAfter A filter that returns only trials created after the specified time.
 #' @param CreatedBefore A filter that returns only trials created before the specified time.
 #' @param SortBy The property used to sort results. The default value is `CreationTime`.
@@ -7031,6 +7219,7 @@ sagemaker_list_trial_components <- function(ExperimentName = NULL, TrialName = N
 #' ```
 #' svc$list_trials(
 #'   ExperimentName = "string",
+#'   TrialComponentName = "string",
 #'   CreatedAfter = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -7047,14 +7236,14 @@ sagemaker_list_trial_components <- function(ExperimentName = NULL, TrialName = N
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_trials
-sagemaker_list_trials <- function(ExperimentName = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, MaxResults = NULL, NextToken = NULL) {
+sagemaker_list_trials <- function(ExperimentName = NULL, TrialComponentName = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTrials",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$list_trials_input(ExperimentName = ExperimentName, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .sagemaker$list_trials_input(ExperimentName = ExperimentName, TrialComponentName = TrialComponentName, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_trials_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -7168,12 +7357,17 @@ sagemaker_list_workteams <- function(SortBy = NULL, SortOrder = NULL, NameContai
 #' experience.
 #'
 #' @usage
-#' sagemaker_render_ui_template(UiTemplate, Task, RoleArn)
+#' sagemaker_render_ui_template(UiTemplate, Task, RoleArn, HumanTaskUiArn)
 #'
-#' @param UiTemplate &#91;required&#93; A `Template` object containing the worker UI template to render.
+#' @param UiTemplate A `Template` object containing the worker UI template to render.
 #' @param Task &#91;required&#93; A `RenderableTask` object containing a representative task to render.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) that has access to the S3 objects that
 #' are used by the template.
+#' @param HumanTaskUiArn The `HumanTaskUiArn` of the worker UI that you want to render. Do not
+#' provide a `HumanTaskUiArn` if you use the `UiTemplate` parameter.
+#' 
+#' See a list of available Human Ui Amazon Resource Names (ARNs) in
+#' UiConfig.
 #'
 #' @section Request syntax:
 #' ```
@@ -7184,21 +7378,22 @@ sagemaker_list_workteams <- function(SortBy = NULL, SortOrder = NULL, NameContai
 #'   Task = list(
 #'     Input = "string"
 #'   ),
-#'   RoleArn = "string"
+#'   RoleArn = "string",
+#'   HumanTaskUiArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_render_ui_template
-sagemaker_render_ui_template <- function(UiTemplate, Task, RoleArn) {
+sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, HumanTaskUiArn = NULL) {
   op <- new_operation(
     name = "RenderUiTemplate",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$render_ui_template_input(UiTemplate = UiTemplate, Task = Task, RoleArn = RoleArn)
+  input <- .sagemaker$render_ui_template_input(UiTemplate = UiTemplate, Task = Task, RoleArn = RoleArn, HumanTaskUiArn = HumanTaskUiArn)
   output <- .sagemaker$render_ui_template_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -7211,7 +7406,7 @@ sagemaker_render_ui_template <- function(UiTemplate, Task, RoleArn) {
 #' Finds Amazon SageMaker resources that match a search query
 #'
 #' Finds Amazon SageMaker resources that match a search query. Matching
-#' resource objects are returned as a list of `SearchResult` objects in the
+#' resources are returned as a list of `SearchRecord` objects in the
 #' response. You can sort the search results by any resource property in a
 #' ascending or descending order.
 #' 
@@ -7223,21 +7418,20 @@ sagemaker_render_ui_template <- function(UiTemplate, Task, RoleArn) {
 #'   NextToken, MaxResults)
 #'
 #' @param Resource &#91;required&#93; The name of the Amazon SageMaker resource to search for.
-#' @param SearchExpression A Boolean conditional statement. Resource objects must satisfy this
-#' condition to be included in search results. You must provide at least
-#' one subexpression, filter, or nested filter. The maximum number of
-#' recursive `SubExpressions`, `NestedFilters`, and `Filters` that can be
-#' included in a `SearchExpression` object is 50.
+#' @param SearchExpression A Boolean conditional statement. Resources must satisfy this condition
+#' to be included in search results. You must provide at least one
+#' subexpression, filter, or nested filter. The maximum number of recursive
+#' `SubExpressions`, `NestedFilters`, and `Filters` that can be included in
+#' a `SearchExpression` object is 50.
 #' @param SortBy The name of the resource property used to sort the `SearchResults`. The
 #' default is `LastModifiedTime`.
 #' @param SortOrder How `SearchResults` are ordered. Valid values are `Ascending` or
 #' `Descending`. The default is `Descending`.
-#' @param NextToken If more than `MaxResults` resource objects match the specified
-#' `SearchExpression`, the `SearchResponse` includes a `NextToken`. The
-#' `NextToken` can be passed to the next `SearchRequest` to continue
-#' retrieving results for the specified `SearchExpression` and `Sort`
-#' parameters.
-#' @param MaxResults The maximum number of results to return in a `SearchResponse`.
+#' @param NextToken If more than `MaxResults` resources match the specified
+#' `SearchExpression`, the response includes a `NextToken`. The `NextToken`
+#' can be passed to the next `SearchRequest` to continue retrieving
+#' results.
+#' @param MaxResults The maximum number of results to return.
 #'
 #' @section Request syntax:
 #' ```
@@ -7247,7 +7441,7 @@ sagemaker_render_ui_template <- function(UiTemplate, Task, RoleArn) {
 #'     Filters = list(
 #'       list(
 #'         Name = "string",
-#'         Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains"|"Exists"|"NotExists",
+#'         Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains"|"Exists"|"NotExists"|"In",
 #'         Value = "string"
 #'       )
 #'     ),
@@ -7257,7 +7451,7 @@ sagemaker_render_ui_template <- function(UiTemplate, Task, RoleArn) {
 #'         Filters = list(
 #'           list(
 #'             Name = "string",
-#'             Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains"|"Exists"|"NotExists",
+#'             Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains"|"Exists"|"NotExists"|"In",
 #'             Value = "string"
 #'           )
 #'         )
@@ -7786,14 +7980,14 @@ sagemaker_update_code_repository <- function(CodeRepositoryName, GitConfig = NUL
 }
 .sagemaker$operations$update_code_repository <- sagemaker_update_code_repository
 
-#' Updates a domain
+#' Updates the default settings for new user profiles in the domain
 #'
-#' Updates a domain. Changes will impact all of the people in the domain.
+#' Updates the default settings for new user profiles in the domain.
 #'
 #' @usage
 #' sagemaker_update_domain(DomainId, DefaultUserSettings)
 #'
-#' @param DomainId &#91;required&#93; The domain ID.
+#' @param DomainId &#91;required&#93; The ID of the domain to be updated.
 #' @param DefaultUserSettings A collection of settings.
 #'
 #' @section Request syntax:
@@ -7812,19 +8006,19 @@ sagemaker_update_code_repository <- function(CodeRepositoryName, GitConfig = NUL
 #'     ),
 #'     JupyterServerAppSettings = list(
 #'       DefaultResourceSpec = list(
-#'         EnvironmentArn = "string",
+#'         SageMakerImageArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
-#'         EnvironmentArn = "string",
+#'         SageMakerImageArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     ),
 #'     TensorBoardAppSettings = list(
 #'       DefaultResourceSpec = list(
-#'         EnvironmentArn = "string",
+#'         SageMakerImageArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     )
@@ -7865,39 +8059,62 @@ sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL) {
 #' When Amazon SageMaker receives the request, it sets the endpoint status
 #' to `Updating`. After updating the endpoint, it sets the status to
 #' `InService`. To check the status of an endpoint, use the
-#' [DescribeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
-#' API.
+#' DescribeEndpoint API.
 #' 
 #' You must not delete an `EndpointConfig` in use by an endpoint that is
 #' live or while the `UpdateEndpoint` or `CreateEndpoint` operations are
 #' being performed on the endpoint. To update an endpoint, you must create
 #' a new `EndpointConfig`.
+#' 
+#' If you delete the `EndpointConfig` of an endpoint that is active or
+#' being created or updated you may lose visibility into the instance type
+#' the endpoint is using. The endpoint must be deleted in order to stop
+#' incurring charges.
 #'
 #' @usage
-#' sagemaker_update_endpoint(EndpointName, EndpointConfigName)
+#' sagemaker_update_endpoint(EndpointName, EndpointConfigName,
+#'   RetainAllVariantProperties, ExcludeRetainedVariantProperties)
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint whose configuration you want to update.
 #' @param EndpointConfigName &#91;required&#93; The name of the new endpoint configuration.
+#' @param RetainAllVariantProperties When updating endpoint resources, enables or disables the retention of
+#' variant properties, such as the instance count or the variant weight. To
+#' retain the variant properties of an endpoint when updating it, set
+#' `RetainAllVariantProperties` to `true`. To use the variant properties
+#' specified in a new `EndpointConfig` call when updating an endpoint, set
+#' `RetainAllVariantProperties` to `false`.
+#' @param ExcludeRetainedVariantProperties When you are updating endpoint resources with
+#' UpdateEndpointInput\\$RetainAllVariantProperties, whose value is set to
+#' `true`, `ExcludeRetainedVariantProperties` specifies the list of type
+#' VariantProperty to override with the values provided by
+#' `EndpointConfig`. If you don\'t specify a value for
+#' `ExcludeAllVariantProperties`, no variant properties are overridden.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_endpoint(
 #'   EndpointName = "string",
-#'   EndpointConfigName = "string"
+#'   EndpointConfigName = "string",
+#'   RetainAllVariantProperties = TRUE|FALSE,
+#'   ExcludeRetainedVariantProperties = list(
+#'     list(
+#'       VariantPropertyType = "DesiredInstanceCount"|"DesiredWeight"|"DataCaptureConfig"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_endpoint
-sagemaker_update_endpoint <- function(EndpointName, EndpointConfigName) {
+sagemaker_update_endpoint <- function(EndpointName, EndpointConfigName, RetainAllVariantProperties = NULL, ExcludeRetainedVariantProperties = NULL) {
   op <- new_operation(
     name = "UpdateEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$update_endpoint_input(EndpointName = EndpointName, EndpointConfigName = EndpointConfigName)
+  input <- .sagemaker$update_endpoint_input(EndpointName = EndpointName, EndpointConfigName = EndpointConfigName, RetainAllVariantProperties = RetainAllVariantProperties, ExcludeRetainedVariantProperties = ExcludeRetainedVariantProperties)
   output <- .sagemaker$update_endpoint_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -7916,8 +8133,7 @@ sagemaker_update_endpoint <- function(EndpointName, EndpointConfigName) {
 #' existing endpoint. When it receives the request, Amazon SageMaker sets
 #' the endpoint status to `Updating`. After updating the endpoint, it sets
 #' the status to `InService`. To check the status of an endpoint, use the
-#' [DescribeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
-#' API.
+#' DescribeEndpoint API.
 #'
 #' @usage
 #' sagemaker_update_endpoint_weights_and_capacities(EndpointName,
@@ -8081,6 +8297,7 @@ sagemaker_update_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #'         "string"
 #'       ),
 #'       NetworkConfig = list(
+#'         EnableInterContainerTrafficEncryption = TRUE|FALSE,
 #'         EnableNetworkIsolation = TRUE|FALSE,
 #'         VpcConfig = list(
 #'           SecurityGroupIds = list(
@@ -8368,7 +8585,7 @@ sagemaker_update_trial <- function(TrialName, DisplayName = NULL) {
 #'   TrialComponentName = "string",
 #'   DisplayName = "string",
 #'   Status = list(
-#'     PrimaryStatus = "InProgress"|"Completed"|"Failed",
+#'     PrimaryStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
 #'     Message = "string"
 #'   ),
 #'   StartTime = as.POSIXct(
@@ -8455,19 +8672,19 @@ sagemaker_update_trial_component <- function(TrialComponentName, DisplayName = N
 #'     ),
 #'     JupyterServerAppSettings = list(
 #'       DefaultResourceSpec = list(
-#'         EnvironmentArn = "string",
+#'         SageMakerImageArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
-#'         EnvironmentArn = "string",
+#'         SageMakerImageArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     ),
 #'     TensorBoardAppSettings = list(
 #'       DefaultResourceSpec = list(
-#'         EnvironmentArn = "string",
+#'         SageMakerImageArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     )
@@ -8494,6 +8711,67 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
   return(response)
 }
 .sagemaker$operations$update_user_profile <- sagemaker_update_user_profile
+
+#' Restricts access to tasks assigned to workers in the specified workforce
+#' to those within specific ranges of IP addresses
+#'
+#' Restricts access to tasks assigned to workers in the specified workforce
+#' to those within specific ranges of IP addresses. You specify allowed IP
+#' addresses by creating a list of up to ten
+#' [CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html).
+#' 
+#' By default, a workforce isn\'t restricted to specific IP addresses. If
+#' you specify a range of IP addresses, workers who attempt to access tasks
+#' using any IP address outside the specified range are denied access and
+#' get a `Not Found` error message on the worker portal. After restricting
+#' access with this operation, you can see the allowed IP values for a
+#' private workforce with the operation.
+#' 
+#' This operation applies only to private workforces.
+#'
+#' @usage
+#' sagemaker_update_workforce(WorkforceName, SourceIpConfig)
+#'
+#' @param WorkforceName &#91;required&#93; The name of the private workforce whose access you want to restrict.
+#' `WorkforceName` is automatically set to `default` when a workforce is
+#' created and cannot be modified.
+#' @param SourceIpConfig A list of one to ten worker IP address ranges
+#' ([CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html))
+#' that can be used to access tasks assigned to this workforce.
+#' 
+#' Maximum: Ten CIDR values
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_workforce(
+#'   WorkforceName = "string",
+#'   SourceIpConfig = list(
+#'     Cidrs = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_workforce
+sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateWorkforce",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_workforce_input(WorkforceName = WorkforceName, SourceIpConfig = SourceIpConfig)
+  output <- .sagemaker$update_workforce_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_workforce <- sagemaker_update_workforce
 
 #' Updates an existing work team with new member definitions or description
 #'

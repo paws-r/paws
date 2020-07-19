@@ -43,6 +43,9 @@ NULL
 #' -   special characters `` \" # % \\ ^ | ~ \` $ &amp; , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
+#' 
+#' To enable logging with CloudWatch Logs, the name should only contain
+#' 0-9, A-Z, a-z, - and \\_.
 #' @param tags The list of tags to add to a resource.
 #' 
 #' An array of key-value pairs. For more information, see [Using Cost
@@ -94,7 +97,10 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' states that can do work (`Task` states), determine to which states to
 #' transition next (`Choice` states), stop an execution with an error
 #' (`Fail` states), and so on. State machines are specified using a
-#' JSON-based, structured language.
+#' JSON-based, structured language. For more information, see [Amazon
+#' States
+#' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
+#' in the AWS Step Functions User Guide.
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
@@ -102,10 +108,11 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' `CreateStateMachine` is an idempotent API. Subsequent requests won't
 #' create a duplicate resource if it was already created.
 #' `CreateStateMachine`\'s idempotency check is based on the state machine
-#' `name` and `definition`. If a following request has a different
-#' `roleArn` or `tags`, Step Functions will ignore these differences and
-#' treat it as an idempotent request of the previous. In this case,
-#' `roleArn` and `tags` will not be updated, even if they are different.
+#' `name`, `definition`, `type`, and `LoggingConfiguration`. If a following
+#' request has a different `roleArn` or `tags`, Step Functions will ignore
+#' these differences and treat it as an idempotent request of the previous.
+#' In this case, `roleArn` and `tags` will not be updated, even if they are
+#' different.
 #'
 #' @usage
 #' sfn_create_state_machine(name, definition, roleArn, type,
@@ -124,15 +131,23 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' -   special characters `` \" # % \\ ^ | ~ \` $ &amp; , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
+#' 
+#' To enable logging with CloudWatch Logs, the name should only contain
+#' 0-9, A-Z, a-z, - and \\_.
 #' @param definition &#91;required&#93; The Amazon States Language definition of the state machine. See [Amazon
 #' States
 #' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to use for this state
 #' machine.
-#' @param type Determines whether a Standard or Express state machine is created. If
-#' not set, Standard is created.
+#' @param type Determines whether a Standard or Express state machine is created. The
+#' default is `STANDARD`. You cannot update the `type` of a state machine
+#' once it has been created.
 #' @param loggingConfiguration Defines what execution history events are logged and where they are
 #' logged.
+#' 
+#' By default, the `level` is set to `OFF`. For more information see [Log
+#' Levels](https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html)
+#' in the AWS Step Functions User Guide.
 #' @param tags Tags to be added when creating a state machine.
 #' 
 #' An array of key-value pairs. For more information, see [Using Cost
@@ -232,11 +247,10 @@ sfn_delete_activity <- function(activityArn) {
 #'
 #' Deletes a state machine. This is an asynchronous operation: It sets the
 #' state machine\'s status to `DELETING` and begins the deletion process.
-#' Each state machine execution is deleted the next time it makes a state
-#' transition.
 #' 
-#' The state machine itself is deleted after all executions are completed
-#' or deleted.
+#' For `EXPRESS`state machines, the deletion will happen eventually
+#' (usually less than a minute). Running executions may emit logs after
+#' `DeleteStateMachine` API is called.
 #'
 #' @usage
 #' sfn_delete_state_machine(stateMachineArn)
@@ -315,6 +329,8 @@ sfn_describe_activity <- function(activityArn) {
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
+#' 
+#' This API action is not supported by `EXPRESS` state machines.
 #'
 #' @usage
 #' sfn_describe_execution(executionArn)
@@ -393,6 +409,8 @@ sfn_describe_state_machine <- function(stateMachineArn) {
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
+#' 
+#' This API action is not supported by `EXPRESS` state machines.
 #'
 #' @usage
 #' sfn_describe_state_machine_for_execution(executionArn)
@@ -497,6 +515,8 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #' arguments unchanged. Each pagination token expires after 24 hours. Using
 #' an expired pagination token will return an *HTTP 400 InvalidToken*
 #' error.
+#' 
+#' This API action is not supported by `EXPRESS` state machines.
 #'
 #' @usage
 #' sfn_get_execution_history(executionArn, maxResults, reverseOrder,
@@ -620,6 +640,8 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
+#' 
+#' This API action is not supported by `EXPRESS` state machines.
 #'
 #' @usage
 #' sfn_list_executions(stateMachineArn, statusFilter, maxResults,
@@ -954,6 +976,9 @@ sfn_send_task_success <- function(taskToken, output) {
 #' -   special characters `` \" # % \\ ^ | ~ \` $ &amp; , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
+#' 
+#' To enable logging with CloudWatch Logs, the name should only contain
+#' 0-9, A-Z, a-z, - and \\_.
 #' @param input The string that contains the JSON input data for the execution, for
 #' example:
 #' 
@@ -994,6 +1019,8 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL) {
 #' Stops an execution
 #'
 #' Stops an execution.
+#' 
+#' This API action is not supported by `EXPRESS` state machines.
 #'
 #' @usage
 #' sfn_stop_execution(executionArn, error, cause)
@@ -1129,13 +1156,13 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 }
 .sfn$operations$untag_resource <- sfn_untag_resource
 
-#' Updates an existing state machine by modifying its definition and/or
-#' roleArn
+#' Updates an existing state machine by modifying its definition, roleArn,
+#' or loggingConfiguration
 #'
-#' Updates an existing state machine by modifying its `definition` and/or
-#' `roleArn`. Running executions will continue to use the previous
-#' `definition` and `roleArn`. You must include at least one of
-#' `definition` or `roleArn` or you will receive a
+#' Updates an existing state machine by modifying its `definition`,
+#' `roleArn`, or `loggingConfiguration`. Running executions will continue
+#' to use the previous `definition` and `roleArn`. You must include at
+#' least one of `definition` or `roleArn` or you will receive a
 #' `MissingRequiredParameter` error.
 #' 
 #' All `StartExecution` calls within a few seconds will use the updated
@@ -1152,7 +1179,8 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 #' States
 #' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 #' @param roleArn The Amazon Resource Name (ARN) of the IAM role of the state machine.
-#' @param loggingConfiguration 
+#' @param loggingConfiguration The `LoggingConfiguration` data type is used to set CloudWatch Logs
+#' options.
 #'
 #' @section Request syntax:
 #' ```

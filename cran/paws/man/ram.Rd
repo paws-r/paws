@@ -58,6 +58,7 @@ For more information, see the \href{https://docs.aws.amazon.com/ram/latest/userg
 \link[=ram_list_principals]{list_principals} \tab Lists the principals that you have shared resources with or that have shared resources with you \cr
 \link[=ram_list_resources]{list_resources} \tab Lists the resources that you added to a resource shares or the resources that are shared with you \cr
 \link[=ram_list_resource_share_permissions]{list_resource_share_permissions} \tab Lists the AWS RAM permissions that are associated with a resource share \cr
+\link[=ram_list_resource_types]{list_resource_types} \tab Lists the shareable resource types supported by AWS RAM \cr
 \link[=ram_promote_resource_share_created_from_policy]{promote_resource_share_created_from_policy} \tab Resource shares that were created by attaching a policy to a resource are visible only to the resource share owner, and the resource share cannot be modified in AWS RAM\cr
 \link[=ram_reject_resource_share_invitation]{reject_resource_share_invitation} \tab Rejects an invitation to a resource share from another AWS account \cr
 \link[=ram_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource share that you own \cr

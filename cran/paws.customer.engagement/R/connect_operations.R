@@ -308,7 +308,10 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' If no `Grouping` is included in the request, a summary of metrics is
 #' returned.
 #' @param CurrentMetrics &#91;required&#93; The metrics to retrieve. Specify the name and unit for each metric. The
-#' following metrics are available:
+#' following metrics are available. For a description of each metric, see
+#' [Real-time Metrics
+#' Definitions](https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html)
+#' in the *Amazon Connect Administrator Guide*.
 #' 
 #' ### AGENTS\\_AFTER\\_CONTACT\\_WORK
 #' 
@@ -494,7 +497,10 @@ connect_get_federation_token <- function(InstanceId) {
 #' If no grouping is specified, a summary of metrics for all queues is
 #' returned.
 #' @param HistoricalMetrics &#91;required&#93; The metrics to retrieve. Specify the name, unit, and statistic for each
-#' metric. The following historical metrics are available:
+#' metric. The following historical metrics are available. For a
+#' description of each metric, see [Historical Metrics
+#' Definitions](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html)
+#' in the *Amazon Connect Administrator Guide*.
 #' 
 #' ### ABANDON\\_TIME
 #' 
@@ -1117,6 +1123,52 @@ connect_list_users <- function(InstanceId, NextToken = NULL, MaxResults = NULL) 
 }
 .connect$operations$list_users <- connect_list_users
 
+#' When a contact is being recorded, and the recording has been suspended
+#' using SuspendContactRecording, this API resumes recording the call
+#'
+#' When a contact is being recorded, and the recording has been suspended
+#' using SuspendContactRecording, this API resumes recording the call.
+#' 
+#' Only voice recordings are supported at this time.
+#'
+#' @usage
+#' connect_resume_contact_recording(InstanceId, ContactId,
+#'   InitialContactId)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param ContactId &#91;required&#93; The identifier of the contact.
+#' @param InitialContactId &#91;required&#93; The identifier of the contact. This is the identifier of the contact
+#' associated with the first interaction with the contact center.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$resume_contact_recording(
+#'   InstanceId = "string",
+#'   ContactId = "string",
+#'   InitialContactId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_resume_contact_recording
+connect_resume_contact_recording <- function(InstanceId, ContactId, InitialContactId) {
+  op <- new_operation(
+    name = "ResumeContactRecording",
+    http_method = "POST",
+    http_path = "/contact/resume-recording",
+    paginator = list()
+  )
+  input <- .connect$resume_contact_recording_input(InstanceId = InstanceId, ContactId = ContactId, InitialContactId = InitialContactId)
+  output <- .connect$resume_contact_recording_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$resume_contact_recording <- connect_resume_contact_recording
+
 #' Initiates a contact flow to start a new chat for the customer
 #'
 #' Initiates a contact flow to start a new chat for the customer. Response
@@ -1187,9 +1239,76 @@ connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = N
 }
 .connect$operations$start_chat_contact <- connect_start_chat_contact
 
-#' Initiates a contact flow to place an outbound call to a customer
+#' This API starts recording the contact when the agent joins the call
 #'
-#' Initiates a contact flow to place an outbound call to a customer.
+#' This API starts recording the contact when the agent joins the call.
+#' StartContactRecording is a one-time action. For example, if you use
+#' StopContactRecording to stop recording an ongoing call, you can\'t use
+#' StartContactRecording to restart it. For scenarios where the recording
+#' has started and you want to suspend and resume it, such as when
+#' collecting sensitive information (for example, a credit card number),
+#' use SuspendContactRecording and ResumeContactRecording.
+#' 
+#' You can use this API to override the recording behavior configured in
+#' the [Set recording
+#' behavior](https://docs.aws.amazon.com/connect/latest/adminguide/set-recording-behavior.html)
+#' block.
+#' 
+#' Only voice recordings are supported at this time.
+#'
+#' @usage
+#' connect_start_contact_recording(InstanceId, ContactId, InitialContactId,
+#'   VoiceRecordingConfiguration)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param ContactId &#91;required&#93; The identifier of the contact.
+#' @param InitialContactId &#91;required&#93; The identifier of the contact. This is the identifier of the contact
+#' associated with the first interaction with the contact center.
+#' @param VoiceRecordingConfiguration &#91;required&#93; Who is being recorded.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_contact_recording(
+#'   InstanceId = "string",
+#'   ContactId = "string",
+#'   InitialContactId = "string",
+#'   VoiceRecordingConfiguration = list(
+#'     VoiceRecordingTrack = "FROM_AGENT"|"TO_AGENT"|"ALL"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_start_contact_recording
+connect_start_contact_recording <- function(InstanceId, ContactId, InitialContactId, VoiceRecordingConfiguration) {
+  op <- new_operation(
+    name = "StartContactRecording",
+    http_method = "POST",
+    http_path = "/contact/start-recording",
+    paginator = list()
+  )
+  input <- .connect$start_contact_recording_input(InstanceId = InstanceId, ContactId = ContactId, InitialContactId = InitialContactId, VoiceRecordingConfiguration = VoiceRecordingConfiguration)
+  output <- .connect$start_contact_recording_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$start_contact_recording <- connect_start_contact_recording
+
+#' This API places an outbound call to a contact, and then initiates the
+#' contact flow
+#'
+#' This API places an outbound call to a contact, and then initiates the
+#' contact flow. It performs the actions in the contact flow that\'s
+#' specified (in `ContactFlowId`).
+#' 
+#' Agents are not involved in initiating the outbound API (that is, dialing
+#' the contact). If the contact flow places an outbound call to a contact,
+#' and then puts the contact in queue, that\'s when the call is routed to
+#' the agent, like any other inbound case.
 #' 
 #' There is a 60 second dialing timeout for this operation. If the call is
 #' not connected after 60 seconds, it fails.
@@ -1293,6 +1412,105 @@ connect_stop_contact <- function(ContactId, InstanceId) {
   return(response)
 }
 .connect$operations$stop_contact <- connect_stop_contact
+
+#' When a contact is being recorded, this API stops recording the call
+#'
+#' When a contact is being recorded, this API stops recording the call.
+#' StopContactRecording is a one-time action. If you use
+#' StopContactRecording to stop recording an ongoing call, you can\'t use
+#' StartContactRecording to restart it. For scenarios where the recording
+#' has started and you want to suspend it for sensitive information (for
+#' example, to collect a credit card number), and then restart it, use
+#' SuspendContactRecording and ResumeContactRecording.
+#' 
+#' Only voice recordings are supported at this time.
+#'
+#' @usage
+#' connect_stop_contact_recording(InstanceId, ContactId, InitialContactId)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param ContactId &#91;required&#93; The identifier of the contact.
+#' @param InitialContactId &#91;required&#93; The identifier of the contact. This is the identifier of the contact
+#' associated with the first interaction with the contact center.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_contact_recording(
+#'   InstanceId = "string",
+#'   ContactId = "string",
+#'   InitialContactId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_stop_contact_recording
+connect_stop_contact_recording <- function(InstanceId, ContactId, InitialContactId) {
+  op <- new_operation(
+    name = "StopContactRecording",
+    http_method = "POST",
+    http_path = "/contact/stop-recording",
+    paginator = list()
+  )
+  input <- .connect$stop_contact_recording_input(InstanceId = InstanceId, ContactId = ContactId, InitialContactId = InitialContactId)
+  output <- .connect$stop_contact_recording_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$stop_contact_recording <- connect_stop_contact_recording
+
+#' When a contact is being recorded, this API suspends recording the call
+#'
+#' When a contact is being recorded, this API suspends recording the call.
+#' For example, you might suspend the call recording while collecting
+#' sensitive information, such as a credit card number. Then use
+#' ResumeContactRecording to restart recording.
+#' 
+#' The period of time that the recording is suspended is filled with
+#' silence in the final recording.
+#' 
+#' Only voice recordings are supported at this time.
+#'
+#' @usage
+#' connect_suspend_contact_recording(InstanceId, ContactId,
+#'   InitialContactId)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
+#' @param ContactId &#91;required&#93; The identifier of the contact.
+#' @param InitialContactId &#91;required&#93; The identifier of the contact. This is the identifier of the contact
+#' associated with the first interaction with the contact center.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$suspend_contact_recording(
+#'   InstanceId = "string",
+#'   ContactId = "string",
+#'   InitialContactId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_suspend_contact_recording
+connect_suspend_contact_recording <- function(InstanceId, ContactId, InitialContactId) {
+  op <- new_operation(
+    name = "SuspendContactRecording",
+    http_method = "POST",
+    http_path = "/contact/suspend-recording",
+    paginator = list()
+  )
+  input <- .connect$suspend_contact_recording_input(InstanceId = InstanceId, ContactId = ContactId, InitialContactId = InitialContactId)
+  output <- .connect$suspend_contact_recording_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$suspend_contact_recording <- connect_suspend_contact_recording
 
 #' Adds the specified tags to the specified resource
 #'

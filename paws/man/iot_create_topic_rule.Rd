@@ -100,6 +100,10 @@ processed by the rule.
           stateReason = "string",
           stateValue = "string"
         ),
+        cloudwatchLogs = list(
+          roleArn = "string",
+          logGroupName = "string"
+        ),
         elasticsearch = list(
           roleArn = "string",
           endpoint = "string",
@@ -239,6 +243,10 @@ processed by the rule.
         alarmName = "string",
         stateReason = "string",
         stateValue = "string"
+      ),
+      cloudwatchLogs = list(
+        roleArn = "string",
+        logGroupName = "string"
       ),
       elasticsearch = list(
         roleArn = "string",

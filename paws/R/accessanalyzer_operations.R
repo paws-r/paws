@@ -47,7 +47,7 @@ NULL
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   type = "ACCOUNT"
+#'   type = "ACCOUNT"|"ORGANIZATION"
 #' )
 #' ```
 #'
@@ -422,7 +422,7 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, maxResults = NUL
 #' svc$list_analyzers(
 #'   maxResults = 123,
 #'   nextToken = "string",
-#'   type = "ACCOUNT"
+#'   type = "ACCOUNT"|"ORGANIZATION"
 #' )
 #' ```
 #'

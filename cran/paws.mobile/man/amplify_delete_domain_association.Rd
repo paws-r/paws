@@ -2,17 +2,17 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_delete_domain_association}
 \alias{amplify_delete_domain_association}
-\title{Deletes a DomainAssociation}
+\title{Deletes a domain association for an Amplify app}
 \usage{
 amplify_delete_domain_association(appId, domainName)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique id for an Amplify app.}
 
-\item{domainName}{[required] Name of the domain.}
+\item{domainName}{[required] The name of the domain.}
 }
 \description{
-Deletes a DomainAssociation.
+Deletes a domain association for an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_domain_association(

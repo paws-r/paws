@@ -5,9 +5,9 @@
 \title{Starts a transform job}
 \usage{
 sagemaker_create_transform_job(TransformJobName, ModelName,
-  MaxConcurrentTransforms, MaxPayloadInMB, BatchStrategy, Environment,
-  TransformInput, TransformOutput, TransformResources, DataProcessing,
-  Tags, ExperimentConfig)
+  MaxConcurrentTransforms, ModelClientConfig, MaxPayloadInMB,
+  BatchStrategy, Environment, TransformInput, TransformOutput,
+  TransformResources, DataProcessing, Tags, ExperimentConfig)
 }
 \arguments{
 \item{TransformJobName}{[required] The name of the transform job. The name must be unique within an AWS
@@ -25,6 +25,9 @@ execution-parameters endpoint is not enabled, the default value is \code{1}.
 For more information on execution-parameters, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests}{How Containers Serve Requests}.
 For built-in algorithms, you don\'t need to set a value for
 \code{MaxConcurrentTransforms}.}
+
+\item{ModelClientConfig}{Configures the timeout and maximum number of retries for processing a
+transform job invocation.}
 
 \item{MaxPayloadInMB}{The maximum allowed size of the payload, in MB. A \emph{payload} is the data
 portion of a record (without metadata). The value in \code{MaxPayloadInMB}
@@ -44,8 +47,8 @@ inference request. A \emph{record} is a single unit of input data that
 inference can be made on. For example, a single line in a CSV file is a
 record.
 
-To enable the batch strategy, you must set the \code{SplitType} property of
-the DataProcessing object to \code{Line}, \code{RecordIO}, or \code{TFRecord}.
+To enable the batch strategy, you must set the \code{SplitType} property to
+\code{Line}, \code{RecordIO}, or \code{TFRecord}.
 
 To use only one record when making an HTTP invocation request to a
 container, set \code{BatchStrategy} to \code{SingleRecord} and \code{SplitType} to
@@ -110,6 +113,10 @@ For more information about how batch transformation works, see \href{https://doc
   TransformJobName = "string",
   ModelName = "string",
   MaxConcurrentTransforms = 123,
+  ModelClientConfig = list(
+    InvocationsTimeoutInSeconds = 123,
+    InvocationsMaxRetries = 123
+  ),
   MaxPayloadInMB = 123,
   BatchStrategy = "MultiRecord"|"SingleRecord",
   Environment = list(

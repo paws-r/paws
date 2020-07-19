@@ -18,8 +18,7 @@ required.}
 the widgets to include and their location on the dashboard. This
 parameter is required.
 
-For more information about the syntax, see
-CloudWatch-Dashboard-Body-Structure.}
+For more information about the syntax, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html}{Dashboard Body Structure and Syntax}.}
 }
 \description{
 Creates a dashboard if it does not already exist, or updates an existing

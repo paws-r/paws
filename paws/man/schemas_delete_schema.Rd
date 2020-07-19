@@ -7,9 +7,9 @@
 schemas_delete_schema(RegistryName, SchemaName)
 }
 \arguments{
-\item{RegistryName}{[required]}
+\item{RegistryName}{[required] The name of the registry.}
 
-\item{SchemaName}{[required]}
+\item{SchemaName}{[required] The name of the schema.}
 }
 \description{
 Delete a schema definition.

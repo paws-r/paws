@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_object_tagging}
 \alias{s3_put_object_tagging}
-\title{Sets the supplied tag-set to an object that already exists in a bucket A
-tag is a key-value pair}
+\title{Sets the supplied tag-set to an object that already exists in a bucket}
 \usage{
 s3_put_object_tagging(Bucket, Key, VersionId, ContentMD5, Tagging)
 }
@@ -27,7 +26,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 \item{Tagging}{[required] Container for the \code{TagSet} and \code{Tag} elements}
 }
 \description{
-Sets the supplied tag-set to an object that already exists in a bucket
+Sets the supplied tag-set to an object that already exists in a bucket.
 }
 \details{
 A tag is a key-value pair. You can associate tags with an object by

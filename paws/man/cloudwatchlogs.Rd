@@ -73,6 +73,7 @@ need it.
 \link[=cloudwatchlogs_delete_log_group]{delete_log_group} \tab Deletes the specified log group and permanently deletes all the archived log events associated with the log group \cr
 \link[=cloudwatchlogs_delete_log_stream]{delete_log_stream} \tab Deletes the specified log stream and permanently deletes all the archived log events associated with the log stream \cr
 \link[=cloudwatchlogs_delete_metric_filter]{delete_metric_filter} \tab Deletes the specified metric filter \cr
+\link[=cloudwatchlogs_delete_query_definition]{delete_query_definition} \tab Delete query definition \cr
 \link[=cloudwatchlogs_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource policy from this account \cr
 \link[=cloudwatchlogs_delete_retention_policy]{delete_retention_policy} \tab Deletes the specified retention policy \cr
 \link[=cloudwatchlogs_delete_subscription_filter]{delete_subscription_filter} \tab Deletes the specified subscription filter \cr
@@ -82,6 +83,7 @@ need it.
 \link[=cloudwatchlogs_describe_log_streams]{describe_log_streams} \tab Lists the log streams for the specified log group \cr
 \link[=cloudwatchlogs_describe_metric_filters]{describe_metric_filters} \tab Lists the specified metric filters \cr
 \link[=cloudwatchlogs_describe_queries]{describe_queries} \tab Returns a list of CloudWatch Logs Insights queries that are scheduled, executing, or have been executed recently in this account \cr
+\link[=cloudwatchlogs_describe_query_definitions]{describe_query_definitions} \tab Describe query definitions \cr
 \link[=cloudwatchlogs_describe_resource_policies]{describe_resource_policies} \tab Lists the resource policies in this account \cr
 \link[=cloudwatchlogs_describe_subscription_filters]{describe_subscription_filters} \tab Lists the subscription filters for the specified log group \cr
 \link[=cloudwatchlogs_disassociate_kms_key]{disassociate_kms_key} \tab Disassociates the associated AWS Key Management Service (AWS KMS) customer master key (CMK) from the specified log group \cr
@@ -95,6 +97,7 @@ need it.
 \link[=cloudwatchlogs_put_destination_policy]{put_destination_policy} \tab Creates or updates an access policy associated with an existing destination \cr
 \link[=cloudwatchlogs_put_log_events]{put_log_events} \tab Uploads a batch of log events to the specified log stream \cr
 \link[=cloudwatchlogs_put_metric_filter]{put_metric_filter} \tab Creates or updates a metric filter and associates it with the specified log group \cr
+\link[=cloudwatchlogs_put_query_definition]{put_query_definition} \tab Put query definition \cr
 \link[=cloudwatchlogs_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy allowing other AWS services to put log events to this account, such as Amazon Route 53 \cr
 \link[=cloudwatchlogs_put_retention_policy]{put_retention_policy} \tab Sets the retention of the specified log group \cr
 \link[=cloudwatchlogs_put_subscription_filter]{put_subscription_filter} \tab Creates or updates a subscription filter and associates it with the specified log group \cr

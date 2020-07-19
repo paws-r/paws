@@ -66,6 +66,10 @@ NULL
 #' 
 #' -   opsworks-cm.eu-west-1.amazonaws.com
 #' 
+#' For more information, see [AWS OpsWorks endpoints and
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/opsworks-service.html)
+#' in the AWS General Reference.
+#' 
 #' **Throttling limits**
 #' 
 #' All API operations allow for five requests per second with a burst of 10
@@ -139,7 +143,7 @@ opsworkscm <- function(config = list()) {
 
 .opsworkscm$metadata <- list(
   service_name = "opsworks-cm",
-  endpoints = list("*" = list(endpoint = "opsworks-cm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "opsworks-cm.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "opsworks-cm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "opsworks-cm.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "opsworks-cm.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "opsworks-cm.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "OpsWorksCM",
   api_version = "2016-11-01",
   signing_name = "opsworks-cm",

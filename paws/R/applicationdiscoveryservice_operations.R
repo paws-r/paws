@@ -359,7 +359,8 @@ applicationdiscoveryservice_describe_agents <- function(agentIds = NULL, filters
 #' 
 #' For a complete list of outputs for each asset type, see [Using the
 #' DescribeConfigurations
-#' Action](http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#DescribeConfigurations).
+#' Action](https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#DescribeConfigurations)
+#' in the *AWS Application Discovery Service User Guide*.
 #'
 #' @usage
 #' applicationdiscoveryservice_describe_configurations(configurationIds)
@@ -790,10 +791,10 @@ applicationdiscoveryservice_get_discovery_summary <- function() {
 .applicationdiscoveryservice$operations$get_discovery_summary <- applicationdiscoveryservice_get_discovery_summary
 
 #' Retrieves a list of configuration items as specified by the value passed
-#' to the required paramater configurationType
+#' to the required parameter configurationType
 #'
 #' Retrieves a list of configuration items as specified by the value passed
-#' to the required paramater `configurationType`. Optional filtering may be
+#' to the required parameter `configurationType`. Optional filtering may be
 #' applied to refine search results.
 #'
 #' @usage
@@ -807,8 +808,9 @@ applicationdiscoveryservice_get_discovery_summary <- function() {
 #' `\{"key": "serverType", "value": "webServer"\}`
 #' 
 #' For a complete list of filter options and guidance about using them with
-#' this action, see [Querying Discovered Configuration
-#' Items](http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations).
+#' this action, see [Using the ListConfigurations
+#' Action](https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#ListConfigurations)
+#' in the *AWS Application Discovery Service User Guide*.
 #' @param maxResults The total number of items to return. The maximum value is 100.
 #' @param nextToken Token to retrieve the next set of results. For example, if a previous
 #' call to ListConfigurations returned 100 items, but you set
@@ -818,7 +820,8 @@ applicationdiscoveryservice_get_discovery_summary <- function() {
 #' @param orderBy Certain filter criteria return output that can be sorted in ascending or
 #' descending order. For a list of output characteristics for each filter,
 #' see [Using the ListConfigurations
-#' Action](http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations).
+#' Action](https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#ListConfigurations)
+#' in the *AWS Application Discovery Service User Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -1077,17 +1080,17 @@ applicationdiscoveryservice_start_export_task <- function(exportDataFormat = NUL
 .applicationdiscoveryservice$operations$start_export_task <- applicationdiscoveryservice_start_export_task
 
 #' Starts an import task, which allows you to import details of your
-#' on-premises environment directly into AWS without having to use the
-#' Application Discovery Service (ADS) tools such as the Discovery
-#' Connector or Discovery Agent
+#' on-premises environment directly into AWS Migration Hub without having
+#' to use the Application Discovery Service (ADS) tools such as the
+#' Discovery Connector or Discovery Agent
 #'
 #' Starts an import task, which allows you to import details of your
-#' on-premises environment directly into AWS without having to use the
-#' Application Discovery Service (ADS) tools such as the Discovery
-#' Connector or Discovery Agent. This gives you the option to perform
-#' migration assessment and planning directly from your imported data,
-#' including the ability to group your devices as applications and track
-#' their migration status.
+#' on-premises environment directly into AWS Migration Hub without having
+#' to use the Application Discovery Service (ADS) tools such as the
+#' Discovery Connector or Discovery Agent. This gives you the option to
+#' perform migration assessment and planning directly from your imported
+#' data, including the ability to group your devices as applications and
+#' track their migration status.
 #' 
 #' To start an import request, do this:
 #' 

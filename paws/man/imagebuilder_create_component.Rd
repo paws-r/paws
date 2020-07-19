@@ -2,40 +2,49 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_create_component}
 \alias{imagebuilder_create_component}
-\title{Creates a new component that can be used to build, validate, test and
+\title{Creates a new component that can be used to build, validate, test, and
 assess your image}
 \usage{
 imagebuilder_create_component(name, semanticVersion, description,
-  changeDescription, platform, data, uri, kmsKeyId, tags, clientToken)
+  changeDescription, platform, supportedOsVersions, data, uri, kmsKeyId,
+  tags, clientToken)
 }
 \arguments{
 \item{name}{[required] The name of the component.}
 
-\item{semanticVersion}{[required] The semantic version of the component. This version to follow the
-semantic version syntax. i.e. major.minor.patch. This could be versioned
-like software 2.0.1 or date like 2019.12.01.}
+\item{semanticVersion}{[required] The semantic version of the component. This version follows the semantic
+version syntax. For example, major.minor.patch. This could be versioned
+like software (2.0.1) or like a date (2019.12.01).}
 
-\item{description}{CThe description of the component. Describes the contents of the
+\item{description}{The description of the component. Describes the contents of the
 component.}
 
-\item{changeDescription}{CThe change description of the component. Describes what change has been
-made in this version. In other words what makes this version different
-from other versions of this component.}
+\item{changeDescription}{The change description of the component. Describes what change has been
+made in this version, or what makes this version different from other
+versions of this component.}
 
-\item{platform}{[required] CThe platform of the component.}
+\item{platform}{[required] The platform of the component.}
 
-\item{data}{CThe data of the component.}
+\item{supportedOsVersions}{The operating system (OS) version supported by the component. If the OS
+information is available, a prefix match is performed against the parent
+image OS version during image recipe creation.}
 
-\item{uri}{CThe uri of the component.}
+\item{data}{The data of the component. Used to specify the data inline. Either
+\code{data} or \code{uri} can be used to specify the data within the component.}
+
+\item{uri}{The uri of the component. Must be an S3 URL and the requester must have
+permission to access the S3 bucket. If you use S3, you can specify
+component content up to your service quota. Either \code{data} or \code{uri} can
+be used to specify the data within the component.}
 
 \item{kmsKeyId}{The ID of the KMS key that should be used to encrypt this component.}
 
-\item{tags}{CThe tags of the component.}
+\item{tags}{The tags of the component.}
 
-\item{clientToken}{[required] CThe idempotency token of the component.}
+\item{clientToken}{[required] The idempotency token of the component.}
 }
 \description{
-Creates a new component that can be used to build, validate, test and
+Creates a new component that can be used to build, validate, test, and
 assess your image.
 }
 \section{Request syntax}{
@@ -45,6 +54,9 @@ assess your image.
   description = "string",
   changeDescription = "string",
   platform = "Windows"|"Linux",
+  supportedOsVersions = list(
+    "string"
+  ),
   data = "string",
   uri = "string",
   kmsKeyId = "string",

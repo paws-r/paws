@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_delete_repository}
 \alias{ecr_delete_repository}
-\title{Deletes an existing image repository}
+\title{Deletes a repository}
 \usage{
 ecr_delete_repository(registryId, repositoryName, force)
 }
@@ -16,8 +16,9 @@ registry is assumed.}
 \item{force}{If a repository contains images, forces the deletion.}
 }
 \description{
-Deletes an existing image repository. If a repository contains images,
-you must use the \code{force} option to delete it.
+Deletes a repository. If the repository contains images, you must either
+delete all images in the repository or use the \code{force} option to delete
+the repository.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_repository(

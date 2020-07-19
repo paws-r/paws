@@ -4,13 +4,15 @@
 \alias{groundstation_list_ground_stations}
 \title{Returns a list of ground stations}
 \usage{
-groundstation_list_ground_stations(maxResults, nextToken)
+groundstation_list_ground_stations(maxResults, nextToken, satelliteId)
 }
 \arguments{
 \item{maxResults}{Maximum number of ground stations returned.}
 
 \item{nextToken}{Next token that can be supplied in the next call to get the next page of
 ground stations.}
+
+\item{satelliteId}{Satellite ID to retrieve on-boarded ground stations.}
 }
 \description{
 Returns a list of ground stations.
@@ -18,7 +20,8 @@ Returns a list of ground stations.
 \section{Request syntax}{
 \preformatted{svc$list_ground_stations(
   maxResults = 123,
-  nextToken = "string"
+  nextToken = "string",
+  satelliteId = "string"
 )
 }
 }

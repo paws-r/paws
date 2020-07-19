@@ -2,8 +2,8 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_update_managed_instance_role}
 \alias{ssm_update_managed_instance_role}
-\title{Assigns or changes an Amazon Identity and Access Management (IAM) role
-for the managed instance}
+\title{Changes the Amazon Identity and Access Management (IAM) role that is
+assigned to the on-premises instance or virtual machines (VM)}
 \usage{
 ssm_update_managed_instance_role(InstanceId, IamRole)
 }
@@ -13,8 +13,10 @@ ssm_update_managed_instance_role(InstanceId, IamRole)
 \item{IamRole}{[required] The IAM role you want to assign or change.}
 }
 \description{
-Assigns or changes an Amazon Identity and Access Management (IAM) role
-for the managed instance.
+Changes the Amazon Identity and Access Management (IAM) role that is
+assigned to the on-premises instance or virtual machines (VM). IAM roles
+are first assigned to these hybrid instances during the activation
+process. For more information, see CreateActivation.
 }
 \section{Request syntax}{
 \preformatted{svc$update_managed_instance_role(

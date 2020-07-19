@@ -6,7 +6,8 @@
 \usage{
 robomaker_create_simulation_job(clientRequestToken, outputLocation,
   loggingConfig, maxJobDurationInSeconds, iamRole, failureBehavior,
-  robotApplications, simulationApplications, dataSources, tags, vpcConfig)
+  robotApplications, simulationApplications, dataSources, tags, vpcConfig,
+  compute)
 }
 \arguments{
 \item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -39,7 +40,9 @@ Stop the simulation job and terminate the instance.
 
 \item{simulationApplications}{The simulation application to use in the simulation job.}
 
-\item{dataSources}{The data sources for the simulation job.
+\item{dataSources}{Specify data sources to mount read-only files from S3 into your
+simulation. These files are available under
+\verb{/opt/robomaker/datasources/data_source_name}.
 
 There is a limit of 100 files and a combined size of 25GB for all
 \code{DataSourceConfig} objects.}
@@ -51,6 +54,8 @@ simulation job.}
 parameter identifying the list of security group IDs and subnet IDs.
 These must belong to the same VPC. You must provide at least one
 security group and one subnet ID.}
+
+\item{compute}{Compute information for the simulation job.}
 }
 \description{
 Creates a simulation job.
@@ -90,7 +95,8 @@ longer be accessible.
               enableOnPublicIp = TRUE|FALSE
             )
           )
-        )
+        ),
+        streamUI = TRUE|FALSE
       )
     )
   ),
@@ -112,7 +118,8 @@ longer be accessible.
               enableOnPublicIp = TRUE|FALSE
             )
           )
-        )
+        ),
+        streamUI = TRUE|FALSE
       )
     )
   ),
@@ -136,6 +143,9 @@ longer be accessible.
       "string"
     ),
     assignPublicIp = TRUE|FALSE
+  ),
+  compute = list(
+    simulationUnitLimit = 123
   )
 )
 }

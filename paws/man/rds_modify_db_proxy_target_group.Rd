@@ -2,8 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_modify_db_proxy_target_group}
 \alias{rds_modify_db_proxy_target_group}
-\title{This is prerelease documentation for the RDS Database Proxy feature in
-preview release}
+\title{Modifies the properties of a DBProxyTargetGroup}
 \usage{
 rds_modify_db_proxy_target_group(TargetGroupName, DBProxyName,
   ConnectionPoolConfig, NewName)
@@ -21,10 +20,6 @@ with a letter and must contain only ASCII letters, digits, and hyphens;
 it can\'t end with a hyphen or contain two consecutive hyphens.}
 }
 \description{
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-}
-\details{
 Modifies the properties of a \code{DBProxyTargetGroup}.
 }
 \section{Request syntax}{

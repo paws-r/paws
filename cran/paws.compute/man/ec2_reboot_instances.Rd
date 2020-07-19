@@ -24,7 +24,7 @@ to you. Requests to reboot terminated instances are ignored.
 If an instance does not cleanly shut down within four minutes, Amazon
 EC2 performs a hard reboot.
 
-For more information about troubleshooting, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html}{Getting Console Output and Rebooting Instances}
+For more information about troubleshooting, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html}{Getting console output and rebooting instances}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

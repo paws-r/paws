@@ -17,7 +17,7 @@ create an access point.}
 with.}
 
 \item{VpcConfiguration}{If you include this field, Amazon S3 restricts access to this access
-point to requests from the specified Virtual Private Cloud (VPC).}
+point to requests from the specified virtual private cloud (VPC).}
 
 \item{PublicAccessBlockConfiguration}{}
 }

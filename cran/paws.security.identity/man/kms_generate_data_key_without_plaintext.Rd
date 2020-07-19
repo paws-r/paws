@@ -83,21 +83,17 @@ is used to encrypt the private key.
 To generate a data key, you must specify the symmetric customer master
 key (CMK) that is used to encrypt the data key. You cannot use an
 asymmetric CMK to generate a data key. To get the type of your CMK, use
-the \code{KeySpec} field in the DescribeKey response. You must also specify
-the length of the data key using either the \code{KeySpec} or \code{NumberOfBytes}
-field (but not both). For common key lengths (128-bit and 256-bit
-symmetric keys), use the \code{KeySpec} parameter.
+the DescribeKey operation.
 
-If the operation succeeds, you will find the plaintext copy of the data
-key in the \code{Plaintext} field of the response, and the encrypted copy of
-the data key in the \code{CiphertextBlob} field.
+If the operation succeeds, you will find the encrypted copy of the data
+key in the \code{CiphertextBlob} field.
 
 You can use the optional encryption context to add additional security
 to the encryption operation. If you specify an \code{EncryptionContext}, you
 must specify the same encryption context (a case-sensitive exact match)
 when decrypting the encrypted data key. Otherwise, the request to
-decrypt fails with an InvalidCiphertextException. For more information,
-see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
+decrypt fails with an \code{InvalidCiphertextException}. For more
+information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
 in the \emph{AWS Key Management Service Developer Guide}.
 
 The CMK that you use for this operation must be in a compatible key

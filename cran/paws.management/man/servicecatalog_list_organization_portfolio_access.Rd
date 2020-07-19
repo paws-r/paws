@@ -34,7 +34,11 @@ results, use null.}
 \description{
 Lists the organization nodes that have access to the specified
 portfolio. This API can only be called by the master account in the
-organization.
+organization or by a delegated admin.
+}
+\details{
+If a delegated admin is de-registered, they can no longer perform this
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$list_organization_portfolio_access(

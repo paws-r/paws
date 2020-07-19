@@ -10,18 +10,10 @@ imagebuilder(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-Amazon Elastic Compute Cloud Image Builder provides a one-stop-shop to
-automate the image management processes. You configure an automated
-pipeline that creates images for use on AWS. As software updates become
-available, Image Builder automatically produces a new image based on a
-customizable schedule and distributes it to stipulated AWS Regions after
-running tests on it. With the Image Builder, organizations can capture
-their internal or industry-specific compliance policies as a vetted
-template that can be consistently applied to every new image. Built-in
-integration with AWS Organizations provides customers with a centralized
-way to enforce image distribution and access policies across their AWS
-accounts and Regions. Image Builder supports multiple image format AMIs
-on AWS.
+EC2 Image Builder is a fully managed AWS service that makes it easier to
+automate the creation, management, and deployment of customized, secure,
+and up-to-date "golden" server images that are pre-installed and
+pre-configured with software and settings to meet specific IT standards.
 }
 \section{Service syntax}{
 \preformatted{svc <- imagebuilder(
@@ -45,7 +37,7 @@ on AWS.
 
 \tabular{ll}{
 \link[=imagebuilder_cancel_image_creation]{cancel_image_creation} \tab CancelImageCreation cancels the creation of Image \cr
-\link[=imagebuilder_create_component]{create_component} \tab Creates a new component that can be used to build, validate, test and assess your image\cr
+\link[=imagebuilder_create_component]{create_component} \tab Creates a new component that can be used to build, validate, test, and assess your image\cr
 \link[=imagebuilder_create_distribution_configuration]{create_distribution_configuration} \tab Creates a new distribution configuration \cr
 \link[=imagebuilder_create_image]{create_image} \tab Creates a new image \cr
 \link[=imagebuilder_create_image_pipeline]{create_image_pipeline} \tab Creates a new image pipeline \cr
@@ -65,16 +57,16 @@ on AWS.
 \link[=imagebuilder_get_image_policy]{get_image_policy} \tab Gets an image policy \cr
 \link[=imagebuilder_get_image_recipe]{get_image_recipe} \tab Gets an image recipe \cr
 \link[=imagebuilder_get_image_recipe_policy]{get_image_recipe_policy} \tab Gets an image recipe policy \cr
-\link[=imagebuilder_get_infrastructure_configuration]{get_infrastructure_configuration} \tab Gets a infrastructure configuration \cr
+\link[=imagebuilder_get_infrastructure_configuration]{get_infrastructure_configuration} \tab Gets an infrastructure configuration \cr
 \link[=imagebuilder_import_component]{import_component} \tab Imports a component and transforms its data into a component document \cr
 \link[=imagebuilder_list_component_build_versions]{list_component_build_versions} \tab Returns the list of component build versions for the specified semantic version \cr
 \link[=imagebuilder_list_components]{list_components} \tab Returns the list of component build versions for the specified semantic version \cr
 \link[=imagebuilder_list_distribution_configurations]{list_distribution_configurations} \tab Returns a list of distribution configurations \cr
-\link[=imagebuilder_list_image_build_versions]{list_image_build_versions} \tab Returns a list of distribution configurations \cr
+\link[=imagebuilder_list_image_build_versions]{list_image_build_versions} \tab Returns a list of image build versions \cr
 \link[=imagebuilder_list_image_pipeline_images]{list_image_pipeline_images} \tab Returns a list of images created by the specified pipeline \cr
 \link[=imagebuilder_list_image_pipelines]{list_image_pipelines} \tab Returns a list of image pipelines \cr
 \link[=imagebuilder_list_image_recipes]{list_image_recipes} \tab Returns a list of image recipes \cr
-\link[=imagebuilder_list_images]{list_images} \tab Returns the list of image build versions for the specified semantic version \cr
+\link[=imagebuilder_list_images]{list_images} \tab Returns the list of images that you have access to \cr
 \link[=imagebuilder_list_infrastructure_configurations]{list_infrastructure_configurations} \tab Returns a list of infrastructure configurations \cr
 \link[=imagebuilder_list_tags_for_resource]{list_tags_for_resource} \tab Returns the list of tags for the specified resource \cr
 \link[=imagebuilder_put_component_policy]{put_component_policy} \tab Applies a policy to a component \cr

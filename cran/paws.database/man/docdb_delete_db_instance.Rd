@@ -2,21 +2,21 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_delete_db_instance}
 \alias{docdb_delete_db_instance}
-\title{Deletes a previously provisioned DB instance}
+\title{Deletes a previously provisioned instance}
 \usage{
 docdb_delete_db_instance(DBInstanceIdentifier)
 }
 \arguments{
-\item{DBInstanceIdentifier}{[required] The DB instance identifier for the DB instance to be deleted. This
-parameter isn\'t case sensitive.
+\item{DBInstanceIdentifier}{[required] The instance identifier for the instance to be deleted. This parameter
+isn\'t case sensitive.
 
 Constraints:
 \itemize{
-\item Must match the name of an existing DB instance.
+\item Must match the name of an existing instance.
 }}
 }
 \description{
-Deletes a previously provisioned DB instance.
+Deletes a previously provisioned instance.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_db_instance(

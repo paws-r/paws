@@ -12,7 +12,9 @@ route53_list_resource_record_sets(HostedZoneId, StartRecordName,
 you want to list.}
 
 \item{StartRecordName}{The first name in the lexicographic ordering of resource record sets
-that you want to list.}
+that you want to list. If the specified record name doesn\'t exist, the
+results begin with the first resource record set that has a name greater
+than the value of \code{name}.}
 
 \item{StartRecordType}{The type of resource record set to begin the record listing from.
 
@@ -31,8 +33,8 @@ Values for alias resource record sets:
 \item \strong{Elastic Beanstalk environment that has a regionalized subdomain}:
 A
 \item \strong{Elastic Load Balancing load balancer}: A \\| AAAA
-\item \strong{Amazon S3 bucket}: A
-\item \strong{Amazon VPC interface VPC endpoint}: A
+\item \strong{S3 bucket}: A
+\item \strong{VPC interface VPC endpoint}: A
 \item \strong{Another resource record set in this hosted zone:} The type of the
 resource record set that the alias references.
 }

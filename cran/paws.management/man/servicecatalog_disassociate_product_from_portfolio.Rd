@@ -22,6 +22,9 @@ servicecatalog_disassociate_product_from_portfolio(AcceptLanguage,
 \description{
 Disassociates the specified product from the specified portfolio.
 }
+\details{
+A delegated admin is authorized to invoke this command.
+}
 \section{Request syntax}{
 \preformatted{svc$disassociate_product_from_portfolio(
   AcceptLanguage = "string",

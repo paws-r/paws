@@ -2,28 +2,28 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_describe_db_clusters}
 \alias{docdb_describe_db_clusters}
-\title{Returns information about provisioned Amazon DocumentDB DB clusters}
+\title{Returns information about provisioned Amazon DocumentDB clusters}
 \usage{
 docdb_describe_db_clusters(DBClusterIdentifier, Filters, MaxRecords,
   Marker)
 }
 \arguments{
-\item{DBClusterIdentifier}{The user-provided DB cluster identifier. If this parameter is specified,
-information from only the specific DB cluster is returned. This
-parameter isn\'t case sensitive.
+\item{DBClusterIdentifier}{The user-provided cluster identifier. If this parameter is specified,
+information from only the specific cluster is returned. This parameter
+isn\'t case sensitive.
 
 Constraints:
 \itemize{
 \item If provided, must match an existing \code{DBClusterIdentifier}.
 }}
 
-\item{Filters}{A filter that specifies one or more DB clusters to describe.
+\item{Filters}{A filter that specifies one or more clusters to describe.
 
 Supported filters:
 \itemize{
-\item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster
-Amazon Resource Names (ARNs). The results list only includes
-information about the DB clusters identified by these ARNs.
+\item \code{db-cluster-id} - Accepts cluster identifiers and cluster Amazon
+Resource Names (ARNs). The results list only includes information
+about the clusters identified by these ARNs.
 }}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
@@ -40,8 +40,12 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
-Returns information about provisioned Amazon DocumentDB DB clusters.
-This API operation supports pagination.
+Returns information about provisioned Amazon DocumentDB clusters. This
+API operation supports pagination. For certain management features such
+as cluster and instance lifecycle management, Amazon DocumentDB
+leverages operational technology that is shared with Amazon RDS and
+Amazon Neptune. Use the \verb{filterName=engine,Values=docdb} filter
+parameter to return only Amazon DocumentDB clusters.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_db_clusters(

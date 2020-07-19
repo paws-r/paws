@@ -16,7 +16,7 @@ account creation. You can\'t access the root user of the account or
 remove an account that was created with an invalid email address. Like
 all request parameters for \code{CreateGovCloudAccount}, the request for the
 email address for the AWS GovCloud (US) account originates from the
-commercial Region. It does not come from the AWS GovCloud (US) Region.}
+commercial Region, not from the AWS GovCloud (US) Region.}
 
 \item{AccountName}{[required] The friendly name of the member account.}
 
@@ -34,8 +34,7 @@ If you don\'t specify this parameter, the role name defaults to
 
 For more information about how to use this role to access the member
 account, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role}{Accessing and Administering the Member Accounts in Your Organization}
-in the \emph{AWS Organizations User Guide}. See also steps 2 and 3 in
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html}{Tutorial: Delegate Access Across AWS Accounts Using IAM Roles}
+in the \emph{AWS Organizations User Guide} and steps 2 and 3 in \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html}{Tutorial: Delegate Access Across AWS Accounts Using IAM Roles}
 in the \emph{IAM User Guide.}
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to
@@ -116,22 +115,22 @@ A role is created in the new account in the commercial Region that
 allows the master account in the organization in the commercial Region
 to assume it. An AWS GovCloud (US) account is then created and
 associated with the commercial account that you just created. A role is
-created in the new AWS GovCloud (US) account. This role can be assumed
-by the AWS GovCloud (US) account that is associated with the master
-account of the commercial organization. For more information and to view
-a diagram that explains how account access works, see \href{http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html}{AWS Organizations}
+created in the new AWS GovCloud (US) account that can be assumed by the
+AWS GovCloud (US) account that is associated with the master account of
+the commercial organization. For more information and to view a diagram
+that explains how account access works, see \href{http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html}{AWS Organizations}
 in the \emph{AWS GovCloud User Guide.}
 
 For more information about creating accounts, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html}{Creating an AWS Account in Your Organization}
 in the \emph{AWS Organizations User Guide.}
 \itemize{
-\item You can create an account in an organization using the AWS
-Organizations console, API, or CLI commands. When you do, the
-information required for the account to operate as a standalone
-account, such as a payment method, is \emph{not} automatically collected.
-If you must remove an account from your organization later, you can
-do so only after you provide the missing information. Follow the
-steps at \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization as a member account}
+\item When you create an account in an organization using the AWS
+Organizations console, API, or CLI commands, the information
+required for the account to operate as a standalone account is \emph{not}
+automatically collected. This includes a payment method and signing
+the end user license agreement (EULA). If you must remove an account
+from your organization later, you can do so only after you provide
+the missing information. Follow the steps at \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization as a member account}
 in the \emph{AWS Organizations User Guide.}
 \item If you get an exception that indicates that you exceeded your
 account limits for the organization, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.

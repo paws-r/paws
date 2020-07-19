@@ -41,8 +41,8 @@ enable CloudWatch Container Insights for a cluster. If this value is
 specified, it will override the \code{containerInsights} value set with
 PutAccountSetting or PutAccountSettingDefault.}
 
-\item{capacityProviders}{The short name or full Amazon Resource Name (ARN) of one or more
-capacity providers to associate with the cluster.
+\item{capacityProviders}{The short name of one or more capacity providers to associate with the
+cluster.
 
 If specifying a capacity provider that uses an Auto Scaling group, the
 capacity provider must already be created and not already associated

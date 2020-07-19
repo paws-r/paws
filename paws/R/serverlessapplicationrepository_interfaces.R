@@ -81,7 +81,7 @@ NULL
 
 .serverlessapplicationrepository$get_application_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Statements = structure(list(structure(list(Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "actions", type = "list")), Principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "principals", type = "list")), StatementId = structure(logical(0), tags = list(locationName = "statementId", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "statements", type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Statements = structure(list(structure(list(Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "actions", type = "list")), PrincipalOrgIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "principalOrgIDs", type = "list")), Principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "principals", type = "list")), StatementId = structure(logical(0), tags = list(locationName = "statementId", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "statements", type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -135,14 +135,24 @@ NULL
 
 .serverlessapplicationrepository$put_application_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), Statements = structure(list(structure(list(Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "actions", type = "list")), Principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "principals", type = "list")), StatementId = structure(logical(0), tags = list(locationName = "statementId", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "statements", type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), Statements = structure(list(structure(list(Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "actions", type = "list")), PrincipalOrgIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "principalOrgIDs", type = "list")), Principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "principals", type = "list")), StatementId = structure(logical(0), tags = list(locationName = "statementId", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "statements", type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .serverlessapplicationrepository$put_application_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Statements = structure(list(structure(list(Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "actions", type = "list")), Principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "principals", type = "list")), StatementId = structure(logical(0), tags = list(locationName = "statementId", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "statements", type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Statements = structure(list(structure(list(Actions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "actions", type = "list")), PrincipalOrgIDs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "principalOrgIDs", type = "list")), Principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "principals", type = "list")), StatementId = structure(logical(0), tags = list(locationName = "statementId", type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "statements", type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.serverlessapplicationrepository$unshare_application_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "applicationId", type = "string")), OrganizationId = structure(logical(0), tags = list(locationName = "organizationId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.serverlessapplicationrepository$unshare_application_output <- function(...) {
+  list()
 }
 
 .serverlessapplicationrepository$update_application_input <- function(...) {

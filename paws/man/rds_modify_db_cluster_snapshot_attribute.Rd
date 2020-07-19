@@ -14,7 +14,10 @@ rds_modify_db_cluster_snapshot_attribute(DBClusterSnapshotIdentifier,
 \item{AttributeName}{[required] The name of the DB cluster snapshot attribute to modify.
 
 To manage authorization for other AWS accounts to copy or restore a
-manual DB cluster snapshot, set this value to \code{restore}.}
+manual DB cluster snapshot, set this value to \code{restore}.
+
+To view the list of attributes available to modify, use the
+DescribeDBClusterSnapshotAttributes API action.}
 
 \item{ValuesToAdd}{A list of DB cluster snapshot attributes to add to the attribute
 specified by \code{AttributeName}.
@@ -46,16 +49,21 @@ To share a manual DB cluster snapshot with other AWS accounts, specify
 add a list of IDs of the AWS accounts that are authorized to restore the
 manual DB cluster snapshot. Use the value \code{all} to make the manual DB
 cluster snapshot public, which means that it can be copied or restored
-by all AWS accounts. Do not add the \code{all} value for any manual DB
-cluster snapshots that contain private information that you don\'t want
-available to all AWS accounts. If a manual DB cluster snapshot is
-encrypted, it can be shared, but only by specifying a list of authorized
-AWS account IDs for the \code{ValuesToAdd} parameter. You can\'t use \code{all} as
-a value for that parameter in this case.
+by all AWS accounts.
+
+Don\'t add the \code{all} value for any manual DB cluster snapshots that
+contain private information that you don\'t want available to all AWS
+accounts.
+
+If a manual DB cluster snapshot is encrypted, it can be shared, but only
+by specifying a list of authorized AWS account IDs for the \code{ValuesToAdd}
+parameter. You can\'t use \code{all} as a value for that parameter in this
+case.
 
 To view which AWS accounts have access to copy or restore a manual DB
-cluster snapshot, or whether a manual DB cluster snapshot public or
-private, use the \code{DescribeDBClusterSnapshotAttributes} API action.
+cluster snapshot, or whether a manual DB cluster snapshot is public or
+private, use the DescribeDBClusterSnapshotAttributes API action. The
+accounts are returned as values for the \code{restore} attribute.
 
 This action only applies to Aurora DB clusters.
 }

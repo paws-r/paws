@@ -29,16 +29,21 @@ For example:
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey. To
 get the alias name and alias ARN, use ListAliases.}
 
-\item{Message}{[required] Specifies the message that was signed, or a hash digest of that message.
-Messages can be 0-4096 bytes. To verify a larger message, provide a hash
-digest of the message.
+\item{Message}{[required] Specifies the message that was signed. You can submit a raw message of
+up to 4096 bytes, or a hash digest of the message. If you submit a
+digest, use the \code{MessageType} parameter with a value of \code{DIGEST}.
 
-If the digest of the message specified here is different from the
-message digest that was signed, the signature verification fails.}
+If the message specified here is different from the message that was
+signed, the signature verification fails. A message and its hash digest
+are considered to be the same message.}
 
 \item{MessageType}{Tells AWS KMS whether the value of the \code{Message} parameter is a message
-or message digest. To indicate a message, enter \code{RAW}. To indicate a
-message digest, enter \code{DIGEST}.}
+or message digest. The default value, RAW, indicates a message. To
+indicate a message digest, enter \code{DIGEST}.
+
+Use the \code{DIGEST} value only when the value of the \code{Message} parameter is
+a message digest. If you use the \code{DIGEST} value with a raw message, the
+security of the verification operation can be compromised.}
 
 \item{Signature}{[required] The signature that the \code{Sign} operation generated.}
 

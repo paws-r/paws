@@ -17,9 +17,9 @@ lowercase string.
 
 Constraints:
 \itemize{
-\item Must contain from 1 to 63 alphanumeric characters or hyphens.
+\item Must contain 1-63 alphanumeric characters or hyphens.
 \item First character must be a letter.
-\item Cannot end with a hyphen or contain two consecutive hyphens.
+\item Can\'t end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{myrepinstance}}
@@ -27,19 +27,20 @@ Example: \code{myrepinstance}}
 \item{AllocatedStorage}{The amount of storage (in gigabytes) to be initially allocated for the
 replication instance.}
 
-\item{ReplicationInstanceClass}{[required] The compute and memory capacity of the replication instance as specified
-by the replication instance class.
+\item{ReplicationInstanceClass}{[required] The compute and memory capacity of the replication instance as defined
+for the specified replication instance class. For example to specify the
+instance class dms.c4.large, set this parameter to \code{"dms.c4.large"}.
 
-Valid Values:
-\code{dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge }}
+For more information on the settings and capacities for the available
+replication instance classes, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.html#CHAP_ReplicationInstance.InDepth}{Selecting the right AWS DMS replication instance for your migration}.}
 
 \item{VpcSecurityGroupIds}{Specifies the VPC security group to be used with the replication
 instance. The VPC security group must work with the VPC containing the
 replication instance.}
 
-\item{AvailabilityZone}{The AWS Availability Zone where the replication instance will be
-created. The default value is a random, system-chosen Availability Zone
-in the endpoint\'s AWS Region, for example: \verb{us-east-1d}}
+\item{AvailabilityZone}{The Availability Zone where the replication instance will be created.
+The default value is a random, system-chosen Availability Zone in the
+endpoint\'s AWS Region, for example: \verb{us-east-1d}}
 
 \item{ReplicationSubnetGroupIdentifier}{A subnet group to associate with the replication instance.}
 
@@ -56,14 +57,14 @@ Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 Constraints: Minimum 30-minute window.}
 
 \item{MultiAZ}{Specifies whether the replication instance is a Multi-AZ deployment. You
-cannot set the \code{AvailabilityZone} parameter if the Multi-AZ parameter is
+can\'t set the \code{AvailabilityZone} parameter if the Multi-AZ parameter is
 set to \code{true}.}
 
 \item{EngineVersion}{The engine version number of the replication instance.}
 
-\item{AutoMinorVersionUpgrade}{Indicates whether minor engine upgrades will be applied automatically to
-the replication instance during the maintenance window. This parameter
-defaults to \code{true}.
+\item{AutoMinorVersionUpgrade}{A value that indicates whether minor engine upgrades are applied
+automatically to the replication instance during the maintenance window.
+This parameter defaults to \code{true}.
 
 Default: \code{true}}
 
@@ -83,7 +84,12 @@ value of \code{true} represents an instance with a public IP address. A value
 of \code{false} represents an instance with a private IP address. The default
 value is \code{true}.}
 
-\item{DnsNameServers}{A list of DNS name servers supported for the replication instance.}
+\item{DnsNameServers}{A list of custom DNS name servers supported for the replication instance
+to access your on-premise source or target database. This list overrides
+the default name servers supported by the replication instance. You can
+specify a comma-separated list of internet addresses for up to four
+on-premise DNS name servers. For example:
+\code{"1.1.1.1,2.2.2.2,3.3.3.3,4.4.4.4"}}
 }
 \description{
 Creates the replication instance using the specified parameters.

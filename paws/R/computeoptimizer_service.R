@@ -15,8 +15,9 @@ NULL
 #' recommendation provides the best price-performance trade-off. The
 #' analysis of your usage patterns can help you decide when to move or
 #' resize your running resources, and still meet your performance and
-#' capacity requirements. For more information about Compute Optimizer, see
-#' the [AWS Compute Optimizer User
+#' capacity requirements. For more information about Compute Optimizer,
+#' including the required permissions to use the service, see the [AWS
+#' Compute Optimizer User
 #' Guide](https://docs.aws.amazon.com/compute-optimizer/latest/ug/).
 #'
 #' @param
@@ -44,13 +45,16 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- computeoptimizer()
-#' svc$get_auto_scaling_group_recommendations(
+#' svc$describe_recommendation_export_jobs(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=computeoptimizer_describe_recommendation_export_jobs]{describe_recommendation_export_jobs} \tab Describes recommendation export jobs created in the last seven days \cr
+#'  \link[=computeoptimizer_export_auto_scaling_group_recommendations]{export_auto_scaling_group_recommendations} \tab Exports optimization recommendations for Auto Scaling groups \cr
+#'  \link[=computeoptimizer_export_ec2_instance_recommendations]{export_ec2_instance_recommendations} \tab Exports optimization recommendations for Amazon EC2 instances \cr
 #'  \link[=computeoptimizer_get_auto_scaling_group_recommendations]{get_auto_scaling_group_recommendations} \tab Returns Auto Scaling group recommendations \cr
 #'  \link[=computeoptimizer_get_ec2_instance_recommendations]{get_ec2_instance_recommendations} \tab Returns Amazon EC2 instance recommendations \cr
 #'  \link[=computeoptimizer_get_ec2_recommendation_projected_metrics]{get_ec2_recommendation_projected_metrics} \tab Returns the projected utilization metrics of Amazon EC2 instance recommendations \cr
@@ -74,7 +78,7 @@ computeoptimizer <- function(config = list()) {
 
 .computeoptimizer$metadata <- list(
   service_name = "computeoptimizer",
-  endpoints = list("*" = list(endpoint = "computeoptimizer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "computeoptimizer.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "computeoptimizer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "computeoptimizer.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "computeoptimizer.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "computeoptimizer.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Compute Optimizer",
   api_version = "2019-11-01",
   signing_name = "compute-optimizer",

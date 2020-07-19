@@ -2,27 +2,42 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_create_document}
 \alias{ssm_create_document}
-\title{Creates a Systems Manager document}
+\title{Creates a Systems Manager (SSM) document}
 \usage{
 ssm_create_document(Content, Requires, Attachments, Name, VersionName,
   DocumentType, DocumentFormat, TargetType, Tags)
 }
 \arguments{
-\item{Content}{[required] A valid JSON or YAML string.}
+\item{Content}{[required] The content for the new SSM document in JSON or YAML format. We
+recommend storing the contents for your new document in an external JSON
+or YAML file and referencing the file in a command.
 
-\item{Requires}{A list of SSM documents required by a document. For example, an
+For examples, see the following topics in the \emph{AWS Systems Manager User
+Guide}.
+\itemize{
+\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html}{Create an SSM document (AWS API)}
+\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-cli.html}{Create an SSM document (AWS CLI)}
+\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html}{Create an SSM document (API)}
+}}
+
+\item{Requires}{A list of SSM documents required by a document. This parameter is used
+exclusively by AWS AppConfig. When a user creates an AppConfig
+configuration in an SSM document, the user must also specify a required
+document for validation purposes. In this case, an
 \code{ApplicationConfiguration} document requires an
-\code{ApplicationConfigurationSchema} document.}
+\code{ApplicationConfigurationSchema} document for validation purposes. For
+more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html}{AWS AppConfig}
+in the \emph{AWS Systems Manager User Guide}.}
 
 \item{Attachments}{A list of key and value pairs that describe attachments to a version of
 a document.}
 
 \item{Name}{[required] A name for the Systems Manager document.
 
-Do not use the following to begin the names of documents you create.
-They are reserved by AWS for use as document prefixes:
+You can\'t use the following strings as document name prefixes. These
+are reserved by AWS for use as document name prefixes:
 \itemize{
-\item \code{aws}
+\item \verb{aws-}
 \item \code{amazon}
 \item \code{amzn}
 }}
@@ -32,8 +47,7 @@ creating with the document. For example, \"Release 12, Update 6\". This
 value is unique across all versions of a document, and cannot be
 changed.}
 
-\item{DocumentType}{The type of document to create. Valid document types include: \code{Command},
-\code{Policy}, \code{Automation}, \code{Session}, and \code{Package}.}
+\item{DocumentType}{The type of document to create.}
 
 \item{DocumentFormat}{Specify the document format for the request. The document format can be
 JSON, YAML, or TEXT. JSON is the default format.}
@@ -43,7 +57,7 @@ run on. For example, to run a document on EC2 instances, specify the
 following value: /AWS::EC2::Instance. If you specify a value of \'/\'
 the document can run on all types of resources. If you don\'t specify a
 value, the document can\'t run on any resources. For a list of valid
-resource types, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html}{AWS Resource Types Reference}
+resource types, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html}{AWS resource and property types reference}
 in the \emph{AWS CloudFormation User Guide}.}
 
 \item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
@@ -60,11 +74,11 @@ To add tags to an existing SSM document, use the AddTagsToResource
 action.}
 }
 \description{
-Creates a Systems Manager document.
-}
-\details{
-After you create a document, you can use CreateAssociation to associate
-it with one or more running instances.
+Creates a Systems Manager (SSM) document. An SSM document defines the
+actions that Systems Manager performs on your managed instances. For
+more information about SSM documents, including information about
+supported schemas, features, and syntax, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html}{AWS Systems Manager Documents}
+in the \emph{AWS Systems Manager User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_document(

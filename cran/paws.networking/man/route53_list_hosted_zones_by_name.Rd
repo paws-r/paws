@@ -57,7 +57,7 @@ alphabetizes it as:
 
 The labels are reversed and alphabetized using the escaped value. For
 more information about valid domain name formats, including
-internationalized domain names, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html}{DNS Domain Name Format}
+internationalized domain names, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html}{DNS Domain Name Format}
 in the \emph{Amazon Route 53 Developer Guide}.
 
 Route 53 returns up to 100 items in each response. If you have a lot of

@@ -2,7 +2,7 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_create_room}
 \alias{chime_create_room}
-\title{Creates a chat room for the specified Amazon Chime account}
+\title{Creates a chat room for the specified Amazon Chime Enterprise account}
 \usage{
 chime_create_room(AccountId, Name, ClientRequestToken)
 }
@@ -14,7 +14,7 @@ chime_create_room(AccountId, Name, ClientRequestToken)
 \item{ClientRequestToken}{The idempotency token for the request.}
 }
 \description{
-Creates a chat room for the specified Amazon Chime account.
+Creates a chat room for the specified Amazon Chime Enterprise account.
 }
 \section{Request syntax}{
 \preformatted{svc$create_room(

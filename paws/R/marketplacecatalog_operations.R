@@ -142,7 +142,7 @@ marketplacecatalog_describe_entity <- function(Catalog, EntityId) {
 #'
 #' @param Catalog &#91;required&#93; The catalog related to the request. Fixed value: `AWSMarketplace`
 #' @param FilterList An array of filter objects.
-#' @param Sort An object that contains two attributes, `sortBy` and `sortOrder`.
+#' @param Sort An object that contains two attributes, `SortBy` and `SortOrder`.
 #' @param MaxResults The maximum number of results returned by a single call. This value must
 #' be provided in the next call to retrieve the next set of results. By
 #' default, this value is 20.
@@ -202,7 +202,7 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' @param EntityType &#91;required&#93; The type of entities to retrieve.
 #' @param FilterList An array of filter objects. Each filter object contains two attributes,
 #' `filterName` and `filterValues`.
-#' @param Sort An object that contains two attributes, `sortBy` and `sortOrder`.
+#' @param Sort An object that contains two attributes, `SortBy` and `SortOrder`.
 #' @param NextToken The value of the next token, if it exists. Null if there are no more
 #' results.
 #' @param MaxResults Specifies the upper limit of the elements on a single page. If a value
@@ -250,9 +250,20 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 }
 .marketplacecatalog$operations$list_entities <- marketplacecatalog_list_entities
 
-#' This operation allows you to request changes in your entities
+#' This operation allows you to request changes for your entities
 #'
-#' This operation allows you to request changes in your entities.
+#' This operation allows you to request changes for your entities. Within a
+#' single ChangeSet, you cannot start the same change type against the same
+#' entity multiple times. Additionally, when a ChangeSet is running, all
+#' the entities targeted by the different changes are locked until the
+#' ChangeSet has completed (either succeeded, cancelled, or failed). If you
+#' try to start a ChangeSet containing a change against an entity that is
+#' already locked, you will receive a `ResourceInUseException`.
+#' 
+#' For example, you cannot start the ChangeSet described in the
+#' [example](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/API_StartChangeSet.html#API_StartChangeSet_Examples)
+#' below because it contains two changes to execute the same change type
+#' (`AddRevisions`) against the same entity (`entity-id@@1)`.
 #'
 #' @usage
 #' marketplacecatalog_start_change_set(Catalog, ChangeSet, ChangeSetName,

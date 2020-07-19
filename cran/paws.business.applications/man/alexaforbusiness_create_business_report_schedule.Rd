@@ -7,7 +7,7 @@ specified S3 location with a specified daily or weekly interval}
 \usage{
 alexaforbusiness_create_business_report_schedule(ScheduleName,
   S3BucketName, S3KeyPrefix, Format, ContentRange, Recurrence,
-  ClientRequestToken)
+  ClientRequestToken, Tags)
 }
 \arguments{
 \item{ScheduleName}{The name identifier of the schedule.}
@@ -27,6 +27,8 @@ of individual files).}
 only be delivered one time when the API is called.}
 
 \item{ClientRequestToken}{The client request token.}
+
+\item{Tags}{The tags for the business report schedule.}
 }
 \description{
 Creates a recurring schedule for usage reports to deliver to the
@@ -44,7 +46,13 @@ specified S3 location with a specified daily or weekly interval.
   Recurrence = list(
     StartDate = "string"
   ),
-  ClientRequestToken = "string"
+  ClientRequestToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

@@ -3,8 +3,19 @@
 #' @include waf_service.R
 NULL
 
-#' Creates a ByteMatchSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Creates a `ByteMatchSet`. You then use UpdateByteMatchSet to identify
 #' the part of a web request that you want AWS WAF to inspect, such as the
 #' values of the `User-Agent` header or the query string. For example, you
@@ -65,10 +76,19 @@ waf_create_byte_match_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_byte_match_set <- waf_create_byte_match_set
 
-#' Creates an GeoMatchSet, which you use to specify which web requests you
-#' want to allow or block based on the country that the requests originate
-#' from
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Creates an GeoMatchSet, which you use to specify which web requests you
 #' want to allow or block based on the country that the requests originate
 #' from. For example, if you\'re receiving a lot of requests from one or
@@ -128,10 +148,19 @@ waf_create_geo_match_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_geo_match_set <- waf_create_geo_match_set
 
-#' Creates an IPSet, which you use to specify which web requests that you
-#' want to allow or block based on the IP addresses that the requests
-#' originate from
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Creates an IPSet, which you use to specify which web requests that you
 #' want to allow or block based on the IP addresses that the requests
 #' originate from. For example, if you\'re receiving a lot of requests from
@@ -201,8 +230,19 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_ip_set <- waf_create_ip_set
 
-#' Creates a RateBasedRule
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Creates a RateBasedRule. The `RateBasedRule` contains a `RateLimit`,
 #' which specifies the maximum number of requests that AWS WAF allows from
 #' a specified IP address in a five-minute period. The `RateBasedRule` also
@@ -212,23 +252,23 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 #' 
 #' If you add more than one predicate to a `RateBasedRule`, a request not
 #' only must exceed the `RateLimit`, but it also must match all the
-#' specifications to be counted or blocked. For example, suppose you add
-#' the following to a `RateBasedRule`:
+#' conditions to be counted or blocked. For example, suppose you add the
+#' following to a `RateBasedRule`:
 #' 
 #' -   An `IPSet` that matches the IP address `192.0.2.44/32`
 #' 
 #' -   A `ByteMatchSet` that matches `BadBot` in the `User-Agent` header
 #' 
-#' Further, you specify a `RateLimit` of 15,000.
+#' Further, you specify a `RateLimit` of 1,000.
 #' 
 #' You then add the `RateBasedRule` to a `WebACL` and specify that you want
 #' to block requests that meet the conditions in the rule. For a request to
 #' be blocked, it must come from the IP address 192.0.2.44 *and* the
 #' `User-Agent` header in the request must contain the value `BadBot`.
 #' Further, requests that match these two conditions must be received at a
-#' rate of more than 15,000 requests every five minutes. If both conditions
+#' rate of more than 1,000 requests every five minutes. If both conditions
 #' are met and the rate is exceeded, AWS WAF blocks the requests. If the
-#' rate drops below 15,000 for a five-minute period, AWS WAF no longer
+#' rate drops below 1,000 for a five-minute period, AWS WAF no longer
 #' blocks the requests.
 #' 
 #' As a second example, suppose you want to limit requests to a particular
@@ -241,7 +281,7 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 #' 
 #' -   A `TargetString` of `login`
 #' 
-#' Further, you specify a `RateLimit` of 15,000.
+#' Further, you specify a `RateLimit` of 1,000.
 #' 
 #' By adding this `RateBasedRule` to a `WebACL`, you could limit requests
 #' to your login page without affecting the rest of your site.
@@ -334,8 +374,19 @@ waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, Cha
 }
 .waf$operations$create_rate_based_rule <- waf_create_rate_based_rule
 
-#' Creates a RegexMatchSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Creates a RegexMatchSet. You then use UpdateRegexMatchSet to identify
 #' the part of a web request that you want AWS WAF to inspect, such as the
 #' values of the `User-Agent` header or the query string. For example, you
@@ -398,8 +449,19 @@ waf_create_regex_match_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_regex_match_set <- waf_create_regex_match_set
 
-#' Creates a RegexPatternSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Creates a `RegexPatternSet`. You then use UpdateRegexPatternSet to
 #' specify the regular expression (regex) pattern that you want AWS WAF to
 #' search for, such as `B\\[a@@\\]dB\\[o0\\]t`. You can then configure AWS
@@ -458,9 +520,19 @@ waf_create_regex_pattern_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_regex_pattern_set <- waf_create_regex_pattern_set
 
-#' Creates a Rule, which contains the IPSet objects, ByteMatchSet objects,
-#' and other predicates that identify the requests that you want to block
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Creates a `Rule`, which contains the `IPSet` objects, `ByteMatchSet`
 #' objects, and other predicates that identify the requests that you want
 #' to block. If you add more than one predicate to a `Rule`, a request must
@@ -559,8 +631,19 @@ waf_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 }
 .waf$operations$create_rule <- waf_create_rule
 
-#' Creates a RuleGroup
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Creates a `RuleGroup`. A rule group is a collection of predefined rules
 #' that you add to a web ACL. You use UpdateRuleGroup to add rules to the
 #' rule group.
@@ -627,8 +710,19 @@ waf_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 }
 .waf$operations$create_rule_group <- waf_create_rule_group
 
-#' Creates a SizeConstraintSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Creates a `SizeConstraintSet`. You then use UpdateSizeConstraintSet to
 #' identify the part of a web request that you want AWS WAF to check for
 #' length, such as the length of the `User-Agent` header or the length of
@@ -700,10 +794,19 @@ waf_create_size_constraint_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_size_constraint_set <- waf_create_size_constraint_set
 
-#' Creates a SqlInjectionMatchSet, which you use to allow, block, or count
-#' requests that contain snippets of SQL code in a specified part of web
-#' requests
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Creates a SqlInjectionMatchSet, which you use to allow, block, or count
 #' requests that contain snippets of SQL code in a specified part of web
 #' requests. AWS WAF searches for character sequences that are likely to be
@@ -774,9 +877,19 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_sql_injection_match_set <- waf_create_sql_injection_match_set
 
-#' Creates a WebACL, which contains the Rules that identify the CloudFront
-#' web requests that you want to allow, block, or count
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Creates a `WebACL`, which contains the `Rules` that identify the
 #' CloudFront web requests that you want to allow, block, or count. AWS WAF
 #' evaluates `Rules` in order based on the value of `Priority` for each
@@ -880,10 +993,89 @@ waf_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeToken, Tag
 }
 .waf$operations$create_web_acl <- waf_create_web_acl
 
-#' Creates an XssMatchSet, which you use to allow, block, or count requests
-#' that contain cross-site scripting attacks in the specified part of web
-#' requests
+#' Creates an AWS CloudFormation WAFV2 template for the specified web ACL
+#' in the specified Amazon S3 bucket
 #'
+#' Creates an AWS CloudFormation WAFV2 template for the specified web ACL
+#' in the specified Amazon S3 bucket. Then, in CloudFormation, you create a
+#' stack from the template, to create the web ACL and its resources in AWS
+#' WAFV2. Use this to migrate your AWS WAF Classic web ACL to the latest
+#' version of AWS WAF.
+#' 
+#' This is part of a larger migration procedure for web ACLs from AWS WAF
+#' Classic to the latest version of AWS WAF. For the full procedure,
+#' including caveats and manual steps to complete the migration and switch
+#' over to the new web ACL, see [Migrating your AWS WAF Classic resources
+#' to AWS
+#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-migrating-from-classic.html)
+#' in the [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#'
+#' @usage
+#' waf_create_web_acl_migration_stack(WebACLId, S3BucketName,
+#'   IgnoreUnsupportedType)
+#'
+#' @param WebACLId &#91;required&#93; The UUID of the WAF Classic web ACL that you want to migrate to WAF v2.
+#' @param S3BucketName &#91;required&#93; The name of the Amazon S3 bucket to store the CloudFormation template
+#' in. The S3 bucket must be configured as follows for the migration:
+#' 
+#' -   The bucket name must start with `aws-waf-migration-`. For example,
+#'     `aws-waf-migration-my-web-acl`.
+#' 
+#' -   The bucket must be in the Region where you are deploying the
+#'     template. For example, for a web ACL in us-west-2, you must use an
+#'     Amazon S3 bucket in us-west-2 and you must deploy the template stack
+#'     to us-west-2.
+#' 
+#' -   The bucket policies must permit the migration process to write data.
+#'     For listings of the bucket policies, see the Examples section.
+#' @param IgnoreUnsupportedType &#91;required&#93; Indicates whether to exclude entities that can\'t be migrated or to stop
+#' the migration. Set this to true to ignore unsupported entities in the
+#' web ACL during the migration. Otherwise, if AWS WAF encounters
+#' unsupported entities, it stops the process and throws an exception.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_web_acl_migration_stack(
+#'   WebACLId = "string",
+#'   S3BucketName = "string",
+#'   IgnoreUnsupportedType = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname waf_create_web_acl_migration_stack
+waf_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, IgnoreUnsupportedType) {
+  op <- new_operation(
+    name = "CreateWebACLMigrationStack",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .waf$create_web_acl_migration_stack_input(WebACLId = WebACLId, S3BucketName = S3BucketName, IgnoreUnsupportedType = IgnoreUnsupportedType)
+  output <- .waf$create_web_acl_migration_stack_output()
+  config <- get_config()
+  svc <- .waf$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.waf$operations$create_web_acl_migration_stack <- waf_create_web_acl_migration_stack
+
+#' This is AWS WAF CLASSIC documentation
+#'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Creates an XssMatchSet, which you use to allow, block, or count requests
 #' that contain cross-site scripting attacks in the specified part of web
 #' requests. AWS WAF searches for character sequences that are likely to be
@@ -952,8 +1144,19 @@ waf_create_xss_match_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_xss_match_set <- waf_create_xss_match_set
 
-#' Permanently deletes a ByteMatchSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes a ByteMatchSet. You can\'t delete a `ByteMatchSet`
 #' if it\'s still used in any `Rules` or if it still includes any
 #' ByteMatchTuple objects (any filters).
@@ -1017,8 +1220,19 @@ waf_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
 }
 .waf$operations$delete_byte_match_set <- waf_delete_byte_match_set
 
-#' Permanently deletes a GeoMatchSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes a GeoMatchSet. You can\'t delete a `GeoMatchSet` if
 #' it\'s still used in any `Rules` or if it still includes any countries.
 #' 
@@ -1072,8 +1286,19 @@ waf_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
 }
 .waf$operations$delete_geo_match_set <- waf_delete_geo_match_set
 
-#' Permanently deletes an IPSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes an IPSet. You can\'t delete an `IPSet` if it\'s
 #' still used in any `Rules` or if it still includes any IP addresses.
 #' 
@@ -1135,8 +1360,19 @@ waf_delete_ip_set <- function(IPSetId, ChangeToken) {
 }
 .waf$operations$delete_ip_set <- waf_delete_ip_set
 
-#' Permanently deletes the LoggingConfiguration from the specified web ACL
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes the LoggingConfiguration from the specified web ACL.
 #'
 #' @usage
@@ -1172,8 +1408,19 @@ waf_delete_logging_configuration <- function(ResourceArn) {
 }
 .waf$operations$delete_logging_configuration <- waf_delete_logging_configuration
 
-#' Permanently deletes an IAM policy from the specified RuleGroup
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes an IAM policy from the specified RuleGroup.
 #' 
 #' The user making the request must be the owner of the RuleGroup.
@@ -1213,8 +1460,19 @@ waf_delete_permission_policy <- function(ResourceArn) {
 }
 .waf$operations$delete_permission_policy <- waf_delete_permission_policy
 
-#' Permanently deletes a RateBasedRule
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes a RateBasedRule. You can\'t delete a rule if it\'s
 #' still used in any `WebACL` objects or if it still includes any
 #' predicates, such as `ByteMatchSet` objects.
@@ -1267,8 +1525,19 @@ waf_delete_rate_based_rule <- function(RuleId, ChangeToken) {
 }
 .waf$operations$delete_rate_based_rule <- waf_delete_rate_based_rule
 
-#' Permanently deletes a RegexMatchSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes a RegexMatchSet. You can\'t delete a `RegexMatchSet`
 #' if it\'s still used in any `Rules` or if it still includes any
 #' `RegexMatchTuples` objects (any filters).
@@ -1322,8 +1591,19 @@ waf_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
 }
 .waf$operations$delete_regex_match_set <- waf_delete_regex_match_set
 
-#' Permanently deletes a RegexPatternSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes a RegexPatternSet. You can\'t delete a
 #' `RegexPatternSet` if it\'s still used in any `RegexMatchSet` or if the
 #' `RegexPatternSet` is not empty.
@@ -1364,8 +1644,19 @@ waf_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken) {
 }
 .waf$operations$delete_regex_pattern_set <- waf_delete_regex_pattern_set
 
-#' Permanently deletes a Rule
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes a Rule. You can\'t delete a `Rule` if it\'s still
 #' used in any `WebACL` objects or if it still includes any predicates,
 #' such as `ByteMatchSet` objects.
@@ -1427,8 +1718,19 @@ waf_delete_rule <- function(RuleId, ChangeToken) {
 }
 .waf$operations$delete_rule <- waf_delete_rule
 
-#' Permanently deletes a RuleGroup
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes a RuleGroup. You can\'t delete a `RuleGroup` if
 #' it\'s still used in any `WebACL` objects or if it still includes any
 #' rules.
@@ -1482,8 +1784,19 @@ waf_delete_rule_group <- function(RuleGroupId, ChangeToken) {
 }
 .waf$operations$delete_rule_group <- waf_delete_rule_group
 
-#' Permanently deletes a SizeConstraintSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes a SizeConstraintSet. You can\'t delete a
 #' `SizeConstraintSet` if it\'s still used in any `Rules` or if it still
 #' includes any SizeConstraint objects (any filters).
@@ -1548,8 +1861,19 @@ waf_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeToken) {
 }
 .waf$operations$delete_size_constraint_set <- waf_delete_size_constraint_set
 
-#' Permanently deletes a SqlInjectionMatchSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes a SqlInjectionMatchSet. You can\'t delete a
 #' `SqlInjectionMatchSet` if it\'s still used in any `Rules` or if it still
 #' contains any SqlInjectionMatchTuple objects.
@@ -1614,8 +1938,19 @@ waf_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 }
 .waf$operations$delete_sql_injection_match_set <- waf_delete_sql_injection_match_set
 
-#' Permanently deletes a WebACL
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes a WebACL. You can\'t delete a `WebACL` if it still
 #' contains any `Rules`.
 #' 
@@ -1674,8 +2009,19 @@ waf_delete_web_acl <- function(WebACLId, ChangeToken) {
 }
 .waf$operations$delete_web_acl <- waf_delete_web_acl
 
-#' Permanently deletes an XssMatchSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Permanently deletes an XssMatchSet. You can\'t delete an `XssMatchSet`
 #' if it\'s still used in any `Rules` or if it still contains any
 #' XssMatchTuple objects.
@@ -1740,8 +2086,19 @@ waf_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
 }
 .waf$operations$delete_xss_match_set <- waf_delete_xss_match_set
 
-#' Returns the ByteMatchSet specified by ByteMatchSetId
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the ByteMatchSet specified by `ByteMatchSetId`.
 #'
 #' @usage
@@ -1787,10 +2144,19 @@ waf_get_byte_match_set <- function(ByteMatchSetId) {
 }
 .waf$operations$get_byte_match_set <- waf_get_byte_match_set
 
-#' When you want to create, update, or delete AWS WAF objects, get a change
-#' token and include the change token in the create, update, or delete
-#' request
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' When you want to create, update, or delete AWS WAF objects, get a change
 #' token and include the change token in the create, update, or delete
 #' request. Change tokens ensure that your application doesn\'t submit
@@ -1842,9 +2208,19 @@ waf_get_change_token <- function() {
 }
 .waf$operations$get_change_token <- waf_get_change_token
 
-#' Returns the status of a ChangeToken that you got by calling
-#' GetChangeToken
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the status of a `ChangeToken` that you got by calling
 #' GetChangeToken. `ChangeTokenStatus` is one of the following values:
 #' 
@@ -1899,8 +2275,19 @@ waf_get_change_token_status <- function(ChangeToken) {
 }
 .waf$operations$get_change_token_status <- waf_get_change_token_status
 
-#' Returns the GeoMatchSet that is specified by GeoMatchSetId
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the GeoMatchSet that is specified by `GeoMatchSetId`.
 #'
 #' @usage
@@ -1937,8 +2324,19 @@ waf_get_geo_match_set <- function(GeoMatchSetId) {
 }
 .waf$operations$get_geo_match_set <- waf_get_geo_match_set
 
-#' Returns the IPSet that is specified by IPSetId
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the IPSet that is specified by `IPSetId`.
 #'
 #' @usage
@@ -1983,8 +2381,19 @@ waf_get_ip_set <- function(IPSetId) {
 }
 .waf$operations$get_ip_set <- waf_get_ip_set
 
-#' Returns the LoggingConfiguration for the specified web ACL
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the LoggingConfiguration for the specified web ACL.
 #'
 #' @usage
@@ -2020,8 +2429,19 @@ waf_get_logging_configuration <- function(ResourceArn) {
 }
 .waf$operations$get_logging_configuration <- waf_get_logging_configuration
 
-#' Returns the IAM policy attached to the RuleGroup
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the IAM policy attached to the RuleGroup.
 #'
 #' @usage
@@ -2057,9 +2477,19 @@ waf_get_permission_policy <- function(ResourceArn) {
 }
 .waf$operations$get_permission_policy <- waf_get_permission_policy
 
-#' Returns the RateBasedRule that is specified by the RuleId that you
-#' included in the GetRateBasedRule request
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the RateBasedRule that is specified by the `RuleId` that you
 #' included in the `GetRateBasedRule` request.
 #'
@@ -2096,9 +2526,19 @@ waf_get_rate_based_rule <- function(RuleId) {
 }
 .waf$operations$get_rate_based_rule <- waf_get_rate_based_rule
 
-#' Returns an array of IP addresses currently being blocked by the
-#' RateBasedRule that is specified by the RuleId
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of IP addresses currently being blocked by the
 #' RateBasedRule that is specified by the `RuleId`. The maximum number of
 #' managed keys that will be blocked is 10,000. If more than 10,000
@@ -2142,8 +2582,19 @@ waf_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NULL) {
 }
 .waf$operations$get_rate_based_rule_managed_keys <- waf_get_rate_based_rule_managed_keys
 
-#' Returns the RegexMatchSet specified by RegexMatchSetId
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the RegexMatchSet specified by `RegexMatchSetId`.
 #'
 #' @usage
@@ -2180,8 +2631,19 @@ waf_get_regex_match_set <- function(RegexMatchSetId) {
 }
 .waf$operations$get_regex_match_set <- waf_get_regex_match_set
 
-#' Returns the RegexPatternSet specified by RegexPatternSetId
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the RegexPatternSet specified by `RegexPatternSetId`.
 #'
 #' @usage
@@ -2218,9 +2680,19 @@ waf_get_regex_pattern_set <- function(RegexPatternSetId) {
 }
 .waf$operations$get_regex_pattern_set <- waf_get_regex_pattern_set
 
-#' Returns the Rule that is specified by the RuleId that you included in
-#' the GetRule request
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the Rule that is specified by the `RuleId` that you included in
 #' the `GetRule` request.
 #'
@@ -2266,9 +2738,19 @@ waf_get_rule <- function(RuleId) {
 }
 .waf$operations$get_rule <- waf_get_rule
 
-#' Returns the RuleGroup that is specified by the RuleGroupId that you
-#' included in the GetRuleGroup request
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the RuleGroup that is specified by the `RuleGroupId` that you
 #' included in the `GetRuleGroup` request.
 #' 
@@ -2307,11 +2789,19 @@ waf_get_rule_group <- function(RuleGroupId) {
 }
 .waf$operations$get_rule_group <- waf_get_rule_group
 
-#' Gets detailed information about a specified number of requests--a
-#' sample--that AWS WAF randomly selects from among the first 5,000
-#' requests that your AWS resource received during a time range that you
-#' choose
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Gets detailed information about a specified number of requests\\--a
 #' sample\\--that AWS WAF randomly selects from among the first 5,000
 #' requests that your AWS resource received during a time range that you
@@ -2340,9 +2830,11 @@ waf_get_rule_group <- function(RuleGroupId) {
 #'     sample of the requests that didn\'t match any of the rules in the
 #'     specified `WebACL`.
 #' @param TimeWindow &#91;required&#93; The start date and time and the end date and time of the range for which
-#' you want `GetSampledRequests` to return a sample of requests. Specify
-#' the date and time in the following format: `"2016-09-27T14:50Z"`. You
-#' can specify any time range in the previous three hours.
+#' you want `GetSampledRequests` to return a sample of requests. You must
+#' specify the times in Coordinated Universal Time (UTC) format. UTC format
+#' includes the special designator, `Z`. For example,
+#' `"2016-09-27T14:50Z"`. You can specify any time range in the previous
+#' three hours.
 #' @param MaxItems &#91;required&#93; The number of requests that you want AWS WAF to return from among the
 #' first 5,000 requests that your AWS resource received during the time
 #' range. If your resource received fewer requests than the value of
@@ -2402,8 +2894,19 @@ waf_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxItems) {
 }
 .waf$operations$get_sampled_requests <- waf_get_sampled_requests
 
-#' Returns the SizeConstraintSet specified by SizeConstraintSetId
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the SizeConstraintSet specified by `SizeConstraintSetId`.
 #'
 #' @usage
@@ -2449,9 +2952,19 @@ waf_get_size_constraint_set <- function(SizeConstraintSetId) {
 }
 .waf$operations$get_size_constraint_set <- waf_get_size_constraint_set
 
-#' Returns the SqlInjectionMatchSet that is specified by
-#' SqlInjectionMatchSetId
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the SqlInjectionMatchSet that is specified by
 #' `SqlInjectionMatchSetId`.
 #'
@@ -2498,8 +3011,19 @@ waf_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
 }
 .waf$operations$get_sql_injection_match_set <- waf_get_sql_injection_match_set
 
-#' Returns the WebACL that is specified by WebACLId
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the WebACL that is specified by `WebACLId`.
 #'
 #' @usage
@@ -2544,8 +3068,19 @@ waf_get_web_acl <- function(WebACLId) {
 }
 .waf$operations$get_web_acl <- waf_get_web_acl
 
-#' Returns the XssMatchSet that is specified by XssMatchSetId
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns the XssMatchSet that is specified by `XssMatchSetId`.
 #'
 #' @usage
@@ -2591,8 +3126,19 @@ waf_get_xss_match_set <- function(XssMatchSetId) {
 }
 .waf$operations$get_xss_match_set <- waf_get_xss_match_set
 
-#' Returns an array of ActivatedRule objects
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of ActivatedRule objects.
 #'
 #' @usage
@@ -2640,8 +3186,19 @@ waf_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, NextMarke
 }
 .waf$operations$list_activated_rules_in_rule_group <- waf_list_activated_rules_in_rule_group
 
-#' Returns an array of ByteMatchSetSummary objects
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of ByteMatchSetSummary objects.
 #'
 #' @usage
@@ -2686,8 +3243,19 @@ waf_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_byte_match_sets <- waf_list_byte_match_sets
 
-#' Returns an array of GeoMatchSetSummary objects in the response
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of GeoMatchSetSummary objects in the response.
 #'
 #' @usage
@@ -2732,8 +3300,19 @@ waf_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_geo_match_sets <- waf_list_geo_match_sets
 
-#' Returns an array of IPSetSummary objects in the response
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of IPSetSummary objects in the response.
 #'
 #' @usage
@@ -2784,8 +3363,19 @@ waf_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_ip_sets <- waf_list_ip_sets
 
-#' Returns an array of LoggingConfiguration objects
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of LoggingConfiguration objects.
 #'
 #' @usage
@@ -2832,8 +3422,19 @@ waf_list_logging_configurations <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_logging_configurations <- waf_list_logging_configurations
 
-#' Returns an array of RuleSummary objects
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of RuleSummary objects.
 #'
 #' @usage
@@ -2878,8 +3479,19 @@ waf_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_rate_based_rules <- waf_list_rate_based_rules
 
-#' Returns an array of RegexMatchSetSummary objects
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of RegexMatchSetSummary objects.
 #'
 #' @usage
@@ -2924,8 +3536,19 @@ waf_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_regex_match_sets <- waf_list_regex_match_sets
 
-#' Returns an array of RegexPatternSetSummary objects
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of RegexPatternSetSummary objects.
 #'
 #' @usage
@@ -2972,8 +3595,19 @@ waf_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_regex_pattern_sets <- waf_list_regex_pattern_sets
 
-#' Returns an array of RuleGroup objects
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of RuleGroup objects.
 #'
 #' @usage
@@ -3018,8 +3652,19 @@ waf_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_rule_groups <- waf_list_rule_groups
 
-#' Returns an array of RuleSummary objects
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of RuleSummary objects.
 #'
 #' @usage
@@ -3071,8 +3716,19 @@ waf_list_rules <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_rules <- waf_list_rules
 
-#' Returns an array of SizeConstraintSetSummary objects
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of SizeConstraintSetSummary objects.
 #'
 #' @usage
@@ -3128,8 +3784,19 @@ waf_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_size_constraint_sets <- waf_list_size_constraint_sets
 
-#' Returns an array of SqlInjectionMatchSet objects
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of SqlInjectionMatchSet objects.
 #'
 #' @usage
@@ -3184,8 +3851,19 @@ waf_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_sql_injection_match_sets <- waf_list_sql_injection_match_sets
 
-#' Returns an array of RuleGroup objects that you are subscribed to
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of RuleGroup objects that you are subscribed to.
 #'
 #' @usage
@@ -3231,9 +3909,30 @@ waf_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_subscribed_rule_groups <- waf_list_subscribed_rule_groups
 
-#' List tags for resource
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
 #' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
+#' Retrieves the tags associated with the specified AWS resource. Tags are
+#' key:value pairs that you can use to categorize and manage your
+#' resources, for purposes like billing. For example, you might set the tag
+#' key to \"customer\" and the value to the customer name or ID. You can
+#' specify one or more tags to add to each AWS resource, up to 50 tags for
+#' a resource.
+#' 
+#' Tagging is only available through the API, SDKs, and CLI. You can\'t
+#' manage or view tags through the AWS WAF Classic console. You can tag the
+#' AWS resources that you manage through AWS WAF Classic: web ACLs, rule
+#' groups, and rules.
 #'
 #' @usage
 #' waf_list_tags_for_resource(NextMarker, Limit, ResourceARN)
@@ -3271,8 +3970,19 @@ waf_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resource
 }
 .waf$operations$list_tags_for_resource <- waf_list_tags_for_resource
 
-#' Returns an array of WebACLSummary objects in the response
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of WebACLSummary objects in the response.
 #'
 #' @usage
@@ -3325,8 +4035,19 @@ waf_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_web_ac_ls <- waf_list_web_ac_ls
 
-#' Returns an array of XssMatchSet objects
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Returns an array of XssMatchSet objects.
 #'
 #' @usage
@@ -3379,8 +4100,19 @@ waf_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_xss_match_sets <- waf_list_xss_match_sets
 
-#' Associates a LoggingConfiguration with a specified web ACL
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Associates a LoggingConfiguration with a specified web ACL.
 #' 
 #' You can access information about all traffic that AWS WAF inspects using
@@ -3453,9 +4185,20 @@ waf_put_logging_configuration <- function(LoggingConfiguration) {
 }
 .waf$operations$put_logging_configuration <- waf_put_logging_configuration
 
-#' Attaches a IAM policy to the specified resource
+#' This is AWS WAF CLASSIC documentation
 #'
-#' Attaches a IAM policy to the specified resource. The only supported use
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
+#' Attaches an IAM policy to the specified resource. The only supported use
 #' for this action is to share a RuleGroup across accounts.
 #' 
 #' The `PutPermissionPolicy` is subject to the following restrictions:
@@ -3522,9 +4265,30 @@ waf_put_permission_policy <- function(ResourceArn, Policy) {
 }
 .waf$operations$put_permission_policy <- waf_put_permission_policy
 
-#' Tag resource
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
 #' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
+#' Associates tags with the specified AWS resource. Tags are key:value
+#' pairs that you can use to categorize and manage your resources, for
+#' purposes like billing. For example, you might set the tag key to
+#' \"customer\" and the value to the customer name or ID. You can specify
+#' one or more tags to add to each AWS resource, up to 50 tags for a
+#' resource.
+#' 
+#' Tagging is only available through the API, SDKs, and CLI. You can\'t
+#' manage or view tags through the AWS WAF Classic console. You can use
+#' this action to tag the AWS resources that you manage through AWS WAF
+#' Classic: web ACLs, rule groups, and rules.
 #'
 #' @usage
 #' waf_tag_resource(ResourceARN, Tags)
@@ -3565,9 +4329,18 @@ waf_tag_resource <- function(ResourceARN, Tags) {
 }
 .waf$operations$tag_resource <- waf_tag_resource
 
-#' Untag resource
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
 #' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
 #'
 #' @usage
 #' waf_untag_resource(ResourceARN, TagKeys)
@@ -3605,8 +4378,19 @@ waf_untag_resource <- function(ResourceARN, TagKeys) {
 }
 .waf$operations$untag_resource <- waf_untag_resource
 
-#' Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet.
 #' For each `ByteMatchTuple` object, you specify the following values:
 #' 
@@ -3733,8 +4517,19 @@ waf_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updates) {
 }
 .waf$operations$update_byte_match_set <- waf_update_byte_match_set
 
-#' Inserts or deletes GeoMatchConstraint objects in an GeoMatchSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Inserts or deletes GeoMatchConstraint objects in an `GeoMatchSet`. For
 #' each `GeoMatchConstraint` object, you specify the following values:
 #' 
@@ -3822,8 +4617,19 @@ waf_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates) {
 }
 .waf$operations$update_geo_match_set <- waf_update_geo_match_set
 
-#' Inserts or deletes IPSetDescriptor objects in an IPSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Inserts or deletes IPSetDescriptor objects in an `IPSet`. For each
 #' `IPSetDescriptor` object, you specify the following values:
 #' 
@@ -3952,9 +4758,19 @@ waf_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 }
 .waf$operations$update_ip_set <- waf_update_ip_set
 
-#' Inserts or deletes Predicate objects in a rule and updates the RateLimit
-#' in the rule
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Inserts or deletes Predicate objects in a rule and updates the
 #' `RateLimit` in the rule.
 #' 
@@ -3972,15 +4788,15 @@ waf_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 #' 
 #' -   A `ByteMatchSet` that matches `BadBot` in the `User-Agent` header
 #' 
-#' Further, you specify a `RateLimit` of 15,000.
+#' Further, you specify a `RateLimit` of 1,000.
 #' 
 #' You then add the `RateBasedRule` to a `WebACL` and specify that you want
 #' to block requests that satisfy the rule. For a request to be blocked, it
 #' must come from the IP address 192.0.2.44 *and* the `User-Agent` header
 #' in the request must contain the value `BadBot`. Further, requests that
-#' match these two conditions much be received at a rate of more than
-#' 15,000 every five minutes. If the rate drops below this limit, AWS WAF
-#' no longer blocks the requests.
+#' match these two conditions much be received at a rate of more than 1,000
+#' every five minutes. If the rate drops below this limit, AWS WAF no
+#' longer blocks the requests.
 #' 
 #' As a second example, suppose you want to limit requests to a particular
 #' page on your site. To do this, you could add the following to a
@@ -3992,7 +4808,7 @@ waf_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 #' 
 #' -   A `TargetString` of `login`
 #' 
-#' Further, you specify a `RateLimit` of 15,000.
+#' Further, you specify a `RateLimit` of 1,000.
 #' 
 #' By adding this `RateBasedRule` to a `WebACL`, you could limit requests
 #' to your login page without affecting the rest of your site.
@@ -4050,8 +4866,19 @@ waf_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, RateLimit) 
 }
 .waf$operations$update_rate_based_rule <- waf_update_rate_based_rule
 
-#' Inserts or deletes RegexMatchTuple objects (filters) in a RegexMatchSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Inserts or deletes RegexMatchTuple objects (filters) in a RegexMatchSet.
 #' For each `RegexMatchSetUpdate` object, you specify the following values:
 #' 
@@ -4143,8 +4970,19 @@ waf_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeToken) {
 }
 .waf$operations$update_regex_match_set <- waf_update_regex_match_set
 
-#' Inserts or deletes RegexPatternString objects in a RegexPatternSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Inserts or deletes `RegexPatternString` objects in a RegexPatternSet.
 #' For each `RegexPatternString` object, you specify the following values:
 #' 
@@ -4224,8 +5062,19 @@ waf_update_regex_pattern_set <- function(RegexPatternSetId, Updates, ChangeToken
 }
 .waf$operations$update_regex_pattern_set <- waf_update_regex_pattern_set
 
-#' Inserts or deletes Predicate objects in a Rule
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Inserts or deletes Predicate objects in a `Rule`. Each `Predicate`
 #' object identifies a predicate, such as a ByteMatchSet or an IPSet, that
 #' specifies the web requests that you want to allow, block, or count. If
@@ -4338,8 +5187,19 @@ waf_update_rule <- function(RuleId, ChangeToken, Updates) {
 }
 .waf$operations$update_rule <- waf_update_rule
 
-#' Inserts or deletes ActivatedRule objects in a RuleGroup
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Inserts or deletes ActivatedRule objects in a `RuleGroup`.
 #' 
 #' You can only insert `REGULAR` rules into a rule group.
@@ -4433,9 +5293,19 @@ waf_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 }
 .waf$operations$update_rule_group <- waf_update_rule_group
 
-#' Inserts or deletes SizeConstraint objects (filters) in a
-#' SizeConstraintSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Inserts or deletes SizeConstraint objects (filters) in a
 #' SizeConstraintSet. For each `SizeConstraint` object, you specify the
 #' following values:
@@ -4570,9 +5440,19 @@ waf_update_size_constraint_set <- function(SizeConstraintSetId, ChangeToken, Upd
 }
 .waf$operations$update_size_constraint_set <- waf_update_size_constraint_set
 
-#' Inserts or deletes SqlInjectionMatchTuple objects (filters) in a
-#' SqlInjectionMatchSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Inserts or deletes SqlInjectionMatchTuple objects (filters) in a
 #' SqlInjectionMatchSet. For each `SqlInjectionMatchTuple` object, you
 #' specify the following values:
@@ -4696,8 +5576,19 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 }
 .waf$operations$update_sql_injection_match_set <- waf_update_sql_injection_match_set
 
-#' Inserts or deletes ActivatedRule objects in a WebACL
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Inserts or deletes ActivatedRule objects in a `WebACL`. Each `Rule`
 #' identifies web requests that you want to allow, block, or count. When
 #' you update a `WebACL`, you specify the following values:
@@ -4743,14 +5634,14 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #'     to associate the `WebACL` with a CloudFront distribution.
 #' 
 #'     The `ActivatedRule` can be a rule group. If you specify a rule group
-#'     as your `ActivatedRule`, you can exclude specific rules from that
+#'     as your `ActivatedRule` , you can exclude specific rules from that
 #'     rule group.
 #' 
 #'     If you already have a rule group associated with a web ACL and want
 #'     to submit an `UpdateWebACL` request to exclude certain rules from
 #'     that rule group, you must first remove the rule group from the web
 #'     ACL, the re-insert it again, specifying the excluded rules. For
-#'     details, see ActivatedRule\\$ExcludedRules.
+#'     details, see ActivatedRule\\$ExcludedRules .
 #' 
 #' Be aware that if you try to add a RATE\\_BASED rule to a web ACL without
 #' setting the rule type when first creating the rule, the UpdateWebACL
@@ -4864,8 +5755,19 @@ waf_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, DefaultAct
 }
 .waf$operations$update_web_acl <- waf_update_web_acl
 
-#' Inserts or deletes XssMatchTuple objects (filters) in an XssMatchSet
+#' This is AWS WAF CLASSIC documentation
 #'
+#' This is **AWS WAF Classic** documentation. For more information, see
+#' [AWS WAF
+#' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+#' in the developer guide.
+#' 
+#' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
+#' [AWS WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' With the latest version, AWS WAF has a single set of endpoints for
+#' regional and global use.
+#' 
 #' Inserts or deletes XssMatchTuple objects (filters) in an XssMatchSet.
 #' For each `XssMatchTuple` object, you specify the following values:
 #' 

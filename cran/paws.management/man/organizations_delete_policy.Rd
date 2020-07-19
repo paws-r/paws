@@ -12,8 +12,8 @@ can get the ID from the ListPolicies or ListPoliciesForTarget
 operations.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
-string requires \"p-\" followed by from 8 to 128 lowercase letters or
-digits.}
+string requires \"p-\" followed by from 8 to 128 lowercase or uppercase
+letters, digits, or the underscore character (\\_).}
 }
 \description{
 Deletes the specified policy from your organization. Before you perform

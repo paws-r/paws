@@ -11,14 +11,20 @@ ssm_create_resource_data_sync(SyncName, S3Destination, SyncType,
 \arguments{
 \item{SyncName}{[required] A name for the configuration.}
 
-\item{S3Destination}{Amazon S3 configuration details for the sync.}
+\item{S3Destination}{Amazon S3 configuration details for the sync. This parameter is required
+if the \code{SyncType} value is SyncToDestination.}
 
 \item{SyncType}{Specify \code{SyncToDestination} to create a resource data sync that
-synchronizes data from multiple AWS Regions to an Amazon S3 bucket.
-Specify \code{SyncFromSource} to synchronize data from multiple AWS accounts
-and Regions, as listed in AWS Organizations.}
+synchronizes data to an S3 bucket for Inventory. If you specify
+\code{SyncToDestination}, you must provide a value for \code{S3Destination}.
+Specify \code{SyncFromSource} to synchronize data from a single account and
+multiple Regions, or multiple AWS accounts and Regions, as listed in AWS
+Organizations for Explorer. If you specify \code{SyncFromSource}, you must
+provide a value for \code{SyncSource}. The default value is
+\code{SyncToDestination}.}
 
-\item{SyncSource}{Specify information about the data sources to synchronize.}
+\item{SyncSource}{Specify information about the data sources to synchronize. This
+parameter is required if the \code{SyncType} value is SyncFromSource.}
 }
 \description{
 A resource data sync helps you view data from multiple sources in a
@@ -28,17 +34,15 @@ single location. Systems Manager offers two types of resource data sync:
 \details{
 You can configure Systems Manager Inventory to use the
 \code{SyncToDestination} type to synchronize Inventory data from multiple AWS
-Regions to a single Amazon S3 bucket. For more information, see
-\href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html}{Configuring Resource Data Sync for Inventory}
+Regions to a single S3 bucket. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html}{Configuring Resource Data Sync for Inventory}
 in the \emph{AWS Systems Manager User Guide}.
 
-You can configure Systems Manager Explorer to use the
-\code{SyncToDestination} type to synchronize operational work items
-(OpsItems) and operational data (OpsData) from multiple AWS Regions to a
-single Amazon S3 bucket. You can also configure Explorer to use the
-\code{SyncFromSource} type. This type synchronizes OpsItems and OpsData from
-multiple AWS accounts and Regions by using AWS Organizations. For more
-information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resource-data-sync.html}{Setting Up Explorer to Display Data from Multiple Accounts and Regions}
+You can configure Systems Manager Explorer to use the \code{SyncFromSource}
+type to synchronize operational work items (OpsItems) and operational
+data (OpsData) from multiple AWS Regions to a single S3 bucket. This
+type can synchronize OpsItems and OpsData from multiple AWS accounts and
+Regions or \code{EntireOrganization} by using AWS Organizations. For more
+information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resource-data-sync.html}{Setting up Systems Manager Explorer to display data from multiple accounts and Regions}
 in the \emph{AWS Systems Manager User Guide}.
 
 A resource data sync is an asynchronous operation that returns
@@ -59,7 +63,10 @@ creating a restrictive bucket policy.
     Prefix = "string",
     SyncFormat = "JsonSerDe",
     Region = "string",
-    AWSKMSKeyARN = "string"
+    AWSKMSKeyARN = "string",
+    DestinationDataSharing = list(
+      DestinationDataSharingType = "string"
+    )
   ),
   SyncType = "string",
   SyncSource = list(

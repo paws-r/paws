@@ -2,11 +2,15 @@
 % Please edit documentation in R/ecs_operations.R
 \name{ecs_update_service}
 \alias{ecs_update_service}
-\title{Modifies the parameters of a service}
+\title{Updating the task placement strategies and constraints on an Amazon ECS
+service remains in preview and is a Beta Service as defined by and
+subject to the Beta Service Participation Service Terms located at
+https://aws}
 \usage{
 ecs_update_service(cluster, service, desiredCount, taskDefinition,
   capacityProviderStrategy, deploymentConfiguration, networkConfiguration,
-  platformVersion, forceNewDeployment, healthCheckGracePeriodSeconds)
+  placementConstraints, placementStrategy, platformVersion,
+  forceNewDeployment, healthCheckGracePeriodSeconds)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
@@ -29,14 +33,53 @@ running.}
 
 If the service is using the default capacity provider strategy for the
 cluster, the service can be updated to use one or more capacity
-providers. However, when a service is using a non-default capacity
-provider strategy, the service cannot be updated to use the cluster\'s
-default capacity provider strategy.}
+providers as opposed to the default capacity provider strategy. However,
+when a service is using a capacity provider strategy that is not the
+default capacity provider strategy, the service cannot be updated to use
+the cluster\'s default capacity provider strategy.
+
+A capacity provider strategy consists of one or more capacity providers
+along with the \code{base} and \code{weight} to assign to them. A capacity
+provider must be associated with the cluster to be used in a capacity
+provider strategy. The PutClusterCapacityProviders API is used to
+associate a capacity provider with a cluster. Only capacity providers
+with an \code{ACTIVE} or \code{UPDATING} status can be used.
+
+If specifying a capacity provider that uses an Auto Scaling group, the
+capacity provider must already be created. New capacity providers can be
+created with the CreateCapacityProvider API operation.
+
+To use a AWS Fargate capacity provider, specify either the \code{FARGATE} or
+\code{FARGATE_SPOT} capacity providers. The AWS Fargate capacity providers
+are available to all accounts and only need to be associated with a
+cluster to be used.
+
+The PutClusterCapacityProviders API operation is used to update the list
+of available capacity providers for a cluster after the cluster is
+created.}
 
 \item{deploymentConfiguration}{Optional deployment parameters that control how many tasks run during
 the deployment and the ordering of stopping and starting tasks.}
 
 \item{networkConfiguration}{}
+
+\item{placementConstraints}{An array of task placement constraint objects to update the service to
+use. If no value is specified, the existing placement constraints for
+the service will remain unchanged. If this value is specified, it will
+override any existing placement constraints defined for the service. To
+remove all existing placement constraints, specify an empty array.
+
+You can specify a maximum of 10 constraints per task (this limit
+includes constraints in the task definition and those specified at
+runtime).}
+
+\item{placementStrategy}{The task placement strategy objects to update the service to use. If no
+value is specified, the existing placement strategy for the service will
+remain unchanged. If this value is specified, it will override the
+existing placement strategy defined for the service. To remove an
+existing placement strategy, specify an empty object.
+
+You can specify a maximum of five strategy rules per service.}
 
 \item{platformVersion}{The platform version on which your tasks in the service are running. A
 platform version is only specified for tasks using the Fargate launch
@@ -63,26 +106,35 @@ ECS service scheduler from marking tasks as unhealthy and stopping them
 before they have time to come up.}
 }
 \description{
-Modifies the parameters of a service.
+Updating the task placement strategies and constraints on an Amazon ECS
+service remains in preview and is a Beta Service as defined by and
+subject to the Beta Service Participation Service Terms located at
+\url{https://aws.amazon.com/service-terms} (\"Beta Terms\"). These Beta
+Terms apply to your participation in this preview.
 }
 \details{
+Modifies the parameters of a service.
+
 For services using the rolling update (\code{ECS}) deployment controller, the
-desired count, deployment configuration, network configuration, or task
-definition used can be updated.
+desired count, deployment configuration, network configuration, task
+placement constraints and strategies, or task definition used can be
+updated.
 
 For services using the blue/green (\code{CODE_DEPLOY}) deployment controller,
-only the desired count, deployment configuration, and health check grace
-period can be updated using this API. If the network configuration,
-platform version, or task definition need to be updated, a new AWS
-CodeDeploy deployment should be created. For more information, see
+only the desired count, deployment configuration, task placement
+constraints and strategies, and health check grace period can be updated
+using this API. If the network configuration, platform version, or task
+definition need to be updated, a new AWS CodeDeploy deployment should be
+created. For more information, see
 \href{https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html}{CreateDeployment}
 in the \emph{AWS CodeDeploy API Reference}.
 
 For services using an external deployment controller, you can update
-only the desired count and health check grace period using this API. If
-the launch type, load balancer, network configuration, platform version,
-or task definition need to be updated, you should create a new task set.
-For more information, see CreateTaskSet.
+only the desired count, task placement constraints and strategies, and
+health check grace period using this API. If the launch type, load
+balancer, network configuration, platform version, or task definition
+need to be updated, you should create a new task set. For more
+information, see CreateTaskSet.
 
 You can add to or subtract from the number of instantiations of a task
 definition in a service by specifying the cluster that the service is
@@ -194,6 +246,18 @@ with the largest number of running tasks for this service.
         "string"
       ),
       assignPublicIp = "ENABLED"|"DISABLED"
+    )
+  ),
+  placementConstraints = list(
+    list(
+      type = "distinctInstance"|"memberOf",
+      expression = "string"
+    )
+  ),
+  placementStrategy = list(
+    list(
+      type = "random"|"spread"|"binpack",
+      field = "string"
     )
   ),
   platformVersion = "string",

@@ -7,7 +7,7 @@
 s3_get_bucket_notification_configuration(Bucket)
 }
 \arguments{
-\item{Bucket}{[required] Name of the bucket for which to get the notification configuration}
+\item{Bucket}{[required] Name of the bucket for which to get the notification configuration.}
 }
 \description{
 Returns the notification configuration of a bucket.

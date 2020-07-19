@@ -27,9 +27,10 @@ and might not be completely deleted for several seconds.
 
 \examples{
 \dontrun{
-# This operation deletes a Lambda function event source mapping
+# The following example deletes an event source mapping. To get a
+# mapping's UUID, use ListEventSourceMappings.
 svc$delete_event_source_mapping(
-  UUID = "12345kxodurf3443"
+  UUID = "14e0db71-xmpl-4eb5-b481-8945cf9d10c2"
 )
 }
 

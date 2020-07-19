@@ -4,7 +4,7 @@
 \alias{cloudwatch_put_insight_rule}
 \title{Creates a Contributor Insights rule}
 \usage{
-cloudwatch_put_insight_rule(RuleName, RuleState, RuleDefinition)
+cloudwatch_put_insight_rule(RuleName, RuleState, RuleDefinition, Tags)
 }
 \arguments{
 \item{RuleName}{[required] A unique name for the rule.}
@@ -13,6 +13,22 @@ cloudwatch_put_insight_rule(RuleName, RuleState, RuleDefinition)
 
 \item{RuleDefinition}{[required] The definition of the rule, as a JSON object. For details on the valid
 syntax, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights-RuleSyntax.html}{Contributor Insights Rule Syntax}.}
+
+\item{Tags}{A list of key-value pairs to associate with the Contributor Insights
+rule. You can associate as many as 50 tags with a rule.
+
+Tags can help you organize and categorize your resources. You can also
+use them to scope user permissions, by granting a user permission to
+access or change only the resources that have certain tag values.
+
+To be able to associate tags with a rule, you must have the
+\code{cloudwatch:TagResource} permission in addition to the
+\code{cloudwatch:PutInsightRule} permission.
+
+If you are using this operation to update an existing Contributor
+Insights rule, any tags you specify in this parameter are ignored. To
+change the tags of an existing rule, use
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_TagResource.html}{TagResource}.}
 }
 \description{
 Creates a Contributor Insights rule. Rules evaluate log events in a
@@ -28,7 +44,13 @@ may not be available.
 \preformatted{svc$put_insight_rule(
   RuleName = "string",
   RuleState = "string",
-  RuleDefinition = "string"
+  RuleDefinition = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

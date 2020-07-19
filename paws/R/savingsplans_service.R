@@ -69,7 +69,7 @@ savingsplans <- function(config = list()) {
 
 .savingsplans$metadata <- list(
   service_name = "savingsplans",
-  endpoints = list("*" = list(endpoint = "savingsplans.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "savingsplans.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "savingsplans.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "savingsplans.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "savingsplans.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "savingsplans.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "savingsplans",
   api_version = "2019-06-28",
   signing_name = NULL,

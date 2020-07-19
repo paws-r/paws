@@ -14,9 +14,6 @@ Activates a partner event source that has been deactivated. Once
 activated, your matching event bus will start receiving events from the
 event source.
 }
-\details{
-This operation is performed by AWS customers, not by SaaS partners.
-}
 \section{Request syntax}{
 \preformatted{svc$activate_event_source(
   Name = "string"

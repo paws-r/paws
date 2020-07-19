@@ -20,7 +20,7 @@ Retrieves a list of analyzers.
 \preformatted{svc$list_analyzers(
   maxResults = 123,
   nextToken = "string",
-  type = "ACCOUNT"
+  type = "ACCOUNT"|"ORGANIZATION"
 )
 }
 }

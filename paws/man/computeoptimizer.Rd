@@ -20,8 +20,8 @@ data for the recommendations, which you can use to evaluate which
 recommendation provides the best price-performance trade-off. The
 analysis of your usage patterns can help you decide when to move or
 resize your running resources, and still meet your performance and
-capacity requirements. For more information about Compute Optimizer, see
-the \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/}{AWS Compute Optimizer User Guide}.
+capacity requirements. For more information about Compute Optimizer,
+including the required permissions to use the service, see the \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/}{AWS Compute Optimizer User Guide}.
 }
 \section{Service syntax}{
 \preformatted{svc <- computeoptimizer(
@@ -44,6 +44,9 @@ the \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/}{AWS Compute 
 \section{Operations}{
 
 \tabular{ll}{
+\link[=computeoptimizer_describe_recommendation_export_jobs]{describe_recommendation_export_jobs} \tab Describes recommendation export jobs created in the last seven days \cr
+\link[=computeoptimizer_export_auto_scaling_group_recommendations]{export_auto_scaling_group_recommendations} \tab Exports optimization recommendations for Auto Scaling groups \cr
+\link[=computeoptimizer_export_ec2_instance_recommendations]{export_ec2_instance_recommendations} \tab Exports optimization recommendations for Amazon EC2 instances \cr
 \link[=computeoptimizer_get_auto_scaling_group_recommendations]{get_auto_scaling_group_recommendations} \tab Returns Auto Scaling group recommendations \cr
 \link[=computeoptimizer_get_ec2_instance_recommendations]{get_ec2_instance_recommendations} \tab Returns Amazon EC2 instance recommendations \cr
 \link[=computeoptimizer_get_ec2_recommendation_projected_metrics]{get_ec2_recommendation_projected_metrics} \tab Returns the projected utilization metrics of Amazon EC2 instance recommendations \cr
@@ -56,7 +59,7 @@ the \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/}{AWS Compute 
 \examples{
 \dontrun{
 svc <- computeoptimizer()
-svc$get_auto_scaling_group_recommendations(
+svc$describe_recommendation_export_jobs(
   Foo = 123
 )
 }

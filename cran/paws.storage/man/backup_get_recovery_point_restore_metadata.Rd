@@ -2,7 +2,8 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_get_recovery_point_restore_metadata}
 \alias{backup_get_recovery_point_restore_metadata}
-\title{Returns two sets of metadata key-value pairs}
+\title{Returns a set of metadata key-value pairs that were used to create the
+backup}
 \usage{
 backup_get_recovery_point_restore_metadata(BackupVaultName,
   RecoveryPointArn)
@@ -18,16 +19,8 @@ for example,
 \verb{arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45}.}
 }
 \description{
-Returns two sets of metadata key-value pairs. The first set lists the
-metadata that the recovery point was created with. The second set lists
-the metadata key-value pairs that are required to restore the recovery
-point.
-}
-\details{
-These sets can be the same, or the restore metadata set can contain
-different values if the target service to be restored has changed since
-the recovery point was created and now requires additional or different
-information in order to be restored.
+Returns a set of metadata key-value pairs that were used to create the
+backup.
 }
 \section{Request syntax}{
 \preformatted{svc$get_recovery_point_restore_metadata(

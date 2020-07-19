@@ -73,7 +73,7 @@ firehose <- function(config = list()) {
 
 .firehose$metadata <- list(
   service_name = "firehose",
-  endpoints = list("*" = list(endpoint = "firehose.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "firehose.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "firehose.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "firehose.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "firehose.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "firehose.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Firehose",
   api_version = "2015-08-04",
   signing_name = NULL,

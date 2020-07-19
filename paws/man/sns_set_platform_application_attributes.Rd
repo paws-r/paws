@@ -3,7 +3,8 @@
 \name{sns_set_platform_application_attributes}
 \alias{sns_set_platform_application_attributes}
 \title{Sets the attributes of the platform application object for the supported
-push notification services, such as APNS and FCM}
+push notification services, such as APNS and GCM (Firebase Cloud
+Messaging)}
 \usage{
 sns_set_platform_application_attributes(PlatformApplicationArn,
   Attributes)
@@ -15,21 +16,22 @@ sns_set_platform_application_attributes(PlatformApplicationArn,
 include the following:
 \itemize{
 \item \code{PlatformCredential} -- The credential received from the
-notification service. For APNS/APNS\\_SANDBOX, PlatformCredential is
-private key. For FCM, PlatformCredential is \"API key\". For ADM,
-PlatformCredential is \"client secret\".
+notification service. For \code{APNS} and \code{APNS_SANDBOX},
+\code{PlatformCredential} is \verb{private key}. For \code{GCM} (Firebase Cloud
+Messaging), \code{PlatformCredential} is \verb{API key}. For \code{ADM},
+\code{PlatformCredential} is \verb{client secret}.
 \item \code{PlatformPrincipal} -- The principal received from the notification
-service. For APNS/APNS\\_SANDBOX, PlatformPrincipal is SSL
-certificate. For FCM, PlatformPrincipal is not applicable. For ADM,
-PlatformPrincipal is \"client id\".
-\item \code{EventEndpointCreated} -- Topic ARN to which EndpointCreated event
-notifications should be sent.
-\item \code{EventEndpointDeleted} -- Topic ARN to which EndpointDeleted event
-notifications should be sent.
-\item \code{EventEndpointUpdated} -- Topic ARN to which EndpointUpdate event
-notifications should be sent.
-\item \code{EventDeliveryFailure} -- Topic ARN to which DeliveryFailure event
-notifications should be sent upon Direct Publish delivery failure
+service. For \code{APNS} and \code{APNS_SANDBOX}, \code{PlatformPrincipal} is
+\verb{SSL certificate}. For \code{GCM} (Firebase Cloud Messaging), there is no
+\code{PlatformPrincipal}. For \code{ADM}, \code{PlatformPrincipal} is \verb{client id}.
+\item \code{EventEndpointCreated} -- Topic ARN to which \code{EndpointCreated} event
+notifications are sent.
+\item \code{EventEndpointDeleted} -- Topic ARN to which \code{EndpointDeleted} event
+notifications are sent.
+\item \code{EventEndpointUpdated} -- Topic ARN to which \code{EndpointUpdate} event
+notifications are sent.
+\item \code{EventDeliveryFailure} -- Topic ARN to which \code{DeliveryFailure} event
+notifications are sent upon Direct Publish delivery failure
 (permanent) to one of the application\'s endpoints.
 \item \code{SuccessFeedbackRoleArn} -- IAM role ARN used to give Amazon SNS
 write access to use CloudWatch Logs on your behalf.
@@ -41,8 +43,8 @@ successfully delivered messages.
 }
 \description{
 Sets the attributes of the platform application object for the supported
-push notification services, such as APNS and FCM. For more information,
-see \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
+push notification services, such as APNS and GCM (Firebase Cloud
+Messaging). For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 For information on configuring attributes for message delivery status,
 see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html}{Using Amazon SNS Application Attributes for Message Delivery Status}.
 }

@@ -19,7 +19,7 @@ Constraint: Must be unique per application. If an application version
 already exists with this label for the specified application, AWS
 Elastic Beanstalk returns an \code{InvalidParameterValue} error.}
 
-\item{Description}{Describes this version.}
+\item{Description}{A description of this application version.}
 
 \item{SourceBuildInformation}{Specify a commit in an AWS CodeCommit Git repository to use as the
 source code for the application version.}
@@ -75,10 +75,10 @@ Specify a source bundle in S3 with \code{SourceBundle}
 Omit both \code{SourceBuildInformation} and \code{SourceBundle} to use the default
 sample application.
 
-Once you create an application version with a specified Amazon S3 bucket
-and key location, you cannot change that Amazon S3 location. If you
-change the Amazon S3 location, you receive an exception when you attempt
-to launch an environment from the application version.
+After you create an application version with a specified Amazon S3
+bucket and key location, you can\'t change that Amazon S3 location. If
+you change the Amazon S3 location, you receive an exception when you
+attempt to launch an environment from the application version.
 }
 \section{Request syntax}{
 \preformatted{svc$create_application_version(

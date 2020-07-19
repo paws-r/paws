@@ -94,7 +94,7 @@ cloudsearch <- function(config = list()) {
 
 .cloudsearch$metadata <- list(
   service_name = "cloudsearch",
-  endpoints = list("*" = list(endpoint = "cloudsearch.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudsearch.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "cloudsearch.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudsearch.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloudsearch.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudsearch.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CloudSearch",
   api_version = "2013-01-01",
   signing_name = NULL,

@@ -14,7 +14,8 @@ this call. The default value is 10.}
 previous call.}
 }
 \description{
-List the accelerators for an AWS account.
+List the accelerators for an AWS account. To see an AWS CLI example of
+listing the accelerators for an AWS account, scroll down to \strong{Example}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_accelerators(

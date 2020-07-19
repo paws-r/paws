@@ -241,7 +241,7 @@ NULL
 
 .configservice$describe_config_rule_evaluation_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigRulesEvaluationStatus = structure(list(structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), ConfigRuleArn = structure(logical(0), tags = list(type = "string")), ConfigRuleId = structure(logical(0), tags = list(type = "string")), LastSuccessfulInvocationTime = structure(logical(0), tags = list(type = "timestamp")), LastFailedInvocationTime = structure(logical(0), tags = list(type = "timestamp")), LastSuccessfulEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), LastFailedEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), FirstActivatedTime = structure(logical(0), tags = list(type = "timestamp")), LastErrorCode = structure(logical(0), tags = list(type = "string")), LastErrorMessage = structure(logical(0), tags = list(type = "string")), FirstEvaluationStarted = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigRulesEvaluationStatus = structure(list(structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), ConfigRuleArn = structure(logical(0), tags = list(type = "string")), ConfigRuleId = structure(logical(0), tags = list(type = "string")), LastSuccessfulInvocationTime = structure(logical(0), tags = list(type = "timestamp")), LastFailedInvocationTime = structure(logical(0), tags = list(type = "timestamp")), LastSuccessfulEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), LastFailedEvaluationTime = structure(logical(0), tags = list(type = "timestamp")), FirstActivatedTime = structure(logical(0), tags = list(type = "timestamp")), LastDeactivatedTime = structure(logical(0), tags = list(type = "timestamp")), LastErrorCode = structure(logical(0), tags = list(type = "string")), LastErrorMessage = structure(logical(0), tags = list(type = "string")), FirstEvaluationStarted = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -820,6 +820,18 @@ NULL
 .configservice$put_retention_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RetentionConfiguration = structure(list(Name = structure(logical(0), tags = list(type = "string")), RetentionPeriodInDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$select_aggregate_resource_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Expression = structure(logical(0), tags = list(type = "string")), ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$select_aggregate_resource_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Results = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), QueryInfo = structure(list(SelectFields = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

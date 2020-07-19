@@ -73,6 +73,7 @@ notification channel.
       Title = "string",
       Url = "string"
     ),
+    RecommenderId = "string",
     tags = list(
       "string"
     ),

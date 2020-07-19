@@ -236,6 +236,9 @@ NULL
 #' 
 #' -   GetComment, which returns information about a comment on a commit.
 #' 
+#' -   GetCommentReactions, which returns information about emoji reactions
+#'     to comments.
+#' 
 #' -   GetCommentsForComparedCommit, which returns information about
 #'     comments on the comparison between two commit specifiers in a
 #'     repository.
@@ -244,6 +247,9 @@ NULL
 #'     comparison between two commit specifiers in a repository.
 #' 
 #' -   PostCommentReply, which creates a reply to a comment.
+#' 
+#' -   PutCommentReaction, which creates or updates an emoji reaction to a
+#'     comment.
 #' 
 #' -   UpdateComment, which updates the content of a comment on a commit in
 #'     a repository.
@@ -333,6 +339,7 @@ NULL
 #'  \link[=codecommit_get_blob]{get_blob} \tab Returns the base-64 encoded content of an individual blob in a repository \cr
 #'  \link[=codecommit_get_branch]{get_branch} \tab Returns information about a repository branch, including its name and the last commit ID \cr
 #'  \link[=codecommit_get_comment]{get_comment} \tab Returns the content of a comment made on a change, file, or commit in a repository \cr
+#'  \link[=codecommit_get_comment_reactions]{get_comment_reactions} \tab Returns information about reactions to a specified comment ID \cr
 #'  \link[=codecommit_get_comments_for_compared_commit]{get_comments_for_compared_commit} \tab Returns information about comments made on the comparison between two commits \cr
 #'  \link[=codecommit_get_comments_for_pull_request]{get_comments_for_pull_request} \tab Returns comments made on a pull request \cr
 #'  \link[=codecommit_get_commit]{get_commit} \tab Returns information about a commit, including commit message and committer information \cr
@@ -364,6 +371,7 @@ NULL
 #'  \link[=codecommit_post_comment_for_compared_commit]{post_comment_for_compared_commit} \tab Posts a comment on the comparison between two commits \cr
 #'  \link[=codecommit_post_comment_for_pull_request]{post_comment_for_pull_request} \tab Posts a comment on a pull request \cr
 #'  \link[=codecommit_post_comment_reply]{post_comment_reply} \tab Posts a comment in reply to an existing comment on a comparison between commits or a pull request \cr
+#'  \link[=codecommit_put_comment_reaction]{put_comment_reaction} \tab Adds or updates a reaction to a specified comment for the user whose identity is used to make the request \cr
 #'  \link[=codecommit_put_file]{put_file} \tab Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in the specified branch \cr
 #'  \link[=codecommit_put_repository_triggers]{put_repository_triggers} \tab Replaces all triggers for a repository \cr
 #'  \link[=codecommit_tag_resource]{tag_resource} \tab Adds or updates tags for a resource in AWS CodeCommit \cr
@@ -398,7 +406,7 @@ codecommit <- function(config = list()) {
 
 .codecommit$metadata <- list(
   service_name = "codecommit",
-  endpoints = list("*" = list(endpoint = "codecommit.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codecommit.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "codecommit.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codecommit.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codecommit.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codecommit.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CodeCommit",
   api_version = "2015-04-13",
   signing_name = NULL,

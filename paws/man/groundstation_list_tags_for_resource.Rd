@@ -2,7 +2,7 @@
 % Please edit documentation in R/groundstation_operations.R
 \name{groundstation_list_tags_for_resource}
 \alias{groundstation_list_tags_for_resource}
-\title{Returns a list of tags or a specified resource}
+\title{Returns a list of tags for a specified resource}
 \usage{
 groundstation_list_tags_for_resource(resourceArn)
 }
@@ -10,7 +10,7 @@ groundstation_list_tags_for_resource(resourceArn)
 \item{resourceArn}{[required] ARN of a resource.}
 }
 \description{
-Returns a list of tags or a specified resource.
+Returns a list of tags for a specified resource.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

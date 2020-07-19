@@ -44,8 +44,8 @@ unless you include a wildcard (*Mary\\_Major).
 qualified Amazon Resource Name (ARN) of the IAM user or role.
 }
 
-For more information about IAM ARNs, wildcards, and formats, see IAM
-Identifiers in the \emph{IAM User Guide}.}
+For more information about IAM ARNs, wildcards, and formats, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
+in the \emph{IAM User Guide}.}
 }
 \description{
 Updates the structure of an approval rule created specifically for a

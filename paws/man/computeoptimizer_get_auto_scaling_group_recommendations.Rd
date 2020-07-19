@@ -8,8 +8,12 @@ computeoptimizer_get_auto_scaling_group_recommendations(accountIds,
   autoScalingGroupArns, nextToken, maxResults, filters)
 }
 \arguments{
-\item{accountIds}{The AWS account IDs for which to return Auto Scaling group
+\item{accountIds}{The IDs of the AWS accounts for which to return Auto Scaling group
 recommendations.
+
+If your account is the master account of an organization, use this
+parameter to specify the member accounts for which you want to return
+Auto Scaling group recommendations.
 
 Only one account ID can be specified per request.}
 
@@ -20,10 +24,10 @@ return recommendations.}
 recommendations.}
 
 \item{maxResults}{The maximum number of Auto Scaling group recommendations to return with
-a single call.
+a single request.
 
-To retrieve the remaining results, make another call with the returned
-\code{NextToken} value.}
+To retrieve the remaining results, make another request with the
+returned \code{NextToken} value.}
 
 \item{filters}{An array of objects that describe a filter that returns a more specific
 list of Auto Scaling group recommendations.}

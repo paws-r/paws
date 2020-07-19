@@ -58,9 +58,9 @@ Some actions take lists of parameters. These lists are specified using
 the \code{param.n} notation. Values of \code{n} are integers starting from 1. For
 example, a parameter list with two elements looks like this:
 
-\verb{&amp;Attribute.1=first}
+\verb{&amp;AttributeName.1=first}
 
-\verb{&amp;Attribute.2=second}
+\verb{&amp;AttributeName.2=second}
 
 Cross-account permissions don\'t apply to this action. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}

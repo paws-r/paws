@@ -54,7 +54,7 @@ one at a time.}
 \item{TargetLocations}{A location is a combination of AWS Regions and/or AWS accounts where you
 want to run the Automation. Use this action to start an Automation in
 multiple Regions and multiple accounts. For more information, see
-\href{http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html}{Executing Automations in Multiple AWS Regions and Accounts}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html}{Running Automation workflows in multiple AWS Regions and accounts}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{Tags}{Optional metadata that you assign to a resource. You can specify a

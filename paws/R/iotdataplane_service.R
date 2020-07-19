@@ -11,9 +11,17 @@ NULL
 #' Internet-connected things (such as sensors, actuators, embedded devices,
 #' or smart appliances) and the AWS cloud. It implements a broker for
 #' applications and things to publish messages over HTTP (Publish) and
-#' retrieve, update, and delete thing shadows. A thing shadow is a
-#' persistent representation of your things and their state in the AWS
-#' cloud.
+#' retrieve, update, and delete shadows. A shadow is a persistent
+#' representation of your things and their state in the AWS cloud.
+#' 
+#' Find the endpoint address for actions in the AWS IoT data plane by
+#' running this CLI command:
+#' 
+#' `aws iot describe-endpoint --endpoint-type iot:Data-ATS`
+#' 
+#' The service name used by [AWS Signature Version
+#' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)
+#' to sign requests is: *iotdevicegateway*.
 #'
 #' @param
 #' config
@@ -47,10 +55,11 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=iotdataplane_delete_thing_shadow]{delete_thing_shadow} \tab Deletes the thing shadow for the specified thing\cr
-#'  \link[=iotdataplane_get_thing_shadow]{get_thing_shadow} \tab Gets the thing shadow for the specified thing \cr
+#'  \link[=iotdataplane_delete_thing_shadow]{delete_thing_shadow} \tab Deletes the shadow for the specified thing\cr
+#'  \link[=iotdataplane_get_thing_shadow]{get_thing_shadow} \tab Gets the shadow for the specified thing \cr
+#'  \link[=iotdataplane_list_named_shadows_for_thing]{list_named_shadows_for_thing} \tab Lists the shadows for the specified thing \cr
 #'  \link[=iotdataplane_publish]{publish} \tab Publishes state information \cr
-#'  \link[=iotdataplane_update_thing_shadow]{update_thing_shadow} \tab Updates the thing shadow for the specified thing
+#'  \link[=iotdataplane_update_thing_shadow]{update_thing_shadow} \tab Updates the shadow for the specified thing
 #' }
 #'
 #' @rdname iotdataplane
@@ -68,7 +77,7 @@ iotdataplane <- function(config = list()) {
 
 .iotdataplane$metadata <- list(
   service_name = "data.iot",
-  endpoints = list("*" = list(endpoint = "data.iot.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "data.iot.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "data.iot.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "data.iot.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "data.iot.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "data.iot.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "IoT Data Plane",
   api_version = "2015-05-28",
   signing_name = "iotdata",

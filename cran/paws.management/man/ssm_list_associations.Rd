@@ -2,8 +2,8 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_list_associations}
 \alias{ssm_list_associations}
-\title{Lists the associations for the specified Systems Manager document or
-instance}
+\title{Returns all State Manager associations in the current AWS account and
+Region}
 \usage{
 ssm_list_associations(AssociationFilterList, MaxResults, NextToken)
 }
@@ -19,14 +19,15 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-Lists the associations for the specified Systems Manager document or
-instance.
+Returns all State Manager associations in the current AWS account and
+Region. You can limit the results to a specific State Manager
+association document or instance by specifying a filter.
 }
 \section{Request syntax}{
 \preformatted{svc$list_associations(
   AssociationFilterList = list(
     list(
-      key = "InstanceId"|"Name"|"AssociationId"|"AssociationStatusName"|"LastExecutedBefore"|"LastExecutedAfter"|"AssociationName",
+      key = "InstanceId"|"Name"|"AssociationId"|"AssociationStatusName"|"LastExecutedBefore"|"LastExecutedAfter"|"AssociationName"|"ResourceGroupName",
       value = "string"
     )
   ),

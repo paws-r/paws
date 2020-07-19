@@ -23,6 +23,9 @@ pointed to by the next token.}
 Returns a list of key-value pairs assigned to a target recovery point,
 backup plan, or backup vault.
 }
+\details{
+\code{ListTags} are currently only supported with Amazon EFS backups.
+}
 \section{Request syntax}{
 \preformatted{svc$list_tags(
   ResourceArn = "string",

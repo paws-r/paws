@@ -99,7 +99,7 @@ iotthingsgraph <- function(config = list()) {
 
 .iotthingsgraph$metadata <- list(
   service_name = "iotthingsgraph",
-  endpoints = list("*" = list(endpoint = "iotthingsgraph.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "iotthingsgraph.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "iotthingsgraph.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "iotthingsgraph.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "iotthingsgraph.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "iotthingsgraph.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "IoTThingsGraph",
   api_version = "2018-09-06",
   signing_name = "iotthingsgraph",

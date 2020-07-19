@@ -30,7 +30,8 @@ clusters. Specify clusters by their cluster identifier (ID).
 Use the \code{states} filter to return only backups that match the specified
 state.}
 
-\item{SortAscending}{}
+\item{SortAscending}{Designates whether or not to sort the return backups by ascending
+chronological order of generation.}
 }
 \description{
 Gets information about backups of AWS CloudHSM clusters.

@@ -22,8 +22,8 @@ to and from Amazon S3.
 To use this operation, you must have permission to perform the
 \code{s3:GetAccelerateConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to
-others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev//using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev//s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
+others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 You set the Transfer Acceleration state of an existing bucket to
@@ -34,7 +34,7 @@ A GET \code{accelerate} request does not return a state value for a bucket
 that has no transfer acceleration state. A bucket has no Transfer
 Acceleration state if a state has never been set on the bucket.
 
-For more information about transfer acceleration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev//transfer-acceleration.html}{Transfer Acceleration}
+For more information about transfer acceleration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html}{Transfer Acceleration}
 in the Amazon Simple Storage Service Developer Guide.
 
 \strong{Related Resources}

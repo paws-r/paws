@@ -7,7 +7,8 @@
 kinesisvideo_untag_resource(ResourceARN, TagKeyList)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the signaling channel from which you want to remove tags.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the signaling channel from which you
+want to remove tags.}
 
 \item{TagKeyList}{[required] A list of the keys of the tags that you want to remove.}
 }

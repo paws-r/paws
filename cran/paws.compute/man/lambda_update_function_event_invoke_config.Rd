@@ -68,4 +68,19 @@ PutFunctionEventInvokeConfig.
 }
 }
 
+\examples{
+\dontrun{
+# The following example adds an on-failure destination to the existing
+# asynchronous invocation configuration for a function named my-function.
+svc$update_function_event_invoke_config(
+  DestinationConfig = list(
+    OnFailure = list(
+      Destination = "arn:aws:sqs:us-east-2:123456789012:destination"
+    )
+  ),
+  FunctionName = "my-function"
+)
+}
+
+}
 \keyword{internal}

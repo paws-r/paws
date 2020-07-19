@@ -7,7 +7,8 @@
 kinesisvideo_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the signaling channel to which you want to add tags.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the signaling channel to which you
+want to add tags.}
 
 \item{Tags}{[required] A list of tags to associate with the specified signaling channel. Each
 tag is a key-value pair.}

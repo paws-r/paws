@@ -83,6 +83,7 @@ NULL
 #'  \link[=serverlessapplicationrepository_list_applications]{list_applications} \tab Lists applications owned by the requester \cr
 #'  \link[=serverlessapplicationrepository_list_application_versions]{list_application_versions} \tab Lists versions for the specified application \cr
 #'  \link[=serverlessapplicationrepository_put_application_policy]{put_application_policy} \tab Sets the permission policy for an application \cr
+#'  \link[=serverlessapplicationrepository_unshare_application]{unshare_application} \tab Unshares an application from an AWS Organization \cr
 #'  \link[=serverlessapplicationrepository_update_application]{update_application} \tab Updates the specified application 
 #' }
 #'
@@ -101,7 +102,7 @@ serverlessapplicationrepository <- function(config = list()) {
 
 .serverlessapplicationrepository$metadata <- list(
   service_name = "serverlessrepo",
-  endpoints = list("*" = list(endpoint = "serverlessrepo.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "serverlessrepo.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "serverlessrepo.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "serverlessrepo.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "serverlessrepo.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "serverlessrepo.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "ServerlessApplicationRepository",
   api_version = "2017-09-08",
   signing_name = "serverlessrepo",

@@ -8,10 +8,9 @@ applicationautoscaling_describe_scalable_targets(ServiceNamespace,
   ResourceIds, ScalableDimension, MaxResults, NextToken)
 }
 \arguments{
-\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or
-\code{custom-resource} for a resource provided by your own application or
-service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
-in the \emph{Amazon Web Services General Reference}.}
+\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource. For a
+resource provided by your own application or service, use
+\code{custom-resource} instead.}
 
 \item{ResourceIds}{The identifier of the resource associated with the scalable target. This
 string consists of the resource type and unique identifier. If you
@@ -51,6 +50,9 @@ Example:
 the unique identifier is the function name with a function version
 or alias name suffix that is not \verb{$LATEST}. Example:
 \verb{function:my-function:prod} or \verb{function:my-function:1}.
+\item Amazon Keyspaces table - The resource type is \code{table} and the unique
+identifier is the table name. Example:
+\code{keyspace/mykeyspace/table/mytable}.
 }}
 
 \item{ScalableDimension}{The scalable dimension associated with the scalable target. This string
@@ -86,6 +88,10 @@ The number of inference units for an Amazon Comprehend document
 classification endpoint.
 \item \verb{lambda:function:ProvisionedConcurrency} - The provisioned
 concurrency for a Lambda function.
+\item \code{cassandra:table:ReadCapacityUnits} - The provisioned read capacity
+for an Amazon Keyspaces table.
+\item \code{cassandra:table:WriteCapacityUnits} - The provisioned write
+capacity for an Amazon Keyspaces table.
 }}
 
 \item{MaxResults}{The maximum number of scalable targets. This value can be between 1 and
@@ -104,18 +110,14 @@ Gets information about the scalable targets in the specified namespace.
 }
 \details{
 You can filter the results using \code{ResourceIds} and \code{ScalableDimension}.
-
-To create a scalable target or update an existing one, see
-RegisterScalableTarget. If you are no longer using a scalable target,
-you can deregister it using DeregisterScalableTarget.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_scalable_targets(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
   ResourceIds = list(
     "string"
   ),
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
   MaxResults = 123,
   NextToken = "string"
 )
@@ -124,7 +126,7 @@ you can deregister it using DeregisterScalableTarget.
 
 \examples{
 \dontrun{
-# This example describes the scalable targets for the ecs service
+# This example describes the scalable targets for the ECS service
 # namespace.
 svc$describe_scalable_targets(
   ServiceNamespace = "ecs"

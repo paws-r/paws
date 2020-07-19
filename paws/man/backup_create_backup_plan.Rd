@@ -25,8 +25,8 @@ Backup plans are documents that contain information that AWS Backup uses
 to schedule tasks that create recovery points of resources.
 }
 \details{
-If you call \code{CreateBackupPlan} with a plan that already exists, the
-existing \code{backupPlanId} is returned.
+If you call \code{CreateBackupPlan} with a plan that already exists, an
+\code{AlreadyExistsException} is returned.
 }
 \section{Request syntax}{
 \preformatted{svc$create_backup_plan(
@@ -45,6 +45,15 @@ existing \code{backupPlanId} is returned.
         ),
         RecoveryPointTags = list(
           "string"
+        ),
+        CopyActions = list(
+          list(
+            Lifecycle = list(
+              MoveToColdStorageAfterDays = 123,
+              DeleteAfterDays = 123
+            ),
+            DestinationBackupVaultArn = "string"
+          )
         )
       )
     )

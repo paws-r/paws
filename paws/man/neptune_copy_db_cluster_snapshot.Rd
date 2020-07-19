@@ -38,10 +38,6 @@ Example: \code{my-cluster-snapshot2}}
 ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key
 alias for the KMS encryption key.
 
-If you copy an unencrypted DB cluster snapshot and specify a value for
-the \code{KmsKeyId} parameter, Amazon Neptune encrypts the target DB cluster
-snapshot using the specified KMS encryption key.
-
 If you copy an encrypted DB cluster snapshot from your AWS account, you
 can specify a value for \code{KmsKeyId} to encrypt the copy with a new KMS
 encryption key. If you don\'t specify a value for \code{KmsKeyId}, then the
@@ -53,7 +49,11 @@ AWS account, then you must specify a value for \code{KmsKeyId}.
 
 KMS encryption keys are specific to the AWS Region that they are created
 in, and you can\'t use encryption keys from one AWS Region in another
-AWS Region.}
+AWS Region.
+
+You cannot encrypt an unencrypted DB cluster snapshot when you copy it.
+If you try to copy an unencrypted DB cluster snapshot and specify a
+value for the KmsKeyId parameter, an error is returned.}
 
 \item{PreSignedUrl}{Not currently supported.}
 
@@ -69,8 +69,6 @@ Copies a snapshot of a DB cluster.
 To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
 \code{SourceDBClusterSnapshotIdentifier} must be the Amazon Resource Name
 (ARN) of the shared DB cluster snapshot.
-
-You can\'t copy from one AWS Region to another.
 }
 \section{Request syntax}{
 \preformatted{svc$copy_db_cluster_snapshot(

@@ -19,7 +19,9 @@ which it is registered. Currently, AWS CloudFormation marks any
 types you create as \code{PRIVATE}.
 \item \code{PUBLIC}: The type is publically visible and usable within any
 Amazon account.
-}}
+}
+
+The default is \code{PRIVATE}.}
 
 \item{ProvisioningType}{The provisioning behavior of the type. AWS CloudFormation determines the
 provisioning type during registration, based on the types of handlers in

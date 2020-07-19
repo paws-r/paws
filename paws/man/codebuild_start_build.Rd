@@ -9,8 +9,9 @@ codebuild_start_build(projectName, secondarySourcesOverride,
   secondaryArtifactsOverride, environmentVariablesOverride,
   sourceTypeOverride, sourceLocationOverride, sourceAuthOverride,
   gitCloneDepthOverride, gitSubmodulesConfigOverride, buildspecOverride,
-  insecureSslOverride, reportBuildStatusOverride, environmentTypeOverride,
-  imageOverride, computeTypeOverride, certificateOverride, cacheOverride,
+  insecureSslOverride, reportBuildStatusOverride,
+  buildStatusConfigOverride, environmentTypeOverride, imageOverride,
+  computeTypeOverride, certificateOverride, cacheOverride,
   serviceRoleOverride, privilegedModeOverride, timeoutInMinutesOverride,
   queuedTimeoutInMinutesOverride, encryptionKeyOverride, idempotencyToken,
   logsConfigOverride, registryCredentialOverride,
@@ -74,8 +75,18 @@ the build project.}
 \item{gitSubmodulesConfigOverride}{Information about the Git submodules configuration for this build of an
 AWS CodeBuild build project.}
 
-\item{buildspecOverride}{A build spec declaration that overrides, for this build only, the latest
-one already defined in the build project.}
+\item{buildspecOverride}{A buildspec file declaration that overrides, for this build only, the
+latest one already defined in the build project.
+
+If this value is set, it can be either an inline buildspec definition,
+the path to an alternate buildspec file relative to the value of the
+built-in \code{CODEBUILD_SRC_DIR} environment variable, or the path to an S3
+bucket. The bucket must be in the same AWS Region as the build project.
+Specify the buildspec file using its ARN (for example,
+\code{arn:aws:s3:::my-codebuild-sample2/buildspec.yml}). If this value is not
+provided or is set to an empty string, the source code must contain a
+buildspec file in its root directory. For more information, see
+\href{https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage}{Buildspec File Name and Storage Location}.}
 
 \item{insecureSslOverride}{Enable this flag to override the insecure SSL setting that is specified
 in the build project. The insecure SSL setting determines whether to
@@ -89,6 +100,10 @@ invalidInputException is thrown.
 
 The status of a build triggered by a webhook is always reported to your
 source provider.}
+
+\item{buildStatusConfigOverride}{Contains information that defines how the build project reports the
+build status to the source provider. This option is only used when the
+source provider is \code{GITHUB}, \code{GITHUB_ENTERPRISE}, or \code{BITBUCKET}.}
 
 \item{environmentTypeOverride}{A container type for this build that overrides the one specified in the
 build project.}
@@ -130,7 +145,7 @@ available, the CMK\'s alias (using the format
 
 \item{idempotencyToken}{A unique, case sensitive identifier you provide to ensure the
 idempotency of the StartBuild request. The token is included in the
-StartBuild request and is valid for 12 hours. If you repeat the
+StartBuild request and is valid for 5 minutes. If you repeat the
 StartBuild request with the same token, but change a parameter, AWS
 CodeBuild returns a parameter mismatch error.}
 
@@ -173,6 +188,10 @@ Starts running a build.
         resource = "string"
       ),
       reportBuildStatus = TRUE|FALSE,
+      buildStatusConfig = list(
+        context = "string",
+        targetUrl = "string"
+      ),
       insecureSsl = TRUE|FALSE,
       sourceIdentifier = "string"
     )
@@ -228,6 +247,10 @@ Starts running a build.
   buildspecOverride = "string",
   insecureSslOverride = TRUE|FALSE,
   reportBuildStatusOverride = TRUE|FALSE,
+  buildStatusConfigOverride = list(
+    context = "string",
+    targetUrl = "string"
+  ),
   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER",
   imageOverride = "string",
   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",

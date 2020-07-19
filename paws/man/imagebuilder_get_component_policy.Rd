@@ -7,7 +7,7 @@
 imagebuilder_get_component_policy(componentArn)
 }
 \arguments{
-\item{componentArn}{[required] The Amazon Resource Name (ARN) of the component whose policy you wish to
+\item{componentArn}{[required] The Amazon Resource Name (ARN) of the component whose policy you want to
 retrieve.}
 }
 \description{

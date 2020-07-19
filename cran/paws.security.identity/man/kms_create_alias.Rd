@@ -19,9 +19,9 @@ in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \description{
 Creates a display name for a customer managed customer master key (CMK).
-You can use an alias to identify a CMK in cryptographic operations, such
-as Encrypt and GenerateDataKey. You can change the CMK associated with
-the alias at any time.
+You can use an alias to identify a CMK in \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations},
+such as Encrypt and GenerateDataKey. You can change the CMK associated
+with the alias at any time.
 }
 \details{
 Aliases are easier to remember than key IDs. They can also help to
@@ -64,12 +64,12 @@ Each instance of the alias is associated with a CMK in its Region.
 However, you can use the DeleteAlias operation to delete the alias
 and then create a new alias with the desired name.
 \item You can use an alias name or alias ARN to identify a CMK in AWS KMS
-cryptographic operations and in the DescribeKey operation. However,
-you cannot use alias names or alias ARNs in API operations that
-manage CMKs, such as DisableKey or GetKeyPolicy. For information
-about the valid CMK identifiers for each AWS KMS API operation, see
-the descriptions of the \code{KeyId} parameter in the API operation
-documentation.
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}
+and in the DescribeKey operation. However, you cannot use alias
+names or alias ARNs in API operations that manage CMKs, such as
+DisableKey or GetKeyPolicy. For information about the valid CMK
+identifiers for each AWS KMS API operation, see the descriptions of
+the \code{KeyId} parameter in the API operation documentation.
 }
 
 Because an alias is not a property of a CMK, you can delete and change

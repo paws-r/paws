@@ -7,7 +7,7 @@
 schemas_list_tags_for_resource(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required]}
+\item{ResourceArn}{[required] The ARN of the resource.}
 }
 \description{
 Get tags for resource.

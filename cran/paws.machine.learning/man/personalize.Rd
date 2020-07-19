@@ -40,6 +40,7 @@ add individualized recommendations to customers.
 \link[=personalize_create_dataset_group]{create_dataset_group} \tab Creates an empty dataset group \cr
 \link[=personalize_create_dataset_import_job]{create_dataset_import_job} \tab Creates a job that imports training data from your data source (an Amazon S3 bucket) to an Amazon Personalize dataset \cr
 \link[=personalize_create_event_tracker]{create_event_tracker} \tab Creates an event tracker that you use when sending event data to the specified dataset group using the PutEvents API \cr
+\link[=personalize_create_filter]{create_filter} \tab Creates a recommendation filter \cr
 \link[=personalize_create_schema]{create_schema} \tab Creates an Amazon Personalize schema from the specified schema string \cr
 \link[=personalize_create_solution]{create_solution} \tab Creates the configuration for training a model \cr
 \link[=personalize_create_solution_version]{create_solution_version} \tab Trains or retrains an active solution \cr
@@ -47,6 +48,7 @@ add individualized recommendations to customers.
 \link[=personalize_delete_dataset]{delete_dataset} \tab Deletes a dataset \cr
 \link[=personalize_delete_dataset_group]{delete_dataset_group} \tab Deletes a dataset group \cr
 \link[=personalize_delete_event_tracker]{delete_event_tracker} \tab Deletes the event tracker \cr
+\link[=personalize_delete_filter]{delete_filter} \tab Deletes a filter \cr
 \link[=personalize_delete_schema]{delete_schema} \tab Deletes a schema \cr
 \link[=personalize_delete_solution]{delete_solution} \tab Deletes all versions of a solution and the Solution object itself \cr
 \link[=personalize_describe_algorithm]{describe_algorithm} \tab Describes the given algorithm \cr
@@ -57,6 +59,7 @@ add individualized recommendations to customers.
 \link[=personalize_describe_dataset_import_job]{describe_dataset_import_job} \tab Describes the dataset import job created by CreateDatasetImportJob, including the import job status \cr
 \link[=personalize_describe_event_tracker]{describe_event_tracker} \tab Describes an event tracker \cr
 \link[=personalize_describe_feature_transformation]{describe_feature_transformation} \tab Describes the given feature transformation \cr
+\link[=personalize_describe_filter]{describe_filter} \tab Describes a filter's properties \cr
 \link[=personalize_describe_recipe]{describe_recipe} \tab Describes a recipe \cr
 \link[=personalize_describe_schema]{describe_schema} \tab Describes a schema \cr
 \link[=personalize_describe_solution]{describe_solution} \tab Describes a solution \cr
@@ -68,6 +71,7 @@ add individualized recommendations to customers.
 \link[=personalize_list_dataset_import_jobs]{list_dataset_import_jobs} \tab Returns a list of dataset import jobs that use the given dataset \cr
 \link[=personalize_list_datasets]{list_datasets} \tab Returns the list of datasets contained in the given dataset group \cr
 \link[=personalize_list_event_trackers]{list_event_trackers} \tab Returns the list of event trackers associated with the account \cr
+\link[=personalize_list_filters]{list_filters} \tab Lists all filters that belong to a given dataset group \cr
 \link[=personalize_list_recipes]{list_recipes} \tab Returns a list of available recipes \cr
 \link[=personalize_list_schemas]{list_schemas} \tab Returns the list of schemas associated with the account \cr
 \link[=personalize_list_solutions]{list_solutions} \tab Returns a list of solutions that use the given dataset group \cr

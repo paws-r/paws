@@ -22,11 +22,11 @@ Layer (SSL).
 \details{
 Once you create and validate your certificate, you can attach it to your
 load balancer. You can also use this API to rotate the certificates on
-your account. Use the \verb{attach load balancer tls certificate} operation
-with the non-attached certificate, and it will replace the existing one
-and become the attached certificate.
+your account. Use the \code{AttachLoadBalancerTlsCertificate} action with the
+non-attached certificate, and it will replace the existing one and
+become the attached certificate.
 
-The \verb{attach load balancer tls certificate} operation supports tag-based
+The \code{AttachLoadBalancerTlsCertificate} operation supports tag-based
 access control via resource tags applied to the resource identified by
 \verb{load balancer name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }

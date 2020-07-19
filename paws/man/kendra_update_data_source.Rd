@@ -56,6 +56,13 @@ Updates an existing Amazon Kendra data source.
       ),
       SecretArn = "string",
       CrawlAttachments = TRUE|FALSE,
+      UseChangeLog = TRUE|FALSE,
+      InclusionPatterns = list(
+        "string"
+      ),
+      ExclusionPatterns = list(
+        "string"
+      ),
       VpcConfiguration = list(
         SubnetIds = list(
           "string"
@@ -107,6 +114,152 @@ Updates an existing Amazon Kendra data source.
       ),
       AclConfiguration = list(
         AllowedGroupsColumnName = "string"
+      )
+    ),
+    SalesforceConfiguration = list(
+      ServerUrl = "string",
+      SecretArn = "string",
+      StandardObjectConfigurations = list(
+        list(
+          Name = "ACCOUNT"|"CAMPAIGN"|"CASE"|"CONTACT"|"CONTRACT"|"DOCUMENT"|"GROUP"|"IDEA"|"LEAD"|"OPPORTUNITY"|"PARTNER"|"PRICEBOOK"|"PRODUCT"|"PROFILE"|"SOLUTION"|"TASK"|"USER",
+          DocumentDataFieldName = "string",
+          DocumentTitleFieldName = "string",
+          FieldMappings = list(
+            list(
+              DataSourceFieldName = "string",
+              DateFieldFormat = "string",
+              IndexFieldName = "string"
+            )
+          )
+        )
+      ),
+      KnowledgeArticleConfiguration = list(
+        IncludedStates = list(
+          "DRAFT"|"PUBLISHED"|"ARCHIVED"
+        ),
+        StandardKnowledgeArticleTypeConfiguration = list(
+          DocumentDataFieldName = "string",
+          DocumentTitleFieldName = "string",
+          FieldMappings = list(
+            list(
+              DataSourceFieldName = "string",
+              DateFieldFormat = "string",
+              IndexFieldName = "string"
+            )
+          )
+        ),
+        CustomKnowledgeArticleTypeConfigurations = list(
+          list(
+            Name = "string",
+            DocumentDataFieldName = "string",
+            DocumentTitleFieldName = "string",
+            FieldMappings = list(
+              list(
+                DataSourceFieldName = "string",
+                DateFieldFormat = "string",
+                IndexFieldName = "string"
+              )
+            )
+          )
+        )
+      ),
+      ChatterFeedConfiguration = list(
+        DocumentDataFieldName = "string",
+        DocumentTitleFieldName = "string",
+        FieldMappings = list(
+          list(
+            DataSourceFieldName = "string",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        ),
+        IncludeFilterTypes = list(
+          "ACTIVE_USER"|"STANDARD_USER"
+        )
+      ),
+      CrawlAttachments = TRUE|FALSE,
+      StandardObjectAttachmentConfiguration = list(
+        DocumentTitleFieldName = "string",
+        FieldMappings = list(
+          list(
+            DataSourceFieldName = "string",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
+      ),
+      IncludeAttachmentFilePatterns = list(
+        "string"
+      ),
+      ExcludeAttachmentFilePatterns = list(
+        "string"
+      )
+    ),
+    OneDriveConfiguration = list(
+      TenantDomain = "string",
+      SecretArn = "string",
+      OneDriveUsers = list(
+        OneDriveUserList = list(
+          "string"
+        ),
+        OneDriveUserS3Path = list(
+          Bucket = "string",
+          Key = "string"
+        )
+      ),
+      InclusionPatterns = list(
+        "string"
+      ),
+      ExclusionPatterns = list(
+        "string"
+      ),
+      FieldMappings = list(
+        list(
+          DataSourceFieldName = "string",
+          DateFieldFormat = "string",
+          IndexFieldName = "string"
+        )
+      )
+    ),
+    ServiceNowConfiguration = list(
+      HostUrl = "string",
+      SecretArn = "string",
+      ServiceNowBuildVersion = "LONDON"|"OTHERS",
+      KnowledgeArticleConfiguration = list(
+        CrawlAttachments = TRUE|FALSE,
+        IncludeAttachmentFilePatterns = list(
+          "string"
+        ),
+        ExcludeAttachmentFilePatterns = list(
+          "string"
+        ),
+        DocumentDataFieldName = "string",
+        DocumentTitleFieldName = "string",
+        FieldMappings = list(
+          list(
+            DataSourceFieldName = "string",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
+      ),
+      ServiceCatalogConfiguration = list(
+        CrawlAttachments = TRUE|FALSE,
+        IncludeAttachmentFilePatterns = list(
+          "string"
+        ),
+        ExcludeAttachmentFilePatterns = list(
+          "string"
+        ),
+        DocumentDataFieldName = "string",
+        DocumentTitleFieldName = "string",
+        FieldMappings = list(
+          list(
+            DataSourceFieldName = "string",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
       )
     )
   ),

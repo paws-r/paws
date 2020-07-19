@@ -62,7 +62,7 @@ NULL
 #'  \link[=signer_put_signing_profile]{put_signing_profile} \tab Creates a signing profile \cr
 #'  \link[=signer_start_signing_job]{start_signing_job} \tab Initiates a signing job to be performed on the code provided \cr
 #'  \link[=signer_tag_resource]{tag_resource} \tab Adds one or more tags to a signing profile \cr
-#'  \link[=signer_untag_resource]{untag_resource} \tab Remove one or more tags from a signing profile 
+#'  \link[=signer_untag_resource]{untag_resource} \tab Removes one or more tags from a signing profile 
 #' }
 #'
 #' @rdname signer
@@ -80,7 +80,7 @@ signer <- function(config = list()) {
 
 .signer$metadata <- list(
   service_name = "signer",
-  endpoints = list("*" = list(endpoint = "signer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "signer.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "signer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "signer.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "signer.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "signer.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "signer",
   api_version = "2017-08-25",
   signing_name = "signer",

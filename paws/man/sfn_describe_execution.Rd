@@ -15,6 +15,8 @@ Describes an execution.
 \details{
 This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
+
+This API action is not supported by \code{EXPRESS} state machines.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_execution(

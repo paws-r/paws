@@ -98,7 +98,7 @@ model version from the value of \code{FaceModelVersion} in the response from
 For more information, see Model Versioning in the Amazon Rekognition
 Developer Guide.
 
-If you provide the optional \code{ExternalImageID} for the input image you
+If you provide the optional \code{ExternalImageId} for the input image you
 provided, Amazon Rekognition associates this ID with all faces that it
 detects. When you call the ListFaces operation, the response returns the
 external ID. You can use this external image ID to create a client-side

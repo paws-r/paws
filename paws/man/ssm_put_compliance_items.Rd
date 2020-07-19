@@ -6,7 +6,7 @@
 resource}
 \usage{
 ssm_put_compliance_items(ResourceId, ResourceType, ComplianceType,
-  ExecutionSummary, Items, ItemContentHash)
+  ExecutionSummary, Items, ItemContentHash, UploadType)
 }
 \arguments{
 \item{ResourceId}{[required] Specify an ID for this resource. For a managed instance, this is the
@@ -25,11 +25,23 @@ yyyy-MM-dd\'T\'HH:mm:ss\'Z\'.}
 
 \item{Items}{[required] Information about the compliance as defined by the resource type. For
 example, for a patch compliance type, \code{Items} includes information about
-the PatchSeverity, Classification, etc.}
+the PatchSeverity, Classification, and so on.}
 
 \item{ItemContentHash}{MD5 or SHA-256 content hash. The content hash is used to determine if
 existing information should be overwritten or ignored. If the content
 hashes match, the request to put compliance information is ignored.}
+
+\item{UploadType}{The mode for uploading compliance items. You can specify \code{COMPLETE} or
+\code{PARTIAL}. In \code{COMPLETE} mode, the system overwrites all existing
+compliance information for the resource. You must provide a full list of
+compliance items each time you send the request.
+
+In \code{PARTIAL} mode, the system overwrites compliance information for a
+specific association. The association must be configured with
+\code{SyncCompliance} set to \code{MANUAL}. By default, all requests use
+\code{COMPLETE} mode.
+
+This attribute is only valid for association compliance.}
 }
 \description{
 Registers a compliance type and other compliance details on a designated
@@ -89,7 +101,8 @@ following format: yyyy-MM-dd\'T\'HH:mm:ss\'Z\'
       )
     )
   ),
-  ItemContentHash = "string"
+  ItemContentHash = "string",
+  UploadType = "COMPLETE"|"PARTIAL"
 )
 }
 }

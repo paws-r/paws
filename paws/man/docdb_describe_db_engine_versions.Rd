@@ -2,7 +2,7 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_describe_db_engine_versions}
 \alias{docdb_describe_db_engine_versions}
-\title{Returns a list of the available DB engines}
+\title{Returns a list of the available engines}
 \usage{
 docdb_describe_db_engine_versions(Engine, EngineVersion,
   DBParameterGroupFamily, Filters, MaxRecords, Marker, DefaultOnly,
@@ -15,7 +15,7 @@ docdb_describe_db_engine_versions(Engine, EngineVersion,
 
 Example: \verb{5.1.49}}
 
-\item{DBParameterGroupFamily}{The name of a specific DB parameter group family to return details for.
+\item{DBParameterGroupFamily}{The name of a specific parameter group family to return details for.
 
 Constraints:
 \itemize{
@@ -49,7 +49,7 @@ includes a list of supported character sets for each engine version.}
 list of supported time zones for each engine version.}
 }
 \description{
-Returns a list of the available DB engines.
+Returns a list of the available engines.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_db_engine_versions(

@@ -76,7 +76,7 @@ NULL
 #'  \link[=eks_describe_update]{describe_update} \tab Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group \cr
 #'  \link[=eks_list_clusters]{list_clusters} \tab Lists the Amazon EKS clusters in your AWS account in the specified Region \cr
 #'  \link[=eks_list_fargate_profiles]{list_fargate_profiles} \tab Lists the AWS Fargate profiles associated with the specified cluster in your AWS account in the specified Region \cr
-#'  \link[=eks_list_nodegroups]{list_nodegroups} \tab Lists the Amazon EKS node groups associated with the specified cluster in your AWS account in the specified Region \cr
+#'  \link[=eks_list_nodegroups]{list_nodegroups} \tab Lists the Amazon EKS managed node groups associated with the specified cluster in your AWS account in the specified Region\cr
 #'  \link[=eks_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon EKS resource \cr
 #'  \link[=eks_list_updates]{list_updates} \tab Lists the updates associated with an Amazon EKS cluster or managed node group in your AWS account, in the specified Region\cr
 #'  \link[=eks_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn \cr
@@ -102,7 +102,7 @@ eks <- function(config = list()) {
 
 .eks$metadata <- list(
   service_name = "eks",
-  endpoints = list("*" = list(endpoint = "eks.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "eks.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "eks.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "eks.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "eks.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "eks.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "EKS",
   api_version = "2017-11-01",
   signing_name = "eks",

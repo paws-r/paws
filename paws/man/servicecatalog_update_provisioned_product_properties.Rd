@@ -19,9 +19,9 @@ servicecatalog_update_provisioned_product_properties(AcceptLanguage,
 
 \item{ProvisionedProductProperties}{[required] A map that contains the provisioned product properties to be updated.
 
-The \code{OWNER} key only accepts user ARNs. The owner is the user that is
-allowed to see, update, terminate, and execute service actions in the
-provisioned product.
+The \code{OWNER} key accepts user ARNs and role ARNs. The owner is the user
+that is allowed to see, update, terminate, and execute service actions
+in the provisioned product.
 
 The administrator can change the owner of a provisioned product to
 another IAM user within the same account. Both end user owners and

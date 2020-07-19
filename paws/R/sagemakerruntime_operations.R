@@ -37,7 +37,7 @@ NULL
 #'
 #' @usage
 #' sagemakerruntime_invoke_endpoint(EndpointName, Body, ContentType,
-#'   Accept, CustomAttributes, TargetModel)
+#'   Accept, CustomAttributes, TargetModel, TargetVariant)
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint that you specified when you created the
 #' endpoint using the
@@ -48,7 +48,7 @@ NULL
 #' the model.
 #' 
 #' For information about the format of the request body, see [Common Data
-#' Formats---Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html).
+#' Formats-Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html).
 #' @param ContentType The MIME type of the input data in the request body.
 #' @param Accept The desired MIME type of the inference in the response.
 #' @param CustomAttributes Provides additional information about a request for an inference
@@ -61,8 +61,11 @@ NULL
 #' Components](https://tools.ietf.org/html/rfc7230#section-3.2.6) of the
 #' Hypertext Transfer Protocol (HTTP/1.1). This feature is currently
 #' supported in the AWS SDKs but not in the Amazon SageMaker Python SDK.
-#' @param TargetModel Specifies the model to be requested for an inference when invoking a
-#' multi-model endpoint.
+#' @param TargetModel The model to request for inference when invoking a multi-model endpoint.
+#' @param TargetVariant Specify the production variant to send the inference request to when
+#' invoking an endpoint that is running two or more variants. Note that
+#' this parameter overrides the default behavior for the endpoint, which is
+#' to distribute the invocation traffic based on the variant weights.
 #'
 #' @section Request syntax:
 #' ```
@@ -72,21 +75,22 @@ NULL
 #'   ContentType = "string",
 #'   Accept = "string",
 #'   CustomAttributes = "string",
-#'   TargetModel = "string"
+#'   TargetModel = "string",
+#'   TargetVariant = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sagemakerruntime_invoke_endpoint
-sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL) {
+sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL, TargetVariant = NULL) {
   op <- new_operation(
     name = "InvokeEndpoint",
     http_method = "POST",
     http_path = "/endpoints/{EndpointName}/invocations",
     paginator = list()
   )
-  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel)
+  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant)
   output <- .sagemakerruntime$invoke_endpoint_output()
   config <- get_config()
   svc <- .sagemakerruntime$service(config)

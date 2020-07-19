@@ -2,7 +2,7 @@
 % Please edit documentation in R/organizations_operations.R
 \name{organizations_describe_account}
 \alias{organizations_describe_account}
-\title{Retrieves AWS Organizations related information about the specified
+\title{Retrieves AWS Organizations-related information about the specified
 account}
 \usage{
 organizations_describe_account(AccountId)
@@ -16,12 +16,13 @@ The \href{http://wikipedia.org/wiki/regex}{regex pattern} for an account ID
 string requires exactly 12 digits.}
 }
 \description{
-Retrieves AWS Organizations related information about the specified
+Retrieves AWS Organizations-related information about the specified
 account.
 }
 \details{
 This operation can be called only from the organization\'s master
-account.
+account or by a member account that is a delegated administrator for an
+AWS service.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_account(

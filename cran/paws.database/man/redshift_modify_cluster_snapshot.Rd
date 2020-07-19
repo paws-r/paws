@@ -24,6 +24,10 @@ already passed.}
 \description{
 Modifies the settings for a snapshot.
 }
+\details{
+This exanmple modifies the manual retention period setting for a cluster
+snapshot.
+}
 \section{Request syntax}{
 \preformatted{svc$modify_cluster_snapshot(
   SnapshotIdentifier = "string",

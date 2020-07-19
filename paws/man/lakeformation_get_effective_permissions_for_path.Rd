@@ -2,8 +2,8 @@
 % Please edit documentation in R/lakeformation_operations.R
 \name{lakeformation_get_effective_permissions_for_path}
 \alias{lakeformation_get_effective_permissions_for_path}
-\title{Returns the permissions for a specified table or database resource
-located at a path in Amazon S3}
+\title{Returns the Lake Formation permissions for a specified table or database
+resource located at a path in Amazon S3}
 \usage{
 lakeformation_get_effective_permissions_for_path(CatalogId, ResourceArn,
   NextToken, MaxResults)
@@ -23,8 +23,10 @@ list.}
 \item{MaxResults}{The maximum number of results to return.}
 }
 \description{
-Returns the permissions for a specified table or database resource
-located at a path in Amazon S3.
+Returns the Lake Formation permissions for a specified table or database
+resource located at a path in Amazon S3.
+\code{GetEffectivePermissionsForPath} will not return databases and tables if
+the catalog is encrypted.
 }
 \section{Request syntax}{
 \preformatted{svc$get_effective_permissions_for_path(

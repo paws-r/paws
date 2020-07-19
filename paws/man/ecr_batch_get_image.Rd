@@ -2,8 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_batch_get_image}
 \alias{ecr_batch_get_image}
-\title{Gets detailed information for specified images within a specified
-repository}
+\title{Gets detailed information for an image}
 \usage{
 ecr_batch_get_image(registryId, repositoryName, imageIds,
   acceptedMediaTypes)
@@ -26,9 +25,12 @@ Valid values: \code{application/vnd.docker.distribution.manifest.v1+json} \\|
 \code{application/vnd.oci.image.manifest.v1+json}}
 }
 \description{
-Gets detailed information for specified images within a specified
-repository. Images are specified with either \code{imageTag} or
-\code{imageDigest}.
+Gets detailed information for an image. Images are specified with either
+an \code{imageTag} or \code{imageDigest}.
+}
+\details{
+When an image is pulled, the BatchGetImage API is called once to
+retrieve the image manifest.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_get_image(

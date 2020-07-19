@@ -19,6 +19,11 @@ iot_remove_thing_from_thing_group(thingGroupName, thingGroupArn,
 \description{
 Remove the specified thing from the specified group.
 }
+\details{
+You must specify either a \code{thingGroupArn} or a \code{thingGroupName} to
+identify the thing group and either a \code{thingArn} or a \code{thingName} to
+identify the thing to remove from the thing group.
+}
 \section{Request syntax}{
 \preformatted{svc$remove_thing_from_thing_group(
   thingGroupName = "string",

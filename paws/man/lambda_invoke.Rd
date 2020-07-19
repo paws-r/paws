@@ -86,7 +86,8 @@ during synchronous invocation while it waits for a response. Configure
 your HTTP client, SDK, firewall, proxy, or operating system to allow for
 long connections with timeout or keep-alive settings.
 
-This operation requires permission for the \code{lambda:InvokeFunction}
+This operation requires permission for the
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awslambda.html}{lambda:InvokeFunction}
 action.
 }
 \section{Request syntax}{
@@ -103,13 +104,20 @@ action.
 
 \examples{
 \dontrun{
-# This operation invokes a Lambda function
+# The following example invokes version 1 of a function named my-function
+# with an empty event payload.
 svc$invoke(
-  ClientContext = "MyApp",
-  FunctionName = "MyFunction",
+  FunctionName = "my-function",
+  Payload = "\{\}",
+  Qualifier = "1"
+)
+
+# The following example invokes version 1 of a function named my-function
+# asynchronously.
+svc$invoke(
+  FunctionName = "my-function",
   InvocationType = "Event",
-  LogType = "Tail",
-  Payload = "fileb://file-path/input.json",
+  Payload = "\{\}",
   Qualifier = "1"
 )
 }

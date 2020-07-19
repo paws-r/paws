@@ -32,27 +32,18 @@ Valid Values: \code{multi-node | single-node}}
 \item{NodeType}{The new node type of the cluster. If you specify a new node type, you
 must also specify the number of nodes parameter.
 
-When you submit your request to resize a cluster, Amazon Redshift sets
-access permissions for the cluster to read-only. After Amazon Redshift
-provisions a new cluster according to your resize requirements, there
-will be a temporary outage while the old cluster is deleted and your
-connection is switched to the new cluster. When the new connection is
-complete, the original access permissions for the cluster are restored.
-You can use DescribeResize to track the progress of the resize request.
+For more information about resizing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html}{Resizing Clusters in Amazon Redshift}
+in the \emph{Amazon Redshift Cluster Management Guide}.
 
 Valid Values: \code{ds2.xlarge} \\| \code{ds2.8xlarge} \\| \code{dc1.large} \\|
-\code{dc1.8xlarge} \\| \code{dc2.large} \\| \code{dc2.8xlarge} \\| \code{ra3.16xlarge}}
+\code{dc1.8xlarge} \\| \code{dc2.large} \\| \code{dc2.8xlarge} \\| \code{ra3.4xlarge} \\|
+\code{ra3.16xlarge}}
 
 \item{NumberOfNodes}{The new number of nodes of the cluster. If you specify a new number of
 nodes, you must also specify the node type parameter.
 
-When you submit your request to resize a cluster, Amazon Redshift sets
-access permissions for the cluster to read-only. After Amazon Redshift
-provisions a new cluster according to your resize requirements, there
-will be a temporary outage while the old cluster is deleted and your
-connection is switched to the new cluster. When the new connection is
-complete, the original access permissions for the cluster are restored.
-You can use DescribeResize to track the progress of the resize request.
+For more information about resizing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html}{Resizing Clusters in Amazon Redshift}
+in the \emph{Amazon Redshift Cluster Management Guide}.
 
 Valid Values: Integer greater than \code{0}.}
 
@@ -206,30 +197,32 @@ window. When the maintenance track changes, the cluster is switched to
 the latest cluster release available for the maintenance track. At this
 point, the maintenance track name is applied.}
 
-\item{Encrypted}{Indicates whether the cluster is encrypted. If the cluster is encrypted
-and you provide a value for the \code{KmsKeyId} parameter, we will encrypt
+\item{Encrypted}{Indicates whether the cluster is encrypted. If the value is encrypted
+(true) and you provide a value for the \code{KmsKeyId} parameter, we encrypt
 the cluster with the provided \code{KmsKeyId}. If you don\'t provide a
-\code{KmsKeyId}, we will encrypt with the default key. In the China region we
-will use legacy encryption if you specify that the cluster is encrypted.}
+\code{KmsKeyId}, we encrypt with the default key. In the China region we use
+legacy encryption if you specify that the cluster is encrypted.
+
+If the value is not encrypted (false), then the cluster is decrypted.}
 
 \item{KmsKeyId}{The AWS Key Management Service (KMS) key ID of the encryption key that
 you want to use to encrypt data in the cluster.}
 }
 \description{
-Modifies the settings for a cluster. For example, you can add another
-security or parameter group, update the preferred maintenance window, or
-change the master user password. Resetting a cluster password or
-modifying the security groups associated with a cluster do not need a
-reboot. However, modifying a parameter group requires a reboot for
-parameters to take effect. For more information about managing clusters,
-go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+Modifies the settings for a cluster.
 }
 \details{
 You can also change node type and the number of nodes to scale up or
 down the cluster. When resizing a cluster, you must specify both the
 number of nodes and the node type even if one of the parameters does not
 change.
+
+You can add another security or parameter group, or change the master
+user password. Resetting a cluster password or modifying the security
+groups associated with a cluster do not need a reboot. However,
+modifying a parameter group requires a reboot for parameters to take
+effect. For more information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
+in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_cluster(

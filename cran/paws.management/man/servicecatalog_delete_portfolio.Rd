@@ -22,6 +22,8 @@ Deletes the specified portfolio.
 \details{
 You cannot delete a portfolio if it was shared with you or if it has
 associated products, users, constraints, or shared accounts.
+
+A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_portfolio(

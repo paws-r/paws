@@ -4,12 +4,15 @@
 \alias{codestarconnections_list_connections}
 \title{Lists the connections associated with your account}
 \usage{
-codestarconnections_list_connections(ProviderTypeFilter, MaxResults,
-  NextToken)
+codestarconnections_list_connections(ProviderTypeFilter, HostArnFilter,
+  MaxResults, NextToken)
 }
 \arguments{
 \item{ProviderTypeFilter}{Filters the list of connections to those associated with a specified
 provider, such as Bitbucket.}
+
+\item{HostArnFilter}{Filters the list of connections to those associated with a specified
+host.}
 
 \item{MaxResults}{The maximum number of results to return in a single call. To retrieve
 the remaining results, make another call with the returned \code{nextToken}
@@ -23,7 +26,8 @@ Lists the connections associated with your account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_connections(
-  ProviderTypeFilter = "Bitbucket",
+  ProviderTypeFilter = "Bitbucket"|"GitHubEnterpriseServer",
+  HostArnFilter = "string",
   MaxResults = 123,
   NextToken = "string"
 )

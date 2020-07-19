@@ -8,7 +8,7 @@ imagebuilder_list_infrastructure_configurations(filters, maxResults,
   nextToken)
 }
 \arguments{
-\item{filters}{}
+\item{filters}{The filters.}
 
 \item{maxResults}{The maximum items to return in a request.}
 

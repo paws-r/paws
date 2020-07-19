@@ -71,10 +71,10 @@ should be familiar with the terminology discussed in \href{http://docs.aws.amazo
 \link[=servicecatalog_describe_provisioned_product]{describe_provisioned_product} \tab Gets information about the specified provisioned product \cr
 \link[=servicecatalog_describe_provisioned_product_plan]{describe_provisioned_product_plan} \tab Gets information about the resource changes for the specified plan \cr
 \link[=servicecatalog_describe_provisioning_artifact]{describe_provisioning_artifact} \tab Gets information about the specified provisioning artifact (also known as a version) for the specified product \cr
-\link[=servicecatalog_describe_provisioning_parameters]{describe_provisioning_parameters} \tab Gets information about the configuration required to provision the specified product using the specified provisioning artifact\cr
+\link[=servicecatalog_describe_provisioning_parameters]{describe_provisioning_parameters} \tab Gets information about the configuration required to provision the specified product using the specified provisioning artifact \cr
 \link[=servicecatalog_describe_record]{describe_record} \tab Gets information about the specified request operation \cr
 \link[=servicecatalog_describe_service_action]{describe_service_action} \tab Describes a self-service action \cr
-\link[=servicecatalog_describe_service_action_execution_parameters]{describe_service_action_execution_parameters} \tab Describe service action execution parameters \cr
+\link[=servicecatalog_describe_service_action_execution_parameters]{describe_service_action_execution_parameters} \tab Finds the default parameters for a specific self-service action on a specific provisioned product and returns a map of the results to the user\cr
 \link[=servicecatalog_describe_tag_option]{describe_tag_option} \tab Gets information about the specified TagOption \cr
 \link[=servicecatalog_disable_aws_organizations_access]{disable_aws_organizations_access} \tab Disable portfolio sharing through AWS Organizations feature \cr
 \link[=servicecatalog_disassociate_budget_from_resource]{disassociate_budget_from_resource} \tab Disassociates the specified budget from the specified resource \cr
@@ -102,7 +102,7 @@ should be familiar with the terminology discussed in \href{http://docs.aws.amazo
 \link[=servicecatalog_list_resources_for_tag_option]{list_resources_for_tag_option} \tab Lists the resources associated with the specified TagOption \cr
 \link[=servicecatalog_list_service_actions]{list_service_actions} \tab Lists all self-service actions \cr
 \link[=servicecatalog_list_service_actions_for_provisioning_artifact]{list_service_actions_for_provisioning_artifact} \tab Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID \cr
-\link[=servicecatalog_list_stack_instances_for_provisioned_product]{list_stack_instances_for_provisioned_product} \tab Returns summary information about stack instances that are associated with the specified CFN_STACKSET type provisioned product\cr
+\link[=servicecatalog_list_stack_instances_for_provisioned_product]{list_stack_instances_for_provisioned_product} \tab Returns summary information about stack instances that are associated with the specified CFN_STACKSET type provisioned product \cr
 \link[=servicecatalog_list_tag_options]{list_tag_options} \tab Lists the specified TagOptions or all TagOptions \cr
 \link[=servicecatalog_provision_product]{provision_product} \tab Provisions the specified product \cr
 \link[=servicecatalog_reject_portfolio_share]{reject_portfolio_share} \tab Rejects an offer to share the specified portfolio \cr

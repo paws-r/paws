@@ -7,7 +7,7 @@
 schemas_delete_registry(RegistryName)
 }
 \arguments{
-\item{RegistryName}{[required]}
+\item{RegistryName}{[required] The name of the registry.}
 }
 \description{
 Deletes a Registry.

@@ -3,14 +3,128 @@
 #' @include appmesh_service.R
 NULL
 
+#' Creates a gateway route
+#'
+#' Creates a gateway route.
+#' 
+#' A gateway route is attached to a virtual gateway and routes traffic to
+#' an existing virtual service. If a route matches a request, it can
+#' distribute traffic to a target virtual service.
+#' 
+#' For more information about gateway routes, see [Gateway
+#' routes](https://docs.aws.amazon.com/app-mesh/latest/userguide/gateway-routes.html).
+#'
+#' @usage
+#' appmesh_create_gateway_route(clientToken, gatewayRouteName, meshName,
+#'   meshOwner, spec, tags, virtualGatewayName)
+#'
+#' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Up to 36 letters, numbers, hyphens, and
+#' underscores are allowed.
+#' @param gatewayRouteName &#91;required&#93; The name to use for the gateway route.
+#' @param meshName &#91;required&#93; The name of the service mesh to create the gateway route in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then the account that you specify must share the mesh with
+#' your account before you can create the resource in the service mesh. For
+#' more information about mesh sharing, see [Working with shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
+#' @param spec &#91;required&#93; The gateway route specification to apply.
+#' @param tags Optional metadata that you can apply to the gateway route to assist with
+#' categorization and organization. Each tag consists of a key and an
+#' optional value, both of which you define. Tag keys can have a maximum
+#' character length of 128 characters, and tag values can have a maximum
+#' length of 256 characters.
+#' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to associate the gateway route with. If
+#' the virtual gateway is in a shared mesh, then you must be the owner of
+#' the virtual gateway resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_gateway_route(
+#'   clientToken = "string",
+#'   gatewayRouteName = "string",
+#'   meshName = "string",
+#'   meshOwner = "string",
+#'   spec = list(
+#'     grpcRoute = list(
+#'       action = list(
+#'         target = list(
+#'           virtualService = list(
+#'             virtualServiceName = "string"
+#'           )
+#'         )
+#'       ),
+#'       match = list(
+#'         serviceName = "string"
+#'       )
+#'     ),
+#'     http2Route = list(
+#'       action = list(
+#'         target = list(
+#'           virtualService = list(
+#'             virtualServiceName = "string"
+#'           )
+#'         )
+#'       ),
+#'       match = list(
+#'         prefix = "string"
+#'       )
+#'     ),
+#'     httpRoute = list(
+#'       action = list(
+#'         target = list(
+#'           virtualService = list(
+#'             virtualServiceName = "string"
+#'           )
+#'         )
+#'       ),
+#'       match = list(
+#'         prefix = "string"
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   virtualGatewayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_create_gateway_route
+appmesh_create_gateway_route <- function(clientToken = NULL, gatewayRouteName, meshName, meshOwner = NULL, spec, tags = NULL, virtualGatewayName) {
+  op <- new_operation(
+    name = "CreateGatewayRoute",
+    http_method = "PUT",
+    http_path = "/v20190125/meshes/{meshName}/virtualGateway/{virtualGatewayName}/gatewayRoutes",
+    paginator = list()
+  )
+  input <- .appmesh$create_gateway_route_input(clientToken = clientToken, gatewayRouteName = gatewayRouteName, meshName = meshName, meshOwner = meshOwner, spec = spec, tags = tags, virtualGatewayName = virtualGatewayName)
+  output <- .appmesh$create_gateway_route_output()
+  config <- get_config()
+  svc <- .appmesh$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$create_gateway_route <- appmesh_create_gateway_route
+
 #' Creates a service mesh
 #'
-#' Creates a service mesh. A service mesh is a logical boundary for network
-#' traffic between the services that reside within it.
+#' Creates a service mesh.
 #' 
-#' After you create your service mesh, you can create virtual services,
-#' virtual nodes, virtual routers, and routes to distribute traffic between
-#' the applications in your mesh.
+#' A service mesh is a logical boundary for network traffic between
+#' services that are represented by resources within the mesh. After you
+#' create your service mesh, you can create virtual services, virtual
+#' nodes, virtual routers, and routes to distribute traffic between the
+#' applications in your mesh.
+#' 
+#' For more information about service meshes, see [Service
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/meshes.html).
 #'
 #' @usage
 #' appmesh_create_mesh(clientToken, meshName, spec, tags)
@@ -69,22 +183,25 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'
 #' Creates a route that is associated with a virtual router.
 #' 
-#' You can use the `prefix` parameter in your route specification for
-#' path-based routing of requests. For example, if your virtual service
-#' name is `my-service.local` and you want the route to match requests to
-#' `my-service.local/metrics`, your prefix should be `/metrics`.
+#' You can route several different protocols and define a retry policy for
+#' a route. Traffic can be routed to one or more virtual nodes.
 #' 
-#' If your route matches a request, you can distribute traffic to one or
-#' more target virtual nodes with relative weighting.
+#' For more information about routes, see
+#' [Routes](https://docs.aws.amazon.com/app-mesh/latest/userguide/routes.html).
 #'
 #' @usage
-#' appmesh_create_route(clientToken, meshName, routeName, spec, tags,
-#'   virtualRouterName)
+#' appmesh_create_route(clientToken, meshName, meshOwner, routeName, spec,
+#'   tags, virtualRouterName)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the route in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then the account that you specify must share the mesh with
+#' your account before you can create the resource in the service mesh. For
+#' more information about mesh sharing, see [Working with shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param routeName &#91;required&#93; The name to use for the route.
 #' @param spec &#91;required&#93; The route specification to apply.
 #' @param tags Optional metadata that you can apply to the route to assist with
@@ -92,13 +209,16 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #' optional value, both of which you define. Tag keys can have a maximum
 #' character length of 128 characters, and tag values can have a maximum
 #' length of 256 characters.
-#' @param virtualRouterName &#91;required&#93; The name of the virtual router in which to create the route.
+#' @param virtualRouterName &#91;required&#93; The name of the virtual router in which to create the route. If the
+#' virtual router is in a shared mesh, then you must be the owner of the
+#' virtual router resource.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_route(
 #'   clientToken = "string",
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   routeName = "string",
 #'   spec = list(
 #'     grpcRoute = list(
@@ -145,6 +265,16 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'         tcpRetryEvents = list(
 #'           "connection-error"
 #'         )
+#'       ),
+#'       timeout = list(
+#'         idle = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         ),
+#'         perRequest = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         )
 #'       )
 #'     ),
 #'     http2Route = list(
@@ -188,6 +318,16 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'         ),
 #'         tcpRetryEvents = list(
 #'           "connection-error"
+#'         )
+#'       ),
+#'       timeout = list(
+#'         idle = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         ),
+#'         perRequest = list(
+#'           unit = "ms"|"s",
+#'           value = 123
 #'         )
 #'       )
 #'     ),
@@ -233,6 +373,16 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'         tcpRetryEvents = list(
 #'           "connection-error"
 #'         )
+#'       ),
+#'       timeout = list(
+#'         idle = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         ),
+#'         perRequest = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         )
 #'       )
 #'     ),
 #'     priority = 123,
@@ -243,6 +393,12 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'             virtualNode = "string",
 #'             weight = 123
 #'           )
+#'         )
+#'       ),
+#'       timeout = list(
+#'         idle = list(
+#'           unit = "ms"|"s",
+#'           value = 123
 #'         )
 #'       )
 #'     )
@@ -260,14 +416,14 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #' @keywords internal
 #'
 #' @rdname appmesh_create_route
-appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, tags = NULL, virtualRouterName) {
+appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL, routeName, spec, tags = NULL, virtualRouterName) {
   op <- new_operation(
     name = "CreateRoute",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes",
     paginator = list()
   )
-  input <- .appmesh$create_route_input(clientToken = clientToken, meshName = meshName, routeName = routeName, spec = spec, tags = tags, virtualRouterName = virtualRouterName)
+  input <- .appmesh$create_route_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, routeName = routeName, spec = spec, tags = tags, virtualRouterName = virtualRouterName)
   output <- .appmesh$create_route_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -277,6 +433,137 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 }
 .appmesh$operations$create_route <- appmesh_create_route
 
+#' Creates a virtual gateway
+#'
+#' Creates a virtual gateway.
+#' 
+#' A virtual gateway allows resources outside your mesh to communicate to
+#' resources that are inside your mesh. The virtual gateway represents an
+#' Envoy proxy running in an Amazon ECS task, in a Kubernetes service, or
+#' on an Amazon EC2 instance. Unlike a virtual node, which represents an
+#' Envoy running with an application, a virtual gateway represents Envoy
+#' deployed by itself.
+#' 
+#' For more information about virtual gateways, see [Virtual
+#' gateways](https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_gateways.html).
+#'
+#' @usage
+#' appmesh_create_virtual_gateway(clientToken, meshName, meshOwner, spec,
+#'   tags, virtualGatewayName)
+#'
+#' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Up to 36 letters, numbers, hyphens, and
+#' underscores are allowed.
+#' @param meshName &#91;required&#93; The name of the service mesh to create the virtual gateway in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then the account that you specify must share the mesh with
+#' your account before you can create the resource in the service mesh. For
+#' more information about mesh sharing, see [Working with shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
+#' @param spec &#91;required&#93; The virtual gateway specification to apply.
+#' @param tags Optional metadata that you can apply to the virtual gateway to assist
+#' with categorization and organization. Each tag consists of a key and an
+#' optional value, both of which you define. Tag keys can have a maximum
+#' character length of 128 characters, and tag values can have a maximum
+#' length of 256 characters.
+#' @param virtualGatewayName &#91;required&#93; The name to use for the virtual gateway.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_virtual_gateway(
+#'   clientToken = "string",
+#'   meshName = "string",
+#'   meshOwner = "string",
+#'   spec = list(
+#'     backendDefaults = list(
+#'       clientPolicy = list(
+#'         tls = list(
+#'           enforce = TRUE|FALSE,
+#'           ports = list(
+#'             123
+#'           ),
+#'           validation = list(
+#'             trust = list(
+#'               acm = list(
+#'                 certificateAuthorityArns = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               file = list(
+#'                 certificateChain = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     listeners = list(
+#'       list(
+#'         healthCheck = list(
+#'           healthyThreshold = 123,
+#'           intervalMillis = 123,
+#'           path = "string",
+#'           port = 123,
+#'           protocol = "grpc"|"http"|"http2",
+#'           timeoutMillis = 123,
+#'           unhealthyThreshold = 123
+#'         ),
+#'         portMapping = list(
+#'           port = 123,
+#'           protocol = "grpc"|"http"|"http2"
+#'         ),
+#'         tls = list(
+#'           certificate = list(
+#'             acm = list(
+#'               certificateArn = "string"
+#'             ),
+#'             file = list(
+#'               certificateChain = "string",
+#'               privateKey = "string"
+#'             )
+#'           ),
+#'           mode = "DISABLED"|"PERMISSIVE"|"STRICT"
+#'         )
+#'       )
+#'     ),
+#'     logging = list(
+#'       accessLog = list(
+#'         file = list(
+#'           path = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   virtualGatewayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_create_virtual_gateway
+appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, tags = NULL, virtualGatewayName) {
+  op <- new_operation(
+    name = "CreateVirtualGateway",
+    http_method = "PUT",
+    http_path = "/v20190125/meshes/{meshName}/virtualGateways",
+    paginator = list()
+  )
+  input <- .appmesh$create_virtual_gateway_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, tags = tags, virtualGatewayName = virtualGatewayName)
+  output <- .appmesh$create_virtual_gateway_output()
+  config <- get_config()
+  svc <- .appmesh$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$create_virtual_gateway <- appmesh_create_virtual_gateway
+
 #' Creates a virtual node within a service mesh
 #'
 #' Creates a virtual node within a service mesh.
@@ -284,11 +571,12 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #' A virtual node acts as a logical pointer to a particular task group,
 #' such as an Amazon ECS service or a Kubernetes deployment. When you
 #' create a virtual node, you can specify the service discovery information
-#' for your task group.
+#' for your task group, and whether the proxy running in a task group will
+#' communicate with other proxies using Transport Layer Security (TLS).
 #' 
-#' Any inbound traffic that your virtual node expects should be specified
-#' as a `listener`. Any outbound traffic that your virtual node expects to
-#' reach should be specified as a `backend`.
+#' You define a `listener` for any inbound traffic that your virtual node
+#' expects. Any virtual service that your virtual node expects to
+#' communicate to is specified as a `backend`.
 #' 
 #' The response metadata for your new virtual node contains the `arn` that
 #' is associated with the virtual node. Set this value (either the full ARN
@@ -302,15 +590,23 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #' can override the `node.cluster` value that is set by
 #' `APPMESH_VIRTUAL_NODE_NAME` with the `APPMESH_VIRTUAL_NODE_CLUSTER`
 #' environment variable.
+#' 
+#' For more information about virtual nodes, see [Virtual
+#' nodes](https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_nodes.html).
 #'
 #' @usage
-#' appmesh_create_virtual_node(clientToken, meshName, spec, tags,
-#'   virtualNodeName)
+#' appmesh_create_virtual_node(clientToken, meshName, meshOwner, spec,
+#'   tags, virtualNodeName)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the virtual node in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then the account that you specify must share the mesh with
+#' your account before you can create the resource in the service mesh. For
+#' more information about mesh sharing, see [Working with shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The virtual node specification to apply.
 #' @param tags Optional metadata that you can apply to the virtual node to assist with
 #' categorization and organization. Each tag consists of a key and an
@@ -324,10 +620,53 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #' svc$create_virtual_node(
 #'   clientToken = "string",
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   spec = list(
+#'     backendDefaults = list(
+#'       clientPolicy = list(
+#'         tls = list(
+#'           enforce = TRUE|FALSE,
+#'           ports = list(
+#'             123
+#'           ),
+#'           validation = list(
+#'             trust = list(
+#'               acm = list(
+#'                 certificateAuthorityArns = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               file = list(
+#'                 certificateChain = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     backends = list(
 #'       list(
 #'         virtualService = list(
+#'           clientPolicy = list(
+#'             tls = list(
+#'               enforce = TRUE|FALSE,
+#'               ports = list(
+#'                 123
+#'               ),
+#'               validation = list(
+#'                 trust = list(
+#'                   acm = list(
+#'                     certificateAuthorityArns = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   file = list(
+#'                     certificateChain = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           virtualServiceName = "string"
 #'         )
 #'       )
@@ -346,6 +685,56 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #'         portMapping = list(
 #'           port = 123,
 #'           protocol = "grpc"|"http"|"http2"|"tcp"
+#'         ),
+#'         timeout = list(
+#'           grpc = list(
+#'             idle = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             ),
+#'             perRequest = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             )
+#'           ),
+#'           http = list(
+#'             idle = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             ),
+#'             perRequest = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             )
+#'           ),
+#'           http2 = list(
+#'             idle = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             ),
+#'             perRequest = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             )
+#'           ),
+#'           tcp = list(
+#'             idle = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             )
+#'           )
+#'         ),
+#'         tls = list(
+#'           certificate = list(
+#'             acm = list(
+#'               certificateArn = "string"
+#'             ),
+#'             file = list(
+#'               certificateChain = "string",
+#'               privateKey = "string"
+#'             )
+#'           ),
+#'           mode = "DISABLED"|"PERMISSIVE"|"STRICT"
 #'         )
 #'       )
 #'     ),
@@ -385,14 +774,14 @@ appmesh_create_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #' @keywords internal
 #'
 #' @rdname appmesh_create_virtual_node
-appmesh_create_virtual_node <- function(clientToken = NULL, meshName, spec, tags = NULL, virtualNodeName) {
+appmesh_create_virtual_node <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, tags = NULL, virtualNodeName) {
   op <- new_operation(
     name = "CreateVirtualNode",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualNodes",
     paginator = list()
   )
-  input <- .appmesh$create_virtual_node_input(clientToken = clientToken, meshName = meshName, spec = spec, tags = tags, virtualNodeName = virtualNodeName)
+  input <- .appmesh$create_virtual_node_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, tags = tags, virtualNodeName = virtualNodeName)
   output <- .appmesh$create_virtual_node_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -406,22 +795,29 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, spec, tags
 #'
 #' Creates a virtual router within a service mesh.
 #' 
-#' Any inbound traffic that your virtual router expects should be specified
-#' as a `listener`.
+#' Specify a `listener` for any inbound traffic that your virtual router
+#' receives. Create a virtual router for each protocol and port that you
+#' need to route. Virtual routers handle traffic for one or more virtual
+#' services within your mesh. After you create your virtual router, create
+#' and associate routes for your virtual router that direct incoming
+#' requests to different virtual nodes.
 #' 
-#' Virtual routers handle traffic for one or more virtual services within
-#' your mesh. After you create your virtual router, create and associate
-#' routes for your virtual router that direct incoming requests to
-#' different virtual nodes.
+#' For more information about virtual routers, see [Virtual
+#' routers](https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_routers.html).
 #'
 #' @usage
-#' appmesh_create_virtual_router(clientToken, meshName, spec, tags,
-#'   virtualRouterName)
+#' appmesh_create_virtual_router(clientToken, meshName, meshOwner, spec,
+#'   tags, virtualRouterName)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the virtual router in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then the account that you specify must share the mesh with
+#' your account before you can create the resource in the service mesh. For
+#' more information about mesh sharing, see [Working with shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The virtual router specification to apply.
 #' @param tags Optional metadata that you can apply to the virtual router to assist
 #' with categorization and organization. Each tag consists of a key and an
@@ -435,6 +831,7 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, spec, tags
 #' svc$create_virtual_router(
 #'   clientToken = "string",
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   spec = list(
 #'     listeners = list(
 #'       list(
@@ -458,14 +855,14 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, spec, tags
 #' @keywords internal
 #'
 #' @rdname appmesh_create_virtual_router
-appmesh_create_virtual_router <- function(clientToken = NULL, meshName, spec, tags = NULL, virtualRouterName) {
+appmesh_create_virtual_router <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, tags = NULL, virtualRouterName) {
   op <- new_operation(
     name = "CreateVirtualRouter",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualRouters",
     paginator = list()
   )
-  input <- .appmesh$create_virtual_router_input(clientToken = clientToken, meshName = meshName, spec = spec, tags = tags, virtualRouterName = virtualRouterName)
+  input <- .appmesh$create_virtual_router_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, tags = tags, virtualRouterName = virtualRouterName)
   output <- .appmesh$create_virtual_router_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -485,15 +882,23 @@ appmesh_create_virtual_router <- function(clientToken = NULL, meshName, spec, ta
 #' `virtualServiceName`, and those requests are routed to the virtual node
 #' or virtual router that is specified as the provider for the virtual
 #' service.
+#' 
+#' For more information about virtual services, see [Virtual
+#' services](https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_services.html).
 #'
 #' @usage
-#' appmesh_create_virtual_service(clientToken, meshName, spec, tags,
-#'   virtualServiceName)
+#' appmesh_create_virtual_service(clientToken, meshName, meshOwner, spec,
+#'   tags, virtualServiceName)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh to create the virtual service in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then the account that you specify must share the mesh with
+#' your account before you can create the resource in the service mesh. For
+#' more information about mesh sharing, see [Working with shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The virtual service specification to apply.
 #' @param tags Optional metadata that you can apply to the virtual service to assist
 #' with categorization and organization. Each tag consists of a key and an
@@ -507,6 +912,7 @@ appmesh_create_virtual_router <- function(clientToken = NULL, meshName, spec, ta
 #' svc$create_virtual_service(
 #'   clientToken = "string",
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   spec = list(
 #'     provider = list(
 #'       virtualNode = list(
@@ -530,14 +936,14 @@ appmesh_create_virtual_router <- function(clientToken = NULL, meshName, spec, ta
 #' @keywords internal
 #'
 #' @rdname appmesh_create_virtual_service
-appmesh_create_virtual_service <- function(clientToken = NULL, meshName, spec, tags = NULL, virtualServiceName) {
+appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, tags = NULL, virtualServiceName) {
   op <- new_operation(
     name = "CreateVirtualService",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualServices",
     paginator = list()
   )
-  input <- .appmesh$create_virtual_service_input(clientToken = clientToken, meshName = meshName, spec = spec, tags = tags, virtualServiceName = virtualServiceName)
+  input <- .appmesh$create_virtual_service_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, tags = tags, virtualServiceName = virtualServiceName)
   output <- .appmesh$create_virtual_service_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -546,6 +952,53 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, spec, t
   return(response)
 }
 .appmesh$operations$create_virtual_service <- appmesh_create_virtual_service
+
+#' Deletes an existing gateway route
+#'
+#' Deletes an existing gateway route.
+#'
+#' @usage
+#' appmesh_delete_gateway_route(gatewayRouteName, meshName, meshOwner,
+#'   virtualGatewayName)
+#'
+#' @param gatewayRouteName &#91;required&#93; The name of the gateway route to delete.
+#' @param meshName &#91;required&#93; The name of the service mesh to delete the gateway route from.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
+#' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to delete the route from.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_gateway_route(
+#'   gatewayRouteName = "string",
+#'   meshName = "string",
+#'   meshOwner = "string",
+#'   virtualGatewayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_delete_gateway_route
+appmesh_delete_gateway_route <- function(gatewayRouteName, meshName, meshOwner = NULL, virtualGatewayName) {
+  op <- new_operation(
+    name = "DeleteGatewayRoute",
+    http_method = "DELETE",
+    http_path = "/v20190125/meshes/{meshName}/virtualGateway/{virtualGatewayName}/gatewayRoutes/{gatewayRouteName}",
+    paginator = list()
+  )
+  input <- .appmesh$delete_gateway_route_input(gatewayRouteName = gatewayRouteName, meshName = meshName, meshOwner = meshOwner, virtualGatewayName = virtualGatewayName)
+  output <- .appmesh$delete_gateway_route_output()
+  config <- get_config()
+  svc <- .appmesh$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$delete_gateway_route <- appmesh_delete_gateway_route
 
 #' Deletes an existing service mesh
 #'
@@ -592,9 +1045,14 @@ appmesh_delete_mesh <- function(meshName) {
 #' Deletes an existing route.
 #'
 #' @usage
-#' appmesh_delete_route(meshName, routeName, virtualRouterName)
+#' appmesh_delete_route(meshName, meshOwner, routeName, virtualRouterName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the route in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param routeName &#91;required&#93; The name of the route to delete.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to delete the route in.
 #'
@@ -602,6 +1060,7 @@ appmesh_delete_mesh <- function(meshName) {
 #' ```
 #' svc$delete_route(
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   routeName = "string",
 #'   virtualRouterName = "string"
 #' )
@@ -610,14 +1069,14 @@ appmesh_delete_mesh <- function(meshName) {
 #' @keywords internal
 #'
 #' @rdname appmesh_delete_route
-appmesh_delete_route <- function(meshName, routeName, virtualRouterName) {
+appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualRouterName) {
   op <- new_operation(
     name = "DeleteRoute",
     http_method = "DELETE",
     http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
     paginator = list()
   )
-  input <- .appmesh$delete_route_input(meshName = meshName, routeName = routeName, virtualRouterName = virtualRouterName)
+  input <- .appmesh$delete_route_input(meshName = meshName, meshOwner = meshOwner, routeName = routeName, virtualRouterName = virtualRouterName)
   output <- .appmesh$delete_route_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -627,6 +1086,51 @@ appmesh_delete_route <- function(meshName, routeName, virtualRouterName) {
 }
 .appmesh$operations$delete_route <- appmesh_delete_route
 
+#' Deletes an existing virtual gateway
+#'
+#' Deletes an existing virtual gateway. You cannot delete a virtual gateway
+#' if any gateway routes are associated to it.
+#'
+#' @usage
+#' appmesh_delete_virtual_gateway(meshName, meshOwner, virtualGatewayName)
+#'
+#' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual gateway from.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
+#' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_virtual_gateway(
+#'   meshName = "string",
+#'   meshOwner = "string",
+#'   virtualGatewayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_delete_virtual_gateway
+appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGatewayName) {
+  op <- new_operation(
+    name = "DeleteVirtualGateway",
+    http_method = "DELETE",
+    http_path = "/v20190125/meshes/{meshName}/virtualGateways/{virtualGatewayName}",
+    paginator = list()
+  )
+  input <- .appmesh$delete_virtual_gateway_input(meshName = meshName, meshOwner = meshOwner, virtualGatewayName = virtualGatewayName)
+  output <- .appmesh$delete_virtual_gateway_output()
+  config <- get_config()
+  svc <- .appmesh$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$delete_virtual_gateway <- appmesh_delete_virtual_gateway
+
 #' Deletes an existing virtual node
 #'
 #' Deletes an existing virtual node.
@@ -635,15 +1139,21 @@ appmesh_delete_route <- function(meshName, routeName, virtualRouterName) {
 #' service provider before you can delete the virtual node itself.
 #'
 #' @usage
-#' appmesh_delete_virtual_node(meshName, virtualNodeName)
+#' appmesh_delete_virtual_node(meshName, meshOwner, virtualNodeName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual node in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualNodeName &#91;required&#93; The name of the virtual node to delete.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_virtual_node(
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   virtualNodeName = "string"
 #' )
 #' ```
@@ -651,14 +1161,14 @@ appmesh_delete_route <- function(meshName, routeName, virtualRouterName) {
 #' @keywords internal
 #'
 #' @rdname appmesh_delete_virtual_node
-appmesh_delete_virtual_node <- function(meshName, virtualNodeName) {
+appmesh_delete_virtual_node <- function(meshName, meshOwner = NULL, virtualNodeName) {
   op <- new_operation(
     name = "DeleteVirtualNode",
     http_method = "DELETE",
     http_path = "/v20190125/meshes/{meshName}/virtualNodes/{virtualNodeName}",
     paginator = list()
   )
-  input <- .appmesh$delete_virtual_node_input(meshName = meshName, virtualNodeName = virtualNodeName)
+  input <- .appmesh$delete_virtual_node_input(meshName = meshName, meshOwner = meshOwner, virtualNodeName = virtualNodeName)
   output <- .appmesh$delete_virtual_node_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -676,15 +1186,21 @@ appmesh_delete_virtual_node <- function(meshName, virtualNodeName) {
 #' can delete the router itself.
 #'
 #' @usage
-#' appmesh_delete_virtual_router(meshName, virtualRouterName)
+#' appmesh_delete_virtual_router(meshName, meshOwner, virtualRouterName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual router in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to delete.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_virtual_router(
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   virtualRouterName = "string"
 #' )
 #' ```
@@ -692,14 +1208,14 @@ appmesh_delete_virtual_node <- function(meshName, virtualNodeName) {
 #' @keywords internal
 #'
 #' @rdname appmesh_delete_virtual_router
-appmesh_delete_virtual_router <- function(meshName, virtualRouterName) {
+appmesh_delete_virtual_router <- function(meshName, meshOwner = NULL, virtualRouterName) {
   op <- new_operation(
     name = "DeleteVirtualRouter",
     http_method = "DELETE",
     http_path = "/v20190125/meshes/{meshName}/virtualRouters/{virtualRouterName}",
     paginator = list()
   )
-  input <- .appmesh$delete_virtual_router_input(meshName = meshName, virtualRouterName = virtualRouterName)
+  input <- .appmesh$delete_virtual_router_input(meshName = meshName, meshOwner = meshOwner, virtualRouterName = virtualRouterName)
   output <- .appmesh$delete_virtual_router_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -714,15 +1230,21 @@ appmesh_delete_virtual_router <- function(meshName, virtualRouterName) {
 #' Deletes an existing virtual service.
 #'
 #' @usage
-#' appmesh_delete_virtual_service(meshName, virtualServiceName)
+#' appmesh_delete_virtual_service(meshName, meshOwner, virtualServiceName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual service in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualServiceName &#91;required&#93; The name of the virtual service to delete.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_virtual_service(
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   virtualServiceName = "string"
 #' )
 #' ```
@@ -730,14 +1252,14 @@ appmesh_delete_virtual_router <- function(meshName, virtualRouterName) {
 #' @keywords internal
 #'
 #' @rdname appmesh_delete_virtual_service
-appmesh_delete_virtual_service <- function(meshName, virtualServiceName) {
+appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualServiceName) {
   op <- new_operation(
     name = "DeleteVirtualService",
     http_method = "DELETE",
     http_path = "/v20190125/meshes/{meshName}/virtualServices/{virtualServiceName}",
     paginator = list()
   )
-  input <- .appmesh$delete_virtual_service_input(meshName = meshName, virtualServiceName = virtualServiceName)
+  input <- .appmesh$delete_virtual_service_input(meshName = meshName, meshOwner = meshOwner, virtualServiceName = virtualServiceName)
   output <- .appmesh$delete_virtual_service_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -747,33 +1269,87 @@ appmesh_delete_virtual_service <- function(meshName, virtualServiceName) {
 }
 .appmesh$operations$delete_virtual_service <- appmesh_delete_virtual_service
 
+#' Describes an existing gateway route
+#'
+#' Describes an existing gateway route.
+#'
+#' @usage
+#' appmesh_describe_gateway_route(gatewayRouteName, meshName, meshOwner,
+#'   virtualGatewayName)
+#'
+#' @param gatewayRouteName &#91;required&#93; The name of the gateway route to describe.
+#' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
+#' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway that the gateway route is associated
+#' with.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_gateway_route(
+#'   gatewayRouteName = "string",
+#'   meshName = "string",
+#'   meshOwner = "string",
+#'   virtualGatewayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_describe_gateway_route
+appmesh_describe_gateway_route <- function(gatewayRouteName, meshName, meshOwner = NULL, virtualGatewayName) {
+  op <- new_operation(
+    name = "DescribeGatewayRoute",
+    http_method = "GET",
+    http_path = "/v20190125/meshes/{meshName}/virtualGateway/{virtualGatewayName}/gatewayRoutes/{gatewayRouteName}",
+    paginator = list()
+  )
+  input <- .appmesh$describe_gateway_route_input(gatewayRouteName = gatewayRouteName, meshName = meshName, meshOwner = meshOwner, virtualGatewayName = virtualGatewayName)
+  output <- .appmesh$describe_gateway_route_output()
+  config <- get_config()
+  svc <- .appmesh$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$describe_gateway_route <- appmesh_describe_gateway_route
+
 #' Describes an existing service mesh
 #'
 #' Describes an existing service mesh.
 #'
 #' @usage
-#' appmesh_describe_mesh(meshName)
+#' appmesh_describe_mesh(meshName, meshOwner)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to describe.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_mesh(
-#'   meshName = "string"
+#'   meshName = "string",
+#'   meshOwner = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname appmesh_describe_mesh
-appmesh_describe_mesh <- function(meshName) {
+appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
   op <- new_operation(
     name = "DescribeMesh",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}",
     paginator = list()
   )
-  input <- .appmesh$describe_mesh_input(meshName = meshName)
+  input <- .appmesh$describe_mesh_input(meshName = meshName, meshOwner = meshOwner)
   output <- .appmesh$describe_mesh_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -788,9 +1364,15 @@ appmesh_describe_mesh <- function(meshName) {
 #' Describes an existing route.
 #'
 #' @usage
-#' appmesh_describe_route(meshName, routeName, virtualRouterName)
+#' appmesh_describe_route(meshName, meshOwner, routeName,
+#'   virtualRouterName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the route resides in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param routeName &#91;required&#93; The name of the route to describe.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router that the route is associated with.
 #'
@@ -798,6 +1380,7 @@ appmesh_describe_mesh <- function(meshName) {
 #' ```
 #' svc$describe_route(
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   routeName = "string",
 #'   virtualRouterName = "string"
 #' )
@@ -806,14 +1389,14 @@ appmesh_describe_mesh <- function(meshName) {
 #' @keywords internal
 #'
 #' @rdname appmesh_describe_route
-appmesh_describe_route <- function(meshName, routeName, virtualRouterName) {
+appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtualRouterName) {
   op <- new_operation(
     name = "DescribeRoute",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
     paginator = list()
   )
-  input <- .appmesh$describe_route_input(meshName = meshName, routeName = routeName, virtualRouterName = virtualRouterName)
+  input <- .appmesh$describe_route_input(meshName = meshName, meshOwner = meshOwner, routeName = routeName, virtualRouterName = virtualRouterName)
   output <- .appmesh$describe_route_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -823,20 +1406,71 @@ appmesh_describe_route <- function(meshName, routeName, virtualRouterName) {
 }
 .appmesh$operations$describe_route <- appmesh_describe_route
 
+#' Describes an existing virtual gateway
+#'
+#' Describes an existing virtual gateway.
+#'
+#' @usage
+#' appmesh_describe_virtual_gateway(meshName, meshOwner,
+#'   virtualGatewayName)
+#'
+#' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
+#' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_virtual_gateway(
+#'   meshName = "string",
+#'   meshOwner = "string",
+#'   virtualGatewayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_describe_virtual_gateway
+appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGatewayName) {
+  op <- new_operation(
+    name = "DescribeVirtualGateway",
+    http_method = "GET",
+    http_path = "/v20190125/meshes/{meshName}/virtualGateways/{virtualGatewayName}",
+    paginator = list()
+  )
+  input <- .appmesh$describe_virtual_gateway_input(meshName = meshName, meshOwner = meshOwner, virtualGatewayName = virtualGatewayName)
+  output <- .appmesh$describe_virtual_gateway_output()
+  config <- get_config()
+  svc <- .appmesh$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$describe_virtual_gateway <- appmesh_describe_virtual_gateway
+
 #' Describes an existing virtual node
 #'
 #' Describes an existing virtual node.
 #'
 #' @usage
-#' appmesh_describe_virtual_node(meshName, virtualNodeName)
+#' appmesh_describe_virtual_node(meshName, meshOwner, virtualNodeName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual node resides in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualNodeName &#91;required&#93; The name of the virtual node to describe.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_virtual_node(
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   virtualNodeName = "string"
 #' )
 #' ```
@@ -844,14 +1478,14 @@ appmesh_describe_route <- function(meshName, routeName, virtualRouterName) {
 #' @keywords internal
 #'
 #' @rdname appmesh_describe_virtual_node
-appmesh_describe_virtual_node <- function(meshName, virtualNodeName) {
+appmesh_describe_virtual_node <- function(meshName, meshOwner = NULL, virtualNodeName) {
   op <- new_operation(
     name = "DescribeVirtualNode",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualNodes/{virtualNodeName}",
     paginator = list()
   )
-  input <- .appmesh$describe_virtual_node_input(meshName = meshName, virtualNodeName = virtualNodeName)
+  input <- .appmesh$describe_virtual_node_input(meshName = meshName, meshOwner = meshOwner, virtualNodeName = virtualNodeName)
   output <- .appmesh$describe_virtual_node_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -866,15 +1500,21 @@ appmesh_describe_virtual_node <- function(meshName, virtualNodeName) {
 #' Describes an existing virtual router.
 #'
 #' @usage
-#' appmesh_describe_virtual_router(meshName, virtualRouterName)
+#' appmesh_describe_virtual_router(meshName, meshOwner, virtualRouterName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual router resides in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to describe.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_virtual_router(
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   virtualRouterName = "string"
 #' )
 #' ```
@@ -882,14 +1522,14 @@ appmesh_describe_virtual_node <- function(meshName, virtualNodeName) {
 #' @keywords internal
 #'
 #' @rdname appmesh_describe_virtual_router
-appmesh_describe_virtual_router <- function(meshName, virtualRouterName) {
+appmesh_describe_virtual_router <- function(meshName, meshOwner = NULL, virtualRouterName) {
   op <- new_operation(
     name = "DescribeVirtualRouter",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualRouters/{virtualRouterName}",
     paginator = list()
   )
-  input <- .appmesh$describe_virtual_router_input(meshName = meshName, virtualRouterName = virtualRouterName)
+  input <- .appmesh$describe_virtual_router_input(meshName = meshName, meshOwner = meshOwner, virtualRouterName = virtualRouterName)
   output <- .appmesh$describe_virtual_router_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -904,15 +1544,22 @@ appmesh_describe_virtual_router <- function(meshName, virtualRouterName) {
 #' Describes an existing virtual service.
 #'
 #' @usage
-#' appmesh_describe_virtual_service(meshName, virtualServiceName)
+#' appmesh_describe_virtual_service(meshName, meshOwner,
+#'   virtualServiceName)
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual service resides in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param virtualServiceName &#91;required&#93; The name of the virtual service to describe.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_virtual_service(
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   virtualServiceName = "string"
 #' )
 #' ```
@@ -920,14 +1567,14 @@ appmesh_describe_virtual_router <- function(meshName, virtualRouterName) {
 #' @keywords internal
 #'
 #' @rdname appmesh_describe_virtual_service
-appmesh_describe_virtual_service <- function(meshName, virtualServiceName) {
+appmesh_describe_virtual_service <- function(meshName, meshOwner = NULL, virtualServiceName) {
   op <- new_operation(
     name = "DescribeVirtualService",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualServices/{virtualServiceName}",
     paginator = list()
   )
-  input <- .appmesh$describe_virtual_service_input(meshName = meshName, virtualServiceName = virtualServiceName)
+  input <- .appmesh$describe_virtual_service_input(meshName = meshName, meshOwner = meshOwner, virtualServiceName = virtualServiceName)
   output <- .appmesh$describe_virtual_service_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -936,6 +1583,67 @@ appmesh_describe_virtual_service <- function(meshName, virtualServiceName) {
   return(response)
 }
 .appmesh$operations$describe_virtual_service <- appmesh_describe_virtual_service
+
+#' Returns a list of existing gateway routes that are associated to a
+#' virtual gateway
+#'
+#' Returns a list of existing gateway routes that are associated to a
+#' virtual gateway.
+#'
+#' @usage
+#' appmesh_list_gateway_routes(limit, meshName, meshOwner, nextToken,
+#'   virtualGatewayName)
+#'
+#' @param limit The maximum number of results returned by `ListGatewayRoutes` in
+#' paginated output. When you use this parameter, `ListGatewayRoutes`
+#' returns only `limit` results in a single page along with a `nextToken`
+#' response element. You can see the remaining results of the initial
+#' request by sending another `ListGatewayRoutes` request with the returned
+#' `nextToken` value. This value can be between 1 and 100. If you don\'t
+#' use this parameter, `ListGatewayRoutes` returns up to 100 results and a
+#' `nextToken` value if applicable.
+#' @param meshName &#91;required&#93; The name of the service mesh to list gateway routes in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `ListGatewayRoutes` request where `limit` was used and the results
+#' exceeded the value of that parameter. Pagination continues from the end
+#' of the previous results that returned the `nextToken` value.
+#' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to list gateway routes in.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_gateway_routes(
+#'   limit = 123,
+#'   meshName = "string",
+#'   meshOwner = "string",
+#'   nextToken = "string",
+#'   virtualGatewayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_list_gateway_routes
+appmesh_list_gateway_routes <- function(limit = NULL, meshName, meshOwner = NULL, nextToken = NULL, virtualGatewayName) {
+  op <- new_operation(
+    name = "ListGatewayRoutes",
+    http_method = "GET",
+    http_path = "/v20190125/meshes/{meshName}/virtualGateway/{virtualGatewayName}/gatewayRoutes",
+    paginator = list()
+  )
+  input <- .appmesh$list_gateway_routes_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken, virtualGatewayName = virtualGatewayName)
+  output <- .appmesh$list_gateway_routes_output()
+  config <- get_config()
+  svc <- .appmesh$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$list_gateway_routes <- appmesh_list_gateway_routes
 
 #' Returns a list of existing service meshes
 #'
@@ -993,7 +1701,8 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 #' Returns a list of existing routes in a service mesh.
 #'
 #' @usage
-#' appmesh_list_routes(limit, meshName, nextToken, virtualRouterName)
+#' appmesh_list_routes(limit, meshName, meshOwner, nextToken,
+#'   virtualRouterName)
 #'
 #' @param limit The maximum number of results returned by `ListRoutes` in paginated
 #' output. When you use this parameter, `ListRoutes` returns only `limit`
@@ -1003,6 +1712,11 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 #' be between 1 and 100. If you don\'t use this parameter, `ListRoutes`
 #' returns up to 100 results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list routes in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated `ListRoutes`
 #' request where `limit` was used and the results exceeded the value of
 #' that parameter. Pagination continues from the end of the previous
@@ -1014,6 +1728,7 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 #' svc$list_routes(
 #'   limit = 123,
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   nextToken = "string",
 #'   virtualRouterName = "string"
 #' )
@@ -1022,14 +1737,14 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname appmesh_list_routes
-appmesh_list_routes <- function(limit = NULL, meshName, nextToken = NULL, virtualRouterName) {
+appmesh_list_routes <- function(limit = NULL, meshName, meshOwner = NULL, nextToken = NULL, virtualRouterName) {
   op <- new_operation(
     name = "ListRoutes",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes",
     paginator = list()
   )
-  input <- .appmesh$list_routes_input(limit = limit, meshName = meshName, nextToken = nextToken, virtualRouterName = virtualRouterName)
+  input <- .appmesh$list_routes_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken, virtualRouterName = virtualRouterName)
   output <- .appmesh$list_routes_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -1090,12 +1805,68 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
 }
 .appmesh$operations$list_tags_for_resource <- appmesh_list_tags_for_resource
 
+#' Returns a list of existing virtual gateways in a service mesh
+#'
+#' Returns a list of existing virtual gateways in a service mesh.
+#'
+#' @usage
+#' appmesh_list_virtual_gateways(limit, meshName, meshOwner, nextToken)
+#'
+#' @param limit The maximum number of results returned by `ListVirtualGateways` in
+#' paginated output. When you use this parameter, `ListVirtualGateways`
+#' returns only `limit` results in a single page along with a `nextToken`
+#' response element. You can see the remaining results of the initial
+#' request by sending another `ListVirtualGateways` request with the
+#' returned `nextToken` value. This value can be between 1 and 100. If you
+#' don\'t use this parameter, `ListVirtualGateways` returns up to 100
+#' results and a `nextToken` value if applicable.
+#' @param meshName &#91;required&#93; The name of the service mesh to list virtual gateways in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `ListVirtualGateways` request where `limit` was used and the results
+#' exceeded the value of that parameter. Pagination continues from the end
+#' of the previous results that returned the `nextToken` value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_virtual_gateways(
+#'   limit = 123,
+#'   meshName = "string",
+#'   meshOwner = "string",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_list_virtual_gateways
+appmesh_list_virtual_gateways <- function(limit = NULL, meshName, meshOwner = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListVirtualGateways",
+    http_method = "GET",
+    http_path = "/v20190125/meshes/{meshName}/virtualGateways",
+    paginator = list()
+  )
+  input <- .appmesh$list_virtual_gateways_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken)
+  output <- .appmesh$list_virtual_gateways_output()
+  config <- get_config()
+  svc <- .appmesh$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$list_virtual_gateways <- appmesh_list_virtual_gateways
+
 #' Returns a list of existing virtual nodes
 #'
 #' Returns a list of existing virtual nodes.
 #'
 #' @usage
-#' appmesh_list_virtual_nodes(limit, meshName, nextToken)
+#' appmesh_list_virtual_nodes(limit, meshName, meshOwner, nextToken)
 #'
 #' @param limit The maximum number of results returned by `ListVirtualNodes` in
 #' paginated output. When you use this parameter, `ListVirtualNodes`
@@ -1106,6 +1877,11 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
 #' use this parameter, `ListVirtualNodes` returns up to 100 results and a
 #' `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual nodes in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `ListVirtualNodes` request where `limit` was used and the results
 #' exceeded the value of that parameter. Pagination continues from the end
@@ -1116,6 +1892,7 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
 #' svc$list_virtual_nodes(
 #'   limit = 123,
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   nextToken = "string"
 #' )
 #' ```
@@ -1123,14 +1900,14 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
 #' @keywords internal
 #'
 #' @rdname appmesh_list_virtual_nodes
-appmesh_list_virtual_nodes <- function(limit = NULL, meshName, nextToken = NULL) {
+appmesh_list_virtual_nodes <- function(limit = NULL, meshName, meshOwner = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListVirtualNodes",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualNodes",
     paginator = list()
   )
-  input <- .appmesh$list_virtual_nodes_input(limit = limit, meshName = meshName, nextToken = nextToken)
+  input <- .appmesh$list_virtual_nodes_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken)
   output <- .appmesh$list_virtual_nodes_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -1145,7 +1922,7 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, nextToken = NULL)
 #' Returns a list of existing virtual routers in a service mesh.
 #'
 #' @usage
-#' appmesh_list_virtual_routers(limit, meshName, nextToken)
+#' appmesh_list_virtual_routers(limit, meshName, meshOwner, nextToken)
 #'
 #' @param limit The maximum number of results returned by `ListVirtualRouters` in
 #' paginated output. When you use this parameter, `ListVirtualRouters`
@@ -1156,6 +1933,11 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, nextToken = NULL)
 #' don\'t use this parameter, `ListVirtualRouters` returns up to 100
 #' results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual routers in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `ListVirtualRouters` request where `limit` was used and the results
 #' exceeded the value of that parameter. Pagination continues from the end
@@ -1166,6 +1948,7 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, nextToken = NULL)
 #' svc$list_virtual_routers(
 #'   limit = 123,
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   nextToken = "string"
 #' )
 #' ```
@@ -1173,14 +1956,14 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, nextToken = NULL)
 #' @keywords internal
 #'
 #' @rdname appmesh_list_virtual_routers
-appmesh_list_virtual_routers <- function(limit = NULL, meshName, nextToken = NULL) {
+appmesh_list_virtual_routers <- function(limit = NULL, meshName, meshOwner = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListVirtualRouters",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualRouters",
     paginator = list()
   )
-  input <- .appmesh$list_virtual_routers_input(limit = limit, meshName = meshName, nextToken = nextToken)
+  input <- .appmesh$list_virtual_routers_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken)
   output <- .appmesh$list_virtual_routers_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -1195,7 +1978,7 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, nextToken = NUL
 #' Returns a list of existing virtual services in a service mesh.
 #'
 #' @usage
-#' appmesh_list_virtual_services(limit, meshName, nextToken)
+#' appmesh_list_virtual_services(limit, meshName, meshOwner, nextToken)
 #'
 #' @param limit The maximum number of results returned by `ListVirtualServices` in
 #' paginated output. When you use this parameter, `ListVirtualServices`
@@ -1206,6 +1989,11 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, nextToken = NUL
 #' don\'t use this parameter, `ListVirtualServices` returns up to 100
 #' results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual services in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `ListVirtualServices` request where `limit` was used and the results
 #' exceeded the value of that parameter. Pagination continues from the end
@@ -1216,6 +2004,7 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, nextToken = NUL
 #' svc$list_virtual_services(
 #'   limit = 123,
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   nextToken = "string"
 #' )
 #' ```
@@ -1223,14 +2012,14 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, nextToken = NUL
 #' @keywords internal
 #'
 #' @rdname appmesh_list_virtual_services
-appmesh_list_virtual_services <- function(limit = NULL, meshName, nextToken = NULL) {
+appmesh_list_virtual_services <- function(limit = NULL, meshName, meshOwner = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListVirtualServices",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualServices",
     paginator = list()
   )
-  input <- .appmesh$list_virtual_services_input(limit = limit, meshName = meshName, nextToken = nextToken)
+  input <- .appmesh$list_virtual_services_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken)
   output <- .appmesh$list_virtual_services_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -1329,6 +2118,100 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 }
 .appmesh$operations$untag_resource <- appmesh_untag_resource
 
+#' Updates an existing gateway route that is associated to a specified
+#' virtual gateway in a service mesh
+#'
+#' Updates an existing gateway route that is associated to a specified
+#' virtual gateway in a service mesh.
+#'
+#' @usage
+#' appmesh_update_gateway_route(clientToken, gatewayRouteName, meshName,
+#'   meshOwner, spec, virtualGatewayName)
+#'
+#' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Up to 36 letters, numbers, hyphens, and
+#' underscores are allowed.
+#' @param gatewayRouteName &#91;required&#93; The name of the gateway route to update.
+#' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
+#' @param spec &#91;required&#93; The new gateway route specification to apply. This overwrites the
+#' existing data.
+#' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway that the gateway route is associated
+#' with.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_gateway_route(
+#'   clientToken = "string",
+#'   gatewayRouteName = "string",
+#'   meshName = "string",
+#'   meshOwner = "string",
+#'   spec = list(
+#'     grpcRoute = list(
+#'       action = list(
+#'         target = list(
+#'           virtualService = list(
+#'             virtualServiceName = "string"
+#'           )
+#'         )
+#'       ),
+#'       match = list(
+#'         serviceName = "string"
+#'       )
+#'     ),
+#'     http2Route = list(
+#'       action = list(
+#'         target = list(
+#'           virtualService = list(
+#'             virtualServiceName = "string"
+#'           )
+#'         )
+#'       ),
+#'       match = list(
+#'         prefix = "string"
+#'       )
+#'     ),
+#'     httpRoute = list(
+#'       action = list(
+#'         target = list(
+#'           virtualService = list(
+#'             virtualServiceName = "string"
+#'           )
+#'         )
+#'       ),
+#'       match = list(
+#'         prefix = "string"
+#'       )
+#'     )
+#'   ),
+#'   virtualGatewayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_update_gateway_route
+appmesh_update_gateway_route <- function(clientToken = NULL, gatewayRouteName, meshName, meshOwner = NULL, spec, virtualGatewayName) {
+  op <- new_operation(
+    name = "UpdateGatewayRoute",
+    http_method = "PUT",
+    http_path = "/v20190125/meshes/{meshName}/virtualGateway/{virtualGatewayName}/gatewayRoutes/{gatewayRouteName}",
+    paginator = list()
+  )
+  input <- .appmesh$update_gateway_route_input(clientToken = clientToken, gatewayRouteName = gatewayRouteName, meshName = meshName, meshOwner = meshOwner, spec = spec, virtualGatewayName = virtualGatewayName)
+  output <- .appmesh$update_gateway_route_output()
+  config <- get_config()
+  svc <- .appmesh$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$update_gateway_route <- appmesh_update_gateway_route
+
 #' Updates an existing service mesh
 #'
 #' Updates an existing service mesh.
@@ -1382,13 +2265,18 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #' router.
 #'
 #' @usage
-#' appmesh_update_route(clientToken, meshName, routeName, spec,
+#' appmesh_update_route(clientToken, meshName, meshOwner, routeName, spec,
 #'   virtualRouterName)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the route resides in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param routeName &#91;required&#93; The name of the route to update.
 #' @param spec &#91;required&#93; The new route specification to apply. This overwrites the existing data.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router that the route is associated with.
@@ -1398,6 +2286,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #' svc$update_route(
 #'   clientToken = "string",
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   routeName = "string",
 #'   spec = list(
 #'     grpcRoute = list(
@@ -1444,6 +2333,16 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'         tcpRetryEvents = list(
 #'           "connection-error"
 #'         )
+#'       ),
+#'       timeout = list(
+#'         idle = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         ),
+#'         perRequest = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         )
 #'       )
 #'     ),
 #'     http2Route = list(
@@ -1487,6 +2386,16 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'         ),
 #'         tcpRetryEvents = list(
 #'           "connection-error"
+#'         )
+#'       ),
+#'       timeout = list(
+#'         idle = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         ),
+#'         perRequest = list(
+#'           unit = "ms"|"s",
+#'           value = 123
 #'         )
 #'       )
 #'     ),
@@ -1532,6 +2441,16 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'         tcpRetryEvents = list(
 #'           "connection-error"
 #'         )
+#'       ),
+#'       timeout = list(
+#'         idle = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         ),
+#'         perRequest = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         )
 #'       )
 #'     ),
 #'     priority = 123,
@@ -1543,6 +2462,12 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'             weight = 123
 #'           )
 #'         )
+#'       ),
+#'       timeout = list(
+#'         idle = list(
+#'           unit = "ms"|"s",
+#'           value = 123
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1553,14 +2478,14 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #' @keywords internal
 #'
 #' @rdname appmesh_update_route
-appmesh_update_route <- function(clientToken = NULL, meshName, routeName, spec, virtualRouterName) {
+appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL, routeName, spec, virtualRouterName) {
   op <- new_operation(
     name = "UpdateRoute",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}",
     paginator = list()
   )
-  input <- .appmesh$update_route_input(clientToken = clientToken, meshName = meshName, routeName = routeName, spec = spec, virtualRouterName = virtualRouterName)
+  input <- .appmesh$update_route_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, routeName = routeName, spec = spec, virtualRouterName = virtualRouterName)
   output <- .appmesh$update_route_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -1570,18 +2495,134 @@ appmesh_update_route <- function(clientToken = NULL, meshName, routeName, spec, 
 }
 .appmesh$operations$update_route <- appmesh_update_route
 
+#' Updates an existing virtual gateway in a specified service mesh
+#'
+#' Updates an existing virtual gateway in a specified service mesh.
+#'
+#' @usage
+#' appmesh_update_virtual_gateway(clientToken, meshName, meshOwner, spec,
+#'   virtualGatewayName)
+#'
+#' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Up to 36 letters, numbers, hyphens, and
+#' underscores are allowed.
+#' @param meshName &#91;required&#93; The name of the service mesh that the virtual gateway resides in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
+#' @param spec &#91;required&#93; The new virtual gateway specification to apply. This overwrites the
+#' existing data.
+#' @param virtualGatewayName &#91;required&#93; The name of the virtual gateway to update.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_virtual_gateway(
+#'   clientToken = "string",
+#'   meshName = "string",
+#'   meshOwner = "string",
+#'   spec = list(
+#'     backendDefaults = list(
+#'       clientPolicy = list(
+#'         tls = list(
+#'           enforce = TRUE|FALSE,
+#'           ports = list(
+#'             123
+#'           ),
+#'           validation = list(
+#'             trust = list(
+#'               acm = list(
+#'                 certificateAuthorityArns = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               file = list(
+#'                 certificateChain = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     listeners = list(
+#'       list(
+#'         healthCheck = list(
+#'           healthyThreshold = 123,
+#'           intervalMillis = 123,
+#'           path = "string",
+#'           port = 123,
+#'           protocol = "grpc"|"http"|"http2",
+#'           timeoutMillis = 123,
+#'           unhealthyThreshold = 123
+#'         ),
+#'         portMapping = list(
+#'           port = 123,
+#'           protocol = "grpc"|"http"|"http2"
+#'         ),
+#'         tls = list(
+#'           certificate = list(
+#'             acm = list(
+#'               certificateArn = "string"
+#'             ),
+#'             file = list(
+#'               certificateChain = "string",
+#'               privateKey = "string"
+#'             )
+#'           ),
+#'           mode = "DISABLED"|"PERMISSIVE"|"STRICT"
+#'         )
+#'       )
+#'     ),
+#'     logging = list(
+#'       accessLog = list(
+#'         file = list(
+#'           path = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   virtualGatewayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appmesh_update_virtual_gateway
+appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, virtualGatewayName) {
+  op <- new_operation(
+    name = "UpdateVirtualGateway",
+    http_method = "PUT",
+    http_path = "/v20190125/meshes/{meshName}/virtualGateways/{virtualGatewayName}",
+    paginator = list()
+  )
+  input <- .appmesh$update_virtual_gateway_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, virtualGatewayName = virtualGatewayName)
+  output <- .appmesh$update_virtual_gateway_output()
+  config <- get_config()
+  svc <- .appmesh$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appmesh$operations$update_virtual_gateway <- appmesh_update_virtual_gateway
+
 #' Updates an existing virtual node in a specified service mesh
 #'
 #' Updates an existing virtual node in a specified service mesh.
 #'
 #' @usage
-#' appmesh_update_virtual_node(clientToken, meshName, spec,
+#' appmesh_update_virtual_node(clientToken, meshName, meshOwner, spec,
 #'   virtualNodeName)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual node resides in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The new virtual node specification to apply. This overwrites the
 #' existing data.
 #' @param virtualNodeName &#91;required&#93; The name of the virtual node to update.
@@ -1591,10 +2632,53 @@ appmesh_update_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #' svc$update_virtual_node(
 #'   clientToken = "string",
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   spec = list(
+#'     backendDefaults = list(
+#'       clientPolicy = list(
+#'         tls = list(
+#'           enforce = TRUE|FALSE,
+#'           ports = list(
+#'             123
+#'           ),
+#'           validation = list(
+#'             trust = list(
+#'               acm = list(
+#'                 certificateAuthorityArns = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               file = list(
+#'                 certificateChain = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     backends = list(
 #'       list(
 #'         virtualService = list(
+#'           clientPolicy = list(
+#'             tls = list(
+#'               enforce = TRUE|FALSE,
+#'               ports = list(
+#'                 123
+#'               ),
+#'               validation = list(
+#'                 trust = list(
+#'                   acm = list(
+#'                     certificateAuthorityArns = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   file = list(
+#'                     certificateChain = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           virtualServiceName = "string"
 #'         )
 #'       )
@@ -1613,6 +2697,56 @@ appmesh_update_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #'         portMapping = list(
 #'           port = 123,
 #'           protocol = "grpc"|"http"|"http2"|"tcp"
+#'         ),
+#'         timeout = list(
+#'           grpc = list(
+#'             idle = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             ),
+#'             perRequest = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             )
+#'           ),
+#'           http = list(
+#'             idle = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             ),
+#'             perRequest = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             )
+#'           ),
+#'           http2 = list(
+#'             idle = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             ),
+#'             perRequest = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             )
+#'           ),
+#'           tcp = list(
+#'             idle = list(
+#'               unit = "ms"|"s",
+#'               value = 123
+#'             )
+#'           )
+#'         ),
+#'         tls = list(
+#'           certificate = list(
+#'             acm = list(
+#'               certificateArn = "string"
+#'             ),
+#'             file = list(
+#'               certificateChain = "string",
+#'               privateKey = "string"
+#'             )
+#'           ),
+#'           mode = "DISABLED"|"PERMISSIVE"|"STRICT"
 #'         )
 #'       )
 #'     ),
@@ -1646,14 +2780,14 @@ appmesh_update_route <- function(clientToken = NULL, meshName, routeName, spec, 
 #' @keywords internal
 #'
 #' @rdname appmesh_update_virtual_node
-appmesh_update_virtual_node <- function(clientToken = NULL, meshName, spec, virtualNodeName) {
+appmesh_update_virtual_node <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, virtualNodeName) {
   op <- new_operation(
     name = "UpdateVirtualNode",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualNodes/{virtualNodeName}",
     paginator = list()
   )
-  input <- .appmesh$update_virtual_node_input(clientToken = clientToken, meshName = meshName, spec = spec, virtualNodeName = virtualNodeName)
+  input <- .appmesh$update_virtual_node_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, virtualNodeName = virtualNodeName)
   output <- .appmesh$update_virtual_node_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -1668,13 +2802,18 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, spec, virt
 #' Updates an existing virtual router in a specified service mesh.
 #'
 #' @usage
-#' appmesh_update_virtual_router(clientToken, meshName, spec,
+#' appmesh_update_virtual_router(clientToken, meshName, meshOwner, spec,
 #'   virtualRouterName)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual router resides in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The new virtual router specification to apply. This overwrites the
 #' existing data.
 #' @param virtualRouterName &#91;required&#93; The name of the virtual router to update.
@@ -1684,6 +2823,7 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, spec, virt
 #' svc$update_virtual_router(
 #'   clientToken = "string",
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   spec = list(
 #'     listeners = list(
 #'       list(
@@ -1701,14 +2841,14 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, spec, virt
 #' @keywords internal
 #'
 #' @rdname appmesh_update_virtual_router
-appmesh_update_virtual_router <- function(clientToken = NULL, meshName, spec, virtualRouterName) {
+appmesh_update_virtual_router <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, virtualRouterName) {
   op <- new_operation(
     name = "UpdateVirtualRouter",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualRouters/{virtualRouterName}",
     paginator = list()
   )
-  input <- .appmesh$update_virtual_router_input(clientToken = clientToken, meshName = meshName, spec = spec, virtualRouterName = virtualRouterName)
+  input <- .appmesh$update_virtual_router_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, virtualRouterName = virtualRouterName)
   output <- .appmesh$update_virtual_router_output()
   config <- get_config()
   svc <- .appmesh$service(config)
@@ -1723,13 +2863,18 @@ appmesh_update_virtual_router <- function(clientToken = NULL, meshName, spec, vi
 #' Updates an existing virtual service in a specified service mesh.
 #'
 #' @usage
-#' appmesh_update_virtual_service(clientToken, meshName, spec,
+#' appmesh_update_virtual_service(clientToken, meshName, meshOwner, spec,
 #'   virtualServiceName)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual service resides in.
+#' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
+#' not your own, then it\'s the ID of the account that shared the mesh with
+#' your account. For more information about mesh sharing, see [Working with
+#' shared
+#' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 #' @param spec &#91;required&#93; The new virtual service specification to apply. This overwrites the
 #' existing data.
 #' @param virtualServiceName &#91;required&#93; The name of the virtual service to update.
@@ -1739,6 +2884,7 @@ appmesh_update_virtual_router <- function(clientToken = NULL, meshName, spec, vi
 #' svc$update_virtual_service(
 #'   clientToken = "string",
 #'   meshName = "string",
+#'   meshOwner = "string",
 #'   spec = list(
 #'     provider = list(
 #'       virtualNode = list(
@@ -1756,14 +2902,14 @@ appmesh_update_virtual_router <- function(clientToken = NULL, meshName, spec, vi
 #' @keywords internal
 #'
 #' @rdname appmesh_update_virtual_service
-appmesh_update_virtual_service <- function(clientToken = NULL, meshName, spec, virtualServiceName) {
+appmesh_update_virtual_service <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, virtualServiceName) {
   op <- new_operation(
     name = "UpdateVirtualService",
     http_method = "PUT",
     http_path = "/v20190125/meshes/{meshName}/virtualServices/{virtualServiceName}",
     paginator = list()
   )
-  input <- .appmesh$update_virtual_service_input(clientToken = clientToken, meshName = meshName, spec = spec, virtualServiceName = virtualServiceName)
+  input <- .appmesh$update_virtual_service_input(clientToken = clientToken, meshName = meshName, meshOwner = meshOwner, spec = spec, virtualServiceName = virtualServiceName)
   output <- .appmesh$update_virtual_service_output()
   config <- get_config()
   svc <- .appmesh$service(config)

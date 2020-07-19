@@ -8,7 +8,8 @@ kinesisvideo_update_signaling_channel(ChannelARN, CurrentVersion,
   SingleMasterConfiguration)
 }
 \arguments{
-\item{ChannelARN}{[required] The ARN of the signaling channel that you want to update.}
+\item{ChannelARN}{[required] The Amazon Resource Name (ARN) of the signaling channel that you want to
+update.}
 
 \item{CurrentVersion}{[required] The current version of the signaling channel that you want to update.}
 
@@ -21,8 +22,8 @@ operation and takes time to complete.
 }
 \details{
 If the \code{MessageTtlSeconds} value is updated (either increased or
-reduced), then it only applies to new messages sent via this channel
-after it\'s been updated. Existing messages are still expire as per the
+reduced), it only applies to new messages sent via this channel after
+it\'s been updated. Existing messages are still expired as per the
 previous \code{MessageTtlSeconds} value.
 }
 \section{Request syntax}{

@@ -5,10 +5,15 @@
 \title{Creates a flow definition}
 \usage{
 sagemaker_create_flow_definition(FlowDefinitionName,
-  HumanLoopActivationConfig, HumanLoopConfig, OutputConfig, RoleArn, Tags)
+  HumanLoopRequestSource, HumanLoopActivationConfig, HumanLoopConfig,
+  OutputConfig, RoleArn, Tags)
 }
 \arguments{
 \item{FlowDefinitionName}{[required] The name of your flow definition.}
+
+\item{HumanLoopRequestSource}{Container for configuring the source of human task requests. Use to
+specify if Amazon Rekognition or Amazon Textract is used as an
+integration source.}
 
 \item{HumanLoopActivationConfig}{An object containing information about the events that trigger a human
 workflow.}
@@ -33,10 +38,10 @@ Creates a flow definition.
 \section{Request syntax}{
 \preformatted{svc$create_flow_definition(
   FlowDefinitionName = "string",
+  HumanLoopRequestSource = list(
+    AwsManagedHumanLoopRequestSource = "AWS/Rekognition/DetectModerationLabels/Image/V3"|"AWS/Textract/AnalyzeDocument/Forms/V1"
+  ),
   HumanLoopActivationConfig = list(
-    HumanLoopRequestSource = list(
-      AwsManagedHumanLoopRequestSource = "AWS/Rekognition/DetectModerationLabels/Image/V3"|"AWS/Textract/AnalyzeDocument/Forms/V1"
-    ),
     HumanLoopActivationConditionsConfig = list(
       HumanLoopActivationConditions = "string"
     )

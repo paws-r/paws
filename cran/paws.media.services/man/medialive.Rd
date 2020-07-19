@@ -50,6 +50,7 @@ API for AWS Elemental MediaLive
 \link[=medialive_delete_tags]{delete_tags} \tab Removes tags for a resource \cr
 \link[=medialive_describe_channel]{describe_channel} \tab Gets details about a channel \cr
 \link[=medialive_describe_input]{describe_input} \tab Produces details about an input \cr
+\link[=medialive_describe_input_device]{describe_input_device} \tab Gets the details for the input device \cr
 \link[=medialive_describe_input_security_group]{describe_input_security_group} \tab Produces a summary of an Input Security Group \cr
 \link[=medialive_describe_multiplex]{describe_multiplex} \tab Gets details about a multiplex \cr
 \link[=medialive_describe_multiplex_program]{describe_multiplex_program} \tab Get the details for a program in a multiplex \cr
@@ -57,6 +58,7 @@ API for AWS Elemental MediaLive
 \link[=medialive_describe_reservation]{describe_reservation} \tab Get details for a reservation \cr
 \link[=medialive_describe_schedule]{describe_schedule} \tab Get a channel schedule \cr
 \link[=medialive_list_channels]{list_channels} \tab Produces list of channels that have been created \cr
+\link[=medialive_list_input_devices]{list_input_devices} \tab List input devices \cr
 \link[=medialive_list_inputs]{list_inputs} \tab Produces list of inputs that have been created \cr
 \link[=medialive_list_input_security_groups]{list_input_security_groups} \tab Produces a list of Input Security Groups for an account \cr
 \link[=medialive_list_multiplexes]{list_multiplexes} \tab Retrieve a list of the existing multiplexes \cr
@@ -72,6 +74,7 @@ API for AWS Elemental MediaLive
 \link[=medialive_update_channel]{update_channel} \tab Updates a channel \cr
 \link[=medialive_update_channel_class]{update_channel_class} \tab Changes the class of the channel \cr
 \link[=medialive_update_input]{update_input} \tab Updates an input \cr
+\link[=medialive_update_input_device]{update_input_device} \tab Updates the parameters for the input device \cr
 \link[=medialive_update_input_security_group]{update_input_security_group} \tab Update an Input Security Group's Whilelists \cr
 \link[=medialive_update_multiplex]{update_multiplex} \tab Updates a multiplex \cr
 \link[=medialive_update_multiplex_program]{update_multiplex_program} \tab Update a program in a multiplex \cr

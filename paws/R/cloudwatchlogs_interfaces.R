@@ -95,6 +95,18 @@ NULL
   list()
 }
 
+.cloudwatchlogs$delete_query_definition_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(queryDefinitionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$delete_query_definition_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(success = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudwatchlogs$delete_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(policyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -194,6 +206,18 @@ NULL
 .cloudwatchlogs$describe_queries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(queries = structure(list(structure(list(queryId = structure(logical(0), tags = list(type = "string")), queryString = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "long")), logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$describe_query_definitions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(queryDefinitionNamePrefix = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$describe_query_definitions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(queryDefinitions = structure(list(structure(list(queryDefinitionId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), queryString = structure(logical(0), tags = list(type = "string")), lastModified = structure(logical(0), tags = list(type = "long")), logGroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -345,6 +369,18 @@ NULL
 
 .cloudwatchlogs$put_metric_filter_output <- function(...) {
   list()
+}
+
+.cloudwatchlogs$put_query_definition_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), queryDefinitionId = structure(logical(0), tags = list(type = "string")), logGroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), queryString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$put_query_definition_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(queryDefinitionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .cloudwatchlogs$put_resource_policy_input <- function(...) {

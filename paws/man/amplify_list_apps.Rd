@@ -2,18 +2,18 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_list_apps}
 \alias{amplify_list_apps}
-\title{Lists existing Amplify Apps}
+\title{Returns a list of the existing Amplify apps}
 \usage{
 amplify_list_apps(nextToken, maxResults)
 }
 \arguments{
-\item{nextToken}{Pagination token. If non-null pagination token is returned in a result,
-then pass its value in another request to fetch more entries.}
+\item{nextToken}{A pagination token. If non-null, the pagination token is returned in a
+result. Pass its value in another request to retrieve more entries.}
 
-\item{maxResults}{Maximum number of records to list in a single response.}
+\item{maxResults}{The maximum number of records to list in a single response.}
 }
 \description{
-Lists existing Amplify Apps.
+Returns a list of the existing Amplify apps.
 }
 \section{Request syntax}{
 \preformatted{svc$list_apps(

@@ -44,4 +44,14 @@ PutFunctionEventInvokeConfig.
 }
 }
 
+\examples{
+\dontrun{
+# The following example returns a list of asynchronous invocation
+# configurations for a function named my-function.
+svc$list_function_event_invoke_configs(
+  FunctionName = "my-function"
+)
+}
+
+}
 \keyword{internal}

@@ -10,9 +10,14 @@ codestarconnections(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
+AWS CodeStar Connections
+
+The CodeStar Connections feature is in preview release and is subject to
+change.
+
 This AWS CodeStar Connections API Reference provides descriptions and
 usage examples of the operations and data types for the AWS CodeStar
-Connections API. You can use the Connections API to work with
+Connections API. You can use the connections API to work with
 connections and installations.
 
 \emph{Connections} are configurations that you use to connect AWS resources
@@ -29,6 +34,9 @@ conduct this handshake. For example, the installation for the Bitbucket
 provider type is the Bitbucket Cloud app. When you create a connection,
 you can choose an existing installation or create one.
 
+When you want to create a connection to an installed provider type such
+as GitHub Enterprise Server, you create a \emph{host} for your connections.
+
 You can work with connections by calling:
 \itemize{
 \item CreateConnection, which creates a uniquely named connection that can
@@ -40,7 +48,29 @@ including the connection status.
 account.
 }
 
-For information about how to use AWS CodeStar Connections, see the \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html}{AWS CodePipeline User Guide}.
+You can work with hosts by calling:
+\itemize{
+\item CreateHost, which creates a host that represents the infrastructure
+where your provider is installed.
+\item DeleteHost, which deletes the specified host.
+\item GetHost, which returns information about the host, including the
+setup status.
+\item ListHosts, which lists the hosts associated with your account.
+}
+
+You can work with tags in AWS CodeStar Connections by calling the
+following:
+\itemize{
+\item ListTagsForResource, which gets information about AWS tags for a
+specified Amazon Resource Name (ARN) in AWS CodeStar Connections.
+\item TagResource, which adds or updates tags for a resource in AWS
+CodeStar Connections.
+\item UntagResource, which removes tags for a resource in AWS CodeStar
+Connections.
+}
+
+For information about how to use AWS CodeStar Connections, see the
+\href{https://docs.aws.amazon.com/dtconsole/latest/userguide/welcome-connections.html}{Developer Tools User Guide}.
 }
 \section{Service syntax}{
 \preformatted{svc <- codestarconnections(
@@ -64,9 +94,16 @@ For information about how to use AWS CodeStar Connections, see the \href{https:/
 
 \tabular{ll}{
 \link[=codestarconnections_create_connection]{create_connection} \tab Creates a connection that can then be given to other AWS services like CodePipeline so that it can access third-party code repositories\cr
+\link[=codestarconnections_create_host]{create_host} \tab Creates a resource that represents the infrastructure where a third-party provider is installed \cr
 \link[=codestarconnections_delete_connection]{delete_connection} \tab The connection to be deleted \cr
+\link[=codestarconnections_delete_host]{delete_host} \tab The host to be deleted \cr
 \link[=codestarconnections_get_connection]{get_connection} \tab Returns the connection ARN and details such as status, owner, and provider type \cr
-\link[=codestarconnections_list_connections]{list_connections} \tab Lists the connections associated with your account
+\link[=codestarconnections_get_host]{get_host} \tab Returns the host ARN and details such as status, provider type, endpoint, and, if applicable, the VPC configuration \cr
+\link[=codestarconnections_list_connections]{list_connections} \tab Lists the connections associated with your account \cr
+\link[=codestarconnections_list_hosts]{list_hosts} \tab Lists the hosts associated with your account \cr
+\link[=codestarconnections_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key-value pairs (metadata) that are used to manage the resource \cr
+\link[=codestarconnections_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource \cr
+\link[=codestarconnections_untag_resource]{untag_resource} \tab Removes tags from an AWS resource
 }
 }
 

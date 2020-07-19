@@ -47,9 +47,9 @@ ElastiCache assumes \code{single-az} mode.}
 
 \item{PreferredAvailabilityZone}{The EC2 Availability Zone in which the cluster is created.
 
-All nodes belonging to this Memcached cluster are placed in the
-preferred Availability Zone. If you want to create your nodes across
-multiple Availability Zones, use \code{PreferredAvailabilityZones}.
+All nodes belonging to this cluster are placed in the preferred
+Availability Zone. If you want to create your nodes across multiple
+Availability Zones, use \code{PreferredAvailabilityZones}.
 
 Default: System chosen Availability Zone.}
 
@@ -97,6 +97,9 @@ previous generation counterparts.
 
 \strong{M4 node types:} \code{cache.m4.large}, \code{cache.m4.xlarge},
 \code{cache.m4.2xlarge}, \code{cache.m4.4xlarge}, \code{cache.m4.10xlarge}
+
+\strong{T3 node types:} \code{cache.t3.micro}, \code{cache.t3.small},
+\code{cache.t3.medium}
 
 \strong{T2 node types:} \code{cache.t2.micro}, \code{cache.t2.small},
 \code{cache.t2.medium}
@@ -268,8 +271,8 @@ length.
 in the AUTH token.
 }
 
-For more information, see AUTH password at
-http://redis.io/commands/AUTH.}
+For more information, see \href{http://redis.io/commands/AUTH}{AUTH password}
+at http://redis.io/commands/AUTH.}
 }
 \description{
 Creates a cluster. All nodes in the cluster run the same

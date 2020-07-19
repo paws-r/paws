@@ -26,6 +26,9 @@ is the content of the \code{customerCA.crt} file that you created when you
 in the specified AWS CloudHSM cluster. AWS KMS logs into the cluster as
 this user to manage key material on your behalf.
 
+The password must be a string of 7 to 32 characters. Its value is case
+sensitive.
+
 This parameter tells AWS KMS the \code{kmsuser} account password; it does not
 change the password in the AWS CloudHSM cluster.}
 }

@@ -13,7 +13,7 @@ signer_put_signing_profile(profileName, signingMaterial, platformId,
 \item{signingMaterial}{[required] The AWS Certificate Manager certificate that will be used to sign code
 with the new signing profile.}
 
-\item{platformId}{[required] The ID of the signing profile to be created.}
+\item{platformId}{[required] The ID of the signing platform to be created.}
 
 \item{overrides}{A subfield of \code{platform}. This specifies any different configuration
 options that you want to apply to the chosen platform (such as a
@@ -22,7 +22,7 @@ different \code{hash-algorithm} or \code{signing-algorithm}).}
 \item{signingParameters}{Map of key-value pairs for signing. These can include any information
 that you want to use during signing.}
 
-\item{tags}{Tags to be associated with the signing profile being created.}
+\item{tags}{Tags to be associated with the signing profile that is being created.}
 }
 \description{
 Creates a signing profile. A signing profile is a code signing template
@@ -41,7 +41,8 @@ information, see
     signingConfiguration = list(
       encryptionAlgorithm = "RSA"|"ECDSA",
       hashAlgorithm = "SHA1"|"SHA256"
-    )
+    ),
+    signingImageFormat = "JSON"|"JSONEmbedded"|"JSONDetached"
   ),
   signingParameters = list(
     "string"

@@ -5,7 +5,7 @@
 \title{Creates a dataset group, which holds a collection of related datasets}
 \usage{
 forecastservice_create_dataset_group(DatasetGroupName, Domain,
-  DatasetArns)
+  DatasetArns, Tags)
 }
 \arguments{
 \item{DatasetGroupName}{[required] A name for the dataset group.}
@@ -23,6 +23,32 @@ howitworks-datasets-groups.}
 
 \item{DatasetArns}{An array of Amazon Resource Names (ARNs) of the datasets that you want
 to include in the dataset group.}
+
+\item{Tags}{The optional metadata that you apply to the dataset group to help you
+categorize and organize them. Each tag consists of a key and an optional
+value, both of which you define.
+
+The following basic restrictions apply to tags:
+\itemize{
+\item Maximum number of tags per resource - 50.
+\item For each resource, each tag key must be unique, and each tag key can
+have only one value.
+\item Maximum key length - 128 Unicode characters in UTF-8.
+\item Maximum value length - 256 Unicode characters in UTF-8.
+\item If your tagging schema is used across multiple services and
+resources, remember that other services may have restrictions on
+allowed characters. Generally allowed characters are: letters,
+numbers, and spaces representable in UTF-8, and the following
+characters: + - = . \\_ : / @.
+\item Tag keys and values are case sensitive.
+\item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
+such as a prefix for keys as it is reserved for AWS use. You cannot
+edit or delete tag keys with this prefix. Values can have this
+prefix. If a tag value has \code{aws} as its prefix but the key does not,
+then Forecast considers it to be a user tag and will count against
+the limit of 50 tags. Tags with only the key prefix of \code{aws} do not
+count against your tags per resource limit.
+}}
 }
 \description{
 Creates a dataset group, which holds a collection of related datasets.
@@ -47,6 +73,12 @@ DescribeDatasetGroup operation.
   Domain = "RETAIL"|"CUSTOM"|"INVENTORY_PLANNING"|"EC2_CAPACITY"|"WORK_FORCE"|"WEB_TRAFFIC"|"METRICS",
   DatasetArns = list(
     "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

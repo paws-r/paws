@@ -2,7 +2,7 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_copy_db_cluster_parameter_group}
 \alias{docdb_copy_db_cluster_parameter_group}
-\title{Copies the specified DB cluster parameter group}
+\title{Copies the specified cluster parameter group}
 \usage{
 docdb_copy_db_cluster_parameter_group(
   SourceDBClusterParameterGroupIdentifier,
@@ -10,22 +10,21 @@ docdb_copy_db_cluster_parameter_group(
   TargetDBClusterParameterGroupDescription, Tags)
 }
 \arguments{
-\item{SourceDBClusterParameterGroupIdentifier}{[required] The identifier or Amazon Resource Name (ARN) for the source DB cluster
+\item{SourceDBClusterParameterGroupIdentifier}{[required] The identifier or Amazon Resource Name (ARN) for the source cluster
 parameter group.
 
 Constraints:
 \itemize{
-\item Must specify a valid DB cluster parameter group.
-\item If the source DB cluster parameter group is in the same AWS Region
-as the copy, specify a valid DB parameter group identifier; for
-example, \code{my-db-cluster-param-group}, or a valid ARN.
-\item If the source DB parameter group is in a different AWS Region than
-the copy, specify a valid DB cluster parameter group ARN; for
-example,
+\item Must specify a valid cluster parameter group.
+\item If the source cluster parameter group is in the same AWS Region as
+the copy, specify a valid parameter group identifier; for example,
+\code{my-db-cluster-param-group}, or a valid ARN.
+\item If the source parameter group is in a different AWS Region than the
+copy, specify a valid cluster parameter group ARN; for example,
 \code{arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1}.
 }}
 
-\item{TargetDBClusterParameterGroupIdentifier}{[required] The identifier for the copied DB cluster parameter group.
+\item{TargetDBClusterParameterGroupIdentifier}{[required] The identifier for the copied cluster parameter group.
 
 Constraints:
 \itemize{
@@ -37,12 +36,12 @@ Constraints:
 
 Example: \code{my-cluster-param-group1}}
 
-\item{TargetDBClusterParameterGroupDescription}{[required] A description for the copied DB cluster parameter group.}
+\item{TargetDBClusterParameterGroupDescription}{[required] A description for the copied cluster parameter group.}
 
 \item{Tags}{The tags that are to be assigned to the parameter group.}
 }
 \description{
-Copies the specified DB cluster parameter group.
+Copies the specified cluster parameter group.
 }
 \section{Request syntax}{
 \preformatted{svc$copy_db_cluster_parameter_group(

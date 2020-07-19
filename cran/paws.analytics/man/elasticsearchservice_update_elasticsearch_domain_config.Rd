@@ -8,7 +8,7 @@ domain, setting as setting the instance type and the number of instances}
 elasticsearchservice_update_elasticsearch_domain_config(DomainName,
   ElasticsearchClusterConfig, EBSOptions, SnapshotOptions, VPCOptions,
   CognitoOptions, AdvancedOptions, AccessPolicies, LogPublishingOptions,
-  DomainEndpointOptions)
+  DomainEndpointOptions, AdvancedSecurityOptions)
 }
 \arguments{
 \item{DomainName}{[required] The name of the Elasticsearch domain that you are updating.}
@@ -39,6 +39,8 @@ publish a given type of Elasticsearch log.}
 
 \item{DomainEndpointOptions}{Options to specify configuration that will be applied to the domain
 endpoint.}
+
+\item{AdvancedSecurityOptions}{Specifies advanced security options.}
 }
 \description{
 Modifies the cluster configuration of the specified Elasticsearch
@@ -98,6 +100,15 @@ instances.
   DomainEndpointOptions = list(
     EnforceHTTPS = TRUE|FALSE,
     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
+  ),
+  AdvancedSecurityOptions = list(
+    Enabled = TRUE|FALSE,
+    InternalUserDatabaseEnabled = TRUE|FALSE,
+    MasterUserOptions = list(
+      MasterUserARN = "string",
+      MasterUserName = "string",
+      MasterUserPassword = "string"
+    )
   )
 )
 }

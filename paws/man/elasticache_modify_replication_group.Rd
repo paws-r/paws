@@ -6,11 +6,12 @@
 \usage{
 elasticache_modify_replication_group(ReplicationGroupId,
   ReplicationGroupDescription, PrimaryClusterId, SnapshottingClusterId,
-  AutomaticFailoverEnabled, NodeGroupId, CacheSecurityGroupNames,
-  SecurityGroupIds, PreferredMaintenanceWindow, NotificationTopicArn,
-  CacheParameterGroupName, NotificationTopicStatus, ApplyImmediately,
-  EngineVersion, AutoMinorVersionUpgrade, SnapshotRetentionLimit,
-  SnapshotWindow, CacheNodeType, AuthToken, AuthTokenUpdateStrategy)
+  AutomaticFailoverEnabled, MultiAZEnabled, NodeGroupId,
+  CacheSecurityGroupNames, SecurityGroupIds, PreferredMaintenanceWindow,
+  NotificationTopicArn, CacheParameterGroupName, NotificationTopicStatus,
+  ApplyImmediately, EngineVersion, AutoMinorVersionUpgrade,
+  SnapshotRetentionLimit, SnapshotWindow, CacheNodeType, AuthToken,
+  AuthTokenUpdateStrategy)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The identifier of the replication group to modify.}
@@ -30,15 +31,10 @@ enabled) replication groups.}
 \item{AutomaticFailoverEnabled}{Determines whether a read replica is automatically promoted to
 read/write primary if the existing primary encounters a failure.
 
-Valid values: \code{true} \\| \code{false}
+Valid values: \code{true} \\| \code{false}}
 
-Amazon ElastiCache for Redis does not support Multi-AZ with automatic
-failover on:
-\itemize{
-\item Redis versions earlier than 2.8.6.
-\item Redis (cluster mode disabled): T1 node types.
-\item Redis (cluster mode enabled): T1 node types.
-}}
+\item{MultiAZEnabled}{A flag indicating if you have Multi-AZ enabled to enhance fault
+tolerance. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html}{Minimizing Downtime: Multi-AZ}.}
 
 \item{NodeGroupId}{Deprecated. This parameter is not used.}
 
@@ -146,7 +142,8 @@ length
 \'@\', \'\%\'
 }
 
-For more information, see AUTH password at AUTH.}
+For more information, see AUTH password at
+\href{http://redis.io/commands/AUTH}{AUTH}.}
 
 \item{AuthTokenUpdateStrategy}{Specifies the strategy to use to update the AUTH token. This parameter
 must be specified with the \code{auth-token} parameter. Possible values:
@@ -161,9 +158,6 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/la
 Modifies the settings for a replication group.
 }
 \details{
-For Redis (cluster mode enabled) clusters, this operation cannot be used
-to change a cluster\'s node type or engine version. For more
-information, see:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html}{Scaling for Amazon ElastiCache for Redis (cluster mode enabled)}
 in the ElastiCache User Guide
@@ -180,6 +174,7 @@ This operation is valid for Redis only.
   PrimaryClusterId = "string",
   SnapshottingClusterId = "string",
   AutomaticFailoverEnabled = TRUE|FALSE,
+  MultiAZEnabled = TRUE|FALSE,
   NodeGroupId = "string",
   CacheSecurityGroupNames = list(
     "string"

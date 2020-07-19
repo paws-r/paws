@@ -43,8 +43,8 @@ the function name, it\'s limited to 64 characters in length.}
 \item \strong{Amazon Simple Queue Service} - Default 10. Max 10.
 }}
 
-\item{MaximumBatchingWindowInSeconds}{The maximum amount of time to gather records before invoking the
-function, in seconds.}
+\item{MaximumBatchingWindowInSeconds}{(Streams) The maximum amount of time to gather records before invoking
+the function, in seconds.}
 
 \item{ParallelizationFactor}{(Streams) The number of batches to process from each shard concurrently.}
 
@@ -90,6 +90,8 @@ or Amazon SNS topic.
 specified age.
 \item \code{MaximumRetryAttempts} - Discard records after the specified number
 of retries.
+\item \code{ParallelizationFactor} - Process multiple batches from each shard
+concurrently.
 }
 }
 \section{Request syntax}{
@@ -119,4 +121,16 @@ of retries.
 }
 }
 
+\examples{
+\dontrun{
+# The following example creates a mapping between an SQS queue and the
+# my-function Lambda function.
+svc$create_event_source_mapping(
+  BatchSize = 5L,
+  EventSourceArn = "arn:aws:sqs:us-west-2:123456789012:my-queue",
+  FunctionName = "my-function"
+)
+}
+
+}
 \keyword{internal}

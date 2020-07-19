@@ -32,16 +32,19 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- elasticinference()
-#' svc$list_tags_for_resource(
+#' svc$describe_accelerator_offerings(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=elasticinference_describe_accelerator_offerings]{describe_accelerator_offerings} \tab Describes the locations in which a given accelerator type or set of types is present in a given region \cr
+#'  \link[=elasticinference_describe_accelerators]{describe_accelerators} \tab Describes information over a provided set of accelerators belonging to an account \cr
+#'  \link[=elasticinference_describe_accelerator_types]{describe_accelerator_types} \tab Describes the accelerator types available in a given region, as well as their characteristics, such as memory and throughput\cr
 #'  \link[=elasticinference_list_tags_for_resource]{list_tags_for_resource} \tab Returns all tags of an Elastic Inference Accelerator \cr
-#'  \link[=elasticinference_tag_resource]{tag_resource} \tab Adds the specified tag(s) to an Elastic Inference Accelerator \cr
-#'  \link[=elasticinference_untag_resource]{untag_resource} \tab Removes the specified tag(s) from an Elastic Inference Accelerator
+#'  \link[=elasticinference_tag_resource]{tag_resource} \tab Adds the specified tags to an Elastic Inference Accelerator \cr
+#'  \link[=elasticinference_untag_resource]{untag_resource} \tab Removes the specified tags from an Elastic Inference Accelerator 
 #' }
 #'
 #' @rdname elasticinference
@@ -59,7 +62,7 @@ elasticinference <- function(config = list()) {
 
 .elasticinference$metadata <- list(
   service_name = "elasticinference",
-  endpoints = list("*" = list(endpoint = "elasticinference.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticinference.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "elasticinference.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticinference.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elasticinference.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticinference.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Elastic Inference",
   api_version = "2017-07-25",
   signing_name = "elastic-inference",

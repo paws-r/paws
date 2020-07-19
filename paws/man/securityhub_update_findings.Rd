@@ -2,8 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_update_findings}
 \alias{securityhub_update_findings}
-\title{Updates the Note and RecordState of the Security Hub-aggregated findings
-that the filter attributes specify}
+\title{UpdateFindings is deprecated}
 \usage{
 securityhub_update_findings(Filters, Note, RecordState)
 }
@@ -16,6 +15,10 @@ update.}
 \item{RecordState}{The updated record state for the finding.}
 }
 \description{
+\code{UpdateFindings} is deprecated. Instead of \code{UpdateFindings}, use
+\code{BatchUpdateFindings}.
+}
+\details{
 Updates the \code{Note} and \code{RecordState} of the Security Hub-aggregated
 findings that the filter attributes specify. Any member account that can
 view the finding also sees the update to the finding.
@@ -520,6 +523,12 @@ view the finding also sees the update to the finding.
       )
     ),
     WorkflowState = list(
+      list(
+        Value = "string",
+        Comparison = "EQUALS"|"PREFIX"
+      )
+    ),
+    WorkflowStatus = list(
       list(
         Value = "string",
         Comparison = "EQUALS"|"PREFIX"

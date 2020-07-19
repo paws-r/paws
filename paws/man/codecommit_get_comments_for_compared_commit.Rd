@@ -27,6 +27,11 @@ results. The default is 100 comments, but you can configure up to 500.}
 Returns information about comments made on the comparison between two
 commits.
 }
+\details{
+Reaction counts might include numbers from user identities who were
+deleted after the reaction was made. For a count of reactions from
+active identities, use GetCommentReactions.
+}
 \section{Request syntax}{
 \preformatted{svc$get_comments_for_compared_commit(
   repositoryName = "string",

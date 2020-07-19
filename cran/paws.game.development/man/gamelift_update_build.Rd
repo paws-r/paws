@@ -2,7 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_update_build}
 \alias{gamelift_update_build}
-\title{Updates metadata in a build record, including the build name and version}
+\title{Updates metadata in a build resource, including the build name and
+version}
 \usage{
 gamelift_update_build(BuildId, Name, Version)
 }
@@ -17,7 +18,7 @@ need to be unique.}
 strings do not need to be unique.}
 }
 \description{
-Updates metadata in a build record, including the build name and
+Updates metadata in a build resource, including the build name and
 version. To update the metadata, specify the build ID to update and
 provide the new values. If successful, a build object containing the
 updated metadata is returned.
@@ -25,7 +26,7 @@ updated metadata is returned.
 \details{
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html}{Working with Builds}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html}{Upload a Custom Server Build}
 
 \strong{Related operations}
 \itemize{

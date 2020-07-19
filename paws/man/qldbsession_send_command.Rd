@@ -34,6 +34,23 @@ the response.}
 \description{
 Sends a command to an Amazon QLDB ledger.
 }
+\details{
+Instead of interacting directly with this API, we recommend that you use
+the Amazon QLDB Driver or the QLDB Shell to execute data transactions on
+a ledger.
+\itemize{
+\item If you are working with an AWS SDK, use the QLDB Driver. The driver
+provides a high-level abstraction layer above this \code{qldbsession}
+data plane and manages \code{SendCommand} API calls for you. For
+information and a list of supported programming languages, see
+\href{https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html}{Getting started with the driver}
+in the \emph{Amazon QLDB Developer Guide}.
+\item If you are working with the AWS Command Line Interface (AWS CLI),
+use the QLDB Shell. The shell is a command line interface that uses
+the QLDB Driver to interact with a ledger. For information, see
+\href{https://docs.aws.amazon.com/qldb/latest/developerguide/data-shell.html}{Accessing Amazon QLDB using the QLDB Shell}.
+}
+}
 \section{Request syntax}{
 \preformatted{svc$send_command(
   SessionToken = "string",

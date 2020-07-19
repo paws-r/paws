@@ -127,7 +127,7 @@ codestar <- function(config = list()) {
 
 .codestar$metadata <- list(
   service_name = "codestar",
-  endpoints = list("*" = list(endpoint = "codestar.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codestar.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "codestar.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codestar.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codestar.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codestar.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CodeStar",
   api_version = "2017-04-19",
   signing_name = NULL,

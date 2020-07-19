@@ -30,6 +30,9 @@ returned for each repeated request.}
 \description{
 Creates a portfolio.
 }
+\details{
+A delegated admin is authorized to invoke this command.
+}
 \section{Request syntax}{
 \preformatted{svc$create_portfolio(
   AcceptLanguage = "string",

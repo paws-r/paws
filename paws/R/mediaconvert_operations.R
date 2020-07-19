@@ -82,21 +82,23 @@ mediaconvert_cancel_job <- function(Id) {
 #'
 #' @usage
 #' mediaconvert_create_job(AccelerationSettings, BillingTagsSource,
-#'   ClientRequestToken, JobTemplate, Priority, Queue, Role, Settings,
-#'   SimulateReservedQueue, StatusUpdateInterval, Tags, UserMetadata)
+#'   ClientRequestToken, HopDestinations, JobTemplate, Priority, Queue, Role,
+#'   Settings, SimulateReservedQueue, StatusUpdateInterval, Tags,
+#'   UserMetadata)
 #'
-#' @param AccelerationSettings Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.
+#' @param AccelerationSettings Optional. Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.
 #' @param BillingTagsSource Optional. Choose a tag type that AWS Billing and Cost Management will use to sort your AWS Elemental MediaConvert costs on any billing report that you set up. Any transcoding outputs that don't have an associated tag will appear in your billing report unsorted. If you don't choose a valid value for this field, your job outputs will appear on the billing report unsorted.
-#' @param ClientRequestToken Idempotency token for CreateJob operation.
-#' @param JobTemplate When you create a job, you can either specify a job template or specify the transcoding settings individually
-#' @param Priority Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
+#' @param ClientRequestToken Optional. Idempotency token for CreateJob operation.
+#' @param HopDestinations Optional. Use queue hopping to avoid overly long waits in the backlog of the queue that you submit your job to. Specify an alternate queue and the maximum time that your job will wait in the initial queue before hopping. For more information about this feature, see the AWS Elemental MediaConvert User Guide.
+#' @param JobTemplate Optional. When you create a job, you can either specify a job template or specify the transcoding settings individually.
+#' @param Priority Optional. Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
 #' @param Queue Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.
 #' @param Role &#91;required&#93; Required. The IAM role you use for creating this job. For details about permissions, see the User Guide topic at the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.
 #' @param Settings &#91;required&#93; JobSettings contains all the transcode settings for a job.
-#' @param SimulateReservedQueue Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see with one RTS in a reserved queue. This setting is disabled by default.
-#' @param StatusUpdateInterval Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.
-#' @param Tags The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
-#' @param UserMetadata User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.
+#' @param SimulateReservedQueue Optional. Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see with one RTS in a reserved queue. This setting is disabled by default.
+#' @param StatusUpdateInterval Optional. Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.
+#' @param Tags Optional. The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
+#' @param UserMetadata Optional. User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.
 #'
 #' @section Request syntax:
 #' ```
@@ -106,6 +108,13 @@ mediaconvert_cancel_job <- function(Id) {
 #'   ),
 #'   BillingTagsSource = "QUEUE"|"PRESET"|"JOB_TEMPLATE"|"JOB",
 #'   ClientRequestToken = "string",
+#'   HopDestinations = list(
+#'     list(
+#'       Priority = 123,
+#'       Queue = "string",
+#'       WaitMinutes = 123
+#'     )
+#'   ),
 #'   JobTemplate = "string",
 #'   Priority = 123,
 #'   Queue = "string",
@@ -184,6 +193,10 @@ mediaconvert_cancel_job <- function(Id) {
 #'               ),
 #'               FileSourceSettings = list(
 #'                 Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                 Framerate = list(
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123
+#'                 ),
 #'                 SourceFile = "string",
 #'                 TimeDelta = 123
 #'               ),
@@ -354,7 +367,8 @@ mediaconvert_cancel_job <- function(Id) {
 #'             SegmentLength = 123,
 #'             StreamInfResolution = "INCLUDE"|"EXCLUDE",
 #'             WriteDashManifest = "DISABLED"|"ENABLED",
-#'             WriteHlsManifest = "DISABLED"|"ENABLED"
+#'             WriteHlsManifest = "DISABLED"|"ENABLED",
+#'             WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
 #'           ),
 #'           DashIsoGroupSettings = list(
 #'             AdditionalManifests = list(
@@ -563,7 +577,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                     Channels = 123,
 #'                     SampleRate = 123
 #'                   ),
-#'                   Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+#'                   Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
 #'                   Eac3AtmosSettings = list(
 #'                     Bitrate = 123,
 #'                     BitstreamMode = "COMPLETE_MAIN",
@@ -608,6 +622,23 @@ mediaconvert_cancel_job <- function(Id) {
 #'                     Bitrate = 123,
 #'                     Channels = 123,
 #'                     SampleRate = 123
+#'                   ),
+#'                   Mp3Settings = list(
+#'                     Bitrate = 123,
+#'                     Channels = 123,
+#'                     RateControlMode = "CBR"|"VBR",
+#'                     SampleRate = 123,
+#'                     VbrQuality = 123
+#'                   ),
+#'                   OpusSettings = list(
+#'                     Bitrate = 123,
+#'                     Channels = 123,
+#'                     SampleRate = 123
+#'                   ),
+#'                   VorbisSettings = list(
+#'                     Channels = 123,
+#'                     SampleRate = 123,
+#'                     VbrQuality = 123
 #'                   ),
 #'                   WavSettings = list(
 #'                     BitDepth = 123,
@@ -705,7 +736,11 @@ mediaconvert_cancel_job <- function(Id) {
 #'               )
 #'             ),
 #'             ContainerSettings = list(
-#'               Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"RAW",
+#'               CmfcSettings = list(
+#'                 Scte35Esam = "INSERT"|"NONE",
+#'                 Scte35Source = "PASSTHROUGH"|"NONE"
+#'               ),
+#'               Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
 #'               F4vSettings = list(
 #'                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
 #'               ),
@@ -793,6 +828,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'               ),
 #'               Mp4Settings = list(
 #'                 CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                 CttsVersion = 123,
 #'                 FreeSpaceBox = "INCLUDE"|"EXCLUDE",
 #'                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
 #'                 Mp4MajorBrand = "string"
@@ -801,6 +837,9 @@ mediaconvert_cancel_job <- function(Id) {
 #'                 CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
 #'                 Scte35Esam = "INSERT"|"NONE",
 #'                 Scte35Source = "PASSTHROUGH"|"NONE"
+#'               ),
+#'               MxfSettings = list(
+#'                 AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO"
 #'               )
 #'             ),
 #'             Extension = "string",
@@ -820,7 +859,24 @@ mediaconvert_cancel_job <- function(Id) {
 #'               AfdSignaling = "NONE"|"AUTO"|"FIXED",
 #'               AntiAlias = "DISABLED"|"ENABLED",
 #'               CodecSettings = list(
-#'                 Codec = "FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES",
+#'                 Av1Settings = list(
+#'                   AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   GopSize = 123.0,
+#'                   MaxBitrate = 123,
+#'                   NumberBFramesBetweenReferenceFrames = 123,
+#'                   QvbrSettings = list(
+#'                     QvbrQualityLevel = 123,
+#'                     QvbrQualityLevelFineTune = 123.0
+#'                   ),
+#'                   RateControlMode = "QVBR",
+#'                   Slices = 123,
+#'                   SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                 ),
+#'                 Codec = "FRAME_CAPTURE"|"AV1"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VP8"|"VP9",
 #'                 FrameCaptureSettings = list(
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
@@ -857,7 +913,8 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
 #'                   QvbrSettings = list(
 #'                     MaxAverageBitrate = 123,
-#'                     QvbrQualityLevel = 123
+#'                     QvbrQualityLevel = 123,
+#'                     QvbrQualityLevelFineTune = 123.0
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   RepeatPps = "DISABLED"|"ENABLED",
@@ -900,7 +957,8 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
 #'                   QvbrSettings = list(
 #'                     MaxAverageBitrate = 123,
-#'                     QvbrQualityLevel = 123
+#'                     QvbrQualityLevel = 123,
+#'                     QvbrQualityLevelFineTune = 123.0
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
@@ -960,6 +1018,36 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   ParNumerator = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   Telecine = "NONE"|"HARD"
+#'                 ),
+#'                 Vp8Settings = list(
+#'                   Bitrate = 123,
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   GopSize = 123.0,
+#'                   HrdBufferSize = 123,
+#'                   MaxBitrate = 123,
+#'                   ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   ParDenominator = 123,
+#'                   ParNumerator = 123,
+#'                   QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                   RateControlMode = "VBR"
+#'                 ),
+#'                 Vp9Settings = list(
+#'                   Bitrate = 123,
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   GopSize = 123.0,
+#'                   HrdBufferSize = 123,
+#'                   MaxBitrate = 123,
+#'                   ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   ParDenominator = 123,
+#'                   ParNumerator = 123,
+#'                   QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                   RateControlMode = "VBR"
 #'                 )
 #'               ),
 #'               ColorMetadata = "IGNORE"|"INSERT",
@@ -1046,8 +1134,17 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   ),
 #'                   TemporalFilterSettings = list(
 #'                     AggressiveMode = 123,
+#'                     PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
 #'                     Speed = 123,
 #'                     Strength = 123
+#'                   )
+#'                 ),
+#'                 PartnerWatermarking = list(
+#'                   NexguardFileMarkerSettings = list(
+#'                     License = "string",
+#'                     Payload = 123,
+#'                     Preset = "string",
+#'                     Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
 #'                   )
 #'                 ),
 #'                 TimecodeBurnin = list(
@@ -1091,14 +1188,14 @@ mediaconvert_cancel_job <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname mediaconvert_create_job
-mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSource = NULL, ClientRequestToken = NULL, JobTemplate = NULL, Priority = NULL, Queue = NULL, Role, Settings, SimulateReservedQueue = NULL, StatusUpdateInterval = NULL, Tags = NULL, UserMetadata = NULL) {
+mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSource = NULL, ClientRequestToken = NULL, HopDestinations = NULL, JobTemplate = NULL, Priority = NULL, Queue = NULL, Role, Settings, SimulateReservedQueue = NULL, StatusUpdateInterval = NULL, Tags = NULL, UserMetadata = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
     http_path = "/2017-08-29/jobs",
     paginator = list()
   )
-  input <- .mediaconvert$create_job_input(AccelerationSettings = AccelerationSettings, BillingTagsSource = BillingTagsSource, ClientRequestToken = ClientRequestToken, JobTemplate = JobTemplate, Priority = Priority, Queue = Queue, Role = Role, Settings = Settings, SimulateReservedQueue = SimulateReservedQueue, StatusUpdateInterval = StatusUpdateInterval, Tags = Tags, UserMetadata = UserMetadata)
+  input <- .mediaconvert$create_job_input(AccelerationSettings = AccelerationSettings, BillingTagsSource = BillingTagsSource, ClientRequestToken = ClientRequestToken, HopDestinations = HopDestinations, JobTemplate = JobTemplate, Priority = Priority, Queue = Queue, Role = Role, Settings = Settings, SimulateReservedQueue = SimulateReservedQueue, StatusUpdateInterval = StatusUpdateInterval, Tags = Tags, UserMetadata = UserMetadata)
   output <- .mediaconvert$create_job_output()
   config <- get_config()
   svc <- .mediaconvert$service(config)
@@ -1114,12 +1211,13 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'
 #' @usage
 #' mediaconvert_create_job_template(AccelerationSettings, Category,
-#'   Description, Name, Priority, Queue, Settings, StatusUpdateInterval,
-#'   Tags)
+#'   Description, HopDestinations, Name, Priority, Queue, Settings,
+#'   StatusUpdateInterval, Tags)
 #'
 #' @param AccelerationSettings Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.
 #' @param Category Optional. A category for the job template you are creating
 #' @param Description Optional. A description of the job template you are creating.
+#' @param HopDestinations Optional. Use queue hopping to avoid overly long waits in the backlog of the queue that you submit your job to. Specify an alternate queue and the maximum time that your job will wait in the initial queue before hopping. For more information about this feature, see the AWS Elemental MediaConvert User Guide.
 #' @param Name &#91;required&#93; The name of the job template you are creating.
 #' @param Priority Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
 #' @param Queue Optional. The queue that jobs created from this template are assigned to. If you don't specify this, jobs will go to the default queue.
@@ -1135,6 +1233,13 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'   ),
 #'   Category = "string",
 #'   Description = "string",
+#'   HopDestinations = list(
+#'     list(
+#'       Priority = 123,
+#'       Queue = "string",
+#'       WaitMinutes = 123
+#'     )
+#'   ),
 #'   Name = "string",
 #'   Priority = 123,
 #'   Queue = "string",
@@ -1212,6 +1317,10 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'               ),
 #'               FileSourceSettings = list(
 #'                 Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                 Framerate = list(
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123
+#'                 ),
 #'                 SourceFile = "string",
 #'                 TimeDelta = 123
 #'               ),
@@ -1372,7 +1481,8 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             SegmentLength = 123,
 #'             StreamInfResolution = "INCLUDE"|"EXCLUDE",
 #'             WriteDashManifest = "DISABLED"|"ENABLED",
-#'             WriteHlsManifest = "DISABLED"|"ENABLED"
+#'             WriteHlsManifest = "DISABLED"|"ENABLED",
+#'             WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
 #'           ),
 #'           DashIsoGroupSettings = list(
 #'             AdditionalManifests = list(
@@ -1581,7 +1691,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                     Channels = 123,
 #'                     SampleRate = 123
 #'                   ),
-#'                   Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+#'                   Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
 #'                   Eac3AtmosSettings = list(
 #'                     Bitrate = 123,
 #'                     BitstreamMode = "COMPLETE_MAIN",
@@ -1626,6 +1736,23 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                     Bitrate = 123,
 #'                     Channels = 123,
 #'                     SampleRate = 123
+#'                   ),
+#'                   Mp3Settings = list(
+#'                     Bitrate = 123,
+#'                     Channels = 123,
+#'                     RateControlMode = "CBR"|"VBR",
+#'                     SampleRate = 123,
+#'                     VbrQuality = 123
+#'                   ),
+#'                   OpusSettings = list(
+#'                     Bitrate = 123,
+#'                     Channels = 123,
+#'                     SampleRate = 123
+#'                   ),
+#'                   VorbisSettings = list(
+#'                     Channels = 123,
+#'                     SampleRate = 123,
+#'                     VbrQuality = 123
 #'                   ),
 #'                   WavSettings = list(
 #'                     BitDepth = 123,
@@ -1723,7 +1850,11 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'               )
 #'             ),
 #'             ContainerSettings = list(
-#'               Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"RAW",
+#'               CmfcSettings = list(
+#'                 Scte35Esam = "INSERT"|"NONE",
+#'                 Scte35Source = "PASSTHROUGH"|"NONE"
+#'               ),
+#'               Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
 #'               F4vSettings = list(
 #'                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
 #'               ),
@@ -1811,6 +1942,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'               ),
 #'               Mp4Settings = list(
 #'                 CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                 CttsVersion = 123,
 #'                 FreeSpaceBox = "INCLUDE"|"EXCLUDE",
 #'                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
 #'                 Mp4MajorBrand = "string"
@@ -1819,6 +1951,9 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                 CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
 #'                 Scte35Esam = "INSERT"|"NONE",
 #'                 Scte35Source = "PASSTHROUGH"|"NONE"
+#'               ),
+#'               MxfSettings = list(
+#'                 AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO"
 #'               )
 #'             ),
 #'             Extension = "string",
@@ -1838,7 +1973,24 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'               AfdSignaling = "NONE"|"AUTO"|"FIXED",
 #'               AntiAlias = "DISABLED"|"ENABLED",
 #'               CodecSettings = list(
-#'                 Codec = "FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES",
+#'                 Av1Settings = list(
+#'                   AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   GopSize = 123.0,
+#'                   MaxBitrate = 123,
+#'                   NumberBFramesBetweenReferenceFrames = 123,
+#'                   QvbrSettings = list(
+#'                     QvbrQualityLevel = 123,
+#'                     QvbrQualityLevelFineTune = 123.0
+#'                   ),
+#'                   RateControlMode = "QVBR",
+#'                   Slices = 123,
+#'                   SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                 ),
+#'                 Codec = "FRAME_CAPTURE"|"AV1"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VP8"|"VP9",
 #'                 FrameCaptureSettings = list(
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
@@ -1875,7 +2027,8 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
 #'                   QvbrSettings = list(
 #'                     MaxAverageBitrate = 123,
-#'                     QvbrQualityLevel = 123
+#'                     QvbrQualityLevel = 123,
+#'                     QvbrQualityLevelFineTune = 123.0
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   RepeatPps = "DISABLED"|"ENABLED",
@@ -1918,7 +2071,8 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
 #'                   QvbrSettings = list(
 #'                     MaxAverageBitrate = 123,
-#'                     QvbrQualityLevel = 123
+#'                     QvbrQualityLevel = 123,
+#'                     QvbrQualityLevelFineTune = 123.0
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
@@ -1978,6 +2132,36 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   ParNumerator = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   Telecine = "NONE"|"HARD"
+#'                 ),
+#'                 Vp8Settings = list(
+#'                   Bitrate = 123,
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   GopSize = 123.0,
+#'                   HrdBufferSize = 123,
+#'                   MaxBitrate = 123,
+#'                   ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   ParDenominator = 123,
+#'                   ParNumerator = 123,
+#'                   QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                   RateControlMode = "VBR"
+#'                 ),
+#'                 Vp9Settings = list(
+#'                   Bitrate = 123,
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   GopSize = 123.0,
+#'                   HrdBufferSize = 123,
+#'                   MaxBitrate = 123,
+#'                   ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   ParDenominator = 123,
+#'                   ParNumerator = 123,
+#'                   QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                   RateControlMode = "VBR"
 #'                 )
 #'               ),
 #'               ColorMetadata = "IGNORE"|"INSERT",
@@ -2064,8 +2248,17 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   ),
 #'                   TemporalFilterSettings = list(
 #'                     AggressiveMode = 123,
+#'                     PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
 #'                     Speed = 123,
 #'                     Strength = 123
+#'                   )
+#'                 ),
+#'                 PartnerWatermarking = list(
+#'                   NexguardFileMarkerSettings = list(
+#'                     License = "string",
+#'                     Payload = 123,
+#'                     Preset = "string",
+#'                     Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
 #'                   )
 #'                 ),
 #'                 TimecodeBurnin = list(
@@ -2105,14 +2298,14 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #' @keywords internal
 #'
 #' @rdname mediaconvert_create_job_template
-mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Category = NULL, Description = NULL, Name, Priority = NULL, Queue = NULL, Settings, StatusUpdateInterval = NULL, Tags = NULL) {
+mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Category = NULL, Description = NULL, HopDestinations = NULL, Name, Priority = NULL, Queue = NULL, Settings, StatusUpdateInterval = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateJobTemplate",
     http_method = "POST",
     http_path = "/2017-08-29/jobTemplates",
     paginator = list()
   )
-  input <- .mediaconvert$create_job_template_input(AccelerationSettings = AccelerationSettings, Category = Category, Description = Description, Name = Name, Priority = Priority, Queue = Queue, Settings = Settings, StatusUpdateInterval = StatusUpdateInterval, Tags = Tags)
+  input <- .mediaconvert$create_job_template_input(AccelerationSettings = AccelerationSettings, Category = Category, Description = Description, HopDestinations = HopDestinations, Name = Name, Priority = Priority, Queue = Queue, Settings = Settings, StatusUpdateInterval = StatusUpdateInterval, Tags = Tags)
   output <- .mediaconvert$create_job_template_output()
   config <- get_config()
   svc <- .mediaconvert$service(config)
@@ -2182,7 +2375,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'             Channels = 123,
 #'             SampleRate = 123
 #'           ),
-#'           Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+#'           Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
 #'           Eac3AtmosSettings = list(
 #'             Bitrate = 123,
 #'             BitstreamMode = "COMPLETE_MAIN",
@@ -2227,6 +2420,23 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'             Bitrate = 123,
 #'             Channels = 123,
 #'             SampleRate = 123
+#'           ),
+#'           Mp3Settings = list(
+#'             Bitrate = 123,
+#'             Channels = 123,
+#'             RateControlMode = "CBR"|"VBR",
+#'             SampleRate = 123,
+#'             VbrQuality = 123
+#'           ),
+#'           OpusSettings = list(
+#'             Bitrate = 123,
+#'             Channels = 123,
+#'             SampleRate = 123
+#'           ),
+#'           VorbisSettings = list(
+#'             Channels = 123,
+#'             SampleRate = 123,
+#'             VbrQuality = 123
 #'           ),
 #'           WavSettings = list(
 #'             BitDepth = 123,
@@ -2323,7 +2533,11 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'       )
 #'     ),
 #'     ContainerSettings = list(
-#'       Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"RAW",
+#'       CmfcSettings = list(
+#'         Scte35Esam = "INSERT"|"NONE",
+#'         Scte35Source = "PASSTHROUGH"|"NONE"
+#'       ),
+#'       Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
 #'       F4vSettings = list(
 #'         MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
 #'       ),
@@ -2411,6 +2625,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'       ),
 #'       Mp4Settings = list(
 #'         CslgAtom = "INCLUDE"|"EXCLUDE",
+#'         CttsVersion = 123,
 #'         FreeSpaceBox = "INCLUDE"|"EXCLUDE",
 #'         MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
 #'         Mp4MajorBrand = "string"
@@ -2419,13 +2634,33 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'         CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
 #'         Scte35Esam = "INSERT"|"NONE",
 #'         Scte35Source = "PASSTHROUGH"|"NONE"
+#'       ),
+#'       MxfSettings = list(
+#'         AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO"
 #'       )
 #'     ),
 #'     VideoDescription = list(
 #'       AfdSignaling = "NONE"|"AUTO"|"FIXED",
 #'       AntiAlias = "DISABLED"|"ENABLED",
 #'       CodecSettings = list(
-#'         Codec = "FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES",
+#'         Av1Settings = list(
+#'           AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123,
+#'           GopSize = 123.0,
+#'           MaxBitrate = 123,
+#'           NumberBFramesBetweenReferenceFrames = 123,
+#'           QvbrSettings = list(
+#'             QvbrQualityLevel = 123,
+#'             QvbrQualityLevelFineTune = 123.0
+#'           ),
+#'           RateControlMode = "QVBR",
+#'           Slices = 123,
+#'           SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'         ),
+#'         Codec = "FRAME_CAPTURE"|"AV1"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VP8"|"VP9",
 #'         FrameCaptureSettings = list(
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
@@ -2462,7 +2697,8 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
 #'           QvbrSettings = list(
 #'             MaxAverageBitrate = 123,
-#'             QvbrQualityLevel = 123
+#'             QvbrQualityLevel = 123,
+#'             QvbrQualityLevelFineTune = 123.0
 #'           ),
 #'           RateControlMode = "VBR"|"CBR"|"QVBR",
 #'           RepeatPps = "DISABLED"|"ENABLED",
@@ -2505,7 +2741,8 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
 #'           QvbrSettings = list(
 #'             MaxAverageBitrate = 123,
-#'             QvbrQualityLevel = 123
+#'             QvbrQualityLevel = 123,
+#'             QvbrQualityLevelFineTune = 123.0
 #'           ),
 #'           RateControlMode = "VBR"|"CBR"|"QVBR",
 #'           SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
@@ -2565,6 +2802,36 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ParNumerator = 123,
 #'           SlowPal = "DISABLED"|"ENABLED",
 #'           Telecine = "NONE"|"HARD"
+#'         ),
+#'         Vp8Settings = list(
+#'           Bitrate = 123,
+#'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123,
+#'           GopSize = 123.0,
+#'           HrdBufferSize = 123,
+#'           MaxBitrate = 123,
+#'           ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           ParDenominator = 123,
+#'           ParNumerator = 123,
+#'           QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'           RateControlMode = "VBR"
+#'         ),
+#'         Vp9Settings = list(
+#'           Bitrate = 123,
+#'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123,
+#'           GopSize = 123.0,
+#'           HrdBufferSize = 123,
+#'           MaxBitrate = 123,
+#'           ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           ParDenominator = 123,
+#'           ParNumerator = 123,
+#'           QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'           RateControlMode = "VBR"
 #'         )
 #'       ),
 #'       ColorMetadata = "IGNORE"|"INSERT",
@@ -2651,8 +2918,17 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ),
 #'           TemporalFilterSettings = list(
 #'             AggressiveMode = 123,
+#'             PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
 #'             Speed = 123,
 #'             Strength = 123
+#'           )
+#'         ),
+#'         PartnerWatermarking = list(
+#'           NexguardFileMarkerSettings = list(
+#'             License = "string",
+#'             Payload = 123,
+#'             Preset = "string",
+#'             Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
 #'           )
 #'         ),
 #'         TimecodeBurnin = list(
@@ -3086,7 +3362,7 @@ mediaconvert_get_queue <- function(Name) {
 #' @param ListBy Optional. When you request a list of job templates, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by name.
 #' @param MaxResults Optional. Number of job templates, up to twenty, that will be returned at one time.
 #' @param NextToken Use this string, provided with the response to a previous request, to request the next batch of job templates.
-#' @param Order When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
+#' @param Order Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -3127,10 +3403,10 @@ mediaconvert_list_job_templates <- function(Category = NULL, ListBy = NULL, MaxR
 #' mediaconvert_list_jobs(MaxResults, NextToken, Order, Queue, Status)
 #'
 #' @param MaxResults Optional. Number of jobs, up to twenty, that will be returned at one time.
-#' @param NextToken Use this string, provided with the response to a previous request, to request the next batch of jobs.
-#' @param Order When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
-#' @param Queue Provide a queue name to get back only jobs from that queue.
-#' @param Status A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR.
+#' @param NextToken Optional. Use this string, provided with the response to a previous request, to request the next batch of jobs.
+#' @param Order Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
+#' @param Queue Optional. Provide a queue name to get back only jobs from that queue.
+#' @param Status Optional. A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR.
 #'
 #' @section Request syntax:
 #' ```
@@ -3175,7 +3451,7 @@ mediaconvert_list_jobs <- function(MaxResults = NULL, NextToken = NULL, Order = 
 #' @param ListBy Optional. When you request a list of presets, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by name.
 #' @param MaxResults Optional. Number of presets, up to twenty, that will be returned at one time
 #' @param NextToken Use this string, provided with the response to a previous request, to request the next batch of presets.
-#' @param Order When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
+#' @param Order Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -3218,7 +3494,7 @@ mediaconvert_list_presets <- function(Category = NULL, ListBy = NULL, MaxResults
 #' @param ListBy Optional. When you request a list of queues, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by creation date.
 #' @param MaxResults Optional. Number of queues, up to twenty, that will be returned at one time.
 #' @param NextToken Use this string, provided with the response to a previous request, to request the next batch of queues.
-#' @param Order When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
+#' @param Order Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -3372,11 +3648,13 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'
 #' @usage
 #' mediaconvert_update_job_template(AccelerationSettings, Category,
-#'   Description, Name, Priority, Queue, Settings, StatusUpdateInterval)
+#'   Description, HopDestinations, Name, Priority, Queue, Settings,
+#'   StatusUpdateInterval)
 #'
 #' @param AccelerationSettings Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.
 #' @param Category The new category for the job template, if you are changing it.
 #' @param Description The new description for the job template, if you are changing it.
+#' @param HopDestinations Optional list of hop destinations.
 #' @param Name &#91;required&#93; The name of the job template you are modifying
 #' @param Priority Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
 #' @param Queue The new queue for the job template, if you are changing it.
@@ -3391,6 +3669,13 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'   ),
 #'   Category = "string",
 #'   Description = "string",
+#'   HopDestinations = list(
+#'     list(
+#'       Priority = 123,
+#'       Queue = "string",
+#'       WaitMinutes = 123
+#'     )
+#'   ),
 #'   Name = "string",
 #'   Priority = 123,
 #'   Queue = "string",
@@ -3468,6 +3753,10 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'               ),
 #'               FileSourceSettings = list(
 #'                 Convert608To708 = "UPCONVERT"|"DISABLED",
+#'                 Framerate = list(
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123
+#'                 ),
 #'                 SourceFile = "string",
 #'                 TimeDelta = 123
 #'               ),
@@ -3628,7 +3917,8 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             SegmentLength = 123,
 #'             StreamInfResolution = "INCLUDE"|"EXCLUDE",
 #'             WriteDashManifest = "DISABLED"|"ENABLED",
-#'             WriteHlsManifest = "DISABLED"|"ENABLED"
+#'             WriteHlsManifest = "DISABLED"|"ENABLED",
+#'             WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
 #'           ),
 #'           DashIsoGroupSettings = list(
 #'             AdditionalManifests = list(
@@ -3837,7 +4127,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                     Channels = 123,
 #'                     SampleRate = 123
 #'                   ),
-#'                   Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+#'                   Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
 #'                   Eac3AtmosSettings = list(
 #'                     Bitrate = 123,
 #'                     BitstreamMode = "COMPLETE_MAIN",
@@ -3882,6 +4172,23 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                     Bitrate = 123,
 #'                     Channels = 123,
 #'                     SampleRate = 123
+#'                   ),
+#'                   Mp3Settings = list(
+#'                     Bitrate = 123,
+#'                     Channels = 123,
+#'                     RateControlMode = "CBR"|"VBR",
+#'                     SampleRate = 123,
+#'                     VbrQuality = 123
+#'                   ),
+#'                   OpusSettings = list(
+#'                     Bitrate = 123,
+#'                     Channels = 123,
+#'                     SampleRate = 123
+#'                   ),
+#'                   VorbisSettings = list(
+#'                     Channels = 123,
+#'                     SampleRate = 123,
+#'                     VbrQuality = 123
 #'                   ),
 #'                   WavSettings = list(
 #'                     BitDepth = 123,
@@ -3979,7 +4286,11 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'               )
 #'             ),
 #'             ContainerSettings = list(
-#'               Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"RAW",
+#'               CmfcSettings = list(
+#'                 Scte35Esam = "INSERT"|"NONE",
+#'                 Scte35Source = "PASSTHROUGH"|"NONE"
+#'               ),
+#'               Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
 #'               F4vSettings = list(
 #'                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
 #'               ),
@@ -4067,6 +4378,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'               ),
 #'               Mp4Settings = list(
 #'                 CslgAtom = "INCLUDE"|"EXCLUDE",
+#'                 CttsVersion = 123,
 #'                 FreeSpaceBox = "INCLUDE"|"EXCLUDE",
 #'                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
 #'                 Mp4MajorBrand = "string"
@@ -4075,6 +4387,9 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                 CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
 #'                 Scte35Esam = "INSERT"|"NONE",
 #'                 Scte35Source = "PASSTHROUGH"|"NONE"
+#'               ),
+#'               MxfSettings = list(
+#'                 AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO"
 #'               )
 #'             ),
 #'             Extension = "string",
@@ -4094,7 +4409,24 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'               AfdSignaling = "NONE"|"AUTO"|"FIXED",
 #'               AntiAlias = "DISABLED"|"ENABLED",
 #'               CodecSettings = list(
-#'                 Codec = "FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES",
+#'                 Av1Settings = list(
+#'                   AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   GopSize = 123.0,
+#'                   MaxBitrate = 123,
+#'                   NumberBFramesBetweenReferenceFrames = 123,
+#'                   QvbrSettings = list(
+#'                     QvbrQualityLevel = 123,
+#'                     QvbrQualityLevelFineTune = 123.0
+#'                   ),
+#'                   RateControlMode = "QVBR",
+#'                   Slices = 123,
+#'                   SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'                 ),
+#'                 Codec = "FRAME_CAPTURE"|"AV1"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VP8"|"VP9",
 #'                 FrameCaptureSettings = list(
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
@@ -4131,7 +4463,8 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
 #'                   QvbrSettings = list(
 #'                     MaxAverageBitrate = 123,
-#'                     QvbrQualityLevel = 123
+#'                     QvbrQualityLevel = 123,
+#'                     QvbrQualityLevelFineTune = 123.0
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   RepeatPps = "DISABLED"|"ENABLED",
@@ -4174,7 +4507,8 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
 #'                   QvbrSettings = list(
 #'                     MaxAverageBitrate = 123,
-#'                     QvbrQualityLevel = 123
+#'                     QvbrQualityLevel = 123,
+#'                     QvbrQualityLevelFineTune = 123.0
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
@@ -4234,6 +4568,36 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   ParNumerator = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   Telecine = "NONE"|"HARD"
+#'                 ),
+#'                 Vp8Settings = list(
+#'                   Bitrate = 123,
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   GopSize = 123.0,
+#'                   HrdBufferSize = 123,
+#'                   MaxBitrate = 123,
+#'                   ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   ParDenominator = 123,
+#'                   ParNumerator = 123,
+#'                   QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                   RateControlMode = "VBR"
+#'                 ),
+#'                 Vp9Settings = list(
+#'                   Bitrate = 123,
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   GopSize = 123.0,
+#'                   HrdBufferSize = 123,
+#'                   MaxBitrate = 123,
+#'                   ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   ParDenominator = 123,
+#'                   ParNumerator = 123,
+#'                   QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'                   RateControlMode = "VBR"
 #'                 )
 #'               ),
 #'               ColorMetadata = "IGNORE"|"INSERT",
@@ -4320,8 +4684,17 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   ),
 #'                   TemporalFilterSettings = list(
 #'                     AggressiveMode = 123,
+#'                     PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
 #'                     Speed = 123,
 #'                     Strength = 123
+#'                   )
+#'                 ),
+#'                 PartnerWatermarking = list(
+#'                   NexguardFileMarkerSettings = list(
+#'                     License = "string",
+#'                     Payload = 123,
+#'                     Preset = "string",
+#'                     Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
 #'                   )
 #'                 ),
 #'                 TimecodeBurnin = list(
@@ -4358,14 +4731,14 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #' @keywords internal
 #'
 #' @rdname mediaconvert_update_job_template
-mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Category = NULL, Description = NULL, Name, Priority = NULL, Queue = NULL, Settings = NULL, StatusUpdateInterval = NULL) {
+mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Category = NULL, Description = NULL, HopDestinations = NULL, Name, Priority = NULL, Queue = NULL, Settings = NULL, StatusUpdateInterval = NULL) {
   op <- new_operation(
     name = "UpdateJobTemplate",
     http_method = "PUT",
     http_path = "/2017-08-29/jobTemplates/{name}",
     paginator = list()
   )
-  input <- .mediaconvert$update_job_template_input(AccelerationSettings = AccelerationSettings, Category = Category, Description = Description, Name = Name, Priority = Priority, Queue = Queue, Settings = Settings, StatusUpdateInterval = StatusUpdateInterval)
+  input <- .mediaconvert$update_job_template_input(AccelerationSettings = AccelerationSettings, Category = Category, Description = Description, HopDestinations = HopDestinations, Name = Name, Priority = Priority, Queue = Queue, Settings = Settings, StatusUpdateInterval = StatusUpdateInterval)
   output <- .mediaconvert$update_job_template_output()
   config <- get_config()
   svc <- .mediaconvert$service(config)
@@ -4434,7 +4807,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'             Channels = 123,
 #'             SampleRate = 123
 #'           ),
-#'           Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+#'           Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
 #'           Eac3AtmosSettings = list(
 #'             Bitrate = 123,
 #'             BitstreamMode = "COMPLETE_MAIN",
@@ -4479,6 +4852,23 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'             Bitrate = 123,
 #'             Channels = 123,
 #'             SampleRate = 123
+#'           ),
+#'           Mp3Settings = list(
+#'             Bitrate = 123,
+#'             Channels = 123,
+#'             RateControlMode = "CBR"|"VBR",
+#'             SampleRate = 123,
+#'             VbrQuality = 123
+#'           ),
+#'           OpusSettings = list(
+#'             Bitrate = 123,
+#'             Channels = 123,
+#'             SampleRate = 123
+#'           ),
+#'           VorbisSettings = list(
+#'             Channels = 123,
+#'             SampleRate = 123,
+#'             VbrQuality = 123
 #'           ),
 #'           WavSettings = list(
 #'             BitDepth = 123,
@@ -4575,7 +4965,11 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'       )
 #'     ),
 #'     ContainerSettings = list(
-#'       Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"RAW",
+#'       CmfcSettings = list(
+#'         Scte35Esam = "INSERT"|"NONE",
+#'         Scte35Source = "PASSTHROUGH"|"NONE"
+#'       ),
+#'       Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
 #'       F4vSettings = list(
 #'         MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
 #'       ),
@@ -4663,6 +5057,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'       ),
 #'       Mp4Settings = list(
 #'         CslgAtom = "INCLUDE"|"EXCLUDE",
+#'         CttsVersion = 123,
 #'         FreeSpaceBox = "INCLUDE"|"EXCLUDE",
 #'         MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
 #'         Mp4MajorBrand = "string"
@@ -4671,13 +5066,33 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'         CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
 #'         Scte35Esam = "INSERT"|"NONE",
 #'         Scte35Source = "PASSTHROUGH"|"NONE"
+#'       ),
+#'       MxfSettings = list(
+#'         AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO"
 #'       )
 #'     ),
 #'     VideoDescription = list(
 #'       AfdSignaling = "NONE"|"AUTO"|"FIXED",
 #'       AntiAlias = "DISABLED"|"ENABLED",
 #'       CodecSettings = list(
-#'         Codec = "FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES",
+#'         Av1Settings = list(
+#'           AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123,
+#'           GopSize = 123.0,
+#'           MaxBitrate = 123,
+#'           NumberBFramesBetweenReferenceFrames = 123,
+#'           QvbrSettings = list(
+#'             QvbrQualityLevel = 123,
+#'             QvbrQualityLevelFineTune = 123.0
+#'           ),
+#'           RateControlMode = "QVBR",
+#'           Slices = 123,
+#'           SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+#'         ),
+#'         Codec = "FRAME_CAPTURE"|"AV1"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VP8"|"VP9",
 #'         FrameCaptureSettings = list(
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
@@ -4714,7 +5129,8 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
 #'           QvbrSettings = list(
 #'             MaxAverageBitrate = 123,
-#'             QvbrQualityLevel = 123
+#'             QvbrQualityLevel = 123,
+#'             QvbrQualityLevelFineTune = 123.0
 #'           ),
 #'           RateControlMode = "VBR"|"CBR"|"QVBR",
 #'           RepeatPps = "DISABLED"|"ENABLED",
@@ -4757,7 +5173,8 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
 #'           QvbrSettings = list(
 #'             MaxAverageBitrate = 123,
-#'             QvbrQualityLevel = 123
+#'             QvbrQualityLevel = 123,
+#'             QvbrQualityLevelFineTune = 123.0
 #'           ),
 #'           RateControlMode = "VBR"|"CBR"|"QVBR",
 #'           SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
@@ -4817,6 +5234,36 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ParNumerator = 123,
 #'           SlowPal = "DISABLED"|"ENABLED",
 #'           Telecine = "NONE"|"HARD"
+#'         ),
+#'         Vp8Settings = list(
+#'           Bitrate = 123,
+#'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123,
+#'           GopSize = 123.0,
+#'           HrdBufferSize = 123,
+#'           MaxBitrate = 123,
+#'           ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           ParDenominator = 123,
+#'           ParNumerator = 123,
+#'           QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'           RateControlMode = "VBR"
+#'         ),
+#'         Vp9Settings = list(
+#'           Bitrate = 123,
+#'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123,
+#'           GopSize = 123.0,
+#'           HrdBufferSize = 123,
+#'           MaxBitrate = 123,
+#'           ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           ParDenominator = 123,
+#'           ParNumerator = 123,
+#'           QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+#'           RateControlMode = "VBR"
 #'         )
 #'       ),
 #'       ColorMetadata = "IGNORE"|"INSERT",
@@ -4903,8 +5350,17 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ),
 #'           TemporalFilterSettings = list(
 #'             AggressiveMode = 123,
+#'             PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
 #'             Speed = 123,
 #'             Strength = 123
+#'           )
+#'         ),
+#'         PartnerWatermarking = list(
+#'           NexguardFileMarkerSettings = list(
+#'             License = "string",
+#'             Payload = 123,
+#'             Preset = "string",
+#'             Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
 #'           )
 #'         ),
 #'         TimecodeBurnin = list(

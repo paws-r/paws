@@ -5,7 +5,8 @@
 \title{Updates a detector version}
 \usage{
 frauddetector_update_detector_version(detectorId, detectorVersionId,
-  externalModelEndpoints, rules, description, modelVersions)
+  externalModelEndpoints, rules, description, modelVersions,
+  ruleExecutionMode)
 }
 \arguments{
 \item{detectorId}{[required] The parent detector ID for the detector version you want to update.}
@@ -19,6 +20,18 @@ frauddetector_update_detector_version(detectorId, detectorVersionId,
 \item{description}{The detector version description.}
 
 \item{modelVersions}{The model versions to include in the detector version.}
+
+\item{ruleExecutionMode}{The rule execution mode to add to the detector.
+
+If you specify \code{FIRST_MATCHED}, Amazon Fraud Detector evaluates rules
+sequentially, first to last, stopping at the first matched rule. Amazon
+Fraud dectector then provides the outcomes for that single rule.
+
+If you specifiy \code{ALL_MATCHED}, Amazon Fraud Detector evaluates all rules
+and returns the outcomes for all matched rules. You can define and edit
+the rule mode at the detector version level, when it is in draft status.
+
+The default behavior is \code{FIRST_MATCHED}.}
 }
 \description{
 Updates a detector version. The detector version attributes that you can
@@ -46,7 +59,8 @@ You can only update a \code{DRAFT} detector version.
       modelType = "ONLINE_FRAUD_INSIGHTS",
       modelVersionNumber = "string"
     )
-  )
+  ),
+  ruleExecutionMode = "ALL_MATCHED"|"FIRST_MATCHED"
 )
 }
 }

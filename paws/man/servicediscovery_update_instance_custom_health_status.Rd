@@ -27,7 +27,8 @@ for custom health checks, which you define using
 to change the status for Route 53 health checks, which you define using
 \code{HealthCheckConfig}.
 
-For more information, see HealthCheckCustomConfig.
+For more information, see
+\href{https://docs.aws.amazon.com/cloud-map/latest/api/API_HealthCheckCustomConfig.html}{HealthCheckCustomConfig}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_instance_custom_health_status(
@@ -38,4 +39,17 @@ For more information, see HealthCheckCustomConfig.
 }
 }
 
+\examples{
+\dontrun{
+# This example submits a request to change the health status of an
+# instance associated with a service with a custom health check to
+# HEALTHY.
+svc$update_instance_custom_health_status(
+  InstanceId = "i-abcd1234",
+  ServiceId = "srv-e4anhexample0004",
+  Status = "HEALTHY"
+)
+}
+
+}
 \keyword{internal}

@@ -2,7 +2,8 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_delete_cluster}
 \alias{redshift_delete_cluster}
-\title{Deletes a previously provisioned cluster}
+\title{Deletes a previously provisioned cluster without its final snapshot
+being created}
 \usage{
 redshift_delete_cluster(ClusterIdentifier, SkipFinalClusterSnapshot,
   FinalClusterSnapshotIdentifier, FinalClusterSnapshotRetentionPeriod)
@@ -47,11 +48,12 @@ The value must be either -1 or an integer between 1 and 3,653.
 The default value is -1.}
 }
 \description{
-Deletes a previously provisioned cluster. A successful response from the
-web service indicates that the request was received correctly. Use
-DescribeClusters to monitor the status of the deletion. The delete
-operation cannot be canceled or reverted once submitted. For more
-information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
+Deletes a previously provisioned cluster without its final snapshot
+being created. A successful response from the web service indicates that
+the request was received correctly. Use DescribeClusters to monitor the
+status of the deletion. The delete operation cannot be canceled or
+reverted once submitted. For more information about managing clusters,
+go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }
 \details{

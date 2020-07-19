@@ -4,13 +4,17 @@
 \alias{sqs_list_queues}
 \title{Returns a list of your queues}
 \usage{
-sqs_list_queues(QueueNamePrefix)
+sqs_list_queues(QueueNamePrefix, NextToken, MaxResults)
 }
 \arguments{
 \item{QueueNamePrefix}{A string to use for filtering the list results. Only those queues whose
 name begins with the specified string are returned.
 
 Queue URLs and names are case-sensitive.}
+
+\item{NextToken}{Pagination token to request the next set of results.}
+
+\item{MaxResults}{Maximum number of results to include in the response.}
 }
 \description{
 Returns a list of your queues. The maximum number of queues that can be
@@ -25,7 +29,9 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_queues(
-  QueueNamePrefix = "string"
+  QueueNamePrefix = "string",
+  NextToken = "string",
+  MaxResults = 123
 )
 }
 }

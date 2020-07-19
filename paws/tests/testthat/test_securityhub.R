@@ -22,6 +22,14 @@ test_that("describe_products", {
   expect_error(svc$describe_products(MaxResults = 20), NA)
 })
 
+test_that("describe_standards", {
+  expect_error(svc$describe_standards(), NA)
+})
+
+test_that("describe_standards", {
+  expect_error(svc$describe_standards(MaxResults = 20), NA)
+})
+
 test_that("list_enabled_products_for_import", {
   expect_error(svc$list_enabled_products_for_import(), NA)
 })

@@ -20,7 +20,8 @@ Publishes metric data points to Amazon CloudWatch. CloudWatch associates
 the data points with the specified metric. If the specified metric does
 not exist, CloudWatch creates the metric. When CloudWatch creates a
 metric, it can take up to fifteen minutes for the metric to appear in
-calls to ListMetrics.
+calls to
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListMetrics.html}{ListMetrics}.
 }
 \details{
 You can publish either individual data points in the \code{Value} field, or
@@ -45,8 +46,15 @@ For more information about specifying dimensions, see \href{https://docs.aws.ama
 in the \emph{Amazon CloudWatch User Guide}.
 
 Data points with time stamps from 24 hours ago or longer can take at
-least 48 hours to become available for GetMetricData or
-GetMetricStatistics from the time they are submitted.
+least 48 hours to become available for
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html}{GetMetricData}
+or
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html}{GetMetricStatistics}
+from the time they are submitted. Data points with time stamps between 3
+and 24 hours ago can take as much as 2 hours to become available for for
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html}{GetMetricData}
+or
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html}{GetMetricStatistics}.
 
 CloudWatch needs raw data points to calculate percentile statistics. If
 you publish data using a statistic set instead, you can only retrieve

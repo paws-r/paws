@@ -67,7 +67,7 @@ dynamodbstreams <- function(config = list()) {
 
 .dynamodbstreams$metadata <- list(
   service_name = "streams.dynamodb",
-  endpoints = list("*" = list(endpoint = "streams.dynamodb.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "streams.dynamodb.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "streams.dynamodb.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "streams.dynamodb.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "streams.dynamodb.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "streams.dynamodb.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "DynamoDB Streams",
   api_version = "2012-08-10",
   signing_name = "dynamodb",

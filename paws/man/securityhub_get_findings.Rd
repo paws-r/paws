@@ -7,15 +7,17 @@
 securityhub_get_findings(Filters, SortCriteria, NextToken, MaxResults)
 }
 \arguments{
-\item{Filters}{The findings attributes used to define a condition to filter the
-findings returned.}
+\item{Filters}{The finding attributes used to define a condition to filter the returned
+findings.}
 
-\item{SortCriteria}{Findings attributes used to sort the list of findings returned.}
+\item{SortCriteria}{The finding attributes used to sort the list of returned findings.}
 
-\item{NextToken}{Paginates results. On your first call to the \code{GetFindings} operation,
-set the value of this parameter to \code{NULL}. For subsequent calls to the
-operation, fill \code{nextToken} in the request with the value of \code{nextToken}
-from the previous response to continue listing data.}
+\item{NextToken}{The token that is required for pagination. On your first call to the
+\code{GetFindings} operation, set the value of this parameter to \code{NULL}.
+
+For subsequent calls to the operation, to continue listing data, set the
+value of this parameter to the value returned from the previous
+response.}
 
 \item{MaxResults}{The maximum number of findings to return.}
 }
@@ -522,6 +524,12 @@ Returns a list of findings that match the specified criteria.
       )
     ),
     WorkflowState = list(
+      list(
+        Value = "string",
+        Comparison = "EQUALS"|"PREFIX"
+      )
+    ),
+    WorkflowStatus = list(
       list(
         Value = "string",
         Comparison = "EQUALS"|"PREFIX"

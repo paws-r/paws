@@ -19,8 +19,15 @@ event (\code{Succeeded} or \code{Failed}).}
 }
 \description{
 Sets the result of a Lambda validation function. The function validates
-one or both lifecycle events (\code{BeforeAllowTraffic} and
-\code{AfterAllowTraffic}) and returns \code{Succeeded} or \code{Failed}.
+lifecycle hooks during a deployment that uses the AWS Lambda or Amazon
+ECS compute platform. For AWS Lambda deployments, the available
+lifecycle hooks are \code{BeforeAllowTraffic} and \code{AfterAllowTraffic}. For
+Amazon ECS deployments, the available lifecycle hooks are
+\code{BeforeInstall}, \code{AfterInstall}, \code{AfterAllowTestTraffic},
+\code{BeforeAllowTraffic}, and \code{AfterAllowTraffic}. Lambda validation
+functions return \code{Succeeded} or \code{Failed}. For more information, see
+\href{https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda}{AppSpec \'hooks\' Section for an AWS Lambda Deployment}
+and \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs}{AppSpec \'hooks\' Section for an Amazon ECS Deployment}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_lifecycle_event_hook_execution_status(

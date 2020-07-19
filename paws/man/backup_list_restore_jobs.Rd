@@ -5,7 +5,8 @@
 \title{Returns a list of jobs that AWS Backup initiated to restore a saved
 resource, including metadata about the recovery process}
 \usage{
-backup_list_restore_jobs(NextToken, MaxResults)
+backup_list_restore_jobs(NextToken, MaxResults, ByAccountId,
+  ByCreatedBefore, ByCreatedAfter, ByStatus)
 }
 \arguments{
 \item{NextToken}{The next item following a partial list of returned items. For example,
@@ -14,6 +15,15 @@ allows you to return more items in your list starting at the location
 pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
+
+\item{ByAccountId}{The account ID to list the jobs from. Returns only restore jobs
+associated with the specified account ID.}
+
+\item{ByCreatedBefore}{Returns only restore jobs that were created before the specified date.}
+
+\item{ByCreatedAfter}{Returns only restore jobs that were created after the specified date.}
+
+\item{ByStatus}{Returns only restore jobs associated with the specified job status.}
 }
 \description{
 Returns a list of jobs that AWS Backup initiated to restore a saved
@@ -22,7 +32,15 @@ resource, including metadata about the recovery process.
 \section{Request syntax}{
 \preformatted{svc$list_restore_jobs(
   NextToken = "string",
-  MaxResults = 123
+  MaxResults = 123,
+  ByAccountId = "string",
+  ByCreatedBefore = as.POSIXct(
+    "2015-01-01"
+  ),
+  ByCreatedAfter = as.POSIXct(
+    "2015-01-01"
+  ),
+  ByStatus = "PENDING"|"RUNNING"|"COMPLETED"|"ABORTED"|"FAILED"
 )
 }
 }

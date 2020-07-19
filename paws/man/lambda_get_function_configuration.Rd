@@ -44,9 +44,10 @@ use GetFunction.
 
 \examples{
 \dontrun{
-# This operation retrieves a Lambda function's event source mapping
+# The following example returns and configuration details for version 1 of
+# a function named my-function.
 svc$get_function_configuration(
-  FunctionName = "myFunction",
+  FunctionName = "my-function",
   Qualifier = "1"
 )
 }

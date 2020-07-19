@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_put_image_tag_mutability}
 \alias{ecr_put_image_tag_mutability}
-\title{Updates the image tag mutability settings for a repository}
+\title{Updates the image tag mutability settings for the specified repository}
 \usage{
 ecr_put_image_tag_mutability(registryId, repositoryName,
   imageTagMutability)
@@ -21,10 +21,8 @@ all image tags within the repository will be immutable which will
 prevent them from being overwritten.}
 }
 \description{
-Updates the image tag mutability settings for a repository. When a
-repository is configured with tag immutability, all image tags within
-the repository will be prevented them from being overwritten. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html}{Image Tag Mutability}
+Updates the image tag mutability settings for the specified repository.
+For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html}{Image Tag Mutability}
 in the \emph{Amazon Elastic Container Registry User Guide}.
 }
 \section{Request syntax}{

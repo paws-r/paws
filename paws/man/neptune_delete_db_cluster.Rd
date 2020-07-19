@@ -45,6 +45,11 @@ When you delete a DB cluster, all automated backups for that DB cluster
 are deleted and can\'t be recovered. Manual DB cluster snapshots of the
 specified DB cluster are not deleted.
 }
+\details{
+Note that the DB Cluster cannot be deleted if deletion protection is
+enabled. To delete it, you must first set its \code{DeletionProtection} field
+to \code{False}.
+}
 \section{Request syntax}{
 \preformatted{svc$delete_db_cluster(
   DBClusterIdentifier = "string",

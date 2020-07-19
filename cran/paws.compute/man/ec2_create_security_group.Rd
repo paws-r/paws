@@ -4,7 +4,8 @@
 \alias{ec2_create_security_group}
 \title{Creates a security group}
 \usage{
-ec2_create_security_group(Description, GroupName, VpcId, DryRun)
+ec2_create_security_group(Description, GroupName, VpcId,
+  TagSpecifications, DryRun)
 }
 \arguments{
 \item{Description}{[required] A description for the security group. This is informational only.
@@ -26,6 +27,8 @@ Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
 .\\_-:/()\\#,@[]+=&;\{\}!\\$*}
 
 \item{VpcId}{[EC2-VPC] The ID of the VPC. Required for EC2-VPC.}
+
+\item{TagSpecifications}{The tags to assign to the security group.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -65,6 +68,17 @@ For more information about VPC security group limits, see \href{https://docs.aws
   Description = "string",
   GroupName = "string",
   VpcId = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
   DryRun = TRUE|FALSE
 )
 }

@@ -7,7 +7,8 @@
 lexmodelbuildingservice_put_intent(name, description, slots,
   sampleUtterances, confirmationPrompt, rejectionStatement,
   followUpPrompt, conclusionStatement, dialogCodeHook,
-  fulfillmentActivity, parentIntentSignature, checksum, createVersion)
+  fulfillmentActivity, parentIntentSignature, checksum, createVersion,
+  kendraConfiguration)
 }
 \arguments{
 \item{name}{[required] The name of the intent. The name is \emph{not} case sensitive.
@@ -119,6 +120,11 @@ exception.}
 \item{createVersion}{When set to \code{true} a new numbered version of the intent is created. This
 is the same as calling the \code{CreateIntentVersion} operation. If you do
 not specify \code{createVersion}, the default is \code{false}.}
+
+\item{kendraConfiguration}{Configuration information required to use the
+\code{AMAZON.KendraSearchIntent} intent to connect to an Amazon Kendra index.
+For more information, see
+\href{http://docs.aws.amazon.com/lex/latest/dg/built-in-intent-kendra-search.html}{AMAZON.KendraSearchIntent}.}
 }
 \description{
 Creates an intent or replaces an existing intent.
@@ -268,7 +274,12 @@ This operation requires permissions for the \code{lex:PutIntent} action.
   ),
   parentIntentSignature = "string",
   checksum = "string",
-  createVersion = TRUE|FALSE
+  createVersion = TRUE|FALSE,
+  kendraConfiguration = list(
+    kendraIndex = "string",
+    queryFilterString = "string",
+    role = "string"
+  )
 )
 }
 }

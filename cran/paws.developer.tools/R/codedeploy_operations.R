@@ -119,13 +119,13 @@ codedeploy_batch_get_application_revisions <- function(applicationName, revision
 #' Gets information about one or more applications
 #'
 #' Gets information about one or more applications. The maximum number of
-#' applications that can be returned is 25.
+#' applications that can be returned is 100.
 #'
 #' @usage
 #' codedeploy_batch_get_applications(applicationNames)
 #'
 #' @param applicationNames &#91;required&#93; A list of application names separated by spaces. The maximum number of
-#' application names you can specify is 25.
+#' application names you can specify is 100.
 #'
 #' @section Request syntax:
 #' ```
@@ -253,13 +253,16 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #' targets that can be returned is 25.
 #' 
 #' The type of targets returned depends on the deployment\'s compute
-#' platform:
+#' platform or deployment method:
 #' 
 #' -   **EC2/On-premises**: Information about EC2 instance targets.
 #' 
 #' -   **AWS Lambda**: Information about Lambda functions targets.
 #' 
 #' -   **Amazon ECS**: Information about Amazon ECS service targets.
+#' 
+#' -   **CloudFormation**: Information about targets of blue/green
+#'     deployments initiated by a CloudFormation stack update.
 #'
 #' @usage
 #' codedeploy_batch_get_deployment_targets(deploymentId, targetIds)
@@ -281,6 +284,10 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #'     IDs are pairs of Amazon ECS clusters and services specified using
 #'     the format `&lt;clustername&gt;:&lt;servicename&gt;`. Their target
 #'     type is `ecsTarget`.
+#' 
+#' -   For deployments that are deployed with AWS CloudFormation, the
+#'     target IDs are CloudFormation stack IDs. Their target type is
+#'     `cloudFormationTarget`.
 #'
 #' @section Request syntax:
 #' ```
@@ -409,10 +416,10 @@ codedeploy_batch_get_on_premises_instances <- function(instanceNames) {
 #'
 #' @param deploymentId The unique ID of a blue/green deployment for which you want to start
 #' rerouting traffic to the replacement environment.
-#' @param deploymentWaitType The status of the deployment\'s waiting period. READY\\_WAIT indicates
-#' the deployment is ready to start shifting traffic. TERMINATION\\_WAIT
-#' indicates the traffic is shifted, but the original target is not
-#' terminated.
+#' @param deploymentWaitType The status of the deployment\'s waiting period. `READY_WAIT` indicates
+#' that the deployment is ready to start shifting traffic.
+#' `TERMINATION_WAIT` indicates that the traffic is shifted, but the
+#' original target is not terminated.
 #'
 #' @section Request syntax:
 #' ```
@@ -511,16 +518,16 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
 #' 
 #' If not specified, the value configured in the deployment group is used
 #' as the default. If the deployment group does not have a deployment
-#' configuration associated with it, CodeDeployDefault.OneAtATime is used
-#' by default.
+#' configuration associated with it, `CodeDeployDefault`.`OneAtATime` is
+#' used by default.
 #' @param description A comment about the deployment.
-#' @param ignoreApplicationStopFailures If true, then if an ApplicationStop, BeforeBlockTraffic, or
-#' AfterBlockTraffic deployment lifecycle event to an instance fails, then
-#' the deployment continues to the next deployment lifecycle event. For
-#' example, if ApplicationStop fails, the deployment continues with
-#' DownloadBundle. If BeforeBlockTraffic fails, the deployment continues
-#' with BlockTraffic. If AfterBlockTraffic fails, the deployment continues
-#' with ApplicationStop.
+#' @param ignoreApplicationStopFailures If true, then if an `ApplicationStop`, `BeforeBlockTraffic`, or
+#' `AfterBlockTraffic` deployment lifecycle event to an instance fails,
+#' then the deployment continues to the next deployment lifecycle event.
+#' For example, if `ApplicationStop` fails, the deployment continues with
+#' `DownloadBundle`. If `BeforeBlockTraffic` fails, the deployment
+#' continues with `BlockTraffic`. If `AfterBlockTraffic` fails, the
+#' deployment continues with `ApplicationStop`.
 #' 
 #' If false or not specified, then if a lifecycle event fails during a
 #' deployment to an instance, that deployment fails. If deployment to that
@@ -529,16 +536,17 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
 #' deployment to the next instance is attempted.
 #' 
 #' During a deployment, the AWS CodeDeploy agent runs the scripts specified
-#' for ApplicationStop, BeforeBlockTraffic, and AfterBlockTraffic in the
-#' AppSpec file from the previous successful deployment. (All other scripts
-#' are run from the AppSpec file in the current deployment.) If one of
-#' these scripts contains an error and does not run successfully, the
+#' for `ApplicationStop`, `BeforeBlockTraffic`, and `AfterBlockTraffic` in
+#' the AppSpec file from the previous successful deployment. (All other
+#' scripts are run from the AppSpec file in the current deployment.) If one
+#' of these scripts contains an error and does not run successfully, the
 #' deployment can fail.
 #' 
 #' If the cause of the failure is a script from the last successful
 #' deployment that will never run successfully, create a new deployment and
-#' use `ignoreApplicationStopFailures` to specify that the ApplicationStop,
-#' BeforeBlockTraffic, and AfterBlockTraffic failures should be ignored.
+#' use `ignoreApplicationStopFailures` to specify that the
+#' `ApplicationStop`, `BeforeBlockTraffic`, and `AfterBlockTraffic`
+#' failures should be ignored.
 #' @param targetInstances Information about the instances that belong to the replacement
 #' environment in a blue/green deployment.
 #' @param autoRollbackConfiguration Configuration information for an automatic rollback that is added when a
@@ -549,7 +557,7 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
 #' a deployment target location but weren\'t part of the previous
 #' successful deployment.
 #' 
-#' The fileExistsBehavior parameter takes any of the following values:
+#' The `fileExistsBehavior` parameter takes any of the following values:
 #' 
 #' -   DISALLOW: The deployment fails. This is also the default behavior if
 #'     no option is specified.
@@ -667,7 +675,7 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 #'     healthy instances as a percentage of the total number of instances
 #'     in the deployment. If you specify FLEET\\_PERCENT, at the start of
 #'     the deployment, AWS CodeDeploy converts the percentage to the
-#'     equivalent number of instance and rounds up fractional instances.
+#'     equivalent number of instances and rounds up fractional instances.
 #' 
 #' The value parameter takes an integer.
 #' 
@@ -740,27 +748,27 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' deployment configuration that you create by calling the create
 #' deployment configuration operation.
 #' 
-#' CodeDeployDefault.OneAtATime is the default deployment configuration. It
-#' is used if a configuration isn\'t specified for the deployment or
+#' `CodeDeployDefault.OneAtATime` is the default deployment configuration.
+#' It is used if a configuration isn\'t specified for the deployment or
 #' deployment group.
 #' 
 #' For more information about the predefined deployment configurations in
-#' AWS CodeDeploy, see [Working with Deployment Groups in AWS
+#' AWS CodeDeploy, see [Working with Deployment Configurations in
 #' CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html)
-#' in the AWS CodeDeploy User Guide.
+#' in the *AWS CodeDeploy User Guide*.
 #' @param ec2TagFilters The Amazon EC2 tags on which to filter. The deployment group includes
 #' EC2 instances with any of the specified tags. Cannot be used in the same
 #' call as ec2TagSet.
 #' @param onPremisesInstanceTagFilters The on-premises instance tags on which to filter. The deployment group
 #' includes on-premises instances with any of the specified tags. Cannot be
-#' used in the same call as OnPremisesTagSet.
+#' used in the same call as `OnPremisesTagSet`.
 #' @param autoScalingGroups A list of associated Amazon EC2 Auto Scaling groups.
-#' @param serviceRoleArn &#91;required&#93; A service role ARN that allows AWS CodeDeploy to act on the user\'s
-#' behalf when interacting with AWS services.
+#' @param serviceRoleArn &#91;required&#93; A service role Amazon Resource Name (ARN) that allows AWS CodeDeploy to
+#' act on the user\'s behalf when interacting with AWS services.
 #' @param triggerConfigurations Information about triggers to create when the deployment group is
 #' created. For examples, see [Create a Trigger for an AWS CodeDeploy
 #' Event](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html)
-#' in the AWS CodeDeploy User Guide.
+#' in the *AWS CodeDeploy User Guide*.
 #' @param alarmConfiguration Information to add about Amazon CloudWatch alarms when the deployment
 #' group is created.
 #' @param autoRollbackConfiguration Configuration information for an automatic rollback that is added when a
@@ -772,7 +780,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' @param loadBalancerInfo Information about the load balancer used in a deployment.
 #' @param ec2TagSet Information about groups of tags applied to EC2 instances. The
 #' deployment group includes only EC2 instances identified by all the tag
-#' groups. Cannot be used in the same call as ec2TagFilters.
+#' groups. Cannot be used in the same call as `ec2TagFilters`.
 #' @param ecsServices The target Amazon ECS services in the deployment group. This applies
 #' only to deployment groups that use the Amazon ECS compute platform. A
 #' target Amazon ECS service is specified as an Amazon ECS cluster and
@@ -781,7 +789,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' @param onPremisesTagSet Information about groups of tags applied to on-premises instances. The
 #' deployment group includes only on-premises instances identified by all
 #' of the tag groups. Cannot be used in the same call as
-#' onPremisesInstanceTagFilters.
+#' `onPremisesInstanceTagFilters`.
 #' @param tags The metadata that you apply to CodeDeploy deployment groups to help you
 #' organize and categorize them. Each tag consists of a key and an optional
 #' value, both of which you define.
@@ -1090,6 +1098,43 @@ codedeploy_delete_git_hub_account_token <- function(tokenName = NULL) {
   return(response)
 }
 .codedeploy$operations$delete_git_hub_account_token <- codedeploy_delete_git_hub_account_token
+
+#' Deletes resources linked to an external ID
+#'
+#' Deletes resources linked to an external ID.
+#'
+#' @usage
+#' codedeploy_delete_resources_by_external_id(externalId)
+#'
+#' @param externalId The unique ID of an external resource (for example, a CloudFormation
+#' stack ID) that is linked to one or more CodeDeploy resources.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resources_by_external_id(
+#'   externalId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codedeploy_delete_resources_by_external_id
+codedeploy_delete_resources_by_external_id <- function(externalId = NULL) {
+  op <- new_operation(
+    name = "DeleteResourcesByExternalId",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codedeploy$delete_resources_by_external_id_input(externalId = externalId)
+  output <- .codedeploy$delete_resources_by_external_id_output()
+  config <- get_config()
+  svc <- .codedeploy$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codedeploy$operations$delete_resources_by_external_id <- codedeploy_delete_resources_by_external_id
 
 #' Deregisters an on-premises instance
 #'
@@ -1466,22 +1511,22 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
 #' or AWS account.
 #' @param sortBy The column name to use to sort the list results:
 #' 
-#' -   registerTime: Sort by the time the revisions were registered with
+#' -   `registerTime`: Sort by the time the revisions were registered with
 #'     AWS CodeDeploy.
 #' 
-#' -   firstUsedTime: Sort by the time the revisions were first used in a
+#' -   `firstUsedTime`: Sort by the time the revisions were first used in a
 #'     deployment.
 #' 
-#' -   lastUsedTime: Sort by the time the revisions were last used in a
+#' -   `lastUsedTime`: Sort by the time the revisions were last used in a
 #'     deployment.
 #' 
 #' If not specified or set to null, the results are returned in an
 #' arbitrary order.
 #' @param sortOrder The order in which to sort the list results:
 #' 
-#' -   ascending: ascending order.
+#' -   `ascending`: ascending order.
 #' 
-#' -   descending: descending order.
+#' -   `descending`: descending order.
 #' 
 #' If not specified, the results are sorted in ascending order.
 #' 
@@ -1492,15 +1537,15 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
 #' @param s3KeyPrefix A key prefix for the set of Amazon S3 objects to limit the search for
 #' revisions.
 #' @param deployed Whether to list revisions based on whether the revision is the target
-#' revision of an deployment group:
+#' revision of a deployment group:
 #' 
-#' -   include: List revisions that are target revisions of a deployment
+#' -   `include`: List revisions that are target revisions of a deployment
 #'     group.
 #' 
-#' -   exclude: Do not list revisions that are target revisions of a
+#' -   `exclude`: Do not list revisions that are target revisions of a
 #'     deployment group.
 #' 
-#' -   ignore: List all revisions.
+#' -   `ignore`: List all revisions.
 #' @param nextToken An identifier returned from the previous `ListApplicationRevisions`
 #' call. It can be used to return the next set of applications in the list.
 #'
@@ -1657,7 +1702,7 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
 #' The newer BatchGetDeploymentTargets should be used instead because it
 #' works with all compute types
 #'
-#' The newer BatchGetDeploymentTargets should be used instead because it
+#' The newer `BatchGetDeploymentTargets` should be used instead because it
 #' works with all compute types. `ListDeploymentInstances` throws an
 #' exception if it is used with a compute platform other than
 #' EC2/On-premises or AWS Lambda.
@@ -1675,18 +1720,18 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
 #' list.
 #' @param instanceStatusFilter A subset of instances to list by status:
 #' 
-#' -   Pending: Include those instances with pending deployments.
+#' -   `Pending`: Include those instances with pending deployments.
 #' 
-#' -   InProgress: Include those instances where deployments are still in
+#' -   `InProgress`: Include those instances where deployments are still in
 #'     progress.
 #' 
-#' -   Succeeded: Include those instances with successful deployments.
+#' -   `Succeeded`: Include those instances with successful deployments.
 #' 
-#' -   Failed: Include those instances with failed deployments.
+#' -   `Failed`: Include those instances with failed deployments.
 #' 
-#' -   Skipped: Include those instances with skipped deployments.
+#' -   `Skipped`: Include those instances with skipped deployments.
 #' 
-#' -   Unknown: Include those instances with deployments in an unknown
+#' -   `Unknown`: Include those instances with deployments in an unknown
 #'     state.
 #' @param instanceTypeFilter The set of instances in a blue/green deployment, either those in the
 #' original environment (\"BLUE\") or those in the replacement environment
@@ -1788,7 +1833,7 @@ codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = 
 #'
 #' @usage
 #' codedeploy_list_deployments(applicationName, deploymentGroupName,
-#'   includeOnlyStatuses, createTimeRange, nextToken)
+#'   externalId, includeOnlyStatuses, createTimeRange, nextToken)
 #'
 #' @param applicationName The name of an AWS CodeDeploy application associated with the IAM user
 #' or AWS account.
@@ -1801,19 +1846,22 @@ codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = 
 #' If `deploymentGroupName` is specified, then `applicationName` must be
 #' specified. If it is not specified, then `applicationName` must not be
 #' specified.
+#' @param externalId The unique ID of an external resource for returning deployments linked
+#' to the external resource.
 #' @param includeOnlyStatuses A subset of deployments to list by status:
 #' 
-#' -   Created: Include created deployments in the resulting list.
+#' -   `Created`: Include created deployments in the resulting list.
 #' 
-#' -   Queued: Include queued deployments in the resulting list.
+#' -   `Queued`: Include queued deployments in the resulting list.
 #' 
-#' -   In Progress: Include in-progress deployments in the resulting list.
+#' -   `In Progress`: Include in-progress deployments in the resulting
+#'     list.
 #' 
-#' -   Succeeded: Include successful deployments in the resulting list.
+#' -   `Succeeded`: Include successful deployments in the resulting list.
 #' 
-#' -   Failed: Include failed deployments in the resulting list.
+#' -   `Failed`: Include failed deployments in the resulting list.
 #' 
-#' -   Stopped: Include stopped deployments in the resulting list.
+#' -   `Stopped`: Include stopped deployments in the resulting list.
 #' @param createTimeRange A time range (start and end) for returning a subset of the list of
 #' deployments.
 #' @param nextToken An identifier returned from the previous list deployments call. It can
@@ -1824,8 +1872,9 @@ codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = 
 #' svc$list_deployments(
 #'   applicationName = "string",
 #'   deploymentGroupName = "string",
+#'   externalId = "string",
 #'   includeOnlyStatuses = list(
-#'     "Created"|"Queued"|"InProgress"|"Succeeded"|"Failed"|"Stopped"|"Ready"
+#'     "Created"|"Queued"|"InProgress"|"Baking"|"Succeeded"|"Failed"|"Stopped"|"Ready"
 #'   ),
 #'   createTimeRange = list(
 #'     start = as.POSIXct(
@@ -1842,14 +1891,14 @@ codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = 
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_deployments
-codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupName = NULL, includeOnlyStatuses = NULL, createTimeRange = NULL, nextToken = NULL) {
+codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupName = NULL, externalId = NULL, includeOnlyStatuses = NULL, createTimeRange = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListDeployments",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codedeploy$list_deployments_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, includeOnlyStatuses = includeOnlyStatuses, createTimeRange = createTimeRange, nextToken = nextToken)
+  input <- .codedeploy$list_deployments_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, externalId = externalId, includeOnlyStatuses = includeOnlyStatuses, createTimeRange = createTimeRange, nextToken = nextToken)
   output <- .codedeploy$list_deployments_output()
   config <- get_config()
   svc <- .codedeploy$service(config)
@@ -1866,7 +1915,7 @@ codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupN
 #' @usage
 #' codedeploy_list_git_hub_account_token_names(nextToken)
 #'
-#' @param nextToken An identifier returned from the previous ListGitHubAccountTokenNames
+#' @param nextToken An identifier returned from the previous `ListGitHubAccountTokenNames`
 #' call. It can be used to return the next set of names in the list.
 #'
 #' @section Request syntax:
@@ -1910,10 +1959,10 @@ codedeploy_list_git_hub_account_token_names <- function(nextToken = NULL) {
 #'
 #' @param registrationStatus The registration status of the on-premises instances:
 #' 
-#' -   Deregistered: Include deregistered on-premises instances in the
+#' -   `Deregistered`: Include deregistered on-premises instances in the
 #'     resulting list.
 #' 
-#' -   Registered: Include registered on-premises instances in the
+#' -   `Registered`: Include registered on-premises instances in the
 #'     resulting list.
 #' @param tagFilters The on-premises instance tags that are used to restrict the on-premises
 #' instance names returned.
@@ -1956,10 +2005,12 @@ codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tag
 }
 .codedeploy$operations$list_on_premises_instances <- codedeploy_list_on_premises_instances
 
-#' Returns a list of tags for the resource identified by a specified ARN
+#' Returns a list of tags for the resource identified by a specified Amazon
+#' Resource Name (ARN)
 #'
-#' Returns a list of tags for the resource identified by a specified ARN.
-#' Tags are used to organize and categorize your CodeDeploy resources.
+#' Returns a list of tags for the resource identified by a specified Amazon
+#' Resource Name (ARN). Tags are used to organize and categorize your
+#' CodeDeploy resources.
 #'
 #' @usage
 #' codedeploy_list_tags_for_resource(ResourceArn, NextToken)
@@ -2001,8 +2052,17 @@ codedeploy_list_tags_for_resource <- function(ResourceArn, NextToken = NULL) {
 #' Sets the result of a Lambda validation function
 #'
 #' Sets the result of a Lambda validation function. The function validates
-#' one or both lifecycle events (`BeforeAllowTraffic` and
-#' `AfterAllowTraffic`) and returns `Succeeded` or `Failed`.
+#' lifecycle hooks during a deployment that uses the AWS Lambda or Amazon
+#' ECS compute platform. For AWS Lambda deployments, the available
+#' lifecycle hooks are `BeforeAllowTraffic` and `AfterAllowTraffic`. For
+#' Amazon ECS deployments, the available lifecycle hooks are
+#' `BeforeInstall`, `AfterInstall`, `AfterAllowTestTraffic`,
+#' `BeforeAllowTraffic`, and `AfterAllowTraffic`. Lambda validation
+#' functions return `Succeeded` or `Failed`. For more information, see
+#' [AppSpec \'hooks\' Section for an AWS Lambda
+#' Deployment](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda)
+#' and [AppSpec \'hooks\' Section for an Amazon ECS
+#' Deployment](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs).
 #'
 #' @usage
 #' codedeploy_put_lifecycle_event_hook_execution_status(deploymentId,
@@ -2326,14 +2386,14 @@ codedeploy_tag_resource <- function(ResourceArn, Tags) {
 #' Disassociates a resource from a list of tags
 #'
 #' Disassociates a resource from a list of tags. The resource is identified
-#' by the `ResourceArn` input parameter. The tags are identfied by the list
-#' of keys in the `TagKeys` input parameter.
+#' by the `ResourceArn` input parameter. The tags are identified by the
+#' list of keys in the `TagKeys` input parameter.
 #'
 #' @usage
 #' codedeploy_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The ARN that specifies from which resource to disassociate the tags with
-#' the keys in the `TagKeys` input paramter.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that specifies from which resource to
+#' disassociate the tags with the keys in the `TagKeys` input parameter.
 #' @param TagKeys &#91;required&#93; A list of keys of `Tag` objects. The `Tag` objects identified by the
 #' keys are disassociated from the resource specified by the `ResourceArn`
 #' input parameter.
@@ -2436,10 +2496,9 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' any Auto Scaling group names.
 #' @param serviceRoleArn A replacement ARN for the service role, if you want to change it.
 #' @param triggerConfigurations Information about triggers to change when the deployment group is
-#' updated. For examples, see [Modify Triggers in an AWS CodeDeploy
-#' Deployment
+#' updated. For examples, see [Edit a Trigger in a CodeDeploy Deployment
 #' Group](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html)
-#' in the AWS CodeDeploy User Guide.
+#' in the *AWS CodeDeploy User Guide*.
 #' @param alarmConfiguration Information to add or change about Amazon CloudWatch alarms when the
 #' deployment group is updated.
 #' @param autoRollbackConfiguration Information for an automatic rollback configuration that is added or

@@ -94,7 +94,7 @@ cognitosync <- function(config = list()) {
 
 .cognitosync$metadata <- list(
   service_name = "cognito-sync",
-  endpoints = list("*" = list(endpoint = "cognito-sync.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cognito-sync.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "cognito-sync.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cognito-sync.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cognito-sync.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cognito-sync.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Cognito Sync",
   api_version = "2014-06-30",
   signing_name = NULL,

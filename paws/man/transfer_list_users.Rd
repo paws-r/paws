@@ -2,8 +2,8 @@
 % Please edit documentation in R/transfer_operations.R
 \name{transfer_list_users}
 \alias{transfer_list_users}
-\title{Lists the users for the server that you specify by passing the ServerId
-parameter}
+\title{Lists the users for a file transfer protocol-enabled server that you
+specify by passing the ServerId parameter}
 \usage{
 transfer_list_users(MaxResults, NextToken, ServerId)
 }
@@ -16,12 +16,12 @@ request.}
 subsequent command to the \code{NextToken} parameter to continue listing
 additional users.}
 
-\item{ServerId}{[required] A system-assigned unique identifier for a Secure File Transfer Protocol
-(SFTP) server that has users assigned to it.}
+\item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
+server that has users assigned to it.}
 }
 \description{
-Lists the users for the server that you specify by passing the
-\code{ServerId} parameter.
+Lists the users for a file transfer protocol-enabled server that you
+specify by passing the \code{ServerId} parameter.
 }
 \section{Request syntax}{
 \preformatted{svc$list_users(

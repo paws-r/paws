@@ -2,38 +2,63 @@
 % Please edit documentation in R/fsx_operations.R
 \name{fsx_create_file_system_from_backup}
 \alias{fsx_create_file_system_from_backup}
-\title{Creates a new Amazon FSx file system from an existing Amazon FSx for
-Windows File Server backup}
+\title{Creates a new Amazon FSx file system from an existing Amazon FSx backup}
 \usage{
 fsx_create_file_system_from_backup(BackupId, ClientRequestToken,
-  SubnetIds, SecurityGroupIds, Tags, WindowsConfiguration)
+  SubnetIds, SecurityGroupIds, Tags, WindowsConfiguration,
+  LustreConfiguration, StorageType)
 }
 \arguments{
 \item{BackupId}{[required]}
 
-\item{ClientRequestToken}{(Optional) A string of up to 64 ASCII characters that Amazon FSx uses to
-ensure idempotent creation. This string is automatically filled on your
-behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
-SDK.}
+\item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
+idempotent creation. This string is automatically filled on your behalf
+when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.}
 
-\item{SubnetIds}{[required] A list of IDs for the subnets that the file system will be accessible
-from. Currently, you can specify only one subnet. The file server is
-also launched in that subnet\'s Availability Zone.}
+\item{SubnetIds}{[required] Specifies the IDs of the subnets that the file system will be accessible
+from. For Windows \code{MULTI_AZ_1} file system deployment types, provide
+exactly two subnet IDs, one for the preferred file server and one for
+the standby file server. You specify one of these subnets as the
+preferred subnet using the \verb{WindowsConfiguration &gt; PreferredSubnetID}
+property.
+
+For Windows \code{SINGLE_AZ_1} and \code{SINGLE_AZ_2} deployment types and Lustre
+file systems, provide exactly one subnet ID. The file server is launched
+in that subnet\'s Availability Zone.}
 
 \item{SecurityGroupIds}{A list of IDs for the security groups that apply to the specified
 network interfaces created for file system access. These security groups
 apply to all network interfaces. This value isn\'t returned in later
-describe requests.}
+DescribeFileSystem requests.}
 
 \item{Tags}{The tags to be applied to the file system at file system creation. The
 key value of the \code{Name} tag appears in the console as the file system
 name.}
 
 \item{WindowsConfiguration}{The configuration for this Microsoft Windows file system.}
+
+\item{LustreConfiguration}{}
+
+\item{StorageType}{Sets the storage type for the Windows file system you\'re creating from
+a backup. Valid values are \code{SSD} and \code{HDD}.
+\itemize{
+\item Set to \code{SSD} to use solid state drive storage. Supported on all
+Windows deployment types.
+\item Set to \code{HDD} to use hard disk drive storage. Supported on
+\code{SINGLE_AZ_2} and \code{MULTI_AZ_1} Windows file system deployment types.
+}
+
+Default value is \code{SSD}.
+
+HDD and SSD storage types have different minimum storage capacity
+requirements. A restored file system\'s storage capacity is tied to the
+file system that was backed up. You can create a file system that uses
+HDD storage from a backup of a file system that used SSD storage only if
+the original SSD file system had a storage capacity of at least 2000
+GiB.}
 }
 \description{
-Creates a new Amazon FSx file system from an existing Amazon FSx for
-Windows File Server backup.
+Creates a new Amazon FSx file system from an existing Amazon FSx backup.
 }
 \details{
 If a file system with the specified client request token exists and the
@@ -95,14 +120,26 @@ returns the file system state along with other information.
         "string"
       )
     ),
-    DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+    DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
     PreferredSubnetId = "string",
     ThroughputCapacity = 123,
     WeeklyMaintenanceStartTime = "string",
     DailyAutomaticBackupStartTime = "string",
     AutomaticBackupRetentionDays = 123,
     CopyTagsToBackups = TRUE|FALSE
-  )
+  ),
+  LustreConfiguration = list(
+    WeeklyMaintenanceStartTime = "string",
+    ImportPath = "string",
+    ExportPath = "string",
+    ImportedFileChunkSize = 123,
+    DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
+    PerUnitStorageThroughput = 123,
+    DailyAutomaticBackupStartTime = "string",
+    AutomaticBackupRetentionDays = 123,
+    CopyTagsToBackups = TRUE|FALSE
+  ),
+  StorageType = "SSD"|"HDD"
 )
 }
 }

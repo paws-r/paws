@@ -9,25 +9,22 @@ NULL
 #' read the data on your EBS snapshots, and identify the difference between
 #' two snapshots. You can view the details of blocks in an EBS snapshot,
 #' compare the block difference between two snapshots, and directly access
-#' the data in a snapshot. If you're an independent software vendor (ISV)
-#' who offers backup services for EBS, the EBS direct APIs makes it easier
+#' the data in a snapshot. If you\'re an independent software vendor (ISV)
+#' who offers backup services for EBS, the EBS direct APIs make it easier
 #' and more cost-effective to track incremental changes on your EBS volumes
 #' via EBS snapshots. This can be done without having to create new volumes
-#' from EBS snapshots, and then use EC2 instances to compare the
-#' differences.
+#' from EBS snapshots.
 #' 
 #' This API reference provides detailed information about the actions, data
 #' types, parameters, and errors of the EBS direct APIs. For more
 #' information about the elements that make up the EBS direct APIs, and
 #' examples of how to use them effectively, see [Accessing the Contents of
 #' an EBS
-#' Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html).
-#' For more information about how to use the EBS direct APIs, see the [EBS
-#' direct APIs User
-#' Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshots.html).
-#' To view the currently supported AWS Regions and endpoints for the EBS
-#' direct APIs, see [AWS Service
-#' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#ebs_region)
+#' Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*. For more information
+#' about the supported AWS Regions, endpoints, and service quotas for the
+#' EBS direct APIs, see [Amazon Elastic Block Store Endpoints and
+#' Quotas](https://docs.aws.amazon.com/general/latest/gr/ebs-service.html)
 #' in the *AWS General Reference*.
 #'
 #' @param
@@ -55,16 +52,19 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- ebs()
-#' svc$get_snapshot_block(
+#' svc$complete_snapshot(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=ebs_complete_snapshot]{complete_snapshot} \tab Seals and completes the snapshot after all of the required blocks of data have been written to it \cr
 #'  \link[=ebs_get_snapshot_block]{get_snapshot_block} \tab Returns the data in a block in an Amazon Elastic Block Store snapshot \cr
 #'  \link[=ebs_list_changed_blocks]{list_changed_blocks} \tab Returns the block indexes and block tokens for blocks that are different between two Amazon Elastic Block Store snapshots of the same volume/snapshot lineage\cr
-#'  \link[=ebs_list_snapshot_blocks]{list_snapshot_blocks} \tab Returns the block indexes and block tokens for blocks in an Amazon Elastic Block Store snapshot 
+#'  \link[=ebs_list_snapshot_blocks]{list_snapshot_blocks} \tab Returns the block indexes and block tokens for blocks in an Amazon Elastic Block Store snapshot \cr
+#'  \link[=ebs_put_snapshot_block]{put_snapshot_block} \tab Writes a block of data to a block in the snapshot \cr
+#'  \link[=ebs_start_snapshot]{start_snapshot} \tab Creates a new Amazon EBS snapshot 
 #' }
 #'
 #' @rdname ebs
@@ -82,7 +82,7 @@ ebs <- function(config = list()) {
 
 .ebs$metadata <- list(
   service_name = "ebs",
-  endpoints = list("*" = list(endpoint = "ebs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ebs.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ebs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ebs.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ebs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ebs.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "EBS",
   api_version = "2019-11-02",
   signing_name = NULL,

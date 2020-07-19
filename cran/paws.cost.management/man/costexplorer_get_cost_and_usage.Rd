@@ -23,10 +23,10 @@ including \code{2017-05-01}.}
 with that account\'s usage of that service. You can nest \code{Expression}
 objects to define any combination of dimension filters. For more
 information, see
-\href{http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}.}
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}.}
 
 \item{Metrics}{Which metrics are returned in the query. For more information about
-blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the \"blended\" annotation appear on some line items in my bill?}.
+blended and unblended rates, see \href{http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the \"blended\" annotation appear on some line items in my bill?}.
 
 Valid values are \code{AmortizedCost}, \code{BlendedCost}, \code{NetAmortizedCost},
 \code{NetUnblendedCost}, \code{NormalizedUsageAmount}, \code{UnblendedCost}, and
@@ -63,7 +63,7 @@ cost and usage-related metric, such as \code{BlendedCosts} or
 filter and group your data by various dimensions, such as \code{SERVICE} or
 \code{AZ}, in a specific time range. For a complete list of valid dimensions,
 see the
-\href{http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html}{GetDimensionValues}
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html}{GetDimensionValues}
 operation. Master accounts in an organization in AWS Organizations have
 access to all member accounts.
 }
@@ -83,15 +83,21 @@ access to all member accounts.
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
       Values = list(
         "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     Tags = list(
       Key = "string",
       Values = list(
         "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     CostCategories = list(

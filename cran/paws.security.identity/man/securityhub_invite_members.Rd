@@ -8,17 +8,21 @@ Hub master account that the invitation is sent from}
 securityhub_invite_members(AccountIds)
 }
 \arguments{
-\item{AccountIds}{A list of IDs of the AWS accounts that you want to invite to Security
-Hub as members.}
+\item{AccountIds}{The list of account IDs of the AWS accounts to invite to Security Hub as
+members.}
 }
 \description{
 Invites other AWS accounts to become member accounts for the Security
-Hub master account that the invitation is sent from. Before you can use
-this action to invite a member, you must first create the member account
-in Security Hub by using the CreateMembers action. When the account
-owner accepts the invitation to become a member account and enables
-Security Hub, the master account can view the findings generated from
-member account.
+Hub master account that the invitation is sent from.
+}
+\details{
+Before you can use this action to invite a member, you must first use
+the \verb{<a>CreateMembers</a>} action to create the member account in
+Security Hub.
+
+When the account owner accepts the invitation to become a member account
+and enables Security Hub, the master account can view the findings
+generated from the member account.
 }
 \section{Request syntax}{
 \preformatted{svc$invite_members(

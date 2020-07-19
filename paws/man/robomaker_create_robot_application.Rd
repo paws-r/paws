@@ -12,7 +12,8 @@ robomaker_create_robot_application(name, sources, robotSoftwareSuite,
 
 \item{sources}{[required] The sources of the robot application.}
 
-\item{robotSoftwareSuite}{[required] The robot software suite used by the robot application.}
+\item{robotSoftwareSuite}{[required] The robot software suite (ROS distribuition) used by the robot
+application.}
 
 \item{tags}{A map that contains tag keys and tag values that are attached to the
 robot application.}

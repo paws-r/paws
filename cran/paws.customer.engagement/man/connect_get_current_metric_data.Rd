@@ -26,7 +26,9 @@ If no \code{Grouping} is included in the request, a summary of metrics is
 returned.}
 
 \item{CurrentMetrics}{[required] The metrics to retrieve. Specify the name and unit for each metric. The
-following metrics are available:
+following metrics are available. For a description of each metric, see
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html}{Real-time Metrics Definitions}
+in the \emph{Amazon Connect Administrator Guide}.
 \subsection{AGENTS\\_AFTER\\_CONTACT\\_WORK}{
 
 Unit: COUNT

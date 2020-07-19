@@ -20,7 +20,7 @@ Updates the bandwidth rate limits of a gateway. You can update both the
 upload and download bandwidth rate limit or specify only one of the two.
 If you don\'t set a bandwidth rate limit, the existing rate limit
 remains. This operation is supported for the stored volume, cached
-volume and tape gateway types.\'
+volume, and tape gateway types.
 }
 \details{
 By default, a gateway\'s bandwidth rate limits are not set. If you

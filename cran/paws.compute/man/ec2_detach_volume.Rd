@@ -17,7 +17,8 @@ volume from a failed instance. The instance won\'t have an opportunity
 to flush file system caches or file system metadata. If you use this
 option, you must perform file system check and repair procedures.}
 
-\item{InstanceId}{The ID of the instance.}
+\item{InstanceId}{The ID of the instance. If you are detaching a Multi-Attach enabled
+volume, you must specify an instance ID.}
 
 \item{VolumeId}{[required] The ID of the volume.}
 

@@ -36,6 +36,15 @@ is uniquely identified by a \code{VersionId}.
         ),
         RecoveryPointTags = list(
           "string"
+        ),
+        CopyActions = list(
+          list(
+            Lifecycle = list(
+              MoveToColdStorageAfterDays = 123,
+              DeleteAfterDays = 123
+            ),
+            DestinationBackupVaultArn = "string"
+          )
         )
       )
     )

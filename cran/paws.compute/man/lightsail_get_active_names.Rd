@@ -7,7 +7,11 @@
 lightsail_get_active_names(pageToken)
 }
 \arguments{
-\item{pageToken}{A token used for paginating results from your get active names request.}
+\item{pageToken}{The token to advance to the next page of results from your request.
+
+To get a page token, perform an initial \code{GetActiveNames} request. If
+your results are paginated, the response will return a next page token
+that you can specify as the page token in a subsequent request.}
 }
 \description{
 Returns the names of all active (not deleted) resources.

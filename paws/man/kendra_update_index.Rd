@@ -5,7 +5,7 @@
 \title{Updates an existing Amazon Kendra index}
 \usage{
 kendra_update_index(Id, Name, RoleArn, Description,
-  DocumentMetadataConfigurationUpdates)
+  DocumentMetadataConfigurationUpdates, CapacityUnits)
 }
 \arguments{
 \item{Id}{[required] The identifier of the index to update.}
@@ -18,6 +18,13 @@ CloudWatch logs.}
 \item{Description}{A new description for the index.}
 
 \item{DocumentMetadataConfigurationUpdates}{The document metadata to update.}
+
+\item{CapacityUnits}{Sets the number of addtional storage and query capacity units that
+should be used by the index. You can change the capacity of the index up
+to 5 times per day.
+
+If you are using extra storage units, you can\'t reduce the storage
+capacity below that required to meet the storage needs for your index.}
 }
 \description{
 Updates an existing Amazon Kendra index.
@@ -47,6 +54,10 @@ Updates an existing Amazon Kendra index.
         Displayable = TRUE|FALSE
       )
     )
+  ),
+  CapacityUnits = list(
+    StorageCapacityUnits = 123,
+    QueryCapacityUnits = 123
   )
 )
 }

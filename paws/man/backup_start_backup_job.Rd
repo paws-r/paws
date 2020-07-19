@@ -21,17 +21,14 @@ format of the ARN depends on the resource type.}
 example, \verb{arn:aws:iam::123456789012:role/S3Access}.}
 
 \item{IdempotencyToken}{A customer chosen string that can be used to distinguish between calls
-to \code{StartBackupJob}. Idempotency tokens time out after one hour.
-Therefore, if you call \code{StartBackupJob} multiple times with the same
-idempotency token within one hour, AWS Backup recognizes that you are
-requesting only one backup job and initiates only one. If you change the
-idempotency token for each call, AWS Backup recognizes that you are
-requesting to start multiple backups.}
+to \code{StartBackupJob}.}
 
-\item{StartWindowMinutes}{The amount of time in minutes before beginning a backup.}
+\item{StartWindowMinutes}{A value in minutes after a backup is scheduled before a job will be
+canceled if it doesn\'t start successfully. This value is optional.}
 
-\item{CompleteWindowMinutes}{The amount of time AWS Backup attempts a backup before canceling the job
-and returning an error.}
+\item{CompleteWindowMinutes}{A value in minutes after a backup job is successfully started before it
+must be completed or it will be canceled by AWS Backup. This value is
+optional.}
 
 \item{Lifecycle}{The lifecycle defines when a protected resource is transitioned to cold
 storage and when it expires. AWS Backup will transition and expire

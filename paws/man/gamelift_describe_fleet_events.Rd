@@ -37,7 +37,7 @@ collection of event log entries matching the request are returned.
 \details{
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
 
 \strong{Related operations}
 \itemize{
@@ -55,11 +55,7 @@ collection of event log entries matching the request are returned.
 \item DescribeFleetEvents
 }
 \item UpdateFleetAttributes
-\item Manage fleet actions:
-\itemize{
-\item StartFleetActions
-\item StopFleetActions
-}
+\item StartFleetActions or StopFleetActions
 }
 }
 \section{Request syntax}{

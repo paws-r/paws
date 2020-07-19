@@ -4,7 +4,8 @@
 \alias{iot_create_role_alias}
 \title{Creates a role alias}
 \usage{
-iot_create_role_alias(roleAlias, roleArn, credentialDurationSeconds)
+iot_create_role_alias(roleAlias, roleArn, credentialDurationSeconds,
+  tags)
 }
 \arguments{
 \item{roleAlias}{[required] The role alias that points to a role ARN. This allows you to change the
@@ -13,6 +14,16 @@ role without having to update the device.}
 \item{roleArn}{[required] The role ARN.}
 
 \item{credentialDurationSeconds}{How long (in seconds) the credentials will be valid.}
+
+\item{tags}{Metadata which can be used to manage the role alias.
+
+For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+
+For the CLI command-line parameter use format: &&tags
+\"key1=value1&key2=value2\\...\"
+
+For the cli-input-json file use format: \"tags\":
+\"key1=value1&key2=value2\\...\"}
 }
 \description{
 Creates a role alias.
@@ -21,7 +32,13 @@ Creates a role alias.
 \preformatted{svc$create_role_alias(
   roleAlias = "string",
   roleArn = "string",
-  credentialDurationSeconds = 123
+  credentialDurationSeconds = 123,
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

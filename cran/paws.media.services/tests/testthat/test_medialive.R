@@ -10,6 +10,14 @@ test_that("list_channels", {
   expect_error(svc$list_channels(MaxResults = 20), NA)
 })
 
+test_that("list_input_devices", {
+  expect_error(svc$list_input_devices(), NA)
+})
+
+test_that("list_input_devices", {
+  expect_error(svc$list_input_devices(MaxResults = 20), NA)
+})
+
 test_that("list_input_security_groups", {
   expect_error(svc$list_input_security_groups(), NA)
 })

@@ -4,10 +4,15 @@
 \alias{appmesh_describe_virtual_service}
 \title{Describes an existing virtual service}
 \usage{
-appmesh_describe_virtual_service(meshName, virtualServiceName)
+appmesh_describe_virtual_service(meshName, meshOwner,
+  virtualServiceName)
 }
 \arguments{
 \item{meshName}{[required] The name of the service mesh that the virtual service resides in.}
+
+\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it\'s the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{virtualServiceName}{[required] The name of the virtual service to describe.}
 }
@@ -17,6 +22,7 @@ Describes an existing virtual service.
 \section{Request syntax}{
 \preformatted{svc$describe_virtual_service(
   meshName = "string",
+  meshOwner = "string",
   virtualServiceName = "string"
 )
 }

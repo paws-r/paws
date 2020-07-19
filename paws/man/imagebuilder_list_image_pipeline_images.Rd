@@ -8,10 +8,10 @@ imagebuilder_list_image_pipeline_images(imagePipelineArn, filters,
   maxResults, nextToken)
 }
 \arguments{
-\item{imagePipelineArn}{The Amazon Resource Name (ARN) of the image pipeline whose images you
-wish to view.}
+\item{imagePipelineArn}{[required] The Amazon Resource Name (ARN) of the image pipeline whose images you
+want to view.}
 
-\item{filters}{}
+\item{filters}{The filters.}
 
 \item{maxResults}{The maximum items to return in a request.}
 

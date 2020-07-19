@@ -65,14 +65,13 @@ modify the code of a published version, only the unpublished version.
 
 \examples{
 \dontrun{
-# This operation updates a Lambda function's code
+# The following example replaces the code of the unpublished ($LATEST)
+# version of a function named my-function with the contents of the
+# specified zip file in Amazon S3.
 svc$update_function_code(
-  FunctionName = "myFunction",
-  Publish = TRUE,
-  S3Bucket = "myBucket",
-  S3Key = "myKey",
-  S3ObjectVersion = "1",
-  ZipFile = "fileb://file-path/file.zip"
+  FunctionName = "my-function",
+  S3Bucket = "my-bucket-1xpuxmplzrlbh",
+  S3Key = "function.zip"
 )
 }
 

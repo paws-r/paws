@@ -163,9 +163,8 @@ Creates a launch configuration.
 }
 \details{
 If you exceed your maximum limit of launch configurations, the call
-fails. For information about viewing this limit, see
-DescribeAccountLimits. For information about updating this limit, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling Limits}
+fails. To query this limit, call the DescribeAccountLimits API. For
+information about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling Service Quotas}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html}{Launch Configurations}

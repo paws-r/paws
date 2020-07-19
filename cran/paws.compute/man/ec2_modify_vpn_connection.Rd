@@ -2,7 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_modify_vpn_connection}
 \alias{ec2_modify_vpn_connection}
-\title{Modifies the target gateway of an AWS Site-to-Site VPN connection}
+\title{Modifies the customer gateway or the target gateway of an AWS
+Site-to-Site VPN connection}
 \usage{
 ec2_modify_vpn_connection(VpnConnectionId, TransitGatewayId,
   CustomerGatewayId, VpnGatewayId, DryRun)
@@ -23,8 +24,9 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Modifies the target gateway of an AWS Site-to-Site VPN connection. The
-following migration options are available:
+Modifies the customer gateway or the target gateway of an AWS
+Site-to-Site VPN connection. To modify the target gateway, the following
+migration options are available:
 }
 \details{
 \itemize{
@@ -60,9 +62,9 @@ If you deleted VPN static routes, you must add the static routes to the
 transit gateway route table.
 
 After you perform this operation, the AWS VPN endpoint\'s IP addresses
-on the AWS side and the tunnel options remain intact. Your s2slong;
-connection will be temporarily unavailable for approximately 10 minutes
-while we provision the new endpoints
+on the AWS side and the tunnel options remain intact. Your AWS
+Site-to-Site VPN connection will be temporarily unavailable for a brief
+period while we provision the new endpoints.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_vpn_connection(

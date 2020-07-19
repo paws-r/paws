@@ -18,6 +18,12 @@ component, you must disassociate the component from all trials it is
 associated with. To associate a trial component with a trial, call the
 AssociateTrialComponent API.
 }
+\details{
+To get a list of the trials a component is associated with, use the
+Search API. Specify \code{ExperimentTrialComponent} for the \code{Resource}
+parameter. The list appears in the response under
+\code{Results.TrialComponent.Parents}.
+}
 \section{Request syntax}{
 \preformatted{svc$disassociate_trial_component(
   TrialComponentName = "string",

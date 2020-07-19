@@ -8,7 +8,7 @@ imagebuilder_start_image_pipeline_execution(imagePipelineArn,
   clientToken)
 }
 \arguments{
-\item{imagePipelineArn}{[required] The Amazon Resource Name (ARN) of the image pipeline that you wish to
+\item{imagePipelineArn}{[required] The Amazon Resource Name (ARN) of the image pipeline that you want to
 manually invoke.}
 
 \item{clientToken}{[required] The idempotency token used to make this request idempotent.}

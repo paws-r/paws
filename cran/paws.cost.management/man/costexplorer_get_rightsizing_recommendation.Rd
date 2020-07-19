@@ -2,14 +2,20 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_get_rightsizing_recommendation}
 \alias{costexplorer_get_rightsizing_recommendation}
-\title{Creates recommendations that helps you save cost by identifying idle and
+\title{Creates recommendations that help you save cost by identifying idle and
 underutilized Amazon EC2 instances}
 \usage{
-costexplorer_get_rightsizing_recommendation(Filter, Service, PageSize,
-  NextPageToken)
+costexplorer_get_rightsizing_recommendation(Filter, Configuration,
+  Service, PageSize, NextPageToken)
 }
 \arguments{
 \item{Filter}{}
+
+\item{Configuration}{Enables you to customize recommendations across two attributes. You can
+choose to view recommendations for instances within the same instance
+families or across different instance families. You can also choose to
+view your estimated savings associated with recommendations with
+consideration of existing Savings Plans or RI benefits, or neither.}
 
 \item{Service}{[required] The specific service that you want recommendations for. The only valid
 value for \code{GetRightsizingRecommendation} is \"\code{AmazonEC2}\".}
@@ -21,13 +27,14 @@ response object.}
 want to retrieve.}
 }
 \description{
-Creates recommendations that helps you save cost by identifying idle and
+Creates recommendations that help you save cost by identifying idle and
 underutilized Amazon EC2 instances.
 }
 \details{
 Recommendations are generated to either downsize or terminate instances,
 along with providing savings detail and metrics. For details on
-calculation and function, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-what-is.html}{Optimizing Your Cost with Rightsizing Recommendations}.
+calculation and function, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-rightsizing.html}{Optimizing Your Cost with Rightsizing Recommendations}
+in the \emph{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_rightsizing_recommendation(
@@ -40,15 +47,21 @@ calculation and function, see \href{https://docs.aws.amazon.com/awsaccountbillin
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
       Values = list(
         "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     Tags = list(
       Key = "string",
       Values = list(
         "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     CostCategories = list(
@@ -57,6 +70,10 @@ calculation and function, see \href{https://docs.aws.amazon.com/awsaccountbillin
         "string"
       )
     )
+  ),
+  Configuration = list(
+    RecommendationTarget = "SAME_INSTANCE_FAMILY"|"CROSS_INSTANCE_FAMILY",
+    BenefitsConsidered = TRUE|FALSE
   ),
   Service = "string",
   PageSize = 123,

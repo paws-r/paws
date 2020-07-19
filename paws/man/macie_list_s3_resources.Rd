@@ -2,13 +2,13 @@
 % Please edit documentation in R/macie_operations.R
 \name{macie_list_s3_resources}
 \alias{macie_list_s3_resources}
-\title{Lists all the S3 resources associated with Amazon Macie}
+\title{Lists all the S3 resources associated with Amazon Macie Classic}
 \usage{
 macie_list_s3_resources(memberAccountId, nextToken, maxResults)
 }
 \arguments{
-\item{memberAccountId}{The Amazon Macie member account ID whose associated S3 resources you
-want to list.}
+\item{memberAccountId}{The Amazon Macie Classic member account ID whose associated S3 resources
+you want to list.}
 
 \item{nextToken}{Use this parameter when paginating results. Set its value to null on
 your first call to the ListS3Resources action. Subsequent calls to the
@@ -19,11 +19,11 @@ the previous response to continue listing data.}
 in the response. The default value is 250.}
 }
 \description{
-Lists all the S3 resources associated with Amazon Macie. If
+Lists all the S3 resources associated with Amazon Macie Classic. If
 memberAccountId isn\'t specified, the action lists the S3 resources
-associated with Amazon Macie for the current master account. If
+associated with Amazon Macie Classic for the current master account. If
 memberAccountId is specified, the action lists the S3 resources
-associated with Amazon Macie for the specified member account.
+associated with Amazon Macie Classic for the specified member account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_s3_resources(

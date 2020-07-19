@@ -6,7 +6,8 @@
 \usage{
 dynamodb_restore_table_from_backup(TargetTableName, BackupArn,
   BillingModeOverride, GlobalSecondaryIndexOverride,
-  LocalSecondaryIndexOverride, ProvisionedThroughputOverride)
+  LocalSecondaryIndexOverride, ProvisionedThroughputOverride,
+  SSESpecificationOverride)
 }
 \arguments{
 \item{TargetTableName}{[required] The name of the new table to which the backup must be restored.}
@@ -24,6 +25,8 @@ provided should match existing secondary indexes. You can choose to
 exclude some or all of the indexes at the time of restore.}
 
 \item{ProvisionedThroughputOverride}{Provisioned throughput settings for the restored table.}
+
+\item{SSESpecificationOverride}{The new server-side encryption settings for the restored table.}
 }
 \description{
 Creates a new table from an existing backup. Any number of users can
@@ -90,6 +93,11 @@ You must manually set up the following on the restored table:
   ProvisionedThroughputOverride = list(
     ReadCapacityUnits = 123,
     WriteCapacityUnits = 123
+  ),
+  SSESpecificationOverride = list(
+    Enabled = TRUE|FALSE,
+    SSEType = "AES256"|"KMS",
+    KMSMasterKeyId = "string"
   )
 )
 }

@@ -5,7 +5,7 @@ NULL
 
 .managedblockchain$create_member_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), InvitationId = structure(logical(0), tags = list(type = "string")), NetworkId = structure(logical(0), tags = list(location = "uri", locationName = "networkId", type = "string")), MemberConfiguration = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), FrameworkConfiguration = structure(list(Fabric = structure(list(AdminUsername = structure(logical(0), tags = list(type = "string")), AdminPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), InvitationId = structure(logical(0), tags = list(type = "string")), NetworkId = structure(logical(0), tags = list(location = "uri", locationName = "networkId", type = "string")), MemberConfiguration = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), FrameworkConfiguration = structure(list(Fabric = structure(list(AdminUsername = structure(logical(0), tags = list(type = "string")), AdminPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), LogPublishingConfiguration = structure(list(Fabric = structure(list(CaLogs = structure(list(Cloudwatch = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -17,7 +17,7 @@ NULL
 
 .managedblockchain$create_network_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Framework = structure(logical(0), tags = list(type = "string")), FrameworkVersion = structure(logical(0), tags = list(type = "string")), FrameworkConfiguration = structure(list(Fabric = structure(list(Edition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), VotingPolicy = structure(list(ApprovalThresholdPolicy = structure(list(ThresholdPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), ProposalDurationInHours = structure(logical(0), tags = list(type = "integer", box = TRUE)), ThresholdComparator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), MemberConfiguration = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), FrameworkConfiguration = structure(list(Fabric = structure(list(AdminUsername = structure(logical(0), tags = list(type = "string")), AdminPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Framework = structure(logical(0), tags = list(type = "string")), FrameworkVersion = structure(logical(0), tags = list(type = "string")), FrameworkConfiguration = structure(list(Fabric = structure(list(Edition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), VotingPolicy = structure(list(ApprovalThresholdPolicy = structure(list(ThresholdPercentage = structure(logical(0), tags = list(type = "integer", box = TRUE)), ProposalDurationInHours = structure(logical(0), tags = list(type = "integer", box = TRUE)), ThresholdComparator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), MemberConfiguration = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), FrameworkConfiguration = structure(list(Fabric = structure(list(AdminUsername = structure(logical(0), tags = list(type = "string")), AdminPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), LogPublishingConfiguration = structure(list(Fabric = structure(list(CaLogs = structure(list(Cloudwatch = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -29,7 +29,7 @@ NULL
 
 .managedblockchain$create_node_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), NetworkId = structure(logical(0), tags = list(location = "uri", locationName = "networkId", type = "string")), MemberId = structure(logical(0), tags = list(location = "uri", locationName = "memberId", type = "string")), NodeConfiguration = structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), NetworkId = structure(logical(0), tags = list(location = "uri", locationName = "networkId", type = "string")), MemberId = structure(logical(0), tags = list(location = "uri", locationName = "memberId", type = "string")), NodeConfiguration = structure(list(InstanceType = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), LogPublishingConfiguration = structure(list(Fabric = structure(list(ChaincodeLogs = structure(list(Cloudwatch = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), PeerLogs = structure(list(Cloudwatch = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -83,7 +83,7 @@ NULL
 
 .managedblockchain$get_member_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Member = structure(list(NetworkId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), FrameworkAttributes = structure(list(Fabric = structure(list(AdminUsername = structure(logical(0), tags = list(type = "string")), CaEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Member = structure(list(NetworkId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), FrameworkAttributes = structure(list(Fabric = structure(list(AdminUsername = structure(logical(0), tags = list(type = "string")), CaEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), LogPublishingConfiguration = structure(list(Fabric = structure(list(CaLogs = structure(list(Cloudwatch = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -107,7 +107,7 @@ NULL
 
 .managedblockchain$get_node_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Node = structure(list(NetworkId = structure(logical(0), tags = list(type = "string")), MemberId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), FrameworkAttributes = structure(list(Fabric = structure(list(PeerEndpoint = structure(logical(0), tags = list(type = "string")), PeerEventEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Node = structure(list(NetworkId = structure(logical(0), tags = list(type = "string")), MemberId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), FrameworkAttributes = structure(list(Fabric = structure(list(PeerEndpoint = structure(logical(0), tags = list(type = "string")), PeerEventEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), LogPublishingConfiguration = structure(list(Fabric = structure(list(ChaincodeLogs = structure(list(Cloudwatch = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), PeerLogs = structure(list(Cloudwatch = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -202,6 +202,30 @@ NULL
 }
 
 .managedblockchain$reject_invitation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedblockchain$update_member_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NetworkId = structure(logical(0), tags = list(location = "uri", locationName = "networkId", type = "string")), MemberId = structure(logical(0), tags = list(location = "uri", locationName = "memberId", type = "string")), LogPublishingConfiguration = structure(list(Fabric = structure(list(CaLogs = structure(list(Cloudwatch = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedblockchain$update_member_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedblockchain$update_node_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NetworkId = structure(logical(0), tags = list(location = "uri", locationName = "networkId", type = "string")), MemberId = structure(logical(0), tags = list(location = "uri", locationName = "memberId", type = "string")), NodeId = structure(logical(0), tags = list(location = "uri", locationName = "nodeId", type = "string")), LogPublishingConfiguration = structure(list(Fabric = structure(list(ChaincodeLogs = structure(list(Cloudwatch = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), PeerLogs = structure(list(Cloudwatch = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedblockchain$update_node_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

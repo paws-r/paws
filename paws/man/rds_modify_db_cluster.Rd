@@ -10,9 +10,9 @@ rds_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
   PreferredBackupWindow, PreferredMaintenanceWindow,
   EnableIAMDatabaseAuthentication, BacktrackWindow,
   CloudwatchLogsExportConfiguration, EngineVersion,
-  AllowMajorVersionUpgrade, DBInstanceParameterGroupName,
-  ScalingConfiguration, DeletionProtection, EnableHttpEndpoint,
-  CopyTagsToSnapshot)
+  AllowMajorVersionUpgrade, DBInstanceParameterGroupName, Domain,
+  DomainIAMRoleName, ScalingConfiguration, DeletionProtection,
+  EnableHttpEndpoint, CopyTagsToSnapshot, EnableGlobalWriteForwarding)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster being modified. This parameter
@@ -129,6 +129,8 @@ in the \emph{Amazon Aurora User Guide.}}
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
 
+Currently, Backtrack is only supported for Aurora MySQL DB clusters.
+
 Default: 0
 
 Constraints:
@@ -183,6 +185,13 @@ as this DB cluster.
 combination with the \code{AllowMajorVersionUpgrade} parameter.
 }}
 
+\item{Domain}{The Active Directory directory ID to move the DB cluster to. Specify
+\code{none} to remove the cluster from its current domain. The domain must be
+created prior to this operation.}
+
+\item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
+Directory Service.}
+
 \item{ScalingConfiguration}{The scaling properties of the DB cluster. You can only modify scaling
 properties for DB clusters in \code{serverless} DB engine mode.}
 
@@ -203,6 +212,13 @@ in the \emph{Amazon Aurora User Guide}.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB cluster to
 snapshots of the DB cluster. The default is not to copy them.}
+
+\item{EnableGlobalWriteForwarding}{A value that indicates whether to enable write operations to be
+forwarded from this cluster to the primary cluster in an Aurora global
+database. The resulting changes are replicated back to this cluster.
+This parameter only applies to DB clusters that are secondary clusters
+in an Aurora global database. By default, Aurora disallows write
+operations for secondary clusters.}
 }
 \description{
 Modify a setting for an Amazon Aurora DB cluster. You can change one or
@@ -242,6 +258,8 @@ This action only applies to Aurora DB clusters.
   EngineVersion = "string",
   AllowMajorVersionUpgrade = TRUE|FALSE,
   DBInstanceParameterGroupName = "string",
+  Domain = "string",
+  DomainIAMRoleName = "string",
   ScalingConfiguration = list(
     MinCapacity = 123,
     MaxCapacity = 123,
@@ -251,7 +269,8 @@ This action only applies to Aurora DB clusters.
   ),
   DeletionProtection = TRUE|FALSE,
   EnableHttpEndpoint = TRUE|FALSE,
-  CopyTagsToSnapshot = TRUE|FALSE
+  CopyTagsToSnapshot = TRUE|FALSE,
+  EnableGlobalWriteForwarding = TRUE|FALSE
 )
 }
 }

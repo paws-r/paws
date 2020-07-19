@@ -2,18 +2,18 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_members}
 \alias{securityhub_get_members}
-\title{Returns the details on the Security Hub member accounts that the account
-IDs specify}
+\title{Returns the details for the Security Hub member accounts for the
+specified account IDs}
 \usage{
 securityhub_get_members(AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] A list of account IDs for the Security Hub member accounts that you want
-to return the details for.}
+\item{AccountIds}{[required] The list of account IDs for the Security Hub member accounts to return
+the details for.}
 }
 \description{
-Returns the details on the Security Hub member accounts that the account
-IDs specify.
+Returns the details for the Security Hub member accounts for the
+specified account IDs.
 }
 \section{Request syntax}{
 \preformatted{svc$get_members(

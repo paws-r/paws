@@ -3,6 +3,63 @@
 #' @include ebs_service.R
 NULL
 
+#' Seals and completes the snapshot after all of the required blocks of
+#' data have been written to it
+#'
+#' Seals and completes the snapshot after all of the required blocks of
+#' data have been written to it. Completing the snapshot changes the status
+#' to `completed`. You cannot write new blocks to a snapshot after it has
+#' been completed.
+#'
+#' @usage
+#' ebs_complete_snapshot(SnapshotId, ChangedBlocksCount, Checksum,
+#'   ChecksumAlgorithm, ChecksumAggregationMethod)
+#'
+#' @param SnapshotId &#91;required&#93; The ID of the snapshot.
+#' @param ChangedBlocksCount &#91;required&#93; The number of blocks that were written to the snapshot.
+#' @param Checksum An aggregated Base-64 SHA256 checksum based on the checksums of each
+#' written block.
+#' 
+#' To generate the aggregated checksum using the linear aggregation method,
+#' arrange the checksums for each written block in ascending order of their
+#' block index, concatenate them to form a single string, and then generate
+#' the checksum on the entire string using the SHA256 algorithm.
+#' @param ChecksumAlgorithm The algorithm used to generate the checksum. Currently, the only
+#' supported algorithm is `SHA256`.
+#' @param ChecksumAggregationMethod The aggregation method used to generate the checksum. Currently, the
+#' only supported aggregation method is `LINEAR`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$complete_snapshot(
+#'   SnapshotId = "string",
+#'   ChangedBlocksCount = 123,
+#'   Checksum = "string",
+#'   ChecksumAlgorithm = "SHA256",
+#'   ChecksumAggregationMethod = "LINEAR"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ebs_complete_snapshot
+ebs_complete_snapshot <- function(SnapshotId, ChangedBlocksCount, Checksum = NULL, ChecksumAlgorithm = NULL, ChecksumAggregationMethod = NULL) {
+  op <- new_operation(
+    name = "CompleteSnapshot",
+    http_method = "POST",
+    http_path = "/snapshots/completion/{snapshotId}",
+    paginator = list()
+  )
+  input <- .ebs$complete_snapshot_input(SnapshotId = SnapshotId, ChangedBlocksCount = ChangedBlocksCount, Checksum = Checksum, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumAggregationMethod = ChecksumAggregationMethod)
+  output <- .ebs$complete_snapshot_output()
+  config <- get_config()
+  svc <- .ebs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ebs$operations$complete_snapshot <- ebs_complete_snapshot
+
 #' Returns the data in a block in an Amazon Elastic Block Store snapshot
 #'
 #' Returns the data in a block in an Amazon Elastic Block Store snapshot.
@@ -13,12 +70,12 @@ NULL
 #' @param SnapshotId &#91;required&#93; The ID of the snapshot containing the block from which to get data.
 #' @param BlockIndex &#91;required&#93; The block index of the block from which to get data.
 #' 
-#' Obtain the `block index` by running the `list changed blocks` or
-#' `list snapshot blocks` operations.
+#' Obtain the `BlockIndex` by running the `ListChangedBlocks` or
+#' `ListSnapshotBlocks` operations.
 #' @param BlockToken &#91;required&#93; The block token of the block from which to get data.
 #' 
-#' Obtain the `block token` by running the `list changed blocks` or
-#' `list snapshot blocks` operations.
+#' Obtain the `BlockToken` by running the `ListChangedBlocks` or
+#' `ListSnapshotBlocks` operations.
 #'
 #' @section Request syntax:
 #' ```
@@ -62,7 +119,13 @@ ebs_get_snapshot_block <- function(SnapshotId, BlockIndex, BlockToken) {
 #'   MaxResults, StartingBlockIndex)
 #'
 #' @param FirstSnapshotId The ID of the first snapshot to use for the comparison.
+#' 
+#' The `FirstSnapshotID` parameter must be specified with a
+#' `SecondSnapshotId` parameter; otherwise, an error occurs.
 #' @param SecondSnapshotId &#91;required&#93; The ID of the second snapshot to use for the comparison.
+#' 
+#' The `SecondSnapshotId` parameter must be specified with a
+#' `FirstSnapshotID` parameter; otherwise, an error occurs.
 #' @param NextToken The token to request the next page of results.
 #' @param MaxResults The number of results to return.
 #' @param StartingBlockIndex The block index from which the comparison should start.
@@ -147,3 +210,192 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
   return(response)
 }
 .ebs$operations$list_snapshot_blocks <- ebs_list_snapshot_blocks
+
+#' Writes a block of data to a block in the snapshot
+#'
+#' Writes a block of data to a block in the snapshot. If the specified
+#' block contains data, the existing data is overwritten. The target
+#' snapshot must be in the `pending` state.
+#' 
+#' Data written to a snapshot must be aligned with 512-byte sectors.
+#'
+#' @usage
+#' ebs_put_snapshot_block(SnapshotId, BlockIndex, BlockData, DataLength,
+#'   Progress, Checksum, ChecksumAlgorithm)
+#'
+#' @param SnapshotId &#91;required&#93; The ID of the snapshot.
+#' @param BlockIndex &#91;required&#93; The block index of the block in which to write the data. A block index
+#' is the offset position of a block within a snapshot, and it is used to
+#' identify the block. To identify the logical offset of the data in the
+#' logical volume, multiply the block index with the block size (Block
+#' index * 512 bytes).
+#' @param BlockData &#91;required&#93; The data to write to the block.
+#' 
+#' The block data is not signed as part of the Signature Version 4 signing
+#' process. As a result, you must generate and provide a Base64-encoded
+#' SHA256 checksum for the block data using the **x-amz-Checksum** header.
+#' Also, you must specify the checksum algorithm using the
+#' **x-amz-Checksum-Algorithm** header. The checksum that you provide is
+#' part of the Signature Version 4 signing process. It is validated against
+#' a checksum generated by Amazon EBS to ensure the validity and
+#' authenticity of the data. If the checksums do not correspond, the
+#' request fails. For more information, see [Using checksums with the EBS
+#' direct
+#' APIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html#ebsapis-using-checksums)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param DataLength &#91;required&#93; The size of the data to write to the block, in bytes. Currently, the
+#' only supported size is `524288`.
+#' 
+#' Valid values: `524288`
+#' @param Progress The progress of the write process, as a percentage.
+#' @param Checksum &#91;required&#93; A Base64-encoded SHA256 checksum of the data. Only SHA256 checksums are
+#' supported.
+#' @param ChecksumAlgorithm &#91;required&#93; The algorithm used to generate the checksum. Currently, the only
+#' supported algorithm is `SHA256`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_snapshot_block(
+#'   SnapshotId = "string",
+#'   BlockIndex = 123,
+#'   BlockData = raw,
+#'   DataLength = 123,
+#'   Progress = 123,
+#'   Checksum = "string",
+#'   ChecksumAlgorithm = "SHA256"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ebs_put_snapshot_block
+ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength, Progress = NULL, Checksum, ChecksumAlgorithm) {
+  op <- new_operation(
+    name = "PutSnapshotBlock",
+    http_method = "PUT",
+    http_path = "/snapshots/{snapshotId}/blocks/{blockIndex}",
+    paginator = list()
+  )
+  input <- .ebs$put_snapshot_block_input(SnapshotId = SnapshotId, BlockIndex = BlockIndex, BlockData = BlockData, DataLength = DataLength, Progress = Progress, Checksum = Checksum, ChecksumAlgorithm = ChecksumAlgorithm)
+  output <- .ebs$put_snapshot_block_output()
+  config <- get_config()
+  svc <- .ebs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ebs$operations$put_snapshot_block <- ebs_put_snapshot_block
+
+#' Creates a new Amazon EBS snapshot
+#'
+#' Creates a new Amazon EBS snapshot. The new snapshot enters the `pending`
+#' state after the request completes.
+#' 
+#' After creating the snapshot, use
+#' [PutSnapshotBlock](https://docs.aws.amazon.com/ebs/latest/APIReference/API_PutSnapshotBlock.html)
+#' to write blocks of data to the snapshot.
+#'
+#' @usage
+#' ebs_start_snapshot(VolumeSize, ParentSnapshotId, Tags, Description,
+#'   ClientToken, Encrypted, KmsKeyArn, Timeout)
+#'
+#' @param VolumeSize &#91;required&#93; The size of the volume, in GiB. The maximum size is `16384` GiB (16
+#' TiB).
+#' @param ParentSnapshotId The ID of the parent snapshot. If there is no parent snapshot, or if you
+#' are creating the first snapshot for an on-premises volume, omit this
+#' parameter.
+#' 
+#' If your account is enabled for encryption by default, you cannot use an
+#' unencrypted snapshot as a parent snapshot. You must first create an
+#' encrypted copy of the parent snapshot using
+#' [CopySnapshot](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CopySnapshot.html).
+#' @param Tags The tags to apply to the snapshot.
+#' @param Description A description for the snapshot.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes only once. With an idempotent request, if the original request
+#' completes successfully. The subsequent retries with the same client
+#' token return the result from the original successful request and they
+#' have no additional effect.
+#' 
+#' If you do not specify a client token, one is automatically generated by
+#' the AWS SDK.
+#' 
+#' For more information, see [Idempotency for StartSnapshot
+#' API](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-direct-api-idempotency.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param Encrypted Indicates whether to encrypt the snapshot. To create an encrypted
+#' snapshot, specify `true`. To create an unencrypted snapshot, omit this
+#' parameter.
+#' 
+#' If you specify a value for **ParentSnapshotId**, omit this parameter.
+#' 
+#' If you specify `true`, the snapshot is encrypted using the CMK specified
+#' using the **KmsKeyArn** parameter. If no value is specified for
+#' **KmsKeyArn**, the default CMK for your account is used. If no default
+#' CMK has been specified for your account, the AWS managed CMK is used. To
+#' set a default CMK for your account, use
+#' [ModifyEbsDefaultKmsKeyId](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyEbsDefaultKmsKeyId.html).
+#' 
+#' If your account is enabled for encryption by default, you cannot set
+#' this parameter to `false`. In this case, you can omit this parameter.
+#' 
+#' For more information, see [Using
+#' encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html#ebsapis-using-encryption)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' @param KmsKeyArn The Amazon Resource Name (ARN) of the AWS Key Management Service (AWS
+#' KMS) customer master key (CMK) to be used to encrypt the snapshot. If
+#' you do not specify a CMK, the default AWS managed CMK is used.
+#' 
+#' If you specify a **ParentSnapshotId**, omit this parameter; the snapshot
+#' will be encrypted using the same CMK that was used to encrypt the parent
+#' snapshot.
+#' 
+#' If **Encrypted** is set to `true`, you must specify a CMK ARN.
+#' @param Timeout The amount of time (in minutes) after which the snapshot is
+#' automatically cancelled if:
+#' 
+#' -   No blocks are written to the snapshot.
+#' 
+#' -   The snapshot is not completed after writing the last block of data.
+#' 
+#' If no value is specified, the timeout defaults to `60` minutes.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_snapshot(
+#'   VolumeSize = 123,
+#'   ParentSnapshotId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   Description = "string",
+#'   ClientToken = "string",
+#'   Encrypted = TRUE|FALSE,
+#'   KmsKeyArn = "string",
+#'   Timeout = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ebs_start_snapshot
+ebs_start_snapshot <- function(VolumeSize, ParentSnapshotId = NULL, Tags = NULL, Description = NULL, ClientToken = NULL, Encrypted = NULL, KmsKeyArn = NULL, Timeout = NULL) {
+  op <- new_operation(
+    name = "StartSnapshot",
+    http_method = "POST",
+    http_path = "/snapshots",
+    paginator = list()
+  )
+  input <- .ebs$start_snapshot_input(VolumeSize = VolumeSize, ParentSnapshotId = ParentSnapshotId, Tags = Tags, Description = Description, ClientToken = ClientToken, Encrypted = Encrypted, KmsKeyArn = KmsKeyArn, Timeout = Timeout)
+  output <- .ebs$start_snapshot_output()
+  config <- get_config()
+  svc <- .ebs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ebs$operations$start_snapshot <- ebs_start_snapshot

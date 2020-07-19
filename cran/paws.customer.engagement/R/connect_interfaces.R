@@ -217,6 +217,18 @@ NULL
   return(populate(args, shape))
 }
 
+.connect$resume_contact_recording_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), ContactId = structure(logical(0), tags = list(type = "string")), InitialContactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$resume_contact_recording_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connect$start_chat_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), ContactFlowId = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ParticipantDetails = structure(list(DisplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InitialMessage = structure(list(ContentType = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
@@ -226,6 +238,18 @@ NULL
 .connect$start_chat_contact_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ContactId = structure(logical(0), tags = list(type = "string")), ParticipantId = structure(logical(0), tags = list(type = "string")), ParticipantToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$start_contact_recording_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), ContactId = structure(logical(0), tags = list(type = "string")), InitialContactId = structure(logical(0), tags = list(type = "string")), VoiceRecordingConfiguration = structure(list(VoiceRecordingTrack = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$start_contact_recording_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -248,6 +272,30 @@ NULL
 }
 
 .connect$stop_contact_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$stop_contact_recording_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), ContactId = structure(logical(0), tags = list(type = "string")), InitialContactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$stop_contact_recording_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$suspend_contact_recording_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), ContactId = structure(logical(0), tags = list(type = "string")), InitialContactId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$suspend_contact_recording_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

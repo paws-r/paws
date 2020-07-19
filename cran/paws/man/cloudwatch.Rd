@@ -63,13 +63,14 @@ performance, and operational health.
 \link[=cloudwatch_enable_insight_rules]{enable_insight_rules} \tab Enables the specified Contributor Insights rules \cr
 \link[=cloudwatch_get_dashboard]{get_dashboard} \tab Displays the details of the dashboard that you specify \cr
 \link[=cloudwatch_get_insight_rule_report]{get_insight_rule_report} \tab This operation returns the time series data collected by a Contributor Insights rule \cr
-\link[=cloudwatch_get_metric_data]{get_metric_data} \tab You can use the GetMetricData API to retrieve as many as 100 different metrics in a single request, with a total of as many as 100,800 data points\cr
+\link[=cloudwatch_get_metric_data]{get_metric_data} \tab You can use the GetMetricData API to retrieve as many as 500 different metrics in a single request, with a total of as many as 100,800 data points\cr
 \link[=cloudwatch_get_metric_statistics]{get_metric_statistics} \tab Gets statistics for the specified metric \cr
 \link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image} \tab You can use the GetMetricWidgetImage API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image \cr
 \link[=cloudwatch_list_dashboards]{list_dashboards} \tab Returns a list of the dashboards for your account \cr
 \link[=cloudwatch_list_metrics]{list_metrics} \tab List the specified metrics \cr
 \link[=cloudwatch_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch resource \cr
 \link[=cloudwatch_put_anomaly_detector]{put_anomaly_detector} \tab Creates an anomaly detection model for a CloudWatch metric \cr
+\link[=cloudwatch_put_composite_alarm]{put_composite_alarm} \tab Creates or updates a \emph{composite alarm} \cr
 \link[=cloudwatch_put_dashboard]{put_dashboard} \tab Creates a dashboard if it does not already exist, or updates an existing dashboard \cr
 \link[=cloudwatch_put_insight_rule]{put_insight_rule} \tab Creates a Contributor Insights rule \cr
 \link[=cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric, metric math expression, or anomaly detection model \cr

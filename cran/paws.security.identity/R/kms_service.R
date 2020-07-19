@@ -138,7 +138,7 @@ NULL
 #'  \link[=kms_enable_key]{enable_key} \tab Sets the key state of a customer master key (CMK) to enabled \cr
 #'  \link[=kms_enable_key_rotation]{enable_key_rotation} \tab Enables automatic rotation of the key material for the specified symmetric customer master key (CMK) \cr
 #'  \link[=kms_encrypt]{encrypt} \tab Encrypts plaintext into ciphertext by using a customer master key (CMK) \cr
-#'  \link[=kms_generate_data_key]{generate_data_key} \tab Generates a unique symmetric data key \cr
+#'  \link[=kms_generate_data_key]{generate_data_key} \tab Generates a unique symmetric data key for client-side encryption \cr
 #'  \link[=kms_generate_data_key_pair]{generate_data_key_pair} \tab Generates a unique asymmetric data key pair \cr
 #'  \link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext} \tab Generates a unique asymmetric data key pair \cr
 #'  \link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext} \tab Generates a unique symmetric data key \cr
@@ -183,7 +183,7 @@ kms <- function(config = list()) {
 
 .kms$metadata <- list(
   service_name = "kms",
-  endpoints = list("*" = list(endpoint = "kms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kms.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "kms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kms.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kms.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kms.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "KMS",
   api_version = "2014-11-01",
   signing_name = NULL,

@@ -7,11 +7,11 @@
 schemas_describe_schema(RegistryName, SchemaName, SchemaVersion)
 }
 \arguments{
-\item{RegistryName}{[required]}
+\item{RegistryName}{[required] The name of the registry.}
 
-\item{SchemaName}{[required]}
+\item{SchemaName}{[required] The name of the schema.}
 
-\item{SchemaVersion}{}
+\item{SchemaVersion}{Specifying this limits the results to only this schema version.}
 }
 \description{
 Retrieve the schema definition.

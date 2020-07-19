@@ -5,7 +5,8 @@
 \title{Creates a custom slot type or replaces an existing custom slot type}
 \usage{
 lexmodelbuildingservice_put_slot_type(name, description,
-  enumerationValues, checksum, valueSelectionStrategy, createVersion)
+  enumerationValues, checksum, valueSelectionStrategy, createVersion,
+  parentSlotTypeSignature, slotTypeConfigurations)
 }
 \arguments{
 \item{name}{[required] The name of the slot type. The name is \emph{not} case sensitive.
@@ -60,6 +61,15 @@ If you don\'t specify the \code{valueSelectionStrategy}, the default is
 \item{createVersion}{When set to \code{true} a new numbered version of the slot type is created.
 This is the same as calling the \code{CreateSlotTypeVersion} operation. If
 you do not specify \code{createVersion}, the default is \code{false}.}
+
+\item{parentSlotTypeSignature}{The built-in slot type used as the parent of the slot type. When you
+define a parent slot type, the new slot type has all of the same
+configuration as the parent.
+
+Only \code{AMAZON.AlphaNumeric} is supported.}
+
+\item{slotTypeConfigurations}{Configuration information that extends the parent built-in slot type.
+The configuration is added to the settings for the parent slot type.}
 }
 \description{
 Creates a custom slot type or replaces an existing custom slot type.
@@ -93,7 +103,15 @@ This operation requires permissions for the \code{lex:PutSlotType} action.
   ),
   checksum = "string",
   valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
-  createVersion = TRUE|FALSE
+  createVersion = TRUE|FALSE,
+  parentSlotTypeSignature = "string",
+  slotTypeConfigurations = list(
+    list(
+      regexConfiguration = list(
+        pattern = "string"
+      )
+    )
+  )
 )
 }
 }

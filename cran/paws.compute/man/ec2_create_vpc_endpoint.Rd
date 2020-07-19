@@ -6,7 +6,7 @@
 \usage{
 ec2_create_vpc_endpoint(DryRun, VpcEndpointType, VpcId, ServiceName,
   PolicyDocument, RouteTableIds, SubnetIds, SecurityGroupIds, ClientToken,
-  PrivateDnsEnabled)
+  PrivateDnsEnabled, TagSpecifications)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -54,6 +54,8 @@ to \code{true}: \code{enableDnsHostnames} and \code{enableDnsSupport}. Use
 ModifyVpcAttribute to set the VPC attributes.
 
 Default: \code{true}}
+
+\item{TagSpecifications}{The tags to associate with the endpoint.}
 }
 \description{
 Creates a VPC endpoint for a specified service. An endpoint enables you
@@ -93,7 +95,18 @@ Use DescribeVpcEndpointServices to get a list of supported services.
     "string"
   ),
   ClientToken = "string",
-  PrivateDnsEnabled = TRUE|FALSE
+  PrivateDnsEnabled = TRUE|FALSE,
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

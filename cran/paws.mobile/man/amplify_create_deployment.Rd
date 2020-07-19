@@ -2,23 +2,23 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_create_deployment}
 \alias{amplify_create_deployment}
-\title{Create a deployment for manual deploy apps}
+\title{Creates a deployment for a manually deployed Amplify app}
 \usage{
 amplify_create_deployment(appId, branchName, fileMap)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{branchName}{[required] Name for the branch, for the Job.}
+\item{branchName}{[required] The name for the branch, for the job.}
 
-\item{fileMap}{Optional file map that contains file name as the key and file content
-md5 hash as the value. If this argument is provided, the service will
-generate different upload url per file. Otherwise, the service will only
-generate a single upload url for the zipped files.}
+\item{fileMap}{An optional file map that contains the file name as the key and the file
+content md5 hash as the value. If this argument is provided, the service
+will generate a unique upload URL per file. Otherwise, the service will
+only generate a single upload URL for the zipped files.}
 }
 \description{
-Create a deployment for manual deploy apps. (Apps are not connected to
-repository)
+Creates a deployment for a manually deployed Amplify app. Manually
+deployed apps are not connected to a repository.
 }
 \section{Request syntax}{
 \preformatted{svc$create_deployment(

@@ -2,12 +2,10 @@
 % Please edit documentation in R/servicediscovery_operations.R
 \name{servicediscovery_update_service}
 \alias{servicediscovery_update_service}
-\title{Submits a request to perform the following operations: - Add or delete
-DnsRecords configurations - Update the TTL setting for existing
-DnsRecords configurations - Add, update, or delete HealthCheckConfig for
-a specified service For public and private DNS namespaces, you must
-specify all DnsRecords configurations (and, optionally,
-HealthCheckConfig) that you want to appear in the updated service}
+\title{Submits a request to perform the following operations: - Update the TTL
+setting for existing DnsRecords configurations - Add, update, or delete
+HealthCheckConfig for a specified service You can't add, update, or
+delete a HealthCheckCustomConfig configuration}
 \usage{
 servicediscovery_update_service(Id, Service)
 }
@@ -21,19 +19,26 @@ Submits a request to perform the following operations:
 }
 \details{
 \itemize{
-\item Add or delete \code{DnsRecords} configurations
 \item Update the TTL setting for existing \code{DnsRecords} configurations
 \item Add, update, or delete \code{HealthCheckConfig} for a specified service
+
+You can\'t add, update, or delete a \code{HealthCheckCustomConfig}
+configuration.
 }
 
-For public and private DNS namespaces, you must specify all \code{DnsRecords}
-configurations (and, optionally, \code{HealthCheckConfig}) that you want to
-appear in the updated service. Any current configurations that don\'t
-appear in an \code{UpdateService} request are deleted.
+For public and private DNS namespaces, note the following:
+\itemize{
+\item If you omit any existing \code{DnsRecords} or \code{HealthCheckConfig}
+configurations from an \code{UpdateService} request, the configurations
+are deleted from the service.
+\item If you omit an existing \code{HealthCheckCustomConfig} configuration from
+an \code{UpdateService} request, the configuration is not deleted from
+the service.
+}
 
-When you update the TTL setting for a service, AWS Cloud Map also
-updates the corresponding settings in all the records and health checks
-that were created by using the specified service.
+When you update settings for a service, AWS Cloud Map also updates the
+corresponding settings in all the records and health checks that were
+created by using the specified service.
 }
 \section{Request syntax}{
 \preformatted{svc$update_service(
@@ -58,4 +63,29 @@ that were created by using the specified service.
 }
 }
 
+\examples{
+\dontrun{
+# This example submits a request to replace the DnsConfig and
+# HealthCheckConfig settings of a specified service.
+svc$update_service(
+  Id = "srv-e4anhexample0004",
+  Service = list(
+    DnsConfig = list(
+      DnsRecords = list(
+        list(
+          TTL = 60L,
+          Type = "A"
+        )
+      )
+    ),
+    HealthCheckConfig = list(
+      FailureThreshold = 2L,
+      ResourcePath = "/",
+      Type = "HTTP"
+    )
+  )
+)
+}
+
+}
 \keyword{internal}

@@ -7,9 +7,10 @@ NULL
 #' Security Hub master account that the invitation was sent from
 #'
 #' Accepts the invitation to be a member account and be monitored by the
-#' Security Hub master account that the invitation was sent from. When the
-#' member account accepts the invitation, permission is granted to the
-#' master account to view findings generated in the member account.
+#' Security Hub master account that the invitation was sent from.
+#' 
+#' When the member account accepts the invitation, permission is granted to
+#' the master account to view findings generated in the member account.
 #'
 #' @usage
 #' securityhub_accept_invitation(MasterId, InvitationId)
@@ -50,9 +51,11 @@ securityhub_accept_invitation <- function(MasterId, InvitationId) {
 #' StandardsSubscriptionArns
 #'
 #' Disables the standards specified by the provided
-#' `StandardsSubscriptionArns`. For more information, see [Standards
-#' Supported in AWS Security
-#' Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html).
+#' `StandardsSubscriptionArns`.
+#' 
+#' For more information, see [Security
+#' Standards](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html)
+#' section of the *AWS Security Hub User Guide*.
 #'
 #' @usage
 #' securityhub_batch_disable_standards(StandardsSubscriptionArns)
@@ -88,23 +91,20 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 }
 .securityhub$operations$batch_disable_standards <- securityhub_batch_disable_standards
 
-#' Enables the standards specified by the provided standardsArn
+#' Enables the standards specified by the provided StandardsArn
 #'
-#' Enables the standards specified by the provided `standardsArn`. In this
-#' release, only CIS AWS Foundations standards are supported. For more
-#' information, see [Standards Supported in AWS Security
-#' Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html).
+#' Enables the standards specified by the provided `StandardsArn`. To
+#' obtain the ARN for a standard, use the ` <a>DescribeStandards</a> `
+#' operation.
+#' 
+#' For more information, see the [Security
+#' Standards](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html)
+#' section of the *AWS Security Hub User Guide*.
 #'
 #' @usage
 #' securityhub_batch_enable_standards(StandardsSubscriptionRequests)
 #'
-#' @param StandardsSubscriptionRequests &#91;required&#93; The list of standards compliance checks to enable.
-#' 
-#' In this release, Security Hub supports only the CIS AWS Foundations
-#' standard.
-#' 
-#' The ARN for the standard is
-#' `arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0`.
+#' @param StandardsSubscriptionRequests &#91;required&#93; The list of standards checks to enable.
 #'
 #' @section Request syntax:
 #' ```
@@ -145,9 +145,32 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'
 #' Imports security findings generated from an integrated third-party
 #' product into Security Hub. This action is requested by the integrated
-#' product to import its findings into Security Hub. The maximum allowed
-#' size for a finding is 240 Kb. An error is returned for any finding
-#' larger than 240 Kb.
+#' product to import its findings into Security Hub.
+#' 
+#' The maximum allowed size for a finding is 240 Kb. An error is returned
+#' for any finding larger than 240 Kb.
+#' 
+#' After a finding is created, `BatchImportFindings` cannot be used to
+#' update the following finding fields and objects, which Security Hub
+#' customers use to manage their investigation workflow.
+#' 
+#' -   `Confidence`
+#' 
+#' -   `Criticality`
+#' 
+#' -   `Note`
+#' 
+#' -   `RelatedFindings`
+#' 
+#' -   `Severity`
+#' 
+#' -   `Types`
+#' 
+#' -   `UserDefinedFields`
+#' 
+#' -   `VerificationState`
+#' 
+#' -   `Workflow`
 #'
 #' @usage
 #' securityhub_batch_import_findings(Findings)
@@ -176,7 +199,9 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'       UpdatedAt = "string",
 #'       Severity = list(
 #'         Product = 123.0,
-#'         Normalized = 123
+#'         Label = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
+#'         Normalized = 123,
+#'         Original = "string"
 #'       ),
 #'       Confidence = 123,
 #'       Criticality = 123,
@@ -206,6 +231,10 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'       Network = list(
 #'         Direction = "IN"|"OUT",
 #'         Protocol = "string",
+#'         OpenPortRange = list(
+#'           Begin = 123,
+#'           End = 123
+#'         ),
 #'         SourceIpV4 = "string",
 #'         SourceIpV6 = "string",
 #'         SourcePort = 123,
@@ -215,6 +244,62 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'         DestinationIpV6 = "string",
 #'         DestinationPort = 123,
 #'         DestinationDomain = "string"
+#'       ),
+#'       NetworkPath = list(
+#'         list(
+#'           ComponentId = "string",
+#'           ComponentType = "string",
+#'           Egress = list(
+#'             Protocol = "string",
+#'             Destination = list(
+#'               Address = list(
+#'                 "string"
+#'               ),
+#'               PortRanges = list(
+#'                 list(
+#'                   Begin = 123,
+#'                   End = 123
+#'                 )
+#'               )
+#'             ),
+#'             Source = list(
+#'               Address = list(
+#'                 "string"
+#'               ),
+#'               PortRanges = list(
+#'                 list(
+#'                   Begin = 123,
+#'                   End = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Ingress = list(
+#'             Protocol = "string",
+#'             Destination = list(
+#'               Address = list(
+#'                 "string"
+#'               ),
+#'               PortRanges = list(
+#'                 list(
+#'                   Begin = 123,
+#'                   End = 123
+#'                 )
+#'               )
+#'             ),
+#'             Source = list(
+#'               Address = list(
+#'                 "string"
+#'               ),
+#'               PortRanges = list(
+#'                 list(
+#'                   Begin = 123,
+#'                   End = 123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       Process = list(
 #'         Name = "string",
@@ -244,6 +329,44 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'             "string"
 #'           ),
 #'           Details = list(
+#'             AwsAutoScalingAutoScalingGroup = list(
+#'               LaunchConfigurationName = "string",
+#'               LoadBalancerNames = list(
+#'                 "string"
+#'               ),
+#'               HealthCheckType = "string",
+#'               HealthCheckGracePeriod = 123,
+#'               CreatedTime = "string"
+#'             ),
+#'             AwsCodeBuildProject = list(
+#'               EncryptionKey = "string",
+#'               Environment = list(
+#'                 Certificate = "string",
+#'                 ImagePullCredentialsType = "string",
+#'                 RegistryCredential = list(
+#'                   Credential = "string",
+#'                   CredentialProvider = "string"
+#'                 ),
+#'                 Type = "string"
+#'               ),
+#'               Name = "string",
+#'               Source = list(
+#'                 Type = "string",
+#'                 Location = "string",
+#'                 GitCloneDepth = 123,
+#'                 InsecureSsl = TRUE|FALSE
+#'               ),
+#'               ServiceRole = "string",
+#'               VpcConfig = list(
+#'                 VpcId = "string",
+#'                 Subnets = list(
+#'                   "string"
+#'                 ),
+#'                 SecurityGroupIds = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
 #'             AwsCloudFrontDistribution = list(
 #'               DomainName = "string",
 #'               ETag = "string",
@@ -281,6 +404,129 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               SubnetId = "string",
 #'               LaunchedAt = "string"
 #'             ),
+#'             AwsEc2NetworkInterface = list(
+#'               Attachment = list(
+#'                 AttachTime = "string",
+#'                 AttachmentId = "string",
+#'                 DeleteOnTermination = TRUE|FALSE,
+#'                 DeviceIndex = 123,
+#'                 InstanceId = "string",
+#'                 InstanceOwnerId = "string",
+#'                 Status = "string"
+#'               ),
+#'               NetworkInterfaceId = "string",
+#'               SecurityGroups = list(
+#'                 list(
+#'                   GroupName = "string",
+#'                   GroupId = "string"
+#'                 )
+#'               ),
+#'               SourceDestCheck = TRUE|FALSE
+#'             ),
+#'             AwsEc2SecurityGroup = list(
+#'               GroupName = "string",
+#'               GroupId = "string",
+#'               OwnerId = "string",
+#'               VpcId = "string",
+#'               IpPermissions = list(
+#'                 list(
+#'                   IpProtocol = "string",
+#'                   FromPort = 123,
+#'                   ToPort = 123,
+#'                   UserIdGroupPairs = list(
+#'                     list(
+#'                       GroupId = "string",
+#'                       GroupName = "string",
+#'                       PeeringStatus = "string",
+#'                       UserId = "string",
+#'                       VpcId = "string",
+#'                       VpcPeeringConnectionId = "string"
+#'                     )
+#'                   ),
+#'                   IpRanges = list(
+#'                     list(
+#'                       CidrIp = "string"
+#'                     )
+#'                   ),
+#'                   Ipv6Ranges = list(
+#'                     list(
+#'                       CidrIpv6 = "string"
+#'                     )
+#'                   ),
+#'                   PrefixListIds = list(
+#'                     list(
+#'                       PrefixListId = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               IpPermissionsEgress = list(
+#'                 list(
+#'                   IpProtocol = "string",
+#'                   FromPort = 123,
+#'                   ToPort = 123,
+#'                   UserIdGroupPairs = list(
+#'                     list(
+#'                       GroupId = "string",
+#'                       GroupName = "string",
+#'                       PeeringStatus = "string",
+#'                       UserId = "string",
+#'                       VpcId = "string",
+#'                       VpcPeeringConnectionId = "string"
+#'                     )
+#'                   ),
+#'                   IpRanges = list(
+#'                     list(
+#'                       CidrIp = "string"
+#'                     )
+#'                   ),
+#'                   Ipv6Ranges = list(
+#'                     list(
+#'                       CidrIpv6 = "string"
+#'                     )
+#'                   ),
+#'                   PrefixListIds = list(
+#'                     list(
+#'                       PrefixListId = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             AwsEc2Volume = list(
+#'               CreateTime = "string",
+#'               Encrypted = TRUE|FALSE,
+#'               Size = 123,
+#'               SnapshotId = "string",
+#'               Status = "string",
+#'               KmsKeyId = "string",
+#'               Attachments = list(
+#'                 list(
+#'                   AttachTime = "string",
+#'                   DeleteOnTermination = TRUE|FALSE,
+#'                   InstanceId = "string",
+#'                   Status = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsEc2Vpc = list(
+#'               CidrBlockAssociationSet = list(
+#'                 list(
+#'                   AssociationId = "string",
+#'                   CidrBlock = "string",
+#'                   CidrBlockState = "string"
+#'                 )
+#'               ),
+#'               Ipv6CidrBlockAssociationSet = list(
+#'                 list(
+#'                   AssociationId = "string",
+#'                   Ipv6CidrBlock = "string",
+#'                   CidrBlockState = "string"
+#'                 )
+#'               ),
+#'               DhcpOptionsId = "string",
+#'               State = "string"
+#'             ),
 #'             AwsElbv2LoadBalancer = list(
 #'               AvailabilityZones = list(
 #'                 list(
@@ -303,9 +549,61 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               Type = "string",
 #'               VpcId = "string"
 #'             ),
+#'             AwsElasticsearchDomain = list(
+#'               AccessPolicies = "string",
+#'               DomainEndpointOptions = list(
+#'                 EnforceHTTPS = TRUE|FALSE,
+#'                 TLSSecurityPolicy = "string"
+#'               ),
+#'               DomainId = "string",
+#'               DomainName = "string",
+#'               Endpoint = "string",
+#'               Endpoints = list(
+#'                 "string"
+#'               ),
+#'               ElasticsearchVersion = "string",
+#'               EncryptionAtRestOptions = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 KmsKeyId = "string"
+#'               ),
+#'               NodeToNodeEncryptionOptions = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               VPCOptions = list(
+#'                 AvailabilityZones = list(
+#'                   "string"
+#'                 ),
+#'                 SecurityGroupIds = list(
+#'                   "string"
+#'                 ),
+#'                 SubnetIds = list(
+#'                   "string"
+#'                 ),
+#'                 VPCId = "string"
+#'               )
+#'             ),
 #'             AwsS3Bucket = list(
 #'               OwnerId = "string",
-#'               OwnerName = "string"
+#'               OwnerName = "string",
+#'               CreatedAt = "string",
+#'               ServerSideEncryptionConfiguration = list(
+#'                 Rules = list(
+#'                   list(
+#'                     ApplyServerSideEncryptionByDefault = list(
+#'                       SSEAlgorithm = "string",
+#'                       KMSMasterKeyID = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             AwsS3Object = list(
+#'               LastModified = "string",
+#'               ETag = "string",
+#'               VersionId = "string",
+#'               ContentType = "string",
+#'               ServerSideEncryption = "string",
+#'               SSEKMSKeyId = "string"
 #'             ),
 #'             AwsIamAccessKey = list(
 #'               UserName = "string",
@@ -381,6 +679,49 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               ),
 #'               Version = "string"
 #'             ),
+#'             AwsLambdaLayerVersion = list(
+#'               Version = 123,
+#'               CompatibleRuntimes = list(
+#'                 "string"
+#'               ),
+#'               CreatedDate = "string"
+#'             ),
+#'             AwsRdsDbInstance = list(
+#'               AssociatedRoles = list(
+#'                 list(
+#'                   RoleArn = "string",
+#'                   FeatureName = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               CACertificateIdentifier = "string",
+#'               DBClusterIdentifier = "string",
+#'               DBInstanceIdentifier = "string",
+#'               DBInstanceClass = "string",
+#'               DbInstancePort = 123,
+#'               DbiResourceId = "string",
+#'               DBName = "string",
+#'               DeletionProtection = TRUE|FALSE,
+#'               Endpoint = list(
+#'                 Address = "string",
+#'                 Port = 123,
+#'                 HostedZoneId = "string"
+#'               ),
+#'               Engine = "string",
+#'               EngineVersion = "string",
+#'               IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'               InstanceCreateTime = "string",
+#'               KmsKeyId = "string",
+#'               PubliclyAccessible = TRUE|FALSE,
+#'               StorageEncrypted = TRUE|FALSE,
+#'               TdeCredentialArn = "string",
+#'               VpcSecurityGroups = list(
+#'                 list(
+#'                   VpcSecurityGroupId = "string",
+#'                   Status = "string"
+#'                 )
+#'               )
+#'             ),
 #'             AwsSnsTopic = list(
 #'               KmsMasterKeyId = "string",
 #'               Subscription = list(
@@ -398,6 +739,29 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               QueueName = "string",
 #'               DeadLetterTargetArn = "string"
 #'             ),
+#'             AwsWafWebAcl = list(
+#'               Name = "string",
+#'               DefaultAction = "string",
+#'               Rules = list(
+#'                 list(
+#'                   Action = list(
+#'                     Type = "string"
+#'                   ),
+#'                   ExcludedRules = list(
+#'                     list(
+#'                       RuleId = "string"
+#'                     )
+#'                   ),
+#'                   OverrideAction = list(
+#'                     Type = "string"
+#'                   ),
+#'                   Priority = 123,
+#'                   RuleId = "string",
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               WebAclId = "string"
+#'             ),
 #'             Container = list(
 #'               Name = "string",
 #'               ImageId = "string",
@@ -411,10 +775,22 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'         )
 #'       ),
 #'       Compliance = list(
-#'         Status = "PASSED"|"WARNING"|"FAILED"|"NOT_AVAILABLE"
+#'         Status = "PASSED"|"WARNING"|"FAILED"|"NOT_AVAILABLE",
+#'         RelatedRequirements = list(
+#'           "string"
+#'         ),
+#'         StatusReasons = list(
+#'           list(
+#'             ReasonCode = "string",
+#'             Description = "string"
+#'           )
+#'         )
 #'       ),
 #'       VerificationState = "UNKNOWN"|"TRUE_POSITIVE"|"FALSE_POSITIVE"|"BENIGN_POSITIVE",
 #'       WorkflowState = "NEW"|"ASSIGNED"|"IN_PROGRESS"|"DEFERRED"|"RESOLVED",
+#'       Workflow = list(
+#'         Status = "NEW"|"NOTIFIED"|"RESOLVED"|"SUPPRESSED"
+#'       ),
 #'       RecordState = "ACTIVE"|"ARCHIVED",
 #'       RelatedFindings = list(
 #'         list(
@@ -426,6 +802,40 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'         Text = "string",
 #'         UpdatedBy = "string",
 #'         UpdatedAt = "string"
+#'       ),
+#'       Vulnerabilities = list(
+#'         list(
+#'           Id = "string",
+#'           VulnerablePackages = list(
+#'             list(
+#'               Name = "string",
+#'               Version = "string",
+#'               Epoch = "string",
+#'               Release = "string",
+#'               Architecture = "string"
+#'             )
+#'           ),
+#'           Cvss = list(
+#'             list(
+#'               Version = "string",
+#'               BaseScore = 123.0,
+#'               BaseVector = "string"
+#'             )
+#'           ),
+#'           RelatedVulnerabilities = list(
+#'             "string"
+#'           ),
+#'           Vendor = list(
+#'             Name = "string",
+#'             Url = "string",
+#'             VendorSeverity = "string",
+#'             VendorCreatedAt = "string",
+#'             VendorUpdatedAt = "string"
+#'           ),
+#'           ReferenceUrls = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   )
@@ -452,11 +862,165 @@ securityhub_batch_import_findings <- function(Findings) {
 }
 .securityhub$operations$batch_import_findings <- securityhub_batch_import_findings
 
+#' Used by Security Hub customers to update information about their
+#' investigation into a finding
+#'
+#' Used by Security Hub customers to update information about their
+#' investigation into a finding. Requested by master accounts or member
+#' accounts. Master accounts can update findings for their account and
+#' their member accounts. Member accounts can update findings for their
+#' account.
+#' 
+#' Updates from `BatchUpdateFindings` do not affect the value of
+#' `UpdatedAt` for a finding.
+#' 
+#' Master accounts can use `BatchUpdateFindings` to update the following
+#' finding fields and objects.
+#' 
+#' -   `Confidence`
+#' 
+#' -   `Criticality`
+#' 
+#' -   `Note`
+#' 
+#' -   `RelatedFindings`
+#' 
+#' -   `Severity`
+#' 
+#' -   `Types`
+#' 
+#' -   `UserDefinedFields`
+#' 
+#' -   `VerificationState`
+#' 
+#' -   `Workflow`
+#' 
+#' Member accounts can only use `BatchUpdateFindings` to update the Note
+#' object.
+#'
+#' @usage
+#' securityhub_batch_update_findings(FindingIdentifiers, Note, Severity,
+#'   VerificationState, Confidence, Criticality, Types, UserDefinedFields,
+#'   Workflow, RelatedFindings)
+#'
+#' @param FindingIdentifiers &#91;required&#93; The list of findings to update. `BatchUpdateFindings` can be used to
+#' update up to 100 findings at a time.
+#' 
+#' For each finding, the list provides the finding identifier and the ARN
+#' of the finding provider.
+#' @param Note 
+#' @param Severity Used to update the finding severity.
+#' @param VerificationState Indicates the veracity of a finding.
+#' 
+#' The available values for `VerificationState` are as follows.
+#' 
+#' -   `UNKNOWN` -- The default disposition of a security finding
+#' 
+#' -   `TRUE_POSITIVE` -- The security finding is confirmed
+#' 
+#' -   `FALSE_POSITIVE` -- The security finding was determined to be a
+#'     false alarm
+#' 
+#' -   `BENIGN_POSITIVE` -- A special case of `TRUE_POSITIVE` where the
+#'     finding doesn\'t pose any threat, is expected, or both
+#' @param Confidence The updated value for the finding confidence. Confidence is defined as
+#' the likelihood that a finding accurately identifies the behavior or
+#' issue that it was intended to identify.
+#' 
+#' Confidence is scored on a 0-100 basis using a ratio scale, where 0 means
+#' zero percent confidence and 100 means 100 percent confidence.
+#' @param Criticality The updated value for the level of importance assigned to the resources
+#' associated with the findings.
+#' 
+#' A score of 0 means that the underlying resources have no criticality,
+#' and a score of 100 is reserved for the most critical resources.
+#' @param Types One or more finding types in the format of namespace/category/classifier
+#' that classify a finding.
+#' 
+#' Valid namespace values are as follows.
+#' 
+#' -   Software and Configuration Checks
+#' 
+#' -   TTPs
+#' 
+#' -   Effects
+#' 
+#' -   Unusual Behaviors
+#' 
+#' -   Sensitive Data Identifications
+#' @param UserDefinedFields A list of name/value string pairs associated with the finding. These are
+#' custom, user-defined fields added to a finding.
+#' @param Workflow Used to update the workflow status of a finding.
+#' 
+#' The workflow status indicates the progress of the investigation into the
+#' finding.
+#' @param RelatedFindings A list of findings that are related to the updated findings.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_update_findings(
+#'   FindingIdentifiers = list(
+#'     list(
+#'       Id = "string",
+#'       ProductArn = "string"
+#'     )
+#'   ),
+#'   Note = list(
+#'     Text = "string",
+#'     UpdatedBy = "string"
+#'   ),
+#'   Severity = list(
+#'     Normalized = 123,
+#'     Product = 123.0,
+#'     Label = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL"
+#'   ),
+#'   VerificationState = "UNKNOWN"|"TRUE_POSITIVE"|"FALSE_POSITIVE"|"BENIGN_POSITIVE",
+#'   Confidence = 123,
+#'   Criticality = 123,
+#'   Types = list(
+#'     "string"
+#'   ),
+#'   UserDefinedFields = list(
+#'     "string"
+#'   ),
+#'   Workflow = list(
+#'     Status = "NEW"|"NOTIFIED"|"RESOLVED"|"SUPPRESSED"
+#'   ),
+#'   RelatedFindings = list(
+#'     list(
+#'       ProductArn = "string",
+#'       Id = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_batch_update_findings
+securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, Severity = NULL, VerificationState = NULL, Confidence = NULL, Criticality = NULL, Types = NULL, UserDefinedFields = NULL, Workflow = NULL, RelatedFindings = NULL) {
+  op <- new_operation(
+    name = "BatchUpdateFindings",
+    http_method = "PATCH",
+    http_path = "/findings/batchupdate",
+    paginator = list()
+  )
+  input <- .securityhub$batch_update_findings_input(FindingIdentifiers = FindingIdentifiers, Note = Note, Severity = Severity, VerificationState = VerificationState, Confidence = Confidence, Criticality = Criticality, Types = Types, UserDefinedFields = UserDefinedFields, Workflow = Workflow, RelatedFindings = RelatedFindings)
+  output <- .securityhub$batch_update_findings_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$batch_update_findings <- securityhub_batch_update_findings
+
 #' Creates a custom action target in Security Hub
 #'
-#' Creates a custom action target in Security Hub. You can use custom
-#' actions on findings and insights in Security Hub to trigger target
-#' actions in Amazon CloudWatch Events.
+#' Creates a custom action target in Security Hub.
+#' 
+#' You can use custom actions on findings and insights in Security Hub to
+#' trigger target actions in Amazon CloudWatch Events.
 #'
 #' @usage
 #' securityhub_create_action_target(Name, Description, Id)
@@ -498,18 +1062,22 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'
 #' Creates a custom insight in Security Hub. An insight is a consolidation
 #' of findings that relate to a security issue that requires attention or
-#' remediation. Use the `GroupByAttribute` to group the related findings in
-#' the insight.
+#' remediation.
+#' 
+#' To group the related findings in the insight, use the
+#' `GroupByAttribute`.
 #'
 #' @usage
 #' securityhub_create_insight(Name, Filters, GroupByAttribute)
 #'
 #' @param Name &#91;required&#93; The name of the custom insight to create.
 #' @param Filters &#91;required&#93; One or more attributes used to filter the findings included in the
-#' insight. Only findings that match the criteria defined in the filters
-#' are included in the insight.
-#' @param GroupByAttribute &#91;required&#93; The attribute used as the aggregator to group related findings for the
-#' insight.
+#' insight. The insight only includes findings that match the criteria
+#' defined in the filters.
+#' @param GroupByAttribute &#91;required&#93; The attribute used to group the findings for the insight. The grouping
+#' attribute identifies the type of item that the insight applies to. For
+#' example, if an insight is grouped by resource identifier, then the
+#' insight produces a list of resource identifiers.
 #'
 #' @section Request syntax:
 #' ```
@@ -1018,6 +1586,12 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'         Comparison = "EQUALS"|"PREFIX"
 #'       )
 #'     ),
+#'     WorkflowStatus = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"
+#'       )
+#'     ),
 #'     RecordState = list(
 #'       list(
 #'         Value = "string",
@@ -1095,28 +1669,30 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #' Creates a member association in Security Hub between the specified
 #' accounts and the account used to make the request, which is the master
 #' account. To successfully create a member, you must use this action from
-#' an account that already has Security Hub enabled. You can use the
-#' EnableSecurityHub to enable Security Hub.
+#' an account that already has Security Hub enabled. To enable Security
+#' Hub, you can use the ` <a>EnableSecurityHub</a> ` operation.
 #' 
 #' After you use `CreateMembers` to create member account associations in
-#' Security Hub, you need to use the InviteMembers action, which invites
-#' the accounts to enable Security Hub and become member accounts in
-#' Security Hub. If the invitation is accepted by the account owner, the
-#' account becomes a member account in Security Hub, and a permission
-#' policy is added that permits the master account to view the findings
-#' generated in the member account. When Security Hub is enabled in the
-#' invited account, findings start being sent to both the member and master
-#' accounts.
+#' Security Hub, you must use the ` <a>InviteMembers</a> ` operation to
+#' invite the accounts to enable Security Hub and become member accounts in
+#' Security Hub.
 #' 
-#' You can remove the association between the master and member accounts by
-#' using the DisassociateFromMasterAccount or DisassociateMembers
-#' operation.
+#' If the account owner accepts the invitation, the account becomes a
+#' member account in Security Hub. A permissions policy is added that
+#' permits the master account to view the findings generated in the member
+#' account. When Security Hub is enabled in the invited account, findings
+#' start to be sent to both the member and master accounts.
+#' 
+#' To remove the association between the master and member accounts, use
+#' the ` <a>DisassociateFromMasterAccount</a> ` or
+#' ` <a>DisassociateMembers</a> ` operation.
 #'
 #' @usage
 #' securityhub_create_members(AccountDetails)
 #'
-#' @param AccountDetails A list of account ID and email address pairs of the accounts to
-#' associate with the Security Hub master account.
+#' @param AccountDetails The list of accounts to associate with the Security Hub master account.
+#' For each account, the list includes the account ID and the email
+#' address.
 #'
 #' @section Request syntax:
 #' ```
@@ -1157,8 +1733,8 @@ securityhub_create_members <- function(AccountDetails = NULL) {
 #' @usage
 #' securityhub_decline_invitations(AccountIds)
 #'
-#' @param AccountIds &#91;required&#93; A list of account IDs that specify the accounts that invitations to
-#' Security Hub are declined from.
+#' @param AccountIds &#91;required&#93; The list of account IDs for the accounts from which to decline the
+#' invitations to Security Hub.
 #'
 #' @section Request syntax:
 #' ```
@@ -1191,9 +1767,11 @@ securityhub_decline_invitations <- function(AccountIds) {
 
 #' Deletes a custom action target from Security Hub
 #'
-#' Deletes a custom action target from Security Hub. Deleting a custom
-#' action target doesn\'t affect any findings or insights that were already
-#' sent to Amazon CloudWatch Events using the custom action.
+#' Deletes a custom action target from Security Hub.
+#' 
+#' Deleting a custom action target does not affect any findings or insights
+#' that were already sent to Amazon CloudWatch Events using the custom
+#' action.
 #'
 #' @usage
 #' securityhub_delete_action_target(ActionTargetArn)
@@ -1272,7 +1850,7 @@ securityhub_delete_insight <- function(InsightArn) {
 #' @usage
 #' securityhub_delete_invitations(AccountIds)
 #'
-#' @param AccountIds &#91;required&#93; A list of the account IDs that sent the invitations to delete.
+#' @param AccountIds &#91;required&#93; The list of the account IDs that sent the invitations to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -1310,7 +1888,7 @@ securityhub_delete_invitations <- function(AccountIds) {
 #' @usage
 #' securityhub_delete_members(AccountIds)
 #'
-#' @param AccountIds A list of account IDs of the member accounts to delete.
+#' @param AccountIds The list of account IDs for the member accounts to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -1353,7 +1931,13 @@ securityhub_delete_members <- function(AccountIds = NULL) {
 #'
 #' @param ActionTargetArns A list of custom action target ARNs for the custom action targets to
 #' retrieve.
-#' @param NextToken The token that is required for pagination.
+#' @param NextToken The token that is required for pagination. On your first call to the
+#' `DescribeActionTargets` operation, set the value of this parameter to
+#' `NULL`.
+#' 
+#' For subsequent calls to the operation, to continue listing data, set the
+#' value of this parameter to the value returned from the previous
+#' response.
 #' @param MaxResults The maximum number of results to return.
 #'
 #' @section Request syntax:
@@ -1425,16 +2009,21 @@ securityhub_describe_hub <- function(HubArn = NULL) {
 }
 .securityhub$operations$describe_hub <- securityhub_describe_hub
 
-#' Returns information about the products available that you can subscribe
-#' to and integrate with Security Hub to consolidate findings
+#' Returns information about the available products that you can subscribe
+#' to and integrate with Security Hub in order to consolidate findings
 #'
-#' Returns information about the products available that you can subscribe
-#' to and integrate with Security Hub to consolidate findings.
+#' Returns information about the available products that you can subscribe
+#' to and integrate with Security Hub in order to consolidate findings.
 #'
 #' @usage
 #' securityhub_describe_products(NextToken, MaxResults)
 #'
-#' @param NextToken The token that is required for pagination.
+#' @param NextToken The token that is required for pagination. On your first call to the
+#' `DescribeProducts` operation, set the value of this parameter to `NULL`.
+#' 
+#' For subsequent calls to the operation, to continue listing data, set the
+#' value of this parameter to the value returned from the previous
+#' response.
 #' @param MaxResults The maximum number of results to return.
 #'
 #' @section Request syntax:
@@ -1465,11 +2054,109 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .securityhub$operations$describe_products <- securityhub_describe_products
 
+#' Returns a list of the available standards in Security Hub
+#'
+#' Returns a list of the available standards in Security Hub.
+#' 
+#' For each standard, the results include the standard ARN, the name, and a
+#' description.
+#'
+#' @usage
+#' securityhub_describe_standards(NextToken, MaxResults)
+#'
+#' @param NextToken The token that is required for pagination. On your first call to the
+#' `DescribeStandards` operation, set the value of this parameter to
+#' `NULL`.
+#' 
+#' For subsequent calls to the operation, to continue listing data, set the
+#' value of this parameter to the value returned from the previous
+#' response.
+#' @param MaxResults The maximum number of standards to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_standards(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_describe_standards
+securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeStandards",
+    http_method = "GET",
+    http_path = "/standards",
+    paginator = list()
+  )
+  input <- .securityhub$describe_standards_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$describe_standards_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$describe_standards <- securityhub_describe_standards
+
+#' Returns a list of security standards controls
+#'
+#' Returns a list of security standards controls.
+#' 
+#' For each control, the results include information about whether it is
+#' currently enabled, the severity, and a link to remediation information.
+#'
+#' @usage
+#' securityhub_describe_standards_controls(StandardsSubscriptionArn,
+#'   NextToken, MaxResults)
+#'
+#' @param StandardsSubscriptionArn &#91;required&#93; The ARN of a resource that represents your subscription to a supported
+#' standard.
+#' @param NextToken The token that is required for pagination. On your first call to the
+#' `DescribeStandardsControls` operation, set the value of this parameter
+#' to `NULL`.
+#' 
+#' For subsequent calls to the operation, to continue listing data, set the
+#' value of this parameter to the value returned from the previous
+#' response.
+#' @param MaxResults The maximum number of security standard controls to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_standards_controls(
+#'   StandardsSubscriptionArn = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_describe_standards_controls
+securityhub_describe_standards_controls <- function(StandardsSubscriptionArn, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeStandardsControls",
+    http_method = "GET",
+    http_path = "/standards/controls/{StandardsSubscriptionArn+}",
+    paginator = list()
+  )
+  input <- .securityhub$describe_standards_controls_input(StandardsSubscriptionArn = StandardsSubscriptionArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$describe_standards_controls_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$describe_standards_controls <- securityhub_describe_standards_controls
+
 #' Disables the integration of the specified product with Security Hub
 #'
 #' Disables the integration of the specified product with Security Hub.
-#' Findings from that product are no longer sent to Security Hub after the
-#' integration is disabled.
+#' After the integration is disabled, findings from that product are no
+#' longer sent to Security Hub.
 #'
 #' @usage
 #' securityhub_disable_import_findings_for_product(ProductSubscriptionArn)
@@ -1507,16 +2194,18 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 #'
 #' Disables Security Hub in your account only in the current Region. To
 #' disable Security Hub in all Regions, you must submit one request per
-#' Region where you have enabled Security Hub. When you disable Security
-#' Hub for a master account, it doesn\'t disable Security Hub for any
-#' associated member accounts.
+#' Region where you have enabled Security Hub.
+#' 
+#' When you disable Security Hub for a master account, it doesn\'t disable
+#' Security Hub for any associated member accounts.
 #' 
 #' When you disable Security Hub, your existing findings and insights and
 #' any Security Hub configuration settings are deleted after 90 days and
-#' can\'t be recovered. Any standards that were enabled are disabled, and
-#' your master and member account associations are removed. If you want to
-#' save your existing findings, you must export them before you disable
-#' Security Hub.
+#' cannot be recovered. Any standards that were enabled are disabled, and
+#' your master and member account associations are removed.
+#' 
+#' If you want to save your existing findings, you must export them before
+#' you disable Security Hub.
 #'
 #' @usage
 #' securityhub_disable_security_hub()
@@ -1624,9 +2313,10 @@ securityhub_disassociate_members <- function(AccountIds = NULL) {
 #' Enables the integration of a partner product with Security Hub
 #'
 #' Enables the integration of a partner product with Security Hub.
-#' Integrated products send findings to Security Hub. When you enable a
-#' product integration, a permission policy that grants permission for the
-#' product to send findings to Security Hub is applied.
+#' Integrated products send findings to Security Hub.
+#' 
+#' When you enable a product integration, a permissions policy that grants
+#' permission for the product to send findings to Security Hub is applied.
 #'
 #' @usage
 #' securityhub_enable_import_findings_for_product(ProductArn)
@@ -1664,38 +2354,64 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
 #' Region you specify in the request
 #'
 #' Enables Security Hub for your account in the current Region or the
-#' Region you specify in the request. Enabling Security Hub also enables
-#' the CIS AWS Foundations standard. When you enable Security Hub, you
-#' grant to Security Hub the permissions necessary to gather findings from
-#' AWS Config, Amazon GuardDuty, Amazon Inspector, and Amazon Macie. To
-#' learn more, see [Setting Up AWS Security
-#' Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html).
+#' Region you specify in the request.
+#' 
+#' When you enable Security Hub, you grant to Security Hub the permissions
+#' necessary to gather findings from other services that are integrated
+#' with Security Hub.
+#' 
+#' When you use the `EnableSecurityHub` operation to enable Security Hub,
+#' you also automatically enable the following standards.
+#' 
+#' -   CIS AWS Foundations
+#' 
+#' -   AWS Foundational Security Best Practices
+#' 
+#' You do not enable the Payment Card Industry Data Security Standard (PCI
+#' DSS) standard.
+#' 
+#' To not enable the automatically enabled standards, set
+#' `EnableDefaultStandards` to `false`.
+#' 
+#' After you enable Security Hub, to enable a standard, use the
+#' ` <a>BatchEnableStandards</a> ` operation. To disable a standard, use
+#' the ` <a>BatchDisableStandards</a> ` operation.
+#' 
+#' To learn more, see [Setting Up AWS Security
+#' Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html)
+#' in the *AWS Security Hub User Guide*.
 #'
 #' @usage
-#' securityhub_enable_security_hub(Tags)
+#' securityhub_enable_security_hub(Tags, EnableDefaultStandards)
 #'
-#' @param Tags The tags to add to the Hub resource when you enable Security Hub.
+#' @param Tags The tags to add to the hub resource when you enable Security Hub.
+#' @param EnableDefaultStandards Whether to enable the security standards that Security Hub has
+#' designated as automatically enabled. If you do not provide a value for
+#' `EnableDefaultStandards`, it is set to `true`. To not enable the
+#' automatically enabled standards, set `EnableDefaultStandards` to
+#' `false`.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$enable_security_hub(
 #'   Tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   EnableDefaultStandards = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname securityhub_enable_security_hub
-securityhub_enable_security_hub <- function(Tags = NULL) {
+securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards = NULL) {
   op <- new_operation(
     name = "EnableSecurityHub",
     http_method = "POST",
     http_path = "/accounts",
     paginator = list()
   )
-  input <- .securityhub$enable_security_hub_input(Tags = Tags)
+  input <- .securityhub$enable_security_hub_input(Tags = Tags, EnableDefaultStandards = EnableDefaultStandards)
   output <- .securityhub$enable_security_hub_output()
   config <- get_config()
   svc <- .securityhub$service(config)
@@ -1713,11 +2429,15 @@ securityhub_enable_security_hub <- function(Tags = NULL) {
 #' securityhub_get_enabled_standards(StandardsSubscriptionArns, NextToken,
 #'   MaxResults)
 #'
-#' @param StandardsSubscriptionArns A list of the standards subscription ARNs for the standards to retrieve.
-#' @param NextToken Paginates results. On your first call to the `GetEnabledStandards`
-#' operation, set the value of this parameter to `NULL`. For subsequent
-#' calls to the operation, fill `nextToken` in the request with the value
-#' of `nextToken` from the previous response to continue listing data.
+#' @param StandardsSubscriptionArns The list of the standards subscription ARNs for the standards to
+#' retrieve.
+#' @param NextToken The token that is required for pagination. On your first call to the
+#' `GetEnabledStandards` operation, set the value of this parameter to
+#' `NULL`.
+#' 
+#' For subsequent calls to the operation, to continue listing data, set the
+#' value of this parameter to the value returned from the previous
+#' response.
 #' @param MaxResults The maximum number of results to return in the response.
 #'
 #' @section Request syntax:
@@ -1758,13 +2478,15 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #' @usage
 #' securityhub_get_findings(Filters, SortCriteria, NextToken, MaxResults)
 #'
-#' @param Filters The findings attributes used to define a condition to filter the
-#' findings returned.
-#' @param SortCriteria Findings attributes used to sort the list of findings returned.
-#' @param NextToken Paginates results. On your first call to the `GetFindings` operation,
-#' set the value of this parameter to `NULL`. For subsequent calls to the
-#' operation, fill `nextToken` in the request with the value of `nextToken`
-#' from the previous response to continue listing data.
+#' @param Filters The finding attributes used to define a condition to filter the returned
+#' findings.
+#' @param SortCriteria The finding attributes used to sort the list of returned findings.
+#' @param NextToken The token that is required for pagination. On your first call to the
+#' `GetFindings` operation, set the value of this parameter to `NULL`.
+#' 
+#' For subsequent calls to the operation, to continue listing data, set the
+#' value of this parameter to the value returned from the previous
+#' response.
 #' @param MaxResults The maximum number of findings to return.
 #'
 #' @section Request syntax:
@@ -2273,6 +2995,12 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'         Comparison = "EQUALS"|"PREFIX"
 #'       )
 #'     ),
+#'     WorkflowStatus = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"
+#'       )
+#'     ),
 #'     RecordState = list(
 #'       list(
 #'         Value = "string",
@@ -2350,16 +3078,16 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
 }
 .securityhub$operations$get_findings <- securityhub_get_findings
 
-#' Lists the results of the Security Hub insight that the insight ARN
-#' specifies
+#' Lists the results of the Security Hub insight specified by the insight
+#' ARN
 #'
-#' Lists the results of the Security Hub insight that the insight ARN
-#' specifies.
+#' Lists the results of the Security Hub insight specified by the insight
+#' ARN.
 #'
 #' @usage
 #' securityhub_get_insight_results(InsightArn)
 #'
-#' @param InsightArn &#91;required&#93; The ARN of the insight whose results you want to see.
+#' @param InsightArn &#91;required&#93; The ARN of the insight for which to return results.
 #'
 #' @section Request syntax:
 #' ```
@@ -2388,19 +3116,23 @@ securityhub_get_insight_results <- function(InsightArn) {
 }
 .securityhub$operations$get_insight_results <- securityhub_get_insight_results
 
-#' Lists and describes insights that insight ARNs specify
+#' Lists and describes insights for the specified insight ARNs
 #'
-#' Lists and describes insights that insight ARNs specify.
+#' Lists and describes insights for the specified insight ARNs.
 #'
 #' @usage
 #' securityhub_get_insights(InsightArns, NextToken, MaxResults)
 #'
-#' @param InsightArns The ARNs of the insights that you want to describe.
-#' @param NextToken Paginates results. On your first call to the `GetInsights` operation,
-#' set the value of this parameter to `NULL`. For subsequent calls to the
-#' operation, fill `nextToken` in the request with the value of `nextToken`
-#' from the previous response to continue listing data.
-#' @param MaxResults The maximum number of items that you want in the response.
+#' @param InsightArns The ARNs of the insights to describe. If you do not provide any insight
+#' ARNs, then `GetInsights` returns all of your custom insights. It does
+#' not return any managed insights.
+#' @param NextToken The token that is required for pagination. On your first call to the
+#' `GetInsights` operation, set the value of this parameter to `NULL`.
+#' 
+#' For subsequent calls to the operation, to continue listing data, set the
+#' value of this parameter to the value returned from the previous
+#' response.
+#' @param MaxResults The maximum number of items to return in the response.
 #'
 #' @section Request syntax:
 #' ```
@@ -2469,10 +3201,10 @@ securityhub_get_invitations_count <- function() {
 }
 .securityhub$operations$get_invitations_count <- securityhub_get_invitations_count
 
-#' Provides the details for the Security Hub master account to the current
+#' Provides the details for the Security Hub master account for the current
 #' member account
 #'
-#' Provides the details for the Security Hub master account to the current
+#' Provides the details for the Security Hub master account for the current
 #' member account.
 #'
 #' @usage
@@ -2503,17 +3235,17 @@ securityhub_get_master_account <- function() {
 }
 .securityhub$operations$get_master_account <- securityhub_get_master_account
 
-#' Returns the details on the Security Hub member accounts that the account
-#' IDs specify
+#' Returns the details for the Security Hub member accounts for the
+#' specified account IDs
 #'
-#' Returns the details on the Security Hub member accounts that the account
-#' IDs specify.
+#' Returns the details for the Security Hub member accounts for the
+#' specified account IDs.
 #'
 #' @usage
 #' securityhub_get_members(AccountIds)
 #'
-#' @param AccountIds &#91;required&#93; A list of account IDs for the Security Hub member accounts that you want
-#' to return the details for.
+#' @param AccountIds &#91;required&#93; The list of account IDs for the Security Hub member accounts to return
+#' the details for.
 #'
 #' @section Request syntax:
 #' ```
@@ -2548,18 +3280,21 @@ securityhub_get_members <- function(AccountIds) {
 #' Hub master account that the invitation is sent from
 #'
 #' Invites other AWS accounts to become member accounts for the Security
-#' Hub master account that the invitation is sent from. Before you can use
-#' this action to invite a member, you must first create the member account
-#' in Security Hub by using the CreateMembers action. When the account
-#' owner accepts the invitation to become a member account and enables
-#' Security Hub, the master account can view the findings generated from
-#' member account.
+#' Hub master account that the invitation is sent from.
+#' 
+#' Before you can use this action to invite a member, you must first use
+#' the ` <a>CreateMembers</a> ` action to create the member account in
+#' Security Hub.
+#' 
+#' When the account owner accepts the invitation to become a member account
+#' and enables Security Hub, the master account can view the findings
+#' generated from the member account.
 #'
 #' @usage
 #' securityhub_invite_members(AccountIds)
 #'
-#' @param AccountIds A list of IDs of the AWS accounts that you want to invite to Security
-#' Hub as members.
+#' @param AccountIds The list of account IDs of the AWS accounts to invite to Security Hub as
+#' members.
 #'
 #' @section Request syntax:
 #' ```
@@ -2590,21 +3325,23 @@ securityhub_invite_members <- function(AccountIds = NULL) {
 }
 .securityhub$operations$invite_members <- securityhub_invite_members
 
-#' Lists all findings-generating solutions (products) whose findings you
-#' have subscribed to receive in Security Hub
+#' Lists all findings-generating solutions (products) that you are
+#' subscribed to receive findings from in Security Hub
 #'
-#' Lists all findings-generating solutions (products) whose findings you
-#' have subscribed to receive in Security Hub.
+#' Lists all findings-generating solutions (products) that you are
+#' subscribed to receive findings from in Security Hub.
 #'
 #' @usage
 #' securityhub_list_enabled_products_for_import(NextToken, MaxResults)
 #'
-#' @param NextToken Paginates results. On your first call to the
+#' @param NextToken The token that is required for pagination. On your first call to the
 #' `ListEnabledProductsForImport` operation, set the value of this
-#' parameter to `NULL`. For subsequent calls to the operation, fill
-#' `nextToken` in the request with the value of `NextToken` from the
-#' previous response to continue listing data.
-#' @param MaxResults The maximum number of items that you want in the response.
+#' parameter to `NULL`.
+#' 
+#' For subsequent calls to the operation, to continue listing data, set the
+#' value of this parameter to the value returned from the previous
+#' response.
+#' @param MaxResults The maximum number of items to return in the response.
 #'
 #' @section Request syntax:
 #' ```
@@ -2643,11 +3380,13 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
 #' @usage
 #' securityhub_list_invitations(MaxResults, NextToken)
 #'
-#' @param MaxResults The maximum number of items that you want in the response.
-#' @param NextToken Paginates results. On your first call to the `ListInvitations`
-#' operation, set the value of this parameter to `NULL`. For subsequent
-#' calls to the operation, fill `nextToken` in the request with the value
-#' of `NextToken` from the previous response to continue listing data.
+#' @param MaxResults The maximum number of items to return in the response.
+#' @param NextToken The token that is required for pagination. On your first call to the
+#' `ListInvitations` operation, set the value of this parameter to `NULL`.
+#' 
+#' For subsequent calls to the operation, to continue listing data, set the
+#' value of this parameter to the value returned from the previous
+#' response.
 #'
 #' @section Request syntax:
 #' ```
@@ -2686,17 +3425,23 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' @usage
 #' securityhub_list_members(OnlyAssociated, MaxResults, NextToken)
 #'
-#' @param OnlyAssociated Specifies which member accounts the response includes based on their
-#' relationship status with the master account. The default value is
-#' `TRUE`. If `onlyAssociated` is set to `TRUE`, the response includes
-#' member accounts whose relationship status with the master is set to
-#' `ENABLED` or `DISABLED`. If `onlyAssociated` is set to `FALSE`, the
-#' response includes all existing member accounts.
-#' @param MaxResults The maximum number of items that you want in the response.
-#' @param NextToken Paginates results. Set the value of this parameter to `NULL` on your
-#' first call to the `ListMembers` operation. For subsequent calls to the
-#' operation, fill `nextToken` in the request with the value of `nextToken`
-#' from the previous response to continue listing data.
+#' @param OnlyAssociated Specifies which member accounts to include in the response based on
+#' their relationship status with the master account. The default value is
+#' `TRUE`.
+#' 
+#' If `OnlyAssociated` is set to `TRUE`, the response includes member
+#' accounts whose relationship status with the master is set to `ENABLED`
+#' or `DISABLED`.
+#' 
+#' If `OnlyAssociated` is set to `FALSE`, the response includes all
+#' existing member accounts.
+#' @param MaxResults The maximum number of items to return in the response.
+#' @param NextToken The token that is required for pagination. On your first call to the
+#' `ListMembers` operation, set the value of this parameter to `NULL`.
+#' 
+#' For subsequent calls to the operation, to continue listing data, set the
+#' value of this parameter to the value returned from the previous
+#' response.
 #'
 #' @section Request syntax:
 #' ```
@@ -2885,9 +3630,11 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 }
 .securityhub$operations$update_action_target <- securityhub_update_action_target
 
-#' Updates the Note and RecordState of the Security Hub-aggregated findings
-#' that the filter attributes specify
+#' UpdateFindings is deprecated
 #'
+#' `UpdateFindings` is deprecated. Instead of `UpdateFindings`, use
+#' `BatchUpdateFindings`.
+#' 
 #' Updates the `Note` and `RecordState` of the Security Hub-aggregated
 #' findings that the filter attributes specify. Any member account that can
 #' view the finding also sees the update to the finding.
@@ -3406,6 +4153,12 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'         Comparison = "EQUALS"|"PREFIX"
 #'       )
 #'     ),
+#'     WorkflowStatus = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"
+#'       )
+#'     ),
 #'     RecordState = list(
 #'       list(
 #'         Value = "string",
@@ -3480,9 +4233,10 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 }
 .securityhub$operations$update_findings <- securityhub_update_findings
 
-#' Updates the Security Hub insight that the insight ARN specifies
+#' Updates the Security Hub insight identified by the specified insight ARN
 #'
-#' Updates the Security Hub insight that the insight ARN specifies.
+#' Updates the Security Hub insight identified by the specified insight
+#' ARN.
 #'
 #' @usage
 #' securityhub_update_insight(InsightArn, Name, Filters, GroupByAttribute)
@@ -4000,6 +4754,12 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'         Comparison = "EQUALS"|"PREFIX"
 #'       )
 #'     ),
+#'     WorkflowStatus = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"
+#'       )
+#'     ),
 #'     RecordState = list(
 #'       list(
 #'         Value = "string",
@@ -4069,3 +4829,47 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
   return(response)
 }
 .securityhub$operations$update_insight <- securityhub_update_insight
+
+#' Used to control whether an individual security standard control is
+#' enabled or disabled
+#'
+#' Used to control whether an individual security standard control is
+#' enabled or disabled.
+#'
+#' @usage
+#' securityhub_update_standards_control(StandardsControlArn, ControlStatus,
+#'   DisabledReason)
+#'
+#' @param StandardsControlArn &#91;required&#93; The ARN of the security standard control to enable or disable.
+#' @param ControlStatus The updated status of the security standard control.
+#' @param DisabledReason A description of the reason why you are disabling a security standard
+#' control. If you are disabling a control, then this is required.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_standards_control(
+#'   StandardsControlArn = "string",
+#'   ControlStatus = "ENABLED"|"DISABLED",
+#'   DisabledReason = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_standards_control
+securityhub_update_standards_control <- function(StandardsControlArn, ControlStatus = NULL, DisabledReason = NULL) {
+  op <- new_operation(
+    name = "UpdateStandardsControl",
+    http_method = "PATCH",
+    http_path = "/standards/control/{StandardsControlArn+}",
+    paginator = list()
+  )
+  input <- .securityhub$update_standards_control_input(StandardsControlArn = StandardsControlArn, ControlStatus = ControlStatus, DisabledReason = DisabledReason)
+  output <- .securityhub$update_standards_control_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_standards_control <- securityhub_update_standards_control

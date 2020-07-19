@@ -27,7 +27,7 @@ the function name, it is limited to 64 characters in length.}
 
 \item{Description}{A description of the alias.}
 
-\item{RoutingConfig}{The \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html}{routing configuration}
+\item{RoutingConfig}{The \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html#configuring-alias-routing}{routing configuration}
 of the alias.}
 }
 \description{
@@ -56,4 +56,17 @@ and the percentage of invocation requests that it receives.
 }
 }
 
+\examples{
+\dontrun{
+# The following example creates an alias named LIVE that points to version
+# 1 of the my-function Lambda function.
+svc$create_alias(
+  Description = "alias for live version of function",
+  FunctionName = "my-function",
+  FunctionVersion = "1",
+  Name = "LIVE"
+)
+}
+
+}
 \keyword{internal}

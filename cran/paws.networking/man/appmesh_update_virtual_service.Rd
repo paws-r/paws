@@ -4,7 +4,7 @@
 \alias{appmesh_update_virtual_service}
 \title{Updates an existing virtual service in a specified service mesh}
 \usage{
-appmesh_update_virtual_service(clientToken, meshName, spec,
+appmesh_update_virtual_service(clientToken, meshName, meshOwner, spec,
   virtualServiceName)
 }
 \arguments{
@@ -13,6 +13,10 @@ idempotency of the request. Up to 36 letters, numbers, hyphens, and
 underscores are allowed.}
 
 \item{meshName}{[required] The name of the service mesh that the virtual service resides in.}
+
+\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it\'s the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{spec}{[required] The new virtual service specification to apply. This overwrites the
 existing data.}
@@ -26,6 +30,7 @@ Updates an existing virtual service in a specified service mesh.
 \preformatted{svc$update_virtual_service(
   clientToken = "string",
   meshName = "string",
+  meshOwner = "string",
   spec = list(
     provider = list(
       virtualNode = list(

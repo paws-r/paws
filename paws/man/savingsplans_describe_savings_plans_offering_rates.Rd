@@ -46,10 +46,10 @@ Describes the specified Savings Plans offering rates.
     "Compute"|"EC2Instance"
   ),
   products = list(
-    "EC2"|"Fargate"
+    "EC2"|"Fargate"|"Lambda"
   ),
   serviceCodes = list(
-    "AmazonEC2"|"AmazonECS"
+    "AmazonEC2"|"AmazonECS"|"AWSLambda"
   ),
   usageTypes = list(
     "string"

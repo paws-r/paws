@@ -71,7 +71,7 @@ Returns information about backtracks for a DB cluster.
 For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
 
-This action only applies to Aurora DB clusters.
+This action only applies to Aurora MySQL DB clusters.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_db_cluster_backtracks(

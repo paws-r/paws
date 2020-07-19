@@ -64,6 +64,12 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'   WriteCampaignRequest = list(
 #'     AdditionalTreatments = list(
 #'       list(
+#'         CustomDeliveryConfiguration = list(
+#'           DeliveryUri = "string",
+#'           EndpointTypes = list(
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'           )
+#'         ),
 #'         MessageConfiguration = list(
 #'           ADMMessage = list(
 #'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
@@ -106,6 +112,9 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'             TimeToLive = 123,
 #'             Title = "string",
 #'             Url = "string"
+#'           ),
+#'           CustomMessage = list(
+#'             Data = "string"
 #'           ),
 #'           DefaultMessage = list(
 #'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
@@ -206,6 +215,12 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'         TreatmentName = "string"
 #'       )
 #'     ),
+#'     CustomDeliveryConfiguration = list(
+#'       DeliveryUri = "string",
+#'       EndpointTypes = list(
+#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'       )
+#'     ),
 #'     Description = "string",
 #'     HoldoutPercent = 123,
 #'     Hook = list(
@@ -262,6 +277,9 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'         TimeToLive = 123,
 #'         Title = "string",
 #'         Url = "string"
+#'       ),
+#'       CustomMessage = list(
+#'         Data = "string"
 #'       ),
 #'       DefaultMessage = list(
 #'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
@@ -410,6 +428,7 @@ pinpoint_create_campaign <- function(ApplicationId, WriteCampaignRequest) {
 #'   EmailTemplateRequest = list(
 #'     DefaultSubstitutions = "string",
 #'     HtmlPart = "string",
+#'     RecommenderId = "string",
 #'     Subject = "string",
 #'     tags = list(
 #'       "string"
@@ -551,6 +570,18 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'   WriteJourneyRequest = list(
 #'     Activities = list(
 #'       list(
+#'         CUSTOM = list(
+#'           DeliveryUri = "string",
+#'           EndpointTypes = list(
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'           ),
+#'           MessageConfig = list(
+#'             Data = "string"
+#'           ),
+#'           NextActivity = "string",
+#'           TemplateName = "string",
+#'           TemplateVersion = "string"
+#'         ),
 #'         ConditionalSplit = list(
 #'           Condition = list(
 #'             Conditions = list(
@@ -815,6 +846,14 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'             WaitUntil = "string"
 #'           )
 #'         ),
+#'         PUSH = list(
+#'           MessageConfig = list(
+#'             TimeToLive = "string"
+#'           ),
+#'           NextActivity = "string",
+#'           TemplateName = "string",
+#'           TemplateVersion = "string"
+#'         ),
 #'         RandomSplit = list(
 #'           Branches = list(
 #'             list(
@@ -822,6 +861,15 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'               Percentage = 123
 #'             )
 #'           )
+#'         ),
+#'         SMS = list(
+#'           MessageConfig = list(
+#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
+#'             SenderId = "string"
+#'           ),
+#'           NextActivity = "string",
+#'           TemplateName = "string",
+#'           TemplateVersion = "string"
 #'         ),
 #'         Wait = list(
 #'           NextActivity = "string",
@@ -957,6 +1005,7 @@ pinpoint_create_journey <- function(ApplicationId, WriteJourneyRequest) {
 #'       Title = "string",
 #'       Url = "string"
 #'     ),
+#'     RecommenderId = "string",
 #'     tags = list(
 #'       "string"
 #'     ),
@@ -985,6 +1034,55 @@ pinpoint_create_push_template <- function(PushNotificationTemplateRequest, Templ
   return(response)
 }
 .pinpoint$operations$create_push_template <- pinpoint_create_push_template
+
+#' Creates an Amazon Pinpoint configuration for a recommender model
+#'
+#' Creates an Amazon Pinpoint configuration for a recommender model.
+#'
+#' @usage
+#' pinpoint_create_recommender_configuration(
+#'   CreateRecommenderConfiguration)
+#'
+#' @param CreateRecommenderConfiguration &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_recommender_configuration(
+#'   CreateRecommenderConfiguration = list(
+#'     Attributes = list(
+#'       "string"
+#'     ),
+#'     Description = "string",
+#'     Name = "string",
+#'     RecommendationProviderIdType = "string",
+#'     RecommendationProviderRoleArn = "string",
+#'     RecommendationProviderUri = "string",
+#'     RecommendationTransformerUri = "string",
+#'     RecommendationsDisplayName = "string",
+#'     RecommendationsPerMessage = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_create_recommender_configuration
+pinpoint_create_recommender_configuration <- function(CreateRecommenderConfiguration) {
+  op <- new_operation(
+    name = "CreateRecommenderConfiguration",
+    http_method = "POST",
+    http_path = "/v1/recommenders",
+    paginator = list()
+  )
+  input <- .pinpoint$create_recommender_configuration_input(CreateRecommenderConfiguration = CreateRecommenderConfiguration)
+  output <- .pinpoint$create_recommender_configuration_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$create_recommender_configuration <- pinpoint_create_recommender_configuration
 
 #' Creates a new segment for an application or updates the configuration,
 #' dimension, and other settings for an existing segment that's associated
@@ -1238,6 +1336,7 @@ pinpoint_create_segment <- function(ApplicationId, WriteSegmentRequest) {
 #'   SMSTemplateRequest = list(
 #'     Body = "string",
 #'     DefaultSubstitutions = "string",
+#'     RecommenderId = "string",
 #'     tags = list(
 #'       "string"
 #'     ),
@@ -1686,9 +1785,9 @@ pinpoint_delete_email_channel <- function(ApplicationId) {
 #' information for all the versions of a template, use the Template
 #' Versions resource.
 #' 
-#' If specified, this value must match the identifier of an existing
+#' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
-#' match the identifier of the latest existing version of the template.
+#' match the identifier for the latest existing version of the template.
 #' This restriction helps ensure that race conditions don\'t occur.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint does
@@ -1697,9 +1796,9 @@ pinpoint_delete_email_channel <- function(ApplicationId) {
 #' -   For a get operation, retrieves information about the active version
 #'     of the template.
 #' 
-#' -   For an update operation, saves the updates to the latest existing
-#'     version of the template, if the create-new-version parameter isn\'t
-#'     used or is set to false.
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn\'t used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -1904,9 +2003,9 @@ pinpoint_delete_journey <- function(ApplicationId, JourneyId) {
 #' information for all the versions of a template, use the Template
 #' Versions resource.
 #' 
-#' If specified, this value must match the identifier of an existing
+#' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
-#' match the identifier of the latest existing version of the template.
+#' match the identifier for the latest existing version of the template.
 #' This restriction helps ensure that race conditions don\'t occur.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint does
@@ -1915,9 +2014,9 @@ pinpoint_delete_journey <- function(ApplicationId, JourneyId) {
 #' -   For a get operation, retrieves information about the active version
 #'     of the template.
 #' 
-#' -   For an update operation, saves the updates to the latest existing
-#'     version of the template, if the create-new-version parameter isn\'t
-#'     used or is set to false.
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn\'t used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -1949,6 +2048,44 @@ pinpoint_delete_push_template <- function(TemplateName, Version = NULL) {
   return(response)
 }
 .pinpoint$operations$delete_push_template <- pinpoint_delete_push_template
+
+#' Deletes an Amazon Pinpoint configuration for a recommender model
+#'
+#' Deletes an Amazon Pinpoint configuration for a recommender model.
+#'
+#' @usage
+#' pinpoint_delete_recommender_configuration(RecommenderId)
+#'
+#' @param RecommenderId &#91;required&#93; The unique identifier for the recommender model configuration. This
+#' identifier is displayed as the **Recommender ID** on the Amazon Pinpoint
+#' console.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_recommender_configuration(
+#'   RecommenderId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_delete_recommender_configuration
+pinpoint_delete_recommender_configuration <- function(RecommenderId) {
+  op <- new_operation(
+    name = "DeleteRecommenderConfiguration",
+    http_method = "DELETE",
+    http_path = "/v1/recommenders/{recommender-id}",
+    paginator = list()
+  )
+  input <- .pinpoint$delete_recommender_configuration_input(RecommenderId = RecommenderId)
+  output <- .pinpoint$delete_recommender_configuration_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$delete_recommender_configuration <- pinpoint_delete_recommender_configuration
 
 #' Deletes a segment from an application
 #'
@@ -2046,9 +2183,9 @@ pinpoint_delete_sms_channel <- function(ApplicationId) {
 #' information for all the versions of a template, use the Template
 #' Versions resource.
 #' 
-#' If specified, this value must match the identifier of an existing
+#' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
-#' match the identifier of the latest existing version of the template.
+#' match the identifier for the latest existing version of the template.
 #' This restriction helps ensure that race conditions don\'t occur.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint does
@@ -2057,9 +2194,9 @@ pinpoint_delete_sms_channel <- function(ApplicationId) {
 #' -   For a get operation, retrieves information about the active version
 #'     of the template.
 #' 
-#' -   For an update operation, saves the updates to the latest existing
-#'     version of the template, if the create-new-version parameter isn\'t
-#'     used or is set to false.
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn\'t used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -2188,9 +2325,9 @@ pinpoint_delete_voice_channel <- function(ApplicationId) {
 #' information for all the versions of a template, use the Template
 #' Versions resource.
 #' 
-#' If specified, this value must match the identifier of an existing
+#' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
-#' match the identifier of the latest existing version of the template.
+#' match the identifier for the latest existing version of the template.
 #' This restriction helps ensure that race conditions don\'t occur.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint does
@@ -2199,9 +2336,9 @@ pinpoint_delete_voice_channel <- function(ApplicationId) {
 #' -   For a get operation, retrieves information about the active version
 #'     of the template.
 #' 
-#' -   For an update operation, saves the updates to the latest existing
-#'     version of the template, if the create-new-version parameter isn\'t
-#'     used or is set to false.
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn\'t used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -2488,13 +2625,13 @@ pinpoint_get_app <- function(ApplicationId) {
 #' alphanumeric characters, separated by a hyphen. Examples are
 #' email-open-rate and successful-delivery-rate. For a list of valid
 #' values, see the [Amazon Pinpoint Developer
-#' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
+#' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html).
 #' @param NextToken The string that specifies which page of results to return in a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param StartTime The first date and time to retrieve data for, as part of an inclusive
 #' date range that filters the query results. This value should be in
 #' extended ISO 8601 format and use Coordinated Universal Time (UTC), for
@@ -2584,8 +2721,8 @@ pinpoint_get_application_settings <- function(ApplicationId) {
 #' pinpoint_get_apps(PageSize, Token)
 #'
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
 #'
@@ -2709,8 +2846,8 @@ pinpoint_get_campaign <- function(ApplicationId, CampaignId) {
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param CampaignId &#91;required&#93; The unique identifier for the campaign.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
 #'
@@ -2767,13 +2904,13 @@ pinpoint_get_campaign_activities <- function(ApplicationId, CampaignId, PageSize
 #' alphanumeric characters, separated by a hyphen. Examples are
 #' email-open-rate and successful-delivery-rate. For a list of valid
 #' values, see the [Amazon Pinpoint Developer
-#' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
+#' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html).
 #' @param NextToken The string that specifies which page of results to return in a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param StartTime The first date and time to retrieve data for, as part of an inclusive
 #' date range that filters the query results. This value should be in
 #' extended ISO 8601 format and use Coordinated Universal Time (UTC), for
@@ -2874,8 +3011,8 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param CampaignId &#91;required&#93; The unique identifier for the campaign.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
 #'
@@ -2921,8 +3058,8 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
 #'
@@ -3051,9 +3188,9 @@ pinpoint_get_email_channel <- function(ApplicationId) {
 #' information for all the versions of a template, use the Template
 #' Versions resource.
 #' 
-#' If specified, this value must match the identifier of an existing
+#' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
-#' match the identifier of the latest existing version of the template.
+#' match the identifier for the latest existing version of the template.
 #' This restriction helps ensure that race conditions don\'t occur.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint does
@@ -3062,9 +3199,9 @@ pinpoint_get_email_channel <- function(ApplicationId) {
 #' -   For a get operation, retrieves information about the active version
 #'     of the template.
 #' 
-#' -   For an update operation, saves the updates to the latest existing
-#'     version of the template, if the create-new-version parameter isn\'t
-#'     used or is set to false.
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn\'t used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -3229,8 +3366,8 @@ pinpoint_get_export_job <- function(ApplicationId, JobId) {
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
 #'
@@ -3355,8 +3492,8 @@ pinpoint_get_import_job <- function(ApplicationId, JobId) {
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
 #'
@@ -3444,8 +3581,8 @@ pinpoint_get_journey <- function(ApplicationId, JourneyId) {
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param EndTime The last date and time to retrieve data for, as part of an inclusive
 #' date range that filters the query results. This value should be in
-#' extended ISO 8601 format, for example: 2019-07-19T00:00:00Z for July 19,
-#' 2019 and 2019-07-19T20:00:00Z for 8:00 PM July 19, 2019.
+#' extended ISO 8601 format and use Coordinated Universal Time (UTC), for
+#' example: 2019-07-26T20:00:00Z for 8:00 PM UTC July 26, 2019.
 #' @param JourneyId &#91;required&#93; The unique identifier for the journey.
 #' @param KpiName &#91;required&#93; The name of the metric, also referred to as a *key performance indicator
 #' (KPI)*, to retrieve data for. This value describes the associated metric
@@ -3453,17 +3590,18 @@ pinpoint_get_journey <- function(ApplicationId, JourneyId) {
 #' alphanumeric characters, separated by a hyphen. Examples are
 #' email-open-rate and successful-delivery-rate. For a list of valid
 #' values, see the [Amazon Pinpoint Developer
-#' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
+#' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html).
 #' @param NextToken The string that specifies which page of results to return in a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param StartTime The first date and time to retrieve data for, as part of an inclusive
 #' date range that filters the query results. This value should be in
-#' extended ISO 8601 format, for example: 2019-07-15T00:00:00Z for July 15,
-#' 2019 and 2019-07-15T16:00:00Z for 4:00 PM July 15, 2019.
+#' extended ISO 8601 format and use Coordinated Universal Time (UTC), for
+#' example: 2019-07-19T20:00:00Z for 8:00 PM UTC July 19, 2019. This value
+#' should also be fewer than 90 days from the current day.
 #'
 #' @section Request syntax:
 #' ```
@@ -3517,11 +3655,11 @@ pinpoint_get_journey_date_range_kpi <- function(ApplicationId, EndTime = NULL, J
 #' @param JourneyActivityId &#91;required&#93; The unique identifier for the journey activity.
 #' @param JourneyId &#91;required&#93; The unique identifier for the journey.
 #' @param NextToken The string that specifies which page of results to return in a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #'
 #' @section Request syntax:
 #' ```
@@ -3568,11 +3706,11 @@ pinpoint_get_journey_execution_activity_metrics <- function(ApplicationId, Journ
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param JourneyId &#91;required&#93; The unique identifier for the journey.
 #' @param NextToken The string that specifies which page of results to return in a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #'
 #' @section Request syntax:
 #' ```
@@ -3622,9 +3760,9 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
 #' information for all the versions of a template, use the Template
 #' Versions resource.
 #' 
-#' If specified, this value must match the identifier of an existing
+#' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
-#' match the identifier of the latest existing version of the template.
+#' match the identifier for the latest existing version of the template.
 #' This restriction helps ensure that race conditions don\'t occur.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint does
@@ -3633,9 +3771,9 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
 #' -   For a get operation, retrieves information about the active version
 #'     of the template.
 #' 
-#' -   For an update operation, saves the updates to the latest existing
-#'     version of the template, if the create-new-version parameter isn\'t
-#'     used or is set to false.
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn\'t used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -3667,6 +3805,89 @@ pinpoint_get_push_template <- function(TemplateName, Version = NULL) {
   return(response)
 }
 .pinpoint$operations$get_push_template <- pinpoint_get_push_template
+
+#' Retrieves information about an Amazon Pinpoint configuration for a
+#' recommender model
+#'
+#' Retrieves information about an Amazon Pinpoint configuration for a
+#' recommender model.
+#'
+#' @usage
+#' pinpoint_get_recommender_configuration(RecommenderId)
+#'
+#' @param RecommenderId &#91;required&#93; The unique identifier for the recommender model configuration. This
+#' identifier is displayed as the **Recommender ID** on the Amazon Pinpoint
+#' console.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_recommender_configuration(
+#'   RecommenderId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_get_recommender_configuration
+pinpoint_get_recommender_configuration <- function(RecommenderId) {
+  op <- new_operation(
+    name = "GetRecommenderConfiguration",
+    http_method = "GET",
+    http_path = "/v1/recommenders/{recommender-id}",
+    paginator = list()
+  )
+  input <- .pinpoint$get_recommender_configuration_input(RecommenderId = RecommenderId)
+  output <- .pinpoint$get_recommender_configuration_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$get_recommender_configuration <- pinpoint_get_recommender_configuration
+
+#' Retrieves information about all the recommender model configurations
+#' that are associated with your Amazon Pinpoint account
+#'
+#' Retrieves information about all the recommender model configurations
+#' that are associated with your Amazon Pinpoint account.
+#'
+#' @usage
+#' pinpoint_get_recommender_configurations(PageSize, Token)
+#'
+#' @param PageSize The maximum number of items to include in each page of a paginated
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
+#' @param Token The NextToken string that specifies which page of results to return in a
+#' paginated response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_recommender_configurations(
+#'   PageSize = "string",
+#'   Token = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_get_recommender_configurations
+pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NULL) {
+  op <- new_operation(
+    name = "GetRecommenderConfigurations",
+    http_method = "GET",
+    http_path = "/v1/recommenders",
+    paginator = list()
+  )
+  input <- .pinpoint$get_recommender_configurations_input(PageSize = PageSize, Token = Token)
+  output <- .pinpoint$get_recommender_configurations_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$get_recommender_configurations <- pinpoint_get_recommender_configurations
 
 #' Retrieves information about the configuration, dimension, and other
 #' settings for a specific segment that's associated with an application
@@ -3722,8 +3943,8 @@ pinpoint_get_segment <- function(ApplicationId, SegmentId) {
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param SegmentId &#91;required&#93; The unique identifier for the segment.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
@@ -3771,8 +3992,8 @@ pinpoint_get_segment_export_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param SegmentId &#91;required&#93; The unique identifier for the segment.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
@@ -3866,8 +4087,8 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param SegmentId &#91;required&#93; The unique identifier for the segment.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
@@ -3914,8 +4135,8 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
 #'
@@ -4005,9 +4226,9 @@ pinpoint_get_sms_channel <- function(ApplicationId) {
 #' information for all the versions of a template, use the Template
 #' Versions resource.
 #' 
-#' If specified, this value must match the identifier of an existing
+#' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
-#' match the identifier of the latest existing version of the template.
+#' match the identifier for the latest existing version of the template.
 #' This restriction helps ensure that race conditions don\'t occur.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint does
@@ -4016,9 +4237,9 @@ pinpoint_get_sms_channel <- function(ApplicationId) {
 #' -   For a get operation, retrieves information about the active version
 #'     of the template.
 #' 
-#' -   For an update operation, saves the updates to the latest existing
-#'     version of the template, if the create-new-version parameter isn\'t
-#'     used or is set to false.
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn\'t used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -4149,9 +4370,9 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
 #' information for all the versions of a template, use the Template
 #' Versions resource.
 #' 
-#' If specified, this value must match the identifier of an existing
+#' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
-#' match the identifier of the latest existing version of the template.
+#' match the identifier for the latest existing version of the template.
 #' This restriction helps ensure that race conditions don\'t occur.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint does
@@ -4160,9 +4381,9 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
 #' -   For a get operation, retrieves information about the active version
 #'     of the template.
 #' 
-#' -   For an update operation, saves the updates to the latest existing
-#'     version of the template, if the create-new-version parameter isn\'t
-#'     used or is set to false.
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn\'t used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -4207,8 +4428,8 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param Token The NextToken string that specifies which page of results to return in a
 #' paginated response.
 #'
@@ -4242,10 +4463,10 @@ pinpoint_list_journeys <- function(ApplicationId, PageSize = NULL, Token = NULL)
 .pinpoint$operations$list_journeys <- pinpoint_list_journeys
 
 #' Retrieves all the tags (keys and values) that are associated with an
-#' application, campaign, journey, message template, or segment
+#' application, campaign, message template, or segment
 #'
 #' Retrieves all the tags (keys and values) that are associated with an
-#' application, campaign, journey, message template, or segment.
+#' application, campaign, message template, or segment.
 #'
 #' @usage
 #' pinpoint_list_tags_for_resource(ResourceArn)
@@ -4290,11 +4511,11 @@ pinpoint_list_tags_for_resource <- function(ResourceArn) {
 #'   TemplateType)
 #'
 #' @param NextToken The string that specifies which page of results to return in a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
@@ -4342,11 +4563,11 @@ pinpoint_list_template_versions <- function(NextToken = NULL, PageSize = NULL, T
 #' pinpoint_list_templates(NextToken, PageSize, Prefix, TemplateType)
 #'
 #' @param NextToken The string that specifies which page of results to return in a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param PageSize The maximum number of items to include in each page of a paginated
-#' response. This parameter is currently not supported for application,
-#' campaign, and journey metrics.
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
 #' @param Prefix The substring to match in the names of the message templates to include
 #' in the results. If you specify this value, Amazon Pinpoint returns only
 #' those templates whose names begin with the value that you specify.
@@ -4494,7 +4715,7 @@ pinpoint_put_event_stream <- function(ApplicationId, WriteEventStream) {
 #'               "string"
 #'             )
 #'           ),
-#'           ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'           ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
 #'           Demographic = list(
 #'             AppVersion = "string",
 #'             Locale = "string",
@@ -4645,7 +4866,7 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 #'     Addresses = list(
 #'       list(
 #'         BodyOverride = "string",
-#'         ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
 #'         Context = list(
 #'           "string"
 #'         ),
@@ -4830,6 +5051,7 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         Keyword = "string",
+#'         MediaUrl = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
 #'         OriginationNumber = "string",
 #'         SenderId = "string",
@@ -5067,6 +5289,7 @@ pinpoint_send_messages <- function(ApplicationId, MessageRequest) {
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         Keyword = "string",
+#'         MediaUrl = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
 #'         OriginationNumber = "string",
 #'         SenderId = "string",
@@ -5147,10 +5370,10 @@ pinpoint_send_users_messages <- function(ApplicationId, SendUsersMessageRequest)
 .pinpoint$operations$send_users_messages <- pinpoint_send_users_messages
 
 #' Adds one or more tags (keys and values) to an application, campaign,
-#' journey, message template, or segment
+#' message template, or segment
 #'
 #' Adds one or more tags (keys and values) to an application, campaign,
-#' journey, message template, or segment.
+#' message template, or segment.
 #'
 #' @usage
 #' pinpoint_tag_resource(ResourceArn, TagsModel)
@@ -5191,10 +5414,10 @@ pinpoint_tag_resource <- function(ResourceArn, TagsModel) {
 .pinpoint$operations$tag_resource <- pinpoint_tag_resource
 
 #' Removes one or more tags (keys and values) from an application,
-#' campaign, journey, message template, or segment
+#' campaign, message template, or segment
 #'
 #' Removes one or more tags (keys and values) from an application,
-#' campaign, journey, message template, or segment.
+#' campaign, message template, or segment.
 #'
 #' @usage
 #' pinpoint_untag_resource(ResourceArn, TagKeys)
@@ -5604,6 +5827,12 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'   WriteCampaignRequest = list(
 #'     AdditionalTreatments = list(
 #'       list(
+#'         CustomDeliveryConfiguration = list(
+#'           DeliveryUri = "string",
+#'           EndpointTypes = list(
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'           )
+#'         ),
 #'         MessageConfiguration = list(
 #'           ADMMessage = list(
 #'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
@@ -5646,6 +5875,9 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'             TimeToLive = 123,
 #'             Title = "string",
 #'             Url = "string"
+#'           ),
+#'           CustomMessage = list(
+#'             Data = "string"
 #'           ),
 #'           DefaultMessage = list(
 #'             Action = "OPEN_APP"|"DEEP_LINK"|"URL",
@@ -5746,6 +5978,12 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'         TreatmentName = "string"
 #'       )
 #'     ),
+#'     CustomDeliveryConfiguration = list(
+#'       DeliveryUri = "string",
+#'       EndpointTypes = list(
+#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'       )
+#'     ),
 #'     Description = "string",
 #'     HoldoutPercent = 123,
 #'     Hook = list(
@@ -5802,6 +6040,9 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'         TimeToLive = 123,
 #'         Title = "string",
 #'         Url = "string"
+#'       ),
+#'       CustomMessage = list(
+#'         Data = "string"
 #'       ),
 #'       DefaultMessage = list(
 #'         Action = "OPEN_APP"|"DEEP_LINK"|"URL",
@@ -5988,13 +6229,13 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #'
 #' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
 #' template. Valid values are: true, save the updates as a new version;
-#' and, false, save the updates to the latest existing version of the
-#' template.
+#' and, false, save the updates to (overwrite) the latest existing version
+#' of the template.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint saves
-#' the updates to the latest existing version of the template. If you
-#' specify a value of true for this parameter, don\'t specify a value for
-#' the version parameter. Otherwise, an error will occur.
+#' the updates to (overwrites) the latest existing version of the template.
+#' If you specify a value of true for this parameter, don\'t specify a
+#' value for the version parameter. Otherwise, an error will occur.
 #' @param EmailTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -6005,9 +6246,9 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #' information for all the versions of a template, use the Template
 #' Versions resource.
 #' 
-#' If specified, this value must match the identifier of an existing
+#' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
-#' match the identifier of the latest existing version of the template.
+#' match the identifier for the latest existing version of the template.
 #' This restriction helps ensure that race conditions don\'t occur.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint does
@@ -6016,9 +6257,9 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #' -   For a get operation, retrieves information about the active version
 #'     of the template.
 #' 
-#' -   For an update operation, saves the updates to the latest existing
-#'     version of the template, if the create-new-version parameter isn\'t
-#'     used or is set to false.
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn\'t used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -6030,6 +6271,7 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #'   EmailTemplateRequest = list(
 #'     DefaultSubstitutions = "string",
 #'     HtmlPart = "string",
+#'     RecommenderId = "string",
 #'     Subject = "string",
 #'     tags = list(
 #'       "string"
@@ -6067,8 +6309,9 @@ pinpoint_update_email_template <- function(CreateNewVersion = NULL, EmailTemplat
 #'
 #' Creates a new endpoint for an application or updates the settings and
 #' attributes of an existing endpoint for an application. You can also use
-#' this operation to define custom attributes (Attributes, Metrics, and
-#' UserAttributes properties) for an endpoint.
+#' this operation to define custom attributes for an endpoint. If an update
+#' includes one or more values for a custom attribute, Amazon Pinpoint
+#' replaces (overwrites) any existing values with the new values.
 #'
 #' @usage
 #' pinpoint_update_endpoint(ApplicationId, EndpointId, EndpointRequest)
@@ -6090,7 +6333,7 @@ pinpoint_update_email_template <- function(CreateNewVersion = NULL, EmailTemplat
 #'         "string"
 #'       )
 #'     ),
-#'     ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'     ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
 #'     Demographic = list(
 #'       AppVersion = "string",
 #'       Locale = "string",
@@ -6152,7 +6395,12 @@ pinpoint_update_endpoint <- function(ApplicationId, EndpointId, EndpointRequest)
 #' settings and attributes of a batch of existing endpoints for an
 #' application
 #'
-#'  <p>Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing endpoints for an application. You can also use this operation to define custom attributes (Attributes, Metrics, and UserAttributes properties) for a batch of endpoints.</p>
+#' Creates a new batch of endpoints for an application or updates the
+#' settings and attributes of a batch of existing endpoints for an
+#' application. You can also use this operation to define custom attributes
+#' for a batch of endpoints. If an update includes one or more values for a
+#' custom attribute, Amazon Pinpoint replaces (overwrites) any existing
+#' values with the new values.
 #'
 #' @usage
 #' pinpoint_update_endpoints_batch(ApplicationId, EndpointBatchRequest)
@@ -6174,7 +6422,7 @@ pinpoint_update_endpoint <- function(ApplicationId, EndpointId, EndpointRequest)
 #'             "string"
 #'           )
 #'         ),
-#'         ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
 #'         Demographic = list(
 #'           AppVersion = "string",
 #'           Locale = "string",
@@ -6299,6 +6547,18 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'   WriteJourneyRequest = list(
 #'     Activities = list(
 #'       list(
+#'         CUSTOM = list(
+#'           DeliveryUri = "string",
+#'           EndpointTypes = list(
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'           ),
+#'           MessageConfig = list(
+#'             Data = "string"
+#'           ),
+#'           NextActivity = "string",
+#'           TemplateName = "string",
+#'           TemplateVersion = "string"
+#'         ),
 #'         ConditionalSplit = list(
 #'           Condition = list(
 #'             Conditions = list(
@@ -6563,6 +6823,14 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'             WaitUntil = "string"
 #'           )
 #'         ),
+#'         PUSH = list(
+#'           MessageConfig = list(
+#'             TimeToLive = "string"
+#'           ),
+#'           NextActivity = "string",
+#'           TemplateName = "string",
+#'           TemplateVersion = "string"
+#'         ),
 #'         RandomSplit = list(
 #'           Branches = list(
 #'             list(
@@ -6570,6 +6838,15 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'               Percentage = 123
 #'             )
 #'           )
+#'         ),
+#'         SMS = list(
+#'           MessageConfig = list(
+#'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
+#'             SenderId = "string"
+#'           ),
+#'           NextActivity = "string",
+#'           TemplateName = "string",
+#'           TemplateVersion = "string"
 #'         ),
 #'         Wait = list(
 #'           NextActivity = "string",
@@ -6691,13 +6968,13 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
 #'
 #' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
 #' template. Valid values are: true, save the updates as a new version;
-#' and, false, save the updates to the latest existing version of the
-#' template.
+#' and, false, save the updates to (overwrite) the latest existing version
+#' of the template.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint saves
-#' the updates to the latest existing version of the template. If you
-#' specify a value of true for this parameter, don\'t specify a value for
-#' the version parameter. Otherwise, an error will occur.
+#' the updates to (overwrites) the latest existing version of the template.
+#' If you specify a value of true for this parameter, don\'t specify a
+#' value for the version parameter. Otherwise, an error will occur.
 #' @param PushNotificationTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -6708,9 +6985,9 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
 #' information for all the versions of a template, use the Template
 #' Versions resource.
 #' 
-#' If specified, this value must match the identifier of an existing
+#' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
-#' match the identifier of the latest existing version of the template.
+#' match the identifier for the latest existing version of the template.
 #' This restriction helps ensure that race conditions don\'t occur.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint does
@@ -6719,9 +6996,9 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
 #' -   For a get operation, retrieves information about the active version
 #'     of the template.
 #' 
-#' -   For an update operation, saves the updates to the latest existing
-#'     version of the template, if the create-new-version parameter isn\'t
-#'     used or is set to false.
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn\'t used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -6781,6 +7058,7 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
 #'       Title = "string",
 #'       Url = "string"
 #'     ),
+#'     RecommenderId = "string",
 #'     tags = list(
 #'       "string"
 #'     ),
@@ -6810,6 +7088,59 @@ pinpoint_update_push_template <- function(CreateNewVersion = NULL, PushNotificat
   return(response)
 }
 .pinpoint$operations$update_push_template <- pinpoint_update_push_template
+
+#' Updates an Amazon Pinpoint configuration for a recommender model
+#'
+#' Updates an Amazon Pinpoint configuration for a recommender model.
+#'
+#' @usage
+#' pinpoint_update_recommender_configuration(RecommenderId,
+#'   UpdateRecommenderConfiguration)
+#'
+#' @param RecommenderId &#91;required&#93; The unique identifier for the recommender model configuration. This
+#' identifier is displayed as the **Recommender ID** on the Amazon Pinpoint
+#' console.
+#' @param UpdateRecommenderConfiguration &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_recommender_configuration(
+#'   RecommenderId = "string",
+#'   UpdateRecommenderConfiguration = list(
+#'     Attributes = list(
+#'       "string"
+#'     ),
+#'     Description = "string",
+#'     Name = "string",
+#'     RecommendationProviderIdType = "string",
+#'     RecommendationProviderRoleArn = "string",
+#'     RecommendationProviderUri = "string",
+#'     RecommendationTransformerUri = "string",
+#'     RecommendationsDisplayName = "string",
+#'     RecommendationsPerMessage = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_update_recommender_configuration
+pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecommenderConfiguration) {
+  op <- new_operation(
+    name = "UpdateRecommenderConfiguration",
+    http_method = "PUT",
+    http_path = "/v1/recommenders/{recommender-id}",
+    paginator = list()
+  )
+  input <- .pinpoint$update_recommender_configuration_input(RecommenderId = RecommenderId, UpdateRecommenderConfiguration = UpdateRecommenderConfiguration)
+  output <- .pinpoint$update_recommender_configuration_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$update_recommender_configuration <- pinpoint_update_recommender_configuration
 
 #' Creates a new segment for an application or updates the configuration,
 #' dimension, and other settings for an existing segment that's associated
@@ -7101,13 +7432,13 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 #'
 #' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
 #' template. Valid values are: true, save the updates as a new version;
-#' and, false, save the updates to the latest existing version of the
-#' template.
+#' and, false, save the updates to (overwrite) the latest existing version
+#' of the template.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint saves
-#' the updates to the latest existing version of the template. If you
-#' specify a value of true for this parameter, don\'t specify a value for
-#' the version parameter. Otherwise, an error will occur.
+#' the updates to (overwrites) the latest existing version of the template.
+#' If you specify a value of true for this parameter, don\'t specify a
+#' value for the version parameter. Otherwise, an error will occur.
 #' @param SMSTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -7118,9 +7449,9 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 #' information for all the versions of a template, use the Template
 #' Versions resource.
 #' 
-#' If specified, this value must match the identifier of an existing
+#' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
-#' match the identifier of the latest existing version of the template.
+#' match the identifier for the latest existing version of the template.
 #' This restriction helps ensure that race conditions don\'t occur.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint does
@@ -7129,9 +7460,9 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 #' -   For a get operation, retrieves information about the active version
 #'     of the template.
 #' 
-#' -   For an update operation, saves the updates to the latest existing
-#'     version of the template, if the create-new-version parameter isn\'t
-#'     used or is set to false.
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn\'t used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -7143,6 +7474,7 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 #'   SMSTemplateRequest = list(
 #'     Body = "string",
 #'     DefaultSubstitutions = "string",
+#'     RecommenderId = "string",
 #'     tags = list(
 #'       "string"
 #'     ),
@@ -7277,13 +7609,13 @@ pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
 #'
 #' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
 #' template. Valid values are: true, save the updates as a new version;
-#' and, false, save the updates to the latest existing version of the
-#' template.
+#' and, false, save the updates to (overwrite) the latest existing version
+#' of the template.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint saves
-#' the updates to the latest existing version of the template. If you
-#' specify a value of true for this parameter, don\'t specify a value for
-#' the version parameter. Otherwise, an error will occur.
+#' the updates to (overwrites) the latest existing version of the template.
+#' If you specify a value of true for this parameter, don\'t specify a
+#' value for the version parameter. Otherwise, an error will occur.
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
@@ -7293,9 +7625,9 @@ pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
 #' information for all the versions of a template, use the Template
 #' Versions resource.
 #' 
-#' If specified, this value must match the identifier of an existing
+#' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
-#' match the identifier of the latest existing version of the template.
+#' match the identifier for the latest existing version of the template.
 #' This restriction helps ensure that race conditions don\'t occur.
 #' 
 #' If you don\'t specify a value for this parameter, Amazon Pinpoint does
@@ -7304,9 +7636,9 @@ pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
 #' -   For a get operation, retrieves information about the active version
 #'     of the template.
 #' 
-#' -   For an update operation, saves the updates to the latest existing
-#'     version of the template, if the create-new-version parameter isn\'t
-#'     used or is set to false.
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn\'t used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.

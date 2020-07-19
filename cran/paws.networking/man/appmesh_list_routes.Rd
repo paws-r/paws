@@ -4,7 +4,8 @@
 \alias{appmesh_list_routes}
 \title{Returns a list of existing routes in a service mesh}
 \usage{
-appmesh_list_routes(limit, meshName, nextToken, virtualRouterName)
+appmesh_list_routes(limit, meshName, meshOwner, nextToken,
+  virtualRouterName)
 }
 \arguments{
 \item{limit}{The maximum number of results returned by \code{ListRoutes} in paginated
@@ -16,6 +17,10 @@ be between 1 and 100. If you don\'t use this parameter, \code{ListRoutes}
 returns up to 100 results and a \code{nextToken} value if applicable.}
 
 \item{meshName}{[required] The name of the service mesh to list routes in.}
+
+\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it\'s the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListRoutes}
 request where \code{limit} was used and the results exceeded the value of
@@ -31,6 +36,7 @@ Returns a list of existing routes in a service mesh.
 \preformatted{svc$list_routes(
   limit = 123,
   meshName = "string",
+  meshOwner = "string",
   nextToken = "string",
   virtualRouterName = "string"
 )

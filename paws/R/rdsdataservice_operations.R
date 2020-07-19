@@ -23,7 +23,16 @@ NULL
 #' @param database The name of the database.
 #' @param parameterSets The parameter set for the batch operation.
 #' 
-#' The maximum number of parameters in a parameter set is 1,000.
+#' The SQL statement is executed as many times as the number of parameter
+#' sets provided. To execute a SQL statement with no parameters, use one of
+#' the following options:
+#' 
+#' -   Specify one or more empty parameter sets.
+#' 
+#' -   Use the `ExecuteStatement` operation instead of the
+#'     `BatchExecuteStatement` operation.
+#' 
+#' Array parameters are not supported.
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
 #' @param schema The name of the database schema.
 #' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.
@@ -248,9 +257,8 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #' `transactionID` parameter, changes that result from the call are
 #' committed automatically.
 #' 
-#' The response size limit is 1 MB or 1,000 records. If the call returns
-#' more than 1 MB of response data or over 1,000 records, the call is
-#' terminated.
+#' The response size limit is 1 MB. If the call returns more than 1 MB of
+#' response data, the call is terminated.
 #'
 #' @usage
 #' rdsdataservice_execute_statement(continueAfterTimeout, database,
@@ -268,6 +276,8 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #' @param database The name of the database.
 #' @param includeResultMetadata A value that indicates whether to include metadata in the results.
 #' @param parameters The parameters for the SQL statement.
+#' 
+#' Array parameters are not supported.
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
 #' @param resultSetOptions Options that control how the result set is returned.
 #' @param schema The name of the database schema.

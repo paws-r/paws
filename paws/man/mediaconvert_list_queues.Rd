@@ -13,7 +13,7 @@ mediaconvert_list_queues(ListBy, MaxResults, NextToken, Order)
 
 \item{NextToken}{Use this string, provided with the response to a previous request, to request the next batch of queues.}
 
-\item{Order}{When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.}
+\item{Order}{Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.}
 }
 \description{
 Retrieve a JSON array of up to twenty of your queues. This will return the queues themselves, not just a list of them. To retrieve the next twenty queues, use the nextToken string returned with the array.

@@ -129,7 +129,7 @@ elbv2 <- function(config = list()) {
 
 .elbv2$metadata <- list(
   service_name = "elasticloadbalancing",
-  endpoints = list("*" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elasticloadbalancing.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticloadbalancing.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Elastic Load Balancing v2",
   api_version = "2015-12-01",
   signing_name = NULL,

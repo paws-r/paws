@@ -44,8 +44,8 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 \itemize{
 \item Description: The tag provided was not a valid tag. This error
 can occur if the tag did not pass input validation. For
-information about tag restrictions, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2//allocation-tag-restrictions.html}{User-Defined Tag Restrictions}
-and \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2//aws-tag-restrictions.html}{AWS-Generated Cost Allocation Tag Restrictions}.
+information about tag restrictions, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html}{User-Defined Tag Restrictions}
+and \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/aws-tag-restrictions.html}{AWS-Generated Cost Allocation Tag Restrictions}.
 }
 \item Error code: \code{MalformedXMLError}
 \itemize{

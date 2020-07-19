@@ -7,7 +7,7 @@
 databasemigrationservice_modify_replication_task(ReplicationTaskArn,
   ReplicationTaskIdentifier, MigrationType, TableMappings,
   ReplicationTaskSettings, CdcStartTime, CdcStartPosition,
-  CdcStopPosition)
+  CdcStopPosition, TaskData)
 }
 \arguments{
 \item{ReplicationTaskArn}{[required] The Amazon Resource Name (ARN) of the replication task.}
@@ -16,7 +16,7 @@ databasemigrationservice_modify_replication_task(ReplicationTaskArn,
 
 Constraints:
 \itemize{
-\item Must contain from 1 to 255 alphanumeric characters or hyphens.
+\item Must contain 1-255 alphanumeric characters or hyphens.
 \item First character must be a letter.
 \item Cannot end with a hyphen or contain two consecutive hyphens.
 }}
@@ -29,7 +29,7 @@ contains the table mappings. Precede the path with \verb{file://}. When
 working with the DMS API, provide the JSON as the parameter value, for
 example: \verb{--table-mappings file://mappingfile.json}}
 
-\item{ReplicationTaskSettings}{JSON file that contains settings for the task, such as target metadata
+\item{ReplicationTaskSettings}{JSON file that contains settings for the task, such as task metadata
 settings.}
 
 \item{CdcStartTime}{Indicates the start time for a change data capture (CDC) operation. Use
@@ -65,6 +65,11 @@ Server time example: \\--cdc-stop-position
 
 Commit time example: \\--cdc-stop-position "commit\\_time:
 3018-02-09T12:12:12 "}
+
+\item{TaskData}{Supplemental information that the task requires to migrate the data for
+certain source and target endpoints. For more information, see
+\href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.TaskData.html}{Specifying Supplemental Data for Task Settings}
+in the \emph{AWS Database Migration Service User Guide.}}
 }
 \description{
 Modifies the specified replication task.
@@ -87,7 +92,8 @@ in the \emph{AWS Database Migration Service User Guide}.
     "2015-01-01"
   ),
   CdcStartPosition = "string",
-  CdcStopPosition = "string"
+  CdcStopPosition = "string",
+  TaskData = "string"
 )
 }
 }

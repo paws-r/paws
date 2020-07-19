@@ -12,22 +12,31 @@ a new attachment set is created, and the ID of the set is returned in
 the response. If an \code{attachmentSetId} is specified, the attachments are
 added to the specified set, if it exists.}
 
-\item{attachments}{[required] One or more attachments to add to the set. The limit is 3 attachments
-per set, and the size limit is 5 MB per attachment.}
+\item{attachments}{[required] One or more attachments to add to the set. You can add up to three
+attachments per set. The size limit is 5 MB per attachment.
+
+In the \code{Attachment} object, use the \code{data} parameter to specify the
+contents of the attachment file. In the previous request syntax, the
+value for \code{data} appear as \code{blob}, which is represented as a
+base64-encoded string. The value for \code{fileName} is the name of the
+attachment, such as \code{troubleshoot-screenshot.png}.}
 }
 \description{
-Adds one or more attachments to an attachment set. If an
-\code{attachmentSetId} is not specified, a new attachment set is created, and
-the ID of the set is returned in the response. If an \code{attachmentSetId}
-is specified, the attachments are added to the specified set, if it
-exists.
+Adds one or more attachments to an attachment set.
 }
 \details{
-An attachment set is a temporary container for attachments that are to
-be added to a case or case communication. The set is available for one
-hour after it is created; the \code{expiryTime} returned in the response
-indicates when the set expires. The maximum number of attachments in a
-set is 3, and the maximum size of any attachment in the set is 5 MB.
+An attachment set is a temporary container for attachments that you add
+to a case or case communication. The set is available for 1 hour after
+it\'s created. The \code{expiryTime} returned in the response is when the set
+expires.
+\itemize{
+\item You must have a Business or Enterprise support plan to use the AWS
+Support API.
+\item If you call the AWS Support API from an account that does not have a
+Business or Enterprise support plan, the
+\code{SubscriptionRequiredException} error message appears. For
+information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$add_attachments_to_set(

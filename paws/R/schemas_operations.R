@@ -53,7 +53,7 @@ schemas_create_discoverer <- function(Description = NULL, SourceArn, Tags = NULL
 #' schemas_create_registry(Description, RegistryName, Tags)
 #'
 #' @param Description A description of the registry to be created.
-#' @param RegistryName &#91;required&#93; 
+#' @param RegistryName &#91;required&#93; The name of the registry.
 #' @param Tags Tags to associate with the registry.
 #'
 #' @section Request syntax:
@@ -90,17 +90,19 @@ schemas_create_registry <- function(Description = NULL, RegistryName, Tags = NUL
 #' Creates a schema definition
 #'
 #' Creates a schema definition.
+#' 
+#' Inactive schemas will be deleted after two years.
 #'
 #' @usage
 #' schemas_create_schema(Content, Description, RegistryName, SchemaName,
 #'   Tags, Type)
 #'
-#' @param Content &#91;required&#93; 
+#' @param Content &#91;required&#93; The source of the schema definition.
 #' @param Description A description of the schema.
-#' @param RegistryName &#91;required&#93; 
-#' @param SchemaName &#91;required&#93; 
+#' @param RegistryName &#91;required&#93; The name of the registry.
+#' @param SchemaName &#91;required&#93; The name of the schema.
 #' @param Tags Tags associated with the schema.
-#' @param Type &#91;required&#93; 
+#' @param Type &#91;required&#93; The type of schema.
 #'
 #' @section Request syntax:
 #' ```
@@ -143,7 +145,7 @@ schemas_create_schema <- function(Content, Description = NULL, RegistryName, Sch
 #' @usage
 #' schemas_delete_discoverer(DiscovererId)
 #'
-#' @param DiscovererId &#91;required&#93; 
+#' @param DiscovererId &#91;required&#93; The ID of the discoverer.
 #'
 #' @section Request syntax:
 #' ```
@@ -179,7 +181,7 @@ schemas_delete_discoverer <- function(DiscovererId) {
 #' @usage
 #' schemas_delete_registry(RegistryName)
 #'
-#' @param RegistryName &#91;required&#93; 
+#' @param RegistryName &#91;required&#93; The name of the registry.
 #'
 #' @section Request syntax:
 #' ```
@@ -208,6 +210,42 @@ schemas_delete_registry <- function(RegistryName) {
 }
 .schemas$operations$delete_registry <- schemas_delete_registry
 
+#' Delete the resource-based policy attached to the specified registry
+#'
+#' Delete the resource-based policy attached to the specified registry.
+#'
+#' @usage
+#' schemas_delete_resource_policy(RegistryName)
+#'
+#' @param RegistryName The name of the registry.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_policy(
+#'   RegistryName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname schemas_delete_resource_policy
+schemas_delete_resource_policy <- function(RegistryName = NULL) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "DELETE",
+    http_path = "/v1/policy",
+    paginator = list()
+  )
+  input <- .schemas$delete_resource_policy_input(RegistryName = RegistryName)
+  output <- .schemas$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .schemas$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.schemas$operations$delete_resource_policy <- schemas_delete_resource_policy
+
 #' Delete a schema definition
 #'
 #' Delete a schema definition.
@@ -215,8 +253,8 @@ schemas_delete_registry <- function(RegistryName) {
 #' @usage
 #' schemas_delete_schema(RegistryName, SchemaName)
 #'
-#' @param RegistryName &#91;required&#93; 
-#' @param SchemaName &#91;required&#93; 
+#' @param RegistryName &#91;required&#93; The name of the registry.
+#' @param SchemaName &#91;required&#93; The name of the schema.
 #'
 #' @section Request syntax:
 #' ```
@@ -253,9 +291,9 @@ schemas_delete_schema <- function(RegistryName, SchemaName) {
 #' @usage
 #' schemas_delete_schema_version(RegistryName, SchemaName, SchemaVersion)
 #'
-#' @param RegistryName &#91;required&#93; 
-#' @param SchemaName &#91;required&#93; 
-#' @param SchemaVersion &#91;required&#93; 
+#' @param RegistryName &#91;required&#93; The name of the registry.
+#' @param SchemaName &#91;required&#93; The name of the schema.
+#' @param SchemaVersion &#91;required&#93; The version number of the schema
 #'
 #' @section Request syntax:
 #' ```
@@ -294,10 +332,10 @@ schemas_delete_schema_version <- function(RegistryName, SchemaName, SchemaVersio
 #' schemas_describe_code_binding(Language, RegistryName, SchemaName,
 #'   SchemaVersion)
 #'
-#' @param Language &#91;required&#93; 
-#' @param RegistryName &#91;required&#93; 
-#' @param SchemaName &#91;required&#93; 
-#' @param SchemaVersion 
+#' @param Language &#91;required&#93; The language of the code binding.
+#' @param RegistryName &#91;required&#93; The name of the registry.
+#' @param SchemaName &#91;required&#93; The name of the schema.
+#' @param SchemaVersion Specifying this limits the results to only this schema version.
 #'
 #' @section Request syntax:
 #' ```
@@ -336,7 +374,7 @@ schemas_describe_code_binding <- function(Language, RegistryName, SchemaName, Sc
 #' @usage
 #' schemas_describe_discoverer(DiscovererId)
 #'
-#' @param DiscovererId &#91;required&#93; 
+#' @param DiscovererId &#91;required&#93; The ID of the discoverer.
 #'
 #' @section Request syntax:
 #' ```
@@ -372,7 +410,7 @@ schemas_describe_discoverer <- function(DiscovererId) {
 #' @usage
 #' schemas_describe_registry(RegistryName)
 #'
-#' @param RegistryName &#91;required&#93; 
+#' @param RegistryName &#91;required&#93; The name of the registry.
 #'
 #' @section Request syntax:
 #' ```
@@ -408,9 +446,9 @@ schemas_describe_registry <- function(RegistryName) {
 #' @usage
 #' schemas_describe_schema(RegistryName, SchemaName, SchemaVersion)
 #'
-#' @param RegistryName &#91;required&#93; 
-#' @param SchemaName &#91;required&#93; 
-#' @param SchemaVersion 
+#' @param RegistryName &#91;required&#93; The name of the registry.
+#' @param SchemaName &#91;required&#93; The name of the schema.
+#' @param SchemaVersion Specifying this limits the results to only this schema version.
 #'
 #' @section Request syntax:
 #' ```
@@ -449,10 +487,10 @@ schemas_describe_schema <- function(RegistryName, SchemaName, SchemaVersion = NU
 #' schemas_get_code_binding_source(Language, RegistryName, SchemaName,
 #'   SchemaVersion)
 #'
-#' @param Language &#91;required&#93; 
-#' @param RegistryName &#91;required&#93; 
-#' @param SchemaName &#91;required&#93; 
-#' @param SchemaVersion 
+#' @param Language &#91;required&#93; The language of the code binding.
+#' @param RegistryName &#91;required&#93; The name of the registry.
+#' @param SchemaName &#91;required&#93; The name of the schema.
+#' @param SchemaVersion Specifying this limits the results to only this schema version.
 #'
 #' @section Request syntax:
 #' ```
@@ -491,7 +529,9 @@ schemas_get_code_binding_source <- function(Language, RegistryName, SchemaName, 
 #' @usage
 #' schemas_get_discovered_schema(Events, Type)
 #'
-#' @param Events &#91;required&#93; An array of strings that
+#' @param Events &#91;required&#93; An array of strings where each string is a JSON event. These are the
+#' events that were used to generate the schema. The array includes a
+#' single type of event and has a maximum size of 10 events.
 #' @param Type &#91;required&#93; The type of event.
 #'
 #' @section Request syntax:
@@ -524,6 +564,42 @@ schemas_get_discovered_schema <- function(Events, Type) {
 }
 .schemas$operations$get_discovered_schema <- schemas_get_discovered_schema
 
+#' Retrieves the resource-based policy attached to a given registry
+#'
+#' Retrieves the resource-based policy attached to a given registry.
+#'
+#' @usage
+#' schemas_get_resource_policy(RegistryName)
+#'
+#' @param RegistryName The name of the registry.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policy(
+#'   RegistryName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname schemas_get_resource_policy
+schemas_get_resource_policy <- function(RegistryName = NULL) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "GET",
+    http_path = "/v1/policy",
+    paginator = list()
+  )
+  input <- .schemas$get_resource_policy_input(RegistryName = RegistryName)
+  output <- .schemas$get_resource_policy_output()
+  config <- get_config()
+  svc <- .schemas$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.schemas$operations$get_resource_policy <- schemas_get_resource_policy
+
 #' List the discoverers
 #'
 #' List the discoverers.
@@ -532,10 +608,14 @@ schemas_get_discovered_schema <- function(Events, Type) {
 #' schemas_list_discoverers(DiscovererIdPrefix, Limit, NextToken,
 #'   SourceArnPrefix)
 #'
-#' @param DiscovererIdPrefix 
+#' @param DiscovererIdPrefix Specifying this limits the results to only those discoverer IDs that
+#' start with the specified prefix.
 #' @param Limit 
-#' @param NextToken 
-#' @param SourceArnPrefix 
+#' @param NextToken The token that specifies the next page of results to return. To request
+#' the first page, leave NextToken empty. The token will expire in 24
+#' hours, and cannot be shared with other accounts.
+#' @param SourceArnPrefix Specifying this limits the results to only those ARNs that start with
+#' the specified prefix.
 #'
 #' @section Request syntax:
 #' ```
@@ -575,9 +655,13 @@ schemas_list_discoverers <- function(DiscovererIdPrefix = NULL, Limit = NULL, Ne
 #' schemas_list_registries(Limit, NextToken, RegistryNamePrefix, Scope)
 #'
 #' @param Limit 
-#' @param NextToken 
-#' @param RegistryNamePrefix 
-#' @param Scope 
+#' @param NextToken The token that specifies the next page of results to return. To request
+#' the first page, leave NextToken empty. The token will expire in 24
+#' hours, and cannot be shared with other accounts.
+#' @param RegistryNamePrefix Specifying this limits the results to only those registry names that
+#' start with the specified prefix.
+#' @param Scope Can be set to Local or AWS to limit responses to your custom registries,
+#' or the ones provided by AWS.
 #'
 #' @section Request syntax:
 #' ```
@@ -617,9 +701,11 @@ schemas_list_registries <- function(Limit = NULL, NextToken = NULL, RegistryName
 #' schemas_list_schema_versions(Limit, NextToken, RegistryName, SchemaName)
 #'
 #' @param Limit 
-#' @param NextToken 
-#' @param RegistryName &#91;required&#93; 
-#' @param SchemaName &#91;required&#93; 
+#' @param NextToken The token that specifies the next page of results to return. To request
+#' the first page, leave NextToken empty. The token will expire in 24
+#' hours, and cannot be shared with other accounts.
+#' @param RegistryName &#91;required&#93; The name of the registry.
+#' @param SchemaName &#91;required&#93; The name of the schema.
 #'
 #' @section Request syntax:
 #' ```
@@ -659,9 +745,12 @@ schemas_list_schema_versions <- function(Limit = NULL, NextToken = NULL, Registr
 #' schemas_list_schemas(Limit, NextToken, RegistryName, SchemaNamePrefix)
 #'
 #' @param Limit 
-#' @param NextToken 
-#' @param RegistryName &#91;required&#93; 
-#' @param SchemaNamePrefix 
+#' @param NextToken The token that specifies the next page of results to return. To request
+#' the first page, leave NextToken empty. The token will expire in 24
+#' hours, and cannot be shared with other accounts.
+#' @param RegistryName &#91;required&#93; The name of the registry.
+#' @param SchemaNamePrefix Specifying this limits the results to only those schema names that start
+#' with the specified prefix.
 #'
 #' @section Request syntax:
 #' ```
@@ -700,7 +789,7 @@ schemas_list_schemas <- function(Limit = NULL, NextToken = NULL, RegistryName, S
 #' @usage
 #' schemas_list_tags_for_resource(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; 
+#' @param ResourceArn &#91;required&#93; The ARN of the resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -729,44 +818,6 @@ schemas_list_tags_for_resource <- function(ResourceArn) {
 }
 .schemas$operations$list_tags_for_resource <- schemas_list_tags_for_resource
 
-#' Lock service linked role
-#'
-#' 
-#'
-#' @usage
-#' schemas_lock_service_linked_role(RoleArn, Timeout)
-#'
-#' @param RoleArn &#91;required&#93; 
-#' @param Timeout &#91;required&#93; 
-#'
-#' @section Request syntax:
-#' ```
-#' svc$lock_service_linked_role(
-#'   RoleArn = "string",
-#'   Timeout = 123
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname schemas_lock_service_linked_role
-schemas_lock_service_linked_role <- function(RoleArn, Timeout) {
-  op <- new_operation(
-    name = "LockServiceLinkedRole",
-    http_method = "POST",
-    http_path = "/slr-deletion/lock",
-    paginator = list()
-  )
-  input <- .schemas$lock_service_linked_role_input(RoleArn = RoleArn, Timeout = Timeout)
-  output <- .schemas$lock_service_linked_role_output()
-  config <- get_config()
-  svc <- .schemas$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.schemas$operations$lock_service_linked_role <- schemas_lock_service_linked_role
-
 #' Put code binding URI
 #'
 #' Put code binding URI
@@ -775,10 +826,10 @@ schemas_lock_service_linked_role <- function(RoleArn, Timeout) {
 #' schemas_put_code_binding(Language, RegistryName, SchemaName,
 #'   SchemaVersion)
 #'
-#' @param Language &#91;required&#93; 
-#' @param RegistryName &#91;required&#93; 
-#' @param SchemaName &#91;required&#93; 
-#' @param SchemaVersion 
+#' @param Language &#91;required&#93; The language of the code binding.
+#' @param RegistryName &#91;required&#93; The name of the registry.
+#' @param SchemaName &#91;required&#93; The name of the schema.
+#' @param SchemaVersion Specifying this limits the results to only this schema version.
 #'
 #' @section Request syntax:
 #' ```
@@ -810,6 +861,46 @@ schemas_put_code_binding <- function(Language, RegistryName, SchemaName, SchemaV
 }
 .schemas$operations$put_code_binding <- schemas_put_code_binding
 
+#' The name of the policy
+#'
+#' The name of the policy.
+#'
+#' @usage
+#' schemas_put_resource_policy(Policy, RegistryName, RevisionId)
+#'
+#' @param Policy &#91;required&#93; The resource-based policy.
+#' @param RegistryName The name of the registry.
+#' @param RevisionId The revision ID of the policy.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_policy(
+#'   Policy = "string",
+#'   RegistryName = "string",
+#'   RevisionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname schemas_put_resource_policy
+schemas_put_resource_policy <- function(Policy, RegistryName = NULL, RevisionId = NULL) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "PUT",
+    http_path = "/v1/policy",
+    paginator = list()
+  )
+  input <- .schemas$put_resource_policy_input(Policy = Policy, RegistryName = RegistryName, RevisionId = RevisionId)
+  output <- .schemas$put_resource_policy_output()
+  config <- get_config()
+  svc <- .schemas$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.schemas$operations$put_resource_policy <- schemas_put_resource_policy
+
 #' Search the schemas
 #'
 #' Search the schemas
@@ -817,10 +908,13 @@ schemas_put_code_binding <- function(Language, RegistryName, SchemaName, SchemaV
 #' @usage
 #' schemas_search_schemas(Keywords, Limit, NextToken, RegistryName)
 #'
-#' @param Keywords &#91;required&#93; 
+#' @param Keywords &#91;required&#93; Specifying this limits the results to only schemas that include the
+#' provided keywords.
 #' @param Limit 
-#' @param NextToken 
-#' @param RegistryName &#91;required&#93; 
+#' @param NextToken The token that specifies the next page of results to return. To request
+#' the first page, leave NextToken empty. The token will expire in 24
+#' hours, and cannot be shared with other accounts.
+#' @param RegistryName &#91;required&#93; The name of the registry.
 #'
 #' @section Request syntax:
 #' ```
@@ -859,7 +953,7 @@ schemas_search_schemas <- function(Keywords, Limit = NULL, NextToken = NULL, Reg
 #' @usage
 #' schemas_start_discoverer(DiscovererId)
 #'
-#' @param DiscovererId &#91;required&#93; 
+#' @param DiscovererId &#91;required&#93; The ID of the discoverer.
 #'
 #' @section Request syntax:
 #' ```
@@ -895,7 +989,7 @@ schemas_start_discoverer <- function(DiscovererId) {
 #' @usage
 #' schemas_stop_discoverer(DiscovererId)
 #'
-#' @param DiscovererId &#91;required&#93; 
+#' @param DiscovererId &#91;required&#93; The ID of the discoverer.
 #'
 #' @section Request syntax:
 #' ```
@@ -931,8 +1025,8 @@ schemas_stop_discoverer <- function(DiscovererId) {
 #' @usage
 #' schemas_tag_resource(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; 
-#' @param Tags &#91;required&#93; 
+#' @param ResourceArn &#91;required&#93; The ARN of the resource.
+#' @param Tags &#91;required&#93; Tags associated with the resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -964,42 +1058,6 @@ schemas_tag_resource <- function(ResourceArn, Tags) {
 }
 .schemas$operations$tag_resource <- schemas_tag_resource
 
-#' Unlock service linked role
-#'
-#' 
-#'
-#' @usage
-#' schemas_unlock_service_linked_role(RoleArn)
-#'
-#' @param RoleArn &#91;required&#93; 
-#'
-#' @section Request syntax:
-#' ```
-#' svc$unlock_service_linked_role(
-#'   RoleArn = "string"
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname schemas_unlock_service_linked_role
-schemas_unlock_service_linked_role <- function(RoleArn) {
-  op <- new_operation(
-    name = "UnlockServiceLinkedRole",
-    http_method = "POST",
-    http_path = "/slr-deletion/unlock",
-    paginator = list()
-  )
-  input <- .schemas$unlock_service_linked_role_input(RoleArn = RoleArn)
-  output <- .schemas$unlock_service_linked_role_output()
-  config <- get_config()
-  svc <- .schemas$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.schemas$operations$unlock_service_linked_role <- schemas_unlock_service_linked_role
-
 #' Removes tags from a resource
 #'
 #' Removes tags from a resource.
@@ -1007,8 +1065,8 @@ schemas_unlock_service_linked_role <- function(RoleArn) {
 #' @usage
 #' schemas_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; 
-#' @param TagKeys &#91;required&#93; 
+#' @param ResourceArn &#91;required&#93; The ARN of the resource.
+#' @param TagKeys &#91;required&#93; Keys of key-value pairs.
 #'
 #' @section Request syntax:
 #' ```
@@ -1048,7 +1106,7 @@ schemas_untag_resource <- function(ResourceArn, TagKeys) {
 #' schemas_update_discoverer(Description, DiscovererId)
 #'
 #' @param Description The description of the discoverer to update.
-#' @param DiscovererId &#91;required&#93; 
+#' @param DiscovererId &#91;required&#93; The ID of the discoverer.
 #'
 #' @section Request syntax:
 #' ```
@@ -1086,7 +1144,7 @@ schemas_update_discoverer <- function(Description = NULL, DiscovererId) {
 #' schemas_update_registry(Description, RegistryName)
 #'
 #' @param Description The description of the registry to update.
-#' @param RegistryName &#91;required&#93; 
+#' @param RegistryName &#91;required&#93; The name of the registry.
 #'
 #' @section Request syntax:
 #' ```
@@ -1116,9 +1174,12 @@ schemas_update_registry <- function(Description = NULL, RegistryName) {
 }
 .schemas$operations$update_registry <- schemas_update_registry
 
-#' Updates the schema definition
+#' Updates the schema definition Inactive schemas will be deleted after two
+#' years
 #'
 #' Updates the schema definition
+#' 
+#' Inactive schemas will be deleted after two years.
 #'
 #' @usage
 #' schemas_update_schema(ClientTokenId, Content, Description, RegistryName,
@@ -1127,8 +1188,8 @@ schemas_update_registry <- function(Description = NULL, RegistryName) {
 #' @param ClientTokenId The ID of the client token.
 #' @param Content The source of the schema definition.
 #' @param Description The description of the schema.
-#' @param RegistryName &#91;required&#93; 
-#' @param SchemaName &#91;required&#93; 
+#' @param RegistryName &#91;required&#93; The name of the registry.
+#' @param SchemaName &#91;required&#93; The name of the schema.
 #' @param Type The schema type for the events schema.
 #'
 #' @section Request syntax:

@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_list_tags_for_resource}
 \alias{elasticbeanstalk_list_tags_for_resource}
-\title{Returns the tags applied to an AWS Elastic Beanstalk resource}
+\title{Return the tags applied to an AWS Elastic Beanstalk resource}
 \usage{
 elasticbeanstalk_list_tags_for_resource(ResourceArn)
 }
@@ -10,15 +10,15 @@ elasticbeanstalk_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resouce for which a tag list is
 requested.
 
-Must be the ARN of an Elastic Beanstalk environment.}
+Must be the ARN of an Elastic Beanstalk resource.}
 }
 \description{
-Returns the tags applied to an AWS Elastic Beanstalk resource. The
+Return the tags applied to an AWS Elastic Beanstalk resource. The
 response contains a list of tag key-value pairs.
 }
 \details{
-Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
-environments. For details about environment tagging, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html}{Tagging Resources in Your Elastic Beanstalk Environment}.
+Elastic Beanstalk supports tagging of all of its resources. For details
+about resource tagging, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html}{Tagging Application Resources}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

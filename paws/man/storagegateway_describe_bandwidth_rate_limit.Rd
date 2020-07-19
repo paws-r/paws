@@ -13,7 +13,7 @@ storagegateway_describe_bandwidth_rate_limit(GatewayARN)
 Returns the bandwidth rate limits of a gateway. By default, these limits
 are not set, which means no bandwidth rate limiting is in effect. This
 operation is supported for the stored volume, cached volume and tape
-gateway types.\'
+gateway types.
 }
 \details{
 This operation only returns a value for a bandwidth rate limit only if

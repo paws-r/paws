@@ -6,7 +6,7 @@
 \usage{
 kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
   ClusterName, ConfigurationInfo, EncryptionInfo, EnhancedMonitoring,
-  OpenMonitoring, KafkaVersion, NumberOfBrokerNodes, Tags)
+  OpenMonitoring, KafkaVersion, LoggingInfo, NumberOfBrokerNodes, Tags)
 }
 \arguments{
 \item{BrokerNodeGroupInfo}{[required]
@@ -27,6 +27,8 @@ kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
 
 \item{KafkaVersion}{[required]
 <p>The version of Apache Kafka.</p>}
+
+\item{LoggingInfo}{}
 
 \item{NumberOfBrokerNodes}{[required]
 <p>The number of broker nodes in the cluster.</p>}
@@ -87,6 +89,23 @@ kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
     )
   ),
   KafkaVersion = "string",
+  LoggingInfo = list(
+    BrokerLogs = list(
+      CloudWatchLogs = list(
+        Enabled = TRUE|FALSE,
+        LogGroup = "string"
+      ),
+      Firehose = list(
+        DeliveryStream = "string",
+        Enabled = TRUE|FALSE
+      ),
+      S3 = list(
+        Bucket = "string",
+        Enabled = TRUE|FALSE,
+        Prefix = "string"
+      )
+    )
+  ),
   NumberOfBrokerNodes = 123,
   Tags = list(
     "string"

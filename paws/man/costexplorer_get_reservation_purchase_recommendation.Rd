@@ -13,12 +13,11 @@ costexplorer_get_reservation_purchase_recommendation(AccountId, Service,
 
 \item{Service}{[required] The specific service that you want recommendations for.}
 
-\item{AccountScope}{The account scope that you want recommendations for. \code{PAYER} means that
-AWS includes the master account and any member accounts when it
-calculates its recommendations. \code{LINKED} means that AWS includes only
-member accounts when it calculates its recommendations.
-
-Valid values are \code{PAYER} and \code{LINKED}.}
+\item{AccountScope}{The account scope that you want your recommendations for. Amazon Web
+Services calculates recommendations including the payer account and
+linked accounts if the value is set to \code{PAYER}. If the value is
+\code{LINKED}, recommendations are calculated for individual linked accounts
+only.}
 
 \item{LookbackPeriodInDays}{The number of previous days that you want AWS to consider when it
 calculates your recommendations.}

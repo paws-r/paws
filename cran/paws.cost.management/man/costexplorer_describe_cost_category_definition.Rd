@@ -2,8 +2,8 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_describe_cost_category_definition}
 \alias{costexplorer_describe_cost_category_definition}
-\title{_COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND
-IS SUBJECT TO CHANGE}
+\title{Returns the name, ARN, rules, definition, and effective dates of a Cost
+Category that's defined in the account}
 \usage{
 costexplorer_describe_cost_category_definition(CostCategoryArn,
   EffectiveOn)
@@ -14,14 +14,10 @@ costexplorer_describe_cost_category_definition(CostCategoryArn,
 \item{EffectiveOn}{The date when the Cost Category was effective.}
 }
 \description{
-\emph{\strong{Cost Category is in public beta for AWS Billing and Cost Management
-and is subject to change. Your use of Cost Categories is subject to the
-Beta Service Participation terms of the \href{https://aws.amazon.com/service-terms/}{AWS Service Terms} (Section 1.10).}}
-}
-\details{
 Returns the name, ARN, rules, definition, and effective dates of a Cost
 Category that\'s defined in the account.
-
+}
+\details{
 You have the option to use \code{EffectiveOn} to return a Cost Category that
 is active on a specific date. If there is no \code{EffectiveOn} specified,
 you'll see a Cost Category that is effective on the current date. If

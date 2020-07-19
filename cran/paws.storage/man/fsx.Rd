@@ -35,19 +35,19 @@ application administrators to launch and use shared file storage.
 
 \tabular{ll}{
 \link[=fsx_cancel_data_repository_task]{cancel_data_repository_task} \tab Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the PENDING or EXECUTING state \cr
-\link[=fsx_create_backup]{create_backup} \tab Creates a backup of an existing Amazon FSx for Windows File Server file system \cr
+\link[=fsx_create_backup]{create_backup} \tab Creates a backup of an existing Amazon FSx file system \cr
 \link[=fsx_create_data_repository_task]{create_data_repository_task} \tab Creates an Amazon FSx for Lustre data repository task \cr
 \link[=fsx_create_file_system]{create_file_system} \tab Creates a new, empty Amazon FSx file system \cr
-\link[=fsx_create_file_system_from_backup]{create_file_system_from_backup} \tab Creates a new Amazon FSx file system from an existing Amazon FSx for Windows File Server backup \cr
-\link[=fsx_delete_backup]{delete_backup} \tab Deletes an Amazon FSx for Windows File Server backup, deleting its contents \cr
+\link[=fsx_create_file_system_from_backup]{create_file_system_from_backup} \tab Creates a new Amazon FSx file system from an existing Amazon FSx backup \cr
+\link[=fsx_delete_backup]{delete_backup} \tab Deletes an Amazon FSx backup, deleting its contents \cr
 \link[=fsx_delete_file_system]{delete_file_system} \tab Deletes a file system, deleting its contents \cr
-\link[=fsx_describe_backups]{describe_backups} \tab Returns the description of specific Amazon FSx for Windows File Server backups, if a BackupIds value is provided for that backup \cr
+\link[=fsx_describe_backups]{describe_backups} \tab Returns the description of specific Amazon FSx backups, if a BackupIds value is provided for that backup \cr
 \link[=fsx_describe_data_repository_tasks]{describe_data_repository_tasks} \tab Returns the description of specific Amazon FSx for Lustre data repository tasks, if one or more TaskIds values are provided in the request, or if filters are used in the request\cr
 \link[=fsx_describe_file_systems]{describe_file_systems} \tab Returns the description of specific Amazon FSx file systems, if a FileSystemIds value is provided for that file system \cr
 \link[=fsx_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for an Amazon FSx file systems and backups in the case of Amazon FSx for Windows File Server \cr
 \link[=fsx_tag_resource]{tag_resource} \tab Tags an Amazon FSx resource \cr
 \link[=fsx_untag_resource]{untag_resource} \tab This action removes a tag from an Amazon FSx resource \cr
-\link[=fsx_update_file_system]{update_file_system} \tab Updates a file system configuration
+\link[=fsx_update_file_system]{update_file_system} \tab Use this operation to update the configuration of an existing Amazon FSx file system
 }
 }
 

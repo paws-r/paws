@@ -4,7 +4,7 @@
 \alias{servicecatalog_describe_product}
 \title{Gets information about the specified product}
 \usage{
-servicecatalog_describe_product(AcceptLanguage, Id)
+servicecatalog_describe_product(AcceptLanguage, Id, Name)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -14,7 +14,9 @@ servicecatalog_describe_product(AcceptLanguage, Id)
 \item \code{zh} - Chinese
 }}
 
-\item{Id}{[required] The product identifier.}
+\item{Id}{The product identifier.}
+
+\item{Name}{The product name.}
 }
 \description{
 Gets information about the specified product.
@@ -22,7 +24,8 @@ Gets information about the specified product.
 \section{Request syntax}{
 \preformatted{svc$describe_product(
   AcceptLanguage = "string",
-  Id = "string"
+  Id = "string",
+  Name = "string"
 )
 }
 }

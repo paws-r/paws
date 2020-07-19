@@ -137,6 +137,16 @@ NULL
   list()
 }
 
+.organizations$deregister_delegated_administrator_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), ServicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$deregister_delegated_administrator_output <- function(...) {
+  list()
+}
+
 .organizations$describe_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -365,6 +375,30 @@ NULL
   return(populate(args, shape))
 }
 
+.organizations$list_delegated_administrators_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ServicePrincipal = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$list_delegated_administrators_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DelegatedAdministrators = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string")), JoinedMethod = structure(logical(0), tags = list(type = "string")), JoinedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DelegationEnabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$list_delegated_services_for_account_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$list_delegated_services_for_account_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DelegatedServices = structure(list(structure(list(ServicePrincipal = structure(logical(0), tags = list(type = "string")), DelegationEnabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .organizations$list_handshakes_for_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Filter = structure(list(ActionType = structure(logical(0), tags = list(type = "string")), ParentHandshakeId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
@@ -480,6 +514,16 @@ NULL
 }
 
 .organizations$move_account_output <- function(...) {
+  list()
+}
+
+.organizations$register_delegated_administrator_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), ServicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$register_delegated_administrator_output <- function(...) {
   list()
 }
 

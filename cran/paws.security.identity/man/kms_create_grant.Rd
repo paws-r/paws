@@ -43,9 +43,10 @@ in the Example ARNs section of the \emph{AWS General Reference}.}
 
 \item{Operations}{[required] A list of operations that the grant permits.}
 
-\item{Constraints}{Allows a cryptographic operation only when the encryption context
-matches or includes the encryption context specified in this structure.
-For more information about encryption context, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
+\item{Constraints}{Allows a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operation}
+only when the encryption context matches or includes the encryption
+context specified in this structure. For more information about
+encryption context, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
 in the \strong{AWS Key Management Service Developer Guide} .}
 
 \item{GrantTokens}{A list of grant tokens.
@@ -75,8 +76,8 @@ grant are met. When setting permissions, grants are an alternative to
 key policies.
 }
 \details{
-To create a grant that allows a cryptographic operation only when the
-request includes a particular \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{encryption context},
+To create a grant that allows a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operation}
+only when the request includes a particular \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{encryption context},
 use the \code{Constraints} parameter. For details, see GrantConstraints.
 
 You can create grants on symmetric and asymmetric CMKs. However, if the

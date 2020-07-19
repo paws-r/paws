@@ -24,7 +24,11 @@ servicecatalog_update_provisioning_artifact(AcceptLanguage, ProductId,
 
 \item{Description}{The updated description of the provisioning artifact.}
 
-\item{Active}{Indicates whether the product version is active.}
+\item{Active}{Indicates whether the product version is active.
+
+Inactive provisioning artifacts are invisible to end users. End users
+cannot launch or update a provisioned product from an inactive
+provisioning artifact.}
 
 \item{Guidance}{Information set by the administrator to provide guidance to end users
 about which provisioning artifacts to use.

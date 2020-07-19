@@ -2,7 +2,8 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_delete_members}
 \alias{detective_delete_members}
-\title{Amazon Detective is currently in preview}
+\title{Deletes one or more member accounts from the master account behavior
+graph}
 \usage{
 detective_delete_members(GraphArn, AccountIds)
 }
@@ -13,9 +14,6 @@ detective_delete_members(GraphArn, AccountIds)
 from the behavior graph.}
 }
 \description{
-Amazon Detective is currently in preview.
-}
-\details{
 Deletes one or more member accounts from the master account behavior
 graph. This operation can only be called by a Detective master account.
 That account cannot use \code{DeleteMembers} to delete their own account from

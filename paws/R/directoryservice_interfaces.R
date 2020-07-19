@@ -455,7 +455,7 @@ NULL
 
 .directoryservice$list_certificates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), CertificatesInfo = structure(list(structure(list(CertificateId = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), CertificatesInfo = structure(list(structure(list(CertificateId = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ExpiryDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

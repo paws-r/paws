@@ -6,7 +6,7 @@
 inside a specified Amazon VPC}
 \usage{
 servicediscovery_create_private_dns_namespace(Name, CreatorRequestId,
-  Description, Vpc)
+  Description, Vpc, Tags)
 }
 \arguments{
 \item{Name}{[required] The name that you want to assign to this namespace. When you create a
@@ -21,6 +21,11 @@ string, for example, a date/time stamp.}
 \item{Description}{A description for the namespace.}
 
 \item{Vpc}{[required] The ID of the Amazon VPC that you want to associate the namespace with.}
+
+\item{Tags}{The tags to add to the namespace. Each tag consists of a key and an
+optional value, both of which you define. Tag keys can have a maximum
+character length of 128 characters, and tag values can have a maximum
+length of 256 characters.}
 }
 \description{
 Creates a private namespace based on DNS, which will be visible only
@@ -28,7 +33,7 @@ inside a specified Amazon VPC. The namespace defines your service naming
 scheme. For example, if you name your namespace \code{example.com} and name
 your service \code{backend}, the resulting DNS name for the service will be
 \code{backend.example.com}. For the current limit on the number of namespaces
-that you can create using the same AWS account, see \href{http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
+that you can create using the same AWS account, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
 in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Request syntax}{
@@ -36,9 +41,26 @@ in the \emph{AWS Cloud Map Developer Guide}.
   Name = "string",
   CreatorRequestId = "string",
   Description = "string",
-  Vpc = "string"
+  Vpc = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }
 
+\examples{
+\dontrun{
+# Example: Create private DNS namespace
+svc$create_private_dns_namespace(
+  CreatorRequestId = "eedd6892-50f3-41b2-8af9-611d6e1d1a8c",
+  Name = "example.com",
+  Vpc = "vpc-1c56417b"
+)
+}
+
+}
 \keyword{internal}

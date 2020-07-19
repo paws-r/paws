@@ -5,7 +5,7 @@
 \title{Updates an existing route for a specified service mesh and virtual
 router}
 \usage{
-appmesh_update_route(clientToken, meshName, routeName, spec,
+appmesh_update_route(clientToken, meshName, meshOwner, routeName, spec,
   virtualRouterName)
 }
 \arguments{
@@ -14,6 +14,10 @@ idempotency of the request. Up to 36 letters, numbers, hyphens, and
 underscores are allowed.}
 
 \item{meshName}{[required] The name of the service mesh that the route resides in.}
+
+\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it\'s the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{routeName}{[required] The name of the route to update.}
 
@@ -29,6 +33,7 @@ router.
 \preformatted{svc$update_route(
   clientToken = "string",
   meshName = "string",
+  meshOwner = "string",
   routeName = "string",
   spec = list(
     grpcRoute = list(
@@ -75,6 +80,16 @@ router.
         tcpRetryEvents = list(
           "connection-error"
         )
+      ),
+      timeout = list(
+        idle = list(
+          unit = "ms"|"s",
+          value = 123
+        ),
+        perRequest = list(
+          unit = "ms"|"s",
+          value = 123
+        )
       )
     ),
     http2Route = list(
@@ -118,6 +133,16 @@ router.
         ),
         tcpRetryEvents = list(
           "connection-error"
+        )
+      ),
+      timeout = list(
+        idle = list(
+          unit = "ms"|"s",
+          value = 123
+        ),
+        perRequest = list(
+          unit = "ms"|"s",
+          value = 123
         )
       )
     ),
@@ -163,6 +188,16 @@ router.
         tcpRetryEvents = list(
           "connection-error"
         )
+      ),
+      timeout = list(
+        idle = list(
+          unit = "ms"|"s",
+          value = 123
+        ),
+        perRequest = list(
+          unit = "ms"|"s",
+          value = 123
+        )
       )
     ),
     priority = 123,
@@ -173,6 +208,12 @@ router.
             virtualNode = "string",
             weight = 123
           )
+        )
+      ),
+      timeout = list(
+        idle = list(
+          unit = "ms"|"s",
+          value = 123
         )
       )
     )

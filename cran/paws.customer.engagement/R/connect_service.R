@@ -65,13 +65,17 @@ NULL
 #'  \link[=connect_list_phone_numbers]{list_phone_numbers} \tab Provides information about the phone numbers for the specified Amazon Connect instance \cr
 #'  \link[=connect_list_queues]{list_queues} \tab Provides information about the queues for the specified Amazon Connect instance \cr
 #'  \link[=connect_list_routing_profiles]{list_routing_profiles} \tab Provides summary information about the routing profiles for the specified Amazon Connect instance \cr
-#'  \link[=connect_list_security_profiles]{list_security_profiles} \tab Provides summary information about the security profiles for the specified Amazon Connect instance\cr
+#'  \link[=connect_list_security_profiles]{list_security_profiles} \tab Provides summary information about the security profiles for the specified Amazon Connect instance \cr
 #'  \link[=connect_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource \cr
 #'  \link[=connect_list_user_hierarchy_groups]{list_user_hierarchy_groups} \tab Provides summary information about the hierarchy groups for the specified Amazon Connect instance \cr
 #'  \link[=connect_list_users]{list_users} \tab Provides summary information about the users for the specified Amazon Connect instance \cr
+#'  \link[=connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording the call\cr
 #'  \link[=connect_start_chat_contact]{start_chat_contact} \tab Initiates a contact flow to start a new chat for the customer \cr
-#'  \link[=connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab Initiates a contact flow to place an outbound call to a customer \cr
+#'  \link[=connect_start_contact_recording]{start_contact_recording} \tab This API starts recording the contact when the agent joins the call \cr
+#'  \link[=connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab This API places an outbound call to a contact, and then initiates the contact flow \cr
 #'  \link[=connect_stop_contact]{stop_contact} \tab Ends the specified contact \cr
+#'  \link[=connect_stop_contact_recording]{stop_contact_recording} \tab When a contact is being recorded, this API stops recording the call \cr
+#'  \link[=connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording the call \cr
 #'  \link[=connect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource \cr
 #'  \link[=connect_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource \cr
 #'  \link[=connect_update_contact_attributes]{update_contact_attributes} \tab Creates or updates the contact attributes associated with the specified contact \cr
@@ -97,7 +101,7 @@ connect <- function(config = list()) {
 
 .connect$metadata <- list(
   service_name = "connect",
-  endpoints = list("*" = list(endpoint = "connect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "connect.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "connect.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "connect.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "connect.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "connect.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Connect",
   api_version = "2017-08-08",
   signing_name = "connect",

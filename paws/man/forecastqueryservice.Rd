@@ -33,7 +33,7 @@ Provides APIs for creating and managing Amazon Forecast resources.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=forecastqueryservice_query_forecast]{query_forecast} \tab Retrieves a forecast filtered by the supplied criteria
+\link[=forecastqueryservice_query_forecast]{query_forecast} \tab Retrieves a forecast for a single item, filtered by the supplied criteria
 }
 }
 

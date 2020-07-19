@@ -2,7 +2,7 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_generate_data_key}
 \alias{kms_generate_data_key}
-\title{Generates a unique symmetric data key}
+\title{Generates a unique symmetric data key for client-side encryption}
 \usage{
 kms_generate_data_key(KeyId, EncryptionContext, NumberOfBytes, KeySpec,
   GrantTokens)
@@ -60,28 +60,22 @@ For more information, see \href{https://docs.aws.amazon.com/kms/latest/developer
 in the \emph{AWS Key Management Service Developer Guide}.}
 }
 \description{
-Generates a unique symmetric data key. This operation returns a
-plaintext copy of the data key and a copy that is encrypted under a
-customer master key (CMK) that you specify. You can use the plaintext
-key to encrypt your data outside of AWS KMS and store the encrypted data
-key with the encrypted data.
+Generates a unique symmetric data key for client-side encryption. This
+operation returns a plaintext copy of the data key and a copy that is
+encrypted under a customer master key (CMK) that you specify. You can
+use the plaintext key to encrypt your data outside of AWS KMS and store
+the encrypted data key with the encrypted data.
 }
 \details{
 \code{GenerateDataKey} returns a unique data key for each request. The bytes
-in the key are not related to the caller or CMK that is used to encrypt
-the data key.
+in the plaintext key are not related to the caller or the CMK.
 
 To generate a data key, specify the symmetric CMK that will be used to
 encrypt the data key. You cannot use an asymmetric CMK to generate data
-keys.
-
-You must also specify the length of the data key. Use either the
-\code{KeySpec} or \code{NumberOfBytes} parameters (but not both). For 128-bit and
-256-bit data keys, use the \code{KeySpec} parameter.
-
-If the operation succeeds, the plaintext copy of the data key is in the
-\code{Plaintext} field of the response, and the encrypted copy of the data
-key in the \code{CiphertextBlob} field.
+keys. To get the type of your CMK, use the DescribeKey operation. You
+must also specify the length of the data key. Use either the \code{KeySpec}
+or \code{NumberOfBytes} parameters (but not both). For 128-bit and 256-bit
+data keys, use the \code{KeySpec} parameter.
 
 To get only an encrypted copy of the data key, use
 GenerateDataKeyWithoutPlaintext. To generate an asymmetric data key
@@ -93,31 +87,39 @@ You can use the optional encryption context to add additional security
 to the encryption operation. If you specify an \code{EncryptionContext}, you
 must specify the same encryption context (a case-sensitive exact match)
 when decrypting the encrypted data key. Otherwise, the request to
-decrypt fails with an InvalidCiphertextException. For more information,
-see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
+decrypt fails with an \code{InvalidCiphertextException}. For more
+information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
 in the \emph{AWS Key Management Service Developer Guide}.
 
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
 
+\strong{How to use your data key}
+
 We recommend that you use the following pattern to encrypt data locally
-in your application:
+in your application. You can write your own code or use a client-side
+encryption library, such as the \href{https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/}{AWS Encryption SDK},
+the \href{https://docs.aws.amazon.com/dynamodb-encryption-client/latest/devguide/}{Amazon DynamoDB Encryption Client},
+or \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html}{Amazon S3 client-side encryption}
+to do these tasks for you.
+
+To encrypt data outside of AWS KMS:
 \enumerate{
-\item Use the \code{GenerateDataKey} operation to get a data encryption key.
-\item Use the plaintext data key (returned in the \code{Plaintext} field of the
-response) to encrypt data locally, then erase the plaintext data key
-from memory.
-\item Store the encrypted data key (returned in the \code{CiphertextBlob} field
-of the response) alongside the locally encrypted data.
+\item Use the \code{GenerateDataKey} operation to get a data key.
+\item Use the plaintext data key (in the \code{Plaintext} field of the
+response) to encrypt your data outside of AWS KMS. Then erase the
+plaintext data key from memory.
+\item Store the encrypted data key (in the \code{CiphertextBlob} field of the
+response) with the encrypted data.
 }
 
-To decrypt data locally:
+To decrypt data outside of AWS KMS:
 \enumerate{
 \item Use the Decrypt operation to decrypt the encrypted data key. The
 operation returns a plaintext copy of the data key.
-\item Use the plaintext data key to decrypt data locally, then erase the
-plaintext data key from memory.
+\item Use the plaintext data key to decrypt data outside of AWS KMS, then
+erase the plaintext data key from memory.
 }
 }
 \section{Request syntax}{

@@ -33,9 +33,9 @@ NULL
 #' the `param.n` notation. Values of `n` are integers starting from 1. For
 #' example, a parameter list with two elements looks like this:
 #' 
-#' `&amp;Attribute.1=first`
+#' `&amp;AttributeName.1=first`
 #' 
-#' `&amp;Attribute.2=second`
+#' `&amp;AttributeName.2=second`
 #' 
 #' Cross-account permissions don\'t apply to this action. For more
 #' information, see [Grant Cross-Account Permissions to a Role and a User
@@ -224,9 +224,9 @@ sqs_change_message_visibility <- function(QueueUrl, ReceiptHandle, VisibilityTim
 #' the `param.n` notation. Values of `n` are integers starting from 1. For
 #' example, a parameter list with two elements looks like this:
 #' 
-#' `&amp;Attribute.1=first`
+#' `&amp;AttributeName.1=first`
 #' 
-#' `&amp;Attribute.2=second`
+#' `&amp;AttributeName.2=second`
 #'
 #' @usage
 #' sqs_change_message_visibility_batch(QueueUrl, Entries)
@@ -274,7 +274,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' Creates a new standard or FIFO queue
 #'
 #' Creates a new standard or FIFO queue. You can pass one or more
-#' attributes in the request. Keep the following caveats in mind:
+#' attributes in the request. Keep the following in mind:
 #' 
 #' -   If you don\'t specify the `FifoQueue` attribute, Amazon SQS creates
 #'     a standard queue.
@@ -298,6 +298,9 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/limits-queues.html)
 #' and is unique within the scope of your queues.
 #' 
+#' After you create a queue, you must wait at least one second after the
+#' queue is created to be able to use the queue.
+#' 
 #' To get the queue URL, use the ` <a>GetQueueUrl</a> ` action.
 #' ` <a>GetQueueUrl</a> ` requires only the `QueueName` parameter. be aware
 #' of existing queue names:
@@ -313,9 +316,9 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' the `param.n` notation. Values of `n` are integers starting from 1. For
 #' example, a parameter list with two elements looks like this:
 #' 
-#' `&amp;Attribute.1=first`
+#' `&amp;AttributeName.1=first`
 #' 
-#' `&amp;Attribute.2=second`
+#' `&amp;AttributeName.2=second`
 #' 
 #' Cross-account permissions don\'t apply to this action. For more
 #' information, see [Grant Cross-Account Permissions to a Role and a User
@@ -340,41 +343,41 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' The following lists the names, descriptions, and values of the special
 #' request parameters that the `CreateQueue` action uses:
 #' 
-#' -   `DelaySeconds` - The length of time, in seconds, for which the
+#' -   `DelaySeconds` -- The length of time, in seconds, for which the
 #'     delivery of all messages in the queue is delayed. Valid values: An
 #'     integer from 0 to 900 seconds (15 minutes). Default: 0.
 #' 
-#' -   `MaximumMessageSize` - The limit of how many bytes a message can
+#' -   `MaximumMessageSize` -- The limit of how many bytes a message can
 #'     contain before Amazon SQS rejects it. Valid values: An integer from
 #'     1,024 bytes (1 KiB) to 262,144 bytes (256 KiB). Default: 262,144
 #'     (256 KiB).
 #' 
-#' -   `MessageRetentionPeriod` - The length of time, in seconds, for which
-#'     Amazon SQS retains a message. Valid values: An integer from 60
+#' -   `MessageRetentionPeriod` -- The length of time, in seconds, for
+#'     which Amazon SQS retains a message. Valid values: An integer from 60
 #'     seconds (1 minute) to 1,209,600 seconds (14 days). Default: 345,600
 #'     (4 days).
 #' 
-#' -   `Policy` - The queue\'s policy. A valid AWS policy. For more
+#' -   `Policy` -- The queue\'s policy. A valid AWS policy. For more
 #'     information about policy structure, see [Overview of AWS IAM
 #'     Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html)
 #'     in the *Amazon IAM User Guide*.
 #' 
-#' -   `ReceiveMessageWaitTimeSeconds` - The length of time, in seconds,
+#' -   `ReceiveMessageWaitTimeSeconds` -- The length of time, in seconds,
 #'     for which a ` <a>ReceiveMessage</a> ` action waits for a message to
 #'     arrive. Valid values: An integer from 0 to 20 (seconds). Default: 0.
 #' 
-#' -   `RedrivePolicy` - The string that includes the parameters for the
-#'     dead-letter queue functionality of the source queue. For more
-#'     information about the redrive policy and dead-letter queues, see
-#'     [Using Amazon SQS Dead-Letter
+#' -   `RedrivePolicy` -- The string that includes the parameters for the
+#'     dead-letter queue functionality of the source queue as a JSON
+#'     object. For more information about the redrive policy and
+#'     dead-letter queues, see [Using Amazon SQS Dead-Letter
 #'     Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
-#'     -   `deadLetterTargetArn` - The Amazon Resource Name (ARN) of the
+#'     -   `deadLetterTargetArn` -- The Amazon Resource Name (ARN) of the
 #'         dead-letter queue to which Amazon SQS moves messages after the
 #'         value of `maxReceiveCount` is exceeded.
 #' 
-#'     -   `maxReceiveCount` - The number of times a message is delivered
+#'     -   `maxReceiveCount` -- The number of times a message is delivered
 #'         to the source queue before being moved to the dead-letter queue.
 #'         When the `ReceiveCount` for a message exceeds the
 #'         `maxReceiveCount` for a queue, Amazon SQS moves the message to
@@ -384,7 +387,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'     Similarly, the dead-letter queue of a standard queue must also be a
 #'     standard queue.
 #' 
-#' -   `VisibilityTimeout` - The visibility timeout for the queue, in
+#' -   `VisibilityTimeout` -- The visibility timeout for the queue, in
 #'     seconds. Valid values: An integer from 0 to 43,200 (12 hours).
 #'     Default: 30. For more information about the visibility timeout, see
 #'     [Visibility
@@ -394,7 +397,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' The following attributes apply only to
 #' [server-side-encryption](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 #' 
-#' -   `KmsMasterKeyId` - The ID of an AWS-managed customer master key
+#' -   `KmsMasterKeyId` -- The ID of an AWS-managed customer master key
 #'     (CMK) for Amazon SQS or a custom CMK. For more information, see [Key
 #'     Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 #'     While the alias of the AWS-managed CMK for Amazon SQS is always
@@ -403,8 +406,8 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
 #'     in the *AWS Key Management Service API Reference*.
 #' 
-#' -   `KmsDataKeyReusePeriodSeconds` - The length of time, in seconds, for
-#'     which Amazon SQS can reuse a [data
+#' -   `KmsDataKeyReusePeriodSeconds` -- The length of time, in seconds,
+#'     for which Amazon SQS can reuse a [data
 #'     key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
 #'     to encrypt or decrypt messages before calling AWS KMS again. An
 #'     integer representing seconds, between 60 seconds (1 minute) and
@@ -417,7 +420,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' The following attributes apply only to [FIFO (first-in-first-out)
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
 #' 
-#' -   `FifoQueue` - Designates a queue as FIFO. Valid values: `true`,
+#' -   `FifoQueue` -- Designates a queue as FIFO. Valid values: `true`,
 #'     `false`. If you don\'t specify the `FifoQueue` attribute, Amazon SQS
 #'     creates a standard queue. You can provide this attribute only during
 #'     queue creation. You can\'t change it for an existing queue. When you
@@ -428,7 +431,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'     Logic](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
-#' -   `ContentBasedDeduplication` - Enables content-based deduplication.
+#' -   `ContentBasedDeduplication` -- Enables content-based deduplication.
 #'     Valid values: `true`, `false`. For more information, see
 #'     [Exactly-Once
 #'     Processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
@@ -598,9 +601,9 @@ sqs_delete_message <- function(QueueUrl, ReceiptHandle) {
 #' the `param.n` notation. Values of `n` are integers starting from 1. For
 #' example, a parameter list with two elements looks like this:
 #' 
-#' `&amp;Attribute.1=first`
+#' `&amp;AttributeName.1=first`
 #' 
-#' `&amp;Attribute.2=second`
+#' `&amp;AttributeName.2=second`
 #'
 #' @usage
 #' sqs_delete_message_batch(QueueUrl, Entries)
@@ -647,8 +650,7 @@ sqs_delete_message_batch <- function(QueueUrl, Entries) {
 #' contents
 #'
 #' Deletes the queue specified by the `QueueUrl`, regardless of the
-#' queue\'s contents. If the specified queue doesn\'t exist, Amazon SQS
-#' returns a successful response.
+#' queue\'s contents.
 #' 
 #' Be careful with the `DeleteQueue` action: When you delete a queue, any
 #' messages in the queue are no longer available.
@@ -707,14 +709,6 @@ sqs_delete_queue <- function(QueueUrl) {
 #' To determine whether a queue is
 #' [FIFO](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html),
 #' you can check whether `QueueName` ends with the `.fifo` suffix.
-#' 
-#' Some actions take lists of parameters. These lists are specified using
-#' the `param.n` notation. Values of `n` are integers starting from 1. For
-#' example, a parameter list with two elements looks like this:
-#' 
-#' `&amp;Attribute.1=first`
-#' 
-#' `&amp;Attribute.2=second`
 #'
 #' @usage
 #' sqs_get_queue_attributes(QueueUrl, AttributeNames)
@@ -731,63 +725,69 @@ sqs_delete_queue <- function(QueueUrl) {
 #' 
 #' The following attributes are supported:
 #' 
-#' -   `All` - Returns all values.
+#' The `ApproximateNumberOfMessagesDelayed`,
+#' `ApproximateNumberOfMessagesNotVisible`, and
+#' `ApproximateNumberOfMessagesVisible` metrics may not achieve consistency
+#' until at least 1 minute after the producers stop sending messages. This
+#' period is required for the queue metadata to reach eventual consistency.
 #' 
-#' -   `ApproximateNumberOfMessages` - Returns the approximate number of
+#' -   `All` -- Returns all values.
+#' 
+#' -   `ApproximateNumberOfMessages` -- Returns the approximate number of
 #'     messages available for retrieval from the queue.
 #' 
-#' -   `ApproximateNumberOfMessagesDelayed` - Returns the approximate
+#' -   `ApproximateNumberOfMessagesDelayed` -- Returns the approximate
 #'     number of messages in the queue that are delayed and not available
 #'     for reading immediately. This can happen when the queue is
 #'     configured as a delay queue or when a message has been sent with a
 #'     delay parameter.
 #' 
-#' -   `ApproximateNumberOfMessagesNotVisible` - Returns the approximate
+#' -   `ApproximateNumberOfMessagesNotVisible` -- Returns the approximate
 #'     number of messages that are in flight. Messages are considered to be
 #'     *in flight* if they have been sent to a client but have not yet been
 #'     deleted or have not yet reached the end of their visibility window.
 #' 
-#' -   `CreatedTimestamp` - Returns the time when the queue was created in
+#' -   `CreatedTimestamp` -- Returns the time when the queue was created in
 #'     seconds ([epoch time](http://en.wikipedia.org/wiki/Unix_time)).
 #' 
-#' -   `DelaySeconds` - Returns the default delay on the queue in seconds.
+#' -   `DelaySeconds` -- Returns the default delay on the queue in seconds.
 #' 
-#' -   `LastModifiedTimestamp` - Returns the time when the queue was last
+#' -   `LastModifiedTimestamp` -- Returns the time when the queue was last
 #'     changed in seconds ([epoch
 #'     time](http://en.wikipedia.org/wiki/Unix_time)).
 #' 
-#' -   `MaximumMessageSize` - Returns the limit of how many bytes a message
-#'     can contain before Amazon SQS rejects it.
+#' -   `MaximumMessageSize` -- Returns the limit of how many bytes a
+#'     message can contain before Amazon SQS rejects it.
 #' 
-#' -   `MessageRetentionPeriod` - Returns the length of time, in seconds,
+#' -   `MessageRetentionPeriod` -- Returns the length of time, in seconds,
 #'     for which Amazon SQS retains a message.
 #' 
-#' -   `Policy` - Returns the policy of the queue.
+#' -   `Policy` -- Returns the policy of the queue.
 #' 
-#' -   `QueueArn` - Returns the Amazon resource name (ARN) of the queue.
+#' -   `QueueArn` -- Returns the Amazon resource name (ARN) of the queue.
 #' 
-#' -   `ReceiveMessageWaitTimeSeconds` - Returns the length of time, in
+#' -   `ReceiveMessageWaitTimeSeconds` -- Returns the length of time, in
 #'     seconds, for which the `ReceiveMessage` action waits for a message
 #'     to arrive.
 #' 
-#' -   `RedrivePolicy` - Returns the string that includes the parameters
-#'     for dead-letter queue functionality of the source queue. For more
-#'     information about the redrive policy and dead-letter queues, see
-#'     [Using Amazon SQS Dead-Letter
+#' -   `RedrivePolicy` -- The string that includes the parameters for the
+#'     dead-letter queue functionality of the source queue as a JSON
+#'     object. For more information about the redrive policy and
+#'     dead-letter queues, see [Using Amazon SQS Dead-Letter
 #'     Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
-#'     -   `deadLetterTargetArn` - The Amazon Resource Name (ARN) of the
+#'     -   `deadLetterTargetArn` -- The Amazon Resource Name (ARN) of the
 #'         dead-letter queue to which Amazon SQS moves messages after the
 #'         value of `maxReceiveCount` is exceeded.
 #' 
-#'     -   `maxReceiveCount` - The number of times a message is delivered
+#'     -   `maxReceiveCount` -- The number of times a message is delivered
 #'         to the source queue before being moved to the dead-letter queue.
 #'         When the `ReceiveCount` for a message exceeds the
 #'         `maxReceiveCount` for a queue, Amazon SQS moves the message to
 #'         the dead-letter-queue.
 #' 
-#' -   `VisibilityTimeout` - Returns the visibility timeout for the queue.
+#' -   `VisibilityTimeout` -- Returns the visibility timeout for the queue.
 #'     For more information about the visibility timeout, see [Visibility
 #'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
@@ -795,12 +795,12 @@ sqs_delete_queue <- function(QueueUrl) {
 #' The following attributes apply only to
 #' [server-side-encryption](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 #' 
-#' -   `KmsMasterKeyId` - Returns the ID of an AWS-managed customer master
+#' -   `KmsMasterKeyId` -- Returns the ID of an AWS-managed customer master
 #'     key (CMK) for Amazon SQS or a custom CMK. For more information, see
 #'     [Key
 #'     Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 #' 
-#' -   `KmsDataKeyReusePeriodSeconds` - Returns the length of time, in
+#' -   `KmsDataKeyReusePeriodSeconds` -- Returns the length of time, in
 #'     seconds, for which Amazon SQS can reuse a data key to encrypt or
 #'     decrypt messages before calling AWS KMS again. For more information,
 #'     see [How Does the Data Key Reuse Period
@@ -809,7 +809,7 @@ sqs_delete_queue <- function(QueueUrl) {
 #' The following attributes apply only to [FIFO (first-in-first-out)
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
 #' 
-#' -   `FifoQueue` - Returns whether the queue is FIFO. For more
+#' -   `FifoQueue` -- Returns whether the queue is FIFO. For more
 #'     information, see [FIFO Queue
 #'     Logic](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
@@ -818,7 +818,7 @@ sqs_delete_queue <- function(QueueUrl) {
 #'     [FIFO](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html),
 #'     you can check whether `QueueName` ends with the `.fifo` suffix.
 #' 
-#' -   `ContentBasedDeduplication` - Returns whether content-based
+#' -   `ContentBasedDeduplication` -- Returns whether content-based
 #'     deduplication is enabled for the queue. For more information, see
 #'     [Exactly-Once
 #'     Processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
@@ -917,30 +917,34 @@ sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
-#' sqs_list_dead_letter_source_queues(QueueUrl)
+#' sqs_list_dead_letter_source_queues(QueueUrl, NextToken, MaxResults)
 #'
 #' @param QueueUrl &#91;required&#93; The URL of a dead-letter queue.
 #' 
 #' Queue URLs and names are case-sensitive.
+#' @param NextToken Pagination token to request the next set of results.
+#' @param MaxResults Maximum number of results to include in the response.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_dead_letter_source_queues(
-#'   QueueUrl = "string"
+#'   QueueUrl = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sqs_list_dead_letter_source_queues
-sqs_list_dead_letter_source_queues <- function(QueueUrl) {
+sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDeadLetterSourceQueues",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sqs$list_dead_letter_source_queues_input(QueueUrl = QueueUrl)
+  input <- .sqs$list_dead_letter_source_queues_input(QueueUrl = QueueUrl, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_dead_letter_source_queues_output()
   config <- get_config()
   svc <- .sqs$service(config)
@@ -1007,31 +1011,35 @@ sqs_list_queue_tags <- function(QueueUrl) {
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
-#' sqs_list_queues(QueueNamePrefix)
+#' sqs_list_queues(QueueNamePrefix, NextToken, MaxResults)
 #'
 #' @param QueueNamePrefix A string to use for filtering the list results. Only those queues whose
 #' name begins with the specified string are returned.
 #' 
 #' Queue URLs and names are case-sensitive.
+#' @param NextToken Pagination token to request the next set of results.
+#' @param MaxResults Maximum number of results to include in the response.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_queues(
-#'   QueueNamePrefix = "string"
+#'   QueueNamePrefix = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sqs_list_queues
-sqs_list_queues <- function(QueueNamePrefix = NULL) {
+sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListQueues",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sqs$list_queues_input(QueueNamePrefix = QueueNamePrefix)
+  input <- .sqs$list_queues_input(QueueNamePrefix = QueueNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_queues_output()
   config <- get_config()
   svc <- .sqs$service(config)
@@ -1157,16 +1165,16 @@ sqs_purge_queue <- function(QueueUrl) {
 #' @param AttributeNames A list of attributes that need to be returned along with each message.
 #' These attributes include:
 #' 
-#' -   `All` - Returns all values.
+#' -   `All` -- Returns all values.
 #' 
-#' -   `ApproximateFirstReceiveTimestamp` - Returns the time the message
+#' -   `ApproximateFirstReceiveTimestamp` -- Returns the time the message
 #'     was first received from the queue ([epoch
 #'     time](http://en.wikipedia.org/wiki/Unix_time) in milliseconds).
 #' 
-#' -   `ApproximateReceiveCount` - Returns the number of times a message
-#'     has been received from the queue but not deleted.
+#' -   `ApproximateReceiveCount` -- Returns the number of times a message
+#'     has been received across all queues but not deleted.
 #' 
-#' -   `AWSTraceHeader` - Returns the AWS X-Ray trace header string.
+#' -   `AWSTraceHeader` -- Returns the AWS X-Ray trace header string.
 #' 
 #' -   `SenderId`
 #' 
@@ -1176,18 +1184,18 @@ sqs_purge_queue <- function(QueueUrl) {
 #'     -   For an IAM role, returns the IAM role ID, for example
 #'         `ABCDE1F2GH3I4JK5LMNOP:i-a123b456`.
 #' 
-#' -   `SentTimestamp` - Returns the time the message was sent to the queue
-#'     ([epoch time](http://en.wikipedia.org/wiki/Unix_time) in
+#' -   `SentTimestamp` -- Returns the time the message was sent to the
+#'     queue ([epoch time](http://en.wikipedia.org/wiki/Unix_time) in
 #'     milliseconds).
 #' 
-#' -   `MessageDeduplicationId` - Returns the value provided by the
+#' -   `MessageDeduplicationId` -- Returns the value provided by the
 #'     producer that calls the ` <a>SendMessage</a> ` action.
 #' 
-#' -   `MessageGroupId` - Returns the value provided by the producer that
+#' -   `MessageGroupId` -- Returns the value provided by the producer that
 #'     calls the ` <a>SendMessage</a> ` action. Messages with the same
 #'     `MessageGroupId` are returned in sequence.
 #' 
-#' -   `SequenceNumber` - Returns the value provided by Amazon SQS.
+#' -   `SequenceNumber` -- Returns the value provided by Amazon SQS.
 #' @param MessageAttributeNames The name of the message attribute, where *N* is the index.
 #' 
 #' -   The name can contain alphanumeric characters and the underscore
@@ -1219,13 +1227,22 @@ sqs_purge_queue <- function(QueueUrl) {
 #' call returns sooner than `WaitTimeSeconds`. If no messages are available
 #' and the wait time expires, the call returns successfully with an empty
 #' list of messages.
+#' 
+#' To avoid HTTP errors, ensure that the HTTP response timeout for
+#' `ReceiveMessage` requests is longer than the `WaitTimeSeconds`
+#' parameter. For example, with the Java SDK, you can set HTTP transport
+#' settings using the
+#' [NettyNioAsyncHttpClient](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/nio/netty/NettyNioAsyncHttpClient.html)
+#' for asynchronous clients, or the
+#' [ApacheHttpClient](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/apache/ApacheHttpClient.html)
+#' for synchronous clients.
 #' @param ReceiveRequestAttemptId This parameter applies only to FIFO (first-in-first-out) queues.
 #' 
 #' The token used for deduplication of `ReceiveMessage` calls. If a
 #' networking issue occurs after a `ReceiveMessage` action, and instead of
-#' a response you receive a generic error, you can retry the same action
-#' with an identical `ReceiveRequestAttemptId` to retrieve the same set of
-#' messages, even if their visibility timeout has not yet expired.
+#' a response you receive a generic error, it is possible to retry the same
+#' action with an identical `ReceiveRequestAttemptId` to retrieve the same
+#' set of messages, even if their visibility timeout has not yet expired.
 #' 
 #' -   You can use `ReceiveRequestAttemptId` only for 5 minutes after a
 #'     `ReceiveMessage` action.
@@ -1237,7 +1254,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #'     `ReceiveRequestAttemptId`, Amazon SQS generates a
 #'     `ReceiveRequestAttemptId`.
 #' 
-#' -   You can retry the `ReceiveMessage` action with the same
+#' -   It is possible to retry the `ReceiveMessage` action with the same
 #'     `ReceiveRequestAttemptId` if none of the messages have been modified
 #'     (deleted or had their visibility changes).
 #' 
@@ -1269,7 +1286,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #'     visibility timeout expires. As a result, delays might occur but the
 #'     messages in the queue remain in a strict order.
 #' 
-#' The length of `ReceiveRequestAttemptId` is 128 characters.
+#' The maximum length of `ReceiveRequestAttemptId` is 128 characters.
 #' `ReceiveRequestAttemptId` can contain alphanumeric characters (`a-z`,
 #' `A-Z`, `0-9`) and punctuation
 #' (`` !\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~ ``).
@@ -1420,7 +1437,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' 
 #' -   Currently, the only supported message system attribute is
 #'     `AWSTraceHeader`. Its type must be `String` and its value must be a
-#'     correctly formatted AWS X-Ray trace string.
+#'     correctly formatted AWS X-Ray trace header string.
 #' 
 #' -   The size of a message system attribute doesn\'t count towards the
 #'     total size of a message.
@@ -1471,7 +1488,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' Amazon SQS continues to keep track of the message deduplication ID even
 #' after the message is received and deleted.
 #' 
-#' The length of `MessageDeduplicationId` is 128 characters.
+#' The maximum length of `MessageDeduplicationId` is 128 characters.
 #' `MessageDeduplicationId` can contain alphanumeric characters (`a-z`,
 #' `A-Z`, `0-9`) and punctuation
 #' (`` !\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~ ``).
@@ -1598,9 +1615,9 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
 #' the `param.n` notation. Values of `n` are integers starting from 1. For
 #' example, a parameter list with two elements looks like this:
 #' 
-#' `&amp;Attribute.1=first`
+#' `&amp;AttributeName.1=first`
 #' 
-#' `&amp;Attribute.2=second`
+#' `&amp;AttributeName.2=second`
 #'
 #' @usage
 #' sqs_send_message_batch(QueueUrl, Entries)
@@ -1705,41 +1722,41 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' The following lists the names, descriptions, and values of the special
 #' request parameters that the `SetQueueAttributes` action uses:
 #' 
-#' -   `DelaySeconds` - The length of time, in seconds, for which the
+#' -   `DelaySeconds` -- The length of time, in seconds, for which the
 #'     delivery of all messages in the queue is delayed. Valid values: An
 #'     integer from 0 to 900 (15 minutes). Default: 0.
 #' 
-#' -   `MaximumMessageSize` - The limit of how many bytes a message can
+#' -   `MaximumMessageSize` -- The limit of how many bytes a message can
 #'     contain before Amazon SQS rejects it. Valid values: An integer from
 #'     1,024 bytes (1 KiB) up to 262,144 bytes (256 KiB). Default: 262,144
 #'     (256 KiB).
 #' 
-#' -   `MessageRetentionPeriod` - The length of time, in seconds, for which
-#'     Amazon SQS retains a message. Valid values: An integer representing
-#'     seconds, from 60 (1 minute) to 1,209,600 (14 days). Default: 345,600
-#'     (4 days).
+#' -   `MessageRetentionPeriod` -- The length of time, in seconds, for
+#'     which Amazon SQS retains a message. Valid values: An integer
+#'     representing seconds, from 60 (1 minute) to 1,209,600 (14 days).
+#'     Default: 345,600 (4 days).
 #' 
-#' -   `Policy` - The queue\'s policy. A valid AWS policy. For more
+#' -   `Policy` -- The queue\'s policy. A valid AWS policy. For more
 #'     information about policy structure, see [Overview of AWS IAM
 #'     Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html)
 #'     in the *Amazon IAM User Guide*.
 #' 
-#' -   `ReceiveMessageWaitTimeSeconds` - The length of time, in seconds,
+#' -   `ReceiveMessageWaitTimeSeconds` -- The length of time, in seconds,
 #'     for which a ` <a>ReceiveMessage</a> ` action waits for a message to
-#'     arrive. Valid values: an integer from 0 to 20 (seconds). Default: 0.
+#'     arrive. Valid values: An integer from 0 to 20 (seconds). Default: 0.
 #' 
-#' -   `RedrivePolicy` - The string that includes the parameters for the
-#'     dead-letter queue functionality of the source queue. For more
-#'     information about the redrive policy and dead-letter queues, see
-#'     [Using Amazon SQS Dead-Letter
+#' -   `RedrivePolicy` -- The string that includes the parameters for the
+#'     dead-letter queue functionality of the source queue as a JSON
+#'     object. For more information about the redrive policy and
+#'     dead-letter queues, see [Using Amazon SQS Dead-Letter
 #'     Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
-#'     -   `deadLetterTargetArn` - The Amazon Resource Name (ARN) of the
+#'     -   `deadLetterTargetArn` -- The Amazon Resource Name (ARN) of the
 #'         dead-letter queue to which Amazon SQS moves messages after the
 #'         value of `maxReceiveCount` is exceeded.
 #' 
-#'     -   `maxReceiveCount` - The number of times a message is delivered
+#'     -   `maxReceiveCount` -- The number of times a message is delivered
 #'         to the source queue before being moved to the dead-letter queue.
 #'         When the `ReceiveCount` for a message exceeds the
 #'         `maxReceiveCount` for a queue, Amazon SQS moves the message to
@@ -1749,8 +1766,8 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #'     Similarly, the dead-letter queue of a standard queue must also be a
 #'     standard queue.
 #' 
-#' -   `VisibilityTimeout` - The visibility timeout for the queue, in
-#'     seconds. Valid values: an integer from 0 to 43,200 (12 hours).
+#' -   `VisibilityTimeout` -- The visibility timeout for the queue, in
+#'     seconds. Valid values: An integer from 0 to 43,200 (12 hours).
 #'     Default: 30. For more information about the visibility timeout, see
 #'     [Visibility
 #'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
@@ -1759,7 +1776,7 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' The following attributes apply only to
 #' [server-side-encryption](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 #' 
-#' -   `KmsMasterKeyId` - The ID of an AWS-managed customer master key
+#' -   `KmsMasterKeyId` -- The ID of an AWS-managed customer master key
 #'     (CMK) for Amazon SQS or a custom CMK. For more information, see [Key
 #'     Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 #'     While the alias of the AWS-managed CMK for Amazon SQS is always
@@ -1768,8 +1785,8 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
 #'     in the *AWS Key Management Service API Reference*.
 #' 
-#' -   `KmsDataKeyReusePeriodSeconds` - The length of time, in seconds, for
-#'     which Amazon SQS can reuse a [data
+#' -   `KmsDataKeyReusePeriodSeconds` -- The length of time, in seconds,
+#'     for which Amazon SQS can reuse a [data
 #'     key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
 #'     to encrypt or decrypt messages before calling AWS KMS again. An
 #'     integer representing seconds, between 60 seconds (1 minute) and
@@ -1782,7 +1799,7 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' The following attribute applies only to [FIFO (first-in-first-out)
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
 #' 
-#' -   `ContentBasedDeduplication` - Enables content-based deduplication.
+#' -   `ContentBasedDeduplication` -- Enables content-based deduplication.
 #'     For more information, see [Exactly-Once
 #'     Processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
 #'     in the *Amazon Simple Queue Service Developer Guide*.

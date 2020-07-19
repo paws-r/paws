@@ -2,7 +2,7 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_create_cluster}
 \alias{redshift_create_cluster}
-\title{Creates a new cluster}
+\title{Creates a new cluster with the specified parameters}
 \usage{
 redshift_create_cluster(DBName, ClusterIdentifier, ClusterType,
   NodeType, MasterUsername, MasterUserPassword, ClusterSecurityGroups,
@@ -64,7 +64,8 @@ node types, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
 Valid Values: \code{ds2.xlarge} \\| \code{ds2.8xlarge} \\| \code{dc1.large} \\|
-\code{dc1.8xlarge} \\| \code{dc2.large} \\| \code{dc2.8xlarge} \\| \code{ra3.16xlarge}}
+\code{dc1.8xlarge} \\| \code{dc2.large} \\| \code{dc2.8xlarge} \\| \code{ra3.4xlarge} \\|
+\code{ra3.16xlarge}}
 
 \item{MasterUsername}{[required] The user name associated with the master user account for the cluster
 that is being created.
@@ -114,7 +115,7 @@ to be provisioned in the same zone in order to decrease network latency.
 Default: A random, system-chosen Availability Zone in the region that is
 specified by the endpoint.
 
-Example: \verb{us-east-1d}
+Example: \verb{us-east-2d}
 
 Constraint: The specified Availability Zone must be in the same region
 as the current endpoint.}
@@ -254,7 +255,7 @@ assigned to the \code{current} track.}
 \item{SnapshotScheduleIdentifier}{A unique identifier for the snapshot schedule.}
 }
 \description{
-Creates a new cluster.
+Creates a new cluster with the specified parameters.
 }
 \details{
 To create a cluster in Virtual Private Cloud (VPC), you must provide a

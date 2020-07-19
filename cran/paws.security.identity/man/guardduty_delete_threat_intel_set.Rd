@@ -2,17 +2,18 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_delete_threat_intel_set}
 \alias{guardduty_delete_threat_intel_set}
-\title{Deletes ThreatIntelSet specified by the ThreatIntelSet ID}
+\title{Deletes the ThreatIntelSet specified by the ThreatIntelSet ID}
 \usage{
 guardduty_delete_threat_intel_set(DetectorId, ThreatIntelSetId)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector the threatIntelSet is associated with.}
+\item{DetectorId}{[required] The unique ID of the detector that the threatIntelSet is associated
+with.}
 
-\item{ThreatIntelSetId}{[required] The unique ID of the threatIntelSet you want to delete.}
+\item{ThreatIntelSetId}{[required] The unique ID of the threatIntelSet that you want to delete.}
 }
 \description{
-Deletes ThreatIntelSet specified by the ThreatIntelSet ID.
+Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_threat_intel_set(

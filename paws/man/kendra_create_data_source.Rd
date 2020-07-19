@@ -5,7 +5,7 @@
 \title{Creates a data source that you use to with an Amazon Kendra index}
 \usage{
 kendra_create_data_source(Name, IndexId, Type, Configuration,
-  Description, Schedule, RoleArn)
+  Description, Schedule, RoleArn, Tags)
 }
 \arguments{
 \item{Name}{[required] A unique name for the data source. A data source name can\'t be changed
@@ -28,6 +28,10 @@ Kendra will not periodically update the index. You can call the
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of a role with permission to access the
 data source. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM Roles for Amazon Kendra}.}
+
+\item{Tags}{A list of key-value pairs that identify the data source. You can use the
+tags to identify and organize your resources and to control access to
+resources.}
 }
 \description{
 Creates a data source that you use to with an Amazon Kendra index.
@@ -48,7 +52,7 @@ raised.
 \preformatted{svc$create_data_source(
   Name = "string",
   IndexId = "string",
-  Type = "S3"|"SHAREPOINT"|"DATABASE",
+  Type = "S3"|"SHAREPOINT"|"DATABASE"|"SALESFORCE"|"ONEDRIVE"|"SERVICENOW",
   Configuration = list(
     S3Configuration = list(
       BucketName = "string",
@@ -72,6 +76,13 @@ raised.
       ),
       SecretArn = "string",
       CrawlAttachments = TRUE|FALSE,
+      UseChangeLog = TRUE|FALSE,
+      InclusionPatterns = list(
+        "string"
+      ),
+      ExclusionPatterns = list(
+        "string"
+      ),
       VpcConfiguration = list(
         SubnetIds = list(
           "string"
@@ -124,11 +135,163 @@ raised.
       AclConfiguration = list(
         AllowedGroupsColumnName = "string"
       )
+    ),
+    SalesforceConfiguration = list(
+      ServerUrl = "string",
+      SecretArn = "string",
+      StandardObjectConfigurations = list(
+        list(
+          Name = "ACCOUNT"|"CAMPAIGN"|"CASE"|"CONTACT"|"CONTRACT"|"DOCUMENT"|"GROUP"|"IDEA"|"LEAD"|"OPPORTUNITY"|"PARTNER"|"PRICEBOOK"|"PRODUCT"|"PROFILE"|"SOLUTION"|"TASK"|"USER",
+          DocumentDataFieldName = "string",
+          DocumentTitleFieldName = "string",
+          FieldMappings = list(
+            list(
+              DataSourceFieldName = "string",
+              DateFieldFormat = "string",
+              IndexFieldName = "string"
+            )
+          )
+        )
+      ),
+      KnowledgeArticleConfiguration = list(
+        IncludedStates = list(
+          "DRAFT"|"PUBLISHED"|"ARCHIVED"
+        ),
+        StandardKnowledgeArticleTypeConfiguration = list(
+          DocumentDataFieldName = "string",
+          DocumentTitleFieldName = "string",
+          FieldMappings = list(
+            list(
+              DataSourceFieldName = "string",
+              DateFieldFormat = "string",
+              IndexFieldName = "string"
+            )
+          )
+        ),
+        CustomKnowledgeArticleTypeConfigurations = list(
+          list(
+            Name = "string",
+            DocumentDataFieldName = "string",
+            DocumentTitleFieldName = "string",
+            FieldMappings = list(
+              list(
+                DataSourceFieldName = "string",
+                DateFieldFormat = "string",
+                IndexFieldName = "string"
+              )
+            )
+          )
+        )
+      ),
+      ChatterFeedConfiguration = list(
+        DocumentDataFieldName = "string",
+        DocumentTitleFieldName = "string",
+        FieldMappings = list(
+          list(
+            DataSourceFieldName = "string",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        ),
+        IncludeFilterTypes = list(
+          "ACTIVE_USER"|"STANDARD_USER"
+        )
+      ),
+      CrawlAttachments = TRUE|FALSE,
+      StandardObjectAttachmentConfiguration = list(
+        DocumentTitleFieldName = "string",
+        FieldMappings = list(
+          list(
+            DataSourceFieldName = "string",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
+      ),
+      IncludeAttachmentFilePatterns = list(
+        "string"
+      ),
+      ExcludeAttachmentFilePatterns = list(
+        "string"
+      )
+    ),
+    OneDriveConfiguration = list(
+      TenantDomain = "string",
+      SecretArn = "string",
+      OneDriveUsers = list(
+        OneDriveUserList = list(
+          "string"
+        ),
+        OneDriveUserS3Path = list(
+          Bucket = "string",
+          Key = "string"
+        )
+      ),
+      InclusionPatterns = list(
+        "string"
+      ),
+      ExclusionPatterns = list(
+        "string"
+      ),
+      FieldMappings = list(
+        list(
+          DataSourceFieldName = "string",
+          DateFieldFormat = "string",
+          IndexFieldName = "string"
+        )
+      )
+    ),
+    ServiceNowConfiguration = list(
+      HostUrl = "string",
+      SecretArn = "string",
+      ServiceNowBuildVersion = "LONDON"|"OTHERS",
+      KnowledgeArticleConfiguration = list(
+        CrawlAttachments = TRUE|FALSE,
+        IncludeAttachmentFilePatterns = list(
+          "string"
+        ),
+        ExcludeAttachmentFilePatterns = list(
+          "string"
+        ),
+        DocumentDataFieldName = "string",
+        DocumentTitleFieldName = "string",
+        FieldMappings = list(
+          list(
+            DataSourceFieldName = "string",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
+      ),
+      ServiceCatalogConfiguration = list(
+        CrawlAttachments = TRUE|FALSE,
+        IncludeAttachmentFilePatterns = list(
+          "string"
+        ),
+        ExcludeAttachmentFilePatterns = list(
+          "string"
+        ),
+        DocumentDataFieldName = "string",
+        DocumentTitleFieldName = "string",
+        FieldMappings = list(
+          list(
+            DataSourceFieldName = "string",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
+      )
     )
   ),
   Description = "string",
   Schedule = "string",
-  RoleArn = "string"
+  RoleArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

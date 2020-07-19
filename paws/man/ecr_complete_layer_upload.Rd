@@ -27,9 +27,12 @@ provide a \code{sha256} digest of the image layer for data validation
 purposes.
 }
 \details{
-This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers for pulling and pushing images. In most
-cases, you should use the \code{docker} CLI to pull, tag, and push images.
+When an image is pushed, the CompleteLayerUpload API is called once per
+each new image layer to verify that the upload has completed.
+
+This operation is used by the Amazon ECR proxy and is not generally used
+by customers for pulling and pushing images. In most cases, you should
+use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
 \preformatted{svc$complete_layer_upload(

@@ -4,7 +4,7 @@
 \alias{appmesh_list_virtual_nodes}
 \title{Returns a list of existing virtual nodes}
 \usage{
-appmesh_list_virtual_nodes(limit, meshName, nextToken)
+appmesh_list_virtual_nodes(limit, meshName, meshOwner, nextToken)
 }
 \arguments{
 \item{limit}{The maximum number of results returned by \code{ListVirtualNodes} in
@@ -18,6 +18,10 @@ use this parameter, \code{ListVirtualNodes} returns up to 100 results and a
 
 \item{meshName}{[required] The name of the service mesh to list virtual nodes in.}
 
+\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it\'s the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
+
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
 \code{ListVirtualNodes} request where \code{limit} was used and the results
 exceeded the value of that parameter. Pagination continues from the end
@@ -30,6 +34,7 @@ Returns a list of existing virtual nodes.
 \preformatted{svc$list_virtual_nodes(
   limit = 123,
   meshName = "string",
+  meshOwner = "string",
   nextToken = "string"
 )
 }

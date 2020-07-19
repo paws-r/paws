@@ -2,8 +2,8 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_db_proxy_target_groups}
 \alias{rds_describe_db_proxy_target_groups}
-\title{This is prerelease documentation for the RDS Database Proxy feature in
-preview release}
+\title{Returns information about DB proxy target groups, represented by
+DBProxyTargetGroup data structures}
 \usage{
 rds_describe_db_proxy_target_groups(DBProxyName, TargetGroupName,
   Filters, Marker, MaxRecords)
@@ -29,10 +29,6 @@ Default: 100
 Constraints: Minimum 20, maximum 100.}
 }
 \description{
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-}
-\details{
 Returns information about DB proxy target groups, represented by
 \code{DBProxyTargetGroup} data structures.
 }

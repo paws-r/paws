@@ -44,6 +44,8 @@ Amazon API Gateway V2
 \link[=apigatewayv2_create_route]{create_route} \tab Creates a Route for an API \cr
 \link[=apigatewayv2_create_route_response]{create_route_response} \tab Creates a RouteResponse for a Route \cr
 \link[=apigatewayv2_create_stage]{create_stage} \tab Creates a Stage for an API \cr
+\link[=apigatewayv2_create_vpc_link]{create_vpc_link} \tab Creates a VPC link \cr
+\link[=apigatewayv2_delete_access_log_settings]{delete_access_log_settings} \tab Deletes the AccessLogSettings for a Stage \cr
 \link[=apigatewayv2_delete_api]{delete_api} \tab Deletes an Api resource \cr
 \link[=apigatewayv2_delete_api_mapping]{delete_api_mapping} \tab Deletes an API mapping \cr
 \link[=apigatewayv2_delete_authorizer]{delete_authorizer} \tab Deletes an Authorizer \cr
@@ -54,9 +56,12 @@ Amazon API Gateway V2
 \link[=apigatewayv2_delete_integration_response]{delete_integration_response} \tab Deletes an IntegrationResponses \cr
 \link[=apigatewayv2_delete_model]{delete_model} \tab Deletes a Model \cr
 \link[=apigatewayv2_delete_route]{delete_route} \tab Deletes a Route \cr
+\link[=apigatewayv2_delete_route_request_parameter]{delete_route_request_parameter} \tab Deletes a route request parameter \cr
 \link[=apigatewayv2_delete_route_response]{delete_route_response} \tab Deletes a RouteResponse \cr
 \link[=apigatewayv2_delete_route_settings]{delete_route_settings} \tab Deletes the RouteSettings for a stage \cr
 \link[=apigatewayv2_delete_stage]{delete_stage} \tab Deletes a Stage \cr
+\link[=apigatewayv2_delete_vpc_link]{delete_vpc_link} \tab Deletes a VPC link \cr
+\link[=apigatewayv2_export_api]{export_api} \tab Export api \cr
 \link[=apigatewayv2_get_api]{get_api} \tab Gets an Api resource \cr
 \link[=apigatewayv2_get_api_mapping]{get_api_mapping} \tab Gets an API mapping \cr
 \link[=apigatewayv2_get_api_mappings]{get_api_mappings} \tab Gets API mappings \cr
@@ -81,6 +86,8 @@ Amazon API Gateway V2
 \link[=apigatewayv2_get_stage]{get_stage} \tab Gets a Stage \cr
 \link[=apigatewayv2_get_stages]{get_stages} \tab Gets the Stages for an API \cr
 \link[=apigatewayv2_get_tags]{get_tags} \tab Gets a collection of Tag resources \cr
+\link[=apigatewayv2_get_vpc_link]{get_vpc_link} \tab Gets a VPC link \cr
+\link[=apigatewayv2_get_vpc_links]{get_vpc_links} \tab Gets a collection of VPC links \cr
 \link[=apigatewayv2_import_api]{import_api} \tab Imports an API \cr
 \link[=apigatewayv2_reimport_api]{reimport_api} \tab Puts an Api resource \cr
 \link[=apigatewayv2_tag_resource]{tag_resource} \tab Creates a new Tag resource to represent a tag \cr
@@ -95,7 +102,8 @@ Amazon API Gateway V2
 \link[=apigatewayv2_update_model]{update_model} \tab Updates a Model \cr
 \link[=apigatewayv2_update_route]{update_route} \tab Updates a Route \cr
 \link[=apigatewayv2_update_route_response]{update_route_response} \tab Updates a RouteResponse \cr
-\link[=apigatewayv2_update_stage]{update_stage} \tab Updates a Stage
+\link[=apigatewayv2_update_stage]{update_stage} \tab Updates a Stage \cr
+\link[=apigatewayv2_update_vpc_link]{update_vpc_link} \tab Updates a VPC link
 }
 }
 

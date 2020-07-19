@@ -2,15 +2,15 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_delete_app}
 \alias{amplify_delete_app}
-\title{Delete an existing Amplify App by appId}
+\title{Deletes an existing Amplify app specified by an app ID}
 \usage{
 amplify_delete_app(appId)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 }
 \description{
-Delete an existing Amplify App by appId.
+Deletes an existing Amplify app specified by an app ID.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_app(

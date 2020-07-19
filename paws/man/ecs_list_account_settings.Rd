@@ -8,7 +8,7 @@ ecs_list_account_settings(name, value, principalArn, effectiveSettings,
   nextToken, maxResults)
 }
 \arguments{
-\item{name}{The resource name you want to list the account settings for.}
+\item{name}{The name of the account setting you want to list the settings for.}
 
 \item{value}{The value of the account settings with which to filter results. You must
 also specify an account setting name to use this parameter.}

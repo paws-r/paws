@@ -2,26 +2,36 @@
 % Please edit documentation in R/support_operations.R
 \name{support_describe_trusted_advisor_check_refresh_statuses}
 \alias{support_describe_trusted_advisor_check_refresh_statuses}
-\title{Returns the refresh status of the Trusted Advisor checks that have the
-specified check IDs}
+\title{Returns the refresh status of the AWS Trusted Advisor checks that have
+the specified check IDs}
 \usage{
 support_describe_trusted_advisor_check_refresh_statuses(checkIds)
 }
 \arguments{
-\item{checkIds}{[required] The IDs of the Trusted Advisor checks to get the status of. \strong{Note:}
-Specifying the check ID of a check that is automatically refreshed
-causes an \code{InvalidParameterValue} error.}
+\item{checkIds}{[required] The IDs of the Trusted Advisor checks to get the status of.
+
+If you specify the check ID of a check that is automatically refreshed,
+you might see an \code{InvalidParameterValue} error.}
 }
 \description{
-Returns the refresh status of the Trusted Advisor checks that have the
-specified check IDs. Check IDs can be obtained by calling
-DescribeTrustedAdvisorChecks.
+Returns the refresh status of the AWS Trusted Advisor checks that have
+the specified check IDs. You can get the check IDs by calling the
+DescribeTrustedAdvisorChecks operation.
 }
 \details{
-Some checks are refreshed automatically, and their refresh statuses
-cannot be retrieved by using this operation. Use of the
-\code{DescribeTrustedAdvisorCheckRefreshStatuses} operation for these checks
-causes an \code{InvalidParameterValue} error.
+Some checks are refreshed automatically, and you can\'t return their
+refresh statuses by using the
+\code{DescribeTrustedAdvisorCheckRefreshStatuses} operation. If you call this
+operation for these checks, you might see an \code{InvalidParameterValue}
+error.
+\itemize{
+\item You must have a Business or Enterprise support plan to use the AWS
+Support API.
+\item If you call the AWS Support API from an account that does not have a
+Business or Enterprise support plan, the
+\code{SubscriptionRequiredException} error message appears. For
+information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_trusted_advisor_check_refresh_statuses(

@@ -4,7 +4,7 @@
 \alias{appmesh_list_virtual_services}
 \title{Returns a list of existing virtual services in a service mesh}
 \usage{
-appmesh_list_virtual_services(limit, meshName, nextToken)
+appmesh_list_virtual_services(limit, meshName, meshOwner, nextToken)
 }
 \arguments{
 \item{limit}{The maximum number of results returned by \code{ListVirtualServices} in
@@ -18,6 +18,10 @@ results and a \code{nextToken} value if applicable.}
 
 \item{meshName}{[required] The name of the service mesh to list virtual services in.}
 
+\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it\'s the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
+
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
 \code{ListVirtualServices} request where \code{limit} was used and the results
 exceeded the value of that parameter. Pagination continues from the end
@@ -30,6 +34,7 @@ Returns a list of existing virtual services in a service mesh.
 \preformatted{svc$list_virtual_services(
   limit = 123,
   meshName = "string",
+  meshOwner = "string",
   nextToken = "string"
 )
 }

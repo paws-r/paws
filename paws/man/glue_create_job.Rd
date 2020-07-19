@@ -5,9 +5,10 @@
 \title{Creates a new job definition}
 \usage{
 glue_create_job(Name, Description, LogUri, Role, ExecutionProperty,
-  Command, DefaultArguments, Connections, MaxRetries, AllocatedCapacity,
-  Timeout, MaxCapacity, SecurityConfiguration, Tags, NotificationProperty,
-  GlueVersion, NumberOfWorkers, WorkerType)
+  Command, DefaultArguments, NonOverridableArguments, Connections,
+  MaxRetries, AllocatedCapacity, Timeout, MaxCapacity,
+  SecurityConfiguration, Tags, NotificationProperty, GlueVersion,
+  NumberOfWorkers, WorkerType)
 }
 \arguments{
 \item{Name}{[required] The name you assign to this job definition. It must be unique in your
@@ -37,6 +38,8 @@ topic in the developer guide.
 For information about the key-value pairs that AWS Glue consumes to set
 up your job, see the \href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html}{Special Parameters Used by AWS Glue}
 topic in the developer guide.}
+
+\item{NonOverridableArguments}{Non-overridable arguments for this job, specified as name-value pairs.}
 
 \item{Connections}{The connections used for this job.}
 
@@ -129,6 +132,9 @@ Creates a new job definition.
     PythonVersion = "string"
   ),
   DefaultArguments = list(
+    "string"
+  ),
+  NonOverridableArguments = list(
     "string"
   ),
   Connections = list(

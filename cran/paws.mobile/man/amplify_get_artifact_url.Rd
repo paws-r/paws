@@ -2,15 +2,15 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_get_artifact_url}
 \alias{amplify_get_artifact_url}
-\title{Retrieves artifact info that corresponds to a artifactId}
+\title{Returns the artifact info that corresponds to an artifact id}
 \usage{
 amplify_get_artifact_url(artifactId)
 }
 \arguments{
-\item{artifactId}{[required] Unique Id for a artifact.}
+\item{artifactId}{[required] The unique ID for an artifact.}
 }
 \description{
-Retrieves artifact info that corresponds to a artifactId.
+Returns the artifact info that corresponds to an artifact id.
 }
 \section{Request syntax}{
 \preformatted{svc$get_artifact_url(

@@ -45,7 +45,7 @@ Updates one or more properties of a trial component.
   TrialComponentName = "string",
   DisplayName = "string",
   Status = list(
-    PrimaryStatus = "InProgress"|"Completed"|"Failed",
+    PrimaryStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
     Message = "string"
   ),
   StartTime = as.POSIXct(

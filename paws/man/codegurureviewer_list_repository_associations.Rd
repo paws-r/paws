@@ -2,7 +2,8 @@
 % Please edit documentation in R/codegurureviewer_operations.R
 \name{codegurureviewer_list_repository_associations}
 \alias{codegurureviewer_list_repository_associations}
-\title{Lists repository associations}
+\title{Returns a list of RepositoryAssociationSummary objects that contain
+summary information about a repository association}
 \usage{
 codegurureviewer_list_repository_associations(ProviderTypes, States,
   Names, Owners, MaxResults, NextToken)
@@ -10,21 +11,43 @@ codegurureviewer_list_repository_associations(ProviderTypes, States,
 \arguments{
 \item{ProviderTypes}{List of provider types to use as a filter.}
 
-\item{States}{List of states to use as a filter.}
+\item{States}{List of repository association states to use as a filter.
 
-\item{Names}{List of names to use as a filter.}
+The valid repository association states are:
+\itemize{
+\item \strong{Associated}: The repository association is complete.
+\item \strong{Associating}: CodeGuru Reviewer is:
+\itemize{
+\item Setting up pull request notifications. This is required for pull
+requests to trigger a CodeGuru Reviewer review.
 
-\item{Owners}{List of owners to use as a filter. For AWS CodeCommit, the owner is the
-AWS account id. For GitHub, it is the GitHub account name.}
+If your repository \code{ProviderType} is \code{GitHub} or \code{Bitbucket},
+CodeGuru Reviewer creates webhooks in your repository to trigger
+CodeGuru Reviewer reviews. If you delete these webhooks, reviews
+of code in your repository cannot be triggered.
+\item Setting up source code access. This is required for CodeGuru
+Reviewer to securely clone code in your repository.
+}
+\item \strong{Failed}: The repository failed to associate or disassociate.
+\item \strong{Disassociating}: CodeGuru Reviewer is removing the repository\'s
+pull request notifications and source code access.
+}}
+
+\item{Names}{List of repository names to use as a filter.}
+
+\item{Owners}{List of owners to use as a filter. For AWS CodeCommit, it is the name of
+the CodeCommit account that was used to associate the repository. For
+other repository source providers, such as Bitbucket, this is name of
+the account that was used to associate the repository.}
 
 \item{MaxResults}{The maximum number of repository association results returned by
 \code{ListRepositoryAssociations} in paginated output. When this parameter is
 used, \code{ListRepositoryAssociations} only returns \code{maxResults} results in
-a single page along with a \code{nextToken} response element. The remaining
-results of the initial request can be seen by sending another
+a single page with a \code{nextToken} response element. The remaining results
+of the initial request can be seen by sending another
 \code{ListRepositoryAssociations} request with the returned \code{nextToken}
 value. This value can be between 1 and 100. If this parameter is not
-used, then \code{ListRepositoryAssociations} returns up to 100 results and a
+used, \code{ListRepositoryAssociations} returns up to 100 results and a
 \code{nextToken} value if applicable.}
 
 \item{NextToken}{The \code{nextToken} value returned from a previous paginated
@@ -32,19 +55,27 @@ used, then \code{ListRepositoryAssociations} returns up to 100 results and a
 results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the \code{nextToken} value.
 
-This token should be treated as an opaque identifier that is only used
-to retrieve the next items in a list and not for other programmatic
-purposes.}
+Treat this token as an opaque identifier that is only used to retrieve
+the next items in a list and not for other programmatic purposes.}
 }
 \description{
-Lists repository associations. You can optionally filter on one or more
-of the following recommendation properties: provider types, states,
-names, and owners.
+Returns a list of
+\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html}{\code{RepositoryAssociationSummary}}
+objects that contain summary information about a repository association.
+You can filter the returned list by
+\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-ProviderType}{\code{ProviderType}}
+,
+\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Name}{\code{Name}}
+,
+\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-State}{\code{State}}
+, and
+\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Owner}{\code{Owner}}
+.
 }
 \section{Request syntax}{
 \preformatted{svc$list_repository_associations(
   ProviderTypes = list(
-    "CodeCommit"|"GitHub"
+    "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"
   ),
   States = list(
     "Associated"|"Associating"|"Failed"|"Disassociating"

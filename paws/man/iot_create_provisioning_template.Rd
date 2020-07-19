@@ -5,7 +5,7 @@
 \title{Creates a fleet provisioning template}
 \usage{
 iot_create_provisioning_template(templateName, description,
-  templateBody, enabled, provisioningRoleArn, tags)
+  templateBody, enabled, provisioningRoleArn, preProvisioningHook, tags)
 }
 \arguments{
 \item{templateName}{[required] The name of the fleet provisioning template.}
@@ -18,6 +18,8 @@ iot_create_provisioning_template(templateName, description,
 
 \item{provisioningRoleArn}{[required] The role ARN for the role associated with the fleet provisioning
 template. This IoT role grants permission to provision a device.}
+
+\item{preProvisioningHook}{Creates a pre-provisioning hook template.}
 
 \item{tags}{Metadata which can be used to manage the fleet provisioning template.
 
@@ -39,6 +41,10 @@ Creates a fleet provisioning template.
   templateBody = "string",
   enabled = TRUE|FALSE,
   provisioningRoleArn = "string",
+  preProvisioningHook = list(
+    payloadVersion = "string",
+    targetArn = "string"
+  ),
   tags = list(
     list(
       Key = "string",

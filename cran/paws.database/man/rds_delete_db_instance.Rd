@@ -22,11 +22,11 @@ snapshot is created. If skip isn\'t specified, a DB snapshot is created
 before the DB instance is deleted. By default, skip isn\'t specified,
 and the DB snapshot is created.
 
-Note that when a DB instance is in a failure state and has a status of
-\'failed\', \'incompatible-restore\', or \'incompatible-network\', it
-can only be deleted when skip is specified.
+When a DB instance is in a failure state and has a status of \'failed\',
+\'incompatible-restore\', or \'incompatible-network\', it can only be
+deleted when skip is specified.
 
-Specify skip when deleting a Read Replica.
+Specify skip when deleting a read replica.
 
 The FinalDBSnapshotIdentifier parameter must be specified if skip isn\'t
 specified.}
@@ -42,7 +42,7 @@ Constraints:
 \item Must be 1 to 255 letters or numbers.
 \item First character must be a letter.
 \item Can\'t end with a hyphen or contain two consecutive hyphens.
-\item Can\'t be specified when deleting a Read Replica.
+\item Can\'t be specified when deleting a read replica.
 }}
 
 \item{DeleteAutomatedBackups}{A value that indicates whether to remove automated backups immediately
@@ -62,23 +62,23 @@ instance is \code{deleting} until the DB snapshot is created. The API action
 \code{DescribeDBInstance} is used to monitor the status of this operation.
 The action can\'t be canceled or reverted once submitted.
 
-Note that when a DB instance is in a failure state and has a status of
-\code{failed}, \code{incompatible-restore}, or \code{incompatible-network}, you can
-only delete it when you skip creation of the final snapshot with the
+When a DB instance is in a failure state and has a status of \code{failed},
+\code{incompatible-restore}, or \code{incompatible-network}, you can only delete
+it when you skip creation of the final snapshot with the
 \code{SkipFinalSnapshot} parameter.
 
 If the specified DB instance is part of an Amazon Aurora DB cluster, you
 can\'t delete the DB instance if both of the following conditions are
 true:
 \itemize{
-\item The DB cluster is a Read Replica of another Amazon Aurora DB
+\item The DB cluster is a read replica of another Amazon Aurora DB
 cluster.
 \item The DB instance is the only instance in the DB cluster.
 }
 
 To delete a DB instance in this case, first call the
 \code{PromoteReadReplicaDBCluster} API action to promote the DB cluster so
-it\'s no longer a Read Replica. After the promotion completes, then call
+it\'s no longer a read replica. After the promotion completes, then call
 the \code{DeleteDBInstance} API action to delete the final instance in the DB
 cluster.
 }

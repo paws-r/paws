@@ -2,23 +2,28 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_update_domain_association}
 \alias{amplify_update_domain_association}
-\title{Create a new DomainAssociation on an App}
+\title{Creates a new domain association for an Amplify app}
 \usage{
 amplify_update_domain_association(appId, domainName,
-  enableAutoSubDomain, subDomainSettings)
+  enableAutoSubDomain, subDomainSettings, autoSubDomainCreationPatterns,
+  autoSubDomainIAMRole)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{domainName}{[required] Name of the domain.}
+\item{domainName}{[required] The name of the domain.}
 
-\item{enableAutoSubDomain}{Enables automated creation of Subdomains for branches. (Currently not
-supported)}
+\item{enableAutoSubDomain}{Enables the automated creation of subdomains for branches.}
 
-\item{subDomainSettings}{[required] Setting structure for the Subdomain.}
+\item{subDomainSettings}{[required] Describes the settings for the subdomain.}
+
+\item{autoSubDomainCreationPatterns}{Sets the branch patterns for automatic subdomain creation.}
+
+\item{autoSubDomainIAMRole}{The required AWS Identity and Access Management (IAM) service role for
+the Amazon Resource Name (ARN) for automatically creating subdomains.}
 }
 \description{
-Create a new DomainAssociation on an App
+Creates a new domain association for an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$update_domain_association(
@@ -30,7 +35,11 @@ Create a new DomainAssociation on an App
       prefix = "string",
       branchName = "string"
     )
-  )
+  ),
+  autoSubDomainCreationPatterns = list(
+    "string"
+  ),
+  autoSubDomainIAMRole = "string"
 )
 }
 }

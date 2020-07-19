@@ -7,7 +7,7 @@
 amplify_delete_webhook(webhookId)
 }
 \arguments{
-\item{webhookId}{[required] Unique Id for a webhook.}
+\item{webhookId}{[required] The unique ID for a webhook.}
 }
 \description{
 Deletes a webhook.

@@ -5,13 +5,16 @@
 \title{Creates a batch inference job}
 \usage{
 personalize_create_batch_inference_job(jobName, solutionVersionArn,
-  numResults, jobInput, jobOutput, roleArn)
+  filterArn, numResults, jobInput, jobOutput, roleArn)
 }
 \arguments{
 \item{jobName}{[required] The name of the batch inference job to create.}
 
 \item{solutionVersionArn}{[required] The Amazon Resource Name (ARN) of the solution version that will be used
 to generate the batch inference recommendations.}
+
+\item{filterArn}{The ARN of the filter to apply to the batch inference job. For more
+information on using filters, see Using Filters with Amazon Personalize.}
 
 \item{numResults}{The number of recommendations to retreive.}
 
@@ -33,6 +36,7 @@ see recommendations-batch.
 \preformatted{svc$create_batch_inference_job(
   jobName = "string",
   solutionVersionArn = "string",
+  filterArn = "string",
   numResults = 123,
   jobInput = list(
     s3DataSource = list(

@@ -5,7 +5,7 @@
 \title{Creates a fleet}
 \usage{
 worklink_create_fleet(FleetName, DisplayName,
-  OptimizeForEndUserLocation)
+  OptimizeForEndUserLocation, Tags)
 }
 \arguments{
 \item{FleetName}{[required] A unique name for the fleet.}
@@ -15,6 +15,8 @@ worklink_create_fleet(FleetName, DisplayName,
 \item{OptimizeForEndUserLocation}{The option to optimize for better performance by routing traffic through
 the closest AWS Region to users, which may be outside of your home
 Region.}
+
+\item{Tags}{The tags to add to the resource. A tag is a key-value pair.}
 }
 \description{
 Creates a fleet. A fleet consists of resources and the configuration
@@ -25,7 +27,10 @@ set up the Amazon WorkLink app.
 \preformatted{svc$create_fleet(
   FleetName = "string",
   DisplayName = "string",
-  OptimizeForEndUserLocation = TRUE|FALSE
+  OptimizeForEndUserLocation = TRUE|FALSE,
+  Tags = list(
+    "string"
+  )
 )
 }
 }

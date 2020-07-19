@@ -2,17 +2,17 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_tag_resource}
 \alias{amplify_tag_resource}
-\title{Tag resource with tag key and value}
+\title{Tags the resource with a tag key and value}
 \usage{
 amplify_tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] Resource arn used to tag resource.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) to use to tag a resource.}
 
-\item{tags}{[required] Tags used to tag resource.}
+\item{tags}{[required] The tags used to tag the resource.}
 }
 \description{
-Tag resource with tag key and value.
+Tags the resource with a tag key and value.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

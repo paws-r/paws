@@ -2,7 +2,8 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_update_room}
 \alias{chime_update_room}
-\title{Updates room details, such as the room name}
+\title{Updates room details, such as the room name, for a room in an Amazon
+Chime Enterprise account}
 \usage{
 chime_update_room(AccountId, RoomId, Name)
 }
@@ -14,7 +15,8 @@ chime_update_room(AccountId, RoomId, Name)
 \item{Name}{The room name.}
 }
 \description{
-Updates room details, such as the room name.
+Updates room details, such as the room name, for a room in an Amazon
+Chime Enterprise account.
 }
 \section{Request syntax}{
 \preformatted{svc$update_room(

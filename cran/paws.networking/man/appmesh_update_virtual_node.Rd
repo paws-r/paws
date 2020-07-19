@@ -4,7 +4,7 @@
 \alias{appmesh_update_virtual_node}
 \title{Updates an existing virtual node in a specified service mesh}
 \usage{
-appmesh_update_virtual_node(clientToken, meshName, spec,
+appmesh_update_virtual_node(clientToken, meshName, meshOwner, spec,
   virtualNodeName)
 }
 \arguments{
@@ -13,6 +13,10 @@ idempotency of the request. Up to 36 letters, numbers, hyphens, and
 underscores are allowed.}
 
 \item{meshName}{[required] The name of the service mesh that the virtual node resides in.}
+
+\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it\'s the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{spec}{[required] The new virtual node specification to apply. This overwrites the
 existing data.}
@@ -26,10 +30,53 @@ Updates an existing virtual node in a specified service mesh.
 \preformatted{svc$update_virtual_node(
   clientToken = "string",
   meshName = "string",
+  meshOwner = "string",
   spec = list(
+    backendDefaults = list(
+      clientPolicy = list(
+        tls = list(
+          enforce = TRUE|FALSE,
+          ports = list(
+            123
+          ),
+          validation = list(
+            trust = list(
+              acm = list(
+                certificateAuthorityArns = list(
+                  "string"
+                )
+              ),
+              file = list(
+                certificateChain = "string"
+              )
+            )
+          )
+        )
+      )
+    ),
     backends = list(
       list(
         virtualService = list(
+          clientPolicy = list(
+            tls = list(
+              enforce = TRUE|FALSE,
+              ports = list(
+                123
+              ),
+              validation = list(
+                trust = list(
+                  acm = list(
+                    certificateAuthorityArns = list(
+                      "string"
+                    )
+                  ),
+                  file = list(
+                    certificateChain = "string"
+                  )
+                )
+              )
+            )
+          ),
           virtualServiceName = "string"
         )
       )
@@ -48,6 +95,56 @@ Updates an existing virtual node in a specified service mesh.
         portMapping = list(
           port = 123,
           protocol = "grpc"|"http"|"http2"|"tcp"
+        ),
+        timeout = list(
+          grpc = list(
+            idle = list(
+              unit = "ms"|"s",
+              value = 123
+            ),
+            perRequest = list(
+              unit = "ms"|"s",
+              value = 123
+            )
+          ),
+          http = list(
+            idle = list(
+              unit = "ms"|"s",
+              value = 123
+            ),
+            perRequest = list(
+              unit = "ms"|"s",
+              value = 123
+            )
+          ),
+          http2 = list(
+            idle = list(
+              unit = "ms"|"s",
+              value = 123
+            ),
+            perRequest = list(
+              unit = "ms"|"s",
+              value = 123
+            )
+          ),
+          tcp = list(
+            idle = list(
+              unit = "ms"|"s",
+              value = 123
+            )
+          )
+        ),
+        tls = list(
+          certificate = list(
+            acm = list(
+              certificateArn = "string"
+            ),
+            file = list(
+              certificateChain = "string",
+              privateKey = "string"
+            )
+          ),
+          mode = "DISABLED"|"PERMISSIVE"|"STRICT"
         )
       )
     ),

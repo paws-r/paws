@@ -23,9 +23,25 @@ servicecatalog_update_constraint(AcceptLanguage, Id, Description,
 constraint type as follows:
 \subsection{LAUNCH}{
 
+You are required to specify either the \code{RoleArn} or the \code{LocalRoleName}
+but can\'t use both.
+
 Specify the \code{RoleArn} property as follows:
 
 \verb{\\\{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"\\\}}
+
+Specify the \code{LocalRoleName} property as follows:
+
+\verb{\\\{"LocalRoleName": "SCBasicLaunchRole"\\\}}
+
+If you specify the \code{LocalRoleName} property, when an account uses the
+launch constraint, the IAM role with that name in the account will be
+used. This allows launch-role constraints to be account-agnostic so the
+administrator can create fewer resources per shared account.
+
+The given role name must exist in the account used to create the launch
+constraint and the account of the user who launches a product with this
+launch constraint.
 
 You cannot have both a \code{LAUNCH} and a \code{STACKSET} constraint.
 

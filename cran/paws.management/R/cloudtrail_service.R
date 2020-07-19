@@ -96,7 +96,7 @@ cloudtrail <- function(config = list()) {
 
 .cloudtrail$metadata <- list(
   service_name = "cloudtrail",
-  endpoints = list("*" = list(endpoint = "cloudtrail.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudtrail.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "cloudtrail.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudtrail.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloudtrail.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudtrail.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CloudTrail",
   api_version = "2013-11-01",
   signing_name = NULL,

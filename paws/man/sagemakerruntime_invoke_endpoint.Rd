@@ -7,7 +7,7 @@ services, your client applications use this API to get inferences from
 the model hosted at the specified endpoint}
 \usage{
 sagemakerruntime_invoke_endpoint(EndpointName, Body, ContentType,
-  Accept, CustomAttributes, TargetModel)
+  Accept, CustomAttributes, TargetModel, TargetVariant)
 }
 \arguments{
 \item{EndpointName}{[required] The name of the endpoint that you specified when you created the
@@ -19,7 +19,7 @@ API.}
 request header. Amazon SageMaker passes all of the data in the body to
 the model.
 
-For information about the format of the request body, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html}{Common Data Formats---Inference}.}
+For information about the format of the request body, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html}{Common Data Formats-Inference}.}
 
 \item{ContentType}{The MIME type of the input data in the request body.}
 
@@ -35,8 +35,12 @@ visible US-ASCII characters as specified in \href{https://tools.ietf.org/html/rf
 Hypertext Transfer Protocol (HTTP/1.1). This feature is currently
 supported in the AWS SDKs but not in the Amazon SageMaker Python SDK.}
 
-\item{TargetModel}{Specifies the model to be requested for an inference when invoking a
-multi-model endpoint.}
+\item{TargetModel}{The model to request for inference when invoking a multi-model endpoint.}
+
+\item{TargetVariant}{Specify the production variant to send the inference request to when
+invoking an endpoint that is running two or more variants. Note that
+this parameter overrides the default behavior for the endpoint, which is
+to distribute the invocation traffic based on the variant weights.}
 }
 \description{
 After you deploy a model into production using Amazon SageMaker hosting
@@ -72,7 +76,8 @@ account ID from the authentication token that is supplied by the caller.
   ContentType = "string",
   Accept = "string",
   CustomAttributes = "string",
-  TargetModel = "string"
+  TargetModel = "string",
+  TargetVariant = "string"
 )
 }
 }

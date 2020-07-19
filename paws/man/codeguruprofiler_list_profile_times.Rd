@@ -2,31 +2,52 @@
 % Please edit documentation in R/codeguruprofiler_operations.R
 \name{codeguruprofiler_list_profile_times}
 \alias{codeguruprofiler_list_profile_times}
-\title{List the start times of the available aggregated profiles of a profiling
-group for an aggregation period within the specified time range}
+\title{Lists the start times of the available aggregated profiles of a
+profiling group for an aggregation period within the specified time
+range}
 \usage{
 codeguruprofiler_list_profile_times(endTime, maxResults, nextToken,
   orderBy, period, profilingGroupName, startTime)
 }
 \arguments{
-\item{endTime}{[required] The end time of the time range to list profiles until.}
+\item{endTime}{[required] The end time of the time range from which to list the profiles.}
 
-\item{maxResults}{}
+\item{maxResults}{The maximum number of profile time results returned by
+\code{ListProfileTimes} in paginated output. When this parameter is used,
+\code{ListProfileTimes} only returns \code{maxResults} results in a single page
+with a \code{nextToken} response element. The remaining results of the
+initial request can be seen by sending another \code{ListProfileTimes}
+request with the returned \code{nextToken} value.}
 
-\item{nextToken}{}
+\item{nextToken}{The \code{nextToken} value returned from a previous paginated
+\code{ListProfileTimes} request where \code{maxResults} was used and the results
+exceeded the value of that parameter. Pagination continues from the end
+of the previous results that returned the \code{nextToken} value.
 
-\item{orderBy}{The order (ascending or descending by start time of the profile) to list
-the profiles by. Defaults to TIMESTAMP\\_DESCENDING.}
+This token should be treated as an opaque identifier that is only used
+to retrieve the next items in a list and not for other programmatic
+purposes.}
 
-\item{period}{[required] The aggregation period to list the profiles for.}
+\item{orderBy}{The order (ascending or descending by start time of the profile) to use
+when listing profiles. Defaults to \code{TIMESTAMP_DESCENDING}.}
 
-\item{profilingGroupName}{[required]}
+\item{period}{[required] The aggregation period. This specifies the period during which an
+aggregation profile collects posted agent profiles for a profiling
+group. There are 3 valid values.
+\itemize{
+\item \code{P1D} --- 1 day
+\item \code{PT1H} --- 1 hour
+\item \code{PT5M} --- 5 minutes
+}}
 
-\item{startTime}{[required] The start time of the time range to list the profiles from.}
+\item{profilingGroupName}{[required] The name of the profiling group.}
+
+\item{startTime}{[required] The start time of the time range from which to list the profiles.}
 }
 \description{
-List the start times of the available aggregated profiles of a profiling
-group for an aggregation period within the specified time range.
+Lists the start times of the available aggregated profiles of a
+profiling group for an aggregation period within the specified time
+range.
 }
 \section{Request syntax}{
 \preformatted{svc$list_profile_times(

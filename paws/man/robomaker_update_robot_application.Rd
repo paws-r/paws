@@ -12,7 +12,8 @@ robomaker_update_robot_application(application, sources,
 
 \item{sources}{[required] The sources of the robot application.}
 
-\item{robotSoftwareSuite}{[required] The robot software suite used by the robot application.}
+\item{robotSoftwareSuite}{[required] The robot software suite (ROS distribution) used by the robot
+application.}
 
 \item{currentRevisionId}{The revision id for the robot application.}
 }

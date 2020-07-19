@@ -3,7 +3,8 @@
 \name{route53_create_reusable_delegation_set}
 \alias{route53_create_reusable_delegation_set}
 \title{Creates a delegation set (a group of four name servers) that can be
-reused by multiple hosted zones}
+reused by multiple hosted zones that were created by the same AWS
+account}
 \usage{
 route53_create_reusable_delegation_set(CallerReference, HostedZoneId)
 }
@@ -20,16 +21,19 @@ reusable, the ID for that hosted zone.}
 }
 \description{
 Creates a delegation set (a group of four name servers) that can be
-reused by multiple hosted zones. If a hosted zoned ID is specified,
-\code{CreateReusableDelegationSet} marks the delegation set associated with
-that zone as reusable.
+reused by multiple hosted zones that were created by the same AWS
+account.
 }
 \details{
+You can also create a reusable delegation set that uses the four name
+servers that are associated with an existing hosted zone. Specify the
+hosted zone ID in the \code{CreateReusableDelegationSet} request.
+
 You can\'t associate a reusable delegation set with a private hosted
 zone.
 
 For information about using a reusable delegation set to configure white
-label name servers, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html}{Configuring White Label Name Servers}.
+label name servers, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html}{Configuring White Label Name Servers}.
 
 The process for migrating existing hosted zones to use a reusable
 delegation set is comparable to the process for configuring white label

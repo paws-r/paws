@@ -28,7 +28,8 @@ subresource to set the default encryption state of an existing bucket.
 \details{
 This implementation of the \code{PUT} operation sets default encryption for a
 bucket using server-side encryption with Amazon S3-managed keys SSE-S3
-or AWS KMS customer master keys (CMKs) (SSE-KMS).
+or AWS KMS customer master keys (CMKs) (SSE-KMS). For information about
+the Amazon S3 default encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}.
 
 This operation requires AWS Signature Version 4. For more information,
 see Authenticating Requests (AWS Signature Version 4).

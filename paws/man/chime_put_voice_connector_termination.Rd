@@ -15,6 +15,10 @@ chime_put_voice_connector_termination(VoiceConnectorId, Termination)
 Adds termination settings for the specified Amazon Chime Voice
 Connector.
 }
+\details{
+If emergency calling is configured for the Amazon Chime Voice Connector,
+it must be deleted prior to turning off termination settings.
+}
 \section{Request syntax}{
 \preformatted{svc$put_voice_connector_termination(
   VoiceConnectorId = "string",

@@ -68,7 +68,9 @@ in the \emph{Amazon CloudFront Developer Guide}.
             ),
             OriginReadTimeout = 123,
             OriginKeepaliveTimeout = 123
-          )
+          ),
+          ConnectionAttempts = 123,
+          ConnectionTimeout = 123
         )
       )
     ),
@@ -253,7 +255,7 @@ in the \emph{Amazon CloudFront Developer Guide}.
       IAMCertificateId = "string",
       ACMCertificateArn = "string",
       SSLSupportMethod = "sni-only"|"vip",
-      MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018",
+      MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
       Certificate = "string",
       CertificateSource = "cloudfront"|"iam"|"acm"
     ),

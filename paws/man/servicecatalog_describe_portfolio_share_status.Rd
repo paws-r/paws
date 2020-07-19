@@ -12,7 +12,8 @@ either by CreatePortfolioShare or by DeletePortfolioShare.}
 }
 \description{
 Gets the status of the specified portfolio share operation. This API can
-only be called by the master account in the organization.
+only be called by the master account in the organization or by a
+delegated admin.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_portfolio_share_status(

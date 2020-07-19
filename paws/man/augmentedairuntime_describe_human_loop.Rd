@@ -7,7 +7,7 @@
 augmentedairuntime_describe_human_loop(HumanLoopName)
 }
 \arguments{
-\item{HumanLoopName}{[required] The name of the human loop.}
+\item{HumanLoopName}{[required] The name of the human loop that you want information about.}
 }
 \description{
 Returns information about the specified human loop.

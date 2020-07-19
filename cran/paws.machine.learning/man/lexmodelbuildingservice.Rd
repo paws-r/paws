@@ -68,11 +68,14 @@ conversational bots for new and existing client applications.
 \link[=lexmodelbuildingservice_get_slot_types]{get_slot_types} \tab Returns slot type information as follows: - If you specify the nameContains field, returns the $LATEST version of all slot types that contain the specified string \cr
 \link[=lexmodelbuildingservice_get_slot_type_versions]{get_slot_type_versions} \tab Gets information about all versions of a slot type \cr
 \link[=lexmodelbuildingservice_get_utterances_view]{get_utterances_view} \tab Use the GetUtterancesView operation to get information about the utterances that your users have made to your bot \cr
+\link[=lexmodelbuildingservice_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of tags associated with the specified resource \cr
 \link[=lexmodelbuildingservice_put_bot]{put_bot} \tab Creates an Amazon Lex conversational bot or replaces an existing bot \cr
 \link[=lexmodelbuildingservice_put_bot_alias]{put_bot_alias} \tab Creates an alias for the specified version of the bot or replaces an alias for the specified bot \cr
 \link[=lexmodelbuildingservice_put_intent]{put_intent} \tab Creates an intent or replaces an existing intent \cr
 \link[=lexmodelbuildingservice_put_slot_type]{put_slot_type} \tab Creates a custom slot type or replaces an existing custom slot type \cr
-\link[=lexmodelbuildingservice_start_import]{start_import} \tab Starts a job to import a resource to Amazon Lex
+\link[=lexmodelbuildingservice_start_import]{start_import} \tab Starts a job to import a resource to Amazon Lex \cr
+\link[=lexmodelbuildingservice_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource \cr
+\link[=lexmodelbuildingservice_untag_resource]{untag_resource} \tab Removes tags from a bot, bot alias or bot channel
 }
 }
 

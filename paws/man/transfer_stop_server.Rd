@@ -2,19 +2,22 @@
 % Please edit documentation in R/transfer_operations.R
 \name{transfer_stop_server}
 \alias{transfer_stop_server}
-\title{Changes the state of an SFTP server from ONLINE to OFFLINE}
+\title{Changes the state of a file transfer protocol-enabled server from ONLINE
+to OFFLINE}
 \usage{
 transfer_stop_server(ServerId)
 }
 \arguments{
-\item{ServerId}{[required] A system-assigned unique identifier for an SFTP server that you stopped.}
+\item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
+server that you stopped.}
 }
 \description{
-Changes the state of an SFTP server from \code{ONLINE} to \code{OFFLINE}. An
-\code{OFFLINE} server cannot accept and process file transfer jobs.
-Information tied to your server such as server and user properties are
-not affected by stopping your server. Stopping a server will not reduce
-or impact your Secure File Transfer Protocol (SFTP) endpoint billing.
+Changes the state of a file transfer protocol-enabled server from
+\code{ONLINE} to \code{OFFLINE}. An \code{OFFLINE} server cannot accept and process
+file transfer jobs. Information tied to your server, such as server and
+user properties, are not affected by stopping your server. Stopping the
+server will not reduce or impact your file transfer protocol endpoint
+billing.
 }
 \details{
 The state of \code{STOPPING} indicates that the server is in an intermediate

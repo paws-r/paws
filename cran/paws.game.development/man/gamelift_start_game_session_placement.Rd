@@ -16,7 +16,7 @@ and cannot be reused unless you are resubmitting a canceled or timed-out
 placement request.}
 
 \item{GameSessionQueueName}{[required] Name of the queue to use to place the new game session. You can use
-either the qieue name or ARN value.}
+either the queue name or ARN value.}
 
 \item{GameProperties}{Set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the

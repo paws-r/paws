@@ -8,81 +8,104 @@ gateway}
 storagegateway_create_smb_file_share(ClientToken, GatewayARN,
   KMSEncrypted, KMSKey, Role, LocationARN, DefaultStorageClass, ObjectACL,
   ReadOnly, GuessMIMETypeEnabled, RequesterPays, SMBACLEnabled,
-  AdminUserList, ValidUserList, InvalidUserList, Authentication, Tags)
+  AdminUserList, ValidUserList, InvalidUserList, AuditDestinationARN,
+  Authentication, CaseSensitivity, Tags, FileShareName, CacheAttributes)
 }
 \arguments{
 \item{ClientToken}{[required] A unique string value that you supply that is used by file gateway to
 ensure idempotent file share creation.}
 
-\item{GatewayARN}{[required] The Amazon Resource Name (ARN) of the file gateway on which you want to
-create a file share.}
+\item{GatewayARN}{[required] The ARN of the file gateway on which you want to create a file share.}
 
-\item{KMSEncrypted}{True to use Amazon S3 server side encryption with your own AWS KMS key,
-or false to use a key managed by Amazon S3. Optional.}
+\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own AWS
+KMS key, or \code{false} to use a key managed by Amazon S3. Optional.
 
-\item{KMSKey}{The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3
-server side encryption. This value can only be set when KMSEncrypted is
-true. Optional.}
+Valid Values: \code{true} \\| \code{false}}
+
+\item{KMSKey}{The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
+used for Amazon S3 server-side encryption. Storage Gateway does not
+support asymmetric CMKs. This value can only be set when \code{KMSEncrypted}
+is \code{true}. Optional.}
 
 \item{Role}{[required] The ARN of the AWS Identity and Access Management (IAM) role that a file
 gateway assumes when it accesses the underlying storage.}
 
-\item{LocationARN}{[required] The ARN of the backed storage used for storing file data.}
+\item{LocationARN}{[required] The ARN of the backend storage used for storing file data. A prefix name
+can be added to the S3 bucket name. It must end with a \"/\".}
 
 \item{DefaultStorageClass}{The default storage class for objects put into an Amazon S3 bucket by
-the file gateway. Possible values are \code{S3_STANDARD}, \code{S3_STANDARD_IA},
-or \code{S3_ONEZONE_IA}. If this field is not populated, the default value
-\code{S3_STANDARD} is used. Optional.}
+the file gateway. The default value is \code{S3_INTELLIGENT_TIERING}.
+Optional.
 
-\item{ObjectACL}{A value that sets the access control list permission for objects in the
-S3 bucket that a file gateway puts objects into. The default value is
-\"private\".}
+Valid Values: \code{S3_STANDARD} \\| \code{S3_INTELLIGENT_TIERING} \\|
+\code{S3_STANDARD_IA} \\| \code{S3_ONEZONE_IA}}
 
-\item{ReadOnly}{A value that sets the write status of a file share. This value is true
-if the write status is read-only, and otherwise false.}
+\item{ObjectACL}{A value that sets the access control list (ACL) permission for objects
+in the S3 bucket that a file gateway puts objects into. The default
+value is \code{private}.}
+
+\item{ReadOnly}{A value that sets the write status of a file share. Set this value to
+\code{true} to set the write status to read-only, otherwise set to \code{false}.
+
+Valid Values: \code{true} \\| \code{false}}
 
 \item{GuessMIMETypeEnabled}{A value that enables guessing of the MIME type for uploaded objects
-based on file extensions. Set this value to true to enable MIME type
-guessing, and otherwise to false. The default value is true.}
+based on file extensions. Set this value to \code{true} to enable MIME type
+guessing, otherwise set to \code{false}. The default value is \code{true}.
+
+Valid Values: \code{true} \\| \code{false}}
 
 \item{RequesterPays}{A value that sets who pays the cost of the request and the cost
 associated with data download from the S3 bucket. If this value is set
-to true, the requester pays the costs. Otherwise the S3 bucket owner
+to \code{true}, the requester pays the costs; otherwise, the S3 bucket owner
 pays. However, the S3 bucket owner always pays the cost of storing data.
 
 \code{RequesterPays} is a configuration for the S3 bucket that backs the file
 share, so make sure that the configuration on the file share is the same
-as the S3 bucket configuration.}
+as the S3 bucket configuration.
 
-\item{SMBACLEnabled}{Set this value to \"true to enable ACL (access control list) on the SMB
-file share. Set it to \"false\" to map file and directory permissions to
+Valid Values: \code{true} \\| \code{false}}
+
+\item{SMBACLEnabled}{Set this value to \code{true} to enable access control list (ACL) on the SMB
+file share. Set it to \code{false} to map file and directory permissions to
 the POSIX permissions.
 
-For more information, see
-https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html
-in the Storage Gateway User Guide.}
+For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html}{Using Microsoft Windows ACLs to control access to an SMB file share}
+in the \emph{AWS Storage Gateway User Guide}.
 
-\item{AdminUserList}{A list of users in the Active Directory that will be granted
+Valid Values: \code{true} \\| \code{false}}
+
+\item{AdminUserList}{A list of users or groups in the Active Directory that will be granted
 administrator privileges on the file share. These users can do all file
-operations as the super-user.
+operations as the super-user. Acceptable formats include:
+\verb{DOMAIN\\\\User1}, \code{user1}, \verb{@group1}, and \verb{@DOMAIN\\\\group1}.
 
 Use this option very carefully, because any user in this list can do
 anything they like on the file share, regardless of file permissions.}
 
 \item{ValidUserList}{A list of users or groups in the Active Directory that are allowed to
 access the file share. A group must be prefixed with the @ character.
-For example \verb{@group1}. Can only be set if Authentication is set to
+Acceptable formats include: \verb{DOMAIN\\\\User1}, \code{user1}, \verb{@group1}, and
+\verb{@DOMAIN\\\\group1}. Can only be set if Authentication is set to
 \code{ActiveDirectory}.}
 
 \item{InvalidUserList}{A list of users or groups in the Active Directory that are not allowed
 to access the file share. A group must be prefixed with the @ character.
-For example \verb{@group1}. Can only be set if Authentication is set to
+Acceptable formats include: \verb{DOMAIN\\\\User1}, \code{user1}, \verb{@group1}, and
+\verb{@DOMAIN\\\\group1}. Can only be set if Authentication is set to
 \code{ActiveDirectory}.}
 
-\item{Authentication}{The authentication method that users use to access the file share.
+\item{AuditDestinationARN}{The Amazon Resource Name (ARN) of the storage used for the audit logs.}
 
-Valid values are \code{ActiveDirectory} or \code{GuestAccess}. The default is
-\code{ActiveDirectory}.}
+\item{Authentication}{The authentication method that users use to access the file share. The
+default is \code{ActiveDirectory}.
+
+Valid Values: \code{ActiveDirectory} \\| \code{GuestAccess}}
+
+\item{CaseSensitivity}{The case of an object name in an Amazon S3 bucket. For
+\code{ClientSpecified}, the client determines the case sensitivity. For
+\code{CaseSensitive}, the gateway determines the case sensitivity. The
+default value is \code{ClientSpecified}.}
 
 \item{Tags}{A list of up to 50 tags that can be assigned to the NFS file share. Each
 tag is a key-value pair.
@@ -91,12 +114,19 @@ Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: + -
 = . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
 the maximum length for a tag\'s value is 256.}
+
+\item{FileShareName}{The name of the file share. Optional.
+
+\code{FileShareName} must be set if an S3 prefix name is set in
+\code{LocationARN}.}
+
+\item{CacheAttributes}{Refresh cache information.}
 }
 \description{
 Creates a Server Message Block (SMB) file share on an existing file
 gateway. In Storage Gateway, a file share is a file system mount point
 backed by Amazon S3 cloud storage. Storage Gateway expose file shares
-using a SMB interface. This operation is only supported for file
+using an SMB interface. This operation is only supported for file
 gateways.
 }
 \details{
@@ -104,8 +134,8 @@ File gateways require AWS Security Token Service (AWS STS) to be
 activated to enable you to create a file share. Make sure that AWS STS
 is activated in the AWS Region you are creating your file gateway in. If
 AWS STS is not activated in this AWS Region, activate it. For
-information about how to activate AWS STS, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating AWS STS in an AWS Region}
-in the \emph{AWS Identity and Access Management User Guide.}
+information about how to activate AWS STS, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and deactivating AWS STS in an AWS Region}
+in the \emph{AWS Identity and Access Management User Guide}.
 
 File gateways don\'t support creating hard or symbolic links on a file
 share.
@@ -133,12 +163,18 @@ share.
   InvalidUserList = list(
     "string"
   ),
+  AuditDestinationARN = "string",
   Authentication = "string",
+  CaseSensitivity = "ClientSpecified"|"CaseSensitive",
   Tags = list(
     list(
       Key = "string",
       Value = "string"
     )
+  ),
+  FileShareName = "string",
+  CacheAttributes = list(
+    CacheStaleTimeoutInSeconds = 123
   )
 )
 }

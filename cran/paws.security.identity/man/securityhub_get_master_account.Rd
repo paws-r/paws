@@ -2,13 +2,13 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_master_account}
 \alias{securityhub_get_master_account}
-\title{Provides the details for the Security Hub master account to the current
+\title{Provides the details for the Security Hub master account for the current
 member account}
 \usage{
 securityhub_get_master_account()
 }
 \description{
-Provides the details for the Security Hub master account to the current
+Provides the details for the Security Hub master account for the current
 member account.
 }
 \section{Request syntax}{

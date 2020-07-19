@@ -36,8 +36,8 @@ devices, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Virt
 in the \emph{IAM User Guide}.
 }
 \details{
-For information about limits on the number of MFA devices you can
-create, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on Entities}
+The number and size of IAM resources in an AWS account are limited. For
+more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
 in the \emph{IAM User Guide}.
 
 The seed information contained in the QR code and the Base32 string

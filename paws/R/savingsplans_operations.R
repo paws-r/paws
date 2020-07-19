@@ -202,10 +202,10 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 #'     "Compute"|"EC2Instance"
 #'   ),
 #'   products = list(
-#'     "EC2"|"Fargate"
+#'     "EC2"|"Fargate"|"Lambda"
 #'   ),
 #'   serviceCodes = list(
-#'     "AmazonEC2"|"AmazonECS"
+#'     "AmazonEC2"|"AmazonECS"|"AWSLambda"
 #'   ),
 #'   usageTypes = list(
 #'     "string"
@@ -280,7 +280,7 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
 #'   paymentOptions = list(
 #'     "All Upfront"|"Partial Upfront"|"No Upfront"
 #'   ),
-#'   productType = "EC2"|"Fargate",
+#'   productType = "EC2"|"Fargate"|"Lambda",
 #'   planTypes = list(
 #'     "Compute"|"EC2Instance"
 #'   ),

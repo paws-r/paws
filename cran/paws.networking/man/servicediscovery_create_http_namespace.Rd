@@ -5,7 +5,7 @@
 \title{Creates an HTTP namespace}
 \usage{
 servicediscovery_create_http_namespace(Name, CreatorRequestId,
-  Description)
+  Description, Tags)
 }
 \arguments{
 \item{Name}{[required] The name that you want to assign to this namespace.}
@@ -16,6 +16,11 @@ executing the operation twice. \code{CreatorRequestId} can be any unique
 string, for example, a date/time stamp.}
 
 \item{Description}{A description for the namespace.}
+
+\item{Tags}{The tags to add to the namespace. Each tag consists of a key and an
+optional value, both of which you define. Tag keys can have a maximum
+character length of 128 characters, and tag values can have a maximum
+length of 256 characters.}
 }
 \description{
 Creates an HTTP namespace. Service instances that you register using an
@@ -24,16 +29,33 @@ can\'t be discovered using DNS.
 }
 \details{
 For the current limit on the number of namespaces that you can create
-using the same AWS account, see \href{http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
+using the same AWS account, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
 in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_http_namespace(
   Name = "string",
   CreatorRequestId = "string",
-  Description = "string"
+  Description = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }
 
+\examples{
+\dontrun{
+# This example creates an HTTP namespace.
+svc$create_http_namespace(
+  CreatorRequestId = "example-creator-request-id-0001",
+  Description = "Example.com AWS Cloud Map HTTP Namespace",
+  Name = "example-http.com"
+)
+}
+
+}
 \keyword{internal}

@@ -3,6 +3,45 @@
 #' @include elasticsearchservice_service.R
 NULL
 
+#' Allows the destination domain owner to accept an inbound cross-cluster
+#' search connection request
+#'
+#' Allows the destination domain owner to accept an inbound cross-cluster
+#' search connection request.
+#'
+#' @usage
+#' elasticsearchservice_accept_inbound_cross_cluster_search_connection(
+#'   CrossClusterSearchConnectionId)
+#'
+#' @param CrossClusterSearchConnectionId &#91;required&#93; The id of the inbound connection that you want to accept.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$accept_inbound_cross_cluster_search_connection(
+#'   CrossClusterSearchConnectionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_accept_inbound_cross_cluster_search_connection
+elasticsearchservice_accept_inbound_cross_cluster_search_connection <- function(CrossClusterSearchConnectionId) {
+  op <- new_operation(
+    name = "AcceptInboundCrossClusterSearchConnection",
+    http_method = "PUT",
+    http_path = "/2015-01-01/es/ccs/inboundConnection/{ConnectionId}/accept",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$accept_inbound_cross_cluster_search_connection_input(CrossClusterSearchConnectionId = CrossClusterSearchConnectionId)
+  output <- .elasticsearchservice$accept_inbound_cross_cluster_search_connection_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$accept_inbound_cross_cluster_search_connection <- elasticsearchservice_accept_inbound_cross_cluster_search_connection
+
 #' Attaches tags to an existing Elasticsearch domain
 #'
 #' Attaches tags to an existing Elasticsearch domain. Tags are a set of
@@ -48,6 +87,45 @@ elasticsearchservice_add_tags <- function(ARN, TagList) {
   return(response)
 }
 .elasticsearchservice$operations$add_tags <- elasticsearchservice_add_tags
+
+#' Associates a package with an Amazon ES domain
+#'
+#' Associates a package with an Amazon ES domain.
+#'
+#' @usage
+#' elasticsearchservice_associate_package(PackageID, DomainName)
+#'
+#' @param PackageID &#91;required&#93; Internal ID of the package that you want to associate with a domain. Use
+#' `DescribePackages` to find this value.
+#' @param DomainName &#91;required&#93; Name of the domain that you want to associate the package with.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_package(
+#'   PackageID = "string",
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_associate_package
+elasticsearchservice_associate_package <- function(PackageID, DomainName) {
+  op <- new_operation(
+    name = "AssociatePackage",
+    http_method = "POST",
+    http_path = "/2015-01-01/packages/associate/{PackageID}/{DomainName}",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$associate_package_input(PackageID = PackageID, DomainName = DomainName)
+  output <- .elasticsearchservice$associate_package_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$associate_package <- elasticsearchservice_associate_package
 
 #' Cancels a scheduled service software update for an Amazon ES domain
 #'
@@ -101,7 +179,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'   ElasticsearchVersion, ElasticsearchClusterConfig, EBSOptions,
 #'   AccessPolicies, SnapshotOptions, VPCOptions, CognitoOptions,
 #'   EncryptionAtRestOptions, NodeToNodeEncryptionOptions, AdvancedOptions,
-#'   LogPublishingOptions, DomainEndpointOptions)
+#'   LogPublishingOptions, DomainEndpointOptions, AdvancedSecurityOptions)
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you are creating. Domain names
 #' are unique across the domains owned by an account within an AWS region.
@@ -137,6 +215,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' publish a given type of Elasticsearch log.
 #' @param DomainEndpointOptions Options to specify configuration that will be applied to the domain
 #' endpoint.
+#' @param AdvancedSecurityOptions Specifies advanced security options.
 #'
 #' @section Request syntax:
 #' ```
@@ -200,6 +279,15 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #'   DomainEndpointOptions = list(
 #'     EnforceHTTPS = TRUE|FALSE,
 #'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
+#'   ),
+#'   AdvancedSecurityOptions = list(
+#'     Enabled = TRUE|FALSE,
+#'     InternalUserDatabaseEnabled = TRUE|FALSE,
+#'     MasterUserOptions = list(
+#'       MasterUserARN = "string",
+#'       MasterUserName = "string",
+#'       MasterUserPassword = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -207,14 +295,14 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_create_elasticsearch_domain
-elasticsearchservice_create_elasticsearch_domain <- function(DomainName, ElasticsearchVersion = NULL, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL) {
+elasticsearchservice_create_elasticsearch_domain <- function(DomainName, ElasticsearchVersion = NULL, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL) {
   op <- new_operation(
     name = "CreateElasticsearchDomain",
     http_method = "POST",
     http_path = "/2015-01-01/es/domain",
     paginator = list()
   )
-  input <- .elasticsearchservice$create_elasticsearch_domain_input(DomainName = DomainName, ElasticsearchVersion = ElasticsearchVersion, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions)
+  input <- .elasticsearchservice$create_elasticsearch_domain_input(DomainName = DomainName, ElasticsearchVersion = ElasticsearchVersion, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions)
   output <- .elasticsearchservice$create_elasticsearch_domain_output()
   config <- get_config()
   svc <- .elasticsearchservice$service(config)
@@ -223,6 +311,106 @@ elasticsearchservice_create_elasticsearch_domain <- function(DomainName, Elastic
   return(response)
 }
 .elasticsearchservice$operations$create_elasticsearch_domain <- elasticsearchservice_create_elasticsearch_domain
+
+#' Creates a new cross-cluster search connection from a source domain to a
+#' destination domain
+#'
+#' Creates a new cross-cluster search connection from a source domain to a
+#' destination domain.
+#'
+#' @usage
+#' elasticsearchservice_create_outbound_cross_cluster_search_connection(
+#'   SourceDomainInfo, DestinationDomainInfo, ConnectionAlias)
+#'
+#' @param SourceDomainInfo &#91;required&#93; Specifies the `<a>DomainInformation</a>` for the source Elasticsearch
+#' domain.
+#' @param DestinationDomainInfo &#91;required&#93; Specifies the `<a>DomainInformation</a>` for the destination
+#' Elasticsearch domain.
+#' @param ConnectionAlias &#91;required&#93; Specifies the connection alias that will be used by the customer for
+#' this connection.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_outbound_cross_cluster_search_connection(
+#'   SourceDomainInfo = list(
+#'     OwnerId = "string",
+#'     DomainName = "string",
+#'     Region = "string"
+#'   ),
+#'   DestinationDomainInfo = list(
+#'     OwnerId = "string",
+#'     DomainName = "string",
+#'     Region = "string"
+#'   ),
+#'   ConnectionAlias = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_create_outbound_cross_cluster_search_connection
+elasticsearchservice_create_outbound_cross_cluster_search_connection <- function(SourceDomainInfo, DestinationDomainInfo, ConnectionAlias) {
+  op <- new_operation(
+    name = "CreateOutboundCrossClusterSearchConnection",
+    http_method = "POST",
+    http_path = "/2015-01-01/es/ccs/outboundConnection",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$create_outbound_cross_cluster_search_connection_input(SourceDomainInfo = SourceDomainInfo, DestinationDomainInfo = DestinationDomainInfo, ConnectionAlias = ConnectionAlias)
+  output <- .elasticsearchservice$create_outbound_cross_cluster_search_connection_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$create_outbound_cross_cluster_search_connection <- elasticsearchservice_create_outbound_cross_cluster_search_connection
+
+#' Create a package for use with Amazon ES domains
+#'
+#' Create a package for use with Amazon ES domains.
+#'
+#' @usage
+#' elasticsearchservice_create_package(PackageName, PackageType,
+#'   PackageDescription, PackageSource)
+#'
+#' @param PackageName &#91;required&#93; Unique identifier for the package.
+#' @param PackageType &#91;required&#93; Type of package. Currently supports only TXT-DICTIONARY.
+#' @param PackageDescription Description of the package.
+#' @param PackageSource &#91;required&#93; The customer S3 location `PackageSource` for importing the package.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_package(
+#'   PackageName = "string",
+#'   PackageType = "TXT-DICTIONARY",
+#'   PackageDescription = "string",
+#'   PackageSource = list(
+#'     S3BucketName = "string",
+#'     S3Key = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_create_package
+elasticsearchservice_create_package <- function(PackageName, PackageType, PackageDescription = NULL, PackageSource) {
+  op <- new_operation(
+    name = "CreatePackage",
+    http_method = "POST",
+    http_path = "/2015-01-01/packages",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$create_package_input(PackageName = PackageName, PackageType = PackageType, PackageDescription = PackageDescription, PackageSource = PackageSource)
+  output <- .elasticsearchservice$create_package_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$create_package <- elasticsearchservice_create_package
 
 #' Permanently deletes the specified Elasticsearch domain and all of its
 #' data
@@ -299,6 +487,121 @@ elasticsearchservice_delete_elasticsearch_service_role <- function() {
   return(response)
 }
 .elasticsearchservice$operations$delete_elasticsearch_service_role <- elasticsearchservice_delete_elasticsearch_service_role
+
+#' Allows the destination domain owner to delete an existing inbound
+#' cross-cluster search connection
+#'
+#' Allows the destination domain owner to delete an existing inbound
+#' cross-cluster search connection.
+#'
+#' @usage
+#' elasticsearchservice_delete_inbound_cross_cluster_search_connection(
+#'   CrossClusterSearchConnectionId)
+#'
+#' @param CrossClusterSearchConnectionId &#91;required&#93; The id of the inbound connection that you want to permanently delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_inbound_cross_cluster_search_connection(
+#'   CrossClusterSearchConnectionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_delete_inbound_cross_cluster_search_connection
+elasticsearchservice_delete_inbound_cross_cluster_search_connection <- function(CrossClusterSearchConnectionId) {
+  op <- new_operation(
+    name = "DeleteInboundCrossClusterSearchConnection",
+    http_method = "DELETE",
+    http_path = "/2015-01-01/es/ccs/inboundConnection/{ConnectionId}",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$delete_inbound_cross_cluster_search_connection_input(CrossClusterSearchConnectionId = CrossClusterSearchConnectionId)
+  output <- .elasticsearchservice$delete_inbound_cross_cluster_search_connection_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$delete_inbound_cross_cluster_search_connection <- elasticsearchservice_delete_inbound_cross_cluster_search_connection
+
+#' Allows the source domain owner to delete an existing outbound
+#' cross-cluster search connection
+#'
+#' Allows the source domain owner to delete an existing outbound
+#' cross-cluster search connection.
+#'
+#' @usage
+#' elasticsearchservice_delete_outbound_cross_cluster_search_connection(
+#'   CrossClusterSearchConnectionId)
+#'
+#' @param CrossClusterSearchConnectionId &#91;required&#93; The id of the outbound connection that you want to permanently delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_outbound_cross_cluster_search_connection(
+#'   CrossClusterSearchConnectionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_delete_outbound_cross_cluster_search_connection
+elasticsearchservice_delete_outbound_cross_cluster_search_connection <- function(CrossClusterSearchConnectionId) {
+  op <- new_operation(
+    name = "DeleteOutboundCrossClusterSearchConnection",
+    http_method = "DELETE",
+    http_path = "/2015-01-01/es/ccs/outboundConnection/{ConnectionId}",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$delete_outbound_cross_cluster_search_connection_input(CrossClusterSearchConnectionId = CrossClusterSearchConnectionId)
+  output <- .elasticsearchservice$delete_outbound_cross_cluster_search_connection_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$delete_outbound_cross_cluster_search_connection <- elasticsearchservice_delete_outbound_cross_cluster_search_connection
+
+#' Delete the package
+#'
+#' Delete the package.
+#'
+#' @usage
+#' elasticsearchservice_delete_package(PackageID)
+#'
+#' @param PackageID &#91;required&#93; Internal ID of the package that you want to delete. Use
+#' `DescribePackages` to find this value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_package(
+#'   PackageID = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_delete_package
+elasticsearchservice_delete_package <- function(PackageID) {
+  op <- new_operation(
+    name = "DeletePackage",
+    http_method = "DELETE",
+    http_path = "/2015-01-01/packages/{PackageID}",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$delete_package_input(PackageID = PackageID)
+  output <- .elasticsearchservice$delete_package_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$delete_package <- elasticsearchservice_delete_package
 
 #' Returns domain configuration information about the specified
 #' Elasticsearch domain, including the domain ID, domain endpoint, and
@@ -469,6 +772,177 @@ elasticsearchservice_describe_elasticsearch_instance_type_limits <- function(Dom
 }
 .elasticsearchservice$operations$describe_elasticsearch_instance_type_limits <- elasticsearchservice_describe_elasticsearch_instance_type_limits
 
+#' Lists all the inbound cross-cluster search connections for a destination
+#' domain
+#'
+#' Lists all the inbound cross-cluster search connections for a destination
+#' domain.
+#'
+#' @usage
+#' elasticsearchservice_describe_inbound_cross_cluster_search_connections(
+#'   Filters, MaxResults, NextToken)
+#'
+#' @param Filters A list of filters used to match properties for inbound cross-cluster
+#' search connection. Available `<a>Filter</a>` names for this operation
+#' are:
+#' 
+#' -   cross-cluster-search-connection-id
+#' -   source-domain-info.domain-name
+#' -   source-domain-info.owner-id
+#' -   source-domain-info.region
+#' -   destination-domain-info.domain-name
+#' @param MaxResults Set this value to limit the number of results returned. If not
+#' specified, defaults to 100.
+#' @param NextToken NextToken is sent in case the earlier API call results contain the
+#' NextToken. It is used for pagination.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_inbound_cross_cluster_search_connections(
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_describe_inbound_cross_cluster_search_connections
+elasticsearchservice_describe_inbound_cross_cluster_search_connections <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeInboundCrossClusterSearchConnections",
+    http_method = "POST",
+    http_path = "/2015-01-01/es/ccs/inboundConnection/search",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$describe_inbound_cross_cluster_search_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .elasticsearchservice$describe_inbound_cross_cluster_search_connections_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$describe_inbound_cross_cluster_search_connections <- elasticsearchservice_describe_inbound_cross_cluster_search_connections
+
+#' Lists all the outbound cross-cluster search connections for a source
+#' domain
+#'
+#' Lists all the outbound cross-cluster search connections for a source
+#' domain.
+#'
+#' @usage
+#' elasticsearchservice_describe_outbound_cross_cluster_search_connections(
+#'   Filters, MaxResults, NextToken)
+#'
+#' @param Filters A list of filters used to match properties for outbound cross-cluster
+#' search connection. Available `<a>Filter</a>` names for this operation
+#' are:
+#' 
+#' -   cross-cluster-search-connection-id
+#' -   destination-domain-info.domain-name
+#' -   destination-domain-info.owner-id
+#' -   destination-domain-info.region
+#' -   source-domain-info.domain-name
+#' @param MaxResults Set this value to limit the number of results returned. If not
+#' specified, defaults to 100.
+#' @param NextToken NextToken is sent in case the earlier API call results contain the
+#' NextToken. It is used for pagination.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_outbound_cross_cluster_search_connections(
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_describe_outbound_cross_cluster_search_connections
+elasticsearchservice_describe_outbound_cross_cluster_search_connections <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeOutboundCrossClusterSearchConnections",
+    http_method = "POST",
+    http_path = "/2015-01-01/es/ccs/outboundConnection/search",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$describe_outbound_cross_cluster_search_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .elasticsearchservice$describe_outbound_cross_cluster_search_connections_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$describe_outbound_cross_cluster_search_connections <- elasticsearchservice_describe_outbound_cross_cluster_search_connections
+
+#' Describes all packages available to Amazon ES
+#'
+#' Describes all packages available to Amazon ES. Includes options for
+#' filtering, limiting the number of results, and pagination.
+#'
+#' @usage
+#' elasticsearchservice_describe_packages(Filters, MaxResults, NextToken)
+#'
+#' @param Filters Only returns packages that match the `DescribePackagesFilterList`
+#' values.
+#' @param MaxResults Limits results to a maximum number of packages.
+#' @param NextToken Used for pagination. Only necessary if a previous API call includes a
+#' non-null NextToken value. If provided, returns results for the next
+#' page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_packages(
+#'   Filters = list(
+#'     list(
+#'       Name = "PackageID"|"PackageName"|"PackageStatus",
+#'       Value = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_describe_packages
+elasticsearchservice_describe_packages <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribePackages",
+    http_method = "POST",
+    http_path = "/2015-01-01/packages/describe",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$describe_packages_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .elasticsearchservice$describe_packages_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$describe_packages <- elasticsearchservice_describe_packages
+
 #' Lists available reserved Elasticsearch instance offerings
 #'
 #' Lists available reserved Elasticsearch instance offerings.
@@ -560,6 +1034,45 @@ elasticsearchservice_describe_reserved_elasticsearch_instances <- function(Reser
   return(response)
 }
 .elasticsearchservice$operations$describe_reserved_elasticsearch_instances <- elasticsearchservice_describe_reserved_elasticsearch_instances
+
+#' Dissociates a package from the Amazon ES domain
+#'
+#' Dissociates a package from the Amazon ES domain.
+#'
+#' @usage
+#' elasticsearchservice_dissociate_package(PackageID, DomainName)
+#'
+#' @param PackageID &#91;required&#93; Internal ID of the package that you want to associate with a domain. Use
+#' `DescribePackages` to find this value.
+#' @param DomainName &#91;required&#93; Name of the domain that you want to associate the package with.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$dissociate_package(
+#'   PackageID = "string",
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_dissociate_package
+elasticsearchservice_dissociate_package <- function(PackageID, DomainName) {
+  op <- new_operation(
+    name = "DissociatePackage",
+    http_method = "POST",
+    http_path = "/2015-01-01/packages/dissociate/{PackageID}/{DomainName}",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$dissociate_package_input(PackageID = PackageID, DomainName = DomainName)
+  output <- .elasticsearchservice$dissociate_package_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$dissociate_package <- elasticsearchservice_dissociate_package
 
 #' Returns a list of upgrade compatible Elastisearch versions
 #'
@@ -713,6 +1226,49 @@ elasticsearchservice_list_domain_names <- function() {
 }
 .elasticsearchservice$operations$list_domain_names <- elasticsearchservice_list_domain_names
 
+#' Lists all Amazon ES domains associated with the package
+#'
+#' Lists all Amazon ES domains associated with the package.
+#'
+#' @usage
+#' elasticsearchservice_list_domains_for_package(PackageID, MaxResults,
+#'   NextToken)
+#'
+#' @param PackageID &#91;required&#93; The package for which to list domains.
+#' @param MaxResults Limits results to a maximum number of domains.
+#' @param NextToken Used for pagination. Only necessary if a previous API call includes a
+#' non-null NextToken value. If provided, returns results for the next
+#' page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_domains_for_package(
+#'   PackageID = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_list_domains_for_package
+elasticsearchservice_list_domains_for_package <- function(PackageID, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListDomainsForPackage",
+    http_method = "GET",
+    http_path = "/2015-01-01/packages/{PackageID}/domains",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$list_domains_for_package_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .elasticsearchservice$list_domains_for_package_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$list_domains_for_package <- elasticsearchservice_list_domains_for_package
+
 #' List all Elasticsearch instance types that are supported for given
 #' ElasticsearchVersion
 #'
@@ -802,6 +1358,49 @@ elasticsearchservice_list_elasticsearch_versions <- function(MaxResults = NULL, 
 }
 .elasticsearchservice$operations$list_elasticsearch_versions <- elasticsearchservice_list_elasticsearch_versions
 
+#' Lists all packages associated with the Amazon ES domain
+#'
+#' Lists all packages associated with the Amazon ES domain.
+#'
+#' @usage
+#' elasticsearchservice_list_packages_for_domain(DomainName, MaxResults,
+#'   NextToken)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain for which you want to list associated packages.
+#' @param MaxResults Limits results to a maximum number of packages.
+#' @param NextToken Used for pagination. Only necessary if a previous API call includes a
+#' non-null NextToken value. If provided, returns results for the next
+#' page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_packages_for_domain(
+#'   DomainName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_list_packages_for_domain
+elasticsearchservice_list_packages_for_domain <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListPackagesForDomain",
+    http_method = "GET",
+    http_path = "/2015-01-01/domain/{DomainName}/packages",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$list_packages_for_domain_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .elasticsearchservice$list_packages_for_domain_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$list_packages_for_domain <- elasticsearchservice_list_packages_for_domain
+
 #' Returns all tags for the given Elasticsearch domain
 #'
 #' Returns all tags for the given Elasticsearch domain.
@@ -879,6 +1478,45 @@ elasticsearchservice_purchase_reserved_elasticsearch_instance_offering <- functi
   return(response)
 }
 .elasticsearchservice$operations$purchase_reserved_elasticsearch_instance_offering <- elasticsearchservice_purchase_reserved_elasticsearch_instance_offering
+
+#' Allows the destination domain owner to reject an inbound cross-cluster
+#' search connection request
+#'
+#' Allows the destination domain owner to reject an inbound cross-cluster
+#' search connection request.
+#'
+#' @usage
+#' elasticsearchservice_reject_inbound_cross_cluster_search_connection(
+#'   CrossClusterSearchConnectionId)
+#'
+#' @param CrossClusterSearchConnectionId &#91;required&#93; The id of the inbound connection that you want to reject.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$reject_inbound_cross_cluster_search_connection(
+#'   CrossClusterSearchConnectionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticsearchservice_reject_inbound_cross_cluster_search_connection
+elasticsearchservice_reject_inbound_cross_cluster_search_connection <- function(CrossClusterSearchConnectionId) {
+  op <- new_operation(
+    name = "RejectInboundCrossClusterSearchConnection",
+    http_method = "PUT",
+    http_path = "/2015-01-01/es/ccs/inboundConnection/{ConnectionId}/reject",
+    paginator = list()
+  )
+  input <- .elasticsearchservice$reject_inbound_cross_cluster_search_connection_input(CrossClusterSearchConnectionId = CrossClusterSearchConnectionId)
+  output <- .elasticsearchservice$reject_inbound_cross_cluster_search_connection_output()
+  config <- get_config()
+  svc <- .elasticsearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticsearchservice$operations$reject_inbound_cross_cluster_search_connection <- elasticsearchservice_reject_inbound_cross_cluster_search_connection
 
 #' Removes the specified set of tags from the specified Elasticsearch
 #' domain
@@ -973,7 +1611,7 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' elasticsearchservice_update_elasticsearch_domain_config(DomainName,
 #'   ElasticsearchClusterConfig, EBSOptions, SnapshotOptions, VPCOptions,
 #'   CognitoOptions, AdvancedOptions, AccessPolicies, LogPublishingOptions,
-#'   DomainEndpointOptions)
+#'   DomainEndpointOptions, AdvancedSecurityOptions)
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you are updating.
 #' @param ElasticsearchClusterConfig The type and number of instances to instantiate for the domain cluster.
@@ -999,6 +1637,7 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' publish a given type of Elasticsearch log.
 #' @param DomainEndpointOptions Options to specify configuration that will be applied to the domain
 #' endpoint.
+#' @param AdvancedSecurityOptions Specifies advanced security options.
 #'
 #' @section Request syntax:
 #' ```
@@ -1054,6 +1693,15 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #'   DomainEndpointOptions = list(
 #'     EnforceHTTPS = TRUE|FALSE,
 #'     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
+#'   ),
+#'   AdvancedSecurityOptions = list(
+#'     Enabled = TRUE|FALSE,
+#'     InternalUserDatabaseEnabled = TRUE|FALSE,
+#'     MasterUserOptions = list(
+#'       MasterUserARN = "string",
+#'       MasterUserName = "string",
+#'       MasterUserPassword = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1061,14 +1709,14 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_update_elasticsearch_domain_config
-elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL) {
+elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL) {
   op <- new_operation(
     name = "UpdateElasticsearchDomainConfig",
     http_method = "POST",
     http_path = "/2015-01-01/es/domain/{DomainName}/config",
     paginator = list()
   )
-  input <- .elasticsearchservice$update_elasticsearch_domain_config_input(DomainName = DomainName, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions)
+  input <- .elasticsearchservice$update_elasticsearch_domain_config_input(DomainName = DomainName, ElasticsearchClusterConfig = ElasticsearchClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions)
   output <- .elasticsearchservice$update_elasticsearch_domain_config_output()
   config <- get_config()
   svc <- .elasticsearchservice$service(config)

@@ -210,6 +210,12 @@ increase gradually up to about five minutes of wait time.
             value = "string"
           )
         ),
+        environmentFiles = list(
+          list(
+            value = "string",
+            type = "s3"
+          )
+        ),
         cpu = 123,
         memory = 123,
         memoryReservation = 123,

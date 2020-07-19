@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_decrease_replica_count}
 \alias{elasticache_decrease_replica_count}
-\title{Dynamically decreases the number of replics in a Redis (cluster mode
+\title{Dynamically decreases the number of replicas in a Redis (cluster mode
 disabled) replication group or the number of replica nodes in one or
 more node groups (shards) of a Redis (cluster mode enabled) replication
 group}
@@ -24,8 +24,8 @@ The minimum number of replicas in a shard or replication group is:
 \itemize{
 \item Redis (cluster mode disabled)
 \itemize{
-\item If Multi-AZ with Automatic Failover is enabled: 1
-\item If Multi-AZ with Automatic Failover is not enabled: 0
+\item If Multi-AZ is enabled: 1
+\item If Multi-AZ is not enabled: 0
 }
 \item Redis (cluster mode enabled): 0 (though you will not be able to
 failover to a replica if your primary node fails)
@@ -43,7 +43,7 @@ group (shard).}
 \code{ApplyImmediately=False} is not currently supported.}
 }
 \description{
-Dynamically decreases the number of replics in a Redis (cluster mode
+Dynamically decreases the number of replicas in a Redis (cluster mode
 disabled) replication group or the number of replica nodes in one or
 more node groups (shards) of a Redis (cluster mode enabled) replication
 group. This operation is performed with no cluster down time.

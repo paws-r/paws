@@ -2,27 +2,26 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_describe_db_cluster_snapshot_attributes}
 \alias{docdb_describe_db_cluster_snapshot_attributes}
-\title{Returns a list of DB cluster snapshot attribute names and values for a
+\title{Returns a list of cluster snapshot attribute names and values for a
 manual DB cluster snapshot}
 \usage{
 docdb_describe_db_cluster_snapshot_attributes(
   DBClusterSnapshotIdentifier)
 }
 \arguments{
-\item{DBClusterSnapshotIdentifier}{[required] The identifier for the DB cluster snapshot to describe the attributes
-for.}
+\item{DBClusterSnapshotIdentifier}{[required] The identifier for the cluster snapshot to describe the attributes for.}
 }
 \description{
-Returns a list of DB cluster snapshot attribute names and values for a
+Returns a list of cluster snapshot attribute names and values for a
 manual DB cluster snapshot.
 }
 \details{
 When you share snapshots with other AWS accounts,
 \code{DescribeDBClusterSnapshotAttributes} returns the \code{restore} attribute
 and a list of IDs for the AWS accounts that are authorized to copy or
-restore the manual DB cluster snapshot. If \code{all} is included in the list
-of values for the \code{restore} attribute, then the manual DB cluster
-snapshot is public and can be copied or restored by all AWS accounts.
+restore the manual cluster snapshot. If \code{all} is included in the list of
+values for the \code{restore} attribute, then the manual cluster snapshot is
+public and can be copied or restored by all AWS accounts.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_db_cluster_snapshot_attributes(

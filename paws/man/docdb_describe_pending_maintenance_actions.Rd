@@ -2,8 +2,8 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_describe_pending_maintenance_actions}
 \alias{docdb_describe_pending_maintenance_actions}
-\title{Returns a list of resources (for example, DB instances) that have at
-least one pending maintenance action}
+\title{Returns a list of resources (for example, instances) that have at least
+one pending maintenance action}
 \usage{
 docdb_describe_pending_maintenance_actions(ResourceIdentifier, Filters,
   Marker, MaxRecords)
@@ -16,12 +16,12 @@ maintenance actions for.
 
 Supported filters:
 \itemize{
-\item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster
-Amazon Resource Names (ARNs). The results list includes only pending
-maintenance actions for the DB clusters identified by these ARNs.
-\item \code{db-instance-id} - Accepts DB instance identifiers and DB instance
-ARNs. The results list includes only pending maintenance actions for
-the DB instances identified by these ARNs.
+\item \code{db-cluster-id} - Accepts cluster identifiers and cluster Amazon
+Resource Names (ARNs). The results list includes only pending
+maintenance actions for the clusters identified by these ARNs.
+\item \code{db-instance-id} - Accepts instance identifiers and instance ARNs.
+The results list includes only pending maintenance actions for the
+DB instances identified by these ARNs.
 }}
 
 \item{Marker}{An optional pagination token provided by a previous request. If this
@@ -38,8 +38,8 @@ Default: 100
 Constraints: Minimum 20, maximum 100.}
 }
 \description{
-Returns a list of resources (for example, DB instances) that have at
-least one pending maintenance action.
+Returns a list of resources (for example, instances) that have at least
+one pending maintenance action.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_pending_maintenance_actions(

@@ -6,7 +6,7 @@
 with the specified stack set}
 \usage{
 cloudformation_list_stack_instances(StackSetName, NextToken, MaxResults,
-  StackInstanceAccount, StackInstanceRegion)
+  Filters, StackInstanceAccount, StackInstanceRegion)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to list stack
@@ -24,20 +24,29 @@ number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 
+\item{Filters}{The status that stack instances are filtered by.}
+
 \item{StackInstanceAccount}{The name of the AWS account that you want to list stack instances for.}
 
-\item{StackInstanceRegion}{The name of the region where you want to list stack instances.}
+\item{StackInstanceRegion}{The name of the Region where you want to list stack instances.}
 }
 \description{
 Returns summary information about stack instances that are associated
 with the specified stack set. You can filter for stack instances that
-are associated with a specific AWS account name or region.
+are associated with a specific AWS account name or Region, or that have
+a specific status.
 }
 \section{Request syntax}{
 \preformatted{svc$list_stack_instances(
   StackSetName = "string",
   NextToken = "string",
   MaxResults = 123,
+  Filters = list(
+    list(
+      Name = "DETAILED_STATUS",
+      Values = "string"
+    )
+  ),
   StackInstanceAccount = "string",
   StackInstanceRegion = "string"
 )

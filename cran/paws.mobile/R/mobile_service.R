@@ -68,7 +68,7 @@ mobile <- function(config = list()) {
 
 .mobile$metadata <- list(
   service_name = "mobile",
-  endpoints = list("*" = list(endpoint = "mobile.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mobile.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "mobile.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mobile.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "mobile.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "mobile.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Mobile",
   api_version = "2017-07-01",
   signing_name = "AWSMobileHubService",

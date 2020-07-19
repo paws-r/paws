@@ -80,7 +80,7 @@ ssooidc <- function(config = list()) {
 
 .ssooidc$metadata <- list(
   service_name = "ssooidc",
-  endpoints = list("*" = list(endpoint = "ssooidc.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ssooidc.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ssooidc.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ssooidc.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ssooidc.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ssooidc.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SSO OIDC",
   api_version = "2019-06-10",
   signing_name = "awsssooidc",

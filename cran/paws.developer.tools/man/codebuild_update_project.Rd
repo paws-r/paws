@@ -8,7 +8,7 @@ codebuild_update_project(name, description, source, secondarySources,
   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
   cache, environment, serviceRole, timeoutInMinutes,
   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-  logsConfig)
+  logsConfig, fileSystemLocations)
 }
 \arguments{
 \item{name}{[required] The name of the build project.
@@ -82,7 +82,8 @@ You can specify either the Amazon Resource Name (ARN) of the CMK or, if
 available, the CMK\'s alias (using the format
 \verb{alias/<i>alias-name</i> }).}
 
-\item{tags}{The replacement set of tags for this build project.
+\item{tags}{An updated list of tag key and value pairs associated with this build
+project.
 
 These tags are available for use by AWS services that support AWS
 CodeBuild build project tags.}
@@ -94,6 +95,11 @@ project\'s build badge.}
 
 \item{logsConfig}{Information about logs for the build project. A project can create logs
 in Amazon CloudWatch Logs, logs in an S3 bucket, or both.}
+
+\item{fileSystemLocations}{An array of \code{ProjectFileSystemLocation} objects for a CodeBuild build
+project. A \code{ProjectFileSystemLocation} object specifies the
+\code{identifier}, \code{location}, \code{mountOptions}, \code{mountPoint}, and \code{type} of a
+file system created using Amazon Elastic File System.}
 }
 \description{
 Changes the settings of a build project.
@@ -115,6 +121,10 @@ Changes the settings of a build project.
       resource = "string"
     ),
     reportBuildStatus = TRUE|FALSE,
+    buildStatusConfig = list(
+      context = "string",
+      targetUrl = "string"
+    ),
     insecureSsl = TRUE|FALSE,
     sourceIdentifier = "string"
   ),
@@ -132,6 +142,10 @@ Changes the settings of a build project.
         resource = "string"
       ),
       reportBuildStatus = TRUE|FALSE,
+      buildStatusConfig = list(
+        context = "string",
+        targetUrl = "string"
+      ),
       insecureSsl = TRUE|FALSE,
       sourceIdentifier = "string"
     )
@@ -223,6 +237,15 @@ Changes the settings of a build project.
       status = "ENABLED"|"DISABLED",
       location = "string",
       encryptionDisabled = TRUE|FALSE
+    )
+  ),
+  fileSystemLocations = list(
+    list(
+      type = "EFS",
+      location = "string",
+      mountPoint = "string",
+      identifier = "string",
+      mountOptions = "string"
     )
   )
 )

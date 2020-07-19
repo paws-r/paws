@@ -30,9 +30,10 @@ completes sequentially, starting at index 0. You can also specify an
 each index child of this job must wait for the corresponding index child
 of each dependency to complete before it can begin.}
 
-\item{jobDefinition}{[required] The job definition used by this job. This value can be either a
-\code{name:revision} or the Amazon Resource Name (ARN) for the job
-definition.}
+\item{jobDefinition}{[required] The job definition used by this job. This value can be one of \code{name},
+\code{name:revision}, or the Amazon Resource Name (ARN) for the job
+definition. If \code{name} is specified without a revision then the latest
+active revision is used.}
 
 \item{parameters}{Additional parameters passed to the job that replace parameter
 substitution placeholders that are set in the job definition. Parameters

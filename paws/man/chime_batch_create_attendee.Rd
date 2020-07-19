@@ -21,7 +21,13 @@ the \emph{Amazon Chime Developer Guide}.
   MeetingId = "string",
   Attendees = list(
     list(
-      ExternalUserId = "string"
+      ExternalUserId = "string",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
     )
   )
 )

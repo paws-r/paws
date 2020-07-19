@@ -11,7 +11,8 @@ ec2_describe_fast_snapshot_restores(Filters, MaxResults, NextToken,
 \item{Filters}{The filters. The possible values are:
 \itemize{
 \item \code{availability-zone}: The Availability Zone of the snapshot.
-\item \code{owner-id}: The ID of the AWS account that owns the snapshot.
+\item \code{owner-id}: The ID of the AWS account that enabled fast snapshot
+restore on the snapshot.
 \item \code{snapshot-id}: The ID of the snapshot.
 \item \code{state}: The state of fast snapshot restores for the snapshot
 (\code{enabling} \\| \code{optimizing} \\| \code{enabled} \\| \code{disabling} \\|

@@ -15,6 +15,30 @@ NULL
   return(populate(args, shape))
 }
 
+.outposts$delete_outpost_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OutpostId = structure(logical(0), tags = list(location = "uri", locationName = "OutpostId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.outposts$delete_outpost_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.outposts$delete_site_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SiteId = structure(logical(0), tags = list(location = "uri", locationName = "SiteId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.outposts$delete_site_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .outposts$get_outpost_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OutpostId = structure(logical(0), tags = list(location = "uri", locationName = "OutpostId", type = "string"))), tags = list(type = "structure"))

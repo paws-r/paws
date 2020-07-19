@@ -2,7 +2,7 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_delete_db_subnet_group}
 \alias{docdb_delete_db_subnet_group}
-\title{Deletes a DB subnet group}
+\title{Deletes a subnet group}
 \usage{
 docdb_delete_db_subnet_group(DBSubnetGroupName)
 }
@@ -18,7 +18,7 @@ Must match the name of an existing \code{DBSubnetGroup}. Must not be default.
 Example: \code{mySubnetgroup}}
 }
 \description{
-Deletes a DB subnet group.
+Deletes a subnet group.
 }
 \details{
 The specified database subnet group must not be associated with any DB

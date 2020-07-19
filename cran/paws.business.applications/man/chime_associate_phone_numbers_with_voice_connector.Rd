@@ -10,7 +10,7 @@ chime_associate_phone_numbers_with_voice_connector(VoiceConnectorId,
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 
-\item{E164PhoneNumbers}{List of phone numbers, in E.164 format.}
+\item{E164PhoneNumbers}{[required] List of phone numbers, in E.164 format.}
 
 \item{ForceAssociate}{If true, associates the provided phone numbers with the provided Amazon
 Chime Voice Connector and removes any previously existing associations.

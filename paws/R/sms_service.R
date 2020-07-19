@@ -103,7 +103,7 @@ sms <- function(config = list()) {
 
 .sms$metadata <- list(
   service_name = "sms",
-  endpoints = list("*" = list(endpoint = "sms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sms.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "sms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sms.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sms.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sms.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SMS",
   api_version = "2016-10-24",
   signing_name = NULL,

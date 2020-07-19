@@ -42,8 +42,10 @@ Detector features, see the \href{https://docs.aws.amazon.com/frauddetector/lates
 \link[=frauddetector_create_model_version]{create_model_version} \tab Creates a version of the model using the specified model type \cr
 \link[=frauddetector_create_rule]{create_rule} \tab Creates a rule for use with the specified detector \cr
 \link[=frauddetector_create_variable]{create_variable} \tab Creates a variable \cr
+\link[=frauddetector_delete_detector]{delete_detector} \tab Deletes the detector \cr
 \link[=frauddetector_delete_detector_version]{delete_detector_version} \tab Deletes the detector version \cr
 \link[=frauddetector_delete_event]{delete_event} \tab Deletes the specified event \cr
+\link[=frauddetector_delete_rule_version]{delete_rule_version} \tab Deletes the rule version \cr
 \link[=frauddetector_describe_detector]{describe_detector} \tab Gets all versions for a specified detector \cr
 \link[=frauddetector_describe_model_versions]{describe_model_versions} \tab Gets all of the model versions for the specified model type or for the specified model type and model ID \cr
 \link[=frauddetector_get_detectors]{get_detectors} \tab Gets all of detectors \cr

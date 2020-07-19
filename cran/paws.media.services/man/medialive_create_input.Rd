@@ -4,11 +4,13 @@
 \alias{medialive_create_input}
 \title{Create an input}
 \usage{
-medialive_create_input(Destinations, InputSecurityGroups,
+medialive_create_input(Destinations, InputDevices, InputSecurityGroups,
   MediaConnectFlows, Name, RequestId, RoleArn, Sources, Tags, Type, Vpc)
 }
 \arguments{
 \item{Destinations}{Destination settings for PUSH type inputs.}
+
+\item{InputDevices}{Settings for the devices.}
 
 \item{InputSecurityGroups}{A list of security groups referenced by IDs to attach to the input.}
 
@@ -43,6 +45,11 @@ Create an input
       StreamName = "string"
     )
   ),
+  InputDevices = list(
+    list(
+      Id = "string"
+    )
+  ),
   InputSecurityGroups = list(
     "string"
   ),
@@ -64,7 +71,7 @@ Create an input
   Tags = list(
     "string"
   ),
-  Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT",
+  Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"|"INPUT_DEVICE",
   Vpc = list(
     SecurityGroupIds = list(
       "string"

@@ -3,7 +3,7 @@
 \name{docdb_describe_certificates}
 \alias{docdb_describe_certificates}
 \title{Returns a list of certificate authority (CA) certificates provided by
-Amazon RDS for this AWS account}
+Amazon DocumentDB for this AWS account}
 \usage{
 docdb_describe_certificates(CertificateIdentifier, Filters, MaxRecords,
   Marker)
@@ -41,7 +41,7 @@ specified by \code{MaxRecords}.}
 }
 \description{
 Returns a list of certificate authority (CA) certificates provided by
-Amazon RDS for this AWS account.
+Amazon DocumentDB for this AWS account.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_certificates(

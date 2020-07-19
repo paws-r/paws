@@ -27,7 +27,9 @@ cluster, use the
 \href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html}{DescribeClusters}
 operation. To add HSMs to the cluster, use the
 \href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm.html}{CreateHsm}
-operation.
+operation. Also, the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{\code{kmsuser} crypto user}
+(CU) must not be logged into the cluster. This prevents AWS KMS from
+using this account to log in.
 
 The connection process can take an extended amount of time to complete;
 up to 20 minutes. This operation starts the connection process, but it
@@ -40,8 +42,7 @@ use the DescribeCustomKeyStores operation.
 During the connection process, AWS KMS finds the AWS CloudHSM cluster
 that is associated with the custom key store, creates the connection
 infrastructure, connects to the cluster, logs into the AWS CloudHSM
-client as the \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser}{\code{kmsuser} crypto user}
-(CU), and rotates its password.
+client as the \code{kmsuser} CU, and rotates its password.
 
 The \code{ConnectCustomKeyStore} operation might fail for various reasons. To
 find the reason, use the DescribeCustomKeyStores operation and see the

@@ -4,10 +4,14 @@
 \alias{appmesh_delete_virtual_service}
 \title{Deletes an existing virtual service}
 \usage{
-appmesh_delete_virtual_service(meshName, virtualServiceName)
+appmesh_delete_virtual_service(meshName, meshOwner, virtualServiceName)
 }
 \arguments{
 \item{meshName}{[required] The name of the service mesh to delete the virtual service in.}
+
+\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it\'s the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{virtualServiceName}{[required] The name of the virtual service to delete.}
 }
@@ -17,6 +21,7 @@ Deletes an existing virtual service.
 \section{Request syntax}{
 \preformatted{svc$delete_virtual_service(
   meshName = "string",
+  meshOwner = "string",
   virtualServiceName = "string"
 )
 }

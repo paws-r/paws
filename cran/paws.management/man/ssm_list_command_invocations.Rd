@@ -20,8 +20,7 @@ the next set of results.}
 this token from a previous call.)}
 
 \item{Filters}{(Optional) One or more filters. Use a filter to return a more specific
-list of results. Note that the \code{DocumentName} filter is not supported
-for ListCommandInvocations.}
+list of results.}
 
 \item{Details}{(Optional) If set this returns the response of the command executions
 and any command output. By default this is set to False.}

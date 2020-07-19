@@ -81,8 +81,11 @@ checks, see the following documents:
 \item \href{https://tools.ietf.org/html/rfc5156}{RFC 5156, Special-Use IPv6 Addresses}
 }}
 
-\item{Port}{The port on the endpoint on which you want Amazon Route 53 to perform
-health checks.}
+\item{Port}{The port on the endpoint that you want Amazon Route 53 to perform health
+checks on.
+
+Don\'t specify a value for \code{Port} when you specify a value for \code{Type} of
+\code{CLOUDWATCH_METRIC} or \code{CALCULATED}.}
 
 \item{ResourcePath}{The path that you want Amazon Route 53 to request when performing health
 checks. The path can be any value for which your endpoint will return an
@@ -159,7 +162,7 @@ In addition, if the value of \code{Type} is \code{HTTP}, \code{HTTPS},
 specify a value for \code{IPAddress}. If the value of \code{Type} is \code{TCP}, Route
 53 doesn\'t pass a \code{Host} header.}
 
-\item{SearchString}{If the value of \code{Type} is \code{HTTP_STR_MATCH} or \code{HTTP_STR_MATCH}, the
+\item{SearchString}{If the value of \code{Type} is \code{HTTP_STR_MATCH} or \code{HTTPS_STR_MATCH}, the
 string that you want Amazon Route 53 to search for in the response body
 from the specified resource. If the string appears in the response body,
 Route 53 considers the resource healthy. (You can\'t change the value of
@@ -167,7 +170,7 @@ Route 53 considers the resource healthy. (You can\'t change the value of
 
 \item{FailureThreshold}{The number of consecutive health checks that an endpoint must pass or
 fail for Amazon Route 53 to change the current status of the endpoint
-from unhealthy to healthy or vice versa. For more information, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html}{How Amazon Route 53 Determines Whether an Endpoint Is Healthy}
+from unhealthy to healthy or vice versa. For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html}{How Amazon Route 53 Determines Whether an Endpoint Is Healthy}
 in the \emph{Amazon Route 53 Developer Guide}.
 
 If you don\'t specify a value for \code{FailureThreshold}, the default value
@@ -281,7 +284,7 @@ Updates an existing health check. Note that some values can\'t be
 updated.
 }
 \details{
-For more information about updating health checks, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html}{Creating, Updating, and Deleting Health Checks}
+For more information about updating health checks, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html}{Creating, Updating, and Deleting Health Checks}
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{
@@ -305,7 +308,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
     "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
   ),
   AlarmIdentifier = list(
-    Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1",
+    Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
     Name = "string"
   ),
   InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",

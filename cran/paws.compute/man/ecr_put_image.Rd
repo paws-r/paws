@@ -4,7 +4,8 @@
 \alias{ecr_put_image}
 \title{Creates or updates the image manifest and tags associated with an image}
 \usage{
-ecr_put_image(registryId, repositoryName, imageManifest, imageTag)
+ecr_put_image(registryId, repositoryName, imageManifest,
+  imageManifestMediaType, imageTag, imageDigest)
 }
 \arguments{
 \item{registryId}{The AWS account ID associated with the registry that contains the
@@ -15,23 +16,35 @@ the default registry is assumed.}
 
 \item{imageManifest}{[required] The image manifest corresponding to the image to be uploaded.}
 
+\item{imageManifestMediaType}{The media type of the image manifest. If you push an image manifest that
+does not contain the \code{mediaType} field, you must specify the
+\code{imageManifestMediaType} in the request.}
+
 \item{imageTag}{The tag to associate with the image. This parameter is required for
 images that use the Docker Image Manifest V2 Schema 2 or OCI formats.}
+
+\item{imageDigest}{The image digest of the image manifest corresponding to the image.}
 }
 \description{
 Creates or updates the image manifest and tags associated with an image.
 }
 \details{
-This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers for pulling and pushing images. In most
-cases, you should use the \code{docker} CLI to pull, tag, and push images.
+When an image is pushed and all new image layers have been uploaded, the
+PutImage API is called once to create or update the image manifest and
+the tags associated with the image.
+
+This operation is used by the Amazon ECR proxy and is not generally used
+by customers for pulling and pushing images. In most cases, you should
+use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
 \preformatted{svc$put_image(
   registryId = "string",
   repositoryName = "string",
   imageManifest = "string",
-  imageTag = "string"
+  imageManifestMediaType = "string",
+  imageTag = "string",
+  imageDigest = "string"
 )
 }
 }

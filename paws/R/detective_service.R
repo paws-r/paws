@@ -5,9 +5,6 @@ NULL
 #' Amazon Detective
 #'
 #' @description
-#' Amazon Detective is currently in preview. The Detective API can only be
-#' used by accounts that are admitted into the preview.
-#' 
 #' Detective uses machine learning and purpose-built visualizations to help
 #' you analyze and investigate security issues across your Amazon Web
 #' Services (AWS) workloads. Detective automatically extracts time-based
@@ -81,17 +78,18 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=detective_accept_invitation]{accept_invitation} \tab Amazon Detective is currently in preview\cr
-#'  \link[=detective_create_graph]{create_graph} \tab Amazon Detective is currently in preview\cr
-#'  \link[=detective_create_members]{create_members} \tab Amazon Detective is currently in preview\cr
-#'  \link[=detective_delete_graph]{delete_graph} \tab Amazon Detective is currently in preview\cr
-#'  \link[=detective_delete_members]{delete_members} \tab Amazon Detective is currently in preview\cr
-#'  \link[=detective_disassociate_membership]{disassociate_membership} \tab Amazon Detective is currently in preview\cr
-#'  \link[=detective_get_members]{get_members} \tab Amazon Detective is currently in preview\cr
-#'  \link[=detective_list_graphs]{list_graphs} \tab Amazon Detective is currently in preview\cr
-#'  \link[=detective_list_invitations]{list_invitations} \tab Amazon Detective is currently in preview\cr
-#'  \link[=detective_list_members]{list_members} \tab Amazon Detective is currently in preview\cr
-#'  \link[=detective_reject_invitation]{reject_invitation} \tab Amazon Detective is currently in preview
+#'  \link[=detective_accept_invitation]{accept_invitation} \tab Accepts an invitation for the member account to contribute data to a behavior graph \cr
+#'  \link[=detective_create_graph]{create_graph} \tab Creates a new behavior graph for the calling account, and sets that account as the master account \cr
+#'  \link[=detective_create_members]{create_members} \tab Sends a request to invite the specified AWS accounts to be member accounts in the behavior graph \cr
+#'  \link[=detective_delete_graph]{delete_graph} \tab Disables the specified behavior graph and queues it to be deleted \cr
+#'  \link[=detective_delete_members]{delete_members} \tab Deletes one or more member accounts from the master account behavior graph \cr
+#'  \link[=detective_disassociate_membership]{disassociate_membership} \tab Removes the member account from the specified behavior graph \cr
+#'  \link[=detective_get_members]{get_members} \tab Returns the membership details for specified member accounts for a behavior graph \cr
+#'  \link[=detective_list_graphs]{list_graphs} \tab Returns the list of behavior graphs that the calling account is a master of \cr
+#'  \link[=detective_list_invitations]{list_invitations} \tab Retrieves the list of open and accepted behavior graph invitations for the member account \cr
+#'  \link[=detective_list_members]{list_members} \tab Retrieves the list of member accounts for a behavior graph \cr
+#'  \link[=detective_reject_invitation]{reject_invitation} \tab Rejects an invitation to contribute the account data to a behavior graph \cr
+#'  \link[=detective_start_monitoring_member]{start_monitoring_member} \tab Sends a request to enable data ingest for a member account that has a status of ACCEPTED_BUT_DISABLED
 #' }
 #'
 #' @rdname detective
@@ -109,7 +107,7 @@ detective <- function(config = list()) {
 
 .detective$metadata <- list(
   service_name = "detective",
-  endpoints = list("*" = list(endpoint = "detective.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "detective.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "detective.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "detective.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "detective.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "detective.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Detective",
   api_version = "2018-10-26",
   signing_name = "detective",

@@ -8,20 +8,20 @@ guardduty_create_detector(Enable, ClientToken,
   FindingPublishingFrequency, Tags)
 }
 \arguments{
-\item{Enable}{[required] A boolean value that specifies whether the detector is to be enabled.}
+\item{Enable}{[required] A Boolean value that specifies whether the detector is to be enabled.}
 
 \item{ClientToken}{The idempotency token for the create request.}
 
-\item{FindingPublishingFrequency}{A enum value that specifies how frequently customer got Finding updates
-published.}
+\item{FindingPublishingFrequency}{An enum value that specifies how frequently updated findings are
+exported.}
 
 \item{Tags}{The tags to be added to a new detector resource.}
 }
 \description{
 Creates a single Amazon GuardDuty detector. A detector is a resource
 that represents the GuardDuty service. To start using GuardDuty, you
-must create a detector in each region that you enable the service. You
-can have only one detector per account per region.
+must create a detector in each Region where you enable the service. You
+can have only one detector per account per Region.
 }
 \section{Request syntax}{
 \preformatted{svc$create_detector(

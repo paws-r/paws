@@ -2,26 +2,29 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_create_activation}
 \alias{ssm_create_activation}
-\title{Registers your on-premises server or virtual machine with Amazon EC2 so
-that you can manage these resources using Run Command}
+\title{Generates an activation code and activation ID you can use to register
+your on-premises server or virtual machine (VM) with Systems Manager}
 \usage{
 ssm_create_activation(Description, DefaultInstanceName, IamRole,
   RegistrationLimit, ExpirationDate, Tags)
 }
 \arguments{
 \item{Description}{A user-defined description of the resource that you want to register
-with Amazon EC2.
+with Systems Manager.
 
 Do not enter personally identifiable information in this field.}
 
 \item{DefaultInstanceName}{The name of the registered, managed instance as it will appear in the
-Amazon EC2 console or when you use the AWS command line tools to list
-EC2 resources.
+Systems Manager console or when you use the AWS command line tools to
+list Systems Manager resources.
 
 Do not enter personally identifiable information in this field.}
 
 \item{IamRole}{[required] The Amazon Identity and Access Management (IAM) role that you want to
-assign to the managed instance.}
+assign to the managed instance. This IAM role must provide AssumeRole
+permissions for the Systems Manager service principal
+\code{ssm.amazonaws.com}. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html}{Create an IAM service role for a hybrid environment}
+in the \emph{AWS Systems Manager User Guide}.}
 
 \item{RegistrationLimit}{Specify the maximum number of managed instances you want to register.
 The default value is 1 instance.}
@@ -54,10 +57,19 @@ managed instances, see AddTagsToResource. For information about how to
 remove tags from your managed instances, see RemoveTagsFromResource.}
 }
 \description{
-Registers your on-premises server or virtual machine with Amazon EC2 so
-that you can manage these resources using Run Command. An on-premises
-server or virtual machine that has been registered with EC2 is called a
-managed instance. For more information about activations, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html}{Setting Up AWS Systems Manager for Hybrid Environments}.
+Generates an activation code and activation ID you can use to register
+your on-premises server or virtual machine (VM) with Systems Manager.
+Registering these machines with Systems Manager makes it possible to
+manage them using Systems Manager capabilities. You use the activation
+code and ID when installing SSM Agent on machines in your hybrid
+environment. For more information about requirements for managing
+on-premises instances and VMs using Systems Manager, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html}{Setting up AWS Systems Manager for hybrid environments}
+in the \emph{AWS Systems Manager User Guide}.
+}
+\details{
+On-premises servers or VMs that are registered with Systems Manager and
+EC2 instances that you manage with Systems Manager are all called
+\emph{managed instances}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_activation(

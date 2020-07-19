@@ -24,6 +24,7 @@ channel.
   EmailTemplateRequest = list(
     DefaultSubstitutions = "string",
     HtmlPart = "string",
+    RecommenderId = "string",
     Subject = "string",
     tags = list(
       "string"

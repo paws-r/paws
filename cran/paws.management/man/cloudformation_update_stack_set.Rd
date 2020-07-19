@@ -3,12 +3,13 @@
 \name{cloudformation_update_stack_set}
 \alias{cloudformation_update_stack_set}
 \title{Updates the stack set, and associated stack instances in the specified
-accounts and regions}
+accounts and Regions}
 \usage{
 cloudformation_update_stack_set(StackSetName, Description, TemplateBody,
   TemplateURL, UsePreviousTemplate, Parameters, Capabilities, Tags,
   OperationPreferences, AdministrationRoleARN, ExecutionRoleName,
-  OperationId, Accounts, Regions)
+  DeploymentTargets, PermissionModel, AutoDeployment, OperationId,
+  Accounts, Regions)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to update.}
@@ -153,6 +154,40 @@ role, AWS CloudFormation performs the update using the role previously
 associated with the stack set, so long as you have permissions to
 perform operations on the stack set.}
 
+\item{DeploymentTargets}{[\code{Service-managed} permissions] The AWS Organizations accounts in
+which to update associated stack instances.
+
+To update all the stack instances associated with this stack set, do not
+specify \code{DeploymentTargets} or \code{Regions}.
+
+If the stack set update includes changes to the template (that is, if
+\code{TemplateBody} or \code{TemplateURL} is specified), or the \code{Parameters}, AWS
+CloudFormation marks all stack instances with a status of \code{OUTDATED}
+prior to updating the stack instances in the specified accounts and
+Regions. If the stack set update does not include changes to the
+template or parameters, AWS CloudFormation updates the stack instances
+in the specified accounts and Regions, while leaving all other stack
+instances with their existing stack instance status.}
+
+\item{PermissionModel}{Describes how the IAM roles required for stack set operations are
+created. You cannot modify \code{PermissionModel} if there are stack
+instances associated with your stack set.
+\itemize{
+\item With \code{self-managed} permissions, you must create the administrator
+and execution roles required to deploy to target accounts. For more
+information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html}{Grant Self-Managed Stack Set Permissions}.
+\item With \code{service-managed} permissions, StackSets automatically creates
+the IAM roles required to deploy to accounts managed by AWS
+Organizations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-service-managed.html}{Grant Service-Managed Stack Set Permissions}.
+}}
+
+\item{AutoDeployment}{[\code{Service-managed} permissions] Describes whether StackSets
+automatically deploys to AWS Organizations accounts that are added to a
+target organization or organizational unit (OU).
+
+If you specify \code{AutoDeployment}, do not specify \code{DeploymentTargets} or
+\code{Regions}.}
+
 \item{OperationId}{The unique ID for this stack set operation.
 
 The operation ID also functions as an idempotency token, to ensure that
@@ -167,9 +202,9 @@ automatically.
 Repeating this stack set operation with a new operation ID retries all
 stack instances whose status is \code{OUTDATED}.}
 
-\item{Accounts}{The accounts in which to update associated stack instances. If you
-specify accounts, you must also specify the regions in which to update
-stack set instances.
+\item{Accounts}{[\code{Self-managed} permissions] The accounts in which to update
+associated stack instances. If you specify accounts, you must also
+specify the Regions in which to update stack set instances.
 
 To update \emph{all} the stack instances associated with this stack set, do
 not specify the \code{Accounts} or \code{Regions} properties.
@@ -178,13 +213,13 @@ If the stack set update includes changes to the template (that is, if
 the \code{TemplateBody} or \code{TemplateURL} properties are specified), or the
 \code{Parameters} property, AWS CloudFormation marks all stack instances with
 a status of \code{OUTDATED} prior to updating the stack instances in the
-specified accounts and regions. If the stack set update does not include
+specified accounts and Regions. If the stack set update does not include
 changes to the template or parameters, AWS CloudFormation updates the
-stack instances in the specified accounts and regions, while leaving all
+stack instances in the specified accounts and Regions, while leaving all
 other stack instances with their existing stack instance status.}
 
-\item{Regions}{The regions in which to update associated stack instances. If you
-specify regions, you must also specify accounts in which to update stack
+\item{Regions}{The Regions in which to update associated stack instances. If you
+specify Regions, you must also specify accounts in which to update stack
 set instances.
 
 To update \emph{all} the stack instances associated with this stack set, do
@@ -194,14 +229,14 @@ If the stack set update includes changes to the template (that is, if
 the \code{TemplateBody} or \code{TemplateURL} properties are specified), or the
 \code{Parameters} property, AWS CloudFormation marks all stack instances with
 a status of \code{OUTDATED} prior to updating the stack instances in the
-specified accounts and regions. If the stack set update does not include
+specified accounts and Regions. If the stack set update does not include
 changes to the template or parameters, AWS CloudFormation updates the
-stack instances in the specified accounts and regions, while leaving all
+stack instances in the specified accounts and Regions, while leaving all
 other stack instances with their existing stack instance status.}
 }
 \description{
 Updates the stack set, and associated stack instances in the specified
-accounts and regions.
+accounts and Regions.
 }
 \details{
 Even if the stack set operation created by updating the stack set fails
@@ -245,6 +280,19 @@ stack set.
   ),
   AdministrationRoleARN = "string",
   ExecutionRoleName = "string",
+  DeploymentTargets = list(
+    Accounts = list(
+      "string"
+    ),
+    OrganizationalUnitIds = list(
+      "string"
+    )
+  ),
+  PermissionModel = "SERVICE_MANAGED"|"SELF_MANAGED",
+  AutoDeployment = list(
+    Enabled = TRUE|FALSE,
+    RetainStacksOnAccountRemoval = TRUE|FALSE
+  ),
   OperationId = "string",
   Accounts = list(
     "string"

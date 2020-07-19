@@ -2,7 +2,7 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_update_branch}
 \alias{amplify_update_branch}
-\title{Updates a branch for an Amplify App}
+\title{Updates a branch for an Amplify app}
 \usage{
 amplify_update_branch(appId, branchName, description, framework, stage,
   enableNotification, enableAutoBuild, environmentVariables,
@@ -11,40 +11,42 @@ amplify_update_branch(appId, branchName, description, framework, stage,
   backendEnvironmentArn)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{branchName}{[required] Name for the branch.}
+\item{branchName}{[required] The name for the branch.}
 
-\item{description}{Description for the branch.}
+\item{description}{The description for the branch.}
 
-\item{framework}{Framework for the branch.}
+\item{framework}{The framework for the branch.}
 
-\item{stage}{Stage for the branch.}
+\item{stage}{Describes the current stage for the branch.}
 
 \item{enableNotification}{Enables notifications for the branch.}
 
 \item{enableAutoBuild}{Enables auto building for the branch.}
 
-\item{environmentVariables}{Environment Variables for the branch.}
+\item{environmentVariables}{The environment variables for the branch.}
 
-\item{basicAuthCredentials}{Basic Authorization credentials for the branch.}
+\item{basicAuthCredentials}{The basic authorization credentials for the branch.}
 
-\item{enableBasicAuth}{Enables Basic Auth for the branch.}
+\item{enableBasicAuth}{Enables basic authorization for the branch.}
 
-\item{buildSpec}{BuildSpec for the branch.}
+\item{buildSpec}{The build specification (build spec) for the branch.}
 
-\item{ttl}{The content TTL for the website in seconds.}
+\item{ttl}{The content Time to Live (TTL) for the website in seconds.}
 
-\item{displayName}{Display name for a branch, will use as the default domain prefix.}
+\item{displayName}{The display name for a branch. This is used as the default domain
+prefix.}
 
-\item{enablePullRequestPreview}{Enables Pull Request Preview for this branch.}
+\item{enablePullRequestPreview}{Enables pull request preview for this branch.}
 
-\item{pullRequestEnvironmentName}{The Amplify Environment name for the pull request.}
+\item{pullRequestEnvironmentName}{The Amplify environment name for the pull request.}
 
-\item{backendEnvironmentArn}{ARN for a Backend Environment, part of an Amplify App.}
+\item{backendEnvironmentArn}{The Amazon Resource Name (ARN) for a backend environment that is part of
+an Amplify app.}
 }
 \description{
-Updates a branch for an Amplify App.
+Updates a branch for an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$update_branch(

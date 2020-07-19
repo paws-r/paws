@@ -9,12 +9,12 @@ route53domains_view_billing(Start, End, Marker, MaxItems)
 }
 \arguments{
 \item{Start}{The beginning date and time for the time period for which you want a
-list of billing records. Specify the date and time in Coordinated
-Universal time (UTC).}
+list of billing records. Specify the date and time in Unix time format
+and Coordinated Universal time (UTC).}
 
 \item{End}{The end date and time for the time period for which you want a list of
-billing records. Specify the date and time in Coordinated Universal time
-(UTC).}
+billing records. Specify the date and time in Unix time format and
+Coordinated Universal time (UTC).}
 
 \item{Marker}{For an initial request for a list of billing records, omit this element.
 If the number of billing records that are associated with the current

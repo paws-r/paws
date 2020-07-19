@@ -72,7 +72,7 @@ dlm <- function(config = list()) {
 
 .dlm$metadata <- list(
   service_name = "dlm",
-  endpoints = list("*" = list(endpoint = "dlm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dlm.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "dlm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dlm.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "dlm.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "dlm.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "DLM",
   api_version = "2018-01-12",
   signing_name = "dlm",

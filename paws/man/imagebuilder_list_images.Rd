@@ -2,18 +2,18 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_list_images}
 \alias{imagebuilder_list_images}
-\title{Returns the list of image build versions for the specified semantic
-version}
+\title{Returns the list of images that you have access to}
 \usage{
 imagebuilder_list_images(owner, filters, maxResults, nextToken)
 }
 \arguments{
-\item{owner}{The owner defines whose images you wish to list. By default this request
-will only show images owned by your account. You may use this field to
-specify if you wish to view images owned by yourself, Amazon, or those
-images that have been shared with you by other customers.}
+\item{owner}{The owner defines which images you want to list. By default, this
+request will only show images owned by your account. You can use this
+field to specify if you want to view images owned by yourself, by
+Amazon, or those images that have been shared with you by other
+customers.}
 
-\item{filters}{}
+\item{filters}{The filters.}
 
 \item{maxResults}{The maximum items to return in a request.}
 
@@ -21,8 +21,7 @@ images that have been shared with you by other customers.}
 a previously truncated response.}
 }
 \description{
-Returns the list of image build versions for the specified semantic
-version.
+Returns the list of images that you have access to.
 }
 \section{Request syntax}{
 \preformatted{svc$list_images(

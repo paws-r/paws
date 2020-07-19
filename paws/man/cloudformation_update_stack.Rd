@@ -49,7 +49,7 @@ be used.}
 
 \item{StackPolicyDuringUpdateURL}{Location of a file containing the temporary overriding stack policy. The
 URL must point to a policy (max size: 16KB) located in an S3 bucket in
-the same region as the stack. You can specify either the
+the same Region as the stack. You can specify either the
 \code{StackPolicyDuringUpdateBody} or the \code{StackPolicyDuringUpdateURL}
 parameter, but not both.
 
@@ -169,7 +169,7 @@ stack is unchanged.}
 
 \item{StackPolicyURL}{Location of a file containing the updated stack policy. The URL must
 point to a policy (max size: 16KB) located in an S3 bucket in the same
-region as the stack. You can specify either the \code{StackPolicyBody} or the
+Region as the stack. You can specify either the \code{StackPolicyBody} or the
 \code{StackPolicyURL} parameter, but not both.
 
 You might update the stack policy, for example, in order to protect a

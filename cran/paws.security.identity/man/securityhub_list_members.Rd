@@ -8,19 +8,25 @@ master account}
 securityhub_list_members(OnlyAssociated, MaxResults, NextToken)
 }
 \arguments{
-\item{OnlyAssociated}{Specifies which member accounts the response includes based on their
-relationship status with the master account. The default value is
-\code{TRUE}. If \code{onlyAssociated} is set to \code{TRUE}, the response includes
-member accounts whose relationship status with the master is set to
-\code{ENABLED} or \code{DISABLED}. If \code{onlyAssociated} is set to \code{FALSE}, the
-response includes all existing member accounts.}
+\item{OnlyAssociated}{Specifies which member accounts to include in the response based on
+their relationship status with the master account. The default value is
+\code{TRUE}.
 
-\item{MaxResults}{The maximum number of items that you want in the response.}
+If \code{OnlyAssociated} is set to \code{TRUE}, the response includes member
+accounts whose relationship status with the master is set to \code{ENABLED}
+or \code{DISABLED}.
 
-\item{NextToken}{Paginates results. Set the value of this parameter to \code{NULL} on your
-first call to the \code{ListMembers} operation. For subsequent calls to the
-operation, fill \code{nextToken} in the request with the value of \code{nextToken}
-from the previous response to continue listing data.}
+If \code{OnlyAssociated} is set to \code{FALSE}, the response includes all
+existing member accounts.}
+
+\item{MaxResults}{The maximum number of items to return in the response.}
+
+\item{NextToken}{The token that is required for pagination. On your first call to the
+\code{ListMembers} operation, set the value of this parameter to \code{NULL}.
+
+For subsequent calls to the operation, to continue listing data, set the
+value of this parameter to the value returned from the previous
+response.}
 }
 \description{
 Lists details about all member accounts for the current Security Hub

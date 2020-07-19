@@ -36,12 +36,10 @@ function through that service.}
 \item{SourceArn}{For AWS services, the ARN of the AWS resource that invokes the function.
 For example, an Amazon S3 bucket or Amazon SNS topic.}
 
-\item{SourceAccount}{For AWS services, the ID of the account that owns the resource. Use this
-instead of \code{SourceArn} to grant permission to resources that are owned
-by another account (for example, all of an account\'s Amazon S3
-buckets). Or use it together with \code{SourceArn} to ensure that the
-resource is owned by the specified account. For example, an Amazon S3
-bucket could be deleted by its owner and recreated by another account.}
+\item{SourceAccount}{For Amazon S3, the ID of the account that owns the resource. Use this
+together with \code{SourceArn} to ensure that the resource is owned by the
+specified account. It is possible for an Amazon S3 bucket to be deleted
+by its owner and recreated by another account.}
 
 \item{EventSourceToken}{For Alexa Smart Home functions, a token that must be supplied by the
 invoker.}
@@ -64,11 +62,11 @@ or alias to invoke the function.
 To grant permission to another account, specify the account ID as the
 \code{Principal}. For AWS services, the principal is a domain-style
 identifier defined by the service, like \code{s3.amazonaws.com} or
-\code{sns.amazonaws.com}. For AWS services, you can also specify the ARN or
-owning account of the associated resource as the \code{SourceArn} or
-\code{SourceAccount}. If you grant permission to a service principal without
-specifying the source, other accounts could potentially configure
-resources in their account to invoke your Lambda function.
+\code{sns.amazonaws.com}. For AWS services, you can also specify the ARN of
+the associated resource as the \code{SourceArn}. If you grant permission to a
+service principal without specifying the source, other accounts could
+potentially configure resources in their account to invoke your Lambda
+function.
 
 This action adds a statement to a resource-based permissions policy for
 the function. For more information about function policies, see \href{https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{Lambda Function Policies}.
@@ -90,15 +88,25 @@ the function. For more information about function policies, see \href{https://do
 
 \examples{
 \dontrun{
-# This example adds a permission for an S3 bucket to invoke a Lambda
-# function.
+# The following example adds permission for Amazon S3 to invoke a Lambda
+# function named my-function for notifications from a bucket named
+# my-bucket-1xpuxmplzrlbh in account 123456789012.
 svc$add_permission(
   Action = "lambda:InvokeFunction",
-  FunctionName = "MyFunction",
+  FunctionName = "my-function",
   Principal = "s3.amazonaws.com",
   SourceAccount = "123456789012",
-  SourceArn = "arn:aws:s3:::examplebucket/*",
-  StatementId = "ID-1"
+  SourceArn = "arn:aws:s3:::my-bucket-1xpuxmplzrlbh/*",
+  StatementId = "s3"
+)
+
+# The following example adds permission for account 223456789012 invoke a
+# Lambda function named my-function.
+svc$add_permission(
+  Action = "lambda:InvokeFunction",
+  FunctionName = "my-function",
+  Principal = "223456789012",
+  StatementId = "xaccount"
 )
 }
 

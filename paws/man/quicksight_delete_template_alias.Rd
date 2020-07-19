@@ -11,10 +11,10 @@ quicksight_delete_template_alias(AwsAccountId, TemplateId, AliasName)
 
 \item{TemplateId}{[required] The ID for the template that the specified alias is for.}
 
-\item{AliasName}{[required] The name for the template alias. If you name a specific alias, you
-delete the version that the alias points to. You can specify the latest
-version of the template by providing the keyword \verb{$LATEST} in the
-\code{AliasName} parameter.}
+\item{AliasName}{[required] The name for the template alias. To delete a specific alias, you delete
+the version that the alias points to. You can specify the alias name, or
+specify the latest version of the template by providing the keyword
+\verb{$LATEST} in the \code{AliasName} parameter.}
 }
 \description{
 Deletes the item that the specified template alias points to. If you

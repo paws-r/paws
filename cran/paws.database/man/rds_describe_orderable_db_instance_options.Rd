@@ -5,7 +5,8 @@
 \title{Returns a list of orderable DB instance options for the specified engine}
 \usage{
 rds_describe_orderable_db_instance_options(Engine, EngineVersion,
-  DBInstanceClass, LicenseModel, Vpc, Filters, MaxRecords, Marker)
+  DBInstanceClass, LicenseModel, AvailabilityZoneGroup, Vpc, Filters,
+  MaxRecords, Marker)
 }
 \arguments{
 \item{Engine}{[required] The name of the engine to retrieve DB instance options for.}
@@ -18,6 +19,13 @@ the available offerings matching the specified DB instance class.}
 
 \item{LicenseModel}{The license model filter value. Specify this parameter to show only the
 available offerings matching the specified license model.}
+
+\item{AvailabilityZoneGroup}{The Availability Zone group associated with a Local Zone. Specify this
+parameter to retrieve available offerings for the Local Zones in the
+group.
+
+Omit this parameter to show the available offerings in the specified AWS
+Region.}
 
 \item{Vpc}{A value that indicates whether to show only VPC or non-VPC offerings.}
 
@@ -47,6 +55,7 @@ engine.
   EngineVersion = "string",
   DBInstanceClass = "string",
   LicenseModel = "string",
+  AvailabilityZoneGroup = "string",
   Vpc = TRUE|FALSE,
   Filters = list(
     list(

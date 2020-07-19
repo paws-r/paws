@@ -9,12 +9,12 @@ pinpoint_list_templates(NextToken, PageSize, Prefix, TemplateType)
 }
 \arguments{
 \item{NextToken}{The string that specifies which page of results to return in a paginated
-response. This parameter is currently not supported for application,
-campaign, and journey metrics.}
+response. This parameter is not supported for application, campaign, and
+journey metrics.}
 
 \item{PageSize}{The maximum number of items to include in each page of a paginated
-response. This parameter is currently not supported for application,
-campaign, and journey metrics.}
+response. This parameter is not supported for application, campaign, and
+journey metrics.}
 
 \item{Prefix}{The substring to match in the names of the message templates to include
 in the results. If you specify this value, Amazon Pinpoint returns only

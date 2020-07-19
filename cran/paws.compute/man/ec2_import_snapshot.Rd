@@ -5,7 +5,7 @@
 \title{Imports a disk into an EBS snapshot}
 \usage{
 ec2_import_snapshot(ClientData, ClientToken, Description, DiskContainer,
-  DryRun, Encrypted, KmsKeyId, RoleName)
+  DryRun, Encrypted, KmsKeyId, RoleName, TagSpecifications)
 }
 \arguments{
 \item{ClientData}{The client-specific data.}
@@ -62,6 +62,8 @@ Amazon EBS does not support asymmetric CMKs.}
 
 \item{RoleName}{The name of the role to use when not using the default role,
 \'vmimport\'.}
+
+\item{TagSpecifications}{The tags to apply to the snapshot being imported.}
 }
 \description{
 Imports a disk into an EBS snapshot.
@@ -92,7 +94,18 @@ Imports a disk into an EBS snapshot.
   DryRun = TRUE|FALSE,
   Encrypted = TRUE|FALSE,
   KmsKeyId = "string",
-  RoleName = "string"
+  RoleName = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

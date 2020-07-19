@@ -60,7 +60,7 @@ Returns details of the update actions
     )
   ),
   UpdateActionStatus = list(
-    "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete"
+    "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete"|"scheduling"|"scheduled"|"not-applicable"
   ),
   ShowNodeLevelUpdateStatus = TRUE|FALSE,
   MaxRecords = 123,

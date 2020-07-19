@@ -2,16 +2,16 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_list_image_build_versions}
 \alias{imagebuilder_list_image_build_versions}
-\title{Returns a list of distribution configurations}
+\title{Returns a list of image build versions}
 \usage{
 imagebuilder_list_image_build_versions(imageVersionArn, filters,
   maxResults, nextToken)
 }
 \arguments{
 \item{imageVersionArn}{[required] The Amazon Resource Name (ARN) of the image whose build versions you
-wish to retrieve.}
+want to retrieve.}
 
-\item{filters}{}
+\item{filters}{The filters.}
 
 \item{maxResults}{The maximum items to return in a request.}
 
@@ -19,7 +19,7 @@ wish to retrieve.}
 a previously truncated response.}
 }
 \description{
-Returns a list of distribution configurations.
+Returns a list of image build versions.
 }
 \section{Request syntax}{
 \preformatted{svc$list_image_build_versions(

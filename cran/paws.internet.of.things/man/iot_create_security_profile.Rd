@@ -6,7 +6,7 @@
 \usage{
 iot_create_security_profile(securityProfileName,
   securityProfileDescription, behaviors, alertTargets,
-  additionalMetricsToRetain, tags)
+  additionalMetricsToRetain, additionalMetricsToRetainV2, tags)
 }
 \arguments{
 \item{securityProfileName}{[required] The name you are giving to the security profile.}
@@ -21,6 +21,13 @@ sent to the console.) Alerts are generated when a device (thing)
 violates a behavior.}
 
 \item{additionalMetricsToRetain}{A list of metrics whose data is retained (stored). By default, data is
+retained for any metric used in the profile\'s \code{behaviors}, but it is
+also retained for any metric specified here.
+
+\strong{Note:} This API field is deprecated. Please use
+CreateSecurityProfileRequest\\$additionalMetricsToRetainV2 instead.}
+
+\item{additionalMetricsToRetainV2}{A list of metrics whose data is retained (stored). By default, data is
 retained for any metric used in the profile\'s \code{behaviors}, but it is
 also retained for any metric specified here.}
 
@@ -37,6 +44,10 @@ Creates a Device Defender security profile.
     list(
       name = "string",
       metric = "string",
+      metricDimension = list(
+        dimensionName = "string",
+        operator = "IN"|"NOT_IN"
+      ),
       criteria = list(
         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
         value = list(
@@ -65,6 +76,15 @@ Creates a Device Defender security profile.
   ),
   additionalMetricsToRetain = list(
     "string"
+  ),
+  additionalMetricsToRetainV2 = list(
+    list(
+      metric = "string",
+      metricDimension = list(
+        dimensionName = "string",
+        operator = "IN"|"NOT_IN"
+      )
+    )
   ),
   tags = list(
     list(

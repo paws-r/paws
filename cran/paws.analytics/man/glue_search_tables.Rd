@@ -6,7 +6,7 @@
 well as on the parent database}
 \usage{
 glue_search_tables(CatalogId, NextToken, Filters, SearchText,
-  SortCriteria, MaxResults)
+  SortCriteria, MaxResults, ResourceShareType)
 }
 \arguments{
 \item{CatalogId}{A unique identifier, consisting of \verb{ <i>account_id</i>/datalake}.}
@@ -25,6 +25,15 @@ value.}
 ascending or descending order.}
 
 \item{MaxResults}{The maximum number of tables to return in a single response.}
+
+\item{ResourceShareType}{Allows you to specify that you want to search the tables shared with
+your account. The allowable values are \code{FOREIGN} or \code{ALL}.
+\itemize{
+\item If set to \code{FOREIGN}, will search the tables shared with your
+account.
+\item If set to \code{ALL}, will search the tables shared with your account, as
+well as the tables in yor local account.
+}}
 }
 \description{
 Searches a set of tables based on properties in the table metadata as
@@ -58,7 +67,8 @@ associated metadata for those columns will be included in the search.
       Sort = "ASC"|"DESC"
     )
   ),
-  MaxResults = 123
+  MaxResults = 123,
+  ResourceShareType = "FOREIGN"|"ALL"
 )
 }
 }

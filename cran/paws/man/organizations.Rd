@@ -37,7 +37,7 @@ AWS Organizations
 \link[=organizations_attach_policy]{attach_policy} \tab Attaches a policy to a root, an organizational unit (OU), or an individual account \cr
 \link[=organizations_cancel_handshake]{cancel_handshake} \tab Cancels a handshake \cr
 \link[=organizations_create_account]{create_account} \tab Creates an AWS account that is automatically a member of the organization whose credentials made the request \cr
-\link[=organizations_create_gov_cloud_account]{create_gov_cloud_account} \tab This action is available if all of the following are true: - You're authorized to create accounts in the AWS GovCloud (US) Region \cr
+\link[=organizations_create_gov_cloud_account]{create_gov_cloud_account} \tab This action is available if all of the following are true: - You're authorized to create accounts in the AWS GovCloud (US) Region\cr
 \link[=organizations_create_organization]{create_organization} \tab Creates an AWS organization \cr
 \link[=organizations_create_organizational_unit]{create_organizational_unit} \tab Creates an organizational unit (OU) within a root or parent OU \cr
 \link[=organizations_create_policy]{create_policy} \tab Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual AWS account \cr
@@ -45,16 +45,17 @@ AWS Organizations
 \link[=organizations_delete_organization]{delete_organization} \tab Deletes the organization \cr
 \link[=organizations_delete_organizational_unit]{delete_organizational_unit} \tab Deletes an organizational unit (OU) from a root or another OU \cr
 \link[=organizations_delete_policy]{delete_policy} \tab Deletes the specified policy from your organization \cr
-\link[=organizations_describe_account]{describe_account} \tab Retrieves AWS Organizations related information about the specified account \cr
+\link[=organizations_deregister_delegated_administrator]{deregister_delegated_administrator} \tab Removes the specified member AWS account as a delegated administrator for the specified AWS service \cr
+\link[=organizations_describe_account]{describe_account} \tab Retrieves AWS Organizations-related information about the specified account \cr
 \link[=organizations_describe_create_account_status]{describe_create_account_status} \tab Retrieves the current status of an asynchronous request to create an account \cr
-\link[=organizations_describe_effective_policy]{describe_effective_policy} \tab Returns the contents of the effective tag policy for the account \cr
+\link[=organizations_describe_effective_policy]{describe_effective_policy} \tab Returns the contents of the effective policy for specified policy type and account \cr
 \link[=organizations_describe_handshake]{describe_handshake} \tab Retrieves information about a previously requested handshake \cr
 \link[=organizations_describe_organization]{describe_organization} \tab Retrieves information about the organization that the user's account belongs to \cr
 \link[=organizations_describe_organizational_unit]{describe_organizational_unit} \tab Retrieves information about an organizational unit (OU) \cr
 \link[=organizations_describe_policy]{describe_policy} \tab Retrieves information about a policy \cr
 \link[=organizations_detach_policy]{detach_policy} \tab Detaches a policy from a target root, organizational unit (OU), or account \cr
 \link[=organizations_disable_aws_service_access]{disable_aws_service_access} \tab Disables the integration of an AWS service (the service that is specified by ServicePrincipal) with AWS Organizations \cr
-\link[=organizations_disable_policy_type]{disable_policy_type} \tab Disables an organizational control policy type in a root and detaches all policies of that type from the organization root, OUs, and accounts\cr
+\link[=organizations_disable_policy_type]{disable_policy_type} \tab Disables an organizational policy type in a root \cr
 \link[=organizations_enable_all_features]{enable_all_features} \tab Enables all features in an organization \cr
 \link[=organizations_enable_aws_service_access]{enable_aws_service_access} \tab Enables the integration of an AWS service (the service that is specified by ServicePrincipal) with AWS Organizations \cr
 \link[=organizations_enable_policy_type]{enable_policy_type} \tab Enables a policy type in a root \cr
@@ -65,6 +66,8 @@ AWS Organizations
 \link[=organizations_list_aws_service_access_for_organization]{list_aws_service_access_for_organization} \tab Returns a list of the AWS services that you enabled to integrate with your organization \cr
 \link[=organizations_list_children]{list_children} \tab Lists all of the organizational units (OUs) or accounts that are contained in the specified parent OU or root \cr
 \link[=organizations_list_create_account_status]{list_create_account_status} \tab Lists the account creation requests that match the specified status that is currently being tracked for the organization \cr
+\link[=organizations_list_delegated_administrators]{list_delegated_administrators} \tab Lists the AWS accounts that are designated as delegated administrators in this organization \cr
+\link[=organizations_list_delegated_services_for_account]{list_delegated_services_for_account} \tab List the AWS services for which the specified account is a delegated administrator \cr
 \link[=organizations_list_handshakes_for_account]{list_handshakes_for_account} \tab Lists the current handshakes that are associated with the account of the requesting user \cr
 \link[=organizations_list_handshakes_for_organization]{list_handshakes_for_organization} \tab Lists the handshakes that are associated with the organization that the requesting user is part of \cr
 \link[=organizations_list_organizational_units_for_parent]{list_organizational_units_for_parent} \tab Lists the organizational units (OUs) in a parent organizational unit or root \cr
@@ -75,6 +78,7 @@ AWS Organizations
 \link[=organizations_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for the specified resource \cr
 \link[=organizations_list_targets_for_policy]{list_targets_for_policy} \tab Lists all the roots, organizational units (OUs), and accounts that the specified policy is attached to \cr
 \link[=organizations_move_account]{move_account} \tab Moves an account from its current source parent root or organizational unit (OU) to the specified destination parent root or OU \cr
+\link[=organizations_register_delegated_administrator]{register_delegated_administrator} \tab Enables the specified member account to administer the Organizations features of the specified AWS service \cr
 \link[=organizations_remove_account_from_organization]{remove_account_from_organization} \tab Removes the specified account from the organization \cr
 \link[=organizations_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource \cr
 \link[=organizations_untag_resource]{untag_resource} \tab Removes a tag from the specified resource \cr

@@ -25,6 +25,10 @@ If you specify any attributes that are part of an index key, then the
 data types for those attributes must match those of the schema in the
 table\'s attribute definition.
 
+Empty String and Binary attribute values are allowed. Attribute values
+of type String and Binary must have a length greater than zero if the
+attribute is used as a key attribute for a table or index.
+
 For more information about primary keys, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey}{Primary Key}
 in the \emph{Amazon DynamoDB Developer Guide}.
 
@@ -163,9 +167,14 @@ specific languages, see the following:
 }
 
 When you add an item, the primary key attributes are the only required
-attributes. Attribute values cannot be null. String and Binary type
-attributes must have lengths greater than zero. Set type attributes
-cannot be empty. Requests with empty values will be rejected with a
+attributes. Attribute values cannot be null.
+
+Empty String and Binary attribute values are allowed. Attribute values
+of type String and Binary must have a length greater than zero if the
+attribute is used as a key attribute for a table or index. Set type
+attributes cannot be empty.
+
+Invalid Requests with empty values will be rejected with a
 \code{ValidationException} exception.
 
 To prevent a new item from replacing an existing item, use a conditional

@@ -15,9 +15,11 @@ invitation.}
 }
 \description{
 Accepts the invitation to be a member account and be monitored by the
-Security Hub master account that the invitation was sent from. When the
-member account accepts the invitation, permission is granted to the
-master account to view findings generated in the member account.
+Security Hub master account that the invitation was sent from.
+}
+\details{
+When the member account accepts the invitation, permission is granted to
+the master account to view findings generated in the member account.
 }
 \section{Request syntax}{
 \preformatted{svc$accept_invitation(

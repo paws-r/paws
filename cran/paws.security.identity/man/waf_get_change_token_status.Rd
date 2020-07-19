@@ -2,8 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_get_change_token_status}
 \alias{waf_get_change_token_status}
-\title{Returns the status of a ChangeToken that you got by calling
-GetChangeToken}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 waf_get_change_token_status(ChangeToken)
 }
@@ -12,10 +11,18 @@ waf_get_change_token_status(ChangeToken)
 was previously returned in the \code{GetChangeToken} response.}
 }
 \description{
-Returns the status of a \code{ChangeToken} that you got by calling
-GetChangeToken. \code{ChangeTokenStatus} is one of the following values:
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
 }
 \details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
+Returns the status of a \code{ChangeToken} that you got by calling
+GetChangeToken. \code{ChangeTokenStatus} is one of the following values:
 \itemize{
 \item \code{PROVISIONED}: You requested the change token by calling
 \code{GetChangeToken}, but you haven\'t used it yet in a call to create,

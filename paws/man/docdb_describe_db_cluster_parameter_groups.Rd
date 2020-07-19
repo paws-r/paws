@@ -8,7 +8,7 @@ docdb_describe_db_cluster_parameter_groups(DBClusterParameterGroupName,
   Filters, MaxRecords, Marker)
 }
 \arguments{
-\item{DBClusterParameterGroupName}{The name of a specific DB cluster parameter group to return details for.
+\item{DBClusterParameterGroupName}{The name of a specific cluster parameter group to return details for.
 
 Constraints:
 \itemize{
@@ -34,7 +34,7 @@ marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns a list of \code{DBClusterParameterGroup} descriptions. If a
 \code{DBClusterParameterGroupName} parameter is specified, the list contains
-only the description of the specified DB cluster parameter group.
+only the description of the specified cluster parameter group.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_db_cluster_parameter_groups(

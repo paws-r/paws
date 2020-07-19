@@ -11,8 +11,8 @@ securityhub_disable_import_findings_for_product(ProductSubscriptionArn)
 }
 \description{
 Disables the integration of the specified product with Security Hub.
-Findings from that product are no longer sent to Security Hub after the
-integration is disabled.
+After the integration is disabled, findings from that product are no
+longer sent to Security Hub.
 }
 \section{Request syntax}{
 \preformatted{svc$disable_import_findings_for_product(

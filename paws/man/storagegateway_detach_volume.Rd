@@ -13,7 +13,9 @@ storagegateway_detach_volume(VolumeARN, ForceDetach)
 \item{ForceDetach}{Set to \code{true} to forcibly remove the iSCSI connection of the target
 volume and detach the volume. The default is \code{false}. If this value is
 set to \code{false}, you must manually disconnect the iSCSI connection from
-the target volume.}
+the target volume.
+
+Valid Values: \code{true} \\| \code{false}}
 }
 \description{
 Disconnects a volume from an iSCSI connection and then detaches the

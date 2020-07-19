@@ -12,7 +12,7 @@ route53domains_renew_domain(DomainName, DurationInYears,
 
 \item{DurationInYears}{The number of years that you want to renew the domain for. The maximum
 number of years depends on the top-level domain. For the range of valid
-values for your domain, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
+values for your domain, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
 in the \emph{Amazon Route 53 Developer Guide}.
 
 Default: 1}
@@ -28,8 +28,8 @@ cost of renewing your domain is billed to your AWS account.
 We recommend that you renew your domain several weeks before the
 expiration date. Some TLD registries delete domains before the
 expiration date if you haven\'t renewed far enough in advance. For more
-information about renewing domain registration, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html}{Renewing Registration for a Domain}
-in the Amazon Route 53 Developer Guide.
+information about renewing domain registration, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html}{Renewing Registration for a Domain}
+in the \emph{Amazon Route 53 Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$renew_domain(

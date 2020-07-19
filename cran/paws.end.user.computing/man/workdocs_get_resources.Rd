@@ -8,9 +8,8 @@ workdocs_get_resources(AuthenticationToken, UserId, CollectionType,
   Limit, Marker)
 }
 \arguments{
-\item{AuthenticationToken}{The Amazon WorkDocs authentication token. Do not set this field when
-using administrative API actions, as in accessing the API operation
-using AWS credentials.}
+\item{AuthenticationToken}{The Amazon WorkDocs authentication token. Not required when using AWS
+administrator credentials to access the API.}
 
 \item{UserId}{The user ID for the resource collection. This is a required field for
 accessing the API operation using IAM credentials.}

@@ -15,16 +15,13 @@ with names that start with the specified prefix.}
 results.}
 
 \item{Limit}{Specifying this limits the number of results returned by this operation.
-The operation also returns a \code{NextToken} that you can use in a
-subsequent operation to retrieve the next set of results.}
+The operation also returns a NextToken which you can use in a subsequent
+operation to retrieve the next set of results.}
 }
 \description{
 You can use this to see all the partner event sources that have been
 shared with your AWS account. For more information about partner event
 sources, see CreateEventBus.
-}
-\details{
-This operation is run by AWS customers, not by SaaS partners.
 }
 \section{Request syntax}{
 \preformatted{svc$list_event_sources(

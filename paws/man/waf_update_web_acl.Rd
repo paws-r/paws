@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_update_web_acl}
 \alias{waf_update_web_acl}
-\title{Inserts or deletes ActivatedRule objects in a WebACL}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 waf_update_web_acl(WebACLId, ChangeToken, Updates, DefaultAction)
 }
@@ -33,11 +33,19 @@ performs the default action if a request doesn\'t match the criteria in
 any of the rules in a web ACL.}
 }
 \description{
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
+}
+\details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Inserts or deletes ActivatedRule objects in a \code{WebACL}. Each \code{Rule}
 identifies web requests that you want to allow, block, or count. When
 you update a \code{WebACL}, you specify the following values:
-}
-\details{
 \itemize{
 \item A default action for the \code{WebACL}, either \code{ALLOW} or \code{BLOCK}. AWS
 WAF performs the default action if a request doesn\'t match the
@@ -74,14 +82,14 @@ want to include in the \code{WebACL}, to specify the default action, and
 to associate the \code{WebACL} with a CloudFront distribution.
 
 The \code{ActivatedRule} can be a rule group. If you specify a rule group
-as your \code{ActivatedRule}, you can exclude specific rules from that
+as your \code{ActivatedRule} , you can exclude specific rules from that
 rule group.
 
 If you already have a rule group associated with a web ACL and want
 to submit an \code{UpdateWebACL} request to exclude certain rules from
 that rule group, you must first remove the rule group from the web
 ACL, the re-insert it again, specifying the excluded rules. For
-details, see ActivatedRule\\$ExcludedRules.
+details, see ActivatedRule\\$ExcludedRules .
 }
 
 Be aware that if you try to add a RATE\\_BASED rule to a web ACL without

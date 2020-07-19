@@ -21,7 +21,7 @@ ranking.}
 \item{context}{The contextual metadata to use when getting recommendations. Contextual
 metadata includes any interaction information that might be relevant
 when getting a user\'s recommendations, such as the user\'s current
-location or device type. For more information, see Contextual Metadata.}
+location or device type.}
 }
 \description{
 Re-ranks a list of recommended items for the given user. The first item

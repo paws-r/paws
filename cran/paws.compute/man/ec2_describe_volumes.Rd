@@ -24,6 +24,11 @@ created.
 \item \code{create-time} - The time stamp when the volume was created.
 \item \code{encrypted} - Indicates whether the volume is encrypted (\code{true} \\|
 \code{false})
+\item \code{multi-attach-enabled} - Indicates whether the volume is enabled for
+Multi-Attach (\code{true} \\| \code{false})
+\item \code{fast-restored} - Indicates whether the volume was created from a
+snapshot that is enabled for fast snapshot restore (\code{true} \\|
+\code{false}).
 \item \code{size} - The size of the volume, in GiB.
 \item \code{snapshot-id} - The snapshot from which the volume was created.
 \item \code{status} - The status of the volume (\code{creating} \\| \code{available} \\|
@@ -71,12 +76,13 @@ is \code{null} when there are no more results to return.}
 Describes the specified EBS volumes or all of your EBS volumes.
 }
 \details{
-If you are describing a long list of volumes, you can paginate the
-output to make the list more manageable. The \code{MaxResults} parameter sets
-the maximum number of results returned in a single page. If the list of
-results exceeds your \code{MaxResults} value, then that number of results is
-returned along with a \code{NextToken} value that can be passed to a
-subsequent \code{DescribeVolumes} request to retrieve the remaining results.
+If you are describing a long list of volumes, we recommend that you
+paginate the output to make the list more manageable. The \code{MaxResults}
+parameter sets the maximum number of results returned in a single page.
+If the list of results exceeds your \code{MaxResults} value, then that number
+of results is returned along with a \code{NextToken} value that can be passed
+to a subsequent \code{DescribeVolumes} request to retrieve the remaining
+results.
 
 For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html}{Amazon EBS Volumes}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

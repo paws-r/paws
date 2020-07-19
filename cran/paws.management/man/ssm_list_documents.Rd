@@ -2,16 +2,21 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_list_documents}
 \alias{ssm_list_documents}
-\title{Describes one or more of your Systems Manager documents}
+\title{Returns all Systems Manager (SSM) documents in the current AWS account
+and Region}
 \usage{
 ssm_list_documents(DocumentFilterList, Filters, MaxResults, NextToken)
 }
 \arguments{
-\item{DocumentFilterList}{One or more filters. Use a filter to return a more specific list of
-results.}
+\item{DocumentFilterList}{This data type is deprecated. Instead, use \code{Filters}.}
 
-\item{Filters}{One or more filters. Use a filter to return a more specific list of
-results.}
+\item{Filters}{One or more DocumentKeyValuesFilter objects. Use a filter to return a
+more specific list of results. For keys, you can specify one or more
+key-value pair tags that have been applied to a document. Other valid
+keys include \code{Owner}, \code{Name}, \code{PlatformTypes}, \code{DocumentType}, and
+\code{TargetType}. For example, to return documents you own use
+\verb{Key=Owner,Values=Self}. To specify a custom key-value pair, use the
+format \verb{Key=tag:tagName,Values=valueName}.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -21,7 +26,8 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-Describes one or more of your Systems Manager documents.
+Returns all Systems Manager (SSM) documents in the current AWS account
+and Region. You can limit the results of this request by using a filter.
 }
 \section{Request syntax}{
 \preformatted{svc$list_documents(

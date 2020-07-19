@@ -7,7 +7,7 @@
 alexaforbusiness_create_profile(ProfileName, Timezone, Address,
   DistanceUnit, TemperatureUnit, WakeWord, Locale, ClientRequestToken,
   SetupModeDisabled, MaxVolumeLimit, PSTNEnabled,
-  MeetingRoomConfiguration)
+  MeetingRoomConfiguration, Tags)
 }
 \arguments{
 \item{ProfileName}{[required] The name of a room profile.}
@@ -34,6 +34,8 @@ limited preview audience.)}
 \item{PSTNEnabled}{Whether PSTN calling is enabled.}
 
 \item{MeetingRoomConfiguration}{The meeting room settings of a room profile.}
+
+\item{Tags}{The tags for the profile.}
 }
 \description{
 Creates a new room profile with the specified details.
@@ -67,6 +69,12 @@ Creates a new room profile with the specified details.
     RequireCheckIn = list(
       ReleaseAfterMinutes = 123,
       Enabled = TRUE|FALSE
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

@@ -2,14 +2,17 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_describe_fleet_attributes}
 \alias{gamelift_describe_fleet_attributes}
-\title{Retrieves fleet properties, including metadata, status, and
-configuration, for one or more fleets}
+\title{Retrieves core properties, including configuration, status, and
+metadata, for a fleet}
 \usage{
 gamelift_describe_fleet_attributes(FleetIds, Limit, NextToken)
 }
 \arguments{
-\item{FleetIds}{A unique identifier for a fleet(s) to retrieve attributes for. You can
-use either the fleet ID or ARN value.}
+\item{FleetIds}{A list of unique fleet identifiers to retrieve attributes for. You can
+use either the fleet ID or ARN value. To retrieve attributes for all
+current fleets, do not include this parameter. If the list of fleet
+identifiers includes fleets that don\'t currently exist, the request
+succeeds but no attributes for that fleet are returned.}
 
 \item{Limit}{The maximum number of results to return. Use this parameter with
 \code{NextToken} to get results as a set of sequential pages. This parameter
@@ -22,23 +25,24 @@ parameter is ignored when the request specifies one or a list of fleet
 IDs.}
 }
 \description{
-Retrieves fleet properties, including metadata, status, and
-configuration, for one or more fleets. You can request attributes for
-all fleets, or specify a list of one or more fleet IDs. When requesting
-multiple fleets, use the pagination parameters to retrieve results as a
-set of sequential pages. If successful, a FleetAttributes object is
-returned for each requested fleet ID. When specifying a list of fleet
-IDs, attribute objects are returned only for fleets that currently
-exist.
+Retrieves core properties, including configuration, status, and
+metadata, for a fleet.
 }
 \details{
+To get attributes for one or more fleets, provide a list of fleet IDs or
+fleet ARNs. To get attributes for all fleets, do not specify a fleet
+identifier. When requesting attributes for multiple fleets, use the
+pagination parameters to retrieve results as a set of sequential pages.
+If successful, a FleetAttributes object is returned for each fleet
+requested, unless the fleet identifier is not found.
+
 Some API actions may limit the number of fleet IDs allowed in one
 request. If a request exceeds this limit, the request fails and the
-error message includes the maximum allowed.
+error message includes the maximum allowed number.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
 
 \strong{Related operations}
 \itemize{
@@ -56,11 +60,7 @@ error message includes the maximum allowed.
 \item DescribeFleetEvents
 }
 \item UpdateFleetAttributes
-\item Manage fleet actions:
-\itemize{
-\item StartFleetActions
-\item StopFleetActions
-}
+\item StartFleetActions or StopFleetActions
 }
 }
 \section{Request syntax}{

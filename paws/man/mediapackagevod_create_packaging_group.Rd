@@ -4,17 +4,28 @@
 \alias{mediapackagevod_create_packaging_group}
 \title{Creates a new MediaPackage VOD PackagingGroup resource}
 \usage{
-mediapackagevod_create_packaging_group(Id)
+mediapackagevod_create_packaging_group(Authorization, Id, Tags)
 }
 \arguments{
+\item{Authorization}{}
+
 \item{Id}{[required] The ID of the PackagingGroup.}
+
+\item{Tags}{}
 }
 \description{
 Creates a new MediaPackage VOD PackagingGroup resource.
 }
 \section{Request syntax}{
 \preformatted{svc$create_packaging_group(
-  Id = "string"
+  Authorization = list(
+    CdnIdentifierSecret = "string",
+    SecretsRoleArn = "string"
+  ),
+  Id = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

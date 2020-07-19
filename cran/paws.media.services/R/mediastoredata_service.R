@@ -63,7 +63,7 @@ mediastoredata <- function(config = list()) {
 
 .mediastoredata$metadata <- list(
   service_name = "data.mediastore",
-  endpoints = list("*" = list(endpoint = "data.mediastore.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "data.mediastore.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "data.mediastore.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "data.mediastore.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "data.mediastore.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "data.mediastore.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "MediaStore Data",
   api_version = "2017-09-01",
   signing_name = "mediastore",

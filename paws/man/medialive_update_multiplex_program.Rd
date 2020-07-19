@@ -21,6 +21,7 @@ Update a program in a multiplex.
 \preformatted{svc$update_multiplex_program(
   MultiplexId = "string",
   MultiplexProgramSettings = list(
+    PreferredChannelPipeline = "CURRENTLY_ACTIVE"|"PIPELINE_0"|"PIPELINE_1",
     ProgramNumber = 123,
     ServiceDescriptor = list(
       ProviderName = "string",

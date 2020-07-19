@@ -7,7 +7,7 @@
 guardduty_get_ip_set(DetectorId, IpSetId)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector the ipSet is associated with.}
+\item{DetectorId}{[required] The unique ID of the detector that the IPSet is associated with.}
 
 \item{IpSetId}{[required] The unique ID of the IPSet to retrieve.}
 }

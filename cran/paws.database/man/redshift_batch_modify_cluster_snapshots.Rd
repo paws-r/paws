@@ -2,7 +2,7 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_batch_modify_cluster_snapshots}
 \alias{redshift_batch_modify_cluster_snapshots}
-\title{Modifies the settings for a list of snapshots}
+\title{Modifies the settings for a set of cluster snapshots}
 \usage{
 redshift_batch_modify_cluster_snapshots(SnapshotIdentifierList,
   ManualSnapshotRetentionPeriod, Force)
@@ -24,7 +24,7 @@ delete the snapshots, use the force option.}
 retention period has passed.}
 }
 \description{
-Modifies the settings for a list of snapshots.
+Modifies the settings for a set of cluster snapshots.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_modify_cluster_snapshots(

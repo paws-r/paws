@@ -7,9 +7,28 @@
 ssm_update_service_setting(SettingId, SettingValue)
 }
 \arguments{
-\item{SettingId}{[required] The ID of the service setting to update.}
+\item{SettingId}{[required] The Amazon Resource Name (ARN) of the service setting to reset. For
+example,
+\code{arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled}.
+The setting ID can be one of the following.
+\itemize{
+\item \verb{/ssm/parameter-store/default-parameter-tier}
+\item \verb{/ssm/parameter-store/high-throughput-enabled}
+\item \verb{/ssm/managed-instance/activation-tier}
+}}
 
-\item{SettingValue}{[required] The new value to specify for the service setting.}
+\item{SettingValue}{[required] The new value to specify for the service setting. For the
+\verb{/ssm/parameter-store/default-parameter-tier} setting ID, the setting
+value can be one of the following.
+\itemize{
+\item Standard
+\item Advanced
+\item Intelligent-Tiering
+}
+
+For the \verb{/ssm/parameter-store/high-throughput-enabled}, and
+\verb{/ssm/managed-instance/activation-tier} setting IDs, the setting value
+can be true or false.}
 }
 \description{
 \code{ServiceSetting} is an account-level setting for an AWS service. This

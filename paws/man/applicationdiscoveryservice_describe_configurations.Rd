@@ -27,7 +27,8 @@ output for a \emph{server} configuration item includes a list of attributes
 about the server, such as host name, operating system, number of network
 cards, etc.
 
-For a complete list of outputs for each asset type, see \href{http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#DescribeConfigurations}{Using the DescribeConfigurations Action}.
+For a complete list of outputs for each asset type, see \href{https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#DescribeConfigurations}{Using the DescribeConfigurations Action}
+in the \emph{AWS Application Discovery Service User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_configurations(

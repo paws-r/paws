@@ -2,24 +2,25 @@
 % Please edit documentation in R/macie_operations.R
 \name{macie_associate_s3_resources}
 \alias{macie_associate_s3_resources}
-\title{Associates specified S3 resources with Amazon Macie for monitoring and
-data classification}
+\title{Associates specified S3 resources with Amazon Macie Classic for
+monitoring and data classification}
 \usage{
 macie_associate_s3_resources(memberAccountId, s3Resources)
 }
 \arguments{
-\item{memberAccountId}{The ID of the Amazon Macie member account whose resources you want to
-associate with Macie.}
+\item{memberAccountId}{The ID of the Amazon Macie Classic member account whose resources you
+want to associate with Macie Classic.}
 
-\item{s3Resources}{[required] The S3 resources that you want to associate with Amazon Macie for
-monitoring and data classification.}
+\item{s3Resources}{[required] The S3 resources that you want to associate with Amazon Macie Classic
+for monitoring and data classification.}
 }
 \description{
-Associates specified S3 resources with Amazon Macie for monitoring and
-data classification. If memberAccountId isn\'t specified, the action
-associates specified S3 resources with Macie for the current master
-account. If memberAccountId is specified, the action associates
-specified S3 resources with Macie for the specified member account.
+Associates specified S3 resources with Amazon Macie Classic for
+monitoring and data classification. If memberAccountId isn\'t specified,
+the action associates specified S3 resources with Macie Classic for the
+current master account. If memberAccountId is specified, the action
+associates specified S3 resources with Macie Classic for the specified
+member account.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_s3_resources(

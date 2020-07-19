@@ -8,7 +8,9 @@ supported for Amazon Route 53 geolocation resource record sets}
 route53_get_geo_location(ContinentCode, CountryCode, SubdivisionCode)
 }
 \arguments{
-\item{ContinentCode}{Amazon Route 53 supports the following continent codes:
+\item{ContinentCode}{For geolocation resource record sets, a two-letter abbreviation that
+identifies a continent. Amazon Route 53 supports the following continent
+codes:
 \itemize{
 \item \strong{AF}: Africa
 \item \strong{AN}: Antarctica
@@ -22,10 +24,13 @@ route53_get_geo_location(ContinentCode, CountryCode, SubdivisionCode)
 \item{CountryCode}{Amazon Route 53 uses the two-letter country codes that are specified in
 \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO standard 3166-1 alpha-2}.}
 
-\item{SubdivisionCode}{Amazon Route 53 uses the one- to three-letter subdivision codes that are
-specified in \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO standard 3166-1 alpha-2}. Route 53
-doesn\'t support subdivision codes for all countries. If you specify
-\code{subdivisioncode}, you must also specify \code{countrycode}.}
+\item{SubdivisionCode}{For \code{SubdivisionCode}, Amazon Route 53 supports only states of the
+United States. For a list of state abbreviations, see Appendix B:
+Two--Letter State and Possession Abbreviations on the United States
+Postal Service website.
+
+If you specify \code{subdivisioncode}, you must also specify \code{US} for
+\code{CountryCode}.}
 }
 \description{
 Gets information about whether a specified geographic location is

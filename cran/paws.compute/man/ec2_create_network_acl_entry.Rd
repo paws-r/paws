@@ -11,7 +11,9 @@ ec2_create_network_acl_entry(CidrBlock, DryRun, Egress, IcmpTypeCode,
 }
 \arguments{
 \item{CidrBlock}{The IPv4 network range to allow or deny, in CIDR notation (for example
-\verb{172.16.0.0/24}).}
+\verb{172.16.0.0/24}). We modify the specified CIDR block to its canonical
+form; for example, if you specify \verb{100.68.0.18/18}, we modify it to
+\verb{100.68.0.0/18}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

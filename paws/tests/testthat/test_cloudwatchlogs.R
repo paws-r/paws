@@ -22,6 +22,10 @@ test_that("describe_queries", {
   expect_error(svc$describe_queries(), NA)
 })
 
+test_that("describe_query_definitions", {
+  expect_error(svc$describe_query_definitions(), NA)
+})
+
 test_that("describe_resource_policies", {
   expect_error(svc$describe_resource_policies(), NA)
 })

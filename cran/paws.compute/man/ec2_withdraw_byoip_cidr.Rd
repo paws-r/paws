@@ -2,13 +2,13 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_withdraw_byoip_cidr}
 \alias{ec2_withdraw_byoip_cidr}
-\title{Stops advertising an IPv4 address range that is provisioned as an
-address pool}
+\title{Stops advertising an address range that is provisioned as an address
+pool}
 \usage{
 ec2_withdraw_byoip_cidr(Cidr, DryRun)
 }
 \arguments{
-\item{Cidr}{[required] The public IPv4 address range, in CIDR notation.}
+\item{Cidr}{[required] The address range, in CIDR notation.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -16,8 +16,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Stops advertising an IPv4 address range that is provisioned as an
-address pool.
+Stops advertising an address range that is provisioned as an address
+pool.
 }
 \details{
 You can perform this operation at most once every 10 seconds, even if

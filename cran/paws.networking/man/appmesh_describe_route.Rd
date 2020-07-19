@@ -4,10 +4,15 @@
 \alias{appmesh_describe_route}
 \title{Describes an existing route}
 \usage{
-appmesh_describe_route(meshName, routeName, virtualRouterName)
+appmesh_describe_route(meshName, meshOwner, routeName,
+  virtualRouterName)
 }
 \arguments{
 \item{meshName}{[required] The name of the service mesh that the route resides in.}
+
+\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it\'s the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{routeName}{[required] The name of the route to describe.}
 
@@ -19,6 +24,7 @@ Describes an existing route.
 \section{Request syntax}{
 \preformatted{svc$describe_route(
   meshName = "string",
+  meshOwner = "string",
   routeName = "string",
   virtualRouterName = "string"
 )

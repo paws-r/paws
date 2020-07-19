@@ -7,8 +7,12 @@
 lightsail_get_relational_database_bundles(pageToken)
 }
 \arguments{
-\item{pageToken}{A token used for advancing to a specific page of results for your
-\verb{get relational database bundles} request.}
+\item{pageToken}{The token to advance to the next page of results from your request.
+
+To get a page token, perform an initial \code{GetRelationalDatabaseBundles}
+request. If your results are paginated, the response will return a next
+page token that you can specify as the page token in a subsequent
+request.}
 }
 \description{
 Returns the list of bundles that are available in Amazon Lightsail. A

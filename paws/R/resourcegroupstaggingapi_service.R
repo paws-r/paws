@@ -108,11 +108,15 @@ NULL
 #' 
 #' -   AWS Config
 #' 
+#' -   AWS Data Exchange
+#' 
 #' -   AWS Data Pipeline
 #' 
 #' -   AWS Database Migration Service
 #' 
 #' -   AWS DataSync
+#' 
+#' -   AWS Device Farm
 #' 
 #' -   AWS Direct Connect
 #' 
@@ -127,6 +131,8 @@ NULL
 #' -   Amazon ECR
 #' 
 #' -   Amazon ECS
+#' 
+#' -   Amazon EKS
 #' 
 #' -   AWS Elastic Beanstalk
 #' 
@@ -167,6 +173,10 @@ NULL
 #' -   AWS IoT Events
 #' 
 #' -   AWS IoT Greengrass
+#' 
+#' -   AWS IoT 1-Click
+#' 
+#' -   AWS IoT Things Graph
 #' 
 #' -   AWS Key Management Service
 #' 
@@ -218,9 +228,13 @@ NULL
 #' 
 #' -   AWS Service Catalog
 #' 
+#' -   Amazon Simple Email Service (SES)
+#' 
 #' -   Amazon Simple Notification Service (SNS)
 #' 
 #' -   Amazon Simple Queue Service (SQS)
+#' 
+#' -   Amazon Simple Workflow Service
 #' 
 #' -   AWS Step Functions
 #' 
@@ -229,6 +243,8 @@ NULL
 #' -   AWS Systems Manager
 #' 
 #' -   AWS Transfer for SFTP
+#' 
+#' -   AWS WAF Regional
 #' 
 #' -   Amazon VPC
 #' 
@@ -291,7 +307,7 @@ resourcegroupstaggingapi <- function(config = list()) {
 
 .resourcegroupstaggingapi$metadata <- list(
   service_name = "tagging",
-  endpoints = list("*" = list(endpoint = "tagging.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "tagging.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "tagging.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "tagging.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "tagging.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "tagging.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Resource Groups Tagging API",
   api_version = "2017-01-26",
   signing_name = NULL,

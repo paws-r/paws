@@ -15,8 +15,8 @@ CloudWatch event indicating the pass has finished.}
 \item{contactPrePassDurationSeconds}{Amount of time prior to contact start you'd like to receive a CloudWatch
 event indicating an upcoming pass.}
 
-\item{dataflowEdges}{[required] A list of lists of ARNs. Each list of ARNs is an edge, with a from
-\code{Config} and a to \code{Config}.}
+\item{dataflowEdges}{[required] A list of lists of ARNs. Each list of ARNs is an edge, with a \emph{from}
+\code{Config} and a \emph{to} \code{Config}.}
 
 \item{minimumViableContactDurationSeconds}{[required] Smallest amount of time in seconds that you'd like to see for an
 available contact. AWS Ground Station will not present you with contacts
@@ -33,7 +33,7 @@ Creates a mission profile.
 }
 \details{
 \code{dataflowEdges} is a list of lists of strings. Each lower level list of
-strings has two elements: a \emph{from ARN} and a \emph{to ARN}.
+strings has two elements: a \emph{from} ARN and a \emph{to} ARN.
 }
 \section{Request syntax}{
 \preformatted{svc$create_mission_profile(

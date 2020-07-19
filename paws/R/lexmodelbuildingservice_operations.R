@@ -1637,6 +1637,44 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 }
 .lexmodelbuildingservice$operations$get_utterances_view <- lexmodelbuildingservice_get_utterances_view
 
+#' Gets a list of tags associated with the specified resource
+#'
+#' Gets a list of tags associated with the specified resource. Only bots,
+#' bot aliases, and bot channels can have tags associated with them.
+#'
+#' @usage
+#' lexmodelbuildingservice_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get a list of tags
+#' for.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelbuildingservice_list_tags_for_resource
+lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .lexmodelbuildingservice$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .lexmodelbuildingservice$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .lexmodelbuildingservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelbuildingservice$operations$list_tags_for_resource <- lexmodelbuildingservice_list_tags_for_resource
+
 #' Creates an Amazon Lex conversational bot or replaces an existing bot
 #'
 #' Creates an Amazon Lex conversational bot or replaces an existing bot.
@@ -1662,7 +1700,7 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' lexmodelbuildingservice_put_bot(name, description, intents,
 #'   clarificationPrompt, abortStatement, idleSessionTTLInSeconds, voiceId,
 #'   checksum, processBehavior, locale, childDirected, detectSentiment,
-#'   createVersion)
+#'   createVersion, tags)
 #'
 #' @param name &#91;required&#93; The name of the bot. The name is *not* case sensitive.
 #' @param description A description of the bot.
@@ -1795,6 +1833,9 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' @param createVersion When set to `true` a new numbered version of the bot is created. This is
 #' the same as calling the `CreateBotVersion` operation. If you don\'t
 #' specify `createVersion`, the default is `false`.
+#' @param tags A list of tags to add to the bot. You can only add tags when you create
+#' a bot, you can\'t use the `PutBot` operation to update the tags on a
+#' bot. To update tags, use the `TagResource` operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -1835,7 +1876,13 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #'   locale = "en-US"|"en-GB"|"de-DE",
 #'   childDirected = TRUE|FALSE,
 #'   detectSentiment = TRUE|FALSE,
-#'   createVersion = TRUE|FALSE
+#'   createVersion = TRUE|FALSE,
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1861,7 +1908,7 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #'     maxAttempts = 1L,
 #'     messages = list(
 #'       list(
-#'         content = "I'm sorry, I didn't hear that. Can you repeate what you just said?",
+#'         content = "I'm sorry, I didn't hear that. Can you repeat what you just said?",
 #'         contentType = "PlainText"
 #'       ),
 #'       list(
@@ -1886,14 +1933,14 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_bot
-lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = NULL, clarificationPrompt = NULL, abortStatement = NULL, idleSessionTTLInSeconds = NULL, voiceId = NULL, checksum = NULL, processBehavior = NULL, locale, childDirected, detectSentiment = NULL, createVersion = NULL) {
+lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = NULL, clarificationPrompt = NULL, abortStatement = NULL, idleSessionTTLInSeconds = NULL, voiceId = NULL, checksum = NULL, processBehavior = NULL, locale, childDirected, detectSentiment = NULL, createVersion = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutBot",
     http_method = "PUT",
     http_path = "/bots/{name}/versions/$LATEST",
     paginator = list()
   )
-  input <- .lexmodelbuildingservice$put_bot_input(name = name, description = description, intents = intents, clarificationPrompt = clarificationPrompt, abortStatement = abortStatement, idleSessionTTLInSeconds = idleSessionTTLInSeconds, voiceId = voiceId, checksum = checksum, processBehavior = processBehavior, locale = locale, childDirected = childDirected, detectSentiment = detectSentiment, createVersion = createVersion)
+  input <- .lexmodelbuildingservice$put_bot_input(name = name, description = description, intents = intents, clarificationPrompt = clarificationPrompt, abortStatement = abortStatement, idleSessionTTLInSeconds = idleSessionTTLInSeconds, voiceId = voiceId, checksum = checksum, processBehavior = processBehavior, locale = locale, childDirected = childDirected, detectSentiment = detectSentiment, createVersion = createVersion, tags = tags)
   output <- .lexmodelbuildingservice$put_bot_output()
   config <- get_config()
   svc <- .lexmodelbuildingservice$service(config)
@@ -1915,7 +1962,7 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #'
 #' @usage
 #' lexmodelbuildingservice_put_bot_alias(name, description, botVersion,
-#'   botName, checksum, conversationLogs)
+#'   botName, checksum, conversationLogs, tags)
 #'
 #' @param name &#91;required&#93; The name of the alias. The name is *not* case sensitive.
 #' @param description A description of the alias.
@@ -1932,6 +1979,10 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #' the `$LATEST` version, you get a `PreconditionFailedException`
 #' exception.
 #' @param conversationLogs Settings for conversation logs for the alias.
+#' @param tags A list of tags to add to the bot alias. You can only add tags when you
+#' create an alias, you can\'t use the `PutBotAlias` operation to update
+#' the tags on a bot alias. To update tags, use the `TagResource`
+#' operation.
 #'
 #' @section Request syntax:
 #' ```
@@ -1951,6 +2002,12 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #'       )
 #'     ),
 #'     iamRoleArn = "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1958,14 +2015,14 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_bot_alias
-lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botVersion, botName, checksum = NULL, conversationLogs = NULL) {
+lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botVersion, botName, checksum = NULL, conversationLogs = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutBotAlias",
     http_method = "PUT",
     http_path = "/bots/{botName}/aliases/{name}",
     paginator = list()
   )
-  input <- .lexmodelbuildingservice$put_bot_alias_input(name = name, description = description, botVersion = botVersion, botName = botName, checksum = checksum, conversationLogs = conversationLogs)
+  input <- .lexmodelbuildingservice$put_bot_alias_input(name = name, description = description, botVersion = botVersion, botName = botName, checksum = checksum, conversationLogs = conversationLogs, tags = tags)
   output <- .lexmodelbuildingservice$put_bot_alias_output()
   config <- get_config()
   svc <- .lexmodelbuildingservice$service(config)
@@ -2030,7 +2087,8 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' lexmodelbuildingservice_put_intent(name, description, slots,
 #'   sampleUtterances, confirmationPrompt, rejectionStatement,
 #'   followUpPrompt, conclusionStatement, dialogCodeHook,
-#'   fulfillmentActivity, parentIntentSignature, checksum, createVersion)
+#'   fulfillmentActivity, parentIntentSignature, checksum, createVersion,
+#'   kendraConfiguration)
 #'
 #' @param name &#91;required&#93; The name of the intent. The name is *not* case sensitive.
 #' 
@@ -2133,6 +2191,10 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' @param createVersion When set to `true` a new numbered version of the intent is created. This
 #' is the same as calling the `CreateIntentVersion` operation. If you do
 #' not specify `createVersion`, the default is `false`.
+#' @param kendraConfiguration Configuration information required to use the
+#' `AMAZON.KendraSearchIntent` intent to connect to an Amazon Kendra index.
+#' For more information, see
+#' [AMAZON.KendraSearchIntent](http://docs.aws.amazon.com/lex/latest/dg/built-in-intent-kendra-search.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -2235,7 +2297,12 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'   ),
 #'   parentIntentSignature = "string",
 #'   checksum = "string",
-#'   createVersion = TRUE|FALSE
+#'   createVersion = TRUE|FALSE,
+#'   kendraConfiguration = list(
+#'     kendraIndex = "string",
+#'     queryFilterString = "string",
+#'     role = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -2376,14 +2443,14 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_intent
-lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots = NULL, sampleUtterances = NULL, confirmationPrompt = NULL, rejectionStatement = NULL, followUpPrompt = NULL, conclusionStatement = NULL, dialogCodeHook = NULL, fulfillmentActivity = NULL, parentIntentSignature = NULL, checksum = NULL, createVersion = NULL) {
+lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots = NULL, sampleUtterances = NULL, confirmationPrompt = NULL, rejectionStatement = NULL, followUpPrompt = NULL, conclusionStatement = NULL, dialogCodeHook = NULL, fulfillmentActivity = NULL, parentIntentSignature = NULL, checksum = NULL, createVersion = NULL, kendraConfiguration = NULL) {
   op <- new_operation(
     name = "PutIntent",
     http_method = "PUT",
     http_path = "/intents/{name}/versions/$LATEST",
     paginator = list()
   )
-  input <- .lexmodelbuildingservice$put_intent_input(name = name, description = description, slots = slots, sampleUtterances = sampleUtterances, confirmationPrompt = confirmationPrompt, rejectionStatement = rejectionStatement, followUpPrompt = followUpPrompt, conclusionStatement = conclusionStatement, dialogCodeHook = dialogCodeHook, fulfillmentActivity = fulfillmentActivity, parentIntentSignature = parentIntentSignature, checksum = checksum, createVersion = createVersion)
+  input <- .lexmodelbuildingservice$put_intent_input(name = name, description = description, slots = slots, sampleUtterances = sampleUtterances, confirmationPrompt = confirmationPrompt, rejectionStatement = rejectionStatement, followUpPrompt = followUpPrompt, conclusionStatement = conclusionStatement, dialogCodeHook = dialogCodeHook, fulfillmentActivity = fulfillmentActivity, parentIntentSignature = parentIntentSignature, checksum = checksum, createVersion = createVersion, kendraConfiguration = kendraConfiguration)
   output <- .lexmodelbuildingservice$put_intent_output()
   config <- get_config()
   svc <- .lexmodelbuildingservice$service(config)
@@ -2413,7 +2480,8 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #'
 #' @usage
 #' lexmodelbuildingservice_put_slot_type(name, description,
-#'   enumerationValues, checksum, valueSelectionStrategy, createVersion)
+#'   enumerationValues, checksum, valueSelectionStrategy, createVersion,
+#'   parentSlotTypeSignature, slotTypeConfigurations)
 #'
 #' @param name &#91;required&#93; The name of the slot type. The name is *not* case sensitive.
 #' 
@@ -2463,6 +2531,13 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' @param createVersion When set to `true` a new numbered version of the slot type is created.
 #' This is the same as calling the `CreateSlotTypeVersion` operation. If
 #' you do not specify `createVersion`, the default is `false`.
+#' @param parentSlotTypeSignature The built-in slot type used as the parent of the slot type. When you
+#' define a parent slot type, the new slot type has all of the same
+#' configuration as the parent.
+#' 
+#' Only `AMAZON.AlphaNumeric` is supported.
+#' @param slotTypeConfigurations Configuration information that extends the parent built-in slot type.
+#' The configuration is added to the settings for the parent slot type.
 #'
 #' @section Request syntax:
 #' ```
@@ -2479,7 +2554,15 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #'   ),
 #'   checksum = "string",
 #'   valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
-#'   createVersion = TRUE|FALSE
+#'   createVersion = TRUE|FALSE,
+#'   parentSlotTypeSignature = "string",
+#'   slotTypeConfigurations = list(
+#'     list(
+#'       regexConfiguration = list(
+#'         pattern = "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2504,14 +2587,14 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_slot_type
-lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enumerationValues = NULL, checksum = NULL, valueSelectionStrategy = NULL, createVersion = NULL) {
+lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enumerationValues = NULL, checksum = NULL, valueSelectionStrategy = NULL, createVersion = NULL, parentSlotTypeSignature = NULL, slotTypeConfigurations = NULL) {
   op <- new_operation(
     name = "PutSlotType",
     http_method = "PUT",
     http_path = "/slottypes/{name}/versions/$LATEST",
     paginator = list()
   )
-  input <- .lexmodelbuildingservice$put_slot_type_input(name = name, description = description, enumerationValues = enumerationValues, checksum = checksum, valueSelectionStrategy = valueSelectionStrategy, createVersion = createVersion)
+  input <- .lexmodelbuildingservice$put_slot_type_input(name = name, description = description, enumerationValues = enumerationValues, checksum = checksum, valueSelectionStrategy = valueSelectionStrategy, createVersion = createVersion, parentSlotTypeSignature = parentSlotTypeSignature, slotTypeConfigurations = slotTypeConfigurations)
   output <- .lexmodelbuildingservice$put_slot_type_output()
   config <- get_config()
   svc <- .lexmodelbuildingservice$service(config)
@@ -2527,7 +2610,7 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
 #'
 #' @usage
 #' lexmodelbuildingservice_start_import(payload, resourceType,
-#'   mergeStrategy)
+#'   mergeStrategy, tags)
 #'
 #' @param payload &#91;required&#93; A zip archive in binary format. The archive should contain one file, a
 #' JSON file containing the resource to import. The resource should match
@@ -2549,27 +2632,35 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
 #'     OVERWRITE\\_LATEST - The import operation proceeds even if there is a
 #'     conflict with an existing resource. The \\$LASTEST version of the
 #'     existing resource is overwritten with the data from the import file.
+#' @param tags A list of tags to add to the imported bot. You can only add tags when
+#' you import a bot, you can\'t add tags to an intent or slot type.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$start_import(
 #'   payload = raw,
 #'   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
-#'   mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT"
+#'   mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_start_import
-lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStrategy) {
+lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStrategy, tags = NULL) {
   op <- new_operation(
     name = "StartImport",
     http_method = "POST",
     http_path = "/imports/",
     paginator = list()
   )
-  input <- .lexmodelbuildingservice$start_import_input(payload = payload, resourceType = resourceType, mergeStrategy = mergeStrategy)
+  input <- .lexmodelbuildingservice$start_import_input(payload = payload, resourceType = resourceType, mergeStrategy = mergeStrategy, tags = tags)
   output <- .lexmodelbuildingservice$start_import_output()
   config <- get_config()
   svc <- .lexmodelbuildingservice$service(config)
@@ -2578,3 +2669,90 @@ lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStr
   return(response)
 }
 .lexmodelbuildingservice$operations$start_import <- lexmodelbuildingservice_start_import
+
+#' Adds the specified tags to the specified resource
+#'
+#' Adds the specified tags to the specified resource. If a tag key already
+#' exists, the existing value is replaced with the new value.
+#'
+#' @usage
+#' lexmodelbuildingservice_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the bot, bot alias, or bot channel to
+#' tag.
+#' @param tags &#91;required&#93; A list of tag keys to add to the resource. If a tag key already exists,
+#' the existing value is replaced with the new value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelbuildingservice_tag_resource
+lexmodelbuildingservice_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .lexmodelbuildingservice$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .lexmodelbuildingservice$tag_resource_output()
+  config <- get_config()
+  svc <- .lexmodelbuildingservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelbuildingservice$operations$tag_resource <- lexmodelbuildingservice_tag_resource
+
+#' Removes tags from a bot, bot alias or bot channel
+#'
+#' Removes tags from a bot, bot alias or bot channel.
+#'
+#' @usage
+#' lexmodelbuildingservice_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove the tags from.
+#' @param tagKeys &#91;required&#93; A list of tag keys to remove from the resource. If a tag key does not
+#' exist on the resource, it is ignored.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelbuildingservice_untag_resource
+lexmodelbuildingservice_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .lexmodelbuildingservice$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .lexmodelbuildingservice$untag_resource_output()
+  config <- get_config()
+  svc <- .lexmodelbuildingservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelbuildingservice$operations$untag_resource <- lexmodelbuildingservice_untag_resource

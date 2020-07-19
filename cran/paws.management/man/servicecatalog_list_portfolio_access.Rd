@@ -4,7 +4,8 @@
 \alias{servicecatalog_list_portfolio_access}
 \title{Lists the account IDs that have access to the specified portfolio}
 \usage{
-servicecatalog_list_portfolio_access(AcceptLanguage, PortfolioId)
+servicecatalog_list_portfolio_access(AcceptLanguage, PortfolioId,
+  OrganizationParentId, PageToken, PageSize)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -15,14 +16,31 @@ servicecatalog_list_portfolio_access(AcceptLanguage, PortfolioId)
 }}
 
 \item{PortfolioId}{[required] The portfolio identifier.}
+
+\item{OrganizationParentId}{The ID of an organization node the portfolio is shared with. All
+children of this node with an inherited portfolio share will be
+returned.}
+
+\item{PageToken}{The page token for the next set of results. To retrieve the first set of
+results, use null.}
+
+\item{PageSize}{The maximum number of items to return with this call.}
 }
 \description{
 Lists the account IDs that have access to the specified portfolio.
 }
+\details{
+A delegated admin can list the accounts that have access to the shared
+portfolio. Note that if a delegated admin is de-registered, they can no
+longer perform this operation.
+}
 \section{Request syntax}{
 \preformatted{svc$list_portfolio_access(
   AcceptLanguage = "string",
-  PortfolioId = "string"
+  PortfolioId = "string",
+  OrganizationParentId = "string",
+  PageToken = "string",
+  PageSize = 123
 )
 }
 }

@@ -34,7 +34,7 @@ have access to the OpsItem (as provided by the GetOpsItem API action).
 Use the \verb{/aws/resources} key in OperationalData to specify a related
 resource in the request. Use the \verb{/aws/automations} key in
 OperationalData to associate an Automation runbook with the OpsItem. To
-view AWS CLI example commands that use these keys, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems}{Creating OpsItems Manually}
+view AWS CLI example commands that use these keys, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems}{Creating OpsItems manually}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{OperationalDataToDelete}{Keys that you want to remove from the OperationalData map.}
@@ -51,7 +51,7 @@ similar error messages, impacted resources, or statuses for the impacted
 resource.}
 
 \item{Status}{The OpsItem status. Status can be \code{Open}, \verb{In Progress}, or \code{Resolved}.
-For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems-editing-details.html}{Editing OpsItem Details}
+For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems.html#OpsCenter-working-with-OpsItems-editing-details}{Editing OpsItem details}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{OpsItemId}{[required] The ID of the OpsItem.}
@@ -66,13 +66,13 @@ impacted resource.}
 \description{
 Edit or change an OpsItem. You must have permission in AWS Identity and
 Access Management (IAM) to update an OpsItem. For more information, see
-\href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting Started with OpsCenter}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter}
 in the \emph{AWS Systems Manager User Guide}.
 }
 \details{
 Operations engineers and IT professionals use OpsCenter to view,
 investigate, and remediate operational issues impacting the performance
-and health of their AWS resources. For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html}{AWS Systems Manager OpsCenter}
+and health of their AWS resources. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html}{AWS Systems Manager OpsCenter}
 in the \emph{AWS Systems Manager User Guide}.
 }
 \section{Request syntax}{

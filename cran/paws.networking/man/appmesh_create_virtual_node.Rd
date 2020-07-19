@@ -4,8 +4,8 @@
 \alias{appmesh_create_virtual_node}
 \title{Creates a virtual node within a service mesh}
 \usage{
-appmesh_create_virtual_node(clientToken, meshName, spec, tags,
-  virtualNodeName)
+appmesh_create_virtual_node(clientToken, meshName, meshOwner, spec,
+  tags, virtualNodeName)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -13,6 +13,11 @@ idempotency of the request. Up to 36 letters, numbers, hyphens, and
 underscores are allowed.}
 
 \item{meshName}{[required] The name of the service mesh to create the virtual node in.}
+
+\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then the account that you specify must share the mesh with
+your account before you can create the resource in the service mesh. For
+more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{spec}{[required] The virtual node specification to apply.}
 
@@ -31,11 +36,12 @@ Creates a virtual node within a service mesh.
 A virtual node acts as a logical pointer to a particular task group,
 such as an Amazon ECS service or a Kubernetes deployment. When you
 create a virtual node, you can specify the service discovery information
-for your task group.
+for your task group, and whether the proxy running in a task group will
+communicate with other proxies using Transport Layer Security (TLS).
 
-Any inbound traffic that your virtual node expects should be specified
-as a \code{listener}. Any outbound traffic that your virtual node expects to
-reach should be specified as a \code{backend}.
+You define a \code{listener} for any inbound traffic that your virtual node
+expects. Any virtual service that your virtual node expects to
+communicate to is specified as a \code{backend}.
 
 The response metadata for your new virtual node contains the \code{arn} that
 is associated with the virtual node. Set this value (either the full ARN
@@ -49,15 +55,60 @@ If you require your Envoy stats or tracing to use a different name, you
 can override the \code{node.cluster} value that is set by
 \code{APPMESH_VIRTUAL_NODE_NAME} with the \code{APPMESH_VIRTUAL_NODE_CLUSTER}
 environment variable.
+
+For more information about virtual nodes, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_nodes.html}{Virtual nodes}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_virtual_node(
   clientToken = "string",
   meshName = "string",
+  meshOwner = "string",
   spec = list(
+    backendDefaults = list(
+      clientPolicy = list(
+        tls = list(
+          enforce = TRUE|FALSE,
+          ports = list(
+            123
+          ),
+          validation = list(
+            trust = list(
+              acm = list(
+                certificateAuthorityArns = list(
+                  "string"
+                )
+              ),
+              file = list(
+                certificateChain = "string"
+              )
+            )
+          )
+        )
+      )
+    ),
     backends = list(
       list(
         virtualService = list(
+          clientPolicy = list(
+            tls = list(
+              enforce = TRUE|FALSE,
+              ports = list(
+                123
+              ),
+              validation = list(
+                trust = list(
+                  acm = list(
+                    certificateAuthorityArns = list(
+                      "string"
+                    )
+                  ),
+                  file = list(
+                    certificateChain = "string"
+                  )
+                )
+              )
+            )
+          ),
           virtualServiceName = "string"
         )
       )
@@ -76,6 +127,56 @@ environment variable.
         portMapping = list(
           port = 123,
           protocol = "grpc"|"http"|"http2"|"tcp"
+        ),
+        timeout = list(
+          grpc = list(
+            idle = list(
+              unit = "ms"|"s",
+              value = 123
+            ),
+            perRequest = list(
+              unit = "ms"|"s",
+              value = 123
+            )
+          ),
+          http = list(
+            idle = list(
+              unit = "ms"|"s",
+              value = 123
+            ),
+            perRequest = list(
+              unit = "ms"|"s",
+              value = 123
+            )
+          ),
+          http2 = list(
+            idle = list(
+              unit = "ms"|"s",
+              value = 123
+            ),
+            perRequest = list(
+              unit = "ms"|"s",
+              value = 123
+            )
+          ),
+          tcp = list(
+            idle = list(
+              unit = "ms"|"s",
+              value = 123
+            )
+          )
+        ),
+        tls = list(
+          certificate = list(
+            acm = list(
+              certificateArn = "string"
+            ),
+            file = list(
+              certificateChain = "string",
+              privateKey = "string"
+            )
+          ),
+          mode = "DISABLED"|"PERMISSIVE"|"STRICT"
         )
       )
     ),

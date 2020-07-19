@@ -6,7 +6,8 @@
 Availability Zone}
 \usage{
 ec2_create_volume(AvailabilityZone, Encrypted, Iops, KmsKeyId,
-  OutpostArn, Size, SnapshotId, VolumeType, DryRun, TagSpecifications)
+  OutpostArn, Size, SnapshotId, VolumeType, DryRun, TagSpecifications,
+  MultiAttachEnabled)
 }
 \arguments{
 \item{AvailabilityZone}{[required] The Availability Zone in which to create the volume.}
@@ -51,7 +52,8 @@ but eventually fails.}
 
 \item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost.}
 
-\item{Size}{The size of the volume, in GiBs.
+\item{Size}{The size of the volume, in GiBs. You must specify either a snapshot ID
+or a volume size.
 
 Constraints: 1-16,384 for \code{gp2}, 4-16,384 for \code{io1}, 500-16,384 for
 \code{st1}, 500-16,384 for \code{sc1}, and 1-1,024 for \code{standard}. If you specify
@@ -59,13 +61,10 @@ a snapshot, the volume size must be equal to or larger than the snapshot
 size.
 
 Default: If you\'re creating the volume from a snapshot and don\'t
-specify a volume size, the default is the snapshot size.
+specify a volume size, the default is the snapshot size.}
 
-At least one of Size or SnapshotId is required.}
-
-\item{SnapshotId}{The snapshot from which to create the volume.
-
-At least one of Size or SnapshotId are required.}
+\item{SnapshotId}{The snapshot from which to create the volume. You must specify either a
+snapshot ID or a volume size.}
 
 \item{VolumeType}{The volume type. This can be \code{gp2} for General Purpose SSD, \code{io1} for
 Provisioned IOPS SSD, \code{st1} for Throughput Optimized HDD, \code{sc1} for Cold
@@ -79,6 +78,11 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{TagSpecifications}{The tags to apply to the volume during creation.}
+
+\item{MultiAttachEnabled}{Specifies whether to enable Amazon EBS Multi-Attach. If you enable
+Multi-Attach, you can attach the volume to up to 16 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Nitro-based instances}
+in the same Availability Zone. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html}{Amazon EBS Multi-Attach}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 }
 \description{
 Creates an EBS volume that can be attached to an instance in the same
@@ -116,7 +120,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   DryRun = TRUE|FALSE,
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
       Tags = list(
         list(
           Key = "string",
@@ -124,7 +128,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
         )
       )
     )
-  )
+  ),
+  MultiAttachEnabled = TRUE|FALSE
 )
 }
 }

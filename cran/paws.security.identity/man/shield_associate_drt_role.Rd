@@ -2,7 +2,7 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_associate_drt_role}
 \alias{shield_associate_drt_role}
-\title{Authorizes the DDoS Response team (DRT), using the specified role, to
+\title{Authorizes the DDoS Response Team (DRT), using the specified role, to
 access your AWS account to assist with DDoS attack mitigation during
 potential attacks}
 \usage{
@@ -18,7 +18,7 @@ managed policy to this role. For more information see Attaching and
 Detaching IAM Policies.}
 }
 \description{
-Authorizes the DDoS Response team (DRT), using the specified role, to
+Authorizes the DDoS Response Team (DRT), using the specified role, to
 access your AWS account to assist with DDoS attack mitigation during
 potential attacks. This enables the DRT to inspect your AWS WAF
 configuration and create or update AWS WAF rules and web ACLs.

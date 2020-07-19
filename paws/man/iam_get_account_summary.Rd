@@ -12,7 +12,8 @@ Retrieves information about IAM entity usage and IAM quotas in the AWS
 account.
 }
 \details{
-For information about limitations on IAM entities, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
+The number and size of IAM resources in an AWS account are limited. For
+more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
 in the \emph{IAM User Guide}.
 }
 \examples{

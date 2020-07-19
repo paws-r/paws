@@ -7,8 +7,8 @@
 codedeploy_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] The ARN that specifies from which resource to disassociate the tags with
-the keys in the \code{TagKeys} input paramter.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) that specifies from which resource to
+disassociate the tags with the keys in the \code{TagKeys} input parameter.}
 
 \item{TagKeys}{[required] A list of keys of \code{Tag} objects. The \code{Tag} objects identified by the
 keys are disassociated from the resource specified by the \code{ResourceArn}
@@ -16,8 +16,8 @@ input parameter.}
 }
 \description{
 Disassociates a resource from a list of tags. The resource is identified
-by the \code{ResourceArn} input parameter. The tags are identfied by the list
-of keys in the \code{TagKeys} input parameter.
+by the \code{ResourceArn} input parameter. The tags are identified by the
+list of keys in the \code{TagKeys} input parameter.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

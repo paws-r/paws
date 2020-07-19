@@ -33,7 +33,7 @@ Before sending a diagnostic interrupt to your instance, ensure that its
 operating system is configured to perform the required diagnostic tasks.
 
 For more information about configuring your operating system to generate
-a crash dump when a kernel panic or stop error occurs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/diagnostic-interrupt.html}{Send a Diagnostic Interrupt}
+a crash dump when a kernel panic or stop error occurs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/diagnostic-interrupt.html}{Send a diagnostic interrupt}
 (Linux instances) or \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/diagnostic-interrupt.html}{Send a Diagnostic Interrupt}
 (Windows instances).
 }

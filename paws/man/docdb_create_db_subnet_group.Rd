@@ -2,13 +2,13 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_create_db_subnet_group}
 \alias{docdb_create_db_subnet_group}
-\title{Creates a new DB subnet group}
+\title{Creates a new subnet group}
 \usage{
 docdb_create_db_subnet_group(DBSubnetGroupName,
   DBSubnetGroupDescription, SubnetIds, Tags)
 }
 \arguments{
-\item{DBSubnetGroupName}{[required] The name for the DB subnet group. This value is stored as a lowercase
+\item{DBSubnetGroupName}{[required] The name for the subnet group. This value is stored as a lowercase
 string.
 
 Constraints: Must contain no more than 255 letters, numbers, periods,
@@ -16,15 +16,15 @@ underscores, spaces, or hyphens. Must not be default.
 
 Example: \code{mySubnetgroup}}
 
-\item{DBSubnetGroupDescription}{[required] The description for the DB subnet group.}
+\item{DBSubnetGroupDescription}{[required] The description for the subnet group.}
 
-\item{SubnetIds}{[required] The Amazon EC2 subnet IDs for the DB subnet group.}
+\item{SubnetIds}{[required] The Amazon EC2 subnet IDs for the subnet group.}
 
-\item{Tags}{The tags to be assigned to the DB subnet group.}
+\item{Tags}{The tags to be assigned to the subnet group.}
 }
 \description{
-Creates a new DB subnet group. DB subnet groups must contain at least
-one subnet in at least two Availability Zones in the AWS Region.
+Creates a new subnet group. subnet groups must contain at least one
+subnet in at least two Availability Zones in the AWS Region.
 }
 \section{Request syntax}{
 \preformatted{svc$create_db_subnet_group(

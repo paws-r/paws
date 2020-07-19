@@ -3,7 +3,7 @@
 \name{cloudformation_describe_stack_instance}
 \alias{cloudformation_describe_stack_instance}
 \title{Returns the stack instance that's associated with the specified stack
-set, AWS account, and region}
+set, AWS account, and Region}
 \usage{
 cloudformation_describe_stack_instance(StackSetName,
   StackInstanceAccount, StackInstanceRegion)
@@ -14,11 +14,11 @@ stack instance information for.}
 
 \item{StackInstanceAccount}{[required] The ID of an AWS account that\'s associated with this stack instance.}
 
-\item{StackInstanceRegion}{[required] The name of a region that\'s associated with this stack instance.}
+\item{StackInstanceRegion}{[required] The name of a Region that\'s associated with this stack instance.}
 }
 \description{
 Returns the stack instance that\'s associated with the specified stack
-set, AWS account, and region.
+set, AWS account, and Region.
 }
 \details{
 For a list of stack instances that are associated with a specific stack

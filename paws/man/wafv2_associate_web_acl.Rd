@@ -16,12 +16,10 @@ ACL.
 
 The ARN must be in one of the following formats:
 \itemize{
-\item For a CloudFront distribution:
-\verb{arn:aws:cloudfront::<i>account-id</i>:distribution/<i>distribution-id</i> }
 \item For an Application Load Balancer:
-\verb{arn:aws:elasticloadbalancing: <i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i> /<i>load-balancer-id</i> }
+\verb{arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i>/<i>load-balancer-id</i> }
 \item For an Amazon API Gateway stage:
-\verb{arn:aws:apigateway:<i>region</i> ::/restapis/<i>api-id</i>/stages/<i>stage-name</i> }
+\verb{arn:aws:apigateway:<i>region</i>::/restapis/<i>api-id</i>/stages/<i>stage-name</i> }
 }}
 }
 \description{
@@ -34,9 +32,10 @@ Associates a Web ACL with a regional application resource, to protect
 the resource. A regional application can be an Application Load Balancer
 (ALB) or an API Gateway stage.
 
-For AWS CloudFront, you can associate the Web ACL by providing the \code{Id}
-of the WebACL to the CloudFront API call \code{UpdateDistribution}. For
-information, see
+For AWS CloudFront, don\'t use this call. Instead, use your CloudFront
+distribution configuration. To associate a Web ACL, in the CloudFront
+call \code{UpdateDistribution}, set the web ACL ID to the Amazon Resource
+Name (ARN) of the Web ACL. For information, see
 \href{https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html}{UpdateDistribution}.
 }
 \section{Request syntax}{

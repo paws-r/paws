@@ -30,7 +30,7 @@ Returns a list of contacts.
 }
 \details{
 If \code{statusList} contains AVAILABLE, the request must include
-\code{groundstation}, \code{missionprofileArn}, and \code{satelliteArn}.
+\code{groundStation}, \code{missionprofileArn}, and \code{satelliteArn}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_contacts(
@@ -46,7 +46,7 @@ If \code{statusList} contains AVAILABLE, the request must include
     "2015-01-01"
   ),
   statusList = list(
-    "AVAILABLE"|"AWS_CANCELLED"|"CANCELLED"|"COMPLETED"|"FAILED"|"FAILED_TO_SCHEDULE"|"PASS"|"POSTPASS"|"PREPASS"|"SCHEDULED"|"SCHEDULING"
+    "AVAILABLE"|"AWS_CANCELLED"|"CANCELLED"|"CANCELLING"|"COMPLETED"|"FAILED"|"FAILED_TO_SCHEDULE"|"PASS"|"POSTPASS"|"PREPASS"|"SCHEDULED"|"SCHEDULING"
   )
 )
 }

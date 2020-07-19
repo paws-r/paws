@@ -19,15 +19,17 @@ Firewall Manager provides the following types of policies:
 \itemize{
 \item A Shield Advanced policy, which applies Shield Advanced protection
 to specified accounts and resources
-\item An AWS WAF policy, which contains a rule group and defines which
-resources are to be protected by that rule group
+\item An AWS WAF policy (type WAFV2), which defines rule groups to run
+first in the corresponding AWS WAF web ACL and rule groups to run
+last in the web ACL.
+\item An AWS WAF Classic policy (type WAF), which defines a rule group.
 \item A security group policy, which manages VPC security groups across
 your AWS organization.
 }
 
-Each policy is specific to one of the three types. If you want to
-enforce more than one policy type across accounts, you can create
-multiple policies. You can create multiple policies for each type.
+Each policy is specific to one of the types. If you want to enforce more
+than one policy type across accounts, create multiple policies. You can
+create multiple policies for each type.
 
 You must be subscribed to Shield Advanced to create a Shield Advanced
 policy. For more information about subscribing to Shield Advanced, see
@@ -40,7 +42,7 @@ policy. For more information about subscribing to Shield Advanced, see
     PolicyName = "string",
     PolicyUpdateToken = "string",
     SecurityServicePolicyData = list(
-      Type = "WAF"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT",
+      Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT",
       ManagedServiceData = "string"
     ),
     ResourceType = "string",

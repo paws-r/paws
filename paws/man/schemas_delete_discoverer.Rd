@@ -7,7 +7,7 @@
 schemas_delete_discoverer(DiscovererId)
 }
 \arguments{
-\item{DiscovererId}{[required]}
+\item{DiscovererId}{[required] The ID of the discoverer.}
 }
 \description{
 Deletes a discoverer.

@@ -19,4 +19,13 @@ Gets information about a namespace.
 }
 }
 
+\examples{
+\dontrun{
+# This example gets information about a specified namespace.
+svc$get_namespace(
+  Id = "ns-e4anhexample0004"
+)
+}
+
+}
 \keyword{internal}

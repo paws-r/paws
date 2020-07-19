@@ -575,6 +575,42 @@ NULL
   return(populate(args, shape))
 }
 
+.directconnect$list_virtual_interface_test_history_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(testId = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), bgpPeers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directconnect$list_virtual_interface_test_history_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(virtualInterfaceTestHistory = structure(list(structure(list(testId = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), bgpPeers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), testDurationInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directconnect$start_bgp_failover_test_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(virtualInterfaceId = structure(logical(0), tags = list(type = "string")), bgpPeers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), testDurationInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directconnect$start_bgp_failover_test_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(virtualInterfaceTest = structure(list(testId = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), bgpPeers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), testDurationInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directconnect$stop_bgp_failover_test_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(virtualInterfaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directconnect$stop_bgp_failover_test_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(virtualInterfaceTest = structure(list(testId = structure(logical(0), tags = list(type = "string")), virtualInterfaceId = structure(logical(0), tags = list(type = "string")), bgpPeers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), ownerAccount = structure(logical(0), tags = list(type = "string")), testDurationInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .directconnect$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))

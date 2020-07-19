@@ -58,7 +58,8 @@ NULL
 #'           IntervalUnit = "HOURS",
 #'           Times = list(
 #'             "string"
-#'           )
+#'           ),
+#'           CronExpression = "string"
 #'         ),
 #'         RetainRule = list(
 #'           Count = 123,
@@ -426,7 +427,8 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #'           IntervalUnit = "HOURS",
 #'           Times = list(
 #'             "string"
-#'           )
+#'           ),
+#'           CronExpression = "string"
 #'         ),
 #'         RetainRule = list(
 #'           Count = 123,

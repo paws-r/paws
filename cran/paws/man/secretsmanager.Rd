@@ -12,7 +12,7 @@ secretsmanager(config = list())
 \description{
 AWS Secrets Manager API Reference
 
-AWS Secrets Manager is a web service that enables you to store, manage,
+AWS Secrets Manager provides a service to enable you to store, manage,
 and retrieve, secrets.
 
 This guide provides descriptions of the Secrets Manager API. For more
@@ -23,26 +23,25 @@ information about using this service, see the \href{https://docs.aws.amazon.com/
 This version of the Secrets Manager API Reference documents the Secrets
 Manager API version 2017-10-17.
 
-As an alternative to using the API directly, you can use one of the AWS
-SDKs, which consist of libraries and sample code for various programming
-languages and platforms (such as Java, Ruby, .NET, iOS, and Android).
-The SDKs provide a convenient way to create programmatic access to AWS
-Secrets Manager. For example, the SDKs take care of cryptographically
-signing requests, managing errors, and retrying requests automatically.
-For more information about the AWS SDKs, including how to download and
-install them, see \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
+As an alternative to using the API, you can use one of the AWS SDKs,
+which consist of libraries and sample code for various programming
+languages and platforms such as Java, Ruby, .NET, iOS, and Android. The
+SDKs provide a convenient way to create programmatic access to AWS
+Secrets Manager. For example, the SDKs provide cryptographically signing
+requests, managing errors, and retrying requests automatically. For more
+information about the AWS SDKs, including downloading and installing
+them, see \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
 
-We recommend that you use the AWS SDKs to make programmatic API calls to
+We recommend you use the AWS SDKs to make programmatic API calls to
 Secrets Manager. However, you also can use the Secrets Manager HTTP
 Query API to make direct calls to the Secrets Manager web service. To
 learn more about the Secrets Manager HTTP Query API, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/query-requests.html}{Making Query Requests}
 in the \emph{AWS Secrets Manager User Guide}.
 
-Secrets Manager supports GET and POST requests for all actions. That is,
-the API doesn\'t require you to use GET for some actions and POST for
-others. However, GET requests are subject to the limitation size of a
-URL. Therefore, for operations that require larger sizes, use a POST
-request.
+Secrets Manager API supports GET and POST requests for all actions, and
+doesn\'t require you to use GET for some actions and POST for others.
+However, GET requests are subject to the limitation size of a URL.
+Therefore, for operations that require larger sizes, use a POST request.
 
 \strong{Support and Feedback for AWS Secrets Manager}
 
@@ -54,24 +53,24 @@ information about the AWS Discussion Forums, see \href{http://forums.aws.amazon.
 \strong{How examples are presented}
 
 The JSON that AWS Secrets Manager expects as your request parameters and
-that the service returns as a response to HTTP query requests are
-single, long strings without line breaks or white space formatting. The
-JSON shown in the examples is formatted with both line breaks and white
-space to improve readability. When example input parameters would also
-result in long strings that extend beyond the screen, we insert line
-breaks to enhance readability. You should always submit the input as a
-single JSON text string.
+the service returns as a response to HTTP query requests contain single,
+long strings without line breaks or white space formatting. The JSON
+shown in the examples displays the code formatted with both line breaks
+and white space to improve readability. When example input parameters
+can also cause long strings extending beyond the screen, you can insert
+line breaks to enhance readability. You should always submit the input
+as a single JSON text string.
 
 \strong{Logging API Requests}
 
 AWS Secrets Manager supports AWS CloudTrail, a service that records AWS
 API calls for your AWS account and delivers log files to an Amazon S3
 bucket. By using information that\'s collected by AWS CloudTrail, you
-can determine which requests were successfully made to Secrets Manager,
-who made the request, when it was made, and so on. For more about AWS
-Secrets Manager and its support for AWS CloudTrail, see \href{http://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail}{Logging AWS Secrets Manager Events with AWS CloudTrail}
+can determine the requests successfully made to Secrets Manager, who
+made the request, when it was made, and so on. For more about AWS
+Secrets Manager and support for AWS CloudTrail, see \href{http://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail}{Logging AWS Secrets Manager Events with AWS CloudTrail}
 in the \emph{AWS Secrets Manager User Guide}. To learn more about CloudTrail,
-including how to turn it on and find your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
+including enabling it and find your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
 }
 \section{Service syntax}{
 \preformatted{svc <- secretsmanager(
@@ -94,13 +93,13 @@ including how to turn it on and find your log files, see the \href{https://docs.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=secretsmanager_cancel_rotate_secret]{cancel_rotate_secret} \tab Disables automatic scheduled rotation and cancels the rotation of a secret if one is currently in progress \cr
+\link[=secretsmanager_cancel_rotate_secret]{cancel_rotate_secret} \tab Disables automatic scheduled rotation and cancels the rotation of a secret if currently in progress \cr
 \link[=secretsmanager_create_secret]{create_secret} \tab Creates a new secret \cr
-\link[=secretsmanager_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based permission policy that's attached to the secret \cr
+\link[=secretsmanager_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based permission policy attached to the secret \cr
 \link[=secretsmanager_delete_secret]{delete_secret} \tab Deletes an entire secret and all of its versions \cr
 \link[=secretsmanager_describe_secret]{describe_secret} \tab Retrieves the details of a secret \cr
 \link[=secretsmanager_get_random_password]{get_random_password} \tab Generates a random password of the specified complexity \cr
-\link[=secretsmanager_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document that's attached to the specified secret \cr
+\link[=secretsmanager_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the specified secret \cr
 \link[=secretsmanager_get_secret_value]{get_secret_value} \tab Retrieves the contents of the encrypted fields SecretString or SecretBinary from the specified version of a secret, whichever contains content\cr
 \link[=secretsmanager_list_secrets]{list_secrets} \tab Lists all of the secrets that are stored by Secrets Manager in the AWS account \cr
 \link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids} \tab Lists all of the versions attached to the specified secret \cr
@@ -111,7 +110,8 @@ including how to turn it on and find your log files, see the \href{https://docs.
 \link[=secretsmanager_tag_resource]{tag_resource} \tab Attaches one or more tags, each consisting of a key name and a value, to the specified secret \cr
 \link[=secretsmanager_untag_resource]{untag_resource} \tab Removes one or more tags from the specified secret \cr
 \link[=secretsmanager_update_secret]{update_secret} \tab Modifies many of the details of the specified secret \cr
-\link[=secretsmanager_update_secret_version_stage]{update_secret_version_stage} \tab Modifies the staging labels attached to a version of a secret
+\link[=secretsmanager_update_secret_version_stage]{update_secret_version_stage} \tab Modifies the staging labels attached to a version of a secret \cr
+\link[=secretsmanager_validate_resource_policy]{validate_resource_policy} \tab Validates the JSON text of the resource-based policy document attached to the specified secret
 }
 }
 

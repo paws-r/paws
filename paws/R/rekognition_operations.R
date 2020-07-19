@@ -537,6 +537,92 @@ rekognition_delete_faces <- function(CollectionId, FaceIds) {
 }
 .rekognition$operations$delete_faces <- rekognition_delete_faces
 
+#' Deletes an Amazon Rekognition Custom Labels project
+#'
+#' Deletes an Amazon Rekognition Custom Labels project. To delete a project
+#' you must first delete all models associated with the project. To delete
+#' a model, see DeleteProjectVersion.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:DeleteProject` action.
+#'
+#' @usage
+#' rekognition_delete_project(ProjectArn)
+#'
+#' @param ProjectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project that you want to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_project(
+#'   ProjectArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_delete_project
+rekognition_delete_project <- function(ProjectArn) {
+  op <- new_operation(
+    name = "DeleteProject",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$delete_project_input(ProjectArn = ProjectArn)
+  output <- .rekognition$delete_project_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$delete_project <- rekognition_delete_project
+
+#' Deletes an Amazon Rekognition Custom Labels model
+#'
+#' Deletes an Amazon Rekognition Custom Labels model.
+#' 
+#' You can\'t delete a model if it is running or if it is training. To
+#' check the status of a model, use the `Status` field returned from
+#' DescribeProjectVersions. To stop a running model call
+#' StopProjectVersion. If the model is training, wait until it finishes.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:DeleteProjectVersion` action.
+#'
+#' @usage
+#' rekognition_delete_project_version(ProjectVersionArn)
+#'
+#' @param ProjectVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the model version that you want to
+#' delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_project_version(
+#'   ProjectVersionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_delete_project_version
+rekognition_delete_project_version <- function(ProjectVersionArn) {
+  op <- new_operation(
+    name = "DeleteProjectVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$delete_project_version_input(ProjectVersionArn = ProjectVersionArn)
+  output <- .rekognition$delete_project_version_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$delete_project_version <- rekognition_delete_project_version
+
 #' Deletes the stream processor identified by Name
 #'
 #' Deletes the stream processor identified by `Name`. You assign the value
@@ -637,7 +723,10 @@ rekognition_describe_collection <- function(CollectionId) {
 #' you want to describe.
 #' @param VersionNames A list of model version names that you want to describe. You can add up
 #' to 10 model version names to the list. If you don\'t specify a value,
-#' all model descriptions are returned.
+#' all model descriptions are returned. A version name is part of a model
+#' (ProjectVersion) ARN. For example, `my-model.2020-01-21T09.10.15` is the
+#' version name in the following ARN.
+#' `arn:aws:rekognition:us-east-1:123456789012:project/getting-started/version/<i>my-model.2020-01-21T09.10.15</i>/1234567890123`.
 #' @param NextToken If the previous response was incomplete (because there is more results
 #' to retrieve), Amazon Rekognition Custom Labels returns a pagination
 #' token in the response. You can use this pagination token to retrieve the
@@ -873,9 +962,9 @@ rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResult
 #' or might detect faces with lower confidence.
 #' 
 #' You pass the input image either as base64-encoded image bytes or as a
-#' reference to an image in an Amazon S3 bucket. If you use the to call
-#' Amazon Rekognition operations, passing image bytes is not supported. The
-#' image must be either a PNG or JPEG formatted file.
+#' reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+#' call Amazon Rekognition operations, passing image bytes is not
+#' supported. The image must be either a PNG or JPEG formatted file.
 #' 
 #' This is a stateless API operation. That is, the operation does not
 #' persist any data.
@@ -1223,7 +1312,7 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
 #' Guide.
 #'
 #' @usage
-#' rekognition_detect_text(Image)
+#' rekognition_detect_text(Image, Filters)
 #'
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an Amazon S3 object. If you
 #' use the AWS CLI to call Amazon Rekognition operations, you can\'t pass
@@ -1232,6 +1321,8 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
 #' If you are using an AWS SDK to call Amazon Rekognition, you might not
 #' need to base64-encode image bytes passed using the `Bytes` field. For
 #' more information, see Images in the Amazon Rekognition developer guide.
+#' @param Filters Optional parameters that let you set the criteria that the text must
+#' meet to be included in your response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1243,6 +1334,23 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
 #'       Name = "string",
 #'       Version = "string"
 #'     )
+#'   ),
+#'   Filters = list(
+#'     WordFilter = list(
+#'       MinConfidence = 123.0,
+#'       MinBoundingBoxHeight = 123.0,
+#'       MinBoundingBoxWidth = 123.0
+#'     ),
+#'     RegionsOfInterest = list(
+#'       list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1250,14 +1358,14 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
 #' @keywords internal
 #'
 #' @rdname rekognition_detect_text
-rekognition_detect_text <- function(Image) {
+rekognition_detect_text <- function(Image, Filters = NULL) {
   op <- new_operation(
     name = "DetectText",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$detect_text_input(Image = Image)
+  input <- .rekognition$detect_text_input(Image = Image, Filters = Filters)
   output <- .rekognition$detect_text_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -1821,6 +1929,161 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 }
 .rekognition$operations$get_person_tracking <- rekognition_get_person_tracking
 
+#' Gets the segment detection results of a Amazon Rekognition Video
+#' analysis started by StartSegmentDetection
+#'
+#' Gets the segment detection results of a Amazon Rekognition Video
+#' analysis started by StartSegmentDetection.
+#' 
+#' Segment detection with Amazon Rekognition Video is an asynchronous
+#' operation. You start segment detection by calling StartSegmentDetection
+#' which returns a job identifier (`JobId`). When the segment detection
+#' operation finishes, Amazon Rekognition publishes a completion status to
+#' the Amazon Simple Notification Service topic registered in the initial
+#' call to `StartSegmentDetection`. To get the results of the segment
+#' detection operation, first check that the status value published to the
+#' Amazon SNS topic is `SUCCEEDED`. if so, call `GetSegmentDetection` and
+#' pass the job identifier (`JobId`) from the initial call of
+#' `StartSegmentDetection`.
+#' 
+#' `GetSegmentDetection` returns detected segments in an array (`Segments`)
+#' of SegmentDetection objects. `Segments` is sorted by the segment types
+#' specified in the `SegmentTypes` input parameter of
+#' `StartSegmentDetection`. Each element of the array includes the detected
+#' segment, the precentage confidence in the acuracy of the detected
+#' segment, the type of the segment, and the frame in which the segment was
+#' detected.
+#' 
+#' Use `SelectedSegmentTypes` to find out the type of segment detection
+#' requested in the call to `StartSegmentDetection`.
+#' 
+#' Use the `MaxResults` parameter to limit the number of segment detections
+#' returned. If there are more results than specified in `MaxResults`, the
+#' value of `NextToken` in the operation response contains a pagination
+#' token for getting the next set of results. To get the next page of
+#' results, call `GetSegmentDetection` and populate the `NextToken` request
+#' parameter with the token value returned from the previous call to
+#' `GetSegmentDetection`.
+#' 
+#' For more information, see Detecting Video Segments in Stored Video in
+#' the Amazon Rekognition Developer Guide.
+#'
+#' @usage
+#' rekognition_get_segment_detection(JobId, MaxResults, NextToken)
+#'
+#' @param JobId &#91;required&#93; Job identifier for the text detection operation for which you want
+#' results returned. You get the job identifer from an initial call to
+#' `StartSegmentDetection`.
+#' @param MaxResults Maximum number of results to return per paginated call. The largest
+#' value you can specify is 1000.
+#' @param NextToken If the response is truncated, Amazon Rekognition Video returns this
+#' token that you can use in the subsequent request to retrieve the next
+#' set of text.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_segment_detection(
+#'   JobId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_get_segment_detection
+rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetSegmentDetection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$get_segment_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .rekognition$get_segment_detection_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$get_segment_detection <- rekognition_get_segment_detection
+
+#' Gets the text detection results of a Amazon Rekognition Video analysis
+#' started by StartTextDetection
+#'
+#' Gets the text detection results of a Amazon Rekognition Video analysis
+#' started by StartTextDetection.
+#' 
+#' Text detection with Amazon Rekognition Video is an asynchronous
+#' operation. You start text detection by calling StartTextDetection which
+#' returns a job identifier (`JobId`) When the text detection operation
+#' finishes, Amazon Rekognition publishes a completion status to the Amazon
+#' Simple Notification Service topic registered in the initial call to
+#' `StartTextDetection`. To get the results of the text detection
+#' operation, first check that the status value published to the Amazon SNS
+#' topic is `SUCCEEDED`. if so, call `GetTextDetection` and pass the job
+#' identifier (`JobId`) from the initial call of `StartLabelDetection`.
+#' 
+#' `GetTextDetection` returns an array of detected text (`TextDetections`)
+#' sorted by the time the text was detected, up to 50 words per frame of
+#' video.
+#' 
+#' Each element of the array includes the detected text, the precentage
+#' confidence in the acuracy of the detected text, the time the text was
+#' detected, bounding box information for where the text was located, and
+#' unique identifiers for words and their lines.
+#' 
+#' Use MaxResults parameter to limit the number of text detections
+#' returned. If there are more results than specified in `MaxResults`, the
+#' value of `NextToken` in the operation response contains a pagination
+#' token for getting the next set of results. To get the next page of
+#' results, call `GetTextDetection` and populate the `NextToken` request
+#' parameter with the token value returned from the previous call to
+#' `GetTextDetection`.
+#'
+#' @usage
+#' rekognition_get_text_detection(JobId, MaxResults, NextToken)
+#'
+#' @param JobId &#91;required&#93; Job identifier for the text detection operation for which you want
+#' results returned. You get the job identifer from an initial call to
+#' `StartTextDetection`.
+#' @param MaxResults Maximum number of results to return per paginated call. The largest
+#' value you can specify is 1000.
+#' @param NextToken If the previous response was incomplete (because there are more labels
+#' to retrieve), Amazon Rekognition Video returns a pagination token in the
+#' response. You can use this pagination token to retrieve the next set of
+#' text.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_text_detection(
+#'   JobId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_get_text_detection
+rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetTextDetection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$get_text_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .rekognition$get_text_detection_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$get_text_detection <- rekognition_get_text_detection
+
 #' Detects faces in the input image and adds them to the specified
 #' collection
 #'
@@ -1854,7 +2117,7 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' For more information, see Model Versioning in the Amazon Rekognition
 #' Developer Guide.
 #' 
-#' If you provide the optional `ExternalImageID` for the input image you
+#' If you provide the optional `ExternalImageId` for the input image you
 #' provided, Amazon Rekognition associates this ID with all faces that it
 #' detects. When you call the ListFaces operation, the response returns the
 #' external ID. You can use this external image ID to create a client-side
@@ -3018,6 +3281,102 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
 }
 .rekognition$operations$start_project_version <- rekognition_start_project_version
 
+#' Starts asynchronous detection of segment detection in a stored video
+#'
+#' Starts asynchronous detection of segment detection in a stored video.
+#' 
+#' Amazon Rekognition Video can detect segments in a video stored in an
+#' Amazon S3 bucket. Use Video to specify the bucket name and the filename
+#' of the video. `StartSegmentDetection` returns a job identifier (`JobId`)
+#' which you use to get the results of the operation. When segment
+#' detection is finished, Amazon Rekognition Video publishes a completion
+#' status to the Amazon Simple Notification Service topic that you specify
+#' in `NotificationChannel`.
+#' 
+#' You can use the `Filters` (StartSegmentDetectionFilters) input parameter
+#' to specify the minimum detection confidence returned in the response.
+#' Within `Filters`, use `ShotFilter` (StartShotDetectionFilter) to filter
+#' detected shots. Use `TechnicalCueFilter`
+#' (StartTechnicalCueDetectionFilter) to filter technical cues.
+#' 
+#' To get the results of the segment detection operation, first check that
+#' the status value published to the Amazon SNS topic is `SUCCEEDED`. if
+#' so, call GetSegmentDetection and pass the job identifier (`JobId`) from
+#' the initial call to `StartSegmentDetection`.
+#' 
+#' For more information, see Detecting Video Segments in Stored Video in
+#' the Amazon Rekognition Developer Guide.
+#'
+#' @usage
+#' rekognition_start_segment_detection(Video, ClientRequestToken,
+#'   NotificationChannel, JobTag, Filters, SegmentTypes)
+#'
+#' @param Video &#91;required&#93; 
+#' @param ClientRequestToken Idempotent token used to identify the start request. If you use the same
+#' token with multiple `StartSegmentDetection` requests, the same `JobId`
+#' is returned. Use `ClientRequestToken` to prevent the same job from being
+#' accidently started more than once.
+#' @param NotificationChannel The ARN of the Amazon SNS topic to which you want Amazon Rekognition
+#' Video to publish the completion status of the segment detection
+#' operation.
+#' @param JobTag An identifier you specify that\'s returned in the completion
+#' notification that\'s published to your Amazon Simple Notification
+#' Service topic. For example, you can use `JobTag` to group related jobs
+#' and identify them in the completion notification.
+#' @param Filters Filters for technical cue or shot detection.
+#' @param SegmentTypes &#91;required&#93; An array of segment types to detect in the video. Valid values are
+#' TECHNICAL\\_CUE and SHOT.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_segment_detection(
+#'   Video = list(
+#'     S3Object = list(
+#'       Bucket = "string",
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   ClientRequestToken = "string",
+#'   NotificationChannel = list(
+#'     SNSTopicArn = "string",
+#'     RoleArn = "string"
+#'   ),
+#'   JobTag = "string",
+#'   Filters = list(
+#'     TechnicalCueFilter = list(
+#'       MinSegmentConfidence = 123.0
+#'     ),
+#'     ShotFilter = list(
+#'       MinSegmentConfidence = 123.0
+#'     )
+#'   ),
+#'   SegmentTypes = list(
+#'     "TECHNICAL_CUE"|"SHOT"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_start_segment_detection
+rekognition_start_segment_detection <- function(Video, ClientRequestToken = NULL, NotificationChannel = NULL, JobTag = NULL, Filters = NULL, SegmentTypes) {
+  op <- new_operation(
+    name = "StartSegmentDetection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$start_segment_detection_input(Video = Video, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, JobTag = JobTag, Filters = Filters, SegmentTypes = SegmentTypes)
+  output <- .rekognition$start_segment_detection_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$start_segment_detection <- rekognition_start_segment_detection
+
 #' Starts processing a stream processor
 #'
 #' Starts processing a stream processor. You create a stream processor by
@@ -3056,6 +3415,95 @@ rekognition_start_stream_processor <- function(Name) {
   return(response)
 }
 .rekognition$operations$start_stream_processor <- rekognition_start_stream_processor
+
+#' Starts asynchronous detection of text in a stored video
+#'
+#' Starts asynchronous detection of text in a stored video.
+#' 
+#' Amazon Rekognition Video can detect text in a video stored in an Amazon
+#' S3 bucket. Use Video to specify the bucket name and the filename of the
+#' video. `StartTextDetection` returns a job identifier (`JobId`) which you
+#' use to get the results of the operation. When text detection is
+#' finished, Amazon Rekognition Video publishes a completion status to the
+#' Amazon Simple Notification Service topic that you specify in
+#' `NotificationChannel`.
+#' 
+#' To get the results of the text detection operation, first check that the
+#' status value published to the Amazon SNS topic is `SUCCEEDED`. if so,
+#' call GetTextDetection and pass the job identifier (`JobId`) from the
+#' initial call to `StartTextDetection`.
+#'
+#' @usage
+#' rekognition_start_text_detection(Video, ClientRequestToken,
+#'   NotificationChannel, JobTag, Filters)
+#'
+#' @param Video &#91;required&#93; 
+#' @param ClientRequestToken Idempotent token used to identify the start request. If you use the same
+#' token with multiple `StartTextDetection` requests, the same `JobId` is
+#' returned. Use `ClientRequestToken` to prevent the same job from being
+#' accidentaly started more than once.
+#' @param NotificationChannel 
+#' @param JobTag An identifier returned in the completion status published by your Amazon
+#' Simple Notification Service topic. For example, you can use `JobTag` to
+#' group related jobs and identify them in the completion notification.
+#' @param Filters Optional parameters that let you set criteria the text must meet to be
+#' included in your response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_text_detection(
+#'   Video = list(
+#'     S3Object = list(
+#'       Bucket = "string",
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   ClientRequestToken = "string",
+#'   NotificationChannel = list(
+#'     SNSTopicArn = "string",
+#'     RoleArn = "string"
+#'   ),
+#'   JobTag = "string",
+#'   Filters = list(
+#'     WordFilter = list(
+#'       MinConfidence = 123.0,
+#'       MinBoundingBoxHeight = 123.0,
+#'       MinBoundingBoxWidth = 123.0
+#'     ),
+#'     RegionsOfInterest = list(
+#'       list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_start_text_detection
+rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, NotificationChannel = NULL, JobTag = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "StartTextDetection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$start_text_detection_input(Video = Video, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, JobTag = JobTag, Filters = Filters)
+  output <- .rekognition$start_text_detection_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$start_text_detection <- rekognition_start_text_detection
 
 #' Stops a running model
 #'

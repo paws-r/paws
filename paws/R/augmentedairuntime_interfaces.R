@@ -23,13 +23,13 @@ NULL
 
 .augmentedairuntime$describe_human_loop_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreationTimestamp = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string")), FailureCode = structure(logical(0), tags = list(type = "string")), HumanLoopStatus = structure(logical(0), tags = list(type = "string")), HumanLoopName = structure(logical(0), tags = list(type = "string")), HumanLoopArn = structure(logical(0), tags = list(type = "string")), FlowDefinitionArn = structure(logical(0), tags = list(type = "string")), HumanLoopInput = structure(list(InputContent = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HumanLoopOutput = structure(list(OutputS3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(CreationTime = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string")), FailureCode = structure(logical(0), tags = list(type = "string")), HumanLoopStatus = structure(logical(0), tags = list(type = "string")), HumanLoopName = structure(logical(0), tags = list(type = "string")), HumanLoopArn = structure(logical(0), tags = list(type = "string")), FlowDefinitionArn = structure(logical(0), tags = list(type = "string")), HumanLoopOutput = structure(list(OutputS3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .augmentedairuntime$list_human_loops_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "CreationTimeAfter", type = "timestamp")), CreationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "CreationTimeBefore", type = "timestamp")), SortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "SortOrder", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "MaxResults", type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(CreationTimeAfter = structure(logical(0), tags = list(location = "querystring", locationName = "CreationTimeAfter", type = "timestamp")), CreationTimeBefore = structure(logical(0), tags = list(location = "querystring", locationName = "CreationTimeBefore", type = "timestamp")), FlowDefinitionArn = structure(logical(0), tags = list(location = "querystring", locationName = "FlowDefinitionArn", type = "string")), SortOrder = structure(logical(0), tags = list(location = "querystring", locationName = "SortOrder", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "MaxResults", type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -47,7 +47,7 @@ NULL
 
 .augmentedairuntime$start_human_loop_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HumanLoopArn = structure(logical(0), tags = list(type = "string")), HumanLoopActivationResults = structure(list(HumanLoopActivationReason = structure(list(ConditionsMatched = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), HumanLoopActivationConditionsEvaluationResults = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(HumanLoopArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

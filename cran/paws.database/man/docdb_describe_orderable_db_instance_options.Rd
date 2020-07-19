@@ -2,19 +2,19 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_describe_orderable_db_instance_options}
 \alias{docdb_describe_orderable_db_instance_options}
-\title{Returns a list of orderable DB instance options for the specified engine}
+\title{Returns a list of orderable instance options for the specified engine}
 \usage{
 docdb_describe_orderable_db_instance_options(Engine, EngineVersion,
   DBInstanceClass, LicenseModel, Vpc, Filters, MaxRecords, Marker)
 }
 \arguments{
-\item{Engine}{[required] The name of the engine to retrieve DB instance options for.}
+\item{Engine}{[required] The name of the engine to retrieve instance options for.}
 
 \item{EngineVersion}{The engine version filter value. Specify this parameter to show only the
 available offerings that match the specified engine version.}
 
-\item{DBInstanceClass}{The DB instance class filter value. Specify this parameter to show only
-the available offerings that match the specified DB instance class.}
+\item{DBInstanceClass}{The instance class filter value. Specify this parameter to show only the
+available offerings that match the specified instance class.}
 
 \item{LicenseModel}{The license model filter value. Specify this parameter to show only the
 available offerings that match the specified license model.}
@@ -38,8 +38,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
-Returns a list of orderable DB instance options for the specified
-engine.
+Returns a list of orderable instance options for the specified engine.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_orderable_db_instance_options(

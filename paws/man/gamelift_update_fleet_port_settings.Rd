@@ -11,9 +11,9 @@ gamelift_update_fleet_port_settings(FleetId,
 \item{FleetId}{[required] A unique identifier for a fleet to update port settings for. You can use
 either the fleet ID or ARN value.}
 
-\item{InboundPermissionAuthorizations}{A collection of port settings to be added to the fleet record.}
+\item{InboundPermissionAuthorizations}{A collection of port settings to be added to the fleet resource.}
 
-\item{InboundPermissionRevocations}{A collection of port settings to be removed from the fleet record.}
+\item{InboundPermissionRevocations}{A collection of port settings to be removed from the fleet resource.}
 }
 \description{
 Updates port settings for a fleet. To update settings, specify the fleet
@@ -26,7 +26,7 @@ successful, the fleet ID for the updated fleet is returned.
 \details{
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
 
 \strong{Related operations}
 \itemize{
@@ -41,11 +41,7 @@ successful, the fleet ID for the updated fleet is returned.
 \item UpdateFleetPortSettings
 \item UpdateRuntimeConfiguration
 }
-\item Manage fleet actions:
-\itemize{
-\item StartFleetActions
-\item StopFleetActions
-}
+\item StartFleetActions or StopFleetActions
 }
 }
 \section{Request syntax}{

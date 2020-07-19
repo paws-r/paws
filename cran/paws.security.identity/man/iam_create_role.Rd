@@ -82,8 +82,8 @@ created.}
 \description{
 Creates a new role for your AWS account. For more information about
 roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{IAM Roles}.
-For information about limitations on role names and the number of roles
-you can create, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
+The number and size of IAM resources in an AWS account are limited. For
+more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

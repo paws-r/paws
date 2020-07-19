@@ -11,7 +11,7 @@ ssm_get_document(Name, VersionName, DocumentVersion, DocumentFormat)
 
 \item{VersionName}{An optional field specifying the version of the artifact associated with
 the document. For example, \"Release 12, Update 6\". This value is
-unique across all versions of a document, and cannot be changed.}
+unique across all versions of a document and can\'t be changed.}
 
 \item{DocumentVersion}{The document version for which you want information.}
 

@@ -17,7 +17,8 @@ The default value is 10.}
 previous call.}
 }
 \description{
-List the listeners for an accelerator.
+List the listeners for an accelerator. To see an AWS CLI example of
+listing the listeners for an accelerator, scroll down to \strong{Example}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_listeners(

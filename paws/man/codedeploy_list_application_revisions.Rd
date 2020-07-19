@@ -13,11 +13,11 @@ or AWS account.}
 
 \item{sortBy}{The column name to use to sort the list results:
 \itemize{
-\item registerTime: Sort by the time the revisions were registered with
+\item \code{registerTime}: Sort by the time the revisions were registered with
 AWS CodeDeploy.
-\item firstUsedTime: Sort by the time the revisions were first used in a
+\item \code{firstUsedTime}: Sort by the time the revisions were first used in a
 deployment.
-\item lastUsedTime: Sort by the time the revisions were last used in a
+\item \code{lastUsedTime}: Sort by the time the revisions were last used in a
 deployment.
 }
 
@@ -26,8 +26,8 @@ arbitrary order.}
 
 \item{sortOrder}{The order in which to sort the list results:
 \itemize{
-\item ascending: ascending order.
-\item descending: descending order.
+\item \code{ascending}: ascending order.
+\item \code{descending}: descending order.
 }
 
 If not specified, the results are sorted in ascending order.
@@ -42,13 +42,13 @@ If set to null, all of the user\'s buckets are searched.}
 revisions.}
 
 \item{deployed}{Whether to list revisions based on whether the revision is the target
-revision of an deployment group:
+revision of a deployment group:
 \itemize{
-\item include: List revisions that are target revisions of a deployment
+\item \code{include}: List revisions that are target revisions of a deployment
 group.
-\item exclude: Do not list revisions that are target revisions of a
+\item \code{exclude}: Do not list revisions that are target revisions of a
 deployment group.
-\item ignore: List all revisions.
+\item \code{ignore}: List all revisions.
 }}
 
 \item{nextToken}{An identifier returned from the previous \code{ListApplicationRevisions}

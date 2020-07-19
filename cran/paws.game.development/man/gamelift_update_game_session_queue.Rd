@@ -40,6 +40,11 @@ the queue name to be updated and provide the new settings. When updating
 destinations, provide a complete list of destinations.
 }
 \details{
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-intro.html}{Using Multi-Region Queues}
+
+\strong{Related operations}
 \itemize{
 \item CreateGameSessionQueue
 \item DescribeGameSessionQueues

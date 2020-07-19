@@ -4,9 +4,14 @@
 \alias{ec2_delete_nat_gateway}
 \title{Deletes the specified NAT gateway}
 \usage{
-ec2_delete_nat_gateway(NatGatewayId)
+ec2_delete_nat_gateway(DryRun, NatGatewayId)
 }
 \arguments{
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
 \item{NatGatewayId}{[required] The ID of the NAT gateway.}
 }
 \description{
@@ -17,6 +22,7 @@ in your route tables.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_nat_gateway(
+  DryRun = TRUE|FALSE,
   NatGatewayId = "string"
 )
 }

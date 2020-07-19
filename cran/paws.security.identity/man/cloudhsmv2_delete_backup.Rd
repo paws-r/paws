@@ -12,8 +12,8 @@ DescribeBackups operation.}
 }
 \description{
 Deletes a specified AWS CloudHSM backup. A backup can be restored up to
-7 days after the DeleteBackup request. For more information on restoring
-a backup, see RestoreBackup
+7 days after the DeleteBackup request is made. For more information on
+restoring a backup, see RestoreBackup.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_backup(

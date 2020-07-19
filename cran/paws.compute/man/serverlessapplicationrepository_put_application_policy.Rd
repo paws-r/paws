@@ -25,6 +25,9 @@ supported for this operation, see \href{https://docs.aws.amazon.com/serverlessre
       Actions = list(
         "string"
       ),
+      PrincipalOrgIDs = list(
+        "string"
+      ),
       Principals = list(
         "string"
       ),

@@ -5,7 +5,7 @@
 \title{Starts a job to import a resource to Amazon Lex}
 \usage{
 lexmodelbuildingservice_start_import(payload, resourceType,
-  mergeStrategy)
+  mergeStrategy, tags)
 }
 \arguments{
 \item{payload}{[required] A zip archive in binary format. The archive should contain one file, a
@@ -31,6 +31,9 @@ OVERWRITE\\_LATEST - The import operation proceeds even if there is a
 conflict with an existing resource. The \\$LASTEST version of the
 existing resource is overwritten with the data from the import file.
 }}
+
+\item{tags}{A list of tags to add to the imported bot. You can only add tags when
+you import a bot, you can\'t add tags to an intent or slot type.}
 }
 \description{
 Starts a job to import a resource to Amazon Lex.
@@ -39,7 +42,13 @@ Starts a job to import a resource to Amazon Lex.
 \preformatted{svc$start_import(
   payload = raw,
   resourceType = "BOT"|"INTENT"|"SLOT_TYPE",
-  mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT"
+  mergeStrategy = "OVERWRITE_LATEST"|"FAIL_ON_CONFLICT",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

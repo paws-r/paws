@@ -43,7 +43,9 @@ information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubles
 in the \emph{AWS Identity and Access Management User Guide}.
 }
 
-The key policy size limit is 32 kilobytes (32768 bytes).}
+The key policy cannot exceed 32 kilobytes (32768 bytes). For more
+information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/resource-limits.html}{Resource Quotas}
+in the \emph{AWS Key Management Service Developer Guide}.}
 
 \item{BypassPolicyLockoutSafetyCheck}{A flag to indicate whether to bypass the key policy lockout safety
 check.

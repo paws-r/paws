@@ -31,7 +31,7 @@ is \code{50} and the maximum value is \code{100}.}
 \description{
 Describes the actions scheduled for your Auto Scaling group that
 haven\'t run or that have not reached their end time. To describe the
-actions that have already run, use DescribeScalingActivities.
+actions that have already run, call the DescribeScalingActivities API.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_scheduled_actions(

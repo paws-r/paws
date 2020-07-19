@@ -5,7 +5,8 @@
 \title{Creates a new image recipe}
 \usage{
 imagebuilder_create_image_recipe(name, description, semanticVersion,
-  components, parentImage, blockDeviceMappings, tags, clientToken)
+  components, parentImage, blockDeviceMappings, tags, workingDirectory,
+  clientToken)
 }
 \arguments{
 \item{name}{[required] The name of the image recipe.}
@@ -16,17 +17,28 @@ imagebuilder_create_image_recipe(name, description, semanticVersion,
 
 \item{components}{[required] The components of the image recipe.}
 
-\item{parentImage}{[required] The parent image of the image recipe.}
+\item{parentImage}{[required] The parent image of the image recipe. The value of the string can be the
+ARN of the parent image or an AMI ID. The format for the ARN follows
+this example:
+\verb{arn:aws:imagebuilder:us-west-2:aws:image/windows-server-2016-english-full-base-x86/2019.x.x}.
+The ARN ends with \verb{/20xx.x.x}, which communicates to EC2 Image Builder
+that you want to use the latest AMI created in 20xx (year). You can
+provide the specific version that you want to use, or you can use a
+wildcard in all of the fields. If you enter an AMI ID for the string
+value, you must have access to the AMI, and the AMI must be in the same
+Region in which you are using Image Builder.}
 
 \item{blockDeviceMappings}{The block device mappings of the image recipe.}
 
 \item{tags}{The tags of the image recipe.}
 
+\item{workingDirectory}{The working directory to be used during build and test workflows.}
+
 \item{clientToken}{[required] The idempotency token used to make this request idempotent.}
 }
 \description{
-Creates a new image recipe. Image Recipes defines how images are
-configured, tested and assessed.
+Creates a new image recipe. Image recipes define how images are
+configured, tested, and assessed.
 }
 \section{Request syntax}{
 \preformatted{svc$create_image_recipe(
@@ -58,6 +70,7 @@ configured, tested and assessed.
   tags = list(
     "string"
   ),
+  workingDirectory = "string",
   clientToken = "string"
 )
 }

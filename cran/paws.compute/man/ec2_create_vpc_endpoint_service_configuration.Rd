@@ -7,7 +7,7 @@
 \usage{
 ec2_create_vpc_endpoint_service_configuration(DryRun,
   AcceptanceRequired, PrivateDnsName, NetworkLoadBalancerArns,
-  ClientToken)
+  ClientToken, TagSpecifications)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -26,6 +26,8 @@ for your service.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+
+\item{TagSpecifications}{The tags to associate with the service.}
 }
 \description{
 Creates a VPC endpoint service configuration to which service consumers
@@ -49,7 +51,18 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   NetworkLoadBalancerArns = list(
     "string"
   ),
-  ClientToken = "string"
+  ClientToken = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

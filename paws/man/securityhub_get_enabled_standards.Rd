@@ -8,12 +8,16 @@ securityhub_get_enabled_standards(StandardsSubscriptionArns, NextToken,
   MaxResults)
 }
 \arguments{
-\item{StandardsSubscriptionArns}{A list of the standards subscription ARNs for the standards to retrieve.}
+\item{StandardsSubscriptionArns}{The list of the standards subscription ARNs for the standards to
+retrieve.}
 
-\item{NextToken}{Paginates results. On your first call to the \code{GetEnabledStandards}
-operation, set the value of this parameter to \code{NULL}. For subsequent
-calls to the operation, fill \code{nextToken} in the request with the value
-of \code{nextToken} from the previous response to continue listing data.}
+\item{NextToken}{The token that is required for pagination. On your first call to the
+\code{GetEnabledStandards} operation, set the value of this parameter to
+\code{NULL}.
+
+For subsequent calls to the operation, to continue listing data, set the
+value of this parameter to the value returned from the previous
+response.}
 
 \item{MaxResults}{The maximum number of results to return in the response.}
 }

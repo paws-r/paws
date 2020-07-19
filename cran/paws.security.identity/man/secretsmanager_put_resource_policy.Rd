@@ -5,7 +5,8 @@
 \title{Attaches the contents of the specified resource-based permission policy
 to a secret}
 \usage{
-secretsmanager_put_resource_policy(SecretId, ResourcePolicy)
+secretsmanager_put_resource_policy(SecretId, ResourcePolicy,
+  BlockPublicPolicy)
 }
 \arguments{
 \item{SecretId}{[required] Specifies the secret that you want to attach the resource-based policy
@@ -22,7 +23,13 @@ six characters to the ARN) and you try to use that as a partial ARN,
 then those characters cause Secrets Manager to assume that you're
 specifying a complete ARN. This confusion can cause unexpected results.
 To avoid this situation, we recommend that you don't create secret names
-that end with a hyphen followed by six characters.}
+ending with a hyphen followed by six characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the \'friendly name\', you \emph{must} not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a \emph{ResourceNotFoundException} or an
+\emph{AccessDeniedException} error, depending on your permissions.}
 
 \item{ResourcePolicy}{[required] A JSON-formatted string that\'s constructed according to the grammar and
 syntax for an AWS resource-based policy. The policy in the string
@@ -30,6 +37,9 @@ identifies who can access or manage this secret and its versions. For
 information on how to format a JSON parameter for the various command
 line tool environments, see \href{http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}.}
+
+\item{BlockPublicPolicy}{Makes an optional API call to Zelkova to validate the Resource Policy to
+prevent broad access to your secret.}
 }
 \description{
 Attaches the contents of the specified resource-based permission policy
@@ -54,7 +64,7 @@ To run this command, you must have the following permissions:
 
 \strong{Related operations}
 \itemize{
-\item To retrieve the resource policy that\'s attached to a secret, use
+\item To retrieve the resource policy attached to a secret, use
 GetResourcePolicy.
 \item To delete the resource-based policy that\'s attached to a secret,
 use DeleteResourcePolicy.
@@ -64,7 +74,8 @@ use DeleteResourcePolicy.
 \section{Request syntax}{
 \preformatted{svc$put_resource_policy(
   SecretId = "string",
-  ResourcePolicy = "string"
+  ResourcePolicy = "string",
+  BlockPublicPolicy = TRUE|FALSE
 )
 }
 }

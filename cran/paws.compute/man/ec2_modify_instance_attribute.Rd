@@ -24,7 +24,7 @@ volume is deleted when the instance is terminated.
 
 To add instance store volumes to an Amazon EBS-backed instance, you must
 add them when you launch the instance. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM}{Updating the Block Device Mapping when Launching an Instance}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM}{Updating the block device mapping when launching an instance}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{DisableApiTermination}{If the value is \code{true}, you can\'t terminate the instance using the
@@ -59,7 +59,7 @@ shutdown from the instance (using the operating system command for
 system shutdown).}
 
 \item{InstanceType}{Changes the instance type to the specified value. For more information,
-see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance Types}.
+see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}.
 If the instance type is not valid, the error returned is
 \code{InvalidInstanceAttributeValue}.}
 
@@ -104,7 +104,7 @@ has multiple ENIs, we recommend that you use the
 ModifyNetworkInterfaceAttribute action.
 
 To modify some attributes, the instance must be stopped. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html}{Modifying Attributes of a Stopped Instance}
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html}{Modifying attributes of a stopped instance}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

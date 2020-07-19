@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_list_subscribed_rule_groups}
 \alias{wafregional_list_subscribed_rule_groups}
-\title{Returns an array of RuleGroup objects that you are subscribed to}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 wafregional_list_subscribed_rule_groups(NextMarker, Limit)
 }
@@ -21,6 +21,16 @@ specify for \code{Limit}, the response includes a \code{NextMarker} value that y
 can use to get another batch of objects.}
 }
 \description{
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
+}
+\details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns an array of RuleGroup objects that you are subscribed to.
 }
 \section{Request syntax}{

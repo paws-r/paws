@@ -2,8 +2,8 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_list_room_memberships}
 \alias{chime_list_room_memberships}
-\title{Lists the membership details for the specified room, such as the
-members' IDs, email addresses, and names}
+\title{Lists the membership details for the specified room in an Amazon Chime
+Enterprise account, such as the members' IDs, email addresses, and names}
 \usage{
 chime_list_room_memberships(AccountId, RoomId, MaxResults, NextToken)
 }
@@ -17,8 +17,9 @@ chime_list_room_memberships(AccountId, RoomId, MaxResults, NextToken)
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
 \description{
-Lists the membership details for the specified room, such as the
-members\' IDs, email addresses, and names.
+Lists the membership details for the specified room in an Amazon Chime
+Enterprise account, such as the members\' IDs, email addresses, and
+names.
 }
 \section{Request syntax}{
 \preformatted{svc$list_room_memberships(

@@ -6,7 +6,7 @@
 \usage{
 appsync_create_graphql_api(name, logConfig, authenticationType,
   userPoolConfig, openIDConnectConfig, tags,
-  additionalAuthenticationProviders)
+  additionalAuthenticationProviders, xrayEnabled)
 }
 \arguments{
 \item{name}{[required] A user-supplied name for the \code{GraphqlApi}.}
@@ -23,6 +23,8 @@ pools.}
 \item{tags}{A \code{TagMap} object.}
 
 \item{additionalAuthenticationProviders}{A list of additional authentication providers for the \code{GraphqlApi} API.}
+
+\item{xrayEnabled}{A flag indicating whether to enable X-Ray tracing for the \code{GraphqlApi}.}
 }
 \description{
 Creates a \code{GraphqlApi} object.
@@ -66,7 +68,8 @@ Creates a \code{GraphqlApi} object.
         appIdClientRegex = "string"
       )
     )
-  )
+  ),
+  xrayEnabled = TRUE|FALSE
 )
 }
 }

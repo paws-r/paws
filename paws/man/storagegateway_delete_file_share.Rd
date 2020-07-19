@@ -9,11 +9,13 @@ storagegateway_delete_file_share(FileShareARN, ForceDelete)
 \arguments{
 \item{FileShareARN}{[required] The Amazon Resource Name (ARN) of the file share to be deleted.}
 
-\item{ForceDelete}{If this value is set to true, the operation deletes a file share
+\item{ForceDelete}{If this value is set to \code{true}, the operation deletes a file share
 immediately and aborts all data uploads to AWS. Otherwise, the file
 share is not deleted until all data is uploaded to AWS. This process
 aborts the data upload process, and the file share enters the
-FORCE\\_DELETING status.}
+\code{FORCE_DELETING} status.
+
+Valid Values: \code{true} \\| \code{false}}
 }
 \description{
 Deletes a file share from a file gateway. This operation is only

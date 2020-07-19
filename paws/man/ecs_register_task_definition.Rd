@@ -22,8 +22,11 @@ granted the permissions that are specified in this role. For more
 information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html}{IAM Roles for Tasks}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
-\item{executionRoleArn}{The Amazon Resource Name (ARN) of the task execution role that the
-Amazon ECS container agent and the Docker daemon can assume.}
+\item{executionRoleArn}{The Amazon Resource Name (ARN) of the task execution role that grants
+the Amazon ECS container agent permission to make AWS API calls on your
+behalf. The task execution IAM role is required depending on the
+requirements of your task. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html}{Amazon ECS task execution IAM role}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{networkMode}{The Docker networking mode to use for the containers in the task. The
 valid values are \code{none}, \code{bridge}, \code{awsvpc}, and \code{host}. The default
@@ -274,6 +277,12 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
           value = "string"
         )
       ),
+      environmentFiles = list(
+        list(
+          value = "string",
+          type = "s3"
+        )
+      ),
       mountPoints = list(
         list(
           sourceVolume = "string",
@@ -422,6 +431,16 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
         ),
         labels = list(
           "string"
+        )
+      ),
+      efsVolumeConfiguration = list(
+        fileSystemId = "string",
+        rootDirectory = "string",
+        transitEncryption = "ENABLED"|"DISABLED",
+        transitEncryptionPort = 123,
+        authorizationConfig = list(
+          accessPointId = "string",
+          iam = "ENABLED"|"DISABLED"
         )
       )
     )

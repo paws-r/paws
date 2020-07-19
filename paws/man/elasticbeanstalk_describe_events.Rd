@@ -25,7 +25,9 @@ to those associated with this environment.}
 \item{EnvironmentName}{If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to those associated with this environment.}
 
-\item{PlatformArn}{The ARN of the version of the custom platform.}
+\item{PlatformArn}{The ARN of a custom platform version. If specified, AWS Elastic
+Beanstalk restricts the returned descriptions to those associated with
+this custom platform version.}
 
 \item{RequestId}{If specified, AWS Elastic Beanstalk restricts the described events to
 include only those associated with this request ID.}

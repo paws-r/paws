@@ -3,14 +3,14 @@
 \name{secretsmanager_cancel_rotate_secret}
 \alias{secretsmanager_cancel_rotate_secret}
 \title{Disables automatic scheduled rotation and cancels the rotation of a
-secret if one is currently in progress}
+secret if currently in progress}
 \usage{
 secretsmanager_cancel_rotate_secret(SecretId)
 }
 \arguments{
-\item{SecretId}{[required] Specifies the secret for which you want to cancel a rotation request.
-You can specify either the Amazon Resource Name (ARN) or the friendly
-name of the secret.
+\item{SecretId}{[required] Specifies the secret to cancel a rotation request. You can specify
+either the Amazon Resource Name (ARN) or the friendly name of the
+secret.
 
 If you specify an ARN, we generally recommend that you specify a
 complete ARN. You can specify a partial ARN too---for example, if you
@@ -23,35 +23,40 @@ six characters to the ARN) and you try to use that as a partial ARN,
 then those characters cause Secrets Manager to assume that you're
 specifying a complete ARN. This confusion can cause unexpected results.
 To avoid this situation, we recommend that you don't create secret names
-that end with a hyphen followed by six characters.}
+ending with a hyphen followed by six characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the \'friendly name\', you \emph{must} not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a \emph{ResourceNotFoundException} or an
+\emph{AccessDeniedException} error, depending on your permissions.}
 }
 \description{
 Disables automatic scheduled rotation and cancels the rotation of a
-secret if one is currently in progress.
+secret if currently in progress.
 }
 \details{
 To re-enable scheduled rotation, call RotateSecret with
-\code{AutomaticallyRotateAfterDays} set to a value greater than 0. This will
-immediately rotate your secret and then enable the automatic schedule.
+\code{AutomaticallyRotateAfterDays} set to a value greater than 0. This
+immediately rotates your secret and then enables the automatic schedule.
 
-If you cancel a rotation that is in progress, it can leave the
-\code{VersionStage} labels in an unexpected state. Depending on what step of
-the rotation was in progress, you might need to remove the staging label
+If you cancel a rotation while in progress, it can leave the
+\code{VersionStage} labels in an unexpected state. Depending on the step of
+the rotation in progress, you might need to remove the staging label
 \code{AWSPENDING} from the partially created version, specified by the
 \code{VersionId} response value. You should also evaluate the partially
 rotated new version to see if it should be deleted, which you can do by
-removing all staging labels from the new version\'s \code{VersionStage}
-field.
+removing all staging labels from the new version \code{VersionStage} field.
 
 To successfully start a rotation, the staging label \code{AWSPENDING} must be
 in one of the following states:
 \itemize{
-\item Not be attached to any version at all
+\item Not attached to any version at all
 \item Attached to the same version as the staging label \code{AWSCURRENT}
 }
 
-If the staging label \code{AWSPENDING} is attached to a different version
-than the version with \code{AWSCURRENT} then the attempt to rotate fails.
+If the staging label \code{AWSPENDING} attached to a different version than
+the version with \code{AWSCURRENT} then the attempt to rotate fails.
 
 \strong{Minimum permissions}
 

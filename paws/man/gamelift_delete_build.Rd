@@ -11,17 +11,17 @@ gamelift_delete_build(BuildId)
 ID or ARN value.}
 }
 \description{
-Deletes a build. This action permanently deletes the build record and
-any uploaded build files.
+Deletes a build. This action permanently deletes the build resource and
+any uploaded build files. Deleting a build does not affect the status of
+any active fleets using the build, but you can no longer create new
+fleets with the deleted build.
 }
 \details{
-To delete a build, specify its ID. Deleting a build does not affect the
-status of any active fleets using the build, but you can no longer
-create new fleets with the deleted build.
+To delete a build, specify the build ID.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html}{Working with Builds}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html}{Upload a Custom Server Build}
 
 \strong{Related operations}
 \itemize{

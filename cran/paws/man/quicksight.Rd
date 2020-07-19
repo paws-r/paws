@@ -49,6 +49,8 @@ Amazon QuickSight.
 \link[=quicksight_create_ingestion]{create_ingestion} \tab Creates and starts a new SPICE ingestion on a dataset Any ingestions operating on tagged datasets inherit the same tags automatically for use in access control \cr
 \link[=quicksight_create_template]{create_template} \tab Creates a template from an existing QuickSight analysis or template \cr
 \link[=quicksight_create_template_alias]{create_template_alias} \tab Creates a template alias for a template \cr
+\link[=quicksight_create_theme]{create_theme} \tab Creates a theme \cr
+\link[=quicksight_create_theme_alias]{create_theme_alias} \tab Creates a theme alias for a theme \cr
 \link[=quicksight_delete_dashboard]{delete_dashboard} \tab Deletes a dashboard \cr
 \link[=quicksight_delete_data_set]{delete_data_set} \tab Deletes a dataset \cr
 \link[=quicksight_delete_data_source]{delete_data_source} \tab Deletes the data source permanently \cr
@@ -57,6 +59,8 @@ Amazon QuickSight.
 \link[=quicksight_delete_iam_policy_assignment]{delete_iam_policy_assignment} \tab Deletes an existing IAM policy assignment \cr
 \link[=quicksight_delete_template]{delete_template} \tab Deletes a template \cr
 \link[=quicksight_delete_template_alias]{delete_template_alias} \tab Deletes the item that the specified template alias points to \cr
+\link[=quicksight_delete_theme]{delete_theme} \tab Deletes a theme \cr
+\link[=quicksight_delete_theme_alias]{delete_theme_alias} \tab Deletes the version of the theme that the specified theme alias points to \cr
 \link[=quicksight_delete_user]{delete_user} \tab Deletes the Amazon QuickSight user that is associated with the identity of the AWS Identity and Access Management (IAM) user or role that's making the call \cr
 \link[=quicksight_delete_user_by_principal_id]{delete_user_by_principal_id} \tab Deletes a user identified by its principal ID \cr
 \link[=quicksight_describe_dashboard]{describe_dashboard} \tab Provides a summary for a dashboard \cr
@@ -71,8 +75,11 @@ Amazon QuickSight.
 \link[=quicksight_describe_template]{describe_template} \tab Describes a template's metadata \cr
 \link[=quicksight_describe_template_alias]{describe_template_alias} \tab Describes the template alias for a template \cr
 \link[=quicksight_describe_template_permissions]{describe_template_permissions} \tab Describes read and write permissions on a template \cr
+\link[=quicksight_describe_theme]{describe_theme} \tab Describes a theme \cr
+\link[=quicksight_describe_theme_alias]{describe_theme_alias} \tab Describes the alias for a theme \cr
+\link[=quicksight_describe_theme_permissions]{describe_theme_permissions} \tab Describes the read and write permissions for a theme \cr
 \link[=quicksight_describe_user]{describe_user} \tab Returns information about a user, given the user name \cr
-\link[=quicksight_get_dashboard_embed_url]{get_dashboard_embed_url} \tab Generates a server-side embeddable URL and authorization code \cr
+\link[=quicksight_get_dashboard_embed_url]{get_dashboard_embed_url} \tab Generates a URL and authorization code that you can embed in your web server code \cr
 \link[=quicksight_list_dashboards]{list_dashboards} \tab Lists dashboards in an AWS account \cr
 \link[=quicksight_list_dashboard_versions]{list_dashboard_versions} \tab Lists all the versions of the dashboards in the QuickSight subscription \cr
 \link[=quicksight_list_data_sets]{list_data_sets} \tab Lists all of the datasets belonging to the current AWS account in an AWS Region \cr
@@ -86,9 +93,13 @@ Amazon QuickSight.
 \link[=quicksight_list_template_aliases]{list_template_aliases} \tab Lists all the aliases of a template \cr
 \link[=quicksight_list_templates]{list_templates} \tab Lists all the templates in the current Amazon QuickSight account \cr
 \link[=quicksight_list_template_versions]{list_template_versions} \tab Lists all the versions of the templates in the current Amazon QuickSight account \cr
+\link[=quicksight_list_theme_aliases]{list_theme_aliases} \tab Lists all the aliases of a theme \cr
+\link[=quicksight_list_themes]{list_themes} \tab Lists all the themes in the current AWS account \cr
+\link[=quicksight_list_theme_versions]{list_theme_versions} \tab Lists all the versions of the themes in the current AWS account \cr
 \link[=quicksight_list_user_groups]{list_user_groups} \tab Lists the Amazon QuickSight groups that an Amazon QuickSight user is a member of \cr
 \link[=quicksight_list_users]{list_users} \tab Returns a list of all of the Amazon QuickSight users belonging to this account \cr
 \link[=quicksight_register_user]{register_user} \tab Creates an Amazon QuickSight user, whose identity is associated with the AWS Identity and Access Management (IAM) identity or role specified in the request \cr
+\link[=quicksight_search_dashboards]{search_dashboards} \tab Searchs for dashboards that belong to a user \cr
 \link[=quicksight_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified QuickSight resource \cr
 \link[=quicksight_untag_resource]{untag_resource} \tab Removes a tag or tags from a resource \cr
 \link[=quicksight_update_dashboard]{update_dashboard} \tab Updates a dashboard in an AWS account \cr
@@ -103,6 +114,9 @@ Amazon QuickSight.
 \link[=quicksight_update_template]{update_template} \tab Updates a template from an existing Amazon QuickSight analysis or another template \cr
 \link[=quicksight_update_template_alias]{update_template_alias} \tab Updates the template alias of a template \cr
 \link[=quicksight_update_template_permissions]{update_template_permissions} \tab Updates the resource permissions for a template \cr
+\link[=quicksight_update_theme]{update_theme} \tab Updates a theme \cr
+\link[=quicksight_update_theme_alias]{update_theme_alias} \tab Updates an alias of a theme \cr
+\link[=quicksight_update_theme_permissions]{update_theme_permissions} \tab Updates the resource permissions for a theme \cr
 \link[=quicksight_update_user]{update_user} \tab Updates an Amazon QuickSight user
 }
 }

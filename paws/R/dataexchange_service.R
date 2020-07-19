@@ -98,7 +98,7 @@ dataexchange <- function(config = list()) {
 
 .dataexchange$metadata <- list(
   service_name = "dataexchange",
-  endpoints = list("*" = list(endpoint = "dataexchange.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dataexchange.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "dataexchange.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dataexchange.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "dataexchange.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "dataexchange.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "DataExchange",
   api_version = "2017-07-25",
   signing_name = "dataexchange",

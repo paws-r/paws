@@ -95,7 +95,7 @@ mturk <- function(config = list()) {
 
 .mturk$metadata <- list(
   service_name = "mturk-requester",
-  endpoints = list("*" = list(endpoint = "mturk-requester.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mturk-requester.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "mturk-requester.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mturk-requester.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "mturk-requester.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "mturk-requester.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "MTurk",
   api_version = "2017-01-17",
   signing_name = NULL,

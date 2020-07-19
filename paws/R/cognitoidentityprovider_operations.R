@@ -2203,7 +2203,60 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param ProviderName &#91;required&#93; The identity provider name.
 #' @param ProviderType &#91;required&#93; The identity provider type.
-#' @param ProviderDetails &#91;required&#93; The identity provider details, such as `MetadataURL` and `MetadataFile`.
+#' @param ProviderDetails &#91;required&#93; The identity provider details. The following list describes the provider
+#' detail keys for each identity provider type.
+#' 
+#' -   For Google, Facebook and Login with Amazon:
+#' 
+#'     -   client\\_id
+#' 
+#'     -   client\\_secret
+#' 
+#'     -   authorize\\_scopes
+#' 
+#' -   For Sign in with Apple:
+#' 
+#'     -   client\\_id
+#' 
+#'     -   team\\_id
+#' 
+#'     -   key\\_id
+#' 
+#'     -   private\\_key
+#' 
+#'     -   authorize\\_scopes
+#' 
+#' -   For OIDC providers:
+#' 
+#'     -   client\\_id
+#' 
+#'     -   client\\_secret
+#' 
+#'     -   attributes\\_request\\_method
+#' 
+#'     -   oidc\\_issuer
+#' 
+#'     -   authorize\\_scopes
+#' 
+#'     -   authorize\\_url *if not available from discovery URL specified by
+#'         oidc\\_issuer key*
+#' 
+#'     -   token\\_url *if not available from discovery URL specified by
+#'         oidc\\_issuer key*
+#' 
+#'     -   attributes\\_url *if not available from discovery URL specified
+#'         by oidc\\_issuer key*
+#' 
+#'     -   jwks\\_uri *if not available from discovery URL specified by
+#'         oidc\\_issuer key*
+#' 
+#'     -   authorize\\_scopes
+#' 
+#' -   For SAML providers:
+#' 
+#'     -   MetadataFile OR MetadataURL
+#' 
+#'     -   IDPSignout *optional*
 #' @param AttributeMapping A mapping of identity provider attributes to standard and custom user
 #' pool attributes.
 #' @param IdpIdentifiers A list of identity provider identifiers.
@@ -2353,7 +2406,8 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'   EmailVerificationSubject, VerificationMessageTemplate,
 #'   SmsAuthenticationMessage, MfaConfiguration, DeviceConfiguration,
 #'   EmailConfiguration, SmsConfiguration, UserPoolTags,
-#'   AdminCreateUserConfig, Schema, UserPoolAddOns, AccountRecoverySetting)
+#'   AdminCreateUserConfig, Schema, UserPoolAddOns, UsernameConfiguration,
+#'   AccountRecoverySetting)
 #'
 #' @param PoolName &#91;required&#93; A string used to name the user pool.
 #' @param Policies The policies associated with the new user pool.
@@ -2395,6 +2449,11 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' can be standard or custom attributes.
 #' @param UserPoolAddOns Used to enable advanced security risk detection. Set the key
 #' `AdvancedSecurityMode` to the value \"AUDIT\".
+#' @param UsernameConfiguration You can choose to set case sensitivity on the username input for the
+#' selected sign-in option. For example, when this is set to `False`, users
+#' will be able to sign in using either \"username\" or \"Username\". This
+#' configuration is immutable once it has been set. For more information,
+#' see .
 #' @param AccountRecoverySetting Use this setting to define which verified available method a user can
 #' use to recover their password when they call `ForgotPassword`. It allows
 #' you to define a preferred method when a user has more than one method
@@ -2502,6 +2561,9 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'   UserPoolAddOns = list(
 #'     AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
 #'   ),
+#'   UsernameConfiguration = list(
+#'     CaseSensitive = TRUE|FALSE
+#'   ),
 #'   AccountRecoverySetting = list(
 #'     RecoveryMechanisms = list(
 #'       list(
@@ -2516,14 +2578,14 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_create_user_pool
-cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, LambdaConfig = NULL, AutoVerifiedAttributes = NULL, AliasAttributes = NULL, UsernameAttributes = NULL, SmsVerificationMessage = NULL, EmailVerificationMessage = NULL, EmailVerificationSubject = NULL, VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL, MfaConfiguration = NULL, DeviceConfiguration = NULL, EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL, AdminCreateUserConfig = NULL, Schema = NULL, UserPoolAddOns = NULL, AccountRecoverySetting = NULL) {
+cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, LambdaConfig = NULL, AutoVerifiedAttributes = NULL, AliasAttributes = NULL, UsernameAttributes = NULL, SmsVerificationMessage = NULL, EmailVerificationMessage = NULL, EmailVerificationSubject = NULL, VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL, MfaConfiguration = NULL, DeviceConfiguration = NULL, EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL, AdminCreateUserConfig = NULL, Schema = NULL, UserPoolAddOns = NULL, UsernameConfiguration = NULL, AccountRecoverySetting = NULL) {
   op <- new_operation(
     name = "CreateUserPool",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cognitoidentityprovider$create_user_pool_input(PoolName = PoolName, Policies = Policies, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, AliasAttributes = AliasAttributes, UsernameAttributes = UsernameAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, MfaConfiguration = MfaConfiguration, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, Schema = Schema, UserPoolAddOns = UserPoolAddOns, AccountRecoverySetting = AccountRecoverySetting)
+  input <- .cognitoidentityprovider$create_user_pool_input(PoolName = PoolName, Policies = Policies, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, AliasAttributes = AliasAttributes, UsernameAttributes = UsernameAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, MfaConfiguration = MfaConfiguration, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, Schema = Schema, UserPoolAddOns = UserPoolAddOns, UsernameConfiguration = UsernameConfiguration, AccountRecoverySetting = AccountRecoverySetting)
   output <- .cognitoidentityprovider$create_user_pool_output()
   config <- get_config()
   svc <- .cognitoidentityprovider$service(config)
@@ -2624,19 +2686,30 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' testing purposes only.
 #' 
 #' App callback URLs such as myapp://example are also supported.
-#' @param AllowedOAuthFlows Set to `code` to initiate a code grant flow, which provides an
+#' @param AllowedOAuthFlows The allowed OAuth flows.
+#' 
+#' Set to `code` to initiate a code grant flow, which provides an
 #' authorization code as the response. This code can be exchanged for
 #' access tokens with the token endpoint.
 #' 
-#' Set to `token` to specify that the client should get the access token
+#' Set to `implicit` to specify that the client should get the access token
 #' (and, optionally, ID token, based on scopes) directly.
-#' @param AllowedOAuthScopes A list of allowed `OAuth` scopes. Currently supported values are
-#' `"phone"`, `"email"`, `"openid"`, and `"Cognito"`. In addition to these
-#' values, custom scopes created in Resource Servers are also supported.
-#' @param AllowedOAuthFlowsUserPoolClient Set to `True` if the client is allowed to follow the OAuth protocol when
+#' 
+#' Set to `client_credentials` to specify that the client should get the
+#' access token (and, optionally, ID token, based on scopes) from the token
+#' endpoint using a combination of client and client\\_secret.
+#' @param AllowedOAuthScopes The allowed OAuth scopes. Possible values provided by OAuth are:
+#' `phone`, `email`, `openid`, and `profile`. Possible values provided by
+#' AWS are: `aws.cognito.signin.user.admin`. Custom scopes created in
+#' Resource Servers are also supported.
+#' @param AllowedOAuthFlowsUserPoolClient Set to true if the client is allowed to follow the OAuth protocol when
 #' interacting with Cognito user pools.
 #' @param AnalyticsConfiguration The Amazon Pinpoint analytics configuration for collecting metrics for
 #' this user pool.
+#' 
+#' Cognito User Pools only supports sending events to Amazon Pinpoint
+#' projects in the US East (N. Virginia) us-east-1 Region, regardless of
+#' the region in which the user pool resides.
 #' @param PreventUserExistenceErrors Use this setting to choose which errors and responses are returned by
 #' Cognito APIs during authentication, account confirmation, and password
 #' recovery when the user does not exist in the user pool. When set to
@@ -2672,7 +2745,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' -   ResendConfirmationCode
 #' 
-#' After January 1st 2020, the value of `PreventUserExistenceErrors` will
+#' After February 15th 2020, the value of `PreventUserExistenceErrors` will
 #' default to `ENABLED` for newly created user pool clients if no value is
 #' provided.
 #'
@@ -3413,12 +3486,13 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #'
 #' Calling this API causes a message to be sent to the end user with a
 #' confirmation code that is required to change the user\'s password. For
-#' the `Username` parameter, you can use the username or user alias. If a
-#' verified phone number exists for the user, the confirmation code is sent
-#' to the phone number. Otherwise, if a verified email exists, the
-#' confirmation code is sent to the email. If neither a verified phone
-#' number nor a verified email exists, `InvalidParameterException` is
-#' thrown. To use the confirmation code for resetting the password, call .
+#' the `Username` parameter, you can use the username or user alias. The
+#' method used to send the confirmation code is sent according to the
+#' specified AccountRecoverySetting. For more information, see Recovering
+#' User Accounts in the *Amazon Cognito Developer Guide*. If neither a
+#' verified phone number nor a verified email exists, an
+#' `InvalidParameterException` is thrown. To use the confirmation code for
+#' resetting the password, call .
 #'
 #' @usage
 #' cognitoidentityprovider_forgot_password(ClientId, SecretHash,
@@ -5958,16 +6032,30 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' testing purposes only.
 #' 
 #' App callback URLs such as myapp://example are also supported.
-#' @param AllowedOAuthFlows Set to `code` to initiate a code grant flow, which provides an
+#' @param AllowedOAuthFlows The allowed OAuth flows.
+#' 
+#' Set to `code` to initiate a code grant flow, which provides an
 #' authorization code as the response. This code can be exchanged for
 #' access tokens with the token endpoint.
-#' @param AllowedOAuthScopes A list of allowed `OAuth` scopes. Currently supported values are
-#' `"phone"`, `"email"`, `"openid"`, and `"Cognito"`. In addition to these
-#' values, custom scopes created in Resource Servers are also supported.
-#' @param AllowedOAuthFlowsUserPoolClient Set to TRUE if the client is allowed to follow the OAuth protocol when
+#' 
+#' Set to `implicit` to specify that the client should get the access token
+#' (and, optionally, ID token, based on scopes) directly.
+#' 
+#' Set to `client_credentials` to specify that the client should get the
+#' access token (and, optionally, ID token, based on scopes) from the token
+#' endpoint using a combination of client and client\\_secret.
+#' @param AllowedOAuthScopes The allowed OAuth scopes. Possible values provided by OAuth are:
+#' `phone`, `email`, `openid`, and `profile`. Possible values provided by
+#' AWS are: `aws.cognito.signin.user.admin`. Custom scopes created in
+#' Resource Servers are also supported.
+#' @param AllowedOAuthFlowsUserPoolClient Set to true if the client is allowed to follow the OAuth protocol when
 #' interacting with Cognito user pools.
 #' @param AnalyticsConfiguration The Amazon Pinpoint analytics configuration for collecting metrics for
 #' this user pool.
+#' 
+#' Cognito User Pools only supports sending events to Amazon Pinpoint
+#' projects in the US East (N. Virginia) us-east-1 Region, regardless of
+#' the region in which the user pool resides.
 #' @param PreventUserExistenceErrors Use this setting to choose which errors and responses are returned by
 #' Cognito APIs during authentication, account confirmation, and password
 #' recovery when the user does not exist in the user pool. When set to
@@ -6003,7 +6091,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' -   ResendConfirmationCode
 #' 
-#' After January 1st 2020, the value of `PreventUserExistenceErrors` will
+#' After February 15th 2020, the value of `PreventUserExistenceErrors` will
 #' default to `ENABLED` for newly created user pool clients if no value is
 #' provided.
 #'

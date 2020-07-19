@@ -13,7 +13,7 @@ operation to return a list of gateway volumes.}
 \item{SnapshotDescription}{[required] Textual description of the snapshot that appears in the Amazon EC2
 console, Elastic Block Store snapshots panel in the \strong{Description}
 field, and in the AWS Storage Gateway snapshot \strong{Details} pane,
-\strong{Description} field}
+\strong{Description} field.}
 
 \item{Tags}{A list of up to 50 tags that can be assigned to a snapshot. Each tag is
 a key-value pair.
@@ -28,12 +28,12 @@ Initiates a snapshot of a volume.
 }
 \details{
 AWS Storage Gateway provides the ability to back up point-in-time
-snapshots of your data to Amazon Simple Storage (S3) for durable
+snapshots of your data to Amazon Simple Storage (Amazon S3) for durable
 off-site recovery, as well as import the data to an Amazon Elastic Block
 Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can take
 snapshots of your gateway volume on a scheduled or ad hoc basis. This
 API enables you to take ad-hoc snapshot. For more information, see
-\href{https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot}{Editing a Snapshot Schedule}.
+\href{https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot}{Editing a snapshot schedule}.
 
 In the CreateSnapshot request you identify the volume by providing its
 Amazon Resource Name (ARN). You must also provide description for the
@@ -45,7 +45,11 @@ when you want to create a volume from a snapshot. This operation is only
 supported in stored and cached volume gateway type.
 
 To list or delete a snapshot, you must use the Amazon EC2 API. For more
-information, see DescribeSnapshots or DeleteSnapshot in the \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html}{EC2 API reference}.
+information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html}{DescribeSnapshots}
+or
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSnapshot.html}{DeleteSnapshot}
+in the \emph{Amazon Elastic Compute Cloud API Reference}.
 
 Volume and snapshot IDs are changing to a longer length ID format. For
 more information, see the important note on the

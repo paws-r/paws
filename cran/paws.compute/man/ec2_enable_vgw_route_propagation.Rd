@@ -5,7 +5,7 @@
 \title{Enables a virtual private gateway (VGW) to propagate routes to the
 specified route table of a VPC}
 \usage{
-ec2_enable_vgw_route_propagation(GatewayId, RouteTableId)
+ec2_enable_vgw_route_propagation(GatewayId, RouteTableId, DryRun)
 }
 \arguments{
 \item{GatewayId}{[required] The ID of the virtual private gateway that is attached to a VPC. The
@@ -14,6 +14,11 @@ routing tables are associated with.}
 
 \item{RouteTableId}{[required] The ID of the route table. The routing table must be associated with the
 same VPC that the virtual private gateway is attached to.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Enables a virtual private gateway (VGW) to propagate routes to the
@@ -22,7 +27,8 @@ specified route table of a VPC.
 \section{Request syntax}{
 \preformatted{svc$enable_vgw_route_propagation(
   GatewayId = "string",
-  RouteTableId = "string"
+  RouteTableId = "string",
+  DryRun = TRUE|FALSE
 )
 }
 }

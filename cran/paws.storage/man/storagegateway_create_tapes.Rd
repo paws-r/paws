@@ -14,7 +14,7 @@ return a list of gateways for your account and AWS Region.}
 
 \item{TapeSizeInBytes}{[required] The size, in bytes, of the virtual tapes that you want to create.
 
-The size must be aligned by gigabyte (1024\emph{1024}1024 byte).}
+The size must be aligned by gigabyte (1024\emph{1024}1024 bytes).}
 
 \item{ClientToken}{[required] A unique identifier that you use to retry a request. If you retry a
 request, use the same \code{ClientToken} you specified in the initial
@@ -30,20 +30,23 @@ creating. This prefix makes the barcode unique.
 The prefix must be 1 to 4 characters in length and must be one of the
 uppercase letters from A to Z.}
 
-\item{KMSEncrypted}{True to use Amazon S3 server side encryption with your own AWS KMS key,
-or false to use a key managed by Amazon S3. Optional.}
+\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own AWS
+KMS key, or \code{false} to use a key managed by Amazon S3. Optional.
 
-\item{KMSKey}{The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3
-server side encryption. This value can only be set when KMSEncrypted is
-true. Optional.}
+Valid Values: \code{true} \\| \code{false}}
+
+\item{KMSKey}{The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
+used for Amazon S3 server-side encryption. Storage Gateway does not
+support asymmetric CMKs. This value can only be set when \code{KMSEncrypted}
+is \code{true}. Optional.}
 
 \item{PoolId}{The ID of the pool that you want to add your tape to for archiving. The
 tape in this pool is archived in the S3 storage class that is associated
 with the pool. When you use your backup application to eject the tape,
-the tape is archived directly into the storage class (Glacier or Deep
-Archive) that corresponds to the pool.
+the tape is archived directly into the storage class (S3 Glacier or S3
+Glacier Deep Archive) that corresponds to the pool.
 
-Valid values: \"GLACIER\", \"DEEP\\_ARCHIVE\"}
+Valid Values: \code{GLACIER} \\| \code{DEEP_ARCHIVE}}
 
 \item{Tags}{A list of up to 50 tags that can be assigned to a virtual tape. Each tag
 is a key-value pair.

@@ -5,12 +5,12 @@
 \title{Creates a new image}
 \usage{
 imagebuilder_create_image(imageRecipeArn, distributionConfigurationArn,
-  infrastructureConfigurationArn, imageTestsConfiguration, tags,
-  clientToken)
+  infrastructureConfigurationArn, imageTestsConfiguration,
+  enhancedImageMetadataEnabled, tags, clientToken)
 }
 \arguments{
 \item{imageRecipeArn}{[required] The Amazon Resource Name (ARN) of the image recipe that defines how
-images are configured, tested and assessed.}
+images are configured, tested, and assessed.}
 
 \item{distributionConfigurationArn}{The Amazon Resource Name (ARN) of the distribution configuration that
 defines and configures the outputs of your pipeline.}
@@ -19,6 +19,11 @@ defines and configures the outputs of your pipeline.}
 defines the environment in which your image will be built and tested.}
 
 \item{imageTestsConfiguration}{The image tests configuration of the image.}
+
+\item{enhancedImageMetadataEnabled}{Collects additional information about the image being created, including
+the operating system (OS) version and package list. This information is
+used to enhance the overall experience of using EC2 Image Builder.
+Enabled by default.}
 
 \item{tags}{The tags of the image.}
 
@@ -38,6 +43,7 @@ configuration.
     imageTestsEnabled = TRUE|FALSE,
     timeoutMinutes = 123
   ),
+  enhancedImageMetadataEnabled = TRUE|FALSE,
   tags = list(
     "string"
   ),

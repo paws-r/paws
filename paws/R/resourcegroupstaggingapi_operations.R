@@ -469,9 +469,8 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' resourcegroupstaggingapi_tag_resources(ResourceARNList, Tags)
 #'
 #' @param ResourceARNList &#91;required&#93; A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a
-#' resource. You can specify a minimum of 1 and a maximum of 20 ARNs
-#' (resources) to tag. An ARN can be set to a maximum of 1600 characters.
-#' For more information, see [Amazon Resource Names (ARNs) and AWS Service
+#' resource. For more information, see [Amazon Resource Names (ARNs) and
+#' AWS Service
 #' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
 #' @param Tags &#91;required&#93; The tags that you want to add to the specified resources. A tag consists
@@ -528,9 +527,8 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #' resourcegroupstaggingapi_untag_resources(ResourceARNList, TagKeys)
 #'
 #' @param ResourceARNList &#91;required&#93; A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a
-#' resource. You can specify a minimum of 1 and a maximum of 20 ARNs
-#' (resources) to untag. An ARN can be set to a maximum of 1600 characters.
-#' For more information, see [Amazon Resource Names (ARNs) and AWS Service
+#' resource. For more information, see [Amazon Resource Names (ARNs) and
+#' AWS Service
 #' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
 #' @param TagKeys &#91;required&#93; A list of the tag keys that you want to remove from the specified

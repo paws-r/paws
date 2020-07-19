@@ -21,17 +21,21 @@ support case.}
 to the case. Create the set by calling AddAttachmentsToSet}
 }
 \description{
-Adds additional customer communication to an AWS Support case. You use
-the \code{caseId} value to identify the case to add communication to. You can
-list a set of email addresses to copy on the communication using the
-\code{ccEmailAddresses} value. The \code{communicationBody} value contains the
-text of the communication.
+Adds additional customer communication to an AWS Support case. Use the
+\code{caseId} parameter to identify the case to which to add communication.
+You can list a set of email addresses to copy on the communication by
+using the \code{ccEmailAddresses} parameter. The \code{communicationBody} value
+contains the text of the communication.
 }
 \details{
-The response indicates the success or failure of the request.
-
-This operation implements a subset of the features of the AWS Support
-Center.
+\itemize{
+\item You must have a Business or Enterprise support plan to use the AWS
+Support API.
+\item If you call the AWS Support API from an account that does not have a
+Business or Enterprise support plan, the
+\code{SubscriptionRequiredException} error message appears. For
+information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$add_communication_to_case(

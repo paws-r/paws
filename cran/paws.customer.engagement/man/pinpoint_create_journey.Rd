@@ -21,6 +21,18 @@ Creates a journey for an application.
   WriteJourneyRequest = list(
     Activities = list(
       list(
+        CUSTOM = list(
+          DeliveryUri = "string",
+          EndpointTypes = list(
+            "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+          ),
+          MessageConfig = list(
+            Data = "string"
+          ),
+          NextActivity = "string",
+          TemplateName = "string",
+          TemplateVersion = "string"
+        ),
         ConditionalSplit = list(
           Condition = list(
             Conditions = list(
@@ -285,6 +297,14 @@ Creates a journey for an application.
             WaitUntil = "string"
           )
         ),
+        PUSH = list(
+          MessageConfig = list(
+            TimeToLive = "string"
+          ),
+          NextActivity = "string",
+          TemplateName = "string",
+          TemplateVersion = "string"
+        ),
         RandomSplit = list(
           Branches = list(
             list(
@@ -292,6 +312,15 @@ Creates a journey for an application.
               Percentage = 123
             )
           )
+        ),
+        SMS = list(
+          MessageConfig = list(
+            MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
+            SenderId = "string"
+          ),
+          NextActivity = "string",
+          TemplateName = "string",
+          TemplateVersion = "string"
         ),
         Wait = list(
           NextActivity = "string",

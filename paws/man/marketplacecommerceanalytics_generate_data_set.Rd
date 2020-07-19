@@ -15,44 +15,36 @@ marketplacecommerceanalytics_generate_data_set(dataSetType,
 \itemize{
 \item \strong{customer\\_subscriber\\_hourly\\_monthly\\_subscriptions}
 
-From 2014-07-21 to present: Available daily by 24:00 UTC.
+From 2017-09-15 to present: Available daily by 24:00 UTC.
 \item \strong{customer\\_subscriber\\_annual\\_subscriptions}
 
-From 2014-07-21 to present: Available daily by 24:00 UTC.
+From 2017-09-15 to present: Available daily by 24:00 UTC.
 \item \strong{daily\\_business\\_usage\\_by\\_instance\\_type}
 
-From 2015-01-26 to present: Available daily by 24:00 UTC.
+From 2017-09-15 to present: Available daily by 24:00 UTC.
 \item \strong{daily\\_business\\_fees}
 
-From 2015-01-26 to present: Available daily by 24:00 UTC.
+From 2017-09-15 to present: Available daily by 24:00 UTC.
 \item \strong{daily\\_business\\_free\\_trial\\_conversions}
 
-From 2015-01-26 to present: Available daily by 24:00 UTC.
+From 2017-09-15 to present: Available daily by 24:00 UTC.
 \item \strong{daily\\_business\\_new\\_instances}
 
-From 2015-01-26 to present: Available daily by 24:00 UTC.
+From 2017-09-15 to present: Available daily by 24:00 UTC.
 \item \strong{daily\\_business\\_new\\_product\\_subscribers}
 
-From 2015-01-26 to present: Available daily by 24:00 UTC.
+From 2017-09-15 to present: Available daily by 24:00 UTC.
 \item \strong{daily\\_business\\_canceled\\_product\\_subscribers}
 
-From 2015-01-26 to present: Available daily by 24:00 UTC.
+From 2017-09-15 to present: Available daily by 24:00 UTC.
 \item \strong{monthly\\_revenue\\_billing\\_and\\_revenue\\_data}
 
-From 2015-02 to 2017-06: Available monthly on the 4th day of the
-month by 24:00 UTC. Data includes metered transactions (e.g. hourly)
-from two months prior.
-
-From 2017-07 to present: Available monthly on the 15th day of the
+From 2017-09-15 to present: Available monthly on the 15th day of the
 month by 24:00 UTC. Data includes metered transactions (e.g. hourly)
 from one month prior.
 \item \strong{monthly\\_revenue\\_annual\\_subscriptions}
 
-From 2015-02 to 2017-06: Available monthly on the 4th day of the
-month by 24:00 UTC. Data includes up-front software charges (e.g.
-annual) from one month prior.
-
-From 2017-07 to present: Available monthly on the 15th day of the
+From 2017-09-15 to present: Available monthly on the 15th day of the
 month by 24:00 UTC. Data includes up-front software charges (e.g.
 annual) from one month prior.
 \item \strong{monthly\\_revenue\\_field\\_demonstration\\_usage}
@@ -65,66 +57,38 @@ From 2018-11-15 to present: Available monthly on the 15th day of the
 month by 24:00 UTC.
 \item \strong{disbursed\\_amount\\_by\\_product}
 
-From 2015-01-26 to present: Available every 30 days by 24:00 UTC.
-\item \strong{disbursed\\_amount\\_by\\_product\\_with\\_uncollected\\_funds}
-
-From 2012-04-19 to 2015-01-25: Available every 30 days by 24:00 UTC.
-
-From 2015-01-26 to present: This data set was split into three data
-sets: disbursed\\_amount\\_by\\_product,
-disbursed\\_amount\\_by\\_age\\_of\\_uncollected\\_funds, and
-disbursed\\_amount\\_by\\_age\\_of\\_disbursed\\_funds.
+From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 \item \strong{disbursed\\_amount\\_by\\_instance\\_hours}
 
-From 2012-09-04 to present: Available every 30 days by 24:00 UTC.
+From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 \item \strong{disbursed\\_amount\\_by\\_customer\\_geo}
 
-From 2012-04-19 to present: Available every 30 days by 24:00 UTC.
+From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 \item \strong{disbursed\\_amount\\_by\\_age\\_of\\_uncollected\\_funds}
 
-From 2015-01-26 to present: Available every 30 days by 24:00 UTC.
+From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 \item \strong{disbursed\\_amount\\_by\\_age\\_of\\_disbursed\\_funds}
 
-From 2015-01-26 to present: Available every 30 days by 24:00 UTC.
+From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 \item \strong{disbursed\\_amount\\_by\\_age\\_of\\_past\\_due\\_funds}
 
 From 2018-04-07 to present: Available every 30 days by 24:00 UTC.
 \item \strong{disbursed\\_amount\\_by\\_uncollected\\_funds\\_breakdown}
 
 From 2019-10-04 to present: Available every 30 days by 24:00 UTC.
-\item \strong{customer\\_profile\\_by\\_industry}
-
-From 2015-10-01 to 2017-06-29: Available daily by 24:00 UTC.
-
-From 2017-06-30 to present: This data set is no longer available.
-\item \strong{customer\\_profile\\_by\\_revenue}
-
-From 2015-10-01 to 2017-06-29: Available daily by 24:00 UTC.
-
-From 2017-06-30 to present: This data set is no longer available.
-\item \strong{customer\\_profile\\_by\\_geography}
-
-From 2015-10-01 to 2017-06-29: Available daily by 24:00 UTC.
-
-From 2017-06-30 to present: This data set is no longer available.
 \item \strong{sales\\_compensation\\_billed\\_revenue}
 
-From 2016-12 to 2017-06: Available monthly on the 4th day of the
-month by 24:00 UTC. Data includes metered transactions (e.g. hourly)
-from two months prior, and up-front software charges (e.g. annual)
-from one month prior.
-
-From 2017-06 to present: Available monthly on the 15th day of the
+From 2017-09-15 to present: Available monthly on the 15th day of the
 month by 24:00 UTC. Data includes metered transactions (e.g. hourly)
 from one month prior, and up-front software charges (e.g. annual)
 from one month prior.
 \item \strong{us\\_sales\\_and\\_use\\_tax\\_records}
 
-From 2017-02-15 to present: Available monthly on the 15th day of the
+From 2017-09-15 to present: Available monthly on the 15th day of the
 month by 24:00 UTC.
 }}
 
-\item{dataSetPublicationDate}{[required] The date a data set was published. For daily data sets, provide a date with day-level granularity for the desired day. For weekly data sets, provide a date with day-level granularity within the desired week (the day value will be ignored). For monthly data sets, provide a date with month-level granularity for the desired month (the day value will be ignored).}
+\item{dataSetPublicationDate}{[required] The date a data set was published. For daily data sets, provide a date with day-level granularity for the desired day. For monthly data sets except those with prefix disbursed_amount, provide a date with month-level granularity for the desired month (the day value will be ignored). For data sets with prefix disbursed_amount, provide a date with day-level granularity for the desired day. For these data sets we will look backwards in time over the range of 31 days until the first data set is found (the latest one).}
 
 \item{roleNameArn}{[required] The Amazon Resource Name (ARN) of the Role with an attached permissions policy to interact with the provided AWS services.}
 

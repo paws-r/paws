@@ -9,7 +9,7 @@ elbv2_add_tags(ResourceArns, Tags)
 \arguments{
 \item{ResourceArns}{[required] The Amazon Resource Name (ARN) of the resource.}
 
-\item{Tags}{[required] The tags. Each resource can have a maximum of 10 tags.}
+\item{Tags}{[required] The tags.}
 }
 \description{
 Adds the specified tags to the specified Elastic Load Balancing

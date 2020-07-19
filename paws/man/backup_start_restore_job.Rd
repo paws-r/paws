@@ -11,29 +11,48 @@ backup_start_restore_job(RecoveryPointArn, Metadata, IamRoleArn,
 \item{RecoveryPointArn}{[required] An ARN that uniquely identifies a recovery point; for example,
 \verb{arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45}.}
 
-\item{Metadata}{[required] A set of metadata key-value pairs. Lists the metadata that the recovery
-point was created with.}
+\item{Metadata}{[required] A set of metadata key-value pairs. Contains information, such as a
+resource name, required to restore a recovery point.
+
+You can get configuration metadata about a resource at the time it was
+backed up by calling \code{GetRecoveryPointRestoreMetadata}. However, values
+in addition to those provided by \code{GetRecoveryPointRestoreMetadata} might
+be required to restore a resource. For example, you might need to
+provide a new resource name if the original already exists.
+
+You need to specify specific metadata to restore an Amazon Elastic File
+System (Amazon EFS) instance:
+\itemize{
+\item \code{file-system-id}: ID of the Amazon EFS file system that is backed up
+by AWS Backup. Returned in \code{GetRecoveryPointRestoreMetadata}.
+\item \code{Encrypted}: A Boolean value that, if true, specifies that the file
+system is encrypted. If \code{KmsKeyId} is specified, \code{Encrypted} must be
+set to \code{true}.
+\item \code{KmsKeyId}: Specifies the AWS KMS key that is used to encrypt the
+restored file system.
+\item \code{PerformanceMode}: Specifies the throughput mode of the file system.
+\item \code{CreationToken}: A user-supplied value that ensures the uniqueness
+(idempotency) of the request.
+\item \code{newFileSystem}: A Boolean value that, if true, specifies that the
+recovery point is restored to a new Amazon EFS file system.
+}}
 
 \item{IamRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that AWS Backup uses to
 create the target recovery point; for example,
 \verb{arn:aws:iam::123456789012:role/S3Access}.}
 
 \item{IdempotencyToken}{A customer chosen string that can be used to distinguish between calls
-to \code{StartRestoreJob}. Idempotency tokens time out after one hour.
-Therefore, if you call \code{StartRestoreJob} multiple times with the same
-idempotency token within one hour, AWS Backup recognizes that you are
-requesting only one restore job and initiates only one. If you change
-the idempotency token for each call, AWS Backup recognizes that you are
-requesting to start multiple restores.}
+to \code{StartRestoreJob}.}
 
 \item{ResourceType}{Starts a job to restore a recovery point for one of the following
 resources:
 \itemize{
+\item \code{DynamoDB} for Amazon DynamoDB
 \item \code{EBS} for Amazon Elastic Block Store
-\item \code{SGW} for AWS Storage Gateway
-\item \code{RDS} for Amazon Relational Database Service
-\item \code{DDB} for Amazon DynamoDB
+\item \code{EC2} for Amazon Elastic Compute Cloud
 \item \code{EFS} for Amazon Elastic File System
+\item \code{RDS} for Amazon Relational Database Service
+\item \verb{Storage Gateway} for AWS Storage Gateway
 }}
 }
 \description{

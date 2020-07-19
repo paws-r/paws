@@ -100,7 +100,7 @@ workspaces <- function(config = list()) {
 
 .workspaces$metadata <- list(
   service_name = "workspaces",
-  endpoints = list("*" = list(endpoint = "workspaces.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workspaces.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "workspaces.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workspaces.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "workspaces.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "workspaces.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "WorkSpaces",
   api_version = "2015-04-08",
   signing_name = NULL,

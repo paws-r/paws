@@ -6,7 +6,7 @@
 \usage{
 mediaconnect_update_flow_output(CidrAllowList, Description, Destination,
   Encryption, FlowArn, MaxLatency, OutputArn, Port, Protocol, RemoteId,
-  SmoothingLatency, StreamId)
+  SmoothingLatency, StreamId, VpcInterfaceAttachment)
 }
 \arguments{
 \item{CidrAllowList}{The range of IP addresses that should be allowed to initiate output requests to this flow. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.}
@@ -32,6 +32,8 @@ mediaconnect_update_flow_output(CidrAllowList, Description, Destination,
 \item{SmoothingLatency}{The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC streams.}
 
 \item{StreamId}{The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.}
+
+\item{VpcInterfaceAttachment}{The name of the VPC interface attachment to use for this output.}
 }
 \description{
 Updates an existing flow output.
@@ -61,7 +63,10 @@ Updates an existing flow output.
   Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
   RemoteId = "string",
   SmoothingLatency = 123,
-  StreamId = "string"
+  StreamId = "string",
+  VpcInterfaceAttachment = list(
+    VpcInterfaceName = "string"
+  )
 )
 }
 }

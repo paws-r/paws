@@ -9,10 +9,9 @@ applicationautoscaling_delete_scheduled_action(ServiceNamespace,
   ScheduledActionName, ResourceId, ScalableDimension)
 }
 \arguments{
-\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or
-\code{custom-resource} for a resource provided by your own application or
-service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
-in the \emph{Amazon Web Services General Reference}.}
+\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource. For a
+resource provided by your own application or service, use
+\code{custom-resource} instead.}
 
 \item{ScheduledActionName}{[required] The name of the scheduled action.}
 
@@ -53,6 +52,9 @@ Example:
 the unique identifier is the function name with a function version
 or alias name suffix that is not \verb{$LATEST}. Example:
 \verb{function:my-function:prod} or \verb{function:my-function:1}.
+\item Amazon Keyspaces table - The resource type is \code{table} and the unique
+identifier is the table name. Example:
+\code{keyspace/mykeyspace/table/mytable}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension. This string consists of the service namespace,
@@ -86,6 +88,10 @@ The number of inference units for an Amazon Comprehend document
 classification endpoint.
 \item \verb{lambda:function:ProvisionedConcurrency} - The provisioned
 concurrency for a Lambda function.
+\item \code{cassandra:table:ReadCapacityUnits} - The provisioned read capacity
+for an Amazon Keyspaces table.
+\item \code{cassandra:table:WriteCapacityUnits} - The provisioned write
+capacity for an Amazon Keyspaces table.
 }}
 }
 \description{
@@ -98,10 +104,10 @@ in the \emph{Application Auto Scaling User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_scheduled_action(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
   ScheduledActionName = "string",
   ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"
 )
 }
 }

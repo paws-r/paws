@@ -2,8 +2,8 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_register_db_proxy_targets}
 \alias{rds_register_db_proxy_targets}
-\title{This is prerelease documentation for the RDS Database Proxy feature in
-preview release}
+\title{Associate one or more DBProxyTarget data structures with a
+DBProxyTargetGroup}
 \usage{
 rds_register_db_proxy_targets(DBProxyName, TargetGroupName,
   DBInstanceIdentifiers, DBClusterIdentifiers)
@@ -19,10 +19,6 @@ rds_register_db_proxy_targets(DBProxyName, TargetGroupName,
 \item{DBClusterIdentifiers}{One or more DB cluster identifiers.}
 }
 \description{
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-}
-\details{
 Associate one or more \code{DBProxyTarget} data structures with a
 \code{DBProxyTargetGroup}.
 }

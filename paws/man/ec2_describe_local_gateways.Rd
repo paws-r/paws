@@ -8,7 +8,18 @@ ec2_describe_local_gateways(LocalGatewayIds, Filters, MaxResults,
   NextToken, DryRun)
 }
 \arguments{
-\item{LocalGatewayIds}{The IDs of the local gateways.}
+\item{LocalGatewayIds}{One or more filters.
+\itemize{
+\item \code{local-gateway-id} - The ID of a local gateway.
+\item \code{local-gateway-route-table-id} - The ID of the local gateway route
+table.
+\item \code{local-gateway-route-table-virtual-interface-group-association-id} -
+The ID of the association.
+\item \code{local-gateway-route-table-virtual-interface-group-id} - The ID of
+the virtual interface group.
+\item \code{outpost-arn} - The Amazon Resource Name (ARN) of the Outpost.
+\item \code{state} - The state of the association.
+}}
 
 \item{Filters}{One or more filters.}
 

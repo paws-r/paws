@@ -38,16 +38,15 @@ response.
 \details{
 \itemize{
 \item You can invite AWS accounts only from the same seller as the master
-account. For example, assume that your organization\'s master
-account was created by Amazon Internet Services Pvt. Ltd (AISPL), an
-AWS seller in India. You can invite only other AISPL accounts to
-your organization. You can\'t combine accounts from AISPL and AWS or
-from any other AWS seller. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html}{Consolidated Billing in India}.
-\item You might receive an exception that indicates that you exceeded your
+account. For example, if your organization\'s master account was
+created by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller
+in India, you can invite only other AISPL accounts to your
+organization. You can\'t combine accounts from AISPL and AWS or from
+any other AWS seller. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html}{Consolidated Billing in India}.
+\item If you receive an exception that indicates that you exceeded your
 account limits for the organization or that the operation failed
-because your organization is still initializing. If so, wait one
-hour and then try again. If the error persists after an hour,
-contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
+because your organization is still initializing, wait one hour and
+then try again. If the error persists after an hour, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
 }
 
 This operation can be called only from the organization\'s master

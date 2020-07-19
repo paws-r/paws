@@ -35,17 +35,24 @@ you want to register.
 For information on generating a schema handler package for the type you
 want to register, see
 \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html}{submit}
-in the \emph{CloudFormation CLI User Guide}.}
+in the \emph{CloudFormation CLI User Guide}.
+
+As part of registering a resource provider type, CloudFormation must be
+able to access the S3 bucket which contains the schema handler package
+for that resource provider. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry.html#registry-register-permissions}{IAM Permissions for Registering a Resource Provider}
+in the \emph{AWS CloudFormation User Guide}.}
 
 \item{LoggingConfig}{Specifies logging configuration information for a type.}
 
-\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the IAM execution role to use to
-register the type. If your resource type calls AWS APIs in any of its
-handlers, you must create an \emph{\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}}
+\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the IAM role for CloudFormation to
+assume when invoking the resource provider. If your resource type calls
+AWS APIs in any of its handlers, you must create an \emph{\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}}
 that includes the necessary permissions to call those AWS APIs, and
-provision that execution role in your account. CloudFormation then
-assumes that execution role to provide your resource type with the
-appropriate credentials.}
+provision that execution role in your account. When CloudFormation needs
+to invoke the resource provider handler, CloudFormation assumes this
+execution role to create a temporary session token, which it then passes
+to the resource provider handler, thereby supplying your resource
+provider with the appropriate credentials.}
 
 \item{ClientRequestToken}{A unique identifier that acts as an idempotency key for this
 registration request. Specifying a client request token prevents
@@ -68,6 +75,11 @@ account, and includes:
 For more information on how to develop types and ready them for
 registeration, see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-types.html}{Creating Resource Providers}
 in the \emph{CloudFormation CLI User Guide}.
+
+You can have a maximum of 50 resource type versions registered at a
+time. This maximum is per account and per region. Use
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeregisterType.html}{DeregisterType}
+to deregister specific resource type versions if necessary.
 
 Once you have initiated a registration request using
 \verb{<a>RegisterType</a>}, you can use \verb{<a>DescribeTypeRegistration</a>}

@@ -5,7 +5,7 @@
 \title{Creates a new MediaPackage VOD PackagingConfiguration resource}
 \usage{
 mediapackagevod_create_packaging_configuration(CmafPackage, DashPackage,
-  HlsPackage, Id, MssPackage, PackagingGroupId)
+  HlsPackage, Id, MssPackage, PackagingGroupId, Tags)
 }
 \arguments{
 \item{CmafPackage}{}
@@ -19,6 +19,8 @@ mediapackagevod_create_packaging_configuration(CmafPackage, DashPackage,
 \item{MssPackage}{}
 
 \item{PackagingGroupId}{[required] The ID of a PackagingGroup.}
+
+\item{Tags}{}
 }
 \description{
 Creates a new MediaPackage VOD PackagingConfiguration resource.
@@ -54,6 +56,7 @@ Creates a new MediaPackage VOD PackagingConfiguration resource.
   DashPackage = list(
     DashManifests = list(
       list(
+        ManifestLayout = "FULL"|"COMPACT",
         ManifestName = "string",
         MinBufferTimeSeconds = 123,
         Profile = "NONE"|"HBBTV_1_5",
@@ -73,7 +76,11 @@ Creates a new MediaPackage VOD PackagingConfiguration resource.
         Url = "string"
       )
     ),
-    SegmentDurationSeconds = 123
+    PeriodTriggers = list(
+      "ADS"
+    ),
+    SegmentDurationSeconds = 123,
+    SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE"|"NUMBER_WITH_DURATION"
   ),
   HlsPackage = list(
     Encryption = list(
@@ -127,7 +134,10 @@ Creates a new MediaPackage VOD PackagingConfiguration resource.
     ),
     SegmentDurationSeconds = 123
   ),
-  PackagingGroupId = "string"
+  PackagingGroupId = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

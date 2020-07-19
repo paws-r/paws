@@ -98,7 +98,7 @@ appsync <- function(config = list()) {
 
 .appsync$metadata <- list(
   service_name = "appsync",
-  endpoints = list("*" = list(endpoint = "appsync.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "appsync.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "appsync.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "appsync.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "appsync.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "appsync.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "AppSync",
   api_version = "2017-07-25",
   signing_name = "appsync",

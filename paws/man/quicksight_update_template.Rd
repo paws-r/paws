@@ -14,8 +14,19 @@ updating.}
 
 \item{TemplateId}{[required] The ID for the template.}
 
-\item{SourceEntity}{[required] The source QuickSight entity from which this template is being updated.
-You can currently update templates from an Analysis or another template.}
+\item{SourceEntity}{[required] The entity that you are using as a source when you update the template.
+In \code{SourceEntity}, you specify the type of object you\'re using as
+source: \code{SourceTemplate} for a template or \code{SourceAnalysis} for an
+analysis. Both of these require an Amazon Resource Name (ARN). For
+\code{SourceTemplate}, specify the ARN of the source template. For
+\code{SourceAnalysis}, specify the ARN of the source analysis. The
+\code{SourceTemplate} ARN can contain any AWS Account and any
+QuickSight-supported AWS Region.
+
+Use the \code{DataSetReferences} entity within \code{SourceTemplate} or
+\code{SourceAnalysis} to list the replacement datasets for the placeholders
+listed in the original. The schema in each dataset must match its
+placeholder.}
 
 \item{VersionDescription}{A description of the current template version that is being updated.
 Every time you call \code{UpdateTemplate}, you create a new version of the

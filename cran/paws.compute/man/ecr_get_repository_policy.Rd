@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_get_repository_policy}
 \alias{ecr_get_repository_policy}
-\title{Retrieves the repository policy for a specified repository}
+\title{Retrieves the repository policy for the specified repository}
 \usage{
 ecr_get_repository_policy(registryId, repositoryName)
 }
@@ -14,7 +14,7 @@ assumed.}
 \item{repositoryName}{[required] The name of the repository with the policy to retrieve.}
 }
 \description{
-Retrieves the repository policy for a specified repository.
+Retrieves the repository policy for the specified repository.
 }
 \section{Request syntax}{
 \preformatted{svc$get_repository_policy(

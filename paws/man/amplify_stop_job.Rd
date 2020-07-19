@@ -2,21 +2,19 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_stop_job}
 \alias{amplify_stop_job}
-\title{Stop a job that is in progress, for an Amplify branch, part of Amplify
-App}
+\title{Stops a job that is in progress for a branch of an Amplify app}
 \usage{
 amplify_stop_job(appId, branchName, jobId)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{branchName}{[required] Name for the branch, for the Job.}
+\item{branchName}{[required] The name for the branch, for the job.}
 
-\item{jobId}{[required] Unique Id for the Job.}
+\item{jobId}{[required] The unique id for the job.}
 }
 \description{
-Stop a job that is in progress, for an Amplify branch, part of Amplify
-App.
+Stops a job that is in progress for a branch of an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_job(

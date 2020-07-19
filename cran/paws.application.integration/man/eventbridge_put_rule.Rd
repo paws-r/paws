@@ -8,15 +8,12 @@ eventbridge_put_rule(Name, ScheduleExpression, EventPattern, State,
   Description, RoleArn, Tags, EventBusName)
 }
 \arguments{
-\item{Name}{[required] The name of the rule that you\'re creating or updating.
+\item{Name}{[required] The name of the rule that you are creating or updating.}
 
-A rule can\'t have the same name as another rule in the same Region or
-on the same event bus.}
+\item{ScheduleExpression}{The scheduling expression. For example, \"cron(0 20 * * ? *)\" or
+\"rate(5 minutes)\".}
 
-\item{ScheduleExpression}{The scheduling expression: for example, \code{"cron(0 20 * * ? *)"} or
-\code{"rate(5 minutes)"}.}
-
-\item{EventPattern}{The event pattern. For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html}{Event Patterns}
+\item{EventPattern}{The event pattern. For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html}{Events and Event Patterns}
 in the \emph{Amazon EventBridge User Guide}.}
 
 \item{State}{Indicates whether the rule is enabled or disabled.}
@@ -31,7 +28,7 @@ in the \emph{Amazon EventBridge User Guide}.}
 event bus is used.}
 }
 \description{
-Creates or updates the specified rule. Rules are enabled by default or
+Creates or updates the specified rule. Rules are enabled by default, or
 based on value of the state. You can disable a rule using DisableRule.
 }
 \details{
@@ -43,21 +40,21 @@ you can specify whether their events go to your default event bus or a
 custom event bus that you have created. For more information, see
 CreateEventBus.
 
-If you\'re updating an existing rule, the rule is replaced with what you
+If you are updating an existing rule, the rule is replaced with what you
 specify in this \code{PutRule} command. If you omit arguments in \code{PutRule},
-the old values for those arguments aren\'t kept. Instead, they\'re
+the old values for those arguments are not kept. Instead, they are
 replaced with null values.
 
 When you create or update a rule, incoming events might not immediately
 start matching to new or updated rules. Allow a short period of time for
 changes to take effect.
 
-A rule must contain at least an \code{EventPattern} or \code{ScheduleExpression}.
-Rules with \code{EventPatterns} are triggered when a matching event is
-observed. Rules with \code{ScheduleExpressions} self-trigger based on the
-given schedule. A rule can have both an \code{EventPattern} and a
-\code{ScheduleExpression}, in which case the rule triggers on matching events
-as well as on a schedule.
+A rule must contain at least an EventPattern or ScheduleExpression.
+Rules with EventPatterns are triggered when a matching event is
+observed. Rules with ScheduleExpressions self-trigger based on the given
+schedule. A rule can have both an EventPattern and a ScheduleExpression,
+in which case the rule triggers on matching events as well as on a
+schedule.
 
 When you initially create a rule, you can optionally assign one or more
 tags to the rule. Tags can help you organize and categorize your
@@ -70,22 +67,22 @@ If you are updating an existing rule, any tags you specify in the
 \code{PutRule} operation are ignored. To update the tags of an existing rule,
 use TagResource and UntagResource.
 
-Most services in AWS treat \code{:} or \code{/} as the same character in Amazon
+Most services in AWS treat : or / as the same character in Amazon
 Resource Names (ARNs). However, EventBridge uses an exact match in event
 patterns and rules. Be sure to use the correct ARN characters when
 creating event patterns so that they match the ARN syntax in the event
-that you want to match.
+you want to match.
 
-In EventBridge, you could create rules that lead to infinite loops,
-where a rule is fired repeatedly. For example, a rule might detect that
-ACLs have changed on an S3 bucket, and trigger software to change them
-to the desired state. If you don\'t write the rule carefully, the
-subsequent change to the ACLs fires the rule again, creating an infinite
-loop.
+In EventBridge, it is possible to create rules that lead to infinite
+loops, where a rule is fired repeatedly. For example, a rule might
+detect that ACLs have changed on an S3 bucket, and trigger software to
+change them to the desired state. If the rule is not written carefully,
+the subsequent change to the ACLs fires the rule again, creating an
+infinite loop.
 
-To prevent this, write the rules so that the triggered actions don\'t
-refire the same rule. For example, your rule could fire only if ACLs are
-found to be in a bad state, instead of after any change.
+To prevent this, write the rules so that the triggered actions do not
+re-fire the same rule. For example, your rule could fire only if ACLs
+are found to be in a bad state, instead of after any change.
 
 An infinite loop can quickly cause higher than expected charges. We
 recommend that you use budgeting, which alerts you when charges exceed

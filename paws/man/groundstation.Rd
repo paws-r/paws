@@ -56,7 +56,7 @@ build or manage your own ground station infrastructure.
 \link[=groundstation_list_ground_stations]{list_ground_stations} \tab Returns a list of ground stations \cr
 \link[=groundstation_list_mission_profiles]{list_mission_profiles} \tab Returns a list of mission profiles \cr
 \link[=groundstation_list_satellites]{list_satellites} \tab Returns a list of satellites \cr
-\link[=groundstation_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags or a specified resource \cr
+\link[=groundstation_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for a specified resource \cr
 \link[=groundstation_reserve_contact]{reserve_contact} \tab Reserves a contact using specified parameters \cr
 \link[=groundstation_tag_resource]{tag_resource} \tab Assigns a tag to a resource \cr
 \link[=groundstation_untag_resource]{untag_resource} \tab Deassigns a resource tag \cr

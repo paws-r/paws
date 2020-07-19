@@ -7,8 +7,9 @@ a list of API operations and AWS resources to determine the policies'
 effective permissions}
 \usage{
 iam_simulate_principal_policy(PolicySourceArn, PolicyInputList,
-  ActionNames, ResourceArns, ResourcePolicy, ResourceOwner, CallerArn,
-  ContextEntries, ResourceHandlingOption, MaxItems, Marker)
+  PermissionsBoundaryPolicyInputList, ActionNames, ResourceArns,
+  ResourcePolicy, ResourceOwner, CallerArn, ContextEntries,
+  ResourceHandlingOption, MaxItems, Marker)
 }
 \arguments{
 \item{PolicySourceArn}{[required] The Amazon Resource Name (ARN) of a user, group, or role whose policies
@@ -23,6 +24,30 @@ in the \emph{AWS General Reference}.}
 \item{PolicyInputList}{An optional list of additional policy documents to include in the
 simulation. Each document is specified as a string containing the
 complete, valid JSON text of an IAM policy.
+
+The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
+this parameter is a string of characters consisting of the following:
+\itemize{
+\item Any printable ASCII character ranging from the space character
+(\code{U+0020}) through the end of the ASCII character range
+\item The printable characters in the Basic Latin and Latin-1 Supplement
+character set (through \verb{U+00FF})
+\item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
+carriage return (\verb{U+000D})
+}}
+
+\item{PermissionsBoundaryPolicyInputList}{The IAM permissions boundary policy to simulate. The permissions
+boundary sets the maximum permissions that the entity can have. You can
+input only one permissions boundary when you pass a policy to this
+operation. An IAM entity can only have one permissions boundary in
+effect at a time. For example, if a permissions boundary is attached to
+an entity and you pass in a different permissions boundary policy using
+this parameter, then the new permissions boundary policy is used for the
+simulation. For more information about permissions boundaries, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html}{Permissions Boundaries for IAM Entities}
+in the \emph{IAM User Guide}. The policy input is specified as a string
+containing the complete, valid JSON text of a permissions boundary
+policy.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
 this parameter is a string of characters consisting of the following:
@@ -193,6 +218,9 @@ parameters to paginate the results.
 \preformatted{svc$simulate_principal_policy(
   PolicySourceArn = "string",
   PolicyInputList = list(
+    "string"
+  ),
+  PermissionsBoundaryPolicyInputList = list(
     "string"
   ),
   ActionNames = list(

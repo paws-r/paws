@@ -2,17 +2,19 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_get_instance_port_states}
 \alias{lightsail_get_instance_port_states}
-\title{Returns the port states for a specific virtual private server, or
-\emph{instance}}
+\title{Returns the firewall port states for a specific Amazon Lightsail
+instance, the IP addresses allowed to connect to the instance through
+the ports, and the protocol}
 \usage{
 lightsail_get_instance_port_states(instanceName)
 }
 \arguments{
-\item{instanceName}{[required] The name of the instance.}
+\item{instanceName}{[required] The name of the instance for which to return firewall port states.}
 }
 \description{
-Returns the port states for a specific virtual private server, or
-\emph{instance}.
+Returns the firewall port states for a specific Amazon Lightsail
+instance, the IP addresses allowed to connect to the instance through
+the ports, and the protocol.
 }
 \section{Request syntax}{
 \preformatted{svc$get_instance_port_states(

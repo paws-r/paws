@@ -107,9 +107,9 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
 }
 .docdb$operations$apply_pending_maintenance_action <- docdb_apply_pending_maintenance_action
 
-#' Copies the specified DB cluster parameter group
+#' Copies the specified cluster parameter group
 #'
-#' Copies the specified DB cluster parameter group.
+#' Copies the specified cluster parameter group.
 #'
 #' @usage
 #' docdb_copy_db_cluster_parameter_group(
@@ -117,22 +117,21 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
 #'   TargetDBClusterParameterGroupIdentifier,
 #'   TargetDBClusterParameterGroupDescription, Tags)
 #'
-#' @param SourceDBClusterParameterGroupIdentifier &#91;required&#93; The identifier or Amazon Resource Name (ARN) for the source DB cluster
+#' @param SourceDBClusterParameterGroupIdentifier &#91;required&#93; The identifier or Amazon Resource Name (ARN) for the source cluster
 #' parameter group.
 #' 
 #' Constraints:
 #' 
-#' -   Must specify a valid DB cluster parameter group.
+#' -   Must specify a valid cluster parameter group.
 #' 
-#' -   If the source DB cluster parameter group is in the same AWS Region
-#'     as the copy, specify a valid DB parameter group identifier; for
-#'     example, `my-db-cluster-param-group`, or a valid ARN.
+#' -   If the source cluster parameter group is in the same AWS Region as
+#'     the copy, specify a valid parameter group identifier; for example,
+#'     `my-db-cluster-param-group`, or a valid ARN.
 #' 
-#' -   If the source DB parameter group is in a different AWS Region than
-#'     the copy, specify a valid DB cluster parameter group ARN; for
-#'     example,
+#' -   If the source parameter group is in a different AWS Region than the
+#'     copy, specify a valid cluster parameter group ARN; for example,
 #'     `arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1`.
-#' @param TargetDBClusterParameterGroupIdentifier &#91;required&#93; The identifier for the copied DB cluster parameter group.
+#' @param TargetDBClusterParameterGroupIdentifier &#91;required&#93; The identifier for the copied cluster parameter group.
 #' 
 #' Constraints:
 #' 
@@ -145,7 +144,7 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster-param-group1`
-#' @param TargetDBClusterParameterGroupDescription &#91;required&#93; A description for the copied DB cluster parameter group.
+#' @param TargetDBClusterParameterGroupDescription &#91;required&#93; A description for the copied cluster parameter group.
 #' @param Tags The tags that are to be assigned to the parameter group.
 #'
 #' @section Request syntax:
@@ -183,27 +182,27 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 }
 .docdb$operations$copy_db_cluster_parameter_group <- docdb_copy_db_cluster_parameter_group
 
-#' Copies a snapshot of a DB cluster
+#' Copies a snapshot of a cluster
 #'
-#' Copies a snapshot of a DB cluster.
+#' Copies a snapshot of a cluster.
 #' 
-#' To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
+#' To copy a cluster snapshot from a shared manual cluster snapshot,
 #' `SourceDBClusterSnapshotIdentifier` must be the Amazon Resource Name
-#' (ARN) of the shared DB cluster snapshot.
+#' (ARN) of the shared cluster snapshot.
 #' 
 #' To cancel the copy operation after it is in progress, delete the target
-#' DB cluster snapshot identified by `TargetDBClusterSnapshotIdentifier`
-#' while that DB cluster snapshot is in the *copying* status.
+#' cluster snapshot identified by `TargetDBClusterSnapshotIdentifier` while
+#' that DB cluster snapshot is in the *copying* status.
 #'
 #' @usage
 #' docdb_copy_db_cluster_snapshot(SourceDBClusterSnapshotIdentifier,
 #'   TargetDBClusterSnapshotIdentifier, KmsKeyId, PreSignedUrl, CopyTags,
 #'   Tags)
 #'
-#' @param SourceDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot to copy. This parameter is not
+#' @param SourceDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the cluster snapshot to copy. This parameter is not
 #' case sensitive.
 #' 
-#' You can\'t copy an encrypted, shared DB cluster snapshot from one AWS
+#' You can\'t copy an encrypted, shared cluster snapshot from one AWS
 #' Region to another.
 #' 
 #' Constraints:
@@ -211,14 +210,14 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' -   Must specify a valid system snapshot in the \"available\" state.
 #' 
 #' -   If the source snapshot is in the same AWS Region as the copy,
-#'     specify a valid DB snapshot identifier.
+#'     specify a valid snapshot identifier.
 #' 
 #' -   If the source snapshot is in a different AWS Region than the copy,
-#'     specify a valid DB cluster snapshot ARN.
+#'     specify a valid cluster snapshot ARN.
 #' 
 #' Example: `my-cluster-snapshot1`
-#' @param TargetDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the new DB cluster snapshot to create from the source
-#' DB cluster snapshot. This parameter is not case sensitive.
+#' @param TargetDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the new cluster snapshot to create from the source
+#' cluster snapshot. This parameter is not case sensitive.
 #' 
 #' Constraints:
 #' 
@@ -229,31 +228,31 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster-snapshot2`
-#' @param KmsKeyId The AWS KMS key ID for an encrypted DB cluster snapshot. The AWS KMS key
-#' ID is the Amazon Resource Name (ARN), AWS KMS key identifier, or the AWS
+#' @param KmsKeyId The AWS KMS key ID for an encrypted cluster snapshot. The AWS KMS key ID
+#' is the Amazon Resource Name (ARN), AWS KMS key identifier, or the AWS
 #' KMS key alias for the AWS KMS encryption key.
 #' 
-#' If you copy an encrypted DB cluster snapshot from your AWS account, you
-#' can specify a value for `KmsKeyId` to encrypt the copy with a new AWS
-#' KMS encryption key. If you don\'t specify a value for `KmsKeyId`, then
-#' the copy of the DB cluster snapshot is encrypted with the same AWS KMS
-#' key as the source DB cluster snapshot.
+#' If you copy an encrypted cluster snapshot from your AWS account, you can
+#' specify a value for `KmsKeyId` to encrypt the copy with a new AWS KMS
+#' encryption key. If you don\'t specify a value for `KmsKeyId`, then the
+#' copy of the cluster snapshot is encrypted with the same AWS KMS key as
+#' the source cluster snapshot.
 #' 
-#' If you copy an encrypted DB cluster snapshot that is shared from another
+#' If you copy an encrypted cluster snapshot that is shared from another
 #' AWS account, then you must specify a value for `KmsKeyId`.
 #' 
-#' To copy an encrypted DB cluster snapshot to another AWS Region, set
+#' To copy an encrypted cluster snapshot to another AWS Region, set
 #' `KmsKeyId` to the AWS KMS key ID that you want to use to encrypt the
-#' copy of the DB cluster snapshot in the destination Region. AWS KMS
+#' copy of the cluster snapshot in the destination Region. AWS KMS
 #' encryption keys are specific to the AWS Region that they are created in,
 #' and you can\'t use encryption keys from one Region in another Region.
 #' 
-#' If you copy an unencrypted DB cluster snapshot and specify a value for
-#' the `KmsKeyId` parameter, an error is returned.
+#' If you copy an unencrypted cluster snapshot and specify a value for the
+#' `KmsKeyId` parameter, an error is returned.
 #' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the
 #' `CopyDBClusterSnapshot` API action in the AWS Region that contains the
-#' source DB cluster snapshot to copy. You must use the `PreSignedUrl`
-#' parameter when copying an encrypted DB cluster snapshot from another AWS
+#' source cluster snapshot to copy. You must use the `PreSignedUrl`
+#' parameter when copying an encrypted cluster snapshot from another AWS
 #' Region.
 #' 
 #' The presigned URL must be a valid request for the
@@ -262,7 +261,7 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' The presigned URL request must contain the following parameter values:
 #' 
 #' -   `KmsKeyId` - The AWS KMS key identifier for the key to use to
-#'     encrypt the copy of the DB cluster snapshot in the destination AWS
+#'     encrypt the copy of the cluster snapshot in the destination AWS
 #'     Region. This is the same identifier for both the
 #'     `CopyDBClusterSnapshot` action that is called in the destination AWS
 #'     Region, and the action contained in the presigned URL.
@@ -270,18 +269,17 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' -   `DestinationRegion` - The name of the AWS Region that the DB cluster
 #'     snapshot will be created in.
 #' 
-#' -   `SourceDBClusterSnapshotIdentifier` - The DB cluster snapshot
-#'     identifier for the encrypted DB cluster snapshot to be copied. This
+#' -   `SourceDBClusterSnapshotIdentifier` - The cluster snapshot
+#'     identifier for the encrypted cluster snapshot to be copied. This
 #'     identifier must be in the Amazon Resource Name (ARN) format for the
-#'     source AWS Region. For example, if you are copying an encrypted DB
+#'     source AWS Region. For example, if you are copying an encrypted
 #'     cluster snapshot from the us-west-2 AWS Region, then your
 #'     `SourceDBClusterSnapshotIdentifier` looks like the following
 #'     example:
 #'     `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:my-cluster-snapshot-20161115`.
-#' @param CopyTags Set to `true` to copy all tags from the source DB cluster snapshot to
-#' the target DB cluster snapshot, and otherwise `false`. The default is
-#' `false`.
-#' @param Tags The tags to be assigned to the DB cluster snapshot.
+#' @param CopyTags Set to `true` to copy all tags from the source cluster snapshot to the
+#' target cluster snapshot, and otherwise `false`. The default is `false`.
+#' @param Tags The tags to be assigned to the cluster snapshot.
 #'
 #' @section Request syntax:
 #' ```
@@ -320,9 +318,9 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 }
 .docdb$operations$copy_db_cluster_snapshot <- docdb_copy_db_cluster_snapshot
 
-#' Creates a new Amazon DocumentDB DB cluster
+#' Creates a new Amazon DocumentDB cluster
 #'
-#' Creates a new Amazon DocumentDB DB cluster.
+#' Creates a new Amazon DocumentDB cluster.
 #'
 #' @usage
 #' docdb_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
@@ -332,7 +330,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'   Tags, StorageEncrypted, KmsKeyId, EnableCloudwatchLogsExports,
 #'   DeletionProtection)
 #'
-#' @param AvailabilityZones A list of Amazon EC2 Availability Zones that instances in the DB cluster
+#' @param AvailabilityZones A list of Amazon EC2 Availability Zones that instances in the cluster
 #' can be created in.
 #' @param BackupRetentionPeriod The number of days for which automated backups are retained. You must
 #' specify a minimum value of 1.
@@ -342,8 +340,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' Constraints:
 #' 
 #' -   Must be a value from 1 to 35.
-#' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier. This parameter is stored as a lowercase
-#' string.
+#' @param DBClusterIdentifier &#91;required&#93; The cluster identifier. This parameter is stored as a lowercase string.
 #' 
 #' Constraints:
 #' 
@@ -354,22 +351,21 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster`
-#' @param DBClusterParameterGroupName The name of the DB cluster parameter group to associate with this DB
-#' cluster.
-#' @param VpcSecurityGroupIds A list of EC2 VPC security groups to associate with this DB cluster.
-#' @param DBSubnetGroupName A DB subnet group to associate with this DB cluster.
+#' @param DBClusterParameterGroupName The name of the cluster parameter group to associate with this cluster.
+#' @param VpcSecurityGroupIds A list of EC2 VPC security groups to associate with this cluster.
+#' @param DBSubnetGroupName A subnet group to associate with this cluster.
 #' 
 #' Constraints: Must match the name of an existing `DBSubnetGroup`. Must
 #' not be default.
 #' 
 #' Example: `mySubnetgroup`
-#' @param Engine &#91;required&#93; The name of the database engine to be used for this DB cluster.
+#' @param Engine &#91;required&#93; The name of the database engine to be used for this cluster.
 #' 
 #' Valid values: `docdb`
 #' @param EngineVersion The version number of the database engine to use.
-#' @param Port The port number on which the instances in the DB cluster accept
+#' @param Port The port number on which the instances in the cluster accept
 #' connections.
-#' @param MasterUsername &#91;required&#93; The name of the master user for the DB cluster.
+#' @param MasterUsername &#91;required&#93; The name of the master user for the cluster.
 #' 
 #' Constraints:
 #' 
@@ -411,14 +407,14 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 #' 
 #' Constraints: Minimum 30-minute window.
-#' @param Tags The tags to be assigned to the DB cluster.
-#' @param StorageEncrypted Specifies whether the DB cluster is encrypted.
-#' @param KmsKeyId The AWS KMS key identifier for an encrypted DB cluster.
+#' @param Tags The tags to be assigned to the cluster.
+#' @param StorageEncrypted Specifies whether the cluster is encrypted.
+#' @param KmsKeyId The AWS KMS key identifier for an encrypted cluster.
 #' 
 #' The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-#' KMS encryption key. If you are creating a DB cluster using the same AWS
+#' KMS encryption key. If you are creating a cluster using the same AWS
 #' account that owns the AWS KMS encryption key that is used to encrypt the
-#' new DB cluster, you can use the AWS KMS key alias instead of the ARN for
+#' new cluster, you can use the AWS KMS key alias instead of the ARN for
 #' the AWS KMS encryption key.
 #' 
 #' If an encryption key is not specified in `KmsKeyId`:
@@ -435,10 +431,9 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' AWS KMS creates the default encryption key for your AWS account. Your
 #' AWS account has a different default encryption key for each AWS Region.
 #' 
-#' If you create a replica of an encrypted DB cluster in another AWS
-#' Region, you must set `KmsKeyId` to a KMS key ID that is valid in the
-#' destination AWS Region. This key is used to encrypt the replica in that
-#' AWS Region.
+#' If you create a replica of an encrypted cluster in another AWS Region,
+#' you must set `KmsKeyId` to a KMS key ID that is valid in the destination
+#' AWS Region. This key is used to encrypt the replica in that AWS Region.
 #' @param EnableCloudwatchLogsExports A list of log types that need to be enabled for exporting to Amazon
 #' CloudWatch Logs.
 #' @param DeletionProtection Specifies whether this cluster can be deleted. If `DeletionProtection`
@@ -501,45 +496,44 @@ docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPer
 }
 .docdb$operations$create_db_cluster <- docdb_create_db_cluster
 
-#' Creates a new DB cluster parameter group
+#' Creates a new cluster parameter group
 #'
-#' Creates a new DB cluster parameter group.
+#' Creates a new cluster parameter group.
 #' 
-#' Parameters in a DB cluster parameter group apply to all of the instances
-#' in a DB cluster.
+#' Parameters in a cluster parameter group apply to all of the instances in
+#' a DB cluster.
 #' 
-#' A DB cluster parameter group is initially created with the default
-#' parameters for the database engine used by instances in the DB cluster.
-#' To provide custom values for any of the parameters, you must modify the
+#' A cluster parameter group is initially created with the default
+#' parameters for the database engine used by instances in the cluster. To
+#' provide custom values for any of the parameters, you must modify the
 #' group after you create it. After you create a DB cluster parameter
-#' group, you must associate it with your DB cluster. For the new DB
-#' cluster parameter group and associated settings to take effect, you must
-#' then reboot the DB instances in the DB cluster without failover.
+#' group, you must associate it with your cluster. For the new DB cluster
+#' parameter group and associated settings to take effect, you must then
+#' reboot the instances in the cluster without failover.
 #' 
-#' After you create a DB cluster parameter group, you should wait at least
-#' 5 minutes before creating your first DB cluster that uses that DB
-#' cluster parameter group as the default parameter group. This allows
-#' Amazon DocumentDB to fully complete the create action before the DB
-#' cluster parameter group is used as the default for a new DB cluster.
-#' This step is especially important for parameters that are critical when
-#' creating the default database for a DB cluster, such as the character
-#' set for the default database defined by the `character_set_database`
-#' parameter.
+#' After you create a cluster parameter group, you should wait at least 5
+#' minutes before creating your first cluster that uses that cluster
+#' parameter group as the default parameter group. This allows Amazon
+#' DocumentDB to fully complete the create action before the cluster
+#' parameter group is used as the default for a new cluster. This step is
+#' especially important for parameters that are critical when creating the
+#' default database for a cluster, such as the character set for the
+#' default database defined by the `character_set_database` parameter.
 #'
 #' @usage
 #' docdb_create_db_cluster_parameter_group(DBClusterParameterGroupName,
 #'   DBParameterGroupFamily, Description, Tags)
 #'
-#' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group.
+#' @param DBClusterParameterGroupName &#91;required&#93; The name of the cluster parameter group.
 #' 
 #' Constraints:
 #' 
-#' -   Must match the name of an existing `DBClusterParameterGroup`.
+#' -   Must not match the name of an existing `DBClusterParameterGroup`.
 #' 
 #' This value is stored as a lowercase string.
-#' @param DBParameterGroupFamily &#91;required&#93; The DB cluster parameter group family name.
-#' @param Description &#91;required&#93; The description for the DB cluster parameter group.
-#' @param Tags The tags to be assigned to the DB cluster parameter group.
+#' @param DBParameterGroupFamily &#91;required&#93; The cluster parameter group family name.
+#' @param Description &#91;required&#93; The description for the cluster parameter group.
+#' @param Tags The tags to be assigned to the cluster parameter group.
 #'
 #' @section Request syntax:
 #' ```
@@ -576,15 +570,15 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 }
 .docdb$operations$create_db_cluster_parameter_group <- docdb_create_db_cluster_parameter_group
 
-#' Creates a snapshot of a DB cluster
+#' Creates a snapshot of a cluster
 #'
-#' Creates a snapshot of a DB cluster.
+#' Creates a snapshot of a cluster.
 #'
 #' @usage
 #' docdb_create_db_cluster_snapshot(DBClusterSnapshotIdentifier,
 #'   DBClusterIdentifier, Tags)
 #'
-#' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot. This parameter is stored as a
+#' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the cluster snapshot. This parameter is stored as a
 #' lowercase string.
 #' 
 #' Constraints:
@@ -596,15 +590,15 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster-snapshot1`
-#' @param DBClusterIdentifier &#91;required&#93; The identifier of the DB cluster to create a snapshot for. This
-#' parameter is not case sensitive.
+#' @param DBClusterIdentifier &#91;required&#93; The identifier of the cluster to create a snapshot for. This parameter
+#' is not case sensitive.
 #' 
 #' Constraints:
 #' 
 #' -   Must match the identifier of an existing `DBCluster`.
 #' 
 #' Example: `my-cluster`
-#' @param Tags The tags to be assigned to the DB cluster snapshot.
+#' @param Tags The tags to be assigned to the cluster snapshot.
 #'
 #' @section Request syntax:
 #' ```
@@ -640,17 +634,16 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 }
 .docdb$operations$create_db_cluster_snapshot <- docdb_create_db_cluster_snapshot
 
-#' Creates a new DB instance
+#' Creates a new instance
 #'
-#' Creates a new DB instance.
+#' Creates a new instance.
 #'
 #' @usage
 #' docdb_create_db_instance(DBInstanceIdentifier, DBInstanceClass, Engine,
 #'   AvailabilityZone, PreferredMaintenanceWindow, AutoMinorVersionUpgrade,
 #'   Tags, DBClusterIdentifier, PromotionTier)
 #'
-#' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This parameter is stored as a lowercase
-#' string.
+#' @param DBInstanceIdentifier &#91;required&#93; The instance identifier. This parameter is stored as a lowercase string.
 #' 
 #' Constraints:
 #' 
@@ -661,12 +654,12 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `mydbinstance`
-#' @param DBInstanceClass &#91;required&#93; The compute and memory capacity of the DB instance; for example,
+#' @param DBInstanceClass &#91;required&#93; The compute and memory capacity of the instance; for example,
 #' `db.r5.large`.
 #' @param Engine &#91;required&#93; The name of the database engine to be used for this instance.
 #' 
 #' Valid value: `docdb`
-#' @param AvailabilityZone The Amazon EC2 Availability Zone that the DB instance is created in.
+#' @param AvailabilityZone The Amazon EC2 Availability Zone that the instance is created in.
 #' 
 #' Default: A random, system-chosen Availability Zone in the endpoint\'s
 #' AWS Region.
@@ -688,13 +681,13 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 #' 
 #' Constraints: Minimum 30-minute window.
-#' @param AutoMinorVersionUpgrade Indicates that minor engine upgrades are applied automatically to the DB
+#' @param AutoMinorVersionUpgrade Indicates that minor engine upgrades are applied automatically to the
 #' instance during the maintenance window.
 #' 
 #' Default: `true`
-#' @param Tags The tags to be assigned to the DB instance. You can assign up to 10 tags
-#' to an instance.
-#' @param DBClusterIdentifier &#91;required&#93; The identifier of the DB cluster that the instance will belong to.
+#' @param Tags The tags to be assigned to the instance. You can assign up to 10 tags to
+#' an instance.
+#' @param DBClusterIdentifier &#91;required&#93; The identifier of the cluster that the instance will belong to.
 #' @param PromotionTier A value that specifies the order in which an Amazon DocumentDB replica
 #' is promoted to the primary instance after a failure of the existing
 #' primary instance.
@@ -743,25 +736,25 @@ docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engi
 }
 .docdb$operations$create_db_instance <- docdb_create_db_instance
 
-#' Creates a new DB subnet group
+#' Creates a new subnet group
 #'
-#' Creates a new DB subnet group. DB subnet groups must contain at least
-#' one subnet in at least two Availability Zones in the AWS Region.
+#' Creates a new subnet group. subnet groups must contain at least one
+#' subnet in at least two Availability Zones in the AWS Region.
 #'
 #' @usage
 #' docdb_create_db_subnet_group(DBSubnetGroupName,
 #'   DBSubnetGroupDescription, SubnetIds, Tags)
 #'
-#' @param DBSubnetGroupName &#91;required&#93; The name for the DB subnet group. This value is stored as a lowercase
+#' @param DBSubnetGroupName &#91;required&#93; The name for the subnet group. This value is stored as a lowercase
 #' string.
 #' 
 #' Constraints: Must contain no more than 255 letters, numbers, periods,
 #' underscores, spaces, or hyphens. Must not be default.
 #' 
 #' Example: `mySubnetgroup`
-#' @param DBSubnetGroupDescription &#91;required&#93; The description for the DB subnet group.
-#' @param SubnetIds &#91;required&#93; The Amazon EC2 subnet IDs for the DB subnet group.
-#' @param Tags The tags to be assigned to the DB subnet group.
+#' @param DBSubnetGroupDescription &#91;required&#93; The description for the subnet group.
+#' @param SubnetIds &#91;required&#93; The Amazon EC2 subnet IDs for the subnet group.
+#' @param Tags The tags to be assigned to the subnet group.
 #'
 #' @section Request syntax:
 #' ```
@@ -800,34 +793,33 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 }
 .docdb$operations$create_db_subnet_group <- docdb_create_db_subnet_group
 
-#' Deletes a previously provisioned DB cluster
+#' Deletes a previously provisioned cluster
 #'
-#' Deletes a previously provisioned DB cluster. When you delete a DB
-#' cluster, all automated backups for that DB cluster are deleted and
-#' can\'t be recovered. Manual DB cluster snapshots of the specified DB
-#' cluster are not deleted.
+#' Deletes a previously provisioned cluster. When you delete a cluster, all
+#' automated backups for that cluster are deleted and can\'t be recovered.
+#' Manual DB cluster snapshots of the specified cluster are not deleted.
 #'
 #' @usage
 #' docdb_delete_db_cluster(DBClusterIdentifier, SkipFinalSnapshot,
 #'   FinalDBSnapshotIdentifier)
 #'
-#' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier for the DB cluster to be deleted. This
-#' parameter isn\'t case sensitive.
+#' @param DBClusterIdentifier &#91;required&#93; The cluster identifier for the cluster to be deleted. This parameter
+#' isn\'t case sensitive.
 #' 
 #' Constraints:
 #' 
 #' -   Must match an existing `DBClusterIdentifier`.
-#' @param SkipFinalSnapshot Determines whether a final DB cluster snapshot is created before the DB
-#' cluster is deleted. If `true` is specified, no DB cluster snapshot is
-#' created. If `false` is specified, a DB cluster snapshot is created
-#' before the DB cluster is deleted.
+#' @param SkipFinalSnapshot Determines whether a final cluster snapshot is created before the
+#' cluster is deleted. If `true` is specified, no cluster snapshot is
+#' created. If `false` is specified, a cluster snapshot is created before
+#' the DB cluster is deleted.
 #' 
 #' If `SkipFinalSnapshot` is `false`, you must specify a
 #' `FinalDBSnapshotIdentifier` parameter.
 #' 
 #' Default: `false`
-#' @param FinalDBSnapshotIdentifier The DB cluster snapshot identifier of the new DB cluster snapshot
-#' created when `SkipFinalSnapshot` is set to `false`.
+#' @param FinalDBSnapshotIdentifier The cluster snapshot identifier of the new cluster snapshot created when
+#' `SkipFinalSnapshot` is set to `false`.
 #' 
 #' Specifying this parameter and also setting the `SkipFinalShapshot`
 #' parameter to `true` results in an error.
@@ -869,23 +861,23 @@ docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NUL
 }
 .docdb$operations$delete_db_cluster <- docdb_delete_db_cluster
 
-#' Deletes a specified DB cluster parameter group
+#' Deletes a specified cluster parameter group
 #'
-#' Deletes a specified DB cluster parameter group. The DB cluster parameter
-#' group to be deleted can\'t be associated with any DB clusters.
+#' Deletes a specified cluster parameter group. The cluster parameter group
+#' to be deleted can\'t be associated with any clusters.
 #'
 #' @usage
 #' docdb_delete_db_cluster_parameter_group(DBClusterParameterGroupName)
 #'
-#' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group.
+#' @param DBClusterParameterGroupName &#91;required&#93; The name of the cluster parameter group.
 #' 
 #' Constraints:
 #' 
-#' -   Must be the name of an existing DB cluster parameter group.
+#' -   Must be the name of an existing cluster parameter group.
 #' 
-#' -   You can\'t delete a default DB cluster parameter group.
+#' -   You can\'t delete a default cluster parameter group.
 #' 
-#' -   Cannot be associated with any DB clusters.
+#' -   Cannot be associated with any clusters.
 #'
 #' @section Request syntax:
 #' ```
@@ -914,19 +906,19 @@ docdb_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName)
 }
 .docdb$operations$delete_db_cluster_parameter_group <- docdb_delete_db_cluster_parameter_group
 
-#' Deletes a DB cluster snapshot
+#' Deletes a cluster snapshot
 #'
-#' Deletes a DB cluster snapshot. If the snapshot is being copied, the copy
+#' Deletes a cluster snapshot. If the snapshot is being copied, the copy
 #' operation is terminated.
 #' 
-#' The DB cluster snapshot must be in the `available` state to be deleted.
+#' The cluster snapshot must be in the `available` state to be deleted.
 #'
 #' @usage
 #' docdb_delete_db_cluster_snapshot(DBClusterSnapshotIdentifier)
 #'
-#' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the DB cluster snapshot to delete.
+#' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the cluster snapshot to delete.
 #' 
-#' Constraints: Must be the name of an existing DB cluster snapshot in the
+#' Constraints: Must be the name of an existing cluster snapshot in the
 #' `available` state.
 #'
 #' @section Request syntax:
@@ -956,19 +948,19 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 }
 .docdb$operations$delete_db_cluster_snapshot <- docdb_delete_db_cluster_snapshot
 
-#' Deletes a previously provisioned DB instance
+#' Deletes a previously provisioned instance
 #'
-#' Deletes a previously provisioned DB instance.
+#' Deletes a previously provisioned instance.
 #'
 #' @usage
 #' docdb_delete_db_instance(DBInstanceIdentifier)
 #'
-#' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier for the DB instance to be deleted. This
-#' parameter isn\'t case sensitive.
+#' @param DBInstanceIdentifier &#91;required&#93; The instance identifier for the instance to be deleted. This parameter
+#' isn\'t case sensitive.
 #' 
 #' Constraints:
 #' 
-#' -   Must match the name of an existing DB instance.
+#' -   Must match the name of an existing instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -997,9 +989,9 @@ docdb_delete_db_instance <- function(DBInstanceIdentifier) {
 }
 .docdb$operations$delete_db_instance <- docdb_delete_db_instance
 
-#' Deletes a DB subnet group
+#' Deletes a subnet group
 #'
-#' Deletes a DB subnet group.
+#' Deletes a subnet group.
 #' 
 #' The specified database subnet group must not be associated with any DB
 #' instances.
@@ -1045,10 +1037,10 @@ docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
 .docdb$operations$delete_db_subnet_group <- docdb_delete_db_subnet_group
 
 #' Returns a list of certificate authority (CA) certificates provided by
-#' Amazon RDS for this AWS account
+#' Amazon DocumentDB for this AWS account
 #'
 #' Returns a list of certificate authority (CA) certificates provided by
-#' Amazon RDS for this AWS account.
+#' Amazon DocumentDB for this AWS account.
 #'
 #' @usage
 #' docdb_describe_certificates(CertificateIdentifier, Filters, MaxRecords,
@@ -1121,13 +1113,13 @@ docdb_describe_certificates <- function(CertificateIdentifier = NULL, Filters = 
 #'
 #' Returns a list of `DBClusterParameterGroup` descriptions. If a
 #' `DBClusterParameterGroupName` parameter is specified, the list contains
-#' only the description of the specified DB cluster parameter group.
+#' only the description of the specified cluster parameter group.
 #'
 #' @usage
 #' docdb_describe_db_cluster_parameter_groups(DBClusterParameterGroupName,
 #'   Filters, MaxRecords, Marker)
 #'
-#' @param DBClusterParameterGroupName The name of a specific DB cluster parameter group to return details for.
+#' @param DBClusterParameterGroupName The name of a specific cluster parameter group to return details for.
 #' 
 #' Constraints:
 #' 
@@ -1183,17 +1175,17 @@ docdb_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupNa
 }
 .docdb$operations$describe_db_cluster_parameter_groups <- docdb_describe_db_cluster_parameter_groups
 
-#' Returns the detailed parameter list for a particular DB cluster
-#' parameter group
+#' Returns the detailed parameter list for a particular cluster parameter
+#' group
 #'
-#' Returns the detailed parameter list for a particular DB cluster
-#' parameter group.
+#' Returns the detailed parameter list for a particular cluster parameter
+#' group.
 #'
 #' @usage
 #' docdb_describe_db_cluster_parameters(DBClusterParameterGroupName,
 #'   Source, Filters, MaxRecords, Marker)
 #'
-#' @param DBClusterParameterGroupName &#91;required&#93; The name of a specific DB cluster parameter group to return parameter
+#' @param DBClusterParameterGroupName &#91;required&#93; The name of a specific cluster parameter group to return parameter
 #' details for.
 #' 
 #' Constraints:
@@ -1253,25 +1245,24 @@ docdb_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, So
 }
 .docdb$operations$describe_db_cluster_parameters <- docdb_describe_db_cluster_parameters
 
-#' Returns a list of DB cluster snapshot attribute names and values for a
+#' Returns a list of cluster snapshot attribute names and values for a
 #' manual DB cluster snapshot
 #'
-#' Returns a list of DB cluster snapshot attribute names and values for a
+#' Returns a list of cluster snapshot attribute names and values for a
 #' manual DB cluster snapshot.
 #' 
 #' When you share snapshots with other AWS accounts,
 #' `DescribeDBClusterSnapshotAttributes` returns the `restore` attribute
 #' and a list of IDs for the AWS accounts that are authorized to copy or
-#' restore the manual DB cluster snapshot. If `all` is included in the list
-#' of values for the `restore` attribute, then the manual DB cluster
-#' snapshot is public and can be copied or restored by all AWS accounts.
+#' restore the manual cluster snapshot. If `all` is included in the list of
+#' values for the `restore` attribute, then the manual cluster snapshot is
+#' public and can be copied or restored by all AWS accounts.
 #'
 #' @usage
 #' docdb_describe_db_cluster_snapshot_attributes(
 #'   DBClusterSnapshotIdentifier)
 #'
-#' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the DB cluster snapshot to describe the attributes
-#' for.
+#' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the cluster snapshot to describe the attributes for.
 #'
 #' @section Request syntax:
 #' ```
@@ -1300,25 +1291,24 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 }
 .docdb$operations$describe_db_cluster_snapshot_attributes <- docdb_describe_db_cluster_snapshot_attributes
 
-#' Returns information about DB cluster snapshots
+#' Returns information about cluster snapshots
 #'
-#' Returns information about DB cluster snapshots. This API operation
-#' supports pagination.
+#' Returns information about cluster snapshots. This API operation supports
+#' pagination.
 #'
 #' @usage
 #' docdb_describe_db_cluster_snapshots(DBClusterIdentifier,
 #'   DBClusterSnapshotIdentifier, SnapshotType, Filters, MaxRecords, Marker,
 #'   IncludeShared, IncludePublic)
 #'
-#' @param DBClusterIdentifier The ID of the DB cluster to retrieve the list of DB cluster snapshots
-#' for. This parameter can\'t be used with the
-#' `DBClusterSnapshotIdentifier` parameter. This parameter is not case
-#' sensitive.
+#' @param DBClusterIdentifier The ID of the cluster to retrieve the list of cluster snapshots for.
+#' This parameter can\'t be used with the `DBClusterSnapshotIdentifier`
+#' parameter. This parameter is not case sensitive.
 #' 
 #' Constraints:
 #' 
 #' -   If provided, must match the identifier of an existing `DBCluster`.
-#' @param DBClusterSnapshotIdentifier A specific DB cluster snapshot identifier to describe. This parameter
+#' @param DBClusterSnapshotIdentifier A specific cluster snapshot identifier to describe. This parameter
 #' can\'t be used with the `DBClusterIdentifier` parameter. This value is
 #' stored as a lowercase string.
 #' 
@@ -1329,26 +1319,26 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #' 
 #' -   If this identifier is for an automated snapshot, the `SnapshotType`
 #'     parameter must also be specified.
-#' @param SnapshotType The type of DB cluster snapshots to be returned. You can specify one of
-#' the following values:
+#' @param SnapshotType The type of cluster snapshots to be returned. You can specify one of the
+#' following values:
 #' 
-#' -   `automated` - Return all DB cluster snapshots that Amazon DocumentDB
+#' -   `automated` - Return all cluster snapshots that Amazon DocumentDB
 #'     has automatically created for your AWS account.
 #' 
-#' -   `manual` - Return all DB cluster snapshots that you have manually
+#' -   `manual` - Return all cluster snapshots that you have manually
 #'     created for your AWS account.
 #' 
-#' -   `shared` - Return all manual DB cluster snapshots that have been
-#'     shared to your AWS account.
+#' -   `shared` - Return all manual cluster snapshots that have been shared
+#'     to your AWS account.
 #' 
-#' -   `public` - Return all DB cluster snapshots that have been marked as
+#' -   `public` - Return all cluster snapshots that have been marked as
 #'     public.
 #' 
 #' If you don\'t specify a `SnapshotType` value, then both automated and
-#' manual DB cluster snapshots are returned. You can include shared DB
-#' cluster snapshots with these results by setting the `IncludeShared`
-#' parameter to `true`. You can include public DB cluster snapshots with
-#' these results by setting the `IncludePublic` parameter to `true`.
+#' manual cluster snapshots are returned. You can include shared cluster
+#' snapshots with these results by setting the `IncludeShared` parameter to
+#' `true`. You can include public cluster snapshots with these results by
+#' setting the `IncludePublic` parameter to `true`.
 #' 
 #' The `IncludeShared` and `IncludePublic` parameters don\'t apply for
 #' `SnapshotType` values of `manual` or `automated`. The `IncludePublic`
@@ -1367,10 +1357,10 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
-#' @param IncludeShared Set to `true` to include shared manual DB cluster snapshots from other
-#' AWS accounts that this AWS account has been given permission to copy or
+#' @param IncludeShared Set to `true` to include shared manual cluster snapshots from other AWS
+#' accounts that this AWS account has been given permission to copy or
 #' restore, and otherwise `false`. The default is `false`.
-#' @param IncludePublic Set to `true` to include manual DB cluster snapshots that are public and
+#' @param IncludePublic Set to `true` to include manual cluster snapshots that are public and
 #' can be copied or restored by any AWS account, and otherwise `false`. The
 #' default is `false`.
 #'
@@ -1415,29 +1405,33 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 }
 .docdb$operations$describe_db_cluster_snapshots <- docdb_describe_db_cluster_snapshots
 
-#' Returns information about provisioned Amazon DocumentDB DB clusters
+#' Returns information about provisioned Amazon DocumentDB clusters
 #'
-#' Returns information about provisioned Amazon DocumentDB DB clusters.
-#' This API operation supports pagination.
+#' Returns information about provisioned Amazon DocumentDB clusters. This
+#' API operation supports pagination. For certain management features such
+#' as cluster and instance lifecycle management, Amazon DocumentDB
+#' leverages operational technology that is shared with Amazon RDS and
+#' Amazon Neptune. Use the `filterName=engine,Values=docdb` filter
+#' parameter to return only Amazon DocumentDB clusters.
 #'
 #' @usage
 #' docdb_describe_db_clusters(DBClusterIdentifier, Filters, MaxRecords,
 #'   Marker)
 #'
-#' @param DBClusterIdentifier The user-provided DB cluster identifier. If this parameter is specified,
-#' information from only the specific DB cluster is returned. This
-#' parameter isn\'t case sensitive.
+#' @param DBClusterIdentifier The user-provided cluster identifier. If this parameter is specified,
+#' information from only the specific cluster is returned. This parameter
+#' isn\'t case sensitive.
 #' 
 #' Constraints:
 #' 
 #' -   If provided, must match an existing `DBClusterIdentifier`.
-#' @param Filters A filter that specifies one or more DB clusters to describe.
+#' @param Filters A filter that specifies one or more clusters to describe.
 #' 
 #' Supported filters:
 #' 
-#' -   `db-cluster-id` - Accepts DB cluster identifiers and DB cluster
-#'     Amazon Resource Names (ARNs). The results list only includes
-#'     information about the DB clusters identified by these ARNs.
+#' -   `db-cluster-id` - Accepts cluster identifiers and cluster Amazon
+#'     Resource Names (ARNs). The results list only includes information
+#'     about the clusters identified by these ARNs.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' (marker) is included in the response so that the remaining results can
@@ -1487,9 +1481,9 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
 }
 .docdb$operations$describe_db_clusters <- docdb_describe_db_clusters
 
-#' Returns a list of the available DB engines
+#' Returns a list of the available engines
 #'
-#' Returns a list of the available DB engines.
+#' Returns a list of the available engines.
 #'
 #' @usage
 #' docdb_describe_db_engine_versions(Engine, EngineVersion,
@@ -1500,7 +1494,7 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
 #' @param EngineVersion The database engine version to return.
 #' 
 #' Example: `5.1.49`
-#' @param DBParameterGroupFamily The name of a specific DB parameter group family to return details for.
+#' @param DBParameterGroupFamily The name of a specific parameter group family to return details for.
 #' 
 #' Constraints:
 #' 
@@ -1578,24 +1572,24 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
 #'   Marker)
 #'
 #' @param DBInstanceIdentifier The user-provided instance identifier. If this parameter is specified,
-#' information from only the specific DB instance is returned. This
-#' parameter isn\'t case sensitive.
+#' information from only the specific instance is returned. This parameter
+#' isn\'t case sensitive.
 #' 
 #' Constraints:
 #' 
 #' -   If provided, must match the identifier of an existing `DBInstance`.
-#' @param Filters A filter that specifies one or more DB instances to describe.
+#' @param Filters A filter that specifies one or more instances to describe.
 #' 
 #' Supported filters:
 #' 
-#' -   `db-cluster-id` - Accepts DB cluster identifiers and DB cluster
-#'     Amazon Resource Names (ARNs). The results list includes only the
-#'     information about the DB instances that are associated with the DB
+#' -   `db-cluster-id` - Accepts cluster identifiers and cluster Amazon
+#'     Resource Names (ARNs). The results list includes only the
+#'     information about the instances that are associated with the
 #'     clusters that are identified by these ARNs.
 #' 
-#' -   `db-instance-id` - Accepts DB instance identifiers and DB instance
-#'     ARNs. The results list includes only the information about the DB
-#'     instances that are identified by these ARNs.
+#' -   `db-instance-id` - Accepts instance identifiers and instance ARNs.
+#'     The results list includes only the information about the instances
+#'     that are identified by these ARNs.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' (marker) is included in the response so that the remaining results can
@@ -1655,7 +1649,7 @@ docdb_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = N
 #' docdb_describe_db_subnet_groups(DBSubnetGroupName, Filters, MaxRecords,
 #'   Marker)
 #'
-#' @param DBSubnetGroupName The name of the DB subnet group to return details for.
+#' @param DBSubnetGroupName The name of the subnet group to return details for.
 #' @param Filters This parameter is not currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
@@ -1716,7 +1710,7 @@ docdb_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = 
 #' docdb_describe_engine_default_cluster_parameters(DBParameterGroupFamily,
 #'   Filters, MaxRecords, Marker)
 #'
-#' @param DBParameterGroupFamily &#91;required&#93; The name of the DB cluster parameter group family to return the engine
+#' @param DBParameterGroupFamily &#91;required&#93; The name of the cluster parameter group family to return the engine
 #' parameter information for.
 #' @param Filters This parameter is not currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more
@@ -1818,14 +1812,14 @@ docdb_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
 }
 .docdb$operations$describe_event_categories <- docdb_describe_event_categories
 
-#' Returns events related to DB instances, DB security groups, DB
-#' snapshots, and DB parameter groups for the past 14 days
+#' Returns events related to instances, security groups, snapshots, and DB
+#' parameter groups for the past 14 days
 #'
-#' Returns events related to DB instances, DB security groups, DB
-#' snapshots, and DB parameter groups for the past 14 days. You can obtain
-#' events specific to a particular DB instance, DB security group, DB
-#' snapshot, or DB parameter group by providing the name as a parameter. By
-#' default, the events of the past hour are returned.
+#' Returns events related to instances, security groups, snapshots, and DB
+#' parameter groups for the past 14 days. You can obtain events specific to
+#' a particular DB instance, security group, snapshot, or parameter group
+#' by providing the name as a parameter. By default, the events of the past
+#' hour are returned.
 #'
 #' @usage
 #' docdb_describe_events(SourceIdentifier, SourceType, StartTime, EndTime,
@@ -1928,20 +1922,19 @@ docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, St
 }
 .docdb$operations$describe_events <- docdb_describe_events
 
-#' Returns a list of orderable DB instance options for the specified engine
+#' Returns a list of orderable instance options for the specified engine
 #'
-#' Returns a list of orderable DB instance options for the specified
-#' engine.
+#' Returns a list of orderable instance options for the specified engine.
 #'
 #' @usage
 #' docdb_describe_orderable_db_instance_options(Engine, EngineVersion,
 #'   DBInstanceClass, LicenseModel, Vpc, Filters, MaxRecords, Marker)
 #'
-#' @param Engine &#91;required&#93; The name of the engine to retrieve DB instance options for.
+#' @param Engine &#91;required&#93; The name of the engine to retrieve instance options for.
 #' @param EngineVersion The engine version filter value. Specify this parameter to show only the
 #' available offerings that match the specified engine version.
-#' @param DBInstanceClass The DB instance class filter value. Specify this parameter to show only
-#' the available offerings that match the specified DB instance class.
+#' @param DBInstanceClass The instance class filter value. Specify this parameter to show only the
+#' available offerings that match the specified instance class.
 #' @param LicenseModel The license model filter value. Specify this parameter to show only the
 #' available offerings that match the specified license model.
 #' @param Vpc The virtual private cloud (VPC) filter value. Specify this parameter to
@@ -2000,11 +1993,11 @@ docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion =
 }
 .docdb$operations$describe_orderable_db_instance_options <- docdb_describe_orderable_db_instance_options
 
-#' Returns a list of resources (for example, DB instances) that have at
-#' least one pending maintenance action
+#' Returns a list of resources (for example, instances) that have at least
+#' one pending maintenance action
 #'
-#' Returns a list of resources (for example, DB instances) that have at
-#' least one pending maintenance action.
+#' Returns a list of resources (for example, instances) that have at least
+#' one pending maintenance action.
 #'
 #' @usage
 #' docdb_describe_pending_maintenance_actions(ResourceIdentifier, Filters,
@@ -2016,13 +2009,13 @@ docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion =
 #' 
 #' Supported filters:
 #' 
-#' -   `db-cluster-id` - Accepts DB cluster identifiers and DB cluster
-#'     Amazon Resource Names (ARNs). The results list includes only pending
-#'     maintenance actions for the DB clusters identified by these ARNs.
+#' -   `db-cluster-id` - Accepts cluster identifiers and cluster Amazon
+#'     Resource Names (ARNs). The results list includes only pending
+#'     maintenance actions for the clusters identified by these ARNs.
 #' 
-#' -   `db-instance-id` - Accepts DB instance identifiers and DB instance
-#'     ARNs. The results list includes only pending maintenance actions for
-#'     the DB instances identified by these ARNs.
+#' -   `db-instance-id` - Accepts instance identifiers and instance ARNs.
+#'     The results list includes only pending maintenance actions for the
+#'     DB instances identified by these ARNs.
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
@@ -2072,13 +2065,13 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 }
 .docdb$operations$describe_pending_maintenance_actions <- docdb_describe_pending_maintenance_actions
 
-#' Forces a failover for a DB cluster
+#' Forces a failover for a cluster
 #'
-#' Forces a failover for a DB cluster.
+#' Forces a failover for a cluster.
 #' 
-#' A failover for a DB cluster promotes one of the Amazon DocumentDB
-#' replicas (read-only instances) in the DB cluster to be the primary
-#' instance (the cluster writer).
+#' A failover for a cluster promotes one of the Amazon DocumentDB replicas
+#' (read-only instances) in the cluster to be the primary instance (the
+#' cluster writer).
 #' 
 #' If the primary instance fails, Amazon DocumentDB automatically fails
 #' over to an Amazon DocumentDB replica, if one exists. You can force a
@@ -2089,8 +2082,8 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 #' docdb_failover_db_cluster(DBClusterIdentifier,
 #'   TargetDBInstanceIdentifier)
 #'
-#' @param DBClusterIdentifier A DB cluster identifier to force a failover for. This parameter is not
-#' case sensitive.
+#' @param DBClusterIdentifier A cluster identifier to force a failover for. This parameter is not case
+#' sensitive.
 #' 
 #' Constraints:
 #' 
@@ -2098,7 +2091,7 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 #' @param TargetDBInstanceIdentifier The name of the instance to promote to the primary instance.
 #' 
 #' You must specify the instance identifier for an Amazon DocumentDB
-#' replica in the DB cluster. For example, `mydbcluster-replica1`.
+#' replica in the cluster. For example, `mydbcluster-replica1`.
 #'
 #' @section Request syntax:
 #' ```
@@ -2174,11 +2167,11 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 }
 .docdb$operations$list_tags_for_resource <- docdb_list_tags_for_resource
 
-#' Modifies a setting for an Amazon DocumentDB DB cluster
+#' Modifies a setting for an Amazon DocumentDB cluster
 #'
-#' Modifies a setting for an Amazon DocumentDB DB cluster. You can change
-#' one or more database configuration parameters by specifying these
-#' parameters and the new values in the request.
+#' Modifies a setting for an Amazon DocumentDB cluster. You can change one
+#' or more database configuration parameters by specifying these parameters
+#' and the new values in the request.
 #'
 #' @usage
 #' docdb_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
@@ -2187,14 +2180,14 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'   PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration,
 #'   EngineVersion, DeletionProtection)
 #'
-#' @param DBClusterIdentifier &#91;required&#93; The DB cluster identifier for the cluster that is being modified. This
+#' @param DBClusterIdentifier &#91;required&#93; The cluster identifier for the cluster that is being modified. This
 #' parameter is not case sensitive.
 #' 
 #' Constraints:
 #' 
 #' -   Must match the identifier of an existing `DBCluster`.
-#' @param NewDBClusterIdentifier The new DB cluster identifier for the DB cluster when renaming a DB
-#' cluster. This value is stored as a lowercase string.
+#' @param NewDBClusterIdentifier The new cluster identifier for the cluster when renaming a cluster. This
+#' value is stored as a lowercase string.
 #' 
 #' Constraints:
 #' 
@@ -2207,9 +2200,9 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' Example: `my-cluster2`
 #' @param ApplyImmediately A value that specifies whether the changes in this request and any
 #' pending changes are asynchronously applied as soon as possible,
-#' regardless of the `PreferredMaintenanceWindow` setting for the DB
-#' cluster. If this parameter is set to `false`, changes to the DB cluster
-#' are applied during the next maintenance window.
+#' regardless of the `PreferredMaintenanceWindow` setting for the cluster.
+#' If this parameter is set to `false`, changes to the cluster are applied
+#' during the next maintenance window.
 #' 
 #' The `ApplyImmediately` parameter affects only the
 #' `NewDBClusterIdentifier` and `MasterUserPassword` values. If you set
@@ -2228,14 +2221,14 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' Constraints:
 #' 
 #' -   Must be a value from 1 to 35.
-#' @param DBClusterParameterGroupName The name of the DB cluster parameter group to use for the DB cluster.
-#' @param VpcSecurityGroupIds A list of virtual private cloud (VPC) security groups that the DB
-#' cluster will belong to.
-#' @param Port The port number on which the DB cluster accepts connections.
+#' @param DBClusterParameterGroupName The name of the cluster parameter group to use for the cluster.
+#' @param VpcSecurityGroupIds A list of virtual private cloud (VPC) security groups that the cluster
+#' will belong to.
+#' @param Port The port number on which the cluster accepts connections.
 #' 
 #' Constraints: Must be a value from `1150` to `65535`.
 #' 
-#' Default: The same port as the original DB cluster.
+#' Default: The same port as the original cluster.
 #' @param MasterUserPassword The password for the master database user. This password can contain any
 #' printable ASCII character except forward slash (/), double quote (\"),
 #' or the \"at\" symbol (@@).
@@ -2270,7 +2263,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' 
 #' Constraints: Minimum 30-minute window.
 #' @param CloudwatchLogsExportConfiguration The configuration setting for the log types to be enabled for export to
-#' Amazon CloudWatch Logs for a specific DB instance or DB cluster. The
+#' Amazon CloudWatch Logs for a specific instance or cluster. The
 #' `EnableLogTypes` and `DisableLogTypes` arrays determine which logs are
 #' exported (or not exported) to CloudWatch Logs.
 #' @param EngineVersion The version number of the database engine to which you want to upgrade.
@@ -2330,9 +2323,9 @@ docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier 
 }
 .docdb$operations$modify_db_cluster <- docdb_modify_db_cluster
 
-#' Modifies the parameters of a DB cluster parameter group
+#' Modifies the parameters of a cluster parameter group
 #'
-#' Modifies the parameters of a DB cluster parameter group. To modify more
+#' Modifies the parameters of a cluster parameter group. To modify more
 #' than one parameter, submit a list of the following: `ParameterName`,
 #' `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be
 #' modified in a single request.
@@ -2341,21 +2334,21 @@ docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier 
 #' parameters require a reboot or maintenance window before the change can
 #' take effect.
 #' 
-#' After you create a DB cluster parameter group, you should wait at least
-#' 5 minutes before creating your first DB cluster that uses that DB
-#' cluster parameter group as the default parameter group. This allows
-#' Amazon DocumentDB to fully complete the create action before the
-#' parameter group is used as the default for a new DB cluster. This step
-#' is especially important for parameters that are critical when creating
-#' the default database for a DB cluster, such as the character set for the
-#' default database defined by the `character_set_database` parameter.
+#' After you create a cluster parameter group, you should wait at least 5
+#' minutes before creating your first cluster that uses that cluster
+#' parameter group as the default parameter group. This allows Amazon
+#' DocumentDB to fully complete the create action before the parameter
+#' group is used as the default for a new cluster. This step is especially
+#' important for parameters that are critical when creating the default
+#' database for a cluster, such as the character set for the default
+#' database defined by the `character_set_database` parameter.
 #'
 #' @usage
 #' docdb_modify_db_cluster_parameter_group(DBClusterParameterGroupName,
 #'   Parameters)
 #'
-#' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group to modify.
-#' @param Parameters &#91;required&#93; A list of parameters in the DB cluster parameter group to modify.
+#' @param DBClusterParameterGroupName &#91;required&#93; The name of the cluster parameter group to modify.
+#' @param Parameters &#91;required&#93; A list of parameters in the cluster parameter group to modify.
 #'
 #' @section Request syntax:
 #' ```
@@ -2404,14 +2397,14 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' Adds an attribute and values to, or removes an attribute and values
 #' from, a manual DB cluster snapshot.
 #' 
-#' To share a manual DB cluster snapshot with other AWS accounts, specify
+#' To share a manual cluster snapshot with other AWS accounts, specify
 #' `restore` as the `AttributeName`, and use the `ValuesToAdd` parameter to
 #' add a list of IDs of the AWS accounts that are authorized to restore the
-#' manual DB cluster snapshot. Use the value `all` to make the manual DB
-#' cluster snapshot public, which means that it can be copied or restored
-#' by all AWS accounts. Do not add the `all` value for any manual DB
-#' cluster snapshots that contain private information that you don\'t want
-#' available to all AWS accounts. If a manual DB cluster snapshot is
+#' manual cluster snapshot. Use the value `all` to make the manual cluster
+#' snapshot public, which means that it can be copied or restored by all
+#' AWS accounts. Do not add the `all` value for any manual DB cluster
+#' snapshots that contain private information that you don\'t want
+#' available to all AWS accounts. If a manual cluster snapshot is
 #' encrypted, it can be shared, but only by specifying a list of authorized
 #' AWS account IDs for the `ValuesToAdd` parameter. You can\'t use `all` as
 #' a value for that parameter in this case.
@@ -2420,30 +2413,29 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' docdb_modify_db_cluster_snapshot_attribute(DBClusterSnapshotIdentifier,
 #'   AttributeName, ValuesToAdd, ValuesToRemove)
 #'
-#' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the DB cluster snapshot to modify the attributes for.
-#' @param AttributeName &#91;required&#93; The name of the DB cluster snapshot attribute to modify.
+#' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the cluster snapshot to modify the attributes for.
+#' @param AttributeName &#91;required&#93; The name of the cluster snapshot attribute to modify.
 #' 
 #' To manage authorization for other AWS accounts to copy or restore a
-#' manual DB cluster snapshot, set this value to `restore`.
-#' @param ValuesToAdd A list of DB cluster snapshot attributes to add to the attribute
-#' specified by `AttributeName`.
+#' manual cluster snapshot, set this value to `restore`.
+#' @param ValuesToAdd A list of cluster snapshot attributes to add to the attribute specified
+#' by `AttributeName`.
 #' 
-#' To authorize other AWS accounts to copy or restore a manual DB cluster
+#' To authorize other AWS accounts to copy or restore a manual cluster
 #' snapshot, set this list to include one or more AWS account IDs. To make
-#' the manual DB cluster snapshot restorable by any AWS account, set it to
-#' `all`. Do not add the `all` value for any manual DB cluster snapshots
-#' that contain private information that you don\'t want to be available to
-#' all AWS accounts.
-#' @param ValuesToRemove A list of DB cluster snapshot attributes to remove from the attribute
+#' the manual cluster snapshot restorable by any AWS account, set it to
+#' `all`. Do not add the `all` value for any manual cluster snapshots that
+#' contain private information that you don\'t want to be available to all
+#' AWS accounts.
+#' @param ValuesToRemove A list of cluster snapshot attributes to remove from the attribute
 #' specified by `AttributeName`.
 #' 
 #' To remove authorization for other AWS accounts to copy or restore a
-#' manual DB cluster snapshot, set this list to include one or more AWS
+#' manual cluster snapshot, set this list to include one or more AWS
 #' account identifiers. To remove authorization for any AWS account to copy
-#' or restore the DB cluster snapshot, set it to `all` . If you specify
-#' `all`, an AWS account whose account ID is explicitly added to the
-#' `restore` attribute can still copy or restore a manual DB cluster
-#' snapshot.
+#' or restore the cluster snapshot, set it to `all` . If you specify `all`,
+#' an AWS account whose account ID is explicitly added to the `restore`
+#' attribute can still copy or restore a manual cluster snapshot.
 #'
 #' @section Request syntax:
 #' ```
@@ -2479,9 +2471,9 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 }
 .docdb$operations$modify_db_cluster_snapshot_attribute <- docdb_modify_db_cluster_snapshot_attribute
 
-#' Modifies settings for a DB instance
+#' Modifies settings for an instance
 #'
-#' Modifies settings for a DB instance. You can change one or more database
+#' Modifies settings for an instance. You can change one or more database
 #' configuration parameters by specifying these parameters and the new
 #' values in the request.
 #'
@@ -2490,27 +2482,27 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #'   ApplyImmediately, PreferredMaintenanceWindow, AutoMinorVersionUpgrade,
 #'   NewDBInstanceIdentifier, CACertificateIdentifier, PromotionTier)
 #'
-#' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This value is stored as a lowercase string.
+#' @param DBInstanceIdentifier &#91;required&#93; The instance identifier. This value is stored as a lowercase string.
 #' 
 #' Constraints:
 #' 
 #' -   Must match the identifier of an existing `DBInstance`.
-#' @param DBInstanceClass The new compute and memory capacity of the DB instance; for example,
-#' `db.r5.large`. Not all DB instance classes are available in all AWS
+#' @param DBInstanceClass The new compute and memory capacity of the instance; for example,
+#' `db.r5.large`. Not all instance classes are available in all AWS
 #' Regions.
 #' 
-#' If you modify the DB instance class, an outage occurs during the change.
+#' If you modify the instance class, an outage occurs during the change.
 #' The change is applied during the next maintenance window, unless
 #' `ApplyImmediately` is specified as `true` for this request.
 #' 
 #' Default: Uses existing setting.
 #' @param ApplyImmediately Specifies whether the modifications in this request and any pending
 #' modifications are asynchronously applied as soon as possible, regardless
-#' of the `PreferredMaintenanceWindow` setting for the DB instance.
+#' of the `PreferredMaintenanceWindow` setting for the instance.
 #' 
-#' If this parameter is set to `false`, changes to the DB instance are
-#' applied during the next maintenance window. Some parameter changes can
-#' cause an outage and are applied on the next reboot.
+#' If this parameter is set to `false`, changes to the instance are applied
+#' during the next maintenance window. Some parameter changes can cause an
+#' outage and are applied on the next reboot.
 #' 
 #' Default: `false`
 #' @param PreferredMaintenanceWindow The weekly time range (in UTC) during which system maintenance can
@@ -2518,7 +2510,7 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' result in an outage except in the following situation, and the change is
 #' asynchronously applied as soon as possible. If there are pending actions
 #' that cause a reboot, and the maintenance window is changed to include
-#' the current time, changing this parameter causes a reboot of the DB
+#' the current time, changing this parameter causes a reboot of the
 #' instance. If you are moving this window to the current time, there must
 #' be at least 30 minutes between the current time and end of the window to
 #' ensure that pending changes are applied.
@@ -2531,17 +2523,17 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' 
 #' Constraints: Must be at least 30 minutes.
 #' @param AutoMinorVersionUpgrade Indicates that minor version upgrades are applied automatically to the
-#' DB instance during the maintenance window. Changing this parameter
-#' doesn\'t result in an outage except in the following case, and the
-#' change is asynchronously applied as soon as possible. An outage results
-#' if this parameter is set to `true` during the maintenance window, and a
-#' newer minor version is available, and Amazon DocumentDB has enabled
-#' automatic patching for that engine version.
-#' @param NewDBInstanceIdentifier The new DB instance identifier for the DB instance when renaming a DB
-#' instance. When you change the DB instance identifier, an instance reboot
-#' occurs immediately if you set `Apply Immediately` to `true`. It occurs
-#' during the next maintenance window if you set `Apply Immediately` to
-#' `false`. This value is stored as a lowercase string.
+#' instance during the maintenance window. Changing this parameter doesn\'t
+#' result in an outage except in the following case, and the change is
+#' asynchronously applied as soon as possible. An outage results if this
+#' parameter is set to `true` during the maintenance window, and a newer
+#' minor version is available, and Amazon DocumentDB has enabled automatic
+#' patching for that engine version.
+#' @param NewDBInstanceIdentifier The new instance identifier for the instance when renaming an instance.
+#' When you change the instance identifier, an instance reboot occurs
+#' immediately if you set `Apply Immediately` to `true`. It occurs during
+#' the next maintenance window if you set `Apply Immediately` to `false`.
+#' This value is stored as a lowercase string.
 #' 
 #' Constraints:
 #' 
@@ -2595,24 +2587,24 @@ docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NUL
 }
 .docdb$operations$modify_db_instance <- docdb_modify_db_instance
 
-#' Modifies an existing DB subnet group
+#' Modifies an existing subnet group
 #'
-#' Modifies an existing DB subnet group. DB subnet groups must contain at
-#' least one subnet in at least two Availability Zones in the AWS Region.
+#' Modifies an existing subnet group. subnet groups must contain at least
+#' one subnet in at least two Availability Zones in the AWS Region.
 #'
 #' @usage
 #' docdb_modify_db_subnet_group(DBSubnetGroupName,
 #'   DBSubnetGroupDescription, SubnetIds)
 #'
-#' @param DBSubnetGroupName &#91;required&#93; The name for the DB subnet group. This value is stored as a lowercase
+#' @param DBSubnetGroupName &#91;required&#93; The name for the subnet group. This value is stored as a lowercase
 #' string. You can\'t modify the default subnet group.
 #' 
 #' Constraints: Must match the name of an existing `DBSubnetGroup`. Must
 #' not be default.
 #' 
 #' Example: `mySubnetgroup`
-#' @param DBSubnetGroupDescription The description for the DB subnet group.
-#' @param SubnetIds &#91;required&#93; The Amazon EC2 subnet IDs for the DB subnet group.
+#' @param DBSubnetGroupDescription The description for the subnet group.
+#' @param SubnetIds &#91;required&#93; The Amazon EC2 subnet IDs for the subnet group.
 #'
 #' @section Request syntax:
 #' ```
@@ -2645,23 +2637,21 @@ docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 }
 .docdb$operations$modify_db_subnet_group <- docdb_modify_db_subnet_group
 
-#' You might need to reboot your DB instance, usually for maintenance
-#' reasons
+#' You might need to reboot your instance, usually for maintenance reasons
 #'
-#' You might need to reboot your DB instance, usually for maintenance
-#' reasons. For example, if you make certain changes, or if you change the
-#' DB cluster parameter group that is associated with the DB instance, you
-#' must reboot the instance for the changes to take effect.
+#' You might need to reboot your instance, usually for maintenance reasons.
+#' For example, if you make certain changes, or if you change the cluster
+#' parameter group that is associated with the instance, you must reboot
+#' the instance for the changes to take effect.
 #' 
-#' Rebooting a DB instance restarts the database engine service. Rebooting
-#' a DB instance results in a momentary outage, during which the DB
-#' instance status is set to *rebooting*.
+#' Rebooting an instance restarts the database engine service. Rebooting an
+#' instance results in a momentary outage, during which the instance status
+#' is set to *rebooting*.
 #'
 #' @usage
 #' docdb_reboot_db_instance(DBInstanceIdentifier, ForceFailover)
 #'
-#' @param DBInstanceIdentifier &#91;required&#93; The DB instance identifier. This parameter is stored as a lowercase
-#' string.
+#' @param DBInstanceIdentifier &#91;required&#93; The instance identifier. This parameter is stored as a lowercase string.
 #' 
 #' Constraints:
 #' 
@@ -2740,13 +2730,13 @@ docdb_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 }
 .docdb$operations$remove_tags_from_resource <- docdb_remove_tags_from_resource
 
-#' Modifies the parameters of a DB cluster parameter group to the default
+#' Modifies the parameters of a cluster parameter group to the default
 #' value
 #'
-#' Modifies the parameters of a DB cluster parameter group to the default
+#' Modifies the parameters of a cluster parameter group to the default
 #' value. To reset specific parameters, submit a list of the following:
-#' `ParameterName` and `ApplyMethod`. To reset the entire DB cluster
-#' parameter group, specify the `DBClusterParameterGroupName` and
+#' `ParameterName` and `ApplyMethod`. To reset the entire cluster parameter
+#' group, specify the `DBClusterParameterGroupName` and
 #' `ResetAllParameters` parameters.
 #' 
 #' When you reset the entire group, dynamic parameters are updated
@@ -2757,13 +2747,13 @@ docdb_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' docdb_reset_db_cluster_parameter_group(DBClusterParameterGroupName,
 #'   ResetAllParameters, Parameters)
 #'
-#' @param DBClusterParameterGroupName &#91;required&#93; The name of the DB cluster parameter group to reset.
-#' @param ResetAllParameters A value that is set to `true` to reset all parameters in the DB cluster
+#' @param DBClusterParameterGroupName &#91;required&#93; The name of the cluster parameter group to reset.
+#' @param ResetAllParameters A value that is set to `true` to reset all parameters in the cluster
 #' parameter group to their default values, and `false` otherwise. You
 #' can\'t use this parameter if there is a list of parameter names
 #' specified for the `Parameters` parameter.
-#' @param Parameters A list of parameter names in the DB cluster parameter group to reset to
-#' the default values. You can\'t use this parameter if the
+#' @param Parameters A list of parameter names in the cluster parameter group to reset to the
+#' default values. You can\'t use this parameter if the
 #' `ResetAllParameters` parameter is set to `true`.
 #'
 #' @section Request syntax:
@@ -2808,18 +2798,18 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 }
 .docdb$operations$reset_db_cluster_parameter_group <- docdb_reset_db_cluster_parameter_group
 
-#' Creates a new DB cluster from a DB snapshot or DB cluster snapshot
+#' Creates a new cluster from a snapshot or cluster snapshot
 #'
-#' Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
+#' Creates a new cluster from a snapshot or cluster snapshot.
 #' 
-#' If a DB snapshot is specified, the target DB cluster is created from the
+#' If a snapshot is specified, the target cluster is created from the
 #' source DB snapshot with a default configuration and default security
 #' group.
 #' 
-#' If a DB cluster snapshot is specified, the target DB cluster is created
-#' from the source DB cluster restore point with the same configuration as
-#' the original source DB cluster, except that the new DB cluster is
-#' created with the default security group.
+#' If a cluster snapshot is specified, the target cluster is created from
+#' the source cluster restore point with the same configuration as the
+#' original source DB cluster, except that the new cluster is created with
+#' the default security group.
 #'
 #' @usage
 #' docdb_restore_db_cluster_from_snapshot(AvailabilityZones,
@@ -2829,8 +2819,8 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #'
 #' @param AvailabilityZones Provides the list of Amazon EC2 Availability Zones that instances in the
 #' restored DB cluster can be created in.
-#' @param DBClusterIdentifier &#91;required&#93; The name of the DB cluster to create from the DB snapshot or DB cluster
-#' snapshot. This parameter isn\'t case sensitive.
+#' @param DBClusterIdentifier &#91;required&#93; The name of the cluster to create from the snapshot or cluster snapshot.
+#' This parameter isn\'t case sensitive.
 #' 
 #' Constraints:
 #' 
@@ -2841,56 +2831,53 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-snapshot-id`
-#' @param SnapshotIdentifier &#91;required&#93; The identifier for the DB snapshot or DB cluster snapshot to restore
-#' from.
+#' @param SnapshotIdentifier &#91;required&#93; The identifier for the snapshot or cluster snapshot to restore from.
 #' 
 #' You can use either the name or the Amazon Resource Name (ARN) to specify
-#' a DB cluster snapshot. However, you can use only the ARN to specify a DB
+#' a cluster snapshot. However, you can use only the ARN to specify a
 #' snapshot.
 #' 
 #' Constraints:
 #' 
 #' -   Must match the identifier of an existing snapshot.
-#' @param Engine &#91;required&#93; The database engine to use for the new DB cluster.
+#' @param Engine &#91;required&#93; The database engine to use for the new cluster.
 #' 
 #' Default: The same as source.
 #' 
 #' Constraint: Must be compatible with the engine of the source.
-#' @param EngineVersion The version of the database engine to use for the new DB cluster.
-#' @param Port The port number on which the new DB cluster accepts connections.
+#' @param EngineVersion The version of the database engine to use for the new cluster.
+#' @param Port The port number on which the new cluster accepts connections.
 #' 
 #' Constraints: Must be a value from `1150` to `65535`.
 #' 
-#' Default: The same port as the original DB cluster.
-#' @param DBSubnetGroupName The name of the DB subnet group to use for the new DB cluster.
+#' Default: The same port as the original cluster.
+#' @param DBSubnetGroupName The name of the subnet group to use for the new cluster.
 #' 
 #' Constraints: If provided, must match the name of an existing
 #' `DBSubnetGroup`.
 #' 
 #' Example: `mySubnetgroup`
-#' @param VpcSecurityGroupIds A list of virtual private cloud (VPC) security groups that the new DB
+#' @param VpcSecurityGroupIds A list of virtual private cloud (VPC) security groups that the new
 #' cluster will belong to.
-#' @param Tags The tags to be assigned to the restored DB cluster.
-#' @param KmsKeyId The AWS KMS key identifier to use when restoring an encrypted DB cluster
-#' from a DB snapshot or DB cluster snapshot.
+#' @param Tags The tags to be assigned to the restored cluster.
+#' @param KmsKeyId The AWS KMS key identifier to use when restoring an encrypted cluster
+#' from a DB snapshot or cluster snapshot.
 #' 
 #' The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-#' KMS encryption key. If you are restoring a DB cluster with the same AWS
-#' account that owns the AWS KMS encryption key used to encrypt the new DB
+#' KMS encryption key. If you are restoring a cluster with the same AWS
+#' account that owns the AWS KMS encryption key used to encrypt the new
 #' cluster, then you can use the AWS KMS key alias instead of the ARN for
 #' the AWS KMS encryption key.
 #' 
 #' If you do not specify a value for the `KmsKeyId` parameter, then the
 #' following occurs:
 #' 
-#' -   If the DB snapshot or DB cluster snapshot in `SnapshotIdentifier` is
-#'     encrypted, then the restored DB cluster is encrypted using the AWS
-#'     KMS key that was used to encrypt the DB snapshot or the DB cluster
-#'     snapshot.
+#' -   If the snapshot or cluster snapshot in `SnapshotIdentifier` is
+#'     encrypted, then the restored cluster is encrypted using the AWS KMS
+#'     key that was used to encrypt the snapshot or the cluster snapshot.
 #' 
-#' -   If the DB snapshot or the DB cluster snapshot in
-#'     `SnapshotIdentifier` is not encrypted, then the restored DB cluster
-#'     is not encrypted.
+#' -   If the snapshot or the cluster snapshot in `SnapshotIdentifier` is
+#'     not encrypted, then the restored DB cluster is not encrypted.
 #' @param EnableCloudwatchLogsExports A list of log types that must be enabled for exporting to Amazon
 #' CloudWatch Logs.
 #' @param DeletionProtection Specifies whether this cluster can be deleted. If `DeletionProtection`
@@ -2947,14 +2934,13 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 }
 .docdb$operations$restore_db_cluster_from_snapshot <- docdb_restore_db_cluster_from_snapshot
 
-#' Restores a DB cluster to an arbitrary point in time
+#' Restores a cluster to an arbitrary point in time
 #'
-#' Restores a DB cluster to an arbitrary point in time. Users can restore
-#' to any point in time before `LatestRestorableTime` for up to
-#' `BackupRetentionPeriod` days. The target DB cluster is created from the
-#' source DB cluster with the same configuration as the original DB
-#' cluster, except that the new DB cluster is created with the default DB
-#' security group.
+#' Restores a cluster to an arbitrary point in time. Users can restore to
+#' any point in time before `LatestRestorableTime` for up to
+#' `BackupRetentionPeriod` days. The target cluster is created from the
+#' source cluster with the same configuration as the original cluster,
+#' except that the new cluster is created with the default security group.
 #'
 #' @usage
 #' docdb_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
@@ -2962,7 +2948,7 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #'   DBSubnetGroupName, VpcSecurityGroupIds, Tags, KmsKeyId,
 #'   EnableCloudwatchLogsExports, DeletionProtection)
 #'
-#' @param DBClusterIdentifier &#91;required&#93; The name of the new DB cluster to be created.
+#' @param DBClusterIdentifier &#91;required&#93; The name of the new cluster to be created.
 #' 
 #' Constraints:
 #' 
@@ -2971,18 +2957,18 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' -   The first character must be a letter.
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
-#' @param SourceDBClusterIdentifier &#91;required&#93; The identifier of the source DB cluster from which to restore.
+#' @param SourceDBClusterIdentifier &#91;required&#93; The identifier of the source cluster from which to restore.
 #' 
 #' Constraints:
 #' 
 #' -   Must match the identifier of an existing `DBCluster`.
-#' @param RestoreToTime The date and time to restore the DB cluster to.
+#' @param RestoreToTime The date and time to restore the cluster to.
 #' 
 #' Valid values: A time in Universal Coordinated Time (UTC) format.
 #' 
 #' Constraints:
 #' 
-#' -   Must be before the latest restorable time for the DB instance.
+#' -   Must be before the latest restorable time for the instance.
 #' 
 #' -   Must be specified if the `UseLatestRestorableTime` parameter is not
 #'     provided.
@@ -2994,52 +2980,51 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #'     `copy-on-write`.
 #' 
 #' Example: `2015-03-07T23:45:00Z`
-#' @param UseLatestRestorableTime A value that is set to `true` to restore the DB cluster to the latest
+#' @param UseLatestRestorableTime A value that is set to `true` to restore the cluster to the latest
 #' restorable backup time, and `false` otherwise.
 #' 
 #' Default: `false`
 #' 
 #' Constraints: Cannot be specified if the `RestoreToTime` parameter is
 #' provided.
-#' @param Port The port number on which the new DB cluster accepts connections.
+#' @param Port The port number on which the new cluster accepts connections.
 #' 
 #' Constraints: Must be a value from `1150` to `65535`.
 #' 
 #' Default: The default port for the engine.
-#' @param DBSubnetGroupName The DB subnet group name to use for the new DB cluster.
+#' @param DBSubnetGroupName The subnet group name to use for the new cluster.
 #' 
 #' Constraints: If provided, must match the name of an existing
 #' `DBSubnetGroup`.
 #' 
 #' Example: `mySubnetgroup`
-#' @param VpcSecurityGroupIds A list of VPC security groups that the new DB cluster belongs to.
-#' @param Tags The tags to be assigned to the restored DB cluster.
-#' @param KmsKeyId The AWS KMS key identifier to use when restoring an encrypted DB cluster
-#' from an encrypted DB cluster.
+#' @param VpcSecurityGroupIds A list of VPC security groups that the new cluster belongs to.
+#' @param Tags The tags to be assigned to the restored cluster.
+#' @param KmsKeyId The AWS KMS key identifier to use when restoring an encrypted cluster
+#' from an encrypted cluster.
 #' 
 #' The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-#' KMS encryption key. If you are restoring a DB cluster with the same AWS
-#' account that owns the AWS KMS encryption key used to encrypt the new DB
+#' KMS encryption key. If you are restoring a cluster with the same AWS
+#' account that owns the AWS KMS encryption key used to encrypt the new
 #' cluster, then you can use the AWS KMS key alias instead of the ARN for
 #' the AWS KMS encryption key.
 #' 
-#' You can restore to a new DB cluster and encrypt the new DB cluster with
-#' an AWS KMS key that is different from the AWS KMS key used to encrypt
-#' the source DB cluster. The new DB cluster is encrypted with the AWS KMS
-#' key identified by the `KmsKeyId` parameter.
+#' You can restore to a new cluster and encrypt the new cluster with an AWS
+#' KMS key that is different from the AWS KMS key used to encrypt the
+#' source cluster. The new DB cluster is encrypted with the AWS KMS key
+#' identified by the `KmsKeyId` parameter.
 #' 
 #' If you do not specify a value for the `KmsKeyId` parameter, then the
 #' following occurs:
 #' 
-#' -   If the DB cluster is encrypted, then the restored DB cluster is
-#'     encrypted using the AWS KMS key that was used to encrypt the source
-#'     DB cluster.
+#' -   If the cluster is encrypted, then the restored cluster is encrypted
+#'     using the AWS KMS key that was used to encrypt the source cluster.
 #' 
-#' -   If the DB cluster is not encrypted, then the restored DB cluster is
-#'     not encrypted.
+#' -   If the cluster is not encrypted, then the restored cluster is not
+#'     encrypted.
 #' 
-#' If `DBClusterIdentifier` refers to a DB cluster that is not encrypted,
-#' then the restore request is rejected.
+#' If `DBClusterIdentifier` refers to a cluster that is not encrypted, then
+#' the restore request is rejected.
 #' @param EnableCloudwatchLogsExports A list of log types that must be enabled for exporting to Amazon
 #' CloudWatch Logs.
 #' @param DeletionProtection Specifies whether this cluster can be deleted. If `DeletionProtection`

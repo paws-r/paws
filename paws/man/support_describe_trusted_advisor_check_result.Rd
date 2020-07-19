@@ -2,8 +2,8 @@
 % Please edit documentation in R/support_operations.R
 \name{support_describe_trusted_advisor_check_result}
 \alias{support_describe_trusted_advisor_check_result}
-\title{Returns the results of the Trusted Advisor check that has the specified
-check ID}
+\title{Returns the results of the AWS Trusted Advisor check that has the
+specified check ID}
 \usage{
 support_describe_trusted_advisor_check_result(checkId, language)
 }
@@ -16,9 +16,9 @@ Language parameters must be passed explicitly for operations that take
 them.}
 }
 \description{
-Returns the results of the Trusted Advisor check that has the specified
-check ID. Check IDs can be obtained by calling
-DescribeTrustedAdvisorChecks.
+Returns the results of the AWS Trusted Advisor check that has the
+specified check ID. You can get the check IDs by calling the
+DescribeTrustedAdvisorChecks operation.
 }
 \details{
 The response contains a TrustedAdvisorCheckResult object, which contains
@@ -31,10 +31,19 @@ these three objects:
 
 In addition, the response contains these fields:
 \itemize{
-\item \strong{status.} The alert status of the check: \"ok\" (green),
+\item \strong{status} - The alert status of the check: \"ok\" (green),
 \"warning\" (yellow), \"error\" (red), or \"not\\_available\".
-\item \strong{timestamp.} The time of the last refresh of the check.
-\item \strong{checkId.} The unique identifier for the check.
+\item \strong{timestamp} - The time of the last refresh of the check.
+\item \strong{checkId} - The unique identifier for the check.
+}<!-- -->
+
+\itemize{
+\item You must have a Business or Enterprise support plan to use the AWS
+Support API.
+\item If you call the AWS Support API from an account that does not have a
+Business or Enterprise support plan, the
+\code{SubscriptionRequiredException} error message appears. For
+information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
 }
 }
 \section{Request syntax}{

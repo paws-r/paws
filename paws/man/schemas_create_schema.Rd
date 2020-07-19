@@ -8,20 +8,23 @@ schemas_create_schema(Content, Description, RegistryName, SchemaName,
   Tags, Type)
 }
 \arguments{
-\item{Content}{[required]}
+\item{Content}{[required] The source of the schema definition.}
 
 \item{Description}{A description of the schema.}
 
-\item{RegistryName}{[required]}
+\item{RegistryName}{[required] The name of the registry.}
 
-\item{SchemaName}{[required]}
+\item{SchemaName}{[required] The name of the schema.}
 
 \item{Tags}{Tags associated with the schema.}
 
-\item{Type}{[required]}
+\item{Type}{[required] The type of schema.}
 }
 \description{
 Creates a schema definition.
+}
+\details{
+Inactive schemas will be deleted after two years.
 }
 \section{Request syntax}{
 \preformatted{svc$create_schema(

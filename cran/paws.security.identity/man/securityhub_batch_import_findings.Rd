@@ -15,9 +15,26 @@ Maximum of 100 findings per request.}
 \description{
 Imports security findings generated from an integrated third-party
 product into Security Hub. This action is requested by the integrated
-product to import its findings into Security Hub. The maximum allowed
-size for a finding is 240 Kb. An error is returned for any finding
-larger than 240 Kb.
+product to import its findings into Security Hub.
+}
+\details{
+The maximum allowed size for a finding is 240 Kb. An error is returned
+for any finding larger than 240 Kb.
+
+After a finding is created, \code{BatchImportFindings} cannot be used to
+update the following finding fields and objects, which Security Hub
+customers use to manage their investigation workflow.
+\itemize{
+\item \code{Confidence}
+\item \code{Criticality}
+\item \code{Note}
+\item \code{RelatedFindings}
+\item \code{Severity}
+\item \code{Types}
+\item \code{UserDefinedFields}
+\item \code{VerificationState}
+\item \code{Workflow}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$batch_import_findings(
@@ -37,7 +54,9 @@ larger than 240 Kb.
       UpdatedAt = "string",
       Severity = list(
         Product = 123.0,
-        Normalized = 123
+        Label = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
+        Normalized = 123,
+        Original = "string"
       ),
       Confidence = 123,
       Criticality = 123,
@@ -67,6 +86,10 @@ larger than 240 Kb.
       Network = list(
         Direction = "IN"|"OUT",
         Protocol = "string",
+        OpenPortRange = list(
+          Begin = 123,
+          End = 123
+        ),
         SourceIpV4 = "string",
         SourceIpV6 = "string",
         SourcePort = 123,
@@ -76,6 +99,62 @@ larger than 240 Kb.
         DestinationIpV6 = "string",
         DestinationPort = 123,
         DestinationDomain = "string"
+      ),
+      NetworkPath = list(
+        list(
+          ComponentId = "string",
+          ComponentType = "string",
+          Egress = list(
+            Protocol = "string",
+            Destination = list(
+              Address = list(
+                "string"
+              ),
+              PortRanges = list(
+                list(
+                  Begin = 123,
+                  End = 123
+                )
+              )
+            ),
+            Source = list(
+              Address = list(
+                "string"
+              ),
+              PortRanges = list(
+                list(
+                  Begin = 123,
+                  End = 123
+                )
+              )
+            )
+          ),
+          Ingress = list(
+            Protocol = "string",
+            Destination = list(
+              Address = list(
+                "string"
+              ),
+              PortRanges = list(
+                list(
+                  Begin = 123,
+                  End = 123
+                )
+              )
+            ),
+            Source = list(
+              Address = list(
+                "string"
+              ),
+              PortRanges = list(
+                list(
+                  Begin = 123,
+                  End = 123
+                )
+              )
+            )
+          )
+        )
       ),
       Process = list(
         Name = "string",
@@ -105,6 +184,44 @@ larger than 240 Kb.
             "string"
           ),
           Details = list(
+            AwsAutoScalingAutoScalingGroup = list(
+              LaunchConfigurationName = "string",
+              LoadBalancerNames = list(
+                "string"
+              ),
+              HealthCheckType = "string",
+              HealthCheckGracePeriod = 123,
+              CreatedTime = "string"
+            ),
+            AwsCodeBuildProject = list(
+              EncryptionKey = "string",
+              Environment = list(
+                Certificate = "string",
+                ImagePullCredentialsType = "string",
+                RegistryCredential = list(
+                  Credential = "string",
+                  CredentialProvider = "string"
+                ),
+                Type = "string"
+              ),
+              Name = "string",
+              Source = list(
+                Type = "string",
+                Location = "string",
+                GitCloneDepth = 123,
+                InsecureSsl = TRUE|FALSE
+              ),
+              ServiceRole = "string",
+              VpcConfig = list(
+                VpcId = "string",
+                Subnets = list(
+                  "string"
+                ),
+                SecurityGroupIds = list(
+                  "string"
+                )
+              )
+            ),
             AwsCloudFrontDistribution = list(
               DomainName = "string",
               ETag = "string",
@@ -142,6 +259,129 @@ larger than 240 Kb.
               SubnetId = "string",
               LaunchedAt = "string"
             ),
+            AwsEc2NetworkInterface = list(
+              Attachment = list(
+                AttachTime = "string",
+                AttachmentId = "string",
+                DeleteOnTermination = TRUE|FALSE,
+                DeviceIndex = 123,
+                InstanceId = "string",
+                InstanceOwnerId = "string",
+                Status = "string"
+              ),
+              NetworkInterfaceId = "string",
+              SecurityGroups = list(
+                list(
+                  GroupName = "string",
+                  GroupId = "string"
+                )
+              ),
+              SourceDestCheck = TRUE|FALSE
+            ),
+            AwsEc2SecurityGroup = list(
+              GroupName = "string",
+              GroupId = "string",
+              OwnerId = "string",
+              VpcId = "string",
+              IpPermissions = list(
+                list(
+                  IpProtocol = "string",
+                  FromPort = 123,
+                  ToPort = 123,
+                  UserIdGroupPairs = list(
+                    list(
+                      GroupId = "string",
+                      GroupName = "string",
+                      PeeringStatus = "string",
+                      UserId = "string",
+                      VpcId = "string",
+                      VpcPeeringConnectionId = "string"
+                    )
+                  ),
+                  IpRanges = list(
+                    list(
+                      CidrIp = "string"
+                    )
+                  ),
+                  Ipv6Ranges = list(
+                    list(
+                      CidrIpv6 = "string"
+                    )
+                  ),
+                  PrefixListIds = list(
+                    list(
+                      PrefixListId = "string"
+                    )
+                  )
+                )
+              ),
+              IpPermissionsEgress = list(
+                list(
+                  IpProtocol = "string",
+                  FromPort = 123,
+                  ToPort = 123,
+                  UserIdGroupPairs = list(
+                    list(
+                      GroupId = "string",
+                      GroupName = "string",
+                      PeeringStatus = "string",
+                      UserId = "string",
+                      VpcId = "string",
+                      VpcPeeringConnectionId = "string"
+                    )
+                  ),
+                  IpRanges = list(
+                    list(
+                      CidrIp = "string"
+                    )
+                  ),
+                  Ipv6Ranges = list(
+                    list(
+                      CidrIpv6 = "string"
+                    )
+                  ),
+                  PrefixListIds = list(
+                    list(
+                      PrefixListId = "string"
+                    )
+                  )
+                )
+              )
+            ),
+            AwsEc2Volume = list(
+              CreateTime = "string",
+              Encrypted = TRUE|FALSE,
+              Size = 123,
+              SnapshotId = "string",
+              Status = "string",
+              KmsKeyId = "string",
+              Attachments = list(
+                list(
+                  AttachTime = "string",
+                  DeleteOnTermination = TRUE|FALSE,
+                  InstanceId = "string",
+                  Status = "string"
+                )
+              )
+            ),
+            AwsEc2Vpc = list(
+              CidrBlockAssociationSet = list(
+                list(
+                  AssociationId = "string",
+                  CidrBlock = "string",
+                  CidrBlockState = "string"
+                )
+              ),
+              Ipv6CidrBlockAssociationSet = list(
+                list(
+                  AssociationId = "string",
+                  Ipv6CidrBlock = "string",
+                  CidrBlockState = "string"
+                )
+              ),
+              DhcpOptionsId = "string",
+              State = "string"
+            ),
             AwsElbv2LoadBalancer = list(
               AvailabilityZones = list(
                 list(
@@ -164,9 +404,61 @@ larger than 240 Kb.
               Type = "string",
               VpcId = "string"
             ),
+            AwsElasticsearchDomain = list(
+              AccessPolicies = "string",
+              DomainEndpointOptions = list(
+                EnforceHTTPS = TRUE|FALSE,
+                TLSSecurityPolicy = "string"
+              ),
+              DomainId = "string",
+              DomainName = "string",
+              Endpoint = "string",
+              Endpoints = list(
+                "string"
+              ),
+              ElasticsearchVersion = "string",
+              EncryptionAtRestOptions = list(
+                Enabled = TRUE|FALSE,
+                KmsKeyId = "string"
+              ),
+              NodeToNodeEncryptionOptions = list(
+                Enabled = TRUE|FALSE
+              ),
+              VPCOptions = list(
+                AvailabilityZones = list(
+                  "string"
+                ),
+                SecurityGroupIds = list(
+                  "string"
+                ),
+                SubnetIds = list(
+                  "string"
+                ),
+                VPCId = "string"
+              )
+            ),
             AwsS3Bucket = list(
               OwnerId = "string",
-              OwnerName = "string"
+              OwnerName = "string",
+              CreatedAt = "string",
+              ServerSideEncryptionConfiguration = list(
+                Rules = list(
+                  list(
+                    ApplyServerSideEncryptionByDefault = list(
+                      SSEAlgorithm = "string",
+                      KMSMasterKeyID = "string"
+                    )
+                  )
+                )
+              )
+            ),
+            AwsS3Object = list(
+              LastModified = "string",
+              ETag = "string",
+              VersionId = "string",
+              ContentType = "string",
+              ServerSideEncryption = "string",
+              SSEKMSKeyId = "string"
             ),
             AwsIamAccessKey = list(
               UserName = "string",
@@ -242,6 +534,49 @@ larger than 240 Kb.
               ),
               Version = "string"
             ),
+            AwsLambdaLayerVersion = list(
+              Version = 123,
+              CompatibleRuntimes = list(
+                "string"
+              ),
+              CreatedDate = "string"
+            ),
+            AwsRdsDbInstance = list(
+              AssociatedRoles = list(
+                list(
+                  RoleArn = "string",
+                  FeatureName = "string",
+                  Status = "string"
+                )
+              ),
+              CACertificateIdentifier = "string",
+              DBClusterIdentifier = "string",
+              DBInstanceIdentifier = "string",
+              DBInstanceClass = "string",
+              DbInstancePort = 123,
+              DbiResourceId = "string",
+              DBName = "string",
+              DeletionProtection = TRUE|FALSE,
+              Endpoint = list(
+                Address = "string",
+                Port = 123,
+                HostedZoneId = "string"
+              ),
+              Engine = "string",
+              EngineVersion = "string",
+              IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
+              InstanceCreateTime = "string",
+              KmsKeyId = "string",
+              PubliclyAccessible = TRUE|FALSE,
+              StorageEncrypted = TRUE|FALSE,
+              TdeCredentialArn = "string",
+              VpcSecurityGroups = list(
+                list(
+                  VpcSecurityGroupId = "string",
+                  Status = "string"
+                )
+              )
+            ),
             AwsSnsTopic = list(
               KmsMasterKeyId = "string",
               Subscription = list(
@@ -259,6 +594,29 @@ larger than 240 Kb.
               QueueName = "string",
               DeadLetterTargetArn = "string"
             ),
+            AwsWafWebAcl = list(
+              Name = "string",
+              DefaultAction = "string",
+              Rules = list(
+                list(
+                  Action = list(
+                    Type = "string"
+                  ),
+                  ExcludedRules = list(
+                    list(
+                      RuleId = "string"
+                    )
+                  ),
+                  OverrideAction = list(
+                    Type = "string"
+                  ),
+                  Priority = 123,
+                  RuleId = "string",
+                  Type = "string"
+                )
+              ),
+              WebAclId = "string"
+            ),
             Container = list(
               Name = "string",
               ImageId = "string",
@@ -272,10 +630,22 @@ larger than 240 Kb.
         )
       ),
       Compliance = list(
-        Status = "PASSED"|"WARNING"|"FAILED"|"NOT_AVAILABLE"
+        Status = "PASSED"|"WARNING"|"FAILED"|"NOT_AVAILABLE",
+        RelatedRequirements = list(
+          "string"
+        ),
+        StatusReasons = list(
+          list(
+            ReasonCode = "string",
+            Description = "string"
+          )
+        )
       ),
       VerificationState = "UNKNOWN"|"TRUE_POSITIVE"|"FALSE_POSITIVE"|"BENIGN_POSITIVE",
       WorkflowState = "NEW"|"ASSIGNED"|"IN_PROGRESS"|"DEFERRED"|"RESOLVED",
+      Workflow = list(
+        Status = "NEW"|"NOTIFIED"|"RESOLVED"|"SUPPRESSED"
+      ),
       RecordState = "ACTIVE"|"ARCHIVED",
       RelatedFindings = list(
         list(
@@ -287,6 +657,40 @@ larger than 240 Kb.
         Text = "string",
         UpdatedBy = "string",
         UpdatedAt = "string"
+      ),
+      Vulnerabilities = list(
+        list(
+          Id = "string",
+          VulnerablePackages = list(
+            list(
+              Name = "string",
+              Version = "string",
+              Epoch = "string",
+              Release = "string",
+              Architecture = "string"
+            )
+          ),
+          Cvss = list(
+            list(
+              Version = "string",
+              BaseScore = 123.0,
+              BaseVector = "string"
+            )
+          ),
+          RelatedVulnerabilities = list(
+            "string"
+          ),
+          Vendor = list(
+            Name = "string",
+            Url = "string",
+            VendorSeverity = "string",
+            VendorCreatedAt = "string",
+            VendorUpdatedAt = "string"
+          ),
+          ReferenceUrls = list(
+            "string"
+          )
+        )
       )
     )
   )

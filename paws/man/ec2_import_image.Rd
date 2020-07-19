@@ -7,7 +7,7 @@ Amazon Machine Image (AMI)}
 \usage{
 ec2_import_image(Architecture, ClientData, ClientToken, Description,
   DiskContainers, DryRun, Encrypted, Hypervisor, KmsKeyId, LicenseType,
-  Platform, RoleName, LicenseSpecifications)
+  Platform, RoleName, LicenseSpecifications, TagSpecifications)
 }
 \arguments{
 \item{Architecture}{The architecture of the virtual machine.
@@ -91,6 +91,8 @@ Valid values: \code{Windows} \\| \code{Linux}}
 \'vmimport\'.}
 
 \item{LicenseSpecifications}{The ARNs of the license configurations.}
+
+\item{TagSpecifications}{The tags to apply to the image being imported.}
 }
 \description{
 Import single or multi-volume disk images or EBS snapshots into an
@@ -135,6 +137,17 @@ in the \emph{VM Import/Export User Guide}.
   LicenseSpecifications = list(
     list(
       LicenseConfigurationArn = "string"
+    )
+  ),
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
     )
   )
 )

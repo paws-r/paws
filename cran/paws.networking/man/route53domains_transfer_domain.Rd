@@ -2,8 +2,7 @@
 % Please edit documentation in R/route53domains_operations.R
 \name{route53domains_transfer_domain}
 \alias{route53domains_transfer_domain}
-\title{This operation transfers a domain from another registrar to Amazon Route
-53}
+\title{Transfers a domain from another registrar to Amazon Route 53}
 \usage{
 route53domains_transfer_domain(DomainName, IdnLangCode, DurationInYears,
   Nameservers, AuthCode, AutoRenew, AdminContact, RegistrantContact,
@@ -11,11 +10,20 @@ route53domains_transfer_domain(DomainName, IdnLangCode, DurationInYears,
   PrivacyProtectRegistrantContact, PrivacyProtectTechContact)
 }
 \arguments{
-\item{DomainName}{[required] The name of the domain that you want to transfer to Amazon Route 53.
+\item{DomainName}{[required] The name of the domain that you want to transfer to Route 53. The
+top-level domain (TLD), such as .com, must be a TLD that Route 53
+supports. For a list of supported TLDs, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
+in the \emph{Amazon Route 53 Developer Guide}.
 
-Constraints: The domain name can contain only the letters a through z,
-the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
-are not supported.}
+The domain name can contain only the following characters:
+\itemize{
+\item Letters a through z. Domain names are not case sensitive.
+\item Numbers 0 through 9.
+\item Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+label.
+\item Period (.) to separate the labels in the name, such as the \code{.} in
+\code{example.com}.
+}}
 
 \item{IdnLangCode}{Reserved for future use.}
 
@@ -69,23 +77,34 @@ entered for the technical contact.
 Default: \code{true}}
 }
 \description{
-This operation transfers a domain from another registrar to Amazon Route
-53. When the transfer is complete, the domain is registered either with
-Amazon Registrar (for .com, .net, and .org domains) or with our
-registrar associate, Gandi (for all other TLDs).
+Transfers a domain from another registrar to Amazon Route 53. When the
+transfer is complete, the domain is registered either with Amazon
+Registrar (for .com, .net, and .org domains) or with our registrar
+associate, Gandi (for all other TLDs).
 }
 \details{
-For transfer requirements, a detailed procedure, and information about
-viewing the status of a domain transfer, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html}{Transferring Registration for a Domain to Amazon Route 53}
+For more information about transferring domains, see the following
+topics:
+\itemize{
+\item For transfer requirements, a detailed procedure, and information
+about viewing the status of a domain that you\'re transferring to
+Route 53, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html}{Transferring Registration for a Domain to Amazon Route 53}
 in the \emph{Amazon Route 53 Developer Guide}.
+\item For information about how to transfer a domain from one AWS account
+to another, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html}{TransferDomainToAnotherAwsAccount}.
+\item For information about how to transfer a domain to another domain
+registrar, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-from-route-53.html}{Transferring a Domain from Amazon Route 53 to Another Registrar}
+in the \emph{Amazon Route 53 Developer Guide}.
+}
 
 If the registrar for your domain is also the DNS service provider for
-the domain, we highly recommend that you consider transferring your DNS
-service to Amazon Route 53 or to another DNS service provider before you
-transfer your registration. Some registrars provide free DNS service
-when you purchase a domain registration. When you transfer the
-registration, the previous registrar will not renew your domain
-registration and could end your DNS service at any time.
+the domain, we highly recommend that you transfer your DNS service to
+Route 53 or to another DNS service provider before you transfer your
+registration. Some registrars provide free DNS service when you purchase
+a domain registration. When you transfer the registration, the previous
+registrar will not renew your domain registration and could end your DNS
+service at any time.
 
 If the registrar for your domain is also the DNS service provider for
 the domain and you don\'t transfer DNS service to another provider, your
@@ -128,7 +147,7 @@ notified by email.
     Fax = "string",
     ExtraParams = list(
       list(
-        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
         Value = "string"
       )
     )
@@ -149,7 +168,7 @@ notified by email.
     Fax = "string",
     ExtraParams = list(
       list(
-        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
         Value = "string"
       )
     )
@@ -170,7 +189,7 @@ notified by email.
     Fax = "string",
     ExtraParams = list(
       list(
-        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
         Value = "string"
       )
     )

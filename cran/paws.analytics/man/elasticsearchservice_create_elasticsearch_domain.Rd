@@ -8,7 +8,7 @@ elasticsearchservice_create_elasticsearch_domain(DomainName,
   ElasticsearchVersion, ElasticsearchClusterConfig, EBSOptions,
   AccessPolicies, SnapshotOptions, VPCOptions, CognitoOptions,
   EncryptionAtRestOptions, NodeToNodeEncryptionOptions, AdvancedOptions,
-  LogPublishingOptions, DomainEndpointOptions)
+  LogPublishingOptions, DomainEndpointOptions, AdvancedSecurityOptions)
 }
 \arguments{
 \item{DomainName}{[required] The name of the Elasticsearch domain that you are creating. Domain names
@@ -52,6 +52,8 @@ publish a given type of Elasticsearch log.}
 
 \item{DomainEndpointOptions}{Options to specify configuration that will be applied to the domain
 endpoint.}
+
+\item{AdvancedSecurityOptions}{Specifies advanced security options.}
 }
 \description{
 Creates a new Elasticsearch domain. For more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains}{Creating Elasticsearch Domains}
@@ -118,6 +120,15 @@ in the \emph{Amazon Elasticsearch Service Developer Guide}.
   DomainEndpointOptions = list(
     EnforceHTTPS = TRUE|FALSE,
     TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
+  ),
+  AdvancedSecurityOptions = list(
+    Enabled = TRUE|FALSE,
+    InternalUserDatabaseEnabled = TRUE|FALSE,
+    MasterUserOptions = list(
+      MasterUserARN = "string",
+      MasterUserName = "string",
+      MasterUserPassword = "string"
+    )
   )
 )
 }

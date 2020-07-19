@@ -14,9 +14,6 @@ eventbridge_describe_event_source(Name)
 This operation lists details about a partner event source that is shared
 with your account.
 }
-\details{
-This operation is run by AWS customers, not by SaaS partners.
-}
 \section{Request syntax}{
 \preformatted{svc$describe_event_source(
   Name = "string"

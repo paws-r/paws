@@ -56,7 +56,7 @@ kinesisvideomedia <- function(config = list()) {
 
 .kinesisvideomedia$metadata <- list(
   service_name = "kinesisvideo",
-  endpoints = list("*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisvideo.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "kinesisvideo.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesisvideo.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Kinesis Video Media",
   api_version = "2017-09-30",
   signing_name = NULL,

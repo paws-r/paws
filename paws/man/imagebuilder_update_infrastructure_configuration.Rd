@@ -7,19 +7,19 @@
 imagebuilder_update_infrastructure_configuration(
   infrastructureConfigurationArn, description, instanceTypes,
   instanceProfileName, securityGroupIds, subnetId, logging, keyPair,
-  terminateInstanceOnFailure, snsTopicArn, clientToken)
+  terminateInstanceOnFailure, snsTopicArn, clientToken, resourceTags)
 }
 \arguments{
 \item{infrastructureConfigurationArn}{[required] The Amazon Resource Name (ARN) of the infrastructure configuration that
-you wish to update.}
+you want to update.}
 
 \item{description}{The description of the infrastructure configuration.}
 
-\item{instanceTypes}{The instance types of the infrastructure configuration. You may specify
-one or more instance types to use for this build, the service will pick
+\item{instanceTypes}{The instance types of the infrastructure configuration. You can specify
+one or more instance types to use for this build. The service will pick
 one of these instance types based on availability.}
 
-\item{instanceProfileName}{The instance profile to associate with the instance used to customize
+\item{instanceProfileName}{[required] The instance profile to associate with the instance used to customize
 your EC2 AMI.}
 
 \item{securityGroupIds}{The security group IDs to associate with the instance used to customize
@@ -30,16 +30,18 @@ your EC2 AMI.}
 \item{logging}{The logging configuration of the infrastructure configuration.}
 
 \item{keyPair}{The key pair of the infrastructure configuration. This can be used to
-log onto and debug the instance used to create your image.}
+log on to and debug the instance used to create your image.}
 
 \item{terminateInstanceOnFailure}{The terminate instance on failure setting of the infrastructure
-configuration. Set to false if you wish for Image Builder to retain the
-instance used to configure your AMI in the event that the build or test
-phase of your workflow failed.}
+configuration. Set to false if you want Image Builder to retain the
+instance used to configure your AMI if the build or test phase of your
+workflow fails.}
 
 \item{snsTopicArn}{The SNS topic on which to send image build events.}
 
 \item{clientToken}{[required] The idempotency token used to make this request idempotent.}
+
+\item{resourceTags}{The tags attached to the resource created by Image Builder.}
 }
 \description{
 Updates a new infrastructure configuration. An infrastructure
@@ -67,7 +69,10 @@ and tested.
   keyPair = "string",
   terminateInstanceOnFailure = TRUE|FALSE,
   snsTopicArn = "string",
-  clientToken = "string"
+  clientToken = "string",
+  resourceTags = list(
+    "string"
+  )
 )
 }
 }

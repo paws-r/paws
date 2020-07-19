@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_create_regex_match_set}
 \alias{waf_create_regex_match_set}
-\title{Creates a RegexMatchSet}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 waf_create_regex_match_set(Name, ChangeToken)
 }
@@ -13,6 +13,16 @@ waf_create_regex_match_set(Name, ChangeToken)
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
+}
+\details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Creates a RegexMatchSet. You then use UpdateRegexMatchSet to identify
 the part of a web request that you want AWS WAF to inspect, such as the
 values of the \code{User-Agent} header or the query string. For example, you
@@ -20,8 +30,7 @@ can create a \code{RegexMatchSet} that contains a \code{RegexMatchTuple} that
 looks for any requests with \code{User-Agent} headers that match a
 \code{RegexPatternSet} with pattern \verb{B\\\[a@\\\]dB\\\[o0\\\]t}. You can then
 configure AWS WAF to reject those requests.
-}
-\details{
+
 To create and configure a \code{RegexMatchSet}, perform the following steps:
 \enumerate{
 \item Use GetChangeToken to get the change token that you provide in the

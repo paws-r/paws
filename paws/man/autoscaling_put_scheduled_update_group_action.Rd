@@ -38,12 +38,14 @@ information about this format, see \href{http://crontab.org}{Crontab}.
 When \code{StartTime} and \code{EndTime} are specified with \code{Recurrence}, they
 form the boundaries of when the recurring action starts and stops.}
 
-\item{MinSize}{The minimum number of instances in the Auto Scaling group.}
+\item{MinSize}{The minimum size of the Auto Scaling group.}
 
-\item{MaxSize}{The maximum number of instances in the Auto Scaling group.}
+\item{MaxSize}{The maximum size of the Auto Scaling group.}
 
-\item{DesiredCapacity}{The number of EC2 instances that should be running in the Auto Scaling
-group.}
+\item{DesiredCapacity}{The desired capacity is the initial capacity of the Auto Scaling group
+after the scheduled action runs and the capacity it attempts to
+maintain. It can scale beyond this capacity if you add more scaling
+conditions.}
 }
 \description{
 Creates or updates a scheduled scaling action for an Auto Scaling group.

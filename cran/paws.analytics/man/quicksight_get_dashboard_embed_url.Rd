@@ -2,7 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_get_dashboard_embed_url}
 \alias{quicksight_get_dashboard_embed_url}
-\title{Generates a server-side embeddable URL and authorization code}
+\title{Generates a URL and authorization code that you can embed in your web
+server code}
 \usage{
 quicksight_get_dashboard_embed_url(AwsAccountId, DashboardId,
   IdentityType, SessionLifetimeInMinutes, UndoRedoDisabled, ResetDisabled,
@@ -38,15 +39,24 @@ federation.
 }}
 }
 \description{
-Generates a server-side embeddable URL and authorization code. For this
-process to work properly, first configure the dashboards and user
-permissions. For more information, see \href{https://docs.aws.amazon.com/quicksight/latest/user/embedding-dashboards.html}{Embedding Amazon QuickSight Dashboards}
-in the \emph{Amazon QuickSight User Guide} or \href{https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-dev-embedded-dashboards.html}{Embedding Amazon QuickSight Dashboards}
-in the \emph{Amazon QuickSight API Reference}.
+Generates a URL and authorization code that you can embed in your web
+server code. Before you use this command, make sure that you have
+configured the dashboards and permissions.
 }
 \details{
 Currently, you can use \code{GetDashboardEmbedURL} only from the server, not
-from the user's browser.
+from the user\'s browser. The following rules apply to the combination
+of URL and authorization code:
+\itemize{
+\item They must be used together.
+\item They can be used one time only.
+\item They are valid for 5 minutes after you run this command.
+\item The resulting user session is valid for 10 hours.
+}
+
+For more information, see \href{https://docs.aws.amazon.com/quicksight/latest/user/embedding-dashboards.html}{Embedding Amazon QuickSight Dashboards}
+in the \emph{Amazon QuickSight User Guide} or \href{https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-dev-embedded-dashboards.html}{Embedding Amazon QuickSight Dashboards}
+in the \emph{Amazon QuickSight API Reference}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_dashboard_embed_url(

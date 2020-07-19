@@ -32,7 +32,7 @@ configurations.
 \preformatted{svc$list_members(
   NetworkId = "string",
   Name = "string",
-  Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"DELETING"|"DELETED",
+  Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED",
   IsOwned = TRUE|FALSE,
   MaxResults = 123,
   NextToken = "string"

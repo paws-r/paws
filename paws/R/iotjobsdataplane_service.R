@@ -77,7 +77,7 @@ iotjobsdataplane <- function(config = list()) {
 
 .iotjobsdataplane$metadata <- list(
   service_name = "data.jobs.iot",
-  endpoints = list("*" = list(endpoint = "data.jobs.iot.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "data.jobs.iot.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "data.jobs.iot.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "data.jobs.iot.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "data.jobs.iot.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "data.jobs.iot.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "IoT Jobs Data Plane",
   api_version = "2017-09-29",
   signing_name = "iot-jobs-data",

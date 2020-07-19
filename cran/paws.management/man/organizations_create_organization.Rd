@@ -17,8 +17,8 @@ in the \emph{AWS Organizations User Guide.}
 
 The consolidated billing feature subset isn\'t available for
 organizations in the AWS GovCloud (US) Region.
-\item \code{ALL}: In addition to all the features that consolidated billing
-feature set supports, the master account can also apply any policy
+\item \code{ALL}: In addition to all the features supported by the consolidated
+billing feature set, the master account can also apply any policy
 type to any member account in the organization. For more
 information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all}{All features}
 in the \emph{AWS Organizations User Guide.}
@@ -35,11 +35,12 @@ to become the new organization\'s master account. The principal must
 also have the relevant IAM permissions.
 
 By default (or if you set the \code{FeatureSet} parameter to \code{ALL}), the new
-organization is created with all features enabled. In addition, service
-control policies are automatically enabled in the root. If you instead
+organization is created with all features enabled and service control
+policies automatically enabled in the root. If you instead choose to
 create the organization supporting only the consolidated billing
-features, no policy types are enabled by default, and you can\'t use
-organization policies.
+features by setting the \code{FeatureSet} parameter to
+\verb{CONSOLIDATED_BILLING\\"}, no policy types are enabled by default, and
+you can\'t use organization policies
 }
 \section{Request syntax}{
 \preformatted{svc$create_organization(

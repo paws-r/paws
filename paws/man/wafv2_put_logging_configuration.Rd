@@ -24,9 +24,12 @@ the following steps:
 \enumerate{
 \item Create an Amazon Kinesis Data Firehose.
 
-Create the data firehose with a PUT source and in the region that
+Create the data firehose with a PUT source and in the Region that
 you are operating. If you are capturing logs for Amazon CloudFront,
 always create the firehose in US East (N. Virginia).
+
+Give the data firehose a name that starts with the prefix
+\verb{aws-waf-logs-}. For example, \code{aws-waf-logs-us-east-2-analytics}.
 
 Do not create the data firehose using a \verb{Kinesis stream} as your
 source.

@@ -12,7 +12,7 @@ guardduty_delete_ip_set(DetectorId, IpSetId)
 \item{IpSetId}{[required] The unique ID of the IPSet to delete.}
 }
 \description{
-Deletes the IPSet specified by the \code{ipSetId}. IPSets are called Trusted
+Deletes the IPSet specified by the \code{ipSetId}. IPSets are called trusted
 IP lists in the console user interface.
 }
 \section{Request syntax}{

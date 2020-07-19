@@ -12,8 +12,8 @@ organizations_detach_policy(PolicyId, TargetId)
 the ID from the ListPolicies or ListPoliciesForTarget operations.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
-string requires \"p-\" followed by from 8 to 128 lowercase letters or
-digits.}
+string requires \"p-\" followed by from 8 to 128 lowercase or uppercase
+letters, digits, or the underscore character (\\_).}
 
 \item{TargetId}{[required] The unique identifier (ID) of the root, OU, or account that you want to
 detach the policy from. You can get the ID from the ListRoots,
@@ -33,21 +33,23 @@ dash and from 8 to 32 additional lowercase letters or digits.
 }
 \description{
 Detaches a policy from a target root, organizational unit (OU), or
-account. If the policy being detached is a service control policy (SCP),
-the changes to permissions for IAM users and roles in affected accounts
-are immediate.
+account.
 }
 \details{
-\strong{Note:} Every root, OU, and account must have at least one SCP
-attached. You can replace the default \code{FullAWSAccess} policy with one
-that limits the permissions that can be delegated. To do that, you must
-attach the replacement policy before you can remove the default one.
-This is the authorization strategy of using an \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist}{allow list}.
-You could instead attach a second SCP and leave the \code{FullAWSAccess} SCP
-still attached. You could then specify \code{"Effect": "Deny"} in the second
-SCP to override the \code{"Effect": "Allow"} in the \code{FullAWSAccess} policy
-(or any other attached SCP). If you take these steps, you\'re using the
-authorization strategy of a \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist}{deny list}.
+If the policy being detached is a service control policy (SCP), the
+changes to permissions for AWS Identity and Access Management (IAM)
+users and roles in affected accounts are immediate.
+
+Every root, OU, and account must have at least one SCP attached. If you
+want to replace the default \code{FullAWSAccess} policy with an SCP that
+limits the permissions that can be delegated, you must attach the
+replacement SCP before you can remove the default SCP. This is the
+authorization strategy of an \"\href{https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_allowlist}{allow list}\".
+If you instead attach a second SCP and leave the \code{FullAWSAccess} SCP
+still attached, and specify \code{"Effect": "Deny"} in the second SCP to
+override the \code{"Effect": "Allow"} in the \code{FullAWSAccess} policy (or any
+other attached SCP), you\'re using the authorization strategy of a
+\"\href{https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_denylist}{deny list}\".
 
 This operation can be called only from the organization\'s master
 account.

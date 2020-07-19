@@ -2,8 +2,9 @@
 % Please edit documentation in R/sns_operations.R
 \name{sns_publish}
 \alias{sns_publish}
-\title{Sends a message to an Amazon SNS topic or sends a text message (SMS
-message) directly to a phone number}
+\title{Sends a message to an Amazon SNS topic, a text message (SMS message)
+directly to a phone number, or a message to a mobile platform endpoint
+(when you specify the TargetArn)}
 \usage{
 sns_publish(TopicArn, TargetArn, PhoneNumber, Message, Subject,
   MessageStructure, MessageAttributes)
@@ -96,8 +97,9 @@ Valid value: \code{json}}
 \item{MessageAttributes}{Message attributes for Publish action.}
 }
 \description{
-Sends a message to an Amazon SNS topic or sends a text message (SMS
-message) directly to a phone number.
+Sends a message to an Amazon SNS topic, a text message (SMS message)
+directly to a phone number, or a message to a mobile platform endpoint
+(when you specify the \code{TargetArn}).
 }
 \details{
 If you send a message to a topic, Amazon SNS delivers the message to
@@ -113,6 +115,9 @@ EndpointArn for the TargetArn parameter. The EndpointArn is returned
 when making a call with the \code{CreatePlatformEndpoint} action.
 
 For more information about formatting messages, see \href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html}{Send Custom Platform-Specific Payloads in Messages to Mobile Devices}.
+
+You can publish messages only to topics and endpoints in the same AWS
+Region.
 }
 \section{Request syntax}{
 \preformatted{svc$publish(

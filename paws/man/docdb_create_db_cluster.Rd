@@ -2,7 +2,7 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_create_db_cluster}
 \alias{docdb_create_db_cluster}
-\title{Creates a new Amazon DocumentDB DB cluster}
+\title{Creates a new Amazon DocumentDB cluster}
 \usage{
 docdb_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
   DBClusterIdentifier, DBClusterParameterGroupName, VpcSecurityGroupIds,
@@ -12,7 +12,7 @@ docdb_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
   DeletionProtection)
 }
 \arguments{
-\item{AvailabilityZones}{A list of Amazon EC2 Availability Zones that instances in the DB cluster
+\item{AvailabilityZones}{A list of Amazon EC2 Availability Zones that instances in the cluster
 can be created in.}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups are retained. You must
@@ -25,8 +25,7 @@ Constraints:
 \item Must be a value from 1 to 35.
 }}
 
-\item{DBClusterIdentifier}{[required] The DB cluster identifier. This parameter is stored as a lowercase
-string.
+\item{DBClusterIdentifier}{[required] The cluster identifier. This parameter is stored as a lowercase string.
 
 Constraints:
 \itemize{
@@ -37,28 +36,27 @@ Constraints:
 
 Example: \code{my-cluster}}
 
-\item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with this DB
-cluster.}
+\item{DBClusterParameterGroupName}{The name of the cluster parameter group to associate with this cluster.}
 
-\item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with this DB cluster.}
+\item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with this cluster.}
 
-\item{DBSubnetGroupName}{A DB subnet group to associate with this DB cluster.
+\item{DBSubnetGroupName}{A subnet group to associate with this cluster.
 
 Constraints: Must match the name of an existing \code{DBSubnetGroup}. Must
 not be default.
 
 Example: \code{mySubnetgroup}}
 
-\item{Engine}{[required] The name of the database engine to be used for this DB cluster.
+\item{Engine}{[required] The name of the database engine to be used for this cluster.
 
 Valid values: \code{docdb}}
 
 \item{EngineVersion}{The version number of the database engine to use.}
 
-\item{Port}{The port number on which the instances in the DB cluster accept
+\item{Port}{The port number on which the instances in the cluster accept
 connections.}
 
-\item{MasterUsername}{[required] The name of the master user for the DB cluster.
+\item{MasterUsername}{[required] The name of the master user for the cluster.
 
 Constraints:
 \itemize{
@@ -101,16 +99,16 @@ Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
 Constraints: Minimum 30-minute window.}
 
-\item{Tags}{The tags to be assigned to the DB cluster.}
+\item{Tags}{The tags to be assigned to the cluster.}
 
-\item{StorageEncrypted}{Specifies whether the DB cluster is encrypted.}
+\item{StorageEncrypted}{Specifies whether the cluster is encrypted.}
 
-\item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB cluster.
+\item{KmsKeyId}{The AWS KMS key identifier for an encrypted cluster.
 
 The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-KMS encryption key. If you are creating a DB cluster using the same AWS
+KMS encryption key. If you are creating a cluster using the same AWS
 account that owns the AWS KMS encryption key that is used to encrypt the
-new DB cluster, you can use the AWS KMS key alias instead of the ARN for
+new cluster, you can use the AWS KMS key alias instead of the ARN for
 the AWS KMS encryption key.
 
 If an encryption key is not specified in \code{KmsKeyId}:
@@ -127,10 +125,9 @@ uses your default encryption key.
 AWS KMS creates the default encryption key for your AWS account. Your
 AWS account has a different default encryption key for each AWS Region.
 
-If you create a replica of an encrypted DB cluster in another AWS
-Region, you must set \code{KmsKeyId} to a KMS key ID that is valid in the
-destination AWS Region. This key is used to encrypt the replica in that
-AWS Region.}
+If you create a replica of an encrypted cluster in another AWS Region,
+you must set \code{KmsKeyId} to a KMS key ID that is valid in the destination
+AWS Region. This key is used to encrypt the replica in that AWS Region.}
 
 \item{EnableCloudwatchLogsExports}{A list of log types that need to be enabled for exporting to Amazon
 CloudWatch Logs.}
@@ -141,7 +138,7 @@ is enabled, the cluster cannot be deleted unless it is modified and
 from being accidentally deleted.}
 }
 \description{
-Creates a new Amazon DocumentDB DB cluster.
+Creates a new Amazon DocumentDB cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$create_db_cluster(

@@ -8,7 +8,7 @@ SageMaker console}
 sagemaker_get_search_suggestions(Resource, SuggestionQuery)
 }
 \arguments{
-\item{Resource}{[required] The name of the Amazon SageMaker resource to Search for.}
+\item{Resource}{[required] The name of the Amazon SageMaker resource to search for.}
 
 \item{SuggestionQuery}{Limits the property names that are included in the response.}
 }

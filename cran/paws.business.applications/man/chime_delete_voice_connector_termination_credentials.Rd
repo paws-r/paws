@@ -11,7 +11,7 @@ chime_delete_voice_connector_termination_credentials(VoiceConnectorId,
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 
-\item{Usernames}{The RFC2617 compliant username associated with the SIP credentials, in
+\item{Usernames}{[required] The RFC2617 compliant username associated with the SIP credentials, in
 US-ASCII format.}
 }
 \description{

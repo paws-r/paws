@@ -41,7 +41,7 @@ consists of a \code{Name}, \code{Type}, and \code{Value}.
 \itemize{
 \item Currently, the only supported message system attribute is
 \code{AWSTraceHeader}. Its type must be \code{String} and its value must be a
-correctly formatted AWS X-Ray trace string.
+correctly formatted AWS X-Ray trace header string.
 \item The size of a message system attribute doesn\'t count towards the
 total size of a message.
 }}
@@ -89,7 +89,7 @@ deduplication interval, Amazon SQS can\'t detect duplicate messages.
 Amazon SQS continues to keep track of the message deduplication ID even
 after the message is received and deleted.
 
-The length of \code{MessageDeduplicationId} is 128 characters.
+The maximum length of \code{MessageDeduplicationId} is 128 characters.
 \code{MessageDeduplicationId} can contain alphanumeric characters (\code{a-z},
 \code{A-Z}, \code{0-9}) and punctuation
 (\verb{!\\"#$\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~}).

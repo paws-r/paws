@@ -24,6 +24,7 @@ channel.
   SMSTemplateRequest = list(
     Body = "string",
     DefaultSubstitutions = "string",
+    RecommenderId = "string",
     tags = list(
       "string"
     ),

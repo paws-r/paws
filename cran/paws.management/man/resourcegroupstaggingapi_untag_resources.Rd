@@ -8,9 +8,7 @@ resourcegroupstaggingapi_untag_resources(ResourceARNList, TagKeys)
 }
 \arguments{
 \item{ResourceARNList}{[required] A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a
-resource. You can specify a minimum of 1 and a maximum of 20 ARNs
-(resources) to untag. An ARN can be set to a maximum of 1600 characters.
-For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+resource. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
 \item{TagKeys}{[required] A list of the tag keys that you want to remove from the specified

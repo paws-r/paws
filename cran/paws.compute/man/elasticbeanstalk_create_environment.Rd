@@ -2,30 +2,26 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_create_environment}
 \alias{elasticbeanstalk_create_environment}
-\title{Launches an environment for the specified application using the
-specified configuration}
+\title{Launches an AWS Elastic Beanstalk environment for the specified
+application using the specified configuration}
 \usage{
 elasticbeanstalk_create_environment(ApplicationName, EnvironmentName,
   GroupName, Description, CNAMEPrefix, Tier, Tags, VersionLabel,
   TemplateName, SolutionStackName, PlatformArn, OptionSettings,
-  OptionsToRemove)
+  OptionsToRemove, OperationsRole)
 }
 \arguments{
-\item{ApplicationName}{[required] The name of the application that contains the version to be deployed.
+\item{ApplicationName}{[required] The name of the application that is associated with this environment.}
 
-If no application is found with this name, \code{CreateEnvironment} returns
-an \code{InvalidParameterValue} error.}
-
-\item{EnvironmentName}{A unique name for the deployment environment. Used in the application
-URL.
+\item{EnvironmentName}{A unique name for the environment.
 
 Constraint: Must be from 4 to 40 characters in length. The name can
-contain only letters, numbers, and hyphens. It cannot start or end with
+contain only letters, numbers, and hyphens. It can\'t start or end with
 a hyphen. This name must be unique within a region in your account. If
-the specified name already exists in the region, AWS Elastic Beanstalk
+the specified name already exists in the region, Elastic Beanstalk
 returns an \code{InvalidParameterValue} error.
 
-Default: If the CNAME parameter is not specified, the environment name
+If you don\'t specify the \code{CNAMEPrefix} parameter, the environment name
 becomes part of the CNAME, and therefore part of the visible URL for
 your application.}
 
@@ -35,36 +31,44 @@ environment manifest and not with the environment name parameter. See
 \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html}{Environment Manifest (env.yaml)}
 for details.}
 
-\item{Description}{Describes this environment.}
+\item{Description}{Your description for this environment.}
 
 \item{CNAMEPrefix}{If specified, the environment attempts to use this value as the prefix
-for the CNAME. If not specified, the CNAME is generated automatically by
-appending a random alphanumeric string to the environment name.}
+for the CNAME in your Elastic Beanstalk environment URL. If not
+specified, the CNAME is generated automatically by appending a random
+alphanumeric string to the environment name.}
 
-\item{Tier}{This specifies the tier to use for creating this environment.}
+\item{Tier}{Specifies the tier to use in creating this environment. The environment
+tier that you choose determines whether Elastic Beanstalk provisions
+resources to support a web application that handles HTTP(S) requests or
+a web application that handles background-processing tasks.}
 
 \item{Tags}{Specifies the tags applied to resources in the environment.}
 
 \item{VersionLabel}{The name of the application version to deploy.
 
-If the specified application has no associated application versions, AWS
-Elastic Beanstalk \code{UpdateEnvironment} returns an \code{InvalidParameterValue}
-error.
+Default: If not specified, Elastic Beanstalk attempts to deploy the
+sample application.}
 
-Default: If not specified, AWS Elastic Beanstalk attempts to launch the
-sample application in the container.}
+\item{TemplateName}{The name of the Elastic Beanstalk configuration template to use with the
+environment.
 
-\item{TemplateName}{The name of the configuration template to use in deployment. If no
-configuration template is found with this name, AWS Elastic Beanstalk
-returns an \code{InvalidParameterValue} error.}
+If you specify \code{TemplateName}, then don\'t specify \code{SolutionStackName}.}
 
-\item{SolutionStackName}{This is an alternative to specifying a template name. If specified, AWS
-Elastic Beanstalk sets the configuration values to the default values
-associated with the specified solution stack.
+\item{SolutionStackName}{The name of an Elastic Beanstalk solution stack (platform version) to
+use with the environment. If specified, Elastic Beanstalk sets the
+configuration values to the default values associated with the specified
+solution stack. For a list of current solution stacks, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html}{Elastic Beanstalk Supported Platforms}
+in the \emph{AWS Elastic Beanstalk Platforms} guide.
 
-For a list of current solution stacks, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html}{Elastic Beanstalk Supported Platforms}.}
+If you specify \code{SolutionStackName}, don\'t specify \code{PlatformArn} or
+\code{TemplateName}.}
 
-\item{PlatformArn}{The ARN of the platform.}
+\item{PlatformArn}{The Amazon Resource Name (ARN) of the custom platform to use with the
+environment. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/custom-platforms.html}{Custom Platforms}
+in the \emph{AWS Elastic Beanstalk Developer Guide}.
+
+If you specify \code{PlatformArn}, don\'t specify \code{SolutionStackName}.}
 
 \item{OptionSettings}{If specified, AWS Elastic Beanstalk sets the specified configuration
 options to the requested value in the configuration set for the new
@@ -73,10 +77,18 @@ or the configuration template.}
 
 \item{OptionsToRemove}{A list of custom user-defined configuration options to remove from the
 configuration set for this new environment.}
+
+\item{OperationsRole}{The Amazon Resource Name (ARN) of an existing IAM role to be used as the
+environment\'s operations role. If specified, Elastic Beanstalk uses the
+operations role for permissions to downstream services during this call
+and during subsequent calls acting on this environment. To specify an
+operations role, you must have the \code{iam:PassRole} permission for the
+role. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html}{Operations roles}
+in the \emph{AWS Elastic Beanstalk Developer Guide}.}
 }
 \description{
-Launches an environment for the specified application using the
-specified configuration.
+Launches an AWS Elastic Beanstalk environment for the specified
+application using the specified configuration.
 }
 \section{Request syntax}{
 \preformatted{svc$create_environment(
@@ -114,7 +126,8 @@ specified configuration.
       Namespace = "string",
       OptionName = "string"
     )
-  )
+  ),
+  OperationsRole = "string"
 )
 }
 }

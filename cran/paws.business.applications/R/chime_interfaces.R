@@ -53,7 +53,7 @@ NULL
 
 .chime$batch_create_attendee_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MeetingId = structure(logical(0), tags = list(location = "uri", locationName = "meetingId", type = "string")), Attendees = structure(list(structure(list(ExternalUserId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(MeetingId = structure(logical(0), tags = list(location = "uri", locationName = "meetingId", type = "string")), Attendees = structure(list(structure(list(ExternalUserId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -149,7 +149,7 @@ NULL
 
 .chime$create_attendee_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MeetingId = structure(logical(0), tags = list(location = "uri", locationName = "meetingId", type = "string")), ExternalUserId = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(MeetingId = structure(logical(0), tags = list(location = "uri", locationName = "meetingId", type = "string")), ExternalUserId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -173,13 +173,25 @@ NULL
 
 .chime$create_meeting_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string", sensitive = TRUE)), MeetingHostId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MediaRegion = structure(logical(0), tags = list(type = "string")), NotificationsConfiguration = structure(list(SnsTopicArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SqsQueueArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string", sensitive = TRUE)), ExternalMeetingId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MeetingHostId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MediaRegion = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NotificationsConfiguration = structure(list(SnsTopicArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SqsQueueArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .chime$create_meeting_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Meeting = structure(list(MeetingId = structure(logical(0), tags = list(type = "string")), MediaPlacement = structure(list(AudioHostUrl = structure(logical(0), tags = list(type = "string")), ScreenDataUrl = structure(logical(0), tags = list(type = "string")), ScreenSharingUrl = structure(logical(0), tags = list(type = "string")), ScreenViewingUrl = structure(logical(0), tags = list(type = "string")), SignalingUrl = structure(logical(0), tags = list(type = "string")), TurnControlUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MediaRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Meeting = structure(list(MeetingId = structure(logical(0), tags = list(type = "string")), ExternalMeetingId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MediaPlacement = structure(list(AudioHostUrl = structure(logical(0), tags = list(type = "string")), AudioFallbackUrl = structure(logical(0), tags = list(type = "string")), ScreenDataUrl = structure(logical(0), tags = list(type = "string")), ScreenSharingUrl = structure(logical(0), tags = list(type = "string")), ScreenViewingUrl = structure(logical(0), tags = list(type = "string")), SignalingUrl = structure(logical(0), tags = list(type = "string")), TurnControlUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MediaRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$create_meeting_with_attendees_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string", sensitive = TRUE)), ExternalMeetingId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MeetingHostId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MediaRegion = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NotificationsConfiguration = structure(list(SnsTopicArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SqsQueueArn = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), Attendees = structure(list(structure(list(ExternalUserId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$create_meeting_with_attendees_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Meeting = structure(list(MeetingId = structure(logical(0), tags = list(type = "string")), ExternalMeetingId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MediaPlacement = structure(list(AudioHostUrl = structure(logical(0), tags = list(type = "string")), AudioFallbackUrl = structure(logical(0), tags = list(type = "string")), ScreenDataUrl = structure(logical(0), tags = list(type = "string")), ScreenSharingUrl = structure(logical(0), tags = list(type = "string")), ScreenViewingUrl = structure(logical(0), tags = list(type = "string")), SignalingUrl = structure(logical(0), tags = list(type = "string")), TurnControlUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MediaRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Attendees = structure(list(structure(list(ExternalUserId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AttendeeId = structure(logical(0), tags = list(type = "string")), JoinToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Errors = structure(list(structure(list(ExternalUserId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -192,6 +204,18 @@ NULL
 .chime$create_phone_number_order_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PhoneNumberOrder = structure(list(PhoneNumberOrderId = structure(logical(0), tags = list(type = "string")), ProductType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), OrderedPhoneNumbers = structure(list(structure(list(E164PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$create_proxy_session_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string")), ParticipantPhoneNumbers = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ExpiryMinutes = structure(logical(0), tags = list(type = "integer")), Capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NumberSelectionBehavior = structure(logical(0), tags = list(type = "string")), GeoMatchLevel = structure(logical(0), tags = list(type = "string")), GeoMatchParams = structure(list(Country = structure(logical(0), tags = list(type = "string")), AreaCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$create_proxy_session_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProxySession = structure(list(VoiceConnectorId = structure(logical(0), tags = list(type = "string")), ProxySessionId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ExpiryMinutes = structure(logical(0), tags = list(type = "integer")), Capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), EndedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Participants = structure(list(structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProxyPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NumberSelectionBehavior = structure(logical(0), tags = list(type = "string")), GeoMatchLevel = structure(logical(0), tags = list(type = "string")), GeoMatchParams = structure(list(Country = structure(logical(0), tags = list(type = "string")), AreaCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -307,6 +331,16 @@ NULL
   list()
 }
 
+.chime$delete_proxy_session_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string")), ProxySessionId = structure(logical(0), tags = list(location = "uri", locationName = "proxySessionId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$delete_proxy_session_output <- function(...) {
+  list()
+}
+
 .chime$delete_room_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), RoomId = structure(logical(0), tags = list(location = "uri", locationName = "roomId", type = "string"))), tags = list(type = "structure"))
@@ -337,6 +371,16 @@ NULL
   list()
 }
 
+.chime$delete_voice_connector_emergency_calling_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$delete_voice_connector_emergency_calling_configuration_output <- function(...) {
+  list()
+}
+
 .chime$delete_voice_connector_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(VoiceConnectorGroupId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorGroupId", type = "string"))), tags = list(type = "structure"))
@@ -354,6 +398,16 @@ NULL
 }
 
 .chime$delete_voice_connector_origination_output <- function(...) {
+  list()
+}
+
+.chime$delete_voice_connector_proxy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$delete_voice_connector_proxy_output <- function(...) {
   list()
 }
 
@@ -513,7 +567,7 @@ NULL
 
 .chime$get_meeting_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Meeting = structure(list(MeetingId = structure(logical(0), tags = list(type = "string")), MediaPlacement = structure(list(AudioHostUrl = structure(logical(0), tags = list(type = "string")), ScreenDataUrl = structure(logical(0), tags = list(type = "string")), ScreenSharingUrl = structure(logical(0), tags = list(type = "string")), ScreenViewingUrl = structure(logical(0), tags = list(type = "string")), SignalingUrl = structure(logical(0), tags = list(type = "string")), TurnControlUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MediaRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Meeting = structure(list(MeetingId = structure(logical(0), tags = list(type = "string")), ExternalMeetingId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MediaPlacement = structure(list(AudioHostUrl = structure(logical(0), tags = list(type = "string")), AudioFallbackUrl = structure(logical(0), tags = list(type = "string")), ScreenDataUrl = structure(logical(0), tags = list(type = "string")), ScreenSharingUrl = structure(logical(0), tags = list(type = "string")), ScreenViewingUrl = structure(logical(0), tags = list(type = "string")), SignalingUrl = structure(logical(0), tags = list(type = "string")), TurnControlUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MediaRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -548,6 +602,30 @@ NULL
 .chime$get_phone_number_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(CallingName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CallingNameUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$get_proxy_session_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string")), ProxySessionId = structure(logical(0), tags = list(location = "uri", locationName = "proxySessionId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$get_proxy_session_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProxySession = structure(list(VoiceConnectorId = structure(logical(0), tags = list(type = "string")), ProxySessionId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ExpiryMinutes = structure(logical(0), tags = list(type = "integer")), Capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), EndedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Participants = structure(list(structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProxyPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NumberSelectionBehavior = structure(logical(0), tags = list(type = "string")), GeoMatchLevel = structure(logical(0), tags = list(type = "string")), GeoMatchParams = structure(list(Country = structure(logical(0), tags = list(type = "string")), AreaCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$get_retention_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$get_retention_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RetentionSettings = structure(list(RoomRetentionSettings = structure(list(RetentionDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ConversationRetentionSettings = structure(list(RetentionDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), InitiateDeletionTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -599,6 +677,18 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$get_voice_connector_emergency_calling_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$get_voice_connector_emergency_calling_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EmergencyCallingConfiguration = structure(list(DNIS = structure(list(structure(list(EmergencyPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), TestPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CallingCountry = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$get_voice_connector_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(VoiceConnectorGroupId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorGroupId", type = "string"))), tags = list(type = "structure"))
@@ -635,6 +725,18 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$get_voice_connector_proxy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$get_voice_connector_proxy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Proxy = structure(list(DefaultSessionExpiryMinutes = structure(logical(0), tags = list(type = "integer")), Disabled = structure(logical(0), tags = list(type = "boolean")), FallBackPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PhoneNumberCountries = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$get_voice_connector_streaming_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string"))), tags = list(type = "structure"))
@@ -643,7 +745,7 @@ NULL
 
 .chime$get_voice_connector_streaming_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamingConfiguration = structure(list(DataRetentionInHours = structure(logical(0), tags = list(type = "integer")), Disabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamingConfiguration = structure(list(DataRetentionInHours = structure(logical(0), tags = list(type = "integer")), Disabled = structure(logical(0), tags = list(type = "boolean")), StreamingNotificationTargets = structure(list(structure(list(NotificationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -695,6 +797,18 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$list_attendee_tags_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MeetingId = structure(logical(0), tags = list(location = "uri", locationName = "meetingId", type = "string")), AttendeeId = structure(logical(0), tags = list(location = "uri", locationName = "attendeeId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$list_attendee_tags_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$list_attendees_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(MeetingId = structure(logical(0), tags = list(location = "uri", locationName = "meetingId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
@@ -719,6 +833,18 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$list_meeting_tags_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MeetingId = structure(logical(0), tags = list(location = "uri", locationName = "meetingId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$list_meeting_tags_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$list_meetings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
@@ -727,7 +853,7 @@ NULL
 
 .chime$list_meetings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Meetings = structure(list(structure(list(MeetingId = structure(logical(0), tags = list(type = "string")), MediaPlacement = structure(list(AudioHostUrl = structure(logical(0), tags = list(type = "string")), ScreenDataUrl = structure(logical(0), tags = list(type = "string")), ScreenSharingUrl = structure(logical(0), tags = list(type = "string")), ScreenViewingUrl = structure(logical(0), tags = list(type = "string")), SignalingUrl = structure(logical(0), tags = list(type = "string")), TurnControlUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MediaRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Meetings = structure(list(structure(list(MeetingId = structure(logical(0), tags = list(type = "string")), ExternalMeetingId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), MediaPlacement = structure(list(AudioHostUrl = structure(logical(0), tags = list(type = "string")), AudioFallbackUrl = structure(logical(0), tags = list(type = "string")), ScreenDataUrl = structure(logical(0), tags = list(type = "string")), ScreenSharingUrl = structure(logical(0), tags = list(type = "string")), ScreenViewingUrl = structure(logical(0), tags = list(type = "string")), SignalingUrl = structure(logical(0), tags = list(type = "string")), TurnControlUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MediaRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -755,6 +881,18 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$list_proxy_sessions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string")), Status = structure(logical(0), tags = list(location = "querystring", locationName = "status", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$list_proxy_sessions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProxySessions = structure(list(structure(list(VoiceConnectorId = structure(logical(0), tags = list(type = "string")), ProxySessionId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ExpiryMinutes = structure(logical(0), tags = list(type = "integer")), Capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), EndedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Participants = structure(list(structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProxyPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NumberSelectionBehavior = structure(logical(0), tags = list(type = "string")), GeoMatchLevel = structure(logical(0), tags = list(type = "string")), GeoMatchParams = structure(list(Country = structure(logical(0), tags = list(type = "string")), AreaCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$list_room_memberships_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), RoomId = structure(logical(0), tags = list(location = "uri", locationName = "roomId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max-results", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string"))), tags = list(type = "structure"))
@@ -776,6 +914,18 @@ NULL
 .chime$list_rooms_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Rooms = structure(list(structure(list(RoomId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountId = structure(logical(0), tags = list(type = "string")), CreatedBy = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(location = "querystring", locationName = "arn", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -851,6 +1001,30 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$put_retention_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), RetentionSettings = structure(list(RoomRetentionSettings = structure(list(RetentionDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ConversationRetentionSettings = structure(list(RetentionDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$put_retention_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RetentionSettings = structure(list(RoomRetentionSettings = structure(list(RetentionDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ConversationRetentionSettings = structure(list(RetentionDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), InitiateDeletionTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$put_voice_connector_emergency_calling_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string")), EmergencyCallingConfiguration = structure(list(DNIS = structure(list(structure(list(EmergencyPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), TestPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CallingCountry = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$put_voice_connector_emergency_calling_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EmergencyCallingConfiguration = structure(list(DNIS = structure(list(structure(list(EmergencyPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), TestPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CallingCountry = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$put_voice_connector_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string")), LoggingConfiguration = structure(list(EnableSIPLogs = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -875,15 +1049,27 @@ NULL
   return(populate(args, shape))
 }
 
+.chime$put_voice_connector_proxy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string")), DefaultSessionExpiryMinutes = structure(logical(0), tags = list(type = "integer")), PhoneNumberPoolCountries = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FallBackPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Disabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$put_voice_connector_proxy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Proxy = structure(list(DefaultSessionExpiryMinutes = structure(logical(0), tags = list(type = "integer")), Disabled = structure(logical(0), tags = list(type = "boolean")), FallBackPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PhoneNumberCountries = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .chime$put_voice_connector_streaming_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string")), StreamingConfiguration = structure(list(DataRetentionInHours = structure(logical(0), tags = list(type = "integer")), Disabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string")), StreamingConfiguration = structure(list(DataRetentionInHours = structure(logical(0), tags = list(type = "integer")), Disabled = structure(logical(0), tags = list(type = "boolean")), StreamingNotificationTargets = structure(list(structure(list(NotificationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .chime$put_voice_connector_streaming_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamingConfiguration = structure(list(DataRetentionInHours = structure(logical(0), tags = list(type = "integer")), Disabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamingConfiguration = structure(list(DataRetentionInHours = structure(logical(0), tags = list(type = "integer")), Disabled = structure(logical(0), tags = list(type = "boolean")), StreamingNotificationTargets = structure(list(structure(list(NotificationTarget = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -907,6 +1093,30 @@ NULL
 
 .chime$put_voice_connector_termination_credentials_output <- function(...) {
   list()
+}
+
+.chime$redact_conversation_message_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), ConversationId = structure(logical(0), tags = list(location = "uri", locationName = "conversationId", type = "string")), MessageId = structure(logical(0), tags = list(location = "uri", locationName = "messageId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$redact_conversation_message_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$redact_room_message_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(location = "uri", locationName = "accountId", type = "string")), RoomId = structure(logical(0), tags = list(location = "uri", locationName = "roomId", type = "string")), MessageId = structure(logical(0), tags = list(location = "uri", locationName = "messageId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$redact_room_message_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .chime$regenerate_security_token_input <- function(...) {
@@ -955,6 +1165,66 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(E164PhoneNumbers = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.chime$tag_attendee_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MeetingId = structure(logical(0), tags = list(location = "uri", locationName = "meetingId", type = "string")), AttendeeId = structure(logical(0), tags = list(location = "uri", locationName = "attendeeId", type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$tag_attendee_output <- function(...) {
+  list()
+}
+
+.chime$tag_meeting_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MeetingId = structure(logical(0), tags = list(location = "uri", locationName = "meetingId", type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$tag_meeting_output <- function(...) {
+  list()
+}
+
+.chime$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$tag_resource_output <- function(...) {
+  list()
+}
+
+.chime$untag_attendee_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MeetingId = structure(logical(0), tags = list(location = "uri", locationName = "meetingId", type = "string")), AttendeeId = structure(logical(0), tags = list(location = "uri", locationName = "attendeeId", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$untag_attendee_output <- function(...) {
+  list()
+}
+
+.chime$untag_meeting_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MeetingId = structure(logical(0), tags = list(location = "uri", locationName = "meetingId", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$untag_meeting_output <- function(...) {
+  list()
+}
+
+.chime$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), TagKeys = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$untag_resource_output <- function(...) {
+  list()
 }
 
 .chime$update_account_input <- function(...) {
@@ -1023,6 +1293,18 @@ NULL
 
 .chime$update_phone_number_settings_output <- function(...) {
   list()
+}
+
+.chime$update_proxy_session_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VoiceConnectorId = structure(logical(0), tags = list(location = "uri", locationName = "voiceConnectorId", type = "string")), ProxySessionId = structure(logical(0), tags = list(location = "uri", locationName = "proxySessionId", type = "string")), Capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ExpiryMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.chime$update_proxy_session_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProxySession = structure(list(VoiceConnectorId = structure(logical(0), tags = list(type = "string")), ProxySessionId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ExpiryMinutes = structure(logical(0), tags = list(type = "integer")), Capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), EndedTimestamp = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Participants = structure(list(structure(list(PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProxyPhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), NumberSelectionBehavior = structure(logical(0), tags = list(type = "string")), GeoMatchLevel = structure(logical(0), tags = list(type = "string")), GeoMatchParams = structure(list(Country = structure(logical(0), tags = list(type = "string")), AreaCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .chime$update_room_input <- function(...) {

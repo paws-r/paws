@@ -7,8 +7,7 @@
 apigateway_get_tags(resourceArn, position, limit)
 }
 \arguments{
-\item{resourceArn}{[required] [Required] The ARN of a resource that can be tagged. The resource ARN
-must be URL-encoded.}
+\item{resourceArn}{[required] [Required] The ARN of a resource that can be tagged.}
 
 \item{position}{(Not currently supported) The current pagination position in the paged
 result set.}

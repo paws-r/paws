@@ -14,7 +14,14 @@ The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a root ID
 string requires \"r-\" followed by from 4 to 32 lowercase letters or
 digits.}
 
-\item{PolicyType}{[required] The policy type that you want to enable.}
+\item{PolicyType}{[required] The policy type that you want to enable. You can specify one of the
+following values:
+\itemize{
+\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
+\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
+\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{SERVICE\\_CONTROL\\_POLICY}
+\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
+}}
 }
 \description{
 Enables a policy type in a root. After you enable a policy type in a
@@ -37,7 +44,7 @@ types in the organization, use DescribeOrganization.
 \section{Request syntax}{
 \preformatted{svc$enable_policy_type(
   RootId = "string",
-  PolicyType = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"
+  PolicyType = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"
 )
 }
 }

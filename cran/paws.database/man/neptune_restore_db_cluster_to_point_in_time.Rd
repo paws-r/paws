@@ -8,7 +8,8 @@ neptune_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
   RestoreType, SourceDBClusterIdentifier, RestoreToTime,
   UseLatestRestorableTime, Port, DBSubnetGroupName, OptionGroupName,
   VpcSecurityGroupIds, Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
-  EnableCloudwatchLogsExports, DBClusterParameterGroupName)
+  EnableCloudwatchLogsExports, DBClusterParameterGroupName,
+  DeletionProtection)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the new DB cluster to be created.
@@ -76,7 +77,7 @@ DBSubnetGroup.
 
 Example: \code{mySubnetgroup}}
 
-\item{OptionGroupName}{The name of the option group for the new DB cluster.}
+\item{OptionGroupName}{\emph{(Not supported by Neptune)}}
 
 \item{VpcSecurityGroupIds}{A list of VPC security groups that the new DB cluster belongs to.}
 
@@ -125,6 +126,10 @@ Constraints:
 \item If supplied, must match the name of an existing
 DBClusterParameterGroup.
 }}
+
+\item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
+enabled. The database can\'t be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.}
 }
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore
@@ -168,7 +173,8 @@ completed and the DB cluster is available.
   EnableCloudwatchLogsExports = list(
     "string"
   ),
-  DBClusterParameterGroupName = "string"
+  DBClusterParameterGroupName = "string",
+  DeletionProtection = TRUE|FALSE
 )
 }
 }

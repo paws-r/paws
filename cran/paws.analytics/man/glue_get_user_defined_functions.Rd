@@ -11,7 +11,9 @@ glue_get_user_defined_functions(CatalogId, DatabaseName, Pattern,
 \item{CatalogId}{The ID of the Data Catalog where the functions to be retrieved are
 located. If none is provided, the AWS account ID is used by default.}
 
-\item{DatabaseName}{[required] The name of the catalog database where the functions are located.}
+\item{DatabaseName}{The name of the catalog database where the functions are located. If
+none is provided, functions from all the databases across the catalog
+will be returned.}
 
 \item{Pattern}{[required] An optional function-name pattern string that filters the function
 definitions returned.}

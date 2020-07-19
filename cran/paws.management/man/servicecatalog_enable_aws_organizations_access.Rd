@@ -16,6 +16,9 @@ be called by the master account in the organization.
 By calling this API Service Catalog will make a call to
 organizations:EnableAWSServiceAccess on your behalf so that your shares
 can be in sync with any changes in your AWS Organizations structure.
+
+Note that a delegated administrator is not authorized to invoke
+\code{EnableAWSOrganizationsAccess}.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_aws_organizations_access()

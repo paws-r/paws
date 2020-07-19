@@ -2,8 +2,8 @@
 % Please edit documentation in R/macie_operations.R
 \name{macie_list_member_accounts}
 \alias{macie_list_member_accounts}
-\title{Lists all Amazon Macie member accounts for the current Amazon Macie
-master account}
+\title{Lists all Amazon Macie Classic member accounts for the current Amazon
+Macie Classic master account}
 \usage{
 macie_list_member_accounts(nextToken, maxResults)
 }
@@ -17,8 +17,8 @@ value of nextToken from the previous response to continue listing data.}
 in the response. The default value is 250.}
 }
 \description{
-Lists all Amazon Macie member accounts for the current Amazon Macie
-master account.
+Lists all Amazon Macie Classic member accounts for the current Amazon
+Macie Classic master account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_member_accounts(

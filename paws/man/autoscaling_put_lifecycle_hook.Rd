@@ -20,15 +20,15 @@ valid values are:
 \item autoscaling:EC2\\_INSTANCE\\_TERMINATING
 }
 
-Conditional: This parameter is required for new lifecycle hooks, but
-optional when updating existing hooks.}
+Required for new lifecycle hooks, but optional when updating existing
+hooks.}
 
 \item{RoleARN}{The ARN of the IAM role that allows the Auto Scaling group to publish to
 the specified notification target, for example, an Amazon SNS topic or
 an Amazon SQS queue.
 
-Conditional: This parameter is required for new lifecycle hooks, but
-optional when updating existing hooks.}
+Required for new lifecycle hooks, but optional when updating existing
+hooks.}
 
 \item{NotificationTargetARN}{The ARN of the notification target that Amazon EC2 Auto Scaling uses to
 notify you when an instance is in the transition state for the lifecycle
@@ -53,8 +53,8 @@ is \code{3600} seconds (1 hour).
 
 If the lifecycle hook times out, Amazon EC2 Auto Scaling performs the
 action that you specified in the \code{DefaultResult} parameter. You can
-prevent the lifecycle hook from timing out by calling
-RecordLifecycleActionHeartbeat.}
+prevent the lifecycle hook from timing out by calling the
+RecordLifecycleActionHeartbeat API.}
 
 \item{DefaultResult}{Defines the action the Auto Scaling group should take when the lifecycle
 hook timeout elapses or if an unexpected failure occurs. This parameter
@@ -82,10 +82,10 @@ the target.
 \item \strong{Create the lifecycle hook. Specify whether the hook is used when
 the instances launch or terminate.}
 \item If you need more time, record the lifecycle action heartbeat to keep
-the instance in a pending state using
-RecordLifecycleActionHeartbeat.
+the instance in a pending state using the
+RecordLifecycleActionHeartbeat API call.
 \item If you finish before the timeout period ends, complete the lifecycle
-action using CompleteLifecycleAction.
+action using the CompleteLifecycleAction API call.
 }
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html}{Amazon EC2 Auto Scaling Lifecycle Hooks}
@@ -94,9 +94,9 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 If you exceed your maximum limit of lifecycle hooks, which by default is
 50 per Auto Scaling group, the call fails.
 
-You can view the lifecycle hooks for an Auto Scaling group using
-DescribeLifecycleHooks. If you are no longer using a lifecycle hook, you
-can delete it using DeleteLifecycleHook.
+You can view the lifecycle hooks for an Auto Scaling group using the
+DescribeLifecycleHooks API call. If you are no longer using a lifecycle
+hook, you can delete it by calling the DeleteLifecycleHook API.
 }
 \section{Request syntax}{
 \preformatted{svc$put_lifecycle_hook(

@@ -15,10 +15,13 @@ ram_list_resources(resourceOwner, principal, resourceType, resourceArns,
 
 \item{resourceType}{The resource type.
 
-Valid values: \code{ec2:CapacityReservation} \\| \code{ec2:Subnet} \\|
+Valid values: \code{codebuild:Project} \\| \code{codebuild:ReportGroup} \\|
+\code{ec2:CapacityReservation} \\| \code{ec2:DedicatedHost} \\| \code{ec2:Subnet} \\|
 \code{ec2:TrafficMirrorTarget} \\| \code{ec2:TransitGateway} \\|
-\code{license-manager:LicenseConfiguration} \\| \code{rds:Cluster} \\|
-\code{route53resolver:ResolverRule} \\| \code{resource-groups:Group}}
+\code{imagebuilder:Component} \\| \code{imagebuilder:Image} \\|
+\code{imagebuilder:ImageRecipe} \\| \code{license-manager:LicenseConfiguration} I
+\code{resource-groups:Group} \\| \code{rds:Cluster} \\|
+\code{route53resolver:ResolverRule}}
 
 \item{resourceArns}{The Amazon Resource Names (ARN) of the resources.}
 

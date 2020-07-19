@@ -9,8 +9,8 @@ wafv2_create_ip_set(Name, Scope, Description, IPAddressVersion,
   Addresses, Tags)
 }
 \arguments{
-\item{Name}{[required] A friendly name of the IP set. You cannot change the name of an \code{IPSet}
-after you create it.}
+\item{Name}{[required] The name of the IP set. You cannot change the name of an \code{IPSet} after
+you create it.}
 
 \item{Scope}{[required] Specifies whether this is for an AWS CloudFront distribution or for a
 regional application. A regional application can be an Application Load
@@ -19,13 +19,13 @@ Balancer (ALB) or an API Gateway stage.
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
 \itemize{
-\item CLI - Specify the region when you use the CloudFront scope:
+\item CLI - Specify the Region when you use the CloudFront scope:
 \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
-\item{Description}{A friendly description of the IP set. You cannot change the description
-of an IP set after you create it.}
+\item{Description}{A description of the IP set that helps with identification. You cannot
+change the description of an IP set after you create it.}
 
 \item{IPAddressVersion}{[required] Specify IPV4 or IPV6.}
 

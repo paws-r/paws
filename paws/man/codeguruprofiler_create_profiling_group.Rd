@@ -2,20 +2,29 @@
 % Please edit documentation in R/codeguruprofiler_operations.R
 \name{codeguruprofiler_create_profiling_group}
 \alias{codeguruprofiler_create_profiling_group}
-\title{Create a profiling group}
+\title{Creates a profiling group}
 \usage{
 codeguruprofiler_create_profiling_group(agentOrchestrationConfig,
-  clientToken, profilingGroupName)
+  clientToken, computePlatform, profilingGroupName)
 }
 \arguments{
-\item{agentOrchestrationConfig}{}
+\item{agentOrchestrationConfig}{Specifies whether profiling is enabled or disabled for the created
+profiling group.}
 
-\item{clientToken}{[required]}
+\item{clientToken}{[required] Amazon CodeGuru Profiler uses this universally unique identifier (UUID)
+to prevent the accidental creation of duplicate profiling groups if
+there are failures and retries.}
 
-\item{profilingGroupName}{[required]}
+\item{computePlatform}{The compute platform of the profiling group. Use \code{AWSLambda} if your
+application runs on AWS Lambda. Use \code{Default} if your application runs
+on a compute platform that is not AWS Lambda, such an Amazon EC2
+instance, an on-premises server, or a different platform. If not
+specified, \code{Default} is used.}
+
+\item{profilingGroupName}{[required] The name of the profiling group to create.}
 }
 \description{
-Create a profiling group.
+Creates a profiling group.
 }
 \section{Request syntax}{
 \preformatted{svc$create_profiling_group(
@@ -23,6 +32,7 @@ Create a profiling group.
     profilingEnabled = TRUE|FALSE
   ),
   clientToken = "string",
+  computePlatform = "AWSLambda"|"Default",
   profilingGroupName = "string"
 )
 }

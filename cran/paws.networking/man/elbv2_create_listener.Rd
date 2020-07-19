@@ -6,7 +6,7 @@
 Network Load Balancer}
 \usage{
 elbv2_create_listener(LoadBalancerArn, Protocol, Port, SslPolicy,
-  Certificates, DefaultActions)
+  Certificates, DefaultActions, AlpnPolicy)
 }
 \arguments{
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
@@ -19,8 +19,23 @@ and TCP\\_UDP.}
 \item{Port}{[required] The port on which the load balancer is listening.}
 
 \item{SslPolicy}{[HTTPS and TLS listeners] The security policy that defines which
-ciphers and protocols are supported. The default is the current
-predefined security policy.}
+protocols and ciphers are supported. The following are the possible
+values:
+\itemize{
+\item \code{ELBSecurityPolicy-2016-08}
+\item \code{ELBSecurityPolicy-TLS-1-0-2015-04}
+\item \code{ELBSecurityPolicy-TLS-1-1-2017-01}
+\item \code{ELBSecurityPolicy-TLS-1-2-2017-01}
+\item \code{ELBSecurityPolicy-TLS-1-2-Ext-2018-06}
+\item \code{ELBSecurityPolicy-FS-2018-06}
+\item \code{ELBSecurityPolicy-FS-1-1-2019-08}
+\item \code{ELBSecurityPolicy-FS-1-2-2019-08}
+\item \code{ELBSecurityPolicy-FS-1-2-Res-2019-08}
+}
+
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security Policies}
+in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies}{Security Policies}
+in the \emph{Network Load Balancers Guide}.}
 
 \item{Certificates}{[HTTPS and TLS listeners] The default certificate for the listener.
 You must provide exactly one certificate. Set \code{CertificateArn} to the
@@ -49,6 +64,20 @@ redirect specified client requests from one URL to another.
 
 [Application Load Balancer] If the action type is \code{fixed-response},
 you drop specified client requests and return a custom HTTP response.}
+
+\item{AlpnPolicy}{[TLS listeners] The name of the Application-Layer Protocol Negotiation
+(ALPN) policy. You can specify one policy name. The following are the
+possible values:
+\itemize{
+\item \code{HTTP1Only}
+\item \code{HTTP2Only}
+\item \code{HTTP2Optional}
+\item \code{HTTP2Preferred}
+\item \code{None}
+}
+
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies}{ALPN Policies}
+in the \emph{Network Load Balancers Guide}.}
 }
 \description{
 Creates a listener for the specified Application Load Balancer or
@@ -139,6 +168,9 @@ in the \emph{Network Load Balancers Guide}.
         )
       )
     )
+  ),
+  AlpnPolicy = list(
+    "string"
   )
 )
 }

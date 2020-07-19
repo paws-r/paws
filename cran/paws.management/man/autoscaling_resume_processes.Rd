@@ -10,18 +10,20 @@ autoscaling_resume_processes(AutoScalingGroupName, ScalingProcesses)
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{ScalingProcesses}{One or more of the following processes. If you omit this parameter, all
-processes are specified.
+\item{ScalingProcesses}{One or more of the following processes:
 \itemize{
 \item \code{Launch}
 \item \code{Terminate}
-\item \code{HealthCheck}
-\item \code{ReplaceUnhealthy}
-\item \code{AZRebalance}
-\item \code{AlarmNotification}
-\item \code{ScheduledActions}
 \item \code{AddToLoadBalancer}
-}}
+\item \code{AlarmNotification}
+\item \code{AZRebalance}
+\item \code{HealthCheck}
+\item \code{InstanceRefresh}
+\item \code{ReplaceUnhealthy}
+\item \code{ScheduledActions}
+}
+
+If you omit this parameter, all processes are specified.}
 }
 \description{
 Resumes the specified suspended automatic scaling processes, or all

@@ -17,7 +17,7 @@ NULL
 #' @param Bucket &#91;required&#93; The name of the bucket that you want to associate this access point
 #' with.
 #' @param VpcConfiguration If you include this field, Amazon S3 restricts access to this access
-#' point to requests from the specified Virtual Private Cloud (VPC).
+#' point to requests from the specified virtual private cloud (VPC).
 #' @param PublicAccessBlockConfiguration 
 #'
 #' @section Request syntax:
@@ -58,13 +58,29 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
 }
 .s3control$operations$create_access_point <- s3control_create_access_point
 
-#' Creates an Amazon S3 batch operations job
+#' You can use Amazon S3 Batch Operations to perform large-scale Batch
+#' Operations on Amazon S3 objects
 #'
-#' Creates an Amazon S3 batch operations job.
+#' You can use Amazon S3 Batch Operations to perform large-scale Batch
+#' Operations on Amazon S3 objects. Amazon S3 Batch Operations can execute
+#' a single operation or action on lists of Amazon S3 objects that you
+#' specify. For more information, see [Amazon S3 Batch
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html)
+#' in the Amazon Simple Storage Service Developer Guide.
+#' 
+#' Related actions include:
+#' 
+#' -   DescribeJob
+#' 
+#' -   ListJobs
+#' 
+#' -   UpdateJobPriority
+#' 
+#' -   UpdateJobStatus
 #'
 #' @usage
 #' s3control_create_job(AccountId, ConfirmationRequired, Operation, Report,
-#'   ClientRequestToken, Manifest, Description, Priority, RoleArn)
+#'   ClientRequestToken, Manifest, Description, Priority, RoleArn, Tags)
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param ConfirmationRequired Indicates whether confirmation is required before Amazon S3 runs the
@@ -84,9 +100,11 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
 #' multiple jobs.
 #' @param Priority &#91;required&#93; The numerical priority for this job. Higher numbers indicate higher
 #' priority.
-#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) for the Identity and Access Management
-#' (IAM) Role that batch operations will use to execute this job\'s
-#' operation on each object in the manifest.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) for the AWS Identity and Access
+#' Management (IAM) role that Batch Operations will use to execute this
+#' job\'s operation on each object in the manifest.
+#' @param Tags A set of tags to associate with the Amazon S3 Batch Operations job. This
+#' is an optional parameter.
 #'
 #' @section Request syntax:
 #' ```
@@ -183,6 +201,20 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
 #'     S3InitiateRestoreObject = list(
 #'       ExpirationInDays = 123,
 #'       GlacierJobTier = "BULK"|"STANDARD"
+#'     ),
+#'     S3PutObjectLegalHold = list(
+#'       LegalHold = list(
+#'         Status = "OFF"|"ON"
+#'       )
+#'     ),
+#'     S3PutObjectRetention = list(
+#'       BypassGovernanceRetention = TRUE|FALSE,
+#'       Retention = list(
+#'         RetainUntilDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Mode = "COMPLIANCE"|"GOVERNANCE"
+#'       )
 #'     )
 #'   ),
 #'   Report = list(
@@ -208,21 +240,27 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
 #'   ),
 #'   Description = "string",
 #'   Priority = 123,
-#'   RoleArn = "string"
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname s3control_create_job
-s3control_create_job <- function(AccountId, ConfirmationRequired = NULL, Operation, Report, ClientRequestToken, Manifest, Description = NULL, Priority, RoleArn) {
+s3control_create_job <- function(AccountId, ConfirmationRequired = NULL, Operation, Report, ClientRequestToken, Manifest, Description = NULL, Priority, RoleArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
     http_path = "/v20180820/jobs",
     paginator = list()
   )
-  input <- .s3control$create_job_input(AccountId = AccountId, ConfirmationRequired = ConfirmationRequired, Operation = Operation, Report = Report, ClientRequestToken = ClientRequestToken, Manifest = Manifest, Description = Description, Priority = Priority, RoleArn = RoleArn)
+  input <- .s3control$create_job_input(AccountId = AccountId, ConfirmationRequired = ConfirmationRequired, Operation = Operation, Report = Report, ClientRequestToken = ClientRequestToken, Manifest = Manifest, Description = Description, Priority = Priority, RoleArn = RoleArn, Tags = Tags)
   output <- .s3control$create_job_output()
   config <- get_config()
   svc <- .s3control$service(config)
@@ -308,6 +346,58 @@ s3control_delete_access_point_policy <- function(AccountId, Name) {
 }
 .s3control$operations$delete_access_point_policy <- s3control_delete_access_point_policy
 
+#' Removes the entire tag set from the specified Amazon S3 Batch Operations
+#' job
+#'
+#' Removes the entire tag set from the specified Amazon S3 Batch Operations
+#' job. To use this operation, you must have permission to perform the
+#' `s3:DeleteJobTagging` action. For more information, see [Using Job
+#' Tags](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags)
+#' in the Amazon Simple Storage Service Developer Guide.
+#' 
+#' Related actions include:
+#' 
+#' -   CreateJob
+#' 
+#' -   GetJobTagging
+#' 
+#' -   PutJobTagging
+#'
+#' @usage
+#' s3control_delete_job_tagging(AccountId, JobId)
+#'
+#' @param AccountId &#91;required&#93; The AWS account ID associated with the Amazon S3 Batch Operations job.
+#' @param JobId &#91;required&#93; The ID for the Amazon S3 Batch Operations job whose tags you want to
+#' delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_job_tagging(
+#'   AccountId = "string",
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_delete_job_tagging
+s3control_delete_job_tagging <- function(AccountId, JobId) {
+  op <- new_operation(
+    name = "DeleteJobTagging",
+    http_method = "DELETE",
+    http_path = "/v20180820/jobs/{id}/tagging",
+    paginator = list()
+  )
+  input <- .s3control$delete_job_tagging_input(AccountId = AccountId, JobId = JobId)
+  output <- .s3control$delete_job_tagging_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$delete_job_tagging <- s3control_delete_job_tagging
+
 #' Removes the PublicAccessBlock configuration for an Amazon Web Services
 #' account
 #'
@@ -347,11 +437,23 @@ s3control_delete_public_access_block <- function(AccountId) {
 }
 .s3control$operations$delete_public_access_block <- s3control_delete_public_access_block
 
-#' Retrieves the configuration parameters and status for a batch operations
+#' Retrieves the configuration parameters and status for a Batch Operations
 #' job
 #'
-#' Retrieves the configuration parameters and status for a batch operations
-#' job.
+#' Retrieves the configuration parameters and status for a Batch Operations
+#' job. For more information, see [Amazon S3 Batch
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html)
+#' in the Amazon Simple Storage Service Developer Guide.
+#' 
+#' Related actions include:
+#' 
+#' -   CreateJob
+#' 
+#' -   ListJobs
+#' 
+#' -   UpdateJobPriority
+#' 
+#' -   UpdateJobStatus
 #'
 #' @usage
 #' s3control_describe_job(AccountId, JobId)
@@ -509,6 +611,57 @@ s3control_get_access_point_policy_status <- function(AccountId, Name) {
 }
 .s3control$operations$get_access_point_policy_status <- s3control_get_access_point_policy_status
 
+#' Returns the tags on an Amazon S3 Batch Operations job
+#'
+#' Returns the tags on an Amazon S3 Batch Operations job. To use this
+#' operation, you must have permission to perform the `s3:GetJobTagging`
+#' action. For more information, see [Using Job
+#' Tags](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags)
+#' in the *Amazon Simple Storage Service Developer Guide*.
+#' 
+#' Related actions include:
+#' 
+#' -   CreateJob
+#' 
+#' -   PutJobTagging
+#' 
+#' -   DeleteJobTagging
+#'
+#' @usage
+#' s3control_get_job_tagging(AccountId, JobId)
+#'
+#' @param AccountId &#91;required&#93; The AWS account ID associated with the Amazon S3 Batch Operations job.
+#' @param JobId &#91;required&#93; The ID for the Amazon S3 Batch Operations job whose tags you want to
+#' retrieve.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_job_tagging(
+#'   AccountId = "string",
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_get_job_tagging
+s3control_get_job_tagging <- function(AccountId, JobId) {
+  op <- new_operation(
+    name = "GetJobTagging",
+    http_method = "GET",
+    http_path = "/v20180820/jobs/{id}/tagging",
+    paginator = list()
+  )
+  input <- .s3control$get_job_tagging_input(AccountId = AccountId, JobId = JobId)
+  output <- .s3control$get_job_tagging_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$get_job_tagging <- s3control_get_job_tagging
+
 #' Retrieves the PublicAccessBlock configuration for an Amazon Web Services
 #' account
 #'
@@ -553,10 +706,10 @@ s3control_get_public_access_block <- function(AccountId) {
 #'
 #' Returns a list of the access points currently associated with the
 #' specified bucket. You can retrieve up to 1000 access points per call. If
-#' the specified bucket has more than 1000 access points (or the number
-#' specified in `maxResults`, whichever is less), then the response will
-#' include a continuation token that you can use to list the additional
-#' access points.
+#' the specified bucket has more than 1,000 access points (or the number
+#' specified in `maxResults`, whichever is less), the response will include
+#' a continuation token that you can use to list the additional access
+#' points.
 #'
 #' @usage
 #' s3control_list_access_points(AccountId, Bucket, NextToken, MaxResults)
@@ -603,11 +756,24 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
 }
 .s3control$operations$list_access_points <- s3control_list_access_points
 
-#' Lists current jobs and jobs that have ended within the last 30 days for
-#' the AWS account making the request
+#' Lists current Amazon S3 Batch Operations jobs and jobs that have ended
+#' within the last 30 days for the AWS account making the request
 #'
-#' Lists current jobs and jobs that have ended within the last 30 days for
-#' the AWS account making the request.
+#' Lists current Amazon S3 Batch Operations jobs and jobs that have ended
+#' within the last 30 days for the AWS account making the request. For more
+#' information, see [Amazon S3 Batch
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html)
+#' in the *Amazon Simple Storage Service Developer Guide*.
+#' 
+#' Related actions include:
+#' 
+#' -   CreateJob
+#' 
+#' -   DescribeJob
+#' 
+#' -   UpdateJobPriority
+#' 
+#' -   UpdateJobStatus
 #'
 #' @usage
 #' s3control_list_jobs(AccountId, JobStatuses, NextToken, MaxResults)
@@ -703,6 +869,100 @@ s3control_put_access_point_policy <- function(AccountId, Name, Policy) {
 }
 .s3control$operations$put_access_point_policy <- s3control_put_access_point_policy
 
+#' Set the supplied tag-set on an Amazon S3 Batch Operations job
+#'
+#' Set the supplied tag-set on an Amazon S3 Batch Operations job.
+#' 
+#' A tag is a key-value pair. You can associate Amazon S3 Batch Operations
+#' tags with any job by sending a PUT request against the tagging
+#' subresource that is associated with the job. To modify the existing tag
+#' set, you can either replace the existing tag set entirely, or make
+#' changes within the existing tag set by retrieving the existing tag set
+#' using GetJobTagging, modify that tag set, and use this API action to
+#' replace the tag set with the one you have modified.. For more
+#' information, see [Using Job
+#' Tags](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags)
+#' in the Amazon Simple Storage Service Developer Guide.
+#' 
+#' -   If you send this request with an empty tag set, Amazon S3 deletes
+#'     the existing tag set on the Batch Operations job. If you use this
+#'     method, you will be charged for a Tier 1 Request (PUT). For more
+#'     information, see [Amazon S3
+#'     pricing](http://aws.amazon.com/s3/pricing/).
+#' 
+#' -   For deleting existing tags for your batch operations job,
+#'     DeleteJobTagging request is preferred because it achieves the same
+#'     result without incurring charges.
+#' 
+#' -   A few things to consider about using tags:
+#' 
+#'     -   Amazon S3 limits the maximum number of tags to 50 tags per job.
+#' 
+#'     -   You can associate up to 50 tags with a job as long as they have
+#'         unique tag keys.
+#' 
+#'     -   A tag key can be up to 128 Unicode characters in length, and tag
+#'         values can be up to 256 Unicode characters in length.
+#' 
+#'     -   The key and values are case sensitive.
+#' 
+#'     -   For tagging-related restrictions related to characters and
+#'         encodings, see [User-Defined Tag
+#'         Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html).
+#' 
+#' To use this operation, you must have permission to perform the
+#' `s3:PutJobTagging` action.
+#' 
+#' Related actions include:
+#' 
+#' -   CreateJob
+#' 
+#' -   GetJobTagging
+#' 
+#' -   DeleteJobTagging
+#'
+#' @usage
+#' s3control_put_job_tagging(AccountId, JobId, Tags)
+#'
+#' @param AccountId &#91;required&#93; The AWS account ID associated with the Amazon S3 Batch Operations job.
+#' @param JobId &#91;required&#93; The ID for the Amazon S3 Batch Operations job whose tags you want to
+#' replace.
+#' @param Tags &#91;required&#93; The set of tags to associate with the Amazon S3 Batch Operations job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_job_tagging(
+#'   AccountId = "string",
+#'   JobId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3control_put_job_tagging
+s3control_put_job_tagging <- function(AccountId, JobId, Tags) {
+  op <- new_operation(
+    name = "PutJobTagging",
+    http_method = "PUT",
+    http_path = "/v20180820/jobs/{id}/tagging",
+    paginator = list()
+  )
+  input <- .s3control$put_job_tagging_input(AccountId = AccountId, JobId = JobId, Tags = Tags)
+  output <- .s3control$put_job_tagging_output()
+  config <- get_config()
+  svc <- .s3control$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3control$operations$put_job_tagging <- s3control_put_job_tagging
+
 #' Creates or modifies the PublicAccessBlock configuration for an Amazon
 #' Web Services account
 #'
@@ -751,9 +1011,22 @@ s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, Ac
 }
 .s3control$operations$put_public_access_block <- s3control_put_public_access_block
 
-#' Updates an existing job's priority
+#' Updates an existing Amazon S3 Batch Operations job's priority
 #'
-#' Updates an existing job\'s priority.
+#' Updates an existing Amazon S3 Batch Operations job\'s priority. For more
+#' information, see [Amazon S3 Batch
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html)
+#' in the Amazon Simple Storage Service Developer Guide.
+#' 
+#' Related actions include:
+#' 
+#' -   CreateJob
+#' 
+#' -   ListJobs
+#' 
+#' -   DescribeJob
+#' 
+#' -   UpdateJobStatus
 #'
 #' @usage
 #' s3control_update_job_priority(AccountId, JobId, Priority)
@@ -794,7 +1067,20 @@ s3control_update_job_priority <- function(AccountId, JobId, Priority) {
 #' Updates the status for the specified job
 #'
 #' Updates the status for the specified job. Use this operation to confirm
-#' that you want to run a job or to cancel an existing job.
+#' that you want to run a job or to cancel an existing job. For more
+#' information, see [Amazon S3 Batch
+#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html)
+#' in the Amazon Simple Storage Service Developer Guide.
+#' 
+#' Related actions include:
+#' 
+#' -   CreateJob
+#' 
+#' -   ListJobs
+#' 
+#' -   DescribeJob
+#' 
+#' -   UpdateJobStatus
 #'
 #' @usage
 #' s3control_update_job_status(AccountId, JobId, RequestedJobStatus,

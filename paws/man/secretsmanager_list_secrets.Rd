@@ -5,10 +5,10 @@
 \title{Lists all of the secrets that are stored by Secrets Manager in the AWS
 account}
 \usage{
-secretsmanager_list_secrets(MaxResults, NextToken)
+secretsmanager_list_secrets(MaxResults, NextToken, Filters, SortOrder)
 }
 \arguments{
-\item{MaxResults}{(Optional) Limits the number of results that you want to include in the
+\item{MaxResults}{(Optional) Limits the number of results you want to include in the
 response. If you don\'t include this parameter, it defaults to a value
 that\'s specific to the operation. If additional items exist beyond the
 maximum you specify, the \code{NextToken} response element is present and has
@@ -20,10 +20,14 @@ maximum even when there are more results available. You should check
 results.}
 
 \item{NextToken}{(Optional) Use this parameter in a request if you receive a \code{NextToken}
-response in a previous request that indicates that there\'s more output
+response in a previous request indicating there\'s more output
 available. In a subsequent call, set it to the value of the previous
-call\'s \code{NextToken} response to indicate where the output should
-continue from.}
+call \code{NextToken} response to indicate where the output should continue
+from.}
+
+\item{Filters}{Lists the secret request filters.}
+
+\item{SortOrder}{Lists secrets in the requested order.}
 }
 \description{
 Lists all of the secrets that are stored by Secrets Manager in the AWS
@@ -35,8 +39,8 @@ call the GetSecretValue operation.
 \details{
 Always check the \code{NextToken} response parameter when calling any of the
 \verb{List*} operations. These operations can occasionally return an empty or
-shorter than expected list of results even when there are more results
-available. When this happens, the \code{NextToken} response parameter
+shorter than expected list of results even when there more results
+become available. When this happens, the \code{NextToken} response parameter
 contains a value to pass to the next call to the same API to request the
 next part of the list.
 
@@ -55,7 +59,16 @@ To run this command, you must have the following permissions:
 \section{Request syntax}{
 \preformatted{svc$list_secrets(
   MaxResults = 123,
-  NextToken = "string"
+  NextToken = "string",
+  Filters = list(
+    list(
+      Key = "description"|"name"|"tag-key"|"tag-value"|"all",
+      Values = list(
+        "string"
+      )
+    )
+  ),
+  SortOrder = "asc"|"desc"
 )
 }
 }

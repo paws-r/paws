@@ -16,7 +16,7 @@ mediaconvert_list_presets(Category, ListBy, MaxResults, NextToken,
 
 \item{NextToken}{Use this string, provided with the response to a previous request, to request the next batch of presets.}
 
-\item{Order}{When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.}
+\item{Order}{Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.}
 }
 \description{
 Retrieve a JSON array of up to twenty of your presets. This will return the presets themselves, not just a list of them. To retrieve the next twenty presets, use the nextToken string returned with the array.

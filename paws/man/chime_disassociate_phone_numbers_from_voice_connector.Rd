@@ -11,7 +11,7 @@ chime_disassociate_phone_numbers_from_voice_connector(VoiceConnectorId,
 \arguments{
 \item{VoiceConnectorId}{[required] The Amazon Chime Voice Connector ID.}
 
-\item{E164PhoneNumbers}{List of phone numbers, in E.164 format.}
+\item{E164PhoneNumbers}{[required] List of phone numbers, in E.164 format.}
 }
 \description{
 Disassociates the specified phone numbers from the specified Amazon

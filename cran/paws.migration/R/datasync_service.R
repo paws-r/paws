@@ -48,6 +48,7 @@ NULL
 #'  \link[=datasync_cancel_task_execution]{cancel_task_execution} \tab Cancels execution of a task \cr
 #'  \link[=datasync_create_agent]{create_agent} \tab Activates an AWS DataSync agent that you have deployed on your host \cr
 #'  \link[=datasync_create_location_efs]{create_location_efs} \tab Creates an endpoint for an Amazon EFS file system \cr
+#'  \link[=datasync_create_location_fsx_windows]{create_location_fsx_windows} \tab Creates an endpoint for an Amazon FSx for Windows file system \cr
 #'  \link[=datasync_create_location_nfs]{create_location_nfs} \tab Defines a file system on a Network File System (NFS) server that can be read from or written to \cr
 #'  \link[=datasync_create_location_s3]{create_location_s3} \tab Creates an endpoint for an Amazon S3 bucket \cr
 #'  \link[=datasync_create_location_smb]{create_location_smb} \tab Defines a file system on an Server Message Block (SMB) server that can be read from or written to \cr
@@ -57,6 +58,7 @@ NULL
 #'  \link[=datasync_delete_task]{delete_task} \tab Deletes a task \cr
 #'  \link[=datasync_describe_agent]{describe_agent} \tab Returns metadata such as the name, the network interfaces, and the status (that is, whether the agent is running or not) for an agent\cr
 #'  \link[=datasync_describe_location_efs]{describe_location_efs} \tab Returns metadata, such as the path information about an Amazon EFS location \cr
+#'  \link[=datasync_describe_location_fsx_windows]{describe_location_fsx_windows} \tab Returns metadata, such as the path information about an Amazon FSx for Windows location \cr
 #'  \link[=datasync_describe_location_nfs]{describe_location_nfs} \tab Returns metadata, such as the path information, about a NFS location \cr
 #'  \link[=datasync_describe_location_s3]{describe_location_s3} \tab Returns metadata, such as bucket name, about an Amazon S3 bucket location \cr
 #'  \link[=datasync_describe_location_smb]{describe_location_smb} \tab Returns metadata, such as the path and user information about a SMB location \cr
@@ -89,7 +91,7 @@ datasync <- function(config = list()) {
 
 .datasync$metadata <- list(
   service_name = "datasync",
-  endpoints = list("*" = list(endpoint = "datasync.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "datasync.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "datasync.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "datasync.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "datasync.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "datasync.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "DataSync",
   api_version = "2018-11-09",
   signing_name = "datasync",

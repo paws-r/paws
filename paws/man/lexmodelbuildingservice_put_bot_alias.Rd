@@ -6,7 +6,7 @@
 alias for the specified bot}
 \usage{
 lexmodelbuildingservice_put_bot_alias(name, description, botVersion,
-  botName, checksum, conversationLogs)
+  botName, checksum, conversationLogs, tags)
 }
 \arguments{
 \item{name}{[required] The name of the alias. The name is \emph{not} case sensitive.}
@@ -29,6 +29,11 @@ the \verb{$LATEST} version, you get a \code{PreconditionFailedException}
 exception.}
 
 \item{conversationLogs}{Settings for conversation logs for the alias.}
+
+\item{tags}{A list of tags to add to the bot alias. You can only add tags when you
+create an alias, you can\'t use the \code{PutBotAlias} operation to update
+the tags on a bot alias. To update tags, use the \code{TagResource}
+operation.}
 }
 \description{
 Creates an alias for the specified version of the bot or replaces an
@@ -56,6 +61,12 @@ This operation requires permissions for the \code{lex:PutBotAlias} action.
       )
     ),
     iamRoleArn = "string"
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
   )
 )
 }

@@ -3,7 +3,7 @@
 \name{ssm_get_connection_status}
 \alias{ssm_get_connection_status}
 \title{Retrieves the Session Manager connection status for an instance to
-determine whether it is connected and ready to receive Session Manager
+determine whether it is running and ready to receive Session Manager
 connections}
 \usage{
 ssm_get_connection_status(Target)
@@ -13,7 +13,7 @@ ssm_get_connection_status(Target)
 }
 \description{
 Retrieves the Session Manager connection status for an instance to
-determine whether it is connected and ready to receive Session Manager
+determine whether it is running and ready to receive Session Manager
 connections.
 }
 \section{Request syntax}{

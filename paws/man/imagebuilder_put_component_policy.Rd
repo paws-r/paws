@@ -13,7 +13,13 @@ be applied to.}
 \item{policy}{[required] The policy to apply.}
 }
 \description{
-Applies a policy to a component.
+Applies a policy to a component. We recommend that you call the RAM API
+\href{https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html}{CreateResourceShare}
+to share resources. If you call the Image Builder API
+\code{PutComponentPolicy}, you must also call the RAM API
+\href{https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html}{PromoteResourceShareCreatedFromPolicy}
+in order for the resource to be visible to all principals with whom the
+resource is shared.
 }
 \section{Request syntax}{
 \preformatted{svc$put_component_policy(

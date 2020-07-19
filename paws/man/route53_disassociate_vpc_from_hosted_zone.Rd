@@ -2,7 +2,8 @@
 % Please edit documentation in R/route53_operations.R
 \name{route53_disassociate_vpc_from_hosted_zone}
 \alias{route53_disassociate_vpc_from_hosted_zone}
-\title{Disassociates a VPC from a Amazon Route 53 private hosted zone}
+\title{Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an
+Amazon Route 53 private hosted zone}
 \usage{
 route53_disassociate_vpc_from_hosted_zone(HostedZoneId, VPC, Comment)
 }
@@ -16,23 +17,36 @@ disassociating from the specified hosted zone.}
 \item{Comment}{\emph{Optional:} A comment about the disassociation request.}
 }
 \description{
-Disassociates a VPC from a Amazon Route 53 private hosted zone. Note the
-following:
+Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an
+Amazon Route 53 private hosted zone. Note the following:
 }
 \details{
 \itemize{
-\item You can\'t disassociate the last VPC from a private hosted zone.
+\item You can\'t disassociate the last Amazon VPC from a private hosted
+zone.
 \item You can\'t convert a private hosted zone into a public hosted zone.
 \item You can submit a \code{DisassociateVPCFromHostedZone} request using
 either the account that created the hosted zone or the account that
-created the VPC.
+created the Amazon VPC.
+\item Some services, such as AWS Cloud Map and Amazon Elastic File System
+(Amazon EFS) automatically create hosted zones and associate VPCs
+with the hosted zones. A service can create a hosted zone using your
+account or using its own account. You can disassociate a VPC from a
+hosted zone only if the service created the hosted zone using your
+account.
+
+When you run
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListHostedZonesByVPC.html}{DisassociateVPCFromHostedZone},
+if the hosted zone has a value for \code{OwningAccount}, you can use
+\code{DisassociateVPCFromHostedZone}. If the hosted zone has a value for
+\code{OwningService}, you can\'t use \code{DisassociateVPCFromHostedZone}.
 }
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_vpc_from_hosted_zone(
   HostedZoneId = "string",
   VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
     VPCId = "string"
   ),
   Comment = "string"

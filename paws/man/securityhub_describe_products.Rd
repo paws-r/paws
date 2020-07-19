@@ -2,19 +2,24 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_describe_products}
 \alias{securityhub_describe_products}
-\title{Returns information about the products available that you can subscribe
-to and integrate with Security Hub to consolidate findings}
+\title{Returns information about the available products that you can subscribe
+to and integrate with Security Hub in order to consolidate findings}
 \usage{
 securityhub_describe_products(NextToken, MaxResults)
 }
 \arguments{
-\item{NextToken}{The token that is required for pagination.}
+\item{NextToken}{The token that is required for pagination. On your first call to the
+\code{DescribeProducts} operation, set the value of this parameter to \code{NULL}.
+
+For subsequent calls to the operation, to continue listing data, set the
+value of this parameter to the value returned from the previous
+response.}
 
 \item{MaxResults}{The maximum number of results to return.}
 }
 \description{
-Returns information about the products available that you can subscribe
-to and integrate with Security Hub to consolidate findings.
+Returns information about the available products that you can subscribe
+to and integrate with Security Hub in order to consolidate findings.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_products(

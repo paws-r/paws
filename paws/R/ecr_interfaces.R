@@ -35,7 +35,7 @@ NULL
 
 .ecr$batch_get_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(images = structure(list(structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), imageId = structure(list(imageDigest = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imageManifest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), failures = structure(list(structure(list(imageId = structure(list(imageDigest = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), failureCode = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(images = structure(list(structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), imageId = structure(list(imageDigest = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imageManifest = structure(logical(0), tags = list(type = "string")), imageManifestMediaType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), failures = structure(list(structure(list(imageId = structure(list(imageDigest = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), failureCode = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -233,13 +233,13 @@ NULL
 
 .ecr$put_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), imageManifest = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), imageManifest = structure(logical(0), tags = list(type = "string")), imageManifestMediaType = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string")), imageDigest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ecr$put_image_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(image = structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), imageId = structure(list(imageDigest = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imageManifest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(image = structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), imageId = structure(list(imageDigest = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imageManifest = structure(logical(0), tags = list(type = "string")), imageManifestMediaType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

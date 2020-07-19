@@ -44,8 +44,13 @@ PM UTC, then you input \code{1538424000} as the end time.
 For PostgreSQL, the default value of \code{false} is the only option
 available.}
 
-\item{pageToken}{A token used for advancing to a specific page of results for your
-\verb{get relational database log events} request.}
+\item{pageToken}{The token to advance to the next or previous page of results from your
+request.
+
+To get a page token, perform an initial \code{GetRelationalDatabaseLogEvents}
+request. If your results are paginated, the response will return a next
+forward token and/or next backward token that you can specify as the
+page token in a subsequent request.}
 }
 \description{
 Returns a list of log events for a database in Amazon Lightsail.

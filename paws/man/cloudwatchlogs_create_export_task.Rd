@@ -38,9 +38,11 @@ a log group to an Amazon S3 bucket.
 This is an asynchronous call. If all the required information is
 provided, this operation initiates an export task and responds with the
 ID of the task. After the task has started, you can use
-DescribeExportTasks to get the status of the export task. Each account
-can only have one active (\code{RUNNING} or \code{PENDING}) export task at a time.
-To cancel an export task, use CancelExportTask.
+\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeExportTasks.html}{DescribeExportTasks}
+to get the status of the export task. Each account can only have one
+active (\code{RUNNING} or \code{PENDING}) export task at a time. To cancel an
+export task, use
+\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_CancelExportTask.html}{CancelExportTask}.
 
 You can export logs from multiple log groups or multiple time ranges to
 the same S3 bucket. To separate out log data for each export task, you

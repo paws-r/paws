@@ -27,6 +27,11 @@ queues, objects are returned only for queues that currently exist in the
 Region.
 }
 \details{
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-console.html}{View Your Queues}
+
+\strong{Related operations}
 \itemize{
 \item CreateGameSessionQueue
 \item DescribeGameSessionQueues

@@ -10,7 +10,9 @@ transcribeservice_create_vocabulary(VocabularyName, LanguageCode,
 }
 \arguments{
 \item{VocabularyName}{[required] The name of the vocabulary. The name must be unique within an AWS
-account. The name is case-sensitive.}
+account. The name is case-sensitive. If you try to create a vocabulary
+with the same name as a previous vocabulary you will receive a
+\code{ConflictException} error.}
 
 \item{LanguageCode}{[required] The language code of the vocabulary entries.}
 
@@ -19,12 +21,6 @@ account. The name is case-sensitive.}
 \item{VocabularyFileUri}{The S3 location of the text file that contains the definition of the
 custom vocabulary. The URI must be in the same region as the API
 endpoint that you are calling. The general form is
-
-\verb{https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt;}
-
-For example:
-
-\verb{https://s3.us-east-1.amazonaws.com/examplebucket/vocab.txt}
 
 For more information about S3 object names, see \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys}{Object Keys}
 in the \emph{Amazon S3 Developer Guide}.

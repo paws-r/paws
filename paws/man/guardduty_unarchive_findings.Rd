@@ -9,7 +9,7 @@ guardduty_unarchive_findings(DetectorId, FindingIds)
 \arguments{
 \item{DetectorId}{[required] The ID of the detector associated with the findings to unarchive.}
 
-\item{FindingIds}{[required] IDs of the findings to unarchive.}
+\item{FindingIds}{[required] The IDs of the findings to unarchive.}
 }
 \description{
 Unarchives GuardDuty findings specified by the \code{findingIds}.

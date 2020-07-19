@@ -30,9 +30,9 @@ Some actions take lists of parameters. These lists are specified using
 the \code{param.n} notation. Values of \code{n} are integers starting from 1. For
 example, a parameter list with two elements looks like this:
 
-\verb{&amp;Attribute.1=first}
+\verb{&amp;AttributeName.1=first}
 
-\verb{&amp;Attribute.2=second}
+\verb{&amp;AttributeName.2=second}
 }
 \section{Request syntax}{
 \preformatted{svc$change_message_visibility_batch(

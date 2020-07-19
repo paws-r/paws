@@ -3,6 +3,49 @@
 #' @include qldb_service.R
 NULL
 
+#' Ends a given Amazon QLDB journal stream
+#'
+#' Ends a given Amazon QLDB journal stream. Before a stream can be
+#' canceled, its current status must be `ACTIVE`.
+#' 
+#' You can\'t restart a stream after you cancel it. Canceled QLDB stream
+#' resources are subject to a 7-day retention period, so they are
+#' automatically deleted after this limit expires.
+#'
+#' @usage
+#' qldb_cancel_journal_kinesis_stream(LedgerName, StreamId)
+#'
+#' @param LedgerName &#91;required&#93; The name of the ledger.
+#' @param StreamId &#91;required&#93; The unique ID that QLDB assigns to each QLDB journal stream.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_journal_kinesis_stream(
+#'   LedgerName = "string",
+#'   StreamId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname qldb_cancel_journal_kinesis_stream
+qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
+  op <- new_operation(
+    name = "CancelJournalKinesisStream",
+    http_method = "DELETE",
+    http_path = "/ledgers/{name}/journal-kinesis-streams/{streamId}",
+    paginator = list()
+  )
+  input <- .qldb$cancel_journal_kinesis_stream_input(LedgerName = LedgerName, StreamId = StreamId)
+  output <- .qldb$cancel_journal_kinesis_stream_output()
+  config <- get_config()
+  svc <- .qldb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.qldb$operations$cancel_journal_kinesis_stream <- qldb_cancel_journal_kinesis_stream
+
 #' Creates a new ledger in your AWS account
 #'
 #' Creates a new ledger in your AWS account.
@@ -12,6 +55,10 @@ NULL
 #'
 #' @param Name &#91;required&#93; The name of the ledger that you want to create. The name must be unique
 #' among all of your ledgers in the current AWS Region.
+#' 
+#' Naming constraints for ledger names are defined in [Quotas in Amazon
+#' QLDB](https://docs.aws.amazon.com/qldb/latest/developerguide/limits.html#limits.naming)
+#' in the *Amazon QLDB Developer Guide*.
 #' @param Tags The key-value pairs to add as tags to the ledger that you want to
 #' create. Tag keys are case sensitive. Tag values are case sensitive and
 #' can be null.
@@ -100,6 +147,47 @@ qldb_delete_ledger <- function(Name) {
 }
 .qldb$operations$delete_ledger <- qldb_delete_ledger
 
+#' Returns detailed information about a given Amazon QLDB journal stream
+#'
+#' Returns detailed information about a given Amazon QLDB journal stream.
+#' The output includes the Amazon Resource Name (ARN), stream name, current
+#' status, creation time, and the parameters of your original stream
+#' creation request.
+#'
+#' @usage
+#' qldb_describe_journal_kinesis_stream(LedgerName, StreamId)
+#'
+#' @param LedgerName &#91;required&#93; The name of the ledger.
+#' @param StreamId &#91;required&#93; The unique ID that QLDB assigns to each QLDB journal stream.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_journal_kinesis_stream(
+#'   LedgerName = "string",
+#'   StreamId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname qldb_describe_journal_kinesis_stream
+qldb_describe_journal_kinesis_stream <- function(LedgerName, StreamId) {
+  op <- new_operation(
+    name = "DescribeJournalKinesisStream",
+    http_method = "GET",
+    http_path = "/ledgers/{name}/journal-kinesis-streams/{streamId}",
+    paginator = list()
+  )
+  input <- .qldb$describe_journal_kinesis_stream_input(LedgerName = LedgerName, StreamId = StreamId)
+  output <- .qldb$describe_journal_kinesis_stream_output()
+  config <- get_config()
+  svc <- .qldb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.qldb$operations$describe_journal_kinesis_stream <- qldb_describe_journal_kinesis_stream
+
 #' Returns information about a journal export job, including the ledger
 #' name, export ID, when it was created, current status, and its start and
 #' end time export parameters
@@ -107,6 +195,11 @@ qldb_delete_ledger <- function(Name) {
 #' Returns information about a journal export job, including the ledger
 #' name, export ID, when it was created, current status, and its start and
 #' end time export parameters.
+#' 
+#' This action does not return any expired export jobs. For more
+#' information, see [Export Job
+#' Expiration](https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration)
+#' in the *Amazon QLDB Developer Guide*.
 #' 
 #' If the export job with the given `ExportId` doesn\'t exist, then throws
 #' `ResourceNotFoundException`.
@@ -280,11 +373,15 @@ qldb_export_journal_to_s3 <- function(Name, InclusiveStartTime, ExclusiveEndTime
 }
 .qldb$operations$export_journal_to_s3 <- qldb_export_journal_to_s3
 
-#' Returns a journal block object at a specified address in a ledger
+#' Returns a block object at a specified address in a journal
 #'
-#' Returns a journal block object at a specified address in a ledger. Also
-#' returns a proof of the specified block for verification if
-#' `DigestTipAddress` is provided.
+#' Returns a block object at a specified address in a journal. Also returns
+#' a proof of the specified block for verification if `DigestTipAddress` is
+#' provided.
+#' 
+#' For information about the data contents in a block, see [Journal
+#' contents](https://docs.aws.amazon.com/qldb/latest/developerguide/journal-contents.html)
+#' in the *Amazon QLDB Developer Guide*.
 #' 
 #' If the specified ledger doesn\'t exist or is in `DELETING` status, then
 #' throws `ResourceNotFoundException`.
@@ -437,6 +534,59 @@ qldb_get_revision <- function(Name, BlockAddress, DocumentId, DigestTipAddress =
 }
 .qldb$operations$get_revision <- qldb_get_revision
 
+#' Returns an array of all Amazon QLDB journal stream descriptors for a
+#' given ledger
+#'
+#' Returns an array of all Amazon QLDB journal stream descriptors for a
+#' given ledger. The output of each stream descriptor includes the same
+#' details that are returned by `DescribeJournalKinesisStream`.
+#' 
+#' This action returns a maximum of `MaxResults` items. It is paginated so
+#' that you can retrieve all the items by calling
+#' `ListJournalKinesisStreamsForLedger` multiple times.
+#'
+#' @usage
+#' qldb_list_journal_kinesis_streams_for_ledger(LedgerName, MaxResults,
+#'   NextToken)
+#'
+#' @param LedgerName &#91;required&#93; The name of the ledger.
+#' @param MaxResults The maximum number of results to return in a single
+#' `ListJournalKinesisStreamsForLedger` request. (The actual number of
+#' results returned might be fewer.)
+#' @param NextToken A pagination token, indicating that you want to retrieve the next page
+#' of results. If you received a value for `NextToken` in the response from
+#' a previous `ListJournalKinesisStreamsForLedger` call, you should use
+#' that value as input here.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_journal_kinesis_streams_for_ledger(
+#'   LedgerName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname qldb_list_journal_kinesis_streams_for_ledger
+qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListJournalKinesisStreamsForLedger",
+    http_method = "GET",
+    http_path = "/ledgers/{name}/journal-kinesis-streams",
+    paginator = list()
+  )
+  input <- .qldb$list_journal_kinesis_streams_for_ledger_input(LedgerName = LedgerName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .qldb$list_journal_kinesis_streams_for_ledger_output()
+  config <- get_config()
+  svc <- .qldb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.qldb$operations$list_journal_kinesis_streams_for_ledger <- qldb_list_journal_kinesis_streams_for_ledger
+
 #' Returns an array of journal export job descriptions for all ledgers that
 #' are associated with the current AWS account and Region
 #'
@@ -446,6 +596,11 @@ qldb_get_revision <- function(Name, BlockAddress, DocumentId, DigestTipAddress =
 #' This action returns a maximum of `MaxResults` items, and is paginated so
 #' that you can retrieve all the items by calling `ListJournalS3Exports`
 #' multiple times.
+#' 
+#' This action does not return any expired export jobs. For more
+#' information, see [Export Job
+#' Expiration](https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration)
+#' in the *Amazon QLDB Developer Guide*.
 #'
 #' @usage
 #' qldb_list_journal_s3_exports(MaxResults, NextToken)
@@ -495,6 +650,11 @@ qldb_list_journal_s3_exports <- function(MaxResults = NULL, NextToken = NULL) {
 #' This action returns a maximum of `MaxResults` items, and is paginated so
 #' that you can retrieve all the items by calling
 #' `ListJournalS3ExportsForLedger` multiple times.
+#' 
+#' This action does not return any expired export jobs. For more
+#' information, see [Export Job
+#' Expiration](https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration)
+#' in the *Amazon QLDB Developer Guide*.
 #'
 #' @usage
 #' qldb_list_journal_s3_exports_for_ledger(Name, MaxResults, NextToken)
@@ -622,6 +782,94 @@ qldb_list_tags_for_resource <- function(ResourceArn) {
   return(response)
 }
 .qldb$operations$list_tags_for_resource <- qldb_list_tags_for_resource
+
+#' Creates a journal stream for a given Amazon QLDB ledger
+#'
+#' Creates a journal stream for a given Amazon QLDB ledger. The stream
+#' captures every document revision that is committed to the ledger\'s
+#' journal and delivers the data to a specified Amazon Kinesis Data Streams
+#' resource.
+#'
+#' @usage
+#' qldb_stream_journal_to_kinesis(LedgerName, RoleArn, Tags,
+#'   InclusiveStartTime, ExclusiveEndTime, KinesisConfiguration, StreamName)
+#'
+#' @param LedgerName &#91;required&#93; The name of the ledger.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants QLDB
+#' permissions for a journal stream to write data records to a Kinesis Data
+#' Streams resource.
+#' @param Tags The key-value pairs to add as tags to the stream that you want to
+#' create. Tag keys are case sensitive. Tag values are case sensitive and
+#' can be null.
+#' @param InclusiveStartTime &#91;required&#93; The inclusive start date and time from which to start streaming journal
+#' data. This parameter must be in `ISO 8601` date and time format and in
+#' Universal Coordinated Time (UTC). For example: `2019-06-13T21:36:34Z`
+#' 
+#' The `InclusiveStartTime` cannot be in the future and must be before
+#' `ExclusiveEndTime`.
+#' 
+#' If you provide an `InclusiveStartTime` that is before the ledger\'s
+#' `CreationDateTime`, QLDB effectively defaults it to the ledger\'s
+#' `CreationDateTime`.
+#' @param ExclusiveEndTime The exclusive date and time that specifies when the stream ends. If you
+#' don\'t define this parameter, the stream runs indefinitely until you
+#' cancel it.
+#' 
+#' The `ExclusiveEndTime` must be in `ISO 8601` date and time format and in
+#' Universal Coordinated Time (UTC). For example: `2019-06-13T21:36:34Z`
+#' @param KinesisConfiguration &#91;required&#93; The configuration settings of the Kinesis Data Streams destination for
+#' your stream request.
+#' @param StreamName &#91;required&#93; The name that you want to assign to the QLDB journal stream.
+#' User-defined names can help identify and indicate the purpose of a
+#' stream.
+#' 
+#' Your stream name must be unique among other *active* streams for a given
+#' ledger. Stream names have the same naming constraints as ledger names,
+#' as defined in [Quotas in Amazon
+#' QLDB](https://docs.aws.amazon.com/qldb/latest/developerguide/limits.html#limits.naming)
+#' in the *Amazon QLDB Developer Guide*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stream_journal_to_kinesis(
+#'   LedgerName = "string",
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   InclusiveStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ExclusiveEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   KinesisConfiguration = list(
+#'     StreamArn = "string",
+#'     AggregationEnabled = TRUE|FALSE
+#'   ),
+#'   StreamName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname qldb_stream_journal_to_kinesis
+qldb_stream_journal_to_kinesis <- function(LedgerName, RoleArn, Tags = NULL, InclusiveStartTime, ExclusiveEndTime = NULL, KinesisConfiguration, StreamName) {
+  op <- new_operation(
+    name = "StreamJournalToKinesis",
+    http_method = "POST",
+    http_path = "/ledgers/{name}/journal-kinesis-streams",
+    paginator = list()
+  )
+  input <- .qldb$stream_journal_to_kinesis_input(LedgerName = LedgerName, RoleArn = RoleArn, Tags = Tags, InclusiveStartTime = InclusiveStartTime, ExclusiveEndTime = ExclusiveEndTime, KinesisConfiguration = KinesisConfiguration, StreamName = StreamName)
+  output <- .qldb$stream_journal_to_kinesis_output()
+  config <- get_config()
+  svc <- .qldb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.qldb$operations$stream_journal_to_kinesis <- qldb_stream_journal_to_kinesis
 
 #' Adds one or more tags to a specified Amazon QLDB resource
 #'

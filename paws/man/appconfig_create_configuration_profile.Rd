@@ -14,14 +14,17 @@ appconfig_create_configuration_profile(ApplicationId, Name, Description,
 
 \item{Description}{A description of the configuration profile.}
 
-\item{LocationUri}{[required] A URI to locate the configuration. You can specify either a Systems
-Manager (SSM) document or an SSM Parameter Store parameter. For an SSM
-document, specify either the document name in the format
-\verb{ssm-document://&lt;Document name&gt;} or the Amazon Resource Name
-(ARN). For a parameter, specify either the parameter name in the format
-\verb{ssm-parameter://&lt;Parameter name&gt;} or the ARN.}
+\item{LocationUri}{[required] A URI to locate the configuration. You can specify a Systems Manager
+(SSM) document, an SSM Parameter Store parameter, or an Amazon S3
+object. For an SSM document, specify either the document name in the
+format \verb{ssm-document://&lt;Document_name&gt;} or the Amazon Resource
+Name (ARN). For a parameter, specify either the parameter name in the
+format \verb{ssm-parameter://&lt;Parameter_name&gt;} or the ARN. For an
+Amazon S3 object, specify the URI in the following format:
+\verb{s3://&lt;bucket&gt;/&lt;objectKey&gt; }. Here is an example:
+s3://my-bucket/my-app/us-east-1/my-config.json}
 
-\item{RetrievalRoleArn}{[required] The ARN of an IAM role with permission to access the configuration at
+\item{RetrievalRoleArn}{The ARN of an IAM role with permission to access the configuration at
 the specified LocationUri.}
 
 \item{Validators}{A list of methods for validating the configuration.}
@@ -32,9 +35,9 @@ optional value, both of which you define.}
 }
 \description{
 Information that enables AppConfig to access the configuration source.
-Valid configuration sources include Systems Manager (SSM) documents and
-SSM Parameter Store parameters. A configuration profile includes the
-following information.
+Valid configuration sources include Systems Manager (SSM) documents, SSM
+Parameter Store parameters, and Amazon S3 objects. A configuration
+profile includes the following information.
 }
 \details{
 \itemize{
@@ -44,6 +47,9 @@ access to the configuration data.
 \item A validator for the configuration data. Available validators include
 either a JSON Schema or an AWS Lambda function.
 }
+
+For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-creating-configuration-and-profile.html}{Create a Configuration and a Configuration Profile}
+in the \emph{AWS AppConfig User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_configuration_profile(

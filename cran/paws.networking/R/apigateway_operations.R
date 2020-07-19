@@ -20,7 +20,8 @@ NULL
 #' @param description The description of the ApiKey.
 #' @param enabled Specifies whether the ApiKey can be used by callers.
 #' @param generateDistinctId Specifies whether (`true`) or not (`false`) the key identifier is
-#' distinct from the created API key value.
+#' distinct from the created API key value. This parameter is deprecated
+#' and should not be used.
 #' @param value Specifies a value of the API key.
 #' @param stageKeys DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
 #' key.
@@ -201,8 +202,8 @@ apigateway_create_authorizer <- function(restApiId, name, type, providerARNs = N
 #' callers to specify a base path name after the domain name.
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param stage The name of the API\'s stage that you want to use for this mapping.
-#' Specify \'(none)\' if you do not want callers to explicitly specify the
-#' stage name after any base path name.
+#' Specify \'(none)\' if you want callers to explicitly specify the stage
+#' name after any base path name.
 #'
 #' @section Request syntax:
 #' ```
@@ -904,8 +905,8 @@ apigateway_create_usage_plan_key <- function(usagePlanId, keyId, keyType) {
 #'
 #' @param name &#91;required&#93; \[Required\] The name used to label and identify the VPC link.
 #' @param description The description of the VPC link.
-#' @param targetArns &#91;required&#93; \[Required\] The ARNs of network load balancers of the VPC targeted by
-#' the VPC link. The network load balancers must be owned by the same AWS
+#' @param targetArns &#91;required&#93; \[Required\] The ARN of the network load balancer of the VPC targeted by
+#' the VPC link. The network load balancer must be owned by the same AWS
 #' account of the API owner.
 #' @param tags The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
@@ -3536,8 +3537,7 @@ apigateway_get_stages <- function(restApiId, deploymentId = NULL) {
 #' @usage
 #' apigateway_get_tags(resourceArn, position, limit)
 #'
-#' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged. The resource ARN
-#' must be URL-encoded.
+#' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged.
 #' @param position (Not currently supported) The current pagination position in the paged
 #' result set.
 #' @param limit (Not currently supported) The maximum number of returned results per
@@ -3995,7 +3995,7 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
 #'     aws apigateway import-rest-api --parameters endpointConfigurationTypes=REGIONAL --body 'file:///path/to/imported-api-body.json'
 #' @param body &#91;required&#93; \[Required\] The POST request body containing external API definitions.
 #' Currently, only OpenAPI definition JSON/YAML files are supported. The
-#' maximum size of the API definition file is 2MB.
+#' maximum size of the API definition file is 6MB.
 #'
 #' @section Request syntax:
 #' ```
@@ -4112,7 +4112,8 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' apigateway_put_integration(restApiId, resourceId, httpMethod, type,
 #'   integrationHttpMethod, uri, connectionType, connectionId, credentials,
 #'   requestParameters, requestTemplates, passthroughBehavior,
-#'   cacheNamespace, cacheKeyParameters, contentHandling, timeoutInMillis)
+#'   cacheNamespace, cacheKeyParameters, contentHandling, timeoutInMillis,
+#'   tlsConfig)
 #'
 #' @param restApiId &#91;required&#93; \[Required\] The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; \[Required\] Specifies a put integration request\'s resource ID.
@@ -4185,8 +4186,13 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #'     content types mapped to templates. However if there is at least one
 #'     content type defined, unmapped content types will be rejected with
 #'     the same 415 response.
-#' @param cacheNamespace A list of request parameters whose values are to be cached.
-#' @param cacheKeyParameters An API-specific tag group of related cached parameters.
+#' @param cacheNamespace Specifies a group of related cached parameters. By default, API Gateway
+#' uses the resource ID as the `cacheNamespace`. You can specify the same
+#' `cacheNamespace` across resources to return the same cached data for
+#' requests to different resources.
+#' @param cacheKeyParameters A list of request parameters whose values API Gateway caches. To be
+#' valid values for `cacheKeyParameters`, these parameters must also be
+#' specified for Method `requestParameters`.
 #' @param contentHandling Specifies how to handle request payload content type conversions.
 #' Supported values are `CONVERT_TO_BINARY` and `CONVERT_TO_TEXT`, with the
 #' following behaviors:
@@ -4203,6 +4209,7 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' support payload pass-through.
 #' @param timeoutInMillis Custom timeout between 50 and 29,000 milliseconds. The default value is
 #' 29,000 milliseconds or 29 seconds.
+#' @param tlsConfig 
 #'
 #' @section Request syntax:
 #' ```
@@ -4228,21 +4235,24 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #'     "string"
 #'   ),
 #'   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-#'   timeoutInMillis = 123
+#'   timeoutInMillis = 123,
+#'   tlsConfig = list(
+#'     insecureSkipVerification = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_put_integration
-apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, integrationHttpMethod = NULL, uri = NULL, connectionType = NULL, connectionId = NULL, credentials = NULL, requestParameters = NULL, requestTemplates = NULL, passthroughBehavior = NULL, cacheNamespace = NULL, cacheKeyParameters = NULL, contentHandling = NULL, timeoutInMillis = NULL) {
+apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, integrationHttpMethod = NULL, uri = NULL, connectionType = NULL, connectionId = NULL, credentials = NULL, requestParameters = NULL, requestTemplates = NULL, passthroughBehavior = NULL, cacheNamespace = NULL, cacheKeyParameters = NULL, contentHandling = NULL, timeoutInMillis = NULL, tlsConfig = NULL) {
   op <- new_operation(
     name = "PutIntegration",
     http_method = "PUT",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration",
     paginator = list()
   )
-  input <- .apigateway$put_integration_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, type = type, integrationHttpMethod = integrationHttpMethod, uri = uri, connectionType = connectionType, connectionId = connectionId, credentials = credentials, requestParameters = requestParameters, requestTemplates = requestTemplates, passthroughBehavior = passthroughBehavior, cacheNamespace = cacheNamespace, cacheKeyParameters = cacheKeyParameters, contentHandling = contentHandling, timeoutInMillis = timeoutInMillis)
+  input <- .apigateway$put_integration_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, type = type, integrationHttpMethod = integrationHttpMethod, uri = uri, connectionType = connectionType, connectionId = connectionId, credentials = credentials, requestParameters = requestParameters, requestTemplates = requestTemplates, passthroughBehavior = passthroughBehavior, cacheNamespace = cacheNamespace, cacheKeyParameters = cacheKeyParameters, contentHandling = contentHandling, timeoutInMillis = timeoutInMillis, tlsConfig = tlsConfig)
   output <- .apigateway$put_integration_output()
   config <- get_config()
   svc <- .apigateway$service(config)
@@ -4511,7 +4521,7 @@ apigateway_put_method_response <- function(restApiId, resourceId, httpMethod, st
 #' `aws apigateway import-rest-api --parameters ignore=documentation --body 'file:///path/to/imported-api-body.json'`.
 #' @param body &#91;required&#93; \[Required\] The PUT request body containing external API definitions.
 #' Currently, only OpenAPI definition JSON/YAML files are supported. The
-#' maximum size of the API definition file is 2MB.
+#' maximum size of the API definition file is 6MB.
 #'
 #' @section Request syntax:
 #' ```
@@ -4553,8 +4563,7 @@ apigateway_put_rest_api <- function(restApiId, mode = NULL, failOnWarnings = NUL
 #' @usage
 #' apigateway_tag_resource(resourceArn, tags)
 #'
-#' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged. The resource ARN
-#' must be URL-encoded.
+#' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged.
 #' @param tags &#91;required&#93; \[Required\] The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
@@ -4746,8 +4755,7 @@ apigateway_test_invoke_method <- function(restApiId, resourceId, httpMethod, pat
 #' @usage
 #' apigateway_untag_resource(resourceArn, tagKeys)
 #'
-#' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged. The resource ARN
-#' must be URL-encoded.
+#' @param resourceArn &#91;required&#93; \[Required\] The ARN of a resource that can be tagged.
 #' @param tagKeys &#91;required&#93; \[Required\] The Tag keys to delete.
 #'
 #' @section Request syntax:

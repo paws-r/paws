@@ -2,17 +2,17 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_get_backend_environment}
 \alias{amplify_get_backend_environment}
-\title{Retrieves a backend environment for an Amplify App}
+\title{Returns a backend environment for an Amplify app}
 \usage{
 amplify_get_backend_environment(appId, environmentName)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique id for an Amplify app.}
 
-\item{environmentName}{[required] Name for the backend environment.}
+\item{environmentName}{[required] The name for the backend environment.}
 }
 \description{
-Retrieves a backend environment for an Amplify App.
+Returns a backend environment for an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$get_backend_environment(

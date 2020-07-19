@@ -31,8 +31,8 @@ topic in the \emph{Amazon RDS User Guide} or by using the
 \item{Enabled}{A value that indicates whether to activate the subscription.}
 }
 \description{
-Modifies an existing RDS event notification subscription. Note that you
-can\'t modify the source identifiers using this call; to change source
+Modifies an existing RDS event notification subscription. You can\'t
+modify the source identifiers using this call. To change source
 identifiers for a subscription, use the
 \code{AddSourceIdentifierToSubscription} and
 \code{RemoveSourceIdentifierFromSubscription} calls.

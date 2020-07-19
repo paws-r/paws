@@ -51,4 +51,11 @@ one or more specified namespaces.
 }
 }
 
+\examples{
+\dontrun{
+# Example: List services
+svc$list_services()
+}
+
+}
 \keyword{internal}

@@ -2,8 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_modify_db_snapshot}
 \alias{rds_modify_db_snapshot}
-\title{Updates a manual DB snapshot, which can be encrypted or not encrypted,
-with a new engine version}
+\title{Updates a manual DB snapshot with a new engine version}
 \usage{
 rds_modify_db_snapshot(DBSnapshotIdentifier, EngineVersion,
   OptionGroupName)
@@ -41,8 +40,8 @@ as when upgrading a DB instance. For more information, see \href{http://docs.aws
 in the \emph{Amazon RDS User Guide.}}
 }
 \description{
-Updates a manual DB snapshot, which can be encrypted or not encrypted,
-with a new engine version.
+Updates a manual DB snapshot with a new engine version. The snapshot can
+be encrypted or unencrypted, but not shared or public.
 }
 \details{
 Amazon RDS supports upgrading DB snapshots for MySQL, Oracle, and

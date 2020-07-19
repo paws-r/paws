@@ -2,24 +2,23 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_describe_db_cluster_snapshots}
 \alias{docdb_describe_db_cluster_snapshots}
-\title{Returns information about DB cluster snapshots}
+\title{Returns information about cluster snapshots}
 \usage{
 docdb_describe_db_cluster_snapshots(DBClusterIdentifier,
   DBClusterSnapshotIdentifier, SnapshotType, Filters, MaxRecords, Marker,
   IncludeShared, IncludePublic)
 }
 \arguments{
-\item{DBClusterIdentifier}{The ID of the DB cluster to retrieve the list of DB cluster snapshots
-for. This parameter can\'t be used with the
-\code{DBClusterSnapshotIdentifier} parameter. This parameter is not case
-sensitive.
+\item{DBClusterIdentifier}{The ID of the cluster to retrieve the list of cluster snapshots for.
+This parameter can\'t be used with the \code{DBClusterSnapshotIdentifier}
+parameter. This parameter is not case sensitive.
 
 Constraints:
 \itemize{
 \item If provided, must match the identifier of an existing \code{DBCluster}.
 }}
 
-\item{DBClusterSnapshotIdentifier}{A specific DB cluster snapshot identifier to describe. This parameter
+\item{DBClusterSnapshotIdentifier}{A specific cluster snapshot identifier to describe. This parameter
 can\'t be used with the \code{DBClusterIdentifier} parameter. This value is
 stored as a lowercase string.
 
@@ -31,24 +30,24 @@ Constraints:
 parameter must also be specified.
 }}
 
-\item{SnapshotType}{The type of DB cluster snapshots to be returned. You can specify one of
-the following values:
+\item{SnapshotType}{The type of cluster snapshots to be returned. You can specify one of the
+following values:
 \itemize{
-\item \code{automated} - Return all DB cluster snapshots that Amazon DocumentDB
+\item \code{automated} - Return all cluster snapshots that Amazon DocumentDB
 has automatically created for your AWS account.
-\item \code{manual} - Return all DB cluster snapshots that you have manually
+\item \code{manual} - Return all cluster snapshots that you have manually
 created for your AWS account.
-\item \code{shared} - Return all manual DB cluster snapshots that have been
-shared to your AWS account.
-\item \code{public} - Return all DB cluster snapshots that have been marked as
+\item \code{shared} - Return all manual cluster snapshots that have been shared
+to your AWS account.
+\item \code{public} - Return all cluster snapshots that have been marked as
 public.
 }
 
 If you don\'t specify a \code{SnapshotType} value, then both automated and
-manual DB cluster snapshots are returned. You can include shared DB
-cluster snapshots with these results by setting the \code{IncludeShared}
-parameter to \code{true}. You can include public DB cluster snapshots with
-these results by setting the \code{IncludePublic} parameter to \code{true}.
+manual cluster snapshots are returned. You can include shared cluster
+snapshots with these results by setting the \code{IncludeShared} parameter to
+\code{true}. You can include public cluster snapshots with these results by
+setting the \code{IncludePublic} parameter to \code{true}.
 
 The \code{IncludeShared} and \code{IncludePublic} parameters don\'t apply for
 \code{SnapshotType} values of \code{manual} or \code{automated}. The \code{IncludePublic}
@@ -71,17 +70,17 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 
-\item{IncludeShared}{Set to \code{true} to include shared manual DB cluster snapshots from other
-AWS accounts that this AWS account has been given permission to copy or
+\item{IncludeShared}{Set to \code{true} to include shared manual cluster snapshots from other AWS
+accounts that this AWS account has been given permission to copy or
 restore, and otherwise \code{false}. The default is \code{false}.}
 
-\item{IncludePublic}{Set to \code{true} to include manual DB cluster snapshots that are public and
+\item{IncludePublic}{Set to \code{true} to include manual cluster snapshots that are public and
 can be copied or restored by any AWS account, and otherwise \code{false}. The
 default is \code{false}.}
 }
 \description{
-Returns information about DB cluster snapshots. This API operation
-supports pagination.
+Returns information about cluster snapshots. This API operation supports
+pagination.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_db_cluster_snapshots(

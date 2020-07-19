@@ -28,15 +28,15 @@ NULL
 #' 
 #' To get a list of all your datasets, use the ListDatasets operation.
 #' 
-#' For example Forecast datasets, see the Amazon Forecast Sample GitHub
-#' repository.
+#' For example Forecast datasets, see the [Amazon Forecast Sample GitHub
+#' repository](https://github.com/aws-samples/amazon-forecast-samples).
 #' 
 #' The `Status` of a dataset must be `ACTIVE` before you can import
 #' training data. Use the DescribeDataset operation to get the status.
 #'
 #' @usage
 #' forecastservice_create_dataset(DatasetName, Domain, DatasetType,
-#'   DataFrequency, Schema, EncryptionConfig)
+#'   DataFrequency, Schema, EncryptionConfig, Tags)
 #'
 #' @param DatasetName &#91;required&#93; A name for the dataset.
 #' @param Domain &#91;required&#93; The domain associated with the dataset. When you add a dataset to a
@@ -64,6 +64,36 @@ NULL
 #' domain and type, see howitworks-domains-ds-types.
 #' @param EncryptionConfig An AWS Key Management Service (KMS) key and the AWS Identity and Access
 #' Management (IAM) role that Amazon Forecast can assume to access the key.
+#' @param Tags The optional metadata that you apply to the dataset to help you
+#' categorize and organize them. Each tag consists of a key and an optional
+#' value, both of which you define.
+#' 
+#' The following basic restrictions apply to tags:
+#' 
+#' -   Maximum number of tags per resource - 50.
+#' 
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
+#' 
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
+#' 
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
+#' 
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . \\_ : / @@.
+#' 
+#' -   Tag keys and values are case sensitive.
+#' 
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for AWS use. You cannot
+#'     edit or delete tag keys with this prefix. Values can have this
+#'     prefix. If a tag value has `aws` as its prefix but the key does not,
+#'     then Forecast considers it to be a user tag and will count against
+#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
+#'     count against your tags per resource limit.
 #'
 #' @section Request syntax:
 #' ```
@@ -83,6 +113,12 @@ NULL
 #'   EncryptionConfig = list(
 #'     RoleArn = "string",
 #'     KMSKeyArn = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -90,14 +126,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_dataset
-forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, DataFrequency = NULL, Schema, EncryptionConfig = NULL) {
+forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, DataFrequency = NULL, Schema, EncryptionConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDataset",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_dataset_input(DatasetName = DatasetName, Domain = Domain, DatasetType = DatasetType, DataFrequency = DataFrequency, Schema = Schema, EncryptionConfig = EncryptionConfig)
+  input <- .forecastservice$create_dataset_input(DatasetName = DatasetName, Domain = Domain, DatasetType = DatasetType, DataFrequency = DataFrequency, Schema = Schema, EncryptionConfig = EncryptionConfig, Tags = Tags)
   output <- .forecastservice$create_dataset_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -126,7 +162,7 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #'
 #' @usage
 #' forecastservice_create_dataset_group(DatasetGroupName, Domain,
-#'   DatasetArns)
+#'   DatasetArns, Tags)
 #'
 #' @param DatasetGroupName &#91;required&#93; A name for the dataset group.
 #' @param Domain &#91;required&#93; The domain associated with the dataset group. When you add a dataset to
@@ -141,6 +177,36 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #' howitworks-datasets-groups.
 #' @param DatasetArns An array of Amazon Resource Names (ARNs) of the datasets that you want
 #' to include in the dataset group.
+#' @param Tags The optional metadata that you apply to the dataset group to help you
+#' categorize and organize them. Each tag consists of a key and an optional
+#' value, both of which you define.
+#' 
+#' The following basic restrictions apply to tags:
+#' 
+#' -   Maximum number of tags per resource - 50.
+#' 
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
+#' 
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
+#' 
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
+#' 
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . \\_ : / @@.
+#' 
+#' -   Tag keys and values are case sensitive.
+#' 
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for AWS use. You cannot
+#'     edit or delete tag keys with this prefix. Values can have this
+#'     prefix. If a tag value has `aws` as its prefix but the key does not,
+#'     then Forecast considers it to be a user tag and will count against
+#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
+#'     count against your tags per resource limit.
 #'
 #' @section Request syntax:
 #' ```
@@ -149,6 +215,12 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #'   Domain = "RETAIL"|"CUSTOM"|"INVENTORY_PLANNING"|"EC2_CAPACITY"|"WORK_FORCE"|"WEB_TRAFFIC"|"METRICS",
 #'   DatasetArns = list(
 #'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -156,14 +228,14 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_dataset_group
-forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, DatasetArns = NULL) {
+forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, DatasetArns = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDatasetGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_dataset_group_input(DatasetGroupName = DatasetGroupName, Domain = Domain, DatasetArns = DatasetArns)
+  input <- .forecastservice$create_dataset_group_input(DatasetGroupName = DatasetGroupName, Domain = Domain, DatasetArns = DatasetArns, Tags = Tags)
   output <- .forecastservice$create_dataset_group_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -182,7 +254,9 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' 
 #' You must specify a DataSource object that includes an AWS Identity and
 #' Access Management (IAM) role that Amazon Forecast can assume to access
-#' the data. For more information, see aws-forecast-iam-roles.
+#' the data, as Amazon Forecast makes a copy of your data and processes it
+#' in an internal AWS system. For more information, see
+#' aws-forecast-iam-roles.
 #' 
 #' The training data must be in CSV format. The delimiter must be a comma
 #' (,).
@@ -191,12 +265,18 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' folder in the S3 bucket. For the latter two cases, Amazon Forecast
 #' imports all files up to the limit of 10,000 files.
 #' 
+#' Because dataset imports are not aggregated, your most recent dataset
+#' import is the one that is used when training a predictor or generating a
+#' forecast. Make sure that your most recent dataset import contains all of
+#' the data you want to model off of, and not just the new data collected
+#' since the previous import.
+#' 
 #' To get a list of all your dataset import jobs, filtered by specified
 #' criteria, use the ListDatasetImportJobs operation.
 #'
 #' @usage
 #' forecastservice_create_dataset_import_job(DatasetImportJobName,
-#'   DatasetArn, DataSource, TimestampFormat)
+#'   DatasetArn, DataSource, TimestampFormat, Tags)
 #'
 #' @param DatasetImportJobName &#91;required&#93; The name for the dataset import job. We recommend including the current
 #' timestamp in the name, for example, `20190721DatasetImport`. This can
@@ -226,6 +306,36 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' 
 #' If the format isn\'t specified, Amazon Forecast expects the format to be
 #' \"yyyy-MM-dd HH:mm:ss\".
+#' @param Tags The optional metadata that you apply to the dataset import job to help
+#' you categorize and organize them. Each tag consists of a key and an
+#' optional value, both of which you define.
+#' 
+#' The following basic restrictions apply to tags:
+#' 
+#' -   Maximum number of tags per resource - 50.
+#' 
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
+#' 
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
+#' 
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
+#' 
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . \\_ : / @@.
+#' 
+#' -   Tag keys and values are case sensitive.
+#' 
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for AWS use. You cannot
+#'     edit or delete tag keys with this prefix. Values can have this
+#'     prefix. If a tag value has `aws` as its prefix but the key does not,
+#'     then Forecast considers it to be a user tag and will count against
+#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
+#'     count against your tags per resource limit.
 #'
 #' @section Request syntax:
 #' ```
@@ -239,21 +349,27 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #'       KMSKeyArn = "string"
 #'     )
 #'   ),
-#'   TimestampFormat = "string"
+#'   TimestampFormat = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_dataset_import_job
-forecastservice_create_dataset_import_job <- function(DatasetImportJobName, DatasetArn, DataSource, TimestampFormat = NULL) {
+forecastservice_create_dataset_import_job <- function(DatasetImportJobName, DatasetArn, DataSource, TimestampFormat = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDatasetImportJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_dataset_import_job_input(DatasetImportJobName = DatasetImportJobName, DatasetArn = DatasetArn, DataSource = DataSource, TimestampFormat = TimestampFormat)
+  input <- .forecastservice$create_dataset_import_job_input(DatasetImportJobName = DatasetImportJobName, DatasetArn = DatasetArn, DataSource = DataSource, TimestampFormat = TimestampFormat, Tags = Tags)
   output <- .forecastservice$create_dataset_import_job_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -274,10 +390,8 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #' operation.
 #' 
 #' The range of the forecast is determined by the `ForecastHorizon` value,
-#' which you specify in the CreatePredictor request, multiplied by the
-#' `DataFrequency` value, which you specify in the CreateDataset request.
-#' When you query a forecast, you can request a specific date range within
-#' the forecast.
+#' which you specify in the CreatePredictor request. When you query a
+#' forecast, you can request a specific date range within the forecast.
 #' 
 #' To get a list of all your forecasts, use the ListForecasts operation.
 #' 
@@ -292,17 +406,47 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #'
 #' @usage
 #' forecastservice_create_forecast(ForecastName, PredictorArn,
-#'   ForecastTypes)
+#'   ForecastTypes, Tags)
 #'
 #' @param ForecastName &#91;required&#93; A name for the forecast.
 #' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor to use to generate the
 #' forecast.
-#' @param ForecastTypes The quantiles at which probabilistic forecasts are generated. You can
-#' specify up to 5 quantiles per forecast. Accepted values include
-#' `0.01 to 0.99` (increments of .01 only) and `mean`. The mean forecast is
-#' different from the median (0.50) when the distribution is not symmetric
-#' (e.g. Beta, Negative Binomial). The default value is
-#' `\\["0.1", "0.5", "0.9"\\]`.
+#' @param ForecastTypes The quantiles at which probabilistic forecasts are generated. **You can
+#' currently specify up to 5 quantiles per forecast**. Accepted values
+#' include `0.01 to 0.99` (increments of .01 only) and `mean`. The mean
+#' forecast is different from the median (0.50) when the distribution is
+#' not symmetric (for example, Beta and Negative Binomial). The default
+#' value is `\\["0.1", "0.5", "0.9"\\]`.
+#' @param Tags The optional metadata that you apply to the forecast to help you
+#' categorize and organize them. Each tag consists of a key and an optional
+#' value, both of which you define.
+#' 
+#' The following basic restrictions apply to tags:
+#' 
+#' -   Maximum number of tags per resource - 50.
+#' 
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
+#' 
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
+#' 
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
+#' 
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . \\_ : / @@.
+#' 
+#' -   Tag keys and values are case sensitive.
+#' 
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for AWS use. You cannot
+#'     edit or delete tag keys with this prefix. Values can have this
+#'     prefix. If a tag value has `aws` as its prefix but the key does not,
+#'     then Forecast considers it to be a user tag and will count against
+#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
+#'     count against your tags per resource limit.
 #'
 #' @section Request syntax:
 #' ```
@@ -311,6 +455,12 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #'   PredictorArn = "string",
 #'   ForecastTypes = list(
 #'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -318,14 +468,14 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_forecast
-forecastservice_create_forecast <- function(ForecastName, PredictorArn, ForecastTypes = NULL) {
+forecastservice_create_forecast <- function(ForecastName, PredictorArn, ForecastTypes = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateForecast",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_forecast_input(ForecastName = ForecastName, PredictorArn = PredictorArn, ForecastTypes = ForecastTypes)
+  input <- .forecastservice$create_forecast_input(ForecastName = ForecastName, PredictorArn = PredictorArn, ForecastTypes = ForecastTypes, Tags = Tags)
   output <- .forecastservice$create_forecast_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -342,7 +492,7 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name
 #' will match the following conventions:
 #' 
-#' \\<ForecastExportJobName\\>\\_\\<ExportTimestamp\\>\\_\\<PageNumber\\>
+#' \\<ForecastExportJobName\\>\\_\\<ExportTimestamp\\>\\_\\<PartNumber\\>
 #' 
 #' where the \\<ExportTimestamp\\> component is in Java SimpleDateFormat
 #' (yyyy-MM-ddTHH-mm-ssZ).
@@ -363,7 +513,7 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #'
 #' @usage
 #' forecastservice_create_forecast_export_job(ForecastExportJobName,
-#'   ForecastArn, Destination)
+#'   ForecastArn, Destination, Tags)
 #'
 #' @param ForecastExportJobName &#91;required&#93; The name for the forecast export job.
 #' @param ForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast that you want to export.
@@ -374,6 +524,36 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' If encryption is used, `Destination` must include an AWS Key Management
 #' Service (KMS) key. The IAM role must allow Amazon Forecast permission to
 #' access the key.
+#' @param Tags The optional metadata that you apply to the forecast export job to help
+#' you categorize and organize them. Each tag consists of a key and an
+#' optional value, both of which you define.
+#' 
+#' The following basic restrictions apply to tags:
+#' 
+#' -   Maximum number of tags per resource - 50.
+#' 
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
+#' 
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
+#' 
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
+#' 
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . \\_ : / @@.
+#' 
+#' -   Tag keys and values are case sensitive.
+#' 
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for AWS use. You cannot
+#'     edit or delete tag keys with this prefix. Values can have this
+#'     prefix. If a tag value has `aws` as its prefix but the key does not,
+#'     then Forecast considers it to be a user tag and will count against
+#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
+#'     count against your tags per resource limit.
 #'
 #' @section Request syntax:
 #' ```
@@ -386,6 +566,12 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #'       RoleArn = "string",
 #'       KMSKeyArn = "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -393,14 +579,14 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_forecast_export_job
-forecastservice_create_forecast_export_job <- function(ForecastExportJobName, ForecastArn, Destination) {
+forecastservice_create_forecast_export_job <- function(ForecastExportJobName, ForecastArn, Destination, Tags = NULL) {
   op <- new_operation(
     name = "CreateForecastExportJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_forecast_export_job_input(ForecastExportJobName = ForecastExportJobName, ForecastArn = ForecastArn, Destination = Destination)
+  input <- .forecastservice$create_forecast_export_job_input(ForecastExportJobName = ForecastExportJobName, ForecastArn = ForecastArn, Destination = Destination, Tags = Tags)
   output <- .forecastservice$create_forecast_export_job_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -468,7 +654,7 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' forecastservice_create_predictor(PredictorName, AlgorithmArn,
 #'   ForecastHorizon, PerformAutoML, PerformHPO, TrainingParameters,
 #'   EvaluationParameters, HPOConfig, InputDataConfig, FeaturizationConfig,
-#'   EncryptionConfig)
+#'   EncryptionConfig, Tags)
 #'
 #' @param PredictorName &#91;required&#93; A name for the predictor.
 #' @param AlgorithmArn The Amazon Resource Name (ARN) of the algorithm to use for model
@@ -543,6 +729,36 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' @param FeaturizationConfig &#91;required&#93; The featurization configuration.
 #' @param EncryptionConfig An AWS Key Management Service (KMS) key and the AWS Identity and Access
 #' Management (IAM) role that Amazon Forecast can assume to access the key.
+#' @param Tags The optional metadata that you apply to the predictor to help you
+#' categorize and organize them. Each tag consists of a key and an optional
+#' value, both of which you define.
+#' 
+#' The following basic restrictions apply to tags:
+#' 
+#' -   Maximum number of tags per resource - 50.
+#' 
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
+#' 
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
+#' 
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
+#' 
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . \\_ : / @@.
+#' 
+#' -   Tag keys and values are case sensitive.
+#' 
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for AWS use. You cannot
+#'     edit or delete tag keys with this prefix. Values can have this
+#'     prefix. If a tag value has `aws` as its prefix but the key does not,
+#'     then Forecast considers it to be a user tag and will count against
+#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
+#'     count against your tags per resource limit.
 #'
 #' @section Request syntax:
 #' ```
@@ -618,6 +834,12 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #'   EncryptionConfig = list(
 #'     RoleArn = "string",
 #'     KMSKeyArn = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -625,14 +847,14 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_predictor
-forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL, ForecastHorizon, PerformAutoML = NULL, PerformHPO = NULL, TrainingParameters = NULL, EvaluationParameters = NULL, HPOConfig = NULL, InputDataConfig, FeaturizationConfig, EncryptionConfig = NULL) {
+forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL, ForecastHorizon, PerformAutoML = NULL, PerformHPO = NULL, TrainingParameters = NULL, EvaluationParameters = NULL, HPOConfig = NULL, InputDataConfig, FeaturizationConfig, EncryptionConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePredictor",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_predictor_input(PredictorName = PredictorName, AlgorithmArn = AlgorithmArn, ForecastHorizon = ForecastHorizon, PerformAutoML = PerformAutoML, PerformHPO = PerformHPO, TrainingParameters = TrainingParameters, EvaluationParameters = EvaluationParameters, HPOConfig = HPOConfig, InputDataConfig = InputDataConfig, FeaturizationConfig = FeaturizationConfig, EncryptionConfig = EncryptionConfig)
+  input <- .forecastservice$create_predictor_input(PredictorName = PredictorName, AlgorithmArn = AlgorithmArn, ForecastHorizon = ForecastHorizon, PerformAutoML = PerformAutoML, PerformHPO = PerformHPO, TrainingParameters = TrainingParameters, EvaluationParameters = EvaluationParameters, HPOConfig = HPOConfig, InputDataConfig = InputDataConfig, FeaturizationConfig = FeaturizationConfig, EncryptionConfig = EncryptionConfig, Tags = Tags)
   output <- .forecastservice$create_predictor_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -649,6 +871,10 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #' CreateDataset operation. You can only delete datasets that have a status
 #' of `ACTIVE` or `CREATE_FAILED`. To get the status use the
 #' DescribeDataset operation.
+#' 
+#' Forecast does not automatically update any dataset groups that contain
+#' the deleted dataset. In order to update the dataset group, use the
+#' operation, omitting the deleted dataset\'s ARN.
 #'
 #' @usage
 #' forecastservice_delete_dataset(DatasetArn)
@@ -1625,6 +1851,165 @@ forecastservice_list_predictors <- function(NextToken = NULL, MaxResults = NULL,
   return(response)
 }
 .forecastservice$operations$list_predictors <- forecastservice_list_predictors
+
+#' Lists the tags for an Amazon Forecast resource
+#'
+#' Lists the tags for an Amazon Forecast resource.
+#'
+#' @usage
+#' forecastservice_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
+#' list the tags. Currently, the supported resources are Forecast dataset
+#' groups, datasets, dataset import jobs, predictors, forecasts, and
+#' forecast export jobs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_list_tags_for_resource
+forecastservice_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .forecastservice$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$list_tags_for_resource <- forecastservice_list_tags_for_resource
+
+#' Associates the specified tags to a resource with the specified
+#' resourceArn
+#'
+#' Associates the specified tags to a resource with the specified
+#' `resourceArn`. If existing tags on a resource are not specified in the
+#' request parameters, they are not changed. When a resource is deleted,
+#' the tags associated with that resource are also deleted.
+#'
+#' @usage
+#' forecastservice_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
+#' list the tags. Currently, the supported resources are Forecast dataset
+#' groups, datasets, dataset import jobs, predictors, forecasts, and
+#' forecast export jobs.
+#' @param Tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
+#' 
+#' The following basic restrictions apply to tags:
+#' 
+#' -   Maximum number of tags per resource - 50.
+#' 
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
+#' 
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
+#' 
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
+#' 
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . \\_ : / @@.
+#' 
+#' -   Tag keys and values are case sensitive.
+#' 
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for AWS use. You cannot
+#'     edit or delete tag keys with this prefix. Values can have this
+#'     prefix. If a tag value has `aws` as its prefix but the key does not,
+#'     then Forecast considers it to be a user tag and will count against
+#'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
+#'     count against your tags per resource limit.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_tag_resource
+forecastservice_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .forecastservice$tag_resource_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$tag_resource <- forecastservice_tag_resource
+
+#' Deletes the specified tags from a resource
+#'
+#' Deletes the specified tags from a resource.
+#'
+#' @usage
+#' forecastservice_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
+#' list the tags. Currently, the supported resources are Forecast dataset
+#' groups, datasets, dataset import jobs, predictors, forecasts, and
+#' forecast exports.
+#' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_untag_resource
+forecastservice_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .forecastservice$untag_resource_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$untag_resource <- forecastservice_untag_resource
 
 #' Replaces the datasets in a dataset group with the specified datasets
 #'

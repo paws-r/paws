@@ -7,7 +7,8 @@
 apigateway_put_integration(restApiId, resourceId, httpMethod, type,
   integrationHttpMethod, uri, connectionType, connectionId, credentials,
   requestParameters, requestTemplates, passthroughBehavior,
-  cacheNamespace, cacheKeyParameters, contentHandling, timeoutInMillis)
+  cacheNamespace, cacheKeyParameters, contentHandling, timeoutInMillis,
+  tlsConfig)
 }
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
@@ -91,9 +92,14 @@ content type defined, unmapped content types will be rejected with
 the same 415 response.
 }}
 
-\item{cacheNamespace}{A list of request parameters whose values are to be cached.}
+\item{cacheNamespace}{Specifies a group of related cached parameters. By default, API Gateway
+uses the resource ID as the \code{cacheNamespace}. You can specify the same
+\code{cacheNamespace} across resources to return the same cached data for
+requests to different resources.}
 
-\item{cacheKeyParameters}{An API-specific tag group of related cached parameters.}
+\item{cacheKeyParameters}{A list of request parameters whose values API Gateway caches. To be
+valid values for \code{cacheKeyParameters}, these parameters must also be
+specified for Method \code{requestParameters}.}
 
 \item{contentHandling}{Specifies how to handle request payload content type conversions.
 Supported values are \code{CONVERT_TO_BINARY} and \code{CONVERT_TO_TEXT}, with the
@@ -112,6 +118,8 @@ support payload pass-through.}
 
 \item{timeoutInMillis}{Custom timeout between 50 and 29,000 milliseconds. The default value is
 29,000 milliseconds or 29 seconds.}
+
+\item{tlsConfig}{}
 }
 \description{
 Sets up a method\'s integration.
@@ -139,7 +147,10 @@ Sets up a method\'s integration.
     "string"
   ),
   contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-  timeoutInMillis = 123
+  timeoutInMillis = 123,
+  tlsConfig = list(
+    insecureSkipVerification = TRUE|FALSE
+  )
 )
 }
 }

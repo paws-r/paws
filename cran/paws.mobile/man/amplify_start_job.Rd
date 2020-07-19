@@ -2,33 +2,35 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_start_job}
 \alias{amplify_start_job}
-\title{Starts a new job for a branch, part of an Amplify App}
+\title{Starts a new job for a branch of an Amplify app}
 \usage{
 amplify_start_job(appId, branchName, jobId, jobType, jobReason,
   commitId, commitMessage, commitTime)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{branchName}{[required] Name for the branch, for the Job.}
+\item{branchName}{[required] The branch name for the job.}
 
-\item{jobId}{Unique Id for an existing job. Required for \"RETRY\" JobType.}
+\item{jobId}{The unique ID for an existing job. This is required if the value of
+\code{jobType} is \code{RETRY}.}
 
-\item{jobType}{[required] Type for the Job. Available JobTypes are: \verb{\\\\n} \"RELEASE\": Start a new
-job with the latest change from the specified branch. Only available for
-apps that have connected to a repository. \"RETRY\": Retry an existing
-job. JobId is required for this type of job.}
+\item{jobType}{[required] Describes the type for the job. The job type \code{RELEASE} starts a new job
+with the latest change from the specified branch. This value is
+available only for apps that are connected to a repository. The job type
+\code{RETRY} retries an existing job. If the job type value is \code{RETRY}, the
+\code{jobId} is also required.}
 
-\item{jobReason}{Descriptive reason for starting this job.}
+\item{jobReason}{A descriptive reason for starting this job.}
 
-\item{commitId}{Commit Id from 3rd party repository provider for the Job.}
+\item{commitId}{The commit ID from a third-party repository provider for the job.}
 
-\item{commitMessage}{Commit message from 3rd party repository provider for the Job.}
+\item{commitMessage}{The commit message from a third-party repository provider for the job.}
 
-\item{commitTime}{Commit date / time for the Job.}
+\item{commitTime}{The commit date and time for the job.}
 }
 \description{
-Starts a new job for a branch, part of an Amplify App.
+Starts a new job for a branch of an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$start_job(

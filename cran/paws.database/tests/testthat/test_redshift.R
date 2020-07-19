@@ -85,3 +85,7 @@ test_that("describe_storage", {
 test_that("describe_tags", {
   expect_error(svc$describe_tags(), NA)
 })
+
+test_that("describe_usage_limits", {
+  expect_error(svc$describe_usage_limits(), NA)
+})

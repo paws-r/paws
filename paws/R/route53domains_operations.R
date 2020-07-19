@@ -3,6 +3,115 @@
 #' @include route53domains_service.R
 NULL
 
+#' Accepts the transfer of a domain from another AWS account to the current
+#' AWS account
+#'
+#' Accepts the transfer of a domain from another AWS account to the current
+#' AWS account. You initiate a transfer between AWS accounts using
+#' [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html).
+#' 
+#' Use either
+#' [ListOperations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html)
+#' or
+#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
+#' to determine whether the operation succeeded.
+#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
+#' provides additional information, for example,
+#' `Domain Transfer from Aws Account 111122223333 has been cancelled`.
+#'
+#' @usage
+#' route53domains_accept_domain_transfer_from_another_aws_account(
+#'   DomainName, Password)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain that was specified when another AWS account
+#' submitted a
+#' [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html)
+#' request.
+#' @param Password &#91;required&#93; The password that was returned by the
+#' [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html)
+#' request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$accept_domain_transfer_from_another_aws_account(
+#'   DomainName = "string",
+#'   Password = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_accept_domain_transfer_from_another_aws_account
+route53domains_accept_domain_transfer_from_another_aws_account <- function(DomainName, Password) {
+  op <- new_operation(
+    name = "AcceptDomainTransferFromAnotherAwsAccount",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$accept_domain_transfer_from_another_aws_account_input(DomainName = DomainName, Password = Password)
+  output <- .route53domains$accept_domain_transfer_from_another_aws_account_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$accept_domain_transfer_from_another_aws_account <- route53domains_accept_domain_transfer_from_another_aws_account
+
+#' Cancels the transfer of a domain from the current AWS account to another
+#' AWS account
+#'
+#' Cancels the transfer of a domain from the current AWS account to another
+#' AWS account. You initiate a transfer between AWS accounts using
+#' [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html).
+#' 
+#' You must cancel the transfer before the other AWS account accepts the
+#' transfer using
+#' [AcceptDomainTransferFromAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_AcceptDomainTransferFromAnotherAwsAccount.html).
+#' 
+#' Use either
+#' [ListOperations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html)
+#' or
+#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
+#' to determine whether the operation succeeded.
+#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
+#' provides additional information, for example,
+#' `Domain Transfer from Aws Account 111122223333 has been cancelled`.
+#'
+#' @usage
+#' route53domains_cancel_domain_transfer_to_another_aws_account(DomainName)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain for which you want to cancel the transfer to
+#' another AWS account.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_domain_transfer_to_another_aws_account(
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_cancel_domain_transfer_to_another_aws_account
+route53domains_cancel_domain_transfer_to_another_aws_account <- function(DomainName) {
+  op <- new_operation(
+    name = "CancelDomainTransferToAnotherAwsAccount",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$cancel_domain_transfer_to_another_aws_account_input(DomainName = DomainName)
+  output <- .route53domains$cancel_domain_transfer_to_another_aws_account_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$cancel_domain_transfer_to_another_aws_account <- route53domains_cancel_domain_transfer_to_another_aws_account
+
 #' This operation checks the availability of one domain name
 #'
 #' This operation checks the availability of one domain name. Note that if
@@ -12,11 +121,32 @@ NULL
 #' @usage
 #' route53domains_check_domain_availability(DomainName, IdnLangCode)
 #'
-#' @param DomainName &#91;required&#93; The name of the domain that you want to get availability for.
+#' @param DomainName &#91;required&#93; The name of the domain that you want to get availability for. The
+#' top-level domain (TLD), such as .com, must be a TLD that Route 53
+#' supports. For a list of supported TLDs, see [Domains that You Can
+#' Register with Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
-#' Constraints: The domain name can contain only the letters a through z,
-#' the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
-#' are not supported.
+#' The domain name can contain only the following characters:
+#' 
+#' -   Letters a through z. Domain names are not case sensitive.
+#' 
+#' -   Numbers 0 through 9.
+#' 
+#' -   Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+#'     label.
+#' 
+#' -   Period (.) to separate the labels in the name, such as the `.` in
+#'     `example.com`.
+#' 
+#' Internationalized domain names are not supported for some top-level
+#' domains. To determine whether the TLD that you want to use supports
+#' internationalized domain names, see [Domains that You Can Register with
+#' Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html).
+#' For more information, see [Formatting Internationalized Domain
+#' Names](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns).
 #' @param IdnLangCode Reserved for future use.
 #'
 #' @section Request syntax:
@@ -54,11 +184,24 @@ route53domains_check_domain_availability <- function(DomainName, IdnLangCode = N
 #' @usage
 #' route53domains_check_domain_transferability(DomainName, AuthCode)
 #'
-#' @param DomainName &#91;required&#93; The name of the domain that you want to transfer to Amazon Route 53.
+#' @param DomainName &#91;required&#93; The name of the domain that you want to transfer to Route 53. The
+#' top-level domain (TLD), such as .com, must be a TLD that Route 53
+#' supports. For a list of supported TLDs, see [Domains that You Can
+#' Register with Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
-#' Constraints: The domain name can contain only the letters a through z,
-#' the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
-#' are not supported.
+#' The domain name can contain only the following characters:
+#' 
+#' -   Letters a through z. Domain names are not case sensitive.
+#' 
+#' -   Numbers 0 through 9.
+#' 
+#' -   Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+#'     label.
+#' 
+#' -   Period (.) to separate the labels in the name, such as the `.` in
+#'     `example.com`.
 #' @param AuthCode If the registrar for the top-level domain (TLD) requires an
 #' authorization code to transfer the domain, the code that you got from
 #' the current registrar for the domain.
@@ -223,13 +366,12 @@ route53domains_disable_domain_transfer_lock <- function(DomainName) {
 #' renewing your domain registration is billed to your AWS account.
 #' 
 #' The period during which you can renew a domain name varies by TLD. For a
-#' list of TLDs and their renewal policies, see [\"Renewal, restoration,
-#' and deletion
-#' times\"](http://wiki.gandi.net/en/domains/renew#renewal_restoration_and_deletion_times)
-#' on the website for our registrar associate, Gandi. Amazon Route 53
-#' requires that you renew before the end of the renewal period that is
-#' listed on the Gandi website so we can complete processing before the
-#' deadline.
+#' list of TLDs and their renewal policies, see [Domains That You Can
+#' Register with Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' in the *Amazon Route 53 Developer Guide*. Route 53 requires that you
+#' renew before the end of the renewal period so we can complete processing
+#' before the deadline.
 #'
 #' @usage
 #' route53domains_enable_domain_auto_renew(DomainName)
@@ -390,29 +532,45 @@ route53domains_get_domain_detail <- function(DomainName) {
 .route53domains$operations$get_domain_detail <- route53domains_get_domain_detail
 
 #' The GetDomainSuggestions operation returns a list of suggested domain
-#' names given a string, which can either be a domain name or simply a word
-#' or phrase (without spaces)
+#' names
 #'
 #' The GetDomainSuggestions operation returns a list of suggested domain
-#' names given a string, which can either be a domain name or simply a word
-#' or phrase (without spaces).
+#' names.
 #'
 #' @usage
 #' route53domains_get_domain_suggestions(DomainName, SuggestionCount,
 #'   OnlyAvailable)
 #'
 #' @param DomainName &#91;required&#93; A domain name that you want to use as the basis for a list of possible
-#' domain names. The domain name must contain a top-level domain (TLD),
-#' such as .com, that Amazon Route 53 supports. For a list of TLDs, see
-#' [Domains that You Can Register with Amazon Route
-#' 53](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' domain names. The top-level domain (TLD), such as .com, must be a TLD
+#' that Route 53 supports. For a list of supported TLDs, see [Domains that
+#' You Can Register with Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
 #' in the *Amazon Route 53 Developer Guide*.
-#' @param SuggestionCount &#91;required&#93; The number of suggested domain names that you want Amazon Route 53 to
-#' return.
-#' @param OnlyAvailable &#91;required&#93; If `OnlyAvailable` is `true`, Amazon Route 53 returns only domain names
-#' that are available. If `OnlyAvailable` is `false`, Amazon Route 53
-#' returns domain names without checking whether they\'re available to be
-#' registered. To determine whether the domain is available, you can call
+#' 
+#' The domain name can contain only the following characters:
+#' 
+#' -   Letters a through z. Domain names are not case sensitive.
+#' 
+#' -   Numbers 0 through 9.
+#' 
+#' -   Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+#'     label.
+#' 
+#' -   Period (.) to separate the labels in the name, such as the `.` in
+#'     `example.com`.
+#' 
+#' Internationalized domain names are not supported for some top-level
+#' domains. To determine whether the TLD that you want to use supports
+#' internationalized domain names, see [Domains that You Can Register with
+#' Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html).
+#' @param SuggestionCount &#91;required&#93; The number of suggested domain names that you want Route 53 to return.
+#' Specify a value between 1 and 50.
+#' @param OnlyAvailable &#91;required&#93; If `OnlyAvailable` is `true`, Route 53 returns only domain names that
+#' are available. If `OnlyAvailable` is `false`, Route 53 returns domain
+#' names without checking whether they\'re available to be registered. To
+#' determine whether the domain is available, you can call
 #' `checkDomainAvailability` for each suggestion.
 #'
 #' @section Request syntax:
@@ -454,7 +612,7 @@ route53domains_get_domain_suggestions <- function(DomainName, SuggestionCount, O
 #' route53domains_get_operation_detail(OperationId)
 #'
 #' @param OperationId &#91;required&#93; The identifier for the operation for which you want to get the status.
-#' Amazon Route 53 returned the identifier in the response to the original
+#' Route 53 returned the identifier in the response to the original
 #' request.
 #'
 #' @section Request syntax:
@@ -534,18 +692,21 @@ route53domains_list_domains <- function(Marker = NULL, MaxItems = NULL) {
 }
 .route53domains$operations$list_domains <- route53domains_list_domains
 
-#' This operation returns the operation IDs of operations that are not yet
-#' complete
+#' Returns information about all of the operations that return an operation
+#' ID and that have ever been performed on domains that were registered by
+#' the current account
 #'
-#' This operation returns the operation IDs of operations that are not yet
-#' complete.
+#' Returns information about all of the operations that return an operation
+#' ID and that have ever been performed on domains that were registered by
+#' the current account.
 #'
 #' @usage
 #' route53domains_list_operations(SubmittedSince, Marker, MaxItems)
 #'
 #' @param SubmittedSince An optional parameter that lets you get information about all the
 #' operations that you submitted after a specified date and time. Specify
-#' the date and time in Coordinated Universal time (UTC).
+#' the date and time in Unix time format and Coordinated Universal time
+#' (UTC).
 #' @param Marker For an initial request for a list of operations, omit this element. If
 #' the number of operations that are not yet complete is greater than the
 #' value that you specified for `MaxItems`, you can use `Marker` to return
@@ -637,10 +798,10 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' 
 #' When you register a domain, Amazon Route 53 does the following:
 #' 
-#' -   Creates a Amazon Route 53 hosted zone that has the same name as the
-#'     domain. Amazon Route 53 assigns four name servers to your hosted
-#'     zone and automatically updates your domain registration with the
-#'     names of these name servers.
+#' -   Creates a Route 53 hosted zone that has the same name as the domain.
+#'     Route 53 assigns four name servers to your hosted zone and
+#'     automatically updates your domain registration with the names of
+#'     these name servers.
 #' 
 #' -   Enables autorenew, so your domain registration will renew
 #'     automatically each year. We\'ll notify you in advance of the renewal
@@ -668,17 +829,37 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #'   PrivacyProtectAdminContact, PrivacyProtectRegistrantContact,
 #'   PrivacyProtectTechContact)
 #'
-#' @param DomainName &#91;required&#93; The domain name that you want to register.
+#' @param DomainName &#91;required&#93; The domain name that you want to register. The top-level domain (TLD),
+#' such as .com, must be a TLD that Route 53 supports. For a list of
+#' supported TLDs, see [Domains that You Can Register with Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
-#' Constraints: The domain name can contain only the letters a through z,
-#' the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
-#' are not supported.
+#' The domain name can contain only the following characters:
+#' 
+#' -   Letters a through z. Domain names are not case sensitive.
+#' 
+#' -   Numbers 0 through 9.
+#' 
+#' -   Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+#'     label.
+#' 
+#' -   Period (.) to separate the labels in the name, such as the `.` in
+#'     `example.com`.
+#' 
+#' Internationalized domain names are not supported for some top-level
+#' domains. To determine whether the TLD that you want to use supports
+#' internationalized domain names, see [Domains that You Can Register with
+#' Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html).
+#' For more information, see [Formatting Internationalized Domain
+#' Names](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns).
 #' @param IdnLangCode Reserved for future use.
 #' @param DurationInYears &#91;required&#93; The number of years that you want to register the domain for. Domains
 #' are registered for a minimum of one year. The maximum period depends on
 #' the top-level domain. For the range of valid values for your domain, see
 #' [Domains that You Can Register with Amazon Route
-#' 53](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
 #' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' Default: 1
@@ -687,9 +868,15 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' charged.
 #' 
 #' Default: `true`
-#' @param AdminContact &#91;required&#93; Provides detailed contact information.
-#' @param RegistrantContact &#91;required&#93; Provides detailed contact information.
-#' @param TechContact &#91;required&#93; Provides detailed contact information.
+#' @param AdminContact &#91;required&#93; Provides detailed contact information. For information about the values
+#' that you specify for each element, see
+#' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
+#' @param RegistrantContact &#91;required&#93; Provides detailed contact information. For information about the values
+#' that you specify for each element, see
+#' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
+#' @param TechContact &#91;required&#93; Provides detailed contact information. For information about the values
+#' that you specify for each element, see
+#' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
 #' @param PrivacyProtectAdminContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS (\"who is\") queries return contact
 #' information either for Amazon Registrar (for .com, .net, and .org
@@ -738,7 +925,7 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
 #'         Value = "string"
 #'       )
 #'     )
@@ -759,7 +946,7 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
 #'         Value = "string"
 #'       )
 #'     )
@@ -780,7 +967,7 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
 #'         Value = "string"
 #'       )
 #'     )
@@ -811,6 +998,58 @@ route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, Durat
 }
 .route53domains$operations$register_domain <- route53domains_register_domain
 
+#' Rejects the transfer of a domain from another AWS account to the current
+#' AWS account
+#'
+#' Rejects the transfer of a domain from another AWS account to the current
+#' AWS account. You initiate a transfer between AWS accounts using
+#' [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html).
+#' 
+#' Use either
+#' [ListOperations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html)
+#' or
+#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
+#' to determine whether the operation succeeded.
+#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
+#' provides additional information, for example,
+#' `Domain Transfer from Aws Account 111122223333 has been cancelled`.
+#'
+#' @usage
+#' route53domains_reject_domain_transfer_from_another_aws_account(
+#'   DomainName)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain that was specified when another AWS account
+#' submitted a
+#' [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html)
+#' request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$reject_domain_transfer_from_another_aws_account(
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_reject_domain_transfer_from_another_aws_account
+route53domains_reject_domain_transfer_from_another_aws_account <- function(DomainName) {
+  op <- new_operation(
+    name = "RejectDomainTransferFromAnotherAwsAccount",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$reject_domain_transfer_from_another_aws_account_input(DomainName = DomainName)
+  output <- .route53domains$reject_domain_transfer_from_another_aws_account_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$reject_domain_transfer_from_another_aws_account <- route53domains_reject_domain_transfer_from_another_aws_account
+
 #' This operation renews a domain for the specified number of years
 #'
 #' This operation renews a domain for the specified number of years. The
@@ -821,8 +1060,8 @@ route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #' expiration date if you haven\'t renewed far enough in advance. For more
 #' information about renewing domain registration, see [Renewing
 #' Registration for a
-#' Domain](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html)
-#' in the Amazon Route 53 Developer Guide.
+#' Domain](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #'
 #' @usage
 #' route53domains_renew_domain(DomainName, DurationInYears,
@@ -833,7 +1072,7 @@ route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #' number of years depends on the top-level domain. For the range of valid
 #' values for your domain, see [Domains that You Can Register with Amazon
 #' Route
-#' 53](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
 #' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' Default: 1
@@ -882,7 +1121,7 @@ route53domains_renew_domain <- function(DomainName, DurationInYears = NULL, Curr
 #' @usage
 #' route53domains_resend_contact_reachability_email(domainName)
 #'
-#' @param domainName The name of the domain for which you want Amazon Route 53 to resend a
+#' @param domainName The name of the domain for which you want Route 53 to resend a
 #' confirmation email to the registrant contact.
 #'
 #' @section Request syntax:
@@ -949,27 +1188,40 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 }
 .route53domains$operations$retrieve_domain_auth_code <- route53domains_retrieve_domain_auth_code
 
-#' This operation transfers a domain from another registrar to Amazon Route
-#' 53
+#' Transfers a domain from another registrar to Amazon Route 53
 #'
-#' This operation transfers a domain from another registrar to Amazon Route
-#' 53. When the transfer is complete, the domain is registered either with
-#' Amazon Registrar (for .com, .net, and .org domains) or with our
-#' registrar associate, Gandi (for all other TLDs).
+#' Transfers a domain from another registrar to Amazon Route 53. When the
+#' transfer is complete, the domain is registered either with Amazon
+#' Registrar (for .com, .net, and .org domains) or with our registrar
+#' associate, Gandi (for all other TLDs).
 #' 
-#' For transfer requirements, a detailed procedure, and information about
-#' viewing the status of a domain transfer, see [Transferring Registration
-#' for a Domain to Amazon Route
-#' 53](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' For more information about transferring domains, see the following
+#' topics:
+#' 
+#' -   For transfer requirements, a detailed procedure, and information
+#'     about viewing the status of a domain that you\'re transferring to
+#'     Route 53, see [Transferring Registration for a Domain to Amazon
+#'     Route
+#'     53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html)
+#'     in the *Amazon Route 53 Developer Guide*.
+#' 
+#' -   For information about how to transfer a domain from one AWS account
+#'     to another, see
+#'     [TransferDomainToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html).
+#' 
+#' -   For information about how to transfer a domain to another domain
+#'     registrar, see [Transferring a Domain from Amazon Route 53 to
+#'     Another
+#'     Registrar](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-from-route-53.html)
+#'     in the *Amazon Route 53 Developer Guide*.
 #' 
 #' If the registrar for your domain is also the DNS service provider for
-#' the domain, we highly recommend that you consider transferring your DNS
-#' service to Amazon Route 53 or to another DNS service provider before you
-#' transfer your registration. Some registrars provide free DNS service
-#' when you purchase a domain registration. When you transfer the
-#' registration, the previous registrar will not renew your domain
-#' registration and could end your DNS service at any time.
+#' the domain, we highly recommend that you transfer your DNS service to
+#' Route 53 or to another DNS service provider before you transfer your
+#' registration. Some registrars provide free DNS service when you purchase
+#' a domain registration. When you transfer the registration, the previous
+#' registrar will not renew your domain registration and could end your DNS
+#' service at any time.
 #' 
 #' If the registrar for your domain is also the DNS service provider for
 #' the domain and you don\'t transfer DNS service to another provider, your
@@ -987,11 +1239,24 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #'   TechContact, PrivacyProtectAdminContact,
 #'   PrivacyProtectRegistrantContact, PrivacyProtectTechContact)
 #'
-#' @param DomainName &#91;required&#93; The name of the domain that you want to transfer to Amazon Route 53.
+#' @param DomainName &#91;required&#93; The name of the domain that you want to transfer to Route 53. The
+#' top-level domain (TLD), such as .com, must be a TLD that Route 53
+#' supports. For a list of supported TLDs, see [Domains that You Can
+#' Register with Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
-#' Constraints: The domain name can contain only the letters a through z,
-#' the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
-#' are not supported.
+#' The domain name can contain only the following characters:
+#' 
+#' -   Letters a through z. Domain names are not case sensitive.
+#' 
+#' -   Numbers 0 through 9.
+#' 
+#' -   Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+#'     label.
+#' 
+#' -   Period (.) to separate the labels in the name, such as the `.` in
+#'     `example.com`.
 #' @param IdnLangCode Reserved for future use.
 #' @param DurationInYears &#91;required&#93; The number of years that you want to register the domain for. Domains
 #' are registered for a minimum of one year. The maximum period depends on
@@ -1065,7 +1330,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
 #'         Value = "string"
 #'       )
 #'     )
@@ -1086,7 +1351,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
 #'         Value = "string"
 #'       )
 #'     )
@@ -1107,7 +1372,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
 #'         Value = "string"
 #'       )
 #'     )
@@ -1137,6 +1402,77 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
   return(response)
 }
 .route53domains$operations$transfer_domain <- route53domains_transfer_domain
+
+#' Transfers a domain from the current AWS account to another AWS account
+#'
+#' Transfers a domain from the current AWS account to another AWS account.
+#' Note the following:
+#' 
+#' -   The AWS account that you\'re transferring the domain to must accept
+#'     the transfer. If the other account doesn\'t accept the transfer
+#'     within 3 days, we cancel the transfer. See
+#'     [AcceptDomainTransferFromAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_AcceptDomainTransferFromAnotherAwsAccount.html).
+#' 
+#' -   You can cancel the transfer before the other account accepts it. See
+#'     [CancelDomainTransferToAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_CancelDomainTransferToAnotherAwsAccount.html).
+#' 
+#' -   The other account can reject the transfer. See
+#'     [RejectDomainTransferFromAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_RejectDomainTransferFromAnotherAwsAccount.html).
+#' 
+#' When you transfer a domain from one AWS account to another, Route 53
+#' doesn\'t transfer the hosted zone that is associated with the domain.
+#' DNS resolution isn\'t affected if the domain and the hosted zone are
+#' owned by separate accounts, so transferring the hosted zone is optional.
+#' For information about transferring the hosted zone to another AWS
+#' account, see [Migrating a Hosted Zone to a Different AWS
+#' Account](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-migrating.html)
+#' in the *Amazon Route 53 Developer Guide*.
+#' 
+#' Use either
+#' [ListOperations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html)
+#' or
+#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
+#' to determine whether the operation succeeded.
+#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
+#' provides additional information, for example,
+#' `Domain Transfer from Aws Account 111122223333 has been cancelled`.
+#'
+#' @usage
+#' route53domains_transfer_domain_to_another_aws_account(DomainName,
+#'   AccountId)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain that you want to transfer from the current AWS
+#' account to another account.
+#' @param AccountId &#91;required&#93; The account ID of the AWS account that you want to transfer the domain
+#' to, for example, `111122223333`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$transfer_domain_to_another_aws_account(
+#'   DomainName = "string",
+#'   AccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53domains_transfer_domain_to_another_aws_account
+route53domains_transfer_domain_to_another_aws_account <- function(DomainName, AccountId) {
+  op <- new_operation(
+    name = "TransferDomainToAnotherAwsAccount",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53domains$transfer_domain_to_another_aws_account_input(DomainName = DomainName, AccountId = AccountId)
+  output <- .route53domains$transfer_domain_to_another_aws_account_output()
+  config <- get_config()
+  svc <- .route53domains$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53domains$operations$transfer_domain_to_another_aws_account <- route53domains_transfer_domain_to_another_aws_account
 
 #' This operation updates the contact information for a particular domain
 #'
@@ -1178,7 +1514,7 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
 #'         Value = "string"
 #'       )
 #'     )
@@ -1199,7 +1535,7 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
 #'         Value = "string"
 #'       )
 #'     )
@@ -1220,7 +1556,7 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #'     Fax = "string",
 #'     ExtraParams = list(
 #'       list(
-#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+#'         Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
 #'         Value = "string"
 #'       )
 #'     )
@@ -1259,9 +1595,20 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #' This operation affects only the contact information for the specified
 #' contact type (registrant, administrator, or tech). If the request
 #' succeeds, Amazon Route 53 returns an operation ID that you can use with
-#' GetOperationDetail to track the progress and completion of the action.
-#' If the request doesn\'t complete successfully, the domain registrant
-#' will be notified by email.
+#' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
+#' to track the progress and completion of the action. If the request
+#' doesn\'t complete successfully, the domain registrant will be notified
+#' by email.
+#' 
+#' By disabling the privacy service via API, you consent to the publication
+#' of the contact information provided for this domain via the public WHOIS
+#' database. You certify that you are the registrant of this domain name
+#' and have the authority to make this decision. You may withdraw your
+#' consent at any time by enabling privacy protection using either
+#' `UpdateDomainContactPrivacy` or the Route 53 console. Enabling privacy
+#' protection removes the contact information provided for this domain from
+#' the WHOIS database. For more information on our privacy practices, see
+#' <https://aws.amazon.com/privacy/>.
 #'
 #' @usage
 #' route53domains_update_domain_contact_privacy(DomainName, AdminPrivacy,
@@ -1432,11 +1779,11 @@ route53domains_update_tags_for_domain <- function(DomainName, TagsToUpdate = NUL
 #' route53domains_view_billing(Start, End, Marker, MaxItems)
 #'
 #' @param Start The beginning date and time for the time period for which you want a
-#' list of billing records. Specify the date and time in Coordinated
-#' Universal time (UTC).
+#' list of billing records. Specify the date and time in Unix time format
+#' and Coordinated Universal time (UTC).
 #' @param End The end date and time for the time period for which you want a list of
-#' billing records. Specify the date and time in Coordinated Universal time
-#' (UTC).
+#' billing records. Specify the date and time in Unix time format and
+#' Coordinated Universal time (UTC).
 #' @param Marker For an initial request for a list of billing records, omit this element.
 #' If the number of billing records that are associated with the current
 #' AWS account during the specified period is greater than the value that

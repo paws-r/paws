@@ -4,7 +4,7 @@
 \alias{codebuild_create_report_group}
 \title{Creates a report group}
 \usage{
-codebuild_create_report_group(name, type, exportConfig)
+codebuild_create_report_group(name, type, exportConfig, tags)
 }
 \arguments{
 \item{name}{[required] The name of the report group.}
@@ -13,6 +13,11 @@ codebuild_create_report_group(name, type, exportConfig)
 
 \item{exportConfig}{[required] A \code{ReportExportConfig} object that contains information about where the
 report group test results are exported.}
+
+\item{tags}{A list of tag key and value pairs associated with this report group.
+
+These tags are available for use by AWS services that support AWS
+CodeBuild report group tags.}
 }
 \description{
 Creates a report group. A report group contains a collection of reports.
@@ -29,6 +34,12 @@ Creates a report group. A report group contains a collection of reports.
       packaging = "ZIP"|"NONE",
       encryptionKey = "string",
       encryptionDisabled = TRUE|FALSE
+    )
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
     )
   )
 )

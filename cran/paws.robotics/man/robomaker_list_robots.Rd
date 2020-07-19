@@ -10,20 +10,14 @@ robomaker_list_robots(nextToken, maxResults, filters)
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListRobots}
 request where \code{maxResults} was used and the results exceeded the value
 of that parameter. Pagination continues from the end of the previous
-results that returned the \code{nextToken} value.
+results that returned the \code{nextToken} value.}
 
-This token should be treated as an opaque identifier that is only used
-to retrieve the next items in a list and not for other programmatic
-purposes.}
-
-\item{maxResults}{The maximum number of deployment job results returned by \code{ListRobots} in
-paginated output. When this parameter is used, \code{ListRobots} only returns
-\code{maxResults} results in a single page along with a \code{nextToken} response
-element. The remaining results of the initial request can be seen by
-sending another \code{ListRobots} request with the returned \code{nextToken}
-value. This value can be between 1 and 100. If this parameter is not
-used, then \code{ListRobots} returns up to 100 results and a \code{nextToken}
-value if applicable.}
+\item{maxResults}{When this parameter is used, \code{ListRobots} only returns \code{maxResults}
+results in a single page along with a \code{nextToken} response element. The
+remaining results of the initial request can be seen by sending another
+\code{ListRobots} request with the returned \code{nextToken} value. This value can
+be between 1 and 200. If this parameter is not used, then \code{ListRobots}
+returns up to 200 results and a \code{nextToken} value if applicable.}
 
 \item{filters}{Optional filters to limit results.
 

@@ -4,12 +4,15 @@
 \alias{kendra_batch_delete_document}
 \title{Removes one or more documents from an index}
 \usage{
-kendra_batch_delete_document(IndexId, DocumentIdList)
+kendra_batch_delete_document(IndexId, DocumentIdList,
+  DataSourceSyncJobMetricTarget)
 }
 \arguments{
 \item{IndexId}{[required] The identifier of the index that contains the documents to delete.}
 
 \item{DocumentIdList}{[required] One or more identifiers for documents to delete from the index.}
+
+\item{DataSourceSyncJobMetricTarget}{}
 }
 \description{
 Removes one or more documents from an index. The documents must have
@@ -25,6 +28,10 @@ processing of the batch are sent to you CloudWatch log.
   IndexId = "string",
   DocumentIdList = list(
     "string"
+  ),
+  DataSourceSyncJobMetricTarget = list(
+    DataSourceId = "string",
+    DataSourceSyncJobId = "string"
   )
 )
 }

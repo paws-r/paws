@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_put_permission_policy}
 \alias{waf_put_permission_policy}
-\title{Attaches a IAM policy to the specified resource}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 waf_put_permission_policy(ResourceArn, Policy)
 }
@@ -13,10 +13,19 @@ attach the policy.}
 \item{Policy}{[required] The policy to attach to the specified RuleGroup.}
 }
 \description{
-Attaches a IAM policy to the specified resource. The only supported use
-for this action is to share a RuleGroup across accounts.
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
 }
 \details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
+Attaches an IAM policy to the specified resource. The only supported use
+for this action is to share a RuleGroup across accounts.
+
 The \code{PutPermissionPolicy} is subject to the following restrictions:
 \itemize{
 \item You can attach only one policy with each \code{PutPermissionPolicy}

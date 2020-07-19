@@ -22,7 +22,13 @@ six characters to the ARN) and you try to use that as a partial ARN,
 then those characters cause Secrets Manager to assume that you're
 specifying a complete ARN. This confusion can cause unexpected results.
 To avoid this situation, we recommend that you don't create secret names
-that end with a hyphen followed by six characters.}
+ending with a hyphen followed by six characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the \'friendly name\', you \emph{must} not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a \emph{ResourceNotFoundException} or an
+\emph{AccessDeniedException} error, depending on your permissions.}
 
 \item{ClientRequestToken}{(Optional) Specifies a unique identifier for the new version of the
 secret that helps ensure idempotency.
@@ -35,9 +41,9 @@ Secrets Manager service endpoint, then you must generate a
 \code{ClientRequestToken} yourself for new versions and include that value in
 the request.
 
-You only need to specify your own value if you are implementing your own
-retry logic and want to ensure that a given secret is not created twice.
-We recommend that you generate a
+You only need to specify your own value if you implement your own retry
+logic and want to ensure that a given secret is not created twice. We
+recommend that you generate a
 \href{https://wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
 value to ensure uniqueness within the specified secret.
 
@@ -72,8 +78,8 @@ configure a Lambda function to rotate the secrets for your protected
 service, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{Rotating Secrets in AWS Secrets Manager}
 in the \emph{AWS Secrets Manager User Guide}.
 
-Secrets Manager schedules the next rotation when the previous one is
-complete. Secrets Manager schedules the date by adding the rotation
+Secrets Manager schedules the next rotation when the previous one
+completes. Secrets Manager schedules the date by adding the rotation
 interval (number of days) to the actual date of the last rotation. The
 service chooses the hour within that 24-hour date window randomly. The
 minute is also chosen somewhat randomly, but weighted towards the top of
@@ -89,10 +95,10 @@ same version of the secret, or
 secret.
 }
 
-If instead the \code{AWSPENDING} staging label is present but is not attached
-to the same version as \code{AWSCURRENT} then any later invocation of
-\code{RotateSecret} assumes that a previous rotation request is still in
-progress and returns an error.
+If the \code{AWSPENDING} staging label is present but not attached to the
+same version as \code{AWSCURRENT} then any later invocation of \code{RotateSecret}
+assumes that a previous rotation request is still in progress and
+returns an error.
 
 \strong{Minimum permissions}
 

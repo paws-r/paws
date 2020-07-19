@@ -7,8 +7,8 @@
 transfer_delete_ssh_public_key(ServerId, SshPublicKeyId, UserName)
 }
 \arguments{
-\item{ServerId}{[required] A system-assigned unique identifier for a Secure File Transfer Protocol
-(SFTP) server instance that has the user assigned to it.}
+\item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
+server instance that has the user assigned to it.}
 
 \item{SshPublicKeyId}{[required] A unique identifier used to reference your user\'s specific SSH key.}
 

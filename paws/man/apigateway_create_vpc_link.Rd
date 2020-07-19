@@ -13,8 +13,8 @@ apigateway_create_vpc_link(name, description, targetArns, tags)
 
 \item{description}{The description of the VPC link.}
 
-\item{targetArns}{[required] [Required] The ARNs of network load balancers of the VPC targeted by
-the VPC link. The network load balancers must be owned by the same AWS
+\item{targetArns}{[required] [Required] The ARN of the network load balancer of the VPC targeted by
+the VPC link. The network load balancer must be owned by the same AWS
 account of the API owner.}
 
 \item{tags}{The key-value map of strings. The valid character set is

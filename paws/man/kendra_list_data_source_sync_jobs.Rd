@@ -42,7 +42,7 @@ Gets statistics about synchronizing Amazon Kendra with a data source.
       "2015-01-01"
     )
   ),
-  StatusFilter = "FAILED"|"SUCCEEDED"|"SYNCING"|"INCOMPLETE"|"STOPPING"|"ABORTED"
+  StatusFilter = "FAILED"|"SUCCEEDED"|"SYNCING"|"INCOMPLETE"|"STOPPING"|"ABORTED"|"SYNCING_INDEXING"
 )
 }
 }

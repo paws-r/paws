@@ -30,13 +30,13 @@ the resources you use.
 
 This interface reference for Amazon RDS contains documentation for a
 programming or command line interface you can use to manage Amazon RDS.
-Note that Amazon RDS is asynchronous, which means that some interfaces
-might require techniques such as polling or callback functions to
-determine when a command has been applied. In this reference, the
-parameter descriptions indicate whether a command is applied
-immediately, on the next instance reboot, or during the maintenance
-window. The reference structure is as follows, and we list following
-some related topics from the user guide.
+Amazon RDS is asynchronous, which means that some interfaces might
+require techniques such as polling or callback functions to determine
+when a command has been applied. In this reference, the parameter
+descriptions indicate whether a command is applied immediately, on the
+next instance reboot, or during the maintenance window. The reference
+structure is as follows, and we list following some related topics from
+the user guide.
 
 \strong{Amazon RDS API Reference}
 \itemize{
@@ -81,6 +81,7 @@ some related topics from the user guide.
 \link[=rds_authorize_db_security_group_ingress]{authorize_db_security_group_ingress} \tab Enables ingress to a DBSecurityGroup using one of two forms of authorization \cr
 \link[=rds_backtrack_db_cluster]{backtrack_db_cluster} \tab Backtracks a DB cluster to a specific time, without creating a new DB cluster \cr
 \link[=rds_build_auth_token]{build_auth_token} \tab Return an authentication token for a database connection \cr
+\link[=rds_cancel_export_task]{cancel_export_task} \tab Cancels an export task in progress that is exporting a snapshot to Amazon S3 \cr
 \link[=rds_copy_db_cluster_parameter_group]{copy_db_cluster_parameter_group} \tab Copies the specified DB cluster parameter group \cr
 \link[=rds_copy_db_cluster_snapshot]{copy_db_cluster_snapshot} \tab Copies a snapshot of a DB cluster \cr
 \link[=rds_copy_db_parameter_group]{copy_db_parameter_group} \tab Copies the specified DB parameter group \cr
@@ -92,9 +93,9 @@ some related topics from the user guide.
 \link[=rds_create_db_cluster_parameter_group]{create_db_cluster_parameter_group} \tab Creates a new DB cluster parameter group \cr
 \link[=rds_create_db_cluster_snapshot]{create_db_cluster_snapshot} \tab Creates a snapshot of a DB cluster \cr
 \link[=rds_create_db_instance]{create_db_instance} \tab Creates a new DB instance \cr
-\link[=rds_create_db_instance_read_replica]{create_db_instance_read_replica} \tab Creates a new DB instance that acts as a Read Replica for an existing source DB instance \cr
+\link[=rds_create_db_instance_read_replica]{create_db_instance_read_replica} \tab Creates a new DB instance that acts as a read replica for an existing source DB instance \cr
 \link[=rds_create_db_parameter_group]{create_db_parameter_group} \tab Creates a new DB parameter group \cr
-\link[=rds_create_db_proxy]{create_db_proxy} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
+\link[=rds_create_db_proxy]{create_db_proxy} \tab Creates a new DB proxy \cr
 \link[=rds_create_db_security_group]{create_db_security_group} \tab Creates a new DB security group \cr
 \link[=rds_create_db_snapshot]{create_db_snapshot} \tab Creates a DBSnapshot \cr
 \link[=rds_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new DB subnet group \cr
@@ -109,7 +110,7 @@ some related topics from the user guide.
 \link[=rds_delete_db_instance]{delete_db_instance} \tab The DeleteDBInstance action deletes a previously provisioned DB instance \cr
 \link[=rds_delete_db_instance_automated_backup]{delete_db_instance_automated_backup} \tab Deletes automated backups based on the source instance's DbiResourceId value or the restorable instance's resource ID \cr
 \link[=rds_delete_db_parameter_group]{delete_db_parameter_group} \tab Deletes a specified DB parameter group \cr
-\link[=rds_delete_db_proxy]{delete_db_proxy} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
+\link[=rds_delete_db_proxy]{delete_db_proxy} \tab Deletes an existing proxy \cr
 \link[=rds_delete_db_security_group]{delete_db_security_group} \tab Deletes a DB security group \cr
 \link[=rds_delete_db_snapshot]{delete_db_snapshot} \tab Deletes a DB snapshot \cr
 \link[=rds_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a DB subnet group \cr
@@ -117,7 +118,7 @@ some related topics from the user guide.
 \link[=rds_delete_global_cluster]{delete_global_cluster} \tab Deletes a global database cluster \cr
 \link[=rds_delete_installation_media]{delete_installation_media} \tab Deletes the installation medium for a DB engine that requires an on-premises customer provided license, such as Microsoft SQL Server \cr
 \link[=rds_delete_option_group]{delete_option_group} \tab Deletes an existing option group \cr
-\link[=rds_deregister_db_proxy_targets]{deregister_db_proxy_targets} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
+\link[=rds_deregister_db_proxy_targets]{deregister_db_proxy_targets} \tab Remove the association between one or more DBProxyTarget data structures and a DBProxyTargetGroup \cr
 \link[=rds_describe_account_attributes]{describe_account_attributes} \tab Lists all of the attributes for a customer account \cr
 \link[=rds_describe_certificates]{describe_certificates} \tab Lists the set of CA certificates provided by Amazon RDS for this AWS account \cr
 \link[=rds_describe_custom_availability_zones]{describe_custom_availability_zones} \tab Returns information about custom Availability Zones (AZs) \cr
@@ -134,9 +135,9 @@ some related topics from the user guide.
 \link[=rds_describe_db_log_files]{describe_db_log_files} \tab Returns a list of DB log files for the DB instance \cr
 \link[=rds_describe_db_parameter_groups]{describe_db_parameter_groups} \tab Returns a list of DBParameterGroup descriptions \cr
 \link[=rds_describe_db_parameters]{describe_db_parameters} \tab Returns the detailed parameter list for a particular DB parameter group \cr
-\link[=rds_describe_db_proxies]{describe_db_proxies} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
-\link[=rds_describe_db_proxy_target_groups]{describe_db_proxy_target_groups} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
-\link[=rds_describe_db_proxy_targets]{describe_db_proxy_targets} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
+\link[=rds_describe_db_proxies]{describe_db_proxies} \tab Returns information about DB proxies \cr
+\link[=rds_describe_db_proxy_target_groups]{describe_db_proxy_target_groups} \tab Returns information about DB proxy target groups, represented by DBProxyTargetGroup data structures \cr
+\link[=rds_describe_db_proxy_targets]{describe_db_proxy_targets} \tab Returns information about DBProxyTarget objects \cr
 \link[=rds_describe_db_security_groups]{describe_db_security_groups} \tab Returns a list of DBSecurityGroup descriptions \cr
 \link[=rds_describe_db_snapshot_attributes]{describe_db_snapshot_attributes} \tab Returns a list of DB snapshot attribute names and values for a manual DB snapshot \cr
 \link[=rds_describe_db_snapshots]{describe_db_snapshots} \tab Returns information about DB snapshots \cr
@@ -146,6 +147,7 @@ some related topics from the user guide.
 \link[=rds_describe_event_categories]{describe_event_categories} \tab Displays a list of categories for all event source types, or, if specified, for a specified source type \cr
 \link[=rds_describe_events]{describe_events} \tab Returns events related to DB instances, DB security groups, DB snapshots, and DB parameter groups for the past 14 days \cr
 \link[=rds_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the subscription descriptions for a customer account \cr
+\link[=rds_describe_export_tasks]{describe_export_tasks} \tab Returns information about a snapshot export to Amazon S3 \cr
 \link[=rds_describe_global_clusters]{describe_global_clusters} \tab Returns information about Aurora global database clusters \cr
 \link[=rds_describe_installation_media]{describe_installation_media} \tab Describes the available installation media for a DB engine that requires an on-premises customer provided license, such as Microsoft SQL Server \cr
 \link[=rds_describe_option_group_options]{describe_option_group_options} \tab Describes all available options \cr
@@ -154,13 +156,13 @@ some related topics from the user guide.
 \link[=rds_describe_pending_maintenance_actions]{describe_pending_maintenance_actions} \tab Returns a list of resources (for example, DB instances) that have at least one pending maintenance action \cr
 \link[=rds_describe_reserved_db_instances]{describe_reserved_db_instances} \tab Returns information about reserved DB instances for this account, or about a specified reserved DB instance \cr
 \link[=rds_describe_reserved_db_instances_offerings]{describe_reserved_db_instances_offerings} \tab Lists available reserved DB instance offerings \cr
-\link[=rds_describe_source_regions]{describe_source_regions} \tab Returns a list of the source AWS Regions where the current AWS Region can create a Read Replica or copy a DB snapshot from \cr
+\link[=rds_describe_source_regions]{describe_source_regions} \tab Returns a list of the source AWS Regions where the current AWS Region can create a read replica or copy a DB snapshot from \cr
 \link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications} \tab You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance \cr
 \link[=rds_download_db_log_file_portion]{download_db_log_file_portion} \tab Downloads all or a portion of the specified log file, up to 1 MB in size \cr
 \link[=rds_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster \cr
 \link[=rds_import_installation_media]{import_installation_media} \tab Imports the installation media for a DB engine that requires an on-premises customer provided license, such as SQL Server \cr
 \link[=rds_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon RDS resource \cr
-\link[=rds_modify_certificates]{modify_certificates} \tab Override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or remove the override\cr
+\link[=rds_modify_certificates]{modify_certificates} \tab Override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS for new DB instances temporarily, or remove the override\cr
 \link[=rds_modify_current_db_cluster_capacity]{modify_current_db_cluster_capacity} \tab Set the capacity of an Aurora Serverless DB cluster to a specific value \cr
 \link[=rds_modify_db_cluster]{modify_db_cluster} \tab Modify a setting for an Amazon Aurora DB cluster \cr
 \link[=rds_modify_db_cluster_endpoint]{modify_db_cluster_endpoint} \tab Modifies the properties of an endpoint in an Amazon Aurora DB cluster \cr
@@ -168,19 +170,19 @@ some related topics from the user guide.
 \link[=rds_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot \cr
 \link[=rds_modify_db_instance]{modify_db_instance} \tab Modifies settings for a DB instance \cr
 \link[=rds_modify_db_parameter_group]{modify_db_parameter_group} \tab Modifies the parameters of a DB parameter group \cr
-\link[=rds_modify_db_proxy]{modify_db_proxy} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
-\link[=rds_modify_db_proxy_target_group]{modify_db_proxy_target_group} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
-\link[=rds_modify_db_snapshot]{modify_db_snapshot} \tab Updates a manual DB snapshot, which can be encrypted or not encrypted, with a new engine version \cr
+\link[=rds_modify_db_proxy]{modify_db_proxy} \tab Changes the settings for an existing DB proxy \cr
+\link[=rds_modify_db_proxy_target_group]{modify_db_proxy_target_group} \tab Modifies the properties of a DBProxyTargetGroup \cr
+\link[=rds_modify_db_snapshot]{modify_db_snapshot} \tab Updates a manual DB snapshot with a new engine version \cr
 \link[=rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot \cr
 \link[=rds_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing DB subnet group \cr
 \link[=rds_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing RDS event notification subscription \cr
 \link[=rds_modify_global_cluster]{modify_global_cluster} \tab Modify a setting for an Amazon Aurora global cluster \cr
 \link[=rds_modify_option_group]{modify_option_group} \tab Modifies an existing option group \cr
-\link[=rds_promote_read_replica]{promote_read_replica} \tab Promotes a Read Replica DB instance to a standalone DB instance \cr
-\link[=rds_promote_read_replica_db_cluster]{promote_read_replica_db_cluster} \tab Promotes a Read Replica DB cluster to a standalone DB cluster \cr
+\link[=rds_promote_read_replica]{promote_read_replica} \tab Promotes a read replica DB instance to a standalone DB instance \cr
+\link[=rds_promote_read_replica_db_cluster]{promote_read_replica_db_cluster} \tab Promotes a read replica DB cluster to a standalone DB cluster \cr
 \link[=rds_purchase_reserved_db_instances_offering]{purchase_reserved_db_instances_offering} \tab Purchases a reserved DB instance offering \cr
 \link[=rds_reboot_db_instance]{reboot_db_instance} \tab You might need to reboot your DB instance, usually for maintenance reasons \cr
-\link[=rds_register_db_proxy_targets]{register_db_proxy_targets} \tab This is prerelease documentation for the RDS Database Proxy feature in preview release \cr
+\link[=rds_register_db_proxy_targets]{register_db_proxy_targets} \tab Associate one or more DBProxyTarget data structures with a DBProxyTargetGroup \cr
 \link[=rds_remove_from_global_cluster]{remove_from_global_cluster} \tab Detaches an Aurora secondary cluster from an Aurora global database cluster \cr
 \link[=rds_remove_role_from_db_cluster]{remove_role_from_db_cluster} \tab Disassociates an AWS Identity and Access Management (IAM) role from an Amazon Aurora DB cluster \cr
 \link[=rds_remove_role_from_db_instance]{remove_role_from_db_instance} \tab Disassociates an AWS Identity and Access Management (IAM) role from a DB instance \cr
@@ -198,6 +200,7 @@ some related topics from the user guide.
 \link[=rds_start_activity_stream]{start_activity_stream} \tab Starts a database activity stream to monitor activity on the database \cr
 \link[=rds_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Aurora DB cluster that was stopped using the AWS console, the stop-db-cluster AWS CLI command, or the StopDBCluster action \cr
 \link[=rds_start_db_instance]{start_db_instance} \tab Starts an Amazon RDS DB instance that was stopped using the AWS console, the stop-db-instance AWS CLI command, or the StopDBInstance action \cr
+\link[=rds_start_export_task]{start_export_task} \tab Starts an export of a snapshot to Amazon S3 \cr
 \link[=rds_stop_activity_stream]{stop_activity_stream} \tab Stops a database activity stream that was started using the AWS console, the start-activity-stream AWS CLI command, or the StartActivityStream action \cr
 \link[=rds_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Aurora DB cluster \cr
 \link[=rds_stop_db_instance]{stop_db_instance} \tab Stops an Amazon RDS DB instance

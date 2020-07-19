@@ -9,8 +9,8 @@ wafv2_create_regex_pattern_set(Name, Scope, Description,
   RegularExpressionList, Tags)
 }
 \arguments{
-\item{Name}{[required] A friendly name of the set. You cannot change the name after you create
-the set.}
+\item{Name}{[required] The name of the set. You cannot change the name after you create the
+set.}
 
 \item{Scope}{[required] Specifies whether this is for an AWS CloudFront distribution or for a
 regional application. A regional application can be an Application Load
@@ -19,13 +19,13 @@ Balancer (ALB) or an API Gateway stage.
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
 \itemize{
-\item CLI - Specify the region when you use the CloudFront scope:
+\item CLI - Specify the Region when you use the CloudFront scope:
 \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
-\item{Description}{A friendly description of the set. You cannot change the description of
-a set after you create it.}
+\item{Description}{A description of the set that helps with identification. You cannot
+change the description of a set after you create it.}
 
 \item{RegularExpressionList}{[required] Array of regular expression strings.}
 
@@ -37,7 +37,9 @@ November, 2019. For information, including how to migrate your AWS WAF
 resources from the prior release, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
 }
 \details{
-Creates a RegexPatternSet per the specifications provided.
+Creates a RegexPatternSet, which you reference in a
+RegexPatternSetReferenceStatement, to have AWS WAF inspect a web request
+component for the specified patterns.
 }
 \section{Request syntax}{
 \preformatted{svc$create_regex_pattern_set(

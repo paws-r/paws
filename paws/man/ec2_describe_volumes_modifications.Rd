@@ -2,7 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_volumes_modifications}
 \alias{ec2_describe_volumes_modifications}
-\title{Reports the current modification status of EBS volumes}
+\title{Describes the most recent volume modification request for the specified
+EBS volumes}
 \usage{
 ec2_describe_volumes_modifications(DryRun, VolumeIds, Filters,
   NextToken, MaxResults)
@@ -13,12 +14,27 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{VolumeIds}{The IDs of the volumes for which in-progress modifications will be
-described.}
+\item{VolumeIds}{The IDs of the volumes.}
 
-\item{Filters}{The filters. Supported filters: \code{volume-id}, \code{modification-state},
-\code{target-size}, \code{target-iops}, \code{target-volume-type}, \code{original-size},
-\code{original-iops}, \code{original-volume-type}, \code{start-time}.}
+\item{Filters}{The filters.
+\itemize{
+\item \code{modification-state} - The current modification state (modifying \\|
+optimizing \\| completed \\| failed).
+\item \code{original-iops} - The original IOPS rate of the volume.
+\item \code{original-size} - The original size of the volume, in GiB.
+\item \code{original-volume-type} - The original volume type of the volume
+(standard \\| io1 \\| gp2 \\| sc1 \\| st1).
+\item \code{originalMultiAttachEnabled} - Indicates whether Multi-Attach
+support was enabled (true \\| false).
+\item \code{start-time} - The modification start time.
+\item \code{target-iops} - The target IOPS rate of the volume.
+\item \code{target-size} - The target size of the volume, in GiB.
+\item \code{target-volume-type} - The target volume type of the volume
+(standard \\| io1 \\| gp2 \\| sc1 \\| st1).
+\item \code{targetMultiAttachEnabled} - Indicates whether Multi-Attach support
+is to be enabled (true \\| false).
+\item \code{volume-id} - The ID of the volume.
+}}
 
 \item{NextToken}{The \code{nextToken} value returned by a previous paginated request.}
 
@@ -26,21 +42,18 @@ described.}
 paginated request.}
 }
 \description{
-Reports the current modification status of EBS volumes.
+Describes the most recent volume modification request for the specified
+EBS volumes.
 }
 \details{
-Current-generation EBS volumes support modification of attributes
-including type, size, and (for \code{io1} volumes) IOPS provisioning while
-either attached to or detached from an instance. Following an action
-from the API or the console to modify a volume, the status of the
-modification may be \code{modifying}, \code{optimizing}, \code{completed}, or \code{failed}.
-If a volume has never been modified, then certain elements of the
-returned \code{VolumeModification} objects are null.
+If a volume has never been modified, some information in the output will
+be null. If a volume has been modified more than once, the output
+includes only the most recent modification request.
 
 You can also use CloudWatch Events to check the status of a modification
 to an EBS volume. For information about CloudWatch Events, see the
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/}{Amazon CloudWatch Events User Guide}. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods}{Monitoring Volume Modifications\"}
+more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods}{Monitoring Volume Modifications}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

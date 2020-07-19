@@ -4,7 +4,7 @@
 \alias{ec2_create_key_pair}
 \title{Creates a 2048-bit RSA key pair with the specified name}
 \usage{
-ec2_create_key_pair(KeyName, DryRun)
+ec2_create_key_pair(KeyName, DryRun, TagSpecifications)
 }
 \arguments{
 \item{KeyName}{[required] A unique name for the key pair.
@@ -15,6 +15,8 @@ Constraints: Up to 255 ASCII characters}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{TagSpecifications}{The tags to apply to the new key pair.}
 }
 \description{
 Creates a 2048-bit RSA key pair with the specified name. Amazon EC2
@@ -36,7 +38,18 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \section{Request syntax}{
 \preformatted{svc$create_key_pair(
   KeyName = "string",
-  DryRun = TRUE|FALSE
+  DryRun = TRUE|FALSE,
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

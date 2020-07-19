@@ -39,7 +39,7 @@ If you use Bitbucket for your repository, \code{rotateSecret} is ignored.
   filterGroups = list(
     list(
       list(
-        type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH",
+        type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
         pattern = "string",
         excludeMatchedPattern = TRUE|FALSE
       )

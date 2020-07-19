@@ -9,7 +9,7 @@ docdb_describe_engine_default_cluster_parameters(DBParameterGroupFamily,
   Filters, MaxRecords, Marker)
 }
 \arguments{
-\item{DBParameterGroupFamily}{[required] The name of the DB cluster parameter group family to return the engine
+\item{DBParameterGroupFamily}{[required] The name of the cluster parameter group family to return the engine
 parameter information for.}
 
 \item{Filters}{This parameter is not currently supported.}

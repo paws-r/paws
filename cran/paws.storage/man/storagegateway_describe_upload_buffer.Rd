@@ -11,7 +11,7 @@ storagegateway_describe_upload_buffer(GatewayARN)
 }
 \description{
 Returns information about the upload buffer of a gateway. This operation
-is supported for the stored volume, cached volume and tape gateway
+is supported for the stored volume, cached volume, and tape gateway
 types.
 }
 \details{

@@ -17,6 +17,9 @@ more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html}{ClassicLink}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
+\details{
+You must specify a VPC ID in the request.
+}
 \section{Request syntax}{
 \preformatted{svc$disable_vpc_classic_link_dns_support(
   VpcId = "string"

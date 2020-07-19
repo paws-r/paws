@@ -2,21 +2,21 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_list_webhooks}
 \alias{amplify_list_webhooks}
-\title{List webhooks with an app}
+\title{Returns a list of webhooks for an Amplify app}
 \usage{
 amplify_list_webhooks(appId, nextToken, maxResults)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{nextToken}{Pagination token. Set to null to start listing webhooks from start. If
-non-null pagination token is returned in a result, then pass its value
-in here to list more webhooks.}
+\item{nextToken}{A pagination token. Set to null to start listing webhooks from the
+start. If non-null,the pagination token is returned in a result. Pass
+its value in here to list more webhooks.}
 
-\item{maxResults}{Maximum number of records to list in a single response.}
+\item{maxResults}{The maximum number of records to list in a single response.}
 }
 \description{
-List webhooks with an app.
+Returns a list of webhooks for an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$list_webhooks(

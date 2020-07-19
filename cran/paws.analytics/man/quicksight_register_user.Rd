@@ -40,8 +40,9 @@ using an assumed IAM role. You don\'t need to provide the session name
 for other scenarios, for example when you are registering an IAM user or
 an Amazon QuickSight user. You can register multiple users using the
 same IAM role if each user has a different session name. For more
-information on assuming IAM roles, see \code{assume-role} in the \emph{AWS CLI
-Reference.}}
+information on assuming IAM roles, see
+\href{https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/assume-role.html}{\code{assume-role}}
+in the \emph{AWS CLI Reference.}}
 
 \item{AwsAccountId}{[required] The ID for the AWS account that the user is in. Currently, you use the
 ID for the AWS account that contains your Amazon QuickSight account.}

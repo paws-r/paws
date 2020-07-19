@@ -5,13 +5,17 @@
 \title{Restores the specified table to the specified point in time within
 EarliestRestorableDateTime and LatestRestorableDateTime}
 \usage{
-dynamodb_restore_table_to_point_in_time(SourceTableName,
+dynamodb_restore_table_to_point_in_time(SourceTableArn, SourceTableName,
   TargetTableName, UseLatestRestorableTime, RestoreDateTime,
   BillingModeOverride, GlobalSecondaryIndexOverride,
-  LocalSecondaryIndexOverride, ProvisionedThroughputOverride)
+  LocalSecondaryIndexOverride, ProvisionedThroughputOverride,
+  SSESpecificationOverride)
 }
 \arguments{
-\item{SourceTableName}{[required] Name of the source table that is being restored.}
+\item{SourceTableArn}{The DynamoDB table that will be restored. This value is an Amazon
+Resource Name (ARN).}
+
+\item{SourceTableName}{Name of the source table that is being restored.}
 
 \item{TargetTableName}{[required] The name of the new table to which it must be restored to.}
 
@@ -32,6 +36,8 @@ provided should match existing secondary indexes. You can choose to
 exclude some or all of the indexes at the time of restore.}
 
 \item{ProvisionedThroughputOverride}{Provisioned throughput settings for the restored table.}
+
+\item{SSESpecificationOverride}{The new server-side encryption settings for the restored table.}
 }
 \description{
 Restores the specified table to the specified point in time within
@@ -70,6 +76,7 @@ You must manually set up the following on the restored table:
 }
 \section{Request syntax}{
 \preformatted{svc$restore_table_to_point_in_time(
+  SourceTableArn = "string",
   SourceTableName = "string",
   TargetTableName = "string",
   UseLatestRestorableTime = TRUE|FALSE,
@@ -118,6 +125,11 @@ You must manually set up the following on the restored table:
   ProvisionedThroughputOverride = list(
     ReadCapacityUnits = 123,
     WriteCapacityUnits = 123
+  ),
+  SSESpecificationOverride = list(
+    Enabled = TRUE|FALSE,
+    SSEType = "AES256"|"KMS",
+    KMSMasterKeyId = "string"
   )
 )
 }

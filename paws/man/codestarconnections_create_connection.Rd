@@ -5,14 +5,20 @@
 \title{Creates a connection that can then be given to other AWS services like
 CodePipeline so that it can access third-party code repositories}
 \usage{
-codestarconnections_create_connection(ProviderType, ConnectionName)
+codestarconnections_create_connection(ProviderType, ConnectionName,
+  Tags, HostArn)
 }
 \arguments{
-\item{ProviderType}{[required] The name of the external provider where your third-party code repository
-is configured. Currently, the valid provider type is Bitbucket.}
+\item{ProviderType}{The name of the external provider where your third-party code repository
+is configured. The valid provider type is Bitbucket.}
 
 \item{ConnectionName}{[required] The name of the connection to be created. The name must be unique in the
 calling AWS account.}
+
+\item{Tags}{The key-value pair to use when tagging the resource.}
+
+\item{HostArn}{The Amazon Resource Name (ARN) of the host associated with the
+connection to be created.}
 }
 \description{
 Creates a connection that can then be given to other AWS services like
@@ -22,8 +28,15 @@ handshake is completed from the console.
 }
 \section{Request syntax}{
 \preformatted{svc$create_connection(
-  ProviderType = "Bitbucket",
-  ConnectionName = "string"
+  ProviderType = "Bitbucket"|"GitHubEnterpriseServer",
+  ConnectionName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  HostArn = "string"
 )
 }
 }

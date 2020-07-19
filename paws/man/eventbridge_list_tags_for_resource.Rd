@@ -7,11 +7,11 @@
 eventbridge_list_tags_for_resource(ResourceARN)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the rule for which you want to view tags.}
+\item{ResourceARN}{[required] The ARN of the EventBridge resource for which you want to view tags.}
 }
 \description{
 Displays the tags associated with an EventBridge resource. In
-EventBridge, rules can be tagged.
+EventBridge, rules and event buses can be tagged.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

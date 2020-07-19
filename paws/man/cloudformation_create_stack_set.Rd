@@ -6,11 +6,11 @@
 \usage{
 cloudformation_create_stack_set(StackSetName, Description, TemplateBody,
   TemplateURL, Parameters, Capabilities, Tags, AdministrationRoleARN,
-  ExecutionRoleName, ClientRequestToken)
+  ExecutionRoleName, PermissionModel, AutoDeployment, ClientRequestToken)
 }
 \arguments{
 \item{StackSetName}{[required] The name to associate with the stack set. The name must be unique in the
-region where you create your stack set.
+Region where you create your stack set.
 
 A stack name can contain only alphanumeric characters (case-sensitive)
 and hyphens. It must start with an alphabetic character and can\'t be
@@ -119,6 +119,21 @@ Specify an IAM role only if you are using customized execution roles to
 control which stack resources users and groups can include in their
 stack sets.}
 
+\item{PermissionModel}{Describes how the IAM roles required for stack set operations are
+created. By default, \code{SELF-MANAGED} is specified.
+\itemize{
+\item With \code{self-managed} permissions, you must create the administrator
+and execution roles required to deploy to target accounts. For more
+information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html}{Grant Self-Managed Stack Set Permissions}.
+\item With \code{service-managed} permissions, StackSets automatically creates
+the IAM roles required to deploy to accounts managed by AWS
+Organizations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-service-managed.html}{Grant Service-Managed Stack Set Permissions}.
+}}
+
+\item{AutoDeployment}{Describes whether StackSets automatically deploys to AWS Organizations
+accounts that are added to the target organization or organizational
+unit (OU). Specify only if \code{PermissionModel} is \code{SERVICE_MANAGED}.}
+
 \item{ClientRequestToken}{A unique identifier for this \code{CreateStackSet} request. Specify this
 token if you plan to retry requests so that AWS CloudFormation knows
 that you\'re not attempting to create another stack set with the same
@@ -156,6 +171,11 @@ Creates a stack set.
   ),
   AdministrationRoleARN = "string",
   ExecutionRoleName = "string",
+  PermissionModel = "SERVICE_MANAGED"|"SELF_MANAGED",
+  AutoDeployment = list(
+    Enabled = TRUE|FALSE,
+    RetainStacksOnAccountRemoval = TRUE|FALSE
+  ),
   ClientRequestToken = "string"
 )
 }

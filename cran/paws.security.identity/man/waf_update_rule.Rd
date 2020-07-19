@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_update_rule}
 \alias{waf_update_rule}
-\title{Inserts or deletes Predicate objects in a Rule}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 waf_update_rule(RuleId, ChangeToken, Updates)
 }
@@ -21,14 +21,22 @@ from a Rule. For more information, see the applicable data types:
 }}
 }
 \description{
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
+}
+\details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Inserts or deletes Predicate objects in a \code{Rule}. Each \code{Predicate}
 object identifies a predicate, such as a ByteMatchSet or an IPSet, that
 specifies the web requests that you want to allow, block, or count. If
 you add more than one predicate to a \code{Rule}, a request must match all of
 the specifications to be allowed, blocked, or counted. For example,
 suppose that you add the following to a \code{Rule}:
-}
-\details{
 \itemize{
 \item A \code{ByteMatchSet} that matches the value \code{BadBot} in the \code{User-Agent}
 header

@@ -2,7 +2,7 @@
 % Please edit documentation in R/marketplacecatalog_operations.R
 \name{marketplacecatalog_start_change_set}
 \alias{marketplacecatalog_start_change_set}
-\title{This operation allows you to request changes in your entities}
+\title{This operation allows you to request changes for your entities}
 \usage{
 marketplacecatalog_start_change_set(Catalog, ChangeSet, ChangeSetName,
   ClientRequestToken)
@@ -18,7 +18,19 @@ set name can be used to filter the list of change sets.}
 \item{ClientRequestToken}{A unique token to identify the request to ensure idempotency.}
 }
 \description{
-This operation allows you to request changes in your entities.
+This operation allows you to request changes for your entities. Within a
+single ChangeSet, you cannot start the same change type against the same
+entity multiple times. Additionally, when a ChangeSet is running, all
+the entities targeted by the different changes are locked until the
+ChangeSet has completed (either succeeded, cancelled, or failed). If you
+try to start a ChangeSet containing a change against an entity that is
+already locked, you will receive a \code{ResourceInUseException}.
+}
+\details{
+For example, you cannot start the ChangeSet described in the
+\href{https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/API_StartChangeSet.html#API_StartChangeSet_Examples}{example}
+below because it contains two changes to execute the same change type
+(\code{AddRevisions}) against the same entity (\verb{entity-id@1)}.
 }
 \section{Request syntax}{
 \preformatted{svc$start_change_set(

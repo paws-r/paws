@@ -10,8 +10,8 @@ autoscaling_set_desired_capacity(AutoScalingGroupName, DesiredCapacity,
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{DesiredCapacity}{[required] The number of EC2 instances that should be running in the Auto Scaling
-group.}
+\item{DesiredCapacity}{[required] The desired capacity is the initial capacity of the Auto Scaling group
+after this operation completes and the capacity it attempts to maintain.}
 
 \item{HonorCooldown}{Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period
 to complete before initiating a scaling activity to set your Auto
@@ -22,7 +22,12 @@ does not honor the cooldown period during manual scaling activities.}
 Sets the size of the specified Auto Scaling group.
 }
 \details{
-For more information about desired capacity, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html}{What Is Amazon EC2 Auto Scaling?}
+If a scale-in activity occurs as a result of a new \code{DesiredCapacity}
+value that is lower than the current size of the group, the Auto Scaling
+group uses its termination policy to determine which instances to
+terminate.
+
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-manual-scaling.html}{Manual Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

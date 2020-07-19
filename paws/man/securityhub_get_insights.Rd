@@ -2,22 +2,26 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_insights}
 \alias{securityhub_get_insights}
-\title{Lists and describes insights that insight ARNs specify}
+\title{Lists and describes insights for the specified insight ARNs}
 \usage{
 securityhub_get_insights(InsightArns, NextToken, MaxResults)
 }
 \arguments{
-\item{InsightArns}{The ARNs of the insights that you want to describe.}
+\item{InsightArns}{The ARNs of the insights to describe. If you do not provide any insight
+ARNs, then \code{GetInsights} returns all of your custom insights. It does
+not return any managed insights.}
 
-\item{NextToken}{Paginates results. On your first call to the \code{GetInsights} operation,
-set the value of this parameter to \code{NULL}. For subsequent calls to the
-operation, fill \code{nextToken} in the request with the value of \code{nextToken}
-from the previous response to continue listing data.}
+\item{NextToken}{The token that is required for pagination. On your first call to the
+\code{GetInsights} operation, set the value of this parameter to \code{NULL}.
 
-\item{MaxResults}{The maximum number of items that you want in the response.}
+For subsequent calls to the operation, to continue listing data, set the
+value of this parameter to the value returned from the previous
+response.}
+
+\item{MaxResults}{The maximum number of items to return in the response.}
 }
 \description{
-Lists and describes insights that insight ARNs specify.
+Lists and describes insights for the specified insight ARNs.
 }
 \section{Request syntax}{
 \preformatted{svc$get_insights(

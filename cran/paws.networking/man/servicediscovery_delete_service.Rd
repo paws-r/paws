@@ -20,4 +20,13 @@ registered instances, the request fails.
 }
 }
 
+\examples{
+\dontrun{
+# Example: Delete service
+svc$delete_service(
+  Id = "srv-p5zdwlg5uvvzjita"
+)
+}
+
+}
 \keyword{internal}

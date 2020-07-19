@@ -674,6 +674,9 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
 #'       Actions = list(
 #'         "string"
 #'       ),
+#'       PrincipalOrgIDs = list(
+#'         "string"
+#'       ),
 #'       Principals = list(
 #'         "string"
 #'       ),
@@ -702,6 +705,48 @@ serverlessapplicationrepository_put_application_policy <- function(ApplicationId
   return(response)
 }
 .serverlessapplicationrepository$operations$put_application_policy <- serverlessapplicationrepository_put_application_policy
+
+#' Unshares an application from an AWS Organization
+#'
+#' Unshares an application from an AWS Organization.
+#' 
+#' This operation can be called only from the organization\'s master
+#' account.
+#'
+#' @usage
+#' serverlessapplicationrepository_unshare_application(ApplicationId,
+#'   OrganizationId)
+#'
+#' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
+#' @param OrganizationId &#91;required&#93; The AWS Organization ID to unshare the application from.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$unshare_application(
+#'   ApplicationId = "string",
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname serverlessapplicationrepository_unshare_application
+serverlessapplicationrepository_unshare_application <- function(ApplicationId, OrganizationId) {
+  op <- new_operation(
+    name = "UnshareApplication",
+    http_method = "POST",
+    http_path = "/applications/{applicationId}/unshare",
+    paginator = list()
+  )
+  input <- .serverlessapplicationrepository$unshare_application_input(ApplicationId = ApplicationId, OrganizationId = OrganizationId)
+  output <- .serverlessapplicationrepository$unshare_application_output()
+  config <- get_config()
+  svc <- .serverlessapplicationrepository$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.serverlessapplicationrepository$operations$unshare_application <- serverlessapplicationrepository_unshare_application
 
 #' Updates the specified application
 #'

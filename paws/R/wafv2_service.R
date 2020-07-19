@@ -38,8 +38,8 @@ NULL
 #' Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #' 
-#' You can make API calls using the endpoints listed in [AWS Service
-#' Endpoints for AWS
+#' You can make calls using the endpoints listed in [AWS Service Endpoints
+#' for AWS
 #' WAF](https://docs.aws.amazon.com/general/latest/gr/rande.html#waf_region).
 #' 
 #' -   For regional applications, you can use any of the endpoints in the
@@ -62,9 +62,9 @@ NULL
 #'     need to distinguish the scope, you specify a `Scope` parameter and
 #'     set it to `CLOUDFRONT` or `REGIONAL`.
 #' 
-#' -   You can define a Web ACL or rule group with a single API call, and
+#' -   You can define a Web ACL or rule group with a single call, and
 #'     update it with a single call. You define all rule specifications in
-#'     JSON format, and pass them to your rule group or Web ACL API calls.
+#'     JSON format, and pass them to your rule group or Web ACL calls.
 #' 
 #' -   The limits AWS WAF places on the use of rules more closely reflects
 #'     the cost of running each type of rule. Rule groups include capacity
@@ -103,42 +103,46 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=wafv2_associate_web_acl]{associate_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_check_capacity]{check_capacity} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_create_ip_set]{create_ip_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_create_regex_pattern_set]{create_regex_pattern_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_create_rule_group]{create_rule_group} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_create_web_acl]{create_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_delete_ip_set]{delete_ip_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_delete_logging_configuration]{delete_logging_configuration} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_delete_regex_pattern_set]{delete_regex_pattern_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_delete_rule_group]{delete_rule_group} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_delete_web_acl]{delete_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_describe_managed_rule_group]{describe_managed_rule_group} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_disassociate_web_acl]{disassociate_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_get_ip_set]{get_ip_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_get_logging_configuration]{get_logging_configuration} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_get_rate_based_statement_managed_keys]{get_rate_based_statement_managed_keys} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_get_regex_pattern_set]{get_regex_pattern_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_get_rule_group]{get_rule_group} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_get_sampled_requests]{get_sampled_requests} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_get_web_acl]{get_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_get_web_acl_for_resource]{get_web_acl_for_resource} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_list_available_managed_rule_groups]{list_available_managed_rule_groups} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_list_ip_sets]{list_ip_sets} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_list_logging_configurations]{list_logging_configurations} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_list_regex_pattern_sets]{list_regex_pattern_sets} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_list_resources_for_web_acl]{list_resources_for_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_list_rule_groups]{list_rule_groups} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_list_tags_for_resource]{list_tags_for_resource} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_list_web_ac_ls]{list_web_ac_ls} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_put_logging_configuration]{put_logging_configuration} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_tag_resource]{tag_resource} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_untag_resource]{untag_resource} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_update_ip_set]{update_ip_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_update_regex_pattern_set]{update_regex_pattern_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_update_rule_group]{update_rule_group} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019\cr
-#'  \link[=wafv2_update_web_acl]{update_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019
+#'  \link[=wafv2_associate_web_acl]{associate_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_check_capacity]{check_capacity} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_create_ip_set]{create_ip_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_create_regex_pattern_set]{create_regex_pattern_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_create_rule_group]{create_rule_group} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_create_web_acl]{create_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_delete_firewall_manager_rule_groups]{delete_firewall_manager_rule_groups} \tab Deletes all rule groups that are managed by AWS Firewall Manager for the specified web ACL\cr
+#'  \link[=wafv2_delete_ip_set]{delete_ip_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_delete_logging_configuration]{delete_logging_configuration} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_delete_permission_policy]{delete_permission_policy} \tab Permanently deletes an IAM policy from the specified rule group \cr
+#'  \link[=wafv2_delete_regex_pattern_set]{delete_regex_pattern_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_delete_rule_group]{delete_rule_group} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_delete_web_acl]{delete_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_describe_managed_rule_group]{describe_managed_rule_group} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_disassociate_web_acl]{disassociate_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_get_ip_set]{get_ip_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_get_logging_configuration]{get_logging_configuration} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_get_permission_policy]{get_permission_policy} \tab Returns the IAM policy that is attached to the specified rule group \cr
+#'  \link[=wafv2_get_rate_based_statement_managed_keys]{get_rate_based_statement_managed_keys} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_get_regex_pattern_set]{get_regex_pattern_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_get_rule_group]{get_rule_group} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_get_sampled_requests]{get_sampled_requests} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_get_web_acl]{get_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_get_web_acl_for_resource]{get_web_acl_for_resource} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_list_available_managed_rule_groups]{list_available_managed_rule_groups} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_list_ip_sets]{list_ip_sets} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_list_logging_configurations]{list_logging_configurations} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_list_regex_pattern_sets]{list_regex_pattern_sets} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_list_resources_for_web_acl]{list_resources_for_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_list_rule_groups]{list_rule_groups} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_list_tags_for_resource]{list_tags_for_resource} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_list_web_ac_ls]{list_web_ac_ls} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_put_logging_configuration]{put_logging_configuration} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_put_permission_policy]{put_permission_policy} \tab Attaches an IAM policy to the specified resource \cr
+#'  \link[=wafv2_tag_resource]{tag_resource} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_untag_resource]{untag_resource} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_update_ip_set]{update_ip_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_update_regex_pattern_set]{update_regex_pattern_set} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_update_rule_group]{update_rule_group} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 \cr
+#'  \link[=wafv2_update_web_acl]{update_web_acl} \tab This is the latest version of AWS WAF, named AWS WAFV2, released in November, 2019 
 #' }
 #'
 #' @rdname wafv2
@@ -156,7 +160,7 @@ wafv2 <- function(config = list()) {
 
 .wafv2$metadata <- list(
   service_name = "wafv2",
-  endpoints = list("*" = list(endpoint = "wafv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "wafv2.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "wafv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "wafv2.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "wafv2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "wafv2.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "WAFV2",
   api_version = "2019-07-29",
   signing_name = NULL,

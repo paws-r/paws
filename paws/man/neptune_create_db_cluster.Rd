@@ -11,7 +11,7 @@ neptune_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
   OptionGroupName, PreferredBackupWindow, PreferredMaintenanceWindow,
   ReplicationSourceIdentifier, Tags, StorageEncrypted, KmsKeyId,
   PreSignedUrl, EnableIAMDatabaseAuthentication,
-  EnableCloudwatchLogsExports)
+  EnableCloudwatchLogsExports, DeletionProtection)
 }
 \arguments{
 \item{AvailabilityZones}{A list of EC2 Availability Zones that instances in the DB cluster can be
@@ -27,8 +27,7 @@ Constraints:
 \item Must be a value from 1 to 35
 }}
 
-\item{CharacterSetName}{A value that indicates that the DB cluster should be associated with the
-specified CharacterSet.}
+\item{CharacterSetName}{\emph{(Not supported by Neptune)}}
 
 \item{DatabaseName}{The name for your database of up to 64 alpha-numeric characters. If you
 do not provide a name, Amazon Neptune will not create a database in the
@@ -68,7 +67,8 @@ Example: \code{mySubnetgroup}}
 
 Valid Values: \code{neptune}}
 
-\item{EngineVersion}{The version number of the database engine to use.
+\item{EngineVersion}{The version number of the database engine to use. Currently, setting
+this parameter has no effect.
 
 Example: \verb{1.0.1}}
 
@@ -91,12 +91,7 @@ printable ASCII character except \"/\", \"\"\", or \"@\".
 
 Constraints: Must contain from 8 to 41 characters.}
 
-\item{OptionGroupName}{A value that indicates that the DB cluster should be associated with the
-specified option group.
-
-Permanent options can\'t be removed from an option group. The option
-group can\'t be removed from a DB cluster once it is associated with a
-DB cluster.}
+\item{OptionGroupName}{\emph{(Not supported by Neptune)}}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
 automated backups are enabled using the \code{BackupRetentionPeriod}
@@ -172,6 +167,10 @@ Default: \code{false}}
 
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
 CloudWatch Logs.}
+
+\item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
+enabled. The database can\'t be deleted when deletion protection is
+enabled. By default, deletion protection is enabled.}
 }
 \description{
 Creates a new Amazon Neptune DB cluster.
@@ -180,6 +179,12 @@ Creates a new Amazon Neptune DB cluster.
 You can use the \code{ReplicationSourceIdentifier} parameter to create the DB
 cluster as a Read Replica of another DB cluster or Amazon Neptune DB
 instance.
+
+Note that when you create a new cluster using \code{CreateDBCluster}
+directly, deletion protection is disabled by default (when you create a
+new production cluster in the console, deletion protection is enabled by
+default). You can only delete a DB cluster if its \code{DeletionProtection}
+field is set to \code{false}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_db_cluster(
@@ -216,7 +221,8 @@ instance.
   EnableIAMDatabaseAuthentication = TRUE|FALSE,
   EnableCloudwatchLogsExports = list(
     "string"
-  )
+  ),
+  DeletionProtection = TRUE|FALSE
 )
 }
 }

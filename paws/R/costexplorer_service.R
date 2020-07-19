@@ -19,7 +19,7 @@ NULL
 #' 
 #' For information about costs associated with the Cost Explorer API, see
 #' [AWS Cost Management
-#' Pricing](https://aws.amazon.com/aws-cost-management/pricing/).
+#' Pricing](http://aws.amazon.com/aws-cost-management/pricing/).
 #'
 #' @param
 #' config
@@ -53,9 +53,9 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=costexplorer_create_cost_category_definition]{create_cost_category_definition} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
-#'  \link[=costexplorer_delete_cost_category_definition]{delete_cost_category_definition} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
-#'  \link[=costexplorer_describe_cost_category_definition]{describe_cost_category_definition} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
+#'  \link[=costexplorer_create_cost_category_definition]{create_cost_category_definition} \tab Creates a new Cost Category with the requested name and rules \cr
+#'  \link[=costexplorer_delete_cost_category_definition]{delete_cost_category_definition} \tab Deletes a Cost Category \cr
+#'  \link[=costexplorer_describe_cost_category_definition]{describe_cost_category_definition} \tab Returns the name, ARN, rules, definition, and effective dates of a Cost Category that's defined in the account \cr
 #'  \link[=costexplorer_get_cost_and_usage]{get_cost_and_usage} \tab Retrieves cost and usage metrics for your account \cr
 #'  \link[=costexplorer_get_cost_and_usage_with_resources]{get_cost_and_usage_with_resources} \tab Retrieves cost and usage metrics with resources for your account \cr
 #'  \link[=costexplorer_get_cost_forecast]{get_cost_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs\cr
@@ -63,15 +63,15 @@ NULL
 #'  \link[=costexplorer_get_reservation_coverage]{get_reservation_coverage} \tab Retrieves the reservation coverage for your account \cr
 #'  \link[=costexplorer_get_reservation_purchase_recommendation]{get_reservation_purchase_recommendation} \tab Gets recommendations for which reservations to purchase \cr
 #'  \link[=costexplorer_get_reservation_utilization]{get_reservation_utilization} \tab Retrieves the reservation utilization for your account \cr
-#'  \link[=costexplorer_get_rightsizing_recommendation]{get_rightsizing_recommendation} \tab Creates recommendations that helps you save cost by identifying idle and underutilized Amazon EC2 instances \cr
+#'  \link[=costexplorer_get_rightsizing_recommendation]{get_rightsizing_recommendation} \tab Creates recommendations that help you save cost by identifying idle and underutilized Amazon EC2 instances \cr
 #'  \link[=costexplorer_get_savings_plans_coverage]{get_savings_plans_coverage} \tab Retrieves the Savings Plans covered for your account \cr
 #'  \link[=costexplorer_get_savings_plans_purchase_recommendation]{get_savings_plans_purchase_recommendation} \tab Retrieves your request parameters, Savings Plan Recommendations Summary and Details \cr
 #'  \link[=costexplorer_get_savings_plans_utilization]{get_savings_plans_utilization} \tab Retrieves the Savings Plans utilization for your account across date ranges with daily or monthly granularity \cr
 #'  \link[=costexplorer_get_savings_plans_utilization_details]{get_savings_plans_utilization_details} \tab Retrieves attribute data along with aggregate utilization and savings data for a given time period \cr
 #'  \link[=costexplorer_get_tags]{get_tags} \tab Queries for available tag keys and tag values for a specified period \cr
 #'  \link[=costexplorer_get_usage_forecast]{get_usage_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage \cr
-#'  \link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE \cr
-#'  \link[=costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab _COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND IS SUBJECT TO CHANGE 
+#'  \link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions} \tab Returns the name, ARN, NumberOfRules and effective dates of all Cost Categories defined in the account \cr
+#'  \link[=costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab Updates an existing Cost Category 
 #' }
 #'
 #' @rdname costexplorer
@@ -89,7 +89,7 @@ costexplorer <- function(config = list()) {
 
 .costexplorer$metadata <- list(
   service_name = "ce",
-  endpoints = list("*" = list(endpoint = "ce.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ce.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ce.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ce.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ce.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ce.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Cost Explorer",
   api_version = "2017-10-25",
   signing_name = "ce",

@@ -2,20 +2,29 @@
 % Please edit documentation in R/servicecatalog_operations.R
 \name{servicecatalog_describe_service_action_execution_parameters}
 \alias{servicecatalog_describe_service_action_execution_parameters}
-\title{Describe service action execution parameters}
+\title{Finds the default parameters for a specific self-service action on a
+specific provisioned product and returns a map of the results to the
+user}
 \usage{
 servicecatalog_describe_service_action_execution_parameters(
   ProvisionedProductId, ServiceActionId, AcceptLanguage)
 }
 \arguments{
-\item{ProvisionedProductId}{[required]}
+\item{ProvisionedProductId}{[required] The identifier of the provisioned product.}
 
-\item{ServiceActionId}{[required]}
+\item{ServiceActionId}{[required] The self-service action identifier.}
 
-\item{AcceptLanguage}{}
+\item{AcceptLanguage}{The language code.
+\itemize{
+\item \code{en} - English (default)
+\item \code{jp} - Japanese
+\item \code{zh} - Chinese
+}}
 }
 \description{
-Describe service action execution parameters
+Finds the default parameters for a specific self-service action on a
+specific provisioned product and returns a map of the results to the
+user.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_service_action_execution_parameters(

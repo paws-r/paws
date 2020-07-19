@@ -39,6 +39,8 @@ latency and local data processing needs.
 
 \tabular{ll}{
 \link[=outposts_create_outpost]{create_outpost} \tab Creates an Outpost \cr
+\link[=outposts_delete_outpost]{delete_outpost} \tab Deletes the Outpost \cr
+\link[=outposts_delete_site]{delete_site} \tab Deletes the site \cr
 \link[=outposts_get_outpost]{get_outpost} \tab Gets information about the specified Outpost \cr
 \link[=outposts_get_outpost_instance_types]{get_outpost_instance_types} \tab Lists the instance types for the specified Outpost\cr
 \link[=outposts_list_outposts]{list_outposts} \tab List the Outposts for your AWS account \cr

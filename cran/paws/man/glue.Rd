@@ -61,6 +61,8 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_create_user_defined_function]{create_user_defined_function} \tab Creates a new function definition in the Data Catalog \cr
 \link[=glue_create_workflow]{create_workflow} \tab Creates a new workflow \cr
 \link[=glue_delete_classifier]{delete_classifier} \tab Removes a classifier from the Data Catalog \cr
+\link[=glue_delete_column_statistics_for_partition]{delete_column_statistics_for_partition} \tab Delete the partition column statistics of a column \cr
+\link[=glue_delete_column_statistics_for_table]{delete_column_statistics_for_table} \tab Retrieves table statistics of columns \cr
 \link[=glue_delete_connection]{delete_connection} \tab Deletes a connection from the Data Catalog \cr
 \link[=glue_delete_crawler]{delete_crawler} \tab Removes a specified crawler from the AWS Glue Data Catalog, unless the crawler state is RUNNING \cr
 \link[=glue_delete_database]{delete_database} \tab Removes a specified database from a Data Catalog \cr
@@ -78,6 +80,8 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_get_catalog_import_status]{get_catalog_import_status} \tab Retrieves the status of a migration operation \cr
 \link[=glue_get_classifier]{get_classifier} \tab Retrieve a classifier by name \cr
 \link[=glue_get_classifiers]{get_classifiers} \tab Lists all classifier objects in the Data Catalog \cr
+\link[=glue_get_column_statistics_for_partition]{get_column_statistics_for_partition} \tab Retrieves partition statistics of columns \cr
+\link[=glue_get_column_statistics_for_table]{get_column_statistics_for_table} \tab Retrieves table statistics of columns \cr
 \link[=glue_get_connection]{get_connection} \tab Retrieves a connection definition from the Data Catalog \cr
 \link[=glue_get_connections]{get_connections} \tab Retrieves a list of connection definitions from the Data Catalog \cr
 \link[=glue_get_crawler]{get_crawler} \tab Retrieves metadata for a specified crawler \cr
@@ -102,6 +106,7 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_get_partition]{get_partition} \tab Retrieves information about a specified partition \cr
 \link[=glue_get_partitions]{get_partitions} \tab Retrieves information about the partitions in a table \cr
 \link[=glue_get_plan]{get_plan} \tab Gets code to perform a specified mapping \cr
+\link[=glue_get_resource_policies]{get_resource_policies} \tab Retrieves the security configurations for the resource policies set on individual resources, and also the account-level policy \cr
 \link[=glue_get_resource_policy]{get_resource_policy} \tab Retrieves a specified resource policy \cr
 \link[=glue_get_security_configuration]{get_security_configuration} \tab Retrieves a specified security configuration \cr
 \link[=glue_get_security_configurations]{get_security_configurations} \tab Retrieves a list of all security configurations \cr
@@ -122,6 +127,7 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_list_crawlers]{list_crawlers} \tab Retrieves the names of all crawler resources in this AWS account, or the resources with the specified tag \cr
 \link[=glue_list_dev_endpoints]{list_dev_endpoints} \tab Retrieves the names of all DevEndpoint resources in this AWS account, or the resources with the specified tag \cr
 \link[=glue_list_jobs]{list_jobs} \tab Retrieves the names of all job resources in this AWS account, or the resources with the specified tag \cr
+\link[=glue_list_ml_transforms]{list_ml_transforms} \tab Retrieves a sortable, filterable list of existing AWS Glue machine learning transforms in this AWS account, or the resources with the specified tag \cr
 \link[=glue_list_triggers]{list_triggers} \tab Retrieves the names of all trigger resources in this AWS account, or the resources with the specified tag \cr
 \link[=glue_list_workflows]{list_workflows} \tab Lists names of workflows created in the account \cr
 \link[=glue_put_data_catalog_encryption_settings]{put_data_catalog_encryption_settings} \tab Sets the security configuration for a specified catalog \cr
@@ -141,9 +147,12 @@ Defines the public endpoint for the AWS Glue service.
 \link[=glue_stop_crawler]{stop_crawler} \tab If the specified crawler is running, stops the crawl \cr
 \link[=glue_stop_crawler_schedule]{stop_crawler_schedule} \tab Sets the schedule state of the specified crawler to NOT_SCHEDULED, but does not stop the crawler if it is already running \cr
 \link[=glue_stop_trigger]{stop_trigger} \tab Stops a specified trigger \cr
+\link[=glue_stop_workflow_run]{stop_workflow_run} \tab Stops the execution of the specified workflow run \cr
 \link[=glue_tag_resource]{tag_resource} \tab Adds tags to a resource \cr
 \link[=glue_untag_resource]{untag_resource} \tab Removes tags from a resource \cr
 \link[=glue_update_classifier]{update_classifier} \tab Modifies an existing classifier (a GrokClassifier, an XMLClassifier, a JsonClassifier, or a CsvClassifier, depending on which field is present) \cr
+\link[=glue_update_column_statistics_for_partition]{update_column_statistics_for_partition} \tab Creates or updates partition statistics of columns \cr
+\link[=glue_update_column_statistics_for_table]{update_column_statistics_for_table} \tab Creates or updates table statistics of columns \cr
 \link[=glue_update_connection]{update_connection} \tab Updates a connection definition in the Data Catalog \cr
 \link[=glue_update_crawler]{update_crawler} \tab Updates a crawler \cr
 \link[=glue_update_crawler_schedule]{update_crawler_schedule} \tab Updates the schedule of a crawler using a cron expression \cr

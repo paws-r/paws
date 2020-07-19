@@ -51,4 +51,18 @@ statement ID that you specified when you added it.
 }
 }
 
+\examples{
+\dontrun{
+# The following example grants permission for the account 223456789012 to
+# use version 1 of a layer named my-layer.
+svc$add_layer_version_permission(
+  Action = "lambda:GetLayerVersion",
+  LayerName = "my-layer",
+  Principal = "223456789012",
+  StatementId = "xaccount",
+  VersionNumber = 1L
+)
+}
+
+}
 \keyword{internal}

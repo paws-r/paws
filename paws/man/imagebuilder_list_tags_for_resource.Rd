@@ -7,7 +7,7 @@
 imagebuilder_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource whose tags you wish to
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource whose tags you want to
 retrieve.}
 }
 \description{

@@ -5,7 +5,7 @@
 \title{Creates an new set of frequently asked question (FAQ) questions and
 answers}
 \usage{
-kendra_create_faq(IndexId, Name, Description, S3Path, RoleArn)
+kendra_create_faq(IndexId, Name, Description, S3Path, RoleArn, Tags)
 }
 \arguments{
 \item{IndexId}{[required] The identifier of the index that contains the FAQ.}
@@ -18,6 +18,9 @@ kendra_create_faq(IndexId, Name, Description, S3Path, RoleArn)
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of a role with permission to access the
 S3 bucket that contains the FAQs. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM Roles for Amazon Kendra}.}
+
+\item{Tags}{A list of key-value pairs that identify the FAQ. You can use the tags to
+identify and organize your resources and to control access to resources.}
 }
 \description{
 Creates an new set of frequently asked question (FAQ) questions and
@@ -32,7 +35,13 @@ answers.
     Bucket = "string",
     Key = "string"
   ),
-  RoleArn = "string"
+  RoleArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

@@ -10,7 +10,14 @@ dynamodb_list_global_tables(ExclusiveStartGlobalTableName, Limit,
 \arguments{
 \item{ExclusiveStartGlobalTableName}{The first global table name that this operation will evaluate.}
 
-\item{Limit}{The maximum number of table names to return.}
+\item{Limit}{The maximum number of table names to return, if the parameter is not
+specified DynamoDB defaults to 100.
+
+If the number of global tables DynamoDB finds reaches this limit, it
+stops the operation and returns the table names collected up to that
+point, with a table name in the \code{LastEvaluatedGlobalTableName} to apply
+in a subsequent operation to the \code{ExclusiveStartGlobalTableName}
+parameter.}
 
 \item{RegionName}{Lists the global tables in a specific Region.}
 }
@@ -18,7 +25,7 @@ dynamodb_list_global_tables(ExclusiveStartGlobalTableName, Limit,
 Lists all global tables that have a replica in the specified Region.
 }
 \details{
-This method only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html}{Version 2017.11.29}
+This operation only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html}{Version 2017.11.29}
 of global tables.
 }
 \section{Request syntax}{

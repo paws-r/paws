@@ -50,7 +50,7 @@ Creates an analyzer for your account.
   tags = list(
     "string"
   ),
-  type = "ACCOUNT"
+  type = "ACCOUNT"|"ORGANIZATION"
 )
 }
 }

@@ -8,7 +8,9 @@ transcribeservice_update_vocabulary(VocabularyName, LanguageCode,
   Phrases, VocabularyFileUri)
 }
 \arguments{
-\item{VocabularyName}{[required] The name of the vocabulary to update. The name is case-sensitive.}
+\item{VocabularyName}{[required] The name of the vocabulary to update. The name is case-sensitive. If you
+try to update a vocabulary with the same name as a previous vocabulary
+you will receive a \code{ConflictException} error.}
 
 \item{LanguageCode}{[required] The language code of the vocabulary entries.}
 
@@ -18,11 +20,7 @@ transcribeservice_update_vocabulary(VocabularyName, LanguageCode,
 custom vocabulary. The URI must be in the same region as the API
 endpoint that you are calling. The general form is
 
-\verb{https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt;}
-
 For example:
-
-\verb{https://s3.us-east-1.amazonaws.com/examplebucket/vocab.txt}
 
 For more information about S3 object names, see \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys}{Object Keys}
 in the \emph{Amazon S3 Developer Guide}.

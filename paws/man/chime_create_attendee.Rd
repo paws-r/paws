@@ -4,13 +4,15 @@
 \alias{chime_create_attendee}
 \title{Creates a new attendee for an active Amazon Chime SDK meeting}
 \usage{
-chime_create_attendee(MeetingId, ExternalUserId)
+chime_create_attendee(MeetingId, ExternalUserId, Tags)
 }
 \arguments{
 \item{MeetingId}{[required] The Amazon Chime SDK meeting ID.}
 
 \item{ExternalUserId}{[required] The Amazon Chime SDK external user ID. Links the attendee to an identity
 managed by a builder application.}
+
+\item{Tags}{The tag key-value pairs.}
 }
 \description{
 Creates a new attendee for an active Amazon Chime SDK meeting. For more
@@ -20,7 +22,13 @@ the \emph{Amazon Chime Developer Guide}.
 \section{Request syntax}{
 \preformatted{svc$create_attendee(
   MeetingId = "string",
-  ExternalUserId = "string"
+  ExternalUserId = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

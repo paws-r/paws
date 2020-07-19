@@ -8,14 +8,18 @@ was generated}
 workdocs_get_current_user(AuthenticationToken)
 }
 \arguments{
-\item{AuthenticationToken}{[required] Amazon WorkDocs authentication token. Do not set this field when using
-administrative API actions, as in accessing the API using AWS
-credentials.}
+\item{AuthenticationToken}{[required] Amazon WorkDocs authentication token.}
 }
 \description{
 Retrieves details of the current user for whom the authentication token
 was generated. This is not a valid action for SigV4 (administrative API)
 clients.
+}
+\details{
+This action requires an authentication token. To get an authentication
+token, register an application with Amazon WorkDocs. For more
+information, see \href{https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html}{Authentication and Access Control for User Applications}
+in the \emph{Amazon WorkDocs Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_current_user(

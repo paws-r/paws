@@ -18,7 +18,7 @@ following:
 \item If the service that is specified by \code{ServiceId} includes settings
 for an SRV record, the value of \code{InstanceId} is automatically
 included as part of the value for the SRV record. For more
-information, see DnsRecord\\$Type.
+information, see \href{https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html#cloudmap-Type-DnsRecord-Type}{DnsRecord \\> Type}.
 \item You can use this value to update an existing instance.
 \item To register a new instance, you must specify a value that is unique
 among instances that you register by using the same service.
@@ -55,7 +55,7 @@ If you want AWS Cloud Map to create an Amazon Route 53 alias record that
 routes traffic to an Elastic Load Balancing load balancer, specify the
 DNS name that is associated with the load balancer. For information
 about how to get the DNS name, see \"DNSName\" in the topic
-\href{http://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html}{AliasTarget}
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html}{AliasTarget}
 in the \emph{Route 53 API Reference}.
 
 Note the following:
@@ -120,14 +120,16 @@ to return for the port.
 If the service includes \code{HealthCheckConfig}, the port on the endpoint
 that you want Route 53 to send requests to.
 
-This value is required if you specified settings for an SRV record when
-you created the service.
+This value is required if you specified settings for an SRV record or a
+Route 53 health check when you created the service.
 
 \strong{Custom attributes}
 
 You can add up to 30 custom attributes. For each key-value pair, the
 maximum length of the attribute name is 255 characters, and the maximum
-length of the attribute value is 1,024 characters.}
+length of the attribute value is 1,024 characters. Total size of all
+provided attributes (sum of all keys and values) must not exceed 5,000
+characters.}
 }
 \description{
 Creates or updates one or more records and, optionally, creates a health
@@ -148,7 +150,8 @@ updated records.
 One \code{RegisterInstance} request must complete before you can submit
 another request and specify the same service ID and instance ID.
 
-For more information, see CreateService.
+For more information, see
+\href{https://docs.aws.amazon.com/cloud-map/latest/api/API_CreateService.html}{CreateService}.
 
 When AWS Cloud Map receives a DNS query for the specified DNS name, it
 returns the applicable value:
@@ -161,7 +164,7 @@ the records
 }
 
 For the current limit on the number of instances that you can register
-using the same namespace and using the same service, see \href{http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
+using the same namespace and using the same service, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
 in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Request syntax}{
@@ -176,4 +179,19 @@ in the \emph{AWS Cloud Map Developer Guide}.
 }
 }
 
+\examples{
+\dontrun{
+# Example: Register Instance
+svc$register_instance(
+  Attributes = list(
+    AWS_INSTANCE_IPV4 = "172.2.1.3",
+    AWS_INSTANCE_PORT = "808"
+  ),
+  CreatorRequestId = "7a48a98a-72e6-4849-bfa7-1a458e030d7b",
+  InstanceId = "myservice-53",
+  ServiceId = "srv-p5zdwlg5uvvzjita"
+)
+}
+
+}
 \keyword{internal}

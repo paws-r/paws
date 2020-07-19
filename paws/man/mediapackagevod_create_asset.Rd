@@ -5,7 +5,7 @@
 \title{Creates a new MediaPackage VOD Asset resource}
 \usage{
 mediapackagevod_create_asset(Id, PackagingGroupId, ResourceId,
-  SourceArn, SourceRoleArn)
+  SourceArn, SourceRoleArn, Tags)
 }
 \arguments{
 \item{Id}{[required] The unique identifier for the Asset.}
@@ -17,6 +17,8 @@ mediapackagevod_create_asset(Id, PackagingGroupId, ResourceId,
 \item{SourceArn}{[required] ARN of the source object in S3.}
 
 \item{SourceRoleArn}{[required] The IAM role ARN used to access the source S3 bucket.}
+
+\item{Tags}{}
 }
 \description{
 Creates a new MediaPackage VOD Asset resource.
@@ -27,7 +29,10 @@ Creates a new MediaPackage VOD Asset resource.
   PackagingGroupId = "string",
   ResourceId = "string",
   SourceArn = "string",
-  SourceRoleArn = "string"
+  SourceRoleArn = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

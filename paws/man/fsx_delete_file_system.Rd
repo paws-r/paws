@@ -5,16 +5,18 @@
 \title{Deletes a file system, deleting its contents}
 \usage{
 fsx_delete_file_system(FileSystemId, ClientRequestToken,
-  WindowsConfiguration)
+  WindowsConfiguration, LustreConfiguration)
 }
 \arguments{
 \item{FileSystemId}{[required] The ID of the file system you want to delete.}
 
-\item{ClientRequestToken}{(Optional) A string of up to 64 ASCII characters that Amazon FSx uses to
-ensure idempotent deletion. This is automatically filled on your behalf
-when using the AWS CLI or SDK.}
+\item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
+idempotent deletion. This is automatically filled on your behalf when
+using the AWS CLI or SDK.}
 
 \item{WindowsConfiguration}{}
+
+\item{LustreConfiguration}{}
 }
 \description{
 Deletes a file system, deleting its contents. After deletion, the file
@@ -46,6 +48,15 @@ recovered by any means.
   FileSystemId = "string",
   ClientRequestToken = "string",
   WindowsConfiguration = list(
+    SkipFinalBackup = TRUE|FALSE,
+    FinalBackupTags = list(
+      list(
+        Key = "string",
+        Value = "string"
+      )
+    )
+  ),
+  LustreConfiguration = list(
     SkipFinalBackup = TRUE|FALSE,
     FinalBackupTags = list(
       list(

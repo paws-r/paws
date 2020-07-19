@@ -42,9 +42,10 @@ version are returned.
 
 \examples{
 \dontrun{
-# This operation retrieves a Lambda function's event source mapping
+# The following example returns code and configuration details for version
+# 1 of a function named my-function.
 svc$get_function(
-  FunctionName = "myFunction",
+  FunctionName = "my-function",
   Qualifier = "1"
 )
 }

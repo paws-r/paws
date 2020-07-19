@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_describe_job}
 \alias{s3control_describe_job}
-\title{Retrieves the configuration parameters and status for a batch operations
+\title{Retrieves the configuration parameters and status for a Batch Operations
 job}
 \usage{
 s3control_describe_job(AccountId, JobId)
@@ -13,8 +13,18 @@ s3control_describe_job(AccountId, JobId)
 \item{JobId}{[required] The ID for the job whose information you want to retrieve.}
 }
 \description{
-Retrieves the configuration parameters and status for a batch operations
-job.
+Retrieves the configuration parameters and status for a Batch Operations
+job. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html}{Amazon S3 Batch Operations}
+in the Amazon Simple Storage Service Developer Guide.
+}
+\details{
+Related actions include:
+\itemize{
+\item CreateJob
+\item ListJobs
+\item UpdateJobPriority
+\item UpdateJobStatus
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_job(

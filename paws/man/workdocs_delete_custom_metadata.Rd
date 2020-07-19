@@ -8,9 +8,8 @@ workdocs_delete_custom_metadata(AuthenticationToken, ResourceId,
   VersionId, Keys, DeleteAll)
 }
 \arguments{
-\item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using
-administrative API actions, as in accessing the API using AWS
-credentials.}
+\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
+administrator credentials to access the API.}
 
 \item{ResourceId}{[required] The ID of the resource, either a document or folder.}
 

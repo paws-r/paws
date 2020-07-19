@@ -12,7 +12,7 @@ cloudformation_create_stack(StackName, TemplateBody, TemplateURL,
 }
 \arguments{
 \item{StackName}{[required] The name that is associated with the stack. The name must be unique in
-the region in which you are creating the stack.
+the Region in which you are creating the stack.
 
 A stack name can contain only alphanumeric characters (case sensitive)
 and hyphens. It must start with an alphabetic character and cannot be
@@ -166,7 +166,7 @@ in the \emph{AWS CloudFormation User Guide}. You can specify either the
 \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}
 
 \item{StackPolicyURL}{Location of a file containing the stack policy. The URL must point to a
-policy (maximum size: 16 KB) located in an S3 bucket in the same region
+policy (maximum size: 16 KB) located in an S3 bucket in the same Region
 as the stack. You can specify either the \code{StackPolicyBody} or the
 \code{StackPolicyURL} parameter, but not both.}
 

@@ -2,19 +2,19 @@
 % Please edit documentation in R/transfer_operations.R
 \name{transfer_start_server}
 \alias{transfer_start_server}
-\title{Changes the state of a Secure File Transfer Protocol (SFTP) server from
+\title{Changes the state of a file transfer protocol-enabled server from
 OFFLINE to ONLINE}
 \usage{
 transfer_start_server(ServerId)
 }
 \arguments{
-\item{ServerId}{[required] A system-assigned unique identifier for an SFTP server that you start.}
+\item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
+server that you start.}
 }
 \description{
-Changes the state of a Secure File Transfer Protocol (SFTP) server from
-\code{OFFLINE} to \code{ONLINE}. It has no impact on an SFTP server that is
-already \code{ONLINE}. An \code{ONLINE} server can accept and process file
-transfer jobs.
+Changes the state of a file transfer protocol-enabled server from
+\code{OFFLINE} to \code{ONLINE}. It has no impact on a server that is already
+\code{ONLINE}. An \code{ONLINE} server can accept and process file transfer jobs.
 }
 \details{
 The state of \code{STARTING} indicates that the server is in an intermediate

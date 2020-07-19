@@ -3,6 +3,90 @@
 #' @include efs_service.R
 NULL
 
+#' Creates an EFS access point
+#'
+#' Creates an EFS access point. An access point is an application-specific
+#' view into an EFS file system that applies an operating system user and
+#' group, and a file system path, to any file system request made through
+#' the access point. The operating system user and group override any
+#' identity information provided by the NFS client. The file system path is
+#' exposed as the access point\'s root directory. Applications using the
+#' access point can only access data in its own directory and below. To
+#' learn more, see [Mounting a File System Using EFS Access
+#' Points](https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html).
+#' 
+#' This operation requires permissions for the
+#' `elasticfilesystem:CreateAccessPoint` action.
+#'
+#' @usage
+#' efs_create_access_point(ClientToken, Tags, FileSystemId, PosixUser,
+#'   RootDirectory)
+#'
+#' @param ClientToken &#91;required&#93; A string of up to 64 ASCII characters that Amazon EFS uses to ensure
+#' idempotent creation.
+#' @param Tags Creates tags associated with the access point. Each tag is a key-value
+#' pair.
+#' @param FileSystemId &#91;required&#93; The ID of the EFS file system that the access point provides access to.
+#' @param PosixUser The operating system user and group applied to all file system requests
+#' made using the access point.
+#' @param RootDirectory Specifies the directory on the Amazon EFS file system that the access
+#' point exposes as the root directory of your file system to NFS clients
+#' using the access point. The clients using the access point can only
+#' access the root directory and below. If the `RootDirectory` \\> `Path`
+#' specified does not exist, EFS creates it and applies the `CreationInfo`
+#' settings when a client connects to an access point. When specifying a
+#' `RootDirectory`, you need to provide the `Path`, and the `CreationInfo`
+#' is optional.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_access_point(
+#'   ClientToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   FileSystemId = "string",
+#'   PosixUser = list(
+#'     Uid = 123,
+#'     Gid = 123,
+#'     SecondaryGids = list(
+#'       123
+#'     )
+#'   ),
+#'   RootDirectory = list(
+#'     Path = "string",
+#'     CreationInfo = list(
+#'       OwnerUid = 123,
+#'       OwnerGid = 123,
+#'       Permissions = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname efs_create_access_point
+efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, PosixUser = NULL, RootDirectory = NULL) {
+  op <- new_operation(
+    name = "CreateAccessPoint",
+    http_method = "POST",
+    http_path = "/2015-02-01/access-points",
+    paginator = list()
+  )
+  input <- .efs$create_access_point_input(ClientToken = ClientToken, Tags = Tags, FileSystemId = FileSystemId, PosixUser = PosixUser, RootDirectory = RootDirectory)
+  output <- .efs$create_access_point_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$create_access_point <- efs_create_access_point
+
 #' Creates a new, empty file system
 #'
 #' Creates a new, empty file system. The operation requires a creation
@@ -95,6 +179,9 @@ NULL
 #' 
 #' If `KmsKeyId` is specified, the CreateFileSystemRequest\\$Encrypted
 #' parameter must be set to true.
+#' 
+#' EFS accepts only symmetric CMKs. You cannot use asymmetric CMKs with EFS
+#' file systems.
 #' @param ThroughputMode The throughput mode for the file system to be created. There are two
 #' throughput modes to choose from for your file system: `bursting` and
 #' `provisioned`. If you set `ThroughputMode` to `provisioned`, you must
@@ -399,6 +486,48 @@ efs_create_tags <- function(FileSystemId, Tags) {
 }
 .efs$operations$create_tags <- efs_create_tags
 
+#' Deletes the specified access point
+#'
+#' Deletes the specified access point. After deletion is complete, new
+#' clients can no longer connect to the access points. Clients connected to
+#' the access point at the time of deletion will continue to function until
+#' they terminate their connection.
+#' 
+#' This operation requires permissions for the
+#' `elasticfilesystem:DeleteAccessPoint` action.
+#'
+#' @usage
+#' efs_delete_access_point(AccessPointId)
+#'
+#' @param AccessPointId &#91;required&#93; The ID of the access point that you want to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_access_point(
+#'   AccessPointId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname efs_delete_access_point
+efs_delete_access_point <- function(AccessPointId) {
+  op <- new_operation(
+    name = "DeleteAccessPoint",
+    http_method = "DELETE",
+    http_path = "/2015-02-01/access-points/{AccessPointId}",
+    paginator = list()
+  )
+  input <- .efs$delete_access_point_input(AccessPointId = AccessPointId)
+  output <- .efs$delete_access_point_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$delete_access_point <- efs_delete_access_point
+
 #' Deletes a file system, permanently severing access to its contents
 #'
 #' Deletes a file system, permanently severing access to its contents. Upon
@@ -458,6 +587,50 @@ efs_delete_file_system <- function(FileSystemId) {
   return(response)
 }
 .efs$operations$delete_file_system <- efs_delete_file_system
+
+#' Deletes the FileSystemPolicy for the specified file system
+#'
+#' Deletes the `FileSystemPolicy` for the specified file system. The
+#' default `FileSystemPolicy` goes into effect once the existing policy is
+#' deleted. For more information about the default file system policy, see
+#' [Using Resource-based Policies with
+#' EFS](https://docs.aws.amazon.com/efs/latest/ug/res-based-policies-efs.html).
+#' 
+#' This operation requires permissions for the
+#' `elasticfilesystem:DeleteFileSystemPolicy` action.
+#'
+#' @usage
+#' efs_delete_file_system_policy(FileSystemId)
+#'
+#' @param FileSystemId &#91;required&#93; Specifies the EFS file system for which to delete the
+#' `FileSystemPolicy`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_file_system_policy(
+#'   FileSystemId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname efs_delete_file_system_policy
+efs_delete_file_system_policy <- function(FileSystemId) {
+  op <- new_operation(
+    name = "DeleteFileSystemPolicy",
+    http_method = "DELETE",
+    http_path = "/2015-02-01/file-systems/{FileSystemId}/policy",
+    paginator = list()
+  )
+  input <- .efs$delete_file_system_policy_input(FileSystemId = FileSystemId)
+  output <- .efs$delete_file_system_policy_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$delete_file_system_policy <- efs_delete_file_system_policy
 
 #' Deletes the specified mount target
 #'
@@ -587,6 +760,138 @@ efs_delete_tags <- function(FileSystemId, TagKeys) {
 }
 .efs$operations$delete_tags <- efs_delete_tags
 
+#' Returns the description of a specific Amazon EFS access point if the
+#' AccessPointId is provided
+#'
+#' Returns the description of a specific Amazon EFS access point if the
+#' `AccessPointId` is provided. If you provide an EFS `FileSystemId`, it
+#' returns descriptions of all access points for that file system. You can
+#' provide either an `AccessPointId` or a `FileSystemId` in the request,
+#' but not both.
+#' 
+#' This operation requires permissions for the
+#' `elasticfilesystem:DescribeAccessPoints` action.
+#'
+#' @usage
+#' efs_describe_access_points(MaxResults, NextToken, AccessPointId,
+#'   FileSystemId)
+#'
+#' @param MaxResults (Optional) When retrieving all access points for a file system, you can
+#' optionally specify the `MaxItems` parameter to limit the number of
+#' objects returned in a response. The default value is 100.
+#' @param NextToken `NextToken` is present if the response is paginated. You can use
+#' `NextMarker` in the subsequent request to fetch the next page of access
+#' point descriptions.
+#' @param AccessPointId (Optional) Specifies an EFS access point to describe in the response;
+#' mutually exclusive with `FileSystemId`.
+#' @param FileSystemId (Optional) If you provide a `FileSystemId`, EFS returns all access
+#' points for that file system; mutually exclusive with `AccessPointId`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_access_points(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   AccessPointId = "string",
+#'   FileSystemId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname efs_describe_access_points
+efs_describe_access_points <- function(MaxResults = NULL, NextToken = NULL, AccessPointId = NULL, FileSystemId = NULL) {
+  op <- new_operation(
+    name = "DescribeAccessPoints",
+    http_method = "GET",
+    http_path = "/2015-02-01/access-points",
+    paginator = list()
+  )
+  input <- .efs$describe_access_points_input(MaxResults = MaxResults, NextToken = NextToken, AccessPointId = AccessPointId, FileSystemId = FileSystemId)
+  output <- .efs$describe_access_points_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$describe_access_points <- efs_describe_access_points
+
+#' Returns the backup policy for the specified EFS file system
+#'
+#' Returns the backup policy for the specified EFS file system.
+#'
+#' @usage
+#' efs_describe_backup_policy(FileSystemId)
+#'
+#' @param FileSystemId &#91;required&#93; Specifies which EFS file system to retrieve the `BackupPolicy` for.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_backup_policy(
+#'   FileSystemId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname efs_describe_backup_policy
+efs_describe_backup_policy <- function(FileSystemId) {
+  op <- new_operation(
+    name = "DescribeBackupPolicy",
+    http_method = "GET",
+    http_path = "/2015-02-01/file-systems/{FileSystemId}/backup-policy",
+    paginator = list()
+  )
+  input <- .efs$describe_backup_policy_input(FileSystemId = FileSystemId)
+  output <- .efs$describe_backup_policy_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$describe_backup_policy <- efs_describe_backup_policy
+
+#' Returns the FileSystemPolicy for the specified EFS file system
+#'
+#' Returns the `FileSystemPolicy` for the specified EFS file system.
+#' 
+#' This operation requires permissions for the
+#' `elasticfilesystem:DescribeFileSystemPolicy` action.
+#'
+#' @usage
+#' efs_describe_file_system_policy(FileSystemId)
+#'
+#' @param FileSystemId &#91;required&#93; Specifies which EFS file system to retrieve the `FileSystemPolicy` for.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_file_system_policy(
+#'   FileSystemId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname efs_describe_file_system_policy
+efs_describe_file_system_policy <- function(FileSystemId) {
+  op <- new_operation(
+    name = "DescribeFileSystemPolicy",
+    http_method = "GET",
+    http_path = "/2015-02-01/file-systems/{FileSystemId}/policy",
+    paginator = list()
+  )
+  input <- .efs$describe_file_system_policy_input(FileSystemId = FileSystemId)
+  output <- .efs$describe_file_system_policy_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$describe_file_system_policy <- efs_describe_file_system_policy
+
 #' Returns the description of a specific Amazon EFS file system if either
 #' the file system CreationToken or the FileSystemId is provided
 #'
@@ -621,9 +926,9 @@ efs_delete_tags <- function(FileSystemId, TagKeys) {
 #' efs_describe_file_systems(MaxItems, Marker, CreationToken, FileSystemId)
 #'
 #' @param MaxItems (Optional) Specifies the maximum number of file systems to return in the
-#' response (integer). Currently, this number is automatically set to 10,
-#' and other values are ignored. The response is paginated at 10 per page
-#' if you have more than 10 file systems.
+#' response (integer). This number is automatically set to 100. The
+#' response is paginated at 100 per page if you have more than 100 file
+#' systems.
 #' @param Marker (Optional) Opaque pagination token returned from a previous
 #' `DescribeFileSystems` operation (String). If present, specifies to
 #' continue the list from where the returning call had left off.
@@ -796,21 +1101,26 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
 #'
 #' @usage
 #' efs_describe_mount_targets(MaxItems, Marker, FileSystemId,
-#'   MountTargetId)
+#'   MountTargetId, AccessPointId)
 #'
 #' @param MaxItems (Optional) Maximum number of mount targets to return in the response.
 #' Currently, this number is automatically set to 10, and other values are
-#' ignored. The response is paginated at 10 per page if you have more than
-#' 10 mount targets.
+#' ignored. The response is paginated at 100 per page if you have more than
+#' 100 mount targets.
 #' @param Marker (Optional) Opaque pagination token returned from a previous
 #' `DescribeMountTargets` operation (String). If present, it specifies to
 #' continue the list from where the previous returning call left off.
 #' @param FileSystemId (Optional) ID of the file system whose mount targets you want to list
-#' (String). It must be included in your request if `MountTargetId` is not
-#' included.
+#' (String). It must be included in your request if an `AccessPointId` or
+#' `MountTargetId` is not included. Accepts either a file system ID or ARN
+#' as input.
 #' @param MountTargetId (Optional) ID of the mount target that you want to have described
 #' (String). It must be included in your request if `FileSystemId` is not
-#' included.
+#' included. Accepts either a mount target ID or ARN as input.
+#' @param AccessPointId (Optional) The ID of the access point whose mount targets that you want
+#' to list. It must be included in your request if a `FileSystemId` or
+#' `MountTargetId` is not included in your request. Accepts either an
+#' access point ID or ARN as input.
 #'
 #' @section Request syntax:
 #' ```
@@ -818,7 +1128,8 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
 #'   MaxItems = 123,
 #'   Marker = "string",
 #'   FileSystemId = "string",
-#'   MountTargetId = "string"
+#'   MountTargetId = "string",
+#'   AccessPointId = "string"
 #' )
 #' ```
 #'
@@ -833,14 +1144,14 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
 #' @keywords internal
 #'
 #' @rdname efs_describe_mount_targets
-efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSystemId = NULL, MountTargetId = NULL) {
+efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSystemId = NULL, MountTargetId = NULL, AccessPointId = NULL) {
   op <- new_operation(
     name = "DescribeMountTargets",
     http_method = "GET",
     http_path = "/2015-02-01/mount-targets",
     paginator = list()
   )
-  input <- .efs$describe_mount_targets_input(MaxItems = MaxItems, Marker = Marker, FileSystemId = FileSystemId, MountTargetId = MountTargetId)
+  input <- .efs$describe_mount_targets_input(MaxItems = MaxItems, Marker = Marker, FileSystemId = FileSystemId, MountTargetId = MountTargetId, AccessPointId = AccessPointId)
   output <- .efs$describe_mount_targets_output()
   config <- get_config()
   svc <- .efs$service(config)
@@ -864,9 +1175,9 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
 #' efs_describe_tags(MaxItems, Marker, FileSystemId)
 #'
 #' @param MaxItems (Optional) The maximum number of file system tags to return in the
-#' response. Currently, this number is automatically set to 10, and other
-#' values are ignored. The response is paginated at 10 per page if you have
-#' more than 10 tags.
+#' response. Currently, this number is automatically set to 100, and other
+#' values are ignored. The response is paginated at 100 per page if you
+#' have more than 100 tags.
 #' @param Marker (Optional) An opaque pagination token returned from a previous
 #' `DescribeTags` operation (String). If present, it specifies to continue
 #' the list from where the previous call left off.
@@ -908,6 +1219,54 @@ efs_describe_tags <- function(MaxItems = NULL, Marker = NULL, FileSystemId) {
   return(response)
 }
 .efs$operations$describe_tags <- efs_describe_tags
+
+#' Lists all tags for a top-level EFS resource
+#'
+#' Lists all tags for a top-level EFS resource. You must provide the ID of
+#' the resource that you want to retrieve the tags for.
+#' 
+#' This operation requires permissions for the
+#' `elasticfilesystem:DescribeAccessPoints` action.
+#'
+#' @usage
+#' efs_list_tags_for_resource(ResourceId, MaxResults, NextToken)
+#'
+#' @param ResourceId &#91;required&#93; Specifies the EFS resource you want to retrieve tags for. You can
+#' retrieve tags for EFS file systems and access points using this API
+#' endpoint.
+#' @param MaxResults (Optional) Specifies the maximum number of tag objects to return in the
+#' response. The default value is 100.
+#' @param NextToken You can use `NextToken` in a subsequent request to fetch the next page
+#' of access point descriptions if the response payload was paginated.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname efs_list_tags_for_resource
+efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/2015-02-01/resource-tags/{ResourceId}",
+    paginator = list()
+  )
+  input <- .efs$list_tags_for_resource_input(ResourceId = ResourceId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .efs$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$list_tags_for_resource <- efs_list_tags_for_resource
 
 #' Modifies the set of security groups in effect for a mount target
 #'
@@ -976,6 +1335,109 @@ efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroup
   return(response)
 }
 .efs$operations$modify_mount_target_security_groups <- efs_modify_mount_target_security_groups
+
+#' Updates the file system's backup policy
+#'
+#' Updates the file system\'s backup policy. Use this action to start or
+#' stop automatic backups of the file system.
+#'
+#' @usage
+#' efs_put_backup_policy(FileSystemId, BackupPolicy)
+#'
+#' @param FileSystemId &#91;required&#93; Specifies which EFS file system to update the backup policy for.
+#' @param BackupPolicy &#91;required&#93; The backup policy included in the `PutBackupPolicy` request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_backup_policy(
+#'   FileSystemId = "string",
+#'   BackupPolicy = list(
+#'     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname efs_put_backup_policy
+efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
+  op <- new_operation(
+    name = "PutBackupPolicy",
+    http_method = "PUT",
+    http_path = "/2015-02-01/file-systems/{FileSystemId}/backup-policy",
+    paginator = list()
+  )
+  input <- .efs$put_backup_policy_input(FileSystemId = FileSystemId, BackupPolicy = BackupPolicy)
+  output <- .efs$put_backup_policy_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$put_backup_policy <- efs_put_backup_policy
+
+#' Applies an Amazon EFS FileSystemPolicy to an Amazon EFS file system
+#'
+#' Applies an Amazon EFS `FileSystemPolicy` to an Amazon EFS file system. A
+#' file system policy is an IAM resource-based policy and can contain
+#' multiple policy statements. A file system always has exactly one file
+#' system policy, which can be the default policy or an explicit policy set
+#' or updated using this API operation. When an explicit policy is set, it
+#' overrides the default policy. For more information about the default
+#' file system policy, see [Default EFS File System
+#' Policy](https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy).
+#' 
+#' This operation requires permissions for the
+#' `elasticfilesystem:PutFileSystemPolicy` action.
+#'
+#' @usage
+#' efs_put_file_system_policy(FileSystemId, Policy,
+#'   BypassPolicyLockoutSafetyCheck)
+#'
+#' @param FileSystemId &#91;required&#93; The ID of the EFS file system that you want to create or update the
+#' `FileSystemPolicy` for.
+#' @param Policy &#91;required&#93; The `FileSystemPolicy` that you\'re creating. Accepts a JSON formatted
+#' policy definition. To find out more about the elements that make up a
+#' file system policy, see [EFS Resource-based
+#' Policies](https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies).
+#' @param BypassPolicyLockoutSafetyCheck (Optional) A flag to indicate whether to bypass the `FileSystemPolicy`
+#' lockout safety check. The policy lockout safety check determines whether
+#' the policy in the request will prevent the principal making the request
+#' will be locked out from making future `PutFileSystemPolicy` requests on
+#' the file system. Set `BypassPolicyLockoutSafetyCheck` to `True` only
+#' when you intend to prevent the principal that is making the request from
+#' making a subsequent `PutFileSystemPolicy` request on the file system.
+#' The default value is False.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_file_system_policy(
+#'   FileSystemId = "string",
+#'   Policy = "string",
+#'   BypassPolicyLockoutSafetyCheck = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname efs_put_file_system_policy
+efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockoutSafetyCheck = NULL) {
+  op <- new_operation(
+    name = "PutFileSystemPolicy",
+    http_method = "PUT",
+    http_path = "/2015-02-01/file-systems/{FileSystemId}/policy",
+    paginator = list()
+  )
+  input <- .efs$put_file_system_policy_input(FileSystemId = FileSystemId, Policy = Policy, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck)
+  output <- .efs$put_file_system_policy_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$put_file_system_policy <- efs_put_file_system_policy
 
 #' Enables lifecycle management by creating a new LifecycleConfiguration
 #' object
@@ -1068,6 +1530,98 @@ efs_put_lifecycle_configuration <- function(FileSystemId, LifecyclePolicies) {
   return(response)
 }
 .efs$operations$put_lifecycle_configuration <- efs_put_lifecycle_configuration
+
+#' Creates a tag for an EFS resource
+#'
+#' Creates a tag for an EFS resource. You can create tags for EFS file
+#' systems and access points using this API operation.
+#' 
+#' This operation requires permissions for the
+#' `elasticfilesystem:TagResource` action.
+#'
+#' @usage
+#' efs_tag_resource(ResourceId, Tags)
+#'
+#' @param ResourceId &#91;required&#93; The ID specifying the EFS resource that you want to create a tag for.
+#' @param Tags &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname efs_tag_resource
+efs_tag_resource <- function(ResourceId, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/2015-02-01/resource-tags/{ResourceId}",
+    paginator = list()
+  )
+  input <- .efs$tag_resource_input(ResourceId = ResourceId, Tags = Tags)
+  output <- .efs$tag_resource_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$tag_resource <- efs_tag_resource
+
+#' Removes tags from an EFS resource
+#'
+#' Removes tags from an EFS resource. You can remove tags from EFS file
+#' systems and access points using this API operation.
+#' 
+#' This operation requires permissions for the
+#' `elasticfilesystem:UntagResource` action.
+#'
+#' @usage
+#' efs_untag_resource(ResourceId, TagKeys)
+#'
+#' @param ResourceId &#91;required&#93; Specifies the EFS resource that you want to remove tags from.
+#' @param TagKeys &#91;required&#93; The keys of the key:value tag pairs that you want to remove from the
+#' specified EFS resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceId = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname efs_untag_resource
+efs_untag_resource <- function(ResourceId, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/2015-02-01/resource-tags/{ResourceId}",
+    paginator = list()
+  )
+  input <- .efs$untag_resource_input(ResourceId = ResourceId, TagKeys = TagKeys)
+  output <- .efs$untag_resource_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$untag_resource <- efs_untag_resource
 
 #' Updates the throughput mode or the amount of provisioned throughput of
 #' an existing file system

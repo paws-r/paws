@@ -2,8 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_delete_db_proxy}
 \alias{rds_delete_db_proxy}
-\title{This is prerelease documentation for the RDS Database Proxy feature in
-preview release}
+\title{Deletes an existing proxy}
 \usage{
 rds_delete_db_proxy(DBProxyName)
 }
@@ -11,10 +10,6 @@ rds_delete_db_proxy(DBProxyName)
 \item{DBProxyName}{[required] The name of the DB proxy to delete.}
 }
 \description{
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-}
-\details{
 Deletes an existing proxy.
 }
 \section{Request syntax}{

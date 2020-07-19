@@ -37,6 +37,15 @@ Creates a member within a Managed Blockchain network.
         AdminUsername = "string",
         AdminPassword = "string"
       )
+    ),
+    LogPublishingConfiguration = list(
+      Fabric = list(
+        CaLogs = list(
+          Cloudwatch = list(
+            Enabled = TRUE|FALSE
+          )
+        )
+      )
     )
   )
 )

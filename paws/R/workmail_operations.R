@@ -253,6 +253,44 @@ workmail_create_user <- function(OrganizationId, Name, DisplayName, Password) {
 }
 .workmail$operations$create_user <- workmail_create_user
 
+#' Deletes an access control rule for the specified WorkMail organization
+#'
+#' Deletes an access control rule for the specified WorkMail organization.
+#'
+#' @usage
+#' workmail_delete_access_control_rule(OrganizationId, Name)
+#'
+#' @param OrganizationId &#91;required&#93; The identifier for the organization.
+#' @param Name &#91;required&#93; The name of the access control rule.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_access_control_rule(
+#'   OrganizationId = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_delete_access_control_rule
+workmail_delete_access_control_rule <- function(OrganizationId, Name) {
+  op <- new_operation(
+    name = "DeleteAccessControlRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$delete_access_control_rule_input(OrganizationId = OrganizationId, Name = Name)
+  output <- .workmail$delete_access_control_rule_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$delete_access_control_rule <- workmail_delete_access_control_rule
+
 #' Remove one or more specified aliases from a set of aliases for a given
 #' user
 #'
@@ -416,6 +454,44 @@ workmail_delete_resource <- function(OrganizationId, ResourceId) {
   return(response)
 }
 .workmail$operations$delete_resource <- workmail_delete_resource
+
+#' Deletes the specified retention policy from the specified organization
+#'
+#' Deletes the specified retention policy from the specified organization.
+#'
+#' @usage
+#' workmail_delete_retention_policy(OrganizationId, Id)
+#'
+#' @param OrganizationId &#91;required&#93; The organization ID.
+#' @param Id &#91;required&#93; The retention policy ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_retention_policy(
+#'   OrganizationId = "string",
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_delete_retention_policy
+workmail_delete_retention_policy <- function(OrganizationId, Id) {
+  op <- new_operation(
+    name = "DeleteRetentionPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$delete_retention_policy_input(OrganizationId = OrganizationId, Id = Id)
+  output <- .workmail$delete_retention_policy_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$delete_retention_policy <- workmail_delete_retention_policy
 
 #' Deletes a user from Amazon WorkMail and all subsequent systems
 #'
@@ -739,6 +815,89 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
 }
 .workmail$operations$disassociate_member_from_group <- workmail_disassociate_member_from_group
 
+#' Gets the effects of an organization's access control rules as they apply
+#' to a specified IPv4 address, access protocol action, or user ID
+#'
+#' Gets the effects of an organization\'s access control rules as they
+#' apply to a specified IPv4 address, access protocol action, or user ID.
+#'
+#' @usage
+#' workmail_get_access_control_effect(OrganizationId, IpAddress, Action,
+#'   UserId)
+#'
+#' @param OrganizationId &#91;required&#93; The identifier for the organization.
+#' @param IpAddress &#91;required&#93; The IPv4 address.
+#' @param Action &#91;required&#93; The access protocol action. Valid values include `ActiveSync`,
+#' `AutoDiscover`, `EWS`, `IMAP`, `SMTP`, `WindowsOutlook`, and `WebMail`.
+#' @param UserId &#91;required&#93; The user ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_access_control_effect(
+#'   OrganizationId = "string",
+#'   IpAddress = "string",
+#'   Action = "string",
+#'   UserId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_get_access_control_effect
+workmail_get_access_control_effect <- function(OrganizationId, IpAddress, Action, UserId) {
+  op <- new_operation(
+    name = "GetAccessControlEffect",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$get_access_control_effect_input(OrganizationId = OrganizationId, IpAddress = IpAddress, Action = Action, UserId = UserId)
+  output <- .workmail$get_access_control_effect_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$get_access_control_effect <- workmail_get_access_control_effect
+
+#' Gets the default retention policy details for the specified organization
+#'
+#' Gets the default retention policy details for the specified
+#' organization.
+#'
+#' @usage
+#' workmail_get_default_retention_policy(OrganizationId)
+#'
+#' @param OrganizationId &#91;required&#93; The organization ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_default_retention_policy(
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_get_default_retention_policy
+workmail_get_default_retention_policy <- function(OrganizationId) {
+  op <- new_operation(
+    name = "GetDefaultRetentionPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$get_default_retention_policy_input(OrganizationId = OrganizationId)
+  output <- .workmail$get_default_retention_policy_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$get_default_retention_policy <- workmail_get_default_retention_policy
+
 #' Requests a user's mailbox details for a specified organization and user
 #'
 #' Requests a user\'s mailbox details for a specified organization and
@@ -778,6 +937,42 @@ workmail_get_mailbox_details <- function(OrganizationId, UserId) {
   return(response)
 }
 .workmail$operations$get_mailbox_details <- workmail_get_mailbox_details
+
+#' Lists the access control rules for the specified organization
+#'
+#' Lists the access control rules for the specified organization.
+#'
+#' @usage
+#' workmail_list_access_control_rules(OrganizationId)
+#'
+#' @param OrganizationId &#91;required&#93; The identifier for the organization.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_access_control_rules(
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_list_access_control_rules
+workmail_list_access_control_rules <- function(OrganizationId) {
+  op <- new_operation(
+    name = "ListAccessControlRules",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$list_access_control_rules_input(OrganizationId = OrganizationId)
+  output <- .workmail$list_access_control_rules_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$list_access_control_rules <- workmail_list_access_control_rules
 
 #' Creates a paginated call to list the aliases associated with a given
 #' entity
@@ -959,9 +1154,9 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
 }
 .workmail$operations$list_mailbox_permissions <- workmail_list_mailbox_permissions
 
-#' Returns summaries of the customer's non-deleted organizations
+#' Returns summaries of the customer's organizations
 #'
-#' Returns summaries of the customer\'s non-deleted organizations.
+#' Returns summaries of the customer\'s organizations.
 #'
 #' @usage
 #' workmail_list_organizations(NextToken, MaxResults)
@@ -1085,6 +1280,42 @@ workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults
 }
 .workmail$operations$list_resources <- workmail_list_resources
 
+#' Lists the tags applied to an Amazon WorkMail organization resource
+#'
+#' Lists the tags applied to an Amazon WorkMail organization resource.
+#'
+#' @usage
+#' workmail_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The resource ARN.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_list_tags_for_resource
+workmail_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .workmail$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$list_tags_for_resource <- workmail_list_tags_for_resource
+
 #' Returns summaries of the organization's users
 #'
 #' Returns summaries of the organization\'s users.
@@ -1125,6 +1356,80 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
   return(response)
 }
 .workmail$operations$list_users <- workmail_list_users
+
+#' Adds a new access control rule for the specified organization
+#'
+#' Adds a new access control rule for the specified organization. The rule
+#' allows or denies access to the organization for the specified IPv4
+#' addresses, access protocol actions, and user IDs. Adding a new rule with
+#' the same name as an existing rule replaces the older rule.
+#'
+#' @usage
+#' workmail_put_access_control_rule(Name, Effect, Description, IpRanges,
+#'   NotIpRanges, Actions, NotActions, UserIds, NotUserIds, OrganizationId)
+#'
+#' @param Name &#91;required&#93; The rule name.
+#' @param Effect &#91;required&#93; The rule effect.
+#' @param Description &#91;required&#93; The rule description.
+#' @param IpRanges IPv4 CIDR ranges to include in the rule.
+#' @param NotIpRanges IPv4 CIDR ranges to exclude from the rule.
+#' @param Actions Access protocol actions to include in the rule. Valid values include
+#' `ActiveSync`, `AutoDiscover`, `EWS`, `IMAP`, `SMTP`, `WindowsOutlook`,
+#' and `WebMail`.
+#' @param NotActions Access protocol actions to exclude from the rule. Valid values include
+#' `ActiveSync`, `AutoDiscover`, `EWS`, `IMAP`, `SMTP`, `WindowsOutlook`,
+#' and `WebMail`.
+#' @param UserIds User IDs to include in the rule.
+#' @param NotUserIds User IDs to exclude from the rule.
+#' @param OrganizationId &#91;required&#93; The identifier of the organization.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_access_control_rule(
+#'   Name = "string",
+#'   Effect = "ALLOW"|"DENY",
+#'   Description = "string",
+#'   IpRanges = list(
+#'     "string"
+#'   ),
+#'   NotIpRanges = list(
+#'     "string"
+#'   ),
+#'   Actions = list(
+#'     "string"
+#'   ),
+#'   NotActions = list(
+#'     "string"
+#'   ),
+#'   UserIds = list(
+#'     "string"
+#'   ),
+#'   NotUserIds = list(
+#'     "string"
+#'   ),
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_put_access_control_rule
+workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges = NULL, NotIpRanges = NULL, Actions = NULL, NotActions = NULL, UserIds = NULL, NotUserIds = NULL, OrganizationId) {
+  op <- new_operation(
+    name = "PutAccessControlRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$put_access_control_rule_input(Name = Name, Effect = Effect, Description = Description, IpRanges = IpRanges, NotIpRanges = NotIpRanges, Actions = Actions, NotActions = NotActions, UserIds = UserIds, NotUserIds = NotUserIds, OrganizationId = OrganizationId)
+  output <- .workmail$put_access_control_rule_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$put_access_control_rule <- workmail_put_access_control_rule
 
 #' Sets permissions for a user, group, or resource
 #'
@@ -1181,6 +1486,57 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
 }
 .workmail$operations$put_mailbox_permissions <- workmail_put_mailbox_permissions
 
+#' Puts a retention policy to the specified organization
+#'
+#' Puts a retention policy to the specified organization.
+#'
+#' @usage
+#' workmail_put_retention_policy(OrganizationId, Id, Name, Description,
+#'   FolderConfigurations)
+#'
+#' @param OrganizationId &#91;required&#93; The organization ID.
+#' @param Id The retention policy ID.
+#' @param Name &#91;required&#93; The retention policy name.
+#' @param Description The retention policy description.
+#' @param FolderConfigurations &#91;required&#93; The retention policy folder configurations.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_retention_policy(
+#'   OrganizationId = "string",
+#'   Id = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   FolderConfigurations = list(
+#'     list(
+#'       Name = "INBOX"|"DELETED_ITEMS"|"SENT_ITEMS"|"DRAFTS"|"JUNK_EMAIL",
+#'       Action = "NONE"|"DELETE"|"PERMANENTLY_DELETE",
+#'       Period = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_put_retention_policy
+workmail_put_retention_policy <- function(OrganizationId, Id = NULL, Name, Description = NULL, FolderConfigurations) {
+  op <- new_operation(
+    name = "PutRetentionPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$put_retention_policy_input(OrganizationId = OrganizationId, Id = Id, Name = Name, Description = Description, FolderConfigurations = FolderConfigurations)
+  output <- .workmail$put_retention_policy_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$put_retention_policy <- workmail_put_retention_policy
+
 #' Registers an existing and disabled user, group, or resource for Amazon
 #' WorkMail use by associating a mailbox and calendaring capabilities
 #'
@@ -1189,7 +1545,7 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
 #' performs no change if the user, group, or resource is enabled and fails
 #' if the user, group, or resource is deleted. This operation results in
 #' the accumulation of costs. For more information, see
-#' [Pricing](https://aws.amazon.com//workmail/pricing). The equivalent
+#' [Pricing](https://aws.amazon.com/workmail/pricing). The equivalent
 #' console functionality for this operation is *Enable*.
 #' 
 #' Users can either be created by calling the CreateUser API operation or
@@ -1273,6 +1629,93 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
   return(response)
 }
 .workmail$operations$reset_password <- workmail_reset_password
+
+#' Applies the specified tags to the specified Amazon WorkMail organization
+#' resource
+#'
+#' Applies the specified tags to the specified Amazon WorkMail organization
+#' resource.
+#'
+#' @usage
+#' workmail_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The resource ARN.
+#' @param Tags &#91;required&#93; The tag key-value pairs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_tag_resource
+workmail_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .workmail$tag_resource_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$tag_resource <- workmail_tag_resource
+
+#' Untags the specified tags from the specified Amazon WorkMail
+#' organization resource
+#'
+#' Untags the specified tags from the specified Amazon WorkMail
+#' organization resource.
+#'
+#' @usage
+#' workmail_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The resource ARN.
+#' @param TagKeys &#91;required&#93; The tag keys.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_untag_resource
+workmail_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .workmail$untag_resource_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$untag_resource <- workmail_untag_resource
 
 #' Updates a user's current mailbox quota for a specified organization and
 #' user

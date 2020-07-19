@@ -2,7 +2,7 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_decline_invitations}
 \alias{guardduty_decline_invitations}
-\title{Declines invitations sent to the current member account by AWS account
+\title{Declines invitations sent to the current member account by AWS accounts
 specified by their account IDs}
 \usage{
 guardduty_decline_invitations(AccountIds)
@@ -12,7 +12,7 @@ guardduty_decline_invitations(AccountIds)
 current member account that you want to decline invitations from.}
 }
 \description{
-Declines invitations sent to the current member account by AWS account
+Declines invitations sent to the current member account by AWS accounts
 specified by their account IDs.
 }
 \section{Request syntax}{

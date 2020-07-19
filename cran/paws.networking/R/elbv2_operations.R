@@ -77,7 +77,7 @@ elbv2_add_listener_certificates <- function(ListenerArn, Certificates) {
 #' elbv2_add_tags(ResourceArns, Tags)
 #'
 #' @param ResourceArns &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#' @param Tags &#91;required&#93; The tags. Each resource can have a maximum of 10 tags.
+#' @param Tags &#91;required&#93; The tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -158,7 +158,7 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #'
 #' @usage
 #' elbv2_create_listener(LoadBalancerArn, Protocol, Port, SslPolicy,
-#'   Certificates, DefaultActions)
+#'   Certificates, DefaultActions, AlpnPolicy)
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param Protocol &#91;required&#93; The protocol for connections from clients to the load balancer. For
@@ -167,8 +167,32 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' and TCP\\_UDP.
 #' @param Port &#91;required&#93; The port on which the load balancer is listening.
 #' @param SslPolicy \[HTTPS and TLS listeners\] The security policy that defines which
-#' ciphers and protocols are supported. The default is the current
-#' predefined security policy.
+#' protocols and ciphers are supported. The following are the possible
+#' values:
+#' 
+#' -   `ELBSecurityPolicy-2016-08`
+#' 
+#' -   `ELBSecurityPolicy-TLS-1-0-2015-04`
+#' 
+#' -   `ELBSecurityPolicy-TLS-1-1-2017-01`
+#' 
+#' -   `ELBSecurityPolicy-TLS-1-2-2017-01`
+#' 
+#' -   `ELBSecurityPolicy-TLS-1-2-Ext-2018-06`
+#' 
+#' -   `ELBSecurityPolicy-FS-2018-06`
+#' 
+#' -   `ELBSecurityPolicy-FS-1-1-2019-08`
+#' 
+#' -   `ELBSecurityPolicy-FS-1-2-2019-08`
+#' 
+#' -   `ELBSecurityPolicy-FS-1-2-Res-2019-08`
+#' 
+#' For more information, see [Security
+#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+#' in the *Application Load Balancers Guide* and [Security
+#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies)
+#' in the *Network Load Balancers Guide*.
 #' @param Certificates \[HTTPS and TLS listeners\] The default certificate for the listener.
 #' You must provide exactly one certificate. Set `CertificateArn` to the
 #' certificate ARN but do not set `IsDefault`.
@@ -195,6 +219,23 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' 
 #' \[Application Load Balancer\] If the action type is `fixed-response`,
 #' you drop specified client requests and return a custom HTTP response.
+#' @param AlpnPolicy \[TLS listeners\] The name of the Application-Layer Protocol Negotiation
+#' (ALPN) policy. You can specify one policy name. The following are the
+#' possible values:
+#' 
+#' -   `HTTP1Only`
+#' 
+#' -   `HTTP2Only`
+#' 
+#' -   `HTTP2Optional`
+#' 
+#' -   `HTTP2Preferred`
+#' 
+#' -   `None`
+#' 
+#' For more information, see [ALPN
+#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies)
+#' in the *Network Load Balancers Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -268,6 +309,9 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   AlpnPolicy = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -317,14 +361,14 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' @keywords internal
 #'
 #' @rdname elbv2_create_listener
-elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = NULL, Certificates = NULL, DefaultActions) {
+elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = NULL, Certificates = NULL, DefaultActions, AlpnPolicy = NULL) {
   op <- new_operation(
     name = "CreateListener",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$create_listener_input(LoadBalancerArn = LoadBalancerArn, Protocol = Protocol, Port = Port, SslPolicy = SslPolicy, Certificates = Certificates, DefaultActions = DefaultActions)
+  input <- .elbv2$create_listener_input(LoadBalancerArn = LoadBalancerArn, Protocol = Protocol, Port = Port, SslPolicy = SslPolicy, Certificates = Certificates, DefaultActions = DefaultActions, AlpnPolicy = AlpnPolicy)
   output <- .elbv2$create_listener_output()
   config <- get_config()
   svc <- .elbv2$service(config)
@@ -1503,7 +1547,8 @@ elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = 
 #' @usage
 #' elbv2_describe_tags(ResourceArns)
 #'
-#' @param ResourceArns &#91;required&#93; The Amazon Resource Names (ARN) of the resources.
+#' @param ResourceArns &#91;required&#93; The Amazon Resource Names (ARN) of the resources. You can specify up to
+#' 20 resources in a single call.
 #'
 #' @section Request syntax:
 #' ```
@@ -1744,7 +1789,7 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #'
 #' @usage
 #' elbv2_modify_listener(ListenerArn, Port, Protocol, SslPolicy,
-#'   Certificates, DefaultActions)
+#'   Certificates, DefaultActions, AlpnPolicy)
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
 #' @param Port The port for connections from clients to the load balancer.
@@ -1752,9 +1797,32 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' Application Load Balancers support the HTTP and HTTPS protocols. Network
 #' Load Balancers support the TCP, TLS, UDP, and TCP\\_UDP protocols.
 #' @param SslPolicy \[HTTPS and TLS listeners\] The security policy that defines which
-#' protocols and ciphers are supported. For more information, see [Security
+#' protocols and ciphers are supported. The following are the possible
+#' values:
+#' 
+#' -   `ELBSecurityPolicy-2016-08`
+#' 
+#' -   `ELBSecurityPolicy-TLS-1-0-2015-04`
+#' 
+#' -   `ELBSecurityPolicy-TLS-1-1-2017-01`
+#' 
+#' -   `ELBSecurityPolicy-TLS-1-2-2017-01`
+#' 
+#' -   `ELBSecurityPolicy-TLS-1-2-Ext-2018-06`
+#' 
+#' -   `ELBSecurityPolicy-FS-2018-06`
+#' 
+#' -   `ELBSecurityPolicy-FS-1-1-2019-08`
+#' 
+#' -   `ELBSecurityPolicy-FS-1-2-2019-08`
+#' 
+#' -   `ELBSecurityPolicy-FS-1-2-Res-2019-08`
+#' 
+#' For more information, see [Security
 #' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
-#' in the *Application Load Balancers Guide*.
+#' in the *Application Load Balancers Guide* and [Security
+#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies)
+#' in the *Network Load Balancers Guide*.
 #' @param Certificates \[HTTPS and TLS listeners\] The default certificate for the listener.
 #' You must provide exactly one certificate. Set `CertificateArn` to the
 #' certificate ARN but do not set `IsDefault`.
@@ -1780,6 +1848,23 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' 
 #' \[Application Load Balancer\] If the action type is `fixed-response`,
 #' you drop specified client requests and return a custom HTTP response.
+#' @param AlpnPolicy \[TLS listeners\] The name of the Application-Layer Protocol Negotiation
+#' (ALPN) policy. You can specify one policy name. The following are the
+#' possible values:
+#' 
+#' -   `HTTP1Only`
+#' 
+#' -   `HTTP2Only`
+#' 
+#' -   `HTTP2Optional`
+#' 
+#' -   `HTTP2Preferred`
+#' 
+#' -   `None`
+#' 
+#' For more information, see [ALPN
+#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies)
+#' in the *Network Load Balancers Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -1853,6 +1938,9 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   AlpnPolicy = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -1885,14 +1973,14 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' @keywords internal
 #'
 #' @rdname elbv2_modify_listener
-elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, SslPolicy = NULL, Certificates = NULL, DefaultActions = NULL) {
+elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, SslPolicy = NULL, Certificates = NULL, DefaultActions = NULL, AlpnPolicy = NULL) {
   op <- new_operation(
     name = "ModifyListener",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$modify_listener_input(ListenerArn = ListenerArn, Port = Port, Protocol = Protocol, SslPolicy = SslPolicy, Certificates = Certificates, DefaultActions = DefaultActions)
+  input <- .elbv2$modify_listener_input(ListenerArn = ListenerArn, Port = Port, Protocol = Protocol, SslPolicy = SslPolicy, Certificates = Certificates, DefaultActions = DefaultActions, AlpnPolicy = AlpnPolicy)
   output <- .elbv2$modify_listener_output()
   config <- get_config()
   svc <- .elbv2$service(config)

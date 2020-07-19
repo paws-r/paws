@@ -2,18 +2,19 @@
 % Please edit documentation in R/codeguruprofiler_operations.R
 \name{codeguruprofiler_update_profiling_group}
 \alias{codeguruprofiler_update_profiling_group}
-\title{Update a profiling group}
+\title{Updates a profiling group}
 \usage{
 codeguruprofiler_update_profiling_group(agentOrchestrationConfig,
   profilingGroupName)
 }
 \arguments{
-\item{agentOrchestrationConfig}{[required] Remote configuration to configure the agents of the profiling group.}
+\item{agentOrchestrationConfig}{[required] Specifies whether profiling is enabled or disabled for a profiling
+group.}
 
-\item{profilingGroupName}{[required]}
+\item{profilingGroupName}{[required] The name of the profiling group to update.}
 }
 \description{
-Update a profiling group.
+Updates a profiling group.
 }
 \section{Request syntax}{
 \preformatted{svc$update_profiling_group(

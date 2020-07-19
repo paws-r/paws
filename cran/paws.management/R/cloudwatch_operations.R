@@ -5,8 +5,28 @@ NULL
 
 #' Deletes the specified alarms
 #'
-#' Deletes the specified alarms. You can delete up to 50 alarms in one
-#' operation. In the event of an error, no alarms are deleted.
+#' Deletes the specified alarms. You can delete up to 100 alarms in one
+#' operation. However, this total can include no more than one composite
+#' alarm. For example, you could delete 99 metric alarms and one composite
+#' alarms with one operation, but you can\'t delete two composite alarms
+#' with one operation.
+#' 
+#' In the event of an error, no alarms are deleted.
+#' 
+#' It is possible to create a loop or cycle of composite alarms, where
+#' composite alarm A depends on composite alarm B, and composite alarm B
+#' also depends on composite alarm A. In this scenario, you can\'t delete
+#' any composite alarm that is part of the cycle because there is always
+#' still a composite alarm that depends on that alarm that you want to
+#' delete.
+#' 
+#' To get out of such a situation, you must break the cycle by changing the
+#' rule of one of the composite alarms in the cycle to remove a dependency
+#' that creates the cycle. The simplest change to make to break a cycle is
+#' to change the `AlarmRule` of one of the alarms to `False`.
+#' 
+#' Additionally, the evaluation of composite alarms stops if CloudWatch
+#' detects a cycle in the evaluation path.
 #'
 #' @usage
 #' cloudwatch_delete_alarms(AlarmNames)
@@ -143,7 +163,8 @@ cloudwatch_delete_dashboards <- function(DashboardNames) {
 #' cloudwatch_delete_insight_rules(RuleNames)
 #'
 #' @param RuleNames &#91;required&#93; An array of the rule names to delete. If you need to find out the names
-#' of your rules, use DescribeInsightRules.
+#' of your rules, use
+#' [DescribeInsightRules](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -178,26 +199,37 @@ cloudwatch_delete_insight_rules <- function(RuleNames) {
 #'
 #' Retrieves the history for the specified alarm. You can filter the
 #' results by date range or item type. If an alarm name is not specified,
-#' the histories for all alarms are returned.
+#' the histories for either all metric alarms or all composite alarms are
+#' returned.
 #' 
 #' CloudWatch retains the history of an alarm even if you delete the alarm.
 #'
 #' @usage
-#' cloudwatch_describe_alarm_history(AlarmName, HistoryItemType, StartDate,
-#'   EndDate, MaxRecords, NextToken)
+#' cloudwatch_describe_alarm_history(AlarmName, AlarmTypes,
+#'   HistoryItemType, StartDate, EndDate, MaxRecords, NextToken, ScanBy)
 #'
 #' @param AlarmName The name of the alarm.
+#' @param AlarmTypes Use this parameter to specify whether you want the operation to return
+#' metric alarms or composite alarms. If you omit this parameter, only
+#' metric alarms are returned.
 #' @param HistoryItemType The type of alarm histories to retrieve.
 #' @param StartDate The starting date to retrieve alarm history.
 #' @param EndDate The ending date to retrieve alarm history.
 #' @param MaxRecords The maximum number of alarm history records to retrieve.
 #' @param NextToken The token returned by a previous call to indicate that there is more
 #' data available.
+#' @param ScanBy Specified whether to return the newest or oldest alarm history first.
+#' Specify `TimestampDescending` to have the newest event history returned
+#' first, and specify `TimestampAscending` to have the oldest history
+#' returned first.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_alarm_history(
 #'   AlarmName = "string",
+#'   AlarmTypes = list(
+#'     "CompositeAlarm"|"MetricAlarm"
+#'   ),
 #'   HistoryItemType = "ConfigurationUpdate"|"StateUpdate"|"Action",
 #'   StartDate = as.POSIXct(
 #'     "2015-01-01"
@@ -206,21 +238,22 @@ cloudwatch_delete_insight_rules <- function(RuleNames) {
 #'     "2015-01-01"
 #'   ),
 #'   MaxRecords = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   ScanBy = "TimestampDescending"|"TimestampAscending"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatch_describe_alarm_history
-cloudwatch_describe_alarm_history <- function(AlarmName = NULL, HistoryItemType = NULL, StartDate = NULL, EndDate = NULL, MaxRecords = NULL, NextToken = NULL) {
+cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NULL, HistoryItemType = NULL, StartDate = NULL, EndDate = NULL, MaxRecords = NULL, NextToken = NULL, ScanBy = NULL) {
   op <- new_operation(
     name = "DescribeAlarmHistory",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatch$describe_alarm_history_input(AlarmName = AlarmName, HistoryItemType = HistoryItemType, StartDate = StartDate, EndDate = EndDate, MaxRecords = MaxRecords, NextToken = NextToken)
+  input <- .cloudwatch$describe_alarm_history_input(AlarmName = AlarmName, AlarmTypes = AlarmTypes, HistoryItemType = HistoryItemType, StartDate = StartDate, EndDate = EndDate, MaxRecords = MaxRecords, NextToken = NextToken, ScanBy = ScanBy)
   output <- .cloudwatch$describe_alarm_history_output()
   config <- get_config()
   svc <- .cloudwatch$service(config)
@@ -232,19 +265,62 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, HistoryItemType 
 
 #' Retrieves the specified alarms
 #'
-#' Retrieves the specified alarms. If no alarms are specified, all alarms
-#' are returned. Alarms can be retrieved by using only a prefix for the
-#' alarm name, the alarm state, or a prefix for any action.
+#' Retrieves the specified alarms. You can filter the results by specifying
+#' a a prefix for the alarm name, the alarm state, or a prefix for any
+#' action.
 #'
 #' @usage
-#' cloudwatch_describe_alarms(AlarmNames, AlarmNamePrefix, StateValue,
-#'   ActionPrefix, MaxRecords, NextToken)
+#' cloudwatch_describe_alarms(AlarmNames, AlarmNamePrefix, AlarmTypes,
+#'   ChildrenOfAlarmName, ParentsOfAlarmName, StateValue, ActionPrefix,
+#'   MaxRecords, NextToken)
 #'
-#' @param AlarmNames The names of the alarms.
-#' @param AlarmNamePrefix The alarm name prefix. If this parameter is specified, you cannot
-#' specify `AlarmNames`.
-#' @param StateValue The state value to be used in matching alarms.
-#' @param ActionPrefix The action name prefix.
+#' @param AlarmNames The names of the alarms to retrieve information about.
+#' @param AlarmNamePrefix An alarm name prefix. If you specify this parameter, you receive
+#' information about all alarms that have names that start with this
+#' prefix.
+#' 
+#' If this parameter is specified, you cannot specify `AlarmNames`.
+#' @param AlarmTypes Use this parameter to specify whether you want the operation to return
+#' metric alarms or composite alarms. If you omit this parameter, only
+#' metric alarms are returned.
+#' @param ChildrenOfAlarmName If you use this parameter and specify the name of a composite alarm, the
+#' operation returns information about the \"children\" alarms of the alarm
+#' you specify. These are the metric alarms and composite alarms referenced
+#' in the `AlarmRule` field of the composite alarm that you specify in
+#' `ChildrenOfAlarmName`. Information about the composite alarm that you
+#' name in `ChildrenOfAlarmName` is not returned.
+#' 
+#' If you specify `ChildrenOfAlarmName`, you cannot specify any other
+#' parameters in the request except for `MaxRecords` and `NextToken`. If
+#' you do so, you will receive a validation error.
+#' 
+#' Only the `Alarm Name`, `ARN`, `StateValue`
+#' (OK/ALARM/INSUFFICIENT\\_DATA), and `StateUpdatedTimestamp` information
+#' are returned by this operation when you use this parameter. To get
+#' complete information about these alarms, perform another
+#' `DescribeAlarms` operation and specify the parent alarm names in the
+#' `AlarmNames` parameter.
+#' @param ParentsOfAlarmName If you use this parameter and specify the name of a metric or composite
+#' alarm, the operation returns information about the \"parent\" alarms of
+#' the alarm you specify. These are the composite alarms that have
+#' `AlarmRule` parameters that reference the alarm named in
+#' `ParentsOfAlarmName`. Information about the alarm that you specify in
+#' `ParentsOfAlarmName` is not returned.
+#' 
+#' If you specify `ParentsOfAlarmName`, you cannot specify any other
+#' parameters in the request except for `MaxRecords` and `NextToken`. If
+#' you do so, you will receive a validation error.
+#' 
+#' Only the Alarm Name and ARN are returned by this operation when you use
+#' this parameter. To get complete information about these alarms, perform
+#' another `DescribeAlarms` operation and specify the parent alarm names in
+#' the `AlarmNames` parameter.
+#' @param StateValue Specify this parameter to receive information only about alarms that are
+#' currently in the state that you specify.
+#' @param ActionPrefix Use this parameter to filter the results of the operation to only those
+#' alarms that use a certain alarm action. For example, you could specify
+#' the ARN of an SNS topic to find all alarms that send notifications to
+#' that topic.
 #' @param MaxRecords The maximum number of alarm descriptions to retrieve.
 #' @param NextToken The token returned by a previous call to indicate that there is more
 #' data available.
@@ -256,6 +332,11 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, HistoryItemType 
 #'     "string"
 #'   ),
 #'   AlarmNamePrefix = "string",
+#'   AlarmTypes = list(
+#'     "CompositeAlarm"|"MetricAlarm"
+#'   ),
+#'   ChildrenOfAlarmName = "string",
+#'   ParentsOfAlarmName = "string",
 #'   StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
 #'   ActionPrefix = "string",
 #'   MaxRecords = 123,
@@ -266,14 +347,14 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, HistoryItemType 
 #' @keywords internal
 #'
 #' @rdname cloudwatch_describe_alarms
-cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL, StateValue = NULL, ActionPrefix = NULL, MaxRecords = NULL, NextToken = NULL) {
+cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL, AlarmTypes = NULL, ChildrenOfAlarmName = NULL, ParentsOfAlarmName = NULL, StateValue = NULL, ActionPrefix = NULL, MaxRecords = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeAlarms",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatch$describe_alarms_input(AlarmNames = AlarmNames, AlarmNamePrefix = AlarmNamePrefix, StateValue = StateValue, ActionPrefix = ActionPrefix, MaxRecords = MaxRecords, NextToken = NextToken)
+  input <- .cloudwatch$describe_alarms_input(AlarmNames = AlarmNames, AlarmNamePrefix = AlarmNamePrefix, AlarmTypes = AlarmTypes, ChildrenOfAlarmName = ChildrenOfAlarmName, ParentsOfAlarmName = ParentsOfAlarmName, StateValue = StateValue, ActionPrefix = ActionPrefix, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .cloudwatch$describe_alarms_output()
   config <- get_config()
   svc <- .cloudwatch$service(config)
@@ -356,7 +437,7 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
 #' @param NextToken Use the token returned by the previous operation to request the next
 #' page of results.
 #' @param MaxResults The maximum number of results to return in one operation. The maximum
-#' value you can specify is 10.
+#' value that you can specify is 100.
 #' 
 #' To retrieve the remaining results, make another call with the returned
 #' `NextToken` value.
@@ -500,7 +581,8 @@ cloudwatch_disable_alarm_actions <- function(AlarmNames) {
 #' cloudwatch_disable_insight_rules(RuleNames)
 #'
 #' @param RuleNames &#91;required&#93; An array of the rule names to disable. If you need to find out the names
-#' of your rules, use DescribeInsightRules.
+#' of your rules, use
+#' [DescribeInsightRules](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -578,7 +660,8 @@ cloudwatch_enable_alarm_actions <- function(AlarmNames) {
 #' cloudwatch_enable_insight_rules(RuleNames)
 #'
 #' @param RuleNames &#91;required&#93; An array of the rule names to enable. If you need to find out the names
-#' of your rules, use DescribeInsightRules.
+#' of your rules, use
+#' [DescribeInsightRules](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -772,11 +855,11 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 }
 .cloudwatch$operations$get_insight_rule_report <- cloudwatch_get_insight_rule_report
 
-#' You can use the GetMetricData API to retrieve as many as 100 different
+#' You can use the GetMetricData API to retrieve as many as 500 different
 #' metrics in a single request, with a total of as many as 100,800 data
 #' points
 #'
-#' You can use the `GetMetricData` API to retrieve as many as 100 different
+#' You can use the `GetMetricData` API to retrieve as many as 500 different
 #' metrics in a single request, with a total of as many as 100,800 data
 #' points. You can also optionally perform math expressions on the values
 #' of the returned statistics, to create new time series that represent new
@@ -828,7 +911,7 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #'   NextToken, ScanBy, MaxDatapoints)
 #'
 #' @param MetricDataQueries &#91;required&#93; The metric queries to be returned. A single `GetMetricData` call can
-#' include as many as 100 `MetricDataQuery` structures. Each of these
+#' include as many as 500 `MetricDataQuery` structures. Each of these
 #' structures can specify either a metric to retrieve, or a math expression
 #' to perform on retrieved data.
 #' @param StartTime &#91;required&#93; The time stamp indicating the earliest data to be returned.
@@ -1165,7 +1248,8 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 #' parameter in each `GetMetricWidgetImage` call.
 #' 
 #' For more information about the syntax of `MetricWidget` see
-#' CloudWatch-Metric-Widget-Structure.
+#' [GetMetricWidgetImage: Metric Widget Structure and
+#' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Metric-Widget-Structure.html).
 #' 
 #' If any metric on the graph could not load all the requested data points,
 #' an orange triangle with an exclamation point appears next to the graph
@@ -1281,14 +1365,20 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
 #' List the specified metrics
 #'
 #' List the specified metrics. You can use the returned metrics with
-#' GetMetricData or GetMetricStatistics to obtain statistical data.
+#' [GetMetricData](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
+#' or
+#' [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html)
+#' to obtain statistical data.
 #' 
 #' Up to 500 results are returned for any one call. To retrieve additional
 #' results, use the returned token with subsequent calls.
 #' 
 #' After you create a metric, allow up to fifteen minutes before the metric
 #' appears. Statistics about the metric, however, are available sooner
-#' using GetMetricData or GetMetricStatistics.
+#' using
+#' [GetMetricData](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
+#' or
+#' [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html).
 #'
 #' @usage
 #' cloudwatch_list_metrics(Namespace, MetricName, Dimensions, NextToken)
@@ -1336,15 +1426,23 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
 
 #' Displays the tags associated with a CloudWatch resource
 #'
-#' Displays the tags associated with a CloudWatch resource. Alarms support
-#' tagging.
+#' Displays the tags associated with a CloudWatch resource. Currently,
+#' alarms and Contributor Insights rules support tagging.
 #'
 #' @usage
 #' cloudwatch_list_tags_for_resource(ResourceARN)
 #'
-#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you want to view tags for. For
-#' more information on ARN format, see [Example
-#' ARNs](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-cloudwatch)
+#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you want to view tags for.
+#' 
+#' The ARN format of an alarm is
+#' `arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:alarm:<i>alarm-name</i> `
+#' 
+#' The ARN format of a Contributor Insights rule is
+#' `arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:insight-rule:<i>insight-rule-name</i> `
+#' 
+#' For more information on ARN format, see [Resource Types Defined by
+#' Amazon
+#' CloudWatch](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @section Request syntax:
@@ -1447,6 +1545,186 @@ cloudwatch_put_anomaly_detector <- function(Namespace, MetricName, Dimensions = 
 }
 .cloudwatch$operations$put_anomaly_detector <- cloudwatch_put_anomaly_detector
 
+#' Creates or updates a _composite alarm_
+#'
+#' Creates or updates a *composite alarm*. When you create a composite
+#' alarm, you specify a rule expression for the alarm that takes into
+#' account the alarm states of other alarms that you have created. The
+#' composite alarm goes into ALARM state only if all conditions of the rule
+#' are met.
+#' 
+#' The alarms specified in a composite alarm\'s rule expression can include
+#' metric alarms and other composite alarms.
+#' 
+#' Using composite alarms can reduce alarm noise. You can create multiple
+#' metric alarms, and also create a composite alarm and set up alerts only
+#' for the composite alarm. For example, you could create a composite alarm
+#' that goes into ALARM state only when more than one of the underlying
+#' metric alarms are in ALARM state.
+#' 
+#' Currently, the only alarm actions that can be taken by composite alarms
+#' are notifying SNS topics.
+#' 
+#' It is possible to create a loop or cycle of composite alarms, where
+#' composite alarm A depends on composite alarm B, and composite alarm B
+#' also depends on composite alarm A. In this scenario, you can\'t delete
+#' any composite alarm that is part of the cycle because there is always
+#' still a composite alarm that depends on that alarm that you want to
+#' delete.
+#' 
+#' To get out of such a situation, you must break the cycle by changing the
+#' rule of one of the composite alarms in the cycle to remove a dependency
+#' that creates the cycle. The simplest change to make to break a cycle is
+#' to change the `AlarmRule` of one of the alarms to `False`.
+#' 
+#' Additionally, the evaluation of composite alarms stops if CloudWatch
+#' detects a cycle in the evaluation path.
+#' 
+#' When this operation creates an alarm, the alarm state is immediately set
+#' to `INSUFFICIENT_DATA`. The alarm is then evaluated and its state is set
+#' appropriately. Any actions associated with the new state are then
+#' executed. For a composite alarm, this initial time after creation is the
+#' only time that the alarm can be in `INSUFFICIENT_DATA` state.
+#' 
+#' When you update an existing alarm, its state is left unchanged, but the
+#' update completely overwrites the previous configuration of the alarm.
+#'
+#' @usage
+#' cloudwatch_put_composite_alarm(ActionsEnabled, AlarmActions,
+#'   AlarmDescription, AlarmName, AlarmRule, InsufficientDataActions,
+#'   OKActions, Tags)
+#'
+#' @param ActionsEnabled Indicates whether actions should be executed during any changes to the
+#' alarm state of the composite alarm. The default is `TRUE`.
+#' @param AlarmActions The actions to execute when this alarm transitions to the `ALARM` state
+#' from any other state. Each action is specified as an Amazon Resource
+#' Name (ARN).
+#' 
+#' Valid Values:
+#' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> `
+#' @param AlarmDescription The description for the composite alarm.
+#' @param AlarmName &#91;required&#93; The name for the composite alarm. This name must be unique within your
+#' AWS account.
+#' @param AlarmRule &#91;required&#93; An expression that specifies which other alarms are to be evaluated to
+#' determine this composite alarm\'s state. For each alarm that you
+#' reference, you designate a function that specifies whether that alarm
+#' needs to be in ALARM state, OK state, or INSUFFICIENT\\_DATA state. You
+#' can use operators (AND, OR and NOT) to combine multiple functions in a
+#' single expression. You can use parenthesis to logically group the
+#' functions in your expression.
+#' 
+#' You can use either alarm names or ARNs to reference the other alarms
+#' that are to be evaluated.
+#' 
+#' Functions can include the following:
+#' 
+#' -   `ALARM("<i>alarm-name</i> or <i>alarm-ARN</i>")` is TRUE if the
+#'     named alarm is in ALARM state.
+#' 
+#' -   `OK("<i>alarm-name</i> or <i>alarm-ARN</i>")` is TRUE if the named
+#'     alarm is in OK state.
+#' 
+#' -   `INSUFFICIENT_DATA("<i>alarm-name</i> or <i>alarm-ARN</i>")` is TRUE
+#'     if the named alarm is in INSUFFICIENT\\_DATA state.
+#' 
+#' -   `TRUE` always evaluates to TRUE.
+#' 
+#' -   `FALSE` always evaluates to FALSE.
+#' 
+#' TRUE and FALSE are useful for testing a complex `AlarmRule` structure,
+#' and for testing your alarm actions.
+#' 
+#' Alarm names specified in `AlarmRule` can be surrounded with
+#' double-quotes (\"), but do not have to be.
+#' 
+#' The following are some examples of `AlarmRule`:
+#' 
+#' -   `ALARM(CPUUtilizationTooHigh) AND ALARM(DiskReadOpsTooHigh)`
+#'     specifies that the composite alarm goes into ALARM state only if
+#'     both CPUUtilizationTooHigh and DiskReadOpsTooHigh alarms are in
+#'     ALARM state.
+#' 
+#' -   `ALARM(CPUUtilizationTooHigh) AND NOT ALARM(DeploymentInProgress)`
+#'     specifies that the alarm goes to ALARM state if
+#'     CPUUtilizationTooHigh is in ALARM state and DeploymentInProgress is
+#'     not in ALARM state. This example reduces alarm noise during a known
+#'     deployment window.
+#' 
+#' -   `(ALARM(CPUUtilizationTooHigh) OR ALARM(DiskReadOpsTooHigh)) AND OK(NetworkOutTooHigh)`
+#'     goes into ALARM state if CPUUtilizationTooHigh OR DiskReadOpsTooHigh
+#'     is in ALARM state, and if NetworkOutTooHigh is in OK state. This
+#'     provides another example of using a composite alarm to prevent
+#'     noise. This rule ensures that you are not notified with an alarm
+#'     action on high CPU or disk usage if a known network problem is also
+#'     occurring.
+#' 
+#' The `AlarmRule` can specify as many as 100 \"children\" alarms. The
+#' `AlarmRule` expression can have as many as 500 elements. Elements are
+#' child alarms, TRUE or FALSE statements, and parentheses.
+#' @param InsufficientDataActions The actions to execute when this alarm transitions to the
+#' `INSUFFICIENT_DATA` state from any other state. Each action is specified
+#' as an Amazon Resource Name (ARN).
+#' 
+#' Valid Values:
+#' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> `
+#' @param OKActions The actions to execute when this alarm transitions to an `OK` state from
+#' any other state. Each action is specified as an Amazon Resource Name
+#' (ARN).
+#' 
+#' Valid Values:
+#' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> `
+#' @param Tags A list of key-value pairs to associate with the composite alarm. You can
+#' associate as many as 50 tags with an alarm.
+#' 
+#' Tags can help you organize and categorize your resources. You can also
+#' use them to scope user permissions, by granting a user permission to
+#' access or change only resources with certain tag values.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_composite_alarm(
+#'   ActionsEnabled = TRUE|FALSE,
+#'   AlarmActions = list(
+#'     "string"
+#'   ),
+#'   AlarmDescription = "string",
+#'   AlarmName = "string",
+#'   AlarmRule = "string",
+#'   InsufficientDataActions = list(
+#'     "string"
+#'   ),
+#'   OKActions = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_put_composite_alarm
+cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions = NULL, AlarmDescription = NULL, AlarmName, AlarmRule, InsufficientDataActions = NULL, OKActions = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "PutCompositeAlarm",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$put_composite_alarm_input(ActionsEnabled = ActionsEnabled, AlarmActions = AlarmActions, AlarmDescription = AlarmDescription, AlarmName = AlarmName, AlarmRule = AlarmRule, InsufficientDataActions = InsufficientDataActions, OKActions = OKActions, Tags = Tags)
+  output <- .cloudwatch$put_composite_alarm_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$put_composite_alarm <- cloudwatch_put_composite_alarm
+
 #' Creates a dashboard if it does not already exist, or updates an existing
 #' dashboard
 #'
@@ -1483,8 +1761,8 @@ cloudwatch_put_anomaly_detector <- function(Namespace, MetricName, Dimensions = 
 #' the widgets to include and their location on the dashboard. This
 #' parameter is required.
 #' 
-#' For more information about the syntax, see
-#' CloudWatch-Dashboard-Body-Structure.
+#' For more information about the syntax, see [Dashboard Body Structure and
+#' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -1527,34 +1805,55 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' may not be available.
 #'
 #' @usage
-#' cloudwatch_put_insight_rule(RuleName, RuleState, RuleDefinition)
+#' cloudwatch_put_insight_rule(RuleName, RuleState, RuleDefinition, Tags)
 #'
 #' @param RuleName &#91;required&#93; A unique name for the rule.
 #' @param RuleState The state of the rule. Valid values are ENABLED and DISABLED.
 #' @param RuleDefinition &#91;required&#93; The definition of the rule, as a JSON object. For details on the valid
 #' syntax, see [Contributor Insights Rule
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights-RuleSyntax.html).
+#' @param Tags A list of key-value pairs to associate with the Contributor Insights
+#' rule. You can associate as many as 50 tags with a rule.
+#' 
+#' Tags can help you organize and categorize your resources. You can also
+#' use them to scope user permissions, by granting a user permission to
+#' access or change only the resources that have certain tag values.
+#' 
+#' To be able to associate tags with a rule, you must have the
+#' `cloudwatch:TagResource` permission in addition to the
+#' `cloudwatch:PutInsightRule` permission.
+#' 
+#' If you are using this operation to update an existing Contributor
+#' Insights rule, any tags you specify in this parameter are ignored. To
+#' change the tags of an existing rule, use
+#' [TagResource](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_TagResource.html).
 #'
 #' @section Request syntax:
 #' ```
 #' svc$put_insight_rule(
 #'   RuleName = "string",
 #'   RuleState = "string",
-#'   RuleDefinition = "string"
+#'   RuleDefinition = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_insight_rule
-cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefinition) {
+cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefinition, Tags = NULL) {
   op <- new_operation(
     name = "PutInsightRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatch$put_insight_rule_input(RuleName = RuleName, RuleState = RuleState, RuleDefinition = RuleDefinition)
+  input <- .cloudwatch$put_insight_rule_input(RuleName = RuleName, RuleState = RuleState, RuleDefinition = RuleDefinition, Tags = Tags)
   output <- .cloudwatch$put_insight_rule_output()
   config <- get_config()
   svc <- .cloudwatch$service(config)
@@ -1638,7 +1937,7 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' `arn:aws:automate:<i>region</i>:ec2:recover` \\|
 #' `arn:aws:automate:<i>region</i>:ec2:reboot` \\|
 #' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> ` \\|
-#' `arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> `
+#' `arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>:autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> `
 #' 
 #' Valid Values (for use with IAM roles):
 #' `arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0`
@@ -1655,7 +1954,7 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' `arn:aws:automate:<i>region</i>:ec2:recover` \\|
 #' `arn:aws:automate:<i>region</i>:ec2:reboot` \\|
 #' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> ` \\|
-#' `arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> `
+#' `arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>:autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> `
 #' 
 #' Valid Values (for use with IAM roles):
 #' `arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0`
@@ -1672,7 +1971,7 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' `arn:aws:automate:<i>region</i>:ec2:recover` \\|
 #' `arn:aws:automate:<i>region</i>:ec2:reboot` \\|
 #' `arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> ` \\|
-#' `arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> `
+#' `arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>:autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> `
 #' 
 #' Valid Values (for use with IAM roles):
 #' `&gt;arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0`
@@ -1790,7 +2089,8 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' 
 #' One item in the `Metrics` array is the expression that the alarm
 #' watches. You designate this expression by setting `ReturnValue` to true
-#' for this object in the array. For more information, see MetricDataQuery.
+#' for this object in the array. For more information, see
+#' [MetricDataQuery](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricDataQuery.html).
 #' 
 #' If you use the `Metrics` parameter, you cannot include the `MetricName`,
 #' `Dimensions`, `Period`, `Namespace`, `Statistic`, or `ExtendedStatistic`
@@ -1904,7 +2204,8 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #' the data points with the specified metric. If the specified metric does
 #' not exist, CloudWatch creates the metric. When CloudWatch creates a
 #' metric, it can take up to fifteen minutes for the metric to appear in
-#' calls to ListMetrics.
+#' calls to
+#' [ListMetrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListMetrics.html).
 #' 
 #' You can publish either individual data points in the `Value` field, or
 #' arrays of values and the number of times each value occurred during the
@@ -1929,8 +2230,15 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #' in the *Amazon CloudWatch User Guide*.
 #' 
 #' Data points with time stamps from 24 hours ago or longer can take at
-#' least 48 hours to become available for GetMetricData or
-#' GetMetricStatistics from the time they are submitted.
+#' least 48 hours to become available for
+#' [GetMetricData](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
+#' or
+#' [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html)
+#' from the time they are submitted. Data points with time stamps between 3
+#' and 24 hours ago can take as much as 2 hours to become available for for
+#' [GetMetricData](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
+#' or
+#' [GetMetricStatistics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html).
 #' 
 #' CloudWatch needs raw data points to calculate percentile statistics. If
 #' you publish data using a statistic set instead, you can only retrieve
@@ -2016,10 +2324,21 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' the appropriate state is invoked. For example, if your alarm is
 #' configured to send an Amazon SNS message when an alarm is triggered,
 #' temporarily changing the alarm state to `ALARM` sends an SNS message.
-#' The alarm returns to its actual state (often within seconds). Because
-#' the alarm state change happens quickly, it is typically only visible in
-#' the alarm\'s **History** tab in the Amazon CloudWatch console or through
-#' DescribeAlarmHistory.
+#' 
+#' Metric alarms returns to their actual state quickly, often within
+#' seconds. Because the metric alarm state change happens quickly, it is
+#' typically only visible in the alarm\'s **History** tab in the Amazon
+#' CloudWatch console or through
+#' [DescribeAlarmHistory](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarmHistory.html).
+#' 
+#' If you use `SetAlarmState` on a composite alarm, the composite alarm is
+#' not guaranteed to return to its actual state. It will return to its
+#' actual state only once any of its children alarms change state. It is
+#' also re-evaluated if you update its configuration.
+#' 
+#' If an alarm triggers EC2 Auto Scaling policies or application Auto
+#' Scaling policies, you must include information in the `StateReasonData`
+#' parameter to enable the policy to take the correct action.
 #'
 #' @usage
 #' cloudwatch_set_alarm_state(AlarmName, StateValue, StateReason,
@@ -2032,6 +2351,10 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' format.
 #' @param StateReasonData The reason that this alarm is set to this specific state, in JSON
 #' format.
+#' 
+#' For SNS or EC2 alarm actions, this is just informational. But for EC2
+#' Auto Scaling or application Auto Scaling alarm actions, the Auto Scaling
+#' policy uses the information in this field to take the correct action.
 #'
 #' @section Request syntax:
 #' ```
@@ -2068,7 +2391,7 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
 #'
 #' Assigns one or more tags (key-value pairs) to the specified CloudWatch
 #' resource. Currently, the only CloudWatch resources that can be tagged
-#' are alarms.
+#' are alarms and Contributor Insights rules.
 #' 
 #' Tags can help you organize and categorize your resources. You can also
 #' use them to scope user permissions, by granting a user permission to
@@ -2083,14 +2406,23 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
 #' that is already associated with the alarm, the new tag value that you
 #' specify replaces the previous value for that tag.
 #' 
-#' You can associate as many as 50 tags with a resource.
+#' You can associate as many as 50 tags with a CloudWatch resource.
 #'
 #' @usage
 #' cloudwatch_tag_resource(ResourceARN, Tags)
 #'
-#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch alarm that you\'re adding tags to. The ARN
-#' format is
+#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you\'re adding tags to.
+#' 
+#' The ARN format of an alarm is
 #' `arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:alarm:<i>alarm-name</i> `
+#' 
+#' The ARN format of a Contributor Insights rule is
+#' `arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:insight-rule:<i>insight-rule-name</i> `
+#' 
+#' For more information on ARN format, see [Resource Types Defined by
+#' Amazon
+#' CloudWatch](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies)
+#' in the *Amazon Web Services General Reference*.
 #' @param Tags &#91;required&#93; The list of key-value pairs to associate with the alarm.
 #'
 #' @section Request syntax:
@@ -2133,9 +2465,17 @@ cloudwatch_tag_resource <- function(ResourceARN, Tags) {
 #' @usage
 #' cloudwatch_untag_resource(ResourceARN, TagKeys)
 #'
-#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you\'re removing tags from. For
-#' more information on ARN format, see [Example
-#' ARNs](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-cloudwatch)
+#' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you\'re removing tags from.
+#' 
+#' The ARN format of an alarm is
+#' `arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:alarm:<i>alarm-name</i> `
+#' 
+#' The ARN format of a Contributor Insights rule is
+#' `arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:insight-rule:<i>insight-rule-name</i> `
+#' 
+#' For more information on ARN format, see [Resource Types Defined by
+#' Amazon
+#' CloudWatch](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies)
 #' in the *Amazon Web Services General Reference*.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
 #'

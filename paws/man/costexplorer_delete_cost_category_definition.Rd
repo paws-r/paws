@@ -2,8 +2,7 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_delete_cost_category_definition}
 \alias{costexplorer_delete_cost_category_definition}
-\title{_COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND
-IS SUBJECT TO CHANGE}
+\title{Deletes a Cost Category}
 \usage{
 costexplorer_delete_cost_category_definition(CostCategoryArn)
 }
@@ -11,11 +10,6 @@ costexplorer_delete_cost_category_definition(CostCategoryArn)
 \item{CostCategoryArn}{[required] The unique identifier for your Cost Category.}
 }
 \description{
-\emph{\strong{Cost Category is in public beta for AWS Billing and Cost Management
-and is subject to change. Your use of Cost Categories is subject to the
-Beta Service Participation terms of the \href{https://aws.amazon.com/service-terms/}{AWS Service Terms} (Section 1.10).}}
-}
-\details{
 Deletes a Cost Category. Expenses from this month going forward will no
 longer be categorized with this Cost Category.
 }

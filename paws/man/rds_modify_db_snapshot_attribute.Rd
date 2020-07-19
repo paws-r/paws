@@ -14,7 +14,10 @@ rds_modify_db_snapshot_attribute(DBSnapshotIdentifier, AttributeName,
 \item{AttributeName}{[required] The name of the DB snapshot attribute to modify.
 
 To manage authorization for other AWS accounts to copy or restore a
-manual DB snapshot, set this value to \code{restore}.}
+manual DB snapshot, set this value to \code{restore}.
+
+To view the list of attributes available to modify, use the
+DescribeDBSnapshotAttributes API action.}
 
 \item{ValuesToAdd}{A list of DB snapshot attributes to add to the attribute specified by
 \code{AttributeName}.
@@ -44,17 +47,20 @@ To share a manual DB snapshot with other AWS accounts, specify \code{restore}
 as the \code{AttributeName} and use the \code{ValuesToAdd} parameter to add a list
 of IDs of the AWS accounts that are authorized to restore the manual DB
 snapshot. Uses the value \code{all} to make the manual DB snapshot public,
-which means it can be copied or restored by all AWS accounts. Do not add
-the \code{all} value for any manual DB snapshots that contain private
-information that you don\'t want available to all AWS accounts. If the
-manual DB snapshot is encrypted, it can be shared, but only by
+which means it can be copied or restored by all AWS accounts.
+
+Don\'t add the \code{all} value for any manual DB snapshots that contain
+private information that you don\'t want available to all AWS accounts.
+
+If the manual DB snapshot is encrypted, it can be shared, but only by
 specifying a list of authorized AWS account IDs for the \code{ValuesToAdd}
 parameter. You can\'t use \code{all} as a value for that parameter in this
 case.
 
 To view which AWS accounts have access to copy or restore a manual DB
 snapshot, or whether a manual DB snapshot public or private, use the
-\code{DescribeDBSnapshotAttributes} API action.
+DescribeDBSnapshotAttributes API action. The accounts are returned as
+values for the \code{restore} attribute.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_db_snapshot_attribute(

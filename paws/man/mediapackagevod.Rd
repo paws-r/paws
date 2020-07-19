@@ -44,7 +44,11 @@ AWS Elemental MediaPackage VOD
 \link[=mediapackagevod_describe_packaging_group]{describe_packaging_group} \tab Returns a description of a MediaPackage VOD PackagingGroup resource \cr
 \link[=mediapackagevod_list_assets]{list_assets} \tab Returns a collection of MediaPackage VOD Asset resources \cr
 \link[=mediapackagevod_list_packaging_configurations]{list_packaging_configurations} \tab Returns a collection of MediaPackage VOD PackagingConfiguration resources \cr
-\link[=mediapackagevod_list_packaging_groups]{list_packaging_groups} \tab Returns a collection of MediaPackage VOD PackagingGroup resources
+\link[=mediapackagevod_list_packaging_groups]{list_packaging_groups} \tab Returns a collection of MediaPackage VOD PackagingGroup resources \cr
+\link[=mediapackagevod_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags assigned to the specified resource \cr
+\link[=mediapackagevod_tag_resource]{tag_resource} \tab Adds tags to the specified resource \cr
+\link[=mediapackagevod_untag_resource]{untag_resource} \tab Removes tags from the specified resource \cr
+\link[=mediapackagevod_update_packaging_group]{update_packaging_group} \tab Updates a specific packaging group
 }
 }
 

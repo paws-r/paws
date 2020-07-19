@@ -7,7 +7,11 @@
 ssm_reset_service_setting(SettingId)
 }
 \arguments{
-\item{SettingId}{[required] The ID of the service setting to reset.}
+\item{SettingId}{[required] The Amazon Resource Name (ARN) of the service setting to reset. The
+setting ID can be \verb{/ssm/parameter-store/default-parameter-tier},
+\verb{/ssm/parameter-store/high-throughput-enabled}, or
+\verb{/ssm/managed-instance/activation-tier}. For example,
+\code{arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled}.}
 }
 \description{
 \code{ServiceSetting} is an account-level setting for an AWS service. This

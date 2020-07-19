@@ -2,15 +2,15 @@
 % Please edit documentation in R/codeguruprofiler_operations.R
 \name{codeguruprofiler_delete_profiling_group}
 \alias{codeguruprofiler_delete_profiling_group}
-\title{Delete a profiling group}
+\title{Deletes a profiling group}
 \usage{
 codeguruprofiler_delete_profiling_group(profilingGroupName)
 }
 \arguments{
-\item{profilingGroupName}{[required]}
+\item{profilingGroupName}{[required] The name of the profiling group to delete.}
 }
 \description{
-Delete a profiling group.
+Deletes a profiling group.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_profiling_group(

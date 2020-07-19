@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_list_regex_pattern_sets}
 \alias{waf_list_regex_pattern_sets}
-\title{Returns an array of RegexPatternSetSummary objects}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 waf_list_regex_pattern_sets(NextMarker, Limit)
 }
@@ -22,6 +22,16 @@ than the number you specify for \code{Limit}, the response includes a
 \code{RegexPatternSet} objects.}
 }
 \description{
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
+}
+\details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns an array of RegexPatternSetSummary objects.
 }
 \section{Request syntax}{

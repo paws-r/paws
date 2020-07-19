@@ -430,9 +430,9 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' ElastiCache assumes `single-az` mode.
 #' @param PreferredAvailabilityZone The EC2 Availability Zone in which the cluster is created.
 #' 
-#' All nodes belonging to this Memcached cluster are placed in the
-#' preferred Availability Zone. If you want to create your nodes across
-#' multiple Availability Zones, use `PreferredAvailabilityZones`.
+#' All nodes belonging to this cluster are placed in the preferred
+#' Availability Zone. If you want to create your nodes across multiple
+#' Availability Zones, use `PreferredAvailabilityZones`.
 #' 
 #' Default: System chosen Availability Zone.
 #' @param PreferredAvailabilityZones A list of the Availability Zones in which cache nodes are created. The
@@ -477,6 +477,9 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
+#' 
+#'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
+#'         `cache.t3.medium`
 #' 
 #'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
 #'         `cache.t2.medium`
@@ -643,8 +646,8 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     \\^, \\<, \\>, and -. Other printable special characters cannot be used
 #'     in the AUTH token.
 #' 
-#' For more information, see AUTH password at
-#' http://redis.io/commands/AUTH.
+#' For more information, see [AUTH password](http://redis.io/commands/AUTH)
+#' at http://redis.io/commands/AUTH.
 #'
 #' @section Request syntax:
 #' ```
@@ -872,11 +875,70 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 }
 .elasticache$operations$create_cache_subnet_group <- elasticache_create_cache_subnet_group
 
+#' Global Datastore for Redis offers fully managed, fast, reliable and
+#' secure cross-region replication
+#'
+#' Global Datastore for Redis offers fully managed, fast, reliable and
+#' secure cross-region replication. Using Global Datastore for Redis, you
+#' can create cross-region read replica clusters for ElastiCache for Redis
+#' to enable low-latency reads and disaster recovery across regions. For
+#' more information, see Replication Across Regions Using Global Datastore.
+#' 
+#' -   The **GlobalReplicationGroupIdSuffix** is the name of the Global
+#'     Datastore.
+#' 
+#' -   The **PrimaryReplicationGroupId** represents the name of the primary
+#'     cluster that accepts writes and will replicate updates to the
+#'     secondary cluster.
+#'
+#' @usage
+#' elasticache_create_global_replication_group(
+#'   GlobalReplicationGroupIdSuffix, GlobalReplicationGroupDescription,
+#'   PrimaryReplicationGroupId)
+#'
+#' @param GlobalReplicationGroupIdSuffix &#91;required&#93; The suffix name of a Global Datastore. The suffix guarantees uniqueness
+#' of the Global Datastore name across multiple regions.
+#' @param GlobalReplicationGroupDescription Provides details of the Global Datastore
+#' @param PrimaryReplicationGroupId &#91;required&#93; The name of the primary cluster that accepts writes and will replicate
+#' updates to the secondary cluster.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_global_replication_group(
+#'   GlobalReplicationGroupIdSuffix = "string",
+#'   GlobalReplicationGroupDescription = "string",
+#'   PrimaryReplicationGroupId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_create_global_replication_group
+elasticache_create_global_replication_group <- function(GlobalReplicationGroupIdSuffix, GlobalReplicationGroupDescription = NULL, PrimaryReplicationGroupId) {
+  op <- new_operation(
+    name = "CreateGlobalReplicationGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$create_global_replication_group_input(GlobalReplicationGroupIdSuffix = GlobalReplicationGroupIdSuffix, GlobalReplicationGroupDescription = GlobalReplicationGroupDescription, PrimaryReplicationGroupId = PrimaryReplicationGroupId)
+  output <- .elasticache$create_global_replication_group_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$create_global_replication_group <- elasticache_create_global_replication_group
+
 #' Creates a Redis (cluster mode disabled) or a Redis (cluster mode
 #' enabled) replication group
 #'
 #' Creates a Redis (cluster mode disabled) or a Redis (cluster mode
 #' enabled) replication group.
+#' 
+#' This API can be used to create a standalone regional replication group
+#' or a secondary replication group associated with a Global Datastore.
 #' 
 #' A Redis (cluster mode disabled) replication group is a collection of
 #' clusters, where one of the clusters is a read/write primary and the
@@ -892,25 +954,24 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' 
 #' When a Redis (cluster mode disabled) replication group has been
 #' successfully created, you can add one or more read replicas to it, up to
-#' a total of 5 read replicas. You cannot alter a Redis (cluster mode
-#' enabled) replication group after it has been created. However, if you
-#' need to increase or decrease the number of node groups (console:
-#' shards), you can avail yourself of ElastiCache for Redis\' enhanced
-#' backup and restore. For more information, see [Restoring From a Backup
-#' with Cluster
-#' Resizing](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-restoring.html)
+#' a total of 5 read replicas. If you need to increase or decrease the
+#' number of node groups (console: shards), you can avail yourself of
+#' ElastiCache for Redis\' scaling. For more information, see [Scaling
+#' ElastiCache for Redis
+#' Clusters](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.html)
 #' in the *ElastiCache User Guide*.
 #' 
 #' This operation is valid for Redis only.
 #'
 #' @usage
 #' elasticache_create_replication_group(ReplicationGroupId,
-#'   ReplicationGroupDescription, PrimaryClusterId, AutomaticFailoverEnabled,
-#'   NumCacheClusters, PreferredCacheClusterAZs, NumNodeGroups,
-#'   ReplicasPerNodeGroup, NodeGroupConfiguration, CacheNodeType, Engine,
-#'   EngineVersion, CacheParameterGroupName, CacheSubnetGroupName,
-#'   CacheSecurityGroupNames, SecurityGroupIds, Tags, SnapshotArns,
-#'   SnapshotName, PreferredMaintenanceWindow, Port, NotificationTopicArn,
+#'   ReplicationGroupDescription, GlobalReplicationGroupId, PrimaryClusterId,
+#'   AutomaticFailoverEnabled, MultiAZEnabled, NumCacheClusters,
+#'   PreferredCacheClusterAZs, NumNodeGroups, ReplicasPerNodeGroup,
+#'   NodeGroupConfiguration, CacheNodeType, Engine, EngineVersion,
+#'   CacheParameterGroupName, CacheSubnetGroupName, CacheSecurityGroupNames,
+#'   SecurityGroupIds, Tags, SnapshotArns, SnapshotName,
+#'   PreferredMaintenanceWindow, Port, NotificationTopicArn,
 #'   AutoMinorVersionUpgrade, SnapshotRetentionLimit, SnapshotWindow,
 #'   AuthToken, TransitEncryptionEnabled, AtRestEncryptionEnabled, KmsKeyId)
 #'
@@ -925,6 +986,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' 
 #' -   A name cannot end with a hyphen or contain two consecutive hyphens.
 #' @param ReplicationGroupDescription &#91;required&#93; A user-created description for the replication group.
+#' @param GlobalReplicationGroupId The name of the Global Datastore
 #' @param PrimaryClusterId The identifier of the cluster that serves as the primary for this
 #' replication group. This cluster must already exist and have a status of
 #' `available`.
@@ -934,22 +996,13 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' @param AutomaticFailoverEnabled Specifies whether a read-only replica is automatically promoted to
 #' read/write primary if the existing primary fails.
 #' 
-#' If `true`, Multi-AZ is enabled for this replication group. If `false`,
-#' Multi-AZ is disabled for this replication group.
-#' 
 #' `AutomaticFailoverEnabled` must be enabled for Redis (cluster mode
 #' enabled) replication groups.
 #' 
 #' Default: false
-#' 
-#' Amazon ElastiCache for Redis does not support Multi-AZ with automatic
-#' failover on:
-#' 
-#' -   Redis versions earlier than 2.8.6.
-#' 
-#' -   Redis (cluster mode disabled): T1 node types.
-#' 
-#' -   Redis (cluster mode enabled): T1 node types.
+#' @param MultiAZEnabled A flag indicating if you have Multi-AZ enabled to enhance fault
+#' tolerance. For more information, see [Minimizing Downtime:
+#' Multi-AZ](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html).
 #' @param NumCacheClusters The number of clusters this replication group initially has.
 #' 
 #' This parameter is not used if there is more than one node group (shard).
@@ -993,9 +1046,10 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' If you\'re creating a Redis (cluster mode disabled) or a Redis (cluster
 #' mode enabled) replication group, you can use this parameter to
 #' individually configure each node group (shard), or you can omit this
-#' parameter. However, when seeding a Redis (cluster mode enabled) cluster
-#' from a S3 rdb file, you must configure each node group (shard) using
-#' this parameter because you must specify the slots for each node group.
+#' parameter. However, it is required when seeding a Redis (cluster mode
+#' enabled) cluster from a S3 rdb file. You must configure each node group
+#' (shard) using this parameter because you must specify the slots for each
+#' node group.
 #' @param CacheNodeType The compute and memory capacity of the nodes in the node group (shard).
 #' 
 #' The following node types are supported by ElastiCache. Generally
@@ -1013,6 +1067,9 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' 
 #'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
+#' 
+#'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
+#'         `cache.t3.medium`
 #' 
 #'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
 #'         `cache.t2.medium`
@@ -1193,8 +1250,8 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #'     \\^, \\<, \\>, and -. Other printable special characters cannot be used
 #'     in the AUTH token.
 #' 
-#' For more information, see AUTH password at
-#' http://redis.io/commands/AUTH.
+#' For more information, see [AUTH password](http://redis.io/commands/AUTH)
+#' at http://redis.io/commands/AUTH.
 #' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to `true`.
 #' 
 #' You cannot modify the value of `TransitEncryptionEnabled` after the
@@ -1226,15 +1283,17 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' Amazon VPC using redis version `3.2.6`, `4.x` or later.
 #' 
 #' Default: `false`
-#' @param KmsKeyId The ID of the KMS key used to encrypt the disk on the cluster.
+#' @param KmsKeyId The ID of the KMS key used to encrypt the disk in the cluster.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_replication_group(
 #'   ReplicationGroupId = "string",
 #'   ReplicationGroupDescription = "string",
+#'   GlobalReplicationGroupId = "string",
 #'   PrimaryClusterId = "string",
 #'   AutomaticFailoverEnabled = TRUE|FALSE,
+#'   MultiAZEnabled = TRUE|FALSE,
 #'   NumCacheClusters = 123,
 #'   PreferredCacheClusterAZs = list(
 #'     "string"
@@ -1289,14 +1348,14 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' @keywords internal
 #'
 #' @rdname elasticache_create_replication_group
-elasticache_create_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription, PrimaryClusterId = NULL, AutomaticFailoverEnabled = NULL, NumCacheClusters = NULL, PreferredCacheClusterAZs = NULL, NumNodeGroups = NULL, ReplicasPerNodeGroup = NULL, NodeGroupConfiguration = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, TransitEncryptionEnabled = NULL, AtRestEncryptionEnabled = NULL, KmsKeyId = NULL) {
+elasticache_create_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription, GlobalReplicationGroupId = NULL, PrimaryClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NumCacheClusters = NULL, PreferredCacheClusterAZs = NULL, NumNodeGroups = NULL, ReplicasPerNodeGroup = NULL, NodeGroupConfiguration = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, TransitEncryptionEnabled = NULL, AtRestEncryptionEnabled = NULL, KmsKeyId = NULL) {
   op <- new_operation(
     name = "CreateReplicationGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$create_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, PrimaryClusterId = PrimaryClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, NumCacheClusters = NumCacheClusters, PreferredCacheClusterAZs = PreferredCacheClusterAZs, NumNodeGroups = NumNodeGroups, ReplicasPerNodeGroup = ReplicasPerNodeGroup, NodeGroupConfiguration = NodeGroupConfiguration, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, TransitEncryptionEnabled = TransitEncryptionEnabled, AtRestEncryptionEnabled = AtRestEncryptionEnabled, KmsKeyId = KmsKeyId)
+  input <- .elasticache$create_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryClusterId = PrimaryClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NumCacheClusters = NumCacheClusters, PreferredCacheClusterAZs = PreferredCacheClusterAZs, NumNodeGroups = NumNodeGroups, ReplicasPerNodeGroup = ReplicasPerNodeGroup, NodeGroupConfiguration = NodeGroupConfiguration, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, TransitEncryptionEnabled = TransitEncryptionEnabled, AtRestEncryptionEnabled = AtRestEncryptionEnabled, KmsKeyId = KmsKeyId)
   output <- .elasticache$create_replication_group_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -1355,12 +1414,72 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 }
 .elasticache$operations$create_snapshot <- elasticache_create_snapshot
 
-#' Dynamically decreases the number of replics in a Redis (cluster mode
+#' Decreases the number of node groups in a Global Datastore
+#'
+#' Decreases the number of node groups in a Global Datastore
+#'
+#' @usage
+#' elasticache_decrease_node_groups_in_global_replication_group(
+#'   GlobalReplicationGroupId, NodeGroupCount, GlobalNodeGroupsToRemove,
+#'   GlobalNodeGroupsToRetain, ApplyImmediately)
+#'
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
+#' @param NodeGroupCount &#91;required&#93; The number of node groups (shards) that results from the modification of
+#' the shard configuration
+#' @param GlobalNodeGroupsToRemove If the value of NodeGroupCount is less than the current number of node
+#' groups (shards), then either NodeGroupsToRemove or NodeGroupsToRetain is
+#' required. NodeGroupsToRemove is a list of NodeGroupIds to remove from
+#' the cluster. ElastiCache for Redis will attempt to remove all node
+#' groups listed by NodeGroupsToRemove from the cluster.
+#' @param GlobalNodeGroupsToRetain If the value of NodeGroupCount is less than the current number of node
+#' groups (shards), then either NodeGroupsToRemove or NodeGroupsToRetain is
+#' required. NodeGroupsToRemove is a list of NodeGroupIds to remove from
+#' the cluster. ElastiCache for Redis will attempt to remove all node
+#' groups listed by NodeGroupsToRemove from the cluster.
+#' @param ApplyImmediately &#91;required&#93; Indicates that the shard reconfiguration process begins immediately. At
+#' present, the only permitted value for this parameter is true.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$decrease_node_groups_in_global_replication_group(
+#'   GlobalReplicationGroupId = "string",
+#'   NodeGroupCount = 123,
+#'   GlobalNodeGroupsToRemove = list(
+#'     "string"
+#'   ),
+#'   GlobalNodeGroupsToRetain = list(
+#'     "string"
+#'   ),
+#'   ApplyImmediately = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_decrease_node_groups_in_global_replication_group
+elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalReplicationGroupId, NodeGroupCount, GlobalNodeGroupsToRemove = NULL, GlobalNodeGroupsToRetain = NULL, ApplyImmediately) {
+  op <- new_operation(
+    name = "DecreaseNodeGroupsInGlobalReplicationGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$decrease_node_groups_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, NodeGroupCount = NodeGroupCount, GlobalNodeGroupsToRemove = GlobalNodeGroupsToRemove, GlobalNodeGroupsToRetain = GlobalNodeGroupsToRetain, ApplyImmediately = ApplyImmediately)
+  output <- .elasticache$decrease_node_groups_in_global_replication_group_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$decrease_node_groups_in_global_replication_group <- elasticache_decrease_node_groups_in_global_replication_group
+
+#' Dynamically decreases the number of replicas in a Redis (cluster mode
 #' disabled) replication group or the number of replica nodes in one or
 #' more node groups (shards) of a Redis (cluster mode enabled) replication
 #' group
 #'
-#' Dynamically decreases the number of replics in a Redis (cluster mode
+#' Dynamically decreases the number of replicas in a Redis (cluster mode
 #' disabled) replication group or the number of replica nodes in one or
 #' more node groups (shards) of a Redis (cluster mode enabled) replication
 #' group. This operation is performed with no cluster down time.
@@ -1381,9 +1500,9 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #' 
 #' -   Redis (cluster mode disabled)
 #' 
-#'     -   If Multi-AZ with Automatic Failover is enabled: 1
+#'     -   If Multi-AZ is enabled: 1
 #' 
-#'     -   If Multi-AZ with Automatic Failover is not enabled: 0
+#'     -   If Multi-AZ is not enabled: 0
 #' 
 #' -   Redis (cluster mode enabled): 0 (though you will not be able to
 #'     failover to a replica if your primary node fails)
@@ -1617,6 +1736,63 @@ elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
   return(response)
 }
 .elasticache$operations$delete_cache_subnet_group <- elasticache_delete_cache_subnet_group
+
+#' Deleting a Global Datastore is a two-step process: - First, you must
+#' DisassociateGlobalReplicationGroup to remove the secondary clusters in
+#' the Global Datastore
+#'
+#' Deleting a Global Datastore is a two-step process:
+#' 
+#' -   First, you must DisassociateGlobalReplicationGroup to remove the
+#'     secondary clusters in the Global Datastore.
+#' 
+#' -   Once the Global Datastore contains only the primary cluster, you can
+#'     use DeleteGlobalReplicationGroup API to delete the Global Datastore
+#'     while retainining the primary cluster using Retain...= true.
+#' 
+#' Since the Global Datastore has only a primary cluster, you can delete
+#' the Global Datastore while retaining the primary by setting
+#' `RetainPrimaryCluster=true`.
+#' 
+#' When you receive a successful response from this operation, Amazon
+#' ElastiCache immediately begins deleting the selected resources; you
+#' cannot cancel or revert this operation.
+#'
+#' @usage
+#' elasticache_delete_global_replication_group(GlobalReplicationGroupId,
+#'   RetainPrimaryReplicationGroup)
+#'
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
+#' @param RetainPrimaryReplicationGroup &#91;required&#93; The primary replication group is retained as a standalone replication
+#' group.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_global_replication_group(
+#'   GlobalReplicationGroupId = "string",
+#'   RetainPrimaryReplicationGroup = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_delete_global_replication_group
+elasticache_delete_global_replication_group <- function(GlobalReplicationGroupId, RetainPrimaryReplicationGroup) {
+  op <- new_operation(
+    name = "DeleteGlobalReplicationGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$delete_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, RetainPrimaryReplicationGroup = RetainPrimaryReplicationGroup)
+  output <- .elasticache$delete_global_replication_group_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$delete_global_replication_group <- elasticache_delete_global_replication_group
 
 #' Deletes an existing replication group
 #'
@@ -2215,6 +2391,56 @@ elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NU
 }
 .elasticache$operations$describe_events <- elasticache_describe_events
 
+#' Returns information about a particular global replication group
+#'
+#' Returns information about a particular global replication group. If no
+#' identifier is specified, returns information about all Global
+#' Datastores.
+#'
+#' @usage
+#' elasticache_describe_global_replication_groups(GlobalReplicationGroupId,
+#'   MaxRecords, Marker, ShowMemberInfo)
+#'
+#' @param GlobalReplicationGroupId The name of the Global Datastore
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified MaxRecords value, a marker is included
+#' in the response so that the remaining results can be retrieved.
+#' @param Marker An optional marker returned from a prior request. Use this marker for
+#' pagination of results from this operation. If this parameter is
+#' specified, the response includes only records beyond the marker, up to
+#' the value specified by `MaxRecords`.
+#' @param ShowMemberInfo Returns the list of members that comprise the Global Datastore.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_global_replication_groups(
+#'   GlobalReplicationGroupId = "string",
+#'   MaxRecords = 123,
+#'   Marker = "string",
+#'   ShowMemberInfo = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_describe_global_replication_groups
+elasticache_describe_global_replication_groups <- function(GlobalReplicationGroupId = NULL, MaxRecords = NULL, Marker = NULL, ShowMemberInfo = NULL) {
+  op <- new_operation(
+    name = "DescribeGlobalReplicationGroups",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$describe_global_replication_groups_input(GlobalReplicationGroupId = GlobalReplicationGroupId, MaxRecords = MaxRecords, Marker = Marker, ShowMemberInfo = ShowMemberInfo)
+  output <- .elasticache$describe_global_replication_groups_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$describe_global_replication_groups <- elasticache_describe_global_replication_groups
+
 #' Returns information about a particular replication group
 #'
 #' Returns information about a particular replication group. If no
@@ -2306,6 +2532,9 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #' 
 #'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
+#' 
+#'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
+#'         `cache.t3.medium`
 #' 
 #'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
 #'         `cache.t2.medium`
@@ -2448,6 +2677,9 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #' 
 #'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
+#' 
+#'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
+#'         `cache.t3.medium`
 #' 
 #'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
 #'         `cache.t2.medium`
@@ -2725,7 +2957,7 @@ elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClust
 #'     )
 #'   ),
 #'   UpdateActionStatus = list(
-#'     "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete"
+#'     "not-applied"|"waiting-to-start"|"in-progress"|"stopping"|"stopped"|"complete"|"scheduling"|"scheduled"|"not-applicable"
 #'   ),
 #'   ShowNodeLevelUpdateStatus = TRUE|FALSE,
 #'   MaxRecords = 123,
@@ -2752,6 +2984,156 @@ elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, Replic
   return(response)
 }
 .elasticache$operations$describe_update_actions <- elasticache_describe_update_actions
+
+#' Remove a secondary cluster from the Global Datastore using the Global
+#' Datastore name
+#'
+#' Remove a secondary cluster from the Global Datastore using the Global
+#' Datastore name. The secondary cluster will no longer receive updates
+#' from the primary cluster, but will remain as a standalone cluster in
+#' that AWS region.
+#'
+#' @usage
+#' elasticache_disassociate_global_replication_group(
+#'   GlobalReplicationGroupId, ReplicationGroupId, ReplicationGroupRegion)
+#'
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
+#' @param ReplicationGroupId &#91;required&#93; The name of the secondary cluster you wish to remove from the Global
+#' Datastore
+#' @param ReplicationGroupRegion &#91;required&#93; The AWS region of secondary cluster you wish to remove from the Global
+#' Datastore
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_global_replication_group(
+#'   GlobalReplicationGroupId = "string",
+#'   ReplicationGroupId = "string",
+#'   ReplicationGroupRegion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_disassociate_global_replication_group
+elasticache_disassociate_global_replication_group <- function(GlobalReplicationGroupId, ReplicationGroupId, ReplicationGroupRegion) {
+  op <- new_operation(
+    name = "DisassociateGlobalReplicationGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$disassociate_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ReplicationGroupId = ReplicationGroupId, ReplicationGroupRegion = ReplicationGroupRegion)
+  output <- .elasticache$disassociate_global_replication_group_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$disassociate_global_replication_group <- elasticache_disassociate_global_replication_group
+
+#' Used to failover the primary region to a selected secondary region
+#'
+#' Used to failover the primary region to a selected secondary region. The
+#' selected secondary region will become primary, and all other clusters
+#' will become secondary.
+#'
+#' @usage
+#' elasticache_failover_global_replication_group(GlobalReplicationGroupId,
+#'   PrimaryRegion, PrimaryReplicationGroupId)
+#'
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
+#' @param PrimaryRegion &#91;required&#93; The AWS region of the primary cluster of the Global Datastore
+#' @param PrimaryReplicationGroupId &#91;required&#93; The name of the primary replication group
+#'
+#' @section Request syntax:
+#' ```
+#' svc$failover_global_replication_group(
+#'   GlobalReplicationGroupId = "string",
+#'   PrimaryRegion = "string",
+#'   PrimaryReplicationGroupId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_failover_global_replication_group
+elasticache_failover_global_replication_group <- function(GlobalReplicationGroupId, PrimaryRegion, PrimaryReplicationGroupId) {
+  op <- new_operation(
+    name = "FailoverGlobalReplicationGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$failover_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryRegion = PrimaryRegion, PrimaryReplicationGroupId = PrimaryReplicationGroupId)
+  output <- .elasticache$failover_global_replication_group_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$failover_global_replication_group <- elasticache_failover_global_replication_group
+
+#' Increase the number of node groups in the Global Datastore
+#'
+#' Increase the number of node groups in the Global Datastore
+#'
+#' @usage
+#' elasticache_increase_node_groups_in_global_replication_group(
+#'   GlobalReplicationGroupId, NodeGroupCount, RegionalConfigurations,
+#'   ApplyImmediately)
+#'
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
+#' @param NodeGroupCount &#91;required&#93; The number of node groups you wish to add
+#' @param RegionalConfigurations Describes the replication group IDs, the AWS regions where they are
+#' stored and the shard configuration for each that comprise the Global
+#' Datastore
+#' @param ApplyImmediately &#91;required&#93; Indicates that the process begins immediately. At present, the only
+#' permitted value for this parameter is true.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$increase_node_groups_in_global_replication_group(
+#'   GlobalReplicationGroupId = "string",
+#'   NodeGroupCount = 123,
+#'   RegionalConfigurations = list(
+#'     list(
+#'       ReplicationGroupId = "string",
+#'       ReplicationGroupRegion = "string",
+#'       ReshardingConfiguration = list(
+#'         list(
+#'           NodeGroupId = "string",
+#'           PreferredAvailabilityZones = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ApplyImmediately = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_increase_node_groups_in_global_replication_group
+elasticache_increase_node_groups_in_global_replication_group <- function(GlobalReplicationGroupId, NodeGroupCount, RegionalConfigurations = NULL, ApplyImmediately) {
+  op <- new_operation(
+    name = "IncreaseNodeGroupsInGlobalReplicationGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$increase_node_groups_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, NodeGroupCount = NodeGroupCount, RegionalConfigurations = RegionalConfigurations, ApplyImmediately = ApplyImmediately)
+  output <- .elasticache$increase_node_groups_in_global_replication_group_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$increase_node_groups_in_global_replication_group <- elasticache_increase_node_groups_in_global_replication_group
 
 #' Dynamically increases the number of replics in a Redis (cluster mode
 #' disabled) replication group or the number of replica nodes in one or
@@ -3171,7 +3553,8 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' -   Cannot contain any of the following characters: \'/\', \'\"\', or
 #'     \'@@\', \'%\'
 #' 
-#' For more information, see AUTH password at AUTH.
+#' For more information, see AUTH password at
+#' [AUTH](http://redis.io/commands/AUTH).
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
@@ -3332,13 +3715,62 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 }
 .elasticache$operations$modify_cache_subnet_group <- elasticache_modify_cache_subnet_group
 
+#' Modifies the settings for a Global Datastore
+#'
+#' Modifies the settings for a Global Datastore.
+#'
+#' @usage
+#' elasticache_modify_global_replication_group(GlobalReplicationGroupId,
+#'   ApplyImmediately, CacheNodeType, EngineVersion,
+#'   GlobalReplicationGroupDescription, AutomaticFailoverEnabled)
+#'
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
+#' @param ApplyImmediately &#91;required&#93; This parameter causes the modifications in this request and any pending
+#' modifications to be applied, asynchronously and as soon as possible.
+#' Modifications to Global Replication Groups cannot be requested to be
+#' applied in PreferredMaintenceWindow.
+#' @param CacheNodeType A valid cache node type that you want to scale this Global Datastore to.
+#' @param EngineVersion The upgraded version of the cache engine to be run on the clusters in
+#' the Global Datastore.
+#' @param GlobalReplicationGroupDescription A description of the Global Datastore
+#' @param AutomaticFailoverEnabled Determines whether a read replica is automatically promoted to
+#' read/write primary if the existing primary encounters a failure.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_global_replication_group(
+#'   GlobalReplicationGroupId = "string",
+#'   ApplyImmediately = TRUE|FALSE,
+#'   CacheNodeType = "string",
+#'   EngineVersion = "string",
+#'   GlobalReplicationGroupDescription = "string",
+#'   AutomaticFailoverEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_modify_global_replication_group
+elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId, ApplyImmediately, CacheNodeType = NULL, EngineVersion = NULL, GlobalReplicationGroupDescription = NULL, AutomaticFailoverEnabled = NULL) {
+  op <- new_operation(
+    name = "ModifyGlobalReplicationGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$modify_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ApplyImmediately = ApplyImmediately, CacheNodeType = CacheNodeType, EngineVersion = EngineVersion, GlobalReplicationGroupDescription = GlobalReplicationGroupDescription, AutomaticFailoverEnabled = AutomaticFailoverEnabled)
+  output <- .elasticache$modify_global_replication_group_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$modify_global_replication_group <- elasticache_modify_global_replication_group
+
 #' Modifies the settings for a replication group
 #'
 #' Modifies the settings for a replication group.
-#' 
-#' For Redis (cluster mode enabled) clusters, this operation cannot be used
-#' to change a cluster\'s node type or engine version. For more
-#' information, see:
 #' 
 #' -   [Scaling for Amazon ElastiCache for Redis (cluster mode
 #'     enabled)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html)
@@ -3352,11 +3784,12 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' @usage
 #' elasticache_modify_replication_group(ReplicationGroupId,
 #'   ReplicationGroupDescription, PrimaryClusterId, SnapshottingClusterId,
-#'   AutomaticFailoverEnabled, NodeGroupId, CacheSecurityGroupNames,
-#'   SecurityGroupIds, PreferredMaintenanceWindow, NotificationTopicArn,
-#'   CacheParameterGroupName, NotificationTopicStatus, ApplyImmediately,
-#'   EngineVersion, AutoMinorVersionUpgrade, SnapshotRetentionLimit,
-#'   SnapshotWindow, CacheNodeType, AuthToken, AuthTokenUpdateStrategy)
+#'   AutomaticFailoverEnabled, MultiAZEnabled, NodeGroupId,
+#'   CacheSecurityGroupNames, SecurityGroupIds, PreferredMaintenanceWindow,
+#'   NotificationTopicArn, CacheParameterGroupName, NotificationTopicStatus,
+#'   ApplyImmediately, EngineVersion, AutoMinorVersionUpgrade,
+#'   SnapshotRetentionLimit, SnapshotWindow, CacheNodeType, AuthToken,
+#'   AuthTokenUpdateStrategy)
 #'
 #' @param ReplicationGroupId &#91;required&#93; The identifier of the replication group to modify.
 #' @param ReplicationGroupDescription A description for the replication group. Maximum length is 255
@@ -3372,15 +3805,9 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' read/write primary if the existing primary encounters a failure.
 #' 
 #' Valid values: `true` \\| `false`
-#' 
-#' Amazon ElastiCache for Redis does not support Multi-AZ with automatic
-#' failover on:
-#' 
-#' -   Redis versions earlier than 2.8.6.
-#' 
-#' -   Redis (cluster mode disabled): T1 node types.
-#' 
-#' -   Redis (cluster mode enabled): T1 node types.
+#' @param MultiAZEnabled A flag indicating if you have Multi-AZ enabled to enhance fault
+#' tolerance. For more information, see [Minimizing Downtime:
+#' Multi-AZ](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html).
 #' @param NodeGroupId Deprecated. This parameter is not used.
 #' @param CacheSecurityGroupNames A list of cache security group names to authorize for the clusters in
 #' this replication group. This change is asynchronously applied as soon as
@@ -3482,7 +3909,8 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' -   Cannot contain any of the following characters: \'/\', \'\"\', or
 #'     \'@@\', \'%\'
 #' 
-#' For more information, see AUTH password at AUTH.
+#' For more information, see AUTH password at
+#' [AUTH](http://redis.io/commands/AUTH).
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
@@ -3501,6 +3929,7 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #'   PrimaryClusterId = "string",
 #'   SnapshottingClusterId = "string",
 #'   AutomaticFailoverEnabled = TRUE|FALSE,
+#'   MultiAZEnabled = TRUE|FALSE,
 #'   NodeGroupId = "string",
 #'   CacheSecurityGroupNames = list(
 #'     "string"
@@ -3526,14 +3955,14 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' @keywords internal
 #'
 #' @rdname elasticache_modify_replication_group
-elasticache_modify_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription = NULL, PrimaryClusterId = NULL, SnapshottingClusterId = NULL, AutomaticFailoverEnabled = NULL, NodeGroupId = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL) {
+elasticache_modify_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription = NULL, PrimaryClusterId = NULL, SnapshottingClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NodeGroupId = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL) {
   op <- new_operation(
     name = "ModifyReplicationGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$modify_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, PrimaryClusterId = PrimaryClusterId, SnapshottingClusterId = SnapshottingClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, NodeGroupId = NodeGroupId, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy)
+  input <- .elasticache$modify_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, PrimaryClusterId = PrimaryClusterId, SnapshottingClusterId = SnapshottingClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NodeGroupId = NodeGroupId, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy)
   output <- .elasticache$modify_replication_group_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -3680,6 +4109,47 @@ elasticache_purchase_reserved_cache_nodes_offering <- function(ReservedCacheNode
   return(response)
 }
 .elasticache$operations$purchase_reserved_cache_nodes_offering <- elasticache_purchase_reserved_cache_nodes_offering
+
+#' Redistribute slots to ensure uniform distribution across existing shards
+#' in the cluster
+#'
+#' Redistribute slots to ensure uniform distribution across existing shards
+#' in the cluster.
+#'
+#' @usage
+#' elasticache_rebalance_slots_in_global_replication_group(
+#'   GlobalReplicationGroupId, ApplyImmediately)
+#'
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
+#' @param ApplyImmediately &#91;required&#93; If `True`, redistribution is applied immediately.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$rebalance_slots_in_global_replication_group(
+#'   GlobalReplicationGroupId = "string",
+#'   ApplyImmediately = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_rebalance_slots_in_global_replication_group
+elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplicationGroupId, ApplyImmediately) {
+  op <- new_operation(
+    name = "RebalanceSlotsInGlobalReplicationGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$rebalance_slots_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ApplyImmediately = ApplyImmediately)
+  output <- .elasticache$rebalance_slots_in_global_replication_group_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$rebalance_slots_in_global_replication_group <- elasticache_rebalance_slots_in_global_replication_group
 
 #' Reboots some, or all, of the cache nodes within a provisioned cluster
 #'
@@ -3988,8 +4458,8 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #'     -   [DescribeEvents](https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_DescribeEvents.html)
 #'         in the ElastiCache API Reference
 #' 
-#' Also see, [Testing Multi-AZ with Automatic
-#' Failover](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test)
+#' Also see, [Testing
+#' Multi-AZ](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test)
 #' in the *ElastiCache User Guide*.
 #'
 #' @usage

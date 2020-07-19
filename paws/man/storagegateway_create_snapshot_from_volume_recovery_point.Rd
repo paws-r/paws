@@ -15,7 +15,7 @@ for specified VolumeARN.}
 \item{SnapshotDescription}{[required] Textual description of the snapshot that appears in the Amazon EC2
 console, Elastic Block Store snapshots panel in the \strong{Description}
 field, and in the AWS Storage Gateway snapshot \strong{Details} pane,
-\strong{Description} field}
+\strong{Description} field.}
 
 \item{Tags}{A list of up to 50 tags that can be assigned to a snapshot. Each tag is
 a key-value pair.
@@ -45,7 +45,11 @@ snapshot progress or later use it when you want to create a volume from
 a snapshot.
 
 To list or delete a snapshot, you must use the Amazon EC2 API. For more
-information, in \emph{Amazon Elastic Compute Cloud API Reference}.
+information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html}{DescribeSnapshots}
+or
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSnapshot.html}{DeleteSnapshot}
+in the \emph{Amazon Elastic Compute Cloud API Reference}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_snapshot_from_volume_recovery_point(

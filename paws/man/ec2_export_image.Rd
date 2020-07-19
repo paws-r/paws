@@ -5,13 +5,13 @@
 \title{Exports an Amazon Machine Image (AMI) to a VM file}
 \usage{
 ec2_export_image(ClientToken, Description, DiskImageFormat, DryRun,
-  ImageId, S3ExportLocation, RoleName)
+  ImageId, S3ExportLocation, RoleName, TagSpecifications)
 }
 \arguments{
 \item{ClientToken}{Token to enable idempotency for export image requests.}
 
 \item{Description}{A description of the image being exported. The maximum length is 255
-bytes.}
+characters.}
 
 \item{DiskImageFormat}{[required] The disk image format.}
 
@@ -22,13 +22,15 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ImageId}{[required] The ID of the image.}
 
-\item{S3ExportLocation}{[required] Information about the destination S3 bucket. The bucket must exist and
-grant WRITE and READ\\_ACP permissions to the AWS account
+\item{S3ExportLocation}{[required] Information about the destination Amazon S3 bucket. The bucket must
+exist and grant WRITE and READ\\_ACP permissions to the AWS account
 vm-import-export\\@amazon.com.}
 
 \item{RoleName}{The name of the role that grants VM Import/Export permission to export
-images to your S3 bucket. If this parameter is not specified, the
+images to your Amazon S3 bucket. If this parameter is not specified, the
 default role is named \'vmimport\'.}
+
+\item{TagSpecifications}{The tags to apply to the image being exported.}
 }
 \description{
 Exports an Amazon Machine Image (AMI) to a VM file. For more
@@ -46,7 +48,18 @@ in the \emph{VM Import/Export User Guide}.
     S3Bucket = "string",
     S3Prefix = "string"
   ),
-  RoleName = "string"
+  RoleName = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

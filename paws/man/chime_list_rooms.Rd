@@ -2,7 +2,7 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_list_rooms}
 \alias{chime_list_rooms}
-\title{Lists the room details for the specified Amazon Chime account}
+\title{Lists the room details for the specified Amazon Chime Enterprise account}
 \usage{
 chime_list_rooms(AccountId, MemberId, MaxResults, NextToken)
 }
@@ -16,9 +16,9 @@ chime_list_rooms(AccountId, MemberId, MaxResults, NextToken)
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
 \description{
-Lists the room details for the specified Amazon Chime account.
-Optionally, filter the results by a member ID (user ID or bot ID) to see
-a list of rooms that the member belongs to.
+Lists the room details for the specified Amazon Chime Enterprise
+account. Optionally, filter the results by a member ID (user ID or bot
+ID) to see a list of rooms that the member belongs to.
 }
 \section{Request syntax}{
 \preformatted{svc$list_rooms(

@@ -10,9 +10,9 @@ organizations_enable_all_features()
 Enables all features in an organization. This enables the use of
 organization policies that can restrict the services and actions that
 can be called in each account. Until you enable all features, you have
-access only to consolidated billing. You can\'t use any of the advanced
-account administration features that AWS Organizations supports. For
-more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{Enabling All Features in Your Organization}
+access only to consolidated billing, and you can\'t use any of the
+advanced account administration features that AWS Organizations
+supports. For more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{Enabling All Features in Your Organization}
 in the \emph{AWS Organizations User Guide.}
 }
 \details{
@@ -21,7 +21,7 @@ explicitly with only the consolidated billing features enabled. Calling
 this operation sends a handshake to every invited account in the
 organization. The feature set change can be finalized and the additional
 features enabled only after all administrators in the invited accounts
-approve the change. Accepting the handshake approves the change.
+approve the change by accepting the handshake.
 
 After you enable all features, you can separately enable or disable
 individual policy types in a root using EnablePolicyType and

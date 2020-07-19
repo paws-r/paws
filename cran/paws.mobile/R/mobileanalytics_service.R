@@ -58,7 +58,7 @@ mobileanalytics <- function(config = list()) {
 
 .mobileanalytics$metadata <- list(
   service_name = "mobileanalytics",
-  endpoints = list("*" = list(endpoint = "mobileanalytics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mobileanalytics.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "mobileanalytics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mobileanalytics.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "mobileanalytics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "mobileanalytics.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Mobile Analytics",
   api_version = "2014-06-05",
   signing_name = NULL,

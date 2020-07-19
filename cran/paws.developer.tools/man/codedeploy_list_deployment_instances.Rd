@@ -17,13 +17,13 @@ list.}
 
 \item{instanceStatusFilter}{A subset of instances to list by status:
 \itemize{
-\item Pending: Include those instances with pending deployments.
-\item InProgress: Include those instances where deployments are still in
+\item \code{Pending}: Include those instances with pending deployments.
+\item \code{InProgress}: Include those instances where deployments are still in
 progress.
-\item Succeeded: Include those instances with successful deployments.
-\item Failed: Include those instances with failed deployments.
-\item Skipped: Include those instances with skipped deployments.
-\item Unknown: Include those instances with deployments in an unknown
+\item \code{Succeeded}: Include those instances with successful deployments.
+\item \code{Failed}: Include those instances with failed deployments.
+\item \code{Skipped}: Include those instances with skipped deployments.
+\item \code{Unknown}: Include those instances with deployments in an unknown
 state.
 }}
 
@@ -32,7 +32,7 @@ original environment (\"BLUE\") or those in the replacement environment
 (\"GREEN\"), for which you want to view instance information.}
 }
 \description{
-The newer BatchGetDeploymentTargets should be used instead because it
+The newer \code{BatchGetDeploymentTargets} should be used instead because it
 works with all compute types. \code{ListDeploymentInstances} throws an
 exception if it is used with a compute platform other than
 EC2/On-premises or AWS Lambda.

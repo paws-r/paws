@@ -11,10 +11,9 @@ applicationautoscaling_describe_scheduled_actions(ScheduledActionNames,
 \arguments{
 \item{ScheduledActionNames}{The names of the scheduled actions to describe.}
 
-\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or
-\code{custom-resource} for a resource provided by your own application or
-service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
-in the \emph{Amazon Web Services General Reference}.}
+\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource. For a
+resource provided by your own application or service, use
+\code{custom-resource} instead.}
 
 \item{ResourceId}{The identifier of the resource associated with the scheduled action.
 This string consists of the resource type and unique identifier. If you
@@ -54,6 +53,9 @@ Example:
 the unique identifier is the function name with a function version
 or alias name suffix that is not \verb{$LATEST}. Example:
 \verb{function:my-function:prod} or \verb{function:my-function:1}.
+\item Amazon Keyspaces table - The resource type is \code{table} and the unique
+identifier is the table name. Example:
+\code{keyspace/mykeyspace/table/mytable}.
 }}
 
 \item{ScalableDimension}{The scalable dimension. This string consists of the service namespace,
@@ -88,6 +90,10 @@ The number of inference units for an Amazon Comprehend document
 classification endpoint.
 \item \verb{lambda:function:ProvisionedConcurrency} - The provisioned
 concurrency for a Lambda function.
+\item \code{cassandra:table:ReadCapacityUnits} - The provisioned read capacity
+for an Amazon Keyspaces table.
+\item \code{cassandra:table:WriteCapacityUnits} - The provisioned write
+capacity for an Amazon Keyspaces table.
 }}
 
 \item{MaxResults}{The maximum number of scheduled action results. This value can be
@@ -109,18 +115,17 @@ specified service namespace.
 You can filter the results using the \code{ResourceId}, \code{ScalableDimension},
 and \code{ScheduledActionNames} parameters.
 
-To create a scheduled action or update an existing one, see
-PutScheduledAction. If you are no longer using a scheduled action, you
-can delete it using DeleteScheduledAction.
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html}{Scheduled Scaling}
+in the \emph{Application Auto Scaling User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_scheduled_actions(
   ScheduledActionNames = list(
     "string"
   ),
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
   ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
   MaxResults = 123,
   NextToken = "string"
 )

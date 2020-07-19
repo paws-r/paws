@@ -2,7 +2,8 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_list_invitations}
 \alias{detective_list_invitations}
-\title{Amazon Detective is currently in preview}
+\title{Retrieves the list of open and accepted behavior graph invitations for
+the member account}
 \usage{
 detective_list_invitations(NextToken, MaxResults)
 }
@@ -16,13 +17,11 @@ response. The total must be less than the overall limit on the number of
 results to return, which is currently 200.}
 }
 \description{
-Amazon Detective is currently in preview.
-}
-\details{
 Retrieves the list of open and accepted behavior graph invitations for
 the member account. This operation can only be called by a member
 account.
-
+}
+\details{
 Open invitations are invitations that the member account has not
 responded to.
 

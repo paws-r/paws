@@ -22,9 +22,8 @@ new crawler to access customer resources.}
 
 \item{Targets}{[required] A list of collection of targets to crawl.}
 
-\item{Schedule}{A \code{cron} expression used to specify the schedule. For more information,
-see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html}{Time-Based Schedules for Jobs and Crawlers}.
-For example, to run something every day at 12:15 UTC, specify
+\item{Schedule}{A \code{cron} expression used to specify the schedule (see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html}{Time-Based Schedules for Jobs and Crawlers}.
+For example, to run something every day at 12:15 UTC, you would specify:
 \verb{cron(15 12 * * ? *)}.}
 
 \item{Classifiers}{A list of custom classifiers that the user has registered. By default,
@@ -36,15 +35,17 @@ classification.}
 
 \item{SchemaChangePolicy}{The policy for the crawler\'s update and deletion behavior.}
 
-\item{Configuration}{The crawler configuration information. This versioned JSON string allows
+\item{Configuration}{Crawler configuration information. This versioned JSON string allows
 users to specify aspects of a crawler\'s behavior. For more information,
-see \href{http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Configuring a Crawler}.}
+see \href{https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Configuring a Crawler}.}
 
 \item{CrawlerSecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used by this
 crawler.}
 
-\item{Tags}{The tags to use with this crawler request. You can use tags to limit
-access to the crawler. For more information, see \href{http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue}.}
+\item{Tags}{The tags to use with this crawler request. You may use tags to limit
+access to the crawler. For more information about tags in AWS Glue, see
+\href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
+the developer guide.}
 }
 \description{
 Creates a new crawler with specified targets, role, configuration, and
@@ -78,7 +79,9 @@ field.
     ),
     DynamoDBTargets = list(
       list(
-        Path = "string"
+        Path = "string",
+        scanAll = TRUE|FALSE,
+        scanRate = 123.0
       )
     ),
     CatalogTargets = list(

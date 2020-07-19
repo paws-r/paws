@@ -42,6 +42,45 @@ comprehendmedical_describe_entities_detection_v2_job <- function(JobId) {
 }
 .comprehendmedical$operations$describe_entities_detection_v2_job <- comprehendmedical_describe_entities_detection_v2_job
 
+#' Gets the properties associated with an InferICD10CM job
+#'
+#' Gets the properties associated with an InferICD10CM job. Use this
+#' operation to get the status of an inference job.
+#'
+#' @usage
+#' comprehendmedical_describe_icd10cm_inference_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job.
+#' `The StartICD10CMInferenceJob` operation returns this identifier in its
+#' response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_icd10cm_inference_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_describe_icd10cm_inference_job
+comprehendmedical_describe_icd10cm_inference_job <- function(JobId) {
+  op <- new_operation(
+    name = "DescribeICD10CMInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$describe_icd10cm_inference_job_input(JobId = JobId)
+  output <- .comprehendmedical$describe_icd10cm_inference_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$describe_icd10cm_inference_job <- comprehendmedical_describe_icd10cm_inference_job
+
 #' Gets the properties associated with a protected health information (PHI)
 #' detection job
 #'
@@ -81,6 +120,45 @@ comprehendmedical_describe_phi_detection_job <- function(JobId) {
   return(response)
 }
 .comprehendmedical$operations$describe_phi_detection_job <- comprehendmedical_describe_phi_detection_job
+
+#' Gets the properties associated with an InferRxNorm job
+#'
+#' Gets the properties associated with an InferRxNorm job. Use this
+#' operation to get the status of an inference job.
+#'
+#' @usage
+#' comprehendmedical_describe_rx_norm_inference_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
+#' StartRxNormInferenceJob operation returns this identifier in its
+#' response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_rx_norm_inference_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_describe_rx_norm_inference_job
+comprehendmedical_describe_rx_norm_inference_job <- function(JobId) {
+  op <- new_operation(
+    name = "DescribeRxNormInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$describe_rx_norm_inference_job_input(JobId = JobId)
+  output <- .comprehendmedical$describe_rx_norm_inference_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$describe_rx_norm_inference_job <- comprehendmedical_describe_rx_norm_inference_job
 
 #' The DetectEntities operation is deprecated
 #'
@@ -131,7 +209,8 @@ comprehendmedical_detect_entities <- function(Text) {
 #'
 #' Inspects the clinical text for a variety of medical entities and returns
 #' specific information about them such as entity category, location, and
-#' confidence score on that information.
+#' confidence score on that information. Amazon Comprehend Medical only
+#' detects medical entities in English language texts.
 #' 
 #' The `DetectEntitiesV2` operation replaces the DetectEntities operation.
 #' This new action uses a different model for determining the entities in
@@ -177,12 +256,13 @@ comprehendmedical_detect_entities_v2 <- function(Text) {
 .comprehendmedical$operations$detect_entities_v2 <- comprehendmedical_detect_entities_v2
 
 #' Inspects the clinical text for protected health information (PHI)
-#' entities and entity category, location, and confidence score on that
-#' information
+#' entities and returns the entity category, location, and confidence score
+#' for each entity
 #'
 #' Inspects the clinical text for protected health information (PHI)
-#' entities and entity category, location, and confidence score on that
-#' information.
+#' entities and returns the entity category, location, and confidence score
+#' for each entity. Amazon Comprehend Medical only detects entities in
+#' English language texts.
 #'
 #' @usage
 #' comprehendmedical_detect_phi(Text)
@@ -224,7 +304,9 @@ comprehendmedical_detect_phi <- function(Text) {
 #'
 #' InferICD10CM detects medical conditions as entities listed in a patient
 #' record and links those entities to normalized concept identifiers in the
-#' ICD-10-CM knowledge base from the Centers for Disease Control.
+#' ICD-10-CM knowledge base from the Centers for Disease Control. Amazon
+#' Comprehend Medical only detects medical entities in English language
+#' texts.
 #'
 #' @usage
 #' comprehendmedical_infer_icd10cm(Text)
@@ -265,7 +347,8 @@ comprehendmedical_infer_icd10cm <- function(Text) {
 #'
 #' InferRxNorm detects medications as entities listed in a patient record
 #' and links to the normalized concept identifiers in the RxNorm database
-#' from the National Library of Medicine.
+#' from the National Library of Medicine. Amazon Comprehend Medical only
+#' detects medical entities in English language texts.
 #'
 #' @usage
 #' comprehendmedical_infer_rx_norm(Text)
@@ -353,6 +436,59 @@ comprehendmedical_list_entities_detection_v2_jobs <- function(Filter = NULL, Nex
 }
 .comprehendmedical$operations$list_entities_detection_v2_jobs <- comprehendmedical_list_entities_detection_v2_jobs
 
+#' Gets a list of InferICD10CM jobs that you have submitted
+#'
+#' Gets a list of InferICD10CM jobs that you have submitted.
+#'
+#' @usage
+#' comprehendmedical_list_icd10cm_inference_jobs(Filter, NextToken,
+#'   MaxResults)
+#'
+#' @param Filter Filters the jobs that are returned. You can filter jobs based on their
+#' names, status, or the date and time that they were submitted. You can
+#' only set one filter at a time.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults The maximum number of results to return in each page. The default is
+#' 100.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_icd10cm_inference_jobs(
+#'   Filter = list(
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     SubmitTimeBefore = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SubmitTimeAfter = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_list_icd10cm_inference_jobs
+comprehendmedical_list_icd10cm_inference_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListICD10CMInferenceJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$list_icd10cm_inference_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .comprehendmedical$list_icd10cm_inference_jobs_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$list_icd10cm_inference_jobs <- comprehendmedical_list_icd10cm_inference_jobs
+
 #' Gets a list of protected health information (PHI) detection jobs that
 #' you have submitted
 #'
@@ -406,6 +542,58 @@ comprehendmedical_list_phi_detection_jobs <- function(Filter = NULL, NextToken =
   return(response)
 }
 .comprehendmedical$operations$list_phi_detection_jobs <- comprehendmedical_list_phi_detection_jobs
+
+#' Gets a list of InferRxNorm jobs that you have submitted
+#'
+#' Gets a list of InferRxNorm jobs that you have submitted.
+#'
+#' @usage
+#' comprehendmedical_list_rx_norm_inference_jobs(Filter, NextToken,
+#'   MaxResults)
+#'
+#' @param Filter Filters the jobs that are returned. You can filter jobs based on their
+#' names, status, or the date and time that they were submitted. You can
+#' only set one filter at a time.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults Identifies the next page of results to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_rx_norm_inference_jobs(
+#'   Filter = list(
+#'     JobName = "string",
+#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
+#'     SubmitTimeBefore = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     SubmitTimeAfter = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_list_rx_norm_inference_jobs
+comprehendmedical_list_rx_norm_inference_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListRxNormInferenceJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$list_rx_norm_inference_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .comprehendmedical$list_rx_norm_inference_jobs_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$list_rx_norm_inference_jobs <- comprehendmedical_list_rx_norm_inference_jobs
 
 #' Starts an asynchronous medical entity detection job for a collection of
 #' documents
@@ -473,6 +661,72 @@ comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, O
 }
 .comprehendmedical$operations$start_entities_detection_v2_job <- comprehendmedical_start_entities_detection_v2_job
 
+#' Starts an asynchronous job to detect medical conditions and link them to
+#' the ICD-10-CM ontology
+#'
+#' Starts an asynchronous job to detect medical conditions and link them to
+#' the ICD-10-CM ontology. Use the `DescribeICD10CMInferenceJob` operation
+#' to track the status of a job.
+#'
+#' @usage
+#' comprehendmedical_start_icd10cm_inference_job(InputDataConfig,
+#'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
+#'   KMSKey, LanguageCode)
+#'
+#' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
+#' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
+#' (IAM) role that grants Amazon Comprehend Medical read access to your
+#' input data. For more information, see [Role-Based Permissions Required
+#' for Asynchronous
+#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' @param JobName The identifier of the job.
+#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
+#' request token, Amazon Comprehend Medical generates one.
+#' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
+#' do not specify a key, the files are written in plain text.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
+#' language.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_icd10cm_inference_job(
+#'   InputDataConfig = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   ),
+#'   OutputDataConfig = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   ),
+#'   DataAccessRoleArn = "string",
+#'   JobName = "string",
+#'   ClientRequestToken = "string",
+#'   KMSKey = "string",
+#'   LanguageCode = "en"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_start_icd10cm_inference_job
+comprehendmedical_start_icd10cm_inference_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, KMSKey = NULL, LanguageCode) {
+  op <- new_operation(
+    name = "StartICD10CMInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$start_icd10cm_inference_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
+  output <- .comprehendmedical$start_icd10cm_inference_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$start_icd10cm_inference_job <- comprehendmedical_start_icd10cm_inference_job
+
 #' Starts an asynchronous job to detect protected health information (PHI)
 #'
 #' Starts an asynchronous job to detect protected health information (PHI).
@@ -538,6 +792,72 @@ comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDat
 }
 .comprehendmedical$operations$start_phi_detection_job <- comprehendmedical_start_phi_detection_job
 
+#' Starts an asynchronous job to detect medication entities and link them
+#' to the RxNorm ontology
+#'
+#' Starts an asynchronous job to detect medication entities and link them
+#' to the RxNorm ontology. Use the `DescribeRxNormInferenceJob` operation
+#' to track the status of a job.
+#'
+#' @usage
+#' comprehendmedical_start_rx_norm_inference_job(InputDataConfig,
+#'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
+#'   KMSKey, LanguageCode)
+#'
+#' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
+#' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
+#' (IAM) role that grants Amazon Comprehend Medical read access to your
+#' input data. For more information, see [Role-Based Permissions Required
+#' for Asynchronous
+#' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
+#' @param JobName The identifier of the job.
+#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
+#' request token, Amazon Comprehend Medical generates one.
+#' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
+#' do not specify a key, the files are written in plain text.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
+#' language.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_rx_norm_inference_job(
+#'   InputDataConfig = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   ),
+#'   OutputDataConfig = list(
+#'     S3Bucket = "string",
+#'     S3Key = "string"
+#'   ),
+#'   DataAccessRoleArn = "string",
+#'   JobName = "string",
+#'   ClientRequestToken = "string",
+#'   KMSKey = "string",
+#'   LanguageCode = "en"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_start_rx_norm_inference_job
+comprehendmedical_start_rx_norm_inference_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, KMSKey = NULL, LanguageCode) {
+  op <- new_operation(
+    name = "StartRxNormInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$start_rx_norm_inference_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
+  output <- .comprehendmedical$start_rx_norm_inference_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$start_rx_norm_inference_job <- comprehendmedical_start_rx_norm_inference_job
+
 #' Stops a medical entities detection job in progress
 #'
 #' Stops a medical entities detection job in progress.
@@ -574,6 +894,42 @@ comprehendmedical_stop_entities_detection_v2_job <- function(JobId) {
 }
 .comprehendmedical$operations$stop_entities_detection_v2_job <- comprehendmedical_stop_entities_detection_v2_job
 
+#' Stops an InferICD10CM inference job in progress
+#'
+#' Stops an InferICD10CM inference job in progress.
+#'
+#' @usage
+#' comprehendmedical_stop_icd10cm_inference_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The identifier of the job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_icd10cm_inference_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_stop_icd10cm_inference_job
+comprehendmedical_stop_icd10cm_inference_job <- function(JobId) {
+  op <- new_operation(
+    name = "StopICD10CMInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$stop_icd10cm_inference_job_input(JobId = JobId)
+  output <- .comprehendmedical$stop_icd10cm_inference_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$stop_icd10cm_inference_job <- comprehendmedical_stop_icd10cm_inference_job
+
 #' Stops a protected health information (PHI) detection job in progress
 #'
 #' Stops a protected health information (PHI) detection job in progress.
@@ -609,3 +965,39 @@ comprehendmedical_stop_phi_detection_job <- function(JobId) {
   return(response)
 }
 .comprehendmedical$operations$stop_phi_detection_job <- comprehendmedical_stop_phi_detection_job
+
+#' Stops an InferRxNorm inference job in progress
+#'
+#' Stops an InferRxNorm inference job in progress.
+#'
+#' @usage
+#' comprehendmedical_stop_rx_norm_inference_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The identifier of the job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_rx_norm_inference_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehendmedical_stop_rx_norm_inference_job
+comprehendmedical_stop_rx_norm_inference_job <- function(JobId) {
+  op <- new_operation(
+    name = "StopRxNormInferenceJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehendmedical$stop_rx_norm_inference_job_input(JobId = JobId)
+  output <- .comprehendmedical$stop_rx_norm_inference_job_output()
+  config <- get_config()
+  svc <- .comprehendmedical$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehendmedical$operations$stop_rx_norm_inference_job <- comprehendmedical_stop_rx_norm_inference_job

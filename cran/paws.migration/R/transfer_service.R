@@ -2,20 +2,20 @@
 #' @importFrom paws.common new_handlers new_service set_config
 NULL
 
-#' AWS Transfer for SFTP
+#' AWS Transfer Family
 #'
 #' @description
-#' AWS Transfer for SFTP is a fully managed service that enables the
-#' transfer of files directly into and out of Amazon S3 using the Secure
-#' File Transfer Protocol (SFTP)---also known as Secure Shell (SSH) File
-#' Transfer Protocol. AWS helps you seamlessly migrate your file transfer
-#' workflows to AWS Transfer for SFTP---by integrating with existing
-#' authentication systems, and providing DNS routing with Amazon Route
-#' 53---so nothing changes for your customers and partners, or their
-#' applications. With your data in S3, you can use it with AWS services for
-#' processing, analytics, machine learning, and archiving. Getting started
-#' with AWS Transfer for SFTP (AWS SFTP) is easy; there is no
-#' infrastructure to buy and set up.
+#' AWS Transfer Family is a fully managed service that enables the transfer
+#' of files over the the File Transfer Protocol (FTP), File Transfer
+#' Protocol over SSL (FTPS), or Secure Shell (SSH) File Transfer Protocol
+#' (SFTP) directly into and out of Amazon Simple Storage Service (Amazon
+#' S3). AWS helps you seamlessly migrate your file transfer workflows to
+#' AWS Transfer Family by integrating with existing authentication systems,
+#' and providing DNS routing with Amazon Route 53 so nothing changes for
+#' your customers and partners, or their applications. With your data in
+#' Amazon S3, you can use it with AWS services for processing, analytics,
+#' machine learning, and archiving. Getting started with AWS Transfer
+#' Family is easy since there is no infrastructure to buy and set up.
 #'
 #' @param
 #' config
@@ -49,23 +49,23 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=transfer_create_server]{create_server} \tab Instantiates an autoscaling virtual server based on Secure File Transfer Protocol (SFTP) in AWS \cr
-#'  \link[=transfer_create_user]{create_user} \tab Creates a user and associates them with an existing Secure File Transfer Protocol (SFTP) server \cr
-#'  \link[=transfer_delete_server]{delete_server} \tab Deletes the Secure File Transfer Protocol (SFTP) server that you specify \cr
+#'  \link[=transfer_create_server]{create_server} \tab Instantiates an autoscaling virtual server based on the selected file transfer protocol in AWS \cr
+#'  \link[=transfer_create_user]{create_user} \tab Creates a user and associates them with an existing file transfer protocol-enabled server \cr
+#'  \link[=transfer_delete_server]{delete_server} \tab Deletes the file transfer protocol-enabled server that you specify \cr
 #'  \link[=transfer_delete_ssh_public_key]{delete_ssh_public_key} \tab Deletes a user's Secure Shell (SSH) public key \cr
-#'  \link[=transfer_delete_user]{delete_user} \tab Deletes the user belonging to the server you specify \cr
-#'  \link[=transfer_describe_server]{describe_server} \tab Describes the server that you specify by passing the ServerId parameter \cr
-#'  \link[=transfer_describe_user]{describe_user} \tab Describes the user assigned to a specific server, as identified by its ServerId property \cr
-#'  \link[=transfer_import_ssh_public_key]{import_ssh_public_key} \tab Adds a Secure Shell (SSH) public key to a user account identified by a UserName value assigned to a specific server, identified by ServerId\cr
-#'  \link[=transfer_list_servers]{list_servers} \tab Lists the Secure File Transfer Protocol (SFTP) servers that are associated with your AWS account \cr
+#'  \link[=transfer_delete_user]{delete_user} \tab Deletes the user belonging to a file transfer protocol-enabled server you specify \cr
+#'  \link[=transfer_describe_server]{describe_server} \tab Describes a file transfer protocol-enabled server that you specify by passing the ServerId parameter \cr
+#'  \link[=transfer_describe_user]{describe_user} \tab Describes the user assigned to the specific file transfer protocol-enabled server, as identified by its ServerId property \cr
+#'  \link[=transfer_import_ssh_public_key]{import_ssh_public_key} \tab Adds a Secure Shell (SSH) public key to a user account identified by a UserName value assigned to the specific file transfer protocol-enabled server, identified by ServerId\cr
+#'  \link[=transfer_list_servers]{list_servers} \tab Lists the file transfer protocol-enabled servers that are associated with your AWS account \cr
 #'  \link[=transfer_list_tags_for_resource]{list_tags_for_resource} \tab Lists all of the tags associated with the Amazon Resource Number (ARN) you specify \cr
-#'  \link[=transfer_list_users]{list_users} \tab Lists the users for the server that you specify by passing the ServerId parameter \cr
-#'  \link[=transfer_start_server]{start_server} \tab Changes the state of a Secure File Transfer Protocol (SFTP) server from OFFLINE to ONLINE \cr
-#'  \link[=transfer_stop_server]{stop_server} \tab Changes the state of an SFTP server from ONLINE to OFFLINE \cr
+#'  \link[=transfer_list_users]{list_users} \tab Lists the users for a file transfer protocol-enabled server that you specify by passing the ServerId parameter \cr
+#'  \link[=transfer_start_server]{start_server} \tab Changes the state of a file transfer protocol-enabled server from OFFLINE to ONLINE \cr
+#'  \link[=transfer_stop_server]{stop_server} \tab Changes the state of a file transfer protocol-enabled server from ONLINE to OFFLINE \cr
 #'  \link[=transfer_tag_resource]{tag_resource} \tab Attaches a key-value pair to a resource, as identified by its Amazon Resource Name (ARN) \cr
-#'  \link[=transfer_test_identity_provider]{test_identity_provider} \tab If the IdentityProviderType of the server is API_Gateway, tests whether your API Gateway is set up successfully \cr
+#'  \link[=transfer_test_identity_provider]{test_identity_provider} \tab If the IdentityProviderType of a file transfer protocol-enabled server is API_Gateway, tests whether your API Gateway is set up successfully \cr
 #'  \link[=transfer_untag_resource]{untag_resource} \tab Detaches a key-value pair from a resource, as identified by its Amazon Resource Name (ARN) \cr
-#'  \link[=transfer_update_server]{update_server} \tab Updates the server properties after that server has been created \cr
+#'  \link[=transfer_update_server]{update_server} \tab Updates the file transfer protocol-enabled server's properties after that server has been created \cr
 #'  \link[=transfer_update_user]{update_user} \tab Assigns new properties to a user 
 #' }
 #'
@@ -84,7 +84,7 @@ transfer <- function(config = list()) {
 
 .transfer$metadata <- list(
   service_name = "transfer",
-  endpoints = list("*" = list(endpoint = "transfer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "transfer.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "transfer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "transfer.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "transfer.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "transfer.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Transfer",
   api_version = "2018-11-05",
   signing_name = "transfer",

@@ -584,7 +584,7 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #' replication relationship between two or more DynamoDB tables with the
 #' same table name in the provided Regions.
 #' 
-#' This method only applies to [Version
+#' This operation only applies to [Version
 #' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
 #' of global tables.
 #' 
@@ -608,6 +608,14 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #' 
 #' -   The global secondary indexes must have the same hash key and sort
 #'     key (if present).
+#' 
+#' If local secondary indexes are specified, then the following conditions
+#' must also be met:
+#' 
+#' -   The local secondary indexes must have the same name.
+#' 
+#' -   The local secondary indexes must have the same hash key and sort key
+#'     (if present).
 #' 
 #' Write capacity settings should be set consistently across your replica
 #' tables and secondary indexes. DynamoDB strongly recommends enabling auto
@@ -1524,9 +1532,13 @@ dynamodb_describe_endpoints <- function() {
 #'
 #' Returns information about the specified global table.
 #' 
-#' This method only applies to [Version
+#' This operation only applies to [Version
 #' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-#' of global tables.
+#' of global tables. If you are using global tables [Version
+#' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+#' you can use
+#' [DescribeTable](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_DescribeTable.html)
+#' instead.
 #'
 #' @usage
 #' dynamodb_describe_global_table(GlobalTableName)
@@ -1564,7 +1576,7 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 #'
 #' Describes Region-specific settings for a global table.
 #' 
-#' This method only applies to [Version
+#' This operation only applies to [Version
 #' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
 #' of global tables.
 #'
@@ -1762,7 +1774,7 @@ dynamodb_describe_table <- function(TableName) {
 #' Describes auto scaling settings across replicas of the global table at
 #' once.
 #' 
-#' This method only applies to [Version
+#' This operation only applies to [Version
 #' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
 #' of global tables.
 #'
@@ -2115,7 +2127,7 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
 #'
 #' Lists all global tables that have a replica in the specified Region.
 #' 
-#' This method only applies to [Version
+#' This operation only applies to [Version
 #' 2017.11.29](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
 #' of global tables.
 #'
@@ -2124,7 +2136,14 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
 #'   RegionName)
 #'
 #' @param ExclusiveStartGlobalTableName The first global table name that this operation will evaluate.
-#' @param Limit The maximum number of table names to return.
+#' @param Limit The maximum number of table names to return, if the parameter is not
+#' specified DynamoDB defaults to 100.
+#' 
+#' If the number of global tables DynamoDB finds reaches this limit, it
+#' stops the operation and returns the table names collected up to that
+#' point, with a table name in the `LastEvaluatedGlobalTableName` to apply
+#' in a subsequent operation to the `ExclusiveStartGlobalTableName`
+#' parameter.
 #' @param RegionName Lists the global tables in a specific Region.
 #'
 #' @section Request syntax:
@@ -2296,9 +2315,14 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #'     V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/dynamodb-2012-08-10/PutItem)
 #' 
 #' When you add an item, the primary key attributes are the only required
-#' attributes. Attribute values cannot be null. String and Binary type
-#' attributes must have lengths greater than zero. Set type attributes
-#' cannot be empty. Requests with empty values will be rejected with a
+#' attributes. Attribute values cannot be null.
+#' 
+#' Empty String and Binary attribute values are allowed. Attribute values
+#' of type String and Binary must have a length greater than zero if the
+#' attribute is used as a key attribute for a table or index. Set type
+#' attributes cannot be empty.
+#' 
+#' Invalid Requests with empty values will be rejected with a
 #' `ValidationException` exception.
 #' 
 #' To prevent a new item from replacing an existing item, use a conditional
@@ -2331,6 +2355,10 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' If you specify any attributes that are part of an index key, then the
 #' data types for those attributes must match those of the schema in the
 #' table\'s attribute definition.
+#' 
+#' Empty String and Binary attribute values are allowed. Attribute values
+#' of type String and Binary must have a length greater than zero if the
+#' attribute is used as a key attribute for a table or index.
 #' 
 #' For more information about primary keys, see [Primary
 #' Key](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey)
@@ -3115,7 +3143,8 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' @usage
 #' dynamodb_restore_table_from_backup(TargetTableName, BackupArn,
 #'   BillingModeOverride, GlobalSecondaryIndexOverride,
-#'   LocalSecondaryIndexOverride, ProvisionedThroughputOverride)
+#'   LocalSecondaryIndexOverride, ProvisionedThroughputOverride,
+#'   SSESpecificationOverride)
 #'
 #' @param TargetTableName &#91;required&#93; The name of the new table to which the backup must be restored.
 #' @param BackupArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the backup.
@@ -3127,6 +3156,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' provided should match existing secondary indexes. You can choose to
 #' exclude some or all of the indexes at the time of restore.
 #' @param ProvisionedThroughputOverride Provisioned throughput settings for the restored table.
+#' @param SSESpecificationOverride The new server-side encryption settings for the restored table.
 #'
 #' @section Request syntax:
 #' ```
@@ -3175,6 +3205,11 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'   ProvisionedThroughputOverride = list(
 #'     ReadCapacityUnits = 123,
 #'     WriteCapacityUnits = 123
+#'   ),
+#'   SSESpecificationOverride = list(
+#'     Enabled = TRUE|FALSE,
+#'     SSEType = "AES256"|"KMS",
+#'     KMSMasterKeyId = "string"
 #'   )
 #' )
 #' ```
@@ -3182,14 +3217,14 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' @keywords internal
 #'
 #' @rdname dynamodb_restore_table_from_backup
-dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL) {
+dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL, SSESpecificationOverride = NULL) {
   op <- new_operation(
     name = "RestoreTableFromBackup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$restore_table_from_backup_input(TargetTableName = TargetTableName, BackupArn = BackupArn, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride)
+  input <- .dynamodb$restore_table_from_backup_input(TargetTableName = TargetTableName, BackupArn = BackupArn, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, SSESpecificationOverride = SSESpecificationOverride)
   output <- .dynamodb$restore_table_from_backup_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -3243,12 +3278,15 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' -   Point in time recovery settings
 #'
 #' @usage
-#' dynamodb_restore_table_to_point_in_time(SourceTableName,
+#' dynamodb_restore_table_to_point_in_time(SourceTableArn, SourceTableName,
 #'   TargetTableName, UseLatestRestorableTime, RestoreDateTime,
 #'   BillingModeOverride, GlobalSecondaryIndexOverride,
-#'   LocalSecondaryIndexOverride, ProvisionedThroughputOverride)
+#'   LocalSecondaryIndexOverride, ProvisionedThroughputOverride,
+#'   SSESpecificationOverride)
 #'
-#' @param SourceTableName &#91;required&#93; Name of the source table that is being restored.
+#' @param SourceTableArn The DynamoDB table that will be restored. This value is an Amazon
+#' Resource Name (ARN).
+#' @param SourceTableName Name of the source table that is being restored.
 #' @param TargetTableName &#91;required&#93; The name of the new table to which it must be restored to.
 #' @param UseLatestRestorableTime Restore the table to the latest possible time.
 #' `LatestRestorableDateTime` is typically 5 minutes before the current
@@ -3262,10 +3300,12 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' provided should match existing secondary indexes. You can choose to
 #' exclude some or all of the indexes at the time of restore.
 #' @param ProvisionedThroughputOverride Provisioned throughput settings for the restored table.
+#' @param SSESpecificationOverride The new server-side encryption settings for the restored table.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$restore_table_to_point_in_time(
+#'   SourceTableArn = "string",
 #'   SourceTableName = "string",
 #'   TargetTableName = "string",
 #'   UseLatestRestorableTime = TRUE|FALSE,
@@ -3314,6 +3354,11 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'   ProvisionedThroughputOverride = list(
 #'     ReadCapacityUnits = 123,
 #'     WriteCapacityUnits = 123
+#'   ),
+#'   SSESpecificationOverride = list(
+#'     Enabled = TRUE|FALSE,
+#'     SSEType = "AES256"|"KMS",
+#'     KMSMasterKeyId = "string"
 #'   )
 #' )
 #' ```
@@ -3321,14 +3366,14 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' @keywords internal
 #'
 #' @rdname dynamodb_restore_table_to_point_in_time
-dynamodb_restore_table_to_point_in_time <- function(SourceTableName, TargetTableName, UseLatestRestorableTime = NULL, RestoreDateTime = NULL, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL) {
+dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, SourceTableName = NULL, TargetTableName, UseLatestRestorableTime = NULL, RestoreDateTime = NULL, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL, SSESpecificationOverride = NULL) {
   op <- new_operation(
     name = "RestoreTableToPointInTime",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$restore_table_to_point_in_time_input(SourceTableName = SourceTableName, TargetTableName = TargetTableName, UseLatestRestorableTime = UseLatestRestorableTime, RestoreDateTime = RestoreDateTime, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride)
+  input <- .dynamodb$restore_table_to_point_in_time_input(SourceTableArn = SourceTableArn, SourceTableName = SourceTableName, TargetTableName = TargetTableName, UseLatestRestorableTime = UseLatestRestorableTime, RestoreDateTime = RestoreDateTime, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, SSESpecificationOverride = SSESpecificationOverride)
   output <- .dynamodb$restore_table_to_point_in_time_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -5217,7 +5262,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #'
 #' Updates auto scaling settings on your global tables at once.
 #' 
-#' This method only applies to [Version
+#' This operation only applies to [Version
 #' 2019.11.21](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
 #' of global tables.
 #'

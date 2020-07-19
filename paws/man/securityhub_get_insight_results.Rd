@@ -2,17 +2,17 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_insight_results}
 \alias{securityhub_get_insight_results}
-\title{Lists the results of the Security Hub insight that the insight ARN
-specifies}
+\title{Lists the results of the Security Hub insight specified by the insight
+ARN}
 \usage{
 securityhub_get_insight_results(InsightArn)
 }
 \arguments{
-\item{InsightArn}{[required] The ARN of the insight whose results you want to see.}
+\item{InsightArn}{[required] The ARN of the insight for which to return results.}
 }
 \description{
-Lists the results of the Security Hub insight that the insight ARN
-specifies.
+Lists the results of the Security Hub insight specified by the insight
+ARN.
 }
 \section{Request syntax}{
 \preformatted{svc$get_insight_results(

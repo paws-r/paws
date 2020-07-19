@@ -11,10 +11,14 @@ lakeformation_register_resource(ResourceArn, UseServiceLinkedRole,
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to
 register.}
 
-\item{UseServiceLinkedRole}{Designates a trusted caller, an IAM principal, by registering this
-caller with the Data Catalog.}
+\item{UseServiceLinkedRole}{Designates an AWS Identity and Access Management (IAM) service-linked
+role by registering this role with the Data Catalog. A service-linked
+role is a unique type of IAM role that is linked directly to Lake
+Formation.
 
-\item{RoleArn}{The identifier for the role.}
+For more information, see Using Service-Linked Roles for Lake Formation.}
+
+\item{RoleArn}{The identifier for the role that registers the resource.}
 }
 \description{
 Registers the resource as managed by the Data Catalog.
@@ -28,6 +32,17 @@ service-linked role and a new inline policy are created on your behalf.
 Lake Formation adds the first path to the inline policy and attaches it
 to the service-linked role. When you register subsequent paths, Lake
 Formation adds the path to the existing policy.
+
+The following request registers a new location and gives AWS Lake
+Formation permission to use the service-linked role to access that
+location.
+
+\verb{ResourceArn = arn:aws:s3:::my-bucket UseServiceLinkedRole = true}
+
+If \code{UseServiceLinkedRole} is not set to true, you must provide or set
+the \code{RoleArn}:
+
+\verb{arn:aws:iam::12345:role/my-data-access-role}
 }
 \section{Request syntax}{
 \preformatted{svc$register_resource(

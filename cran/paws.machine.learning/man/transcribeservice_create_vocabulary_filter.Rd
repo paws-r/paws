@@ -10,7 +10,9 @@ transcribeservice_create_vocabulary_filter(VocabularyFilterName,
 }
 \arguments{
 \item{VocabularyFilterName}{[required] The vocabulary filter name. The name must be unique within the account
-that contains it.}
+that contains it.If you try to create a vocabulary filter with the same
+name as a previous vocabulary filter you will receive a
+\code{ConflictException} error.}
 
 \item{LanguageCode}{[required] The language code of the words in the vocabulary filter. All words in
 the filter must be in the same language. The vocabulary filter can only

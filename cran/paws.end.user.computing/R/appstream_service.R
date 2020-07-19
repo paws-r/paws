@@ -125,7 +125,7 @@ appstream <- function(config = list()) {
 
 .appstream$metadata <- list(
   service_name = "appstream2",
-  endpoints = list("*" = list(endpoint = "appstream2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "appstream2.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "appstream2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "appstream2.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "appstream2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "appstream2.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "AppStream",
   api_version = "2016-12-01",
   signing_name = "appstream",

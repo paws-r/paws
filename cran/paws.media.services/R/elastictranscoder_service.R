@@ -75,7 +75,7 @@ elastictranscoder <- function(config = list()) {
 
 .elastictranscoder$metadata <- list(
   service_name = "elastictranscoder",
-  endpoints = list("*" = list(endpoint = "elastictranscoder.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elastictranscoder.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "elastictranscoder.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elastictranscoder.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "elastictranscoder.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elastictranscoder.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Elastic Transcoder",
   api_version = "2012-09-25",
   signing_name = NULL,

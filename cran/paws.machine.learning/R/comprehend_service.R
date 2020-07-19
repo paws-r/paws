@@ -110,7 +110,7 @@ comprehend <- function(config = list()) {
 
 .comprehend$metadata <- list(
   service_name = "comprehend",
-  endpoints = list("*" = list(endpoint = "comprehend.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "comprehend.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "comprehend.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "comprehend.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "comprehend.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "comprehend.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Comprehend",
   api_version = "2017-11-27",
   signing_name = "comprehend",

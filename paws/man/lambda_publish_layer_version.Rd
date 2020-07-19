@@ -46,11 +46,32 @@ UpdateFunctionConfiguration.
     ZipFile = raw
   ),
   CompatibleRuntimes = list(
-    "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided"
+    "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"
   ),
   LicenseInfo = "string"
 )
 }
 }
 
+\examples{
+\dontrun{
+# The following example creates a new Python library layer version. The
+# command retrieves the layer content a file named layer.zip in the
+# specified S3 bucket.
+svc$publish_layer_version(
+  CompatibleRuntimes = list(
+    "python3.6",
+    "python3.7"
+  ),
+  Content = list(
+    S3Bucket = "lambda-layers-us-west-2-123456789012",
+    S3Key = "layer.zip"
+  ),
+  Description = "My Python layer",
+  LayerName = "my-layer",
+  LicenseInfo = "MIT"
+)
+}
+
+}
 \keyword{internal}

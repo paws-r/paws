@@ -2,54 +2,61 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_update_app}
 \alias{amplify_update_app}
-\title{Updates an existing Amplify App}
+\title{Updates an existing Amplify app}
 \usage{
 amplify_update_app(appId, name, description, platform,
   iamServiceRoleArn, environmentVariables, enableBranchAutoBuild,
-  enableBasicAuth, basicAuthCredentials, customRules, buildSpec,
-  enableAutoBranchCreation, autoBranchCreationPatterns,
-  autoBranchCreationConfig, repository, oauthToken, accessToken)
+  enableBranchAutoDeletion, enableBasicAuth, basicAuthCredentials,
+  customRules, buildSpec, enableAutoBranchCreation,
+  autoBranchCreationPatterns, autoBranchCreationConfig, repository,
+  oauthToken, accessToken)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{name}{Name for an Amplify App.}
+\item{name}{The name for an Amplify app.}
 
-\item{description}{Description for an Amplify App.}
+\item{description}{The description for an Amplify app.}
 
-\item{platform}{Platform for an Amplify App.}
+\item{platform}{The platform for an Amplify app.}
 
-\item{iamServiceRoleArn}{IAM service role for an Amplify App.}
+\item{iamServiceRoleArn}{The AWS Identity and Access Management (IAM) service role for an Amplify
+app.}
 
-\item{environmentVariables}{Environment Variables for an Amplify App.}
+\item{environmentVariables}{The environment variables for an Amplify app.}
 
-\item{enableBranchAutoBuild}{Enables branch auto-building for an Amplify App.}
+\item{enableBranchAutoBuild}{Enables branch auto-building for an Amplify app.}
 
-\item{enableBasicAuth}{Enables Basic Authorization for an Amplify App.}
+\item{enableBranchAutoDeletion}{Automatically disconnects a branch in the Amplify Console when you
+delete a branch from your Git repository.}
 
-\item{basicAuthCredentials}{Basic Authorization credentials for an Amplify App.}
+\item{enableBasicAuth}{Enables basic authorization for an Amplify app.}
 
-\item{customRules}{Custom redirect / rewrite rules for an Amplify App.}
+\item{basicAuthCredentials}{The basic authorization credentials for an Amplify app.}
 
-\item{buildSpec}{BuildSpec for an Amplify App.}
+\item{customRules}{The custom redirect and rewrite rules for an Amplify app.}
 
-\item{enableAutoBranchCreation}{Enables automated branch creation for the Amplify App.}
+\item{buildSpec}{The build specification (build spec) for an Amplify app.}
 
-\item{autoBranchCreationPatterns}{Automated branch creation glob patterns for the Amplify App.}
+\item{enableAutoBranchCreation}{Enables automated branch creation for the Amplify app.}
 
-\item{autoBranchCreationConfig}{Automated branch creation branchConfig for the Amplify App.}
+\item{autoBranchCreationPatterns}{Describes the automated branch creation glob patterns for the Amplify
+app.}
 
-\item{repository}{Repository for an Amplify App}
+\item{autoBranchCreationConfig}{The automated branch creation configuration for the Amplify app.}
 
-\item{oauthToken}{OAuth token for 3rd party source control system for an Amplify App, used
-to create webhook and read-only deploy key. OAuth token is not stored.}
+\item{repository}{The name of the repository for an Amplify app}
 
-\item{accessToken}{Personal Access token for 3rd party source control system for an Amplify
-App, used to create webhook and read-only deploy key. Token is not
-stored.}
+\item{oauthToken}{The OAuth token for a third-party source control system for an Amplify
+app. The token is used to create a webhook and a read-only deploy key.
+The OAuth token is not stored.}
+
+\item{accessToken}{The personal access token for a third-party source control system for an
+Amplify app. The token is used to create webhook and a read-only deploy
+key. The token is not stored.}
 }
 \description{
-Updates an existing Amplify App.
+Updates an existing Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$update_app(
@@ -62,6 +69,7 @@ Updates an existing Amplify App.
     "string"
   ),
   enableBranchAutoBuild = TRUE|FALSE,
+  enableBranchAutoDeletion = TRUE|FALSE,
   enableBasicAuth = TRUE|FALSE,
   basicAuthCredentials = "string",
   customRules = list(

@@ -7,12 +7,14 @@
 transcribeservice_start_transcription_job(TranscriptionJobName,
   LanguageCode, MediaSampleRateHertz, MediaFormat, Media,
   OutputBucketName, OutputEncryptionKMSKeyId, Settings,
-  JobExecutionSettings)
+  JobExecutionSettings, ContentRedaction)
 }
 \arguments{
 \item{TranscriptionJobName}{[required] The name of the job. Note that you can\'t use the strings \".\" or
 \"..\" by themselves as the job name. The name must also be unique
-within an AWS account.}
+within an AWS account. If you try to create a transcription job with the
+same name as a previous transcription job you will receive a
+\code{ConflictException} error.}
 
 \item{LanguageCode}{[required] The language code for the language used in the input media file.}
 
@@ -30,12 +32,15 @@ Transcribe determine the sample rate.}
 
 \item{OutputBucketName}{The location where the transcription is stored.
 
-If you set the \code{OutputBucketName}, Amazon Transcribe puts the
-transcription in the specified S3 bucket. When you call the
-GetTranscriptionJob operation, the operation returns this location in
-the \code{TranscriptFileUri} field. The S3 bucket must have permissions that
-allow Amazon Transcribe to put files in the bucket. For more
-information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.
+If you set the \code{OutputBucketName}, Amazon Transcribe puts the transcript
+in the specified S3 bucket. When you call the GetTranscriptionJob
+operation, the operation returns this location in the
+\code{TranscriptFileUri} field. If you enable content redaction, the redacted
+transcript appears in \code{RedactedTranscriptFileUri}. If you enable content
+redaction and choose to output an unredacted transcript, that
+transcript\'s location still appears in the \code{TranscriptFileUri}. The S3
+bucket must have permissions that allow Amazon Transcribe to put files
+in the bucket. For more information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.
 
 You can specify an AWS Key Management Service (KMS) key to encrypt the
 output of your transcription using the \code{OutputEncryptionKMSKeyId}
@@ -83,6 +88,8 @@ job.}
 field to indicate that the job can be queued for deferred execution if
 the concurrency limit is reached and there are no slots available to
 immediately run the job.}
+
+\item{ContentRedaction}{An object that contains the request parameters for content redaction.}
 }
 \description{
 Starts an asynchronous job to transcribe speech to text.
@@ -111,6 +118,10 @@ Starts an asynchronous job to transcribe speech to text.
   JobExecutionSettings = list(
     AllowDeferredExecution = TRUE|FALSE,
     DataAccessRoleArn = "string"
+  ),
+  ContentRedaction = list(
+    RedactionType = "PII",
+    RedactionOutput = "redacted"|"redacted_and_unredacted"
   )
 )
 }

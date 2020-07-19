@@ -42,7 +42,7 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 }
 
 The following operations are related to
-\code{DeleteBucketMetricsConfiguration}:
+\code{GetBucketLifecycleConfiguration}:
 \itemize{
 \item GetBucketLifecycle
 \item PutBucketLifecycle

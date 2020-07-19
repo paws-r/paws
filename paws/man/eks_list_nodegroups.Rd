@@ -2,8 +2,8 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_list_nodegroups}
 \alias{eks_list_nodegroups}
-\title{Lists the Amazon EKS node groups associated with the specified cluster
-in your AWS account in the specified Region}
+\title{Lists the Amazon EKS managed node groups associated with the specified
+cluster in your AWS account in the specified Region}
 \usage{
 eks_list_nodegroups(clusterName, maxResults, nextToken)
 }
@@ -26,8 +26,9 @@ exceeded the value of that parameter. Pagination continues from the end
 of the previous results that returned the \code{nextToken} value.}
 }
 \description{
-Lists the Amazon EKS node groups associated with the specified cluster
-in your AWS account in the specified Region.
+Lists the Amazon EKS managed node groups associated with the specified
+cluster in your AWS account in the specified Region. Self-managed node
+groups are not listed.
 }
 \section{Request syntax}{
 \preformatted{svc$list_nodegroups(

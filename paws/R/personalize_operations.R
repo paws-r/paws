@@ -11,11 +11,13 @@ NULL
 #'
 #' @usage
 #' personalize_create_batch_inference_job(jobName, solutionVersionArn,
-#'   numResults, jobInput, jobOutput, roleArn)
+#'   filterArn, numResults, jobInput, jobOutput, roleArn)
 #'
 #' @param jobName &#91;required&#93; The name of the batch inference job to create.
 #' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version that will be used
 #' to generate the batch inference recommendations.
+#' @param filterArn The ARN of the filter to apply to the batch inference job. For more
+#' information on using filters, see Using Filters with Amazon Personalize.
 #' @param numResults The number of recommendations to retreive.
 #' @param jobInput &#91;required&#93; The Amazon S3 path that leads to the input file to base your
 #' recommendations on. The input material must be in JSON format.
@@ -29,6 +31,7 @@ NULL
 #' svc$create_batch_inference_job(
 #'   jobName = "string",
 #'   solutionVersionArn = "string",
+#'   filterArn = "string",
 #'   numResults = 123,
 #'   jobInput = list(
 #'     s3DataSource = list(
@@ -49,14 +52,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname personalize_create_batch_inference_job
-personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, numResults = NULL, jobInput, jobOutput, roleArn) {
+personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, filterArn = NULL, numResults = NULL, jobInput, jobOutput, roleArn) {
   op <- new_operation(
     name = "CreateBatchInferenceJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_batch_inference_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn)
+  input <- .personalize$create_batch_inference_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn)
   output <- .personalize$create_batch_inference_job_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -471,6 +474,55 @@ personalize_create_event_tracker <- function(name, datasetGroupArn) {
   return(response)
 }
 .personalize$operations$create_event_tracker <- personalize_create_event_tracker
+
+#' Creates a recommendation filter
+#'
+#' Creates a recommendation filter. For more information, see Using Filters
+#' with Amazon Personalize.
+#'
+#' @usage
+#' personalize_create_filter(name, datasetGroupArn, filterExpression)
+#'
+#' @param name &#91;required&#93; The name of the filter to create.
+#' @param datasetGroupArn &#91;required&#93; The ARN of the dataset group that the filter will belong to.
+#' @param filterExpression &#91;required&#93; The filter expression that designates the interaction types that the
+#' filter will filter out. A filter expression must follow the following
+#' format:
+#' 
+#' `EXCLUDE itemId WHERE INTERACTIONS.event_type in ("EVENT_TYPE")`
+#' 
+#' Where \"EVENT\\_TYPE\" is the type of event to filter out. To filter out
+#' all items with any interactions history, set `"*"` as the EVENT\\_TYPE.
+#' For more information, see Using Filters with Amazon Personalize.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_filter(
+#'   name = "string",
+#'   datasetGroupArn = "string",
+#'   filterExpression = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_create_filter
+personalize_create_filter <- function(name, datasetGroupArn, filterExpression) {
+  op <- new_operation(
+    name = "CreateFilter",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$create_filter_input(name = name, datasetGroupArn = datasetGroupArn, filterExpression = filterExpression)
+  output <- .personalize$create_filter_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$create_filter <- personalize_create_filter
 
 #' Creates an Amazon Personalize schema from the specified schema string
 #'
@@ -924,6 +976,42 @@ personalize_delete_event_tracker <- function(eventTrackerArn) {
 }
 .personalize$operations$delete_event_tracker <- personalize_delete_event_tracker
 
+#' Deletes a filter
+#'
+#' Deletes a filter.
+#'
+#' @usage
+#' personalize_delete_filter(filterArn)
+#'
+#' @param filterArn &#91;required&#93; The ARN of the filter to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_filter(
+#'   filterArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_delete_filter
+personalize_delete_filter <- function(filterArn) {
+  op <- new_operation(
+    name = "DeleteFilter",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$delete_filter_input(filterArn = filterArn)
+  output <- .personalize$delete_filter_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$delete_filter <- personalize_delete_filter
+
 #' Deletes a schema
 #'
 #' Deletes a schema. Before deleting a schema, you must delete all datasets
@@ -1313,6 +1401,42 @@ personalize_describe_feature_transformation <- function(featureTransformationArn
   return(response)
 }
 .personalize$operations$describe_feature_transformation <- personalize_describe_feature_transformation
+
+#' Describes a filter's properties
+#'
+#' Describes a filter\'s properties.
+#'
+#' @usage
+#' personalize_describe_filter(filterArn)
+#'
+#' @param filterArn &#91;required&#93; The ARN of the filter to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_filter(
+#'   filterArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_describe_filter
+personalize_describe_filter <- function(filterArn) {
+  op <- new_operation(
+    name = "DescribeFilter",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$describe_filter_input(filterArn = filterArn)
+  output <- .personalize$describe_filter_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$describe_filter <- personalize_describe_filter
 
 #' Describes a recipe
 #'
@@ -1782,6 +1906,47 @@ personalize_list_event_trackers <- function(datasetGroupArn = NULL, nextToken = 
   return(response)
 }
 .personalize$operations$list_event_trackers <- personalize_list_event_trackers
+
+#' Lists all filters that belong to a given dataset group
+#'
+#' Lists all filters that belong to a given dataset group.
+#'
+#' @usage
+#' personalize_list_filters(datasetGroupArn, nextToken, maxResults)
+#'
+#' @param datasetGroupArn The ARN of the dataset group that contains the filters.
+#' @param nextToken A token returned from the previous call to `ListFilters` for getting the
+#' next set of filters (if they exist).
+#' @param maxResults The maximum number of filters to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_filters(
+#'   datasetGroupArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_list_filters
+personalize_list_filters <- function(datasetGroupArn = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListFilters",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$list_filters_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .personalize$list_filters_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$list_filters <- personalize_list_filters
 
 #' Returns a list of available recipes
 #'

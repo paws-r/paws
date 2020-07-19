@@ -47,8 +47,10 @@ reporting and auditing.
 \link[=backup_delete_recovery_point]{delete_recovery_point} \tab Deletes the recovery point specified by a recovery point ID \cr
 \link[=backup_describe_backup_job]{describe_backup_job} \tab Returns metadata associated with creating a backup of a resource \cr
 \link[=backup_describe_backup_vault]{describe_backup_vault} \tab Returns metadata about a backup vault specified by its name \cr
-\link[=backup_describe_protected_resource]{describe_protected_resource} \tab Returns information about a saved resource, including the last time it was backed-up, its Amazon Resource Name (ARN), and the AWS service type of the saved resource \cr
+\link[=backup_describe_copy_job]{describe_copy_job} \tab Returns metadata associated with creating a copy of a resource \cr
+\link[=backup_describe_protected_resource]{describe_protected_resource} \tab Returns information about a saved resource, including the last time it was backed up, its Amazon Resource Name (ARN), and the AWS service type of the saved resource \cr
 \link[=backup_describe_recovery_point]{describe_recovery_point} \tab Returns metadata associated with a recovery point, including ID, status, encryption, and lifecycle \cr
+\link[=backup_describe_region_settings]{describe_region_settings} \tab Returns the current service opt-in settings for the Region \cr
 \link[=backup_describe_restore_job]{describe_restore_job} \tab Returns metadata associated with a restore job that is specified by a job ID \cr
 \link[=backup_export_backup_plan_template]{export_backup_plan_template} \tab Returns the backup plan that is specified by the plan ID as a backup template \cr
 \link[=backup_get_backup_plan]{get_backup_plan} \tab Returns the body of a backup plan in JSON format, in addition to plan metadata \cr
@@ -57,7 +59,7 @@ reporting and auditing.
 \link[=backup_get_backup_selection]{get_backup_selection} \tab Returns selection metadata and a document in JSON format that specifies a list of resources that are associated with a backup plan \cr
 \link[=backup_get_backup_vault_access_policy]{get_backup_vault_access_policy} \tab Returns the access policy document that is associated with the named backup vault \cr
 \link[=backup_get_backup_vault_notifications]{get_backup_vault_notifications} \tab Returns event notifications for the specified backup vault \cr
-\link[=backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata} \tab Returns two sets of metadata key-value pairs \cr
+\link[=backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata} \tab Returns a set of metadata key-value pairs that were used to create the backup \cr
 \link[=backup_get_supported_resource_types]{get_supported_resource_types} \tab Returns the AWS resource types supported by AWS Backup \cr
 \link[=backup_list_backup_jobs]{list_backup_jobs} \tab Returns metadata about your backup jobs \cr
 \link[=backup_list_backup_plans]{list_backup_plans} \tab Returns metadata of your saved backup plans, including Amazon Resource Names (ARNs), plan IDs, creation and deletion dates, version IDs, plan names, and creator request IDs \cr
@@ -65,6 +67,7 @@ reporting and auditing.
 \link[=backup_list_backup_plan_versions]{list_backup_plan_versions} \tab Returns version metadata of your backup plans, including Amazon Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan names, and version IDs \cr
 \link[=backup_list_backup_selections]{list_backup_selections} \tab Returns an array containing metadata of the resources associated with the target backup plan \cr
 \link[=backup_list_backup_vaults]{list_backup_vaults} \tab Returns a list of recovery point storage containers along with information about them \cr
+\link[=backup_list_copy_jobs]{list_copy_jobs} \tab Returns metadata about your copy jobs \cr
 \link[=backup_list_protected_resources]{list_protected_resources} \tab Returns an array of resources successfully backed up by AWS Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type\cr
 \link[=backup_list_recovery_points_by_backup_vault]{list_recovery_points_by_backup_vault} \tab Returns detailed information about the recovery points stored in a backup vault \cr
 \link[=backup_list_recovery_points_by_resource]{list_recovery_points_by_resource} \tab Returns detailed information about recovery points of the type specified by a resource Amazon Resource Name (ARN) \cr
@@ -73,12 +76,14 @@ reporting and auditing.
 \link[=backup_put_backup_vault_access_policy]{put_backup_vault_access_policy} \tab Sets a resource-based policy that is used to manage access permissions on the target backup vault \cr
 \link[=backup_put_backup_vault_notifications]{put_backup_vault_notifications} \tab Turns on notifications on a backup vault for the specified topic and events \cr
 \link[=backup_start_backup_job]{start_backup_job} \tab Starts a job to create a one-time backup of the specified resource \cr
+\link[=backup_start_copy_job]{start_copy_job} \tab Starts a job to create a one-time copy of the specified resource \cr
 \link[=backup_start_restore_job]{start_restore_job} \tab Recovers the saved resource identified by an Amazon Resource Name (ARN) \cr
 \link[=backup_stop_backup_job]{stop_backup_job} \tab Attempts to cancel a job to create a one-time backup of a resource \cr
 \link[=backup_tag_resource]{tag_resource} \tab Assigns a set of key-value pairs to a recovery point, backup plan, or backup vault identified by an Amazon Resource Name (ARN) \cr
 \link[=backup_untag_resource]{untag_resource} \tab Removes a set of key-value pairs from a recovery point, backup plan, or backup vault identified by an Amazon Resource Name (ARN) \cr
 \link[=backup_update_backup_plan]{update_backup_plan} \tab Replaces the body of a saved backup plan identified by its backupPlanId with the input document in JSON format \cr
-\link[=backup_update_recovery_point_lifecycle]{update_recovery_point_lifecycle} \tab Sets the transition lifecycle of a recovery point
+\link[=backup_update_recovery_point_lifecycle]{update_recovery_point_lifecycle} \tab Sets the transition lifecycle of a recovery point \cr
+\link[=backup_update_region_settings]{update_region_settings} \tab Updates the current service opt-in settings for the Region
 }
 }
 

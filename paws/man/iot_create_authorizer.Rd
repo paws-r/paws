@@ -5,7 +5,7 @@
 \title{Creates an authorizer}
 \usage{
 iot_create_authorizer(authorizerName, authorizerFunctionArn,
-  tokenKeyName, tokenSigningPublicKeys, status, signingDisabled)
+  tokenKeyName, tokenSigningPublicKeys, status, tags, signingDisabled)
 }
 \arguments{
 \item{authorizerName}{[required] The authorizer name.}
@@ -19,6 +19,16 @@ headers.}
 custom authentication service.}
 
 \item{status}{The status of the create authorizer request.}
+
+\item{tags}{Metadata which can be used to manage the custom authorizer.
+
+For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+
+For the CLI command-line parameter use format: &&tags
+\"key1=value1&key2=value2\\...\"
+
+For the cli-input-json file use format: \"tags\":
+\"key1=value1&key2=value2\\...\"}
 
 \item{signingDisabled}{Specifies whether AWS IoT validates the token signature in an
 authorization request.}
@@ -35,6 +45,12 @@ Creates an authorizer.
     "string"
   ),
   status = "ACTIVE"|"INACTIVE",
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
   signingDisabled = TRUE|FALSE
 )
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_list_images}
 \alias{ecr_list_images}
-\title{Lists all the image IDs for a given repository}
+\title{Lists all the image IDs for the specified repository}
 \usage{
 ecr_list_images(registryId, repositoryName, nextToken, maxResults,
   filter)
@@ -36,15 +36,15 @@ value, if applicable.}
 \item{filter}{The filter key and value with which to filter your \code{ListImages} results.}
 }
 \description{
-Lists all the image IDs for a given repository.
+Lists all the image IDs for the specified repository.
 }
 \details{
-You can filter images based on whether or not they are tagged by setting
-the \code{tagStatus} parameter to \code{TAGGED} or \code{UNTAGGED}. For example, you
-can filter your results to return only \code{UNTAGGED} images and then pipe
-that result to a BatchDeleteImage operation to delete them. Or, you can
-filter your results to return only \code{TAGGED} images to list all of the
-tags in your repository.
+You can filter images based on whether or not they are tagged by using
+the \code{tagStatus} filter and specifying either \code{TAGGED}, \code{UNTAGGED} or
+\code{ANY}. For example, you can filter your results to return only
+\code{UNTAGGED} images and then pipe that result to a BatchDeleteImage
+operation to delete them. Or, you can filter your results to return only
+\code{TAGGED} images to list all of the tags in your repository.
 }
 \section{Request syntax}{
 \preformatted{svc$list_images(

@@ -93,13 +93,26 @@ frauddetector_batch_get_variable <- function(names) {
 #'
 #' @usage
 #' frauddetector_create_detector_version(detectorId, description,
-#'   externalModelEndpoints, rules, modelVersions)
+#'   externalModelEndpoints, rules, modelVersions, ruleExecutionMode)
 #'
 #' @param detectorId &#91;required&#93; The ID of the detector under which you want to create a new version.
 #' @param description The description of the detector version.
 #' @param externalModelEndpoints The Amazon Sagemaker model endpoints to include in the detector version.
 #' @param rules &#91;required&#93; The rules to include in the detector version.
 #' @param modelVersions The model versions to include in the detector version.
+#' @param ruleExecutionMode The rule execution mode for the rules included in the detector version.
+#' 
+#' You can define and edit the rule mode at the detector version level,
+#' when it is in draft status.
+#' 
+#' If you specify `FIRST_MATCHED`, Amazon Fraud Detector evaluates rules
+#' sequentially, first to last, stopping at the first matched rule. Amazon
+#' Fraud dectector then provides the outcomes for that single rule.
+#' 
+#' If you specifiy `ALL_MATCHED`, Amazon Fraud Detector evaluates all rules
+#' and returns the outcomes for all matched rules.
+#' 
+#' The default behavior is `FIRST_MATCHED`.
 #'
 #' @section Request syntax:
 #' ```
@@ -122,21 +135,22 @@ frauddetector_batch_get_variable <- function(names) {
 #'       modelType = "ONLINE_FRAUD_INSIGHTS",
 #'       modelVersionNumber = "string"
 #'     )
-#'   )
+#'   ),
+#'   ruleExecutionMode = "ALL_MATCHED"|"FIRST_MATCHED"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname frauddetector_create_detector_version
-frauddetector_create_detector_version <- function(detectorId, description = NULL, externalModelEndpoints = NULL, rules, modelVersions = NULL) {
+frauddetector_create_detector_version <- function(detectorId, description = NULL, externalModelEndpoints = NULL, rules, modelVersions = NULL, ruleExecutionMode = NULL) {
   op <- new_operation(
     name = "CreateDetectorVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$create_detector_version_input(detectorId = detectorId, description = description, externalModelEndpoints = externalModelEndpoints, rules = rules, modelVersions = modelVersions)
+  input <- .frauddetector$create_detector_version_input(detectorId = detectorId, description = description, externalModelEndpoints = externalModelEndpoints, rules = rules, modelVersions = modelVersions, ruleExecutionMode = ruleExecutionMode)
   output <- .frauddetector$create_detector_version_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -282,9 +296,47 @@ frauddetector_create_variable <- function(name, dataType, dataSource, defaultVal
 }
 .frauddetector$operations$create_variable <- frauddetector_create_variable
 
+#' Deletes the detector
+#'
+#' Deletes the detector. Before deleting a detector, you must first delete
+#' all detector versions and rule versions associated with the detector.
+#'
+#' @usage
+#' frauddetector_delete_detector(detectorId)
+#'
+#' @param detectorId &#91;required&#93; The ID of the detector to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_detector(
+#'   detectorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_detector
+frauddetector_delete_detector <- function(detectorId) {
+  op <- new_operation(
+    name = "DeleteDetector",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_detector_input(detectorId = detectorId)
+  output <- .frauddetector$delete_detector_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_detector <- frauddetector_delete_detector
+
 #' Deletes the detector version
 #'
-#' Deletes the detector version.
+#' Deletes the detector version. You cannot delete detector versions that
+#' are in `ACTIVE` status.
 #'
 #' @usage
 #' frauddetector_delete_detector_version(detectorId, detectorVersionId)
@@ -355,6 +407,47 @@ frauddetector_delete_event <- function(eventId) {
   return(response)
 }
 .frauddetector$operations$delete_event <- frauddetector_delete_event
+
+#' Deletes the rule version
+#'
+#' Deletes the rule version. You cannot delete a rule version if it is used
+#' by an `ACTIVE` or `INACTIVE` detector version.
+#'
+#' @usage
+#' frauddetector_delete_rule_version(detectorId, ruleId, ruleVersion)
+#'
+#' @param detectorId &#91;required&#93; The ID of the detector that includes the rule version to delete.
+#' @param ruleId &#91;required&#93; The rule ID of the rule version to delete.
+#' @param ruleVersion &#91;required&#93; The rule version to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_rule_version(
+#'   detectorId = "string",
+#'   ruleId = "string",
+#'   ruleVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_rule_version
+frauddetector_delete_rule_version <- function(detectorId, ruleId, ruleVersion) {
+  op <- new_operation(
+    name = "DeleteRuleVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_rule_version_input(detectorId = detectorId, ruleId = ruleId, ruleVersion = ruleVersion)
+  output <- .frauddetector$delete_rule_version_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_rule_version <- frauddetector_delete_rule_version
 
 #' Gets all versions for a specified detector
 #'
@@ -1061,7 +1154,8 @@ frauddetector_put_outcome <- function(name, description = NULL) {
 #'
 #' @usage
 #' frauddetector_update_detector_version(detectorId, detectorVersionId,
-#'   externalModelEndpoints, rules, description, modelVersions)
+#'   externalModelEndpoints, rules, description, modelVersions,
+#'   ruleExecutionMode)
 #'
 #' @param detectorId &#91;required&#93; The parent detector ID for the detector version you want to update.
 #' @param detectorVersionId &#91;required&#93; The detector version ID.
@@ -1069,6 +1163,17 @@ frauddetector_put_outcome <- function(name, description = NULL) {
 #' @param rules &#91;required&#93; The rules to include in the detector version.
 #' @param description The detector version description.
 #' @param modelVersions The model versions to include in the detector version.
+#' @param ruleExecutionMode The rule execution mode to add to the detector.
+#' 
+#' If you specify `FIRST_MATCHED`, Amazon Fraud Detector evaluates rules
+#' sequentially, first to last, stopping at the first matched rule. Amazon
+#' Fraud dectector then provides the outcomes for that single rule.
+#' 
+#' If you specifiy `ALL_MATCHED`, Amazon Fraud Detector evaluates all rules
+#' and returns the outcomes for all matched rules. You can define and edit
+#' the rule mode at the detector version level, when it is in draft status.
+#' 
+#' The default behavior is `FIRST_MATCHED`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1092,21 +1197,22 @@ frauddetector_put_outcome <- function(name, description = NULL) {
 #'       modelType = "ONLINE_FRAUD_INSIGHTS",
 #'       modelVersionNumber = "string"
 #'     )
-#'   )
+#'   ),
+#'   ruleExecutionMode = "ALL_MATCHED"|"FIRST_MATCHED"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_detector_version
-frauddetector_update_detector_version <- function(detectorId, detectorVersionId, externalModelEndpoints, rules, description = NULL, modelVersions = NULL) {
+frauddetector_update_detector_version <- function(detectorId, detectorVersionId, externalModelEndpoints, rules, description = NULL, modelVersions = NULL, ruleExecutionMode = NULL) {
   op <- new_operation(
     name = "UpdateDetectorVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$update_detector_version_input(detectorId = detectorId, detectorVersionId = detectorVersionId, externalModelEndpoints = externalModelEndpoints, rules = rules, description = description, modelVersions = modelVersions)
+  input <- .frauddetector$update_detector_version_input(detectorId = detectorId, detectorVersionId = detectorVersionId, externalModelEndpoints = externalModelEndpoints, rules = rules, description = description, modelVersions = modelVersions, ruleExecutionMode = ruleExecutionMode)
   output <- .frauddetector$update_detector_version_output()
   config <- get_config()
   svc <- .frauddetector$service(config)

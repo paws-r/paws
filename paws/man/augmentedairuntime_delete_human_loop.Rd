@@ -7,7 +7,7 @@
 augmentedairuntime_delete_human_loop(HumanLoopName)
 }
 \arguments{
-\item{HumanLoopName}{[required] The name of the human loop you want to delete.}
+\item{HumanLoopName}{[required] The name of the human loop that you want to delete.}
 }
 \description{
 Deletes the specified human loop for a flow definition.

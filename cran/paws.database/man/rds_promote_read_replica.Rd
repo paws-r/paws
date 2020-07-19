@@ -2,7 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_promote_read_replica}
 \alias{rds_promote_read_replica}
-\title{Promotes a Read Replica DB instance to a standalone DB instance}
+\title{Promotes a read replica DB instance to a standalone DB instance}
 \usage{
 rds_promote_read_replica(DBInstanceIdentifier, BackupRetentionPeriod,
   PreferredBackupWindow)
@@ -12,7 +12,7 @@ rds_promote_read_replica(DBInstanceIdentifier, BackupRetentionPeriod,
 
 Constraints:
 \itemize{
-\item Must match the identifier of an existing Read Replica DB instance.
+\item Must match the identifier of an existing read replica DB instance.
 }
 
 Example: \code{mydbinstance}}
@@ -26,7 +26,7 @@ Default: 1
 Constraints:
 \itemize{
 \item Must be a value from 0 to 35.
-\item Can\'t be set to 0 if the DB instance is a source to Read Replicas.
+\item Can\'t be set to 0 if the DB instance is a source to read replicas.
 }}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
@@ -47,18 +47,18 @@ Constraints:
 }}
 }
 \description{
-Promotes a Read Replica DB instance to a standalone DB instance.
+Promotes a read replica DB instance to a standalone DB instance.
 }
 \details{
 \itemize{
 \item Backup duration is a function of the amount of changes to the
-database since the previous backup. If you plan to promote a Read
-Replica to a standalone instance, we recommend that you enable
+database since the previous backup. If you plan to promote a read
+replica to a standalone instance, we recommend that you enable
 backups and complete at least one backup prior to promotion. In
-addition, a Read Replica cannot be promoted to a standalone instance
+addition, a read replica cannot be promoted to a standalone instance
 when it is in the \code{backing-up} status. If you have enabled backups
-on your Read Replica, configure the automated backup window so that
-daily backups do not interfere with Read Replica promotion.
+on your read replica, configure the automated backup window so that
+daily backups do not interfere with read replica promotion.
 \item This command doesn\'t apply to Aurora MySQL and Aurora PostgreSQL.
 }
 }

@@ -30,6 +30,22 @@ Update a channel schedule
           HlsTimedMetadataSettings = list(
             Id3 = "string"
           ),
+          InputPrepareSettings = list(
+            InputAttachmentNameReference = "string",
+            InputClippingSettings = list(
+              InputTimecodeSource = "ZEROBASED"|"EMBEDDED",
+              StartTimecode = list(
+                Timecode = "string"
+              ),
+              StopTimecode = list(
+                LastFrameClippingBehavior = "EXCLUDE_LAST_FRAME"|"INCLUDE_LAST_FRAME",
+                Timecode = "string"
+              )
+            ),
+            UrlPath = list(
+              "string"
+            )
+          ),
           InputSwitchSettings = list(
             InputAttachmentNameReference = "string",
             InputClippingSettings = list(

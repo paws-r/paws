@@ -6,7 +6,7 @@
 \usage{
 ecs_create_task_set(service, cluster, externalId, taskDefinition,
   networkConfiguration, loadBalancers, serviceRegistries, launchType,
-  capacityProviderStrategy, platformVersion, scale, clientToken)
+  capacityProviderStrategy, platformVersion, scale, clientToken, tags)
 }
 \arguments{
 \item{service}{[required] The short name or full Amazon Resource Name (ARN) of the service to
@@ -75,6 +75,31 @@ default.}
 
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. Up to 32 ASCII characters are allowed.}
+
+\item{tags}{The metadata that you apply to the task set to help you categorize and
+organize them. Each tag consists of a key and an optional value, both of
+which you define. When a service is deleted, the tags are deleted as
+well.
+
+The following basic restrictions apply to tags:
+\itemize{
+\item Maximum number of tags per resource - 50
+\item For each resource, each tag key must be unique, and each tag key can
+have only one value.
+\item Maximum key length - 128 Unicode characters in UTF-8
+\item Maximum value length - 256 Unicode characters in UTF-8
+\item If your tagging schema is used across multiple services and
+resources, remember that other services may have restrictions on
+allowed characters. Generally allowed characters are: letters,
+numbers, and spaces representable in UTF-8, and the following
+characters: + - = . \\_ : / @.
+\item Tag keys and values are case-sensitive.
+\item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
+such as a prefix for either keys or values as it is reserved for AWS
+use. You cannot edit or delete tag keys or values with this prefix.
+Tags with this prefix do not count against your tags per resource
+limit.
+}}
 }
 \description{
 Create a task set in the specified cluster and service. This is used
@@ -128,7 +153,13 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
     value = 123.0,
     unit = "PERCENT"
   ),
-  clientToken = "string"
+  clientToken = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

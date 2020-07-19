@@ -4,7 +4,7 @@
 \alias{ec2_describe_public_ipv_4_pools}
 \title{Describes the specified IPv4 address pools}
 \usage{
-ec2_describe_public_ipv_4_pools(PoolIds, NextToken, MaxResults)
+ec2_describe_public_ipv_4_pools(PoolIds, NextToken, MaxResults, Filters)
 }
 \arguments{
 \item{PoolIds}{The IDs of the address pools.}
@@ -14,6 +14,18 @@ ec2_describe_public_ipv_4_pools(PoolIds, NextToken, MaxResults)
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve
 the remaining results, make another call with the returned \code{nextToken}
 value.}
+
+\item{Filters}{One or more filters.
+\itemize{
+\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this
+filter to find all resources assigned a tag with a specific key,
+regardless of the tag value.
+}}
 }
 \description{
 Describes the specified IPv4 address pools.
@@ -24,7 +36,15 @@ Describes the specified IPv4 address pools.
     "string"
   ),
   NextToken = "string",
-  MaxResults = 123
+  MaxResults = 123,
+  Filters = list(
+    list(
+      Name = "string",
+      Values = list(
+        "string"
+      )
+    )
+  )
 )
 }
 }

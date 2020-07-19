@@ -21,8 +21,8 @@ Describes the load balancers for the specified Auto Scaling group.
 }
 \details{
 This operation describes only Classic Load Balancers. If you have
-Application Load Balancers or Network Load Balancers, use
-DescribeLoadBalancerTargetGroups instead.
+Application Load Balancers or Network Load Balancers, use the
+DescribeLoadBalancerTargetGroups API instead.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_load_balancers(

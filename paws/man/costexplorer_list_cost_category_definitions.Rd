@@ -2,38 +2,36 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_list_cost_category_definitions}
 \alias{costexplorer_list_cost_category_definitions}
-\title{_COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND
-IS SUBJECT TO CHANGE}
+\title{Returns the name, ARN, NumberOfRules and effective dates of all Cost
+Categories defined in the account}
 \usage{
-costexplorer_list_cost_category_definitions(EffectiveOn, NextToken)
+costexplorer_list_cost_category_definitions(EffectiveOn, NextToken,
+  MaxResults)
 }
 \arguments{
 \item{EffectiveOn}{The date when the Cost Category was effective.}
 
 \item{NextToken}{The token to retrieve the next set of results. Amazon Web Services
 provides the token when the response from a previous call has more
-results than the maximum page size.
+results than the maximum page size.}
 
-You can use this information to retrieve the full Cost Category
-information using \code{DescribeCostCategory}.}
+\item{MaxResults}{The number of entries a paginated response contains.}
 }
 \description{
-\emph{\strong{Cost Category is in public beta for AWS Billing and Cost Management
-and is subject to change. Your use of Cost Categories is subject to the
-Beta Service Participation terms of the \href{https://aws.amazon.com/service-terms/}{AWS Service Terms} (Section 1.10).}}
-}
-\details{
-Returns the name, ARN and effective dates of all Cost Categories defined
-in the account. You have the option to use \code{EffectiveOn} to return a
-list of Cost Categories that were active on a specific date. If there is
-no \code{EffectiveOn} specified, you'll see Cost Categories that are
-effective on the current date. If Cost Category is still effective,
-\code{EffectiveEnd} is omitted in the response.
+Returns the name, ARN, \code{NumberOfRules} and effective dates of all Cost
+Categories defined in the account. You have the option to use
+\code{EffectiveOn} to return a list of Cost Categories that were active on a
+specific date. If there is no \code{EffectiveOn} specified, you'll see Cost
+Categories that are effective on the current date. If Cost Category is
+still effective, \code{EffectiveEnd} is omitted in the response.
+\code{ListCostCategoryDefinitions} supports pagination. The request can have
+a \code{MaxResults} range up to 100.
 }
 \section{Request syntax}{
 \preformatted{svc$list_cost_category_definitions(
   EffectiveOn = "string",
-  NextToken = "string"
+  NextToken = "string",
+  MaxResults = 123
 )
 }
 }

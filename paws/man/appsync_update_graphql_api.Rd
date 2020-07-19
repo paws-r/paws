@@ -5,7 +5,8 @@
 \title{Updates a GraphqlApi object}
 \usage{
 appsync_update_graphql_api(apiId, name, logConfig, authenticationType,
-  userPoolConfig, openIDConnectConfig, additionalAuthenticationProviders)
+  userPoolConfig, openIDConnectConfig, additionalAuthenticationProviders,
+  xrayEnabled)
 }
 \arguments{
 \item{apiId}{[required] The API ID.}
@@ -22,6 +23,8 @@ object.}
 \item{openIDConnectConfig}{The OpenID Connect configuration for the \code{GraphqlApi} object.}
 
 \item{additionalAuthenticationProviders}{A list of additional authentication providers for the \code{GraphqlApi} API.}
+
+\item{xrayEnabled}{A flag indicating whether to enable X-Ray tracing for the \code{GraphqlApi}.}
 }
 \description{
 Updates a \code{GraphqlApi} object.
@@ -63,7 +66,8 @@ Updates a \code{GraphqlApi} object.
         appIdClientRegex = "string"
       )
     )
-  )
+  ),
+  xrayEnabled = TRUE|FALSE
 )
 }
 }

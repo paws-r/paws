@@ -71,10 +71,17 @@ Constraint: You can\'t specify the \code{AvailabilityZone} parameter if the
 DB instance is a Multi-AZ deployment.}
 
 \item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
-When the DB instance is publicly accessible, it is an Internet-facing
-instance with a publicly resolvable DNS name, which resolves to a public
-IP address. When the DB instance isn\'t publicly accessible, it is an
-internal instance with a DNS name that resolves to a private IP address.
+
+When the DB instance is publicly accessible, its DNS endpoint resolves
+to the private IP address from within the DB instance\'s VPC, and to the
+public IP address from outside of the DB instance\'s VPC. Access to the
+DB instance is ultimately controlled by the security group it uses, and
+that public access is not permitted if the security group assigned to
+the DB instance doesn\'t permit it.
+
+When the DB instance isn\'t publicly accessible, it is an internal DB
+instance with a DNS name that resolves to a private IP address.
+
 For more information, see CreateDBInstance.}
 
 \item{AutoMinorVersionUpgrade}{A value that indicates whether minor version upgrades are applied
@@ -167,7 +174,7 @@ Authentication to authenticate users that connect to the DB instance.
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html}{Using Windows Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server}
 in the \emph{Amazon RDS User Guide}.
 
-For Oracle DB instances, Amazon RDS can use Kerberos Authentication to
+For Oracle DB instances, Amazon RDS can use Kerberos authentication to
 authenticate users that connect to the DB instance. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html}{Using Kerberos Authentication with Amazon RDS for Oracle}
 in the \emph{Amazon RDS User Guide}.}

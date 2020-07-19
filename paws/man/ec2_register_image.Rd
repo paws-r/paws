@@ -67,7 +67,7 @@ Default: \code{paravirtual}}
 \description{
 Registers an AMI. When you\'re creating an AMI, this is the final step
 you must complete before you can launch an instance from the AMI. For
-more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html}{Creating Your Own AMIs}
+more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html}{Creating your own AMIs}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \details{
@@ -77,30 +77,33 @@ yourself.
 
 You can also use \code{RegisterImage} to create an Amazon EBS-backed Linux
 AMI from a snapshot of a root device volume. You specify the snapshot
-using the block device mapping. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html}{Launching a Linux Instance from a Backup}
+using the block device mapping. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html}{Launching a Linux instance from a backup}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-You can\'t register an image where a secondary (non-root) snapshot has
-AWS Marketplace product codes.
+If any snapshots have AWS Marketplace product codes, they are copied to
+the new AMI.
 
 Windows and some Linux distributions, such as Red Hat Enterprise Linux
 (RHEL) and SUSE Linux Enterprise Server (SLES), use the EC2 billing
 product code associated with an AMI to verify the subscription status
 for package updates. To create a new AMI for operating systems that
-require a billing product code, do the following:
+require a billing product code, instead of registering the AMI, do the
+following to preserve the billing product code association:
 \enumerate{
 \item Launch an instance from an existing AMI with that billing product
 code.
 \item Customize the instance.
-\item Create a new AMI from the instance using CreateImage to preserve the
-billing product code association.
+\item Create an AMI from the instance using CreateImage.
 }
 
 If you purchase a Reserved Instance to apply to an On-Demand Instance
 that was launched from an AMI with a billing product code, make sure
 that the Reserved Instance has the matching billing product code. If you
 purchase a Reserved Instance without the matching billing product code,
-the Reserved Instance will not be applied to the On-Demand Instance.
+the Reserved Instance will not be applied to the On-Demand Instance. For
+information about how to obtain the platform details and billing
+information of an AMI, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html}{Obtaining billing information}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 If needed, you can deregister an AMI at any time. Any modifications you
 make to an AMI backed by an instance store volume invalidates its
@@ -121,8 +124,8 @@ image and register the new image.
         SnapshotId = "string",
         VolumeSize = 123,
         VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
-        Encrypted = TRUE|FALSE,
-        KmsKeyId = "string"
+        KmsKeyId = "string",
+        Encrypted = TRUE|FALSE
       ),
       NoDevice = "string"
     )

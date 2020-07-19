@@ -3,8 +3,8 @@
 \name{sns_create_platform_application}
 \alias{sns_create_platform_application}
 \title{Creates a platform application object for one of the supported push
-notification services, such as APNS and FCM, to which devices and mobile
-apps may register}
+notification services, such as APNS and GCM (Firebase Cloud Messaging),
+to which devices and mobile apps may register}
 \usage{
 sns_create_platform_application(Name, Platform, Attributes)
 }
@@ -14,7 +14,7 @@ letters, numbers, underscores, hyphens, and periods, and must be between
 1 and 256 characters long.}
 
 \item{Platform}{[required] The following platforms are supported: ADM (Amazon Device Messaging),
-APNS (Apple Push Notification Service), APNS\\_SANDBOX, and FCM (Firebase
+APNS (Apple Push Notification Service), APNS\\_SANDBOX, and GCM (Firebase
 Cloud Messaging).}
 
 \item{Attributes}{[required] For a list of attributes, see
@@ -22,25 +22,31 @@ Cloud Messaging).}
 }
 \description{
 Creates a platform application object for one of the supported push
-notification services, such as APNS and FCM, to which devices and mobile
-apps may register. You must specify PlatformPrincipal and
-PlatformCredential attributes when using the \code{CreatePlatformApplication}
-action. The PlatformPrincipal is received from the notification service.
-For APNS/APNS\\_SANDBOX, PlatformPrincipal is \"SSL certificate\". For
-FCM, PlatformPrincipal is not applicable. For ADM, PlatformPrincipal is
-\"client id\". The PlatformCredential is also received from the
-notification service. For WNS, PlatformPrincipal is \"Package Security
-Identifier\". For MPNS, PlatformPrincipal is \"TLS certificate\". For
-Baidu, PlatformPrincipal is \"API key\".
+notification services, such as APNS and GCM (Firebase Cloud Messaging),
+to which devices and mobile apps may register. You must specify
+\code{PlatformPrincipal} and \code{PlatformCredential} attributes when using the
+\code{CreatePlatformApplication} action.
 }
 \details{
-For APNS/APNS\\_SANDBOX, PlatformCredential is \"private key\". For FCM,
-PlatformCredential is \"API key\". For ADM, PlatformCredential is
-\"client secret\". For WNS, PlatformCredential is \"secret key\". For
-MPNS, PlatformCredential is \"private key\". For Baidu,
-PlatformCredential is \"secret key\". The PlatformApplicationArn that is
-returned when using \code{CreatePlatformApplication} is then used as an
-attribute for the \code{CreatePlatformEndpoint} action.
+\code{PlatformPrincipal} and \code{PlatformCredential} are received from the
+notification service.
+\itemize{
+\item For \code{ADM}, \code{PlatformPrincipal} is \verb{client id} and
+\code{PlatformCredential} is \verb{client secret}.
+\item For \code{Baidu}, \code{PlatformPrincipal} is \verb{API key} and
+\code{PlatformCredential} is \verb{secret key}.
+\item For \code{APNS} and \code{APNS_SANDBOX}, \code{PlatformPrincipal} is
+\verb{SSL certificate} and \code{PlatformCredential} is \verb{private key}.
+\item For \code{GCM} (Firebase Cloud Messaging), there is no
+\code{PlatformPrincipal} and the \code{PlatformCredential} is \verb{API key}.
+\item For \code{MPNS}, \code{PlatformPrincipal} is \verb{TLS certificate} and
+\code{PlatformCredential} is \verb{private key}.
+\item For \code{WNS}, \code{PlatformPrincipal} is \verb{Package Security Identifier} and
+\code{PlatformCredential} is \verb{secret key}.
+}
+
+You can use the returned \code{PlatformApplicationArn} as an attribute for
+the \code{CreatePlatformEndpoint} action.
 }
 \section{Request syntax}{
 \preformatted{svc$create_platform_application(

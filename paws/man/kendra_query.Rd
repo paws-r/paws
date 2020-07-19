@@ -37,7 +37,8 @@ parameter. By default, Amazon Kendra returns the first page of results.
 Use this parameter to get result pages after the first one.}
 
 \item{PageSize}{Sets the number of results that are returned in each page of results.
-The default page size is 100.}
+The default page size is 10. The maximum number of results returned is
+100. If you ask for more than 100 results, only 100 are returned.}
 }
 \description{
 Searches an active index. Use this API to search your documents using

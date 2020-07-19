@@ -127,6 +127,12 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
             value = "string"
           )
         ),
+        environmentFiles = list(
+          list(
+            value = "string",
+            type = "s3"
+          )
+        ),
         cpu = 123,
         memory = 123,
         memoryReservation = 123,

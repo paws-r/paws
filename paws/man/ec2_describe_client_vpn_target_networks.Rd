@@ -19,7 +19,13 @@ the nextToken value.}
 
 \item{NextToken}{The token to retrieve the next page of results.}
 
-\item{Filters}{One or more filters. Filter names and values are case-sensitive.}
+\item{Filters}{One or more filters. Filter names and values are case-sensitive.
+\itemize{
+\item \code{association-id} - The ID of the association.
+\item \code{target-network-id} - The ID of the subnet specified as the target
+network.
+\item \code{vpc-id} - The ID of the VPC in which the target network is located.
+}}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

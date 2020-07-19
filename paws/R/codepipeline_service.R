@@ -50,6 +50,9 @@ NULL
 #' -   StartPipelineExecution, which runs the most recent revision of an
 #'     artifact through the pipeline.
 #' 
+#' -   StopPipelineExecution, which stops the specified pipeline execution
+#'     from continuing through the pipeline.
+#' 
 #' -   UpdatePipeline, which updates a pipeline with edits or changes to
 #'     the structure of the pipeline.
 #' 
@@ -207,6 +210,7 @@ NULL
 #'  \link[=codepipeline_register_webhook_with_third_party]{register_webhook_with_third_party} \tab Configures a connection between the webhook that was created and the external tool with events to be detected \cr
 #'  \link[=codepipeline_retry_stage_execution]{retry_stage_execution} \tab Resumes the pipeline execution by retrying the last failed actions in a stage \cr
 #'  \link[=codepipeline_start_pipeline_execution]{start_pipeline_execution} \tab Starts the specified pipeline \cr
+#'  \link[=codepipeline_stop_pipeline_execution]{stop_pipeline_execution} \tab Stops the specified pipeline execution \cr
 #'  \link[=codepipeline_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource \cr
 #'  \link[=codepipeline_untag_resource]{untag_resource} \tab Removes tags from an AWS resource \cr
 #'  \link[=codepipeline_update_pipeline]{update_pipeline} \tab Updates a specified pipeline with edits or changes to its structure 
@@ -227,7 +231,7 @@ codepipeline <- function(config = list()) {
 
 .codepipeline$metadata <- list(
   service_name = "codepipeline",
-  endpoints = list("*" = list(endpoint = "codepipeline.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codepipeline.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "codepipeline.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codepipeline.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codepipeline.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codepipeline.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CodePipeline",
   api_version = "2015-07-09",
   signing_name = NULL,

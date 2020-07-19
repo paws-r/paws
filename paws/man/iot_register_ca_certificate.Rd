@@ -5,7 +5,7 @@
 \title{Registers a CA certificate with AWS IoT}
 \usage{
 iot_register_ca_certificate(caCertificate, verificationCertificate,
-  setAsActive, allowAutoRegistration, registrationConfig)
+  setAsActive, allowAutoRegistration, registrationConfig, tags)
 }
 \arguments{
 \item{caCertificate}{[required] The CA certificate.}
@@ -18,6 +18,16 @@ iot_register_ca_certificate(caCertificate, verificationCertificate,
 certificates.}
 
 \item{registrationConfig}{Information about the registration configuration.}
+
+\item{tags}{Metadata which can be used to manage the CA certificate.
+
+For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+
+For the CLI command-line parameter use format: &&tags
+\"key1=value1&key2=value2\\...\"
+
+For the cli-input-json file use format: \"tags\":
+\"key1=value1&key2=value2\\...\"}
 }
 \description{
 Registers a CA certificate with AWS IoT. This CA certificate can then be
@@ -37,6 +47,12 @@ register your device certificates with the RegisterCertificate API.
   registrationConfig = list(
     templateBody = "string",
     roleArn = "string"
+  ),
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

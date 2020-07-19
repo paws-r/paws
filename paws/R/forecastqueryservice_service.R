@@ -39,7 +39,7 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=forecastqueryservice_query_forecast]{query_forecast} \tab Retrieves a forecast filtered by the supplied criteria
+#'  \link[=forecastqueryservice_query_forecast]{query_forecast} \tab Retrieves a forecast for a single item, filtered by the supplied criteria
 #' }
 #'
 #' @rdname forecastqueryservice
@@ -57,7 +57,7 @@ forecastqueryservice <- function(config = list()) {
 
 .forecastqueryservice$metadata <- list(
   service_name = "forecastqueryservice",
-  endpoints = list("*" = list(endpoint = "forecastqueryservice.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "forecastqueryservice.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "forecastqueryservice.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "forecastqueryservice.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "forecastqueryservice.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "forecastqueryservice.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "forecastquery",
   api_version = "2018-06-26",
   signing_name = "forecast",

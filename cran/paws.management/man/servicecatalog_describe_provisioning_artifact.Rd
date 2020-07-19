@@ -6,7 +6,8 @@
 as a version) for the specified product}
 \usage{
 servicecatalog_describe_provisioning_artifact(AcceptLanguage,
-  ProvisioningArtifactId, ProductId, Verbose)
+  ProvisioningArtifactId, ProductId, ProvisioningArtifactName,
+  ProductName, Verbose)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -16,9 +17,13 @@ servicecatalog_describe_provisioning_artifact(AcceptLanguage,
 \item \code{zh} - Chinese
 }}
 
-\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact.}
+\item{ProvisioningArtifactId}{The identifier of the provisioning artifact.}
 
-\item{ProductId}{[required] The product identifier.}
+\item{ProductId}{The product identifier.}
+
+\item{ProvisioningArtifactName}{The provisioning artifact name.}
+
+\item{ProductName}{The product name.}
 
 \item{Verbose}{Indicates whether a verbose level of detail is enabled.}
 }
@@ -31,6 +36,8 @@ as a version) for the specified product.
   AcceptLanguage = "string",
   ProvisioningArtifactId = "string",
   ProductId = "string",
+  ProvisioningArtifactName = "string",
+  ProductName = "string",
   Verbose = TRUE|FALSE
 )
 }

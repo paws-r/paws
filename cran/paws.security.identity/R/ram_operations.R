@@ -732,10 +732,13 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' @param principals The principals.
 #' @param resourceType The resource type.
 #' 
-#' Valid values: `ec2:CapacityReservation` \\| `ec2:Subnet` \\|
+#' Valid values: `codebuild:Project` \\| `codebuild:ReportGroup` \\|
+#' `ec2:CapacityReservation` \\| `ec2:DedicatedHost` \\| `ec2:Subnet` \\|
 #' `ec2:TrafficMirrorTarget` \\| `ec2:TransitGateway` \\|
-#' `license-manager:LicenseConfiguration` \\| `rds:Cluster` \\|
-#' `route53resolver:ResolverRule` I `resource-groups:Group`
+#' `imagebuilder:Component` \\| `imagebuilder:Image` \\|
+#' `imagebuilder:ImageRecipe` \\| `license-manager:LicenseConfiguration` I
+#' `resource-groups:Group` \\| `rds:Cluster` \\|
+#' `route53resolver:ResolverRule`
 #' @param resourceShareArns The Amazon Resource Names (ARN) of the resource shares.
 #' @param nextToken The token for the next page of results.
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
@@ -822,6 +825,46 @@ ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NU
 }
 .ram$operations$list_resource_share_permissions <- ram_list_resource_share_permissions
 
+#' Lists the shareable resource types supported by AWS RAM
+#'
+#' Lists the shareable resource types supported by AWS RAM.
+#'
+#' @usage
+#' ram_list_resource_types(nextToken, maxResults)
+#'
+#' @param nextToken The token for the next page of results.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resource_types(
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ram_list_resource_types
+ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListResourceTypes",
+    http_method = "POST",
+    http_path = "/listresourcetypes",
+    paginator = list()
+  )
+  input <- .ram$list_resource_types_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .ram$list_resource_types_output()
+  config <- get_config()
+  svc <- .ram$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ram$operations$list_resource_types <- ram_list_resource_types
+
 #' Lists the resources that you added to a resource shares or the resources
 #' that are shared with you
 #'
@@ -836,10 +879,13 @@ ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NU
 #' @param principal The principal.
 #' @param resourceType The resource type.
 #' 
-#' Valid values: `ec2:CapacityReservation` \\| `ec2:Subnet` \\|
+#' Valid values: `codebuild:Project` \\| `codebuild:ReportGroup` \\|
+#' `ec2:CapacityReservation` \\| `ec2:DedicatedHost` \\| `ec2:Subnet` \\|
 #' `ec2:TrafficMirrorTarget` \\| `ec2:TransitGateway` \\|
-#' `license-manager:LicenseConfiguration` \\| `rds:Cluster` \\|
-#' `route53resolver:ResolverRule` \\| `resource-groups:Group`
+#' `imagebuilder:Component` \\| `imagebuilder:Image` \\|
+#' `imagebuilder:ImageRecipe` \\| `license-manager:LicenseConfiguration` I
+#' `resource-groups:Group` \\| `rds:Cluster` \\|
+#' `route53resolver:ResolverRule`
 #' @param resourceArns The Amazon Resource Names (ARN) of the resources.
 #' @param resourceShareArns The Amazon Resource Names (ARN) of the resource shares.
 #' @param nextToken The token for the next page of results.

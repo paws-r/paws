@@ -12,7 +12,7 @@ alexaforbusiness_create_room(RoomName, Description, ProfileArn,
 
 \item{Description}{The description for the room.}
 
-\item{ProfileArn}{The profile ARN for the room.}
+\item{ProfileArn}{The profile ARN for the room. This is required.}
 
 \item{ProviderCalendarId}{The calendar ARN for the room.}
 

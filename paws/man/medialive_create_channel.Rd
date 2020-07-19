@@ -247,6 +247,9 @@ Creates a new channel
         Name = "string"
       )
     ),
+    FeatureActivations = list(
+      InputPrepareScheduleActions = "DISABLED"|"ENABLED"
+    ),
     GlobalConfiguration = list(
       InitialAudioGain = 123,
       InputEndAction = "NONE"|"SWITCH_AND_LOOP_INPUTS",
@@ -398,7 +401,7 @@ Creates a new channel
             RestartDelay = 123,
             SegmentationMode = "USE_INPUT_SEGMENTATION"|"USE_SEGMENT_DURATION",
             SendDelayMs = 123,
-            SparseTrackType = "NONE"|"SCTE_35",
+            SparseTrackType = "NONE"|"SCTE_35"|"SCTE_35_WITHOUT_SEGMENTATION",
             StreamManifestBehavior = "DO_NOT_SEND"|"SEND",
             TimestampOffset = "string",
             TimestampOffsetMode = "USE_CONFIGURED_OFFSET"|"USE_EVENT_START_DATE"
@@ -511,7 +514,9 @@ Creates a new channel
                     SegmentType = "AAC"|"FMP4"
                   ),
                   Fmp4HlsSettings = list(
-                    AudioRenditionSets = "string"
+                    AudioRenditionSets = "string",
+                    NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
+                    TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
                   ),
                   StandardHlsSettings = list(
                     AudioRenditionSets = "string",
@@ -660,8 +665,15 @@ Creates a new channel
               Rec709Settings = list()
             ),
             EntropyEncoding = "CABAC"|"CAVLC",
+            FilterSettings = list(
+              TemporalFilterSettings = list(
+                PostFilterSharpening = "AUTO"|"DISABLED"|"ENABLED",
+                Strength = "AUTO"|"STRENGTH_1"|"STRENGTH_2"|"STRENGTH_3"|"STRENGTH_4"|"STRENGTH_5"|"STRENGTH_6"|"STRENGTH_7"|"STRENGTH_8"|"STRENGTH_9"|"STRENGTH_10"|"STRENGTH_11"|"STRENGTH_12"|"STRENGTH_13"|"STRENGTH_14"|"STRENGTH_15"|"STRENGTH_16"
+              )
+            ),
             FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
             FlickerAq = "DISABLED"|"ENABLED",
+            ForceFieldPictures = "DISABLED"|"ENABLED",
             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
             FramerateDenominator = 123,
             FramerateNumerator = 123,
@@ -679,6 +691,7 @@ Creates a new channel
             ParDenominator = 123,
             ParNumerator = 123,
             Profile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+            QualityLevel = "ENHANCED_QUALITY"|"STANDARD_QUALITY",
             QvbrQualityLevel = 123,
             RateControlMode = "CBR"|"MULTIPLEX"|"QVBR"|"VBR",
             ScanType = "INTERLACED"|"PROGRESSIVE",
@@ -741,6 +754,10 @@ Creates a new channel
   ),
   InputAttachments = list(
     list(
+      AutomaticInputFailoverSettings = list(
+        InputPreference = "EQUAL_INPUT_PREFERENCE"|"PRIMARY_INPUT_PREFERRED",
+        SecondaryInputId = "string"
+      ),
       InputAttachmentName = "string",
       InputId = "string",
       InputSettings = list(
@@ -754,6 +771,13 @@ Creates a new channel
               ),
               AudioPidSelection = list(
                 Pid = 123
+              ),
+              AudioTrackSelection = list(
+                Tracks = list(
+                  list(
+                    Track = 123
+                  )
+                )
               )
             )
           )
@@ -799,6 +823,7 @@ Creates a new channel
           ),
           ServerValidation = "CHECK_CRYPTOGRAPHY_AND_VALIDATE_NAME"|"CHECK_CRYPTOGRAPHY_ONLY"
         ),
+        Smpte2038DataPreference = "IGNORE"|"PREFER",
         SourceEndBehavior = "CONTINUE"|"LOOP",
         VideoSelector = list(
           ColorSpace = "FOLLOW"|"REC_601"|"REC_709",

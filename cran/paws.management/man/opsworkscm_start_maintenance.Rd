@@ -10,7 +10,15 @@ opsworkscm_start_maintenance(ServerName, EngineAttributes)
 \item{ServerName}{[required] The name of the server on which to run maintenance.}
 
 \item{EngineAttributes}{Engine attributes that are specific to the server on which you want to
-run maintenance.}
+run maintenance.
+
+\strong{Attributes accepted in a StartMaintenance request for Chef}
+\itemize{
+\item \code{CHEF_MAJOR_UPGRADE}: If a Chef Automate server is eligible for
+upgrade to Chef Automate 2, add this engine attribute to a
+\code{StartMaintenance} request and set the value to \code{true} to upgrade
+the server to Chef Automate 2. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html}{Upgrade an AWS OpsWorks for Chef Automate Server to Chef Automate 2}.
+}}
 }
 \description{
 Manually starts server maintenance. This command can be useful if an

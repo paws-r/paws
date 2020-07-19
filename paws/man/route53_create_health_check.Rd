@@ -63,7 +63,7 @@ the alarm. For example, you might create a CloudWatch metric that
 checks the status of the Amazon EC2 \code{StatusCheckFailed} metric, add
 an alarm to the metric, and then create a health check that is based
 on the state of the alarm. For information about creating CloudWatch
-metrics and alarms by using the CloudWatch console, see the \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html}{Amazon CloudWatch User Guide}.
+metrics and alarms by using the CloudWatch console, see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html}{Amazon CloudWatch User Guide}.
 }
 }
 \section{Request syntax}{
@@ -90,7 +90,7 @@ metrics and alarms by using the CloudWatch console, see the \href{http://docs.aw
       "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
     ),
     AlarmIdentifier = list(
-      Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1",
+      Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
       Name = "string"
     ),
     InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"

@@ -23,7 +23,11 @@ API endpoint.
 
 \itemize{
 \item \code{iot:Jobs} - Returns an AWS IoT device management Jobs API endpoint.
-}}
+}
+
+We strongly recommend that customers use the newer \code{iot:Data-ATS}
+endpoint type to avoid issues related to the widespread distrust of
+Symantec certificate authorities.}
 }
 \description{
 Returns a unique endpoint specific to the AWS account making the call.

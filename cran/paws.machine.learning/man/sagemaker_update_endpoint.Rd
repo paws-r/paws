@@ -7,12 +7,27 @@ using newly created endpoint, and then deletes resources provisioned for
 the endpoint using the previous EndpointConfig (there is no availability
 loss)}
 \usage{
-sagemaker_update_endpoint(EndpointName, EndpointConfigName)
+sagemaker_update_endpoint(EndpointName, EndpointConfigName,
+  RetainAllVariantProperties, ExcludeRetainedVariantProperties)
 }
 \arguments{
 \item{EndpointName}{[required] The name of the endpoint whose configuration you want to update.}
 
 \item{EndpointConfigName}{[required] The name of the new endpoint configuration.}
+
+\item{RetainAllVariantProperties}{When updating endpoint resources, enables or disables the retention of
+variant properties, such as the instance count or the variant weight. To
+retain the variant properties of an endpoint when updating it, set
+\code{RetainAllVariantProperties} to \code{true}. To use the variant properties
+specified in a new \code{EndpointConfig} call when updating an endpoint, set
+\code{RetainAllVariantProperties} to \code{false}.}
+
+\item{ExcludeRetainedVariantProperties}{When you are updating endpoint resources with
+UpdateEndpointInput\\$RetainAllVariantProperties, whose value is set to
+\code{true}, \code{ExcludeRetainedVariantProperties} specifies the list of type
+VariantProperty to override with the values provided by
+\code{EndpointConfig}. If you don\'t specify a value for
+\code{ExcludeAllVariantProperties}, no variant properties are overridden.}
 }
 \description{
 Deploys the new \code{EndpointConfig} specified in the request, switches to
@@ -24,18 +39,28 @@ availability loss).
 When Amazon SageMaker receives the request, it sets the endpoint status
 to \code{Updating}. After updating the endpoint, it sets the status to
 \code{InService}. To check the status of an endpoint, use the
-\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html}{DescribeEndpoint}
-API.
+DescribeEndpoint API.
 
 You must not delete an \code{EndpointConfig} in use by an endpoint that is
 live or while the \code{UpdateEndpoint} or \code{CreateEndpoint} operations are
 being performed on the endpoint. To update an endpoint, you must create
 a new \code{EndpointConfig}.
+
+If you delete the \code{EndpointConfig} of an endpoint that is active or
+being created or updated you may lose visibility into the instance type
+the endpoint is using. The endpoint must be deleted in order to stop
+incurring charges.
 }
 \section{Request syntax}{
 \preformatted{svc$update_endpoint(
   EndpointName = "string",
-  EndpointConfigName = "string"
+  EndpointConfigName = "string",
+  RetainAllVariantProperties = TRUE|FALSE,
+  ExcludeRetainedVariantProperties = list(
+    list(
+      VariantPropertyType = "DesiredInstanceCount"|"DesiredWeight"|"DataCaptureConfig"
+    )
+  )
 )
 }
 }

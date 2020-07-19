@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_list_type_registrations}
 \alias{cloudformation_list_type_registrations}
-\title{Returns a list of registration tokens for the specified type}
+\title{Returns a list of registration tokens for the specified type(s)}
 \usage{
 cloudformation_list_type_registrations(Type, TypeName, TypeArn,
   RegistrationStatusFilter, MaxResults, NextToken)
@@ -10,17 +10,21 @@ cloudformation_list_type_registrations(Type, TypeName, TypeArn,
 \arguments{
 \item{Type}{The kind of type.
 
-Currently the only valid value is \code{RESOURCE}.}
+Currently the only valid value is \code{RESOURCE}.
+
+Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
 \item{TypeName}{The name of the type.
 
-Conditional: You must specify \code{TypeName} or \code{Arn}.}
+Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
 \item{TypeArn}{The Amazon Resource Name (ARN) of the type.
 
-Conditional: You must specify \code{TypeName} or \code{Arn}.}
+Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{RegistrationStatusFilter}{The current status of the type registration request.}
+\item{RegistrationStatusFilter}{The current status of the type registration request.
+
+The default is \code{IN_PROGRESS}.}
 
 \item{MaxResults}{The maximum number of results to be returned with a single call. If the
 number of available results exceeds this maximum, the response includes
@@ -35,7 +39,7 @@ there are no remaining results, the previous response object\'s
 \code{NextToken} parameter is set to \code{null}.}
 }
 \description{
-Returns a list of registration tokens for the specified type.
+Returns a list of registration tokens for the specified type(s).
 }
 \section{Request syntax}{
 \preformatted{svc$list_type_registrations(

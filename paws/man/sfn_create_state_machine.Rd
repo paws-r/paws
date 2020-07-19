@@ -17,18 +17,25 @@ A name must \emph{not} contain:
 \item wildcard characters \verb{? *}
 \item special characters \verb{\\" # \% \\\\ ^ | ~ \\` $ &amp; , ; : /}
 \item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
-}}
+}
+
+To enable logging with CloudWatch Logs, the name should only contain
+0-9, A-Z, a-z, - and \\_.}
 
 \item{definition}{[required] The Amazon States Language definition of the state machine. See \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to use for this state
 machine.}
 
-\item{type}{Determines whether a Standard or Express state machine is created. If
-not set, Standard is created.}
+\item{type}{Determines whether a Standard or Express state machine is created. The
+default is \code{STANDARD}. You cannot update the \code{type} of a state machine
+once it has been created.}
 
 \item{loggingConfiguration}{Defines what execution history events are logged and where they are
-logged.}
+logged.
+
+By default, the \code{level} is set to \code{OFF}. For more information see \href{https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html}{Log Levels}
+in the AWS Step Functions User Guide.}
 
 \item{tags}{Tags to be added when creating a state machine.
 
@@ -43,7 +50,8 @@ Creates a state machine. A state machine consists of a collection of
 states that can do work (\code{Task} states), determine to which states to
 transition next (\code{Choice} states), stop an execution with an error
 (\code{Fail} states), and so on. State machines are specified using a
-JSON-based, structured language.
+JSON-based, structured language. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}
+in the AWS Step Functions User Guide.
 }
 \details{
 This operation is eventually consistent. The results are best effort and
@@ -52,10 +60,11 @@ may not reflect very recent updates and changes.
 \code{CreateStateMachine} is an idempotent API. Subsequent requests won't
 create a duplicate resource if it was already created.
 \code{CreateStateMachine}\'s idempotency check is based on the state machine
-\code{name} and \code{definition}. If a following request has a different
-\code{roleArn} or \code{tags}, Step Functions will ignore these differences and
-treat it as an idempotent request of the previous. In this case,
-\code{roleArn} and \code{tags} will not be updated, even if they are different.
+\code{name}, \code{definition}, \code{type}, and \code{LoggingConfiguration}. If a following
+request has a different \code{roleArn} or \code{tags}, Step Functions will ignore
+these differences and treat it as an idempotent request of the previous.
+In this case, \code{roleArn} and \code{tags} will not be updated, even if they are
+different.
 }
 \section{Request syntax}{
 \preformatted{svc$create_state_machine(

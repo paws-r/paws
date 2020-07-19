@@ -40,7 +40,7 @@ Amazon Route 53 is a highly available and scalable Domain Name System
 \link[=route53_create_health_check]{create_health_check} \tab Creates a new health check \cr
 \link[=route53_create_hosted_zone]{create_hosted_zone} \tab Creates a new public or private hosted zone \cr
 \link[=route53_create_query_logging_config]{create_query_logging_config} \tab Creates a configuration for DNS query logging \cr
-\link[=route53_create_reusable_delegation_set]{create_reusable_delegation_set} \tab Creates a delegation set (a group of four name servers) that can be reused by multiple hosted zones \cr
+\link[=route53_create_reusable_delegation_set]{create_reusable_delegation_set} \tab Creates a delegation set (a group of four name servers) that can be reused by multiple hosted zones that were created by the same AWS account \cr
 \link[=route53_create_traffic_policy]{create_traffic_policy} \tab Creates a traffic policy, which you use to create multiple DNS resource record sets for one domain name (such as example \cr
 \link[=route53_create_traffic_policy_instance]{create_traffic_policy_instance} \tab Creates resource record sets in a specified hosted zone based on the settings in a specified traffic policy version \cr
 \link[=route53_create_traffic_policy_version]{create_traffic_policy_version} \tab Creates a new version of an existing traffic policy \cr
@@ -52,7 +52,7 @@ Amazon Route 53 is a highly available and scalable Domain Name System
 \link[=route53_delete_traffic_policy]{delete_traffic_policy} \tab Deletes a traffic policy \cr
 \link[=route53_delete_traffic_policy_instance]{delete_traffic_policy_instance} \tab Deletes a traffic policy instance and all of the resource record sets that Amazon Route 53 created when you created the instance \cr
 \link[=route53_delete_vpc_association_authorization]{delete_vpc_association_authorization} \tab Removes authorization to submit an AssociateVPCWithHostedZone request to associate a specified VPC with a hosted zone that was created by a different account \cr
-\link[=route53_disassociate_vpc_from_hosted_zone]{disassociate_vpc_from_hosted_zone} \tab Disassociates a VPC from a Amazon Route 53 private hosted zone \cr
+\link[=route53_disassociate_vpc_from_hosted_zone]{disassociate_vpc_from_hosted_zone} \tab Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an Amazon Route 53 private hosted zone \cr
 \link[=route53_get_account_limit]{get_account_limit} \tab Gets the specified limit for the current account, for example, the maximum number of health checks that you can create using the account \cr
 \link[=route53_get_change]{get_change} \tab Returns the current status of a change batch request \cr
 \link[=route53_get_checker_ip_ranges]{get_checker_ip_ranges} \tab GetCheckerIpRanges still works, but we recommend that you download ip-ranges \cr
@@ -74,6 +74,7 @@ Amazon Route 53 is a highly available and scalable Domain Name System
 \link[=route53_list_health_checks]{list_health_checks} \tab Retrieve a list of the health checks that are associated with the current AWS account \cr
 \link[=route53_list_hosted_zones]{list_hosted_zones} \tab Retrieves a list of the public and private hosted zones that are associated with the current AWS account \cr
 \link[=route53_list_hosted_zones_by_name]{list_hosted_zones_by_name} \tab Retrieves a list of your hosted zones in lexicographic order \cr
+\link[=route53_list_hosted_zones_by_vpc]{list_hosted_zones_by_vpc} \tab Lists all the private hosted zones that a specified VPC is associated with, regardless of which AWS account or AWS service owns the hosted zones \cr
 \link[=route53_list_query_logging_configs]{list_query_logging_configs} \tab Lists the configurations for DNS query logging that are associated with the current AWS account or the configuration that is associated with a specified hosted zone \cr
 \link[=route53_list_resource_record_sets]{list_resource_record_sets} \tab Lists the resource record sets in a specified hosted zone \cr
 \link[=route53_list_reusable_delegation_sets]{list_reusable_delegation_sets} \tab Retrieves a list of the reusable delegation sets that are associated with the current AWS account \cr

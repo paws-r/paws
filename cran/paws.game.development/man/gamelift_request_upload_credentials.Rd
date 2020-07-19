@@ -24,7 +24,7 @@ build ID.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html}{Uploading Your Game}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build}{Create a Build with Files in S3}
 
 \strong{Related operations}
 \itemize{

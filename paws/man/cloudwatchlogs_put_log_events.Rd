@@ -17,9 +17,10 @@ cloudwatchlogs_put_log_events(logGroupName, logStreamName, logEvents,
 \item{sequenceToken}{The sequence token obtained from the response of the previous
 \code{PutLogEvents} call. An upload in a newly created log stream does not
 require a sequence token. You can also get the sequence token using
-DescribeLogStreams. If you call \code{PutLogEvents} twice within a narrow
-time period using the same value for \code{sequenceToken}, both calls may be
-successful, or one may be rejected.}
+\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogStreams.html}{DescribeLogStreams}.
+If you call \code{PutLogEvents} twice within a narrow time period using the
+same value for \code{sequenceToken}, both calls may be successful, or one may
+be rejected.}
 }
 \description{
 Uploads a batch of log events to the specified log stream.

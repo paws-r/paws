@@ -33,4 +33,16 @@ For more information, see AddLayerVersionPermission.
 }
 }
 
+\examples{
+\dontrun{
+# The following example deletes permission for an account to configure a
+# layer version.
+svc$remove_layer_version_permission(
+  LayerName = "my-layer",
+  StatementId = "xaccount",
+  VersionNumber = 1L
+)
+}
+
+}
 \keyword{internal}

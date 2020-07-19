@@ -28,9 +28,7 @@ the training job whose name contains the specified string.}
 equal to the specified time (timestamp).}
 }
 \description{
-Lists models created with the
-\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html}{CreateModel}
-API.
+Lists models created with the CreateModel API.
 }
 \section{Request syntax}{
 \preformatted{svc$list_models(

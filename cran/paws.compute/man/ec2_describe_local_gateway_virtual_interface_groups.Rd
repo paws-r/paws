@@ -11,7 +11,14 @@ ec2_describe_local_gateway_virtual_interface_groups(
 \arguments{
 \item{LocalGatewayVirtualInterfaceGroupIds}{The IDs of the virtual interface groups.}
 
-\item{Filters}{One or more filters.}
+\item{Filters}{One or more filters.
+\itemize{
+\item \code{local-gateway-id} - The ID of a local gateway.
+\item \code{local-gateway-virtual-interface-id} - The ID of the virtual
+interface.
+\item \code{local-gateway-virtual-interface-group-id} - The ID of the virtual
+interface group.
+}}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve
 the remaining results, make another call with the returned \code{nextToken}

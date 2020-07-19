@@ -73,11 +73,11 @@ compilation jobs, use ListCompilationJobs.
   InputConfig = list(
     S3Uri = "string",
     DataInputConfig = "string",
-    Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"
+    Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"|"TFLITE"
   ),
   OutputConfig = list(
     S3OutputLocation = "string",
-    TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"rasp3b"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"
+    TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"
   ),
   StoppingCondition = list(
     MaxRuntimeInSeconds = 123,

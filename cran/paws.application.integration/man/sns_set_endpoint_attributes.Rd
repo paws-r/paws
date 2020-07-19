@@ -3,7 +3,8 @@
 \name{sns_set_endpoint_attributes}
 \alias{sns_set_endpoint_attributes}
 \title{Sets the attributes for an endpoint for a device on one of the supported
-push notification services, such as FCM and APNS}
+push notification services, such as GCM (Firebase Cloud Messaging) and
+APNS}
 \usage{
 sns_set_endpoint_attributes(EndpointArn, Attributes)
 }
@@ -28,8 +29,8 @@ notification service.
 }
 \description{
 Sets the attributes for an endpoint for a device on one of the supported
-push notification services, such as FCM and APNS. For more information,
-see \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
+push notification services, such as GCM (Firebase Cloud Messaging) and
+APNS. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 }
 \section{Request syntax}{
 \preformatted{svc$set_endpoint_attributes(

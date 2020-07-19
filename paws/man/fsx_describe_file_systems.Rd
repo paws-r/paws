@@ -8,18 +8,18 @@ FileSystemIds value is provided for that file system}
 fsx_describe_file_systems(FileSystemIds, MaxResults, NextToken)
 }
 \arguments{
-\item{FileSystemIds}{(Optional) IDs of the file systems whose descriptions you want to
-retrieve (String).}
+\item{FileSystemIds}{IDs of the file systems whose descriptions you want to retrieve
+(String).}
 
-\item{MaxResults}{(Optional) Maximum number of file systems to return in the response
-(integer). This parameter value must be greater than 0. The number of
-items that Amazon FSx returns is the minimum of the \code{MaxResults}
-parameter specified in the request and the service\'s internal maximum
-number of items per page.}
+\item{MaxResults}{Maximum number of file systems to return in the response (integer). This
+parameter value must be greater than 0. The number of items that Amazon
+FSx returns is the minimum of the \code{MaxResults} parameter specified in
+the request and the service\'s internal maximum number of items per
+page.}
 
-\item{NextToken}{(Optional) Opaque pagination token returned from a previous
-\code{DescribeFileSystems} operation (String). If a token present, the action
-continues the list from where the returning call left off.}
+\item{NextToken}{Opaque pagination token returned from a previous \code{DescribeFileSystems}
+operation (String). If a token present, the action continues the list
+from where the returning call left off.}
 }
 \description{
 Returns the description of specific Amazon FSx file systems, if a

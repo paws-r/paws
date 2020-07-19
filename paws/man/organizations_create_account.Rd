@@ -29,10 +29,13 @@ If you don\'t specify this parameter, the role name defaults to
 \code{OrganizationAccountAccessRole}.
 
 For more information about how to use this role to access the member
-account, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role}{Accessing and Administering the Member Accounts in Your Organization}
-in the \emph{AWS Organizations User Guide}. Also see steps 2 and 3 in
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html}{Tutorial: Delegate Access Across AWS Accounts Using IAM Roles}
-in the \emph{IAM User Guide.}
+account, see the following links:
+\itemize{
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role}{Accessing and Administering the Member Accounts in Your Organization}
+in the \emph{AWS Organizations User Guide}
+\item Steps 2 and 3 in \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html}{Tutorial: Delegate Access Across AWS Accounts Using IAM Roles}
+in the \emph{IAM User Guide}
+}
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to
 validate this parameter. The pattern can include uppercase letters,
@@ -45,9 +48,9 @@ billing information \emph{if} they have the required permissions. If set to
 information. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate}{Activating Access to the Billing and Cost Management Console}
 in the \emph{AWS Billing and Cost Management User Guide}.
 
-If you don\'t specify this parameter, the value defaults to \code{ALLOW}.
-This value allows IAM users and roles with the required permissions to
-access billing information for the new account.}
+If you don\'t specify this parameter, the value defaults to \code{ALLOW}, and
+IAM users and roles with the required permissions can access billing
+information for the new account.}
 }
 \description{
 Creates an AWS account that is automatically a member of the
@@ -88,13 +91,13 @@ account.
 For more information about creating accounts, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html}{Creating an AWS Account in Your Organization}
 in the \emph{AWS Organizations User Guide.}
 \itemize{
-\item When you create an account in an organization, the information
-required for the account to operate as a standalone account is \emph{not}
-automatically collected. For example, information about the payment
-method and signing the end user license agreement (EULA) is not
-collected. If you must remove an account from your organization
-later, you can do so only after you provide the missing information.
-Follow the steps at \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization as a member account}
+\item When you create an account in an organization using the AWS
+Organizations console, API, or CLI commands, the information
+required for the account to operate as a standalone account, such as
+a payment method and signing the end user license agreement (EULA)
+is \emph{not} automatically collected. If you must remove an account from
+your organization later, you can do so only after you provide the
+missing information. Follow the steps at \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization as a member account}
 in the \emph{AWS Organizations User Guide}.
 \item If you get an exception that indicates that you exceeded your
 account limits for the organization, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.

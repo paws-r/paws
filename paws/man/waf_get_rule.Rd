@@ -2,8 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_get_rule}
 \alias{waf_get_rule}
-\title{Returns the Rule that is specified by the RuleId that you included in
-the GetRule request}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 waf_get_rule(RuleId)
 }
@@ -12,6 +11,16 @@ waf_get_rule(RuleId)
 CreateRule and by ListRules.}
 }
 \description{
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
+}
+\details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns the Rule that is specified by the \code{RuleId} that you included in
 the \code{GetRule} request.
 }

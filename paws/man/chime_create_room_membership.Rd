@@ -2,7 +2,7 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_create_room_membership}
 \alias{chime_create_room_membership}
-\title{Adds a member to a chat room}
+\title{Adds a member to a chat room in an Amazon Chime Enterprise account}
 \usage{
 chime_create_room_membership(AccountId, RoomId, MemberId, Role)
 }
@@ -16,9 +16,9 @@ chime_create_room_membership(AccountId, RoomId, MemberId, Role)
 \item{Role}{The role of the member.}
 }
 \description{
-Adds a member to a chat room. A member can be either a user or a bot.
-The member role designates whether the member is a chat room
-administrator or a general chat room member.
+Adds a member to a chat room in an Amazon Chime Enterprise account. A
+member can be either a user or a bot. The member role designates whether
+the member is a chat room administrator or a general chat room member.
 }
 \section{Request syntax}{
 \preformatted{svc$create_room_membership(

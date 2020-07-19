@@ -23,9 +23,15 @@ six characters to the ARN) and you try to use that as a partial ARN,
 then those characters cause Secrets Manager to assume that you're
 specifying a complete ARN. This confusion can cause unexpected results.
 To avoid this situation, we recommend that you don't create secret names
-that end with a hyphen followed by six characters.}
+ending with a hyphen followed by six characters.
 
-\item{MaxResults}{(Optional) Limits the number of results that you want to include in the
+If you specify an incomplete ARN without the random suffix, and instead
+provide the \'friendly name\', you \emph{must} not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a \emph{ResourceNotFoundException} or an
+\emph{AccessDeniedException} error, depending on your permissions.}
+
+\item{MaxResults}{(Optional) Limits the number of results you want to include in the
 response. If you don\'t include this parameter, it defaults to a value
 that\'s specific to the operation. If additional items exist beyond the
 maximum you specify, the \code{NextToken} response element is present and has
@@ -37,10 +43,10 @@ maximum even when there are more results available. You should check
 results.}
 
 \item{NextToken}{(Optional) Use this parameter in a request if you receive a \code{NextToken}
-response in a previous request that indicates that there\'s more output
+response in a previous request indicating there\'s more output
 available. In a subsequent call, set it to the value of the previous
-call\'s \code{NextToken} response to indicate where the output should
-continue from.}
+call \code{NextToken} response to indicate where the output should continue
+from.}
 
 \item{IncludeDeprecated}{(Optional) Specifies that you want the results to include versions that
 do not have any staging labels attached to them. Such versions are
@@ -56,8 +62,8 @@ label in \code{VersionStage} attached.
 \details{
 Always check the \code{NextToken} response parameter when calling any of the
 \verb{List*} operations. These operations can occasionally return an empty or
-shorter than expected list of results even when there are more results
-available. When this happens, the \code{NextToken} response parameter
+shorter than expected list of results even when there more results
+become available. When this happens, the \code{NextToken} response parameter
 contains a value to pass to the next call to the same API to request the
 next part of the list.
 

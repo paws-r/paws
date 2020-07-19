@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_update_insight}
 \alias{securityhub_update_insight}
-\title{Updates the Security Hub insight that the insight ARN specifies}
+\title{Updates the Security Hub insight identified by the specified insight ARN}
 \usage{
 securityhub_update_insight(InsightArn, Name, Filters, GroupByAttribute)
 }
@@ -16,7 +16,8 @@ securityhub_update_insight(InsightArn, Name, Filters, GroupByAttribute)
 \item{GroupByAttribute}{The updated \code{GroupBy} attribute that defines this insight.}
 }
 \description{
-Updates the Security Hub insight that the insight ARN specifies.
+Updates the Security Hub insight identified by the specified insight
+ARN.
 }
 \section{Request syntax}{
 \preformatted{svc$update_insight(
@@ -520,6 +521,12 @@ Updates the Security Hub insight that the insight ARN specifies.
       )
     ),
     WorkflowState = list(
+      list(
+        Value = "string",
+        Comparison = "EQUALS"|"PREFIX"
+      )
+    ),
+    WorkflowStatus = list(
       list(
         Value = "string",
         Comparison = "EQUALS"|"PREFIX"

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_put_image_scanning_configuration}
 \alias{ecr_put_image_scanning_configuration}
-\title{Updates the image scanning configuration for a repository}
+\title{Updates the image scanning configuration for the specified repository}
 \usage{
 ecr_put_image_scanning_configuration(registryId, repositoryName,
   imageScanningConfiguration)
@@ -20,7 +20,7 @@ determines whether images are scanned for known vulnerabilities after
 being pushed to the repository.}
 }
 \description{
-Updates the image scanning configuration for a repository.
+Updates the image scanning configuration for the specified repository.
 }
 \section{Request syntax}{
 \preformatted{svc$put_image_scanning_configuration(

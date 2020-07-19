@@ -40,4 +40,16 @@ version.
 }
 }
 
+\examples{
+\dontrun{
+# The following example allocates 100 provisioned concurrency for the BLUE
+# alias of the specified function.
+svc$put_provisioned_concurrency_config(
+  FunctionName = "my-function",
+  ProvisionedConcurrentExecutions = 100L,
+  Qualifier = "BLUE"
+)
+}
+
+}
 \keyword{internal}

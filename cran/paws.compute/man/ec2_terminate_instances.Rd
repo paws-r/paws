@@ -40,10 +40,10 @@ instance, the root device and any other devices attached to the instance
 persist. When you terminate an instance, any attached EBS volumes with
 the \code{DeleteOnTermination} block device mapping parameter set to \code{true}
 are automatically deleted. For more information about the differences
-between stopping and terminating instances, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html}{Instance Lifecycle}
+between stopping and terminating instances, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html}{Instance lifecycle}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-For more information about troubleshooting, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html}{Troubleshooting Terminating Your Instance}
+For more information about troubleshooting, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html}{Troubleshooting terminating your instance}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

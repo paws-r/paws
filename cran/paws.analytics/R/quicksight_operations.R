@@ -59,28 +59,29 @@ quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
 #' @usage
 #' quicksight_create_dashboard(AwsAccountId, DashboardId, Name, Parameters,
 #'   Permissions, SourceEntity, Tags, VersionDescription,
-#'   DashboardPublishOptions)
+#'   DashboardPublishOptions, ThemeArn)
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the AWS account where you want to create the dashboard.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard, also added to the IAM policy.
 #' @param Name &#91;required&#93; The display name of the dashboard.
-#' @param Parameters A structure that contains the parameters of the dashboard. These are
-#' parameter overrides for a dashboard. A dashboard can have any type of
-#' parameters, and some parameters might accept multiple values. You can
-#' use the dashboard permissions structure described following to override
-#' two string parameters that accept multiple values.
+#' @param Parameters The parameters for the creation of the dashboard, which you want to use
+#' to override the default settings. A dashboard can have any type of
+#' parameters, and some parameters might accept multiple values.
 #' @param Permissions A structure that contains the permissions of the dashboard. You can use
 #' this structure for granting permissions with principal and action
 #' information.
-#' @param SourceEntity &#91;required&#93; The source entity from which the dashboard is created. The source entity
-#' accepts the Amazon Resource Name (ARN) of the source template or
-#' analysis and also references the replacement datasets for the
-#' placeholders set when creating the template. The replacement datasets
-#' need to follow the same schema as the datasets for which placeholders
-#' were created when creating the template.
+#' @param SourceEntity &#91;required&#93; The entity that you are using as a source when you create the dashboard.
+#' In `SourceEntity`, you specify the type of object you\'re using as
+#' source. You can only create a dashboard from a template, so you use a
+#' `SourceTemplate` entity. If you need to create a dashboard from an
+#' analysis, first convert the analysis to a template by using the
+#' CreateTemplate API operation. For `SourceTemplate`, specify the Amazon
+#' Resource Name (ARN) of the source template. The `SourceTemplate`ARN can
+#' contain any AWS Account and any QuickSight-supported AWS Region.
 #' 
-#' If you are creating a dashboard from a source entity in a different AWS
-#' account, use the ARN of the source template.
+#' Use the `DataSetReferences` entity within `SourceTemplate` to list the
+#' replacement datasets for the placeholders listed in the original. The
+#' schema in each dataset must match its placeholder.
 #' @param Tags Contains a map of the key-value pairs for the resource tag or tags
 #' assigned to the dashboard.
 #' @param VersionDescription A description for the first version of the dashboard being created.
@@ -98,9 +99,12 @@ quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
 #'     option is `ENABLED` by default.
 #' 
 #' -   `VisibilityState` for `SheetControlsOption` - This visibility state
-#'     can be either `COLLAPSED` or `EXPANDED`. The sheet controls pane is
-#'     collapsed by default when set to true. This option is `COLLAPSED` by
-#'     default.
+#'     can be either `COLLAPSED` or `EXPANDED`. This option is `COLLAPSED`
+#'     by default.
+#' @param ThemeArn The Amazon Resource Name (ARN) of the theme that is being used for this
+#' dashboard. If you add a value for this field, it overrides the value
+#' that is used in the source entity. The theme ARN must exist in the same
+#' AWS account where you create the dashboard.
 #'
 #' @section Request syntax:
 #' ```
@@ -180,21 +184,22 @@ quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
 #'     SheetControlsOption = list(
 #'       VisibilityState = "EXPANDED"|"COLLAPSED"
 #'     )
-#'   )
+#'   ),
+#'   ThemeArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_create_dashboard
-quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Parameters = NULL, Permissions = NULL, SourceEntity, Tags = NULL, VersionDescription = NULL, DashboardPublishOptions = NULL) {
+quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Parameters = NULL, Permissions = NULL, SourceEntity, Tags = NULL, VersionDescription = NULL, DashboardPublishOptions = NULL, ThemeArn = NULL) {
   op <- new_operation(
     name = "CreateDashboard",
     http_method = "POST",
     http_path = "/accounts/{AwsAccountId}/dashboards/{DashboardId}",
     paginator = list()
   )
-  input <- .quicksight$create_dashboard_input(AwsAccountId = AwsAccountId, DashboardId = DashboardId, Name = Name, Parameters = Parameters, Permissions = Permissions, SourceEntity = SourceEntity, Tags = Tags, VersionDescription = VersionDescription, DashboardPublishOptions = DashboardPublishOptions)
+  input <- .quicksight$create_dashboard_input(AwsAccountId = AwsAccountId, DashboardId = DashboardId, Name = Name, Parameters = Parameters, Permissions = Permissions, SourceEntity = SourceEntity, Tags = Tags, VersionDescription = VersionDescription, DashboardPublishOptions = DashboardPublishOptions, ThemeArn = ThemeArn)
   output <- .quicksight$create_dashboard_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -509,8 +514,97 @@ quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
 #'   Credentials = list(
 #'     CredentialPair = list(
 #'       Username = "string",
-#'       Password = "string"
-#'     )
+#'       Password = "string",
+#'       AlternateDataSourceParameters = list(
+#'         list(
+#'           AmazonElasticsearchParameters = list(
+#'             Domain = "string"
+#'           ),
+#'           AthenaParameters = list(
+#'             WorkGroup = "string"
+#'           ),
+#'           AuroraParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           AuroraPostgreSqlParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           AwsIotAnalyticsParameters = list(
+#'             DataSetName = "string"
+#'           ),
+#'           JiraParameters = list(
+#'             SiteBaseUrl = "string"
+#'           ),
+#'           MariaDbParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           MySqlParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           PostgreSqlParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           PrestoParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Catalog = "string"
+#'           ),
+#'           RdsParameters = list(
+#'             InstanceId = "string",
+#'             Database = "string"
+#'           ),
+#'           RedshiftParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string",
+#'             ClusterId = "string"
+#'           ),
+#'           S3Parameters = list(
+#'             ManifestFileLocation = list(
+#'               Bucket = "string",
+#'               Key = "string"
+#'             )
+#'           ),
+#'           ServiceNowParameters = list(
+#'             SiteBaseUrl = "string"
+#'           ),
+#'           SnowflakeParameters = list(
+#'             Host = "string",
+#'             Database = "string",
+#'             Warehouse = "string"
+#'           ),
+#'           SparkParameters = list(
+#'             Host = "string",
+#'             Port = 123
+#'           ),
+#'           SqlServerParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           TeradataParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           TwitterParameters = list(
+#'             Query = "string",
+#'             MaxRows = 123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CopySourceArn = "string"
 #'   ),
 #'   Permissions = list(
 #'     list(
@@ -721,10 +815,11 @@ quicksight_create_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' Creates and starts a new SPICE ingestion on a dataset
 #' 
 #' Any ingestions operating on tagged datasets inherit the same tags
-#' automatically for use in access control. For an example, see How do I
+#' automatically for use in access control. For an example, see [How do I
 #' create an IAM policy to control access to Amazon EC2 resources using
-#' tags? in the AWS Knowledge Center. Tags are visible on the tagged
-#' dataset, but not on the ingestion resource.
+#' tags?](https://aws.amazon.com/premiumsupport/knowledge-center/iam-ec2-resource-tags/)
+#' in the AWS Knowledge Center. Tags are visible on the tagged dataset, but
+#' not on the ingestion resource.
 #'
 #' @usage
 #' quicksight_create_ingestion(DataSetId, IngestionId, AwsAccountId)
@@ -785,10 +880,19 @@ quicksight_create_ingestion <- function(DataSetId, IngestionId, AwsAccountId) {
 #' per AWS Region in each AWS account.
 #' @param Name A display name for the template.
 #' @param Permissions A list of resource permissions to be set on the template.
-#' @param SourceEntity &#91;required&#93; The Amazon Resource Name (ARN) of the source entity from which this
-#' template is being created. Currently, you can create a template from an
-#' analysis or another template. If the ARN is for an analysis, include its
-#' dataset references.
+#' @param SourceEntity &#91;required&#93; The entity that you are using as a source when you create the template.
+#' In `SourceEntity`, you specify the type of object you\'re using as
+#' source: `SourceTemplate` for a template or `SourceAnalysis` for an
+#' analysis. Both of these require an Amazon Resource Name (ARN). For
+#' `SourceTemplate`, specify the ARN of the source template. For
+#' `SourceAnalysis`, specify the ARN of the source analysis. The
+#' `SourceTemplate` ARN can contain any AWS Account and any
+#' QuickSight-supported AWS Region.
+#' 
+#' Use the `DataSetReferences` entity within `SourceTemplate` or
+#' `SourceAnalysis` to list the replacement datasets for the placeholders
+#' listed in the original. The schema in each dataset must match its
+#' placeholder.
 #' @param Tags Contains a map of the key-value pairs for the resource tag or tags
 #' assigned to the resource.
 #' @param VersionDescription A description of the current template version being created. This API
@@ -900,6 +1004,172 @@ quicksight_create_template_alias <- function(AwsAccountId, TemplateId, AliasName
   return(response)
 }
 .quicksight$operations$create_template_alias <- quicksight_create_template_alias
+
+#' Creates a theme
+#'
+#' Creates a theme.
+#' 
+#' A *theme* is set of configuration options for color and layout. Themes
+#' apply to analyses and dashboards. For more information, see [Using
+#' Themes in Amazon
+#' QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/themes-in-quicksight.html)
+#' in the *Amazon QuickSight User Guide*.
+#'
+#' @usage
+#' quicksight_create_theme(AwsAccountId, ThemeId, Name, BaseThemeId,
+#'   VersionDescription, Configuration, Permissions, Tags)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account where you want to store the new theme.
+#' @param ThemeId &#91;required&#93; An ID for the theme that you want to create. The theme ID is unique per
+#' AWS Region in each AWS account.
+#' @param Name &#91;required&#93; A display name for the theme.
+#' @param BaseThemeId &#91;required&#93; The ID of the theme that a custom theme will inherit from. All themes
+#' inherit from one of the starting themes defined by Amazon QuickSight.
+#' For a list of the starting themes, use `ListThemes` or choose **Themes**
+#' from within a QuickSight analysis.
+#' @param VersionDescription A description of the first version of the theme that you\'re creating.
+#' Every time `UpdateTheme` is called, a new version is created. Each
+#' version of the theme has a description of the version in the
+#' `VersionDescription` field.
+#' @param Configuration &#91;required&#93; The theme configuration, which contains the theme display properties.
+#' @param Permissions A valid grouping of resource permissions to apply to the new theme.
+#' @param Tags A map of the key-value pairs for the resource tag or tags that you want
+#' to add to the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_theme(
+#'   AwsAccountId = "string",
+#'   ThemeId = "string",
+#'   Name = "string",
+#'   BaseThemeId = "string",
+#'   VersionDescription = "string",
+#'   Configuration = list(
+#'     DataColorPalette = list(
+#'       Colors = list(
+#'         "string"
+#'       ),
+#'       MinMaxGradient = list(
+#'         "string"
+#'       ),
+#'       EmptyFillColor = "string"
+#'     ),
+#'     UIColorPalette = list(
+#'       PrimaryForeground = "string",
+#'       PrimaryBackground = "string",
+#'       SecondaryForeground = "string",
+#'       SecondaryBackground = "string",
+#'       Accent = "string",
+#'       AccentForeground = "string",
+#'       Danger = "string",
+#'       DangerForeground = "string",
+#'       Warning = "string",
+#'       WarningForeground = "string",
+#'       Success = "string",
+#'       SuccessForeground = "string",
+#'       Dimension = "string",
+#'       DimensionForeground = "string",
+#'       Measure = "string",
+#'       MeasureForeground = "string"
+#'     ),
+#'     Sheet = list(
+#'       Tile = list(
+#'         Border = list(
+#'           Show = TRUE|FALSE
+#'         )
+#'       ),
+#'       TileLayout = list(
+#'         Gutter = list(
+#'           Show = TRUE|FALSE
+#'         ),
+#'         Margin = list(
+#'           Show = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Permissions = list(
+#'     list(
+#'       Principal = "string",
+#'       Actions = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_theme
+quicksight_create_theme <- function(AwsAccountId, ThemeId, Name, BaseThemeId, VersionDescription = NULL, Configuration, Permissions = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateTheme",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/themes/{ThemeId}",
+    paginator = list()
+  )
+  input <- .quicksight$create_theme_input(AwsAccountId = AwsAccountId, ThemeId = ThemeId, Name = Name, BaseThemeId = BaseThemeId, VersionDescription = VersionDescription, Configuration = Configuration, Permissions = Permissions, Tags = Tags)
+  output <- .quicksight$create_theme_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_theme <- quicksight_create_theme
+
+#' Creates a theme alias for a theme
+#'
+#' Creates a theme alias for a theme.
+#'
+#' @usage
+#' quicksight_create_theme_alias(AwsAccountId, ThemeId, AliasName,
+#'   ThemeVersionNumber)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme for the new theme
+#' alias.
+#' @param ThemeId &#91;required&#93; An ID for the theme alias.
+#' @param AliasName &#91;required&#93; The name that you want to give to the theme alias that you are creating.
+#' The alias name can\'t begin with a `$`. Alias names that start with `$`
+#' are reserved by Amazon QuickSight.
+#' @param ThemeVersionNumber &#91;required&#93; The version number of the theme.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_theme_alias(
+#'   AwsAccountId = "string",
+#'   ThemeId = "string",
+#'   AliasName = "string",
+#'   ThemeVersionNumber = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_theme_alias
+quicksight_create_theme_alias <- function(AwsAccountId, ThemeId, AliasName, ThemeVersionNumber) {
+  op <- new_operation(
+    name = "CreateThemeAlias",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/themes/{ThemeId}/aliases/{AliasName}",
+    paginator = list()
+  )
+  input <- .quicksight$create_theme_alias_input(AwsAccountId = AwsAccountId, ThemeId = ThemeId, AliasName = AliasName, ThemeVersionNumber = ThemeVersionNumber)
+  output <- .quicksight$create_theme_alias_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_theme_alias <- quicksight_create_theme_alias
 
 #' Deletes a dashboard
 #'
@@ -1204,10 +1474,10 @@ quicksight_delete_template <- function(AwsAccountId, TemplateId, VersionNumber =
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the item to delete.
 #' @param TemplateId &#91;required&#93; The ID for the template that the specified alias is for.
-#' @param AliasName &#91;required&#93; The name for the template alias. If you name a specific alias, you
-#' delete the version that the alias points to. You can specify the latest
-#' version of the template by providing the keyword `$LATEST` in the
-#' `AliasName` parameter.
+#' @param AliasName &#91;required&#93; The name for the template alias. To delete a specific alias, you delete
+#' the version that the alias points to. You can specify the alias name, or
+#' specify the latest version of the template by providing the keyword
+#' `$LATEST` in the `AliasName` parameter.
 #'
 #' @section Request syntax:
 #' ```
@@ -1237,6 +1507,92 @@ quicksight_delete_template_alias <- function(AwsAccountId, TemplateId, AliasName
   return(response)
 }
 .quicksight$operations$delete_template_alias <- quicksight_delete_template_alias
+
+#' Deletes a theme
+#'
+#' Deletes a theme.
+#'
+#' @usage
+#' quicksight_delete_theme(AwsAccountId, ThemeId, VersionNumber)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you\'re deleting.
+#' @param ThemeId &#91;required&#93; An ID for the theme that you want to delete.
+#' @param VersionNumber The version of the theme that you want to delete.
+#' 
+#' **Note:** If you don\'t provide a version number, you\'re using this
+#' call to `DeleteTheme` to delete all versions of the theme.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_theme(
+#'   AwsAccountId = "string",
+#'   ThemeId = "string",
+#'   VersionNumber = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_theme
+quicksight_delete_theme <- function(AwsAccountId, ThemeId, VersionNumber = NULL) {
+  op <- new_operation(
+    name = "DeleteTheme",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/themes/{ThemeId}",
+    paginator = list()
+  )
+  input <- .quicksight$delete_theme_input(AwsAccountId = AwsAccountId, ThemeId = ThemeId, VersionNumber = VersionNumber)
+  output <- .quicksight$delete_theme_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_theme <- quicksight_delete_theme
+
+#' Deletes the version of the theme that the specified theme alias points
+#' to
+#'
+#' Deletes the version of the theme that the specified theme alias points
+#' to. If you provide a specific alias, you delete the version of the theme
+#' that the alias points to.
+#'
+#' @usage
+#' quicksight_delete_theme_alias(AwsAccountId, ThemeId, AliasName)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme alias to delete.
+#' @param ThemeId &#91;required&#93; The ID for the theme that the specified alias is for.
+#' @param AliasName &#91;required&#93; The unique name for the theme alias to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_theme_alias(
+#'   AwsAccountId = "string",
+#'   ThemeId = "string",
+#'   AliasName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_theme_alias
+quicksight_delete_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
+  op <- new_operation(
+    name = "DeleteThemeAlias",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/themes/{ThemeId}/aliases/{AliasName}",
+    paginator = list()
+  )
+  input <- .quicksight$delete_theme_alias_input(AwsAccountId = AwsAccountId, ThemeId = ThemeId, AliasName = AliasName)
+  output <- .quicksight$delete_theme_alias_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_theme_alias <- quicksight_delete_theme_alias
 
 #' Deletes the Amazon QuickSight user that is associated with the identity
 #' of the AWS Identity and Access Management (IAM) user or role that's
@@ -1829,6 +2185,136 @@ quicksight_describe_template_permissions <- function(AwsAccountId, TemplateId) {
 }
 .quicksight$operations$describe_template_permissions <- quicksight_describe_template_permissions
 
+#' Describes a theme
+#'
+#' Describes a theme.
+#'
+#' @usage
+#' quicksight_describe_theme(AwsAccountId, ThemeId, VersionNumber,
+#'   AliasName)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you\'re
+#' describing.
+#' @param ThemeId &#91;required&#93; The ID for the theme.
+#' @param VersionNumber The version number for the version to describe. If a `VersionNumber`
+#' parameter value isn\'t provided, the latest version of the theme is
+#' described.
+#' @param AliasName The alias of the theme that you want to describe. If you name a specific
+#' alias, you describe the version that the alias points to. You can
+#' specify the latest version of the theme by providing the keyword
+#' `$LATEST` in the `AliasName` parameter. The keyword `$PUBLISHED`
+#' doesn\'t apply to themes.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_theme(
+#'   AwsAccountId = "string",
+#'   ThemeId = "string",
+#'   VersionNumber = 123,
+#'   AliasName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_theme
+quicksight_describe_theme <- function(AwsAccountId, ThemeId, VersionNumber = NULL, AliasName = NULL) {
+  op <- new_operation(
+    name = "DescribeTheme",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/themes/{ThemeId}",
+    paginator = list()
+  )
+  input <- .quicksight$describe_theme_input(AwsAccountId = AwsAccountId, ThemeId = ThemeId, VersionNumber = VersionNumber, AliasName = AliasName)
+  output <- .quicksight$describe_theme_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_theme <- quicksight_describe_theme
+
+#' Describes the alias for a theme
+#'
+#' Describes the alias for a theme.
+#'
+#' @usage
+#' quicksight_describe_theme_alias(AwsAccountId, ThemeId, AliasName)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme alias that you\'re
+#' describing.
+#' @param ThemeId &#91;required&#93; The ID for the theme.
+#' @param AliasName &#91;required&#93; The name of the theme alias that you want to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_theme_alias(
+#'   AwsAccountId = "string",
+#'   ThemeId = "string",
+#'   AliasName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_theme_alias
+quicksight_describe_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
+  op <- new_operation(
+    name = "DescribeThemeAlias",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/themes/{ThemeId}/aliases/{AliasName}",
+    paginator = list()
+  )
+  input <- .quicksight$describe_theme_alias_input(AwsAccountId = AwsAccountId, ThemeId = ThemeId, AliasName = AliasName)
+  output <- .quicksight$describe_theme_alias_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_theme_alias <- quicksight_describe_theme_alias
+
+#' Describes the read and write permissions for a theme
+#'
+#' Describes the read and write permissions for a theme.
+#'
+#' @usage
+#' quicksight_describe_theme_permissions(AwsAccountId, ThemeId)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you\'re
+#' describing.
+#' @param ThemeId &#91;required&#93; The ID for the theme that you want to describe permissions for.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_theme_permissions(
+#'   AwsAccountId = "string",
+#'   ThemeId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_theme_permissions
+quicksight_describe_theme_permissions <- function(AwsAccountId, ThemeId) {
+  op <- new_operation(
+    name = "DescribeThemePermissions",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/themes/{ThemeId}/permissions",
+    paginator = list()
+  )
+  input <- .quicksight$describe_theme_permissions_input(AwsAccountId = AwsAccountId, ThemeId = ThemeId)
+  output <- .quicksight$describe_theme_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_theme_permissions <- quicksight_describe_theme_permissions
+
 #' Returns information about a user, given the user name
 #'
 #' Returns information about a user, given the user name.
@@ -1870,18 +2356,30 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 }
 .quicksight$operations$describe_user <- quicksight_describe_user
 
-#' Generates a server-side embeddable URL and authorization code
+#' Generates a URL and authorization code that you can embed in your web
+#' server code
 #'
-#' Generates a server-side embeddable URL and authorization code. For this
-#' process to work properly, first configure the dashboards and user
-#' permissions. For more information, see [Embedding Amazon QuickSight
+#' Generates a URL and authorization code that you can embed in your web
+#' server code. Before you use this command, make sure that you have
+#' configured the dashboards and permissions.
+#' 
+#' Currently, you can use `GetDashboardEmbedURL` only from the server, not
+#' from the user\'s browser. The following rules apply to the combination
+#' of URL and authorization code:
+#' 
+#' -   They must be used together.
+#' 
+#' -   They can be used one time only.
+#' 
+#' -   They are valid for 5 minutes after you run this command.
+#' 
+#' -   The resulting user session is valid for 10 hours.
+#' 
+#' For more information, see [Embedding Amazon QuickSight
 #' Dashboards](https://docs.aws.amazon.com/quicksight/latest/user/embedding-dashboards.html)
 #' in the *Amazon QuickSight User Guide* or [Embedding Amazon QuickSight
 #' Dashboards](https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-dev-embedded-dashboards.html)
 #' in the *Amazon QuickSight API Reference*.
-#' 
-#' Currently, you can use `GetDashboardEmbedURL` only from the server, not
-#' from the user's browser.
 #'
 #' @usage
 #' quicksight_get_dashboard_embed_url(AwsAccountId, DashboardId,
@@ -2519,6 +3017,147 @@ quicksight_list_templates <- function(AwsAccountId, NextToken = NULL, MaxResults
 }
 .quicksight$operations$list_templates <- quicksight_list_templates
 
+#' Lists all the aliases of a theme
+#'
+#' Lists all the aliases of a theme.
+#'
+#' @usage
+#' quicksight_list_theme_aliases(AwsAccountId, ThemeId, NextToken,
+#'   MaxResults)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme aliases that you\'re
+#' listing.
+#' @param ThemeId &#91;required&#93; The ID for the theme.
+#' @param NextToken The token for the next set of results, or null if there are no more
+#' results.
+#' @param MaxResults The maximum number of results to be returned per request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_theme_aliases(
+#'   AwsAccountId = "string",
+#'   ThemeId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_theme_aliases
+quicksight_list_theme_aliases <- function(AwsAccountId, ThemeId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListThemeAliases",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/themes/{ThemeId}/aliases",
+    paginator = list()
+  )
+  input <- .quicksight$list_theme_aliases_input(AwsAccountId = AwsAccountId, ThemeId = ThemeId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$list_theme_aliases_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_theme_aliases <- quicksight_list_theme_aliases
+
+#' Lists all the versions of the themes in the current AWS account
+#'
+#' Lists all the versions of the themes in the current AWS account.
+#'
+#' @usage
+#' quicksight_list_theme_versions(AwsAccountId, ThemeId, NextToken,
+#'   MaxResults)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the themes that you\'re listing.
+#' @param ThemeId &#91;required&#93; The ID for the theme.
+#' @param NextToken The token for the next set of results, or null if there are no more
+#' results.
+#' @param MaxResults The maximum number of results to be returned per request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_theme_versions(
+#'   AwsAccountId = "string",
+#'   ThemeId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_theme_versions
+quicksight_list_theme_versions <- function(AwsAccountId, ThemeId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListThemeVersions",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/themes/{ThemeId}/versions",
+    paginator = list()
+  )
+  input <- .quicksight$list_theme_versions_input(AwsAccountId = AwsAccountId, ThemeId = ThemeId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$list_theme_versions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_theme_versions <- quicksight_list_theme_versions
+
+#' Lists all the themes in the current AWS account
+#'
+#' Lists all the themes in the current AWS account.
+#'
+#' @usage
+#' quicksight_list_themes(AwsAccountId, NextToken, MaxResults, Type)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the themes that you\'re listing.
+#' @param NextToken The token for the next set of results, or null if there are no more
+#' results.
+#' @param MaxResults The maximum number of results to be returned per request.
+#' @param Type The type of themes that you want to list. Valid options include the
+#' following:
+#' 
+#' -   `ALL (default)`- Display all existing themes.
+#' 
+#' -   `CUSTOM` - Display only the themes created by people using Amazon
+#'     QuickSight.
+#' 
+#' -   `QUICKSIGHT` - Display only the starting themes defined by
+#'     QuickSight.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_themes(
+#'   AwsAccountId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Type = "QUICKSIGHT"|"CUSTOM"|"ALL"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_themes
+quicksight_list_themes <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL, Type = NULL) {
+  op <- new_operation(
+    name = "ListThemes",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/themes",
+    paginator = list()
+  )
+  input <- .quicksight$list_themes_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults, Type = Type)
+  output <- .quicksight$list_themes_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_themes <- quicksight_list_themes
+
 #' Lists the Amazon QuickSight groups that an Amazon QuickSight user is a
 #' member of
 #'
@@ -2654,8 +3293,9 @@ quicksight_list_users <- function(AwsAccountId, NextToken = NULL, MaxResults = N
 #' for other scenarios, for example when you are registering an IAM user or
 #' an Amazon QuickSight user. You can register multiple users using the
 #' same IAM role if each user has a different session name. For more
-#' information on assuming IAM roles, see `assume-role` in the *AWS CLI
-#' Reference.*
+#' information on assuming IAM roles, see
+#' [`assume-role`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/assume-role.html)
+#' in the *AWS CLI Reference.*
 #' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the user is in. Currently, you use the
 #' ID for the AWS account that contains your Amazon QuickSight account.
 #' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
@@ -2695,6 +3335,59 @@ quicksight_register_user <- function(IdentityType, Email, UserRole, IamArn = NUL
   return(response)
 }
 .quicksight$operations$register_user <- quicksight_register_user
+
+#' Searchs for dashboards that belong to a user
+#'
+#' Searchs for dashboards that belong to a user.
+#'
+#' @usage
+#' quicksight_search_dashboards(AwsAccountId, Filters, NextToken,
+#'   MaxResults)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the user whose dashboards
+#' you\'re searching for.
+#' @param Filters &#91;required&#93; The filters to apply to the search. Currently, you can search only by
+#' user name, for example,
+#' `"Filters": \\[ \{ "Name": "QUICKSIGHT_USER", "Operator": "StringEquals", "Value": "arn:aws:quicksight:us-east-1:1:user/default/UserName1" \} \\]`
+#' @param NextToken The token for the next set of results, or null if there are no more
+#' results.
+#' @param MaxResults The maximum number of results to be returned per request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_dashboards(
+#'   AwsAccountId = "string",
+#'   Filters = list(
+#'     list(
+#'       Operator = "StringEquals",
+#'       Name = "QUICKSIGHT_USER",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_search_dashboards
+quicksight_search_dashboards <- function(AwsAccountId, Filters, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "SearchDashboards",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/search/dashboards",
+    paginator = list()
+  )
+  input <- .quicksight$search_dashboards_input(AwsAccountId = AwsAccountId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$search_dashboards_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$search_dashboards <- quicksight_search_dashboards
 
 #' Assigns one or more tags (key-value pairs) to the specified QuickSight
 #' resource
@@ -2811,19 +3504,28 @@ quicksight_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @usage
 #' quicksight_update_dashboard(AwsAccountId, DashboardId, Name,
-#'   SourceEntity, Parameters, VersionDescription, DashboardPublishOptions)
+#'   SourceEntity, Parameters, VersionDescription, DashboardPublishOptions,
+#'   ThemeArn)
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you\'re
 #' updating.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard.
 #' @param Name &#91;required&#93; The display name of the dashboard.
-#' @param SourceEntity &#91;required&#93; The template or analysis from which the dashboard is created. The
-#' `SouceTemplate` entity accepts the Amazon Resource Name (ARN) of the
-#' template and also references to replacement datasets for the
-#' placeholders set when creating the template. The replacement datasets
-#' need to follow the same schema as the datasets for which placeholders
-#' were created when creating the template.
-#' @param Parameters A structure that contains the parameters of the dashboard.
+#' @param SourceEntity &#91;required&#93; The entity that you are using as a source when you update the dashboard.
+#' In `SourceEntity`, you specify the type of object you\'re using as
+#' source. You can only update a dashboard from a template, so you use a
+#' `SourceTemplate` entity. If you need to update a dashboard from an
+#' analysis, first convert the analysis to a template by using the
+#' CreateTemplate API operation. For `SourceTemplate`, specify the Amazon
+#' Resource Name (ARN) of the source template. The `SourceTemplate` ARN can
+#' contain any AWS Account and any QuickSight-supported AWS Region.
+#' 
+#' Use the `DataSetReferences` entity within `SourceTemplate` to list the
+#' replacement datasets for the placeholders listed in the original. The
+#' schema in each dataset must match its placeholder.
+#' @param Parameters A structure that contains the parameters of the dashboard. These are
+#' parameter overrides for a dashboard. A dashboard can have any type of
+#' parameters, and some parameters might accept multiple values.
 #' @param VersionDescription A description for the first version of the dashboard being created.
 #' @param DashboardPublishOptions Options for publishing the dashboard when you create it:
 #' 
@@ -2839,9 +3541,12 @@ quicksight_untag_resource <- function(ResourceArn, TagKeys) {
 #'     option is `ENABLED` by default.
 #' 
 #' -   `VisibilityState` for `SheetControlsOption` - This visibility state
-#'     can be either `COLLAPSED` or `EXPANDED`. The sheet controls pane is
-#'     collapsed by default when set to true. This option is `COLLAPSED` by
-#'     default.
+#'     can be either `COLLAPSED` or `EXPANDED`. This option is `COLLAPSED`
+#'     by default.
+#' @param ThemeArn The Amazon Resource Name (ARN) of the theme that is being used for this
+#' dashboard. If you add a value for this field, it overrides the value
+#' that was originally associated with the entity. The theme ARN must exist
+#' in the same AWS account where you create the dashboard.
 #'
 #' @section Request syntax:
 #' ```
@@ -2907,21 +3612,22 @@ quicksight_untag_resource <- function(ResourceArn, TagKeys) {
 #'     SheetControlsOption = list(
 #'       VisibilityState = "EXPANDED"|"COLLAPSED"
 #'     )
-#'   )
+#'   ),
+#'   ThemeArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_update_dashboard
-quicksight_update_dashboard <- function(AwsAccountId, DashboardId, Name, SourceEntity, Parameters = NULL, VersionDescription = NULL, DashboardPublishOptions = NULL) {
+quicksight_update_dashboard <- function(AwsAccountId, DashboardId, Name, SourceEntity, Parameters = NULL, VersionDescription = NULL, DashboardPublishOptions = NULL, ThemeArn = NULL) {
   op <- new_operation(
     name = "UpdateDashboard",
     http_method = "PUT",
     http_path = "/accounts/{AwsAccountId}/dashboards/{DashboardId}",
     paginator = list()
   )
-  input <- .quicksight$update_dashboard_input(AwsAccountId = AwsAccountId, DashboardId = DashboardId, Name = Name, SourceEntity = SourceEntity, Parameters = Parameters, VersionDescription = VersionDescription, DashboardPublishOptions = DashboardPublishOptions)
+  input <- .quicksight$update_dashboard_input(AwsAccountId = AwsAccountId, DashboardId = DashboardId, Name = Name, SourceEntity = SourceEntity, Parameters = Parameters, VersionDescription = VersionDescription, DashboardPublishOptions = DashboardPublishOptions, ThemeArn = ThemeArn)
   output <- .quicksight$update_dashboard_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -3371,8 +4077,97 @@ quicksight_update_data_set_permissions <- function(AwsAccountId, DataSetId, Gran
 #'   Credentials = list(
 #'     CredentialPair = list(
 #'       Username = "string",
-#'       Password = "string"
-#'     )
+#'       Password = "string",
+#'       AlternateDataSourceParameters = list(
+#'         list(
+#'           AmazonElasticsearchParameters = list(
+#'             Domain = "string"
+#'           ),
+#'           AthenaParameters = list(
+#'             WorkGroup = "string"
+#'           ),
+#'           AuroraParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           AuroraPostgreSqlParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           AwsIotAnalyticsParameters = list(
+#'             DataSetName = "string"
+#'           ),
+#'           JiraParameters = list(
+#'             SiteBaseUrl = "string"
+#'           ),
+#'           MariaDbParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           MySqlParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           PostgreSqlParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           PrestoParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Catalog = "string"
+#'           ),
+#'           RdsParameters = list(
+#'             InstanceId = "string",
+#'             Database = "string"
+#'           ),
+#'           RedshiftParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string",
+#'             ClusterId = "string"
+#'           ),
+#'           S3Parameters = list(
+#'             ManifestFileLocation = list(
+#'               Bucket = "string",
+#'               Key = "string"
+#'             )
+#'           ),
+#'           ServiceNowParameters = list(
+#'             SiteBaseUrl = "string"
+#'           ),
+#'           SnowflakeParameters = list(
+#'             Host = "string",
+#'             Database = "string",
+#'             Warehouse = "string"
+#'           ),
+#'           SparkParameters = list(
+#'             Host = "string",
+#'             Port = 123
+#'           ),
+#'           SqlServerParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           TeradataParameters = list(
+#'             Host = "string",
+#'             Port = 123,
+#'             Database = "string"
+#'           ),
+#'           TwitterParameters = list(
+#'             Query = "string",
+#'             MaxRows = 123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CopySourceArn = "string"
 #'   ),
 #'   VpcConnectionProperties = list(
 #'     VpcConnectionArn = "string"
@@ -3583,8 +4378,19 @@ quicksight_update_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you\'re
 #' updating.
 #' @param TemplateId &#91;required&#93; The ID for the template.
-#' @param SourceEntity &#91;required&#93; The source QuickSight entity from which this template is being updated.
-#' You can currently update templates from an Analysis or another template.
+#' @param SourceEntity &#91;required&#93; The entity that you are using as a source when you update the template.
+#' In `SourceEntity`, you specify the type of object you\'re using as
+#' source: `SourceTemplate` for a template or `SourceAnalysis` for an
+#' analysis. Both of these require an Amazon Resource Name (ARN). For
+#' `SourceTemplate`, specify the ARN of the source template. For
+#' `SourceAnalysis`, specify the ARN of the source analysis. The
+#' `SourceTemplate` ARN can contain any AWS Account and any
+#' QuickSight-supported AWS Region.
+#' 
+#' Use the `DataSetReferences` entity within `SourceTemplate` or
+#' `SourceAnalysis` to list the replacement datasets for the placeholders
+#' listed in the original. The schema in each dataset must match its
+#' placeholder.
 #' @param VersionDescription A description of the current template version that is being updated.
 #' Every time you call `UpdateTemplate`, you create a new version of the
 #' template. Each version of the template maintains a description of the
@@ -3739,6 +4545,243 @@ quicksight_update_template_permissions <- function(AwsAccountId, TemplateId, Gra
   return(response)
 }
 .quicksight$operations$update_template_permissions <- quicksight_update_template_permissions
+
+#' Updates a theme
+#'
+#' Updates a theme.
+#'
+#' @usage
+#' quicksight_update_theme(AwsAccountId, ThemeId, Name, BaseThemeId,
+#'   VersionDescription, Configuration)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you\'re updating.
+#' @param ThemeId &#91;required&#93; The ID for the theme.
+#' @param Name The name for the theme.
+#' @param BaseThemeId &#91;required&#93; The theme ID, defined by Amazon QuickSight, that a custom theme inherits
+#' from. All themes initially inherit from a default QuickSight theme.
+#' @param VersionDescription A description of the theme version that you\'re updating Every time that
+#' you call `UpdateTheme`, you create a new version of the theme. Each
+#' version of the theme maintains a description of the version in
+#' `VersionDescription`.
+#' @param Configuration The theme configuration, which contains the theme display properties.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_theme(
+#'   AwsAccountId = "string",
+#'   ThemeId = "string",
+#'   Name = "string",
+#'   BaseThemeId = "string",
+#'   VersionDescription = "string",
+#'   Configuration = list(
+#'     DataColorPalette = list(
+#'       Colors = list(
+#'         "string"
+#'       ),
+#'       MinMaxGradient = list(
+#'         "string"
+#'       ),
+#'       EmptyFillColor = "string"
+#'     ),
+#'     UIColorPalette = list(
+#'       PrimaryForeground = "string",
+#'       PrimaryBackground = "string",
+#'       SecondaryForeground = "string",
+#'       SecondaryBackground = "string",
+#'       Accent = "string",
+#'       AccentForeground = "string",
+#'       Danger = "string",
+#'       DangerForeground = "string",
+#'       Warning = "string",
+#'       WarningForeground = "string",
+#'       Success = "string",
+#'       SuccessForeground = "string",
+#'       Dimension = "string",
+#'       DimensionForeground = "string",
+#'       Measure = "string",
+#'       MeasureForeground = "string"
+#'     ),
+#'     Sheet = list(
+#'       Tile = list(
+#'         Border = list(
+#'           Show = TRUE|FALSE
+#'         )
+#'       ),
+#'       TileLayout = list(
+#'         Gutter = list(
+#'           Show = TRUE|FALSE
+#'         ),
+#'         Margin = list(
+#'           Show = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_theme
+quicksight_update_theme <- function(AwsAccountId, ThemeId, Name = NULL, BaseThemeId, VersionDescription = NULL, Configuration = NULL) {
+  op <- new_operation(
+    name = "UpdateTheme",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/themes/{ThemeId}",
+    paginator = list()
+  )
+  input <- .quicksight$update_theme_input(AwsAccountId = AwsAccountId, ThemeId = ThemeId, Name = Name, BaseThemeId = BaseThemeId, VersionDescription = VersionDescription, Configuration = Configuration)
+  output <- .quicksight$update_theme_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_theme <- quicksight_update_theme
+
+#' Updates an alias of a theme
+#'
+#' Updates an alias of a theme.
+#'
+#' @usage
+#' quicksight_update_theme_alias(AwsAccountId, ThemeId, AliasName,
+#'   ThemeVersionNumber)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme alias that you\'re
+#' updating.
+#' @param ThemeId &#91;required&#93; The ID for the theme.
+#' @param AliasName &#91;required&#93; The name of the theme alias that you want to update.
+#' @param ThemeVersionNumber &#91;required&#93; The version number of the theme that the alias should reference.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_theme_alias(
+#'   AwsAccountId = "string",
+#'   ThemeId = "string",
+#'   AliasName = "string",
+#'   ThemeVersionNumber = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_theme_alias
+quicksight_update_theme_alias <- function(AwsAccountId, ThemeId, AliasName, ThemeVersionNumber) {
+  op <- new_operation(
+    name = "UpdateThemeAlias",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/themes/{ThemeId}/aliases/{AliasName}",
+    paginator = list()
+  )
+  input <- .quicksight$update_theme_alias_input(AwsAccountId = AwsAccountId, ThemeId = ThemeId, AliasName = AliasName, ThemeVersionNumber = ThemeVersionNumber)
+  output <- .quicksight$update_theme_alias_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_theme_alias <- quicksight_update_theme_alias
+
+#' Updates the resource permissions for a theme
+#'
+#' Updates the resource permissions for a theme. Permissions apply to the
+#' action to grant or revoke permissions on, for example
+#' `"quicksight:DescribeTheme"`.
+#' 
+#' Theme permissions apply in groupings. Valid groupings include the
+#' following for the three levels of permissions, which are user, owner, or
+#' no permissions:
+#' 
+#' -   User
+#' 
+#'     -   `"quicksight:DescribeTheme"`
+#' 
+#'     -   `"quicksight:DescribeThemeAlias"`
+#' 
+#'     -   `"quicksight:ListThemeAliases"`
+#' 
+#'     -   `"quicksight:ListThemeVersions"`
+#' 
+#' -   Owner
+#' 
+#'     -   `"quicksight:DescribeTheme"`
+#' 
+#'     -   `"quicksight:DescribeThemeAlias"`
+#' 
+#'     -   `"quicksight:ListThemeAliases"`
+#' 
+#'     -   `"quicksight:ListThemeVersions"`
+#' 
+#'     -   `"quicksight:DeleteTheme"`
+#' 
+#'     -   `"quicksight:UpdateTheme"`
+#' 
+#'     -   `"quicksight:CreateThemeAlias"`
+#' 
+#'     -   `"quicksight:DeleteThemeAlias"`
+#' 
+#'     -   `"quicksight:UpdateThemeAlias"`
+#' 
+#'     -   `"quicksight:UpdateThemePermissions"`
+#' 
+#'     -   `"quicksight:DescribeThemePermissions"`
+#' 
+#' -   To specify no permissions, omit the permissions list.
+#'
+#' @usage
+#' quicksight_update_theme_permissions(AwsAccountId, ThemeId,
+#'   GrantPermissions, RevokePermissions)
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme.
+#' @param ThemeId &#91;required&#93; The ID for the theme.
+#' @param GrantPermissions A list of resource permissions to be granted for the theme.
+#' @param RevokePermissions A list of resource permissions to be revoked from the theme.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_theme_permissions(
+#'   AwsAccountId = "string",
+#'   ThemeId = "string",
+#'   GrantPermissions = list(
+#'     list(
+#'       Principal = "string",
+#'       Actions = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   RevokePermissions = list(
+#'     list(
+#'       Principal = "string",
+#'       Actions = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_theme_permissions
+quicksight_update_theme_permissions <- function(AwsAccountId, ThemeId, GrantPermissions = NULL, RevokePermissions = NULL) {
+  op <- new_operation(
+    name = "UpdateThemePermissions",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/themes/{ThemeId}/permissions",
+    paginator = list()
+  )
+  input <- .quicksight$update_theme_permissions_input(AwsAccountId = AwsAccountId, ThemeId = ThemeId, GrantPermissions = GrantPermissions, RevokePermissions = RevokePermissions)
+  output <- .quicksight$update_theme_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_theme_permissions <- quicksight_update_theme_permissions
 
 #' Updates an Amazon QuickSight user
 #'

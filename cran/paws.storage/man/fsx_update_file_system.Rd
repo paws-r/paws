@@ -2,36 +2,62 @@
 % Please edit documentation in R/fsx_operations.R
 \name{fsx_update_file_system}
 \alias{fsx_update_file_system}
-\title{Updates a file system configuration}
+\title{Use this operation to update the configuration of an existing Amazon FSx
+file system}
 \usage{
 fsx_update_file_system(FileSystemId, ClientRequestToken,
-  WindowsConfiguration, LustreConfiguration)
+  StorageCapacity, WindowsConfiguration, LustreConfiguration)
 }
 \arguments{
-\item{FileSystemId}{[required]}
+\item{FileSystemId}{[required] Identifies the file system that you are updating.}
 
-\item{ClientRequestToken}{(Optional) A string of up to 64 ASCII characters that Amazon FSx uses to
-ensure idempotent updates. This string is automatically filled on your
-behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
-SDK.}
+\item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
+idempotent updates. This string is automatically filled on your behalf
+when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.}
 
-\item{WindowsConfiguration}{The configuration update for this Microsoft Windows file system. The
-only supported options are for backup and maintenance and for
-self-managed Active Directory configuration.}
+\item{StorageCapacity}{Use this parameter to increase the storage capacity of an Amazon FSx for
+Windows File Server file system. Specifies the storage capacity target
+value, GiB, for the file system you\'re updating. The storage capacity
+target value must be at least 10 percent (\%) greater than the current
+storage capacity value. In order to increase storage capacity, the file
+system needs to have at least 16 MB/s of throughput capacity. You cannot
+make a storage capacity increase request if there is an existing storage
+capacity increase request in progress. For more information, see
+\href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html}{Managing Storage Capacity}.}
+
+\item{WindowsConfiguration}{The configuration updates for an Amazon FSx for Windows File Server file
+system.}
 
 \item{LustreConfiguration}{}
 }
 \description{
-Updates a file system configuration.
+Use this operation to update the configuration of an existing Amazon FSx
+file system. For an Amazon FSx for Lustre file system, you can update
+only the WeeklyMaintenanceStartTime. For an Amazon for Windows File
+Server file system, you can update the following properties:
+}
+\details{
+\itemize{
+\item AutomaticBackupRetentionDays
+\item DailyAutomaticBackupStartTime
+\item SelfManagedActiveDirectoryConfiguration
+\item StorageCapacity
+\item ThroughputCapacity
+\item WeeklyMaintenanceStartTime
+}
+
+You can update multiple properties in a single request.
 }
 \section{Request syntax}{
 \preformatted{svc$update_file_system(
   FileSystemId = "string",
   ClientRequestToken = "string",
+  StorageCapacity = 123,
   WindowsConfiguration = list(
     WeeklyMaintenanceStartTime = "string",
     DailyAutomaticBackupStartTime = "string",
     AutomaticBackupRetentionDays = 123,
+    ThroughputCapacity = 123,
     SelfManagedActiveDirectoryConfiguration = list(
       UserName = "string",
       Password = "string",
@@ -41,7 +67,9 @@ Updates a file system configuration.
     )
   ),
   LustreConfiguration = list(
-    WeeklyMaintenanceStartTime = "string"
+    WeeklyMaintenanceStartTime = "string",
+    DailyAutomaticBackupStartTime = "string",
+    AutomaticBackupRetentionDays = 123
   )
 )
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_describe_fleet_capacity}
 \alias{gamelift_describe_fleet_capacity}
-\title{Retrieves the current status of fleet capacity for one or more fleets}
+\title{Retrieves the current capacity statistics for one or more fleets}
 \usage{
 gamelift_describe_fleet_capacity(FleetIds, Limit, NextToken)
 }
@@ -21,24 +21,28 @@ parameter is ignored when the request specifies one or a list of fleet
 IDs.}
 }
 \description{
-Retrieves the current status of fleet capacity for one or more fleets.
-This information includes the number of instances that have been
-requested for the fleet and the number currently active. You can request
-capacity for all fleets, or specify a list of one or more fleet IDs.
-When requesting multiple fleets, use the pagination parameters to
-retrieve results as a set of sequential pages. If successful, a
-FleetCapacity object is returned for each requested fleet ID. When
-specifying a list of fleet IDs, attribute objects are returned only for
-fleets that currently exist.
+Retrieves the current capacity statistics for one or more fleets. These
+statistics present a snapshot of the fleet\'s instances and provide
+insight on current or imminent scaling activity. To get statistics on
+game hosting activity in the fleet, see DescribeFleetUtilization.
 }
 \details{
+You can request capacity for all fleets or specify a list of one or more
+fleet identifiers. When requesting multiple fleets, use the pagination
+parameters to retrieve results as a set of sequential pages. If
+successful, a FleetCapacity object is returned for each requested fleet
+ID. When a list of fleet IDs is provided, attribute objects are returned
+only for fleets that currently exist.
+
 Some API actions may limit the number of fleet IDs allowed in one
 request. If a request exceeds this limit, the request fails and the
 error message includes the maximum allowed.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet}{GameLift Metrics for Fleets}
 
 \strong{Related operations}
 \itemize{
@@ -56,11 +60,7 @@ error message includes the maximum allowed.
 \item DescribeFleetEvents
 }
 \item UpdateFleetAttributes
-\item Manage fleet actions:
-\itemize{
-\item StartFleetActions
-\item StopFleetActions
-}
+\item StartFleetActions or StopFleetActions
 }
 }
 \section{Request syntax}{

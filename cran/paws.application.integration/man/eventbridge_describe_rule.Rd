@@ -16,7 +16,7 @@ event bus is used.}
 Describes the specified rule.
 }
 \details{
-\code{DescribeRule} doesn\'t list the targets of a rule. To see the targets
+DescribeRule does not list the targets of a rule. To see the targets
 associated with a rule, use ListTargetsByRule.
 }
 \section{Request syntax}{

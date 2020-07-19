@@ -2,7 +2,8 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_archive_findings}
 \alias{guardduty_archive_findings}
-\title{Archives GuardDuty findings specified by the list of finding IDs}
+\title{Archives GuardDuty findings that are specified by the list of finding
+IDs}
 \usage{
 guardduty_archive_findings(DetectorId, FindingIds)
 }
@@ -10,13 +11,14 @@ guardduty_archive_findings(DetectorId, FindingIds)
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
 findings you want to archive.}
 
-\item{FindingIds}{[required] IDs of the findings that you want to archive.}
+\item{FindingIds}{[required] The IDs of the findings that you want to archive.}
 }
 \description{
-Archives GuardDuty findings specified by the list of finding IDs.
+Archives GuardDuty findings that are specified by the list of finding
+IDs.
 }
 \details{
-Only the master account can archive findings. Member accounts do not
+Only the master account can archive findings. Member accounts don\'t
 have permission to archive findings from their accounts.
 }
 \section{Request syntax}{

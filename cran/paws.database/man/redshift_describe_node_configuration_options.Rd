@@ -13,7 +13,9 @@ redshift_describe_node_configuration_options(ActionType,
 \item{ActionType}{[required] The action type to evaluate for possible node configurations. Specify
 \"restore-cluster\" to get configuration combinations based on an
 existing snapshot. Specify \"recommend-node-config\" to get
-configuration recommendations based on an existing cluster or snapshot.}
+configuration recommendations based on an existing cluster or snapshot.
+Specify \"resize-cluster\" to get configuration combinations for elastic
+resize based on an existing cluster.}
 
 \item{ClusterIdentifier}{The identifier of the cluster to evaluate for possible node
 configurations.}
@@ -51,7 +53,7 @@ number of nodes, and disk usage for the specified action type.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_node_configuration_options(
-  ActionType = "restore-cluster"|"recommend-node-config",
+  ActionType = "restore-cluster"|"recommend-node-config"|"resize-cluster",
   ClusterIdentifier = "string",
   SnapshotIdentifier = "string",
   OwnerAccount = "string",

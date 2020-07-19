@@ -15,10 +15,8 @@ autoscaling_execute_policy(AutoScalingGroupName, PolicyName,
 \item{HonorCooldown}{Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period
 to complete before executing the policy.
 
-This parameter is not supported if the policy type is \code{StepScaling} or
-\code{TargetTrackingScaling}.
-
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns}
+Valid only if the policy type is \code{SimpleScaling}. For more information,
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns for Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MetricValue}{The metric value to compare to \code{BreachThreshold}. This enables you to
@@ -30,16 +28,17 @@ of 10, you can set the metric value to 59.
 If you specify a metric value that doesn\'t correspond to a step
 adjustment for the policy, the call returns an error.
 
-Conditional: This parameter is required if the policy type is
-\code{StepScaling} and not supported otherwise.}
+Required if the policy type is \code{StepScaling} and not supported
+otherwise.}
 
 \item{BreachThreshold}{The breach threshold for the alarm.
 
-Conditional: This parameter is required if the policy type is
-\code{StepScaling} and not supported otherwise.}
+Required if the policy type is \code{StepScaling} and not supported
+otherwise.}
 }
 \description{
-Executes the specified policy.
+Executes the specified policy. This can be useful for testing the design
+of your scaling policy.
 }
 \section{Request syntax}{
 \preformatted{svc$execute_policy(
@@ -54,12 +53,12 @@ Executes the specified policy.
 
 \examples{
 \dontrun{
-# This example executes the specified Auto Scaling policy for the
-# specified Auto Scaling group.
+# This example executes the specified policy.
 svc$execute_policy(
   AutoScalingGroupName = "my-auto-scaling-group",
-  HonorCooldown = TRUE,
-  PolicyName = "ScaleIn"
+  BreachThreshold = 50,
+  MetricValue = 59,
+  PolicyName = "my-step-scale-out-policy"
 )
 }
 

@@ -53,7 +53,7 @@ documentation
 \link[=ec2_accept_transit_gateway_vpc_attachment]{accept_transit_gateway_vpc_attachment} \tab Accepts a request to attach a VPC to a transit gateway \cr
 \link[=ec2_accept_vpc_endpoint_connections]{accept_vpc_endpoint_connections} \tab Accepts one or more interface VPC endpoint connection requests to your VPC endpoint service \cr
 \link[=ec2_accept_vpc_peering_connection]{accept_vpc_peering_connection} \tab Accept a VPC peering connection request \cr
-\link[=ec2_advertise_byoip_cidr]{advertise_byoip_cidr} \tab Advertises an IPv4 address range that is provisioned for use with your AWS resources through bring your own IP addresses (BYOIP) \cr
+\link[=ec2_advertise_byoip_cidr]{advertise_byoip_cidr} \tab Advertises an IPv4 or IPv6 address range that is provisioned for use with your AWS resources through bring your own IP addresses (BYOIP) \cr
 \link[=ec2_allocate_address]{allocate_address} \tab Allocates an Elastic IP address to your AWS account \cr
 \link[=ec2_allocate_hosts]{allocate_hosts} \tab Allocates a Dedicated Host to your account \cr
 \link[=ec2_apply_security_groups_to_client_vpn_target_network]{apply_security_groups_to_client_vpn_target_network} \tab Applies a security group to the association between the target network and the Client VPN endpoint \cr
@@ -101,13 +101,14 @@ documentation
 \link[=ec2_create_flow_logs]{create_flow_logs} \tab Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC \cr
 \link[=ec2_create_fpga_image]{create_fpga_image} \tab Creates an Amazon FPGA Image (AFI) from the specified design checkpoint (DCP) \cr
 \link[=ec2_create_image]{create_image} \tab Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped \cr
-\link[=ec2_create_instance_export_task]{create_instance_export_task} \tab Exports a running or stopped instance to an S3 bucket \cr
+\link[=ec2_create_instance_export_task]{create_instance_export_task} \tab Exports a running or stopped instance to an Amazon S3 bucket \cr
 \link[=ec2_create_internet_gateway]{create_internet_gateway} \tab Creates an internet gateway for use with a VPC \cr
 \link[=ec2_create_key_pair]{create_key_pair} \tab Creates a 2048-bit RSA key pair with the specified name \cr
 \link[=ec2_create_launch_template]{create_launch_template} \tab Creates a launch template \cr
 \link[=ec2_create_launch_template_version]{create_launch_template_version} \tab Creates a new version for a launch template \cr
 \link[=ec2_create_local_gateway_route]{create_local_gateway_route} \tab Creates a static route for the specified local gateway route table \cr
 \link[=ec2_create_local_gateway_route_table_vpc_association]{create_local_gateway_route_table_vpc_association} \tab Associates the specified VPC with the specified local gateway route table \cr
+\link[=ec2_create_managed_prefix_list]{create_managed_prefix_list} \tab Creates a managed prefix list \cr
 \link[=ec2_create_nat_gateway]{create_nat_gateway} \tab Creates a NAT gateway in the specified public subnet \cr
 \link[=ec2_create_network_acl]{create_network_acl} \tab Creates a network ACL in a VPC \cr
 \link[=ec2_create_network_acl_entry]{create_network_acl_entry} \tab Creates an entry (a rule) in a network ACL with the specified rule number \cr
@@ -121,8 +122,8 @@ documentation
 \link[=ec2_create_snapshot]{create_snapshot} \tab Creates a snapshot of an EBS volume and stores it in Amazon S3 \cr
 \link[=ec2_create_snapshots]{create_snapshots} \tab Creates crash-consistent snapshots of multiple EBS volumes and stores the data in S3 \cr
 \link[=ec2_create_spot_datafeed_subscription]{create_spot_datafeed_subscription} \tab Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs \cr
-\link[=ec2_create_subnet]{create_subnet} \tab Creates a subnet in an existing VPC \cr
-\link[=ec2_create_tags]{create_tags} \tab Adds or overwrites the specified tags for the specified Amazon EC2 resource or resources \cr
+\link[=ec2_create_subnet]{create_subnet} \tab Creates a subnet in a specified VPC \cr
+\link[=ec2_create_tags]{create_tags} \tab Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources \cr
 \link[=ec2_create_traffic_mirror_filter]{create_traffic_mirror_filter} \tab Creates a Traffic Mirror filter \cr
 \link[=ec2_create_traffic_mirror_filter_rule]{create_traffic_mirror_filter_rule} \tab Creates a Traffic Mirror filter rule \cr
 \link[=ec2_create_traffic_mirror_session]{create_traffic_mirror_session} \tab Creates a Traffic Mirror session \cr
@@ -156,6 +157,7 @@ documentation
 \link[=ec2_delete_launch_template_versions]{delete_launch_template_versions} \tab Deletes one or more versions of a launch template \cr
 \link[=ec2_delete_local_gateway_route]{delete_local_gateway_route} \tab Deletes the specified route from the specified local gateway route table \cr
 \link[=ec2_delete_local_gateway_route_table_vpc_association]{delete_local_gateway_route_table_vpc_association} \tab Deletes the specified association between a VPC and local gateway route table \cr
+\link[=ec2_delete_managed_prefix_list]{delete_managed_prefix_list} \tab Deletes the specified managed prefix list \cr
 \link[=ec2_delete_nat_gateway]{delete_nat_gateway} \tab Deletes the specified NAT gateway \cr
 \link[=ec2_delete_network_acl]{delete_network_acl} \tab Deletes the specified network ACL \cr
 \link[=ec2_delete_network_acl_entry]{delete_network_acl_entry} \tab Deletes the specified ingress or egress entry (rule) from the specified network ACL \cr
@@ -191,6 +193,7 @@ documentation
 \link[=ec2_delete_vpn_gateway]{delete_vpn_gateway} \tab Deletes the specified virtual private gateway \cr
 \link[=ec2_deprovision_byoip_cidr]{deprovision_byoip_cidr} \tab Releases the specified address range that you provisioned for use with your AWS resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool\cr
 \link[=ec2_deregister_image]{deregister_image} \tab Deregisters the specified AMI \cr
+\link[=ec2_deregister_instance_event_notification_attributes]{deregister_instance_event_notification_attributes} \tab Deregisters tag keys to prevent tags that have the specified tag keys from being included in scheduled event notifications for resources in the Region \cr
 \link[=ec2_deregister_transit_gateway_multicast_group_members]{deregister_transit_gateway_multicast_group_members} \tab Deregisters the specified members (network interfaces) from the transit gateway multicast group \cr
 \link[=ec2_deregister_transit_gateway_multicast_group_sources]{deregister_transit_gateway_multicast_group_sources} \tab Deregisters the specified sources (network interfaces) from the transit gateway multicast group \cr
 \link[=ec2_describe_account_attributes]{describe_account_attributes} \tab Describes attributes of your AWS account \cr
@@ -212,8 +215,8 @@ documentation
 \link[=ec2_describe_dhcp_options]{describe_dhcp_options} \tab Describes one or more of your DHCP options sets \cr
 \link[=ec2_describe_egress_only_internet_gateways]{describe_egress_only_internet_gateways} \tab Describes one or more of your egress-only internet gateways \cr
 \link[=ec2_describe_elastic_gpus]{describe_elastic_gpus} \tab Describes the Elastic Graphics accelerator associated with your instances \cr
-\link[=ec2_describe_export_image_tasks]{describe_export_image_tasks} \tab Describes the specified export image tasks or all your export image tasks \cr
-\link[=ec2_describe_export_tasks]{describe_export_tasks} \tab Describes the specified export instance tasks or all your export instance tasks \cr
+\link[=ec2_describe_export_image_tasks]{describe_export_image_tasks} \tab Describes the specified export image tasks or all of your export image tasks \cr
+\link[=ec2_describe_export_tasks]{describe_export_tasks} \tab Describes the specified export instance tasks or all of your export instance tasks \cr
 \link[=ec2_describe_fast_snapshot_restores]{describe_fast_snapshot_restores} \tab Describes the state of fast snapshot restores for your snapshots \cr
 \link[=ec2_describe_fleet_history]{describe_fleet_history} \tab Describes the events for the specified EC2 Fleet during the specified time \cr
 \link[=ec2_describe_fleet_instances]{describe_fleet_instances} \tab Describes the running instances for the specified EC2 Fleet \cr
@@ -233,11 +236,13 @@ documentation
 \link[=ec2_describe_import_snapshot_tasks]{describe_import_snapshot_tasks} \tab Describes your import snapshot tasks \cr
 \link[=ec2_describe_instance_attribute]{describe_instance_attribute} \tab Describes the specified attribute of the specified instance \cr
 \link[=ec2_describe_instance_credit_specifications]{describe_instance_credit_specifications} \tab Describes the credit option for CPU usage of the specified burstable performance instances \cr
-\link[=ec2_describe_instances]{describe_instances} \tab Describes the specified instances or all of AWS account's instances \cr
+\link[=ec2_describe_instance_event_notification_attributes]{describe_instance_event_notification_attributes} \tab Describes the tag keys that are registered to appear in scheduled event notifications for resources in the current Region \cr
+\link[=ec2_describe_instances]{describe_instances} \tab Describes the specified instances or all instances \cr
 \link[=ec2_describe_instance_status]{describe_instance_status} \tab Describes the status of the specified instances or all of your instances \cr
 \link[=ec2_describe_instance_type_offerings]{describe_instance_type_offerings} \tab Returns a list of all instance types offered \cr
-\link[=ec2_describe_instance_types]{describe_instance_types} \tab Returns a list of all instance types offered in your current AWS Region \cr
+\link[=ec2_describe_instance_types]{describe_instance_types} \tab Describes the details of the instance types that are offered in a location \cr
 \link[=ec2_describe_internet_gateways]{describe_internet_gateways} \tab Describes one or more of your internet gateways \cr
+\link[=ec2_describe_ipv_6_pools]{describe_ipv_6_pools} \tab Describes your IPv6 address pools \cr
 \link[=ec2_describe_key_pairs]{describe_key_pairs} \tab Describes the specified key pairs or all of your key pairs \cr
 \link[=ec2_describe_launch_templates]{describe_launch_templates} \tab Describes one or more launch templates \cr
 \link[=ec2_describe_launch_template_versions]{describe_launch_template_versions} \tab Describes one or more versions of a specified launch template \cr
@@ -247,6 +252,7 @@ documentation
 \link[=ec2_describe_local_gateways]{describe_local_gateways} \tab Describes one or more local gateways \cr
 \link[=ec2_describe_local_gateway_virtual_interface_groups]{describe_local_gateway_virtual_interface_groups} \tab Describes the specified local gateway virtual interface groups \cr
 \link[=ec2_describe_local_gateway_virtual_interfaces]{describe_local_gateway_virtual_interfaces} \tab Describes the specified local gateway virtual interfaces \cr
+\link[=ec2_describe_managed_prefix_lists]{describe_managed_prefix_lists} \tab Describes your managed prefix lists and any AWS-managed prefix lists \cr
 \link[=ec2_describe_moving_addresses]{describe_moving_addresses} \tab Describes your Elastic IP addresses that are being moved to the EC2-VPC platform, or that are being restored to the EC2-Classic platform \cr
 \link[=ec2_describe_nat_gateways]{describe_nat_gateways} \tab Describes one or more of your NAT gateways \cr
 \link[=ec2_describe_network_acls]{describe_network_acls} \tab Describes one or more of your network ACLs \cr
@@ -289,7 +295,7 @@ documentation
 \link[=ec2_describe_transit_gateway_vpc_attachments]{describe_transit_gateway_vpc_attachments} \tab Describes one or more VPC attachments \cr
 \link[=ec2_describe_volume_attribute]{describe_volume_attribute} \tab Describes the specified attribute of the specified volume \cr
 \link[=ec2_describe_volumes]{describe_volumes} \tab Describes the specified EBS volumes or all of your EBS volumes \cr
-\link[=ec2_describe_volumes_modifications]{describe_volumes_modifications} \tab Reports the current modification status of EBS volumes \cr
+\link[=ec2_describe_volumes_modifications]{describe_volumes_modifications} \tab Describes the most recent volume modification request for the specified EBS volumes \cr
 \link[=ec2_describe_volume_status]{describe_volume_status} \tab Describes the status of the specified volumes \cr
 \link[=ec2_describe_vpc_attribute]{describe_vpc_attribute} \tab Describes the specified attribute of the specified VPC \cr
 \link[=ec2_describe_vpc_classic_link]{describe_vpc_classic_link} \tab Describes the ClassicLink status of one or more VPCs \cr
@@ -318,7 +324,7 @@ documentation
 \link[=ec2_disassociate_address]{disassociate_address} \tab Disassociates an Elastic IP address from the instance or network interface it's associated with \cr
 \link[=ec2_disassociate_client_vpn_target_network]{disassociate_client_vpn_target_network} \tab Disassociates a target network from the specified Client VPN endpoint \cr
 \link[=ec2_disassociate_iam_instance_profile]{disassociate_iam_instance_profile} \tab Disassociates an IAM instance profile from a running or stopped instance \cr
-\link[=ec2_disassociate_route_table]{disassociate_route_table} \tab Disassociates a subnet from a route table \cr
+\link[=ec2_disassociate_route_table]{disassociate_route_table} \tab Disassociates a subnet or gateway from a route table \cr
 \link[=ec2_disassociate_subnet_cidr_block]{disassociate_subnet_cidr_block} \tab Disassociates a CIDR block from a subnet \cr
 \link[=ec2_disassociate_transit_gateway_multicast_domain]{disassociate_transit_gateway_multicast_domain} \tab Disassociates the specified subnets from the transit gateway multicast domain \cr
 \link[=ec2_disassociate_transit_gateway_route_table]{disassociate_transit_gateway_route_table} \tab Disassociates a resource attachment from a transit gateway route table \cr
@@ -334,6 +340,7 @@ documentation
 \link[=ec2_export_client_vpn_client_configuration]{export_client_vpn_client_configuration} \tab Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN endpoint \cr
 \link[=ec2_export_image]{export_image} \tab Exports an Amazon Machine Image (AMI) to a VM file \cr
 \link[=ec2_export_transit_gateway_routes]{export_transit_gateway_routes} \tab Exports routes from the specified transit gateway route table to the specified S3 bucket \cr
+\link[=ec2_get_associated_ipv_6_pool_cidrs]{get_associated_ipv_6_pool_cidrs} \tab Gets information about the IPv6 CIDR block associations for a specified IPv6 address pool \cr
 \link[=ec2_get_capacity_reservation_usage]{get_capacity_reservation_usage} \tab Gets usage information about a Capacity Reservation \cr
 \link[=ec2_get_coip_pool_usage]{get_coip_pool_usage} \tab Describes the allocations from the specified customer-owned address pool \cr
 \link[=ec2_get_console_output]{get_console_output} \tab Gets the console output for the specified instance \cr
@@ -343,6 +350,8 @@ documentation
 \link[=ec2_get_ebs_encryption_by_default]{get_ebs_encryption_by_default} \tab Describes whether EBS encryption by default is enabled for your account in the current Region \cr
 \link[=ec2_get_host_reservation_purchase_preview]{get_host_reservation_purchase_preview} \tab Preview a reservation purchase with configurations that match those of your Dedicated Host \cr
 \link[=ec2_get_launch_template_data]{get_launch_template_data} \tab Retrieves the configuration data of the specified instance \cr
+\link[=ec2_get_managed_prefix_list_associations]{get_managed_prefix_list_associations} \tab Gets information about the resources that are associated with the specified managed prefix list \cr
+\link[=ec2_get_managed_prefix_list_entries]{get_managed_prefix_list_entries} \tab Gets information about the entries for a specified managed prefix list \cr
 \link[=ec2_get_password_data]{get_password_data} \tab Retrieves the encrypted administrator password for a running Windows instance \cr
 \link[=ec2_get_reserved_instances_exchange_quote]{get_reserved_instances_exchange_quote} \tab Returns a quote and exchange information for exchanging one or more specified Convertible Reserved Instances for a new Convertible Reserved Instance \cr
 \link[=ec2_get_transit_gateway_attachment_propagations]{get_transit_gateway_attachment_propagations} \tab Lists the route tables to which the specified resource attachment propagates routes \cr
@@ -355,6 +364,7 @@ documentation
 \link[=ec2_import_key_pair]{import_key_pair} \tab Imports the public key from an RSA key pair that you created with a third-party tool \cr
 \link[=ec2_import_snapshot]{import_snapshot} \tab Imports a disk into an EBS snapshot \cr
 \link[=ec2_import_volume]{import_volume} \tab Creates an import volume task using metadata from the specified disk image \cr
+\link[=ec2_modify_availability_zone_group]{modify_availability_zone_group} \tab Enables or disables an Availability Zone group for your account \cr
 \link[=ec2_modify_capacity_reservation]{modify_capacity_reservation} \tab Modifies a Capacity Reservation's capacity and the conditions under which it is to be released \cr
 \link[=ec2_modify_client_vpn_endpoint]{modify_client_vpn_endpoint} \tab Modifies the specified Client VPN endpoint \cr
 \link[=ec2_modify_default_credit_specification]{modify_default_credit_specification} \tab Modifies the default credit option for CPU usage of burstable performance instances \cr
@@ -372,6 +382,7 @@ documentation
 \link[=ec2_modify_instance_metadata_options]{modify_instance_metadata_options} \tab Modify the instance metadata parameters on a running or stopped instance \cr
 \link[=ec2_modify_instance_placement]{modify_instance_placement} \tab Modifies the placement attributes for a specified instance \cr
 \link[=ec2_modify_launch_template]{modify_launch_template} \tab Modifies a launch template \cr
+\link[=ec2_modify_managed_prefix_list]{modify_managed_prefix_list} \tab Modifies the specified managed prefix list \cr
 \link[=ec2_modify_network_interface_attribute]{modify_network_interface_attribute} \tab Modifies the specified network interface attribute \cr
 \link[=ec2_modify_reserved_instances]{modify_reserved_instances} \tab Modifies the Availability Zone, instance count, instance type, or network platform (EC2-Classic or EC2-VPC) of your Reserved Instances \cr
 \link[=ec2_modify_snapshot_attribute]{modify_snapshot_attribute} \tab Adds or removes permission settings for the specified snapshot \cr
@@ -390,17 +401,18 @@ documentation
 \link[=ec2_modify_vpc_endpoint_service_permissions]{modify_vpc_endpoint_service_permissions} \tab Modifies the permissions for your VPC endpoint service \cr
 \link[=ec2_modify_vpc_peering_connection_options]{modify_vpc_peering_connection_options} \tab Modifies the VPC peering connection options on one side of a VPC peering connection \cr
 \link[=ec2_modify_vpc_tenancy]{modify_vpc_tenancy} \tab Modifies the instance tenancy attribute of the specified VPC \cr
-\link[=ec2_modify_vpn_connection]{modify_vpn_connection} \tab Modifies the target gateway of an AWS Site-to-Site VPN connection \cr
+\link[=ec2_modify_vpn_connection]{modify_vpn_connection} \tab Modifies the customer gateway or the target gateway of an AWS Site-to-Site VPN connection \cr
 \link[=ec2_modify_vpn_tunnel_certificate]{modify_vpn_tunnel_certificate} \tab Modifies the VPN tunnel endpoint certificate \cr
 \link[=ec2_modify_vpn_tunnel_options]{modify_vpn_tunnel_options} \tab Modifies the options for a VPN tunnel in an AWS Site-to-Site VPN connection \cr
 \link[=ec2_monitor_instances]{monitor_instances} \tab Enables detailed monitoring for a running instance \cr
 \link[=ec2_move_address_to_vpc]{move_address_to_vpc} \tab Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC platform \cr
-\link[=ec2_provision_byoip_cidr]{provision_byoip_cidr} \tab Provisions an address range for use with your AWS resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool \cr
+\link[=ec2_provision_byoip_cidr]{provision_byoip_cidr} \tab Provisions an IPv4 or IPv6 address range for use with your AWS resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool \cr
 \link[=ec2_purchase_host_reservation]{purchase_host_reservation} \tab Purchase a reservation with configurations that match those of your Dedicated Host \cr
 \link[=ec2_purchase_reserved_instances_offering]{purchase_reserved_instances_offering} \tab Purchases a Reserved Instance for use with your account \cr
 \link[=ec2_purchase_scheduled_instances]{purchase_scheduled_instances} \tab Purchases the Scheduled Instances with the specified schedule \cr
 \link[=ec2_reboot_instances]{reboot_instances} \tab Requests a reboot of the specified instances \cr
 \link[=ec2_register_image]{register_image} \tab Registers an AMI \cr
+\link[=ec2_register_instance_event_notification_attributes]{register_instance_event_notification_attributes} \tab Registers a set of tag keys to include in scheduled event notifications for your resources \cr
 \link[=ec2_register_transit_gateway_multicast_group_members]{register_transit_gateway_multicast_group_members} \tab Registers members (network interfaces) with the transit gateway multicast group \cr
 \link[=ec2_register_transit_gateway_multicast_group_sources]{register_transit_gateway_multicast_group_sources} \tab Registers sources (network interfaces) with the specified transit gateway multicast group \cr
 \link[=ec2_reject_transit_gateway_peering_attachment]{reject_transit_gateway_peering_attachment} \tab Rejects a transit gateway peering attachment request \cr
@@ -425,6 +437,7 @@ documentation
 \link[=ec2_reset_network_interface_attribute]{reset_network_interface_attribute} \tab Resets a network interface attribute \cr
 \link[=ec2_reset_snapshot_attribute]{reset_snapshot_attribute} \tab Resets permission settings for the specified snapshot \cr
 \link[=ec2_restore_address_to_classic]{restore_address_to_classic} \tab Restores an Elastic IP address that was previously moved to the EC2-VPC platform back to the EC2-Classic platform \cr
+\link[=ec2_restore_managed_prefix_list_version]{restore_managed_prefix_list_version} \tab Restores the entries from a previous version of a managed prefix list to a new version of the prefix list \cr
 \link[=ec2_revoke_client_vpn_ingress]{revoke_client_vpn_ingress} \tab Removes an ingress authorization rule from a Client VPN endpoint \cr
 \link[=ec2_revoke_security_group_egress]{revoke_security_group_egress} \tab [VPC only] Removes the specified egress rules from a security group for EC2-VPC \cr
 \link[=ec2_revoke_security_group_ingress]{revoke_security_group_ingress} \tab Removes the specified ingress rules from a security group \cr
@@ -444,7 +457,7 @@ documentation
 \link[=ec2_unmonitor_instances]{unmonitor_instances} \tab Disables detailed monitoring for a running instance \cr
 \link[=ec2_update_security_group_rule_descriptions_egress]{update_security_group_rule_descriptions_egress} \tab [VPC only] Updates the description of an egress (outbound) security group rule \cr
 \link[=ec2_update_security_group_rule_descriptions_ingress]{update_security_group_rule_descriptions_ingress} \tab Updates the description of an ingress (inbound) security group rule \cr
-\link[=ec2_withdraw_byoip_cidr]{withdraw_byoip_cidr} \tab Stops advertising an IPv4 address range that is provisioned as an address pool
+\link[=ec2_withdraw_byoip_cidr]{withdraw_byoip_cidr} \tab Stops advertising an address range that is provisioned as an address pool
 }
 }
 
