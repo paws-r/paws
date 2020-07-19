@@ -49,11 +49,9 @@ migrationhubconfig_create_home_region_control <- function(HomeRegion, Target, Dr
 }
 .migrationhubconfig$operations$create_home_region_control <- migrationhubconfig_create_home_region_control
 
-#' This API permits filtering on the ControlId, HomeRegion, and
-#' RegionControlScope fields
+#' This API permits filtering on the ControlId and HomeRegion fields
 #'
-#' This API permits filtering on the `ControlId`, `HomeRegion`, and
-#' `RegionControlScope` fields.
+#' This API permits filtering on the `ControlId` and `HomeRegion` fields.
 #'
 #' @usage
 #' migrationhubconfig_describe_home_region_controls(ControlId, HomeRegion,

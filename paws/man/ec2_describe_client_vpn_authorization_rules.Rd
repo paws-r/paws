@@ -17,7 +17,14 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NextToken}{The token to retrieve the next page of results.}
 
-\item{Filters}{One or more filters. Filter names and values are case-sensitive.}
+\item{Filters}{One or more filters. Filter names and values are case-sensitive.
+\itemize{
+\item \code{description} - The description of the authorization rule.
+\item \code{destination-cidr} - The CIDR of the network to which the
+authorization rule applies.
+\item \code{group-id} - The ID of the Active Directory group to which the
+authorization rule grants access.
+}}
 
 \item{MaxResults}{The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with

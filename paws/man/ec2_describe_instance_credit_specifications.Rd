@@ -58,7 +58,7 @@ specify instance IDs in the affected zone, or do not specify any
 instance IDs at all, the call fails. If you specify only instance IDs in
 an unaffected zone, the call works normally.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable Performance Instances}
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable performance instances}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

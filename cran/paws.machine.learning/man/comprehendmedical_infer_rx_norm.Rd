@@ -15,7 +15,8 @@ from 1 to 10000 characters.}
 \description{
 InferRxNorm detects medications as entities listed in a patient record
 and links to the normalized concept identifiers in the RxNorm database
-from the National Library of Medicine.
+from the National Library of Medicine. Amazon Comprehend Medical only
+detects medical entities in English language texts.
 }
 \section{Request syntax}{
 \preformatted{svc$infer_rx_norm(

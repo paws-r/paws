@@ -2,7 +2,7 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_describe_runtime_configuration}
 \alias{gamelift_describe_runtime_configuration}
-\title{Retrieves the current runtime configuration for the specified fleet}
+\title{Retrieves a fleet's runtime configuration settings}
 \usage{
 gamelift_describe_runtime_configuration(FleetId)
 }
@@ -11,14 +11,21 @@ gamelift_describe_runtime_configuration(FleetId)
 You can use either the fleet ID or ARN value.}
 }
 \description{
-Retrieves the current runtime configuration for the specified fleet. The
-runtime configuration tells Amazon GameLift how to launch server
-processes on instances in the fleet.
+Retrieves a fleet\'s runtime configuration settings. The runtime
+configuration tells Amazon GameLift which server processes to run (and
+how) on each instance in the fleet.
 }
 \details{
+To get a runtime configuration, specify the fleet\'s unique identifier.
+If successful, a RuntimeConfiguration object is returned for the
+requested fleet. If the requested fleet has been deleted, the result set
+is empty.
+
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-multiprocess.html}{Running Multiple Processes on a Fleet}
 
 \strong{Related operations}
 \itemize{
@@ -36,11 +43,7 @@ processes on instances in the fleet.
 \item DescribeFleetEvents
 }
 \item UpdateFleetAttributes
-\item Manage fleet actions:
-\itemize{
-\item StartFleetActions
-\item StopFleetActions
-}
+\item StartFleetActions or StopFleetActions
 }
 }
 \section{Request syntax}{

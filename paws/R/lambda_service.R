@@ -39,15 +39,14 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- lambda()
-#' # This example adds a permission for an S3 bucket to invoke a Lambda
-#' # function.
-#' svc$add_permission(
-#'   Action = "lambda:InvokeFunction",
-#'   FunctionName = "MyFunction",
-#'   Principal = "s3.amazonaws.com",
-#'   SourceAccount = "123456789012",
-#'   SourceArn = "arn:aws:s3:::examplebucket/*",
-#'   StatementId = "ID-1"
+#' # The following example grants permission for the account 223456789012 to
+#' # use version 1 of a layer named my-layer.
+#' svc$add_layer_version_permission(
+#'   Action = "lambda:GetLayerVersion",
+#'   LayerName = "my-layer",
+#'   Principal = "223456789012",
+#'   StatementId = "xaccount",
+#'   VersionNumber = 1L
 #' )
 #' }
 #'
@@ -69,7 +68,7 @@ NULL
 #'  \link[=lambda_get_alias]{get_alias} \tab Returns details about a Lambda function alias \cr
 #'  \link[=lambda_get_event_source_mapping]{get_event_source_mapping} \tab Returns details about an event source mapping \cr
 #'  \link[=lambda_get_function]{get_function} \tab Returns information about the function or function version, with a link to download the deployment package that's valid for 10 minutes\cr
-#'  \link[=lambda_get_function_concurrency]{get_function_concurrency} \tab Returns details about the concurrency configuration for a function \cr
+#'  \link[=lambda_get_function_concurrency]{get_function_concurrency} \tab Returns details about the reserved concurrency configuration for a function \cr
 #'  \link[=lambda_get_function_configuration]{get_function_configuration} \tab Returns the version-specific settings of a Lambda function or version \cr
 #'  \link[=lambda_get_function_event_invoke_config]{get_function_event_invoke_config} \tab Retrieves the configuration for asynchronous invocation for a function, version, or alias \cr
 #'  \link[=lambda_get_layer_version]{get_layer_version} \tab Returns information about a version of an AWS Lambda layer, with a link to download the layer archive that's valid for 10 minutes \cr
@@ -119,7 +118,7 @@ lambda <- function(config = list()) {
 
 .lambda$metadata <- list(
   service_name = "lambda",
-  endpoints = list("*" = list(endpoint = "lambda.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lambda.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "lambda.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lambda.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "lambda.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lambda.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Lambda",
   api_version = "2015-03-31",
   signing_name = NULL,

@@ -12,32 +12,43 @@ NULL
 #' handshake is completed from the console.
 #'
 #' @usage
-#' codestarconnections_create_connection(ProviderType, ConnectionName)
+#' codestarconnections_create_connection(ProviderType, ConnectionName,
+#'   Tags, HostArn)
 #'
-#' @param ProviderType &#91;required&#93; The name of the external provider where your third-party code repository
-#' is configured. Currently, the valid provider type is Bitbucket.
+#' @param ProviderType The name of the external provider where your third-party code repository
+#' is configured. The valid provider type is Bitbucket.
 #' @param ConnectionName &#91;required&#93; The name of the connection to be created. The name must be unique in the
 #' calling AWS account.
+#' @param Tags The key-value pair to use when tagging the resource.
+#' @param HostArn The Amazon Resource Name (ARN) of the host associated with the
+#' connection to be created.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_connection(
-#'   ProviderType = "Bitbucket",
-#'   ConnectionName = "string"
+#'   ProviderType = "Bitbucket"|"GitHubEnterpriseServer",
+#'   ConnectionName = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   HostArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codestarconnections_create_connection
-codestarconnections_create_connection <- function(ProviderType, ConnectionName) {
+codestarconnections_create_connection <- function(ProviderType = NULL, ConnectionName, Tags = NULL, HostArn = NULL) {
   op <- new_operation(
     name = "CreateConnection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codestarconnections$create_connection_input(ProviderType = ProviderType, ConnectionName = ConnectionName)
+  input <- .codestarconnections$create_connection_input(ProviderType = ProviderType, ConnectionName = ConnectionName, Tags = Tags, HostArn = HostArn)
   output <- .codestarconnections$create_connection_output()
   config <- get_config()
   svc <- .codestarconnections$service(config)
@@ -46,6 +57,74 @@ codestarconnections_create_connection <- function(ProviderType, ConnectionName) 
   return(response)
 }
 .codestarconnections$operations$create_connection <- codestarconnections_create_connection
+
+#' Creates a resource that represents the infrastructure where a
+#' third-party provider is installed
+#'
+#' Creates a resource that represents the infrastructure where a
+#' third-party provider is installed. The host is used when you create
+#' connections to an installed third-party provider type, such as GitHub
+#' Enterprise Server. You create one host for all connections to that
+#' provider.
+#' 
+#' A host created through the CLI or the SDK is in \`PENDING\` status by
+#' default. You can make its status \`AVAILABLE\` by setting up the host in
+#' the console.
+#'
+#' @usage
+#' codestarconnections_create_host(Name, ProviderType, ProviderEndpoint,
+#'   VpcConfiguration)
+#'
+#' @param Name &#91;required&#93; The name of the host to be created. The name must be unique in the
+#' calling AWS account.
+#' @param ProviderType &#91;required&#93; The name of the installed provider to be associated with your
+#' connection. The host resource represents the infrastructure where your
+#' provider type is installed. The valid provider type is GitHub Enterprise
+#' Server.
+#' @param ProviderEndpoint &#91;required&#93; The endpoint of the infrastructure to be represented by the host after
+#' it is created.
+#' @param VpcConfiguration The VPC configuration to be provisioned for the host. A VPC must be
+#' configured and the infrastructure to be represented by the host must
+#' already be connected to the VPC.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_host(
+#'   Name = "string",
+#'   ProviderType = "Bitbucket"|"GitHubEnterpriseServer",
+#'   ProviderEndpoint = "string",
+#'   VpcConfiguration = list(
+#'     VpcId = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     TlsCertificate = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_create_host
+codestarconnections_create_host <- function(Name, ProviderType, ProviderEndpoint, VpcConfiguration = NULL) {
+  op <- new_operation(
+    name = "CreateHost",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$create_host_input(Name = Name, ProviderType = ProviderType, ProviderEndpoint = ProviderEndpoint, VpcConfiguration = VpcConfiguration)
+  output <- .codestarconnections$create_host_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$create_host <- codestarconnections_create_host
 
 #' The connection to be deleted
 #'
@@ -85,6 +164,46 @@ codestarconnections_delete_connection <- function(ConnectionArn) {
 }
 .codestarconnections$operations$delete_connection <- codestarconnections_delete_connection
 
+#' The host to be deleted
+#'
+#' The host to be deleted. Before you delete a host, all connections
+#' associated to the host must be deleted.
+#' 
+#' A host cannot be deleted if it is in the VPC\\_CONFIG\\_INITIALIZING or
+#' VPC\\_CONFIG\\_DELETING state.
+#'
+#' @usage
+#' codestarconnections_delete_host(HostArn)
+#'
+#' @param HostArn &#91;required&#93; The Amazon Resource Name (ARN) of the host to be deleted.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_host(
+#'   HostArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_delete_host
+codestarconnections_delete_host <- function(HostArn) {
+  op <- new_operation(
+    name = "DeleteHost",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$delete_host_input(HostArn = HostArn)
+  output <- .codestarconnections$delete_host_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$delete_host <- codestarconnections_delete_host
+
 #' Returns the connection ARN and details such as status, owner, and
 #' provider type
 #'
@@ -123,16 +242,56 @@ codestarconnections_get_connection <- function(ConnectionArn) {
 }
 .codestarconnections$operations$get_connection <- codestarconnections_get_connection
 
+#' Returns the host ARN and details such as status, provider type,
+#' endpoint, and, if applicable, the VPC configuration
+#'
+#' Returns the host ARN and details such as status, provider type,
+#' endpoint, and, if applicable, the VPC configuration.
+#'
+#' @usage
+#' codestarconnections_get_host(HostArn)
+#'
+#' @param HostArn &#91;required&#93; The Amazon Resource Name (ARN) of the requested host.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_host(
+#'   HostArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_get_host
+codestarconnections_get_host <- function(HostArn) {
+  op <- new_operation(
+    name = "GetHost",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$get_host_input(HostArn = HostArn)
+  output <- .codestarconnections$get_host_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$get_host <- codestarconnections_get_host
+
 #' Lists the connections associated with your account
 #'
 #' Lists the connections associated with your account.
 #'
 #' @usage
-#' codestarconnections_list_connections(ProviderTypeFilter, MaxResults,
-#'   NextToken)
+#' codestarconnections_list_connections(ProviderTypeFilter, HostArnFilter,
+#'   MaxResults, NextToken)
 #'
 #' @param ProviderTypeFilter Filters the list of connections to those associated with a specified
 #' provider, such as Bitbucket.
+#' @param HostArnFilter Filters the list of connections to those associated with a specified
+#' host.
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -142,7 +301,8 @@ codestarconnections_get_connection <- function(ConnectionArn) {
 #' @section Request syntax:
 #' ```
 #' svc$list_connections(
-#'   ProviderTypeFilter = "Bitbucket",
+#'   ProviderTypeFilter = "Bitbucket"|"GitHubEnterpriseServer",
+#'   HostArnFilter = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -151,14 +311,14 @@ codestarconnections_get_connection <- function(ConnectionArn) {
 #' @keywords internal
 #'
 #' @rdname codestarconnections_list_connections
-codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, MaxResults = NULL, NextToken = NULL) {
+codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, HostArnFilter = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListConnections",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codestarconnections$list_connections_input(ProviderTypeFilter = ProviderTypeFilter, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .codestarconnections$list_connections_input(ProviderTypeFilter = ProviderTypeFilter, HostArnFilter = HostArnFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .codestarconnections$list_connections_output()
   config <- get_config()
   svc <- .codestarconnections$service(config)
@@ -167,3 +327,168 @@ codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, MaxR
   return(response)
 }
 .codestarconnections$operations$list_connections <- codestarconnections_list_connections
+
+#' Lists the hosts associated with your account
+#'
+#' Lists the hosts associated with your account.
+#'
+#' @usage
+#' codestarconnections_list_hosts(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of results to return in a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' @param NextToken The token that was returned from the previous `ListHosts` call, which
+#' can be used to return the next set of hosts in the list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_hosts(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_list_hosts
+codestarconnections_list_hosts <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListHosts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$list_hosts_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .codestarconnections$list_hosts_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$list_hosts <- codestarconnections_list_hosts
+
+#' Gets the set of key-value pairs (metadata) that are used to manage the
+#' resource
+#'
+#' Gets the set of key-value pairs (metadata) that are used to manage the
+#' resource.
+#'
+#' @usage
+#' codestarconnections_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which you want to get
+#' information about tags, if any.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_list_tags_for_resource
+codestarconnections_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .codestarconnections$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$list_tags_for_resource <- codestarconnections_list_tags_for_resource
+
+#' Adds to or modifies the tags of the given resource
+#'
+#' Adds to or modifies the tags of the given resource. Tags are metadata
+#' that can be used to manage a resource.
+#'
+#' @usage
+#' codestarconnections_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which you want to add
+#' or update tags.
+#' @param Tags &#91;required&#93; The tags you want to modify or add to the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_tag_resource
+codestarconnections_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .codestarconnections$tag_resource_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$tag_resource <- codestarconnections_tag_resource
+
+#' Removes tags from an AWS resource
+#'
+#' Removes tags from an AWS resource.
+#'
+#' @usage
+#' codestarconnections_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove tags from.
+#' @param TagKeys &#91;required&#93; The list of keys for the tags to be removed from the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_untag_resource
+codestarconnections_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .codestarconnections$untag_resource_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$untag_resource <- codestarconnections_untag_resource

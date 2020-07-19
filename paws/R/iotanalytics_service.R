@@ -115,7 +115,7 @@ iotanalytics <- function(config = list()) {
 
 .iotanalytics$metadata <- list(
   service_name = "iotanalytics",
-  endpoints = list("*" = list(endpoint = "iotanalytics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "iotanalytics.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "iotanalytics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "iotanalytics.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "iotanalytics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "iotanalytics.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "IoTAnalytics",
   api_version = "2017-11-27",
   signing_name = "iotanalytics",

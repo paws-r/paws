@@ -14,7 +14,7 @@ the virtual tapes you want to describe.}
 \item{Marker}{An opaque string that indicates the position at which to begin
 describing virtual tapes.}
 
-\item{Limit}{Specifies that the number of virtual tapes descried be limited to the
+\item{Limit}{Specifies that the number of virtual tapes described be limited to the
 specified number.}
 }
 \description{

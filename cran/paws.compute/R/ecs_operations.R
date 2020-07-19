@@ -149,8 +149,8 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #' enable CloudWatch Container Insights for a cluster. If this value is
 #' specified, it will override the `containerInsights` value set with
 #' PutAccountSetting or PutAccountSettingDefault.
-#' @param capacityProviders The short name or full Amazon Resource Name (ARN) of one or more
-#' capacity providers to associate with the cluster.
+#' @param capacityProviders The short name of one or more capacity providers to associate with the
+#' cluster.
 #' 
 #' If specifying a capacity provider that uses an Auto Scaling group, the
 #' capacity provider must already be created and not already associated
@@ -254,7 +254,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' Runs and maintains a desired number of tasks from a specified task
 #' definition. If the number of tasks running in a service drops below the
 #' `desiredCount`, Amazon ECS runs another copy of the task in the
-#' specified cluster. To update an existing service, see UpdateService.
+#' specified cluster. To update an existing service, see the UpdateService
+#' action.
 #' 
 #' In addition to maintaining the desired count of tasks in your service,
 #' you can optionally run your service behind one or more load balancers.
@@ -281,10 +282,12 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' 
 #' -   `DAEMON` - The daemon scheduling strategy deploys exactly one task
 #'     on each active container instance that meets all of the task
-#'     placement constraints that you specify in your cluster. When using
-#'     this strategy, you don\'t need to specify a desired number of tasks,
-#'     a task placement strategy, or use Service Auto Scaling policies. For
-#'     more information, see [Service Scheduler
+#'     placement constraints that you specify in your cluster. The service
+#'     scheduler also evaluates the task placement constraints for running
+#'     tasks and will stop tasks that do not meet the placement
+#'     constraints. When using this strategy, you don\'t need to specify a
+#'     desired number of tasks, a task placement strategy, or use Service
+#'     Auto Scaling policies. For more information, see [Service Scheduler
 #'     Concepts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
 #'     in the *Amazon Elastic Container Service Developer Guide*.
 #' 
@@ -534,13 +537,17 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param healthCheckGracePeriodSeconds The period of time, in seconds, that the Amazon ECS service scheduler
 #' should ignore unhealthy Elastic Load Balancing target health checks
-#' after a task has first started. This is only valid if your service is
-#' configured to use a load balancer. If your service\'s tasks take a while
-#' to start and respond to Elastic Load Balancing health checks, you can
-#' specify a health check grace period of up to 2,147,483,647 seconds.
-#' During that time, the ECS service scheduler ignores health check status.
-#' This grace period can prevent the ECS service scheduler from marking
-#' tasks as unhealthy and stopping them before they have time to come up.
+#' after a task has first started. This is only used when your service is
+#' configured to use a load balancer. If your service has a load balancer
+#' defined and you don\'t specify a health check grace period value, the
+#' default value of `0` is used.
+#' 
+#' If your service\'s tasks take a while to start and respond to Elastic
+#' Load Balancing health checks, you can specify a health check grace
+#' period of up to 2,147,483,647 seconds. During that time, the Amazon ECS
+#' service scheduler ignores health check status. This grace period can
+#' prevent the service scheduler from marking tasks as unhealthy and
+#' stopping them before they have time to come up.
 #' @param schedulingStrategy The scheduling strategy to use for the service. For more information,
 #' see
 #' [Services](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
@@ -556,9 +563,12 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' 
 #' -   `DAEMON`-The daemon scheduling strategy deploys exactly one task on
 #'     each active container instance that meets all of the task placement
-#'     constraints that you specify in your cluster. When you\'re using
-#'     this strategy, you don\'t need to specify a desired number of tasks,
-#'     a task placement strategy, or use Service Auto Scaling policies.
+#'     constraints that you specify in your cluster. The service scheduler
+#'     also evaluates the task placement constraints for running tasks and
+#'     will stop tasks that do not meet the placement constraints. When
+#'     you\'re using this strategy, you don\'t need to specify a desired
+#'     number of tasks, a task placement strategy, or use Service Auto
+#'     Scaling policies.
 #' 
 #'     Tasks using the Fargate launch type or the `CODE_DEPLOY` or
 #'     `EXTERNAL` deployment controller types don\'t support the `DAEMON`
@@ -741,7 +751,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' @usage
 #' ecs_create_task_set(service, cluster, externalId, taskDefinition,
 #'   networkConfiguration, loadBalancers, serviceRegistries, launchType,
-#'   capacityProviderStrategy, platformVersion, scale, clientToken)
+#'   capacityProviderStrategy, platformVersion, scale, clientToken, tags)
 #'
 #' @param service &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the service to
 #' create the task set in.
@@ -800,6 +810,35 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' @param scale 
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 32 ASCII characters are allowed.
+#' @param tags The metadata that you apply to the task set to help you categorize and
+#' organize them. Each tag consists of a key and an optional value, both of
+#' which you define. When a service is deleted, the tags are deleted as
+#' well.
+#' 
+#' The following basic restrictions apply to tags:
+#' 
+#' -   Maximum number of tags per resource - 50
+#' 
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
+#' 
+#' -   Maximum key length - 128 Unicode characters in UTF-8
+#' 
+#' -   Maximum value length - 256 Unicode characters in UTF-8
+#' 
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . \\_ : / @@.
+#' 
+#' -   Tag keys and values are case-sensitive.
+#' 
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for either keys or values as it is reserved for AWS
+#'     use. You cannot edit or delete tag keys or values with this prefix.
+#'     Tags with this prefix do not count against your tags per resource
+#'     limit.
 #'
 #' @section Request syntax:
 #' ```
@@ -848,21 +887,27 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #'     value = 123.0,
 #'     unit = "PERCENT"
 #'   ),
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_create_task_set
-ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinition, networkConfiguration = NULL, loadBalancers = NULL, serviceRegistries = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, scale = NULL, clientToken = NULL) {
+ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinition, networkConfiguration = NULL, loadBalancers = NULL, serviceRegistries = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, scale = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateTaskSet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$create_task_set_input(service = service, cluster = cluster, externalId = externalId, taskDefinition = taskDefinition, networkConfiguration = networkConfiguration, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, scale = scale, clientToken = clientToken)
+  input <- .ecs$create_task_set_input(service = service, cluster = cluster, externalId = externalId, taskDefinition = taskDefinition, networkConfiguration = networkConfiguration, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, scale = scale, clientToken = clientToken, tags = tags)
   output <- .ecs$create_task_set_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -990,12 +1035,70 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 }
 .ecs$operations$delete_attributes <- ecs_delete_attributes
 
+#' Deletes the specified capacity provider
+#'
+#' Deletes the specified capacity provider.
+#' 
+#' The `FARGATE` and `FARGATE_SPOT` capacity providers are reserved and
+#' cannot be deleted. You can disassociate them from a cluster using either
+#' the PutClusterCapacityProviders API or by deleting the cluster.
+#' 
+#' Prior to a capacity provider being deleted, the capacity provider must
+#' be removed from the capacity provider strategy from all services. The
+#' UpdateService API can be used to remove a capacity provider from a
+#' service\'s capacity provider strategy. When updating a service, the
+#' `forceNewDeployment` option can be used to ensure that any tasks using
+#' the Amazon EC2 instance capacity provided by the capacity provider are
+#' transitioned to use the capacity from the remaining capacity providers.
+#' Only capacity providers that are not associated with a cluster can be
+#' deleted. To remove a capacity provider from a cluster, you can either
+#' use PutClusterCapacityProviders or delete the cluster.
+#'
+#' @usage
+#' ecs_delete_capacity_provider(capacityProvider)
+#'
+#' @param capacityProvider &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the capacity
+#' provider to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_capacity_provider(
+#'   capacityProvider = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_delete_capacity_provider
+ecs_delete_capacity_provider <- function(capacityProvider) {
+  op <- new_operation(
+    name = "DeleteCapacityProvider",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$delete_capacity_provider_input(capacityProvider = capacityProvider)
+  output <- .ecs$delete_capacity_provider_output()
+  config <- get_config()
+  svc <- .ecs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$delete_capacity_provider <- ecs_delete_capacity_provider
+
 #' Deletes the specified cluster
 #'
-#' Deletes the specified cluster. You must deregister all container
-#' instances from this cluster before you may delete it. You can list the
-#' container instances in a cluster with ListContainerInstances and
-#' deregister them with DeregisterContainerInstance.
+#' Deletes the specified cluster. The cluster will transition to the
+#' `INACTIVE` state. Clusters with an `INACTIVE` status may remain
+#' discoverable in your account for a period of time. However, this
+#' behavior is subject to change in the future, so you should not rely on
+#' `INACTIVE` clusters persisting.
+#' 
+#' You must deregister all container instances from this cluster before you
+#' may delete it. You can list the container instances in a cluster with
+#' ListContainerInstances and deregister them with
+#' DeregisterContainerInstance.
 #'
 #' @usage
 #' ecs_delete_cluster(cluster)
@@ -1646,13 +1749,16 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
-#' ecs_describe_task_sets(cluster, service, taskSets)
+#' ecs_describe_task_sets(cluster, service, taskSets, include)
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the service that the task sets exist in.
 #' @param service &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the service that
 #' the task sets exist in.
 #' @param taskSets The ID or full Amazon Resource Name (ARN) of task sets to describe.
+#' @param include Specifies whether to see the resource tags for the task set. If `TAGS`
+#' is specified, the tags are included in the response. If this field is
+#' omitted, tags are not included in the response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1661,6 +1767,9 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #'   service = "string",
 #'   taskSets = list(
 #'     "string"
+#'   ),
+#'   include = list(
+#'     "TAGS"
 #'   )
 #' )
 #' ```
@@ -1668,14 +1777,14 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecs_describe_task_sets
-ecs_describe_task_sets <- function(cluster, service, taskSets = NULL) {
+ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = NULL) {
   op <- new_operation(
     name = "DescribeTaskSets",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$describe_task_sets_input(cluster = cluster, service = service, taskSets = taskSets)
+  input <- .ecs$describe_task_sets_input(cluster = cluster, service = service, taskSets = taskSets, include = include)
   output <- .ecs$describe_task_sets_output()
   config <- get_config()
   svc <- .ecs$service(config)
@@ -1802,7 +1911,7 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 #' ecs_list_account_settings(name, value, principalArn, effectiveSettings,
 #'   nextToken, maxResults)
 #'
-#' @param name The resource name you want to list the account settings for.
+#' @param name The name of the account setting you want to list the settings for.
 #' @param value The value of the account settings with which to filter results. You must
 #' also specify an account setting name to use this parameter.
 #' @param principalArn The ARN of the principal, which can be an IAM user, IAM role, or the
@@ -2989,8 +3098,13 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' information, see [IAM Roles for
 #' Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
-#' @param executionRoleArn The Amazon Resource Name (ARN) of the task execution role that the
-#' Amazon ECS container agent and the Docker daemon can assume.
+#' @param executionRoleArn The Amazon Resource Name (ARN) of the task execution role that grants
+#' the Amazon ECS container agent permission to make AWS API calls on your
+#' behalf. The task execution IAM role is required depending on the
+#' requirements of your task. For more information, see [Amazon ECS task
+#' execution IAM
+#' role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param networkMode The Docker networking mode to use for the containers in the task. The
 #' valid values are `none`, `bridge`, `awsvpc`, and `host`. The default
 #' Docker network mode is `bridge`. If you are using the Fargate launch
@@ -3224,6 +3338,12 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'           value = "string"
 #'         )
 #'       ),
+#'       environmentFiles = list(
+#'         list(
+#'           value = "string",
+#'           type = "s3"
+#'         )
+#'       ),
 #'       mountPoints = list(
 #'         list(
 #'           sourceVolume = "string",
@@ -3372,6 +3492,16 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'         ),
 #'         labels = list(
 #'           "string"
+#'         )
+#'       ),
+#'       efsVolumeConfiguration = list(
+#'         fileSystemId = "string",
+#'         rootDirectory = "string",
+#'         transitEncryption = "ENABLED"|"DISABLED",
+#'         transitEncryptionPort = 123,
+#'         authorizationConfig = list(
+#'           accessPointId = "string",
+#'           iam = "ENABLED"|"DISABLED"
 #'         )
 #'       )
 #'     )
@@ -3659,6 +3789,12 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'             value = "string"
 #'           )
 #'         ),
+#'         environmentFiles = list(
+#'           list(
+#'             value = "string",
+#'             type = "s3"
+#'           )
+#'         ),
 #'         cpu = 123,
 #'         memory = 123,
 #'         memoryReservation = 123,
@@ -3855,6 +3991,12 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #'           list(
 #'             name = "string",
 #'             value = "string"
+#'           )
+#'         ),
+#'         environmentFiles = list(
+#'           list(
+#'             value = "string",
+#'             type = "s3"
 #'           )
 #'         ),
 #'         cpu = 123,
@@ -4513,27 +4655,39 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 }
 .ecs$operations$update_container_instances_state <- ecs_update_container_instances_state
 
-#' Modifies the parameters of a service
+#' Updating the task placement strategies and constraints on an Amazon ECS
+#' service remains in preview and is a Beta Service as defined by and
+#' subject to the Beta Service Participation Service Terms located at
+#' https://aws
 #'
+#' Updating the task placement strategies and constraints on an Amazon ECS
+#' service remains in preview and is a Beta Service as defined by and
+#' subject to the Beta Service Participation Service Terms located at
+#' <https://aws.amazon.com/service-terms> (\"Beta Terms\"). These Beta
+#' Terms apply to your participation in this preview.
+#' 
 #' Modifies the parameters of a service.
 #' 
 #' For services using the rolling update (`ECS`) deployment controller, the
-#' desired count, deployment configuration, network configuration, or task
-#' definition used can be updated.
+#' desired count, deployment configuration, network configuration, task
+#' placement constraints and strategies, or task definition used can be
+#' updated.
 #' 
 #' For services using the blue/green (`CODE_DEPLOY`) deployment controller,
-#' only the desired count, deployment configuration, and health check grace
-#' period can be updated using this API. If the network configuration,
-#' platform version, or task definition need to be updated, a new AWS
-#' CodeDeploy deployment should be created. For more information, see
+#' only the desired count, deployment configuration, task placement
+#' constraints and strategies, and health check grace period can be updated
+#' using this API. If the network configuration, platform version, or task
+#' definition need to be updated, a new AWS CodeDeploy deployment should be
+#' created. For more information, see
 #' [CreateDeployment](https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html)
 #' in the *AWS CodeDeploy API Reference*.
 #' 
 #' For services using an external deployment controller, you can update
-#' only the desired count and health check grace period using this API. If
-#' the launch type, load balancer, network configuration, platform version,
-#' or task definition need to be updated, you should create a new task set.
-#' For more information, see CreateTaskSet.
+#' only the desired count, task placement constraints and strategies, and
+#' health check grace period using this API. If the launch type, load
+#' balancer, network configuration, platform version, or task definition
+#' need to be updated, you should create a new task set. For more
+#' information, see CreateTaskSet.
 #' 
 #' You can add to or subtract from the number of instantiations of a task
 #' definition in a service by specifying the cluster that the service is
@@ -4622,7 +4776,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' @usage
 #' ecs_update_service(cluster, service, desiredCount, taskDefinition,
 #'   capacityProviderStrategy, deploymentConfiguration, networkConfiguration,
-#'   platformVersion, forceNewDeployment, healthCheckGracePeriodSeconds)
+#'   placementConstraints, placementStrategy, platformVersion,
+#'   forceNewDeployment, healthCheckGracePeriodSeconds)
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' your service is running on. If you do not specify a cluster, the default
@@ -4640,12 +4795,49 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' 
 #' If the service is using the default capacity provider strategy for the
 #' cluster, the service can be updated to use one or more capacity
-#' providers. However, when a service is using a non-default capacity
-#' provider strategy, the service cannot be updated to use the cluster\'s
-#' default capacity provider strategy.
+#' providers as opposed to the default capacity provider strategy. However,
+#' when a service is using a capacity provider strategy that is not the
+#' default capacity provider strategy, the service cannot be updated to use
+#' the cluster\'s default capacity provider strategy.
+#' 
+#' A capacity provider strategy consists of one or more capacity providers
+#' along with the `base` and `weight` to assign to them. A capacity
+#' provider must be associated with the cluster to be used in a capacity
+#' provider strategy. The PutClusterCapacityProviders API is used to
+#' associate a capacity provider with a cluster. Only capacity providers
+#' with an `ACTIVE` or `UPDATING` status can be used.
+#' 
+#' If specifying a capacity provider that uses an Auto Scaling group, the
+#' capacity provider must already be created. New capacity providers can be
+#' created with the CreateCapacityProvider API operation.
+#' 
+#' To use a AWS Fargate capacity provider, specify either the `FARGATE` or
+#' `FARGATE_SPOT` capacity providers. The AWS Fargate capacity providers
+#' are available to all accounts and only need to be associated with a
+#' cluster to be used.
+#' 
+#' The PutClusterCapacityProviders API operation is used to update the list
+#' of available capacity providers for a cluster after the cluster is
+#' created.
 #' @param deploymentConfiguration Optional deployment parameters that control how many tasks run during
 #' the deployment and the ordering of stopping and starting tasks.
 #' @param networkConfiguration 
+#' @param placementConstraints An array of task placement constraint objects to update the service to
+#' use. If no value is specified, the existing placement constraints for
+#' the service will remain unchanged. If this value is specified, it will
+#' override any existing placement constraints defined for the service. To
+#' remove all existing placement constraints, specify an empty array.
+#' 
+#' You can specify a maximum of 10 constraints per task (this limit
+#' includes constraints in the task definition and those specified at
+#' runtime).
+#' @param placementStrategy The task placement strategy objects to update the service to use. If no
+#' value is specified, the existing placement strategy for the service will
+#' remain unchanged. If this value is specified, it will override the
+#' existing placement strategy defined for the service. To remove an
+#' existing placement strategy, specify an empty object.
+#' 
+#' You can specify a maximum of five strategy rules per service.
 #' @param platformVersion The platform version on which your tasks in the service are running. A
 #' platform version is only specified for tasks using the Fargate launch
 #' type. If a platform version is not specified, the `LATEST` platform
@@ -4699,6 +4891,18 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'       assignPublicIp = "ENABLED"|"DISABLED"
 #'     )
 #'   ),
+#'   placementConstraints = list(
+#'     list(
+#'       type = "distinctInstance"|"memberOf",
+#'       expression = "string"
+#'     )
+#'   ),
+#'   placementStrategy = list(
+#'     list(
+#'       type = "random"|"spread"|"binpack",
+#'       field = "string"
+#'     )
+#'   ),
 #'   platformVersion = "string",
 #'   forceNewDeployment = TRUE|FALSE,
 #'   healthCheckGracePeriodSeconds = 123
@@ -4725,14 +4929,14 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' @keywords internal
 #'
 #' @rdname ecs_update_service
-ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, networkConfiguration = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL) {
+ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL) {
   op <- new_operation(
     name = "UpdateService",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, networkConfiguration = networkConfiguration, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds)
+  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds)
   output <- .ecs$update_service_output()
   config <- get_config()
   svc <- .ecs$service(config)

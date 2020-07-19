@@ -29,7 +29,7 @@ have access to the OpsItem (as provided by the GetOpsItem API action).
 Use the \verb{/aws/resources} key in OperationalData to specify a related
 resource in the request. Use the \verb{/aws/automations} key in
 OperationalData to associate an Automation runbook with the OpsItem. To
-view AWS CLI example commands that use these keys, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems}{Creating OpsItems Manually}
+view AWS CLI example commands that use these keys, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems}{Creating OpsItems manually}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{Notifications}{The Amazon Resource Name (ARN) of an SNS topic where notifications are
@@ -43,14 +43,17 @@ OpsItems. For example, related OpsItems can include OpsItems with
 similar error messages, impacted resources, or statuses for the impacted
 resource.}
 
-\item{Source}{[required] The origin of the OpsItem, such as Amazon EC2 or AWS Systems Manager.}
+\item{Source}{[required] The origin of the OpsItem, such as Amazon EC2 or Systems Manager.
+
+The source name can\'t contain the following strings: aws, amazon, and
+amzn.}
 
 \item{Title}{[required] A short heading that describes the nature of the OpsItem and the
 impacted resource.}
 
 \item{Tags}{Optional metadata that you assign to a resource. You can restrict access
 to OpsItems by using an inline IAM policy that specifies tags. For more
-information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html#OpsCenter-getting-started-user-permissions}{Getting Started with OpsCenter}
+information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html#OpsCenter-getting-started-user-permissions}{Getting started with OpsCenter}
 in the \emph{AWS Systems Manager User Guide}.
 
 Tags use a key-value pair. For example:
@@ -66,13 +69,13 @@ To add tags to an existing OpsItem, use the AddTagsToResource action.}
 \description{
 Creates a new OpsItem. You must have permission in AWS Identity and
 Access Management (IAM) to create a new OpsItem. For more information,
-see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting Started with OpsCenter}
+see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter}
 in the \emph{AWS Systems Manager User Guide}.
 }
 \details{
 Operations engineers and IT professionals use OpsCenter to view,
 investigate, and remediate operational issues impacting the performance
-and health of their AWS resources. For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html}{AWS Systems Manager OpsCenter}
+and health of their AWS resources. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html}{AWS Systems Manager OpsCenter}
 in the \emph{AWS Systems Manager User Guide}.
 }
 \section{Request syntax}{

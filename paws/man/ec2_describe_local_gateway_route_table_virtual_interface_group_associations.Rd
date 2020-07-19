@@ -12,7 +12,17 @@ ec2_describe_local_gateway_route_table_virtual_interface_group_associations(
 \arguments{
 \item{LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds}{The IDs of the associations.}
 
-\item{Filters}{One or more filters.}
+\item{Filters}{One or more filters.
+\itemize{
+\item \code{local-gateway-id} - The ID of a local gateway.
+\item \code{local-gateway-route-table-id} - The ID of the local gateway route
+table.
+\item \code{local-gateway-route-table-virtual-interface-group-association-id} -
+The ID of the association.
+\item \code{local-gateway-route-table-virtual-interface-group-id} - The ID of
+the virtual interface group.
+\item \code{state} - The state of the association.
+}}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve
 the remaining results, make another call with the returned \code{nextToken}

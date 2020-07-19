@@ -149,7 +149,7 @@ in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
       SizeInMBs = 123,
       IntervalInSeconds = 123
     ),
-    CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+    CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
     EncryptionConfiguration = list(
       NoEncryptionConfig = "NoEncryption",
       KMSEncryptionConfig = list(
@@ -171,7 +171,7 @@ in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
       SizeInMBs = 123,
       IntervalInSeconds = 123
     ),
-    CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+    CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
     EncryptionConfiguration = list(
       NoEncryptionConfig = "NoEncryption",
       KMSEncryptionConfig = list(
@@ -207,7 +207,7 @@ in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
         SizeInMBs = 123,
         IntervalInSeconds = 123
       ),
-      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
       EncryptionConfiguration = list(
         NoEncryptionConfig = "NoEncryption",
         KMSEncryptionConfig = list(
@@ -296,7 +296,7 @@ in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
         SizeInMBs = 123,
         IntervalInSeconds = 123
       ),
-      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
       EncryptionConfiguration = list(
         NoEncryptionConfig = "NoEncryption",
         KMSEncryptionConfig = list(
@@ -333,7 +333,7 @@ in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
         SizeInMBs = 123,
         IntervalInSeconds = 123
       ),
-      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
       EncryptionConfiguration = list(
         NoEncryptionConfig = "NoEncryption",
         KMSEncryptionConfig = list(
@@ -376,7 +376,7 @@ in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
         SizeInMBs = 123,
         IntervalInSeconds = 123
       ),
-      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
       EncryptionConfiguration = list(
         NoEncryptionConfig = "NoEncryption",
         KMSEncryptionConfig = list(
@@ -407,6 +407,15 @@ in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
       Enabled = TRUE|FALSE,
       LogGroupName = "string",
       LogStreamName = "string"
+    ),
+    VpcConfiguration = list(
+      SubnetIds = list(
+        "string"
+      ),
+      RoleARN = "string",
+      SecurityGroupIds = list(
+        "string"
+      )
     )
   ),
   SplunkDestinationConfiguration = list(
@@ -427,7 +436,7 @@ in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
         SizeInMBs = 123,
         IntervalInSeconds = 123
       ),
-      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
       EncryptionConfiguration = list(
         NoEncryptionConfig = "NoEncryption",
         KMSEncryptionConfig = list(

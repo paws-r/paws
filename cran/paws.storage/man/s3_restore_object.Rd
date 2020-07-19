@@ -6,7 +6,7 @@
 operation performs the following types of requests: - select - Perform a
 select query on an archived object - restore an archive - Restore an
 archived object To use this operation, you must have permissions to
-perform the s3:RestoreObject and s3:GetObject actions}
+perform the s3:RestoreObject action}
 \usage{
 s3_restore_object(Bucket, Key, VersionId, RestoreRequest, RequestPayer)
 }
@@ -40,9 +40,9 @@ This operation performs the following types of requests:
 }
 
 To use this operation, you must have permissions to perform the
-\code{s3:RestoreObject} and \code{s3:GetObject} actions. The bucket owner has this
-permission by default and can grant this permission to others. For more
-information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
+\code{s3:RestoreObject} action. The bucket owner has this permission by
+default and can grant this permission to others. For more information
+about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
 and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
@@ -98,8 +98,8 @@ mix ordinal positions with header column names.
 }
 }
 
-For more information about using SQL with Glacier Select restore, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and Glacier Select}
+For more information about using SQL with S3 Glacier Select restore, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When making a select request, you can also do the following:
@@ -154,12 +154,13 @@ Provisioned capacity ensures that retrieval capacity for Expedited
 retrievals is available when you need it. Expedited retrievals and
 provisioned capacity are not available for the DEEP\\_ARCHIVE storage
 class.
-\item \strong{\code{Standard}} - Standard retrievals allow you to access any of your
-archived objects within several hours. This is the default option
-for the GLACIER and DEEP\\_ARCHIVE retrieval requests that do not
-specify the retrieval option. Standard retrievals typically complete
-within 3-5 hours from the GLACIER storage class and typically
-complete within 12 hours from the DEEP\\_ARCHIVE storage class.
+\item \strong{\code{Standard}} - S3 Standard retrievals allow you to access any of
+your archived objects within several hours. This is the default
+option for the GLACIER and DEEP\\_ARCHIVE retrieval requests that do
+not specify the retrieval option. S3 Standard retrievals typically
+complete within 3-5 hours from the GLACIER storage class and
+typically complete within 12 hours from the DEEP\\_ARCHIVE storage
+class.
 \item \strong{\code{Bulk}} - Bulk retrievals are Amazon S3 Glacier's lowest-cost
 retrieval option, enabling you to retrieve large amounts, even
 petabytes, of data inexpensively in a day. Bulk retrievals typically
@@ -231,10 +232,10 @@ returns \verb{202 Accepted} in the response.
 \item 
 }\preformatted{-   *Code: GlacierExpeditedRetrievalNotAvailable*
 
--   *Cause: Glacier expedited retrievals are currently not
+-   *Cause: S3 Glacier expedited retrievals are currently not
     available. Try again later. (Returned if there is insufficient
     capacity to process the Expedited request. This error applies
-    only to Expedited retrievals and not to Standard or Bulk
+    only to Expedited retrievals and not to S3 Standard or Bulk
     retrievals.)*
 
 -   *HTTP Status Code: 503*
@@ -246,7 +247,7 @@ returns \verb{202 Accepted} in the response.
 \itemize{
 \item PutBucketLifecycleConfiguration
 \item GetBucketNotificationConfiguration
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and Glacier Select}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
 in the \emph{Amazon Simple Storage Service Developer Guide}
 }
 }

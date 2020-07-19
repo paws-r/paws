@@ -4,13 +4,20 @@
 \alias{glue_get_resource_policy}
 \title{Retrieves a specified resource policy}
 \usage{
-glue_get_resource_policy()
+glue_get_resource_policy(ResourceArn)
+}
+\arguments{
+\item{ResourceArn}{The ARN of the AWS Glue resource for the resource policy to be
+retrieved. For more information about AWS Glue resource ARNs, see the
+\href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id}{AWS Glue ARN string pattern}}
 }
 \description{
 Retrieves a specified resource policy.
 }
 \section{Request syntax}{
-\preformatted{svc$get_resource_policy()
+\preformatted{svc$get_resource_policy(
+  ResourceArn = "string"
+)
 }
 }
 

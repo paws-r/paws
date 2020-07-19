@@ -10,18 +10,32 @@ route53domains_register_domain(DomainName, IdnLangCode, DurationInYears,
   PrivacyProtectTechContact)
 }
 \arguments{
-\item{DomainName}{[required] The domain name that you want to register.
+\item{DomainName}{[required] The domain name that you want to register. The top-level domain (TLD),
+such as .com, must be a TLD that Route 53 supports. For a list of
+supported TLDs, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
+in the \emph{Amazon Route 53 Developer Guide}.
 
-Constraints: The domain name can contain only the letters a through z,
-the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
-are not supported.}
+The domain name can contain only the following characters:
+\itemize{
+\item Letters a through z. Domain names are not case sensitive.
+\item Numbers 0 through 9.
+\item Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+label.
+\item Period (.) to separate the labels in the name, such as the \code{.} in
+\code{example.com}.
+}
+
+Internationalized domain names are not supported for some top-level
+domains. To determine whether the TLD that you want to use supports
+internationalized domain names, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}.
+For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns}{Formatting Internationalized Domain Names}.}
 
 \item{IdnLangCode}{Reserved for future use.}
 
 \item{DurationInYears}{[required] The number of years that you want to register the domain for. Domains
 are registered for a minimum of one year. The maximum period depends on
 the top-level domain. For the range of valid values for your domain, see
-\href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
+\href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
 in the \emph{Amazon Route 53 Developer Guide}.
 
 Default: 1}
@@ -32,11 +46,17 @@ charged.
 
 Default: \code{true}}
 
-\item{AdminContact}{[required] Provides detailed contact information.}
+\item{AdminContact}{[required] Provides detailed contact information. For information about the values
+that you specify for each element, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html}{ContactDetail}.}
 
-\item{RegistrantContact}{[required] Provides detailed contact information.}
+\item{RegistrantContact}{[required] Provides detailed contact information. For information about the values
+that you specify for each element, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html}{ContactDetail}.}
 
-\item{TechContact}{[required] Provides detailed contact information.}
+\item{TechContact}{[required] Provides detailed contact information. For information about the values
+that you specify for each element, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html}{ContactDetail}.}
 
 \item{PrivacyProtectAdminContact}{Whether you want to conceal contact information from WHOIS queries. If
 you specify \code{true}, WHOIS (\"who is\") queries return contact
@@ -74,10 +94,10 @@ associate, Gandi (for all other domains). For some top-level domains
 \details{
 When you register a domain, Amazon Route 53 does the following:
 \itemize{
-\item Creates a Amazon Route 53 hosted zone that has the same name as the
-domain. Amazon Route 53 assigns four name servers to your hosted
-zone and automatically updates your domain registration with the
-names of these name servers.
+\item Creates a Route 53 hosted zone that has the same name as the domain.
+Route 53 assigns four name servers to your hosted zone and
+automatically updates your domain registration with the names of
+these name servers.
 \item Enables autorenew, so your domain registration will renew
 automatically each year. We\'ll notify you in advance of the renewal
 date so you can choose whether to renew the registration.
@@ -117,7 +137,7 @@ For more information, see \href{http://aws.amazon.com/route53/pricing/}{Amazon R
     Fax = "string",
     ExtraParams = list(
       list(
-        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
         Value = "string"
       )
     )
@@ -138,7 +158,7 @@ For more information, see \href{http://aws.amazon.com/route53/pricing/}{Amazon R
     Fax = "string",
     ExtraParams = list(
       list(
-        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
         Value = "string"
       )
     )
@@ -159,7 +179,7 @@ For more information, see \href{http://aws.amazon.com/route53/pricing/}{Amazon R
     Fax = "string",
     ExtraParams = list(
       list(
-        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
+        Name = "DUNS_NUMBER"|"BRAND_NUMBER"|"BIRTH_DEPARTMENT"|"BIRTH_DATE_IN_YYYY_MM_DD"|"BIRTH_COUNTRY"|"BIRTH_CITY"|"DOCUMENT_NUMBER"|"AU_ID_NUMBER"|"AU_ID_TYPE"|"CA_LEGAL_TYPE"|"CA_BUSINESS_ENTITY_TYPE"|"CA_LEGAL_REPRESENTATIVE"|"CA_LEGAL_REPRESENTATIVE_CAPACITY"|"ES_IDENTIFICATION"|"ES_IDENTIFICATION_TYPE"|"ES_LEGAL_FORM"|"FI_BUSINESS_NUMBER"|"FI_ID_NUMBER"|"FI_NATIONALITY"|"FI_ORGANIZATION_TYPE"|"IT_NATIONALITY"|"IT_PIN"|"IT_REGISTRANT_ENTITY_TYPE"|"RU_PASSPORT_DATA"|"SE_ID_NUMBER"|"SG_ID_NUMBER"|"VAT_NUMBER"|"UK_CONTACT_TYPE"|"UK_COMPANY_NUMBER",
         Value = "string"
       )
     )

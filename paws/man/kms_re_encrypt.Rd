@@ -119,15 +119,16 @@ can use this operation to change the customer master key (CMK) under
 which data is encrypted, such as when you \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotate-keys-manually}{manually rotate}
 a CMK or change the CMK that protects a ciphertext. You can also use it
 to reencrypt ciphertext under the same CMK, such as to change the
-encryption context of a ciphertext.
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{encryption context}
+of a ciphertext.
 }
 \details{
 The \code{ReEncrypt} operation can decrypt ciphertext that was encrypted by
 using an AWS KMS CMK in an AWS KMS operation, such as Encrypt or
 GenerateDataKey. It can also decrypt ciphertext that was encrypted by
-using the public key of an asymmetric CMK outside of AWS KMS. However,
-it cannot decrypt ciphertext produced by other libraries, such as the
-\href{https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/}{AWS Encryption SDK}
+using the public key of an \href{https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-concepts.html#asymmetric-cmks}{asymmetric CMK}
+outside of AWS KMS. However, it cannot decrypt ciphertext produced by
+other libraries, such as the \href{https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/}{AWS Encryption SDK}
 or \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html}{Amazon S3 client-side encryption}.
 These libraries return a ciphertext format that is incompatible with AWS
 KMS.
@@ -166,17 +167,16 @@ asymmetric key ciphertext does not include configurable fields.
 Unlike other AWS KMS API operations, \code{ReEncrypt} callers must have two
 permissions:
 \itemize{
-\item \code{kms:EncryptFrom} permission on the source CMK
-\item \code{kms:EncryptTo} permission on the destination CMK
+\item \code{kms:ReEncryptFrom} permission on the source CMK
+\item \code{kms:ReEncryptTo} permission on the destination CMK
 }
 
-To permit reencryption from
-
-or to a CMK, include the \code{"kms:ReEncrypt*"} permission in your \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{key policy}.
+To permit reencryption from or to a CMK, include the \code{"kms:ReEncrypt*"}
+permission in your \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{key policy}.
 This permission is automatically included in the key policy when you use
 the console to create a CMK. But you must include it manually when you
 create a CMK programmatically or when you use the PutKeyPolicy operation
-set a key policy.
+to set a key policy.
 
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}

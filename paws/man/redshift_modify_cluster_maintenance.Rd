@@ -26,8 +26,7 @@ you specify a duration, you can\'t specify an end time. The duration
 must be 45 days or less.}
 }
 \description{
-Modifies the maintenance settings of a cluster. For example, you can
-defer a maintenance window. You can also update or cancel a deferment.
+Modifies the maintenance settings of a cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_cluster_maintenance(

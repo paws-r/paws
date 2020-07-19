@@ -5,27 +5,30 @@
 \title{Returns information about human loops, given the specified parameters}
 \usage{
 augmentedairuntime_list_human_loops(CreationTimeAfter,
-  CreationTimeBefore, SortOrder, NextToken, MaxResults)
+  CreationTimeBefore, FlowDefinitionArn, SortOrder, NextToken, MaxResults)
 }
 \arguments{
 \item{CreationTimeAfter}{(Optional) The timestamp of the date when you want the human loops to
-begin. For example, \code{1551000000}.}
+begin in ISO 8601 format. For example, \code{2020-02-24}.}
 
 \item{CreationTimeBefore}{(Optional) The timestamp of the date before which you want the human
-loops to begin. For example, \code{1550000000}.}
+loops to begin in ISO 8601 format. For example, \code{2020-02-24}.}
 
-\item{SortOrder}{An optional value that specifies whether you want the results sorted in
-\code{Ascending} or \code{Descending} order.}
+\item{FlowDefinitionArn}{[required] The Amazon Resource Name (ARN) of a flow definition.}
 
-\item{NextToken}{A token to resume pagination.}
+\item{SortOrder}{Optional. The order for displaying results. Valid values: \code{Ascending}
+and \code{Descending}.}
+
+\item{NextToken}{A token to display the next page of results.}
 
 \item{MaxResults}{The total number of items to return. If the total number of available
 items is more than the value specified in \code{MaxResults}, then a
-\code{NextToken} will be provided in the output that you can use to resume
-pagination.}
+\code{NextToken} is returned in the output. You can use this token to display
+the next page of results.}
 }
 \description{
 Returns information about human loops, given the specified parameters.
+If a human loop was deleted, it will not be included.
 }
 \section{Request syntax}{
 \preformatted{svc$list_human_loops(
@@ -35,6 +38,7 @@ Returns information about human loops, given the specified parameters.
   CreationTimeBefore = as.POSIXct(
     "2015-01-01"
   ),
+  FlowDefinitionArn = "string",
   SortOrder = "Ascending"|"Descending",
   NextToken = "string",
   MaxResults = 123

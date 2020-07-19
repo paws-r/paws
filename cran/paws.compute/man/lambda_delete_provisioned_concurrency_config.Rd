@@ -33,4 +33,15 @@ Deletes the provisioned concurrency configuration for a function.
 }
 }
 
+\examples{
+\dontrun{
+# The following example deletes the provisioned concurrency configuration
+# for the GREEN alias of a function named my-function.
+svc$delete_provisioned_concurrency_config(
+  FunctionName = "my-function",
+  Qualifier = "GREEN"
+)
+}
+
+}
 \keyword{internal}

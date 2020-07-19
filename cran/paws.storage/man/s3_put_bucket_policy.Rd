@@ -25,7 +25,7 @@ permissions on the specified bucket and belong to the bucket owner\'s
 account in order to use this operation.
 }
 \details{
-If you don\'t have \code{PutBucketPolic}y permissions, Amazon S3 returns a
+If you don\'t have \code{PutBucketPolicy} permissions, Amazon S3 returns a
 \verb{403 Access Denied} error. If you have the correct permissions, but
 you\'re not using an identity that belongs to the bucket owner\'s
 account, Amazon S3 returns a \verb{405 Method Not Allowed} error.

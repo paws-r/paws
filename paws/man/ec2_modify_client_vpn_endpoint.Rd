@@ -5,8 +5,8 @@
 \title{Modifies the specified Client VPN endpoint}
 \usage{
 ec2_modify_client_vpn_endpoint(ClientVpnEndpointId,
-  ServerCertificateArn, ConnectionLogOptions, DnsServers, Description,
-  SplitTunnel, DryRun)
+  ServerCertificateArn, ConnectionLogOptions, DnsServers, VpnPort,
+  Description, SplitTunnel, DryRun, SecurityGroupIds, VpcId)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint to modify.}
@@ -29,6 +29,13 @@ logged:
 \item{DnsServers}{Information about the DNS servers to be used by Client VPN connections.
 A Client VPN endpoint can have up to two DNS servers.}
 
+\item{VpnPort}{The port number to assign to the Client VPN endpoint for TCP and UDP
+traffic.
+
+Valid Values: \code{443} \\| \code{1194}
+
+Default Value: \code{443}}
+
 \item{Description}{A brief description of the Client VPN endpoint.}
 
 \item{SplitTunnel}{Indicates whether the VPN is split-tunnel.
@@ -40,11 +47,13 @@ in the \emph{AWS Client VPN Administrator Guide}.}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{SecurityGroupIds}{The IDs of one or more security groups to apply to the target network.}
+
+\item{VpcId}{The ID of the VPC to associate with the Client VPN endpoint.}
 }
 \description{
-Modifies the specified Client VPN endpoint. You can only modify an
-endpoint\'s server certificate information, client connection logging
-information, DNS server, and description. Modifying the DNS server
+Modifies the specified Client VPN endpoint. Modifying the DNS server
 resets existing client connections.
 }
 \section{Request syntax}{
@@ -62,9 +71,14 @@ resets existing client connections.
     ),
     Enabled = TRUE|FALSE
   ),
+  VpnPort = 123,
   Description = "string",
   SplitTunnel = TRUE|FALSE,
-  DryRun = TRUE|FALSE
+  DryRun = TRUE|FALSE,
+  SecurityGroupIds = list(
+    "string"
+  ),
+  VpcId = "string"
 )
 }
 }

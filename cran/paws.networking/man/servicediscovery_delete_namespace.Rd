@@ -20,4 +20,13 @@ contains one or more services, the request fails.
 }
 }
 
+\examples{
+\dontrun{
+# Example: Delete namespace
+svc$delete_namespace(
+  Id = "ns-ylexjili4cdxy3xm"
+)
+}
+
+}
 \keyword{internal}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_associate_drt_log_bucket}
 \alias{shield_associate_drt_log_bucket}
-\title{Authorizes the DDoS Response team (DRT) to access the specified Amazon
+\title{Authorizes the DDoS Response Team (DRT) to access the specified Amazon
 S3 bucket containing your AWS WAF logs}
 \usage{
 shield_associate_drt_log_bucket(LogBucket)
@@ -11,7 +11,7 @@ shield_associate_drt_log_bucket(LogBucket)
 \item{LogBucket}{[required] The Amazon S3 bucket that contains your AWS WAF logs.}
 }
 \description{
-Authorizes the DDoS Response team (DRT) to access the specified Amazon
+Authorizes the DDoS Response Team (DRT) to access the specified Amazon
 S3 bucket containing your AWS WAF logs. You can associate up to 10
 Amazon S3 buckets with your subscription.
 }

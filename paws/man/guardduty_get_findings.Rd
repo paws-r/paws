@@ -10,7 +10,7 @@ guardduty_get_findings(DetectorId, FindingIds, SortCriteria)
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
 findings you want to retrieve.}
 
-\item{FindingIds}{[required] IDs of the findings that you want to retrieve.}
+\item{FindingIds}{[required] The IDs of the findings that you want to retrieve.}
 
 \item{SortCriteria}{Represents the criteria used for sorting findings.}
 }

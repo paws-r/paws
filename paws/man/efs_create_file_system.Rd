@@ -41,7 +41,10 @@ is used. This ID can be in one of the following formats:
 }
 
 If \code{KmsKeyId} is specified, the CreateFileSystemRequest\\$Encrypted
-parameter must be set to true.}
+parameter must be set to true.
+
+EFS accepts only symmetric CMKs. You cannot use asymmetric CMKs with EFS
+file systems.}
 
 \item{ThroughputMode}{The throughput mode for the file system to be created. There are two
 throughput modes to choose from for your file system: \code{bursting} and

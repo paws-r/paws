@@ -57,17 +57,23 @@ contains up to eight healthy records.
 \link[=servicediscovery_list_namespaces]{list_namespaces} \tab Lists summary information about the namespaces that were created by the current AWS account \cr
 \link[=servicediscovery_list_operations]{list_operations} \tab Lists operations that match the criteria that you specify \cr
 \link[=servicediscovery_list_services]{list_services} \tab Lists summary information for all the services that are associated with one or more specified namespaces \cr
+\link[=servicediscovery_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for the specified resource \cr
 \link[=servicediscovery_register_instance]{register_instance} \tab Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service \cr
+\link[=servicediscovery_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource \cr
+\link[=servicediscovery_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource \cr
 \link[=servicediscovery_update_instance_custom_health_status]{update_instance_custom_health_status} \tab Submits a request to change the health status of a custom health check to healthy or unhealthy \cr
-\link[=servicediscovery_update_service]{update_service} \tab Submits a request to perform the following operations: - Add or delete DnsRecords configurations - Update the TTL setting for existing DnsRecords configurations - Add, update, or delete HealthCheckConfig for a specified service For public and private DNS namespaces, you must specify all DnsRecords configurations (and, optionally, HealthCheckConfig) that you want to appear in the updated service
+\link[=servicediscovery_update_service]{update_service} \tab Submits a request to perform the following operations: - Update the TTL setting for existing DnsRecords configurations - Add, update, or delete HealthCheckConfig for a specified service You can't add, update, or delete a HealthCheckCustomConfig configuration
 }
 }
 
 \examples{
 \dontrun{
 svc <- servicediscovery()
+# This example creates an HTTP namespace.
 svc$create_http_namespace(
-  Foo = 123
+  CreatorRequestId = "example-creator-request-id-0001",
+  Description = "Example.com AWS Cloud Map HTTP Namespace",
+  Name = "example-http.com"
 )
 }
 

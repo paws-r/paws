@@ -8,8 +8,8 @@ November, 2019}
 wafv2_get_regex_pattern_set(Name, Scope, Id)
 }
 \arguments{
-\item{Name}{[required] A friendly name of the set. You cannot change the name after you create
-the set.}
+\item{Name}{[required] The name of the set. You cannot change the name after you create the
+set.}
 
 \item{Scope}{[required] Specifies whether this is for an AWS CloudFront distribution or for a
 regional application. A regional application can be an Application Load
@@ -18,7 +18,7 @@ Balancer (ALB) or an API Gateway stage.
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
 \itemize{
-\item CLI - Specify the region when you use the CloudFront scope:
+\item CLI - Specify the Region when you use the CloudFront scope:
 \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}

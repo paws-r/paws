@@ -18,9 +18,9 @@ retrieve information about, or delete. To retrieve identifiers and other
 information for all the versions of a template, use the Template
 Versions resource.
 
-If specified, this value must match the identifier of an existing
+If specified, this value must match the identifier for an existing
 template version. If specified for an update operation, this value must
-match the identifier of the latest existing version of the template.
+match the identifier for the latest existing version of the template.
 This restriction helps ensure that race conditions don\'t occur.
 
 If you don\'t specify a value for this parameter, Amazon Pinpoint does
@@ -28,9 +28,9 @@ the following:
 \itemize{
 \item For a get operation, retrieves information about the active version
 of the template.
-\item For an update operation, saves the updates to the latest existing
-version of the template, if the create-new-version parameter isn\'t
-used or is set to false.
+\item For an update operation, saves the updates to (overwrites) the
+latest existing version of the template, if the create-new-version
+parameter isn\'t used or is set to false.
 \item For a delete operation, deletes the template, including all versions
 of the template.
 }}

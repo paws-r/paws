@@ -3,29 +3,41 @@
 \name{cloudformation_update_stack_instances}
 \alias{cloudformation_update_stack_instances}
 \title{Updates the parameter values for stack instances for the specified
-accounts, within the specified regions}
+accounts, within the specified Regions}
 \usage{
-cloudformation_update_stack_instances(StackSetName, Accounts, Regions,
-  ParameterOverrides, OperationPreferences, OperationId)
+cloudformation_update_stack_instances(StackSetName, Accounts,
+  DeploymentTargets, Regions, ParameterOverrides, OperationPreferences,
+  OperationId)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set associated with the stack
 instances.}
 
-\item{Accounts}{[required] The names of one or more AWS accounts for which you want to update
-parameter values for stack instances. The overridden parameter values
-will be applied to all stack instances in the specified accounts and
-regions.}
+\item{Accounts}{[\code{Self-managed} permissions] The names of one or more AWS accounts for
+which you want to update parameter values for stack instances. The
+overridden parameter values will be applied to all stack instances in
+the specified accounts and Regions.
 
-\item{Regions}{[required] The names of one or more regions in which you want to update parameter
+You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
+
+\item{DeploymentTargets}{[\code{Service-managed} permissions] The AWS Organizations accounts for
+which you want to update parameter values for stack instances. If your
+update targets OUs, the overridden parameter values only apply to the
+accounts that are currently in the target OUs and their child OUs.
+Accounts added to the target OUs and their child OUs in the future
+won\'t use the overridden values.
+
+You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
+
+\item{Regions}{[required] The names of one or more Regions in which you want to update parameter
 values for stack instances. The overridden parameter values will be
-applied to all stack instances in the specified accounts and regions.}
+applied to all stack instances in the specified accounts and Regions.}
 
 \item{ParameterOverrides}{A list of input parameters whose values you want to update for the
 specified stack instances.
 
 Any overridden parameter values will be applied to all stack instances
-in the specified accounts and regions. When specifying parameters and
+in the specified accounts and Regions. When specifying parameters and
 their values, be aware of how AWS CloudFormation sets parameter values
 during stack instance update operations:
 \itemize{
@@ -76,11 +88,11 @@ automatically.}
 }
 \description{
 Updates the parameter values for stack instances for the specified
-accounts, within the specified regions. A stack instance refers to a
-stack in a specific account and region.
+accounts, within the specified Regions. A stack instance refers to a
+stack in a specific account and Region.
 }
 \details{
-You can only update stack instances in regions and accounts where they
+You can only update stack instances in Regions and accounts where they
 already exist; to create additional stack instances, use
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html}{CreateStackInstances}.
 
@@ -104,6 +116,14 @@ with the new parameter, you can then override the parameter value using
   StackSetName = "string",
   Accounts = list(
     "string"
+  ),
+  DeploymentTargets = list(
+    Accounts = list(
+      "string"
+    ),
+    OrganizationalUnitIds = list(
+      "string"
+    )
   ),
   Regions = list(
     "string"

@@ -20,8 +20,7 @@ WorkGroupConfiguration\\$EnforceWorkGroupConfiguration.}
 
 \item{Description}{The workgroup description.}
 
-\item{Tags}{One or more tags, separated by commas, that you want to attach to the
-workgroup as you create it.}
+\item{Tags}{A list of comma separated tags to add to the workgroup that is created.}
 }
 \description{
 Creates a workgroup with the specified name.

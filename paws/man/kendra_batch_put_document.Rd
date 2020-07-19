@@ -15,8 +15,15 @@ the index first using the CreateIndex operation.}
 
 \item{Documents}{[required] One or more documents to add to the index.
 
-Each document is limited to 5 Mb, the total size of the list is limited
-to 50 Mb.}
+Documents have the following file size limits.
+\itemize{
+\item 5 MB total size for inline documents
+\item 50 MB total size for files from an S3 bucket
+\item 5 MB extracted text for any file
+}
+
+For more information about file size and transaction per second quotas,
+see \href{https://docs.aws.amazon.com/kendra/latest/dg/quotas.html}{Quotas}.}
 }
 \description{
 Adds one or more documents to an index.

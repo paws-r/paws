@@ -2,7 +2,8 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_delete_detector}
 \alias{guardduty_delete_detector}
-\title{Deletes a Amazon GuardDuty detector specified by the detector ID}
+\title{Deletes an Amazon GuardDuty detector that is specified by the detector
+ID}
 \usage{
 guardduty_delete_detector(DetectorId)
 }
@@ -10,7 +11,8 @@ guardduty_delete_detector(DetectorId)
 \item{DetectorId}{[required] The unique ID of the detector that you want to delete.}
 }
 \description{
-Deletes a Amazon GuardDuty detector specified by the detector ID.
+Deletes an Amazon GuardDuty detector that is specified by the detector
+ID.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_detector(

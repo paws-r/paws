@@ -2,7 +2,7 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_cancel_resize}
 \alias{redshift_cancel_resize}
-\title{Cancels a resize operation}
+\title{Cancels a resize operation for a cluster}
 \usage{
 redshift_cancel_resize(ClusterIdentifier)
 }
@@ -11,7 +11,7 @@ redshift_cancel_resize(ClusterIdentifier)
 operation for.}
 }
 \description{
-Cancels a resize operation.
+Cancels a resize operation for a cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_resize(

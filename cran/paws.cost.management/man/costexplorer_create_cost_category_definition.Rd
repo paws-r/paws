@@ -2,8 +2,7 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_create_cost_category_definition}
 \alias{costexplorer_create_cost_category_definition}
-\title{_COST CATEGORY IS IN PUBLIC BETA FOR AWS BILLING AND COST MANAGEMENT AND
-IS SUBJECT TO CHANGE}
+\title{Creates a new Cost Category with the requested name and rules}
 \usage{
 costexplorer_create_cost_category_definition(Name, RuleVersion, Rules)
 }
@@ -12,23 +11,11 @@ costexplorer_create_cost_category_definition(Name, RuleVersion, Rules)
 
 \item{RuleVersion}{[required]}
 
-\item{Rules}{[required] \code{CreateCostCategoryDefinition} supports dimensions, Tags, and nested
-expressions. Currently the only dimensions supported is
-\code{LINKED_ACCOUNT}.
-
-Root level \code{OR} is not supported. We recommend you create a separate
-rule instead.
-
-Rules are processed in order. If there are multiple rules that match the
-line item, then the first rule to match is used to determine that Cost
-Category value.}
+\item{Rules}{[required] The Cost Category rules used to categorize costs. For more information,
+see
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html}{CostCategoryRule}.}
 }
 \description{
-\emph{\strong{Cost Category is in public beta for AWS Billing and Cost Management
-and is subject to change. Your use of Cost Categories is subject to the
-Beta Service Participation terms of the \href{https://aws.amazon.com/service-terms/}{AWS Service Terms} (Section 1.10).}}
-}
-\details{
 Creates a new Cost Category with the requested name and rules.
 }
 \section{Request syntax}{
@@ -47,15 +34,21 @@ Creates a new Cost Category with the requested name and rules.
         ),
         Not = list(),
         Dimensions = list(
-          Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
+          Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
           Values = list(
             "string"
+          ),
+          MatchOptions = list(
+            "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
           )
         ),
         Tags = list(
           Key = "string",
           Values = list(
             "string"
+          ),
+          MatchOptions = list(
+            "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
           )
         ),
         CostCategories = list(

@@ -7,13 +7,13 @@
 imagebuilder_cancel_image_creation(imageBuildVersionArn, clientToken)
 }
 \arguments{
-\item{imageBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the image whose creation you wish to
+\item{imageBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the image whose creation you want to
 cancel.}
 
 \item{clientToken}{[required] The idempotency token used to make this request idempotent.}
 }
 \description{
-CancelImageCreation cancels the creation of Image. This operation may
+CancelImageCreation cancels the creation of Image. This operation can
 only be used on images in a non-terminal state.
 }
 \section{Request syntax}{

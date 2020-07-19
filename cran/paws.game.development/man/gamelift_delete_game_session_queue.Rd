@@ -17,6 +17,11 @@ StartGameSessionPlacement requests that reference this queue will fail.
 To delete a queue, specify the queue name.
 }
 \details{
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-intro.html}{Using Multi-Region Queues}
+
+\strong{Related operations}
 \itemize{
 \item CreateGameSessionQueue
 \item DescribeGameSessionQueues

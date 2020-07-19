@@ -9,10 +9,10 @@ guardduty_disassociate_members(DetectorId, AccountIds)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you
-want to disassociate from master.}
+want to disassociate from the master account.}
 
 \item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to
-disassociate from master.}
+disassociate from the master account.}
 }
 \description{
 Disassociates GuardDuty member accounts (to the current GuardDuty master

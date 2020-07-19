@@ -13,8 +13,8 @@ iotevents_describe_detector_model(detectorModelName,
 \item{detectorModelVersion}{The version of the detector model.}
 }
 \description{
-Describes a detector model. If the \code{"version"} parameter is not
-specified, information about the latest version is returned.
+Describes a detector model. If the \code{version} parameter is not specified,
+information about the latest version is returned.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_detector_model(

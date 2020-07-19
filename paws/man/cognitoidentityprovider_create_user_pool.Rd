@@ -11,7 +11,8 @@ cognitoidentityprovider_create_user_pool(PoolName, Policies,
   EmailVerificationSubject, VerificationMessageTemplate,
   SmsAuthenticationMessage, MfaConfiguration, DeviceConfiguration,
   EmailConfiguration, SmsConfiguration, UserPoolTags,
-  AdminCreateUserConfig, Schema, UserPoolAddOns, AccountRecoverySetting)
+  AdminCreateUserConfig, Schema, UserPoolAddOns, UsernameConfiguration,
+  AccountRecoverySetting)
 }
 \arguments{
 \item{PoolName}{[required] A string used to name the user pool.}
@@ -72,6 +73,12 @@ can be standard or custom attributes.}
 
 \item{UserPoolAddOns}{Used to enable advanced security risk detection. Set the key
 \code{AdvancedSecurityMode} to the value \"AUDIT\".}
+
+\item{UsernameConfiguration}{You can choose to set case sensitivity on the username input for the
+selected sign-in option. For example, when this is set to \code{False}, users
+will be able to sign in using either \"username\" or \"Username\". This
+configuration is immutable once it has been set. For more information,
+see .}
 
 \item{AccountRecoverySetting}{Use this setting to define which verified available method a user can
 use to recover their password when they call \code{ForgotPassword}. It allows
@@ -182,6 +189,9 @@ the pool.
   ),
   UserPoolAddOns = list(
     AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
+  ),
+  UsernameConfiguration = list(
+    CaseSensitive = TRUE|FALSE
   ),
   AccountRecoverySetting = list(
     RecoveryMechanisms = list(

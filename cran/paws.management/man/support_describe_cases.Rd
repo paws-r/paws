@@ -21,8 +21,8 @@ creation.}
 \item{beforeTime}{The end date for a filtered date search on support case communications.
 Case communications are available for 12 months after creation.}
 
-\item{includeResolvedCases}{Specifies whether resolved support cases should be included in the
-DescribeCases results. The default is \emph{false}.}
+\item{includeResolvedCases}{Specifies whether to include resolved support cases in the
+\code{DescribeCases} response. By default, resolved cases aren\'t included.}
 
 \item{nextToken}{A resumption point for pagination.}
 
@@ -33,26 +33,35 @@ Support currently supports English (\"en\") and Japanese (\"ja\").
 Language parameters must be passed explicitly for operations that take
 them.}
 
-\item{includeCommunications}{Specifies whether communications should be included in the DescribeCases
-results. The default is \emph{true}.}
+\item{includeCommunications}{Specifies whether to include communications in the \code{DescribeCases}
+response. By default, communications are incuded.}
 }
 \description{
 Returns a list of cases that you specify by passing one or more case
-IDs. In addition, you can filter the cases by date by setting values for
-the \code{afterTime} and \code{beforeTime} request parameters. You can set values
-for the \code{includeResolvedCases} and \code{includeCommunications} request
-parameters to control how much information is returned.
+IDs. You can use the \code{afterTime} and \code{beforeTime} parameters to filter
+the cases by date. You can set values for the \code{includeResolvedCases} and
+\code{includeCommunications} parameters to specify how much information to
+return.
 }
 \details{
-Case data is available for 12 months after creation. If a case was
-created more than 12 months ago, a request for data might cause an
-error.
-
 The response returns the following in JSON format:
 \itemize{
-\item One or more CaseDetails data types.
+\item One or more
+\href{https://docs.aws.amazon.com/awssupport/latest/APIReference/API_CaseDetails.html}{CaseDetails}
+data types.
 \item One or more \code{nextToken} values, which specify where to paginate the
 returned records represented by the \code{CaseDetails} objects.
+}
+
+Case data is available for 12 months after creation. If a case was
+created more than 12 months ago, a request might return an error.
+\itemize{
+\item You must have a Business or Enterprise support plan to use the AWS
+Support API.
+\item If you call the AWS Support API from an account that does not have a
+Business or Enterprise support plan, the
+\code{SubscriptionRequiredException} error message appears. For
+information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
 }
 }
 \section{Request syntax}{

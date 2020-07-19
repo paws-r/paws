@@ -2,7 +2,8 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_list_graphs}
 \alias{detective_list_graphs}
-\title{Amazon Detective is currently in preview}
+\title{Returns the list of behavior graphs that the calling account is a master
+of}
 \usage{
 detective_list_graphs(NextToken, MaxResults)
 }
@@ -16,12 +17,10 @@ than the overall limit on the number of results to return, which is
 currently 200.}
 }
 \description{
-Amazon Detective is currently in preview.
-}
-\details{
 Returns the list of behavior graphs that the calling account is a master
 of. This operation can only be called by a master account.
-
+}
+\details{
 Because an account can currently only be the master of one behavior
 graph within a Region, the results always contain a single graph.
 }

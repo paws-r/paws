@@ -4,17 +4,20 @@
 \alias{glue_delete_resource_policy}
 \title{Deletes a specified policy}
 \usage{
-glue_delete_resource_policy(PolicyHashCondition)
+glue_delete_resource_policy(PolicyHashCondition, ResourceArn)
 }
 \arguments{
 \item{PolicyHashCondition}{The hash value returned when this policy was set.}
+
+\item{ResourceArn}{The ARN of the AWS Glue resource for the resource policy to be deleted.}
 }
 \description{
 Deletes a specified policy.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_resource_policy(
-  PolicyHashCondition = "string"
+  PolicyHashCondition = "string",
+  ResourceArn = "string"
 )
 }
 }

@@ -67,6 +67,7 @@ NULL
 #'  \link[=ecs_create_task_set]{create_task_set} \tab Create a task set in the specified cluster and service \cr
 #'  \link[=ecs_delete_account_setting]{delete_account_setting} \tab Disables an account setting for a specified IAM user, IAM role, or the root user for an account \cr
 #'  \link[=ecs_delete_attributes]{delete_attributes} \tab Deletes one or more custom attributes from an Amazon ECS resource \cr
+#'  \link[=ecs_delete_capacity_provider]{delete_capacity_provider} \tab Deletes the specified capacity provider \cr
 #'  \link[=ecs_delete_cluster]{delete_cluster} \tab Deletes the specified cluster \cr
 #'  \link[=ecs_delete_service]{delete_service} \tab Deletes a specified service within a cluster \cr
 #'  \link[=ecs_delete_task_set]{delete_task_set} \tab Deletes a specified task set within a service \cr
@@ -86,7 +87,7 @@ NULL
 #'  \link[=ecs_list_container_instances]{list_container_instances} \tab Returns a list of container instances in a specified cluster \cr
 #'  \link[=ecs_list_services]{list_services} \tab Lists the services that are running in a specified cluster \cr
 #'  \link[=ecs_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon ECS resource \cr
-#'  \link[=ecs_list_task_definition_families]{list_task_definition_families} \tab Returns a list of task definition families that are registered to your account (which may include task definition families that no longer have any ACTIVE task definition revisions)\cr
+#'  \link[=ecs_list_task_definition_families]{list_task_definition_families} \tab Returns a list of task definition families that are registered to your account (which may include task definition families that no longer have any ACTIVE task definition revisions) \cr
 #'  \link[=ecs_list_task_definitions]{list_task_definitions} \tab Returns a list of task definitions that are registered to your account \cr
 #'  \link[=ecs_list_tasks]{list_tasks} \tab Returns a list of tasks for a specified cluster \cr
 #'  \link[=ecs_put_account_setting]{put_account_setting} \tab Modifies an account setting \cr
@@ -106,7 +107,7 @@ NULL
 #'  \link[=ecs_update_cluster_settings]{update_cluster_settings} \tab Modifies the settings to use for a cluster \cr
 #'  \link[=ecs_update_container_agent]{update_container_agent} \tab Updates the Amazon ECS container agent on a specified container instance \cr
 #'  \link[=ecs_update_container_instances_state]{update_container_instances_state} \tab Modifies the status of an Amazon ECS container instance \cr
-#'  \link[=ecs_update_service]{update_service} \tab Modifies the parameters of a service \cr
+#'  \link[=ecs_update_service]{update_service} \tab Updating the task placement strategies and constraints on an Amazon ECS service remains in preview and is a Beta Service as defined by and subject to the Beta Service Participation Service Terms located at https://aws\cr
 #'  \link[=ecs_update_service_primary_task_set]{update_service_primary_task_set} \tab Modifies which task set in a service is the primary task set \cr
 #'  \link[=ecs_update_task_set]{update_task_set} \tab Modifies a task set 
 #' }
@@ -126,7 +127,7 @@ ecs <- function(config = list()) {
 
 .ecs$metadata <- list(
   service_name = "ecs",
-  endpoints = list("*" = list(endpoint = "ecs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ecs.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "ecs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ecs.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ecs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ecs.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "ECS",
   api_version = "2014-11-13",
   signing_name = NULL,

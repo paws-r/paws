@@ -17,13 +17,13 @@ NULL
 
 .appconfig$create_configuration_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "ApplicationId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LocationUri = structure(logical(0), tags = list(type = "string")), RetrievalRoleArn = structure(logical(0), tags = list(type = "string")), Validators = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "ApplicationId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LocationUri = structure(logical(0), tags = list(type = "string")), RetrievalRoleArn = structure(logical(0), tags = list(type = "string")), Validators = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .appconfig$create_configuration_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LocationUri = structure(logical(0), tags = list(type = "string")), RetrievalRoleArn = structure(logical(0), tags = list(type = "string")), Validators = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LocationUri = structure(logical(0), tags = list(type = "string")), RetrievalRoleArn = structure(logical(0), tags = list(type = "string")), Validators = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -48,6 +48,18 @@ NULL
 .appconfig$create_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Monitors = structure(list(structure(list(AlarmArn = structure(logical(0), tags = list(type = "string")), AlarmRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appconfig$create_hosted_configuration_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "ApplicationId", type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationProfileId", type = "string")), Description = structure(logical(0), tags = list(location = "header", locationName = "Description", type = "string")), Content = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), LatestVersionNumber = structure(logical(0), tags = list(box = TRUE, location = "header", locationName = "Latest-Version-Number", type = "integer"))), tags = list(type = "structure", payload = "Content"))
+  return(populate(args, shape))
+}
+
+.appconfig$create_hosted_configuration_version_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "header", locationName = "Application-Id", type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(location = "header", locationName = "Configuration-Profile-Id", type = "string")), VersionNumber = structure(logical(0), tags = list(location = "header", locationName = "Version-Number", type = "integer")), Description = structure(logical(0), tags = list(location = "header", locationName = "Description", type = "string")), Content = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string"))), tags = list(type = "structure", payload = "Content"))
   return(populate(args, shape))
 }
 
@@ -91,6 +103,16 @@ NULL
   list()
 }
 
+.appconfig$delete_hosted_configuration_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "ApplicationId", type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationProfileId", type = "string")), VersionNumber = structure(logical(0), tags = list(location = "uri", locationName = "VersionNumber", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appconfig$delete_hosted_configuration_version_output <- function(...) {
+  list()
+}
+
 .appconfig$get_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "ApplicationId", type = "string"))), tags = list(type = "structure"))
@@ -111,7 +133,7 @@ NULL
 
 .appconfig$get_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Content = structure(logical(0), tags = list(type = "blob")), ConfigurationVersion = structure(logical(0), tags = list(location = "header", locationName = "Configuration-Version", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string"))), tags = list(type = "structure", payload = "Content"))
+  shape <- structure(list(Content = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), ConfigurationVersion = structure(logical(0), tags = list(location = "header", locationName = "Configuration-Version", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string"))), tags = list(type = "structure", payload = "Content"))
   return(populate(args, shape))
 }
 
@@ -123,7 +145,7 @@ NULL
 
 .appconfig$get_configuration_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LocationUri = structure(logical(0), tags = list(type = "string")), RetrievalRoleArn = structure(logical(0), tags = list(type = "string")), Validators = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LocationUri = structure(logical(0), tags = list(type = "string")), RetrievalRoleArn = structure(logical(0), tags = list(type = "string")), Validators = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -135,7 +157,7 @@ NULL
 
 .appconfig$get_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), EnvironmentId = structure(logical(0), tags = list(type = "string")), DeploymentStrategyId = structure(logical(0), tags = list(type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(type = "string")), DeploymentNumber = structure(logical(0), tags = list(type = "integer")), ConfigurationName = structure(logical(0), tags = list(type = "string")), ConfigurationLocationUri = structure(logical(0), tags = list(type = "string")), ConfigurationVersion = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DeploymentDurationInMinutes = structure(logical(0), tags = list(type = "integer")), GrowthType = structure(logical(0), tags = list(type = "string")), GrowthFactor = structure(logical(0), tags = list(type = "float")), FinalBakeTimeInMinutes = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PercentageComplete = structure(logical(0), tags = list(type = "float")), StartedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), CompletedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), EnvironmentId = structure(logical(0), tags = list(type = "string")), DeploymentStrategyId = structure(logical(0), tags = list(type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(type = "string")), DeploymentNumber = structure(logical(0), tags = list(type = "integer")), ConfigurationName = structure(logical(0), tags = list(type = "string")), ConfigurationLocationUri = structure(logical(0), tags = list(type = "string")), ConfigurationVersion = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DeploymentDurationInMinutes = structure(logical(0), tags = list(type = "integer")), GrowthType = structure(logical(0), tags = list(type = "string")), GrowthFactor = structure(logical(0), tags = list(type = "float")), FinalBakeTimeInMinutes = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), EventLog = structure(list(structure(list(EventType = structure(logical(0), tags = list(type = "string")), TriggeredBy = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), OccurredAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), PercentageComplete = structure(logical(0), tags = list(type = "float")), StartedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), CompletedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -160,6 +182,18 @@ NULL
 .appconfig$get_environment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Monitors = structure(list(structure(list(AlarmArn = structure(logical(0), tags = list(type = "string")), AlarmRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appconfig$get_hosted_configuration_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "ApplicationId", type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationProfileId", type = "string")), VersionNumber = structure(logical(0), tags = list(location = "uri", locationName = "VersionNumber", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appconfig$get_hosted_configuration_version_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "header", locationName = "Application-Id", type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(location = "header", locationName = "Configuration-Profile-Id", type = "string")), VersionNumber = structure(logical(0), tags = list(location = "header", locationName = "Version-Number", type = "integer")), Description = structure(logical(0), tags = list(location = "header", locationName = "Description", type = "string")), Content = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string"))), tags = list(type = "structure", payload = "Content"))
   return(populate(args, shape))
 }
 
@@ -223,6 +257,18 @@ NULL
   return(populate(args, shape))
 }
 
+.appconfig$list_hosted_configuration_versions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "ApplicationId", type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationProfileId", type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, location = "querystring", locationName = "max_results", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next_token", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appconfig$list_hosted_configuration_versions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Items = structure(list(structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(type = "string")), VersionNumber = structure(logical(0), tags = list(type = "integer")), Description = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .appconfig$list_tags_for_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "ResourceArn", type = "string"))), tags = list(type = "structure"))
@@ -243,7 +289,7 @@ NULL
 
 .appconfig$start_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), EnvironmentId = structure(logical(0), tags = list(type = "string")), DeploymentStrategyId = structure(logical(0), tags = list(type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(type = "string")), DeploymentNumber = structure(logical(0), tags = list(type = "integer")), ConfigurationName = structure(logical(0), tags = list(type = "string")), ConfigurationLocationUri = structure(logical(0), tags = list(type = "string")), ConfigurationVersion = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DeploymentDurationInMinutes = structure(logical(0), tags = list(type = "integer")), GrowthType = structure(logical(0), tags = list(type = "string")), GrowthFactor = structure(logical(0), tags = list(type = "float")), FinalBakeTimeInMinutes = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PercentageComplete = structure(logical(0), tags = list(type = "float")), StartedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), CompletedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), EnvironmentId = structure(logical(0), tags = list(type = "string")), DeploymentStrategyId = structure(logical(0), tags = list(type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(type = "string")), DeploymentNumber = structure(logical(0), tags = list(type = "integer")), ConfigurationName = structure(logical(0), tags = list(type = "string")), ConfigurationLocationUri = structure(logical(0), tags = list(type = "string")), ConfigurationVersion = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DeploymentDurationInMinutes = structure(logical(0), tags = list(type = "integer")), GrowthType = structure(logical(0), tags = list(type = "string")), GrowthFactor = structure(logical(0), tags = list(type = "float")), FinalBakeTimeInMinutes = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), EventLog = structure(list(structure(list(EventType = structure(logical(0), tags = list(type = "string")), TriggeredBy = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), OccurredAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), PercentageComplete = structure(logical(0), tags = list(type = "float")), StartedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), CompletedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -255,7 +301,7 @@ NULL
 
 .appconfig$stop_deployment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), EnvironmentId = structure(logical(0), tags = list(type = "string")), DeploymentStrategyId = structure(logical(0), tags = list(type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(type = "string")), DeploymentNumber = structure(logical(0), tags = list(type = "integer")), ConfigurationName = structure(logical(0), tags = list(type = "string")), ConfigurationLocationUri = structure(logical(0), tags = list(type = "string")), ConfigurationVersion = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DeploymentDurationInMinutes = structure(logical(0), tags = list(type = "integer")), GrowthType = structure(logical(0), tags = list(type = "string")), GrowthFactor = structure(logical(0), tags = list(type = "float")), FinalBakeTimeInMinutes = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), PercentageComplete = structure(logical(0), tags = list(type = "float")), StartedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), CompletedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), EnvironmentId = structure(logical(0), tags = list(type = "string")), DeploymentStrategyId = structure(logical(0), tags = list(type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(type = "string")), DeploymentNumber = structure(logical(0), tags = list(type = "integer")), ConfigurationName = structure(logical(0), tags = list(type = "string")), ConfigurationLocationUri = structure(logical(0), tags = list(type = "string")), ConfigurationVersion = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DeploymentDurationInMinutes = structure(logical(0), tags = list(type = "integer")), GrowthType = structure(logical(0), tags = list(type = "string")), GrowthFactor = structure(logical(0), tags = list(type = "float")), FinalBakeTimeInMinutes = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), EventLog = structure(list(structure(list(EventType = structure(logical(0), tags = list(type = "string")), TriggeredBy = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), OccurredAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), PercentageComplete = structure(logical(0), tags = list(type = "float")), StartedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), CompletedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -293,13 +339,13 @@ NULL
 
 .appconfig$update_configuration_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "ApplicationId", type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationProfileId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RetrievalRoleArn = structure(logical(0), tags = list(type = "string")), Validators = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "ApplicationId", type = "string")), ConfigurationProfileId = structure(logical(0), tags = list(location = "uri", locationName = "ConfigurationProfileId", type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RetrievalRoleArn = structure(logical(0), tags = list(type = "string")), Validators = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .appconfig$update_configuration_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LocationUri = structure(logical(0), tags = list(type = "string")), RetrievalRoleArn = structure(logical(0), tags = list(type = "string")), Validators = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), LocationUri = structure(logical(0), tags = list(type = "string")), RetrievalRoleArn = structure(logical(0), tags = list(type = "string")), Validators = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

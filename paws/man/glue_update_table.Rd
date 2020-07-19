@@ -101,6 +101,11 @@ Updates a metadata table in the Data Catalog.
     TableType = "string",
     Parameters = list(
       "string"
+    ),
+    TargetTable = list(
+      CatalogId = "string",
+      DatabaseName = "string",
+      Name = "string"
     )
   ),
   SkipArchive = TRUE|FALSE

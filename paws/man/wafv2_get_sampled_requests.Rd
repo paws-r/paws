@@ -22,15 +22,17 @@ Balancer (ALB) or an API Gateway stage.
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
 \itemize{
-\item CLI - Specify the region when you use the CloudFront scope:
+\item CLI - Specify the Region when you use the CloudFront scope:
 \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
 \item{TimeWindow}{[required] The start date and time and the end date and time of the range for which
-you want \code{GetSampledRequests} to return a sample of requests. Specify
-the date and time in the following format: \code{"2016-09-27T14:50Z"}. You
-can specify any time range in the previous three hours.}
+you want \code{GetSampledRequests} to return a sample of requests. You must
+specify the times in Coordinated Universal Time (UTC) format. UTC format
+includes the special designator, \code{Z}. For example,
+\code{"2016-09-27T14:50Z"}. You can specify any time range in the previous
+three hours.}
 
 \item{MaxItems}{[required] The number of requests that you want AWS WAF to return from among the
 first 5,000 requests that your AWS resource received during the time

@@ -18,7 +18,8 @@ usage in an AWS Region.
 
 \examples{
 \dontrun{
-# This operation retrieves a Lambda customer's account settings
+# This operation takes no parameters and returns details about storage and
+# concurrency quotas in the current Region.
 svc$get_account_settings()
 }
 

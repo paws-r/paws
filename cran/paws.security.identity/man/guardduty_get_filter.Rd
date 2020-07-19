@@ -7,7 +7,7 @@
 guardduty_get_filter(DetectorId, FilterName)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector the filter is associated with.}
+\item{DetectorId}{[required] The unique ID of the detector that the filter is associated with.}
 
 \item{FilterName}{[required] The name of the filter you want to get.}
 }

@@ -3,15 +3,17 @@
 #' @include ecr_service.R
 NULL
 
-#' Check the availability of multiple image layers in a specified registry
-#' and repository
+#' Checks the availability of one or more image layers in a repository
 #'
-#' Check the availability of multiple image layers in a specified registry
-#' and repository.
+#' Checks the availability of one or more image layers in a repository.
 #' 
-#' This operation is used by the Amazon ECR proxy, and it is not intended
-#' for general use by customers for pulling and pushing images. In most
-#' cases, you should use the `docker` CLI to pull, tag, and push images.
+#' When an image is pushed to a repository, each image layer is checked to
+#' verify if it has been uploaded before. If it has been uploaded, then the
+#' image layer is skipped.
+#' 
+#' This operation is used by the Amazon ECR proxy and is not generally used
+#' by customers for pulling and pushing images. In most cases, you should
+#' use the `docker` CLI to pull, tag, and push images.
 #'
 #' @usage
 #' ecr_batch_check_layer_availability(registryId, repositoryName,
@@ -55,10 +57,10 @@ ecr_batch_check_layer_availability <- function(registryId = NULL, repositoryName
 }
 .ecr$operations$batch_check_layer_availability <- ecr_batch_check_layer_availability
 
-#' Deletes a list of specified images within a specified repository
+#' Deletes a list of specified images within a repository
 #'
-#' Deletes a list of specified images within a specified repository. Images
-#' are specified with either `imageTag` or `imageDigest`.
+#' Deletes a list of specified images within a repository. Images are
+#' specified with either an `imageTag` or `imageDigest`.
 #' 
 #' You can remove a tag from an image by specifying the image\'s tag in
 #' your request. When you remove the last tag from an image, the image is
@@ -126,12 +128,13 @@ ecr_batch_delete_image <- function(registryId = NULL, repositoryName, imageIds) 
 }
 .ecr$operations$batch_delete_image <- ecr_batch_delete_image
 
-#' Gets detailed information for specified images within a specified
-#' repository
+#' Gets detailed information for an image
 #'
-#' Gets detailed information for specified images within a specified
-#' repository. Images are specified with either `imageTag` or
-#' `imageDigest`.
+#' Gets detailed information for an image. Images are specified with either
+#' an `imageTag` or `imageDigest`.
+#' 
+#' When an image is pulled, the BatchGetImage API is called once to
+#' retrieve the image manifest.
 #'
 #' @usage
 #' ecr_batch_get_image(registryId, repositoryName, imageIds,
@@ -209,9 +212,12 @@ ecr_batch_get_image <- function(registryId = NULL, repositoryName, imageIds, acc
 #' provide a `sha256` digest of the image layer for data validation
 #' purposes.
 #' 
-#' This operation is used by the Amazon ECR proxy, and it is not intended
-#' for general use by customers for pulling and pushing images. In most
-#' cases, you should use the `docker` CLI to pull, tag, and push images.
+#' When an image is pushed, the CompleteLayerUpload API is called once per
+#' each new image layer to verify that the upload has completed.
+#' 
+#' This operation is used by the Amazon ECR proxy and is not generally used
+#' by customers for pulling and pushing images. In most cases, you should
+#' use the `docker` CLI to pull, tag, and push images.
 #'
 #' @usage
 #' ecr_complete_layer_upload(registryId, repositoryName, uploadId,
@@ -257,12 +263,9 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 }
 .ecr$operations$complete_layer_upload <- ecr_complete_layer_upload
 
-#' Creates an Amazon Elastic Container Registry (Amazon ECR) repository,
-#' where users can push and pull Docker images
+#' Creates a repository
 #'
-#' Creates an Amazon Elastic Container Registry (Amazon ECR) repository,
-#' where users can push and pull Docker images. For more information, see
-#' [Amazon ECR
+#' Creates a repository. For more information, see [Amazon ECR
 #' Repositories](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html)
 #' in the *Amazon Elastic Container Registry User Guide*.
 #'
@@ -333,9 +336,9 @@ ecr_create_repository <- function(repositoryName, tags = NULL, imageTagMutabilit
 }
 .ecr$operations$create_repository <- ecr_create_repository
 
-#' Deletes the specified lifecycle policy
+#' Deletes the lifecycle policy associated with the specified repository
 #'
-#' Deletes the specified lifecycle policy.
+#' Deletes the lifecycle policy associated with the specified repository.
 #'
 #' @usage
 #' ecr_delete_lifecycle_policy(registryId, repositoryName)
@@ -373,10 +376,11 @@ ecr_delete_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 }
 .ecr$operations$delete_lifecycle_policy <- ecr_delete_lifecycle_policy
 
-#' Deletes an existing image repository
+#' Deletes a repository
 #'
-#' Deletes an existing image repository. If a repository contains images,
-#' you must use the `force` option to delete it.
+#' Deletes a repository. If the repository contains images, you must either
+#' delete all images in the repository or use the `force` option to delete
+#' the repository.
 #'
 #' @usage
 #' ecr_delete_repository(registryId, repositoryName, force)
@@ -427,9 +431,9 @@ ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NUL
 }
 .ecr$operations$delete_repository <- ecr_delete_repository
 
-#' Deletes the repository policy from a specified repository
+#' Deletes the repository policy associated with the specified repository
 #'
-#' Deletes the repository policy from a specified repository.
+#' Deletes the repository policy associated with the specified repository.
 #'
 #' @usage
 #' ecr_delete_repository_policy(registryId, repositoryName)
@@ -477,9 +481,9 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
 }
 .ecr$operations$delete_repository_policy <- ecr_delete_repository_policy
 
-#' Describes the image scan findings for the specified image
+#' Returns the scan findings for the specified image
 #'
-#' Describes the image scan findings for the specified image.
+#' Returns the scan findings for the specified image.
 #'
 #' @usage
 #' ecr_describe_image_scan_findings(registryId, repositoryName, imageId,
@@ -539,11 +543,9 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
 }
 .ecr$operations$describe_image_scan_findings <- ecr_describe_image_scan_findings
 
-#' Returns metadata about the images in a repository, including image size,
-#' image tags, and creation date
+#' Returns metadata about the images in a repository
 #'
-#' Returns metadata about the images in a repository, including image size,
-#' image tags, and creation date.
+#' Returns metadata about the images in a repository.
 #' 
 #' Beginning with Docker version 1.9, the Docker client compresses image
 #' layers before pushing them to a V2 Docker registry. The output of the
@@ -691,24 +693,26 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
 }
 .ecr$operations$describe_repositories <- ecr_describe_repositories
 
-#' Retrieves a token that is valid for a specified registry for 12 hours
+#' Retrieves an authorization token
 #'
-#' Retrieves a token that is valid for a specified registry for 12 hours.
-#' This command allows you to use the `docker` CLI to push and pull images
-#' with Amazon ECR. If you do not specify a registry, the default registry
-#' is assumed.
+#' Retrieves an authorization token. An authorization token represents your
+#' IAM authentication credentials and can be used to access any Amazon ECR
+#' registry that your IAM principal has access to. The authorization token
+#' is valid for 12 hours.
 #' 
-#' The `authorizationToken` returned for each registry specified is a
-#' base64 encoded string that can be decoded and used in a `docker login`
-#' command to authenticate to a registry. The AWS CLI offers an
-#' `aws ecr get-login` command that simplifies the login process.
+#' The `authorizationToken` returned is a base64 encoded string that can be
+#' decoded and used in a `docker login` command to authenticate to a
+#' registry. The AWS CLI offers an `get-login-password` command that
+#' simplifies the login process. For more information, see [Registry
+#' Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html#registry_auth)
+#' in the *Amazon Elastic Container Registry User Guide*.
 #'
 #' @usage
 #' ecr_get_authorization_token(registryIds)
 #'
 #' @param registryIds A list of AWS account IDs that are associated with the registries for
-#' which to get authorization tokens. If you do not specify a registry, the
-#' default registry is assumed.
+#' which to get AuthorizationData objects. If you do not specify a
+#' registry, the default registry is assumed.
 #'
 #' @section Request syntax:
 #' ```
@@ -752,9 +756,12 @@ ecr_get_authorization_token <- function(registryIds = NULL) {
 #' image layer. You can only get URLs for image layers that are referenced
 #' in an image.
 #' 
-#' This operation is used by the Amazon ECR proxy, and it is not intended
-#' for general use by customers for pulling and pushing images. In most
-#' cases, you should use the `docker` CLI to pull, tag, and push images.
+#' When an image is pulled, the GetDownloadUrlForLayer API is called once
+#' per image layer that is not already cached.
+#' 
+#' This operation is used by the Amazon ECR proxy and is not generally used
+#' by customers for pulling and pushing images. In most cases, you should
+#' use the `docker` CLI to pull, tag, and push images.
 #'
 #' @usage
 #' ecr_get_download_url_for_layer(registryId, repositoryName, layerDigest)
@@ -795,9 +802,9 @@ ecr_get_download_url_for_layer <- function(registryId = NULL, repositoryName, la
 }
 .ecr$operations$get_download_url_for_layer <- ecr_get_download_url_for_layer
 
-#' Retrieves the specified lifecycle policy
+#' Retrieves the lifecycle policy for the specified repository
 #'
-#' Retrieves the specified lifecycle policy.
+#' Retrieves the lifecycle policy for the specified repository.
 #'
 #' @usage
 #' ecr_get_lifecycle_policy(registryId, repositoryName)
@@ -835,9 +842,11 @@ ecr_get_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 }
 .ecr$operations$get_lifecycle_policy <- ecr_get_lifecycle_policy
 
-#' Retrieves the results of the specified lifecycle policy preview request
+#' Retrieves the results of the lifecycle policy preview request for the
+#' specified repository
 #'
-#' Retrieves the results of the specified lifecycle policy preview request.
+#' Retrieves the results of the lifecycle policy preview request for the
+#' specified repository.
 #'
 #' @usage
 #' ecr_get_lifecycle_policy_preview(registryId, repositoryName, imageIds,
@@ -907,9 +916,9 @@ ecr_get_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, 
 }
 .ecr$operations$get_lifecycle_policy_preview <- ecr_get_lifecycle_policy_preview
 
-#' Retrieves the repository policy for a specified repository
+#' Retrieves the repository policy for the specified repository
 #'
-#' Retrieves the repository policy for a specified repository.
+#' Retrieves the repository policy for the specified repository.
 #'
 #' @usage
 #' ecr_get_repository_policy(registryId, repositoryName)
@@ -956,13 +965,18 @@ ecr_get_repository_policy <- function(registryId = NULL, repositoryName) {
 }
 .ecr$operations$get_repository_policy <- ecr_get_repository_policy
 
-#' Notify Amazon ECR that you intend to upload an image layer
+#' Notifies Amazon ECR that you intend to upload an image layer
 #'
-#' Notify Amazon ECR that you intend to upload an image layer.
+#' Notifies Amazon ECR that you intend to upload an image layer.
 #' 
-#' This operation is used by the Amazon ECR proxy, and it is not intended
-#' for general use by customers for pulling and pushing images. In most
-#' cases, you should use the `docker` CLI to pull, tag, and push images.
+#' When an image is pushed, the InitiateLayerUpload API is called once per
+#' image layer that has not already been uploaded. Whether or not an image
+#' layer has been uploaded is determined by the BatchCheckLayerAvailability
+#' API action.
+#' 
+#' This operation is used by the Amazon ECR proxy and is not generally used
+#' by customers for pulling and pushing images. In most cases, you should
+#' use the `docker` CLI to pull, tag, and push images.
 #'
 #' @usage
 #' ecr_initiate_layer_upload(registryId, repositoryName)
@@ -1000,16 +1014,16 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 }
 .ecr$operations$initiate_layer_upload <- ecr_initiate_layer_upload
 
-#' Lists all the image IDs for a given repository
+#' Lists all the image IDs for the specified repository
 #'
-#' Lists all the image IDs for a given repository.
+#' Lists all the image IDs for the specified repository.
 #' 
-#' You can filter images based on whether or not they are tagged by setting
-#' the `tagStatus` parameter to `TAGGED` or `UNTAGGED`. For example, you
-#' can filter your results to return only `UNTAGGED` images and then pipe
-#' that result to a BatchDeleteImage operation to delete them. Or, you can
-#' filter your results to return only `TAGGED` images to list all of the
-#' tags in your repository.
+#' You can filter images based on whether or not they are tagged by using
+#' the `tagStatus` filter and specifying either `TAGGED`, `UNTAGGED` or
+#' `ANY`. For example, you can filter your results to return only
+#' `UNTAGGED` images and then pipe that result to a BatchDeleteImage
+#' operation to delete them. Or, you can filter your results to return only
+#' `TAGGED` images to list all of the tags in your repository.
 #'
 #' @usage
 #' ecr_list_images(registryId, repositoryName, nextToken, maxResults,
@@ -1122,20 +1136,29 @@ ecr_list_tags_for_resource <- function(resourceArn) {
 #'
 #' Creates or updates the image manifest and tags associated with an image.
 #' 
-#' This operation is used by the Amazon ECR proxy, and it is not intended
-#' for general use by customers for pulling and pushing images. In most
-#' cases, you should use the `docker` CLI to pull, tag, and push images.
+#' When an image is pushed and all new image layers have been uploaded, the
+#' PutImage API is called once to create or update the image manifest and
+#' the tags associated with the image.
+#' 
+#' This operation is used by the Amazon ECR proxy and is not generally used
+#' by customers for pulling and pushing images. In most cases, you should
+#' use the `docker` CLI to pull, tag, and push images.
 #'
 #' @usage
-#' ecr_put_image(registryId, repositoryName, imageManifest, imageTag)
+#' ecr_put_image(registryId, repositoryName, imageManifest,
+#'   imageManifestMediaType, imageTag, imageDigest)
 #'
 #' @param registryId The AWS account ID associated with the registry that contains the
 #' repository in which to put the image. If you do not specify a registry,
 #' the default registry is assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository in which to put the image.
 #' @param imageManifest &#91;required&#93; The image manifest corresponding to the image to be uploaded.
+#' @param imageManifestMediaType The media type of the image manifest. If you push an image manifest that
+#' does not contain the `mediaType` field, you must specify the
+#' `imageManifestMediaType` in the request.
 #' @param imageTag The tag to associate with the image. This parameter is required for
 #' images that use the Docker Image Manifest V2 Schema 2 or OCI formats.
+#' @param imageDigest The image digest of the image manifest corresponding to the image.
 #'
 #' @section Request syntax:
 #' ```
@@ -1143,21 +1166,23 @@ ecr_list_tags_for_resource <- function(resourceArn) {
 #'   registryId = "string",
 #'   repositoryName = "string",
 #'   imageManifest = "string",
-#'   imageTag = "string"
+#'   imageManifestMediaType = "string",
+#'   imageTag = "string",
+#'   imageDigest = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ecr_put_image
-ecr_put_image <- function(registryId = NULL, repositoryName, imageManifest, imageTag = NULL) {
+ecr_put_image <- function(registryId = NULL, repositoryName, imageManifest, imageManifestMediaType = NULL, imageTag = NULL, imageDigest = NULL) {
   op <- new_operation(
     name = "PutImage",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecr$put_image_input(registryId = registryId, repositoryName = repositoryName, imageManifest = imageManifest, imageTag = imageTag)
+  input <- .ecr$put_image_input(registryId = registryId, repositoryName = repositoryName, imageManifest = imageManifest, imageManifestMediaType = imageManifestMediaType, imageTag = imageTag, imageDigest = imageDigest)
   output <- .ecr$put_image_output()
   config <- get_config()
   svc <- .ecr$service(config)
@@ -1167,9 +1192,9 @@ ecr_put_image <- function(registryId = NULL, repositoryName, imageManifest, imag
 }
 .ecr$operations$put_image <- ecr_put_image
 
-#' Updates the image scanning configuration for a repository
+#' Updates the image scanning configuration for the specified repository
 #'
-#' Updates the image scanning configuration for a repository.
+#' Updates the image scanning configuration for the specified repository.
 #'
 #' @usage
 #' ecr_put_image_scanning_configuration(registryId, repositoryName,
@@ -1215,12 +1240,10 @@ ecr_put_image_scanning_configuration <- function(registryId = NULL, repositoryNa
 }
 .ecr$operations$put_image_scanning_configuration <- ecr_put_image_scanning_configuration
 
-#' Updates the image tag mutability settings for a repository
+#' Updates the image tag mutability settings for the specified repository
 #'
-#' Updates the image tag mutability settings for a repository. When a
-#' repository is configured with tag immutability, all image tags within
-#' the repository will be prevented them from being overwritten. For more
-#' information, see [Image Tag
+#' Updates the image tag mutability settings for the specified repository.
+#' For more information, see [Image Tag
 #' Mutability](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html)
 #' in the *Amazon Elastic Container Registry User Guide*.
 #'
@@ -1267,10 +1290,10 @@ ecr_put_image_tag_mutability <- function(registryId = NULL, repositoryName, imag
 }
 .ecr$operations$put_image_tag_mutability <- ecr_put_image_tag_mutability
 
-#' Creates or updates a lifecycle policy
+#' Creates or updates the lifecycle policy for the specified repository
 #'
-#' Creates or updates a lifecycle policy. For information about lifecycle
-#' policy syntax, see [Lifecycle Policy
+#' Creates or updates the lifecycle policy for the specified repository.
+#' For more information, see [Lifecycle Policy
 #' Template](https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
 #'
 #' @usage
@@ -1312,12 +1335,12 @@ ecr_put_lifecycle_policy <- function(registryId = NULL, repositoryName, lifecycl
 }
 .ecr$operations$put_lifecycle_policy <- ecr_put_lifecycle_policy
 
-#' Applies a repository policy on a specified repository to control access
-#' permissions
+#' Applies a repository policy to the specified repository to control
+#' access permissions
 #'
-#' Applies a repository policy on a specified repository to control access
-#' permissions. For more information, see [Amazon ECR Repository
-#' Policies](https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html)
+#' Applies a repository policy to the specified repository to control
+#' access permissions. For more information, see [Amazon ECR Repository
+#' Policies](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html)
 #' in the *Amazon Elastic Container Registry User Guide*.
 #'
 #' @usage
@@ -1328,8 +1351,8 @@ ecr_put_lifecycle_policy <- function(registryId = NULL, repositoryName, lifecycl
 #' assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to receive the policy.
 #' @param policyText &#91;required&#93; The JSON repository policy text to apply to the repository. For more
-#' information, see [Amazon ECR Repository Policy
-#' Examples](https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicyExamples.html)
+#' information, see [Amazon ECR Repository
+#' Policies](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policy-examples.html)
 #' in the *Amazon Elastic Container Registry User Guide*.
 #' @param force If the policy you are attempting to set on a repository policy would
 #' prevent you from setting another policy in the future, you must force
@@ -1415,10 +1438,11 @@ ecr_start_image_scan <- function(registryId = NULL, repositoryName, imageId) {
 }
 .ecr$operations$start_image_scan <- ecr_start_image_scan
 
-#' Starts a preview of the specified lifecycle policy
+#' Starts a preview of a lifecycle policy for the specified repository
 #'
-#' Starts a preview of the specified lifecycle policy. This allows you to
-#' see the results before creating the lifecycle policy.
+#' Starts a preview of a lifecycle policy for the specified repository.
+#' This allows you to see the results before associating the lifecycle
+#' policy with the repository.
 #'
 #' @usage
 #' ecr_start_lifecycle_policy_preview(registryId, repositoryName,
@@ -1554,9 +1578,14 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' Uploads an image layer part to Amazon ECR.
 #' 
-#' This operation is used by the Amazon ECR proxy, and it is not intended
-#' for general use by customers for pulling and pushing images. In most
-#' cases, you should use the `docker` CLI to pull, tag, and push images.
+#' When an image is pushed, each new image layer is uploaded in parts. The
+#' maximum size of each image layer part can be 20971520 bytes (or about
+#' 20MB). The UploadLayerPart API is called once per each new image layer
+#' part.
+#' 
+#' This operation is used by the Amazon ECR proxy and is not generally used
+#' by customers for pulling and pushing images. In most cases, you should
+#' use the `docker` CLI to pull, tag, and push images.
 #'
 #' @usage
 #' ecr_upload_layer_part(registryId, repositoryName, uploadId,
@@ -1568,8 +1597,10 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
 #' @param repositoryName &#91;required&#93; The name of the repository to which you are uploading layer parts.
 #' @param uploadId &#91;required&#93; The upload ID from a previous InitiateLayerUpload operation to associate
 #' with the layer part upload.
-#' @param partFirstByte &#91;required&#93; The integer value of the first byte of the layer part.
-#' @param partLastByte &#91;required&#93; The integer value of the last byte of the layer part.
+#' @param partFirstByte &#91;required&#93; The position of the first byte of the layer part witin the overall image
+#' layer.
+#' @param partLastByte &#91;required&#93; The position of the last byte of the layer part within the overall image
+#' layer.
 #' @param layerPartBlob &#91;required&#93; The base64-encoded layer part payload.
 #'
 #' @section Request syntax:

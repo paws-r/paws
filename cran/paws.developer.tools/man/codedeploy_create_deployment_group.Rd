@@ -22,13 +22,13 @@ predefined configurations provided with AWS CodeDeploy or a custom
 deployment configuration that you create by calling the create
 deployment configuration operation.
 
-CodeDeployDefault.OneAtATime is the default deployment configuration. It
-is used if a configuration isn\'t specified for the deployment or
+\code{CodeDeployDefault.OneAtATime} is the default deployment configuration.
+It is used if a configuration isn\'t specified for the deployment or
 deployment group.
 
 For more information about the predefined deployment configurations in
-AWS CodeDeploy, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html}{Working with Deployment Groups in AWS CodeDeploy}
-in the AWS CodeDeploy User Guide.}
+AWS CodeDeploy, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html}{Working with Deployment Configurations in CodeDeploy}
+in the \emph{AWS CodeDeploy User Guide}.}
 
 \item{ec2TagFilters}{The Amazon EC2 tags on which to filter. The deployment group includes
 EC2 instances with any of the specified tags. Cannot be used in the same
@@ -36,16 +36,16 @@ call as ec2TagSet.}
 
 \item{onPremisesInstanceTagFilters}{The on-premises instance tags on which to filter. The deployment group
 includes on-premises instances with any of the specified tags. Cannot be
-used in the same call as OnPremisesTagSet.}
+used in the same call as \code{OnPremisesTagSet}.}
 
 \item{autoScalingGroups}{A list of associated Amazon EC2 Auto Scaling groups.}
 
-\item{serviceRoleArn}{[required] A service role ARN that allows AWS CodeDeploy to act on the user\'s
-behalf when interacting with AWS services.}
+\item{serviceRoleArn}{[required] A service role Amazon Resource Name (ARN) that allows AWS CodeDeploy to
+act on the user\'s behalf when interacting with AWS services.}
 
 \item{triggerConfigurations}{Information about triggers to create when the deployment group is
 created. For examples, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html}{Create a Trigger for an AWS CodeDeploy Event}
-in the AWS CodeDeploy User Guide.}
+in the \emph{AWS CodeDeploy User Guide}.}
 
 \item{alarmConfiguration}{Information to add about Amazon CloudWatch alarms when the deployment
 group is created.}
@@ -63,7 +63,7 @@ balancer.}
 
 \item{ec2TagSet}{Information about groups of tags applied to EC2 instances. The
 deployment group includes only EC2 instances identified by all the tag
-groups. Cannot be used in the same call as ec2TagFilters.}
+groups. Cannot be used in the same call as \code{ec2TagFilters}.}
 
 \item{ecsServices}{The target Amazon ECS services in the deployment group. This applies
 only to deployment groups that use the Amazon ECS compute platform. A
@@ -74,7 +74,7 @@ service name pair using the format
 \item{onPremisesTagSet}{Information about groups of tags applied to on-premises instances. The
 deployment group includes only on-premises instances identified by all
 of the tag groups. Cannot be used in the same call as
-onPremisesInstanceTagFilters.}
+\code{onPremisesInstanceTagFilters}.}
 
 \item{tags}{The metadata that you apply to CodeDeploy deployment groups to help you
 organize and categorize them. Each tag consists of a key and an optional

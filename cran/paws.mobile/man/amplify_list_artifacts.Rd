@@ -2,25 +2,25 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_list_artifacts}
 \alias{amplify_list_artifacts}
-\title{List artifacts with an app, a branch, a job and an artifact type}
+\title{Returns a list of artifacts for a specified app, branch, and job}
 \usage{
 amplify_list_artifacts(appId, branchName, jobId, nextToken, maxResults)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{branchName}{[required] Name for a branch, part of an Amplify App.}
+\item{branchName}{[required] The name of a branch that is part of an Amplify app.}
 
-\item{jobId}{[required] Unique Id for an Job.}
+\item{jobId}{[required] The unique ID for a job.}
 
-\item{nextToken}{Pagination token. Set to null to start listing artifacts from start. If
-non-null pagination token is returned in a result, then pass its value
+\item{nextToken}{A pagination token. Set to null to start listing artifacts from start.
+If a non-null pagination token is returned in a result, pass its value
 in here to list more artifacts.}
 
-\item{maxResults}{Maximum number of records to list in a single response.}
+\item{maxResults}{The maximum number of records to list in a single response.}
 }
 \description{
-List artifacts with an app, a branch, a job and an artifact type.
+Returns a list of artifacts for a specified app, branch, and job.
 }
 \section{Request syntax}{
 \preformatted{svc$list_artifacts(

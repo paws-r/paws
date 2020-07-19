@@ -2,24 +2,31 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_put_instance_public_ports}
 \alias{lightsail_put_instance_public_ports}
-\title{Sets the specified open ports for an Amazon Lightsail instance, and
-closes all ports for every protocol not included in the current request}
+\title{Opens ports for a specific Amazon Lightsail instance, and specifies the
+IP addresses allowed to connect to the instance through the ports, and
+the protocol}
 \usage{
 lightsail_put_instance_public_ports(portInfos, instanceName)
 }
 \arguments{
-\item{portInfos}{[required] Specifies information about the public port(s).}
+\item{portInfos}{[required] An array of objects to describe the ports to open for the specified
+instance.}
 
-\item{instanceName}{[required] The Lightsail instance name of the public port(s) you are setting.}
+\item{instanceName}{[required] The name of the instance for which to open ports.}
 }
 \description{
-Sets the specified open ports for an Amazon Lightsail instance, and
-closes all ports for every protocol not included in the current request.
+Opens ports for a specific Amazon Lightsail instance, and specifies the
+IP addresses allowed to connect to the instance through the ports, and
+the protocol. This action also closes all currently open ports that are
+not included in the request. Include all of the ports and the protocols
+you want to open in your \code{PutInstancePublicPorts}request. Or use the
+\code{OpenInstancePublicPorts} action to open ports without closing currently
+open ports.
 }
 \details{
-The \verb{put instance public ports} operation supports tag-based access
-control via resource tags applied to the resource identified by
-\verb{instance name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+The \code{PutInstancePublicPorts} action supports tag-based access control
+via resource tags applied to the resource identified by \code{instanceName}.
+For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_instance_public_ports(
@@ -27,7 +34,13 @@ control via resource tags applied to the resource identified by
     list(
       fromPort = 123,
       toPort = 123,
-      protocol = "tcp"|"all"|"udp"
+      protocol = "tcp"|"all"|"udp"|"icmp",
+      cidrs = list(
+        "string"
+      ),
+      cidrListAliases = list(
+        "string"
+      )
     )
   ),
   instanceName = "string"

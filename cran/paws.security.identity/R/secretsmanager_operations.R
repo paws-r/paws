@@ -4,33 +4,32 @@
 NULL
 
 #' Disables automatic scheduled rotation and cancels the rotation of a
-#' secret if one is currently in progress
+#' secret if currently in progress
 #'
 #' Disables automatic scheduled rotation and cancels the rotation of a
-#' secret if one is currently in progress.
+#' secret if currently in progress.
 #' 
 #' To re-enable scheduled rotation, call RotateSecret with
-#' `AutomaticallyRotateAfterDays` set to a value greater than 0. This will
-#' immediately rotate your secret and then enable the automatic schedule.
+#' `AutomaticallyRotateAfterDays` set to a value greater than 0. This
+#' immediately rotates your secret and then enables the automatic schedule.
 #' 
-#' If you cancel a rotation that is in progress, it can leave the
-#' `VersionStage` labels in an unexpected state. Depending on what step of
-#' the rotation was in progress, you might need to remove the staging label
+#' If you cancel a rotation while in progress, it can leave the
+#' `VersionStage` labels in an unexpected state. Depending on the step of
+#' the rotation in progress, you might need to remove the staging label
 #' `AWSPENDING` from the partially created version, specified by the
 #' `VersionId` response value. You should also evaluate the partially
 #' rotated new version to see if it should be deleted, which you can do by
-#' removing all staging labels from the new version\'s `VersionStage`
-#' field.
+#' removing all staging labels from the new version `VersionStage` field.
 #' 
 #' To successfully start a rotation, the staging label `AWSPENDING` must be
 #' in one of the following states:
 #' 
-#' -   Not be attached to any version at all
+#' -   Not attached to any version at all
 #' 
 #' -   Attached to the same version as the staging label `AWSCURRENT`
 #' 
-#' If the staging label `AWSPENDING` is attached to a different version
-#' than the version with `AWSCURRENT` then the attempt to rotate fails.
+#' If the staging label `AWSPENDING` attached to a different version than
+#' the version with `AWSCURRENT` then the attempt to rotate fails.
 #' 
 #' **Minimum permissions**
 #' 
@@ -54,9 +53,9 @@ NULL
 #' @usage
 #' secretsmanager_cancel_rotate_secret(SecretId)
 #'
-#' @param SecretId &#91;required&#93; Specifies the secret for which you want to cancel a rotation request.
-#' You can specify either the Amazon Resource Name (ARN) or the friendly
-#' name of the secret.
+#' @param SecretId &#91;required&#93; Specifies the secret to cancel a rotation request. You can specify
+#' either the Amazon Resource Name (ARN) or the friendly name of the
+#' secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
 #' complete ARN. You can specify a partial ARN too---for example, if you
@@ -69,7 +68,13 @@ NULL
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #'
 #' @section Request syntax:
 #' ```
@@ -122,7 +127,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' rotation cycle. The `SecretVersionsToStages` field of the secret
 #' contains the mapping of staging labels to the active versions of the
 #' secret. Versions without a staging label are considered deprecated and
-#' are not included in the list.
+#' not included in the list.
 #' 
 #' You provide the secret data to be encrypted by putting text in either
 #' the `SecretString` parameter or binary data in the `SecretBinary`
@@ -131,29 +136,29 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' automatically attaches the staging label `AWSCURRENT` to the new
 #' version.
 #' 
-#' -   If you call an operation that needs to encrypt or decrypt the
-#'     `SecretString` or `SecretBinary` for a secret in the same account as
-#'     the calling user and that secret doesn\'t specify a AWS KMS
-#'     encryption key, Secrets Manager uses the account\'s default AWS
-#'     managed customer master key (CMK) with the alias
-#'     `aws/secretsmanager`. If this key doesn\'t already exist in your
-#'     account then Secrets Manager creates it for you automatically. All
-#'     users and roles in the same AWS account automatically have access to
-#'     use the default CMK. Note that if an Secrets Manager API call
-#'     results in AWS having to create the account\'s AWS-managed CMK, it
-#'     can result in a one-time significant delay in returning the result.
+#' -   If you call an operation to encrypt or decrypt the `SecretString` or
+#'     `SecretBinary` for a secret in the same account as the calling user
+#'     and that secret doesn\'t specify a AWS KMS encryption key, Secrets
+#'     Manager uses the account\'s default AWS managed customer master key
+#'     (CMK) with the alias `aws/secretsmanager`. If this key doesn\'t
+#'     already exist in your account then Secrets Manager creates it for
+#'     you automatically. All users and roles in the same AWS account
+#'     automatically have access to use the default CMK. Note that if an
+#'     Secrets Manager API call results in AWS creating the account\'s
+#'     AWS-managed CMK, it can result in a one-time significant delay in
+#'     returning the result.
 #' 
-#' -   If the secret is in a different AWS account from the credentials
-#'     calling an API that requires encryption or decryption of the secret
-#'     value then you must create and use a custom AWS KMS CMK because you
-#'     can\'t access the default CMK for the account using credentials from
-#'     a different AWS account. Store the ARN of the CMK in the secret when
-#'     you create the secret or when you update it by including it in the
-#'     `KMSKeyId`. If you call an API that must encrypt or decrypt
-#'     `SecretString` or `SecretBinary` using credentials from a different
-#'     account then the AWS KMS key policy must grant cross-account access
-#'     to that other account\'s user or role for both the
-#'     kms:GenerateDataKey and kms:Decrypt operations.
+#' -   If the secret resides in a different AWS account from the
+#'     credentials calling an API that requires encryption or decryption of
+#'     the secret value then you must create and use a custom AWS KMS CMK
+#'     because you can\'t access the default CMK for the account using
+#'     credentials from a different AWS account. Store the ARN of the CMK
+#'     in the secret when you create the secret or when you update it by
+#'     including it in the `KMSKeyId`. If you call an API that must encrypt
+#'     or decrypt `SecretString` or `SecretBinary` using credentials from a
+#'     different account then the AWS KMS key policy must grant
+#'     cross-account access to that other account\'s user or role for both
+#'     the kms:GenerateDataKey and kms:Decrypt operations.
 #' 
 #' **Minimum permissions**
 #' 
@@ -163,11 +168,11 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' 
 #' -   kms:GenerateDataKey - needed only if you use a customer-managed AWS
 #'     KMS key to encrypt the secret. You do not need this permission to
-#'     use the account\'s default AWS managed CMK for Secrets Manager.
+#'     use the account default AWS managed CMK for Secrets Manager.
 #' 
 #' -   kms:Decrypt - needed only if you use a customer-managed AWS KMS key
 #'     to encrypt the secret. You do not need this permission to use the
-#'     account\'s default AWS managed CMK for Secrets Manager.
+#'     account default AWS managed CMK for Secrets Manager.
 #' 
 #' -   secretsmanager:TagResource - needed only if you include the `Tags`
 #'     parameter.
@@ -200,10 +205,10 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' The secret name must be ASCII letters, digits, or the following
 #' characters : /\\_+=.@@-
 #' 
-#' Don\'t end your secret name with a hyphen followed by six characters. If
+#' Do not end your secret name with a hyphen followed by six characters. If
 #' you do so, you risk confusion and unexpected results when searching for
-#' a secret by partial ARN. This is because Secrets Manager automatically
-#' adds a hyphen and six random characters at the end of the ARN.
+#' a secret by partial ARN. Secrets Manager automatically adds a hyphen and
+#' six random characters at the end of the ARN.
 #' @param ClientRequestToken (Optional) If you include `SecretString` or `SecretBinary`, then an
 #' initial version is created as part of the secret, and this parameter
 #' specifies a unique identifier for the new version.
@@ -213,7 +218,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' random UUID for you and includes it as the value for this parameter in
 #' the request. If you don\'t use the SDK and instead generate a raw HTTP
 #' request to the Secrets Manager service endpoint, then you must generate
-#' a `ClientRequestToken` yourself for the new version and include that
+#' a `ClientRequestToken` yourself for the new version and include the
 #' value in the request.
 #' 
 #' This value helps ensure idempotency. Secrets Manager uses this value to
@@ -225,10 +230,9 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' -   If the `ClientRequestToken` value isn\'t already associated with a
 #'     version of the secret then a new version of the secret is created.
 #' 
-#' -   If a version with this value already exists and that version\'s
+#' -   If a version with this value already exists and the version
 #'     `SecretString` and `SecretBinary` values are the same as those in
-#'     the request, then the request is ignored (the operation is
-#'     idempotent).
+#'     the request, then the request is ignored.
 #' 
 #' -   If a version with this value already exists and that version\'s
 #'     `SecretString` and `SecretBinary` values are different from those in
@@ -252,9 +256,9 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' creates it for you automatically the first time it needs to encrypt a
 #' version\'s `SecretString` or `SecretBinary` fields.
 #' 
-#' You can use the account\'s default CMK to encrypt and decrypt only if
-#' you call this operation using credentials from the same account that
-#' owns the secret. If the secret is in a different account, then you must
+#' You can use the account default CMK to encrypt and decrypt only if you
+#' call this operation using credentials from the same account that owns
+#' the secret. If the secret resides in a different account, then you must
 #' create a custom CMK and specify the ARN in this field.
 #' @param SecretBinary (Optional) Specifies binary data that you want to encrypt and store in
 #' the new version of the secret. To use this parameter in the command-line
@@ -286,7 +290,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For example:
 #' 
-#' `\\[\{"username":"bob"\},\{"password":"abc123xyz456"\}\\]`
+#' `\{"username":"bob","password":"abc123xyz456"\}`
 #' 
 #' If your command-line tool or SDK requires quotation marks around the
 #' parameter, you should use single quotes to avoid confusion with the
@@ -327,16 +331,16 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
-#' -   Do not use the `aws:` prefix in your tag names or values because it
-#'     is reserved for AWS use. You can\'t edit or delete tag names or
+#' -   Do not use the `aws:` prefix in your tag names or values because AWS
+#'     reserves it for AWS use. You can\'t edit or delete tag names or
 #'     values with this prefix. Tags with this prefix do not count against
 #'     your tags per secret limit.
 #' 
-#' -   If your tagging schema will be used across multiple services and
-#'     resources, remember that other services might have restrictions on
-#'     allowed characters. Generally allowed characters are: letters,
-#'     spaces, and numbers representable in UTF-8, plus the following
-#'     special characters: + - = . \\_ : / @@.
+#' -   If you use your tagging schema across multiple services and
+#'     resources, remember other services might have restrictions on
+#'     allowed characters. Generally allowed characters: letters, spaces,
+#'     and numbers representable in UTF-8, plus the following special
+#'     characters: + - = . \\_ : / @@.
 #'
 #' @section Request syntax:
 #' ```
@@ -389,11 +393,9 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 }
 .secretsmanager$operations$create_secret <- secretsmanager_create_secret
 
-#' Deletes the resource-based permission policy that's attached to the
-#' secret
+#' Deletes the resource-based permission policy attached to the secret
 #'
-#' Deletes the resource-based permission policy that\'s attached to the
-#' secret.
+#' Deletes the resource-based permission policy attached to the secret.
 #' 
 #' **Minimum permissions**
 #' 
@@ -428,7 +430,13 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #'
 #' @section Request syntax:
 #' ```
@@ -526,7 +534,13 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #' @param RecoveryWindowInDays (Optional) Specifies the number of days that Secrets Manager waits
 #' before it can delete the secret. You can\'t use both this parameter and
 #' the `ForceDeleteWithoutRecovery` parameter in the same API call.
@@ -592,8 +606,8 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #' Retrieves the details of a secret
 #'
 #' Retrieves the details of a secret. It does not include the encrypted
-#' fields. Only those fields that are populated with a value are returned
-#' in the response.
+#' fields. Secrets Manager only returns fields populated with a value in
+#' the response.
 #' 
 #' **Minimum permissions**
 #' 
@@ -630,7 +644,13 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #'
 #' @section Request syntax:
 #' ```
@@ -764,12 +784,12 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 }
 .secretsmanager$operations$get_random_password <- secretsmanager_get_random_password
 
-#' Retrieves the JSON text of the resource-based policy document that's
-#' attached to the specified secret
+#' Retrieves the JSON text of the resource-based policy document attached
+#' to the specified secret
 #'
-#' Retrieves the JSON text of the resource-based policy document that\'s
-#' attached to the specified secret. The JSON request string input and
-#' response output are shown formatted with white space and line breaks for
+#' Retrieves the JSON text of the resource-based policy document attached
+#' to the specified secret. The JSON request string input and response
+#' output displays formatted code with white space and line breaks for
 #' better readability. Submit your input as a single line JSON string.
 #' 
 #' **Minimum permissions**
@@ -782,8 +802,8 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #' 
 #' -   To attach a resource policy to a secret, use PutResourcePolicy.
 #' 
-#' -   To delete the resource-based policy that\'s attached to a secret,
-#'     use DeleteResourcePolicy.
+#' -   To delete the resource-based policy attached to a secret, use
+#'     DeleteResourcePolicy.
 #' 
 #' -   To list all of the currently available secrets, use ListSecrets.
 #'
@@ -805,7 +825,13 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #'
 #' @section Request syntax:
 #' ```
@@ -887,7 +913,13 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #' @param VersionId Specifies the unique identifier of the version of the secret that you
 #' want to retrieve. If you specify this parameter then don\'t specify
 #' `VersionStage`. If you don\'t specify either a `VersionStage` or
@@ -957,8 +989,8 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' 
 #' Always check the `NextToken` response parameter when calling any of the
 #' `List*` operations. These operations can occasionally return an empty or
-#' shorter than expected list of results even when there are more results
-#' available. When this happens, the `NextToken` response parameter
+#' shorter than expected list of results even when there more results
+#' become available. When this happens, the `NextToken` response parameter
 #' contains a value to pass to the next call to the same API to request the
 #' next part of the list.
 #' 
@@ -991,8 +1023,14 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
-#' @param MaxResults (Optional) Limits the number of results that you want to include in the
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
+#' @param MaxResults (Optional) Limits the number of results you want to include in the
 #' response. If you don\'t include this parameter, it defaults to a value
 #' that\'s specific to the operation. If additional items exist beyond the
 #' maximum you specify, the `NextToken` response element is present and has
@@ -1003,10 +1041,10 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
 #' @param NextToken (Optional) Use this parameter in a request if you receive a `NextToken`
-#' response in a previous request that indicates that there\'s more output
+#' response in a previous request indicating there\'s more output
 #' available. In a subsequent call, set it to the value of the previous
-#' call\'s `NextToken` response to indicate where the output should
-#' continue from.
+#' call `NextToken` response to indicate where the output should continue
+#' from.
 #' @param IncludeDeprecated (Optional) Specifies that you want the results to include versions that
 #' do not have any staging labels attached to them. Such versions are
 #' considered deprecated and are subject to deletion by Secrets Manager as
@@ -1063,8 +1101,8 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' 
 #' Always check the `NextToken` response parameter when calling any of the
 #' `List*` operations. These operations can occasionally return an empty or
-#' shorter than expected list of results even when there are more results
-#' available. When this happens, the `NextToken` response parameter
+#' shorter than expected list of results even when there more results
+#' become available. When this happens, the `NextToken` response parameter
 #' contains a value to pass to the next call to the same API to request the
 #' next part of the list.
 #' 
@@ -1079,9 +1117,9 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' -   To list the versions attached to a secret, use ListSecretVersionIds.
 #'
 #' @usage
-#' secretsmanager_list_secrets(MaxResults, NextToken)
+#' secretsmanager_list_secrets(MaxResults, NextToken, Filters, SortOrder)
 #'
-#' @param MaxResults (Optional) Limits the number of results that you want to include in the
+#' @param MaxResults (Optional) Limits the number of results you want to include in the
 #' response. If you don\'t include this parameter, it defaults to a value
 #' that\'s specific to the operation. If additional items exist beyond the
 #' maximum you specify, the `NextToken` response element is present and has
@@ -1092,16 +1130,27 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
 #' @param NextToken (Optional) Use this parameter in a request if you receive a `NextToken`
-#' response in a previous request that indicates that there\'s more output
+#' response in a previous request indicating there\'s more output
 #' available. In a subsequent call, set it to the value of the previous
-#' call\'s `NextToken` response to indicate where the output should
-#' continue from.
+#' call `NextToken` response to indicate where the output should continue
+#' from.
+#' @param Filters Lists the secret request filters.
+#' @param SortOrder Lists secrets in the requested order.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_secrets(
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       Key = "description"|"name"|"tag-key"|"tag-value"|"all",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   SortOrder = "asc"|"desc"
 #' )
 #' ```
 #'
@@ -1115,14 +1164,14 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname secretsmanager_list_secrets
-secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL) {
+secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListSecrets",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .secretsmanager$list_secrets_input(MaxResults = MaxResults, NextToken = NextToken)
+  input <- .secretsmanager$list_secrets_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
   output <- .secretsmanager$list_secrets_output()
   config <- get_config()
   svc <- .secretsmanager$service(config)
@@ -1157,7 +1206,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL) {
 #' 
 #' **Related operations**
 #' 
-#' -   To retrieve the resource policy that\'s attached to a secret, use
+#' -   To retrieve the resource policy attached to a secret, use
 #'     GetResourcePolicy.
 #' 
 #' -   To delete the resource-based policy that\'s attached to a secret,
@@ -1166,7 +1215,8 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL) {
 #' -   To list all of the currently available secrets, use ListSecrets.
 #'
 #' @usage
-#' secretsmanager_put_resource_policy(SecretId, ResourcePolicy)
+#' secretsmanager_put_resource_policy(SecretId, ResourcePolicy,
+#'   BlockPublicPolicy)
 #'
 #' @param SecretId &#91;required&#93; Specifies the secret that you want to attach the resource-based policy
 #' to. You can specify either the ARN or the friendly name of the secret.
@@ -1182,7 +1232,13 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL) {
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #' @param ResourcePolicy &#91;required&#93; A JSON-formatted string that\'s constructed according to the grammar and
 #' syntax for an AWS resource-based policy. The policy in the string
 #' identifies who can access or manage this secret and its versions. For
@@ -1190,12 +1246,15 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL) {
 #' line tool environments, see [Using JSON for
 #' Parameters](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*.
+#' @param BlockPublicPolicy Makes an optional API call to Zelkova to validate the Resource Policy to
+#' prevent broad access to your secret.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$put_resource_policy(
 #'   SecretId = "string",
-#'   ResourcePolicy = "string"
+#'   ResourcePolicy = "string",
+#'   BlockPublicPolicy = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1212,14 +1271,14 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname secretsmanager_put_resource_policy
-secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy) {
+secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPublicPolicy = NULL) {
   op <- new_operation(
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .secretsmanager$put_resource_policy_input(SecretId = SecretId, ResourcePolicy = ResourcePolicy)
+  input <- .secretsmanager$put_resource_policy_input(SecretId = SecretId, ResourcePolicy = ResourcePolicy, BlockPublicPolicy = BlockPublicPolicy)
   output <- .secretsmanager$put_resource_policy_output()
   config <- get_config()
   svc <- .secretsmanager$service(config)
@@ -1264,29 +1323,29 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy) {
 #' 
 #' <!-- -->
 #' 
-#' -   If you call an operation that needs to encrypt or decrypt the
-#'     `SecretString` or `SecretBinary` for a secret in the same account as
-#'     the calling user and that secret doesn\'t specify a AWS KMS
-#'     encryption key, Secrets Manager uses the account\'s default AWS
-#'     managed customer master key (CMK) with the alias
-#'     `aws/secretsmanager`. If this key doesn\'t already exist in your
-#'     account then Secrets Manager creates it for you automatically. All
-#'     users and roles in the same AWS account automatically have access to
-#'     use the default CMK. Note that if an Secrets Manager API call
-#'     results in AWS having to create the account\'s AWS-managed CMK, it
-#'     can result in a one-time significant delay in returning the result.
+#' -   If you call an operation to encrypt or decrypt the `SecretString` or
+#'     `SecretBinary` for a secret in the same account as the calling user
+#'     and that secret doesn\'t specify a AWS KMS encryption key, Secrets
+#'     Manager uses the account\'s default AWS managed customer master key
+#'     (CMK) with the alias `aws/secretsmanager`. If this key doesn\'t
+#'     already exist in your account then Secrets Manager creates it for
+#'     you automatically. All users and roles in the same AWS account
+#'     automatically have access to use the default CMK. Note that if an
+#'     Secrets Manager API call results in AWS creating the account\'s
+#'     AWS-managed CMK, it can result in a one-time significant delay in
+#'     returning the result.
 #' 
-#' -   If the secret is in a different AWS account from the credentials
-#'     calling an API that requires encryption or decryption of the secret
-#'     value then you must create and use a custom AWS KMS CMK because you
-#'     can\'t access the default CMK for the account using credentials from
-#'     a different AWS account. Store the ARN of the CMK in the secret when
-#'     you create the secret or when you update it by including it in the
-#'     `KMSKeyId`. If you call an API that must encrypt or decrypt
-#'     `SecretString` or `SecretBinary` using credentials from a different
-#'     account then the AWS KMS key policy must grant cross-account access
-#'     to that other account\'s user or role for both the
-#'     kms:GenerateDataKey and kms:Decrypt operations.
+#' -   If the secret resides in a different AWS account from the
+#'     credentials calling an API that requires encryption or decryption of
+#'     the secret value then you must create and use a custom AWS KMS CMK
+#'     because you can\'t access the default CMK for the account using
+#'     credentials from a different AWS account. Store the ARN of the CMK
+#'     in the secret when you create the secret or when you update it by
+#'     including it in the `KMSKeyId`. If you call an API that must encrypt
+#'     or decrypt `SecretString` or `SecretBinary` using credentials from a
+#'     different account then the AWS KMS key policy must grant
+#'     cross-account access to that other account\'s user or role for both
+#'     the kms:GenerateDataKey and kms:Decrypt operations.
 #' 
 #' **Minimum permissions**
 #' 
@@ -1328,7 +1387,13 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy) {
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #' @param ClientRequestToken (Optional) Specifies a unique identifier for the new version of the
 #' secret.
 #' 
@@ -1353,7 +1418,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy) {
 #'     `SecretString` or `SecretBinary` values are the same as those in the
 #'     request then the request is ignored (the operation is idempotent).
 #' 
-#' -   If a version with this value already exists and that version\'s
+#' -   If a version with this value already exists and the version of the
 #'     `SecretString` and `SecretBinary` values are different from those in
 #'     the request then the request fails because you cannot modify an
 #'     existing secret version. You can only create new versions to store
@@ -1483,7 +1548,13 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #'
 #' @section Request syntax:
 #' ```
@@ -1543,8 +1614,8 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html)
 #' in the *AWS Secrets Manager User Guide*.
 #' 
-#' Secrets Manager schedules the next rotation when the previous one is
-#' complete. Secrets Manager schedules the date by adding the rotation
+#' Secrets Manager schedules the next rotation when the previous one
+#' completes. Secrets Manager schedules the date by adding the rotation
 #' interval (number of days) to the actual date of the last rotation. The
 #' service chooses the hour within that 24-hour date window randomly. The
 #' minute is also chosen somewhat randomly, but weighted towards the top of
@@ -1560,10 +1631,10 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' -   The `AWSPENDING` staging label is not attached to any version of the
 #'     secret.
 #' 
-#' If instead the `AWSPENDING` staging label is present but is not attached
-#' to the same version as `AWSCURRENT` then any later invocation of
-#' `RotateSecret` assumes that a previous rotation request is still in
-#' progress and returns an error.
+#' If the `AWSPENDING` staging label is present but not attached to the
+#' same version as `AWSCURRENT` then any later invocation of `RotateSecret`
+#' assumes that a previous rotation request is still in progress and
+#' returns an error.
 #' 
 #' **Minimum permissions**
 #' 
@@ -1603,7 +1674,13 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #' @param ClientRequestToken (Optional) Specifies a unique identifier for the new version of the
 #' secret that helps ensure idempotency.
 #' 
@@ -1615,9 +1692,9 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' `ClientRequestToken` yourself for new versions and include that value in
 #' the request.
 #' 
-#' You only need to specify your own value if you are implementing your own
-#' retry logic and want to ensure that a given secret is not created twice.
-#' We recommend that you generate a
+#' You only need to specify your own value if you implement your own retry
+#' logic and want to ensure that a given secret is not created twice. We
+#' recommend that you generate a
 #' [UUID-type](https://wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness within the specified secret.
 #' 
@@ -1704,16 +1781,16 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
-#' -   Do not use the `aws:` prefix in your tag names or values because it
-#'     is reserved for AWS use. You can\'t edit or delete tag names or
+#' -   Do not use the `aws:` prefix in your tag names or values because AWS
+#'     reserves it for AWS use. You can\'t edit or delete tag names or
 #'     values with this prefix. Tags with this prefix do not count against
 #'     your tags per secret limit.
 #' 
-#' -   If your tagging schema will be used across multiple services and
-#'     resources, remember that other services might have restrictions on
-#'     allowed characters. Generally allowed characters are: letters,
-#'     spaces, and numbers representable in UTF-8, plus the following
-#'     special characters: + - = . \\_ : / @@.
+#' -   If you use your tagging schema across multiple services and
+#'     resources, remember other services might have restrictions on
+#'     allowed characters. Generally allowed characters: letters, spaces,
+#'     and numbers representable in UTF-8, plus the following special
+#'     characters: + - = . \\_ : / @@.
 #' 
 #' If you use tags as part of your security strategy, then adding or
 #' removing a tag can change permissions. If successfully completing this
@@ -1751,7 +1828,13 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #' @param Tags &#91;required&#93; The tags to attach to the secret. Each element in the list consists of a
 #' `Key` and a `Value`.
 #' 
@@ -1859,7 +1942,13 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #' @param TagKeys &#91;required&#93; A list of tag key names to remove from the secret. You don\'t specify
 #' the value. Both the key and its associated value are removed.
 #' 
@@ -1939,29 +2028,29 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' 
 #' <!-- -->
 #' 
-#' -   If you call an operation that needs to encrypt or decrypt the
-#'     `SecretString` or `SecretBinary` for a secret in the same account as
-#'     the calling user and that secret doesn\'t specify a AWS KMS
-#'     encryption key, Secrets Manager uses the account\'s default AWS
-#'     managed customer master key (CMK) with the alias
-#'     `aws/secretsmanager`. If this key doesn\'t already exist in your
-#'     account then Secrets Manager creates it for you automatically. All
-#'     users and roles in the same AWS account automatically have access to
-#'     use the default CMK. Note that if an Secrets Manager API call
-#'     results in AWS having to create the account\'s AWS-managed CMK, it
-#'     can result in a one-time significant delay in returning the result.
+#' -   If you call an operation to encrypt or decrypt the `SecretString` or
+#'     `SecretBinary` for a secret in the same account as the calling user
+#'     and that secret doesn\'t specify a AWS KMS encryption key, Secrets
+#'     Manager uses the account\'s default AWS managed customer master key
+#'     (CMK) with the alias `aws/secretsmanager`. If this key doesn\'t
+#'     already exist in your account then Secrets Manager creates it for
+#'     you automatically. All users and roles in the same AWS account
+#'     automatically have access to use the default CMK. Note that if an
+#'     Secrets Manager API call results in AWS creating the account\'s
+#'     AWS-managed CMK, it can result in a one-time significant delay in
+#'     returning the result.
 #' 
-#' -   If the secret is in a different AWS account from the credentials
-#'     calling an API that requires encryption or decryption of the secret
-#'     value then you must create and use a custom AWS KMS CMK because you
-#'     can\'t access the default CMK for the account using credentials from
-#'     a different AWS account. Store the ARN of the CMK in the secret when
-#'     you create the secret or when you update it by including it in the
-#'     `KMSKeyId`. If you call an API that must encrypt or decrypt
-#'     `SecretString` or `SecretBinary` using credentials from a different
-#'     account then the AWS KMS key policy must grant cross-account access
-#'     to that other account\'s user or role for both the
-#'     kms:GenerateDataKey and kms:Decrypt operations.
+#' -   If the secret resides in a different AWS account from the
+#'     credentials calling an API that requires encryption or decryption of
+#'     the secret value then you must create and use a custom AWS KMS CMK
+#'     because you can\'t access the default CMK for the account using
+#'     credentials from a different AWS account. Store the ARN of the CMK
+#'     in the secret when you create the secret or when you update it by
+#'     including it in the `KMSKeyId`. If you call an API that must encrypt
+#'     or decrypt `SecretString` or `SecretBinary` using credentials from a
+#'     different account then the AWS KMS key policy must grant
+#'     cross-account access to that other account\'s user or role for both
+#'     the kms:GenerateDataKey and kms:Decrypt operations.
 #' 
 #' **Minimum permissions**
 #' 
@@ -2007,7 +2096,13 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #' @param ClientRequestToken (Optional) If you want to add a new version to the secret, this
 #' parameter specifies a unique identifier for the new version that helps
 #' ensure idempotency.
@@ -2191,9 +2286,9 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' secretsmanager_update_secret_version_stage(SecretId, VersionStage,
 #'   RemoveFromVersionId, MoveToVersionId)
 #'
-#' @param SecretId &#91;required&#93; Specifies the secret with the version whose list of staging labels you
-#' want to modify. You can specify either the Amazon Resource Name (ARN) or
-#' the friendly name of the secret.
+#' @param SecretId &#91;required&#93; Specifies the secret with the version with the list of staging labels
+#' you want to modify. You can specify either the Amazon Resource Name
+#' (ARN) or the friendly name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
 #' complete ARN. You can specify a partial ARN too---for example, if you
@@ -2206,7 +2301,13 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' then those characters cause Secrets Manager to assume that you're
 #' specifying a complete ARN. This confusion can cause unexpected results.
 #' To avoid this situation, we recommend that you don't create secret names
-#' that end with a hyphen followed by six characters.
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
 #' @param VersionStage &#91;required&#93; The staging label to add to this version.
 #' @param RemoveFromVersionId Specifies the secret version ID of the version that the staging label is
 #' to be removed from. If the staging label you are trying to attach to one
@@ -2215,9 +2316,9 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' removed from. If the label is attached and you either do not specify
 #' this parameter, or the version ID does not match, then the operation
 #' fails.
-#' @param MoveToVersionId (Optional) The secret version ID that you want to add the staging label
-#' to. If you want to remove a label from a version, then do not specify
-#' this parameter.
+#' @param MoveToVersionId (Optional) The secret version ID that you want to add the staging label.
+#' If you want to remove a label from a version, then do not specify this
+#' parameter.
 #' 
 #' If the staging label is already attached to a different version of the
 #' secret, then you must also specify the `RemoveFromVersionId` parameter.
@@ -2285,3 +2386,77 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
   return(response)
 }
 .secretsmanager$operations$update_secret_version_stage <- secretsmanager_update_secret_version_stage
+
+#' Validates the JSON text of the resource-based policy document attached
+#' to the specified secret
+#'
+#' Validates the JSON text of the resource-based policy document attached
+#' to the specified secret. The JSON request string input and response
+#' output displays formatted code with white space and line breaks for
+#' better readability. Submit your input as a single line JSON string. A
+#' resource-based policy is optional.
+#'
+#' @usage
+#' secretsmanager_validate_resource_policy(SecretId, ResourcePolicy)
+#'
+#' @param SecretId The identifier for the secret that you want to validate a resource
+#' policy. You can specify either the Amazon Resource Name (ARN) or the
+#' friendly name of the secret.
+#' 
+#' If you specify an ARN, we generally recommend that you specify a
+#' complete ARN. You can specify a partial ARN too---for example, if you
+#' don't include the final hyphen and six random characters that Secrets
+#' Manager adds at the end of the ARN when you created the secret. A
+#' partial ARN match can work as long as it uniquely matches only one
+#' secret. However, if your secret has a name that ends in a hyphen
+#' followed by six characters (before Secrets Manager adds the hyphen and
+#' six characters to the ARN) and you try to use that as a partial ARN,
+#' then those characters cause Secrets Manager to assume that you're
+#' specifying a complete ARN. This confusion can cause unexpected results.
+#' To avoid this situation, we recommend that you don't create secret names
+#' ending with a hyphen followed by six characters.
+#' 
+#' If you specify an incomplete ARN without the random suffix, and instead
+#' provide the \'friendly name\', you *must* not include the random suffix.
+#' If you do include the random suffix added by Secrets Manager, you
+#' receive either a *ResourceNotFoundException* or an
+#' *AccessDeniedException* error, depending on your permissions.
+#' @param ResourcePolicy &#91;required&#93; Identifies the Resource Policy attached to the secret.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$validate_resource_policy(
+#'   SecretId = "string",
+#'   ResourcePolicy = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example shows how to validate a resource-based policy to a
+#' # secret.
+#' svc$validate_resource_policy(
+#'   ResourcePolicy = "\{\n\"Version\":\"2012-10-17\",\n\"Statement\":[\{\n\"Effect\":\"Allow\",...",
+#'   SecretId = "MyTestDatabaseSecret"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname secretsmanager_validate_resource_policy
+secretsmanager_validate_resource_policy <- function(SecretId = NULL, ResourcePolicy) {
+  op <- new_operation(
+    name = "ValidateResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .secretsmanager$validate_resource_policy_input(SecretId = SecretId, ResourcePolicy = ResourcePolicy)
+  output <- .secretsmanager$validate_resource_policy_output()
+  config <- get_config()
+  svc <- .secretsmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.secretsmanager$operations$validate_resource_policy <- secretsmanager_validate_resource_policy

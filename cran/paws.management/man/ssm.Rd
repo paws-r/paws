@@ -18,18 +18,19 @@ operating system (OS) patches, automating the creation of Amazon Machine
 Images (AMIs), and configuring operating systems (OSs) and applications
 at scale. Systems Manager lets you remotely and securely manage the
 configuration of your managed instances. A \emph{managed instance} is any
-Amazon EC2 instance or on-premises machine in your hybrid environment
-that has been configured for Systems Manager.
+Amazon Elastic Compute Cloud instance (EC2 instance), or any on-premises
+server or virtual machine (VM) in your hybrid environment that has been
+configured for Systems Manager.
 
-This reference is intended to be used with the \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/}{AWS Systems Manager User Guide}.
+This reference is intended to be used with the \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{AWS Systems Manager User Guide}.
 
 To get started, verify prerequisites and configure managed instances.
-For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html}{Setting Up AWS Systems Manager}
+For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html}{Setting up AWS Systems Manager}
 in the \emph{AWS Systems Manager User Guide}.
 
-For information about other API actions you can perform on Amazon EC2
-instances, see the \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/}{Amazon EC2 API Reference}. For
-information about how to use a Query API, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html}{Making API Requests}.
+For information about other API actions you can perform on EC2
+instances, see the \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/}{Amazon EC2 API Reference}. For
+information about how to use a Query API, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html}{Making API requests}.
 }
 \section{Service syntax}{
 \preformatted{svc <- ssm(
@@ -55,10 +56,10 @@ information about how to use a Query API, see \href{http://docs.aws.amazon.com/A
 \link[=ssm_add_tags_to_resource]{add_tags_to_resource} \tab Adds or overwrites one or more tags for the specified resource \cr
 \link[=ssm_cancel_command]{cancel_command} \tab Attempts to cancel the command specified by the Command ID \cr
 \link[=ssm_cancel_maintenance_window_execution]{cancel_maintenance_window_execution} \tab Stops a maintenance window execution that is already in progress and cancels any tasks in the window that have not already starting running \cr
-\link[=ssm_create_activation]{create_activation} \tab Registers your on-premises server or virtual machine with Amazon EC2 so that you can manage these resources using Run Command \cr
-\link[=ssm_create_association]{create_association} \tab Associates the specified Systems Manager document with the specified instances or targets \cr
+\link[=ssm_create_activation]{create_activation} \tab Generates an activation code and activation ID you can use to register your on-premises server or virtual machine (VM) with Systems Manager \cr
+\link[=ssm_create_association]{create_association} \tab A State Manager association defines the state that you want to maintain on your instances \cr
 \link[=ssm_create_association_batch]{create_association_batch} \tab Associates the specified Systems Manager document with the specified instances or targets \cr
-\link[=ssm_create_document]{create_document} \tab Creates a Systems Manager document \cr
+\link[=ssm_create_document]{create_document} \tab Creates a Systems Manager (SSM) document \cr
 \link[=ssm_create_maintenance_window]{create_maintenance_window} \tab Creates a new maintenance window \cr
 \link[=ssm_create_ops_item]{create_ops_item} \tab Creates a new OpsItem \cr
 \link[=ssm_create_patch_baseline]{create_patch_baseline} \tab Creates a patch baseline \cr
@@ -88,7 +89,7 @@ information about how to use a Query API, see \href{http://docs.aws.amazon.com/A
 \link[=ssm_describe_effective_instance_associations]{describe_effective_instance_associations} \tab All associations for the instance(s) \cr
 \link[=ssm_describe_effective_patches_for_patch_baseline]{describe_effective_patches_for_patch_baseline} \tab Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline \cr
 \link[=ssm_describe_instance_associations_status]{describe_instance_associations_status} \tab The status of the associations for the instance(s) \cr
-\link[=ssm_describe_instance_information]{describe_instance_information} \tab Describes one or more of your instances \cr
+\link[=ssm_describe_instance_information]{describe_instance_information} \tab Describes one or more of your instances, including information about the operating system platform, the version of SSM Agent installed on the instance, instance status, and so on \cr
 \link[=ssm_describe_instance_patches]{describe_instance_patches} \tab Retrieves information about the patches on the specified instance and their state relative to the patch baseline being used for the instance \cr
 \link[=ssm_describe_instance_patch_states]{describe_instance_patch_states} \tab Retrieves the high-level patch state of one or more instances \cr
 \link[=ssm_describe_instance_patch_states_for_patch_group]{describe_instance_patch_states_for_patch_group} \tab Retrieves the high-level patch state for the instances in the specified patch group \cr
@@ -111,7 +112,7 @@ information about how to use a Query API, see \href{http://docs.aws.amazon.com/A
 \link[=ssm_get_automation_execution]{get_automation_execution} \tab Get detailed information about a particular Automation execution \cr
 \link[=ssm_get_calendar_state]{get_calendar_state} \tab Gets the state of the AWS Systems Manager Change Calendar at an optional, specified time \cr
 \link[=ssm_get_command_invocation]{get_command_invocation} \tab Returns detailed information about command execution for an invocation or plugin \cr
-\link[=ssm_get_connection_status]{get_connection_status} \tab Retrieves the Session Manager connection status for an instance to determine whether it is connected and ready to receive Session Manager connections \cr
+\link[=ssm_get_connection_status]{get_connection_status} \tab Retrieves the Session Manager connection status for an instance to determine whether it is running and ready to receive Session Manager connections \cr
 \link[=ssm_get_default_patch_baseline]{get_default_patch_baseline} \tab Retrieves the default patch baseline \cr
 \link[=ssm_get_deployable_patch_snapshot_for_instance]{get_deployable_patch_snapshot_for_instance} \tab Retrieves the current snapshot for the patch baseline the instance uses \cr
 \link[=ssm_get_document]{get_document} \tab Gets the contents of the specified Systems Manager document \cr
@@ -132,13 +133,13 @@ information about how to use a Query API, see \href{http://docs.aws.amazon.com/A
 \link[=ssm_get_patch_baseline_for_patch_group]{get_patch_baseline_for_patch_group} \tab Retrieves the patch baseline that should be used for the specified patch group \cr
 \link[=ssm_get_service_setting]{get_service_setting} \tab ServiceSetting is an account-level setting for an AWS service \cr
 \link[=ssm_label_parameter_version]{label_parameter_version} \tab A parameter label is a user-defined alias to help you manage different versions of a parameter \cr
-\link[=ssm_list_associations]{list_associations} \tab Lists the associations for the specified Systems Manager document or instance \cr
+\link[=ssm_list_associations]{list_associations} \tab Returns all State Manager associations in the current AWS account and Region \cr
 \link[=ssm_list_association_versions]{list_association_versions} \tab Retrieves all versions of an association for a specific association ID \cr
 \link[=ssm_list_command_invocations]{list_command_invocations} \tab An invocation is copy of a command sent to a specific instance \cr
 \link[=ssm_list_commands]{list_commands} \tab Lists the commands requested by users of the AWS account \cr
 \link[=ssm_list_compliance_items]{list_compliance_items} \tab For a specified resource ID, this API action returns a list of compliance statuses for different resource types \cr
 \link[=ssm_list_compliance_summaries]{list_compliance_summaries} \tab Returns a summary count of compliant and non-compliant resources for a compliance type \cr
-\link[=ssm_list_documents]{list_documents} \tab Describes one or more of your Systems Manager documents \cr
+\link[=ssm_list_documents]{list_documents} \tab Returns all Systems Manager (SSM) documents in the current AWS account and Region \cr
 \link[=ssm_list_document_versions]{list_document_versions} \tab List all versions for a document \cr
 \link[=ssm_list_inventory_entries]{list_inventory_entries} \tab A list of inventory items returned by the request \cr
 \link[=ssm_list_resource_compliance_summaries]{list_resource_compliance_summaries} \tab Returns a resource-level summary count \cr
@@ -169,7 +170,7 @@ information about how to use a Query API, see \href{http://docs.aws.amazon.com/A
 \link[=ssm_update_maintenance_window]{update_maintenance_window} \tab Updates an existing maintenance window \cr
 \link[=ssm_update_maintenance_window_target]{update_maintenance_window_target} \tab Modifies the target of an existing maintenance window \cr
 \link[=ssm_update_maintenance_window_task]{update_maintenance_window_task} \tab Modifies a task assigned to a maintenance window \cr
-\link[=ssm_update_managed_instance_role]{update_managed_instance_role} \tab Assigns or changes an Amazon Identity and Access Management (IAM) role for the managed instance \cr
+\link[=ssm_update_managed_instance_role]{update_managed_instance_role} \tab Changes the Amazon Identity and Access Management (IAM) role that is assigned to the on-premises instance or virtual machines (VM) \cr
 \link[=ssm_update_ops_item]{update_ops_item} \tab Edit or change an OpsItem \cr
 \link[=ssm_update_patch_baseline]{update_patch_baseline} \tab Modifies an existing patch baseline \cr
 \link[=ssm_update_resource_data_sync]{update_resource_data_sync} \tab Update a resource data sync \cr

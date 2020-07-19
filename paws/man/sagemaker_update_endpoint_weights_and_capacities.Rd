@@ -20,8 +20,7 @@ existing endpoint, or capacity of one variant associated with an
 existing endpoint. When it receives the request, Amazon SageMaker sets
 the endpoint status to \code{Updating}. After updating the endpoint, it sets
 the status to \code{InService}. To check the status of an endpoint, use the
-\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html}{DescribeEndpoint}
-API.
+DescribeEndpoint API.
 }
 \section{Request syntax}{
 \preformatted{svc$update_endpoint_weights_and_capacities(

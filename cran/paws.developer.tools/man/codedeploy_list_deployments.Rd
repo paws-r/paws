@@ -6,7 +6,7 @@
 registered with the IAM user or AWS account}
 \usage{
 codedeploy_list_deployments(applicationName, deploymentGroupName,
-  includeOnlyStatuses, createTimeRange, nextToken)
+  externalId, includeOnlyStatuses, createTimeRange, nextToken)
 }
 \arguments{
 \item{applicationName}{The name of an AWS CodeDeploy application associated with the IAM user
@@ -22,14 +22,18 @@ If \code{deploymentGroupName} is specified, then \code{applicationName} must be
 specified. If it is not specified, then \code{applicationName} must not be
 specified.}
 
+\item{externalId}{The unique ID of an external resource for returning deployments linked
+to the external resource.}
+
 \item{includeOnlyStatuses}{A subset of deployments to list by status:
 \itemize{
-\item Created: Include created deployments in the resulting list.
-\item Queued: Include queued deployments in the resulting list.
-\item In Progress: Include in-progress deployments in the resulting list.
-\item Succeeded: Include successful deployments in the resulting list.
-\item Failed: Include failed deployments in the resulting list.
-\item Stopped: Include stopped deployments in the resulting list.
+\item \code{Created}: Include created deployments in the resulting list.
+\item \code{Queued}: Include queued deployments in the resulting list.
+\item \verb{In Progress}: Include in-progress deployments in the resulting
+list.
+\item \code{Succeeded}: Include successful deployments in the resulting list.
+\item \code{Failed}: Include failed deployments in the resulting list.
+\item \code{Stopped}: Include stopped deployments in the resulting list.
 }}
 
 \item{createTimeRange}{A time range (start and end) for returning a subset of the list of
@@ -46,8 +50,9 @@ registered with the IAM user or AWS account.
 \preformatted{svc$list_deployments(
   applicationName = "string",
   deploymentGroupName = "string",
+  externalId = "string",
   includeOnlyStatuses = list(
-    "Created"|"Queued"|"InProgress"|"Succeeded"|"Failed"|"Stopped"|"Ready"
+    "Created"|"Queued"|"InProgress"|"Baking"|"Succeeded"|"Failed"|"Stopped"|"Ready"
   ),
   createTimeRange = list(
     start = as.POSIXct(

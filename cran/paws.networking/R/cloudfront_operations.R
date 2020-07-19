@@ -116,7 +116,9 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'             ),
 #'             OriginReadTimeout = 123,
 #'             OriginKeepaliveTimeout = 123
-#'           )
+#'           ),
+#'           ConnectionAttempts = 123,
+#'           ConnectionTimeout = 123
 #'         )
 #'       )
 #'     ),
@@ -301,7 +303,7 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'       IAMCertificateId = "string",
 #'       ACMCertificateArn = "string",
 #'       SSLSupportMethod = "sni-only"|"vip",
-#'       MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018",
+#'       MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
 #'       Certificate = "string",
 #'       CertificateSource = "cloudfront"|"iam"|"acm"
 #'     ),
@@ -394,7 +396,9 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'               ),
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
-#'             )
+#'             ),
+#'             ConnectionAttempts = 123,
+#'             ConnectionTimeout = 123
 #'           )
 #'         )
 #'       ),
@@ -579,7 +583,7 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'         IAMCertificateId = "string",
 #'         ACMCertificateArn = "string",
 #'         SSLSupportMethod = "sni-only"|"vip",
-#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
 #'         Certificate = "string",
 #'         CertificateSource = "cloudfront"|"iam"|"acm"
 #'       ),
@@ -2402,7 +2406,9 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'             ),
 #'             OriginReadTimeout = 123,
 #'             OriginKeepaliveTimeout = 123
-#'           )
+#'           ),
+#'           ConnectionAttempts = 123,
+#'           ConnectionTimeout = 123
 #'         )
 #'       )
 #'     ),
@@ -2587,7 +2593,7 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'       IAMCertificateId = "string",
 #'       ACMCertificateArn = "string",
 #'       SSLSupportMethod = "sni-only"|"vip",
-#'       MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018",
+#'       MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
 #'       Certificate = "string",
 #'       CertificateSource = "cloudfront"|"iam"|"acm"
 #'     ),

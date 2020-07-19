@@ -106,7 +106,7 @@ inspector <- function(config = list()) {
 
 .inspector$metadata <- list(
   service_name = "inspector",
-  endpoints = list("*" = list(endpoint = "inspector.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "inspector.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "inspector.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "inspector.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "inspector.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "inspector.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Inspector",
   api_version = "2016-02-16",
   signing_name = NULL,

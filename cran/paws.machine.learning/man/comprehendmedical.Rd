@@ -36,18 +36,26 @@ documents.
 
 \tabular{ll}{
 \link[=comprehendmedical_describe_entities_detection_v2_job]{describe_entities_detection_v2_job} \tab Gets the properties associated with a medical entities detection job \cr
+\link[=comprehendmedical_describe_icd10cm_inference_job]{describe_icd10cm_inference_job} \tab Gets the properties associated with an InferICD10CM job \cr
 \link[=comprehendmedical_describe_phi_detection_job]{describe_phi_detection_job} \tab Gets the properties associated with a protected health information (PHI) detection job \cr
+\link[=comprehendmedical_describe_rx_norm_inference_job]{describe_rx_norm_inference_job} \tab Gets the properties associated with an InferRxNorm job \cr
 \link[=comprehendmedical_detect_entities]{detect_entities} \tab The DetectEntities operation is deprecated \cr
 \link[=comprehendmedical_detect_entities_v2]{detect_entities_v2} \tab Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information \cr
-\link[=comprehendmedical_detect_phi]{detect_phi} \tab Inspects the clinical text for protected health information (PHI) entities and entity category, location, and confidence score on that information \cr
+\link[=comprehendmedical_detect_phi]{detect_phi} \tab Inspects the clinical text for protected health information (PHI) entities and returns the entity category, location, and confidence score for each entity \cr
 \link[=comprehendmedical_infer_icd10cm]{infer_icd10cm} \tab InferICD10CM detects medical conditions as entities listed in a patient record and links those entities to normalized concept identifiers in the ICD-10-CM knowledge base from the Centers for Disease Control\cr
 \link[=comprehendmedical_infer_rx_norm]{infer_rx_norm} \tab InferRxNorm detects medications as entities listed in a patient record and links to the normalized concept identifiers in the RxNorm database from the National Library of Medicine \cr
 \link[=comprehendmedical_list_entities_detection_v2_jobs]{list_entities_detection_v2_jobs} \tab Gets a list of medical entity detection jobs that you have submitted \cr
+\link[=comprehendmedical_list_icd10cm_inference_jobs]{list_icd10cm_inference_jobs} \tab Gets a list of InferICD10CM jobs that you have submitted \cr
 \link[=comprehendmedical_list_phi_detection_jobs]{list_phi_detection_jobs} \tab Gets a list of protected health information (PHI) detection jobs that you have submitted \cr
+\link[=comprehendmedical_list_rx_norm_inference_jobs]{list_rx_norm_inference_jobs} \tab Gets a list of InferRxNorm jobs that you have submitted \cr
 \link[=comprehendmedical_start_entities_detection_v2_job]{start_entities_detection_v2_job} \tab Starts an asynchronous medical entity detection job for a collection of documents \cr
+\link[=comprehendmedical_start_icd10cm_inference_job]{start_icd10cm_inference_job} \tab Starts an asynchronous job to detect medical conditions and link them to the ICD-10-CM ontology \cr
 \link[=comprehendmedical_start_phi_detection_job]{start_phi_detection_job} \tab Starts an asynchronous job to detect protected health information (PHI) \cr
+\link[=comprehendmedical_start_rx_norm_inference_job]{start_rx_norm_inference_job} \tab Starts an asynchronous job to detect medication entities and link them to the RxNorm ontology \cr
 \link[=comprehendmedical_stop_entities_detection_v2_job]{stop_entities_detection_v2_job} \tab Stops a medical entities detection job in progress \cr
-\link[=comprehendmedical_stop_phi_detection_job]{stop_phi_detection_job} \tab Stops a protected health information (PHI) detection job in progress
+\link[=comprehendmedical_stop_icd10cm_inference_job]{stop_icd10cm_inference_job} \tab Stops an InferICD10CM inference job in progress \cr
+\link[=comprehendmedical_stop_phi_detection_job]{stop_phi_detection_job} \tab Stops a protected health information (PHI) detection job in progress \cr
+\link[=comprehendmedical_stop_rx_norm_inference_job]{stop_rx_norm_inference_job} \tab Stops an InferRxNorm inference job in progress
 }
 }
 

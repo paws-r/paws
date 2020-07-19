@@ -9,8 +9,8 @@ NULL
 #' Backup plans are documents that contain information that AWS Backup uses
 #' to schedule tasks that create recovery points of resources.
 #' 
-#' If you call `CreateBackupPlan` with a plan that already exists, the
-#' existing `backupPlanId` is returned.
+#' If you call `CreateBackupPlan` with a plan that already exists, an
+#' `AlreadyExistsException` is returned.
 #'
 #' @usage
 #' backup_create_backup_plan(BackupPlan, BackupPlanTags, CreatorRequestId)
@@ -43,6 +43,15 @@ NULL
 #'         ),
 #'         RecoveryPointTags = list(
 #'           "string"
+#'         ),
+#'         CopyActions = list(
+#'           list(
+#'             Lifecycle = list(
+#'               MoveToColdStorageAfterDays = 123,
+#'               DeleteAfterDays = 123
+#'             ),
+#'             DestinationBackupVaultArn = "string"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -89,13 +98,13 @@ backup_create_backup_plan <- function(BackupPlan, BackupPlanTags = NULL, Creator
 #' 
 #'     `ConditionValue:"finance"`
 #' 
-#'     `ConditionType:"StringEquals"`
+#'     `ConditionType:"STRINGEQUALS"`
 #' 
 #' -   `ConditionKey:"importance"`
 #' 
 #'     `ConditionValue:"critical"`
 #' 
-#'     `ConditionType:"StringEquals"`
+#'     `ConditionType:"STRINGEQUALS"`
 #' 
 #' Using these patterns would back up all Amazon Elastic Block Store
 #' (Amazon EBS) volumes that are tagged as `"department=finance"`,
@@ -116,11 +125,6 @@ backup_create_backup_plan <- function(BackupPlan, BackupPlanTags = NULL, Creator
 #' of resources.
 #' @param BackupSelection &#91;required&#93; Specifies the body of a request to assign a set of resources to a backup
 #' plan.
-#' 
-#' It includes an array of resources, an optional array of patterns to
-#' exclude resources, an optional role to provide access to the AWS service
-#' the resource belongs to, and an optional array of tags used to identify
-#' a set of resources.
 #' @param CreatorRequestId A unique string that identifies the request and allows failed requests
 #' to be retried without the risk of executing the operation twice.
 #'
@@ -313,8 +317,8 @@ backup_delete_backup_selection <- function(BackupPlanId, SelectionId) {
 #'
 #' @param BackupVaultName &#91;required&#93; The name of a logical container where backups are stored. Backup vaults
 #' are identified by names that are unique to the account used to create
-#' them and theAWS Region where they are created. They consist of lowercase
-#' letters, numbers, and hyphens.
+#' them and the AWS Region where they are created. They consist of
+#' lowercase letters, numbers, and hyphens.
 #'
 #' @section Request syntax:
 #' ```
@@ -539,12 +543,48 @@ backup_describe_backup_vault <- function(BackupVaultName) {
 }
 .backup$operations$describe_backup_vault <- backup_describe_backup_vault
 
+#' Returns metadata associated with creating a copy of a resource
+#'
+#' Returns metadata associated with creating a copy of a resource.
+#'
+#' @usage
+#' backup_describe_copy_job(CopyJobId)
+#'
+#' @param CopyJobId &#91;required&#93; Uniquely identifies a copy job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_copy_job(
+#'   CopyJobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_describe_copy_job
+backup_describe_copy_job <- function(CopyJobId) {
+  op <- new_operation(
+    name = "DescribeCopyJob",
+    http_method = "GET",
+    http_path = "/copy-jobs/{copyJobId}",
+    paginator = list()
+  )
+  input <- .backup$describe_copy_job_input(CopyJobId = CopyJobId)
+  output <- .backup$describe_copy_job_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$describe_copy_job <- backup_describe_copy_job
+
 #' Returns information about a saved resource, including the last time it
-#' was backed-up, its Amazon Resource Name (ARN), and the AWS service type
+#' was backed up, its Amazon Resource Name (ARN), and the AWS service type
 #' of the saved resource
 #'
 #' Returns information about a saved resource, including the last time it
-#' was backed-up, its Amazon Resource Name (ARN), and the AWS service type
+#' was backed up, its Amazon Resource Name (ARN), and the AWS service type
 #' of the saved resource.
 #'
 #' @usage
@@ -624,6 +664,43 @@ backup_describe_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
   return(response)
 }
 .backup$operations$describe_recovery_point <- backup_describe_recovery_point
+
+#' Returns the current service opt-in settings for the Region
+#'
+#' Returns the current service opt-in settings for the Region. If the
+#' service has a value set to `true`, AWS Backup attempts to protect that
+#' service\'s resources in this Region, when included in an on-demand
+#' backup or scheduled backup plan. If the value is set to `false` for a
+#' service, AWS Backup does not attempt to protect that service\'s
+#' resources in this Region.
+#'
+#' @usage
+#' backup_describe_region_settings()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_region_settings()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_describe_region_settings
+backup_describe_region_settings <- function() {
+  op <- new_operation(
+    name = "DescribeRegionSettings",
+    http_method = "GET",
+    http_path = "/account-settings",
+    paginator = list()
+  )
+  input <- .backup$describe_region_settings_input()
+  output <- .backup$describe_region_settings_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$describe_region_settings <- backup_describe_region_settings
 
 #' Returns metadata associated with a restore job that is specified by a
 #' job ID
@@ -935,17 +1012,11 @@ backup_get_backup_vault_notifications <- function(BackupVaultName) {
 }
 .backup$operations$get_backup_vault_notifications <- backup_get_backup_vault_notifications
 
-#' Returns two sets of metadata key-value pairs
+#' Returns a set of metadata key-value pairs that were used to create the
+#' backup
 #'
-#' Returns two sets of metadata key-value pairs. The first set lists the
-#' metadata that the recovery point was created with. The second set lists
-#' the metadata key-value pairs that are required to restore the recovery
-#' point.
-#' 
-#' These sets can be the same, or the restore metadata set can contain
-#' different values if the target service to be restored has changed since
-#' the recovery point was created and now requires additional or different
-#' information in order to be restored.
+#' Returns a set of metadata key-value pairs that were used to create the
+#' backup.
 #'
 #' @usage
 #' backup_get_recovery_point_restore_metadata(BackupVaultName,
@@ -1024,7 +1095,8 @@ backup_get_supported_resource_types <- function() {
 #'
 #' @usage
 #' backup_list_backup_jobs(NextToken, MaxResults, ByResourceArn, ByState,
-#'   ByBackupVaultName, ByCreatedBefore, ByCreatedAfter, ByResourceType)
+#'   ByBackupVaultName, ByCreatedBefore, ByCreatedAfter, ByResourceType,
+#'   ByAccountId)
 #'
 #' @param NextToken The next item following a partial list of returned items. For example,
 #' if a request is made to return `maxResults` number of items, `NextToken`
@@ -1042,15 +1114,19 @@ backup_get_supported_resource_types <- function() {
 #' @param ByCreatedAfter Returns only backup jobs that were created after the specified date.
 #' @param ByResourceType Returns only backup jobs for the specified resources:
 #' 
+#' -   `DynamoDB` for Amazon DynamoDB
+#' 
 #' -   `EBS` for Amazon Elastic Block Store
 #' 
-#' -   `SGW` for AWS Storage Gateway
+#' -   `EC2` for Amazon Elastic Compute Cloud
+#' 
+#' -   `EFS` for Amazon Elastic File System
 #' 
 #' -   `RDS` for Amazon Relational Database Service
 #' 
-#' -   `DDB` for Amazon DynamoDB
-#' 
-#' -   `EFS` for Amazon Elastic File System
+#' -   `Storage Gateway` for AWS Storage Gateway
+#' @param ByAccountId The account ID to list the jobs from. Returns only backup jobs
+#' associated with the specified account ID.
 #'
 #' @section Request syntax:
 #' ```
@@ -1066,21 +1142,22 @@ backup_get_supported_resource_types <- function() {
 #'   ByCreatedAfter = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   ByResourceType = "string"
+#'   ByResourceType = "string",
+#'   ByAccountId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname backup_list_backup_jobs
-backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByState = NULL, ByBackupVaultName = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByResourceType = NULL) {
+backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByState = NULL, ByBackupVaultName = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByResourceType = NULL, ByAccountId = NULL) {
   op <- new_operation(
     name = "ListBackupJobs",
     http_method = "GET",
     http_path = "/backup-jobs/",
     paginator = list()
   )
-  input <- .backup$list_backup_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByBackupVaultName = ByBackupVaultName, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType)
+  input <- .backup$list_backup_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByBackupVaultName = ByBackupVaultName, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByAccountId = ByAccountId)
   output <- .backup$list_backup_jobs_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -1316,6 +1393,83 @@ backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .backup$operations$list_backup_vaults <- backup_list_backup_vaults
 
+#' Returns metadata about your copy jobs
+#'
+#' Returns metadata about your copy jobs.
+#'
+#' @usage
+#' backup_list_copy_jobs(NextToken, MaxResults, ByResourceArn, ByState,
+#'   ByCreatedBefore, ByCreatedAfter, ByResourceType, ByDestinationVaultArn,
+#'   ByAccountId)
+#'
+#' @param NextToken The next item following a partial list of returned items. For example,
+#' if a request is made to return maxResults number of items, NextToken
+#' allows you to return more items in your list starting at the location
+#' pointed to by the next token.
+#' @param MaxResults The maximum number of items to be returned.
+#' @param ByResourceArn Returns only copy jobs that match the specified resource Amazon Resource
+#' Name (ARN).
+#' @param ByState Returns only copy jobs that are in the specified state.
+#' @param ByCreatedBefore Returns only copy jobs that were created before the specified date.
+#' @param ByCreatedAfter Returns only copy jobs that were created after the specified date.
+#' @param ByResourceType Returns only backup jobs for the specified resources:
+#' 
+#' -   `DynamoDB` for Amazon DynamoDB
+#' 
+#' -   `EBS` for Amazon Elastic Block Store
+#' 
+#' -   `EC2` for Amazon Elastic Compute Cloud
+#' 
+#' -   `EFS` for Amazon Elastic File System
+#' 
+#' -   `RDS` for Amazon Relational Database Service
+#' 
+#' -   `Storage Gateway` for AWS Storage Gateway
+#' @param ByDestinationVaultArn An Amazon Resource Name (ARN) that uniquely identifies a source backup
+#' vault to copy from; for example,
+#' `arn:aws:backup:us-east-1:123456789012:vault:aBackupVault`.
+#' @param ByAccountId The account ID to list the jobs from. Returns only copy jobs associated
+#' with the specified account ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_copy_jobs(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   ByResourceArn = "string",
+#'   ByState = "CREATED"|"RUNNING"|"COMPLETED"|"FAILED",
+#'   ByCreatedBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ByCreatedAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ByResourceType = "string",
+#'   ByDestinationVaultArn = "string",
+#'   ByAccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_copy_jobs
+backup_list_copy_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByState = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByResourceType = NULL, ByDestinationVaultArn = NULL, ByAccountId = NULL) {
+  op <- new_operation(
+    name = "ListCopyJobs",
+    http_method = "GET",
+    http_path = "/copy-jobs/",
+    paginator = list()
+  )
+  input <- .backup$list_copy_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByDestinationVaultArn = ByDestinationVaultArn, ByAccountId = ByAccountId)
+  output <- .backup$list_copy_jobs_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_copy_jobs <- backup_list_copy_jobs
+
 #' Returns an array of resources successfully backed up by AWS Backup,
 #' including the time the resource was saved, an Amazon Resource Name (ARN)
 #' of the resource, and a resource type
@@ -1482,33 +1636,47 @@ backup_list_recovery_points_by_resource <- function(ResourceArn, NextToken = NUL
 #' resource, including metadata about the recovery process.
 #'
 #' @usage
-#' backup_list_restore_jobs(NextToken, MaxResults)
+#' backup_list_restore_jobs(NextToken, MaxResults, ByAccountId,
+#'   ByCreatedBefore, ByCreatedAfter, ByStatus)
 #'
 #' @param NextToken The next item following a partial list of returned items. For example,
 #' if a request is made to return `maxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
 #' pointed to by the next token.
 #' @param MaxResults The maximum number of items to be returned.
+#' @param ByAccountId The account ID to list the jobs from. Returns only restore jobs
+#' associated with the specified account ID.
+#' @param ByCreatedBefore Returns only restore jobs that were created before the specified date.
+#' @param ByCreatedAfter Returns only restore jobs that were created after the specified date.
+#' @param ByStatus Returns only restore jobs associated with the specified job status.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_restore_jobs(
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   ByAccountId = "string",
+#'   ByCreatedBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ByCreatedAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ByStatus = "PENDING"|"RUNNING"|"COMPLETED"|"ABORTED"|"FAILED"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname backup_list_restore_jobs
-backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL) {
+backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL, ByAccountId = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByStatus = NULL) {
   op <- new_operation(
     name = "ListRestoreJobs",
     http_method = "GET",
     http_path = "/restore-jobs/",
     paginator = list()
   )
-  input <- .backup$list_restore_jobs_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .backup$list_restore_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByAccountId = ByAccountId, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByStatus = ByStatus)
   output <- .backup$list_restore_jobs_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -1523,6 +1691,8 @@ backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' Returns a list of key-value pairs assigned to a target recovery point,
 #' backup plan, or backup vault.
+#' 
+#' `ListTags` are currently only supported with Amazon EFS backups.
 #'
 #' @usage
 #' backup_list_tags(ResourceArn, NextToken, MaxResults)
@@ -1635,7 +1805,7 @@ backup_put_backup_vault_access_policy <- function(BackupVaultName, Policy = NULL
 #'   BackupVaultName = "string",
 #'   SNSTopicArn = "string",
 #'   BackupVaultEvents = list(
-#'     "BACKUP_JOB_STARTED"|"BACKUP_JOB_COMPLETED"|"RESTORE_JOB_STARTED"|"RESTORE_JOB_COMPLETED"|"RECOVERY_POINT_MODIFIED"|"BACKUP_PLAN_CREATED"|"BACKUP_PLAN_MODIFIED"
+#'     "BACKUP_JOB_STARTED"|"BACKUP_JOB_COMPLETED"|"BACKUP_JOB_SUCCESSFUL"|"BACKUP_JOB_FAILED"|"BACKUP_JOB_EXPIRED"|"RESTORE_JOB_STARTED"|"RESTORE_JOB_COMPLETED"|"RESTORE_JOB_SUCCESSFUL"|"RESTORE_JOB_FAILED"|"COPY_JOB_STARTED"|"COPY_JOB_SUCCESSFUL"|"COPY_JOB_FAILED"|"RECOVERY_POINT_MODIFIED"|"BACKUP_PLAN_CREATED"|"BACKUP_PLAN_MODIFIED"
 #'   )
 #' )
 #' ```
@@ -1678,15 +1848,12 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 #' @param IamRoleArn &#91;required&#93; Specifies the IAM role ARN used to create the target recovery point; for
 #' example, `arn:aws:iam::123456789012:role/S3Access`.
 #' @param IdempotencyToken A customer chosen string that can be used to distinguish between calls
-#' to `StartBackupJob`. Idempotency tokens time out after one hour.
-#' Therefore, if you call `StartBackupJob` multiple times with the same
-#' idempotency token within one hour, AWS Backup recognizes that you are
-#' requesting only one backup job and initiates only one. If you change the
-#' idempotency token for each call, AWS Backup recognizes that you are
-#' requesting to start multiple backups.
-#' @param StartWindowMinutes The amount of time in minutes before beginning a backup.
-#' @param CompleteWindowMinutes The amount of time AWS Backup attempts a backup before canceling the job
-#' and returning an error.
+#' to `StartBackupJob`.
+#' @param StartWindowMinutes A value in minutes after a backup is scheduled before a job will be
+#' canceled if it doesn\'t start successfully. This value is optional.
+#' @param CompleteWindowMinutes A value in minutes after a backup job is successfully started before it
+#' must be completed or it will be canceled by AWS Backup. This value is
+#' optional.
 #' @param Lifecycle The lifecycle defines when a protected resource is transitioned to cold
 #' storage and when it expires. AWS Backup will transition and expire
 #' backups automatically according to the lifecycle that you define.
@@ -1738,6 +1905,65 @@ backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, Id
 }
 .backup$operations$start_backup_job <- backup_start_backup_job
 
+#' Starts a job to create a one-time copy of the specified resource
+#'
+#' Starts a job to create a one-time copy of the specified resource.
+#'
+#' @usage
+#' backup_start_copy_job(RecoveryPointArn, SourceBackupVaultName,
+#'   DestinationBackupVaultArn, IamRoleArn, IdempotencyToken, Lifecycle)
+#'
+#' @param RecoveryPointArn &#91;required&#93; An ARN that uniquely identifies a recovery point to use for the copy
+#' job; for example,
+#' arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.
+#' @param SourceBackupVaultName &#91;required&#93; The name of a logical source container where backups are stored. Backup
+#' vaults are identified by names that are unique to the account used to
+#' create them and the AWS Region where they are created. They consist of
+#' lowercase letters, numbers, and hyphens.
+#' @param DestinationBackupVaultArn &#91;required&#93; An Amazon Resource Name (ARN) that uniquely identifies a destination
+#' backup vault to copy to; for example,
+#' `arn:aws:backup:us-east-1:123456789012:vault:aBackupVault`.
+#' @param IamRoleArn &#91;required&#93; Specifies the IAM role ARN used to copy the target recovery point; for
+#' example, `arn:aws:iam::123456789012:role/S3Access`.
+#' @param IdempotencyToken A customer chosen string that can be used to distinguish between calls
+#' to `StartCopyJob`.
+#' @param Lifecycle 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_copy_job(
+#'   RecoveryPointArn = "string",
+#'   SourceBackupVaultName = "string",
+#'   DestinationBackupVaultArn = "string",
+#'   IamRoleArn = "string",
+#'   IdempotencyToken = "string",
+#'   Lifecycle = list(
+#'     MoveToColdStorageAfterDays = 123,
+#'     DeleteAfterDays = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_start_copy_job
+backup_start_copy_job <- function(RecoveryPointArn, SourceBackupVaultName, DestinationBackupVaultArn, IamRoleArn, IdempotencyToken = NULL, Lifecycle = NULL) {
+  op <- new_operation(
+    name = "StartCopyJob",
+    http_method = "PUT",
+    http_path = "/copy-jobs",
+    paginator = list()
+  )
+  input <- .backup$start_copy_job_input(RecoveryPointArn = RecoveryPointArn, SourceBackupVaultName = SourceBackupVaultName, DestinationBackupVaultArn = DestinationBackupVaultArn, IamRoleArn = IamRoleArn, IdempotencyToken = IdempotencyToken, Lifecycle = Lifecycle)
+  output <- .backup$start_copy_job_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$start_copy_job <- backup_start_copy_job
+
 #' Recovers the saved resource identified by an Amazon Resource Name (ARN)
 #'
 #' Recovers the saved resource identified by an Amazon Resource Name (ARN).
@@ -1752,30 +1978,54 @@ backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, Id
 #'
 #' @param RecoveryPointArn &#91;required&#93; An ARN that uniquely identifies a recovery point; for example,
 #' `arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45`.
-#' @param Metadata &#91;required&#93; A set of metadata key-value pairs. Lists the metadata that the recovery
-#' point was created with.
+#' @param Metadata &#91;required&#93; A set of metadata key-value pairs. Contains information, such as a
+#' resource name, required to restore a recovery point.
+#' 
+#' You can get configuration metadata about a resource at the time it was
+#' backed up by calling `GetRecoveryPointRestoreMetadata`. However, values
+#' in addition to those provided by `GetRecoveryPointRestoreMetadata` might
+#' be required to restore a resource. For example, you might need to
+#' provide a new resource name if the original already exists.
+#' 
+#' You need to specify specific metadata to restore an Amazon Elastic File
+#' System (Amazon EFS) instance:
+#' 
+#' -   `file-system-id`: ID of the Amazon EFS file system that is backed up
+#'     by AWS Backup. Returned in `GetRecoveryPointRestoreMetadata`.
+#' 
+#' -   `Encrypted`: A Boolean value that, if true, specifies that the file
+#'     system is encrypted. If `KmsKeyId` is specified, `Encrypted` must be
+#'     set to `true`.
+#' 
+#' -   `KmsKeyId`: Specifies the AWS KMS key that is used to encrypt the
+#'     restored file system.
+#' 
+#' -   `PerformanceMode`: Specifies the throughput mode of the file system.
+#' 
+#' -   `CreationToken`: A user-supplied value that ensures the uniqueness
+#'     (idempotency) of the request.
+#' 
+#' -   `newFileSystem`: A Boolean value that, if true, specifies that the
+#'     recovery point is restored to a new Amazon EFS file system.
 #' @param IamRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that AWS Backup uses to
 #' create the target recovery point; for example,
 #' `arn:aws:iam::123456789012:role/S3Access`.
 #' @param IdempotencyToken A customer chosen string that can be used to distinguish between calls
-#' to `StartRestoreJob`. Idempotency tokens time out after one hour.
-#' Therefore, if you call `StartRestoreJob` multiple times with the same
-#' idempotency token within one hour, AWS Backup recognizes that you are
-#' requesting only one restore job and initiates only one. If you change
-#' the idempotency token for each call, AWS Backup recognizes that you are
-#' requesting to start multiple restores.
+#' to `StartRestoreJob`.
 #' @param ResourceType Starts a job to restore a recovery point for one of the following
 #' resources:
 #' 
+#' -   `DynamoDB` for Amazon DynamoDB
+#' 
 #' -   `EBS` for Amazon Elastic Block Store
 #' 
-#' -   `SGW` for AWS Storage Gateway
+#' -   `EC2` for Amazon Elastic Compute Cloud
+#' 
+#' -   `EFS` for Amazon Elastic File System
 #' 
 #' -   `RDS` for Amazon Relational Database Service
 #' 
-#' -   `DDB` for Amazon DynamoDB
-#' 
-#' -   `EFS` for Amazon Elastic File System
+#' -   `Storage Gateway` for AWS Storage Gateway
 #'
 #' @section Request syntax:
 #' ```
@@ -1967,6 +2217,15 @@ backup_untag_resource <- function(ResourceArn, TagKeyList) {
 #'         ),
 #'         RecoveryPointTags = list(
 #'           "string"
+#'         ),
+#'         CopyActions = list(
+#'           list(
+#'             Lifecycle = list(
+#'               MoveToColdStorageAfterDays = 123,
+#'               DeleteAfterDays = 123
+#'             ),
+#'             DestinationBackupVaultArn = "string"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2060,3 +2319,47 @@ backup_update_recovery_point_lifecycle <- function(BackupVaultName, RecoveryPoin
   return(response)
 }
 .backup$operations$update_recovery_point_lifecycle <- backup_update_recovery_point_lifecycle
+
+#' Updates the current service opt-in settings for the Region
+#'
+#' Updates the current service opt-in settings for the Region. If the
+#' service has a value set to `true`, AWS Backup attempts to protect that
+#' service\'s resources in this Region, when included in an on-demand
+#' backup or scheduled backup plan. If the value is set to `false` for a
+#' service, AWS Backup does not attempt to protect that service\'s
+#' resources in this Region.
+#'
+#' @usage
+#' backup_update_region_settings(ResourceTypeOptInPreference)
+#'
+#' @param ResourceTypeOptInPreference Updates the list of services along with the opt-in preferences for the
+#' region.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_region_settings(
+#'   ResourceTypeOptInPreference = list(
+#'     TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_update_region_settings
+backup_update_region_settings <- function(ResourceTypeOptInPreference = NULL) {
+  op <- new_operation(
+    name = "UpdateRegionSettings",
+    http_method = "PUT",
+    http_path = "/account-settings",
+    paginator = list()
+  )
+  input <- .backup$update_region_settings_input(ResourceTypeOptInPreference = ResourceTypeOptInPreference)
+  output <- .backup$update_region_settings_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$update_region_settings <- backup_update_region_settings

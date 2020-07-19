@@ -34,9 +34,8 @@ more than one instance.}
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
 assume to perform tasks on your behalf.}
 
-\item{Tags}{(Optional) An array of key-value pairs. For more information, see Using
-Cost Allocation Tags in the \emph{AWS Billing and Cost Management User
-Guide}.}
+\item{Tags}{(Optional) An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL}{Using Cost Allocation Tags}
+in the \emph{AWS Billing and Cost Management User Guide}.}
 
 \item{ExperimentConfig}{}
 }
@@ -96,6 +95,7 @@ Creates a processing job.
     "string"
   ),
   NetworkConfig = list(
+    EnableInterContainerTrafficEncryption = TRUE|FALSE,
     EnableNetworkIsolation = TRUE|FALSE,
     VpcConfig = list(
       SecurityGroupIds = list(

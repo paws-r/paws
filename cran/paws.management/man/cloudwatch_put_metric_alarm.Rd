@@ -30,7 +30,7 @@ Valid Values: \verb{arn:aws:automate:<i>region</i>:ec2:stop} \\|
 \verb{arn:aws:automate:<i>region</i>:ec2:recover} \\|
 \verb{arn:aws:automate:<i>region</i>:ec2:reboot} \\|
 \verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } \\|
-\verb{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
+\verb{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>:autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
 
 Valid Values (for use with IAM roles):
 \verb{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0}
@@ -48,7 +48,7 @@ Valid Values: \verb{arn:aws:automate:<i>region</i>:ec2:stop} \\|
 \verb{arn:aws:automate:<i>region</i>:ec2:recover} \\|
 \verb{arn:aws:automate:<i>region</i>:ec2:reboot} \\|
 \verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } \\|
-\verb{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
+\verb{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>:autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
 
 Valid Values (for use with IAM roles):
 \verb{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0}
@@ -66,7 +66,7 @@ Valid Values: \verb{arn:aws:automate:<i>region</i>:ec2:stop} \\|
 \verb{arn:aws:automate:<i>region</i>:ec2:recover} \\|
 \verb{arn:aws:automate:<i>region</i>:ec2:reboot} \\|
 \verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } \\|
-\verb{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
+\verb{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>:autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
 
 Valid Values (for use with IAM roles):
 \verb{&gt;arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0}
@@ -194,7 +194,8 @@ math expression.
 
 One item in the \code{Metrics} array is the expression that the alarm
 watches. You designate this expression by setting \code{ReturnValue} to true
-for this object in the array. For more information, see MetricDataQuery.
+for this object in the array. For more information, see
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricDataQuery.html}{MetricDataQuery}.
 
 If you use the \code{Metrics} parameter, you cannot include the \code{MetricName},
 \code{Dimensions}, \code{Period}, \code{Namespace}, \code{Statistic}, or \code{ExtendedStatistic}

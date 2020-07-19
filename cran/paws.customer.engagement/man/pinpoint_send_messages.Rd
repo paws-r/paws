@@ -22,7 +22,7 @@ Creates and sends a direct message.
     Addresses = list(
       list(
         BodyOverride = "string",
-        ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+        ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
         Context = list(
           "string"
         ),
@@ -207,6 +207,7 @@ Creates and sends a direct message.
       SMSMessage = list(
         Body = "string",
         Keyword = "string",
+        MediaUrl = "string",
         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
         OriginationNumber = "string",
         SenderId = "string",

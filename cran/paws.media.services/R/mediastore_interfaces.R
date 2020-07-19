@@ -63,6 +63,18 @@ NULL
   return(populate(args, shape))
 }
 
+.mediastore$delete_metric_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediastore$delete_metric_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .mediastore$describe_container_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -108,6 +120,18 @@ NULL
 .mediastore$get_lifecycle_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(LifecyclePolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediastore$get_metric_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediastore$get_metric_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MetricPolicy = structure(list(ContainerLevelMetrics = structure(logical(0), tags = list(type = "string")), MetricPolicyRules = structure(list(structure(list(ObjectGroup = structure(logical(0), tags = list(type = "string")), ObjectGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -166,6 +190,18 @@ NULL
 }
 
 .mediastore$put_lifecycle_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediastore$put_metric_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContainerName = structure(logical(0), tags = list(type = "string")), MetricPolicy = structure(list(ContainerLevelMetrics = structure(logical(0), tags = list(type = "string")), MetricPolicyRules = structure(list(structure(list(ObjectGroup = structure(logical(0), tags = list(type = "string")), ObjectGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mediastore$put_metric_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

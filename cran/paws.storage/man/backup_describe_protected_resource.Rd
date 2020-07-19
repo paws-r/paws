@@ -3,7 +3,7 @@
 \name{backup_describe_protected_resource}
 \alias{backup_describe_protected_resource}
 \title{Returns information about a saved resource, including the last time it
-was backed-up, its Amazon Resource Name (ARN), and the AWS service type
+was backed up, its Amazon Resource Name (ARN), and the AWS service type
 of the saved resource}
 \usage{
 backup_describe_protected_resource(ResourceArn)
@@ -14,7 +14,7 @@ format of the ARN depends on the resource type.}
 }
 \description{
 Returns information about a saved resource, including the last time it
-was backed-up, its Amazon Resource Name (ARN), and the AWS service type
+was backed up, its Amazon Resource Name (ARN), and the AWS service type
 of the saved resource.
 }
 \section{Request syntax}{

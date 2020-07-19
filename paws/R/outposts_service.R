@@ -45,6 +45,8 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=outposts_create_outpost]{create_outpost} \tab Creates an Outpost \cr
+#'  \link[=outposts_delete_outpost]{delete_outpost} \tab Deletes the Outpost \cr
+#'  \link[=outposts_delete_site]{delete_site} \tab Deletes the site \cr
 #'  \link[=outposts_get_outpost]{get_outpost} \tab Gets information about the specified Outpost \cr
 #'  \link[=outposts_get_outpost_instance_types]{get_outpost_instance_types} \tab Lists the instance types for the specified Outpost\cr
 #'  \link[=outposts_list_outposts]{list_outposts} \tab List the Outposts for your AWS account \cr
@@ -66,7 +68,7 @@ outposts <- function(config = list()) {
 
 .outposts$metadata <- list(
   service_name = "outposts",
-  endpoints = list("*" = list(endpoint = "outposts.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "outposts.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "outposts.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "outposts.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "outposts.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "outposts.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Outposts",
   api_version = "2019-12-03",
   signing_name = "outposts",

@@ -50,7 +50,7 @@ information, see step 5 in \href{https://docs.aws.amazon.com/codebuild/latest/us
   filterGroups = list(
     list(
       list(
-        type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH",
+        type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
         pattern = "string",
         excludeMatchedPattern = TRUE|FALSE
       )

@@ -137,7 +137,7 @@ sesv2 <- function(config = list()) {
 
 .sesv2$metadata <- list(
   service_name = "sesv2",
-  endpoints = list("*" = list(endpoint = "sesv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sesv2.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "sesv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sesv2.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sesv2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sesv2.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SESv2",
   api_version = "2019-09-27",
   signing_name = "ses",

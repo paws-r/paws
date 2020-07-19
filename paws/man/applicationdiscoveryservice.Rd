@@ -11,54 +11,64 @@ applicationdiscoveryservice(config = list())
 }
 \description{
 AWS Application Discovery Service helps you plan application migration
-projects by automatically identifying servers, virtual machines (VMs),
-software, and software dependencies running in your on-premises data
-centers. Application Discovery Service also collects application
-performance data, which can help you assess the outcome of your
-migration. The data collected by Application Discovery Service is
-securely retained in an AWS-hosted and managed database in the cloud.
-You can export the data as a CSV or XML file into your preferred
-visualization tool or cloud-migration solution to plan your migration.
-For more information, see \href{http://aws.amazon.com/application-discovery/faqs/}{AWS Application Discovery Service FAQ}.
-
-Application Discovery Service offers two modes of operation:
+projects. It automatically identifies servers, virtual machines (VMs),
+and network dependencies in your on-premises data centers. For more
+information, see the \href{http://aws.amazon.com/application-discovery/faqs/}{AWS Application Discovery Service FAQ}. Application
+Discovery Service offers three ways of performing discovery and
+collecting data about your on-premises servers:
 \itemize{
-\item \strong{Agentless discovery} mode is recommended for environments that
-use VMware vCenter Server. This mode doesn\'t require you to install
-an agent on each host. Agentless discovery gathers server
-information regardless of the operating systems, which minimizes the
-time required for initial on-premises infrastructure assessment.
-Agentless discovery doesn\'t collect information about software and
-software dependencies. It also doesn\'t work in non-VMware
-environments.
-\item \strong{Agent-based discovery} mode collects a richer set of data than
+\item \strong{Agentless discovery} is recommended for environments that use
+VMware vCenter Server. This mode doesn\'t require you to install an
+agent on each host. It does not work in non-VMware environments.
+\itemize{
+\item Agentless discovery gathers server information regardless of the
+operating systems, which minimizes the time required for initial
+on-premises infrastructure assessment.
+\item Agentless discovery doesn\'t collect information about network
+dependencies, only agent-based discovery collects that
+information.
+}
+}<!-- -->
+
+\itemize{
+\item \strong{Agent-based discovery} collects a richer set of data than
 agentless discovery by using the AWS Application Discovery Agent,
-which you install on one or more hosts in your data center. The
-agent captures infrastructure and application information, including
-an inventory of installed software applications, system and process
-performance, resource utilization, and network dependencies between
-workloads. The information collected by agents is secured at rest
-and in transit to the Application Discovery Service database in the
+which you install on one or more hosts in your data center.
+\itemize{
+\item The agent captures infrastructure and application information,
+including an inventory of running processes, system performance
+information, resource utilization, and network dependencies.
+\item The information collected by agents is secured at rest and in
+transit to the Application Discovery Service database in the
 cloud.
 }
+}<!-- -->
+
+\itemize{
+\item \strong{AWS Partner Network (APN) solutions} integrate with Application
+Discovery Service, enabling you to import details of your
+on-premises environment directly into Migration Hub without using
+the discovery connector or discovery agent.
+\itemize{
+\item Third-party application discovery tools can query AWS
+Application Discovery Service, and they can write to the
+Application Discovery Service database using the public API.
+\item In this way, you can import data into Migration Hub and view it,
+so that you can associate applications with servers and track
+migrations.
+}
+}
+
+\strong{Recommendations}
 
 We recommend that you use agent-based discovery for non-VMware
-environments and to collect information about software and software
-dependencies. You can also run agent-based and agentless discovery
-simultaneously. Use agentless discovery to quickly complete the initial
-infrastructure assessment and then install agents on select hosts.
+environments, and whenever you want to collect information about network
+dependencies. You can run agent-based and agentless discovery
+simultaneously. Use agentless discovery to complete the initial
+infrastructure assessment quickly, and then install agents on select
+hosts to collect additional information.
 
-Application Discovery Service integrates with application discovery
-solutions from AWS Partner Network (APN) partners. Third-party
-application discovery tools can query Application Discovery Service and
-write to the Application Discovery Service database using a public API.
-You can then import the data into either a visualization tool or
-cloud-migration solution.
-
-Application Discovery Service doesn\'t gather sensitive information. All
-data is handled according to the \href{http://aws.amazon.com/privacy/}{AWS Privacy Policy}. You can operate Application
-Discovery Service offline to inspect collected data before it is shared
-with the service.
+\strong{Working With This Guide}
 
 This API reference provides descriptions, syntax, and usage examples for
 each of the actions and data types for Application Discovery Service.
@@ -66,13 +76,26 @@ The topic for each action shows the API request parameters and the
 response. Alternatively, you can use one of the AWS SDKs to access an
 API that is tailored to the programming language or platform that
 you\'re using. For more information, see \href{http://aws.amazon.com/tools/#SDKs}{AWS SDKs}.
+\itemize{
+\item Remember that you must set your Migration Hub home region before you
+call any of these APIs.
+\item You must make API calls for write actions (create, notify,
+associate, disassociate, import, or put) while in your home region,
+or a \code{HomeRegionNotSetException} error is returned.
+\item API calls for read actions (list, describe, stop, and delete) are
+permitted outside of your home region.
+\item Although it is unlikely, the Migration Hub home region could change.
+If you call APIs outside the home region, an \code{InvalidInputException}
+is returned.
+\item You must call \code{GetHomeRegion} to obtain the latest Migration Hub
+home region.
+}
 
-This guide is intended for use with the \href{http://docs.aws.amazon.com/application-discovery/latest/userguide/}{\emph{AWS Application Discovery Service User Guide}}
-.
+This guide is intended for use with the \href{http://docs.aws.amazon.com/application-discovery/latest/userguide/}{AWS Application Discovery Service User Guide}.
 
-Remember that you must set your AWS Migration Hub home region before you
-call any of these APIs, or a \code{HomeRegionNotSetException} error will be
-returned. Also, you must make the API calls while in your home region.
+All data is handled according to the \href{http://aws.amazon.com/privacy/}{AWS Privacy Policy}. You can operate Application
+Discovery Service offline to inspect collected data before it is shared
+with the service.
 }
 \section{Service syntax}{
 \preformatted{svc <- applicationdiscoveryservice(
@@ -111,12 +134,12 @@ returned. Also, you must make the API calls while in your home region.
 \link[=applicationdiscoveryservice_disassociate_configuration_items_from_application]{disassociate_configuration_items_from_application} \tab Disassociates one or more configuration items from an application \cr
 \link[=applicationdiscoveryservice_export_configurations]{export_configurations} \tab Deprecated \cr
 \link[=applicationdiscoveryservice_get_discovery_summary]{get_discovery_summary} \tab Retrieves a short summary of discovered assets \cr
-\link[=applicationdiscoveryservice_list_configurations]{list_configurations} \tab Retrieves a list of configuration items as specified by the value passed to the required paramater configurationType \cr
+\link[=applicationdiscoveryservice_list_configurations]{list_configurations} \tab Retrieves a list of configuration items as specified by the value passed to the required parameter configurationType \cr
 \link[=applicationdiscoveryservice_list_server_neighbors]{list_server_neighbors} \tab Retrieves a list of servers that are one network hop away from a specified server \cr
 \link[=applicationdiscoveryservice_start_continuous_export]{start_continuous_export} \tab Start the continuous flow of agent's discovered data into Amazon Athena \cr
 \link[=applicationdiscoveryservice_start_data_collection_by_agent_ids]{start_data_collection_by_agent_ids} \tab Instructs the specified agents or connectors to start collecting data \cr
 \link[=applicationdiscoveryservice_start_export_task]{start_export_task} \tab Begins the export of discovered data to an S3 bucket \cr
-\link[=applicationdiscoveryservice_start_import_task]{start_import_task} \tab Starts an import task, which allows you to import details of your on-premises environment directly into AWS without having to use the Application Discovery Service (ADS) tools such as the Discovery Connector or Discovery Agent\cr
+\link[=applicationdiscoveryservice_start_import_task]{start_import_task} \tab Starts an import task, which allows you to import details of your on-premises environment directly into AWS Migration Hub without having to use the Application Discovery Service (ADS) tools such as the Discovery Connector or Discovery Agent\cr
 \link[=applicationdiscoveryservice_stop_continuous_export]{stop_continuous_export} \tab Stop the continuous flow of agent's discovered data into Amazon Athena \cr
 \link[=applicationdiscoveryservice_stop_data_collection_by_agent_ids]{stop_data_collection_by_agent_ids} \tab Instructs the specified agents or connectors to stop collecting data \cr
 \link[=applicationdiscoveryservice_update_application]{update_application} \tab Updates metadata about an application

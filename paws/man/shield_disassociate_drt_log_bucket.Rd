@@ -2,7 +2,7 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_disassociate_drt_log_bucket}
 \alias{shield_disassociate_drt_log_bucket}
-\title{Removes the DDoS Response team's (DRT) access to the specified Amazon S3
+\title{Removes the DDoS Response Team's (DRT) access to the specified Amazon S3
 bucket containing your AWS WAF logs}
 \usage{
 shield_disassociate_drt_log_bucket(LogBucket)
@@ -11,7 +11,7 @@ shield_disassociate_drt_log_bucket(LogBucket)
 \item{LogBucket}{[required] The Amazon S3 bucket that contains your AWS WAF logs.}
 }
 \description{
-Removes the DDoS Response team\'s (DRT) access to the specified Amazon
+Removes the DDoS Response Team\'s (DRT) access to the specified Amazon
 S3 bucket containing your AWS WAF logs.
 }
 \details{

@@ -14,9 +14,9 @@ instance.}
 \item{ServiceName}{[required] The name of the service that you specified when you registered the
 instance.}
 
-\item{MaxResults}{The maximum number of instances that you want Cloud Map to return in the
-response to a \code{DiscoverInstances} request. If you don\'t specify a value
-for \code{MaxResults}, Cloud Map returns up to 100 instances.}
+\item{MaxResults}{The maximum number of instances that you want AWS Cloud Map to return in
+the response to a \code{DiscoverInstances} request. If you don\'t specify a
+value for \code{MaxResults}, AWS Cloud Map returns up to 100 instances.}
 
 \item{QueryParameters}{A string map that contains attributes with values that you can use to
 filter instances by any custom attribute that you specified when you
@@ -27,6 +27,9 @@ key/value pairs will be returned.}
 }
 \description{
 Discovers registered instances for a specified namespace and service.
+You can use \code{DiscoverInstances} to discover instances for any type of
+namespace. For public and private DNS namespaces, you can also use DNS
+queries to discover instances.
 }
 \section{Request syntax}{
 \preformatted{svc$discover_instances(
@@ -41,4 +44,16 @@ Discovers registered instances for a specified namespace and service.
 }
 }
 
+\examples{
+\dontrun{
+# Example: Discover registered instances
+svc$discover_instances(
+  HealthStatus = "ALL",
+  MaxResults = 10L,
+  NamespaceName = "example.com",
+  ServiceName = "myservice"
+)
+}
+
+}
 \keyword{internal}

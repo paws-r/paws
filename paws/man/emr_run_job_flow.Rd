@@ -4,18 +4,24 @@
 \alias{emr_run_job_flow}
 \title{RunJobFlow creates and starts running a new cluster (job flow)}
 \usage{
-emr_run_job_flow(Name, LogUri, AdditionalInfo, AmiVersion, ReleaseLabel,
-  Instances, Steps, BootstrapActions, SupportedProducts,
-  NewSupportedProducts, Applications, Configurations, VisibleToAllUsers,
-  JobFlowRole, ServiceRole, Tags, SecurityConfiguration, AutoScalingRole,
-  ScaleDownBehavior, CustomAmiId, EbsRootVolumeSize, RepoUpgradeOnBoot,
-  KerberosAttributes, StepConcurrencyLevel)
+emr_run_job_flow(Name, LogUri, LogEncryptionKmsKeyId, AdditionalInfo,
+  AmiVersion, ReleaseLabel, Instances, Steps, BootstrapActions,
+  SupportedProducts, NewSupportedProducts, Applications, Configurations,
+  VisibleToAllUsers, JobFlowRole, ServiceRole, Tags,
+  SecurityConfiguration, AutoScalingRole, ScaleDownBehavior, CustomAmiId,
+  EbsRootVolumeSize, RepoUpgradeOnBoot, KerberosAttributes,
+  StepConcurrencyLevel, ManagedScalingPolicy)
 }
 \arguments{
 \item{Name}{[required] The name of the job flow.}
 
 \item{LogUri}{The location in Amazon S3 to write the log files of the job flow. If a
 value is not provided, logs are not created.}
+
+\item{LogEncryptionKmsKeyId}{The AWS KMS customer master key (CMK) used for encrypting log files. If
+a value is not provided, the logs will remain encrypted by AES-256. This
+attribute is only available with EMR version 5.30.0 and later, excluding
+EMR 6.0.0.}
 
 \item{AdditionalInfo}{A JSON string for selecting additional features.}
 
@@ -149,6 +155,8 @@ in the \emph{EMR Management Guide}.}
 
 \item{StepConcurrencyLevel}{Specifies the number of steps that can be executed concurrently. The
 default value is \code{1}. The maximum value is \code{256}.}
+
+\item{ManagedScalingPolicy}{The specified managed scaling policy for an Amazon EMR cluster.}
 }
 \description{
 RunJobFlow creates and starts running a new cluster (job flow). The
@@ -187,6 +195,7 @@ parameters, but not both.
 \preformatted{svc$run_job_flow(
   Name = "string",
   LogUri = "string",
+  LogEncryptionKmsKeyId = "string",
   AdditionalInfo = "string",
   AmiVersion = "string",
   ReleaseLabel = "string",
@@ -304,7 +313,11 @@ parameters, but not both.
           SpotSpecification = list(
             TimeoutDurationMinutes = 123,
             TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
-            BlockDurationMinutes = 123
+            BlockDurationMinutes = 123,
+            AllocationStrategy = "capacity-optimized"
+          ),
+          OnDemandSpecification = list(
+            AllocationStrategy = "lowest-price"
           )
         )
       )
@@ -417,7 +430,16 @@ parameters, but not both.
     ADDomainJoinUser = "string",
     ADDomainJoinPassword = "string"
   ),
-  StepConcurrencyLevel = 123
+  StepConcurrencyLevel = 123,
+  ManagedScalingPolicy = list(
+    ComputeLimits = list(
+      UnitType = "InstanceFleetUnits"|"Instances"|"VCPU",
+      MinimumCapacityUnits = 123,
+      MaximumCapacityUnits = 123,
+      MaximumOnDemandCapacityUnits = 123,
+      MaximumCoreCapacityUnits = 123
+    )
+  )
 )
 }
 }

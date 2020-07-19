@@ -15,7 +15,7 @@ Balancer (ALB) or an API Gateway stage.
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
 \itemize{
-\item CLI - Specify the region when you use the CloudFront scope:
+\item CLI - Specify the Region when you use the CloudFront scope:
 \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
@@ -38,7 +38,7 @@ resources from the prior release, see the \href{https://docs.aws.amazon.com/waf/
 }
 \details{
 Retrieves an array of managed rule groups that are available for you to
-use. This list includes all AWS managed rule groups and the AWS
+use. This list includes all AWS Managed Rules rule groups and the AWS
 Marketplace managed rule groups that you\'re subscribed to.
 }
 \section{Request syntax}{

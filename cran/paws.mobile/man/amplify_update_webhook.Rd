@@ -2,19 +2,19 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_update_webhook}
 \alias{amplify_update_webhook}
-\title{Update a webhook}
+\title{Updates a webhook}
 \usage{
 amplify_update_webhook(webhookId, branchName, description)
 }
 \arguments{
-\item{webhookId}{[required] Unique Id for a webhook.}
+\item{webhookId}{[required] The unique ID for a webhook.}
 
-\item{branchName}{Name for a branch, part of an Amplify App.}
+\item{branchName}{The name for a branch that is part of an Amplify app.}
 
-\item{description}{Description for a webhook.}
+\item{description}{The description for a webhook.}
 }
 \description{
-Update a webhook.
+Updates a webhook.
 }
 \section{Request syntax}{
 \preformatted{svc$update_webhook(

@@ -32,10 +32,10 @@ value.}
 \description{
 Describes available AWS services in a prefix list format, which includes
 the prefix list name and prefix list ID of the service and the IP
-address range for the service. A prefix list ID is required for creating
-an outbound security group rule that allows traffic from a VPC to access
-an AWS service through a gateway VPC endpoint. Currently, the services
-that support this action are Amazon S3 and Amazon DynamoDB.
+address range for the service.
+}
+\details{
+We recommend that you use DescribeManagedPrefixLists instead.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_prefix_lists(

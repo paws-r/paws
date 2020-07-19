@@ -5,7 +5,8 @@
 \title{Imports the public key from an RSA key pair that you created with a
 third-party tool}
 \usage{
-ec2_import_key_pair(DryRun, KeyName, PublicKeyMaterial)
+ec2_import_key_pair(DryRun, KeyName, PublicKeyMaterial,
+  TagSpecifications)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -17,6 +18,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{PublicKeyMaterial}{[required] The public key. For API calls, the text must be base64-encoded. For
 command line tools, base64 encoding is performed for you.}
+
+\item{TagSpecifications}{The tags to apply to the imported key pair.}
 }
 \description{
 Imports the public key from an RSA key pair that you created with a
@@ -33,7 +36,18 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \preformatted{svc$import_key_pair(
   DryRun = TRUE|FALSE,
   KeyName = "string",
-  PublicKeyMaterial = raw
+  PublicKeyMaterial = raw,
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

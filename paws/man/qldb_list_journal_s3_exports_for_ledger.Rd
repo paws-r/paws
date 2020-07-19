@@ -27,6 +27,10 @@ ledger.
 This action returns a maximum of \code{MaxResults} items, and is paginated so
 that you can retrieve all the items by calling
 \code{ListJournalS3ExportsForLedger} multiple times.
+
+This action does not return any expired export jobs. For more
+information, see \href{https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration}{Export Job Expiration}
+in the \emph{Amazon QLDB Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_journal_s3_exports_for_ledger(

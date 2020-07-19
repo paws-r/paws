@@ -9,19 +9,22 @@ databasemigrationservice_create_endpoint(EndpointIdentifier,
   DatabaseName, ExtraConnectionAttributes, KmsKeyId, Tags, CertificateArn,
   SslMode, ServiceAccessRoleArn, ExternalTableDefinition,
   DynamoDbSettings, S3Settings, DmsTransferSettings, MongoDbSettings,
-  KinesisSettings, ElasticsearchSettings, RedshiftSettings)
+  KinesisSettings, KafkaSettings, ElasticsearchSettings, NeptuneSettings,
+  RedshiftSettings)
 }
 \arguments{
-\item{EndpointIdentifier}{[required] The database endpoint identifier. Identifiers must begin with a letter;
-must contain only ASCII letters, digits, and hyphens; and must not end
-with a hyphen or contain two consecutive hyphens.}
+\item{EndpointIdentifier}{[required] The database endpoint identifier. Identifiers must begin with a letter
+and must contain only ASCII letters, digits, and hyphens. They can\'t
+end with a hyphen or contain two consecutive hyphens.}
 
 \item{EndpointType}{[required] The type of endpoint. Valid values are \code{source} and \code{target}.}
 
 \item{EngineName}{[required] The type of engine for the endpoint. Valid values, depending on the
-\code{EndpointType} value, include \code{mysql}, \code{oracle}, \code{postgres}, \code{mariadb},
-\code{aurora}, \code{aurora-postgresql}, \code{redshift}, \code{s3}, \code{db2}, \code{azuredb},
-\code{sybase}, \code{dynamodb}, \code{mongodb}, and \code{sqlserver}.}
+\code{EndpointType} value, include \code{"mysql"}, \code{"oracle"}, \code{"postgres"},
+\code{"mariadb"}, \code{"aurora"}, \code{"aurora-postgresql"}, \code{"redshift"}, \code{"s3"},
+\code{"db2"}, \code{"azuredb"}, \code{"sybase"}, \code{"dynamodb"}, \code{"mongodb"},
+\code{"kinesis"}, \code{"kafka"}, \code{"elasticsearch"}, \code{"documentdb"},
+\code{"sqlserver"}, and \code{"neptune"}.}
 
 \item{Username}{The user name to be used to log in to the endpoint database.}
 
@@ -62,7 +65,7 @@ to use to create the endpoint.}
 \item{ExternalTableDefinition}{The external table definition.}
 
 \item{DynamoDbSettings}{Settings in JSON format for the target Amazon DynamoDB endpoint. For
-more information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html}{Using Object Mapping to Migrate Data to DynamoDB}
+information about other available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html}{Using Object Mapping to Migrate Data to DynamoDB}
 in the \emph{AWS Database Migration Service User Guide.}}
 
 \item{S3Settings}{Settings in JSON format for the target Amazon S3 endpoint. For more
@@ -89,17 +92,24 @@ JSON syntax for these settings is as follows:
 \verb{\\\{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" \\\} }}
 
 \item{MongoDbSettings}{Settings in JSON format for the source MongoDB endpoint. For more
-information about the available settings, see the configuration
-properties section in \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html}{Using MongoDB as a Target for AWS Database Migration Service}
+information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html#CHAP_Source.MongoDB.Configuration}{Using MongoDB as a Target for AWS Database Migration Service}
 in the \emph{AWS Database Migration Service User Guide.}}
 
-\item{KinesisSettings}{Settings in JSON format for the target Amazon Kinesis Data Streams
-endpoint. For more information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping}{Using Object Mapping to Migrate Data to a Kinesis Data Stream}
-in the \emph{AWS Database Migration User Guide.}}
+\item{KinesisSettings}{Settings in JSON format for the target endpoint for Amazon Kinesis Data
+Streams. For more information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html}{Using Amazon Kinesis Data Streams as a Target for AWS Database Migration Service}
+in the \emph{AWS Database Migration Service User Guide.}}
+
+\item{KafkaSettings}{Settings in JSON format for the target Apache Kafka endpoint. For more
+information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kafka.html}{Using Apache Kafka as a Target for AWS Database Migration Service}
+in the \emph{AWS Database Migration Service User Guide.}}
 
 \item{ElasticsearchSettings}{Settings in JSON format for the target Elasticsearch endpoint. For more
 information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration}{Extra Connection Attributes When Using Elasticsearch as a Target for AWS DMS}
-in the \emph{AWS Database Migration User Guide.}}
+in the \emph{AWS Database Migration Service User Guide}.}
+
+\item{NeptuneSettings}{Settings in JSON format for the target Amazon Neptune endpoint. For more
+information about the available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Neptune.html#CHAP_Target.Neptune.EndpointSettings}{Specifying Endpoint Settings for Amazon Neptune as a Target}
+in the \emph{AWS Database Migration Service User Guide.}}
 
 \item{RedshiftSettings}{}
 }
@@ -151,7 +161,8 @@ Creates an endpoint using the provided settings.
     IncludeOpForFullLoad = TRUE|FALSE,
     CdcInsertsOnly = TRUE|FALSE,
     TimestampColumnName = "string",
-    ParquetTimestampInMillisecond = TRUE|FALSE
+    ParquetTimestampInMillisecond = TRUE|FALSE,
+    CdcInsertsAndUpdates = TRUE|FALSE
   ),
   DmsTransferSettings = list(
     ServiceAccessRoleArn = "string",
@@ -173,14 +184,32 @@ Creates an endpoint using the provided settings.
   ),
   KinesisSettings = list(
     StreamArn = "string",
-    MessageFormat = "json",
-    ServiceAccessRoleArn = "string"
+    MessageFormat = "json"|"json-unformatted",
+    ServiceAccessRoleArn = "string",
+    IncludeTransactionDetails = TRUE|FALSE,
+    IncludePartitionValue = TRUE|FALSE,
+    PartitionIncludeSchemaTable = TRUE|FALSE,
+    IncludeTableAlterOperations = TRUE|FALSE,
+    IncludeControlDetails = TRUE|FALSE
+  ),
+  KafkaSettings = list(
+    Broker = "string",
+    Topic = "string"
   ),
   ElasticsearchSettings = list(
     ServiceAccessRoleArn = "string",
     EndpointUri = "string",
     FullLoadErrorPercentage = 123,
     ErrorRetryDuration = 123
+  ),
+  NeptuneSettings = list(
+    ServiceAccessRoleArn = "string",
+    S3BucketName = "string",
+    S3BucketFolder = "string",
+    ErrorRetryDuration = 123,
+    MaxFileSize = 123,
+    MaxRetryCount = 123,
+    IamAuthEnabled = TRUE|FALSE
   ),
   RedshiftSettings = list(
     AcceptAnyDate = TRUE|FALSE,

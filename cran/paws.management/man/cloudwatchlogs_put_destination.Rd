@@ -22,13 +22,17 @@ destinations for cross-account subscriptions.
 \details{
 A destination encapsulates a physical resource (such as an Amazon
 Kinesis stream) and enables you to subscribe to a real-time stream of
-log events for a different account, ingested using PutLogEvents.
+log events for a different account, ingested using
+\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html}{PutLogEvents}.
 
 Through an access policy, a destination controls what is written to it.
 By default, \code{PutDestination} does not set any access policy with the
 destination, which means a cross-account user cannot call
-PutSubscriptionFilter against this destination. To enable this, the
-destination owner must call PutDestinationPolicy after \code{PutDestination}.
+\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutSubscriptionFilter.html}{PutSubscriptionFilter}
+against this destination. To enable this, the destination owner must
+call
+\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestinationPolicy.html}{PutDestinationPolicy}
+after \code{PutDestination}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_destination(

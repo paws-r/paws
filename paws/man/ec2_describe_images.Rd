@@ -40,11 +40,12 @@ with ENA is enabled.
 \item \code{kernel-id} - The kernel ID.
 \item \code{manifest-location} - The location of the image manifest.
 \item \code{name} - The name of the AMI (provided during image creation).
-\item \code{owner-alias} - String value from an Amazon-maintained list
-(\code{amazon} \\| \code{aws-marketplace} \\| \code{microsoft}) of snapshot owners.
-Not to be confused with the user-configured AWS account alias, which
-is set from the IAM console.
-\item \code{owner-id} - The AWS account ID of the image owner.
+\item \code{owner-alias} - The owner alias, from an Amazon-maintained list
+(\code{amazon} \\| \code{aws-marketplace}). This is not the user-configured AWS
+account alias set using the IAM console. We recommend that you use
+the related parameter instead of this filter.
+\item \code{owner-id} - The AWS account ID of the owner. We recommend that you
+use the related parameter instead of this filter.
 \item \code{platform} - The platform. To only list Windows-based AMIs, use
 \code{windows}.
 \item \code{product-code} - The product code.
@@ -77,11 +78,10 @@ regardless of the tag value.
 
 Default: Describes all images available to you.}
 
-\item{Owners}{Filters the images by the owner. Specify an AWS account ID, \code{self}
-(owner is the sender of the request), or an AWS owner alias (valid
-values are \code{amazon} \\| \code{aws-marketplace} \\| \code{microsoft}). Omitting this
-option returns all images for which you have launch permissions,
-regardless of ownership.}
+\item{Owners}{Scopes the results to images with the specified owners. You can specify
+a combination of AWS account IDs, \code{self}, \code{amazon}, and
+\code{aws-marketplace}. If you omit this parameter, the results include all
+images for which you have launch permissions, regardless of ownership.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

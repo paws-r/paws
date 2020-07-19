@@ -8,13 +8,13 @@ version}
 imagebuilder_list_components(owner, filters, maxResults, nextToken)
 }
 \arguments{
-\item{owner}{The owner defines whose components you wish to list. By default this
-request will only show components owned by your account. You may use
-this field to specify if you wish to view components owned by yourself,
-Amazon, or those components that have been shared with you by other
+\item{owner}{The owner defines which components you want to list. By default, this
+request will only show components owned by your account. You can use
+this field to specify if you want to view components owned by yourself,
+by Amazon, or those components that have been shared with you by other
 customers.}
 
-\item{filters}{}
+\item{filters}{The filters.}
 
 \item{maxResults}{The maximum items to return in a request.}
 

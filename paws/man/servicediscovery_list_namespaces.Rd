@@ -51,4 +51,11 @@ current AWS account.
 }
 }
 
+\examples{
+\dontrun{
+# Example: List namespaces
+svc$list_namespaces()
+}
+
+}
 \keyword{internal}

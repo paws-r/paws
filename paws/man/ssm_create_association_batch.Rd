@@ -55,7 +55,9 @@ exception.
       AssociationName = "string",
       MaxErrors = "string",
       MaxConcurrency = "string",
-      ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED"
+      ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+      SyncCompliance = "AUTO"|"MANUAL",
+      ApplyOnlyAtCronInterval = TRUE|FALSE
     )
   )
 )

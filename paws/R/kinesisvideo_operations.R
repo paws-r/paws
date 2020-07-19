@@ -14,12 +14,12 @@ NULL
 #'   SingleMasterConfiguration, Tags)
 #'
 #' @param ChannelName &#91;required&#93; A name for the signaling channel that you are creating. It must be
-#' unique for each account and region.
+#' unique for each AWS account and AWS Region.
 #' @param ChannelType A type of the signaling channel that you are creating. Currently,
 #' `SINGLE_MASTER` is the only supported channel type.
 #' @param SingleMasterConfiguration A structure containing the configuration for the `SINGLE_MASTER` channel
 #' type.
-#' @param Tags A set of tags (key/value pairs) that you want to associate with this
+#' @param Tags A set of tags (key-value pairs) that you want to associate with this
 #' channel.
 #'
 #' @section Request syntax:
@@ -90,7 +90,8 @@ kinesisvideo_create_signaling_channel <- function(ChannelName, ChannelType = NUL
 #' information when processing the stream. For more information about media
 #' types, see [Media
 #' Types](http://www.iana.org/assignments/media-types/media-types.xhtml).
-#' If you choose to specify the `MediaType`, see Naming Requirements for
+#' If you choose to specify the `MediaType`, see [Naming
+#' Requirements](https://tools.ietf.org/html/rfc6838#section-4.2) for
 #' guidelines.
 #' 
 #' Example valid values include \"video/h264\" and
@@ -163,10 +164,11 @@ kinesisvideo_create_stream <- function(DeviceName = NULL, StreamName, MediaType 
 #' @usage
 #' kinesisvideo_delete_signaling_channel(ChannelARN, CurrentVersion)
 #'
-#' @param ChannelARN &#91;required&#93; The ARN of the signaling channel that you want to delete.
+#' @param ChannelARN &#91;required&#93; The Amazon Resource Name (ARN) of the signaling channel that you want to
+#' delete.
 #' @param CurrentVersion The current version of the signaling channel that you want to delete.
 #' You can obtain the current version by invoking the
-#' `DescribeSignalingChannel` or `ListSignalingChannels` APIs.
+#' `DescribeSignalingChannel` or `ListSignalingChannels` API operations.
 #'
 #' @section Request syntax:
 #' ```
@@ -255,8 +257,8 @@ kinesisvideo_delete_stream <- function(StreamARN, CurrentVersion = NULL) {
 #' Returns the most current information about the signaling channel
 #'
 #' Returns the most current information about the signaling channel. You
-#' must specify either the name or the ARN of the channel that you want to
-#' describe.
+#' must specify either the name or the Amazon Resource Name (ARN) of the
+#' channel that you want to describe.
 #'
 #' @usage
 #' kinesisvideo_describe_signaling_channel(ChannelName, ChannelARN)
@@ -359,7 +361,7 @@ kinesisvideo_describe_stream <- function(StreamName = NULL, StreamARN = NULL) {
 #' svc$get_data_endpoint(
 #'   StreamName = "string",
 #'   StreamARN = "string",
-#'   APIName = "PUT_MEDIA"|"GET_MEDIA"|"LIST_FRAGMENTS"|"GET_MEDIA_FOR_FRAGMENT_LIST"|"GET_HLS_STREAMING_SESSION_URL"|"GET_DASH_STREAMING_SESSION_URL"
+#'   APIName = "PUT_MEDIA"|"GET_MEDIA"|"LIST_FRAGMENTS"|"GET_MEDIA_FOR_FRAGMENT_LIST"|"GET_HLS_STREAMING_SESSION_URL"|"GET_DASH_STREAMING_SESSION_URL"|"GET_CLIP"
 #' )
 #' ```
 #'
@@ -392,9 +394,9 @@ kinesisvideo_get_data_endpoint <- function(StreamName = NULL, StreamARN = NULL, 
 #' consists of the `Protocols` and `Role` properties.
 #' 
 #' `Protocols` is used to determine the communication mechanism. For
-#' example, specifying `WSS` as the protocol, results in this API producing
-#' a secure websocket endpoint, and specifying `HTTPS` as the protocol,
-#' results in this API generating an HTTPS endpoint.
+#' example, if you specify `WSS` as the protocol, this API produces a
+#' secure websocket endpoint. If you specify `HTTPS` as the protocol, this
+#' API generates an HTTPS endpoint.
 #' 
 #' `Role` determines the messaging permissions. A `MASTER` role results in
 #' this API generating an endpoint that a client can use to communicate
@@ -406,7 +408,8 @@ kinesisvideo_get_data_endpoint <- function(StreamName = NULL, StreamARN = NULL, 
 #' kinesisvideo_get_signaling_channel_endpoint(ChannelARN,
 #'   SingleMasterChannelEndpointConfiguration)
 #'
-#' @param ChannelARN &#91;required&#93; The ARN of the signalling channel for which you want to get an endpoint.
+#' @param ChannelARN &#91;required&#93; The Amazon Resource Name (ARN) of the signalling channel for which you
+#' want to get an endpoint.
 #' @param SingleMasterChannelEndpointConfiguration A structure containing the endpoint configuration for the
 #' `SINGLE_MASTER` channel type.
 #'
@@ -551,10 +554,11 @@ kinesisvideo_list_streams <- function(MaxResults = NULL, NextToken = NULL, Strea
 #' @usage
 #' kinesisvideo_list_tags_for_resource(NextToken, ResourceARN)
 #'
-#' @param NextToken If you specify this parameter and the result of a ListTagsForResource
+#' @param NextToken If you specify this parameter and the result of a `ListTagsForResource`
 #' call is truncated, the response includes a token that you can use in the
 #' next request to fetch the next batch of tags.
-#' @param ResourceARN &#91;required&#93; The ARN of the signaling channel for which you want to list tags.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the signaling channel for which you
+#' want to list tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -643,7 +647,8 @@ kinesisvideo_list_tags_for_stream <- function(NextToken = NULL, StreamARN = NULL
 #' @usage
 #' kinesisvideo_tag_resource(ResourceARN, Tags)
 #'
-#' @param ResourceARN &#91;required&#93; The ARN of the signaling channel to which you want to add tags.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the signaling channel to which you
+#' want to add tags.
 #' @param Tags &#91;required&#93; A list of tags to associate with the specified signaling channel. Each
 #' tag is a key-value pair.
 #'
@@ -746,7 +751,8 @@ kinesisvideo_tag_stream <- function(StreamARN = NULL, StreamName = NULL, Tags) {
 #' @usage
 #' kinesisvideo_untag_resource(ResourceARN, TagKeyList)
 #'
-#' @param ResourceARN &#91;required&#93; The ARN of the signaling channel from which you want to remove tags.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the signaling channel from which you
+#' want to remove tags.
 #' @param TagKeyList &#91;required&#93; A list of the keys of the tags that you want to remove.
 #'
 #' @section Request syntax:
@@ -906,15 +912,16 @@ kinesisvideo_update_data_retention <- function(StreamName = NULL, StreamARN = NU
 #' operation and takes time to complete.
 #' 
 #' If the `MessageTtlSeconds` value is updated (either increased or
-#' reduced), then it only applies to new messages sent via this channel
-#' after it\'s been updated. Existing messages are still expire as per the
+#' reduced), it only applies to new messages sent via this channel after
+#' it\'s been updated. Existing messages are still expired as per the
 #' previous `MessageTtlSeconds` value.
 #'
 #' @usage
 #' kinesisvideo_update_signaling_channel(ChannelARN, CurrentVersion,
 #'   SingleMasterConfiguration)
 #'
-#' @param ChannelARN &#91;required&#93; The ARN of the signaling channel that you want to update.
+#' @param ChannelARN &#91;required&#93; The Amazon Resource Name (ARN) of the signaling channel that you want to
+#' update.
 #' @param CurrentVersion &#91;required&#93; The current version of the signaling channel that you want to update.
 #' @param SingleMasterConfiguration The structure containing the configuration for the `SINGLE_MASTER` type
 #' of the signaling channel that you want to update.

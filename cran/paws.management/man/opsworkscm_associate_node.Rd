@@ -41,7 +41,7 @@ Example (Chef):
 On a Puppet server, this command is an alternative to the
 \verb{puppet cert sign} command that signs a Puppet node CSR.
 
-Example (Chef):
+Example (Puppet):
 \verb{aws opsworks-cm associate-node --server-name <i>MyServer</i> --node-name <i>MyManagedNode</i> --engine-attributes "Name=<i>PUPPET_NODE_CSR</i>,Value=<i>csr-pem</i>"}
 
 A node can can only be associated with servers that are in a \code{HEALTHY}

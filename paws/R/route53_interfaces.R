@@ -483,6 +483,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53$list_hosted_zones_by_vpc_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VPCId = structure(logical(0), tags = list(location = "querystring", locationName = "vpcid", type = "string")), VPCRegion = structure(logical(0), tags = list(location = "querystring", locationName = "vpcregion", type = "string")), MaxItems = structure(logical(0), tags = list(location = "querystring", locationName = "maxitems", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nexttoken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53$list_hosted_zones_by_vpc_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(HostedZoneSummaries = structure(list(structure(list(HostedZoneId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(list(OwningAccount = structure(logical(0), tags = list(type = "string")), OwningService = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "HostedZoneSummary", type = "structure"))), tags = list(locationNameList = "HostedZoneSummary", type = "list")), MaxItems = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53$list_query_logging_configs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "querystring", locationName = "hostedzoneid", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nexttoken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxresults", type = "string"))), tags = list(type = "structure"))

@@ -40,6 +40,8 @@ This is the Amazon Rekognition API reference.
 \link[=rekognition_create_stream_processor]{create_stream_processor} \tab Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces in a streaming video \cr
 \link[=rekognition_delete_collection]{delete_collection} \tab Deletes the specified collection \cr
 \link[=rekognition_delete_faces]{delete_faces} \tab Deletes faces from a collection \cr
+\link[=rekognition_delete_project]{delete_project} \tab Deletes an Amazon Rekognition Custom Labels project \cr
+\link[=rekognition_delete_project_version]{delete_project_version} \tab Deletes an Amazon Rekognition Custom Labels model \cr
 \link[=rekognition_delete_stream_processor]{delete_stream_processor} \tab Deletes the stream processor identified by Name \cr
 \link[=rekognition_describe_collection]{describe_collection} \tab Describes the specified collection \cr
 \link[=rekognition_describe_projects]{describe_projects} \tab Lists and gets information about your Amazon Rekognition Custom Labels projects \cr
@@ -57,6 +59,8 @@ This is the Amazon Rekognition API reference.
 \link[=rekognition_get_face_search]{get_face_search} \tab Gets the face search results for Amazon Rekognition Video face search started by StartFaceSearch \cr
 \link[=rekognition_get_label_detection]{get_label_detection} \tab Gets the label detection results of a Amazon Rekognition Video analysis started by StartLabelDetection \cr
 \link[=rekognition_get_person_tracking]{get_person_tracking} \tab Gets the path tracking results of a Amazon Rekognition Video analysis started by StartPersonTracking \cr
+\link[=rekognition_get_segment_detection]{get_segment_detection} \tab Gets the segment detection results of a Amazon Rekognition Video analysis started by StartSegmentDetection \cr
+\link[=rekognition_get_text_detection]{get_text_detection} \tab Gets the text detection results of a Amazon Rekognition Video analysis started by StartTextDetection \cr
 \link[=rekognition_index_faces]{index_faces} \tab Detects faces in the input image and adds them to the specified collection \cr
 \link[=rekognition_list_collections]{list_collections} \tab Returns list of collection IDs in your account \cr
 \link[=rekognition_list_faces]{list_faces} \tab Returns metadata for faces in the specified collection \cr
@@ -71,7 +75,9 @@ This is the Amazon Rekognition API reference.
 \link[=rekognition_start_label_detection]{start_label_detection} \tab Starts asynchronous detection of labels in a stored video \cr
 \link[=rekognition_start_person_tracking]{start_person_tracking} \tab Starts the asynchronous tracking of a person's path in a stored video \cr
 \link[=rekognition_start_project_version]{start_project_version} \tab Starts the running of the version of a model \cr
+\link[=rekognition_start_segment_detection]{start_segment_detection} \tab Starts asynchronous detection of segment detection in a stored video \cr
 \link[=rekognition_start_stream_processor]{start_stream_processor} \tab Starts processing a stream processor \cr
+\link[=rekognition_start_text_detection]{start_text_detection} \tab Starts asynchronous detection of text in a stored video \cr
 \link[=rekognition_stop_project_version]{stop_project_version} \tab Stops a running model \cr
 \link[=rekognition_stop_stream_processor]{stop_stream_processor} \tab Stops a running stream processor that was created by CreateStreamProcessor
 }

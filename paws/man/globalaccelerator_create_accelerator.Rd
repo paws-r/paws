@@ -4,8 +4,8 @@
 \alias{globalaccelerator_create_accelerator}
 \title{Create an accelerator}
 \usage{
-globalaccelerator_create_accelerator(Name, IpAddressType, Enabled,
-  IdempotencyToken)
+globalaccelerator_create_accelerator(Name, IpAddressType, IpAddresses,
+  Enabled, IdempotencyToken, Tags)
 }
 \arguments{
 \item{Name}{[required] The name of an accelerator. The name can have a maximum of 32
@@ -13,6 +13,18 @@ characters, must contain only alphanumeric characters or hyphens (-),
 and must not begin or end with a hyphen.}
 
 \item{IpAddressType}{The value for the address type must be IPv4.}
+
+\item{IpAddresses}{Optionally, if you\'ve added your own IP address pool to Global
+Accelerator, you can choose IP addresses from your own pool to use for
+the accelerator\'s static IP addresses. You can specify one or two
+addresses, separated by a comma. Do not include the /32 suffix.
+
+If you specify only one IP address from your IP address range, Global
+Accelerator assigns a second static IP address for the accelerator from
+the AWS IP address pool.
+
+For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html}{Bring Your Own IP Addresses (BYOIP)}
+in the \emph{AWS Global Accelerator Developer Guide}.}
 
 \item{Enabled}{Indicates whether an accelerator is enabled. The value is true or false.
 The default value is true.
@@ -22,6 +34,11 @@ false, the accelerator can be deleted.}
 
 \item{IdempotencyToken}{[required] A unique, case-sensitive identifier that you provide to ensure the
 idempotency---that is, the uniqueness---of an accelerator.}
+
+\item{Tags}{Create tags for an accelerator.
+
+For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html}{Tagging in AWS Global Accelerator}
+in the \emph{AWS Global Accelerator Developer Guide}.}
 }
 \description{
 Create an accelerator. An accelerator includes one or more listeners
@@ -31,15 +48,29 @@ Balancers. To see an AWS CLI example of creating an accelerator, scroll
 down to \strong{Example}.
 }
 \details{
-You must specify the US-West-2 (Oregon) Region to create or update
+If you bring your own IP address ranges to AWS Global Accelerator
+(BYOIP), you can assign IP addresses from your own pool to your
+accelerator as the static IP address entry points. Only one IP address
+from each of your IP address ranges can be used for each accelerator.
+
+You must specify the US West (Oregon) Region to create or update
 accelerators.
 }
 \section{Request syntax}{
 \preformatted{svc$create_accelerator(
   Name = "string",
   IpAddressType = "IPV4",
+  IpAddresses = list(
+    "string"
+  ),
   Enabled = TRUE|FALSE,
-  IdempotencyToken = "string"
+  IdempotencyToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

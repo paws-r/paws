@@ -2,25 +2,25 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_modify_db_instance}
 \alias{docdb_modify_db_instance}
-\title{Modifies settings for a DB instance}
+\title{Modifies settings for an instance}
 \usage{
 docdb_modify_db_instance(DBInstanceIdentifier, DBInstanceClass,
   ApplyImmediately, PreferredMaintenanceWindow, AutoMinorVersionUpgrade,
   NewDBInstanceIdentifier, CACertificateIdentifier, PromotionTier)
 }
 \arguments{
-\item{DBInstanceIdentifier}{[required] The DB instance identifier. This value is stored as a lowercase string.
+\item{DBInstanceIdentifier}{[required] The instance identifier. This value is stored as a lowercase string.
 
 Constraints:
 \itemize{
 \item Must match the identifier of an existing \code{DBInstance}.
 }}
 
-\item{DBInstanceClass}{The new compute and memory capacity of the DB instance; for example,
-\code{db.r5.large}. Not all DB instance classes are available in all AWS
+\item{DBInstanceClass}{The new compute and memory capacity of the instance; for example,
+\code{db.r5.large}. Not all instance classes are available in all AWS
 Regions.
 
-If you modify the DB instance class, an outage occurs during the change.
+If you modify the instance class, an outage occurs during the change.
 The change is applied during the next maintenance window, unless
 \code{ApplyImmediately} is specified as \code{true} for this request.
 
@@ -28,11 +28,11 @@ Default: Uses existing setting.}
 
 \item{ApplyImmediately}{Specifies whether the modifications in this request and any pending
 modifications are asynchronously applied as soon as possible, regardless
-of the \code{PreferredMaintenanceWindow} setting for the DB instance.
+of the \code{PreferredMaintenanceWindow} setting for the instance.
 
-If this parameter is set to \code{false}, changes to the DB instance are
-applied during the next maintenance window. Some parameter changes can
-cause an outage and are applied on the next reboot.
+If this parameter is set to \code{false}, changes to the instance are applied
+during the next maintenance window. Some parameter changes can cause an
+outage and are applied on the next reboot.
 
 Default: \code{false}}
 
@@ -41,7 +41,7 @@ occur, which might result in an outage. Changing this parameter doesn\'t
 result in an outage except in the following situation, and the change is
 asynchronously applied as soon as possible. If there are pending actions
 that cause a reboot, and the maintenance window is changed to include
-the current time, changing this parameter causes a reboot of the DB
+the current time, changing this parameter causes a reboot of the
 instance. If you are moving this window to the current time, there must
 be at least 30 minutes between the current time and end of the window to
 ensure that pending changes are applied.
@@ -55,18 +55,18 @@ Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 Constraints: Must be at least 30 minutes.}
 
 \item{AutoMinorVersionUpgrade}{Indicates that minor version upgrades are applied automatically to the
-DB instance during the maintenance window. Changing this parameter
-doesn\'t result in an outage except in the following case, and the
-change is asynchronously applied as soon as possible. An outage results
-if this parameter is set to \code{true} during the maintenance window, and a
-newer minor version is available, and Amazon DocumentDB has enabled
-automatic patching for that engine version.}
+instance during the maintenance window. Changing this parameter doesn\'t
+result in an outage except in the following case, and the change is
+asynchronously applied as soon as possible. An outage results if this
+parameter is set to \code{true} during the maintenance window, and a newer
+minor version is available, and Amazon DocumentDB has enabled automatic
+patching for that engine version.}
 
-\item{NewDBInstanceIdentifier}{The new DB instance identifier for the DB instance when renaming a DB
-instance. When you change the DB instance identifier, an instance reboot
-occurs immediately if you set \verb{Apply Immediately} to \code{true}. It occurs
-during the next maintenance window if you set \verb{Apply Immediately} to
-\code{false}. This value is stored as a lowercase string.
+\item{NewDBInstanceIdentifier}{The new instance identifier for the instance when renaming an instance.
+When you change the instance identifier, an instance reboot occurs
+immediately if you set \verb{Apply Immediately} to \code{true}. It occurs during
+the next maintenance window if you set \verb{Apply Immediately} to \code{false}.
+This value is stored as a lowercase string.
 
 Constraints:
 \itemize{
@@ -88,7 +88,7 @@ Default: 1
 Valid values: 0-15}
 }
 \description{
-Modifies settings for a DB instance. You can change one or more database
+Modifies settings for an instance. You can change one or more database
 configuration parameters by specifying these parameters and the new
 values in the request.
 }

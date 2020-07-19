@@ -445,7 +445,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #'   EnableTerminationProtection)
 #'
 #' @param StackName &#91;required&#93; The name that is associated with the stack. The name must be unique in
-#' the region in which you are creating the stack.
+#' the Region in which you are creating the stack.
 #' 
 #' A stack name can contain only alphanumeric characters (case sensitive)
 #' and hyphens. It must start with an alphabetic character and cannot be
@@ -601,7 +601,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' in the *AWS CloudFormation User Guide*. You can specify either the
 #' `StackPolicyBody` or the `StackPolicyURL` parameter, but not both.
 #' @param StackPolicyURL Location of a file containing the stack policy. The URL must point to a
-#' policy (maximum size: 16 KB) located in an S3 bucket in the same region
+#' policy (maximum size: 16 KB) located in an S3 bucket in the same Region
 #' as the stack. You can specify either the `StackPolicyBody` or the
 #' `StackPolicyURL` parameter, but not both.
 #' @param Tags Key-value pairs to associate with this stack. AWS CloudFormation also
@@ -709,28 +709,36 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
 .cloudformation$operations$create_stack <- cloudformation_create_stack
 
 #' Creates stack instances for the specified accounts, within the specified
-#' regions
+#' Regions
 #'
 #' Creates stack instances for the specified accounts, within the specified
-#' regions. A stack instance refers to a stack in a specific account and
-#' region. `Accounts` and `Regions` are required parameters---you must
-#' specify at least one account and one region.
+#' Regions. A stack instance refers to a stack in a specific account and
+#' Region. You must specify at least one value for either `Accounts` or
+#' `DeploymentTargets`, and you must specify at least one value for
+#' `Regions`.
 #'
 #' @usage
-#' cloudformation_create_stack_instances(StackSetName, Accounts, Regions,
-#'   ParameterOverrides, OperationPreferences, OperationId)
+#' cloudformation_create_stack_instances(StackSetName, Accounts,
+#'   DeploymentTargets, Regions, ParameterOverrides, OperationPreferences,
+#'   OperationId)
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to create stack
 #' instances from.
-#' @param Accounts &#91;required&#93; The names of one or more AWS accounts that you want to create stack
-#' instances in the specified region(s) for.
-#' @param Regions &#91;required&#93; The names of one or more regions where you want to create stack
+#' @param Accounts \[`Self-managed` permissions\] The names of one or more AWS accounts
+#' that you want to create stack instances in the specified Region(s) for.
+#' 
+#' You can specify `Accounts` or `DeploymentTargets`, but not both.
+#' @param DeploymentTargets \[`Service-managed` permissions\] The AWS Organizations accounts for
+#' which to create stack instances in the specified Regions.
+#' 
+#' You can specify `Accounts` or `DeploymentTargets`, but not both.
+#' @param Regions &#91;required&#93; The names of one or more Regions where you want to create stack
 #' instances using the specified AWS account(s).
 #' @param ParameterOverrides A list of stack set parameters whose values you want to override in the
 #' selected stack instances.
 #' 
 #' Any overridden parameter values will be applied to all stack instances
-#' in the specified accounts and regions. When specifying parameters and
+#' in the specified accounts and Regions. When specifying parameters and
 #' their values, be aware of how AWS CloudFormation sets parameter values
 #' during stack instance operations:
 #' 
@@ -783,6 +791,14 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
 #'   Accounts = list(
 #'     "string"
 #'   ),
+#'   DeploymentTargets = list(
+#'     Accounts = list(
+#'       "string"
+#'     ),
+#'     OrganizationalUnitIds = list(
+#'       "string"
+#'     )
+#'   ),
 #'   Regions = list(
 #'     "string"
 #'   ),
@@ -810,14 +826,14 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
 #' @keywords internal
 #'
 #' @rdname cloudformation_create_stack_instances
-cloudformation_create_stack_instances <- function(StackSetName, Accounts, Regions, ParameterOverrides = NULL, OperationPreferences = NULL, OperationId = NULL) {
+cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL, DeploymentTargets = NULL, Regions, ParameterOverrides = NULL, OperationPreferences = NULL, OperationId = NULL) {
   op <- new_operation(
     name = "CreateStackInstances",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$create_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, Regions = Regions, ParameterOverrides = ParameterOverrides, OperationPreferences = OperationPreferences, OperationId = OperationId)
+  input <- .cloudformation$create_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, DeploymentTargets = DeploymentTargets, Regions = Regions, ParameterOverrides = ParameterOverrides, OperationPreferences = OperationPreferences, OperationId = OperationId)
   output <- .cloudformation$create_stack_instances_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -834,10 +850,10 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts, Region
 #' @usage
 #' cloudformation_create_stack_set(StackSetName, Description, TemplateBody,
 #'   TemplateURL, Parameters, Capabilities, Tags, AdministrationRoleARN,
-#'   ExecutionRoleName, ClientRequestToken)
+#'   ExecutionRoleName, PermissionModel, AutoDeployment, ClientRequestToken)
 #'
 #' @param StackSetName &#91;required&#93; The name to associate with the stack set. The name must be unique in the
-#' region where you create your stack set.
+#' Region where you create your stack set.
 #' 
 #' A stack name can contain only alphanumeric characters (case-sensitive)
 #' and hyphens. It must start with an alphabetic character and can\'t be
@@ -950,6 +966,22 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts, Region
 #' Specify an IAM role only if you are using customized execution roles to
 #' control which stack resources users and groups can include in their
 #' stack sets.
+#' @param PermissionModel Describes how the IAM roles required for stack set operations are
+#' created. By default, `SELF-MANAGED` is specified.
+#' 
+#' -   With `self-managed` permissions, you must create the administrator
+#'     and execution roles required to deploy to target accounts. For more
+#'     information, see [Grant Self-Managed Stack Set
+#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
+#' 
+#' -   With `service-managed` permissions, StackSets automatically creates
+#'     the IAM roles required to deploy to accounts managed by AWS
+#'     Organizations. For more information, see [Grant Service-Managed
+#'     Stack Set
+#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-service-managed.html).
+#' @param AutoDeployment Describes whether StackSets automatically deploys to AWS Organizations
+#' accounts that are added to the target organization or organizational
+#' unit (OU). Specify only if `PermissionModel` is `SERVICE_MANAGED`.
 #' @param ClientRequestToken A unique identifier for this `CreateStackSet` request. Specify this
 #' token if you plan to retry requests so that AWS CloudFormation knows
 #' that you\'re not attempting to create another stack set with the same
@@ -985,6 +1017,11 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts, Region
 #'   ),
 #'   AdministrationRoleARN = "string",
 #'   ExecutionRoleName = "string",
+#'   PermissionModel = "SERVICE_MANAGED"|"SELF_MANAGED",
+#'   AutoDeployment = list(
+#'     Enabled = TRUE|FALSE,
+#'     RetainStacksOnAccountRemoval = TRUE|FALSE
+#'   ),
 #'   ClientRequestToken = "string"
 #' )
 #' ```
@@ -992,14 +1029,14 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts, Region
 #' @keywords internal
 #'
 #' @rdname cloudformation_create_stack_set
-cloudformation_create_stack_set <- function(StackSetName, Description = NULL, TemplateBody = NULL, TemplateURL = NULL, Parameters = NULL, Capabilities = NULL, Tags = NULL, AdministrationRoleARN = NULL, ExecutionRoleName = NULL, ClientRequestToken = NULL) {
+cloudformation_create_stack_set <- function(StackSetName, Description = NULL, TemplateBody = NULL, TemplateURL = NULL, Parameters = NULL, Capabilities = NULL, Tags = NULL, AdministrationRoleARN = NULL, ExecutionRoleName = NULL, PermissionModel = NULL, AutoDeployment = NULL, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "CreateStackSet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$create_stack_set_input(StackSetName = StackSetName, Description = Description, TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters, Capabilities = Capabilities, Tags = Tags, AdministrationRoleARN = AdministrationRoleARN, ExecutionRoleName = ExecutionRoleName, ClientRequestToken = ClientRequestToken)
+  input <- .cloudformation$create_stack_set_input(StackSetName = StackSetName, Description = Description, TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters, Capabilities = Capabilities, Tags = Tags, AdministrationRoleARN = AdministrationRoleARN, ExecutionRoleName = ExecutionRoleName, PermissionModel = PermissionModel, AutoDeployment = AutoDeployment, ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$create_stack_set_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -1133,20 +1170,27 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
 .cloudformation$operations$delete_stack <- cloudformation_delete_stack
 
 #' Deletes stack instances for the specified accounts, in the specified
-#' regions
+#' Regions
 #'
 #' Deletes stack instances for the specified accounts, in the specified
-#' regions.
+#' Regions.
 #'
 #' @usage
-#' cloudformation_delete_stack_instances(StackSetName, Accounts, Regions,
-#'   OperationPreferences, RetainStacks, OperationId)
+#' cloudformation_delete_stack_instances(StackSetName, Accounts,
+#'   DeploymentTargets, Regions, OperationPreferences, RetainStacks,
+#'   OperationId)
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to delete stack
 #' instances for.
-#' @param Accounts &#91;required&#93; The names of the AWS accounts that you want to delete stack instances
-#' for.
-#' @param Regions &#91;required&#93; The regions where you want to delete stack set instances.
+#' @param Accounts \[`Self-managed` permissions\] The names of the AWS accounts that you
+#' want to delete stack instances for.
+#' 
+#' You can specify `Accounts` or `DeploymentTargets`, but not both.
+#' @param DeploymentTargets \[`Service-managed` permissions\] The AWS Organizations accounts from
+#' which to delete stack instances.
+#' 
+#' You can specify `Accounts` or `DeploymentTargets`, but not both.
+#' @param Regions &#91;required&#93; The Regions where you want to delete stack set instances.
 #' @param OperationPreferences Preferences for how AWS CloudFormation performs this stack set
 #' operation.
 #' @param RetainStacks &#91;required&#93; Removes the stack instances from the specified stack set, but doesn\'t
@@ -1175,6 +1219,14 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
 #'   Accounts = list(
 #'     "string"
 #'   ),
+#'   DeploymentTargets = list(
+#'     Accounts = list(
+#'       "string"
+#'     ),
+#'     OrganizationalUnitIds = list(
+#'       "string"
+#'     )
+#'   ),
 #'   Regions = list(
 #'     "string"
 #'   ),
@@ -1195,14 +1247,14 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
 #' @keywords internal
 #'
 #' @rdname cloudformation_delete_stack_instances
-cloudformation_delete_stack_instances <- function(StackSetName, Accounts, Regions, OperationPreferences = NULL, RetainStacks, OperationId = NULL) {
+cloudformation_delete_stack_instances <- function(StackSetName, Accounts = NULL, DeploymentTargets = NULL, Regions, OperationPreferences = NULL, RetainStacks, OperationId = NULL) {
   op <- new_operation(
     name = "DeleteStackInstances",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$delete_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, Regions = Regions, OperationPreferences = OperationPreferences, RetainStacks = RetainStacks, OperationId = OperationId)
+  input <- .cloudformation$delete_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, DeploymentTargets = DeploymentTargets, Regions = Regions, OperationPreferences = OperationPreferences, RetainStacks = RetainStacks, OperationId = OperationId)
   output <- .cloudformation$delete_stack_instances_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -1272,13 +1324,15 @@ cloudformation_delete_stack_set <- function(StackSetName) {
 #'
 #' @param Arn The Amazon Resource Name (ARN) of the type.
 #' 
-#' Conditional: You must specify `TypeName` or `Arn`.
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param Type The kind of type.
 #' 
 #' Currently the only valid value is `RESOURCE`.
+#' 
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param TypeName The name of the type.
 #' 
-#' Conditional: You must specify `TypeName` or `Arn`.
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param VersionId The ID of a specific version of the type. The version ID is the value at
 #' the end of the Amazon Resource Name (ARN) assigned to the type version
 #' when it is registered.
@@ -1516,10 +1570,10 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
 .cloudformation$operations$describe_stack_events <- cloudformation_describe_stack_events
 
 #' Returns the stack instance that's associated with the specified stack
-#' set, AWS account, and region
+#' set, AWS account, and Region
 #'
 #' Returns the stack instance that\'s associated with the specified stack
-#' set, AWS account, and region.
+#' set, AWS account, and Region.
 #' 
 #' For a list of stack instances that are associated with a specific stack
 #' set, use ListStackInstances.
@@ -1531,7 +1585,7 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
 #' @param StackSetName &#91;required&#93; The name or the unique stack ID of the stack set that you want to get
 #' stack instance information for.
 #' @param StackInstanceAccount &#91;required&#93; The ID of an AWS account that\'s associated with this stack instance.
-#' @param StackInstanceRegion &#91;required&#93; The name of a region that\'s associated with this stack instance.
+#' @param StackInstanceRegion &#91;required&#93; The name of a Region that\'s associated with this stack instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -1916,12 +1970,14 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
 #' @param Type The kind of type.
 #' 
 #' Currently the only valid value is `RESOURCE`.
+#' 
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param TypeName The name of the type.
 #' 
-#' Conditional: You must specify `TypeName` or `Arn`.
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param Arn The Amazon Resource Name (ARN) of the type.
 #' 
-#' Conditional: You must specify `TypeName` or `Arn`.
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param VersionId The ID of a specific version of the type. The version ID is the value at
 #' the end of the Amazon Resource Name (ARN) assigned to the type version
 #' when it is registered.
@@ -2566,10 +2622,10 @@ cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
 }
 .cloudformation$operations$list_change_sets <- cloudformation_list_change_sets
 
-#' Lists all exported output values in the account and region in which you
+#' Lists all exported output values in the account and Region in which you
 #' call this action
 #'
-#' Lists all exported output values in the account and region in which you
+#' Lists all exported output values in the account and Region in which you
 #' call this action. Use this action to see the exported output values that
 #' you can import into other stacks. To import values, use the
 #' [`Fn::ImportValue`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html)
@@ -2664,11 +2720,12 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #'
 #' Returns summary information about stack instances that are associated
 #' with the specified stack set. You can filter for stack instances that
-#' are associated with a specific AWS account name or region.
+#' are associated with a specific AWS account name or Region, or that have
+#' a specific status.
 #'
 #' @usage
 #' cloudformation_list_stack_instances(StackSetName, NextToken, MaxResults,
-#'   StackInstanceAccount, StackInstanceRegion)
+#'   Filters, StackInstanceAccount, StackInstanceRegion)
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to list stack
 #' instances for.
@@ -2682,8 +2739,9 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #' number of available results exceeds this maximum, the response includes
 #' a `NextToken` value that you can assign to the `NextToken` request
 #' parameter to get the next set of results.
+#' @param Filters The status that stack instances are filtered by.
 #' @param StackInstanceAccount The name of the AWS account that you want to list stack instances for.
-#' @param StackInstanceRegion The name of the region where you want to list stack instances.
+#' @param StackInstanceRegion The name of the Region where you want to list stack instances.
 #'
 #' @section Request syntax:
 #' ```
@@ -2691,6 +2749,12 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #'   StackSetName = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123,
+#'   Filters = list(
+#'     list(
+#'       Name = "DETAILED_STATUS",
+#'       Values = "string"
+#'     )
+#'   ),
 #'   StackInstanceAccount = "string",
 #'   StackInstanceRegion = "string"
 #' )
@@ -2699,14 +2763,14 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_stack_instances
-cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, MaxResults = NULL, StackInstanceAccount = NULL, StackInstanceRegion = NULL) {
+cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, MaxResults = NULL, Filters = NULL, StackInstanceAccount = NULL, StackInstanceRegion = NULL) {
   op <- new_operation(
     name = "ListStackInstances",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$list_stack_instances_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion)
+  input <- .cloudformation$list_stack_instances_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion)
   output <- .cloudformation$list_stack_instances_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -2968,9 +3032,9 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
 }
 .cloudformation$operations$list_stacks <- cloudformation_list_stacks
 
-#' Returns a list of registration tokens for the specified type
+#' Returns a list of registration tokens for the specified type(s)
 #'
-#' Returns a list of registration tokens for the specified type.
+#' Returns a list of registration tokens for the specified type(s).
 #'
 #' @usage
 #' cloudformation_list_type_registrations(Type, TypeName, TypeArn,
@@ -2979,13 +3043,17 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
 #' @param Type The kind of type.
 #' 
 #' Currently the only valid value is `RESOURCE`.
+#' 
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param TypeName The name of the type.
 #' 
-#' Conditional: You must specify `TypeName` or `Arn`.
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param TypeArn The Amazon Resource Name (ARN) of the type.
 #' 
-#' Conditional: You must specify `TypeName` or `Arn`.
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param RegistrationStatusFilter The current status of the type registration request.
+#' 
+#' The default is `IN_PROGRESS`.
 #' @param MaxResults The maximum number of results to be returned with a single call. If the
 #' number of available results exceeds this maximum, the response includes
 #' a `NextToken` value that you can assign to the `NextToken` request
@@ -3040,13 +3108,15 @@ cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL,
 #' @param Type The kind of the type.
 #' 
 #' Currently the only valid value is `RESOURCE`.
+#' 
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param TypeName The name of the type for which you want version summary information.
 #' 
-#' Conditional: You must specify `TypeName` or `Arn`.
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param Arn The Amazon Resource Name (ARN) of the type for which you want version
 #' summary information.
 #' 
-#' Conditional: You must specify `TypeName` or `Arn`.
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param MaxResults The maximum number of results to be returned with a single call. If the
 #' number of available results exceeds this maximum, the response includes
 #' a `NextToken` value that you can assign to the `NextToken` request
@@ -3068,6 +3138,8 @@ cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL,
 #' 
 #' -   `DEPRECATED`: The type version has been deregistered and can no
 #'     longer be used in CloudFormation operations.
+#' 
+#' The default is `LIVE`.
 #'
 #' @section Request syntax:
 #' ```
@@ -3122,6 +3194,8 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
 #' 
 #' -   `PUBLIC`: The type is publically visible and usable within any
 #'     Amazon account.
+#' 
+#' The default is `PRIVATE`.
 #' @param ProvisioningType The provisioning behavior of the type. AWS CloudFormation determines the
 #' provisioning type during registration, based on the types of handlers in
 #' the schema handler package submitted.
@@ -3266,6 +3340,11 @@ cloudformation_record_handler_progress <- function(BearerToken, OperationStatus,
 #' Providers](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-types.html)
 #' in the *CloudFormation CLI User Guide*.
 #' 
+#' You can have a maximum of 50 resource type versions registered at a
+#' time. This maximum is per account and per region. Use
+#' [DeregisterType](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeregisterType.html)
+#' to deregister specific resource type versions if necessary.
+#' 
 #' Once you have initiated a registration request using
 #' ` <a>RegisterType</a> `, you can use ` <a>DescribeTypeRegistration</a> `
 #' to monitor the progress of the registration request.
@@ -3304,15 +3383,24 @@ cloudformation_record_handler_progress <- function(BearerToken, OperationStatus,
 #' want to register, see
 #' [submit](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html)
 #' in the *CloudFormation CLI User Guide*.
+#' 
+#' As part of registering a resource provider type, CloudFormation must be
+#' able to access the S3 bucket which contains the schema handler package
+#' for that resource provider. For more information, see [IAM Permissions
+#' for Registering a Resource
+#' Provider](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry.html#registry-register-permissions)
+#' in the *AWS CloudFormation User Guide*.
 #' @param LoggingConfig Specifies logging configuration information for a type.
-#' @param ExecutionRoleArn The Amazon Resource Name (ARN) of the IAM execution role to use to
-#' register the type. If your resource type calls AWS APIs in any of its
-#' handlers, you must create an *[IAM execution
+#' @param ExecutionRoleArn The Amazon Resource Name (ARN) of the IAM role for CloudFormation to
+#' assume when invoking the resource provider. If your resource type calls
+#' AWS APIs in any of its handlers, you must create an *[IAM execution
 #' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)*
 #' that includes the necessary permissions to call those AWS APIs, and
-#' provision that execution role in your account. CloudFormation then
-#' assumes that execution role to provide your resource type with the
-#' appropriate credentials.
+#' provision that execution role in your account. When CloudFormation needs
+#' to invoke the resource provider handler, CloudFormation assumes this
+#' execution role to create a temporary session token, which it then passes
+#' to the resource provider handler, thereby supplying your resource
+#' provider with the appropriate credentials.
 #' @param ClientRequestToken A unique identifier that acts as an idempotency key for this
 #' registration request. Specifying a client request token prevents
 #' CloudFormation from generating more than one version of a type from the
@@ -3369,7 +3457,7 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
 #' in the AWS CloudFormation User Guide. You can specify either the
 #' `StackPolicyBody` or the `StackPolicyURL` parameter, but not both.
 #' @param StackPolicyURL Location of a file containing the stack policy. The URL must point to a
-#' policy (maximum size: 16 KB) located in an S3 bucket in the same region
+#' policy (maximum size: 16 KB) located in an S3 bucket in the same Region
 #' as the stack. You can specify either the `StackPolicyBody` or the
 #' `StackPolicyURL` parameter, but not both.
 #'
@@ -3413,11 +3501,13 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
 #' @param Arn The Amazon Resource Name (ARN) of the type for which you want version
 #' summary information.
 #' 
-#' Conditional: You must specify `TypeName` or `Arn`.
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param Type The kind of type.
+#' 
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param TypeName The name of the type.
 #' 
-#' Conditional: You must specify `TypeName` or `Arn`.
+#' Conditional: You must specify either `TypeName` and `Type`, or `Arn`.
 #' @param VersionId The ID of a specific version of the type. The version ID is the value at
 #' the end of the Amazon Resource Name (ARN) assigned to the type version
 #' when it is registered.
@@ -3605,7 +3695,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #' be used.
 #' @param StackPolicyDuringUpdateURL Location of a file containing the temporary overriding stack policy. The
 #' URL must point to a policy (max size: 16KB) located in an S3 bucket in
-#' the same region as the stack. You can specify either the
+#' the same Region as the stack. You can specify either the
 #' `StackPolicyDuringUpdateBody` or the `StackPolicyDuringUpdateURL`
 #' parameter, but not both.
 #' 
@@ -3730,7 +3820,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #' stack is unchanged.
 #' @param StackPolicyURL Location of a file containing the updated stack policy. The URL must
 #' point to a policy (max size: 16KB) located in an S3 bucket in the same
-#' region as the stack. You can specify either the `StackPolicyBody` or the
+#' Region as the stack. You can specify either the `StackPolicyBody` or the
 #' `StackPolicyURL` parameter, but not both.
 #' 
 #' You might update the stack policy, for example, in order to protect a
@@ -3836,13 +3926,13 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 .cloudformation$operations$update_stack <- cloudformation_update_stack
 
 #' Updates the parameter values for stack instances for the specified
-#' accounts, within the specified regions
+#' accounts, within the specified Regions
 #'
 #' Updates the parameter values for stack instances for the specified
-#' accounts, within the specified regions. A stack instance refers to a
-#' stack in a specific account and region.
+#' accounts, within the specified Regions. A stack instance refers to a
+#' stack in a specific account and Region.
 #' 
-#' You can only update stack instances in regions and accounts where they
+#' You can only update stack instances in Regions and accounts where they
 #' already exist; to create additional stack instances, use
 #' [CreateStackInstances](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html).
 #' 
@@ -3862,23 +3952,34 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #' `UpdateStackInstances`.
 #'
 #' @usage
-#' cloudformation_update_stack_instances(StackSetName, Accounts, Regions,
-#'   ParameterOverrides, OperationPreferences, OperationId)
+#' cloudformation_update_stack_instances(StackSetName, Accounts,
+#'   DeploymentTargets, Regions, ParameterOverrides, OperationPreferences,
+#'   OperationId)
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set associated with the stack
 #' instances.
-#' @param Accounts &#91;required&#93; The names of one or more AWS accounts for which you want to update
-#' parameter values for stack instances. The overridden parameter values
-#' will be applied to all stack instances in the specified accounts and
-#' regions.
-#' @param Regions &#91;required&#93; The names of one or more regions in which you want to update parameter
+#' @param Accounts \[`Self-managed` permissions\] The names of one or more AWS accounts for
+#' which you want to update parameter values for stack instances. The
+#' overridden parameter values will be applied to all stack instances in
+#' the specified accounts and Regions.
+#' 
+#' You can specify `Accounts` or `DeploymentTargets`, but not both.
+#' @param DeploymentTargets \[`Service-managed` permissions\] The AWS Organizations accounts for
+#' which you want to update parameter values for stack instances. If your
+#' update targets OUs, the overridden parameter values only apply to the
+#' accounts that are currently in the target OUs and their child OUs.
+#' Accounts added to the target OUs and their child OUs in the future
+#' won\'t use the overridden values.
+#' 
+#' You can specify `Accounts` or `DeploymentTargets`, but not both.
+#' @param Regions &#91;required&#93; The names of one or more Regions in which you want to update parameter
 #' values for stack instances. The overridden parameter values will be
-#' applied to all stack instances in the specified accounts and regions.
+#' applied to all stack instances in the specified accounts and Regions.
 #' @param ParameterOverrides A list of input parameters whose values you want to update for the
 #' specified stack instances.
 #' 
 #' Any overridden parameter values will be applied to all stack instances
-#' in the specified accounts and regions. When specifying parameters and
+#' in the specified accounts and Regions. When specifying parameters and
 #' their values, be aware of how AWS CloudFormation sets parameter values
 #' during stack instance update operations:
 #' 
@@ -3934,6 +4035,14 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #'   Accounts = list(
 #'     "string"
 #'   ),
+#'   DeploymentTargets = list(
+#'     Accounts = list(
+#'       "string"
+#'     ),
+#'     OrganizationalUnitIds = list(
+#'       "string"
+#'     )
+#'   ),
 #'   Regions = list(
 #'     "string"
 #'   ),
@@ -3961,14 +4070,14 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #' @keywords internal
 #'
 #' @rdname cloudformation_update_stack_instances
-cloudformation_update_stack_instances <- function(StackSetName, Accounts, Regions, ParameterOverrides = NULL, OperationPreferences = NULL, OperationId = NULL) {
+cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL, DeploymentTargets = NULL, Regions, ParameterOverrides = NULL, OperationPreferences = NULL, OperationId = NULL) {
   op <- new_operation(
     name = "UpdateStackInstances",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$update_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, Regions = Regions, ParameterOverrides = ParameterOverrides, OperationPreferences = OperationPreferences, OperationId = OperationId)
+  input <- .cloudformation$update_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, DeploymentTargets = DeploymentTargets, Regions = Regions, ParameterOverrides = ParameterOverrides, OperationPreferences = OperationPreferences, OperationId = OperationId)
   output <- .cloudformation$update_stack_instances_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -3979,10 +4088,10 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 .cloudformation$operations$update_stack_instances <- cloudformation_update_stack_instances
 
 #' Updates the stack set, and associated stack instances in the specified
-#' accounts and regions
+#' accounts and Regions
 #'
 #' Updates the stack set, and associated stack instances in the specified
-#' accounts and regions.
+#' accounts and Regions.
 #' 
 #' Even if the stack set operation created by updating the stack set fails
 #' (completely or partially, below or above a specified failure tolerance),
@@ -3994,7 +4103,8 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 #' cloudformation_update_stack_set(StackSetName, Description, TemplateBody,
 #'   TemplateURL, UsePreviousTemplate, Parameters, Capabilities, Tags,
 #'   OperationPreferences, AdministrationRoleARN, ExecutionRoleName,
-#'   OperationId, Accounts, Regions)
+#'   DeploymentTargets, PermissionModel, AutoDeployment, OperationId,
+#'   Accounts, Regions)
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to update.
 #' @param Description A brief description of updates that you are making.
@@ -4142,6 +4252,40 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 #' role, AWS CloudFormation performs the update using the role previously
 #' associated with the stack set, so long as you have permissions to
 #' perform operations on the stack set.
+#' @param DeploymentTargets \[`Service-managed` permissions\] The AWS Organizations accounts in
+#' which to update associated stack instances.
+#' 
+#' To update all the stack instances associated with this stack set, do not
+#' specify `DeploymentTargets` or `Regions`.
+#' 
+#' If the stack set update includes changes to the template (that is, if
+#' `TemplateBody` or `TemplateURL` is specified), or the `Parameters`, AWS
+#' CloudFormation marks all stack instances with a status of `OUTDATED`
+#' prior to updating the stack instances in the specified accounts and
+#' Regions. If the stack set update does not include changes to the
+#' template or parameters, AWS CloudFormation updates the stack instances
+#' in the specified accounts and Regions, while leaving all other stack
+#' instances with their existing stack instance status.
+#' @param PermissionModel Describes how the IAM roles required for stack set operations are
+#' created. You cannot modify `PermissionModel` if there are stack
+#' instances associated with your stack set.
+#' 
+#' -   With `self-managed` permissions, you must create the administrator
+#'     and execution roles required to deploy to target accounts. For more
+#'     information, see [Grant Self-Managed Stack Set
+#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
+#' 
+#' -   With `service-managed` permissions, StackSets automatically creates
+#'     the IAM roles required to deploy to accounts managed by AWS
+#'     Organizations. For more information, see [Grant Service-Managed
+#'     Stack Set
+#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-service-managed.html).
+#' @param AutoDeployment \[`Service-managed` permissions\] Describes whether StackSets
+#' automatically deploys to AWS Organizations accounts that are added to a
+#' target organization or organizational unit (OU).
+#' 
+#' If you specify `AutoDeployment`, do not specify `DeploymentTargets` or
+#' `Regions`.
 #' @param OperationId The unique ID for this stack set operation.
 #' 
 #' The operation ID also functions as an idempotency token, to ensure that
@@ -4155,9 +4299,9 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 #' 
 #' Repeating this stack set operation with a new operation ID retries all
 #' stack instances whose status is `OUTDATED`.
-#' @param Accounts The accounts in which to update associated stack instances. If you
-#' specify accounts, you must also specify the regions in which to update
-#' stack set instances.
+#' @param Accounts \[`Self-managed` permissions\] The accounts in which to update
+#' associated stack instances. If you specify accounts, you must also
+#' specify the Regions in which to update stack set instances.
 #' 
 #' To update *all* the stack instances associated with this stack set, do
 #' not specify the `Accounts` or `Regions` properties.
@@ -4166,12 +4310,12 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 #' the `TemplateBody` or `TemplateURL` properties are specified), or the
 #' `Parameters` property, AWS CloudFormation marks all stack instances with
 #' a status of `OUTDATED` prior to updating the stack instances in the
-#' specified accounts and regions. If the stack set update does not include
+#' specified accounts and Regions. If the stack set update does not include
 #' changes to the template or parameters, AWS CloudFormation updates the
-#' stack instances in the specified accounts and regions, while leaving all
+#' stack instances in the specified accounts and Regions, while leaving all
 #' other stack instances with their existing stack instance status.
-#' @param Regions The regions in which to update associated stack instances. If you
-#' specify regions, you must also specify accounts in which to update stack
+#' @param Regions The Regions in which to update associated stack instances. If you
+#' specify Regions, you must also specify accounts in which to update stack
 #' set instances.
 #' 
 #' To update *all* the stack instances associated with this stack set, do
@@ -4181,9 +4325,9 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 #' the `TemplateBody` or `TemplateURL` properties are specified), or the
 #' `Parameters` property, AWS CloudFormation marks all stack instances with
 #' a status of `OUTDATED` prior to updating the stack instances in the
-#' specified accounts and regions. If the stack set update does not include
+#' specified accounts and Regions. If the stack set update does not include
 #' changes to the template or parameters, AWS CloudFormation updates the
-#' stack instances in the specified accounts and regions, while leaving all
+#' stack instances in the specified accounts and Regions, while leaving all
 #' other stack instances with their existing stack instance status.
 #'
 #' @section Request syntax:
@@ -4222,6 +4366,19 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 #'   ),
 #'   AdministrationRoleARN = "string",
 #'   ExecutionRoleName = "string",
+#'   DeploymentTargets = list(
+#'     Accounts = list(
+#'       "string"
+#'     ),
+#'     OrganizationalUnitIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   PermissionModel = "SERVICE_MANAGED"|"SELF_MANAGED",
+#'   AutoDeployment = list(
+#'     Enabled = TRUE|FALSE,
+#'     RetainStacksOnAccountRemoval = TRUE|FALSE
+#'   ),
 #'   OperationId = "string",
 #'   Accounts = list(
 #'     "string"
@@ -4235,14 +4392,14 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts, Region
 #' @keywords internal
 #'
 #' @rdname cloudformation_update_stack_set
-cloudformation_update_stack_set <- function(StackSetName, Description = NULL, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, Tags = NULL, OperationPreferences = NULL, AdministrationRoleARN = NULL, ExecutionRoleName = NULL, OperationId = NULL, Accounts = NULL, Regions = NULL) {
+cloudformation_update_stack_set <- function(StackSetName, Description = NULL, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, Tags = NULL, OperationPreferences = NULL, AdministrationRoleARN = NULL, ExecutionRoleName = NULL, DeploymentTargets = NULL, PermissionModel = NULL, AutoDeployment = NULL, OperationId = NULL, Accounts = NULL, Regions = NULL) {
   op <- new_operation(
     name = "UpdateStackSet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$update_stack_set_input(StackSetName = StackSetName, Description = Description, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, Tags = Tags, OperationPreferences = OperationPreferences, AdministrationRoleARN = AdministrationRoleARN, ExecutionRoleName = ExecutionRoleName, OperationId = OperationId, Accounts = Accounts, Regions = Regions)
+  input <- .cloudformation$update_stack_set_input(StackSetName = StackSetName, Description = Description, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, Tags = Tags, OperationPreferences = OperationPreferences, AdministrationRoleARN = AdministrationRoleARN, ExecutionRoleName = ExecutionRoleName, DeploymentTargets = DeploymentTargets, PermissionModel = PermissionModel, AutoDeployment = AutoDeployment, OperationId = OperationId, Accounts = Accounts, Regions = Regions)
   output <- .cloudformation$update_stack_set_output()
   config <- get_config()
   svc <- .cloudformation$service(config)

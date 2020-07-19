@@ -2,19 +2,19 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_delete_tags}
 \alias{redshift_delete_tags}
-\title{Deletes a tag or tags from a resource}
+\title{Deletes tags from a resource}
 \usage{
 redshift_delete_tags(ResourceName, TagKeys)
 }
 \arguments{
 \item{ResourceName}{[required] The Amazon Resource Name (ARN) from which you want to remove the tag or
-tags. For example, \code{arn:aws:redshift:us-east-1:123456789:cluster:t1}.}
+tags. For example, \code{arn:aws:redshift:us-east-2:123456789:cluster:t1}.}
 
 \item{TagKeys}{[required] The tag key that you want to delete.}
 }
 \description{
-Deletes a tag or tags from a resource. You must provide the ARN of the
-resource from which you want to delete the tag or tags.
+Deletes tags from a resource. You must provide the ARN of the resource
+from which you want to delete the tag or tags.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_tags(

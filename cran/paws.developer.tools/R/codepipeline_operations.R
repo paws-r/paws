@@ -561,10 +561,9 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 #' Returns information about a job. Used for custom actions only.
 #' 
 #' When this API is called, AWS CodePipeline returns temporary credentials
-#' for the Amazon S3 bucket used to store artifacts for the pipeline, if
-#' the action requires access to that Amazon S3 bucket for input or output
-#' artifacts. This API also returns any secret values defined for the
-#' action.
+#' for the S3 bucket used to store artifacts for the pipeline, if the
+#' action requires access to that S3 bucket for input or output artifacts.
+#' This API also returns any secret values defined for the action.
 #'
 #' @usage
 #' codepipeline_get_job_details(jobId)
@@ -732,10 +731,9 @@ codepipeline_get_pipeline_state <- function(name) {
 #' actions only.
 #' 
 #' When this API is called, AWS CodePipeline returns temporary credentials
-#' for the Amazon S3 bucket used to store artifacts for the pipeline, if
-#' the action requires access to that Amazon S3 bucket for input or output
-#' artifacts. This API also returns any secret values defined for the
-#' action.
+#' for the S3 bucket used to store artifacts for the pipeline, if the
+#' action requires access to that S3 bucket for input or output artifacts.
+#' This API also returns any secret values defined for the action.
 #'
 #' @usage
 #' codepipeline_get_third_party_job_details(jobId, clientToken)
@@ -1048,10 +1046,9 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 #' the owner field, the `PollForJobs` action returns an error.
 #' 
 #' When this API is called, AWS CodePipeline returns temporary credentials
-#' for the Amazon S3 bucket used to store artifacts for the pipeline, if
-#' the action requires access to that Amazon S3 bucket for input or output
-#' artifacts. This API also returns any secret values defined for the
-#' action.
+#' for the S3 bucket used to store artifacts for the pipeline, if the
+#' action requires access to that S3 bucket for input or output artifacts.
+#' This API also returns any secret values defined for the action.
 #'
 #' @usage
 #' codepipeline_poll_for_jobs(actionTypeId, maxBatchSize, queryParam)
@@ -1107,9 +1104,8 @@ codepipeline_poll_for_jobs <- function(actionTypeId, maxBatchSize = NULL, queryP
 #' act on. Used for partner actions only.
 #' 
 #' When this API is called, AWS CodePipeline returns temporary credentials
-#' for the Amazon S3 bucket used to store artifacts for the pipeline, if
-#' the action requires access to that Amazon S3 bucket for input or output
-#' artifacts.
+#' for the S3 bucket used to store artifacts for the pipeline, if the
+#' action requires access to that S3 bucket for input or output artifacts.
 #'
 #' @usage
 #' codepipeline_poll_for_third_party_jobs(actionTypeId, maxBatchSize)
@@ -1685,6 +1681,60 @@ codepipeline_start_pipeline_execution <- function(name, clientRequestToken = NUL
   return(response)
 }
 .codepipeline$operations$start_pipeline_execution <- codepipeline_start_pipeline_execution
+
+#' Stops the specified pipeline execution
+#'
+#' Stops the specified pipeline execution. You choose to either stop the
+#' pipeline execution by completing in-progress actions without starting
+#' subsequent actions, or by abandoning in-progress actions. While
+#' completing or abandoning in-progress actions, the pipeline execution is
+#' in a `Stopping` state. After all in-progress actions are completed or
+#' abandoned, the pipeline execution is in a `Stopped` state.
+#'
+#' @usage
+#' codepipeline_stop_pipeline_execution(pipelineName, pipelineExecutionId,
+#'   abandon, reason)
+#'
+#' @param pipelineName &#91;required&#93; The name of the pipeline to stop.
+#' @param pipelineExecutionId &#91;required&#93; The ID of the pipeline execution to be stopped in the current stage. Use
+#' the `GetPipelineState` action to retrieve the current
+#' pipelineExecutionId.
+#' @param abandon Use this option to stop the pipeline execution by abandoning, rather
+#' than finishing, in-progress actions.
+#' 
+#' This option can lead to failed or out-of-sequence tasks.
+#' @param reason Use this option to enter comments, such as the reason the pipeline was
+#' stopped.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_pipeline_execution(
+#'   pipelineName = "string",
+#'   pipelineExecutionId = "string",
+#'   abandon = TRUE|FALSE,
+#'   reason = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_stop_pipeline_execution
+codepipeline_stop_pipeline_execution <- function(pipelineName, pipelineExecutionId, abandon = NULL, reason = NULL) {
+  op <- new_operation(
+    name = "StopPipelineExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codepipeline$stop_pipeline_execution_input(pipelineName = pipelineName, pipelineExecutionId = pipelineExecutionId, abandon = abandon, reason = reason)
+  output <- .codepipeline$stop_pipeline_execution_output()
+  config <- get_config()
+  svc <- .codepipeline$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$stop_pipeline_execution <- codepipeline_stop_pipeline_execution
 
 #' Adds to or modifies the tags of the given resource
 #'

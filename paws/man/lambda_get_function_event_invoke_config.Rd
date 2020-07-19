@@ -41,4 +41,15 @@ PutFunctionEventInvokeConfig.
 }
 }
 
+\examples{
+\dontrun{
+# The following example returns the asynchronous invocation configuration
+# for the BLUE alias of a function named my-function.
+svc$get_function_event_invoke_config(
+  FunctionName = "my-function",
+  Qualifier = "BLUE"
+)
+}
+
+}
 \keyword{internal}

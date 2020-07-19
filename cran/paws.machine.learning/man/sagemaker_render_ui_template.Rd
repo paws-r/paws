@@ -4,15 +4,21 @@
 \alias{sagemaker_render_ui_template}
 \title{Renders the UI template so that you can preview the worker's experience}
 \usage{
-sagemaker_render_ui_template(UiTemplate, Task, RoleArn)
+sagemaker_render_ui_template(UiTemplate, Task, RoleArn, HumanTaskUiArn)
 }
 \arguments{
-\item{UiTemplate}{[required] A \code{Template} object containing the worker UI template to render.}
+\item{UiTemplate}{A \code{Template} object containing the worker UI template to render.}
 
 \item{Task}{[required] A \code{RenderableTask} object containing a representative task to render.}
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) that has access to the S3 objects that
 are used by the template.}
+
+\item{HumanTaskUiArn}{The \code{HumanTaskUiArn} of the worker UI that you want to render. Do not
+provide a \code{HumanTaskUiArn} if you use the \code{UiTemplate} parameter.
+
+See a list of available Human Ui Amazon Resource Names (ARNs) in
+UiConfig.}
 }
 \description{
 Renders the UI template so that you can preview the worker\'s
@@ -26,7 +32,8 @@ experience.
   Task = list(
     Input = "string"
   ),
-  RoleArn = "string"
+  RoleArn = "string",
+  HumanTaskUiArn = "string"
 )
 }
 }

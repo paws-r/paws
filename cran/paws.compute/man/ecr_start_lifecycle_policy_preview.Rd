@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_start_lifecycle_policy_preview}
 \alias{ecr_start_lifecycle_policy_preview}
-\title{Starts a preview of the specified lifecycle policy}
+\title{Starts a preview of a lifecycle policy for the specified repository}
 \usage{
 ecr_start_lifecycle_policy_preview(registryId, repositoryName,
   lifecyclePolicyText)
@@ -18,8 +18,9 @@ assumed.}
 current policy for the repository is used.}
 }
 \description{
-Starts a preview of the specified lifecycle policy. This allows you to
-see the results before creating the lifecycle policy.
+Starts a preview of a lifecycle policy for the specified repository.
+This allows you to see the results before associating the lifecycle
+policy with the repository.
 }
 \section{Request syntax}{
 \preformatted{svc$start_lifecycle_policy_preview(

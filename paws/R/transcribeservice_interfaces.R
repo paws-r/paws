@@ -3,6 +3,18 @@
 #' @include transcribeservice_service.R
 NULL
 
+.transcribeservice$create_medical_vocabulary_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VocabularyName = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), VocabularyFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.transcribeservice$create_medical_vocabulary_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VocabularyName = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), VocabularyState = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .transcribeservice$create_vocabulary_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(VocabularyName = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), Phrases = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VocabularyFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -25,6 +37,26 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(VocabularyFilterName = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.transcribeservice$delete_medical_transcription_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MedicalTranscriptionJobName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.transcribeservice$delete_medical_transcription_job_output <- function(...) {
+  list()
+}
+
+.transcribeservice$delete_medical_vocabulary_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VocabularyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.transcribeservice$delete_medical_vocabulary_output <- function(...) {
+  list()
 }
 
 .transcribeservice$delete_transcription_job_input <- function(...) {
@@ -57,6 +89,30 @@ NULL
   list()
 }
 
+.transcribeservice$get_medical_transcription_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MedicalTranscriptionJobName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.transcribeservice$get_medical_transcription_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MedicalTranscriptionJob = structure(list(MedicalTranscriptionJobName = structure(logical(0), tags = list(type = "string")), TranscriptionJobStatus = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), MediaSampleRateHertz = structure(logical(0), tags = list(type = "integer")), MediaFormat = structure(logical(0), tags = list(type = "string")), Media = structure(list(MediaFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Transcript = structure(list(TranscriptFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StartTime = structure(logical(0), tags = list(type = "timestamp")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), CompletionTime = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string")), Settings = structure(list(ShowSpeakerLabels = structure(logical(0), tags = list(type = "boolean")), MaxSpeakerLabels = structure(logical(0), tags = list(type = "integer")), ChannelIdentification = structure(logical(0), tags = list(type = "boolean")), ShowAlternatives = structure(logical(0), tags = list(type = "boolean")), MaxAlternatives = structure(logical(0), tags = list(type = "integer")), VocabularyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Specialty = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.transcribeservice$get_medical_vocabulary_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VocabularyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.transcribeservice$get_medical_vocabulary_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VocabularyName = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), VocabularyState = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string")), DownloadUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .transcribeservice$get_transcription_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(TranscriptionJobName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -65,7 +121,7 @@ NULL
 
 .transcribeservice$get_transcription_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TranscriptionJob = structure(list(TranscriptionJobName = structure(logical(0), tags = list(type = "string")), TranscriptionJobStatus = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), MediaSampleRateHertz = structure(logical(0), tags = list(type = "integer")), MediaFormat = structure(logical(0), tags = list(type = "string")), Media = structure(list(MediaFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Transcript = structure(list(TranscriptFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StartTime = structure(logical(0), tags = list(type = "timestamp")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), CompletionTime = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string")), Settings = structure(list(VocabularyName = structure(logical(0), tags = list(type = "string")), ShowSpeakerLabels = structure(logical(0), tags = list(type = "boolean")), MaxSpeakerLabels = structure(logical(0), tags = list(type = "integer")), ChannelIdentification = structure(logical(0), tags = list(type = "boolean")), ShowAlternatives = structure(logical(0), tags = list(type = "boolean")), MaxAlternatives = structure(logical(0), tags = list(type = "integer")), VocabularyFilterName = structure(logical(0), tags = list(type = "string")), VocabularyFilterMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobExecutionSettings = structure(list(AllowDeferredExecution = structure(logical(0), tags = list(type = "boolean")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(TranscriptionJob = structure(list(TranscriptionJobName = structure(logical(0), tags = list(type = "string")), TranscriptionJobStatus = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), MediaSampleRateHertz = structure(logical(0), tags = list(type = "integer")), MediaFormat = structure(logical(0), tags = list(type = "string")), Media = structure(list(MediaFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Transcript = structure(list(TranscriptFileUri = structure(logical(0), tags = list(type = "string")), RedactedTranscriptFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StartTime = structure(logical(0), tags = list(type = "timestamp")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), CompletionTime = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string")), Settings = structure(list(VocabularyName = structure(logical(0), tags = list(type = "string")), ShowSpeakerLabels = structure(logical(0), tags = list(type = "boolean")), MaxSpeakerLabels = structure(logical(0), tags = list(type = "integer")), ChannelIdentification = structure(logical(0), tags = list(type = "boolean")), ShowAlternatives = structure(logical(0), tags = list(type = "boolean")), MaxAlternatives = structure(logical(0), tags = list(type = "integer")), VocabularyFilterName = structure(logical(0), tags = list(type = "string")), VocabularyFilterMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobExecutionSettings = structure(list(AllowDeferredExecution = structure(logical(0), tags = list(type = "boolean")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContentRedaction = structure(list(RedactionType = structure(logical(0), tags = list(type = "string")), RedactionOutput = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -93,6 +149,30 @@ NULL
   return(populate(args, shape))
 }
 
+.transcribeservice$list_medical_transcription_jobs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), JobNameContains = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.transcribeservice$list_medical_transcription_jobs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MedicalTranscriptionJobSummaries = structure(list(structure(list(MedicalTranscriptionJobName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), StartTime = structure(logical(0), tags = list(type = "timestamp")), CompletionTime = structure(logical(0), tags = list(type = "timestamp")), LanguageCode = structure(logical(0), tags = list(type = "string")), TranscriptionJobStatus = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string")), OutputLocationType = structure(logical(0), tags = list(type = "string")), Specialty = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.transcribeservice$list_medical_vocabularies_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), StateEquals = structure(logical(0), tags = list(type = "string")), NameContains = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.transcribeservice$list_medical_vocabularies_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Vocabularies = structure(list(structure(list(VocabularyName = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), VocabularyState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .transcribeservice$list_transcription_jobs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), JobNameContains = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -101,7 +181,7 @@ NULL
 
 .transcribeservice$list_transcription_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), TranscriptionJobSummaries = structure(list(structure(list(TranscriptionJobName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), StartTime = structure(logical(0), tags = list(type = "timestamp")), CompletionTime = structure(logical(0), tags = list(type = "timestamp")), LanguageCode = structure(logical(0), tags = list(type = "string")), TranscriptionJobStatus = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string")), OutputLocationType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), TranscriptionJobSummaries = structure(list(structure(list(TranscriptionJobName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), StartTime = structure(logical(0), tags = list(type = "timestamp")), CompletionTime = structure(logical(0), tags = list(type = "timestamp")), LanguageCode = structure(logical(0), tags = list(type = "string")), TranscriptionJobStatus = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string")), OutputLocationType = structure(logical(0), tags = list(type = "string")), ContentRedaction = structure(list(RedactionType = structure(logical(0), tags = list(type = "string")), RedactionOutput = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -129,15 +209,39 @@ NULL
   return(populate(args, shape))
 }
 
+.transcribeservice$start_medical_transcription_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MedicalTranscriptionJobName = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), MediaSampleRateHertz = structure(logical(0), tags = list(type = "integer")), MediaFormat = structure(logical(0), tags = list(type = "string")), Media = structure(list(MediaFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputBucketName = structure(logical(0), tags = list(type = "string")), OutputEncryptionKMSKeyId = structure(logical(0), tags = list(type = "string")), Settings = structure(list(ShowSpeakerLabels = structure(logical(0), tags = list(type = "boolean")), MaxSpeakerLabels = structure(logical(0), tags = list(type = "integer")), ChannelIdentification = structure(logical(0), tags = list(type = "boolean")), ShowAlternatives = structure(logical(0), tags = list(type = "boolean")), MaxAlternatives = structure(logical(0), tags = list(type = "integer")), VocabularyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Specialty = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.transcribeservice$start_medical_transcription_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MedicalTranscriptionJob = structure(list(MedicalTranscriptionJobName = structure(logical(0), tags = list(type = "string")), TranscriptionJobStatus = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), MediaSampleRateHertz = structure(logical(0), tags = list(type = "integer")), MediaFormat = structure(logical(0), tags = list(type = "string")), Media = structure(list(MediaFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Transcript = structure(list(TranscriptFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StartTime = structure(logical(0), tags = list(type = "timestamp")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), CompletionTime = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string")), Settings = structure(list(ShowSpeakerLabels = structure(logical(0), tags = list(type = "boolean")), MaxSpeakerLabels = structure(logical(0), tags = list(type = "integer")), ChannelIdentification = structure(logical(0), tags = list(type = "boolean")), ShowAlternatives = structure(logical(0), tags = list(type = "boolean")), MaxAlternatives = structure(logical(0), tags = list(type = "integer")), VocabularyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Specialty = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .transcribeservice$start_transcription_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TranscriptionJobName = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), MediaSampleRateHertz = structure(logical(0), tags = list(type = "integer")), MediaFormat = structure(logical(0), tags = list(type = "string")), Media = structure(list(MediaFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputBucketName = structure(logical(0), tags = list(type = "string")), OutputEncryptionKMSKeyId = structure(logical(0), tags = list(type = "string")), Settings = structure(list(VocabularyName = structure(logical(0), tags = list(type = "string")), ShowSpeakerLabels = structure(logical(0), tags = list(type = "boolean")), MaxSpeakerLabels = structure(logical(0), tags = list(type = "integer")), ChannelIdentification = structure(logical(0), tags = list(type = "boolean")), ShowAlternatives = structure(logical(0), tags = list(type = "boolean")), MaxAlternatives = structure(logical(0), tags = list(type = "integer")), VocabularyFilterName = structure(logical(0), tags = list(type = "string")), VocabularyFilterMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobExecutionSettings = structure(list(AllowDeferredExecution = structure(logical(0), tags = list(type = "boolean")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(TranscriptionJobName = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), MediaSampleRateHertz = structure(logical(0), tags = list(type = "integer")), MediaFormat = structure(logical(0), tags = list(type = "string")), Media = structure(list(MediaFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputBucketName = structure(logical(0), tags = list(type = "string")), OutputEncryptionKMSKeyId = structure(logical(0), tags = list(type = "string")), Settings = structure(list(VocabularyName = structure(logical(0), tags = list(type = "string")), ShowSpeakerLabels = structure(logical(0), tags = list(type = "boolean")), MaxSpeakerLabels = structure(logical(0), tags = list(type = "integer")), ChannelIdentification = structure(logical(0), tags = list(type = "boolean")), ShowAlternatives = structure(logical(0), tags = list(type = "boolean")), MaxAlternatives = structure(logical(0), tags = list(type = "integer")), VocabularyFilterName = structure(logical(0), tags = list(type = "string")), VocabularyFilterMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobExecutionSettings = structure(list(AllowDeferredExecution = structure(logical(0), tags = list(type = "boolean")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContentRedaction = structure(list(RedactionType = structure(logical(0), tags = list(type = "string")), RedactionOutput = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .transcribeservice$start_transcription_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TranscriptionJob = structure(list(TranscriptionJobName = structure(logical(0), tags = list(type = "string")), TranscriptionJobStatus = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), MediaSampleRateHertz = structure(logical(0), tags = list(type = "integer")), MediaFormat = structure(logical(0), tags = list(type = "string")), Media = structure(list(MediaFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Transcript = structure(list(TranscriptFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StartTime = structure(logical(0), tags = list(type = "timestamp")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), CompletionTime = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string")), Settings = structure(list(VocabularyName = structure(logical(0), tags = list(type = "string")), ShowSpeakerLabels = structure(logical(0), tags = list(type = "boolean")), MaxSpeakerLabels = structure(logical(0), tags = list(type = "integer")), ChannelIdentification = structure(logical(0), tags = list(type = "boolean")), ShowAlternatives = structure(logical(0), tags = list(type = "boolean")), MaxAlternatives = structure(logical(0), tags = list(type = "integer")), VocabularyFilterName = structure(logical(0), tags = list(type = "string")), VocabularyFilterMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobExecutionSettings = structure(list(AllowDeferredExecution = structure(logical(0), tags = list(type = "boolean")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(TranscriptionJob = structure(list(TranscriptionJobName = structure(logical(0), tags = list(type = "string")), TranscriptionJobStatus = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), MediaSampleRateHertz = structure(logical(0), tags = list(type = "integer")), MediaFormat = structure(logical(0), tags = list(type = "string")), Media = structure(list(MediaFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Transcript = structure(list(TranscriptFileUri = structure(logical(0), tags = list(type = "string")), RedactedTranscriptFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), StartTime = structure(logical(0), tags = list(type = "timestamp")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), CompletionTime = structure(logical(0), tags = list(type = "timestamp")), FailureReason = structure(logical(0), tags = list(type = "string")), Settings = structure(list(VocabularyName = structure(logical(0), tags = list(type = "string")), ShowSpeakerLabels = structure(logical(0), tags = list(type = "boolean")), MaxSpeakerLabels = structure(logical(0), tags = list(type = "integer")), ChannelIdentification = structure(logical(0), tags = list(type = "boolean")), ShowAlternatives = structure(logical(0), tags = list(type = "boolean")), MaxAlternatives = structure(logical(0), tags = list(type = "integer")), VocabularyFilterName = structure(logical(0), tags = list(type = "string")), VocabularyFilterMethod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobExecutionSettings = structure(list(AllowDeferredExecution = structure(logical(0), tags = list(type = "boolean")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContentRedaction = structure(list(RedactionType = structure(logical(0), tags = list(type = "string")), RedactionOutput = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.transcribeservice$update_medical_vocabulary_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VocabularyName = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), VocabularyFileUri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.transcribeservice$update_medical_vocabulary_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VocabularyName = structure(logical(0), tags = list(type = "string")), LanguageCode = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), VocabularyState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -8,9 +8,8 @@ workdocs_get_document_version(AuthenticationToken, DocumentId,
   VersionId, Fields, IncludeCustomMetadata)
 }
 \arguments{
-\item{AuthenticationToken}{Amazon WorkDocs authentication token. Do not set this field when using
-administrative API actions, as in accessing the API using AWS
-credentials.}
+\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
+administrator credentials to access the API.}
 
 \item{DocumentId}{[required] The ID of the document.}
 

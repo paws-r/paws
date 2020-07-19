@@ -15,15 +15,12 @@ that start with the specified prefix.}
 results.}
 
 \item{Limit}{Specifying this limits the number of results returned by this operation.
-The operation also returns a \code{NextToken} that you can use in a
-subsequent operation to retrieve the next set of results.}
+The operation also returns a NextToken which you can use in a subsequent
+operation to retrieve the next set of results.}
 }
 \description{
 Lists all the event buses in your account, including the default event
 bus, custom event buses, and partner event buses.
-}
-\details{
-This operation is run by AWS customers, not by SaaS partners.
 }
 \section{Request syntax}{
 \preformatted{svc$list_event_buses(

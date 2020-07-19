@@ -5,7 +5,7 @@
 \title{Imports your training data to an Amazon Forecast dataset}
 \usage{
 forecastservice_create_dataset_import_job(DatasetImportJobName,
-  DatasetArn, DataSource, TimestampFormat)
+  DatasetArn, DataSource, TimestampFormat, Tags)
 }
 \arguments{
 \item{DatasetImportJobName}{[required] The name for the dataset import job. We recommend including the current
@@ -39,6 +39,32 @@ optionally, for: Y, M, W, and D
 
 If the format isn\'t specified, Amazon Forecast expects the format to be
 \"yyyy-MM-dd HH:mm:ss\".}
+
+\item{Tags}{The optional metadata that you apply to the dataset import job to help
+you categorize and organize them. Each tag consists of a key and an
+optional value, both of which you define.
+
+The following basic restrictions apply to tags:
+\itemize{
+\item Maximum number of tags per resource - 50.
+\item For each resource, each tag key must be unique, and each tag key can
+have only one value.
+\item Maximum key length - 128 Unicode characters in UTF-8.
+\item Maximum value length - 256 Unicode characters in UTF-8.
+\item If your tagging schema is used across multiple services and
+resources, remember that other services may have restrictions on
+allowed characters. Generally allowed characters are: letters,
+numbers, and spaces representable in UTF-8, and the following
+characters: + - = . \\_ : / @.
+\item Tag keys and values are case sensitive.
+\item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
+such as a prefix for keys as it is reserved for AWS use. You cannot
+edit or delete tag keys with this prefix. Values can have this
+prefix. If a tag value has \code{aws} as its prefix but the key does not,
+then Forecast considers it to be a user tag and will count against
+the limit of 50 tags. Tags with only the key prefix of \code{aws} do not
+count against your tags per resource limit.
+}}
 }
 \description{
 Imports your training data to an Amazon Forecast dataset. You provide
@@ -49,7 +75,9 @@ that you want to import the data to.
 \details{
 You must specify a DataSource object that includes an AWS Identity and
 Access Management (IAM) role that Amazon Forecast can assume to access
-the data. For more information, see aws-forecast-iam-roles.
+the data, as Amazon Forecast makes a copy of your data and processes it
+in an internal AWS system. For more information, see
+aws-forecast-iam-roles.
 
 The training data must be in CSV format. The delimiter must be a comma
 (,).
@@ -57,6 +85,12 @@ The training data must be in CSV format. The delimiter must be a comma
 You can specify the path to a specific CSV file, the S3 bucket, or to a
 folder in the S3 bucket. For the latter two cases, Amazon Forecast
 imports all files up to the limit of 10,000 files.
+
+Because dataset imports are not aggregated, your most recent dataset
+import is the one that is used when training a predictor or generating a
+forecast. Make sure that your most recent dataset import contains all of
+the data you want to model off of, and not just the new data collected
+since the previous import.
 
 To get a list of all your dataset import jobs, filtered by specified
 criteria, use the ListDatasetImportJobs operation.
@@ -72,7 +106,13 @@ criteria, use the ListDatasetImportJobs operation.
       KMSKeyArn = "string"
     )
   ),
-  TimestampFormat = "string"
+  TimestampFormat = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

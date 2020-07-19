@@ -50,4 +50,23 @@ Lists operations that match the criteria that you specify.
 }
 }
 
+\examples{
+\dontrun{
+# This example gets the operations that have a STATUS of either PENDING or
+# SUCCESS.
+svc$list_operations(
+  Filters = list(
+    list(
+      Condition = "IN",
+      Name = "STATUS",
+      Values = list(
+        "PENDING",
+        "SUCCESS"
+      )
+    )
+  )
+)
+}
+
+}
 \keyword{internal}

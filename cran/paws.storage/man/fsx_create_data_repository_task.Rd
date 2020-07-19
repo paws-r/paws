@@ -12,14 +12,18 @@ fsx_create_data_repository_task(Type, Paths, FileSystemId, Report,
 
 \item{Paths}{(Optional) The path or paths on the Amazon FSx file system to use when
 the data repository task is processed. The default path is the file
-system root directory.}
+system root directory. The paths you provide need to be relative to the
+mount point of the file system. If the mount point is \verb{/mnt/fsx} and
+\verb{/mnt/fsx/path1} is a directory or file on the file system you want to
+export, then the path to provide is \code{path1}. If a path that you provide
+isn\'t valid, the task fails.}
 
 \item{FileSystemId}{[required]}
 
 \item{Report}{[required] Defines whether or not Amazon FSx provides a CompletionReport once the
 task has completed. A CompletionReport provides a detailed report on the
 files that Amazon FSx processed that meet the criteria specified by the
-\code{Scope} parameter.}
+\code{Scope} parameter. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/task-completion-report.html}{Working with Task Completion Reports}.}
 
 \item{ClientRequestToken}{}
 
@@ -36,7 +40,7 @@ FSx file system to its linked data repository. A
 not linked to the FSx file system. To learn more about data repository
 tasks, see \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-repository-tasks.html}{Using Data Repository Tasks}.
 To learn more about linking a data repository to your file system, see
-\href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/getting-started-step1.html}{Step 1: Create Your Amazon FSx for Lustre File System}.
+\href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/export-data-repository.html#export-prefix}{Setting the Export Prefix}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_data_repository_task(

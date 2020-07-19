@@ -12,7 +12,16 @@ rdsdataservice_batch_execute_statement(database, parameterSets,
 
 \item{parameterSets}{The parameter set for the batch operation.
 
-The maximum number of parameters in a parameter set is 1,000.}
+The SQL statement is executed as many times as the number of parameter
+sets provided. To execute a SQL statement with no parameters, use one of
+the following options:
+\itemize{
+\item Specify one or more empty parameter sets.
+\item Use the \code{ExecuteStatement} operation instead of the
+\code{BatchExecuteStatement} operation.
+}
+
+Array parameters are not supported.}
 
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.}
 

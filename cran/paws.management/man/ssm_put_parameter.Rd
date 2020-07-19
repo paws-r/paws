@@ -5,12 +5,14 @@
 \title{Add a parameter to the system}
 \usage{
 ssm_put_parameter(Name, Description, Value, Type, KeyId, Overwrite,
-  AllowedPattern, Tags, Tier, Policies)
+  AllowedPattern, Tags, Tier, Policies, DataType)
 }
 \arguments{
 \item{Name}{[required] The fully qualified name of the parameter that you want to add to the
 system. The fully qualified name includes the complete hierarchy of the
-parameter path and name. For example: \verb{/Dev/DBServer/MySQL/db-string13}
+parameter path and name. For parameters in a hierarchy, you must include
+a leading forward slash character (/) when you create or reference a
+parameter. For example: \verb{/Dev/DBServer/MySQL/db-string13}
 
 Naming Constraints:
 \itemize{
@@ -26,15 +28,14 @@ levels.
 }
 
 For additional information about valid values for parameter names, see
-\href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-parameter-name-constraints.html}{Requirements and Constraints for Parameter Names}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-parameter-name-constraints.html}{About requirements and constraints for parameter names}
 in the \emph{AWS Systems Manager User Guide}.
 
 The maximum length constraint listed below includes capacity for
 additional system attributes that are not part of the name. The maximum
-length for the fully qualified parameter name is 1011 characters,
-including the full length of the parameter ARN. For example, the
-following fully qualified parameter name is 65 characters, not 20
-characters:
+length for a parameter name, including the full length of the parameter
+ARN, is 1011 characters. For example, the length of the following
+parameter name is 65 characters, not 20 characters:
 
 \code{arn:aws:ssm:us-east-2:111122223333:parameter/ExampleParameterName}}
 
@@ -47,15 +48,18 @@ Do not enter personally identifiable information in this field.}
 parameters have a value limit of 4 KB. Advanced parameters have a value
 limit of 8 KB.}
 
-\item{Type}{[required] The type of parameter that you want to add to the system.
+\item{Type}{The type of parameter that you want to add to the system.
+
+\code{SecureString} is not currently supported for AWS CloudFormation
+templates or in the China Regions.
 
 Items in a \code{StringList} must be separated by a comma (,). You can\'t use
 other punctuation or special character to escape items in the list. If
 you have a parameter value that requires a comma, then use the \code{String}
 data type.
 
-\code{SecureString} is not currently supported for AWS CloudFormation
-templates or in the China Regions.}
+Specifying a parameter type is not required when updating a parameter.
+You must specify a parameter type when creating a parameter.}
 
 \item{KeyId}{The KMS Key ID that you want to use to encrypt a parameter. Either the
 default AWS Key Management Service (AWS KMS) key automatically assigned
@@ -107,7 +111,7 @@ Standard parameters are offered at no additional cost.
 Advanced parameters have a content size limit of 8 KB and can be
 configured to use parameter policies. You can create a maximum of
 100,000 advanced parameters for each Region in an AWS account. Advanced
-parameters incur a charge. For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html}{About Advanced Parameters}
+parameters incur a charge. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html}{Standard and advanced parameter tiers}
 in the \emph{AWS Systems Manager User Guide}.
 
 You can change a standard parameter to an advanced parameter any time.
@@ -160,7 +164,7 @@ current Region.
 }
 
 For more information about configuring the default tier option, see
-\href{http://docs.aws.amazon.com/systems-manager/latest/userguide/ps-default-tier.html}{Specifying a Default Parameter Tier}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-default-tier.html}{Specifying a default parameter tier}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{Policies}{One or more policies to apply to a parameter. This action takes a JSON
@@ -184,7 +188,22 @@ within a period of time, but it has not been changed.
 
 All existing policies are preserved until you send new policies or an
 empty policy. For more information about parameter policies, see
-\href{http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-policies.html}{Working with Parameter Policies}.}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html}{Assigning parameter policies}.}
+
+\item{DataType}{The data type for a \code{String} parameter. Supported data types include
+plain text and Amazon Machine Image IDs.
+
+\strong{The following data type values are supported.}
+\itemize{
+\item \code{text}
+\item \code{aws:ec2:image}
+}
+
+When you create a \code{String} parameter and specify \code{aws:ec2:image},
+Systems Manager validates the parameter value is in the required format,
+such as \verb{ami-12345abcdeEXAMPLE}, and that the specified AMI is available
+in your AWS account. For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html}{Native parameter support for Amazon Machine Image IDs}
+in the \emph{AWS Systems Manager User Guide}.}
 }
 \description{
 Add a parameter to the system.
@@ -205,7 +224,8 @@ Add a parameter to the system.
     )
   ),
   Tier = "Standard"|"Advanced"|"Intelligent-Tiering",
-  Policies = "string"
+  Policies = "string",
+  DataType = "string"
 )
 }
 }

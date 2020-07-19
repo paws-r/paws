@@ -9,8 +9,7 @@ autoscaling_disable_metrics_collection(AutoScalingGroupName, Metrics)
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{Metrics}{One or more of the following metrics. If you omit this parameter, all
-metrics are disabled.
+\item{Metrics}{Specifies one or more of the following metrics:
 \itemize{
 \item \code{GroupMinSize}
 \item \code{GroupMaxSize}
@@ -20,7 +19,14 @@ metrics are disabled.
 \item \code{GroupStandbyInstances}
 \item \code{GroupTerminatingInstances}
 \item \code{GroupTotalInstances}
-}}
+\item \code{GroupInServiceCapacity}
+\item \code{GroupPendingCapacity}
+\item \code{GroupStandbyCapacity}
+\item \code{GroupTerminatingCapacity}
+\item \code{GroupTotalCapacity}
+}
+
+If you omit this parameter, all metrics are disabled.}
 }
 \description{
 Disables group metrics for the specified Auto Scaling group.

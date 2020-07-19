@@ -15,7 +15,46 @@ cognitoidentityprovider_create_identity_provider(UserPoolId,
 
 \item{ProviderType}{[required] The identity provider type.}
 
-\item{ProviderDetails}{[required] The identity provider details, such as \code{MetadataURL} and \code{MetadataFile}.}
+\item{ProviderDetails}{[required] The identity provider details. The following list describes the provider
+detail keys for each identity provider type.
+\itemize{
+\item For Google, Facebook and Login with Amazon:
+\itemize{
+\item client\\_id
+\item client\\_secret
+\item authorize\\_scopes
+}
+\item For Sign in with Apple:
+\itemize{
+\item client\\_id
+\item team\\_id
+\item key\\_id
+\item private\\_key
+\item authorize\\_scopes
+}
+\item For OIDC providers:
+\itemize{
+\item client\\_id
+\item client\\_secret
+\item attributes\\_request\\_method
+\item oidc\\_issuer
+\item authorize\\_scopes
+\item authorize\\_url \emph{if not available from discovery URL specified by
+oidc\\_issuer key}
+\item token\\_url \emph{if not available from discovery URL specified by
+oidc\\_issuer key}
+\item attributes\\_url \emph{if not available from discovery URL specified
+by oidc\\_issuer key}
+\item jwks\\_uri \emph{if not available from discovery URL specified by
+oidc\\_issuer key}
+\item authorize\\_scopes
+}
+\item For SAML providers:
+\itemize{
+\item MetadataFile OR MetadataURL
+\item IDPSignout \emph{optional}
+}
+}}
 
 \item{AttributeMapping}{A mapping of identity provider attributes to standard and custom user
 pool attributes.}

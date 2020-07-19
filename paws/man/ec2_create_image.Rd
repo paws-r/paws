@@ -60,8 +60,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
         SnapshotId = "string",
         VolumeSize = 123,
         VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
-        Encrypted = TRUE|FALSE,
-        KmsKeyId = "string"
+        KmsKeyId = "string",
+        Encrypted = TRUE|FALSE
       ),
       NoDevice = "string"
     )

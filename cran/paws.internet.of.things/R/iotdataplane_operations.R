@@ -3,37 +3,39 @@
 #' @include iotdataplane_service.R
 NULL
 
-#' Deletes the thing shadow for the specified thing
+#' Deletes the shadow for the specified thing
 #'
-#' Deletes the thing shadow for the specified thing.
+#' Deletes the shadow for the specified thing.
 #' 
 #' For more information, see
 #' [DeleteThingShadow](http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html)
-#' in the *AWS IoT Developer Guide*.
+#' in the AWS IoT Developer Guide.
 #'
 #' @usage
-#' iotdataplane_delete_thing_shadow(thingName)
+#' iotdataplane_delete_thing_shadow(thingName, shadowName)
 #'
 #' @param thingName &#91;required&#93; The name of the thing.
+#' @param shadowName The name of the shadow.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_thing_shadow(
-#'   thingName = "string"
+#'   thingName = "string",
+#'   shadowName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iotdataplane_delete_thing_shadow
-iotdataplane_delete_thing_shadow <- function(thingName) {
+iotdataplane_delete_thing_shadow <- function(thingName, shadowName = NULL) {
   op <- new_operation(
     name = "DeleteThingShadow",
     http_method = "DELETE",
     http_path = "/things/{thingName}/shadow",
     paginator = list()
   )
-  input <- .iotdataplane$delete_thing_shadow_input(thingName = thingName)
+  input <- .iotdataplane$delete_thing_shadow_input(thingName = thingName, shadowName = shadowName)
   output <- .iotdataplane$delete_thing_shadow_output()
   config <- get_config()
   svc <- .iotdataplane$service(config)
@@ -43,37 +45,39 @@ iotdataplane_delete_thing_shadow <- function(thingName) {
 }
 .iotdataplane$operations$delete_thing_shadow <- iotdataplane_delete_thing_shadow
 
-#' Gets the thing shadow for the specified thing
+#' Gets the shadow for the specified thing
 #'
-#' Gets the thing shadow for the specified thing.
+#' Gets the shadow for the specified thing.
 #' 
 #' For more information, see
 #' [GetThingShadow](http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html)
-#' in the *AWS IoT Developer Guide*.
+#' in the AWS IoT Developer Guide.
 #'
 #' @usage
-#' iotdataplane_get_thing_shadow(thingName)
+#' iotdataplane_get_thing_shadow(thingName, shadowName)
 #'
 #' @param thingName &#91;required&#93; The name of the thing.
+#' @param shadowName The name of the shadow.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_thing_shadow(
-#'   thingName = "string"
+#'   thingName = "string",
+#'   shadowName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iotdataplane_get_thing_shadow
-iotdataplane_get_thing_shadow <- function(thingName) {
+iotdataplane_get_thing_shadow <- function(thingName, shadowName = NULL) {
   op <- new_operation(
     name = "GetThingShadow",
     http_method = "GET",
     http_path = "/things/{thingName}/shadow",
     paginator = list()
   )
-  input <- .iotdataplane$get_thing_shadow_input(thingName = thingName)
+  input <- .iotdataplane$get_thing_shadow_input(thingName = thingName, shadowName = shadowName)
   output <- .iotdataplane$get_thing_shadow_output()
   config <- get_config()
   svc <- .iotdataplane$service(config)
@@ -83,13 +87,54 @@ iotdataplane_get_thing_shadow <- function(thingName) {
 }
 .iotdataplane$operations$get_thing_shadow <- iotdataplane_get_thing_shadow
 
+#' Lists the shadows for the specified thing
+#'
+#' Lists the shadows for the specified thing.
+#'
+#' @usage
+#' iotdataplane_list_named_shadows_for_thing(thingName, nextToken,
+#'   pageSize)
+#'
+#' @param thingName &#91;required&#93; The name of the thing.
+#' @param nextToken The token to retrieve the next set of results.
+#' @param pageSize The result page size.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_named_shadows_for_thing(
+#'   thingName = "string",
+#'   nextToken = "string",
+#'   pageSize = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iotdataplane_list_named_shadows_for_thing
+iotdataplane_list_named_shadows_for_thing <- function(thingName, nextToken = NULL, pageSize = NULL) {
+  op <- new_operation(
+    name = "ListNamedShadowsForThing",
+    http_method = "GET",
+    http_path = "/api/things/shadow/ListNamedShadowsForThing/{thingName}",
+    paginator = list()
+  )
+  input <- .iotdataplane$list_named_shadows_for_thing_input(thingName = thingName, nextToken = nextToken, pageSize = pageSize)
+  output <- .iotdataplane$list_named_shadows_for_thing_output()
+  config <- get_config()
+  svc <- .iotdataplane$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iotdataplane$operations$list_named_shadows_for_thing <- iotdataplane_list_named_shadows_for_thing
+
 #' Publishes state information
 #'
 #' Publishes state information.
 #' 
 #' For more information, see [HTTP
 #' Protocol](http://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#http)
-#' in the *AWS IoT Developer Guide*.
+#' in the AWS IoT Developer Guide.
 #'
 #' @usage
 #' iotdataplane_publish(topic, qos, payload)
@@ -127,24 +172,26 @@ iotdataplane_publish <- function(topic, qos = NULL, payload = NULL) {
 }
 .iotdataplane$operations$publish <- iotdataplane_publish
 
-#' Updates the thing shadow for the specified thing
+#' Updates the shadow for the specified thing
 #'
-#' Updates the thing shadow for the specified thing.
+#' Updates the shadow for the specified thing.
 #' 
 #' For more information, see
 #' [UpdateThingShadow](http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html)
-#' in the *AWS IoT Developer Guide*.
+#' in the AWS IoT Developer Guide.
 #'
 #' @usage
-#' iotdataplane_update_thing_shadow(thingName, payload)
+#' iotdataplane_update_thing_shadow(thingName, shadowName, payload)
 #'
 #' @param thingName &#91;required&#93; The name of the thing.
+#' @param shadowName The name of the shadow.
 #' @param payload &#91;required&#93; The state information, in JSON format.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_thing_shadow(
 #'   thingName = "string",
+#'   shadowName = "string",
 #'   payload = raw
 #' )
 #' ```
@@ -152,14 +199,14 @@ iotdataplane_publish <- function(topic, qos = NULL, payload = NULL) {
 #' @keywords internal
 #'
 #' @rdname iotdataplane_update_thing_shadow
-iotdataplane_update_thing_shadow <- function(thingName, payload) {
+iotdataplane_update_thing_shadow <- function(thingName, shadowName = NULL, payload) {
   op <- new_operation(
     name = "UpdateThingShadow",
     http_method = "POST",
     http_path = "/things/{thingName}/shadow",
     paginator = list()
   )
-  input <- .iotdataplane$update_thing_shadow_input(thingName = thingName, payload = payload)
+  input <- .iotdataplane$update_thing_shadow_input(thingName = thingName, shadowName = shadowName, payload = payload)
   output <- .iotdataplane$update_thing_shadow_output()
   config <- get_config()
   svc <- .iotdataplane$service(config)

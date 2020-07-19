@@ -5,7 +5,7 @@
 \title{Creates a new flow}
 \usage{
 mediaconnect_create_flow(AvailabilityZone, Entitlements, Name, Outputs,
-  Source)
+  Source, SourceFailoverConfig, Sources, VpcInterfaces)
 }
 \arguments{
 \item{AvailabilityZone}{The Availability Zone that you want to create the flow in. These options are limited to the Availability Zones within the current AWS Region.}
@@ -16,10 +16,16 @@ mediaconnect_create_flow(AvailabilityZone, Entitlements, Name, Outputs,
 
 \item{Outputs}{The outputs that you want to add to this flow.}
 
-\item{Source}{[required]}
+\item{Source}{}
+
+\item{SourceFailoverConfig}{}
+
+\item{Sources}{}
+
+\item{VpcInterfaces}{The VPC interfaces you want on the flow.}
 }
 \description{
-Creates a new flow. The request must include one source. The request optionally can include outputs (up to 20) and entitlements (up to 50).
+Creates a new flow. The request must include one source. The request optionally can include outputs (up to 50) and entitlements (up to 50).
 }
 \section{Request syntax}{
 \preformatted{svc$create_flow(
@@ -70,7 +76,10 @@ Creates a new flow. The request must include one source. The request optionally 
       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
       RemoteId = "string",
       SmoothingLatency = 123,
-      StreamId = "string"
+      StreamId = "string",
+      VpcInterfaceAttachment = list(
+        VpcInterfaceName = "string"
+      )
     )
   ),
   Source = list(
@@ -93,7 +102,47 @@ Creates a new flow. The request must include one source. The request optionally 
     Name = "string",
     Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
     StreamId = "string",
+    VpcInterfaceName = "string",
     WhitelistCidr = "string"
+  ),
+  SourceFailoverConfig = list(
+    RecoveryWindow = 123,
+    State = "ENABLED"|"DISABLED"
+  ),
+  Sources = list(
+    list(
+      Decryption = list(
+        Algorithm = "aes128"|"aes192"|"aes256",
+        ConstantInitializationVector = "string",
+        DeviceId = "string",
+        KeyType = "speke"|"static-key",
+        Region = "string",
+        ResourceId = "string",
+        RoleArn = "string",
+        SecretArn = "string",
+        Url = "string"
+      ),
+      Description = "string",
+      EntitlementArn = "string",
+      IngestPort = 123,
+      MaxBitrate = 123,
+      MaxLatency = 123,
+      Name = "string",
+      Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
+      StreamId = "string",
+      VpcInterfaceName = "string",
+      WhitelistCidr = "string"
+    )
+  ),
+  VpcInterfaces = list(
+    list(
+      Name = "string",
+      RoleArn = "string",
+      SecurityGroupIds = list(
+        "string"
+      ),
+      SubnetId = "string"
+    )
   )
 )
 }

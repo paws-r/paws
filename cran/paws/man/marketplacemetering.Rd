@@ -18,6 +18,9 @@ Metering Service API.
 AWS Marketplace sellers can use this API to submit usage data for custom
 usage dimensions.
 
+For information on the permissions you need to use this API, see \href{https://docs.aws.amazon.com/marketplace/latest/userguide/iam-user-policy-for-aws-marketplace-actions.html}{AWS Marketing metering and entitlement API permissions}
+in the \emph{AWS Marketplace Seller Guide.}
+
 \strong{Submitting Metering Records}
 \itemize{
 \item \emph{MeterUsage}- Submits the metering record for a Marketplace product.

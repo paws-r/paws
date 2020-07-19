@@ -45,12 +45,10 @@ for a Lambda function.
 
 \examples{
 \dontrun{
-# This operation retrieves a Lambda function's aliases
+# The following example returns a list of aliases for a function named
+# my-function.
 svc$list_aliases(
-  FunctionName = "myFunction",
-  FunctionVersion = "1",
-  Marker = "",
-  MaxItems = 123L
+  FunctionName = "my-function"
 )
 }
 

@@ -40,4 +40,14 @@ function.
 }
 }
 
+\examples{
+\dontrun{
+# The following example returns a list of provisioned concurrency
+# configurations for a function named my-function.
+svc$list_provisioned_concurrency_configs(
+  FunctionName = "my-function"
+)
+}
+
+}
 \keyword{internal}

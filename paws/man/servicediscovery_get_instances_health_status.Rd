@@ -18,7 +18,9 @@ If you omit \code{Instances}, AWS Cloud Map returns the health status for all
 the instances that are associated with the specified service.
 
 To get the IDs for the instances that you\'ve registered by using a
-specified service, submit a ListInstances request.}
+specified service, submit a
+\href{https://docs.aws.amazon.com/cloud-map/latest/api/API_ListInstances.html}{ListInstances}
+request.}
 
 \item{MaxResults}{The maximum number of instances that you want AWS Cloud Map to return in
 the response to a \code{GetInstancesHealthStatus} request. If you don\'t
@@ -52,4 +54,14 @@ the health status for the instance is available.
 }
 }
 
+\examples{
+\dontrun{
+# This example gets the current health status of one or more instances
+# that are associate with a specified service.
+svc$get_instances_health_status(
+  ServiceId = "srv-e4anhexample0004"
+)
+}
+
+}
 \keyword{internal}

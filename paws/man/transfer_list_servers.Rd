@@ -2,23 +2,23 @@
 % Please edit documentation in R/transfer_operations.R
 \name{transfer_list_servers}
 \alias{transfer_list_servers}
-\title{Lists the Secure File Transfer Protocol (SFTP) servers that are
-associated with your AWS account}
+\title{Lists the file transfer protocol-enabled servers that are associated
+with your AWS account}
 \usage{
 transfer_list_servers(MaxResults, NextToken)
 }
 \arguments{
-\item{MaxResults}{Specifies the number of servers to return as a response to the
-\code{ListServers} query.}
+\item{MaxResults}{Specifies the number of file transfer protocol-enabled servers to return
+as a response to the \code{ListServers} query.}
 
-\item{NextToken}{When additional results are obtained from the \code{ListServers} command, a
+\item{NextToken}{When additional results are obtained from the\code{ListServers} command, a
 \code{NextToken} parameter is returned in the output. You can then pass the
 \code{NextToken} parameter in a subsequent command to continue listing
-additional servers.}
+additional file transfer protocol-enabled servers.}
 }
 \description{
-Lists the Secure File Transfer Protocol (SFTP) servers that are
-associated with your AWS account.
+Lists the file transfer protocol-enabled servers that are associated
+with your AWS account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_servers(

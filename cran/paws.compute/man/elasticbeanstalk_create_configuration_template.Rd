@@ -2,71 +2,77 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_create_configuration_template}
 \alias{elasticbeanstalk_create_configuration_template}
-\title{Creates a configuration template}
+\title{Creates an AWS Elastic Beanstalk configuration template, associated with
+a specific Elastic Beanstalk application}
 \usage{
 elasticbeanstalk_create_configuration_template(ApplicationName,
   TemplateName, SolutionStackName, PlatformArn, SourceConfiguration,
   EnvironmentId, Description, OptionSettings, Tags)
 }
 \arguments{
-\item{ApplicationName}{[required] The name of the application to associate with this configuration
-template. If no application is found with this name, AWS Elastic
-Beanstalk returns an \code{InvalidParameterValue} error.}
+\item{ApplicationName}{[required] The name of the Elastic Beanstalk application to associate with this
+configuration template.}
 
 \item{TemplateName}{[required] The name of the configuration template.
 
-Constraint: This name must be unique per application.
+Constraint: This name must be unique per application.}
 
-Default: If a configuration template already exists with this name, AWS
-Elastic Beanstalk returns an \code{InvalidParameterValue} error.}
+\item{SolutionStackName}{The name of an Elastic Beanstalk solution stack (platform version) that
+this configuration uses. For example,
+\verb{64bit Amazon Linux 2013.09 running Tomcat 7 Java 7}. A solution stack
+specifies the operating system, runtime, and application server for a
+configuration template. It also determines the set of configuration
+options as well as the possible and default values. For more
+information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html}{Supported Platforms}
+in the \emph{AWS Elastic Beanstalk Developer Guide}.
 
-\item{SolutionStackName}{The name of the solution stack used by this configuration. The solution
-stack specifies the operating system, architecture, and application
-server for a configuration template. It determines the set of
-configuration options as well as the possible and default values.
+You must specify \code{SolutionStackName} if you don\'t specify
+\code{PlatformArn}, \code{EnvironmentId}, or \code{SourceConfiguration}.
 
-Use ListAvailableSolutionStacks to obtain a list of available solution
-stacks.
+Use the
+\href{https://docs.aws.amazon.com/elasticbeanstalk/latest/api/API_ListAvailableSolutionStacks.html}{\code{ListAvailableSolutionStacks}}
+API to obtain a list of available solution stacks.}
 
-A solution stack name or a source configuration parameter must be
-specified, otherwise AWS Elastic Beanstalk returns an
-\code{InvalidParameterValue} error.
+\item{PlatformArn}{The Amazon Resource Name (ARN) of the custom platform. For more
+information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/custom-platforms.html}{Custom Platforms}
+in the \emph{AWS Elastic Beanstalk Developer Guide}.
 
-If a solution stack name is not specified and the source configuration
-parameter is specified, AWS Elastic Beanstalk uses the same solution
-stack as the source configuration template.}
+If you specify \code{PlatformArn}, then don\'t specify \code{SolutionStackName}.}
 
-\item{PlatformArn}{The ARN of the custom platform.}
+\item{SourceConfiguration}{An Elastic Beanstalk configuration template to base this one on. If
+specified, Elastic Beanstalk uses the configuration values from the
+specified configuration template to create a new configuration.
 
-\item{SourceConfiguration}{If specified, AWS Elastic Beanstalk uses the configuration values from
-the specified configuration template to create a new configuration.
+Values specified in \code{OptionSettings} override any values obtained from
+the \code{SourceConfiguration}.
 
-Values specified in the \code{OptionSettings} parameter of this call
-overrides any values obtained from the \code{SourceConfiguration}.
+You must specify \code{SourceConfiguration} if you don\'t specify
+\code{PlatformArn}, \code{EnvironmentId}, or \code{SolutionStackName}.
 
-If no configuration template is found, returns an
-\code{InvalidParameterValue} error.
+Constraint: If both solution stack name and source configuration are
+specified, the solution stack of the source configuration template must
+match the specified solution stack name.}
 
-Constraint: If both the solution stack name parameter and the source
-configuration parameters are specified, the solution stack of the source
-configuration template must match the specified solution stack name or
-else AWS Elastic Beanstalk returns an \code{InvalidParameterCombination}
-error.}
+\item{EnvironmentId}{The ID of an environment whose settings you want to use to create the
+configuration template. You must specify \code{EnvironmentId} if you don\'t
+specify \code{PlatformArn}, \code{SolutionStackName}, or \code{SourceConfiguration}.}
 
-\item{EnvironmentId}{The ID of the environment used with this configuration template.}
+\item{Description}{An optional description for this configuration.}
 
-\item{Description}{Describes this configuration.}
-
-\item{OptionSettings}{If specified, AWS Elastic Beanstalk sets the specified configuration
-option to the requested value. The new value overrides the value
-obtained from the solution stack or the source configuration template.}
+\item{OptionSettings}{Option values for the Elastic Beanstalk configuration, such as the
+instance type. If specified, these values override the values obtained
+from the solution stack or the source configuration template. For a
+complete list of Elastic Beanstalk configuration options, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html}{Option Values}
+in the \emph{AWS Elastic Beanstalk Developer Guide}.}
 
 \item{Tags}{Specifies the tags applied to the configuration template.}
 }
 \description{
-Creates a configuration template. Templates are associated with a
-specific application and are used to deploy different versions of the
-application with the same configuration settings.
+Creates an AWS Elastic Beanstalk configuration template, associated with
+a specific Elastic Beanstalk application. You define application
+configuration settings in a configuration template. You can then use the
+configuration template to deploy different versions of the application
+with the same configuration settings.
 }
 \details{
 Templates aren\'t associated with any environment. The \code{EnvironmentName}

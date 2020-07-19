@@ -5,7 +5,8 @@
 \title{Modifies a subnet attribute}
 \usage{
 ec2_modify_subnet_attribute(AssignIpv6AddressOnCreation,
-  MapPublicIpOnLaunch, SubnetId)
+  MapPublicIpOnLaunch, SubnetId, MapCustomerOwnedIpOnLaunch,
+  CustomerOwnedIpv4Pool)
 }
 \arguments{
 \item{AssignIpv6AddressOnCreation}{Specify \code{true} to indicate that network interfaces created in the
@@ -17,10 +18,23 @@ If you enable the IPv6 addressing feature for your subnet, your network
 interface or instance only receives an IPv6 address if it\'s created
 using version \code{2016-11-15} or later of the Amazon EC2 API.}
 
-\item{MapPublicIpOnLaunch}{Specify \code{true} to indicate that ENIs attached to instances created in
-the specified subnet should be assigned a public IPv4 address.}
+\item{MapPublicIpOnLaunch}{Specify \code{true} to indicate that network interfaces attached to instances
+created in the specified subnet should be assigned a public IPv4
+address.}
 
 \item{SubnetId}{[required] The ID of the subnet.}
+
+\item{MapCustomerOwnedIpOnLaunch}{Specify \code{true} to indicate that network interfaces attached to instances
+created in the specified subnet should be assigned a customer-owned IPv4
+address.
+
+When this value is \code{true}, you must specify the customer-owned IP pool
+using \code{CustomerOwnedIpv4Pool}.}
+
+\item{CustomerOwnedIpv4Pool}{The customer-owned IPv4 address pool associated with the subnet.
+
+You must set this value when you specify \code{true} for
+\code{MapCustomerOwnedIpOnLaunch}.}
 }
 \description{
 Modifies a subnet attribute. You can only modify one attribute at a
@@ -34,7 +48,11 @@ time.
   MapPublicIpOnLaunch = list(
     Value = TRUE|FALSE
   ),
-  SubnetId = "string"
+  SubnetId = "string",
+  MapCustomerOwnedIpOnLaunch = list(
+    Value = TRUE|FALSE
+  ),
+  CustomerOwnedIpv4Pool = "string"
 )
 }
 }

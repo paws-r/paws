@@ -7,8 +7,8 @@
 securityhub_decline_invitations(AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] A list of account IDs that specify the accounts that invitations to
-Security Hub are declined from.}
+\item{AccountIds}{[required] The list of account IDs for the accounts from which to decline the
+invitations to Security Hub.}
 }
 \description{
 Declines invitations to become a member account.

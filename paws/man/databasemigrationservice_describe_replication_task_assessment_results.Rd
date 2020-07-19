@@ -8,10 +8,9 @@ databasemigrationservice_describe_replication_task_assessment_results(
   ReplicationTaskArn, MaxRecords, Marker)
 }
 \arguments{
-\item{ReplicationTaskArn}{\\- The Amazon Resource Name (ARN) string that uniquely identifies the
-task. When this input parameter is specified the API will return only
-one result and ignore the values of the max-records and marker
-parameters.}
+\item{ReplicationTaskArn}{The Amazon Resource Name (ARN) string that uniquely identifies the task.
+When this input parameter is specified, the API returns only one result
+and ignore the values of the \code{MaxRecords} and \code{Marker} parameters.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token

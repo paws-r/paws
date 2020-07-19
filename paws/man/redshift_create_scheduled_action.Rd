@@ -51,6 +51,12 @@ when to run the \code{ResizeCluster} API operation.
       NodeType = "string",
       NumberOfNodes = 123,
       Classic = TRUE|FALSE
+    ),
+    PauseCluster = list(
+      ClusterIdentifier = "string"
+    ),
+    ResumeCluster = list(
+      ClusterIdentifier = "string"
     )
   ),
   Schedule = "string",

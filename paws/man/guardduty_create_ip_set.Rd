@@ -2,26 +2,27 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_create_ip_set}
 \alias{guardduty_create_ip_set}
-\title{Creates a new IPSet, called Trusted IP list in the consoler user
-interface}
+\title{Creates a new IPSet, which is called a trusted IP list in the console
+user interface}
 \usage{
 guardduty_create_ip_set(DetectorId, Name, Format, Location, Activate,
   ClientToken, Tags)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account for which you
-want to create an IPSet.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account that you want to
+create an IPSet for.}
 
-\item{Name}{[required] The user friendly name to identify the IPSet. This name is displayed in
-all findings that are triggered by activity that involves IP addresses
-included in this IPSet.}
+\item{Name}{[required] The user-friendly name to identify the IPSet.
+
+Allowed characters are alphanumerics, spaces, hyphens (-), and
+underscores (\\_).}
 
 \item{Format}{[required] The format of the file that contains the IPSet.}
 
-\item{Location}{[required] The URI of the file that contains the IPSet. For example
-(https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key)}
+\item{Location}{[required] The URI of the file that contains the IPSet. For example:
+https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.}
 
-\item{Activate}{[required] A boolean value that indicates whether GuardDuty is to start using the
+\item{Activate}{[required] A Boolean value that indicates whether GuardDuty is to start using the
 uploaded IPSet.}
 
 \item{ClientToken}{The idempotency token for the create request.}
@@ -29,11 +30,11 @@ uploaded IPSet.}
 \item{Tags}{The tags to be added to a new IP set resource.}
 }
 \description{
-Creates a new IPSet, called Trusted IP list in the consoler user
-interface. An IPSet is a list IP addresses trusted for secure
-communication with AWS infrastructure and applications. GuardDuty does
-not generate findings for IP addresses included in IPSets. Only users
-from the master account can use this operation.
+Creates a new IPSet, which is called a trusted IP list in the console
+user interface. An IPSet is a list of IP addresses that are trusted for
+secure communication with AWS infrastructure and applications. GuardDuty
+doesn\'t generate findings for IP addresses that are included in IPSets.
+Only users from the master account can use this operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_ip_set(

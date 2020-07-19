@@ -2,7 +2,7 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_delete_room}
 \alias{chime_delete_room}
-\title{Deletes a chat room}
+\title{Deletes a chat room in an Amazon Chime Enterprise account}
 \usage{
 chime_delete_room(AccountId, RoomId)
 }
@@ -12,7 +12,7 @@ chime_delete_room(AccountId, RoomId)
 \item{RoomId}{[required] The chat room ID.}
 }
 \description{
-Deletes a chat room.
+Deletes a chat room in an Amazon Chime Enterprise account.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_room(

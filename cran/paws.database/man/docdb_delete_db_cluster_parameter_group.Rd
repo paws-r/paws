@@ -2,23 +2,23 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_delete_db_cluster_parameter_group}
 \alias{docdb_delete_db_cluster_parameter_group}
-\title{Deletes a specified DB cluster parameter group}
+\title{Deletes a specified cluster parameter group}
 \usage{
 docdb_delete_db_cluster_parameter_group(DBClusterParameterGroupName)
 }
 \arguments{
-\item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group.
+\item{DBClusterParameterGroupName}{[required] The name of the cluster parameter group.
 
 Constraints:
 \itemize{
-\item Must be the name of an existing DB cluster parameter group.
-\item You can\'t delete a default DB cluster parameter group.
-\item Cannot be associated with any DB clusters.
+\item Must be the name of an existing cluster parameter group.
+\item You can\'t delete a default cluster parameter group.
+\item Cannot be associated with any clusters.
 }}
 }
 \description{
-Deletes a specified DB cluster parameter group. The DB cluster parameter
-group to be deleted can\'t be associated with any DB clusters.
+Deletes a specified cluster parameter group. The cluster parameter group
+to be deleted can\'t be associated with any clusters.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_db_cluster_parameter_group(

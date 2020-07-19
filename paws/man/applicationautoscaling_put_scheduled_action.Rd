@@ -10,10 +10,9 @@ applicationautoscaling_put_scheduled_action(ServiceNamespace, Schedule,
   ScalableTargetAction)
 }
 \arguments{
-\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or
-\code{custom-resource} for a resource provided by your own application or
-service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
-in the \emph{Amazon Web Services General Reference}.}
+\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource. For a
+resource provided by your own application or service, use
+\code{custom-resource} instead.}
 
 \item{Schedule}{The schedule for this action. The following formats are supported:
 \itemize{
@@ -23,16 +22,20 @@ in the \emph{Amazon Web Services General Reference}.}
 \item Cron expressions - \"\verb{cron(<i>fields</i>)}\"
 }
 
-At expressions are useful for one-time schedules. Specify the time, in
+At expressions are useful for one-time schedules. Specify the time in
 UTC.
 
 For rate expressions, \emph{value} is a positive integer and \emph{unit} is
 \code{minute} \\| \code{minutes} \\| \code{hour} \\| \code{hours} \\| \code{day} \\| \code{days}.
 
 For more information about cron expressions, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions}{Cron Expressions}
-in the \emph{Amazon CloudWatch Events User Guide}.}
+in the \emph{Amazon CloudWatch Events User Guide}.
 
-\item{ScheduledActionName}{[required] The name of the scheduled action.}
+For examples of using these expressions, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html}{Scheduled Scaling}
+in the \emph{Application Auto Scaling User Guide}.}
+
+\item{ScheduledActionName}{[required] The name of the scheduled action. This name must be unique among all
+other scheduled actions on the specified scalable target.}
 
 \item{ResourceId}{[required] The identifier of the resource associated with the scheduled action.
 This string consists of the resource type and unique identifier.
@@ -71,6 +74,9 @@ Example:
 the unique identifier is the function name with a function version
 or alias name suffix that is not \verb{$LATEST}. Example:
 \verb{function:my-function:prod} or \verb{function:my-function:1}.
+\item Amazon Keyspaces table - The resource type is \code{table} and the unique
+identifier is the table name. Example:
+\code{keyspace/mykeyspace/table/mytable}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension. This string consists of the service namespace,
@@ -104,17 +110,21 @@ The number of inference units for an Amazon Comprehend document
 classification endpoint.
 \item \verb{lambda:function:ProvisionedConcurrency} - The provisioned
 concurrency for a Lambda function.
+\item \code{cassandra:table:ReadCapacityUnits} - The provisioned read capacity
+for an Amazon Keyspaces table.
+\item \code{cassandra:table:WriteCapacityUnits} - The provisioned write
+capacity for an Amazon Keyspaces table.
 }}
 
-\item{StartTime}{The date and time for the scheduled action to start.}
+\item{StartTime}{The date and time for this scheduled action to start.}
 
-\item{EndTime}{The date and time for the scheduled action to end.}
+\item{EndTime}{The date and time for the recurring schedule to end.}
 
 \item{ScalableTargetAction}{The new minimum and maximum capacity. You can set both values or just
-one. During the scheduled time, if the current capacity is below the
-minimum capacity, Application Auto Scaling scales out to the minimum
-capacity. If the current capacity is above the maximum capacity,
-Application Auto Scaling scales in to the maximum capacity.}
+one. At the scheduled time, if the current capacity is below the minimum
+capacity, Application Auto Scaling scales out to the minimum capacity.
+If the current capacity is above the maximum capacity, Application Auto
+Scaling scales in to the maximum capacity.}
 }
 \description{
 Creates or updates a scheduled action for an Application Auto Scaling
@@ -125,26 +135,30 @@ Each scalable target is identified by a service namespace, resource ID,
 and scalable dimension. A scheduled action applies to the scalable
 target identified by those three attributes. You cannot create a
 scheduled action until you have registered the resource as a scalable
-target using RegisterScalableTarget.
+target.
 
-To update an action, specify its name and the parameters that you want
-to change. If you don\'t specify start and end times, the old values are
-deleted. Any other parameters that you don\'t specify are not changed by
-this update request.
+When start and end times are specified with a recurring schedule using a
+cron expression or rates, they form the boundaries of when the recurring
+action starts and stops.
 
-You can view the scheduled actions using DescribeScheduledActions. If
-you are no longer using a scheduled action, you can delete it using
-DeleteScheduledAction.
+To update a scheduled action, specify the parameters that you want to
+change. If you don\'t specify start and end times, the old values are
+deleted.
 
-Learn more about how to work with scheduled actions in the \href{https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html}{Application Auto Scaling User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html}{Scheduled Scaling}
+in the \emph{Application Auto Scaling User Guide}.
+
+If a scalable target is deregistered, the scalable target is no longer
+available to run scheduled actions. Any scheduled actions that were
+specified for the scalable target are deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$put_scheduled_action(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
   Schedule = "string",
   ScheduledActionName = "string",
   ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
   StartTime = as.POSIXct(
     "2015-01-01"
   ),

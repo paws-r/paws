@@ -207,7 +207,7 @@ NULL
 
 .codepipeline$list_pipeline_executions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pipelineExecutionSummaries = structure(list(structure(list(pipelineExecutionId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), sourceRevisions = structure(list(structure(list(actionName = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), revisionSummary = structure(logical(0), tags = list(type = "string")), revisionUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), trigger = structure(list(triggerType = structure(logical(0), tags = list(type = "string")), triggerDetail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pipelineExecutionSummaries = structure(list(structure(list(pipelineExecutionId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp")), sourceRevisions = structure(list(structure(list(actionName = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string")), revisionSummary = structure(logical(0), tags = list(type = "string")), revisionUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), trigger = structure(list(triggerType = structure(logical(0), tags = list(type = "string")), triggerDetail = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), stopTrigger = structure(list(reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -378,6 +378,18 @@ NULL
 }
 
 .codepipeline$start_pipeline_execution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(pipelineExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codepipeline$stop_pipeline_execution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(pipelineName = structure(logical(0), tags = list(type = "string")), pipelineExecutionId = structure(logical(0), tags = list(type = "string")), abandon = structure(logical(0), tags = list(type = "boolean")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codepipeline$stop_pipeline_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(pipelineExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))

@@ -11,8 +11,8 @@ ssm_get_command_invocation(CommandId, InstanceId, PluginName)
 \item{CommandId}{[required] (Required) The parent command ID of the invocation plugin.}
 
 \item{InstanceId}{[required] (Required) The ID of the managed instance targeted by the command. A
-managed instance can be an Amazon EC2 instance or an instance in your
-hybrid environment that is configured for Systems Manager.}
+managed instance can be an EC2 instance or an instance in your hybrid
+environment that is configured for Systems Manager.}
 
 \item{PluginName}{(Optional) The name of the plugin for which you want detailed results.
 If the document contains only one plugin, the name can be omitted and

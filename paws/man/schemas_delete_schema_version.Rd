@@ -7,11 +7,11 @@
 schemas_delete_schema_version(RegistryName, SchemaName, SchemaVersion)
 }
 \arguments{
-\item{RegistryName}{[required]}
+\item{RegistryName}{[required] The name of the registry.}
 
-\item{SchemaName}{[required]}
+\item{SchemaName}{[required] The name of the schema.}
 
-\item{SchemaVersion}{[required]}
+\item{SchemaVersion}{[required] The version number of the schema}
 }
 \description{
 Delete the schema version definition

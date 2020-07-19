@@ -13,8 +13,8 @@ kinesisvideo_describe_signaling_channel(ChannelName, ChannelARN)
 }
 \description{
 Returns the most current information about the signaling channel. You
-must specify either the name or the ARN of the channel that you want to
-describe.
+must specify either the name or the Amazon Resource Name (ARN) of the
+channel that you want to describe.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_signaling_channel(

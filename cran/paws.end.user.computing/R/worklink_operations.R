@@ -144,34 +144,38 @@ worklink_associate_website_certificate_authority <- function(FleetArn, Certifica
 #'
 #' @usage
 #' worklink_create_fleet(FleetName, DisplayName,
-#'   OptimizeForEndUserLocation)
+#'   OptimizeForEndUserLocation, Tags)
 #'
 #' @param FleetName &#91;required&#93; A unique name for the fleet.
 #' @param DisplayName The fleet name to display.
 #' @param OptimizeForEndUserLocation The option to optimize for better performance by routing traffic through
 #' the closest AWS Region to users, which may be outside of your home
 #' Region.
+#' @param Tags The tags to add to the resource. A tag is a key-value pair.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_fleet(
 #'   FleetName = "string",
 #'   DisplayName = "string",
-#'   OptimizeForEndUserLocation = TRUE|FALSE
+#'   OptimizeForEndUserLocation = TRUE|FALSE,
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname worklink_create_fleet
-worklink_create_fleet <- function(FleetName, DisplayName = NULL, OptimizeForEndUserLocation = NULL) {
+worklink_create_fleet <- function(FleetName, DisplayName = NULL, OptimizeForEndUserLocation = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
     http_path = "/createFleet",
     paginator = list()
   )
-  input <- .worklink$create_fleet_input(FleetName = FleetName, DisplayName = DisplayName, OptimizeForEndUserLocation = OptimizeForEndUserLocation)
+  input <- .worklink$create_fleet_input(FleetName = FleetName, DisplayName = DisplayName, OptimizeForEndUserLocation = OptimizeForEndUserLocation, Tags = Tags)
   output <- .worklink$create_fleet_output()
   config <- get_config()
   svc <- .worklink$service(config)
@@ -415,7 +419,7 @@ worklink_describe_domain <- function(FleetArn, DomainName) {
 #' @usage
 #' worklink_describe_fleet_metadata(FleetArn)
 #'
-#' @param FleetArn &#91;required&#93; The ARN of the fleet.
+#' @param FleetArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
 #'
 #' @section Request syntax:
 #' ```
@@ -758,6 +762,42 @@ worklink_list_fleets <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .worklink$operations$list_fleets <- worklink_list_fleets
 
+#' Retrieves a list of tags for the specified resource
+#'
+#' Retrieves a list of tags for the specified resource.
+#'
+#' @usage
+#' worklink_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname worklink_list_tags_for_resource
+worklink_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .worklink$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .worklink$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .worklink$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.worklink$operations$list_tags_for_resource <- worklink_list_tags_for_resource
+
 #' Retrieves a list of website authorization providers associated with a
 #' specified fleet
 #'
@@ -960,6 +1000,89 @@ worklink_sign_out_user <- function(FleetArn, Username) {
   return(response)
 }
 .worklink$operations$sign_out_user <- worklink_sign_out_user
+
+#' Adds or overwrites one or more tags for the specified resource, such as
+#' a fleet
+#'
+#' Adds or overwrites one or more tags for the specified resource, such as
+#' a fleet. Each tag consists of a key and an optional value. If a resource
+#' already has a tag with the same key, this operation updates its value.
+#'
+#' @usage
+#' worklink_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
+#' @param Tags &#91;required&#93; The tags to add to the resource. A tag is a key-value pair.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname worklink_tag_resource
+worklink_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .worklink$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .worklink$tag_resource_output()
+  config <- get_config()
+  svc <- .worklink$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.worklink$operations$tag_resource <- worklink_tag_resource
+
+#' Removes one or more tags from the specified resource
+#'
+#' Removes one or more tags from the specified resource.
+#'
+#' @usage
+#' worklink_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
+#' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname worklink_untag_resource
+worklink_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .worklink$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .worklink$untag_resource_output()
+  config <- get_config()
+  svc <- .worklink$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.worklink$operations$untag_resource <- worklink_untag_resource
 
 #' Updates the audit stream configuration for the fleet
 #'

@@ -10,6 +10,14 @@ test_that("list_applications", {
   expect_error(svc$list_applications(MaxResults = 20), NA)
 })
 
+test_that("list_configuration_history", {
+  expect_error(svc$list_configuration_history(), NA)
+})
+
+test_that("list_configuration_history", {
+  expect_error(svc$list_configuration_history(MaxResults = 20), NA)
+})
+
 test_that("list_problems", {
   expect_error(svc$list_problems(), NA)
 })

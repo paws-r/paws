@@ -5,7 +5,7 @@
 \title{Detects text in the input image and converts it into machine-readable
 text}
 \usage{
-rekognition_detect_text(Image)
+rekognition_detect_text(Image, Filters)
 }
 \arguments{
 \item{Image}{[required] The input image as base64-encoded bytes or an Amazon S3 object. If you
@@ -15,6 +15,9 @@ image bytes.
 If you are using an AWS SDK to call Amazon Rekognition, you might not
 need to base64-encode image bytes passed using the \code{Bytes} field. For
 more information, see Images in the Amazon Rekognition developer guide.}
+
+\item{Filters}{Optional parameters that let you set the criteria that the text must
+meet to be included in your response.}
 }
 \description{
 Detects text in the input image and converts it into machine-readable
@@ -61,6 +64,23 @@ Guide.
       Bucket = "string",
       Name = "string",
       Version = "string"
+    )
+  ),
+  Filters = list(
+    WordFilter = list(
+      MinConfidence = 123.0,
+      MinBoundingBoxHeight = 123.0,
+      MinBoundingBoxWidth = 123.0
+    ),
+    RegionsOfInterest = list(
+      list(
+        BoundingBox = list(
+          Width = 123.0,
+          Height = 123.0,
+          Left = 123.0,
+          Top = 123.0
+        )
+      )
     )
   )
 )

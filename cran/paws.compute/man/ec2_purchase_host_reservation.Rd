@@ -6,7 +6,7 @@
 Dedicated Host}
 \usage{
 ec2_purchase_host_reservation(ClientToken, CurrencyCode, HostIdSet,
-  LimitPrice, OfferingId)
+  LimitPrice, OfferingId, TagSpecifications)
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -28,6 +28,8 @@ the only supported currency is \code{USD}. For example, to indicate a limit
 price of USD 100, specify 100.00.}
 
 \item{OfferingId}{[required] The ID of the offering.}
+
+\item{TagSpecifications}{The tags to apply to the Dedicated Host Reservation during purchase.}
 }
 \description{
 Purchase a reservation with configurations that match those of your
@@ -43,7 +45,18 @@ reservation being purchased and charged to your account.
     "string"
   ),
   LimitPrice = "string",
-  OfferingId = "string"
+  OfferingId = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

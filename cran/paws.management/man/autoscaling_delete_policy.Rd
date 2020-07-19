@@ -35,7 +35,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 # This example deletes the specified Auto Scaling policy.
 svc$delete_policy(
   AutoScalingGroupName = "my-auto-scaling-group",
-  PolicyName = "ScaleIn"
+  PolicyName = "my-step-scale-out-policy"
 )
 }
 

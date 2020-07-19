@@ -2,8 +2,7 @@
 % Please edit documentation in R/sns_operations.R
 \name{sns_subscribe}
 \alias{sns_subscribe}
-\title{Prepares to subscribe an endpoint by sending the endpoint a confirmation
-message}
+\title{Subscribes an endpoint to an Amazon SNS topic}
 \usage{
 sns_subscribe(TopicArn, Protocol, Endpoint, Attributes,
   ReturnSubscriptionArn)
@@ -28,10 +27,10 @@ function.
 \item{Endpoint}{The endpoint that you want to receive notifications. Endpoints vary by
 protocol:
 \itemize{
-\item For the \code{http} protocol, the endpoint is an URL beginning with
-\verb{http://}
-\item For the \code{https} protocol, the endpoint is a URL beginning with
-\verb{https://}
+\item For the \code{http} protocol, the (public) endpoint is a URL beginning
+with \verb{http://}
+\item For the \code{https} protocol, the (public) endpoint is a URL beginning
+with \verb{https://}
 \item For the \code{email} protocol, the endpoint is an email address
 \item For the \code{email-json} protocol, the endpoint is an email address
 \item For the \code{sms} protocol, the endpoint is a phone number of an
@@ -69,26 +68,27 @@ held in the dead-letter queue for further analysis or reprocessing.
 \item{ReturnSubscriptionArn}{Sets whether the response from the \code{Subscribe} request includes the
 subscription ARN, even if the subscription is not yet confirmed.
 \itemize{
-\item If you have the subscription ARN returned, the response includes the
-ARN in all cases, even if the subscription is not yet confirmed.
-\item If you don\'t have the subscription ARN returned, in addition to the
-ARN for confirmed subscriptions, the response also includes the
-\verb{pending subscription} ARN value for subscriptions that aren\'t yet
-confirmed. A subscription becomes confirmed when the subscriber
-calls the \code{ConfirmSubscription} action with a confirmation token.
+\item If you set this parameter to \code{true}, the response includes the ARN
+in all cases, even if the subscription is not yet confirmed. In
+addition to the ARN for confirmed subscriptions, the response also
+includes the \verb{pending subscription} ARN value for subscriptions that
+aren\'t yet confirmed. A subscription becomes confirmed when the
+subscriber calls the \code{ConfirmSubscription} action with a
+confirmation token.
 }
-
-If you set this parameter to \code{true}, .
 
 The default value is \code{false}.}
 }
 \description{
-Prepares to subscribe an endpoint by sending the endpoint a confirmation
-message. To actually create a subscription, the endpoint owner must call
-the \code{ConfirmSubscription} action with the token from the confirmation
-message. Confirmation tokens are valid for three days.
+Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is
+HTTP/S or email, or if the endpoint and the topic are not in the same
+AWS account, the endpoint owner must the \code{ConfirmSubscription} action to
+confirm the subscription.
 }
 \details{
+You call the \code{ConfirmSubscription} action with the token from the
+subscription response. Confirmation tokens are valid for three days.
+
 This action is throttled at 100 transactions per second (TPS).
 }
 \section{Request syntax}{

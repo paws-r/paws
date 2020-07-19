@@ -47,6 +47,11 @@ Exports routes from the specified transit gateway route table to the
 specified S3 bucket. By default, all routes are exported. Alternatively,
 you can filter by CIDR range.
 }
+\details{
+The routes are saved to the specified bucket in a JSON file. For more
+information, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html#tgw-export-route-tables}{Export Route Tables to Amazon S3}
+in \emph{Transit Gateways}.
+}
 \section{Request syntax}{
 \preformatted{svc$export_transit_gateway_routes(
   TransitGatewayRouteTableId = "string",

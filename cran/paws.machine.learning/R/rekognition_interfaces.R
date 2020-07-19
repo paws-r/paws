@@ -87,6 +87,30 @@ NULL
   return(populate(args, shape))
 }
 
+.rekognition$delete_project_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProjectArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$delete_project_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$delete_project_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProjectVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$delete_project_version_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .rekognition$delete_stream_processor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -197,13 +221,13 @@ NULL
 
 .rekognition$detect_text_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Image = structure(list(Bytes = structure(logical(0), tags = list(type = "blob")), S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Image = structure(list(Bytes = structure(logical(0), tags = list(type = "blob")), S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Filters = structure(list(WordFilter = structure(list(MinConfidence = structure(logical(0), tags = list(type = "float")), MinBoundingBoxHeight = structure(logical(0), tags = list(type = "float")), MinBoundingBoxWidth = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), RegionsOfInterest = structure(list(structure(list(BoundingBox = structure(list(Width = structure(logical(0), tags = list(type = "float")), Height = structure(logical(0), tags = list(type = "float")), Left = structure(logical(0), tags = list(type = "float")), Top = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .rekognition$detect_text_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TextDetections = structure(list(structure(list(DetectedText = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "integer")), ParentId = structure(logical(0), tags = list(type = "integer")), Confidence = structure(logical(0), tags = list(type = "float")), Geometry = structure(list(BoundingBox = structure(list(Width = structure(logical(0), tags = list(type = "float")), Height = structure(logical(0), tags = list(type = "float")), Left = structure(logical(0), tags = list(type = "float")), Top = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), Polygon = structure(list(structure(list(X = structure(logical(0), tags = list(type = "float")), Y = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(TextDetections = structure(list(structure(list(DetectedText = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "integer")), ParentId = structure(logical(0), tags = list(type = "integer")), Confidence = structure(logical(0), tags = list(type = "float")), Geometry = structure(list(BoundingBox = structure(list(Width = structure(logical(0), tags = list(type = "float")), Height = structure(logical(0), tags = list(type = "float")), Left = structure(logical(0), tags = list(type = "float")), Top = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), Polygon = structure(list(structure(list(X = structure(logical(0), tags = list(type = "float")), Y = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), TextModelVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -288,6 +312,30 @@ NULL
 .rekognition$get_person_tracking_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(JobStatus = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), VideoMetadata = structure(list(Codec = structure(logical(0), tags = list(type = "string")), DurationMillis = structure(logical(0), tags = list(type = "long")), Format = structure(logical(0), tags = list(type = "string")), FrameRate = structure(logical(0), tags = list(type = "float")), FrameHeight = structure(logical(0), tags = list(type = "long")), FrameWidth = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), Persons = structure(list(structure(list(Timestamp = structure(logical(0), tags = list(type = "long")), Person = structure(list(Index = structure(logical(0), tags = list(type = "long")), BoundingBox = structure(list(Width = structure(logical(0), tags = list(type = "float")), Height = structure(logical(0), tags = list(type = "float")), Left = structure(logical(0), tags = list(type = "float")), Top = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), Face = structure(list(BoundingBox = structure(list(Width = structure(logical(0), tags = list(type = "float")), Height = structure(logical(0), tags = list(type = "float")), Left = structure(logical(0), tags = list(type = "float")), Top = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), AgeRange = structure(list(Low = structure(logical(0), tags = list(type = "integer")), High = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Smile = structure(list(Value = structure(logical(0), tags = list(type = "boolean")), Confidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), Eyeglasses = structure(list(Value = structure(logical(0), tags = list(type = "boolean")), Confidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), Sunglasses = structure(list(Value = structure(logical(0), tags = list(type = "boolean")), Confidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), Gender = structure(list(Value = structure(logical(0), tags = list(type = "string")), Confidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), Beard = structure(list(Value = structure(logical(0), tags = list(type = "boolean")), Confidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), Mustache = structure(list(Value = structure(logical(0), tags = list(type = "boolean")), Confidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), EyesOpen = structure(list(Value = structure(logical(0), tags = list(type = "boolean")), Confidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), MouthOpen = structure(list(Value = structure(logical(0), tags = list(type = "boolean")), Confidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), Emotions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Confidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list")), Landmarks = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), X = structure(logical(0), tags = list(type = "float")), Y = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list")), Pose = structure(list(Roll = structure(logical(0), tags = list(type = "float")), Yaw = structure(logical(0), tags = list(type = "float")), Pitch = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), Quality = structure(list(Brightness = structure(logical(0), tags = list(type = "float")), Sharpness = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), Confidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$get_segment_detection_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$get_segment_detection_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobStatus = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), VideoMetadata = structure(list(structure(list(Codec = structure(logical(0), tags = list(type = "string")), DurationMillis = structure(logical(0), tags = list(type = "long")), Format = structure(logical(0), tags = list(type = "string")), FrameRate = structure(logical(0), tags = list(type = "float")), FrameHeight = structure(logical(0), tags = list(type = "long")), FrameWidth = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), AudioMetadata = structure(list(structure(list(Codec = structure(logical(0), tags = list(type = "string")), DurationMillis = structure(logical(0), tags = list(type = "long")), SampleRate = structure(logical(0), tags = list(type = "long")), NumberOfChannels = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Segments = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), StartTimestampMillis = structure(logical(0), tags = list(type = "long")), EndTimestampMillis = structure(logical(0), tags = list(type = "long")), DurationMillis = structure(logical(0), tags = list(type = "long")), StartTimecodeSMPTE = structure(logical(0), tags = list(type = "string")), EndTimecodeSMPTE = structure(logical(0), tags = list(type = "string")), DurationSMPTE = structure(logical(0), tags = list(type = "string")), TechnicalCueSegment = structure(list(Type = structure(logical(0), tags = list(type = "string")), Confidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), ShotSegment = structure(list(Index = structure(logical(0), tags = list(type = "long")), Confidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), SelectedSegmentTypes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$get_text_detection_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$get_text_detection_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobStatus = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), VideoMetadata = structure(list(Codec = structure(logical(0), tags = list(type = "string")), DurationMillis = structure(logical(0), tags = list(type = "long")), Format = structure(logical(0), tags = list(type = "string")), FrameRate = structure(logical(0), tags = list(type = "float")), FrameHeight = structure(logical(0), tags = list(type = "long")), FrameWidth = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), TextDetections = structure(list(structure(list(Timestamp = structure(logical(0), tags = list(type = "long")), TextDetection = structure(list(DetectedText = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "integer")), ParentId = structure(logical(0), tags = list(type = "integer")), Confidence = structure(logical(0), tags = list(type = "float")), Geometry = structure(list(BoundingBox = structure(list(Width = structure(logical(0), tags = list(type = "float")), Height = structure(logical(0), tags = list(type = "float")), Left = structure(logical(0), tags = list(type = "float")), Top = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), Polygon = structure(list(structure(list(X = structure(logical(0), tags = list(type = "float")), Y = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), TextModelVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -459,6 +507,18 @@ NULL
   return(populate(args, shape))
 }
 
+.rekognition$start_segment_detection_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Video = structure(list(S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ClientRequestToken = structure(logical(0), tags = list(type = "string")), NotificationChannel = structure(list(SNSTopicArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobTag = structure(logical(0), tags = list(type = "string")), Filters = structure(list(TechnicalCueFilter = structure(list(MinSegmentConfidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), ShotFilter = structure(list(MinSegmentConfidence = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "structure")), SegmentTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$start_segment_detection_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .rekognition$start_stream_processor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -468,6 +528,18 @@ NULL
 .rekognition$start_stream_processor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$start_text_detection_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Video = structure(list(S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ClientRequestToken = structure(logical(0), tags = list(type = "string")), NotificationChannel = structure(list(SNSTopicArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobTag = structure(logical(0), tags = list(type = "string")), Filters = structure(list(WordFilter = structure(list(MinConfidence = structure(logical(0), tags = list(type = "float")), MinBoundingBoxHeight = structure(logical(0), tags = list(type = "float")), MinBoundingBoxWidth = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), RegionsOfInterest = structure(list(structure(list(BoundingBox = structure(list(Width = structure(logical(0), tags = list(type = "float")), Height = structure(logical(0), tags = list(type = "float")), Left = structure(logical(0), tags = list(type = "float")), Top = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.rekognition$start_text_detection_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -2,7 +2,8 @@
 % Please edit documentation in R/eventbridge_operations.R
 \name{eventbridge_put_events}
 \alias{eventbridge_put_events}
-\title{Sends custom events to EventBridge so that they can be matched to rules}
+\title{Sends custom events to Amazon EventBridge so that they can be matched to
+rules}
 \usage{
 eventbridge_put_events(Entries)
 }
@@ -12,8 +13,8 @@ parameters for the entry such as the source and type of the event,
 resources associated with the event, and so on.}
 }
 \description{
-Sends custom events to EventBridge so that they can be matched to rules.
-These events can be from your custom applications and services.
+Sends custom events to Amazon EventBridge so that they can be matched to
+rules.
 }
 \section{Request syntax}{
 \preformatted{svc$put_events(

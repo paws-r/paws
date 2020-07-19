@@ -9,7 +9,7 @@ schemas_update_discoverer(Description, DiscovererId)
 \arguments{
 \item{Description}{The description of the discoverer to update.}
 
-\item{DiscovererId}{[required]}
+\item{DiscovererId}{[required] The ID of the discoverer.}
 }
 \description{
 Updates the discoverer

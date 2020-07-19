@@ -5,7 +5,7 @@
 \title{Associates a CIDR block with your VPC}
 \usage{
 ec2_associate_vpc_cidr_block(AmazonProvidedIpv6CidrBlock, CidrBlock,
-  VpcId, Ipv6CidrBlockNetworkBorderGroup)
+  VpcId, Ipv6CidrBlockNetworkBorderGroup, Ipv6Pool, Ipv6CidrBlock)
 }
 \arguments{
 \item{AmazonProvidedIpv6CidrBlock}{Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for
@@ -23,13 +23,27 @@ You must set \code{AmazonProvidedIpv6CidrBlock} to \code{true} to use this
 parameter.
 
 You can have one IPv6 CIDR block association per network border group.}
+
+\item{Ipv6Pool}{The ID of an IPv6 address pool from which to allocate the IPv6 CIDR
+block.}
+
+\item{Ipv6CidrBlock}{An IPv6 CIDR block from the IPv6 address pool. You must also specify
+\code{Ipv6Pool} in the request.
+
+To let Amazon choose the IPv6 CIDR block for you, omit this parameter.}
 }
 \description{
 Associates a CIDR block with your VPC. You can associate a secondary
-IPv4 CIDR block, or you can associate an Amazon-provided IPv6 CIDR
-block. The IPv6 CIDR block size is fixed at /56.
+IPv4 CIDR block, an Amazon-provided IPv6 CIDR block, or an IPv6 CIDR
+block from an IPv6 address pool that you provisioned through bring your
+own IP addresses
+(\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html}{BYOIP}).
+The IPv6 CIDR block size is fixed at /56.
 }
 \details{
+You must specify one of the following in the request: an IPv4 CIDR
+block, an IPv6 pool, or an Amazon-provided IPv6 CIDR block.
+
 For more information about associating CIDR blocks with your VPC and
 applicable restrictions, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#VPC_Sizing}{VPC and Subnet Sizing}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
@@ -39,7 +53,9 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
   CidrBlock = "string",
   VpcId = "string",
-  Ipv6CidrBlockNetworkBorderGroup = "string"
+  Ipv6CidrBlockNetworkBorderGroup = "string",
+  Ipv6Pool = "string",
+  Ipv6CidrBlock = "string"
 )
 }
 }

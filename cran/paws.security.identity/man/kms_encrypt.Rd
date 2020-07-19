@@ -30,9 +30,9 @@ get the alias name and alias ARN, use ListAliases.}
 \item{Plaintext}{[required] Data to be encrypted.}
 
 \item{EncryptionContext}{Specifies the encryption context that will be used to encrypt the data.
-An encryption context is valid only for cryptographic operations with a
-symmetric CMK. The standard asymmetric encryption algorithms that AWS
-KMS uses do not support an encryption context.
+An encryption context is valid only for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}
+with a symmetric CMK. The standard asymmetric encryption algorithms that
+AWS KMS uses do not support an encryption context.
 
 An \emph{encryption context} is a collection of non-secret key-value pairs
 that represents additional authenticated data. When you use an
@@ -66,11 +66,13 @@ The \code{Encrypt} operation has two primary use cases:
 \item You can encrypt small amounts of arbitrary data, such as a personal
 identifier or database password, or other sensitive information.
 \item You can use the \code{Encrypt} operation to move encrypted data from one
-AWS region to another. In the first region, generate a data key and
-use the plaintext key to encrypt the data. Then, in the new region,
-call the \code{Encrypt} method on same plaintext data key. Now, you can
-safely move the encrypted data and encrypted data key to the new
-region, and decrypt in the new region when necessary.
+AWS Region to another. For example, in Region A, generate a data key
+and use the plaintext key to encrypt your data. Then, in Region A,
+use the \code{Encrypt} operation to encrypt the plaintext data key under
+a CMK in Region B. Now, you can move the encrypted data and the
+encrypted data key to Region B. When necessary, you can decrypt the
+encrypted data key and the encrypted data entirely within in
+Region B.
 }
 
 You don\'t need to use the \code{Encrypt} operation to encrypt a data key.

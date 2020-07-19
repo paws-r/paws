@@ -18,21 +18,26 @@ organization.
 \itemize{
 \item The master account in an organization with all features enabled can
 set service control policies (SCPs) that can restrict what
-administrators of member accounts can do. These restrictions can
-include preventing member accounts from successfully calling
-\code{LeaveOrganization}.
+administrators of member accounts can do. This includes preventing
+them from successfully calling \code{LeaveOrganization} and leaving the
+organization.
 \item You can leave an organization as a member account only if the
 account is configured with the information required to operate as a
 standalone account. When you create an account in an organization
-using the AWS Organizations console, API, or CLI, the information
-required of standalone accounts is \emph{not} automatically collected.
-For each account that you want to make standalone, you must accept
-the end user license agreement (EULA). You must also choose a
-support plan, provide and verify the required contact information,
-and provide a current payment method. AWS uses the payment method to
-charge for any billable (not free tier) AWS activity that occurs
-while the account isn\'t attached to an organization. Follow the
-steps at \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization when all required account information has not yet been provided}
+using the AWS Organizations console, API, or CLI commands, the
+information required of standalone accounts is \emph{not} automatically
+collected. For each account that you want to make standalone, you
+must do the following steps:
+\itemize{
+\item Accept the end user license agreement (EULA)
+\item Choose a support plan
+\item Provide and verify the required contact information
+\item Provide a current payment method
+}
+
+AWS uses the payment method to charge for any billable (not free
+tier) AWS activity that occurs while the account isn\'t attached to
+an organization. Follow the steps at \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization when all required account information has not yet been provided}
 in the \emph{AWS Organizations User Guide.}
 \item You can leave an organization only after you enable IAM user access
 to billing in your account. For more information, see \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate}{Activating Access to the Billing and Cost Management Console}

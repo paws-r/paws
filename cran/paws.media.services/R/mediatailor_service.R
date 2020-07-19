@@ -73,7 +73,7 @@ mediatailor <- function(config = list()) {
 
 .mediatailor$metadata <- list(
   service_name = "api.mediatailor",
-  endpoints = list("*" = list(endpoint = "api.mediatailor.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.mediatailor.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "api.mediatailor.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.mediatailor.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "api.mediatailor.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.mediatailor.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "MediaTailor",
   api_version = "2018-04-23",
   signing_name = "mediatailor",

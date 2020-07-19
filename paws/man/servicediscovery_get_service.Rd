@@ -19,4 +19,13 @@ Gets the settings for a specified service.
 }
 }
 
+\examples{
+\dontrun{
+# This example gets the settings for a specified service.
+svc$get_service(
+  Id = "srv-e4anhexample0004"
+)
+}
+
+}
 \keyword{internal}

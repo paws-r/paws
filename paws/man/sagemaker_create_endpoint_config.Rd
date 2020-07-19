@@ -10,8 +10,7 @@ sagemaker_create_endpoint_config(EndpointConfigName, ProductionVariants,
 }
 \arguments{
 \item{EndpointConfigName}{[required] The name of the endpoint configuration. You specify this name in a
-\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html}{CreateEndpoint}
-request.}
+CreateEndpoint request.}
 
 \item{ProductionVariants}{[required] An list of \code{ProductionVariant} objects, one for each model that you want
 to host at this endpoint.}
@@ -27,18 +26,12 @@ the ML compute instance that hosts the endpoint.
 
 The KmsKeyId can be any of the following formats:
 \itemize{
-\item // KMS Key ID
-
-\code{"1234abcd-12ab-34cd-56ef-1234567890ab" }
-\item // Amazon Resource Name (ARN) (ARN) of a KMS Key
-
-\"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab\"
-\item // KMS Key Alias
-
-\"alias/ExampleAlias\"
-\item // Amazon Resource Name (ARN) of a KMS Key Alias
-
-\code{"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias" }
+\item Key ID: \verb{1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Key ARN:
+\verb{arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
+\item Alias name: \code{alias/ExampleAlias}
+\item Alias name ARN:
+\code{arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias}
 }
 
 The KMS key policy must grant permission to the IAM role that you
@@ -64,17 +57,16 @@ Creates an endpoint configuration that Amazon SageMaker hosting services
 uses to deploy models. In the configuration, you identify one or more
 models, created using the \code{CreateModel} API, to deploy and the resources
 that you want Amazon SageMaker to provision. Then you call the
-\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html}{CreateEndpoint}
-API.
+CreateEndpoint API.
 }
 \details{
-Use this API only if you want to use Amazon SageMaker hosting services
-to deploy models into production.
+Use this API if you want to use Amazon SageMaker hosting services to
+deploy models into production.
 
-In the request, you define one or more \code{ProductionVariant}s, each of
-which identifies a model. Each \code{ProductionVariant} parameter also
-describes the resources that you want Amazon SageMaker to provision.
-This includes the number and type of ML compute instances to deploy.
+In the request, you define a \code{ProductionVariant}, for each model that
+you want to deploy. Each \code{ProductionVariant} parameter also describes
+the resources that you want Amazon SageMaker to provision. This includes
+the number and type of ML compute instances to deploy.
 
 If you are hosting multiple models, you also assign a \code{VariantWeight} to
 specify how much traffic you want to allocate to each model. For
@@ -82,6 +74,22 @@ example, suppose that you want to host two models, A and B, and you
 assign traffic weight 2 for model A and 1 for model B. Amazon SageMaker
 distributes two-thirds of the traffic to Model A, and one-third to model
 B.
+
+For an example that calls this method when deploying a model to Amazon
+SageMaker hosting services, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto}{Deploy the Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).}
+
+When you call CreateEndpoint, a load call is made to DynamoDB to verify
+that your endpoint configuration exists. When you read data from a
+DynamoDB table supporting
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html}{\verb{Eventually Consistent Reads}}
+, the response might not reflect the results of a recently completed
+write operation. The response might include some stale data. If the
+dependent entities are not yet in DynamoDB, this causes a validation
+error. If you repeat your read request after a short time, the response
+should return the latest data. So retry logic is recommended to handle
+these possible issues. We also recommend that customers call
+DescribeEndpointConfig before calling CreateEndpoint to minimize the
+potential impact of a DynamoDB eventually consistent read.
 }
 \section{Request syntax}{
 \preformatted{svc$create_endpoint_config(

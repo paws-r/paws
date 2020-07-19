@@ -13,16 +13,16 @@ computeoptimizer_update_enrollment_status(status, includeMemberAccounts)
 Accepted options are \code{Active} or \code{Inactive}. You will get an error if
 \code{Pending} or \code{Failed} are specified.}
 
-\item{includeMemberAccounts}{Indicates whether to enroll member accounts within the organization, if
-the account is a master account of an organization.}
+\item{includeMemberAccounts}{Indicates whether to enroll member accounts of the organization if the
+your account is the master account of an organization.}
 }
 \description{
 Updates the enrollment (opt in) status of an account to the AWS Compute
 Optimizer service.
 }
 \details{
-If the account is a master account of an organization, this operation
-can also enroll member accounts within the organization.
+If the account is a master account of an organization, this action can
+also be used to enroll member accounts within the organization.
 }
 \section{Request syntax}{
 \preformatted{svc$update_enrollment_status(

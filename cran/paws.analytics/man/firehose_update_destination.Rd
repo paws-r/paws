@@ -84,7 +84,7 @@ DescribeDeliveryStream. Use the new version ID to set
       SizeInMBs = 123,
       IntervalInSeconds = 123
     ),
-    CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+    CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
     EncryptionConfiguration = list(
       NoEncryptionConfig = "NoEncryption",
       KMSEncryptionConfig = list(
@@ -106,7 +106,7 @@ DescribeDeliveryStream. Use the new version ID to set
       SizeInMBs = 123,
       IntervalInSeconds = 123
     ),
-    CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+    CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
     EncryptionConfiguration = list(
       NoEncryptionConfig = "NoEncryption",
       KMSEncryptionConfig = list(
@@ -142,7 +142,7 @@ DescribeDeliveryStream. Use the new version ID to set
         SizeInMBs = 123,
         IntervalInSeconds = 123
       ),
-      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
       EncryptionConfiguration = list(
         NoEncryptionConfig = "NoEncryption",
         KMSEncryptionConfig = list(
@@ -231,7 +231,7 @@ DescribeDeliveryStream. Use the new version ID to set
         SizeInMBs = 123,
         IntervalInSeconds = 123
       ),
-      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
       EncryptionConfiguration = list(
         NoEncryptionConfig = "NoEncryption",
         KMSEncryptionConfig = list(
@@ -268,7 +268,7 @@ DescribeDeliveryStream. Use the new version ID to set
         SizeInMBs = 123,
         IntervalInSeconds = 123
       ),
-      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
       EncryptionConfiguration = list(
         NoEncryptionConfig = "NoEncryption",
         KMSEncryptionConfig = list(
@@ -310,7 +310,7 @@ DescribeDeliveryStream. Use the new version ID to set
         SizeInMBs = 123,
         IntervalInSeconds = 123
       ),
-      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
       EncryptionConfiguration = list(
         NoEncryptionConfig = "NoEncryption",
         KMSEncryptionConfig = list(
@@ -361,7 +361,7 @@ DescribeDeliveryStream. Use the new version ID to set
         SizeInMBs = 123,
         IntervalInSeconds = 123
       ),
-      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy",
+      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
       EncryptionConfiguration = list(
         NoEncryptionConfig = "NoEncryption",
         KMSEncryptionConfig = list(

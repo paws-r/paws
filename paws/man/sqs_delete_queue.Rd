@@ -14,8 +14,7 @@ Queue URLs and names are case-sensitive.}
 }
 \description{
 Deletes the queue specified by the \code{QueueUrl}, regardless of the
-queue\'s contents. If the specified queue doesn\'t exist, Amazon SQS
-returns a successful response.
+queue\'s contents.
 }
 \details{
 Be careful with the \code{DeleteQueue} action: When you delete a queue, any

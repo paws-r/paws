@@ -5,7 +5,8 @@
 \title{Updates a fleet provisioning template}
 \usage{
 iot_update_provisioning_template(templateName, description, enabled,
-  defaultVersionId, provisioningRoleArn)
+  defaultVersionId, provisioningRoleArn, preProvisioningHook,
+  removePreProvisioningHook)
 }
 \arguments{
 \item{templateName}{[required] The name of the fleet provisioning template.}
@@ -18,6 +19,10 @@ iot_update_provisioning_template(templateName, description, enabled,
 
 \item{provisioningRoleArn}{The ARN of the role associated with the provisioning template. This IoT
 role grants permission to provision a device.}
+
+\item{preProvisioningHook}{Updates the pre-provisioning hook template.}
+
+\item{removePreProvisioningHook}{Removes pre-provisioning hook template.}
 }
 \description{
 Updates a fleet provisioning template.
@@ -28,7 +33,12 @@ Updates a fleet provisioning template.
   description = "string",
   enabled = TRUE|FALSE,
   defaultVersionId = 123,
-  provisioningRoleArn = "string"
+  provisioningRoleArn = "string",
+  preProvisioningHook = list(
+    payloadVersion = "string",
+    targetArn = "string"
+  ),
+  removePreProvisioningHook = TRUE|FALSE
 )
 }
 }

@@ -14,50 +14,29 @@ the fleet ID or ARN value.}
 }
 \description{
 Suspends activity on a fleet. Currently, this operation is used to stop
-a fleet\'s auto-scaling activity. It is used to temporarily stop scaling
-events triggered by the fleet\'s scaling policies. The policies can be
-retained and auto-scaling activity can be restarted using
-StartFleetActions. You can view a fleet\'s stopped actions using
-DescribeFleetAttributes.
+a fleet\'s auto-scaling activity. It is used to temporarily stop
+triggering scaling events. The policies can be retained and auto-scaling
+activity can be restarted using StartFleetActions. You can view a
+fleet\'s stopped actions using DescribeFleetAttributes.
 }
 \details{
 To stop fleet actions, specify the fleet ID and the type of actions to
 suspend. When auto-scaling fleet actions are stopped, Amazon GameLift no
-longer initiates scaling events except to maintain the fleet\'s desired
-instances setting (FleetCapacity. Changes to the fleet\'s capacity must
-be done manually using UpdateFleetCapacity.
+longer initiates scaling events except in response to manual changes
+using UpdateFleetCapacity.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
 
 \strong{Related operations}
 \itemize{
 \item CreateFleet
 \item ListFleets
 \item DeleteFleet
-\item Describe fleets:
-\itemize{
 \item DescribeFleetAttributes
-\item DescribeFleetCapacity
-\item DescribeFleetPortSettings
-\item DescribeFleetUtilization
-\item DescribeRuntimeConfiguration
-\item DescribeEC2InstanceLimits
-\item DescribeFleetEvents
-}
-\item Update fleets:
-\itemize{
 \item UpdateFleetAttributes
-\item UpdateFleetCapacity
-\item UpdateFleetPortSettings
-\item UpdateRuntimeConfiguration
-}
-\item Manage fleet actions:
-\itemize{
-\item StartFleetActions
-\item StopFleetActions
-}
+\item StartFleetActions or StopFleetActions
 }
 }
 \section{Request syntax}{

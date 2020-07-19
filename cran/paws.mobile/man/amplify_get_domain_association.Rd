@@ -2,17 +2,17 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_get_domain_association}
 \alias{amplify_get_domain_association}
-\title{Retrieves domain info that corresponds to an appId and domainName}
+\title{Returns the domain information for an Amplify app}
 \usage{
 amplify_get_domain_association(appId, domainName)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique id for an Amplify app.}
 
-\item{domainName}{[required] Name of the domain.}
+\item{domainName}{[required] The name of the domain.}
 }
 \description{
-Retrieves domain info that corresponds to an appId and domainName.
+Returns the domain information for an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$get_domain_association(

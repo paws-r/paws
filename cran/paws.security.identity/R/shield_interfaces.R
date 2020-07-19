@@ -27,6 +27,30 @@ NULL
   return(populate(args, shape))
 }
 
+.shield$associate_health_check_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProtectionId = structure(logical(0), tags = list(type = "string")), HealthCheckArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$associate_health_check_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$associate_proactive_engagement_details_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EmergencyContactList = structure(list(structure(list(EmailAddress = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), ContactNotes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$associate_proactive_engagement_details_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .shield$create_protection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -107,7 +131,7 @@ NULL
 
 .shield$describe_emergency_contact_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EmergencyContactList = structure(list(structure(list(EmailAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(EmergencyContactList = structure(list(structure(list(EmailAddress = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), ContactNotes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -119,7 +143,7 @@ NULL
 
 .shield$describe_protection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Protection = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Protection = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), HealthCheckIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -131,7 +155,19 @@ NULL
 
 .shield$describe_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Subscription = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), TimeCommitmentInSeconds = structure(logical(0), tags = list(type = "long")), AutoRenew = structure(logical(0), tags = list(type = "string")), Limits = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Max = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Subscription = structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), TimeCommitmentInSeconds = structure(logical(0), tags = list(type = "long")), AutoRenew = structure(logical(0), tags = list(type = "string")), Limits = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Max = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), ProactiveEngagementStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$disable_proactive_engagement_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$disable_proactive_engagement_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -154,6 +190,30 @@ NULL
 }
 
 .shield$disassociate_drt_role_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$disassociate_health_check_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProtectionId = structure(logical(0), tags = list(type = "string")), HealthCheckArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$disassociate_health_check_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$enable_proactive_engagement_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.shield$enable_proactive_engagement_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -191,13 +251,13 @@ NULL
 
 .shield$list_protections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Protections = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Protections = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), HealthCheckIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .shield$update_emergency_contact_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EmergencyContactList = structure(list(structure(list(EmailAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(EmergencyContactList = structure(list(structure(list(EmailAddress = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), ContactNotes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

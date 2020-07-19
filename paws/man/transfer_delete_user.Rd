@@ -2,19 +2,21 @@
 % Please edit documentation in R/transfer_operations.R
 \name{transfer_delete_user}
 \alias{transfer_delete_user}
-\title{Deletes the user belonging to the server you specify}
+\title{Deletes the user belonging to a file transfer protocol-enabled server
+you specify}
 \usage{
 transfer_delete_user(ServerId, UserName)
 }
 \arguments{
-\item{ServerId}{[required] A system-assigned unique identifier for an SFTP server instance that has
-the user assigned to it.}
+\item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
+server instance that has the user assigned to it.}
 
-\item{UserName}{[required] A unique string that identifies a user that is being deleted from the
-server.}
+\item{UserName}{[required] A unique string that identifies a user that is being deleted from a file
+transfer protocol-enabled server.}
 }
 \description{
-Deletes the user belonging to the server you specify.
+Deletes the user belonging to a file transfer protocol-enabled server
+you specify.
 }
 \details{
 No response returns from this operation.

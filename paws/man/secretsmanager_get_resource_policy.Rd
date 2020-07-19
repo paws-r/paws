@@ -2,8 +2,8 @@
 % Please edit documentation in R/secretsmanager_operations.R
 \name{secretsmanager_get_resource_policy}
 \alias{secretsmanager_get_resource_policy}
-\title{Retrieves the JSON text of the resource-based policy document that's
-attached to the specified secret}
+\title{Retrieves the JSON text of the resource-based policy document attached
+to the specified secret}
 \usage{
 secretsmanager_get_resource_policy(SecretId)
 }
@@ -23,12 +23,18 @@ six characters to the ARN) and you try to use that as a partial ARN,
 then those characters cause Secrets Manager to assume that you're
 specifying a complete ARN. This confusion can cause unexpected results.
 To avoid this situation, we recommend that you don't create secret names
-that end with a hyphen followed by six characters.}
+ending with a hyphen followed by six characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the \'friendly name\', you \emph{must} not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a \emph{ResourceNotFoundException} or an
+\emph{AccessDeniedException} error, depending on your permissions.}
 }
 \description{
-Retrieves the JSON text of the resource-based policy document that\'s
-attached to the specified secret. The JSON request string input and
-response output are shown formatted with white space and line breaks for
+Retrieves the JSON text of the resource-based policy document attached
+to the specified secret. The JSON request string input and response
+output displays formatted code with white space and line breaks for
 better readability. Submit your input as a single line JSON string.
 }
 \details{
@@ -42,8 +48,8 @@ To run this command, you must have the following permissions:
 \strong{Related operations}
 \itemize{
 \item To attach a resource policy to a secret, use PutResourcePolicy.
-\item To delete the resource-based policy that\'s attached to a secret,
-use DeleteResourcePolicy.
+\item To delete the resource-based policy attached to a secret, use
+DeleteResourcePolicy.
 \item To list all of the currently available secrets, use ListSecrets.
 }
 }

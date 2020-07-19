@@ -2,19 +2,19 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_get_job}
 \alias{amplify_get_job}
-\title{Get a job for a branch, part of an Amplify App}
+\title{Returns a job for a branch of an Amplify app}
 \usage{
 amplify_get_job(appId, branchName, jobId)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{branchName}{[required] Name for the branch, for the Job.}
+\item{branchName}{[required] The branch name for the job.}
 
-\item{jobId}{[required] Unique Id for the Job.}
+\item{jobId}{[required] The unique ID for the job.}
 }
 \description{
-Get a job for a branch, part of an Amplify App.
+Returns a job for a branch of an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$get_job(

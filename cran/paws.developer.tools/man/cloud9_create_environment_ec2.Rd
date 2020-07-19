@@ -7,7 +7,7 @@ Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
 instance to the environment}
 \usage{
 cloud9_create_environment_ec2(name, description, clientRequestToken,
-  instanceType, subnetId, automaticStopTimeMinutes, ownerArn)
+  instanceType, subnetId, automaticStopTimeMinutes, ownerArn, tags)
 }
 \arguments{
 \item{name}{[required] The name of the environment to create.
@@ -34,6 +34,9 @@ environment has last been used.}
 \item{ownerArn}{The Amazon Resource Name (ARN) of the environment owner. This ARN can be
 the ARN of any AWS IAM principal. If this value is not specified, the
 ARN defaults to this environment\'s creator.}
+
+\item{tags}{An array of key-value pairs that will be associated with the new AWS
+Cloud9 development environment.}
 }
 \description{
 Creates an AWS Cloud9 development environment, launches an Amazon
@@ -48,7 +51,13 @@ instance to the environment.
   instanceType = "string",
   subnetId = "string",
   automaticStopTimeMinutes = 123,
-  ownerArn = "string"
+  ownerArn = "string",
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

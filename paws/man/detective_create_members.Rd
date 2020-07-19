@@ -2,7 +2,8 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_create_members}
 \alias{detective_create_members}
-\title{Amazon Detective is currently in preview}
+\title{Sends a request to invite the specified AWS accounts to be member
+accounts in the behavior graph}
 \usage{
 detective_create_members(GraphArn, Message, Accounts)
 }
@@ -18,13 +19,11 @@ behavior graph. For each invited account, the account list contains the
 account identifier and the AWS account root user email address.}
 }
 \description{
-Amazon Detective is currently in preview.
-}
-\details{
 Sends a request to invite the specified AWS accounts to be member
 accounts in the behavior graph. This operation can only be called by the
 master account for a behavior graph.
-
+}
+\details{
 \code{CreateMembers} verifies the accounts and then sends invitations to the
 verified accounts.
 

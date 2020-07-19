@@ -12,7 +12,7 @@ cloudwatch_describe_anomaly_detectors(NextToken, MaxResults, Namespace,
 page of results.}
 
 \item{MaxResults}{The maximum number of results to return in one operation. The maximum
-value you can specify is 10.
+value that you can specify is 100.
 
 To retrieve the remaining results, make another call with the returned
 \code{NextToken} value.}

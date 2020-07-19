@@ -2,7 +2,8 @@
 % Please edit documentation in R/lakeformation_operations.R
 \name{lakeformation_get_data_lake_settings}
 \alias{lakeformation_get_data_lake_settings}
-\title{The AWS Lake Formation principal}
+\title{Retrieves the list of the data lake administrators of a Lake
+Formation-managed data lake}
 \usage{
 lakeformation_get_data_lake_settings(CatalogId)
 }
@@ -13,7 +14,8 @@ definitions, table definitions, and other control information to manage
 your AWS Lake Formation environment.}
 }
 \description{
-The AWS Lake Formation principal.
+Retrieves the list of the data lake administrators of a Lake
+Formation-managed data lake.
 }
 \section{Request syntax}{
 \preformatted{svc$get_data_lake_settings(

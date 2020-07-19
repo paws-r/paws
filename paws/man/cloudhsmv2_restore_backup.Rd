@@ -13,7 +13,7 @@ DescribeBackups operation.}
 }
 \description{
 Restores a specified AWS CloudHSM backup that is in the
-\code{PENDING_DELETION} state. For more information on deleting a backup, see
+\code{PENDING_DELETION} state. For mor information on deleting a backup, see
 DeleteBackup.
 }
 \section{Request syntax}{

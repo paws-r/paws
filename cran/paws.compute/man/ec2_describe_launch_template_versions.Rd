@@ -14,13 +14,30 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{LaunchTemplateId}{The ID of the launch template. You must specify either the launch
-template ID or launch template name in the request.}
+\item{LaunchTemplateId}{The ID of the launch template. To describe one or more versions of a
+specified launch template, you must specify either the launch template
+ID or the launch template name in the request. To describe all the
+latest or default launch template versions in your account, you must
+omit this parameter.}
 
-\item{LaunchTemplateName}{The name of the launch template. You must specify either the launch
-template ID or launch template name in the request.}
+\item{LaunchTemplateName}{The name of the launch template. To describe one or more versions of a
+specified launch template, you must specify either the launch template
+ID or the launch template name in the request. To describe all the
+latest or default launch template versions in your account, you must
+omit this parameter.}
 
-\item{Versions}{One or more versions of the launch template.}
+\item{Versions}{One or more versions of the launch template. Valid values depend on
+whether you are describing a specified launch template (by ID or name)
+or all launch templates in your account.
+
+To describe one or more versions of a specified launch template, valid
+values are \verb{$Latest}, \verb{$Default}, and numbers.
+
+To describe all launch templates in your account that are defined as the
+latest version, the valid value is \verb{$Latest}. To describe all launch
+templates in your account that are defined as the default version, the
+valid value is \verb{$Default}. You can specify \verb{$Latest} and \verb{$Default} in
+the same call. You cannot specify numbers.}
 
 \item{MinVersion}{The version number after which to describe launch template versions.}
 
@@ -48,7 +65,9 @@ template version is the default version.
 }
 \description{
 Describes one or more versions of a specified launch template. You can
-describe all versions, individual versions, or a range of versions.
+describe all versions, individual versions, or a range of versions. You
+can also describe all the latest versions or all the default versions of
+all the launch templates in your account.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_launch_template_versions(

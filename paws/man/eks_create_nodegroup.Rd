@@ -36,12 +36,13 @@ type, which uses the Amazon EKS-optimized Linux AMI.}
 
 \item{remoteAccess}{The remote access (SSH) configuration to use with your node group.}
 
-\item{nodeRole}{[required] The IAM role associated with your node group. The Amazon EKS worker node
-\code{kubelet} daemon makes calls to AWS APIs on your behalf. Worker nodes
-receive permissions for these API calls through an IAM instance profile
-and associated policies. Before you can launch worker nodes and register
-them into a cluster, you must create an IAM role for those worker nodes
-to use when they are launched. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html}{Amazon EKS Worker Node IAM Role}
+\item{nodeRole}{[required] The Amazon Resource Name (ARN) of the IAM role to associate with your
+node group. The Amazon EKS worker node \code{kubelet} daemon makes calls to
+AWS APIs on your behalf. Worker nodes receive permissions for these API
+calls through an IAM instance profile and associated policies. Before
+you can launch worker nodes and register them into a cluster, you must
+create an IAM role for those worker nodes to use when they are launched.
+For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html}{Amazon EKS Worker Node IAM Role}
 in the \strong{Amazon EKS User Guide} .}
 
 \item{labels}{The Kubernetes labels to be applied to the nodes in the node group when

@@ -19,18 +19,15 @@ sagemaker_create_app(DomainId, UserProfileName, AppType, AppName, Tags,
 \item{Tags}{Each tag consists of a key and an optional value. Tag keys must be
 unique per resource.}
 
-\item{ResourceSpec}{The instance type and quantity.}
+\item{ResourceSpec}{The instance type and the Amazon Resource Name (ARN) of the SageMaker
+image created on the instance.}
 }
 \description{
 Creates a running App for the specified UserProfile. Supported Apps are
 JupyterServer and KernelGateway. This operation is automatically invoked
-by Amazon SageMaker Amazon SageMaker Studio (Studio) upon access to the
-associated Studio Domain, and when new kernel configurations are
-selected by the user. A user may have multiple Apps active
-simultaneously. Apps will automatically terminate and be deleted when
-stopped from within Studio, or when the DeleteApp API is manually
-called. UserProfiles are limited to 5 concurrently running Apps at a
-time.
+by Amazon SageMaker Studio upon access to the associated Domain, and
+when new kernel configurations are selected by the user. A user may have
+multiple Apps active simultaneously.
 }
 \section{Request syntax}{
 \preformatted{svc$create_app(
@@ -45,7 +42,7 @@ time.
     )
   ),
   ResourceSpec = list(
-    EnvironmentArn = "string",
+    SageMakerImageArn = "string",
     InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
   )
 )

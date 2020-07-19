@@ -22,7 +22,8 @@ Retrieves information about an organizational unit (OU).
 }
 \details{
 This operation can be called only from the organization\'s master
-account.
+account or by a member account that is a delegated administrator for an
+AWS service.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_organizational_unit(

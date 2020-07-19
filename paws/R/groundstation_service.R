@@ -62,7 +62,7 @@ NULL
 #'  \link[=groundstation_list_ground_stations]{list_ground_stations} \tab Returns a list of ground stations \cr
 #'  \link[=groundstation_list_mission_profiles]{list_mission_profiles} \tab Returns a list of mission profiles \cr
 #'  \link[=groundstation_list_satellites]{list_satellites} \tab Returns a list of satellites \cr
-#'  \link[=groundstation_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags or a specified resource \cr
+#'  \link[=groundstation_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for a specified resource \cr
 #'  \link[=groundstation_reserve_contact]{reserve_contact} \tab Reserves a contact using specified parameters \cr
 #'  \link[=groundstation_tag_resource]{tag_resource} \tab Assigns a tag to a resource \cr
 #'  \link[=groundstation_untag_resource]{untag_resource} \tab Deassigns a resource tag \cr
@@ -85,7 +85,7 @@ groundstation <- function(config = list()) {
 
 .groundstation$metadata <- list(
   service_name = "groundstation",
-  endpoints = list("*" = list(endpoint = "groundstation.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "groundstation.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "groundstation.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "groundstation.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "groundstation.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "groundstation.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "GroundStation",
   api_version = "2019-05-23",
   signing_name = "groundstation",

@@ -64,7 +64,7 @@ Note that when a DB instance is in a failure state and has a status of
 only delete it when the \code{SkipFinalSnapshot} parameter is set to \code{true}.
 
 You can\'t delete a DB instance if it is the only instance in the DB
-cluster.
+cluster, or if it has deletion protection enabled.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_db_instance(

@@ -2,27 +2,58 @@
 % Please edit documentation in R/appconfig_operations.R
 \name{appconfig_get_configuration}
 \alias{appconfig_get_configuration}
-\title{Retrieve information about a configuration}
+\title{Receive information about a configuration}
 \usage{
 appconfig_get_configuration(Application, Environment, Configuration,
   ClientId, ClientConfigurationVersion)
 }
 \arguments{
-\item{Application}{[required] The application to get.}
+\item{Application}{[required] The application to get. Specify either the application name or the
+application ID.}
 
-\item{Environment}{[required] The environment to get.}
+\item{Environment}{[required] The environment to get. Specify either the environment name or the
+environment ID.}
 
-\item{Configuration}{[required] The configuration to get.}
+\item{Configuration}{[required] The configuration to get. Specify either the configuration name or the
+configuration ID.}
 
 \item{ClientId}{[required] A unique ID to identify the client for the configuration. This ID
 enables AppConfig to deploy the configuration in intervals, as defined
 in the deployment strategy.}
 
-\item{ClientConfigurationVersion}{The configuration version returned in the most recent GetConfiguration
-response.}
+\item{ClientConfigurationVersion}{The configuration version returned in the most recent \code{GetConfiguration}
+response.
+
+AWS AppConfig uses the value of the \code{ClientConfigurationVersion}
+parameter to identify the configuration version on your clients. If you
+don't send \code{ClientConfigurationVersion} with each call to
+\code{GetConfiguration}, your clients receive the current configuration. You
+are charged each time your clients receive a configuration.
+
+To avoid excess charges, we recommend that you include the
+\code{ClientConfigurationVersion} value with every call to
+\code{GetConfiguration}. This value must be saved on your client. Subsequent
+calls to \code{GetConfiguration} must pass this value by using the
+\code{ClientConfigurationVersion} parameter.
+
+For more information about working with configurations, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-retrieving-the-configuration.html}{Retrieving the Configuration}
+in the \emph{AWS AppConfig User Guide}.}
 }
 \description{
-Retrieve information about a configuration.
+Receive information about a configuration.
+}
+\details{
+AWS AppConfig uses the value of the \code{ClientConfigurationVersion}
+parameter to identify the configuration version on your clients. If you
+don't send \code{ClientConfigurationVersion} with each call to
+\code{GetConfiguration}, your clients receive the current configuration. You
+are charged each time your clients receive a configuration.
+
+To avoid excess charges, we recommend that you include the
+\code{ClientConfigurationVersion} value with every call to
+\code{GetConfiguration}. This value must be saved on your client. Subsequent
+calls to \code{GetConfiguration} must pass this value by using the
+\code{ClientConfigurationVersion} parameter.
 }
 \section{Request syntax}{
 \preformatted{svc$get_configuration(

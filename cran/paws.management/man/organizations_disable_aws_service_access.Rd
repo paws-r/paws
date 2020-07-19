@@ -33,8 +33,8 @@ see the documentation for the other AWS service.
 
 After you perform the \code{DisableAWSServiceAccess} operation, the specified
 service can no longer perform operations in your organization\'s
-accounts. The only exception is when the operations are explicitly
-permitted by IAM policies that are attached to your roles.
+accounts unless the operations are explicitly permitted by the IAM
+policies that are attached to your roles.
 
 For more information about integrating other services with AWS
 Organizations, including the list of services that work with

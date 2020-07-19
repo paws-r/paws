@@ -35,7 +35,13 @@ complete data labeling.}
 \item{LabelCategoryConfigS3Uri}{The S3 URL of the file that defines the categories used to label the
 data objects.
 
-The file is a JSON structure in the following format:
+For 3D point cloud task types, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud-label-category-config.html}{Create a Labeling Category Configuration File for 3D Point Cloud Labeling Jobs}.
+
+For all other \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html}{built-in task types}
+and \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates.html}{custom tasks},
+your label category configuration file must be a JSON file in the
+following format. Identify the labels you want to use by replacing
+\code{label_1}, \code{label_2},\code{...},\code{label_n} with your label categories.
 
 \verb{\\\{}
 
@@ -45,13 +51,13 @@ The file is a JSON structure in the following format:
 
 \verb{ \\\{}
 
-\code{ "label": "<i>label 1</i>"}
+\code{ "label": "<i>label_1</i>"}
 
 \verb{ \\\},}
 
 \verb{ \\\{}
 
-\code{ "label": "<i>label 2</i>"}
+\code{ "label": "<i>label_2</i>"}
 
 \verb{ \\\},}
 
@@ -59,7 +65,7 @@ The file is a JSON structure in the following format:
 
 \verb{ \\\{}
 
-\code{ "label": "<i>label n</i>"}
+\code{ "label": "<i>label_n</i>"}
 
 \verb{ \\\}}
 
@@ -147,7 +153,8 @@ as training data for your machine learning models.
   HumanTaskConfig = list(
     WorkteamArn = "string",
     UiConfig = list(
-      UiTemplateS3Uri = "string"
+      UiTemplateS3Uri = "string",
+      HumanTaskUiArn = "string"
     ),
     PreHumanTaskLambdaArn = "string",
     TaskKeywords = list(

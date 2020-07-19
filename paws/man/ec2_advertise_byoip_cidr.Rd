@@ -2,15 +2,15 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_advertise_byoip_cidr}
 \alias{ec2_advertise_byoip_cidr}
-\title{Advertises an IPv4 address range that is provisioned for use with your
-AWS resources through bring your own IP addresses (BYOIP)}
+\title{Advertises an IPv4 or IPv6 address range that is provisioned for use
+with your AWS resources through bring your own IP addresses (BYOIP)}
 \usage{
 ec2_advertise_byoip_cidr(Cidr, DryRun)
 }
 \arguments{
-\item{Cidr}{[required] The IPv4 address range, in CIDR notation. This must be the exact range
-that you provisioned. You can\'t advertise only a portion of the
-provisioned range.}
+\item{Cidr}{[required] The address range, in CIDR notation. This must be the exact range that
+you provisioned. You can\'t advertise only a portion of the provisioned
+range.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -18,8 +18,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Advertises an IPv4 address range that is provisioned for use with your
-AWS resources through bring your own IP addresses (BYOIP).
+Advertises an IPv4 or IPv6 address range that is provisioned for use
+with your AWS resources through bring your own IP addresses (BYOIP).
 }
 \details{
 You can perform this operation at most once every 10 seconds, even if

@@ -26,7 +26,7 @@ Returns information about the nodes within a network.
 \preformatted{svc$list_nodes(
   NetworkId = "string",
   MemberId = "string",
-  Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"DELETING"|"DELETED"|"FAILED",
+  Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED"|"FAILED",
   MaxResults = 123,
   NextToken = "string"
 )

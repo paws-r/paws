@@ -85,7 +85,7 @@ accessanalyzer <- function(config = list()) {
 
 .accessanalyzer$metadata <- list(
   service_name = "accessanalyzer",
-  endpoints = list("*" = list(endpoint = "accessanalyzer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "accessanalyzer.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "accessanalyzer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "accessanalyzer.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "accessanalyzer.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "accessanalyzer.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "AccessAnalyzer",
   api_version = "2019-11-01",
   signing_name = "access-analyzer",

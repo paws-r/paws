@@ -40,8 +40,8 @@ Constraints:
 
 Example: \code{my-cluster-snapshot2}}
 
-\item{KmsKeyId}{The AWS AWS KMS key ID for an encrypted DB cluster snapshot. The KMS key
-ID is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key
+\item{KmsKeyId}{The AWS KMS key ID for an encrypted DB cluster snapshot. The KMS key ID
+is the Amazon Resource Name (ARN), KMS key identifier, or the KMS key
 alias for the KMS encryption key.
 
 If you copy an encrypted DB cluster snapshot from your AWS account, you
@@ -70,7 +70,7 @@ Region. Don\'t specify \code{PreSignedUrl} when you are copying an encrypted
 DB cluster snapshot in the same AWS Region.
 
 The pre-signed URL must be a valid request for the
-\code{CopyDBSClusterSnapshot} API action that can be executed in the source
+\code{CopyDBClusterSnapshot} API action that can be executed in the source
 AWS Region that contains the encrypted DB cluster snapshot to be copied.
 The pre-signed URL request must contain the following parameter values:
 \itemize{
@@ -80,7 +80,7 @@ Region. This is the same identifier for both the
 \code{CopyDBClusterSnapshot} action that is called in the destination AWS
 Region, and the action contained in the pre-signed URL.
 \item \code{DestinationRegion} - The name of the AWS Region that the DB cluster
-snapshot will be created in.
+snapshot is to be created in.
 \item \code{SourceDBClusterSnapshotIdentifier} - The DB cluster snapshot
 identifier for the encrypted DB cluster snapshot to be copied. This
 identifier must be in the Amazon Resource Name (ARN) format for the
@@ -146,7 +146,7 @@ AWS Region. This is the same identifier for both the
 \code{CopyDBClusterSnapshot} action that is called in the destination
 AWS Region, and the action contained in the pre-signed URL.
 \item \code{DestinationRegion} - The name of the AWS Region that the DB
-cluster snapshot will be created in.
+cluster snapshot is to be created in.
 \item \code{SourceDBClusterSnapshotIdentifier} - The DB cluster snapshot
 identifier for the encrypted DB cluster snapshot to be copied.
 This identifier must be in the Amazon Resource Name (ARN) format

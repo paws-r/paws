@@ -55,7 +55,7 @@ NULL
 #'
 #' @usage
 #' eks_create_cluster(name, version, roleArn, resourcesVpcConfig, logging,
-#'   clientRequestToken, tags)
+#'   clientRequestToken, tags, encryptionConfig)
 #'
 #' @param name &#91;required&#93; The unique name to give to your cluster.
 #' @param version The desired Kubernetes version for your cluster. If you don\'t specify a
@@ -89,6 +89,7 @@ NULL
 #' @param tags The metadata to apply to the cluster to assist with categorization and
 #' organization. Each tag consists of a key and an optional value, both of
 #' which you define.
+#' @param encryptionConfig The encryption configuration for the cluster.
 #'
 #' @section Request syntax:
 #' ```
@@ -122,6 +123,16 @@ NULL
 #'   clientRequestToken = "string",
 #'   tags = list(
 #'     "string"
+#'   ),
+#'   encryptionConfig = list(
+#'     list(
+#'       resources = list(
+#'         "string"
+#'       ),
+#'       provider = list(
+#'         keyArn = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -149,14 +160,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname eks_create_cluster
-eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, logging = NULL, clientRequestToken = NULL, tags = NULL) {
+eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/clusters",
     paginator = list()
   )
-  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags)
+  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig)
   output <- .eks$create_cluster_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -317,13 +328,13 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' with GPU support. Non-GPU instances should use the `AL2_x86_64` AMI
 #' type, which uses the Amazon EKS-optimized Linux AMI.
 #' @param remoteAccess The remote access (SSH) configuration to use with your node group.
-#' @param nodeRole &#91;required&#93; The IAM role associated with your node group. The Amazon EKS worker node
-#' `kubelet` daemon makes calls to AWS APIs on your behalf. Worker nodes
-#' receive permissions for these API calls through an IAM instance profile
-#' and associated policies. Before you can launch worker nodes and register
-#' them into a cluster, you must create an IAM role for those worker nodes
-#' to use when they are launched. For more information, see [Amazon EKS
-#' Worker Node IAM
+#' @param nodeRole &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with your
+#' node group. The Amazon EKS worker node `kubelet` daemon makes calls to
+#' AWS APIs on your behalf. Worker nodes receive permissions for these API
+#' calls through an IAM instance profile and associated policies. Before
+#' you can launch worker nodes and register them into a cluster, you must
+#' create an IAM role for those worker nodes to use when they are launched.
+#' For more information, see [Amazon EKS Worker Node IAM
 #' Role](https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html)
 #' in the **Amazon EKS User Guide** .
 #' @param labels The Kubernetes labels to be applied to the nodes in the node group when
@@ -416,7 +427,7 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' 
 #' If you have managed node groups or Fargate profiles attached to the
 #' cluster, you must delete them first. For more information, see
-#' DeleteNodegroup andDeleteFargateProfile.
+#' DeleteNodegroup and DeleteFargateProfile.
 #'
 #' @usage
 #' eks_delete_cluster(name)
@@ -837,11 +848,12 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
 }
 .eks$operations$list_fargate_profiles <- eks_list_fargate_profiles
 
-#' Lists the Amazon EKS node groups associated with the specified cluster
-#' in your AWS account in the specified Region
+#' Lists the Amazon EKS managed node groups associated with the specified
+#' cluster in your AWS account in the specified Region
 #'
-#' Lists the Amazon EKS node groups associated with the specified cluster
-#' in your AWS account in the specified Region.
+#' Lists the Amazon EKS managed node groups associated with the specified
+#' cluster in your AWS account in the specified Region. Self-managed node
+#' groups are not listed.
 #'
 #' @usage
 #' eks_list_nodegroups(clusterName, maxResults, nextToken)

@@ -11,11 +11,14 @@ augmentedairuntime_start_human_loop(HumanLoopName, FlowDefinitionArn,
 \arguments{
 \item{HumanLoopName}{[required] The name of the human loop.}
 
-\item{FlowDefinitionArn}{[required] The Amazon Resource Name (ARN) of the flow definition.}
+\item{FlowDefinitionArn}{[required] The Amazon Resource Name (ARN) of the flow definition associated with
+this human loop.}
 
-\item{HumanLoopInput}{[required] An object containing information about the human loop.}
+\item{HumanLoopInput}{[required] An object that contains information about the human loop.}
 
-\item{DataAttributes}{Attributes of the data specified by the customer.}
+\item{DataAttributes}{Attributes of the specified data. Use \code{DataAttributes} to specify if
+your data is free of personally identifiable information and/or free of
+adult content.}
 }
 \description{
 Starts a human loop, provided that at least one activation condition is

@@ -2,23 +2,25 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_generate_access_logs}
 \alias{amplify_generate_access_logs}
-\title{Retrieve website access logs for a specific time range via a pre-signed
-URL}
+\title{Returns the website access logs for a specific time range using a
+presigned URL}
 \usage{
 amplify_generate_access_logs(startTime, endTime, domainName, appId)
 }
 \arguments{
-\item{startTime}{The time at which the logs should start, inclusive.}
+\item{startTime}{The time at which the logs should start. The time range specified is
+inclusive of the start time.}
 
-\item{endTime}{The time at which the logs should end, inclusive.}
+\item{endTime}{The time at which the logs should end. The time range specified is
+inclusive of the end time.}
 
-\item{domainName}{[required] Name of the domain.}
+\item{domainName}{[required] The name of the domain.}
 
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 }
 \description{
-Retrieve website access logs for a specific time range via a pre-signed
-URL.
+Returns the website access logs for a specific time range using a
+presigned URL.
 }
 \section{Request syntax}{
 \preformatted{svc$generate_access_logs(

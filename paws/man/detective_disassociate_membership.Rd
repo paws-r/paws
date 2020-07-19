@@ -2,7 +2,7 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_disassociate_membership}
 \alias{detective_disassociate_membership}
-\title{Amazon Detective is currently in preview}
+\title{Removes the member account from the specified behavior graph}
 \usage{
 detective_disassociate_membership(GraphArn)
 }
@@ -13,9 +13,6 @@ The member account\'s member status in the behavior graph must be
 \code{ENABLED}.}
 }
 \description{
-Amazon Detective is currently in preview.
-}
-\details{
 Removes the member account from the specified behavior graph. This
 operation can only be called by a member account that has the \code{ENABLED}
 status.

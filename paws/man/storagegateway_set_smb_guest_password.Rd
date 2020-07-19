@@ -10,7 +10,7 @@ storagegateway_set_smb_guest_password(GatewayARN, Password)
 \item{GatewayARN}{[required] The Amazon Resource Name (ARN) of the file gateway the SMB file share is
 associated with.}
 
-\item{Password}{[required] The password that you want to set for your SMB Server.}
+\item{Password}{[required] The password that you want to set for your SMB server.}
 }
 \description{
 Sets the password for the guest user \code{smbguest}. The \code{smbguest} user is

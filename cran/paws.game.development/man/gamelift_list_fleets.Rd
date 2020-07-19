@@ -2,18 +2,19 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_list_fleets}
 \alias{gamelift_list_fleets}
-\title{Retrieves a collection of fleet records for this AWS account}
+\title{Retrieves a collection of fleet resources for this AWS account}
 \usage{
 gamelift_list_fleets(BuildId, ScriptId, Limit, NextToken)
 }
 \arguments{
 \item{BuildId}{A unique identifier for a build to return fleets for. Use this parameter
-to return only fleets using the specified build. Use either the build ID
-or ARN value.To retrieve all fleets, leave this parameter empty.}
+to return only fleets using a specified build. Use either the build ID
+or ARN value. To retrieve all fleets, do not include either a BuildId
+and ScriptID parameter.}
 
 \item{ScriptId}{A unique identifier for a Realtime script to return fleets for. Use this
-parameter to return only fleets using the specified script. Use either
-the script ID or ARN value.To retrieve all fleets, leave this parameter
+parameter to return only fleets using a specified script. Use either the
+script ID or ARN value. To retrieve all fleets, leave this parameter
 empty.}
 
 \item{Limit}{The maximum number of results to return. Use this parameter with
@@ -24,17 +25,17 @@ Use the token that is returned with a previous call to this action. To
 start at the beginning of the result set, do not specify a value.}
 }
 \description{
-Retrieves a collection of fleet records for this AWS account. You can
+Retrieves a collection of fleet resources for this AWS account. You can
 filter the result set to find only those fleets that are deployed with a
 specific build or script. Use the pagination parameters to retrieve
 results in sequential pages.
 }
 \details{
-Fleet records are not listed in a particular order.
+Fleet resources are not listed in a particular order.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Set Up Fleets}.
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
 
 \strong{Related operations}
 \itemize{
@@ -43,11 +44,7 @@ Fleet records are not listed in a particular order.
 \item DeleteFleet
 \item DescribeFleetAttributes
 \item UpdateFleetAttributes
-\item Manage fleet actions:
-\itemize{
-\item StartFleetActions
-\item StopFleetActions
-}
+\item StartFleetActions or StopFleetActions
 }
 }
 \section{Request syntax}{

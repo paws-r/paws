@@ -22,6 +22,8 @@ associated with the VPC.
 \item \code{dhcp-options-id} - The ID of a set of DHCP options.
 \item \code{ipv6-cidr-block-association.ipv6-cidr-block} - An IPv6 CIDR block
 associated with the VPC.
+\item \code{ipv6-cidr-block-association.ipv6-pool} - The ID of the IPv6 address
+pool from which the IPv6 CIDR block is allocated.
 \item \code{ipv6-cidr-block-association.association-id} - The association ID
 for an IPv6 CIDR block associated with the VPC.
 \item \code{ipv6-cidr-block-association.state} - The state of an IPv6 CIDR

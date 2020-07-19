@@ -2,14 +2,14 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_describe_scaling_process_types}
 \alias{autoscaling_describe_scaling_process_types}
-\title{Describes the scaling process types for use with ResumeProcesses and
-SuspendProcesses}
+\title{Describes the scaling process types for use with the ResumeProcesses and
+SuspendProcesses APIs}
 \usage{
 autoscaling_describe_scaling_process_types()
 }
 \description{
-Describes the scaling process types for use with ResumeProcesses and
-SuspendProcesses.
+Describes the scaling process types for use with the ResumeProcesses and
+SuspendProcesses APIs.
 }
 \examples{
 \dontrun{

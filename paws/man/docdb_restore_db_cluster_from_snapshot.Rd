@@ -2,7 +2,7 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_restore_db_cluster_from_snapshot}
 \alias{docdb_restore_db_cluster_from_snapshot}
-\title{Creates a new DB cluster from a DB snapshot or DB cluster snapshot}
+\title{Creates a new cluster from a snapshot or cluster snapshot}
 \usage{
 docdb_restore_db_cluster_from_snapshot(AvailabilityZones,
   DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion, Port,
@@ -13,8 +13,8 @@ docdb_restore_db_cluster_from_snapshot(AvailabilityZones,
 \item{AvailabilityZones}{Provides the list of Amazon EC2 Availability Zones that instances in the
 restored DB cluster can be created in.}
 
-\item{DBClusterIdentifier}{[required] The name of the DB cluster to create from the DB snapshot or DB cluster
-snapshot. This parameter isn\'t case sensitive.
+\item{DBClusterIdentifier}{[required] The name of the cluster to create from the snapshot or cluster snapshot.
+This parameter isn\'t case sensitive.
 
 Constraints:
 \itemize{
@@ -25,11 +25,10 @@ Constraints:
 
 Example: \code{my-snapshot-id}}
 
-\item{SnapshotIdentifier}{[required] The identifier for the DB snapshot or DB cluster snapshot to restore
-from.
+\item{SnapshotIdentifier}{[required] The identifier for the snapshot or cluster snapshot to restore from.
 
 You can use either the name or the Amazon Resource Name (ARN) to specify
-a DB cluster snapshot. However, you can use only the ARN to specify a DB
+a cluster snapshot. However, you can use only the ARN to specify a
 snapshot.
 
 Constraints:
@@ -37,51 +36,49 @@ Constraints:
 \item Must match the identifier of an existing snapshot.
 }}
 
-\item{Engine}{[required] The database engine to use for the new DB cluster.
+\item{Engine}{[required] The database engine to use for the new cluster.
 
 Default: The same as source.
 
 Constraint: Must be compatible with the engine of the source.}
 
-\item{EngineVersion}{The version of the database engine to use for the new DB cluster.}
+\item{EngineVersion}{The version of the database engine to use for the new cluster.}
 
-\item{Port}{The port number on which the new DB cluster accepts connections.
+\item{Port}{The port number on which the new cluster accepts connections.
 
 Constraints: Must be a value from \code{1150} to \code{65535}.
 
-Default: The same port as the original DB cluster.}
+Default: The same port as the original cluster.}
 
-\item{DBSubnetGroupName}{The name of the DB subnet group to use for the new DB cluster.
+\item{DBSubnetGroupName}{The name of the subnet group to use for the new cluster.
 
 Constraints: If provided, must match the name of an existing
 \code{DBSubnetGroup}.
 
 Example: \code{mySubnetgroup}}
 
-\item{VpcSecurityGroupIds}{A list of virtual private cloud (VPC) security groups that the new DB
+\item{VpcSecurityGroupIds}{A list of virtual private cloud (VPC) security groups that the new
 cluster will belong to.}
 
-\item{Tags}{The tags to be assigned to the restored DB cluster.}
+\item{Tags}{The tags to be assigned to the restored cluster.}
 
-\item{KmsKeyId}{The AWS KMS key identifier to use when restoring an encrypted DB cluster
-from a DB snapshot or DB cluster snapshot.
+\item{KmsKeyId}{The AWS KMS key identifier to use when restoring an encrypted cluster
+from a DB snapshot or cluster snapshot.
 
 The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-KMS encryption key. If you are restoring a DB cluster with the same AWS
-account that owns the AWS KMS encryption key used to encrypt the new DB
+KMS encryption key. If you are restoring a cluster with the same AWS
+account that owns the AWS KMS encryption key used to encrypt the new
 cluster, then you can use the AWS KMS key alias instead of the ARN for
 the AWS KMS encryption key.
 
 If you do not specify a value for the \code{KmsKeyId} parameter, then the
 following occurs:
 \itemize{
-\item If the DB snapshot or DB cluster snapshot in \code{SnapshotIdentifier} is
-encrypted, then the restored DB cluster is encrypted using the AWS
-KMS key that was used to encrypt the DB snapshot or the DB cluster
-snapshot.
-\item If the DB snapshot or the DB cluster snapshot in
-\code{SnapshotIdentifier} is not encrypted, then the restored DB cluster
-is not encrypted.
+\item If the snapshot or cluster snapshot in \code{SnapshotIdentifier} is
+encrypted, then the restored cluster is encrypted using the AWS KMS
+key that was used to encrypt the snapshot or the cluster snapshot.
+\item If the snapshot or the cluster snapshot in \code{SnapshotIdentifier} is
+not encrypted, then the restored DB cluster is not encrypted.
 }}
 
 \item{EnableCloudwatchLogsExports}{A list of log types that must be enabled for exporting to Amazon
@@ -93,17 +90,17 @@ is enabled, the cluster cannot be deleted unless it is modified and
 from being accidentally deleted.}
 }
 \description{
-Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
+Creates a new cluster from a snapshot or cluster snapshot.
 }
 \details{
-If a DB snapshot is specified, the target DB cluster is created from the
+If a snapshot is specified, the target cluster is created from the
 source DB snapshot with a default configuration and default security
 group.
 
-If a DB cluster snapshot is specified, the target DB cluster is created
-from the source DB cluster restore point with the same configuration as
-the original source DB cluster, except that the new DB cluster is
-created with the default security group.
+If a cluster snapshot is specified, the target cluster is created from
+the source cluster restore point with the same configuration as the
+original source DB cluster, except that the new cluster is created with
+the default security group.
 }
 \section{Request syntax}{
 \preformatted{svc$restore_db_cluster_from_snapshot(

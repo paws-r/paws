@@ -118,6 +118,10 @@ dataexchange_create_data_set <- function(AssetType, Description, Name, Tags = NU
 #'         )
 #'       ),
 #'       DataSetId = "string",
+#'       Encryption = list(
+#'         KmsKeyArn = "string",
+#'         Type = "aws:kms"|"AES256"
+#'       ),
 #'       RevisionId = "string"
 #'     ),
 #'     ImportAssetFromSignedUrl = list(

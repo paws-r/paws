@@ -2,8 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_get_rate_based_rule_managed_keys}
 \alias{waf_get_rate_based_rule_managed_keys}
-\title{Returns an array of IP addresses currently being blocked by the
-RateBasedRule that is specified by the RuleId}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 waf_get_rate_based_rule_managed_keys(RuleId, NextMarker)
 }
@@ -16,6 +15,16 @@ ListRateBasedRules.}
 request.}
 }
 \description{
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
+}
+\details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns an array of IP addresses currently being blocked by the
 RateBasedRule that is specified by the \code{RuleId}. The maximum number of
 managed keys that will be blocked is 10,000. If more than 10,000

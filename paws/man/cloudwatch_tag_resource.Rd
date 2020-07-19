@@ -8,16 +8,23 @@ resource}
 cloudwatch_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the CloudWatch alarm that you\'re adding tags to. The ARN
-format is
-\verb{arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:alarm:<i>alarm-name</i> }}
+\item{ResourceARN}{[required] The ARN of the CloudWatch resource that you\'re adding tags to.
+
+The ARN format of an alarm is
+\verb{arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:alarm:<i>alarm-name</i> }
+
+The ARN format of a Contributor Insights rule is
+\verb{arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:insight-rule:<i>insight-rule-name</i> }
+
+For more information on ARN format, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies}{Resource Types Defined by Amazon CloudWatch}
+in the \emph{Amazon Web Services General Reference}.}
 
 \item{Tags}{[required] The list of key-value pairs to associate with the alarm.}
 }
 \description{
 Assigns one or more tags (key-value pairs) to the specified CloudWatch
 resource. Currently, the only CloudWatch resources that can be tagged
-are alarms.
+are alarms and Contributor Insights rules.
 }
 \details{
 Tags can help you organize and categorize your resources. You can also
@@ -33,7 +40,7 @@ to the list of tags associated with the alarm. If you specify a tag key
 that is already associated with the alarm, the new tag value that you
 specify replaces the previous value for that tag.
 
-You can associate as many as 50 tags with a resource.
+You can associate as many as 50 tags with a CloudWatch resource.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

@@ -16,25 +16,25 @@ AWS Storage Gateway is the service that connects an on-premises software
 appliance with cloud-based storage to provide seamless and secure
 integration between an organization\'s on-premises IT environment and
 the AWS storage infrastructure. The service enables you to securely
-upload data to the AWS cloud for cost effective backup and rapid
+upload data to the AWS Cloud for cost effective backup and rapid
 disaster recovery.
 
 Use the following links to get started using the \emph{AWS Storage Gateway
 Service API Reference}:
 \itemize{
-\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders}{AWS Storage Gateway Required Request Headers}:
+\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewayHTTPRequestsHeaders}{AWS Storage Gateway required request headers}:
 Describes the required headers that you must send with every POST
 request to AWS Storage Gateway.
-\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests}{Signing Requests}:
+\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#AWSStorageGatewaySigningRequests}{Signing requests}:
 AWS Storage Gateway requires that you authenticate every request you
 send; this topic describes how sign such a request.
-\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses}{Error Responses}:
+\item \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html#APIErrorResponses}{Error responses}:
 Provides reference information about AWS Storage Gateway errors.
 \item \href{https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html}{Operations in AWS Storage Gateway}:
 Contains detailed descriptions of all AWS Storage Gateway
 operations, their request parameters, response elements, possible
 errors, and examples of requests and responses.
-\item \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region}{AWS Storage Gateway Regions and Endpoints:}
+\item \href{https://docs.aws.amazon.com/general/latest/gr/sg.html}{AWS Storage Gateway endpoints and quotas:}
 Provides a list of each AWS Region and the endpoints available for
 use with AWS Storage Gateway.
 }
@@ -52,7 +52,7 @@ gateway volumes are changing to a longer format. Starting in December
 2016, all new volumes and snapshots will be created with a 17-character
 string. Starting in April 2016, you will be able to use these longer IDs
 so you can test your systems with the new format. For more information,
-see \href{https://aws.amazon.com/ec2/faqs/#longer-ids}{Longer EC2 and EBS Resource IDs}.
+see \href{http://aws.amazon.com/ec2/faqs/#longer-ids}{Longer EC2 and EBS resource IDs}.
 
 For example, a volume Amazon Resource Name (ARN) with the longer volume
 ID format looks like the following:
@@ -62,7 +62,7 @@ ID format looks like the following:
 A snapshot ID with the longer ID format looks like the following:
 \verb{snap-78e226633445566ee}.
 
-For more information, see \href{https://forums.aws.amazon.com/ann.jspa?annID=3557}{Announcement: Heads-up -- Longer AWS Storage Gateway volume and snapshot IDs coming in 2016}.
+For more information, see \href{http://forums.aws.amazon.com/ann.jspa?annID=3557}{Announcement: Heads-up -- Longer AWS Storage Gateway volume and snapshot IDs coming in 2016}.
 }
 \section{Service syntax}{
 \preformatted{svc <- storagegateway(
@@ -102,6 +102,7 @@ For more information, see \href{https://forums.aws.amazon.com/ann.jspa?annID=355
 \link[=storagegateway_create_storedi_scsi_volume]{create_storedi_scsi_volume} \tab Creates a volume on a specified gateway \cr
 \link[=storagegateway_create_tapes]{create_tapes} \tab Creates one or more virtual tapes \cr
 \link[=storagegateway_create_tape_with_barcode]{create_tape_with_barcode} \tab Creates a virtual tape by using your own barcode \cr
+\link[=storagegateway_delete_automatic_tape_creation_policy]{delete_automatic_tape_creation_policy} \tab Deletes the automatic tape creation policy of a gateway \cr
 \link[=storagegateway_delete_bandwidth_rate_limit]{delete_bandwidth_rate_limit} \tab Deletes the bandwidth rate limits of a gateway \cr
 \link[=storagegateway_delete_chap_credentials]{delete_chap_credentials} \tab Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target and initiator pair \cr
 \link[=storagegateway_delete_file_share]{delete_file_share} \tab Deletes a file share from a file gateway \cr
@@ -131,6 +132,7 @@ For more information, see \href{https://forums.aws.amazon.com/ann.jspa?annID=355
 \link[=storagegateway_detach_volume]{detach_volume} \tab Disconnects a volume from an iSCSI connection and then detaches the volume from the specified gateway \cr
 \link[=storagegateway_disable_gateway]{disable_gateway} \tab Disables a tape gateway when the gateway is no longer functioning \cr
 \link[=storagegateway_join_domain]{join_domain} \tab Adds a file gateway to an Active Directory domain \cr
+\link[=storagegateway_list_automatic_tape_creation_policies]{list_automatic_tape_creation_policies} \tab Lists the automatic tape creation policies for a gateway \cr
 \link[=storagegateway_list_file_shares]{list_file_shares} \tab Gets a list of the file shares for a specific file gateway, or the list of file shares that belong to the calling user account \cr
 \link[=storagegateway_list_gateways]{list_gateways} \tab Lists gateways owned by an AWS account in an AWS Region specified in the request \cr
 \link[=storagegateway_list_local_disks]{list_local_disks} \tab Returns a list of the gateway's local disks \cr
@@ -142,7 +144,7 @@ For more information, see \href{https://forums.aws.amazon.com/ann.jspa?annID=355
 \link[=storagegateway_notify_when_uploaded]{notify_when_uploaded} \tab Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to Amazon S3 \cr
 \link[=storagegateway_refresh_cache]{refresh_cache} \tab Refreshes the cache for the specified file share \cr
 \link[=storagegateway_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes one or more tags from the specified resource \cr
-\link[=storagegateway_reset_cache]{reset_cache} \tab Resets all cache disks that have encountered a error and makes the disks available for reconfiguration as cache storage \cr
+\link[=storagegateway_reset_cache]{reset_cache} \tab Resets all cache disks that have encountered an error and makes the disks available for reconfiguration as cache storage \cr
 \link[=storagegateway_retrieve_tape_archive]{retrieve_tape_archive} \tab Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a tape gateway \cr
 \link[=storagegateway_retrieve_tape_recovery_point]{retrieve_tape_recovery_point} \tab Retrieves the recovery point for the specified virtual tape \cr
 \link[=storagegateway_set_local_console_password]{set_local_console_password} \tab Sets the password for your VM local console \cr
@@ -150,6 +152,7 @@ For more information, see \href{https://forums.aws.amazon.com/ann.jspa?annID=355
 \link[=storagegateway_shutdown_gateway]{shutdown_gateway} \tab Shuts down a gateway \cr
 \link[=storagegateway_start_availability_monitor_test]{start_availability_monitor_test} \tab Start a test that verifies that the specified gateway is configured for High Availability monitoring in your host environment \cr
 \link[=storagegateway_start_gateway]{start_gateway} \tab Starts a gateway that you previously shut down (see ShutdownGateway) \cr
+\link[=storagegateway_update_automatic_tape_creation_policy]{update_automatic_tape_creation_policy} \tab Updates the automatic tape creation policy of a gateway \cr
 \link[=storagegateway_update_bandwidth_rate_limit]{update_bandwidth_rate_limit} \tab Updates the bandwidth rate limits of a gateway \cr
 \link[=storagegateway_update_chap_credentials]{update_chap_credentials} \tab Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target \cr
 \link[=storagegateway_update_gateway_information]{update_gateway_information} \tab Updates a gateway's metadata, which includes the gateway's name and time zone \cr

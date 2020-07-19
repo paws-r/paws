@@ -351,13 +351,15 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #'   ContentHandlingStrategy, CredentialsArn, Description, IntegrationMethod,
 #'   IntegrationType, IntegrationUri, PassthroughBehavior,
 #'   PayloadFormatVersion, RequestParameters, RequestTemplates,
-#'   TemplateSelectionExpression, TimeoutInMillis)
+#'   TemplateSelectionExpression, TimeoutInMillis, TlsConfig)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ConnectionId The connection ID.
-#' @param ConnectionType The type of the network connection to the integration endpoint.
-#' Currently the only valid value is INTERNET, for connections through the
-#' public routable internet.
+#' @param ConnectionId The ID of the VPC link for a private integration. Supported only for
+#' HTTP APIs.
+#' @param ConnectionType The type of the network connection to the integration endpoint. Specify
+#' INTERNET for connections through the public routable internet or
+#' VPC\\_LINK for private connections between API Gateway and resources in a
+#' VPC. The default value is INTERNET.
 #' @param ContentHandlingStrategy Supported only for WebSocket APIs. Specifies how to handle response
 #' payload content type conversions. Supported values are
 #' CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the following behaviors:
@@ -395,14 +397,26 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' This integration is also referred to as the HTTP custom integration.
 #' Supported only for WebSocket APIs.
 #' 
-#' HTTP\\_PROXY: for integrating route or method request with an HTTP
+#' HTTP\\_PROXY: for integrating the route or method request with an HTTP
 #' endpoint, with the client request passed through as-is. This is also
-#' referred to as HTTP proxy integration.
+#' referred to as HTTP proxy integration. For HTTP API private
+#' integrations, use an HTTP\\_PROXY integration.
 #' 
 #' MOCK: for integrating the route or method request with API Gateway as a
 #' \"loopback\" endpoint without invoking any backend. Supported only for
 #' WebSocket APIs.
-#' @param IntegrationUri For a Lambda proxy integration, this is the URI of the Lambda function.
+#' @param IntegrationUri For a Lambda integration, specify the URI of a Lambda function.
+#' 
+#' For an HTTP integration, specify a fully-qualified URL.
+#' 
+#' For an HTTP API private integration, specify the ARN of an Application
+#' Load Balancer listener, Network Load Balancer listener, or AWS Cloud Map
+#' service. If you specify the ARN of an AWS Cloud Map service, API Gateway
+#' uses DiscoverInstances to identify resources. You can use query
+#' parameters to target specific resources. To learn more, see
+#' [DiscoverInstances](https://docs.aws.amazon.com/cloud-map/latest/api/API_DiscoverInstances.html).
+#' For private integrations, all resources must be owned by the same AWS
+#' account.
 #' @param PassthroughBehavior Specifies the pass-through behavior for incoming requests based on the
 #' Content-Type header in the request, and the available mapping templates
 #' specified as the requestTemplates property on the Integration resource.
@@ -420,7 +434,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' content type defined, unmapped content types will be rejected with the
 #' same HTTP 415 Unsupported Media Type response.
 #' @param PayloadFormatVersion Specifies the format of the payload sent to an integration. Required for
-#' HTTP APIs. Currently, the only supported value is 1.0.
+#' HTTP APIs.
 #' @param RequestParameters A key-value map specifying request parameters that are passed from the
 #' method request to the backend. The key is an integration request
 #' parameter name and the associated value is a method request parameter
@@ -435,9 +449,12 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' client. The content type value is the key in this map, and the template
 #' (as a String) is the value. Supported only for WebSocket APIs.
 #' @param TemplateSelectionExpression The template selection expression for the integration.
-#' @param TimeoutInMillis Custom timeout between 50 and 29,000 milliseconds. The default value is
-#' 29,000 milliseconds or 29 seconds for WebSocket APIs. The default value
-#' is 5,000 milliseconds, or 5 seconds for HTTP APIs.
+#' @param TimeoutInMillis Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs and
+#' between 50 and 30,000 milliseconds for HTTP APIs. The default timeout is
+#' 29 seconds for WebSocket APIs and 30 seconds for HTTP APIs.
+#' @param TlsConfig The TLS configuration for a private integration. If you specify a TLS
+#' configuration, private integration traffic uses the HTTPS protocol.
+#' Supported only for HTTP APIs.
 #'
 #' @section Request syntax:
 #' ```
@@ -460,21 +477,24 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #'     "string"
 #'   ),
 #'   TemplateSelectionExpression = "string",
-#'   TimeoutInMillis = 123
+#'   TimeoutInMillis = 123,
+#'   TlsConfig = list(
+#'     ServerNameToVerify = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_integration
-apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, ConnectionType = NULL, ContentHandlingStrategy = NULL, CredentialsArn = NULL, Description = NULL, IntegrationMethod = NULL, IntegrationType, IntegrationUri = NULL, PassthroughBehavior = NULL, PayloadFormatVersion = NULL, RequestParameters = NULL, RequestTemplates = NULL, TemplateSelectionExpression = NULL, TimeoutInMillis = NULL) {
+apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, ConnectionType = NULL, ContentHandlingStrategy = NULL, CredentialsArn = NULL, Description = NULL, IntegrationMethod = NULL, IntegrationType, IntegrationUri = NULL, PassthroughBehavior = NULL, PayloadFormatVersion = NULL, RequestParameters = NULL, RequestTemplates = NULL, TemplateSelectionExpression = NULL, TimeoutInMillis = NULL, TlsConfig = NULL) {
   op <- new_operation(
     name = "CreateIntegration",
     http_method = "POST",
     http_path = "/v2/apis/{apiId}/integrations",
     paginator = list()
   )
-  input <- .apigatewayv2$create_integration_input(ApiId = ApiId, ConnectionId = ConnectionId, ConnectionType = ConnectionType, ContentHandlingStrategy = ContentHandlingStrategy, CredentialsArn = CredentialsArn, Description = Description, IntegrationMethod = IntegrationMethod, IntegrationType = IntegrationType, IntegrationUri = IntegrationUri, PassthroughBehavior = PassthroughBehavior, PayloadFormatVersion = PayloadFormatVersion, RequestParameters = RequestParameters, RequestTemplates = RequestTemplates, TemplateSelectionExpression = TemplateSelectionExpression, TimeoutInMillis = TimeoutInMillis)
+  input <- .apigatewayv2$create_integration_input(ApiId = ApiId, ConnectionId = ConnectionId, ConnectionType = ConnectionType, ContentHandlingStrategy = ContentHandlingStrategy, CredentialsArn = CredentialsArn, Description = Description, IntegrationMethod = IntegrationMethod, IntegrationType = IntegrationType, IntegrationUri = IntegrationUri, PassthroughBehavior = PassthroughBehavior, PayloadFormatVersion = PayloadFormatVersion, RequestParameters = RequestParameters, RequestTemplates = RequestTemplates, TemplateSelectionExpression = TemplateSelectionExpression, TimeoutInMillis = TimeoutInMillis, TlsConfig = TlsConfig)
   output <- .apigatewayv2$create_integration_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config)
@@ -762,7 +782,7 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #' @param StageName &#91;required&#93; The name of the stage.
 #' @param StageVariables A map that defines the stage variables for a Stage. Variable names can
 #' have alphanumeric and underscore characters, and the values must match
-#' \[A-Za-z0-9-.\\_\~:/?\\#&=,\]+. Supported only for WebSocket APIs.
+#' \[A-Za-z0-9-.\\_\~:/?\\#&=,\]+.
 #' @param Tags The collection of tags. Each tag element is associated with a given
 #' resource.
 #'
@@ -779,7 +799,7 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #'   DefaultRouteSettings = list(
 #'     DataTraceEnabled = TRUE|FALSE,
 #'     DetailedMetricsEnabled = TRUE|FALSE,
-#'     LoggingLevel = "ERROR"|"INFO"|"false",
+#'     LoggingLevel = "ERROR"|"INFO"|"OFF",
 #'     ThrottlingBurstLimit = 123,
 #'     ThrottlingRateLimit = 123.0
 #'   ),
@@ -789,7 +809,7 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #'     list(
 #'       DataTraceEnabled = TRUE|FALSE,
 #'       DetailedMetricsEnabled = TRUE|FALSE,
-#'       LoggingLevel = "ERROR"|"INFO"|"false",
+#'       LoggingLevel = "ERROR"|"INFO"|"OFF",
 #'       ThrottlingBurstLimit = 123,
 #'       ThrottlingRateLimit = 123.0
 #'     )
@@ -823,6 +843,94 @@ apigatewayv2_create_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
   return(response)
 }
 .apigatewayv2$operations$create_stage <- apigatewayv2_create_stage
+
+#' Creates a VPC link
+#'
+#' Creates a VPC link.
+#'
+#' @usage
+#' apigatewayv2_create_vpc_link(Name, SecurityGroupIds, SubnetIds, Tags)
+#'
+#' @param Name &#91;required&#93; The name of the VPC link.
+#' @param SecurityGroupIds A list of security group IDs for the VPC link.
+#' @param SubnetIds &#91;required&#93; A list of subnet IDs to include in the VPC link.
+#' @param Tags A list of tags.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_vpc_link(
+#'   Name = "string",
+#'   SecurityGroupIds = list(
+#'     "string"
+#'   ),
+#'   SubnetIds = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_create_vpc_link
+apigatewayv2_create_vpc_link <- function(Name, SecurityGroupIds = NULL, SubnetIds, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateVpcLink",
+    http_method = "POST",
+    http_path = "/v2/vpclinks",
+    paginator = list()
+  )
+  input <- .apigatewayv2$create_vpc_link_input(Name = Name, SecurityGroupIds = SecurityGroupIds, SubnetIds = SubnetIds, Tags = Tags)
+  output <- .apigatewayv2$create_vpc_link_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$create_vpc_link <- apigatewayv2_create_vpc_link
+
+#' Deletes the AccessLogSettings for a Stage
+#'
+#' Deletes the AccessLogSettings for a Stage. To disable access logging for
+#' a Stage, delete its AccessLogSettings.
+#'
+#' @usage
+#' apigatewayv2_delete_access_log_settings(ApiId, StageName)
+#'
+#' @param ApiId &#91;required&#93; The API identifier.
+#' @param StageName &#91;required&#93; The stage name. Stage names can only contain alphanumeric characters,
+#' hyphens, and underscores. Maximum length is 128 characters.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_access_log_settings(
+#'   ApiId = "string",
+#'   StageName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_access_log_settings
+apigatewayv2_delete_access_log_settings <- function(ApiId, StageName) {
+  op <- new_operation(
+    name = "DeleteAccessLogSettings",
+    http_method = "DELETE",
+    http_path = "/v2/apis/{apiId}/stages/{stageName}/accesslogsettings",
+    paginator = list()
+  )
+  input <- .apigatewayv2$delete_access_log_settings_input(ApiId = ApiId, StageName = StageName)
+  output <- .apigatewayv2$delete_access_log_settings_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_access_log_settings <- apigatewayv2_delete_access_log_settings
 
 #' Deletes an Api resource
 #'
@@ -1201,6 +1309,47 @@ apigatewayv2_delete_route <- function(ApiId, RouteId) {
 }
 .apigatewayv2$operations$delete_route <- apigatewayv2_delete_route
 
+#' Deletes a route request parameter
+#'
+#' Deletes a route request parameter.
+#'
+#' @usage
+#' apigatewayv2_delete_route_request_parameter(ApiId, RequestParameterKey,
+#'   RouteId)
+#'
+#' @param ApiId &#91;required&#93; The API identifier.
+#' @param RequestParameterKey &#91;required&#93; The route request parameter key.
+#' @param RouteId &#91;required&#93; The route ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_route_request_parameter(
+#'   ApiId = "string",
+#'   RequestParameterKey = "string",
+#'   RouteId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_route_request_parameter
+apigatewayv2_delete_route_request_parameter <- function(ApiId, RequestParameterKey, RouteId) {
+  op <- new_operation(
+    name = "DeleteRouteRequestParameter",
+    http_method = "DELETE",
+    http_path = "/v2/apis/{apiId}/routes/{routeId}/requestparameters/{requestParameterKey}",
+    paginator = list()
+  )
+  input <- .apigatewayv2$delete_route_request_parameter_input(ApiId = ApiId, RequestParameterKey = RequestParameterKey, RouteId = RouteId)
+  output <- .apigatewayv2$delete_route_request_parameter_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_route_request_parameter <- apigatewayv2_delete_route_request_parameter
+
 #' Deletes a RouteResponse
 #'
 #' Deletes a RouteResponse.
@@ -1320,6 +1469,96 @@ apigatewayv2_delete_stage <- function(ApiId, StageName) {
   return(response)
 }
 .apigatewayv2$operations$delete_stage <- apigatewayv2_delete_stage
+
+#' Deletes a VPC link
+#'
+#' Deletes a VPC link.
+#'
+#' @usage
+#' apigatewayv2_delete_vpc_link(VpcLinkId)
+#'
+#' @param VpcLinkId &#91;required&#93; The ID of the VPC link.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_vpc_link(
+#'   VpcLinkId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_delete_vpc_link
+apigatewayv2_delete_vpc_link <- function(VpcLinkId) {
+  op <- new_operation(
+    name = "DeleteVpcLink",
+    http_method = "DELETE",
+    http_path = "/v2/vpclinks/{vpcLinkId}",
+    paginator = list()
+  )
+  input <- .apigatewayv2$delete_vpc_link_input(VpcLinkId = VpcLinkId)
+  output <- .apigatewayv2$delete_vpc_link_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$delete_vpc_link <- apigatewayv2_delete_vpc_link
+
+#' Export api
+#'
+#' 
+#'
+#' @usage
+#' apigatewayv2_export_api(ApiId, ExportVersion, IncludeExtensions,
+#'   OutputType, Specification, StageName)
+#'
+#' @param ApiId &#91;required&#93; The API identifier.
+#' @param ExportVersion The version of the API Gateway export algorithm. API Gateway uses the
+#' latest version by default. Currently, the only supported version is 1.0.
+#' @param IncludeExtensions Specifies whether to include [API Gateway
+#' extensions](https://docs.aws.amazon.com//apigateway/latest/developerguide/api-gateway-swagger-extensions.html)
+#' in the exported API definition. API Gateway extensions are included by
+#' default.
+#' @param OutputType &#91;required&#93; The output type of the exported definition file. Valid values are JSON
+#' and YAML.
+#' @param Specification &#91;required&#93; The version of the API specification to use. OAS30, for OpenAPI 3.0, is
+#' the only supported value.
+#' @param StageName The name of the API stage to export. If you don\'t specify this
+#' property, a representation of the latest API configuration is exported.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$export_api(
+#'   ApiId = "string",
+#'   ExportVersion = "string",
+#'   IncludeExtensions = TRUE|FALSE,
+#'   OutputType = "YAML"|"JSON",
+#'   Specification = "OAS30",
+#'   StageName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_export_api
+apigatewayv2_export_api <- function(ApiId, ExportVersion = NULL, IncludeExtensions = NULL, OutputType, Specification, StageName = NULL) {
+  op <- new_operation(
+    name = "ExportApi",
+    http_method = "GET",
+    http_path = "/v2/apis/{apiId}/exports/{specification}",
+    paginator = list()
+  )
+  input <- .apigatewayv2$export_api_input(ApiId = ApiId, ExportVersion = ExportVersion, IncludeExtensions = IncludeExtensions, OutputType = OutputType, Specification = Specification, StageName = StageName)
+  output <- .apigatewayv2$export_api_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$export_api <- apigatewayv2_export_api
 
 #' Gets an Api resource
 #'
@@ -2267,6 +2506,81 @@ apigatewayv2_get_tags <- function(ResourceArn) {
 }
 .apigatewayv2$operations$get_tags <- apigatewayv2_get_tags
 
+#' Gets a VPC link
+#'
+#' Gets a VPC link.
+#'
+#' @usage
+#' apigatewayv2_get_vpc_link(VpcLinkId)
+#'
+#' @param VpcLinkId &#91;required&#93; The ID of the VPC link.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_vpc_link(
+#'   VpcLinkId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_vpc_link
+apigatewayv2_get_vpc_link <- function(VpcLinkId) {
+  op <- new_operation(
+    name = "GetVpcLink",
+    http_method = "GET",
+    http_path = "/v2/vpclinks/{vpcLinkId}",
+    paginator = list()
+  )
+  input <- .apigatewayv2$get_vpc_link_input(VpcLinkId = VpcLinkId)
+  output <- .apigatewayv2$get_vpc_link_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_vpc_link <- apigatewayv2_get_vpc_link
+
+#' Gets a collection of VPC links
+#'
+#' Gets a collection of VPC links.
+#'
+#' @usage
+#' apigatewayv2_get_vpc_links(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of elements to be returned for this resource.
+#' @param NextToken The next page of elements from this collection. Not valid for the last
+#' element of the collection.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_vpc_links(
+#'   MaxResults = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_get_vpc_links
+apigatewayv2_get_vpc_links <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetVpcLinks",
+    http_method = "GET",
+    http_path = "/v2/vpclinks",
+    paginator = list()
+  )
+  input <- .apigatewayv2$get_vpc_links_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .apigatewayv2$get_vpc_links_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$get_vpc_links <- apigatewayv2_get_vpc_links
+
 #' Imports an API
 #'
 #' Imports an API.
@@ -2274,11 +2588,15 @@ apigatewayv2_get_tags <- function(ResourceArn) {
 #' @usage
 #' apigatewayv2_import_api(Basepath, Body, FailOnWarnings)
 #'
-#' @param Basepath Represents the base path of the imported API. Supported only for HTTP
-#' APIs.
+#' @param Basepath Specifies how to interpret the base path of the API during import. Valid
+#' values are ignore, prepend, and split. The default value is ignore. To
+#' learn more, see [Set the OpenAPI basePath
+#' Property](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-import-api-basePath.html).
+#' Supported only for HTTP APIs.
 #' @param Body &#91;required&#93; The OpenAPI definition. Supported only for HTTP APIs.
-#' @param FailOnWarnings Specifies whether to rollback the API creation (true) or not (false)
-#' when a warning is encountered. The default value is false.
+#' @param FailOnWarnings Specifies whether to rollback the API creation when a warning is
+#' encountered. By default, API creation continues if a warning is
+#' encountered.
 #'
 #' @section Request syntax:
 #' ```
@@ -2317,11 +2635,15 @@ apigatewayv2_import_api <- function(Basepath = NULL, Body, FailOnWarnings = NULL
 #' apigatewayv2_reimport_api(ApiId, Basepath, Body, FailOnWarnings)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param Basepath Represents the base path of the imported API. Supported only for HTTP
-#' APIs.
+#' @param Basepath Specifies how to interpret the base path of the API during import. Valid
+#' values are ignore, prepend, and split. The default value is ignore. To
+#' learn more, see [Set the OpenAPI basePath
+#' Property](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-import-api-basePath.html).
+#' Supported only for HTTP APIs.
 #' @param Body &#91;required&#93; The OpenAPI definition. Supported only for HTTP APIs.
-#' @param FailOnWarnings Specifies whether to rollback the API creation (true) or not (false)
-#' when a warning is encountered. The default value is false.
+#' @param FailOnWarnings Specifies whether to rollback the API creation when a warning is
+#' encountered. By default, API creation continues if a warning is
+#' encountered.
 #'
 #' @section Request syntax:
 #' ```
@@ -2402,9 +2724,7 @@ apigatewayv2_tag_resource <- function(ResourceArn, Tags = NULL) {
 #' apigatewayv2_untag_resource(ResourceArn, TagKeys)
 #'
 #' @param ResourceArn &#91;required&#93; The resource ARN for the tag.
-#' @param TagKeys &#91;required&#93; 
-#'             <p>The Tag keys to delete.</p>
-#'          
+#' @param TagKeys &#91;required&#93; The Tag keys to delete
 #'
 #' @section Request syntax:
 #' ```
@@ -2777,13 +3097,15 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #'   ContentHandlingStrategy, CredentialsArn, Description, IntegrationId,
 #'   IntegrationMethod, IntegrationType, IntegrationUri, PassthroughBehavior,
 #'   PayloadFormatVersion, RequestParameters, RequestTemplates,
-#'   TemplateSelectionExpression, TimeoutInMillis)
+#'   TemplateSelectionExpression, TimeoutInMillis, TlsConfig)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ConnectionId The connection ID.
-#' @param ConnectionType The type of the network connection to the integration endpoint.
-#' Currently the only valid value is INTERNET, for connections through the
-#' public routable internet.
+#' @param ConnectionId The ID of the VPC link for a private integration. Supported only for
+#' HTTP APIs.
+#' @param ConnectionType The type of the network connection to the integration endpoint. Specify
+#' INTERNET for connections through the public routable internet or
+#' VPC\\_LINK for private connections between API Gateway and resources in a
+#' VPC. The default value is INTERNET.
 #' @param ContentHandlingStrategy Supported only for WebSocket APIs. Specifies how to handle response
 #' payload content type conversions. Supported values are
 #' CONVERT\\_TO\\_BINARY and CONVERT\\_TO\\_TEXT, with the following behaviors:
@@ -2822,14 +3144,26 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' This integration is also referred to as the HTTP custom integration.
 #' Supported only for WebSocket APIs.
 #' 
-#' HTTP\\_PROXY: for integrating route or method request with an HTTP
+#' HTTP\\_PROXY: for integrating the route or method request with an HTTP
 #' endpoint, with the client request passed through as-is. This is also
-#' referred to as HTTP proxy integration.
+#' referred to as HTTP proxy integration. For HTTP API private
+#' integrations, use an HTTP\\_PROXY integration.
 #' 
 #' MOCK: for integrating the route or method request with API Gateway as a
 #' \"loopback\" endpoint without invoking any backend. Supported only for
 #' WebSocket APIs.
-#' @param IntegrationUri For a Lambda proxy integration, this is the URI of the Lambda function.
+#' @param IntegrationUri For a Lambda integration, specify the URI of a Lambda function.
+#' 
+#' For an HTTP integration, specify a fully-qualified URL.
+#' 
+#' For an HTTP API private integration, specify the ARN of an Application
+#' Load Balancer listener, Network Load Balancer listener, or AWS Cloud Map
+#' service. If you specify the ARN of an AWS Cloud Map service, API Gateway
+#' uses DiscoverInstances to identify resources. You can use query
+#' parameters to target specific resources. To learn more, see
+#' [DiscoverInstances](https://docs.aws.amazon.com/cloud-map/latest/api/API_DiscoverInstances.html).
+#' For private integrations, all resources must be owned by the same AWS
+#' account.
 #' @param PassthroughBehavior Specifies the pass-through behavior for incoming requests based on the
 #' Content-Type header in the request, and the available mapping templates
 #' specified as the requestTemplates property on the Integration resource.
@@ -2847,7 +3181,7 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' content type defined, unmapped content types will be rejected with the
 #' same HTTP 415 Unsupported Media Type response.
 #' @param PayloadFormatVersion Specifies the format of the payload sent to an integration. Required for
-#' HTTP APIs. Currently, the only supported value is 1.0.
+#' HTTP APIs.
 #' @param RequestParameters A key-value map specifying request parameters that are passed from the
 #' method request to the backend. The key is an integration request
 #' parameter name and the associated value is a method request parameter
@@ -2862,9 +3196,12 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' client. The content type value is the key in this map, and the template
 #' (as a String) is the value. Supported only for WebSocket APIs.
 #' @param TemplateSelectionExpression The template selection expression for the integration.
-#' @param TimeoutInMillis Custom timeout between 50 and 29,000 milliseconds. The default value is
-#' 29,000 milliseconds or 29 seconds for WebSocket APIs. The default value
-#' is 5,000 milliseconds, or 5 seconds for HTTP APIs.
+#' @param TimeoutInMillis Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs and
+#' between 50 and 30,000 milliseconds for HTTP APIs. The default timeout is
+#' 29 seconds for WebSocket APIs and 30 seconds for HTTP APIs.
+#' @param TlsConfig The TLS configuration for a private integration. If you specify a TLS
+#' configuration, private integration traffic uses the HTTPS protocol.
+#' Supported only for HTTP APIs.
 #'
 #' @section Request syntax:
 #' ```
@@ -2888,21 +3225,24 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #'     "string"
 #'   ),
 #'   TemplateSelectionExpression = "string",
-#'   TimeoutInMillis = 123
+#'   TimeoutInMillis = 123,
+#'   TlsConfig = list(
+#'     ServerNameToVerify = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_integration
-apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, ConnectionType = NULL, ContentHandlingStrategy = NULL, CredentialsArn = NULL, Description = NULL, IntegrationId, IntegrationMethod = NULL, IntegrationType = NULL, IntegrationUri = NULL, PassthroughBehavior = NULL, PayloadFormatVersion = NULL, RequestParameters = NULL, RequestTemplates = NULL, TemplateSelectionExpression = NULL, TimeoutInMillis = NULL) {
+apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, ConnectionType = NULL, ContentHandlingStrategy = NULL, CredentialsArn = NULL, Description = NULL, IntegrationId, IntegrationMethod = NULL, IntegrationType = NULL, IntegrationUri = NULL, PassthroughBehavior = NULL, PayloadFormatVersion = NULL, RequestParameters = NULL, RequestTemplates = NULL, TemplateSelectionExpression = NULL, TimeoutInMillis = NULL, TlsConfig = NULL) {
   op <- new_operation(
     name = "UpdateIntegration",
     http_method = "PATCH",
     http_path = "/v2/apis/{apiId}/integrations/{integrationId}",
     paginator = list()
   )
-  input <- .apigatewayv2$update_integration_input(ApiId = ApiId, ConnectionId = ConnectionId, ConnectionType = ConnectionType, ContentHandlingStrategy = ContentHandlingStrategy, CredentialsArn = CredentialsArn, Description = Description, IntegrationId = IntegrationId, IntegrationMethod = IntegrationMethod, IntegrationType = IntegrationType, IntegrationUri = IntegrationUri, PassthroughBehavior = PassthroughBehavior, PayloadFormatVersion = PayloadFormatVersion, RequestParameters = RequestParameters, RequestTemplates = RequestTemplates, TemplateSelectionExpression = TemplateSelectionExpression, TimeoutInMillis = TimeoutInMillis)
+  input <- .apigatewayv2$update_integration_input(ApiId = ApiId, ConnectionId = ConnectionId, ConnectionType = ConnectionType, ContentHandlingStrategy = ContentHandlingStrategy, CredentialsArn = CredentialsArn, Description = Description, IntegrationId = IntegrationId, IntegrationMethod = IntegrationMethod, IntegrationType = IntegrationType, IntegrationUri = IntegrationUri, PassthroughBehavior = PassthroughBehavior, PayloadFormatVersion = PayloadFormatVersion, RequestParameters = RequestParameters, RequestTemplates = RequestTemplates, TemplateSelectionExpression = TemplateSelectionExpression, TimeoutInMillis = TimeoutInMillis, TlsConfig = TlsConfig)
   output <- .apigatewayv2$update_integration_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config)
@@ -3201,7 +3541,7 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #' hyphens, and underscores. Maximum length is 128 characters.
 #' @param StageVariables A map that defines the stage variables for a Stage. Variable names can
 #' have alphanumeric and underscore characters, and the values must match
-#' \[A-Za-z0-9-.\\_\~:/?\\#&=,\]+. Supported only for WebSocket APIs.
+#' \[A-Za-z0-9-.\\_\~:/?\\#&=,\]+.
 #'
 #' @section Request syntax:
 #' ```
@@ -3216,7 +3556,7 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #'   DefaultRouteSettings = list(
 #'     DataTraceEnabled = TRUE|FALSE,
 #'     DetailedMetricsEnabled = TRUE|FALSE,
-#'     LoggingLevel = "ERROR"|"INFO"|"false",
+#'     LoggingLevel = "ERROR"|"INFO"|"OFF",
 #'     ThrottlingBurstLimit = 123,
 #'     ThrottlingRateLimit = 123.0
 #'   ),
@@ -3226,7 +3566,7 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #'     list(
 #'       DataTraceEnabled = TRUE|FALSE,
 #'       DetailedMetricsEnabled = TRUE|FALSE,
-#'       LoggingLevel = "ERROR"|"INFO"|"false",
+#'       LoggingLevel = "ERROR"|"INFO"|"OFF",
 #'       ThrottlingBurstLimit = 123,
 #'       ThrottlingRateLimit = 123.0
 #'     )
@@ -3257,3 +3597,41 @@ apigatewayv2_update_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
   return(response)
 }
 .apigatewayv2$operations$update_stage <- apigatewayv2_update_stage
+
+#' Updates a VPC link
+#'
+#' Updates a VPC link.
+#'
+#' @usage
+#' apigatewayv2_update_vpc_link(Name, VpcLinkId)
+#'
+#' @param Name The name of the VPC link.
+#' @param VpcLinkId &#91;required&#93; The ID of the VPC link.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_vpc_link(
+#'   Name = "string",
+#'   VpcLinkId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname apigatewayv2_update_vpc_link
+apigatewayv2_update_vpc_link <- function(Name = NULL, VpcLinkId) {
+  op <- new_operation(
+    name = "UpdateVpcLink",
+    http_method = "PATCH",
+    http_path = "/v2/vpclinks/{vpcLinkId}",
+    paginator = list()
+  )
+  input <- .apigatewayv2$update_vpc_link_input(Name = Name, VpcLinkId = VpcLinkId)
+  output <- .apigatewayv2$update_vpc_link_output()
+  config <- get_config()
+  svc <- .apigatewayv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigatewayv2$operations$update_vpc_link <- apigatewayv2_update_vpc_link

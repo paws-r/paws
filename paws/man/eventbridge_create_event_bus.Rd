@@ -4,35 +4,39 @@
 \alias{eventbridge_create_event_bus}
 \title{Creates a new event bus within your account}
 \usage{
-eventbridge_create_event_bus(Name, EventSourceName)
+eventbridge_create_event_bus(Name, EventSourceName, Tags)
 }
 \arguments{
 \item{Name}{[required] The name of the new event bus.
 
-The names of custom event buses can\'t contain the \code{/} character. You
-can\'t use the name \code{default} for a custom event bus because this name
-is already used for your account\'s default event bus.
+Event bus names cannot contain the / character. You can\'t use the name
+\code{default} for a custom event bus, as this name is already used for your
+account\'s default event bus.
 
 If this is a partner event bus, the name must exactly match the name of
-the partner event source that this event bus is matched to. This name
-will include the \code{/} character.}
+the partner event source that this event bus is matched to.}
 
-\item{EventSourceName}{If you\'re creating a partner event bus, this specifies the partner
+\item{EventSourceName}{If you are creating a partner event bus, this specifies the partner
 event source that the new event bus will be matched with.}
+
+\item{Tags}{Tags to associate with the event bus.}
 }
 \description{
 Creates a new event bus within your account. This can be a custom event
-bus which you can use to receive events from your own custom
-applications and services, or it can be a partner event bus which can be
-matched to a partner event source.
-}
-\details{
-This operation is used by AWS customers, not by SaaS partners.
+bus which you can use to receive events from your custom applications
+and services, or it can be a partner event bus which can be matched to a
+partner event source.
 }
 \section{Request syntax}{
 \preformatted{svc$create_event_bus(
   Name = "string",
-  EventSourceName = "string"
+  EventSourceName = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

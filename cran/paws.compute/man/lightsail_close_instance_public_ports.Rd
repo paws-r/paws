@@ -2,30 +2,35 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_close_instance_public_ports}
 \alias{lightsail_close_instance_public_ports}
-\title{Closes the public ports on a specific Amazon Lightsail instance}
+\title{Closes ports for a specific Amazon Lightsail instance}
 \usage{
 lightsail_close_instance_public_ports(portInfo, instanceName)
 }
 \arguments{
-\item{portInfo}{[required] Information about the public port you are trying to close.}
+\item{portInfo}{[required] An object to describe the ports to close for the specified instance.}
 
-\item{instanceName}{[required] The name of the instance on which you\'re attempting to close the public
-ports.}
+\item{instanceName}{[required] The name of the instance for which to close ports.}
 }
 \description{
-Closes the public ports on a specific Amazon Lightsail instance.
+Closes ports for a specific Amazon Lightsail instance.
 }
 \details{
-The \verb{close instance public ports} operation supports tag-based access
-control via resource tags applied to the resource identified by
-\verb{instance name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+The \code{CloseInstancePublicPorts} action supports tag-based access control
+via resource tags applied to the resource identified by \code{instanceName}.
+For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$close_instance_public_ports(
   portInfo = list(
     fromPort = 123,
     toPort = 123,
-    protocol = "tcp"|"all"|"udp"
+    protocol = "tcp"|"all"|"udp"|"icmp",
+    cidrs = list(
+      "string"
+    ),
+    cidrListAliases = list(
+      "string"
+    )
   ),
   instanceName = "string"
 )

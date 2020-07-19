@@ -78,7 +78,7 @@ sso <- function(config = list()) {
 
 .sso$metadata <- list(
   service_name = "sso",
-  endpoints = list("*" = list(endpoint = "sso.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sso.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "sso.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sso.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sso.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sso.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SSO",
   api_version = "2019-06-10",
   signing_name = "awsssoportal",

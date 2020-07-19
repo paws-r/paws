@@ -102,7 +102,8 @@ groundstation_cancel_contact <- function(contactId) {
 #'       )
 #'     ),
 #'     dataflowEndpointConfig = list(
-#'       dataflowEndpointName = "string"
+#'       dataflowEndpointName = "string",
+#'       dataflowEndpointRegion = "string"
 #'     ),
 #'     trackingConfig = list(
 #'       autotrack = "PREFERRED"|"REMOVED"|"REQUIRED"
@@ -213,7 +214,7 @@ groundstation_create_dataflow_endpoint_group <- function(endpointDetails, tags =
 #' Creates a mission profile.
 #' 
 #' `dataflowEdges` is a list of lists of strings. Each lower level list of
-#' strings has two elements: a *from ARN* and a *to ARN*.
+#' strings has two elements: a *from* ARN and a *to* ARN.
 #'
 #' @usage
 #' groundstation_create_mission_profile(contactPostPassDurationSeconds,
@@ -224,8 +225,8 @@ groundstation_create_dataflow_endpoint_group <- function(endpointDetails, tags =
 #' CloudWatch event indicating the pass has finished.
 #' @param contactPrePassDurationSeconds Amount of time prior to contact start you'd like to receive a CloudWatch
 #' event indicating an upcoming pass.
-#' @param dataflowEdges &#91;required&#93; A list of lists of ARNs. Each list of ARNs is an edge, with a from
-#' `Config` and a to `Config`.
+#' @param dataflowEdges &#91;required&#93; A list of lists of ARNs. Each list of ARNs is an edge, with a *from*
+#' `Config` and a *to* `Config`.
 #' @param minimumViableContactDurationSeconds &#91;required&#93; Smallest amount of time in seconds that you'd like to see for an
 #' available contact. AWS Ground Station will not present you with contacts
 #' shorter than this duration.
@@ -317,7 +318,7 @@ groundstation_delete_config <- function(configId, configType) {
 #' @usage
 #' groundstation_delete_dataflow_endpoint_group(dataflowEndpointGroupId)
 #'
-#' @param dataflowEndpointGroupId &#91;required&#93; ID of a dataflow endpoint group.
+#' @param dataflowEndpointGroupId &#91;required&#93; UUID of a dataflow endpoint group.
 #'
 #' @section Request syntax:
 #' ```
@@ -494,6 +495,44 @@ groundstation_get_dataflow_endpoint_group <- function(dataflowEndpointGroupId) {
 }
 .groundstation$operations$get_dataflow_endpoint_group <- groundstation_get_dataflow_endpoint_group
 
+#' Returns the number of minutes used by account
+#'
+#' Returns the number of minutes used by account.
+#'
+#' @usage
+#' groundstation_get_minute_usage(month, year)
+#'
+#' @param month &#91;required&#93; The month being requested, with a value of 1-12.
+#' @param year &#91;required&#93; The year being requested, in the format of YYYY.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_minute_usage(
+#'   month = 123,
+#'   year = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname groundstation_get_minute_usage
+groundstation_get_minute_usage <- function(month, year) {
+  op <- new_operation(
+    name = "GetMinuteUsage",
+    http_method = "POST",
+    http_path = "/minute-usage",
+    paginator = list()
+  )
+  input <- .groundstation$get_minute_usage_input(month = month, year = year)
+  output <- .groundstation$get_minute_usage_output()
+  config <- get_config()
+  svc <- .groundstation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.groundstation$operations$get_minute_usage <- groundstation_get_minute_usage
+
 #' Returns a mission profile
 #'
 #' Returns a mission profile.
@@ -529,6 +568,42 @@ groundstation_get_mission_profile <- function(missionProfileId) {
   return(response)
 }
 .groundstation$operations$get_mission_profile <- groundstation_get_mission_profile
+
+#' Returns a satellite
+#'
+#' Returns a satellite.
+#'
+#' @usage
+#' groundstation_get_satellite(satelliteId)
+#'
+#' @param satelliteId &#91;required&#93; UUID of a satellite.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_satellite(
+#'   satelliteId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname groundstation_get_satellite
+groundstation_get_satellite <- function(satelliteId) {
+  op <- new_operation(
+    name = "GetSatellite",
+    http_method = "GET",
+    http_path = "/satellite/{satelliteId}",
+    paginator = list()
+  )
+  input <- .groundstation$get_satellite_input(satelliteId = satelliteId)
+  output <- .groundstation$get_satellite_output()
+  config <- get_config()
+  svc <- .groundstation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.groundstation$operations$get_satellite <- groundstation_get_satellite
 
 #' Returns a list of Config objects
 #'
@@ -574,7 +649,7 @@ groundstation_list_configs <- function(maxResults = NULL, nextToken = NULL) {
 #' Returns a list of contacts.
 #' 
 #' If `statusList` contains AVAILABLE, the request must include
-#' `groundstation`, `missionprofileArn`, and `satelliteArn`.
+#' `groundStation`, `missionprofileArn`, and `satelliteArn`.
 #'
 #' @usage
 #' groundstation_list_contacts(endTime, groundStation, maxResults,
@@ -605,7 +680,7 @@ groundstation_list_configs <- function(maxResults = NULL, nextToken = NULL) {
 #'     "2015-01-01"
 #'   ),
 #'   statusList = list(
-#'     "AVAILABLE"|"AWS_CANCELLED"|"CANCELLED"|"COMPLETED"|"FAILED"|"FAILED_TO_SCHEDULE"|"PASS"|"POSTPASS"|"PREPASS"|"SCHEDULED"|"SCHEDULING"
+#'     "AVAILABLE"|"AWS_CANCELLED"|"CANCELLED"|"CANCELLING"|"COMPLETED"|"FAILED"|"FAILED_TO_SCHEDULE"|"PASS"|"POSTPASS"|"PREPASS"|"SCHEDULED"|"SCHEDULING"
 #'   )
 #' )
 #' ```
@@ -669,6 +744,47 @@ groundstation_list_dataflow_endpoint_groups <- function(maxResults = NULL, nextT
 }
 .groundstation$operations$list_dataflow_endpoint_groups <- groundstation_list_dataflow_endpoint_groups
 
+#' Returns a list of ground stations
+#'
+#' Returns a list of ground stations.
+#'
+#' @usage
+#' groundstation_list_ground_stations(maxResults, nextToken, satelliteId)
+#'
+#' @param maxResults Maximum number of ground stations returned.
+#' @param nextToken Next token that can be supplied in the next call to get the next page of
+#' ground stations.
+#' @param satelliteId Satellite ID to retrieve on-boarded ground stations.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_ground_stations(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   satelliteId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname groundstation_list_ground_stations
+groundstation_list_ground_stations <- function(maxResults = NULL, nextToken = NULL, satelliteId = NULL) {
+  op <- new_operation(
+    name = "ListGroundStations",
+    http_method = "GET",
+    http_path = "/groundstation",
+    paginator = list()
+  )
+  input <- .groundstation$list_ground_stations_input(maxResults = maxResults, nextToken = nextToken, satelliteId = satelliteId)
+  output <- .groundstation$list_ground_stations_output()
+  config <- get_config()
+  svc <- .groundstation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.groundstation$operations$list_ground_stations <- groundstation_list_ground_stations
+
 #' Returns a list of mission profiles
 #'
 #' Returns a list of mission profiles.
@@ -707,6 +823,81 @@ groundstation_list_mission_profiles <- function(maxResults = NULL, nextToken = N
   return(response)
 }
 .groundstation$operations$list_mission_profiles <- groundstation_list_mission_profiles
+
+#' Returns a list of satellites
+#'
+#' Returns a list of satellites.
+#'
+#' @usage
+#' groundstation_list_satellites(maxResults, nextToken)
+#'
+#' @param maxResults Maximum number of satellites returned.
+#' @param nextToken Next token that can be supplied in the next call to get the next page of
+#' satellites.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_satellites(
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname groundstation_list_satellites
+groundstation_list_satellites <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSatellites",
+    http_method = "GET",
+    http_path = "/satellite",
+    paginator = list()
+  )
+  input <- .groundstation$list_satellites_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .groundstation$list_satellites_output()
+  config <- get_config()
+  svc <- .groundstation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.groundstation$operations$list_satellites <- groundstation_list_satellites
+
+#' Returns a list of tags for a specified resource
+#'
+#' Returns a list of tags for a specified resource.
+#'
+#' @usage
+#' groundstation_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; ARN of a resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname groundstation_list_tags_for_resource
+groundstation_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .groundstation$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .groundstation$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .groundstation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.groundstation$operations$list_tags_for_resource <- groundstation_list_tags_for_resource
 
 #' Reserves a contact using specified parameters
 #'
@@ -761,358 +952,6 @@ groundstation_reserve_contact <- function(endTime, groundStation, missionProfile
 }
 .groundstation$operations$reserve_contact <- groundstation_reserve_contact
 
-#' Updates the Config used when scheduling contacts
-#'
-#' Updates the `Config` used when scheduling contacts.
-#' 
-#' Updating a `Config` will not update the execution parameters for
-#' existing future contacts scheduled with this `Config`.
-#'
-#' @usage
-#' groundstation_update_config(configData, configId, configType, name)
-#'
-#' @param configData &#91;required&#93; Parameters for a `Config`.
-#' @param configId &#91;required&#93; UUID of a `Config`.
-#' @param configType &#91;required&#93; Type of a `Config`.
-#' @param name &#91;required&#93; Name of a `Config`.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_config(
-#'   configData = list(
-#'     antennaDownlinkConfig = list(
-#'       spectrumConfig = list(
-#'         bandwidth = list(
-#'           units = "GHz"|"MHz"|"kHz",
-#'           value = 123.0
-#'         ),
-#'         centerFrequency = list(
-#'           units = "GHz"|"MHz"|"kHz",
-#'           value = 123.0
-#'         ),
-#'         polarization = "LEFT_HAND"|"NONE"|"RIGHT_HAND"
-#'       )
-#'     ),
-#'     antennaDownlinkDemodDecodeConfig = list(
-#'       decodeConfig = list(
-#'         unvalidatedJSON = "string"
-#'       ),
-#'       demodulationConfig = list(
-#'         unvalidatedJSON = "string"
-#'       ),
-#'       spectrumConfig = list(
-#'         bandwidth = list(
-#'           units = "GHz"|"MHz"|"kHz",
-#'           value = 123.0
-#'         ),
-#'         centerFrequency = list(
-#'           units = "GHz"|"MHz"|"kHz",
-#'           value = 123.0
-#'         ),
-#'         polarization = "LEFT_HAND"|"NONE"|"RIGHT_HAND"
-#'       )
-#'     ),
-#'     antennaUplinkConfig = list(
-#'       spectrumConfig = list(
-#'         centerFrequency = list(
-#'           units = "GHz"|"MHz"|"kHz",
-#'           value = 123.0
-#'         ),
-#'         polarization = "LEFT_HAND"|"NONE"|"RIGHT_HAND"
-#'       ),
-#'       targetEirp = list(
-#'         units = "dBW",
-#'         value = 123.0
-#'       )
-#'     ),
-#'     dataflowEndpointConfig = list(
-#'       dataflowEndpointName = "string"
-#'     ),
-#'     trackingConfig = list(
-#'       autotrack = "PREFERRED"|"REMOVED"|"REQUIRED"
-#'     ),
-#'     uplinkEchoConfig = list(
-#'       antennaUplinkConfigArn = "string",
-#'       enabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   configId = "string",
-#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo",
-#'   name = "string"
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname groundstation_update_config
-groundstation_update_config <- function(configData, configId, configType, name) {
-  op <- new_operation(
-    name = "UpdateConfig",
-    http_method = "PUT",
-    http_path = "/config/{configType}/{configId}",
-    paginator = list()
-  )
-  input <- .groundstation$update_config_input(configData = configData, configId = configId, configType = configType, name = name)
-  output <- .groundstation$update_config_output()
-  config <- get_config()
-  svc <- .groundstation$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.groundstation$operations$update_config <- groundstation_update_config
-
-#' Updates a mission profile
-#'
-#' Updates a mission profile.
-#' 
-#' Updating a mission profile will not update the execution parameters for
-#' existing future contacts.
-#'
-#' @usage
-#' groundstation_update_mission_profile(contactPostPassDurationSeconds,
-#'   contactPrePassDurationSeconds, dataflowEdges,
-#'   minimumViableContactDurationSeconds, missionProfileId, name,
-#'   trackingConfigArn)
-#'
-#' @param contactPostPassDurationSeconds Amount of time after a contact ends that you'd like to receive a
-#' CloudWatch event indicating the pass has finished.
-#' @param contactPrePassDurationSeconds Amount of time after a contact ends that you'd like to receive a
-#' CloudWatch event indicating the pass has finished.
-#' @param dataflowEdges A list of lists of ARNs. Each list of ARNs is an edge, with a from
-#' `Config` and a to `Config`.
-#' @param minimumViableContactDurationSeconds Smallest amount of time in seconds that you'd like to see for an
-#' available contact. AWS Ground Station will not present you with contacts
-#' shorter than this duration.
-#' @param missionProfileId &#91;required&#93; ID of a mission profile.
-#' @param name Name of a mission profile.
-#' @param trackingConfigArn ARN of a tracking `Config`.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_mission_profile(
-#'   contactPostPassDurationSeconds = 123,
-#'   contactPrePassDurationSeconds = 123,
-#'   dataflowEdges = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   minimumViableContactDurationSeconds = 123,
-#'   missionProfileId = "string",
-#'   name = "string",
-#'   trackingConfigArn = "string"
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname groundstation_update_mission_profile
-groundstation_update_mission_profile <- function(contactPostPassDurationSeconds = NULL, contactPrePassDurationSeconds = NULL, dataflowEdges = NULL, minimumViableContactDurationSeconds = NULL, missionProfileId, name = NULL, trackingConfigArn = NULL) {
-  op <- new_operation(
-    name = "UpdateMissionProfile",
-    http_method = "PUT",
-    http_path = "/missionprofile/{missionProfileId}",
-    paginator = list()
-  )
-  input <- .groundstation$update_mission_profile_input(contactPostPassDurationSeconds = contactPostPassDurationSeconds, contactPrePassDurationSeconds = contactPrePassDurationSeconds, dataflowEdges = dataflowEdges, minimumViableContactDurationSeconds = minimumViableContactDurationSeconds, missionProfileId = missionProfileId, name = name, trackingConfigArn = trackingConfigArn)
-  output <- .groundstation$update_mission_profile_output()
-  config <- get_config()
-  svc <- .groundstation$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.groundstation$operations$update_mission_profile <- groundstation_update_mission_profile
-
-#' Returns the number of minutes used by account
-#'
-#' Returns the number of minutes used by account.
-#'
-#' @usage
-#' groundstation_get_minute_usage(month, year)
-#'
-#' @param month &#91;required&#93; The month being requested, with a value of 1-12.
-#' @param year &#91;required&#93; The year being requested, in the format of YYYY.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_minute_usage(
-#'   month = 123,
-#'   year = 123
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname groundstation_get_minute_usage
-groundstation_get_minute_usage <- function(month, year) {
-  op <- new_operation(
-    name = "GetMinuteUsage",
-    http_method = "POST",
-    http_path = "/minute-usage",
-    paginator = list()
-  )
-  input <- .groundstation$get_minute_usage_input(month = month, year = year)
-  output <- .groundstation$get_minute_usage_output()
-  config <- get_config()
-  svc <- .groundstation$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.groundstation$operations$get_minute_usage <- groundstation_get_minute_usage
-
-#' Returns a satellite
-#'
-#' Returns a satellite.
-#'
-#' @usage
-#' groundstation_get_satellite(satelliteId)
-#'
-#' @param satelliteId &#91;required&#93; UUID of a satellite.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_satellite(
-#'   satelliteId = "string"
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname groundstation_get_satellite
-groundstation_get_satellite <- function(satelliteId) {
-  op <- new_operation(
-    name = "GetSatellite",
-    http_method = "GET",
-    http_path = "/satellite/{satelliteId}",
-    paginator = list()
-  )
-  input <- .groundstation$get_satellite_input(satelliteId = satelliteId)
-  output <- .groundstation$get_satellite_output()
-  config <- get_config()
-  svc <- .groundstation$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.groundstation$operations$get_satellite <- groundstation_get_satellite
-
-#' Returns a list of ground stations
-#'
-#' Returns a list of ground stations.
-#'
-#' @usage
-#' groundstation_list_ground_stations(maxResults, nextToken)
-#'
-#' @param maxResults Maximum number of ground stations returned.
-#' @param nextToken Next token that can be supplied in the next call to get the next page of
-#' ground stations.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_ground_stations(
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname groundstation_list_ground_stations
-groundstation_list_ground_stations <- function(maxResults = NULL, nextToken = NULL) {
-  op <- new_operation(
-    name = "ListGroundStations",
-    http_method = "GET",
-    http_path = "/groundstation",
-    paginator = list()
-  )
-  input <- .groundstation$list_ground_stations_input(maxResults = maxResults, nextToken = nextToken)
-  output <- .groundstation$list_ground_stations_output()
-  config <- get_config()
-  svc <- .groundstation$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.groundstation$operations$list_ground_stations <- groundstation_list_ground_stations
-
-#' Returns a list of satellites
-#'
-#' Returns a list of satellites.
-#'
-#' @usage
-#' groundstation_list_satellites(maxResults, nextToken)
-#'
-#' @param maxResults Maximum number of satellites returned.
-#' @param nextToken Next token that can be supplied in the next call to get the next page of
-#' satellites.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_satellites(
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname groundstation_list_satellites
-groundstation_list_satellites <- function(maxResults = NULL, nextToken = NULL) {
-  op <- new_operation(
-    name = "ListSatellites",
-    http_method = "GET",
-    http_path = "/satellite",
-    paginator = list()
-  )
-  input <- .groundstation$list_satellites_input(maxResults = maxResults, nextToken = nextToken)
-  output <- .groundstation$list_satellites_output()
-  config <- get_config()
-  svc <- .groundstation$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.groundstation$operations$list_satellites <- groundstation_list_satellites
-
-#' Returns a list of tags or a specified resource
-#'
-#' Returns a list of tags or a specified resource.
-#'
-#' @usage
-#' groundstation_list_tags_for_resource(resourceArn)
-#'
-#' @param resourceArn &#91;required&#93; ARN of a resource.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   resourceArn = "string"
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname groundstation_list_tags_for_resource
-groundstation_list_tags_for_resource <- function(resourceArn) {
-  op <- new_operation(
-    name = "ListTagsForResource",
-    http_method = "GET",
-    http_path = "/tags/{resourceArn}",
-    paginator = list()
-  )
-  input <- .groundstation$list_tags_for_resource_input(resourceArn = resourceArn)
-  output <- .groundstation$list_tags_for_resource_output()
-  config <- get_config()
-  svc <- .groundstation$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.groundstation$operations$list_tags_for_resource <- groundstation_list_tags_for_resource
-
 #' Assigns a tag to a resource
 #'
 #' Assigns a tag to a resource.
@@ -1121,7 +960,7 @@ groundstation_list_tags_for_resource <- function(resourceArn) {
 #' groundstation_tag_resource(resourceArn, tags)
 #'
 #' @param resourceArn &#91;required&#93; ARN of a resource tag.
-#' @param tags Tags assigned to a resource.
+#' @param tags &#91;required&#93; Tags assigned to a resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -1136,7 +975,7 @@ groundstation_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname groundstation_tag_resource
-groundstation_tag_resource <- function(resourceArn, tags = NULL) {
+groundstation_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
     http_method = "POST",
@@ -1192,3 +1031,168 @@ groundstation_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .groundstation$operations$untag_resource <- groundstation_untag_resource
+
+#' Updates the Config used when scheduling contacts
+#'
+#' Updates the `Config` used when scheduling contacts.
+#' 
+#' Updating a `Config` will not update the execution parameters for
+#' existing future contacts scheduled with this `Config`.
+#'
+#' @usage
+#' groundstation_update_config(configData, configId, configType, name)
+#'
+#' @param configData &#91;required&#93; Parameters of a `Config`.
+#' @param configId &#91;required&#93; UUID of a `Config`.
+#' @param configType &#91;required&#93; Type of a `Config`.
+#' @param name &#91;required&#93; Name of a `Config`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_config(
+#'   configData = list(
+#'     antennaDownlinkConfig = list(
+#'       spectrumConfig = list(
+#'         bandwidth = list(
+#'           units = "GHz"|"MHz"|"kHz",
+#'           value = 123.0
+#'         ),
+#'         centerFrequency = list(
+#'           units = "GHz"|"MHz"|"kHz",
+#'           value = 123.0
+#'         ),
+#'         polarization = "LEFT_HAND"|"NONE"|"RIGHT_HAND"
+#'       )
+#'     ),
+#'     antennaDownlinkDemodDecodeConfig = list(
+#'       decodeConfig = list(
+#'         unvalidatedJSON = "string"
+#'       ),
+#'       demodulationConfig = list(
+#'         unvalidatedJSON = "string"
+#'       ),
+#'       spectrumConfig = list(
+#'         bandwidth = list(
+#'           units = "GHz"|"MHz"|"kHz",
+#'           value = 123.0
+#'         ),
+#'         centerFrequency = list(
+#'           units = "GHz"|"MHz"|"kHz",
+#'           value = 123.0
+#'         ),
+#'         polarization = "LEFT_HAND"|"NONE"|"RIGHT_HAND"
+#'       )
+#'     ),
+#'     antennaUplinkConfig = list(
+#'       spectrumConfig = list(
+#'         centerFrequency = list(
+#'           units = "GHz"|"MHz"|"kHz",
+#'           value = 123.0
+#'         ),
+#'         polarization = "LEFT_HAND"|"NONE"|"RIGHT_HAND"
+#'       ),
+#'       targetEirp = list(
+#'         units = "dBW",
+#'         value = 123.0
+#'       )
+#'     ),
+#'     dataflowEndpointConfig = list(
+#'       dataflowEndpointName = "string",
+#'       dataflowEndpointRegion = "string"
+#'     ),
+#'     trackingConfig = list(
+#'       autotrack = "PREFERRED"|"REMOVED"|"REQUIRED"
+#'     ),
+#'     uplinkEchoConfig = list(
+#'       antennaUplinkConfigArn = "string",
+#'       enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   configId = "string",
+#'   configType = "antenna-downlink"|"antenna-downlink-demod-decode"|"antenna-uplink"|"dataflow-endpoint"|"tracking"|"uplink-echo",
+#'   name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname groundstation_update_config
+groundstation_update_config <- function(configData, configId, configType, name) {
+  op <- new_operation(
+    name = "UpdateConfig",
+    http_method = "PUT",
+    http_path = "/config/{configType}/{configId}",
+    paginator = list()
+  )
+  input <- .groundstation$update_config_input(configData = configData, configId = configId, configType = configType, name = name)
+  output <- .groundstation$update_config_output()
+  config <- get_config()
+  svc <- .groundstation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.groundstation$operations$update_config <- groundstation_update_config
+
+#' Updates a mission profile
+#'
+#' Updates a mission profile.
+#' 
+#' Updating a mission profile will not update the execution parameters for
+#' existing future contacts.
+#'
+#' @usage
+#' groundstation_update_mission_profile(contactPostPassDurationSeconds,
+#'   contactPrePassDurationSeconds, dataflowEdges,
+#'   minimumViableContactDurationSeconds, missionProfileId, name,
+#'   trackingConfigArn)
+#'
+#' @param contactPostPassDurationSeconds Amount of time after a contact ends that you'd like to receive a
+#' CloudWatch event indicating the pass has finished.
+#' @param contactPrePassDurationSeconds Amount of time after a contact ends that you'd like to receive a
+#' CloudWatch event indicating the pass has finished.
+#' @param dataflowEdges A list of lists of ARNs. Each list of ARNs is an edge, with a *from*
+#' `Config` and a *to* `Config`.
+#' @param minimumViableContactDurationSeconds Smallest amount of time in seconds that you'd like to see for an
+#' available contact. AWS Ground Station will not present you with contacts
+#' shorter than this duration.
+#' @param missionProfileId &#91;required&#93; UUID of a mission profile.
+#' @param name Name of a mission profile.
+#' @param trackingConfigArn ARN of a tracking `Config`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_mission_profile(
+#'   contactPostPassDurationSeconds = 123,
+#'   contactPrePassDurationSeconds = 123,
+#'   dataflowEdges = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   minimumViableContactDurationSeconds = 123,
+#'   missionProfileId = "string",
+#'   name = "string",
+#'   trackingConfigArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname groundstation_update_mission_profile
+groundstation_update_mission_profile <- function(contactPostPassDurationSeconds = NULL, contactPrePassDurationSeconds = NULL, dataflowEdges = NULL, minimumViableContactDurationSeconds = NULL, missionProfileId, name = NULL, trackingConfigArn = NULL) {
+  op <- new_operation(
+    name = "UpdateMissionProfile",
+    http_method = "PUT",
+    http_path = "/missionprofile/{missionProfileId}",
+    paginator = list()
+  )
+  input <- .groundstation$update_mission_profile_input(contactPostPassDurationSeconds = contactPostPassDurationSeconds, contactPrePassDurationSeconds = contactPrePassDurationSeconds, dataflowEdges = dataflowEdges, minimumViableContactDurationSeconds = minimumViableContactDurationSeconds, missionProfileId = missionProfileId, name = name, trackingConfigArn = trackingConfigArn)
+  output <- .groundstation$update_mission_profile_output()
+  config <- get_config()
+  svc <- .groundstation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.groundstation$operations$update_mission_profile <- groundstation_update_mission_profile

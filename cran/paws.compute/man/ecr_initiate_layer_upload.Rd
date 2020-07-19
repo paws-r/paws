@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_initiate_layer_upload}
 \alias{ecr_initiate_layer_upload}
-\title{Notify Amazon ECR that you intend to upload an image layer}
+\title{Notifies Amazon ECR that you intend to upload an image layer}
 \usage{
 ecr_initiate_layer_upload(registryId, repositoryName)
 }
@@ -14,12 +14,17 @@ assumed.}
 \item{repositoryName}{[required] The name of the repository to which you intend to upload layers.}
 }
 \description{
-Notify Amazon ECR that you intend to upload an image layer.
+Notifies Amazon ECR that you intend to upload an image layer.
 }
 \details{
-This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers for pulling and pushing images. In most
-cases, you should use the \code{docker} CLI to pull, tag, and push images.
+When an image is pushed, the InitiateLayerUpload API is called once per
+image layer that has not already been uploaded. Whether or not an image
+layer has been uploaded is determined by the BatchCheckLayerAvailability
+API action.
+
+This operation is used by the Amazon ECR proxy and is not generally used
+by customers for pulling and pushing images. In most cases, you should
+use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
 \preformatted{svc$initiate_layer_upload(

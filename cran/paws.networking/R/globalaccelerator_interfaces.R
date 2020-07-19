@@ -3,9 +3,21 @@
 #' @include globalaccelerator_service.R
 NULL
 
+.globalaccelerator$advertise_byoip_cidr_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$advertise_byoip_cidr_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ByoipCidr = structure(list(Cidr = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Events = structure(list(structure(list(Message = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .globalaccelerator$create_accelerator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), IdempotencyToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), IpAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Enabled = structure(logical(0), tags = list(type = "boolean")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -17,7 +29,7 @@ NULL
 
 .globalaccelerator$create_endpoint_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), EndpointConfigurations = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer")), IdempotencyToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), EndpointConfigurations = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -29,7 +41,7 @@ NULL
 
 .globalaccelerator$create_listener_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), PortRanges = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Protocol = structure(logical(0), tags = list(type = "string")), ClientAffinity = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), PortRanges = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Protocol = structure(logical(0), tags = list(type = "string")), ClientAffinity = structure(logical(0), tags = list(type = "string")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -67,6 +79,18 @@ NULL
 
 .globalaccelerator$delete_listener_output <- function(...) {
   list()
+}
+
+.globalaccelerator$deprovision_byoip_cidr_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$deprovision_byoip_cidr_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ByoipCidr = structure(list(Cidr = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Events = structure(list(structure(list(Message = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .globalaccelerator$describe_accelerator_input <- function(...) {
@@ -129,6 +153,18 @@ NULL
   return(populate(args, shape))
 }
 
+.globalaccelerator$list_byoip_cidrs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$list_byoip_cidrs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ByoipCidrs = structure(list(structure(list(Cidr = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Events = structure(list(structure(list(Message = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .globalaccelerator$list_endpoint_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -150,6 +186,54 @@ NULL
 .globalaccelerator$list_listeners_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Listeners = structure(list(structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), PortRanges = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Protocol = structure(logical(0), tags = list(type = "string")), ClientAffinity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$provision_byoip_cidr_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Cidr = structure(logical(0), tags = list(type = "string")), CidrAuthorizationContext = structure(list(Message = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$provision_byoip_cidr_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ByoipCidr = structure(list(Cidr = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Events = structure(list(structure(list(Message = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -198,5 +282,17 @@ NULL
 .globalaccelerator$update_listener_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Listener = structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), PortRanges = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), Protocol = structure(logical(0), tags = list(type = "string")), ClientAffinity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$withdraw_byoip_cidr_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$withdraw_byoip_cidr_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ByoipCidr = structure(list(Cidr = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Events = structure(list(structure(list(Message = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

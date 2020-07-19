@@ -20,7 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a data feed for Spot Instances, enabling you to view Spot
 Instance usage logs. You can create one data feed per AWS account. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance Data Feed}
+more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance data feed}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }
 \section{Request syntax}{

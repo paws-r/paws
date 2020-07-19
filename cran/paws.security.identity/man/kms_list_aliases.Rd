@@ -45,7 +45,7 @@ AWS aliases because their names have the format
 The response might also include aliases that have no \code{TargetKeyId}
 field. These are predefined aliases that AWS has created but has not yet
 associated with a CMK. Aliases that AWS creates in your account,
-including predefined aliases, do not count against your \href{https://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit}{AWS KMS aliases limit}.
+including predefined aliases, do not count against your \href{https://docs.aws.amazon.com/kms/latest/developerguide/limits.html#aliases-limit}{AWS KMS aliases quota}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_aliases(

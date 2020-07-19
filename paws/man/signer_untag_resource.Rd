@@ -2,18 +2,18 @@
 % Please edit documentation in R/signer_operations.R
 \name{signer_untag_resource}
 \alias{signer_untag_resource}
-\title{Remove one or more tags from a signing profile}
+\title{Removes one or more tags from a signing profile}
 \usage{
 signer_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] Amazon Resource Name (ARN) for the signing profile .}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) for the signing profile.}
 
-\item{tagKeys}{[required] A list of tag keys to be removed from the signing profile .}
+\item{tagKeys}{[required] A list of tag keys to be removed from the signing profile.}
 }
 \description{
-Remove one or more tags from a signing profile. Specify a list of tag
-keys to remove the tags.
+Removes one or more tags from a signing profile. To remove the tags,
+specify a list of tag keys.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

@@ -8,7 +8,8 @@ cloudwatch_disable_insight_rules(RuleNames)
 }
 \arguments{
 \item{RuleNames}{[required] An array of the rule names to disable. If you need to find out the names
-of your rules, use DescribeInsightRules.}
+of your rules, use
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html}{DescribeInsightRules}.}
 }
 \description{
 Disables the specified Contributor Insights rules. When rules are

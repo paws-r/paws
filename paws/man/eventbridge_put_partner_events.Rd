@@ -12,12 +12,7 @@ eventbridge_put_partner_events(Entries)
 }
 \description{
 This is used by SaaS partners to write events to a customer\'s partner
-event bus.
-}
-\details{
-AWS customers do not use this operation. Instead, AWS customers can use
-PutEvents to write custom events from their own applications to an event
-bus.
+event bus. AWS customers do not use this operation.
 }
 \section{Request syntax}{
 \preformatted{svc$put_partner_events(

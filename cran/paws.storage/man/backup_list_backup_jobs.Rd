@@ -5,7 +5,8 @@
 \title{Returns metadata about your backup jobs}
 \usage{
 backup_list_backup_jobs(NextToken, MaxResults, ByResourceArn, ByState,
-  ByBackupVaultName, ByCreatedBefore, ByCreatedAfter, ByResourceType)
+  ByBackupVaultName, ByCreatedBefore, ByCreatedAfter, ByResourceType,
+  ByAccountId)
 }
 \arguments{
 \item{NextToken}{The next item following a partial list of returned items. For example,
@@ -31,12 +32,16 @@ They consist of lowercase letters, numbers, and hyphens.}
 
 \item{ByResourceType}{Returns only backup jobs for the specified resources:
 \itemize{
+\item \code{DynamoDB} for Amazon DynamoDB
 \item \code{EBS} for Amazon Elastic Block Store
-\item \code{SGW} for AWS Storage Gateway
-\item \code{RDS} for Amazon Relational Database Service
-\item \code{DDB} for Amazon DynamoDB
+\item \code{EC2} for Amazon Elastic Compute Cloud
 \item \code{EFS} for Amazon Elastic File System
+\item \code{RDS} for Amazon Relational Database Service
+\item \verb{Storage Gateway} for AWS Storage Gateway
 }}
+
+\item{ByAccountId}{The account ID to list the jobs from. Returns only backup jobs
+associated with the specified account ID.}
 }
 \description{
 Returns metadata about your backup jobs.
@@ -54,7 +59,8 @@ Returns metadata about your backup jobs.
   ByCreatedAfter = as.POSIXct(
     "2015-01-01"
   ),
-  ByResourceType = "string"
+  ByResourceType = "string",
+  ByAccountId = "string"
 )
 }
 }

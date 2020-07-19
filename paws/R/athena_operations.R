@@ -97,6 +97,89 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 }
 .athena$operations$batch_get_query_execution <- athena_batch_get_query_execution
 
+#' Creates (registers) a data catalog with the specified name and
+#' properties
+#'
+#' Creates (registers) a data catalog with the specified name and
+#' properties. Catalogs created are visible to all users of the same AWS
+#' account.
+#'
+#' @usage
+#' athena_create_data_catalog(Name, Type, Description, Parameters, Tags)
+#'
+#' @param Name &#91;required&#93; The name of the data catalog to create. The catalog name must be unique
+#' for the AWS account and can use a maximum of 128 alphanumeric,
+#' underscore, at sign, or hyphen characters.
+#' @param Type &#91;required&#93; The type of data catalog to create: `LAMBDA` for a federated catalog,
+#' `GLUE` for AWS Glue Catalog, or `HIVE` for an external hive metastore.
+#' @param Description A description of the data catalog to be created.
+#' @param Parameters Specifies the Lambda function or functions to use for creating the data
+#' catalog. This is a mapping whose values depend on the catalog type.
+#' 
+#' -   For the `HIVE` data catalog type, use the following syntax. The
+#'     `metadata-function` parameter is required. `The sdk-version`
+#'     parameter is optional and defaults to the currently supported
+#'     version.
+#' 
+#'     `metadata-function=<i>lambda_arn</i>, sdk-version=<i>version_number</i> `
+#' 
+#' -   For the `LAMBDA` data catalog type, use one of the following sets of
+#'     required parameters, but not both.
+#' 
+#'     -   If you have one Lambda function that processes metadata and
+#'         another for reading the actual data, use the following syntax.
+#'         Both parameters are required.
+#' 
+#'         `metadata-function=<i>lambda_arn</i>, record-function=<i>lambda_arn</i> `
+#' 
+#'     -   If you have a composite Lambda function that processes both
+#'         metadata and data, use the following syntax to specify your
+#'         Lambda function.
+#' 
+#'         `function=<i>lambda_arn</i> `
+#' 
+#' -   The `GLUE` type has no parameters.
+#' @param Tags A list of comma separated tags to add to the data catalog that is
+#' created.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_data_catalog(
+#'   Name = "string",
+#'   Type = "LAMBDA"|"GLUE"|"HIVE",
+#'   Description = "string",
+#'   Parameters = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_create_data_catalog
+athena_create_data_catalog <- function(Name, Type, Description = NULL, Parameters = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateDataCatalog",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$create_data_catalog_input(Name = Name, Type = Type, Description = Description, Parameters = Parameters, Tags = Tags)
+  output <- .athena$create_data_catalog_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$create_data_catalog <- athena_create_data_catalog
+
 #' Creates a named query in the specified workgroup
 #'
 #' Creates a named query in the specified workgroup. Requires that you have
@@ -175,8 +258,7 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
 #' WorkGroupConfiguration override client-side settings. See
 #' WorkGroupConfiguration\\$EnforceWorkGroupConfiguration.
 #' @param Description The workgroup description.
-#' @param Tags One or more tags, separated by commas, that you want to attach to the
-#' workgroup as you create it.
+#' @param Tags A list of comma separated tags to add to the workgroup that is created.
 #'
 #' @section Request syntax:
 #' ```
@@ -224,6 +306,42 @@ athena_create_work_group <- function(Name, Configuration = NULL, Description = N
   return(response)
 }
 .athena$operations$create_work_group <- athena_create_work_group
+
+#' Deletes a data catalog
+#'
+#' Deletes a data catalog.
+#'
+#' @usage
+#' athena_delete_data_catalog(Name)
+#'
+#' @param Name &#91;required&#93; The name of the data catalog to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_data_catalog(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_delete_data_catalog
+athena_delete_data_catalog <- function(Name) {
+  op <- new_operation(
+    name = "DeleteDataCatalog",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$delete_data_catalog_input(Name = Name)
+  output <- .athena$delete_data_catalog_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$delete_data_catalog <- athena_delete_data_catalog
 
 #' Deletes the named query if you have access to the workgroup in which the
 #' query was saved
@@ -306,6 +424,80 @@ athena_delete_work_group <- function(WorkGroup, RecursiveDeleteOption = NULL) {
   return(response)
 }
 .athena$operations$delete_work_group <- athena_delete_work_group
+
+#' Returns the specified data catalog
+#'
+#' Returns the specified data catalog.
+#'
+#' @usage
+#' athena_get_data_catalog(Name)
+#'
+#' @param Name &#91;required&#93; The name of the data catalog to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_data_catalog(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_data_catalog
+athena_get_data_catalog <- function(Name) {
+  op <- new_operation(
+    name = "GetDataCatalog",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_data_catalog_input(Name = Name)
+  output <- .athena$get_data_catalog_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_data_catalog <- athena_get_data_catalog
+
+#' Returns a database object for the specfied database and data catalog
+#'
+#' Returns a database object for the specfied database and data catalog.
+#'
+#' @usage
+#' athena_get_database(CatalogName, DatabaseName)
+#'
+#' @param CatalogName &#91;required&#93; The name of the data catalog that contains the database to return.
+#' @param DatabaseName &#91;required&#93; The name of the database to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_database(
+#'   CatalogName = "string",
+#'   DatabaseName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_database
+athena_get_database <- function(CatalogName, DatabaseName) {
+  op <- new_operation(
+    name = "GetDatabase",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_database_input(CatalogName = CatalogName, DatabaseName = DatabaseName)
+  output <- .athena$get_database_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_database <- athena_get_database
 
 #' Returns information about a single query
 #'
@@ -408,8 +600,10 @@ athena_get_query_execution <- function(QueryExecutionId) {
 #' athena_get_query_results(QueryExecutionId, NextToken, MaxResults)
 #'
 #' @param QueryExecutionId &#91;required&#93; The unique ID of the query execution.
-#' @param NextToken The token that specifies where to start pagination if a previous request
-#' was truncated.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the `NextToken` from the response object of the
+#' previous page call.
 #' @param MaxResults The maximum number of results (rows) to return in this request.
 #'
 #' @section Request syntax:
@@ -440,6 +634,47 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
   return(response)
 }
 .athena$operations$get_query_results <- athena_get_query_results
+
+#' Returns table metadata for the specified catalog, database, and table
+#'
+#' Returns table metadata for the specified catalog, database, and table.
+#'
+#' @usage
+#' athena_get_table_metadata(CatalogName, DatabaseName, TableName)
+#'
+#' @param CatalogName &#91;required&#93; The name of the data catalog that contains the database and table
+#' metadata to return.
+#' @param DatabaseName &#91;required&#93; The name of the database that contains the table metadata to return.
+#' @param TableName &#91;required&#93; The name of the table for which metadata is returned.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_table_metadata(
+#'   CatalogName = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_get_table_metadata
+athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName) {
+  op <- new_operation(
+    name = "GetTableMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$get_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, TableName = TableName)
+  output <- .athena$get_table_metadata_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$get_table_metadata <- athena_get_table_metadata
 
 #' Returns information about the workgroup with the specified name
 #'
@@ -477,11 +712,97 @@ athena_get_work_group <- function(WorkGroup) {
 }
 .athena$operations$get_work_group <- athena_get_work_group
 
+#' Lists the data catalogs in the current AWS account
+#'
+#' Lists the data catalogs in the current AWS account.
+#'
+#' @usage
+#' athena_list_data_catalogs(NextToken, MaxResults)
+#'
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the NextToken from the response object of the previous
+#' page call.
+#' @param MaxResults Specifies the maximum number of data catalogs to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_data_catalogs(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_data_catalogs
+athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListDataCatalogs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_data_catalogs_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .athena$list_data_catalogs_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_data_catalogs <- athena_list_data_catalogs
+
+#' Lists the databases in the specified data catalog
+#'
+#' Lists the databases in the specified data catalog.
+#'
+#' @usage
+#' athena_list_databases(CatalogName, NextToken, MaxResults)
+#'
+#' @param CatalogName &#91;required&#93; The name of the data catalog that contains the databases to return.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the `NextToken` from the response object of the
+#' previous page call.
+#' @param MaxResults Specifies the maximum number of results to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_databases(
+#'   CatalogName = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_databases
+athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListDatabases",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_databases_input(CatalogName = CatalogName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .athena$list_databases_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_databases <- athena_list_databases
+
 #' Provides a list of available query IDs only for queries saved in the
 #' specified workgroup
 #'
 #' Provides a list of available query IDs only for queries saved in the
-#' specified workgroup. Requires that you have access to the workgroup.
+#' specified workgroup. Requires that you have access to the specified
+#' workgroup. If a workgroup is not specified, lists the saved queries for
+#' the primary workgroup.
 #' 
 #' For code samples using the AWS SDK for Java, see [Examples and Code
 #' Samples](http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
@@ -490,11 +811,14 @@ athena_get_work_group <- function(WorkGroup) {
 #' @usage
 #' athena_list_named_queries(NextToken, MaxResults, WorkGroup)
 #'
-#' @param NextToken The token that specifies where to start pagination if a previous request
-#' was truncated.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the `NextToken` from the response object of the
+#' previous page call.
 #' @param MaxResults The maximum number of queries to return in this request.
 #' @param WorkGroup The name of the workgroup from which the named queries are being
-#' returned.
+#' returned. If a workgroup is not specified, the saved queries for the
+#' primary workgroup are returned.
 #'
 #' @section Request syntax:
 #' ```
@@ -529,8 +853,9 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
 #' specified workgroup
 #'
 #' Provides a list of available query execution IDs for the queries in the
-#' specified workgroup. Requires you to have access to the workgroup in
-#' which the queries ran.
+#' specified workgroup. If a workgroup is not specified, returns a list of
+#' query execution IDs for the primary workgroup. Requires you to have
+#' access to the workgroup in which the queries ran.
 #' 
 #' For code samples using the AWS SDK for Java, see [Examples and Code
 #' Samples](http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
@@ -539,10 +864,14 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
 #' @usage
 #' athena_list_query_executions(NextToken, MaxResults, WorkGroup)
 #'
-#' @param NextToken The token that specifies where to start pagination if a previous request
-#' was truncated.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the `NextToken` from the response object of the
+#' previous page call.
 #' @param MaxResults The maximum number of query executions to return in this request.
-#' @param WorkGroup The name of the workgroup from which queries are being returned.
+#' @param WorkGroup The name of the workgroup from which queries are being returned. If a
+#' workgroup is not specified, a list of available query execution IDs for
+#' the queries in the primary workgroup is returned.
 #'
 #' @section Request syntax:
 #' ```
@@ -573,19 +902,72 @@ athena_list_query_executions <- function(NextToken = NULL, MaxResults = NULL, Wo
 }
 .athena$operations$list_query_executions <- athena_list_query_executions
 
-#' Lists the tags associated with this workgroup
+#' Lists the metadata for the tables in the specified data catalog database
 #'
-#' Lists the tags associated with this workgroup.
+#' Lists the metadata for the tables in the specified data catalog
+#' database.
+#'
+#' @usage
+#' athena_list_table_metadata(CatalogName, DatabaseName, Expression,
+#'   NextToken, MaxResults)
+#'
+#' @param CatalogName &#91;required&#93; The name of the data catalog for which table metadata should be
+#' returned.
+#' @param DatabaseName &#91;required&#93; The name of the database for which table metadata should be returned.
+#' @param Expression A regex filter that pattern-matches table names. If no expression is
+#' supplied, metadata for all tables are listed.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the NextToken from the response object of the previous
+#' page call.
+#' @param MaxResults Specifies the maximum number of results to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_table_metadata(
+#'   CatalogName = "string",
+#'   DatabaseName = "string",
+#'   Expression = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_list_table_metadata
+athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListTableMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$list_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .athena$list_table_metadata_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$list_table_metadata <- athena_list_table_metadata
+
+#' Lists the tags associated with an Athena workgroup or data catalog
+#' resource
+#'
+#' Lists the tags associated with an Athena workgroup or data catalog
+#' resource.
 #'
 #' @usage
 #' athena_list_tags_for_resource(ResourceARN, NextToken, MaxResults)
 #'
-#' @param ResourceARN &#91;required&#93; Lists the tags for the workgroup resource with the specified ARN.
+#' @param ResourceARN &#91;required&#93; Lists the tags for the resource with the specified ARN.
 #' @param NextToken The token for the next set of results, or null if there are no
 #' additional results for this request, where the request lists the tags
-#' for the workgroup resource with the specified ARN.
+#' for the resource with the specified ARN.
 #' @param MaxResults The maximum number of results to be returned per request that lists the
-#' tags for the workgroup resource.
+#' tags for the resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -623,7 +1005,10 @@ athena_list_tags_for_resource <- function(ResourceARN, NextToken = NULL, MaxResu
 #' @usage
 #' athena_list_work_groups(NextToken, MaxResults)
 #'
-#' @param NextToken A token to be used by the next request if this request is truncated.
+#' @param NextToken A token generated by the Athena service that specifies where to continue
+#' pagination if a previous request was truncated. To obtain the next set
+#' of pages, pass in the `NextToken` from the response object of the
+#' previous page call.
 #' @param MaxResults The maximum number of workgroups to return in this request.
 #'
 #' @section Request syntax:
@@ -657,9 +1042,10 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' Runs the SQL query statements contained in the Query
 #'
 #' Runs the SQL query statements contained in the `Query`. Requires you to
-#' have access to the workgroup in which the query ran.
-#' 
-#' For code samples using the AWS SDK for Java, see [Examples and Code
+#' have access to the workgroup in which the query ran. Running queries
+#' against an external catalog requires GetDataCatalog permission to the
+#' catalog. For code samples using the AWS SDK for Java, see [Examples and
+#' Code
 #' Samples](http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 #' in the *Amazon Athena User Guide*.
 #'
@@ -694,7 +1080,8 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #'   QueryString = "string",
 #'   ClientRequestToken = "string",
 #'   QueryExecutionContext = list(
-#'     Database = "string"
+#'     Database = "string",
+#'     Catalog = "string"
 #'   ),
 #'   ResultConfiguration = list(
 #'     OutputLocation = "string",
@@ -768,30 +1155,30 @@ athena_stop_query_execution <- function(QueryExecutionId) {
 }
 .athena$operations$stop_query_execution <- athena_stop_query_execution
 
-#' Adds one or more tags to the resource, such as a workgroup
+#' Adds one or more tags to an Athena resource
 #'
-#' Adds one or more tags to the resource, such as a workgroup. A tag is a
-#' label that you assign to an AWS Athena resource (a workgroup). Each tag
-#' consists of a key and an optional value, both of which you define. Tags
-#' enable you to categorize resources (workgroups) in Athena, for example,
-#' by purpose, owner, or environment. Use a consistent set of tag keys to
-#' make it easier to search and filter workgroups in your account. For best
-#' practices, see [AWS Tagging
-#' Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
-#' The key length is from 1 (minimum) to 128 (maximum) Unicode characters
-#' in UTF-8. The tag value length is from 0 (minimum) to 256 (maximum)
-#' Unicode characters in UTF-8. You can use letters and numbers
-#' representable in UTF-8, and the following characters: + - = . \\_ : / @@.
-#' Tag keys and values are case-sensitive. Tag keys must be unique per
-#' resource. If you specify more than one, separate them by commas.
+#' Adds one or more tags to an Athena resource. A tag is a label that you
+#' assign to a resource. In Athena, a resource can be a workgroup or data
+#' catalog. Each tag consists of a key and an optional value, both of which
+#' you define. For example, you can use tags to categorize Athena
+#' workgroups or data catalogs by purpose, owner, or environment. Use a
+#' consistent set of tag keys to make it easier to search and filter
+#' workgroups or data catalogs in your account. For best practices, see
+#' [Tagging Best
+#' Practices](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+#' Tag keys can be from 1 to 128 UTF-8 Unicode characters, and tag values
+#' can be from 0 to 256 UTF-8 Unicode characters. Tags can use letters and
+#' numbers representable in UTF-8, and the following characters: + - = . \\_
+#' : / @@. Tag keys and values are case-sensitive. Tag keys must be unique
+#' per resource. If you specify more than one tag, separate them by commas.
 #'
 #' @usage
 #' athena_tag_resource(ResourceARN, Tags)
 #'
-#' @param ResourceARN &#91;required&#93; Requests that one or more tags are added to the resource (such as a
-#' workgroup) for the specified ARN.
-#' @param Tags &#91;required&#93; One or more tags, separated by commas, to be added to the resource, such
-#' as a workgroup.
+#' @param ResourceARN &#91;required&#93; Specifies the ARN of the Athena resource (workgroup or data catalog) to
+#' which tags are to be added.
+#' @param Tags &#91;required&#93; A collection of one or more tags, separated by commas, to be added to an
+#' Athena workgroup or data catalog resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -826,19 +1213,16 @@ athena_tag_resource <- function(ResourceARN, Tags) {
 }
 .athena$operations$tag_resource <- athena_tag_resource
 
-#' Removes one or more tags from the workgroup resource
+#' Removes one or more tags from a data catalog or workgroup resource
 #'
-#' Removes one or more tags from the workgroup resource. Takes as an input
-#' a list of TagKey Strings separated by commas, and removes their tags at
-#' the same time.
+#' Removes one or more tags from a data catalog or workgroup resource.
 #'
 #' @usage
 #' athena_untag_resource(ResourceARN, TagKeys)
 #'
-#' @param ResourceARN &#91;required&#93; Removes one or more tags from the workgroup resource for the specified
-#' ARN.
-#' @param TagKeys &#91;required&#93; Removes the tags associated with one or more tag keys from the workgroup
-#' resource.
+#' @param ResourceARN &#91;required&#93; Specifies the ARN of the resource from which tags are to be removed.
+#' @param TagKeys &#91;required&#93; A comma-separated list of one or more tag keys whose tags are to be
+#' removed from the specified resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -869,6 +1253,79 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
   return(response)
 }
 .athena$operations$untag_resource <- athena_untag_resource
+
+#' Updates the data catalog that has the specified name
+#'
+#' Updates the data catalog that has the specified name.
+#'
+#' @usage
+#' athena_update_data_catalog(Name, Type, Description, Parameters)
+#'
+#' @param Name &#91;required&#93; The name of the data catalog to update. The catalog name must be unique
+#' for the AWS account and can use a maximum of 128 alphanumeric,
+#' underscore, at sign, or hyphen characters.
+#' @param Type &#91;required&#93; Specifies the type of data catalog to update. Specify `LAMBDA` for a
+#' federated catalog, `GLUE` for AWS Glue Catalog, or `HIVE` for an
+#' external hive metastore.
+#' @param Description New or modified text that describes the data catalog.
+#' @param Parameters Specifies the Lambda function or functions to use for updating the data
+#' catalog. This is a mapping whose values depend on the catalog type.
+#' 
+#' -   For the `HIVE` data catalog type, use the following syntax. The
+#'     `metadata-function` parameter is required. `The sdk-version`
+#'     parameter is optional and defaults to the currently supported
+#'     version.
+#' 
+#'     `metadata-function=<i>lambda_arn</i>, sdk-version=<i>version_number</i> `
+#' 
+#' -   For the `LAMBDA` data catalog type, use one of the following sets of
+#'     required parameters, but not both.
+#' 
+#'     -   If you have one Lambda function that processes metadata and
+#'         another for reading the actual data, use the following syntax.
+#'         Both parameters are required.
+#' 
+#'         `metadata-function=<i>lambda_arn</i>, record-function=<i>lambda_arn</i> `
+#' 
+#'     -   If you have a composite Lambda function that processes both
+#'         metadata and data, use the following syntax to specify your
+#'         Lambda function.
+#' 
+#'         `function=<i>lambda_arn</i> `
+#' 
+#' -   The `GLUE` type has no parameters.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_data_catalog(
+#'   Name = "string",
+#'   Type = "LAMBDA"|"GLUE"|"HIVE",
+#'   Description = "string",
+#'   Parameters = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_update_data_catalog
+athena_update_data_catalog <- function(Name, Type, Description = NULL, Parameters = NULL) {
+  op <- new_operation(
+    name = "UpdateDataCatalog",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$update_data_catalog_input(Name = Name, Type = Type, Description = Description, Parameters = Parameters)
+  output <- .athena$update_data_catalog_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$update_data_catalog <- athena_update_data_catalog
 
 #' Updates the workgroup with the specified name
 #'

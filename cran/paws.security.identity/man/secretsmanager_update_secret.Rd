@@ -23,7 +23,13 @@ six characters to the ARN) and you try to use that as a partial ARN,
 then those characters cause Secrets Manager to assume that you're
 specifying a complete ARN. This confusion can cause unexpected results.
 To avoid this situation, we recommend that you don't create secret names
-that end with a hyphen followed by six characters.}
+ending with a hyphen followed by six characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the \'friendly name\', you \emph{must} not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a \emph{ResourceNotFoundException} or an
+\emph{AccessDeniedException} error, depending on your permissions.}
 
 \item{ClientRequestToken}{(Optional) If you want to add a new version to the secret, this
 parameter specifies a unique identifier for the new version that helps
@@ -135,28 +141,28 @@ label \code{AWSCURRENT} to the new version.
 }<!-- -->
 
 \itemize{
-\item If you call an operation that needs to encrypt or decrypt the
-\code{SecretString} or \code{SecretBinary} for a secret in the same account as
-the calling user and that secret doesn\'t specify a AWS KMS
-encryption key, Secrets Manager uses the account\'s default AWS
-managed customer master key (CMK) with the alias
-\code{aws/secretsmanager}. If this key doesn\'t already exist in your
-account then Secrets Manager creates it for you automatically. All
-users and roles in the same AWS account automatically have access to
-use the default CMK. Note that if an Secrets Manager API call
-results in AWS having to create the account\'s AWS-managed CMK, it
-can result in a one-time significant delay in returning the result.
-\item If the secret is in a different AWS account from the credentials
-calling an API that requires encryption or decryption of the secret
-value then you must create and use a custom AWS KMS CMK because you
-can\'t access the default CMK for the account using credentials from
-a different AWS account. Store the ARN of the CMK in the secret when
-you create the secret or when you update it by including it in the
-\code{KMSKeyId}. If you call an API that must encrypt or decrypt
-\code{SecretString} or \code{SecretBinary} using credentials from a different
-account then the AWS KMS key policy must grant cross-account access
-to that other account\'s user or role for both the
-kms:GenerateDataKey and kms:Decrypt operations.
+\item If you call an operation to encrypt or decrypt the \code{SecretString} or
+\code{SecretBinary} for a secret in the same account as the calling user
+and that secret doesn\'t specify a AWS KMS encryption key, Secrets
+Manager uses the account\'s default AWS managed customer master key
+(CMK) with the alias \code{aws/secretsmanager}. If this key doesn\'t
+already exist in your account then Secrets Manager creates it for
+you automatically. All users and roles in the same AWS account
+automatically have access to use the default CMK. Note that if an
+Secrets Manager API call results in AWS creating the account\'s
+AWS-managed CMK, it can result in a one-time significant delay in
+returning the result.
+\item If the secret resides in a different AWS account from the
+credentials calling an API that requires encryption or decryption of
+the secret value then you must create and use a custom AWS KMS CMK
+because you can\'t access the default CMK for the account using
+credentials from a different AWS account. Store the ARN of the CMK
+in the secret when you create the secret or when you update it by
+including it in the \code{KMSKeyId}. If you call an API that must encrypt
+or decrypt \code{SecretString} or \code{SecretBinary} using credentials from a
+different account then the AWS KMS key policy must grant
+cross-account access to that other account\'s user or role for both
+the kms:GenerateDataKey and kms:Decrypt operations.
 }
 
 \strong{Minimum permissions}

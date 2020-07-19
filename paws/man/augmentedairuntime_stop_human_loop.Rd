@@ -7,7 +7,7 @@
 augmentedairuntime_stop_human_loop(HumanLoopName)
 }
 \arguments{
-\item{HumanLoopName}{[required] The name of the human loop you want to stop.}
+\item{HumanLoopName}{[required] The name of the human loop that you want to stop.}
 }
 \description{
 Stops the specified human loop.

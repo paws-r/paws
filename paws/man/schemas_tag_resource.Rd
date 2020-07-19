@@ -7,9 +7,9 @@
 schemas_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required]}
+\item{ResourceArn}{[required] The ARN of the resource.}
 
-\item{Tags}{[required]}
+\item{Tags}{[required] Tags associated with the resource.}
 }
 \description{
 Add tags to a resource.

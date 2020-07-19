@@ -9,13 +9,16 @@ apigatewayv2_reimport_api(ApiId, Basepath, Body, FailOnWarnings)
 \arguments{
 \item{ApiId}{[required] The API identifier.}
 
-\item{Basepath}{Represents the base path of the imported API. Supported only for HTTP
-APIs.}
+\item{Basepath}{Specifies how to interpret the base path of the API during import. Valid
+values are ignore, prepend, and split. The default value is ignore. To
+learn more, see \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-import-api-basePath.html}{Set the OpenAPI basePath Property}.
+Supported only for HTTP APIs.}
 
 \item{Body}{[required] The OpenAPI definition. Supported only for HTTP APIs.}
 
-\item{FailOnWarnings}{Specifies whether to rollback the API creation (true) or not (false)
-when a warning is encountered. The default value is false.}
+\item{FailOnWarnings}{Specifies whether to rollback the API creation when a warning is
+encountered. By default, API creation continues if a warning is
+encountered.}
 }
 \description{
 Puts an Api resource.

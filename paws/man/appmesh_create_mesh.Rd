@@ -22,13 +22,16 @@ character length of 128 characters, and tag values can have a maximum
 length of 256 characters.}
 }
 \description{
-Creates a service mesh. A service mesh is a logical boundary for network
-traffic between the services that reside within it.
+Creates a service mesh.
 }
 \details{
-After you create your service mesh, you can create virtual services,
-virtual nodes, virtual routers, and routes to distribute traffic between
-the applications in your mesh.
+A service mesh is a logical boundary for network traffic between
+services that are represented by resources within the mesh. After you
+create your service mesh, you can create virtual services, virtual
+nodes, virtual routers, and routes to distribute traffic between the
+applications in your mesh.
+
+For more information about service meshes, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/meshes.html}{Service meshes}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_mesh(

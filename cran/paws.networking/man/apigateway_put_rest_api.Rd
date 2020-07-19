@@ -25,7 +25,7 @@ DocumentationParts from an imported API, set \code{ignore=documentation} as a
 
 \item{body}{[required] [Required] The PUT request body containing external API definitions.
 Currently, only OpenAPI definition JSON/YAML files are supported. The
-maximum size of the API definition file is 2MB.}
+maximum size of the API definition file is 6MB.}
 }
 \description{
 A feature of the API Gateway control service for updating an existing

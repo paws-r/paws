@@ -745,7 +745,7 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #'   ConnectionInput = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA",
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
@@ -803,10 +803,10 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #' `arn:aws:daylight:us-east-1::database/sometable/*`.
 #' @param Description A description of the new crawler.
 #' @param Targets &#91;required&#93; A list of collection of targets to crawl.
-#' @param Schedule A `cron` expression used to specify the schedule. For more information,
-#' see [Time-Based Schedules for Jobs and
-#' Crawlers](http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
-#' For example, to run something every day at 12:15 UTC, specify
+#' @param Schedule A `cron` expression used to specify the schedule (see [Time-Based
+#' Schedules for Jobs and
+#' Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
+#' For example, to run something every day at 12:15 UTC, you would specify:
 #' `cron(15 12 * * ? *)`.
 #' @param Classifiers A list of custom classifiers that the user has registered. By default,
 #' all built-in classifiers are included in a crawl, but these custom
@@ -814,15 +814,17 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #' classification.
 #' @param TablePrefix The table prefix used for catalog tables that are created.
 #' @param SchemaChangePolicy The policy for the crawler\'s update and deletion behavior.
-#' @param Configuration The crawler configuration information. This versioned JSON string allows
+#' @param Configuration Crawler configuration information. This versioned JSON string allows
 #' users to specify aspects of a crawler\'s behavior. For more information,
 #' see [Configuring a
-#' Crawler](http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
+#' Crawler](https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
 #' @param CrawlerSecurityConfiguration The name of the `SecurityConfiguration` structure to be used by this
 #' crawler.
-#' @param Tags The tags to use with this crawler request. You can use tags to limit
-#' access to the crawler. For more information, see [AWS Tags in AWS
-#' Glue](http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html).
+#' @param Tags The tags to use with this crawler request. You may use tags to limit
+#' access to the crawler. For more information about tags in AWS Glue, see
+#' [AWS Tags in AWS
+#' Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
+#' the developer guide.
 #'
 #' @section Request syntax:
 #' ```
@@ -851,7 +853,9 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #'     ),
 #'     DynamoDBTargets = list(
 #'       list(
-#'         Path = "string"
+#'         Path = "string",
+#'         scanAll = TRUE|FALSE,
+#'         scanRate = 123.0
 #'       )
 #'     ),
 #'     CatalogTargets = list(
@@ -931,6 +935,10 @@ glue_create_crawler <- function(Name, Role, DatabaseName = NULL, Description = N
 #'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'         )
 #'       )
+#'     ),
+#'     TargetDatabase = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string"
 #'     )
 #'   )
 #' )
@@ -1098,9 +1106,10 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'
 #' @usage
 #' glue_create_job(Name, Description, LogUri, Role, ExecutionProperty,
-#'   Command, DefaultArguments, Connections, MaxRetries, AllocatedCapacity,
-#'   Timeout, MaxCapacity, SecurityConfiguration, Tags, NotificationProperty,
-#'   GlueVersion, NumberOfWorkers, WorkerType)
+#'   Command, DefaultArguments, NonOverridableArguments, Connections,
+#'   MaxRetries, AllocatedCapacity, Timeout, MaxCapacity,
+#'   SecurityConfiguration, Tags, NotificationProperty, GlueVersion,
+#'   NumberOfWorkers, WorkerType)
 #'
 #' @param Name &#91;required&#93; The name you assign to this job definition. It must be unique in your
 #' account.
@@ -1125,6 +1134,7 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' up your job, see the [Special Parameters Used by AWS
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 #' topic in the developer guide.
+#' @param NonOverridableArguments Non-overridable arguments for this job, specified as name-value pairs.
 #' @param Connections The connections used for this job.
 #' @param MaxRetries The maximum number of times to retry this job if it fails.
 #' @param AllocatedCapacity This parameter is deprecated. Use `MaxCapacity` instead.
@@ -1211,6 +1221,9 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'   DefaultArguments = list(
 #'     "string"
 #'   ),
+#'   NonOverridableArguments = list(
+#'     "string"
+#'   ),
 #'   Connections = list(
 #'     Connections = list(
 #'       "string"
@@ -1236,14 +1249,14 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @keywords internal
 #'
 #' @rdname glue_create_job
-glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, ExecutionProperty = NULL, Command, DefaultArguments = NULL, Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, Tags = NULL, NotificationProperty = NULL, GlueVersion = NULL, NumberOfWorkers = NULL, WorkerType = NULL) {
+glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, ExecutionProperty = NULL, Command, DefaultArguments = NULL, NonOverridableArguments = NULL, Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, Tags = NULL, NotificationProperty = NULL, GlueVersion = NULL, NumberOfWorkers = NULL, WorkerType = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_job_input(Name = Name, Description = Description, LogUri = LogUri, Role = Role, ExecutionProperty = ExecutionProperty, Command = Command, DefaultArguments = DefaultArguments, Connections = Connections, MaxRetries = MaxRetries, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, Tags = Tags, NotificationProperty = NotificationProperty, GlueVersion = GlueVersion, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType)
+  input <- .glue$create_job_input(Name = Name, Description = Description, LogUri = LogUri, Role = Role, ExecutionProperty = ExecutionProperty, Command = Command, DefaultArguments = DefaultArguments, NonOverridableArguments = NonOverridableArguments, Connections = Connections, MaxRetries = MaxRetries, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, Tags = Tags, NotificationProperty = NotificationProperty, GlueVersion = GlueVersion, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType)
   output <- .glue$create_job_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -1273,7 +1286,7 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 #' @usage
 #' glue_create_ml_transform(Name, Description, InputRecordTables,
 #'   Parameters, Role, GlueVersion, MaxCapacity, WorkerType, NumberOfWorkers,
-#'   Timeout, MaxRetries)
+#'   Timeout, MaxRetries, Tags)
 #'
 #' @param Name &#91;required&#93; The unique name that you give the transform when you create it.
 #' @param Description A description of the machine learning transform that is being defined.
@@ -1362,6 +1375,11 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 #' 2,880 minutes (48 hours).
 #' @param MaxRetries The maximum number of times to retry a task for this transform after a
 #' task run fails.
+#' @param Tags The tags to use with this machine learning transform. You may use tags
+#' to limit access to the machine learning transform. For more information
+#' about tags in AWS Glue, see [AWS Tags in AWS
+#' Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
+#' the developer guide.
 #'
 #' @section Request syntax:
 #' ```
@@ -1391,21 +1409,24 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 #'   WorkerType = "Standard"|"G.1X"|"G.2X",
 #'   NumberOfWorkers = 123,
 #'   Timeout = 123,
-#'   MaxRetries = 123
+#'   MaxRetries = 123,
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_ml_transform
-glue_create_ml_transform <- function(Name, Description = NULL, InputRecordTables, Parameters, Role, GlueVersion = NULL, MaxCapacity = NULL, WorkerType = NULL, NumberOfWorkers = NULL, Timeout = NULL, MaxRetries = NULL) {
+glue_create_ml_transform <- function(Name, Description = NULL, InputRecordTables, Parameters, Role, GlueVersion = NULL, MaxCapacity = NULL, WorkerType = NULL, NumberOfWorkers = NULL, Timeout = NULL, MaxRetries = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateMLTransform",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_ml_transform_input(Name = Name, Description = Description, InputRecordTables = InputRecordTables, Parameters = Parameters, Role = Role, GlueVersion = GlueVersion, MaxCapacity = MaxCapacity, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, MaxRetries = MaxRetries)
+  input <- .glue$create_ml_transform_input(Name = Name, Description = Description, InputRecordTables = InputRecordTables, Parameters = Parameters, Role = Role, GlueVersion = GlueVersion, MaxCapacity = MaxCapacity, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, MaxRetries = MaxRetries, Tags = Tags)
   output <- .glue$create_ml_transform_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -1731,6 +1752,11 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #'     TableType = "string",
 #'     Parameters = list(
 #'       "string"
+#'     ),
+#'     TargetTable = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string"
 #'     )
 #'   )
 #' )
@@ -1802,7 +1828,7 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput) {
 #'         JobName = "string",
 #'         State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
 #'         CrawlerName = "string",
-#'         CrawlState = "RUNNING"|"SUCCEEDED"|"CANCELLED"|"FAILED"
+#'         CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
 #'       )
 #'     )
 #'   ),
@@ -1985,6 +2011,98 @@ glue_delete_classifier <- function(Name) {
   return(response)
 }
 .glue$operations$delete_classifier <- glue_delete_classifier
+
+#' Delete the partition column statistics of a column
+#'
+#' Delete the partition column statistics of a column.
+#'
+#' @usage
+#' glue_delete_column_statistics_for_partition(CatalogId, DatabaseName,
+#'   TableName, PartitionValues, ColumnName)
+#'
+#' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
+#' none is supplied, the AWS account ID is used by default.
+#' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
+#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param PartitionValues &#91;required&#93; A list of partition values identifying the partition.
+#' @param ColumnName &#91;required&#93; Name of the column.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_column_statistics_for_partition(
+#'   CatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   PartitionValues = list(
+#'     "string"
+#'   ),
+#'   ColumnName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_column_statistics_for_partition
+glue_delete_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionValues, ColumnName) {
+  op <- new_operation(
+    name = "DeleteColumnStatisticsForPartition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$delete_column_statistics_for_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, ColumnName = ColumnName)
+  output <- .glue$delete_column_statistics_for_partition_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_column_statistics_for_partition <- glue_delete_column_statistics_for_partition
+
+#' Retrieves table statistics of columns
+#'
+#' Retrieves table statistics of columns.
+#'
+#' @usage
+#' glue_delete_column_statistics_for_table(CatalogId, DatabaseName,
+#'   TableName, ColumnName)
+#'
+#' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
+#' none is supplied, the AWS account ID is used by default.
+#' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
+#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param ColumnName &#91;required&#93; The name of the column.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_column_statistics_for_table(
+#'   CatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   ColumnName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_column_statistics_for_table
+glue_delete_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName, TableName, ColumnName) {
+  op <- new_operation(
+    name = "DeleteColumnStatisticsForTable",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$delete_column_statistics_for_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, ColumnName = ColumnName)
+  output <- .glue$delete_column_statistics_for_table_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_column_statistics_for_table <- glue_delete_column_statistics_for_table
 
 #' Deletes a connection from the Data Catalog
 #'
@@ -2281,28 +2399,30 @@ glue_delete_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #' Deletes a specified policy.
 #'
 #' @usage
-#' glue_delete_resource_policy(PolicyHashCondition)
+#' glue_delete_resource_policy(PolicyHashCondition, ResourceArn)
 #'
 #' @param PolicyHashCondition The hash value returned when this policy was set.
+#' @param ResourceArn The ARN of the AWS Glue resource for the resource policy to be deleted.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_resource_policy(
-#'   PolicyHashCondition = "string"
+#'   PolicyHashCondition = "string",
+#'   ResourceArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_delete_resource_policy
-glue_delete_resource_policy <- function(PolicyHashCondition = NULL) {
+glue_delete_resource_policy <- function(PolicyHashCondition = NULL, ResourceArn = NULL) {
   op <- new_operation(
     name = "DeleteResourcePolicy",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$delete_resource_policy_input(PolicyHashCondition = PolicyHashCondition)
+  input <- .glue$delete_resource_policy_input(PolicyHashCondition = PolicyHashCondition, ResourceArn = ResourceArn)
   output <- .glue$delete_resource_policy_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -2673,6 +2793,102 @@ glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .glue$operations$get_classifiers <- glue_get_classifiers
 
+#' Retrieves partition statistics of columns
+#'
+#' Retrieves partition statistics of columns.
+#'
+#' @usage
+#' glue_get_column_statistics_for_partition(CatalogId, DatabaseName,
+#'   TableName, PartitionValues, ColumnNames)
+#'
+#' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
+#' none is supplied, the AWS account ID is used by default.
+#' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
+#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param PartitionValues &#91;required&#93; A list of partition values identifying the partition.
+#' @param ColumnNames &#91;required&#93; A list of the column names.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_column_statistics_for_partition(
+#'   CatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   PartitionValues = list(
+#'     "string"
+#'   ),
+#'   ColumnNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_column_statistics_for_partition
+glue_get_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionValues, ColumnNames) {
+  op <- new_operation(
+    name = "GetColumnStatisticsForPartition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_column_statistics_for_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, ColumnNames = ColumnNames)
+  output <- .glue$get_column_statistics_for_partition_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_column_statistics_for_partition <- glue_get_column_statistics_for_partition
+
+#' Retrieves table statistics of columns
+#'
+#' Retrieves table statistics of columns.
+#'
+#' @usage
+#' glue_get_column_statistics_for_table(CatalogId, DatabaseName, TableName,
+#'   ColumnNames)
+#'
+#' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
+#' none is supplied, the AWS account ID is used by default.
+#' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
+#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param ColumnNames &#91;required&#93; A list of the column names.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_column_statistics_for_table(
+#'   CatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   ColumnNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_column_statistics_for_table
+glue_get_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName, TableName, ColumnNames) {
+  op <- new_operation(
+    name = "GetColumnStatisticsForTable",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_column_statistics_for_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, ColumnNames = ColumnNames)
+  output <- .glue$get_column_statistics_for_table_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_column_statistics_for_table <- glue_get_column_statistics_for_table
+
 #' Retrieves a connection definition from the Data Catalog
 #'
 #' Retrieves a connection definition from the Data Catalog.
@@ -2747,7 +2963,7 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
-#'     ConnectionType = "JDBC"|"SFTP"
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"
 #'   ),
 #'   HidePassword = TRUE|FALSE,
 #'   NextToken = "string",
@@ -2973,33 +3189,42 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 #' Retrieves all databases defined in a given Data Catalog.
 #'
 #' @usage
-#' glue_get_databases(CatalogId, NextToken, MaxResults)
+#' glue_get_databases(CatalogId, NextToken, MaxResults, ResourceShareType)
 #'
 #' @param CatalogId The ID of the Data Catalog from which to retrieve `Databases`. If none
 #' is provided, the AWS account ID is used by default.
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param MaxResults The maximum number of databases to return in one response.
+#' @param ResourceShareType Allows you to specify that you want to list the databases shared with
+#' your account. The allowable values are `FOREIGN` or `ALL`.
+#' 
+#' -   If set to `FOREIGN`, will list the databases shared with your
+#'     account.
+#' 
+#' -   If set to `ALL`, will list the databases shared with your account,
+#'     as well as the databases in yor local account.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_databases(
 #'   CatalogId = "string",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   ResourceShareType = "FOREIGN"|"ALL"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_databases
-glue_get_databases <- function(CatalogId = NULL, NextToken = NULL, MaxResults = NULL) {
+glue_get_databases <- function(CatalogId = NULL, NextToken = NULL, MaxResults = NULL, ResourceShareType = NULL) {
   op <- new_operation(
     name = "GetDatabases",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$get_databases_input(CatalogId = CatalogId, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .glue$get_databases_input(CatalogId = CatalogId, NextToken = NextToken, MaxResults = MaxResults, ResourceShareType = ResourceShareType)
   output <- .glue$get_databases_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -3882,29 +4107,76 @@ glue_get_plan <- function(Mapping, Source, Sinks = NULL, Location = NULL, Langua
 }
 .glue$operations$get_plan <- glue_get_plan
 
+#' Retrieves the security configurations for the resource policies set on
+#' individual resources, and also the account-level policy
+#'
+#' Retrieves the security configurations for the resource policies set on
+#' individual resources, and also the account-level policy.
+#'
+#' @usage
+#' glue_get_resource_policies(NextToken, MaxResults)
+#'
+#' @param NextToken A continuation token, if this is a continuation request.
+#' @param MaxResults The maximum size of a list to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policies(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_resource_policies
+glue_get_resource_policies <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetResourcePolicies",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_resource_policies_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .glue$get_resource_policies_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_resource_policies <- glue_get_resource_policies
+
 #' Retrieves a specified resource policy
 #'
 #' Retrieves a specified resource policy.
 #'
 #' @usage
-#' glue_get_resource_policy()
+#' glue_get_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn The ARN of the AWS Glue resource for the resource policy to be
+#' retrieved. For more information about AWS Glue resource ARNs, see the
+#' [AWS Glue ARN string
+#' pattern](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id)
 #'
 #' @section Request syntax:
 #' ```
-#' svc$get_resource_policy()
+#' svc$get_resource_policy(
+#'   ResourceArn = "string"
+#' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_resource_policy
-glue_get_resource_policy <- function() {
+glue_get_resource_policy <- function(ResourceArn = NULL) {
   op <- new_operation(
     name = "GetResourcePolicy",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$get_resource_policy_input()
+  input <- .glue$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .glue$get_resource_policy_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -4344,7 +4616,9 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 #'
 #' @param CatalogId The ID of the Data Catalog where the functions to be retrieved are
 #' located. If none is provided, the AWS account ID is used by default.
-#' @param DatabaseName &#91;required&#93; The name of the catalog database where the functions are located.
+#' @param DatabaseName The name of the catalog database where the functions are located. If
+#' none is provided, functions from all the databases across the catalog
+#' will be returned.
 #' @param Pattern &#91;required&#93; An optional function-name pattern string that filters the function
 #' definitions returned.
 #' @param NextToken A continuation token, if this is a continuation call.
@@ -4364,7 +4638,7 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 #' @keywords internal
 #'
 #' @rdname glue_get_user_defined_functions
-glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName, Pattern, NextToken = NULL, MaxResults = NULL) {
+glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NULL, Pattern, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetUserDefinedFunctions",
     http_method = "POST",
@@ -4727,6 +5001,86 @@ glue_list_jobs <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
 }
 .glue$operations$list_jobs <- glue_list_jobs
 
+#' Retrieves a sortable, filterable list of existing AWS Glue machine
+#' learning transforms in this AWS account, or the resources with the
+#' specified tag
+#'
+#' Retrieves a sortable, filterable list of existing AWS Glue machine
+#' learning transforms in this AWS account, or the resources with the
+#' specified tag. This operation takes the optional `Tags` field, which you
+#' can use as a filter of the responses so that tagged resources can be
+#' retrieved as a group. If you choose to use tag filtering, only resources
+#' with the tags are retrieved.
+#'
+#' @usage
+#' glue_list_ml_transforms(NextToken, MaxResults, Filter, Sort, Tags)
+#'
+#' @param NextToken A continuation token, if this is a continuation request.
+#' @param MaxResults The maximum size of a list to return.
+#' @param Filter A `TransformFilterCriteria` used to filter the machine learning
+#' transforms.
+#' @param Sort A `TransformSortCriteria` used to sort the machine learning transforms.
+#' @param Tags Specifies to return only these tagged resources.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_ml_transforms(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Filter = list(
+#'     Name = "string",
+#'     TransformType = "FIND_MATCHES",
+#'     Status = "NOT_READY"|"READY"|"DELETING",
+#'     GlueVersion = "string",
+#'     CreatedBefore = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedAfter = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedBefore = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedAfter = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Schema = list(
+#'       list(
+#'         Name = "string",
+#'         DataType = "string"
+#'       )
+#'     )
+#'   ),
+#'   Sort = list(
+#'     Column = "NAME"|"TRANSFORM_TYPE"|"STATUS"|"CREATED"|"LAST_MODIFIED",
+#'     SortDirection = "DESCENDING"|"ASCENDING"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_ml_transforms
+glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter = NULL, Sort = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "ListMLTransforms",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$list_ml_transforms_input(NextToken = NextToken, MaxResults = MaxResults, Filter = Filter, Sort = Sort, Tags = Tags)
+  output <- .glue$list_ml_transforms_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_ml_transforms <- glue_list_ml_transforms
+
 #' Retrieves the names of all trigger resources in this AWS account, or the
 #' resources with the specified tag
 #'
@@ -4875,10 +5229,14 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
 #' Sets the Data Catalog resource policy for access control.
 #'
 #' @usage
-#' glue_put_resource_policy(PolicyInJson, PolicyHashCondition,
-#'   PolicyExistsCondition)
+#' glue_put_resource_policy(PolicyInJson, ResourceArn, PolicyHashCondition,
+#'   PolicyExistsCondition, EnableHybrid)
 #'
 #' @param PolicyInJson &#91;required&#93; Contains the policy document to set, in JSON format.
+#' @param ResourceArn The ARN of the AWS Glue resource for the resource policy to be set. For
+#' more information about AWS Glue resource ARNs, see the [AWS Glue ARN
+#' string
+#' pattern](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id)
 #' @param PolicyHashCondition The hash value returned when the previous policy was set using
 #' `PutResourcePolicy`. Its purpose is to prevent concurrent modifications
 #' of a policy. Do not use this parameter if no previous policy has been
@@ -4887,27 +5245,37 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
 #' `NOT_EXIST` is used to create a new policy. If a value of `NONE` or a
 #' null value is used, the call will not depend on the existence of a
 #' policy.
+#' @param EnableHybrid Allows you to specify if you want to use both resource-level and
+#' account/catalog-level resource policies. A resource-level policy is a
+#' policy attached to an individual resource such as a database or a table.
+#' 
+#' The default value of `NO` indicates that resource-level policies cannot
+#' co-exist with an account-level policy. A value of `YES` means the use of
+#' both resource-level and account/catalog-level resource policies is
+#' allowed.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$put_resource_policy(
 #'   PolicyInJson = "string",
+#'   ResourceArn = "string",
 #'   PolicyHashCondition = "string",
-#'   PolicyExistsCondition = "MUST_EXIST"|"NOT_EXIST"|"NONE"
+#'   PolicyExistsCondition = "MUST_EXIST"|"NOT_EXIST"|"NONE",
+#'   EnableHybrid = "TRUE"|"FALSE"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_put_resource_policy
-glue_put_resource_policy <- function(PolicyInJson, PolicyHashCondition = NULL, PolicyExistsCondition = NULL) {
+glue_put_resource_policy <- function(PolicyInJson, ResourceArn = NULL, PolicyHashCondition = NULL, PolicyExistsCondition = NULL, EnableHybrid = NULL) {
   op <- new_operation(
     name = "PutResourcePolicy",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$put_resource_policy_input(PolicyInJson = PolicyInJson, PolicyHashCondition = PolicyHashCondition, PolicyExistsCondition = PolicyExistsCondition)
+  input <- .glue$put_resource_policy_input(PolicyInJson = PolicyInJson, ResourceArn = ResourceArn, PolicyHashCondition = PolicyHashCondition, PolicyExistsCondition = PolicyExistsCondition, EnableHybrid = EnableHybrid)
   output <- .glue$put_resource_policy_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -5017,7 +5385,7 @@ glue_reset_job_bookmark <- function(JobName, RunId = NULL) {
 #'
 #' @usage
 #' glue_search_tables(CatalogId, NextToken, Filters, SearchText,
-#'   SortCriteria, MaxResults)
+#'   SortCriteria, MaxResults, ResourceShareType)
 #'
 #' @param CatalogId A unique identifier, consisting of ` <i>account_id</i>/datalake`.
 #' @param NextToken A continuation token, included if this is a continuation call.
@@ -5030,6 +5398,14 @@ glue_reset_job_bookmark <- function(JobName, RunId = NULL) {
 #' @param SortCriteria A list of criteria for sorting the results by a field name, in an
 #' ascending or descending order.
 #' @param MaxResults The maximum number of tables to return in a single response.
+#' @param ResourceShareType Allows you to specify that you want to search the tables shared with
+#' your account. The allowable values are `FOREIGN` or `ALL`.
+#' 
+#' -   If set to `FOREIGN`, will search the tables shared with your
+#'     account.
+#' 
+#' -   If set to `ALL`, will search the tables shared with your account, as
+#'     well as the tables in yor local account.
 #'
 #' @section Request syntax:
 #' ```
@@ -5050,21 +5426,22 @@ glue_reset_job_bookmark <- function(JobName, RunId = NULL) {
 #'       Sort = "ASC"|"DESC"
 #'     )
 #'   ),
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   ResourceShareType = "FOREIGN"|"ALL"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_search_tables
-glue_search_tables <- function(CatalogId = NULL, NextToken = NULL, Filters = NULL, SearchText = NULL, SortCriteria = NULL, MaxResults = NULL) {
+glue_search_tables <- function(CatalogId = NULL, NextToken = NULL, Filters = NULL, SearchText = NULL, SortCriteria = NULL, MaxResults = NULL, ResourceShareType = NULL) {
   op <- new_operation(
     name = "SearchTables",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$search_tables_input(CatalogId = CatalogId, NextToken = NextToken, Filters = Filters, SearchText = SearchText, SortCriteria = SortCriteria, MaxResults = MaxResults)
+  input <- .glue$search_tables_input(CatalogId = CatalogId, NextToken = NextToken, Filters = Filters, SearchText = SearchText, SortCriteria = SortCriteria, MaxResults = MaxResults, ResourceShareType = ResourceShareType)
   output <- .glue$search_tables_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -5670,6 +6047,44 @@ glue_stop_trigger <- function(Name) {
 }
 .glue$operations$stop_trigger <- glue_stop_trigger
 
+#' Stops the execution of the specified workflow run
+#'
+#' Stops the execution of the specified workflow run.
+#'
+#' @usage
+#' glue_stop_workflow_run(Name, RunId)
+#'
+#' @param Name &#91;required&#93; The name of the workflow to stop.
+#' @param RunId &#91;required&#93; The ID of the workflow run to stop.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_workflow_run(
+#'   Name = "string",
+#'   RunId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_stop_workflow_run
+glue_stop_workflow_run <- function(Name, RunId) {
+  op <- new_operation(
+    name = "StopWorkflowRun",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$stop_workflow_run_input(Name = Name, RunId = RunId)
+  output <- .glue$stop_workflow_run_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$stop_workflow_run <- glue_stop_workflow_run
+
 #' Adds tags to a resource
 #'
 #' Adds tags to a resource. A tag is a label you can assign to an AWS
@@ -5824,6 +6239,220 @@ glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 }
 .glue$operations$update_classifier <- glue_update_classifier
 
+#' Creates or updates partition statistics of columns
+#'
+#' Creates or updates partition statistics of columns.
+#'
+#' @usage
+#' glue_update_column_statistics_for_partition(CatalogId, DatabaseName,
+#'   TableName, PartitionValues, ColumnStatisticsList)
+#'
+#' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
+#' none is supplied, the AWS account ID is used by default.
+#' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
+#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param PartitionValues &#91;required&#93; A list of partition values identifying the partition.
+#' @param ColumnStatisticsList &#91;required&#93; A list of the column statistics.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_column_statistics_for_partition(
+#'   CatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   PartitionValues = list(
+#'     "string"
+#'   ),
+#'   ColumnStatisticsList = list(
+#'     list(
+#'       ColumnName = "string",
+#'       ColumnType = "string",
+#'       AnalyzedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatisticsData = list(
+#'         Type = "BOOLEAN"|"DATE"|"DECIMAL"|"DOUBLE"|"LONG"|"STRING"|"BINARY",
+#'         BooleanColumnStatisticsData = list(
+#'           NumberOfTrues = 123,
+#'           NumberOfFalses = 123,
+#'           NumberOfNulls = 123
+#'         ),
+#'         DateColumnStatisticsData = list(
+#'           MinimumValue = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           MaximumValue = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           NumberOfNulls = 123,
+#'           NumberOfDistinctValues = 123
+#'         ),
+#'         DecimalColumnStatisticsData = list(
+#'           MinimumValue = list(
+#'             UnscaledValue = raw,
+#'             Scale = 123
+#'           ),
+#'           MaximumValue = list(
+#'             UnscaledValue = raw,
+#'             Scale = 123
+#'           ),
+#'           NumberOfNulls = 123,
+#'           NumberOfDistinctValues = 123
+#'         ),
+#'         DoubleColumnStatisticsData = list(
+#'           MinimumValue = 123.0,
+#'           MaximumValue = 123.0,
+#'           NumberOfNulls = 123,
+#'           NumberOfDistinctValues = 123
+#'         ),
+#'         LongColumnStatisticsData = list(
+#'           MinimumValue = 123,
+#'           MaximumValue = 123,
+#'           NumberOfNulls = 123,
+#'           NumberOfDistinctValues = 123
+#'         ),
+#'         StringColumnStatisticsData = list(
+#'           MaximumLength = 123,
+#'           AverageLength = 123.0,
+#'           NumberOfNulls = 123,
+#'           NumberOfDistinctValues = 123
+#'         ),
+#'         BinaryColumnStatisticsData = list(
+#'           MaximumLength = 123,
+#'           AverageLength = 123.0,
+#'           NumberOfNulls = 123
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_column_statistics_for_partition
+glue_update_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionValues, ColumnStatisticsList) {
+  op <- new_operation(
+    name = "UpdateColumnStatisticsForPartition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$update_column_statistics_for_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, ColumnStatisticsList = ColumnStatisticsList)
+  output <- .glue$update_column_statistics_for_partition_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_column_statistics_for_partition <- glue_update_column_statistics_for_partition
+
+#' Creates or updates table statistics of columns
+#'
+#' Creates or updates table statistics of columns.
+#'
+#' @usage
+#' glue_update_column_statistics_for_table(CatalogId, DatabaseName,
+#'   TableName, ColumnStatisticsList)
+#'
+#' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
+#' none is supplied, the AWS account ID is used by default.
+#' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
+#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param ColumnStatisticsList &#91;required&#93; A list of the column statistics.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_column_statistics_for_table(
+#'   CatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   ColumnStatisticsList = list(
+#'     list(
+#'       ColumnName = "string",
+#'       ColumnType = "string",
+#'       AnalyzedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatisticsData = list(
+#'         Type = "BOOLEAN"|"DATE"|"DECIMAL"|"DOUBLE"|"LONG"|"STRING"|"BINARY",
+#'         BooleanColumnStatisticsData = list(
+#'           NumberOfTrues = 123,
+#'           NumberOfFalses = 123,
+#'           NumberOfNulls = 123
+#'         ),
+#'         DateColumnStatisticsData = list(
+#'           MinimumValue = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           MaximumValue = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           NumberOfNulls = 123,
+#'           NumberOfDistinctValues = 123
+#'         ),
+#'         DecimalColumnStatisticsData = list(
+#'           MinimumValue = list(
+#'             UnscaledValue = raw,
+#'             Scale = 123
+#'           ),
+#'           MaximumValue = list(
+#'             UnscaledValue = raw,
+#'             Scale = 123
+#'           ),
+#'           NumberOfNulls = 123,
+#'           NumberOfDistinctValues = 123
+#'         ),
+#'         DoubleColumnStatisticsData = list(
+#'           MinimumValue = 123.0,
+#'           MaximumValue = 123.0,
+#'           NumberOfNulls = 123,
+#'           NumberOfDistinctValues = 123
+#'         ),
+#'         LongColumnStatisticsData = list(
+#'           MinimumValue = 123,
+#'           MaximumValue = 123,
+#'           NumberOfNulls = 123,
+#'           NumberOfDistinctValues = 123
+#'         ),
+#'         StringColumnStatisticsData = list(
+#'           MaximumLength = 123,
+#'           AverageLength = 123.0,
+#'           NumberOfNulls = 123,
+#'           NumberOfDistinctValues = 123
+#'         ),
+#'         BinaryColumnStatisticsData = list(
+#'           MaximumLength = 123,
+#'           AverageLength = 123.0,
+#'           NumberOfNulls = 123
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_column_statistics_for_table
+glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName, TableName, ColumnStatisticsList) {
+  op <- new_operation(
+    name = "UpdateColumnStatisticsForTable",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$update_column_statistics_for_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, ColumnStatisticsList = ColumnStatisticsList)
+  output <- .glue$update_column_statistics_for_table_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_column_statistics_for_table <- glue_update_column_statistics_for_table
+
 #' Updates a connection definition in the Data Catalog
 #'
 #' Updates a connection definition in the Data Catalog.
@@ -5844,7 +6473,7 @@ glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #'   ConnectionInput = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA",
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
@@ -5899,10 +6528,10 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #' `arn:aws:daylight:us-east-1::database/sometable/*`.
 #' @param Description A description of the new crawler.
 #' @param Targets A list of targets to crawl.
-#' @param Schedule A `cron` expression used to specify the schedule. For more information,
-#' see [Time-Based Schedules for Jobs and
-#' Crawlers](http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
-#' For example, to run something every day at 12:15 UTC, specify
+#' @param Schedule A `cron` expression used to specify the schedule (see [Time-Based
+#' Schedules for Jobs and
+#' Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
+#' For example, to run something every day at 12:15 UTC, you would specify:
 #' `cron(15 12 * * ? *)`.
 #' @param Classifiers A list of custom classifiers that the user has registered. By default,
 #' all built-in classifiers are included in a crawl, but these custom
@@ -5910,10 +6539,10 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #' classification.
 #' @param TablePrefix The table prefix used for catalog tables that are created.
 #' @param SchemaChangePolicy The policy for the crawler\'s update and deletion behavior.
-#' @param Configuration The crawler configuration information. This versioned JSON string allows
+#' @param Configuration Crawler configuration information. This versioned JSON string allows
 #' users to specify aspects of a crawler\'s behavior. For more information,
 #' see [Configuring a
-#' Crawler](http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
+#' Crawler](https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
 #' @param CrawlerSecurityConfiguration The name of the `SecurityConfiguration` structure to be used by this
 #' crawler.
 #'
@@ -5944,7 +6573,9 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #'     ),
 #'     DynamoDBTargets = list(
 #'       list(
-#'         Path = "string"
+#'         Path = "string",
+#'         scanAll = TRUE|FALSE,
+#'         scanRate = 123.0
 #'       )
 #'     ),
 #'     CatalogTargets = list(
@@ -5998,10 +6629,10 @@ glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Descript
 #' glue_update_crawler_schedule(CrawlerName, Schedule)
 #'
 #' @param CrawlerName &#91;required&#93; The name of the crawler whose schedule to update.
-#' @param Schedule The updated `cron` expression used to specify the schedule. For more
-#' information, see [Time-Based Schedules for Jobs and
-#' Crawlers](http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
-#' For example, to run something every day at 12:15 UTC, specify
+#' @param Schedule The updated `cron` expression used to specify the schedule (see
+#' [Time-Based Schedules for Jobs and
+#' Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
+#' For example, to run something every day at 12:15 UTC, you would specify:
 #' `cron(15 12 * * ? *)`.
 #'
 #' @section Request syntax:
@@ -6067,6 +6698,10 @@ glue_update_crawler_schedule <- function(CrawlerName, Schedule = NULL) {
 #'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'         )
 #'       )
+#'     ),
+#'     TargetDatabase = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string"
 #'     )
 #'   )
 #' )
@@ -6198,6 +6833,9 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 #'       PythonVersion = "string"
 #'     ),
 #'     DefaultArguments = list(
+#'       "string"
+#'     ),
+#'     NonOverridableArguments = list(
 #'       "string"
 #'     ),
 #'     Connections = list(
@@ -6547,6 +7185,11 @@ glue_update_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #'     TableType = "string",
 #'     Parameters = list(
 #'       "string"
+#'     ),
+#'     TargetTable = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string"
 #'     )
 #'   ),
 #'   SkipArchive = TRUE|FALSE
@@ -6613,7 +7256,7 @@ glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipAr
 #'           JobName = "string",
 #'           State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
 #'           CrawlerName = "string",
-#'           CrawlState = "RUNNING"|"SUCCEEDED"|"CANCELLED"|"FAILED"
+#'           CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
 #'         )
 #'       )
 #'     )

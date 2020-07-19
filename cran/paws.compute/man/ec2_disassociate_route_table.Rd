@@ -2,13 +2,13 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_disassociate_route_table}
 \alias{ec2_disassociate_route_table}
-\title{Disassociates a subnet from a route table}
+\title{Disassociates a subnet or gateway from a route table}
 \usage{
 ec2_disassociate_route_table(AssociationId, DryRun)
 }
 \arguments{
 \item{AssociationId}{[required] The association ID representing the current association between the
-route table and subnet.}
+route table and subnet or gateway.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -16,7 +16,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Disassociates a subnet from a route table.
+Disassociates a subnet or gateway from a route table.
 }
 \details{
 After you perform this action, the subnet no longer uses the routes in

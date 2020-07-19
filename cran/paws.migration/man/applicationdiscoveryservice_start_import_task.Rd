@@ -3,9 +3,9 @@
 \name{applicationdiscoveryservice_start_import_task}
 \alias{applicationdiscoveryservice_start_import_task}
 \title{Starts an import task, which allows you to import details of your
-on-premises environment directly into AWS without having to use the
-Application Discovery Service (ADS) tools such as the Discovery
-Connector or Discovery Agent}
+on-premises environment directly into AWS Migration Hub without having
+to use the Application Discovery Service (ADS) tools such as the
+Discovery Connector or Discovery Agent}
 \usage{
 applicationdiscoveryservice_start_import_task(clientRequestToken, name,
   importUrl)
@@ -31,12 +31,12 @@ If you\'re using the AWS CLI, this URL is structured as follows:
 }
 \description{
 Starts an import task, which allows you to import details of your
-on-premises environment directly into AWS without having to use the
-Application Discovery Service (ADS) tools such as the Discovery
-Connector or Discovery Agent. This gives you the option to perform
-migration assessment and planning directly from your imported data,
-including the ability to group your devices as applications and track
-their migration status.
+on-premises environment directly into AWS Migration Hub without having
+to use the Application Discovery Service (ADS) tools such as the
+Discovery Connector or Discovery Agent. This gives you the option to
+perform migration assessment and planning directly from your imported
+data, including the ability to group your devices as applications and
+track their migration status.
 }
 \details{
 To start an import request, do this:

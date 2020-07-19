@@ -4,8 +4,8 @@
 \alias{appmesh_create_virtual_service}
 \title{Creates a virtual service within a service mesh}
 \usage{
-appmesh_create_virtual_service(clientToken, meshName, spec, tags,
-  virtualServiceName)
+appmesh_create_virtual_service(clientToken, meshName, meshOwner, spec,
+  tags, virtualServiceName)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -13,6 +13,11 @@ idempotency of the request. Up to 36 letters, numbers, hyphens, and
 underscores are allowed.}
 
 \item{meshName}{[required] The name of the service mesh to create the virtual service in.}
+
+\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then the account that you specify must share the mesh with
+your account before you can create the resource in the service mesh. For
+more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{spec}{[required] The virtual service specification to apply.}
 
@@ -34,11 +39,14 @@ Dependent services call your virtual service by its
 \code{virtualServiceName}, and those requests are routed to the virtual node
 or virtual router that is specified as the provider for the virtual
 service.
+
+For more information about virtual services, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_services.html}{Virtual services}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_virtual_service(
   clientToken = "string",
   meshName = "string",
+  meshOwner = "string",
   spec = list(
     provider = list(
       virtualNode = list(

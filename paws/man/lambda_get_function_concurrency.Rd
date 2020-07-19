@@ -2,7 +2,8 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_get_function_concurrency}
 \alias{lambda_get_function_concurrency}
-\title{Returns details about the concurrency configuration for a function}
+\title{Returns details about the reserved concurrency configuration for a
+function}
 \usage{
 lambda_get_function_concurrency(FunctionName)
 }
@@ -21,8 +22,9 @@ The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 }
 \description{
-Returns details about the concurrency configuration for a function. To
-set a concurrency limit for a function, use PutFunctionConcurrency.
+Returns details about the reserved concurrency configuration for a
+function. To set a concurrency limit for a function, use
+PutFunctionConcurrency.
 }
 \section{Request syntax}{
 \preformatted{svc$get_function_concurrency(
@@ -31,4 +33,14 @@ set a concurrency limit for a function, use PutFunctionConcurrency.
 }
 }
 
+\examples{
+\dontrun{
+# The following example returns the reserved concurrency setting for a
+# function named my-function.
+svc$get_function_concurrency(
+  FunctionName = "my-function"
+)
+}
+
+}
 \keyword{internal}

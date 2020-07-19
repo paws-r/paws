@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_delete_lifecycle_policy}
 \alias{ecr_delete_lifecycle_policy}
-\title{Deletes the specified lifecycle policy}
+\title{Deletes the lifecycle policy associated with the specified repository}
 \usage{
 ecr_delete_lifecycle_policy(registryId, repositoryName)
 }
@@ -14,7 +14,7 @@ assumed.}
 \item{repositoryName}{[required] The name of the repository.}
 }
 \description{
-Deletes the specified lifecycle policy.
+Deletes the lifecycle policy associated with the specified repository.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_lifecycle_policy(

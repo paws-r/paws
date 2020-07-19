@@ -147,6 +147,18 @@ NULL
   return(populate(args, shape))
 }
 
+.wafregional$create_web_acl_migration_stack_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WebACLId = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), IgnoreUnsupportedType = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.wafregional$create_web_acl_migration_stack_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(S3ObjectUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .wafregional$create_xss_match_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), ChangeToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

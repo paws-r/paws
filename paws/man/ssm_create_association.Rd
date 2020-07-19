@@ -2,13 +2,13 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_create_association}
 \alias{ssm_create_association}
-\title{Associates the specified Systems Manager document with the specified
-instances or targets}
+\title{A State Manager association defines the state that you want to maintain
+on your instances}
 \usage{
 ssm_create_association(Name, DocumentVersion, InstanceId, Parameters,
   Targets, ScheduleExpression, OutputLocation, AssociationName,
   AutomationTargetParameterName, MaxErrors, MaxConcurrency,
-  ComplianceSeverity)
+  ComplianceSeverity, SyncCompliance, ApplyOnlyAtCronInterval)
 }
 \arguments{
 \item{Name}{[required] The name of the SSM document that contains the configuration information
@@ -46,14 +46,15 @@ cannot use the parameters \code{AssociationName}, \code{DocumentVersion},
 
 \item{Parameters}{The parameters for the runtime configuration of the document.}
 
-\item{Targets}{The targets (either instances or tags) for the association. You must
-specify a value for \code{Targets} if you don\'t specify a value for
-\code{InstanceId}.}
+\item{Targets}{The targets for the association. You can target instances by using tags,
+AWS Resource Groups, all instances in an AWS account, or individual
+instance IDs. For more information about choosing targets for an
+association, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state-manager-targets-and-rate-controls.html}{Using targets and rate controls with State Manager associations}
+in the \emph{AWS Systems Manager User Guide}.}
 
 \item{ScheduleExpression}{A cron expression when the association will be applied to the target(s).}
 
-\item{OutputLocation}{An Amazon S3 bucket where you want to store the output details of the
-request.}
+\item{OutputLocation}{An S3 bucket where you want to store the output details of the request.}
 
 \item{AssociationName}{Specify a descriptive name for the association.}
 
@@ -89,19 +90,40 @@ instance will process its association within the limit specified for
 MaxConcurrency.}
 
 \item{ComplianceSeverity}{The severity level to assign to the association.}
+
+\item{SyncCompliance}{The mode for generating association compliance. You can specify \code{AUTO}
+or \code{MANUAL}. In \code{AUTO} mode, the system uses the status of the
+association execution to determine the compliance status. If the
+association execution runs successfully, then the association is
+\code{COMPLIANT}. If the association execution doesn\'t run successfully, the
+association is \code{NON-COMPLIANT}.
+
+In \code{MANUAL} mode, you must specify the \code{AssociationId} as a parameter
+for the PutComplianceItems API action. In this case, compliance data is
+not managed by State Manager. It is managed by your direct call to the
+PutComplianceItems API action.
+
+By default, all associations use \code{AUTO} mode.}
+
+\item{ApplyOnlyAtCronInterval}{By default, when you create a new associations, the system runs it
+immediately after it is created and then according to the schedule you
+specified. Specify this option if you don\'t want an association to run
+immediately after you create it.}
 }
 \description{
-Associates the specified Systems Manager document with the specified
-instances or targets.
-}
-\details{
-When you associate a document with one or more instances using instance
-IDs or tags, SSM Agent running on the instance processes the document
-and configures the instance as specified.
-
-If you associate a document with an instance that already has an
-associated document, the system returns the AssociationAlreadyExists
-exception.
+A State Manager association defines the state that you want to maintain
+on your instances. For example, an association can specify that
+anti-virus software must be installed and running on your instances, or
+that certain ports must be closed. For static targets, the association
+specifies a schedule for when the configuration is reapplied. For
+dynamic targets, such as an AWS Resource Group or an AWS Autoscaling
+Group, State Manager applies the configuration when new instances are
+added to the group. The association also specifies actions to take when
+applying the configuration. For example, an association for anti-virus
+software might run once a day. If the software is not installed, then
+State Manager installs it. If the software is installed, but the service
+is not running, then the association might instruct State Manager to
+start the service.
 }
 \section{Request syntax}{
 \preformatted{svc$create_association(
@@ -133,7 +155,9 @@ exception.
   AutomationTargetParameterName = "string",
   MaxErrors = "string",
   MaxConcurrency = "string",
-  ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED"
+  ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
+  SyncCompliance = "AUTO"|"MANUAL",
+  ApplyOnlyAtCronInterval = TRUE|FALSE
 )
 }
 }

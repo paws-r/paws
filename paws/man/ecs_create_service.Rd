@@ -177,13 +177,17 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{healthCheckGracePeriodSeconds}{The period of time, in seconds, that the Amazon ECS service scheduler
 should ignore unhealthy Elastic Load Balancing target health checks
-after a task has first started. This is only valid if your service is
-configured to use a load balancer. If your service\'s tasks take a while
-to start and respond to Elastic Load Balancing health checks, you can
-specify a health check grace period of up to 2,147,483,647 seconds.
-During that time, the ECS service scheduler ignores health check status.
-This grace period can prevent the ECS service scheduler from marking
-tasks as unhealthy and stopping them before they have time to come up.}
+after a task has first started. This is only used when your service is
+configured to use a load balancer. If your service has a load balancer
+defined and you don\'t specify a health check grace period value, the
+default value of \code{0} is used.
+
+If your service\'s tasks take a while to start and respond to Elastic
+Load Balancing health checks, you can specify a health check grace
+period of up to 2,147,483,647 seconds. During that time, the Amazon ECS
+service scheduler ignores health check status. This grace period can
+prevent the service scheduler from marking tasks as unhealthy and
+stopping them before they have time to come up.}
 
 \item{schedulingStrategy}{The scheduling strategy to use for the service. For more information,
 see
@@ -199,9 +203,12 @@ decisions. This scheduler strategy is required if the service is
 using the \code{CODE_DEPLOY} or \code{EXTERNAL} deployment controller types.
 \item \code{DAEMON}-The daemon scheduling strategy deploys exactly one task on
 each active container instance that meets all of the task placement
-constraints that you specify in your cluster. When you\'re using
-this strategy, you don\'t need to specify a desired number of tasks,
-a task placement strategy, or use Service Auto Scaling policies.
+constraints that you specify in your cluster. The service scheduler
+also evaluates the task placement constraints for running tasks and
+will stop tasks that do not meet the placement constraints. When
+you\'re using this strategy, you don\'t need to specify a desired
+number of tasks, a task placement strategy, or use Service Auto
+Scaling policies.
 
 Tasks using the Fargate launch type or the \code{CODE_DEPLOY} or
 \code{EXTERNAL} deployment controller types don\'t support the \code{DAEMON}
@@ -249,7 +256,8 @@ creation, use the TagResource API action.}
 Runs and maintains a desired number of tasks from a specified task
 definition. If the number of tasks running in a service drops below the
 \code{desiredCount}, Amazon ECS runs another copy of the task in the
-specified cluster. To update an existing service, see UpdateService.
+specified cluster. To update an existing service, see the UpdateService
+action.
 }
 \details{
 In addition to maintaining the desired count of tasks in your service,
@@ -274,10 +282,12 @@ decisions. For more information, see \href{https://docs.aws.amazon.com/AmazonECS
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 \item \code{DAEMON} - The daemon scheduling strategy deploys exactly one task
 on each active container instance that meets all of the task
-placement constraints that you specify in your cluster. When using
-this strategy, you don\'t need to specify a desired number of tasks,
-a task placement strategy, or use Service Auto Scaling policies. For
-more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html}{Service Scheduler Concepts}
+placement constraints that you specify in your cluster. The service
+scheduler also evaluates the task placement constraints for running
+tasks and will stop tasks that do not meet the placement
+constraints. When using this strategy, you don\'t need to specify a
+desired number of tasks, a task placement strategy, or use Service
+Auto Scaling policies. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html}{Service Scheduler Concepts}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 

@@ -12,7 +12,13 @@ securityhub_describe_action_targets(ActionTargetArns, NextToken,
 \item{ActionTargetArns}{A list of custom action target ARNs for the custom action targets to
 retrieve.}
 
-\item{NextToken}{The token that is required for pagination.}
+\item{NextToken}{The token that is required for pagination. On your first call to the
+\code{DescribeActionTargets} operation, set the value of this parameter to
+\code{NULL}.
+
+For subsequent calls to the operation, to continue listing data, set the
+value of this parameter to the value returned from the previous
+response.}
 
 \item{MaxResults}{The maximum number of results to return.}
 }

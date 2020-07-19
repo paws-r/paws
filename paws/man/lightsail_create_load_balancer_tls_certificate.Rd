@@ -39,7 +39,7 @@ Creates a Lightsail load balancer TLS certificate.
 TLS is just an updated, more secure version of Secure Socket Layer
 (SSL).
 
-The \verb{create load balancer tls certificate} operation supports tag-based
+The \code{CreateLoadBalancerTlsCertificate} operation supports tag-based
 access control via resource tags applied to the resource identified by
 \verb{load balancer name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }

@@ -34,6 +34,9 @@ previous generation counterparts.
 \strong{M4 node types:} \code{cache.m4.large}, \code{cache.m4.xlarge},
 \code{cache.m4.2xlarge}, \code{cache.m4.4xlarge}, \code{cache.m4.10xlarge}
 
+\strong{T3 node types:} \code{cache.t3.micro}, \code{cache.t3.small},
+\code{cache.t3.medium}
+
 \strong{T2 node types:} \code{cache.t2.micro}, \code{cache.t2.small},
 \code{cache.t2.medium}
 \item Previous generation: (not recommended)

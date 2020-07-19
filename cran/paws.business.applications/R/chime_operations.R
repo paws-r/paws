@@ -54,7 +54,7 @@ chime_associate_phone_number_with_user <- function(AccountId, UserId, E164PhoneN
 #'   E164PhoneNumbers, ForceAssociate)
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
-#' @param E164PhoneNumbers List of phone numbers, in E.164 format.
+#' @param E164PhoneNumbers &#91;required&#93; List of phone numbers, in E.164 format.
 #' @param ForceAssociate If true, associates the provided phone numbers with the provided Amazon
 #' Chime Voice Connector and removes any previously existing associations.
 #' If false, does not associate any phone numbers that have previously
@@ -74,7 +74,7 @@ chime_associate_phone_number_with_user <- function(AccountId, UserId, E164PhoneN
 #' @keywords internal
 #'
 #' @rdname chime_associate_phone_numbers_with_voice_connector
-chime_associate_phone_numbers_with_voice_connector <- function(VoiceConnectorId, E164PhoneNumbers = NULL, ForceAssociate = NULL) {
+chime_associate_phone_numbers_with_voice_connector <- function(VoiceConnectorId, E164PhoneNumbers, ForceAssociate = NULL) {
   op <- new_operation(
     name = "AssociatePhoneNumbersWithVoiceConnector",
     http_method = "POST",
@@ -102,7 +102,7 @@ chime_associate_phone_numbers_with_voice_connector <- function(VoiceConnectorId,
 #'   VoiceConnectorGroupId, E164PhoneNumbers, ForceAssociate)
 #'
 #' @param VoiceConnectorGroupId &#91;required&#93; The Amazon Chime Voice Connector group ID.
-#' @param E164PhoneNumbers List of phone numbers, in E.164 format.
+#' @param E164PhoneNumbers &#91;required&#93; List of phone numbers, in E.164 format.
 #' @param ForceAssociate If true, associates the provided phone numbers with the provided Amazon
 #' Chime Voice Connector Group and removes any previously existing
 #' associations. If false, does not associate any phone numbers that have
@@ -122,7 +122,7 @@ chime_associate_phone_numbers_with_voice_connector <- function(VoiceConnectorId,
 #' @keywords internal
 #'
 #' @rdname chime_associate_phone_numbers_with_voice_connector_group
-chime_associate_phone_numbers_with_voice_connector_group <- function(VoiceConnectorGroupId, E164PhoneNumbers = NULL, ForceAssociate = NULL) {
+chime_associate_phone_numbers_with_voice_connector_group <- function(VoiceConnectorGroupId, E164PhoneNumbers, ForceAssociate = NULL) {
   op <- new_operation(
     name = "AssociatePhoneNumbersWithVoiceConnectorGroup",
     http_method = "POST",
@@ -204,7 +204,13 @@ chime_associate_signin_delegate_groups_with_account <- function(AccountId, Signi
 #'   MeetingId = "string",
 #'   Attendees = list(
 #'     list(
-#'       ExternalUserId = "string"
+#'       ExternalUserId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -230,11 +236,13 @@ chime_batch_create_attendee <- function(MeetingId, Attendees) {
 }
 .chime$operations$batch_create_attendee <- chime_batch_create_attendee
 
-#' Adds up to 50 members to a chat room
+#' Adds up to 50 members to a chat room in an Amazon Chime Enterprise
+#' account
 #'
-#' Adds up to 50 members to a chat room. Members can be either users or
-#' bots. The member role designates whether the member is a chat room
-#' administrator or a general chat room member.
+#' Adds up to 50 members to a chat room in an Amazon Chime Enterprise
+#' account. Members can be either users or bots. The member role designates
+#' whether the member is a chat room administrator or a general chat room
+#' member.
 #'
 #' @usage
 #' chime_batch_create_room_membership(AccountId, RoomId,
@@ -583,31 +591,38 @@ chime_create_account <- function(Name) {
 #' the *Amazon Chime Developer Guide*.
 #'
 #' @usage
-#' chime_create_attendee(MeetingId, ExternalUserId)
+#' chime_create_attendee(MeetingId, ExternalUserId, Tags)
 #'
 #' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
 #' @param ExternalUserId &#91;required&#93; The Amazon Chime SDK external user ID. Links the attendee to an identity
 #' managed by a builder application.
+#' @param Tags The tag key-value pairs.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_attendee(
 #'   MeetingId = "string",
-#'   ExternalUserId = "string"
+#'   ExternalUserId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname chime_create_attendee
-chime_create_attendee <- function(MeetingId, ExternalUserId) {
+chime_create_attendee <- function(MeetingId, ExternalUserId, Tags = NULL) {
   op <- new_operation(
     name = "CreateAttendee",
     http_method = "POST",
     http_path = "/meetings/{meetingId}/attendees",
     paginator = list()
   )
-  input <- .chime$create_attendee_input(MeetingId = MeetingId, ExternalUserId = ExternalUserId)
+  input <- .chime$create_attendee_input(MeetingId = MeetingId, ExternalUserId = ExternalUserId, Tags = Tags)
   output <- .chime$create_attendee_output()
   config <- get_config()
   svc <- .chime$service(config)
@@ -661,22 +676,29 @@ chime_create_bot <- function(AccountId, DisplayName, Domain = NULL) {
 #' with no initial attendees
 #'
 #' Creates a new Amazon Chime SDK meeting in the specified media Region
-#' with no initial attendees. For more information about the Amazon Chime
-#' SDK, see [Using the Amazon Chime
+#' with no initial attendees. For more information about specifying media
+#' Regions, see [Amazon Chime SDK Media
+#' Regions](https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html)
+#' in the *Amazon Chime Developer Guide*. For more information about the
+#' Amazon Chime SDK, see [Using the Amazon Chime
 #' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
 #' the *Amazon Chime Developer Guide*.
 #'
 #' @usage
-#' chime_create_meeting(ClientRequestToken, MeetingHostId, MediaRegion,
-#'   NotificationsConfiguration)
+#' chime_create_meeting(ClientRequestToken, ExternalMeetingId,
+#'   MeetingHostId, MediaRegion, Tags, NotificationsConfiguration)
 #'
 #' @param ClientRequestToken &#91;required&#93; The unique identifier for the client request. Use a different token for
 #' different meetings.
+#' @param ExternalMeetingId The external meeting ID.
 #' @param MeetingHostId Reserved.
-#' @param MediaRegion The Region in which to create the meeting. Available values:
-#' `ap-northeast-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`,
-#' `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`,
-#' `sa-east-1`, `us-east-1`, `us-east-2`, `us-west-1`, `us-west-2`.
+#' @param MediaRegion The Region in which to create the meeting. Default: `us-east-1`.
+#' 
+#' Available values: `ap-northeast-1`, `ap-southeast-1`, `ap-southeast-2`,
+#' `ca-central-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`,
+#' `eu-west-3`, `sa-east-1`, `us-east-1`, `us-east-2`, `us-west-1`,
+#' `us-west-2`.
+#' @param Tags The tag key-value pairs.
 #' @param NotificationsConfiguration The configuration for resource targets to receive notifications when
 #' meeting and attendee events occur.
 #'
@@ -684,8 +706,15 @@ chime_create_bot <- function(AccountId, DisplayName, Domain = NULL) {
 #' ```
 #' svc$create_meeting(
 #'   ClientRequestToken = "string",
+#'   ExternalMeetingId = "string",
 #'   MeetingHostId = "string",
 #'   MediaRegion = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
 #'   NotificationsConfiguration = list(
 #'     SnsTopicArn = "string",
 #'     SqsQueueArn = "string"
@@ -696,14 +725,14 @@ chime_create_bot <- function(AccountId, DisplayName, Domain = NULL) {
 #' @keywords internal
 #'
 #' @rdname chime_create_meeting
-chime_create_meeting <- function(ClientRequestToken, MeetingHostId = NULL, MediaRegion = NULL, NotificationsConfiguration = NULL) {
+chime_create_meeting <- function(ClientRequestToken, ExternalMeetingId = NULL, MeetingHostId = NULL, MediaRegion = NULL, Tags = NULL, NotificationsConfiguration = NULL) {
   op <- new_operation(
     name = "CreateMeeting",
     http_method = "POST",
     http_path = "/meetings",
     paginator = list()
   )
-  input <- .chime$create_meeting_input(ClientRequestToken = ClientRequestToken, MeetingHostId = MeetingHostId, MediaRegion = MediaRegion, NotificationsConfiguration = NotificationsConfiguration)
+  input <- .chime$create_meeting_input(ClientRequestToken = ClientRequestToken, ExternalMeetingId = ExternalMeetingId, MeetingHostId = MeetingHostId, MediaRegion = MediaRegion, Tags = Tags, NotificationsConfiguration = NotificationsConfiguration)
   output <- .chime$create_meeting_output()
   config <- get_config()
   svc <- .chime$service(config)
@@ -712,6 +741,88 @@ chime_create_meeting <- function(ClientRequestToken, MeetingHostId = NULL, Media
   return(response)
 }
 .chime$operations$create_meeting <- chime_create_meeting
+
+#' Creates a new Amazon Chime SDK meeting in the specified media Region,
+#' with attendees
+#'
+#' Creates a new Amazon Chime SDK meeting in the specified media Region,
+#' with attendees. For more information about specifying media Regions, see
+#' [Amazon Chime SDK Media
+#' Regions](https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html)
+#' in the *Amazon Chime Developer Guide*. For more information about the
+#' Amazon Chime SDK, see [Using the Amazon Chime
+#' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
+#' the *Amazon Chime Developer Guide*.
+#'
+#' @usage
+#' chime_create_meeting_with_attendees(ClientRequestToken,
+#'   ExternalMeetingId, MeetingHostId, MediaRegion, Tags,
+#'   NotificationsConfiguration, Attendees)
+#'
+#' @param ClientRequestToken &#91;required&#93; The unique identifier for the client request. Use a different token for
+#' different meetings.
+#' @param ExternalMeetingId The external meeting ID.
+#' @param MeetingHostId Reserved.
+#' @param MediaRegion The Region in which to create the meeting. Default: `us-east-1`.
+#' 
+#' Available values: `ap-northeast-1`, `ap-southeast-1`, `ap-southeast-2`,
+#' `ca-central-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`,
+#' `eu-west-3`, `sa-east-1`, `us-east-1`, `us-east-2`, `us-west-1`,
+#' `us-west-2`.
+#' @param Tags The tag key-value pairs.
+#' @param NotificationsConfiguration 
+#' @param Attendees The request containing the attendees to create.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_meeting_with_attendees(
+#'   ClientRequestToken = "string",
+#'   ExternalMeetingId = "string",
+#'   MeetingHostId = "string",
+#'   MediaRegion = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   NotificationsConfiguration = list(
+#'     SnsTopicArn = "string",
+#'     SqsQueueArn = "string"
+#'   ),
+#'   Attendees = list(
+#'     list(
+#'       ExternalUserId = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_meeting_with_attendees
+chime_create_meeting_with_attendees <- function(ClientRequestToken, ExternalMeetingId = NULL, MeetingHostId = NULL, MediaRegion = NULL, Tags = NULL, NotificationsConfiguration = NULL, Attendees = NULL) {
+  op <- new_operation(
+    name = "CreateMeetingWithAttendees",
+    http_method = "POST",
+    http_path = "/meetings?operation=create-attendees",
+    paginator = list()
+  )
+  input <- .chime$create_meeting_with_attendees_input(ClientRequestToken = ClientRequestToken, ExternalMeetingId = ExternalMeetingId, MeetingHostId = MeetingHostId, MediaRegion = MediaRegion, Tags = Tags, NotificationsConfiguration = NotificationsConfiguration, Attendees = Attendees)
+  output <- .chime$create_meeting_with_attendees_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_meeting_with_attendees <- chime_create_meeting_with_attendees
 
 #' Creates an order for phone numbers to be provisioned
 #'
@@ -756,9 +867,72 @@ chime_create_phone_number_order <- function(ProductType, E164PhoneNumbers) {
 }
 .chime$operations$create_phone_number_order <- chime_create_phone_number_order
 
-#' Creates a chat room for the specified Amazon Chime account
+#' Creates a proxy session on the specified Amazon Chime Voice Connector
+#' for the specified participant phone numbers
 #'
-#' Creates a chat room for the specified Amazon Chime account.
+#' Creates a proxy session on the specified Amazon Chime Voice Connector
+#' for the specified participant phone numbers.
+#'
+#' @usage
+#' chime_create_proxy_session(VoiceConnectorId, ParticipantPhoneNumbers,
+#'   Name, ExpiryMinutes, Capabilities, NumberSelectionBehavior,
+#'   GeoMatchLevel, GeoMatchParams)
+#'
+#' @param VoiceConnectorId &#91;required&#93; The Amazon Chime voice connector ID.
+#' @param ParticipantPhoneNumbers &#91;required&#93; The participant phone numbers.
+#' @param Name The name of the proxy session.
+#' @param ExpiryMinutes The number of minutes allowed for the proxy session.
+#' @param Capabilities &#91;required&#93; The proxy session capabilities.
+#' @param NumberSelectionBehavior The preference for proxy phone number reuse, or stickiness, between the
+#' same participants across sessions.
+#' @param GeoMatchLevel The preference for matching the country or area code of the proxy phone
+#' number with that of the first participant.
+#' @param GeoMatchParams The country and area code for the proxy phone number.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_proxy_session(
+#'   VoiceConnectorId = "string",
+#'   ParticipantPhoneNumbers = list(
+#'     "string"
+#'   ),
+#'   Name = "string",
+#'   ExpiryMinutes = 123,
+#'   Capabilities = list(
+#'     "Voice"|"SMS"
+#'   ),
+#'   NumberSelectionBehavior = "PreferSticky"|"AvoidSticky",
+#'   GeoMatchLevel = "Country"|"AreaCode",
+#'   GeoMatchParams = list(
+#'     Country = "string",
+#'     AreaCode = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_proxy_session
+chime_create_proxy_session <- function(VoiceConnectorId, ParticipantPhoneNumbers, Name = NULL, ExpiryMinutes = NULL, Capabilities, NumberSelectionBehavior = NULL, GeoMatchLevel = NULL, GeoMatchParams = NULL) {
+  op <- new_operation(
+    name = "CreateProxySession",
+    http_method = "POST",
+    http_path = "/voice-connectors/{voiceConnectorId}/proxy-sessions",
+    paginator = list()
+  )
+  input <- .chime$create_proxy_session_input(VoiceConnectorId = VoiceConnectorId, ParticipantPhoneNumbers = ParticipantPhoneNumbers, Name = Name, ExpiryMinutes = ExpiryMinutes, Capabilities = Capabilities, NumberSelectionBehavior = NumberSelectionBehavior, GeoMatchLevel = GeoMatchLevel, GeoMatchParams = GeoMatchParams)
+  output <- .chime$create_proxy_session_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_proxy_session <- chime_create_proxy_session
+
+#' Creates a chat room for the specified Amazon Chime Enterprise account
+#'
+#' Creates a chat room for the specified Amazon Chime Enterprise account.
 #'
 #' @usage
 #' chime_create_room(AccountId, Name, ClientRequestToken)
@@ -796,11 +970,11 @@ chime_create_room <- function(AccountId, Name, ClientRequestToken = NULL) {
 }
 .chime$operations$create_room <- chime_create_room
 
-#' Adds a member to a chat room
+#' Adds a member to a chat room in an Amazon Chime Enterprise account
 #'
-#' Adds a member to a chat room. A member can be either a user or a bot.
-#' The member role designates whether the member is a chat room
-#' administrator or a general chat room member.
+#' Adds a member to a chat room in an Amazon Chime Enterprise account. A
+#' member can be either a user or a bot. The member role designates whether
+#' the member is a chat room administrator or a general chat room member.
 #'
 #' @usage
 #' chime_create_room_membership(AccountId, RoomId, MemberId, Role)
@@ -935,9 +1109,9 @@ chime_create_voice_connector <- function(Name, AwsRegion = NULL, RequireEncrypti
 #' AWS account
 #'
 #' Creates an Amazon Chime Voice Connector group under the administrator\'s
-#' AWS account. You can associate up to three existing Amazon Chime Voice
-#' Connectors with the Amazon Chime Voice Connector group by including
-#' `VoiceConnectorItems` in the request.
+#' AWS account. You can associate Amazon Chime Voice Connectors with the
+#' Amazon Chime Voice Connector group by including `VoiceConnectorItems` in
+#' the request.
 #' 
 #' You can include Amazon Chime Voice Connectors from different AWS Regions
 #' in your group. This creates a fault tolerant mechanism for fallback in
@@ -1197,9 +1371,49 @@ chime_delete_phone_number <- function(PhoneNumberId) {
 }
 .chime$operations$delete_phone_number <- chime_delete_phone_number
 
-#' Deletes a chat room
+#' Deletes the specified proxy session from the specified Amazon Chime
+#' Voice Connector
 #'
-#' Deletes a chat room.
+#' Deletes the specified proxy session from the specified Amazon Chime
+#' Voice Connector.
+#'
+#' @usage
+#' chime_delete_proxy_session(VoiceConnectorId, ProxySessionId)
+#'
+#' @param VoiceConnectorId &#91;required&#93; The Amazon Chime voice connector ID.
+#' @param ProxySessionId &#91;required&#93; The proxy session ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_proxy_session(
+#'   VoiceConnectorId = "string",
+#'   ProxySessionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_proxy_session
+chime_delete_proxy_session <- function(VoiceConnectorId, ProxySessionId) {
+  op <- new_operation(
+    name = "DeleteProxySession",
+    http_method = "DELETE",
+    http_path = "/voice-connectors/{voiceConnectorId}/proxy-sessions/{proxySessionId}",
+    paginator = list()
+  )
+  input <- .chime$delete_proxy_session_input(VoiceConnectorId = VoiceConnectorId, ProxySessionId = ProxySessionId)
+  output <- .chime$delete_proxy_session_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_proxy_session <- chime_delete_proxy_session
+
+#' Deletes a chat room in an Amazon Chime Enterprise account
+#'
+#' Deletes a chat room in an Amazon Chime Enterprise account.
 #'
 #' @usage
 #' chime_delete_room(AccountId, RoomId)
@@ -1235,9 +1449,9 @@ chime_delete_room <- function(AccountId, RoomId) {
 }
 .chime$operations$delete_room <- chime_delete_room
 
-#' Removes a member from a chat room
+#' Removes a member from a chat room in an Amazon Chime Enterprise account
 #'
-#' Removes a member from a chat room.
+#' Removes a member from a chat room in an Amazon Chime Enterprise account.
 #'
 #' @usage
 #' chime_delete_room_membership(AccountId, RoomId, MemberId)
@@ -1313,6 +1527,45 @@ chime_delete_voice_connector <- function(VoiceConnectorId) {
 }
 .chime$operations$delete_voice_connector <- chime_delete_voice_connector
 
+#' Deletes the emergency calling configuration details from the specified
+#' Amazon Chime Voice Connector
+#'
+#' Deletes the emergency calling configuration details from the specified
+#' Amazon Chime Voice Connector.
+#'
+#' @usage
+#' chime_delete_voice_connector_emergency_calling_configuration(
+#'   VoiceConnectorId)
+#'
+#' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_voice_connector_emergency_calling_configuration(
+#'   VoiceConnectorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_voice_connector_emergency_calling_configuration
+chime_delete_voice_connector_emergency_calling_configuration <- function(VoiceConnectorId) {
+  op <- new_operation(
+    name = "DeleteVoiceConnectorEmergencyCallingConfiguration",
+    http_method = "DELETE",
+    http_path = "/voice-connectors/{voiceConnectorId}/emergency-calling-configuration",
+    paginator = list()
+  )
+  input <- .chime$delete_voice_connector_emergency_calling_configuration_input(VoiceConnectorId = VoiceConnectorId)
+  output <- .chime$delete_voice_connector_emergency_calling_configuration_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_voice_connector_emergency_calling_configuration <- chime_delete_voice_connector_emergency_calling_configuration
+
 #' Deletes the specified Amazon Chime Voice Connector group
 #'
 #' Deletes the specified Amazon Chime Voice Connector group. Any
@@ -1356,6 +1609,9 @@ chime_delete_voice_connector_group <- function(VoiceConnectorGroupId) {
 #'
 #' Deletes the origination settings for the specified Amazon Chime Voice
 #' Connector.
+#' 
+#' If emergency calling is configured for the Amazon Chime Voice Connector,
+#' it must be deleted prior to deleting the origination settings.
 #'
 #' @usage
 #' chime_delete_voice_connector_origination(VoiceConnectorId)
@@ -1388,6 +1644,44 @@ chime_delete_voice_connector_origination <- function(VoiceConnectorId) {
   return(response)
 }
 .chime$operations$delete_voice_connector_origination <- chime_delete_voice_connector_origination
+
+#' Deletes the proxy configuration from the specified Amazon Chime Voice
+#' Connector
+#'
+#' Deletes the proxy configuration from the specified Amazon Chime Voice
+#' Connector.
+#'
+#' @usage
+#' chime_delete_voice_connector_proxy(VoiceConnectorId)
+#'
+#' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_voice_connector_proxy(
+#'   VoiceConnectorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_voice_connector_proxy
+chime_delete_voice_connector_proxy <- function(VoiceConnectorId) {
+  op <- new_operation(
+    name = "DeleteVoiceConnectorProxy",
+    http_method = "DELETE",
+    http_path = "/voice-connectors/{voiceConnectorId}/programmable-numbers/proxy",
+    paginator = list()
+  )
+  input <- .chime$delete_voice_connector_proxy_input(VoiceConnectorId = VoiceConnectorId)
+  output <- .chime$delete_voice_connector_proxy_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_voice_connector_proxy <- chime_delete_voice_connector_proxy
 
 #' Deletes the streaming configuration for the specified Amazon Chime Voice
 #' Connector
@@ -1432,6 +1726,9 @@ chime_delete_voice_connector_streaming_configuration <- function(VoiceConnectorI
 #'
 #' Deletes the termination settings for the specified Amazon Chime Voice
 #' Connector.
+#' 
+#' If emergency calling is configured for the Amazon Chime Voice Connector,
+#' it must be deleted prior to deleting the termination settings.
 #'
 #' @usage
 #' chime_delete_voice_connector_termination(VoiceConnectorId)
@@ -1476,7 +1773,7 @@ chime_delete_voice_connector_termination <- function(VoiceConnectorId) {
 #'   Usernames)
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
-#' @param Usernames The RFC2617 compliant username associated with the SIP credentials, in
+#' @param Usernames &#91;required&#93; The RFC2617 compliant username associated with the SIP credentials, in
 #' US-ASCII format.
 #'
 #' @section Request syntax:
@@ -1492,7 +1789,7 @@ chime_delete_voice_connector_termination <- function(VoiceConnectorId) {
 #' @keywords internal
 #'
 #' @rdname chime_delete_voice_connector_termination_credentials
-chime_delete_voice_connector_termination_credentials <- function(VoiceConnectorId, Usernames = NULL) {
+chime_delete_voice_connector_termination_credentials <- function(VoiceConnectorId, Usernames) {
   op <- new_operation(
     name = "DeleteVoiceConnectorTerminationCredentials",
     http_method = "POST",
@@ -1560,7 +1857,7 @@ chime_disassociate_phone_number_from_user <- function(AccountId, UserId) {
 #'   E164PhoneNumbers)
 #'
 #' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
-#' @param E164PhoneNumbers List of phone numbers, in E.164 format.
+#' @param E164PhoneNumbers &#91;required&#93; List of phone numbers, in E.164 format.
 #'
 #' @section Request syntax:
 #' ```
@@ -1575,7 +1872,7 @@ chime_disassociate_phone_number_from_user <- function(AccountId, UserId) {
 #' @keywords internal
 #'
 #' @rdname chime_disassociate_phone_numbers_from_voice_connector
-chime_disassociate_phone_numbers_from_voice_connector <- function(VoiceConnectorId, E164PhoneNumbers = NULL) {
+chime_disassociate_phone_numbers_from_voice_connector <- function(VoiceConnectorId, E164PhoneNumbers) {
   op <- new_operation(
     name = "DisassociatePhoneNumbersFromVoiceConnector",
     http_method = "POST",
@@ -1603,7 +1900,7 @@ chime_disassociate_phone_numbers_from_voice_connector <- function(VoiceConnector
 #'   VoiceConnectorGroupId, E164PhoneNumbers)
 #'
 #' @param VoiceConnectorGroupId &#91;required&#93; The Amazon Chime Voice Connector group ID.
-#' @param E164PhoneNumbers List of phone numbers, in E.164 format.
+#' @param E164PhoneNumbers &#91;required&#93; List of phone numbers, in E.164 format.
 #'
 #' @section Request syntax:
 #' ```
@@ -1618,7 +1915,7 @@ chime_disassociate_phone_numbers_from_voice_connector <- function(VoiceConnector
 #' @keywords internal
 #'
 #' @rdname chime_disassociate_phone_numbers_from_voice_connector_group
-chime_disassociate_phone_numbers_from_voice_connector_group <- function(VoiceConnectorGroupId, E164PhoneNumbers = NULL) {
+chime_disassociate_phone_numbers_from_voice_connector_group <- function(VoiceConnectorGroupId, E164PhoneNumbers) {
   op <- new_operation(
     name = "DisassociatePhoneNumbersFromVoiceConnectorGroup",
     http_method = "POST",
@@ -2063,9 +2360,92 @@ chime_get_phone_number_settings <- function() {
 }
 .chime$operations$get_phone_number_settings <- chime_get_phone_number_settings
 
-#' Retrieves room details, such as the room name
+#' Gets the specified proxy session details for the specified Amazon Chime
+#' Voice Connector
 #'
-#' Retrieves room details, such as the room name.
+#' Gets the specified proxy session details for the specified Amazon Chime
+#' Voice Connector.
+#'
+#' @usage
+#' chime_get_proxy_session(VoiceConnectorId, ProxySessionId)
+#'
+#' @param VoiceConnectorId &#91;required&#93; The Amazon Chime voice connector ID.
+#' @param ProxySessionId &#91;required&#93; The proxy session ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_proxy_session(
+#'   VoiceConnectorId = "string",
+#'   ProxySessionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_get_proxy_session
+chime_get_proxy_session <- function(VoiceConnectorId, ProxySessionId) {
+  op <- new_operation(
+    name = "GetProxySession",
+    http_method = "GET",
+    http_path = "/voice-connectors/{voiceConnectorId}/proxy-sessions/{proxySessionId}",
+    paginator = list()
+  )
+  input <- .chime$get_proxy_session_input(VoiceConnectorId = VoiceConnectorId, ProxySessionId = ProxySessionId)
+  output <- .chime$get_proxy_session_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$get_proxy_session <- chime_get_proxy_session
+
+#' Gets the retention settings for the specified Amazon Chime Enterprise
+#' account
+#'
+#' Gets the retention settings for the specified Amazon Chime Enterprise
+#' account. For more information about retention settings, see [Managing
+#' Chat Retention
+#' Policies](https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html)
+#' in the *Amazon Chime Administration Guide*.
+#'
+#' @usage
+#' chime_get_retention_settings(AccountId)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_retention_settings(
+#'   AccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_get_retention_settings
+chime_get_retention_settings <- function(AccountId) {
+  op <- new_operation(
+    name = "GetRetentionSettings",
+    http_method = "GET",
+    http_path = "/accounts/{accountId}/retention-settings",
+    paginator = list()
+  )
+  input <- .chime$get_retention_settings_input(AccountId = AccountId)
+  output <- .chime$get_retention_settings_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$get_retention_settings <- chime_get_retention_settings
+
+#' Retrieves room details, such as the room name, for a room in an Amazon
+#' Chime Enterprise account
+#'
+#' Retrieves room details, such as the room name, for a room in an Amazon
+#' Chime Enterprise account.
 #'
 #' @usage
 #' chime_get_room(AccountId, RoomId)
@@ -2222,6 +2602,45 @@ chime_get_voice_connector <- function(VoiceConnectorId) {
 }
 .chime$operations$get_voice_connector <- chime_get_voice_connector
 
+#' Gets the emergency calling configuration details for the specified
+#' Amazon Chime Voice Connector
+#'
+#' Gets the emergency calling configuration details for the specified
+#' Amazon Chime Voice Connector.
+#'
+#' @usage
+#' chime_get_voice_connector_emergency_calling_configuration(
+#'   VoiceConnectorId)
+#'
+#' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_voice_connector_emergency_calling_configuration(
+#'   VoiceConnectorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_get_voice_connector_emergency_calling_configuration
+chime_get_voice_connector_emergency_calling_configuration <- function(VoiceConnectorId) {
+  op <- new_operation(
+    name = "GetVoiceConnectorEmergencyCallingConfiguration",
+    http_method = "GET",
+    http_path = "/voice-connectors/{voiceConnectorId}/emergency-calling-configuration",
+    paginator = list()
+  )
+  input <- .chime$get_voice_connector_emergency_calling_configuration_input(VoiceConnectorId = VoiceConnectorId)
+  output <- .chime$get_voice_connector_emergency_calling_configuration_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$get_voice_connector_emergency_calling_configuration <- chime_get_voice_connector_emergency_calling_configuration
+
 #' Retrieves details for the specified Amazon Chime Voice Connector group,
 #' such as timestamps, name, and associated VoiceConnectorItems
 #'
@@ -2336,6 +2755,44 @@ chime_get_voice_connector_origination <- function(VoiceConnectorId) {
   return(response)
 }
 .chime$operations$get_voice_connector_origination <- chime_get_voice_connector_origination
+
+#' Gets the proxy configuration details for the specified Amazon Chime
+#' Voice Connector
+#'
+#' Gets the proxy configuration details for the specified Amazon Chime
+#' Voice Connector.
+#'
+#' @usage
+#' chime_get_voice_connector_proxy(VoiceConnectorId)
+#'
+#' @param VoiceConnectorId &#91;required&#93; The Amazon Chime voice connector ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_voice_connector_proxy(
+#'   VoiceConnectorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_get_voice_connector_proxy
+chime_get_voice_connector_proxy <- function(VoiceConnectorId) {
+  op <- new_operation(
+    name = "GetVoiceConnectorProxy",
+    http_method = "GET",
+    http_path = "/voice-connectors/{voiceConnectorId}/programmable-numbers/proxy",
+    paginator = list()
+  )
+  input <- .chime$get_voice_connector_proxy_input(VoiceConnectorId = VoiceConnectorId)
+  output <- .chime$get_voice_connector_proxy_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$get_voice_connector_proxy <- chime_get_voice_connector_proxy
 
 #' Retrieves the streaming configuration details for the specified Amazon
 #' Chime Voice Connector
@@ -2546,6 +3003,44 @@ chime_list_accounts <- function(Name = NULL, UserEmail = NULL, NextToken = NULL,
 }
 .chime$operations$list_accounts <- chime_list_accounts
 
+#' Lists the tags applied to an Amazon Chime SDK attendee resource
+#'
+#' Lists the tags applied to an Amazon Chime SDK attendee resource.
+#'
+#' @usage
+#' chime_list_attendee_tags(MeetingId, AttendeeId)
+#'
+#' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
+#' @param AttendeeId &#91;required&#93; The Amazon Chime SDK attendee ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_attendee_tags(
+#'   MeetingId = "string",
+#'   AttendeeId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_attendee_tags
+chime_list_attendee_tags <- function(MeetingId, AttendeeId) {
+  op <- new_operation(
+    name = "ListAttendeeTags",
+    http_method = "GET",
+    http_path = "/meetings/{meetingId}/attendees/{attendeeId}/tags",
+    paginator = list()
+  )
+  input <- .chime$list_attendee_tags_input(MeetingId = MeetingId, AttendeeId = AttendeeId)
+  output <- .chime$list_attendee_tags_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_attendee_tags <- chime_list_attendee_tags
+
 #' Lists the attendees for the specified Amazon Chime SDK meeting
 #'
 #' Lists the attendees for the specified Amazon Chime SDK meeting. For more
@@ -2631,6 +3126,42 @@ chime_list_bots <- function(AccountId, MaxResults = NULL, NextToken = NULL) {
   return(response)
 }
 .chime$operations$list_bots <- chime_list_bots
+
+#' Lists the tags applied to an Amazon Chime SDK meeting resource
+#'
+#' Lists the tags applied to an Amazon Chime SDK meeting resource.
+#'
+#' @usage
+#' chime_list_meeting_tags(MeetingId)
+#'
+#' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_meeting_tags(
+#'   MeetingId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_meeting_tags
+chime_list_meeting_tags <- function(MeetingId) {
+  op <- new_operation(
+    name = "ListMeetingTags",
+    http_method = "GET",
+    http_path = "/meetings/{meetingId}/tags",
+    paginator = list()
+  )
+  input <- .chime$list_meeting_tags_input(MeetingId = MeetingId)
+  output <- .chime$list_meeting_tags_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_meeting_tags <- chime_list_meeting_tags
 
 #' Lists up to 100 active Amazon Chime SDK meetings
 #'
@@ -2764,11 +3295,55 @@ chime_list_phone_numbers <- function(Status = NULL, ProductType = NULL, FilterNa
 }
 .chime$operations$list_phone_numbers <- chime_list_phone_numbers
 
-#' Lists the membership details for the specified room, such as the
-#' members' IDs, email addresses, and names
+#' Lists the proxy sessions for the specified Amazon Chime Voice Connector
 #'
-#' Lists the membership details for the specified room, such as the
-#' members\' IDs, email addresses, and names.
+#' Lists the proxy sessions for the specified Amazon Chime Voice Connector.
+#'
+#' @usage
+#' chime_list_proxy_sessions(VoiceConnectorId, Status, NextToken,
+#'   MaxResults)
+#'
+#' @param VoiceConnectorId &#91;required&#93; The Amazon Chime voice connector ID.
+#' @param Status The proxy session status.
+#' @param NextToken The token to use to retrieve the next page of results.
+#' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_proxy_sessions(
+#'   VoiceConnectorId = "string",
+#'   Status = "Open"|"InProgress"|"Closed",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_proxy_sessions
+chime_list_proxy_sessions <- function(VoiceConnectorId, Status = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListProxySessions",
+    http_method = "GET",
+    http_path = "/voice-connectors/{voiceConnectorId}/proxy-sessions",
+    paginator = list()
+  )
+  input <- .chime$list_proxy_sessions_input(VoiceConnectorId = VoiceConnectorId, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .chime$list_proxy_sessions_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_proxy_sessions <- chime_list_proxy_sessions
+
+#' Lists the membership details for the specified room in an Amazon Chime
+#' Enterprise account, such as the members' IDs, email addresses, and names
+#'
+#' Lists the membership details for the specified room in an Amazon Chime
+#' Enterprise account, such as the members\' IDs, email addresses, and
+#' names.
 #'
 #' @usage
 #' chime_list_room_memberships(AccountId, RoomId, MaxResults, NextToken)
@@ -2808,11 +3383,11 @@ chime_list_room_memberships <- function(AccountId, RoomId, MaxResults = NULL, Ne
 }
 .chime$operations$list_room_memberships <- chime_list_room_memberships
 
-#' Lists the room details for the specified Amazon Chime account
+#' Lists the room details for the specified Amazon Chime Enterprise account
 #'
-#' Lists the room details for the specified Amazon Chime account.
-#' Optionally, filter the results by a member ID (user ID or bot ID) to see
-#' a list of rooms that the member belongs to.
+#' Lists the room details for the specified Amazon Chime Enterprise
+#' account. Optionally, filter the results by a member ID (user ID or bot
+#' ID) to see a list of rooms that the member belongs to.
 #'
 #' @usage
 #' chime_list_rooms(AccountId, MemberId, MaxResults, NextToken)
@@ -2851,6 +3426,42 @@ chime_list_rooms <- function(AccountId, MemberId = NULL, MaxResults = NULL, Next
   return(response)
 }
 .chime$operations$list_rooms <- chime_list_rooms
+
+#' Lists the tags applied to an Amazon Chime SDK meeting resource
+#'
+#' Lists the tags applied to an Amazon Chime SDK meeting resource.
+#'
+#' @usage
+#' chime_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The resource ARN.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_tags_for_resource
+chime_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags",
+    paginator = list()
+  )
+  input <- .chime$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .chime$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_tags_for_resource <- chime_list_tags_for_resource
 
 #' Lists the users that belong to the specified Amazon Chime account
 #'
@@ -3102,6 +3713,116 @@ chime_put_events_configuration <- function(AccountId, BotId, OutboundEventsHTTPS
 }
 .chime$operations$put_events_configuration <- chime_put_events_configuration
 
+#' Puts retention settings for the specified Amazon Chime Enterprise
+#' account
+#'
+#' Puts retention settings for the specified Amazon Chime Enterprise
+#' account. We recommend using AWS CloudTrail to monitor usage of this API
+#' for your account. For more information, see [Logging Amazon Chime API
+#' Calls with AWS
+#' CloudTrail](https://docs.aws.amazon.com/chime/latest/ag/cloudtrail.html)
+#' in the *Amazon Chime Administration Guide*.
+#' 
+#' To turn off existing retention settings, remove the number of days from
+#' the corresponding **RetentionDays** field in the **RetentionSettings**
+#' object. For more information about retention settings, see [Managing
+#' Chat Retention
+#' Policies](https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html)
+#' in the *Amazon Chime Administration Guide*.
+#'
+#' @usage
+#' chime_put_retention_settings(AccountId, RetentionSettings)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param RetentionSettings &#91;required&#93; The retention settings.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_retention_settings(
+#'   AccountId = "string",
+#'   RetentionSettings = list(
+#'     RoomRetentionSettings = list(
+#'       RetentionDays = 123
+#'     ),
+#'     ConversationRetentionSettings = list(
+#'       RetentionDays = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_put_retention_settings
+chime_put_retention_settings <- function(AccountId, RetentionSettings) {
+  op <- new_operation(
+    name = "PutRetentionSettings",
+    http_method = "PUT",
+    http_path = "/accounts/{accountId}/retention-settings",
+    paginator = list()
+  )
+  input <- .chime$put_retention_settings_input(AccountId = AccountId, RetentionSettings = RetentionSettings)
+  output <- .chime$put_retention_settings_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$put_retention_settings <- chime_put_retention_settings
+
+#' Puts emergency calling configuration details to the specified Amazon
+#' Chime Voice Connector, such as emergency phone numbers and calling
+#' countries
+#'
+#' Puts emergency calling configuration details to the specified Amazon
+#' Chime Voice Connector, such as emergency phone numbers and calling
+#' countries. Origination and termination settings must be enabled for the
+#' Amazon Chime Voice Connector before emergency calling can be configured.
+#'
+#' @usage
+#' chime_put_voice_connector_emergency_calling_configuration(
+#'   VoiceConnectorId, EmergencyCallingConfiguration)
+#'
+#' @param VoiceConnectorId &#91;required&#93; The Amazon Chime Voice Connector ID.
+#' @param EmergencyCallingConfiguration &#91;required&#93; The emergency calling configuration details.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_voice_connector_emergency_calling_configuration(
+#'   VoiceConnectorId = "string",
+#'   EmergencyCallingConfiguration = list(
+#'     DNIS = list(
+#'       list(
+#'         EmergencyPhoneNumber = "string",
+#'         TestPhoneNumber = "string",
+#'         CallingCountry = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_put_voice_connector_emergency_calling_configuration
+chime_put_voice_connector_emergency_calling_configuration <- function(VoiceConnectorId, EmergencyCallingConfiguration) {
+  op <- new_operation(
+    name = "PutVoiceConnectorEmergencyCallingConfiguration",
+    http_method = "PUT",
+    http_path = "/voice-connectors/{voiceConnectorId}/emergency-calling-configuration",
+    paginator = list()
+  )
+  input <- .chime$put_voice_connector_emergency_calling_configuration_input(VoiceConnectorId = VoiceConnectorId, EmergencyCallingConfiguration = EmergencyCallingConfiguration)
+  output <- .chime$put_voice_connector_emergency_calling_configuration_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$put_voice_connector_emergency_calling_configuration <- chime_put_voice_connector_emergency_calling_configuration
+
 #' Adds a logging configuration for the specified Amazon Chime Voice
 #' Connector
 #'
@@ -3150,6 +3871,9 @@ chime_put_voice_connector_logging_configuration <- function(VoiceConnectorId, Lo
 #'
 #' Adds origination settings for the specified Amazon Chime Voice
 #' Connector.
+#' 
+#' If emergency calling is configured for the Amazon Chime Voice Connector,
+#' it must be deleted prior to turning off origination settings.
 #'
 #' @usage
 #' chime_put_voice_connector_origination(VoiceConnectorId, Origination)
@@ -3196,6 +3920,57 @@ chime_put_voice_connector_origination <- function(VoiceConnectorId, Origination)
 }
 .chime$operations$put_voice_connector_origination <- chime_put_voice_connector_origination
 
+#' Puts the specified proxy configuration to the specified Amazon Chime
+#' Voice Connector
+#'
+#' Puts the specified proxy configuration to the specified Amazon Chime
+#' Voice Connector.
+#'
+#' @usage
+#' chime_put_voice_connector_proxy(VoiceConnectorId,
+#'   DefaultSessionExpiryMinutes, PhoneNumberPoolCountries,
+#'   FallBackPhoneNumber, Disabled)
+#'
+#' @param VoiceConnectorId &#91;required&#93; The Amazon Chime voice connector ID.
+#' @param DefaultSessionExpiryMinutes &#91;required&#93; The default number of minutes allowed for proxy sessions.
+#' @param PhoneNumberPoolCountries &#91;required&#93; The countries for proxy phone numbers to be selected from.
+#' @param FallBackPhoneNumber The phone number to route calls to after a proxy session expires.
+#' @param Disabled When true, stops proxy sessions from being created on the specified
+#' Amazon Chime Voice Connector.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_voice_connector_proxy(
+#'   VoiceConnectorId = "string",
+#'   DefaultSessionExpiryMinutes = 123,
+#'   PhoneNumberPoolCountries = list(
+#'     "string"
+#'   ),
+#'   FallBackPhoneNumber = "string",
+#'   Disabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_put_voice_connector_proxy
+chime_put_voice_connector_proxy <- function(VoiceConnectorId, DefaultSessionExpiryMinutes, PhoneNumberPoolCountries, FallBackPhoneNumber = NULL, Disabled = NULL) {
+  op <- new_operation(
+    name = "PutVoiceConnectorProxy",
+    http_method = "PUT",
+    http_path = "/voice-connectors/{voiceConnectorId}/programmable-numbers/proxy",
+    paginator = list()
+  )
+  input <- .chime$put_voice_connector_proxy_input(VoiceConnectorId = VoiceConnectorId, DefaultSessionExpiryMinutes = DefaultSessionExpiryMinutes, PhoneNumberPoolCountries = PhoneNumberPoolCountries, FallBackPhoneNumber = FallBackPhoneNumber, Disabled = Disabled)
+  output <- .chime$put_voice_connector_proxy_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$put_voice_connector_proxy <- chime_put_voice_connector_proxy
+
 #' Adds a streaming configuration for the specified Amazon Chime Voice
 #' Connector
 #'
@@ -3217,7 +3992,12 @@ chime_put_voice_connector_origination <- function(VoiceConnectorId, Origination)
 #'   VoiceConnectorId = "string",
 #'   StreamingConfiguration = list(
 #'     DataRetentionInHours = 123,
-#'     Disabled = TRUE|FALSE
+#'     Disabled = TRUE|FALSE,
+#'     StreamingNotificationTargets = list(
+#'       list(
+#'         NotificationTarget = "EventBridge"|"SNS"|"SQS"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -3246,6 +4026,9 @@ chime_put_voice_connector_streaming_configuration <- function(VoiceConnectorId, 
 #'
 #' Adds termination settings for the specified Amazon Chime Voice
 #' Connector.
+#' 
+#' If emergency calling is configured for the Amazon Chime Voice Connector,
+#' it must be deleted prior to turning off termination settings.
 #'
 #' @usage
 #' chime_put_voice_connector_termination(VoiceConnectorId, Termination)
@@ -3336,6 +4119,88 @@ chime_put_voice_connector_termination_credentials <- function(VoiceConnectorId, 
   return(response)
 }
 .chime$operations$put_voice_connector_termination_credentials <- chime_put_voice_connector_termination_credentials
+
+#' Redacts the specified message from the specified Amazon Chime
+#' conversation
+#'
+#' Redacts the specified message from the specified Amazon Chime
+#' conversation.
+#'
+#' @usage
+#' chime_redact_conversation_message(AccountId, ConversationId, MessageId)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param ConversationId &#91;required&#93; The conversation ID.
+#' @param MessageId &#91;required&#93; The message ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$redact_conversation_message(
+#'   AccountId = "string",
+#'   ConversationId = "string",
+#'   MessageId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_redact_conversation_message
+chime_redact_conversation_message <- function(AccountId, ConversationId, MessageId) {
+  op <- new_operation(
+    name = "RedactConversationMessage",
+    http_method = "POST",
+    http_path = "/accounts/{accountId}/conversations/{conversationId}/messages/{messageId}?operation=redact",
+    paginator = list()
+  )
+  input <- .chime$redact_conversation_message_input(AccountId = AccountId, ConversationId = ConversationId, MessageId = MessageId)
+  output <- .chime$redact_conversation_message_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$redact_conversation_message <- chime_redact_conversation_message
+
+#' Redacts the specified message from the specified Amazon Chime chat room
+#'
+#' Redacts the specified message from the specified Amazon Chime chat room.
+#'
+#' @usage
+#' chime_redact_room_message(AccountId, RoomId, MessageId)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Chime account ID.
+#' @param RoomId &#91;required&#93; The room ID.
+#' @param MessageId &#91;required&#93; The message ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$redact_room_message(
+#'   AccountId = "string",
+#'   RoomId = "string",
+#'   MessageId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_redact_room_message
+chime_redact_room_message <- function(AccountId, RoomId, MessageId) {
+  op <- new_operation(
+    name = "RedactRoomMessage",
+    http_method = "POST",
+    http_path = "/accounts/{accountId}/rooms/{roomId}/messages/{messageId}?operation=redact",
+    paginator = list()
+  )
+  input <- .chime$redact_room_message_input(AccountId = AccountId, RoomId = RoomId, MessageId = MessageId)
+  output <- .chime$redact_room_message_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$redact_room_message <- chime_redact_room_message
 
 #' Regenerates the security token for a bot
 #'
@@ -3502,6 +4367,263 @@ chime_search_available_phone_numbers <- function(AreaCode = NULL, City = NULL, C
   return(response)
 }
 .chime$operations$search_available_phone_numbers <- chime_search_available_phone_numbers
+
+#' Applies the specified tags to the specified Amazon Chime SDK attendee
+#'
+#' Applies the specified tags to the specified Amazon Chime SDK attendee.
+#'
+#' @usage
+#' chime_tag_attendee(MeetingId, AttendeeId, Tags)
+#'
+#' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
+#' @param AttendeeId &#91;required&#93; The Amazon Chime SDK attendee ID.
+#' @param Tags &#91;required&#93; The tag key-value pairs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_attendee(
+#'   MeetingId = "string",
+#'   AttendeeId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_tag_attendee
+chime_tag_attendee <- function(MeetingId, AttendeeId, Tags) {
+  op <- new_operation(
+    name = "TagAttendee",
+    http_method = "POST",
+    http_path = "/meetings/{meetingId}/attendees/{attendeeId}/tags?operation=add",
+    paginator = list()
+  )
+  input <- .chime$tag_attendee_input(MeetingId = MeetingId, AttendeeId = AttendeeId, Tags = Tags)
+  output <- .chime$tag_attendee_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$tag_attendee <- chime_tag_attendee
+
+#' Applies the specified tags to the specified Amazon Chime SDK meeting
+#'
+#' Applies the specified tags to the specified Amazon Chime SDK meeting.
+#'
+#' @usage
+#' chime_tag_meeting(MeetingId, Tags)
+#'
+#' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
+#' @param Tags &#91;required&#93; The tag key-value pairs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_meeting(
+#'   MeetingId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_tag_meeting
+chime_tag_meeting <- function(MeetingId, Tags) {
+  op <- new_operation(
+    name = "TagMeeting",
+    http_method = "POST",
+    http_path = "/meetings/{meetingId}/tags?operation=add",
+    paginator = list()
+  )
+  input <- .chime$tag_meeting_input(MeetingId = MeetingId, Tags = Tags)
+  output <- .chime$tag_meeting_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$tag_meeting <- chime_tag_meeting
+
+#' Applies the specified tags to the specified Amazon Chime SDK meeting
+#' resource
+#'
+#' Applies the specified tags to the specified Amazon Chime SDK meeting
+#' resource.
+#'
+#' @usage
+#' chime_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The resource ARN.
+#' @param Tags &#91;required&#93; The tag key-value pairs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_tag_resource
+chime_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags?operation=tag-resource",
+    paginator = list()
+  )
+  input <- .chime$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .chime$tag_resource_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$tag_resource <- chime_tag_resource
+
+#' Untags the specified tags from the specified Amazon Chime SDK attendee
+#'
+#' Untags the specified tags from the specified Amazon Chime SDK attendee.
+#'
+#' @usage
+#' chime_untag_attendee(MeetingId, AttendeeId, TagKeys)
+#'
+#' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
+#' @param AttendeeId &#91;required&#93; The Amazon Chime SDK attendee ID.
+#' @param TagKeys &#91;required&#93; The tag keys.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_attendee(
+#'   MeetingId = "string",
+#'   AttendeeId = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_untag_attendee
+chime_untag_attendee <- function(MeetingId, AttendeeId, TagKeys) {
+  op <- new_operation(
+    name = "UntagAttendee",
+    http_method = "POST",
+    http_path = "/meetings/{meetingId}/attendees/{attendeeId}/tags?operation=delete",
+    paginator = list()
+  )
+  input <- .chime$untag_attendee_input(MeetingId = MeetingId, AttendeeId = AttendeeId, TagKeys = TagKeys)
+  output <- .chime$untag_attendee_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$untag_attendee <- chime_untag_attendee
+
+#' Untags the specified tags from the specified Amazon Chime SDK meeting
+#'
+#' Untags the specified tags from the specified Amazon Chime SDK meeting.
+#'
+#' @usage
+#' chime_untag_meeting(MeetingId, TagKeys)
+#'
+#' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
+#' @param TagKeys &#91;required&#93; The tag keys.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_meeting(
+#'   MeetingId = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_untag_meeting
+chime_untag_meeting <- function(MeetingId, TagKeys) {
+  op <- new_operation(
+    name = "UntagMeeting",
+    http_method = "POST",
+    http_path = "/meetings/{meetingId}/tags?operation=delete",
+    paginator = list()
+  )
+  input <- .chime$untag_meeting_input(MeetingId = MeetingId, TagKeys = TagKeys)
+  output <- .chime$untag_meeting_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$untag_meeting <- chime_untag_meeting
+
+#' Untags the specified tags from the specified Amazon Chime SDK meeting
+#' resource
+#'
+#' Untags the specified tags from the specified Amazon Chime SDK meeting
+#' resource.
+#'
+#' @usage
+#' chime_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The resource ARN.
+#' @param TagKeys &#91;required&#93; The tag keys.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_untag_resource
+chime_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/tags?operation=untag-resource",
+    paginator = list()
+  )
+  input <- .chime$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .chime$untag_resource_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$untag_resource <- chime_untag_resource
 
 #' Updates account details for the specified Amazon Chime account
 #'
@@ -3765,9 +4887,58 @@ chime_update_phone_number_settings <- function(CallingName) {
 }
 .chime$operations$update_phone_number_settings <- chime_update_phone_number_settings
 
-#' Updates room details, such as the room name
+#' Updates the specified proxy session details, such as voice or SMS
+#' capabilities
 #'
-#' Updates room details, such as the room name.
+#' Updates the specified proxy session details, such as voice or SMS
+#' capabilities.
+#'
+#' @usage
+#' chime_update_proxy_session(VoiceConnectorId, ProxySessionId,
+#'   Capabilities, ExpiryMinutes)
+#'
+#' @param VoiceConnectorId &#91;required&#93; The Amazon Chime voice connector ID.
+#' @param ProxySessionId &#91;required&#93; The proxy session ID.
+#' @param Capabilities &#91;required&#93; The proxy session capabilities.
+#' @param ExpiryMinutes The number of minutes allowed for the proxy session.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_proxy_session(
+#'   VoiceConnectorId = "string",
+#'   ProxySessionId = "string",
+#'   Capabilities = list(
+#'     "Voice"|"SMS"
+#'   ),
+#'   ExpiryMinutes = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_update_proxy_session
+chime_update_proxy_session <- function(VoiceConnectorId, ProxySessionId, Capabilities, ExpiryMinutes = NULL) {
+  op <- new_operation(
+    name = "UpdateProxySession",
+    http_method = "POST",
+    http_path = "/voice-connectors/{voiceConnectorId}/proxy-sessions/{proxySessionId}",
+    paginator = list()
+  )
+  input <- .chime$update_proxy_session_input(VoiceConnectorId = VoiceConnectorId, ProxySessionId = ProxySessionId, Capabilities = Capabilities, ExpiryMinutes = ExpiryMinutes)
+  output <- .chime$update_proxy_session_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$update_proxy_session <- chime_update_proxy_session
+
+#' Updates room details, such as the room name, for a room in an Amazon
+#' Chime Enterprise account
+#'
+#' Updates room details, such as the room name, for a room in an Amazon
+#' Chime Enterprise account.
 #'
 #' @usage
 #' chime_update_room(AccountId, RoomId, Name)
@@ -3805,12 +4976,13 @@ chime_update_room <- function(AccountId, RoomId, Name = NULL) {
 }
 .chime$operations$update_room <- chime_update_room
 
-#' Updates room membership details, such as the member role
+#' Updates room membership details, such as the member role, for a room in
+#' an Amazon Chime Enterprise account
 #'
-#' Updates room membership details, such as the member role. The member
-#' role designates whether the member is a chat room administrator or a
-#' general chat room member. The member role can be updated only for user
-#' IDs.
+#' Updates room membership details, such as the member role, for a room in
+#' an Amazon Chime Enterprise account. The member role designates whether
+#' the member is a chat room administrator or a general chat room member.
+#' The member role can be updated only for user IDs.
 #'
 #' @usage
 #' chime_update_room_membership(AccountId, RoomId, MemberId, Role)

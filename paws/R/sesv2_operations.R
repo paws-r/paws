@@ -113,7 +113,7 @@ sesv2_create_configuration_set <- function(ConfigurationSetName, TrackingOptions
 #'   EventDestination = list(
 #'     Enabled = TRUE|FALSE,
 #'     MatchingEventTypes = list(
-#'       "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"
+#'       "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"|"DELIVERY_DELAY"
 #'     ),
 #'     KinesisFirehoseDestination = list(
 #'       IamRoleArn = "string",
@@ -2458,7 +2458,7 @@ sesv2_untag_resource <- function(ResourceArn, TagKeys) {
 #'   EventDestination = list(
 #'     Enabled = TRUE|FALSE,
 #'     MatchingEventTypes = list(
-#'       "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"
+#'       "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"|"DELIVERY_DELAY"
 #'     ),
 #'     KinesisFirehoseDestination = list(
 #'       IamRoleArn = "string",

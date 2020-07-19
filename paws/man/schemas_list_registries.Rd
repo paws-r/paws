@@ -9,11 +9,15 @@ schemas_list_registries(Limit, NextToken, RegistryNamePrefix, Scope)
 \arguments{
 \item{Limit}{}
 
-\item{NextToken}{}
+\item{NextToken}{The token that specifies the next page of results to return. To request
+the first page, leave NextToken empty. The token will expire in 24
+hours, and cannot be shared with other accounts.}
 
-\item{RegistryNamePrefix}{}
+\item{RegistryNamePrefix}{Specifying this limits the results to only those registry names that
+start with the specified prefix.}
 
-\item{Scope}{}
+\item{Scope}{Can be set to Local or AWS to limit responses to your custom registries,
+or the ones provided by AWS.}
 }
 \description{
 List the registries.

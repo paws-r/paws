@@ -9,8 +9,9 @@ lambda_list_functions(MasterRegion, FunctionVersion, Marker, MaxItems)
 }
 \arguments{
 \item{MasterRegion}{For Lambda\\@Edge functions, the AWS Region of the master function. For
-example, \code{us-east-2} or \code{ALL}. If specified, you must set
-\code{FunctionVersion} to \code{ALL}.}
+example, \code{us-east-1} filters the list of functions to only include
+Lambda\\@Edge functions replicated from a master function in US East (N.
+Virginia). If specified, you must set \code{FunctionVersion} to \code{ALL}.}
 
 \item{FunctionVersion}{Set to \code{ALL} to include entries for all published versions of each
 function.}
@@ -18,12 +19,11 @@ function.}
 \item{Marker}{Specify the pagination token that\'s returned by a previous request to
 retrieve the next page of results.}
 
-\item{MaxItems}{Specify a value between 1 and 50 to limit the number of functions in the
-response.}
+\item{MaxItems}{The maximum number of functions to return.}
 }
 \description{
 Returns a list of Lambda functions, with the version-specific
-configuration of each.
+configuration of each. Lambda returns up to 50 functions per call.
 }
 \details{
 Set \code{FunctionVersion} to \code{ALL} to include all published versions of each
@@ -42,11 +42,8 @@ about a function or version, use GetFunction.
 
 \examples{
 \dontrun{
-# This operation retrieves a Lambda functions
-svc$list_functions(
-  Marker = "",
-  MaxItems = 123L
-)
+# This operation returns a list of Lambda functions.
+svc$list_functions()
 }
 
 }

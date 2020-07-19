@@ -26,6 +26,14 @@ test_that("list_jobs", {
   expect_error(svc$list_jobs(MaxResults = 20), NA)
 })
 
+test_that("list_ml_transforms", {
+  expect_error(svc$list_ml_transforms(), NA)
+})
+
+test_that("list_ml_transforms", {
+  expect_error(svc$list_ml_transforms(MaxResults = 20), NA)
+})
+
 test_that("list_triggers", {
   expect_error(svc$list_triggers(), NA)
 })

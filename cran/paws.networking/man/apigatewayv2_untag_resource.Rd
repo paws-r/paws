@@ -9,8 +9,7 @@ apigatewayv2_untag_resource(ResourceArn, TagKeys)
 \arguments{
 \item{ResourceArn}{[required] The resource ARN for the tag.}
 
-\item{TagKeys}{[required]
-<p>The Tag keys to delete.</p>}
+\item{TagKeys}{[required] The Tag keys to delete}
 }
 \description{
 Deletes a Tag.

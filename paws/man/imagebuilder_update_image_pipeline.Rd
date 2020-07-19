@@ -6,19 +6,19 @@
 \usage{
 imagebuilder_update_image_pipeline(imagePipelineArn, description,
   imageRecipeArn, infrastructureConfigurationArn,
-  distributionConfigurationArn, imageTestsConfiguration, schedule, status,
-  clientToken)
+  distributionConfigurationArn, imageTestsConfiguration,
+  enhancedImageMetadataEnabled, schedule, status, clientToken)
 }
 \arguments{
-\item{imagePipelineArn}{[required] The Amazon Resource Name (ARN) of the image pipeline that you wish to
+\item{imagePipelineArn}{[required] The Amazon Resource Name (ARN) of the image pipeline that you want to
 update.}
 
 \item{description}{The description of the image pipeline.}
 
-\item{imageRecipeArn}{The Amazon Resource Name (ARN) of the image recipe that will be used to
+\item{imageRecipeArn}{[required] The Amazon Resource Name (ARN) of the image recipe that will be used to
 configure images updated by this image pipeline.}
 
-\item{infrastructureConfigurationArn}{The Amazon Resource Name (ARN) of the infrastructure configuration that
+\item{infrastructureConfigurationArn}{[required] The Amazon Resource Name (ARN) of the infrastructure configuration that
 will be used to build images updated by this image pipeline.}
 
 \item{distributionConfigurationArn}{The Amazon Resource Name (ARN) of the distribution configuration that
@@ -26,6 +26,11 @@ will be used to configure and distribute images updated by this image
 pipeline.}
 
 \item{imageTestsConfiguration}{The image test configuration of the image pipeline.}
+
+\item{enhancedImageMetadataEnabled}{Collects additional information about the image being created, including
+the operating system (OS) version and package list. This information is
+used to enhance the overall experience of using EC2 Image Builder.
+Enabled by default.}
 
 \item{schedule}{The schedule of the image pipeline.}
 
@@ -48,6 +53,7 @@ creation and distribution of images.
     imageTestsEnabled = TRUE|FALSE,
     timeoutMinutes = 123
   ),
+  enhancedImageMetadataEnabled = TRUE|FALSE,
   schedule = list(
     scheduleExpression = "string",
     pipelineExecutionStartCondition = "EXPRESSION_MATCH_ONLY"|"EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"

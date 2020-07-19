@@ -9,11 +9,14 @@ NULL
 #'
 #' @usage
 #' applicationinsights_create_application(ResourceGroupName,
-#'   OpsCenterEnabled, OpsItemSNSTopicArn, Tags)
+#'   OpsCenterEnabled, CWEMonitorEnabled, OpsItemSNSTopicArn, Tags)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an
 #' application.
+#' @param CWEMonitorEnabled Indicates whether Application Insights can listen to CloudWatch events
+#' for the application resources, such as `instance terminated`,
+#' `failed deployment`, and others.
 #' @param OpsItemSNSTopicArn The SNS topic provided to Application Insights that is associated to the
 #' created opsItem. Allows you to receive notifications for updates to the
 #' opsItem.
@@ -26,6 +29,7 @@ NULL
 #' svc$create_application(
 #'   ResourceGroupName = "string",
 #'   OpsCenterEnabled = TRUE|FALSE,
+#'   CWEMonitorEnabled = TRUE|FALSE,
 #'   OpsItemSNSTopicArn = "string",
 #'   Tags = list(
 #'     list(
@@ -39,14 +43,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname applicationinsights_create_application
-applicationinsights_create_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, OpsItemSNSTopicArn = NULL, Tags = NULL) {
+applicationinsights_create_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$create_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, Tags = Tags)
+  input <- .applicationinsights$create_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, Tags = Tags)
   output <- .applicationinsights$create_application_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -656,6 +660,80 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 }
 .applicationinsights$operations$list_components <- applicationinsights_list_components
 
+#' Lists the INFO, WARN, and ERROR events for periodic configuration
+#' updates performed by Application Insights
+#'
+#' Lists the INFO, WARN, and ERROR events for periodic configuration
+#' updates performed by Application Insights. Examples of events
+#' represented are:
+#' 
+#' -   INFO: creating a new alarm or updating an alarm threshold.
+#' 
+#' -   WARN: alarm not created due to insufficient data points used to
+#'     predict thresholds.
+#' 
+#' -   ERROR: alarm not created due to permission errors or exceeding
+#'     quotas.
+#'
+#' @usage
+#' applicationinsights_list_configuration_history(ResourceGroupName,
+#'   StartTime, EndTime, EventStatus, MaxResults, NextToken)
+#'
+#' @param ResourceGroupName Resource group to which the application belongs.
+#' @param StartTime The start time of the event.
+#' @param EndTime The end time of the event.
+#' @param EventStatus The status of the configuration update event. Possible values include
+#' INFO, WARN, and ERROR.
+#' @param MaxResults The maximum number of results returned by `ListConfigurationHistory` in
+#' paginated output. When this parameter is used,
+#' `ListConfigurationHistory` returns only `MaxResults` in a single page
+#' along with a `NextToken` response element. The remaining results of the
+#' initial request can be seen by sending another
+#' `ListConfigurationHistory` request with the returned `NextToken` value.
+#' If this parameter is not used, then `ListConfigurationHistory` returns
+#' all results.
+#' @param NextToken The `NextToken` value returned from a previous paginated
+#' `ListConfigurationHistory` request where `MaxResults` was used and the
+#' results exceeded the value of that parameter. Pagination continues from
+#' the end of the previous results that returned the `NextToken` value.
+#' This value is `null` when there are no more results to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_configuration_history(
+#'   ResourceGroupName = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EventStatus = "INFO"|"WARN"|"ERROR",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_list_configuration_history
+applicationinsights_list_configuration_history <- function(ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, EventStatus = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListConfigurationHistory",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$list_configuration_history_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, EventStatus = EventStatus, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .applicationinsights$list_configuration_history_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$list_configuration_history <- applicationinsights_list_configuration_history
+
 #' Lists the log pattern sets in the specific application
 #'
 #' Lists the log pattern sets in the specific application.
@@ -950,11 +1028,14 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #'
 #' @usage
 #' applicationinsights_update_application(ResourceGroupName,
-#'   OpsCenterEnabled, OpsItemSNSTopicArn, RemoveSNSTopic)
+#'   OpsCenterEnabled, CWEMonitorEnabled, OpsItemSNSTopicArn, RemoveSNSTopic)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an
 #' application.
+#' @param CWEMonitorEnabled Indicates whether Application Insights can listen to CloudWatch events
+#' for the application resources, such as `instance terminated`,
+#' `failed deployment`, and others.
 #' @param OpsItemSNSTopicArn The SNS topic provided to Application Insights that is associated to the
 #' created opsItem. Allows you to receive notifications for updates to the
 #' opsItem.
@@ -966,6 +1047,7 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #' svc$update_application(
 #'   ResourceGroupName = "string",
 #'   OpsCenterEnabled = TRUE|FALSE,
+#'   CWEMonitorEnabled = TRUE|FALSE,
 #'   OpsItemSNSTopicArn = "string",
 #'   RemoveSNSTopic = TRUE|FALSE
 #' )
@@ -974,14 +1056,14 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname applicationinsights_update_application
-applicationinsights_update_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, OpsItemSNSTopicArn = NULL, RemoveSNSTopic = NULL) {
+applicationinsights_update_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, RemoveSNSTopic = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$update_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, RemoveSNSTopic = RemoveSNSTopic)
+  input <- .applicationinsights$update_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, RemoveSNSTopic = RemoveSNSTopic)
   output <- .applicationinsights$update_application_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)

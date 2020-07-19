@@ -3,6 +3,30 @@
 #' @include route53domains_service.R
 NULL
 
+.route53domains$accept_domain_transfer_from_another_aws_account_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53domains$accept_domain_transfer_from_another_aws_account_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53domains$cancel_domain_transfer_to_another_aws_account_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53domains$cancel_domain_transfer_to_another_aws_account_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53domains$check_domain_availability_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), IdnLangCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -183,6 +207,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53domains$reject_domain_transfer_from_another_aws_account_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53domains$reject_domain_transfer_from_another_aws_account_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53domains$renew_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), DurationInYears = structure(logical(0), tags = list(type = "integer")), CurrentExpiryYear = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -228,6 +264,18 @@ NULL
 .route53domains$transfer_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53domains$transfer_domain_to_another_aws_account_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53domains$transfer_domain_to_another_aws_account_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

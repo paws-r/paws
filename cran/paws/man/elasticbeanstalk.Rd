@@ -16,7 +16,7 @@ Services cloud.
 
 For more information about this product, go to the \href{http://aws.amazon.com/elasticbeanstalk/}{AWS Elastic Beanstalk} details page. The
 location of the latest AWS Elastic Beanstalk WSDL is
-\url{http://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl}.
+\url{https://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl}.
 To install the Software Development Kits (SDKs), Integrated Development
 Environment (IDE) Toolkits, and command line tools that enable you to
 access the API, go to \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
@@ -50,12 +50,13 @@ in the \emph{Amazon Web Services Glossary}.
 \tabular{ll}{
 \link[=elasticbeanstalk_abort_environment_update]{abort_environment_update} \tab Cancels in-progress environment configuration update or application version deployment \cr
 \link[=elasticbeanstalk_apply_environment_managed_action]{apply_environment_managed_action} \tab Applies a scheduled managed action immediately \cr
+\link[=elasticbeanstalk_associate_environment_operations_role]{associate_environment_operations_role} \tab Add or change the operations role used by an environment \cr
 \link[=elasticbeanstalk_check_dns_availability]{check_dns_availability} \tab Checks if the specified CNAME is available \cr
 \link[=elasticbeanstalk_compose_environments]{compose_environments} \tab Create or update a group of environments that each run a separate component of a single application \cr
 \link[=elasticbeanstalk_create_application]{create_application} \tab Creates an application that has one configuration template named default and no application versions \cr
 \link[=elasticbeanstalk_create_application_version]{create_application_version} \tab Creates an application version for the specified application \cr
-\link[=elasticbeanstalk_create_configuration_template]{create_configuration_template} \tab Creates a configuration template \cr
-\link[=elasticbeanstalk_create_environment]{create_environment} \tab Launches an environment for the specified application using the specified configuration \cr
+\link[=elasticbeanstalk_create_configuration_template]{create_configuration_template} \tab Creates an AWS Elastic Beanstalk configuration template, associated with a specific Elastic Beanstalk application \cr
+\link[=elasticbeanstalk_create_environment]{create_environment} \tab Launches an AWS Elastic Beanstalk environment for the specified application using the specified configuration \cr
 \link[=elasticbeanstalk_create_platform_version]{create_platform_version} \tab Create a new version of your custom platform \cr
 \link[=elasticbeanstalk_create_storage_location]{create_storage_location} \tab Creates a bucket in Amazon S3 to store application versions, logs, and other files used by Elastic Beanstalk environments \cr
 \link[=elasticbeanstalk_delete_application]{delete_application} \tab Deletes the specified application along with all associated versions and configurations \cr
@@ -75,10 +76,12 @@ in the \emph{Amazon Web Services Glossary}.
 \link[=elasticbeanstalk_describe_environments]{describe_environments} \tab Returns descriptions for existing environments \cr
 \link[=elasticbeanstalk_describe_events]{describe_events} \tab Returns list of event descriptions matching criteria up to the last 6 weeks \cr
 \link[=elasticbeanstalk_describe_instances_health]{describe_instances_health} \tab Retrieves detailed information about the health of instances in your AWS Elastic Beanstalk \cr
-\link[=elasticbeanstalk_describe_platform_version]{describe_platform_version} \tab Describes the version of the platform \cr
+\link[=elasticbeanstalk_describe_platform_version]{describe_platform_version} \tab Describes a platform version \cr
+\link[=elasticbeanstalk_disassociate_environment_operations_role]{disassociate_environment_operations_role} \tab Disassociate the operations role from an environment \cr
 \link[=elasticbeanstalk_list_available_solution_stacks]{list_available_solution_stacks} \tab Returns a list of the available solution stack names, with the public version first and then in reverse chronological order \cr
-\link[=elasticbeanstalk_list_platform_versions]{list_platform_versions} \tab Lists the available platforms \cr
-\link[=elasticbeanstalk_list_tags_for_resource]{list_tags_for_resource} \tab Returns the tags applied to an AWS Elastic Beanstalk resource \cr
+\link[=elasticbeanstalk_list_platform_branches]{list_platform_branches} \tab Lists the platform branches available for your account in an AWS Region \cr
+\link[=elasticbeanstalk_list_platform_versions]{list_platform_versions} \tab Lists the platform versions available for your account in an AWS Region \cr
+\link[=elasticbeanstalk_list_tags_for_resource]{list_tags_for_resource} \tab Return the tags applied to an AWS Elastic Beanstalk resource \cr
 \link[=elasticbeanstalk_rebuild_environment]{rebuild_environment} \tab Deletes and recreates all of the AWS resources (for example: the Auto Scaling group, load balancer, etc \cr
 \link[=elasticbeanstalk_request_environment_info]{request_environment_info} \tab Initiates a request to compile the specified type of information of the deployed environment \cr
 \link[=elasticbeanstalk_restart_app_server]{restart_app_server} \tab Causes the environment to restart the application container server running on each Amazon EC2 instance \cr

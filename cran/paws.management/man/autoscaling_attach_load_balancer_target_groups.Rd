@@ -17,9 +17,9 @@ to 10 target groups.}
 Attaches one or more target groups to the specified Auto Scaling group.
 }
 \details{
-To describe the target groups for an Auto Scaling group, use
-DescribeLoadBalancerTargetGroups. To detach the target group from the
-Auto Scaling group, use DetachLoadBalancerTargetGroups.
+To describe the target groups for an Auto Scaling group, call the
+DescribeLoadBalancerTargetGroups API. To detach the target group from
+the Auto Scaling group, call the DetachLoadBalancerTargetGroups API.
 
 With Application Load Balancers and Network Load Balancers, instances
 are registered as targets with a target group. With Classic Load

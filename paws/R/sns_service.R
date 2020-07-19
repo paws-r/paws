@@ -57,33 +57,33 @@ NULL
 #'  \link[=sns_add_permission]{add_permission} \tab Adds a statement to a topic's access control policy, granting access for the specified AWS accounts to the specified actions \cr
 #'  \link[=sns_check_if_phone_number_is_opted_out]{check_if_phone_number_is_opted_out} \tab Accepts a phone number and indicates whether the phone holder has opted out of receiving SMS messages from your account \cr
 #'  \link[=sns_confirm_subscription]{confirm_subscription} \tab Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by an earlier Subscribe action \cr
-#'  \link[=sns_create_platform_application]{create_platform_application} \tab Creates a platform application object for one of the supported push notification services, such as APNS and FCM, to which devices and mobile apps may register\cr
-#'  \link[=sns_create_platform_endpoint]{create_platform_endpoint} \tab Creates an endpoint for a device and mobile app on one of the supported push notification services, such as FCM and APNS \cr
+#'  \link[=sns_create_platform_application]{create_platform_application} \tab Creates a platform application object for one of the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging), to which devices and mobile apps may register\cr
+#'  \link[=sns_create_platform_endpoint]{create_platform_endpoint} \tab Creates an endpoint for a device and mobile app on one of the supported push notification services, such as GCM (Firebase Cloud Messaging) and APNS \cr
 #'  \link[=sns_create_topic]{create_topic} \tab Creates a topic to which notifications can be published \cr
 #'  \link[=sns_delete_endpoint]{delete_endpoint} \tab Deletes the endpoint for a device and mobile app from Amazon SNS \cr
-#'  \link[=sns_delete_platform_application]{delete_platform_application} \tab Deletes a platform application object for one of the supported push notification services, such as APNS and FCM \cr
+#'  \link[=sns_delete_platform_application]{delete_platform_application} \tab Deletes a platform application object for one of the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging) \cr
 #'  \link[=sns_delete_topic]{delete_topic} \tab Deletes a topic and all its subscriptions \cr
-#'  \link[=sns_get_endpoint_attributes]{get_endpoint_attributes} \tab Retrieves the endpoint attributes for a device on one of the supported push notification services, such as FCM and APNS \cr
-#'  \link[=sns_get_platform_application_attributes]{get_platform_application_attributes} \tab Retrieves the attributes of the platform application object for the supported push notification services, such as APNS and FCM \cr
+#'  \link[=sns_get_endpoint_attributes]{get_endpoint_attributes} \tab Retrieves the endpoint attributes for a device on one of the supported push notification services, such as GCM (Firebase Cloud Messaging) and APNS \cr
+#'  \link[=sns_get_platform_application_attributes]{get_platform_application_attributes} \tab Retrieves the attributes of the platform application object for the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging) \cr
 #'  \link[=sns_get_sms_attributes]{get_sms_attributes} \tab Returns the settings for sending SMS messages from your account \cr
 #'  \link[=sns_get_subscription_attributes]{get_subscription_attributes} \tab Returns all of the properties of a subscription \cr
 #'  \link[=sns_get_topic_attributes]{get_topic_attributes} \tab Returns all of the properties of a topic \cr
-#'  \link[=sns_list_endpoints_by_platform_application]{list_endpoints_by_platform_application} \tab Lists the endpoints and endpoint attributes for devices in a supported push notification service, such as FCM and APNS \cr
+#'  \link[=sns_list_endpoints_by_platform_application]{list_endpoints_by_platform_application} \tab Lists the endpoints and endpoint attributes for devices in a supported push notification service, such as GCM (Firebase Cloud Messaging) and APNS \cr
 #'  \link[=sns_list_phone_numbers_opted_out]{list_phone_numbers_opted_out} \tab Returns a list of phone numbers that are opted out, meaning you cannot send SMS messages to them \cr
-#'  \link[=sns_list_platform_applications]{list_platform_applications} \tab Lists the platform application objects for the supported push notification services, such as APNS and FCM \cr
+#'  \link[=sns_list_platform_applications]{list_platform_applications} \tab Lists the platform application objects for the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging) \cr
 #'  \link[=sns_list_subscriptions]{list_subscriptions} \tab Returns a list of the requester's subscriptions \cr
 #'  \link[=sns_list_subscriptions_by_topic]{list_subscriptions_by_topic} \tab Returns a list of the subscriptions to a specific topic \cr
 #'  \link[=sns_list_tags_for_resource]{list_tags_for_resource} \tab List all tags added to the specified Amazon SNS topic \cr
 #'  \link[=sns_list_topics]{list_topics} \tab Returns a list of the requester's topics \cr
 #'  \link[=sns_opt_in_phone_number]{opt_in_phone_number} \tab Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages to the number \cr
-#'  \link[=sns_publish]{publish} \tab Sends a message to an Amazon SNS topic or sends a text message (SMS message) directly to a phone number \cr
+#'  \link[=sns_publish]{publish} \tab Sends a message to an Amazon SNS topic, a text message (SMS message) directly to a phone number, or a message to a mobile platform endpoint (when you specify the TargetArn) \cr
 #'  \link[=sns_remove_permission]{remove_permission} \tab Removes a statement from a topic's access control policy \cr
-#'  \link[=sns_set_endpoint_attributes]{set_endpoint_attributes} \tab Sets the attributes for an endpoint for a device on one of the supported push notification services, such as FCM and APNS \cr
-#'  \link[=sns_set_platform_application_attributes]{set_platform_application_attributes} \tab Sets the attributes of the platform application object for the supported push notification services, such as APNS and FCM \cr
+#'  \link[=sns_set_endpoint_attributes]{set_endpoint_attributes} \tab Sets the attributes for an endpoint for a device on one of the supported push notification services, such as GCM (Firebase Cloud Messaging) and APNS \cr
+#'  \link[=sns_set_platform_application_attributes]{set_platform_application_attributes} \tab Sets the attributes of the platform application object for the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging) \cr
 #'  \link[=sns_set_sms_attributes]{set_sms_attributes} \tab Use this request to set the default settings for sending SMS messages and receiving daily SMS usage reports \cr
 #'  \link[=sns_set_subscription_attributes]{set_subscription_attributes} \tab Allows a subscription owner to set an attribute of the subscription to a new value \cr
 #'  \link[=sns_set_topic_attributes]{set_topic_attributes} \tab Allows a topic owner to set an attribute of the topic to a new value \cr
-#'  \link[=sns_subscribe]{subscribe} \tab Prepares to subscribe an endpoint by sending the endpoint a confirmation message \cr
+#'  \link[=sns_subscribe]{subscribe} \tab Subscribes an endpoint to an Amazon SNS topic \cr
 #'  \link[=sns_tag_resource]{tag_resource} \tab Add tags to the specified Amazon SNS topic \cr
 #'  \link[=sns_unsubscribe]{unsubscribe} \tab Deletes a subscription \cr
 #'  \link[=sns_untag_resource]{untag_resource} \tab Remove tags from the specified Amazon SNS topic 
@@ -104,7 +104,7 @@ sns <- function(config = list()) {
 
 .sns$metadata <- list(
   service_name = "sns",
-  endpoints = list("*" = list(endpoint = "sns.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sns.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "sns.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sns.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sns.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sns.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SNS",
   api_version = "2010-03-31",
   signing_name = NULL,

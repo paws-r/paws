@@ -35,6 +35,7 @@ define and configure the outputs of your pipeline.
         amiTags = list(
           "string"
         ),
+        kmsKeyId = "string",
         launchPermission = list(
           userIds = list(
             "string"

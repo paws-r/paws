@@ -5,13 +5,13 @@ NULL
 
 .applicationinsights$create_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), CWEMonitorEnabled = structure(logical(0), tags = list(type = "boolean")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationinsights$create_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationInfo = structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationInfo = structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), CWEMonitorEnabled = structure(logical(0), tags = list(type = "boolean")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -83,7 +83,7 @@ NULL
 
 .applicationinsights$describe_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationInfo = structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationInfo = structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), CWEMonitorEnabled = structure(logical(0), tags = list(type = "boolean")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -143,7 +143,7 @@ NULL
 
 .applicationinsights$describe_observation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Observation = structure(list(Id = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), SourceType = structure(logical(0), tags = list(type = "string")), SourceARN = structure(logical(0), tags = list(type = "string")), LogGroup = structure(logical(0), tags = list(type = "string")), LineTime = structure(logical(0), tags = list(type = "timestamp")), LogText = structure(logical(0), tags = list(type = "string")), LogFilter = structure(logical(0), tags = list(type = "string")), MetricNamespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Observation = structure(list(Id = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), SourceType = structure(logical(0), tags = list(type = "string")), SourceARN = structure(logical(0), tags = list(type = "string")), LogGroup = structure(logical(0), tags = list(type = "string")), LineTime = structure(logical(0), tags = list(type = "timestamp")), LogText = structure(logical(0), tags = list(type = "string")), LogFilter = structure(logical(0), tags = list(type = "string")), MetricNamespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "double")), CloudWatchEventId = structure(logical(0), tags = list(type = "string")), CloudWatchEventSource = structure(logical(0), tags = list(type = "string")), CloudWatchEventDetailType = structure(logical(0), tags = list(type = "string")), HealthEventArn = structure(logical(0), tags = list(type = "string")), HealthService = structure(logical(0), tags = list(type = "string")), HealthEventTypeCode = structure(logical(0), tags = list(type = "string")), HealthEventTypeCategory = structure(logical(0), tags = list(type = "string")), HealthEventDescription = structure(logical(0), tags = list(type = "string")), CodeDeployDeploymentId = structure(logical(0), tags = list(type = "string")), CodeDeployDeploymentGroup = structure(logical(0), tags = list(type = "string")), CodeDeployState = structure(logical(0), tags = list(type = "string")), CodeDeployApplication = structure(logical(0), tags = list(type = "string")), CodeDeployInstanceGroupId = structure(logical(0), tags = list(type = "string")), Ec2State = structure(logical(0), tags = list(type = "string")), XRayFaultPercent = structure(logical(0), tags = list(type = "integer")), XRayThrottlePercent = structure(logical(0), tags = list(type = "integer")), XRayErrorPercent = structure(logical(0), tags = list(type = "integer")), XRayRequestCount = structure(logical(0), tags = list(type = "integer")), XRayRequestAverageLatency = structure(logical(0), tags = list(type = "long")), XRayNodeName = structure(logical(0), tags = list(type = "string")), XRayNodeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -167,7 +167,7 @@ NULL
 
 .applicationinsights$describe_problem_observations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RelatedObservations = structure(list(ObservationList = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), SourceType = structure(logical(0), tags = list(type = "string")), SourceARN = structure(logical(0), tags = list(type = "string")), LogGroup = structure(logical(0), tags = list(type = "string")), LineTime = structure(logical(0), tags = list(type = "timestamp")), LogText = structure(logical(0), tags = list(type = "string")), LogFilter = structure(logical(0), tags = list(type = "string")), MetricNamespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(RelatedObservations = structure(list(ObservationList = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), SourceType = structure(logical(0), tags = list(type = "string")), SourceARN = structure(logical(0), tags = list(type = "string")), LogGroup = structure(logical(0), tags = list(type = "string")), LineTime = structure(logical(0), tags = list(type = "timestamp")), LogText = structure(logical(0), tags = list(type = "string")), LogFilter = structure(logical(0), tags = list(type = "string")), MetricNamespace = structure(logical(0), tags = list(type = "string")), MetricName = structure(logical(0), tags = list(type = "string")), Unit = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "double")), CloudWatchEventId = structure(logical(0), tags = list(type = "string")), CloudWatchEventSource = structure(logical(0), tags = list(type = "string")), CloudWatchEventDetailType = structure(logical(0), tags = list(type = "string")), HealthEventArn = structure(logical(0), tags = list(type = "string")), HealthService = structure(logical(0), tags = list(type = "string")), HealthEventTypeCode = structure(logical(0), tags = list(type = "string")), HealthEventTypeCategory = structure(logical(0), tags = list(type = "string")), HealthEventDescription = structure(logical(0), tags = list(type = "string")), CodeDeployDeploymentId = structure(logical(0), tags = list(type = "string")), CodeDeployDeploymentGroup = structure(logical(0), tags = list(type = "string")), CodeDeployState = structure(logical(0), tags = list(type = "string")), CodeDeployApplication = structure(logical(0), tags = list(type = "string")), CodeDeployInstanceGroupId = structure(logical(0), tags = list(type = "string")), Ec2State = structure(logical(0), tags = list(type = "string")), XRayFaultPercent = structure(logical(0), tags = list(type = "integer")), XRayThrottlePercent = structure(logical(0), tags = list(type = "integer")), XRayErrorPercent = structure(logical(0), tags = list(type = "integer")), XRayRequestCount = structure(logical(0), tags = list(type = "integer")), XRayRequestAverageLatency = structure(logical(0), tags = list(type = "long")), XRayNodeName = structure(logical(0), tags = list(type = "string")), XRayNodeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -179,7 +179,7 @@ NULL
 
 .applicationinsights$list_applications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationInfoList = structure(list(structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationInfoList = structure(list(structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), CWEMonitorEnabled = structure(logical(0), tags = list(type = "boolean")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -192,6 +192,18 @@ NULL
 .applicationinsights$list_components_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ApplicationComponentList = structure(list(structure(list(ComponentName = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Tier = structure(logical(0), tags = list(type = "string")), Monitor = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$list_configuration_history_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), EventStatus = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.applicationinsights$list_configuration_history_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventList = structure(list(structure(list(MonitoredResourceARN = structure(logical(0), tags = list(type = "string")), EventStatus = structure(logical(0), tags = list(type = "string")), EventResourceType = structure(logical(0), tags = list(type = "string")), EventTime = structure(logical(0), tags = list(type = "timestamp")), EventDetail = structure(logical(0), tags = list(type = "string")), EventResourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -269,13 +281,13 @@ NULL
 
 .applicationinsights$update_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), RemoveSNSTopic = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), CWEMonitorEnabled = structure(logical(0), tags = list(type = "boolean")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), RemoveSNSTopic = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .applicationinsights$update_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ApplicationInfo = structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ApplicationInfo = structure(list(ResourceGroupName = structure(logical(0), tags = list(type = "string")), LifeCycle = structure(logical(0), tags = list(type = "string")), OpsItemSNSTopicArn = structure(logical(0), tags = list(type = "string")), OpsCenterEnabled = structure(logical(0), tags = list(type = "boolean")), CWEMonitorEnabled = structure(logical(0), tags = list(type = "boolean")), Remarks = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

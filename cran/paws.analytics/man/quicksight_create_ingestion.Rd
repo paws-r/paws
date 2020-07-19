@@ -20,10 +20,9 @@ Creates and starts a new SPICE ingestion on a dataset
 }
 \details{
 Any ingestions operating on tagged datasets inherit the same tags
-automatically for use in access control. For an example, see How do I
-create an IAM policy to control access to Amazon EC2 resources using
-tags? in the AWS Knowledge Center. Tags are visible on the tagged
-dataset, but not on the ingestion resource.
+automatically for use in access control. For an example, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/iam-ec2-resource-tags/}{How do I create an IAM policy to control access to Amazon EC2 resources using tags?}
+in the AWS Knowledge Center. Tags are visible on the tagged dataset, but
+not on the ingestion resource.
 }
 \section{Request syntax}{
 \preformatted{svc$create_ingestion(

@@ -5,19 +5,22 @@
 \title{Create a new transcoding job}
 \usage{
 mediaconvert_create_job(AccelerationSettings, BillingTagsSource,
-  ClientRequestToken, JobTemplate, Priority, Queue, Role, Settings,
-  SimulateReservedQueue, StatusUpdateInterval, Tags, UserMetadata)
+  ClientRequestToken, HopDestinations, JobTemplate, Priority, Queue, Role,
+  Settings, SimulateReservedQueue, StatusUpdateInterval, Tags,
+  UserMetadata)
 }
 \arguments{
-\item{AccelerationSettings}{Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.}
+\item{AccelerationSettings}{Optional. Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.}
 
 \item{BillingTagsSource}{Optional. Choose a tag type that AWS Billing and Cost Management will use to sort your AWS Elemental MediaConvert costs on any billing report that you set up. Any transcoding outputs that don't have an associated tag will appear in your billing report unsorted. If you don't choose a valid value for this field, your job outputs will appear on the billing report unsorted.}
 
-\item{ClientRequestToken}{Idempotency token for CreateJob operation.}
+\item{ClientRequestToken}{Optional. Idempotency token for CreateJob operation.}
 
-\item{JobTemplate}{When you create a job, you can either specify a job template or specify the transcoding settings individually}
+\item{HopDestinations}{Optional. Use queue hopping to avoid overly long waits in the backlog of the queue that you submit your job to. Specify an alternate queue and the maximum time that your job will wait in the initial queue before hopping. For more information about this feature, see the AWS Elemental MediaConvert User Guide.}
 
-\item{Priority}{Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.}
+\item{JobTemplate}{Optional. When you create a job, you can either specify a job template or specify the transcoding settings individually.}
+
+\item{Priority}{Optional. Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.}
 
 \item{Queue}{Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.}
 
@@ -25,13 +28,13 @@ mediaconvert_create_job(AccelerationSettings, BillingTagsSource,
 
 \item{Settings}{[required] JobSettings contains all the transcode settings for a job.}
 
-\item{SimulateReservedQueue}{Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see with one RTS in a reserved queue. This setting is disabled by default.}
+\item{SimulateReservedQueue}{Optional. Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see with one RTS in a reserved queue. This setting is disabled by default.}
 
-\item{StatusUpdateInterval}{Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.}
+\item{StatusUpdateInterval}{Optional. Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.}
 
-\item{Tags}{The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
+\item{Tags}{Optional. The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.}
 
-\item{UserMetadata}{User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.}
+\item{UserMetadata}{Optional. User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.}
 }
 \description{
 Create a new transcoding job. For information about jobs and job settings, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
@@ -43,6 +46,13 @@ Create a new transcoding job. For information about jobs and job settings, see t
   ),
   BillingTagsSource = "QUEUE"|"PRESET"|"JOB_TEMPLATE"|"JOB",
   ClientRequestToken = "string",
+  HopDestinations = list(
+    list(
+      Priority = 123,
+      Queue = "string",
+      WaitMinutes = 123
+    )
+  ),
   JobTemplate = "string",
   Priority = 123,
   Queue = "string",
@@ -121,6 +131,10 @@ Create a new transcoding job. For information about jobs and job settings, see t
               ),
               FileSourceSettings = list(
                 Convert608To708 = "UPCONVERT"|"DISABLED",
+                Framerate = list(
+                  FramerateDenominator = 123,
+                  FramerateNumerator = 123
+                ),
                 SourceFile = "string",
                 TimeDelta = 123
               ),
@@ -291,7 +305,8 @@ Create a new transcoding job. For information about jobs and job settings, see t
             SegmentLength = 123,
             StreamInfResolution = "INCLUDE"|"EXCLUDE",
             WriteDashManifest = "DISABLED"|"ENABLED",
-            WriteHlsManifest = "DISABLED"|"ENABLED"
+            WriteHlsManifest = "DISABLED"|"ENABLED",
+            WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
           ),
           DashIsoGroupSettings = list(
             AdditionalManifests = list(
@@ -500,7 +515,7 @@ Create a new transcoding job. For information about jobs and job settings, see t
                     Channels = 123,
                     SampleRate = 123
                   ),
-                  Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+                  Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
                   Eac3AtmosSettings = list(
                     Bitrate = 123,
                     BitstreamMode = "COMPLETE_MAIN",
@@ -545,6 +560,23 @@ Create a new transcoding job. For information about jobs and job settings, see t
                     Bitrate = 123,
                     Channels = 123,
                     SampleRate = 123
+                  ),
+                  Mp3Settings = list(
+                    Bitrate = 123,
+                    Channels = 123,
+                    RateControlMode = "CBR"|"VBR",
+                    SampleRate = 123,
+                    VbrQuality = 123
+                  ),
+                  OpusSettings = list(
+                    Bitrate = 123,
+                    Channels = 123,
+                    SampleRate = 123
+                  ),
+                  VorbisSettings = list(
+                    Channels = 123,
+                    SampleRate = 123,
+                    VbrQuality = 123
                   ),
                   WavSettings = list(
                     BitDepth = 123,
@@ -642,7 +674,11 @@ Create a new transcoding job. For information about jobs and job settings, see t
               )
             ),
             ContainerSettings = list(
-              Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"RAW",
+              CmfcSettings = list(
+                Scte35Esam = "INSERT"|"NONE",
+                Scte35Source = "PASSTHROUGH"|"NONE"
+              ),
+              Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
               F4vSettings = list(
                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
               ),
@@ -730,6 +766,7 @@ Create a new transcoding job. For information about jobs and job settings, see t
               ),
               Mp4Settings = list(
                 CslgAtom = "INCLUDE"|"EXCLUDE",
+                CttsVersion = 123,
                 FreeSpaceBox = "INCLUDE"|"EXCLUDE",
                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
                 Mp4MajorBrand = "string"
@@ -738,6 +775,9 @@ Create a new transcoding job. For information about jobs and job settings, see t
                 CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
                 Scte35Esam = "INSERT"|"NONE",
                 Scte35Source = "PASSTHROUGH"|"NONE"
+              ),
+              MxfSettings = list(
+                AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO"
               )
             ),
             Extension = "string",
@@ -757,7 +797,24 @@ Create a new transcoding job. For information about jobs and job settings, see t
               AfdSignaling = "NONE"|"AUTO"|"FIXED",
               AntiAlias = "DISABLED"|"ENABLED",
               CodecSettings = list(
-                Codec = "FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES",
+                Av1Settings = list(
+                  AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+                  FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+                  FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+                  FramerateDenominator = 123,
+                  FramerateNumerator = 123,
+                  GopSize = 123.0,
+                  MaxBitrate = 123,
+                  NumberBFramesBetweenReferenceFrames = 123,
+                  QvbrSettings = list(
+                    QvbrQualityLevel = 123,
+                    QvbrQualityLevelFineTune = 123.0
+                  ),
+                  RateControlMode = "QVBR",
+                  Slices = 123,
+                  SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+                ),
+                Codec = "FRAME_CAPTURE"|"AV1"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VP8"|"VP9",
                 FrameCaptureSettings = list(
                   FramerateDenominator = 123,
                   FramerateNumerator = 123,
@@ -794,7 +851,8 @@ Create a new transcoding job. For information about jobs and job settings, see t
                   QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
                   QvbrSettings = list(
                     MaxAverageBitrate = 123,
-                    QvbrQualityLevel = 123
+                    QvbrQualityLevel = 123,
+                    QvbrQualityLevelFineTune = 123.0
                   ),
                   RateControlMode = "VBR"|"CBR"|"QVBR",
                   RepeatPps = "DISABLED"|"ENABLED",
@@ -837,7 +895,8 @@ Create a new transcoding job. For information about jobs and job settings, see t
                   QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
                   QvbrSettings = list(
                     MaxAverageBitrate = 123,
-                    QvbrQualityLevel = 123
+                    QvbrQualityLevel = 123,
+                    QvbrQualityLevelFineTune = 123.0
                   ),
                   RateControlMode = "VBR"|"CBR"|"QVBR",
                   SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
@@ -897,6 +956,36 @@ Create a new transcoding job. For information about jobs and job settings, see t
                   ParNumerator = 123,
                   SlowPal = "DISABLED"|"ENABLED",
                   Telecine = "NONE"|"HARD"
+                ),
+                Vp8Settings = list(
+                  Bitrate = 123,
+                  FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+                  FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+                  FramerateDenominator = 123,
+                  FramerateNumerator = 123,
+                  GopSize = 123.0,
+                  HrdBufferSize = 123,
+                  MaxBitrate = 123,
+                  ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+                  ParDenominator = 123,
+                  ParNumerator = 123,
+                  QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+                  RateControlMode = "VBR"
+                ),
+                Vp9Settings = list(
+                  Bitrate = 123,
+                  FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+                  FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+                  FramerateDenominator = 123,
+                  FramerateNumerator = 123,
+                  GopSize = 123.0,
+                  HrdBufferSize = 123,
+                  MaxBitrate = 123,
+                  ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+                  ParDenominator = 123,
+                  ParNumerator = 123,
+                  QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+                  RateControlMode = "VBR"
                 )
               ),
               ColorMetadata = "IGNORE"|"INSERT",
@@ -983,8 +1072,17 @@ Create a new transcoding job. For information about jobs and job settings, see t
                   ),
                   TemporalFilterSettings = list(
                     AggressiveMode = 123,
+                    PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
                     Speed = 123,
                     Strength = 123
+                  )
+                ),
+                PartnerWatermarking = list(
+                  NexguardFileMarkerSettings = list(
+                    License = "string",
+                    Payload = 123,
+                    Preset = "string",
+                    Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
                   )
                 ),
                 TimecodeBurnin = list(

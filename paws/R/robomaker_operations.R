@@ -113,6 +113,44 @@ robomaker_cancel_simulation_job <- function(job) {
 }
 .robomaker$operations$cancel_simulation_job <- robomaker_cancel_simulation_job
 
+#' Cancels a simulation job batch
+#'
+#' Cancels a simulation job batch. When you cancel a simulation job batch,
+#' you are also cancelling all of the active simulation jobs created as
+#' part of the batch.
+#'
+#' @usage
+#' robomaker_cancel_simulation_job_batch(batch)
+#'
+#' @param batch &#91;required&#93; The id of the batch to cancel.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_simulation_job_batch(
+#'   batch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_cancel_simulation_job_batch
+robomaker_cancel_simulation_job_batch <- function(batch) {
+  op <- new_operation(
+    name = "CancelSimulationJobBatch",
+    http_method = "POST",
+    http_path = "/cancelSimulationJobBatch",
+    paginator = list()
+  )
+  input <- .robomaker$cancel_simulation_job_batch_input(batch = batch)
+  output <- .robomaker$cancel_simulation_job_batch_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$cancel_simulation_job_batch <- robomaker_cancel_simulation_job_batch
+
 #' Deploys a specific version of a robot application to robots in a fleet
 #'
 #' Deploys a specific version of a robot application to robots in a fleet.
@@ -291,7 +329,8 @@ robomaker_create_robot <- function(name, architecture, greengrassGroupId, tags =
 #'
 #' @param name &#91;required&#93; The name of the robot application.
 #' @param sources &#91;required&#93; The sources of the robot application.
-#' @param robotSoftwareSuite &#91;required&#93; The robot software suite used by the robot application.
+#' @param robotSoftwareSuite &#91;required&#93; The robot software suite (ROS distribuition) used by the robot
+#' application.
 #' @param tags A map that contains tag keys and tag values that are attached to the
 #' robot application.
 #'
@@ -388,7 +427,8 @@ robomaker_create_robot_application_version <- function(application, currentRevis
 #' @param name &#91;required&#93; The name of the simulation application.
 #' @param sources &#91;required&#93; The sources of the simulation application.
 #' @param simulationSoftwareSuite &#91;required&#93; The simulation software suite used by the simulation application.
-#' @param robotSoftwareSuite &#91;required&#93; The robot software suite of the simulation application.
+#' @param robotSoftwareSuite &#91;required&#93; The robot software suite (ROS distribution) used by the simulation
+#' application.
 #' @param renderingEngine The rendering engine for the simulation application.
 #' @param tags A map that contains tag keys and tag values that are attached to the
 #' simulation application.
@@ -493,7 +533,8 @@ robomaker_create_simulation_application_version <- function(application, current
 #' @usage
 #' robomaker_create_simulation_job(clientRequestToken, outputLocation,
 #'   loggingConfig, maxJobDurationInSeconds, iamRole, failureBehavior,
-#'   robotApplications, simulationApplications, dataSources, tags, vpcConfig)
+#'   robotApplications, simulationApplications, dataSources, tags, vpcConfig,
+#'   compute)
 #'
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
@@ -516,7 +557,9 @@ robomaker_create_simulation_application_version <- function(application, current
 #' Stop the simulation job and terminate the instance.
 #' @param robotApplications The robot application to use in the simulation job.
 #' @param simulationApplications The simulation application to use in the simulation job.
-#' @param dataSources The data sources for the simulation job.
+#' @param dataSources Specify data sources to mount read-only files from S3 into your
+#' simulation. These files are available under
+#' `/opt/robomaker/datasources/data_source_name`.
 #' 
 #' There is a limit of 100 files and a combined size of 25GB for all
 #' `DataSourceConfig` objects.
@@ -526,6 +569,7 @@ robomaker_create_simulation_application_version <- function(application, current
 #' parameter identifying the list of security group IDs and subnet IDs.
 #' These must belong to the same VPC. You must provide at least one
 #' security group and one subnet ID.
+#' @param compute Compute information for the simulation job.
 #'
 #' @section Request syntax:
 #' ```
@@ -559,7 +603,8 @@ robomaker_create_simulation_application_version <- function(application, current
 #'               enableOnPublicIp = TRUE|FALSE
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         streamUI = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -581,7 +626,8 @@ robomaker_create_simulation_application_version <- function(application, current
 #'               enableOnPublicIp = TRUE|FALSE
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         streamUI = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -605,6 +651,9 @@ robomaker_create_simulation_application_version <- function(application, current
 #'       "string"
 #'     ),
 #'     assignPublicIp = TRUE|FALSE
+#'   ),
+#'   compute = list(
+#'     simulationUnitLimit = 123
 #'   )
 #' )
 #' ```
@@ -612,14 +661,14 @@ robomaker_create_simulation_application_version <- function(application, current
 #' @keywords internal
 #'
 #' @rdname robomaker_create_simulation_job
-robomaker_create_simulation_job <- function(clientRequestToken = NULL, outputLocation = NULL, loggingConfig = NULL, maxJobDurationInSeconds, iamRole, failureBehavior = NULL, robotApplications = NULL, simulationApplications = NULL, dataSources = NULL, tags = NULL, vpcConfig = NULL) {
+robomaker_create_simulation_job <- function(clientRequestToken = NULL, outputLocation = NULL, loggingConfig = NULL, maxJobDurationInSeconds, iamRole, failureBehavior = NULL, robotApplications = NULL, simulationApplications = NULL, dataSources = NULL, tags = NULL, vpcConfig = NULL, compute = NULL) {
   op <- new_operation(
     name = "CreateSimulationJob",
     http_method = "POST",
     http_path = "/createSimulationJob",
     paginator = list()
   )
-  input <- .robomaker$create_simulation_job_input(clientRequestToken = clientRequestToken, outputLocation = outputLocation, loggingConfig = loggingConfig, maxJobDurationInSeconds = maxJobDurationInSeconds, iamRole = iamRole, failureBehavior = failureBehavior, robotApplications = robotApplications, simulationApplications = simulationApplications, dataSources = dataSources, tags = tags, vpcConfig = vpcConfig)
+  input <- .robomaker$create_simulation_job_input(clientRequestToken = clientRequestToken, outputLocation = outputLocation, loggingConfig = loggingConfig, maxJobDurationInSeconds = maxJobDurationInSeconds, iamRole = iamRole, failureBehavior = failureBehavior, robotApplications = robotApplications, simulationApplications = simulationApplications, dataSources = dataSources, tags = tags, vpcConfig = vpcConfig, compute = compute)
   output <- .robomaker$create_simulation_job_output()
   config <- get_config()
   svc <- .robomaker$service(config)
@@ -1036,6 +1085,42 @@ robomaker_describe_simulation_job <- function(job) {
 }
 .robomaker$operations$describe_simulation_job <- robomaker_describe_simulation_job
 
+#' Describes a simulation job batch
+#'
+#' Describes a simulation job batch.
+#'
+#' @usage
+#' robomaker_describe_simulation_job_batch(batch)
+#'
+#' @param batch &#91;required&#93; The id of the batch to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_simulation_job_batch(
+#'   batch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_describe_simulation_job_batch
+robomaker_describe_simulation_job_batch <- function(batch) {
+  op <- new_operation(
+    name = "DescribeSimulationJobBatch",
+    http_method = "POST",
+    http_path = "/describeSimulationJobBatch",
+    paginator = list()
+  )
+  input <- .robomaker$describe_simulation_job_batch_input(batch = batch)
+  output <- .robomaker$describe_simulation_job_batch_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$describe_simulation_job_batch <- robomaker_describe_simulation_job_batch
+
 #' Returns a list of deployment jobs for a fleet
 #'
 #' Returns a list of deployment jobs for a fleet. You can optionally
@@ -1055,18 +1140,13 @@ robomaker_describe_simulation_job <- function(job) {
 #' `ListDeploymentJobs` request where `maxResults` was used and the results
 #' exceeded the value of that parameter. Pagination continues from the end
 #' of the previous results that returned the `nextToken` value.
-#' 
-#' This token should be treated as an opaque identifier that is only used
-#' to retrieve the next items in a list and not for other programmatic
-#' purposes.
-#' @param maxResults The maximum number of deployment job results returned by
-#' `ListDeploymentJobs` in paginated output. When this parameter is used,
-#' `ListDeploymentJobs` only returns `maxResults` results in a single page
-#' along with a `nextToken` response element. The remaining results of the
-#' initial request can be seen by sending another `ListDeploymentJobs`
-#' request with the returned `nextToken` value. This value can be between 1
-#' and 100. If this parameter is not used, then `ListDeploymentJobs`
-#' returns up to 100 results and a `nextToken` value if applicable.
+#' @param maxResults When this parameter is used, `ListDeploymentJobs` only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another `ListDeploymentJobs` request with the returned
+#' `nextToken` value. This value can be between 1 and 200. If this
+#' parameter is not used, then `ListDeploymentJobs` returns up to 200
+#' results and a `nextToken` value if applicable.
 #'
 #' @section Request syntax:
 #' ```
@@ -1120,14 +1200,12 @@ robomaker_list_deployment_jobs <- function(filters = NULL, nextToken = NULL, max
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of deployment job results returned by `ListFleets` in
-#' paginated output. When this parameter is used, `ListFleets` only returns
-#' `maxResults` results in a single page along with a `nextToken` response
-#' element. The remaining results of the initial request can be seen by
-#' sending another `ListFleets` request with the returned `nextToken`
-#' value. This value can be between 1 and 100. If this parameter is not
-#' used, then `ListFleets` returns up to 100 results and a `nextToken`
-#' value if applicable.
+#' @param maxResults When this parameter is used, `ListFleets` only returns `maxResults`
+#' results in a single page along with a `nextToken` response element. The
+#' remaining results of the initial request can be seen by sending another
+#' `ListFleets` request with the returned `nextToken` value. This value can
+#' be between 1 and 200. If this parameter is not used, then `ListFleets`
+#' returns up to 200 results and a `nextToken` value if applicable.
 #' @param filters Optional filters to limit results.
 #' 
 #' The filter name `name` is supported. When filtering, you must use the
@@ -1183,19 +1261,13 @@ robomaker_list_fleets <- function(nextToken = NULL, maxResults = NULL, filters =
 #' `ListRobotApplications` request where `maxResults` was used and the
 #' results exceeded the value of that parameter. Pagination continues from
 #' the end of the previous results that returned the `nextToken` value.
-#' 
-#' This token should be treated as an opaque identifier that is only used
-#' to retrieve the next items in a list and not for other programmatic
-#' purposes.
-#' @param maxResults The maximum number of deployment job results returned by
-#' `ListRobotApplications` in paginated output. When this parameter is
-#' used, `ListRobotApplications` only returns `maxResults` results in a
-#' single page along with a `nextToken` response element. The remaining
-#' results of the initial request can be seen by sending another
-#' `ListRobotApplications` request with the returned `nextToken` value.
-#' This value can be between 1 and 100. If this parameter is not used, then
-#' `ListRobotApplications` returns up to 100 results and a `nextToken`
-#' value if applicable.
+#' @param maxResults When this parameter is used, `ListRobotApplications` only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another `ListRobotApplications` request with the returned
+#' `nextToken` value. This value can be between 1 and 100. If this
+#' parameter is not used, then `ListRobotApplications` returns up to 100
+#' results and a `nextToken` value if applicable.
 #' @param filters Optional filters to limit results.
 #' 
 #' The filter name `name` is supported. When filtering, you must use the
@@ -1250,18 +1322,12 @@ robomaker_list_robot_applications <- function(versionQualifier = NULL, nextToken
 #' request where `maxResults` was used and the results exceeded the value
 #' of that parameter. Pagination continues from the end of the previous
 #' results that returned the `nextToken` value.
-#' 
-#' This token should be treated as an opaque identifier that is only used
-#' to retrieve the next items in a list and not for other programmatic
-#' purposes.
-#' @param maxResults The maximum number of deployment job results returned by `ListRobots` in
-#' paginated output. When this parameter is used, `ListRobots` only returns
-#' `maxResults` results in a single page along with a `nextToken` response
-#' element. The remaining results of the initial request can be seen by
-#' sending another `ListRobots` request with the returned `nextToken`
-#' value. This value can be between 1 and 100. If this parameter is not
-#' used, then `ListRobots` returns up to 100 results and a `nextToken`
-#' value if applicable.
+#' @param maxResults When this parameter is used, `ListRobots` only returns `maxResults`
+#' results in a single page along with a `nextToken` response element. The
+#' remaining results of the initial request can be seen by sending another
+#' `ListRobots` request with the returned `nextToken` value. This value can
+#' be between 1 and 200. If this parameter is not used, then `ListRobots`
+#' returns up to 200 results and a `nextToken` value if applicable.
 #' @param filters Optional filters to limit results.
 #' 
 #' The filter names `status` and `fleetName` are supported. When filtering,
@@ -1320,19 +1386,13 @@ robomaker_list_robots <- function(nextToken = NULL, maxResults = NULL, filters =
 #' `ListSimulationApplications` request where `maxResults` was used and the
 #' results exceeded the value of that parameter. Pagination continues from
 #' the end of the previous results that returned the `nextToken` value.
-#' 
-#' This token should be treated as an opaque identifier that is only used
-#' to retrieve the next items in a list and not for other programmatic
-#' purposes.
-#' @param maxResults The maximum number of deployment job results returned by
-#' `ListSimulationApplications` in paginated output. When this parameter is
-#' used, `ListSimulationApplications` only returns `maxResults` results in
-#' a single page along with a `nextToken` response element. The remaining
-#' results of the initial request can be seen by sending another
-#' `ListSimulationApplications` request with the returned `nextToken`
-#' value. This value can be between 1 and 100. If this parameter is not
-#' used, then `ListSimulationApplications` returns up to 100 results and a
-#' `nextToken` value if applicable.
+#' @param maxResults When this parameter is used, `ListSimulationApplications` only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another `ListSimulationApplications` request with the returned
+#' `nextToken` value. This value can be between 1 and 100. If this
+#' parameter is not used, then `ListSimulationApplications` returns up to
+#' 100 results and a `nextToken` value if applicable.
 #' @param filters Optional list of filters to limit results.
 #' 
 #' The filter name `name` is supported. When filtering, you must use the
@@ -1375,6 +1435,61 @@ robomaker_list_simulation_applications <- function(versionQualifier = NULL, next
 }
 .robomaker$operations$list_simulation_applications <- robomaker_list_simulation_applications
 
+#' Returns a list simulation job batches
+#'
+#' Returns a list simulation job batches. You can optionally provide
+#' filters to retrieve specific simulation batch jobs.
+#'
+#' @usage
+#' robomaker_list_simulation_job_batches(nextToken, maxResults, filters)
+#'
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `ListSimulationJobBatches` request where `maxResults` was used and the
+#' results exceeded the value of that parameter. Pagination continues from
+#' the end of the previous results that returned the `nextToken` value.
+#' @param maxResults When this parameter is used, `ListSimulationJobBatches` only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another `ListSimulationJobBatches` request with the returned
+#' `nextToken` value.
+#' @param filters Optional filters to limit results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_simulation_job_batches(
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   filters = list(
+#'     list(
+#'       name = "string",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_list_simulation_job_batches
+robomaker_list_simulation_job_batches <- function(nextToken = NULL, maxResults = NULL, filters = NULL) {
+  op <- new_operation(
+    name = "ListSimulationJobBatches",
+    http_method = "POST",
+    http_path = "/listSimulationJobBatches",
+    paginator = list()
+  )
+  input <- .robomaker$list_simulation_job_batches_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
+  output <- .robomaker$list_simulation_job_batches_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$list_simulation_job_batches <- robomaker_list_simulation_job_batches
+
 #' Returns a list of simulation jobs
 #'
 #' Returns a list of simulation jobs. You can optionally provide filters to
@@ -1391,14 +1506,13 @@ robomaker_list_simulation_applications <- function(versionQualifier = NULL, next
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#' @param maxResults The maximum number of deployment job results returned by
-#' `ListSimulationJobs` in paginated output. When this parameter is used,
-#' `ListSimulationJobs` only returns `maxResults` results in a single page
-#' along with a `nextToken` response element. The remaining results of the
-#' initial request can be seen by sending another `ListSimulationJobs`
-#' request with the returned `nextToken` value. This value can be between 1
-#' and 100. If this parameter is not used, then `ListSimulationJobs`
-#' returns up to 100 results and a `nextToken` value if applicable.
+#' @param maxResults When this parameter is used, `ListSimulationJobs` only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another `ListSimulationJobs` request with the returned
+#' `nextToken` value. This value can be between 1 and 1000. If this
+#' parameter is not used, then `ListSimulationJobs` returns up to 1000
+#' results and a `nextToken` value if applicable.
 #' @param filters Optional filters to limit results.
 #' 
 #' The filter names `status` and `simulationApplicationName` and
@@ -1553,6 +1667,141 @@ robomaker_restart_simulation_job <- function(job) {
 }
 .robomaker$operations$restart_simulation_job <- robomaker_restart_simulation_job
 
+#' Starts a new simulation job batch
+#'
+#' Starts a new simulation job batch. The batch is defined using one or
+#' more `SimulationJobRequest` objects.
+#'
+#' @usage
+#' robomaker_start_simulation_job_batch(clientRequestToken, batchPolicy,
+#'   createSimulationJobRequests, tags)
+#'
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param batchPolicy The batch policy.
+#' @param createSimulationJobRequests &#91;required&#93; A list of simulation job requests to create in the batch.
+#' @param tags A map that contains tag keys and tag values that are attached to the
+#' deployment job batch.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_simulation_job_batch(
+#'   clientRequestToken = "string",
+#'   batchPolicy = list(
+#'     timeoutInSeconds = 123,
+#'     maxConcurrency = 123
+#'   ),
+#'   createSimulationJobRequests = list(
+#'     list(
+#'       outputLocation = list(
+#'         s3Bucket = "string",
+#'         s3Prefix = "string"
+#'       ),
+#'       loggingConfig = list(
+#'         recordAllRosTopics = TRUE|FALSE
+#'       ),
+#'       maxJobDurationInSeconds = 123,
+#'       iamRole = "string",
+#'       failureBehavior = "Fail"|"Continue",
+#'       useDefaultApplications = TRUE|FALSE,
+#'       robotApplications = list(
+#'         list(
+#'           application = "string",
+#'           applicationVersion = "string",
+#'           launchConfig = list(
+#'             packageName = "string",
+#'             launchFile = "string",
+#'             environmentVariables = list(
+#'               "string"
+#'             ),
+#'             portForwardingConfig = list(
+#'               portMappings = list(
+#'                 list(
+#'                   jobPort = 123,
+#'                   applicationPort = 123,
+#'                   enableOnPublicIp = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             streamUI = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       simulationApplications = list(
+#'         list(
+#'           application = "string",
+#'           applicationVersion = "string",
+#'           launchConfig = list(
+#'             packageName = "string",
+#'             launchFile = "string",
+#'             environmentVariables = list(
+#'               "string"
+#'             ),
+#'             portForwardingConfig = list(
+#'               portMappings = list(
+#'                 list(
+#'                   jobPort = 123,
+#'                   applicationPort = 123,
+#'                   enableOnPublicIp = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             streamUI = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       dataSources = list(
+#'         list(
+#'           name = "string",
+#'           s3Bucket = "string",
+#'           s3Keys = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       vpcConfig = list(
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroups = list(
+#'           "string"
+#'         ),
+#'         assignPublicIp = TRUE|FALSE
+#'       ),
+#'       compute = list(
+#'         simulationUnitLimit = 123
+#'       ),
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_start_simulation_job_batch
+robomaker_start_simulation_job_batch <- function(clientRequestToken = NULL, batchPolicy = NULL, createSimulationJobRequests, tags = NULL) {
+  op <- new_operation(
+    name = "StartSimulationJobBatch",
+    http_method = "POST",
+    http_path = "/startSimulationJobBatch",
+    paginator = list()
+  )
+  input <- .robomaker$start_simulation_job_batch_input(clientRequestToken = clientRequestToken, batchPolicy = batchPolicy, createSimulationJobRequests = createSimulationJobRequests, tags = tags)
+  output <- .robomaker$start_simulation_job_batch_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$start_simulation_job_batch <- robomaker_start_simulation_job_batch
+
 #' Syncrhonizes robots in a fleet to the latest deployment
 #'
 #' Syncrhonizes robots in a fleet to the latest deployment. This is helpful
@@ -1700,7 +1949,8 @@ robomaker_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @param application &#91;required&#93; The application information for the robot application.
 #' @param sources &#91;required&#93; The sources of the robot application.
-#' @param robotSoftwareSuite &#91;required&#93; The robot software suite used by the robot application.
+#' @param robotSoftwareSuite &#91;required&#93; The robot software suite (ROS distribution) used by the robot
+#' application.
 #' @param currentRevisionId The revision id for the robot application.
 #'
 #' @section Request syntax:
@@ -1754,7 +2004,7 @@ robomaker_update_robot_application <- function(application, sources, robotSoftwa
 #' @param application &#91;required&#93; The application information for the simulation application.
 #' @param sources &#91;required&#93; The sources of the simulation application.
 #' @param simulationSoftwareSuite &#91;required&#93; The simulation software suite used by the simulation application.
-#' @param robotSoftwareSuite &#91;required&#93; Information about the robot software suite.
+#' @param robotSoftwareSuite &#91;required&#93; Information about the robot software suite (ROS distribution).
 #' @param renderingEngine The rendering engine for the simulation application.
 #' @param currentRevisionId The revision id for the robot application.
 #'

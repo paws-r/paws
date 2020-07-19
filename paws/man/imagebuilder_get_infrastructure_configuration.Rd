@@ -2,17 +2,17 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_infrastructure_configuration}
 \alias{imagebuilder_get_infrastructure_configuration}
-\title{Gets a infrastructure configuration}
+\title{Gets an infrastructure configuration}
 \usage{
 imagebuilder_get_infrastructure_configuration(
   infrastructureConfigurationArn)
 }
 \arguments{
 \item{infrastructureConfigurationArn}{[required] The Amazon Resource Name (ARN) of the infrastructure configuration that
-you wish to retrieve.}
+you want to retrieve.}
 }
 \description{
-Gets a infrastructure configuration.
+Gets an infrastructure configuration.
 }
 \section{Request syntax}{
 \preformatted{svc$get_infrastructure_configuration(

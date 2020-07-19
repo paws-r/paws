@@ -42,7 +42,8 @@ Components and Terminology topic in the \emph{AWS DataSync User Guide}.
     PreserveDevices = "NONE"|"PRESERVE",
     PosixPermissions = "NONE"|"PRESERVE",
     BytesPerSecond = 123,
-    TaskQueueing = "ENABLED"|"DISABLED"
+    TaskQueueing = "ENABLED"|"DISABLED",
+    LogLevel = "OFF"|"BASIC"|"TRANSFER"
   ),
   Includes = list(
     list(

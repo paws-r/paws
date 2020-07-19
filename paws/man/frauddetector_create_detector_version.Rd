@@ -5,7 +5,7 @@
 \title{Creates a detector version}
 \usage{
 frauddetector_create_detector_version(detectorId, description,
-  externalModelEndpoints, rules, modelVersions)
+  externalModelEndpoints, rules, modelVersions, ruleExecutionMode)
 }
 \arguments{
 \item{detectorId}{[required] The ID of the detector under which you want to create a new version.}
@@ -17,6 +17,20 @@ frauddetector_create_detector_version(detectorId, description,
 \item{rules}{[required] The rules to include in the detector version.}
 
 \item{modelVersions}{The model versions to include in the detector version.}
+
+\item{ruleExecutionMode}{The rule execution mode for the rules included in the detector version.
+
+You can define and edit the rule mode at the detector version level,
+when it is in draft status.
+
+If you specify \code{FIRST_MATCHED}, Amazon Fraud Detector evaluates rules
+sequentially, first to last, stopping at the first matched rule. Amazon
+Fraud dectector then provides the outcomes for that single rule.
+
+If you specifiy \code{ALL_MATCHED}, Amazon Fraud Detector evaluates all rules
+and returns the outcomes for all matched rules.
+
+The default behavior is \code{FIRST_MATCHED}.}
 }
 \description{
 Creates a detector version. The detector version starts in a \code{DRAFT}
@@ -42,7 +56,8 @@ status.
       modelType = "ONLINE_FRAUD_INSIGHTS",
       modelVersionNumber = "string"
     )
-  )
+  ),
+  ruleExecutionMode = "ALL_MATCHED"|"FIRST_MATCHED"
 )
 }
 }

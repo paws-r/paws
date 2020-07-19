@@ -7,9 +7,9 @@
 schemas_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required]}
+\item{ResourceArn}{[required] The ARN of the resource.}
 
-\item{TagKeys}{[required]}
+\item{TagKeys}{[required] Keys of key-value pairs.}
 }
 \description{
 Removes tags from a resource.

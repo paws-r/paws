@@ -9,11 +9,13 @@ schemas_list_schema_versions(Limit, NextToken, RegistryName, SchemaName)
 \arguments{
 \item{Limit}{}
 
-\item{NextToken}{}
+\item{NextToken}{The token that specifies the next page of results to return. To request
+the first page, leave NextToken empty. The token will expire in 24
+hours, and cannot be shared with other accounts.}
 
-\item{RegistryName}{[required]}
+\item{RegistryName}{[required] The name of the registry.}
 
-\item{SchemaName}{[required]}
+\item{SchemaName}{[required] The name of the schema.}
 }
 \description{
 Provides a list of the schema versions and related information.

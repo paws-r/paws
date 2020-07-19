@@ -23,8 +23,8 @@ has been referenced in an outbound security group rule.
 that has been referenced in an outbound security group rule.
 \item \code{egress.ip-permission.ipv6-cidr} - An IPv6 CIDR block for an
 outbound security group rule.
-\item \code{egress.ip-permission.prefix-list-id} - The ID (prefix) of the AWS
-service to which a security group rule allows outbound access.
+\item \code{egress.ip-permission.prefix-list-id} - The ID of a prefix list to
+which a security group rule allows outbound access.
 \item \code{egress.ip-permission.protocol} - The IP protocol for an outbound
 security group rule (\code{tcp} \\| \code{udp} \\| \code{icmp} or a protocol number).
 \item \code{egress.ip-permission.to-port} - For an outbound rule, the end of
@@ -43,8 +43,8 @@ referenced in an inbound security group rule.
 been referenced in an inbound security group rule.
 \item \code{ip-permission.ipv6-cidr} - An IPv6 CIDR block for an inbound
 security group rule.
-\item \code{ip-permission.prefix-list-id} - The ID (prefix) of the AWS service
-from which a security group rule allows inbound access.
+\item \code{ip-permission.prefix-list-id} - The ID of a prefix list from which
+a security group rule allows inbound access.
 \item \code{ip-permission.protocol} - The IP protocol for an inbound security
 group rule (\code{tcp} \\| \code{udp} \\| \code{icmp} or a protocol number).
 \item \code{ip-permission.to-port} - For an inbound rule, the end of port range

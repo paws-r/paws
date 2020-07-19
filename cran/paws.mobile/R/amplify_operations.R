@@ -3,38 +3,43 @@
 #' @include amplify_service.R
 NULL
 
-#' Creates a new Amplify App
+#' Creates a new Amplify app
 #'
-#' Creates a new Amplify App.
+#' Creates a new Amplify app.
 #'
 #' @usage
 #' amplify_create_app(name, description, repository, platform,
 #'   iamServiceRoleArn, oauthToken, accessToken, environmentVariables,
-#'   enableBranchAutoBuild, enableBasicAuth, basicAuthCredentials,
-#'   customRules, tags, buildSpec, enableAutoBranchCreation,
-#'   autoBranchCreationPatterns, autoBranchCreationConfig)
+#'   enableBranchAutoBuild, enableBranchAutoDeletion, enableBasicAuth,
+#'   basicAuthCredentials, customRules, tags, buildSpec,
+#'   enableAutoBranchCreation, autoBranchCreationPatterns,
+#'   autoBranchCreationConfig)
 #'
-#' @param name &#91;required&#93; Name for the Amplify App
-#' @param description Description for an Amplify App
-#' @param repository Repository for an Amplify App
-#' @param platform Platform / framework for an Amplify App
-#' @param iamServiceRoleArn AWS IAM service role for an Amplify App
-#' @param oauthToken OAuth token for 3rd party source control system for an Amplify App, used
-#' to create webhook and read-only deploy key. OAuth token is not stored.
-#' @param accessToken Personal Access token for 3rd party source control system for an Amplify
-#' App, used to create webhook and read-only deploy key. Token is not
-#' stored.
-#' @param environmentVariables Environment variables map for an Amplify App.
-#' @param enableBranchAutoBuild Enable the auto building of branches for an Amplify App.
-#' @param enableBasicAuth Enable Basic Authorization for an Amplify App, this will apply to all
-#' branches part of this App.
-#' @param basicAuthCredentials Credentials for Basic Authorization for an Amplify App.
-#' @param customRules Custom rewrite / redirect rules for an Amplify App.
-#' @param tags Tag for an Amplify App
-#' @param buildSpec BuildSpec for an Amplify App
-#' @param enableAutoBranchCreation Enables automated branch creation for the Amplify App.
-#' @param autoBranchCreationPatterns Automated branch creation glob patterns for the Amplify App.
-#' @param autoBranchCreationConfig Automated branch creation config for the Amplify App.
+#' @param name &#91;required&#93; The name for the Amplify app.
+#' @param description The description for an Amplify app.
+#' @param repository The repository for an Amplify app.
+#' @param platform The platform or framework for an Amplify app.
+#' @param iamServiceRoleArn The AWS Identity and Access Management (IAM) service role for an Amplify
+#' app.
+#' @param oauthToken The OAuth token for a third-party source control system for an Amplify
+#' app. The OAuth token is used to create a webhook and a read-only deploy
+#' key. The OAuth token is not stored.
+#' @param accessToken The personal access token for a third-party source control system for an
+#' Amplify app. The personal access token is used to create a webhook and a
+#' read-only deploy key. The token is not stored.
+#' @param environmentVariables The environment variables map for an Amplify app.
+#' @param enableBranchAutoBuild Enables the auto building of branches for an Amplify app.
+#' @param enableBranchAutoDeletion Automatically disconnects a branch in the Amplify Console when you
+#' delete a branch from your Git repository.
+#' @param enableBasicAuth Enables basic authorization for an Amplify app. This will apply to all
+#' branches that are part of this app.
+#' @param basicAuthCredentials The credentials for basic authorization for an Amplify app.
+#' @param customRules The custom rewrite and redirect rules for an Amplify app.
+#' @param tags The tag for an Amplify app.
+#' @param buildSpec The build specification (build spec) for an Amplify app.
+#' @param enableAutoBranchCreation Enables automated branch creation for the Amplify app.
+#' @param autoBranchCreationPatterns The automated branch creation glob patterns for the Amplify app.
+#' @param autoBranchCreationConfig The automated branch creation configuration for the Amplify app.
 #'
 #' @section Request syntax:
 #' ```
@@ -50,6 +55,7 @@ NULL
 #'     "string"
 #'   ),
 #'   enableBranchAutoBuild = TRUE|FALSE,
+#'   enableBranchAutoDeletion = TRUE|FALSE,
 #'   enableBasicAuth = TRUE|FALSE,
 #'   basicAuthCredentials = "string",
 #'   customRules = list(
@@ -87,14 +93,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname amplify_create_app
-amplify_create_app <- function(name, description = NULL, repository = NULL, platform = NULL, iamServiceRoleArn = NULL, oauthToken = NULL, accessToken = NULL, environmentVariables = NULL, enableBranchAutoBuild = NULL, enableBasicAuth = NULL, basicAuthCredentials = NULL, customRules = NULL, tags = NULL, buildSpec = NULL, enableAutoBranchCreation = NULL, autoBranchCreationPatterns = NULL, autoBranchCreationConfig = NULL) {
+amplify_create_app <- function(name, description = NULL, repository = NULL, platform = NULL, iamServiceRoleArn = NULL, oauthToken = NULL, accessToken = NULL, environmentVariables = NULL, enableBranchAutoBuild = NULL, enableBranchAutoDeletion = NULL, enableBasicAuth = NULL, basicAuthCredentials = NULL, customRules = NULL, tags = NULL, buildSpec = NULL, enableAutoBranchCreation = NULL, autoBranchCreationPatterns = NULL, autoBranchCreationConfig = NULL) {
   op <- new_operation(
     name = "CreateApp",
     http_method = "POST",
     http_path = "/apps",
     paginator = list()
   )
-  input <- .amplify$create_app_input(name = name, description = description, repository = repository, platform = platform, iamServiceRoleArn = iamServiceRoleArn, oauthToken = oauthToken, accessToken = accessToken, environmentVariables = environmentVariables, enableBranchAutoBuild = enableBranchAutoBuild, enableBasicAuth = enableBasicAuth, basicAuthCredentials = basicAuthCredentials, customRules = customRules, tags = tags, buildSpec = buildSpec, enableAutoBranchCreation = enableAutoBranchCreation, autoBranchCreationPatterns = autoBranchCreationPatterns, autoBranchCreationConfig = autoBranchCreationConfig)
+  input <- .amplify$create_app_input(name = name, description = description, repository = repository, platform = platform, iamServiceRoleArn = iamServiceRoleArn, oauthToken = oauthToken, accessToken = accessToken, environmentVariables = environmentVariables, enableBranchAutoBuild = enableBranchAutoBuild, enableBranchAutoDeletion = enableBranchAutoDeletion, enableBasicAuth = enableBasicAuth, basicAuthCredentials = basicAuthCredentials, customRules = customRules, tags = tags, buildSpec = buildSpec, enableAutoBranchCreation = enableAutoBranchCreation, autoBranchCreationPatterns = autoBranchCreationPatterns, autoBranchCreationConfig = autoBranchCreationConfig)
   output <- .amplify$create_app_output()
   config <- get_config()
   svc <- .amplify$service(config)
@@ -104,18 +110,18 @@ amplify_create_app <- function(name, description = NULL, repository = NULL, plat
 }
 .amplify$operations$create_app <- amplify_create_app
 
-#' Creates a new backend environment for an Amplify App
+#' Creates a new backend environment for an Amplify app
 #'
-#' Creates a new backend environment for an Amplify App.
+#' Creates a new backend environment for an Amplify app.
 #'
 #' @usage
 #' amplify_create_backend_environment(appId, environmentName, stackName,
 #'   deploymentArtifacts)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param environmentName &#91;required&#93; Name for the backend environment.
-#' @param stackName CloudFormation stack name of backend environment.
-#' @param deploymentArtifacts Name of deployment artifacts.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param environmentName &#91;required&#93; The name for the backend environment.
+#' @param stackName The AWS CloudFormation stack name of a backend environment.
+#' @param deploymentArtifacts The name of deployment artifacts.
 #'
 #' @section Request syntax:
 #' ```
@@ -147,9 +153,9 @@ amplify_create_backend_environment <- function(appId, environmentName, stackName
 }
 .amplify$operations$create_backend_environment <- amplify_create_backend_environment
 
-#' Creates a new Branch for an Amplify App
+#' Creates a new branch for an Amplify app
 #'
-#' Creates a new Branch for an Amplify App.
+#' Creates a new branch for an Amplify app.
 #'
 #' @usage
 #' amplify_create_branch(appId, branchName, description, stage, framework,
@@ -158,23 +164,25 @@ amplify_create_backend_environment <- function(appId, environmentName, stackName
 #'   displayName, enablePullRequestPreview, pullRequestEnvironmentName,
 #'   backendEnvironmentArn)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param branchName &#91;required&#93; Name for the branch.
-#' @param description Description for the branch.
-#' @param stage Stage for the branch.
-#' @param framework Framework for the branch.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param branchName &#91;required&#93; The name for the branch.
+#' @param description The description for the branch.
+#' @param stage Describes the current stage for the branch.
+#' @param framework The framework for the branch.
 #' @param enableNotification Enables notifications for the branch.
 #' @param enableAutoBuild Enables auto building for the branch.
-#' @param environmentVariables Environment Variables for the branch.
-#' @param basicAuthCredentials Basic Authorization credentials for the branch.
-#' @param enableBasicAuth Enables Basic Auth for the branch.
-#' @param tags Tag for the branch.
-#' @param buildSpec BuildSpec for the branch.
-#' @param ttl The content TTL for the website in seconds.
-#' @param displayName Display name for a branch, will use as the default domain prefix.
-#' @param enablePullRequestPreview Enables Pull Request Preview for this branch.
-#' @param pullRequestEnvironmentName The Amplify Environment name for the pull request.
-#' @param backendEnvironmentArn ARN for a Backend Environment, part of an Amplify App.
+#' @param environmentVariables The environment variables for the branch.
+#' @param basicAuthCredentials The basic authorization credentials for the branch.
+#' @param enableBasicAuth Enables basic authorization for the branch.
+#' @param tags The tag for the branch.
+#' @param buildSpec The build specification (build spec) for the branch.
+#' @param ttl The content Time To Live (TTL) for the website in seconds.
+#' @param displayName The display name for a branch. This is used as the default domain
+#' prefix.
+#' @param enablePullRequestPreview Enables pull request preview for this branch.
+#' @param pullRequestEnvironmentName The Amplify environment name for the pull request.
+#' @param backendEnvironmentArn The Amazon Resource Name (ARN) for a backend environment that is part of
+#' an Amplify app.
 #'
 #' @section Request syntax:
 #' ```
@@ -223,20 +231,20 @@ amplify_create_branch <- function(appId, branchName, description = NULL, stage =
 }
 .amplify$operations$create_branch <- amplify_create_branch
 
-#' Create a deployment for manual deploy apps
+#' Creates a deployment for a manually deployed Amplify app
 #'
-#' Create a deployment for manual deploy apps. (Apps are not connected to
-#' repository)
+#' Creates a deployment for a manually deployed Amplify app. Manually
+#' deployed apps are not connected to a repository.
 #'
 #' @usage
 #' amplify_create_deployment(appId, branchName, fileMap)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param branchName &#91;required&#93; Name for the branch, for the Job.
-#' @param fileMap Optional file map that contains file name as the key and file content
-#' md5 hash as the value. If this argument is provided, the service will
-#' generate different upload url per file. Otherwise, the service will only
-#' generate a single upload url for the zipped files.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param branchName &#91;required&#93; The name for the branch, for the job.
+#' @param fileMap An optional file map that contains the file name as the key and the file
+#' content md5 hash as the value. If this argument is provided, the service
+#' will generate a unique upload URL per file. Otherwise, the service will
+#' only generate a single upload URL for the zipped files.
 #'
 #' @section Request syntax:
 #' ```
@@ -269,19 +277,23 @@ amplify_create_deployment <- function(appId, branchName, fileMap = NULL) {
 }
 .amplify$operations$create_deployment <- amplify_create_deployment
 
-#' Create a new DomainAssociation on an App
+#' Creates a new domain association for an Amplify app
 #'
-#' Create a new DomainAssociation on an App
+#' Creates a new domain association for an Amplify app. This action
+#' associates a custom domain with the Amplify app
 #'
 #' @usage
 #' amplify_create_domain_association(appId, domainName,
-#'   enableAutoSubDomain, subDomainSettings)
+#'   enableAutoSubDomain, subDomainSettings, autoSubDomainCreationPatterns,
+#'   autoSubDomainIAMRole)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param domainName &#91;required&#93; Domain name for the Domain Association.
-#' @param enableAutoSubDomain Enables automated creation of Subdomains for branches. (Currently not
-#' supported)
-#' @param subDomainSettings &#91;required&#93; Setting structure for the Subdomain.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param domainName &#91;required&#93; The domain name for the domain association.
+#' @param enableAutoSubDomain Enables the automated creation of subdomains for branches.
+#' @param subDomainSettings &#91;required&#93; The setting for the subdomain.
+#' @param autoSubDomainCreationPatterns Sets the branch patterns for automatic subdomain creation.
+#' @param autoSubDomainIAMRole The required AWS Identity and Access Management (IAM) service role for
+#' the Amazon Resource Name (ARN) for automatically creating subdomains.
 #'
 #' @section Request syntax:
 #' ```
@@ -294,21 +306,25 @@ amplify_create_deployment <- function(appId, branchName, fileMap = NULL) {
 #'       prefix = "string",
 #'       branchName = "string"
 #'     )
-#'   )
+#'   ),
+#'   autoSubDomainCreationPatterns = list(
+#'     "string"
+#'   ),
+#'   autoSubDomainIAMRole = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname amplify_create_domain_association
-amplify_create_domain_association <- function(appId, domainName, enableAutoSubDomain = NULL, subDomainSettings) {
+amplify_create_domain_association <- function(appId, domainName, enableAutoSubDomain = NULL, subDomainSettings, autoSubDomainCreationPatterns = NULL, autoSubDomainIAMRole = NULL) {
   op <- new_operation(
     name = "CreateDomainAssociation",
     http_method = "POST",
     http_path = "/apps/{appId}/domains",
     paginator = list()
   )
-  input <- .amplify$create_domain_association_input(appId = appId, domainName = domainName, enableAutoSubDomain = enableAutoSubDomain, subDomainSettings = subDomainSettings)
+  input <- .amplify$create_domain_association_input(appId = appId, domainName = domainName, enableAutoSubDomain = enableAutoSubDomain, subDomainSettings = subDomainSettings, autoSubDomainCreationPatterns = autoSubDomainCreationPatterns, autoSubDomainIAMRole = autoSubDomainIAMRole)
   output <- .amplify$create_domain_association_output()
   config <- get_config()
   svc <- .amplify$service(config)
@@ -318,16 +334,16 @@ amplify_create_domain_association <- function(appId, domainName, enableAutoSubDo
 }
 .amplify$operations$create_domain_association <- amplify_create_domain_association
 
-#' Create a new webhook on an App
+#' Creates a new webhook on an Amplify app
 #'
-#' Create a new webhook on an App.
+#' Creates a new webhook on an Amplify app.
 #'
 #' @usage
 #' amplify_create_webhook(appId, branchName, description)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param branchName &#91;required&#93; Name for a branch, part of an Amplify App.
-#' @param description Description for a webhook.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param branchName &#91;required&#93; The name for a branch that is part of an Amplify app.
+#' @param description The description for a webhook.
 #'
 #' @section Request syntax:
 #' ```
@@ -358,14 +374,14 @@ amplify_create_webhook <- function(appId, branchName, description = NULL) {
 }
 .amplify$operations$create_webhook <- amplify_create_webhook
 
-#' Delete an existing Amplify App by appId
+#' Deletes an existing Amplify app specified by an app ID
 #'
-#' Delete an existing Amplify App by appId.
+#' Deletes an existing Amplify app specified by an app ID.
 #'
 #' @usage
 #' amplify_delete_app(appId)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
 #'
 #' @section Request syntax:
 #' ```
@@ -394,15 +410,15 @@ amplify_delete_app <- function(appId) {
 }
 .amplify$operations$delete_app <- amplify_delete_app
 
-#' Delete backend environment for an Amplify App
+#' Deletes a backend environment for an Amplify app
 #'
-#' Delete backend environment for an Amplify App.
+#' Deletes a backend environment for an Amplify app.
 #'
 #' @usage
 #' amplify_delete_backend_environment(appId, environmentName)
 #'
-#' @param appId &#91;required&#93; Unique Id of an Amplify App.
-#' @param environmentName &#91;required&#93; Name of a backend environment of an Amplify App.
+#' @param appId &#91;required&#93; The unique ID of an Amplify app.
+#' @param environmentName &#91;required&#93; The name of a backend environment of an Amplify app.
 #'
 #' @section Request syntax:
 #' ```
@@ -432,15 +448,15 @@ amplify_delete_backend_environment <- function(appId, environmentName) {
 }
 .amplify$operations$delete_backend_environment <- amplify_delete_backend_environment
 
-#' Deletes a branch for an Amplify App
+#' Deletes a branch for an Amplify app
 #'
-#' Deletes a branch for an Amplify App.
+#' Deletes a branch for an Amplify app.
 #'
 #' @usage
 #' amplify_delete_branch(appId, branchName)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param branchName &#91;required&#93; Name for the branch.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param branchName &#91;required&#93; The name for the branch.
 #'
 #' @section Request syntax:
 #' ```
@@ -470,15 +486,15 @@ amplify_delete_branch <- function(appId, branchName) {
 }
 .amplify$operations$delete_branch <- amplify_delete_branch
 
-#' Deletes a DomainAssociation
+#' Deletes a domain association for an Amplify app
 #'
-#' Deletes a DomainAssociation.
+#' Deletes a domain association for an Amplify app.
 #'
 #' @usage
 #' amplify_delete_domain_association(appId, domainName)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param domainName &#91;required&#93; Name of the domain.
+#' @param appId &#91;required&#93; The unique id for an Amplify app.
+#' @param domainName &#91;required&#93; The name of the domain.
 #'
 #' @section Request syntax:
 #' ```
@@ -508,16 +524,16 @@ amplify_delete_domain_association <- function(appId, domainName) {
 }
 .amplify$operations$delete_domain_association <- amplify_delete_domain_association
 
-#' Delete a job, for an Amplify branch, part of Amplify App
+#' Deletes a job for a branch of an Amplify app
 #'
-#' Delete a job, for an Amplify branch, part of Amplify App.
+#' Deletes a job for a branch of an Amplify app.
 #'
 #' @usage
 #' amplify_delete_job(appId, branchName, jobId)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param branchName &#91;required&#93; Name for the branch, for the Job.
-#' @param jobId &#91;required&#93; Unique Id for the Job.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param branchName &#91;required&#93; The name for the branch, for the job.
+#' @param jobId &#91;required&#93; The unique ID for the job.
 #'
 #' @section Request syntax:
 #' ```
@@ -555,7 +571,7 @@ amplify_delete_job <- function(appId, branchName, jobId) {
 #' @usage
 #' amplify_delete_webhook(webhookId)
 #'
-#' @param webhookId &#91;required&#93; Unique Id for a webhook.
+#' @param webhookId &#91;required&#93; The unique ID for a webhook.
 #'
 #' @section Request syntax:
 #' ```
@@ -584,19 +600,21 @@ amplify_delete_webhook <- function(webhookId) {
 }
 .amplify$operations$delete_webhook <- amplify_delete_webhook
 
-#' Retrieve website access logs for a specific time range via a pre-signed
-#' URL
+#' Returns the website access logs for a specific time range using a
+#' presigned URL
 #'
-#' Retrieve website access logs for a specific time range via a pre-signed
-#' URL.
+#' Returns the website access logs for a specific time range using a
+#' presigned URL.
 #'
 #' @usage
 #' amplify_generate_access_logs(startTime, endTime, domainName, appId)
 #'
-#' @param startTime The time at which the logs should start, inclusive.
-#' @param endTime The time at which the logs should end, inclusive.
-#' @param domainName &#91;required&#93; Name of the domain.
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
+#' @param startTime The time at which the logs should start. The time range specified is
+#' inclusive of the start time.
+#' @param endTime The time at which the logs should end. The time range specified is
+#' inclusive of the end time.
+#' @param domainName &#91;required&#93; The name of the domain.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
 #'
 #' @section Request syntax:
 #' ```
@@ -632,14 +650,14 @@ amplify_generate_access_logs <- function(startTime = NULL, endTime = NULL, domai
 }
 .amplify$operations$generate_access_logs <- amplify_generate_access_logs
 
-#' Retrieves an existing Amplify App by appId
+#' Returns an existing Amplify app by appID
 #'
-#' Retrieves an existing Amplify App by appId.
+#' Returns an existing Amplify app by appID.
 #'
 #' @usage
 #' amplify_get_app(appId)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
 #'
 #' @section Request syntax:
 #' ```
@@ -668,14 +686,14 @@ amplify_get_app <- function(appId) {
 }
 .amplify$operations$get_app <- amplify_get_app
 
-#' Retrieves artifact info that corresponds to a artifactId
+#' Returns the artifact info that corresponds to an artifact id
 #'
-#' Retrieves artifact info that corresponds to a artifactId.
+#' Returns the artifact info that corresponds to an artifact id.
 #'
 #' @usage
 #' amplify_get_artifact_url(artifactId)
 #'
-#' @param artifactId &#91;required&#93; Unique Id for a artifact.
+#' @param artifactId &#91;required&#93; The unique ID for an artifact.
 #'
 #' @section Request syntax:
 #' ```
@@ -704,15 +722,15 @@ amplify_get_artifact_url <- function(artifactId) {
 }
 .amplify$operations$get_artifact_url <- amplify_get_artifact_url
 
-#' Retrieves a backend environment for an Amplify App
+#' Returns a backend environment for an Amplify app
 #'
-#' Retrieves a backend environment for an Amplify App.
+#' Returns a backend environment for an Amplify app.
 #'
 #' @usage
 #' amplify_get_backend_environment(appId, environmentName)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param environmentName &#91;required&#93; Name for the backend environment.
+#' @param appId &#91;required&#93; The unique id for an Amplify app.
+#' @param environmentName &#91;required&#93; The name for the backend environment.
 #'
 #' @section Request syntax:
 #' ```
@@ -742,15 +760,15 @@ amplify_get_backend_environment <- function(appId, environmentName) {
 }
 .amplify$operations$get_backend_environment <- amplify_get_backend_environment
 
-#' Retrieves a branch for an Amplify App
+#' Returns a branch for an Amplify app
 #'
-#' Retrieves a branch for an Amplify App.
+#' Returns a branch for an Amplify app.
 #'
 #' @usage
 #' amplify_get_branch(appId, branchName)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param branchName &#91;required&#93; Name for the branch.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param branchName &#91;required&#93; The name for the branch.
 #'
 #' @section Request syntax:
 #' ```
@@ -780,15 +798,15 @@ amplify_get_branch <- function(appId, branchName) {
 }
 .amplify$operations$get_branch <- amplify_get_branch
 
-#' Retrieves domain info that corresponds to an appId and domainName
+#' Returns the domain information for an Amplify app
 #'
-#' Retrieves domain info that corresponds to an appId and domainName.
+#' Returns the domain information for an Amplify app.
 #'
 #' @usage
 #' amplify_get_domain_association(appId, domainName)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param domainName &#91;required&#93; Name of the domain.
+#' @param appId &#91;required&#93; The unique id for an Amplify app.
+#' @param domainName &#91;required&#93; The name of the domain.
 #'
 #' @section Request syntax:
 #' ```
@@ -818,16 +836,16 @@ amplify_get_domain_association <- function(appId, domainName) {
 }
 .amplify$operations$get_domain_association <- amplify_get_domain_association
 
-#' Get a job for a branch, part of an Amplify App
+#' Returns a job for a branch of an Amplify app
 #'
-#' Get a job for a branch, part of an Amplify App.
+#' Returns a job for a branch of an Amplify app.
 #'
 #' @usage
 #' amplify_get_job(appId, branchName, jobId)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param branchName &#91;required&#93; Name for the branch, for the Job.
-#' @param jobId &#91;required&#93; Unique Id for the Job.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param branchName &#91;required&#93; The branch name for the job.
+#' @param jobId &#91;required&#93; The unique ID for the job.
 #'
 #' @section Request syntax:
 #' ```
@@ -858,14 +876,16 @@ amplify_get_job <- function(appId, branchName, jobId) {
 }
 .amplify$operations$get_job <- amplify_get_job
 
-#' Retrieves webhook info that corresponds to a webhookId
+#' Returns the webhook information that corresponds to a specified webhook
+#' ID
 #'
-#' Retrieves webhook info that corresponds to a webhookId.
+#' Returns the webhook information that corresponds to a specified webhook
+#' ID.
 #'
 #' @usage
 #' amplify_get_webhook(webhookId)
 #'
-#' @param webhookId &#91;required&#93; Unique Id for a webhook.
+#' @param webhookId &#91;required&#93; The unique ID for a webhook.
 #'
 #' @section Request syntax:
 #' ```
@@ -894,16 +914,16 @@ amplify_get_webhook <- function(webhookId) {
 }
 .amplify$operations$get_webhook <- amplify_get_webhook
 
-#' Lists existing Amplify Apps
+#' Returns a list of the existing Amplify apps
 #'
-#' Lists existing Amplify Apps.
+#' Returns a list of the existing Amplify apps.
 #'
 #' @usage
 #' amplify_list_apps(nextToken, maxResults)
 #'
-#' @param nextToken Pagination token. If non-null pagination token is returned in a result,
-#' then pass its value in another request to fetch more entries.
-#' @param maxResults Maximum number of records to list in a single response.
+#' @param nextToken A pagination token. If non-null, the pagination token is returned in a
+#' result. Pass its value in another request to retrieve more entries.
+#' @param maxResults The maximum number of records to list in a single response.
 #'
 #' @section Request syntax:
 #' ```
@@ -933,20 +953,20 @@ amplify_list_apps <- function(nextToken = NULL, maxResults = NULL) {
 }
 .amplify$operations$list_apps <- amplify_list_apps
 
-#' List artifacts with an app, a branch, a job and an artifact type
+#' Returns a list of artifacts for a specified app, branch, and job
 #'
-#' List artifacts with an app, a branch, a job and an artifact type.
+#' Returns a list of artifacts for a specified app, branch, and job.
 #'
 #' @usage
 #' amplify_list_artifacts(appId, branchName, jobId, nextToken, maxResults)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param branchName &#91;required&#93; Name for a branch, part of an Amplify App.
-#' @param jobId &#91;required&#93; Unique Id for an Job.
-#' @param nextToken Pagination token. Set to null to start listing artifacts from start. If
-#' non-null pagination token is returned in a result, then pass its value
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param branchName &#91;required&#93; The name of a branch that is part of an Amplify app.
+#' @param jobId &#91;required&#93; The unique ID for a job.
+#' @param nextToken A pagination token. Set to null to start listing artifacts from start.
+#' If a non-null pagination token is returned in a result, pass its value
 #' in here to list more artifacts.
-#' @param maxResults Maximum number of records to list in a single response.
+#' @param maxResults The maximum number of records to list in a single response.
 #'
 #' @section Request syntax:
 #' ```
@@ -979,20 +999,20 @@ amplify_list_artifacts <- function(appId, branchName, jobId, nextToken = NULL, m
 }
 .amplify$operations$list_artifacts <- amplify_list_artifacts
 
-#' Lists backend environments for an Amplify App
+#' Lists the backend environments for an Amplify app
 #'
-#' Lists backend environments for an Amplify App.
+#' Lists the backend environments for an Amplify app.
 #'
 #' @usage
 #' amplify_list_backend_environments(appId, environmentName, nextToken,
 #'   maxResults)
 #'
-#' @param appId &#91;required&#93; Unique Id for an amplify App.
-#' @param environmentName Name of the backend environment
-#' @param nextToken Pagination token. Set to null to start listing backen environments from
-#' start. If a non-null pagination token is returned in a result, then pass
-#' its value in here to list more backend environments.
-#' @param maxResults Maximum number of records to list in a single response.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param environmentName The name of the backend environment
+#' @param nextToken A pagination token. Set to null to start listing backend environments
+#' from the start. If a non-null pagination token is returned in a result,
+#' pass its value in here to list more backend environments.
+#' @param maxResults The maximum number of records to list in a single response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1024,18 +1044,18 @@ amplify_list_backend_environments <- function(appId, environmentName = NULL, nex
 }
 .amplify$operations$list_backend_environments <- amplify_list_backend_environments
 
-#' Lists branches for an Amplify App
+#' Lists the branches of an Amplify app
 #'
-#' Lists branches for an Amplify App.
+#' Lists the branches of an Amplify app.
 #'
 #' @usage
 #' amplify_list_branches(appId, nextToken, maxResults)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param nextToken Pagination token. Set to null to start listing branches from start. If a
-#' non-null pagination token is returned in a result, then pass its value
-#' in here to list more branches.
-#' @param maxResults Maximum number of records to list in a single response.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param nextToken A pagination token. Set to null to start listing branches from the
+#' start. If a non-null pagination token is returned in a result, pass its
+#' value in here to list more branches.
+#' @param maxResults The maximum number of records to list in a single response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1066,18 +1086,18 @@ amplify_list_branches <- function(appId, nextToken = NULL, maxResults = NULL) {
 }
 .amplify$operations$list_branches <- amplify_list_branches
 
-#' List domains with an app
+#' Returns the domain associations for an Amplify app
 #'
-#' List domains with an app
+#' Returns the domain associations for an Amplify app.
 #'
 #' @usage
 #' amplify_list_domain_associations(appId, nextToken, maxResults)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param nextToken Pagination token. Set to null to start listing Apps from start. If
-#' non-null pagination token is returned in a result, then pass its value
-#' in here to list more projects.
-#' @param maxResults Maximum number of records to list in a single response.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param nextToken A pagination token. Set to null to start listing apps from the start. If
+#' non-null, a pagination token is returned in a result. Pass its value in
+#' here to list more projects.
+#' @param maxResults The maximum number of records to list in a single response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1108,19 +1128,19 @@ amplify_list_domain_associations <- function(appId, nextToken = NULL, maxResults
 }
 .amplify$operations$list_domain_associations <- amplify_list_domain_associations
 
-#' List Jobs for a branch, part of an Amplify App
+#' Lists the jobs for a branch of an Amplify app
 #'
-#' List Jobs for a branch, part of an Amplify App.
+#' Lists the jobs for a branch of an Amplify app.
 #'
 #' @usage
 #' amplify_list_jobs(appId, branchName, nextToken, maxResults)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param branchName &#91;required&#93; Name for a branch.
-#' @param nextToken Pagination token. Set to null to start listing steps from start. If a
-#' non-null pagination token is returned in a result, then pass its value
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param branchName &#91;required&#93; The name for a branch.
+#' @param nextToken A pagination token. Set to null to start listing steps from the start.
+#' If a non-null pagination token is returned in a result, pass its value
 #' in here to list more steps.
-#' @param maxResults Maximum number of records to list in a single response.
+#' @param maxResults The maximum number of records to list in a single response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1152,14 +1172,14 @@ amplify_list_jobs <- function(appId, branchName, nextToken = NULL, maxResults = 
 }
 .amplify$operations$list_jobs <- amplify_list_jobs
 
-#' List tags for resource
+#' Returns a list of tags for a specified Amazon Resource Name (ARN)
 #'
-#' List tags for resource.
+#' Returns a list of tags for a specified Amazon Resource Name (ARN).
 #'
 #' @usage
 #' amplify_list_tags_for_resource(resourceArn)
 #'
-#' @param resourceArn &#91;required&#93; Resource arn used to list tags.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) to use to list tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -1188,18 +1208,18 @@ amplify_list_tags_for_resource <- function(resourceArn) {
 }
 .amplify$operations$list_tags_for_resource <- amplify_list_tags_for_resource
 
-#' List webhooks with an app
+#' Returns a list of webhooks for an Amplify app
 #'
-#' List webhooks with an app.
+#' Returns a list of webhooks for an Amplify app.
 #'
 #' @usage
 #' amplify_list_webhooks(appId, nextToken, maxResults)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param nextToken Pagination token. Set to null to start listing webhooks from start. If
-#' non-null pagination token is returned in a result, then pass its value
-#' in here to list more webhooks.
-#' @param maxResults Maximum number of records to list in a single response.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param nextToken A pagination token. Set to null to start listing webhooks from the
+#' start. If non-null,the pagination token is returned in a result. Pass
+#' its value in here to list more webhooks.
+#' @param maxResults The maximum number of records to list in a single response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1230,20 +1250,21 @@ amplify_list_webhooks <- function(appId, nextToken = NULL, maxResults = NULL) {
 }
 .amplify$operations$list_webhooks <- amplify_list_webhooks
 
-#' Start a deployment for manual deploy apps
+#' Starts a deployment for a manually deployed app
 #'
-#' Start a deployment for manual deploy apps. (Apps are not connected to
-#' repository)
+#' Starts a deployment for a manually deployed app. Manually deployed apps
+#' are not connected to a repository.
 #'
 #' @usage
 #' amplify_start_deployment(appId, branchName, jobId, sourceUrl)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param branchName &#91;required&#93; Name for the branch, for the Job.
-#' @param jobId The job id for this deployment, generated by create deployment request.
-#' @param sourceUrl The sourceUrl for this deployment, used when calling start deployment
-#' without create deployment. SourceUrl can be any HTTP GET url that is
-#' public accessible and downloads a single zip.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param branchName &#91;required&#93; The name for the branch, for the job.
+#' @param jobId The job ID for this deployment, generated by the create deployment
+#' request.
+#' @param sourceUrl The source URL for this deployment, used when calling start deployment
+#' without create deployment. The source URL can be any HTTP GET URL that
+#' is publicly accessible and downloads a single .zip file.
 #'
 #' @section Request syntax:
 #' ```
@@ -1275,25 +1296,27 @@ amplify_start_deployment <- function(appId, branchName, jobId = NULL, sourceUrl 
 }
 .amplify$operations$start_deployment <- amplify_start_deployment
 
-#' Starts a new job for a branch, part of an Amplify App
+#' Starts a new job for a branch of an Amplify app
 #'
-#' Starts a new job for a branch, part of an Amplify App.
+#' Starts a new job for a branch of an Amplify app.
 #'
 #' @usage
 #' amplify_start_job(appId, branchName, jobId, jobType, jobReason,
 #'   commitId, commitMessage, commitTime)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param branchName &#91;required&#93; Name for the branch, for the Job.
-#' @param jobId Unique Id for an existing job. Required for \"RETRY\" JobType.
-#' @param jobType &#91;required&#93; Type for the Job. Available JobTypes are: `\\n` \"RELEASE\": Start a new
-#' job with the latest change from the specified branch. Only available for
-#' apps that have connected to a repository. \"RETRY\": Retry an existing
-#' job. JobId is required for this type of job.
-#' @param jobReason Descriptive reason for starting this job.
-#' @param commitId Commit Id from 3rd party repository provider for the Job.
-#' @param commitMessage Commit message from 3rd party repository provider for the Job.
-#' @param commitTime Commit date / time for the Job.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param branchName &#91;required&#93; The branch name for the job.
+#' @param jobId The unique ID for an existing job. This is required if the value of
+#' `jobType` is `RETRY`.
+#' @param jobType &#91;required&#93; Describes the type for the job. The job type `RELEASE` starts a new job
+#' with the latest change from the specified branch. This value is
+#' available only for apps that are connected to a repository. The job type
+#' `RETRY` retries an existing job. If the job type value is `RETRY`, the
+#' `jobId` is also required.
+#' @param jobReason A descriptive reason for starting this job.
+#' @param commitId The commit ID from a third-party repository provider for the job.
+#' @param commitMessage The commit message from a third-party repository provider for the job.
+#' @param commitTime The commit date and time for the job.
 #'
 #' @section Request syntax:
 #' ```
@@ -1331,18 +1354,16 @@ amplify_start_job <- function(appId, branchName, jobId = NULL, jobType, jobReaso
 }
 .amplify$operations$start_job <- amplify_start_job
 
-#' Stop a job that is in progress, for an Amplify branch, part of Amplify
-#' App
+#' Stops a job that is in progress for a branch of an Amplify app
 #'
-#' Stop a job that is in progress, for an Amplify branch, part of Amplify
-#' App.
+#' Stops a job that is in progress for a branch of an Amplify app.
 #'
 #' @usage
 #' amplify_stop_job(appId, branchName, jobId)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param branchName &#91;required&#93; Name for the branch, for the Job.
-#' @param jobId &#91;required&#93; Unique Id for the Job.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param branchName &#91;required&#93; The name for the branch, for the job.
+#' @param jobId &#91;required&#93; The unique id for the job.
 #'
 #' @section Request syntax:
 #' ```
@@ -1373,15 +1394,15 @@ amplify_stop_job <- function(appId, branchName, jobId) {
 }
 .amplify$operations$stop_job <- amplify_stop_job
 
-#' Tag resource with tag key and value
+#' Tags the resource with a tag key and value
 #'
-#' Tag resource with tag key and value.
+#' Tags the resource with a tag key and value.
 #'
 #' @usage
 #' amplify_tag_resource(resourceArn, tags)
 #'
-#' @param resourceArn &#91;required&#93; Resource arn used to tag resource.
-#' @param tags &#91;required&#93; Tags used to tag resource.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) to use to tag a resource.
+#' @param tags &#91;required&#93; The tags used to tag the resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -1413,15 +1434,15 @@ amplify_tag_resource <- function(resourceArn, tags) {
 }
 .amplify$operations$tag_resource <- amplify_tag_resource
 
-#' Untag resource with resourceArn
+#' Untags a resource with a specified Amazon Resource Name (ARN)
 #'
-#' Untag resource with resourceArn.
+#' Untags a resource with a specified Amazon Resource Name (ARN).
 #'
 #' @usage
 #' amplify_untag_resource(resourceArn, tagKeys)
 #'
-#' @param resourceArn &#91;required&#93; Resource arn used to untag resource.
-#' @param tagKeys &#91;required&#93; Tag keys used to untag resource.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) to use to untag a resource.
+#' @param tagKeys &#91;required&#93; The tag keys to use to untag a resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -1453,37 +1474,43 @@ amplify_untag_resource <- function(resourceArn, tagKeys) {
 }
 .amplify$operations$untag_resource <- amplify_untag_resource
 
-#' Updates an existing Amplify App
+#' Updates an existing Amplify app
 #'
-#' Updates an existing Amplify App.
+#' Updates an existing Amplify app.
 #'
 #' @usage
 #' amplify_update_app(appId, name, description, platform,
 #'   iamServiceRoleArn, environmentVariables, enableBranchAutoBuild,
-#'   enableBasicAuth, basicAuthCredentials, customRules, buildSpec,
-#'   enableAutoBranchCreation, autoBranchCreationPatterns,
-#'   autoBranchCreationConfig, repository, oauthToken, accessToken)
+#'   enableBranchAutoDeletion, enableBasicAuth, basicAuthCredentials,
+#'   customRules, buildSpec, enableAutoBranchCreation,
+#'   autoBranchCreationPatterns, autoBranchCreationConfig, repository,
+#'   oauthToken, accessToken)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param name Name for an Amplify App.
-#' @param description Description for an Amplify App.
-#' @param platform Platform for an Amplify App.
-#' @param iamServiceRoleArn IAM service role for an Amplify App.
-#' @param environmentVariables Environment Variables for an Amplify App.
-#' @param enableBranchAutoBuild Enables branch auto-building for an Amplify App.
-#' @param enableBasicAuth Enables Basic Authorization for an Amplify App.
-#' @param basicAuthCredentials Basic Authorization credentials for an Amplify App.
-#' @param customRules Custom redirect / rewrite rules for an Amplify App.
-#' @param buildSpec BuildSpec for an Amplify App.
-#' @param enableAutoBranchCreation Enables automated branch creation for the Amplify App.
-#' @param autoBranchCreationPatterns Automated branch creation glob patterns for the Amplify App.
-#' @param autoBranchCreationConfig Automated branch creation branchConfig for the Amplify App.
-#' @param repository Repository for an Amplify App
-#' @param oauthToken OAuth token for 3rd party source control system for an Amplify App, used
-#' to create webhook and read-only deploy key. OAuth token is not stored.
-#' @param accessToken Personal Access token for 3rd party source control system for an Amplify
-#' App, used to create webhook and read-only deploy key. Token is not
-#' stored.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param name The name for an Amplify app.
+#' @param description The description for an Amplify app.
+#' @param platform The platform for an Amplify app.
+#' @param iamServiceRoleArn The AWS Identity and Access Management (IAM) service role for an Amplify
+#' app.
+#' @param environmentVariables The environment variables for an Amplify app.
+#' @param enableBranchAutoBuild Enables branch auto-building for an Amplify app.
+#' @param enableBranchAutoDeletion Automatically disconnects a branch in the Amplify Console when you
+#' delete a branch from your Git repository.
+#' @param enableBasicAuth Enables basic authorization for an Amplify app.
+#' @param basicAuthCredentials The basic authorization credentials for an Amplify app.
+#' @param customRules The custom redirect and rewrite rules for an Amplify app.
+#' @param buildSpec The build specification (build spec) for an Amplify app.
+#' @param enableAutoBranchCreation Enables automated branch creation for the Amplify app.
+#' @param autoBranchCreationPatterns Describes the automated branch creation glob patterns for the Amplify
+#' app.
+#' @param autoBranchCreationConfig The automated branch creation configuration for the Amplify app.
+#' @param repository The name of the repository for an Amplify app
+#' @param oauthToken The OAuth token for a third-party source control system for an Amplify
+#' app. The token is used to create a webhook and a read-only deploy key.
+#' The OAuth token is not stored.
+#' @param accessToken The personal access token for a third-party source control system for an
+#' Amplify app. The token is used to create webhook and a read-only deploy
+#' key. The token is not stored.
 #'
 #' @section Request syntax:
 #' ```
@@ -1497,6 +1524,7 @@ amplify_untag_resource <- function(resourceArn, tagKeys) {
 #'     "string"
 #'   ),
 #'   enableBranchAutoBuild = TRUE|FALSE,
+#'   enableBranchAutoDeletion = TRUE|FALSE,
 #'   enableBasicAuth = TRUE|FALSE,
 #'   basicAuthCredentials = "string",
 #'   customRules = list(
@@ -1534,14 +1562,14 @@ amplify_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname amplify_update_app
-amplify_update_app <- function(appId, name = NULL, description = NULL, platform = NULL, iamServiceRoleArn = NULL, environmentVariables = NULL, enableBranchAutoBuild = NULL, enableBasicAuth = NULL, basicAuthCredentials = NULL, customRules = NULL, buildSpec = NULL, enableAutoBranchCreation = NULL, autoBranchCreationPatterns = NULL, autoBranchCreationConfig = NULL, repository = NULL, oauthToken = NULL, accessToken = NULL) {
+amplify_update_app <- function(appId, name = NULL, description = NULL, platform = NULL, iamServiceRoleArn = NULL, environmentVariables = NULL, enableBranchAutoBuild = NULL, enableBranchAutoDeletion = NULL, enableBasicAuth = NULL, basicAuthCredentials = NULL, customRules = NULL, buildSpec = NULL, enableAutoBranchCreation = NULL, autoBranchCreationPatterns = NULL, autoBranchCreationConfig = NULL, repository = NULL, oauthToken = NULL, accessToken = NULL) {
   op <- new_operation(
     name = "UpdateApp",
     http_method = "POST",
     http_path = "/apps/{appId}",
     paginator = list()
   )
-  input <- .amplify$update_app_input(appId = appId, name = name, description = description, platform = platform, iamServiceRoleArn = iamServiceRoleArn, environmentVariables = environmentVariables, enableBranchAutoBuild = enableBranchAutoBuild, enableBasicAuth = enableBasicAuth, basicAuthCredentials = basicAuthCredentials, customRules = customRules, buildSpec = buildSpec, enableAutoBranchCreation = enableAutoBranchCreation, autoBranchCreationPatterns = autoBranchCreationPatterns, autoBranchCreationConfig = autoBranchCreationConfig, repository = repository, oauthToken = oauthToken, accessToken = accessToken)
+  input <- .amplify$update_app_input(appId = appId, name = name, description = description, platform = platform, iamServiceRoleArn = iamServiceRoleArn, environmentVariables = environmentVariables, enableBranchAutoBuild = enableBranchAutoBuild, enableBranchAutoDeletion = enableBranchAutoDeletion, enableBasicAuth = enableBasicAuth, basicAuthCredentials = basicAuthCredentials, customRules = customRules, buildSpec = buildSpec, enableAutoBranchCreation = enableAutoBranchCreation, autoBranchCreationPatterns = autoBranchCreationPatterns, autoBranchCreationConfig = autoBranchCreationConfig, repository = repository, oauthToken = oauthToken, accessToken = accessToken)
   output <- .amplify$update_app_output()
   config <- get_config()
   svc <- .amplify$service(config)
@@ -1551,9 +1579,9 @@ amplify_update_app <- function(appId, name = NULL, description = NULL, platform 
 }
 .amplify$operations$update_app <- amplify_update_app
 
-#' Updates a branch for an Amplify App
+#' Updates a branch for an Amplify app
 #'
-#' Updates a branch for an Amplify App.
+#' Updates a branch for an Amplify app.
 #'
 #' @usage
 #' amplify_update_branch(appId, branchName, description, framework, stage,
@@ -1562,22 +1590,24 @@ amplify_update_app <- function(appId, name = NULL, description = NULL, platform 
 #'   enablePullRequestPreview, pullRequestEnvironmentName,
 #'   backendEnvironmentArn)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param branchName &#91;required&#93; Name for the branch.
-#' @param description Description for the branch.
-#' @param framework Framework for the branch.
-#' @param stage Stage for the branch.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param branchName &#91;required&#93; The name for the branch.
+#' @param description The description for the branch.
+#' @param framework The framework for the branch.
+#' @param stage Describes the current stage for the branch.
 #' @param enableNotification Enables notifications for the branch.
 #' @param enableAutoBuild Enables auto building for the branch.
-#' @param environmentVariables Environment Variables for the branch.
-#' @param basicAuthCredentials Basic Authorization credentials for the branch.
-#' @param enableBasicAuth Enables Basic Auth for the branch.
-#' @param buildSpec BuildSpec for the branch.
-#' @param ttl The content TTL for the website in seconds.
-#' @param displayName Display name for a branch, will use as the default domain prefix.
-#' @param enablePullRequestPreview Enables Pull Request Preview for this branch.
-#' @param pullRequestEnvironmentName The Amplify Environment name for the pull request.
-#' @param backendEnvironmentArn ARN for a Backend Environment, part of an Amplify App.
+#' @param environmentVariables The environment variables for the branch.
+#' @param basicAuthCredentials The basic authorization credentials for the branch.
+#' @param enableBasicAuth Enables basic authorization for the branch.
+#' @param buildSpec The build specification (build spec) for the branch.
+#' @param ttl The content Time to Live (TTL) for the website in seconds.
+#' @param displayName The display name for a branch. This is used as the default domain
+#' prefix.
+#' @param enablePullRequestPreview Enables pull request preview for this branch.
+#' @param pullRequestEnvironmentName The Amplify environment name for the pull request.
+#' @param backendEnvironmentArn The Amazon Resource Name (ARN) for a backend environment that is part of
+#' an Amplify app.
 #'
 #' @section Request syntax:
 #' ```
@@ -1623,19 +1653,22 @@ amplify_update_branch <- function(appId, branchName, description = NULL, framewo
 }
 .amplify$operations$update_branch <- amplify_update_branch
 
-#' Create a new DomainAssociation on an App
+#' Creates a new domain association for an Amplify app
 #'
-#' Create a new DomainAssociation on an App
+#' Creates a new domain association for an Amplify app.
 #'
 #' @usage
 #' amplify_update_domain_association(appId, domainName,
-#'   enableAutoSubDomain, subDomainSettings)
+#'   enableAutoSubDomain, subDomainSettings, autoSubDomainCreationPatterns,
+#'   autoSubDomainIAMRole)
 #'
-#' @param appId &#91;required&#93; Unique Id for an Amplify App.
-#' @param domainName &#91;required&#93; Name of the domain.
-#' @param enableAutoSubDomain Enables automated creation of Subdomains for branches. (Currently not
-#' supported)
-#' @param subDomainSettings &#91;required&#93; Setting structure for the Subdomain.
+#' @param appId &#91;required&#93; The unique ID for an Amplify app.
+#' @param domainName &#91;required&#93; The name of the domain.
+#' @param enableAutoSubDomain Enables the automated creation of subdomains for branches.
+#' @param subDomainSettings &#91;required&#93; Describes the settings for the subdomain.
+#' @param autoSubDomainCreationPatterns Sets the branch patterns for automatic subdomain creation.
+#' @param autoSubDomainIAMRole The required AWS Identity and Access Management (IAM) service role for
+#' the Amazon Resource Name (ARN) for automatically creating subdomains.
 #'
 #' @section Request syntax:
 #' ```
@@ -1648,21 +1681,25 @@ amplify_update_branch <- function(appId, branchName, description = NULL, framewo
 #'       prefix = "string",
 #'       branchName = "string"
 #'     )
-#'   )
+#'   ),
+#'   autoSubDomainCreationPatterns = list(
+#'     "string"
+#'   ),
+#'   autoSubDomainIAMRole = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname amplify_update_domain_association
-amplify_update_domain_association <- function(appId, domainName, enableAutoSubDomain = NULL, subDomainSettings) {
+amplify_update_domain_association <- function(appId, domainName, enableAutoSubDomain = NULL, subDomainSettings, autoSubDomainCreationPatterns = NULL, autoSubDomainIAMRole = NULL) {
   op <- new_operation(
     name = "UpdateDomainAssociation",
     http_method = "POST",
     http_path = "/apps/{appId}/domains/{domainName}",
     paginator = list()
   )
-  input <- .amplify$update_domain_association_input(appId = appId, domainName = domainName, enableAutoSubDomain = enableAutoSubDomain, subDomainSettings = subDomainSettings)
+  input <- .amplify$update_domain_association_input(appId = appId, domainName = domainName, enableAutoSubDomain = enableAutoSubDomain, subDomainSettings = subDomainSettings, autoSubDomainCreationPatterns = autoSubDomainCreationPatterns, autoSubDomainIAMRole = autoSubDomainIAMRole)
   output <- .amplify$update_domain_association_output()
   config <- get_config()
   svc <- .amplify$service(config)
@@ -1672,16 +1709,16 @@ amplify_update_domain_association <- function(appId, domainName, enableAutoSubDo
 }
 .amplify$operations$update_domain_association <- amplify_update_domain_association
 
-#' Update a webhook
+#' Updates a webhook
 #'
-#' Update a webhook.
+#' Updates a webhook.
 #'
 #' @usage
 #' amplify_update_webhook(webhookId, branchName, description)
 #'
-#' @param webhookId &#91;required&#93; Unique Id for a webhook.
-#' @param branchName Name for a branch, part of an Amplify App.
-#' @param description Description for a webhook.
+#' @param webhookId &#91;required&#93; The unique ID for a webhook.
+#' @param branchName The name for a branch that is part of an Amplify app.
+#' @param description The description for a webhook.
 #'
 #' @section Request syntax:
 #' ```

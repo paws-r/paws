@@ -198,7 +198,7 @@ iot_associate_targets_with_job <- function(targets, jobId, comment = NULL) {
 #'
 #' @param policyName &#91;required&#93; The name of the policy to attach.
 #' @param target &#91;required&#93; The
-#' [identity](https://docs.aws.amazon.com/iot/latest/developerguide/iot-security-identity.html)
+#' [identity](https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html)
 #' to which the policy is attached.
 #'
 #' @section Request syntax:
@@ -671,7 +671,7 @@ iot_confirm_topic_rule_destination <- function(confirmationToken) {
 #'
 #' @usage
 #' iot_create_authorizer(authorizerName, authorizerFunctionArn,
-#'   tokenKeyName, tokenSigningPublicKeys, status, signingDisabled)
+#'   tokenKeyName, tokenSigningPublicKeys, status, tags, signingDisabled)
 #'
 #' @param authorizerName &#91;required&#93; The authorizer name.
 #' @param authorizerFunctionArn &#91;required&#93; The ARN of the authorizer\'s Lambda function.
@@ -680,6 +680,15 @@ iot_confirm_topic_rule_destination <- function(confirmationToken) {
 #' @param tokenSigningPublicKeys The public keys used to verify the digital signature returned by your
 #' custom authentication service.
 #' @param status The status of the create authorizer request.
+#' @param tags Metadata which can be used to manage the custom authorizer.
+#' 
+#' For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+#' 
+#' For the CLI command-line parameter use format: &&tags
+#' \"key1=value1&key2=value2\\...\"
+#' 
+#' For the cli-input-json file use format: \"tags\":
+#' \"key1=value1&key2=value2\\...\"
 #' @param signingDisabled Specifies whether AWS IoT validates the token signature in an
 #' authorization request.
 #'
@@ -693,6 +702,12 @@ iot_confirm_topic_rule_destination <- function(confirmationToken) {
 #'     "string"
 #'   ),
 #'   status = "ACTIVE"|"INACTIVE",
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
 #'   signingDisabled = TRUE|FALSE
 #' )
 #' ```
@@ -700,14 +715,14 @@ iot_confirm_topic_rule_destination <- function(confirmationToken) {
 #' @keywords internal
 #'
 #' @rdname iot_create_authorizer
-iot_create_authorizer <- function(authorizerName, authorizerFunctionArn, tokenKeyName = NULL, tokenSigningPublicKeys = NULL, status = NULL, signingDisabled = NULL) {
+iot_create_authorizer <- function(authorizerName, authorizerFunctionArn, tokenKeyName = NULL, tokenSigningPublicKeys = NULL, status = NULL, tags = NULL, signingDisabled = NULL) {
   op <- new_operation(
     name = "CreateAuthorizer",
     http_method = "POST",
     http_path = "/authorizer/{authorizerName}",
     paginator = list()
   )
-  input <- .iot$create_authorizer_input(authorizerName = authorizerName, authorizerFunctionArn = authorizerFunctionArn, tokenKeyName = tokenKeyName, tokenSigningPublicKeys = tokenSigningPublicKeys, status = status, signingDisabled = signingDisabled)
+  input <- .iot$create_authorizer_input(authorizerName = authorizerName, authorizerFunctionArn = authorizerFunctionArn, tokenKeyName = tokenKeyName, tokenSigningPublicKeys = tokenSigningPublicKeys, status = status, tags = tags, signingDisabled = signingDisabled)
   output <- .iot$create_authorizer_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -848,6 +863,68 @@ iot_create_certificate_from_csr <- function(certificateSigningRequest, setAsActi
 }
 .iot$operations$create_certificate_from_csr <- iot_create_certificate_from_csr
 
+#' Create a dimension that you can use to limit the scope of a metric used
+#' in a security profile for AWS IoT Device Defender
+#'
+#' Create a dimension that you can use to limit the scope of a metric used
+#' in a security profile for AWS IoT Device Defender. For example, using a
+#' `TOPIC_FILTER` dimension, you can narrow down the scope of the metric
+#' only to MQTT topics whose name match the pattern specified in the
+#' dimension.
+#'
+#' @usage
+#' iot_create_dimension(name, type, stringValues, tags, clientRequestToken)
+#'
+#' @param name &#91;required&#93; A unique identifier for the dimension. Choose something that describes
+#' the type and value to make it easy to remember what it does.
+#' @param type &#91;required&#93; Specifies the type of dimension. Supported types: `TOPIC_FILTER.`
+#' @param stringValues &#91;required&#93; Specifies the value or list of values for the dimension. For
+#' `TOPIC_FILTER` dimensions, this is a pattern used to match the MQTT
+#' topic (for example, \"admin/\\#\").
+#' @param tags Metadata that can be used to manage the dimension.
+#' @param clientRequestToken &#91;required&#93; Each dimension must have a unique client request token. If you try to
+#' create a new dimension with the same token as a dimension that already
+#' exists, an exception occurs. If you omit this value, AWS SDKs will
+#' automatically generate a unique client request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_dimension(
+#'   name = "string",
+#'   type = "TOPIC_FILTER",
+#'   stringValues = list(
+#'     "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_create_dimension
+iot_create_dimension <- function(name, type, stringValues, tags = NULL, clientRequestToken) {
+  op <- new_operation(
+    name = "CreateDimension",
+    http_method = "POST",
+    http_path = "/dimensions/{name}",
+    paginator = list()
+  )
+  input <- .iot$create_dimension_input(name = name, type = type, stringValues = stringValues, tags = tags, clientRequestToken = clientRequestToken)
+  output <- .iot$create_dimension_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$create_dimension <- iot_create_dimension
+
 #' Creates a domain configuration
 #'
 #' Creates a domain configuration.
@@ -858,7 +935,7 @@ iot_create_certificate_from_csr <- function(certificateSigningRequest, setAsActi
 #' @usage
 #' iot_create_domain_configuration(domainConfigurationName, domainName,
 #'   serverCertificateArns, validationCertificateArn, authorizerConfig,
-#'   serviceType)
+#'   serviceType, tags)
 #'
 #' @param domainConfigurationName &#91;required&#93; The name of the domain configuration. This value must be unique to a
 #' region.
@@ -871,6 +948,17 @@ iot_create_certificate_from_csr <- function(certificateSigningRequest, setAsActi
 #' authority. This value is not required for AWS-managed domains.
 #' @param authorizerConfig An object that specifies the authorization service for a domain.
 #' @param serviceType The type of service delivered by the endpoint.
+#' 
+#' AWS IoT Core currently supports only the `DATA` service type.
+#' @param tags Metadata which can be used to manage the domain configuration.
+#' 
+#' For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+#' 
+#' For the CLI command-line parameter use format: &&tags
+#' \"key1=value1&key2=value2\\...\"
+#' 
+#' For the cli-input-json file use format: \"tags\":
+#' \"key1=value1&key2=value2\\...\"
 #'
 #' @section Request syntax:
 #' ```
@@ -885,21 +973,27 @@ iot_create_certificate_from_csr <- function(certificateSigningRequest, setAsActi
 #'     defaultAuthorizerName = "string",
 #'     allowAuthorizerOverride = TRUE|FALSE
 #'   ),
-#'   serviceType = "DATA"|"CREDENTIAL_PROVIDER"|"JOBS"
+#'   serviceType = "DATA"|"CREDENTIAL_PROVIDER"|"JOBS",
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_create_domain_configuration
-iot_create_domain_configuration <- function(domainConfigurationName, domainName = NULL, serverCertificateArns = NULL, validationCertificateArn = NULL, authorizerConfig = NULL, serviceType = NULL) {
+iot_create_domain_configuration <- function(domainConfigurationName, domainName = NULL, serverCertificateArns = NULL, validationCertificateArn = NULL, authorizerConfig = NULL, serviceType = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDomainConfiguration",
     http_method = "POST",
     http_path = "/domainConfigurations/{domainConfigurationName}",
     paginator = list()
   )
-  input <- .iot$create_domain_configuration_input(domainConfigurationName = domainConfigurationName, domainName = domainName, serverCertificateArns = serverCertificateArns, validationCertificateArn = validationCertificateArn, authorizerConfig = authorizerConfig, serviceType = serviceType)
+  input <- .iot$create_domain_configuration_input(domainConfigurationName = domainConfigurationName, domainName = domainName, serverCertificateArns = serverCertificateArns, validationCertificateArn = validationCertificateArn, authorizerConfig = authorizerConfig, serviceType = serviceType, tags = tags)
   output <- .iot$create_domain_configuration_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -1211,11 +1305,12 @@ iot_create_mitigation_action <- function(actionName, roleArn, actionParams, tags
 #' @usage
 #' iot_create_ota_update(otaUpdateId, description, targets, protocols,
 #'   targetSelection, awsJobExecutionsRolloutConfig,
-#'   awsJobPresignedUrlConfig, files, roleArn, additionalParameters, tags)
+#'   awsJobPresignedUrlConfig, awsJobAbortConfig, awsJobTimeoutConfig, files,
+#'   roleArn, additionalParameters, tags)
 #'
 #' @param otaUpdateId &#91;required&#93; The ID of the OTA update to be created.
 #' @param description The description of the OTA update.
-#' @param targets &#91;required&#93; The targeted devices to receive OTA updates.
+#' @param targets &#91;required&#93; The devices targeted to receive OTA updates.
 #' @param protocols The protocol used to transfer the OTA update image. Valid values are
 #' \[HTTP\], \[MQTT\], \[HTTP, MQTT\]. When both HTTP and MQTT are
 #' specified, the target device can choose the protocol.
@@ -1228,8 +1323,15 @@ iot_create_mitigation_action <- function(actionName, roleArn, actionParams, tags
 #' values: CONTINUOUS \\| SNAPSHOT.
 #' @param awsJobExecutionsRolloutConfig Configuration for the rollout of OTA updates.
 #' @param awsJobPresignedUrlConfig Configuration information for pre-signed URLs.
+#' @param awsJobAbortConfig The criteria that determine when and how a job abort takes place.
+#' @param awsJobTimeoutConfig Specifies the amount of time each device has to finish its execution of
+#' the job. A timer is started when the job execution status is set to
+#' `IN_PROGRESS`. If the job execution status is not set to another
+#' terminal state before the timer expires, it will be automatically set to
+#' `TIMED_OUT`.
 #' @param files &#91;required&#93; The files to be streamed by the OTA update.
-#' @param roleArn &#91;required&#93; The IAM role that allows access to the AWS IoT Jobs service.
+#' @param roleArn &#91;required&#93; The IAM role that grants AWS IoT access to the Amazon S3, AWS IoT jobs
+#' and AWS Code Signing resources to create an OTA update job.
 #' @param additionalParameters A list of additional OTA update parameters which are name-value pairs.
 #' @param tags Metadata which can be used to manage updates.
 #'
@@ -1246,10 +1348,31 @@ iot_create_mitigation_action <- function(actionName, roleArn, actionParams, tags
 #'   ),
 #'   targetSelection = "CONTINUOUS"|"SNAPSHOT",
 #'   awsJobExecutionsRolloutConfig = list(
-#'     maximumPerMinute = 123
+#'     maximumPerMinute = 123,
+#'     exponentialRate = list(
+#'       baseRatePerMinute = 123,
+#'       incrementFactor = 123.0,
+#'       rateIncreaseCriteria = list(
+#'         numberOfNotifiedThings = 123,
+#'         numberOfSucceededThings = 123
+#'       )
+#'     )
 #'   ),
 #'   awsJobPresignedUrlConfig = list(
 #'     expiresInSec = 123
+#'   ),
+#'   awsJobAbortConfig = list(
+#'     abortCriteriaList = list(
+#'       list(
+#'         failureType = "FAILED"|"REJECTED"|"TIMED_OUT"|"ALL",
+#'         action = "CANCEL",
+#'         thresholdPercentage = 123.0,
+#'         minNumberOfExecutedThings = 123
+#'       )
+#'     )
+#'   ),
+#'   awsJobTimeoutConfig = list(
+#'     inProgressTimeoutInMinutes = 123
 #'   ),
 #'   files = list(
 #'     list(
@@ -1315,14 +1438,14 @@ iot_create_mitigation_action <- function(actionName, roleArn, actionParams, tags
 #' @keywords internal
 #'
 #' @rdname iot_create_ota_update
-iot_create_ota_update <- function(otaUpdateId, description = NULL, targets, protocols = NULL, targetSelection = NULL, awsJobExecutionsRolloutConfig = NULL, awsJobPresignedUrlConfig = NULL, files, roleArn, additionalParameters = NULL, tags = NULL) {
+iot_create_ota_update <- function(otaUpdateId, description = NULL, targets, protocols = NULL, targetSelection = NULL, awsJobExecutionsRolloutConfig = NULL, awsJobPresignedUrlConfig = NULL, awsJobAbortConfig = NULL, awsJobTimeoutConfig = NULL, files, roleArn, additionalParameters = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateOTAUpdate",
     http_method = "POST",
     http_path = "/otaUpdates/{otaUpdateId}",
     paginator = list()
   )
-  input <- .iot$create_ota_update_input(otaUpdateId = otaUpdateId, description = description, targets = targets, protocols = protocols, targetSelection = targetSelection, awsJobExecutionsRolloutConfig = awsJobExecutionsRolloutConfig, awsJobPresignedUrlConfig = awsJobPresignedUrlConfig, files = files, roleArn = roleArn, additionalParameters = additionalParameters, tags = tags)
+  input <- .iot$create_ota_update_input(otaUpdateId = otaUpdateId, description = description, targets = targets, protocols = protocols, targetSelection = targetSelection, awsJobExecutionsRolloutConfig = awsJobExecutionsRolloutConfig, awsJobPresignedUrlConfig = awsJobPresignedUrlConfig, awsJobAbortConfig = awsJobAbortConfig, awsJobTimeoutConfig = awsJobTimeoutConfig, files = files, roleArn = roleArn, additionalParameters = additionalParameters, tags = tags)
   output <- .iot$create_ota_update_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -1341,32 +1464,47 @@ iot_create_ota_update <- function(otaUpdateId, description = NULL, targets, prot
 #' **1** as the policy\'s default version.
 #'
 #' @usage
-#' iot_create_policy(policyName, policyDocument)
+#' iot_create_policy(policyName, policyDocument, tags)
 #'
 #' @param policyName &#91;required&#93; The policy name.
 #' @param policyDocument &#91;required&#93; The JSON document that describes the policy. **policyDocument** must
 #' have a minimum length of 1, with a maximum length of 2048, excluding
 #' whitespace.
+#' @param tags Metadata which can be used to manage the policy.
+#' 
+#' For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+#' 
+#' For the CLI command-line parameter use format: &&tags
+#' \"key1=value1&key2=value2\\...\"
+#' 
+#' For the cli-input-json file use format: \"tags\":
+#' \"key1=value1&key2=value2\\...\"
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_policy(
 #'   policyName = "string",
-#'   policyDocument = "string"
+#'   policyDocument = "string",
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_create_policy
-iot_create_policy <- function(policyName, policyDocument) {
+iot_create_policy <- function(policyName, policyDocument, tags = NULL) {
   op <- new_operation(
     name = "CreatePolicy",
     http_method = "POST",
     http_path = "/policies/{policyName}",
     paginator = list()
   )
-  input <- .iot$create_policy_input(policyName = policyName, policyDocument = policyDocument)
+  input <- .iot$create_policy_input(policyName = policyName, policyDocument = policyDocument, tags = tags)
   output <- .iot$create_policy_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -1471,7 +1609,7 @@ iot_create_provisioning_claim <- function(templateName) {
 #'
 #' @usage
 #' iot_create_provisioning_template(templateName, description,
-#'   templateBody, enabled, provisioningRoleArn, tags)
+#'   templateBody, enabled, provisioningRoleArn, preProvisioningHook, tags)
 #'
 #' @param templateName &#91;required&#93; The name of the fleet provisioning template.
 #' @param description The description of the fleet provisioning template.
@@ -1479,6 +1617,7 @@ iot_create_provisioning_claim <- function(templateName) {
 #' @param enabled True to enable the fleet provisioning template, otherwise false.
 #' @param provisioningRoleArn &#91;required&#93; The role ARN for the role associated with the fleet provisioning
 #' template. This IoT role grants permission to provision a device.
+#' @param preProvisioningHook Creates a pre-provisioning hook template.
 #' @param tags Metadata which can be used to manage the fleet provisioning template.
 #' 
 #' For URI Request parameters use format: \\...key1=value1&key2=value2\\...
@@ -1497,6 +1636,10 @@ iot_create_provisioning_claim <- function(templateName) {
 #'   templateBody = "string",
 #'   enabled = TRUE|FALSE,
 #'   provisioningRoleArn = "string",
+#'   preProvisioningHook = list(
+#'     payloadVersion = "string",
+#'     targetArn = "string"
+#'   ),
 #'   tags = list(
 #'     list(
 #'       Key = "string",
@@ -1509,14 +1652,14 @@ iot_create_provisioning_claim <- function(templateName) {
 #' @keywords internal
 #'
 #' @rdname iot_create_provisioning_template
-iot_create_provisioning_template <- function(templateName, description = NULL, templateBody, enabled = NULL, provisioningRoleArn, tags = NULL) {
+iot_create_provisioning_template <- function(templateName, description = NULL, templateBody, enabled = NULL, provisioningRoleArn, preProvisioningHook = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateProvisioningTemplate",
     http_method = "POST",
     http_path = "/provisioning-templates",
     paginator = list()
   )
-  input <- .iot$create_provisioning_template_input(templateName = templateName, description = description, templateBody = templateBody, enabled = enabled, provisioningRoleArn = provisioningRoleArn, tags = tags)
+  input <- .iot$create_provisioning_template_input(templateName = templateName, description = description, templateBody = templateBody, enabled = enabled, provisioningRoleArn = provisioningRoleArn, preProvisioningHook = preProvisioningHook, tags = tags)
   output <- .iot$create_provisioning_template_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -1572,33 +1715,49 @@ iot_create_provisioning_template_version <- function(templateName, templateBody,
 #' Creates a role alias.
 #'
 #' @usage
-#' iot_create_role_alias(roleAlias, roleArn, credentialDurationSeconds)
+#' iot_create_role_alias(roleAlias, roleArn, credentialDurationSeconds,
+#'   tags)
 #'
 #' @param roleAlias &#91;required&#93; The role alias that points to a role ARN. This allows you to change the
 #' role without having to update the device.
 #' @param roleArn &#91;required&#93; The role ARN.
 #' @param credentialDurationSeconds How long (in seconds) the credentials will be valid.
+#' @param tags Metadata which can be used to manage the role alias.
+#' 
+#' For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+#' 
+#' For the CLI command-line parameter use format: &&tags
+#' \"key1=value1&key2=value2\\...\"
+#' 
+#' For the cli-input-json file use format: \"tags\":
+#' \"key1=value1&key2=value2\\...\"
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_role_alias(
 #'   roleAlias = "string",
 #'   roleArn = "string",
-#'   credentialDurationSeconds = 123
+#'   credentialDurationSeconds = 123,
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_create_role_alias
-iot_create_role_alias <- function(roleAlias, roleArn, credentialDurationSeconds = NULL) {
+iot_create_role_alias <- function(roleAlias, roleArn, credentialDurationSeconds = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRoleAlias",
     http_method = "POST",
     http_path = "/role-aliases/{roleAlias}",
     paginator = list()
   )
-  input <- .iot$create_role_alias_input(roleAlias = roleAlias, roleArn = roleArn, credentialDurationSeconds = credentialDurationSeconds)
+  input <- .iot$create_role_alias_input(roleAlias = roleAlias, roleArn = roleArn, credentialDurationSeconds = credentialDurationSeconds, tags = tags)
   output <- .iot$create_role_alias_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -1681,7 +1840,7 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #' @usage
 #' iot_create_security_profile(securityProfileName,
 #'   securityProfileDescription, behaviors, alertTargets,
-#'   additionalMetricsToRetain, tags)
+#'   additionalMetricsToRetain, additionalMetricsToRetainV2, tags)
 #'
 #' @param securityProfileName &#91;required&#93; The name you are giving to the security profile.
 #' @param securityProfileDescription A description of the security profile.
@@ -1691,6 +1850,12 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #' sent to the console.) Alerts are generated when a device (thing)
 #' violates a behavior.
 #' @param additionalMetricsToRetain A list of metrics whose data is retained (stored). By default, data is
+#' retained for any metric used in the profile\'s `behaviors`, but it is
+#' also retained for any metric specified here.
+#' 
+#' **Note:** This API field is deprecated. Please use
+#' CreateSecurityProfileRequest\\$additionalMetricsToRetainV2 instead.
+#' @param additionalMetricsToRetainV2 A list of metrics whose data is retained (stored). By default, data is
 #' retained for any metric used in the profile\'s `behaviors`, but it is
 #' also retained for any metric specified here.
 #' @param tags Metadata that can be used to manage the security profile.
@@ -1704,6 +1869,10 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #'     list(
 #'       name = "string",
 #'       metric = "string",
+#'       metricDimension = list(
+#'         dimensionName = "string",
+#'         operator = "IN"|"NOT_IN"
+#'       ),
 #'       criteria = list(
 #'         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
 #'         value = list(
@@ -1733,6 +1902,15 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #'   additionalMetricsToRetain = list(
 #'     "string"
 #'   ),
+#'   additionalMetricsToRetainV2 = list(
+#'     list(
+#'       metric = "string",
+#'       metricDimension = list(
+#'         dimensionName = "string",
+#'         operator = "IN"|"NOT_IN"
+#'       )
+#'     )
+#'   ),
 #'   tags = list(
 #'     list(
 #'       Key = "string",
@@ -1745,14 +1923,14 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #' @keywords internal
 #'
 #' @rdname iot_create_security_profile
-iot_create_security_profile <- function(securityProfileName, securityProfileDescription = NULL, behaviors = NULL, alertTargets = NULL, additionalMetricsToRetain = NULL, tags = NULL) {
+iot_create_security_profile <- function(securityProfileName, securityProfileDescription = NULL, behaviors = NULL, alertTargets = NULL, additionalMetricsToRetain = NULL, additionalMetricsToRetainV2 = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSecurityProfile",
     http_method = "POST",
     http_path = "/security-profiles/{securityProfileName}",
     paginator = list()
   )
-  input <- .iot$create_security_profile_input(securityProfileName = securityProfileName, securityProfileDescription = securityProfileDescription, behaviors = behaviors, alertTargets = alertTargets, additionalMetricsToRetain = additionalMetricsToRetain, tags = tags)
+  input <- .iot$create_security_profile_input(securityProfileName = securityProfileName, securityProfileDescription = securityProfileDescription, behaviors = behaviors, alertTargets = alertTargets, additionalMetricsToRetain = additionalMetricsToRetain, additionalMetricsToRetainV2 = additionalMetricsToRetainV2, tags = tags)
   output <- .iot$create_security_profile_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -1833,7 +2011,7 @@ iot_create_stream <- function(streamId, description = NULL, files, roleArn, tags
 #' configuration a `ResourceAlreadyExistsException` is thrown.
 #' 
 #' This is a control plane operation. See
-#' [Authorization](https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
+#' [Authorization](https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html)
 #' for information about authorizing control plane actions.
 #'
 #' @usage
@@ -1841,6 +2019,10 @@ iot_create_stream <- function(streamId, description = NULL, files, roleArn, tags
 #'   billingGroupName)
 #'
 #' @param thingName &#91;required&#93; The name of the thing to create.
+#' 
+#' You can\'t change a thing\'s name after you create it. To change a
+#' thing\'s name, you must create a new thing, give it the new name, and
+#' then delete the old thing.
 #' @param thingTypeName The name of the thing type associated with the new thing.
 #' @param attributePayload The attribute payload, which consists of up to three name/value pairs in
 #' a JSON document. For example:
@@ -1888,7 +2070,7 @@ iot_create_thing <- function(thingName, thingTypeName = NULL, attributePayload =
 #' Create a thing group.
 #' 
 #' This is a control plane operation. See
-#' [Authorization](https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
+#' [Authorization](https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html)
 #' for information about authorizing control plane actions.
 #'
 #' @usage
@@ -2091,6 +2273,10 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 #'           stateReason = "string",
 #'           stateValue = "string"
 #'         ),
+#'         cloudwatchLogs = list(
+#'           roleArn = "string",
+#'           logGroupName = "string"
+#'         ),
 #'         elasticsearch = list(
 #'           roleArn = "string",
 #'           endpoint = "string",
@@ -2230,6 +2416,10 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 #'         alarmName = "string",
 #'         stateReason = "string",
 #'         stateValue = "string"
+#'       ),
+#'       cloudwatchLogs = list(
+#'         roleArn = "string",
+#'         logGroupName = "string"
 #'       ),
 #'       elasticsearch = list(
 #'         roleArn = "string",
@@ -2565,6 +2755,42 @@ iot_delete_certificate <- function(certificateId, forceDelete = NULL) {
 }
 .iot$operations$delete_certificate <- iot_delete_certificate
 
+#' Removes the specified dimension from your AWS account
+#'
+#' Removes the specified dimension from your AWS account.
+#'
+#' @usage
+#' iot_delete_dimension(name)
+#'
+#' @param name &#91;required&#93; The unique identifier for the dimension that you want to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_dimension(
+#'   name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_delete_dimension
+iot_delete_dimension <- function(name) {
+  op <- new_operation(
+    name = "DeleteDimension",
+    http_method = "DELETE",
+    http_path = "/dimensions/{name}",
+    paginator = list()
+  )
+  input <- .iot$delete_dimension_input(name = name)
+  output <- .iot$delete_dimension_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$delete_dimension <- iot_delete_dimension
+
 #' Deletes the specified domain configuration
 #'
 #' Deletes the specified domain configuration.
@@ -2800,11 +3026,11 @@ iot_delete_mitigation_action <- function(actionName) {
 #' @usage
 #' iot_delete_ota_update(otaUpdateId, deleteStream, forceDeleteAWSJob)
 #'
-#' @param otaUpdateId &#91;required&#93; The OTA update ID to delete.
+#' @param otaUpdateId &#91;required&#93; The ID of the OTA update to delete.
 #' @param deleteStream Specifies if the stream associated with an OTA update should be deleted
 #' when the OTA update is deleted.
 #' @param forceDeleteAWSJob Specifies if the AWS Job associated with the OTA update should be
-#' deleted with the OTA update is deleted.
+#' deleted when the OTA update is deleted.
 #'
 #' @section Request syntax:
 #' ```
@@ -3777,6 +4003,42 @@ iot_describe_default_authorizer <- function() {
 }
 .iot$operations$describe_default_authorizer <- iot_describe_default_authorizer
 
+#' Provides details about a dimension that is defined in your AWS account
+#'
+#' Provides details about a dimension that is defined in your AWS account.
+#'
+#' @usage
+#' iot_describe_dimension(name)
+#'
+#' @param name &#91;required&#93; The unique identifier for the dimension.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_dimension(
+#'   name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_describe_dimension
+iot_describe_dimension <- function(name) {
+  op <- new_operation(
+    name = "DescribeDimension",
+    http_method = "GET",
+    http_path = "/dimensions/{name}",
+    paginator = list()
+  )
+  input <- .iot$describe_dimension_input(name = name)
+  output <- .iot$describe_dimension_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$describe_dimension <- iot_describe_dimension
+
 #' Gets summary information about a domain configuration
 #'
 #' Gets summary information about a domain configuration.
@@ -3839,6 +4101,10 @@ iot_describe_domain_configuration <- function(domainConfigurationName) {
 #' <!-- -->
 #' 
 #' -   `iot:Jobs` - Returns an AWS IoT device management Jobs API endpoint.
+#' 
+#' We strongly recommend that customers use the newer `iot:Data-ATS`
+#' endpoint type to avoid issues related to the widespread distrust of
+#' Symantec certificate authorities.
 #'
 #' @section Request syntax:
 #' ```
@@ -5732,6 +5998,44 @@ iot_list_certificates_by_ca <- function(caCertificateId, pageSize = NULL, marker
 }
 .iot$operations$list_certificates_by_ca <- iot_list_certificates_by_ca
 
+#' List the set of dimensions that are defined for your AWS account
+#'
+#' List the set of dimensions that are defined for your AWS account.
+#'
+#' @usage
+#' iot_list_dimensions(nextToken, maxResults)
+#'
+#' @param nextToken The token for the next set of results.
+#' @param maxResults The maximum number of results to retrieve at one time.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_dimensions(
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_list_dimensions
+iot_list_dimensions <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListDimensions",
+    http_method = "GET",
+    http_path = "/dimensions",
+    paginator = list()
+  )
+  input <- .iot$list_dimensions_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .iot$list_dimensions_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$list_dimensions <- iot_list_dimensions
+
 #' Gets a list of domain configurations for the user
 #'
 #' Gets a list of domain configurations for the user. This list is sorted
@@ -6457,30 +6761,33 @@ iot_list_scheduled_audits <- function(nextToken = NULL, maxResults = NULL) {
 #' group or only those associated with your account.
 #'
 #' @usage
-#' iot_list_security_profiles(nextToken, maxResults)
+#' iot_list_security_profiles(nextToken, maxResults, dimensionName)
 #'
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time.
+#' @param dimensionName A filter to limit results to the security profiles that use the defined
+#' dimension.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_security_profiles(
 #'   nextToken = "string",
-#'   maxResults = 123
+#'   maxResults = 123,
+#'   dimensionName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_list_security_profiles
-iot_list_security_profiles <- function(nextToken = NULL, maxResults = NULL) {
+iot_list_security_profiles <- function(nextToken = NULL, maxResults = NULL, dimensionName = NULL) {
   op <- new_operation(
     name = "ListSecurityProfiles",
     http_method = "GET",
     http_path = "/security-profiles",
     paginator = list()
   )
-  input <- .iot$list_security_profiles_input(nextToken = nextToken, maxResults = maxResults)
+  input <- .iot$list_security_profiles_input(nextToken = nextToken, maxResults = maxResults, dimensionName = dimensionName)
   output <- .iot$list_security_profiles_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -7268,7 +7575,7 @@ iot_list_violation_events <- function(startTime, endTime, thingName = NULL, secu
 #'
 #' @usage
 #' iot_register_ca_certificate(caCertificate, verificationCertificate,
-#'   setAsActive, allowAutoRegistration, registrationConfig)
+#'   setAsActive, allowAutoRegistration, registrationConfig, tags)
 #'
 #' @param caCertificate &#91;required&#93; The CA certificate.
 #' @param verificationCertificate &#91;required&#93; The private key verification certificate.
@@ -7276,6 +7583,15 @@ iot_list_violation_events <- function(startTime, endTime, thingName = NULL, secu
 #' @param allowAutoRegistration Allows this CA certificate to be used for auto registration of device
 #' certificates.
 #' @param registrationConfig Information about the registration configuration.
+#' @param tags Metadata which can be used to manage the CA certificate.
+#' 
+#' For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+#' 
+#' For the CLI command-line parameter use format: &&tags
+#' \"key1=value1&key2=value2\\...\"
+#' 
+#' For the cli-input-json file use format: \"tags\":
+#' \"key1=value1&key2=value2\\...\"
 #'
 #' @section Request syntax:
 #' ```
@@ -7287,6 +7603,12 @@ iot_list_violation_events <- function(startTime, endTime, thingName = NULL, secu
 #'   registrationConfig = list(
 #'     templateBody = "string",
 #'     roleArn = "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -7294,14 +7616,14 @@ iot_list_violation_events <- function(startTime, endTime, thingName = NULL, secu
 #' @keywords internal
 #'
 #' @rdname iot_register_ca_certificate
-iot_register_ca_certificate <- function(caCertificate, verificationCertificate, setAsActive = NULL, allowAutoRegistration = NULL, registrationConfig = NULL) {
+iot_register_ca_certificate <- function(caCertificate, verificationCertificate, setAsActive = NULL, allowAutoRegistration = NULL, registrationConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "RegisterCACertificate",
     http_method = "POST",
     http_path = "/cacertificate",
     paginator = list()
   )
-  input <- .iot$register_ca_certificate_input(caCertificate = caCertificate, verificationCertificate = verificationCertificate, setAsActive = setAsActive, allowAutoRegistration = allowAutoRegistration, registrationConfig = registrationConfig)
+  input <- .iot$register_ca_certificate_input(caCertificate = caCertificate, verificationCertificate = verificationCertificate, setAsActive = setAsActive, allowAutoRegistration = allowAutoRegistration, registrationConfig = registrationConfig, tags = tags)
   output <- .iot$register_ca_certificate_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -7357,6 +7679,44 @@ iot_register_certificate <- function(certificatePem, caCertificatePem = NULL, se
 }
 .iot$operations$register_certificate <- iot_register_certificate
 
+#' Register a certificate that does not have a certificate authority (CA)
+#'
+#' Register a certificate that does not have a certificate authority (CA).
+#'
+#' @usage
+#' iot_register_certificate_without_ca(certificatePem, status)
+#'
+#' @param certificatePem &#91;required&#93; The certificate data, in PEM format.
+#' @param status The status of the register certificate request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$register_certificate_without_ca(
+#'   certificatePem = "string",
+#'   status = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_register_certificate_without_ca
+iot_register_certificate_without_ca <- function(certificatePem, status = NULL) {
+  op <- new_operation(
+    name = "RegisterCertificateWithoutCA",
+    http_method = "POST",
+    http_path = "/certificate/register-no-ca",
+    paginator = list()
+  )
+  input <- .iot$register_certificate_without_ca_input(certificatePem = certificatePem, status = status)
+  output <- .iot$register_certificate_without_ca_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$register_certificate_without_ca <- iot_register_certificate_without_ca
+
 #' Provisions a thing in the device registry
 #'
 #' Provisions a thing in the device registry. RegisterThing calls other AWS
@@ -7370,11 +7730,11 @@ iot_register_certificate <- function(certificatePem, caCertificatePem = NULL, se
 #' @usage
 #' iot_register_thing(templateBody, parameters)
 #'
-#' @param templateBody &#91;required&#93; The provisioning template. See [Programmatic
-#' Provisioning](https://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
+#' @param templateBody &#91;required&#93; The provisioning template. See [Provisioning Devices That Have Device
+#' Certificates](https://docs.aws.amazon.com/iot/latest/developerguide/provision-w-cert.html)
 #' for more information.
-#' @param parameters The parameters for provisioning a thing. See [Programmatic
-#' Provisioning](https://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)
+#' @param parameters The parameters for provisioning a thing. See [Provisioning
+#' Templates](https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html)
 #' for more information.
 #'
 #' @section Request syntax:
@@ -7501,6 +7861,10 @@ iot_remove_thing_from_billing_group <- function(billingGroupName = NULL, billing
 #' Remove the specified thing from the specified group
 #'
 #' Remove the specified thing from the specified group.
+#' 
+#' You must specify either a `thingGroupArn` or a `thingGroupName` to
+#' identify the thing group and either a `thingArn` or a `thingName` to
+#' identify the thing to remove from the thing group.
 #'
 #' @usage
 #' iot_remove_thing_from_thing_group(thingGroupName, thingGroupArn,
@@ -7628,6 +7992,10 @@ iot_remove_thing_from_thing_group <- function(thingGroupName = NULL, thingGroupA
 #'           alarmName = "string",
 #'           stateReason = "string",
 #'           stateValue = "string"
+#'         ),
+#'         cloudwatchLogs = list(
+#'           roleArn = "string",
+#'           logGroupName = "string"
 #'         ),
 #'         elasticsearch = list(
 #'           roleArn = "string",
@@ -7768,6 +8136,10 @@ iot_remove_thing_from_thing_group <- function(thingGroupName = NULL, thingGroupA
 #'         alarmName = "string",
 #'         stateReason = "string",
 #'         stateValue = "string"
+#'       ),
+#'       cloudwatchLogs = list(
+#'         roleArn = "string",
+#'         logGroupName = "string"
 #'       ),
 #'       elasticsearch = list(
 #'         roleArn = "string",
@@ -8423,7 +8795,7 @@ iot_test_authorization <- function(principal = NULL, cognitoIdentityPoolId = NUL
 #' @param authorizerName &#91;required&#93; The custom authorizer name.
 #' @param token The token returned by your custom authentication service.
 #' @param tokenSignature The signature made with the token and your custom authentication
-#' service\'s private key.
+#' service\'s private key. This value must be Base-64-encoded.
 #' @param httpContext Specifies a test HTTP authorization request.
 #' @param mqttContext Specifies a test MQTT authorization request.
 #' @param tlsContext Specifies a test TLS authorization request.
@@ -8797,9 +9169,10 @@ iot_update_ca_certificate <- function(certificateId, newStatus = NULL, newAutoRe
 #' contains the certificate ID.)
 #' @param newStatus &#91;required&#93; The new status.
 #' 
-#' **Note:** Setting the status to PENDING\\_TRANSFER will result in an
-#' exception being thrown. PENDING\\_TRANSFER is a status used internally by
-#' AWS IoT. It is not intended for developer use.
+#' **Note:** Setting the status to PENDING\\_TRANSFER or PENDING\\_ACTIVATION
+#' will result in an exception being thrown. PENDING\\_TRANSFER and
+#' PENDING\\_ACTIVATION are statuses used internally by AWS IoT. They are
+#' not intended for developer use.
 #' 
 #' **Note:** The status value REGISTER\\_INACTIVE is deprecated and should
 #' not be used.
@@ -8831,6 +9204,50 @@ iot_update_certificate <- function(certificateId, newStatus) {
   return(response)
 }
 .iot$operations$update_certificate <- iot_update_certificate
+
+#' Updates the definition for a dimension
+#'
+#' Updates the definition for a dimension. You cannot change the type of a
+#' dimension after it is created (you can delete it and re-create it).
+#'
+#' @usage
+#' iot_update_dimension(name, stringValues)
+#'
+#' @param name &#91;required&#93; A unique identifier for the dimension. Choose something that describes
+#' the type and value to make it easy to remember what it does.
+#' @param stringValues &#91;required&#93; Specifies the value or list of values for the dimension. For
+#' `TOPIC_FILTER` dimensions, this is a pattern used to match the MQTT
+#' topic (for example, \"admin/\\#\").
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_dimension(
+#'   name = "string",
+#'   stringValues = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_update_dimension
+iot_update_dimension <- function(name, stringValues) {
+  op <- new_operation(
+    name = "UpdateDimension",
+    http_method = "PATCH",
+    http_path = "/dimensions/{name}",
+    paginator = list()
+  )
+  input <- .iot$update_dimension_input(name = name, stringValues = stringValues)
+  output <- .iot$update_dimension_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$update_dimension <- iot_update_dimension
 
 #' Updates values stored in the domain configuration
 #'
@@ -9196,7 +9613,8 @@ iot_update_mitigation_action <- function(actionName, roleArn = NULL, actionParam
 #'
 #' @usage
 #' iot_update_provisioning_template(templateName, description, enabled,
-#'   defaultVersionId, provisioningRoleArn)
+#'   defaultVersionId, provisioningRoleArn, preProvisioningHook,
+#'   removePreProvisioningHook)
 #'
 #' @param templateName &#91;required&#93; The name of the fleet provisioning template.
 #' @param description The description of the fleet provisioning template.
@@ -9204,6 +9622,8 @@ iot_update_mitigation_action <- function(actionName, roleArn = NULL, actionParam
 #' @param defaultVersionId The ID of the default provisioning template version.
 #' @param provisioningRoleArn The ARN of the role associated with the provisioning template. This IoT
 #' role grants permission to provision a device.
+#' @param preProvisioningHook Updates the pre-provisioning hook template.
+#' @param removePreProvisioningHook Removes pre-provisioning hook template.
 #'
 #' @section Request syntax:
 #' ```
@@ -9212,21 +9632,26 @@ iot_update_mitigation_action <- function(actionName, roleArn = NULL, actionParam
 #'   description = "string",
 #'   enabled = TRUE|FALSE,
 #'   defaultVersionId = 123,
-#'   provisioningRoleArn = "string"
+#'   provisioningRoleArn = "string",
+#'   preProvisioningHook = list(
+#'     payloadVersion = "string",
+#'     targetArn = "string"
+#'   ),
+#'   removePreProvisioningHook = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_update_provisioning_template
-iot_update_provisioning_template <- function(templateName, description = NULL, enabled = NULL, defaultVersionId = NULL, provisioningRoleArn = NULL) {
+iot_update_provisioning_template <- function(templateName, description = NULL, enabled = NULL, defaultVersionId = NULL, provisioningRoleArn = NULL, preProvisioningHook = NULL, removePreProvisioningHook = NULL) {
   op <- new_operation(
     name = "UpdateProvisioningTemplate",
     http_method = "PATCH",
     http_path = "/provisioning-templates/{templateName}",
     paginator = list()
   )
-  input <- .iot$update_provisioning_template_input(templateName = templateName, description = description, enabled = enabled, defaultVersionId = defaultVersionId, provisioningRoleArn = provisioningRoleArn)
+  input <- .iot$update_provisioning_template_input(templateName = templateName, description = description, enabled = enabled, defaultVersionId = defaultVersionId, provisioningRoleArn = provisioningRoleArn, preProvisioningHook = preProvisioningHook, removePreProvisioningHook = removePreProvisioningHook)
   output <- .iot$update_provisioning_template_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -9344,8 +9769,8 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #' @usage
 #' iot_update_security_profile(securityProfileName,
 #'   securityProfileDescription, behaviors, alertTargets,
-#'   additionalMetricsToRetain, deleteBehaviors, deleteAlertTargets,
-#'   deleteAdditionalMetricsToRetain, expectedVersion)
+#'   additionalMetricsToRetain, additionalMetricsToRetainV2, deleteBehaviors,
+#'   deleteAlertTargets, deleteAdditionalMetricsToRetain, expectedVersion)
 #'
 #' @param securityProfileName &#91;required&#93; The name of the security profile you want to update.
 #' @param securityProfileDescription A description of the security profile.
@@ -9355,6 +9780,12 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #' @param additionalMetricsToRetain A list of metrics whose data is retained (stored). By default, data is
 #' retained for any metric used in the profile\'s `behaviors`, but it is
 #' also retained for any metric specified here.
+#' 
+#' **Note:** This API field is deprecated. Please use
+#' UpdateSecurityProfileRequest\\$additionalMetricsToRetainV2 instead.
+#' @param additionalMetricsToRetainV2 A list of metrics whose data is retained (stored). By default, data is
+#' retained for any metric used in the profile\'s behaviors, but it is also
+#' retained for any metric specified here.
 #' @param deleteBehaviors If true, delete all `behaviors` defined for this security profile. If
 #' any `behaviors` are defined in the current invocation, an exception
 #' occurs.
@@ -9378,6 +9809,10 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #'     list(
 #'       name = "string",
 #'       metric = "string",
+#'       metricDimension = list(
+#'         dimensionName = "string",
+#'         operator = "IN"|"NOT_IN"
+#'       ),
 #'       criteria = list(
 #'         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
 #'         value = list(
@@ -9407,6 +9842,15 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #'   additionalMetricsToRetain = list(
 #'     "string"
 #'   ),
+#'   additionalMetricsToRetainV2 = list(
+#'     list(
+#'       metric = "string",
+#'       metricDimension = list(
+#'         dimensionName = "string",
+#'         operator = "IN"|"NOT_IN"
+#'       )
+#'     )
+#'   ),
 #'   deleteBehaviors = TRUE|FALSE,
 #'   deleteAlertTargets = TRUE|FALSE,
 #'   deleteAdditionalMetricsToRetain = TRUE|FALSE,
@@ -9417,14 +9861,14 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #' @keywords internal
 #'
 #' @rdname iot_update_security_profile
-iot_update_security_profile <- function(securityProfileName, securityProfileDescription = NULL, behaviors = NULL, alertTargets = NULL, additionalMetricsToRetain = NULL, deleteBehaviors = NULL, deleteAlertTargets = NULL, deleteAdditionalMetricsToRetain = NULL, expectedVersion = NULL) {
+iot_update_security_profile <- function(securityProfileName, securityProfileDescription = NULL, behaviors = NULL, alertTargets = NULL, additionalMetricsToRetain = NULL, additionalMetricsToRetainV2 = NULL, deleteBehaviors = NULL, deleteAlertTargets = NULL, deleteAdditionalMetricsToRetain = NULL, expectedVersion = NULL) {
   op <- new_operation(
     name = "UpdateSecurityProfile",
     http_method = "PATCH",
     http_path = "/security-profiles/{securityProfileName}",
     paginator = list()
   )
-  input <- .iot$update_security_profile_input(securityProfileName = securityProfileName, securityProfileDescription = securityProfileDescription, behaviors = behaviors, alertTargets = alertTargets, additionalMetricsToRetain = additionalMetricsToRetain, deleteBehaviors = deleteBehaviors, deleteAlertTargets = deleteAlertTargets, deleteAdditionalMetricsToRetain = deleteAdditionalMetricsToRetain, expectedVersion = expectedVersion)
+  input <- .iot$update_security_profile_input(securityProfileName = securityProfileName, securityProfileDescription = securityProfileDescription, behaviors = behaviors, alertTargets = alertTargets, additionalMetricsToRetain = additionalMetricsToRetain, additionalMetricsToRetainV2 = additionalMetricsToRetainV2, deleteBehaviors = deleteBehaviors, deleteAlertTargets = deleteAlertTargets, deleteAdditionalMetricsToRetain = deleteAdditionalMetricsToRetain, expectedVersion = expectedVersion)
   output <- .iot$update_security_profile_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -9496,6 +9940,9 @@ iot_update_stream <- function(streamId, description = NULL, files = NULL, roleAr
 #'   expectedVersion, removeThingType)
 #'
 #' @param thingName &#91;required&#93; The name of the thing to update.
+#' 
+#' You can\'t change a thing\'s name. To change a thing\'s name, you must
+#' create a new thing, give it the new name, and then delete the old thing.
 #' @param thingTypeName The name of the thing type.
 #' @param attributePayload A list of thing attributes, a JSON string containing name-value pairs.
 #' For example:
@@ -9730,6 +10177,10 @@ iot_update_topic_rule_destination <- function(arn, status) {
 #'     list(
 #'       name = "string",
 #'       metric = "string",
+#'       metricDimension = list(
+#'         dimensionName = "string",
+#'         operator = "IN"|"NOT_IN"
+#'       ),
 #'       criteria = list(
 #'         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
 #'         value = list(

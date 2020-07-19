@@ -76,7 +76,7 @@ pi <- function(config = list()) {
 
 .pi$metadata <- list(
   service_name = "pi",
-  endpoints = list("*" = list(endpoint = "pi.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "pi.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "pi.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "pi.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "pi.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "pi.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "PI",
   api_version = "2018-02-27",
   signing_name = "pi",

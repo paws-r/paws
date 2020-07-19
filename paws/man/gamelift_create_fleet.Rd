@@ -152,17 +152,17 @@ the hardware specifications, set some configuration options, and specify
 the game server to deploy on the new fleet.
 }
 \details{
-To create a new fleet, you must provide the following: (1) a fleet name,
-(2) an EC2 instance type and fleet type (spot or on-demand), (3) the
-build ID for your game build or script ID if using Realtime Servers, and
-(4) a runtime configuration, which determines how game servers will run
-on each instance in the fleet.
+To create a new fleet, provide the following: (1) a fleet name, (2) an
+EC2 instance type and fleet type (spot or on-demand), (3) the build ID
+for your game build or script ID if using Realtime Servers, and (4) a
+runtime configuration, which determines how game servers will run on
+each instance in the fleet.
 
 If the \code{CreateFleet} call is successful, Amazon GameLift performs the
 following tasks. You can track the process of a fleet by checking the
 fleet status or by monitoring fleet creation events:
 \itemize{
-\item Creates a fleet record. Status: \code{NEW}.
+\item Creates a fleet resource. Status: \code{NEW}.
 \item Begins writing events to the fleet event log, which can be accessed
 in the Amazon GameLift console.
 \item Sets the fleet\'s target capacity to 1 (desired instances), which
@@ -190,11 +190,7 @@ is ready to host a game session.
 \item DeleteFleet
 \item DescribeFleetAttributes
 \item UpdateFleetAttributes
-\item Manage fleet actions:
-\itemize{
-\item StartFleetActions
-\item StopFleetActions
-}
+\item StartFleetActions or StopFleetActions
 }
 }
 \section{Request syntax}{

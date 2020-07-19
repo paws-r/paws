@@ -12,7 +12,7 @@ NULL
 #' @usage
 #' kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
 #'   ClusterName, ConfigurationInfo, EncryptionInfo, EnhancedMonitoring,
-#'   OpenMonitoring, KafkaVersion, NumberOfBrokerNodes, Tags)
+#'   OpenMonitoring, KafkaVersion, LoggingInfo, NumberOfBrokerNodes, Tags)
 #'
 #' @param BrokerNodeGroupInfo &#91;required&#93; 
 #'             <p>Information about the broker nodes in the cluster.</p>
@@ -38,6 +38,7 @@ NULL
 #' @param KafkaVersion &#91;required&#93; 
 #'             <p>The version of Apache Kafka.</p>
 #'          
+#' @param LoggingInfo 
 #' @param NumberOfBrokerNodes &#91;required&#93; 
 #'             <p>The number of broker nodes in the cluster.</p>
 #'          
@@ -96,6 +97,23 @@ NULL
 #'     )
 #'   ),
 #'   KafkaVersion = "string",
+#'   LoggingInfo = list(
+#'     BrokerLogs = list(
+#'       CloudWatchLogs = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroup = "string"
+#'       ),
+#'       Firehose = list(
+#'         DeliveryStream = "string",
+#'         Enabled = TRUE|FALSE
+#'       ),
+#'       S3 = list(
+#'         Bucket = "string",
+#'         Enabled = TRUE|FALSE,
+#'         Prefix = "string"
+#'       )
+#'     )
+#'   ),
 #'   NumberOfBrokerNodes = 123,
 #'   Tags = list(
 #'     "string"
@@ -106,14 +124,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname kafka_create_cluster
-kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NULL, ClusterName, ConfigurationInfo = NULL, EncryptionInfo = NULL, EnhancedMonitoring = NULL, OpenMonitoring = NULL, KafkaVersion, NumberOfBrokerNodes, Tags = NULL) {
+kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NULL, ClusterName, ConfigurationInfo = NULL, EncryptionInfo = NULL, EnhancedMonitoring = NULL, OpenMonitoring = NULL, KafkaVersion, LoggingInfo = NULL, NumberOfBrokerNodes, Tags = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/v1/clusters",
     paginator = list()
   )
-  input <- .kafka$create_cluster_input(BrokerNodeGroupInfo = BrokerNodeGroupInfo, ClientAuthentication = ClientAuthentication, ClusterName = ClusterName, ConfigurationInfo = ConfigurationInfo, EncryptionInfo = EncryptionInfo, EnhancedMonitoring = EnhancedMonitoring, OpenMonitoring = OpenMonitoring, KafkaVersion = KafkaVersion, NumberOfBrokerNodes = NumberOfBrokerNodes, Tags = Tags)
+  input <- .kafka$create_cluster_input(BrokerNodeGroupInfo = BrokerNodeGroupInfo, ClientAuthentication = ClientAuthentication, ClusterName = ClusterName, ConfigurationInfo = ConfigurationInfo, EncryptionInfo = EncryptionInfo, EnhancedMonitoring = EnhancedMonitoring, OpenMonitoring = OpenMonitoring, KafkaVersion = KafkaVersion, LoggingInfo = LoggingInfo, NumberOfBrokerNodes = NumberOfBrokerNodes, Tags = Tags)
   output <- .kafka$create_cluster_output()
   config <- get_config()
   svc <- .kafka$service(config)
@@ -136,7 +154,7 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NUL
 #' @param Description 
 #'             <p>The description of the configuration.</p>
 #'          
-#' @param KafkaVersions &#91;required&#93; 
+#' @param KafkaVersions 
 #'             <p>The versions of Apache Kafka with which you can use this MSK configuration.</p>
 #'          
 #' @param Name &#91;required&#93; 
@@ -162,7 +180,7 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NUL
 #' @keywords internal
 #'
 #' @rdname kafka_create_configuration
-kafka_create_configuration <- function(Description = NULL, KafkaVersions, Name, ServerProperties) {
+kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL, Name, ServerProperties) {
   op <- new_operation(
     name = "CreateConfiguration",
     http_method = "POST",
@@ -429,6 +447,46 @@ kafka_get_bootstrap_brokers <- function(ClusterArn) {
 }
 .kafka$operations$get_bootstrap_brokers <- kafka_get_bootstrap_brokers
 
+#' Gets the Apache Kafka versions to which you can update the MSK cluster
+#'
+#' 
+#'             <p>Gets the Apache Kafka versions to which you can update the MSK cluster.</p>
+#'          
+#'
+#' @usage
+#' kafka_get_compatible_kafka_versions(ClusterArn)
+#'
+#' @param ClusterArn 
+#'             <p>The Amazon Resource Name (ARN) of the cluster check.</p>
+#'             
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_compatible_kafka_versions(
+#'   ClusterArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_get_compatible_kafka_versions
+kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
+  op <- new_operation(
+    name = "GetCompatibleKafkaVersions",
+    http_method = "GET",
+    http_path = "/v1/compatible-kafka-versions",
+    paginator = list()
+  )
+  input <- .kafka$get_compatible_kafka_versions_input(ClusterArn = ClusterArn)
+  output <- .kafka$get_compatible_kafka_versions_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$get_compatible_kafka_versions <- kafka_get_compatible_kafka_versions
+
 #' Returns a list of all the operations that have been performed on the
 #' specified MSK cluster
 #'
@@ -621,6 +679,48 @@ kafka_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
   return(response)
 }
 .kafka$operations$list_configurations <- kafka_list_configurations
+
+#' Returns a list of Kafka versions
+#'
+#' 
+#'             <p>Returns a list of Kafka versions.</p>
+#'          
+#'
+#' @usage
+#' kafka_list_kafka_versions(MaxResults, NextToken)
+#'
+#' @param MaxResults 
+#'             <p>The maximum number of results to return in the response. If there are more results, the response includes a NextToken parameter.</p>
+#' @param NextToken 
+#'             <p>The paginated results marker. When the result of the operation is truncated, the call returns NextToken in the response. To get the next batch, provide this token in your next request.</p>
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_kafka_versions(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_list_kafka_versions
+kafka_list_kafka_versions <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListKafkaVersions",
+    http_method = "GET",
+    http_path = "/v1/kafka-versions",
+    paginator = list()
+  )
+  input <- .kafka$list_kafka_versions_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .kafka$list_kafka_versions_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$list_kafka_versions <- kafka_list_kafka_versions
 
 #' Returns a list of the broker nodes in the cluster
 #'
@@ -978,6 +1078,62 @@ kafka_update_cluster_configuration <- function(ClusterArn, ConfigurationInfo, Cu
 }
 .kafka$operations$update_cluster_configuration <- kafka_update_cluster_configuration
 
+#' Updates the Apache Kafka version for the cluster
+#'
+#' 
+#'             <p>Updates the Apache Kafka version for the cluster.</p>
+#'          
+#'
+#' @usage
+#' kafka_update_cluster_kafka_version(ClusterArn, ConfigurationInfo,
+#'   CurrentVersion, TargetKafkaVersion)
+#'
+#' @param ClusterArn &#91;required&#93; 
+#'             <p>The Amazon Resource Name (ARN) of the cluster to be updated.</p>
+#'             
+#' @param ConfigurationInfo 
+#'             <p>The custom configuration that should be applied on the new version of cluster.</p>
+#'             
+#' @param CurrentVersion &#91;required&#93; 
+#'             <p>Current cluster version.</p>
+#'             
+#' @param TargetKafkaVersion &#91;required&#93; 
+#'             <p>Target Kafka version.</p>
+#'             
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_cluster_kafka_version(
+#'   ClusterArn = "string",
+#'   ConfigurationInfo = list(
+#'     Arn = "string",
+#'     Revision = 123
+#'   ),
+#'   CurrentVersion = "string",
+#'   TargetKafkaVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_cluster_kafka_version
+kafka_update_cluster_kafka_version <- function(ClusterArn, ConfigurationInfo = NULL, CurrentVersion, TargetKafkaVersion) {
+  op <- new_operation(
+    name = "UpdateClusterKafkaVersion",
+    http_method = "PUT",
+    http_path = "/v1/clusters/{clusterArn}/version",
+    paginator = list()
+  )
+  input <- .kafka$update_cluster_kafka_version_input(ClusterArn = ClusterArn, ConfigurationInfo = ConfigurationInfo, CurrentVersion = CurrentVersion, TargetKafkaVersion = TargetKafkaVersion)
+  output <- .kafka$update_cluster_kafka_version_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_cluster_kafka_version <- kafka_update_cluster_kafka_version
+
 #' Updates the monitoring settings for the cluster
 #'
 #' 
@@ -986,7 +1142,7 @@ kafka_update_cluster_configuration <- function(ClusterArn, ConfigurationInfo, Cu
 #'
 #' @usage
 #' kafka_update_monitoring(ClusterArn, CurrentVersion, EnhancedMonitoring,
-#'   OpenMonitoring)
+#'   OpenMonitoring, LoggingInfo)
 #'
 #' @param ClusterArn &#91;required&#93; 
 #'             <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>
@@ -1000,6 +1156,7 @@ kafka_update_cluster_configuration <- function(ClusterArn, ConfigurationInfo, Cu
 #' @param OpenMonitoring 
 #'             <p>The settings for open monitoring.</p>
 #'          
+#' @param LoggingInfo 
 #'
 #' @section Request syntax:
 #' ```
@@ -1016,6 +1173,23 @@ kafka_update_cluster_configuration <- function(ClusterArn, ConfigurationInfo, Cu
 #'         EnabledInBroker = TRUE|FALSE
 #'       )
 #'     )
+#'   ),
+#'   LoggingInfo = list(
+#'     BrokerLogs = list(
+#'       CloudWatchLogs = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroup = "string"
+#'       ),
+#'       Firehose = list(
+#'         DeliveryStream = "string",
+#'         Enabled = TRUE|FALSE
+#'       ),
+#'       S3 = list(
+#'         Bucket = "string",
+#'         Enabled = TRUE|FALSE,
+#'         Prefix = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1023,14 +1197,14 @@ kafka_update_cluster_configuration <- function(ClusterArn, ConfigurationInfo, Cu
 #' @keywords internal
 #'
 #' @rdname kafka_update_monitoring
-kafka_update_monitoring <- function(ClusterArn, CurrentVersion, EnhancedMonitoring = NULL, OpenMonitoring = NULL) {
+kafka_update_monitoring <- function(ClusterArn, CurrentVersion, EnhancedMonitoring = NULL, OpenMonitoring = NULL, LoggingInfo = NULL) {
   op <- new_operation(
     name = "UpdateMonitoring",
     http_method = "PUT",
     http_path = "/v1/clusters/{clusterArn}/monitoring",
     paginator = list()
   )
-  input <- .kafka$update_monitoring_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, EnhancedMonitoring = EnhancedMonitoring, OpenMonitoring = OpenMonitoring)
+  input <- .kafka$update_monitoring_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, EnhancedMonitoring = EnhancedMonitoring, OpenMonitoring = OpenMonitoring, LoggingInfo = LoggingInfo)
   output <- .kafka$update_monitoring_output()
   config <- get_config()
   svc <- .kafka$service(config)

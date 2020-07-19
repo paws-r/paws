@@ -10,11 +10,11 @@ sagemaker_search(Resource, SearchExpression, SortBy, SortOrder,
 \arguments{
 \item{Resource}{[required] The name of the Amazon SageMaker resource to search for.}
 
-\item{SearchExpression}{A Boolean conditional statement. Resource objects must satisfy this
-condition to be included in search results. You must provide at least
-one subexpression, filter, or nested filter. The maximum number of
-recursive \code{SubExpressions}, \code{NestedFilters}, and \code{Filters} that can be
-included in a \code{SearchExpression} object is 50.}
+\item{SearchExpression}{A Boolean conditional statement. Resources must satisfy this condition
+to be included in search results. You must provide at least one
+subexpression, filter, or nested filter. The maximum number of recursive
+\code{SubExpressions}, \code{NestedFilters}, and \code{Filters} that can be included in
+a \code{SearchExpression} object is 50.}
 
 \item{SortBy}{The name of the resource property used to sort the \code{SearchResults}. The
 default is \code{LastModifiedTime}.}
@@ -22,17 +22,16 @@ default is \code{LastModifiedTime}.}
 \item{SortOrder}{How \code{SearchResults} are ordered. Valid values are \code{Ascending} or
 \code{Descending}. The default is \code{Descending}.}
 
-\item{NextToken}{If more than \code{MaxResults} resource objects match the specified
-\code{SearchExpression}, the \code{SearchResponse} includes a \code{NextToken}. The
-\code{NextToken} can be passed to the next \code{SearchRequest} to continue
-retrieving results for the specified \code{SearchExpression} and \code{Sort}
-parameters.}
+\item{NextToken}{If more than \code{MaxResults} resources match the specified
+\code{SearchExpression}, the response includes a \code{NextToken}. The \code{NextToken}
+can be passed to the next \code{SearchRequest} to continue retrieving
+results.}
 
-\item{MaxResults}{The maximum number of results to return in a \code{SearchResponse}.}
+\item{MaxResults}{The maximum number of results to return.}
 }
 \description{
 Finds Amazon SageMaker resources that match a search query. Matching
-resource objects are returned as a list of \code{SearchResult} objects in the
+resources are returned as a list of \code{SearchRecord} objects in the
 response. You can sort the search results by any resource property in a
 ascending or descending order.
 }
@@ -47,7 +46,7 @@ and timestamp.
     Filters = list(
       list(
         Name = "string",
-        Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains"|"Exists"|"NotExists",
+        Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains"|"Exists"|"NotExists"|"In",
         Value = "string"
       )
     ),
@@ -57,7 +56,7 @@ and timestamp.
         Filters = list(
           list(
             Name = "string",
-            Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains"|"Exists"|"NotExists",
+            Operator = "Equals"|"NotEquals"|"GreaterThan"|"GreaterThanOrEqualTo"|"LessThan"|"LessThanOrEqualTo"|"Contains"|"Exists"|"NotExists"|"In",
             Value = "string"
           )
         )

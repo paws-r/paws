@@ -10,9 +10,9 @@ codedeploy_list_on_premises_instances(registrationStatus, tagFilters,
 \arguments{
 \item{registrationStatus}{The registration status of the on-premises instances:
 \itemize{
-\item Deregistered: Include deregistered on-premises instances in the
+\item \code{Deregistered}: Include deregistered on-premises instances in the
 resulting list.
-\item Registered: Include registered on-premises instances in the
+\item \code{Registered}: Include registered on-premises instances in the
 resulting list.
 }}
 

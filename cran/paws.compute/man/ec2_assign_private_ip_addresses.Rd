@@ -48,6 +48,9 @@ Remapping an IP address is an asynchronous operation. When you move an
 IP address from one network interface to another, check
 \code{network/interfaces/macs/mac/local-ipv4s} in the instance metadata to
 confirm that the remapping is complete.
+
+You must specify either the IP addresses or the IP address count in the
+request.
 }
 \section{Request syntax}{
 \preformatted{svc$assign_private_ip_addresses(

@@ -6,7 +6,7 @@
 Amazon Simple Storage Service (Amazon S3) bucket}
 \usage{
 forecastservice_create_forecast_export_job(ForecastExportJobName,
-  ForecastArn, Destination)
+  ForecastArn, Destination, Tags)
 }
 \arguments{
 \item{ForecastExportJobName}{[required] The name for the forecast export job.}
@@ -20,6 +20,32 @@ the location. The forecast must be exported to an Amazon S3 bucket.
 If encryption is used, \code{Destination} must include an AWS Key Management
 Service (KMS) key. The IAM role must allow Amazon Forecast permission to
 access the key.}
+
+\item{Tags}{The optional metadata that you apply to the forecast export job to help
+you categorize and organize them. Each tag consists of a key and an
+optional value, both of which you define.
+
+The following basic restrictions apply to tags:
+\itemize{
+\item Maximum number of tags per resource - 50.
+\item For each resource, each tag key must be unique, and each tag key can
+have only one value.
+\item Maximum key length - 128 Unicode characters in UTF-8.
+\item Maximum value length - 256 Unicode characters in UTF-8.
+\item If your tagging schema is used across multiple services and
+resources, remember that other services may have restrictions on
+allowed characters. Generally allowed characters are: letters,
+numbers, and spaces representable in UTF-8, and the following
+characters: + - = . \\_ : / @.
+\item Tag keys and values are case sensitive.
+\item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
+such as a prefix for keys as it is reserved for AWS use. You cannot
+edit or delete tag keys with this prefix. Values can have this
+prefix. If a tag value has \code{aws} as its prefix but the key does not,
+then Forecast considers it to be a user tag and will count against
+the limit of 50 tags. Tags with only the key prefix of \code{aws} do not
+count against your tags per resource limit.
+}}
 }
 \description{
 Exports a forecast created by the CreateForecast operation to your
@@ -27,7 +53,7 @@ Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name
 will match the following conventions:
 }
 \details{
-\\<ForecastExportJobName\\>\\\emph{\\<ExportTimestamp\\>\\}\\<PageNumber\\>
+\\<ForecastExportJobName\\>\\\emph{\\<ExportTimestamp\\>\\}\\<PartNumber\\>
 
 where the \\<ExportTimestamp\\> component is in Java SimpleDateFormat
 (yyyy-MM-ddTHH-mm-ssZ).
@@ -55,6 +81,12 @@ DescribeForecastExportJob operation.
       Path = "string",
       RoleArn = "string",
       KMSKeyArn = "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

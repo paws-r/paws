@@ -2,28 +2,31 @@
 % Please edit documentation in R/codeguruprofiler_operations.R
 \name{codeguruprofiler_post_agent_profile}
 \alias{codeguruprofiler_post_agent_profile}
-\title{Submit profile collected by an agent belonging to a profiling group for
-aggregation}
+\title{Submits profiling data to an aggregated profile of a profiling group}
 \usage{
 codeguruprofiler_post_agent_profile(agentProfile, contentType,
   profileToken, profilingGroupName)
 }
 \arguments{
-\item{agentProfile}{[required]}
+\item{agentProfile}{[required] The submitted profiling data.}
 
-\item{contentType}{[required] The content type of the agent profile in the payload. Recommended to
-send the profile gzipped with content-type application/octet-stream.
-Other accepted values are application/x-amzn-ion and application/json
-for unzipped Ion and JSON respectively.}
+\item{contentType}{[required] The format of the submitted profiling data. The format maps to the
+\code{Accept} and \code{Content-Type} headers of the HTTP request. You can specify
+one of the following: or the default .\preformatted{ &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/json&lt;/code&gt; â€” standard JSON format &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/x-amzn-ion&lt;/code&gt; â€” the Amazon Ion data format. For more information, see &lt;a href="http://amzn.github.io/ion-docs/"&gt;Amazon Ion&lt;/a&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+}}
 
-\item{profileToken}{Client generated token to deduplicate the agent profile during
-aggregation.}
+\item{profileToken}{Amazon CodeGuru Profiler uses this universally unique identifier (UUID)
+to prevent the accidental submission of duplicate profiling data if
+there are failures and retries.}
 
-\item{profilingGroupName}{[required]}
+\item{profilingGroupName}{[required] The name of the profiling group with the aggregated profile that
+receives the submitted profiling data.}
 }
 \description{
-Submit profile collected by an agent belonging to a profiling group for
-aggregation.
+Submits profiling data to an aggregated profile of a profiling group. To
+get an aggregated profile that is created with this profiling data, use
+\href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.html}{\code{GetProfile}}
+.
 }
 \section{Request syntax}{
 \preformatted{svc$post_agent_profile(

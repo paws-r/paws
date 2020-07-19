@@ -4,8 +4,8 @@
 \alias{ec2_delete_route}
 \title{Deletes the specified route from the specified route table}
 \usage{
-ec2_delete_route(DestinationCidrBlock, DestinationIpv6CidrBlock, DryRun,
-  RouteTableId)
+ec2_delete_route(DestinationCidrBlock, DestinationIpv6CidrBlock,
+  DestinationPrefixListId, DryRun, RouteTableId)
 }
 \arguments{
 \item{DestinationCidrBlock}{The IPv4 CIDR range for the route. The value you specify must match the
@@ -13,6 +13,8 @@ CIDR for the route exactly.}
 
 \item{DestinationIpv6CidrBlock}{The IPv6 CIDR range for the route. The value you specify must match the
 CIDR for the route exactly.}
+
+\item{DestinationPrefixListId}{The ID of the prefix list for the route.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -28,6 +30,7 @@ Deletes the specified route from the specified route table.
 \preformatted{svc$delete_route(
   DestinationCidrBlock = "string",
   DestinationIpv6CidrBlock = "string",
+  DestinationPrefixListId = "string",
   DryRun = TRUE|FALSE,
   RouteTableId = "string"
 )

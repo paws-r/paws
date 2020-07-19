@@ -10,7 +10,9 @@ servicediscovery_deregister_instance(ServiceId, InstanceId)
 \arguments{
 \item{ServiceId}{[required] The ID of the service that the instance is associated with.}
 
-\item{InstanceId}{[required] The value that you specified for \code{Id} in the RegisterInstance request.}
+\item{InstanceId}{[required] The value that you specified for \code{Id} in the
+\href{https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html}{RegisterInstance}
+request.}
 }
 \description{
 Deletes the Amazon Route 53 DNS records and health check, if any, that
@@ -24,4 +26,14 @@ AWS Cloud Map created for the specified instance.
 }
 }
 
+\examples{
+\dontrun{
+# Example: Deregister a service instance
+svc$deregister_instance(
+  InstanceId = "myservice-53",
+  ServiceId = "srv-p5zdwlg5uvvzjita"
+)
+}
+
+}
 \keyword{internal}

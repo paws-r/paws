@@ -6,54 +6,75 @@
 \usage{
 storagegateway_update_nfs_file_share(FileShareARN, KMSEncrypted, KMSKey,
   NFSFileShareDefaults, DefaultStorageClass, ObjectACL, ClientList,
-  Squash, ReadOnly, GuessMIMETypeEnabled, RequesterPays)
+  Squash, ReadOnly, GuessMIMETypeEnabled, RequesterPays, FileShareName,
+  CacheAttributes)
 }
 \arguments{
 \item{FileShareARN}{[required] The Amazon Resource Name (ARN) of the file share to be updated.}
 
-\item{KMSEncrypted}{True to use Amazon S3 server side encryption with your own AWS KMS key,
-or false to use a key managed by Amazon S3. Optional.}
+\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own AWS
+KMS key, or \code{false} to use a key managed by Amazon S3. Optional.
 
-\item{KMSKey}{The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3
-server side encryption. This value can only be set when KMSEncrypted is
-true. Optional.}
+Valid Values: \code{true} \\| \code{false}}
+
+\item{KMSKey}{The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
+used for Amazon S3 server-side encryption. Storage Gateway does not
+support asymmetric CMKs. This value can only be set when \code{KMSEncrypted}
+is \code{true}. Optional.}
 
 \item{NFSFileShareDefaults}{The default values for the file share. Optional.}
 
 \item{DefaultStorageClass}{The default storage class for objects put into an Amazon S3 bucket by
-the file gateway. Possible values are \code{S3_STANDARD}, \code{S3_STANDARD_IA},
-or \code{S3_ONEZONE_IA}. If this field is not populated, the default value
-\code{S3_STANDARD} is used. Optional.}
+the file gateway. The default value is \code{S3_INTELLIGENT_TIERING}.
+Optional.
 
-\item{ObjectACL}{A value that sets the access control list permission for objects in the
-S3 bucket that a file gateway puts objects into. The default value is
-\"private\".}
+Valid Values: \code{S3_STANDARD} \\| \code{S3_INTELLIGENT_TIERING} \\|
+\code{S3_STANDARD_IA} \\| \code{S3_ONEZONE_IA}}
+
+\item{ObjectACL}{A value that sets the access control list (ACL) permission for objects
+in the S3 bucket that a file gateway puts objects into. The default
+value is \code{private}.}
 
 \item{ClientList}{The list of clients that are allowed to access the file gateway. The
 list must contain either valid IP addresses or valid CIDR blocks.}
 
-\item{Squash}{The user mapped to anonymous user. Valid options are the following:
+\item{Squash}{The user mapped to anonymous user.
+
+Valid values are the following:
 \itemize{
-\item \code{RootSquash} - Only root is mapped to anonymous user.
-\item \code{NoSquash} - No one is mapped to anonymous user
-\item \code{AllSquash} - Everyone is mapped to anonymous user.
+\item \code{RootSquash}: Only root is mapped to anonymous user.
+\item \code{NoSquash}: No one is mapped to anonymous user.
+\item \code{AllSquash}: Everyone is mapped to anonymous user.
 }}
 
-\item{ReadOnly}{A value that sets the write status of a file share. This value is true
-if the write status is read-only, and otherwise false.}
+\item{ReadOnly}{A value that sets the write status of a file share. Set this value to
+\code{true} to set the write status to read-only, otherwise set to \code{false}.
+
+Valid Values: \code{true} \\| \code{false}}
 
 \item{GuessMIMETypeEnabled}{A value that enables guessing of the MIME type for uploaded objects
-based on file extensions. Set this value to true to enable MIME type
-guessing, and otherwise to false. The default value is true.}
+based on file extensions. Set this value to \code{true} to enable MIME type
+guessing, otherwise set to \code{false}. The default value is \code{true}.
+
+Valid Values: \code{true} \\| \code{false}}
 
 \item{RequesterPays}{A value that sets who pays the cost of the request and the cost
 associated with data download from the S3 bucket. If this value is set
-to true, the requester pays the costs. Otherwise the S3 bucket owner
+to \code{true}, the requester pays the costs; otherwise, the S3 bucket owner
 pays. However, the S3 bucket owner always pays the cost of storing data.
 
 \code{RequesterPays} is a configuration for the S3 bucket that backs the file
 share, so make sure that the configuration on the file share is the same
-as the S3 bucket configuration.}
+as the S3 bucket configuration.
+
+Valid Values: \code{true} \\| \code{false}}
+
+\item{FileShareName}{The name of the file share. Optional.
+
+\code{FileShareName} must be set if an S3 prefix name is set in
+\code{LocationARN}.}
+
+\item{CacheAttributes}{Refresh cache information.}
 }
 \description{
 Updates a Network File System (NFS) file share. This operation is only
@@ -94,7 +115,11 @@ to null. This operation is only supported in file gateways.
   Squash = "string",
   ReadOnly = TRUE|FALSE,
   GuessMIMETypeEnabled = TRUE|FALSE,
-  RequesterPays = TRUE|FALSE
+  RequesterPays = TRUE|FALSE,
+  FileShareName = "string",
+  CacheAttributes = list(
+    CacheStaleTimeoutInSeconds = 123
+  )
 )
 }
 }

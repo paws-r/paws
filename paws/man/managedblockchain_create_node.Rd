@@ -30,7 +30,21 @@ Creates a peer node in a member.
   MemberId = "string",
   NodeConfiguration = list(
     InstanceType = "string",
-    AvailabilityZone = "string"
+    AvailabilityZone = "string",
+    LogPublishingConfiguration = list(
+      Fabric = list(
+        ChaincodeLogs = list(
+          Cloudwatch = list(
+            Enabled = TRUE|FALSE
+          )
+        ),
+        PeerLogs = list(
+          Cloudwatch = list(
+            Enabled = TRUE|FALSE
+          )
+        )
+      )
+    )
   )
 )
 }

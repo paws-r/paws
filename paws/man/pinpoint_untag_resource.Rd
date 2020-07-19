@@ -3,7 +3,7 @@
 \name{pinpoint_untag_resource}
 \alias{pinpoint_untag_resource}
 \title{Removes one or more tags (keys and values) from an application,
-campaign, journey, message template, or segment}
+campaign, message template, or segment}
 \usage{
 pinpoint_untag_resource(ResourceArn, TagKeys)
 }
@@ -16,7 +16,7 @@ remove, separated by an ampersand (&).}
 }
 \description{
 Removes one or more tags (keys and values) from an application,
-campaign, journey, message template, or segment.
+campaign, message template, or segment.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

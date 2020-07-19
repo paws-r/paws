@@ -7,7 +7,10 @@
 ssm_get_service_setting(SettingId)
 }
 \arguments{
-\item{SettingId}{[required] The ID of the service setting to get.}
+\item{SettingId}{[required] The ID of the service setting to get. The setting ID can be
+\verb{/ssm/parameter-store/default-parameter-tier},
+\verb{/ssm/parameter-store/high-throughput-enabled}, or
+\verb{/ssm/managed-instance/activation-tier}.}
 }
 \description{
 \code{ServiceSetting} is an account-level setting for an AWS service. This

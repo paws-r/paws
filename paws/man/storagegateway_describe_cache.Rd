@@ -11,7 +11,7 @@ storagegateway_describe_cache(GatewayARN)
 }
 \description{
 Returns information about the cache of a gateway. This operation is only
-supported in the cached volume, tape and file gateway types.
+supported in the cached volume, tape, and file gateway types.
 }
 \details{
 The response includes disk IDs that are configured as cache, and it

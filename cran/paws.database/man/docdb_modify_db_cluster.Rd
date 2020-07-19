@@ -2,7 +2,7 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_modify_db_cluster}
 \alias{docdb_modify_db_cluster}
-\title{Modifies a setting for an Amazon DocumentDB DB cluster}
+\title{Modifies a setting for an Amazon DocumentDB cluster}
 \usage{
 docdb_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
   ApplyImmediately, BackupRetentionPeriod, DBClusterParameterGroupName,
@@ -11,7 +11,7 @@ docdb_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
   EngineVersion, DeletionProtection)
 }
 \arguments{
-\item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster that is being modified. This
+\item{DBClusterIdentifier}{[required] The cluster identifier for the cluster that is being modified. This
 parameter is not case sensitive.
 
 Constraints:
@@ -19,8 +19,8 @@ Constraints:
 \item Must match the identifier of an existing \code{DBCluster}.
 }}
 
-\item{NewDBClusterIdentifier}{The new DB cluster identifier for the DB cluster when renaming a DB
-cluster. This value is stored as a lowercase string.
+\item{NewDBClusterIdentifier}{The new cluster identifier for the cluster when renaming a cluster. This
+value is stored as a lowercase string.
 
 Constraints:
 \itemize{
@@ -33,9 +33,9 @@ Example: \code{my-cluster2}}
 
 \item{ApplyImmediately}{A value that specifies whether the changes in this request and any
 pending changes are asynchronously applied as soon as possible,
-regardless of the \code{PreferredMaintenanceWindow} setting for the DB
-cluster. If this parameter is set to \code{false}, changes to the DB cluster
-are applied during the next maintenance window.
+regardless of the \code{PreferredMaintenanceWindow} setting for the cluster.
+If this parameter is set to \code{false}, changes to the cluster are applied
+during the next maintenance window.
 
 The \code{ApplyImmediately} parameter affects only the
 \code{NewDBClusterIdentifier} and \code{MasterUserPassword} values. If you set
@@ -57,16 +57,16 @@ Constraints:
 \item Must be a value from 1 to 35.
 }}
 
-\item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to use for the DB cluster.}
+\item{DBClusterParameterGroupName}{The name of the cluster parameter group to use for the cluster.}
 
-\item{VpcSecurityGroupIds}{A list of virtual private cloud (VPC) security groups that the DB
-cluster will belong to.}
+\item{VpcSecurityGroupIds}{A list of virtual private cloud (VPC) security groups that the cluster
+will belong to.}
 
-\item{Port}{The port number on which the DB cluster accepts connections.
+\item{Port}{The port number on which the cluster accepts connections.
 
 Constraints: Must be a value from \code{1150} to \code{65535}.
 
-Default: The same port as the original DB cluster.}
+Default: The same port as the original cluster.}
 
 \item{MasterUserPassword}{The password for the master database user. This password can contain any
 printable ASCII character except forward slash (/), double quote (\"),
@@ -103,7 +103,7 @@ Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 Constraints: Minimum 30-minute window.}
 
 \item{CloudwatchLogsExportConfiguration}{The configuration setting for the log types to be enabled for export to
-Amazon CloudWatch Logs for a specific DB instance or DB cluster. The
+Amazon CloudWatch Logs for a specific instance or cluster. The
 \code{EnableLogTypes} and \code{DisableLogTypes} arrays determine which logs are
 exported (or not exported) to CloudWatch Logs.}
 
@@ -118,9 +118,9 @@ is enabled, the cluster cannot be deleted unless it is modified and
 from being accidentally deleted.}
 }
 \description{
-Modifies a setting for an Amazon DocumentDB DB cluster. You can change
-one or more database configuration parameters by specifying these
-parameters and the new values in the request.
+Modifies a setting for an Amazon DocumentDB cluster. You can change one
+or more database configuration parameters by specifying these parameters
+and the new values in the request.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_db_cluster(

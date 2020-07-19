@@ -23,21 +23,28 @@ Associates an Amazon VPC with a private hosted zone.
 }
 \details{
 To perform the association, the VPC and the private hosted zone must
-already exist. You can\'t convert a public hosted zone into a private
-hosted zone.
+already exist. Also, you can\'t convert a public hosted zone into a
+private hosted zone.
 
-If you want to associate a VPC that was created by using one AWS account
-with a private hosted zone that was created by using a different
-account, the AWS account that created the private hosted zone must first
-submit a \code{CreateVPCAssociationAuthorization} request. Then the account
-that created the VPC must submit an \code{AssociateVPCWithHostedZone}
-request.
+If you want to associate a VPC that was created by one AWS account with
+a private hosted zone that was created by a different account, do one of
+the following:
+\itemize{
+\item Use the AWS account that created the private hosted zone to submit a
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateVPCAssociationAuthorization.html}{CreateVPCAssociationAuthorization}
+request. Then use the account that created the VPC to submit an
+\code{AssociateVPCWithHostedZone} request.
+\item If a subnet in the VPC was shared with another account, you can use
+the account that the subnet was shared with to submit an
+\code{AssociateVPCWithHostedZone} request. For more information about
+sharing subnets, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html}{Working with Shared VPCs}.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$associate_vpc_with_hosted_zone(
   HostedZoneId = "string",
   VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
     VPCId = "string"
   ),
   Comment = "string"

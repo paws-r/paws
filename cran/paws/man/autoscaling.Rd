@@ -43,10 +43,11 @@ required permissions for Amazon EC2 Auto Scaling actions, see the
 
 \tabular{ll}{
 \link[=autoscaling_attach_instances]{attach_instances} \tab Attaches one or more EC2 instances to the specified Auto Scaling group \cr
-\link[=autoscaling_attach_load_balancers]{attach_load_balancers} \tab Attaches one or more Classic Load Balancers to the specified Auto Scaling group \cr
+\link[=autoscaling_attach_load_balancers]{attach_load_balancers} \tab To attach an Application Load Balancer or a Network Load Balancer, use the AttachLoadBalancerTargetGroups API operation instead \cr
 \link[=autoscaling_attach_load_balancer_target_groups]{attach_load_balancer_target_groups} \tab Attaches one or more target groups to the specified Auto Scaling group \cr
 \link[=autoscaling_batch_delete_scheduled_action]{batch_delete_scheduled_action} \tab Deletes one or more scheduled actions for the specified Auto Scaling group \cr
 \link[=autoscaling_batch_put_scheduled_update_group_action]{batch_put_scheduled_update_group_action} \tab Creates or updates one or more scheduled scaling actions for an Auto Scaling group \cr
+\link[=autoscaling_cancel_instance_refresh]{cancel_instance_refresh} \tab Cancels an instance refresh operation in progress \cr
 \link[=autoscaling_complete_lifecycle_action]{complete_lifecycle_action} \tab Completes the lifecycle action for the specified token or instance with the specified result \cr
 \link[=autoscaling_create_auto_scaling_group]{create_auto_scaling_group} \tab Creates an Auto Scaling group with the specified name and attributes \cr
 \link[=autoscaling_create_launch_configuration]{create_launch_configuration} \tab Creates a launch configuration \cr
@@ -58,11 +59,12 @@ required permissions for Amazon EC2 Auto Scaling actions, see the
 \link[=autoscaling_delete_policy]{delete_policy} \tab Deletes the specified scaling policy \cr
 \link[=autoscaling_delete_scheduled_action]{delete_scheduled_action} \tab Deletes the specified scheduled action \cr
 \link[=autoscaling_delete_tags]{delete_tags} \tab Deletes the specified tags \cr
-\link[=autoscaling_describe_account_limits]{describe_account_limits} \tab Describes the current Amazon EC2 Auto Scaling resource limits for your AWS account \cr
-\link[=autoscaling_describe_adjustment_types]{describe_adjustment_types} \tab Describes the policy adjustment types for use with PutScalingPolicy \cr
+\link[=autoscaling_describe_account_limits]{describe_account_limits} \tab Describes the current Amazon EC2 Auto Scaling resource quotas for your AWS account \cr
+\link[=autoscaling_describe_adjustment_types]{describe_adjustment_types} \tab Describes the available adjustment types for Amazon EC2 Auto Scaling scaling policies \cr
 \link[=autoscaling_describe_auto_scaling_groups]{describe_auto_scaling_groups} \tab Describes one or more Auto Scaling groups \cr
 \link[=autoscaling_describe_auto_scaling_instances]{describe_auto_scaling_instances} \tab Describes one or more Auto Scaling instances \cr
 \link[=autoscaling_describe_auto_scaling_notification_types]{describe_auto_scaling_notification_types} \tab Describes the notification types that are supported by Amazon EC2 Auto Scaling \cr
+\link[=autoscaling_describe_instance_refreshes]{describe_instance_refreshes} \tab Describes one or more instance refreshes \cr
 \link[=autoscaling_describe_launch_configurations]{describe_launch_configurations} \tab Describes one or more launch configurations \cr
 \link[=autoscaling_describe_lifecycle_hooks]{describe_lifecycle_hooks} \tab Describes the lifecycle hooks for the specified Auto Scaling group \cr
 \link[=autoscaling_describe_lifecycle_hook_types]{describe_lifecycle_hook_types} \tab Describes the available types of lifecycle hooks \cr
@@ -72,7 +74,7 @@ required permissions for Amazon EC2 Auto Scaling actions, see the
 \link[=autoscaling_describe_notification_configurations]{describe_notification_configurations} \tab Describes the notification actions associated with the specified Auto Scaling group \cr
 \link[=autoscaling_describe_policies]{describe_policies} \tab Describes the policies for the specified Auto Scaling group \cr
 \link[=autoscaling_describe_scaling_activities]{describe_scaling_activities} \tab Describes one or more scaling activities for the specified Auto Scaling group \cr
-\link[=autoscaling_describe_scaling_process_types]{describe_scaling_process_types} \tab Describes the scaling process types for use with ResumeProcesses and SuspendProcesses \cr
+\link[=autoscaling_describe_scaling_process_types]{describe_scaling_process_types} \tab Describes the scaling process types for use with the ResumeProcesses and SuspendProcesses APIs \cr
 \link[=autoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the actions scheduled for your Auto Scaling group that haven't run or that have not reached their end time \cr
 \link[=autoscaling_describe_tags]{describe_tags} \tab Describes the specified tags \cr
 \link[=autoscaling_describe_termination_policy_types]{describe_termination_policy_types} \tab Describes the termination policies supported by Amazon EC2 Auto Scaling \cr
@@ -89,10 +91,11 @@ required permissions for Amazon EC2 Auto Scaling actions, see the
 \link[=autoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for an Auto Scaling group \cr
 \link[=autoscaling_put_scheduled_update_group_action]{put_scheduled_update_group_action} \tab Creates or updates a scheduled scaling action for an Auto Scaling group \cr
 \link[=autoscaling_record_lifecycle_action_heartbeat]{record_lifecycle_action_heartbeat} \tab Records a heartbeat for the lifecycle action associated with the specified token or instance \cr
-\link[=autoscaling_resume_processes]{resume_processes} \tab Resumes the specified suspended automatic scaling processes, or all suspended process, for the specified Auto Scaling group\cr
+\link[=autoscaling_resume_processes]{resume_processes} \tab Resumes the specified suspended automatic scaling processes, or all suspended process, for the specified Auto Scaling group \cr
 \link[=autoscaling_set_desired_capacity]{set_desired_capacity} \tab Sets the size of the specified Auto Scaling group \cr
 \link[=autoscaling_set_instance_health]{set_instance_health} \tab Sets the health status of the specified instance \cr
 \link[=autoscaling_set_instance_protection]{set_instance_protection} \tab Updates the instance protection settings of the specified instances \cr
+\link[=autoscaling_start_instance_refresh]{start_instance_refresh} \tab Starts a new instance refresh operation, which triggers a rolling replacement of all previously launched instances in the Auto Scaling group with a new group of instances\cr
 \link[=autoscaling_suspend_processes]{suspend_processes} \tab Suspends the specified automatic scaling processes, or all processes, for the specified Auto Scaling group \cr
 \link[=autoscaling_terminate_instance_in_auto_scaling_group]{terminate_instance_in_auto_scaling_group} \tab Terminates the specified instance and optionally adjusts the desired group size \cr
 \link[=autoscaling_update_auto_scaling_group]{update_auto_scaling_group} \tab Updates the configuration for the specified Auto Scaling group

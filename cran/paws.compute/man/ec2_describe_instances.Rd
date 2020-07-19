@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_instances}
 \alias{ec2_describe_instances}
-\title{Describes the specified instances or all of AWS account's instances}
+\title{Describes the specified instances or all instances}
 \usage{
 ec2_describe_instances(Filters, InstanceIds, DryRun, MaxResults,
   NextToken)
@@ -38,6 +38,7 @@ that the instance is enabled for hibernation.
 \item \code{host-id} - The ID of the Dedicated Host on which the instance is
 running, if applicable.
 \item \code{hypervisor} - The hypervisor type of the instance (\code{ovm} \\| \code{xen}).
+The value \code{xen} is used for both Xen and Nitro hypervisors.
 \item \code{iam-instance-profile.arn} - The instance profile associated with
 the instance. Specified as an ARN.
 \item \code{image-id} - The ID of the image used to launch the instance.
@@ -213,15 +214,20 @@ parameter and the instance IDs parameter in the same call.}
 \item{NextToken}{The token to request the next page of results.}
 }
 \description{
-Describes the specified instances or all of AWS account\'s instances.
+Describes the specified instances or all instances.
 }
 \details{
-If you specify one or more instance IDs, Amazon EC2 returns information
-for those instances. If you do not specify instance IDs, Amazon EC2
-returns information for all relevant instances. If you specify an
-instance ID that is not valid, an error is returned. If you specify an
-instance that you do not own, it is not included in the returned
-results.
+If you specify instance IDs, the output includes information for only
+the specified instances. If you specify filters, the output includes
+information for only those instances that meet the filter criteria. If
+you do not specify instance IDs or filters, the output includes
+information for all instances, which can affect performance. We
+recommend that you use pagination to ensure that the operation returns
+quickly and successfully.
+
+If you specify an instance ID that is not valid, an error is returned.
+If you specify an instance that you do not own, it is not included in
+the output.
 
 Recently terminated instances might appear in the returned results. This
 interval is usually less than one hour.

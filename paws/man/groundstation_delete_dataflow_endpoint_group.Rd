@@ -7,7 +7,7 @@
 groundstation_delete_dataflow_endpoint_group(dataflowEndpointGroupId)
 }
 \arguments{
-\item{dataflowEndpointGroupId}{[required] ID of a dataflow endpoint group.}
+\item{dataflowEndpointGroupId}{[required] UUID of a dataflow endpoint group.}
 }
 \description{
 Deletes a dataflow endpoint group.

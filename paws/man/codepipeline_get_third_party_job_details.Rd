@@ -19,10 +19,9 @@ actions only.
 }
 \details{
 When this API is called, AWS CodePipeline returns temporary credentials
-for the Amazon S3 bucket used to store artifacts for the pipeline, if
-the action requires access to that Amazon S3 bucket for input or output
-artifacts. This API also returns any secret values defined for the
-action.
+for the S3 bucket used to store artifacts for the pipeline, if the
+action requires access to that S3 bucket for input or output artifacts.
+This API also returns any secret values defined for the action.
 }
 \section{Request syntax}{
 \preformatted{svc$get_third_party_job_details(

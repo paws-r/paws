@@ -10,9 +10,9 @@ marketplacecatalog(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-Catalog API actions allow you to create, describe, list, and delete
-changes to your published entities. An entity is a product or an offer
-on AWS Marketplace.
+Catalog API actions allow you to manage your entities through list,
+describe, and update capabilities. An entity can be a product or an
+offer on AWS Marketplace.
 
 You can automate your entity update process by integrating the AWS
 Marketplace Catalog API with your AWS Marketplace product build or
@@ -45,7 +45,7 @@ of the Catalog API to manage your products on AWS Marketplace.
 \link[=marketplacecatalog_describe_entity]{describe_entity} \tab Returns the metadata and content of the entity \cr
 \link[=marketplacecatalog_list_change_sets]{list_change_sets} \tab Returns the list of change sets owned by the account being used to make the call\cr
 \link[=marketplacecatalog_list_entities]{list_entities} \tab Provides the list of entities of a given type \cr
-\link[=marketplacecatalog_start_change_set]{start_change_set} \tab This operation allows you to request changes in your entities
+\link[=marketplacecatalog_start_change_set]{start_change_set} \tab This operation allows you to request changes for your entities
 }
 }
 

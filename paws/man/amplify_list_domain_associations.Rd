@@ -2,21 +2,21 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_list_domain_associations}
 \alias{amplify_list_domain_associations}
-\title{List domains with an app}
+\title{Returns the domain associations for an Amplify app}
 \usage{
 amplify_list_domain_associations(appId, nextToken, maxResults)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{nextToken}{Pagination token. Set to null to start listing Apps from start. If
-non-null pagination token is returned in a result, then pass its value
-in here to list more projects.}
+\item{nextToken}{A pagination token. Set to null to start listing apps from the start. If
+non-null, a pagination token is returned in a result. Pass its value in
+here to list more projects.}
 
-\item{maxResults}{Maximum number of records to list in a single response.}
+\item{maxResults}{The maximum number of records to list in a single response.}
 }
 \description{
-List domains with an app
+Returns the domain associations for an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$list_domain_associations(

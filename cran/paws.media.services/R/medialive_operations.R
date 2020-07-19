@@ -29,6 +29,22 @@ NULL
 #'           HlsTimedMetadataSettings = list(
 #'             Id3 = "string"
 #'           ),
+#'           InputPrepareSettings = list(
+#'             InputAttachmentNameReference = "string",
+#'             InputClippingSettings = list(
+#'               InputTimecodeSource = "ZEROBASED"|"EMBEDDED",
+#'               StartTimecode = list(
+#'                 Timecode = "string"
+#'               ),
+#'               StopTimecode = list(
+#'                 LastFrameClippingBehavior = "EXCLUDE_LAST_FRAME"|"INCLUDE_LAST_FRAME",
+#'                 Timecode = "string"
+#'               )
+#'             ),
+#'             UrlPath = list(
+#'               "string"
+#'             )
+#'           ),
 #'           InputSwitchSettings = list(
 #'             InputAttachmentNameReference = "string",
 #'             InputClippingSettings = list(
@@ -382,6 +398,9 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'         Name = "string"
 #'       )
 #'     ),
+#'     FeatureActivations = list(
+#'       InputPrepareScheduleActions = "DISABLED"|"ENABLED"
+#'     ),
 #'     GlobalConfiguration = list(
 #'       InitialAudioGain = 123,
 #'       InputEndAction = "NONE"|"SWITCH_AND_LOOP_INPUTS",
@@ -533,7 +552,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'             RestartDelay = 123,
 #'             SegmentationMode = "USE_INPUT_SEGMENTATION"|"USE_SEGMENT_DURATION",
 #'             SendDelayMs = 123,
-#'             SparseTrackType = "NONE"|"SCTE_35",
+#'             SparseTrackType = "NONE"|"SCTE_35"|"SCTE_35_WITHOUT_SEGMENTATION",
 #'             StreamManifestBehavior = "DO_NOT_SEND"|"SEND",
 #'             TimestampOffset = "string",
 #'             TimestampOffsetMode = "USE_CONFIGURED_OFFSET"|"USE_EVENT_START_DATE"
@@ -646,7 +665,9 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'                     SegmentType = "AAC"|"FMP4"
 #'                   ),
 #'                   Fmp4HlsSettings = list(
-#'                     AudioRenditionSets = "string"
+#'                     AudioRenditionSets = "string",
+#'                     NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
+#'                     TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
 #'                   ),
 #'                   StandardHlsSettings = list(
 #'                     AudioRenditionSets = "string",
@@ -795,8 +816,15 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'               Rec709Settings = list()
 #'             ),
 #'             EntropyEncoding = "CABAC"|"CAVLC",
+#'             FilterSettings = list(
+#'               TemporalFilterSettings = list(
+#'                 PostFilterSharpening = "AUTO"|"DISABLED"|"ENABLED",
+#'                 Strength = "AUTO"|"STRENGTH_1"|"STRENGTH_2"|"STRENGTH_3"|"STRENGTH_4"|"STRENGTH_5"|"STRENGTH_6"|"STRENGTH_7"|"STRENGTH_8"|"STRENGTH_9"|"STRENGTH_10"|"STRENGTH_11"|"STRENGTH_12"|"STRENGTH_13"|"STRENGTH_14"|"STRENGTH_15"|"STRENGTH_16"
+#'               )
+#'             ),
 #'             FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
 #'             FlickerAq = "DISABLED"|"ENABLED",
+#'             ForceFieldPictures = "DISABLED"|"ENABLED",
 #'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
 #'             FramerateDenominator = 123,
 #'             FramerateNumerator = 123,
@@ -814,6 +842,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'             ParDenominator = 123,
 #'             ParNumerator = 123,
 #'             Profile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+#'             QualityLevel = "ENHANCED_QUALITY"|"STANDARD_QUALITY",
 #'             QvbrQualityLevel = 123,
 #'             RateControlMode = "CBR"|"MULTIPLEX"|"QVBR"|"VBR",
 #'             ScanType = "INTERLACED"|"PROGRESSIVE",
@@ -876,6 +905,10 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'   ),
 #'   InputAttachments = list(
 #'     list(
+#'       AutomaticInputFailoverSettings = list(
+#'         InputPreference = "EQUAL_INPUT_PREFERENCE"|"PRIMARY_INPUT_PREFERRED",
+#'         SecondaryInputId = "string"
+#'       ),
 #'       InputAttachmentName = "string",
 #'       InputId = "string",
 #'       InputSettings = list(
@@ -889,6 +922,13 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'               ),
 #'               AudioPidSelection = list(
 #'                 Pid = 123
+#'               ),
+#'               AudioTrackSelection = list(
+#'                 Tracks = list(
+#'                   list(
+#'                     Track = 123
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -934,6 +974,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'           ),
 #'           ServerValidation = "CHECK_CRYPTOGRAPHY_AND_VALIDATE_NAME"|"CHECK_CRYPTOGRAPHY_ONLY"
 #'         ),
+#'         Smpte2038DataPreference = "IGNORE"|"PREFER",
 #'         SourceEndBehavior = "CONTINUE"|"LOOP",
 #'         VideoSelector = list(
 #'           ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
@@ -991,10 +1032,11 @@ medialive_create_channel <- function(ChannelClass = NULL, Destinations = NULL, E
 #' Create an input
 #'
 #' @usage
-#' medialive_create_input(Destinations, InputSecurityGroups,
+#' medialive_create_input(Destinations, InputDevices, InputSecurityGroups,
 #'   MediaConnectFlows, Name, RequestId, RoleArn, Sources, Tags, Type, Vpc)
 #'
 #' @param Destinations Destination settings for PUSH type inputs.
+#' @param InputDevices Settings for the devices.
 #' @param InputSecurityGroups A list of security groups referenced by IDs to attach to the input.
 #' @param MediaConnectFlows A list of the MediaConnect Flows that you want to use in this input. You can specify as few as one
 #' Flow and presently, as many as two. The only requirement is when you have more than one is that each Flow is in a
@@ -1018,6 +1060,11 @@ medialive_create_channel <- function(ChannelClass = NULL, Destinations = NULL, E
 #'       StreamName = "string"
 #'     )
 #'   ),
+#'   InputDevices = list(
+#'     list(
+#'       Id = "string"
+#'     )
+#'   ),
 #'   InputSecurityGroups = list(
 #'     "string"
 #'   ),
@@ -1039,7 +1086,7 @@ medialive_create_channel <- function(ChannelClass = NULL, Destinations = NULL, E
 #'   Tags = list(
 #'     "string"
 #'   ),
-#'   Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT",
+#'   Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"|"INPUT_DEVICE",
 #'   Vpc = list(
 #'     SecurityGroupIds = list(
 #'       "string"
@@ -1054,14 +1101,14 @@ medialive_create_channel <- function(ChannelClass = NULL, Destinations = NULL, E
 #' @keywords internal
 #'
 #' @rdname medialive_create_input
-medialive_create_input <- function(Destinations = NULL, InputSecurityGroups = NULL, MediaConnectFlows = NULL, Name = NULL, RequestId = NULL, RoleArn = NULL, Sources = NULL, Tags = NULL, Type = NULL, Vpc = NULL) {
+medialive_create_input <- function(Destinations = NULL, InputDevices = NULL, InputSecurityGroups = NULL, MediaConnectFlows = NULL, Name = NULL, RequestId = NULL, RoleArn = NULL, Sources = NULL, Tags = NULL, Type = NULL, Vpc = NULL) {
   op <- new_operation(
     name = "CreateInput",
     http_method = "POST",
     http_path = "/prod/inputs",
     paginator = list()
   )
-  input <- .medialive$create_input_input(Destinations = Destinations, InputSecurityGroups = InputSecurityGroups, MediaConnectFlows = MediaConnectFlows, Name = Name, RequestId = RequestId, RoleArn = RoleArn, Sources = Sources, Tags = Tags, Type = Type, Vpc = Vpc)
+  input <- .medialive$create_input_input(Destinations = Destinations, InputDevices = InputDevices, InputSecurityGroups = InputSecurityGroups, MediaConnectFlows = MediaConnectFlows, Name = Name, RequestId = RequestId, RoleArn = RoleArn, Sources = Sources, Tags = Tags, Type = Type, Vpc = Vpc)
   output <- .medialive$create_input_output()
   config <- get_config()
   svc <- .medialive$service(config)
@@ -1189,6 +1236,7 @@ medialive_create_multiplex <- function(AvailabilityZones, MultiplexSettings, Nam
 #' svc$create_multiplex_program(
 #'   MultiplexId = "string",
 #'   MultiplexProgramSettings = list(
+#'     PreferredChannelPipeline = "CURRENTLY_ACTIVE"|"PIPELINE_0"|"PIPELINE_1",
 #'     ProgramNumber = 123,
 #'     ServiceDescriptor = list(
 #'       ProviderName = "string",
@@ -1633,6 +1681,42 @@ medialive_describe_input <- function(InputId) {
 }
 .medialive$operations$describe_input <- medialive_describe_input
 
+#' Gets the details for the input device
+#'
+#' Gets the details for the input device
+#'
+#' @usage
+#' medialive_describe_input_device(InputDeviceId)
+#'
+#' @param InputDeviceId &#91;required&#93; The unique ID of this input device. For example, hd-123456789abcdef.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_input_device(
+#'   InputDeviceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_describe_input_device
+medialive_describe_input_device <- function(InputDeviceId) {
+  op <- new_operation(
+    name = "DescribeInputDevice",
+    http_method = "GET",
+    http_path = "/prod/inputDevices/{inputDeviceId}",
+    paginator = list()
+  )
+  input <- .medialive$describe_input_device_input(InputDeviceId = InputDeviceId)
+  output <- .medialive$describe_input_device_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$describe_input_device <- medialive_describe_input_device
+
 #' Produces a summary of an Input Security Group
 #'
 #' Produces a summary of an Input Security Group
@@ -1892,6 +1976,44 @@ medialive_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
   return(response)
 }
 .medialive$operations$list_channels <- medialive_list_channels
+
+#' List input devices
+#'
+#' List input devices
+#'
+#' @usage
+#' medialive_list_input_devices(MaxResults, NextToken)
+#'
+#' @param MaxResults 
+#' @param NextToken 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_input_devices(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_list_input_devices
+medialive_list_input_devices <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListInputDevices",
+    http_method = "GET",
+    http_path = "/prod/inputDevices",
+    paginator = list()
+  )
+  input <- .medialive$list_input_devices_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .medialive$list_input_devices_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$list_input_devices <- medialive_list_input_devices
 
 #' Produces a list of Input Security Groups for an account
 #'
@@ -2622,6 +2744,9 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'         Name = "string"
 #'       )
 #'     ),
+#'     FeatureActivations = list(
+#'       InputPrepareScheduleActions = "DISABLED"|"ENABLED"
+#'     ),
 #'     GlobalConfiguration = list(
 #'       InitialAudioGain = 123,
 #'       InputEndAction = "NONE"|"SWITCH_AND_LOOP_INPUTS",
@@ -2773,7 +2898,7 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'             RestartDelay = 123,
 #'             SegmentationMode = "USE_INPUT_SEGMENTATION"|"USE_SEGMENT_DURATION",
 #'             SendDelayMs = 123,
-#'             SparseTrackType = "NONE"|"SCTE_35",
+#'             SparseTrackType = "NONE"|"SCTE_35"|"SCTE_35_WITHOUT_SEGMENTATION",
 #'             StreamManifestBehavior = "DO_NOT_SEND"|"SEND",
 #'             TimestampOffset = "string",
 #'             TimestampOffsetMode = "USE_CONFIGURED_OFFSET"|"USE_EVENT_START_DATE"
@@ -2886,7 +3011,9 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'                     SegmentType = "AAC"|"FMP4"
 #'                   ),
 #'                   Fmp4HlsSettings = list(
-#'                     AudioRenditionSets = "string"
+#'                     AudioRenditionSets = "string",
+#'                     NielsenId3Behavior = "NO_PASSTHROUGH"|"PASSTHROUGH",
+#'                     TimedMetadataBehavior = "NO_PASSTHROUGH"|"PASSTHROUGH"
 #'                   ),
 #'                   StandardHlsSettings = list(
 #'                     AudioRenditionSets = "string",
@@ -3035,8 +3162,15 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'               Rec709Settings = list()
 #'             ),
 #'             EntropyEncoding = "CABAC"|"CAVLC",
+#'             FilterSettings = list(
+#'               TemporalFilterSettings = list(
+#'                 PostFilterSharpening = "AUTO"|"DISABLED"|"ENABLED",
+#'                 Strength = "AUTO"|"STRENGTH_1"|"STRENGTH_2"|"STRENGTH_3"|"STRENGTH_4"|"STRENGTH_5"|"STRENGTH_6"|"STRENGTH_7"|"STRENGTH_8"|"STRENGTH_9"|"STRENGTH_10"|"STRENGTH_11"|"STRENGTH_12"|"STRENGTH_13"|"STRENGTH_14"|"STRENGTH_15"|"STRENGTH_16"
+#'               )
+#'             ),
 #'             FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
 #'             FlickerAq = "DISABLED"|"ENABLED",
+#'             ForceFieldPictures = "DISABLED"|"ENABLED",
 #'             FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
 #'             FramerateDenominator = 123,
 #'             FramerateNumerator = 123,
@@ -3054,6 +3188,7 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'             ParDenominator = 123,
 #'             ParNumerator = 123,
 #'             Profile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
+#'             QualityLevel = "ENHANCED_QUALITY"|"STANDARD_QUALITY",
 #'             QvbrQualityLevel = 123,
 #'             RateControlMode = "CBR"|"MULTIPLEX"|"QVBR"|"VBR",
 #'             ScanType = "INTERLACED"|"PROGRESSIVE",
@@ -3116,6 +3251,10 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'   ),
 #'   InputAttachments = list(
 #'     list(
+#'       AutomaticInputFailoverSettings = list(
+#'         InputPreference = "EQUAL_INPUT_PREFERENCE"|"PRIMARY_INPUT_PREFERRED",
+#'         SecondaryInputId = "string"
+#'       ),
 #'       InputAttachmentName = "string",
 #'       InputId = "string",
 #'       InputSettings = list(
@@ -3129,6 +3268,13 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'               ),
 #'               AudioPidSelection = list(
 #'                 Pid = 123
+#'               ),
+#'               AudioTrackSelection = list(
+#'                 Tracks = list(
+#'                   list(
+#'                     Track = 123
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -3174,6 +3320,7 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'           ),
 #'           ServerValidation = "CHECK_CRYPTOGRAPHY_AND_VALIDATE_NAME"|"CHECK_CRYPTOGRAPHY_ONLY"
 #'         ),
+#'         Smpte2038DataPreference = "IGNORE"|"PREFER",
 #'         SourceEndBehavior = "CONTINUE"|"LOOP",
 #'         VideoSelector = list(
 #'           ColorSpace = "FOLLOW"|"REC_601"|"REC_709",
@@ -3287,10 +3434,11 @@ medialive_update_channel_class <- function(ChannelClass, ChannelId, Destinations
 #' Updates an input.
 #'
 #' @usage
-#' medialive_update_input(Destinations, InputId, InputSecurityGroups,
-#'   MediaConnectFlows, Name, RoleArn, Sources)
+#' medialive_update_input(Destinations, InputDevices, InputId,
+#'   InputSecurityGroups, MediaConnectFlows, Name, RoleArn, Sources)
 #'
 #' @param Destinations Destination settings for PUSH type inputs.
+#' @param InputDevices Settings for the devices.
 #' @param InputId &#91;required&#93; Unique ID of the input.
 #' @param InputSecurityGroups A list of security groups referenced by IDs to attach to the input.
 #' @param MediaConnectFlows A list of the MediaConnect Flow ARNs that you want to use as the source of the input. You can specify as few as one
@@ -3308,6 +3456,11 @@ medialive_update_channel_class <- function(ChannelClass, ChannelId, Destinations
 #'   Destinations = list(
 #'     list(
 #'       StreamName = "string"
+#'     )
+#'   ),
+#'   InputDevices = list(
+#'     list(
+#'       Id = "string"
 #'     )
 #'   ),
 #'   InputId = "string",
@@ -3334,14 +3487,14 @@ medialive_update_channel_class <- function(ChannelClass, ChannelId, Destinations
 #' @keywords internal
 #'
 #' @rdname medialive_update_input
-medialive_update_input <- function(Destinations = NULL, InputId, InputSecurityGroups = NULL, MediaConnectFlows = NULL, Name = NULL, RoleArn = NULL, Sources = NULL) {
+medialive_update_input <- function(Destinations = NULL, InputDevices = NULL, InputId, InputSecurityGroups = NULL, MediaConnectFlows = NULL, Name = NULL, RoleArn = NULL, Sources = NULL) {
   op <- new_operation(
     name = "UpdateInput",
     http_method = "PUT",
     http_path = "/prod/inputs/{inputId}",
     paginator = list()
   )
-  input <- .medialive$update_input_input(Destinations = Destinations, InputId = InputId, InputSecurityGroups = InputSecurityGroups, MediaConnectFlows = MediaConnectFlows, Name = Name, RoleArn = RoleArn, Sources = Sources)
+  input <- .medialive$update_input_input(Destinations = Destinations, InputDevices = InputDevices, InputId = InputId, InputSecurityGroups = InputSecurityGroups, MediaConnectFlows = MediaConnectFlows, Name = Name, RoleArn = RoleArn, Sources = Sources)
   output <- .medialive$update_input_output()
   config <- get_config()
   svc <- .medialive$service(config)
@@ -3350,6 +3503,49 @@ medialive_update_input <- function(Destinations = NULL, InputId, InputSecurityGr
   return(response)
 }
 .medialive$operations$update_input <- medialive_update_input
+
+#' Updates the parameters for the input device
+#'
+#' Updates the parameters for the input device.
+#'
+#' @usage
+#' medialive_update_input_device(HdDeviceSettings, InputDeviceId, Name)
+#'
+#' @param HdDeviceSettings The settings that you want to apply to the input device.
+#' @param InputDeviceId &#91;required&#93; The unique ID of the input device. For example, hd-123456789abcdef.
+#' @param Name The name that you assigned to this input device (not the unique ID).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_input_device(
+#'   HdDeviceSettings = list(
+#'     ConfiguredInput = "AUTO"|"HDMI"|"SDI",
+#'     MaxBitrate = 123
+#'   ),
+#'   InputDeviceId = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_update_input_device
+medialive_update_input_device <- function(HdDeviceSettings = NULL, InputDeviceId, Name = NULL) {
+  op <- new_operation(
+    name = "UpdateInputDevice",
+    http_method = "PUT",
+    http_path = "/prod/inputDevices/{inputDeviceId}",
+    paginator = list()
+  )
+  input <- .medialive$update_input_device_input(HdDeviceSettings = HdDeviceSettings, InputDeviceId = InputDeviceId, Name = Name)
+  output <- .medialive$update_input_device_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$update_input_device <- medialive_update_input_device
 
 #' Update an Input Security Group's Whilelists
 #'
@@ -3460,6 +3656,7 @@ medialive_update_multiplex <- function(MultiplexId, MultiplexSettings = NULL, Na
 #' svc$update_multiplex_program(
 #'   MultiplexId = "string",
 #'   MultiplexProgramSettings = list(
+#'     PreferredChannelPipeline = "CURRENTLY_ACTIVE"|"PIPELINE_0"|"PIPELINE_1",
 #'     ProgramNumber = 123,
 #'     ServiceDescriptor = list(
 #'       ProviderName = "string",

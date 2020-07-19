@@ -61,6 +61,8 @@ NULL
 #'  \link[=managedblockchain_list_proposals]{list_proposals} \tab Returns a listing of proposals for the network \cr
 #'  \link[=managedblockchain_list_proposal_votes]{list_proposal_votes} \tab Returns the listing of votes for a specified proposal, including the value of each vote and the unique identifier of the member that cast the vote \cr
 #'  \link[=managedblockchain_reject_invitation]{reject_invitation} \tab Rejects an invitation to join a network \cr
+#'  \link[=managedblockchain_update_member]{update_member} \tab Updates a member configuration with new parameters \cr
+#'  \link[=managedblockchain_update_node]{update_node} \tab Updates a node configuration with new parameters \cr
 #'  \link[=managedblockchain_vote_on_proposal]{vote_on_proposal} \tab Casts a vote for a specified ProposalId on behalf of a member 
 #' }
 #'
@@ -79,7 +81,7 @@ managedblockchain <- function(config = list()) {
 
 .managedblockchain$metadata <- list(
   service_name = "managedblockchain",
-  endpoints = list("*" = list(endpoint = "managedblockchain.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "managedblockchain.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "managedblockchain.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "managedblockchain.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "managedblockchain.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "managedblockchain.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "ManagedBlockchain",
   api_version = "2018-09-24",
   signing_name = "managedblockchain",

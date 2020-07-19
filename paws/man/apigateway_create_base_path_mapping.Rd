@@ -18,8 +18,8 @@ callers to specify a base path name after the domain name.}
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
 \item{stage}{The name of the API\'s stage that you want to use for this mapping.
-Specify \'(none)\' if you do not want callers to explicitly specify the
-stage name after any base path name.}
+Specify \'(none)\' if you want callers to explicitly specify the stage
+name after any base path name.}
 }
 \description{
 Creates a new BasePathMapping resource.

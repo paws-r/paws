@@ -279,7 +279,7 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #' documents
 #'
 #' Creates a new document classifier that you can use to categorize
-#' documents. To create a classifier you provide a set of training
+#' documents. To create a classifier, you provide a set of training
 #' documents that labeled with the categories that you want to use. After
 #' the classifier is trained you can use it to categorize a set of labeled
 #' documents into the categories. For more information, see
@@ -1057,33 +1057,46 @@ comprehend_detect_dominant_language <- function(Text) {
 #' For more information, about named entities, see how-entities.
 #'
 #' @usage
-#' comprehend_detect_entities(Text, LanguageCode)
+#' comprehend_detect_entities(Text, LanguageCode, EndpointArn)
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
 #' UTF-8 encoded characters.
-#' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
+#' @param LanguageCode The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
+#' 
+#' If your request includes the endpoint for a custom entity recognition
+#' model, Amazon Comprehend uses the language of your custom model, and it
+#' ignores any language code that you specify here.
+#' @param EndpointArn The Amazon Resource Name of an endpoint that is associated with a custom
+#' entity recognition model. Provide an endpoint if you want to detect
+#' entities by using your own custom model instead of the default model
+#' that is used by Amazon Comprehend.
+#' 
+#' If you specify an endpoint, Amazon Comprehend uses the language of your
+#' custom model, and it ignores any language code that you provide in your
+#' request.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$detect_entities(
 #'   Text = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
+#'   EndpointArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_detect_entities
-comprehend_detect_entities <- function(Text, LanguageCode) {
+comprehend_detect_entities <- function(Text, LanguageCode = NULL, EndpointArn = NULL) {
   op <- new_operation(
     name = "DetectEntities",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$detect_entities_input(Text = Text, LanguageCode = LanguageCode)
+  input <- .comprehend$detect_entities_input(Text = Text, LanguageCode = LanguageCode, EndpointArn = EndpointArn)
   output <- .comprehend$detect_entities_output()
   config <- get_config()
   svc <- .comprehend$service(config)

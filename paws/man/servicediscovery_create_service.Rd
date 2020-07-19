@@ -12,10 +12,26 @@ values in the configuration to create the specified entities
 }}
 \usage{
 servicediscovery_create_service(Name, NamespaceId, CreatorRequestId,
-  Description, DnsConfig, HealthCheckConfig, HealthCheckCustomConfig)
+  Description, DnsConfig, HealthCheckConfig, HealthCheckCustomConfig,
+  Tags)
 }
 \arguments{
-\item{Name}{[required] The name that you want to assign to the service.}
+\item{Name}{[required] The name that you want to assign to the service.
+
+If you want AWS Cloud Map to create an SRV record when you register an
+instance, and if you\'re using a system that requires a specific SRV
+format, such as \href{http://www.haproxy.org/}{HAProxy}, specify the
+following for \code{Name}:
+\itemize{
+\item Start the name with an underscore (\\_), such as \verb{_exampleservice}
+\item End the name with \emph{.\\_protocol}, such as \code{._tcp}
+}
+
+When you register an instance, AWS Cloud Map creates an SRV record and
+assigns a name to the record by concatenating the service name and the
+namespace name, for example:
+
+\verb{_exampleservice._tcp.example.com}}
 
 \item{NamespaceId}{The ID of the namespace that you want to use to create the service.}
 
@@ -30,10 +46,10 @@ example, a date/time stamp.}
 records that you want AWS Cloud Map to create when you register an
 instance.}
 
-\item{HealthCheckConfig}{\emph{Public DNS namespaces only.} A complex type that contains settings for
-an optional Route 53 health check. If you specify settings for a health
-check, AWS Cloud Map associates the health check with all the Route 53
-DNS records that you specify in \code{DnsConfig}.
+\item{HealthCheckConfig}{\emph{Public DNS and HTTP namespaces only.} A complex type that contains
+settings for an optional Route 53 health check. If you specify settings
+for a health check, AWS Cloud Map associates the health check with all
+the Route 53 DNS records that you specify in \code{DnsConfig}.
 
 If you specify a health check configuration, you can specify either
 \code{HealthCheckCustomConfig} or \code{HealthCheckConfig} but not both.
@@ -44,7 +60,15 @@ For information about the charges for health checks, see \href{http://aws.amazon
 check.
 
 If you specify a health check configuration, you can specify either
-\code{HealthCheckCustomConfig} or \code{HealthCheckConfig} but not both.}
+\code{HealthCheckCustomConfig} or \code{HealthCheckConfig} but not both.
+
+You can\'t add, update, or delete a \code{HealthCheckCustomConfig}
+configuration from an existing service.}
+
+\item{Tags}{The tags to add to the service. Each tag consists of a key and an
+optional value, both of which you define. Tag keys can have a maximum
+character length of 128 characters, and tag values can have a maximum
+length of 256 characters.}
 }
 \description{
 Creates a service, which defines the configuration for the following
@@ -64,12 +88,13 @@ combinations of DNS records in Amazon Route 53:
 \item Optionally, a health check
 }
 
-After you create the service, you can submit a RegisterInstance request,
-and AWS Cloud Map uses the values in the configuration to create the
-specified entities.
+After you create the service, you can submit a
+\href{https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html}{RegisterInstance}
+request, and AWS Cloud Map uses the values in the configuration to
+create the specified entities.
 
 For the current limit on the number of instances that you can register
-using the same namespace and using the same service, see \href{http://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
+using the same namespace and using the same service, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
 in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Request syntax}{
@@ -95,9 +120,36 @@ in the \emph{AWS Cloud Map Developer Guide}.
   ),
   HealthCheckCustomConfig = list(
     FailureThreshold = 123
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }
 }
 
+\examples{
+\dontrun{
+# Example: Create service
+svc$create_service(
+  CreatorRequestId = "567c1193-6b00-4308-bd57-ad38a8822d25",
+  DnsConfig = list(
+    DnsRecords = list(
+      list(
+        TTL = 60L,
+        Type = "A"
+      )
+    ),
+    NamespaceId = "ns-ylexjili4cdxy3xm",
+    RoutingPolicy = "MULTIVALUE"
+  ),
+  Name = "myservice",
+  NamespaceId = "ns-ylexjili4cdxy3xm"
+)
+}
+
+}
 \keyword{internal}

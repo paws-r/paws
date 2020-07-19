@@ -10,8 +10,7 @@ kafka_create_configuration(Description, KafkaVersions, Name,
 \arguments{
 \item{Description}{<p>The description of the configuration.</p>}
 
-\item{KafkaVersions}{[required]
-<p>The versions of Apache Kafka with which you can use this MSK configuration.</p>}
+\item{KafkaVersions}{<p>The versions of Apache Kafka with which you can use this MSK configuration.</p>}
 
 \item{Name}{[required]
 <p>The name of the configuration.</p>}

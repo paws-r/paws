@@ -10,7 +10,7 @@ for the registrant contact}
 route53domains_resend_contact_reachability_email(domainName)
 }
 \arguments{
-\item{domainName}{The name of the domain for which you want Amazon Route 53 to resend a
+\item{domainName}{The name of the domain for which you want Route 53 to resend a
 confirmation email to the registrant contact.}
 }
 \description{

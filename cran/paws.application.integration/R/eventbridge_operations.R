@@ -8,8 +8,6 @@ NULL
 #' Activates a partner event source that has been deactivated. Once
 #' activated, your matching event bus will start receiving events from the
 #' event source.
-#' 
-#' This operation is performed by AWS customers, not by SaaS partners.
 #'
 #' @usage
 #' eventbridge_activate_event_source(Name)
@@ -46,46 +44,50 @@ eventbridge_activate_event_source <- function(Name) {
 #' Creates a new event bus within your account
 #'
 #' Creates a new event bus within your account. This can be a custom event
-#' bus which you can use to receive events from your own custom
-#' applications and services, or it can be a partner event bus which can be
-#' matched to a partner event source.
-#' 
-#' This operation is used by AWS customers, not by SaaS partners.
+#' bus which you can use to receive events from your custom applications
+#' and services, or it can be a partner event bus which can be matched to a
+#' partner event source.
 #'
 #' @usage
-#' eventbridge_create_event_bus(Name, EventSourceName)
+#' eventbridge_create_event_bus(Name, EventSourceName, Tags)
 #'
 #' @param Name &#91;required&#93; The name of the new event bus.
 #' 
-#' The names of custom event buses can\'t contain the `/` character. You
-#' can\'t use the name `default` for a custom event bus because this name
-#' is already used for your account\'s default event bus.
+#' Event bus names cannot contain the / character. You can\'t use the name
+#' `default` for a custom event bus, as this name is already used for your
+#' account\'s default event bus.
 #' 
 #' If this is a partner event bus, the name must exactly match the name of
-#' the partner event source that this event bus is matched to. This name
-#' will include the `/` character.
-#' @param EventSourceName If you\'re creating a partner event bus, this specifies the partner
+#' the partner event source that this event bus is matched to.
+#' @param EventSourceName If you are creating a partner event bus, this specifies the partner
 #' event source that the new event bus will be matched with.
+#' @param Tags Tags to associate with the event bus.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_event_bus(
 #'   Name = "string",
-#'   EventSourceName = "string"
+#'   EventSourceName = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridge_create_event_bus
-eventbridge_create_event_bus <- function(Name, EventSourceName = NULL) {
+eventbridge_create_event_bus <- function(Name, EventSourceName = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateEventBus",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .eventbridge$create_event_bus_input(Name = Name, EventSourceName = EventSourceName)
+  input <- .eventbridge$create_event_bus_input(Name = Name, EventSourceName = EventSourceName, Tags = Tags)
   output <- .eventbridge$create_event_bus_output()
   config <- get_config()
   svc <- .eventbridge$service(config)
@@ -97,16 +99,15 @@ eventbridge_create_event_bus <- function(Name, EventSourceName = NULL) {
 
 #' Called by an SaaS partner to create a partner event source
 #'
-#' Called by an SaaS partner to create a partner event source.
-#' 
-#' This operation is not used by AWS customers.
+#' Called by an SaaS partner to create a partner event source. This
+#' operation is not used by AWS customers.
 #' 
 #' Each partner event source can be used by one AWS account to create a
 #' matching partner event bus in that AWS account. A SaaS partner must
 #' create one partner event source for each AWS account that wants to
 #' receive those event types.
 #' 
-#' A partner event source creates events based on resources in the SaaS
+#' A partner event source creates events based on resources within the SaaS
 #' partner\'s service or application.
 #' 
 #' An AWS account that creates a partner event bus that matches the partner
@@ -115,19 +116,15 @@ eventbridge_create_event_bus <- function(Name, EventSourceName = NULL) {
 #' 
 #' Partner event source names follow this format:
 #' 
-#' `aws.partner/<i>partner_name</i>/<i>event_namespace</i>/<i>event_name</i> `
+#' ` <i>partner_name</i>/<i>event_namespace</i>/<i>event_name</i> `
 #' 
-#' -   *partner\\_name* is determined during partner registration and
-#'     identifies the partner to AWS customers.
-#' 
-#' -   For *event\\_namespace*, we recommend that partners use a string that
-#'     identifies the AWS customer within the partner\'s system. This
-#'     should not be the customer\'s AWS account ID.
-#' 
-#' -   *event\\_name* is determined by the partner, and should uniquely
-#'     identify an event-generating resource within the partner system.
-#'     This should help AWS customers decide whether to create an event bus
-#'     to receive these events.
+#' *partner\\_name* is determined during partner registration and identifies
+#' the partner to AWS customers. *event\\_namespace* is determined by the
+#' partner and is a way for the partner to categorize their events.
+#' *event\\_name* is determined by the partner, and should uniquely identify
+#' an event-generating resource within the partner system. The combination
+#' of *event\\_namespace* and *event\\_name* should help AWS customers decide
+#' whether to create an event bus to receive these events.
 #'
 #' @usage
 #' eventbridge_create_partner_event_source(Name, Account)
@@ -138,8 +135,8 @@ eventbridge_create_event_bus <- function(Name, EventSourceName = NULL) {
 #' AWS account that wants to use this partner event source must create a
 #' partner event bus with a name that matches the name of the partner event
 #' source.
-#' @param Account &#91;required&#93; The AWS account ID of the customer who is permitted to create a matching
-#' partner event bus for this partner event source.
+#' @param Account &#91;required&#93; The AWS account ID that is permitted to create a matching partner event
+#' bus for this partner event source.
 #'
 #' @section Request syntax:
 #' ```
@@ -169,16 +166,15 @@ eventbridge_create_partner_event_source <- function(Name, Account) {
 }
 .eventbridge$operations$create_partner_event_source <- eventbridge_create_partner_event_source
 
-#' An AWS customer uses this operation to temporarily stop receiving events
-#' from the specified partner event source
+#' You can use this operation to temporarily stop receiving events from the
+#' specified partner event source
 #'
-#' An AWS customer uses this operation to temporarily stop receiving events
-#' from the specified partner event source. The matching event bus isn\'t
-#' deleted.
+#' You can use this operation to temporarily stop receiving events from the
+#' specified partner event source. The matching event bus is not deleted.
 #' 
-#' When you deactivate a partner event source, the source goes into
-#' `PENDING` state. If it remains in `PENDING` state for more than two
-#' weeks, it\'s deleted.
+#' When you deactivate a partner event source, the source goes into PENDING
+#' state. If it remains in PENDING state for more than two weeks, it is
+#' deleted.
 #' 
 #' To activate a deactivated partner event source, use ActivateEventSource.
 #'
@@ -217,10 +213,8 @@ eventbridge_deactivate_event_source <- function(Name) {
 #' Deletes the specified custom event bus or partner event bus
 #'
 #' Deletes the specified custom event bus or partner event bus. All rules
-#' associated with this event bus are also deleted. You can\'t delete your
-#' account\'s default event bus.
-#' 
-#' This operation is performed by AWS customers, not by SaaS partners.
+#' associated with this event bus need to be deleted. You can\'t delete
+#' your account\'s default event bus.
 #'
 #' @usage
 #' eventbridge_delete_event_bus(Name)
@@ -257,10 +251,10 @@ eventbridge_delete_event_bus <- function(Name) {
 #' This operation is used by SaaS partners to delete a partner event source
 #'
 #' This operation is used by SaaS partners to delete a partner event
-#' source. AWS customers don\'t use this operation.
+#' source. This operation is not used by AWS customers.
 #' 
 #' When you delete an event source, the status of the corresponding partner
-#' event bus in the AWS customer account becomes `DELETED`.
+#' event bus in the AWS customer account becomes DELETED.
 #'
 #' @usage
 #' eventbridge_delete_partner_event_source(Name, Account)
@@ -310,8 +304,8 @@ eventbridge_delete_partner_event_source <- function(Name, Account) {
 #' Managed rules are rules created and managed by another AWS service on
 #' your behalf. These rules are created by those other AWS services to
 #' support functionality in those services. You can delete these rules
-#' using the `Force` option, but you should do so only if you\'re sure that
-#' the other service isn\'t still using that rule.
+#' using the `Force` option, but you should do so only if you are sure the
+#' other service is not still using that rule.
 #'
 #' @usage
 #' eventbridge_delete_rule(Name, EventBusName, Force)
@@ -405,8 +399,6 @@ eventbridge_describe_event_bus <- function(Name = NULL) {
 #'
 #' This operation lists details about a partner event source that is shared
 #' with your account.
-#' 
-#' This operation is run by AWS customers, not by SaaS partners.
 #'
 #' @usage
 #' eventbridge_describe_event_source(Name)
@@ -444,11 +436,9 @@ eventbridge_describe_event_source <- function(Name) {
 #' event source that they have created
 #'
 #' An SaaS partner can use this operation to list details about a partner
-#' event source that they have created.
-#' 
-#' AWS customers do not use this operation. Instead, AWS customers can use
-#' DescribeEventSource to see details about a partner event source that is
-#' shared with them.
+#' event source that they have created. AWS customers do not use this
+#' operation. Instead, AWS customers can use DescribeEventSource to see
+#' details about a partner event source that is shared with them.
 #'
 #' @usage
 #' eventbridge_describe_partner_event_source(Name)
@@ -486,7 +476,7 @@ eventbridge_describe_partner_event_source <- function(Name) {
 #'
 #' Describes the specified rule.
 #' 
-#' `DescribeRule` doesn\'t list the targets of a rule. To see the targets
+#' DescribeRule does not list the targets of a rule. To see the targets
 #' associated with a rule, use ListTargetsByRule.
 #'
 #' @usage
@@ -526,8 +516,8 @@ eventbridge_describe_rule <- function(Name, EventBusName = NULL) {
 
 #' Disables the specified rule
 #'
-#' Disables the specified rule. A disabled rule won\'t match any events and
-#' won\'t self-trigger if it has a schedule expression.
+#' Disables the specified rule. A disabled rule won\'t match any events,
+#' and won\'t self-trigger if it has a schedule expression.
 #' 
 #' When you disable a rule, incoming events might continue to match to the
 #' disabled rule. Allow a short period of time for changes to take effect.
@@ -569,7 +559,7 @@ eventbridge_disable_rule <- function(Name, EventBusName = NULL) {
 
 #' Enables the specified rule
 #'
-#' Enables the specified rule. If the rule doesn\'t exist, the operation
+#' Enables the specified rule. If the rule does not exist, the operation
 #' fails.
 #' 
 #' When you enable a rule, incoming events might not immediately start
@@ -616,8 +606,6 @@ eventbridge_enable_rule <- function(Name, EventBusName = NULL) {
 #'
 #' Lists all the event buses in your account, including the default event
 #' bus, custom event buses, and partner event buses.
-#' 
-#' This operation is run by AWS customers, not by SaaS partners.
 #'
 #' @usage
 #' eventbridge_list_event_buses(NamePrefix, NextToken, Limit)
@@ -627,8 +615,8 @@ eventbridge_enable_rule <- function(Name, EventBusName = NULL) {
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit Specifying this limits the number of results returned by this operation.
-#' The operation also returns a `NextToken` that you can use in a
-#' subsequent operation to retrieve the next set of results.
+#' The operation also returns a NextToken which you can use in a subsequent
+#' operation to retrieve the next set of results.
 #'
 #' @section Request syntax:
 #' ```
@@ -665,8 +653,6 @@ eventbridge_list_event_buses <- function(NamePrefix = NULL, NextToken = NULL, Li
 #' You can use this to see all the partner event sources that have been
 #' shared with your AWS account. For more information about partner event
 #' sources, see CreateEventBus.
-#' 
-#' This operation is run by AWS customers, not by SaaS partners.
 #'
 #' @usage
 #' eventbridge_list_event_sources(NamePrefix, NextToken, Limit)
@@ -676,8 +662,8 @@ eventbridge_list_event_buses <- function(NamePrefix = NULL, NextToken = NULL, Li
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit Specifying this limits the number of results returned by this operation.
-#' The operation also returns a `NextToken` that you can use in a
-#' subsequent operation to retrieve the next set of results.
+#' The operation also returns a NextToken which you can use in a subsequent
+#' operation to retrieve the next set of results.
 #'
 #' @section Request syntax:
 #' ```
@@ -712,9 +698,8 @@ eventbridge_list_event_sources <- function(NamePrefix = NULL, NextToken = NULL, 
 #' that a particular partner event source name is associated with
 #'
 #' An SaaS partner can use this operation to display the AWS account ID
-#' that a particular partner event source name is associated with.
-#' 
-#' This operation is used by SaaS partners, not by AWS customers.
+#' that a particular partner event source name is associated with. This
+#' operation is not used by AWS customers.
 #'
 #' @usage
 #' eventbridge_list_partner_event_source_accounts(EventSourceName,
@@ -725,8 +710,8 @@ eventbridge_list_event_sources <- function(NamePrefix = NULL, NextToken = NULL, 
 #' @param NextToken The token returned by a previous call to this operation. Specifying this
 #' retrieves the next set of results.
 #' @param Limit Specifying this limits the number of results returned by this operation.
-#' The operation also returns a `NextToken` that you can use in a
-#' subsequent operation to retrieve the next set of results.
+#' The operation also returns a NextToken which you can use in a subsequent
+#' operation to retrieve the next set of results.
 #'
 #' @section Request syntax:
 #' ```
@@ -761,9 +746,8 @@ eventbridge_list_partner_event_source_accounts <- function(EventSourceName, Next
 #' source names that they have created
 #'
 #' An SaaS partner can use this operation to list all the partner event
-#' source names that they have created.
-#' 
-#' This operation is not used by AWS customers.
+#' source names that they have created. This operation is not used by AWS
+#' customers.
 #'
 #' @usage
 #' eventbridge_list_partner_event_sources(NamePrefix, NextToken, Limit)
@@ -773,8 +757,8 @@ eventbridge_list_partner_event_source_accounts <- function(EventSourceName, Next
 #' @param NextToken The token returned by a previous call to this operation. Specifying this
 #' retrieves the next set of results.
 #' @param Limit pecifying this limits the number of results returned by this operation.
-#' The operation also returns a `NextToken` that you can use in a
-#' subsequent operation to retrieve the next set of results.
+#' The operation also returns a NextToken which you can use in a subsequent
+#' operation to retrieve the next set of results.
 #'
 #' @section Request syntax:
 #' ```
@@ -807,8 +791,8 @@ eventbridge_list_partner_event_sources <- function(NamePrefix, NextToken = NULL,
 
 #' Lists the rules for the specified target
 #'
-#' Lists the rules for the specified target. You can see which rules can
-#' invoke a specific target in your account.
+#' Lists the rules for the specified target. You can see which of the rules
+#' in Amazon EventBridge can invoke a specific target in your account.
 #'
 #' @usage
 #' eventbridge_list_rule_names_by_target(TargetArn, EventBusName,
@@ -851,12 +835,12 @@ eventbridge_list_rule_names_by_target <- function(TargetArn, EventBusName = NULL
 }
 .eventbridge$operations$list_rule_names_by_target <- eventbridge_list_rule_names_by_target
 
-#' Lists your EventBridge rules
+#' Lists your Amazon EventBridge rules
 #'
-#' Lists your EventBridge rules. You can either list all the rules or
-#' provide a prefix to match to the rule names.
+#' Lists your Amazon EventBridge rules. You can either list all the rules
+#' or you can provide a prefix to match to the rule names.
 #' 
-#' `ListRules` doesn\'t list the targets of a rule. To see the targets
+#' ListRules does not list the targets of a rule. To see the targets
 #' associated with a rule, use ListTargetsByRule.
 #'
 #' @usage
@@ -902,12 +886,12 @@ eventbridge_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, NextT
 #' Displays the tags associated with an EventBridge resource
 #'
 #' Displays the tags associated with an EventBridge resource. In
-#' EventBridge, rules can be tagged.
+#' EventBridge, rules and event buses can be tagged.
 #'
 #' @usage
 #' eventbridge_list_tags_for_resource(ResourceARN)
 #'
-#' @param ResourceARN &#91;required&#93; The ARN of the rule for which you want to view tags.
+#' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource for which you want to view tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -980,10 +964,11 @@ eventbridge_list_targets_by_rule <- function(Rule, EventBusName = NULL, NextToke
 }
 .eventbridge$operations$list_targets_by_rule <- eventbridge_list_targets_by_rule
 
-#' Sends custom events to EventBridge so that they can be matched to rules
+#' Sends custom events to Amazon EventBridge so that they can be matched to
+#' rules
 #'
-#' Sends custom events to EventBridge so that they can be matched to rules.
-#' These events can be from your custom applications and services.
+#' Sends custom events to Amazon EventBridge so that they can be matched to
+#' rules.
 #'
 #' @usage
 #' eventbridge_put_events(Entries)
@@ -1036,11 +1021,7 @@ eventbridge_put_events <- function(Entries) {
 #' event bus
 #'
 #' This is used by SaaS partners to write events to a customer\'s partner
-#' event bus.
-#' 
-#' AWS customers do not use this operation. Instead, AWS customers can use
-#' PutEvents to write custom events from their own applications to an event
-#' bus.
+#' event bus. AWS customers do not use this operation.
 #'
 #' @usage
 #' eventbridge_put_partner_events(Entries)
@@ -1090,14 +1071,15 @@ eventbridge_put_partner_events <- function(Entries) {
 #' organization to put events to the specified _event bus_
 #'
 #' Running `PutPermission` permits the specified AWS account or AWS
-#' organization to put events to the specified *event bus*. Rules in your
-#' account are triggered by these events arriving to an event bus in your
-#' account.
+#' organization to put events to the specified *event bus*. Amazon
+#' EventBridge (CloudWatch Events) rules in your account are triggered by
+#' these events arriving to an event bus in your account.
 #' 
 #' For another account to send events to your account, that external
-#' account must have a rule with your account\'s event bus as a target.
+#' account must have an EventBridge rule with your account\'s event bus as
+#' a target.
 #' 
-#' To enable multiple AWS accounts to put events to an event bus, run
+#' To enable multiple AWS accounts to put events to your event bus, run
 #' `PutPermission` once for each of these accounts. Or, if all the accounts
 #' are members of the same AWS organization, you can run `PutPermission`
 #' once specifying `Principal` as \"*\" and specifying the AWS
@@ -1111,7 +1093,8 @@ eventbridge_put_partner_events <- function(Entries) {
 #' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
-#' The permission policy on an event bus can\'t exceed 10 KB in size.
+#' The permission policy on the default event bus cannot exceed 10 KB in
+#' size.
 #'
 #' @usage
 #' eventbridge_put_permission(EventBusName, Action, Principal, StatementId,
@@ -1119,19 +1102,18 @@ eventbridge_put_partner_events <- function(Entries) {
 #'
 #' @param EventBusName The event bus associated with the rule. If you omit this, the default
 #' event bus is used.
-#' @param Action &#91;required&#93; The action that you\'re enabling the other account to perform.
+#' @param Action &#91;required&#93; The action that you are enabling the other account to perform.
 #' Currently, this must be `events:PutEvents`.
 #' @param Principal &#91;required&#93; The 12-digit AWS account ID that you are permitting to put events to
 #' your default event bus. Specify \"*\" to permit any account to put
 #' events to your default event bus.
 #' 
 #' If you specify \"*\" without specifying `Condition`, avoid creating
-#' rules that might match undesirable events. To create more secure rules,
+#' rules that may match undesirable events. To create more secure rules,
 #' make sure that the event pattern for each rule contains an `account`
-#' field with a specific account ID to receive events from. Rules that have
-#' an account field match events sent only from accounts that are listed in
-#' the rule\'s `account` field.
-#' @param StatementId &#91;required&#93; An identifier string for the external account that you\'re granting
+#' field with a specific account ID from which to receive events. Rules
+#' with an account field do not match any events sent from other accounts.
+#' @param StatementId &#91;required&#93; An identifier string for the external account that you are granting
 #' permissions to. If you later want to revoke the permission for this
 #' external account, specify this `StatementId` when you run
 #' RemovePermission.
@@ -1139,14 +1121,14 @@ eventbridge_put_partner_events <- function(Entries) {
 #' fulfill a certain condition, such as being a member of a certain AWS
 #' organization. For more information about AWS Organizations, see [What Is
 #' AWS
-#' Organizations?](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
+#' Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
 #' in the *AWS Organizations User Guide*.
 #' 
-#' If you specify `Condition` with an AWS organization ID and specify
+#' If you specify `Condition` with an AWS organization ID, and specify
 #' \"*\" as the value for `Principal`, you grant permission to all the
 #' accounts in the named organization.
 #' 
-#' The `Condition` is a JSON string that must contain `Type`, `Key`, and
+#' The `Condition` is a JSON string which must contain `Type`, `Key`, and
 #' `Value` fields.
 #'
 #' @section Request syntax:
@@ -1186,7 +1168,7 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action, Principal, S
 
 #' Creates or updates the specified rule
 #'
-#' Creates or updates the specified rule. Rules are enabled by default or
+#' Creates or updates the specified rule. Rules are enabled by default, or
 #' based on value of the state. You can disable a rule using DisableRule.
 #' 
 #' A single rule watches for events from a single event bus. Events
@@ -1197,21 +1179,21 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action, Principal, S
 #' custom event bus that you have created. For more information, see
 #' CreateEventBus.
 #' 
-#' If you\'re updating an existing rule, the rule is replaced with what you
+#' If you are updating an existing rule, the rule is replaced with what you
 #' specify in this `PutRule` command. If you omit arguments in `PutRule`,
-#' the old values for those arguments aren\'t kept. Instead, they\'re
+#' the old values for those arguments are not kept. Instead, they are
 #' replaced with null values.
 #' 
 #' When you create or update a rule, incoming events might not immediately
 #' start matching to new or updated rules. Allow a short period of time for
 #' changes to take effect.
 #' 
-#' A rule must contain at least an `EventPattern` or `ScheduleExpression`.
-#' Rules with `EventPatterns` are triggered when a matching event is
-#' observed. Rules with `ScheduleExpressions` self-trigger based on the
-#' given schedule. A rule can have both an `EventPattern` and a
-#' `ScheduleExpression`, in which case the rule triggers on matching events
-#' as well as on a schedule.
+#' A rule must contain at least an EventPattern or ScheduleExpression.
+#' Rules with EventPatterns are triggered when a matching event is
+#' observed. Rules with ScheduleExpressions self-trigger based on the given
+#' schedule. A rule can have both an EventPattern and a ScheduleExpression,
+#' in which case the rule triggers on matching events as well as on a
+#' schedule.
 #' 
 #' When you initially create a rule, you can optionally assign one or more
 #' tags to the rule. Tags can help you organize and categorize your
@@ -1224,22 +1206,22 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action, Principal, S
 #' `PutRule` operation are ignored. To update the tags of an existing rule,
 #' use TagResource and UntagResource.
 #' 
-#' Most services in AWS treat `:` or `/` as the same character in Amazon
+#' Most services in AWS treat : or / as the same character in Amazon
 #' Resource Names (ARNs). However, EventBridge uses an exact match in event
 #' patterns and rules. Be sure to use the correct ARN characters when
 #' creating event patterns so that they match the ARN syntax in the event
-#' that you want to match.
+#' you want to match.
 #' 
-#' In EventBridge, you could create rules that lead to infinite loops,
-#' where a rule is fired repeatedly. For example, a rule might detect that
-#' ACLs have changed on an S3 bucket, and trigger software to change them
-#' to the desired state. If you don\'t write the rule carefully, the
-#' subsequent change to the ACLs fires the rule again, creating an infinite
-#' loop.
+#' In EventBridge, it is possible to create rules that lead to infinite
+#' loops, where a rule is fired repeatedly. For example, a rule might
+#' detect that ACLs have changed on an S3 bucket, and trigger software to
+#' change them to the desired state. If the rule is not written carefully,
+#' the subsequent change to the ACLs fires the rule again, creating an
+#' infinite loop.
 #' 
-#' To prevent this, write the rules so that the triggered actions don\'t
-#' refire the same rule. For example, your rule could fire only if ACLs are
-#' found to be in a bad state, instead of after any change.
+#' To prevent this, write the rules so that the triggered actions do not
+#' re-fire the same rule. For example, your rule could fire only if ACLs
+#' are found to be in a bad state, instead of after any change.
 #' 
 #' An infinite loop can quickly cause higher than expected charges. We
 #' recommend that you use budgeting, which alerts you when charges exceed
@@ -1251,13 +1233,10 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action, Principal, S
 #' eventbridge_put_rule(Name, ScheduleExpression, EventPattern, State,
 #'   Description, RoleArn, Tags, EventBusName)
 #'
-#' @param Name &#91;required&#93; The name of the rule that you\'re creating or updating.
-#' 
-#' A rule can\'t have the same name as another rule in the same Region or
-#' on the same event bus.
-#' @param ScheduleExpression The scheduling expression: for example, `"cron(0 20 * * ? *)"` or
-#' `"rate(5 minutes)"`.
-#' @param EventPattern The event pattern. For more information, see [Event
+#' @param Name &#91;required&#93; The name of the rule that you are creating or updating.
+#' @param ScheduleExpression The scheduling expression. For example, \"cron(0 20 * * ? *)\" or
+#' \"rate(5 minutes)\".
+#' @param EventPattern The event pattern. For more information, see [Events and Event
 #' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
 #' in the *Amazon EventBridge User Guide*.
 #' @param State Indicates whether the rule is enabled or disabled.
@@ -1307,14 +1286,14 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 .eventbridge$operations$put_rule <- eventbridge_put_rule
 
 #' Adds the specified targets to the specified rule, or updates the targets
-#' if they're already associated with the rule
+#' if they are already associated with the rule
 #'
 #' Adds the specified targets to the specified rule, or updates the targets
-#' if they\'re already associated with the rule.
+#' if they are already associated with the rule.
 #' 
 #' Targets are the resources that are invoked when a rule is triggered.
 #' 
-#' You can configure the following as targets in EventBridge:
+#' You can configure the following as targets for Events:
 #' 
 #' -   EC2 instances
 #' 
@@ -1346,7 +1325,9 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' 
 #' -   The default event bus of another AWS account
 #' 
-#' Creating rules with built-in targets is supported only on the AWS
+#' -   Amazon API Gateway REST APIs
+#' 
+#' Creating rules with built-in targets is supported only in the AWS
 #' Management Console. The built-in targets are
 #' `EC2 CreateSnapshot API call`, `EC2 RebootInstances API call`,
 #' `EC2 StopInstances API call`, and `EC2 TerminateInstances API call`.
@@ -1358,57 +1339,60 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' the `RunCommandParameters` field.
 #' 
 #' To be able to make API calls against the resources that you own, Amazon
-#' EventBridge needs the appropriate permissions. For AWS Lambda and Amazon
-#' SNS resources, EventBridge relies on resource-based policies. For EC2
-#' instances, Kinesis data streams, and AWS Step Functions state machines,
-#' EventBridge relies on IAM roles that you specify in the `RoleARN`
-#' argument in `PutTargets`. For more information, see [Authentication and
-#' Access
+#' EventBridge (CloudWatch Events) needs the appropriate permissions. For
+#' AWS Lambda and Amazon SNS resources, EventBridge relies on
+#' resource-based policies. For EC2 instances, Kinesis data streams, AWS
+#' Step Functions state machines and API Gateway REST APIs, EventBridge
+#' relies on IAM roles that you specify in the `RoleARN` argument in
+#' `PutTargets`. For more information, see [Authentication and Access
 #' Control](https://docs.aws.amazon.com/eventbridge/latest/userguide/auth-and-access-control-eventbridge.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
-#' If another AWS account is in the same Region and has granted you
+#' If another AWS account is in the same region and has granted you
 #' permission (using `PutPermission`), you can send events to that account.
 #' Set that account\'s event bus as a target of the rules in your account.
 #' To send the matched events to the other account, specify that account\'s
 #' event bus as the `Arn` value when you run `PutTargets`. If your account
 #' sends events to another account, your account is charged for each sent
 #' event. Each event sent to another account is charged as a custom event.
-#' The account receiving the event isn\'t charged. For more information,
-#' see [Amazon EventBridge
+#' The account receiving the event is not charged. For more information,
+#' see [Amazon EventBridge (CloudWatch Events)
 #' Pricing](https://aws.amazon.com/eventbridge/pricing/).
 #' 
-#' If you\'re setting an event bus in another account as the target and
+#' `Input`, `InputPath`, and `InputTransformer` are not available with
+#' `PutTarget` if the target is an event bus of a different AWS account.
+#' 
+#' If you are setting the event bus of another account as the target, and
 #' that account granted permission to your account through an organization
-#' instead of directly by the account ID, you must specify a `RoleArn` with
-#' proper permissions in the `Target` structure. For more information, see
-#' [Sending and Receiving Events Between AWS
+#' instead of directly by the account ID, then you must specify a `RoleArn`
+#' with proper permissions in the `Target` structure. For more information,
+#' see [Sending and Receiving Events Between AWS
 #' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
 #' For more information about enabling cross-account events, see
 #' PutPermission.
 #' 
-#' `Input`, `InputPath`, and `InputTransformer` are mutually exclusive and
-#' optional parameters of a target. When a rule is triggered due to a
-#' matched event:
+#' **Input**, **InputPath**, and **InputTransformer** are mutually
+#' exclusive and optional parameters of a target. When a rule is triggered
+#' due to a matched event:
 #' 
-#' -   If none of the following arguments are specified for a target, the
-#'     entire event is passed to the target in JSON format (unless the
+#' -   If none of the following arguments are specified for a target, then
+#'     the entire event is passed to the target in JSON format (unless the
 #'     target is Amazon EC2 Run Command or Amazon ECS task, in which case
 #'     nothing from the event is passed to the target).
 #' 
-#' -   If `Input` is specified in the form of valid JSON, then the matched
-#'     event is overridden with this constant.
+#' -   If **Input** is specified in the form of valid JSON, then the
+#'     matched event is overridden with this constant.
 #' 
-#' -   If `InputPath` is specified in the form of JSONPath (for example,
-#'     `$.detail`), only the part of the event specified in the path is
-#'     passed to the target (for example, only the detail part of the event
-#'     is passed).
+#' -   If **InputPath** is specified in the form of JSONPath (for example,
+#'     `$.detail`), then only the part of the event specified in the path
+#'     is passed to the target (for example, only the detail part of the
+#'     event is passed).
 #' 
-#' -   If `InputTransformer` is specified, one or more specified JSONPaths
-#'     are extracted from the event and used as values in a template that
-#'     you specify as the input to the target.
+#' -   If **InputTransformer** is specified, then one or more specified
+#'     JSONPaths are extracted from the event and used as values in a
+#'     template that you specify as the input to the target.
 #' 
 #' When you specify `InputPath` or `InputTransformer`, you must use JSON
 #' dot notation, not bracket notation.
@@ -1418,7 +1402,7 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' short period of time for changes to take effect.
 #' 
 #' This action can partially fail if too many requests are made at the same
-#' time. If that happens, `FailedEntryCount` is nonzero in the response,
+#' time. If that happens, `FailedEntryCount` is non-zero in the response
 #' and each entry in `FailedEntries` provides the ID of the failed target
 #' and the error code.
 #'
@@ -1491,6 +1475,17 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #'       ),
 #'       SqsParameters = list(
 #'         MessageGroupId = "string"
+#'       ),
+#'       HttpParameters = list(
+#'         PathParameterValues = list(
+#'           "string"
+#'         ),
+#'         HeaderParameters = list(
+#'           "string"
+#'         ),
+#'         QueryStringParameters = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -1582,9 +1577,9 @@ eventbridge_remove_permission <- function(StatementId, EventBusName = NULL) {
 #' @param Rule &#91;required&#93; The name of the rule.
 #' @param EventBusName The name of the event bus associated with the rule.
 #' @param Ids &#91;required&#93; The IDs of the targets to remove from the rule.
-#' @param Force If this is a managed rule created by an AWS service on your behalf, you
+#' @param Force If this is a managed rule, created by an AWS service on your behalf, you
 #' must specify `Force` as `True` to remove targets. This parameter is
-#' ignored for rules that aren\'t managed rules. You can check whether a
+#' ignored for rules that are not managed rules. You can check whether a
 #' rule is a managed rule by using `DescribeRule` or `ListRules` and
 #' checking the `ManagedBy` field of the response.
 #'
@@ -1627,15 +1622,15 @@ eventbridge_remove_targets <- function(Rule, EventBusName = NULL, Ids, Force = N
 #' resource. Tags can help you organize and categorize your resources. You
 #' can also use them to scope user permissions by granting a user
 #' permission to access or change only resources with certain tag values.
-#' In EventBridge, rules can be tagged.
+#' In EventBridge, rules and event buses can be tagged.
 #' 
 #' Tags don\'t have any semantic meaning to AWS and are interpreted
 #' strictly as strings of characters.
 #' 
-#' You can use the `TagResource` action with a rule that already has tags.
-#' If you specify a new tag key for the rule, this tag is appended to the
-#' list of tags associated with the rule. If you specify a tag key that is
-#' already associated with the rule, the new tag value that you specify
+#' You can use the `TagResource` action with a resource that already has
+#' tags. If you specify a new tag key, this tag is appended to the list of
+#' tags associated with the resource. If you specify a tag key that is
+#' already associated with the resource, the new tag value that you specify
 #' replaces the previous value for that tag.
 #' 
 #' You can associate as many as 50 tags with a resource.
@@ -1643,8 +1638,8 @@ eventbridge_remove_targets <- function(Rule, EventBusName = NULL, Ids, Force = N
 #' @usage
 #' eventbridge_tag_resource(ResourceARN, Tags)
 #'
-#' @param ResourceARN &#91;required&#93; The ARN of the rule that you\'re adding tags to.
-#' @param Tags &#91;required&#93; The list of key-value pairs to associate with the rule.
+#' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource that you\'re adding tags to.
+#' @param Tags &#91;required&#93; The list of key-value pairs to associate with the resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -1683,16 +1678,16 @@ eventbridge_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' Tests whether the specified event pattern matches the provided event.
 #' 
-#' Most services in AWS treat `:` or `/` as the same character in Amazon
+#' Most services in AWS treat : or / as the same character in Amazon
 #' Resource Names (ARNs). However, EventBridge uses an exact match in event
 #' patterns and rules. Be sure to use the correct ARN characters when
 #' creating event patterns so that they match the ARN syntax in the event
-#' that you want to match.
+#' you want to match.
 #'
 #' @usage
 #' eventbridge_test_event_pattern(EventPattern, Event)
 #'
-#' @param EventPattern &#91;required&#93; The event pattern. For more information, see [Event
+#' @param EventPattern &#91;required&#93; The event pattern. For more information, see [Events and Event
 #' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
 #' in the *Amazon EventBridge User Guide*.
 #' @param Event &#91;required&#93; The event, in JSON format, to test against the event pattern.
@@ -1728,12 +1723,13 @@ eventbridge_test_event_pattern <- function(EventPattern, Event) {
 #' Removes one or more tags from the specified EventBridge resource
 #'
 #' Removes one or more tags from the specified EventBridge resource. In
-#' EventBridge, rules can be tagged.
+#' Amazon EventBridge (CloudWatch Events, rules and event buses can be
+#' tagged.
 #'
 #' @usage
 #' eventbridge_untag_resource(ResourceARN, TagKeys)
 #'
-#' @param ResourceARN &#91;required&#93; The ARN of the rule that you\'re removing tags from.
+#' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource from which you are removing tags.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
 #'
 #' @section Request syntax:

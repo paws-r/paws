@@ -7,13 +7,13 @@
 iot_delete_ota_update(otaUpdateId, deleteStream, forceDeleteAWSJob)
 }
 \arguments{
-\item{otaUpdateId}{[required] The OTA update ID to delete.}
+\item{otaUpdateId}{[required] The ID of the OTA update to delete.}
 
 \item{deleteStream}{Specifies if the stream associated with an OTA update should be deleted
 when the OTA update is deleted.}
 
 \item{forceDeleteAWSJob}{Specifies if the AWS Job associated with the OTA update should be
-deleted with the OTA update is deleted.}
+deleted when the OTA update is deleted.}
 }
 \description{
 Delete an OTA update.

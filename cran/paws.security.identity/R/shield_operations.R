@@ -3,10 +3,10 @@
 #' @include shield_service.R
 NULL
 
-#' Authorizes the DDoS Response team (DRT) to access the specified Amazon
+#' Authorizes the DDoS Response Team (DRT) to access the specified Amazon
 #' S3 bucket containing your AWS WAF logs
 #'
-#' Authorizes the DDoS Response team (DRT) to access the specified Amazon
+#' Authorizes the DDoS Response Team (DRT) to access the specified Amazon
 #' S3 bucket containing your AWS WAF logs. You can associate up to 10
 #' Amazon S3 buckets with your subscription.
 #' 
@@ -48,11 +48,11 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 }
 .shield$operations$associate_drt_log_bucket <- shield_associate_drt_log_bucket
 
-#' Authorizes the DDoS Response team (DRT), using the specified role, to
+#' Authorizes the DDoS Response Team (DRT), using the specified role, to
 #' access your AWS account to assist with DDoS attack mitigation during
 #' potential attacks
 #'
-#' Authorizes the DDoS Response team (DRT), using the specified role, to
+#' Authorizes the DDoS Response Team (DRT), using the specified role, to
 #' access your AWS account to assist with DDoS attack mitigation during
 #' potential attacks. This enables the DRT to inspect your AWS WAF
 #' configuration and create or update AWS WAF rules and web ACLs.
@@ -123,6 +123,125 @@ shield_associate_drt_role <- function(RoleArn) {
   return(response)
 }
 .shield$operations$associate_drt_role <- shield_associate_drt_role
+
+#' Adds health-based detection to the Shield Advanced protection for a
+#' resource
+#'
+#' Adds health-based detection to the Shield Advanced protection for a
+#' resource. Shield Advanced health-based detection uses the health of your
+#' AWS resource to improve responsiveness and accuracy in attack detection
+#' and mitigation.
+#' 
+#' You define the health check in Route 53 and then associate it with your
+#' Shield Advanced protection. For more information, see [Shield Advanced
+#' Health-Based
+#' Detection](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option)
+#' in the [AWS WAF and AWS Shield Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#'
+#' @usage
+#' shield_associate_health_check(ProtectionId, HealthCheckArn)
+#'
+#' @param ProtectionId &#91;required&#93; The unique identifier (ID) for the Protection object to add the health
+#' check association to.
+#' @param HealthCheckArn &#91;required&#93; The Amazon Resource Name (ARN) of the health check to associate with the
+#' protection.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_health_check(
+#'   ProtectionId = "string",
+#'   HealthCheckArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_associate_health_check
+shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
+  op <- new_operation(
+    name = "AssociateHealthCheck",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$associate_health_check_input(ProtectionId = ProtectionId, HealthCheckArn = HealthCheckArn)
+  output <- .shield$associate_health_check_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$associate_health_check <- shield_associate_health_check
+
+#' Initializes proactive engagement and sets the list of contacts for the
+#' DDoS Response Team (DRT) to use
+#'
+#' Initializes proactive engagement and sets the list of contacts for the
+#' DDoS Response Team (DRT) to use. You must provide at least one phone
+#' number in the emergency contact list.
+#' 
+#' After you have initialized proactive engagement using this call, to
+#' disable or enable proactive engagement, use the calls
+#' `DisableProactiveEngagement` and `EnableProactiveEngagement`.
+#' 
+#' This call defines the list of email addresses and phone numbers that the
+#' DDoS Response Team (DRT) can use to contact you for escalations to the
+#' DRT and to initiate proactive customer support.
+#' 
+#' The contacts that you provide in the request replace any contacts that
+#' were already defined. If you already have contacts defined and want to
+#' use them, retrieve the list using `DescribeEmergencyContactSettings` and
+#' then provide it to this call.
+#'
+#' @usage
+#' shield_associate_proactive_engagement_details(EmergencyContactList)
+#'
+#' @param EmergencyContactList &#91;required&#93; A list of email addresses and phone numbers that the DDoS Response Team
+#' (DRT) can use to contact you for escalations to the DRT and to initiate
+#' proactive customer support.
+#' 
+#' To enable proactive engagement, the contact list must include at least
+#' one phone number.
+#' 
+#' The contacts that you provide here replace any contacts that were
+#' already defined. If you already have contacts defined and want to use
+#' them, retrieve the list using `DescribeEmergencyContactSettings` and
+#' then provide it here.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_proactive_engagement_details(
+#'   EmergencyContactList = list(
+#'     list(
+#'       EmailAddress = "string",
+#'       PhoneNumber = "string",
+#'       ContactNotes = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_associate_proactive_engagement_details
+shield_associate_proactive_engagement_details <- function(EmergencyContactList) {
+  op <- new_operation(
+    name = "AssociateProactiveEngagementDetails",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$associate_proactive_engagement_details_input(EmergencyContactList = EmergencyContactList)
+  output <- .shield$associate_proactive_engagement_details_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$associate_proactive_engagement_details <- shield_associate_proactive_engagement_details
 
 #' Enables AWS Shield Advanced for a specific AWS resource
 #'
@@ -197,17 +316,6 @@ shield_create_protection <- function(Name, ResourceArn) {
 #' Activates AWS Shield Advanced for an account
 #'
 #' Activates AWS Shield Advanced for an account.
-#' 
-#' As part of this request you can specify `EmergencySettings` that
-#' automaticaly grant the DDoS response team (DRT) needed permissions to
-#' assist you during a suspected DDoS attack. For more information see
-#' [Authorize the DDoS Response Team to Create Rules and Web ACLs on Your
-#' Behalf](https://docs.aws.amazon.com/waf/latest/developerguide/authorize-DRT.html).
-#' 
-#' To use the services of the DRT, you must be subscribed to the [Business
-#' Support plan](https://aws.amazon.com/premiumsupport/business-support/)
-#' or the [Enterprise Support
-#' plan](https://aws.amazon.com/premiumsupport/enterprise-support/).
 #' 
 #' When you initally create a subscription, your subscription is set to be
 #' automatically renewed at the end of the existing subscription period.
@@ -348,11 +456,11 @@ shield_describe_attack <- function(AttackId) {
 .shield$operations$describe_attack <- shield_describe_attack
 
 #' Returns the current role and list of Amazon S3 log buckets used by the
-#' DDoS Response team (DRT) to access your AWS account while assisting with
+#' DDoS Response Team (DRT) to access your AWS account while assisting with
 #' attack mitigation
 #'
 #' Returns the current role and list of Amazon S3 log buckets used by the
-#' DDoS Response team (DRT) to access your AWS account while assisting with
+#' DDoS Response Team (DRT) to access your AWS account while assisting with
 #' attack mitigation.
 #'
 #' @usage
@@ -383,11 +491,13 @@ shield_describe_drt_access <- function() {
 }
 .shield$operations$describe_drt_access <- shield_describe_drt_access
 
-#' Lists the email addresses that the DRT can use to contact you during a
-#' suspected attack
+#' A list of email addresses and phone numbers that the DDoS Response Team
+#' (DRT) can use to contact you if you have proactive engagement enabled,
+#' for escalations to the DRT and to initiate proactive customer support
 #'
-#' Lists the email addresses that the DRT can use to contact you during a
-#' suspected attack.
+#' A list of email addresses and phone numbers that the DDoS Response Team
+#' (DRT) can use to contact you if you have proactive engagement enabled,
+#' for escalations to the DRT and to initiate proactive customer support.
 #'
 #' @usage
 #' shield_describe_emergency_contact_settings()
@@ -494,10 +604,46 @@ shield_describe_subscription <- function() {
 }
 .shield$operations$describe_subscription <- shield_describe_subscription
 
-#' Removes the DDoS Response team's (DRT) access to the specified Amazon S3
+#' Removes authorization from the DDoS Response Team (DRT) to notify
+#' contacts about escalations to the DRT and to initiate proactive customer
+#' support
+#'
+#' Removes authorization from the DDoS Response Team (DRT) to notify
+#' contacts about escalations to the DRT and to initiate proactive customer
+#' support.
+#'
+#' @usage
+#' shield_disable_proactive_engagement()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_proactive_engagement()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_disable_proactive_engagement
+shield_disable_proactive_engagement <- function() {
+  op <- new_operation(
+    name = "DisableProactiveEngagement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$disable_proactive_engagement_input()
+  output <- .shield$disable_proactive_engagement_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$disable_proactive_engagement <- shield_disable_proactive_engagement
+
+#' Removes the DDoS Response Team's (DRT) access to the specified Amazon S3
 #' bucket containing your AWS WAF logs
 #'
-#' Removes the DDoS Response team\'s (DRT) access to the specified Amazon
+#' Removes the DDoS Response Team\'s (DRT) access to the specified Amazon
 #' S3 bucket containing your AWS WAF logs.
 #' 
 #' To make a `DisassociateDRTLogBucket` request, you must be subscribed to
@@ -541,9 +687,9 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
 }
 .shield$operations$disassociate_drt_log_bucket <- shield_disassociate_drt_log_bucket
 
-#' Removes the DDoS Response team's (DRT) access to your AWS account
+#' Removes the DDoS Response Team's (DRT) access to your AWS account
 #'
-#' Removes the DDoS Response team\'s (DRT) access to your AWS account.
+#' Removes the DDoS Response Team\'s (DRT) access to your AWS account.
 #' 
 #' To make a `DisassociateDRTRole` request, you must be subscribed to the
 #' [Business Support
@@ -581,6 +727,93 @@ shield_disassociate_drt_role <- function() {
   return(response)
 }
 .shield$operations$disassociate_drt_role <- shield_disassociate_drt_role
+
+#' Removes health-based detection from the Shield Advanced protection for a
+#' resource
+#'
+#' Removes health-based detection from the Shield Advanced protection for a
+#' resource. Shield Advanced health-based detection uses the health of your
+#' AWS resource to improve responsiveness and accuracy in attack detection
+#' and mitigation.
+#' 
+#' You define the health check in Route 53 and then associate or
+#' disassociate it with your Shield Advanced protection. For more
+#' information, see [Shield Advanced Health-Based
+#' Detection](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option)
+#' in the [AWS WAF and AWS Shield Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).
+#'
+#' @usage
+#' shield_disassociate_health_check(ProtectionId, HealthCheckArn)
+#'
+#' @param ProtectionId &#91;required&#93; The unique identifier (ID) for the Protection object to remove the
+#' health check association from.
+#' @param HealthCheckArn &#91;required&#93; The Amazon Resource Name (ARN) of the health check that is associated
+#' with the protection.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_health_check(
+#'   ProtectionId = "string",
+#'   HealthCheckArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_disassociate_health_check
+shield_disassociate_health_check <- function(ProtectionId, HealthCheckArn) {
+  op <- new_operation(
+    name = "DisassociateHealthCheck",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$disassociate_health_check_input(ProtectionId = ProtectionId, HealthCheckArn = HealthCheckArn)
+  output <- .shield$disassociate_health_check_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$disassociate_health_check <- shield_disassociate_health_check
+
+#' Authorizes the DDoS Response Team (DRT) to use email and phone to notify
+#' contacts about escalations to the DRT and to initiate proactive customer
+#' support
+#'
+#' Authorizes the DDoS Response Team (DRT) to use email and phone to notify
+#' contacts about escalations to the DRT and to initiate proactive customer
+#' support.
+#'
+#' @usage
+#' shield_enable_proactive_engagement()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_proactive_engagement()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_enable_proactive_engagement
+shield_enable_proactive_engagement <- function() {
+  op <- new_operation(
+    name = "EnableProactiveEngagement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$enable_proactive_engagement_input()
+  output <- .shield$enable_proactive_engagement_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$enable_proactive_engagement <- shield_enable_proactive_engagement
 
 #' Returns the SubscriptionState, either Active or Inactive
 #'
@@ -742,24 +975,34 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .shield$operations$list_protections <- shield_list_protections
 
-#' Updates the details of the list of email addresses that the DRT can use
-#' to contact you during a suspected attack
+#' Updates the details of the list of email addresses and phone numbers
+#' that the DDoS Response Team (DRT) can use to contact you if you have
+#' proactive engagement enabled, for escalations to the DRT and to initiate
+#' proactive customer support
 #'
-#' Updates the details of the list of email addresses that the DRT can use
-#' to contact you during a suspected attack.
+#' Updates the details of the list of email addresses and phone numbers
+#' that the DDoS Response Team (DRT) can use to contact you if you have
+#' proactive engagement enabled, for escalations to the DRT and to initiate
+#' proactive customer support.
 #'
 #' @usage
 #' shield_update_emergency_contact_settings(EmergencyContactList)
 #'
-#' @param EmergencyContactList A list of email addresses that the DRT can use to contact you during a
-#' suspected attack.
+#' @param EmergencyContactList A list of email addresses and phone numbers that the DDoS Response Team
+#' (DRT) can use to contact you if you have proactive engagement enabled,
+#' for escalations to the DRT and to initiate proactive customer support.
+#' 
+#' If you have proactive engagement enabled, the contact list must include
+#' at least one phone number.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_emergency_contact_settings(
 #'   EmergencyContactList = list(
 #'     list(
-#'       EmailAddress = "string"
+#'       EmailAddress = "string",
+#'       PhoneNumber = "string",
+#'       ContactNotes = "string"
 #'     )
 #'   )
 #' )

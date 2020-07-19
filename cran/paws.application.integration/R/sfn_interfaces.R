@@ -95,7 +95,7 @@ NULL
 
 .sfn$describe_state_machine_for_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), definition = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), roleArn = structure(logical(0), tags = list(type = "string")), updateDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(stateMachineArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), definition = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), roleArn = structure(logical(0), tags = list(type = "string")), updateDate = structure(logical(0), tags = list(type = "timestamp")), loggingConfiguration = structure(list(level = structure(logical(0), tags = list(type = "string")), includeExecutionData = structure(logical(0), tags = list(type = "boolean")), destinations = structure(list(structure(list(cloudWatchLogsLogGroup = structure(list(logGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

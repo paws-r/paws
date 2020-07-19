@@ -68,7 +68,8 @@ When you create the IAM OIDC provider, you specify the following:
 \item A list of client IDs (also known as audiences) that identify the
 application or applications that are allowed to authenticate using
 the OIDC provider
-\item A list of thumbprints of the server certificate(s) that the IdP uses
+\item A list of thumbprints of one or more server certificates that the
+IdP uses
 }
 
 You get all of this information from the OIDC IdP that you want to use

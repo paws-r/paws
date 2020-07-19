@@ -4,10 +4,12 @@
 \alias{ec2_create_dhcp_options}
 \title{Creates a set of DHCP options for your VPC}
 \usage{
-ec2_create_dhcp_options(DhcpConfigurations, DryRun)
+ec2_create_dhcp_options(DhcpConfigurations, TagSpecifications, DryRun)
 }
 \arguments{
 \item{DhcpConfigurations}{[required] A DHCP configuration option.}
+
+\item{TagSpecifications}{The tags to assign to the DHCP option.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -34,7 +36,7 @@ server.
 specify \code{ec2.internal}. If you\'re using AmazonProvidedDNS in
 another Region, specify \code{region.compute.internal} (for example,
 \verb{ap-northeast-1.compute.internal}). Otherwise, specify a domain name
-(for example, \code{MyCompany.com}). This value is used to complete
+(for example, \code{ExampleCompany.com}). This value is used to complete
 unqualified DNS hostnames. \strong{Important}: Some Linux operating
 systems accept multiple domain names separated by spaces. However,
 Windows and other Linux operating systems treat the value as a
@@ -66,6 +68,17 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
       Key = "string",
       Values = list(
         "string"
+      )
+    )
+  ),
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
       )
     )
   ),

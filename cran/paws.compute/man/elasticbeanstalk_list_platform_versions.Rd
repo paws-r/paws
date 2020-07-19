@@ -2,21 +2,32 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_list_platform_versions}
 \alias{elasticbeanstalk_list_platform_versions}
-\title{Lists the available platforms}
+\title{Lists the platform versions available for your account in an AWS Region}
 \usage{
 elasticbeanstalk_list_platform_versions(Filters, MaxRecords, NextToken)
 }
 \arguments{
-\item{Filters}{List only the platforms where the platform member value relates to one
-of the supplied values.}
+\item{Filters}{Criteria for restricting the resulting list of platform versions. The
+filter is interpreted as a logical conjunction (AND) of the separate
+\code{PlatformFilter} terms.}
 
-\item{MaxRecords}{The maximum number of platform values returned in one call.}
+\item{MaxRecords}{The maximum number of platform version values returned in one call.}
 
-\item{NextToken}{The starting index into the remaining list of platforms. Use the
-\code{NextToken} value from a previous \code{ListPlatformVersion} call.}
+\item{NextToken}{For a paginated request. Specify a token from a previous response page
+to retrieve the next response page. All other parameter values must be
+identical to the ones specified in the initial request.
+
+If no \code{NextToken} is specified, the first page is retrieved.}
 }
 \description{
-Lists the available platforms.
+Lists the platform versions available for your account in an AWS Region.
+Provides summary information about each platform version. Compare to
+DescribePlatformVersion, which provides full details about a single
+platform version.
+}
+\details{
+For definitions of platform version and other platform-related terms,
+see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html}{AWS Elastic Beanstalk Platforms Glossary}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_platform_versions(

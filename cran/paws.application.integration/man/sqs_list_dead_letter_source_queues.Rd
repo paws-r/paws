@@ -5,12 +5,16 @@
 \title{Returns a list of your queues that have the RedrivePolicy queue
 attribute configured with a dead-letter queue}
 \usage{
-sqs_list_dead_letter_source_queues(QueueUrl)
+sqs_list_dead_letter_source_queues(QueueUrl, NextToken, MaxResults)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of a dead-letter queue.
 
 Queue URLs and names are case-sensitive.}
+
+\item{NextToken}{Pagination token to request the next set of results.}
+
+\item{MaxResults}{Maximum number of results to include in the response.}
 }
 \description{
 Returns a list of your queues that have the \code{RedrivePolicy} queue
@@ -22,7 +26,9 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_dead_letter_source_queues(
-  QueueUrl = "string"
+  QueueUrl = "string",
+  NextToken = "string",
+  MaxResults = 123
 )
 }
 }

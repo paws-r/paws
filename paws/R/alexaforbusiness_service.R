@@ -159,7 +159,7 @@ alexaforbusiness <- function(config = list()) {
 
 .alexaforbusiness$metadata <- list(
   service_name = "a4b",
-  endpoints = list("*" = list(endpoint = "a4b.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "a4b.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "a4b.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "a4b.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "a4b.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "a4b.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Alexa For Business",
   api_version = "2017-11-09",
   signing_name = NULL,

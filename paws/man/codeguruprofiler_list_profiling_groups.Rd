@@ -2,21 +2,38 @@
 % Please edit documentation in R/codeguruprofiler_operations.R
 \name{codeguruprofiler_list_profiling_groups}
 \alias{codeguruprofiler_list_profiling_groups}
-\title{List profiling groups in the account}
+\title{Returns a list of profiling groups}
 \usage{
 codeguruprofiler_list_profiling_groups(includeDescription, maxResults,
   nextToken)
 }
 \arguments{
-\item{includeDescription}{If set to true, returns the full description of the profiling groups
-instead of the names. Defaults to false.}
+\item{includeDescription}{A \code{Boolean} value indicating whether to include a description. If
+\code{true}, then a list of
+\href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html}{\code{ProfilingGroupDescription}}
+objects that contain detailed information about profiling groups is
+returned. If \code{false}, then a list of profiling group names is returned.}
 
-\item{maxResults}{}
+\item{maxResults}{The maximum number of profiling groups results returned by
+\code{ListProfilingGroups} in paginated output. When this parameter is used,
+\code{ListProfilingGroups} only returns \code{maxResults} results in a single page
+along with a \code{nextToken} response element. The remaining results of the
+initial request can be seen by sending another \code{ListProfilingGroups}
+request with the returned \code{nextToken} value.}
 
-\item{nextToken}{}
+\item{nextToken}{The \code{nextToken} value returned from a previous paginated
+\code{ListProfilingGroups} request where \code{maxResults} was used and the
+results exceeded the value of that parameter. Pagination continues from
+the end of the previous results that returned the \code{nextToken} value.
+
+This token should be treated as an opaque identifier that is only used
+to retrieve the next items in a list and not for other programmatic
+purposes.}
 }
 \description{
-List profiling groups in the account.
+Returns a list of profiling groups. The profiling groups are returned as
+\href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html}{\code{ProfilingGroupDescription}}
+objects.
 }
 \section{Request syntax}{
 \preformatted{svc$list_profiling_groups(

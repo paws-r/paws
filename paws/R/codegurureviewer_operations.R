@@ -3,16 +3,33 @@
 #' @include codegurureviewer_service.R
 NULL
 
-#' Associates an AWS CodeCommit repository with Amazon CodeGuru Reviewer
+#' Use to associate an AWS CodeCommit repository or a repostory managed by
+#' AWS CodeStar Connections with Amazon CodeGuru Reviewer
 #'
-#' Associates an AWS CodeCommit repository with Amazon CodeGuru Reviewer.
-#' When you associate an AWS CodeCommit repository with Amazon CodeGuru
-#' Reviewer, Amazon CodeGuru Reviewer will provide recommendations for each
-#' pull request. You can view recommendations in the AWS CodeCommit
-#' repository.
+#' Use to associate an AWS CodeCommit repository or a repostory managed by
+#' AWS CodeStar Connections with Amazon CodeGuru Reviewer. When you
+#' associate a repository, CodeGuru Reviewer reviews source code changes in
+#' the repository\'s pull requests and provides automatic recommendations.
+#' You can view recommendations using the CodeGuru Reviewer console. For
+#' more information, see [Recommendations in Amazon CodeGuru
+#' Reviewer](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/recommendations.html)
+#' in the *Amazon CodeGuru Reviewer User Guide.*
 #' 
-#' You can associate a GitHub repository using the Amazon CodeGuru Reviewer
-#' console.
+#' If you associate a CodeCommit repository, it must be in the same AWS
+#' Region and AWS account where its CodeGuru Reviewer code reviews are
+#' configured.
+#' 
+#' Bitbucket and GitHub Enterprise Server repositories are managed by AWS
+#' CodeStar Connections to connect to CodeGuru Reviewer. For more
+#' information, see Connect to a repository source provider in the *Amazon
+#' CodeGuru Reviewer User Guide.*
+#' 
+#' You cannot use the CodeGuru Reviewer SDK or the AWS CLI to associate a
+#' GitHub repository with Amazon CodeGuru Reviewer. To associate a GitHub
+#' repository, use the console. For more information, see [Getting started
+#' with CodeGuru
+#' Reviewer](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-with-guru.html)
+#' in the *CodeGuru Reviewer User Guide.*
 #'
 #' @usage
 #' codegurureviewer_associate_repository(Repository, ClientRequestToken)
@@ -21,22 +38,21 @@ NULL
 #' @param ClientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' 
-#' If you want to add a new repository association, this parameter
-#' specifies a unique identifier for the new repository association that
-#' helps ensure idempotency.
+#' To add a new repository association, this parameter specifies a unique
+#' identifier for the new repository association that helps ensure
+#' idempotency.
 #' 
-#' If you use the AWS CLI or one of the AWS SDK to call this operation,
-#' then you can leave this parameter empty. The CLI or SDK generates a
-#' random UUID for you and includes that in the request. If you don\'t use
-#' the SDK and instead generate a raw HTTP request to the Secrets Manager
-#' service endpoint, then you must generate a ClientRequestToken yourself
-#' for new versions and include that value in the request.
+#' If you use the AWS CLI or one of the AWS SDKs to call this operation,
+#' you can leave this parameter empty. The CLI or SDK generates a random
+#' UUID for you and includes that in the request. If you don\'t use the SDK
+#' and instead generate a raw HTTP request to the Secrets Manager service
+#' endpoint, you must generate a ClientRequestToken yourself for new
+#' versions and include that value in the request.
 #' 
-#' You typically only need to interact with this value if you implement
-#' your own retry logic and want to ensure that a given repository
-#' association is not created twice. We recommend that you generate a
-#' UUID-type value to ensure uniqueness within the specified repository
-#' association.
+#' You typically interact with this value if you implement your own retry
+#' logic and want to ensure that a given repository association is not
+#' created twice. We recommend that you generate a UUID-type value to
+#' ensure uniqueness within the specified repository association.
 #' 
 #' Amazon CodeGuru Reviewer uses this value to prevent the accidental
 #' creation of duplicate repository associations if there are failures and
@@ -48,6 +64,16 @@ NULL
 #'   Repository = list(
 #'     CodeCommit = list(
 #'       Name = "string"
+#'     ),
+#'     Bitbucket = list(
+#'       Name = "string",
+#'       ConnectionArn = "string",
+#'       Owner = "string"
+#'     ),
+#'     GitHubEnterpriseServer = list(
+#'       Name = "string",
+#'       ConnectionArn = "string",
+#'       Owner = "string"
 #'     )
 #'   ),
 #'   ClientRequestToken = "string"
@@ -74,14 +100,111 @@ codegurureviewer_associate_repository <- function(Repository, ClientRequestToken
 }
 .codegurureviewer$operations$associate_repository <- codegurureviewer_associate_repository
 
-#' Describes a repository association
+#' Returns the metadata associated with the code review along with its
+#' status
 #'
-#' Describes a repository association.
+#' Returns the metadata associated with the code review along with its
+#' status.
+#'
+#' @usage
+#' codegurureviewer_describe_code_review(CodeReviewArn)
+#'
+#' @param CodeReviewArn &#91;required&#93; The Amazon Resource Name (ARN) of the
+#' [`CodeReview`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html)
+#' object.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_code_review(
+#'   CodeReviewArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codegurureviewer_describe_code_review
+codegurureviewer_describe_code_review <- function(CodeReviewArn) {
+  op <- new_operation(
+    name = "DescribeCodeReview",
+    http_method = "GET",
+    http_path = "/codereviews/{CodeReviewArn}",
+    paginator = list()
+  )
+  input <- .codegurureviewer$describe_code_review_input(CodeReviewArn = CodeReviewArn)
+  output <- .codegurureviewer$describe_code_review_output()
+  config <- get_config()
+  svc <- .codegurureviewer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codegurureviewer$operations$describe_code_review <- codegurureviewer_describe_code_review
+
+#' Describes the customer feedback for a CodeGuru Reviewer recommendation
+#'
+#' Describes the customer feedback for a CodeGuru Reviewer recommendation.
+#'
+#' @usage
+#' codegurureviewer_describe_recommendation_feedback(CodeReviewArn,
+#'   RecommendationId, UserId)
+#'
+#' @param CodeReviewArn &#91;required&#93; The Amazon Resource Name (ARN) of the
+#' [`CodeReview`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html)
+#' object.
+#' @param RecommendationId &#91;required&#93; The recommendation ID that can be used to track the provided
+#' recommendations and then to collect the feedback.
+#' @param UserId Optional parameter to describe the feedback for a given user. If this is
+#' not supplied, it defaults to the user making the request.
+#' 
+#' The `UserId` is an IAM principal that can be specified as an AWS account
+#' ID or an Amazon Resource Name (ARN). For more information, see
+#' [Specifying a
+#' Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#Principal_specifying)
+#' in the *AWS Identity and Access Management User Guide*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_recommendation_feedback(
+#'   CodeReviewArn = "string",
+#'   RecommendationId = "string",
+#'   UserId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codegurureviewer_describe_recommendation_feedback
+codegurureviewer_describe_recommendation_feedback <- function(CodeReviewArn, RecommendationId, UserId = NULL) {
+  op <- new_operation(
+    name = "DescribeRecommendationFeedback",
+    http_method = "GET",
+    http_path = "/feedback/{CodeReviewArn}",
+    paginator = list()
+  )
+  input <- .codegurureviewer$describe_recommendation_feedback_input(CodeReviewArn = CodeReviewArn, RecommendationId = RecommendationId, UserId = UserId)
+  output <- .codegurureviewer$describe_recommendation_feedback_output()
+  config <- get_config()
+  svc <- .codegurureviewer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codegurureviewer$operations$describe_recommendation_feedback <- codegurureviewer_describe_recommendation_feedback
+
+#' Returns a RepositoryAssociation object that contains information about
+#' the requested repository association
+#'
+#' Returns a
+#' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
+#' object that contains information about the requested repository
+#' association.
 #'
 #' @usage
 #' codegurureviewer_describe_repository_association(AssociationArn)
 #'
-#' @param AssociationArn &#91;required&#93; The Amazon Resource Name (ARN) identifying the association.
+#' @param AssociationArn &#91;required&#93; The Amazon Resource Name (ARN) of the
+#' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
+#' object. You can retrieve this ARN by calling `ListRepositories`.
 #'
 #' @section Request syntax:
 #' ```
@@ -119,7 +242,9 @@ codegurureviewer_describe_repository_association <- function(AssociationArn) {
 #' @usage
 #' codegurureviewer_disassociate_repository(AssociationArn)
 #'
-#' @param AssociationArn &#91;required&#93; The Amazon Resource Name (ARN) identifying the association.
+#' @param AssociationArn &#91;required&#93; The Amazon Resource Name (ARN) of the
+#' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
+#' object.
 #'
 #' @section Request syntax:
 #' ```
@@ -148,44 +273,261 @@ codegurureviewer_disassociate_repository <- function(AssociationArn) {
 }
 .codegurureviewer$operations$disassociate_repository <- codegurureviewer_disassociate_repository
 
-#' Lists repository associations
+#' Lists all the code reviews that the customer has created in the past 90
+#' days
 #'
-#' Lists repository associations. You can optionally filter on one or more
-#' of the following recommendation properties: provider types, states,
-#' names, and owners.
+#' Lists all the code reviews that the customer has created in the past 90
+#' days.
+#'
+#' @usage
+#' codegurureviewer_list_code_reviews(ProviderTypes, States,
+#'   RepositoryNames, Type, MaxResults, NextToken)
+#'
+#' @param ProviderTypes List of provider types for filtering that needs to be applied before
+#' displaying the result. For example, `providerTypes=\\[GitHub\\]` lists
+#' code reviews from GitHub.
+#' @param States List of states for filtering that needs to be applied before displaying
+#' the result. For example, `states=\\[Pending\\]` lists code reviews in
+#' the Pending state.
+#' 
+#' The valid code review states are:
+#' 
+#' -   `Completed`: The code review is complete.
+#' 
+#' -   `Pending`: The code review started and has not completed or failed.
+#' 
+#' -   `Failed`: The code review failed.
+#' 
+#' -   `Deleting`: The code review is being deleted.
+#' @param RepositoryNames List of repository names for filtering that needs to be applied before
+#' displaying the result.
+#' @param Type &#91;required&#93; The type of code reviews to list in the response.
+#' @param MaxResults The maximum number of results that are returned per call. The default is
+#' 100.
+#' @param NextToken If nextToken is returned, there are more results available. The value of
+#' nextToken is a unique pagination token for each page. Make the call
+#' again using the returned token to retrieve the next page. Keep all other
+#' arguments unchanged.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_code_reviews(
+#'   ProviderTypes = list(
+#'     "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"
+#'   ),
+#'   States = list(
+#'     "Completed"|"Pending"|"Failed"|"Deleting"
+#'   ),
+#'   RepositoryNames = list(
+#'     "string"
+#'   ),
+#'   Type = "PullRequest",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codegurureviewer_list_code_reviews
+codegurureviewer_list_code_reviews <- function(ProviderTypes = NULL, States = NULL, RepositoryNames = NULL, Type, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListCodeReviews",
+    http_method = "GET",
+    http_path = "/codereviews",
+    paginator = list()
+  )
+  input <- .codegurureviewer$list_code_reviews_input(ProviderTypes = ProviderTypes, States = States, RepositoryNames = RepositoryNames, Type = Type, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .codegurureviewer$list_code_reviews_output()
+  config <- get_config()
+  svc <- .codegurureviewer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codegurureviewer$operations$list_code_reviews <- codegurureviewer_list_code_reviews
+
+#' Returns a list of RecommendationFeedbackSummary objects that contain
+#' customer recommendation feedback for all CodeGuru Reviewer users
+#'
+#' Returns a list of
+#' [`RecommendationFeedbackSummary`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RecommendationFeedbackSummary.html)
+#' objects that contain customer recommendation feedback for all CodeGuru
+#' Reviewer users.
+#'
+#' @usage
+#' codegurureviewer_list_recommendation_feedback(NextToken, MaxResults,
+#'   CodeReviewArn, UserIds, RecommendationIds)
+#'
+#' @param NextToken If `nextToken` is returned, there are more results available. The value
+#' of nextToken is a unique pagination token for each page. Make the call
+#' again using the returned token to retrieve the next page. Keep all other
+#' arguments unchanged.
+#' @param MaxResults The maximum number of results that are returned per call. The default is
+#' 100.
+#' @param CodeReviewArn &#91;required&#93; The Amazon Resource Name (ARN) of the
+#' [`CodeReview`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html)
+#' object.
+#' @param UserIds An AWS user\'s account ID or Amazon Resource Name (ARN). Use this ID to
+#' query the recommendation feedback for a code review from that user.
+#' 
+#' The `UserId` is an IAM principal that can be specified as an AWS account
+#' ID or an Amazon Resource Name (ARN). For more information, see
+#' [Specifying a
+#' Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#Principal_specifying)
+#' in the *AWS Identity and Access Management User Guide*.
+#' @param RecommendationIds Used to query the recommendation feedback for a given recommendation.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_recommendation_feedback(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   CodeReviewArn = "string",
+#'   UserIds = list(
+#'     "string"
+#'   ),
+#'   RecommendationIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codegurureviewer_list_recommendation_feedback
+codegurureviewer_list_recommendation_feedback <- function(NextToken = NULL, MaxResults = NULL, CodeReviewArn, UserIds = NULL, RecommendationIds = NULL) {
+  op <- new_operation(
+    name = "ListRecommendationFeedback",
+    http_method = "GET",
+    http_path = "/feedback/{CodeReviewArn}/RecommendationFeedback",
+    paginator = list()
+  )
+  input <- .codegurureviewer$list_recommendation_feedback_input(NextToken = NextToken, MaxResults = MaxResults, CodeReviewArn = CodeReviewArn, UserIds = UserIds, RecommendationIds = RecommendationIds)
+  output <- .codegurureviewer$list_recommendation_feedback_output()
+  config <- get_config()
+  svc <- .codegurureviewer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codegurureviewer$operations$list_recommendation_feedback <- codegurureviewer_list_recommendation_feedback
+
+#' Returns the list of all recommendations for a completed code review
+#'
+#' Returns the list of all recommendations for a completed code review.
+#'
+#' @usage
+#' codegurureviewer_list_recommendations(NextToken, MaxResults,
+#'   CodeReviewArn)
+#'
+#' @param NextToken Pagination token.
+#' @param MaxResults The maximum number of results that are returned per call. The default is
+#' 100.
+#' @param CodeReviewArn &#91;required&#93; The Amazon Resource Name (ARN) of the
+#' [`CodeReview`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html)
+#' object.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_recommendations(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   CodeReviewArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codegurureviewer_list_recommendations
+codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults = NULL, CodeReviewArn) {
+  op <- new_operation(
+    name = "ListRecommendations",
+    http_method = "GET",
+    http_path = "/codereviews/{CodeReviewArn}/Recommendations",
+    paginator = list()
+  )
+  input <- .codegurureviewer$list_recommendations_input(NextToken = NextToken, MaxResults = MaxResults, CodeReviewArn = CodeReviewArn)
+  output <- .codegurureviewer$list_recommendations_output()
+  config <- get_config()
+  svc <- .codegurureviewer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codegurureviewer$operations$list_recommendations <- codegurureviewer_list_recommendations
+
+#' Returns a list of RepositoryAssociationSummary objects that contain
+#' summary information about a repository association
+#'
+#' Returns a list of
+#' [`RepositoryAssociationSummary`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html)
+#' objects that contain summary information about a repository association.
+#' You can filter the returned list by
+#' [`ProviderType`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-ProviderType)
+#' ,
+#' [`Name`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Name)
+#' ,
+#' [`State`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-State)
+#' , and
+#' [`Owner`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Owner)
+#' .
 #'
 #' @usage
 #' codegurureviewer_list_repository_associations(ProviderTypes, States,
 #'   Names, Owners, MaxResults, NextToken)
 #'
 #' @param ProviderTypes List of provider types to use as a filter.
-#' @param States List of states to use as a filter.
-#' @param Names List of names to use as a filter.
-#' @param Owners List of owners to use as a filter. For AWS CodeCommit, the owner is the
-#' AWS account id. For GitHub, it is the GitHub account name.
+#' @param States List of repository association states to use as a filter.
+#' 
+#' The valid repository association states are:
+#' 
+#' -   **Associated**: The repository association is complete.
+#' 
+#' -   **Associating**: CodeGuru Reviewer is:
+#' 
+#'     -   Setting up pull request notifications. This is required for pull
+#'         requests to trigger a CodeGuru Reviewer review.
+#' 
+#'         If your repository `ProviderType` is `GitHub` or `Bitbucket`,
+#'         CodeGuru Reviewer creates webhooks in your repository to trigger
+#'         CodeGuru Reviewer reviews. If you delete these webhooks, reviews
+#'         of code in your repository cannot be triggered.
+#' 
+#'     -   Setting up source code access. This is required for CodeGuru
+#'         Reviewer to securely clone code in your repository.
+#' 
+#' -   **Failed**: The repository failed to associate or disassociate.
+#' 
+#' -   **Disassociating**: CodeGuru Reviewer is removing the repository\'s
+#'     pull request notifications and source code access.
+#' @param Names List of repository names to use as a filter.
+#' @param Owners List of owners to use as a filter. For AWS CodeCommit, it is the name of
+#' the CodeCommit account that was used to associate the repository. For
+#' other repository source providers, such as Bitbucket, this is name of
+#' the account that was used to associate the repository.
 #' @param MaxResults The maximum number of repository association results returned by
 #' `ListRepositoryAssociations` in paginated output. When this parameter is
 #' used, `ListRepositoryAssociations` only returns `maxResults` results in
-#' a single page along with a `nextToken` response element. The remaining
-#' results of the initial request can be seen by sending another
+#' a single page with a `nextToken` response element. The remaining results
+#' of the initial request can be seen by sending another
 #' `ListRepositoryAssociations` request with the returned `nextToken`
 #' value. This value can be between 1 and 100. If this parameter is not
-#' used, then `ListRepositoryAssociations` returns up to 100 results and a
+#' used, `ListRepositoryAssociations` returns up to 100 results and a
 #' `nextToken` value if applicable.
 #' @param NextToken The `nextToken` value returned from a previous paginated
 #' `ListRepositoryAssociations` request where `maxResults` was used and the
 #' results exceeded the value of that parameter. Pagination continues from
 #' the end of the previous results that returned the `nextToken` value.
 #' 
-#' This token should be treated as an opaque identifier that is only used
-#' to retrieve the next items in a list and not for other programmatic
-#' purposes.
+#' Treat this token as an opaque identifier that is only used to retrieve
+#' the next items in a list and not for other programmatic purposes.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_repository_associations(
 #'   ProviderTypes = list(
-#'     "CodeCommit"|"GitHub"
+#'     "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"
 #'   ),
 #'   States = list(
 #'     "Associated"|"Associating"|"Failed"|"Disassociating"
@@ -220,3 +562,52 @@ codegurureviewer_list_repository_associations <- function(ProviderTypes = NULL, 
   return(response)
 }
 .codegurureviewer$operations$list_repository_associations <- codegurureviewer_list_repository_associations
+
+#' Stores customer feedback for a CodeGuru Reviewer recommendation
+#'
+#' Stores customer feedback for a CodeGuru Reviewer recommendation. When
+#' this API is called again with different reactions the previous feedback
+#' is overwritten.
+#'
+#' @usage
+#' codegurureviewer_put_recommendation_feedback(CodeReviewArn,
+#'   RecommendationId, Reactions)
+#'
+#' @param CodeReviewArn &#91;required&#93; The Amazon Resource Name (ARN) of the
+#' [`CodeReview`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html)
+#' object.
+#' @param RecommendationId &#91;required&#93; The recommendation ID that can be used to track the provided
+#' recommendations and then to collect the feedback.
+#' @param Reactions &#91;required&#93; List for storing reactions. Reactions are utf-8 text code for emojis. If
+#' you send an empty list it clears all your feedback.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_recommendation_feedback(
+#'   CodeReviewArn = "string",
+#'   RecommendationId = "string",
+#'   Reactions = list(
+#'     "ThumbsUp"|"ThumbsDown"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codegurureviewer_put_recommendation_feedback
+codegurureviewer_put_recommendation_feedback <- function(CodeReviewArn, RecommendationId, Reactions) {
+  op <- new_operation(
+    name = "PutRecommendationFeedback",
+    http_method = "PUT",
+    http_path = "/feedback",
+    paginator = list()
+  )
+  input <- .codegurureviewer$put_recommendation_feedback_input(CodeReviewArn = CodeReviewArn, RecommendationId = RecommendationId, Reactions = Reactions)
+  output <- .codegurureviewer$put_recommendation_feedback_output()
+  config <- get_config()
+  svc <- .codegurureviewer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codegurureviewer$operations$put_recommendation_feedback <- codegurureviewer_put_recommendation_feedback

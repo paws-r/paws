@@ -9,7 +9,7 @@ groundstation_tag_resource(resourceArn, tags)
 \arguments{
 \item{resourceArn}{[required] ARN of a resource tag.}
 
-\item{tags}{Tags assigned to a resource.}
+\item{tags}{[required] Tags assigned to a resource.}
 }
 \description{
 Assigns a tag to a resource.

@@ -13,7 +13,8 @@ rds_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
   PreSignedUrl, EnableIAMDatabaseAuthentication, BacktrackWindow,
   EnableCloudwatchLogsExports, EngineMode, ScalingConfiguration,
   DeletionProtection, GlobalClusterIdentifier, EnableHttpEndpoint,
-  CopyTagsToSnapshot, SourceRegion)
+  CopyTagsToSnapshot, Domain, DomainIAMRoleName,
+  EnableGlobalWriteForwarding, SourceRegion)
 }
 \arguments{
 \item{AvailabilityZones}{A list of Availability Zones (AZs) where instances in the DB cluster can
@@ -33,8 +34,8 @@ Constraints:
 \item{CharacterSetName}{A value that indicates that the DB cluster should be associated with the
 specified CharacterSet.}
 
-\item{DatabaseName}{The name for your database of up to 64 alpha-numeric characters. If you
-do not provide a name, Amazon RDS will not create a database in the DB
+\item{DatabaseName}{The name for your database of up to 64 alphanumeric characters. If you
+do not provide a name, Amazon RDS doesn\'t create a database in the DB
 cluster you are creating.}
 
 \item{DBClusterIdentifier}{[required] The DB cluster identifier. This parameter is stored as a lowercase
@@ -158,7 +159,7 @@ Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 Constraints: Minimum 30-minute window.}
 
 \item{ReplicationSourceIdentifier}{The Amazon Resource Name (ARN) of the source DB instance or DB cluster
-if this DB cluster is created as a Read Replica.}
+if this DB cluster is created as a read replica.}
 
 \item{Tags}{Tags to assign to the DB cluster.}
 
@@ -185,9 +186,9 @@ use your default encryption key.
 AWS KMS creates the default encryption key for your AWS account. Your
 AWS account has a different default encryption key for each AWS Region.
 
-If you create a Read Replica of an encrypted DB cluster in another AWS
+If you create a read replica of an encrypted DB cluster in another AWS
 Region, you must set \code{KmsKeyId} to a KMS key ID that is valid in the
-destination AWS Region. This key is used to encrypt the Read Replica in
+destination AWS Region. This key is used to encrypt the read replica in
 that AWS Region.}
 
 \item{PreSignedUrl}{A URL that contains a Signature Version 4 signed request for the
@@ -207,8 +208,8 @@ encrypt the copy of the DB cluster in the destination AWS Region.
 This should refer to the same KMS key for both the \code{CreateDBCluster}
 action that is called in the destination AWS Region, and the action
 contained in the pre-signed URL.
-\item \code{DestinationRegion} - The name of the AWS Region that Aurora Read
-Replica will be created in.
+\item \code{DestinationRegion} - The name of the AWS Region that Aurora read
+replica will be created in.
 \item \code{ReplicationSourceIdentifier} - The DB cluster identifier for the
 encrypted DB cluster to be copied. This identifier must be in the
 Amazon Resource Name (ARN) format for the source AWS Region. For
@@ -241,6 +242,8 @@ in the \emph{Amazon Aurora User Guide.}}
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
 
+Currently, Backtrack is only supported for Aurora MySQL DB clusters.
+
 Default: 0
 
 Constraints:
@@ -256,6 +259,10 @@ in the \emph{Amazon Aurora User Guide}.}
 
 \item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned},
 \code{serverless}, \code{parallelquery}, \code{global}, or \code{multimaster}.
+
+\code{global} engine mode only applies for global database clusters created
+with Aurora MySQL version 5.6.10a. For higher Aurora MySQL versions, the
+clusters in a global database use \code{provisioned} engine mode.
 
 Limitations and requirements apply to some DB engine modes. For more
 information, see the following sections in the \emph{Amazon Aurora User
@@ -291,6 +298,23 @@ in the \emph{Amazon Aurora User Guide}.}
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB cluster to
 snapshots of the DB cluster. The default is not to copy them.}
 
+\item{Domain}{The Active Directory directory ID to create the DB cluster in.
+
+For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
+Authentication to authenticate users that connect to the DB cluster. For
+more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/kerberos-authentication.html}{Kerberos Authentication}
+in the \emph{Amazon Aurora User Guide}.}
+
+\item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
+Directory Service.}
+
+\item{EnableGlobalWriteForwarding}{A value that indicates whether to enable write operations to be
+forwarded from this cluster to the primary cluster in an Aurora global
+database. The resulting changes are replicated back to this cluster.
+This parameter only applies to DB clusters that are secondary clusters
+in an Aurora global database. By default, Aurora disallows write
+operations for secondary clusters.}
+
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
 \description{
@@ -298,7 +322,7 @@ Creates a new Amazon Aurora DB cluster.
 }
 \details{
 You can use the \code{ReplicationSourceIdentifier} parameter to create the DB
-cluster as a Read Replica of another DB cluster or Amazon RDS MySQL DB
+cluster as a read replica of another DB cluster or Amazon RDS MySQL DB
 instance. For cross-region replication where the DB cluster identified
 by \code{ReplicationSourceIdentifier} is encrypted, you must also specify the
 \code{PreSignedUrl} parameter.
@@ -357,6 +381,9 @@ This action only applies to Aurora DB clusters.
   GlobalClusterIdentifier = "string",
   EnableHttpEndpoint = TRUE|FALSE,
   CopyTagsToSnapshot = TRUE|FALSE,
+  Domain = "string",
+  DomainIAMRoleName = "string",
+  EnableGlobalWriteForwarding = TRUE|FALSE,
   SourceRegion = "string"
 )
 }

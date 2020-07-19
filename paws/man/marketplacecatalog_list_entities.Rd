@@ -15,7 +15,7 @@ marketplacecatalog_list_entities(Catalog, EntityType, FilterList, Sort,
 \item{FilterList}{An array of filter objects. Each filter object contains two attributes,
 \code{filterName} and \code{filterValues}.}
 
-\item{Sort}{An object that contains two attributes, \code{sortBy} and \code{sortOrder}.}
+\item{Sort}{An object that contains two attributes, \code{SortBy} and \code{SortOrder}.}
 
 \item{NextToken}{The value of the next token, if it exists. Null if there are no more
 results.}

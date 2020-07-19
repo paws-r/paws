@@ -24,7 +24,12 @@ period, in hours, for the Amazon Kinesis data.
   VoiceConnectorId = "string",
   StreamingConfiguration = list(
     DataRetentionInHours = 123,
-    Disabled = TRUE|FALSE
+    Disabled = TRUE|FALSE,
+    StreamingNotificationTargets = list(
+      list(
+        NotificationTarget = "EventBridge"|"SNS"|"SQS"
+      )
+    )
   )
 )
 }

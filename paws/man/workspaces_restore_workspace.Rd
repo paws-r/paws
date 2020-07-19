@@ -14,7 +14,7 @@ Restores the specified WorkSpace to its last known healthy state.
 }
 \details{
 You cannot restore a WorkSpace unless its state is \code{ AVAILABLE},
-\code{ERROR}, or \code{UNHEALTHY}.
+\code{ERROR}, \code{UNHEALTHY}, or \code{STOPPED}.
 
 Restoring a WorkSpace is a potentially destructive action that can
 result in the loss of data. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/restore-workspace.html}{Restore a WorkSpace}.

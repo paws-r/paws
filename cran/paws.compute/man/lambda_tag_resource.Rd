@@ -25,4 +25,17 @@ to a function.
 }
 }
 
+\examples{
+\dontrun{
+# The following example adds a tag with the key name DEPARTMENT and a
+# value of 'Department A' to the specified Lambda function.
+svc$tag_resource(
+  Resource = "arn:aws:lambda:us-west-2:123456789012:function:my-function",
+  Tags = list(
+    DEPARTMENT = "Department A"
+  )
+)
+}
+
+}
 \keyword{internal}

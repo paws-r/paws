@@ -59,7 +59,7 @@ in the ElastiCache API Reference
 }
 }
 
-Also see, \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test}{Testing Multi-AZ with Automatic Failover}
+Also see, \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test}{Testing Multi-AZ}
 in the \emph{ElastiCache User Guide}.
 }
 \section{Request syntax}{

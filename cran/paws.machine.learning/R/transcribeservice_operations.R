@@ -3,6 +3,71 @@
 #' @include transcribeservice_service.R
 NULL
 
+#' Creates a new custom vocabulary that you can use to change how Amazon
+#' Transcribe Medical transcribes your audio file
+#'
+#' Creates a new custom vocabulary that you can use to change how Amazon
+#' Transcribe Medical transcribes your audio file.
+#'
+#' @usage
+#' transcribeservice_create_medical_vocabulary(VocabularyName,
+#'   LanguageCode, VocabularyFileUri)
+#'
+#' @param VocabularyName &#91;required&#93; The name of the custom vocabulary. This case-sensitive name must be
+#' unique within an AWS account. If you try to create a vocabulary with the
+#' same name as a previous vocabulary you will receive a
+#' `ConflictException` error.
+#' @param LanguageCode &#91;required&#93; The language code used for the entries within your custom vocabulary.
+#' The language code of your custom vocabulary must match the language code
+#' of your transcription job. US English (en-US) is the only language code
+#' available for Amazon Transcribe Medical.
+#' @param VocabularyFileUri &#91;required&#93; The Amazon S3 location of the text file you use to define your custom
+#' vocabulary. The URI must be in the same AWS region as the API endpoint
+#' you\'re calling. Enter information about your `VocabularyFileUri` in the
+#' following format:
+#' 
+#' ` https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; `
+#' 
+#' This is an example of a vocabulary file uri location in Amazon S3:
+#' 
+#' `https://s3.us-east-1.amazonaws.com/AWSDOC-EXAMPLE-BUCKET/vocab.txt`
+#' 
+#' For more information about S3 object names, see [Object
+#' Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
+#' in the *Amazon S3 Developer Guide*.
+#' 
+#' For more information about custom vocabularies, see [Medical Custom
+#' Vocabularies](http://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary-med).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_medical_vocabulary(
+#'   VocabularyName = "string",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA"|"ru-RU"|"zh-CN"|"nl-NL"|"id-ID"|"ta-IN"|"fa-IR"|"en-IE"|"en-AB"|"en-WL"|"pt-PT"|"te-IN"|"tr-TR"|"de-CH"|"he-IL"|"ms-MY"|"ja-JP"|"ar-AE",
+#'   VocabularyFileUri = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_create_medical_vocabulary
+transcribeservice_create_medical_vocabulary <- function(VocabularyName, LanguageCode, VocabularyFileUri) {
+  op <- new_operation(
+    name = "CreateMedicalVocabulary",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$create_medical_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, VocabularyFileUri = VocabularyFileUri)
+  output <- .transcribeservice$create_medical_vocabulary_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$create_medical_vocabulary <- transcribeservice_create_medical_vocabulary
+
 #' Creates a new custom vocabulary that you can use to change the way
 #' Amazon Transcribe handles transcription of an audio file
 #'
@@ -14,18 +79,14 @@ NULL
 #'   Phrases, VocabularyFileUri)
 #'
 #' @param VocabularyName &#91;required&#93; The name of the vocabulary. The name must be unique within an AWS
-#' account. The name is case-sensitive.
+#' account. The name is case-sensitive. If you try to create a vocabulary
+#' with the same name as a previous vocabulary you will receive a
+#' `ConflictException` error.
 #' @param LanguageCode &#91;required&#93; The language code of the vocabulary entries.
 #' @param Phrases An array of strings that contains the vocabulary entries.
 #' @param VocabularyFileUri The S3 location of the text file that contains the definition of the
 #' custom vocabulary. The URI must be in the same region as the API
 #' endpoint that you are calling. The general form is
-#' 
-#' ` https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; `
-#' 
-#' For example:
-#' 
-#' `https://s3.us-east-1.amazonaws.com/examplebucket/vocab.txt`
 #' 
 #' For more information about S3 object names, see [Object
 #' Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
@@ -77,7 +138,9 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #'   LanguageCode, Words, VocabularyFilterFileUri)
 #'
 #' @param VocabularyFilterName &#91;required&#93; The vocabulary filter name. The name must be unique within the account
-#' that contains it.
+#' that contains it.If you try to create a vocabulary filter with the same
+#' name as a previous vocabulary filter you will receive a
+#' `ConflictException` error.
 #' @param LanguageCode &#91;required&#93; The language code of the words in the vocabulary filter. All words in
 #' the filter must be in the same language. The vocabulary filter can only
 #' be used with transcription jobs in the specified language.
@@ -131,6 +194,82 @@ transcribeservice_create_vocabulary_filter <- function(VocabularyFilterName, Lan
   return(response)
 }
 .transcribeservice$operations$create_vocabulary_filter <- transcribeservice_create_vocabulary_filter
+
+#' Deletes a transcription job generated by Amazon Transcribe Medical and
+#' any related information
+#'
+#' Deletes a transcription job generated by Amazon Transcribe Medical and
+#' any related information.
+#'
+#' @usage
+#' transcribeservice_delete_medical_transcription_job(
+#'   MedicalTranscriptionJobName)
+#'
+#' @param MedicalTranscriptionJobName &#91;required&#93; The name you provide to the `DeleteMedicalTranscriptionJob` object to
+#' delete a transcription job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_medical_transcription_job(
+#'   MedicalTranscriptionJobName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_delete_medical_transcription_job
+transcribeservice_delete_medical_transcription_job <- function(MedicalTranscriptionJobName) {
+  op <- new_operation(
+    name = "DeleteMedicalTranscriptionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$delete_medical_transcription_job_input(MedicalTranscriptionJobName = MedicalTranscriptionJobName)
+  output <- .transcribeservice$delete_medical_transcription_job_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$delete_medical_transcription_job <- transcribeservice_delete_medical_transcription_job
+
+#' Deletes a vocabulary from Amazon Transcribe Medical
+#'
+#' Deletes a vocabulary from Amazon Transcribe Medical.
+#'
+#' @usage
+#' transcribeservice_delete_medical_vocabulary(VocabularyName)
+#'
+#' @param VocabularyName &#91;required&#93; The name of the vocabulary you are choosing to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_medical_vocabulary(
+#'   VocabularyName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_delete_medical_vocabulary
+transcribeservice_delete_medical_vocabulary <- function(VocabularyName) {
+  op <- new_operation(
+    name = "DeleteMedicalVocabulary",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$delete_medical_vocabulary_input(VocabularyName = VocabularyName)
+  output <- .transcribeservice$delete_medical_vocabulary_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$delete_medical_vocabulary <- transcribeservice_delete_medical_vocabulary
 
 #' Deletes a previously submitted transcription job along with any other
 #' generated results such as the transcription, models, and so on
@@ -242,12 +381,93 @@ transcribeservice_delete_vocabulary_filter <- function(VocabularyFilterName) {
 }
 .transcribeservice$operations$delete_vocabulary_filter <- transcribeservice_delete_vocabulary_filter
 
+#' Returns information about a transcription job from Amazon Transcribe
+#' Medical
+#'
+#' Returns information about a transcription job from Amazon Transcribe
+#' Medical. To see the status of the job, check the
+#' `TranscriptionJobStatus` field. If the status is `COMPLETED`, the job is
+#' finished. You find the results of the completed job in the
+#' `TranscriptFileUri` field.
+#'
+#' @usage
+#' transcribeservice_get_medical_transcription_job(
+#'   MedicalTranscriptionJobName)
+#'
+#' @param MedicalTranscriptionJobName &#91;required&#93; The name of the medical transcription job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_medical_transcription_job(
+#'   MedicalTranscriptionJobName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_get_medical_transcription_job
+transcribeservice_get_medical_transcription_job <- function(MedicalTranscriptionJobName) {
+  op <- new_operation(
+    name = "GetMedicalTranscriptionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$get_medical_transcription_job_input(MedicalTranscriptionJobName = MedicalTranscriptionJobName)
+  output <- .transcribeservice$get_medical_transcription_job_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$get_medical_transcription_job <- transcribeservice_get_medical_transcription_job
+
+#' Retrieve information about a medical vocabulary
+#'
+#' Retrieve information about a medical vocabulary.
+#'
+#' @usage
+#' transcribeservice_get_medical_vocabulary(VocabularyName)
+#'
+#' @param VocabularyName &#91;required&#93; The name of the vocabulary you are trying to get information about. The
+#' value you enter for this request is case-sensitive.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_medical_vocabulary(
+#'   VocabularyName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_get_medical_vocabulary
+transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
+  op <- new_operation(
+    name = "GetMedicalVocabulary",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$get_medical_vocabulary_input(VocabularyName = VocabularyName)
+  output <- .transcribeservice$get_medical_vocabulary_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$get_medical_vocabulary <- transcribeservice_get_medical_vocabulary
+
 #' Returns information about a transcription job
 #'
 #' Returns information about a transcription job. To see the status of the
 #' job, check the `TranscriptionJobStatus` field. If the status is
 #' `COMPLETED`, the job is finished and you can find the results at the
-#' location specified in the `TranscriptionFileUri` field.
+#' location specified in the `TranscriptFileUri` field. If you enable
+#' content redaction, the redacted transcript appears in
+#' `RedactedTranscriptFileUri`.
 #'
 #' @usage
 #' transcribeservice_get_transcription_job(TranscriptionJobName)
@@ -354,6 +574,109 @@ transcribeservice_get_vocabulary_filter <- function(VocabularyFilterName) {
 }
 .transcribeservice$operations$get_vocabulary_filter <- transcribeservice_get_vocabulary_filter
 
+#' Lists medical transcription jobs with a specified status or substring
+#' that matches their names
+#'
+#' Lists medical transcription jobs with a specified status or substring
+#' that matches their names.
+#'
+#' @usage
+#' transcribeservice_list_medical_transcription_jobs(Status,
+#'   JobNameContains, NextToken, MaxResults)
+#'
+#' @param Status When specified, returns only medical transcription jobs with the
+#' specified status. Jobs are ordered by creation date, with the newest
+#' jobs returned first. If you don\'t specify a status, Amazon Transcribe
+#' Medical returns all transcription jobs ordered by creation date.
+#' @param JobNameContains When specified, the jobs returned in the list are limited to jobs whose
+#' name contains the specified string.
+#' @param NextToken If you a receive a truncated result in the previous request of
+#' `ListMedicalTranscriptionJobs`, include `NextToken` to fetch the next
+#' set of jobs.
+#' @param MaxResults The maximum number of medical transcription jobs to return in the
+#' response. IF there are fewer results in the list, this response contains
+#' only the actual results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_medical_transcription_jobs(
+#'   Status = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
+#'   JobNameContains = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_list_medical_transcription_jobs
+transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, JobNameContains = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListMedicalTranscriptionJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$list_medical_transcription_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .transcribeservice$list_medical_transcription_jobs_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$list_medical_transcription_jobs <- transcribeservice_list_medical_transcription_jobs
+
+#' Returns a list of vocabularies that match the specified criteria
+#'
+#' Returns a list of vocabularies that match the specified criteria. You
+#' get the entire list of vocabularies if you don\'t enter a value in any
+#' of the request parameters.
+#'
+#' @usage
+#' transcribeservice_list_medical_vocabularies(NextToken, MaxResults,
+#'   StateEquals, NameContains)
+#'
+#' @param NextToken If the result of your previous request to `ListMedicalVocabularies` was
+#' truncated, include the `NextToken` to fetch the next set of jobs.
+#' @param MaxResults The maximum number of vocabularies to return in the response.
+#' @param StateEquals When specified, only returns vocabularies with the `VocabularyState`
+#' equal to the specified vocabulary state.
+#' @param NameContains Returns vocabularies in the list whose name contains the specified
+#' string. The search is case-insensitive, `ListMedicalVocabularies`
+#' returns both \"vocabularyname\" and \"VocabularyName\" in the response
+#' list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_medical_vocabularies(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   StateEquals = "PENDING"|"READY"|"FAILED",
+#'   NameContains = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_list_medical_vocabularies
+transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxResults = NULL, StateEquals = NULL, NameContains = NULL) {
+  op <- new_operation(
+    name = "ListMedicalVocabularies",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$list_medical_vocabularies_input(NextToken = NextToken, MaxResults = MaxResults, StateEquals = StateEquals, NameContains = NameContains)
+  output <- .transcribeservice$list_medical_vocabularies_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$list_medical_vocabularies <- transcribeservice_list_medical_vocabularies
+
 #' Lists transcription jobs with the specified status
 #'
 #' Lists transcription jobs with the specified status.
@@ -421,8 +744,8 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
 #' field equal to the specified state.
 #' @param NameContains When specified, the vocabularies returned in the list are limited to
 #' vocabularies whose name contains the specified string. The search is
-#' case-insensitive, `ListVocabularies` will return both \"vocabularyname\"
-#' and \"VocabularyName\" in the response list.
+#' case-insensitive, `ListVocabularies` returns both \"vocabularyname\" and
+#' \"VocabularyName\" in the response list.
 #'
 #' @section Request syntax:
 #' ```
@@ -499,6 +822,129 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 }
 .transcribeservice$operations$list_vocabulary_filters <- transcribeservice_list_vocabulary_filters
 
+#' Start a batch job to transcribe medical speech to text
+#'
+#' Start a batch job to transcribe medical speech to text.
+#'
+#' @usage
+#' transcribeservice_start_medical_transcription_job(
+#'   MedicalTranscriptionJobName, LanguageCode, MediaSampleRateHertz,
+#'   MediaFormat, Media, OutputBucketName, OutputEncryptionKMSKeyId,
+#'   Settings, Specialty, Type)
+#'
+#' @param MedicalTranscriptionJobName &#91;required&#93; The name of the medical transcription job. You can\'t use the strings
+#' \".\" or \"..\" by themselves as the job name. The name must also be
+#' unique within an AWS account. If you try to create a medical
+#' transcription job with the same name as a previous medical transcription
+#' job you will receive a `ConflictException` error.
+#' @param LanguageCode &#91;required&#93; The language code for the language spoken in the input media file. US
+#' English (en-US) is the valid value for medical transcription jobs. Any
+#' other value you enter for language code results in a
+#' `BadRequestException` error.
+#' @param MediaSampleRateHertz The sample rate, in Hertz, of the audio track in the input media file.
+#' 
+#' If you do not specify the media sample rate, Amazon Transcribe Medical
+#' determines the sample rate. If you specify the sample rate, it must
+#' match the rate detected by Amazon Transcribe Medical. In most cases, you
+#' should leave the `MediaSampleRateHertz` field blank and let Amazon
+#' Transcribe Medical determine the sample rate.
+#' @param MediaFormat The audio format of the input media file.
+#' @param Media &#91;required&#93; 
+#' @param OutputBucketName &#91;required&#93; The Amazon S3 location where the transcription is stored.
+#' 
+#' You must set `OutputBucketName` for Amazon Transcribe Medical to store
+#' the transcription results. Your transcript appears in the S3 location
+#' you specify. When you call the GetMedicalTranscriptionJob, the operation
+#' returns this location in the `TranscriptFileUri` field. The S3 bucket
+#' must have permissions that allow Amazon Transcribe Medical to put files
+#' in the bucket. For more information, see [Permissions Required for IAM
+#' User
+#' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
+#' 
+#' You can specify an AWS Key Management Service (KMS) key to encrypt the
+#' output of your transcription using the `OutputEncryptionKMSKeyId`
+#' parameter. If you don\'t specify a KMS key, Amazon Transcribe Medical
+#' uses the default Amazon S3 key for server-side encryption of transcripts
+#' that are placed in your S3 bucket.
+#' @param OutputEncryptionKMSKeyId The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS)
+#' key used to encrypt the output of the transcription job. The user
+#' calling the StartMedicalTranscriptionJob operation must have permission
+#' to use the specified KMS key.
+#' 
+#' You use either of the following to identify a KMS key in the current
+#' account:
+#' 
+#' -   KMS Key ID: \"1234abcd-12ab-34cd-56ef-1234567890ab\"
+#' 
+#' -   KMS Key Alias: \"alias/ExampleAlias\"
+#' 
+#' You can use either of the following to identify a KMS key in the current
+#' account or another account:
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS key in the current account or
+#'     another account: \"arn:aws:kms:region:account
+#'     ID:key/1234abcd-12ab-34cd-56ef-1234567890ab\"
+#' 
+#' -   ARN of a KMS Key Alias: \"arn:aws:kms:region:account
+#'     ID:alias/ExampleAlias\"
+#' 
+#' If you don\'t specify an encryption key, the output of the medical
+#' transcription job is encrypted with the default Amazon S3 key (SSE-S3).
+#' 
+#' If you specify a KMS key to encrypt your output, you must also specify
+#' an output location in the `OutputBucketName` parameter.
+#' @param Settings Optional settings for the medical transcription job.
+#' @param Specialty &#91;required&#93; The medical specialty of any clinician speaking in the input media.
+#' @param Type &#91;required&#93; The type of speech in the input audio. `CONVERSATION` refers to
+#' conversations between two or more speakers, e.g., a conversations
+#' between doctors and patients. `DICTATION` refers to single-speaker
+#' dictated speech, e.g., for clinical notes.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_medical_transcription_job(
+#'   MedicalTranscriptionJobName = "string",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA"|"ru-RU"|"zh-CN"|"nl-NL"|"id-ID"|"ta-IN"|"fa-IR"|"en-IE"|"en-AB"|"en-WL"|"pt-PT"|"te-IN"|"tr-TR"|"de-CH"|"he-IL"|"ms-MY"|"ja-JP"|"ar-AE",
+#'   MediaSampleRateHertz = 123,
+#'   MediaFormat = "mp3"|"mp4"|"wav"|"flac",
+#'   Media = list(
+#'     MediaFileUri = "string"
+#'   ),
+#'   OutputBucketName = "string",
+#'   OutputEncryptionKMSKeyId = "string",
+#'   Settings = list(
+#'     ShowSpeakerLabels = TRUE|FALSE,
+#'     MaxSpeakerLabels = 123,
+#'     ChannelIdentification = TRUE|FALSE,
+#'     ShowAlternatives = TRUE|FALSE,
+#'     MaxAlternatives = 123,
+#'     VocabularyName = "string"
+#'   ),
+#'   Specialty = "PRIMARYCARE",
+#'   Type = "CONVERSATION"|"DICTATION"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_start_medical_transcription_job
+transcribeservice_start_medical_transcription_job <- function(MedicalTranscriptionJobName, LanguageCode, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName, OutputEncryptionKMSKeyId = NULL, Settings = NULL, Specialty, Type) {
+  op <- new_operation(
+    name = "StartMedicalTranscriptionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$start_medical_transcription_job_input(MedicalTranscriptionJobName = MedicalTranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, Settings = Settings, Specialty = Specialty, Type = Type)
+  output <- .transcribeservice$start_medical_transcription_job_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$start_medical_transcription_job <- transcribeservice_start_medical_transcription_job
+
 #' Starts an asynchronous job to transcribe speech to text
 #'
 #' Starts an asynchronous job to transcribe speech to text.
@@ -507,11 +953,13 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' transcribeservice_start_transcription_job(TranscriptionJobName,
 #'   LanguageCode, MediaSampleRateHertz, MediaFormat, Media,
 #'   OutputBucketName, OutputEncryptionKMSKeyId, Settings,
-#'   JobExecutionSettings)
+#'   JobExecutionSettings, ContentRedaction)
 #'
 #' @param TranscriptionJobName &#91;required&#93; The name of the job. Note that you can\'t use the strings \".\" or
 #' \"..\" by themselves as the job name. The name must also be unique
-#' within an AWS account.
+#' within an AWS account. If you try to create a transcription job with the
+#' same name as a previous transcription job you will receive a
+#' `ConflictException` error.
 #' @param LanguageCode &#91;required&#93; The language code for the language used in the input media file.
 #' @param MediaSampleRateHertz The sample rate, in Hertz, of the audio track in the input media file.
 #' 
@@ -524,12 +972,16 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' @param Media &#91;required&#93; An object that describes the input media for a transcription job.
 #' @param OutputBucketName The location where the transcription is stored.
 #' 
-#' If you set the `OutputBucketName`, Amazon Transcribe puts the
-#' transcription in the specified S3 bucket. When you call the
-#' GetTranscriptionJob operation, the operation returns this location in
-#' the `TranscriptFileUri` field. The S3 bucket must have permissions that
-#' allow Amazon Transcribe to put files in the bucket. For more
-#' information, see [Permissions Required for IAM User
+#' If you set the `OutputBucketName`, Amazon Transcribe puts the transcript
+#' in the specified S3 bucket. When you call the GetTranscriptionJob
+#' operation, the operation returns this location in the
+#' `TranscriptFileUri` field. If you enable content redaction, the redacted
+#' transcript appears in `RedactedTranscriptFileUri`. If you enable content
+#' redaction and choose to output an unredacted transcript, that
+#' transcript\'s location still appears in the `TranscriptFileUri`. The S3
+#' bucket must have permissions that allow Amazon Transcribe to put files
+#' in the bucket. For more information, see [Permissions Required for IAM
+#' User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 #' 
 #' You can specify an AWS Key Management Service (KMS) key to encrypt the
@@ -575,6 +1027,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' field to indicate that the job can be queued for deferred execution if
 #' the concurrency limit is reached and there are no slots available to
 #' immediately run the job.
+#' @param ContentRedaction An object that contains the request parameters for content redaction.
 #'
 #' @section Request syntax:
 #' ```
@@ -601,6 +1054,10 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #'   JobExecutionSettings = list(
 #'     AllowDeferredExecution = TRUE|FALSE,
 #'     DataAccessRoleArn = "string"
+#'   ),
+#'   ContentRedaction = list(
+#'     RedactionType = "PII",
+#'     RedactionOutput = "redacted"|"redacted_and_unredacted"
 #'   )
 #' )
 #' ```
@@ -608,14 +1065,14 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname transcribeservice_start_transcription_job
-transcribeservice_start_transcription_job <- function(TranscriptionJobName, LanguageCode, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName = NULL, OutputEncryptionKMSKeyId = NULL, Settings = NULL, JobExecutionSettings = NULL) {
+transcribeservice_start_transcription_job <- function(TranscriptionJobName, LanguageCode, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName = NULL, OutputEncryptionKMSKeyId = NULL, Settings = NULL, JobExecutionSettings = NULL, ContentRedaction = NULL) {
   op <- new_operation(
     name = "StartTranscriptionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$start_transcription_job_input(TranscriptionJobName = TranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, Settings = Settings, JobExecutionSettings = JobExecutionSettings)
+  input <- .transcribeservice$start_transcription_job_input(TranscriptionJobName = TranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, Settings = Settings, JobExecutionSettings = JobExecutionSettings, ContentRedaction = ContentRedaction)
   output <- .transcribeservice$start_transcription_job_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -624,6 +1081,69 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
   return(response)
 }
 .transcribeservice$operations$start_transcription_job <- transcribeservice_start_transcription_job
+
+#' Updates an existing vocabulary with new values in a different text file
+#'
+#' Updates an existing vocabulary with new values in a different text file.
+#' The `UpdateMedicalVocabulary` operation overwrites all of the existing
+#' information with the values that you provide in the request.
+#'
+#' @usage
+#' transcribeservice_update_medical_vocabulary(VocabularyName,
+#'   LanguageCode, VocabularyFileUri)
+#'
+#' @param VocabularyName &#91;required&#93; The name of the vocabulary to update. The name is case-sensitive. If you
+#' try to update a vocabulary with the same name as a previous vocabulary
+#' you will receive a `ConflictException` error.
+#' @param LanguageCode &#91;required&#93; The language code of the entries in the updated vocabulary. US English
+#' (en-US) is the only valid language code in Amazon Transcribe Medical.
+#' @param VocabularyFileUri The Amazon S3 location of the text file containing the definition of the
+#' custom vocabulary. The URI must be in the same AWS region as the API
+#' endpoint you are calling. You can see the fields you need to enter for
+#' you Amazon S3 location in the example URI here:
+#' 
+#' ` https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; `
+#' 
+#' For example:
+#' 
+#' `https://s3.us-east-1.amazonaws.com/AWSDOC-EXAMPLE-BUCKET/vocab.txt`
+#' 
+#' For more information about S3 object names, see [Object
+#' Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
+#' in the *Amazon S3 Developer Guide*.
+#' 
+#' For more information about custom vocabularies in Amazon Transcribe
+#' Medical, see [Medical Custom
+#' Vocabularies](http://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_medical_vocabulary(
+#'   VocabularyName = "string",
+#'   LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA"|"ru-RU"|"zh-CN"|"nl-NL"|"id-ID"|"ta-IN"|"fa-IR"|"en-IE"|"en-AB"|"en-WL"|"pt-PT"|"te-IN"|"tr-TR"|"de-CH"|"he-IL"|"ms-MY"|"ja-JP"|"ar-AE",
+#'   VocabularyFileUri = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname transcribeservice_update_medical_vocabulary
+transcribeservice_update_medical_vocabulary <- function(VocabularyName, LanguageCode, VocabularyFileUri = NULL) {
+  op <- new_operation(
+    name = "UpdateMedicalVocabulary",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transcribeservice$update_medical_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, VocabularyFileUri = VocabularyFileUri)
+  output <- .transcribeservice$update_medical_vocabulary_output()
+  config <- get_config()
+  svc <- .transcribeservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transcribeservice$operations$update_medical_vocabulary <- transcribeservice_update_medical_vocabulary
 
 #' Updates an existing vocabulary with new values
 #'
@@ -635,18 +1155,16 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
 #' transcribeservice_update_vocabulary(VocabularyName, LanguageCode,
 #'   Phrases, VocabularyFileUri)
 #'
-#' @param VocabularyName &#91;required&#93; The name of the vocabulary to update. The name is case-sensitive.
+#' @param VocabularyName &#91;required&#93; The name of the vocabulary to update. The name is case-sensitive. If you
+#' try to update a vocabulary with the same name as a previous vocabulary
+#' you will receive a `ConflictException` error.
 #' @param LanguageCode &#91;required&#93; The language code of the vocabulary entries.
 #' @param Phrases An array of strings containing the vocabulary entries.
 #' @param VocabularyFileUri The S3 location of the text file that contains the definition of the
 #' custom vocabulary. The URI must be in the same region as the API
 #' endpoint that you are calling. The general form is
 #' 
-#' ` https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; `
-#' 
 #' For example:
-#' 
-#' `https://s3.us-east-1.amazonaws.com/examplebucket/vocab.txt`
 #' 
 #' For more information about S3 object names, see [Object
 #' Keys](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
@@ -695,7 +1213,9 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' transcribeservice_update_vocabulary_filter(VocabularyFilterName, Words,
 #'   VocabularyFilterFileUri)
 #'
-#' @param VocabularyFilterName &#91;required&#93; The name of the vocabulary filter to update.
+#' @param VocabularyFilterName &#91;required&#93; The name of the vocabulary filter to update. If you try to update a
+#' vocabulary filter with the same name as a previous vocabulary filter you
+#' will receive a `ConflictException` error.
 #' @param Words The words to use in the vocabulary filter. Only use characters from the
 #' character set defined for custom vocabularies. For a list of character
 #' sets, see [Character Sets for Custom

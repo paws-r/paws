@@ -7,7 +7,7 @@
 imagebuilder_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you wish to untag.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to untag.}
 
 \item{tagKeys}{[required] The tag keys to remove from the resource.}
 }

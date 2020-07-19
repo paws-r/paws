@@ -8,7 +8,7 @@ provider, networking, and device configuration details}
 worklink_describe_fleet_metadata(FleetArn)
 }
 \arguments{
-\item{FleetArn}{[required] The ARN of the fleet.}
+\item{FleetArn}{[required] The Amazon Resource Name (ARN) of the fleet.}
 }
 \description{
 Provides basic information for the specified fleet, excluding identity

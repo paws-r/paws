@@ -2,8 +2,8 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_describe_events}
 \alias{docdb_describe_events}
-\title{Returns events related to DB instances, DB security groups, DB
-snapshots, and DB parameter groups for the past 14 days}
+\title{Returns events related to instances, security groups, snapshots, and DB
+parameter groups for the past 14 days}
 \usage{
 docdb_describe_events(SourceIdentifier, SourceType, StartTime, EndTime,
   Duration, EventCategories, Filters, MaxRecords, Marker)
@@ -63,11 +63,11 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
-Returns events related to DB instances, DB security groups, DB
-snapshots, and DB parameter groups for the past 14 days. You can obtain
-events specific to a particular DB instance, DB security group, DB
-snapshot, or DB parameter group by providing the name as a parameter. By
-default, the events of the past hour are returned.
+Returns events related to instances, security groups, snapshots, and DB
+parameter groups for the past 14 days. You can obtain events specific to
+a particular DB instance, security group, snapshot, or parameter group
+by providing the name as a parameter. By default, the events of the past
+hour are returned.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_events(

@@ -69,9 +69,9 @@ Note the following:
 \itemize{
 \item You can\'t create a hosted zone for a top-level domain (TLD) such as
 .com.
-\item For public hosted zones, Amazon Route 53 automatically creates a
-default SOA record and four NS records for the zone. For more
-information about SOA and NS records, see \href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html}{NS and SOA Records that Route 53 Creates for a Hosted Zone}
+\item For public hosted zones, Route 53 automatically creates a default
+SOA record and four NS records for the zone. For more information
+about SOA and NS records, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html}{NS and SOA Records that Route 53 Creates for a Hosted Zone}
 in the \emph{Amazon Route 53 Developer Guide}.
 
 If you want to use the same name servers for multiple public hosted
@@ -80,7 +80,7 @@ the hosted zone. See the \code{DelegationSetId} element.
 \item If your domain is registered with a registrar other than Route 53,
 you must update the name servers with your registrar to make Route
 53 the DNS service for the domain. For more information, see
-\href{http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/MigratingDNS.html}{Migrating DNS Service for an Existing Domain to Amazon Route 53}
+\href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/MigratingDNS.html}{Migrating DNS Service for an Existing Domain to Amazon Route 53}
 in the \emph{Amazon Route 53 Developer Guide}.
 }
 
@@ -94,7 +94,7 @@ changes to \code{INSYNC}.
 \preformatted{svc$create_hosted_zone(
   Name = "string",
   VPC = list(
-    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1",
+    VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
     VPCId = "string"
   ),
   CallerReference = "string",

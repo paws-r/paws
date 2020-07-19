@@ -14,7 +14,10 @@ you want to describe.}
 
 \item{VersionNames}{A list of model version names that you want to describe. You can add up
 to 10 model version names to the list. If you don\'t specify a value,
-all model descriptions are returned.}
+all model descriptions are returned. A version name is part of a model
+(ProjectVersion) ARN. For example, \verb{my-model.2020-01-21T09.10.15} is the
+version name in the following ARN.
+\verb{arn:aws:rekognition:us-east-1:123456789012:project/getting-started/version/<i>my-model.2020-01-21T09.10.15</i>/1234567890123}.}
 
 \item{NextToken}{If the previous response was incomplete (because there is more results
 to retrieve), Amazon Rekognition Custom Labels returns a pagination

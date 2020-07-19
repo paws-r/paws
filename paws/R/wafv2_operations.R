@@ -15,9 +15,10 @@ NULL
 #' the resource. A regional application can be an Application Load Balancer
 #' (ALB) or an API Gateway stage.
 #' 
-#' For AWS CloudFront, you can associate the Web ACL by providing the `Id`
-#' of the WebACL to the CloudFront API call `UpdateDistribution`. For
-#' information, see
+#' For AWS CloudFront, don\'t use this call. Instead, use your CloudFront
+#' distribution configuration. To associate a Web ACL, in the CloudFront
+#' call `UpdateDistribution`, set the web ACL ID to the Amazon Resource
+#' Name (ARN) of the Web ACL. For information, see
 #' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html).
 #'
 #' @usage
@@ -30,14 +31,11 @@ NULL
 #' 
 #' The ARN must be in one of the following formats:
 #' 
-#' -   For a CloudFront distribution:
-#'     `arn:aws:cloudfront::<i>account-id</i>:distribution/<i>distribution-id</i> `
-#' 
 #' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing: <i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i> /<i>load-balancer-id</i> `
+#'     `arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i>/<i>load-balancer-id</i> `
 #' 
 #' -   For an Amazon API Gateway stage:
-#'     `arn:aws:apigateway:<i>region</i> ::/restapis/<i>api-id</i>/stages/<i>stage-name</i> `
+#'     `arn:aws:apigateway:<i>region</i>::/restapis/<i>api-id</i>/stages/<i>stage-name</i> `
 #'
 #' @section Request syntax:
 #' ```
@@ -98,7 +96,7 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -205,6 +203,10 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'         GeoMatchStatement = list(
 #'           CountryCodes = list(
 #'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'           ),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
 #'           )
 #'         ),
 #'         RuleGroupReferenceStatement = list(
@@ -216,7 +218,12 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'           )
 #'         ),
 #'         IPSetReferenceStatement = list(
-#'           ARN = "string"
+#'           ARN = "string",
+#'           IPSetForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH",
+#'             Position = "FIRST"|"LAST"|"ANY"
+#'           )
 #'         ),
 #'         RegexPatternSetReferenceStatement = list(
 #'           ARN = "string",
@@ -242,8 +249,12 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'         ),
 #'         RateBasedStatement = list(
 #'           Limit = 123,
-#'           AggregateKeyType = "IP",
-#'           ScopeDownStatement = list()
+#'           AggregateKeyType = "IP"|"FORWARDED_IP",
+#'           ScopeDownStatement = list(),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
+#'           )
 #'         ),
 #'         AndStatement = list(
 #'           Statements = list(
@@ -325,8 +336,8 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #' wafv2_create_ip_set(Name, Scope, Description, IPAddressVersion,
 #'   Addresses, Tags)
 #'
-#' @param Name &#91;required&#93; A friendly name of the IP set. You cannot change the name of an `IPSet`
-#' after you create it.
+#' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
+#' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -334,12 +345,12 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Description A friendly description of the IP set. You cannot change the description
-#' of an IP set after you create it.
+#' @param Description A description of the IP set that helps with identification. You cannot
+#' change the description of an IP set after you create it.
 #' @param IPAddressVersion &#91;required&#93; Specify IPV4 or IPV6.
 #' @param Addresses &#91;required&#93; Contains an array of strings that specify one or more IP addresses or
 #' blocks of IP addresses in Classless Inter-Domain Routing (CIDR)
@@ -417,14 +428,16 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #' resources from the prior release, see the [AWS WAF Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #' 
-#' Creates a RegexPatternSet per the specifications provided.
+#' Creates a RegexPatternSet, which you reference in a
+#' RegexPatternSetReferenceStatement, to have AWS WAF inspect a web request
+#' component for the specified patterns.
 #'
 #' @usage
 #' wafv2_create_regex_pattern_set(Name, Scope, Description,
 #'   RegularExpressionList, Tags)
 #'
-#' @param Name &#91;required&#93; A friendly name of the set. You cannot change the name after you create
-#' the set.
+#' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
+#' set.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -432,12 +445,12 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Description A friendly description of the set. You cannot change the description of
-#' a set after you create it.
+#' @param Description A description of the set that helps with identification. You cannot
+#' change the description of a set after you create it.
 #' @param RegularExpressionList &#91;required&#93; Array of regular expression strings.
 #' @param Tags An array of key:value pairs to associate with the resource.
 #'
@@ -501,8 +514,8 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' wafv2_create_rule_group(Name, Scope, Capacity, Description, Rules,
 #'   VisibilityConfig, Tags)
 #'
-#' @param Name &#91;required&#93; A friendly name of the rule group. You cannot change the name of a rule
-#' group after you create it.
+#' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
+#' after you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -510,7 +523,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -529,8 +542,8 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' group capacity is fixed at creation, which helps users plan their web
 #' ACL WCU usage when they use a rule group. The WCU limit for web ACLs is
 #' 1,500.
-#' @param Description A friendly description of the rule group. You cannot change the
-#' description of a rule group after you create it.
+#' @param Description A description of the rule group that helps with identification. You
+#' cannot change the description of a rule group after you create it.
 #' @param Rules The Rule statements used to identify the web requests that you want to
 #' allow, block, or count. Each rule includes one top-level statement that
 #' AWS WAF uses to identify matching web requests, and parameters that
@@ -642,6 +655,10 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'         GeoMatchStatement = list(
 #'           CountryCodes = list(
 #'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'           ),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
 #'           )
 #'         ),
 #'         RuleGroupReferenceStatement = list(
@@ -653,7 +670,12 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'           )
 #'         ),
 #'         IPSetReferenceStatement = list(
-#'           ARN = "string"
+#'           ARN = "string",
+#'           IPSetForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH",
+#'             Position = "FIRST"|"LAST"|"ANY"
+#'           )
 #'         ),
 #'         RegexPatternSetReferenceStatement = list(
 #'           ARN = "string",
@@ -679,8 +701,12 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'         ),
 #'         RateBasedStatement = list(
 #'           Limit = 123,
-#'           AggregateKeyType = "IP",
-#'           ScopeDownStatement = list()
+#'           AggregateKeyType = "IP"|"FORWARDED_IP",
+#'           ScopeDownStatement = list(),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
+#'           )
 #'         ),
 #'         AndStatement = list(
 #'           Statements = list(
@@ -779,8 +805,8 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' wafv2_create_web_acl(Name, Scope, DefaultAction, Description, Rules,
 #'   VisibilityConfig, Tags)
 #'
-#' @param Name &#91;required&#93; A friendly name of the Web ACL. You cannot change the name of a Web ACL
-#' after you create it.
+#' @param Name &#91;required&#93; The name of the Web ACL. You cannot change the name of a Web ACL after
+#' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -788,14 +814,14 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param DefaultAction &#91;required&#93; The action to perform if none of the `Rules` contained in the `WebACL`
 #' match.
-#' @param Description A friendly description of the Web ACL. You cannot change the description
-#' of a Web ACL after you create it.
+#' @param Description A description of the Web ACL that helps with identification. You cannot
+#' change the description of a Web ACL after you create it.
 #' @param Rules The Rule statements used to identify the web requests that you want to
 #' allow, block, or count. Each rule includes one top-level statement that
 #' AWS WAF uses to identify matching web requests, and parameters that
@@ -910,6 +936,10 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'         GeoMatchStatement = list(
 #'           CountryCodes = list(
 #'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'           ),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
 #'           )
 #'         ),
 #'         RuleGroupReferenceStatement = list(
@@ -921,7 +951,12 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'           )
 #'         ),
 #'         IPSetReferenceStatement = list(
-#'           ARN = "string"
+#'           ARN = "string",
+#'           IPSetForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH",
+#'             Position = "FIRST"|"LAST"|"ANY"
+#'           )
 #'         ),
 #'         RegexPatternSetReferenceStatement = list(
 #'           ARN = "string",
@@ -947,8 +982,12 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'         ),
 #'         RateBasedStatement = list(
 #'           Limit = 123,
-#'           AggregateKeyType = "IP",
-#'           ScopeDownStatement = list()
+#'           AggregateKeyType = "IP"|"FORWARDED_IP",
+#'           ScopeDownStatement = list(),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
+#'           )
 #'         ),
 #'         AndStatement = list(
 #'           Statements = list(
@@ -1023,6 +1062,56 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
 }
 .wafv2$operations$create_web_acl <- wafv2_create_web_acl
 
+#' Deletes all rule groups that are managed by AWS Firewall Manager for the
+#' specified web ACL
+#'
+#' Deletes all rule groups that are managed by AWS Firewall Manager for the
+#' specified web ACL.
+#' 
+#' You can only use this if `ManagedByFirewallManager` is false in the
+#' specified WebACL.
+#'
+#' @usage
+#' wafv2_delete_firewall_manager_rule_groups(WebACLArn, WebACLLockToken)
+#'
+#' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL.
+#' @param WebACLLockToken &#91;required&#93; A token used for optimistic locking. AWS WAF returns a token to your get
+#' and list requests, to mark the state of the entity at the time of the
+#' request. To make changes to the entity associated with the token, you
+#' provide the token to operations like update and delete. AWS WAF uses the
+#' token to ensure that no changes have been made to the entity since you
+#' last retrieved it. If a change has been made, the update fails with a
+#' `WAFOptimisticLockException`. If this happens, perform another get, and
+#' use the new token returned by that operation.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_firewall_manager_rule_groups(
+#'   WebACLArn = "string",
+#'   WebACLLockToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_delete_firewall_manager_rule_groups
+wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken) {
+  op <- new_operation(
+    name = "DeleteFirewallManagerRuleGroups",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$delete_firewall_manager_rule_groups_input(WebACLArn = WebACLArn, WebACLLockToken = WebACLLockToken)
+  output <- .wafv2$delete_firewall_manager_rule_groups_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$delete_firewall_manager_rule_groups <- wafv2_delete_firewall_manager_rule_groups
+
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
@@ -1036,8 +1125,8 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
 #' @usage
 #' wafv2_delete_ip_set(Name, Scope, Id, LockToken)
 #'
-#' @param Name &#91;required&#93; A friendly name of the IP set. You cannot change the name of an `IPSet`
-#' after you create it.
+#' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
+#' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -1045,7 +1134,7 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -1134,6 +1223,47 @@ wafv2_delete_logging_configuration <- function(ResourceArn) {
 }
 .wafv2$operations$delete_logging_configuration <- wafv2_delete_logging_configuration
 
+#' Permanently deletes an IAM policy from the specified rule group
+#'
+#' Permanently deletes an IAM policy from the specified rule group.
+#' 
+#' You must be the owner of the rule group to perform this operation.
+#'
+#' @usage
+#' wafv2_delete_permission_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule group from which you want to
+#' delete the policy.
+#' 
+#' You must be the owner of the rule group to perform this operation.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_permission_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_delete_permission_policy
+wafv2_delete_permission_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeletePermissionPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$delete_permission_policy_input(ResourceArn = ResourceArn)
+  output <- .wafv2$delete_permission_policy_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$delete_permission_policy <- wafv2_delete_permission_policy
+
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
@@ -1147,8 +1277,8 @@ wafv2_delete_logging_configuration <- function(ResourceArn) {
 #' @usage
 #' wafv2_delete_regex_pattern_set(Name, Scope, Id, LockToken)
 #'
-#' @param Name &#91;required&#93; A friendly name of the set. You cannot change the name after you create
-#' the set.
+#' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
+#' set.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -1156,7 +1286,7 @@ wafv2_delete_logging_configuration <- function(ResourceArn) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -1215,8 +1345,8 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 #' @usage
 #' wafv2_delete_rule_group(Name, Scope, Id, LockToken)
 #'
-#' @param Name &#91;required&#93; A friendly name of the rule group. You cannot change the name of a rule
-#' group after you create it.
+#' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
+#' after you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -1224,7 +1354,7 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -1279,12 +1409,15 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #' 
 #' Deletes the specified WebACL.
+#' 
+#' You can only use this if `ManagedByFirewallManager` is false in the
+#' specified WebACL.
 #'
 #' @usage
 #' wafv2_delete_web_acl(Name, Scope, Id, LockToken)
 #'
-#' @param Name &#91;required&#93; A friendly name of the Web ACL. You cannot change the name of a Web ACL
-#' after you create it.
+#' @param Name &#91;required&#93; The name of the Web ACL. You cannot change the name of a Web ACL after
+#' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -1292,7 +1425,7 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -1363,7 +1496,7 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -1409,9 +1542,10 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope) {
 #' application can be an Application Load Balancer (ALB) or an API Gateway
 #' stage.
 #' 
-#' For AWS CloudFront, you can disassociate the Web ACL by providing an
-#' empty `WebACLId` in the CloudFront API call `UpdateDistribution`. For
-#' information, see
+#' For AWS CloudFront, don\'t use this call. Instead, use your CloudFront
+#' distribution configuration. To disassociate a Web ACL, provide an empty
+#' web ACL ID in the CloudFront call `UpdateDistribution`. For information,
+#' see
 #' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html).
 #'
 #' @usage
@@ -1422,14 +1556,11 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope) {
 #' 
 #' The ARN must be in one of the following formats:
 #' 
-#' -   For a CloudFront distribution:
-#'     `arn:aws:cloudfront::<i>account-id</i>:distribution/<i>distribution-id</i> `
-#' 
 #' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing: <i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i> /<i>load-balancer-id</i> `
+#'     `arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i>/<i>load-balancer-id</i> `
 #' 
 #' -   For an Amazon API Gateway stage:
-#'     `arn:aws:apigateway:<i>region</i> ::/restapis/<i>api-id</i>/stages/<i>stage-name</i> `
+#'     `arn:aws:apigateway:<i>region</i>::/restapis/<i>api-id</i>/stages/<i>stage-name</i> `
 #'
 #' @section Request syntax:
 #' ```
@@ -1471,8 +1602,8 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
 #' @usage
 #' wafv2_get_ip_set(Name, Scope, Id)
 #'
-#' @param Name &#91;required&#93; A friendly name of the IP set. You cannot change the name of an `IPSet`
-#' after you create it.
+#' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
+#' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -1480,7 +1611,7 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -1560,6 +1691,45 @@ wafv2_get_logging_configuration <- function(ResourceArn) {
 }
 .wafv2$operations$get_logging_configuration <- wafv2_get_logging_configuration
 
+#' Returns the IAM policy that is attached to the specified rule group
+#'
+#' Returns the IAM policy that is attached to the specified rule group.
+#' 
+#' You must be the owner of the rule group to perform this operation.
+#'
+#' @usage
+#' wafv2_get_permission_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule group for which you want to
+#' get the policy.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_permission_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_get_permission_policy
+wafv2_get_permission_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetPermissionPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$get_permission_policy_input(ResourceArn = ResourceArn)
+  output <- .wafv2$get_permission_policy_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$get_permission_policy <- wafv2_get_permission_policy
+
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
@@ -1584,12 +1754,12 @@ wafv2_get_logging_configuration <- function(ResourceArn) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param WebACLName &#91;required&#93; A friendly name of the Web ACL. You cannot change the name of a Web ACL
-#' after you create it.
+#' @param WebACLName &#91;required&#93; The name of the Web ACL. You cannot change the name of a Web ACL after
+#' you create it.
 #' @param WebACLId &#91;required&#93; The unique identifier for the Web ACL. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
@@ -1638,8 +1808,8 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 #' @usage
 #' wafv2_get_regex_pattern_set(Name, Scope, Id)
 #'
-#' @param Name &#91;required&#93; A friendly name of the set. You cannot change the name after you create
-#' the set.
+#' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
+#' set.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -1647,7 +1817,7 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -1697,8 +1867,8 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #' @usage
 #' wafv2_get_rule_group(Name, Scope, Id)
 #'
-#' @param Name &#91;required&#93; A friendly name of the rule group. You cannot change the name of a rule
-#' group after you create it.
+#' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
+#' after you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -1706,7 +1876,7 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -1779,14 +1949,16 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param TimeWindow &#91;required&#93; The start date and time and the end date and time of the range for which
-#' you want `GetSampledRequests` to return a sample of requests. Specify
-#' the date and time in the following format: `"2016-09-27T14:50Z"`. You
-#' can specify any time range in the previous three hours.
+#' you want `GetSampledRequests` to return a sample of requests. You must
+#' specify the times in Coordinated Universal Time (UTC) format. UTC format
+#' includes the special designator, `Z`. For example,
+#' `"2016-09-27T14:50Z"`. You can specify any time range in the previous
+#' three hours.
 #' @param MaxItems &#91;required&#93; The number of requests that you want AWS WAF to return from among the
 #' first 5,000 requests that your AWS resource received during the time
 #' range. If your resource received fewer requests than the value of
@@ -1843,8 +2015,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #' @usage
 #' wafv2_get_web_acl(Name, Scope, Id)
 #'
-#' @param Name &#91;required&#93; A friendly name of the Web ACL. You cannot change the name of a Web ACL
-#' after you create it.
+#' @param Name &#91;required&#93; The name of the Web ACL. You cannot change the name of a Web ACL after
+#' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -1852,7 +2024,7 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -1940,7 +2112,7 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #' 
 #' Retrieves an array of managed rule groups that are available for you to
-#' use. This list includes all AWS managed rule groups and the AWS
+#' use. This list includes all AWS Managed Rules rule groups and the AWS
 #' Marketplace managed rule groups that you\'re subscribed to.
 #'
 #' @usage
@@ -1953,7 +2125,7 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -2017,7 +2189,7 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -2080,7 +2252,7 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -2144,7 +2316,7 @@ wafv2_list_logging_configurations <- function(Scope = NULL, NextMarker = NULL, L
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -2257,7 +2429,7 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -2308,7 +2480,16 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' resources from the prior release, see the [AWS WAF Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #' 
-#' Retrieves the TagInfoForResource for the specified resource.
+#' Retrieves the TagInfoForResource for the specified resource. Tags are
+#' key:value pairs that you can use to categorize and manage your
+#' resources, for purposes like billing. For example, you might set the tag
+#' key to \"customer\" and the value to the customer name or ID. You can
+#' specify one or more tags to add to each AWS resource, up to 50 tags for
+#' a resource.
+#' 
+#' You can tag the AWS resources that you manage through AWS WAF: web ACLs,
+#' rule groups, IP sets, and regex pattern sets. You can\'t manage or view
+#' tags through the AWS WAF console.
 #'
 #' @usage
 #' wafv2_list_tags_for_resource(NextMarker, Limit, ResourceARN)
@@ -2374,7 +2555,7 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -2433,9 +2614,12 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' 
 #' 1.  Create an Amazon Kinesis Data Firehose.
 #' 
-#'     Create the data firehose with a PUT source and in the region that
+#'     Create the data firehose with a PUT source and in the Region that
 #'     you are operating. If you are capturing logs for Amazon CloudFront,
 #'     always create the firehose in US East (N. Virginia).
+#' 
+#'     Give the data firehose a name that starts with the prefix
+#'     `aws-waf-logs-`. For example, `aws-waf-logs-us-east-2-analytics`.
 #' 
 #'     Do not create the data firehose using a `Kinesis stream` as your
 #'     source.
@@ -2502,6 +2686,77 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 }
 .wafv2$operations$put_logging_configuration <- wafv2_put_logging_configuration
 
+#' Attaches an IAM policy to the specified resource
+#'
+#' Attaches an IAM policy to the specified resource. Use this to share a
+#' rule group across accounts.
+#' 
+#' You must be the owner of the rule group to perform this operation.
+#' 
+#' This action is subject to the following restrictions:
+#' 
+#' -   You can attach only one policy with each `PutPermissionPolicy`
+#'     request.
+#' 
+#' -   The ARN in the request must be a valid WAF RuleGroup ARN and the
+#'     rule group must exist in the same region.
+#' 
+#' -   The user making the request must be the owner of the rule group.
+#'
+#' @usage
+#' wafv2_put_permission_policy(ResourceArn, Policy)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup to which you want to
+#' attach the policy.
+#' @param Policy &#91;required&#93; The policy to attach to the specified rule group.
+#' 
+#' The policy specifications must conform to the following:
+#' 
+#' -   The policy must be composed using IAM Policy version 2012-10-17 or
+#'     version 2015-01-01.
+#' 
+#' -   The policy must include specifications for `Effect`, `Action`, and
+#'     `Principal`.
+#' 
+#' -   `Effect` must specify `Allow`.
+#' 
+#' -   `Action` must specify `wafv2:CreateWebACL`, `wafv2:UpdateWebACL`,
+#'     and `wafv2:PutFirewallManagerRuleGroups`. AWS WAF rejects any extra
+#'     actions or wildcard actions in the policy.
+#' 
+#' -   The policy must not include a `Resource` parameter.
+#' 
+#' For more information, see [IAM
+#' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_permission_policy(
+#'   ResourceArn = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_put_permission_policy
+wafv2_put_permission_policy <- function(ResourceArn, Policy) {
+  op <- new_operation(
+    name = "PutPermissionPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$put_permission_policy_input(ResourceArn = ResourceArn, Policy = Policy)
+  output <- .wafv2$put_permission_policy_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$put_permission_policy <- wafv2_put_permission_policy
+
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
@@ -2511,10 +2766,15 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #' 
 #' Associates tags with the specified AWS resource. Tags are key:value
-#' pairs that you can associate with AWS resources. For example, the tag
-#' key might be \"customer\" and the tag value might be \"companyA.\" You
-#' can specify one or more tags to add to each container. You can add up to
-#' 50 tags to each AWS resource.
+#' pairs that you can use to categorize and manage your resources, for
+#' purposes like billing. For example, you might set the tag key to
+#' \"customer\" and the value to the customer name or ID. You can specify
+#' one or more tags to add to each AWS resource, up to 50 tags for a
+#' resource.
+#' 
+#' You can tag the AWS resources that you manage through AWS WAF: web ACLs,
+#' rule groups, IP sets, and regex pattern sets. You can\'t manage or view
+#' tags through the AWS WAF console.
 #'
 #' @usage
 #' wafv2_tag_resource(ResourceARN, Tags)
@@ -2618,8 +2878,8 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' @usage
 #' wafv2_update_ip_set(Name, Scope, Id, Description, Addresses, LockToken)
 #'
-#' @param Name &#91;required&#93; A friendly name of the IP set. You cannot change the name of an `IPSet`
-#' after you create it.
+#' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
+#' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -2627,15 +2887,15 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
-#' @param Description A friendly description of the IP set. You cannot change the description
-#' of an IP set after you create it.
+#' @param Description A description of the IP set that helps with identification. You cannot
+#' change the description of an IP set after you create it.
 #' @param Addresses &#91;required&#93; Contains an array of strings that specify one or more IP addresses or
 #' blocks of IP addresses in Classless Inter-Domain Routing (CIDR)
 #' notation. AWS WAF supports all address ranges for IP versions IPv4 and
@@ -2720,8 +2980,8 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #' wafv2_update_regex_pattern_set(Name, Scope, Id, Description,
 #'   RegularExpressionList, LockToken)
 #'
-#' @param Name &#91;required&#93; A friendly name of the set. You cannot change the name after you create
-#' the set.
+#' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
+#' set.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -2729,15 +2989,15 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
-#' @param Description A friendly description of the set. You cannot change the description of
-#' a set after you create it.
+#' @param Description A description of the set that helps with identification. You cannot
+#' change the description of a set after you create it.
 #' @param RegularExpressionList &#91;required&#93; 
 #' @param LockToken &#91;required&#93; A token used for optimistic locking. AWS WAF returns a token to your get
 #' and list requests, to mark the state of the entity at the time of the
@@ -2804,8 +3064,8 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' wafv2_update_rule_group(Name, Scope, Id, Description, Rules,
 #'   VisibilityConfig, LockToken)
 #'
-#' @param Name &#91;required&#93; A friendly name of the rule group. You cannot change the name of a rule
-#' group after you create it.
+#' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
+#' after you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -2813,15 +3073,15 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the rule group. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
-#' @param Description A friendly description of the rule group. You cannot change the
-#' description of a rule group after you create it.
+#' @param Description A description of the rule group that helps with identification. You
+#' cannot change the description of a rule group after you create it.
 #' @param Rules The Rule statements used to identify the web requests that you want to
 #' allow, block, or count. Each rule includes one top-level statement that
 #' AWS WAF uses to identify matching web requests, and parameters that
@@ -2940,6 +3200,10 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'         GeoMatchStatement = list(
 #'           CountryCodes = list(
 #'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'           ),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
 #'           )
 #'         ),
 #'         RuleGroupReferenceStatement = list(
@@ -2951,7 +3215,12 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'           )
 #'         ),
 #'         IPSetReferenceStatement = list(
-#'           ARN = "string"
+#'           ARN = "string",
+#'           IPSetForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH",
+#'             Position = "FIRST"|"LAST"|"ANY"
+#'           )
 #'         ),
 #'         RegexPatternSetReferenceStatement = list(
 #'           ARN = "string",
@@ -2977,8 +3246,12 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'         ),
 #'         RateBasedStatement = list(
 #'           Limit = 123,
-#'           AggregateKeyType = "IP",
-#'           ScopeDownStatement = list()
+#'           AggregateKeyType = "IP"|"FORWARDED_IP",
+#'           ScopeDownStatement = list(),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
+#'           )
 #'         ),
 #'         AndStatement = list(
 #'           Statements = list(
@@ -3072,8 +3345,8 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' wafv2_update_web_acl(Name, Scope, Id, DefaultAction, Description, Rules,
 #'   VisibilityConfig, LockToken)
 #'
-#' @param Name &#91;required&#93; A friendly name of the Web ACL. You cannot change the name of a Web ACL
-#' after you create it.
+#' @param Name &#91;required&#93; The name of the Web ACL. You cannot change the name of a Web ACL after
+#' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB) or an API Gateway stage.
@@ -3081,7 +3354,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the region when you use the CloudFront scope:
+#' -   CLI - Specify the Region when you use the CloudFront scope:
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
@@ -3090,8 +3363,8 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' update and delete.
 #' @param DefaultAction &#91;required&#93; The action to perform if none of the `Rules` contained in the `WebACL`
 #' match.
-#' @param Description A friendly description of the Web ACL. You cannot change the description
-#' of a Web ACL after you create it.
+#' @param Description A description of the Web ACL that helps with identification. You cannot
+#' change the description of a Web ACL after you create it.
 #' @param Rules The Rule statements used to identify the web requests that you want to
 #' allow, block, or count. Each rule includes one top-level statement that
 #' AWS WAF uses to identify matching web requests, and parameters that
@@ -3214,6 +3487,10 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'         GeoMatchStatement = list(
 #'           CountryCodes = list(
 #'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'           ),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
 #'           )
 #'         ),
 #'         RuleGroupReferenceStatement = list(
@@ -3225,7 +3502,12 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'           )
 #'         ),
 #'         IPSetReferenceStatement = list(
-#'           ARN = "string"
+#'           ARN = "string",
+#'           IPSetForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH",
+#'             Position = "FIRST"|"LAST"|"ANY"
+#'           )
 #'         ),
 #'         RegexPatternSetReferenceStatement = list(
 #'           ARN = "string",
@@ -3251,8 +3533,12 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'         ),
 #'         RateBasedStatement = list(
 #'           Limit = 123,
-#'           AggregateKeyType = "IP",
-#'           ScopeDownStatement = list()
+#'           AggregateKeyType = "IP"|"FORWARDED_IP",
+#'           ScopeDownStatement = list(),
+#'           ForwardedIPConfig = list(
+#'             HeaderName = "string",
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
+#'           )
 #'         ),
 #'         AndStatement = list(
 #'           Statements = list(

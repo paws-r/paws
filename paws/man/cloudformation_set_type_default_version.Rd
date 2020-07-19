@@ -10,13 +10,15 @@ cloudformation_set_type_default_version(Arn, Type, TypeName, VersionId)
 \item{Arn}{The Amazon Resource Name (ARN) of the type for which you want version
 summary information.
 
-Conditional: You must specify \code{TypeName} or \code{Arn}.}
+Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
-\item{Type}{The kind of type.}
+\item{Type}{The kind of type.
+
+Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
 \item{TypeName}{The name of the type.
 
-Conditional: You must specify \code{TypeName} or \code{Arn}.}
+Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
 \item{VersionId}{The ID of a specific version of the type. The version ID is the value at
 the end of the Amazon Resource Name (ARN) assigned to the type version

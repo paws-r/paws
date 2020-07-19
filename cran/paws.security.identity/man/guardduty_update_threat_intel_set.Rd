@@ -2,7 +2,7 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_update_threat_intel_set}
 \alias{guardduty_update_threat_intel_set}
-\title{Updates the ThreatIntelSet specified by ThreatIntelSet ID}
+\title{Updates the ThreatIntelSet specified by the ThreatIntelSet ID}
 \usage{
 guardduty_update_threat_intel_set(DetectorId, ThreatIntelSetId, Name,
   Location, Activate)
@@ -16,13 +16,13 @@ you want to update.}
 \item{Name}{The unique ID that specifies the ThreatIntelSet that you want to update.}
 
 \item{Location}{The updated URI of the file that contains the ThreateIntelSet. For
-example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key)}
+example: https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.}
 
-\item{Activate}{The updated boolean value that specifies whether the ThreateIntelSet is
+\item{Activate}{The updated Boolean value that specifies whether the ThreateIntelSet is
 active or not.}
 }
 \description{
-Updates the ThreatIntelSet specified by ThreatIntelSet ID.
+Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
 }
 \section{Request syntax}{
 \preformatted{svc$update_threat_intel_set(

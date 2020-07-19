@@ -74,6 +74,10 @@ test_that("describe_events", {
   expect_error(svc$describe_events(), NA)
 })
 
+test_that("describe_export_tasks", {
+  expect_error(svc$describe_export_tasks(), NA)
+})
+
 test_that("describe_global_clusters", {
   expect_error(svc$describe_global_clusters(), NA)
 })

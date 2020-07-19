@@ -10,15 +10,17 @@ cloudformation_deregister_type(Arn, Type, TypeName, VersionId)
 \arguments{
 \item{Arn}{The Amazon Resource Name (ARN) of the type.
 
-Conditional: You must specify \code{TypeName} or \code{Arn}.}
+Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
 \item{Type}{The kind of type.
 
-Currently the only valid value is \code{RESOURCE}.}
+Currently the only valid value is \code{RESOURCE}.
+
+Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
 \item{TypeName}{The name of the type.
 
-Conditional: You must specify \code{TypeName} or \code{Arn}.}
+Conditional: You must specify either \code{TypeName} and \code{Type}, or \code{Arn}.}
 
 \item{VersionId}{The ID of a specific version of the type. The version ID is the value at
 the end of the Amazon Resource Name (ARN) assigned to the type version

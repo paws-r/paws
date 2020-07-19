@@ -26,6 +26,10 @@ test_that("list_event_trackers", {
   expect_error(svc$list_event_trackers(), NA)
 })
 
+test_that("list_filters", {
+  expect_error(svc$list_filters(), NA)
+})
+
 test_that("list_recipes", {
   expect_error(svc$list_recipes(), NA)
 })

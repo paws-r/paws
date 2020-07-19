@@ -49,4 +49,14 @@ event source mappings for a single event source.
 }
 }
 
+\examples{
+\dontrun{
+# The following example returns a list of the event source mappings for a
+# function named my-function.
+svc$list_event_source_mappings(
+  FunctionName = "my-function"
+)
+}
+
+}
 \keyword{internal}

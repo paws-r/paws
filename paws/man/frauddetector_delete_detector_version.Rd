@@ -12,7 +12,8 @@ frauddetector_delete_detector_version(detectorId, detectorVersionId)
 \item{detectorVersionId}{[required] The ID of the detector version to delete.}
 }
 \description{
-Deletes the detector version.
+Deletes the detector version. You cannot delete detector versions that
+are in \code{ACTIVE} status.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_detector_version(

@@ -27,12 +27,10 @@ must have the \code{iam:PassRole} permission.}
 \item{Tags}{An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.}
 
-\item{VpcConfig}{A
-\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html}{VpcConfig}
-object that specifies the VPC that you want your model to connect to.
-Control access to and from your model container by configuring the VPC.
-\code{VpcConfig} is used in hosting services and in batch transform. For more
-information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html}{Protect Endpoints by Using an Amazon Virtual Private Cloud}
+\item{VpcConfig}{A VpcConfig object that specifies the VPC that you want your model to
+connect to. Control access to and from your model container by
+configuring the VPC. \code{VpcConfig} is used in hosting services and in
+batch transform. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html}{Protect Endpoints by Using an Amazon Virtual Private Cloud}
 and \href{https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html}{Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private Cloud}.}
 
 \item{EnableNetworkIsolation}{Isolates the model container. No inbound or outbound network calls can
@@ -41,9 +39,9 @@ be made to or from the model container.}
 \description{
 Creates a model in Amazon SageMaker. In the request, you name the model
 and describe a primary container. For the primary container, you specify
-the docker image containing inference code, artifacts (from prior
-training), and custom environment map that the inference code uses when
-you deploy the model for predictions.
+the Docker image that contains inference code, artifacts (from prior
+training), and a custom environment map that the inference code uses
+when you deploy the model for predictions.
 }
 \details{
 Use this API to create a model if you want to use Amazon SageMaker
@@ -53,6 +51,9 @@ To host your model, you create an endpoint configuration with the
 \code{CreateEndpointConfig} API, and then create an endpoint with the
 \code{CreateEndpoint} API. Amazon SageMaker then deploys all of the
 containers that you defined for the model in the hosting environment.
+
+For an example that calls this method when deploying a model to Amazon
+SageMaker hosting services, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto}{Deploy the Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).}
 
 To run a batch transform using your model, you start a job with the
 \code{CreateTransformJob} API. Amazon SageMaker uses your model and your

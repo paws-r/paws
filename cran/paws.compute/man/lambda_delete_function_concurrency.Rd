@@ -30,4 +30,14 @@ Removes a concurrent execution limit from a function.
 }
 }
 
+\examples{
+\dontrun{
+# The following example deletes the reserved concurrent execution limit
+# from a function named my-function.
+svc$delete_function_concurrency(
+  FunctionName = "my-function"
+)
+}
+
+}
 \keyword{internal}

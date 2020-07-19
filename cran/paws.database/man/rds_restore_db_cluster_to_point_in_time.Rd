@@ -9,7 +9,8 @@ rds_restore_db_cluster_to_point_in_time(DBClusterIdentifier,
   UseLatestRestorableTime, Port, DBSubnetGroupName, OptionGroupName,
   VpcSecurityGroupIds, Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
   BacktrackWindow, EnableCloudwatchLogsExports,
-  DBClusterParameterGroupName, DeletionProtection, CopyTagsToSnapshot)
+  DBClusterParameterGroupName, DeletionProtection, CopyTagsToSnapshot,
+  Domain, DomainIAMRoleName)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the new DB cluster to be created.
@@ -124,6 +125,8 @@ in the \emph{Amazon Aurora User Guide.}}
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
 
+Currently, Backtrack is only supported for Aurora MySQL DB clusters.
+
 Default: 0
 
 Constraints:
@@ -157,6 +160,17 @@ enabled. By default, deletion protection is disabled.}
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
 cluster to snapshots of the restored DB cluster. The default is not to
 copy them.}
+
+\item{Domain}{Specify the Active Directory directory ID to restore the DB cluster in.
+The domain must be created prior to this operation.
+
+For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
+Authentication to authenticate users that connect to the DB cluster. For
+more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/kerberos-authentication.html}{Kerberos Authentication}
+in the \emph{Amazon Aurora User Guide}.}
+
+\item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
+Directory Service.}
 }
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore
@@ -208,7 +222,9 @@ This action only applies to Aurora DB clusters.
   ),
   DBClusterParameterGroupName = "string",
   DeletionProtection = TRUE|FALSE,
-  CopyTagsToSnapshot = TRUE|FALSE
+  CopyTagsToSnapshot = TRUE|FALSE,
+  Domain = "string",
+  DomainIAMRoleName = "string"
 )
 }
 }

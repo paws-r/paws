@@ -74,7 +74,7 @@ mediapackage <- function(config = list()) {
 
 .mediapackage$metadata <- list(
   service_name = "mediapackage",
-  endpoints = list("*" = list(endpoint = "mediapackage.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mediapackage.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "mediapackage.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mediapackage.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "mediapackage.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "mediapackage.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "MediaPackage",
   api_version = "2017-10-12",
   signing_name = "mediapackage",

@@ -4,9 +4,7 @@
 \alias{gamelift_describe_ec2_instance_limits}
 \title{Retrieves the following information for the specified EC2 instance type:
 \itemize{
-\item maximum number of instances allowed per AWS account (service limit) -
-current usage level for the AWS account Service limits vary depending on
-Region
+\item Maximum number of instances allowed per AWS account (service limit)
 }}
 \usage{
 gamelift_describe_ec2_instance_limits(EC2InstanceType)
@@ -24,45 +22,25 @@ Retrieves the following information for the specified EC2 instance type:
 }
 \details{
 \itemize{
-\item maximum number of instances allowed per AWS account (service limit)
-\item current usage level for the AWS account
+\item Maximum number of instances allowed per AWS account (service limit).
+\item Current usage for the AWS account.
 }
 
-Service limits vary depending on Region. Available Regions for Amazon
-GameLift can be found in the AWS Management Console for Amazon GameLift
-(see the drop-down list in the upper right corner).
+To learn more about the capabilities of each instance type, see \href{http://aws.amazon.com/ec2/instance-types/}{Amazon EC2 Instance Types}. Note
+that the instance types offered may vary depending on the region.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
 
 \strong{Related operations}
 \itemize{
 \item CreateFleet
 \item ListFleets
 \item DeleteFleet
-\item Describe fleets:
-\itemize{
 \item DescribeFleetAttributes
-\item DescribeFleetCapacity
-\item DescribeFleetPortSettings
-\item DescribeFleetUtilization
-\item DescribeRuntimeConfiguration
-\item DescribeEC2InstanceLimits
-\item DescribeFleetEvents
-}
-\item Update fleets:
-\itemize{
 \item UpdateFleetAttributes
-\item UpdateFleetCapacity
-\item UpdateFleetPortSettings
-\item UpdateRuntimeConfiguration
-}
-\item Manage fleet actions:
-\itemize{
-\item StartFleetActions
-\item StopFleetActions
-}
+\item StartFleetActions or StopFleetActions
 }
 }
 \section{Request syntax}{

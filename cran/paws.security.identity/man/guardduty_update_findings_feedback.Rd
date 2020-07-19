@@ -11,7 +11,7 @@ guardduty_update_findings_feedback(DetectorId, FindingIds, Feedback,
 \item{DetectorId}{[required] The ID of the detector associated with the findings to update feedback
 for.}
 
-\item{FindingIds}{[required] IDs of the findings that you want to mark as useful or not useful.}
+\item{FindingIds}{[required] The IDs of the findings that you want to mark as useful or not useful.}
 
 \item{Feedback}{[required] The feedback for the finding.}
 

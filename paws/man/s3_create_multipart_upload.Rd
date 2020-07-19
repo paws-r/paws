@@ -238,18 +238,35 @@ permission. To grant permissions explicitly, use:
 You specify each grantee as a type=value pair, where the type is one
 of the following:
 \itemize{
-\item \code{emailAddress} -- if the value specified is the email address of
-an AWS account
 \item \code{id} -- if the value specified is the canonical user ID of an
 AWS account
 \item \code{uri} -- if you are granting permissions to a predefined group
+\item \code{emailAddress} -- if the value specified is the email address of
+an AWS account
+
+Using email addresses to specify a grantee is only supported in
+the following AWS Regions:
+\itemize{
+\item US East (N. Virginia)
+\item US West (N. California)
+\item US West (Oregon)
+\item Asia Pacific (Singapore)
+\item Asia Pacific (Sydney)
+\item Asia Pacific (Tokyo)
+\item Europe (Ireland)
+\item South America (SÃ£o Paulo)
+}
+
+For a list of all the Amazon S3 supported Regions and endpoints,
+see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region}{Regions and Endpoints}
+in the AWS General Reference.
 }
 
 For example, the following \code{x-amz-grant-read} header grants the AWS
-accounts identified by email addresses permissions to read object
-data and its metadata:
+accounts identified by account IDs permissions to read object data
+and its metadata:
 
-\verb{x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" }
+\verb{x-amz-grant-read: id="11112222333", id="444455556666" }
 }
 
 The following operations are related to \code{CreateMultipartUpload}:

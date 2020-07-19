@@ -9,9 +9,9 @@ organizations_tag_resource(ResourceId, Tags)
 \arguments{
 \item{ResourceId}{[required] The ID of the resource to add a tag to.}
 
-\item{Tags}{[required] The tag to add to the specified resource. Specifying the tag key is
-required. You can set the value of a tag to an empty string, but you
-can\'t set the value of a tag to null.}
+\item{Tags}{[required] The tag to add to the specified resource. You must specify both a tag
+key and value. You can set the value of a tag to an empty string, but
+you can\'t set it to null.}
 }
 \description{
 Adds one or more tags to the specified resource.

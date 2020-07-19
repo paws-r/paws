@@ -12,7 +12,7 @@ mediaconnect_add_flow_outputs(FlowArn, Outputs)
 \item{Outputs}{[required] A list of outputs that you want to add.}
 }
 \description{
-Adds outputs to an existing flow. You can create up to 20 outputs per flow.
+Adds outputs to an existing flow. You can create up to 50 outputs per flow.
 }
 \section{Request syntax}{
 \preformatted{svc$add_flow_outputs(
@@ -41,7 +41,10 @@ Adds outputs to an existing flow. You can create up to 20 outputs per flow.
       Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
       RemoteId = "string",
       SmoothingLatency = 123,
-      StreamId = "string"
+      StreamId = "string",
+      VpcInterfaceAttachment = list(
+        VpcInterfaceName = "string"
+      )
     )
   )
 )

@@ -2,15 +2,15 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_list_tags_for_resource}
 \alias{amplify_list_tags_for_resource}
-\title{List tags for resource}
+\title{Returns a list of tags for a specified Amazon Resource Name (ARN)}
 \usage{
 amplify_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] Resource arn used to list tags.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) to use to list tags.}
 }
 \description{
-List tags for resource.
+Returns a list of tags for a specified Amazon Resource Name (ARN).
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

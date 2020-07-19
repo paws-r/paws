@@ -43,7 +43,9 @@ If no grouping is specified, a summary of metrics for all queues is
 returned.}
 
 \item{HistoricalMetrics}{[required] The metrics to retrieve. Specify the name, unit, and statistic for each
-metric. The following historical metrics are available:
+metric. The following historical metrics are available. For a
+description of each metric, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html}{Historical Metrics Definitions}
+in the \emph{Amazon Connect Administrator Guide}.
 \subsection{ABANDON\\_TIME}{
 
 Unit: SECONDS

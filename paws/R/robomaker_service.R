@@ -43,6 +43,7 @@ NULL
 #'  \link[=robomaker_batch_describe_simulation_job]{batch_describe_simulation_job} \tab Describes one or more simulation jobs \cr
 #'  \link[=robomaker_cancel_deployment_job]{cancel_deployment_job} \tab Cancels the specified deployment job \cr
 #'  \link[=robomaker_cancel_simulation_job]{cancel_simulation_job} \tab Cancels the specified simulation job \cr
+#'  \link[=robomaker_cancel_simulation_job_batch]{cancel_simulation_job_batch} \tab Cancels a simulation job batch \cr
 #'  \link[=robomaker_create_deployment_job]{create_deployment_job} \tab Deploys a specific version of a robot application to robots in a fleet \cr
 #'  \link[=robomaker_create_fleet]{create_fleet} \tab Creates a fleet, a logical group of robots running the same robot application\cr
 #'  \link[=robomaker_create_robot]{create_robot} \tab Creates a robot \cr
@@ -62,15 +63,18 @@ NULL
 #'  \link[=robomaker_describe_robot_application]{describe_robot_application} \tab Describes a robot application \cr
 #'  \link[=robomaker_describe_simulation_application]{describe_simulation_application} \tab Describes a simulation application \cr
 #'  \link[=robomaker_describe_simulation_job]{describe_simulation_job} \tab Describes a simulation job \cr
+#'  \link[=robomaker_describe_simulation_job_batch]{describe_simulation_job_batch} \tab Describes a simulation job batch \cr
 #'  \link[=robomaker_list_deployment_jobs]{list_deployment_jobs} \tab Returns a list of deployment jobs for a fleet \cr
 #'  \link[=robomaker_list_fleets]{list_fleets} \tab Returns a list of fleets \cr
 #'  \link[=robomaker_list_robot_applications]{list_robot_applications} \tab Returns a list of robot application \cr
 #'  \link[=robomaker_list_robots]{list_robots} \tab Returns a list of robots \cr
 #'  \link[=robomaker_list_simulation_applications]{list_simulation_applications} \tab Returns a list of simulation applications \cr
+#'  \link[=robomaker_list_simulation_job_batches]{list_simulation_job_batches} \tab Returns a list simulation job batches \cr
 #'  \link[=robomaker_list_simulation_jobs]{list_simulation_jobs} \tab Returns a list of simulation jobs \cr
 #'  \link[=robomaker_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on a AWS RoboMaker resource \cr
 #'  \link[=robomaker_register_robot]{register_robot} \tab Registers a robot with a fleet \cr
 #'  \link[=robomaker_restart_simulation_job]{restart_simulation_job} \tab Restarts a running simulation job \cr
+#'  \link[=robomaker_start_simulation_job_batch]{start_simulation_job_batch} \tab Starts a new simulation job batch \cr
 #'  \link[=robomaker_sync_deployment_job]{sync_deployment_job} \tab Syncrhonizes robots in a fleet to the latest deployment \cr
 #'  \link[=robomaker_tag_resource]{tag_resource} \tab Adds or edits tags for a AWS RoboMaker resource \cr
 #'  \link[=robomaker_untag_resource]{untag_resource} \tab Removes the specified tags from the specified AWS RoboMaker resource \cr
@@ -93,7 +97,7 @@ robomaker <- function(config = list()) {
 
 .robomaker$metadata <- list(
   service_name = "robomaker",
-  endpoints = list("*" = list(endpoint = "robomaker.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "robomaker.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "robomaker.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "robomaker.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "robomaker.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "robomaker.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "RoboMaker",
   api_version = "2018-06-29",
   signing_name = "robomaker",

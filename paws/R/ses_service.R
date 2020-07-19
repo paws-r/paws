@@ -140,7 +140,7 @@ ses <- function(config = list()) {
 
 .ses$metadata <- list(
   service_name = "email",
-  endpoints = list("*" = list(endpoint = "email.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "email.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "email.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "email.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "email.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "email.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SES",
   api_version = "2010-12-01",
   signing_name = "ses",

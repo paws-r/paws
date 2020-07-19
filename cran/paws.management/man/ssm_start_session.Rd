@@ -11,9 +11,10 @@ ssm_start_session(Target, DocumentName, Parameters)
 \item{Target}{[required] The instance to connect to for the session.}
 
 \item{DocumentName}{The name of the SSM document to define the parameters and plugin
-settings for the session. For example, \code{SSM-SessionManagerRunShell}. If
-no document name is provided, a shell to the instance is launched by
-default.}
+settings for the session. For example, \code{SSM-SessionManagerRunShell}. You
+can call the GetDocument API to verify the document exists before
+attempting to start a session. If no document name is provided, a shell
+to the instance is launched by default.}
 
 \item{Parameters}{Reserved for future use.}
 }
@@ -25,7 +26,7 @@ open a WebSocket connection for sending input and receiving outputs.
 \details{
 AWS CLI usage: \code{start-session} is an interactive command that requires
 the Session Manager plugin to be installed on the client machine making
-the call. For information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html}{Install the Session Manager Plugin for the AWS CLI}
+the call. For information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html}{Install the Session Manager plugin for the AWS CLI}
 in the \emph{AWS Systems Manager User Guide}.
 
 AWS Tools for PowerShell usage: Start-SSMSession is not currently

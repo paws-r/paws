@@ -367,13 +367,13 @@ signer_list_tags_for_resource <- function(resourceArn) {
 #' @param profileName &#91;required&#93; The name of the signing profile to be created.
 #' @param signingMaterial &#91;required&#93; The AWS Certificate Manager certificate that will be used to sign code
 #' with the new signing profile.
-#' @param platformId &#91;required&#93; The ID of the signing profile to be created.
+#' @param platformId &#91;required&#93; The ID of the signing platform to be created.
 #' @param overrides A subfield of `platform`. This specifies any different configuration
 #' options that you want to apply to the chosen platform (such as a
 #' different `hash-algorithm` or `signing-algorithm`).
 #' @param signingParameters Map of key-value pairs for signing. These can include any information
 #' that you want to use during signing.
-#' @param tags Tags to be associated with the signing profile being created.
+#' @param tags Tags to be associated with the signing profile that is being created.
 #'
 #' @section Request syntax:
 #' ```
@@ -387,7 +387,8 @@ signer_list_tags_for_resource <- function(resourceArn) {
 #'     signingConfiguration = list(
 #'       encryptionAlgorithm = "RSA"|"ECDSA",
 #'       hashAlgorithm = "SHA1"|"SHA256"
-#'     )
+#'     ),
+#'     signingImageFormat = "JSON"|"JSONEmbedded"|"JSONDetached"
 #'   ),
 #'   signingParameters = list(
 #'     "string"
@@ -503,14 +504,13 @@ signer_start_signing_job <- function(source, destination, profileName = NULL, cl
 #'
 #' Adds one or more tags to a signing profile. Tags are labels that you can
 #' use to identify and organize your AWS resources. Each tag consists of a
-#' key and an optional value. You specify the signing profile using its
-#' Amazon Resource Name (ARN). You specify the tag by using a key-value
-#' pair.
+#' key and an optional value. To specify the signing profile, use its
+#' Amazon Resource Name (ARN). To specify the tag, use a key-value pair.
 #'
 #' @usage
 #' signer_tag_resource(resourceArn, tags)
 #'
-#' @param resourceArn &#91;required&#93; Amazon Resource Name (ARN) for the signing profile.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the signing profile.
 #' @param tags &#91;required&#93; One or more tags to be associated with the signing profile.
 #'
 #' @section Request syntax:
@@ -543,16 +543,16 @@ signer_tag_resource <- function(resourceArn, tags) {
 }
 .signer$operations$tag_resource <- signer_tag_resource
 
-#' Remove one or more tags from a signing profile
+#' Removes one or more tags from a signing profile
 #'
-#' Remove one or more tags from a signing profile. Specify a list of tag
-#' keys to remove the tags.
+#' Removes one or more tags from a signing profile. To remove the tags,
+#' specify a list of tag keys.
 #'
 #' @usage
 #' signer_untag_resource(resourceArn, tagKeys)
 #'
-#' @param resourceArn &#91;required&#93; Amazon Resource Name (ARN) for the signing profile .
-#' @param tagKeys &#91;required&#93; A list of tag keys to be removed from the signing profile .
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the signing profile.
+#' @param tagKeys &#91;required&#93; A list of tag keys to be removed from the signing profile.
 #'
 #' @section Request syntax:
 #' ```

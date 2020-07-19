@@ -26,6 +26,10 @@ test_that("list_available_solution_stacks", {
   expect_error(svc$list_available_solution_stacks(), NA)
 })
 
+test_that("list_platform_branches", {
+  expect_error(svc$list_platform_branches(), NA)
+})
+
 test_that("list_platform_versions", {
   expect_error(svc$list_platform_versions(), NA)
 })

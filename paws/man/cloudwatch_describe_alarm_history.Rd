@@ -4,11 +4,15 @@
 \alias{cloudwatch_describe_alarm_history}
 \title{Retrieves the history for the specified alarm}
 \usage{
-cloudwatch_describe_alarm_history(AlarmName, HistoryItemType, StartDate,
-  EndDate, MaxRecords, NextToken)
+cloudwatch_describe_alarm_history(AlarmName, AlarmTypes,
+  HistoryItemType, StartDate, EndDate, MaxRecords, NextToken, ScanBy)
 }
 \arguments{
 \item{AlarmName}{The name of the alarm.}
+
+\item{AlarmTypes}{Use this parameter to specify whether you want the operation to return
+metric alarms or composite alarms. If you omit this parameter, only
+metric alarms are returned.}
 
 \item{HistoryItemType}{The type of alarm histories to retrieve.}
 
@@ -20,11 +24,17 @@ cloudwatch_describe_alarm_history(AlarmName, HistoryItemType, StartDate,
 
 \item{NextToken}{The token returned by a previous call to indicate that there is more
 data available.}
+
+\item{ScanBy}{Specified whether to return the newest or oldest alarm history first.
+Specify \code{TimestampDescending} to have the newest event history returned
+first, and specify \code{TimestampAscending} to have the oldest history
+returned first.}
 }
 \description{
 Retrieves the history for the specified alarm. You can filter the
 results by date range or item type. If an alarm name is not specified,
-the histories for all alarms are returned.
+the histories for either all metric alarms or all composite alarms are
+returned.
 }
 \details{
 CloudWatch retains the history of an alarm even if you delete the alarm.
@@ -32,6 +42,9 @@ CloudWatch retains the history of an alarm even if you delete the alarm.
 \section{Request syntax}{
 \preformatted{svc$describe_alarm_history(
   AlarmName = "string",
+  AlarmTypes = list(
+    "CompositeAlarm"|"MetricAlarm"
+  ),
   HistoryItemType = "ConfigurationUpdate"|"StateUpdate"|"Action",
   StartDate = as.POSIXct(
     "2015-01-01"
@@ -40,7 +53,8 @@ CloudWatch retains the history of an alarm even if you delete the alarm.
     "2015-01-01"
   ),
   MaxRecords = 123,
-  NextToken = "string"
+  NextToken = "string",
+  ScanBy = "TimestampDescending"|"TimestampAscending"
 )
 }
 }

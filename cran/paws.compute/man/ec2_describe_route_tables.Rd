@@ -56,7 +56,6 @@ the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
-\item \code{transit-gateway-id} - The ID of a transit gateway.
 \item \code{vpc-id} - The ID of the VPC for the route table.
 }}
 

@@ -8,8 +8,8 @@ of AWS account IDs}
 guardduty_create_members(DetectorId, AccountDetails)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account with which you
-want to associate member accounts.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account that you want to
+associate member accounts with.}
 
 \item{AccountDetails}{[required] A list of account ID and email address pairs of the accounts that you
 want to associate with the master GuardDuty account.}

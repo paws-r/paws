@@ -38,8 +38,8 @@ any Auto Scaling group names.}
 \item{serviceRoleArn}{A replacement ARN for the service role, if you want to change it.}
 
 \item{triggerConfigurations}{Information about triggers to change when the deployment group is
-updated. For examples, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html}{Modify Triggers in an AWS CodeDeploy Deployment Group}
-in the AWS CodeDeploy User Guide.}
+updated. For examples, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html}{Edit a Trigger in a CodeDeploy Deployment Group}
+in the \emph{AWS CodeDeploy User Guide}.}
 
 \item{alarmConfiguration}{Information to add or change about Amazon CloudWatch alarms when the
 deployment group is updated.}

@@ -2,24 +2,27 @@
 % Please edit documentation in R/iotdataplane_operations.R
 \name{iotdataplane_delete_thing_shadow}
 \alias{iotdataplane_delete_thing_shadow}
-\title{Deletes the thing shadow for the specified thing}
+\title{Deletes the shadow for the specified thing}
 \usage{
-iotdataplane_delete_thing_shadow(thingName)
+iotdataplane_delete_thing_shadow(thingName, shadowName)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing.}
+
+\item{shadowName}{The name of the shadow.}
 }
 \description{
-Deletes the thing shadow for the specified thing.
+Deletes the shadow for the specified thing.
 }
 \details{
 For more information, see
 \href{http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html}{DeleteThingShadow}
-in the \emph{AWS IoT Developer Guide}.
+in the AWS IoT Developer Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_thing_shadow(
-  thingName = "string"
+  thingName = "string",
+  shadowName = "string"
 )
 }
 }

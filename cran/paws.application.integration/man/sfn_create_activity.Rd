@@ -18,7 +18,10 @@ A name must \emph{not} contain:
 \item wildcard characters \verb{? *}
 \item special characters \verb{\\" # \% \\\\ ^ | ~ \\` $ &amp; , ; : /}
 \item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
-}}
+}
+
+To enable logging with CloudWatch Logs, the name should only contain
+0-9, A-Z, a-z, - and \\_.}
 
 \item{tags}{The list of tags to add to a resource.
 

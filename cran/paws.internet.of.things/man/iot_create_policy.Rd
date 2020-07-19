@@ -4,7 +4,7 @@
 \alias{iot_create_policy}
 \title{Creates an AWS IoT policy}
 \usage{
-iot_create_policy(policyName, policyDocument)
+iot_create_policy(policyName, policyDocument, tags)
 }
 \arguments{
 \item{policyName}{[required] The policy name.}
@@ -12,6 +12,16 @@ iot_create_policy(policyName, policyDocument)
 \item{policyDocument}{[required] The JSON document that describes the policy. \strong{policyDocument} must
 have a minimum length of 1, with a maximum length of 2048, excluding
 whitespace.}
+
+\item{tags}{Metadata which can be used to manage the policy.
+
+For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+
+For the CLI command-line parameter use format: &&tags
+\"key1=value1&key2=value2\\...\"
+
+For the cli-input-json file use format: \"tags\":
+\"key1=value1&key2=value2\\...\"}
 }
 \description{
 Creates an AWS IoT policy.
@@ -24,7 +34,13 @@ creates a policy version with a version identifier of \strong{1} and sets
 \section{Request syntax}{
 \preformatted{svc$create_policy(
   policyName = "string",
-  policyDocument = "string"
+  policyDocument = "string",
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

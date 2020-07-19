@@ -11,7 +11,8 @@ Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
 }
 \details{
 The \code{GroupStandbyInstances} metric is not returned by default. You must
-explicitly request this metric when calling EnableMetricsCollection.
+explicitly request this metric when calling the EnableMetricsCollection
+API.
 }
 \examples{
 \dontrun{

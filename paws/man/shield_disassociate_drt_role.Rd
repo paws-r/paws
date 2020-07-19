@@ -2,12 +2,12 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_disassociate_drt_role}
 \alias{shield_disassociate_drt_role}
-\title{Removes the DDoS Response team's (DRT) access to your AWS account}
+\title{Removes the DDoS Response Team's (DRT) access to your AWS account}
 \usage{
 shield_disassociate_drt_role()
 }
 \description{
-Removes the DDoS Response team\'s (DRT) access to your AWS account.
+Removes the DDoS Response Team\'s (DRT) access to your AWS account.
 }
 \details{
 To make a \code{DisassociateDRTRole} request, you must be subscribed to the

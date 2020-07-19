@@ -2,21 +2,18 @@
 % Please edit documentation in R/athena_operations.R
 \name{athena_untag_resource}
 \alias{athena_untag_resource}
-\title{Removes one or more tags from the workgroup resource}
+\title{Removes one or more tags from a data catalog or workgroup resource}
 \usage{
 athena_untag_resource(ResourceARN, TagKeys)
 }
 \arguments{
-\item{ResourceARN}{[required] Removes one or more tags from the workgroup resource for the specified
-ARN.}
+\item{ResourceARN}{[required] Specifies the ARN of the resource from which tags are to be removed.}
 
-\item{TagKeys}{[required] Removes the tags associated with one or more tag keys from the workgroup
-resource.}
+\item{TagKeys}{[required] A comma-separated list of one or more tag keys whose tags are to be
+removed from the specified resource.}
 }
 \description{
-Removes one or more tags from the workgroup resource. Takes as an input
-a list of TagKey Strings separated by commas, and removes their tags at
-the same time.
+Removes one or more tags from a data catalog or workgroup resource.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

@@ -43,9 +43,9 @@ non-frontal or obscured faces, the algorithm might not detect the faces
 or might detect faces with lower confidence.
 
 You pass the input image either as base64-encoded image bytes or as a
-reference to an image in an Amazon S3 bucket. If you use the to call
-Amazon Rekognition operations, passing image bytes is not supported. The
-image must be either a PNG or JPEG formatted file.
+reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
+call Amazon Rekognition operations, passing image bytes is not
+supported. The image must be either a PNG or JPEG formatted file.
 
 This is a stateless API operation. That is, the operation does not
 persist any data.

@@ -52,7 +52,7 @@ Creates a new trigger.
         JobName = "string",
         State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
         CrawlerName = "string",
-        CrawlState = "RUNNING"|"SUCCEEDED"|"CANCELLED"|"FAILED"
+        CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
       )
     )
   ),

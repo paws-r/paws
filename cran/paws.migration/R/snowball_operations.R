@@ -183,7 +183,7 @@ snowball_create_address <- function(Address) {
 #' @usage
 #' snowball_create_cluster(JobType, Resources, Description, AddressId,
 #'   KmsKeyARN, RoleARN, SnowballType, ShippingOption, Notification,
-#'   ForwardingAddressId)
+#'   ForwardingAddressId, TaxDocuments)
 #'
 #' @param JobType &#91;required&#93; The type of job for this cluster. Currently, the only job type supported
 #' for clusters is `LOCAL_USE`.
@@ -201,12 +201,29 @@ snowball_create_address <- function(Address) {
 #' values are created by using the
 #' [CreateRole](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
 #' API action in AWS Identity and Access Management (IAM).
-#' @param SnowballType The type of AWS Snowball device to use for this cluster. Currently, the
-#' only supported device type for cluster jobs is `EDGE`.
+#' @param SnowballType The type of AWS Snowball device to use for this cluster.
+#' 
+#' For cluster jobs, AWS Snowball currently supports only the `EDGE` device
+#' type.
 #' @param ShippingOption &#91;required&#93; The shipping speed for each node in this cluster. This speed doesn\'t
 #' dictate how soon you\'ll get each Snowball Edge device, rather it
 #' represents how quickly each device moves to its destination while in
 #' transit. Regional shipping speeds are as follows:
+#' 
+#' -   In Australia, you have access to express shipping. Typically,
+#'     Snowballs shipped express are delivered in about a day.
+#' 
+#' -   In the European Union (EU), you have access to express shipping.
+#'     Typically, Snowballs shipped express are delivered in about a day.
+#'     In addition, most countries in the EU have access to standard
+#'     shipping, which typically takes less than a week, one way.
+#' 
+#' -   In India, Snowballs are delivered in one to seven days.
+#' 
+#' -   In the United States of America (US), you have access to one-day
+#'     shipping and two-day shipping.
+#' 
+#' <!-- -->
 #' 
 #' -   In Australia, you have access to express shipping. Typically,
 #'     devices shipped express are delivered in about a day.
@@ -223,6 +240,7 @@ snowball_create_address <- function(Address) {
 #' settings for this cluster.
 #' @param ForwardingAddressId The forwarding address ID for a cluster. This field is not supported in
 #' most regions.
+#' @param TaxDocuments The tax documents required in your AWS Region.
 #'
 #' @section Request syntax:
 #' ```
@@ -259,7 +277,7 @@ snowball_create_address <- function(Address) {
 #'   AddressId = "string",
 #'   KmsKeyARN = "string",
 #'   RoleARN = "string",
-#'   SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG",
+#'   SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
 #'   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
 #'   Notification = list(
 #'     SnsTopicARN = "string",
@@ -268,7 +286,12 @@ snowball_create_address <- function(Address) {
 #'     ),
 #'     NotifyAll = TRUE|FALSE
 #'   ),
-#'   ForwardingAddressId = "string"
+#'   ForwardingAddressId = "string",
+#'   TaxDocuments = list(
+#'     IND = list(
+#'       GSTIN = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -308,14 +331,14 @@ snowball_create_address <- function(Address) {
 #' @keywords internal
 #'
 #' @rdname snowball_create_cluster
-snowball_create_cluster <- function(JobType, Resources, Description = NULL, AddressId, KmsKeyARN = NULL, RoleARN, SnowballType = NULL, ShippingOption, Notification = NULL, ForwardingAddressId = NULL) {
+snowball_create_cluster <- function(JobType, Resources, Description = NULL, AddressId, KmsKeyARN = NULL, RoleARN, SnowballType = NULL, ShippingOption, Notification = NULL, ForwardingAddressId = NULL, TaxDocuments = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .snowball$create_cluster_input(JobType = JobType, Resources = Resources, Description = Description, AddressId = AddressId, KmsKeyARN = KmsKeyARN, RoleARN = RoleARN, SnowballType = SnowballType, ShippingOption = ShippingOption, Notification = Notification, ForwardingAddressId = ForwardingAddressId)
+  input <- .snowball$create_cluster_input(JobType = JobType, Resources = Resources, Description = Description, AddressId = AddressId, KmsKeyARN = KmsKeyARN, RoleARN = RoleARN, SnowballType = SnowballType, ShippingOption = ShippingOption, Notification = Notification, ForwardingAddressId = ForwardingAddressId, TaxDocuments = TaxDocuments)
   output <- .snowball$create_cluster_output()
   config <- get_config()
   svc <- .snowball$service(config)
@@ -338,7 +361,8 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' @usage
 #' snowball_create_job(JobType, Resources, Description, AddressId,
 #'   KmsKeyARN, RoleARN, SnowballCapacityPreference, ShippingOption,
-#'   Notification, ClusterId, SnowballType, ForwardingAddressId)
+#'   Notification, ClusterId, SnowballType, ForwardingAddressId,
+#'   TaxDocuments, DeviceConfiguration)
 #'
 #' @param JobType Defines the type of job that you\'re creating.
 #' @param Resources Defines the Amazon S3 buckets associated with this job.
@@ -387,10 +411,21 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' @param ClusterId The ID of a cluster. If you\'re creating a job for a node in a cluster,
 #' you need to provide only this `clusterId` value. The other job
 #' attributes are inherited from the cluster.
-#' @param SnowballType The type of AWS Snowball device to use for this job. Currently, the only
+#' @param SnowballType The type of AWS Snowball device to use for this job.
+#' 
+#' For cluster jobs, AWS Snowball currently supports only the `EDGE` device
+#' type.
+#' 
+#' The type of AWS Snowball device to use for this job. Currently, the only
 #' supported device type for cluster jobs is `EDGE`.
+#' 
+#' For more information, see [Snowball Edge Device
+#' Options](https://docs.aws.amazon.com/snowball/latest/developer-guide/device-differences.html)
+#' in the Snowball Edge Developer Guide.
 #' @param ForwardingAddressId The forwarding address ID for a job. This field is not supported in most
 #' regions.
+#' @param TaxDocuments The tax documents required in your AWS Region.
+#' @param DeviceConfiguration Defines the device configuration for an AWS Snowcone job.
 #'
 #' @section Request syntax:
 #' ```
@@ -427,7 +462,7 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #'   AddressId = "string",
 #'   KmsKeyARN = "string",
 #'   RoleARN = "string",
-#'   SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"NoPreference",
+#'   SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
 #'   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
 #'   Notification = list(
 #'     SnsTopicARN = "string",
@@ -437,8 +472,20 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #'     NotifyAll = TRUE|FALSE
 #'   ),
 #'   ClusterId = "string",
-#'   SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG",
-#'   ForwardingAddressId = "string"
+#'   SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+#'   ForwardingAddressId = "string",
+#'   TaxDocuments = list(
+#'     IND = list(
+#'       GSTIN = "string"
+#'     )
+#'   ),
+#'   DeviceConfiguration = list(
+#'     SnowconeDeviceConfiguration = list(
+#'       WirelessConnection = list(
+#'         IsWifiEnabled = TRUE|FALSE
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -482,14 +529,14 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' @keywords internal
 #'
 #' @rdname snowball_create_job
-snowball_create_job <- function(JobType = NULL, Resources = NULL, Description = NULL, AddressId = NULL, KmsKeyARN = NULL, RoleARN = NULL, SnowballCapacityPreference = NULL, ShippingOption = NULL, Notification = NULL, ClusterId = NULL, SnowballType = NULL, ForwardingAddressId = NULL) {
+snowball_create_job <- function(JobType = NULL, Resources = NULL, Description = NULL, AddressId = NULL, KmsKeyARN = NULL, RoleARN = NULL, SnowballCapacityPreference = NULL, ShippingOption = NULL, Notification = NULL, ClusterId = NULL, SnowballType = NULL, ForwardingAddressId = NULL, TaxDocuments = NULL, DeviceConfiguration = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .snowball$create_job_input(JobType = JobType, Resources = Resources, Description = Description, AddressId = AddressId, KmsKeyARN = KmsKeyARN, RoleARN = RoleARN, SnowballCapacityPreference = SnowballCapacityPreference, ShippingOption = ShippingOption, Notification = Notification, ClusterId = ClusterId, SnowballType = SnowballType, ForwardingAddressId = ForwardingAddressId)
+  input <- .snowball$create_job_input(JobType = JobType, Resources = Resources, Description = Description, AddressId = AddressId, KmsKeyARN = KmsKeyARN, RoleARN = RoleARN, SnowballCapacityPreference = SnowballCapacityPreference, ShippingOption = ShippingOption, Notification = Notification, ClusterId = ClusterId, SnowballType = SnowballType, ForwardingAddressId = ForwardingAddressId, TaxDocuments = TaxDocuments, DeviceConfiguration = DeviceConfiguration)
   output <- .snowball$create_job_output()
   config <- get_config()
   svc <- .snowball$service(config)
@@ -1317,7 +1364,7 @@ snowball_update_cluster <- function(ClusterId, RoleARN = NULL, Description = NUL
 #'   AddressId = "string",
 #'   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
 #'   Description = "string",
-#'   SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"NoPreference",
+#'   SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
 #'   ForwardingAddressId = "string"
 #' )
 #' ```

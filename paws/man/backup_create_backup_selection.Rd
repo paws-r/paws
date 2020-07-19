@@ -13,12 +13,7 @@ backup_create_backup_selection(BackupPlanId, BackupSelection,
 of resources.}
 
 \item{BackupSelection}{[required] Specifies the body of a request to assign a set of resources to a backup
-plan.
-
-It includes an array of resources, an optional array of patterns to
-exclude resources, an optional role to provide access to the AWS service
-the resource belongs to, and an optional array of tags used to identify
-a set of resources.}
+plan.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and allows failed requests
 to be retried without the risk of executing the operation twice.}
@@ -36,12 +31,12 @@ For example, consider the following patterns:
 
 \code{ConditionValue:"finance"}
 
-\code{ConditionType:"StringEquals"}
+\code{ConditionType:"STRINGEQUALS"}
 \item \code{ConditionKey:"importance"}
 
 \code{ConditionValue:"critical"}
 
-\code{ConditionType:"StringEquals"}
+\code{ConditionType:"STRINGEQUALS"}
 }
 
 Using these patterns would back up all Amazon Elastic Block Store

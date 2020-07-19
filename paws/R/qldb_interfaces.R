@@ -3,6 +3,18 @@
 #' @include qldb_service.R
 NULL
 
+.qldb$cancel_journal_kinesis_stream_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LedgerName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), StreamId = structure(logical(0), tags = list(location = "uri", locationName = "streamId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.qldb$cancel_journal_kinesis_stream_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StreamId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .qldb$create_ledger_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), PermissionsMode = structure(logical(0), tags = list(type = "string")), DeletionProtection = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
@@ -23,6 +35,18 @@ NULL
 
 .qldb$delete_ledger_output <- function(...) {
   list()
+}
+
+.qldb$describe_journal_kinesis_stream_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LedgerName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), StreamId = structure(logical(0), tags = list(location = "uri", locationName = "streamId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.qldb$describe_journal_kinesis_stream_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Stream = structure(list(LedgerName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), InclusiveStartTime = structure(logical(0), tags = list(type = "timestamp")), ExclusiveEndTime = structure(logical(0), tags = list(type = "timestamp")), RoleArn = structure(logical(0), tags = list(type = "string")), StreamId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), KinesisConfiguration = structure(list(StreamArn = structure(logical(0), tags = list(type = "string")), AggregationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ErrorCause = structure(logical(0), tags = list(type = "string")), StreamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .qldb$describe_journal_s3_export_input <- function(...) {
@@ -97,6 +121,18 @@ NULL
   return(populate(args, shape))
 }
 
+.qldb$list_journal_kinesis_streams_for_ledger_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LedgerName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max_results", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next_token", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.qldb$list_journal_kinesis_streams_for_ledger_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Streams = structure(list(structure(list(LedgerName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), InclusiveStartTime = structure(logical(0), tags = list(type = "timestamp")), ExclusiveEndTime = structure(logical(0), tags = list(type = "timestamp")), RoleArn = structure(logical(0), tags = list(type = "string")), StreamId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), KinesisConfiguration = structure(list(StreamArn = structure(logical(0), tags = list(type = "string")), AggregationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ErrorCause = structure(logical(0), tags = list(type = "string")), StreamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .qldb$list_journal_s3_exports_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "max_results", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next_token", type = "string"))), tags = list(type = "structure"))
@@ -142,6 +178,18 @@ NULL
 .qldb$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.qldb$stream_journal_to_kinesis_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LedgerName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), InclusiveStartTime = structure(logical(0), tags = list(type = "timestamp")), ExclusiveEndTime = structure(logical(0), tags = list(type = "timestamp")), KinesisConfiguration = structure(list(StreamArn = structure(logical(0), tags = list(type = "string")), AggregationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), StreamName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.qldb$stream_journal_to_kinesis_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StreamId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

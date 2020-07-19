@@ -8,7 +8,10 @@ qldb_create_ledger(Name, Tags, PermissionsMode, DeletionProtection)
 }
 \arguments{
 \item{Name}{[required] The name of the ledger that you want to create. The name must be unique
-among all of your ledgers in the current AWS Region.}
+among all of your ledgers in the current AWS Region.
+
+Naming constraints for ledger names are defined in \href{https://docs.aws.amazon.com/qldb/latest/developerguide/limits.html#limits.naming}{Quotas in Amazon QLDB}
+in the \emph{Amazon QLDB Developer Guide}.}
 
 \item{Tags}{The key-value pairs to add as tags to the ledger that you want to
 create. Tag keys are case sensitive. Tag values are case sensitive and

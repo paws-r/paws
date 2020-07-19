@@ -14,6 +14,13 @@ not be in sync with your organization structure if it changes after
 calling this API. This API can only be called by the master account in
 the organization.
 }
+\details{
+This API can\'t be invoked if there are active delegated administrators
+in the organization.
+
+Note that a delegated administrator is not authorized to invoke
+\code{DisableAWSOrganizationsAccess}.
+}
 \section{Request syntax}{
 \preformatted{svc$disable_aws_organizations_access()
 }

@@ -11,7 +11,7 @@ storagegateway_add_upload_buffer(GatewayARN, DiskIds)
 \item{GatewayARN}{[required]}
 
 \item{DiskIds}{[required] An array of strings that identify disks that are to be configured as
-working storage. Each string have a minimum length of 1 and maximum
+working storage. Each string has a minimum length of 1 and maximum
 length of 300. You can get the disk IDs from the ListLocalDisks API.}
 }
 \description{

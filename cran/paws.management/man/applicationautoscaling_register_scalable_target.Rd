@@ -9,10 +9,9 @@ applicationautoscaling_register_scalable_target(ServiceNamespace,
   SuspendedState)
 }
 \arguments{
-\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or
-\code{custom-resource} for a resource provided by your own application or
-service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
-in the \emph{Amazon Web Services General Reference}.}
+\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource. For a
+resource provided by your own application or service, use
+\code{custom-resource} instead.}
 
 \item{ResourceId}{[required] The identifier of the resource that is associated with the scalable
 target. This string consists of the resource type and unique identifier.
@@ -51,6 +50,9 @@ Example:
 the unique identifier is the function name with a function version
 or alias name suffix that is not \verb{$LATEST}. Example:
 \verb{function:my-function:prod} or \verb{function:my-function:1}.
+\item Amazon Keyspaces table - The resource type is \code{table} and the unique
+identifier is the table name. Example:
+\code{keyspace/mykeyspace/table/mytable}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension associated with the scalable target. This string
@@ -84,21 +86,36 @@ The number of inference units for an Amazon Comprehend document
 classification endpoint.
 \item \verb{lambda:function:ProvisionedConcurrency} - The provisioned
 concurrency for a Lambda function.
+\item \code{cassandra:table:ReadCapacityUnits} - The provisioned read capacity
+for an Amazon Keyspaces table.
+\item \code{cassandra:table:WriteCapacityUnits} - The provisioned write
+capacity for an Amazon Keyspaces table.
 }}
 
-\item{MinCapacity}{The minimum value to scale to in response to a scale-in event.
-\code{MinCapacity} is required to register a scalable target.}
+\item{MinCapacity}{The minimum value that you plan to scale in to. When a scaling policy is
+in effect, Application Auto Scaling can scale in (contract) as needed to
+the minimum capacity limit in response to changing demand.
 
-\item{MaxCapacity}{The maximum value to scale to in response to a scale-out event.
-\code{MaxCapacity} is required to register a scalable target.}
+This parameter is required if you are registering a scalable target. For
+certain resources, the minimum value allowed is 0. This includes Lambda
+provisioned concurrency, Spot Fleet, ECS services, Aurora DB clusters,
+EMR clusters, and custom resources. For all other resources, the minimum
+value allowed is 1.}
 
-\item{RoleARN}{Application Auto Scaling creates a service-linked role that grants it
-permissions to modify the scalable target on your behalf. For more
-information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-service-linked-roles.html}{Service-Linked Roles for Application Auto Scaling}.
+\item{MaxCapacity}{The maximum value that you plan to scale out to. When a scaling policy
+is in effect, Application Auto Scaling can scale out (expand) as needed
+to the maximum capacity limit in response to changing demand.
 
-For Amazon EMR, this parameter is required, and it must specify the ARN
+This parameter is required if you are registering a scalable target.}
+
+\item{RoleARN}{This parameter is required for services that do not support
+service-linked roles (such as Amazon EMR), and it must specify the ARN
 of an IAM role that allows Application Auto Scaling to modify the
-scalable target on your behalf.}
+scalable target on your behalf.
+
+If the service supports service-linked roles, Application Auto Scaling
+uses a service-linked role, which it creates if it does not yet exist.
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles}{Application Auto Scaling IAM Roles}.}
 
 \item{SuspendedState}{An embedded object that contains attributes and attribute values that
 are used to suspend and resume automatic scaling. Setting the value of
@@ -122,35 +139,36 @@ For more information, see \href{https://docs.aws.amazon.com/autoscaling/applicat
 in the \emph{Application Auto Scaling User Guide}.}
 }
 \description{
-Registers or updates a scalable target. A scalable target is a resource
-that Application Auto Scaling can scale out and scale in. Scalable
-targets are uniquely identified by the combination of resource ID,
-scalable dimension, and namespace.
+Registers or updates a scalable target.
 }
 \details{
-When you register a new scalable target, you must specify values for
-minimum and maximum capacity. Application Auto Scaling will not scale
-capacity to values that are outside of this range.
+A scalable target is a resource that Application Auto Scaling can scale
+out and scale in. Scalable targets are uniquely identified by the
+combination of resource ID, scalable dimension, and namespace.
 
-To update a scalable target, specify the parameter that you want to
-change as well as the following parameters that identify the scalable
-target: resource ID, scalable dimension, and namespace. Any parameters
-that you don\'t specify are not changed by this update request.
+When you register a new scalable target, you must specify values for
+minimum and maximum capacity. Application Auto Scaling scaling policies
+will not scale capacity to values that are outside of this range.
 
 After you register a scalable target, you do not need to register it
 again to use other Application Auto Scaling operations. To see which
-resources have been registered, use DescribeScalableTargets. You can
-also view the scaling policies for a service namespace by using
-DescribeScalableTargets.
-
+resources have been registered, use
+\href{https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html}{DescribeScalableTargets}.
+You can also view the scaling policies for a service namespace by using
+\href{https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html}{DescribeScalableTargets}.
 If you no longer need a scalable target, you can deregister it by using
-DeregisterScalableTarget.
+\href{https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DeregisterScalableTarget.html}{DeregisterScalableTarget}.
+
+To update a scalable target, specify the parameters that you want to
+change. Include the parameters that identify the scalable target:
+resource ID, scalable dimension, and namespace. Any parameters that you
+don\'t specify are not changed by this update request.
 }
 \section{Request syntax}{
 \preformatted{svc$register_scalable_target(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
   ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
   MinCapacity = 123,
   MaxCapacity = 123,
   RoleARN = "string",
@@ -174,16 +192,6 @@ svc$register_scalable_target(
   ResourceId = "service/default/web-app",
   ScalableDimension = "ecs:service:DesiredCount",
   ServiceNamespace = "ecs"
-)
-
-# This example registers a scalable target from an Amazon EC2 Spot fleet
-# with a minimum target capacity of 1 and a maximum of 10.
-svc$register_scalable_target(
-  MaxCapacity = 10L,
-  MinCapacity = 1L,
-  ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",
-  ScalableDimension = "ec2:spot-fleet-request:TargetCapacity",
-  ServiceNamespace = "ec2"
 )
 }
 

@@ -33,17 +33,17 @@ If you do not provide a key policy, AWS KMS attaches a default key
 policy to the CMK. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default}{Default Key Policy}
 in the \emph{AWS Key Management Service Developer Guide}.
 
-The key policy size limit is 32 kilobytes (32768 bytes).}
+The key policy size quota is 32 kilobytes (32768 bytes).}
 
 \item{Description}{A description of the CMK.
 
 Use a description that helps you decide whether the CMK is appropriate
 for a task.}
 
-\item{KeyUsage}{Determines the cryptographic operations for which you can use the CMK.
-The default value is \code{ENCRYPT_DECRYPT}. This parameter is required only
-for asymmetric CMKs. You can\'t change the \code{KeyUsage} value after the
-CMK is created.
+\item{KeyUsage}{Determines the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}
+for which you can use the CMK. The default value is \code{ENCRYPT_DECRYPT}.
+This parameter is required only for asymmetric CMKs. You can\'t change
+the \code{KeyUsage} value after the CMK is created.
 
 Select only one valid value.
 \itemize{
@@ -53,18 +53,27 @@ or \code{SIGN_VERIFY}.
 \item For asymmetric CMKs with ECC key material, specify \code{SIGN_VERIFY}.
 }}
 
-\item{CustomerMasterKeySpec}{Specifies the type of CMK to create. The \code{CustomerMasterKeySpec}
-determines whether the CMK contains a symmetric key or an asymmetric key
-pair. It also determines the encryption algorithms or signing algorithms
-that the CMK supports. You can\'t change the \code{CustomerMasterKeySpec}
-after the CMK is created. To further restrict the algorithms that can be
-used with the CMK, use its key policy or IAM policy.
-
-For help with choosing a key spec for your CMK, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#cmk-key-spec}{Selecting a Customer Master Key Spec}
+\item{CustomerMasterKeySpec}{Specifies the type of CMK to create. The default value,
+\code{SYMMETRIC_DEFAULT}, creates a CMK with a 256-bit symmetric key for
+encryption and decryption. For help choosing a key spec for your CMK,
+see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html}{How to Choose Your CMK Configuration}
 in the \emph{AWS Key Management Service Developer Guide}.
 
-The default value, \code{SYMMETRIC_DEFAULT}, creates a CMK with a 256-bit
-symmetric key.
+The \code{CustomerMasterKeySpec} determines whether the CMK contains a
+symmetric key or an asymmetric key pair. It also determines the
+encryption algorithms or signing algorithms that the CMK supports. You
+can\'t change the \code{CustomerMasterKeySpec} after the CMK is created. To
+further restrict the algorithms that can be used with the CMK, use a
+condition key in its key policy or IAM policy. For more information, see
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm}{kms:EncryptionAlgorithm}
+or \href{https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm}{kms:Signing Algorithm}
+in the \emph{AWS Key Management Service Developer Guide}.
+
+\href{http://aws.amazon.com/kms/features/#AWS_Service_Integration}{AWS services that are integrated with AWS KMS} use
+symmetric CMKs to protect your data. These services do not support
+asymmetric CMKs. For help determining whether a CMK is symmetric or
+asymmetric, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html}{Identifying Symmetric and Asymmetric CMKs}
+in the \emph{AWS Key Management Service Developer Guide}.
 
 AWS KMS supports the following key specs for CMKs:
 \itemize{
@@ -168,8 +177,8 @@ CMKs.
 AWS KMS unencrypted. To use the CMK, you must call AWS KMS. You can
 use a symmetric CMK to encrypt and decrypt small amounts of data,
 but they are typically used to generate \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys}{data keys}
-or data key pairs. For details, see GenerateDataKey and
-GenerateDataKeyPair.
+and \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-key-pairs}{data keys pairs}.
+For details, see GenerateDataKey and GenerateDataKeyPair.
 \item \strong{Asymmetric CMKs} can contain an RSA key pair or an Elliptic Curve
 (ECC) key pair. The private key in an asymmetric CMK never leaves
 AWS KMS unencrypted. However, you can use the GetPublicKey operation

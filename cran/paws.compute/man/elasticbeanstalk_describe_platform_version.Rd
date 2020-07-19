@@ -2,15 +2,21 @@
 % Please edit documentation in R/elasticbeanstalk_operations.R
 \name{elasticbeanstalk_describe_platform_version}
 \alias{elasticbeanstalk_describe_platform_version}
-\title{Describes the version of the platform}
+\title{Describes a platform version}
 \usage{
 elasticbeanstalk_describe_platform_version(PlatformArn)
 }
 \arguments{
-\item{PlatformArn}{The ARN of the version of the platform.}
+\item{PlatformArn}{The ARN of the platform version.}
 }
 \description{
-Describes the version of the platform.
+Describes a platform version. Provides full details. Compare to
+ListPlatformVersions, which provides summary information about a list of
+platform versions.
+}
+\details{
+For definitions of platform version and other platform-related terms,
+see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html}{AWS Elastic Beanstalk Platforms Glossary}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_platform_version(

@@ -2,7 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_list_organizations}
 \alias{workmail_list_organizations}
-\title{Returns summaries of the customer's non-deleted organizations}
+\title{Returns summaries of the customer's organizations}
 \usage{
 workmail_list_organizations(NextToken, MaxResults)
 }
@@ -13,7 +13,7 @@ does not contain any tokens.}
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \description{
-Returns summaries of the customer\'s non-deleted organizations.
+Returns summaries of the customer\'s organizations.
 }
 \section{Request syntax}{
 \preformatted{svc$list_organizations(

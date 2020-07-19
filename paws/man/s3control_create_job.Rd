@@ -2,10 +2,11 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_create_job}
 \alias{s3control_create_job}
-\title{Creates an Amazon S3 batch operations job}
+\title{You can use Amazon S3 Batch Operations to perform large-scale Batch
+Operations on Amazon S3 objects}
 \usage{
 s3control_create_job(AccountId, ConfirmationRequired, Operation, Report,
-  ClientRequestToken, Manifest, Description, Priority, RoleArn)
+  ClientRequestToken, Manifest, Description, Priority, RoleArn, Tags)
 }
 \arguments{
 \item{AccountId}{[required]}
@@ -33,12 +34,28 @@ multiple jobs.}
 \item{Priority}{[required] The numerical priority for this job. Higher numbers indicate higher
 priority.}
 
-\item{RoleArn}{[required] The Amazon Resource Name (ARN) for the Identity and Access Management
-(IAM) Role that batch operations will use to execute this job\'s
-operation on each object in the manifest.}
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) for the AWS Identity and Access
+Management (IAM) role that Batch Operations will use to execute this
+job\'s operation on each object in the manifest.}
+
+\item{Tags}{A set of tags to associate with the Amazon S3 Batch Operations job. This
+is an optional parameter.}
 }
 \description{
-Creates an Amazon S3 batch operations job.
+You can use Amazon S3 Batch Operations to perform large-scale Batch
+Operations on Amazon S3 objects. Amazon S3 Batch Operations can execute
+a single operation or action on lists of Amazon S3 objects that you
+specify. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html}{Amazon S3 Batch Operations}
+in the Amazon Simple Storage Service Developer Guide.
+}
+\details{
+Related actions include:
+\itemize{
+\item DescribeJob
+\item ListJobs
+\item UpdateJobPriority
+\item UpdateJobStatus
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_job(
@@ -134,6 +151,20 @@ Creates an Amazon S3 batch operations job.
     S3InitiateRestoreObject = list(
       ExpirationInDays = 123,
       GlacierJobTier = "BULK"|"STANDARD"
+    ),
+    S3PutObjectLegalHold = list(
+      LegalHold = list(
+        Status = "OFF"|"ON"
+      )
+    ),
+    S3PutObjectRetention = list(
+      BypassGovernanceRetention = TRUE|FALSE,
+      Retention = list(
+        RetainUntilDate = as.POSIXct(
+          "2015-01-01"
+        ),
+        Mode = "COMPLIANCE"|"GOVERNANCE"
+      )
     )
   ),
   Report = list(
@@ -159,7 +190,13 @@ Creates an Amazon S3 batch operations job.
   ),
   Description = "string",
   Priority = 123,
-  RoleArn = "string"
+  RoleArn = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

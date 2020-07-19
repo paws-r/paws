@@ -9,8 +9,8 @@ deletes the corresponding address pool}
 ec2_deprovision_byoip_cidr(Cidr, DryRun)
 }
 \arguments{
-\item{Cidr}{[required] The public IPv4 address range, in CIDR notation. The prefix must be the
-same prefix that you specified when you provisioned the address range.}
+\item{Cidr}{[required] The address range, in CIDR notation. The prefix must be the same prefix
+that you specified when you provisioned the address range.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

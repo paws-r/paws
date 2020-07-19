@@ -56,18 +56,18 @@ find the product\'s technical documentation at
 \link[=cloudformation_continue_update_rollback]{continue_update_rollback} \tab For a specified stack that is in the UPDATE_ROLLBACK_FAILED state, continues rolling it back to the UPDATE_ROLLBACK_COMPLETE state \cr
 \link[=cloudformation_create_change_set]{create_change_set} \tab Creates a list of changes that will be applied to a stack so that you can review the changes before executing them \cr
 \link[=cloudformation_create_stack]{create_stack} \tab Creates a stack as specified in the template \cr
-\link[=cloudformation_create_stack_instances]{create_stack_instances} \tab Creates stack instances for the specified accounts, within the specified regions \cr
+\link[=cloudformation_create_stack_instances]{create_stack_instances} \tab Creates stack instances for the specified accounts, within the specified Regions \cr
 \link[=cloudformation_create_stack_set]{create_stack_set} \tab Creates a stack set \cr
 \link[=cloudformation_delete_change_set]{delete_change_set} \tab Deletes the specified change set \cr
 \link[=cloudformation_delete_stack]{delete_stack} \tab Deletes a specified stack \cr
-\link[=cloudformation_delete_stack_instances]{delete_stack_instances} \tab Deletes stack instances for the specified accounts, in the specified regions \cr
+\link[=cloudformation_delete_stack_instances]{delete_stack_instances} \tab Deletes stack instances for the specified accounts, in the specified Regions \cr
 \link[=cloudformation_delete_stack_set]{delete_stack_set} \tab Deletes a stack set \cr
 \link[=cloudformation_deregister_type]{deregister_type} \tab Removes a type or type version from active use in the CloudFormation registry \cr
 \link[=cloudformation_describe_account_limits]{describe_account_limits} \tab Retrieves your account's AWS CloudFormation limits, such as the maximum number of stacks that you can create in your account \cr
 \link[=cloudformation_describe_change_set]{describe_change_set} \tab Returns the inputs for the change set and a list of changes that AWS CloudFormation will make if you execute the change set \cr
 \link[=cloudformation_describe_stack_drift_detection_status]{describe_stack_drift_detection_status} \tab Returns information about a stack drift detection operation \cr
 \link[=cloudformation_describe_stack_events]{describe_stack_events} \tab Returns all stack related events for a specified stack in reverse chronological order \cr
-\link[=cloudformation_describe_stack_instance]{describe_stack_instance} \tab Returns the stack instance that's associated with the specified stack set, AWS account, and region \cr
+\link[=cloudformation_describe_stack_instance]{describe_stack_instance} \tab Returns the stack instance that's associated with the specified stack set, AWS account, and Region \cr
 \link[=cloudformation_describe_stack_resource]{describe_stack_resource} \tab Returns a description of the specified resource in the specified stack \cr
 \link[=cloudformation_describe_stack_resource_drifts]{describe_stack_resource_drifts} \tab Returns drift information for the resources that have been checked for drift in the specified stack \cr
 \link[=cloudformation_describe_stack_resources]{describe_stack_resources} \tab Returns AWS resource descriptions for running and deleted stacks \cr
@@ -85,7 +85,7 @@ find the product\'s technical documentation at
 \link[=cloudformation_get_template]{get_template} \tab Returns the template body for a specified stack \cr
 \link[=cloudformation_get_template_summary]{get_template_summary} \tab Returns information about a new or existing template \cr
 \link[=cloudformation_list_change_sets]{list_change_sets} \tab Returns the ID and status of each active change set for a stack \cr
-\link[=cloudformation_list_exports]{list_exports} \tab Lists all exported output values in the account and region in which you call this action \cr
+\link[=cloudformation_list_exports]{list_exports} \tab Lists all exported output values in the account and Region in which you call this action \cr
 \link[=cloudformation_list_imports]{list_imports} \tab Lists all stacks that are importing an exported output value \cr
 \link[=cloudformation_list_stack_instances]{list_stack_instances} \tab Returns summary information about stack instances that are associated with the specified stack set \cr
 \link[=cloudformation_list_stack_resources]{list_stack_resources} \tab Returns descriptions of all resources of the specified stack \cr
@@ -93,7 +93,7 @@ find the product\'s technical documentation at
 \link[=cloudformation_list_stack_set_operation_results]{list_stack_set_operation_results} \tab Returns summary information about the results of a stack set operation \cr
 \link[=cloudformation_list_stack_set_operations]{list_stack_set_operations} \tab Returns summary information about operations performed on a stack set \cr
 \link[=cloudformation_list_stack_sets]{list_stack_sets} \tab Returns summary information about stack sets that are associated with the user \cr
-\link[=cloudformation_list_type_registrations]{list_type_registrations} \tab Returns a list of registration tokens for the specified type \cr
+\link[=cloudformation_list_type_registrations]{list_type_registrations} \tab Returns a list of registration tokens for the specified type(s) \cr
 \link[=cloudformation_list_types]{list_types} \tab Returns summary information about types that have been registered with CloudFormation \cr
 \link[=cloudformation_list_type_versions]{list_type_versions} \tab Returns summary information about the versions of a type \cr
 \link[=cloudformation_record_handler_progress]{record_handler_progress} \tab Reports progress of a resource handler to CloudFormation \cr
@@ -103,8 +103,8 @@ find the product\'s technical documentation at
 \link[=cloudformation_signal_resource]{signal_resource} \tab Sends a signal to the specified resource with a success or failure status \cr
 \link[=cloudformation_stop_stack_set_operation]{stop_stack_set_operation} \tab Stops an in-progress operation on a stack set and its associated stack instances \cr
 \link[=cloudformation_update_stack]{update_stack} \tab Updates a stack as specified in the template \cr
-\link[=cloudformation_update_stack_instances]{update_stack_instances} \tab Updates the parameter values for stack instances for the specified accounts, within the specified regions \cr
-\link[=cloudformation_update_stack_set]{update_stack_set} \tab Updates the stack set, and associated stack instances in the specified accounts and regions \cr
+\link[=cloudformation_update_stack_instances]{update_stack_instances} \tab Updates the parameter values for stack instances for the specified accounts, within the specified Regions \cr
+\link[=cloudformation_update_stack_set]{update_stack_set} \tab Updates the stack set, and associated stack instances in the specified accounts and Regions \cr
 \link[=cloudformation_update_termination_protection]{update_termination_protection} \tab Updates termination protection for the specified stack \cr
 \link[=cloudformation_validate_template]{validate_template} \tab Validates a specified template
 }

@@ -9,13 +9,14 @@ NULL
 #'
 #' @usage
 #' mediapackagevod_create_asset(Id, PackagingGroupId, ResourceId,
-#'   SourceArn, SourceRoleArn)
+#'   SourceArn, SourceRoleArn, Tags)
 #'
 #' @param Id &#91;required&#93; The unique identifier for the Asset.
 #' @param PackagingGroupId &#91;required&#93; The ID of the PackagingGroup for the Asset.
 #' @param ResourceId The resource ID to include in SPEKE key requests.
 #' @param SourceArn &#91;required&#93; ARN of the source object in S3.
 #' @param SourceRoleArn &#91;required&#93; The IAM role ARN used to access the source S3 bucket.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
@@ -24,21 +25,24 @@ NULL
 #'   PackagingGroupId = "string",
 #'   ResourceId = "string",
 #'   SourceArn = "string",
-#'   SourceRoleArn = "string"
+#'   SourceRoleArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname mediapackagevod_create_asset
-mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL, SourceArn, SourceRoleArn) {
+mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL, SourceArn, SourceRoleArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateAsset",
     http_method = "POST",
     http_path = "/assets",
     paginator = list()
   )
-  input <- .mediapackagevod$create_asset_input(Id = Id, PackagingGroupId = PackagingGroupId, ResourceId = ResourceId, SourceArn = SourceArn, SourceRoleArn = SourceRoleArn)
+  input <- .mediapackagevod$create_asset_input(Id = Id, PackagingGroupId = PackagingGroupId, ResourceId = ResourceId, SourceArn = SourceArn, SourceRoleArn = SourceRoleArn, Tags = Tags)
   output <- .mediapackagevod$create_asset_output()
   config <- get_config()
   svc <- .mediapackagevod$service(config)
@@ -54,7 +58,7 @@ mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL
 #'
 #' @usage
 #' mediapackagevod_create_packaging_configuration(CmafPackage, DashPackage,
-#'   HlsPackage, Id, MssPackage, PackagingGroupId)
+#'   HlsPackage, Id, MssPackage, PackagingGroupId, Tags)
 #'
 #' @param CmafPackage 
 #' @param DashPackage 
@@ -62,6 +66,7 @@ mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL
 #' @param Id &#91;required&#93; The ID of the PackagingConfiguration.
 #' @param MssPackage 
 #' @param PackagingGroupId &#91;required&#93; The ID of a PackagingGroup.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
@@ -95,6 +100,7 @@ mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL
 #'   DashPackage = list(
 #'     DashManifests = list(
 #'       list(
+#'         ManifestLayout = "FULL"|"COMPACT",
 #'         ManifestName = "string",
 #'         MinBufferTimeSeconds = 123,
 #'         Profile = "NONE"|"HBBTV_1_5",
@@ -114,7 +120,11 @@ mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL
 #'         Url = "string"
 #'       )
 #'     ),
-#'     SegmentDurationSeconds = 123
+#'     PeriodTriggers = list(
+#'       "ADS"
+#'     ),
+#'     SegmentDurationSeconds = 123,
+#'     SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"|"TIME_WITH_TIMELINE"|"NUMBER_WITH_DURATION"
 #'   ),
 #'   HlsPackage = list(
 #'     Encryption = list(
@@ -168,21 +178,24 @@ mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL
 #'     ),
 #'     SegmentDurationSeconds = 123
 #'   ),
-#'   PackagingGroupId = "string"
+#'   PackagingGroupId = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname mediapackagevod_create_packaging_configuration
-mediapackagevod_create_packaging_configuration <- function(CmafPackage = NULL, DashPackage = NULL, HlsPackage = NULL, Id, MssPackage = NULL, PackagingGroupId) {
+mediapackagevod_create_packaging_configuration <- function(CmafPackage = NULL, DashPackage = NULL, HlsPackage = NULL, Id, MssPackage = NULL, PackagingGroupId, Tags = NULL) {
   op <- new_operation(
     name = "CreatePackagingConfiguration",
     http_method = "POST",
     http_path = "/packaging_configurations",
     paginator = list()
   )
-  input <- .mediapackagevod$create_packaging_configuration_input(CmafPackage = CmafPackage, DashPackage = DashPackage, HlsPackage = HlsPackage, Id = Id, MssPackage = MssPackage, PackagingGroupId = PackagingGroupId)
+  input <- .mediapackagevod$create_packaging_configuration_input(CmafPackage = CmafPackage, DashPackage = DashPackage, HlsPackage = HlsPackage, Id = Id, MssPackage = MssPackage, PackagingGroupId = PackagingGroupId, Tags = Tags)
   output <- .mediapackagevod$create_packaging_configuration_output()
   config <- get_config()
   svc <- .mediapackagevod$service(config)
@@ -197,28 +210,37 @@ mediapackagevod_create_packaging_configuration <- function(CmafPackage = NULL, D
 #' Creates a new MediaPackage VOD PackagingGroup resource.
 #'
 #' @usage
-#' mediapackagevod_create_packaging_group(Id)
+#' mediapackagevod_create_packaging_group(Authorization, Id, Tags)
 #'
+#' @param Authorization 
 #' @param Id &#91;required&#93; The ID of the PackagingGroup.
+#' @param Tags 
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_packaging_group(
-#'   Id = "string"
+#'   Authorization = list(
+#'     CdnIdentifierSecret = "string",
+#'     SecretsRoleArn = "string"
+#'   ),
+#'   Id = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname mediapackagevod_create_packaging_group
-mediapackagevod_create_packaging_group <- function(Id) {
+mediapackagevod_create_packaging_group <- function(Authorization = NULL, Id, Tags = NULL) {
   op <- new_operation(
     name = "CreatePackagingGroup",
     http_method = "POST",
     http_path = "/packaging_groups",
     paginator = list()
   )
-  input <- .mediapackagevod$create_packaging_group_input(Id = Id)
+  input <- .mediapackagevod$create_packaging_group_input(Authorization = Authorization, Id = Id, Tags = Tags)
   output <- .mediapackagevod$create_packaging_group_output()
   config <- get_config()
   svc <- .mediapackagevod$service(config)
@@ -564,3 +586,160 @@ mediapackagevod_list_packaging_groups <- function(MaxResults = NULL, NextToken =
   return(response)
 }
 .mediapackagevod$operations$list_packaging_groups <- mediapackagevod_list_packaging_groups
+
+#' Returns a list of the tags assigned to the specified resource
+#'
+#' Returns a list of the tags assigned to the specified resource.
+#'
+#' @usage
+#' mediapackagevod_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource. You can get this from the response to any request to the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediapackagevod_list_tags_for_resource
+mediapackagevod_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .mediapackagevod$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .mediapackagevod$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .mediapackagevod$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediapackagevod$operations$list_tags_for_resource <- mediapackagevod_list_tags_for_resource
+
+#' Adds tags to the specified resource
+#'
+#' Adds tags to the specified resource. You can specify one or more tags to add.
+#'
+#' @usage
+#' mediapackagevod_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource. You can get this from the response to any request to the resource.
+#' @param Tags &#91;required&#93; A collection of tags associated with a resource
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediapackagevod_tag_resource
+mediapackagevod_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .mediapackagevod$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .mediapackagevod$tag_resource_output()
+  config <- get_config()
+  svc <- .mediapackagevod$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediapackagevod$operations$tag_resource <- mediapackagevod_tag_resource
+
+#' Removes tags from the specified resource
+#'
+#' Removes tags from the specified resource. You can specify one or more tags to remove.
+#'
+#' @usage
+#' mediapackagevod_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource. You can get this from the response to any request to the resource.
+#' @param TagKeys &#91;required&#93; A comma-separated list of the tag keys to remove from the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediapackagevod_untag_resource
+mediapackagevod_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resource-arn}",
+    paginator = list()
+  )
+  input <- .mediapackagevod$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .mediapackagevod$untag_resource_output()
+  config <- get_config()
+  svc <- .mediapackagevod$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediapackagevod$operations$untag_resource <- mediapackagevod_untag_resource
+
+#' Updates a specific packaging group
+#'
+#' Updates a specific packaging group. You can't change the id attribute or any other system-generated attributes.
+#'
+#' @usage
+#' mediapackagevod_update_packaging_group(Authorization, Id)
+#'
+#' @param Authorization 
+#' @param Id &#91;required&#93; The ID of a MediaPackage VOD PackagingGroup resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_packaging_group(
+#'   Authorization = list(
+#'     CdnIdentifierSecret = "string",
+#'     SecretsRoleArn = "string"
+#'   ),
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediapackagevod_update_packaging_group
+mediapackagevod_update_packaging_group <- function(Authorization = NULL, Id) {
+  op <- new_operation(
+    name = "UpdatePackagingGroup",
+    http_method = "PUT",
+    http_path = "/packaging_groups/{id}",
+    paginator = list()
+  )
+  input <- .mediapackagevod$update_packaging_group_input(Authorization = Authorization, Id = Id)
+  output <- .mediapackagevod$update_packaging_group_output()
+  config <- get_config()
+  svc <- .mediapackagevod$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediapackagevod$operations$update_packaging_group <- mediapackagevod_update_packaging_group

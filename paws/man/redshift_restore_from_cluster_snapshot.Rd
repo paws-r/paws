@@ -47,7 +47,7 @@ Constraints: Must be between \code{1115} and \code{65535}.}
 
 Default: A random, system-chosen Availability Zone.
 
-Example: \verb{us-east-1a}}
+Example: \verb{us-east-2a}}
 
 \item{AllowVersionUpgrade}{If \code{true}, major version upgrades can be applied during the maintenance
 window to the Amazon Redshift engine that is running on the cluster.
@@ -143,7 +143,7 @@ into ds2.xlarge. If you have a DC instance type, you must restore into
 that same instance type and size. In other words, you can only restore a
 dc1.large instance type into another dc1.large instance type or
 dc2.large instance type. You can\'t restore dc1.8xlarge to dc2.8xlarge.
-First restore to a dc1.8xlareg cluster, then resize to a dc2.8large
+First restore to a dc1.8xlarge cluster, then resize to a dc2.8large
 cluster. For more information about node types, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes}{About Clusters and Nodes}
 in the \emph{Amazon Redshift Cluster Management Guide}.}
 

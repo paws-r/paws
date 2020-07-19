@@ -36,10 +36,11 @@ Deletes a Lambda function
 
 \examples{
 \dontrun{
-# This operation deletes a Lambda function alias
+# The following example deletes an alias named BLUE from a function named
+# my-function
 svc$delete_alias(
-  FunctionName = "myFunction",
-  Name = "alias"
+  FunctionName = "my-function",
+  Name = "BLUE"
 )
 }
 

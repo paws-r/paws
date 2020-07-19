@@ -8,9 +8,11 @@ ec2_allocate_address(Domain, Address, PublicIpv4Pool,
   NetworkBorderGroup, CustomerOwnedIpv4Pool, DryRun)
 }
 \arguments{
-\item{Domain}{Set to \code{vpc} to allocate the address for use with instances in a VPC.
+\item{Domain}{Indicates whether the Elastic IP address is for use with instances in a
+VPC or instances in EC2-Classic.
 
-Default: The address is for use with instances in EC2-Classic.}
+Default: If the Region supports EC2-Classic, the default is \code{standard}.
+Otherwise, the default is \code{vpc}.}
 
 \item{Address}{[EC2-VPC] The Elastic IP address to recover or an IPv4 address from an
 address pool.}
@@ -22,8 +24,12 @@ address from the address pool, use the \code{Address} parameter instead.}
 \item{NetworkBorderGroup}{The location from which the IP address is advertised. Use this parameter
 to limit the address to this location.
 
+A network border group is a unique set of Availability Zones or Local
+Zones from where AWS advertises IP addresses and limits the addresses to
+the group. IP addresses cannot move between network border groups.
+
 Use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html}{DescribeVpcs}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html}{DescribeAvailabilityZones}
 to view the network border groups.
 
 You cannot use a network border group with EC2 Classic. If you attempt

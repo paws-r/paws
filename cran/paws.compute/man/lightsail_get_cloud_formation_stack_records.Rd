@@ -8,8 +8,12 @@ create cloud formation stack operation}
 lightsail_get_cloud_formation_stack_records(pageToken)
 }
 \arguments{
-\item{pageToken}{A token used for advancing to a specific page of results for your
-\verb{get cloud formation stack records} request.}
+\item{pageToken}{The token to advance to the next page of results from your request.
+
+To get a page token, perform an initial \code{GetClouFormationStackRecords}
+request. If your results are paginated, the response will return a next
+page token that you can specify as the page token in a subsequent
+request.}
 }
 \description{
 Returns the CloudFormation stack record created as a result of the

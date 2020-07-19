@@ -3,27 +3,51 @@
 #' @include codeguruprofiler_service.R
 NULL
 
+.codeguruprofiler$add_notification_channels_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(channels = structure(list(structure(list(eventPublishers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), id = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), profilingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "profilingGroupName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$add_notification_channels_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(notificationConfiguration = structure(list(channels = structure(list(structure(list(eventPublishers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), id = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$batch_get_frame_metric_data_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(endTime = structure(logical(0), tags = list(location = "querystring", locationName = "endTime", type = "timestamp", timestampFormat = "iso8601")), frameMetrics = structure(list(structure(list(frameName = structure(logical(0), tags = list(type = "string")), threadStates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), period = structure(logical(0), tags = list(location = "querystring", locationName = "period", type = "string")), profilingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "profilingGroupName", type = "string")), startTime = structure(logical(0), tags = list(location = "querystring", locationName = "startTime", type = "timestamp", timestampFormat = "iso8601")), targetResolution = structure(logical(0), tags = list(location = "querystring", locationName = "targetResolution", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$batch_get_frame_metric_data_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), endTimes = structure(list(structure(list(value = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), frameMetricData = structure(list(structure(list(frameMetric = structure(list(frameName = structure(logical(0), tags = list(type = "string")), threadStates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), values = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), resolution = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), unprocessedEndTimes = structure(list(structure(list(structure(list(value = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codeguruprofiler$configure_agent_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(fleetInstanceId = structure(logical(0), tags = list(type = "string")), profilingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "profilingGroupName", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(fleetInstanceId = structure(logical(0), tags = list(type = "string")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), profilingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "profilingGroupName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codeguruprofiler$configure_agent_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuration = structure(list(periodInSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), shouldProfile = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "configuration"))
+  shape <- structure(list(configuration = structure(list(agentParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), periodInSeconds = structure(logical(0), tags = list(type = "integer", box = TRUE)), shouldProfile = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "configuration"))
   return(populate(args, shape))
 }
 
 .codeguruprofiler$create_profiling_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(agentOrchestrationConfig = structure(list(profilingEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string")), profilingGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(agentOrchestrationConfig = structure(list(profilingEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string")), computePlatform = structure(logical(0), tags = list(type = "string")), profilingGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codeguruprofiler$create_profiling_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profilingGroup = structure(list(agentOrchestrationConfig = structure(list(profilingEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), profilingStatus = structure(list(latestAgentOrchestratedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAgentProfileReportedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAggregatedProfile = structure(list(period = structure(logical(0), tags = list(type = "string")), start = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "profilingGroup"))
+  shape <- structure(list(profilingGroup = structure(list(agentOrchestrationConfig = structure(list(profilingEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), arn = structure(logical(0), tags = list(type = "string")), computePlatform = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), profilingStatus = structure(list(latestAgentOrchestratedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAgentProfileReportedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAggregatedProfile = structure(list(period = structure(logical(0), tags = list(type = "string")), start = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "profilingGroup"))
   return(populate(args, shape))
 }
 
@@ -47,7 +71,43 @@ NULL
 
 .codeguruprofiler$describe_profiling_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profilingGroup = structure(list(agentOrchestrationConfig = structure(list(profilingEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), profilingStatus = structure(list(latestAgentOrchestratedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAgentProfileReportedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAggregatedProfile = structure(list(period = structure(logical(0), tags = list(type = "string")), start = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "profilingGroup"))
+  shape <- structure(list(profilingGroup = structure(list(agentOrchestrationConfig = structure(list(profilingEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), arn = structure(logical(0), tags = list(type = "string")), computePlatform = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), profilingStatus = structure(list(latestAgentOrchestratedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAgentProfileReportedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAggregatedProfile = structure(list(period = structure(logical(0), tags = list(type = "string")), start = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "profilingGroup"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$get_findings_report_account_summary_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(dailyReportsOnly = structure(logical(0), tags = list(location = "querystring", locationName = "dailyReportsOnly", type = "boolean", box = TRUE)), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$get_findings_report_account_summary_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), reportSummaries = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), profileEndTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), profileStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), profilingGroupName = structure(logical(0), tags = list(type = "string")), totalNumberOfFindings = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$get_notification_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(profilingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "profilingGroupName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$get_notification_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(notificationConfiguration = structure(list(channels = structure(list(structure(list(eventPublishers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), id = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$get_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(profilingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "profilingGroupName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$get_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(policy = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -60,6 +120,30 @@ NULL
 .codeguruprofiler$get_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(contentEncoding = structure(logical(0), tags = list(location = "header", locationName = "Content-Encoding", type = "string")), contentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), profile = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure", payload = "profile"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$get_recommendations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(endTime = structure(logical(0), tags = list(location = "querystring", locationName = "endTime", type = "timestamp", timestampFormat = "iso8601")), locale = structure(logical(0), tags = list(location = "querystring", locationName = "locale", type = "string")), profilingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "profilingGroupName", type = "string")), startTime = structure(logical(0), tags = list(location = "querystring", locationName = "startTime", type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$get_recommendations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(anomalies = structure(list(structure(list(instances = structure(list(structure(list(endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), userFeedback = structure(list(type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), metric = structure(list(frameName = structure(logical(0), tags = list(type = "string")), threadStates = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), profileEndTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), profileStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), profilingGroupName = structure(logical(0), tags = list(type = "string")), recommendations = structure(list(structure(list(allMatchesCount = structure(logical(0), tags = list(type = "integer", box = TRUE)), allMatchesSum = structure(logical(0), tags = list(type = "double", box = TRUE)), endTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), pattern = structure(list(countersToAggregate = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), resolutionSteps = structure(logical(0), tags = list(type = "string")), targetFrames = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "list")), thresholdPercent = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), topMatches = structure(list(structure(list(frameAddress = structure(logical(0), tags = list(type = "string")), targetFramesIndex = structure(logical(0), tags = list(type = "integer", box = TRUE)), thresholdBreachValue = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$list_findings_reports_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(dailyReportsOnly = structure(logical(0), tags = list(location = "querystring", locationName = "dailyReportsOnly", type = "boolean", box = TRUE)), endTime = structure(logical(0), tags = list(location = "querystring", locationName = "endTime", type = "timestamp", timestampFormat = "iso8601")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), profilingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "profilingGroupName", type = "string")), startTime = structure(logical(0), tags = list(location = "querystring", locationName = "startTime", type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$list_findings_reports_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(findingsReportSummaries = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), profileEndTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), profileStartTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), profilingGroupName = structure(logical(0), tags = list(type = "string")), totalNumberOfFindings = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -83,7 +167,7 @@ NULL
 
 .codeguruprofiler$list_profiling_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), profilingGroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), profilingGroups = structure(list(structure(list(agentOrchestrationConfig = structure(list(profilingEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), profilingStatus = structure(list(latestAgentOrchestratedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAgentProfileReportedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAggregatedProfile = structure(list(period = structure(logical(0), tags = list(type = "string")), start = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), profilingGroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), profilingGroups = structure(list(structure(list(agentOrchestrationConfig = structure(list(profilingEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), arn = structure(logical(0), tags = list(type = "string")), computePlatform = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), profilingStatus = structure(list(latestAgentOrchestratedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAgentProfileReportedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAggregatedProfile = structure(list(period = structure(logical(0), tags = list(type = "string")), start = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -99,6 +183,54 @@ NULL
   return(populate(args, shape))
 }
 
+.codeguruprofiler$put_permission_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(actionGroup = structure(logical(0), tags = list(location = "uri", locationName = "actionGroup", type = "string")), principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), profilingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "profilingGroupName", type = "string")), revisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$put_permission_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(policy = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$remove_notification_channel_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(channelId = structure(logical(0), tags = list(location = "uri", locationName = "channelId", type = "string")), profilingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "profilingGroupName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$remove_notification_channel_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(notificationConfiguration = structure(list(channels = structure(list(structure(list(eventPublishers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), id = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$remove_permission_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(actionGroup = structure(logical(0), tags = list(location = "uri", locationName = "actionGroup", type = "string")), profilingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "profilingGroupName", type = "string")), revisionId = structure(logical(0), tags = list(location = "querystring", locationName = "revisionId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$remove_permission_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(policy = structure(logical(0), tags = list(type = "string")), revisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$submit_feedback_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(anomalyInstanceId = structure(logical(0), tags = list(location = "uri", locationName = "anomalyInstanceId", type = "string")), comment = structure(logical(0), tags = list(type = "string")), profilingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "profilingGroupName", type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeguruprofiler$submit_feedback_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codeguruprofiler$update_profiling_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(agentOrchestrationConfig = structure(list(profilingEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), profilingGroupName = structure(logical(0), tags = list(location = "uri", locationName = "profilingGroupName", type = "string"))), tags = list(type = "structure"))
@@ -107,6 +239,6 @@ NULL
 
 .codeguruprofiler$update_profiling_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(profilingGroup = structure(list(agentOrchestrationConfig = structure(list(profilingEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), profilingStatus = structure(list(latestAgentOrchestratedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAgentProfileReportedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAggregatedProfile = structure(list(period = structure(logical(0), tags = list(type = "string")), start = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "profilingGroup"))
+  shape <- structure(list(profilingGroup = structure(list(agentOrchestrationConfig = structure(list(profilingEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), arn = structure(logical(0), tags = list(type = "string")), computePlatform = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), profilingStatus = structure(list(latestAgentOrchestratedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAgentProfileReportedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), latestAggregatedProfile = structure(list(period = structure(logical(0), tags = list(type = "string")), start = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure")), updatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "profilingGroup"))
   return(populate(args, shape))
 }

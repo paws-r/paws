@@ -78,6 +78,7 @@ applications.
 \link[=serverlessapplicationrepository_list_applications]{list_applications} \tab Lists applications owned by the requester \cr
 \link[=serverlessapplicationrepository_list_application_versions]{list_application_versions} \tab Lists versions for the specified application \cr
 \link[=serverlessapplicationrepository_put_application_policy]{put_application_policy} \tab Sets the permission policy for an application \cr
+\link[=serverlessapplicationrepository_unshare_application]{unshare_application} \tab Unshares an application from an AWS Organization \cr
 \link[=serverlessapplicationrepository_update_application]{update_application} \tab Updates the specified application
 }
 }

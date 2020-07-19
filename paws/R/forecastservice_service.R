@@ -64,6 +64,9 @@ NULL
 #'  \link[=forecastservice_list_forecast_export_jobs]{list_forecast_export_jobs} \tab Returns a list of forecast export jobs created using the CreateForecastExportJob operation \cr
 #'  \link[=forecastservice_list_forecasts]{list_forecasts} \tab Returns a list of forecasts created using the CreateForecast operation \cr
 #'  \link[=forecastservice_list_predictors]{list_predictors} \tab Returns a list of predictors created using the CreatePredictor operation \cr
+#'  \link[=forecastservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for an Amazon Forecast resource \cr
+#'  \link[=forecastservice_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn \cr
+#'  \link[=forecastservice_untag_resource]{untag_resource} \tab Deletes the specified tags from a resource \cr
 #'  \link[=forecastservice_update_dataset_group]{update_dataset_group} \tab Replaces the datasets in a dataset group with the specified datasets 
 #' }
 #'
@@ -82,7 +85,7 @@ forecastservice <- function(config = list()) {
 
 .forecastservice$metadata <- list(
   service_name = "forecastservice",
-  endpoints = list("*" = list(endpoint = "forecastservice.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "forecastservice.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "forecastservice.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "forecastservice.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "forecastservice.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "forecastservice.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "forecast",
   api_version = "2018-06-26",
   signing_name = "forecast",

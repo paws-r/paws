@@ -2,16 +2,16 @@
 % Please edit documentation in R/transfer_operations.R
 \name{transfer_delete_server}
 \alias{transfer_delete_server}
-\title{Deletes the Secure File Transfer Protocol (SFTP) server that you specify}
+\title{Deletes the file transfer protocol-enabled server that you specify}
 \usage{
 transfer_delete_server(ServerId)
 }
 \arguments{
-\item{ServerId}{[required] A unique system-assigned identifier for an SFTP server instance.}
+\item{ServerId}{[required] A unique system-assigned identifier for a file transfer protocol-enabled
+server instance.}
 }
 \description{
-Deletes the Secure File Transfer Protocol (SFTP) server that you
-specify.
+Deletes the file transfer protocol-enabled server that you specify.
 }
 \details{
 No response returns from this operation.

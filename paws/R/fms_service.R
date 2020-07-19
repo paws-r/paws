@@ -79,7 +79,7 @@ fms <- function(config = list()) {
 
 .fms$metadata <- list(
   service_name = "fms",
-  endpoints = list("*" = list(endpoint = "fms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "fms.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "fms.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "fms.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "fms.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "fms.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "FMS",
   api_version = "2018-01-01",
   signing_name = NULL,

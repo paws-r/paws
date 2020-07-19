@@ -16,6 +16,11 @@ CreateDataset operation. You can only delete datasets that have a status
 of \code{ACTIVE} or \code{CREATE_FAILED}. To get the status use the
 DescribeDataset operation.
 }
+\details{
+Forecast does not automatically update any dataset groups that contain
+the deleted dataset. In order to update the dataset group, use the
+operation, omitting the deleted dataset\'s ARN.
+}
 \section{Request syntax}{
 \preformatted{svc$delete_dataset(
   DatasetArn = "string"

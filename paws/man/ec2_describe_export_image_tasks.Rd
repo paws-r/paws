@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_export_image_tasks}
 \alias{ec2_describe_export_image_tasks}
-\title{Describes the specified export image tasks or all your export image
+\title{Describes the specified export image tasks or all of your export image
 tasks}
 \usage{
 ec2_describe_export_image_tasks(DryRun, Filters, ExportImageTaskIds,
@@ -24,7 +24,7 @@ values: \code{active}, \code{completed}, \code{deleting}, or \code{deleted}.}
 \item{NextToken}{A token that indicates the next page of results.}
 }
 \description{
-Describes the specified export image tasks or all your export image
+Describes the specified export image tasks or all of your export image
 tasks.
 }
 \section{Request syntax}{

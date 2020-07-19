@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_update_ip_set}
 \alias{waf_update_ip_set}
-\title{Inserts or deletes IPSetDescriptor objects in an IPSet}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 waf_update_ip_set(IPSetId, ChangeToken, Updates)
 }
@@ -22,10 +22,18 @@ from an IPSet. For more information, see the applicable data types:
 You can insert a maximum of 1000 addresses in a single request.}
 }
 \description{
-Inserts or deletes IPSetDescriptor objects in an \code{IPSet}. For each
-\code{IPSetDescriptor} object, you specify the following values:
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
 }
 \details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
+Inserts or deletes IPSetDescriptor objects in an \code{IPSet}. For each
+\code{IPSetDescriptor} object, you specify the following values:
 \itemize{
 \item Whether to insert or delete the object from the array. If you want
 to change an \code{IPSetDescriptor} object, you delete the existing

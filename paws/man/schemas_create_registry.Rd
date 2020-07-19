@@ -9,7 +9,7 @@ schemas_create_registry(Description, RegistryName, Tags)
 \arguments{
 \item{Description}{A description of the registry to be created.}
 
-\item{RegistryName}{[required]}
+\item{RegistryName}{[required] The name of the registry.}
 
 \item{Tags}{Tags to associate with the registry.}
 }

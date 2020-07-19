@@ -2,8 +2,8 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_set_repository_policy}
 \alias{ecr_set_repository_policy}
-\title{Applies a repository policy on a specified repository to control access
-permissions}
+\title{Applies a repository policy to the specified repository to control
+access permissions}
 \usage{
 ecr_set_repository_policy(registryId, repositoryName, policyText, force)
 }
@@ -15,7 +15,7 @@ assumed.}
 \item{repositoryName}{[required] The name of the repository to receive the policy.}
 
 \item{policyText}{[required] The JSON repository policy text to apply to the repository. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicyExamples.html}{Amazon ECR Repository Policy Examples}
+information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policy-examples.html}{Amazon ECR Repository Policies}
 in the \emph{Amazon Elastic Container Registry User Guide}.}
 
 \item{force}{If the policy you are attempting to set on a repository policy would
@@ -24,8 +24,8 @@ the SetRepositoryPolicy operation. This is intended to prevent
 accidental repository lock outs.}
 }
 \description{
-Applies a repository policy on a specified repository to control access
-permissions. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html}{Amazon ECR Repository Policies}
+Applies a repository policy to the specified repository to control
+access permissions. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html}{Amazon ECR Repository Policies}
 in the \emph{Amazon Elastic Container Registry User Guide}.
 }
 \section{Request syntax}{

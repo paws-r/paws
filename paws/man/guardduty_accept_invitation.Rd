@@ -12,7 +12,8 @@ guardduty_accept_invitation(DetectorId, MasterId, InvitationId)
 \item{MasterId}{[required] The account ID of the master GuardDuty account whose invitation you\'re
 accepting.}
 
-\item{InvitationId}{[required] This value is used to validate the master account to the member account.}
+\item{InvitationId}{[required] The value that is used to validate the master account to the member
+account.}
 }
 \description{
 Accepts the invitation to be monitored by a master GuardDuty account.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_modify_scheduled_action}
 \alias{redshift_modify_scheduled_action}
-\title{Modify a scheduled action}
+\title{Modifies a scheduled action}
 \usage{
 redshift_modify_scheduled_action(ScheduledActionName, TargetAction,
   Schedule, IamRole, ScheduledActionDescription, StartTime, EndTime,
@@ -32,7 +32,7 @@ this parameter, see ScheduledAction.}
 action is active. If false, the scheduled action is disabled.}
 }
 \description{
-Modify a scheduled action.
+Modifies a scheduled action.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_scheduled_action(
@@ -44,6 +44,12 @@ Modify a scheduled action.
       NodeType = "string",
       NumberOfNodes = 123,
       Classic = TRUE|FALSE
+    ),
+    PauseCluster = list(
+      ClusterIdentifier = "string"
+    ),
+    ResumeCluster = list(
+      ClusterIdentifier = "string"
     )
   ),
   Schedule = "string",

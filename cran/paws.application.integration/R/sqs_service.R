@@ -114,7 +114,7 @@ sqs <- function(config = list()) {
 
 .sqs$metadata <- list(
   service_name = "sqs",
-  endpoints = list("*" = list(endpoint = "sqs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sqs.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "sqs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sqs.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sqs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sqs.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "SQS",
   api_version = "2012-11-05",
   signing_name = NULL,

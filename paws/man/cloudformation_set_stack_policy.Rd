@@ -16,7 +16,7 @@ in the AWS CloudFormation User Guide. You can specify either the
 \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}
 
 \item{StackPolicyURL}{Location of a file containing the stack policy. The URL must point to a
-policy (maximum size: 16 KB) located in an S3 bucket in the same region
+policy (maximum size: 16 KB) located in an S3 bucket in the same Region
 as the stack. You can specify either the \code{StackPolicyBody} or the
 \code{StackPolicyURL} parameter, but not both.}
 }

@@ -39,23 +39,28 @@ AWS WAF and AWS Shield Advanced APIs, see the \href{https://docs.aws.amazon.com/
 \section{Operations}{
 
 \tabular{ll}{
-\link[=shield_associate_drt_log_bucket]{associate_drt_log_bucket} \tab Authorizes the DDoS Response team (DRT) to access the specified Amazon S3 bucket containing your AWS WAF logs \cr
-\link[=shield_associate_drt_role]{associate_drt_role} \tab Authorizes the DDoS Response team (DRT), using the specified role, to access your AWS account to assist with DDoS attack mitigation during potential attacks \cr
+\link[=shield_associate_drt_log_bucket]{associate_drt_log_bucket} \tab Authorizes the DDoS Response Team (DRT) to access the specified Amazon S3 bucket containing your AWS WAF logs \cr
+\link[=shield_associate_drt_role]{associate_drt_role} \tab Authorizes the DDoS Response Team (DRT), using the specified role, to access your AWS account to assist with DDoS attack mitigation during potential attacks \cr
+\link[=shield_associate_health_check]{associate_health_check} \tab Adds health-based detection to the Shield Advanced protection for a resource \cr
+\link[=shield_associate_proactive_engagement_details]{associate_proactive_engagement_details} \tab Initializes proactive engagement and sets the list of contacts for the DDoS Response Team (DRT) to use \cr
 \link[=shield_create_protection]{create_protection} \tab Enables AWS Shield Advanced for a specific AWS resource \cr
 \link[=shield_create_subscription]{create_subscription} \tab Activates AWS Shield Advanced for an account \cr
 \link[=shield_delete_protection]{delete_protection} \tab Deletes an AWS Shield Advanced Protection \cr
 \link[=shield_delete_subscription]{delete_subscription} \tab Removes AWS Shield Advanced from an account \cr
 \link[=shield_describe_attack]{describe_attack} \tab Describes the details of a DDoS attack \cr
-\link[=shield_describe_drt_access]{describe_drt_access} \tab Returns the current role and list of Amazon S3 log buckets used by the DDoS Response team (DRT) to access your AWS account while assisting with attack mitigation\cr
-\link[=shield_describe_emergency_contact_settings]{describe_emergency_contact_settings} \tab Lists the email addresses that the DRT can use to contact you during a suspected attack \cr
+\link[=shield_describe_drt_access]{describe_drt_access} \tab Returns the current role and list of Amazon S3 log buckets used by the DDoS Response Team (DRT) to access your AWS account while assisting with attack mitigation \cr
+\link[=shield_describe_emergency_contact_settings]{describe_emergency_contact_settings} \tab A list of email addresses and phone numbers that the DDoS Response Team (DRT) can use to contact you if you have proactive engagement enabled, for escalations to the DRT and to initiate proactive customer support \cr
 \link[=shield_describe_protection]{describe_protection} \tab Lists the details of a Protection object \cr
 \link[=shield_describe_subscription]{describe_subscription} \tab Provides details about the AWS Shield Advanced subscription for an account \cr
-\link[=shield_disassociate_drt_log_bucket]{disassociate_drt_log_bucket} \tab Removes the DDoS Response team's (DRT) access to the specified Amazon S3 bucket containing your AWS WAF logs \cr
-\link[=shield_disassociate_drt_role]{disassociate_drt_role} \tab Removes the DDoS Response team's (DRT) access to your AWS account \cr
+\link[=shield_disable_proactive_engagement]{disable_proactive_engagement} \tab Removes authorization from the DDoS Response Team (DRT) to notify contacts about escalations to the DRT and to initiate proactive customer support \cr
+\link[=shield_disassociate_drt_log_bucket]{disassociate_drt_log_bucket} \tab Removes the DDoS Response Team's (DRT) access to the specified Amazon S3 bucket containing your AWS WAF logs \cr
+\link[=shield_disassociate_drt_role]{disassociate_drt_role} \tab Removes the DDoS Response Team's (DRT) access to your AWS account \cr
+\link[=shield_disassociate_health_check]{disassociate_health_check} \tab Removes health-based detection from the Shield Advanced protection for a resource \cr
+\link[=shield_enable_proactive_engagement]{enable_proactive_engagement} \tab Authorizes the DDoS Response Team (DRT) to use email and phone to notify contacts about escalations to the DRT and to initiate proactive customer support \cr
 \link[=shield_get_subscription_state]{get_subscription_state} \tab Returns the SubscriptionState, either Active or Inactive \cr
 \link[=shield_list_attacks]{list_attacks} \tab Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period \cr
 \link[=shield_list_protections]{list_protections} \tab Lists all Protection objects for the account \cr
-\link[=shield_update_emergency_contact_settings]{update_emergency_contact_settings} \tab Updates the details of the list of email addresses that the DRT can use to contact you during a suspected attack \cr
+\link[=shield_update_emergency_contact_settings]{update_emergency_contact_settings} \tab Updates the details of the list of email addresses and phone numbers that the DDoS Response Team (DRT) can use to contact you if you have proactive engagement enabled, for escalations to the DRT and to initiate proactive customer support\cr
 \link[=shield_update_subscription]{update_subscription} \tab Updates the details of an existing subscription
 }
 }

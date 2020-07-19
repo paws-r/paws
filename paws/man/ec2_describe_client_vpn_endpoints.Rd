@@ -16,7 +16,11 @@ the nextToken value.}
 
 \item{NextToken}{The token to retrieve the next page of results.}
 
-\item{Filters}{One or more filters. Filter names and values are case-sensitive.}
+\item{Filters}{One or more filters. Filter names and values are case-sensitive.
+\itemize{
+\item \code{endpoint-id} - The ID of the Client VPN endpoint.
+\item \code{transport-protocol} - The transport protocol (\code{tcp} \\| \code{udp}).
+}}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

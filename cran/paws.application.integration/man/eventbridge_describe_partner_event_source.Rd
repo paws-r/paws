@@ -12,12 +12,9 @@ eventbridge_describe_partner_event_source(Name)
 }
 \description{
 An SaaS partner can use this operation to list details about a partner
-event source that they have created.
-}
-\details{
-AWS customers do not use this operation. Instead, AWS customers can use
-DescribeEventSource to see details about a partner event source that is
-shared with them.
+event source that they have created. AWS customers do not use this
+operation. Instead, AWS customers can use DescribeEventSource to see
+details about a partner event source that is shared with them.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_partner_event_source(

@@ -3,6 +3,151 @@
 #' @include elasticinference_service.R
 NULL
 
+#' Describes the locations in which a given accelerator type or set of
+#' types is present in a given region
+#'
+#' Describes the locations in which a given accelerator type or set of
+#' types is present in a given region.
+#'
+#' @usage
+#' elasticinference_describe_accelerator_offerings(locationType,
+#'   acceleratorTypes)
+#'
+#' @param locationType &#91;required&#93; The location type that you want to describe accelerator type offerings
+#' for. It can assume the following values: region: will return the
+#' accelerator type offering at the regional level. availability-zone: will
+#' return the accelerator type offering at the availability zone level.
+#' availability-zone-id: will return the accelerator type offering at the
+#' availability zone level returning the availability zone id.
+#' @param acceleratorTypes The list of accelerator types to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_accelerator_offerings(
+#'   locationType = "region"|"availability-zone"|"availability-zone-id",
+#'   acceleratorTypes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticinference_describe_accelerator_offerings
+elasticinference_describe_accelerator_offerings <- function(locationType, acceleratorTypes = NULL) {
+  op <- new_operation(
+    name = "DescribeAcceleratorOfferings",
+    http_method = "POST",
+    http_path = "/describe-accelerator-offerings",
+    paginator = list()
+  )
+  input <- .elasticinference$describe_accelerator_offerings_input(locationType = locationType, acceleratorTypes = acceleratorTypes)
+  output <- .elasticinference$describe_accelerator_offerings_output()
+  config <- get_config()
+  svc <- .elasticinference$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticinference$operations$describe_accelerator_offerings <- elasticinference_describe_accelerator_offerings
+
+#' Describes the accelerator types available in a given region, as well as
+#' their characteristics, such as memory and throughput
+#'
+#' Describes the accelerator types available in a given region, as well as
+#' their characteristics, such as memory and throughput.
+#'
+#' @usage
+#' elasticinference_describe_accelerator_types()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_accelerator_types()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticinference_describe_accelerator_types
+elasticinference_describe_accelerator_types <- function() {
+  op <- new_operation(
+    name = "DescribeAcceleratorTypes",
+    http_method = "GET",
+    http_path = "/describe-accelerator-types",
+    paginator = list()
+  )
+  input <- .elasticinference$describe_accelerator_types_input()
+  output <- .elasticinference$describe_accelerator_types_output()
+  config <- get_config()
+  svc <- .elasticinference$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticinference$operations$describe_accelerator_types <- elasticinference_describe_accelerator_types
+
+#' Describes information over a provided set of accelerators belonging to
+#' an account
+#'
+#' Describes information over a provided set of accelerators belonging to
+#' an account.
+#'
+#' @usage
+#' elasticinference_describe_accelerators(acceleratorIds, filters,
+#'   maxResults, nextToken)
+#'
+#' @param acceleratorIds The IDs of the accelerators to describe.
+#' @param filters One or more filters. Filter names and values are case-sensitive. Valid
+#' filter names are: accelerator-types: can provide a list of accelerator
+#' type names to filter for. instance-id: can provide a list of EC2
+#' instance ids to filter for.
+#' @param maxResults The total number of items to return in the command\'s output. If the
+#' total number of items available is more than the value specified, a
+#' NextToken is provided in the command\'s output. To resume pagination,
+#' provide the NextToken value in the starting-token argument of a
+#' subsequent command. Do not use the NextToken response element directly
+#' outside of the AWS CLI.
+#' @param nextToken A token to specify where to start paginating. This is the NextToken from
+#' a previously truncated response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_accelerators(
+#'   acceleratorIds = list(
+#'     "string"
+#'   ),
+#'   filters = list(
+#'     list(
+#'       name = "string",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticinference_describe_accelerators
+elasticinference_describe_accelerators <- function(acceleratorIds = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeAccelerators",
+    http_method = "POST",
+    http_path = "/describe-accelerators",
+    paginator = list()
+  )
+  input <- .elasticinference$describe_accelerators_input(acceleratorIds = acceleratorIds, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .elasticinference$describe_accelerators_output()
+  config <- get_config()
+  svc <- .elasticinference$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticinference$operations$describe_accelerators <- elasticinference_describe_accelerators
+
 #' Returns all tags of an Elastic Inference Accelerator
 #'
 #' Returns all tags of an Elastic Inference Accelerator.
@@ -39,9 +184,9 @@ elasticinference_list_tags_for_resource <- function(resourceArn) {
 }
 .elasticinference$operations$list_tags_for_resource <- elasticinference_list_tags_for_resource
 
-#' Adds the specified tag(s) to an Elastic Inference Accelerator
+#' Adds the specified tags to an Elastic Inference Accelerator
 #'
-#' Adds the specified tag(s) to an Elastic Inference Accelerator.
+#' Adds the specified tags to an Elastic Inference Accelerator.
 #'
 #' @usage
 #' elasticinference_tag_resource(resourceArn, tags)
@@ -79,9 +224,9 @@ elasticinference_tag_resource <- function(resourceArn, tags) {
 }
 .elasticinference$operations$tag_resource <- elasticinference_tag_resource
 
-#' Removes the specified tag(s) from an Elastic Inference Accelerator
+#' Removes the specified tags from an Elastic Inference Accelerator
 #'
-#' Removes the specified tag(s) from an Elastic Inference Accelerator.
+#' Removes the specified tags from an Elastic Inference Accelerator.
 #'
 #' @usage
 #' elasticinference_untag_resource(resourceArn, tagKeys)

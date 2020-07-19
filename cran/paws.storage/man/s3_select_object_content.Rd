@@ -62,7 +62,7 @@ serialization format for the response.
 For more information about Amazon S3 Select, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/selecting-content-from-objects.html}{Selecting Content from Objects}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
-For more information about using SQL with Amazon S3 Select, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and Glacier Select}
+For more information about using SQL with Amazon S3 Select, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Permissions}
@@ -116,10 +116,10 @@ information, see RESTSelectObjectAppendix .
 The \code{SelectObjectContent} operation does not support the following
 \code{GetObject} functionality. For more information, see GetObject.
 \itemize{
-\item \code{Range}: While you can specify a scan range for a Amazon S3 Select
-request, see SelectObjectContentRequest\\$ScanRange in the request
-parameters below, you cannot specify the range of bytes of an object
-to return.
+\item \code{Range}: Although you can specify a scan range for an Amazon S3
+Select request (see SelectObjectContentRequest\\$ScanRange in the
+request parameters), you cannot specify the range of bytes of an
+object to return.
 \item GLACIER, DEEP\\_ARCHIVE and REDUCED\\_REDUNDANCY storage classes: You
 cannot specify the GLACIER, DEEP\\_ARCHIVE, or \code{REDUCED_REDUNDANCY}
 storage classes. For more information, about storage classes see
@@ -129,9 +129,8 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Special Errors}
 
-For a list of special errors for this operation and for general
-information about Amazon S3 errors and a list of error codes, see
-ErrorResponses
+For a list of special errors for this operation, see
+SelectObjectContentErrorCodeList
 
 \strong{Related Resources}
 \itemize{

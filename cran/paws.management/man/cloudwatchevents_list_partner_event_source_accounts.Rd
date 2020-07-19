@@ -16,15 +16,13 @@ about.}
 retrieves the next set of results.}
 
 \item{Limit}{Specifying this limits the number of results returned by this operation.
-The operation also returns a \code{NextToken} that you can use in a
-subsequent operation to retrieve the next set of results.}
+The operation also returns a NextToken which you can use in a subsequent
+operation to retrieve the next set of results.}
 }
 \description{
 An SaaS partner can use this operation to display the AWS account ID
-that a particular partner event source name is associated with.
-}
-\details{
-This operation is used by SaaS partners, not by AWS customers.
+that a particular partner event source name is associated with. This
+operation is not used by AWS customers.
 }
 \section{Request syntax}{
 \preformatted{svc$list_partner_event_source_accounts(

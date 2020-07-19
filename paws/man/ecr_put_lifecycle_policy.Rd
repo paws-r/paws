@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_put_lifecycle_policy}
 \alias{ecr_put_lifecycle_policy}
-\title{Creates or updates a lifecycle policy}
+\title{Creates or updates the lifecycle policy for the specified repository}
 \usage{
 ecr_put_lifecycle_policy(registryId, repositoryName,
   lifecyclePolicyText)
@@ -17,8 +17,8 @@ assumed.}
 \item{lifecyclePolicyText}{[required] The JSON repository policy text to apply to the repository.}
 }
 \description{
-Creates or updates a lifecycle policy. For information about lifecycle
-policy syntax, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html}{Lifecycle Policy Template}.
+Creates or updates the lifecycle policy for the specified repository.
+For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html}{Lifecycle Policy Template}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_lifecycle_policy(

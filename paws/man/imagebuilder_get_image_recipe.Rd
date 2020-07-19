@@ -7,7 +7,7 @@
 imagebuilder_get_image_recipe(imageRecipeArn)
 }
 \arguments{
-\item{imageRecipeArn}{[required] The Amazon Resource Name (ARN) of the image recipe that you wish to
+\item{imageRecipeArn}{[required] The Amazon Resource Name (ARN) of the image recipe that you want to
 retrieve.}
 }
 \description{

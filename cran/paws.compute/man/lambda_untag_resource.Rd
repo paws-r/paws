@@ -26,4 +26,17 @@ function.
 }
 }
 
+\examples{
+\dontrun{
+# The following example removes the tag with the key name DEPARTMENT tag
+# from the my-function Lambda function.
+svc$untag_resource(
+  Resource = "arn:aws:lambda:us-west-2:123456789012:function:my-function",
+  TagKeys = list(
+    "DEPARTMENT"
+  )
+)
+}
+
+}
 \keyword{internal}

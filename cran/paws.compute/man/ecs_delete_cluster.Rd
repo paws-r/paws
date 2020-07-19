@@ -11,10 +11,17 @@ ecs_delete_cluster(cluster)
 delete.}
 }
 \description{
-Deletes the specified cluster. You must deregister all container
-instances from this cluster before you may delete it. You can list the
-container instances in a cluster with ListContainerInstances and
-deregister them with DeregisterContainerInstance.
+Deletes the specified cluster. The cluster will transition to the
+\code{INACTIVE} state. Clusters with an \code{INACTIVE} status may remain
+discoverable in your account for a period of time. However, this
+behavior is subject to change in the future, so you should not rely on
+\code{INACTIVE} clusters persisting.
+}
+\details{
+You must deregister all container instances from this cluster before you
+may delete it. You can list the container instances in a cluster with
+ListContainerInstances and deregister them with
+DeregisterContainerInstance.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_cluster(

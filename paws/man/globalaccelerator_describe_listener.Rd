@@ -10,7 +10,8 @@ globalaccelerator_describe_listener(ListenerArn)
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener to describe.}
 }
 \description{
-Describe a listener.
+Describe a listener. To see an AWS CLI example of describing a listener,
+scroll down to \strong{Example}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_listener(

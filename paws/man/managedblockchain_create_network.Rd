@@ -61,6 +61,15 @@ Creates a new blockchain network using Amazon Managed Blockchain.
         AdminUsername = "string",
         AdminPassword = "string"
       )
+    ),
+    LogPublishingConfiguration = list(
+      Fabric = list(
+        CaLogs = list(
+          Cloudwatch = list(
+            Enabled = TRUE|FALSE
+          )
+        )
+      )
     )
   )
 )

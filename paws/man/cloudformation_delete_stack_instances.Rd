@@ -3,19 +3,27 @@
 \name{cloudformation_delete_stack_instances}
 \alias{cloudformation_delete_stack_instances}
 \title{Deletes stack instances for the specified accounts, in the specified
-regions}
+Regions}
 \usage{
-cloudformation_delete_stack_instances(StackSetName, Accounts, Regions,
-  OperationPreferences, RetainStacks, OperationId)
+cloudformation_delete_stack_instances(StackSetName, Accounts,
+  DeploymentTargets, Regions, OperationPreferences, RetainStacks,
+  OperationId)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to delete stack
 instances for.}
 
-\item{Accounts}{[required] The names of the AWS accounts that you want to delete stack instances
-for.}
+\item{Accounts}{[\code{Self-managed} permissions] The names of the AWS accounts that you
+want to delete stack instances for.
 
-\item{Regions}{[required] The regions where you want to delete stack set instances.}
+You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
+
+\item{DeploymentTargets}{[\code{Service-managed} permissions] The AWS Organizations accounts from
+which to delete stack instances.
+
+You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
+
+\item{Regions}{[required] The Regions where you want to delete stack set instances.}
 
 \item{OperationPreferences}{Preferences for how AWS CloudFormation performs this stack set
 operation.}
@@ -41,13 +49,21 @@ stack instances whose status is \code{OUTDATED}.}
 }
 \description{
 Deletes stack instances for the specified accounts, in the specified
-regions.
+Regions.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_stack_instances(
   StackSetName = "string",
   Accounts = list(
     "string"
+  ),
+  DeploymentTargets = list(
+    Accounts = list(
+      "string"
+    ),
+    OrganizationalUnitIds = list(
+      "string"
+    )
   ),
   Regions = list(
     "string"

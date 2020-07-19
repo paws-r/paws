@@ -2,7 +2,8 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_batch_create_room_membership}
 \alias{chime_batch_create_room_membership}
-\title{Adds up to 50 members to a chat room}
+\title{Adds up to 50 members to a chat room in an Amazon Chime Enterprise
+account}
 \usage{
 chime_batch_create_room_membership(AccountId, RoomId,
   MembershipItemList)
@@ -15,9 +16,10 @@ chime_batch_create_room_membership(AccountId, RoomId,
 \item{MembershipItemList}{[required] The list of membership items.}
 }
 \description{
-Adds up to 50 members to a chat room. Members can be either users or
-bots. The member role designates whether the member is a chat room
-administrator or a general chat room member.
+Adds up to 50 members to a chat room in an Amazon Chime Enterprise
+account. Members can be either users or bots. The member role designates
+whether the member is a chat room administrator or a general chat room
+member.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_create_room_membership(

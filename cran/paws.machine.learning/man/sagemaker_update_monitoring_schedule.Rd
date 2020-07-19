@@ -81,6 +81,7 @@ Updates a previously created schedule.
         "string"
       ),
       NetworkConfig = list(
+        EnableInterContainerTrafficEncryption = TRUE|FALSE,
         EnableNetworkIsolation = TRUE|FALSE,
         VpcConfig = list(
           SecurityGroupIds = list(

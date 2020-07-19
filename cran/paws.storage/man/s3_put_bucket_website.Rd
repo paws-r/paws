@@ -64,6 +64,11 @@ because some requests might not be redirected.
 \item \code{ReplaceKeyWith}
 \item \code{HttpRedirectCode}
 }
+
+Amazon S3 has a limitation of 50 routing rules per website
+configuration. If you require more than 50 routing rules, you can use
+object redirect. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html}{Configuring an Object Redirect}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_website(

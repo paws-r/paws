@@ -90,7 +90,7 @@ cloudhsm <- function(config = list()) {
 
 .cloudhsm$metadata <- list(
   service_name = "cloudhsm",
-  endpoints = list("*" = list(endpoint = "cloudhsm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudhsm.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "cloudhsm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudhsm.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloudhsm.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudhsm.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CloudHSM",
   api_version = "2014-05-30",
   signing_name = NULL,

@@ -11,8 +11,8 @@ redshift_describe_event_categories(SourceType)
 \item{SourceType}{The source type, such as cluster or parameter group, to which the
 described event categories apply.
 
-Valid values: cluster, cluster-snapshot, cluster-parameter-group, and
-cluster-security-group.}
+Valid values: cluster, cluster-snapshot, cluster-parameter-group,
+cluster-security-group, and scheduled-action.}
 }
 \description{
 Displays a list of event categories for all event source types, or for a

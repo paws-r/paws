@@ -5,7 +5,7 @@
 \title{Creates an Amazon EKS control plane}
 \usage{
 eks_create_cluster(name, version, roleArn, resourcesVpcConfig, logging,
-  clientRequestToken, tags)
+  clientRequestToken, tags, encryptionConfig)
 }
 \arguments{
 \item{name}{[required] The unique name to give to your cluster.}
@@ -40,6 +40,8 @@ idempotency of the request.}
 \item{tags}{The metadata to apply to the cluster to assist with categorization and
 organization. Each tag consists of a key and an optional value, both of
 which you define.}
+
+\item{encryptionConfig}{The encryption configuration for the cluster.}
 }
 \description{
 Creates an Amazon EKS control plane.
@@ -117,6 +119,16 @@ in the \emph{Amazon EKS User Guide}.
   clientRequestToken = "string",
   tags = list(
     "string"
+  ),
+  encryptionConfig = list(
+    list(
+      resources = list(
+        "string"
+      ),
+      provider = list(
+        keyArn = "string"
+      )
+    )
   )
 )
 }

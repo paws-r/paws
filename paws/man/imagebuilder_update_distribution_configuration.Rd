@@ -9,11 +9,11 @@ imagebuilder_update_distribution_configuration(
 }
 \arguments{
 \item{distributionConfigurationArn}{[required] The Amazon Resource Name (ARN) of the distribution configuration that
-you wish to update.}
+you want to update.}
 
 \item{description}{The description of the distribution configuration.}
 
-\item{distributions}{The distributions of the distribution configuration.}
+\item{distributions}{[required] The distributions of the distribution configuration.}
 
 \item{clientToken}{[required] The idempotency token of the distribution configuration.}
 }
@@ -34,6 +34,7 @@ define and configure the outputs of your pipeline.
         amiTags = list(
           "string"
         ),
+        kmsKeyId = "string",
         launchPermission = list(
           userIds = list(
             "string"

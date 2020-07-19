@@ -2,7 +2,7 @@
 % Please edit documentation in R/support_operations.R
 \name{support_describe_communications}
 \alias{support_describe_communications}
-\title{Returns communications (and attachments) for one or more support cases}
+\title{Returns communications and attachments for one or more support cases}
 \usage{
 support_describe_communications(caseId, beforeTime, afterTime,
   nextToken, maxResults)
@@ -24,10 +24,10 @@ creation.}
 \item{maxResults}{The maximum number of results to return before paginating.}
 }
 \description{
-Returns communications (and attachments) for one or more support cases.
-You can use the \code{afterTime} and \code{beforeTime} parameters to filter by
-date. You can use the \code{caseId} parameter to restrict the results to a
-particular case.
+Returns communications and attachments for one or more support cases.
+Use the \code{afterTime} and \code{beforeTime} parameters to filter by date. You
+can use the \code{caseId} parameter to restrict the results to a specific
+case.
 }
 \details{
 Case data is available for 12 months after creation. If a case was
@@ -35,9 +35,17 @@ created more than 12 months ago, a request for data might cause an
 error.
 
 You can use the \code{maxResults} and \code{nextToken} parameters to control the
-pagination of the result set. Set \code{maxResults} to the number of cases
-you want displayed on each page, and use \code{nextToken} to specify the
+pagination of the results. Set \code{maxResults} to the number of cases that
+you want to display on each page, and use \code{nextToken} to specify the
 resumption of pagination.
+\itemize{
+\item You must have a Business or Enterprise support plan to use the AWS
+Support API.
+\item If you call the AWS Support API from an account that does not have a
+Business or Enterprise support plan, the
+\code{SubscriptionRequiredException} error message appears. For
+information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_communications(

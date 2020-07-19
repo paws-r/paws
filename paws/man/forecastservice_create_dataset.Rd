@@ -5,7 +5,7 @@
 \title{Creates an Amazon Forecast dataset}
 \usage{
 forecastservice_create_dataset(DatasetName, Domain, DatasetType,
-  DataFrequency, Schema, EncryptionConfig)
+  DataFrequency, Schema, EncryptionConfig, Tags)
 }
 \arguments{
 \item{DatasetName}{[required] A name for the dataset.}
@@ -39,6 +39,32 @@ domain and type, see howitworks-domains-ds-types.}
 
 \item{EncryptionConfig}{An AWS Key Management Service (KMS) key and the AWS Identity and Access
 Management (IAM) role that Amazon Forecast can assume to access the key.}
+
+\item{Tags}{The optional metadata that you apply to the dataset to help you
+categorize and organize them. Each tag consists of a key and an optional
+value, both of which you define.
+
+The following basic restrictions apply to tags:
+\itemize{
+\item Maximum number of tags per resource - 50.
+\item For each resource, each tag key must be unique, and each tag key can
+have only one value.
+\item Maximum key length - 128 Unicode characters in UTF-8.
+\item Maximum value length - 256 Unicode characters in UTF-8.
+\item If your tagging schema is used across multiple services and
+resources, remember that other services may have restrictions on
+allowed characters. Generally allowed characters are: letters,
+numbers, and spaces representable in UTF-8, and the following
+characters: + - = . \\_ : / @.
+\item Tag keys and values are case sensitive.
+\item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
+such as a prefix for keys as it is reserved for AWS use. You cannot
+edit or delete tag keys with this prefix. Values can have this
+prefix. If a tag value has \code{aws} as its prefix but the key does not,
+then Forecast considers it to be a user tag and will count against
+the limit of 50 tags. Tags with only the key prefix of \code{aws} do not
+count against your tags per resource limit.
+}}
 }
 \description{
 Creates an Amazon Forecast dataset. The information about the dataset
@@ -65,8 +91,7 @@ predictor. For more information, see howitworks-datasets-groups.
 
 To get a list of all your datasets, use the ListDatasets operation.
 
-For example Forecast datasets, see the Amazon Forecast Sample GitHub
-repository.
+For example Forecast datasets, see the \href{https://github.com/aws-samples/amazon-forecast-samples}{Amazon Forecast Sample GitHub repository}.
 
 The \code{Status} of a dataset must be \code{ACTIVE} before you can import
 training data. Use the DescribeDataset operation to get the status.
@@ -88,6 +113,12 @@ training data. Use the DescribeDataset operation to get the status.
   EncryptionConfig = list(
     RoleArn = "string",
     KMSKeyArn = "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

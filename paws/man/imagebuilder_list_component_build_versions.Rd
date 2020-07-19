@@ -9,7 +9,8 @@ imagebuilder_list_component_build_versions(componentVersionArn,
   maxResults, nextToken)
 }
 \arguments{
-\item{componentVersionArn}{[required] The component version arn whose versions you wish to list.}
+\item{componentVersionArn}{[required] The component version Amazon Resource Name (ARN) whose versions you want
+to list.}
 
 \item{maxResults}{The maximum items to return in a request.}
 

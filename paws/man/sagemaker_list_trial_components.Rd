@@ -9,14 +9,16 @@ sagemaker_list_trial_components(ExperimentName, TrialName, SourceArn,
 }
 \arguments{
 \item{ExperimentName}{A filter that returns only components that are part of the specified
-experiment. If you specify \code{ExperimentName}, you can\'t specify
-\code{TrialName}.}
+experiment. If you specify \code{ExperimentName}, you can\'t filter by
+\code{SourceArn} or \code{TrialName}.}
 
 \item{TrialName}{A filter that returns only components that are part of the specified
-trial. If you specify \code{TrialName}, you can\'t specify \code{ExperimentName}.}
+trial. If you specify \code{TrialName}, you can\'t filter by \code{ExperimentName}
+or \code{SourceArn}.}
 
 \item{SourceArn}{A filter that returns only components that have the specified source
-Amazon Resource Name (ARN).}
+Amazon Resource Name (ARN). If you specify \code{SourceArn}, you can\'t
+filter by \code{ExperimentName} or \code{TrialName}.}
 
 \item{CreatedAfter}{A filter that returns only components created after the specified time.}
 
@@ -34,9 +36,17 @@ set of components, the call returns a token for getting the next set of
 components.}
 }
 \description{
-Lists the trial components in your account. You can filter the list to
-show only components that were created in a specific time range. You can
-sort the list by trial component name or creation time.
+Lists the trial components in your account. You can sort the list by
+trial component name or creation time. You can filter the list to show
+only components that were created in a specific time range. You can also
+filter on one of the following:
+}
+\details{
+\itemize{
+\item \code{ExperimentName}
+\item \code{SourceArn}
+\item \code{TrialName}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_trial_components(

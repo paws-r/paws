@@ -2,26 +2,29 @@
 % Please edit documentation in R/iotdataplane_operations.R
 \name{iotdataplane_update_thing_shadow}
 \alias{iotdataplane_update_thing_shadow}
-\title{Updates the thing shadow for the specified thing}
+\title{Updates the shadow for the specified thing}
 \usage{
-iotdataplane_update_thing_shadow(thingName, payload)
+iotdataplane_update_thing_shadow(thingName, shadowName, payload)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing.}
 
+\item{shadowName}{The name of the shadow.}
+
 \item{payload}{[required] The state information, in JSON format.}
 }
 \description{
-Updates the thing shadow for the specified thing.
+Updates the shadow for the specified thing.
 }
 \details{
 For more information, see
 \href{http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html}{UpdateThingShadow}
-in the \emph{AWS IoT Developer Guide}.
+in the AWS IoT Developer Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$update_thing_shadow(
   thingName = "string",
+  shadowName = "string",
   payload = raw
 )
 }

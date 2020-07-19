@@ -4,8 +4,8 @@
 \alias{appmesh_create_route}
 \title{Creates a route that is associated with a virtual router}
 \usage{
-appmesh_create_route(clientToken, meshName, routeName, spec, tags,
-  virtualRouterName)
+appmesh_create_route(clientToken, meshName, meshOwner, routeName, spec,
+  tags, virtualRouterName)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -13,6 +13,11 @@ idempotency of the request. Up to 36 letters, numbers, hyphens, and
 underscores are allowed.}
 
 \item{meshName}{[required] The name of the service mesh to create the route in.}
+
+\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then the account that you specify must share the mesh with
+your account before you can create the resource in the service mesh. For
+more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{routeName}{[required] The name to use for the route.}
 
@@ -24,24 +29,25 @@ optional value, both of which you define. Tag keys can have a maximum
 character length of 128 characters, and tag values can have a maximum
 length of 256 characters.}
 
-\item{virtualRouterName}{[required] The name of the virtual router in which to create the route.}
+\item{virtualRouterName}{[required] The name of the virtual router in which to create the route. If the
+virtual router is in a shared mesh, then you must be the owner of the
+virtual router resource.}
 }
 \description{
 Creates a route that is associated with a virtual router.
 }
 \details{
-You can use the \code{prefix} parameter in your route specification for
-path-based routing of requests. For example, if your virtual service
-name is \code{my-service.local} and you want the route to match requests to
-\code{my-service.local/metrics}, your prefix should be \verb{/metrics}.
+You can route several different protocols and define a retry policy for
+a route. Traffic can be routed to one or more virtual nodes.
 
-If your route matches a request, you can distribute traffic to one or
-more target virtual nodes with relative weighting.
+For more information about routes, see
+\href{https://docs.aws.amazon.com/app-mesh/latest/userguide/routes.html}{Routes}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_route(
   clientToken = "string",
   meshName = "string",
+  meshOwner = "string",
   routeName = "string",
   spec = list(
     grpcRoute = list(
@@ -88,6 +94,16 @@ more target virtual nodes with relative weighting.
         tcpRetryEvents = list(
           "connection-error"
         )
+      ),
+      timeout = list(
+        idle = list(
+          unit = "ms"|"s",
+          value = 123
+        ),
+        perRequest = list(
+          unit = "ms"|"s",
+          value = 123
+        )
       )
     ),
     http2Route = list(
@@ -131,6 +147,16 @@ more target virtual nodes with relative weighting.
         ),
         tcpRetryEvents = list(
           "connection-error"
+        )
+      ),
+      timeout = list(
+        idle = list(
+          unit = "ms"|"s",
+          value = 123
+        ),
+        perRequest = list(
+          unit = "ms"|"s",
+          value = 123
         )
       )
     ),
@@ -176,6 +202,16 @@ more target virtual nodes with relative weighting.
         tcpRetryEvents = list(
           "connection-error"
         )
+      ),
+      timeout = list(
+        idle = list(
+          unit = "ms"|"s",
+          value = 123
+        ),
+        perRequest = list(
+          unit = "ms"|"s",
+          value = 123
+        )
       )
     ),
     priority = 123,
@@ -186,6 +222,12 @@ more target virtual nodes with relative weighting.
             virtualNode = "string",
             weight = 123
           )
+        )
+      ),
+      timeout = list(
+        idle = list(
+          unit = "ms"|"s",
+          value = 123
         )
       )
     )

@@ -17,7 +17,7 @@ replication relationship between two or more DynamoDB tables with the
 same table name in the provided Regions.
 }
 \details{
-This method only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html}{Version 2017.11.29}
+This operation only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html}{Version 2017.11.29}
 of global tables.
 
 If you want to add a new replica table to a global table, each of the
@@ -37,6 +37,14 @@ must also be met:
 \item The global secondary indexes must have the same name.
 \item The global secondary indexes must have the same hash key and sort
 key (if present).
+}
+
+If local secondary indexes are specified, then the following conditions
+must also be met:
+\itemize{
+\item The local secondary indexes must have the same name.
+\item The local secondary indexes must have the same hash key and sort key
+(if present).
 }
 
 Write capacity settings should be set consistently across your replica

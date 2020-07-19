@@ -2,7 +2,8 @@
 % Please edit documentation in R/neptune_operations.R
 \name{neptune_describe_db_clusters}
 \alias{neptune_describe_db_clusters}
-\title{Returns information about provisioned DB clusters}
+\title{Returns information about provisioned DB clusters, and supports
+pagination}
 \usage{
 neptune_describe_db_clusters(DBClusterIdentifier, Filters, MaxRecords,
   Marker)
@@ -24,7 +25,12 @@ Supported filters:
 \item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster
 Amazon Resource Names (ARNs). The results list will only include
 information about the DB clusters identified by these ARNs.
-}}
+\item \code{engine} - Accepts an engine name (such as \code{neptune}), and restricts
+the results list to DB clusters created by that engine.
+}
+
+For example, to invoke this API from the AWS CLI and filter so that only
+Neptune DB clusters are returned, you could use the following command:}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token
@@ -40,8 +46,12 @@ request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
-Returns information about provisioned DB clusters. This API supports
+Returns information about provisioned DB clusters, and supports
 pagination.
+}
+\details{
+This operation can also return information for Amazon RDS clusters and
+Amazon DocDB clusters.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_db_clusters(

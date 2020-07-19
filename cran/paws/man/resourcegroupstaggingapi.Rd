@@ -81,9 +81,11 @@ following AWS services.
 \item Amazon Cognito User Pools
 \item Amazon Comprehend
 \item AWS Config
+\item AWS Data Exchange
 \item AWS Data Pipeline
 \item AWS Database Migration Service
 \item AWS DataSync
+\item AWS Device Farm
 \item AWS Direct Connect
 \item AWS Directory Service
 \item Amazon DynamoDB
@@ -91,6 +93,7 @@ following AWS services.
 \item Amazon EC2
 \item Amazon ECR
 \item Amazon ECS
+\item Amazon EKS
 \item AWS Elastic Beanstalk
 \item Amazon Elastic File System
 \item Elastic Load Balancing
@@ -111,6 +114,8 @@ following AWS services.
 \item AWS IoT Device Management
 \item AWS IoT Events
 \item AWS IoT Greengrass
+\item AWS IoT 1-Click
+\item AWS IoT Things Graph
 \item AWS Key Management Service
 \item Amazon Kinesis
 \item Amazon Kinesis Data Analytics
@@ -136,12 +141,15 @@ following AWS services.
 \item AWS Secrets Manager
 \item AWS Security Hub
 \item AWS Service Catalog
+\item Amazon Simple Email Service (SES)
 \item Amazon Simple Notification Service (SNS)
 \item Amazon Simple Queue Service (SQS)
+\item Amazon Simple Workflow Service
 \item AWS Step Functions
 \item AWS Storage Gateway
 \item AWS Systems Manager
 \item AWS Transfer for SFTP
+\item AWS WAF Regional
 \item Amazon VPC
 \item Amazon WorkSpaces
 }

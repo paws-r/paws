@@ -2,8 +2,8 @@
 % Please edit documentation in R/applicationautoscaling_operations.R
 \name{applicationautoscaling_put_scaling_policy}
 \alias{applicationautoscaling_put_scaling_policy}
-\title{Creates or updates a policy for an Application Auto Scaling scalable
-target}
+\title{Creates or updates a scaling policy for an Application Auto Scaling
+scalable target}
 \usage{
 applicationautoscaling_put_scaling_policy(PolicyName, ServiceNamespace,
   ResourceId, ScalableDimension, PolicyType,
@@ -13,10 +13,9 @@ applicationautoscaling_put_scaling_policy(PolicyName, ServiceNamespace,
 \arguments{
 \item{PolicyName}{[required] The name of the scaling policy.}
 
-\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource or
-\code{custom-resource} for a resource provided by your own application or
-service. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
-in the \emph{Amazon Web Services General Reference}.}
+\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource. For a
+resource provided by your own application or service, use
+\code{custom-resource} instead.}
 
 \item{ResourceId}{[required] The identifier of the resource associated with the scaling policy. This
 string consists of the resource type and unique identifier.
@@ -55,6 +54,9 @@ Example:
 the unique identifier is the function name with a function version
 or alias name suffix that is not \verb{$LATEST}. Example:
 \verb{function:my-function:prod} or \verb{function:my-function:1}.
+\item Amazon Keyspaces table - The resource type is \code{table} and the unique
+identifier is the table name. Example:
+\code{keyspace/mykeyspace/table/mytable}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension. This string consists of the service namespace,
@@ -88,6 +90,10 @@ The number of inference units for an Amazon Comprehend document
 classification endpoint.
 \item \verb{lambda:function:ProvisionedConcurrency} - The provisioned
 concurrency for a Lambda function.
+\item \code{cassandra:table:ReadCapacityUnits} - The provisioned read capacity
+for an Amazon Keyspaces table.
+\item \code{cassandra:table:WriteCapacityUnits} - The provisioned write
+capacity for an Amazon Keyspaces table.
 }}
 
 \item{PolicyType}{The policy type. This parameter is required if you are creating a
@@ -97,8 +103,8 @@ The following policy types are supported:
 
 \code{TargetTrackingScaling}---Not supported for Amazon EMR
 
-\code{StepScaling}---Not supported for DynamoDB, Amazon Comprehend, or AWS
-Lambda
+\code{StepScaling}---Not supported for DynamoDB, Amazon Comprehend, Lambda,
+or Amazon Keyspaces (for Apache Cassandra).
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target Tracking Scaling Policies}
 and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step Scaling Policies}
@@ -116,23 +122,14 @@ This parameter is required if you are creating a policy and the policy
 type is \code{TargetTrackingScaling}.}
 }
 \description{
-Creates or updates a policy for an Application Auto Scaling scalable
-target.
+Creates or updates a scaling policy for an Application Auto Scaling
+scalable target.
 }
 \details{
 Each scalable target is identified by a service namespace, resource ID,
 and scalable dimension. A scaling policy applies to the scalable target
 identified by those three attributes. You cannot create a scaling policy
-until you have registered the resource as a scalable target using
-RegisterScalableTarget.
-
-To update a policy, specify its policy name and the parameters that you
-want to change. Any parameters that you don\'t specify are not changed
-by this update request.
-
-You can view the scaling policies for a service namespace using
-DescribeScalingPolicies. If you are no longer using a scaling policy,
-you can delete it using DeleteScalingPolicy.
+until you have registered the resource as a scalable target.
 
 Multiple scaling policies can be in force at the same time for the same
 scalable target. You can have one or more target tracking scaling
@@ -145,14 +142,28 @@ capacity by 3, another policy increases capacity by 200 percent, and the
 current capacity is 10, Application Auto Scaling uses the policy with
 the highest calculated capacity (200\% of 10 = 20) and scales out to 30.
 
-Learn more about how to work with scaling policies in the \href{https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html}{Application Auto Scaling User Guide}.
+We recommend caution, however, when using target tracking scaling
+policies with step scaling policies because conflicts between these
+policies can cause undesirable behavior. For example, if the step
+scaling policy initiates a scale-in activity before the target tracking
+policy is ready to scale in, the scale-in activity will not be blocked.
+After the scale-in activity completes, the target tracking policy could
+instruct the scalable target to scale out again.
+
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target Tracking Scaling Policies}
+and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step Scaling Policies}
+in the \emph{Application Auto Scaling User Guide}.
+
+If a scalable target is deregistered, the scalable target is no longer
+available to execute scaling policies. Any scaling policies that were
+specified for the scalable target are deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$put_scaling_policy(
   PolicyName = "string",
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
   ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
   PolicyType = "StepScaling"|"TargetTrackingScaling",
   StepScalingPolicyConfiguration = list(
     AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
@@ -170,7 +181,7 @@ Learn more about how to work with scaling policies in the \href{https://docs.aws
   TargetTrackingScalingPolicyConfiguration = list(
     TargetValue = 123.0,
     PredefinedMetricSpecification = list(
-      PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization",
+      PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization",
       ResourceLabel = "string"
     ),
     CustomizedMetricSpecification = list(
@@ -213,101 +224,6 @@ svc$put_scaling_policy(
     ScaleInCooldown = 60L,
     ScaleOutCooldown = 60L,
     TargetValue = 75L
-  )
-)
-
-# The following example applies a target tracking scaling policy with a
-# customized metric specification to an Amazon ECS service called web-app
-# in the default cluster. The policy keeps the average utilization of the
-# service at 75 percent, with scale-out and scale-in cooldown periods of
-# 60 seconds.
-svc$put_scaling_policy(
-  PolicyName = "cms75-target-tracking-scaling-policy",
-  PolicyType = "TargetTrackingScaling",
-  ResourceId = "service/default/web-app",
-  ScalableDimension = "ecs:service:DesiredCount",
-  ServiceNamespace = "ecs",
-  TargetTrackingScalingPolicyConfiguration = list(
-    CustomizedMetricSpecification = list(
-      Dimensions = list(
-        list(
-          Name = "MyOptionalMetricDimensionName",
-          Value = "MyOptionalMetricDimensionValue"
-        )
-      ),
-      MetricName = "MyUtilizationMetric",
-      Namespace = "MyNamespace",
-      Statistic = "Average",
-      Unit = "Percent"
-    ),
-    ScaleInCooldown = 60L,
-    ScaleOutCooldown = 60L,
-    TargetValue = 75L
-  )
-)
-
-# The following example applies a target tracking scaling policy to an
-# Amazon ECS service called web-app in the default cluster. The policy is
-# used to scale out the ECS service when the RequestCountPerTarget metric
-# from the Application Load Balancer exceeds the threshold.
-svc$put_scaling_policy(
-  PolicyName = "alb-scale-out-target-tracking-scaling-policy",
-  PolicyType = "TargetTrackingScaling",
-  ResourceId = "service/default/web-app",
-  ScalableDimension = "ecs:service:DesiredCount",
-  ServiceNamespace = "ecs",
-  TargetTrackingScalingPolicyConfiguration = list(
-    DisableScaleIn = TRUE,
-    PredefinedMetricSpecification = list(
-      PredefinedMetricType = "ALBRequestCountPerTarget",
-      ResourceLabel = "app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targetgroup/EC2Co-Defa..."
-    ),
-    ScaleInCooldown = 60L,
-    ScaleOutCooldown = 60L,
-    TargetValue = 1000L
-  )
-)
-
-# This example applies a step scaling policy to an Amazon ECS service
-# called web-app in the default cluster. The policy increases the desired
-# count of the service by 200\%, with a cool down period of 60 seconds.
-svc$put_scaling_policy(
-  PolicyName = "web-app-cpu-gt-75",
-  PolicyType = "StepScaling",
-  ResourceId = "service/default/web-app",
-  ScalableDimension = "ecs:service:DesiredCount",
-  ServiceNamespace = "ecs",
-  StepScalingPolicyConfiguration = list(
-    AdjustmentType = "PercentChangeInCapacity",
-    Cooldown = 60L,
-    StepAdjustments = list(
-      list(
-        MetricIntervalLowerBound = 0L,
-        ScalingAdjustment = 200L
-      )
-    )
-  )
-)
-
-# This example applies a step scaling policy to an Amazon EC2 Spot fleet.
-# The policy increases the target capacity of the spot fleet by 200\%, with
-# a cool down period of 180 seconds.",
-# 
-svc$put_scaling_policy(
-  PolicyName = "fleet-cpu-gt-75",
-  PolicyType = "StepScaling",
-  ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",
-  ScalableDimension = "ec2:spot-fleet-request:TargetCapacity",
-  ServiceNamespace = "ec2",
-  StepScalingPolicyConfiguration = list(
-    AdjustmentType = "PercentChangeInCapacity",
-    Cooldown = 180L,
-    StepAdjustments = list(
-      list(
-        MetricIntervalLowerBound = 0L,
-        ScalingAdjustment = 200L
-      )
-    )
   )
 )
 }

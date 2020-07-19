@@ -34,4 +34,13 @@ using a specified service.
 }
 }
 
+\examples{
+\dontrun{
+# Example: List service instances
+svc$list_instances(
+  ServiceId = "srv-qzpwvt2tfqcegapy"
+)
+}
+
+}
 \keyword{internal}

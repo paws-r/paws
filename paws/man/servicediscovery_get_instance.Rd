@@ -22,4 +22,14 @@ Gets information about a specified instance.
 }
 }
 
+\examples{
+\dontrun{
+# This example gets information about a specified instance.
+svc$get_instance(
+  InstanceId = "i-abcd1234",
+  ServiceId = "srv-e4anhexample0004"
+)
+}
+
+}
 \keyword{internal}

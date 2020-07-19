@@ -1195,6 +1195,14 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #' including VPCs in different AWS Regions. Connecting the private virtual
 #' interface to a VGW only provides access to a single VPC within the same
 #' Region.
+#' 
+#' Setting the MTU of a virtual interface to 9001 (jumbo frames) can cause
+#' an update to the underlying physical connection if it wasn\'t updated to
+#' support jumbo frames. Updating the connection disrupts network
+#' connectivity for all virtual interfaces associated with the connection
+#' for up to 30 seconds. To check whether your connection supports jumbo
+#' frames, call DescribeConnections. To check whether your virtual
+#' interface supports jumbo frames, call DescribeVirtualInterfaces.
 #'
 #' @usage
 #' directconnect_create_private_virtual_interface(connectionId,
@@ -1324,6 +1332,14 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #' and the Direct Connect gateway must be different. For example, if you
 #' use the default ASN 64512 for both your the transit gateway and Direct
 #' Connect gateway, the association request fails.
+#' 
+#' Setting the MTU of a virtual interface to 8500 (jumbo frames) can cause
+#' an update to the underlying physical connection if it wasn\'t updated to
+#' support jumbo frames. Updating the connection disrupts network
+#' connectivity for all virtual interfaces associated with the connection
+#' for up to 30 seconds. To check whether your connection supports jumbo
+#' frames, call DescribeConnections. To check whether your virtual
+#' interface supports jumbo frames, call DescribeVirtualInterfaces.
 #'
 #' @usage
 #' directconnect_create_transit_virtual_interface(connectionId,
@@ -2474,6 +2490,159 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
 }
 .directconnect$operations$disassociate_connection_from_lag <- directconnect_disassociate_connection_from_lag
 
+#' Lists the virtual interface failover test history
+#'
+#' Lists the virtual interface failover test history.
+#'
+#' @usage
+#' directconnect_list_virtual_interface_test_history(testId,
+#'   virtualInterfaceId, bgpPeers, status, maxResults, nextToken)
+#'
+#' @param testId The ID of the virtual interface failover test.
+#' @param virtualInterfaceId The ID of the virtual interface that was tested.
+#' @param bgpPeers The BGP peers that were placed in the DOWN state during the virtual
+#' interface failover test.
+#' @param status The status of the virtual interface failover test.
+#' @param maxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' 
+#' If `MaxResults` is given a value larger than 100, only 100 results are
+#' returned.
+#' @param nextToken The token for the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_virtual_interface_test_history(
+#'   testId = "string",
+#'   virtualInterfaceId = "string",
+#'   bgpPeers = list(
+#'     "string"
+#'   ),
+#'   status = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_list_virtual_interface_test_history
+directconnect_list_virtual_interface_test_history <- function(testId = NULL, virtualInterfaceId = NULL, bgpPeers = NULL, status = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListVirtualInterfaceTestHistory",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$list_virtual_interface_test_history_input(testId = testId, virtualInterfaceId = virtualInterfaceId, bgpPeers = bgpPeers, status = status, maxResults = maxResults, nextToken = nextToken)
+  output <- .directconnect$list_virtual_interface_test_history_output()
+  config <- get_config()
+  svc <- .directconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$list_virtual_interface_test_history <- directconnect_list_virtual_interface_test_history
+
+#' Starts the virtual interface failover test that verifies your
+#' configuration meets your resiliency requirements by placing the BGP
+#' peering session in the DOWN state
+#'
+#' Starts the virtual interface failover test that verifies your
+#' configuration meets your resiliency requirements by placing the BGP
+#' peering session in the DOWN state. You can then send traffic to verify
+#' that there are no outages.
+#' 
+#' You can run the test on public, private, transit, and hosted virtual
+#' interfaces.
+#' 
+#' You can use
+#' [ListVirtualInterfaceTestHistory](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_ListVirtualInterfaceTestHistory.html)
+#' to view the virtual interface test history.
+#' 
+#' If you need to stop the test before the test interval completes, use
+#' [StopBgpFailoverTest](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_StopBgpFailoverTest.html).
+#'
+#' @usage
+#' directconnect_start_bgp_failover_test(virtualInterfaceId, bgpPeers,
+#'   testDurationInMinutes)
+#'
+#' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface you want to test.
+#' @param bgpPeers The BGP peers to place in the DOWN state.
+#' @param testDurationInMinutes The time in minutes that the virtual interface failover test will last.
+#' 
+#' Maximum value: 180 minutes (3 hours).
+#' 
+#' Default: 180 minutes (3 hours).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_bgp_failover_test(
+#'   virtualInterfaceId = "string",
+#'   bgpPeers = list(
+#'     "string"
+#'   ),
+#'   testDurationInMinutes = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_start_bgp_failover_test
+directconnect_start_bgp_failover_test <- function(virtualInterfaceId, bgpPeers = NULL, testDurationInMinutes = NULL) {
+  op <- new_operation(
+    name = "StartBgpFailoverTest",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$start_bgp_failover_test_input(virtualInterfaceId = virtualInterfaceId, bgpPeers = bgpPeers, testDurationInMinutes = testDurationInMinutes)
+  output <- .directconnect$start_bgp_failover_test_output()
+  config <- get_config()
+  svc <- .directconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$start_bgp_failover_test <- directconnect_start_bgp_failover_test
+
+#' Stops the virtual interface failover test
+#'
+#' Stops the virtual interface failover test.
+#'
+#' @usage
+#' directconnect_stop_bgp_failover_test(virtualInterfaceId)
+#'
+#' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface you no longer want to test.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_bgp_failover_test(
+#'   virtualInterfaceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directconnect_stop_bgp_failover_test
+directconnect_stop_bgp_failover_test <- function(virtualInterfaceId) {
+  op <- new_operation(
+    name = "StopBgpFailoverTest",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directconnect$stop_bgp_failover_test_input(virtualInterfaceId = virtualInterfaceId)
+  output <- .directconnect$stop_bgp_failover_test_output()
+  config <- get_config()
+  svc <- .directconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directconnect$operations$stop_bgp_failover_test <- directconnect_stop_bgp_failover_test
+
 #' Adds the specified tags to the specified AWS Direct Connect resource
 #'
 #' Adds the specified tags to the specified AWS Direct Connect resource.
@@ -2683,7 +2852,7 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL)
 #' support jumbo frames. Updating the connection disrupts network
 #' connectivity for all virtual interfaces associated with the connection
 #' for up to 30 seconds. To check whether your connection supports jumbo
-#' frames, call DescribeConnections. To check whether your virtual
+#' frames, call DescribeConnections. To check whether your virtual q
 #' interface supports jumbo frames, call DescribeVirtualInterfaces.
 #'
 #' @usage

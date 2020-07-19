@@ -9,7 +9,7 @@ kinesisvideo_create_signaling_channel(ChannelName, ChannelType,
 }
 \arguments{
 \item{ChannelName}{[required] A name for the signaling channel that you are creating. It must be
-unique for each account and region.}
+unique for each AWS account and AWS Region.}
 
 \item{ChannelType}{A type of the signaling channel that you are creating. Currently,
 \code{SINGLE_MASTER} is the only supported channel type.}
@@ -17,7 +17,7 @@ unique for each account and region.}
 \item{SingleMasterConfiguration}{A structure containing the configuration for the \code{SINGLE_MASTER} channel
 type.}
 
-\item{Tags}{A set of tags (key/value pairs) that you want to associate with this
+\item{Tags}{A set of tags (key-value pairs) that you want to associate with this
 channel.}
 }
 \description{

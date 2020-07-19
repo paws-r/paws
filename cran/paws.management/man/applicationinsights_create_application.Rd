@@ -5,13 +5,17 @@
 \title{Adds an application that is created from a resource group}
 \usage{
 applicationinsights_create_application(ResourceGroupName,
-  OpsCenterEnabled, OpsItemSNSTopicArn, Tags)
+  OpsCenterEnabled, CWEMonitorEnabled, OpsItemSNSTopicArn, Tags)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
 
 \item{OpsCenterEnabled}{When set to \code{true}, creates opsItems for any problems detected on an
 application.}
+
+\item{CWEMonitorEnabled}{Indicates whether Application Insights can listen to CloudWatch events
+for the application resources, such as \verb{instance terminated},
+\verb{failed deployment}, and others.}
 
 \item{OpsItemSNSTopicArn}{The SNS topic provided to Application Insights that is associated to the
 created opsItem. Allows you to receive notifications for updates to the
@@ -28,6 +32,7 @@ Adds an application that is created from a resource group.
 \preformatted{svc$create_application(
   ResourceGroupName = "string",
   OpsCenterEnabled = TRUE|FALSE,
+  CWEMonitorEnabled = TRUE|FALSE,
   OpsItemSNSTopicArn = "string",
   Tags = list(
     list(

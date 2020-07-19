@@ -29,6 +29,9 @@ You get the full benefit of fast snapshot restores after they enter the
 \code{enabled} state. To get the current state of fast snapshot restores, use
 DescribeFastSnapshotRestores. To disable fast snapshot restores, use
 DisableFastSnapshotRestores.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html}{Amazon EBS Fast Snapshot Restore}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_fast_snapshot_restores(

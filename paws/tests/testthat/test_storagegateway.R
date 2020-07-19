@@ -6,6 +6,10 @@ test_that("describe_tape_archives", {
   expect_error(svc$describe_tape_archives(), NA)
 })
 
+test_that("list_automatic_tape_creation_policies", {
+  expect_error(svc$list_automatic_tape_creation_policies(), NA)
+})
+
 test_that("list_file_shares", {
   expect_error(svc$list_file_shares(), NA)
 })

@@ -7,13 +7,13 @@
 imagebuilder_list_image_recipes(owner, filters, maxResults, nextToken)
 }
 \arguments{
-\item{owner}{The owner defines whose image recipes you wish to list. By default this
-request will only show image recipes owned by your account. You may use
-this field to specify if you wish to view image recipes owned by
-yourself, Amazon, or those image recipes that have been shared with you
-by other customers.}
+\item{owner}{The owner defines which image recipes you want to list. By default, this
+request will only show image recipes owned by your account. You can use
+this field to specify if you want to view image recipes owned by
+yourself, by Amazon, or those image recipes that have been shared with
+you by other customers.}
 
-\item{filters}{}
+\item{filters}{The filters.}
 
 \item{maxResults}{The maximum items to return in a request.}
 

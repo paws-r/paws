@@ -10,7 +10,7 @@ s3_put_bucket_cors(Bucket, CORSConfiguration, ContentMD5)
 \item{Bucket}{[required] Specifies the bucket impacted by the \code{cors}configuration.}
 
 \item{CORSConfiguration}{[required] Describes the cross-origin access configuration for objects in an Amazon
-S3 bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev//cors.html}{Enabling Cross-Origin Resource Sharing} in
+S3 bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html}{Enabling Cross-Origin Resource Sharing} in
 the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be

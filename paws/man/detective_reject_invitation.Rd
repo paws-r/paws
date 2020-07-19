@@ -2,7 +2,7 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_reject_invitation}
 \alias{detective_reject_invitation}
-\title{Amazon Detective is currently in preview}
+\title{Rejects an invitation to contribute the account data to a behavior graph}
 \usage{
 detective_reject_invitation(GraphArn)
 }
@@ -13,9 +13,6 @@ The member account\'s current member status in the behavior graph must
 be \code{INVITED}.}
 }
 \description{
-Amazon Detective is currently in preview.
-}
-\details{
 Rejects an invitation to contribute the account data to a behavior
 graph. This operation must be called by a member account that has the
 \code{INVITED} status.

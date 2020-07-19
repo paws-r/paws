@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_describe_domain}
 \alias{sagemaker_describe_domain}
-\title{The desciption of the domain}
+\title{The description of the domain}
 \usage{
 sagemaker_describe_domain(DomainId)
 }
@@ -10,7 +10,7 @@ sagemaker_describe_domain(DomainId)
 \item{DomainId}{[required] The domain ID.}
 }
 \description{
-The desciption of the domain.
+The description of the domain.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_domain(

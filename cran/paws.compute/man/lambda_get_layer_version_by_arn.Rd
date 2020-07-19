@@ -21,4 +21,14 @@ with a link to download the layer archive that\'s valid for 10 minutes.
 }
 }
 
+\examples{
+\dontrun{
+# The following example returns information about the layer version with
+# the specified Amazon Resource Name (ARN).
+svc$get_layer_version_by_arn(
+  Arn = "arn:aws:lambda:ca-central-1:123456789012:layer:blank-python-lib:3"
+)
+}
+
+}
 \keyword{internal}

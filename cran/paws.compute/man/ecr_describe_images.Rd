@@ -2,8 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_describe_images}
 \alias{ecr_describe_images}
-\title{Returns metadata about the images in a repository, including image size,
-image tags, and creation date}
+\title{Returns metadata about the images in a repository}
 \usage{
 ecr_describe_images(registryId, repositoryName, imageIds, nextToken,
   maxResults, filter)
@@ -38,8 +37,7 @@ you specify images with \code{imageIds}.}
 results.}
 }
 \description{
-Returns metadata about the images in a repository, including image size,
-image tags, and creation date.
+Returns metadata about the images in a repository.
 }
 \details{
 Beginning with Docker version 1.9, the Docker client compresses image

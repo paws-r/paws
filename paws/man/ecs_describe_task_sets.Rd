@@ -4,7 +4,7 @@
 \alias{ecs_describe_task_sets}
 \title{Describes the task sets in the specified cluster and service}
 \usage{
-ecs_describe_task_sets(cluster, service, taskSets)
+ecs_describe_task_sets(cluster, service, taskSets, include)
 }
 \arguments{
 \item{cluster}{[required] The short name or full Amazon Resource Name (ARN) of the cluster that
@@ -14,6 +14,10 @@ hosts the service that the task sets exist in.}
 the task sets exist in.}
 
 \item{taskSets}{The ID or full Amazon Resource Name (ARN) of task sets to describe.}
+
+\item{include}{Specifies whether to see the resource tags for the task set. If \code{TAGS}
+is specified, the tags are included in the response. If this field is
+omitted, tags are not included in the response.}
 }
 \description{
 Describes the task sets in the specified cluster and service. This is
@@ -27,6 +31,9 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
   service = "string",
   taskSets = list(
     "string"
+  ),
+  include = list(
+    "TAGS"
   )
 )
 }

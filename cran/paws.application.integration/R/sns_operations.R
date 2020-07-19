@@ -146,28 +146,38 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 .sns$operations$confirm_subscription <- sns_confirm_subscription
 
 #' Creates a platform application object for one of the supported push
-#' notification services, such as APNS and FCM, to which devices and mobile
-#' apps may register
+#' notification services, such as APNS and GCM (Firebase Cloud Messaging),
+#' to which devices and mobile apps may register
 #'
 #' Creates a platform application object for one of the supported push
-#' notification services, such as APNS and FCM, to which devices and mobile
-#' apps may register. You must specify PlatformPrincipal and
-#' PlatformCredential attributes when using the `CreatePlatformApplication`
-#' action. The PlatformPrincipal is received from the notification service.
-#' For APNS/APNS\\_SANDBOX, PlatformPrincipal is \"SSL certificate\". For
-#' FCM, PlatformPrincipal is not applicable. For ADM, PlatformPrincipal is
-#' \"client id\". The PlatformCredential is also received from the
-#' notification service. For WNS, PlatformPrincipal is \"Package Security
-#' Identifier\". For MPNS, PlatformPrincipal is \"TLS certificate\". For
-#' Baidu, PlatformPrincipal is \"API key\".
+#' notification services, such as APNS and GCM (Firebase Cloud Messaging),
+#' to which devices and mobile apps may register. You must specify
+#' `PlatformPrincipal` and `PlatformCredential` attributes when using the
+#' `CreatePlatformApplication` action.
 #' 
-#' For APNS/APNS\\_SANDBOX, PlatformCredential is \"private key\". For FCM,
-#' PlatformCredential is \"API key\". For ADM, PlatformCredential is
-#' \"client secret\". For WNS, PlatformCredential is \"secret key\". For
-#' MPNS, PlatformCredential is \"private key\". For Baidu,
-#' PlatformCredential is \"secret key\". The PlatformApplicationArn that is
-#' returned when using `CreatePlatformApplication` is then used as an
-#' attribute for the `CreatePlatformEndpoint` action.
+#' `PlatformPrincipal` and `PlatformCredential` are received from the
+#' notification service.
+#' 
+#' -   For `ADM`, `PlatformPrincipal` is `client id` and
+#'     `PlatformCredential` is `client secret`.
+#' 
+#' -   For `Baidu`, `PlatformPrincipal` is `API key` and
+#'     `PlatformCredential` is `secret key`.
+#' 
+#' -   For `APNS` and `APNS_SANDBOX`, `PlatformPrincipal` is
+#'     `SSL certificate` and `PlatformCredential` is `private key`.
+#' 
+#' -   For `GCM` (Firebase Cloud Messaging), there is no
+#'     `PlatformPrincipal` and the `PlatformCredential` is `API key`.
+#' 
+#' -   For `MPNS`, `PlatformPrincipal` is `TLS certificate` and
+#'     `PlatformCredential` is `private key`.
+#' 
+#' -   For `WNS`, `PlatformPrincipal` is `Package Security Identifier` and
+#'     `PlatformCredential` is `secret key`.
+#' 
+#' You can use the returned `PlatformApplicationArn` as an attribute for
+#' the `CreatePlatformEndpoint` action.
 #'
 #' @usage
 #' sns_create_platform_application(Name, Platform, Attributes)
@@ -176,7 +186,7 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 #' letters, numbers, underscores, hyphens, and periods, and must be between
 #' 1 and 256 characters long.
 #' @param Platform &#91;required&#93; The following platforms are supported: ADM (Amazon Device Messaging),
-#' APNS (Apple Push Notification Service), APNS\\_SANDBOX, and FCM (Firebase
+#' APNS (Apple Push Notification Service), APNS\\_SANDBOX, and GCM (Firebase
 #' Cloud Messaging).
 #' @param Attributes &#91;required&#93; For a list of attributes, see
 #' [SetPlatformApplicationAttributes](https://docs.aws.amazon.com/sns/latest/api/API_SetPlatformApplicationAttributes.html)
@@ -213,19 +223,19 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
 .sns$operations$create_platform_application <- sns_create_platform_application
 
 #' Creates an endpoint for a device and mobile app on one of the supported
-#' push notification services, such as FCM and APNS
+#' push notification services, such as GCM (Firebase Cloud Messaging) and
+#' APNS
 #'
 #' Creates an endpoint for a device and mobile app on one of the supported
-#' push notification services, such as FCM and APNS.
-#' `CreatePlatformEndpoint` requires the PlatformApplicationArn that is
-#' returned from `CreatePlatformApplication`. The EndpointArn that is
-#' returned when using `CreatePlatformEndpoint` can then be used by the
-#' `Publish` action to send a message to a mobile app or by the `Subscribe`
-#' action for subscription to a topic. The `CreatePlatformEndpoint` action
-#' is idempotent, so if the requester already owns an endpoint with the
-#' same device token and attributes, that endpoint\'s ARN is returned
-#' without creating a new endpoint. For more information, see [Using Amazon
-#' SNS Mobile Push
+#' push notification services, such as GCM (Firebase Cloud Messaging) and
+#' APNS. `CreatePlatformEndpoint` requires the `PlatformApplicationArn`
+#' that is returned from `CreatePlatformApplication`. You can use the
+#' returned `EndpointArn` to send a message to a mobile app or by the
+#' `Subscribe` action for subscription to a topic. The
+#' `CreatePlatformEndpoint` action is idempotent, so if the requester
+#' already owns an endpoint with the same device token and attributes, that
+#' endpoint\'s ARN is returned without creating a new endpoint. For more
+#' information, see [Using Amazon SNS Mobile Push
 #' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #' 
 #' When using `CreatePlatformEndpoint` with Baidu, two attributes must be
@@ -244,8 +254,8 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
 #' device. The specific name for Token will vary, depending on which
 #' notification service is being used. For example, when using APNS as the
 #' notification service, you need the device token. Alternatively, when
-#' using FCM or ADM, the device token equivalent is called the registration
-#' ID.
+#' using GCM (Firebase Cloud Messaging) or ADM, the device token equivalent
+#' is called the registration ID.
 #' @param CustomUserData Arbitrary user data to associate with the endpoint. Amazon SNS does not
 #' use this data. The data must be in UTF-8 format and less than 2KB.
 #' @param Attributes For a list of attributes, see
@@ -286,7 +296,8 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
 #' Creates a topic to which notifications can be published
 #'
 #' Creates a topic to which notifications can be published. Users can
-#' create at most 100,000 topics. For more information, see
+#' create at most 100,000 standard topics (at most 1,000 FIFO topics). For
+#' more information, see
 #' [https://aws.amazon.com/sns](http://aws.amazon.com/sns/). This action is
 #' idempotent, so if the requester already owns a topic with the specified
 #' name, that topic\'s ARN is returned without creating a new topic.
@@ -299,6 +310,9 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
 #' Constraints: Topic names must be made up of only uppercase and lowercase
 #' ASCII letters, numbers, underscores, and hyphens, and must be between 1
 #' and 256 characters long.
+#' 
+#' For a FIFO (first-in-first-out) topic, the name must end with the
+#' `.fifo` suffix.
 #' @param Attributes A map of attributes with their corresponding values.
 #' 
 #' The following lists the names, descriptions, and values of the special
@@ -310,18 +324,34 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
 #' -   `DisplayName` -- The display name to use for a topic with SMS
 #'     subscriptions.
 #' 
+#' -   `FifoTopic` -- Set to true to create a FIFO topic.
+#' 
 #' -   `Policy` -- The policy that defines who can access your topic. By
 #'     default, only the topic owner can publish or subscribe to the topic.
 #' 
 #' The following attribute applies only to
 #' [server-side-encryption](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html):
 #' 
-#' -   `KmsMasterKeyId` - The ID of an AWS-managed customer master key
+#' -   `KmsMasterKeyId` -- The ID of an AWS-managed customer master key
 #'     (CMK) for Amazon SNS or a custom CMK. For more information, see [Key
 #'     Terms](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms).
 #'     For more examples, see
 #'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
 #'     in the *AWS Key Management Service API Reference*.
+#' 
+#' The following attribute applies only to FIFO topics:
+#' 
+#' -   `ContentBasedDeduplication` -- Enables content-based deduplication.
+#'     Amazon SNS uses a SHA-256 hash to generate the
+#'     `MessageDeduplicationId` using the body of the message (but not the
+#'     attributes of the message).
+#' 
+#' -   When `ContentBasedDeduplication` is in effect, messages with
+#'     identical content sent within the deduplication interval are treated
+#'     as duplicates and only one copy of the message is delivered.
+#' 
+#' -   If the queue has `ContentBasedDeduplication` set, your
+#'     `MessageDeduplicationId` overrides the generated one.
 #' @param Tags The list of tags to add to a new topic.
 #' 
 #' To be able to tag a topic on creation, you must have the
@@ -406,11 +436,11 @@ sns_delete_endpoint <- function(EndpointArn) {
 .sns$operations$delete_endpoint <- sns_delete_endpoint
 
 #' Deletes a platform application object for one of the supported push
-#' notification services, such as APNS and FCM
+#' notification services, such as APNS and GCM (Firebase Cloud Messaging)
 #'
 #' Deletes a platform application object for one of the supported push
-#' notification services, such as APNS and FCM. For more information, see
-#' [Using Amazon SNS Mobile Push
+#' notification services, such as APNS and GCM (Firebase Cloud Messaging).
+#' For more information, see [Using Amazon SNS Mobile Push
 #' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #'
 #' @usage
@@ -485,11 +515,12 @@ sns_delete_topic <- function(TopicArn) {
 .sns$operations$delete_topic <- sns_delete_topic
 
 #' Retrieves the endpoint attributes for a device on one of the supported
-#' push notification services, such as FCM and APNS
+#' push notification services, such as GCM (Firebase Cloud Messaging) and
+#' APNS
 #'
 #' Retrieves the endpoint attributes for a device on one of the supported
-#' push notification services, such as FCM and APNS. For more information,
-#' see [Using Amazon SNS Mobile Push
+#' push notification services, such as GCM (Firebase Cloud Messaging) and
+#' APNS. For more information, see [Using Amazon SNS Mobile Push
 #' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #'
 #' @usage
@@ -525,11 +556,13 @@ sns_get_endpoint_attributes <- function(EndpointArn) {
 .sns$operations$get_endpoint_attributes <- sns_get_endpoint_attributes
 
 #' Retrieves the attributes of the platform application object for the
-#' supported push notification services, such as APNS and FCM
+#' supported push notification services, such as APNS and GCM (Firebase
+#' Cloud Messaging)
 #'
 #' Retrieves the attributes of the platform application object for the
-#' supported push notification services, such as APNS and FCM. For more
-#' information, see [Using Amazon SNS Mobile Push
+#' supported push notification services, such as APNS and GCM (Firebase
+#' Cloud Messaging). For more information, see [Using Amazon SNS Mobile
+#' Push
 #' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #'
 #' @usage
@@ -684,17 +717,19 @@ sns_get_topic_attributes <- function(TopicArn) {
 .sns$operations$get_topic_attributes <- sns_get_topic_attributes
 
 #' Lists the endpoints and endpoint attributes for devices in a supported
-#' push notification service, such as FCM and APNS
+#' push notification service, such as GCM (Firebase Cloud Messaging) and
+#' APNS
 #'
 #' Lists the endpoints and endpoint attributes for devices in a supported
-#' push notification service, such as FCM and APNS. The results for
-#' `ListEndpointsByPlatformApplication` are paginated and return a limited
-#' list of endpoints, up to 100. If additional records are available after
-#' the first page results, then a NextToken string will be returned. To
-#' receive the next page, you call `ListEndpointsByPlatformApplication`
-#' again using the NextToken string received from the previous call. When
-#' there are no more records to return, NextToken will be null. For more
-#' information, see [Using Amazon SNS Mobile Push
+#' push notification service, such as GCM (Firebase Cloud Messaging) and
+#' APNS. The results for `ListEndpointsByPlatformApplication` are paginated
+#' and return a limited list of endpoints, up to 100. If additional records
+#' are available after the first page results, then a NextToken string will
+#' be returned. To receive the next page, you call
+#' `ListEndpointsByPlatformApplication` again using the NextToken string
+#' received from the previous call. When there are no more records to
+#' return, NextToken will be null. For more information, see [Using Amazon
+#' SNS Mobile Push
 #' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #' 
 #' This action is throttled at 30 transactions per second (TPS).
@@ -786,17 +821,17 @@ sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
 .sns$operations$list_phone_numbers_opted_out <- sns_list_phone_numbers_opted_out
 
 #' Lists the platform application objects for the supported push
-#' notification services, such as APNS and FCM
+#' notification services, such as APNS and GCM (Firebase Cloud Messaging)
 #'
 #' Lists the platform application objects for the supported push
-#' notification services, such as APNS and FCM. The results for
-#' `ListPlatformApplications` are paginated and return a limited list of
-#' applications, up to 100. If additional records are available after the
-#' first page results, then a NextToken string will be returned. To receive
-#' the next page, you call `ListPlatformApplications` using the NextToken
-#' string received from the previous call. When there are no more records
-#' to return, NextToken will be null. For more information, see [Using
-#' Amazon SNS Mobile Push
+#' notification services, such as APNS and GCM (Firebase Cloud Messaging).
+#' The results for `ListPlatformApplications` are paginated and return a
+#' limited list of applications, up to 100. If additional records are
+#' available after the first page results, then a NextToken string will be
+#' returned. To receive the next page, you call `ListPlatformApplications`
+#' using the NextToken string received from the previous call. When there
+#' are no more records to return, `NextToken` will be null. For more
+#' information, see [Using Amazon SNS Mobile Push
 #' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #' 
 #' This action is throttled at 15 transactions per second (TPS).
@@ -1040,11 +1075,13 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 }
 .sns$operations$opt_in_phone_number <- sns_opt_in_phone_number
 
-#' Sends a message to an Amazon SNS topic or sends a text message (SMS
-#' message) directly to a phone number
+#' Sends a message to an Amazon SNS topic, a text message (SMS message)
+#' directly to a phone number, or a message to a mobile platform endpoint
+#' (when you specify the TargetArn)
 #'
-#' Sends a message to an Amazon SNS topic or sends a text message (SMS
-#' message) directly to a phone number.
+#' Sends a message to an Amazon SNS topic, a text message (SMS message)
+#' directly to a phone number, or a message to a mobile platform endpoint
+#' (when you specify the `TargetArn`).
 #' 
 #' If you send a message to a topic, Amazon SNS delivers the message to
 #' each endpoint that is subscribed to the topic. The format of the message
@@ -1061,6 +1098,9 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' For more information about formatting messages, see [Send Custom
 #' Platform-Specific Payloads in Messages to Mobile
 #' Devices](https://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html).
+#' 
+#' You can publish messages only to topics and endpoints in the same AWS
+#' Region.
 #'
 #' @usage
 #' sns_publish(TopicArn, TargetArn, PhoneNumber, Message, Subject,
@@ -1231,11 +1271,12 @@ sns_remove_permission <- function(TopicArn, Label) {
 .sns$operations$remove_permission <- sns_remove_permission
 
 #' Sets the attributes for an endpoint for a device on one of the supported
-#' push notification services, such as FCM and APNS
+#' push notification services, such as GCM (Firebase Cloud Messaging) and
+#' APNS
 #'
 #' Sets the attributes for an endpoint for a device on one of the supported
-#' push notification services, such as FCM and APNS. For more information,
-#' see [Using Amazon SNS Mobile Push
+#' push notification services, such as GCM (Firebase Cloud Messaging) and
+#' APNS. For more information, see [Using Amazon SNS Mobile Push
 #' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #'
 #' @usage
@@ -1290,11 +1331,12 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
 .sns$operations$set_endpoint_attributes <- sns_set_endpoint_attributes
 
 #' Sets the attributes of the platform application object for the supported
-#' push notification services, such as APNS and FCM
+#' push notification services, such as APNS and GCM (Firebase Cloud
+#' Messaging)
 #'
 #' Sets the attributes of the platform application object for the supported
-#' push notification services, such as APNS and FCM. For more information,
-#' see [Using Amazon SNS Mobile Push
+#' push notification services, such as APNS and GCM (Firebase Cloud
+#' Messaging). For more information, see [Using Amazon SNS Mobile Push
 #' Notifications](https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 #' For information on configuring attributes for message delivery status,
 #' see [Using Amazon SNS Application Attributes for Message Delivery
@@ -1309,26 +1351,27 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
 #' include the following:
 #' 
 #' -   `PlatformCredential` -- The credential received from the
-#'     notification service. For APNS/APNS\\_SANDBOX, PlatformCredential is
-#'     private key. For FCM, PlatformCredential is \"API key\". For ADM,
-#'     PlatformCredential is \"client secret\".
+#'     notification service. For `APNS` and `APNS_SANDBOX`,
+#'     `PlatformCredential` is `private key`. For `GCM` (Firebase Cloud
+#'     Messaging), `PlatformCredential` is `API key`. For `ADM`,
+#'     `PlatformCredential` is `client secret`.
 #' 
 #' -   `PlatformPrincipal` -- The principal received from the notification
-#'     service. For APNS/APNS\\_SANDBOX, PlatformPrincipal is SSL
-#'     certificate. For FCM, PlatformPrincipal is not applicable. For ADM,
-#'     PlatformPrincipal is \"client id\".
+#'     service. For `APNS` and `APNS_SANDBOX`, `PlatformPrincipal` is
+#'     `SSL certificate`. For `GCM` (Firebase Cloud Messaging), there is no
+#'     `PlatformPrincipal`. For `ADM`, `PlatformPrincipal` is `client id`.
 #' 
-#' -   `EventEndpointCreated` -- Topic ARN to which EndpointCreated event
-#'     notifications should be sent.
+#' -   `EventEndpointCreated` -- Topic ARN to which `EndpointCreated` event
+#'     notifications are sent.
 #' 
-#' -   `EventEndpointDeleted` -- Topic ARN to which EndpointDeleted event
-#'     notifications should be sent.
+#' -   `EventEndpointDeleted` -- Topic ARN to which `EndpointDeleted` event
+#'     notifications are sent.
 #' 
-#' -   `EventEndpointUpdated` -- Topic ARN to which EndpointUpdate event
-#'     notifications should be sent.
+#' -   `EventEndpointUpdated` -- Topic ARN to which `EndpointUpdate` event
+#'     notifications are sent.
 #' 
-#' -   `EventDeliveryFailure` -- Topic ARN to which DeliveryFailure event
-#'     notifications should be sent upon Direct Publish delivery failure
+#' -   `EventDeliveryFailure` -- Topic ARN to which `DeliveryFailure` event
+#'     notifications are sent upon Direct Publish delivery failure
 #'     (permanent) to one of the application\'s endpoints.
 #' 
 #' -   `SuccessFeedbackRoleArn` -- IAM role ARN used to give Amazon SNS
@@ -1583,12 +1626,26 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #' The following attribute applies only to
 #' [server-side-encryption](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html):
 #' 
-#' -   `KmsMasterKeyId` - The ID of an AWS-managed customer master key
+#' -   `KmsMasterKeyId` -- The ID of an AWS-managed customer master key
 #'     (CMK) for Amazon SNS or a custom CMK. For more information, see [Key
 #'     Terms](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms).
 #'     For more examples, see
 #'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
 #'     in the *AWS Key Management Service API Reference*.
+#' 
+#' The following attribute applies only to FIFO topics:
+#' 
+#' -   `ContentBasedDeduplication` -- Enables content-based deduplication.
+#'     Amazon SNS uses a SHA-256 hash to generate the
+#'     `MessageDeduplicationId` using the body of the message (but not the
+#'     attributes of the message).
+#' 
+#' -   When `ContentBasedDeduplication` is in effect, messages with
+#'     identical content sent within the deduplication interval are treated
+#'     as duplicates and only one copy of the message is delivered.
+#' 
+#' -   If the queue has `ContentBasedDeduplication` set, your
+#'     `MessageDeduplicationId` overrides the generated one.
 #' @param AttributeValue The new value for the attribute.
 #'
 #' @section Request syntax:
@@ -1620,13 +1677,15 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 }
 .sns$operations$set_topic_attributes <- sns_set_topic_attributes
 
-#' Prepares to subscribe an endpoint by sending the endpoint a confirmation
-#' message
+#' Subscribes an endpoint to an Amazon SNS topic
 #'
-#' Prepares to subscribe an endpoint by sending the endpoint a confirmation
-#' message. To actually create a subscription, the endpoint owner must call
-#' the `ConfirmSubscription` action with the token from the confirmation
-#' message. Confirmation tokens are valid for three days.
+#' Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is
+#' HTTP/S or email, or if the endpoint and the topic are not in the same
+#' AWS account, the endpoint owner must the `ConfirmSubscription` action to
+#' confirm the subscription.
+#' 
+#' You call the `ConfirmSubscription` action with the token from the
+#' subscription response. Confirmation tokens are valid for three days.
 #' 
 #' This action is throttled at 100 transactions per second (TPS).
 #'
@@ -1657,11 +1716,11 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #' @param Endpoint The endpoint that you want to receive notifications. Endpoints vary by
 #' protocol:
 #' 
-#' -   For the `http` protocol, the endpoint is an URL beginning with
-#'     `http://`
+#' -   For the `http` protocol, the (public) endpoint is a URL beginning
+#'     with `http://`
 #' 
-#' -   For the `https` protocol, the endpoint is a URL beginning with
-#'     `https://`
+#' -   For the `https` protocol, the (public) endpoint is a URL beginning
+#'     with `https://`
 #' 
 #' -   For the `email` protocol, the endpoint is an email address
 #' 
@@ -1704,16 +1763,13 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #' @param ReturnSubscriptionArn Sets whether the response from the `Subscribe` request includes the
 #' subscription ARN, even if the subscription is not yet confirmed.
 #' 
-#' -   If you have the subscription ARN returned, the response includes the
-#'     ARN in all cases, even if the subscription is not yet confirmed.
-#' 
-#' -   If you don\'t have the subscription ARN returned, in addition to the
-#'     ARN for confirmed subscriptions, the response also includes the
-#'     `pending subscription` ARN value for subscriptions that aren\'t yet
-#'     confirmed. A subscription becomes confirmed when the subscriber
-#'     calls the `ConfirmSubscription` action with a confirmation token.
-#' 
-#' If you set this parameter to `true`, .
+#' -   If you set this parameter to `true`, the response includes the ARN
+#'     in all cases, even if the subscription is not yet confirmed. In
+#'     addition to the ARN for confirmed subscriptions, the response also
+#'     includes the `pending subscription` ARN value for subscriptions that
+#'     aren\'t yet confirmed. A subscription becomes confirmed when the
+#'     subscriber calls the `ConfirmSubscription` action with a
+#'     confirmation token.
 #' 
 #' The default value is `false`.
 #'

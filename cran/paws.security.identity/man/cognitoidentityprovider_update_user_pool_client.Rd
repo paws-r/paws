@@ -84,19 +84,33 @@ testing purposes only.
 
 App callback URLs such as myapp://example are also supported.}
 
-\item{AllowedOAuthFlows}{Set to \code{code} to initiate a code grant flow, which provides an
+\item{AllowedOAuthFlows}{The allowed OAuth flows.
+
+Set to \code{code} to initiate a code grant flow, which provides an
 authorization code as the response. This code can be exchanged for
-access tokens with the token endpoint.}
+access tokens with the token endpoint.
 
-\item{AllowedOAuthScopes}{A list of allowed \code{OAuth} scopes. Currently supported values are
-\code{"phone"}, \code{"email"}, \code{"openid"}, and \code{"Cognito"}. In addition to these
-values, custom scopes created in Resource Servers are also supported.}
+Set to \code{implicit} to specify that the client should get the access token
+(and, optionally, ID token, based on scopes) directly.
 
-\item{AllowedOAuthFlowsUserPoolClient}{Set to TRUE if the client is allowed to follow the OAuth protocol when
+Set to \code{client_credentials} to specify that the client should get the
+access token (and, optionally, ID token, based on scopes) from the token
+endpoint using a combination of client and client\\_secret.}
+
+\item{AllowedOAuthScopes}{The allowed OAuth scopes. Possible values provided by OAuth are:
+\code{phone}, \code{email}, \code{openid}, and \code{profile}. Possible values provided by
+AWS are: \code{aws.cognito.signin.user.admin}. Custom scopes created in
+Resource Servers are also supported.}
+
+\item{AllowedOAuthFlowsUserPoolClient}{Set to true if the client is allowed to follow the OAuth protocol when
 interacting with Cognito user pools.}
 
 \item{AnalyticsConfiguration}{The Amazon Pinpoint analytics configuration for collecting metrics for
-this user pool.}
+this user pool.
+
+Cognito User Pools only supports sending events to Amazon Pinpoint
+projects in the US East (N. Virginia) us-east-1 Region, regardless of
+the region in which the user pool resides.}
 
 \item{PreventUserExistenceErrors}{Use this setting to choose which errors and responses are returned by
 Cognito APIs during authentication, account confirmation, and password
@@ -127,7 +141,7 @@ This setting affects the behavior of following APIs:
 \item ResendConfirmationCode
 }
 
-After January 1st 2020, the value of \code{PreventUserExistenceErrors} will
+After February 15th 2020, the value of \code{PreventUserExistenceErrors} will
 default to \code{ENABLED} for newly created user pool clients if no value is
 provided.}
 }

@@ -22,7 +22,9 @@ For more information, see \href{https://docs.aws.amazon.com/kms/latest/developer
 in the \emph{AWS Key Management Service Developer Guide}.}
 
 \item{KeyId}{[required] Specifies the CMK that encrypts the private key in the data key pair.
-You must specify a symmetric CMK. You cannot use an asymmetric CMK.
+You must specify a symmetric CMK. You cannot use an asymmetric CMK or a
+CMK in a custom key store. To get the type and origin of your CMK, use
+the DescribeKey operation.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}.
@@ -61,8 +63,9 @@ does not return a plaintext private key.
 \details{
 To generate a data key pair, you must specify a symmetric customer
 master key (CMK) to encrypt the private key in the data key pair. You
-cannot use an asymmetric CMK. To get the type of your CMK, use the
-\code{KeySpec} field in the DescribeKey response.
+cannot use an asymmetric CMK or a CMK in a custom key store. To get the
+type and origin of your CMK, use the \code{KeySpec} field in the DescribeKey
+response.
 
 You can use the public key that \code{GenerateDataKeyPairWithoutPlaintext}
 returns to encrypt data or verify a signature outside of AWS KMS. Then,
@@ -78,8 +81,8 @@ You can use the optional encryption context to add additional security
 to the encryption operation. If you specify an \code{EncryptionContext}, you
 must specify the same encryption context (a case-sensitive exact match)
 when decrypting the encrypted data key. Otherwise, the request to
-decrypt fails with an InvalidCiphertextException. For more information,
-see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
+decrypt fails with an \code{InvalidCiphertextException}. For more
+information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
 in the \emph{AWS Key Management Service Developer Guide}.
 
 The CMK that you use for this operation must be in a compatible key

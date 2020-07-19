@@ -2,34 +2,32 @@
 % Please edit documentation in R/fsx_operations.R
 \name{fsx_describe_backups}
 \alias{fsx_describe_backups}
-\title{Returns the description of specific Amazon FSx for Windows File Server
-backups, if a BackupIds value is provided for that backup}
+\title{Returns the description of specific Amazon FSx backups, if a BackupIds
+value is provided for that backup}
 \usage{
 fsx_describe_backups(BackupIds, Filters, MaxResults, NextToken)
 }
 \arguments{
-\item{BackupIds}{(Optional) IDs of the backups you want to retrieve (String). This
-overrides any filters. If any IDs are not found, BackupNotFound will be
-thrown.}
+\item{BackupIds}{IDs of the backups you want to retrieve (String). This overrides any
+filters. If any IDs are not found, BackupNotFound will be thrown.}
 
-\item{Filters}{(Optional) Filters structure. Supported names are file-system-id and
-backup-type.}
+\item{Filters}{Filters structure. Supported names are file-system-id and backup-type.}
 
-\item{MaxResults}{(Optional) Maximum number of backups to return in the response
-(integer). This parameter value must be greater than 0. The number of
-items that Amazon FSx returns is the minimum of the \code{MaxResults}
-parameter specified in the request and the service\'s internal maximum
-number of items per page.}
+\item{MaxResults}{Maximum number of backups to return in the response (integer). This
+parameter value must be greater than 0. The number of items that Amazon
+FSx returns is the minimum of the \code{MaxResults} parameter specified in
+the request and the service\'s internal maximum number of items per
+page.}
 
-\item{NextToken}{(Optional) Opaque pagination token returned from a previous
-\code{DescribeBackups} operation (String). If a token present, the action
-continues the list from where the returning call left off.}
+\item{NextToken}{Opaque pagination token returned from a previous \code{DescribeBackups}
+operation (String). If a token present, the action continues the list
+from where the returning call left off.}
 }
 \description{
-Returns the description of specific Amazon FSx for Windows File Server
-backups, if a \code{BackupIds} value is provided for that backup. Otherwise,
-it returns all backups owned by your AWS account in the AWS Region of
-the endpoint that you\'re calling.
+Returns the description of specific Amazon FSx backups, if a \code{BackupIds}
+value is provided for that backup. Otherwise, it returns all backups
+owned by your AWS account in the AWS Region of the endpoint that you\'re
+calling.
 }
 \details{
 When retrieving all backups, you can optionally specify the \code{MaxResults}
@@ -60,7 +58,7 @@ responses of a multi-call iteration is unspecified.
   ),
   Filters = list(
     list(
-      Name = "file-system-id"|"backup-type",
+      Name = "file-system-id"|"backup-type"|"file-system-type",
       Values = list(
         "string"
       )

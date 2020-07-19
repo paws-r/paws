@@ -6,7 +6,7 @@
 was used to train the predictor}
 \usage{
 forecastservice_create_forecast(ForecastName, PredictorArn,
-  ForecastTypes)
+  ForecastTypes, Tags)
 }
 \arguments{
 \item{ForecastName}{[required] A name for the forecast.}
@@ -14,12 +14,38 @@ forecastservice_create_forecast(ForecastName, PredictorArn,
 \item{PredictorArn}{[required] The Amazon Resource Name (ARN) of the predictor to use to generate the
 forecast.}
 
-\item{ForecastTypes}{The quantiles at which probabilistic forecasts are generated. You can
-specify up to 5 quantiles per forecast. Accepted values include
-\verb{0.01 to 0.99} (increments of .01 only) and \code{mean}. The mean forecast is
-different from the median (0.50) when the distribution is not symmetric
-(e.g. Beta, Negative Binomial). The default value is
-\verb{\\\["0.1", "0.5", "0.9"\\\]}.}
+\item{ForecastTypes}{The quantiles at which probabilistic forecasts are generated. \strong{You can
+currently specify up to 5 quantiles per forecast}. Accepted values
+include \verb{0.01 to 0.99} (increments of .01 only) and \code{mean}. The mean
+forecast is different from the median (0.50) when the distribution is
+not symmetric (for example, Beta and Negative Binomial). The default
+value is \verb{\\\["0.1", "0.5", "0.9"\\\]}.}
+
+\item{Tags}{The optional metadata that you apply to the forecast to help you
+categorize and organize them. Each tag consists of a key and an optional
+value, both of which you define.
+
+The following basic restrictions apply to tags:
+\itemize{
+\item Maximum number of tags per resource - 50.
+\item For each resource, each tag key must be unique, and each tag key can
+have only one value.
+\item Maximum key length - 128 Unicode characters in UTF-8.
+\item Maximum value length - 256 Unicode characters in UTF-8.
+\item If your tagging schema is used across multiple services and
+resources, remember that other services may have restrictions on
+allowed characters. Generally allowed characters are: letters,
+numbers, and spaces representable in UTF-8, and the following
+characters: + - = . \\_ : / @.
+\item Tag keys and values are case sensitive.
+\item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
+such as a prefix for keys as it is reserved for AWS use. You cannot
+edit or delete tag keys with this prefix. Values can have this
+prefix. If a tag value has \code{aws} as its prefix but the key does not,
+then Forecast considers it to be a user tag and will count against
+the limit of 50 tags. Tags with only the key prefix of \code{aws} do not
+count against your tags per resource limit.
+}}
 }
 \description{
 Creates a forecast for each item in the \code{TARGET_TIME_SERIES} dataset
@@ -31,10 +57,8 @@ operation.
 }
 \details{
 The range of the forecast is determined by the \code{ForecastHorizon} value,
-which you specify in the CreatePredictor request, multiplied by the
-\code{DataFrequency} value, which you specify in the CreateDataset request.
-When you query a forecast, you can request a specific date range within
-the forecast.
+which you specify in the CreatePredictor request. When you query a
+forecast, you can request a specific date range within the forecast.
 
 To get a list of all your forecasts, use the ListForecasts operation.
 
@@ -53,6 +77,12 @@ status.
   PredictorArn = "string",
   ForecastTypes = list(
     "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

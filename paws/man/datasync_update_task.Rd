@@ -46,7 +46,8 @@ Updates the metadata associated with a task.
     PreserveDevices = "NONE"|"PRESERVE",
     PosixPermissions = "NONE"|"PRESERVE",
     BytesPerSecond = 123,
-    TaskQueueing = "ENABLED"|"DISABLED"
+    TaskQueueing = "ENABLED"|"DISABLED",
+    LogLevel = "OFF"|"BASIC"|"TRANSFER"
   ),
   Excludes = list(
     list(

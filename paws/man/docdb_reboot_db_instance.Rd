@@ -2,14 +2,12 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_reboot_db_instance}
 \alias{docdb_reboot_db_instance}
-\title{You might need to reboot your DB instance, usually for maintenance
-reasons}
+\title{You might need to reboot your instance, usually for maintenance reasons}
 \usage{
 docdb_reboot_db_instance(DBInstanceIdentifier, ForceFailover)
 }
 \arguments{
-\item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase
-string.
+\item{DBInstanceIdentifier}{[required] The instance identifier. This parameter is stored as a lowercase string.
 
 Constraints:
 \itemize{
@@ -22,15 +20,15 @@ Constraint: You can\'t specify \code{true} if the instance is not configured
 for Multi-AZ.}
 }
 \description{
-You might need to reboot your DB instance, usually for maintenance
-reasons. For example, if you make certain changes, or if you change the
-DB cluster parameter group that is associated with the DB instance, you
-must reboot the instance for the changes to take effect.
+You might need to reboot your instance, usually for maintenance reasons.
+For example, if you make certain changes, or if you change the cluster
+parameter group that is associated with the instance, you must reboot
+the instance for the changes to take effect.
 }
 \details{
-Rebooting a DB instance restarts the database engine service. Rebooting
-a DB instance results in a momentary outage, during which the DB
-instance status is set to \emph{rebooting}.
+Rebooting an instance restarts the database engine service. Rebooting an
+instance results in a momentary outage, during which the instance status
+is set to \emph{rebooting}.
 }
 \section{Request syntax}{
 \preformatted{svc$reboot_db_instance(

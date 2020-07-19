@@ -2,7 +2,7 @@
 % Please edit documentation in R/qldb_operations.R
 \name{qldb_get_block}
 \alias{qldb_get_block}
-\title{Returns a journal block object at a specified address in a ledger}
+\title{Returns a block object at a specified address in a journal}
 \usage{
 qldb_get_block(Name, BlockAddress, DigestTipAddress)
 }
@@ -21,11 +21,14 @@ proof. An address is an Amazon Ion structure that has two fields:
 For example: \verb{\\\{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49\\\}}}
 }
 \description{
-Returns a journal block object at a specified address in a ledger. Also
-returns a proof of the specified block for verification if
-\code{DigestTipAddress} is provided.
+Returns a block object at a specified address in a journal. Also returns
+a proof of the specified block for verification if \code{DigestTipAddress} is
+provided.
 }
 \details{
+For information about the data contents in a block, see \href{https://docs.aws.amazon.com/qldb/latest/developerguide/journal-contents.html}{Journal contents}
+in the \emph{Amazon QLDB Developer Guide}.
+
 If the specified ledger doesn\'t exist or is in \code{DELETING} status, then
 throws \code{ResourceNotFoundException}.
 

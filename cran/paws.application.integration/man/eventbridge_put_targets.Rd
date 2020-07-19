@@ -3,7 +3,7 @@
 \name{eventbridge_put_targets}
 \alias{eventbridge_put_targets}
 \title{Adds the specified targets to the specified rule, or updates the targets
-if they're already associated with the rule}
+if they are already associated with the rule}
 \usage{
 eventbridge_put_targets(Rule, EventBusName, Targets)
 }
@@ -17,12 +17,12 @@ the default event bus is used.}
 }
 \description{
 Adds the specified targets to the specified rule, or updates the targets
-if they\'re already associated with the rule.
+if they are already associated with the rule.
 }
 \details{
 Targets are the resources that are invoked when a rule is triggered.
 
-You can configure the following as targets in EventBridge:
+You can configure the following as targets for Events:
 \itemize{
 \item EC2 instances
 \item SSM Run Command
@@ -39,9 +39,10 @@ You can configure the following as targets in EventBridge:
 \item Amazon SNS topics
 \item Amazon SQS queues, including FIFO queues
 \item The default event bus of another AWS account
+\item Amazon API Gateway REST APIs
 }
 
-Creating rules with built-in targets is supported only on the AWS
+Creating rules with built-in targets is supported only in the AWS
 Management Console. The built-in targets are
 \verb{EC2 CreateSnapshot API call}, \verb{EC2 RebootInstances API call},
 \verb{EC2 StopInstances API call}, and \verb{EC2 TerminateInstances API call}.
@@ -53,50 +54,54 @@ invoke a command on multiple EC2 instances with one rule, you can use
 the \code{RunCommandParameters} field.
 
 To be able to make API calls against the resources that you own, Amazon
-EventBridge needs the appropriate permissions. For AWS Lambda and Amazon
-SNS resources, EventBridge relies on resource-based policies. For EC2
-instances, Kinesis data streams, and AWS Step Functions state machines,
-EventBridge relies on IAM roles that you specify in the \code{RoleARN}
-argument in \code{PutTargets}. For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/auth-and-access-control-eventbridge.html}{Authentication and Access Control}
+EventBridge (CloudWatch Events) needs the appropriate permissions. For
+AWS Lambda and Amazon SNS resources, EventBridge relies on
+resource-based policies. For EC2 instances, Kinesis data streams, AWS
+Step Functions state machines and API Gateway REST APIs, EventBridge
+relies on IAM roles that you specify in the \code{RoleARN} argument in
+\code{PutTargets}. For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/auth-and-access-control-eventbridge.html}{Authentication and Access Control}
 in the \emph{Amazon EventBridge User Guide}.
 
-If another AWS account is in the same Region and has granted you
+If another AWS account is in the same region and has granted you
 permission (using \code{PutPermission}), you can send events to that account.
 Set that account\'s event bus as a target of the rules in your account.
 To send the matched events to the other account, specify that account\'s
 event bus as the \code{Arn} value when you run \code{PutTargets}. If your account
 sends events to another account, your account is charged for each sent
 event. Each event sent to another account is charged as a custom event.
-The account receiving the event isn\'t charged. For more information,
-see \href{https://aws.amazon.com/eventbridge/pricing/}{Amazon EventBridge Pricing}.
+The account receiving the event is not charged. For more information,
+see \href{https://aws.amazon.com/eventbridge/pricing/}{Amazon EventBridge (CloudWatch Events) Pricing}.
 
-If you\'re setting an event bus in another account as the target and
+\code{Input}, \code{InputPath}, and \code{InputTransformer} are not available with
+\code{PutTarget} if the target is an event bus of a different AWS account.
+
+If you are setting the event bus of another account as the target, and
 that account granted permission to your account through an organization
-instead of directly by the account ID, you must specify a \code{RoleArn} with
-proper permissions in the \code{Target} structure. For more information, see
-\href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html}{Sending and Receiving Events Between AWS Accounts}
+instead of directly by the account ID, then you must specify a \code{RoleArn}
+with proper permissions in the \code{Target} structure. For more information,
+see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html}{Sending and Receiving Events Between AWS Accounts}
 in the \emph{Amazon EventBridge User Guide}.
 
 For more information about enabling cross-account events, see
 PutPermission.
 
-\code{Input}, \code{InputPath}, and \code{InputTransformer} are mutually exclusive and
-optional parameters of a target. When a rule is triggered due to a
-matched event:
+\strong{Input}, \strong{InputPath}, and \strong{InputTransformer} are mutually
+exclusive and optional parameters of a target. When a rule is triggered
+due to a matched event:
 \itemize{
-\item If none of the following arguments are specified for a target, the
-entire event is passed to the target in JSON format (unless the
+\item If none of the following arguments are specified for a target, then
+the entire event is passed to the target in JSON format (unless the
 target is Amazon EC2 Run Command or Amazon ECS task, in which case
 nothing from the event is passed to the target).
-\item If \code{Input} is specified in the form of valid JSON, then the matched
-event is overridden with this constant.
-\item If \code{InputPath} is specified in the form of JSONPath (for example,
-\verb{$.detail}), only the part of the event specified in the path is
-passed to the target (for example, only the detail part of the event
-is passed).
-\item If \code{InputTransformer} is specified, one or more specified JSONPaths
-are extracted from the event and used as values in a template that
-you specify as the input to the target.
+\item If \strong{Input} is specified in the form of valid JSON, then the
+matched event is overridden with this constant.
+\item If \strong{InputPath} is specified in the form of JSONPath (for example,
+\verb{$.detail}), then only the part of the event specified in the path
+is passed to the target (for example, only the detail part of the
+event is passed).
+\item If \strong{InputTransformer} is specified, then one or more specified
+JSONPaths are extracted from the event and used as values in a
+template that you specify as the input to the target.
 }
 
 When you specify \code{InputPath} or \code{InputTransformer}, you must use JSON
@@ -107,7 +112,7 @@ after, new or updated targets might not be immediately invoked. Allow a
 short period of time for changes to take effect.
 
 This action can partially fail if too many requests are made at the same
-time. If that happens, \code{FailedEntryCount} is nonzero in the response,
+time. If that happens, \code{FailedEntryCount} is non-zero in the response
 and each entry in \code{FailedEntries} provides the ID of the failed target
 and the error code.
 }
@@ -171,6 +176,17 @@ and the error code.
       ),
       SqsParameters = list(
         MessageGroupId = "string"
+      ),
+      HttpParameters = list(
+        PathParameterValues = list(
+          "string"
+        ),
+        HeaderParameters = list(
+          "string"
+        ),
+        QueryStringParameters = list(
+          "string"
+        )
       )
     )
   )

@@ -22,6 +22,10 @@ test_that("describe_events", {
   expect_error(svc$describe_events(), NA)
 })
 
+test_that("describe_global_replication_groups", {
+  expect_error(svc$describe_global_replication_groups(), NA)
+})
+
 test_that("describe_replication_groups", {
   expect_error(svc$describe_replication_groups(), NA)
 })

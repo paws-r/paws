@@ -10,7 +10,8 @@ globalaccelerator_describe_endpoint_group(EndpointGroupArn)
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group to describe.}
 }
 \description{
-Describe an endpoint group.
+Describe an endpoint group. To see an AWS CLI example of describing an
+endpoint group, scroll down to \strong{Example}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_endpoint_group(

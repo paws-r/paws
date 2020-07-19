@@ -52,7 +52,7 @@ Management. For general information about using code signing, see the
 \link[=signer_put_signing_profile]{put_signing_profile} \tab Creates a signing profile \cr
 \link[=signer_start_signing_job]{start_signing_job} \tab Initiates a signing job to be performed on the code provided \cr
 \link[=signer_tag_resource]{tag_resource} \tab Adds one or more tags to a signing profile \cr
-\link[=signer_untag_resource]{untag_resource} \tab Remove one or more tags from a signing profile
+\link[=signer_untag_resource]{untag_resource} \tab Removes one or more tags from a signing profile
 }
 }
 

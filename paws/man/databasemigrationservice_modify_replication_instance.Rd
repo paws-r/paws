@@ -20,10 +20,12 @@ instance.}
 \item{ApplyImmediately}{Indicates whether the changes should be applied immediately or during
 the next maintenance window.}
 
-\item{ReplicationInstanceClass}{The compute and memory capacity of the replication instance.
+\item{ReplicationInstanceClass}{The compute and memory capacity of the replication instance as defined
+for the specified replication instance class. For example to specify the
+instance class dms.c4.large, set this parameter to \code{"dms.c4.large"}.
 
-Valid Values:
-\code{dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge }}
+For more information on the settings and capacities for the available
+replication instance classes, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.html#CHAP_ReplicationInstance.InDepth}{Selecting the right AWS DMS replication instance for your migration}.}
 
 \item{VpcSecurityGroupIds}{Specifies the VPC security group to be used with the replication
 instance. The VPC security group must work with the VPC containing the
@@ -45,7 +47,7 @@ Valid Days: Mon \\| Tue \\| Wed \\| Thu \\| Fri \\| Sat \\| Sun
 Constraints: Must be at least 30 minutes}
 
 \item{MultiAZ}{Specifies whether the replication instance is a Multi-AZ deployment. You
-cannot set the \code{AvailabilityZone} parameter if the Multi-AZ parameter is
+can\'t set the \code{AvailabilityZone} parameter if the Multi-AZ parameter is
 set to \code{true}.}
 
 \item{EngineVersion}{The engine version number of the replication instance.}
@@ -58,13 +60,18 @@ This parameter must be set to \code{true} when specifying a value for the
 \code{EngineVersion} parameter that is a different major version than the
 replication instance\'s current version.}
 
-\item{AutoMinorVersionUpgrade}{Indicates that minor version upgrades will be applied automatically to
-the replication instance during the maintenance window. Changing this
-parameter does not result in an outage except in the following case and
-the change is asynchronously applied as soon as possible. An outage will
-result if this parameter is set to \code{true} during the maintenance window,
-and a newer minor version is available, and AWS DMS has enabled auto
-patching for that engine version.}
+\item{AutoMinorVersionUpgrade}{A value that indicates that minor version upgrades are applied
+automatically to the replication instance during the maintenance window.
+Changing this parameter doesn\'t result in an outage, except in the case
+dsecribed following. The change is asynchronously applied as soon as
+possible.
+
+An outage does result if these factors apply:
+\itemize{
+\item This parameter is set to \code{true} during the maintenance window.
+\item A newer minor version is available.
+\item AWS DMS has enabled automatic patching for the given engine version.
+}}
 
 \item{ReplicationInstanceIdentifier}{The replication instance identifier. This parameter is stored as a
 lowercase string.}

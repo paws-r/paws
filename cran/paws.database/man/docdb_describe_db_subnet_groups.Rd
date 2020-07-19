@@ -8,7 +8,7 @@ docdb_describe_db_subnet_groups(DBSubnetGroupName, Filters, MaxRecords,
   Marker)
 }
 \arguments{
-\item{DBSubnetGroupName}{The name of the DB subnet group to return details for.}
+\item{DBSubnetGroupName}{The name of the subnet group to return details for.}
 
 \item{Filters}{This parameter is not currently supported.}
 

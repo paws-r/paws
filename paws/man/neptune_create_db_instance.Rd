@@ -16,7 +16,8 @@ neptune_create_db_instance(DBName, DBInstanceIdentifier,
   CopyTagsToSnapshot, MonitoringInterval, MonitoringRoleArn,
   DomainIAMRoleName, PromotionTier, Timezone,
   EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
-  PerformanceInsightsKMSKeyId, EnableCloudwatchLogsExports)
+  PerformanceInsightsKMSKeyId, EnableCloudwatchLogsExports,
+  DeletionProtection)
 }
 \arguments{
 \item{DBName}{Not supported.}
@@ -137,7 +138,8 @@ Type: Integer}
 \item{MultiAZ}{Specifies if the DB instance is a Multi-AZ deployment. You can\'t set
 the AvailabilityZone parameter if the MultiAZ parameter is set to true.}
 
-\item{EngineVersion}{The version number of the database engine to use.}
+\item{EngineVersion}{The version number of the database engine to use. Currently, setting
+this parameter has no effect.}
 
 \item{AutoMinorVersionUpgrade}{Indicates that minor engine upgrades are applied automatically to the DB
 instance during the maintenance window.
@@ -152,19 +154,9 @@ Valid values: \code{license-included} \\| \code{bring-your-own-license} \\|
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance.}
 
-\item{OptionGroupName}{Indicates that the DB instance should be associated with the specified
-option group.
+\item{OptionGroupName}{\emph{(Not supported by Neptune)}}
 
-Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, can\'t be removed from an option group, and that option group
-can\'t be removed from a DB instance once it is associated with a DB
-instance}
-
-\item{CharacterSetName}{Indicates that the DB instance should be associated with the specified
-CharacterSet.
-
-Not applicable. The character set is managed by the DB cluster. For more
-information, see CreateDBCluster.}
+\item{CharacterSetName}{\emph{(Not supported by Neptune)}}
 
 \item{PubliclyAccessible}{This flag should no longer be used.}
 
@@ -248,15 +240,19 @@ for Neptune.
 
 Default: \code{false}}
 
-\item{EnablePerformanceInsights}{True to enable Performance Insights for the DB instance, and otherwise
-false.}
+\item{EnablePerformanceInsights}{\emph{(Not supported by Neptune)}}
 
-\item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
-The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
-the KMS key alias for the KMS encryption key.}
+\item{PerformanceInsightsKMSKeyId}{\emph{(Not supported by Neptune)}}
 
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
 CloudWatch Logs.}
+
+\item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
+enabled. The database can\'t be deleted when deletion protection is
+enabled. By default, deletion protection is disabled. See \href{https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-instances-delete.html}{Deleting a DB Instance}.
+
+DB instances in a DB cluster can be deleted even when deletion
+protection is enabled in their parent DB cluster.}
 }
 \description{
 Creates a new DB instance.
@@ -315,7 +311,8 @@ Creates a new DB instance.
   PerformanceInsightsKMSKeyId = "string",
   EnableCloudwatchLogsExports = list(
     "string"
-  )
+  ),
+  DeletionProtection = TRUE|FALSE
 )
 }
 }

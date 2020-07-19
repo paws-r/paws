@@ -24,6 +24,14 @@ gateways, the Autonomous System Number (ASN) used by the transit gateway
 and the Direct Connect gateway must be different. For example, if you
 use the default ASN 64512 for both your the transit gateway and Direct
 Connect gateway, the association request fails.
+
+Setting the MTU of a virtual interface to 8500 (jumbo frames) can cause
+an update to the underlying physical connection if it wasn\'t updated to
+support jumbo frames. Updating the connection disrupts network
+connectivity for all virtual interfaces associated with the connection
+for up to 30 seconds. To check whether your connection supports jumbo
+frames, call DescribeConnections. To check whether your virtual
+interface supports jumbo frames, call DescribeVirtualInterfaces.
 }
 \section{Request syntax}{
 \preformatted{svc$create_transit_virtual_interface(

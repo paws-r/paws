@@ -4,7 +4,8 @@
 \alias{ec2_create_egress_only_internet_gateway}
 \title{[IPv6 only] Creates an egress-only internet gateway for your VPC}
 \usage{
-ec2_create_egress_only_internet_gateway(ClientToken, DryRun, VpcId)
+ec2_create_egress_only_internet_gateway(ClientToken, DryRun, VpcId,
+  TagSpecifications)
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -16,6 +17,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcId}{[required] The ID of the VPC for which to create the egress-only internet gateway.}
+
+\item{TagSpecifications}{The tags to assign to the egress-only internet gateway.}
 }
 \description{
 [IPv6 only] Creates an egress-only internet gateway for your VPC. An
@@ -28,7 +31,18 @@ instance.
 \preformatted{svc$create_egress_only_internet_gateway(
   ClientToken = "string",
   DryRun = TRUE|FALSE,
-  VpcId = "string"
+  VpcId = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

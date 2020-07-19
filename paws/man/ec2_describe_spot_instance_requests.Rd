@@ -68,7 +68,7 @@ launched to fulfill the request.
 \item \code{state} - The state of the Spot Instance request (\code{open} \\| \code{active}
 \\| \code{closed} \\| \code{cancelled} \\| \code{failed}). Spot request status
 information can help you track your Amazon EC2 Spot Instance
-requests. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html}{Spot Request Status}
+requests. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html}{Spot request status}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 \item \code{status-code} - The short code describing the most recent evaluation
 of your Spot Instance request.
@@ -109,7 +109,8 @@ Describes the specified Spot Instance requests.
 You can use \code{DescribeSpotInstanceRequests} to find a running Spot
 Instance by examining the response. If the status of the Spot Instance
 is \code{fulfilled}, the instance ID appears in the response and contains the
-identifier of the instance. Alternatively, you can use DescribeInstances
+identifier of the instance. Alternatively, you can use
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances}{DescribeInstances}
 with a filter to look for instances where the instance lifecycle is
 \code{spot}.
 

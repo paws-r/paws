@@ -2,15 +2,15 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_get_app}
 \alias{amplify_get_app}
-\title{Retrieves an existing Amplify App by appId}
+\title{Returns an existing Amplify app by appID}
 \usage{
 amplify_get_app(appId)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 }
 \description{
-Retrieves an existing Amplify App by appId.
+Returns an existing Amplify app by appID.
 }
 \section{Request syntax}{
 \preformatted{svc$get_app(

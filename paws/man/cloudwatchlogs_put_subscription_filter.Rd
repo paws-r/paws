@@ -15,7 +15,8 @@ cloudwatchlogs_put_subscription_filter(logGroupName, filterName,
 filter, you must specify the correct name in \code{filterName}. Otherwise,
 the call fails because you cannot associate a second filter with a log
 group. To find the name of the filter currently associated with a log
-group, use DescribeSubscriptionFilters.}
+group, use
+\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeSubscriptionFilters.html}{DescribeSubscriptionFilters}.}
 
 \item{filterPattern}{[required] A filter pattern for subscribing to a filtered stream of log events.}
 
@@ -45,9 +46,10 @@ destination is an Amazon Kinesis stream.}
 \description{
 Creates or updates a subscription filter and associates it with the
 specified log group. Subscription filters allow you to subscribe to a
-real-time stream of log events ingested through PutLogEvents and have
-them delivered to a specific destination. Currently, the supported
-destinations are:
+real-time stream of log events ingested through
+\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html}{PutLogEvents}
+and have them delivered to a specific destination. Currently, the
+supported destinations are:
 }
 \details{
 \itemize{

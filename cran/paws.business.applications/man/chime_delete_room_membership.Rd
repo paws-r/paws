@@ -2,7 +2,7 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_delete_room_membership}
 \alias{chime_delete_room_membership}
-\title{Removes a member from a chat room}
+\title{Removes a member from a chat room in an Amazon Chime Enterprise account}
 \usage{
 chime_delete_room_membership(AccountId, RoomId, MemberId)
 }
@@ -14,7 +14,7 @@ chime_delete_room_membership(AccountId, RoomId, MemberId)
 \item{MemberId}{[required] The member ID (user ID or bot ID).}
 }
 \description{
-Removes a member from a chat room.
+Removes a member from a chat room in an Amazon Chime Enterprise account.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_room_membership(

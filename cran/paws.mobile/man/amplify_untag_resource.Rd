@@ -2,17 +2,17 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_untag_resource}
 \alias{amplify_untag_resource}
-\title{Untag resource with resourceArn}
+\title{Untags a resource with a specified Amazon Resource Name (ARN)}
 \usage{
 amplify_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] Resource arn used to untag resource.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) to use to untag a resource.}
 
-\item{tagKeys}{[required] Tag keys used to untag resource.}
+\item{tagKeys}{[required] The tag keys to use to untag a resource.}
 }
 \description{
-Untag resource with resourceArn.
+Untags a resource with a specified Amazon Resource Name (ARN).
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

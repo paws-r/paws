@@ -2,7 +2,7 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_list_builds}
 \alias{gamelift_list_builds}
-\title{Retrieves build records for all builds associated with the AWS account
+\title{Retrieves build resources for all builds associated with the AWS account
 in use}
 \usage{
 gamelift_list_builds(Status, Limit, NextToken)
@@ -31,17 +31,17 @@ Use the token that is returned with a previous call to this action. To
 start at the beginning of the result set, do not specify a value.}
 }
 \description{
-Retrieves build records for all builds associated with the AWS account
+Retrieves build resources for all builds associated with the AWS account
 in use. You can limit results to builds that are in a specific status by
 using the \code{Status} parameter. Use the pagination parameters to retrieve
 results in a set of sequential pages.
 }
 \details{
-Build records are not listed in any particular order.
+Build resources are not listed in any particular order.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/build-intro.html}{Working with Builds}
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html}{Upload a Custom Server Build}
 
 \strong{Related operations}
 \itemize{

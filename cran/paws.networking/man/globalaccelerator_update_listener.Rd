@@ -40,7 +40,8 @@ select the hash value.
 The default value is \code{NONE}.}
 }
 \description{
-Update a listener.
+Update a listener. To see an AWS CLI example of updating listener,
+scroll down to \strong{Example}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_listener(

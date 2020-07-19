@@ -12,7 +12,7 @@ guardduty_update_detector(DetectorId, Enable,
 
 \item{Enable}{Specifies whether the detector is enabled or not enabled.}
 
-\item{FindingPublishingFrequency}{A enum value that specifies how frequently findings are exported, such
+\item{FindingPublishingFrequency}{An enum value that specifies how frequently findings are exported, such
 as to CloudWatch Events.}
 }
 \description{

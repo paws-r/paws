@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudwatch_operations.R
 \name{cloudwatch_get_metric_data}
 \alias{cloudwatch_get_metric_data}
-\title{You can use the GetMetricData API to retrieve as many as 100 different
+\title{You can use the GetMetricData API to retrieve as many as 500 different
 metrics in a single request, with a total of as many as 100,800 data
 points}
 \usage{
@@ -11,7 +11,7 @@ cloudwatch_get_metric_data(MetricDataQueries, StartTime, EndTime,
 }
 \arguments{
 \item{MetricDataQueries}{[required] The metric queries to be returned. A single \code{GetMetricData} call can
-include as many as 100 \code{MetricDataQuery} structures. Each of these
+include as many as 500 \code{MetricDataQuery} structures. Each of these
 structures can specify either a metric to retrieve, or a math expression
 to perform on retrieved data.}
 
@@ -70,7 +70,7 @@ paginates when the \code{MaxDatapoints} limit is reached.}
 paginating. If you omit this, the default of 100,800 is used.}
 }
 \description{
-You can use the \code{GetMetricData} API to retrieve as many as 100 different
+You can use the \code{GetMetricData} API to retrieve as many as 500 different
 metrics in a single request, with a total of as many as 100,800 data
 points. You can also optionally perform math expressions on the values
 of the returned statistics, to create new time series that represent new

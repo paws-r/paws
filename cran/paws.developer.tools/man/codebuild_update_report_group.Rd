@@ -4,7 +4,7 @@
 \alias{codebuild_update_report_group}
 \title{Updates a report group}
 \usage{
-codebuild_update_report_group(arn, exportConfig)
+codebuild_update_report_group(arn, exportConfig, tags)
 }
 \arguments{
 \item{arn}{[required] The ARN of the report group to update.}
@@ -14,6 +14,12 @@ codebuild_update_report_group(arn, exportConfig)
 \item \code{S3}: The report results are exported to an S3 bucket.
 \item \code{NO_EXPORT}: The report results are not exported.
 }}
+
+\item{tags}{An updated list of tag key and value pairs associated with this report
+group.
+
+These tags are available for use by AWS services that support AWS
+CodeBuild report group tags.}
 }
 \description{
 Updates a report group.
@@ -29,6 +35,12 @@ Updates a report group.
       packaging = "ZIP"|"NONE",
       encryptionKey = "string",
       encryptionDisabled = TRUE|FALSE
+    )
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
     )
   )
 )

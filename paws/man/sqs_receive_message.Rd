@@ -16,12 +16,12 @@ Queue URLs and names are case-sensitive.}
 \item{AttributeNames}{A list of attributes that need to be returned along with each message.
 These attributes include:
 \itemize{
-\item \code{All} - Returns all values.
-\item \code{ApproximateFirstReceiveTimestamp} - Returns the time the message
+\item \code{All} -- Returns all values.
+\item \code{ApproximateFirstReceiveTimestamp} -- Returns the time the message
 was first received from the queue (\href{http://en.wikipedia.org/wiki/Unix_time}{epoch time} in milliseconds).
-\item \code{ApproximateReceiveCount} - Returns the number of times a message
-has been received from the queue but not deleted.
-\item \code{AWSTraceHeader} - Returns the AWS X-Ray trace header string.
+\item \code{ApproximateReceiveCount} -- Returns the number of times a message
+has been received across all queues but not deleted.
+\item \code{AWSTraceHeader} -- Returns the AWS X-Ray trace header string.
 \item \code{SenderId}
 \itemize{
 \item For an IAM user, returns the IAM user ID, for example
@@ -29,15 +29,15 @@ has been received from the queue but not deleted.
 \item For an IAM role, returns the IAM role ID, for example
 \code{ABCDE1F2GH3I4JK5LMNOP:i-a123b456}.
 }
-\item \code{SentTimestamp} - Returns the time the message was sent to the queue
-(\href{http://en.wikipedia.org/wiki/Unix_time}{epoch time} in
+\item \code{SentTimestamp} -- Returns the time the message was sent to the
+queue (\href{http://en.wikipedia.org/wiki/Unix_time}{epoch time} in
 milliseconds).
-\item \code{MessageDeduplicationId} - Returns the value provided by the
+\item \code{MessageDeduplicationId} -- Returns the value provided by the
 producer that calls the \verb{<a>SendMessage</a>} action.
-\item \code{MessageGroupId} - Returns the value provided by the producer that
+\item \code{MessageGroupId} -- Returns the value provided by the producer that
 calls the \verb{<a>SendMessage</a>} action. Messages with the same
 \code{MessageGroupId} are returned in sequence.
-\item \code{SequenceNumber} - Returns the value provided by Amazon SQS.
+\item \code{SequenceNumber} -- Returns the value provided by Amazon SQS.
 }}
 
 \item{MessageAttributeNames}{The name of the message attribute, where \emph{N} is the index.
@@ -70,15 +70,24 @@ request.}
 arrive in the queue before returning. If a message is available, the
 call returns sooner than \code{WaitTimeSeconds}. If no messages are available
 and the wait time expires, the call returns successfully with an empty
-list of messages.}
+list of messages.
+
+To avoid HTTP errors, ensure that the HTTP response timeout for
+\code{ReceiveMessage} requests is longer than the \code{WaitTimeSeconds}
+parameter. For example, with the Java SDK, you can set HTTP transport
+settings using the
+\href{https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/nio/netty/NettyNioAsyncHttpClient.html}{NettyNioAsyncHttpClient}
+for asynchronous clients, or the
+\href{https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/apache/ApacheHttpClient.html}{ApacheHttpClient}
+for synchronous clients.}
 
 \item{ReceiveRequestAttemptId}{This parameter applies only to FIFO (first-in-first-out) queues.
 
 The token used for deduplication of \code{ReceiveMessage} calls. If a
 networking issue occurs after a \code{ReceiveMessage} action, and instead of
-a response you receive a generic error, you can retry the same action
-with an identical \code{ReceiveRequestAttemptId} to retrieve the same set of
-messages, even if their visibility timeout has not yet expired.
+a response you receive a generic error, it is possible to retry the same
+action with an identical \code{ReceiveRequestAttemptId} to retrieve the same
+set of messages, even if their visibility timeout has not yet expired.
 \itemize{
 \item You can use \code{ReceiveRequestAttemptId} only for 5 minutes after a
 \code{ReceiveMessage} action.
@@ -87,7 +96,7 @@ can provide a \code{ReceiveRequestAttemptId} explicitly.
 \item If a caller of the \code{ReceiveMessage} action doesn\'t provide a
 \code{ReceiveRequestAttemptId}, Amazon SQS generates a
 \code{ReceiveRequestAttemptId}.
-\item You can retry the \code{ReceiveMessage} action with the same
+\item It is possible to retry the \code{ReceiveMessage} action with the same
 \code{ReceiveRequestAttemptId} if none of the messages have been modified
 (deleted or had their visibility changes).
 \item During a visibility timeout, subsequent calls with the same
@@ -116,7 +125,7 @@ visibility timeout expires. As a result, delays might occur but the
 messages in the queue remain in a strict order.
 }
 
-The length of \code{ReceiveRequestAttemptId} is 128 characters.
+The maximum length of \code{ReceiveRequestAttemptId} is 128 characters.
 \code{ReceiveRequestAttemptId} can contain alphanumeric characters (\code{a-z},
 \code{A-Z}, \code{0-9}) and punctuation
 (\verb{!\\"#$\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~}).

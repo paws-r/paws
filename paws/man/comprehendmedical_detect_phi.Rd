@@ -3,8 +3,8 @@
 \name{comprehendmedical_detect_phi}
 \alias{comprehendmedical_detect_phi}
 \title{Inspects the clinical text for protected health information (PHI)
-entities and entity category, location, and confidence score on that
-information}
+entities and returns the entity category, location, and confidence score
+for each entity}
 \usage{
 comprehendmedical_detect_phi(Text)
 }
@@ -15,8 +15,9 @@ characters.}
 }
 \description{
 Inspects the clinical text for protected health information (PHI)
-entities and entity category, location, and confidence score on that
-information.
+entities and returns the entity category, location, and confidence score
+for each entity. Amazon Comprehend Medical only detects entities in
+English language texts.
 }
 \section{Request syntax}{
 \preformatted{svc$detect_phi(

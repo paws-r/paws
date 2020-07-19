@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_update_job_priority}
 \alias{s3control_update_job_priority}
-\title{Updates an existing job's priority}
+\title{Updates an existing Amazon S3 Batch Operations job's priority}
 \usage{
 s3control_update_job_priority(AccountId, JobId, Priority)
 }
@@ -14,7 +14,18 @@ s3control_update_job_priority(AccountId, JobId, Priority)
 \item{Priority}{[required] The priority you want to assign to this job.}
 }
 \description{
-Updates an existing job\'s priority.
+Updates an existing Amazon S3 Batch Operations job\'s priority. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html}{Amazon S3 Batch Operations}
+in the Amazon Simple Storage Service Developer Guide.
+}
+\details{
+Related actions include:
+\itemize{
+\item CreateJob
+\item ListJobs
+\item DescribeJob
+\item UpdateJobStatus
+}
 }
 \section{Request syntax}{
 \preformatted{svc$update_job_priority(

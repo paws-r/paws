@@ -3,20 +3,189 @@
 #' @include codeguruprofiler_service.R
 NULL
 
-#' Provides the configuration to use for an agent of the profiling group
+#' Add up to 2 anomaly notifications channels for a profiling group
 #'
-#' Provides the configuration to use for an agent of the profiling group.
+#' Add up to 2 anomaly notifications channels for a profiling group.
 #'
 #' @usage
-#' codeguruprofiler_configure_agent(fleetInstanceId, profilingGroupName)
+#' codeguruprofiler_add_notification_channels(channels, profilingGroupName)
 #'
-#' @param fleetInstanceId 
-#' @param profilingGroupName &#91;required&#93; 
+#' @param channels &#91;required&#93; One or 2 channels to report to when anomalies are detected.
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group that we are setting up notifications
+#' for.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_notification_channels(
+#'   channels = list(
+#'     list(
+#'       eventPublishers = list(
+#'         "AnomalyDetection"
+#'       ),
+#'       id = "string",
+#'       uri = "string"
+#'     )
+#'   ),
+#'   profilingGroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_add_notification_channels
+codeguruprofiler_add_notification_channels <- function(channels, profilingGroupName) {
+  op <- new_operation(
+    name = "AddNotificationChannels",
+    http_method = "POST",
+    http_path = "/profilingGroups/{profilingGroupName}/notificationConfiguration",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$add_notification_channels_input(channels = channels, profilingGroupName = profilingGroupName)
+  output <- .codeguruprofiler$add_notification_channels_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$add_notification_channels <- codeguruprofiler_add_notification_channels
+
+#' Returns the time series of values for a requested list of frame metrics
+#' from a time period
+#'
+#' Returns the time series of values for a requested list of frame metrics
+#' from a time period.
+#'
+#' @usage
+#' codeguruprofiler_batch_get_frame_metric_data(endTime, frameMetrics,
+#'   period, profilingGroupName, startTime, targetResolution)
+#'
+#' @param endTime The end time of the time period for the returned time series values.
+#' This is specified using the ISO 8601 format. For example,
+#' 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020
+#' 1:15:02 PM UTC.
+#' @param frameMetrics The details of the metrics that are used to request a time series of
+#' values. The metric includes the name of the frame, the aggregation type
+#' to calculate the metric value for the frame, and the thread states to
+#' use to get the count for the metric value of the frame.
+#' @param period The duration of the frame metrics used to return the time series values.
+#' Specify using the ISO 8601 format. The maximum period duration is one
+#' day (`PT24H` or `P1D`).
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group associated with the the frame metrics
+#' used to return the time series values.
+#' @param startTime The start time of the time period for the frame metrics used to return
+#' the time series values. This is specified using the ISO 8601 format. For
+#' example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1,
+#' 2020 1:15:02 PM UTC.
+#' @param targetResolution The requested resolution of time steps for the returned time series of
+#' values. If the requested target resolution is not available due to data
+#' not being retained we provide a best effort result by falling back to
+#' the most granular available resolution after the target resolution.
+#' There are 3 valid values.
+#' 
+#' -   `P1D` --- 1 day
+#' 
+#' -   `PT1H` --- 1 hour
+#' 
+#' -   `PT5M` --- 5 minutes
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_frame_metric_data(
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   frameMetrics = list(
+#'     list(
+#'       frameName = "string",
+#'       threadStates = list(
+#'         "string"
+#'       ),
+#'       type = "AggregatedRelativeTotalTime"
+#'     )
+#'   ),
+#'   period = "string",
+#'   profilingGroupName = "string",
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   targetResolution = "P1D"|"PT1H"|"PT5M"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_batch_get_frame_metric_data
+codeguruprofiler_batch_get_frame_metric_data <- function(endTime = NULL, frameMetrics = NULL, period = NULL, profilingGroupName, startTime = NULL, targetResolution = NULL) {
+  op <- new_operation(
+    name = "BatchGetFrameMetricData",
+    http_method = "POST",
+    http_path = "/profilingGroups/{profilingGroupName}/frames/-/metrics",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$batch_get_frame_metric_data_input(endTime = endTime, frameMetrics = frameMetrics, period = period, profilingGroupName = profilingGroupName, startTime = startTime, targetResolution = targetResolution)
+  output <- .codeguruprofiler$batch_get_frame_metric_data_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$batch_get_frame_metric_data <- codeguruprofiler_batch_get_frame_metric_data
+
+#' Used by profiler agents to report their current state and to receive
+#' remote configuration updates
+#'
+#' Used by profiler agents to report their current state and to receive
+#' remote configuration updates. For example, `ConfigureAgent` can be used
+#' to tell and agent whether to profile or not and for how long to return
+#' profiling data.
+#'
+#' @usage
+#' codeguruprofiler_configure_agent(fleetInstanceId, metadata,
+#'   profilingGroupName)
+#'
+#' @param fleetInstanceId A universally unique identifier (UUID) for a profiling instance. For
+#' example, if the profiling instance is an Amazon EC2 instance, it is the
+#' instance ID. If it is an AWS Fargate container, it is the container\'s
+#' task ID.
+#' @param metadata Metadata captured about the compute platform the agent is running on. It
+#' includes information about sampling and reporting. The valid fields are:
+#' 
+#' -   `COMPUTE_PLATFORM` - The compute platform on which the agent is
+#'     running
+#' 
+#' -   `AGENT_ID` - The ID for an agent instance.
+#' 
+#' -   `AWS_REQUEST_ID` - The AWS request ID of a Lambda invocation.
+#' 
+#' -   `EXECUTION_ENVIRONMENT` - The execution environment a Lambda
+#'     function is running on.
+#' 
+#' -   `LAMBDA_FUNCTION_ARN` - The Amazon Resource Name (ARN) that is used
+#'     to invoke a Lambda function.
+#' 
+#' -   `LAMBDA_MEMORY_LIMIT_IN_MB` - The memory allocated to a Lambda
+#'     function.
+#' 
+#' -   `LAMBDA_REMAINING_TIME_IN_MILLISECONDS` - The time in milliseconds
+#'     before execution of a Lambda function times out.
+#' 
+#' -   `LAMBDA_TIME_GAP_BETWEEN_INVOKES_IN_MILLISECONDS` - The time in
+#'     milliseconds between two invocations of a Lambda function.
+#' 
+#' -   `LAMBDA_PREVIOUS_EXECUTION_TIME_IN_MILLISECONDS` - The time in
+#'     milliseconds for the previous Lambda invocation.
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group for which the configured agent is
+#' collecting profiling data.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$configure_agent(
 #'   fleetInstanceId = "string",
+#'   metadata = list(
+#'     "string"
+#'   ),
 #'   profilingGroupName = "string"
 #' )
 #' ```
@@ -24,14 +193,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_configure_agent
-codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, profilingGroupName) {
+codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = NULL, profilingGroupName) {
   op <- new_operation(
     name = "ConfigureAgent",
     http_method = "POST",
     http_path = "/profilingGroups/{profilingGroupName}/configureAgent",
     paginator = list()
   )
-  input <- .codeguruprofiler$configure_agent_input(fleetInstanceId = fleetInstanceId, profilingGroupName = profilingGroupName)
+  input <- .codeguruprofiler$configure_agent_input(fleetInstanceId = fleetInstanceId, metadata = metadata, profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$configure_agent_output()
   config <- get_config()
   svc <- .codeguruprofiler$service(config)
@@ -41,17 +210,25 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, profilingGr
 }
 .codeguruprofiler$operations$configure_agent <- codeguruprofiler_configure_agent
 
-#' Create a profiling group
+#' Creates a profiling group
 #'
-#' Create a profiling group.
+#' Creates a profiling group.
 #'
 #' @usage
 #' codeguruprofiler_create_profiling_group(agentOrchestrationConfig,
-#'   clientToken, profilingGroupName)
+#'   clientToken, computePlatform, profilingGroupName)
 #'
-#' @param agentOrchestrationConfig 
-#' @param clientToken &#91;required&#93; 
-#' @param profilingGroupName &#91;required&#93; 
+#' @param agentOrchestrationConfig Specifies whether profiling is enabled or disabled for the created
+#' profiling group.
+#' @param clientToken &#91;required&#93; Amazon CodeGuru Profiler uses this universally unique identifier (UUID)
+#' to prevent the accidental creation of duplicate profiling groups if
+#' there are failures and retries.
+#' @param computePlatform The compute platform of the profiling group. Use `AWSLambda` if your
+#' application runs on AWS Lambda. Use `Default` if your application runs
+#' on a compute platform that is not AWS Lambda, such an Amazon EC2
+#' instance, an on-premises server, or a different platform. If not
+#' specified, `Default` is used.
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group to create.
 #'
 #' @section Request syntax:
 #' ```
@@ -60,6 +237,7 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, profilingGr
 #'     profilingEnabled = TRUE|FALSE
 #'   ),
 #'   clientToken = "string",
+#'   computePlatform = "AWSLambda"|"Default",
 #'   profilingGroupName = "string"
 #' )
 #' ```
@@ -67,14 +245,14 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, profilingGr
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_create_profiling_group
-codeguruprofiler_create_profiling_group <- function(agentOrchestrationConfig = NULL, clientToken, profilingGroupName) {
+codeguruprofiler_create_profiling_group <- function(agentOrchestrationConfig = NULL, clientToken, computePlatform = NULL, profilingGroupName) {
   op <- new_operation(
     name = "CreateProfilingGroup",
     http_method = "POST",
     http_path = "/profilingGroups",
     paginator = list()
   )
-  input <- .codeguruprofiler$create_profiling_group_input(agentOrchestrationConfig = agentOrchestrationConfig, clientToken = clientToken, profilingGroupName = profilingGroupName)
+  input <- .codeguruprofiler$create_profiling_group_input(agentOrchestrationConfig = agentOrchestrationConfig, clientToken = clientToken, computePlatform = computePlatform, profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$create_profiling_group_output()
   config <- get_config()
   svc <- .codeguruprofiler$service(config)
@@ -84,14 +262,14 @@ codeguruprofiler_create_profiling_group <- function(agentOrchestrationConfig = N
 }
 .codeguruprofiler$operations$create_profiling_group <- codeguruprofiler_create_profiling_group
 
-#' Delete a profiling group
+#' Deletes a profiling group
 #'
-#' Delete a profiling group.
+#' Deletes a profiling group.
 #'
 #' @usage
 #' codeguruprofiler_delete_profiling_group(profilingGroupName)
 #'
-#' @param profilingGroupName &#91;required&#93; 
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -120,14 +298,17 @@ codeguruprofiler_delete_profiling_group <- function(profilingGroupName) {
 }
 .codeguruprofiler$operations$delete_profiling_group <- codeguruprofiler_delete_profiling_group
 
-#' Describe a profiling group
+#' Returns a ProfilingGroupDescription object that contains information
+#' about the requested profiling group
 #'
-#' Describe a profiling group.
+#' Returns a
+#' [`ProfilingGroupDescription`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html)
+#' object that contains information about the requested profiling group.
 #'
 #' @usage
 #' codeguruprofiler_describe_profiling_group(profilingGroupName)
 #'
-#' @param profilingGroupName &#91;required&#93; 
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group to get information about.
 #'
 #' @section Request syntax:
 #' ```
@@ -156,33 +337,183 @@ codeguruprofiler_describe_profiling_group <- function(profilingGroupName) {
 }
 .codeguruprofiler$operations$describe_profiling_group <- codeguruprofiler_describe_profiling_group
 
-#' Get the aggregated profile of a profiling group for the specified time
+#' Returns a list of FindingsReportSummary objects that contain analysis
+#' results for all profiling groups in your AWS account
+#'
+#' Returns a list of
+#' [`FindingsReportSummary`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FindingsReportSummary.html)
+#' objects that contain analysis results for all profiling groups in your
+#' AWS account.
+#'
+#' @usage
+#' codeguruprofiler_get_findings_report_account_summary(dailyReportsOnly,
+#'   maxResults, nextToken)
+#'
+#' @param dailyReportsOnly A `Boolean` value indicating whether to only return reports from daily
+#' profiles. If set to `True`, only analysis data from daily profiles is
+#' returned. If set to `False`, analysis data is returned from smaller time
+#' windows (for example, one hour).
+#' @param maxResults The maximum number of results returned by
+#' ` GetFindingsReportAccountSummary` in paginated output. When this
+#' parameter is used, `GetFindingsReportAccountSummary` only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another `GetFindingsReportAccountSummary` request with the
+#' returned `nextToken` value.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `GetFindingsReportAccountSummary` request where `maxResults` was used
+#' and the results exceeded the value of that parameter. Pagination
+#' continues from the end of the previous results that returned the
+#' `nextToken` value.
+#' 
+#' This token should be treated as an opaque identifier that is only used
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_findings_report_account_summary(
+#'   dailyReportsOnly = TRUE|FALSE,
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_get_findings_report_account_summary
+codeguruprofiler_get_findings_report_account_summary <- function(dailyReportsOnly = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "GetFindingsReportAccountSummary",
+    http_method = "GET",
+    http_path = "/internal/findingsReports",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$get_findings_report_account_summary_input(dailyReportsOnly = dailyReportsOnly, maxResults = maxResults, nextToken = nextToken)
+  output <- .codeguruprofiler$get_findings_report_account_summary_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$get_findings_report_account_summary <- codeguruprofiler_get_findings_report_account_summary
+
+#' Get the current configuration for anomaly notifications for a profiling
+#' group
+#'
+#' Get the current configuration for anomaly notifications for a profiling
+#' group.
+#'
+#' @usage
+#' codeguruprofiler_get_notification_configuration(profilingGroupName)
+#'
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group we want to get the notification
+#' configuration for.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_notification_configuration(
+#'   profilingGroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_get_notification_configuration
+codeguruprofiler_get_notification_configuration <- function(profilingGroupName) {
+  op <- new_operation(
+    name = "GetNotificationConfiguration",
+    http_method = "GET",
+    http_path = "/profilingGroups/{profilingGroupName}/notificationConfiguration",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$get_notification_configuration_input(profilingGroupName = profilingGroupName)
+  output <- .codeguruprofiler$get_notification_configuration_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$get_notification_configuration <- codeguruprofiler_get_notification_configuration
+
+#' Returns the JSON-formatted resource-based policy on a profiling group
+#'
+#' Returns the JSON-formatted resource-based policy on a profiling group.
+#'
+#' @usage
+#' codeguruprofiler_get_policy(profilingGroupName)
+#'
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_policy(
+#'   profilingGroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_get_policy
+codeguruprofiler_get_policy <- function(profilingGroupName) {
+  op <- new_operation(
+    name = "GetPolicy",
+    http_method = "GET",
+    http_path = "/profilingGroups/{profilingGroupName}/policy",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$get_policy_input(profilingGroupName = profilingGroupName)
+  output <- .codeguruprofiler$get_policy_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$get_policy <- codeguruprofiler_get_policy
+
+#' Gets the aggregated profile of a profiling group for a specified time
 #' range
 #'
-#' Get the aggregated profile of a profiling group for the specified time
-#' range. If the requested time range does not align with the available
-#' aggregated profiles, it will be expanded to attain alignment. If
-#' aggregated profiles are available only for part of the period requested,
-#' the profile is returned from the earliest available to the latest within
-#' the requested time range. For instance, if the requested time range is
-#' from 00:00 to 00:20 and the available profiles are from 00:15 to 00:25,
-#' then the returned profile will be from 00:15 to 00:20.
+#' Gets the aggregated profile of a profiling group for a specified time
+#' range. Amazon CodeGuru Profiler collects posted agent profiles for a
+#' profiling group into aggregated profiles.
+#' 
+#'      &lt;note&gt; &lt;p&gt; Because aggregated profiles expire over time &lt;code&gt;GetProfile&lt;/code&gt; is not idempotent. &lt;/p&gt; &lt;/note&gt; &lt;p&gt; Specify the time range for the requested aggregated profile using 1 or 2 of the following parameters: &lt;code&gt;startTime&lt;/code&gt;, &lt;code&gt;endTime&lt;/code&gt;, &lt;code&gt;period&lt;/code&gt;. The maximum time range allowed is 7 days. If you specify all 3 parameters, an exception is thrown. If you specify only &lt;code&gt;period&lt;/code&gt;, the latest aggregated profile is returned. &lt;/p&gt; &lt;p&gt; Aggregated profiles are available with aggregation periods of 5 minutes, 1 hour, and 1 day, aligned to UTC. The aggregation period of an aggregated profile determines how long it is retained. For more information, see &lt;a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AggregatedProfileTime.html"&gt; &lt;code&gt;AggregatedProfileTime&lt;/code&gt; &lt;/a&gt;. The aggregated profile's aggregation period determines how long it is retained by CodeGuru Profiler. &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; If the aggregation period is 5 minutes, the aggregated profile is retained for 15 days. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; If the aggregation period is 1 hour, the aggregated profile is retained for 60 days. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; If the aggregation period is 1 day, the aggregated profile is retained for 3 years. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;There are two use cases for calling &lt;code&gt;GetProfile&lt;/code&gt;.&lt;/p&gt; &lt;ol&gt; &lt;li&gt; &lt;p&gt; If you want to return an aggregated profile that already exists, use &lt;a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ListProfileTimes.html"&gt; &lt;code&gt;ListProfileTimes&lt;/code&gt; &lt;/a&gt; to view the time ranges of existing aggregated profiles. Use them in a &lt;code&gt;GetProfile&lt;/code&gt; request to return a specific, existing aggregated profile. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; If you want to return an aggregated profile for a time range that doesn't align with an existing aggregated profile, then CodeGuru Profiler makes a best effort to combine existing aggregated profiles from the requested time range and return them as one aggregated profile. &lt;/p&gt; &lt;p&gt; If aggregated profiles do not exist for the full time range requested, then aggregated profiles for a smaller time range are returned. For example, if the requested time range is from 00:00 to 00:20, and the existing aggregated profiles are from 00:15 and 00:25, then the aggregated profiles from 00:15 to 00:20 are returned. &lt;/p&gt; &lt;/li&gt; &lt;/ol&gt; 
 #'
 #' @usage
 #' codeguruprofiler_get_profile(accept, endTime, maxDepth, period,
 #'   profilingGroupName, startTime)
 #'
-#' @param accept The format of the profile to return. Supports application/json or
-#' application/x-amzn-ion. Defaults to application/x-amzn-ion.
-#' @param endTime The end time of the profile to get. Either period or endTime must be
-#' specified. Must be greater than start and the overall time range to be
-#' in the past and not larger than a week.
-#' @param maxDepth 
-#' @param period The period of the profile to get. Exactly two of `startTime`, `period`
-#' and `endTime` must be specified. Must be positive and the overall time
-#' range to be in the past and not larger than a week.
-#' @param profilingGroupName &#91;required&#93; 
-#' @param startTime The start time of the profile to get.
+#' @param accept The format of the returned profiling data. The format maps to the
+#' `Accept` and `Content-Type` headers of the HTTP request. You can specify
+#' one of the following: or the default .
+#' 
+#'      &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/json&lt;/code&gt; â€” standard JSON format &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/x-amzn-ion&lt;/code&gt; â€” the Amazon Ion data format. For more information, see &lt;a href="http://amzn.github.io/ion-docs/"&gt;Amazon Ion&lt;/a&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; 
+#' @param endTime The end time of the requested profile. Specify using the ISO 8601
+#' format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond
+#' past June 1, 2020 1:15:02 PM UTC.
+#' 
+#' If you specify `endTime`, then you must also specify `period` or
+#' `startTime`, but not both.
+#' @param maxDepth The maximum depth of the stacks in the code that is represented in the
+#' aggregated profile. For example, if CodeGuru Profiler finds a method
+#' `A`, which calls method `B`, which calls method `C`, which calls method
+#' `D`, then the depth is 4. If the `maxDepth` is set to 2, then the
+#' aggregated profile contains representations of methods `A` and `B`.
+#' @param period Used with `startTime` or `endTime` to specify the time range for the
+#' returned aggregated profile. Specify using the ISO 8601 format. For
+#' example, `P1DT1H1M1S`.
+#' 
+#'      &lt;p&gt; To get the latest aggregated profile, specify only &lt;code&gt;period&lt;/code&gt;. &lt;/p&gt; 
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group to get.
+#' @param startTime The start time of the profile to get. Specify using the ISO 8601 format.
+#' For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June
+#' 1, 2020 1:15:02 PM UTC.
+#' 
+#'      &lt;p&gt; If you specify &lt;code&gt;startTime&lt;/code&gt;, then you must also specify &lt;code&gt;period&lt;/code&gt; or &lt;code&gt;endTime&lt;/code&gt;, but not both. &lt;/p&gt; 
 #'
 #' @section Request syntax:
 #' ```
@@ -220,24 +551,201 @@ codeguruprofiler_get_profile <- function(accept = NULL, endTime = NULL, maxDepth
 }
 .codeguruprofiler$operations$get_profile <- codeguruprofiler_get_profile
 
-#' List the start times of the available aggregated profiles of a profiling
-#' group for an aggregation period within the specified time range
+#' Returns a list of Recommendation objects that contain recommendations
+#' for a profiling group for a given time period
 #'
-#' List the start times of the available aggregated profiles of a profiling
-#' group for an aggregation period within the specified time range.
+#' Returns a list of
+#' [`Recommendation`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Recommendation.html)
+#' objects that contain recommendations for a profiling group for a given
+#' time period. A list of
+#' [`Anomaly`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Anomaly.html)
+#' objects that contains details about anomalies detected in the profiling
+#' group for the same time period is also returned.
+#'
+#' @usage
+#' codeguruprofiler_get_recommendations(endTime, locale,
+#'   profilingGroupName, startTime)
+#'
+#' @param endTime &#91;required&#93; The start time of the profile to get analysis data about. You must
+#' specify `startTime` and `endTime`. This is specified using the ISO 8601
+#' format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond
+#' past June 1, 2020 1:15:02 PM UTC.
+#' @param locale The language used to provide analysis. Specify using a string that is
+#' one of the following `BCP 47` language codes.
+#' 
+#' -   `de-DE` - German, Germany
+#' 
+#' -   `en-GB` - English, United Kingdom
+#' 
+#' -   `en-US` - English, United States
+#' 
+#' -   `es-ES` - Spanish, Spain
+#' 
+#' -   `fr-FR` - French, France
+#' 
+#' -   `it-IT` - Italian, Italy
+#' 
+#' -   `ja-JP` - Japanese, Japan
+#' 
+#' -   `ko-KR` - Korean, Republic of Korea
+#' 
+#' -   `pt-BR` - Portugese, Brazil
+#' 
+#' -   `zh-CN` - Chinese, China
+#' 
+#' -   `zh-TW` - Chinese, Taiwan
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group to get analysis data about.
+#' @param startTime &#91;required&#93; The end time of the profile to get analysis data about. You must specify
+#' `startTime` and `endTime`. This is specified using the ISO 8601 format.
+#' For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June
+#' 1, 2020 1:15:02 PM UTC.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_recommendations(
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   locale = "string",
+#'   profilingGroupName = "string",
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_get_recommendations
+codeguruprofiler_get_recommendations <- function(endTime, locale = NULL, profilingGroupName, startTime) {
+  op <- new_operation(
+    name = "GetRecommendations",
+    http_method = "GET",
+    http_path = "/internal/profilingGroups/{profilingGroupName}/recommendations",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$get_recommendations_input(endTime = endTime, locale = locale, profilingGroupName = profilingGroupName, startTime = startTime)
+  output <- .codeguruprofiler$get_recommendations_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$get_recommendations <- codeguruprofiler_get_recommendations
+
+#' List the available reports for a given profiling group and time range
+#'
+#' List the available reports for a given profiling group and time range.
+#'
+#' @usage
+#' codeguruprofiler_list_findings_reports(dailyReportsOnly, endTime,
+#'   maxResults, nextToken, profilingGroupName, startTime)
+#'
+#' @param dailyReportsOnly A `Boolean` value indicating whether to only return reports from daily
+#' profiles. If set to `True`, only analysis data from daily profiles is
+#' returned. If set to `False`, analysis data is returned from smaller time
+#' windows (for example, one hour).
+#' @param endTime &#91;required&#93; The end time of the profile to get analysis data about. You must specify
+#' `startTime` and `endTime`. This is specified using the ISO 8601 format.
+#' For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June
+#' 1, 2020 1:15:02 PM UTC.
+#' @param maxResults The maximum number of report results returned by `ListFindingsReports`
+#' in paginated output. When this parameter is used, `ListFindingsReports`
+#' only returns `maxResults` results in a single page along with a
+#' `nextToken` response element. The remaining results of the initial
+#' request can be seen by sending another `ListFindingsReports` request
+#' with the returned `nextToken` value.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `ListFindingsReportsRequest` request where `maxResults` was used and the
+#' results exceeded the value of that parameter. Pagination continues from
+#' the end of the previous results that returned the `nextToken` value.
+#' 
+#' This token should be treated as an opaque identifier that is only used
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group from which to search for analysis data.
+#' @param startTime &#91;required&#93; The start time of the profile to get analysis data about. You must
+#' specify `startTime` and `endTime`. This is specified using the ISO 8601
+#' format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond
+#' past June 1, 2020 1:15:02 PM UTC.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_findings_reports(
+#'   dailyReportsOnly = TRUE|FALSE,
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   profilingGroupName = "string",
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_list_findings_reports
+codeguruprofiler_list_findings_reports <- function(dailyReportsOnly = NULL, endTime, maxResults = NULL, nextToken = NULL, profilingGroupName, startTime) {
+  op <- new_operation(
+    name = "ListFindingsReports",
+    http_method = "GET",
+    http_path = "/internal/profilingGroups/{profilingGroupName}/findingsReports",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$list_findings_reports_input(dailyReportsOnly = dailyReportsOnly, endTime = endTime, maxResults = maxResults, nextToken = nextToken, profilingGroupName = profilingGroupName, startTime = startTime)
+  output <- .codeguruprofiler$list_findings_reports_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$list_findings_reports <- codeguruprofiler_list_findings_reports
+
+#' Lists the start times of the available aggregated profiles of a
+#' profiling group for an aggregation period within the specified time
+#' range
+#'
+#' Lists the start times of the available aggregated profiles of a
+#' profiling group for an aggregation period within the specified time
+#' range.
 #'
 #' @usage
 #' codeguruprofiler_list_profile_times(endTime, maxResults, nextToken,
 #'   orderBy, period, profilingGroupName, startTime)
 #'
-#' @param endTime &#91;required&#93; The end time of the time range to list profiles until.
-#' @param maxResults 
-#' @param nextToken 
-#' @param orderBy The order (ascending or descending by start time of the profile) to list
-#' the profiles by. Defaults to TIMESTAMP\\_DESCENDING.
-#' @param period &#91;required&#93; The aggregation period to list the profiles for.
-#' @param profilingGroupName &#91;required&#93; 
-#' @param startTime &#91;required&#93; The start time of the time range to list the profiles from.
+#' @param endTime &#91;required&#93; The end time of the time range from which to list the profiles.
+#' @param maxResults The maximum number of profile time results returned by
+#' `ListProfileTimes` in paginated output. When this parameter is used,
+#' `ListProfileTimes` only returns `maxResults` results in a single page
+#' with a `nextToken` response element. The remaining results of the
+#' initial request can be seen by sending another `ListProfileTimes`
+#' request with the returned `nextToken` value.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `ListProfileTimes` request where `maxResults` was used and the results
+#' exceeded the value of that parameter. Pagination continues from the end
+#' of the previous results that returned the `nextToken` value.
+#' 
+#' This token should be treated as an opaque identifier that is only used
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
+#' @param orderBy The order (ascending or descending by start time of the profile) to use
+#' when listing profiles. Defaults to `TIMESTAMP_DESCENDING`.
+#' @param period &#91;required&#93; The aggregation period. This specifies the period during which an
+#' aggregation profile collects posted agent profiles for a profiling
+#' group. There are 3 valid values.
+#' 
+#' -   `P1D` --- 1 day
+#' 
+#' -   `PT1H` --- 1 hour
+#' 
+#' -   `PT5M` --- 5 minutes
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group.
+#' @param startTime &#91;required&#93; The start time of the time range from which to list the profiles.
 #'
 #' @section Request syntax:
 #' ```
@@ -276,18 +784,35 @@ codeguruprofiler_list_profile_times <- function(endTime, maxResults = NULL, next
 }
 .codeguruprofiler$operations$list_profile_times <- codeguruprofiler_list_profile_times
 
-#' List profiling groups in the account
+#' Returns a list of profiling groups
 #'
-#' List profiling groups in the account.
+#' Returns a list of profiling groups. The profiling groups are returned as
+#' [`ProfilingGroupDescription`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html)
+#' objects.
 #'
 #' @usage
 #' codeguruprofiler_list_profiling_groups(includeDescription, maxResults,
 #'   nextToken)
 #'
-#' @param includeDescription If set to true, returns the full description of the profiling groups
-#' instead of the names. Defaults to false.
-#' @param maxResults 
-#' @param nextToken 
+#' @param includeDescription A `Boolean` value indicating whether to include a description. If
+#' `true`, then a list of
+#' [`ProfilingGroupDescription`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html)
+#' objects that contain detailed information about profiling groups is
+#' returned. If `false`, then a list of profiling group names is returned.
+#' @param maxResults The maximum number of profiling groups results returned by
+#' `ListProfilingGroups` in paginated output. When this parameter is used,
+#' `ListProfilingGroups` only returns `maxResults` results in a single page
+#' along with a `nextToken` response element. The remaining results of the
+#' initial request can be seen by sending another `ListProfilingGroups`
+#' request with the returned `nextToken` value.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `ListProfilingGroups` request where `maxResults` was used and the
+#' results exceeded the value of that parameter. Pagination continues from
+#' the end of the previous results that returned the `nextToken` value.
+#' 
+#' This token should be treated as an opaque identifier that is only used
+#' to retrieve the next items in a list and not for other programmatic
+#' purposes.
 #'
 #' @section Request syntax:
 #' ```
@@ -318,24 +843,28 @@ codeguruprofiler_list_profiling_groups <- function(includeDescription = NULL, ma
 }
 .codeguruprofiler$operations$list_profiling_groups <- codeguruprofiler_list_profiling_groups
 
-#' Submit profile collected by an agent belonging to a profiling group for
-#' aggregation
+#' Submits profiling data to an aggregated profile of a profiling group
 #'
-#' Submit profile collected by an agent belonging to a profiling group for
-#' aggregation.
+#' Submits profiling data to an aggregated profile of a profiling group. To
+#' get an aggregated profile that is created with this profiling data, use
+#' [`GetProfile`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.html)
+#' .
 #'
 #' @usage
 #' codeguruprofiler_post_agent_profile(agentProfile, contentType,
 #'   profileToken, profilingGroupName)
 #'
-#' @param agentProfile &#91;required&#93; 
-#' @param contentType &#91;required&#93; The content type of the agent profile in the payload. Recommended to
-#' send the profile gzipped with content-type application/octet-stream.
-#' Other accepted values are application/x-amzn-ion and application/json
-#' for unzipped Ion and JSON respectively.
-#' @param profileToken Client generated token to deduplicate the agent profile during
-#' aggregation.
-#' @param profilingGroupName &#91;required&#93; 
+#' @param agentProfile &#91;required&#93; The submitted profiling data.
+#' @param contentType &#91;required&#93; The format of the submitted profiling data. The format maps to the
+#' `Accept` and `Content-Type` headers of the HTTP request. You can specify
+#' one of the following: or the default .
+#' 
+#'      &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/json&lt;/code&gt; â€” standard JSON format &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/x-amzn-ion&lt;/code&gt; â€” the Amazon Ion data format. For more information, see &lt;a href="http://amzn.github.io/ion-docs/"&gt;Amazon Ion&lt;/a&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; 
+#' @param profileToken Amazon CodeGuru Profiler uses this universally unique identifier (UUID)
+#' to prevent the accidental submission of duplicate profiling data if
+#' there are failures and retries.
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group with the aggregated profile that
+#' receives the submitted profiling data.
 #'
 #' @section Request syntax:
 #' ```
@@ -367,16 +896,220 @@ codeguruprofiler_post_agent_profile <- function(agentProfile, contentType, profi
 }
 .codeguruprofiler$operations$post_agent_profile <- codeguruprofiler_post_agent_profile
 
-#' Update a profiling group
+#' Adds permissions to a profiling group's resource-based policy that are
+#' provided using an action group
 #'
-#' Update a profiling group.
+#' Adds permissions to a profiling group\'s resource-based policy that are
+#' provided using an action group. If a profiling group doesn\'t have a
+#' resource-based policy, one is created for it using the permissions in
+#' the action group and the roles and users in the `principals` parameter.
+#' 
+#'      &lt;p&gt; The one supported action group that can be added is &lt;code&gt;agentPermission&lt;/code&gt; which grants &lt;code&gt;ConfigureAgent&lt;/code&gt; and &lt;code&gt;PostAgent&lt;/code&gt; permissions. For more information, see &lt;a href="https://docs.aws.amazon.com/codeguru/latest/profiler-ug/resource-based-policies.html"&gt;Resource-based policies in CodeGuru Profiler&lt;/a&gt; in the &lt;i&gt;Amazon CodeGuru Profiler User Guide&lt;/i&gt;, &lt;a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"&gt; &lt;code&gt;ConfigureAgent&lt;/code&gt; &lt;/a&gt;, and &lt;a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.html"&gt; &lt;code&gt;PostAgentProfile&lt;/code&gt; &lt;/a&gt;. &lt;/p&gt; &lt;p&gt; The first time you call &lt;code&gt;PutPermission&lt;/code&gt; on a profiling group, do not specify a &lt;code&gt;revisionId&lt;/code&gt; because it doesn't have a resource-based policy. Subsequent calls must provide a &lt;code&gt;revisionId&lt;/code&gt; to specify which revision of the resource-based policy to add the permissions to. &lt;/p&gt; &lt;p&gt; The response contains the profiling group's JSON-formatted resource policy. &lt;/p&gt; 
+#'
+#' @usage
+#' codeguruprofiler_put_permission(actionGroup, principals,
+#'   profilingGroupName, revisionId)
+#'
+#' @param actionGroup &#91;required&#93; Specifies an action group that contains permissions to add to a
+#' profiling group resource. One action group is supported,
+#' `agentPermissions`, which grants permission to perform actions required
+#' by the profiling agent, `ConfigureAgent` and `PostAgentProfile`
+#' permissions.
+#' @param principals &#91;required&#93; A list ARNs for the roles and users you want to grant access to the
+#' profiling group. Wildcards are not are supported in the ARNs.
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group to grant access to.
+#' @param revisionId A universally unique identifier (UUID) for the revision of the policy
+#' you are adding to the profiling group. Do not specify this when you add
+#' permissions to a profiling group for the first time. If a policy already
+#' exists on the profiling group, you must specify the `revisionId`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_permission(
+#'   actionGroup = "agentPermissions",
+#'   principals = list(
+#'     "string"
+#'   ),
+#'   profilingGroupName = "string",
+#'   revisionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_put_permission
+codeguruprofiler_put_permission <- function(actionGroup, principals, profilingGroupName, revisionId = NULL) {
+  op <- new_operation(
+    name = "PutPermission",
+    http_method = "PUT",
+    http_path = "/profilingGroups/{profilingGroupName}/policy/{actionGroup}",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$put_permission_input(actionGroup = actionGroup, principals = principals, profilingGroupName = profilingGroupName, revisionId = revisionId)
+  output <- .codeguruprofiler$put_permission_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$put_permission <- codeguruprofiler_put_permission
+
+#' Remove one anomaly notifications channel for a profiling group
+#'
+#' Remove one anomaly notifications channel for a profiling group.
+#'
+#' @usage
+#' codeguruprofiler_remove_notification_channel(channelId,
+#'   profilingGroupName)
+#'
+#' @param channelId &#91;required&#93; The id of the channel that we want to stop receiving notifications.
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group we want to change notification
+#' configuration for.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_notification_channel(
+#'   channelId = "string",
+#'   profilingGroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_remove_notification_channel
+codeguruprofiler_remove_notification_channel <- function(channelId, profilingGroupName) {
+  op <- new_operation(
+    name = "RemoveNotificationChannel",
+    http_method = "DELETE",
+    http_path = "/profilingGroups/{profilingGroupName}/notificationConfiguration/{channelId}",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$remove_notification_channel_input(channelId = channelId, profilingGroupName = profilingGroupName)
+  output <- .codeguruprofiler$remove_notification_channel_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$remove_notification_channel <- codeguruprofiler_remove_notification_channel
+
+#' Removes permissions from a profiling group's resource-based policy that
+#' are provided using an action group
+#'
+#' Removes permissions from a profiling group\'s resource-based policy that
+#' are provided using an action group. The one supported action group that
+#' can be removed is `agentPermission` which grants `ConfigureAgent` and
+#' `PostAgent` permissions. For more information, see [Resource-based
+#' policies in CodeGuru
+#' Profiler](https://docs.aws.amazon.com/codeguru/latest/profiler-ug/resource-based-policies.html)
+#' in the *Amazon CodeGuru Profiler User Guide*,
+#' [`ConfigureAgent`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html)
+#' , and
+#' [`PostAgentProfile`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.html)
+#' .
+#'
+#' @usage
+#' codeguruprofiler_remove_permission(actionGroup, profilingGroupName,
+#'   revisionId)
+#'
+#' @param actionGroup &#91;required&#93; Specifies an action group that contains the permissions to remove from a
+#' profiling group\'s resource-based policy. One action group is supported,
+#' `agentPermissions`, which grants `ConfigureAgent` and `PostAgentProfile`
+#' permissions.
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group.
+#' @param revisionId &#91;required&#93; A universally unique identifier (UUID) for the revision of the
+#' resource-based policy from which you want to remove permissions.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_permission(
+#'   actionGroup = "agentPermissions",
+#'   profilingGroupName = "string",
+#'   revisionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_remove_permission
+codeguruprofiler_remove_permission <- function(actionGroup, profilingGroupName, revisionId) {
+  op <- new_operation(
+    name = "RemovePermission",
+    http_method = "DELETE",
+    http_path = "/profilingGroups/{profilingGroupName}/policy/{actionGroup}",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$remove_permission_input(actionGroup = actionGroup, profilingGroupName = profilingGroupName, revisionId = revisionId)
+  output <- .codeguruprofiler$remove_permission_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$remove_permission <- codeguruprofiler_remove_permission
+
+#' Sends feedback to CodeGuru Profiler about whether the anomaly detected
+#' by the analysis is useful or not
+#'
+#' Sends feedback to CodeGuru Profiler about whether the anomaly detected
+#' by the analysis is useful or not.
+#'
+#' @usage
+#' codeguruprofiler_submit_feedback(anomalyInstanceId, comment,
+#'   profilingGroupName, type)
+#'
+#' @param anomalyInstanceId &#91;required&#93; The universally unique identifier (UUID) of the
+#' [`AnomalyInstance`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AnomalyInstance.html)
+#' object that is included in the analysis data.
+#' @param comment Optional feedback about this anomaly.
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group that is associated with the analysis
+#' data.
+#' @param type &#91;required&#93; The feedback tpye. Thee are two valid values, `Positive` and `Negative`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$submit_feedback(
+#'   anomalyInstanceId = "string",
+#'   comment = "string",
+#'   profilingGroupName = "string",
+#'   type = "Negative"|"Positive"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_submit_feedback
+codeguruprofiler_submit_feedback <- function(anomalyInstanceId, comment = NULL, profilingGroupName, type) {
+  op <- new_operation(
+    name = "SubmitFeedback",
+    http_method = "POST",
+    http_path = "/internal/profilingGroups/{profilingGroupName}/anomalies/{anomalyInstanceId}/feedback",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$submit_feedback_input(anomalyInstanceId = anomalyInstanceId, comment = comment, profilingGroupName = profilingGroupName, type = type)
+  output <- .codeguruprofiler$submit_feedback_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$submit_feedback <- codeguruprofiler_submit_feedback
+
+#' Updates a profiling group
+#'
+#' Updates a profiling group.
 #'
 #' @usage
 #' codeguruprofiler_update_profiling_group(agentOrchestrationConfig,
 #'   profilingGroupName)
 #'
-#' @param agentOrchestrationConfig &#91;required&#93; Remote configuration to configure the agents of the profiling group.
-#' @param profilingGroupName &#91;required&#93; 
+#' @param agentOrchestrationConfig &#91;required&#93; Specifies whether profiling is enabled or disabled for a profiling
+#' group.
+#' @param profilingGroupName &#91;required&#93; The name of the profiling group to update.
 #'
 #' @section Request syntax:
 #' ```

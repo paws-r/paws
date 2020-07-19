@@ -58,12 +58,14 @@ dimensions:
 }
 
 \code{GetReservationCoverage} uses the same
-\href{http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}
 object as the other operations, but only \code{AND} is supported among each
 dimension. You can nest only one level deep. If there are multiple
 values for a dimension, they are OR\'d together.
 
-If you don\'t provide a \code{SERVICE} filter, Cost Explorer defaults to EC2.}
+If you don\'t provide a \code{SERVICE} filter, Cost Explorer defaults to EC2.
+
+Cost category is also supported.}
 
 \item{Metrics}{The measurement that you want your reservation coverage reported in.
 
@@ -79,7 +81,8 @@ Retrieves the reservation coverage for your account. This enables you to
 see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache,
 Amazon Relational Database Service, or Amazon Redshift usage is covered
 by a reservation. An organization\'s master account can see the coverage
-of the associated member accounts. For any time period, you can filter
+of the associated member accounts. This supports dimensions, Cost
+Categories, and nested expressions. For any time period, you can filter
 data about reservation usage by the following dimensions:
 }
 \details{
@@ -123,15 +126,21 @@ operation.
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
       Values = list(
         "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     Tags = list(
       Key = "string",
       Values = list(
         "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     CostCategories = list(

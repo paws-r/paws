@@ -6,7 +6,7 @@
 \usage{
 mediaconnect_update_flow_source(Decryption, Description, EntitlementArn,
   FlowArn, IngestPort, MaxBitrate, MaxLatency, Protocol, SourceArn,
-  StreamId, WhitelistCidr)
+  StreamId, VpcInterfaceName, WhitelistCidr)
 }
 \arguments{
 \item{Decryption}{The type of encryption used on the content ingested from this source.}
@@ -28,6 +28,8 @@ mediaconnect_update_flow_source(Decryption, Description, EntitlementArn,
 \item{SourceArn}{[required] The ARN of the source that you want to update.}
 
 \item{StreamId}{The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.}
+
+\item{VpcInterfaceName}{The name of the VPC Interface to configure this Source with.}
 
 \item{WhitelistCidr}{The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.}
 }
@@ -56,6 +58,7 @@ Updates the source of a flow.
   Protocol = "zixi-push"|"rtp-fec"|"rtp"|"zixi-pull"|"rist",
   SourceArn = "string",
   StreamId = "string",
+  VpcInterfaceName = "string",
   WhitelistCidr = "string"
 )
 }

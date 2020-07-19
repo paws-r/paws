@@ -10,7 +10,7 @@ NULL
 #' @usage
 #' augmentedairuntime_delete_human_loop(HumanLoopName)
 #'
-#' @param HumanLoopName &#91;required&#93; The name of the human loop you want to delete.
+#' @param HumanLoopName &#91;required&#93; The name of the human loop that you want to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -46,7 +46,7 @@ augmentedairuntime_delete_human_loop <- function(HumanLoopName) {
 #' @usage
 #' augmentedairuntime_describe_human_loop(HumanLoopName)
 #'
-#' @param HumanLoopName &#91;required&#93; The name of the human loop.
+#' @param HumanLoopName &#91;required&#93; The name of the human loop that you want information about.
 #'
 #' @section Request syntax:
 #' ```
@@ -78,22 +78,24 @@ augmentedairuntime_describe_human_loop <- function(HumanLoopName) {
 #' Returns information about human loops, given the specified parameters
 #'
 #' Returns information about human loops, given the specified parameters.
+#' If a human loop was deleted, it will not be included.
 #'
 #' @usage
 #' augmentedairuntime_list_human_loops(CreationTimeAfter,
-#'   CreationTimeBefore, SortOrder, NextToken, MaxResults)
+#'   CreationTimeBefore, FlowDefinitionArn, SortOrder, NextToken, MaxResults)
 #'
 #' @param CreationTimeAfter (Optional) The timestamp of the date when you want the human loops to
-#' begin. For example, `1551000000`.
+#' begin in ISO 8601 format. For example, `2020-02-24`.
 #' @param CreationTimeBefore (Optional) The timestamp of the date before which you want the human
-#' loops to begin. For example, `1550000000`.
-#' @param SortOrder An optional value that specifies whether you want the results sorted in
-#' `Ascending` or `Descending` order.
-#' @param NextToken A token to resume pagination.
+#' loops to begin in ISO 8601 format. For example, `2020-02-24`.
+#' @param FlowDefinitionArn &#91;required&#93; The Amazon Resource Name (ARN) of a flow definition.
+#' @param SortOrder Optional. The order for displaying results. Valid values: `Ascending`
+#' and `Descending`.
+#' @param NextToken A token to display the next page of results.
 #' @param MaxResults The total number of items to return. If the total number of available
 #' items is more than the value specified in `MaxResults`, then a
-#' `NextToken` will be provided in the output that you can use to resume
-#' pagination.
+#' `NextToken` is returned in the output. You can use this token to display
+#' the next page of results.
 #'
 #' @section Request syntax:
 #' ```
@@ -104,6 +106,7 @@ augmentedairuntime_describe_human_loop <- function(HumanLoopName) {
 #'   CreationTimeBefore = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   FlowDefinitionArn = "string",
 #'   SortOrder = "Ascending"|"Descending",
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -113,14 +116,14 @@ augmentedairuntime_describe_human_loop <- function(HumanLoopName) {
 #' @keywords internal
 #'
 #' @rdname augmentedairuntime_list_human_loops
-augmentedairuntime_list_human_loops <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+augmentedairuntime_list_human_loops <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, FlowDefinitionArn, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListHumanLoops",
     http_method = "GET",
     http_path = "/human-loops",
     paginator = list()
   )
-  input <- .augmentedairuntime$list_human_loops_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .augmentedairuntime$list_human_loops_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, FlowDefinitionArn = FlowDefinitionArn, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .augmentedairuntime$list_human_loops_output()
   config <- get_config()
   svc <- .augmentedairuntime$service(config)
@@ -141,9 +144,12 @@ augmentedairuntime_list_human_loops <- function(CreationTimeAfter = NULL, Creati
 #'   HumanLoopInput, DataAttributes)
 #'
 #' @param HumanLoopName &#91;required&#93; The name of the human loop.
-#' @param FlowDefinitionArn &#91;required&#93; The Amazon Resource Name (ARN) of the flow definition.
-#' @param HumanLoopInput &#91;required&#93; An object containing information about the human loop.
-#' @param DataAttributes Attributes of the data specified by the customer.
+#' @param FlowDefinitionArn &#91;required&#93; The Amazon Resource Name (ARN) of the flow definition associated with
+#' this human loop.
+#' @param HumanLoopInput &#91;required&#93; An object that contains information about the human loop.
+#' @param DataAttributes Attributes of the specified data. Use `DataAttributes` to specify if
+#' your data is free of personally identifiable information and/or free of
+#' adult content.
 #'
 #' @section Request syntax:
 #' ```
@@ -188,7 +194,7 @@ augmentedairuntime_start_human_loop <- function(HumanLoopName, FlowDefinitionArn
 #' @usage
 #' augmentedairuntime_stop_human_loop(HumanLoopName)
 #'
-#' @param HumanLoopName &#91;required&#93; The name of the human loop you want to stop.
+#' @param HumanLoopName &#91;required&#93; The name of the human loop that you want to stop.
 #'
 #' @section Request syntax:
 #' ```

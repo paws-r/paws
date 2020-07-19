@@ -8,7 +8,8 @@ neptune_restore_db_cluster_from_snapshot(AvailabilityZones,
   DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion, Port,
   DBSubnetGroupName, DatabaseName, OptionGroupName, VpcSecurityGroupIds,
   Tags, KmsKeyId, EnableIAMDatabaseAuthentication,
-  EnableCloudwatchLogsExports, DBClusterParameterGroupName)
+  EnableCloudwatchLogsExports, DBClusterParameterGroupName,
+  DeletionProtection)
 }
 \arguments{
 \item{AvailabilityZones}{Provides the list of EC2 Availability Zones that instances in the
@@ -61,7 +62,7 @@ Example: \code{mySubnetgroup}}
 
 \item{DatabaseName}{Not supported.}
 
-\item{OptionGroupName}{The name of the option group to use for the restored DB cluster.}
+\item{OptionGroupName}{\emph{(Not supported by Neptune)}}
 
 \item{VpcSecurityGroupIds}{A list of VPC security groups that the new DB cluster will belong to.}
 
@@ -102,6 +103,10 @@ Constraints:
 \item If supplied, must match the name of an existing
 DBClusterParameterGroup.
 }}
+
+\item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
+enabled. The database can\'t be deleted when deletion protection is
+enabled. By default, deletion protection is disabled.}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
@@ -143,7 +148,8 @@ created with the default security group.
   EnableCloudwatchLogsExports = list(
     "string"
   ),
-  DBClusterParameterGroupName = "string"
+  DBClusterParameterGroupName = "string",
+  DeletionProtection = TRUE|FALSE
 )
 }
 }

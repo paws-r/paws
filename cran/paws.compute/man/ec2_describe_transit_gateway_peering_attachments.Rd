@@ -10,7 +10,19 @@ ec2_describe_transit_gateway_peering_attachments(
 \arguments{
 \item{TransitGatewayAttachmentIds}{One or more IDs of the transit gateway peering attachments.}
 
-\item{Filters}{One or more filters.}
+\item{Filters}{One or more filters. The possible values are:
+\itemize{
+\item \code{transit-gateway-attachment-id} - The ID of the transit gateway
+attachment.
+\item \code{local-owner-id} - The ID of your AWS account.
+\item \code{remote-owner-id} - The ID of the AWS account in the remote Region
+that owns the transit gateway.
+\item \code{state} - The state of the peering attachment (\code{available} \\|
+\code{deleted} \\| \code{deleting} \\| \code{failed} \\| \code{modifying} \\|
+\code{pendingAcceptance} \\| \code{pending} \\| \code{rollingBack} \\| \code{rejected} \\|
+\code{rejecting}).
+\item \code{transit-gateway-id} - The ID of the transit gateway.
+}}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve
 the remaining results, make another call with the returned \code{nextToken}

@@ -14,9 +14,11 @@ securityhub_create_action_target(Name, Description, Id)
 \item{Id}{[required] The ID for the custom action target.}
 }
 \description{
-Creates a custom action target in Security Hub. You can use custom
-actions on findings and insights in Security Hub to trigger target
-actions in Amazon CloudWatch Events.
+Creates a custom action target in Security Hub.
+}
+\details{
+You can use custom actions on findings and insights in Security Hub to
+trigger target actions in Amazon CloudWatch Events.
 }
 \section{Request syntax}{
 \preformatted{svc$create_action_target(

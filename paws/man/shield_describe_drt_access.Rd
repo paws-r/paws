@@ -3,14 +3,14 @@
 \name{shield_describe_drt_access}
 \alias{shield_describe_drt_access}
 \title{Returns the current role and list of Amazon S3 log buckets used by the
-DDoS Response team (DRT) to access your AWS account while assisting with
+DDoS Response Team (DRT) to access your AWS account while assisting with
 attack mitigation}
 \usage{
 shield_describe_drt_access()
 }
 \description{
 Returns the current role and list of Amazon S3 log buckets used by the
-DDoS Response team (DRT) to access your AWS account while assisting with
+DDoS Response Team (DRT) to access your AWS account while assisting with
 attack mitigation.
 }
 \section{Request syntax}{

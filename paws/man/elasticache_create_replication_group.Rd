@@ -6,12 +6,13 @@
 enabled) replication group}
 \usage{
 elasticache_create_replication_group(ReplicationGroupId,
-  ReplicationGroupDescription, PrimaryClusterId, AutomaticFailoverEnabled,
-  NumCacheClusters, PreferredCacheClusterAZs, NumNodeGroups,
-  ReplicasPerNodeGroup, NodeGroupConfiguration, CacheNodeType, Engine,
-  EngineVersion, CacheParameterGroupName, CacheSubnetGroupName,
-  CacheSecurityGroupNames, SecurityGroupIds, Tags, SnapshotArns,
-  SnapshotName, PreferredMaintenanceWindow, Port, NotificationTopicArn,
+  ReplicationGroupDescription, GlobalReplicationGroupId, PrimaryClusterId,
+  AutomaticFailoverEnabled, MultiAZEnabled, NumCacheClusters,
+  PreferredCacheClusterAZs, NumNodeGroups, ReplicasPerNodeGroup,
+  NodeGroupConfiguration, CacheNodeType, Engine, EngineVersion,
+  CacheParameterGroupName, CacheSubnetGroupName, CacheSecurityGroupNames,
+  SecurityGroupIds, Tags, SnapshotArns, SnapshotName,
+  PreferredMaintenanceWindow, Port, NotificationTopicArn,
   AutoMinorVersionUpgrade, SnapshotRetentionLimit, SnapshotWindow,
   AuthToken, TransitEncryptionEnabled, AtRestEncryptionEnabled, KmsKeyId)
 }
@@ -28,6 +29,8 @@ Constraints:
 
 \item{ReplicationGroupDescription}{[required] A user-created description for the replication group.}
 
+\item{GlobalReplicationGroupId}{The name of the Global Datastore}
+
 \item{PrimaryClusterId}{The identifier of the cluster that serves as the primary for this
 replication group. This cluster must already exist and have a status of
 \code{available}.
@@ -38,21 +41,13 @@ or \code{ReplicasPerNodeGroup} is specified.}
 \item{AutomaticFailoverEnabled}{Specifies whether a read-only replica is automatically promoted to
 read/write primary if the existing primary fails.
 
-If \code{true}, Multi-AZ is enabled for this replication group. If \code{false},
-Multi-AZ is disabled for this replication group.
-
 \code{AutomaticFailoverEnabled} must be enabled for Redis (cluster mode
 enabled) replication groups.
 
-Default: false
+Default: false}
 
-Amazon ElastiCache for Redis does not support Multi-AZ with automatic
-failover on:
-\itemize{
-\item Redis versions earlier than 2.8.6.
-\item Redis (cluster mode disabled): T1 node types.
-\item Redis (cluster mode enabled): T1 node types.
-}}
+\item{MultiAZEnabled}{A flag indicating if you have Multi-AZ enabled to enhance fault
+tolerance. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html}{Minimizing Downtime: Multi-AZ}.}
 
 \item{NumCacheClusters}{The number of clusters this replication group initially has.
 
@@ -101,9 +96,10 @@ and \code{Slots}.
 If you\'re creating a Redis (cluster mode disabled) or a Redis (cluster
 mode enabled) replication group, you can use this parameter to
 individually configure each node group (shard), or you can omit this
-parameter. However, when seeding a Redis (cluster mode enabled) cluster
-from a S3 rdb file, you must configure each node group (shard) using
-this parameter because you must specify the slots for each node group.}
+parameter. However, it is required when seeding a Redis (cluster mode
+enabled) cluster from a S3 rdb file. You must configure each node group
+(shard) using this parameter because you must specify the slots for each
+node group.}
 
 \item{CacheNodeType}{The compute and memory capacity of the nodes in the node group (shard).
 
@@ -122,6 +118,9 @@ previous generation counterparts.
 
 \strong{M4 node types:} \code{cache.m4.large}, \code{cache.m4.xlarge},
 \code{cache.m4.2xlarge}, \code{cache.m4.4xlarge}, \code{cache.m4.10xlarge}
+
+\strong{T3 node types:} \code{cache.t3.micro}, \code{cache.t3.small},
+\code{cache.t3.medium}
 
 \strong{T2 node types:} \code{cache.t2.micro}, \code{cache.t2.small},
 \code{cache.t2.medium}
@@ -307,8 +306,8 @@ length.
 in the AUTH token.
 }
 
-For more information, see AUTH password at
-http://redis.io/commands/AUTH.}
+For more information, see \href{http://redis.io/commands/AUTH}{AUTH password}
+at http://redis.io/commands/AUTH.}
 
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to \code{true}.
 
@@ -343,13 +342,16 @@ Amazon VPC using redis version \verb{3.2.6}, \verb{4.x} or later.
 
 Default: \code{false}}
 
-\item{KmsKeyId}{The ID of the KMS key used to encrypt the disk on the cluster.}
+\item{KmsKeyId}{The ID of the KMS key used to encrypt the disk in the cluster.}
 }
 \description{
 Creates a Redis (cluster mode disabled) or a Redis (cluster mode
 enabled) replication group.
 }
 \details{
+This API can be used to create a standalone regional replication group
+or a secondary replication group associated with a Global Datastore.
+
 A Redis (cluster mode disabled) replication group is a collection of
 clusters, where one of the clusters is a read/write primary and the
 others are read-only replicas. Writes to the primary are asynchronously
@@ -364,11 +366,9 @@ enabled) replication groups partition the data across node groups
 
 When a Redis (cluster mode disabled) replication group has been
 successfully created, you can add one or more read replicas to it, up to
-a total of 5 read replicas. You cannot alter a Redis (cluster mode
-enabled) replication group after it has been created. However, if you
-need to increase or decrease the number of node groups (console:
-shards), you can avail yourself of ElastiCache for Redis\' enhanced
-backup and restore. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-restoring.html}{Restoring From a Backup with Cluster Resizing}
+a total of 5 read replicas. If you need to increase or decrease the
+number of node groups (console: shards), you can avail yourself of
+ElastiCache for Redis\' scaling. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.html}{Scaling ElastiCache for Redis Clusters}
 in the \emph{ElastiCache User Guide}.
 
 This operation is valid for Redis only.
@@ -377,8 +377,10 @@ This operation is valid for Redis only.
 \preformatted{svc$create_replication_group(
   ReplicationGroupId = "string",
   ReplicationGroupDescription = "string",
+  GlobalReplicationGroupId = "string",
   PrimaryClusterId = "string",
   AutomaticFailoverEnabled = TRUE|FALSE,
+  MultiAZEnabled = TRUE|FALSE,
   NumCacheClusters = 123,
   PreferredCacheClusterAZs = list(
     "string"

@@ -362,8 +362,9 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
 #' -   **Fully qualified ARN**: This option allows you to specify the fully
 #'     qualified Amazon Resource Name (ARN) of the IAM user or role.
 #' 
-#' For more information about IAM ARNs, wildcards, and formats, see IAM
-#' Identifiers in the *IAM User Guide*.
+#' For more information about IAM ARNs, wildcards, and formats, see [IAM
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
+#' in the *IAM User Guide*.
 #' @param approvalRuleTemplateDescription The description of the approval rule template. Consider providing a
 #' description that explains what this template does and when it might be
 #' appropriate to associate it with repositories.
@@ -624,8 +625,9 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 #' -   **Fully qualified ARN**: This option allows you to specify the fully
 #'     qualified Amazon Resource Name (ARN) of the IAM user or role.
 #' 
-#' For more information about IAM ARNs, wildcards, and formats, see IAM
-#' Identifiers in the *IAM User Guide*.
+#' For more information about IAM ARNs, wildcards, and formats, see [IAM
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
+#' in the *IAM User Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -1422,6 +1424,10 @@ codecommit_get_branch <- function(repositoryName = NULL, branchName = NULL) {
 #'
 #' Returns the content of a comment made on a change, file, or commit in a
 #' repository.
+#' 
+#' Reaction counts might include numbers from user identities who were
+#' deleted after the reaction was made. For a count of reactions from
+#' active identities, use GetCommentReactions.
 #'
 #' @usage
 #' codecommit_get_comment(commentId)
@@ -1456,11 +1462,62 @@ codecommit_get_comment <- function(commentId) {
 }
 .codecommit$operations$get_comment <- codecommit_get_comment
 
+#' Returns information about reactions to a specified comment ID
+#'
+#' Returns information about reactions to a specified comment ID. Reactions
+#' from users who have been deleted will not be included in the count.
+#'
+#' @usage
+#' codecommit_get_comment_reactions(commentId, reactionUserArn, nextToken,
+#'   maxResults)
+#'
+#' @param commentId &#91;required&#93; The ID of the comment for which you want to get reactions information.
+#' @param reactionUserArn Optional. The Amazon Resource Name (ARN) of the user or identity for
+#' which you want to get reaction information.
+#' @param nextToken An enumeration token that, when provided in a request, returns the next
+#' batch of the results.
+#' @param maxResults A non-zero, non-negative integer used to limit the number of returned
+#' results. The default is the same as the allowed maximum, 1,000.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_comment_reactions(
+#'   commentId = "string",
+#'   reactionUserArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_get_comment_reactions
+codecommit_get_comment_reactions <- function(commentId, reactionUserArn = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "GetCommentReactions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$get_comment_reactions_input(commentId = commentId, reactionUserArn = reactionUserArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .codecommit$get_comment_reactions_output()
+  config <- get_config()
+  svc <- .codecommit$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$get_comment_reactions <- codecommit_get_comment_reactions
+
 #' Returns information about comments made on the comparison between two
 #' commits
 #'
 #' Returns information about comments made on the comparison between two
 #' commits.
+#' 
+#' Reaction counts might include numbers from user identities who were
+#' deleted after the reaction was made. For a count of reactions from
+#' active identities, use GetCommentReactions.
 #'
 #' @usage
 #' codecommit_get_comments_for_compared_commit(repositoryName,
@@ -1510,6 +1567,10 @@ codecommit_get_comments_for_compared_commit <- function(repositoryName, beforeCo
 #' Returns comments made on a pull request
 #'
 #' Returns comments made on a pull request.
+#' 
+#' Reaction counts might include numbers from user identities who were
+#' deleted after the reaction was made. For a count of reactions from
+#' active identities, use GetCommentReactions.
 #'
 #' @usage
 #' codecommit_get_comments_for_pull_request(pullRequestId, repositoryName,
@@ -3152,6 +3213,52 @@ codecommit_post_comment_reply <- function(inReplyTo, clientRequestToken = NULL, 
 }
 .codecommit$operations$post_comment_reply <- codecommit_post_comment_reply
 
+#' Adds or updates a reaction to a specified comment for the user whose
+#' identity is used to make the request
+#'
+#' Adds or updates a reaction to a specified comment for the user whose
+#' identity is used to make the request. You can only add or update a
+#' reaction for yourself. You cannot add, modify, or delete a reaction for
+#' another user.
+#'
+#' @usage
+#' codecommit_put_comment_reaction(commentId, reactionValue)
+#'
+#' @param commentId &#91;required&#93; The ID of the comment to which you want to add or update a reaction.
+#' @param reactionValue &#91;required&#93; The emoji reaction you want to add or update. To remove a reaction,
+#' provide a value of blank or null. You can also provide the value of
+#' none. For information about emoji reaction values supported in AWS
+#' CodeCommit, see the [AWS CodeCommit User
+#' Guide](https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-commit-comment.html#emoji-reaction-table).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_comment_reaction(
+#'   commentId = "string",
+#'   reactionValue = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_put_comment_reaction
+codecommit_put_comment_reaction <- function(commentId, reactionValue) {
+  op <- new_operation(
+    name = "PutCommentReaction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codecommit$put_comment_reaction_input(commentId = commentId, reactionValue = reactionValue)
+  output <- .codecommit$put_comment_reaction_output()
+  config <- get_config()
+  svc <- .codecommit$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$put_comment_reaction <- codecommit_put_comment_reaction
+
 #' Adds or updates a file in a branch in an AWS CodeCommit repository, and
 #' generates a commit for the addition in the specified branch
 #'
@@ -3665,8 +3772,9 @@ codecommit_update_default_branch <- function(repositoryName, defaultBranchName) 
 #' -   **Fully qualified ARN**: This option allows you to specify the fully
 #'     qualified Amazon Resource Name (ARN) of the IAM user or role.
 #' 
-#' For more information about IAM ARNs, wildcards, and formats, see IAM
-#' Identifiers in the *IAM User Guide*.
+#' For more information about IAM ARNs, wildcards, and formats, see [IAM
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
+#' in the *IAM User Guide*.
 #'
 #' @section Request syntax:
 #' ```

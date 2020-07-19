@@ -2,15 +2,17 @@
 % Please edit documentation in R/route53domains_operations.R
 \name{route53domains_list_operations}
 \alias{route53domains_list_operations}
-\title{This operation returns the operation IDs of operations that are not yet
-complete}
+\title{Returns information about all of the operations that return an operation
+ID and that have ever been performed on domains that were registered by
+the current account}
 \usage{
 route53domains_list_operations(SubmittedSince, Marker, MaxItems)
 }
 \arguments{
 \item{SubmittedSince}{An optional parameter that lets you get information about all the
 operations that you submitted after a specified date and time. Specify
-the date and time in Coordinated Universal time (UTC).}
+the date and time in Unix time format and Coordinated Universal time
+(UTC).}
 
 \item{Marker}{For an initial request for a list of operations, omit this element. If
 the number of operations that are not yet complete is greater than the
@@ -24,8 +26,9 @@ previous response, and submit another request that includes the value of
 Default: 20}
 }
 \description{
-This operation returns the operation IDs of operations that are not yet
-complete.
+Returns information about all of the operations that return an operation
+ID and that have ever been performed on domains that were registered by
+the current account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_operations(

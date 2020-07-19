@@ -16,14 +16,14 @@ CloudWatch event indicating the pass has finished.}
 \item{contactPrePassDurationSeconds}{Amount of time after a contact ends that you'd like to receive a
 CloudWatch event indicating the pass has finished.}
 
-\item{dataflowEdges}{A list of lists of ARNs. Each list of ARNs is an edge, with a from
-\code{Config} and a to \code{Config}.}
+\item{dataflowEdges}{A list of lists of ARNs. Each list of ARNs is an edge, with a \emph{from}
+\code{Config} and a \emph{to} \code{Config}.}
 
 \item{minimumViableContactDurationSeconds}{Smallest amount of time in seconds that you'd like to see for an
 available contact. AWS Ground Station will not present you with contacts
 shorter than this duration.}
 
-\item{missionProfileId}{[required] ID of a mission profile.}
+\item{missionProfileId}{[required] UUID of a mission profile.}
 
 \item{name}{Name of a mission profile.}
 

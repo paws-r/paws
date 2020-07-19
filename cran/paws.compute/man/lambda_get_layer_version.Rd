@@ -24,4 +24,15 @@ with a link to download the layer archive that\'s valid for 10 minutes.
 }
 }
 
+\examples{
+\dontrun{
+# The following example returns information for version 1 of a layer named
+# my-layer.
+svc$get_layer_version(
+  LayerName = "my-layer",
+  VersionNumber = 1L
+)
+}
+
+}
 \keyword{internal}

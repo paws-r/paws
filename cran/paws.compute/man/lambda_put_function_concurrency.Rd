@@ -49,4 +49,15 @@ aren\'t configured with a per-function limit. For more information, see
 }
 }
 
+\examples{
+\dontrun{
+# The following example configures 100 reserved concurrent executions for
+# the my-function function.
+svc$put_function_concurrency(
+  FunctionName = "my-function",
+  ReservedConcurrentExecutions = 100L
+)
+}
+
+}
 \keyword{internal}

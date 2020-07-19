@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_export_tasks}
 \alias{ec2_describe_export_tasks}
-\title{Describes the specified export instance tasks or all your export
+\title{Describes the specified export instance tasks or all of your export
 instance tasks}
 \usage{
 ec2_describe_export_tasks(ExportTaskIds, Filters)
@@ -10,10 +10,10 @@ ec2_describe_export_tasks(ExportTaskIds, Filters)
 \arguments{
 \item{ExportTaskIds}{The export task IDs.}
 
-\item{Filters}{}
+\item{Filters}{the filters for the export tasks.}
 }
 \description{
-Describes the specified export instance tasks or all your export
+Describes the specified export instance tasks or all of your export
 instance tasks.
 }
 \section{Request syntax}{

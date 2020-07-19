@@ -15,7 +15,7 @@ redshift_resize_cluster(ClusterIdentifier, ClusterType, NodeType,
 \item{NodeType}{The new node type for the nodes you are adding. If not specified, the
 cluster\'s current node type is used.}
 
-\item{NumberOfNodes}{[required] The new number of nodes for the cluster.}
+\item{NumberOfNodes}{The new number of nodes for the cluster.}
 
 \item{Classic}{A boolean value indicating whether the resize operation is using the
 classic resize process. If you don\'t provide this parameter or set the
@@ -37,6 +37,7 @@ Elastic resize operations have the following restrictions:
 \item dc2.8xlarge
 \item ds2.xlarge
 \item ds2.8xlarge
+\item ra3.4xlarge
 \item ra3.16xlarge
 }
 \item The type of nodes that you add must match the node type for the

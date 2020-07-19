@@ -2,8 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_db_proxy_targets}
 \alias{rds_describe_db_proxy_targets}
-\title{This is prerelease documentation for the RDS Database Proxy feature in
-preview release}
+\title{Returns information about DBProxyTarget objects}
 \usage{
 rds_describe_db_proxy_targets(DBProxyName, TargetGroupName, Filters,
   Marker, MaxRecords)
@@ -29,10 +28,6 @@ Default: 100
 Constraints: Minimum 20, maximum 100.}
 }
 \description{
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-}
-\details{
 Returns information about \code{DBProxyTarget} objects. This API supports
 pagination.
 }

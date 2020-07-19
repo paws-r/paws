@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_create_rate_based_rule}
 \alias{wafregional_create_rate_based_rule}
-\title{Creates a RateBasedRule}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 wafregional_create_rate_based_rule(Name, MetricName, RateKey, RateLimit,
   ChangeToken, Tags)
@@ -37,33 +37,42 @@ For more information, see GetChangeTokenStatus.}
 \item{Tags}{}
 }
 \description{
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
+}
+\details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Creates a RateBasedRule. The \code{RateBasedRule} contains a \code{RateLimit},
 which specifies the maximum number of requests that AWS WAF allows from
 a specified IP address in a five-minute period. The \code{RateBasedRule} also
 contains the \code{IPSet} objects, \code{ByteMatchSet} objects, and other
 predicates that identify the requests that you want to count or block if
 these requests exceed the \code{RateLimit}.
-}
-\details{
+
 If you add more than one predicate to a \code{RateBasedRule}, a request not
 only must exceed the \code{RateLimit}, but it also must match all the
-specifications to be counted or blocked. For example, suppose you add
-the following to a \code{RateBasedRule}:
+conditions to be counted or blocked. For example, suppose you add the
+following to a \code{RateBasedRule}:
 \itemize{
 \item An \code{IPSet} that matches the IP address \verb{192.0.2.44/32}
 \item A \code{ByteMatchSet} that matches \code{BadBot} in the \code{User-Agent} header
 }
 
-Further, you specify a \code{RateLimit} of 15,000.
+Further, you specify a \code{RateLimit} of 1,000.
 
 You then add the \code{RateBasedRule} to a \code{WebACL} and specify that you want
 to block requests that meet the conditions in the rule. For a request to
 be blocked, it must come from the IP address 192.0.2.44 \emph{and} the
 \code{User-Agent} header in the request must contain the value \code{BadBot}.
 Further, requests that match these two conditions must be received at a
-rate of more than 15,000 requests every five minutes. If both conditions
+rate of more than 1,000 requests every five minutes. If both conditions
 are met and the rate is exceeded, AWS WAF blocks the requests. If the
-rate drops below 15,000 for a five-minute period, AWS WAF no longer
+rate drops below 1,000 for a five-minute period, AWS WAF no longer
 blocks the requests.
 
 As a second example, suppose you want to limit requests to a particular
@@ -75,7 +84,7 @@ page on your site. To do this, you could add the following to a
 \item A \code{TargetString} of \code{login}
 }
 
-Further, you specify a \code{RateLimit} of 15,000.
+Further, you specify a \code{RateLimit} of 1,000.
 
 By adding this \code{RateBasedRule} to a \code{WebACL}, you could limit requests
 to your login page without affecting the rest of your site.

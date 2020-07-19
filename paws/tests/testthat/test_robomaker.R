@@ -22,6 +22,10 @@ test_that("list_simulation_applications", {
   expect_error(svc$list_simulation_applications(), NA)
 })
 
+test_that("list_simulation_job_batches", {
+  expect_error(svc$list_simulation_job_batches(), NA)
+})
+
 test_that("list_simulation_jobs", {
   expect_error(svc$list_simulation_jobs(), NA)
 })

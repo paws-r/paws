@@ -3,7 +3,7 @@
 \name{support_describe_services}
 \alias{support_describe_services}
 \title{Returns the current list of AWS services and a list of service
-categories that applies to each one}
+categories for each service}
 \usage{
 support_describe_services(serviceCodeList, language)
 }
@@ -17,19 +17,27 @@ them.}
 }
 \description{
 Returns the current list of AWS services and a list of service
-categories that applies to each one. You then use service names and
-categories in your CreateCase requests. Each AWS service has its own set
-of categories.
+categories for each service. You then use service names and categories
+in your CreateCase requests. Each AWS service has its own set of
+categories.
 }
 \details{
-The service codes and category codes correspond to the values that are
-displayed in the \strong{Service} and \strong{Category} drop-down lists on the AWS
-Support Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case} page.
-The values in those fields, however, do not necessarily match the
-service codes and categories returned by the \code{DescribeServices} request.
-Always use the service codes and categories obtained programmatically.
-This practice ensures that you always have the most recent set of
-service and category codes.
+The service codes and category codes correspond to the values that
+appear in the \strong{Service} and \strong{Category} lists on the AWS Support
+Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case} page.
+The values in those fields don\'t necessarily match the service codes
+and categories returned by the \code{DescribeServices} operation. Always use
+the service codes and categories that the \code{DescribeServices} operation
+returns, so that you have the most recent set of service and category
+codes.
+\itemize{
+\item You must have a Business or Enterprise support plan to use the AWS
+Support API.
+\item If you call the AWS Support API from an account that does not have a
+Business or Enterprise support plan, the
+\code{SubscriptionRequiredException} error message appears. For
+information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_services(

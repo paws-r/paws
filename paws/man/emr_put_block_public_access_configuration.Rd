@@ -19,7 +19,13 @@ cluster cannot have rules that allow inbound traffic from 0.0.0.0/0 or
 \code{BlockPublicAccessConfiguration}. By default, Port 22 (SSH) is an
 exception, and public access is allowed on this port. You can change
 this by updating \code{BlockPublicSecurityGroupRules} to remove the
-exception.}
+exception.
+
+For accounts that created clusters in a Region before November 25, 2019,
+block public access is disabled by default in that Region. To use this
+feature, you must manually enable and configure it. For accounts that
+did not create an EMR cluster in a Region before this date, block public
+access is enabled by default in that Region.}
 }
 \description{
 Creates or updates an Amazon EMR block public access configuration for

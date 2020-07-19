@@ -15,8 +15,16 @@ detailed information about the AWS Support operations and data types.
 This service enables you to manage your AWS Support cases
 programmatically. It uses HTTP methods that return results in JSON
 format.
+\itemize{
+\item You must have a Business or Enterprise support plan to use the AWS
+Support API.
+\item If you call the AWS Support API from an account that does not have a
+Business or Enterprise support plan, the
+\code{SubscriptionRequiredException} error message appears. For
+information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+}
 
-The AWS Support service also exposes a set of \href{http://aws.amazon.com/premiumsupport/trustedadvisor/}{Trusted Advisor} features.
+The AWS Support service also exposes a set of \href{http://aws.amazon.com/premiumsupport/trustedadvisor/}{AWS Trusted Advisor} features.
 You can retrieve a list of checks and their descriptions, get check
 results, specify checks to refresh, and get the refresh status of
 checks.
@@ -45,7 +53,7 @@ against your AWS resources.
 \item Using the \code{checkId} for a specific check returned by
 DescribeTrustedAdvisorChecks, you can call
 DescribeTrustedAdvisorCheckResult to obtain the results for the
-check you specified.
+check that you specified.
 \item DescribeTrustedAdvisorCheckSummaries returns summarized results for
 one or more Trusted Advisor checks.
 \item RefreshTrustedAdvisorCheck requests that Trusted Advisor rerun a
@@ -84,18 +92,18 @@ Advisor for results of checks on your resources.
 \tabular{ll}{
 \link[=support_add_attachments_to_set]{add_attachments_to_set} \tab Adds one or more attachments to an attachment set \cr
 \link[=support_add_communication_to_case]{add_communication_to_case} \tab Adds additional customer communication to an AWS Support case \cr
-\link[=support_create_case]{create_case} \tab Creates a new case in the AWS Support Center \cr
+\link[=support_create_case]{create_case} \tab Creates a case in the AWS Support Center \cr
 \link[=support_describe_attachment]{describe_attachment} \tab Returns the attachment that has the specified ID \cr
 \link[=support_describe_cases]{describe_cases} \tab Returns a list of cases that you specify by passing one or more case IDs \cr
-\link[=support_describe_communications]{describe_communications} \tab Returns communications (and attachments) for one or more support cases \cr
-\link[=support_describe_services]{describe_services} \tab Returns the current list of AWS services and a list of service categories that applies to each one \cr
+\link[=support_describe_communications]{describe_communications} \tab Returns communications and attachments for one or more support cases \cr
+\link[=support_describe_services]{describe_services} \tab Returns the current list of AWS services and a list of service categories for each service \cr
 \link[=support_describe_severity_levels]{describe_severity_levels} \tab Returns the list of severity levels that you can assign to an AWS Support case \cr
-\link[=support_describe_trusted_advisor_check_refresh_statuses]{describe_trusted_advisor_check_refresh_statuses} \tab Returns the refresh status of the Trusted Advisor checks that have the specified check IDs \cr
-\link[=support_describe_trusted_advisor_check_result]{describe_trusted_advisor_check_result} \tab Returns the results of the Trusted Advisor check that has the specified check ID \cr
-\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks} \tab Returns information about all available Trusted Advisor checks, including name, ID, category, description, and metadata \cr
-\link[=support_describe_trusted_advisor_check_summaries]{describe_trusted_advisor_check_summaries} \tab Returns the summaries of the results of the Trusted Advisor checks that have the specified check IDs \cr
-\link[=support_refresh_trusted_advisor_check]{refresh_trusted_advisor_check} \tab Requests a refresh of the Trusted Advisor check that has the specified check ID \cr
-\link[=support_resolve_case]{resolve_case} \tab Takes a caseId and returns the initial state of the case along with the state of the case after the call to ResolveCase completed
+\link[=support_describe_trusted_advisor_check_refresh_statuses]{describe_trusted_advisor_check_refresh_statuses} \tab Returns the refresh status of the AWS Trusted Advisor checks that have the specified check IDs \cr
+\link[=support_describe_trusted_advisor_check_result]{describe_trusted_advisor_check_result} \tab Returns the results of the AWS Trusted Advisor check that has the specified check ID \cr
+\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks} \tab Returns information about all available AWS Trusted Advisor checks, including the name, ID, category, description, and metadata\cr
+\link[=support_describe_trusted_advisor_check_summaries]{describe_trusted_advisor_check_summaries} \tab Returns the results for the AWS Trusted Advisor check summaries for the check IDs that you specified \cr
+\link[=support_refresh_trusted_advisor_check]{refresh_trusted_advisor_check} \tab Refreshes the AWS Trusted Advisor check that you specify using the check ID \cr
+\link[=support_resolve_case]{resolve_case} \tab Resolves a support case
 }
 }
 

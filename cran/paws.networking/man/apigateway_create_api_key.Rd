@@ -15,7 +15,8 @@ apigateway_create_api_key(name, description, enabled,
 \item{enabled}{Specifies whether the ApiKey can be used by callers.}
 
 \item{generateDistinctId}{Specifies whether (\code{true}) or not (\code{false}) the key identifier is
-distinct from the created API key value.}
+distinct from the created API key value. This parameter is deprecated
+and should not be used.}
 
 \item{value}{Specifies a value of the API key.}
 

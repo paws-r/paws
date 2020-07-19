@@ -2,30 +2,39 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_open_instance_public_ports}
 \alias{lightsail_open_instance_public_ports}
-\title{Adds public ports to an Amazon Lightsail instance}
+\title{Opens ports for a specific Amazon Lightsail instance, and specifies the
+IP addresses allowed to connect to the instance through the ports, and
+the protocol}
 \usage{
 lightsail_open_instance_public_ports(portInfo, instanceName)
 }
 \arguments{
-\item{portInfo}{[required] An array of key-value pairs containing information about the port
-mappings.}
+\item{portInfo}{[required] An object to describe the ports to open for the specified instance.}
 
-\item{instanceName}{[required] The name of the instance for which you want to open the public ports.}
+\item{instanceName}{[required] The name of the instance for which to open ports.}
 }
 \description{
-Adds public ports to an Amazon Lightsail instance.
+Opens ports for a specific Amazon Lightsail instance, and specifies the
+IP addresses allowed to connect to the instance through the ports, and
+the protocol.
 }
 \details{
-The \verb{open instance public ports} operation supports tag-based access
-control via resource tags applied to the resource identified by
-\verb{instance name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+The \code{OpenInstancePublicPorts} action supports tag-based access control
+via resource tags applied to the resource identified by \code{instanceName}.
+For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$open_instance_public_ports(
   portInfo = list(
     fromPort = 123,
     toPort = 123,
-    protocol = "tcp"|"all"|"udp"
+    protocol = "tcp"|"all"|"udp"|"icmp",
+    cidrs = list(
+      "string"
+    ),
+    cidrListAliases = list(
+      "string"
+    )
   ),
   instanceName = "string"
 )

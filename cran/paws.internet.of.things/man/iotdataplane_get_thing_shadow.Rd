@@ -2,24 +2,27 @@
 % Please edit documentation in R/iotdataplane_operations.R
 \name{iotdataplane_get_thing_shadow}
 \alias{iotdataplane_get_thing_shadow}
-\title{Gets the thing shadow for the specified thing}
+\title{Gets the shadow for the specified thing}
 \usage{
-iotdataplane_get_thing_shadow(thingName)
+iotdataplane_get_thing_shadow(thingName, shadowName)
 }
 \arguments{
 \item{thingName}{[required] The name of the thing.}
+
+\item{shadowName}{The name of the shadow.}
 }
 \description{
-Gets the thing shadow for the specified thing.
+Gets the shadow for the specified thing.
 }
 \details{
 For more information, see
 \href{http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html}{GetThingShadow}
-in the \emph{AWS IoT Developer Guide}.
+in the AWS IoT Developer Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$get_thing_shadow(
-  thingName = "string"
+  thingName = "string",
+  shadowName = "string"
 )
 }
 }

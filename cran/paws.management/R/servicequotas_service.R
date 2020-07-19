@@ -85,7 +85,7 @@ servicequotas <- function(config = list()) {
 
 .servicequotas$metadata <- list(
   service_name = "servicequotas",
-  endpoints = list("*" = list(endpoint = "servicequotas.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicequotas.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "servicequotas.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicequotas.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "servicequotas.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "servicequotas.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Service Quotas",
   api_version = "2019-06-24",
   signing_name = NULL,

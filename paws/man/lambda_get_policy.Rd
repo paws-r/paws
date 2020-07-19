@@ -38,9 +38,10 @@ for a function, version, or alias.
 
 \examples{
 \dontrun{
-# This operation retrieves a Lambda function policy
+# The following example returns the resource-based policy for version 1 of
+# a Lambda function named my-function.
 svc$get_policy(
-  FunctionName = "myFunction",
+  FunctionName = "my-function",
   Qualifier = "1"
 )
 }

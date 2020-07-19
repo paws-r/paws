@@ -11,9 +11,11 @@ securityhub_enable_import_findings_for_product(ProductArn)
 }
 \description{
 Enables the integration of a partner product with Security Hub.
-Integrated products send findings to Security Hub. When you enable a
-product integration, a permission policy that grants permission for the
-product to send findings to Security Hub is applied.
+Integrated products send findings to Security Hub.
+}
+\details{
+When you enable a product integration, a permissions policy that grants
+permission for the product to send findings to Security Hub is applied.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_import_findings_for_product(

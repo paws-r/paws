@@ -105,13 +105,13 @@ NULL
 
 .sqs$list_dead_letter_source_queues_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(QueueUrl = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .sqs$list_dead_letter_source_queues_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(queueUrls = structure(list(structure(logical(0), tags = list(locationName = "QueueUrl", type = "string"))), tags = list(locationNameList = "QueueUrl", type = "list", flattened = TRUE))), tags = list(type = "structure", resultWrapper = "ListDeadLetterSourceQueuesResult"))
+  shape <- structure(list(queueUrls = structure(list(structure(logical(0), tags = list(locationName = "QueueUrl", type = "string"))), tags = list(locationNameList = "QueueUrl", type = "list", flattened = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListDeadLetterSourceQueuesResult"))
   return(populate(args, shape))
 }
 
@@ -129,13 +129,13 @@ NULL
 
 .sqs$list_queues_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueNamePrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(QueueNamePrefix = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .sqs$list_queues_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueueUrls = structure(list(structure(logical(0), tags = list(locationName = "QueueUrl", type = "string"))), tags = list(locationNameList = "QueueUrl", type = "list", flattened = TRUE))), tags = list(type = "structure", resultWrapper = "ListQueuesResult"))
+  shape <- structure(list(QueueUrls = structure(list(structure(logical(0), tags = list(locationName = "QueueUrl", type = "string"))), tags = list(locationNameList = "QueueUrl", type = "list", flattened = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListQueuesResult"))
   return(populate(args, shape))
 }
 

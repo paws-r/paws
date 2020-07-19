@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_batch_delete_image}
 \alias{ecr_batch_delete_image}
-\title{Deletes a list of specified images within a specified repository}
+\title{Deletes a list of specified images within a repository}
 \usage{
 ecr_batch_delete_image(registryId, repositoryName, imageIds)
 }
@@ -18,8 +18,8 @@ format of the \code{imageIds} reference is \code{imageTag=tag} or
 \code{imageDigest=digest}.}
 }
 \description{
-Deletes a list of specified images within a specified repository. Images
-are specified with either \code{imageTag} or \code{imageDigest}.
+Deletes a list of specified images within a repository. Images are
+specified with either an \code{imageTag} or \code{imageDigest}.
 }
 \details{
 You can remove a tag from an image by specifying the image\'s tag in

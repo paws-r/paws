@@ -21,10 +21,11 @@ spaces. You can also include any of the following characters: \\_+=,.@-}
 }
 \description{
 Adds the specified IAM role to the specified instance profile. An
-instance profile can contain only one role, and this limit cannot be
-increased. You can remove the existing role and then add a different
-role to an instance profile. You must then wait for the change to appear
-across all of AWS because of \href{https://en.wikipedia.org/wiki/Eventual_consistency}{eventual consistency}. To
+instance profile can contain only one role. (The number and size of IAM
+resources in an AWS account are limited. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
+in the \emph{IAM User Guide}.) You can remove the existing role and then add
+a different role to an instance profile. You must then wait for the
+change to appear across all of AWS because of \href{https://en.wikipedia.org/wiki/Eventual_consistency}{eventual consistency}. To
 force the change, you must \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIamInstanceProfile.html}{disassociate the instance profile}
 and then \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIamInstanceProfile.html}{associate the instance profile},
 or you can stop your instance and then restart it.

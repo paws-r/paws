@@ -2,29 +2,29 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_reset_db_cluster_parameter_group}
 \alias{docdb_reset_db_cluster_parameter_group}
-\title{Modifies the parameters of a DB cluster parameter group to the default
+\title{Modifies the parameters of a cluster parameter group to the default
 value}
 \usage{
 docdb_reset_db_cluster_parameter_group(DBClusterParameterGroupName,
   ResetAllParameters, Parameters)
 }
 \arguments{
-\item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group to reset.}
+\item{DBClusterParameterGroupName}{[required] The name of the cluster parameter group to reset.}
 
-\item{ResetAllParameters}{A value that is set to \code{true} to reset all parameters in the DB cluster
+\item{ResetAllParameters}{A value that is set to \code{true} to reset all parameters in the cluster
 parameter group to their default values, and \code{false} otherwise. You
 can\'t use this parameter if there is a list of parameter names
 specified for the \code{Parameters} parameter.}
 
-\item{Parameters}{A list of parameter names in the DB cluster parameter group to reset to
-the default values. You can\'t use this parameter if the
+\item{Parameters}{A list of parameter names in the cluster parameter group to reset to the
+default values. You can\'t use this parameter if the
 \code{ResetAllParameters} parameter is set to \code{true}.}
 }
 \description{
-Modifies the parameters of a DB cluster parameter group to the default
+Modifies the parameters of a cluster parameter group to the default
 value. To reset specific parameters, submit a list of the following:
-\code{ParameterName} and \code{ApplyMethod}. To reset the entire DB cluster
-parameter group, specify the \code{DBClusterParameterGroupName} and
+\code{ParameterName} and \code{ApplyMethod}. To reset the entire cluster parameter
+group, specify the \code{DBClusterParameterGroupName} and
 \code{ResetAllParameters} parameters.
 }
 \details{

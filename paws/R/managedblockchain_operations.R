@@ -35,6 +35,15 @@ NULL
 #'         AdminUsername = "string",
 #'         AdminPassword = "string"
 #'       )
+#'     ),
+#'     LogPublishingConfiguration = list(
+#'       Fabric = list(
+#'         CaLogs = list(
+#'           Cloudwatch = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -112,6 +121,15 @@ managedblockchain_create_member <- function(ClientRequestToken, InvitationId, Ne
 #'         AdminUsername = "string",
 #'         AdminPassword = "string"
 #'       )
+#'     ),
+#'     LogPublishingConfiguration = list(
+#'       Fabric = list(
+#'         CaLogs = list(
+#'           Cloudwatch = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -162,7 +180,21 @@ managedblockchain_create_network <- function(ClientRequestToken, Name, Descripti
 #'   MemberId = "string",
 #'   NodeConfiguration = list(
 #'     InstanceType = "string",
-#'     AvailabilityZone = "string"
+#'     AvailabilityZone = "string",
+#'     LogPublishingConfiguration = list(
+#'       Fabric = list(
+#'         ChaincodeLogs = list(
+#'           Cloudwatch = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         ),
+#'         PeerLogs = list(
+#'           Cloudwatch = list(
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -558,7 +590,7 @@ managedblockchain_list_invitations <- function(MaxResults = NULL, NextToken = NU
 #' svc$list_members(
 #'   NetworkId = "string",
 #'   Name = "string",
-#'   Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"DELETING"|"DELETED",
+#'   Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED",
 #'   IsOwned = TRUE|FALSE,
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -654,7 +686,7 @@ managedblockchain_list_networks <- function(Name = NULL, Framework = NULL, Statu
 #' svc$list_nodes(
 #'   NetworkId = "string",
 #'   MemberId = "string",
-#'   Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"DELETING"|"DELETED"|"FAILED",
+#'   Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED"|"FAILED",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -804,6 +836,113 @@ managedblockchain_reject_invitation <- function(InvitationId) {
   return(response)
 }
 .managedblockchain$operations$reject_invitation <- managedblockchain_reject_invitation
+
+#' Updates a member configuration with new parameters
+#'
+#' Updates a member configuration with new parameters.
+#'
+#' @usage
+#' managedblockchain_update_member(NetworkId, MemberId,
+#'   LogPublishingConfiguration)
+#'
+#' @param NetworkId &#91;required&#93; The unique ID of the Managed Blockchain network to which the member
+#' belongs.
+#' @param MemberId &#91;required&#93; The unique ID of the member.
+#' @param LogPublishingConfiguration Configuration properties for publishing to Amazon CloudWatch Logs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_member(
+#'   NetworkId = "string",
+#'   MemberId = "string",
+#'   LogPublishingConfiguration = list(
+#'     Fabric = list(
+#'       CaLogs = list(
+#'         Cloudwatch = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname managedblockchain_update_member
+managedblockchain_update_member <- function(NetworkId, MemberId, LogPublishingConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateMember",
+    http_method = "PATCH",
+    http_path = "/networks/{networkId}/members/{memberId}",
+    paginator = list()
+  )
+  input <- .managedblockchain$update_member_input(NetworkId = NetworkId, MemberId = MemberId, LogPublishingConfiguration = LogPublishingConfiguration)
+  output <- .managedblockchain$update_member_output()
+  config <- get_config()
+  svc <- .managedblockchain$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedblockchain$operations$update_member <- managedblockchain_update_member
+
+#' Updates a node configuration with new parameters
+#'
+#' Updates a node configuration with new parameters.
+#'
+#' @usage
+#' managedblockchain_update_node(NetworkId, MemberId, NodeId,
+#'   LogPublishingConfiguration)
+#'
+#' @param NetworkId &#91;required&#93; The unique ID of the Managed Blockchain network to which the node
+#' belongs.
+#' @param MemberId &#91;required&#93; The unique ID of the member that owns the node.
+#' @param NodeId &#91;required&#93; The unique ID of the node.
+#' @param LogPublishingConfiguration Configuration properties for publishing to Amazon CloudWatch Logs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_node(
+#'   NetworkId = "string",
+#'   MemberId = "string",
+#'   NodeId = "string",
+#'   LogPublishingConfiguration = list(
+#'     Fabric = list(
+#'       ChaincodeLogs = list(
+#'         Cloudwatch = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       ),
+#'       PeerLogs = list(
+#'         Cloudwatch = list(
+#'           Enabled = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname managedblockchain_update_node
+managedblockchain_update_node <- function(NetworkId, MemberId, NodeId, LogPublishingConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateNode",
+    http_method = "PATCH",
+    http_path = "/networks/{networkId}/members/{memberId}/nodes/{nodeId}",
+    paginator = list()
+  )
+  input <- .managedblockchain$update_node_input(NetworkId = NetworkId, MemberId = MemberId, NodeId = NodeId, LogPublishingConfiguration = LogPublishingConfiguration)
+  output <- .managedblockchain$update_node_output()
+  config <- get_config()
+  svc <- .managedblockchain$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedblockchain$operations$update_node <- managedblockchain_update_node
 
 #' Casts a vote for a specified ProposalId on behalf of a member
 #'

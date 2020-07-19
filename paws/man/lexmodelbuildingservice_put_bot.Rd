@@ -7,7 +7,7 @@
 lexmodelbuildingservice_put_bot(name, description, intents,
   clarificationPrompt, abortStatement, idleSessionTTLInSeconds, voiceId,
   checksum, processBehavior, locale, childDirected, detectSentiment,
-  createVersion)
+  createVersion, tags)
 }
 \arguments{
 \item{name}{[required] The name of the bot. The name is \emph{not} case sensitive.}
@@ -150,6 +150,10 @@ is \code{false}.}
 \item{createVersion}{When set to \code{true} a new numbered version of the bot is created. This is
 the same as calling the \code{CreateBotVersion} operation. If you don\'t
 specify \code{createVersion}, the default is \code{false}.}
+
+\item{tags}{A list of tags to add to the bot. You can only add tags when you create
+a bot, you can\'t use the \code{PutBot} operation to update the tags on a
+bot. To update tags, use the \code{TagResource} operation.}
 }
 \description{
 Creates an Amazon Lex conversational bot or replaces an existing bot.
@@ -210,7 +214,13 @@ more information, see security-iam.
   locale = "en-US"|"en-GB"|"de-DE",
   childDirected = TRUE|FALSE,
   detectSentiment = TRUE|FALSE,
-  createVersion = TRUE|FALSE
+  createVersion = TRUE|FALSE,
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }
@@ -237,7 +247,7 @@ svc$put_bot(
     maxAttempts = 1L,
     messages = list(
       list(
-        content = "I'm sorry, I didn't hear that. Can you repeate what you just said?",
+        content = "I'm sorry, I didn't hear that. Can you repeat what you just said?",
         contentType = "PlainText"
       ),
       list(

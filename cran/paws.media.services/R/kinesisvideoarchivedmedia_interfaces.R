@@ -3,6 +3,18 @@
 #' @include kinesisvideoarchivedmedia_service.R
 NULL
 
+.kinesisvideoarchivedmedia$get_clip_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string")), ClipFragmentSelector = structure(list(FragmentSelectorType = structure(logical(0), tags = list(type = "string")), TimestampRange = structure(list(StartTimestamp = structure(logical(0), tags = list(type = "timestamp")), EndTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesisvideoarchivedmedia$get_clip_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string")), Payload = structure(logical(0), tags = list(type = "blob", streaming = TRUE))), tags = list(type = "structure", payload = "Payload"))
+  return(populate(args, shape))
+}
+
 .kinesisvideoarchivedmedia$get_dash_streaming_session_url_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), StreamARN = structure(logical(0), tags = list(type = "string")), PlaybackMode = structure(logical(0), tags = list(type = "string")), DisplayFragmentTimestamp = structure(logical(0), tags = list(type = "string")), DisplayFragmentNumber = structure(logical(0), tags = list(type = "string")), DASHFragmentSelector = structure(list(FragmentSelectorType = structure(logical(0), tags = list(type = "string")), TimestampRange = structure(list(StartTimestamp = structure(logical(0), tags = list(type = "timestamp")), EndTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure")), Expires = structure(logical(0), tags = list(type = "integer")), MaxManifestFragmentResults = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))

@@ -18,10 +18,8 @@ iotevents_update_detector_model(detectorModelName,
 \item{roleArn}{[required] The ARN of the role that grants permission to AWS IoT Events to perform
 its operations.}
 
-\item{evaluationMethod}{When set to \code{SERIAL}, variables are updated and event conditions
-evaluated in the order that the events are defined. When set to \code{BATCH},
-variables are updated and events performed only after all event
-conditions are evaluated.}
+\item{evaluationMethod}{Information about the order in which events are evaluated and how
+actions are executed.}
 }
 \description{
 Updates a detector model. Detectors (instances) spawned by the previous
@@ -46,14 +44,23 @@ version are deleted and then re-created as new inputs arrive.
                     value = "string"
                   ),
                   sns = list(
-                    targetArn = "string"
+                    targetArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotTopicPublish = list(
-                    mqttTopic = "string"
+                    mqttTopic = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   setTimer = list(
                     timerName = "string",
-                    seconds = 123
+                    seconds = 123,
+                    durationExpression = "string"
                   ),
                   clearTimer = list(
                     timerName = "string"
@@ -62,18 +69,75 @@ version are deleted and then re-created as new inputs arrive.
                     timerName = "string"
                   ),
                   lambda = list(
-                    functionArn = "string"
+                    functionArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotEvents = list(
-                    inputName = "string"
+                    inputName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   sqs = list(
                     queueUrl = "string",
-                    useBase64 = TRUE|FALSE
+                    useBase64 = TRUE|FALSE,
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   firehose = list(
                     deliveryStreamName = "string",
-                    separator = "string"
+                    separator = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDB = list(
+                    hashKeyType = "string",
+                    hashKeyField = "string",
+                    hashKeyValue = "string",
+                    rangeKeyType = "string",
+                    rangeKeyField = "string",
+                    rangeKeyValue = "string",
+                    operation = "string",
+                    payloadField = "string",
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDBv2 = list(
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  iotSiteWise = list(
+                    entryId = "string",
+                    assetId = "string",
+                    propertyId = "string",
+                    propertyAlias = "string",
+                    propertyValue = list(
+                      value = list(
+                        stringValue = "string",
+                        integerValue = "string",
+                        doubleValue = "string",
+                        booleanValue = "string"
+                      ),
+                      timestamp = list(
+                        timeInSeconds = "string",
+                        offsetInNanos = "string"
+                      ),
+                      quality = "string"
+                    )
                   )
                 )
               )
@@ -90,14 +154,23 @@ version are deleted and then re-created as new inputs arrive.
                     value = "string"
                   ),
                   sns = list(
-                    targetArn = "string"
+                    targetArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotTopicPublish = list(
-                    mqttTopic = "string"
+                    mqttTopic = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   setTimer = list(
                     timerName = "string",
-                    seconds = 123
+                    seconds = 123,
+                    durationExpression = "string"
                   ),
                   clearTimer = list(
                     timerName = "string"
@@ -106,18 +179,75 @@ version are deleted and then re-created as new inputs arrive.
                     timerName = "string"
                   ),
                   lambda = list(
-                    functionArn = "string"
+                    functionArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotEvents = list(
-                    inputName = "string"
+                    inputName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   sqs = list(
                     queueUrl = "string",
-                    useBase64 = TRUE|FALSE
+                    useBase64 = TRUE|FALSE,
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   firehose = list(
                     deliveryStreamName = "string",
-                    separator = "string"
+                    separator = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDB = list(
+                    hashKeyType = "string",
+                    hashKeyField = "string",
+                    hashKeyValue = "string",
+                    rangeKeyType = "string",
+                    rangeKeyField = "string",
+                    rangeKeyValue = "string",
+                    operation = "string",
+                    payloadField = "string",
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDBv2 = list(
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  iotSiteWise = list(
+                    entryId = "string",
+                    assetId = "string",
+                    propertyId = "string",
+                    propertyAlias = "string",
+                    propertyValue = list(
+                      value = list(
+                        stringValue = "string",
+                        integerValue = "string",
+                        doubleValue = "string",
+                        booleanValue = "string"
+                      ),
+                      timestamp = list(
+                        timeInSeconds = "string",
+                        offsetInNanos = "string"
+                      ),
+                      quality = "string"
+                    )
                   )
                 )
               ),
@@ -137,14 +267,23 @@ version are deleted and then re-created as new inputs arrive.
                     value = "string"
                   ),
                   sns = list(
-                    targetArn = "string"
+                    targetArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotTopicPublish = list(
-                    mqttTopic = "string"
+                    mqttTopic = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   setTimer = list(
                     timerName = "string",
-                    seconds = 123
+                    seconds = 123,
+                    durationExpression = "string"
                   ),
                   clearTimer = list(
                     timerName = "string"
@@ -153,18 +292,75 @@ version are deleted and then re-created as new inputs arrive.
                     timerName = "string"
                   ),
                   lambda = list(
-                    functionArn = "string"
+                    functionArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotEvents = list(
-                    inputName = "string"
+                    inputName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   sqs = list(
                     queueUrl = "string",
-                    useBase64 = TRUE|FALSE
+                    useBase64 = TRUE|FALSE,
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   firehose = list(
                     deliveryStreamName = "string",
-                    separator = "string"
+                    separator = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDB = list(
+                    hashKeyType = "string",
+                    hashKeyField = "string",
+                    hashKeyValue = "string",
+                    rangeKeyType = "string",
+                    rangeKeyField = "string",
+                    rangeKeyValue = "string",
+                    operation = "string",
+                    payloadField = "string",
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDBv2 = list(
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  iotSiteWise = list(
+                    entryId = "string",
+                    assetId = "string",
+                    propertyId = "string",
+                    propertyAlias = "string",
+                    propertyValue = list(
+                      value = list(
+                        stringValue = "string",
+                        integerValue = "string",
+                        doubleValue = "string",
+                        booleanValue = "string"
+                      ),
+                      timestamp = list(
+                        timeInSeconds = "string",
+                        offsetInNanos = "string"
+                      ),
+                      quality = "string"
+                    )
                   )
                 )
               )
@@ -183,14 +379,23 @@ version are deleted and then re-created as new inputs arrive.
                     value = "string"
                   ),
                   sns = list(
-                    targetArn = "string"
+                    targetArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotTopicPublish = list(
-                    mqttTopic = "string"
+                    mqttTopic = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   setTimer = list(
                     timerName = "string",
-                    seconds = 123
+                    seconds = 123,
+                    durationExpression = "string"
                   ),
                   clearTimer = list(
                     timerName = "string"
@@ -199,18 +404,75 @@ version are deleted and then re-created as new inputs arrive.
                     timerName = "string"
                   ),
                   lambda = list(
-                    functionArn = "string"
+                    functionArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotEvents = list(
-                    inputName = "string"
+                    inputName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   sqs = list(
                     queueUrl = "string",
-                    useBase64 = TRUE|FALSE
+                    useBase64 = TRUE|FALSE,
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   firehose = list(
                     deliveryStreamName = "string",
-                    separator = "string"
+                    separator = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDB = list(
+                    hashKeyType = "string",
+                    hashKeyField = "string",
+                    hashKeyValue = "string",
+                    rangeKeyType = "string",
+                    rangeKeyField = "string",
+                    rangeKeyValue = "string",
+                    operation = "string",
+                    payloadField = "string",
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDBv2 = list(
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  iotSiteWise = list(
+                    entryId = "string",
+                    assetId = "string",
+                    propertyId = "string",
+                    propertyAlias = "string",
+                    propertyValue = list(
+                      value = list(
+                        stringValue = "string",
+                        integerValue = "string",
+                        doubleValue = "string",
+                        booleanValue = "string"
+                      ),
+                      timestamp = list(
+                        timeInSeconds = "string",
+                        offsetInNanos = "string"
+                      ),
+                      quality = "string"
+                    )
                   )
                 )
               )

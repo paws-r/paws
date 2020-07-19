@@ -75,6 +75,14 @@ seconds, a second policy with a higher cap for the next 60 seconds, etc.
 To create a new queue, provide a name, timeout value, a list of
 destinations and, if desired, a set of latency policies. If successful,
 a new queue object is returned.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-design.html}{Design a Game Session Queue}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-creating.html}{Create a Game Session Queue}
+
+\strong{Related operations}
 \itemize{
 \item CreateGameSessionQueue
 \item DescribeGameSessionQueues

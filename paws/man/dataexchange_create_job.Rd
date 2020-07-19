@@ -31,6 +31,10 @@ This operation creates a job.
         )
       ),
       DataSetId = "string",
+      Encryption = list(
+        KmsKeyArn = "string",
+        Type = "aws:kms"|"AES256"
+      ),
       RevisionId = "string"
     ),
     ImportAssetFromSignedUrl = list(

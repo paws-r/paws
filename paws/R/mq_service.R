@@ -78,7 +78,7 @@ mq <- function(config = list()) {
 
 .mq$metadata <- list(
   service_name = "mq",
-  endpoints = list("*" = list(endpoint = "mq.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mq.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "mq.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "mq.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "mq.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "mq.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "mq",
   api_version = "2017-11-27",
   signing_name = "mq",

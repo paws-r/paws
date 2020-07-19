@@ -7,7 +7,7 @@
 schemas_stop_discoverer(DiscovererId)
 }
 \arguments{
-\item{DiscovererId}{[required]}
+\item{DiscovererId}{[required] The ID of the discoverer.}
 }
 \description{
 Stops the discoverer

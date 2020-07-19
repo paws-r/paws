@@ -34,7 +34,7 @@ Retrieves a list of connection definitions from the Data Catalog.
     MatchCriteria = list(
       "string"
     ),
-    ConnectionType = "JDBC"|"SFTP"
+    ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"
   ),
   HidePassword = TRUE|FALSE,
   NextToken = "string",

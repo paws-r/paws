@@ -207,6 +207,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ram$list_resource_types_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ram$list_resource_types_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceTypes = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ram$list_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceOwner = structure(logical(0), tags = list(type = "string")), principal = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceShareArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))

@@ -5,7 +5,8 @@
 \title{Adds a new playback configuration to AWS Elemental MediaTailor}
 \usage{
 mediatailor_put_playback_configuration(AdDecisionServerUrl,
-  CdnConfiguration, DashConfiguration, LivePreRollConfiguration, Name,
+  AvailSuppression, Bumper, CdnConfiguration, DashConfiguration,
+  LivePreRollConfiguration, Name, PersonalizationThresholdSeconds,
   SlateAdUrl, Tags, TranscodeProfileName, VideoContentSourceUrl)
 }
 \arguments{
@@ -16,6 +17,13 @@ session-specific parameters as needed when calling the ADS. Alternately,
 for testing you can provide a static VAST URL. The maximum length is
 25,000 characters.}
 
+\item{AvailSuppression}{The configuration for Avail Suppression. Ad suppression can be used to
+turn off ad personalization in a long manifest, or if a viewer joins
+mid-break.}
+
+\item{Bumper}{The configuration for bumpers. Bumpers are short audio or video clips
+that play at the start or before the end of an ad break.}
+
 \item{CdnConfiguration}{The configuration for using a content delivery network (CDN), like
 Amazon CloudFront, for content and ad segment management.}
 
@@ -24,6 +32,9 @@ Amazon CloudFront, for content and ad segment management.}
 \item{LivePreRollConfiguration}{The configuration for pre-roll ad insertion.}
 
 \item{Name}{The identifier for the playback configuration.}
+
+\item{PersonalizationThresholdSeconds}{The maximum duration of underfilled ad time (in seconds) allowed in an
+ad break.}
 
 \item{SlateAdUrl}{The URL for a high-quality video asset to transcode and use to fill in
 time that\'s not used by ads. AWS Elemental MediaTailor shows the slate
@@ -49,6 +60,14 @@ Adds a new playback configuration to AWS Elemental MediaTailor.
 \section{Request syntax}{
 \preformatted{svc$put_playback_configuration(
   AdDecisionServerUrl = "string",
+  AvailSuppression = list(
+    Mode = "OFF"|"BEHIND_LIVE_EDGE",
+    Value = "string"
+  ),
+  Bumper = list(
+    EndUrl = "string",
+    StartUrl = "string"
+  ),
   CdnConfiguration = list(
     AdSegmentUrlPrefix = "string",
     ContentSegmentUrlPrefix = "string"
@@ -62,6 +81,7 @@ Adds a new playback configuration to AWS Elemental MediaTailor.
     MaxDurationSeconds = 123
   ),
   Name = "string",
+  PersonalizationThresholdSeconds = 123,
   SlateAdUrl = "string",
   Tags = list(
     "string"

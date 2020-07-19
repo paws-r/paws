@@ -48,6 +48,78 @@ outposts_create_outpost <- function(Name = NULL, Description = NULL, SiteId, Ava
 }
 .outposts$operations$create_outpost <- outposts_create_outpost
 
+#' Deletes the Outpost
+#'
+#' Deletes the Outpost.
+#'
+#' @usage
+#' outposts_delete_outpost(OutpostId)
+#'
+#' @param OutpostId &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_outpost(
+#'   OutpostId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname outposts_delete_outpost
+outposts_delete_outpost <- function(OutpostId) {
+  op <- new_operation(
+    name = "DeleteOutpost",
+    http_method = "DELETE",
+    http_path = "/outposts/{OutpostId}",
+    paginator = list()
+  )
+  input <- .outposts$delete_outpost_input(OutpostId = OutpostId)
+  output <- .outposts$delete_outpost_output()
+  config <- get_config()
+  svc <- .outposts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.outposts$operations$delete_outpost <- outposts_delete_outpost
+
+#' Deletes the site
+#'
+#' Deletes the site.
+#'
+#' @usage
+#' outposts_delete_site(SiteId)
+#'
+#' @param SiteId &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_site(
+#'   SiteId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname outposts_delete_site
+outposts_delete_site <- function(SiteId) {
+  op <- new_operation(
+    name = "DeleteSite",
+    http_method = "DELETE",
+    http_path = "/sites/{SiteId}",
+    paginator = list()
+  )
+  input <- .outposts$delete_site_input(SiteId = SiteId)
+  output <- .outposts$delete_site_output()
+  config <- get_config()
+  svc <- .outposts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.outposts$operations$delete_site <- outposts_delete_site
+
 #' Gets information about the specified Outpost
 #'
 #' Gets information about the specified Outpost.

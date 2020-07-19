@@ -6,7 +6,7 @@
 \usage{
 snowball_create_cluster(JobType, Resources, Description, AddressId,
   KmsKeyARN, RoleARN, SnowballType, ShippingOption, Notification,
-  ForwardingAddressId)
+  ForwardingAddressId, TaxDocuments)
 }
 \arguments{
 \item{JobType}{[required] The type of job for this cluster. Currently, the only job type supported
@@ -31,13 +31,27 @@ values are created by using the
 \href{https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html}{CreateRole}
 API action in AWS Identity and Access Management (IAM).}
 
-\item{SnowballType}{The type of AWS Snowball device to use for this cluster. Currently, the
-only supported device type for cluster jobs is \code{EDGE}.}
+\item{SnowballType}{The type of AWS Snowball device to use for this cluster.
+
+For cluster jobs, AWS Snowball currently supports only the \code{EDGE} device
+type.}
 
 \item{ShippingOption}{[required] The shipping speed for each node in this cluster. This speed doesn\'t
 dictate how soon you\'ll get each Snowball Edge device, rather it
 represents how quickly each device moves to its destination while in
 transit. Regional shipping speeds are as follows:
+\itemize{
+\item In Australia, you have access to express shipping. Typically,
+Snowballs shipped express are delivered in about a day.
+\item In the European Union (EU), you have access to express shipping.
+Typically, Snowballs shipped express are delivered in about a day.
+In addition, most countries in the EU have access to standard
+shipping, which typically takes less than a week, one way.
+\item In India, Snowballs are delivered in one to seven days.
+\item In the United States of America (US), you have access to one-day
+shipping and two-day shipping.
+}<!-- -->
+
 \itemize{
 \item In Australia, you have access to express shipping. Typically,
 devices shipped express are delivered in about a day.
@@ -54,6 +68,8 @@ settings for this cluster.}
 
 \item{ForwardingAddressId}{The forwarding address ID for a cluster. This field is not supported in
 most regions.}
+
+\item{TaxDocuments}{The tax documents required in your AWS Region.}
 }
 \description{
 Creates an empty cluster. Each cluster supports five nodes. You use the
@@ -94,7 +110,7 @@ The cluster does not ship until these five node jobs have been created.
   AddressId = "string",
   KmsKeyARN = "string",
   RoleARN = "string",
-  SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG",
+  SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
   Notification = list(
     SnsTopicARN = "string",
@@ -103,7 +119,12 @@ The cluster does not ship until these five node jobs have been created.
     ),
     NotifyAll = TRUE|FALSE
   ),
-  ForwardingAddressId = "string"
+  ForwardingAddressId = "string",
+  TaxDocuments = list(
+    IND = list(
+      GSTIN = "string"
+    )
+  )
 )
 }
 }

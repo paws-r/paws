@@ -59,6 +59,16 @@ NULL
   list()
 }
 
+.schemas$delete_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RegistryName = structure(logical(0), tags = list(location = "querystring", locationName = "registryName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.schemas$delete_resource_policy_output <- function(...) {
+  list()
+}
+
 .schemas$delete_schema_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RegistryName = structure(logical(0), tags = list(location = "uri", locationName = "registryName", type = "string")), SchemaName = structure(logical(0), tags = list(location = "uri", locationName = "schemaName", type = "string"))), tags = list(type = "structure"))
@@ -151,6 +161,18 @@ NULL
   return(populate(args, shape))
 }
 
+.schemas$get_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RegistryName = structure(logical(0), tags = list(location = "querystring", locationName = "registryName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.schemas$get_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Policy = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), RevisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .schemas$list_discoverers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DiscovererIdPrefix = structure(logical(0), tags = list(location = "querystring", locationName = "discovererIdPrefix", type = "string")), Limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), SourceArnPrefix = structure(logical(0), tags = list(location = "querystring", locationName = "sourceArnPrefix", type = "string"))), tags = list(type = "structure"))
@@ -207,19 +229,7 @@ NULL
 
 .schemas$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
-  return(populate(args, shape))
-}
-
-.schemas$lock_service_linked_role_input <- function(...) {
-  args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), Timeout = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
-  return(populate(args, shape))
-}
-
-.schemas$lock_service_linked_role_output <- function(...) {
-  args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CanBeDeleted = structure(logical(0), tags = list(type = "boolean")), ReasonOfFailure = structure(logical(0), tags = list(type = "string")), RelatedResources = structure(list(structure(list(DiscovererArn = structure(logical(0), tags = list(type = "string")), DiscovererId = structure(logical(0), tags = list(type = "string")), SourceArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "tags", type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -232,6 +242,18 @@ NULL
 .schemas$put_code_binding_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(CreationDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), LastModified = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), SchemaVersion = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.schemas$put_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Policy = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), RegistryName = structure(logical(0), tags = list(location = "querystring", locationName = "registryName", type = "string")), RevisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.schemas$put_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Policy = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), RevisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -279,18 +301,6 @@ NULL
 
 .schemas$tag_resource_output <- function(...) {
   list()
-}
-
-.schemas$unlock_service_linked_role_input <- function(...) {
-  args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
-}
-
-.schemas$unlock_service_linked_role_output <- function(...) {
-  args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
-  return(populate(args, shape))
 }
 
 .schemas$untag_resource_input <- function(...) {

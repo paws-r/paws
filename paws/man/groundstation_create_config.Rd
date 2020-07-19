@@ -68,7 +68,8 @@ Only one type of \code{configData} can be specified.
       )
     ),
     dataflowEndpointConfig = list(
-      dataflowEndpointName = "string"
+      dataflowEndpointName = "string",
+      dataflowEndpointRegion = "string"
     ),
     trackingConfig = list(
       autotrack = "PREFERRED"|"REMOVED"|"REQUIRED"

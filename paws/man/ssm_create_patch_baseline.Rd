@@ -22,7 +22,7 @@ value is WINDOWS.}
 \item{ApprovedPatches}{A list of explicitly approved patches for the baseline.
 
 For information about accepted formats for lists of approved patches and
-rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package Name Formats for Approved and Rejected Patch Lists}
+rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{About package name formats for approved and rejected patch lists}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{ApprovedPatchesComplianceLevel}{Defines the compliance level for approved patches. This means that if an
@@ -36,7 +36,7 @@ updates that should be applied to the instances. The default value is
 \item{RejectedPatches}{A list of explicitly rejected patches for the baseline.
 
 For information about accepted formats for lists of approved patches and
-rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package Name Formats for Approved and Rejected Patch Lists}
+rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{About package name formats for approved and rejected patch lists}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{RejectedPatchesAction}{The action for Patch Manager to take on patches included in the
@@ -86,7 +86,7 @@ each supported operating system type, see
 }
 \section{Request syntax}{
 \preformatted{svc$create_patch_baseline(
-  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS",
+  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN",
   Name = "string",
   GlobalFilters = list(
     PatchFilters = list(
@@ -113,6 +113,7 @@ each supported operating system type, see
         ),
         ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
         ApproveAfterDays = 123,
+        ApproveUntilDate = "string",
         EnableNonSecurity = TRUE|FALSE
       )
     )

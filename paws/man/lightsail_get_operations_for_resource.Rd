@@ -9,8 +9,12 @@ lightsail_get_operations_for_resource(resourceName, pageToken)
 \arguments{
 \item{resourceName}{[required] The name of the resource for which you are requesting information.}
 
-\item{pageToken}{A token used for advancing to the next page of results from your get
-operations for resource request.}
+\item{pageToken}{The token to advance to the next page of results from your request.
+
+To get a page token, perform an initial \code{GetOperationsForResource}
+request. If your results are paginated, the response will return a next
+page token that you can specify as the page token in a subsequent
+request.}
 }
 \description{
 Gets operations for a specific resource (e.g., an instance or a static

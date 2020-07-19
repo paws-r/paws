@@ -61,7 +61,8 @@ You can create up to 100 lifecycle policies.
           IntervalUnit = "HOURS",
           Times = list(
             "string"
-          )
+          ),
+          CronExpression = "string"
         ),
         RetainRule = list(
           Count = 123,

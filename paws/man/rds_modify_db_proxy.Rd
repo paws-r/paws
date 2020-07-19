@@ -2,8 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_modify_db_proxy}
 \alias{rds_modify_db_proxy}
-\title{This is prerelease documentation for the RDS Database Proxy feature in
-preview release}
+\title{Changes the settings for an existing DB proxy}
 \usage{
 rds_modify_db_proxy(DBProxyName, NewDBProxyName, Auth, RequireTLS,
   IdleClientTimeout, DebugLogging, RoleArn, SecurityGroups)
@@ -40,10 +39,6 @@ access secrets in AWS Secrets Manager.}
 \item{SecurityGroups}{The new list of security groups for the \code{DBProxy}.}
 }
 \description{
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-}
-\details{
 Changes the settings for an existing DB proxy.
 }
 \section{Request syntax}{

@@ -25,7 +25,7 @@ ProvisionByoipCidr.
 }
 \details{
 To describe the address pools that were created when you provisioned the
-address ranges, use DescribePublicIpv4Pools.
+address ranges, use DescribePublicIpv4Pools or DescribeIpv6Pools.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_byoip_cidrs(

@@ -7,7 +7,7 @@
 imagebuilder_get_image_pipeline(imagePipelineArn)
 }
 \arguments{
-\item{imagePipelineArn}{[required] The Amazon Resource Name (ARN) of the image pipeline that you wish to
+\item{imagePipelineArn}{[required] The Amazon Resource Name (ARN) of the image pipeline that you want to
 retrieve.}
 }
 \description{

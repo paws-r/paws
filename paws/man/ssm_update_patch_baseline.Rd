@@ -21,7 +21,7 @@ ssm_update_patch_baseline(BaselineId, Name, GlobalFilters,
 \item{ApprovedPatches}{A list of explicitly approved patches for the baseline.
 
 For information about accepted formats for lists of approved patches and
-rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package Name Formats for Approved and Rejected Patch Lists}
+rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{About package name formats for approved and rejected patch lists}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{ApprovedPatchesComplianceLevel}{Assigns a new compliance severity level to an existing patch baseline.}
@@ -33,7 +33,7 @@ updates that should be applied to the instances. The default value is
 \item{RejectedPatches}{A list of explicitly rejected patches for the baseline.
 
 For information about accepted formats for lists of approved patches and
-rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package Name Formats for Approved and Rejected Patch Lists}
+rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{About package name formats for approved and rejected patch lists}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{RejectedPatchesAction}{The action for Patch Manager to take on patches included in the
@@ -99,6 +99,7 @@ each supported operating system type, see
         ),
         ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
         ApproveAfterDays = 123,
+        ApproveUntilDate = "string",
         EnableNonSecurity = TRUE|FALSE
       )
     )

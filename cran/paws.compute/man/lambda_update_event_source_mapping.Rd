@@ -36,8 +36,8 @@ the function name, it\'s limited to 64 characters in length.}
 \item \strong{Amazon Simple Queue Service} - Default 10. Max 10.
 }}
 
-\item{MaximumBatchingWindowInSeconds}{The maximum amount of time to gather records before invoking the
-function, in seconds.}
+\item{MaximumBatchingWindowInSeconds}{(Streams) The maximum amount of time to gather records before invoking
+the function, in seconds.}
 
 \item{DestinationConfig}{(Streams) An Amazon SQS queue or Amazon SNS topic destination for
 discarded records.}
@@ -70,6 +70,8 @@ or Amazon SNS topic.
 specified age.
 \item \code{MaximumRetryAttempts} - Discard records after the specified number
 of retries.
+\item \code{ParallelizationFactor} - Process multiple batches from each shard
+concurrently.
 }
 }
 \section{Request syntax}{

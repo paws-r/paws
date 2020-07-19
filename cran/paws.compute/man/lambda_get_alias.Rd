@@ -36,10 +36,11 @@ Returns details about a Lambda function
 
 \examples{
 \dontrun{
-# This operation retrieves a Lambda function alias
+# The following example returns details about an alias named BLUE for a
+# function named my-function
 svc$get_alias(
-  FunctionName = "myFunction",
-  Name = "myFunctionAlias"
+  FunctionName = "my-function",
+  Name = "BLUE"
 )
 }
 

@@ -6,8 +6,8 @@
 \usage{
 iot_update_security_profile(securityProfileName,
   securityProfileDescription, behaviors, alertTargets,
-  additionalMetricsToRetain, deleteBehaviors, deleteAlertTargets,
-  deleteAdditionalMetricsToRetain, expectedVersion)
+  additionalMetricsToRetain, additionalMetricsToRetainV2, deleteBehaviors,
+  deleteAlertTargets, deleteAdditionalMetricsToRetain, expectedVersion)
 }
 \arguments{
 \item{securityProfileName}{[required] The name of the security profile you want to update.}
@@ -21,7 +21,14 @@ an alert.}
 
 \item{additionalMetricsToRetain}{A list of metrics whose data is retained (stored). By default, data is
 retained for any metric used in the profile\'s \code{behaviors}, but it is
-also retained for any metric specified here.}
+also retained for any metric specified here.
+
+\strong{Note:} This API field is deprecated. Please use
+UpdateSecurityProfileRequest\\$additionalMetricsToRetainV2 instead.}
+
+\item{additionalMetricsToRetainV2}{A list of metrics whose data is retained (stored). By default, data is
+retained for any metric used in the profile\'s behaviors, but it is also
+retained for any metric specified here.}
 
 \item{deleteBehaviors}{If true, delete all \code{behaviors} defined for this security profile. If
 any \code{behaviors} are defined in the current invocation, an exception
@@ -51,6 +58,10 @@ Updates a Device Defender security profile.
     list(
       name = "string",
       metric = "string",
+      metricDimension = list(
+        dimensionName = "string",
+        operator = "IN"|"NOT_IN"
+      ),
       criteria = list(
         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
         value = list(
@@ -79,6 +90,15 @@ Updates a Device Defender security profile.
   ),
   additionalMetricsToRetain = list(
     "string"
+  ),
+  additionalMetricsToRetainV2 = list(
+    list(
+      metric = "string",
+      metricDimension = list(
+        dimensionName = "string",
+        operator = "IN"|"NOT_IN"
+      )
+    )
   ),
   deleteBehaviors = TRUE|FALSE,
   deleteAlertTargets = TRUE|FALSE,

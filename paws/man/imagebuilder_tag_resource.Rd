@@ -7,7 +7,7 @@
 imagebuilder_tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you wish to tag.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to tag.}
 
 \item{tags}{[required] The tags to apply to the resource.}
 }

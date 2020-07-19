@@ -2,7 +2,7 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_create_publishing_destination}
 \alias{guardduty_create_publishing_destination}
-\title{Creates a publishing destination to send findings to}
+\title{Creates a publishing destination to export findings to}
 \usage{
 guardduty_create_publishing_destination(DetectorId, DestinationType,
   DestinationProperties, ClientToken)
@@ -11,17 +11,17 @@ guardduty_create_publishing_destination(DetectorId, DestinationType,
 \item{DetectorId}{[required] The ID of the GuardDuty detector associated with the publishing
 destination.}
 
-\item{DestinationType}{[required] The type of resource for the publishing destination. Currently only S3
-is supported.}
+\item{DestinationType}{[required] The type of resource for the publishing destination. Currently only
+Amazon S3 buckets are supported.}
 
-\item{DestinationProperties}{[required] Properties of the publishing destination, including the ARNs for the
+\item{DestinationProperties}{[required] The properties of the publishing destination, including the ARNs for the
 destination and the KMS key used for encryption.}
 
 \item{ClientToken}{The idempotency token for the request.}
 }
 \description{
-Creates a publishing destination to send findings to. The resource to
-send findings to must exist before you use this operation.
+Creates a publishing destination to export findings to. The resource to
+export findings to must exist before you use this operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_publishing_destination(

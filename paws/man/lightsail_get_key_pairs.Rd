@@ -7,8 +7,11 @@
 lightsail_get_key_pairs(pageToken)
 }
 \arguments{
-\item{pageToken}{A token used for advancing to the next page of results from your get key
-pairs request.}
+\item{pageToken}{The token to advance to the next page of results from your request.
+
+To get a page token, perform an initial \code{GetKeyPairs} request. If your
+results are paginated, the response will return a next page token that
+you can specify as the page token in a subsequent request.}
 }
 \description{
 Returns information about all key pairs in the user\'s account.

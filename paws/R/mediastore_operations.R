@@ -213,6 +213,46 @@ mediastore_delete_lifecycle_policy <- function(ContainerName) {
 }
 .mediastore$operations$delete_lifecycle_policy <- mediastore_delete_lifecycle_policy
 
+#' Deletes the metric policy that is associated with the specified
+#' container
+#'
+#' Deletes the metric policy that is associated with the specified
+#' container. If there is no metric policy associated with the container,
+#' MediaStore doesn\'t send metrics to CloudWatch.
+#'
+#' @usage
+#' mediastore_delete_metric_policy(ContainerName)
+#'
+#' @param ContainerName &#91;required&#93; The name of the container that is associated with the metric policy that
+#' you want to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_metric_policy(
+#'   ContainerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediastore_delete_metric_policy
+mediastore_delete_metric_policy <- function(ContainerName) {
+  op <- new_operation(
+    name = "DeleteMetricPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .mediastore$delete_metric_policy_input(ContainerName = ContainerName)
+  output <- .mediastore$delete_metric_policy_output()
+  config <- get_config()
+  svc <- .mediastore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediastore$operations$delete_metric_policy <- mediastore_delete_metric_policy
+
 #' Retrieves the properties of the requested container
 #'
 #' Retrieves the properties of the requested container. This request is
@@ -372,6 +412,42 @@ mediastore_get_lifecycle_policy <- function(ContainerName) {
   return(response)
 }
 .mediastore$operations$get_lifecycle_policy <- mediastore_get_lifecycle_policy
+
+#' Returns the metric policy for the specified container
+#'
+#' Returns the metric policy for the specified container.
+#'
+#' @usage
+#' mediastore_get_metric_policy(ContainerName)
+#'
+#' @param ContainerName &#91;required&#93; The name of the container that is associated with the metric policy.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_metric_policy(
+#'   ContainerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediastore_get_metric_policy
+mediastore_get_metric_policy <- function(ContainerName) {
+  op <- new_operation(
+    name = "GetMetricPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .mediastore$get_metric_policy_input(ContainerName = ContainerName)
+  output <- .mediastore$get_metric_policy_output()
+  config <- get_config()
+  svc <- .mediastore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediastore$operations$get_metric_policy <- mediastore_get_metric_policy
 
 #' Lists the properties of all containers in AWS Elemental MediaStore
 #'
@@ -627,6 +703,70 @@ mediastore_put_lifecycle_policy <- function(ContainerName, LifecyclePolicy) {
   return(response)
 }
 .mediastore$operations$put_lifecycle_policy <- mediastore_put_lifecycle_policy
+
+#' The metric policy that you want to add to the container
+#'
+#' The metric policy that you want to add to the container. A metric policy
+#' allows AWS Elemental MediaStore to send metrics to Amazon CloudWatch. It
+#' takes up to 20 minutes for the new policy to take effect.
+#'
+#' @usage
+#' mediastore_put_metric_policy(ContainerName, MetricPolicy)
+#'
+#' @param ContainerName &#91;required&#93; The name of the container that you want to add the metric policy to.
+#' @param MetricPolicy &#91;required&#93; The metric policy that you want to associate with the container. In the
+#' policy, you must indicate whether you want MediaStore to send
+#' container-level metrics. You can also include up to five rules to define
+#' groups of objects that you want MediaStore to send object-level metrics
+#' for. If you include rules in the policy, construct each rule with both
+#' of the following:
+#' 
+#' -   An object group that defines which objects to include in the group.
+#'     The definition can be a path or a file name, but it can\'t have more
+#'     than 900 characters. Valid characters are: a-z, A-Z, 0-9, \\_
+#'     (underscore), = (equal), : (colon), . (period), - (hyphen), \~
+#'     (tilde), / (forward slash), and * (asterisk). Wildcards (*) are
+#'     acceptable.
+#' 
+#' -   An object group name that allows you to refer to the object group.
+#'     The name can\'t have more than 30 characters. Valid characters are:
+#'     a-z, A-Z, 0-9, and \\_ (underscore).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_metric_policy(
+#'   ContainerName = "string",
+#'   MetricPolicy = list(
+#'     ContainerLevelMetrics = "ENABLED"|"DISABLED",
+#'     MetricPolicyRules = list(
+#'       list(
+#'         ObjectGroup = "string",
+#'         ObjectGroupName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediastore_put_metric_policy
+mediastore_put_metric_policy <- function(ContainerName, MetricPolicy) {
+  op <- new_operation(
+    name = "PutMetricPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .mediastore$put_metric_policy_input(ContainerName = ContainerName, MetricPolicy = MetricPolicy)
+  output <- .mediastore$put_metric_policy_output()
+  config <- get_config()
+  svc <- .mediastore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediastore$operations$put_metric_policy <- mediastore_put_metric_policy
 
 #' Starts access logging on the specified container
 #'

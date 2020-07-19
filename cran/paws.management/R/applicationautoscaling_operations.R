@@ -18,20 +18,15 @@ NULL
 #' and [Delete a Target Tracking Scaling
 #' Policy](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html#delete-target-tracking-policy)
 #' in the *Application Auto Scaling User Guide*.
-#' 
-#' To create a scaling policy or update an existing one, see
-#' PutScalingPolicy.
 #'
 #' @usage
 #' applicationautoscaling_delete_scaling_policy(PolicyName,
 #'   ServiceNamespace, ResourceId, ScalableDimension)
 #'
 #' @param PolicyName &#91;required&#93; The name of the scaling policy.
-#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
-#' `custom-resource` for a resource provided by your own application or
-#' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in the *Amazon Web Services General Reference*.
+#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource. For a
+#' resource provided by your own application or service, use
+#' `custom-resource` instead.
 #' @param ResourceId &#91;required&#93; The identifier of the resource associated with the scalable target. This
 #' string consists of the resource type and unique identifier.
 #' 
@@ -80,6 +75,10 @@ NULL
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
 #'     `function:my-function:prod` or `function:my-function:1`.
+#' 
+#' -   Amazon Keyspaces table - The resource type is `table` and the unique
+#'     identifier is the table name. Example:
+#'     `keyspace/mykeyspace/table/mytable`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -123,14 +122,20 @@ NULL
 #' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
+#' 
+#' -   `cassandra:table:ReadCapacityUnits` - The provisioned read capacity
+#'     for an Amazon Keyspaces table.
+#' 
+#' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
+#'     capacity for an Amazon Keyspaces table.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_scaling_policy(
 #'   PolicyName = "string",
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"
 #' )
 #' ```
 #'
@@ -180,11 +185,9 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' applicationautoscaling_delete_scheduled_action(ServiceNamespace,
 #'   ScheduledActionName, ResourceId, ScalableDimension)
 #'
-#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
-#' `custom-resource` for a resource provided by your own application or
-#' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in the *Amazon Web Services General Reference*.
+#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource. For a
+#' resource provided by your own application or service, use
+#' `custom-resource` instead.
 #' @param ScheduledActionName &#91;required&#93; The name of the scheduled action.
 #' @param ResourceId &#91;required&#93; The identifier of the resource associated with the scheduled action.
 #' This string consists of the resource type and unique identifier.
@@ -234,6 +237,10 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
 #'     `function:my-function:prod` or `function:my-function:1`.
+#' 
+#' -   Amazon Keyspaces table - The resource type is `table` and the unique
+#'     identifier is the table name. Example:
+#'     `keyspace/mykeyspace/table/mytable`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -277,14 +284,20 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
+#' 
+#' -   `cassandra:table:ReadCapacityUnits` - The provisioned read capacity
+#'     for an Amazon Keyspaces table.
+#' 
+#' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
+#'     capacity for an Amazon Keyspaces table.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_scheduled_action(
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
 #'   ScheduledActionName = "string",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"
 #' )
 #' ```
 #'
@@ -308,25 +321,23 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 }
 .applicationautoscaling$operations$delete_scheduled_action <- applicationautoscaling_delete_scheduled_action
 
-#' Deregisters an Application Auto Scaling scalable target
+#' Deregisters an Application Auto Scaling scalable target when you have
+#' finished using it
 #'
-#' Deregisters an Application Auto Scaling scalable target.
+#' Deregisters an Application Auto Scaling scalable target when you have
+#' finished using it. To see which resources have been registered, use
+#' [DescribeScalableTargets](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html).
 #' 
-#' Deregistering a scalable target deletes the scaling policies that are
-#' associated with it.
-#' 
-#' To create a scalable target or update an existing one, see
-#' RegisterScalableTarget.
+#' Deregistering a scalable target deletes the scaling policies and the
+#' scheduled actions that are associated with it.
 #'
 #' @usage
 #' applicationautoscaling_deregister_scalable_target(ServiceNamespace,
 #'   ResourceId, ScalableDimension)
 #'
-#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
-#' `custom-resource` for a resource provided by your own application or
-#' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in the *Amazon Web Services General Reference*.
+#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource. For a
+#' resource provided by your own application or service, use
+#' `custom-resource` instead.
 #' @param ResourceId &#91;required&#93; The identifier of the resource associated with the scalable target. This
 #' string consists of the resource type and unique identifier.
 #' 
@@ -375,6 +386,10 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
 #'     `function:my-function:prod` or `function:my-function:1`.
+#' 
+#' -   Amazon Keyspaces table - The resource type is `table` and the unique
+#'     identifier is the table name. Example:
+#'     `keyspace/mykeyspace/table/mytable`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' 
@@ -418,13 +433,19 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
+#' 
+#' -   `cassandra:table:ReadCapacityUnits` - The provisioned read capacity
+#'     for an Amazon Keyspaces table.
+#' 
+#' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
+#'     capacity for an Amazon Keyspaces table.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$deregister_scalable_target(
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"
 #' )
 #' ```
 #'
@@ -464,20 +485,14 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' Gets information about the scalable targets in the specified namespace.
 #' 
 #' You can filter the results using `ResourceIds` and `ScalableDimension`.
-#' 
-#' To create a scalable target or update an existing one, see
-#' RegisterScalableTarget. If you are no longer using a scalable target,
-#' you can deregister it using DeregisterScalableTarget.
 #'
 #' @usage
 #' applicationautoscaling_describe_scalable_targets(ServiceNamespace,
 #'   ResourceIds, ScalableDimension, MaxResults, NextToken)
 #'
-#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
-#' `custom-resource` for a resource provided by your own application or
-#' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in the *Amazon Web Services General Reference*.
+#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource. For a
+#' resource provided by your own application or service, use
+#' `custom-resource` instead.
 #' @param ResourceIds The identifier of the resource associated with the scalable target. This
 #' string consists of the resource type and unique identifier. If you
 #' specify a scalable dimension, you must also specify a resource ID.
@@ -527,6 +542,10 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
 #'     `function:my-function:prod` or `function:my-function:1`.
+#' 
+#' -   Amazon Keyspaces table - The resource type is `table` and the unique
+#'     identifier is the table name. Example:
+#'     `keyspace/mykeyspace/table/mytable`.
 #' @param ScalableDimension The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' If you specify a scalable dimension, you must also specify a resource
@@ -572,6 +591,12 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
+#' 
+#' -   `cassandra:table:ReadCapacityUnits` - The provisioned read capacity
+#'     for an Amazon Keyspaces table.
+#' 
+#' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
+#'     capacity for an Amazon Keyspaces table.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -585,11 +610,11 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' @section Request syntax:
 #' ```
 #' svc$describe_scalable_targets(
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
 #'   ResourceIds = list(
 #'     "string"
 #'   ),
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -597,7 +622,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'
 #' @examples
 #' \dontrun{
-#' # This example describes the scalable targets for the ecs service
+#' # This example describes the scalable targets for the ECS service
 #' # namespace.
 #' svc$describe_scalable_targets(
 #'   ServiceNamespace = "ecs"
@@ -631,21 +656,14 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' specified namespace from the previous six weeks.
 #' 
 #' You can filter the results using `ResourceId` and `ScalableDimension`.
-#' 
-#' Scaling activities are triggered by CloudWatch alarms that are
-#' associated with scaling policies. To view the scaling policies for a
-#' service namespace, see DescribeScalingPolicies. To create a scaling
-#' policy or update an existing one, see PutScalingPolicy.
 #'
 #' @usage
 #' applicationautoscaling_describe_scaling_activities(ServiceNamespace,
 #'   ResourceId, ScalableDimension, MaxResults, NextToken)
 #'
-#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
-#' `custom-resource` for a resource provided by your own application or
-#' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in the *Amazon Web Services General Reference*.
+#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource. For a
+#' resource provided by your own application or service, use
+#' `custom-resource` instead.
 #' @param ResourceId The identifier of the resource associated with the scaling activity.
 #' This string consists of the resource type and unique identifier. If you
 #' specify a scalable dimension, you must also specify a resource ID.
@@ -695,6 +713,10 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
 #'     `function:my-function:prod` or `function:my-function:1`.
+#' 
+#' -   Amazon Keyspaces table - The resource type is `table` and the unique
+#'     identifier is the table name. Example:
+#'     `keyspace/mykeyspace/table/mytable`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -739,6 +761,12 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
+#' 
+#' -   `cassandra:table:ReadCapacityUnits` - The provisioned read capacity
+#'     for an Amazon Keyspaces table.
+#' 
+#' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
+#'     capacity for an Amazon Keyspaces table.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -752,9 +780,9 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' @section Request syntax:
 #' ```
 #' svc$describe_scaling_activities(
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -800,20 +828,20 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' You can filter the results using `ResourceId`, `ScalableDimension`, and
 #' `PolicyNames`.
 #' 
-#' To create a scaling policy or update an existing one, see
-#' PutScalingPolicy. If you are no longer using a scaling policy, you can
-#' delete it using DeleteScalingPolicy.
+#' For more information, see [Target Tracking Scaling
+#' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
+#' and [Step Scaling
+#' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
+#' in the *Application Auto Scaling User Guide*.
 #'
 #' @usage
 #' applicationautoscaling_describe_scaling_policies(PolicyNames,
 #'   ServiceNamespace, ResourceId, ScalableDimension, MaxResults, NextToken)
 #'
 #' @param PolicyNames The names of the scaling policies to describe.
-#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
-#' `custom-resource` for a resource provided by your own application or
-#' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in the *Amazon Web Services General Reference*.
+#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource. For a
+#' resource provided by your own application or service, use
+#' `custom-resource` instead.
 #' @param ResourceId The identifier of the resource associated with the scaling policy. This
 #' string consists of the resource type and unique identifier. If you
 #' specify a scalable dimension, you must also specify a resource ID.
@@ -863,6 +891,10 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
 #'     `function:my-function:prod` or `function:my-function:1`.
+#' 
+#' -   Amazon Keyspaces table - The resource type is `table` and the unique
+#'     identifier is the table name. Example:
+#'     `keyspace/mykeyspace/table/mytable`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -907,6 +939,12 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
+#' 
+#' -   `cassandra:table:ReadCapacityUnits` - The provisioned read capacity
+#'     for an Amazon Keyspaces table.
+#' 
+#' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
+#'     capacity for an Amazon Keyspaces table.
 #' @param MaxResults The maximum number of scalable targets. This value can be between 1 and
 #' 50. The default value is 50.
 #' 
@@ -923,9 +961,9 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'   PolicyNames = list(
 #'     "string"
 #'   ),
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -933,7 +971,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'
 #' @examples
 #' \dontrun{
-#' # This example describes the scaling policies for the ecs service
+#' # This example describes the scaling policies for the ECS service
 #' # namespace.
 #' svc$describe_scaling_policies(
 #'   ServiceNamespace = "ecs"
@@ -969,20 +1007,18 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' You can filter the results using the `ResourceId`, `ScalableDimension`,
 #' and `ScheduledActionNames` parameters.
 #' 
-#' To create a scheduled action or update an existing one, see
-#' PutScheduledAction. If you are no longer using a scheduled action, you
-#' can delete it using DeleteScheduledAction.
+#' For more information, see [Scheduled
+#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html)
+#' in the *Application Auto Scaling User Guide*.
 #'
 #' @usage
 #' applicationautoscaling_describe_scheduled_actions(ScheduledActionNames,
 #'   ServiceNamespace, ResourceId, ScalableDimension, MaxResults, NextToken)
 #'
 #' @param ScheduledActionNames The names of the scheduled actions to describe.
-#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
-#' `custom-resource` for a resource provided by your own application or
-#' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in the *Amazon Web Services General Reference*.
+#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource. For a
+#' resource provided by your own application or service, use
+#' `custom-resource` instead.
 #' @param ResourceId The identifier of the resource associated with the scheduled action.
 #' This string consists of the resource type and unique identifier. If you
 #' specify a scalable dimension, you must also specify a resource ID.
@@ -1032,6 +1068,10 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
 #'     `function:my-function:prod` or `function:my-function:1`.
+#' 
+#' -   Amazon Keyspaces table - The resource type is `table` and the unique
+#'     identifier is the table name. Example:
+#'     `keyspace/mykeyspace/table/mytable`.
 #' @param ScalableDimension The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property. If you specify a scalable
 #' dimension, you must also specify a resource ID.
@@ -1076,6 +1116,12 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
+#' 
+#' -   `cassandra:table:ReadCapacityUnits` - The provisioned read capacity
+#'     for an Amazon Keyspaces table.
+#' 
+#' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
+#'     capacity for an Amazon Keyspaces table.
 #' @param MaxResults The maximum number of scheduled action results. This value can be
 #' between 1 and 50. The default value is 50.
 #' 
@@ -1092,9 +1138,9 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'   ScheduledActionNames = list(
 #'     "string"
 #'   ),
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -1120,25 +1166,16 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 }
 .applicationautoscaling$operations$describe_scheduled_actions <- applicationautoscaling_describe_scheduled_actions
 
-#' Creates or updates a policy for an Application Auto Scaling scalable
-#' target
+#' Creates or updates a scaling policy for an Application Auto Scaling
+#' scalable target
 #'
-#' Creates or updates a policy for an Application Auto Scaling scalable
-#' target.
+#' Creates or updates a scaling policy for an Application Auto Scaling
+#' scalable target.
 #' 
 #' Each scalable target is identified by a service namespace, resource ID,
 #' and scalable dimension. A scaling policy applies to the scalable target
 #' identified by those three attributes. You cannot create a scaling policy
-#' until you have registered the resource as a scalable target using
-#' RegisterScalableTarget.
-#' 
-#' To update a policy, specify its policy name and the parameters that you
-#' want to change. Any parameters that you don\'t specify are not changed
-#' by this update request.
-#' 
-#' You can view the scaling policies for a service namespace using
-#' DescribeScalingPolicies. If you are no longer using a scaling policy,
-#' you can delete it using DeleteScalingPolicy.
+#' until you have registered the resource as a scalable target.
 #' 
 #' Multiple scaling policies can be in force at the same time for the same
 #' scalable target. You can have one or more target tracking scaling
@@ -1151,9 +1188,23 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' current capacity is 10, Application Auto Scaling uses the policy with
 #' the highest calculated capacity (200% of 10 = 20) and scales out to 30.
 #' 
-#' Learn more about how to work with scaling policies in the [Application
-#' Auto Scaling User
-#' Guide](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
+#' We recommend caution, however, when using target tracking scaling
+#' policies with step scaling policies because conflicts between these
+#' policies can cause undesirable behavior. For example, if the step
+#' scaling policy initiates a scale-in activity before the target tracking
+#' policy is ready to scale in, the scale-in activity will not be blocked.
+#' After the scale-in activity completes, the target tracking policy could
+#' instruct the scalable target to scale out again.
+#' 
+#' For more information, see [Target Tracking Scaling
+#' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
+#' and [Step Scaling
+#' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
+#' in the *Application Auto Scaling User Guide*.
+#' 
+#' If a scalable target is deregistered, the scalable target is no longer
+#' available to execute scaling policies. Any scaling policies that were
+#' specified for the scalable target are deleted.
 #'
 #' @usage
 #' applicationautoscaling_put_scaling_policy(PolicyName, ServiceNamespace,
@@ -1162,11 +1213,9 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'   TargetTrackingScalingPolicyConfiguration)
 #'
 #' @param PolicyName &#91;required&#93; The name of the scaling policy.
-#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
-#' `custom-resource` for a resource provided by your own application or
-#' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in the *Amazon Web Services General Reference*.
+#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource. For a
+#' resource provided by your own application or service, use
+#' `custom-resource` instead.
 #' @param ResourceId &#91;required&#93; The identifier of the resource associated with the scaling policy. This
 #' string consists of the resource type and unique identifier.
 #' 
@@ -1215,6 +1264,10 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
 #'     `function:my-function:prod` or `function:my-function:1`.
+#' 
+#' -   Amazon Keyspaces table - The resource type is `table` and the unique
+#'     identifier is the table name. Example:
+#'     `keyspace/mykeyspace/table/mytable`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -1258,6 +1311,12 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
+#' 
+#' -   `cassandra:table:ReadCapacityUnits` - The provisioned read capacity
+#'     for an Amazon Keyspaces table.
+#' 
+#' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
+#'     capacity for an Amazon Keyspaces table.
 #' @param PolicyType The policy type. This parameter is required if you are creating a
 #' scaling policy.
 #' 
@@ -1265,8 +1324,8 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' 
 #' `TargetTrackingScaling`---Not supported for Amazon EMR
 #' 
-#' `StepScaling`---Not supported for DynamoDB, Amazon Comprehend, or AWS
-#' Lambda
+#' `StepScaling`---Not supported for DynamoDB, Amazon Comprehend, Lambda,
+#' or Amazon Keyspaces (for Apache Cassandra).
 #' 
 #' For more information, see [Target Tracking Scaling
 #' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
@@ -1287,9 +1346,9 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' ```
 #' svc$put_scaling_policy(
 #'   PolicyName = "string",
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
 #'   PolicyType = "StepScaling"|"TargetTrackingScaling",
 #'   StepScalingPolicyConfiguration = list(
 #'     AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
@@ -1307,7 +1366,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'   TargetTrackingScalingPolicyConfiguration = list(
 #'     TargetValue = 123.0,
 #'     PredefinedMetricSpecification = list(
-#'       PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization",
+#'       PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization",
 #'       ResourceLabel = "string"
 #'     ),
 #'     CustomizedMetricSpecification = list(
@@ -1351,101 +1410,6 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'     TargetValue = 75L
 #'   )
 #' )
-#' 
-#' # The following example applies a target tracking scaling policy with a
-#' # customized metric specification to an Amazon ECS service called web-app
-#' # in the default cluster. The policy keeps the average utilization of the
-#' # service at 75 percent, with scale-out and scale-in cooldown periods of
-#' # 60 seconds.
-#' svc$put_scaling_policy(
-#'   PolicyName = "cms75-target-tracking-scaling-policy",
-#'   PolicyType = "TargetTrackingScaling",
-#'   ResourceId = "service/default/web-app",
-#'   ScalableDimension = "ecs:service:DesiredCount",
-#'   ServiceNamespace = "ecs",
-#'   TargetTrackingScalingPolicyConfiguration = list(
-#'     CustomizedMetricSpecification = list(
-#'       Dimensions = list(
-#'         list(
-#'           Name = "MyOptionalMetricDimensionName",
-#'           Value = "MyOptionalMetricDimensionValue"
-#'         )
-#'       ),
-#'       MetricName = "MyUtilizationMetric",
-#'       Namespace = "MyNamespace",
-#'       Statistic = "Average",
-#'       Unit = "Percent"
-#'     ),
-#'     ScaleInCooldown = 60L,
-#'     ScaleOutCooldown = 60L,
-#'     TargetValue = 75L
-#'   )
-#' )
-#' 
-#' # The following example applies a target tracking scaling policy to an
-#' # Amazon ECS service called web-app in the default cluster. The policy is
-#' # used to scale out the ECS service when the RequestCountPerTarget metric
-#' # from the Application Load Balancer exceeds the threshold.
-#' svc$put_scaling_policy(
-#'   PolicyName = "alb-scale-out-target-tracking-scaling-policy",
-#'   PolicyType = "TargetTrackingScaling",
-#'   ResourceId = "service/default/web-app",
-#'   ScalableDimension = "ecs:service:DesiredCount",
-#'   ServiceNamespace = "ecs",
-#'   TargetTrackingScalingPolicyConfiguration = list(
-#'     DisableScaleIn = TRUE,
-#'     PredefinedMetricSpecification = list(
-#'       PredefinedMetricType = "ALBRequestCountPerTarget",
-#'       ResourceLabel = "app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targetgroup/EC2Co-Defa..."
-#'     ),
-#'     ScaleInCooldown = 60L,
-#'     ScaleOutCooldown = 60L,
-#'     TargetValue = 1000L
-#'   )
-#' )
-#' 
-#' # This example applies a step scaling policy to an Amazon ECS service
-#' # called web-app in the default cluster. The policy increases the desired
-#' # count of the service by 200%, with a cool down period of 60 seconds.
-#' svc$put_scaling_policy(
-#'   PolicyName = "web-app-cpu-gt-75",
-#'   PolicyType = "StepScaling",
-#'   ResourceId = "service/default/web-app",
-#'   ScalableDimension = "ecs:service:DesiredCount",
-#'   ServiceNamespace = "ecs",
-#'   StepScalingPolicyConfiguration = list(
-#'     AdjustmentType = "PercentChangeInCapacity",
-#'     Cooldown = 60L,
-#'     StepAdjustments = list(
-#'       list(
-#'         MetricIntervalLowerBound = 0L,
-#'         ScalingAdjustment = 200L
-#'       )
-#'     )
-#'   )
-#' )
-#' 
-#' # This example applies a step scaling policy to an Amazon EC2 Spot fleet.
-#' # The policy increases the target capacity of the spot fleet by 200%, with
-#' # a cool down period of 180 seconds.",
-#' # 
-#' svc$put_scaling_policy(
-#'   PolicyName = "fleet-cpu-gt-75",
-#'   PolicyType = "StepScaling",
-#'   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",
-#'   ScalableDimension = "ec2:spot-fleet-request:TargetCapacity",
-#'   ServiceNamespace = "ec2",
-#'   StepScalingPolicyConfiguration = list(
-#'     AdjustmentType = "PercentChangeInCapacity",
-#'     Cooldown = 180L,
-#'     StepAdjustments = list(
-#'       list(
-#'         MetricIntervalLowerBound = 0L,
-#'         ScalingAdjustment = 200L
-#'       )
-#'     )
-#'   )
-#' )
 #' }
 #'
 #' @keywords internal
@@ -1478,31 +1442,32 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' and scalable dimension. A scheduled action applies to the scalable
 #' target identified by those three attributes. You cannot create a
 #' scheduled action until you have registered the resource as a scalable
-#' target using RegisterScalableTarget.
+#' target.
 #' 
-#' To update an action, specify its name and the parameters that you want
-#' to change. If you don\'t specify start and end times, the old values are
-#' deleted. Any other parameters that you don\'t specify are not changed by
-#' this update request.
+#' When start and end times are specified with a recurring schedule using a
+#' cron expression or rates, they form the boundaries of when the recurring
+#' action starts and stops.
 #' 
-#' You can view the scheduled actions using DescribeScheduledActions. If
-#' you are no longer using a scheduled action, you can delete it using
-#' DeleteScheduledAction.
+#' To update a scheduled action, specify the parameters that you want to
+#' change. If you don\'t specify start and end times, the old values are
+#' deleted.
 #' 
-#' Learn more about how to work with scheduled actions in the [Application
-#' Auto Scaling User
-#' Guide](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
+#' For more information, see [Scheduled
+#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html)
+#' in the *Application Auto Scaling User Guide*.
+#' 
+#' If a scalable target is deregistered, the scalable target is no longer
+#' available to run scheduled actions. Any scheduled actions that were
+#' specified for the scalable target are deleted.
 #'
 #' @usage
 #' applicationautoscaling_put_scheduled_action(ServiceNamespace, Schedule,
 #'   ScheduledActionName, ResourceId, ScalableDimension, StartTime, EndTime,
 #'   ScalableTargetAction)
 #'
-#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
-#' `custom-resource` for a resource provided by your own application or
-#' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in the *Amazon Web Services General Reference*.
+#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource. For a
+#' resource provided by your own application or service, use
+#' `custom-resource` instead.
 #' @param Schedule The schedule for this action. The following formats are supported:
 #' 
 #' -   At expressions -
@@ -1512,7 +1477,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' 
 #' -   Cron expressions - \"`cron(<i>fields</i>)`\"
 #' 
-#' At expressions are useful for one-time schedules. Specify the time, in
+#' At expressions are useful for one-time schedules. Specify the time in
 #' UTC.
 #' 
 #' For rate expressions, *value* is a positive integer and *unit* is
@@ -1521,7 +1486,12 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' For more information about cron expressions, see [Cron
 #' Expressions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions)
 #' in the *Amazon CloudWatch Events User Guide*.
-#' @param ScheduledActionName &#91;required&#93; The name of the scheduled action.
+#' 
+#' For examples of using these expressions, see [Scheduled
+#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html)
+#' in the *Application Auto Scaling User Guide*.
+#' @param ScheduledActionName &#91;required&#93; The name of the scheduled action. This name must be unique among all
+#' other scheduled actions on the specified scalable target.
 #' @param ResourceId &#91;required&#93; The identifier of the resource associated with the scheduled action.
 #' This string consists of the resource type and unique identifier.
 #' 
@@ -1570,6 +1540,10 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
 #'     `function:my-function:prod` or `function:my-function:1`.
+#' 
+#' -   Amazon Keyspaces table - The resource type is `table` and the unique
+#'     identifier is the table name. Example:
+#'     `keyspace/mykeyspace/table/mytable`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension. This string consists of the service namespace,
 #' resource type, and scaling property.
 #' 
@@ -1613,22 +1587,28 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
-#' @param StartTime The date and time for the scheduled action to start.
-#' @param EndTime The date and time for the scheduled action to end.
+#' 
+#' -   `cassandra:table:ReadCapacityUnits` - The provisioned read capacity
+#'     for an Amazon Keyspaces table.
+#' 
+#' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
+#'     capacity for an Amazon Keyspaces table.
+#' @param StartTime The date and time for this scheduled action to start.
+#' @param EndTime The date and time for the recurring schedule to end.
 #' @param ScalableTargetAction The new minimum and maximum capacity. You can set both values or just
-#' one. During the scheduled time, if the current capacity is below the
-#' minimum capacity, Application Auto Scaling scales out to the minimum
-#' capacity. If the current capacity is above the maximum capacity,
-#' Application Auto Scaling scales in to the maximum capacity.
+#' one. At the scheduled time, if the current capacity is below the minimum
+#' capacity, Application Auto Scaling scales out to the minimum capacity.
+#' If the current capacity is above the maximum capacity, Application Auto
+#' Scaling scales in to the maximum capacity.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$put_scheduled_action(
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
 #'   Schedule = "string",
 #'   ScheduledActionName = "string",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -1664,39 +1644,38 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 
 #' Registers or updates a scalable target
 #'
-#' Registers or updates a scalable target. A scalable target is a resource
-#' that Application Auto Scaling can scale out and scale in. Scalable
-#' targets are uniquely identified by the combination of resource ID,
-#' scalable dimension, and namespace.
+#' Registers or updates a scalable target.
+#' 
+#' A scalable target is a resource that Application Auto Scaling can scale
+#' out and scale in. Scalable targets are uniquely identified by the
+#' combination of resource ID, scalable dimension, and namespace.
 #' 
 #' When you register a new scalable target, you must specify values for
-#' minimum and maximum capacity. Application Auto Scaling will not scale
-#' capacity to values that are outside of this range.
-#' 
-#' To update a scalable target, specify the parameter that you want to
-#' change as well as the following parameters that identify the scalable
-#' target: resource ID, scalable dimension, and namespace. Any parameters
-#' that you don\'t specify are not changed by this update request.
+#' minimum and maximum capacity. Application Auto Scaling scaling policies
+#' will not scale capacity to values that are outside of this range.
 #' 
 #' After you register a scalable target, you do not need to register it
 #' again to use other Application Auto Scaling operations. To see which
-#' resources have been registered, use DescribeScalableTargets. You can
-#' also view the scaling policies for a service namespace by using
-#' DescribeScalableTargets.
-#' 
+#' resources have been registered, use
+#' [DescribeScalableTargets](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html).
+#' You can also view the scaling policies for a service namespace by using
+#' [DescribeScalableTargets](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html).
 #' If you no longer need a scalable target, you can deregister it by using
-#' DeregisterScalableTarget.
+#' [DeregisterScalableTarget](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DeregisterScalableTarget.html).
+#' 
+#' To update a scalable target, specify the parameters that you want to
+#' change. Include the parameters that identify the scalable target:
+#' resource ID, scalable dimension, and namespace. Any parameters that you
+#' don\'t specify are not changed by this update request.
 #'
 #' @usage
 #' applicationautoscaling_register_scalable_target(ServiceNamespace,
 #'   ResourceId, ScalableDimension, MinCapacity, MaxCapacity, RoleARN,
 #'   SuspendedState)
 #'
-#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource or
-#' `custom-resource` for a resource provided by your own application or
-#' service. For more information, see [AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in the *Amazon Web Services General Reference*.
+#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service that provides the resource. For a
+#' resource provided by your own application or service, use
+#' `custom-resource` instead.
 #' @param ResourceId &#91;required&#93; The identifier of the resource that is associated with the scalable
 #' target. This string consists of the resource type and unique identifier.
 #' 
@@ -1745,6 +1724,10 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #'     the unique identifier is the function name with a function version
 #'     or alias name suffix that is not `$LATEST`. Example:
 #'     `function:my-function:prod` or `function:my-function:1`.
+#' 
+#' -   Amazon Keyspaces table - The resource type is `table` and the unique
+#'     identifier is the table name. Example:
+#'     `keyspace/mykeyspace/table/mytable`.
 #' @param ScalableDimension &#91;required&#93; The scalable dimension associated with the scalable target. This string
 #' consists of the service namespace, resource type, and scaling property.
 #' 
@@ -1788,18 +1771,35 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' -   `lambda:function:ProvisionedConcurrency` - The provisioned
 #'     concurrency for a Lambda function.
-#' @param MinCapacity The minimum value to scale to in response to a scale-in event.
-#' `MinCapacity` is required to register a scalable target.
-#' @param MaxCapacity The maximum value to scale to in response to a scale-out event.
-#' `MaxCapacity` is required to register a scalable target.
-#' @param RoleARN Application Auto Scaling creates a service-linked role that grants it
-#' permissions to modify the scalable target on your behalf. For more
-#' information, see [Service-Linked Roles for Application Auto
-#' Scaling](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-service-linked-roles.html).
 #' 
-#' For Amazon EMR, this parameter is required, and it must specify the ARN
+#' -   `cassandra:table:ReadCapacityUnits` - The provisioned read capacity
+#'     for an Amazon Keyspaces table.
+#' 
+#' -   `cassandra:table:WriteCapacityUnits` - The provisioned write
+#'     capacity for an Amazon Keyspaces table.
+#' @param MinCapacity The minimum value that you plan to scale in to. When a scaling policy is
+#' in effect, Application Auto Scaling can scale in (contract) as needed to
+#' the minimum capacity limit in response to changing demand.
+#' 
+#' This parameter is required if you are registering a scalable target. For
+#' certain resources, the minimum value allowed is 0. This includes Lambda
+#' provisioned concurrency, Spot Fleet, ECS services, Aurora DB clusters,
+#' EMR clusters, and custom resources. For all other resources, the minimum
+#' value allowed is 1.
+#' @param MaxCapacity The maximum value that you plan to scale out to. When a scaling policy
+#' is in effect, Application Auto Scaling can scale out (expand) as needed
+#' to the maximum capacity limit in response to changing demand.
+#' 
+#' This parameter is required if you are registering a scalable target.
+#' @param RoleARN This parameter is required for services that do not support
+#' service-linked roles (such as Amazon EMR), and it must specify the ARN
 #' of an IAM role that allows Application Auto Scaling to modify the
 #' scalable target on your behalf.
+#' 
+#' If the service supports service-linked roles, Application Auto Scaling
+#' uses a service-linked role, which it creates if it does not yet exist.
+#' For more information, see [Application Auto Scaling IAM
+#' Roles](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles).
 #' @param SuspendedState An embedded object that contains attributes and attribute values that
 #' are used to suspend and resume automatic scaling. Setting the value of
 #' an attribute to `true` suspends the specified scaling activities.
@@ -1826,9 +1826,9 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' @section Request syntax:
 #' ```
 #' svc$register_scalable_target(
-#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda",
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
 #'   MinCapacity = 123,
 #'   MaxCapacity = 123,
 #'   RoleARN = "string",
@@ -1851,16 +1851,6 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #'   ResourceId = "service/default/web-app",
 #'   ScalableDimension = "ecs:service:DesiredCount",
 #'   ServiceNamespace = "ecs"
-#' )
-#' 
-#' # This example registers a scalable target from an Amazon EC2 Spot fleet
-#' # with a minimum target capacity of 1 and a maximum of 10.
-#' svc$register_scalable_target(
-#'   MaxCapacity = 10L,
-#'   MinCapacity = 1L,
-#'   ResourceId = "spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3",
-#'   ScalableDimension = "ec2:spot-fleet-request:TargetCapacity",
-#'   ServiceNamespace = "ec2"
 #' )
 #' }
 #'

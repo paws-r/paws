@@ -2,6 +2,14 @@ context("athena")
 
 svc <- paws::athena()
 
+test_that("list_data_catalogs", {
+  expect_error(svc$list_data_catalogs(), NA)
+})
+
+test_that("list_data_catalogs", {
+  expect_error(svc$list_data_catalogs(MaxResults = 20), NA)
+})
+
 test_that("list_named_queries", {
   expect_error(svc$list_named_queries(), NA)
 })

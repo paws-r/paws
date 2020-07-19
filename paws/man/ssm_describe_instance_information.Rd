@@ -2,24 +2,26 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_instance_information}
 \alias{ssm_describe_instance_information}
-\title{Describes one or more of your instances}
+\title{Describes one or more of your instances, including information about the
+operating system platform, the version of SSM Agent installed on the
+instance, instance status, and so on}
 \usage{
 ssm_describe_instance_information(InstanceInformationFilterList,
   Filters, MaxResults, NextToken)
 }
 \arguments{
 \item{InstanceInformationFilterList}{This is a legacy method. We recommend that you don\'t use this method.
-Instead, use the InstanceInformationFilter action. The
-\code{InstanceInformationFilter} action enables you to return instance
-information by using tags that are specified as a key-value mapping.
+Instead, use the \code{Filters} data type. \code{Filters} enables you to return
+instance information by filtering based on tags applied to managed
+instances.
 
-If you do use this method, then you can\'t use the
-\code{InstanceInformationFilter} action. Using this method and the
-\code{InstanceInformationFilter} action causes an exception error.}
+Attempting to use \code{InstanceInformationFilterList} and \code{Filters} leads to
+an exception error.}
 
 \item{Filters}{One or more filters. Use a filter to return a more specific list of
-instances. You can filter on Amazon EC2 tag. Specify tags by using a
-key-value mapping.}
+instances. You can filter based on tags applied to EC2 instances. Use
+this \code{Filters} data type instead of \code{InstanceInformationFilterList},
+which is deprecated.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -29,18 +31,19 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-Describes one or more of your instances. You can use this to get
-information about instances like the operating system platform, the SSM
-Agent version (Linux), status etc. If you specify one or more instance
-IDs, it returns information for those instances. If you do not specify
-instance IDs, it returns information for all your instances. If you
-specify an instance ID that is not valid or an instance that you do not
-own, you receive an error.
+Describes one or more of your instances, including information about the
+operating system platform, the version of SSM Agent installed on the
+instance, instance status, and so on.
 }
 \details{
+If you specify one or more instance IDs, it returns information for
+those instances. If you do not specify instance IDs, it returns
+information for all your instances. If you specify an instance ID that
+is not valid or an instance that you do not own, you receive an error.
+
 The IamRole field for this API action is the Amazon Identity and Access
 Management (IAM) role assigned to on-premises instances. This call does
-not return the IAM role for Amazon EC2 instances.
+not return the IAM role for EC2 instances.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_instance_information(

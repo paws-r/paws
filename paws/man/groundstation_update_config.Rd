@@ -7,7 +7,7 @@
 groundstation_update_config(configData, configId, configType, name)
 }
 \arguments{
-\item{configData}{[required] Parameters for a \code{Config}.}
+\item{configData}{[required] Parameters of a \code{Config}.}
 
 \item{configId}{[required] UUID of a \code{Config}.}
 
@@ -71,7 +71,8 @@ existing future contacts scheduled with this \code{Config}.
       )
     ),
     dataflowEndpointConfig = list(
-      dataflowEndpointName = "string"
+      dataflowEndpointName = "string",
+      dataflowEndpointRegion = "string"
     ),
     trackingConfig = list(
       autotrack = "PREFERRED"|"REMOVED"|"REQUIRED"

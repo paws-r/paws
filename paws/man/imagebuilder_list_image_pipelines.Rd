@@ -7,7 +7,7 @@
 imagebuilder_list_image_pipelines(filters, maxResults, nextToken)
 }
 \arguments{
-\item{filters}{}
+\item{filters}{The filters.}
 
 \item{maxResults}{The maximum items to return in a request.}
 

@@ -2,8 +2,8 @@
 % Please edit documentation in R/eventbridge_operations.R
 \name{eventbridge_deactivate_event_source}
 \alias{eventbridge_deactivate_event_source}
-\title{An AWS customer uses this operation to temporarily stop receiving events
-from the specified partner event source}
+\title{You can use this operation to temporarily stop receiving events from the
+specified partner event source}
 \usage{
 eventbridge_deactivate_event_source(Name)
 }
@@ -11,14 +11,13 @@ eventbridge_deactivate_event_source(Name)
 \item{Name}{[required] The name of the partner event source to deactivate.}
 }
 \description{
-An AWS customer uses this operation to temporarily stop receiving events
-from the specified partner event source. The matching event bus isn\'t
-deleted.
+You can use this operation to temporarily stop receiving events from the
+specified partner event source. The matching event bus is not deleted.
 }
 \details{
-When you deactivate a partner event source, the source goes into
-\code{PENDING} state. If it remains in \code{PENDING} state for more than two
-weeks, it\'s deleted.
+When you deactivate a partner event source, the source goes into PENDING
+state. If it remains in PENDING state for more than two weeks, it is
+deleted.
 
 To activate a deactivated partner event source, use ActivateEventSource.
 }

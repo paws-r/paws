@@ -21,4 +21,14 @@ can also view tags with GetFunction.
 }
 }
 
+\examples{
+\dontrun{
+# The following example displays the tags attached to the my-function
+# Lambda function.
+svc$list_tags(
+  Resource = "arn:aws:lambda:us-west-2:123456789012:function:my-function"
+)
+}
+
+}
 \keyword{internal}

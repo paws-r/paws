@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_get_lifecycle_policy}
 \alias{ecr_get_lifecycle_policy}
-\title{Retrieves the specified lifecycle policy}
+\title{Retrieves the lifecycle policy for the specified repository}
 \usage{
 ecr_get_lifecycle_policy(registryId, repositoryName)
 }
@@ -14,7 +14,7 @@ assumed.}
 \item{repositoryName}{[required] The name of the repository.}
 }
 \description{
-Retrieves the specified lifecycle policy.
+Retrieves the lifecycle policy for the specified repository.
 }
 \section{Request syntax}{
 \preformatted{svc$get_lifecycle_policy(

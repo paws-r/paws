@@ -2,16 +2,17 @@
 % Please edit documentation in R/macie_operations.R
 \name{macie_associate_member_account}
 \alias{macie_associate_member_account}
-\title{Associates a specified AWS account with Amazon Macie as a member account}
+\title{Associates a specified AWS account with Amazon Macie Classic as a member
+account}
 \usage{
 macie_associate_member_account(memberAccountId)
 }
 \arguments{
 \item{memberAccountId}{[required] The ID of the AWS account that you want to associate with Amazon Macie
-as a member account.}
+Classic as a member account.}
 }
 \description{
-Associates a specified AWS account with Amazon Macie as a member
+Associates a specified AWS account with Amazon Macie Classic as a member
 account.
 }
 \section{Request syntax}{

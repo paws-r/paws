@@ -10,7 +10,14 @@ ec2_describe_client_vpn_routes(ClientVpnEndpointId, Filters, MaxResults,
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
 
-\item{Filters}{One or more filters. Filter names and values are case-sensitive.}
+\item{Filters}{One or more filters. Filter names and values are case-sensitive.
+\itemize{
+\item \code{destination-cidr} - The CIDR of the route destination.
+\item \code{origin} - How the route was associated with the Client VPN endpoint
+(\code{associate} \\| \code{add-route}).
+\item \code{target-subnet} - The ID of the subnet through which traffic is
+routed.
+}}
 
 \item{MaxResults}{The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with

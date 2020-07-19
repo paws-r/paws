@@ -61,7 +61,8 @@ Updates the specified lifecycle policy.
           IntervalUnit = "HOURS",
           Times = list(
             "string"
-          )
+          ),
+          CronExpression = "string"
         ),
         RetainRule = list(
           Count = 123,

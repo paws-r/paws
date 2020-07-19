@@ -98,6 +98,51 @@ elasticbeanstalk_apply_environment_managed_action <- function(EnvironmentName = 
 }
 .elasticbeanstalk$operations$apply_environment_managed_action <- elasticbeanstalk_apply_environment_managed_action
 
+#' Add or change the operations role used by an environment
+#'
+#' Add or change the operations role used by an environment. After this
+#' call is made, Elastic Beanstalk uses the associated operations role for
+#' permissions to downstream services during subsequent calls acting on
+#' this environment. For more information, see [Operations
+#' roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html)
+#' in the *AWS Elastic Beanstalk Developer Guide*.
+#'
+#' @usage
+#' elasticbeanstalk_associate_environment_operations_role(EnvironmentName,
+#'   OperationsRole)
+#'
+#' @param EnvironmentName &#91;required&#93; The name of the environment to which to set the operations role.
+#' @param OperationsRole &#91;required&#93; The Amazon Resource Name (ARN) of an existing IAM role to be used as the
+#' environment\'s operations role.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_environment_operations_role(
+#'   EnvironmentName = "string",
+#'   OperationsRole = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticbeanstalk_associate_environment_operations_role
+elasticbeanstalk_associate_environment_operations_role <- function(EnvironmentName, OperationsRole) {
+  op <- new_operation(
+    name = "AssociateEnvironmentOperationsRole",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticbeanstalk$associate_environment_operations_role_input(EnvironmentName = EnvironmentName, OperationsRole = OperationsRole)
+  output <- .elasticbeanstalk$associate_environment_operations_role_output()
+  config <- get_config()
+  svc <- .elasticbeanstalk$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticbeanstalk$operations$associate_environment_operations_role <- elasticbeanstalk_associate_environment_operations_role
+
 #' Checks if the specified CNAME is available
 #'
 #' Checks if the specified CNAME is available.
@@ -214,14 +259,10 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
 #' elasticbeanstalk_create_application(ApplicationName, Description,
 #'   ResourceLifecycleConfig, Tags)
 #'
-#' @param ApplicationName &#91;required&#93; The name of the application.
-#' 
-#' Constraint: This name must be unique within your account. If the
-#' specified name already exists, the action returns an
-#' `InvalidParameterValue` error.
-#' @param Description Describes the application.
-#' @param ResourceLifecycleConfig Specify an application resource lifecycle configuration to prevent your
-#' application from accumulating too many versions.
+#' @param ApplicationName &#91;required&#93; The name of the application. Must be unique within your account.
+#' @param Description Your description of the application.
+#' @param ResourceLifecycleConfig Specifies an application resource lifecycle configuration to prevent
+#' your application from accumulating too many versions.
 #' @param Tags Specifies the tags applied to the application.
 #' 
 #' Elastic Beanstalk applies these tags only to the application.
@@ -303,10 +344,10 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #' Omit both `SourceBuildInformation` and `SourceBundle` to use the default
 #' sample application.
 #' 
-#' Once you create an application version with a specified Amazon S3 bucket
-#' and key location, you cannot change that Amazon S3 location. If you
-#' change the Amazon S3 location, you receive an exception when you attempt
-#' to launch an environment from the application version.
+#' After you create an application version with a specified Amazon S3
+#' bucket and key location, you can\'t change that Amazon S3 location. If
+#' you change the Amazon S3 location, you receive an exception when you
+#' attempt to launch an environment from the application version.
 #'
 #' @usage
 #' elasticbeanstalk_create_application_version(ApplicationName,
@@ -321,7 +362,7 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #' Constraint: Must be unique per application. If an application version
 #' already exists with this label for the specified application, AWS
 #' Elastic Beanstalk returns an `InvalidParameterValue` error.
-#' @param Description Describes this version.
+#' @param Description A description of this application version.
 #' @param SourceBuildInformation Specify a commit in an AWS CodeCommit Git repository to use as the
 #' source code for the application version.
 #' @param SourceBundle The Amazon S3 bucket and key that identify the location of the source
@@ -423,11 +464,14 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 }
 .elasticbeanstalk$operations$create_application_version <- elasticbeanstalk_create_application_version
 
-#' Creates a configuration template
+#' Creates an AWS Elastic Beanstalk configuration template, associated with
+#' a specific Elastic Beanstalk application
 #'
-#' Creates a configuration template. Templates are associated with a
-#' specific application and are used to deploy different versions of the
-#' application with the same configuration settings.
+#' Creates an AWS Elastic Beanstalk configuration template, associated with
+#' a specific Elastic Beanstalk application. You define application
+#' configuration settings in a configuration template. You can then use the
+#' configuration template to deploy different versions of the application
+#' with the same configuration settings.
 #' 
 #' Templates aren\'t associated with any environment. The `EnvironmentName`
 #' response element is always `null`.
@@ -445,50 +489,56 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #'   TemplateName, SolutionStackName, PlatformArn, SourceConfiguration,
 #'   EnvironmentId, Description, OptionSettings, Tags)
 #'
-#' @param ApplicationName &#91;required&#93; The name of the application to associate with this configuration
-#' template. If no application is found with this name, AWS Elastic
-#' Beanstalk returns an `InvalidParameterValue` error.
+#' @param ApplicationName &#91;required&#93; The name of the Elastic Beanstalk application to associate with this
+#' configuration template.
 #' @param TemplateName &#91;required&#93; The name of the configuration template.
 #' 
 #' Constraint: This name must be unique per application.
+#' @param SolutionStackName The name of an Elastic Beanstalk solution stack (platform version) that
+#' this configuration uses. For example,
+#' `64bit Amazon Linux 2013.09 running Tomcat 7 Java 7`. A solution stack
+#' specifies the operating system, runtime, and application server for a
+#' configuration template. It also determines the set of configuration
+#' options as well as the possible and default values. For more
+#' information, see [Supported
+#' Platforms](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
+#' in the *AWS Elastic Beanstalk Developer Guide*.
 #' 
-#' Default: If a configuration template already exists with this name, AWS
-#' Elastic Beanstalk returns an `InvalidParameterValue` error.
-#' @param SolutionStackName The name of the solution stack used by this configuration. The solution
-#' stack specifies the operating system, architecture, and application
-#' server for a configuration template. It determines the set of
-#' configuration options as well as the possible and default values.
+#' You must specify `SolutionStackName` if you don\'t specify
+#' `PlatformArn`, `EnvironmentId`, or `SourceConfiguration`.
 #' 
-#' Use ListAvailableSolutionStacks to obtain a list of available solution
-#' stacks.
+#' Use the
+#' [`ListAvailableSolutionStacks`](https://docs.aws.amazon.com/elasticbeanstalk/latest/api/API_ListAvailableSolutionStacks.html)
+#' API to obtain a list of available solution stacks.
+#' @param PlatformArn The Amazon Resource Name (ARN) of the custom platform. For more
+#' information, see [Custom
+#' Platforms](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/custom-platforms.html)
+#' in the *AWS Elastic Beanstalk Developer Guide*.
 #' 
-#' A solution stack name or a source configuration parameter must be
-#' specified, otherwise AWS Elastic Beanstalk returns an
-#' `InvalidParameterValue` error.
+#' If you specify `PlatformArn`, then don\'t specify `SolutionStackName`.
+#' @param SourceConfiguration An Elastic Beanstalk configuration template to base this one on. If
+#' specified, Elastic Beanstalk uses the configuration values from the
+#' specified configuration template to create a new configuration.
 #' 
-#' If a solution stack name is not specified and the source configuration
-#' parameter is specified, AWS Elastic Beanstalk uses the same solution
-#' stack as the source configuration template.
-#' @param PlatformArn The ARN of the custom platform.
-#' @param SourceConfiguration If specified, AWS Elastic Beanstalk uses the configuration values from
-#' the specified configuration template to create a new configuration.
+#' Values specified in `OptionSettings` override any values obtained from
+#' the `SourceConfiguration`.
 #' 
-#' Values specified in the `OptionSettings` parameter of this call
-#' overrides any values obtained from the `SourceConfiguration`.
+#' You must specify `SourceConfiguration` if you don\'t specify
+#' `PlatformArn`, `EnvironmentId`, or `SolutionStackName`.
 #' 
-#' If no configuration template is found, returns an
-#' `InvalidParameterValue` error.
-#' 
-#' Constraint: If both the solution stack name parameter and the source
-#' configuration parameters are specified, the solution stack of the source
-#' configuration template must match the specified solution stack name or
-#' else AWS Elastic Beanstalk returns an `InvalidParameterCombination`
-#' error.
-#' @param EnvironmentId The ID of the environment used with this configuration template.
-#' @param Description Describes this configuration.
-#' @param OptionSettings If specified, AWS Elastic Beanstalk sets the specified configuration
-#' option to the requested value. The new value overrides the value
-#' obtained from the solution stack or the source configuration template.
+#' Constraint: If both solution stack name and source configuration are
+#' specified, the solution stack of the source configuration template must
+#' match the specified solution stack name.
+#' @param EnvironmentId The ID of an environment whose settings you want to use to create the
+#' configuration template. You must specify `EnvironmentId` if you don\'t
+#' specify `PlatformArn`, `SolutionStackName`, or `SourceConfiguration`.
+#' @param Description An optional description for this configuration.
+#' @param OptionSettings Option values for the Elastic Beanstalk configuration, such as the
+#' instance type. If specified, these values override the values obtained
+#' from the solution stack or the source configuration template. For a
+#' complete list of Elastic Beanstalk configuration options, see [Option
+#' Values](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html)
+#' in the *AWS Elastic Beanstalk Developer Guide*.
 #' @param Tags Specifies the tags applied to the configuration template.
 #'
 #' @section Request syntax:
@@ -552,32 +602,28 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 }
 .elasticbeanstalk$operations$create_configuration_template <- elasticbeanstalk_create_configuration_template
 
-#' Launches an environment for the specified application using the
-#' specified configuration
+#' Launches an AWS Elastic Beanstalk environment for the specified
+#' application using the specified configuration
 #'
-#' Launches an environment for the specified application using the
-#' specified configuration.
+#' Launches an AWS Elastic Beanstalk environment for the specified
+#' application using the specified configuration.
 #'
 #' @usage
 #' elasticbeanstalk_create_environment(ApplicationName, EnvironmentName,
 #'   GroupName, Description, CNAMEPrefix, Tier, Tags, VersionLabel,
 #'   TemplateName, SolutionStackName, PlatformArn, OptionSettings,
-#'   OptionsToRemove)
+#'   OptionsToRemove, OperationsRole)
 #'
-#' @param ApplicationName &#91;required&#93; The name of the application that contains the version to be deployed.
-#' 
-#' If no application is found with this name, `CreateEnvironment` returns
-#' an `InvalidParameterValue` error.
-#' @param EnvironmentName A unique name for the deployment environment. Used in the application
-#' URL.
+#' @param ApplicationName &#91;required&#93; The name of the application that is associated with this environment.
+#' @param EnvironmentName A unique name for the environment.
 #' 
 #' Constraint: Must be from 4 to 40 characters in length. The name can
-#' contain only letters, numbers, and hyphens. It cannot start or end with
+#' contain only letters, numbers, and hyphens. It can\'t start or end with
 #' a hyphen. This name must be unique within a region in your account. If
-#' the specified name already exists in the region, AWS Elastic Beanstalk
+#' the specified name already exists in the region, Elastic Beanstalk
 #' returns an `InvalidParameterValue` error.
 #' 
-#' Default: If the CNAME parameter is not specified, the environment name
+#' If you don\'t specify the `CNAMEPrefix` parameter, the environment name
 #' becomes part of the CNAME, and therefore part of the visible URL for
 #' your application.
 #' @param GroupName The name of the group to which the target environment belongs. Specify a
@@ -586,36 +632,54 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 #' [Environment Manifest
 #' (env.yaml)](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
 #' for details.
-#' @param Description Describes this environment.
+#' @param Description Your description for this environment.
 #' @param CNAMEPrefix If specified, the environment attempts to use this value as the prefix
-#' for the CNAME. If not specified, the CNAME is generated automatically by
-#' appending a random alphanumeric string to the environment name.
-#' @param Tier This specifies the tier to use for creating this environment.
+#' for the CNAME in your Elastic Beanstalk environment URL. If not
+#' specified, the CNAME is generated automatically by appending a random
+#' alphanumeric string to the environment name.
+#' @param Tier Specifies the tier to use in creating this environment. The environment
+#' tier that you choose determines whether Elastic Beanstalk provisions
+#' resources to support a web application that handles HTTP(S) requests or
+#' a web application that handles background-processing tasks.
 #' @param Tags Specifies the tags applied to resources in the environment.
 #' @param VersionLabel The name of the application version to deploy.
 #' 
-#' If the specified application has no associated application versions, AWS
-#' Elastic Beanstalk `UpdateEnvironment` returns an `InvalidParameterValue`
-#' error.
+#' Default: If not specified, Elastic Beanstalk attempts to deploy the
+#' sample application.
+#' @param TemplateName The name of the Elastic Beanstalk configuration template to use with the
+#' environment.
 #' 
-#' Default: If not specified, AWS Elastic Beanstalk attempts to launch the
-#' sample application in the container.
-#' @param TemplateName The name of the configuration template to use in deployment. If no
-#' configuration template is found with this name, AWS Elastic Beanstalk
-#' returns an `InvalidParameterValue` error.
-#' @param SolutionStackName This is an alternative to specifying a template name. If specified, AWS
-#' Elastic Beanstalk sets the configuration values to the default values
-#' associated with the specified solution stack.
+#' If you specify `TemplateName`, then don\'t specify `SolutionStackName`.
+#' @param SolutionStackName The name of an Elastic Beanstalk solution stack (platform version) to
+#' use with the environment. If specified, Elastic Beanstalk sets the
+#' configuration values to the default values associated with the specified
+#' solution stack. For a list of current solution stacks, see [Elastic
+#' Beanstalk Supported
+#' Platforms](https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html)
+#' in the *AWS Elastic Beanstalk Platforms* guide.
 #' 
-#' For a list of current solution stacks, see [Elastic Beanstalk Supported
-#' Platforms](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html).
-#' @param PlatformArn The ARN of the platform.
+#' If you specify `SolutionStackName`, don\'t specify `PlatformArn` or
+#' `TemplateName`.
+#' @param PlatformArn The Amazon Resource Name (ARN) of the custom platform to use with the
+#' environment. For more information, see [Custom
+#' Platforms](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/custom-platforms.html)
+#' in the *AWS Elastic Beanstalk Developer Guide*.
+#' 
+#' If you specify `PlatformArn`, don\'t specify `SolutionStackName`.
 #' @param OptionSettings If specified, AWS Elastic Beanstalk sets the specified configuration
 #' options to the requested value in the configuration set for the new
 #' environment. These override the values obtained from the solution stack
 #' or the configuration template.
 #' @param OptionsToRemove A list of custom user-defined configuration options to remove from the
 #' configuration set for this new environment.
+#' @param OperationsRole The Amazon Resource Name (ARN) of an existing IAM role to be used as the
+#' environment\'s operations role. If specified, Elastic Beanstalk uses the
+#' operations role for permissions to downstream services during this call
+#' and during subsequent calls acting on this environment. To specify an
+#' operations role, you must have the `iam:PassRole` permission for the
+#' role. For more information, see [Operations
+#' roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html)
+#' in the *AWS Elastic Beanstalk Developer Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -654,7 +718,8 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 #'       Namespace = "string",
 #'       OptionName = "string"
 #'     )
-#'   )
+#'   ),
+#'   OperationsRole = "string"
 #' )
 #' ```
 #'
@@ -674,14 +739,14 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_environment
-elasticbeanstalk_create_environment <- function(ApplicationName, EnvironmentName = NULL, GroupName = NULL, Description = NULL, CNAMEPrefix = NULL, Tier = NULL, Tags = NULL, VersionLabel = NULL, TemplateName = NULL, SolutionStackName = NULL, PlatformArn = NULL, OptionSettings = NULL, OptionsToRemove = NULL) {
+elasticbeanstalk_create_environment <- function(ApplicationName, EnvironmentName = NULL, GroupName = NULL, Description = NULL, CNAMEPrefix = NULL, Tier = NULL, Tags = NULL, VersionLabel = NULL, TemplateName = NULL, SolutionStackName = NULL, PlatformArn = NULL, OptionSettings = NULL, OptionsToRemove = NULL, OperationsRole = NULL) {
   op <- new_operation(
     name = "CreateEnvironment",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticbeanstalk$create_environment_input(ApplicationName = ApplicationName, EnvironmentName = EnvironmentName, GroupName = GroupName, Description = Description, CNAMEPrefix = CNAMEPrefix, Tier = Tier, Tags = Tags, VersionLabel = VersionLabel, TemplateName = TemplateName, SolutionStackName = SolutionStackName, PlatformArn = PlatformArn, OptionSettings = OptionSettings, OptionsToRemove = OptionsToRemove)
+  input <- .elasticbeanstalk$create_environment_input(ApplicationName = ApplicationName, EnvironmentName = EnvironmentName, GroupName = GroupName, Description = Description, CNAMEPrefix = CNAMEPrefix, Tier = Tier, Tags = Tags, VersionLabel = VersionLabel, TemplateName = TemplateName, SolutionStackName = SolutionStackName, PlatformArn = PlatformArn, OptionSettings = OptionSettings, OptionsToRemove = OptionsToRemove, OperationsRole = OperationsRole)
   output <- .elasticbeanstalk$create_environment_output()
   config <- get_config()
   svc <- .elasticbeanstalk$service(config)
@@ -1670,7 +1735,9 @@ elasticbeanstalk_describe_environments <- function(ApplicationName = NULL, Versi
 #' to those associated with this environment.
 #' @param EnvironmentName If specified, AWS Elastic Beanstalk restricts the returned descriptions
 #' to those associated with this environment.
-#' @param PlatformArn The ARN of the version of the custom platform.
+#' @param PlatformArn The ARN of a custom platform version. If specified, AWS Elastic
+#' Beanstalk restricts the returned descriptions to those associated with
+#' this custom platform version.
 #' @param RequestId If specified, AWS Elastic Beanstalk restricts the described events to
 #' include only those associated with this request ID.
 #' @param Severity If specified, limits the events returned from this call to include only
@@ -1797,14 +1864,20 @@ elasticbeanstalk_describe_instances_health <- function(EnvironmentName = NULL, E
 }
 .elasticbeanstalk$operations$describe_instances_health <- elasticbeanstalk_describe_instances_health
 
-#' Describes the version of the platform
+#' Describes a platform version
 #'
-#' Describes the version of the platform.
+#' Describes a platform version. Provides full details. Compare to
+#' ListPlatformVersions, which provides summary information about a list of
+#' platform versions.
+#' 
+#' For definitions of platform version and other platform-related terms,
+#' see [AWS Elastic Beanstalk Platforms
+#' Glossary](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html).
 #'
 #' @usage
 #' elasticbeanstalk_describe_platform_version(PlatformArn)
 #'
-#' @param PlatformArn The ARN of the version of the platform.
+#' @param PlatformArn The ARN of the platform version.
 #'
 #' @section Request syntax:
 #' ```
@@ -1832,6 +1905,49 @@ elasticbeanstalk_describe_platform_version <- function(PlatformArn = NULL) {
   return(response)
 }
 .elasticbeanstalk$operations$describe_platform_version <- elasticbeanstalk_describe_platform_version
+
+#' Disassociate the operations role from an environment
+#'
+#' Disassociate the operations role from an environment. After this call is
+#' made, Elastic Beanstalk uses the caller\'s permissions for permissions
+#' to downstream services during subsequent calls acting on this
+#' environment. For more information, see [Operations
+#' roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html)
+#' in the *AWS Elastic Beanstalk Developer Guide*.
+#'
+#' @usage
+#' elasticbeanstalk_disassociate_environment_operations_role(
+#'   EnvironmentName)
+#'
+#' @param EnvironmentName &#91;required&#93; The name of the environment from which to disassociate the operations
+#' role.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_environment_operations_role(
+#'   EnvironmentName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticbeanstalk_disassociate_environment_operations_role
+elasticbeanstalk_disassociate_environment_operations_role <- function(EnvironmentName) {
+  op <- new_operation(
+    name = "DisassociateEnvironmentOperationsRole",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticbeanstalk$disassociate_environment_operations_role_input(EnvironmentName = EnvironmentName)
+  output <- .elasticbeanstalk$disassociate_environment_operations_role_output()
+  config <- get_config()
+  svc <- .elasticbeanstalk$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticbeanstalk$operations$disassociate_environment_operations_role <- elasticbeanstalk_disassociate_environment_operations_role
 
 #' Returns a list of the available solution stack names, with the public
 #' version first and then in reverse chronological order
@@ -1874,18 +1990,119 @@ elasticbeanstalk_list_available_solution_stacks <- function() {
 }
 .elasticbeanstalk$operations$list_available_solution_stacks <- elasticbeanstalk_list_available_solution_stacks
 
-#' Lists the available platforms
+#' Lists the platform branches available for your account in an AWS Region
 #'
-#' Lists the available platforms.
+#' Lists the platform branches available for your account in an AWS Region.
+#' Provides summary information about each platform branch.
+#' 
+#' For definitions of platform branch and other platform-related terms, see
+#' [AWS Elastic Beanstalk Platforms
+#' Glossary](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html).
+#'
+#' @usage
+#' elasticbeanstalk_list_platform_branches(Filters, MaxRecords, NextToken)
+#'
+#' @param Filters Criteria for restricting the resulting list of platform branches. The
+#' filter is evaluated as a logical conjunction (AND) of the separate
+#' `SearchFilter` terms.
+#' 
+#' The following list shows valid attribute values for each of the
+#' `SearchFilter` terms. Most operators take a single value. The `in` and
+#' `not_in` operators can take multiple values.
+#' 
+#' -   `Attribute = BranchName`:
+#' 
+#'     -   `Operator`: `=` \\| `!=` \\| `begins_with` \\| `ends_with` \\|
+#'         `contains` \\| `in` \\| `not_in`
+#' 
+#' -   `Attribute = LifecycleState`:
+#' 
+#'     -   `Operator`: `=` \\| `!=` \\| `in` \\| `not_in`
+#' 
+#'     -   `Values`: `beta` \\| `supported` \\| `deprecated` \\| `retired`
+#' 
+#' -   `Attribute = PlatformName`:
+#' 
+#'     -   `Operator`: `=` \\| `!=` \\| `begins_with` \\| `ends_with` \\|
+#'         `contains` \\| `in` \\| `not_in`
+#' 
+#' -   `Attribute = TierType`:
+#' 
+#'     -   `Operator`: `=` \\| `!=`
+#' 
+#'     -   `Values`: `WebServer/Standard` \\| `Worker/SQS/HTTP`
+#' 
+#' Array size: limited to 10 `SearchFilter` objects.
+#' 
+#' Within each `SearchFilter` item, the `Values` array is limited to 10
+#' items.
+#' @param MaxRecords The maximum number of platform branch values returned in one call.
+#' @param NextToken For a paginated request. Specify a token from a previous response page
+#' to retrieve the next response page. All other parameter values must be
+#' identical to the ones specified in the initial request.
+#' 
+#' If no `NextToken` is specified, the first page is retrieved.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_platform_branches(
+#'   Filters = list(
+#'     list(
+#'       Attribute = "string",
+#'       Operator = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   MaxRecords = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticbeanstalk_list_platform_branches
+elasticbeanstalk_list_platform_branches <- function(Filters = NULL, MaxRecords = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListPlatformBranches",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticbeanstalk$list_platform_branches_input(Filters = Filters, MaxRecords = MaxRecords, NextToken = NextToken)
+  output <- .elasticbeanstalk$list_platform_branches_output()
+  config <- get_config()
+  svc <- .elasticbeanstalk$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticbeanstalk$operations$list_platform_branches <- elasticbeanstalk_list_platform_branches
+
+#' Lists the platform versions available for your account in an AWS Region
+#'
+#' Lists the platform versions available for your account in an AWS Region.
+#' Provides summary information about each platform version. Compare to
+#' DescribePlatformVersion, which provides full details about a single
+#' platform version.
+#' 
+#' For definitions of platform version and other platform-related terms,
+#' see [AWS Elastic Beanstalk Platforms
+#' Glossary](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html).
 #'
 #' @usage
 #' elasticbeanstalk_list_platform_versions(Filters, MaxRecords, NextToken)
 #'
-#' @param Filters List only the platforms where the platform member value relates to one
-#' of the supplied values.
-#' @param MaxRecords The maximum number of platform values returned in one call.
-#' @param NextToken The starting index into the remaining list of platforms. Use the
-#' `NextToken` value from a previous `ListPlatformVersion` call.
+#' @param Filters Criteria for restricting the resulting list of platform versions. The
+#' filter is interpreted as a logical conjunction (AND) of the separate
+#' `PlatformFilter` terms.
+#' @param MaxRecords The maximum number of platform version values returned in one call.
+#' @param NextToken For a paginated request. Specify a token from a previous response page
+#' to retrieve the next response page. All other parameter values must be
+#' identical to the ones specified in the initial request.
+#' 
+#' If no `NextToken` is specified, the first page is retrieved.
 #'
 #' @section Request syntax:
 #' ```
@@ -1924,15 +2141,14 @@ elasticbeanstalk_list_platform_versions <- function(Filters = NULL, MaxRecords =
 }
 .elasticbeanstalk$operations$list_platform_versions <- elasticbeanstalk_list_platform_versions
 
-#' Returns the tags applied to an AWS Elastic Beanstalk resource
+#' Return the tags applied to an AWS Elastic Beanstalk resource
 #'
-#' Returns the tags applied to an AWS Elastic Beanstalk resource. The
+#' Return the tags applied to an AWS Elastic Beanstalk resource. The
 #' response contains a list of tag key-value pairs.
 #' 
-#' Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
-#' environments. For details about environment tagging, see [Tagging
-#' Resources in Your Elastic Beanstalk
-#' Environment](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
+#' Elastic Beanstalk supports tagging of all of its resources. For details
+#' about resource tagging, see [Tagging Application
+#' Resources](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html).
 #'
 #' @usage
 #' elasticbeanstalk_list_tags_for_resource(ResourceArn)
@@ -1940,7 +2156,7 @@ elasticbeanstalk_list_platform_versions <- function(Filters = NULL, MaxRecords =
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resouce for which a tag list is
 #' requested.
 #' 
-#' Must be the ARN of an Elastic Beanstalk environment.
+#' Must be the ARN of an Elastic Beanstalk resource.
 #'
 #' @section Request syntax:
 #' ```
@@ -2815,10 +3031,9 @@ elasticbeanstalk_update_environment <- function(ApplicationName = NULL, Environm
 #' Two lists can be passed: `TagsToAdd` for tags to add or update, and
 #' `TagsToRemove`.
 #' 
-#' Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk
-#' environments. For details about environment tagging, see [Tagging
-#' Resources in Your Elastic Beanstalk
-#' Environment](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html).
+#' Elastic Beanstalk supports tagging of all of its resources. For details
+#' about resource tagging, see [Tagging Application
+#' Resources](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html).
 #' 
 #' If you create a custom IAM user policy to control permission to this
 #' operation, specify one of the following two virtual actions (or both)
@@ -2844,13 +3059,15 @@ elasticbeanstalk_update_environment <- function(ApplicationName = NULL, Environm
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resouce to be updated.
 #' 
-#' Must be the ARN of an Elastic Beanstalk environment.
-#' @param TagsToAdd A list of tags to add or update.
+#' Must be the ARN of an Elastic Beanstalk resource.
+#' @param TagsToAdd A list of tags to add or update. If a key of an existing tag is added,
+#' the tag\'s value is updated.
 #' 
-#' If a key of an existing tag is added, the tag\'s value is updated.
-#' @param TagsToRemove A list of tag keys to remove.
+#' Specify at least one of these parameters: `TagsToAdd`, `TagsToRemove`.
+#' @param TagsToRemove A list of tag keys to remove. If a tag key doesn\'t exist, it is
+#' silently ignored.
 #' 
-#' If a tag key doesn\'t exist, it is silently ignored.
+#' Specify at least one of these parameters: `TagsToAdd`, `TagsToRemove`.
 #'
 #' @section Request syntax:
 #' ```

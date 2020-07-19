@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_delete_repository_policy}
 \alias{ecr_delete_repository_policy}
-\title{Deletes the repository policy from a specified repository}
+\title{Deletes the repository policy associated with the specified repository}
 \usage{
 ecr_delete_repository_policy(registryId, repositoryName)
 }
@@ -15,7 +15,7 @@ default registry is assumed.}
 to delete.}
 }
 \description{
-Deletes the repository policy from a specified repository.
+Deletes the repository policy associated with the specified repository.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_repository_policy(

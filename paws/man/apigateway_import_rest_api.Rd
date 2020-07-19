@@ -37,7 +37,7 @@ The AWS CLI command to set the regional endpoint on the imported API is:\preform
 
 \item{body}{[required] [Required] The POST request body containing external API definitions.
 Currently, only OpenAPI definition JSON/YAML files are supported. The
-maximum size of the API definition file is 2MB.}
+maximum size of the API definition file is 6MB.}
 }
 \description{
 A feature of the API Gateway control service for creating a new API from

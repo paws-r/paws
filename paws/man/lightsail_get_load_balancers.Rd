@@ -7,16 +7,14 @@
 lightsail_get_load_balancers(pageToken)
 }
 \arguments{
-\item{pageToken}{A token used for paginating the results from your GetLoadBalancers
-request.}
+\item{pageToken}{The token to advance to the next page of results from your request.
+
+To get a page token, perform an initial \code{GetLoadBalancers} request. If
+your results are paginated, the response will return a next page token
+that you can specify as the page token in a subsequent request.}
 }
 \description{
 Returns information about all load balancers in an account.
-}
-\details{
-If you are describing a long list of load balancers, you can paginate
-the output to make the list more manageable. You can use the pageToken
-and nextPageToken values to retrieve the next items in the list.
 }
 \section{Request syntax}{
 \preformatted{svc$get_load_balancers(

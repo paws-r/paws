@@ -10,7 +10,7 @@ cloudhsmv2(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-For more information about AWS CloudHSM, see \href{http://aws.amazon.com/cloudhsm/}{AWS CloudHSM} and the \href{http://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}.
+For more information about AWS CloudHSM, see \href{http://aws.amazon.com/cloudhsm/}{AWS CloudHSM} and the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}.
 }
 \section{Service syntax}{
 \preformatted{svc <- cloudhsmv2(

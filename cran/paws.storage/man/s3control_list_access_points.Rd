@@ -26,10 +26,10 @@ points.}
 \description{
 Returns a list of the access points currently associated with the
 specified bucket. You can retrieve up to 1000 access points per call. If
-the specified bucket has more than 1000 access points (or the number
-specified in \code{maxResults}, whichever is less), then the response will
-include a continuation token that you can use to list the additional
-access points.
+the specified bucket has more than 1,000 access points (or the number
+specified in \code{maxResults}, whichever is less), the response will include
+a continuation token that you can use to list the additional access
+points.
 }
 \section{Request syntax}{
 \preformatted{svc$list_access_points(

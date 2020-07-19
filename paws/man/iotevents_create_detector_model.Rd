@@ -18,8 +18,8 @@ iotevents_create_detector_model(detectorModelName,
 \item{key}{The input attribute key used to identify a device or system to create a
 detector (an instance of the detector model) and then to route each
 input received to the appropriate detector (instance). This parameter
-uses a JSON-path expression to specify the attribute-value pair in the
-message payload of each input that is used to identify the device
+uses a JSON-path expression in the message payload of each input to
+specify the attribute-value pair that is used to identify the device
 associated with the input.}
 
 \item{roleArn}{[required] The ARN of the role that grants permission to AWS IoT Events to perform
@@ -27,10 +27,8 @@ its operations.}
 
 \item{tags}{Metadata that can be used to manage the detector model.}
 
-\item{evaluationMethod}{When set to \code{SERIAL}, variables are updated and event conditions
-evaluated in the order that the events are defined. When set to \code{BATCH},
-variables are updated and events performed only after all event
-conditions are evaluated.}
+\item{evaluationMethod}{Information about the order in which events are evaluated and how
+actions are executed.}
 }
 \description{
 Creates a detector model.
@@ -54,14 +52,23 @@ Creates a detector model.
                     value = "string"
                   ),
                   sns = list(
-                    targetArn = "string"
+                    targetArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotTopicPublish = list(
-                    mqttTopic = "string"
+                    mqttTopic = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   setTimer = list(
                     timerName = "string",
-                    seconds = 123
+                    seconds = 123,
+                    durationExpression = "string"
                   ),
                   clearTimer = list(
                     timerName = "string"
@@ -70,18 +77,75 @@ Creates a detector model.
                     timerName = "string"
                   ),
                   lambda = list(
-                    functionArn = "string"
+                    functionArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotEvents = list(
-                    inputName = "string"
+                    inputName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   sqs = list(
                     queueUrl = "string",
-                    useBase64 = TRUE|FALSE
+                    useBase64 = TRUE|FALSE,
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   firehose = list(
                     deliveryStreamName = "string",
-                    separator = "string"
+                    separator = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDB = list(
+                    hashKeyType = "string",
+                    hashKeyField = "string",
+                    hashKeyValue = "string",
+                    rangeKeyType = "string",
+                    rangeKeyField = "string",
+                    rangeKeyValue = "string",
+                    operation = "string",
+                    payloadField = "string",
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDBv2 = list(
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  iotSiteWise = list(
+                    entryId = "string",
+                    assetId = "string",
+                    propertyId = "string",
+                    propertyAlias = "string",
+                    propertyValue = list(
+                      value = list(
+                        stringValue = "string",
+                        integerValue = "string",
+                        doubleValue = "string",
+                        booleanValue = "string"
+                      ),
+                      timestamp = list(
+                        timeInSeconds = "string",
+                        offsetInNanos = "string"
+                      ),
+                      quality = "string"
+                    )
                   )
                 )
               )
@@ -98,14 +162,23 @@ Creates a detector model.
                     value = "string"
                   ),
                   sns = list(
-                    targetArn = "string"
+                    targetArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotTopicPublish = list(
-                    mqttTopic = "string"
+                    mqttTopic = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   setTimer = list(
                     timerName = "string",
-                    seconds = 123
+                    seconds = 123,
+                    durationExpression = "string"
                   ),
                   clearTimer = list(
                     timerName = "string"
@@ -114,18 +187,75 @@ Creates a detector model.
                     timerName = "string"
                   ),
                   lambda = list(
-                    functionArn = "string"
+                    functionArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotEvents = list(
-                    inputName = "string"
+                    inputName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   sqs = list(
                     queueUrl = "string",
-                    useBase64 = TRUE|FALSE
+                    useBase64 = TRUE|FALSE,
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   firehose = list(
                     deliveryStreamName = "string",
-                    separator = "string"
+                    separator = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDB = list(
+                    hashKeyType = "string",
+                    hashKeyField = "string",
+                    hashKeyValue = "string",
+                    rangeKeyType = "string",
+                    rangeKeyField = "string",
+                    rangeKeyValue = "string",
+                    operation = "string",
+                    payloadField = "string",
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDBv2 = list(
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  iotSiteWise = list(
+                    entryId = "string",
+                    assetId = "string",
+                    propertyId = "string",
+                    propertyAlias = "string",
+                    propertyValue = list(
+                      value = list(
+                        stringValue = "string",
+                        integerValue = "string",
+                        doubleValue = "string",
+                        booleanValue = "string"
+                      ),
+                      timestamp = list(
+                        timeInSeconds = "string",
+                        offsetInNanos = "string"
+                      ),
+                      quality = "string"
+                    )
                   )
                 )
               ),
@@ -145,14 +275,23 @@ Creates a detector model.
                     value = "string"
                   ),
                   sns = list(
-                    targetArn = "string"
+                    targetArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotTopicPublish = list(
-                    mqttTopic = "string"
+                    mqttTopic = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   setTimer = list(
                     timerName = "string",
-                    seconds = 123
+                    seconds = 123,
+                    durationExpression = "string"
                   ),
                   clearTimer = list(
                     timerName = "string"
@@ -161,18 +300,75 @@ Creates a detector model.
                     timerName = "string"
                   ),
                   lambda = list(
-                    functionArn = "string"
+                    functionArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotEvents = list(
-                    inputName = "string"
+                    inputName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   sqs = list(
                     queueUrl = "string",
-                    useBase64 = TRUE|FALSE
+                    useBase64 = TRUE|FALSE,
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   firehose = list(
                     deliveryStreamName = "string",
-                    separator = "string"
+                    separator = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDB = list(
+                    hashKeyType = "string",
+                    hashKeyField = "string",
+                    hashKeyValue = "string",
+                    rangeKeyType = "string",
+                    rangeKeyField = "string",
+                    rangeKeyValue = "string",
+                    operation = "string",
+                    payloadField = "string",
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDBv2 = list(
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  iotSiteWise = list(
+                    entryId = "string",
+                    assetId = "string",
+                    propertyId = "string",
+                    propertyAlias = "string",
+                    propertyValue = list(
+                      value = list(
+                        stringValue = "string",
+                        integerValue = "string",
+                        doubleValue = "string",
+                        booleanValue = "string"
+                      ),
+                      timestamp = list(
+                        timeInSeconds = "string",
+                        offsetInNanos = "string"
+                      ),
+                      quality = "string"
+                    )
                   )
                 )
               )
@@ -191,14 +387,23 @@ Creates a detector model.
                     value = "string"
                   ),
                   sns = list(
-                    targetArn = "string"
+                    targetArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotTopicPublish = list(
-                    mqttTopic = "string"
+                    mqttTopic = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   setTimer = list(
                     timerName = "string",
-                    seconds = 123
+                    seconds = 123,
+                    durationExpression = "string"
                   ),
                   clearTimer = list(
                     timerName = "string"
@@ -207,18 +412,75 @@ Creates a detector model.
                     timerName = "string"
                   ),
                   lambda = list(
-                    functionArn = "string"
+                    functionArn = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   iotEvents = list(
-                    inputName = "string"
+                    inputName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   sqs = list(
                     queueUrl = "string",
-                    useBase64 = TRUE|FALSE
+                    useBase64 = TRUE|FALSE,
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
                   ),
                   firehose = list(
                     deliveryStreamName = "string",
-                    separator = "string"
+                    separator = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDB = list(
+                    hashKeyType = "string",
+                    hashKeyField = "string",
+                    hashKeyValue = "string",
+                    rangeKeyType = "string",
+                    rangeKeyField = "string",
+                    rangeKeyValue = "string",
+                    operation = "string",
+                    payloadField = "string",
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  dynamoDBv2 = list(
+                    tableName = "string",
+                    payload = list(
+                      contentExpression = "string",
+                      type = "STRING"|"JSON"
+                    )
+                  ),
+                  iotSiteWise = list(
+                    entryId = "string",
+                    assetId = "string",
+                    propertyId = "string",
+                    propertyAlias = "string",
+                    propertyValue = list(
+                      value = list(
+                        stringValue = "string",
+                        integerValue = "string",
+                        doubleValue = "string",
+                        booleanValue = "string"
+                      ),
+                      timestamp = list(
+                        timeInSeconds = "string",
+                        offsetInNanos = "string"
+                      ),
+                      quality = "string"
+                    )
                   )
                 )
               )

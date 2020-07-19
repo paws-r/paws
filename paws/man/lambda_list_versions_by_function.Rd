@@ -24,12 +24,13 @@ the function name, it is limited to 64 characters in length.}
 \item{Marker}{Specify the pagination token that\'s returned by a previous request to
 retrieve the next page of results.}
 
-\item{MaxItems}{Limit the number of versions that are returned.}
+\item{MaxItems}{The maximum number of versions to return.}
 }
 \description{
 Returns a list of
 \href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{versions},
-with the version-specific configuration of each.
+with the version-specific configuration of each. Lambda returns up to 50
+versions per call.
 }
 \section{Request syntax}{
 \preformatted{svc$list_versions_by_function(
@@ -42,11 +43,10 @@ with the version-specific configuration of each.
 
 \examples{
 \dontrun{
-# This operation retrieves a Lambda function versions
+# The following example returns a list of versions of a function named
+# my-function
 svc$list_versions_by_function(
-  FunctionName = "myFunction",
-  Marker = "",
-  MaxItems = 123L
+  FunctionName = "my-function"
 )
 }
 

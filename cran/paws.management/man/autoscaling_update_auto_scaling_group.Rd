@@ -40,20 +40,27 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MinSize}{The minimum size of the Auto Scaling group.}
 
-\item{MaxSize}{The maximum size of the Auto Scaling group.}
+\item{MaxSize}{The maximum size of the Auto Scaling group.
 
-\item{DesiredCapacity}{The number of EC2 instances that should be running in the Auto Scaling
-group. This number must be greater than or equal to the minimum size of
-the group and less than or equal to the maximum size of the group.}
+With a mixed instances policy that uses instance weighting, Amazon EC2
+Auto Scaling may need to go above \code{MaxSize} to meet your capacity
+requirements. In this event, Amazon EC2 Auto Scaling will never go above
+\code{MaxSize} by more than your maximum instance weight (weights that define
+how many capacity units each instance contributes to the capacity of the
+group).}
+
+\item{DesiredCapacity}{The desired capacity is the initial capacity of the Auto Scaling group
+after this operation completes and the capacity it attempts to maintain.
+
+This number must be greater than or equal to the minimum size of the
+group and less than or equal to the maximum size of the group.}
 
 \item{DefaultCooldown}{The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default value is \code{300}.
-This cooldown period is not used when a scaling-specific cooldown is
-specified.
 
-Cooldown periods are not supported for target tracking scaling policies,
-step scaling policies, or scheduled scaling. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns}
+This setting applies when using simple scaling policies, but not when
+using other scaling policies or scheduled scaling. For more information,
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns for Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{AvailabilityZones}{One or more Availability Zones for the group.}
@@ -70,8 +77,7 @@ service. The default value is \code{0}.
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html#health-check-grace-period}{Health Check Grace Period}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
-Conditional: This parameter is required if you are adding an \code{ELB}
-health check.}
+Required if you are adding an \code{ELB} health check.}
 
 \item{PlacementGroup}{The name of the placement group into which to launch your instances, if
 any. A placement group is a logical grouping of instances within a
@@ -105,9 +111,16 @@ information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/aut
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MaxInstanceLifetime}{The maximum amount of time, in seconds, that an instance can be in
-service.
+service. The default is null.
 
-Valid Range: Minimum value of 604800.}
+This parameter is optional, but if you specify a value for it, you must
+specify a value of at least 604,800 seconds (7 days). To clear a
+previously set value, specify a new value of 0.
+
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html}{Replacing Auto Scaling Instances Based on Maximum Instance Lifetime}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
+
+Valid Range: Minimum value of 0.}
 }
 \description{
 Updates the configuration for the specified Auto Scaling group.
@@ -135,7 +148,7 @@ of your application.
 Note the following about changing \code{DesiredCapacity}, \code{MaxSize}, or
 \code{MinSize}:
 \itemize{
-\item If a scale-in event occurs as a result of a new \code{DesiredCapacity}
+\item If a scale-in activity occurs as a result of a new \code{DesiredCapacity}
 value that is lower than the current size of the group, the Auto
 Scaling group uses its termination policy to determine which
 instances to terminate.
@@ -149,10 +162,10 @@ current size of the group, this sets the group\'s \code{DesiredCapacity}
 to the new \code{MaxSize} value.
 }
 
-To see which parameters have been set, use DescribeAutoScalingGroups.
-You can also view the scaling policies for an Auto Scaling group using
-DescribePolicies. If the group has scaling policies, you can update them
-using PutScalingPolicy.
+To see which parameters have been set, call the
+DescribeAutoScalingGroups API. To view the scaling policies for an Auto
+Scaling group, call the DescribePolicies API. If the group has scaling
+policies, you can update them by calling the PutScalingPolicy API.
 }
 \section{Request syntax}{
 \preformatted{svc$update_auto_scaling_group(

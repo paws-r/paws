@@ -6,8 +6,8 @@
 \usage{
 ec2_create_client_vpn_endpoint(ClientCidrBlock, ServerCertificateArn,
   AuthenticationOptions, ConnectionLogOptions, DnsServers,
-  TransportProtocol, Description, SplitTunnel, DryRun, ClientToken,
-  TagSpecifications)
+  TransportProtocol, VpnPort, Description, SplitTunnel, DryRun,
+  ClientToken, TagSpecifications, SecurityGroupIds, VpcId)
 }
 \arguments{
 \item{ClientCidrBlock}{[required] The IPv4 address range, in CIDR notation, from which to assign client IP
@@ -42,6 +42,13 @@ server.}
 
 Default value: \code{udp}}
 
+\item{VpnPort}{The port number to assign to the Client VPN endpoint for TCP and UDP
+traffic.
+
+Valid Values: \code{443} \\| \code{1194}
+
+Default Value: \code{443}}
+
 \item{Description}{A brief description of the Client VPN endpoint.}
 
 \item{SplitTunnel}{Indicates whether split-tunnel is enabled on the AWS Client VPN
@@ -61,6 +68,14 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
 
 \item{TagSpecifications}{The tags to apply to the Client VPN endpoint during creation.}
+
+\item{SecurityGroupIds}{The IDs of one or more security groups to apply to the target network.
+You must also specify the ID of the VPC that contains the security
+groups.}
+
+\item{VpcId}{The ID of the VPC to associate with the Client VPN endpoint. If no
+security group IDs are specified in the request, the default security
+group for the VPC is applied.}
 }
 \description{
 Creates a Client VPN endpoint. A Client VPN endpoint is the resource you
@@ -73,12 +88,15 @@ destination endpoint at which all client VPN sessions are terminated.
   ServerCertificateArn = "string",
   AuthenticationOptions = list(
     list(
-      Type = "certificate-authentication"|"directory-service-authentication",
+      Type = "certificate-authentication"|"directory-service-authentication"|"federated-authentication",
       ActiveDirectory = list(
         DirectoryId = "string"
       ),
       MutualAuthentication = list(
         ClientRootCertificateChainArn = "string"
+      ),
+      FederatedAuthentication = list(
+        SAMLProviderArn = "string"
       )
     )
   ),
@@ -91,13 +109,14 @@ destination endpoint at which all client VPN sessions are terminated.
     "string"
   ),
   TransportProtocol = "tcp"|"udp",
+  VpnPort = 123,
   Description = "string",
   SplitTunnel = TRUE|FALSE,
   DryRun = TRUE|FALSE,
   ClientToken = "string",
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"fleet"|"fpga-image"|"host-reservation"|"image"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
       Tags = list(
         list(
           Key = "string",
@@ -105,7 +124,11 @@ destination endpoint at which all client VPN sessions are terminated.
         )
       )
     )
-  )
+  ),
+  SecurityGroupIds = list(
+    "string"
+  ),
+  VpcId = "string"
 )
 }
 }

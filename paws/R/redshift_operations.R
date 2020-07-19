@@ -214,9 +214,9 @@ redshift_batch_delete_cluster_snapshots <- function(Identifiers) {
 }
 .redshift$operations$batch_delete_cluster_snapshots <- redshift_batch_delete_cluster_snapshots
 
-#' Modifies the settings for a list of snapshots
+#' Modifies the settings for a set of cluster snapshots
 #'
-#' Modifies the settings for a list of snapshots.
+#' Modifies the settings for a set of cluster snapshots.
 #'
 #' @usage
 #' redshift_batch_modify_cluster_snapshots(SnapshotIdentifierList,
@@ -266,9 +266,9 @@ redshift_batch_modify_cluster_snapshots <- function(SnapshotIdentifierList, Manu
 }
 .redshift$operations$batch_modify_cluster_snapshots <- redshift_batch_modify_cluster_snapshots
 
-#' Cancels a resize operation
+#' Cancels a resize operation for a cluster
 #'
-#' Cancels a resize operation.
+#' Cancels a resize operation for a cluster.
 #'
 #' @usage
 #' redshift_cancel_resize(ClusterIdentifier)
@@ -391,9 +391,9 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 }
 .redshift$operations$copy_cluster_snapshot <- redshift_copy_cluster_snapshot
 
-#' Creates a new cluster
+#' Creates a new cluster with the specified parameters
 #'
-#' Creates a new cluster.
+#' Creates a new cluster with the specified parameters.
 #' 
 #' To create a cluster in Virtual Private Cloud (VPC), you must provide a
 #' cluster subnet group name. The cluster subnet group identifies the
@@ -466,7 +466,8 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' Valid Values: `ds2.xlarge` \\| `ds2.8xlarge` \\| `dc1.large` \\|
-#' `dc1.8xlarge` \\| `dc2.large` \\| `dc2.8xlarge` \\| `ra3.16xlarge`
+#' `dc1.8xlarge` \\| `dc2.large` \\| `dc2.8xlarge` \\| `ra3.4xlarge` \\|
+#' `ra3.16xlarge`
 #' @param MasterUsername &#91;required&#93; The user name associated with the master user account for the cluster
 #' that is being created.
 #' 
@@ -515,7 +516,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' Default: A random, system-chosen Availability Zone in the region that is
 #' specified by the endpoint.
 #' 
-#' Example: `us-east-1d`
+#' Example: `us-east-2d`
 #' 
 #' Constraint: The specified Availability Zone must be in the same region
 #' as the current endpoint.
@@ -1047,7 +1048,7 @@ redshift_create_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #' specify a source type in order to specify source IDs.
 #' 
 #' Valid values: cluster, cluster-parameter-group, cluster-security-group,
-#' and cluster-snapshot.
+#' cluster-snapshot, and scheduled-action.
 #' @param SourceIds A list of one or more identifiers of Amazon Redshift source objects. All
 #' of the objects must be of the same type as was specified in the source
 #' type parameter. The event subscription will return only events generated
@@ -1282,6 +1283,12 @@ redshift_create_hsm_configuration <- function(HsmConfigurationIdentifier, Descri
 #'       NodeType = "string",
 #'       NumberOfNodes = 123,
 #'       Classic = TRUE|FALSE
+#'     ),
+#'     PauseCluster = list(
+#'       ClusterIdentifier = "string"
+#'     ),
+#'     ResumeCluster = list(
+#'       ClusterIdentifier = "string"
 #'     )
 #'   ),
 #'   Schedule = "string",
@@ -1387,9 +1394,11 @@ redshift_create_snapshot_copy_grant <- function(SnapshotCopyGrantName, KmsKeyId 
 }
 .redshift$operations$create_snapshot_copy_grant <- redshift_create_snapshot_copy_grant
 
-#' Creates a new snapshot schedule
+#' Create a snapshot schedule that can be associated to a cluster and which
+#' overrides the default system backup schedule
 #'
-#' Creates a new snapshot schedule.
+#' Create a snapshot schedule that can be associated to a cluster and which
+#' overrides the default system backup schedule.
 #'
 #' @usage
 #' redshift_create_snapshot_schedule(ScheduleDefinitions,
@@ -1444,9 +1453,9 @@ redshift_create_snapshot_schedule <- function(ScheduleDefinitions = NULL, Schedu
 }
 .redshift$operations$create_snapshot_schedule <- redshift_create_snapshot_schedule
 
-#' Adds one or more tags to a specified resource
+#' Adds tags to a cluster
 #'
-#' Adds one or more tags to a specified resource.
+#' Adds tags to a cluster.
 #' 
 #' A resource can have up to 50 tags. If you try to create more than 50
 #' tags for a resource, you will receive an error and the attempt will
@@ -1459,7 +1468,7 @@ redshift_create_snapshot_schedule <- function(ScheduleDefinitions = NULL, Schedu
 #' redshift_create_tags(ResourceName, Tags)
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Resource Name (ARN) to which you want to add the tag or tags.
-#' For example, `arn:aws:redshift:us-east-1:123456789:cluster:t1`.
+#' For example, `arn:aws:redshift:us-east-2:123456789:cluster:t1`.
 #' @param Tags &#91;required&#93; One or more name/value pairs to add as tags to the specified resource.
 #' Each tag name is passed in with the parameter `Key` and the
 #' corresponding value is passed in with the parameter `Value`. The `Key`
@@ -1500,13 +1509,80 @@ redshift_create_tags <- function(ResourceName, Tags) {
 }
 .redshift$operations$create_tags <- redshift_create_tags
 
-#' Deletes a previously provisioned cluster
+#' Creates a usage limit for a specified Amazon Redshift feature on a
+#' cluster
 #'
-#' Deletes a previously provisioned cluster. A successful response from the
-#' web service indicates that the request was received correctly. Use
-#' DescribeClusters to monitor the status of the deletion. The delete
-#' operation cannot be canceled or reverted once submitted. For more
-#' information about managing clusters, go to [Amazon Redshift
+#' Creates a usage limit for a specified Amazon Redshift feature on a
+#' cluster. The usage limit is identified by the returned usage limit
+#' identifier.
+#'
+#' @usage
+#' redshift_create_usage_limit(ClusterIdentifier, FeatureType, LimitType,
+#'   Amount, Period, BreachAction, Tags)
+#'
+#' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster that you want to limit usage.
+#' @param FeatureType &#91;required&#93; The Amazon Redshift feature that you want to limit.
+#' @param LimitType &#91;required&#93; The type of limit. Depending on the feature type, this can be based on a
+#' time duration or data size. If `FeatureType` is `spectrum`, then
+#' `LimitType` must be `data-scanned`. If `FeatureType` is
+#' `concurrency-scaling`, then `LimitType` must be `time`.
+#' @param Amount &#91;required&#93; The limit amount. If time-based, this amount is in minutes. If
+#' data-based, this amount is in terabytes (TB). The value must be a
+#' positive number.
+#' @param Period The time period that the amount applies to. A `weekly` period begins on
+#' Sunday. The default is `monthly`.
+#' @param BreachAction The action that Amazon Redshift takes when the limit is reached. The
+#' default is log. For more information about this parameter, see
+#' UsageLimit.
+#' @param Tags A list of tag instances.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_usage_limit(
+#'   ClusterIdentifier = "string",
+#'   FeatureType = "spectrum"|"concurrency-scaling",
+#'   LimitType = "time"|"data-scanned",
+#'   Amount = 123,
+#'   Period = "daily"|"weekly"|"monthly",
+#'   BreachAction = "log"|"emit-metric"|"disable",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_create_usage_limit
+redshift_create_usage_limit <- function(ClusterIdentifier, FeatureType, LimitType, Amount, Period = NULL, BreachAction = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateUsageLimit",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$create_usage_limit_input(ClusterIdentifier = ClusterIdentifier, FeatureType = FeatureType, LimitType = LimitType, Amount = Amount, Period = Period, BreachAction = BreachAction, Tags = Tags)
+  output <- .redshift$create_usage_limit_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$create_usage_limit <- redshift_create_usage_limit
+
+#' Deletes a previously provisioned cluster without its final snapshot
+#' being created
+#'
+#' Deletes a previously provisioned cluster without its final snapshot
+#' being created. A successful response from the web service indicates that
+#' the request was received correctly. Use DescribeClusters to monitor the
+#' status of the deletion. The delete operation cannot be canceled or
+#' reverted once submitted. For more information about managing clusters,
+#' go to [Amazon Redshift
 #' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
@@ -1991,16 +2067,16 @@ redshift_delete_snapshot_schedule <- function(ScheduleIdentifier) {
 }
 .redshift$operations$delete_snapshot_schedule <- redshift_delete_snapshot_schedule
 
-#' Deletes a tag or tags from a resource
+#' Deletes tags from a resource
 #'
-#' Deletes a tag or tags from a resource. You must provide the ARN of the
-#' resource from which you want to delete the tag or tags.
+#' Deletes tags from a resource. You must provide the ARN of the resource
+#' from which you want to delete the tag or tags.
 #'
 #' @usage
 #' redshift_delete_tags(ResourceName, TagKeys)
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Resource Name (ARN) from which you want to remove the tag or
-#' tags. For example, `arn:aws:redshift:us-east-1:123456789:cluster:t1`.
+#' tags. For example, `arn:aws:redshift:us-east-2:123456789:cluster:t1`.
 #' @param TagKeys &#91;required&#93; The tag key that you want to delete.
 #'
 #' @section Request syntax:
@@ -2032,6 +2108,42 @@ redshift_delete_tags <- function(ResourceName, TagKeys) {
   return(response)
 }
 .redshift$operations$delete_tags <- redshift_delete_tags
+
+#' Deletes a usage limit from a cluster
+#'
+#' Deletes a usage limit from a cluster.
+#'
+#' @usage
+#' redshift_delete_usage_limit(UsageLimitId)
+#'
+#' @param UsageLimitId &#91;required&#93; The identifier of the usage limit to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_usage_limit(
+#'   UsageLimitId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_delete_usage_limit
+redshift_delete_usage_limit <- function(UsageLimitId) {
+  op <- new_operation(
+    name = "DeleteUsageLimit",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$delete_usage_limit_input(UsageLimitId = UsageLimitId)
+  output <- .redshift$delete_usage_limit_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$delete_usage_limit <- redshift_delete_usage_limit
 
 #' Returns a list of attributes attached to an account
 #'
@@ -2926,8 +3038,8 @@ redshift_describe_default_cluster_parameters <- function(ParameterGroupFamily, M
 #' @param SourceType The source type, such as cluster or parameter group, to which the
 #' described event categories apply.
 #' 
-#' Valid values: cluster, cluster-snapshot, cluster-parameter-group, and
-#' cluster-security-group.
+#' Valid values: cluster, cluster-snapshot, cluster-parameter-group,
+#' cluster-security-group, and scheduled-action.
 #'
 #' @section Request syntax:
 #' ```
@@ -3395,6 +3507,8 @@ redshift_describe_logging_status <- function(ClusterIdentifier) {
 #' \"restore-cluster\" to get configuration combinations based on an
 #' existing snapshot. Specify \"recommend-node-config\" to get
 #' configuration recommendations based on an existing cluster or snapshot.
+#' Specify \"resize-cluster\" to get configuration combinations for elastic
+#' resize based on an existing cluster.
 #' @param ClusterIdentifier The identifier of the cluster to evaluate for possible node
 #' configurations.
 #' @param SnapshotIdentifier The identifier of the snapshot to evaluate for possible node
@@ -3423,7 +3537,7 @@ redshift_describe_logging_status <- function(ClusterIdentifier) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_node_configuration_options(
-#'   ActionType = "restore-cluster"|"recommend-node-config",
+#'   ActionType = "restore-cluster"|"recommend-node-config"|"resize-cluster",
 #'   ClusterIdentifier = "string",
 #'   SnapshotIdentifier = "string",
 #'   OwnerAccount = "string",
@@ -3741,7 +3855,7 @@ redshift_describe_resize <- function(ClusterIdentifier) {
 #' ```
 #' svc$describe_scheduled_actions(
 #'   ScheduledActionName = "string",
-#'   TargetActionType = "ResizeCluster",
+#'   TargetActionType = "ResizeCluster"|"PauseCluster"|"ResumeCluster",
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -3925,11 +4039,9 @@ redshift_describe_snapshot_schedules <- function(ClusterIdentifier = NULL, Sched
 }
 .redshift$operations$describe_snapshot_schedules <- redshift_describe_snapshot_schedules
 
-#' Returns the total amount of snapshot usage and provisioned storage in
-#' megabytes
+#' Returns account level backups storage size and provisional storage
 #'
-#' Returns the total amount of snapshot usage and provisioned storage in
-#' megabytes.
+#' Returns account level backups storage size and provisional storage.
 #'
 #' @usage
 #' redshift_describe_storage()
@@ -4049,7 +4161,7 @@ redshift_describe_table_restore_status <- function(ClusterIdentifier = NULL, Tab
 #'   TagKeys, TagValues)
 #'
 #' @param ResourceName The Amazon Resource Name (ARN) for which you want to describe the tag or
-#' tags. For example, `arn:aws:redshift:us-east-1:123456789:cluster:t1`.
+#' tags. For example, `arn:aws:redshift:us-east-2:123456789:cluster:t1`.
 #' @param ResourceType The type of resource with which you want to view tags. Valid resource
 #' types are:
 #' 
@@ -4137,6 +4249,100 @@ redshift_describe_tags <- function(ResourceName = NULL, ResourceType = NULL, Max
   return(response)
 }
 .redshift$operations$describe_tags <- redshift_describe_tags
+
+#' Shows usage limits on a cluster
+#'
+#' Shows usage limits on a cluster. Results are filtered based on the
+#' combination of input usage limit identifier, cluster identifier, and
+#' feature type parameters:
+#' 
+#' -   If usage limit identifier, cluster identifier, and feature type are
+#'     not provided, then all usage limit objects for the current account
+#'     in the current region are returned.
+#' 
+#' -   If usage limit identifier is provided, then the corresponding usage
+#'     limit object is returned.
+#' 
+#' -   If cluster identifier is provided, then all usage limit objects for
+#'     the specified cluster are returned.
+#' 
+#' -   If cluster identifier and feature type are provided, then all usage
+#'     limit objects for the combination of cluster and feature are
+#'     returned.
+#'
+#' @usage
+#' redshift_describe_usage_limits(UsageLimitId, ClusterIdentifier,
+#'   FeatureType, MaxRecords, Marker, TagKeys, TagValues)
+#'
+#' @param UsageLimitId The identifier of the usage limit to describe.
+#' @param ClusterIdentifier The identifier of the cluster for which you want to describe usage
+#' limits.
+#' @param FeatureType The feature type for which you want to describe usage limits.
+#' @param MaxRecords The maximum number of response records to return in each call. If the
+#' number of remaining response records exceeds the specified `MaxRecords`
+#' value, a value is returned in a `marker` field of the response. You can
+#' retrieve the next set of records by retrying the command with the
+#' returned marker value.
+#' 
+#' Default: `100`
+#' 
+#' Constraints: minimum 20, maximum 100.
+#' @param Marker An optional parameter that specifies the starting point to return a set
+#' of response records. When the results of a DescribeUsageLimits request
+#' exceed the value specified in `MaxRecords`, AWS returns a value in the
+#' `Marker` field of the response. You can retrieve the next set of
+#' response records by providing the returned marker value in the `Marker`
+#' parameter and retrying the request.
+#' @param TagKeys A tag key or keys for which you want to return all matching usage limit
+#' objects that are associated with the specified key or keys. For example,
+#' suppose that you have parameter groups that are tagged with keys called
+#' `owner` and `environment`. If you specify both of these tag keys in the
+#' request, Amazon Redshift returns a response with the usage limit objects
+#' have either or both of these tag keys associated with them.
+#' @param TagValues A tag value or values for which you want to return all matching usage
+#' limit objects that are associated with the specified tag value or
+#' values. For example, suppose that you have parameter groups that are
+#' tagged with values called `admin` and `test`. If you specify both of
+#' these tag values in the request, Amazon Redshift returns a response with
+#' the usage limit objects that have either or both of these tag values
+#' associated with them.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_usage_limits(
+#'   UsageLimitId = "string",
+#'   ClusterIdentifier = "string",
+#'   FeatureType = "spectrum"|"concurrency-scaling",
+#'   MaxRecords = 123,
+#'   Marker = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   ),
+#'   TagValues = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_usage_limits
+redshift_describe_usage_limits <- function(UsageLimitId = NULL, ClusterIdentifier = NULL, FeatureType = NULL, MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL) {
+  op <- new_operation(
+    name = "DescribeUsageLimits",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$describe_usage_limits_input(UsageLimitId = UsageLimitId, ClusterIdentifier = ClusterIdentifier, FeatureType = FeatureType, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
+  output <- .redshift$describe_usage_limits_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_usage_limits <- redshift_describe_usage_limits
 
 #' Stops logging information, such as queries and connection attempts, for
 #' the specified Amazon Redshift cluster
@@ -4552,20 +4758,21 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 
 #' Modifies the settings for a cluster
 #'
-#' Modifies the settings for a cluster. For example, you can add another
-#' security or parameter group, update the preferred maintenance window, or
-#' change the master user password. Resetting a cluster password or
-#' modifying the security groups associated with a cluster do not need a
-#' reboot. However, modifying a parameter group requires a reboot for
-#' parameters to take effect. For more information about managing clusters,
-#' go to [Amazon Redshift
-#' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
-#' in the *Amazon Redshift Cluster Management Guide*.
+#' Modifies the settings for a cluster.
 #' 
 #' You can also change node type and the number of nodes to scale up or
 #' down the cluster. When resizing a cluster, you must specify both the
 #' number of nodes and the node type even if one of the parameters does not
 #' change.
+#' 
+#' You can add another security or parameter group, or change the master
+#' user password. Resetting a cluster password or modifying the security
+#' groups associated with a cluster do not need a reboot. However,
+#' modifying a parameter group requires a reboot for parameters to take
+#' effect. For more information about managing clusters, go to [Amazon
+#' Redshift
+#' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
+#' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
 #' redshift_modify_cluster(ClusterIdentifier, ClusterType, NodeType,
@@ -4593,26 +4800,21 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' @param NodeType The new node type of the cluster. If you specify a new node type, you
 #' must also specify the number of nodes parameter.
 #' 
-#' When you submit your request to resize a cluster, Amazon Redshift sets
-#' access permissions for the cluster to read-only. After Amazon Redshift
-#' provisions a new cluster according to your resize requirements, there
-#' will be a temporary outage while the old cluster is deleted and your
-#' connection is switched to the new cluster. When the new connection is
-#' complete, the original access permissions for the cluster are restored.
-#' You can use DescribeResize to track the progress of the resize request.
+#' For more information about resizing clusters, go to [Resizing Clusters
+#' in Amazon
+#' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html)
+#' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' Valid Values: `ds2.xlarge` \\| `ds2.8xlarge` \\| `dc1.large` \\|
-#' `dc1.8xlarge` \\| `dc2.large` \\| `dc2.8xlarge` \\| `ra3.16xlarge`
+#' `dc1.8xlarge` \\| `dc2.large` \\| `dc2.8xlarge` \\| `ra3.4xlarge` \\|
+#' `ra3.16xlarge`
 #' @param NumberOfNodes The new number of nodes of the cluster. If you specify a new number of
 #' nodes, you must also specify the node type parameter.
 #' 
-#' When you submit your request to resize a cluster, Amazon Redshift sets
-#' access permissions for the cluster to read-only. After Amazon Redshift
-#' provisions a new cluster according to your resize requirements, there
-#' will be a temporary outage while the old cluster is deleted and your
-#' connection is switched to the new cluster. When the new connection is
-#' complete, the original access permissions for the cluster are restored.
-#' You can use DescribeResize to track the progress of the resize request.
+#' For more information about resizing clusters, go to [Resizing Clusters
+#' in Amazon
+#' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html)
+#' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' Valid Values: Integer greater than `0`.
 #' @param ClusterSecurityGroups A list of cluster security groups to be authorized on this cluster. This
@@ -4760,11 +4962,13 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' window. When the maintenance track changes, the cluster is switched to
 #' the latest cluster release available for the maintenance track. At this
 #' point, the maintenance track name is applied.
-#' @param Encrypted Indicates whether the cluster is encrypted. If the cluster is encrypted
-#' and you provide a value for the `KmsKeyId` parameter, we will encrypt
+#' @param Encrypted Indicates whether the cluster is encrypted. If the value is encrypted
+#' (true) and you provide a value for the `KmsKeyId` parameter, we encrypt
 #' the cluster with the provided `KmsKeyId`. If you don\'t provide a
-#' `KmsKeyId`, we will encrypt with the default key. In the China region we
-#' will use legacy encryption if you specify that the cluster is encrypted.
+#' `KmsKeyId`, we encrypt with the default key. In the China region we use
+#' legacy encryption if you specify that the cluster is encrypted.
+#' 
+#' If the value is not encrypted (false), then the cluster is decrypted.
 #' @param KmsKeyId The AWS Key Management Service (KMS) key ID of the encryption key that
 #' you want to use to encrypt data in the cluster.
 #'
@@ -4919,8 +5123,7 @@ redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = N
 
 #' Modifies the maintenance settings of a cluster
 #'
-#' Modifies the maintenance settings of a cluster. For example, you can
-#' defer a maintenance window. You can also update or cancel a deferment.
+#' Modifies the maintenance settings of a cluster.
 #'
 #' @usage
 #' redshift_modify_cluster_maintenance(ClusterIdentifier, DeferMaintenance,
@@ -5040,6 +5243,9 @@ redshift_modify_cluster_parameter_group <- function(ParameterGroupName, Paramete
 #' Modifies the settings for a snapshot
 #'
 #' Modifies the settings for a snapshot.
+#' 
+#' This exanmple modifies the manual retention period setting for a cluster
+#' snapshot.
 #'
 #' @usage
 #' redshift_modify_cluster_snapshot(SnapshotIdentifier,
@@ -5195,7 +5401,7 @@ redshift_modify_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #' specify a source type in order to specify source IDs.
 #' 
 #' Valid values: cluster, cluster-parameter-group, cluster-security-group,
-#' and cluster-snapshot.
+#' cluster-snapshot, and scheduled-action.
 #' @param SourceIds A list of one or more identifiers of Amazon Redshift source objects. All
 #' of the objects must be of the same type as was specified in the source
 #' type parameter. The event subscription will return only events generated
@@ -5253,9 +5459,9 @@ redshift_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = N
 }
 .redshift$operations$modify_event_subscription <- redshift_modify_event_subscription
 
-#' Modify a scheduled action
+#' Modifies a scheduled action
 #'
-#' Modify a scheduled action.
+#' Modifies a scheduled action.
 #'
 #' @usage
 #' redshift_modify_scheduled_action(ScheduledActionName, TargetAction,
@@ -5288,6 +5494,12 @@ redshift_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = N
 #'       NodeType = "string",
 #'       NumberOfNodes = 123,
 #'       Classic = TRUE|FALSE
+#'     ),
+#'     PauseCluster = list(
+#'       ClusterIdentifier = "string"
+#'     ),
+#'     ResumeCluster = list(
+#'       ClusterIdentifier = "string"
 #'     )
 #'   ),
 #'   Schedule = "string",
@@ -5442,6 +5654,85 @@ redshift_modify_snapshot_schedule <- function(ScheduleIdentifier, ScheduleDefini
   return(response)
 }
 .redshift$operations$modify_snapshot_schedule <- redshift_modify_snapshot_schedule
+
+#' Modifies a usage limit in a cluster
+#'
+#' Modifies a usage limit in a cluster. You can\'t modify the feature type
+#' or period of a usage limit.
+#'
+#' @usage
+#' redshift_modify_usage_limit(UsageLimitId, Amount, BreachAction)
+#'
+#' @param UsageLimitId &#91;required&#93; The identifier of the usage limit to modify.
+#' @param Amount The new limit amount. For more information about this parameter, see
+#' UsageLimit.
+#' @param BreachAction The new action that Amazon Redshift takes when the limit is reached. For
+#' more information about this parameter, see UsageLimit.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_usage_limit(
+#'   UsageLimitId = "string",
+#'   Amount = 123,
+#'   BreachAction = "log"|"emit-metric"|"disable"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_modify_usage_limit
+redshift_modify_usage_limit <- function(UsageLimitId, Amount = NULL, BreachAction = NULL) {
+  op <- new_operation(
+    name = "ModifyUsageLimit",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$modify_usage_limit_input(UsageLimitId = UsageLimitId, Amount = Amount, BreachAction = BreachAction)
+  output <- .redshift$modify_usage_limit_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$modify_usage_limit <- redshift_modify_usage_limit
+
+#' Pauses a cluster
+#'
+#' Pauses a cluster.
+#'
+#' @usage
+#' redshift_pause_cluster(ClusterIdentifier)
+#'
+#' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster to be paused.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$pause_cluster(
+#'   ClusterIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_pause_cluster
+redshift_pause_cluster <- function(ClusterIdentifier) {
+  op <- new_operation(
+    name = "PauseCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$pause_cluster_input(ClusterIdentifier = ClusterIdentifier)
+  output <- .redshift$pause_cluster_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$pause_cluster <- redshift_pause_cluster
 
 #' Allows you to purchase reserved nodes
 #'
@@ -5624,6 +5915,8 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #' 
 #'     -   ds2.8xlarge
 #' 
+#'     -   ra3.4xlarge
+#' 
 #'     -   ra3.16xlarge
 #' 
 #' -   The type of nodes that you add must match the node type for the
@@ -5637,7 +5930,7 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #' @param ClusterType The new cluster type for the specified cluster.
 #' @param NodeType The new node type for the nodes you are adding. If not specified, the
 #' cluster\'s current node type is used.
-#' @param NumberOfNodes &#91;required&#93; The new number of nodes for the cluster.
+#' @param NumberOfNodes The new number of nodes for the cluster.
 #' @param Classic A boolean value indicating whether the resize operation is using the
 #' classic resize process. If you don\'t provide this parameter or set the
 #' value to `false`, the resize type is elastic.
@@ -5656,7 +5949,7 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #' @keywords internal
 #'
 #' @rdname redshift_resize_cluster
-redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeType = NULL, NumberOfNodes, Classic = NULL) {
+redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeType = NULL, NumberOfNodes = NULL, Classic = NULL) {
   op <- new_operation(
     name = "ResizeCluster",
     http_method = "POST",
@@ -5735,7 +6028,7 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' 
 #' Default: A random, system-chosen Availability Zone.
 #' 
-#' Example: `us-east-1a`
+#' Example: `us-east-2a`
 #' @param AllowVersionUpgrade If `true`, major version upgrades can be applied during the maintenance
 #' window to the Amazon Redshift engine that is running on the cluster.
 #' 
@@ -5820,7 +6113,7 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' that same instance type and size. In other words, you can only restore a
 #' dc1.large instance type into another dc1.large instance type or
 #' dc2.large instance type. You can\'t restore dc1.8xlarge to dc2.8xlarge.
-#' First restore to a dc1.8xlareg cluster, then resize to a dc2.8large
+#' First restore to a dc1.8xlarge cluster, then resize to a dc2.8large
 #' cluster. For more information about node types, see [About Clusters and
 #' Nodes](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes)
 #' in the *Amazon Redshift Cluster Management Guide*.
@@ -5976,6 +6269,42 @@ redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, Snap
   return(response)
 }
 .redshift$operations$restore_table_from_cluster_snapshot <- redshift_restore_table_from_cluster_snapshot
+
+#' Resumes a paused cluster
+#'
+#' Resumes a paused cluster.
+#'
+#' @usage
+#' redshift_resume_cluster(ClusterIdentifier)
+#'
+#' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster to be resumed.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$resume_cluster(
+#'   ClusterIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_resume_cluster
+redshift_resume_cluster <- function(ClusterIdentifier) {
+  op <- new_operation(
+    name = "ResumeCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$resume_cluster_input(ClusterIdentifier = ClusterIdentifier)
+  output <- .redshift$resume_cluster_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$resume_cluster <- redshift_resume_cluster
 
 #' Revokes an ingress rule in an Amazon Redshift security group for a
 #' previously authorized IP range or Amazon EC2 security group

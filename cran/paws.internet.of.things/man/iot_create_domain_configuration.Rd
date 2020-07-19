@@ -6,7 +6,7 @@
 \usage{
 iot_create_domain_configuration(domainConfigurationName, domainName,
   serverCertificateArns, validationCertificateArn, authorizerConfig,
-  serviceType)
+  serviceType, tags)
 }
 \arguments{
 \item{domainConfigurationName}{[required] The name of the domain configuration. This value must be unique to a
@@ -24,7 +24,19 @@ authority. This value is not required for AWS-managed domains.}
 
 \item{authorizerConfig}{An object that specifies the authorization service for a domain.}
 
-\item{serviceType}{The type of service delivered by the endpoint.}
+\item{serviceType}{The type of service delivered by the endpoint.
+
+AWS IoT Core currently supports only the \code{DATA} service type.}
+
+\item{tags}{Metadata which can be used to manage the domain configuration.
+
+For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+
+For the CLI command-line parameter use format: &&tags
+\"key1=value1&key2=value2\\...\"
+
+For the cli-input-json file use format: \"tags\":
+\"key1=value1&key2=value2\\...\"}
 }
 \description{
 Creates a domain configuration.
@@ -45,7 +57,13 @@ change.
     defaultAuthorizerName = "string",
     allowAuthorizerOverride = TRUE|FALSE
   ),
-  serviceType = "DATA"|"CREDENTIAL_PROVIDER"|"JOBS"
+  serviceType = "DATA"|"CREDENTIAL_PROVIDER"|"JOBS",
+  tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

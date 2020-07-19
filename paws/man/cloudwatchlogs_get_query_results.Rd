@@ -15,10 +15,12 @@ Returns the results from the specified query.
 \details{
 Only the fields requested in the query are returned, along with a \verb{@ptr}
 field which is the identifier for the log record. You can use the value
-of \verb{@ptr} in a operation to get the full log record.
+of \verb{@ptr} in a
+\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogRecord.html}{GetLogRecord}
+operation to get the full log record.
 
 \code{GetQueryResults} does not start a query execution. To run a query, use
-.
+\href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartQuery.html}{StartQuery}.
 
 If the value of the \code{Status} field in the output is \code{Running}, this
 operation returns only partial results. If you see a value of

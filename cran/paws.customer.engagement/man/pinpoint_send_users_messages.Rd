@@ -176,6 +176,7 @@ Creates and sends a message to a list of users.
       SMSMessage = list(
         Body = "string",
         Keyword = "string",
+        MediaUrl = "string",
         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
         OriginationNumber = "string",
         SenderId = "string",

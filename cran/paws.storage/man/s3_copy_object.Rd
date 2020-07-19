@@ -128,50 +128,15 @@ Creates a copy of an object that is already stored in Amazon S3.
 \details{
 You can store individual objects of up to 5 TB in Amazon S3. You create
 a copy of your object up to 5 GB in size in a single atomic operation
-using this API. However, for copying an object greater than 5 GB, you
-must use the multipart upload Upload Part - Copy API. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjctsUsingRESTMPUapi.html}{Copy Object Using the REST Multipart Upload API}.
-
-When copying an object, you can preserve all metadata (default) or
-specify new metadata. However, the ACL is not preserved and is set to
-private for the user making the request. To override the default ACL
-setting, specify a new ACL when generating a copy request. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html}{Using ACLs}.
-
-Amazon S3 transfer acceleration does not support cross-region copies. If
-you request a cross-region copy using a transfer acceleration endpoint,
-you get a 400 \verb{Bad Request} error. For more information about transfer
-acceleration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html}{Transfer Acceleration}.
+using this API. However, to copy an object greater than 5 GB, you must
+use the multipart upload Upload Part - Copy API. For more information,
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjctsUsingRESTMPUapi.html}{Copy Object Using the REST Multipart Upload API}.
 
 All copy requests must be authenticated. Additionally, you must have
 \emph{read} access to the source object and \emph{write} access to the destination
 bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html}{REST Authentication}.
 Both the Region that you want to copy the object from and the Region
 that you want to copy the object to must be enabled for your account.
-
-To only copy an object under certain conditions, such as whether the
-\code{Etag} matches or whether the object was modified before or after a
-specified date, use the request parameters \verb{x-amz-copy-source-if-match},
-\verb{x-amz-copy-source-if-none-match},
-\verb{x-amz-copy-source-if-unmodified-since}, or
-\verb{ x-amz-copy-source-if-modified-since}.
-
-All headers with the \verb{x-amz-} prefix, including \code{x-amz-copy-source},
-must be signed.
-
-You can use this operation to change the storage class of an object that
-is already stored in Amazon S3 using the \code{StorageClass} parameter. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html}{Storage Classes}.
-
-The source object that you are copying can be encrypted or unencrypted.
-If the source object is encrypted, it can be encrypted by server-side
-encryption using AWS managed encryption keys or by using a
-customer-provided encryption key. When copying an object, you can
-request that Amazon S3 encrypt the target object by using either the AWS
-managed encryption keys or by using your own encryption key. You can do
-this regardless of the form of server-side encryption that was used to
-encrypt the source, or even if the source object was not encrypted. For
-more information about server-side encryption, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html}{Using Server-Side Encryption}.
 
 A copy request might return an error when Amazon S3 receives the copy
 request or while Amazon S3 is copying the files. If the error occurs
@@ -189,37 +154,103 @@ If the request is an HTTP 1.1 request, the response is chunk encoded. If
 it were not, it would not contain the content-length, and you would need
 to read the entire body.
 
-Consider the following when using request headers:
+The copy request charge is based on the storage class and Region that
+you specify for the destination object. For pricing information, see
+\href{https://aws.amazon.com/s3/pricing/}{Amazon S3 pricing}.
+
+Amazon S3 transfer acceleration does not support cross-Region copies. If
+you request a cross-Region copy using a transfer acceleration endpoint,
+you get a 400 \verb{Bad Request} error. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html}{Transfer Acceleration}.
+
+\strong{Metadata}
+
+When copying an object, you can preserve all metadata (default) or
+specify new metadata. However, the ACL is not preserved and is set to
+private for the user making the request. To override the default ACL
+setting, specify a new ACL when generating a copy request. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html}{Using ACLs}.
+
+To specify whether you want the object metadata copied from the source
+object or replaced with metadata provided in the request, you can
+optionally add the \code{x-amz-metadata-directive} header. When you grant
+permissions, you can use the \code{s3:x-amz-metadata-directive} condition key
+to enforce certain metadata behavior when objects are uploaded. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/amazon-s3-policy-keys.html}{Specifying Conditions in a Policy}
+in the \emph{Amazon S3 Developer Guide}. For a complete list of Amazon
+S3-specific condition keys, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/list_amazons3.html}{Actions, Resources, and Condition Keys for Amazon S3}.
+
+\strong{\verb{x-amz-copy-source-if} Headers}
+
+To only copy an object under certain conditions, such as whether the
+\code{Etag} matches or whether the object was modified before or after a
+specified date, use the following request parameters:
 \itemize{
-\item Consideration 1 -- If both the \verb{x-amz-copy-source-if-match} and
+\item \verb{x-amz-copy-source-if-match}
+\item \verb{x-amz-copy-source-if-none-match}
+\item \verb{x-amz-copy-source-if-unmodified-since}
+\item \verb{x-amz-copy-source-if-modified-since}
+}
+
+If both the \verb{x-amz-copy-source-if-match} and
 \verb{x-amz-copy-source-if-unmodified-since} headers are present in the
-request and evaluate as follows, Amazon S3 returns 200 OK and copies
+request and evaluate as follows, Amazon S3 returns \verb{200 OK} and copies
 the data:
 \itemize{
 \item \verb{x-amz-copy-source-if-match} condition evaluates to true
-\item \verb{x-amz-copy-source-if-unmodified-since} condition evaluates to
-false
+\item \verb{x-amz-copy-source-if-unmodified-since} condition evaluates to false
 }
-\item Consideration 2 -- If both of the \verb{x-amz-copy-source-if-none-match}
-and \verb{x-amz-copy-source-if-modified-since} headers are present in the
-request and evaluate as follows, Amazon S3 returns the
-\verb{412 Precondition Failed} response code:
+
+If both the \verb{x-amz-copy-source-if-none-match} and
+\verb{x-amz-copy-source-if-modified-since} headers are present in the request
+and evaluate as follows, Amazon S3 returns the \verb{412 Precondition Failed}
+response code:
 \itemize{
 \item \verb{x-amz-copy-source-if-none-match} condition evaluates to false
-\item \verb{x-amz-copy-source-if-modified-since} condition evaluates to
-true
-}
+\item \verb{x-amz-copy-source-if-modified-since} condition evaluates to true
 }
 
-The copy request charge is based on the storage class and Region you
-specify for the destination object. For pricing information, see \href{https://aws.amazon.com/s3/pricing/}{Amazon S3 Pricing}.
+All headers with the \verb{x-amz-} prefix, including \code{x-amz-copy-source},
+must be signed.
 
-Following are other considerations when using \code{CopyObject}:
-\subsection{Versioning}{
+\strong{Encryption}
+
+The source object that you are copying can be encrypted or unencrypted.
+The source object can be encrypted with server-side encryption using AWS
+managed encryption keys (SSE-S3 or SSE-KMS) or by using a
+customer-provided encryption key. With server-side encryption, Amazon S3
+encrypts your data as it writes it to disks in its data centers and
+decrypts the data when you access it.
+
+You can optionally use the appropriate encryption-related headers to
+request server-side encryption for the target object. You have the
+option to provide your own encryption key or use SSE-S3 or SSE-KMS,
+regardless of the form of server-side encryption that was used to
+encrypt the source object. You can even request encryption if the source
+object was not encrypted. For more information about server-side
+encryption, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html}{Using Server-Side Encryption}.
+
+\strong{Access Control List (ACL)-Specific Request Headers}
+
+When copying an object, you can optionally use headers to grant
+ACL-based permissions. By default, all objects are private. Only the
+owner has full access control. When adding a new object, you can grant
+permissions to individual AWS accounts or to predefined groups defined
+by Amazon S3. These permissions are then added to the ACL on the object.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-using-rest-api.html}{Managing ACLs Using the REST API}.
+
+\strong{Storage Class Options}
+
+You can use the \code{CopyObject} operation to change the storage class of an
+object that is already stored in Amazon S3 using the \code{StorageClass}
+parameter. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html}{Storage Classes}
+in the \emph{Amazon S3 Service Developer Guide}.
+
+\strong{Versioning}
 
 By default, \code{x-amz-copy-source} identifies the current version of an
-object to copy. (If the current version is a delete marker, Amazon S3
-behaves as if the object was deleted.) To copy a different version, use
+object to copy. If the current version is a delete marker, Amazon S3
+behaves as if the object was deleted. To copy a different version, use
 the \code{versionId} subresource.
 
 If you enable versioning on the target bucket, Amazon S3 generates a
@@ -234,123 +265,6 @@ version ID that Amazon S3 generates is always null.
 If the source object\'s storage class is GLACIER, you must restore a
 copy of this object before you can use it as a source object for the
 copy operation. For more information, see .
-}
-
-\subsection{Access Permissions}{
-
-When copying an object, you can optionally specify the accounts or
-groups that should be granted specific permissions on the new object.
-There are two ways to grant the permissions using the request headers:
-\itemize{
-\item Specify a canned ACL with the \code{x-amz-acl} request header. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.
-\item Specify access permissions explicitly with the \code{x-amz-grant-read},
-\code{x-amz-grant-read-acp}, \code{x-amz-grant-write-acp}, and
-\code{x-amz-grant-full-control} headers. These parameters map to the set
-of permissions that Amazon S3 supports in an ACL. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}.
-}
-
-You can use either a canned ACL or specify access permissions
-explicitly. You cannot do both.
-}
-
-\subsection{Server-Side- Encryption-Specific Request Headers}{
-
-To encrypt the target object, you must provide the appropriate
-encryption-related request headers. The one you use depends on whether
-you want to use AWS managed encryption keys or provide your own
-encryption key.
-\itemize{
-\item To encrypt the target object using server-side encryption with an
-AWS managed encryption key, provide the following request headers,
-as appropriate.
-\itemize{
-\item \verb{x-amz-server-sideâ€‹-encryption}
-\item \code{x-amz-server-side-encryption-aws-kms-key-id}
-\item \code{x-amz-server-side-encryption-context}
-}
-
-If you specify \code{x-amz-server-side-encryption:aws:kms}, but don\'t
-provide \code{x-amz-server-side-encryption-aws-kms-key-id}, Amazon S3
-uses the AWS managed CMK in AWS KMS to protect the data. If you want
-to use a customer managed AWS KMS CMK, you must provide the
-\code{x-amz-server-side-encryption-aws-kms-key-id} of the symmetric
-customer managed CMK. Amazon S3 only supports symmetric CMKs and not
-asymmetric CMKs. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-All GET and PUT requests for an object protected by AWS KMS fail if
-you don\'t make them with SSL or by using SigV4.
-
-For more information about server-side encryption with CMKs stored
-in AWS KMS (SSE-KMS), see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html}{Protecting Data Using Server-Side Encryption with CMKs stored in KMS}.
-\item To encrypt the target object using server-side encryption with an
-encryption key that you provide, use the following headers.
-\itemize{
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
-}
-\item If the source object is encrypted using server-side encryption with
-customer-provided encryption keys, you must use the following
-headers.
-\itemize{
-\item x-amz-copy-sourceâ€‹-server-sideâ€‹-encryptionâ€‹-customer-algorithm
-\item x-amz-copy-sourceâ€‹-server-sideâ€‹-encryptionâ€‹-customer-key
-\item x-amz-copy-source-â€‹server-sideâ€‹-encryptionâ€‹-customer-key-MD5
-}
-
-For more information about server-side encryption with CMKs stored
-in AWS KMS (SSE-KMS), see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html}{Protecting Data Using Server-Side Encryption with CMKs stored in Amazon KMS}.
-}
-}
-
-\subsection{Access-Control-List (ACL)-Specific Request Headers}{
-
-You also can use the following access control--related headers with this
-operation. By default, all objects are private. Only the owner has full
-access control. When adding a new object, you can grant permissions to
-individual AWS accounts or to predefined groups defined by Amazon S3.
-These permissions are then added to the access control list (ACL) on the
-object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html}{Using ACLs}.
-With this operation, you can grant access permissions using one of the
-following two methods:
-\itemize{
-\item Specify a canned ACL (\code{x-amz-acl}) --- Amazon S3 supports a set of
-predefined ACLs, known as \emph{canned ACLs}. Each canned ACL has a
-predefined set of grantees and permissions. For more information,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.
-\item Specify access permissions explicitly --- To explicitly grant access
-permissions to specific AWS accounts or groups, use the following
-headers. Each header maps to specific permissions that Amazon S3
-supports in an ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}.
-In the header, you specify a list of grantees who get the specific
-permission. To grant permissions explicitly, use:
-\itemize{
-\item x-amz-grant-read
-\item x-amz-grant-write
-\item x-amz-grant-read-acp
-\item x-amz-grant-write-acp
-\item x-amz-grant-full-control
-}
-
-You specify each grantee as a type=value pair, where the type is one
-of the following:
-\itemize{
-\item \code{emailAddress} -- if the value specified is the email address of
-an AWS account
-\item \code{id} -- if the value specified is the canonical user ID of an
-AWS account
-\item \code{uri} -- if you are granting permissions to a predefined group
-}
-
-For example, the following \code{x-amz-grant-read} header grants the AWS
-accounts identified by email addresses permissions to read object
-data and its metadata:
-
-\verb{x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" }
-}
 
 The following operations are related to \code{CopyObject}:
 \itemize{
@@ -359,7 +273,6 @@ The following operations are related to \code{CopyObject}:
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjectsExamples.html}{Copying Objects}.
-}
 }
 \section{Request syntax}{
 \preformatted{svc$copy_object(

@@ -55,9 +55,9 @@ appconfig_create_application <- function(Name, Description = NULL, Tags = NULL) 
 #' Information that enables AppConfig to access the configuration source
 #'
 #' Information that enables AppConfig to access the configuration source.
-#' Valid configuration sources include Systems Manager (SSM) documents and
-#' SSM Parameter Store parameters. A configuration profile includes the
-#' following information.
+#' Valid configuration sources include Systems Manager (SSM) documents, SSM
+#' Parameter Store parameters, and Amazon S3 objects. A configuration
+#' profile includes the following information.
 #' 
 #' -   The Uri location of the configuration data.
 #' 
@@ -66,6 +66,10 @@ appconfig_create_application <- function(Name, Description = NULL, Tags = NULL) 
 #' 
 #' -   A validator for the configuration data. Available validators include
 #'     either a JSON Schema or an AWS Lambda function.
+#' 
+#' For more information, see [Create a Configuration and a Configuration
+#' Profile](http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-creating-configuration-and-profile.html)
+#' in the *AWS AppConfig User Guide*.
 #'
 #' @usage
 #' appconfig_create_configuration_profile(ApplicationId, Name, Description,
@@ -74,13 +78,16 @@ appconfig_create_application <- function(Name, Description = NULL, Tags = NULL) 
 #' @param ApplicationId &#91;required&#93; The application ID.
 #' @param Name &#91;required&#93; A name for the configuration profile.
 #' @param Description A description of the configuration profile.
-#' @param LocationUri &#91;required&#93; A URI to locate the configuration. You can specify either a Systems
-#' Manager (SSM) document or an SSM Parameter Store parameter. For an SSM
-#' document, specify either the document name in the format
-#' `ssm-document://&lt;Document name&gt;` or the Amazon Resource Name
-#' (ARN). For a parameter, specify either the parameter name in the format
-#' `ssm-parameter://&lt;Parameter name&gt;` or the ARN.
-#' @param RetrievalRoleArn &#91;required&#93; The ARN of an IAM role with permission to access the configuration at
+#' @param LocationUri &#91;required&#93; A URI to locate the configuration. You can specify a Systems Manager
+#' (SSM) document, an SSM Parameter Store parameter, or an Amazon S3
+#' object. For an SSM document, specify either the document name in the
+#' format `ssm-document://&lt;Document_name&gt;` or the Amazon Resource
+#' Name (ARN). For a parameter, specify either the parameter name in the
+#' format `ssm-parameter://&lt;Parameter_name&gt;` or the ARN. For an
+#' Amazon S3 object, specify the URI in the following format:
+#' `s3://&lt;bucket&gt;/&lt;objectKey&gt; `. Here is an example:
+#' s3://my-bucket/my-app/us-east-1/my-config.json
+#' @param RetrievalRoleArn The ARN of an IAM role with permission to access the configuration at
 #' the specified LocationUri.
 #' @param Validators A list of methods for validating the configuration.
 #' @param Tags Metadata to assign to the configuration profile. Tags help organize and
@@ -110,7 +117,7 @@ appconfig_create_application <- function(Name, Description = NULL, Tags = NULL) 
 #' @keywords internal
 #'
 #' @rdname appconfig_create_configuration_profile
-appconfig_create_configuration_profile <- function(ApplicationId, Name, Description = NULL, LocationUri, RetrievalRoleArn, Validators = NULL, Tags = NULL) {
+appconfig_create_configuration_profile <- function(ApplicationId, Name, Description = NULL, LocationUri, RetrievalRoleArn = NULL, Validators = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateConfigurationProfile",
     http_method = "POST",
@@ -149,7 +156,33 @@ appconfig_create_configuration_profile <- function(ApplicationId, Name, Descript
 #' back.
 #' @param GrowthFactor &#91;required&#93; The percentage of targets to receive a deployed configuration during
 #' each interval.
-#' @param GrowthType The algorithm used to define how percentage grows over time.
+#' @param GrowthType The algorithm used to define how percentage grows over time. AWS
+#' AppConfig supports the following growth types:
+#' 
+#' **Linear**: For this type, AppConfig processes the deployment by
+#' dividing the total number of targets by the value specified for
+#' `Step percentage`. For example, a linear deployment that uses a
+#' `Step percentage` of 10 deploys the configuration to 10 percent of the
+#' hosts. After those deployments are complete, the system deploys the
+#' configuration to the next 10 percent. This continues until 100% of the
+#' targets have successfully received the configuration.
+#' 
+#' **Exponential**: For this type, AppConfig processes the deployment
+#' exponentially using the following formula: `G*(2^N)`. In this formula,
+#' `G` is the growth factor specified by the user and `N` is the number of
+#' steps until the configuration is deployed to all targets. For example,
+#' if you specify a growth factor of 2, then the system rolls out the
+#' configuration as follows:
+#' 
+#' `2*(2^0)`
+#' 
+#' `2*(2^1)`
+#' 
+#' `2*(2^2)`
+#' 
+#' Expressed numerically, the deployment rolls out as follows: 2% of the
+#' targets, 4% of the targets, 8% of the targets, and continues until the
+#' configuration has been deployed to all targets.
 #' @param ReplicateTo &#91;required&#93; Save the deployment strategy to a Systems Manager (SSM) document.
 #' @param Tags Metadata to assign to the deployment strategy. Tags help organize and
 #' categorize your AppConfig resources. Each tag consists of a key and an
@@ -163,7 +196,7 @@ appconfig_create_configuration_profile <- function(ApplicationId, Name, Descript
 #'   DeploymentDurationInMinutes = 123,
 #'   FinalBakeTimeInMinutes = 123,
 #'   GrowthFactor = 123.0,
-#'   GrowthType = "LINEAR",
+#'   GrowthType = "LINEAR"|"EXPONENTIAL",
 #'   ReplicateTo = "NONE"|"SSM_DOCUMENT",
 #'   Tags = list(
 #'     "string"
@@ -251,6 +284,59 @@ appconfig_create_environment <- function(ApplicationId, Name, Description = NULL
   return(response)
 }
 .appconfig$operations$create_environment <- appconfig_create_environment
+
+#' Create a new configuration in the AppConfig configuration store
+#'
+#' Create a new configuration in the AppConfig configuration store.
+#'
+#' @usage
+#' appconfig_create_hosted_configuration_version(ApplicationId,
+#'   ConfigurationProfileId, Description, Content, ContentType,
+#'   LatestVersionNumber)
+#'
+#' @param ApplicationId &#91;required&#93; The application ID.
+#' @param ConfigurationProfileId &#91;required&#93; The configuration profile ID.
+#' @param Description A description of the configuration.
+#' @param Content &#91;required&#93; The content of the configuration or the configuration data.
+#' @param ContentType &#91;required&#93; A standard MIME type describing the format of the configuration content.
+#' For more information, see Content-Type.
+#' @param LatestVersionNumber An optional locking token used to prevent race conditions from
+#' overwriting configuration updates when creating a new version. To ensure
+#' your data is not overwritten when creating multiple hosted configuration
+#' versions in rapid succession, specify the version of the latest hosted
+#' configuration version.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_hosted_configuration_version(
+#'   ApplicationId = "string",
+#'   ConfigurationProfileId = "string",
+#'   Description = "string",
+#'   Content = raw,
+#'   ContentType = "string",
+#'   LatestVersionNumber = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appconfig_create_hosted_configuration_version
+appconfig_create_hosted_configuration_version <- function(ApplicationId, ConfigurationProfileId, Description = NULL, Content, ContentType, LatestVersionNumber = NULL) {
+  op <- new_operation(
+    name = "CreateHostedConfigurationVersion",
+    http_method = "POST",
+    http_path = "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/hostedconfigurationversions",
+    paginator = list()
+  )
+  input <- .appconfig$create_hosted_configuration_version_input(ApplicationId = ApplicationId, ConfigurationProfileId = ConfigurationProfileId, Description = Description, Content = Content, ContentType = ContentType, LatestVersionNumber = LatestVersionNumber)
+  output <- .appconfig$create_hosted_configuration_version_output()
+  config <- get_config()
+  svc <- .appconfig$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appconfig$operations$create_hosted_configuration_version <- appconfig_create_hosted_configuration_version
 
 #' Delete an application
 #'
@@ -406,6 +492,49 @@ appconfig_delete_environment <- function(ApplicationId, EnvironmentId) {
 }
 .appconfig$operations$delete_environment <- appconfig_delete_environment
 
+#' Delete a version of a configuration from the AppConfig configuration
+#' store
+#'
+#' Delete a version of a configuration from the AppConfig configuration
+#' store.
+#'
+#' @usage
+#' appconfig_delete_hosted_configuration_version(ApplicationId,
+#'   ConfigurationProfileId, VersionNumber)
+#'
+#' @param ApplicationId &#91;required&#93; The application ID.
+#' @param ConfigurationProfileId &#91;required&#93; The configuration profile ID.
+#' @param VersionNumber &#91;required&#93; The versions number to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_hosted_configuration_version(
+#'   ApplicationId = "string",
+#'   ConfigurationProfileId = "string",
+#'   VersionNumber = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appconfig_delete_hosted_configuration_version
+appconfig_delete_hosted_configuration_version <- function(ApplicationId, ConfigurationProfileId, VersionNumber) {
+  op <- new_operation(
+    name = "DeleteHostedConfigurationVersion",
+    http_method = "DELETE",
+    http_path = "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/hostedconfigurationversions/{VersionNumber}",
+    paginator = list()
+  )
+  input <- .appconfig$delete_hosted_configuration_version_input(ApplicationId = ApplicationId, ConfigurationProfileId = ConfigurationProfileId, VersionNumber = VersionNumber)
+  output <- .appconfig$delete_hosted_configuration_version_output()
+  config <- get_config()
+  svc <- .appconfig$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appconfig$operations$delete_hosted_configuration_version <- appconfig_delete_hosted_configuration_version
+
 #' Retrieve information about an application
 #'
 #' Retrieve information about an application.
@@ -442,22 +571,54 @@ appconfig_get_application <- function(ApplicationId) {
 }
 .appconfig$operations$get_application <- appconfig_get_application
 
-#' Retrieve information about a configuration
+#' Receive information about a configuration
 #'
-#' Retrieve information about a configuration.
+#' Receive information about a configuration.
+#' 
+#' AWS AppConfig uses the value of the `ClientConfigurationVersion`
+#' parameter to identify the configuration version on your clients. If you
+#' don't send `ClientConfigurationVersion` with each call to
+#' `GetConfiguration`, your clients receive the current configuration. You
+#' are charged each time your clients receive a configuration.
+#' 
+#' To avoid excess charges, we recommend that you include the
+#' `ClientConfigurationVersion` value with every call to
+#' `GetConfiguration`. This value must be saved on your client. Subsequent
+#' calls to `GetConfiguration` must pass this value by using the
+#' `ClientConfigurationVersion` parameter.
 #'
 #' @usage
 #' appconfig_get_configuration(Application, Environment, Configuration,
 #'   ClientId, ClientConfigurationVersion)
 #'
-#' @param Application &#91;required&#93; The application to get.
-#' @param Environment &#91;required&#93; The environment to get.
-#' @param Configuration &#91;required&#93; The configuration to get.
+#' @param Application &#91;required&#93; The application to get. Specify either the application name or the
+#' application ID.
+#' @param Environment &#91;required&#93; The environment to get. Specify either the environment name or the
+#' environment ID.
+#' @param Configuration &#91;required&#93; The configuration to get. Specify either the configuration name or the
+#' configuration ID.
 #' @param ClientId &#91;required&#93; A unique ID to identify the client for the configuration. This ID
 #' enables AppConfig to deploy the configuration in intervals, as defined
 #' in the deployment strategy.
-#' @param ClientConfigurationVersion The configuration version returned in the most recent GetConfiguration
+#' @param ClientConfigurationVersion The configuration version returned in the most recent `GetConfiguration`
 #' response.
+#' 
+#' AWS AppConfig uses the value of the `ClientConfigurationVersion`
+#' parameter to identify the configuration version on your clients. If you
+#' don't send `ClientConfigurationVersion` with each call to
+#' `GetConfiguration`, your clients receive the current configuration. You
+#' are charged each time your clients receive a configuration.
+#' 
+#' To avoid excess charges, we recommend that you include the
+#' `ClientConfigurationVersion` value with every call to
+#' `GetConfiguration`. This value must be saved on your client. Subsequent
+#' calls to `GetConfiguration` must pass this value by using the
+#' `ClientConfigurationVersion` parameter.
+#' 
+#' For more information about working with configurations, see [Retrieving
+#' the
+#' Configuration](https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-retrieving-the-configuration.html)
+#' in the *AWS AppConfig User Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -652,6 +813,47 @@ appconfig_get_environment <- function(ApplicationId, EnvironmentId) {
   return(response)
 }
 .appconfig$operations$get_environment <- appconfig_get_environment
+
+#' Get information about a specific configuration version
+#'
+#' Get information about a specific configuration version.
+#'
+#' @usage
+#' appconfig_get_hosted_configuration_version(ApplicationId,
+#'   ConfigurationProfileId, VersionNumber)
+#'
+#' @param ApplicationId &#91;required&#93; The application ID.
+#' @param ConfigurationProfileId &#91;required&#93; The configuration profile ID.
+#' @param VersionNumber &#91;required&#93; The version.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_hosted_configuration_version(
+#'   ApplicationId = "string",
+#'   ConfigurationProfileId = "string",
+#'   VersionNumber = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appconfig_get_hosted_configuration_version
+appconfig_get_hosted_configuration_version <- function(ApplicationId, ConfigurationProfileId, VersionNumber) {
+  op <- new_operation(
+    name = "GetHostedConfigurationVersion",
+    http_method = "GET",
+    http_path = "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/hostedconfigurationversions/{VersionNumber}",
+    paginator = list()
+  )
+  input <- .appconfig$get_hosted_configuration_version_input(ApplicationId = ApplicationId, ConfigurationProfileId = ConfigurationProfileId, VersionNumber = VersionNumber)
+  output <- .appconfig$get_hosted_configuration_version_output()
+  config <- get_config()
+  svc <- .appconfig$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appconfig$operations$get_hosted_configuration_version <- appconfig_get_hosted_configuration_version
 
 #' List all applications in your AWS account
 #'
@@ -867,6 +1069,54 @@ appconfig_list_environments <- function(ApplicationId, MaxResults = NULL, NextTo
   return(response)
 }
 .appconfig$operations$list_environments <- appconfig_list_environments
+
+#' View a list of configurations stored in the AppConfig configuration
+#' store by version
+#'
+#' View a list of configurations stored in the AppConfig configuration
+#' store by version.
+#'
+#' @usage
+#' appconfig_list_hosted_configuration_versions(ApplicationId,
+#'   ConfigurationProfileId, MaxResults, NextToken)
+#'
+#' @param ApplicationId &#91;required&#93; The application ID.
+#' @param ConfigurationProfileId &#91;required&#93; The configuration profile ID.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#' @param NextToken A token to start the list. Use this token to get the next set of
+#' results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_hosted_configuration_versions(
+#'   ApplicationId = "string",
+#'   ConfigurationProfileId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appconfig_list_hosted_configuration_versions
+appconfig_list_hosted_configuration_versions <- function(ApplicationId, ConfigurationProfileId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListHostedConfigurationVersions",
+    http_method = "GET",
+    http_path = "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/hostedconfigurationversions",
+    paginator = list()
+  )
+  input <- .appconfig$list_hosted_configuration_versions_input(ApplicationId = ApplicationId, ConfigurationProfileId = ConfigurationProfileId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .appconfig$list_hosted_configuration_versions_output()
+  config <- get_config()
+  svc <- .appconfig$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appconfig$operations$list_hosted_configuration_versions <- appconfig_list_hosted_configuration_versions
 
 #' Retrieves the list of key-value tags assigned to the resource
 #'
@@ -1196,7 +1446,33 @@ appconfig_update_configuration_profile <- function(ApplicationId, ConfigurationP
 #' back.
 #' @param GrowthFactor The percentage of targets to receive a deployed configuration during
 #' each interval.
-#' @param GrowthType The algorithm used to define how percentage grows over time.
+#' @param GrowthType The algorithm used to define how percentage grows over time. AWS
+#' AppConfig supports the following growth types:
+#' 
+#' **Linear**: For this type, AppConfig processes the deployment by
+#' increments of the growth factor evenly distributed over the deployment
+#' time. For example, a linear deployment that uses a growth factor of 20
+#' initially makes the configuration available to 20 percent of the
+#' targets. After 1/5th of the deployment time has passed, the system
+#' updates the percentage to 40 percent. This continues until 100% of the
+#' targets are set to receive the deployed configuration.
+#' 
+#' **Exponential**: For this type, AppConfig processes the deployment
+#' exponentially using the following formula: `G*(2^N)`. In this formula,
+#' `G` is the growth factor specified by the user and `N` is the number of
+#' steps until the configuration is deployed to all targets. For example,
+#' if you specify a growth factor of 2, then the system rolls out the
+#' configuration as follows:
+#' 
+#' `2*(2^0)`
+#' 
+#' `2*(2^1)`
+#' 
+#' `2*(2^2)`
+#' 
+#' Expressed numerically, the deployment rolls out as follows: 2% of the
+#' targets, 4% of the targets, 8% of the targets, and continues until the
+#' configuration has been deployed to all targets.
 #'
 #' @section Request syntax:
 #' ```
@@ -1206,7 +1482,7 @@ appconfig_update_configuration_profile <- function(ApplicationId, ConfigurationP
 #'   DeploymentDurationInMinutes = 123,
 #'   FinalBakeTimeInMinutes = 123,
 #'   GrowthFactor = 123.0,
-#'   GrowthType = "LINEAR"
+#'   GrowthType = "LINEAR"|"EXPONENTIAL"
 #' )
 #' ```
 #'

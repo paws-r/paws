@@ -6,14 +6,15 @@
 \usage{
 iot_create_ota_update(otaUpdateId, description, targets, protocols,
   targetSelection, awsJobExecutionsRolloutConfig,
-  awsJobPresignedUrlConfig, files, roleArn, additionalParameters, tags)
+  awsJobPresignedUrlConfig, awsJobAbortConfig, awsJobTimeoutConfig, files,
+  roleArn, additionalParameters, tags)
 }
 \arguments{
 \item{otaUpdateId}{[required] The ID of the OTA update to be created.}
 
 \item{description}{The description of the OTA update.}
 
-\item{targets}{[required] The targeted devices to receive OTA updates.}
+\item{targets}{[required] The devices targeted to receive OTA updates.}
 
 \item{protocols}{The protocol used to transfer the OTA update image. Valid values are
 [HTTP], [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are
@@ -31,9 +32,18 @@ values: CONTINUOUS \\| SNAPSHOT.}
 
 \item{awsJobPresignedUrlConfig}{Configuration information for pre-signed URLs.}
 
+\item{awsJobAbortConfig}{The criteria that determine when and how a job abort takes place.}
+
+\item{awsJobTimeoutConfig}{Specifies the amount of time each device has to finish its execution of
+the job. A timer is started when the job execution status is set to
+\code{IN_PROGRESS}. If the job execution status is not set to another
+terminal state before the timer expires, it will be automatically set to
+\code{TIMED_OUT}.}
+
 \item{files}{[required] The files to be streamed by the OTA update.}
 
-\item{roleArn}{[required] The IAM role that allows access to the AWS IoT Jobs service.}
+\item{roleArn}{[required] The IAM role that grants AWS IoT access to the Amazon S3, AWS IoT jobs
+and AWS Code Signing resources to create an OTA update job.}
 
 \item{additionalParameters}{A list of additional OTA update parameters which are name-value pairs.}
 
@@ -54,10 +64,31 @@ Creates an AWS IoT OTAUpdate on a target group of things or groups.
   ),
   targetSelection = "CONTINUOUS"|"SNAPSHOT",
   awsJobExecutionsRolloutConfig = list(
-    maximumPerMinute = 123
+    maximumPerMinute = 123,
+    exponentialRate = list(
+      baseRatePerMinute = 123,
+      incrementFactor = 123.0,
+      rateIncreaseCriteria = list(
+        numberOfNotifiedThings = 123,
+        numberOfSucceededThings = 123
+      )
+    )
   ),
   awsJobPresignedUrlConfig = list(
     expiresInSec = 123
+  ),
+  awsJobAbortConfig = list(
+    abortCriteriaList = list(
+      list(
+        failureType = "FAILED"|"REJECTED"|"TIMED_OUT"|"ALL",
+        action = "CANCEL",
+        thresholdPercentage = 123.0,
+        minNumberOfExecutedThings = 123
+      )
+    )
+  ),
+  awsJobTimeoutConfig = list(
+    inProgressTimeoutInMinutes = 123
   ),
   files = list(
     list(

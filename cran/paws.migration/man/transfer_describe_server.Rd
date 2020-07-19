@@ -2,20 +2,22 @@
 % Please edit documentation in R/transfer_operations.R
 \name{transfer_describe_server}
 \alias{transfer_describe_server}
-\title{Describes the server that you specify by passing the ServerId parameter}
+\title{Describes a file transfer protocol-enabled server that you specify by
+passing the ServerId parameter}
 \usage{
 transfer_describe_server(ServerId)
 }
 \arguments{
-\item{ServerId}{[required] A system-assigned unique identifier for an SFTP server.}
+\item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
+server.}
 }
 \description{
-Describes the server that you specify by passing the \code{ServerId}
-parameter.
+Describes a file transfer protocol-enabled server that you specify by
+passing the \code{ServerId} parameter.
 }
 \details{
-The response contains a description of the server\'s properties. When
-you set \code{EndpointType} to VPC, the response will contain the
+The response contains a description of a server\'s properties. When you
+set \code{EndpointType} to VPC, the response will contain the
 \code{EndpointDetails}.
 }
 \section{Request syntax}{

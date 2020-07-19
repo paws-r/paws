@@ -9,16 +9,12 @@ elasticbeanstalk_create_application(ApplicationName, Description,
   ResourceLifecycleConfig, Tags)
 }
 \arguments{
-\item{ApplicationName}{[required] The name of the application.
+\item{ApplicationName}{[required] The name of the application. Must be unique within your account.}
 
-Constraint: This name must be unique within your account. If the
-specified name already exists, the action returns an
-\code{InvalidParameterValue} error.}
+\item{Description}{Your description of the application.}
 
-\item{Description}{Describes the application.}
-
-\item{ResourceLifecycleConfig}{Specify an application resource lifecycle configuration to prevent your
-application from accumulating too many versions.}
+\item{ResourceLifecycleConfig}{Specifies an application resource lifecycle configuration to prevent
+your application from accumulating too many versions.}
 
 \item{Tags}{Specifies the tags applied to the application.
 

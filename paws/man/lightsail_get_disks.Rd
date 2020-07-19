@@ -8,17 +8,15 @@ and region}
 lightsail_get_disks(pageToken)
 }
 \arguments{
-\item{pageToken}{A token used for advancing to the next page of results from your
-GetDisks request.}
+\item{pageToken}{The token to advance to the next page of results from your request.
+
+To get a page token, perform an initial \code{GetDisks} request. If your
+results are paginated, the response will return a next page token that
+you can specify as the page token in a subsequent request.}
 }
 \description{
 Returns information about all block storage disks in your AWS account
 and region.
-}
-\details{
-If you are describing a long list of disks, you can paginate the output
-to make the list more manageable. You can use the pageToken and
-nextPageToken values to retrieve the next items in the list.
 }
 \section{Request syntax}{
 \preformatted{svc$get_disks(

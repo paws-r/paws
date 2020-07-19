@@ -8,8 +8,8 @@ guardduty_create_filter(DetectorId, Name, Description, Action, Rank,
   FindingCriteria, ClientToken, Tags)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account for which you
-want to create a filter.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account that you want to
+create a filter for.}
 
 \item{Name}{[required] The name of the filter.}
 
@@ -22,7 +22,70 @@ the filter.}
 Also specifies the order in which this filter is applied to the
 findings.}
 
-\item{FindingCriteria}{[required] Represents the criteria to be used in the filter for querying findings.}
+\item{FindingCriteria}{[required] Represents the criteria to be used in the filter for querying findings.
+
+You can only use the following attributes to query findings:
+\itemize{
+\item accountId
+\item region
+\item confidence
+\item id
+\item resource.accessKeyDetails.accessKeyId
+\item resource.accessKeyDetails.principalId
+\item resource.accessKeyDetails.userName
+\item resource.accessKeyDetails.userType
+\item resource.instanceDetails.iamInstanceProfile.id
+\item resource.instanceDetails.imageId
+\item resource.instanceDetails.instanceId
+\item resource.instanceDetails.outpostArn
+\item resource.instanceDetails.networkInterfaces.ipv6Addresses
+\item resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
+\item resource.instanceDetails.networkInterfaces.publicDnsName
+\item resource.instanceDetails.networkInterfaces.publicIp
+\item resource.instanceDetails.networkInterfaces.securityGroups.groupId
+\item resource.instanceDetails.networkInterfaces.securityGroups.groupName
+\item resource.instanceDetails.networkInterfaces.subnetId
+\item resource.instanceDetails.networkInterfaces.vpcId
+\item resource.instanceDetails.tags.key
+\item resource.instanceDetails.tags.value
+\item resource.resourceType
+\item service.action.actionType
+\item service.action.awsApiCallAction.api
+\item service.action.awsApiCallAction.callerType
+\item service.action.awsApiCallAction.remoteIpDetails.city.cityName
+\item service.action.awsApiCallAction.remoteIpDetails.country.countryName
+\item service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
+\item service.action.awsApiCallAction.remoteIpDetails.organization.asn
+\item service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
+\item service.action.awsApiCallAction.serviceName
+\item service.action.dnsRequestAction.domain
+\item service.action.networkConnectionAction.blocked
+\item service.action.networkConnectionAction.connectionDirection
+\item service.action.networkConnectionAction.localPortDetails.port
+\item service.action.networkConnectionAction.protocol
+\item service.action.networkConnectionAction.localIpDetails.ipAddressV4
+\item service.action.networkConnectionAction.remoteIpDetails.city.cityName
+\item service.action.networkConnectionAction.remoteIpDetails.country.countryName
+\item service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
+\item service.action.networkConnectionAction.remoteIpDetails.organization.asn
+\item service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
+\item service.action.networkConnectionAction.remotePortDetails.port
+\item service.additionalInfo.threatListName
+\item service.archived
+
+When this attribute is set to TRUE, only archived findings are
+listed. When it\'s set to FALSE, only unarchived findings are
+listed. When this attribute is not set, all existing findings are
+listed.
+\item service.resourceRole
+\item severity
+\item type
+\item updatedAt
+
+Type: ISO 8601 string format: YYYY-MM-DDTHH:MM:SS.SSSZ or
+YYYY-MM-DDTHH:MM:SSZ depending on whether the value contains
+milliseconds.
+}}
 
 \item{ClientToken}{The idempotency token for the create request.}
 

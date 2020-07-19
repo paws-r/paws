@@ -2,23 +2,23 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_promote_read_replica_db_cluster}
 \alias{rds_promote_read_replica_db_cluster}
-\title{Promotes a Read Replica DB cluster to a standalone DB cluster}
+\title{Promotes a read replica DB cluster to a standalone DB cluster}
 \usage{
 rds_promote_read_replica_db_cluster(DBClusterIdentifier)
 }
 \arguments{
-\item{DBClusterIdentifier}{[required] The identifier of the DB cluster Read Replica to promote. This parameter
+\item{DBClusterIdentifier}{[required] The identifier of the DB cluster read replica to promote. This parameter
 isn\'t case-sensitive.
 
 Constraints:
 \itemize{
-\item Must match the identifier of an existing DBCluster Read Replica.
+\item Must match the identifier of an existing DB cluster read replica.
 }
 
 Example: \code{my-cluster-replica1}}
 }
 \description{
-Promotes a Read Replica DB cluster to a standalone DB cluster.
+Promotes a read replica DB cluster to a standalone DB cluster.
 }
 \details{
 This action only applies to Aurora DB clusters.

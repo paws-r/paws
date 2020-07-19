@@ -3,8 +3,8 @@
 \name{rds_modify_certificates}
 \alias{rds_modify_certificates}
 \title{Override the system-default Secure Sockets Layer/Transport Layer
-Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or
-remove the override}
+Security (SSL/TLS) certificate for Amazon RDS for new DB instances
+temporarily, or remove the override}
 \usage{
 rds_modify_certificates(CertificateIdentifier, RemoveCustomerOverride)
 }
@@ -20,8 +20,8 @@ system default.}
 }
 \description{
 Override the system-default Secure Sockets Layer/Transport Layer
-Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or
-remove the override.
+Security (SSL/TLS) certificate for Amazon RDS for new DB instances
+temporarily, or remove the override.
 }
 \details{
 By using this operation, you can specify an RDS-approved SSL/TLS

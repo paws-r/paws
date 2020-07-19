@@ -16,14 +16,13 @@ This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
-\item{maxResults}{The maximum number of deployment job results returned by
-\code{ListSimulationJobs} in paginated output. When this parameter is used,
-\code{ListSimulationJobs} only returns \code{maxResults} results in a single page
-along with a \code{nextToken} response element. The remaining results of the
-initial request can be seen by sending another \code{ListSimulationJobs}
-request with the returned \code{nextToken} value. This value can be between 1
-and 100. If this parameter is not used, then \code{ListSimulationJobs}
-returns up to 100 results and a \code{nextToken} value if applicable.}
+\item{maxResults}{When this parameter is used, \code{ListSimulationJobs} only returns
+\code{maxResults} results in a single page along with a \code{nextToken} response
+element. The remaining results of the initial request can be seen by
+sending another \code{ListSimulationJobs} request with the returned
+\code{nextToken} value. This value can be between 1 and 1000. If this
+parameter is not used, then \code{ListSimulationJobs} returns up to 1000
+results and a \code{nextToken} value if applicable.}
 
 \item{filters}{Optional filters to limit results.
 

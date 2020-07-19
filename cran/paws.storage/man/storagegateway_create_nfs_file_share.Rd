@@ -8,7 +8,8 @@ gateway}
 storagegateway_create_nfs_file_share(ClientToken, NFSFileShareDefaults,
   GatewayARN, KMSEncrypted, KMSKey, Role, LocationARN,
   DefaultStorageClass, ObjectACL, ClientList, Squash, ReadOnly,
-  GuessMIMETypeEnabled, RequesterPays, Tags)
+  GuessMIMETypeEnabled, RequesterPays, Tags, FileShareName,
+  CacheAttributes)
 }
 \arguments{
 \item{ClientToken}{[required] A unique string value that you supply that is used by file gateway to
@@ -19,53 +20,66 @@ ensure idempotent file share creation.}
 \item{GatewayARN}{[required] The Amazon Resource Name (ARN) of the file gateway on which you want to
 create a file share.}
 
-\item{KMSEncrypted}{True to use Amazon S3 server side encryption with your own AWS KMS key,
-or false to use a key managed by Amazon S3. Optional.}
+\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own AWS
+KMS key, or \code{false} to use a key managed by Amazon S3. Optional.
 
-\item{KMSKey}{The Amazon Resource Name (ARN) AWS KMS key used for Amazon S3 server
-side encryption. This value can only be set when KMSEncrypted is true.
-Optional.}
+Valid Values: \code{true} \\| \code{false}}
+
+\item{KMSKey}{The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
+used for Amazon S3 server-side encryption. Storage Gateway does not
+support asymmetric CMKs. This value can only be set when \code{KMSEncrypted}
+is \code{true}. Optional.}
 
 \item{Role}{[required] The ARN of the AWS Identity and Access Management (IAM) role that a file
 gateway assumes when it accesses the underlying storage.}
 
-\item{LocationARN}{[required] The ARN of the backed storage used for storing file data.}
+\item{LocationARN}{[required] The ARN of the backend storage used for storing file data. A prefix name
+can be added to the S3 bucket name. It must end with a \"/\".}
 
 \item{DefaultStorageClass}{The default storage class for objects put into an Amazon S3 bucket by
-the file gateway. Possible values are \code{S3_STANDARD}, \code{S3_STANDARD_IA},
-or \code{S3_ONEZONE_IA}. If this field is not populated, the default value
-\code{S3_STANDARD} is used. Optional.}
+the file gateway. The default value is \code{S3_INTELLIGENT_TIERING}.
+Optional.
 
-\item{ObjectACL}{A value that sets the access control list permission for objects in the
-S3 bucket that a file gateway puts objects into. The default value is
-\"private\".}
+Valid Values: \code{S3_STANDARD} \\| \code{S3_INTELLIGENT_TIERING} \\|
+\code{S3_STANDARD_IA} \\| \code{S3_ONEZONE_IA}}
+
+\item{ObjectACL}{A value that sets the access control list (ACL) permission for objects
+in the S3 bucket that a file gateway puts objects into. The default
+value is \code{private}.}
 
 \item{ClientList}{The list of clients that are allowed to access the file gateway. The
 list must contain either valid IP addresses or valid CIDR blocks.}
 
-\item{Squash}{A value that maps a user to anonymous user. Valid options are the
-following:
+\item{Squash}{A value that maps a user to anonymous user.
+
+Valid values are the following:
 \itemize{
-\item \code{RootSquash} - Only root is mapped to anonymous user.
-\item \code{NoSquash} - No one is mapped to anonymous user
-\item \code{AllSquash} - Everyone is mapped to anonymous user.
+\item \code{RootSquash}: Only root is mapped to anonymous user.
+\item \code{NoSquash}: No one is mapped to anonymous user.
+\item \code{AllSquash}: Everyone is mapped to anonymous user.
 }}
 
-\item{ReadOnly}{A value that sets the write status of a file share. This value is true
-if the write status is read-only, and otherwise false.}
+\item{ReadOnly}{A value that sets the write status of a file share. Set this value to
+\code{true} to set the write status to read-only, otherwise set to \code{false}.
+
+Valid Values: \code{true} \\| \code{false}}
 
 \item{GuessMIMETypeEnabled}{A value that enables guessing of the MIME type for uploaded objects
-based on file extensions. Set this value to true to enable MIME type
-guessing, and otherwise to false. The default value is true.}
+based on file extensions. Set this value to \code{true} to enable MIME type
+guessing, otherwise set to \code{false}. The default value is \code{true}.
+
+Valid Values: \code{true} \\| \code{false}}
 
 \item{RequesterPays}{A value that sets who pays the cost of the request and the cost
 associated with data download from the S3 bucket. If this value is set
-to true, the requester pays the costs. Otherwise the S3 bucket owner
+to \code{true}, the requester pays the costs; otherwise, the S3 bucket owner
 pays. However, the S3 bucket owner always pays the cost of storing data.
 
 \code{RequesterPays} is a configuration for the S3 bucket that backs the file
 share, so make sure that the configuration on the file share is the same
-as the S3 bucket configuration.}
+as the S3 bucket configuration.
+
+Valid Values: \code{true} \\| \code{false}}
 
 \item{Tags}{A list of up to 50 tags that can be assigned to the NFS file share. Each
 tag is a key-value pair.
@@ -74,21 +88,28 @@ Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: + -
 = . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
 the maximum length for a tag\'s value is 256.}
+
+\item{FileShareName}{The name of the file share. Optional.
+
+\code{FileShareName} must be set if an S3 prefix name is set in
+\code{LocationARN}.}
+
+\item{CacheAttributes}{Refresh cache information.}
 }
 \description{
 Creates a Network File System (NFS) file share on an existing file
 gateway. In Storage Gateway, a file share is a file system mount point
 backed by Amazon S3 cloud storage. Storage Gateway exposes file shares
-using a NFS interface. This operation is only supported for file
+using an NFS interface. This operation is only supported for file
 gateways.
 }
 \details{
 File gateway requires AWS Security Token Service (AWS STS) to be
-activated to enable you create a file share. Make sure AWS STS is
+activated to enable you to create a file share. Make sure AWS STS is
 activated in the AWS Region you are creating your file gateway in. If
 AWS STS is not activated in the AWS Region, activate it. For information
-about how to activate AWS STS, see Activating and Deactivating AWS STS
-in an AWS Region in the AWS Identity and Access Management User Guide.
+about how to activate AWS STS, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and deactivating AWS STS in an AWS Region}
+in the \emph{AWS Identity and Access Management User Guide}.
 
 File gateway does not support creating hard or symbolic links on a file
 share.
@@ -121,6 +142,10 @@ share.
       Key = "string",
       Value = "string"
     )
+  ),
+  FileShareName = "string",
+  CacheAttributes = list(
+    CacheStaleTimeoutInSeconds = 123
   )
 )
 }

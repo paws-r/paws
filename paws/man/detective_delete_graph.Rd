@@ -2,7 +2,7 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_delete_graph}
 \alias{detective_delete_graph}
-\title{Amazon Detective is currently in preview}
+\title{Disables the specified behavior graph and queues it to be deleted}
 \usage{
 detective_delete_graph(GraphArn)
 }
@@ -10,13 +10,11 @@ detective_delete_graph(GraphArn)
 \item{GraphArn}{[required] The ARN of the behavior graph to disable.}
 }
 \description{
-Amazon Detective is currently in preview.
-}
-\details{
 Disables the specified behavior graph and queues it to be deleted. This
 operation removes the graph from each member account\'s list of behavior
 graphs.
-
+}
+\details{
 \code{DeleteGraph} can only be called by the master account for a behavior
 graph.
 }

@@ -15,20 +15,20 @@ opsworkscm_create_server(AssociatePublicIpAddress, CustomDomain,
 \item{AssociatePublicIpAddress}{Associate a public IP address with a server that you are launching.
 Valid values are \code{true} or \code{false}. The default value is \code{true}.}
 
-\item{CustomDomain}{Supported on servers running Chef Automate 2. An optional public
-endpoint of a server, such as \verb{https://aws.my-company.com}. To access
-the server, create a CNAME DNS record in your preferred DNS service that
-points the custom domain to the endpoint that is generated when the
-server is created (the value of the CreateServer Endpoint attribute).
-You cannot access the server by using the generated \code{Endpoint} value if
-the server is using a custom domain. If you specify a custom domain, you
-must also specify values for \code{CustomCertificate} and \code{CustomPrivateKey}.}
+\item{CustomDomain}{An optional public endpoint of a server, such as
+\verb{https://aws.my-company.com}. To access the server, create a CNAME DNS
+record in your preferred DNS service that points the custom domain to
+the endpoint that is generated when the server is created (the value of
+the CreateServer Endpoint attribute). You cannot access the server by
+using the generated \code{Endpoint} value if the server is using a custom
+domain. If you specify a custom domain, you must also specify values for
+\code{CustomCertificate} and \code{CustomPrivateKey}.}
 
-\item{CustomCertificate}{Supported on servers running Chef Automate 2. A PEM-formatted HTTPS
-certificate. The value can be be a single, self-signed certificate, or a
-certificate chain. If you specify a custom certificate, you must also
-specify values for \code{CustomDomain} and \code{CustomPrivateKey}. The following
-are requirements for the \code{CustomCertificate} value:
+\item{CustomCertificate}{A PEM-formatted HTTPS certificate. The value can be be a single,
+self-signed certificate, or a certificate chain. If you specify a custom
+certificate, you must also specify values for \code{CustomDomain} and
+\code{CustomPrivateKey}. The following are requirements for the
+\code{CustomCertificate} value:
 \itemize{
 \item You can provide either a self-signed, custom certificate, or the
 full certificate chain.
@@ -43,24 +43,23 @@ if present, must match the value of \code{CustomDomain}.
 \item The certificate must match the value of \code{CustomPrivateKey}.
 }}
 
-\item{CustomPrivateKey}{Supported on servers running Chef Automate 2. A private key in PEM
-format for connecting to the server by using HTTPS. The private key must
-not be encrypted; it cannot be protected by a password or passphrase. If
-you specify a custom private key, you must also specify values for
-\code{CustomDomain} and \code{CustomCertificate}.}
+\item{CustomPrivateKey}{A private key in PEM format for connecting to the server by using HTTPS.
+The private key must not be encrypted; it cannot be protected by a
+password or passphrase. If you specify a custom private key, you must
+also specify values for \code{CustomDomain} and \code{CustomCertificate}.}
 
 \item{DisableAutomatedBackup}{Enable or disable scheduled backups. Valid values are \code{true} or \code{false}.
 The default value is \code{true}.}
 
-\item{Engine}{The configuration management engine to use. Valid values include
+\item{Engine}{[required] The configuration management engine to use. Valid values include
 \code{ChefAutomate} and \code{Puppet}.}
 
 \item{EngineModel}{The engine model of the server. Valid values in this release include
 \code{Monolithic} for Puppet and \code{Single} for Chef.}
 
 \item{EngineVersion}{The major release version of the engine that you want to use. For a Chef
-server, the valid value for EngineVersion is currently \code{12}. For a
-Puppet server, the valid value is \code{2017}.}
+server, the valid value for EngineVersion is currently \code{2}. For a Puppet
+server, the valid value is \code{2017}.}
 
 \item{EngineAttributes}{Optional engine attributes on a specified server.
 
@@ -118,10 +117,10 @@ instances by using SSH.}
 
 \item{PreferredMaintenanceWindow}{The start time for a one-hour period each week during which AWS OpsWorks
 CM performs maintenance on the instance. Valid values must be specified
-in the following format: \code{DDD:HH:MM}. The specified time is in
-coordinated universal time (UTC). The default value is a random one-hour
-period on Tuesday, Wednesday, or Friday. See \code{TimeWindowDefinition} for
-more information.
+in the following format: \code{DDD:HH:MM}. \code{MM} must be specified as \code{00}.
+The specified time is in coordinated universal time (UTC). The default
+value is a random one-hour period on Tuesday, Wednesday, or Friday. See
+\code{TimeWindowDefinition} for more information.
 
 \strong{Example:} \code{Mon:08:00}, which represents a start time of every Monday
 at 08:00 UTC. (8:00 a.m.)}
@@ -134,8 +133,8 @@ enabled. Valid values must be specified in one of the following formats:
 \item \code{DDD:HH:MM} for weekly backups
 }
 
-The specified time is in coordinated universal time (UTC). The default
-value is a random, daily start time.
+\code{MM} must be specified as \code{00}. The specified time is in coordinated
+universal time (UTC). The default value is a random, daily start time.
 
 \strong{Example:} \code{08:00}, which represents a daily start time of 08:00 UTC.
 
@@ -178,10 +177,10 @@ for Chef Automate or AWS OpsWorks for Puppet Enterprise server.
 \item The key cannot be empty.
 \item The key can be a maximum of 127 characters, and can contain only
 Unicode letters, numbers, or separators, or the following special
-characters: \verb{+ - = . _ : /}
+characters: \verb{+ - = . _ : / @}
 \item The value can be a maximum 255 characters, and contain only Unicode
 letters, numbers, or separators, or the following special
-characters: \verb{+ - = . _ : /}
+characters: \verb{+ - = . _ : / @}
 \item Leading and trailing white spaces are trimmed from both the key and
 value.
 \item A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM

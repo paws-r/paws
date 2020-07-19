@@ -8,9 +8,7 @@ RecycleBin}
 workdocs_describe_root_folders(AuthenticationToken, Limit, Marker)
 }
 \arguments{
-\item{AuthenticationToken}{[required] Amazon WorkDocs authentication token. Do not set this field when using
-administrative API actions, as in accessing the API using AWS
-credentials.}
+\item{AuthenticationToken}{[required] Amazon WorkDocs authentication token.}
 
 \item{Limit}{The maximum number of items to return.}
 

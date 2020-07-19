@@ -6,7 +6,8 @@
 \usage{
 lambda_update_function_configuration(FunctionName, Role, Handler,
   Description, Timeout, MemorySize, VpcConfig, Environment, Runtime,
-  DeadLetterConfig, KMSKeyArn, TracingConfig, RevisionId, Layers)
+  DeadLetterConfig, KMSKeyArn, TracingConfig, RevisionId, Layers,
+  FileSystemConfigs)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -67,6 +68,8 @@ changed since you last read it.}
 \item{Layers}{A list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{function layers}
 to add to the function\'s execution environment. Specify each layer by
 its ARN, including the version.}
+
+\item{FileSystemConfigs}{Connection settings for an Amazon EFS file system.}
 }
 \description{
 Modify the version-specific settings of a Lambda function.
@@ -109,7 +112,7 @@ invoke permissions to an account or AWS service, use AddPermission.
       "string"
     )
   ),
-  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided",
   DeadLetterConfig = list(
     TargetArn = "string"
   ),
@@ -120,6 +123,12 @@ invoke permissions to an account or AWS service, use AddPermission.
   RevisionId = "string",
   Layers = list(
     "string"
+  ),
+  FileSystemConfigs = list(
+    list(
+      Arn = "string",
+      LocalMountPath = "string"
+    )
   )
 )
 }
@@ -127,21 +136,11 @@ invoke permissions to an account or AWS service, use AddPermission.
 
 \examples{
 \dontrun{
-# This operation updates a Lambda function's configuration
+# The following example modifies the memory size to be 256 MB for the
+# unpublished ($LATEST) version of a function named my-function.
 svc$update_function_configuration(
-  Description = "",
-  FunctionName = "myFunction",
-  Handler = "index.handler",
-  MemorySize = 128L,
-  Role = "arn:aws:iam::123456789012:role/lambda_basic_execution",
-  Runtime = "python2.7",
-  Timeout = 123L,
-  VpcConfig = structure(
-    list(),
-    .Names = character(
-      0
-    )
-  )
+  FunctionName = "my-function",
+  MemorySize = 256L
 )
 }
 

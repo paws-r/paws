@@ -123,9 +123,9 @@ NULL
 #'  \link[=s3_put_object_legal_hold]{put_object_legal_hold} \tab Applies a Legal Hold configuration to the specified object \cr
 #'  \link[=s3_put_object_lock_configuration]{put_object_lock_configuration} \tab Places an Object Lock configuration on the specified bucket \cr
 #'  \link[=s3_put_object_retention]{put_object_retention} \tab Places an Object Retention configuration on an object \cr
-#'  \link[=s3_put_object_tagging]{put_object_tagging} \tab Sets the supplied tag-set to an object that already exists in a bucket A tag is a key-value pair \cr
+#'  \link[=s3_put_object_tagging]{put_object_tagging} \tab Sets the supplied tag-set to an object that already exists in a bucket \cr
 #'  \link[=s3_put_public_access_block]{put_public_access_block} \tab Creates or modifies the PublicAccessBlock configuration for an Amazon S3 bucket \cr
-#'  \link[=s3_restore_object]{restore_object} \tab Restores an archived copy of an object back into Amazon S3 This operation performs the following types of requests: - select - Perform a select query on an archived object - restore an archive - Restore an archived object To use this operation, you must have permissions to perform the s3:RestoreObject and s3:GetObject actions\cr
+#'  \link[=s3_restore_object]{restore_object} \tab Restores an archived copy of an object back into Amazon S3 This operation performs the following types of requests: - select - Perform a select query on an archived object - restore an archive - Restore an archived object To use this operation, you must have permissions to perform the s3:RestoreObject action\cr
 #'  \link[=s3_select_object_content]{select_object_content} \tab This operation filters the contents of an Amazon S3 object based on a simple structured query language (SQL) statement \cr
 #'  \link[=s3_upload_part]{upload_part} \tab Uploads a part in a multipart upload \cr
 #'  \link[=s3_upload_part_copy]{upload_part_copy} \tab Uploads a part by copying data from an existing object as data source 
@@ -146,7 +146,7 @@ s3 <- function(config = list()) {
 
 .s3$metadata <- list(
   service_name = "s3",
-  endpoints = list("us-gov-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-west-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "eu-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-southeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-southeast-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-northeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "sa-east-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-east-1" = list(endpoint = "s3.amazonaws.com", global = FALSE), "*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "s3.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("us-gov-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-west-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "eu-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-southeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-southeast-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-northeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "sa-east-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-east-1" = list(endpoint = "s3.amazonaws.com", global = FALSE), "*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "s3.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "s3.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "s3.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "S3",
   api_version = "2006-03-01",
   signing_name = NULL,

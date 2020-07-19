@@ -9,8 +9,8 @@ wafv2_create_rule_group(Name, Scope, Capacity, Description, Rules,
   VisibilityConfig, Tags)
 }
 \arguments{
-\item{Name}{[required] A friendly name of the rule group. You cannot change the name of a rule
-group after you create it.}
+\item{Name}{[required] The name of the rule group. You cannot change the name of a rule group
+after you create it.}
 
 \item{Scope}{[required] Specifies whether this is for an AWS CloudFront distribution or for a
 regional application. A regional application can be an Application Load
@@ -19,7 +19,7 @@ Balancer (ALB) or an API Gateway stage.
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
 \itemize{
-\item CLI - Specify the region when you use the CloudFront scope:
+\item CLI - Specify the Region when you use the CloudFront scope:
 \code{--scope=CLOUDFRONT --region=us-east-1}.
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
@@ -40,8 +40,8 @@ group capacity is fixed at creation, which helps users plan their web
 ACL WCU usage when they use a rule group. The WCU limit for web ACLs is
 1,500.}
 
-\item{Description}{A friendly description of the rule group. You cannot change the
-description of a rule group after you create it.}
+\item{Description}{A description of the rule group that helps with identification. You
+cannot change the description of a rule group after you create it.}
 
 \item{Rules}{The Rule statements used to identify the web requests that you want to
 allow, block, or count. Each rule includes one top-level statement that
@@ -169,6 +169,10 @@ with confidence in its capacity requirements.
         GeoMatchStatement = list(
           CountryCodes = list(
             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+          ),
+          ForwardedIPConfig = list(
+            HeaderName = "string",
+            FallbackBehavior = "MATCH"|"NO_MATCH"
           )
         ),
         RuleGroupReferenceStatement = list(
@@ -180,7 +184,12 @@ with confidence in its capacity requirements.
           )
         ),
         IPSetReferenceStatement = list(
-          ARN = "string"
+          ARN = "string",
+          IPSetForwardedIPConfig = list(
+            HeaderName = "string",
+            FallbackBehavior = "MATCH"|"NO_MATCH",
+            Position = "FIRST"|"LAST"|"ANY"
+          )
         ),
         RegexPatternSetReferenceStatement = list(
           ARN = "string",
@@ -206,8 +215,12 @@ with confidence in its capacity requirements.
         ),
         RateBasedStatement = list(
           Limit = 123,
-          AggregateKeyType = "IP",
-          ScopeDownStatement = list()
+          AggregateKeyType = "IP"|"FORWARDED_IP",
+          ScopeDownStatement = list(),
+          ForwardedIPConfig = list(
+            HeaderName = "string",
+            FallbackBehavior = "MATCH"|"NO_MATCH"
+          )
         ),
         AndStatement = list(
           Statements = list(

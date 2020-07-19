@@ -66,10 +66,11 @@ log errors.
 \link[=applicationinsights_describe_problem_observations]{describe_problem_observations} \tab Describes the anomalies or errors associated with the problem \cr
 \link[=applicationinsights_list_applications]{list_applications} \tab Lists the IDs of the applications that you are monitoring \cr
 \link[=applicationinsights_list_components]{list_components} \tab Lists the auto-grouped, standalone, and custom components of the application \cr
+\link[=applicationinsights_list_configuration_history]{list_configuration_history} \tab Lists the INFO, WARN, and ERROR events for periodic configuration updates performed by Application Insights\cr
 \link[=applicationinsights_list_log_patterns]{list_log_patterns} \tab Lists the log patterns in the specific log LogPatternSet \cr
 \link[=applicationinsights_list_log_pattern_sets]{list_log_pattern_sets} \tab Lists the log pattern sets in the specific application \cr
 \link[=applicationinsights_list_problems]{list_problems} \tab Lists the problems with your application \cr
-\link[=applicationinsights_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified application\cr
+\link[=applicationinsights_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified application \cr
 \link[=applicationinsights_tag_resource]{tag_resource} \tab Add one or more tags (keys and values) to a specified application \cr
 \link[=applicationinsights_untag_resource]{untag_resource} \tab Remove one or more tags (keys and values) from a specified application \cr
 \link[=applicationinsights_update_application]{update_application} \tab Updates the application \cr

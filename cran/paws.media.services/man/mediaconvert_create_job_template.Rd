@@ -5,8 +5,8 @@
 \title{Create a new job template}
 \usage{
 mediaconvert_create_job_template(AccelerationSettings, Category,
-  Description, Name, Priority, Queue, Settings, StatusUpdateInterval,
-  Tags)
+  Description, HopDestinations, Name, Priority, Queue, Settings,
+  StatusUpdateInterval, Tags)
 }
 \arguments{
 \item{AccelerationSettings}{Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental MediaConvert User Guide.}
@@ -14,6 +14,8 @@ mediaconvert_create_job_template(AccelerationSettings, Category,
 \item{Category}{Optional. A category for the job template you are creating}
 
 \item{Description}{Optional. A description of the job template you are creating.}
+
+\item{HopDestinations}{Optional. Use queue hopping to avoid overly long waits in the backlog of the queue that you submit your job to. Specify an alternate queue and the maximum time that your job will wait in the initial queue before hopping. For more information about this feature, see the AWS Elemental MediaConvert User Guide.}
 
 \item{Name}{[required] The name of the job template you are creating.}
 
@@ -37,6 +39,13 @@ Create a new job template. For information about job templates see the User Guid
   ),
   Category = "string",
   Description = "string",
+  HopDestinations = list(
+    list(
+      Priority = 123,
+      Queue = "string",
+      WaitMinutes = 123
+    )
+  ),
   Name = "string",
   Priority = 123,
   Queue = "string",
@@ -114,6 +123,10 @@ Create a new job template. For information about job templates see the User Guid
               ),
               FileSourceSettings = list(
                 Convert608To708 = "UPCONVERT"|"DISABLED",
+                Framerate = list(
+                  FramerateDenominator = 123,
+                  FramerateNumerator = 123
+                ),
                 SourceFile = "string",
                 TimeDelta = 123
               ),
@@ -274,7 +287,8 @@ Create a new job template. For information about job templates see the User Guid
             SegmentLength = 123,
             StreamInfResolution = "INCLUDE"|"EXCLUDE",
             WriteDashManifest = "DISABLED"|"ENABLED",
-            WriteHlsManifest = "DISABLED"|"ENABLED"
+            WriteHlsManifest = "DISABLED"|"ENABLED",
+            WriteSegmentTimelineInRepresentation = "ENABLED"|"DISABLED"
           ),
           DashIsoGroupSettings = list(
             AdditionalManifests = list(
@@ -483,7 +497,7 @@ Create a new job template. For information about job templates see the User Guid
                     Channels = 123,
                     SampleRate = 123
                   ),
-                  Codec = "AAC"|"MP2"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"PASSTHROUGH",
+                  Codec = "AAC"|"MP2"|"MP3"|"WAV"|"AIFF"|"AC3"|"EAC3"|"EAC3_ATMOS"|"VORBIS"|"OPUS"|"PASSTHROUGH",
                   Eac3AtmosSettings = list(
                     Bitrate = 123,
                     BitstreamMode = "COMPLETE_MAIN",
@@ -528,6 +542,23 @@ Create a new job template. For information about job templates see the User Guid
                     Bitrate = 123,
                     Channels = 123,
                     SampleRate = 123
+                  ),
+                  Mp3Settings = list(
+                    Bitrate = 123,
+                    Channels = 123,
+                    RateControlMode = "CBR"|"VBR",
+                    SampleRate = 123,
+                    VbrQuality = 123
+                  ),
+                  OpusSettings = list(
+                    Bitrate = 123,
+                    Channels = 123,
+                    SampleRate = 123
+                  ),
+                  VorbisSettings = list(
+                    Channels = 123,
+                    SampleRate = 123,
+                    VbrQuality = 123
                   ),
                   WavSettings = list(
                     BitDepth = 123,
@@ -625,7 +656,11 @@ Create a new job template. For information about job templates see the User Guid
               )
             ),
             ContainerSettings = list(
-              Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"RAW",
+              CmfcSettings = list(
+                Scte35Esam = "INSERT"|"NONE",
+                Scte35Source = "PASSTHROUGH"|"NONE"
+              ),
+              Container = "F4V"|"ISMV"|"M2TS"|"M3U8"|"CMFC"|"MOV"|"MP4"|"MPD"|"MXF"|"WEBM"|"RAW",
               F4vSettings = list(
                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL"
               ),
@@ -713,6 +748,7 @@ Create a new job template. For information about job templates see the User Guid
               ),
               Mp4Settings = list(
                 CslgAtom = "INCLUDE"|"EXCLUDE",
+                CttsVersion = 123,
                 FreeSpaceBox = "INCLUDE"|"EXCLUDE",
                 MoovPlacement = "PROGRESSIVE_DOWNLOAD"|"NORMAL",
                 Mp4MajorBrand = "string"
@@ -721,6 +757,9 @@ Create a new job template. For information about job templates see the User Guid
                 CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
                 Scte35Esam = "INSERT"|"NONE",
                 Scte35Source = "PASSTHROUGH"|"NONE"
+              ),
+              MxfSettings = list(
+                AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO"
               )
             ),
             Extension = "string",
@@ -740,7 +779,24 @@ Create a new job template. For information about job templates see the User Guid
               AfdSignaling = "NONE"|"AUTO"|"FIXED",
               AntiAlias = "DISABLED"|"ENABLED",
               CodecSettings = list(
-                Codec = "FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES",
+                Av1Settings = list(
+                  AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+                  FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+                  FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+                  FramerateDenominator = 123,
+                  FramerateNumerator = 123,
+                  GopSize = 123.0,
+                  MaxBitrate = 123,
+                  NumberBFramesBetweenReferenceFrames = 123,
+                  QvbrSettings = list(
+                    QvbrQualityLevel = 123,
+                    QvbrQualityLevelFineTune = 123.0
+                  ),
+                  RateControlMode = "QVBR",
+                  Slices = 123,
+                  SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
+                ),
+                Codec = "FRAME_CAPTURE"|"AV1"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VP8"|"VP9",
                 FrameCaptureSettings = list(
                   FramerateDenominator = 123,
                   FramerateNumerator = 123,
@@ -777,7 +833,8 @@ Create a new job template. For information about job templates see the User Guid
                   QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
                   QvbrSettings = list(
                     MaxAverageBitrate = 123,
-                    QvbrQualityLevel = 123
+                    QvbrQualityLevel = 123,
+                    QvbrQualityLevelFineTune = 123.0
                   ),
                   RateControlMode = "VBR"|"CBR"|"QVBR",
                   RepeatPps = "DISABLED"|"ENABLED",
@@ -820,7 +877,8 @@ Create a new job template. For information about job templates see the User Guid
                   QualityTuningLevel = "SINGLE_PASS"|"SINGLE_PASS_HQ"|"MULTI_PASS_HQ",
                   QvbrSettings = list(
                     MaxAverageBitrate = 123,
-                    QvbrQualityLevel = 123
+                    QvbrQualityLevel = 123,
+                    QvbrQualityLevelFineTune = 123.0
                   ),
                   RateControlMode = "VBR"|"CBR"|"QVBR",
                   SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
@@ -880,6 +938,36 @@ Create a new job template. For information about job templates see the User Guid
                   ParNumerator = 123,
                   SlowPal = "DISABLED"|"ENABLED",
                   Telecine = "NONE"|"HARD"
+                ),
+                Vp8Settings = list(
+                  Bitrate = 123,
+                  FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+                  FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+                  FramerateDenominator = 123,
+                  FramerateNumerator = 123,
+                  GopSize = 123.0,
+                  HrdBufferSize = 123,
+                  MaxBitrate = 123,
+                  ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+                  ParDenominator = 123,
+                  ParNumerator = 123,
+                  QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+                  RateControlMode = "VBR"
+                ),
+                Vp9Settings = list(
+                  Bitrate = 123,
+                  FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+                  FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+                  FramerateDenominator = 123,
+                  FramerateNumerator = 123,
+                  GopSize = 123.0,
+                  HrdBufferSize = 123,
+                  MaxBitrate = 123,
+                  ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+                  ParDenominator = 123,
+                  ParNumerator = 123,
+                  QualityTuningLevel = "MULTI_PASS"|"MULTI_PASS_HQ",
+                  RateControlMode = "VBR"
                 )
               ),
               ColorMetadata = "IGNORE"|"INSERT",
@@ -966,8 +1054,17 @@ Create a new job template. For information about job templates see the User Guid
                   ),
                   TemporalFilterSettings = list(
                     AggressiveMode = 123,
+                    PostTemporalSharpening = "DISABLED"|"ENABLED"|"AUTO",
                     Speed = 123,
                     Strength = 123
+                  )
+                ),
+                PartnerWatermarking = list(
+                  NexguardFileMarkerSettings = list(
+                    License = "string",
+                    Payload = 123,
+                    Preset = "string",
+                    Strength = "LIGHTEST"|"LIGHTER"|"DEFAULT"|"STRONGER"|"STRONGEST"
                   )
                 ),
                 TimecodeBurnin = list(

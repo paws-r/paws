@@ -9,7 +9,8 @@ rds_restore_db_cluster_from_snapshot(AvailabilityZones,
   DBSubnetGroupName, DatabaseName, OptionGroupName, VpcSecurityGroupIds,
   Tags, KmsKeyId, EnableIAMDatabaseAuthentication, BacktrackWindow,
   EnableCloudwatchLogsExports, EngineMode, ScalingConfiguration,
-  DBClusterParameterGroupName, DeletionProtection, CopyTagsToSnapshot)
+  DBClusterParameterGroupName, DeletionProtection, CopyTagsToSnapshot,
+  Domain, DomainIAMRoleName)
 }
 \arguments{
 \item{AvailabilityZones}{Provides the list of Availability Zones (AZs) where instances in the
@@ -124,6 +125,8 @@ in the \emph{Amazon Aurora User Guide.}}
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
 
+Currently, Backtrack is only supported for Aurora MySQL DB clusters.
+
 Default: 0
 
 Constraints:
@@ -163,19 +166,28 @@ enabled. By default, deletion protection is disabled.}
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
 cluster to snapshots of the restored DB cluster. The default is not to
 copy them.}
+
+\item{Domain}{Specify the Active Directory directory ID to restore the DB cluster in.
+The domain must be created prior to this operation.}
+
+\item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
+Directory Service.}
 }
 \description{
-Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
+Creates a new DB cluster from a DB snapshot or DB cluster snapshot. This
+action only applies to Aurora DB clusters.
 }
 \details{
-If a DB snapshot is specified, the target DB cluster is created from the
-source DB snapshot with a default configuration and default security
-group.
+The target DB cluster is created from the source snapshot with a default
+configuration. If you don\'t specify a security group, the new DB
+cluster is associated with the default security group.
 
-If a DB cluster snapshot is specified, the target DB cluster is created
-from the source DB cluster restore point with the same configuration as
-the original source DB cluster. If you don\'t specify a security group,
-the new DB cluster is associated with the default security group.
+This action only restores the DB cluster, not the DB instances for that
+DB cluster. You must invoke the \code{CreateDBInstance} action to create DB
+instances for the restored DB cluster, specifying the identifier of the
+restored DB cluster in \code{DBClusterIdentifier}. You can create DB
+instances only after the \code{RestoreDBClusterFromSnapshot} action has
+completed and the DB cluster is available.
 
 For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
@@ -220,7 +232,9 @@ This action only applies to Aurora DB clusters.
   ),
   DBClusterParameterGroupName = "string",
   DeletionProtection = TRUE|FALSE,
-  CopyTagsToSnapshot = TRUE|FALSE
+  CopyTagsToSnapshot = TRUE|FALSE,
+  Domain = "string",
+  DomainIAMRoleName = "string"
 )
 }
 }

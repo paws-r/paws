@@ -474,7 +474,8 @@ batch_delete_job_queue <- function(jobQueue) {
 
 #' Deregisters an AWS Batch job definition
 #'
-#' Deregisters an AWS Batch job definition.
+#' Deregisters an AWS Batch job definition. Job definitions will be
+#' permanently deleted after 180 days.
 #'
 #' @usage
 #' batch_deregister_job_definition(jobDefinition)
@@ -1119,9 +1120,10 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' `N_TO_N` type dependency with a job ID for array jobs. In that case,
 #' each index child of this job must wait for the corresponding index child
 #' of each dependency to complete before it can begin.
-#' @param jobDefinition &#91;required&#93; The job definition used by this job. This value can be either a
-#' `name:revision` or the Amazon Resource Name (ARN) for the job
-#' definition.
+#' @param jobDefinition &#91;required&#93; The job definition used by this job. This value can be one of `name`,
+#' `name:revision`, or the Amazon Resource Name (ARN) for the job
+#' definition. If `name` is specified without a revision then the latest
+#' active revision is used.
 #' @param parameters Additional parameters passed to the job that replace parameter
 #' substitution placeholders that are set in the job definition. Parameters
 #' are specified as a key and value pair mapping. Parameters in a

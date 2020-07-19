@@ -32,6 +32,9 @@ Updates an existing job definition.
     DefaultArguments = list(
       "string"
     ),
+    NonOverridableArguments = list(
+      "string"
+    ),
     Connections = list(
       Connections = list(
         "string"

@@ -3,10 +3,9 @@
 #' @include detective_service.R
 NULL
 
-#' Amazon Detective is currently in preview
+#' Accepts an invitation for the member account to contribute data to a
+#' behavior graph
 #'
-#' Amazon Detective is currently in preview.
-#' 
 #' Accepts an invitation for the member account to contribute data to a
 #' behavior graph. This operation can only be called by an invited member
 #' account.
@@ -50,13 +49,19 @@ detective_accept_invitation <- function(GraphArn) {
 }
 .detective$operations$accept_invitation <- detective_accept_invitation
 
-#' Amazon Detective is currently in preview
+#' Creates a new behavior graph for the calling account, and sets that
+#' account as the master account
 #'
-#' Amazon Detective is currently in preview.
-#' 
 #' Creates a new behavior graph for the calling account, and sets that
 #' account as the master account. This operation is called by the account
 #' that is enabling Detective.
+#' 
+#' Before you try to enable Detective, make sure that your account has been
+#' enrolled in Amazon GuardDuty for at least 48 hours. If you do not meet
+#' this requirement, you cannot enable Detective. If you do meet the
+#' GuardDuty prerequisite, then when you make the request to enable
+#' Detective, it checks whether your data volume is within the Detective
+#' quota. If it exceeds the quota, then you cannot enable Detective.
 #' 
 #' The operation also enables Detective for the calling account in the
 #' currently selected Region. It returns the ARN of the new behavior graph.
@@ -96,10 +101,9 @@ detective_create_graph <- function() {
 }
 .detective$operations$create_graph <- detective_create_graph
 
-#' Amazon Detective is currently in preview
+#' Sends a request to invite the specified AWS accounts to be member
+#' accounts in the behavior graph
 #'
-#' Amazon Detective is currently in preview.
-#' 
 #' Sends a request to invite the specified AWS accounts to be member
 #' accounts in the behavior graph. This operation can only be called by the
 #' master account for a behavior graph.
@@ -166,10 +170,8 @@ detective_create_members <- function(GraphArn, Message = NULL, Accounts) {
 }
 .detective$operations$create_members <- detective_create_members
 
-#' Amazon Detective is currently in preview
+#' Disables the specified behavior graph and queues it to be deleted
 #'
-#' Amazon Detective is currently in preview.
-#' 
 #' Disables the specified behavior graph and queues it to be deleted. This
 #' operation removes the graph from each member account\'s list of behavior
 #' graphs.
@@ -209,10 +211,9 @@ detective_delete_graph <- function(GraphArn) {
 }
 .detective$operations$delete_graph <- detective_delete_graph
 
-#' Amazon Detective is currently in preview
+#' Deletes one or more member accounts from the master account behavior
+#' graph
 #'
-#' Amazon Detective is currently in preview.
-#' 
 #' Deletes one or more member accounts from the master account behavior
 #' graph. This operation can only be called by a Detective master account.
 #' That account cannot use `DeleteMembers` to delete their own account from
@@ -256,10 +257,8 @@ detective_delete_members <- function(GraphArn, AccountIds) {
 }
 .detective$operations$delete_members <- detective_delete_members
 
-#' Amazon Detective is currently in preview
+#' Removes the member account from the specified behavior graph
 #'
-#' Amazon Detective is currently in preview.
-#' 
 #' Removes the member account from the specified behavior graph. This
 #' operation can only be called by a member account that has the `ENABLED`
 #' status.
@@ -299,10 +298,9 @@ detective_disassociate_membership <- function(GraphArn) {
 }
 .detective$operations$disassociate_membership <- detective_disassociate_membership
 
-#' Amazon Detective is currently in preview
+#' Returns the membership details for specified member accounts for a
+#' behavior graph
 #'
-#' Amazon Detective is currently in preview.
-#' 
 #' Returns the membership details for specified member accounts for a
 #' behavior graph.
 #'
@@ -346,10 +344,9 @@ detective_get_members <- function(GraphArn, AccountIds) {
 }
 .detective$operations$get_members <- detective_get_members
 
-#' Amazon Detective is currently in preview
+#' Returns the list of behavior graphs that the calling account is a master
+#' of
 #'
-#' Amazon Detective is currently in preview.
-#' 
 #' Returns the list of behavior graphs that the calling account is a master
 #' of. This operation can only be called by a master account.
 #' 
@@ -394,10 +391,9 @@ detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .detective$operations$list_graphs <- detective_list_graphs
 
-#' Amazon Detective is currently in preview
+#' Retrieves the list of open and accepted behavior graph invitations for
+#' the member account
 #'
-#' Amazon Detective is currently in preview.
-#' 
 #' Retrieves the list of open and accepted behavior graph invitations for
 #' the member account. This operation can only be called by a member
 #' account.
@@ -447,10 +443,8 @@ detective_list_invitations <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .detective$operations$list_invitations <- detective_list_invitations
 
-#' Amazon Detective is currently in preview
+#' Retrieves the list of member accounts for a behavior graph
 #'
-#' Amazon Detective is currently in preview.
-#' 
 #' Retrieves the list of member accounts for a behavior graph. Does not
 #' return member accounts that were removed from the behavior graph.
 #'
@@ -495,10 +489,8 @@ detective_list_members <- function(GraphArn, NextToken = NULL, MaxResults = NULL
 }
 .detective$operations$list_members <- detective_list_members
 
-#' Amazon Detective is currently in preview
+#' Rejects an invitation to contribute the account data to a behavior graph
 #'
-#' Amazon Detective is currently in preview.
-#' 
 #' Rejects an invitation to contribute the account data to a behavior
 #' graph. This operation must be called by a member account that has the
 #' `INVITED` status.
@@ -537,3 +529,54 @@ detective_reject_invitation <- function(GraphArn) {
   return(response)
 }
 .detective$operations$reject_invitation <- detective_reject_invitation
+
+#' Sends a request to enable data ingest for a member account that has a
+#' status of ACCEPTED_BUT_DISABLED
+#'
+#' Sends a request to enable data ingest for a member account that has a
+#' status of `ACCEPTED_BUT_DISABLED`.
+#' 
+#' For valid member accounts, the status is updated as follows.
+#' 
+#' -   If Detective enabled the member account, then the new status is
+#'     `ENABLED`.
+#' 
+#' -   If Detective cannot enable the member account, the status remains
+#'     `ACCEPTED_BUT_DISABLED`.
+#'
+#' @usage
+#' detective_start_monitoring_member(GraphArn, AccountId)
+#'
+#' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
+#' @param AccountId &#91;required&#93; The account ID of the member account to try to enable.
+#' 
+#' The account must be an invited member account with a status of
+#' `ACCEPTED_BUT_DISABLED`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_monitoring_member(
+#'   GraphArn = "string",
+#'   AccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname detective_start_monitoring_member
+detective_start_monitoring_member <- function(GraphArn, AccountId) {
+  op <- new_operation(
+    name = "StartMonitoringMember",
+    http_method = "POST",
+    http_path = "/graph/member/monitoringstate",
+    paginator = list()
+  )
+  input <- .detective$start_monitoring_member_input(GraphArn = GraphArn, AccountId = AccountId)
+  output <- .detective$start_monitoring_member_output()
+  config <- get_config()
+  svc <- .detective$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.detective$operations$start_monitoring_member <- detective_start_monitoring_member

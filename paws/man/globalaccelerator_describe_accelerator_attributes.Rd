@@ -11,7 +11,8 @@ globalaccelerator_describe_accelerator_attributes(AcceleratorArn)
 that you want to describe.}
 }
 \description{
-Describe the attributes of an accelerator.
+Describe the attributes of an accelerator. To see an AWS CLI example of
+describing the attributes of an accelerator, scroll down to \strong{Example}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_accelerator_attributes(

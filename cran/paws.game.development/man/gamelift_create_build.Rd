@@ -2,9 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_create_build}
 \alias{gamelift_create_build}
-\title{Creates a new Amazon GameLift build record for your game server binary
-files and points to the location of your game server build files in an
-Amazon Simple Storage Service (Amazon S3) location}
+\title{Creates a new Amazon GameLift build resource for your game server binary
+files}
 \usage{
 gamelift_create_build(Name, Version, StorageLocation, OperatingSystem,
   Tags)
@@ -18,11 +17,11 @@ strings do not need to be unique. You can use UpdateBuild to change this
 value later.}
 
 \item{StorageLocation}{Information indicating where your game build files are stored. Use this
-parameter only when creating a build with files stored in an Amazon S3
-bucket that you own. The storage location must specify an Amazon S3
-bucket name and key. The location must also specify a role ARN that you
-set up to allow Amazon GameLift to access your Amazon S3 bucket. The S3
-bucket and your new build must be in the same Region.}
+parameter only when creating a build with files stored in an S3 bucket
+that you own. The storage location must specify an S3 bucket name and
+key. The location must also specify a role ARN that you set up to allow
+Amazon GameLift to access your S3 bucket. The S3 bucket and your new
+build must be in the same Region.}
 
 \item{OperatingSystem}{The operating system that the game server binaries are built to run on.
 This value determines the type of fleet resources that you can use for
@@ -41,48 +40,42 @@ and view tags. The maximum tag limit may be lower than stated. See the
 AWS General Reference for actual tagging limits.}
 }
 \description{
-Creates a new Amazon GameLift build record for your game server binary
-files and points to the location of your game server build files in an
-Amazon Simple Storage Service (Amazon S3) location.
+Creates a new Amazon GameLift build resource for your game server binary
+files. Game server binaries must be combined into a zip file for use
+with Amazon GameLift.
 }
 \details{
-Game server binaries must be combined into a zip file for use with
-Amazon GameLift.
-
-To create new builds directly from a file directory, use the AWS CLI
-command
+When setting up a new game build for GameLift, we recommend using the
+AWS CLI command
 \strong{\href{https://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html}{upload-build}}
-. This helper command uploads build files and creates a new build record
-in one step, and automatically handles the necessary permissions.
+. This helper command combines two tasks: (1) it uploads your build
+files from a file directory to a GameLift Amazon S3 location, and (2) it
+creates a new build resource.
 
-The \code{CreateBuild} operation should be used only in the following
-scenarios:
+The \code{CreateBuild} operation can used in the following scenarios:
 \itemize{
-\item To create a new game build with build files that are in an Amazon S3
-bucket under your own AWS account. To use this option, you must
-first give Amazon GameLift access to that Amazon S3 bucket. Then
-call \code{CreateBuild} and specify a build name, operating system, and
-the Amazon S3 storage location of your game build.
-\item To upload build files directly to Amazon GameLift\'s Amazon S3
-account. To use this option, first call \code{CreateBuild} and specify a
-build name and operating system. This action creates a new build
-record and returns an Amazon S3 storage location (bucket and key
-only) and temporary access credentials. Use the credentials to
-manually upload your build file to the provided storage location
-(see the Amazon S3 topic \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html}{Uploading Objects}).
-You can upload build files to the GameLift Amazon S3 location only
-once.
+\item To create a new game build with build files that are in an S3
+location under an AWS account that you control. To use this option,
+you must first give Amazon GameLift access to the S3 bucket. With
+permissions in place, call \code{CreateBuild} and specify a build name,
+operating system, and the S3 storage location of your game build.
+\item To directly upload your build files to a GameLift S3 location. To
+use this option, first call \code{CreateBuild} and specify a build name
+and operating system. This action creates a new build resource and
+also returns an S3 location with temporary access credentials. Use
+the credentials to manually upload your build files to the specified
+S3 location. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html}{Uploading Objects}
+in the \emph{Amazon S3 Developer Guide}. Build files can be uploaded to
+the GameLift S3 location once only; that can\'t be updated.
 }
 
-If successful, this operation creates a new build record with a unique
-build ID and places it in \code{INITIALIZED} status. You can use
-DescribeBuild to check the status of your build. A build must be in
-\code{READY} status before it can be used to create fleets.
+If successful, this operation creates a new build resource with a unique
+build ID and places it in \code{INITIALIZED} status. A build must be in
+\code{READY} status before you can create fleets with it.
 
 \strong{Learn more}
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html}{Uploading Your Game}
-\url{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build}{Create a Build with Files in Amazon S3}
 

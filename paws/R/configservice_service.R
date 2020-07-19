@@ -100,7 +100,7 @@ NULL
 #'  \link[=configservice_describe_pending_aggregation_requests]{describe_pending_aggregation_requests} \tab Returns a list of all pending aggregation requests \cr
 #'  \link[=configservice_describe_remediation_configurations]{describe_remediation_configurations} \tab Returns the details of one or more remediation configurations \cr
 #'  \link[=configservice_describe_remediation_exceptions]{describe_remediation_exceptions} \tab Returns the details of one or more remediation exceptions \cr
-#'  \link[=configservice_describe_remediation_execution_status]{describe_remediation_execution_status} \tab Provides a detailed view of a Remediation Execution for a set of resources including state, timestamps for when steps for the remediation execution occur, and any error messages for steps that have failed\cr
+#'  \link[=configservice_describe_remediation_execution_status]{describe_remediation_execution_status} \tab Provides a detailed view of a Remediation Execution for a set of resources including state, timestamps for when steps for the remediation execution occur, and any error messages for steps that have failed \cr
 #'  \link[=configservice_describe_retention_configurations]{describe_retention_configurations} \tab Returns the details of one or more retention configurations \cr
 #'  \link[=configservice_get_aggregate_compliance_details_by_config_rule]{get_aggregate_compliance_details_by_config_rule} \tab Returns the evaluation results for the specified AWS Config rule for a specific resource in a rule \cr
 #'  \link[=configservice_get_aggregate_config_rule_compliance_summary]{get_aggregate_config_rule_compliance_summary} \tab Returns the number of compliant and noncompliant rules for one or more accounts and regions in an aggregator \cr
@@ -132,6 +132,7 @@ NULL
 #'  \link[=configservice_put_remediation_exceptions]{put_remediation_exceptions} \tab A remediation exception is when a specific resource is no longer considered for auto-remediation \cr
 #'  \link[=configservice_put_resource_config]{put_resource_config} \tab Records the configuration state for the resource provided in the request \cr
 #'  \link[=configservice_put_retention_configuration]{put_retention_configuration} \tab Creates and updates the retention configuration with details about retention period (number of days) that AWS Config stores your historical information \cr
+#'  \link[=configservice_select_aggregate_resource_config]{select_aggregate_resource_config} \tab Accepts a structured query language (SQL) SELECT command and an aggregator to query configuration state of AWS resources across multiple accounts and regions, performs the corresponding search, and returns resource configurations matching the properties\cr
 #'  \link[=configservice_select_resource_config]{select_resource_config} \tab Accepts a structured query language (SQL) SELECT command, performs the corresponding search, and returns resource configurations matching the properties \cr
 #'  \link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation} \tab Runs an on-demand evaluation for the specified AWS Config rules against the last known configuration state of the resources \cr
 #'  \link[=configservice_start_configuration_recorder]{start_configuration_recorder} \tab Starts recording configurations of the AWS resources you have selected to record in your AWS account \cr
@@ -156,7 +157,7 @@ configservice <- function(config = list()) {
 
 .configservice$metadata <- list(
   service_name = "config",
-  endpoints = list("*" = list(endpoint = "config.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "config.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "config.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "config.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "config.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "config.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Config Service",
   api_version = "2014-11-12",
   signing_name = NULL,

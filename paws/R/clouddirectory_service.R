@@ -132,7 +132,7 @@ clouddirectory <- function(config = list()) {
 
 .clouddirectory$metadata <- list(
   service_name = "clouddirectory",
-  endpoints = list("*" = list(endpoint = "clouddirectory.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "clouddirectory.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "clouddirectory.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "clouddirectory.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "clouddirectory.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "clouddirectory.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CloudDirectory",
   api_version = "2017-01-11",
   signing_name = "clouddirectory",

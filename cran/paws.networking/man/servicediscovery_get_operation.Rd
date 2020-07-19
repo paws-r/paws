@@ -16,7 +16,7 @@ response, such as a \code{CreateService} request.
 }
 \details{
 To get a list of operations that match specified criteria, see
-ListOperations.
+\href{https://docs.aws.amazon.com/cloud-map/latest/api/API_ListOperations.html}{ListOperations}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_operation(
@@ -25,4 +25,13 @@ ListOperations.
 }
 }
 
+\examples{
+\dontrun{
+# Example: Get operation result
+svc$get_operation(
+  OperationId = "gv4g5meo7ndmeh4fqskygvk23d2fijwa-k9302yzd"
+)
+}
+
+}
 \keyword{internal}

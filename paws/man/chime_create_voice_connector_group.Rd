@@ -14,9 +14,9 @@ chime_create_voice_connector_group(Name, VoiceConnectorItems)
 }
 \description{
 Creates an Amazon Chime Voice Connector group under the administrator\'s
-AWS account. You can associate up to three existing Amazon Chime Voice
-Connectors with the Amazon Chime Voice Connector group by including
-\code{VoiceConnectorItems} in the request.
+AWS account. You can associate Amazon Chime Voice Connectors with the
+Amazon Chime Voice Connector group by including \code{VoiceConnectorItems} in
+the request.
 }
 \details{
 You can include Amazon Chime Voice Connectors from different AWS Regions

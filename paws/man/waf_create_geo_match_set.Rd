@@ -2,9 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_create_geo_match_set}
 \alias{waf_create_geo_match_set}
-\title{Creates an GeoMatchSet, which you use to specify which web requests you
-want to allow or block based on the country that the requests originate
-from}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 waf_create_geo_match_set(Name, ChangeToken)
 }
@@ -15,14 +13,23 @@ waf_create_geo_match_set(Name, ChangeToken)
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
+}
+\details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Creates an GeoMatchSet, which you use to specify which web requests you
 want to allow or block based on the country that the requests originate
 from. For example, if you\'re receiving a lot of requests from one or
 more countries and you want to block the requests, you can create an
 \code{GeoMatchSet} that contains those countries and then configure AWS WAF
 to block the requests.
-}
-\details{
+
 To create and configure a \code{GeoMatchSet}, perform the following steps:
 \enumerate{
 \item Use GetChangeToken to get the change token that you provide in the

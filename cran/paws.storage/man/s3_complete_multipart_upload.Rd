@@ -81,8 +81,7 @@ been aborted or completed.
 }
 }
 
-The following operations are related to
-\code{DeleteBucketMetricsConfiguration}:
+The following operations are related to \code{CompleteMultipartUpload}:
 \itemize{
 \item CreateMultipartUpload
 \item UploadPart

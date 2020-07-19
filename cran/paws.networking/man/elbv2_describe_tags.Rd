@@ -7,7 +7,8 @@
 elbv2_describe_tags(ResourceArns)
 }
 \arguments{
-\item{ResourceArns}{[required] The Amazon Resource Names (ARN) of the resources.}
+\item{ResourceArns}{[required] The Amazon Resource Names (ARN) of the resources. You can specify up to
+20 resources in a single call.}
 }
 \description{
 Describes the tags for the specified resources. You can describe the

@@ -6,9 +6,9 @@ NULL
 #'
 #' @description
 #' AWS IoT Events monitors your equipment or device fleets for failures or
-#' changes in operation, and triggers actions when such events occur. AWS
-#' IoT Events API commands enable you to create, read, update and delete
-#' inputs and detector models, and to list their versions.
+#' changes in operation, and triggers actions when such events occur. You
+#' can use AWS IoT Events API operations to create, read, update, and
+#' delete inputs and detector models, and to list their versions.
 #'
 #' @param
 #' config
@@ -75,7 +75,7 @@ iotevents <- function(config = list()) {
 
 .iotevents$metadata <- list(
   service_name = "iotevents",
-  endpoints = list("*" = list(endpoint = "iotevents.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "iotevents.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "iotevents.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "iotevents.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "iotevents.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "iotevents.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "IoT Events",
   api_version = "2018-07-27",
   signing_name = "iotevents",

@@ -2,14 +2,14 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_describe_db_cluster_parameters}
 \alias{docdb_describe_db_cluster_parameters}
-\title{Returns the detailed parameter list for a particular DB cluster
-parameter group}
+\title{Returns the detailed parameter list for a particular cluster parameter
+group}
 \usage{
 docdb_describe_db_cluster_parameters(DBClusterParameterGroupName,
   Source, Filters, MaxRecords, Marker)
 }
 \arguments{
-\item{DBClusterParameterGroupName}{[required] The name of a specific DB cluster parameter group to return parameter
+\item{DBClusterParameterGroupName}{[required] The name of a specific cluster parameter group to return parameter
 details for.
 
 Constraints:
@@ -37,8 +37,8 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
-Returns the detailed parameter list for a particular DB cluster
-parameter group.
+Returns the detailed parameter list for a particular cluster parameter
+group.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_db_cluster_parameters(

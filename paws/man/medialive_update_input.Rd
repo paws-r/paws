@@ -4,11 +4,13 @@
 \alias{medialive_update_input}
 \title{Updates an input}
 \usage{
-medialive_update_input(Destinations, InputId, InputSecurityGroups,
-  MediaConnectFlows, Name, RoleArn, Sources)
+medialive_update_input(Destinations, InputDevices, InputId,
+  InputSecurityGroups, MediaConnectFlows, Name, RoleArn, Sources)
 }
 \arguments{
 \item{Destinations}{Destination settings for PUSH type inputs.}
+
+\item{InputDevices}{Settings for the devices.}
 
 \item{InputId}{[required] Unique ID of the input.}
 
@@ -34,6 +36,11 @@ Updates an input.
   Destinations = list(
     list(
       StreamName = "string"
+    )
+  ),
+  InputDevices = list(
+    list(
+      Id = "string"
     )
   ),
   InputId = "string",

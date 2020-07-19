@@ -14,7 +14,7 @@ iot_test_invoke_authorizer(authorizerName, token, tokenSignature,
 \item{token}{The token returned by your custom authentication service.}
 
 \item{tokenSignature}{The signature made with the token and your custom authentication
-service\'s private key.}
+service\'s private key. This value must be Base-64-encoded.}
 
 \item{httpContext}{Specifies a test HTTP authorization request.}
 

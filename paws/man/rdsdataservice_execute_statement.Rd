@@ -22,7 +22,9 @@ structures.}
 
 \item{includeResultMetadata}{A value that indicates whether to include metadata in the results.}
 
-\item{parameters}{The parameters for the SQL statement.}
+\item{parameters}{The parameters for the SQL statement.
+
+Array parameters are not supported.}
 
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.}
 
@@ -49,9 +51,8 @@ If a call isn\'t part of a transaction because it doesn\'t include the
 \code{transactionID} parameter, changes that result from the call are
 committed automatically.
 
-The response size limit is 1 MB or 1,000 records. If the call returns
-more than 1 MB of response data or over 1,000 records, the call is
-terminated.
+The response size limit is 1 MB. If the call returns more than 1 MB of
+response data, the call is terminated.
 }
 \section{Request syntax}{
 \preformatted{svc$execute_statement(

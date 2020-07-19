@@ -2,7 +2,8 @@
 % Please edit documentation in R/lakeformation_operations.R
 \name{lakeformation_put_data_lake_settings}
 \alias{lakeformation_put_data_lake_settings}
-\title{The AWS Lake Formation principal}
+\title{Sets the list of data lake administrators who have admin privileges on
+all resources managed by Lake Formation}
 \usage{
 lakeformation_put_data_lake_settings(CatalogId, DataLakeSettings)
 }
@@ -12,10 +13,18 @@ Data Catalog is the persistent metadata store. It contains database
 definitions, table definitions, and other control information to manage
 your AWS Lake Formation environment.}
 
-\item{DataLakeSettings}{[required] A list of AWS Lake Formation principals.}
+\item{DataLakeSettings}{[required] A structure representing a list of AWS Lake Formation principals
+designated as data lake administrators.}
 }
 \description{
-The AWS Lake Formation principal.
+Sets the list of data lake administrators who have admin privileges on
+all resources managed by Lake Formation. For more information on admin
+privileges, see \href{https://docs.aws.amazon.com/lake-formation/latest/dg/lake-formation-permissions.html}{Granting Lake Formation Permissions}.
+}
+\details{
+This API replaces the current list of data lake admins with the new list
+being passed. To add an admin, fetch the current list and add the new
+admin to that list and pass that list in this API.
 }
 \section{Request syntax}{
 \preformatted{svc$put_data_lake_settings(
@@ -32,7 +41,7 @@ The AWS Lake Formation principal.
           DataLakePrincipalIdentifier = "string"
         ),
         Permissions = list(
-          "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+          "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
         )
       )
     ),
@@ -42,9 +51,12 @@ The AWS Lake Formation principal.
           DataLakePrincipalIdentifier = "string"
         ),
         Permissions = list(
-          "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+          "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
         )
       )
+    ),
+    TrustedResourceOwners = list(
+      "string"
     )
   )
 )

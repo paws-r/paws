@@ -7,7 +7,8 @@ for a specific network interface, subnet, or VPC}
 \usage{
 ec2_create_flow_logs(DryRun, ClientToken, DeliverLogsPermissionArn,
   LogGroupName, ResourceIds, ResourceType, TrafficType,
-  LogDestinationType, LogDestination, LogFormat)
+  LogDestinationType, LogDestination, LogFormat, TagSpecifications,
+  MaxAggregationInterval)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -79,9 +80,19 @@ field.
 
 Specify the fields using the \verb{$\\\{field-id\\\}} format, separated by spaces.
 For the AWS CLI, use single quotation marks (\' \') to surround the
-parameter value.
+parameter value.}
 
-Only applicable to flow logs that are published to an Amazon S3 bucket.}
+\item{TagSpecifications}{The tags to apply to the flow logs.}
+
+\item{MaxAggregationInterval}{The maximum interval of time during which a flow of packets is captured
+and aggregated into a flow log record. You can specify 60 seconds (1
+minute) or 600 seconds (10 minutes).
+
+When a network interface is attached to a \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Nitro-based instance},
+the aggregation interval is always 60 seconds or less, regardless of the
+value that you specify.
+
+Default: 600}
 }
 \description{
 Creates one or more flow logs to capture information about IP traffic
@@ -115,7 +126,19 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   TrafficType = "ACCEPT"|"REJECT"|"ALL",
   LogDestinationType = "cloud-watch-logs"|"s3",
   LogDestination = "string",
-  LogFormat = "string"
+  LogFormat = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
+  MaxAggregationInterval = 123
 )
 }
 }

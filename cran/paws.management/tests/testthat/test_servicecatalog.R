@@ -2,6 +2,18 @@ context("servicecatalog")
 
 svc <- paws::servicecatalog()
 
+test_that("describe_product", {
+  expect_error(svc$describe_product(), NA)
+})
+
+test_that("describe_product_as_admin", {
+  expect_error(svc$describe_product_as_admin(), NA)
+})
+
+test_that("describe_provisioning_artifact", {
+  expect_error(svc$describe_provisioning_artifact(), NA)
+})
+
 test_that("list_accepted_portfolio_shares", {
   expect_error(svc$list_accepted_portfolio_shares(), NA)
 })

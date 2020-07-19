@@ -6,7 +6,8 @@
 \usage{
 imagebuilder_create_image_pipeline(name, description, imageRecipeArn,
   infrastructureConfigurationArn, distributionConfigurationArn,
-  imageTestsConfiguration, schedule, status, tags, clientToken)
+  imageTestsConfiguration, enhancedImageMetadataEnabled, schedule, status,
+  tags, clientToken)
 }
 \arguments{
 \item{name}{[required] The name of the image pipeline.}
@@ -24,6 +25,11 @@ will be used to configure and distribute images created by this image
 pipeline.}
 
 \item{imageTestsConfiguration}{The image test configuration of the image pipeline.}
+
+\item{enhancedImageMetadataEnabled}{Collects additional information about the image being created, including
+the operating system (OS) version and package list. This information is
+used to enhance the overall experience of using EC2 Image Builder.
+Enabled by default.}
 
 \item{schedule}{The schedule of the image pipeline.}
 
@@ -48,6 +54,7 @@ creation and distribution of images.
     imageTestsEnabled = TRUE|FALSE,
     timeoutMinutes = 123
   ),
+  enhancedImageMetadataEnabled = TRUE|FALSE,
   schedule = list(
     scheduleExpression = "string",
     pipelineExecutionStartCondition = "EXPRESSION_MATCH_ONLY"|"EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"

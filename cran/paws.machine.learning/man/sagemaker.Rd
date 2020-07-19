@@ -11,6 +11,12 @@ sagemaker(config = list())
 }
 \description{
 Provides APIs for creating and managing Amazon SageMaker resources.
+
+Other Resources:
+\itemize{
+\item \href{https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html#first-time-user}{Amazon SageMaker Developer Guide}
+\item \href{https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/Welcome.html}{Amazon Augmented AI Runtime API Reference}
+}
 }
 \section{Service syntax}{
 \preformatted{svc <- sagemaker(
@@ -40,7 +46,7 @@ Provides APIs for creating and managing Amazon SageMaker resources.
 \link[=sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an AutoPilot job \cr
 \link[=sagemaker_create_code_repository]{create_code_repository} \tab Creates a Git repository as a resource in your Amazon SageMaker account \cr
 \link[=sagemaker_create_compilation_job]{create_compilation_job} \tab Starts a model compilation job \cr
-\link[=sagemaker_create_domain]{create_domain} \tab Creates a Domain for Amazon SageMaker Amazon SageMaker Studio (Studio), which can be accessed by end-users in a web browser \cr
+\link[=sagemaker_create_domain]{create_domain} \tab Creates a Domain used by SageMaker Studio \cr
 \link[=sagemaker_create_endpoint]{create_endpoint} \tab Creates an endpoint using the endpoint configuration specified in the request \cr
 \link[=sagemaker_create_endpoint_config]{create_endpoint_config} \tab Creates an endpoint configuration that Amazon SageMaker hosting services uses to deploy models \cr
 \link[=sagemaker_create_experiment]{create_experiment} \tab Creates an Amazon SageMaker \emph{experiment} \cr
@@ -60,7 +66,7 @@ Provides APIs for creating and managing Amazon SageMaker resources.
 \link[=sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job \cr
 \link[=sagemaker_create_trial]{create_trial} \tab Creates an Amazon SageMaker \emph{trial} \cr
 \link[=sagemaker_create_trial_component]{create_trial_component} \tab Creates a \emph{trial component}, which is a stage of a machine learning \emph{trial} \cr
-\link[=sagemaker_create_user_profile]{create_user_profile} \tab Creates a new user profile \cr
+\link[=sagemaker_create_user_profile]{create_user_profile} \tab Creates a user profile \cr
 \link[=sagemaker_create_workteam]{create_workteam} \tab Creates a new work team for labeling your data \cr
 \link[=sagemaker_delete_algorithm]{delete_algorithm} \tab Removes the specified algorithm from your account \cr
 \link[=sagemaker_delete_app]{delete_app} \tab Used to stop and delete an app \cr
@@ -70,6 +76,7 @@ Provides APIs for creating and managing Amazon SageMaker resources.
 \link[=sagemaker_delete_endpoint_config]{delete_endpoint_config} \tab Deletes an endpoint configuration \cr
 \link[=sagemaker_delete_experiment]{delete_experiment} \tab Deletes an Amazon SageMaker experiment \cr
 \link[=sagemaker_delete_flow_definition]{delete_flow_definition} \tab Deletes the specified flow definition \cr
+\link[=sagemaker_delete_human_task_ui]{delete_human_task_ui} \tab Use this operation to delete a worker task template (HumanTaskUi) \cr
 \link[=sagemaker_delete_model]{delete_model} \tab Deletes a model \cr
 \link[=sagemaker_delete_model_package]{delete_model_package} \tab Deletes a model package \cr
 \link[=sagemaker_delete_monitoring_schedule]{delete_monitoring_schedule} \tab Deletes a monitoring schedule \cr
@@ -85,12 +92,12 @@ Provides APIs for creating and managing Amazon SageMaker resources.
 \link[=sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an Amazon SageMaker job \cr
 \link[=sagemaker_describe_code_repository]{describe_code_repository} \tab Gets details about the specified Git repository \cr
 \link[=sagemaker_describe_compilation_job]{describe_compilation_job} \tab Returns information about a model compilation job \cr
-\link[=sagemaker_describe_domain]{describe_domain} \tab The desciption of the domain \cr
+\link[=sagemaker_describe_domain]{describe_domain} \tab The description of the domain \cr
 \link[=sagemaker_describe_endpoint]{describe_endpoint} \tab Returns the description of an endpoint \cr
 \link[=sagemaker_describe_endpoint_config]{describe_endpoint_config} \tab Returns the description of an endpoint configuration created using the CreateEndpointConfig API \cr
 \link[=sagemaker_describe_experiment]{describe_experiment} \tab Provides a list of an experiment's properties \cr
 \link[=sagemaker_describe_flow_definition]{describe_flow_definition} \tab Returns information about the specified flow definition \cr
-\link[=sagemaker_describe_human_task_ui]{describe_human_task_ui} \tab Returns information about the requested human task user interface \cr
+\link[=sagemaker_describe_human_task_ui]{describe_human_task_ui} \tab Returns information about the requested human task user interface (worker task template) \cr
 \link[=sagemaker_describe_hyper_parameter_tuning_job]{describe_hyper_parameter_tuning_job} \tab Gets a description of a hyperparameter tuning job \cr
 \link[=sagemaker_describe_labeling_job]{describe_labeling_job} \tab Gets information about a labeling job \cr
 \link[=sagemaker_describe_model]{describe_model} \tab Describes a model that you created using the CreateModel API \cr
@@ -104,7 +111,8 @@ Provides APIs for creating and managing Amazon SageMaker resources.
 \link[=sagemaker_describe_transform_job]{describe_transform_job} \tab Returns information about a transform job \cr
 \link[=sagemaker_describe_trial]{describe_trial} \tab Provides a list of a trial's properties \cr
 \link[=sagemaker_describe_trial_component]{describe_trial_component} \tab Provides a list of a trials component's properties \cr
-\link[=sagemaker_describe_user_profile]{describe_user_profile} \tab Describes the user profile \cr
+\link[=sagemaker_describe_user_profile]{describe_user_profile} \tab Describes a user profile \cr
+\link[=sagemaker_describe_workforce]{describe_workforce} \tab Lists private workforce information, including workforce name, Amazon Resource Name (ARN), and, if applicable, allowed IP address ranges (CIDRs) \cr
 \link[=sagemaker_describe_workteam]{describe_workteam} \tab Gets information about a specific work team \cr
 \link[=sagemaker_disassociate_trial_component]{disassociate_trial_component} \tab Disassociates a trial component from a trial \cr
 \link[=sagemaker_get_search_suggestions]{get_search_suggestions} \tab An auto-complete API for the search functionality in the Amazon SageMaker console \cr
@@ -153,7 +161,7 @@ Provides APIs for creating and managing Amazon SageMaker resources.
 \link[=sagemaker_stop_training_job]{stop_training_job} \tab Stops a training job \cr
 \link[=sagemaker_stop_transform_job]{stop_transform_job} \tab Stops a transform job \cr
 \link[=sagemaker_update_code_repository]{update_code_repository} \tab Updates the specified Git repository with the specified values \cr
-\link[=sagemaker_update_domain]{update_domain} \tab Updates a domain \cr
+\link[=sagemaker_update_domain]{update_domain} \tab Updates the default settings for new user profiles in the domain \cr
 \link[=sagemaker_update_endpoint]{update_endpoint} \tab Deploys the new EndpointConfig specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous EndpointConfig (there is no availability loss)\cr
 \link[=sagemaker_update_endpoint_weights_and_capacities]{update_endpoint_weights_and_capacities} \tab Updates variant weight of one or more variants associated with an existing endpoint, or capacity of one variant associated with an existing endpoint \cr
 \link[=sagemaker_update_experiment]{update_experiment} \tab Adds, updates, or removes the description of an experiment \cr
@@ -163,6 +171,7 @@ Provides APIs for creating and managing Amazon SageMaker resources.
 \link[=sagemaker_update_trial]{update_trial} \tab Updates the display name of a trial \cr
 \link[=sagemaker_update_trial_component]{update_trial_component} \tab Updates one or more properties of a trial component \cr
 \link[=sagemaker_update_user_profile]{update_user_profile} \tab Updates a user profile \cr
+\link[=sagemaker_update_workforce]{update_workforce} \tab Restricts access to tasks assigned to workers in the specified workforce to those within specific ranges of IP addresses \cr
 \link[=sagemaker_update_workteam]{update_workteam} \tab Updates an existing work team with new member definitions or description
 }
 }

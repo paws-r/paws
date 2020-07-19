@@ -3,6 +3,56 @@
 #' @include globalaccelerator_service.R
 NULL
 
+#' Advertises an IPv4 address range that is provisioned for use with your
+#' AWS resources through bring your own IP addresses (BYOIP)
+#'
+#' Advertises an IPv4 address range that is provisioned for use with your
+#' AWS resources through bring your own IP addresses (BYOIP). It can take a
+#' few minutes before traffic to the specified addresses starts routing to
+#' AWS because of propagation delays. To see an AWS CLI example of
+#' advertising an address range, scroll down to **Example**.
+#' 
+#' To stop advertising the BYOIP address range, use
+#' [WithdrawByoipCidr](https://docs.aws.amazon.com/global-accelerator/latest/api/WithdrawByoipCidr.html).
+#' 
+#' For more information, see [Bring Your Own IP Addresses
+#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
+#' in the *AWS Global Accelerator Developer Guide*.
+#'
+#' @usage
+#' globalaccelerator_advertise_byoip_cidr(Cidr)
+#'
+#' @param Cidr &#91;required&#93; The address range, in CIDR notation. This must be the exact range that
+#' you provisioned. You can\'t advertise only a portion of the provisioned
+#' range.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$advertise_byoip_cidr(
+#'   Cidr = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_advertise_byoip_cidr
+globalaccelerator_advertise_byoip_cidr <- function(Cidr) {
+  op <- new_operation(
+    name = "AdvertiseByoipCidr",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$advertise_byoip_cidr_input(Cidr = Cidr)
+  output <- .globalaccelerator$advertise_byoip_cidr_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$advertise_byoip_cidr <- globalaccelerator_advertise_byoip_cidr
+
 #' Create an accelerator
 #'
 #' Create an accelerator. An accelerator includes one or more listeners
@@ -11,17 +61,34 @@ NULL
 #' Balancers. To see an AWS CLI example of creating an accelerator, scroll
 #' down to **Example**.
 #' 
-#' You must specify the US-West-2 (Oregon) Region to create or update
+#' If you bring your own IP address ranges to AWS Global Accelerator
+#' (BYOIP), you can assign IP addresses from your own pool to your
+#' accelerator as the static IP address entry points. Only one IP address
+#' from each of your IP address ranges can be used for each accelerator.
+#' 
+#' You must specify the US West (Oregon) Region to create or update
 #' accelerators.
 #'
 #' @usage
-#' globalaccelerator_create_accelerator(Name, IpAddressType, Enabled,
-#'   IdempotencyToken)
+#' globalaccelerator_create_accelerator(Name, IpAddressType, IpAddresses,
+#'   Enabled, IdempotencyToken, Tags)
 #'
 #' @param Name &#91;required&#93; The name of an accelerator. The name can have a maximum of 32
 #' characters, must contain only alphanumeric characters or hyphens (-),
 #' and must not begin or end with a hyphen.
 #' @param IpAddressType The value for the address type must be IPv4.
+#' @param IpAddresses Optionally, if you\'ve added your own IP address pool to Global
+#' Accelerator, you can choose IP addresses from your own pool to use for
+#' the accelerator\'s static IP addresses. You can specify one or two
+#' addresses, separated by a comma. Do not include the /32 suffix.
+#' 
+#' If you specify only one IP address from your IP address range, Global
+#' Accelerator assigns a second static IP address for the accelerator from
+#' the AWS IP address pool.
+#' 
+#' For more information, see [Bring Your Own IP Addresses
+#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
+#' in the *AWS Global Accelerator Developer Guide*.
 #' @param Enabled Indicates whether an accelerator is enabled. The value is true or false.
 #' The default value is true.
 #' 
@@ -29,28 +96,42 @@ NULL
 #' false, the accelerator can be deleted.
 #' @param IdempotencyToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency---that is, the uniqueness---of an accelerator.
+#' @param Tags Create tags for an accelerator.
+#' 
+#' For more information, see [Tagging in AWS Global
+#' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
+#' in the *AWS Global Accelerator Developer Guide*.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_accelerator(
 #'   Name = "string",
 #'   IpAddressType = "IPV4",
+#'   IpAddresses = list(
+#'     "string"
+#'   ),
 #'   Enabled = TRUE|FALSE,
-#'   IdempotencyToken = "string"
+#'   IdempotencyToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_create_accelerator
-globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, Enabled = NULL, IdempotencyToken) {
+globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpAddresses = NULL, Enabled = NULL, IdempotencyToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateAccelerator",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .globalaccelerator$create_accelerator_input(Name = Name, IpAddressType = IpAddressType, Enabled = Enabled, IdempotencyToken = IdempotencyToken)
+  input <- .globalaccelerator$create_accelerator_input(Name = Name, IpAddressType = IpAddressType, IpAddresses = IpAddresses, Enabled = Enabled, IdempotencyToken = IdempotencyToken, Tags = Tags)
   output <- .globalaccelerator$create_accelerator_output()
   config <- get_config()
   svc <- .globalaccelerator$service(config)
@@ -223,9 +304,27 @@ globalaccelerator_create_listener <- function(AcceleratorArn, PortRanges, Protoc
 
 #' Delete an accelerator
 #'
-#' Delete an accelerator. Note: before you can delete an accelerator, you
-#' must disable it and remove all dependent resources (listeners and
-#' endpoint groups).
+#' Delete an accelerator. Before you can delete an accelerator, you must
+#' disable it and remove all dependent resources (listeners and endpoint
+#' groups). To disable the accelerator, update the accelerator to set
+#' `Enabled` to false.
+#' 
+#' When you create an accelerator, by default, Global Accelerator provides
+#' you with a set of two static IP addresses. Alternatively, you can bring
+#' your own IP address ranges to Global Accelerator and assign IP addresses
+#' from those ranges.
+#' 
+#' The IP addresses are assigned to your accelerator for as long as it
+#' exists, even if you disable the accelerator and it no longer accepts or
+#' routes traffic. However, when you *delete* an accelerator, you lose the
+#' static IP addresses that are assigned to the accelerator, so you can no
+#' longer route traffic by using them. As a best practice, ensure that you
+#' have permissions in place to avoid inadvertently deleting accelerators.
+#' You can use IAM policies with Global Accelerator to limit the users who
+#' have permissions to delete an accelerator. For more information, see
+#' [Authentication and Access
+#' Control](https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html)
+#' in the *AWS Global Accelerator Developer Guide*.
 #'
 #' @usage
 #' globalaccelerator_delete_accelerator(AcceleratorArn)
@@ -331,6 +430,58 @@ globalaccelerator_delete_listener <- function(ListenerArn) {
 }
 .globalaccelerator$operations$delete_listener <- globalaccelerator_delete_listener
 
+#' Releases the specified address range that you provisioned to use with
+#' your AWS resources through bring your own IP addresses (BYOIP) and
+#' deletes the corresponding address pool
+#'
+#' Releases the specified address range that you provisioned to use with
+#' your AWS resources through bring your own IP addresses (BYOIP) and
+#' deletes the corresponding address pool. To see an AWS CLI example of
+#' deprovisioning an address range, scroll down to **Example**.
+#' 
+#' Before you can release an address range, you must stop advertising it by
+#' using
+#' [WithdrawByoipCidr](https://docs.aws.amazon.com/global-accelerator/latest/api/WithdrawByoipCidr.html)
+#' and you must not have any accelerators that are using static IP
+#' addresses allocated from its address range.
+#' 
+#' For more information, see [Bring Your Own IP Addresses
+#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
+#' in the *AWS Global Accelerator Developer Guide*.
+#'
+#' @usage
+#' globalaccelerator_deprovision_byoip_cidr(Cidr)
+#'
+#' @param Cidr &#91;required&#93; The address range, in CIDR notation. The prefix must be the same prefix
+#' that you specified when you provisioned the address range.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deprovision_byoip_cidr(
+#'   Cidr = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_deprovision_byoip_cidr
+globalaccelerator_deprovision_byoip_cidr <- function(Cidr) {
+  op <- new_operation(
+    name = "DeprovisionByoipCidr",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$deprovision_byoip_cidr_input(Cidr = Cidr)
+  output <- .globalaccelerator$deprovision_byoip_cidr_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$deprovision_byoip_cidr <- globalaccelerator_deprovision_byoip_cidr
+
 #' Describe an accelerator
 #'
 #' Describe an accelerator. To see an AWS CLI example of describing an
@@ -370,7 +521,8 @@ globalaccelerator_describe_accelerator <- function(AcceleratorArn) {
 
 #' Describe the attributes of an accelerator
 #'
-#' Describe the attributes of an accelerator.
+#' Describe the attributes of an accelerator. To see an AWS CLI example of
+#' describing the attributes of an accelerator, scroll down to **Example**.
 #'
 #' @usage
 #' globalaccelerator_describe_accelerator_attributes(AcceleratorArn)
@@ -407,7 +559,8 @@ globalaccelerator_describe_accelerator_attributes <- function(AcceleratorArn) {
 
 #' Describe an endpoint group
 #'
-#' Describe an endpoint group.
+#' Describe an endpoint group. To see an AWS CLI example of describing an
+#' endpoint group, scroll down to **Example**.
 #'
 #' @usage
 #' globalaccelerator_describe_endpoint_group(EndpointGroupArn)
@@ -443,7 +596,8 @@ globalaccelerator_describe_endpoint_group <- function(EndpointGroupArn) {
 
 #' Describe a listener
 #'
-#' Describe a listener.
+#' Describe a listener. To see an AWS CLI example of describing a listener,
+#' scroll down to **Example**.
 #'
 #' @usage
 #' globalaccelerator_describe_listener(ListenerArn)
@@ -479,7 +633,8 @@ globalaccelerator_describe_listener <- function(ListenerArn) {
 
 #' List the accelerators for an AWS account
 #'
-#' List the accelerators for an AWS account.
+#' List the accelerators for an AWS account. To see an AWS CLI example of
+#' listing the accelerators for an AWS account, scroll down to **Example**.
 #'
 #' @usage
 #' globalaccelerator_list_accelerators(MaxResults, NextToken)
@@ -517,9 +672,58 @@ globalaccelerator_list_accelerators <- function(MaxResults = NULL, NextToken = N
 }
 .globalaccelerator$operations$list_accelerators <- globalaccelerator_list_accelerators
 
+#' Lists the IP address ranges that were specified in calls to
+#' ProvisionByoipCidr, including the current state and a history of state
+#' changes
+#'
+#' Lists the IP address ranges that were specified in calls to
+#' [ProvisionByoipCidr](https://docs.aws.amazon.com/global-accelerator/latest/api/ProvisionByoipCidr.html),
+#' including the current state and a history of state changes.
+#' 
+#' To see an AWS CLI example of listing BYOIP CIDR addresses, scroll down
+#' to **Example**.
+#'
+#' @usage
+#' globalaccelerator_list_byoip_cidrs(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of results to return with a single call. To retrieve
+#' the remaining results, make another call with the returned `nextToken`
+#' value.
+#' @param NextToken The token for the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_byoip_cidrs(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_list_byoip_cidrs
+globalaccelerator_list_byoip_cidrs <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListByoipCidrs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$list_byoip_cidrs_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .globalaccelerator$list_byoip_cidrs_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$list_byoip_cidrs <- globalaccelerator_list_byoip_cidrs
+
 #' List the endpoint groups that are associated with a listener
 #'
-#' List the endpoint groups that are associated with a listener.
+#' List the endpoint groups that are associated with a listener. To see an
+#' AWS CLI example of listing the endpoint groups for listener, scroll down
+#' to **Example**.
 #'
 #' @usage
 #' globalaccelerator_list_endpoint_groups(ListenerArn, MaxResults,
@@ -562,7 +766,8 @@ globalaccelerator_list_endpoint_groups <- function(ListenerArn, MaxResults = NUL
 
 #' List the listeners for an accelerator
 #'
-#' List the listeners for an accelerator.
+#' List the listeners for an accelerator. To see an AWS CLI example of
+#' listing the listeners for an accelerator, scroll down to **Example**.
 #'
 #' @usage
 #' globalaccelerator_list_listeners(AcceleratorArn, MaxResults, NextToken)
@@ -603,12 +808,211 @@ globalaccelerator_list_listeners <- function(AcceleratorArn, MaxResults = NULL, 
 }
 .globalaccelerator$operations$list_listeners <- globalaccelerator_list_listeners
 
+#' List all tags for an accelerator
+#'
+#' List all tags for an accelerator. To see an AWS CLI example of listing
+#' tags for an accelerator, scroll down to **Example**.
+#' 
+#' For more information, see [Tagging in AWS Global
+#' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
+#' in the *AWS Global Accelerator Developer Guide*.
+#'
+#' @usage
+#' globalaccelerator_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the accelerator to list tags for. An
+#' ARN uniquely identifies an accelerator.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_list_tags_for_resource
+globalaccelerator_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .globalaccelerator$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$list_tags_for_resource <- globalaccelerator_list_tags_for_resource
+
+#' Provisions an IP address range to use with your AWS resources through
+#' bring your own IP addresses (BYOIP) and creates a corresponding address
+#' pool
+#'
+#' Provisions an IP address range to use with your AWS resources through
+#' bring your own IP addresses (BYOIP) and creates a corresponding address
+#' pool. After the address range is provisioned, it is ready to be
+#' advertised using
+#' [AdvertiseByoipCidr](https://docs.aws.amazon.com/global-accelerator/latest/api/AdvertiseByoipCidr.html).
+#' 
+#' To see an AWS CLI example of provisioning an address range for BYOIP,
+#' scroll down to **Example**.
+#' 
+#' For more information, see [Bring Your Own IP Addresses
+#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
+#' in the *AWS Global Accelerator Developer Guide*.
+#'
+#' @usage
+#' globalaccelerator_provision_byoip_cidr(Cidr, CidrAuthorizationContext)
+#'
+#' @param Cidr &#91;required&#93; The public IPv4 address range, in CIDR notation. The most specific IP
+#' prefix that you can specify is /24. The address range cannot overlap
+#' with another address range that you\'ve brought to this or another
+#' Region.
+#' @param CidrAuthorizationContext &#91;required&#93; A signed document that proves that you are authorized to bring the
+#' specified IP address range to Amazon using BYOIP.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$provision_byoip_cidr(
+#'   Cidr = "string",
+#'   CidrAuthorizationContext = list(
+#'     Message = "string",
+#'     Signature = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_provision_byoip_cidr
+globalaccelerator_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContext) {
+  op <- new_operation(
+    name = "ProvisionByoipCidr",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$provision_byoip_cidr_input(Cidr = Cidr, CidrAuthorizationContext = CidrAuthorizationContext)
+  output <- .globalaccelerator$provision_byoip_cidr_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$provision_byoip_cidr <- globalaccelerator_provision_byoip_cidr
+
+#' Add tags to an accelerator resource
+#'
+#' Add tags to an accelerator resource. To see an AWS CLI example of adding
+#' tags to an accelerator, scroll down to **Example**.
+#' 
+#' For more information, see [Tagging in AWS Global
+#' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
+#' in the *AWS Global Accelerator Developer Guide*.
+#'
+#' @usage
+#' globalaccelerator_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Global Accelerator resource to add
+#' tags to. An ARN uniquely identifies a resource.
+#' @param Tags &#91;required&#93; The tags to add to a resource. A tag consists of a key and a value that
+#' you define.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_tag_resource
+globalaccelerator_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .globalaccelerator$tag_resource_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$tag_resource <- globalaccelerator_tag_resource
+
+#' Remove tags from a Global Accelerator resource
+#'
+#' Remove tags from a Global Accelerator resource. When you specify a tag
+#' key, the action removes both that key and its associated value. To see
+#' an AWS CLI example of removing tags from an accelerator, scroll down to
+#' **Example**. The operation succeeds even if you attempt to remove tags
+#' from an accelerator that was already removed.
+#' 
+#' For more information, see [Tagging in AWS Global
+#' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
+#' in the *AWS Global Accelerator Developer Guide*.
+#'
+#' @usage
+#' globalaccelerator_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Global Accelerator resource to
+#' remove tags from. An ARN uniquely identifies a resource.
+#' @param TagKeys &#91;required&#93; The tag key pairs that you want to remove from the specified resources.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_untag_resource
+globalaccelerator_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .globalaccelerator$untag_resource_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$untag_resource <- globalaccelerator_untag_resource
+
 #' Update an accelerator
 #'
 #' Update an accelerator. To see an AWS CLI example of updating an
 #' accelerator, scroll down to **Example**.
 #' 
-#' You must specify the US-West-2 (Oregon) Region to create or update
+#' You must specify the US West (Oregon) Region to create or update
 #' accelerators.
 #'
 #' @usage
@@ -679,8 +1083,14 @@ globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, Ip
 #' a bucket policy that grants AWS Global Accelerator permission to write
 #' to the bucket.
 #' @param FlowLogsS3Prefix Update the prefix for the location in the Amazon S3 bucket for the flow
-#' logs. Attribute is required if `FlowLogsEnabled` is `true`. If you don't
-#' specify a prefix, the flow logs are stored in the root of the bucket.
+#' logs. Attribute is required if `FlowLogsEnabled` is `true`.
+#' 
+#' If you don't specify a prefix, the flow logs are stored in the root of
+#' the bucket. If you specify slash (/) for the S3 bucket prefix, the log
+#' file bucket folder structure will include a double slash (//), like the
+#' following:
+#' 
+#' s3-bucket\\_name//AWSLogs/aws\\_account\\_id
 #'
 #' @section Request syntax:
 #' ```
@@ -791,7 +1201,8 @@ globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointCo
 
 #' Update a listener
 #'
-#' Update a listener.
+#' Update a listener. To see an AWS CLI example of updating listener,
+#' scroll down to **Example**.
 #'
 #' @usage
 #' globalaccelerator_update_listener(ListenerArn, PortRanges, Protocol,
@@ -859,3 +1270,51 @@ globalaccelerator_update_listener <- function(ListenerArn, PortRanges = NULL, Pr
   return(response)
 }
 .globalaccelerator$operations$update_listener <- globalaccelerator_update_listener
+
+#' Stops advertising an address range that is provisioned as an address
+#' pool
+#'
+#' Stops advertising an address range that is provisioned as an address
+#' pool. You can perform this operation at most once every 10 seconds, even
+#' if you specify different address ranges each time. To see an AWS CLI
+#' example of withdrawing an address range for BYOIP so it will no longer
+#' be advertised by AWS, scroll down to **Example**.
+#' 
+#' It can take a few minutes before traffic to the specified addresses
+#' stops routing to AWS because of propagation delays.
+#' 
+#' For more information, see [Bring Your Own IP Addresses
+#' (BYOIP)](https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
+#' in the *AWS Global Accelerator Developer Guide*.
+#'
+#' @usage
+#' globalaccelerator_withdraw_byoip_cidr(Cidr)
+#'
+#' @param Cidr &#91;required&#93; The address range, in CIDR notation.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$withdraw_byoip_cidr(
+#'   Cidr = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_withdraw_byoip_cidr
+globalaccelerator_withdraw_byoip_cidr <- function(Cidr) {
+  op <- new_operation(
+    name = "WithdrawByoipCidr",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$withdraw_byoip_cidr_input(Cidr = Cidr)
+  output <- .globalaccelerator$withdraw_byoip_cidr_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$withdraw_byoip_cidr <- globalaccelerator_withdraw_byoip_cidr

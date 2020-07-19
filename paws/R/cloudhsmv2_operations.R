@@ -8,30 +8,40 @@ NULL
 #' Copy an AWS CloudHSM cluster backup to a different region.
 #'
 #' @usage
-#' cloudhsmv2_copy_backup_to_region(DestinationRegion, BackupId)
+#' cloudhsmv2_copy_backup_to_region(DestinationRegion, BackupId, TagList)
 #'
 #' @param DestinationRegion &#91;required&#93; The AWS region that will contain your copied CloudHSM cluster backup.
 #' @param BackupId &#91;required&#93; The ID of the backup that will be copied to the destination region.
+#' @param TagList Tags to apply to the destination backup during creation. If you specify
+#' tags, only these tags will be applied to the destination backup. If you
+#' do not specify tags, the service copies tags from the source backup to
+#' the destination backup.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$copy_backup_to_region(
 #'   DestinationRegion = "string",
-#'   BackupId = "string"
+#'   BackupId = "string",
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_copy_backup_to_region
-cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId) {
+cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagList = NULL) {
   op <- new_operation(
     name = "CopyBackupToRegion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudhsmv2$copy_backup_to_region_input(DestinationRegion = DestinationRegion, BackupId = BackupId)
+  input <- .cloudhsmv2$copy_backup_to_region_input(DestinationRegion = DestinationRegion, BackupId = BackupId, TagList = TagList)
   output <- .cloudhsmv2$copy_backup_to_region_output()
   config <- get_config()
   svc <- .cloudhsmv2$service(config)
@@ -46,7 +56,7 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId) {
 #' Creates a new AWS CloudHSM cluster.
 #'
 #' @usage
-#' cloudhsmv2_create_cluster(SubnetIds, HsmType, SourceBackupId)
+#' cloudhsmv2_create_cluster(SubnetIds, HsmType, SourceBackupId, TagList)
 #'
 #' @param SubnetIds &#91;required&#93; The identifiers (IDs) of the subnets where you are creating the cluster.
 #' You must specify at least one subnet. If you specify multiple subnets,
@@ -60,6 +70,7 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId) {
 #' @param SourceBackupId The identifier (ID) of the cluster backup to restore. Use this value to
 #' restore the cluster from a backup instead of creating a new cluster. To
 #' find the backup ID, use DescribeBackups.
+#' @param TagList Tags to apply to the CloudHSM cluster during creation.
 #'
 #' @section Request syntax:
 #' ```
@@ -68,21 +79,27 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId) {
 #'     "string"
 #'   ),
 #'   HsmType = "string",
-#'   SourceBackupId = "string"
+#'   SourceBackupId = "string",
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_create_cluster
-cloudhsmv2_create_cluster <- function(SubnetIds, HsmType, SourceBackupId = NULL) {
+cloudhsmv2_create_cluster <- function(SubnetIds, HsmType, SourceBackupId = NULL, TagList = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudhsmv2$create_cluster_input(SubnetIds = SubnetIds, HsmType = HsmType, SourceBackupId = SourceBackupId)
+  input <- .cloudhsmv2$create_cluster_input(SubnetIds = SubnetIds, HsmType = HsmType, SourceBackupId = SourceBackupId, TagList = TagList)
   output <- .cloudhsmv2$create_cluster_output()
   config <- get_config()
   svc <- .cloudhsmv2$service(config)
@@ -142,8 +159,8 @@ cloudhsmv2_create_hsm <- function(ClusterId, AvailabilityZone, IpAddress = NULL)
 #' Deletes a specified AWS CloudHSM backup
 #'
 #' Deletes a specified AWS CloudHSM backup. A backup can be restored up to
-#' 7 days after the DeleteBackup request. For more information on restoring
-#' a backup, see RestoreBackup
+#' 7 days after the DeleteBackup request is made. For more information on
+#' restoring a backup, see RestoreBackup.
 #'
 #' @usage
 #' cloudhsmv2_delete_backup(BackupId)
@@ -300,7 +317,8 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
 #' 
 #' Use the `states` filter to return only backups that match the specified
 #' state.
-#' @param SortAscending 
+#' @param SortAscending Designates whether or not to sort the return backups by ascending
+#' chronological order of generation.
 #'
 #' @section Request syntax:
 #' ```
@@ -419,11 +437,10 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
 #' authority (CA). The certificate must be in PEM format and can contain a
 #' maximum of 5000 characters.
 #' @param TrustAnchor &#91;required&#93; The issuing certificate of the issuing certificate authority (CA) that
-#' issued (signed) the cluster certificate. This can be a root
-#' (self-signed) certificate or a certificate chain that begins with the
-#' certificate that issued the cluster certificate and ends with a root
-#' certificate. The certificate or certificate chain must be in PEM format
-#' and can contain a maximum of 5000 characters.
+#' issued (signed) the cluster certificate. You must use a self-signed
+#' certificate. The certificate used to sign the HSM CSR must be directly
+#' available, and thus must be the root certificate. The certificate must
+#' be in PEM format and can contain a maximum of 5000 characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -509,7 +526,7 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
 #' state
 #'
 #' Restores a specified AWS CloudHSM backup that is in the
-#' `PENDING_DELETION` state. For more information on deleting a backup, see
+#' `PENDING_DELETION` state. For mor information on deleting a backup, see
 #' DeleteBackup.
 #'
 #' @usage

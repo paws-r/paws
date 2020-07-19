@@ -10,8 +10,8 @@ autoscaling_enable_metrics_collection(AutoScalingGroupName, Metrics,
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{Metrics}{One or more of the following metrics. If you omit this parameter, all
-metrics are enabled.
+\item{Metrics}{Specifies which group-level metrics to start collecting. You can specify
+one or more of the following metrics:
 \itemize{
 \item \code{GroupMinSize}
 \item \code{GroupMaxSize}
@@ -21,7 +21,19 @@ metrics are enabled.
 \item \code{GroupStandbyInstances}
 \item \code{GroupTerminatingInstances}
 \item \code{GroupTotalInstances}
-}}
+}
+
+The instance weighting feature supports the following additional
+metrics:
+\itemize{
+\item \code{GroupInServiceCapacity}
+\item \code{GroupPendingCapacity}
+\item \code{GroupStandbyCapacity}
+\item \code{GroupTerminatingCapacity}
+\item \code{GroupTotalCapacity}
+}
+
+If you omit this parameter, all metrics are enabled.}
 
 \item{Granularity}{[required] The granularity to associate with the metrics to collect. The only valid
 value is \verb{1Minute}.}

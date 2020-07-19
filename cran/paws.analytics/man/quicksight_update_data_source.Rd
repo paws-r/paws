@@ -126,8 +126,97 @@ Updates a data source.
   Credentials = list(
     CredentialPair = list(
       Username = "string",
-      Password = "string"
-    )
+      Password = "string",
+      AlternateDataSourceParameters = list(
+        list(
+          AmazonElasticsearchParameters = list(
+            Domain = "string"
+          ),
+          AthenaParameters = list(
+            WorkGroup = "string"
+          ),
+          AuroraParameters = list(
+            Host = "string",
+            Port = 123,
+            Database = "string"
+          ),
+          AuroraPostgreSqlParameters = list(
+            Host = "string",
+            Port = 123,
+            Database = "string"
+          ),
+          AwsIotAnalyticsParameters = list(
+            DataSetName = "string"
+          ),
+          JiraParameters = list(
+            SiteBaseUrl = "string"
+          ),
+          MariaDbParameters = list(
+            Host = "string",
+            Port = 123,
+            Database = "string"
+          ),
+          MySqlParameters = list(
+            Host = "string",
+            Port = 123,
+            Database = "string"
+          ),
+          PostgreSqlParameters = list(
+            Host = "string",
+            Port = 123,
+            Database = "string"
+          ),
+          PrestoParameters = list(
+            Host = "string",
+            Port = 123,
+            Catalog = "string"
+          ),
+          RdsParameters = list(
+            InstanceId = "string",
+            Database = "string"
+          ),
+          RedshiftParameters = list(
+            Host = "string",
+            Port = 123,
+            Database = "string",
+            ClusterId = "string"
+          ),
+          S3Parameters = list(
+            ManifestFileLocation = list(
+              Bucket = "string",
+              Key = "string"
+            )
+          ),
+          ServiceNowParameters = list(
+            SiteBaseUrl = "string"
+          ),
+          SnowflakeParameters = list(
+            Host = "string",
+            Database = "string",
+            Warehouse = "string"
+          ),
+          SparkParameters = list(
+            Host = "string",
+            Port = 123
+          ),
+          SqlServerParameters = list(
+            Host = "string",
+            Port = 123,
+            Database = "string"
+          ),
+          TeradataParameters = list(
+            Host = "string",
+            Port = 123,
+            Database = "string"
+          ),
+          TwitterParameters = list(
+            Query = "string",
+            MaxRows = 123
+          )
+        )
+      )
+    ),
+    CopySourceArn = "string"
   ),
   VpcConnectionProperties = list(
     VpcConnectionArn = "string"

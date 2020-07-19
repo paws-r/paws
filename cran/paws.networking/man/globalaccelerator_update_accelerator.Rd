@@ -27,7 +27,7 @@ Update an accelerator. To see an AWS CLI example of updating an
 accelerator, scroll down to \strong{Example}.
 }
 \details{
-You must specify the US-West-2 (Oregon) Region to create or update
+You must specify the US West (Oregon) Region to create or update
 accelerators.
 }
 \section{Request syntax}{

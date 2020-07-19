@@ -7,7 +7,7 @@
 securityhub_delete_members(AccountIds)
 }
 \arguments{
-\item{AccountIds}{A list of account IDs of the member accounts to delete.}
+\item{AccountIds}{The list of account IDs for the member accounts to delete.}
 }
 \description{
 Deletes the specified member accounts from Security Hub.

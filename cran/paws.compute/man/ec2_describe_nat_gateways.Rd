@@ -4,9 +4,15 @@
 \alias{ec2_describe_nat_gateways}
 \title{Describes one or more of your NAT gateways}
 \usage{
-ec2_describe_nat_gateways(Filter, MaxResults, NatGatewayIds, NextToken)
+ec2_describe_nat_gateways(DryRun, Filter, MaxResults, NatGatewayIds,
+  NextToken)
 }
 \arguments{
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
 \item{Filter}{One or more filters.
 \itemize{
 \item \code{nat-gateway-id} - The ID of the NAT gateway.
@@ -37,6 +43,7 @@ Describes one or more of your NAT gateways.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_nat_gateways(
+  DryRun = TRUE|FALSE,
   Filter = list(
     list(
       Name = "string",

@@ -15,15 +15,13 @@ sources that start with the string you specify.}
 retrieves the next set of results.}
 
 \item{Limit}{pecifying this limits the number of results returned by this operation.
-The operation also returns a \code{NextToken} that you can use in a
-subsequent operation to retrieve the next set of results.}
+The operation also returns a NextToken which you can use in a subsequent
+operation to retrieve the next set of results.}
 }
 \description{
 An SaaS partner can use this operation to list all the partner event
-source names that they have created.
-}
-\details{
-This operation is not used by AWS customers.
+source names that they have created. This operation is not used by AWS
+customers.
 }
 \section{Request syntax}{
 \preformatted{svc$list_partner_event_sources(

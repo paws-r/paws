@@ -8,7 +8,7 @@ sagemaker_describe_hyper_parameter_tuning_job(
   HyperParameterTuningJobName)
 }
 \arguments{
-\item{HyperParameterTuningJobName}{[required] The name of the tuning job to describe.}
+\item{HyperParameterTuningJobName}{[required] The name of the tuning job.}
 }
 \description{
 Gets a description of a hyperparameter tuning job.

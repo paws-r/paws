@@ -2,7 +2,8 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_get_lifecycle_policy_preview}
 \alias{ecr_get_lifecycle_policy_preview}
-\title{Retrieves the results of the specified lifecycle policy preview request}
+\title{Retrieves the results of the lifecycle policy preview request for the
+specified repository}
 \usage{
 ecr_get_lifecycle_policy_preview(registryId, repositoryName, imageIds,
   nextToken, maxResults, filter)
@@ -39,7 +40,8 @@ option cannot be used when you specify images with \code{imageIds}.}
 all tags, if tagged.}
 }
 \description{
-Retrieves the results of the specified lifecycle policy preview request.
+Retrieves the results of the lifecycle policy preview request for the
+specified repository.
 }
 \section{Request syntax}{
 \preformatted{svc$get_lifecycle_policy_preview(

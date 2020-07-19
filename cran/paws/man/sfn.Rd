@@ -72,7 +72,7 @@ HTTP API. For more information about Step Functions, see the \emph{\href{https:/
 \link[=sfn_stop_execution]{stop_execution} \tab Stops an execution \cr
 \link[=sfn_tag_resource]{tag_resource} \tab Add a tag to a Step Functions resource \cr
 \link[=sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource \cr
-\link[=sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition and/or roleArn
+\link[=sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration
 }
 }
 

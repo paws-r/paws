@@ -20,8 +20,8 @@ cluster.
 The custom key store that you delete cannot contain any AWS KMS
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{customer master keys (CMKs)}.
 Before deleting the key store, verify that you will never need to use
-any of the CMKs in the key store for any cryptographic operations. Then,
-use ScheduleKeyDeletion to delete the AWS KMS customer master keys
+any of the CMKs in the key store for any \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}.
+Then, use ScheduleKeyDeletion to delete the AWS KMS customer master keys
 (CMKs) from the key store. When the scheduled waiting period expires,
 the \code{ScheduleKeyDeletion} operation deletes the CMKs. Then it makes a
 best effort to delete the key material from the associated cluster.

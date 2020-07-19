@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_delete_rate_based_rule}
 \alias{waf_delete_rate_based_rule}
-\title{Permanently deletes a RateBasedRule}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 waf_delete_rate_based_rule(RuleId, ChangeToken)
 }
@@ -13,11 +13,20 @@ returned by CreateRateBasedRule and by ListRateBasedRules.}
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }
 \description{
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
+}
+\details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Permanently deletes a RateBasedRule. You can\'t delete a rule if it\'s
 still used in any \code{WebACL} objects or if it still includes any
 predicates, such as \code{ByteMatchSet} objects.
-}
-\details{
+
 If you just want to remove a rule from a \code{WebACL}, use UpdateWebACL.
 
 To permanently delete a \code{RateBasedRule} from AWS WAF, perform the

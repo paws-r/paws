@@ -2,19 +2,19 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_create_webhook}
 \alias{amplify_create_webhook}
-\title{Create a new webhook on an App}
+\title{Creates a new webhook on an Amplify app}
 \usage{
 amplify_create_webhook(appId, branchName, description)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{branchName}{[required] Name for a branch, part of an Amplify App.}
+\item{branchName}{[required] The name for a branch that is part of an Amplify app.}
 
-\item{description}{Description for a webhook.}
+\item{description}{The description for a webhook.}
 }
 \description{
-Create a new webhook on an App.
+Creates a new webhook on an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$create_webhook(

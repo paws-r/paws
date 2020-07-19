@@ -64,7 +64,7 @@ textract <- function(config = list()) {
 
 .textract$metadata <- list(
   service_name = "textract",
-  endpoints = list("*" = list(endpoint = "textract.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "textract.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "textract.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "textract.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "textract.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "textract.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Textract",
   api_version = "2018-06-27",
   signing_name = NULL,

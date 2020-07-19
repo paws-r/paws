@@ -2,8 +2,7 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_get_findings_statistics}
 \alias{guardduty_get_findings_statistics}
-\title{Lists Amazon GuardDuty findings' statistics for the specified detector
-ID}
+\title{Lists Amazon GuardDuty findings statistics for the specified detector ID}
 \usage{
 guardduty_get_findings_statistics(DetectorId, FindingStatisticTypes,
   FindingCriteria)
@@ -12,12 +11,12 @@ guardduty_get_findings_statistics(DetectorId, FindingStatisticTypes,
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
 findings\' statistics you want to retrieve.}
 
-\item{FindingStatisticTypes}{[required] Types of finding statistics to retrieve.}
+\item{FindingStatisticTypes}{[required] The types of finding statistics to retrieve.}
 
-\item{FindingCriteria}{Represents the criteria used for querying findings.}
+\item{FindingCriteria}{Represents the criteria that is used for querying findings.}
 }
 \description{
-Lists Amazon GuardDuty findings\' statistics for the specified detector
+Lists Amazon GuardDuty findings statistics for the specified detector
 ID.
 }
 \section{Request syntax}{

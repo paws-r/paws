@@ -18,7 +18,7 @@ Publishes state information.
 }
 \details{
 For more information, see \href{http://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#http}{HTTP Protocol}
-in the \emph{AWS IoT Developer Guide}.
+in the AWS IoT Developer Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$publish(

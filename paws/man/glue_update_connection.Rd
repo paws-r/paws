@@ -24,7 +24,7 @@ Updates a connection definition in the Data Catalog.
   ConnectionInput = list(
     Name = "string",
     Description = "string",
-    ConnectionType = "JDBC"|"SFTP",
+    ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA",
     MatchCriteria = list(
       "string"
     ),

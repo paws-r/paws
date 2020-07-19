@@ -2,98 +2,84 @@
 % Please edit documentation in R/support_operations.R
 \name{support_create_case}
 \alias{support_create_case}
-\title{Creates a new case in the AWS Support Center}
+\title{Creates a case in the AWS Support Center}
 \usage{
 support_create_case(subject, serviceCode, severityCode, categoryCode,
   communicationBody, ccEmailAddresses, language, issueType,
   attachmentSetId)
 }
 \arguments{
-\item{subject}{[required] The title of the AWS Support case.}
+\item{subject}{[required] The title of the AWS Support case. The title appears in the \strong{Subject}
+field on the AWS Support Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case} page.}
 
-\item{serviceCode}{The code for the AWS service returned by the call to DescribeServices.}
+\item{serviceCode}{The code for the AWS service. You can use the DescribeServices operation
+to get the possible \code{serviceCode} values.}
 
-\item{severityCode}{The code for the severity level returned by the call to
-DescribeSeverityLevels.
+\item{severityCode}{A value that indicates the urgency of the case. This value determines
+the response time according to your service level agreement with AWS
+Support. You can use the DescribeSeverityLevels operation to get the
+possible values for \code{severityCode}.
+
+For more information, see SeverityLevel and \href{https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity}{Choosing a Severity}
+in the \emph{AWS Support User Guide}.
 
 The availability of severity levels depends on the support plan for the
-account.}
+AWS account.}
 
-\item{categoryCode}{The category of problem for the AWS Support case.}
+\item{categoryCode}{The category of problem for the AWS Support case. You also use the
+DescribeServices operation to get the category code for a service. Each
+AWS service defines its own set of category codes.}
 
-\item{communicationBody}{[required] The communication body text when you create an AWS Support case by
-calling CreateCase.}
+\item{communicationBody}{[required] The communication body text that describes the issue. This text appears
+in the \strong{Description} field on the AWS Support Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case} page.}
 
 \item{ccEmailAddresses}{A list of email addresses that AWS Support copies on case
-correspondence.}
+correspondence. AWS Support identifies the account that creates the case
+when you specify your AWS credentials in an HTTP POST method or use the
+\href{http://aws.amazon.com/tools/}{AWS SDKs}.}
 
-\item{language}{The ISO 639-1 code for the language in which AWS provides support. AWS
-Support currently supports English (\"en\") and Japanese (\"ja\").
-Language parameters must be passed explicitly for operations that take
-them.}
+\item{language}{The language in which AWS Support handles the case. You must specify the
+ISO 639-1 code for the \code{language} parameter if you want support in that
+language. Currently, English (\"en\") and Japanese (\"ja\") are
+supported.}
 
-\item{issueType}{The type of issue for the case. You can specify either
-\"customer-service\" or \"technical.\" If you do not indicate a value,
-the default is \"technical.\"
-
-Service limit increases are not supported by the Support API; you must
-submit service limit increase requests in \href{https://console.aws.amazon.com/support}{Support Center}.}
+\item{issueType}{The type of issue for the case. You can specify \code{customer-service} or
+\code{technical}. If you don\'t specify a value, the default is \code{technical}.}
 
 \item{attachmentSetId}{The ID of a set of one or more attachments for the case. Create the set
-by using AddAttachmentsToSet.}
+by using the AddAttachmentsToSet operation.}
 }
 \description{
-Creates a new case in the AWS Support Center. This operation is modeled
-on the behavior of the AWS Support Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case} page.
-Its parameters require you to specify the following information:
+Creates a case in the AWS Support Center. This operation is similar to
+how you create a case in the AWS Support Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case} page.
 }
 \details{
+The AWS Support API doesn\'t support requesting service limit increases.
+You can submit a service limit increase in the following ways:
 \itemize{
-\item \strong{issueType.} The type of issue for the case. You can specify
-either \"customer-service\" or \"technical.\" If you do not indicate
-a value, the default is \"technical.\"
-
-Service limit increases are not supported by the Support API; you
-must submit service limit increase requests in \href{https://console.aws.amazon.com/support}{Support Center}.
-
-The \code{caseId} is not the \code{displayId} that appears in \href{https://console.aws.amazon.com/support}{Support Center}. You can use the
-DescribeCases API to get the \code{displayId}.
-\item \strong{serviceCode.} The code for an AWS service. You can get the
-possible \code{serviceCode} values by calling DescribeServices.
-\item \strong{categoryCode.} The category for the service defined for the
-\code{serviceCode} value. You also get the category code for a service by
-calling DescribeServices. Each AWS service defines its own set of
-category codes.
-\item \strong{severityCode.} A value that indicates the urgency of the case,
-which in turn determines the response time according to your service
-level agreement with AWS Support. You can get the possible
-\code{severityCode} values by calling DescribeSeverityLevels. For more
-information about the meaning of the codes, see SeverityLevel and
-\href{https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity}{Choosing a Severity}.
-\item \strong{subject.} The \strong{Subject} field on the AWS Support Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case}
+\item Submit a request from the AWS Support Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case}
 page.
-\item \strong{communicationBody.} The \strong{Description} field on the AWS Support
-Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case}
-page.
-\item \strong{attachmentSetId.} The ID of a set of attachments that has been
-created by using AddAttachmentsToSet.
-\item \strong{language.} The human language in which AWS Support handles the
-case. English and Japanese are currently supported.
-\item \strong{ccEmailAddresses.} The AWS Support Center \strong{CC} field on the
-\href{https://console.aws.amazon.com/support/home#/case/create}{Create Case}
-page. You can list email addresses to be copied on any
-correspondence about the case. The account that opens the case is
-already identified by passing the AWS Credentials in the HTTP POST
-method or in a method or function call from one of the programming
-languages supported by an \href{http://aws.amazon.com/tools/}{AWS SDK}.
+\item Use the Service Quotas
+\href{https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_RequestServiceQuotaIncrease.html}{RequestServiceQuotaIncrease}
+operation.
 }
 
-To add additional communication or attachments to an existing case, use
-AddCommunicationToCase.
+A successful \code{CreateCase} request returns an AWS Support case number.
+You can use the DescribeCases operation and specify the case number to
+get existing AWS Support cases. After you create a case, use the
+AddCommunicationToCase operation to add additional communication or
+attachments to an existing case.
 
-A successful CreateCase request returns an AWS Support case number. Case
-numbers are used by the DescribeCases operation to retrieve existing AWS
-Support cases.
+The \code{caseId} is separate from the \code{displayId} that appears in the \href{https://console.aws.amazon.com/support}{AWS Support Center}. Use the
+DescribeCases operation to get the \code{displayId}.
+\itemize{
+\item You must have a Business or Enterprise support plan to use the AWS
+Support API.
+\item If you call the AWS Support API from an account that does not have a
+Business or Enterprise support plan, the
+\code{SubscriptionRequiredException} error message appears. For
+information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_case(

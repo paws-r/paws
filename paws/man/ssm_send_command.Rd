@@ -14,13 +14,13 @@ ssm_send_command(InstanceIds, Targets, DocumentName, DocumentVersion,
 of 50 IDs. If you prefer not to list individual instance IDs, you can
 instead send commands to a fleet of instances using the Targets
 parameter, which accepts EC2 tags. For more information about how to use
-targets, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending Commands to a Fleet}
+targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Using targets and rate controls to send commands to a fleet}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{Targets}{(Optional) An array of search criteria that targets instances using a
 Key,Value combination that you specify. Targets is required if you
 don\'t provide one or more instance IDs in the call. For more
-information about how to use targets, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending Commands to a Fleet}
+information about how to use targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending commands to a fleet}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{DocumentName}{[required] Required. The name of the Systems Manager document to run. This can be a
@@ -57,8 +57,8 @@ description of what the command should do.}
 run.}
 
 \item{OutputS3Region}{(Deprecated) You can no longer specify this parameter. The system
-ignores it. Instead, Systems Manager automatically determines the Amazon
-S3 bucket region.}
+ignores it. Instead, Systems Manager automatically determines the Region
+of the S3 bucket.}
 
 \item{OutputS3BucketName}{The name of the S3 bucket where command execution responses should be
 stored.}
@@ -69,14 +69,14 @@ be stored.}
 \item{MaxConcurrency}{(Optional) The maximum number of instances that are allowed to run the
 command at the same time. You can specify a number such as 10 or a
 percentage such as 10\%. The default value is 50. For more information
-about how to use MaxConcurrency, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity}{Using Concurrency Controls}
+about how to use MaxConcurrency, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity}{Using concurrency controls}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{MaxErrors}{The maximum number of errors allowed without the command failing. When
 the command fails one more time beyond the value of MaxErrors, the
 systems stops sending the command to additional targets. You can specify
 a number like 10 or a percentage like 10\%. The default value is 0. For
-more information about how to use MaxErrors, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors}{Using Error Controls}
+more information about how to use MaxErrors, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors}{Using error controls}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{ServiceRoleArn}{The ARN of the IAM service role to use to publish Amazon Simple

@@ -6,11 +6,11 @@ NULL
 #'
 #' @description
 #' Amazon WorkLink is a cloud-based service that provides secure access to
-#' internal websites and web apps from iOS phones. In a single step, your
-#' users, such as employees, can access internal websites as efficiently as
-#' they access any other public website. They enter a URL in their web
-#' browser, or choose a link to an internal website in an email. Amazon
-#' WorkLink authenticates the user\'s access and securely renders
+#' internal websites and web apps from iOS and Android phones. In a single
+#' step, your users, such as employees, can access internal websites as
+#' efficiently as they access any other public website. They enter a URL in
+#' their web browser, or choose a link to an internal website in an email.
+#' Amazon WorkLink authenticates the user\'s access and securely renders
 #' authorized internal web content in a secure rendering service in the AWS
 #' cloud. Amazon WorkLink doesn\'t download or store any internal web
 #' content on mobile devices.
@@ -66,11 +66,14 @@ NULL
 #'  \link[=worklink_list_devices]{list_devices} \tab Retrieves a list of devices registered with the specified fleet \cr
 #'  \link[=worklink_list_domains]{list_domains} \tab Retrieves a list of domains associated to a specified fleet \cr
 #'  \link[=worklink_list_fleets]{list_fleets} \tab Retrieves a list of fleets for the current account and Region \cr
+#'  \link[=worklink_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of tags for the specified resource \cr
 #'  \link[=worklink_list_website_authorization_providers]{list_website_authorization_providers} \tab Retrieves a list of website authorization providers associated with a specified fleet \cr
 #'  \link[=worklink_list_website_certificate_authorities]{list_website_certificate_authorities} \tab Retrieves a list of certificate authorities added for the current account and Region \cr
 #'  \link[=worklink_restore_domain_access]{restore_domain_access} \tab Moves a domain to ACTIVE status if it was in the INACTIVE status \cr
 #'  \link[=worklink_revoke_domain_access]{revoke_domain_access} \tab Moves a domain to INACTIVE status if it was in the ACTIVE status \cr
 #'  \link[=worklink_sign_out_user]{sign_out_user} \tab Signs the user out from all of their devices \cr
+#'  \link[=worklink_tag_resource]{tag_resource} \tab Adds or overwrites one or more tags for the specified resource, such as a fleet \cr
+#'  \link[=worklink_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource \cr
 #'  \link[=worklink_update_audit_stream_configuration]{update_audit_stream_configuration} \tab Updates the audit stream configuration for the fleet \cr
 #'  \link[=worklink_update_company_network_configuration]{update_company_network_configuration} \tab Updates the company network configuration for the fleet \cr
 #'  \link[=worklink_update_device_policy_configuration]{update_device_policy_configuration} \tab Updates the device policy configuration for the fleet \cr
@@ -94,7 +97,7 @@ worklink <- function(config = list()) {
 
 .worklink$metadata <- list(
   service_name = "worklink",
-  endpoints = list("*" = list(endpoint = "worklink.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "worklink.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "worklink.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "worklink.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "worklink.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "worklink.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "WorkLink",
   api_version = "2018-09-25",
   signing_name = "worklink",

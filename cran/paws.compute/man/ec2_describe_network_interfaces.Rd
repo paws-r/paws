@@ -40,8 +40,6 @@ interface is attached.
 network interface is attached.
 \item \code{attachment.instance-owner-id} - The owner ID of the instance to
 which the network interface is attached.
-\item \code{attachment.nat-gateway-id} - The ID of the NAT gateway to which the
-network interface is attached.
 \item \code{attachment.status} - The status of the attachment (\code{attaching} \\|
 \code{attached} \\| \code{detaching} \\| \code{detached}).
 \item \code{availability-zone} - The Availability Zone of the network

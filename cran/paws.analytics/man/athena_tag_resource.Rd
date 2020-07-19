@@ -2,31 +2,31 @@
 % Please edit documentation in R/athena_operations.R
 \name{athena_tag_resource}
 \alias{athena_tag_resource}
-\title{Adds one or more tags to the resource, such as a workgroup}
+\title{Adds one or more tags to an Athena resource}
 \usage{
 athena_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] Requests that one or more tags are added to the resource (such as a
-workgroup) for the specified ARN.}
+\item{ResourceARN}{[required] Specifies the ARN of the Athena resource (workgroup or data catalog) to
+which tags are to be added.}
 
-\item{Tags}{[required] One or more tags, separated by commas, to be added to the resource, such
-as a workgroup.}
+\item{Tags}{[required] A collection of one or more tags, separated by commas, to be added to an
+Athena workgroup or data catalog resource.}
 }
 \description{
-Adds one or more tags to the resource, such as a workgroup. A tag is a
-label that you assign to an AWS Athena resource (a workgroup). Each tag
-consists of a key and an optional value, both of which you define. Tags
-enable you to categorize resources (workgroups) in Athena, for example,
-by purpose, owner, or environment. Use a consistent set of tag keys to
-make it easier to search and filter workgroups in your account. For best
-practices, see \href{https://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{AWS Tagging Strategies}.
-The key length is from 1 (minimum) to 128 (maximum) Unicode characters
-in UTF-8. The tag value length is from 0 (minimum) to 256 (maximum)
-Unicode characters in UTF-8. You can use letters and numbers
-representable in UTF-8, and the following characters: + - = . \\_ : / @.
-Tag keys and values are case-sensitive. Tag keys must be unique per
-resource. If you specify more than one, separate them by commas.
+Adds one or more tags to an Athena resource. A tag is a label that you
+assign to a resource. In Athena, a resource can be a workgroup or data
+catalog. Each tag consists of a key and an optional value, both of which
+you define. For example, you can use tags to categorize Athena
+workgroups or data catalogs by purpose, owner, or environment. Use a
+consistent set of tag keys to make it easier to search and filter
+workgroups or data catalogs in your account. For best practices, see
+\href{https://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{Tagging Best Practices}.
+Tag keys can be from 1 to 128 UTF-8 Unicode characters, and tag values
+can be from 0 to 256 UTF-8 Unicode characters. Tags can use letters and
+numbers representable in UTF-8, and the following characters: + - = . \\_
+: / @. Tag keys and values are case-sensitive. Tag keys must be unique
+per resource. If you specify more than one tag, separate them by commas.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

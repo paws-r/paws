@@ -2,15 +2,18 @@
 % Please edit documentation in R/codeguruprofiler_operations.R
 \name{codeguruprofiler_describe_profiling_group}
 \alias{codeguruprofiler_describe_profiling_group}
-\title{Describe a profiling group}
+\title{Returns a ProfilingGroupDescription object that contains information
+about the requested profiling group}
 \usage{
 codeguruprofiler_describe_profiling_group(profilingGroupName)
 }
 \arguments{
-\item{profilingGroupName}{[required]}
+\item{profilingGroupName}{[required] The name of the profiling group to get information about.}
 }
 \description{
-Describe a profiling group.
+Returns a
+\href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html}{\code{ProfilingGroupDescription}}
+object that contains information about the requested profiling group.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_profiling_group(

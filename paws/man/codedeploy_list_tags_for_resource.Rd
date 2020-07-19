@@ -2,7 +2,8 @@
 % Please edit documentation in R/codedeploy_operations.R
 \name{codedeploy_list_tags_for_resource}
 \alias{codedeploy_list_tags_for_resource}
-\title{Returns a list of tags for the resource identified by a specified ARN}
+\title{Returns a list of tags for the resource identified by a specified Amazon
+Resource Name (ARN)}
 \usage{
 codedeploy_list_tags_for_resource(ResourceArn, NextToken)
 }
@@ -15,8 +16,9 @@ tags associated with the resource that is identified by the
 can be used to return the next set of applications in the list.}
 }
 \description{
-Returns a list of tags for the resource identified by a specified ARN.
-Tags are used to organize and categorize your CodeDeploy resources.
+Returns a list of tags for the resource identified by a specified Amazon
+Resource Name (ARN). Tags are used to organize and categorize your
+CodeDeploy resources.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

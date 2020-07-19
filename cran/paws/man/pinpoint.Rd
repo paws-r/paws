@@ -40,6 +40,7 @@ Doc Engage API - Amazon Pinpoint API
 \link[=pinpoint_create_import_job]{create_import_job} \tab Creates an import job for an application \cr
 \link[=pinpoint_create_journey]{create_journey} \tab Creates a journey for an application \cr
 \link[=pinpoint_create_push_template]{create_push_template} \tab Creates a message template for messages that are sent through a push notification channel \cr
+\link[=pinpoint_create_recommender_configuration]{create_recommender_configuration} \tab Creates an Amazon Pinpoint configuration for a recommender model \cr
 \link[=pinpoint_create_segment]{create_segment} \tab Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application\cr
 \link[=pinpoint_create_sms_template]{create_sms_template} \tab Creates a message template for messages that are sent through the SMS channel \cr
 \link[=pinpoint_create_voice_template]{create_voice_template} \tab Creates a message template for messages that are sent through the voice channel \cr
@@ -58,6 +59,7 @@ Doc Engage API - Amazon Pinpoint API
 \link[=pinpoint_delete_gcm_channel]{delete_gcm_channel} \tab Disables the GCM channel for an application and deletes any existing settings for the channel \cr
 \link[=pinpoint_delete_journey]{delete_journey} \tab Deletes a journey from an application \cr
 \link[=pinpoint_delete_push_template]{delete_push_template} \tab Deletes a message template for messages that were sent through a push notification channel \cr
+\link[=pinpoint_delete_recommender_configuration]{delete_recommender_configuration} \tab Deletes an Amazon Pinpoint configuration for a recommender model \cr
 \link[=pinpoint_delete_segment]{delete_segment} \tab Deletes a segment from an application \cr
 \link[=pinpoint_delete_sms_channel]{delete_sms_channel} \tab Disables the SMS channel for an application and deletes any existing settings for the channel \cr
 \link[=pinpoint_delete_sms_template]{delete_sms_template} \tab Deletes a message template for messages that were sent through the SMS channel \cr
@@ -95,6 +97,8 @@ Doc Engage API - Amazon Pinpoint API
 \link[=pinpoint_get_journey_execution_activity_metrics]{get_journey_execution_activity_metrics} \tab Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey activity \cr
 \link[=pinpoint_get_journey_execution_metrics]{get_journey_execution_metrics} \tab Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey \cr
 \link[=pinpoint_get_push_template]{get_push_template} \tab Retrieves the content and settings of a message template for messages that are sent through a push notification channel \cr
+\link[=pinpoint_get_recommender_configuration]{get_recommender_configuration} \tab Retrieves information about an Amazon Pinpoint configuration for a recommender model \cr
+\link[=pinpoint_get_recommender_configurations]{get_recommender_configurations} \tab Retrieves information about all the recommender model configurations that are associated with your Amazon Pinpoint account \cr
 \link[=pinpoint_get_segment]{get_segment} \tab Retrieves information about the configuration, dimension, and other settings for a specific segment that's associated with an application \cr
 \link[=pinpoint_get_segment_export_jobs]{get_segment_export_jobs} \tab Retrieves information about the status and settings of the export jobs for a segment \cr
 \link[=pinpoint_get_segment_import_jobs]{get_segment_import_jobs} \tab Retrieves information about the status and settings of the import jobs for a segment \cr
@@ -107,7 +111,7 @@ Doc Engage API - Amazon Pinpoint API
 \link[=pinpoint_get_voice_channel]{get_voice_channel} \tab Retrieves information about the status and settings of the voice channel for an application \cr
 \link[=pinpoint_get_voice_template]{get_voice_template} \tab Retrieves the content and settings of a message template for messages that are sent through the voice channel \cr
 \link[=pinpoint_list_journeys]{list_journeys} \tab Retrieves information about the status, configuration, and other settings for all the journeys that are associated with an application \cr
-\link[=pinpoint_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves all the tags (keys and values) that are associated with an application, campaign, journey, message template, or segment \cr
+\link[=pinpoint_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves all the tags (keys and values) that are associated with an application, campaign, message template, or segment \cr
 \link[=pinpoint_list_templates]{list_templates} \tab Retrieves information about all the message templates that are associated with your Amazon Pinpoint account \cr
 \link[=pinpoint_list_template_versions]{list_template_versions} \tab Retrieves information about all the versions of a specific message template \cr
 \link[=pinpoint_phone_number_validate]{phone_number_validate} \tab Retrieves information about a phone number \cr
@@ -116,8 +120,8 @@ Doc Engage API - Amazon Pinpoint API
 \link[=pinpoint_remove_attributes]{remove_attributes} \tab Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application \cr
 \link[=pinpoint_send_messages]{send_messages} \tab Creates and sends a direct message \cr
 \link[=pinpoint_send_users_messages]{send_users_messages} \tab Creates and sends a message to a list of users \cr
-\link[=pinpoint_tag_resource]{tag_resource} \tab Adds one or more tags (keys and values) to an application, campaign, journey, message template, or segment \cr
-\link[=pinpoint_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from an application, campaign, journey, message template, or segment \cr
+\link[=pinpoint_tag_resource]{tag_resource} \tab Adds one or more tags (keys and values) to an application, campaign, message template, or segment \cr
+\link[=pinpoint_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from an application, campaign, message template, or segment \cr
 \link[=pinpoint_update_adm_channel]{update_adm_channel} \tab Enables the ADM channel for an application or updates the status and settings of the ADM channel for an application \cr
 \link[=pinpoint_update_apns_channel]{update_apns_channel} \tab Enables the APNs channel for an application or updates the status and settings of the APNs channel for an application \cr
 \link[=pinpoint_update_apns_sandbox_channel]{update_apns_sandbox_channel} \tab Enables the APNs sandbox channel for an application or updates the status and settings of the APNs sandbox channel for an application \cr
@@ -134,6 +138,7 @@ Doc Engage API - Amazon Pinpoint API
 \link[=pinpoint_update_journey]{update_journey} \tab Updates the configuration and other settings for a journey \cr
 \link[=pinpoint_update_journey_state]{update_journey_state} \tab Cancels (stops) an active journey \cr
 \link[=pinpoint_update_push_template]{update_push_template} \tab Updates an existing message template for messages that are sent through a push notification channel \cr
+\link[=pinpoint_update_recommender_configuration]{update_recommender_configuration} \tab Updates an Amazon Pinpoint configuration for a recommender model \cr
 \link[=pinpoint_update_segment]{update_segment} \tab Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application\cr
 \link[=pinpoint_update_sms_channel]{update_sms_channel} \tab Enables the SMS channel for an application or updates the status and settings of the SMS channel for an application \cr
 \link[=pinpoint_update_sms_template]{update_sms_template} \tab Updates an existing message template for messages that are sent through the SMS channel \cr

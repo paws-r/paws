@@ -17,9 +17,11 @@ registry is assumed.}
 \item{uploadId}{[required] The upload ID from a previous InitiateLayerUpload operation to associate
 with the layer part upload.}
 
-\item{partFirstByte}{[required] The integer value of the first byte of the layer part.}
+\item{partFirstByte}{[required] The position of the first byte of the layer part witin the overall image
+layer.}
 
-\item{partLastByte}{[required] The integer value of the last byte of the layer part.}
+\item{partLastByte}{[required] The position of the last byte of the layer part within the overall image
+layer.}
 
 \item{layerPartBlob}{[required] The base64-encoded layer part payload.}
 }
@@ -27,9 +29,14 @@ with the layer part upload.}
 Uploads an image layer part to Amazon ECR.
 }
 \details{
-This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers for pulling and pushing images. In most
-cases, you should use the \code{docker} CLI to pull, tag, and push images.
+When an image is pushed, each new image layer is uploaded in parts. The
+maximum size of each image layer part can be 20971520 bytes (or about
+20MB). The UploadLayerPart API is called once per each new image layer
+part.
+
+This operation is used by the Amazon ECR proxy and is not generally used
+by customers for pulling and pushing images. In most cases, you should
+use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
 \preformatted{svc$upload_layer_part(

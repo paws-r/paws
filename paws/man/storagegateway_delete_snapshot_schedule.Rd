@@ -15,13 +15,15 @@ Deletes a snapshot of a volume.
 \details{
 You can take snapshots of your gateway volumes on a scheduled or ad hoc
 basis. This API action enables you to delete a snapshot schedule for a
-volume. For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html}{Working with Snapshots}.
-In the \code{DeleteSnapshotSchedule} request, you identify the volume by
-providing its Amazon Resource Name (ARN). This operation is only
-supported in stored and cached volume gateway types.
+volume. For more information, see Backing up your volumes. In the
+\code{DeleteSnapshotSchedule} request, you identify the volume by providing
+its Amazon Resource Name (ARN). This operation is only supported in
+stored and cached volume gateway types.
 
-To list or delete a snapshot, you must use the Amazon EC2 API. in
-\emph{Amazon Elastic Compute Cloud API Reference}.
+To list or delete a snapshot, you must use the Amazon EC2 API. For more
+information, go to
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html}{DescribeSnapshots}
+in the \emph{Amazon Elastic Compute Cloud API Reference}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_snapshot_schedule(

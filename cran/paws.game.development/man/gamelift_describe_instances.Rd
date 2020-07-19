@@ -30,6 +30,18 @@ To get a specific instance, specify fleet ID and instance ID. To get all
 instances in a fleet, specify a fleet ID only. Use the pagination
 parameters to retrieve results as a set of sequential pages. If
 successful, an Instance object is returned for each result.
+
+\strong{Learn more}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html}{Remotely Access Fleet Instances}
+
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html}{Debug Fleet Issues}
+
+\strong{Related operations}
+\itemize{
+\item DescribeInstances
+\item GetInstanceAccess
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_instances(

@@ -8,7 +8,11 @@ iot_create_thing(thingName, thingTypeName, attributePayload,
   billingGroupName)
 }
 \arguments{
-\item{thingName}{[required] The name of the thing to create.}
+\item{thingName}{[required] The name of the thing to create.
+
+You can\'t change a thing\'s name after you create it. To change a
+thing\'s name, you must create a new thing, give it the new name, and
+then delete the old thing.}
 
 \item{thingTypeName}{The name of the thing type associated with the new thing.}
 
@@ -27,7 +31,7 @@ configuration a \code{ResourceAlreadyExistsException} is thrown.
 }
 \details{
 This is a control plane operation. See
-\href{https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html}{Authorization}
+\href{https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html}{Authorization}
 for information about authorizing control plane actions.
 }
 \section{Request syntax}{

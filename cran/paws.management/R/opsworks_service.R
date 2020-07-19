@@ -213,7 +213,7 @@ opsworks <- function(config = list()) {
 
 .opsworks$metadata <- list(
   service_name = "opsworks",
-  endpoints = list("*" = list(endpoint = "opsworks.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "opsworks.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "opsworks.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "opsworks.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "opsworks.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "opsworks.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "OpsWorks",
   api_version = "2013-02-18",
   signing_name = NULL,

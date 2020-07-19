@@ -5,7 +5,7 @@
 \title{Returns a list of recommended items}
 \usage{
 personalizeruntime_get_recommendations(campaignArn, itemId, userId,
-  numResults, context)
+  numResults, context, filterArn)
 }
 \arguments{
 \item{campaignArn}{[required] The Amazon Resource Name (ARN) of the campaign to use for getting
@@ -24,7 +24,10 @@ Required for \code{USER_PERSONALIZATION} recipe type.}
 \item{context}{The contextual metadata to use when getting recommendations. Contextual
 metadata includes any interaction information that might be relevant
 when getting a user\'s recommendations, such as the user\'s current
-location or device type. For more information, see Contextual Metadata.}
+location or device type.}
+
+\item{filterArn}{The ARN of the filter to apply to the returned recommendations. For more
+information, see Using Filters with Amazon Personalize.}
 }
 \description{
 Returns a list of recommended items. The required input depends on the
@@ -48,7 +51,8 @@ PERSONALIZED\\_RANKING use the API.
   numResults = 123,
   context = list(
     "string"
-  )
+  ),
+  filterArn = "string"
 )
 }
 }

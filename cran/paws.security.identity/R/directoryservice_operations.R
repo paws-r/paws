@@ -1303,8 +1303,8 @@ directoryservice_describe_event_topics <- function(DirectoryId = NULL, TopicName
 #'   Limit)
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
-#' @param Type The type of LDAP security the customer wants to enable, either server or
-#' client. Currently supports only `Client`, (the default).
+#' @param Type The type of LDAP security to enable. Currently only the value `Client`
+#' is supported.
 #' @param NextToken The type of next token used for pagination.
 #' @param Limit Specifies the number of items that should be displayed on one page.
 #'
@@ -1506,9 +1506,8 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
 #' directoryservice_disable_ldaps(DirectoryId, Type)
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
-#' @param Type The type of LDAP security that the customer wants to enable. The
-#' security can be either server or client, but currently only the default
-#' `Client` is supported.
+#' @param Type &#91;required&#93; The type of LDAP security to enable. Currently only the value `Client`
+#' is supported.
 #'
 #' @section Request syntax:
 #' ```
@@ -1521,7 +1520,7 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
 #' @keywords internal
 #'
 #' @rdname directoryservice_disable_ldaps
-directoryservice_disable_ldaps <- function(DirectoryId, Type = NULL) {
+directoryservice_disable_ldaps <- function(DirectoryId, Type) {
   op <- new_operation(
     name = "DisableLDAPS",
     http_method = "POST",
@@ -1638,9 +1637,8 @@ directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password 
 #' directoryservice_enable_ldaps(DirectoryId, Type)
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
-#' @param Type The type of LDAP security the customer wants to enable. The security can
-#' be either server or client, but currently only the default `Client` is
-#' supported.
+#' @param Type &#91;required&#93; The type of LDAP security to enable. Currently only the value `Client`
+#' is supported.
 #'
 #' @section Request syntax:
 #' ```
@@ -1653,7 +1651,7 @@ directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password 
 #' @keywords internal
 #'
 #' @rdname directoryservice_enable_ldaps
-directoryservice_enable_ldaps <- function(DirectoryId, Type = NULL) {
+directoryservice_enable_ldaps <- function(DirectoryId, Type) {
   op <- new_operation(
     name = "EnableLDAPS",
     http_method = "POST",

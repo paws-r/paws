@@ -25,7 +25,7 @@ instead. The originator can\'t reactivate a declined request, but can
 reinitiate the process with a new handshake request.
 
 After you decline a handshake, it continues to appear in the results of
-relevant API operations for only 30 days. After that, it\'s deleted.
+relevant APIs for only 30 days. After that, it\'s deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$decline_handshake(

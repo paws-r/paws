@@ -97,7 +97,7 @@ cognitoidentity <- function(config = list()) {
 
 .cognitoidentity$metadata <- list(
   service_name = "cognito-identity",
-  endpoints = list("*" = list(endpoint = "cognito-identity.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cognito-identity.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "cognito-identity.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cognito-identity.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cognito-identity.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cognito-identity.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Cognito Identity",
   api_version = "2014-06-30",
   signing_name = NULL,

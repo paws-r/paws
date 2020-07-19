@@ -18,15 +18,15 @@ to list disk IDs for a gateway.}
 
 \item{SnapshotId}{The snapshot ID (e.g. \"snap-1122aabb\") of the snapshot to restore as
 the new stored volume. Specify this field if you want to create the
-iSCSI storage volume from a snapshot otherwise do not include this
+iSCSI storage volume from a snapshot; otherwise, do not include this
 field. To list snapshots for your account use
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html}{DescribeSnapshots}
 in the \emph{Amazon Elastic Compute Cloud API Reference}.}
 
-\item{PreserveExistingData}{[required] Specify this field as true if you want to preserve the data on the local
-disk. Otherwise, specifying this field as false creates an empty volume.
+\item{PreserveExistingData}{[required] Set to true \code{true} if you want to preserve the data on the local disk.
+Otherwise, set to \code{false} to create an empty volume.
 
-Valid Values: true, false}
+Valid Values: \code{true} \\| \code{false}}
 
 \item{TargetName}{[required] The name of the iSCSI target used by an initiator to connect to a volume
 and used as a suffix for the target ARN. For example, specifying
@@ -43,12 +43,15 @@ to get a list of the network interfaces available on a gateway.
 
 Valid Values: A valid IP address.}
 
-\item{KMSEncrypted}{True to use Amazon S3 server side encryption with your own AWS KMS key,
-or false to use a key managed by Amazon S3. Optional.}
+\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own AWS
+KMS key, or \code{false} to use a key managed by Amazon S3. Optional.
 
-\item{KMSKey}{The Amazon Resource Name (ARN) of the KMS key used for Amazon S3 server
-side encryption. This value can only be set when KMSEncrypted is true.
-Optional.}
+Valid Values: \code{true} \\| \code{false}}
+
+\item{KMSKey}{The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
+used for Amazon S3 server-side encryption. Storage Gateway does not
+support asymmetric CMKs. This value can only be set when \code{KMSEncrypted}
+is \code{true}. Optional.}
 
 \item{Tags}{A list of up to 50 tags that can be assigned to a stored volume. Each
 tag is a key-value pair.

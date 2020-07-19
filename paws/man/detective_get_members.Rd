@@ -2,7 +2,8 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_get_members}
 \alias{detective_get_members}
-\title{Amazon Detective is currently in preview}
+\title{Returns the membership details for specified member accounts for a
+behavior graph}
 \usage{
 detective_get_members(GraphArn, AccountIds)
 }
@@ -16,9 +17,6 @@ You cannot use \code{GetMembers} to retrieve information about member
 accounts that were removed from the behavior graph.}
 }
 \description{
-Amazon Detective is currently in preview.
-}
-\details{
 Returns the membership details for specified member accounts for a
 behavior graph.
 }

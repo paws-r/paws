@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_create_tags}
 \alias{ec2_create_tags}
-\title{Adds or overwrites the specified tags for the specified Amazon EC2
+\title{Adds or overwrites only the specified tags for the specified Amazon EC2
 resource or resources}
 \usage{
 ec2_create_tags(DryRun, Resources, Tags)
@@ -23,10 +23,11 @@ tag to have a value, specify the parameter with no value, and we set the
 value to an empty string.}
 }
 \description{
-Adds or overwrites the specified tags for the specified Amazon EC2
-resource or resources. Each resource can have a maximum of 50 tags. Each
-tag consists of a key and optional value. Tag keys must be unique per
-resource.
+Adds or overwrites only the specified tags for the specified Amazon EC2
+resource or resources. When you specify an existing tag key, the value
+is overwritten with the new value. Each resource can have a maximum of
+50 tags. Each tag consists of a key and optional value. Tag keys must be
+unique per resource.
 }
 \details{
 For more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources}

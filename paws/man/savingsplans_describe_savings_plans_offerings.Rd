@@ -48,7 +48,7 @@ Describes the specified Savings Plans offerings.
   paymentOptions = list(
     "All Upfront"|"Partial Upfront"|"No Upfront"
   ),
-  productType = "EC2"|"Fargate",
+  productType = "EC2"|"Fargate"|"Lambda",
   planTypes = list(
     "Compute"|"EC2Instance"
   ),

@@ -5,34 +5,56 @@
 \title{Creates a new, empty Amazon FSx file system}
 \usage{
 fsx_create_file_system(ClientRequestToken, FileSystemType,
-  StorageCapacity, SubnetIds, SecurityGroupIds, Tags, KmsKeyId,
-  WindowsConfiguration, LustreConfiguration)
+  StorageCapacity, StorageType, SubnetIds, SecurityGroupIds, Tags,
+  KmsKeyId, WindowsConfiguration, LustreConfiguration)
 }
 \arguments{
-\item{ClientRequestToken}{(Optional) A string of up to 64 ASCII characters that Amazon FSx uses to
-ensure idempotent creation. This string is automatically filled on your
-behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
-SDK.}
+\item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
+idempotent creation. This string is automatically filled on your behalf
+when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.}
 
-\item{FileSystemType}{[required] The type of Amazon FSx file system to create.}
+\item{FileSystemType}{[required] The type of Amazon FSx file system to create, either \code{WINDOWS} or
+\code{LUSTRE}.}
 
-\item{StorageCapacity}{[required] The storage capacity of the file system being created.
+\item{StorageCapacity}{[required] Sets the storage capacity of the file system that you\'re creating.
 
-For Windows file systems, valid values are 32 GiB - 65,536 GiB.
+For Lustre file systems:
+\itemize{
+\item For \code{SCRATCH_2} and \code{PERSISTENT_1} deployment types, valid values
+are 1.2, 2.4, and increments of 2.4 TiB.
+\item For \code{SCRATCH_1} deployment type, valid values are 1.2, 2.4, and
+increments of 3.6 TiB.
+}
 
-For Lustre file systems, valid values are 1,200, 2,400, 3,600, then
-continuing in increments of 3600 GiB.}
+For Windows file systems:
+\itemize{
+\item If \code{StorageType=SSD}, valid values are 32 GiB - 65,536 GiB (64 TiB).
+\item If \code{StorageType=HDD}, valid values are 2000 GiB - 65,536 GiB (64
+TiB).
+}}
+
+\item{StorageType}{Sets the storage type for the Amazon FSx for Windows file system you\'re
+creating. Valid values are \code{SSD} and \code{HDD}.
+\itemize{
+\item Set to \code{SSD} to use solid state drive storage. SSD is supported on
+all Windows deployment types.
+\item Set to \code{HDD} to use hard disk drive storage. HDD is supported on
+\code{SINGLE_AZ_2} and \code{MULTI_AZ_1} Windows file system deployment types.
+}
+
+Default value is \code{SSD}. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options}{Storage Type Options}
+in the \emph{Amazon FSx for Windows User Guide}.}
 
 \item{SubnetIds}{[required] Specifies the IDs of the subnets that the file system will be accessible
 from. For Windows \code{MULTI_AZ_1} file system deployment types, provide
 exactly two subnet IDs, one for the preferred file server and one for
-the standy file server. You specify one of these subnets as the
+the standby file server. You specify one of these subnets as the
 preferred subnet using the \verb{WindowsConfiguration &gt; PreferredSubnetID}
 property.
 
-For Windows \code{SINGLE_AZ_1} file system deployment types and Lustre file
-systems, provide exactly one subnet ID. The file server is launched in
-that subnet\'s Availability Zone.}
+For Windows \code{SINGLE_AZ_1} and \code{SINGLE_AZ_2} file system deployment types
+and Lustre file systems, provide exactly one subnet ID. The file server
+is launched in that subnet\'s Availability Zone.}
 
 \item{SecurityGroupIds}{A list of IDs specifying the security groups to apply to all network
 interfaces created for file system access. This list isn\'t returned in
@@ -43,8 +65,7 @@ later requests to describe the file system.}
 
 \item{KmsKeyId}{}
 
-\item{WindowsConfiguration}{The Microsoft Windows configuration for the file system being created.
-This value is required if \code{FileSystemType} is set to \code{WINDOWS}.}
+\item{WindowsConfiguration}{The Microsoft Windows configuration for the file system being created.}
 
 \item{LustreConfiguration}{}
 }
@@ -86,6 +107,7 @@ system state along with other information.
   ClientRequestToken = "string",
   FileSystemType = "WINDOWS"|"LUSTRE",
   StorageCapacity = 123,
+  StorageType = "SSD"|"HDD",
   SubnetIds = list(
     "string"
   ),
@@ -111,7 +133,7 @@ system state along with other information.
         "string"
       )
     ),
-    DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+    DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
     PreferredSubnetId = "string",
     ThroughputCapacity = 123,
     WeeklyMaintenanceStartTime = "string",
@@ -123,7 +145,12 @@ system state along with other information.
     WeeklyMaintenanceStartTime = "string",
     ImportPath = "string",
     ExportPath = "string",
-    ImportedFileChunkSize = 123
+    ImportedFileChunkSize = 123,
+    DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
+    PerUnitStorageThroughput = 123,
+    DailyAutomaticBackupStartTime = "string",
+    AutomaticBackupRetentionDays = 123,
+    CopyTagsToBackups = TRUE|FALSE
   )
 )
 }

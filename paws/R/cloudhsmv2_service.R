@@ -7,7 +7,7 @@ NULL
 #' @description
 #' For more information about AWS CloudHSM, see [AWS
 #' CloudHSM](http://aws.amazon.com/cloudhsm/) and the [AWS CloudHSM User
-#' Guide](http://docs.aws.amazon.com/cloudhsm/latest/userguide/).
+#' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/).
 #'
 #' @param
 #' config
@@ -71,7 +71,7 @@ cloudhsmv2 <- function(config = list()) {
 
 .cloudhsmv2$metadata <- list(
   service_name = "cloudhsmv2",
-  endpoints = list("*" = list(endpoint = "cloudhsmv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudhsmv2.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "cloudhsmv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudhsmv2.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloudhsmv2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudhsmv2.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CloudHSM V2",
   api_version = "2017-04-28",
   signing_name = "cloudhsm",

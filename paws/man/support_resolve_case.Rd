@@ -2,8 +2,7 @@
 % Please edit documentation in R/support_operations.R
 \name{support_resolve_case}
 \alias{support_resolve_case}
-\title{Takes a caseId and returns the initial state of the case along with the
-state of the case after the call to ResolveCase completed}
+\title{Resolves a support case}
 \usage{
 support_resolve_case(caseId)
 }
@@ -13,8 +12,18 @@ is an alphanumeric string formatted as shown in this example:
 case-\emph{12345678910-2013-c4c1d2bf33c5cf47}}
 }
 \description{
-Takes a \code{caseId} and returns the initial state of the case along with
-the state of the case after the call to ResolveCase completed.
+Resolves a support case. This operation takes a \code{caseId} and returns the
+initial and final state of the case.
+}
+\details{
+\itemize{
+\item You must have a Business or Enterprise support plan to use the AWS
+Support API.
+\item If you call the AWS Support API from an account that does not have a
+Business or Enterprise support plan, the
+\code{SubscriptionRequiredException} error message appears. For
+information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$resolve_case(

@@ -49,7 +49,7 @@ NULL
 #'   transitEncryptionEnabled = TRUE|FALSE,
 #'   atRestEncryptionEnabled = TRUE|FALSE,
 #'   apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
-#'   type = "T2_SMALL"|"T2_MEDIUM"|"R4_LARGE"|"R4_XLARGE"|"R4_2XLARGE"|"R4_4XLARGE"|"R4_8XLARGE"
+#'   type = "T2_SMALL"|"T2_MEDIUM"|"R4_LARGE"|"R4_XLARGE"|"R4_2XLARGE"|"R4_4XLARGE"|"R4_8XLARGE"|"SMALL"|"MEDIUM"|"LARGE"|"XLARGE"|"LARGE_2X"|"LARGE_4X"|"LARGE_8X"|"LARGE_12X"
 #' )
 #' ```
 #'
@@ -269,7 +269,7 @@ appsync_create_function <- function(apiId, name, description = NULL, dataSourceN
 #' @usage
 #' appsync_create_graphql_api(name, logConfig, authenticationType,
 #'   userPoolConfig, openIDConnectConfig, tags,
-#'   additionalAuthenticationProviders)
+#'   additionalAuthenticationProviders, xrayEnabled)
 #'
 #' @param name &#91;required&#93; A user-supplied name for the `GraphqlApi`.
 #' @param logConfig The Amazon CloudWatch Logs configuration.
@@ -279,6 +279,7 @@ appsync_create_function <- function(apiId, name, description = NULL, dataSourceN
 #' @param openIDConnectConfig The OpenID Connect configuration.
 #' @param tags A `TagMap` object.
 #' @param additionalAuthenticationProviders A list of additional authentication providers for the `GraphqlApi` API.
+#' @param xrayEnabled A flag indicating whether to enable X-Ray tracing for the `GraphqlApi`.
 #'
 #' @section Request syntax:
 #' ```
@@ -320,21 +321,22 @@ appsync_create_function <- function(apiId, name, description = NULL, dataSourceN
 #'         appIdClientRegex = "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   xrayEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname appsync_create_graphql_api
-appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationType, userPoolConfig = NULL, openIDConnectConfig = NULL, tags = NULL, additionalAuthenticationProviders = NULL) {
+appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationType, userPoolConfig = NULL, openIDConnectConfig = NULL, tags = NULL, additionalAuthenticationProviders = NULL, xrayEnabled = NULL) {
   op <- new_operation(
     name = "CreateGraphqlApi",
     http_method = "POST",
     http_path = "/v1/apis",
     paginator = list()
   )
-  input <- .appsync$create_graphql_api_input(name = name, logConfig = logConfig, authenticationType = authenticationType, userPoolConfig = userPoolConfig, openIDConnectConfig = openIDConnectConfig, tags = tags, additionalAuthenticationProviders = additionalAuthenticationProviders)
+  input <- .appsync$create_graphql_api_input(name = name, logConfig = logConfig, authenticationType = authenticationType, userPoolConfig = userPoolConfig, openIDConnectConfig = openIDConnectConfig, tags = tags, additionalAuthenticationProviders = additionalAuthenticationProviders, xrayEnabled = xrayEnabled)
   output <- .appsync$create_graphql_api_output()
   config <- get_config()
   svc <- .appsync$service(config)
@@ -1578,7 +1580,7 @@ appsync_untag_resource <- function(resourceArn, tagKeys) {
 #'   apiId = "string",
 #'   ttl = 123,
 #'   apiCachingBehavior = "FULL_REQUEST_CACHING"|"PER_RESOLVER_CACHING",
-#'   type = "T2_SMALL"|"T2_MEDIUM"|"R4_LARGE"|"R4_XLARGE"|"R4_2XLARGE"|"R4_4XLARGE"|"R4_8XLARGE"
+#'   type = "T2_SMALL"|"T2_MEDIUM"|"R4_LARGE"|"R4_XLARGE"|"R4_2XLARGE"|"R4_4XLARGE"|"R4_8XLARGE"|"SMALL"|"MEDIUM"|"LARGE"|"XLARGE"|"LARGE_2X"|"LARGE_4X"|"LARGE_8X"|"LARGE_12X"
 #' )
 #' ```
 #'
@@ -1794,7 +1796,8 @@ appsync_update_function <- function(apiId, name, description = NULL, functionId,
 #'
 #' @usage
 #' appsync_update_graphql_api(apiId, name, logConfig, authenticationType,
-#'   userPoolConfig, openIDConnectConfig, additionalAuthenticationProviders)
+#'   userPoolConfig, openIDConnectConfig, additionalAuthenticationProviders,
+#'   xrayEnabled)
 #'
 #' @param apiId &#91;required&#93; The API ID.
 #' @param name &#91;required&#93; The new name for the `GraphqlApi` object.
@@ -1804,6 +1807,7 @@ appsync_update_function <- function(apiId, name, description = NULL, functionId,
 #' object.
 #' @param openIDConnectConfig The OpenID Connect configuration for the `GraphqlApi` object.
 #' @param additionalAuthenticationProviders A list of additional authentication providers for the `GraphqlApi` API.
+#' @param xrayEnabled A flag indicating whether to enable X-Ray tracing for the `GraphqlApi`.
 #'
 #' @section Request syntax:
 #' ```
@@ -1843,21 +1847,22 @@ appsync_update_function <- function(apiId, name, description = NULL, functionId,
 #'         appIdClientRegex = "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   xrayEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname appsync_update_graphql_api
-appsync_update_graphql_api <- function(apiId, name, logConfig = NULL, authenticationType = NULL, userPoolConfig = NULL, openIDConnectConfig = NULL, additionalAuthenticationProviders = NULL) {
+appsync_update_graphql_api <- function(apiId, name, logConfig = NULL, authenticationType = NULL, userPoolConfig = NULL, openIDConnectConfig = NULL, additionalAuthenticationProviders = NULL, xrayEnabled = NULL) {
   op <- new_operation(
     name = "UpdateGraphqlApi",
     http_method = "POST",
     http_path = "/v1/apis/{apiId}",
     paginator = list()
   )
-  input <- .appsync$update_graphql_api_input(apiId = apiId, name = name, logConfig = logConfig, authenticationType = authenticationType, userPoolConfig = userPoolConfig, openIDConnectConfig = openIDConnectConfig, additionalAuthenticationProviders = additionalAuthenticationProviders)
+  input <- .appsync$update_graphql_api_input(apiId = apiId, name = name, logConfig = logConfig, authenticationType = authenticationType, userPoolConfig = userPoolConfig, openIDConnectConfig = openIDConnectConfig, additionalAuthenticationProviders = additionalAuthenticationProviders, xrayEnabled = xrayEnabled)
   output <- .appsync$update_graphql_api_output()
   config <- get_config()
   svc <- .appsync$service(config)

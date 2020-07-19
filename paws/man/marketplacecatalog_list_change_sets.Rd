@@ -13,7 +13,7 @@ marketplacecatalog_list_change_sets(Catalog, FilterList, Sort,
 
 \item{FilterList}{An array of filter objects.}
 
-\item{Sort}{An object that contains two attributes, \code{sortBy} and \code{sortOrder}.}
+\item{Sort}{An object that contains two attributes, \code{SortBy} and \code{SortOrder}.}
 
 \item{MaxResults}{The maximum number of results returned by a single call. This value must
 be provided in the next call to retrieve the next set of results. By

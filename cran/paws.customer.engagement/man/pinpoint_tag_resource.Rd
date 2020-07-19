@@ -3,7 +3,7 @@
 \name{pinpoint_tag_resource}
 \alias{pinpoint_tag_resource}
 \title{Adds one or more tags (keys and values) to an application, campaign,
-journey, message template, or segment}
+message template, or segment}
 \usage{
 pinpoint_tag_resource(ResourceArn, TagsModel)
 }
@@ -14,7 +14,7 @@ pinpoint_tag_resource(ResourceArn, TagsModel)
 }
 \description{
 Adds one or more tags (keys and values) to an application, campaign,
-journey, message template, or segment.
+message template, or segment.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

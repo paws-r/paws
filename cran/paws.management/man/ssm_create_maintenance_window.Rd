@@ -5,8 +5,8 @@
 \title{Creates a new maintenance window}
 \usage{
 ssm_create_maintenance_window(Name, Description, StartDate, EndDate,
-  Schedule, ScheduleTimezone, Duration, Cutoff, AllowUnassociatedTargets,
-  ClientToken, Tags)
+  Schedule, ScheduleTimezone, ScheduleOffset, Duration, Cutoff,
+  AllowUnassociatedTargets, ClientToken, Tags)
 }
 \arguments{
 \item{Name}{[required] The name of the maintenance window.}
@@ -29,6 +29,17 @@ expression.}
 on, in Internet Assigned Numbers Authority (IANA) format. For example:
 \"America/Los\\_Angeles\", \"etc/UTC\", or \"Asia/Seoul\". For more
 information, see the \href{https://www.iana.org/time-zones}{Time Zone Database} on the IANA website.}
+
+\item{ScheduleOffset}{The number of days to wait after the date and time specified by a CRON
+expression before running the maintenance window.
+
+For example, the following cron expression schedules a maintenance
+window to run on the third Tuesday of every month at 11:30 PM.
+
+\verb{cron(0 30 23 ? * TUE#3 *)}
+
+If the schedule offset is \code{2}, the maintenance window won\'t run until
+two days later.}
 
 \item{Duration}{[required] The duration of the maintenance window in hours.}
 
@@ -81,6 +92,7 @@ can start after 5 PM.
   EndDate = "string",
   Schedule = "string",
   ScheduleTimezone = "string",
+  ScheduleOffset = 123,
   Duration = 123,
   Cutoff = 123,
   AllowUnassociatedTargets = TRUE|FALSE,

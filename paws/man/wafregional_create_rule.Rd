@@ -2,8 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_create_rule}
 \alias{wafregional_create_rule}
-\title{Creates a Rule, which contains the IPSet objects, ByteMatchSet objects,
-and other predicates that identify the requests that you want to block}
+\title{This is AWS WAF CLASSIC documentation}
 \usage{
 wafregional_create_rule(Name, MetricName, ChangeToken, Tags)
 }
@@ -23,13 +22,21 @@ create the \code{Rule}.}
 \item{Tags}{}
 }
 \description{
+This is \strong{AWS WAF Classic} documentation. For more information, see
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
+in the developer guide.
+}
+\details{
+\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
+\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Creates a \code{Rule}, which contains the \code{IPSet} objects, \code{ByteMatchSet}
 objects, and other predicates that identify the requests that you want
 to block. If you add more than one predicate to a \code{Rule}, a request must
 match all of the specifications to be allowed or blocked. For example,
 suppose that you add the following to a \code{Rule}:
-}
-\details{
 \itemize{
 \item An \code{IPSet} that matches the IP address \verb{192.0.2.44/32}
 \item A \code{ByteMatchSet} that matches \code{BadBot} in the \code{User-Agent} header

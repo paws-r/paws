@@ -13,11 +13,13 @@ ec2_authorize_client_vpn_ingress(ClientVpnEndpointId, TargetNetworkCidr,
 \item{TargetNetworkCidr}{[required] The IPv4 address range, in CIDR notation, of the network for which
 access is being authorized.}
 
-\item{AccessGroupId}{The ID of the Active Directory group to grant access.}
+\item{AccessGroupId}{The ID of the group to grant access to, for example, the Active
+Directory group or identity provider (IdP) group. Required if
+\code{AuthorizeAllGroups} is \code{false} or not specified.}
 
-\item{AuthorizeAllGroups}{Indicates whether to grant access to all clients. Use \code{true} to grant
-all clients who successfully establish a VPN connection access to the
-network.}
+\item{AuthorizeAllGroups}{Indicates whether to grant access to all clients. Specify \code{true} to
+grant all clients who successfully establish a VPN connection access to
+the network. Must be set to \code{true} if \code{AccessGroupId} is not specified.}
 
 \item{Description}{A brief description of the authorization rule.}
 

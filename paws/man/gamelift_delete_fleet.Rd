@@ -21,12 +21,12 @@ CreateVpcPeeringAuthorization. You do not need to explicitly delete the
 VPC peering connection\\--this is done as part of the delete fleet
 process.
 
-This action removes the fleet\'s resources and the fleet record. Once a
-fleet is deleted, you can no longer use that fleet.
+This action removes the fleet and its resources. Once a fleet is
+deleted, you can no longer use any of the resource in that fleet.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Working with Fleets}.
+\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}
 
 \strong{Related operations}
 \itemize{
@@ -35,11 +35,7 @@ fleet is deleted, you can no longer use that fleet.
 \item DeleteFleet
 \item DescribeFleetAttributes
 \item UpdateFleetAttributes
-\item Manage fleet actions:
-\itemize{
-\item StartFleetActions
-\item StopFleetActions
-}
+\item StartFleetActions or StopFleetActions
 }
 }
 \section{Request syntax}{

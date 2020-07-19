@@ -35,4 +35,22 @@ alias or version.
 }
 }
 
+\examples{
+\dontrun{
+# The following example displays details for the provisioned concurrency
+# configuration for the BLUE alias of the specified function.
+svc$get_provisioned_concurrency_config(
+  FunctionName = "my-function",
+  Qualifier = "BLUE"
+)
+
+# The following example returns details for the provisioned concurrency
+# configuration for the BLUE alias of the specified function.
+svc$get_provisioned_concurrency_config(
+  FunctionName = "my-function",
+  Qualifier = "BLUE"
+)
+}
+
+}
 \keyword{internal}

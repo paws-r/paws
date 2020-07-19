@@ -10,9 +10,15 @@ ebs_list_changed_blocks(FirstSnapshotId, SecondSnapshotId, NextToken,
   MaxResults, StartingBlockIndex)
 }
 \arguments{
-\item{FirstSnapshotId}{The ID of the first snapshot to use for the comparison.}
+\item{FirstSnapshotId}{The ID of the first snapshot to use for the comparison.
 
-\item{SecondSnapshotId}{[required] The ID of the second snapshot to use for the comparison.}
+The \code{FirstSnapshotID} parameter must be specified with a
+\code{SecondSnapshotId} parameter; otherwise, an error occurs.}
+
+\item{SecondSnapshotId}{[required] The ID of the second snapshot to use for the comparison.
+
+The \code{SecondSnapshotId} parameter must be specified with a
+\code{FirstSnapshotID} parameter; otherwise, an error occurs.}
 
 \item{NextToken}{The token to request the next page of results.}
 

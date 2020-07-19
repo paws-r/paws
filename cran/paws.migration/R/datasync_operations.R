@@ -238,6 +238,72 @@ datasync_create_location_efs <- function(Subdirectory = NULL, EfsFilesystemArn, 
 }
 .datasync$operations$create_location_efs <- datasync_create_location_efs
 
+#' Creates an endpoint for an Amazon FSx for Windows file system
+#'
+#' Creates an endpoint for an Amazon FSx for Windows file system.
+#'
+#' @usage
+#' datasync_create_location_fsx_windows(Subdirectory, FsxFilesystemArn,
+#'   SecurityGroupArns, Tags, User, Domain, Password)
+#'
+#' @param Subdirectory A subdirectory in the location's path. This subdirectory in the Amazon
+#' FSx for Windows file system is used to read data from the Amazon FSx for
+#' Windows source location or write data to the FSx for Windows
+#' destination.
+#' @param FsxFilesystemArn &#91;required&#93; The Amazon Resource Name (ARN) for the FSx for Windows file system.
+#' @param SecurityGroupArns &#91;required&#93; The Amazon Resource Names (ARNs) of the security groups that are to use
+#' to configure the FSx for Windows file system.
+#' @param Tags The key-value pair that represents a tag that you want to add to the
+#' resource. The value can be an empty string. This value helps you manage,
+#' filter, and search for your resources. We recommend that you create a
+#' name tag for your location.
+#' @param User &#91;required&#93; The user who has the permissions to access files and folders in the FSx
+#' for Windows file system.
+#' @param Domain The name of the Windows domain that the FSx for Windows server belongs
+#' to.
+#' @param Password &#91;required&#93; The password of the user who has the permissions to access files and
+#' folders in the FSx for Windows file system.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_location_fsx_windows(
+#'   Subdirectory = "string",
+#'   FsxFilesystemArn = "string",
+#'   SecurityGroupArns = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   User = "string",
+#'   Domain = "string",
+#'   Password = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datasync_create_location_fsx_windows
+datasync_create_location_fsx_windows <- function(Subdirectory = NULL, FsxFilesystemArn, SecurityGroupArns, Tags = NULL, User, Domain = NULL, Password) {
+  op <- new_operation(
+    name = "CreateLocationFsxWindows",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .datasync$create_location_fsx_windows_input(Subdirectory = Subdirectory, FsxFilesystemArn = FsxFilesystemArn, SecurityGroupArns = SecurityGroupArns, Tags = Tags, User = User, Domain = Domain, Password = Password)
+  output <- .datasync$create_location_fsx_windows_output()
+  config <- get_config()
+  svc <- .datasync$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datasync$operations$create_location_fsx_windows <- datasync_create_location_fsx_windows
+
 #' Defines a file system on a Network File System (NFS) server that can be
 #' read from or written to
 #'
@@ -560,7 +626,8 @@ datasync_create_location_smb <- function(Subdirectory, ServerHostname, User, Dom
 #'     PreserveDevices = "NONE"|"PRESERVE",
 #'     PosixPermissions = "NONE"|"PRESERVE",
 #'     BytesPerSecond = 123,
-#'     TaskQueueing = "ENABLED"|"DISABLED"
+#'     TaskQueueing = "ENABLED"|"DISABLED",
+#'     LogLevel = "OFF"|"BASIC"|"TRANSFER"
 #'   ),
 #'   Excludes = list(
 #'     list(
@@ -790,6 +857,45 @@ datasync_describe_location_efs <- function(LocationArn) {
   return(response)
 }
 .datasync$operations$describe_location_efs <- datasync_describe_location_efs
+
+#' Returns metadata, such as the path information about an Amazon FSx for
+#' Windows location
+#'
+#' Returns metadata, such as the path information about an Amazon FSx for
+#' Windows location.
+#'
+#' @usage
+#' datasync_describe_location_fsx_windows(LocationArn)
+#'
+#' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the FSx for Windows location to
+#' describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_location_fsx_windows(
+#'   LocationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datasync_describe_location_fsx_windows
+datasync_describe_location_fsx_windows <- function(LocationArn) {
+  op <- new_operation(
+    name = "DescribeLocationFsxWindows",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .datasync$describe_location_fsx_windows_input(LocationArn = LocationArn)
+  output <- .datasync$describe_location_fsx_windows_output()
+  config <- get_config()
+  svc <- .datasync$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datasync$operations$describe_location_fsx_windows <- datasync_describe_location_fsx_windows
 
 #' Returns metadata, such as the path information, about a NFS location
 #'
@@ -1229,7 +1335,8 @@ datasync_list_tasks <- function(MaxResults = NULL, NextToken = NULL) {
 #'     PreserveDevices = "NONE"|"PRESERVE",
 #'     PosixPermissions = "NONE"|"PRESERVE",
 #'     BytesPerSecond = 123,
-#'     TaskQueueing = "ENABLED"|"DISABLED"
+#'     TaskQueueing = "ENABLED"|"DISABLED",
+#'     LogLevel = "OFF"|"BASIC"|"TRANSFER"
 #'   ),
 #'   Includes = list(
 #'     list(
@@ -1420,7 +1527,8 @@ datasync_update_agent <- function(AgentArn, Name = NULL) {
 #'     PreserveDevices = "NONE"|"PRESERVE",
 #'     PosixPermissions = "NONE"|"PRESERVE",
 #'     BytesPerSecond = 123,
-#'     TaskQueueing = "ENABLED"|"DISABLED"
+#'     TaskQueueing = "ENABLED"|"DISABLED",
+#'     LogLevel = "OFF"|"BASIC"|"TRANSFER"
 #'   ),
 #'   Excludes = list(
 #'     list(

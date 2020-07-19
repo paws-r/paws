@@ -75,11 +75,28 @@ Amazon S3 supports in an ACL. For more information, see \href{https://docs.aws.a
 You specify each grantee as a type=value pair, where the type is one
 of the following:
 \itemize{
-\item \code{emailAddress} -- if the value specified is the email address of
-an AWS account
 \item \code{id} -- if the value specified is the canonical user ID of an
 AWS account
 \item \code{uri} -- if you are granting permissions to a predefined group
+\item \code{emailAddress} -- if the value specified is the email address of
+an AWS account
+
+Using email addresses to specify a grantee is only supported in
+the following AWS Regions:
+\itemize{
+\item US East (N. Virginia)
+\item US West (N. California)
+\item US West (Oregon)
+\item Asia Pacific (Singapore)
+\item Asia Pacific (Sydney)
+\item Asia Pacific (Tokyo)
+\item Europe (Ireland)
+\item South America (SÃ£o Paulo)
+}
+
+For a list of all the Amazon S3 supported Regions and endpoints,
+see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region}{Regions and Endpoints}
+in the AWS General Reference.
 }
 
 For example, the following \code{x-amz-grant-write} header grants create,
@@ -87,7 +104,7 @@ overwrite, and delete objects permission to LogDelivery group
 predefined by Amazon S3 and two AWS accounts identified by their
 email addresses.
 
-\verb{x-amz-grant-write: uri="http://acs.amazonaws.com/groups/s3/LogDelivery", emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com" }
+\verb{x-amz-grant-write: uri="http://acs.amazonaws.com/groups/s3/LogDelivery", id="111122223333", id="555566667777" }
 }
 
 You can use either a canned ACL or specify access permissions
@@ -98,12 +115,6 @@ explicitly. You cannot do both.
 You can specify the person (grantee) to whom you\'re assigning access
 rights (using request elements) in the following ways:
 \itemize{
-\item By Email address:
-
-\verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;lt;/Grantee&gt;}
-
-The grantee is resolved to the CanonicalUser and, in a response to a
-GET Object acl request, appears as the CanonicalUser.
 \item By the person\'s ID:
 
 \verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;}
@@ -112,6 +123,29 @@ DisplayName is optional and ignored in the request
 \item By URI:
 
 \verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"&gt;&lt;URI&gt;&lt;&gt;http://acs.amazonaws.com/groups/global/AuthenticatedUsers&lt;&gt;&lt;/URI&gt;&lt;/Grantee&gt;}
+\item By Email address:
+
+\verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;lt;/Grantee&gt;}
+
+The grantee is resolved to the CanonicalUser and, in a response to a
+GET Object acl request, appears as the CanonicalUser.
+
+Using email addresses to specify a grantee is only supported in the
+following AWS Regions:
+\itemize{
+\item US East (N. Virginia)
+\item US West (N. California)
+\item US West (Oregon)
+\item Asia Pacific (Singapore)
+\item Asia Pacific (Sydney)
+\item Asia Pacific (Tokyo)
+\item Europe (Ireland)
+\item South America (SÃ£o Paulo)
+}
+
+For a list of all the Amazon S3 supported Regions and endpoints, see
+\href{https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region}{Regions and Endpoints}
+in the AWS General Reference.
 }
 
 \strong{Related Resources}

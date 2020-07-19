@@ -5,7 +5,7 @@ NULL
 #' Schemas
 #'
 #' @description
-#' AWS EventBridge Schemas
+#' Amazon EventBridge Schema Registry
 #'
 #' @param
 #' config
@@ -44,6 +44,7 @@ NULL
 #'  \link[=schemas_create_schema]{create_schema} \tab Creates a schema definition \cr
 #'  \link[=schemas_delete_discoverer]{delete_discoverer} \tab Deletes a discoverer \cr
 #'  \link[=schemas_delete_registry]{delete_registry} \tab Deletes a Registry \cr
+#'  \link[=schemas_delete_resource_policy]{delete_resource_policy} \tab Delete the resource-based policy attached to the specified registry \cr
 #'  \link[=schemas_delete_schema]{delete_schema} \tab Delete a schema definition \cr
 #'  \link[=schemas_delete_schema_version]{delete_schema_version} \tab Delete the schema version definition \cr
 #'  \link[=schemas_describe_code_binding]{describe_code_binding} \tab Describe the code binding URI \cr
@@ -51,23 +52,23 @@ NULL
 #'  \link[=schemas_describe_registry]{describe_registry} \tab Describes the registry \cr
 #'  \link[=schemas_describe_schema]{describe_schema} \tab Retrieve the schema definition \cr
 #'  \link[=schemas_get_code_binding_source]{get_code_binding_source} \tab Get the code binding source URI \cr
-#'  \link[=schemas_get_discovered_schema]{get_discovered_schema} \tab Get the discovered schema that was generated based on sampled events\cr
+#'  \link[=schemas_get_discovered_schema]{get_discovered_schema} \tab Get the discovered schema that was generated based on sampled events \cr
+#'  \link[=schemas_get_resource_policy]{get_resource_policy} \tab Retrieves the resource-based policy attached to a given registry \cr
 #'  \link[=schemas_list_discoverers]{list_discoverers} \tab List the discoverers \cr
 #'  \link[=schemas_list_registries]{list_registries} \tab List the registries \cr
 #'  \link[=schemas_list_schemas]{list_schemas} \tab List the schemas \cr
 #'  \link[=schemas_list_schema_versions]{list_schema_versions} \tab Provides a list of the schema versions and related information \cr
 #'  \link[=schemas_list_tags_for_resource]{list_tags_for_resource} \tab Get tags for resource \cr
-#'  \link[=schemas_lock_service_linked_role]{lock_service_linked_role} \tab Lock service linked role \cr
 #'  \link[=schemas_put_code_binding]{put_code_binding} \tab Put code binding URI \cr
+#'  \link[=schemas_put_resource_policy]{put_resource_policy} \tab The name of the policy \cr
 #'  \link[=schemas_search_schemas]{search_schemas} \tab Search the schemas \cr
 #'  \link[=schemas_start_discoverer]{start_discoverer} \tab Starts the discoverer \cr
 #'  \link[=schemas_stop_discoverer]{stop_discoverer} \tab Stops the discoverer \cr
 #'  \link[=schemas_tag_resource]{tag_resource} \tab Add tags to a resource \cr
-#'  \link[=schemas_unlock_service_linked_role]{unlock_service_linked_role} \tab Unlock service linked role \cr
 #'  \link[=schemas_untag_resource]{untag_resource} \tab Removes tags from a resource \cr
 #'  \link[=schemas_update_discoverer]{update_discoverer} \tab Updates the discoverer \cr
 #'  \link[=schemas_update_registry]{update_registry} \tab Updates a registry \cr
-#'  \link[=schemas_update_schema]{update_schema} \tab Updates the schema definition 
+#'  \link[=schemas_update_schema]{update_schema} \tab Updates the schema definition Inactive schemas will be deleted after two years
 #' }
 #'
 #' @rdname schemas
@@ -85,7 +86,7 @@ schemas <- function(config = list()) {
 
 .schemas$metadata <- list(
   service_name = "schemas",
-  endpoints = list("*" = list(endpoint = "schemas.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "schemas.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "schemas.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "schemas.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "schemas.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "schemas.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "schemas",
   api_version = "2019-12-02",
   signing_name = "schemas",

@@ -5,7 +5,7 @@
 \title{Creates a skill group with a specified name and description}
 \usage{
 alexaforbusiness_create_skill_group(SkillGroupName, Description,
-  ClientRequestToken)
+  ClientRequestToken, Tags)
 }
 \arguments{
 \item{SkillGroupName}{[required] The name for the skill group.}
@@ -14,6 +14,8 @@ alexaforbusiness_create_skill_group(SkillGroupName, Description,
 
 \item{ClientRequestToken}{A unique, user-specified identifier for this request that ensures
 idempotency.}
+
+\item{Tags}{The tags for the skill group.}
 }
 \description{
 Creates a skill group with a specified name and description.
@@ -22,7 +24,13 @@ Creates a skill group with a specified name and description.
 \preformatted{svc$create_skill_group(
   SkillGroupName = "string",
   Description = "string",
-  ClientRequestToken = "string"
+  ClientRequestToken = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

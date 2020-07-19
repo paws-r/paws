@@ -2,7 +2,8 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_create_snapshot_schedule}
 \alias{redshift_create_snapshot_schedule}
-\title{Creates a new snapshot schedule}
+\title{Create a snapshot schedule that can be associated to a cluster and which
+overrides the default system backup schedule}
 \usage{
 redshift_create_snapshot_schedule(ScheduleDefinitions,
   ScheduleIdentifier, ScheduleDescription, Tags, DryRun, NextInvocations)
@@ -24,7 +25,8 @@ characters are allowed for the identifier.}
 \item{NextInvocations}{}
 }
 \description{
-Creates a new snapshot schedule.
+Create a snapshot schedule that can be associated to a cluster and which
+overrides the default system backup schedule.
 }
 \section{Request syntax}{
 \preformatted{svc$create_snapshot_schedule(

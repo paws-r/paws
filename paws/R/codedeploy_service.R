@@ -134,6 +134,7 @@ NULL
 #'  \link[=codedeploy_delete_deployment_config]{delete_deployment_config} \tab Deletes a deployment configuration \cr
 #'  \link[=codedeploy_delete_deployment_group]{delete_deployment_group} \tab Deletes a deployment group \cr
 #'  \link[=codedeploy_delete_git_hub_account_token]{delete_git_hub_account_token} \tab Deletes a GitHub account connection \cr
+#'  \link[=codedeploy_delete_resources_by_external_id]{delete_resources_by_external_id} \tab Deletes resources linked to an external ID \cr
 #'  \link[=codedeploy_deregister_on_premises_instance]{deregister_on_premises_instance} \tab Deregisters an on-premises instance \cr
 #'  \link[=codedeploy_get_application]{get_application} \tab Gets information about an application \cr
 #'  \link[=codedeploy_get_application_revision]{get_application_revision} \tab Gets information about an application revision \cr
@@ -152,7 +153,7 @@ NULL
 #'  \link[=codedeploy_list_deployment_targets]{list_deployment_targets} \tab Returns an array of target IDs that are associated a deployment \cr
 #'  \link[=codedeploy_list_git_hub_account_token_names]{list_git_hub_account_token_names} \tab Lists the names of stored connections to GitHub accounts \cr
 #'  \link[=codedeploy_list_on_premises_instances]{list_on_premises_instances} \tab Gets a list of names for one or more on-premises instances \cr
-#'  \link[=codedeploy_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for the resource identified by a specified ARN \cr
+#'  \link[=codedeploy_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for the resource identified by a specified Amazon Resource Name (ARN) \cr
 #'  \link[=codedeploy_put_lifecycle_event_hook_execution_status]{put_lifecycle_event_hook_execution_status} \tab Sets the result of a Lambda validation function \cr
 #'  \link[=codedeploy_register_application_revision]{register_application_revision} \tab Registers with AWS CodeDeploy a revision for the specified application \cr
 #'  \link[=codedeploy_register_on_premises_instance]{register_on_premises_instance} \tab Registers an on-premises instance \cr
@@ -180,7 +181,7 @@ codedeploy <- function(config = list()) {
 
 .codedeploy$metadata <- list(
   service_name = "codedeploy",
-  endpoints = list("*" = list(endpoint = "codedeploy.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codedeploy.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "codedeploy.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codedeploy.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "codedeploy.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codedeploy.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CodeDeploy",
   api_version = "2014-10-06",
   signing_name = NULL,

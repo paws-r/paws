@@ -22,9 +22,10 @@ identifier of a mapping from the output of ListEventSourceMappings.
 
 \examples{
 \dontrun{
-# This operation retrieves a Lambda function's event source mapping
+# The following example returns details about an event source mapping. To
+# get a mapping's UUID, use ListEventSourceMappings.
 svc$get_event_source_mapping(
-  UUID = "123489-xxxxx-kdla8d89d7"
+  UUID = "14e0db71-xmpl-4eb5-b481-8945cf9d10c2"
 )
 }
 

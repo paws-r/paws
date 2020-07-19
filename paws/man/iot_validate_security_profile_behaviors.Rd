@@ -19,6 +19,10 @@ Validates a Device Defender security profile behaviors specification.
     list(
       name = "string",
       metric = "string",
+      metricDimension = list(
+        dimensionName = "string",
+        operator = "IN"|"NOT_IN"
+      ),
       criteria = list(
         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
         value = list(

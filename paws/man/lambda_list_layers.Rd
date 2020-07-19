@@ -23,11 +23,21 @@ runtime.
 }
 \section{Request syntax}{
 \preformatted{svc$list_layers(
-  CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"provided",
+  CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided",
   Marker = "string",
   MaxItems = 123
 )
 }
 }
 
+\examples{
+\dontrun{
+# The following example returns information about layers that are
+# compatible with the Python 3.7 runtime.
+svc$list_layers(
+  CompatibleRuntime = "python3.7"
+)
+}
+
+}
 \keyword{internal}

@@ -8,9 +8,9 @@ Resource Name (ARN)}
 transfer_untag_resource(Arn, TagKeys)
 }
 \arguments{
-\item{Arn}{[required] This is the value of the resource that will have the tag removed. An
-Amazon Resource Name (ARN) is an identifier for a specific AWS resource,
-such as a server, user, or role.}
+\item{Arn}{[required] The value of the resource that will have the tag removed. An Amazon
+Resource Name (ARN) is an identifier for a specific AWS resource, such
+as a server, user, or role.}
 
 \item{TagKeys}{[required] TagKeys are key-value pairs assigned to ARNs that can be used to group
 and search for resources by type. This metadata can be attached to

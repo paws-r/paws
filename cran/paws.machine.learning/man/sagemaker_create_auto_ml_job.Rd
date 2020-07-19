@@ -13,7 +13,7 @@ sagemaker_create_auto_ml_job(AutoMLJobName, InputDataConfig,
 case-insensitive.}
 
 \item{InputDataConfig}{[required] Similar to InputDataConfig supported by Tuning. Format(s) supported:
-CSV.}
+CSV. Minimum of 1000 rows.}
 
 \item{OutputDataConfig}{[required] Similar to OutputDataConfig supported by Tuning. Format(s) supported:
 CSV.}
@@ -39,6 +39,13 @@ unique per resource.}
 }
 \description{
 Creates an AutoPilot job.
+}
+\details{
+After you run an AutoPilot job, you can find the best performing model
+by calling , and then deploy that model by following the steps described
+in \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html}{Step 6.1: Deploy the Model to Amazon SageMaker Hosting Services}.
+
+For information about how to use AutoPilot, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html}{Use AutoPilot to Automate Model Development}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_auto_ml_job(

@@ -16,8 +16,9 @@ s3_list_objects(Bucket, Delimiter, EncodingType, Marker, MaxKeys,
 
 \item{Marker}{Specifies the key to start with when listing objects in a bucket.}
 
-\item{MaxKeys}{Sets the maximum number of keys returned in the response. The response
-might contain fewer keys but will never contain more.}
+\item{MaxKeys}{Sets the maximum number of keys returned in the response. By default the
+API returns up to 1,000 key names. The response might contain fewer keys
+but will never contain more.}
 
 \item{Prefix}{Limits the response to keys that begin with the specified prefix.}
 

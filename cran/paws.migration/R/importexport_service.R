@@ -68,7 +68,7 @@ importexport <- function(config = list()) {
 
 .importexport$metadata <- list(
   service_name = "importexport",
-  endpoints = list("*" = list(endpoint = "importexport.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "importexport.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "importexport.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "importexport.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "importexport.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "importexport.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "ImportExport",
   api_version = "2010-06-01",
   signing_name = NULL,

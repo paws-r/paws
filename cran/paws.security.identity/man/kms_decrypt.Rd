@@ -18,9 +18,9 @@ kms_decrypt(CiphertextBlob, EncryptionContext, GrantTokens, KeyId,
 \item{CiphertextBlob}{[required] Ciphertext to be decrypted. The blob includes metadata.}
 
 \item{EncryptionContext}{Specifies the encryption context to use when decrypting the data. An
-encryption context is valid only for cryptographic operations with a
-symmetric CMK. The standard asymmetric encryption algorithms that AWS
-KMS uses do not support an encryption context.
+encryption context is valid only for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}
+with a symmetric CMK. The standard asymmetric encryption algorithms that
+AWS KMS uses do not support an encryption context.
 
 An \emph{encryption context} is a collection of non-secret key-value pairs
 that represents additional authenticated data. When you use an

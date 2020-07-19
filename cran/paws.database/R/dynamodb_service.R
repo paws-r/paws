@@ -147,7 +147,7 @@ dynamodb <- function(config = list()) {
 
 .dynamodb$metadata <- list(
   service_name = "dynamodb",
-  endpoints = list("*" = list(endpoint = "dynamodb.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dynamodb.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "dynamodb.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dynamodb.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "dynamodb.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "dynamodb.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "DynamoDB",
   api_version = "2012-08-10",
   signing_name = NULL,

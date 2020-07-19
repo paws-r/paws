@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_user_profile}
 \alias{sagemaker_create_user_profile}
-\title{Creates a new user profile}
+\title{Creates a user profile}
 \usage{
 sagemaker_create_user_profile(DomainId, UserProfileName,
   SingleSignOnUserIdentifier, SingleSignOnUserValue, Tags, UserSettings)
@@ -28,14 +28,14 @@ unique per resource.}
 \item{UserSettings}{A collection of settings.}
 }
 \description{
-Creates a new user profile. A user profile represents a single user
-within a Domain, and is the main way to reference a \"person\" for the
-purposes of sharing, reporting and other user-oriented features. This
-entity is created during on-boarding. If an administrator invites a
-person by email or imports them from SSO, a new UserProfile is
-automatically created. This entity is the primary holder of settings for
-an individual user and has a reference to the user\'s private Amazon
-Elastic File System (EFS) home directory.
+Creates a user profile. A user profile represents a single user within a
+domain, and is the main way to reference a \"person\" for the purposes
+of sharing, reporting, and other user-oriented features. This entity is
+created when a user onboards to Amazon SageMaker Studio. If an
+administrator invites a person by email or imports them from SSO, a user
+profile is automatically created. A user profile is the primary holder
+of settings for an individual user and has a reference to the user\'s
+private Amazon Elastic File System (EFS) home directory.
 }
 \section{Request syntax}{
 \preformatted{svc$create_user_profile(
@@ -61,19 +61,19 @@ Elastic File System (EFS) home directory.
     ),
     JupyterServerAppSettings = list(
       DefaultResourceSpec = list(
-        EnvironmentArn = "string",
+        SageMakerImageArn = "string",
         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
       )
     ),
     KernelGatewayAppSettings = list(
       DefaultResourceSpec = list(
-        EnvironmentArn = "string",
+        SageMakerImageArn = "string",
         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
       )
     ),
     TensorBoardAppSettings = list(
       DefaultResourceSpec = list(
-        EnvironmentArn = "string",
+        SageMakerImageArn = "string",
         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
       )
     )

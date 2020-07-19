@@ -2,8 +2,8 @@
 % Please edit documentation in R/support_operations.R
 \name{support_refresh_trusted_advisor_check}
 \alias{support_refresh_trusted_advisor_check}
-\title{Requests a refresh of the Trusted Advisor check that has the specified
-check ID}
+\title{Refreshes the AWS Trusted Advisor check that you specify using the check
+ID}
 \usage{
 support_refresh_trusted_advisor_check(checkId)
 }
@@ -13,32 +13,23 @@ support_refresh_trusted_advisor_check(checkId)
 refreshed causes an \code{InvalidParameterValue} error.}
 }
 \description{
-Requests a refresh of the Trusted Advisor check that has the specified
-check ID. Check IDs can be obtained by calling
-DescribeTrustedAdvisorChecks.
+Refreshes the AWS Trusted Advisor check that you specify using the check
+ID. You can get the check IDs by calling the
+DescribeTrustedAdvisorChecks operation.
 }
 \details{
-Some checks are refreshed automatically, and they cannot be refreshed by
-using this operation. Use of the \code{RefreshTrustedAdvisorCheck} operation
-for these checks causes an \code{InvalidParameterValue} error.
+Some checks are refreshed automatically. If you call the
+\code{RefreshTrustedAdvisorCheck} operation to refresh them, you might see
+the \code{InvalidParameterValue} error.
 
-The response contains a TrustedAdvisorCheckRefreshStatus object, which
-contains these fields:
+The response contains a TrustedAdvisorCheckRefreshStatus object.
 \itemize{
-\item \strong{status.} The refresh status of the check:
-\itemize{
-\item \verb{none:} The check is not refreshed or the non-success status
-exceeds the timeout
-\item \verb{enqueued:} The check refresh requests has entered the refresh
-queue
-\item \verb{processing:} The check refresh request is picked up by the rule
-processing engine
-\item \verb{success:} The check is successfully refreshed
-\item \verb{abandoned:} The check refresh has failed
-}
-\item \strong{millisUntilNextRefreshable.} The amount of time, in milliseconds,
-until the check is eligible for refresh.
-\item \strong{checkId.} The unique identifier for the check.
+\item You must have a Business or Enterprise support plan to use the AWS
+Support API.
+\item If you call the AWS Support API from an account that does not have a
+Business or Enterprise support plan, the
+\code{SubscriptionRequiredException} error message appears. For
+information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
 }
 }
 \section{Request syntax}{

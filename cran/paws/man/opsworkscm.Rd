@@ -61,6 +61,9 @@ accessed or managed within the endpoint in which they are created.
 \item opsworks-cm.eu-west-1.amazonaws.com
 }
 
+For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/opsworks-service.html}{AWS OpsWorks endpoints and quotas}
+in the AWS General Reference.
+
 \strong{Throttling limits}
 
 All API operations allow for five requests per second with a burst of 10

@@ -153,11 +153,11 @@ lightsail_attach_instances_to_load_balancer <- function(loadBalancerName, instan
 #' 
 #' Once you create and validate your certificate, you can attach it to your
 #' load balancer. You can also use this API to rotate the certificates on
-#' your account. Use the `attach load balancer tls certificate` operation
-#' with the non-attached certificate, and it will replace the existing one
-#' and become the attached certificate.
+#' your account. Use the `AttachLoadBalancerTlsCertificate` action with the
+#' non-attached certificate, and it will replace the existing one and
+#' become the attached certificate.
 #' 
-#' The `attach load balancer tls certificate` operation supports tag-based
+#' The `AttachLoadBalancerTlsCertificate` operation supports tag-based
 #' access control via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Lightsail Dev
 #' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
@@ -236,21 +236,20 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
 }
 .lightsail$operations$attach_static_ip <- lightsail_attach_static_ip
 
-#' Closes the public ports on a specific Amazon Lightsail instance
+#' Closes ports for a specific Amazon Lightsail instance
 #'
-#' Closes the public ports on a specific Amazon Lightsail instance.
+#' Closes ports for a specific Amazon Lightsail instance.
 #' 
-#' The `close instance public ports` operation supports tag-based access
-#' control via resource tags applied to the resource identified by
-#' `instance name`. For more information, see the [Lightsail Dev
+#' The `CloseInstancePublicPorts` action supports tag-based access control
+#' via resource tags applied to the resource identified by `instanceName`.
+#' For more information, see the [Lightsail Dev
 #' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_close_instance_public_ports(portInfo, instanceName)
 #'
-#' @param portInfo &#91;required&#93; Information about the public port you are trying to close.
-#' @param instanceName &#91;required&#93; The name of the instance on which you\'re attempting to close the public
-#' ports.
+#' @param portInfo &#91;required&#93; An object to describe the ports to close for the specified instance.
+#' @param instanceName &#91;required&#93; The name of the instance for which to close ports.
 #'
 #' @section Request syntax:
 #' ```
@@ -258,7 +257,13 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
 #'   portInfo = list(
 #'     fromPort = 123,
 #'     toPort = 123,
-#'     protocol = "tcp"|"all"|"udp"
+#'     protocol = "tcp"|"all"|"udp"|"icmp",
+#'     cidrs = list(
+#'       "string"
+#'     ),
+#'     cidrListAliases = list(
+#'       "string"
+#'     )
 #'   ),
 #'   instanceName = "string"
 #' )
@@ -440,6 +445,86 @@ lightsail_create_cloud_formation_stack <- function(instances) {
   return(response)
 }
 .lightsail$operations$create_cloud_formation_stack <- lightsail_create_cloud_formation_stack
+
+#' Creates an email or SMS text message contact method
+#'
+#' Creates an email or SMS text message contact method.
+#' 
+#' A contact method is used to send you notifications about your Amazon
+#' Lightsail resources. You can add one email address and one mobile phone
+#' number contact method in each AWS Region. However, SMS text messaging is
+#' not supported in some AWS Regions, and SMS text messages cannot be sent
+#' to some countries/regions. For more information, see [Notifications in
+#' Amazon
+#' Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications).
+#'
+#' @usage
+#' lightsail_create_contact_method(protocol, contactEndpoint)
+#'
+#' @param protocol &#91;required&#93; The protocol of the contact method, such as `Email` or `SMS` (text
+#' messaging).
+#' 
+#' The `SMS` protocol is supported only in the following AWS Regions.
+#' 
+#' -   US East (N. Virginia) (`us-east-1`)
+#' 
+#' -   US West (Oregon) (`us-west-2`)
+#' 
+#' -   Europe (Ireland) (`eu-west-1`)
+#' 
+#' -   Asia Pacific (Tokyo) (`ap-northeast-1`)
+#' 
+#' -   Asia Pacific (Singapore) (`ap-southeast-1`)
+#' 
+#' -   Asia Pacific (Sydney) (`ap-southeast-2`)
+#' 
+#' For a list of countries/regions where SMS text messages can be sent, and
+#' the latest AWS Regions where SMS text messaging is supported, see
+#' [Supported Regions and
+#' Countries](https://docs.aws.amazon.com/sns/latest/dg/sns-supported-regions-countries.html)
+#' in the *Amazon SNS Developer Guide*.
+#' 
+#' For more information about notifications in Amazon Lightsail, see
+#' [Notifications in Amazon
+#' Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications).
+#' @param contactEndpoint &#91;required&#93; The destination of the contact method, such as an email address or a
+#' mobile phone number.
+#' 
+#' Use the E.164 format when specifying a mobile phone number. E.164 is a
+#' standard for the phone number structure used for international
+#' telecommunication. Phone numbers that follow this format can have a
+#' maximum of 15 digits, and they are prefixed with the plus character (+)
+#' and the country code. For example, a U.S. phone number in E.164 format
+#' would be specified as +1XXX5550100. For more information, see
+#' [E.164](https://en.wikipedia.org/wiki/E.164) on *Wikipedia*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_contact_method(
+#'   protocol = "Email"|"SMS",
+#'   contactEndpoint = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_create_contact_method
+lightsail_create_contact_method <- function(protocol, contactEndpoint) {
+  op <- new_operation(
+    name = "CreateContactMethod",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$create_contact_method_input(protocol = protocol, contactEndpoint = contactEndpoint)
+  output <- .lightsail$create_contact_method_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$create_contact_method <- lightsail_create_contact_method
 
 #' Creates a block storage disk that can be attached to an Amazon Lightsail
 #' instance in the same Availability Zone (e
@@ -1296,7 +1381,7 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
 #' TLS is just an updated, more secure version of Secure Socket Layer
 #' (SSL).
 #' 
-#' The `create load balancer tls certificate` operation supports tag-based
+#' The `CreateLoadBalancerTlsCertificate` operation supports tag-based
 #' access control via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Lightsail Dev
 #' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
@@ -1707,6 +1792,48 @@ lightsail_create_relational_database_snapshot <- function(relationalDatabaseName
 }
 .lightsail$operations$create_relational_database_snapshot <- lightsail_create_relational_database_snapshot
 
+#' Deletes an alarm
+#'
+#' Deletes an alarm.
+#' 
+#' An alarm is used to monitor a single metric for one of your resources.
+#' When a metric condition is met, the alarm can notify you by email, SMS
+#' text message, and a banner displayed on the Amazon Lightsail console.
+#' For more information, see [Alarms in Amazon
+#' Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms).
+#'
+#' @usage
+#' lightsail_delete_alarm(alarmName)
+#'
+#' @param alarmName &#91;required&#93; The name of the alarm to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_alarm(
+#'   alarmName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_delete_alarm
+lightsail_delete_alarm <- function(alarmName) {
+  op <- new_operation(
+    name = "DeleteAlarm",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$delete_alarm_input(alarmName = alarmName)
+  output <- .lightsail$delete_alarm_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$delete_alarm <- lightsail_delete_alarm
+
 #' Deletes an automatic snapshot of an instance or disk
 #'
 #' Deletes an automatic snapshot of an instance or disk. For more
@@ -1749,6 +1876,54 @@ lightsail_delete_auto_snapshot <- function(resourceName, date) {
   return(response)
 }
 .lightsail$operations$delete_auto_snapshot <- lightsail_delete_auto_snapshot
+
+#' Deletes a contact method
+#'
+#' Deletes a contact method.
+#' 
+#' A contact method is used to send you notifications about your Amazon
+#' Lightsail resources. You can add one email address and one mobile phone
+#' number contact method in each AWS Region. However, SMS text messaging is
+#' not supported in some AWS Regions, and SMS text messages cannot be sent
+#' to some countries/regions. For more information, see [Notifications in
+#' Amazon
+#' Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications).
+#'
+#' @usage
+#' lightsail_delete_contact_method(protocol)
+#'
+#' @param protocol &#91;required&#93; The protocol that will be deleted, such as `Email` or `SMS` (text
+#' messaging).
+#' 
+#' To delete an `Email` and an `SMS` contact method if you added both, you
+#' must run separate `DeleteContactMethod` actions to delete each protocol.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_contact_method(
+#'   protocol = "Email"|"SMS"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_delete_contact_method
+lightsail_delete_contact_method <- function(protocol) {
+  op <- new_operation(
+    name = "DeleteContactMethod",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$delete_contact_method_input(protocol = protocol)
+  output <- .lightsail$delete_contact_method_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$delete_contact_method <- lightsail_delete_contact_method
 
 #' Deletes the specified block storage disk
 #'
@@ -2165,7 +2340,7 @@ lightsail_delete_load_balancer <- function(loadBalancerName) {
 #' Deletes an SSL/TLS certificate associated with a Lightsail load
 #' balancer.
 #' 
-#' The `delete load balancer tls certificate` operation supports tag-based
+#' The `DeleteLoadBalancerTlsCertificate` operation supports tag-based
 #' access control via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Lightsail Dev
 #' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
@@ -2631,7 +2806,11 @@ lightsail_export_snapshot <- function(sourceSnapshotName) {
 #' @usage
 #' lightsail_get_active_names(pageToken)
 #'
-#' @param pageToken A token used for paginating results from your get active names request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetActiveNames` request. If
+#' your results are paginated, the response will return a next page token
+#' that you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -2659,6 +2838,64 @@ lightsail_get_active_names <- function(pageToken = NULL) {
   return(response)
 }
 .lightsail$operations$get_active_names <- lightsail_get_active_names
+
+#' Returns information about the configured alarms
+#'
+#' Returns information about the configured alarms. Specify an alarm name
+#' in your request to return information about a specific alarm, or specify
+#' a monitored resource name to return information about all alarms for a
+#' specific resource.
+#' 
+#' An alarm is used to monitor a single metric for one of your resources.
+#' When a metric condition is met, the alarm can notify you by email, SMS
+#' text message, and a banner displayed on the Amazon Lightsail console.
+#' For more information, see [Alarms in Amazon
+#' Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms).
+#'
+#' @usage
+#' lightsail_get_alarms(alarmName, pageToken, monitoredResourceName)
+#'
+#' @param alarmName The name of the alarm.
+#' 
+#' Specify an alarm name to return information about a specific alarm.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetAlarms` request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
+#' @param monitoredResourceName The name of the Lightsail resource being monitored by the alarm.
+#' 
+#' Specify a monitored resource name to return information about all alarms
+#' for a specific resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_alarms(
+#'   alarmName = "string",
+#'   pageToken = "string",
+#'   monitoredResourceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_alarms
+lightsail_get_alarms <- function(alarmName = NULL, pageToken = NULL, monitoredResourceName = NULL) {
+  op <- new_operation(
+    name = "GetAlarms",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_alarms_input(alarmName = alarmName, pageToken = pageToken, monitoredResourceName = monitoredResourceName)
+  output <- .lightsail$get_alarms_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_alarms <- lightsail_get_alarms
 
 #' Returns the available automatic snapshots for an instance or disk
 #'
@@ -2718,8 +2955,11 @@ lightsail_get_auto_snapshots <- function(resourceName) {
 #'
 #' @param includeInactive A Boolean value indicating whether to include inactive results in your
 #' request.
-#' @param pageToken A token used for advancing to the next page of results from your get
-#' blueprints request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetBlueprints` request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -2759,8 +2999,11 @@ lightsail_get_blueprints <- function(includeInactive = NULL, pageToken = NULL) {
 #'
 #' @param includeInactive A Boolean value that indicates whether to include inactive bundle
 #' results in your request.
-#' @param pageToken A token used for advancing to the next page of results from your get
-#' bundles request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetBundles` request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -2802,8 +3045,12 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL) {
 #' @usage
 #' lightsail_get_cloud_formation_stack_records(pageToken)
 #'
-#' @param pageToken A token used for advancing to a specific page of results for your
-#' `get cloud formation stack records` request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetClouFormationStackRecords`
+#' request. If your results are paginated, the response will return a next
+#' page token that you can specify as the page token in a subsequent
+#' request.
 #'
 #' @section Request syntax:
 #' ```
@@ -2831,6 +3078,58 @@ lightsail_get_cloud_formation_stack_records <- function(pageToken = NULL) {
   return(response)
 }
 .lightsail$operations$get_cloud_formation_stack_records <- lightsail_get_cloud_formation_stack_records
+
+#' Returns information about the configured contact methods
+#'
+#' Returns information about the configured contact methods. Specify a
+#' protocol in your request to return information about a specific contact
+#' method.
+#' 
+#' A contact method is used to send you notifications about your Amazon
+#' Lightsail resources. You can add one email address and one mobile phone
+#' number contact method in each AWS Region. However, SMS text messaging is
+#' not supported in some AWS Regions, and SMS text messages cannot be sent
+#' to some countries/regions. For more information, see [Notifications in
+#' Amazon
+#' Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications).
+#'
+#' @usage
+#' lightsail_get_contact_methods(protocols)
+#'
+#' @param protocols The protocols used to send notifications, such as `Email`, or `SMS`
+#' (text messaging).
+#' 
+#' Specify a protocol in your request to return information about a
+#' specific contact method protocol.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_contact_methods(
+#'   protocols = list(
+#'     "Email"|"SMS"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_contact_methods
+lightsail_get_contact_methods <- function(protocols = NULL) {
+  op <- new_operation(
+    name = "GetContactMethods",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_contact_methods_input(protocols = protocols)
+  output <- .lightsail$get_contact_methods_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_contact_methods <- lightsail_get_contact_methods
 
 #' Returns information about a specific block storage disk
 #'
@@ -2909,16 +3208,15 @@ lightsail_get_disk_snapshot <- function(diskSnapshotName) {
 #'
 #' Returns information about all block storage disk snapshots in your AWS
 #' account and region.
-#' 
-#' If you are describing a long list of disk snapshots, you can paginate
-#' the output to make the list more manageable. You can use the pageToken
-#' and nextPageToken values to retrieve the next items in the list.
 #'
 #' @usage
 #' lightsail_get_disk_snapshots(pageToken)
 #'
-#' @param pageToken A token used for advancing to the next page of results from your
-#' GetDiskSnapshots request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetDiskSnapshots` request. If
+#' your results are paginated, the response will return a next page token
+#' that you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -2952,16 +3250,15 @@ lightsail_get_disk_snapshots <- function(pageToken = NULL) {
 #'
 #' Returns information about all block storage disks in your AWS account
 #' and region.
-#' 
-#' If you are describing a long list of disks, you can paginate the output
-#' to make the list more manageable. You can use the pageToken and
-#' nextPageToken values to retrieve the next items in the list.
 #'
 #' @usage
 #' lightsail_get_disks(pageToken)
 #'
-#' @param pageToken A token used for advancing to the next page of results from your
-#' GetDisks request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetDisks` request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -3033,8 +3330,11 @@ lightsail_get_domain <- function(domainName) {
 #' @usage
 #' lightsail_get_domains(pageToken)
 #'
-#' @param pageToken A token used for advancing to the next page of results from your get
-#' domains request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetDomains` request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -3076,8 +3376,12 @@ lightsail_get_domains <- function(pageToken = NULL) {
 #' @usage
 #' lightsail_get_export_snapshot_records(pageToken)
 #'
-#' @param pageToken A token used for advancing to a specific page of results for your
-#' `get export snapshot records` request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetExportSnapshotRecords`
+#' request. If your results are paginated, the response will return a next
+#' page token that you can specify as the page token in a subsequent
+#' request.
 #'
 #' @section Request syntax:
 #' ```
@@ -3194,24 +3498,155 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #'
 #' Returns the data points for the specified Amazon Lightsail instance
 #' metric, given an instance name.
+#' 
+#' Metrics report the utilization of your resources, and the error counts
+#' generated by them. Monitor and collect metric data regularly to maintain
+#' the reliability, availability, and performance of your resources.
 #'
 #' @usage
 #' lightsail_get_instance_metric_data(instanceName, metricName, period,
 #'   startTime, endTime, unit, statistics)
 #'
 #' @param instanceName &#91;required&#93; The name of the instance for which you want to get metrics data.
-#' @param metricName &#91;required&#93; The metric name to get data about.
+#' @param metricName &#91;required&#93; The metric for which you want to return information.
+#' 
+#' Valid instance metric names are listed below, along with the most useful
+#' `statistics` to include in your request, and the published `unit` value.
+#' 
+#' -   **`BurstCapacityPercentage`** - The percentage of CPU performance
+#'     available for your instance to burst above its baseline. Your
+#'     instance continuously accrues and consumes burst capacity. Burst
+#'     capacity stops accruing when your instance\'s
+#'     `BurstCapacityPercentage` reaches 100%. For more information, see
+#'     [Viewing instance burst capacity in Amazon
+#'     Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-viewing-instance-burst-capacity).
+#' 
+#'     `Statistics`: The most useful statistics are `Maximum` and
+#'     `Average`.
+#' 
+#'     `Unit`: The published unit is `Percent`.
+#' 
+#' -   **`BurstCapacityTime`** - The available amount of time for your
+#'     instance to burst at 100% CPU utilization. Your instance
+#'     continuously accrues and consumes burst capacity. Burst capacity
+#'     time stops accruing when your instance\'s `BurstCapacityPercentage`
+#'     metric reaches 100%.
+#' 
+#'     Burst capacity time is consumed at the full rate only when your
+#'     instance operates at 100% CPU utilization. For example, if your
+#'     instance operates at 50% CPU utilization in the burstable zone for a
+#'     5-minute period, then it consumes CPU burst capacity minutes at a
+#'     50% rate in that period. Your instance consumed 2 minutes and 30
+#'     seconds of CPU burst capacity minutes in the 5-minute period. For
+#'     more information, see [Viewing instance burst capacity in Amazon
+#'     Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-viewing-instance-burst-capacity).
+#' 
+#'     `Statistics`: The most useful statistics are `Maximum` and
+#'     `Average`.
+#' 
+#'     `Unit`: The published unit is `Seconds`.
+#' 
+#' -   **`CPUUtilization`** - The percentage of allocated compute units
+#'     that are currently in use on the instance. This metric identifies
+#'     the processing power to run the applications on the instance. Tools
+#'     in your operating system can show a lower percentage than Lightsail
+#'     when the instance is not allocated a full processor core.
+#' 
+#'     `Statistics`: The most useful statistics are `Maximum` and
+#'     `Average`.
+#' 
+#'     `Unit`: The published unit is `Percent`.
+#' 
+#' -   **`NetworkIn`** - The number of bytes received on all network
+#'     interfaces by the instance. This metric identifies the volume of
+#'     incoming network traffic to the instance. The number reported is the
+#'     number of bytes received during the period. Because this metric is
+#'     reported in 5-minute intervals, divide the reported number by 300 to
+#'     find Bytes/second.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`.
+#' 
+#'     `Unit`: The published unit is `Bytes`.
+#' 
+#' -   **`NetworkOut`** - The number of bytes sent out on all network
+#'     interfaces by the instance. This metric identifies the volume of
+#'     outgoing network traffic from the instance. The number reported is
+#'     the number of bytes sent during the period. Because this metric is
+#'     reported in 5-minute intervals, divide the reported number by 300 to
+#'     find Bytes/second.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`.
+#' 
+#'     `Unit`: The published unit is `Bytes`.
+#' 
+#' -   **`StatusCheckFailed`** - Reports whether the instance passed or
+#'     failed both the instance status check and the system status check.
+#'     This metric can be either 0 (passed) or 1 (failed). This metric data
+#'     is available in 1-minute (60 seconds) granularity.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`.
+#' 
+#'     `Unit`: The published unit is `Count`.
+#' 
+#' -   **`StatusCheckFailed_Instance`** - Reports whether the instance
+#'     passed or failed the instance status check. This metric can be
+#'     either 0 (passed) or 1 (failed). This metric data is available in
+#'     1-minute (60 seconds) granularity.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`.
+#' 
+#'     `Unit`: The published unit is `Count`.
+#' 
+#' -   **`StatusCheckFailed_System`** - Reports whether the instance passed
+#'     or failed the system status check. This metric can be either 0
+#'     (passed) or 1 (failed). This metric data is available in 1-minute
+#'     (60 seconds) granularity.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`.
+#' 
+#'     `Unit`: The published unit is `Count`.
 #' @param period &#91;required&#93; The granularity, in seconds, of the returned data points.
+#' 
+#' The `StatusCheckFailed`, `StatusCheckFailed_Instance`, and
+#' `StatusCheckFailed_System` instance metric data is available in 1-minute
+#' (60 seconds) granularity. All other instance metric data is available in
+#' 5-minute (300 seconds) granularity.
 #' @param startTime &#91;required&#93; The start time of the time period.
 #' @param endTime &#91;required&#93; The end time of the time period.
-#' @param unit &#91;required&#93; The unit. The list of valid values is below.
-#' @param statistics &#91;required&#93; The instance statistics.
+#' @param unit &#91;required&#93; The unit for the metric data request. Valid units depend on the metric
+#' data being requested. For the valid units to specify with each available
+#' metric, see the `metricName` parameter.
+#' @param statistics &#91;required&#93; The statistic for the metric.
+#' 
+#' The following statistics are available:
+#' 
+#' -   `Minimum` - The lowest value observed during the specified period.
+#'     Use this value to determine low volumes of activity for your
+#'     application.
+#' 
+#' -   `Maximum` - The highest value observed during the specified period.
+#'     Use this value to determine high volumes of activity for your
+#'     application.
+#' 
+#' -   `Sum` - All values submitted for the matching metric added together.
+#'     You can use this statistic to determine the total volume of a
+#'     metric.
+#' 
+#' -   `Average` - The value of Sum / SampleCount during the specified
+#'     period. By comparing this statistic with the Minimum and Maximum
+#'     values, you can determine the full scope of a metric and how close
+#'     the average use is to the Minimum and Maximum values. This
+#'     comparison helps you to know when to increase or decrease your
+#'     resources.
+#' 
+#' -   `SampleCount` - The count, or number, of data points used for the
+#'     statistical calculation.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_instance_metric_data(
 #'   instanceName = "string",
-#'   metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System",
+#'   metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System"|"BurstCapacityTime"|"BurstCapacityPercentage",
 #'   period = 123,
 #'   startTime = as.POSIXct(
 #'     "2015-01-01"
@@ -3246,16 +3681,18 @@ lightsail_get_instance_metric_data <- function(instanceName, metricName, period,
 }
 .lightsail$operations$get_instance_metric_data <- lightsail_get_instance_metric_data
 
-#' Returns the port states for a specific virtual private server, or
-#' _instance_
+#' Returns the firewall port states for a specific Amazon Lightsail
+#' instance, the IP addresses allowed to connect to the instance through
+#' the ports, and the protocol
 #'
-#' Returns the port states for a specific virtual private server, or
-#' *instance*.
+#' Returns the firewall port states for a specific Amazon Lightsail
+#' instance, the IP addresses allowed to connect to the instance through
+#' the ports, and the protocol.
 #'
 #' @usage
 #' lightsail_get_instance_port_states(instanceName)
 #'
-#' @param instanceName &#91;required&#93; The name of the instance.
+#' @param instanceName &#91;required&#93; The name of the instance for which to return firewall port states.
 #'
 #' @section Request syntax:
 #' ```
@@ -3327,8 +3764,11 @@ lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
 #' @usage
 #' lightsail_get_instance_snapshots(pageToken)
 #'
-#' @param pageToken A token used for advancing to the next page of results from your get
-#' instance snapshots request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetInstanceSnapshots` request.
+#' If your results are paginated, the response will return a next page
+#' token that you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -3403,8 +3843,11 @@ lightsail_get_instance_state <- function(instanceName) {
 #' @usage
 #' lightsail_get_instances(pageToken)
 #'
-#' @param pageToken A token used for advancing to the next page of results from your get
-#' instances request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetInstances` request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -3476,8 +3919,11 @@ lightsail_get_key_pair <- function(keyPairName) {
 #' @usage
 #' lightsail_get_key_pairs(pageToken)
 #'
-#' @param pageToken A token used for advancing to the next page of results from your get key
-#' pairs request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetKeyPairs` request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -3547,22 +3993,30 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
 #'
 #' Returns information about health metrics for your Lightsail load
 #' balancer.
+#' 
+#' Metrics report the utilization of your resources, and the error counts
+#' generated by them. Monitor and collect metric data regularly to maintain
+#' the reliability, availability, and performance of your resources.
 #'
 #' @usage
 #' lightsail_get_load_balancer_metric_data(loadBalancerName, metricName,
 #'   period, startTime, endTime, unit, statistics)
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer.
-#' @param metricName &#91;required&#93; The metric about which you want to return information. Valid values are
-#' listed below, along with the most useful `statistics` to include in your
-#' request.
+#' @param metricName &#91;required&#93; The metric for which you want to return information.
+#' 
+#' Valid load balancer metric names are listed below, along with the most
+#' useful `statistics` to include in your request, and the published `unit`
+#' value.
 #' 
 #' -   **`ClientTLSNegotiationErrorCount`** - The number of TLS connections
 #'     initiated by the client that did not establish a session with the
-#'     load balancer. Possible causes include a mismatch of ciphers or
-#'     protocols.
+#'     load balancer due to a TLS error generated by the load balancer.
+#'     Possible causes include a mismatch of ciphers or protocols.
 #' 
 #'     `Statistics`: The most useful statistic is `Sum`.
+#' 
+#'     `Unit`: The published unit is `Count`.
 #' 
 #' -   **`HealthyHostCount`** - The number of target instances that are
 #'     considered healthy.
@@ -3570,56 +4024,66 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
 #'     `Statistics`: The most useful statistic are `Average`, `Minimum`,
 #'     and `Maximum`.
 #' 
-#' -   **`UnhealthyHostCount`** - The number of target instances that are
-#'     considered unhealthy.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#'     `Statistics`: The most useful statistic are `Average`, `Minimum`,
-#'     and `Maximum`.
+#' -   **`HTTPCode_Instance_2XX_Count`** - The number of HTTP 2XX response
+#'     codes generated by the target instances. This does not include any
+#'     response codes generated by the load balancer.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`. Note that
+#'     `Minimum`, `Maximum`, and `Average` all return `1`.
+#' 
+#'     `Unit`: The published unit is `Count`.
+#' 
+#' -   **`HTTPCode_Instance_3XX_Count`** - The number of HTTP 3XX response
+#'     codes generated by the target instances. This does not include any
+#'     response codes generated by the load balancer.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`. Note that
+#'     `Minimum`, `Maximum`, and `Average` all return `1`.
+#' 
+#'     `Unit`: The published unit is `Count`.
+#' 
+#' -   **`HTTPCode_Instance_4XX_Count`** - The number of HTTP 4XX response
+#'     codes generated by the target instances. This does not include any
+#'     response codes generated by the load balancer.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`. Note that
+#'     `Minimum`, `Maximum`, and `Average` all return `1`.
+#' 
+#'     `Unit`: The published unit is `Count`.
+#' 
+#' -   **`HTTPCode_Instance_5XX_Count`** - The number of HTTP 5XX response
+#'     codes generated by the target instances. This does not include any
+#'     response codes generated by the load balancer.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`. Note that
+#'     `Minimum`, `Maximum`, and `Average` all return `1`.
+#' 
+#'     `Unit`: The published unit is `Count`.
 #' 
 #' -   **`HTTPCode_LB_4XX_Count`** - The number of HTTP 4XX client error
-#'     codes that originate from the load balancer. Client errors are
+#'     codes that originated from the load balancer. Client errors are
 #'     generated when requests are malformed or incomplete. These requests
-#'     have not been received by the target instance. This count does not
-#'     include any response codes generated by the target instances.
+#'     were not received by the target instance. This count does not
+#'     include response codes generated by the target instances.
 #' 
 #'     `Statistics`: The most useful statistic is `Sum`. Note that
 #'     `Minimum`, `Maximum`, and `Average` all return `1`.
+#' 
+#'     `Unit`: The published unit is `Count`.
 #' 
 #' -   **`HTTPCode_LB_5XX_Count`** - The number of HTTP 5XX server error
-#'     codes that originate from the load balancer. This count does not
-#'     include any response codes generated by the target instances.
-#' 
-#'     `Statistics`: The most useful statistic is `Sum`. Note that
-#'     `Minimum`, `Maximum`, and `Average` all return `1`. Note that
-#'     `Minimum`, `Maximum`, and `Average` all return `1`.
-#' 
-#' -   **`HTTPCode_Instance_2XX_Count`** - The number of HTTP response
-#'     codes generated by the target instances. This does not include any
-#'     response codes generated by the load balancer.
+#'     codes that originated from the load balancer. This does not include
+#'     any response codes generated by the target instance. This metric is
+#'     reported if there are no healthy instances attached to the load
+#'     balancer, or if the request rate exceeds the capacity of the
+#'     instances (spillover) or the load balancer.
 #' 
 #'     `Statistics`: The most useful statistic is `Sum`. Note that
 #'     `Minimum`, `Maximum`, and `Average` all return `1`.
 #' 
-#' -   **`HTTPCode_Instance_3XX_Count`** - The number of HTTP response
-#'     codes generated by the target instances. This does not include any
-#'     response codes generated by the load balancer.
-#' 
-#'     `Statistics`: The most useful statistic is `Sum`. Note that
-#'     `Minimum`, `Maximum`, and `Average` all return `1`.
-#' 
-#' -   **`HTTPCode_Instance_4XX_Count`** - The number of HTTP response
-#'     codes generated by the target instances. This does not include any
-#'     response codes generated by the load balancer.
-#' 
-#'     `Statistics`: The most useful statistic is `Sum`. Note that
-#'     `Minimum`, `Maximum`, and `Average` all return `1`.
-#' 
-#' -   **`HTTPCode_Instance_5XX_Count`** - The number of HTTP response
-#'     codes generated by the target instances. This does not include any
-#'     response codes generated by the load balancer.
-#' 
-#'     `Statistics`: The most useful statistic is `Sum`. Note that
-#'     `Minimum`, `Maximum`, and `Average` all return `1`.
+#'     `Unit`: The published unit is `Count`.
 #' 
 #' -   **`InstanceResponseTime`** - The time elapsed, in seconds, after the
 #'     request leaves the load balancer until a response from the target
@@ -3627,11 +4091,15 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
 #' 
 #'     `Statistics`: The most useful statistic is `Average`.
 #' 
+#'     `Unit`: The published unit is `Seconds`.
+#' 
 #' -   **`RejectedConnectionCount`** - The number of connections that were
 #'     rejected because the load balancer had reached its maximum number of
 #'     connections.
 #' 
 #'     `Statistics`: The most useful statistic is `Sum`.
+#' 
+#'     `Unit`: The published unit is `Count`.
 #' 
 #' -   **`RequestCount`** - The number of requests processed over IPv4.
 #'     This count includes only the requests with a response generated by a
@@ -3639,33 +4107,47 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
 #' 
 #'     `Statistics`: The most useful statistic is `Sum`. Note that
 #'     `Minimum`, `Maximum`, and `Average` all return `1`.
+#' 
+#'     `Unit`: The published unit is `Count`.
+#' 
+#' -   **`UnhealthyHostCount`** - The number of target instances that are
+#'     considered unhealthy.
+#' 
+#'     `Statistics`: The most useful statistic are `Average`, `Minimum`,
+#'     and `Maximum`.
+#' 
+#'     `Unit`: The published unit is `Count`.
 #' @param period &#91;required&#93; The granularity, in seconds, of the returned data points.
 #' @param startTime &#91;required&#93; The start time of the period.
 #' @param endTime &#91;required&#93; The end time of the period.
-#' @param unit &#91;required&#93; The unit for the time period request. Valid values are listed below.
-#' @param statistics &#91;required&#93; An array of statistics that you want to request metrics for. Valid
-#' values are listed below.
+#' @param unit &#91;required&#93; The unit for the metric data request. Valid units depend on the metric
+#' data being requested. For the valid units with each available metric,
+#' see the `metricName` parameter.
+#' @param statistics &#91;required&#93; The statistic for the metric.
 #' 
-#' -   **`SampleCount`** - The count (number) of data points used for the
+#' The following statistics are available:
+#' 
+#' -   `Minimum` - The lowest value observed during the specified period.
+#'     Use this value to determine low volumes of activity for your
+#'     application.
+#' 
+#' -   `Maximum` - The highest value observed during the specified period.
+#'     Use this value to determine high volumes of activity for your
+#'     application.
+#' 
+#' -   `Sum` - All values submitted for the matching metric added together.
+#'     You can use this statistic to determine the total volume of a
+#'     metric.
+#' 
+#' -   `Average` - The value of Sum / SampleCount during the specified
+#'     period. By comparing this statistic with the Minimum and Maximum
+#'     values, you can determine the full scope of a metric and how close
+#'     the average use is to the Minimum and Maximum values. This
+#'     comparison helps you to know when to increase or decrease your
+#'     resources.
+#' 
+#' -   `SampleCount` - The count, or number, of data points used for the
 #'     statistical calculation.
-#' 
-#' -   **`Average`** - The value of Sum / SampleCount during the specified
-#'     period. By comparing this statistic with the Minimum and Maximum,
-#'     you can determine the full scope of a metric and how close the
-#'     average use is to the Minimum and Maximum. This comparison helps you
-#'     to know when to increase or decrease your resources as needed.
-#' 
-#' -   **`Sum`** - All values submitted for the matching metric added
-#'     together. This statistic can be useful for determining the total
-#'     volume of a metric.
-#' 
-#' -   **`Minimum`** - The lowest value observed during the specified
-#'     period. You can use this value to determine low volumes of activity
-#'     for your application.
-#' 
-#' -   **`Maximum`** - The highest value observed during the specified
-#'     period. You can use this value to determine high volumes of activity
-#'     for your application.
 #'
 #' @section Request syntax:
 #' ```
@@ -3754,16 +4236,15 @@ lightsail_get_load_balancer_tls_certificates <- function(loadBalancerName) {
 #' Returns information about all load balancers in an account
 #'
 #' Returns information about all load balancers in an account.
-#' 
-#' If you are describing a long list of load balancers, you can paginate
-#' the output to make the list more manageable. You can use the pageToken
-#' and nextPageToken values to retrieve the next items in the list.
 #'
 #' @usage
 #' lightsail_get_load_balancers(pageToken)
 #'
-#' @param pageToken A token used for paginating the results from your GetLoadBalancers
-#' request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetLoadBalancers` request. If
+#' your results are paginated, the response will return a next page token
+#' that you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -3842,8 +4323,11 @@ lightsail_get_operation <- function(operationId) {
 #' @usage
 #' lightsail_get_operations(pageToken)
 #'
-#' @param pageToken A token used for advancing to the next page of results from your get
-#' operations request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetOperations` request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -3881,8 +4365,12 @@ lightsail_get_operations <- function(pageToken = NULL) {
 #' lightsail_get_operations_for_resource(resourceName, pageToken)
 #'
 #' @param resourceName &#91;required&#93; The name of the resource for which you are requesting information.
-#' @param pageToken A token used for advancing to the next page of results from your get
-#' operations for resource request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetOperationsForResource`
+#' request. If your results are paginated, the response will return a next
+#' page token that you can specify as the page token in a subsequent
+#' request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4004,8 +4492,12 @@ lightsail_get_relational_database <- function(relationalDatabaseName) {
 #' @usage
 #' lightsail_get_relational_database_blueprints(pageToken)
 #'
-#' @param pageToken A token used for advancing to a specific page of results for your
-#' `get relational database blueprints` request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial
+#' `GetRelationalDatabaseBlueprints` request. If your results are
+#' paginated, the response will return a next page token that you can
+#' specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4045,8 +4537,12 @@ lightsail_get_relational_database_blueprints <- function(pageToken = NULL) {
 #' @usage
 #' lightsail_get_relational_database_bundles(pageToken)
 #'
-#' @param pageToken A token used for advancing to a specific page of results for your
-#' `get relational database bundles` request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetRelationalDatabaseBundles`
+#' request. If your results are paginated, the response will return a next
+#' page token that you can specify as the page token in a subsequent
+#' request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4090,8 +4586,12 @@ lightsail_get_relational_database_bundles <- function(pageToken = NULL) {
 #' Default: `60`
 #' 
 #' The minimum is 1 and the maximum is 14 days (20160 minutes).
-#' @param pageToken A token used for advancing to a specific page of results from for get
-#' relational database events request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetRelationalDatabaseEvents`
+#' request. If your results are paginated, the response will return a next
+#' page token that you can specify as the page token in a subsequent
+#' request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4161,8 +4661,13 @@ lightsail_get_relational_database_events <- function(relationalDatabaseName, dur
 #' 
 #' For PostgreSQL, the default value of `false` is the only option
 #' available.
-#' @param pageToken A token used for advancing to a specific page of results for your
-#' `get relational database log events` request.
+#' @param pageToken The token to advance to the next or previous page of results from your
+#' request.
+#' 
+#' To get a page token, perform an initial `GetRelationalDatabaseLogEvents`
+#' request. If your results are paginated, the response will return a next
+#' forward token and/or next backward token that you can specify as the
+#' page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4296,14 +4801,70 @@ lightsail_get_relational_database_master_user_password <- function(relationalDat
 #'
 #' Returns the data points of the specified metric for a database in Amazon
 #' Lightsail.
+#' 
+#' Metrics report the utilization of your resources, and the error counts
+#' generated by them. Monitor and collect metric data regularly to maintain
+#' the reliability, availability, and performance of your resources.
 #'
 #' @usage
 #' lightsail_get_relational_database_metric_data(relationalDatabaseName,
 #'   metricName, period, startTime, endTime, unit, statistics)
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database from which to get metric data.
-#' @param metricName &#91;required&#93; The name of the metric data to return.
+#' @param metricName &#91;required&#93; The metric for which you want to return information.
+#' 
+#' Valid relational database metric names are listed below, along with the
+#' most useful `statistics` to include in your request, and the published
+#' `unit` value. All relational database metric data is available in
+#' 1-minute (60 seconds) granularity.
+#' 
+#' -   **`CPUUtilization`** - The percentage of CPU utilization currently
+#'     in use on the database.
+#' 
+#'     `Statistics`: The most useful statistics are `Maximum` and
+#'     `Average`.
+#' 
+#'     `Unit`: The published unit is `Percent`.
+#' 
+#' -   **`DatabaseConnections`** - The number of database connections in
+#'     use.
+#' 
+#'     `Statistics`: The most useful statistics are `Maximum` and `Sum`.
+#' 
+#'     `Unit`: The published unit is `Count`.
+#' 
+#' -   **`DiskQueueDepth`** - The number of outstanding IOs (read/write
+#'     requests) that are waiting to access the disk.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`.
+#' 
+#'     `Unit`: The published unit is `Count`.
+#' 
+#' -   **`FreeStorageSpace`** - The amount of available storage space.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`.
+#' 
+#'     `Unit`: The published unit is `Bytes`.
+#' 
+#' -   **`NetworkReceiveThroughput`** - The incoming (Receive) network
+#'     traffic on the database, including both customer database traffic
+#'     and AWS traffic used for monitoring and replication.
+#' 
+#'     `Statistics`: The most useful statistic is `Average`.
+#' 
+#'     `Unit`: The published unit is `Bytes/Second`.
+#' 
+#' -   **`NetworkTransmitThroughput`** - The outgoing (Transmit) network
+#'     traffic on the database, including both customer database traffic
+#'     and AWS traffic used for monitoring and replication.
+#' 
+#'     `Statistics`: The most useful statistic is `Average`.
+#' 
+#'     `Unit`: The published unit is `Bytes/Second`.
 #' @param period &#91;required&#93; The granularity, in seconds, of the returned data points.
+#' 
+#' All relational database metric data is available in 1-minute (60
+#' seconds) granularity.
 #' @param startTime &#91;required&#93; The start of the time interval from which to get metric data.
 #' 
 #' Constraints:
@@ -4324,8 +4885,34 @@ lightsail_get_relational_database_master_user_password <- function(relationalDat
 #' 
 #'     For example, if you wish to use an end time of October 1, 2018, at 8
 #'     PM UTC, then you input `1538424000` as the end time.
-#' @param unit &#91;required&#93; The unit for the metric data request.
-#' @param statistics &#91;required&#93; The array of statistics for your metric data request.
+#' @param unit &#91;required&#93; The unit for the metric data request. Valid units depend on the metric
+#' data being requested. For the valid units with each available metric,
+#' see the `metricName` parameter.
+#' @param statistics &#91;required&#93; The statistic for the metric.
+#' 
+#' The following statistics are available:
+#' 
+#' -   `Minimum` - The lowest value observed during the specified period.
+#'     Use this value to determine low volumes of activity for your
+#'     application.
+#' 
+#' -   `Maximum` - The highest value observed during the specified period.
+#'     Use this value to determine high volumes of activity for your
+#'     application.
+#' 
+#' -   `Sum` - All values submitted for the matching metric added together.
+#'     You can use this statistic to determine the total volume of a
+#'     metric.
+#' 
+#' -   `Average` - The value of Sum / SampleCount during the specified
+#'     period. By comparing this statistic with the Minimum and Maximum
+#'     values, you can determine the full scope of a metric and how close
+#'     the average use is to the Minimum and Maximum values. This
+#'     comparison helps you to know when to increase or decrease your
+#'     resources.
+#' 
+#' -   `SampleCount` - The count, or number, of data points used for the
+#'     statistical calculation.
 #'
 #' @section Request syntax:
 #' ```
@@ -4382,8 +4969,12 @@ lightsail_get_relational_database_metric_data <- function(relationalDatabaseName
 #'   pageToken)
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database for which to get parameters.
-#' @param pageToken A token used for advancing to a specific page of results for your
-#' `get relational database parameters` request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial
+#' `GetRelationalDatabaseParameters` request. If your results are
+#' paginated, the response will return a next page token that you can
+#' specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4461,8 +5052,12 @@ lightsail_get_relational_database_snapshot <- function(relationalDatabaseSnapsho
 #' @usage
 #' lightsail_get_relational_database_snapshots(pageToken)
 #'
-#' @param pageToken A token used for advancing to a specific page of results for your
-#' `get relational database snapshots` request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetRelationalDatabaseSnapshots`
+#' request. If your results are paginated, the response will return a next
+#' page token that you can specify as the page token in a subsequent
+#' request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4498,8 +5093,12 @@ lightsail_get_relational_database_snapshots <- function(pageToken = NULL) {
 #' @usage
 #' lightsail_get_relational_databases(pageToken)
 #'
-#' @param pageToken A token used for advancing to a specific page of results for your
-#' `get relational database` request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetRelationalDatabases`
+#' request. If your results are paginated, the response will return a next
+#' page token that you can specify as the page token in a subsequent
+#' request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4571,8 +5170,11 @@ lightsail_get_static_ip <- function(staticIpName) {
 #' @usage
 #' lightsail_get_static_ips(pageToken)
 #'
-#' @param pageToken A token used for advancing to the next page of results from your get
-#' static IPs request.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetStaticIps` request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @section Request syntax:
 #' ```
@@ -4671,21 +5273,24 @@ lightsail_is_vpc_peered <- function() {
 }
 .lightsail$operations$is_vpc_peered <- lightsail_is_vpc_peered
 
-#' Adds public ports to an Amazon Lightsail instance
+#' Opens ports for a specific Amazon Lightsail instance, and specifies the
+#' IP addresses allowed to connect to the instance through the ports, and
+#' the protocol
 #'
-#' Adds public ports to an Amazon Lightsail instance.
+#' Opens ports for a specific Amazon Lightsail instance, and specifies the
+#' IP addresses allowed to connect to the instance through the ports, and
+#' the protocol.
 #' 
-#' The `open instance public ports` operation supports tag-based access
-#' control via resource tags applied to the resource identified by
-#' `instance name`. For more information, see the [Lightsail Dev
+#' The `OpenInstancePublicPorts` action supports tag-based access control
+#' via resource tags applied to the resource identified by `instanceName`.
+#' For more information, see the [Lightsail Dev
 #' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_open_instance_public_ports(portInfo, instanceName)
 #'
-#' @param portInfo &#91;required&#93; An array of key-value pairs containing information about the port
-#' mappings.
-#' @param instanceName &#91;required&#93; The name of the instance for which you want to open the public ports.
+#' @param portInfo &#91;required&#93; An object to describe the ports to open for the specified instance.
+#' @param instanceName &#91;required&#93; The name of the instance for which to open ports.
 #'
 #' @section Request syntax:
 #' ```
@@ -4693,7 +5298,13 @@ lightsail_is_vpc_peered <- function() {
 #'   portInfo = list(
 #'     fromPort = 123,
 #'     toPort = 123,
-#'     protocol = "tcp"|"all"|"udp"
+#'     protocol = "tcp"|"all"|"udp"|"icmp",
+#'     cidrs = list(
+#'       "string"
+#'     ),
+#'     cidrListAliases = list(
+#'       "string"
+#'     )
 #'   ),
 #'   instanceName = "string"
 #' )
@@ -4751,22 +5362,211 @@ lightsail_peer_vpc <- function() {
 }
 .lightsail$operations$peer_vpc <- lightsail_peer_vpc
 
-#' Sets the specified open ports for an Amazon Lightsail instance, and
-#' closes all ports for every protocol not included in the current request
+#' Creates or updates an alarm, and associates it with the specified metric
 #'
-#' Sets the specified open ports for an Amazon Lightsail instance, and
-#' closes all ports for every protocol not included in the current request.
+#' Creates or updates an alarm, and associates it with the specified
+#' metric.
 #' 
-#' The `put instance public ports` operation supports tag-based access
-#' control via resource tags applied to the resource identified by
-#' `instance name`. For more information, see the [Lightsail Dev
+#' An alarm is used to monitor a single metric for one of your resources.
+#' When a metric condition is met, the alarm can notify you by email, SMS
+#' text message, and a banner displayed on the Amazon Lightsail console.
+#' For more information, see [Alarms in Amazon
+#' Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms).
+#' 
+#' When this action creates an alarm, the alarm state is immediately set to
+#' `INSUFFICIENT_DATA`. The alarm is then evaluated and its state is set
+#' appropriately. Any actions associated with the new state are then
+#' executed.
+#' 
+#' When you update an existing alarm, its state is left unchanged, but the
+#' update completely overwrites the previous configuration of the alarm.
+#' The alarm is then evaluated with the updated configuration.
+#'
+#' @usage
+#' lightsail_put_alarm(alarmName, metricName, monitoredResourceName,
+#'   comparisonOperator, threshold, evaluationPeriods, datapointsToAlarm,
+#'   treatMissingData, contactProtocols, notificationTriggers,
+#'   notificationEnabled)
+#'
+#' @param alarmName &#91;required&#93; The name for the alarm. Specify the name of an existing alarm to update,
+#' and overwrite the previous configuration of the alarm.
+#' @param metricName &#91;required&#93; The name of the metric to associate with the alarm.
+#' 
+#' You can configure up to two alarms per metric.
+#' 
+#' The following metrics are available for each resource type:
+#' 
+#' -   **Instances**: `BurstCapacityPercentage`, `BurstCapacityTime`,
+#'     `CPUUtilization`, `NetworkIn`, `NetworkOut`, `StatusCheckFailed`,
+#'     `StatusCheckFailed_Instance`, and `StatusCheckFailed_System`.
+#' 
+#' -   **Load balancers**: `ClientTLSNegotiationErrorCount`,
+#'     `HealthyHostCount`, `UnhealthyHostCount`, `HTTPCode_LB_4XX_Count`,
+#'     `HTTPCode_LB_5XX_Count`, `HTTPCode_Instance_2XX_Count`,
+#'     `HTTPCode_Instance_3XX_Count`, `HTTPCode_Instance_4XX_Count`,
+#'     `HTTPCode_Instance_5XX_Count`, `InstanceResponseTime`,
+#'     `RejectedConnectionCount`, and `RequestCount`.
+#' 
+#' -   **Relational databases**: `CPUUtilization`, `DatabaseConnections`,
+#'     `DiskQueueDepth`, `FreeStorageSpace`, `NetworkReceiveThroughput`,
+#'     and `NetworkTransmitThroughput`.
+#' 
+#' For more information about these metrics, see [Metrics available in
+#' Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-resource-health-metrics#available-metrics).
+#' @param monitoredResourceName &#91;required&#93; The name of the Lightsail resource that will be monitored.
+#' 
+#' Instances, load balancers, and relational databases are the only
+#' Lightsail resources that can currently be monitored by alarms.
+#' @param comparisonOperator &#91;required&#93; The arithmetic operation to use when comparing the specified statistic
+#' to the threshold. The specified statistic value is used as the first
+#' operand.
+#' @param threshold &#91;required&#93; The value against which the specified statistic is compared.
+#' @param evaluationPeriods &#91;required&#93; The number of most recent periods over which data is compared to the
+#' specified threshold. If you are setting an \"M out of N\" alarm, this
+#' value (`evaluationPeriods`) is the N.
+#' 
+#' If you are setting an alarm that requires that a number of consecutive
+#' data points be breaching to trigger the alarm, this value specifies the
+#' rolling period of time in which data points are evaluated.
+#' 
+#' Each evaluation period is five minutes long. For example, specify an
+#' evaluation period of 24 to evaluate a metric over a rolling period of
+#' two hours.
+#' 
+#' You can specify a minimum valuation period of 1 (5 minutes), and a
+#' maximum evaluation period of 288 (24 hours).
+#' @param datapointsToAlarm The number of data points that must be not within the specified
+#' threshold to trigger the alarm. If you are setting an \"M out of N\"
+#' alarm, this value (`datapointsToAlarm`) is the M.
+#' @param treatMissingData Sets how this alarm will handle missing data points.
+#' 
+#' An alarm can treat missing data in the following ways:
+#' 
+#' -   `breaching` - Assume the missing data is not within the threshold.
+#'     Missing data counts towards the number of times the metric is not
+#'     within the threshold.
+#' 
+#' -   `notBreaching` - Assume the missing data is within the threshold.
+#'     Missing data does not count towards the number of times the metric
+#'     is not within the threshold.
+#' 
+#' -   `ignore` - Ignore the missing data. Maintains the current alarm
+#'     state.
+#' 
+#' -   `missing` - Missing data is treated as missing.
+#' 
+#' If `treatMissingData` is not specified, the default behavior of
+#' `missing` is used.
+#' @param contactProtocols The contact protocols to use for the alarm, such as `Email`, `SMS` (text
+#' messaging), or both.
+#' 
+#' A notification is sent via the specified contact protocol if
+#' notifications are enabled for the alarm, and when the alarm is
+#' triggered.
+#' 
+#' A notification is not sent if a contact protocol is not specified, if
+#' the specified contact protocol is not configured in the AWS Region, or
+#' if notifications are not enabled for the alarm using the
+#' `notificationEnabled` paramater.
+#' 
+#' Use the `CreateContactMethod` action to configure a contact protocol in
+#' an AWS Region.
+#' @param notificationTriggers The alarm states that trigger a notification.
+#' 
+#' An alarm has the following possible states:
+#' 
+#' -   `ALARM` - The metric is outside of the defined threshold.
+#' 
+#' -   `INSUFFICIENT_DATA` - The alarm has just started, the metric is not
+#'     available, or not enough data is available for the metric to
+#'     determine the alarm state.
+#' 
+#' -   `OK` - The metric is within the defined threshold.
+#' 
+#' When you specify a notification trigger, the `ALARM` state must be
+#' specified. The `INSUFFICIENT_DATA` and `OK` states can be specified in
+#' addition to the `ALARM` state.
+#' 
+#' -   If you specify `OK` as an alarm trigger, a notification is sent when
+#'     the alarm switches from an `ALARM` or `INSUFFICIENT_DATA` alarm
+#'     state to an `OK` state. This can be thought of as an *all clear*
+#'     alarm notification.
+#' 
+#' -   If you specify `INSUFFICIENT_DATA` as the alarm trigger, a
+#'     notification is sent when the alarm switches from an `OK` or `ALARM`
+#'     alarm state to an `INSUFFICIENT_DATA` state.
+#' 
+#' The notification trigger defaults to `ALARM` if you don\'t specify this
+#' parameter.
+#' @param notificationEnabled Indicates whether the alarm is enabled.
+#' 
+#' Notifications are enabled by default if you don\'t specify this
+#' parameter.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_alarm(
+#'   alarmName = "string",
+#'   metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System"|"ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount"|"DatabaseConnections"|"DiskQueueDepth"|"FreeStorageSpace"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"BurstCapacityTime"|"BurstCapacityPercentage",
+#'   monitoredResourceName = "string",
+#'   comparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
+#'   threshold = 123.0,
+#'   evaluationPeriods = 123,
+#'   datapointsToAlarm = 123,
+#'   treatMissingData = "breaching"|"notBreaching"|"ignore"|"missing",
+#'   contactProtocols = list(
+#'     "Email"|"SMS"
+#'   ),
+#'   notificationTriggers = list(
+#'     "OK"|"ALARM"|"INSUFFICIENT_DATA"
+#'   ),
+#'   notificationEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_put_alarm
+lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, comparisonOperator, threshold, evaluationPeriods, datapointsToAlarm = NULL, treatMissingData = NULL, contactProtocols = NULL, notificationTriggers = NULL, notificationEnabled = NULL) {
+  op <- new_operation(
+    name = "PutAlarm",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$put_alarm_input(alarmName = alarmName, metricName = metricName, monitoredResourceName = monitoredResourceName, comparisonOperator = comparisonOperator, threshold = threshold, evaluationPeriods = evaluationPeriods, datapointsToAlarm = datapointsToAlarm, treatMissingData = treatMissingData, contactProtocols = contactProtocols, notificationTriggers = notificationTriggers, notificationEnabled = notificationEnabled)
+  output <- .lightsail$put_alarm_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$put_alarm <- lightsail_put_alarm
+
+#' Opens ports for a specific Amazon Lightsail instance, and specifies the
+#' IP addresses allowed to connect to the instance through the ports, and
+#' the protocol
+#'
+#' Opens ports for a specific Amazon Lightsail instance, and specifies the
+#' IP addresses allowed to connect to the instance through the ports, and
+#' the protocol. This action also closes all currently open ports that are
+#' not included in the request. Include all of the ports and the protocols
+#' you want to open in your `PutInstancePublicPorts`request. Or use the
+#' `OpenInstancePublicPorts` action to open ports without closing currently
+#' open ports.
+#' 
+#' The `PutInstancePublicPorts` action supports tag-based access control
+#' via resource tags applied to the resource identified by `instanceName`.
+#' For more information, see the [Lightsail Dev
 #' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_put_instance_public_ports(portInfos, instanceName)
 #'
-#' @param portInfos &#91;required&#93; Specifies information about the public port(s).
-#' @param instanceName &#91;required&#93; The Lightsail instance name of the public port(s) you are setting.
+#' @param portInfos &#91;required&#93; An array of objects to describe the ports to open for the specified
+#' instance.
+#' @param instanceName &#91;required&#93; The name of the instance for which to open ports.
 #'
 #' @section Request syntax:
 #' ```
@@ -4775,7 +5575,13 @@ lightsail_peer_vpc <- function() {
 #'     list(
 #'       fromPort = 123,
 #'       toPort = 123,
-#'       protocol = "tcp"|"all"|"udp"
+#'       protocol = "tcp"|"all"|"udp"|"icmp",
+#'       cidrs = list(
+#'         "string"
+#'       ),
+#'       cidrListAliases = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   instanceName = "string"
@@ -4919,6 +5725,59 @@ lightsail_release_static_ip <- function(staticIpName) {
   return(response)
 }
 .lightsail$operations$release_static_ip <- lightsail_release_static_ip
+
+#' Sends a verification request to an email contact method to ensure it's
+#' owned by the requester
+#'
+#' Sends a verification request to an email contact method to ensure it\'s
+#' owned by the requester. SMS contact methods don\'t need to be verified.
+#' 
+#' A contact method is used to send you notifications about your Amazon
+#' Lightsail resources. You can add one email address and one mobile phone
+#' number contact method in each AWS Region. However, SMS text messaging is
+#' not supported in some AWS Regions, and SMS text messages cannot be sent
+#' to some countries/regions. For more information, see [Notifications in
+#' Amazon
+#' Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications).
+#' 
+#' A verification request is sent to the contact method when you initially
+#' create it. Use this action to send another verification request if a
+#' previous verification request was deleted, or has expired.
+#' 
+#' Notifications are not sent to an email contact method until after it is
+#' verified, and confirmed as valid.
+#'
+#' @usage
+#' lightsail_send_contact_method_verification(protocol)
+#'
+#' @param protocol &#91;required&#93; The protocol to verify, such as `Email` or `SMS` (text messaging).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_contact_method_verification(
+#'   protocol = "Email"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_send_contact_method_verification
+lightsail_send_contact_method_verification <- function(protocol) {
+  op <- new_operation(
+    name = "SendContactMethodVerification",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$send_contact_method_verification_input(protocol = protocol)
+  output <- .lightsail$send_contact_method_verification_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$send_contact_method_verification <- lightsail_send_contact_method_verification
 
 #' Starts a specific Amazon Lightsail instance from a stopped state
 #'
@@ -5163,6 +6022,63 @@ lightsail_tag_resource <- function(resourceName, resourceArn = NULL, tags) {
   return(response)
 }
 .lightsail$operations$tag_resource <- lightsail_tag_resource
+
+#' Tests an alarm by displaying a banner on the Amazon Lightsail console
+#'
+#' Tests an alarm by displaying a banner on the Amazon Lightsail console.
+#' If a notification trigger is configured for the specified alarm, the
+#' test also sends a notification to the notification protocol (`Email`
+#' and/or `SMS`) configured for the alarm.
+#' 
+#' An alarm is used to monitor a single metric for one of your resources.
+#' When a metric condition is met, the alarm can notify you by email, SMS
+#' text message, and a banner displayed on the Amazon Lightsail console.
+#' For more information, see [Alarms in Amazon
+#' Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms).
+#'
+#' @usage
+#' lightsail_test_alarm(alarmName, state)
+#'
+#' @param alarmName &#91;required&#93; The name of the alarm to test.
+#' @param state &#91;required&#93; The alarm state to test.
+#' 
+#' An alarm has the following possible states that can be tested:
+#' 
+#' -   `ALARM` - The metric is outside of the defined threshold.
+#' 
+#' -   `INSUFFICIENT_DATA` - The alarm has just started, the metric is not
+#'     available, or not enough data is available for the metric to
+#'     determine the alarm state.
+#' 
+#' -   `OK` - The metric is within the defined threshold.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$test_alarm(
+#'   alarmName = "string",
+#'   state = "OK"|"ALARM"|"INSUFFICIENT_DATA"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_test_alarm
+lightsail_test_alarm <- function(alarmName, state) {
+  op <- new_operation(
+    name = "TestAlarm",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$test_alarm_input(alarmName = alarmName, state = state)
+  output <- .lightsail$test_alarm_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$test_alarm <- lightsail_test_alarm
 
 #' Attempts to unpeer the Lightsail VPC from the user's default VPC
 #'

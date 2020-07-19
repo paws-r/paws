@@ -3,7 +3,7 @@
 \name{applicationdiscoveryservice_list_configurations}
 \alias{applicationdiscoveryservice_list_configurations}
 \title{Retrieves a list of configuration items as specified by the value passed
-to the required paramater configurationType}
+to the required parameter configurationType}
 \usage{
 applicationdiscoveryservice_list_configurations(configurationType,
   filters, maxResults, nextToken, orderBy)
@@ -17,7 +17,8 @@ applicationdiscoveryservice_list_configurations(configurationType,
 \verb{\\\{"key": "serverType", "value": "webServer"\\\}}
 
 For a complete list of filter options and guidance about using them with
-this action, see \href{http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations}{Querying Discovered Configuration Items}.}
+this action, see \href{https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#ListConfigurations}{Using the ListConfigurations Action}
+in the \emph{AWS Application Discovery Service User Guide}.}
 
 \item{maxResults}{The total number of items to return. The maximum value is 100.}
 
@@ -29,11 +30,12 @@ set of 10.}
 
 \item{orderBy}{Certain filter criteria return output that can be sorted in ascending or
 descending order. For a list of output characteristics for each filter,
-see \href{http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations}{Using the ListConfigurations Action}.}
+see \href{https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#ListConfigurations}{Using the ListConfigurations Action}
+in the \emph{AWS Application Discovery Service User Guide}.}
 }
 \description{
 Retrieves a list of configuration items as specified by the value passed
-to the required paramater \code{configurationType}. Optional filtering may be
+to the required parameter \code{configurationType}. Optional filtering may be
 applied to refine search results.
 }
 \section{Request syntax}{

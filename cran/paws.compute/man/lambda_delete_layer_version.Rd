@@ -25,4 +25,14 @@ functions refer to it.
 }
 }
 
+\examples{
+\dontrun{
+# The following example deletes version 2 of a layer named my-layer.
+svc$delete_layer_version(
+  LayerName = "my-layer",
+  VersionNumber = 2L
+)
+}
+
+}
 \keyword{internal}

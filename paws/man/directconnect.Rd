@@ -90,6 +90,9 @@ Regions.
 \link[=directconnect_describe_virtual_gateways]{describe_virtual_gateways} \tab Lists the virtual private gateways owned by the AWS account \cr
 \link[=directconnect_describe_virtual_interfaces]{describe_virtual_interfaces} \tab Displays all virtual interfaces for an AWS account \cr
 \link[=directconnect_disassociate_connection_from_lag]{disassociate_connection_from_lag} \tab Disassociates a connection from a link aggregation group (LAG) \cr
+\link[=directconnect_list_virtual_interface_test_history]{list_virtual_interface_test_history} \tab Lists the virtual interface failover test history \cr
+\link[=directconnect_start_bgp_failover_test]{start_bgp_failover_test} \tab Starts the virtual interface failover test that verifies your configuration meets your resiliency requirements by placing the BGP peering session in the DOWN state \cr
+\link[=directconnect_stop_bgp_failover_test]{stop_bgp_failover_test} \tab Stops the virtual interface failover test \cr
 \link[=directconnect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified AWS Direct Connect resource \cr
 \link[=directconnect_untag_resource]{untag_resource} \tab Removes one or more tags from the specified AWS Direct Connect resource \cr
 \link[=directconnect_update_direct_connect_gateway_association]{update_direct_connect_gateway_association} \tab Updates the specified attributes of the Direct Connect gateway association \cr

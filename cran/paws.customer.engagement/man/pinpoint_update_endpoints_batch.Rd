@@ -15,7 +15,12 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \item{EndpointBatchRequest}{[required]}
 }
 \description{
-<p>Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing endpoints for an application. You can also use this operation to define custom attributes (Attributes, Metrics, and UserAttributes properties) for a batch of endpoints.</p>
+Creates a new batch of endpoints for an application or updates the
+settings and attributes of a batch of existing endpoints for an
+application. You can also use this operation to define custom attributes
+for a batch of endpoints. If an update includes one or more values for a
+custom attribute, Amazon Pinpoint replaces (overwrites) any existing
+values with the new values.
 }
 \section{Request syntax}{
 \preformatted{svc$update_endpoints_batch(
@@ -29,7 +34,7 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
             "string"
           )
         ),
-        ChannelType = "GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+        ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
         Demographic = list(
           AppVersion = "string",
           Locale = "string",

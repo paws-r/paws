@@ -87,6 +87,7 @@ Jobs to monitor the data captured for an Amazon SageMaker Endoint.
         "string"
       ),
       NetworkConfig = list(
+        EnableInterContainerTrafficEncryption = TRUE|FALSE,
         EnableNetworkIsolation = TRUE|FALSE,
         VpcConfig = list(
           SecurityGroupIds = list(

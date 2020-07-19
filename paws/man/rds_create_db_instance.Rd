@@ -373,7 +373,7 @@ Default: 1
 Constraints:
 \itemize{
 \item Must be a value from 0 to 35
-\item Can\'t be set to 0 if the DB instance is a source to Read Replicas
+\item Can\'t be set to 0 if the DB instance is a source to read replicas
 }}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
@@ -405,7 +405,7 @@ Constraints:
 
 Default: \code{3306}
 
-Valid Values: \code{1150-65535}
+Valid values: \code{1150-65535}
 
 Type: Integer
 
@@ -413,7 +413,7 @@ Type: Integer
 
 Default: \code{3306}
 
-Valid Values: \code{1150-65535}
+Valid values: \code{1150-65535}
 
 Type: Integer
 
@@ -421,7 +421,7 @@ Type: Integer
 
 Default: \code{5432}
 
-Valid Values: \code{1150-65535}
+Valid values: \code{1150-65535}
 
 Type: Integer
 
@@ -429,20 +429,20 @@ Type: Integer
 
 Default: \code{1521}
 
-Valid Values: \code{1150-65535}
+Valid values: \code{1150-65535}
 
 \strong{SQL Server}
 
 Default: \code{1433}
 
-Valid Values: \code{1150-65535} except for \code{1434}, \code{3389}, \code{47001}, \code{49152},
-and \code{49152} through \code{49156}.
+Valid values: \code{1150-65535} except \code{1234}, \code{1434}, \code{3260}, \code{3343},
+\code{3389}, \code{47001}, and \code{49152-49156}.
 
 \strong{Amazon Aurora}
 
 Default: \code{3306}
 
-Valid Values: \code{1150-65535}
+Valid values: \code{1150-65535}
 
 Type: Integer}
 
@@ -512,7 +512,7 @@ instance. For SQL Server DB instances, must be a multiple between 1 and
 option group.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, can\'t be removed from an option group, and that option group
+TDE, can\'t be removed from an option group. Also, that option group
 can\'t be removed from a DB instance once it is associated with a DB
 instance}
 
@@ -525,10 +525,16 @@ Not applicable. The character set is managed by the DB cluster. For more
 information, see \code{CreateDBCluster}.}
 
 \item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
-When the DB instance is publicly accessible, it is an Internet-facing
-instance with a publicly resolvable DNS name, which resolves to a public
-IP address. When the DB instance isn\'t publicly accessible, it is an
-internal instance with a DNS name that resolves to a private IP address.
+
+When the DB instance is publicly accessible, its DNS endpoint resolves
+to the private IP address from within the DB instance\'s VPC, and to the
+public IP address from outside of the DB instance\'s VPC. Access to the
+DB instance is ultimately controlled by the security group it uses, and
+that public access is not permitted if the security group assigned to
+the DB instance doesn\'t permit it.
+
+When the DB instance isn\'t publicly accessible, it is an internal DB
+instance with a DNS name that resolves to a private IP address.
 
 Default: The default behavior varies depending on whether
 \code{DBSubnetGroupName} is specified.
@@ -606,7 +612,7 @@ Authentication to authenticate users that connect to the DB instance.
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html}{Using Windows Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server}
 in the \emph{Amazon RDS User Guide}.
 
-For Oracle DB instance, Amazon RDS can use Kerberos Authentication to
+For Oracle DB instances, Amazon RDS can use Kerberos Authentication to
 authenticate users that connect to the DB instance. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html}{Using Kerberos Authentication with Amazon RDS for Oracle}
 in the \emph{Amazon RDS User Guide}.}

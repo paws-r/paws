@@ -7,11 +7,12 @@
 kinesisvideo_list_tags_for_resource(NextToken, ResourceARN)
 }
 \arguments{
-\item{NextToken}{If you specify this parameter and the result of a ListTagsForResource
+\item{NextToken}{If you specify this parameter and the result of a \code{ListTagsForResource}
 call is truncated, the response includes a token that you can use in the
 next request to fetch the next batch of tags.}
 
-\item{ResourceARN}{[required] The ARN of the signaling channel for which you want to list tags.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the signaling channel for which you
+want to list tags.}
 }
 \description{
 Returns a list of tags associated with the specified signaling channel.

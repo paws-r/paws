@@ -4,8 +4,8 @@
 \alias{appmesh_create_virtual_router}
 \title{Creates a virtual router within a service mesh}
 \usage{
-appmesh_create_virtual_router(clientToken, meshName, spec, tags,
-  virtualRouterName)
+appmesh_create_virtual_router(clientToken, meshName, meshOwner, spec,
+  tags, virtualRouterName)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -13,6 +13,11 @@ idempotency of the request. Up to 36 letters, numbers, hyphens, and
 underscores are allowed.}
 
 \item{meshName}{[required] The name of the service mesh to create the virtual router in.}
+
+\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then the account that you specify must share the mesh with
+your account before you can create the resource in the service mesh. For
+more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{spec}{[required] The virtual router specification to apply.}
 
@@ -28,18 +33,20 @@ length of 256 characters.}
 Creates a virtual router within a service mesh.
 }
 \details{
-Any inbound traffic that your virtual router expects should be specified
-as a \code{listener}.
+Specify a \code{listener} for any inbound traffic that your virtual router
+receives. Create a virtual router for each protocol and port that you
+need to route. Virtual routers handle traffic for one or more virtual
+services within your mesh. After you create your virtual router, create
+and associate routes for your virtual router that direct incoming
+requests to different virtual nodes.
 
-Virtual routers handle traffic for one or more virtual services within
-your mesh. After you create your virtual router, create and associate
-routes for your virtual router that direct incoming requests to
-different virtual nodes.
+For more information about virtual routers, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_routers.html}{Virtual routers}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_virtual_router(
   clientToken = "string",
   meshName = "string",
+  meshOwner = "string",
   spec = list(
     listeners = list(
       list(

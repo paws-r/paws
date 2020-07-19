@@ -14,7 +14,7 @@ Rebuilds the specified WorkSpace.
 }
 \details{
 You cannot rebuild a WorkSpace unless its state is \code{AVAILABLE}, \code{ERROR},
-or \code{UNHEALTHY}.
+\code{UNHEALTHY}, or \code{STOPPED}.
 
 Rebuilding a WorkSpace is a potentially destructive action that can
 result in the loss of data. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html}{Rebuild a WorkSpace}.

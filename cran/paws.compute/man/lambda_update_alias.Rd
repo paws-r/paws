@@ -27,7 +27,7 @@ the function name, it is limited to 64 characters in length.}
 
 \item{Description}{A description of the alias.}
 
-\item{RoutingConfig}{The \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html}{routing configuration}
+\item{RoutingConfig}{The \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html#configuring-alias-routing}{routing configuration}
 of the alias.}
 
 \item{RevisionId}{Only update the alias if the revision ID matches the ID that\'s
@@ -56,12 +56,17 @@ Updates the configuration of a Lambda function
 
 \examples{
 \dontrun{
-# This operation updates a Lambda function alias
+# The following example updates the alias named BLUE to send 30\% of
+# traffic to version 2 and 70\% to version 1.
 svc$update_alias(
-  Description = "",
-  FunctionName = "myFunction",
-  FunctionVersion = "1",
-  Name = "functionAlias"
+  FunctionName = "my-function",
+  FunctionVersion = "2",
+  Name = "BLUE",
+  RoutingConfig = list(
+    AdditionalVersionWeights = list(
+      `1` = 0.7
+    )
+  )
 )
 }
 

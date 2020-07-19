@@ -38,10 +38,10 @@ Invokes a function asynchronously.
 
 \examples{
 \dontrun{
-# This operation invokes a Lambda function asynchronously
+# The following example invokes a Lambda function asynchronously
 svc$invoke_async(
-  FunctionName = "myFunction",
-  InvokeArgs = "fileb://file-path/input.json"
+  FunctionName = "my-function",
+  InvokeArgs = "\{\}"
 )
 }
 

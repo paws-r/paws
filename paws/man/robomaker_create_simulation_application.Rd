@@ -14,7 +14,8 @@ robomaker_create_simulation_application(name, sources,
 
 \item{simulationSoftwareSuite}{[required] The simulation software suite used by the simulation application.}
 
-\item{robotSoftwareSuite}{[required] The robot software suite of the simulation application.}
+\item{robotSoftwareSuite}{[required] The robot software suite (ROS distribution) used by the simulation
+application.}
 
 \item{renderingEngine}{The rendering engine for the simulation application.}
 

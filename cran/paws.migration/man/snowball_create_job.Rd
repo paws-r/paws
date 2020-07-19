@@ -7,7 +7,8 @@ on-premises data center}
 \usage{
 snowball_create_job(JobType, Resources, Description, AddressId,
   KmsKeyARN, RoleARN, SnowballCapacityPreference, ShippingOption,
-  Notification, ClusterId, SnowballType, ForwardingAddressId)
+  Notification, ClusterId, SnowballType, ForwardingAddressId,
+  TaxDocuments, DeviceConfiguration)
 }
 \arguments{
 \item{JobType}{Defines the type of job that you\'re creating.}
@@ -65,11 +66,23 @@ settings for this job.}
 you need to provide only this \code{clusterId} value. The other job
 attributes are inherited from the cluster.}
 
-\item{SnowballType}{The type of AWS Snowball device to use for this job. Currently, the only
-supported device type for cluster jobs is \code{EDGE}.}
+\item{SnowballType}{The type of AWS Snowball device to use for this job.
+
+For cluster jobs, AWS Snowball currently supports only the \code{EDGE} device
+type.
+
+The type of AWS Snowball device to use for this job. Currently, the only
+supported device type for cluster jobs is \code{EDGE}.
+
+For more information, see \href{https://docs.aws.amazon.com/snowball/latest/developer-guide/device-differences.html}{Snowball Edge Device Options}
+in the Snowball Edge Developer Guide.}
 
 \item{ForwardingAddressId}{The forwarding address ID for a job. This field is not supported in most
 regions.}
+
+\item{TaxDocuments}{The tax documents required in your AWS Region.}
+
+\item{DeviceConfiguration}{Defines the device configuration for an AWS Snowcone job.}
 }
 \description{
 Creates a job to import or export data between Amazon S3 and your
@@ -113,7 +126,7 @@ cluster.
   AddressId = "string",
   KmsKeyARN = "string",
   RoleARN = "string",
-  SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"NoPreference",
+  SnowballCapacityPreference = "T50"|"T80"|"T100"|"T42"|"T98"|"T8"|"NoPreference",
   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD",
   Notification = list(
     SnsTopicARN = "string",
@@ -123,8 +136,20 @@ cluster.
     NotifyAll = TRUE|FALSE
   ),
   ClusterId = "string",
-  SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG",
-  ForwardingAddressId = "string"
+  SnowballType = "STANDARD"|"EDGE"|"EDGE_C"|"EDGE_CG"|"EDGE_S"|"SNC1_HDD",
+  ForwardingAddressId = "string",
+  TaxDocuments = list(
+    IND = list(
+      GSTIN = "string"
+    )
+  ),
+  DeviceConfiguration = list(
+    SnowconeDeviceConfiguration = list(
+      WirelessConnection = list(
+        IsWifiEnabled = TRUE|FALSE
+      )
+    )
+  )
 )
 }
 }

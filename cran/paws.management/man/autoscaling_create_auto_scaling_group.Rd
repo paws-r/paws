@@ -17,20 +17,27 @@ autoscaling_create_auto_scaling_group(AutoScalingGroupName,
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group. This name must be unique per Region
 per account.}
 
-\item{LaunchConfigurationName}{The name of the launch configuration.
+\item{LaunchConfigurationName}{The name of the launch configuration to use when an instance is
+launched. To get the launch configuration name, use the
+DescribeLaunchConfigurations API operation. New launch configurations
+can be created with the CreateLaunchConfiguration API.
 
-If you do not specify \code{LaunchConfigurationName}, you must specify one of
-the following parameters: \code{InstanceId}, \code{LaunchTemplate}, or
+You must specify one of the following parameters in your request:
+\code{LaunchConfigurationName}, \code{LaunchTemplate}, \code{InstanceId}, or
 \code{MixedInstancesPolicy}.}
 
-\item{LaunchTemplate}{The launch template to use to launch instances.
+\item{LaunchTemplate}{Parameters used to specify the launch template and version to use when
+an instance is launched.
 
 For more information, see
 \href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LaunchTemplateSpecification.html}{LaunchTemplateSpecification}
 in the \emph{Amazon EC2 Auto Scaling API Reference}.
 
-If you do not specify \code{LaunchTemplate}, you must specify one of the
-following parameters: \code{InstanceId}, \code{LaunchConfigurationName}, or
+You can alternatively associate a launch template to the Auto Scaling
+group by using the \code{MixedInstancesPolicy} parameter.
+
+You must specify one of the following parameters in your request:
+\code{LaunchConfigurationName}, \code{LaunchTemplate}, \code{InstanceId}, or
 \code{MixedInstancesPolicy}.}
 
 \item{MixedInstancesPolicy}{An embedded object that specifies a mixed instances policy. The required
@@ -54,15 +61,14 @@ You must specify one of the following parameters in your request:
 \code{MixedInstancesPolicy}.}
 
 \item{InstanceId}{The ID of the instance used to create a launch configuration for the
-group.
+group. To get the instance ID, use the Amazon EC2
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html}{DescribeInstances}
+API operation.
 
 When you specify an ID of an instance, Amazon EC2 Auto Scaling creates a
 new launch configuration and associates it with the group. This launch
 configuration derives its attributes from the specified instance, except
 for the block device mapping.
-
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html}{Create an Auto Scaling Group Using an EC2 Instance}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 You must specify one of the following parameters in your request:
 \code{LaunchConfigurationName}, \code{LaunchTemplate}, \code{InstanceId}, or
@@ -70,18 +76,30 @@ You must specify one of the following parameters in your request:
 
 \item{MinSize}{[required] The minimum size of the group.}
 
-\item{MaxSize}{[required] The maximum size of the group.}
+\item{MaxSize}{[required] The maximum size of the group.
 
-\item{DesiredCapacity}{The number of Amazon EC2 instances that the Auto Scaling group attempts
-to maintain. This number must be greater than or equal to the minimum
-size of the group and less than or equal to the maximum size of the
-group. If you do not specify a desired capacity, the default is the
-minimum size of the group.}
+With a mixed instances policy that uses instance weighting, Amazon EC2
+Auto Scaling may need to go above \code{MaxSize} to meet your capacity
+requirements. In this event, Amazon EC2 Auto Scaling will never go above
+\code{MaxSize} by more than your maximum instance weight (weights that define
+how many capacity units each instance contributes to the capacity of the
+group).}
+
+\item{DesiredCapacity}{The desired capacity is the initial capacity of the Auto Scaling group
+at the time of its creation and the capacity it attempts to maintain. It
+can scale beyond this capacity if you configure automatic scaling.
+
+This number must be greater than or equal to the minimum size of the
+group and less than or equal to the maximum size of the group. If you do
+not specify a desired capacity, the default is the minimum size of the
+group.}
 
 \item{DefaultCooldown}{The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default value is \code{300}.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns}
+This setting applies when using simple scaling policies, but not when
+using other scaling policies or scheduled scaling. For more information,
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns for Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{AvailabilityZones}{One or more Availability Zones for the group. This parameter is optional
@@ -122,8 +140,7 @@ are ignored. The default value is \code{0}.
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html#health-check-grace-period}{Health Check Grace Period}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
-Conditional: This parameter is required if you are adding an \code{ELB}
-health check.}
+Required if you are adding an \code{ELB} health check.}
 
 \item{PlacementGroup}{The name of the placement group into which to launch your instances, if
 any. A placement group is a logical grouping of instances within a
@@ -157,7 +174,15 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{LifecycleHookSpecificationList}{One or more lifecycle hooks.}
 
-\item{Tags}{One or more tags.
+\item{Tags}{One or more tags. You can tag your Auto Scaling group and propagate the
+tags to the Amazon EC2 instances it launches.
+
+Tags are not propagated to Amazon EBS volumes. To add tags to Amazon EBS
+volumes, specify the tags in a launch template but use caution. If the
+launch template specifies an instance tag with a key that is also
+specified for the Auto Scaling group, Amazon EC2 Auto Scaling overrides
+the value of that instance tag with the value specified by the Auto
+Scaling group.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html}{Tagging Auto Scaling Groups and Instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
@@ -170,17 +195,31 @@ more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguid
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MaxInstanceLifetime}{The maximum amount of time, in seconds, that an instance can be in
-service.
+service. The default is null.
 
-Valid Range: Minimum value of 604800.}
+This parameter is optional, but if you specify a value for it, you must
+specify a value of at least 604,800 seconds (7 days). To clear a
+previously set value, specify a new value of 0.
+
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html}{Replacing Auto Scaling Instances Based on Maximum Instance Lifetime}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
+
+Valid Range: Minimum value of 0.}
 }
 \description{
 Creates an Auto Scaling group with the specified name and attributes.
 }
 \details{
 If you exceed your maximum limit of Auto Scaling groups, the call fails.
-For information about viewing this limit, see DescribeAccountLimits. For
-information about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling Limits}
+To query this limit, call the DescribeAccountLimits API. For information
+about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling Service Quotas}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.
+
+For introductory exercises for creating an Auto Scaling group, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/GettingStartedTutorial.html}{Getting Started with Amazon EC2 Auto Scaling}
+and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-register-lbs-with-asg.html}{Tutorial: Set Up a Scaled and Load-Balanced Application}
+in the \emph{Amazon EC2 Auto Scaling User Guide}. For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html}{Auto Scaling Groups}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
@@ -268,10 +307,29 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
 # This example creates an Auto Scaling group.
 svc$create_auto_scaling_group(
   AutoScalingGroupName = "my-auto-scaling-group",
+  LaunchTemplate = list(
+    LaunchTemplateId = "lt-0a20c965061f64abc",
+    Version = "$Latest"
+  ),
+  MaxInstanceLifetime = 2592000L,
+  MaxSize = 3L,
+  MinSize = 1L,
+  VPCZoneIdentifier = "subnet-057fa0918fEXAMPLE"
+)
+
+# This example creates an Auto Scaling group and attaches the specified
+# target group.
+svc$create_auto_scaling_group(
+  AutoScalingGroupName = "my-auto-scaling-group",
+  HealthCheckGracePeriod = 120L,
+  HealthCheckType = "ELB",
   LaunchConfigurationName = "my-launch-config",
   MaxSize = 3L,
   MinSize = 1L,
-  VPCZoneIdentifier = "subnet-4176792c"
+  TargetGroupARNs = list(
+    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
+  ),
+  VPCZoneIdentifier = "subnet-057fa0918fEXAMPLE, subnet-610acd08EXAMPLE"
 )
 
 # This example creates an Auto Scaling group and attaches the specified
@@ -289,21 +347,6 @@ svc$create_auto_scaling_group(
   ),
   MaxSize = 3L,
   MinSize = 1L
-)
-
-# This example creates an Auto Scaling group and attaches the specified
-# target group.
-svc$create_auto_scaling_group(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  HealthCheckGracePeriod = 120L,
-  HealthCheckType = "ELB",
-  LaunchConfigurationName = "my-launch-config",
-  MaxSize = 3L,
-  MinSize = 1L,
-  TargetGroupARNs = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8..."
-  ),
-  VPCZoneIdentifier = "subnet-4176792c, subnet-65ea5f08"
 )
 }
 

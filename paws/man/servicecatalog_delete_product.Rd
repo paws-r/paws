@@ -22,6 +22,8 @@ Deletes the specified product.
 \details{
 You cannot delete a product if it was shared with you or is associated
 with a portfolio.
+
+A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_product(

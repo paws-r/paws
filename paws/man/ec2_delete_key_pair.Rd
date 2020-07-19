@@ -5,10 +5,12 @@
 \title{Deletes the specified key pair, by removing the public key from Amazon
 EC2}
 \usage{
-ec2_delete_key_pair(KeyName, DryRun)
+ec2_delete_key_pair(KeyName, KeyPairId, DryRun)
 }
 \arguments{
-\item{KeyName}{[required] The name of the key pair.}
+\item{KeyName}{The name of the key pair.}
+
+\item{KeyPairId}{The ID of the key pair.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -22,6 +24,7 @@ EC2.
 \section{Request syntax}{
 \preformatted{svc$delete_key_pair(
   KeyName = "string",
+  KeyPairId = "string",
   DryRun = TRUE|FALSE
 )
 }

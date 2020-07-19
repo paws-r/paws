@@ -9,10 +9,8 @@ ssm_update_resource_data_sync(SyncName, SyncType, SyncSource)
 \arguments{
 \item{SyncName}{[required] The name of the resource data sync you want to update.}
 
-\item{SyncType}{[required] The type of resource data sync. If \code{SyncType} is \code{SyncToDestination},
-then the resource data sync synchronizes data to an Amazon S3 bucket. If
-the \code{SyncType} is \code{SyncFromSource} then the resource data sync
-synchronizes data from AWS Organizations or from multiple AWS Regions.}
+\item{SyncType}{[required] The type of resource data sync. The supported \code{SyncType} is
+SyncFromSource.}
 
 \item{SyncSource}{[required] Specify information about the data sources to synchronize.}
 }
@@ -24,6 +22,10 @@ choose the Include only the current account option, you can\'t edit that
 sync later and choose the Include all accounts from my AWS Organizations
 configuration option. Instead, you must delete the first resource data
 sync, and create a new one.
+}
+\details{
+This API action only supports a resource data sync that was created with
+a SyncFromSource \code{SyncType}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_resource_data_sync(

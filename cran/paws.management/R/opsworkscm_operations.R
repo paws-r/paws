@@ -16,7 +16,7 @@ NULL
 #' On a Puppet server, this command is an alternative to the
 #' `puppet cert sign` command that signs a Puppet node CSR.
 #' 
-#' Example (Chef):
+#' Example (Puppet):
 #' `aws opsworks-cm associate-node --server-name <i>MyServer</i> --node-name <i>MyManagedNode</i> --engine-attributes "Name=<i>PUPPET_NODE_CSR</i>,Value=<i>csr-pem</i>"`
 #' 
 #' A node can can only be associated with servers that are in a `HEALTHY`
@@ -205,19 +205,19 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #'
 #' @param AssociatePublicIpAddress Associate a public IP address with a server that you are launching.
 #' Valid values are `true` or `false`. The default value is `true`.
-#' @param CustomDomain Supported on servers running Chef Automate 2. An optional public
-#' endpoint of a server, such as `https://aws.my-company.com`. To access
-#' the server, create a CNAME DNS record in your preferred DNS service that
-#' points the custom domain to the endpoint that is generated when the
-#' server is created (the value of the CreateServer Endpoint attribute).
-#' You cannot access the server by using the generated `Endpoint` value if
-#' the server is using a custom domain. If you specify a custom domain, you
-#' must also specify values for `CustomCertificate` and `CustomPrivateKey`.
-#' @param CustomCertificate Supported on servers running Chef Automate 2. A PEM-formatted HTTPS
-#' certificate. The value can be be a single, self-signed certificate, or a
-#' certificate chain. If you specify a custom certificate, you must also
-#' specify values for `CustomDomain` and `CustomPrivateKey`. The following
-#' are requirements for the `CustomCertificate` value:
+#' @param CustomDomain An optional public endpoint of a server, such as
+#' `https://aws.my-company.com`. To access the server, create a CNAME DNS
+#' record in your preferred DNS service that points the custom domain to
+#' the endpoint that is generated when the server is created (the value of
+#' the CreateServer Endpoint attribute). You cannot access the server by
+#' using the generated `Endpoint` value if the server is using a custom
+#' domain. If you specify a custom domain, you must also specify values for
+#' `CustomCertificate` and `CustomPrivateKey`.
+#' @param CustomCertificate A PEM-formatted HTTPS certificate. The value can be be a single,
+#' self-signed certificate, or a certificate chain. If you specify a custom
+#' certificate, you must also specify values for `CustomDomain` and
+#' `CustomPrivateKey`. The following are requirements for the
+#' `CustomCertificate` value:
 #' 
 #' -   You can provide either a self-signed, custom certificate, or the
 #'     full certificate chain.
@@ -234,20 +234,19 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #'     if present, must match the value of `CustomDomain`.
 #' 
 #' -   The certificate must match the value of `CustomPrivateKey`.
-#' @param CustomPrivateKey Supported on servers running Chef Automate 2. A private key in PEM
-#' format for connecting to the server by using HTTPS. The private key must
-#' not be encrypted; it cannot be protected by a password or passphrase. If
-#' you specify a custom private key, you must also specify values for
-#' `CustomDomain` and `CustomCertificate`.
+#' @param CustomPrivateKey A private key in PEM format for connecting to the server by using HTTPS.
+#' The private key must not be encrypted; it cannot be protected by a
+#' password or passphrase. If you specify a custom private key, you must
+#' also specify values for `CustomDomain` and `CustomCertificate`.
 #' @param DisableAutomatedBackup Enable or disable scheduled backups. Valid values are `true` or `false`.
 #' The default value is `true`.
-#' @param Engine The configuration management engine to use. Valid values include
+#' @param Engine &#91;required&#93; The configuration management engine to use. Valid values include
 #' `ChefAutomate` and `Puppet`.
 #' @param EngineModel The engine model of the server. Valid values in this release include
 #' `Monolithic` for Puppet and `Single` for Chef.
 #' @param EngineVersion The major release version of the engine that you want to use. For a Chef
-#' server, the valid value for EngineVersion is currently `12`. For a
-#' Puppet server, the valid value is `2017`.
+#' server, the valid value for EngineVersion is currently `2`. For a Puppet
+#' server, the valid value is `2017`.
 #' @param EngineAttributes Optional engine attributes on a specified server.
 #' 
 #' **Attributes accepted in a Chef createServer request:**
@@ -299,10 +298,10 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' instances by using SSH.
 #' @param PreferredMaintenanceWindow The start time for a one-hour period each week during which AWS OpsWorks
 #' CM performs maintenance on the instance. Valid values must be specified
-#' in the following format: `DDD:HH:MM`. The specified time is in
-#' coordinated universal time (UTC). The default value is a random one-hour
-#' period on Tuesday, Wednesday, or Friday. See `TimeWindowDefinition` for
-#' more information.
+#' in the following format: `DDD:HH:MM`. `MM` must be specified as `00`.
+#' The specified time is in coordinated universal time (UTC). The default
+#' value is a random one-hour period on Tuesday, Wednesday, or Friday. See
+#' `TimeWindowDefinition` for more information.
 #' 
 #' **Example:** `Mon:08:00`, which represents a start time of every Monday
 #' at 08:00 UTC. (8:00 a.m.)
@@ -314,8 +313,8 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' 
 #' -   `DDD:HH:MM` for weekly backups
 #' 
-#' The specified time is in coordinated universal time (UTC). The default
-#' value is a random, daily start time.
+#' `MM` must be specified as `00`. The specified time is in coordinated
+#' universal time (UTC). The default value is a random, daily start time.
 #' 
 #' **Example:** `08:00`, which represents a daily start time of 08:00 UTC.
 #' 
@@ -356,11 +355,11 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' 
 #' -   The key can be a maximum of 127 characters, and can contain only
 #'     Unicode letters, numbers, or separators, or the following special
-#'     characters: `+ - = . _ : /`
+#'     characters: `+ - = . _ : / @@`
 #' 
 #' -   The value can be a maximum 255 characters, and contain only Unicode
 #'     letters, numbers, or separators, or the following special
-#'     characters: `+ - = . _ : /`
+#'     characters: `+ - = . _ : / @@`
 #' 
 #' -   Leading and trailing white spaces are trimmed from both the key and
 #'     value.
@@ -414,7 +413,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' @keywords internal
 #'
 #' @rdname opsworkscm_create_server
-opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDomain = NULL, CustomCertificate = NULL, CustomPrivateKey = NULL, DisableAutomatedBackup = NULL, Engine = NULL, EngineModel = NULL, EngineVersion = NULL, EngineAttributes = NULL, BackupRetentionCount = NULL, ServerName, InstanceProfileArn, InstanceType, KeyPair = NULL, PreferredMaintenanceWindow = NULL, PreferredBackupWindow = NULL, SecurityGroupIds = NULL, ServiceRoleArn, SubnetIds = NULL, Tags = NULL, BackupId = NULL) {
+opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDomain = NULL, CustomCertificate = NULL, CustomPrivateKey = NULL, DisableAutomatedBackup = NULL, Engine, EngineModel = NULL, EngineVersion = NULL, EngineAttributes = NULL, BackupRetentionCount = NULL, ServerName, InstanceProfileArn, InstanceType, KeyPair = NULL, PreferredMaintenanceWindow = NULL, PreferredBackupWindow = NULL, SecurityGroupIds = NULL, ServiceRoleArn, SubnetIds = NULL, Tags = NULL, BackupId = NULL) {
   op <- new_operation(
     name = "CreateServer",
     http_method = "POST",
@@ -986,11 +985,11 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
 #'
 #' @param BackupId &#91;required&#93; The ID of the backup that you want to use to restore a server.
 #' @param ServerName &#91;required&#93; The name of the server that you want to restore.
-#' @param InstanceType The type of the instance to create. Valid values must be specified in
-#' the following format: `^(\\[cm\\]\\[34\\]|t2).*` For example,
-#' `m5.large`. Valid values are `m5.large`, `r5.xlarge`, and `r5.2xlarge`.
-#' If you do not specify this parameter, RestoreServer uses the instance
-#' type from the specified backup.
+#' @param InstanceType The type of instance to restore. Valid values must be specified in the
+#' following format: `^(\\[cm\\]\\[34\\]|t2).*` For example, `m5.large`.
+#' Valid values are `m5.large`, `r5.xlarge`, and `r5.2xlarge`. If you do
+#' not specify this parameter, RestoreServer uses the instance type from
+#' the specified backup.
 #' @param KeyPair The name of the key pair to set on the new EC2 instance. This can be
 #' helpful if the administrator no longer has the SSH key.
 #'
@@ -1043,6 +1042,15 @@ opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL,
 #' @param ServerName &#91;required&#93; The name of the server on which to run maintenance.
 #' @param EngineAttributes Engine attributes that are specific to the server on which you want to
 #' run maintenance.
+#' 
+#' **Attributes accepted in a StartMaintenance request for Chef**
+#' 
+#' -   `CHEF_MAJOR_UPGRADE`: If a Chef Automate server is eligible for
+#'     upgrade to Chef Automate 2, add this engine attribute to a
+#'     `StartMaintenance` request and set the value to `true` to upgrade
+#'     the server to Chef Automate 2. For more information, see [Upgrade an
+#'     AWS OpsWorks for Chef Automate Server to Chef Automate
+#'     2](https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html).
 #'
 #' @section Request syntax:
 #' ```

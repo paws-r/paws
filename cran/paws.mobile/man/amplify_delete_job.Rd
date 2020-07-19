@@ -2,19 +2,19 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_delete_job}
 \alias{amplify_delete_job}
-\title{Delete a job, for an Amplify branch, part of Amplify App}
+\title{Deletes a job for a branch of an Amplify app}
 \usage{
 amplify_delete_job(appId, branchName, jobId)
 }
 \arguments{
-\item{appId}{[required] Unique Id for an Amplify App.}
+\item{appId}{[required] The unique ID for an Amplify app.}
 
-\item{branchName}{[required] Name for the branch, for the Job.}
+\item{branchName}{[required] The name for the branch, for the job.}
 
-\item{jobId}{[required] Unique Id for the Job.}
+\item{jobId}{[required] The unique ID for the job.}
 }
 \description{
-Delete a job, for an Amplify branch, part of Amplify App.
+Deletes a job for a branch of an Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_job(

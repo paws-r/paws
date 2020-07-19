@@ -37,7 +37,7 @@ whether the update has occurred, you can call
 \code{GetDefaultCreditSpecification} and check \code{DefaultCreditSpecification}
 for updates.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable Performance Instances}
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable performance instances}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

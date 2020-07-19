@@ -3,26 +3,34 @@
 \name{cloudformation_create_stack_instances}
 \alias{cloudformation_create_stack_instances}
 \title{Creates stack instances for the specified accounts, within the specified
-regions}
+Regions}
 \usage{
-cloudformation_create_stack_instances(StackSetName, Accounts, Regions,
-  ParameterOverrides, OperationPreferences, OperationId)
+cloudformation_create_stack_instances(StackSetName, Accounts,
+  DeploymentTargets, Regions, ParameterOverrides, OperationPreferences,
+  OperationId)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to create stack
 instances from.}
 
-\item{Accounts}{[required] The names of one or more AWS accounts that you want to create stack
-instances in the specified region(s) for.}
+\item{Accounts}{[\code{Self-managed} permissions] The names of one or more AWS accounts
+that you want to create stack instances in the specified Region(s) for.
 
-\item{Regions}{[required] The names of one or more regions where you want to create stack
+You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
+
+\item{DeploymentTargets}{[\code{Service-managed} permissions] The AWS Organizations accounts for
+which to create stack instances in the specified Regions.
+
+You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
+
+\item{Regions}{[required] The names of one or more Regions where you want to create stack
 instances using the specified AWS account(s).}
 
 \item{ParameterOverrides}{A list of stack set parameters whose values you want to override in the
 selected stack instances.
 
 Any overridden parameter values will be applied to all stack instances
-in the specified accounts and regions. When specifying parameters and
+in the specified accounts and Regions. When specifying parameters and
 their values, be aware of how AWS CloudFormation sets parameter values
 during stack instance operations:
 \itemize{
@@ -70,15 +78,24 @@ stack instances whose status is \code{OUTDATED}.}
 }
 \description{
 Creates stack instances for the specified accounts, within the specified
-regions. A stack instance refers to a stack in a specific account and
-region. \code{Accounts} and \code{Regions} are required parameters---you must
-specify at least one account and one region.
+Regions. A stack instance refers to a stack in a specific account and
+Region. You must specify at least one value for either \code{Accounts} or
+\code{DeploymentTargets}, and you must specify at least one value for
+\code{Regions}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_stack_instances(
   StackSetName = "string",
   Accounts = list(
     "string"
+  ),
+  DeploymentTargets = list(
+    Accounts = list(
+      "string"
+    ),
+    OrganizationalUnitIds = list(
+      "string"
+    )
   ),
   Regions = list(
     "string"

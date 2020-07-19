@@ -29,7 +29,7 @@ returned for all Amazon Redshift objects in your AWS account. You must
 specify a source type in order to specify source IDs.
 
 Valid values: cluster, cluster-parameter-group, cluster-security-group,
-and cluster-snapshot.}
+cluster-snapshot, and scheduled-action.}
 
 \item{SourceIds}{A list of one or more identifiers of Amazon Redshift source objects. All
 of the objects must be of the same type as was specified in the source

@@ -2,7 +2,7 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_list_members}
 \alias{detective_list_members}
-\title{Amazon Detective is currently in preview}
+\title{Retrieves the list of member accounts for a behavior graph}
 \usage{
 detective_list_members(GraphArn, NextToken, MaxResults)
 }
@@ -19,9 +19,6 @@ total must be less than the overall limit on the number of results to
 return, which is currently 200.}
 }
 \description{
-Amazon Detective is currently in preview.
-}
-\details{
 Retrieves the list of member accounts for a behavior graph. Does not
 return member accounts that were removed from the behavior graph.
 }

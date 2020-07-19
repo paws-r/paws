@@ -220,14 +220,14 @@ acm_export_certificate <- function(CertificateArn, Passphrase) {
 }
 .acm$operations$export_certificate <- acm_export_certificate
 
-#' Retrieves a certificate specified by an ARN and its certificate chain
+#' Retrieves an Amazon-issued certificate and its certificate chain
 #'
-#' Retrieves a certificate specified by an ARN and its certificate chain .
-#' The chain is an ordered list of certificates that contains the end
-#' entity certificate, intermediate certificates of subordinate CAs, and
-#' the root certificate in that order. The certificate and certificate
-#' chain are base64 encoded. If you want to decode the certificate to see
-#' the individual fields, you can use OpenSSL.
+#' Retrieves an Amazon-issued certificate and its certificate chain. The
+#' chain consists of the certificate of the issuing CA and the intermediate
+#' certificates of any other subordinate CAs. All of the certificates are
+#' base64 encoded. You can use
+#' [OpenSSL](https://wiki.openssl.org/index.php/Command_Line_Utilities) to
+#' decode the certificates and inspect individual fields.
 #'
 #' @usage
 #' acm_get_certificate(CertificateArn)
@@ -644,10 +644,10 @@ acm_renew_certificate <- function(CertificateArn) {
 #' www.example.net to a certificate for which the `DomainName` field is
 #' www.example.com if users can reach your site by using either name. The
 #' maximum number of domain names that you can add to an ACM certificate is
-#' 100. However, the initial limit is 10 domain names. If you need more
-#' than 10 names, you must request a limit increase. For more information,
+#' 100. However, the initial quota is 10 domain names. If you need more
+#' than 10 names, you must request a quota increase. For more information,
 #' see
-#' [Limits](https://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
+#' [Quotas](https://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
 #' 
 #' The maximum length of a SAN DNS name is 253 octets. The name is made up
 #' of multiple labels separated by periods. No label can be longer than 63

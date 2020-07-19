@@ -8,9 +8,9 @@ secretsmanager_update_secret_version_stage(SecretId, VersionStage,
   RemoveFromVersionId, MoveToVersionId)
 }
 \arguments{
-\item{SecretId}{[required] Specifies the secret with the version whose list of staging labels you
-want to modify. You can specify either the Amazon Resource Name (ARN) or
-the friendly name of the secret.
+\item{SecretId}{[required] Specifies the secret with the version with the list of staging labels
+you want to modify. You can specify either the Amazon Resource Name
+(ARN) or the friendly name of the secret.
 
 If you specify an ARN, we generally recommend that you specify a
 complete ARN. You can specify a partial ARN too---for example, if you
@@ -23,7 +23,13 @@ six characters to the ARN) and you try to use that as a partial ARN,
 then those characters cause Secrets Manager to assume that you're
 specifying a complete ARN. This confusion can cause unexpected results.
 To avoid this situation, we recommend that you don't create secret names
-that end with a hyphen followed by six characters.}
+ending with a hyphen followed by six characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the \'friendly name\', you \emph{must} not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a \emph{ResourceNotFoundException} or an
+\emph{AccessDeniedException} error, depending on your permissions.}
 
 \item{VersionStage}{[required] The staging label to add to this version.}
 
@@ -35,9 +41,9 @@ removed from. If the label is attached and you either do not specify
 this parameter, or the version ID does not match, then the operation
 fails.}
 
-\item{MoveToVersionId}{(Optional) The secret version ID that you want to add the staging label
-to. If you want to remove a label from a version, then do not specify
-this parameter.
+\item{MoveToVersionId}{(Optional) The secret version ID that you want to add the staging label.
+If you want to remove a label from a version, then do not specify this
+parameter.
 
 If the staging label is already attached to a different version of the
 secret, then you must also specify the \code{RemoveFromVersionId} parameter.}

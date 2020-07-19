@@ -2,30 +2,45 @@
 % Please edit documentation in R/transfer_operations.R
 \name{transfer_test_identity_provider}
 \alias{transfer_test_identity_provider}
-\title{If the IdentityProviderType of the server is API_Gateway, tests whether
-your API Gateway is set up successfully}
+\title{If the IdentityProviderType of a file transfer protocol-enabled server
+is API_Gateway, tests whether your API Gateway is set up successfully}
 \usage{
-transfer_test_identity_provider(ServerId, UserName, UserPassword)
+transfer_test_identity_provider(ServerId, ServerProtocol, SourceIp,
+  UserName, UserPassword)
 }
 \arguments{
-\item{ServerId}{[required] A system-assigned identifier for a specific server. That server\'s user
-authentication method is tested with a user name and password.}
+\item{ServerId}{[required] A system-assigned identifier for a specific file transfer
+protocol-enabled server. That server\'s user authentication method is
+tested with a user name and password.}
 
-\item{UserName}{[required] This request parameter is the name of the user account to be tested.}
+\item{ServerProtocol}{The type of file transfer protocol to be tested.
+
+The available protocols are:
+\itemize{
+\item Secure Shell (SSH) File Transfer Protocol (SFTP)
+\item File Transfer Protocol Secure (FTPS)
+\item File Transfer Protocol (FTP)
+}}
+
+\item{SourceIp}{The source IP address of the user account to be tested.}
+
+\item{UserName}{[required] The name of the user account to be tested.}
 
 \item{UserPassword}{The password of the user account to be tested.}
 }
 \description{
-If the \code{IdentityProviderType} of the server is \code{API_Gateway}, tests
-whether your API Gateway is set up successfully. We highly recommend
-that you call this operation to test your authentication method as soon
-as you create your server. By doing so, you can troubleshoot issues with
-the API Gateway integration to ensure that your users can successfully
-use the service.
+If the \code{IdentityProviderType} of a file transfer protocol-enabled server
+is \code{API_Gateway}, tests whether your API Gateway is set up successfully.
+We highly recommend that you call this operation to test your
+authentication method as soon as you create your server. By doing so,
+you can troubleshoot issues with the API Gateway integration to ensure
+that your users can successfully use the service.
 }
 \section{Request syntax}{
 \preformatted{svc$test_identity_provider(
   ServerId = "string",
+  ServerProtocol = "SFTP"|"FTP"|"FTPS",
+  SourceIp = "string",
   UserName = "string",
   UserPassword = "string"
 )

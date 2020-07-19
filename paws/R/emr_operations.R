@@ -59,7 +59,11 @@ NULL
 #'       SpotSpecification = list(
 #'         TimeoutDurationMinutes = 123,
 #'         TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
-#'         BlockDurationMinutes = 123
+#'         BlockDurationMinutes = 123,
+#'         AllocationStrategy = "capacity-optimized"
+#'       ),
+#'       OnDemandSpecification = list(
+#'         AllocationStrategy = "lowest-price"
 #'       )
 #'     )
 #'   )
@@ -674,6 +678,43 @@ emr_get_block_public_access_configuration <- function() {
 }
 .emr$operations$get_block_public_access_configuration <- emr_get_block_public_access_configuration
 
+#' Fetches the attached managed scaling policy for an Amazon EMR cluster
+#'
+#' Fetches the attached managed scaling policy for an Amazon EMR cluster.
+#'
+#' @usage
+#' emr_get_managed_scaling_policy(ClusterId)
+#'
+#' @param ClusterId &#91;required&#93; Specifies the ID of the cluster for which the managed scaling policy
+#' will be fetched.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_managed_scaling_policy(
+#'   ClusterId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_get_managed_scaling_policy
+emr_get_managed_scaling_policy <- function(ClusterId) {
+  op <- new_operation(
+    name = "GetManagedScalingPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$get_managed_scaling_policy_input(ClusterId = ClusterId)
+  output <- .emr$get_managed_scaling_policy_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$get_managed_scaling_policy <- emr_get_managed_scaling_policy
+
 #' Provides information about the bootstrap actions associated with a
 #' cluster
 #'
@@ -1264,6 +1305,12 @@ emr_put_auto_scaling_policy <- function(ClusterId, InstanceGroupId, AutoScalingP
 #' exception, and public access is allowed on this port. You can change
 #' this by updating `BlockPublicSecurityGroupRules` to remove the
 #' exception.
+#' 
+#' For accounts that created clusters in a Region before November 25, 2019,
+#' block public access is disabled by default in that Region. To use this
+#' feature, you must manually enable and configure it. For accounts that
+#' did not create an EMR cluster in a Region before this date, block public
+#' access is enabled by default in that Region.
 #'
 #' @section Request syntax:
 #' ```
@@ -1299,6 +1346,57 @@ emr_put_block_public_access_configuration <- function(BlockPublicAccessConfigura
   return(response)
 }
 .emr$operations$put_block_public_access_configuration <- emr_put_block_public_access_configuration
+
+#' Creates or updates a managed scaling policy for an Amazon EMR cluster
+#'
+#' Creates or updates a managed scaling policy for an Amazon EMR cluster.
+#' The managed scaling policy defines the limits for resources, such as EC2
+#' instances that can be added or terminated from a cluster. The policy
+#' only applies to the core and task nodes. The master node cannot be
+#' scaled after initial configuration.
+#'
+#' @usage
+#' emr_put_managed_scaling_policy(ClusterId, ManagedScalingPolicy)
+#'
+#' @param ClusterId &#91;required&#93; Specifies the ID of an EMR cluster where the managed scaling policy is
+#' attached.
+#' @param ManagedScalingPolicy &#91;required&#93; Specifies the constraints for the managed scaling policy.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_managed_scaling_policy(
+#'   ClusterId = "string",
+#'   ManagedScalingPolicy = list(
+#'     ComputeLimits = list(
+#'       UnitType = "InstanceFleetUnits"|"Instances"|"VCPU",
+#'       MinimumCapacityUnits = 123,
+#'       MaximumCapacityUnits = 123,
+#'       MaximumOnDemandCapacityUnits = 123,
+#'       MaximumCoreCapacityUnits = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_put_managed_scaling_policy
+emr_put_managed_scaling_policy <- function(ClusterId, ManagedScalingPolicy) {
+  op <- new_operation(
+    name = "PutManagedScalingPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$put_managed_scaling_policy_input(ClusterId = ClusterId, ManagedScalingPolicy = ManagedScalingPolicy)
+  output <- .emr$put_managed_scaling_policy_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$put_managed_scaling_policy <- emr_put_managed_scaling_policy
 
 #' Removes an automatic scaling policy from a specified instance group
 #' within an EMR cluster
@@ -1341,6 +1439,43 @@ emr_remove_auto_scaling_policy <- function(ClusterId, InstanceGroupId) {
   return(response)
 }
 .emr$operations$remove_auto_scaling_policy <- emr_remove_auto_scaling_policy
+
+#' Removes a managed scaling policy from a specified EMR cluster
+#'
+#' Removes a managed scaling policy from a specified EMR cluster.
+#'
+#' @usage
+#' emr_remove_managed_scaling_policy(ClusterId)
+#'
+#' @param ClusterId &#91;required&#93; Specifies the ID of the cluster from which the managed scaling policy
+#' will be removed.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_managed_scaling_policy(
+#'   ClusterId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_remove_managed_scaling_policy
+emr_remove_managed_scaling_policy <- function(ClusterId) {
+  op <- new_operation(
+    name = "RemoveManagedScalingPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .emr$remove_managed_scaling_policy_input(ClusterId = ClusterId)
+  output <- .emr$remove_managed_scaling_policy_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$remove_managed_scaling_policy <- emr_remove_managed_scaling_policy
 
 #' Removes tags from an Amazon EMR resource
 #'
@@ -1425,16 +1560,21 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' parameters, but not both.
 #'
 #' @usage
-#' emr_run_job_flow(Name, LogUri, AdditionalInfo, AmiVersion, ReleaseLabel,
-#'   Instances, Steps, BootstrapActions, SupportedProducts,
-#'   NewSupportedProducts, Applications, Configurations, VisibleToAllUsers,
-#'   JobFlowRole, ServiceRole, Tags, SecurityConfiguration, AutoScalingRole,
-#'   ScaleDownBehavior, CustomAmiId, EbsRootVolumeSize, RepoUpgradeOnBoot,
-#'   KerberosAttributes, StepConcurrencyLevel)
+#' emr_run_job_flow(Name, LogUri, LogEncryptionKmsKeyId, AdditionalInfo,
+#'   AmiVersion, ReleaseLabel, Instances, Steps, BootstrapActions,
+#'   SupportedProducts, NewSupportedProducts, Applications, Configurations,
+#'   VisibleToAllUsers, JobFlowRole, ServiceRole, Tags,
+#'   SecurityConfiguration, AutoScalingRole, ScaleDownBehavior, CustomAmiId,
+#'   EbsRootVolumeSize, RepoUpgradeOnBoot, KerberosAttributes,
+#'   StepConcurrencyLevel, ManagedScalingPolicy)
 #'
 #' @param Name &#91;required&#93; The name of the job flow.
 #' @param LogUri The location in Amazon S3 to write the log files of the job flow. If a
 #' value is not provided, logs are not created.
+#' @param LogEncryptionKmsKeyId The AWS KMS customer master key (CMK) used for encrypting log files. If
+#' a value is not provided, the logs will remain encrypted by AES-256. This
+#' attribute is only available with EMR version 5.30.0 and later, excluding
+#' EMR 6.0.0.
 #' @param AdditionalInfo A JSON string for selecting additional features.
 #' @param AmiVersion Applies only to Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR
 #' releases 4.0 and later, `ReleaseLabel` is used. To specify a custom AMI,
@@ -1561,12 +1701,14 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' in the *EMR Management Guide*.
 #' @param StepConcurrencyLevel Specifies the number of steps that can be executed concurrently. The
 #' default value is `1`. The maximum value is `256`.
+#' @param ManagedScalingPolicy The specified managed scaling policy for an Amazon EMR cluster.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$run_job_flow(
 #'   Name = "string",
 #'   LogUri = "string",
+#'   LogEncryptionKmsKeyId = "string",
 #'   AdditionalInfo = "string",
 #'   AmiVersion = "string",
 #'   ReleaseLabel = "string",
@@ -1684,7 +1826,11 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'           SpotSpecification = list(
 #'             TimeoutDurationMinutes = 123,
 #'             TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
-#'             BlockDurationMinutes = 123
+#'             BlockDurationMinutes = 123,
+#'             AllocationStrategy = "capacity-optimized"
+#'           ),
+#'           OnDemandSpecification = list(
+#'             AllocationStrategy = "lowest-price"
 #'           )
 #'         )
 #'       )
@@ -1797,21 +1943,30 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'     ADDomainJoinUser = "string",
 #'     ADDomainJoinPassword = "string"
 #'   ),
-#'   StepConcurrencyLevel = 123
+#'   StepConcurrencyLevel = 123,
+#'   ManagedScalingPolicy = list(
+#'     ComputeLimits = list(
+#'       UnitType = "InstanceFleetUnits"|"Instances"|"VCPU",
+#'       MinimumCapacityUnits = 123,
+#'       MaximumCapacityUnits = 123,
+#'       MaximumOnDemandCapacityUnits = 123,
+#'       MaximumCoreCapacityUnits = 123
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname emr_run_job_flow
-emr_run_job_flow <- function(Name, LogUri = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL) {
+emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL) {
   op <- new_operation(
     name = "RunJobFlow",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel)
+  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy)
   output <- .emr$run_job_flow_output()
   config <- get_config()
   svc <- .emr$service(config)

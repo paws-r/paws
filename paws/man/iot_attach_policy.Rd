@@ -10,7 +10,7 @@ iot_attach_policy(policyName, target)
 \item{policyName}{[required] The name of the policy to attach.}
 
 \item{target}{[required] The
-\href{https://docs.aws.amazon.com/iot/latest/developerguide/iot-security-identity.html}{identity}
+\href{https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html}{identity}
 to which the policy is attached.}
 }
 \description{

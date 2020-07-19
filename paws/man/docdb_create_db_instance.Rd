@@ -2,15 +2,14 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_create_db_instance}
 \alias{docdb_create_db_instance}
-\title{Creates a new DB instance}
+\title{Creates a new instance}
 \usage{
 docdb_create_db_instance(DBInstanceIdentifier, DBInstanceClass, Engine,
   AvailabilityZone, PreferredMaintenanceWindow, AutoMinorVersionUpgrade,
   Tags, DBClusterIdentifier, PromotionTier)
 }
 \arguments{
-\item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase
-string.
+\item{DBInstanceIdentifier}{[required] The instance identifier. This parameter is stored as a lowercase string.
 
 Constraints:
 \itemize{
@@ -21,14 +20,14 @@ Constraints:
 
 Example: \code{mydbinstance}}
 
-\item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance; for example,
+\item{DBInstanceClass}{[required] The compute and memory capacity of the instance; for example,
 \code{db.r5.large}.}
 
 \item{Engine}{[required] The name of the database engine to be used for this instance.
 
 Valid value: \code{docdb}}
 
-\item{AvailabilityZone}{The Amazon EC2 Availability Zone that the DB instance is created in.
+\item{AvailabilityZone}{The Amazon EC2 Availability Zone that the instance is created in.
 
 Default: A random, system-chosen Availability Zone in the endpoint\'s
 AWS Region.
@@ -52,15 +51,15 @@ Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
 Constraints: Minimum 30-minute window.}
 
-\item{AutoMinorVersionUpgrade}{Indicates that minor engine upgrades are applied automatically to the DB
+\item{AutoMinorVersionUpgrade}{Indicates that minor engine upgrades are applied automatically to the
 instance during the maintenance window.
 
 Default: \code{true}}
 
-\item{Tags}{The tags to be assigned to the DB instance. You can assign up to 10 tags
-to an instance.}
+\item{Tags}{The tags to be assigned to the instance. You can assign up to 10 tags to
+an instance.}
 
-\item{DBClusterIdentifier}{[required] The identifier of the DB cluster that the instance will belong to.}
+\item{DBClusterIdentifier}{[required] The identifier of the cluster that the instance will belong to.}
 
 \item{PromotionTier}{A value that specifies the order in which an Amazon DocumentDB replica
 is promoted to the primary instance after a failure of the existing
@@ -71,7 +70,7 @@ Default: 1
 Valid values: 0-15}
 }
 \description{
-Creates a new DB instance.
+Creates a new instance.
 }
 \section{Request syntax}{
 \preformatted{svc$create_db_instance(

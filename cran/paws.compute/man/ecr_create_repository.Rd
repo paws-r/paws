@@ -2,8 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_create_repository}
 \alias{ecr_create_repository}
-\title{Creates an Amazon Elastic Container Registry (Amazon ECR) repository,
-where users can push and pull Docker images}
+\title{Creates a repository}
 \usage{
 ecr_create_repository(repositoryName, tags, imageTagMutability,
   imageScanningConfiguration)
@@ -30,9 +29,7 @@ determines whether images are scanned for known vulnerabilities after
 being pushed to the repository.}
 }
 \description{
-Creates an Amazon Elastic Container Registry (Amazon ECR) repository,
-where users can push and pull Docker images. For more information, see
-\href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html}{Amazon ECR Repositories}
+Creates a repository. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html}{Amazon ECR Repositories}
 in the \emph{Amazon Elastic Container Registry User Guide}.
 }
 \section{Request syntax}{

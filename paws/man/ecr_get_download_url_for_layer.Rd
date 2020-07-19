@@ -23,9 +23,12 @@ image layer. You can only get URLs for image layers that are referenced
 in an image.
 }
 \details{
-This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers for pulling and pushing images. In most
-cases, you should use the \code{docker} CLI to pull, tag, and push images.
+When an image is pulled, the GetDownloadUrlForLayer API is called once
+per image layer that is not already cached.
+
+This operation is used by the Amazon ECR proxy and is not generally used
+by customers for pulling and pushing images. In most cases, you should
+use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
 \preformatted{svc$get_download_url_for_layer(

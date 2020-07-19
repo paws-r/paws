@@ -104,7 +104,7 @@ cloudfront <- function(config = list()) {
 
 .cloudfront$metadata <- list(
   service_name = "cloudfront",
-  endpoints = list("*" = list(endpoint = "https://cloudfront.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "cloudfront.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "https://cloudfront.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "cloudfront.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloudfront.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudfront.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "CloudFront",
   api_version = "2019-03-26",
   signing_name = NULL,

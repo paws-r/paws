@@ -15,9 +15,8 @@ NULL
 #' workdocs_abort_document_version_upload(AuthenticationToken, DocumentId,
 #'   VersionId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The ID of the version.
 #'
@@ -59,9 +58,8 @@ workdocs_abort_document_version_upload <- function(AuthenticationToken = NULL, D
 #' workdocs_activate_user(UserId, AuthenticationToken)
 #'
 #' @param UserId &#91;required&#93; The ID of the user.
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #'
 #' @section Request syntax:
 #' ```
@@ -101,9 +99,8 @@ workdocs_activate_user <- function(UserId, AuthenticationToken = NULL) {
 #' workdocs_add_resource_permissions(AuthenticationToken, ResourceId,
 #'   Principals, NotificationOptions)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param Principals &#91;required&#93; The users, groups, or organization being granted permission.
 #' @param NotificationOptions The notification options.
@@ -155,9 +152,8 @@ workdocs_add_resource_permissions <- function(AuthenticationToken = NULL, Resour
 #' workdocs_create_comment(AuthenticationToken, DocumentId, VersionId,
 #'   ParentId, ThreadId, Text, Visibility, NotifyCollaborators)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The ID of the document version.
 #' @param ParentId The ID of the parent comment.
@@ -214,9 +210,8 @@ workdocs_create_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #' workdocs_create_custom_metadata(AuthenticationToken, ResourceId,
 #'   VersionId, CustomMetadata)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param VersionId The ID of the version, if the custom metadata is being added to a
 #' document version.
@@ -261,9 +256,8 @@ workdocs_create_custom_metadata <- function(AuthenticationToken = NULL, Resource
 #' @usage
 #' workdocs_create_folder(AuthenticationToken, Name, ParentFolderId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param Name The name of the new folder.
 #' @param ParentFolderId &#91;required&#93; The ID of the parent folder.
 #'
@@ -307,9 +301,8 @@ workdocs_create_folder <- function(AuthenticationToken = NULL, Name = NULL, Pare
 #'
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param Labels &#91;required&#93; List of labels to add to the resource.
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #'
 #' @section Request syntax:
 #' ```
@@ -409,9 +402,8 @@ workdocs_create_notification_subscription <- function(OrganizationId, Endpoint, 
 #' @param Password &#91;required&#93; The password of the user.
 #' @param TimeZoneId The time zone ID of the user.
 #' @param StorageRule The amount of storage for the user.
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #'
 #' @section Request syntax:
 #' ```
@@ -461,9 +453,8 @@ workdocs_create_user <- function(OrganizationId = NULL, Username, EmailAddress =
 #' workdocs_deactivate_user(UserId, AuthenticationToken)
 #'
 #' @param UserId &#91;required&#93; The ID of the user.
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #'
 #' @section Request syntax:
 #' ```
@@ -501,9 +492,8 @@ workdocs_deactivate_user <- function(UserId, AuthenticationToken = NULL) {
 #' workdocs_delete_comment(AuthenticationToken, DocumentId, VersionId,
 #'   CommentId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The ID of the document version.
 #' @param CommentId &#91;required&#93; The ID of the comment.
@@ -546,9 +536,8 @@ workdocs_delete_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #' workdocs_delete_custom_metadata(AuthenticationToken, ResourceId,
 #'   VersionId, Keys, DeleteAll)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource, either a document or folder.
 #' @param VersionId The ID of the version, if the custom metadata is being deleted from a
 #' document version.
@@ -596,9 +585,8 @@ workdocs_delete_custom_metadata <- function(AuthenticationToken = NULL, Resource
 #' @usage
 #' workdocs_delete_document(AuthenticationToken, DocumentId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #'
 #' @section Request syntax:
@@ -636,9 +624,8 @@ workdocs_delete_document <- function(AuthenticationToken = NULL, DocumentId) {
 #' @usage
 #' workdocs_delete_folder(AuthenticationToken, FolderId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #'
 #' @section Request syntax:
@@ -676,9 +663,8 @@ workdocs_delete_folder <- function(AuthenticationToken = NULL, FolderId) {
 #' @usage
 #' workdocs_delete_folder_contents(AuthenticationToken, FolderId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #'
 #' @section Request syntax:
@@ -718,9 +704,8 @@ workdocs_delete_folder_contents <- function(AuthenticationToken = NULL, FolderId
 #'   DeleteAll)
 #'
 #' @param ResourceId &#91;required&#93; The ID of the resource.
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param Labels List of labels to delete from the resource.
 #' @param DeleteAll Flag to request removal of all labels from the specified resource.
 #'
@@ -844,9 +829,8 @@ workdocs_delete_user <- function(AuthenticationToken = NULL, UserId) {
 #'   OrganizationId, ActivityTypes, ResourceId, UserId,
 #'   IncludeIndirectActivities, Limit, Marker)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param StartTime The timestamp that determines the starting time of the activities. The
 #' response includes the activities performed after the specified
 #' timestamp.
@@ -916,9 +900,8 @@ workdocs_describe_activities <- function(AuthenticationToken = NULL, StartTime =
 #' workdocs_describe_comments(AuthenticationToken, DocumentId, VersionId,
 #'   Limit, Marker)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The ID of the document version.
 #' @param Limit The maximum number of items to return.
@@ -966,9 +949,8 @@ workdocs_describe_comments <- function(AuthenticationToken = NULL, DocumentId, V
 #' workdocs_describe_document_versions(AuthenticationToken, DocumentId,
 #'   Marker, Limit, Include, Fields)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
@@ -1025,9 +1007,8 @@ workdocs_describe_document_versions <- function(AuthenticationToken = NULL, Docu
 #' workdocs_describe_folder_contents(AuthenticationToken, FolderId, Sort,
 #'   Order, Limit, Marker, Type, Include)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #' @param Sort The sorting criteria.
 #' @param Order The order for the contents of the folder.
@@ -1081,9 +1062,8 @@ workdocs_describe_folder_contents <- function(AuthenticationToken = NULL, Folder
 #' workdocs_describe_groups(AuthenticationToken, SearchQuery,
 #'   OrganizationId, Marker, Limit)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param SearchQuery &#91;required&#93; A query to describe groups by group name.
 #' @param OrganizationId The ID of the organization.
 #' @param Marker The marker for the next set of results. (You received this marker from a
@@ -1171,9 +1151,8 @@ workdocs_describe_notification_subscriptions <- function(OrganizationId, Marker 
 #' workdocs_describe_resource_permissions(AuthenticationToken, ResourceId,
 #'   PrincipalId, Limit, Marker)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param PrincipalId The ID of the principal to filter permissions by.
 #' @param Limit The maximum number of items to return with this call.
@@ -1228,9 +1207,7 @@ workdocs_describe_resource_permissions <- function(AuthenticationToken = NULL, R
 #' @usage
 #' workdocs_describe_root_folders(AuthenticationToken, Limit, Marker)
 #'
-#' @param AuthenticationToken &#91;required&#93; Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken &#91;required&#93; Amazon WorkDocs authentication token.
 #' @param Limit The maximum number of items to return.
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
@@ -1277,9 +1254,8 @@ workdocs_describe_root_folders <- function(AuthenticationToken, Limit = NULL, Ma
 #' workdocs_describe_users(AuthenticationToken, OrganizationId, UserIds,
 #'   Query, Include, Order, Sort, Marker, Limit, Fields)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param OrganizationId The ID of the organization.
 #' @param UserIds The IDs of the users.
 #' @param Query A query to filter users by user name.
@@ -1334,13 +1310,17 @@ workdocs_describe_users <- function(AuthenticationToken = NULL, OrganizationId =
 #' Retrieves details of the current user for whom the authentication token
 #' was generated. This is not a valid action for SigV4 (administrative API)
 #' clients.
+#' 
+#' This action requires an authentication token. To get an authentication
+#' token, register an application with Amazon WorkDocs. For more
+#' information, see [Authentication and Access Control for User
+#' Applications](https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html)
+#' in the *Amazon WorkDocs Developer Guide*.
 #'
 #' @usage
 #' workdocs_get_current_user(AuthenticationToken)
 #'
-#' @param AuthenticationToken &#91;required&#93; Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken &#91;required&#93; Amazon WorkDocs authentication token.
 #'
 #' @section Request syntax:
 #' ```
@@ -1377,9 +1357,8 @@ workdocs_get_current_user <- function(AuthenticationToken) {
 #' workdocs_get_document(AuthenticationToken, DocumentId,
 #'   IncludeCustomMetadata)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param IncludeCustomMetadata Set this to `TRUE` to include custom metadata in the response.
 #'
@@ -1427,9 +1406,8 @@ workdocs_get_document <- function(AuthenticationToken = NULL, DocumentId, Includ
 #' workdocs_get_document_path(AuthenticationToken, DocumentId, Limit,
 #'   Fields, Marker)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param Limit The maximum number of levels in the hierarchy to return.
 #' @param Fields A comma-separated list of values. Specify `NAME` to include the names of
@@ -1475,9 +1453,8 @@ workdocs_get_document_path <- function(AuthenticationToken = NULL, DocumentId, L
 #' workdocs_get_document_version(AuthenticationToken, DocumentId,
 #'   VersionId, Fields, IncludeCustomMetadata)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The version ID of the document.
 #' @param Fields A comma-separated list of values. Specify \"SOURCE\" to include a URL
@@ -1523,9 +1500,8 @@ workdocs_get_document_version <- function(AuthenticationToken = NULL, DocumentId
 #' workdocs_get_folder(AuthenticationToken, FolderId,
 #'   IncludeCustomMetadata)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #' @param IncludeCustomMetadata Set to TRUE to include custom metadata in the response.
 #'
@@ -1573,9 +1549,8 @@ workdocs_get_folder <- function(AuthenticationToken = NULL, FolderId, IncludeCus
 #' workdocs_get_folder_path(AuthenticationToken, FolderId, Limit, Fields,
 #'   Marker)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #' @param Limit The maximum number of levels in the hierarchy to return.
 #' @param Fields A comma-separated list of values. Specify \"NAME\" to include the names
@@ -1622,9 +1597,8 @@ workdocs_get_folder_path <- function(AuthenticationToken = NULL, FolderId, Limit
 #' workdocs_get_resources(AuthenticationToken, UserId, CollectionType,
 #'   Limit, Marker)
 #'
-#' @param AuthenticationToken The Amazon WorkDocs authentication token. Do not set this field when
-#' using administrative API actions, as in accessing the API operation
-#' using AWS credentials.
+#' @param AuthenticationToken The Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param UserId The user ID for the resource collection. This is a required field for
 #' accessing the API operation using IAM credentials.
 #' @param CollectionType The collection type.
@@ -1680,9 +1654,8 @@ workdocs_get_resources <- function(AuthenticationToken = NULL, UserId = NULL, Co
 #'   ContentCreatedTimestamp, ContentModifiedTimestamp, ContentType,
 #'   DocumentSizeInBytes, ParentFolderId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param Id The ID of the document.
 #' @param Name The name of the document.
 #' @param ContentCreatedTimestamp The timestamp when the content of the document was originally created.
@@ -1737,9 +1710,8 @@ workdocs_initiate_document_version_upload <- function(AuthenticationToken = NULL
 #' workdocs_remove_all_resource_permissions(AuthenticationToken,
 #'   ResourceId)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #'
 #' @section Request syntax:
@@ -1780,9 +1752,8 @@ workdocs_remove_all_resource_permissions <- function(AuthenticationToken = NULL,
 #' workdocs_remove_resource_permission(AuthenticationToken, ResourceId,
 #'   PrincipalId, PrincipalType)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param ResourceId &#91;required&#93; The ID of the resource.
 #' @param PrincipalId &#91;required&#93; The principal ID of the resource.
 #' @param PrincipalType The principal type of the resource.
@@ -1826,9 +1797,8 @@ workdocs_remove_resource_permission <- function(AuthenticationToken = NULL, Reso
 #' workdocs_update_document(AuthenticationToken, DocumentId, Name,
 #'   ParentFolderId, ResourceState)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param Name The name of the document.
 #' @param ParentFolderId The ID of the parent folder.
@@ -1878,9 +1848,8 @@ workdocs_update_document <- function(AuthenticationToken = NULL, DocumentId, Nam
 #' workdocs_update_document_version(AuthenticationToken, DocumentId,
 #'   VersionId, VersionStatus)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The version ID of the document.
 #' @param VersionStatus The status of the version.
@@ -1924,9 +1893,8 @@ workdocs_update_document_version <- function(AuthenticationToken = NULL, Documen
 #' workdocs_update_folder(AuthenticationToken, FolderId, Name,
 #'   ParentFolderId, ResourceState)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #' @param Name The name of the folder.
 #' @param ParentFolderId The ID of the parent folder.
@@ -1974,9 +1942,8 @@ workdocs_update_folder <- function(AuthenticationToken = NULL, FolderId, Name = 
 #' workdocs_update_user(AuthenticationToken, UserId, GivenName, Surname,
 #'   Type, StorageRule, TimeZoneId, Locale, GrantPoweruserPrivileges)
 #'
-#' @param AuthenticationToken Amazon WorkDocs authentication token. Do not set this field when using
-#' administrative API actions, as in accessing the API using AWS
-#' credentials.
+#' @param AuthenticationToken Amazon WorkDocs authentication token. Not required when using AWS
+#' administrator credentials to access the API.
 #' @param UserId &#91;required&#93; The ID of the user.
 #' @param GivenName The given name of the user.
 #' @param Surname The surname of the user.

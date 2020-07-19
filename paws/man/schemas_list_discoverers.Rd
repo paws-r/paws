@@ -8,13 +8,17 @@ schemas_list_discoverers(DiscovererIdPrefix, Limit, NextToken,
   SourceArnPrefix)
 }
 \arguments{
-\item{DiscovererIdPrefix}{}
+\item{DiscovererIdPrefix}{Specifying this limits the results to only those discoverer IDs that
+start with the specified prefix.}
 
 \item{Limit}{}
 
-\item{NextToken}{}
+\item{NextToken}{The token that specifies the next page of results to return. To request
+the first page, leave NextToken empty. The token will expire in 24
+hours, and cannot be shared with other accounts.}
 
-\item{SourceArnPrefix}{}
+\item{SourceArnPrefix}{Specifying this limits the results to only those ARNs that start with
+the specified prefix.}
 }
 \description{
 List the discoverers.

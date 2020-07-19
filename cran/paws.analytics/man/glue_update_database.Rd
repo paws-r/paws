@@ -39,6 +39,10 @@ Updates an existing database definition in a Data Catalog.
           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
         )
       )
+    ),
+    TargetDatabase = list(
+      CatalogId = "string",
+      DatabaseName = "string"
     )
   )
 )

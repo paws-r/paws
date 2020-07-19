@@ -6,7 +6,7 @@
 \usage{
 glue_create_ml_transform(Name, Description, InputRecordTables,
   Parameters, Role, GlueVersion, MaxCapacity, WorkerType, NumberOfWorkers,
-  Timeout, MaxRetries)
+  Timeout, MaxRetries, Tags)
 }
 \arguments{
 \item{Name}{[required] The unique name that you give the transform when you create it.}
@@ -97,6 +97,11 @@ before it is terminated and enters \code{TIMEOUT} status. The default is
 
 \item{MaxRetries}{The maximum number of times to retry a task for this transform after a
 task run fails.}
+
+\item{Tags}{The tags to use with this machine learning transform. You may use tags
+to limit access to the machine learning transform. For more information
+about tags in AWS Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
+the developer guide.}
 }
 \description{
 Creates an AWS Glue machine learning transform. This operation creates
@@ -142,7 +147,10 @@ high-quality machine learning transform. These parameters include
   WorkerType = "Standard"|"G.1X"|"G.2X",
   NumberOfWorkers = 123,
   Timeout = 123,
-  MaxRetries = 123
+  MaxRetries = 123,
+  Tags = list(
+    "string"
+  )
 )
 }
 }

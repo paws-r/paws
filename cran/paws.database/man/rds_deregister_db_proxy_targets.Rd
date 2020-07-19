@@ -2,8 +2,8 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_deregister_db_proxy_targets}
 \alias{rds_deregister_db_proxy_targets}
-\title{This is prerelease documentation for the RDS Database Proxy feature in
-preview release}
+\title{Remove the association between one or more DBProxyTarget data structures
+and a DBProxyTargetGroup}
 \usage{
 rds_deregister_db_proxy_targets(DBProxyName, TargetGroupName,
   DBInstanceIdentifiers, DBClusterIdentifiers)
@@ -19,10 +19,6 @@ rds_deregister_db_proxy_targets(DBProxyName, TargetGroupName,
 \item{DBClusterIdentifiers}{One or more DB cluster identifiers.}
 }
 \description{
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-}
-\details{
 Remove the association between one or more \code{DBProxyTarget} data
 structures and a \code{DBProxyTargetGroup}.
 }

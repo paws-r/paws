@@ -2,55 +2,61 @@
 % Please edit documentation in R/amplify_operations.R
 \name{amplify_create_app}
 \alias{amplify_create_app}
-\title{Creates a new Amplify App}
+\title{Creates a new Amplify app}
 \usage{
 amplify_create_app(name, description, repository, platform,
   iamServiceRoleArn, oauthToken, accessToken, environmentVariables,
-  enableBranchAutoBuild, enableBasicAuth, basicAuthCredentials,
-  customRules, tags, buildSpec, enableAutoBranchCreation,
-  autoBranchCreationPatterns, autoBranchCreationConfig)
+  enableBranchAutoBuild, enableBranchAutoDeletion, enableBasicAuth,
+  basicAuthCredentials, customRules, tags, buildSpec,
+  enableAutoBranchCreation, autoBranchCreationPatterns,
+  autoBranchCreationConfig)
 }
 \arguments{
-\item{name}{[required] Name for the Amplify App}
+\item{name}{[required] The name for the Amplify app.}
 
-\item{description}{Description for an Amplify App}
+\item{description}{The description for an Amplify app.}
 
-\item{repository}{Repository for an Amplify App}
+\item{repository}{The repository for an Amplify app.}
 
-\item{platform}{Platform / framework for an Amplify App}
+\item{platform}{The platform or framework for an Amplify app.}
 
-\item{iamServiceRoleArn}{AWS IAM service role for an Amplify App}
+\item{iamServiceRoleArn}{The AWS Identity and Access Management (IAM) service role for an Amplify
+app.}
 
-\item{oauthToken}{OAuth token for 3rd party source control system for an Amplify App, used
-to create webhook and read-only deploy key. OAuth token is not stored.}
+\item{oauthToken}{The OAuth token for a third-party source control system for an Amplify
+app. The OAuth token is used to create a webhook and a read-only deploy
+key. The OAuth token is not stored.}
 
-\item{accessToken}{Personal Access token for 3rd party source control system for an Amplify
-App, used to create webhook and read-only deploy key. Token is not
-stored.}
+\item{accessToken}{The personal access token for a third-party source control system for an
+Amplify app. The personal access token is used to create a webhook and a
+read-only deploy key. The token is not stored.}
 
-\item{environmentVariables}{Environment variables map for an Amplify App.}
+\item{environmentVariables}{The environment variables map for an Amplify app.}
 
-\item{enableBranchAutoBuild}{Enable the auto building of branches for an Amplify App.}
+\item{enableBranchAutoBuild}{Enables the auto building of branches for an Amplify app.}
 
-\item{enableBasicAuth}{Enable Basic Authorization for an Amplify App, this will apply to all
-branches part of this App.}
+\item{enableBranchAutoDeletion}{Automatically disconnects a branch in the Amplify Console when you
+delete a branch from your Git repository.}
 
-\item{basicAuthCredentials}{Credentials for Basic Authorization for an Amplify App.}
+\item{enableBasicAuth}{Enables basic authorization for an Amplify app. This will apply to all
+branches that are part of this app.}
 
-\item{customRules}{Custom rewrite / redirect rules for an Amplify App.}
+\item{basicAuthCredentials}{The credentials for basic authorization for an Amplify app.}
 
-\item{tags}{Tag for an Amplify App}
+\item{customRules}{The custom rewrite and redirect rules for an Amplify app.}
 
-\item{buildSpec}{BuildSpec for an Amplify App}
+\item{tags}{The tag for an Amplify app.}
 
-\item{enableAutoBranchCreation}{Enables automated branch creation for the Amplify App.}
+\item{buildSpec}{The build specification (build spec) for an Amplify app.}
 
-\item{autoBranchCreationPatterns}{Automated branch creation glob patterns for the Amplify App.}
+\item{enableAutoBranchCreation}{Enables automated branch creation for the Amplify app.}
 
-\item{autoBranchCreationConfig}{Automated branch creation config for the Amplify App.}
+\item{autoBranchCreationPatterns}{The automated branch creation glob patterns for the Amplify app.}
+
+\item{autoBranchCreationConfig}{The automated branch creation configuration for the Amplify app.}
 }
 \description{
-Creates a new Amplify App.
+Creates a new Amplify app.
 }
 \section{Request syntax}{
 \preformatted{svc$create_app(
@@ -65,6 +71,7 @@ Creates a new Amplify App.
     "string"
   ),
   enableBranchAutoBuild = TRUE|FALSE,
+  enableBranchAutoDeletion = TRUE|FALSE,
   enableBasicAuth = TRUE|FALSE,
   basicAuthCredentials = "string",
   customRules = list(

@@ -19,8 +19,8 @@ results.}
 \item{Limit}{The maximum number of results to return.}
 }
 \description{
-Lists the rules for the specified target. You can see which rules can
-invoke a specific target in your account.
+Lists the rules for the specified target. You can see which of the rules
+in Amazon EventBridge can invoke a specific target in your account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_rule_names_by_target(

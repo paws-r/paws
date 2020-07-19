@@ -14,11 +14,12 @@ ec2_describe_snapshots(Filters, MaxResults, NextToken, OwnerIds,
 \item \code{description} - A description of the snapshot.
 \item \code{encrypted} - Indicates whether the snapshot is encrypted (\code{true} \\|
 \code{false})
-\item \code{owner-alias} - Value from an Amazon-maintained list (\code{amazon} \\|
-\code{self} \\| \code{all} \\| \code{aws-marketplace} \\| \code{microsoft}) of snapshot
-owners. Not to be confused with the user-configured AWS account
-alias, which is set from the IAM console.
-\item \code{owner-id} - The ID of the AWS account that owns the snapshot.
+\item \code{owner-alias} - The owner alias, from an Amazon-maintained list
+(\code{amazon}). This is not the user-configured AWS account alias set
+using the IAM console. We recommend that you use the related
+parameter instead of this filter.
+\item \code{owner-id} - The AWS account ID of the owner. We recommend that you
+use the related parameter instead of this filter.
 \item \code{progress} - The progress of the snapshot, as a percentage (for
 example, 80\%).
 \item \code{snapshot-id} - The snapshot ID.
@@ -54,7 +55,8 @@ exceeded the value of that parameter. Pagination continues from the end
 of the previous results that returned the \code{NextToken} value. This value
 is \code{null} when there are no more results to return.}
 
-\item{OwnerIds}{Describes the snapshots owned by these owners.}
+\item{OwnerIds}{Scopes the results to snapshots with the specified owners. You can
+specify a combination of AWS account IDs, \code{self}, and \code{amazon}.}
 
 \item{RestorableByUserIds}{The IDs of the AWS accounts that can create volumes from the snapshot.}
 
@@ -88,7 +90,7 @@ permissions to a specific AWS account.
 for all snapshots it owns.
 }
 
-The list of snapshots returned can be modified by specifying snapshot
+The list of snapshots returned can be filtered by specifying snapshot
 IDs, snapshot owners, or AWS accounts with create volume permissions. If
 no options are specified, Amazon EC2 returns all snapshots for which you
 have create volume permissions.
@@ -109,13 +111,16 @@ snapshot permissions for those users are returned. You can specify AWS
 account IDs (if you own the snapshots), \code{self} for snapshots for which
 you own or have explicit permissions, or \code{all} for public snapshots.
 
-If you are describing a long list of snapshots, you can paginate the
-output to make the list more manageable. The \code{MaxResults} parameter sets
-the maximum number of results returned in a single page. If the list of
-results exceeds your \code{MaxResults} value, then that number of results is
-returned along with a \code{NextToken} value that can be passed to a
-subsequent \code{DescribeSnapshots} request to retrieve the remaining
+If you are describing a long list of snapshots, we recommend that you
+paginate the output to make the list more manageable. The \code{MaxResults}
+parameter sets the maximum number of results returned in a single page.
+If the list of results exceeds your \code{MaxResults} value, then that number
+of results is returned along with a \code{NextToken} value that can be passed
+to a subsequent \code{DescribeSnapshots} request to retrieve the remaining
 results.
+
+To get the state of fast snapshot restores for a snapshot, use
+DescribeFastSnapshotRestores.
 
 For more information about EBS snapshots, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS Snapshots}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

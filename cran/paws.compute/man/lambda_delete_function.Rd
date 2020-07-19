@@ -46,9 +46,10 @@ originally configured it.
 
 \examples{
 \dontrun{
-# This operation deletes a Lambda function
+# The following example deletes version 1 of a Lambda function named
+# my-function.
 svc$delete_function(
-  FunctionName = "myFunction",
+  FunctionName = "my-function",
   Qualifier = "1"
 )
 }

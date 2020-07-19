@@ -37,6 +37,12 @@ NULL
 #' 
 #' -   `ListEnvironments`: Gets a list of environment identifiers.
 #' 
+#' -   `ListTagsForResource`: Gets the tags for an environment.
+#' 
+#' -   `TagResource`: Adds tags to an environment.
+#' 
+#' -   `UntagResource`: Removes tags from an environment.
+#' 
 #' -   `UpdateEnvironment`: Changes the settings of an existing
 #'     environment.
 #' 
@@ -89,6 +95,9 @@ NULL
 #'  \link[=cloud9_describe_environments]{describe_environments} \tab Gets information about AWS Cloud9 development environments \cr
 #'  \link[=cloud9_describe_environment_status]{describe_environment_status} \tab Gets status information for an AWS Cloud9 development environment \cr
 #'  \link[=cloud9_list_environments]{list_environments} \tab Gets a list of AWS Cloud9 development environment identifiers \cr
+#'  \link[=cloud9_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of the tags associated with an AWS Cloud9 development environment \cr
+#'  \link[=cloud9_tag_resource]{tag_resource} \tab Adds tags to an AWS Cloud9 development environment \cr
+#'  \link[=cloud9_untag_resource]{untag_resource} \tab Removes tags from an AWS Cloud9 development environment \cr
 #'  \link[=cloud9_update_environment]{update_environment} \tab Changes the settings of an existing AWS Cloud9 development environment \cr
 #'  \link[=cloud9_update_environment_membership]{update_environment_membership} \tab Changes the settings of an existing environment member for an AWS Cloud9 development environment 
 #' }
@@ -108,7 +117,7 @@ cloud9 <- function(config = list()) {
 
 .cloud9$metadata <- list(
   service_name = "cloud9",
-  endpoints = list("*" = list(endpoint = "cloud9.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloud9.{region}.amazonaws.com.cn", global = FALSE)),
+  endpoints = list("*" = list(endpoint = "cloud9.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloud9.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "cloud9.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloud9.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "Cloud9",
   api_version = "2017-09-23",
   signing_name = NULL,

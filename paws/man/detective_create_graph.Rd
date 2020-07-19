@@ -2,17 +2,23 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_create_graph}
 \alias{detective_create_graph}
-\title{Amazon Detective is currently in preview}
+\title{Creates a new behavior graph for the calling account, and sets that
+account as the master account}
 \usage{
 detective_create_graph()
 }
 \description{
-Amazon Detective is currently in preview.
-}
-\details{
 Creates a new behavior graph for the calling account, and sets that
 account as the master account. This operation is called by the account
 that is enabling Detective.
+}
+\details{
+Before you try to enable Detective, make sure that your account has been
+enrolled in Amazon GuardDuty for at least 48 hours. If you do not meet
+this requirement, you cannot enable Detective. If you do meet the
+GuardDuty prerequisite, then when you make the request to enable
+Detective, it checks whether your data volume is within the Detective
+quota. If it exceeds the quota, then you cannot enable Detective.
 
 The operation also enables Detective for the calling account in the
 currently selected Region. It returns the ARN of the new behavior graph.

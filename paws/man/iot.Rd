@@ -18,6 +18,13 @@ processing and integration with other services, organize resources
 associated with each device (Registry), configure logging, and create
 and manage policies and credentials to authenticate devices.
 
+The service endpoints that expose this API are listed in \href{https://docs.aws.amazon.com/general/latest/gr/iot-core.html}{AWS IoT Core Endpoints and Quotas}.
+You must use the endpoint for the region that has the resources you want
+to access.
+
+The service name used by \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{AWS Signature Version 4}
+to sign the request is: \emph{execute-api}.
+
 For more information about how AWS IoT works, see the \href{https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html}{Developer Guide}.
 
 For information about how to use the credentials provider for AWS IoT,
@@ -62,6 +69,7 @@ see \href{https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-dire
 \link[=iot_create_authorizer]{create_authorizer} \tab Creates an authorizer \cr
 \link[=iot_create_billing_group]{create_billing_group} \tab Creates a billing group \cr
 \link[=iot_create_certificate_from_csr]{create_certificate_from_csr} \tab Creates an X \cr
+\link[=iot_create_dimension]{create_dimension} \tab Create a dimension that you can use to limit the scope of a metric used in a security profile for AWS IoT Device Defender \cr
 \link[=iot_create_domain_configuration]{create_domain_configuration} \tab Creates a domain configuration \cr
 \link[=iot_create_dynamic_thing_group]{create_dynamic_thing_group} \tab Creates a dynamic thing group \cr
 \link[=iot_create_job]{create_job} \tab Creates a job \cr
@@ -87,6 +95,7 @@ see \href{https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-dire
 \link[=iot_delete_billing_group]{delete_billing_group} \tab Deletes the billing group \cr
 \link[=iot_delete_ca_certificate]{delete_ca_certificate} \tab Deletes a registered CA certificate \cr
 \link[=iot_delete_certificate]{delete_certificate} \tab Deletes the specified certificate \cr
+\link[=iot_delete_dimension]{delete_dimension} \tab Removes the specified dimension from your AWS account \cr
 \link[=iot_delete_domain_configuration]{delete_domain_configuration} \tab Deletes the specified domain configuration \cr
 \link[=iot_delete_dynamic_thing_group]{delete_dynamic_thing_group} \tab Deletes a dynamic thing group \cr
 \link[=iot_delete_job]{delete_job} \tab Deletes a job and its related job executions \cr
@@ -118,6 +127,7 @@ see \href{https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-dire
 \link[=iot_describe_ca_certificate]{describe_ca_certificate} \tab Describes a registered CA certificate \cr
 \link[=iot_describe_certificate]{describe_certificate} \tab Gets information about the specified certificate \cr
 \link[=iot_describe_default_authorizer]{describe_default_authorizer} \tab Describes the default authorizer \cr
+\link[=iot_describe_dimension]{describe_dimension} \tab Provides details about a dimension that is defined in your AWS account \cr
 \link[=iot_describe_domain_configuration]{describe_domain_configuration} \tab Gets summary information about a domain configuration \cr
 \link[=iot_describe_endpoint]{describe_endpoint} \tab Returns a unique endpoint specific to the AWS account making the call \cr
 \link[=iot_describe_event_configurations]{describe_event_configurations} \tab Describes event configurations \cr
@@ -166,6 +176,7 @@ see \href{https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-dire
 \link[=iot_list_ca_certificates]{list_ca_certificates} \tab Lists the CA certificates registered for your AWS account \cr
 \link[=iot_list_certificates]{list_certificates} \tab Lists the certificates registered in your AWS account \cr
 \link[=iot_list_certificates_by_ca]{list_certificates_by_ca} \tab List the device certificates signed by the specified CA certificate \cr
+\link[=iot_list_dimensions]{list_dimensions} \tab List the set of dimensions that are defined for your AWS account \cr
 \link[=iot_list_domain_configurations]{list_domain_configurations} \tab Gets a list of domain configurations for the user \cr
 \link[=iot_list_indices]{list_indices} \tab Lists the search indices \cr
 \link[=iot_list_job_executions_for_job]{list_job_executions_for_job} \tab Lists the job executions for a job \cr
@@ -204,6 +215,7 @@ see \href{https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-dire
 \link[=iot_list_violation_events]{list_violation_events} \tab Lists the Device Defender security profile violations discovered during the given time period \cr
 \link[=iot_register_ca_certificate]{register_ca_certificate} \tab Registers a CA certificate with AWS IoT \cr
 \link[=iot_register_certificate]{register_certificate} \tab Registers a device certificate with AWS IoT \cr
+\link[=iot_register_certificate_without_ca]{register_certificate_without_ca} \tab Register a certificate that does not have a certificate authority (CA) \cr
 \link[=iot_register_thing]{register_thing} \tab Provisions a thing in the device registry \cr
 \link[=iot_reject_certificate_transfer]{reject_certificate_transfer} \tab Rejects a pending certificate transfer \cr
 \link[=iot_remove_thing_from_billing_group]{remove_thing_from_billing_group} \tab Removes the given thing from the billing group \cr
@@ -229,6 +241,7 @@ see \href{https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-dire
 \link[=iot_update_billing_group]{update_billing_group} \tab Updates information about the billing group \cr
 \link[=iot_update_ca_certificate]{update_ca_certificate} \tab Updates a registered CA certificate \cr
 \link[=iot_update_certificate]{update_certificate} \tab Updates the status of the specified certificate \cr
+\link[=iot_update_dimension]{update_dimension} \tab Updates the definition for a dimension \cr
 \link[=iot_update_domain_configuration]{update_domain_configuration} \tab Updates values stored in the domain configuration \cr
 \link[=iot_update_dynamic_thing_group]{update_dynamic_thing_group} \tab Updates a dynamic thing group \cr
 \link[=iot_update_event_configurations]{update_event_configurations} \tab Updates the event configurations \cr

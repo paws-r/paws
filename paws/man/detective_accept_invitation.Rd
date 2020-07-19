@@ -2,7 +2,8 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_accept_invitation}
 \alias{detective_accept_invitation}
-\title{Amazon Detective is currently in preview}
+\title{Accepts an invitation for the member account to contribute data to a
+behavior graph}
 \usage{
 detective_accept_invitation(GraphArn)
 }
@@ -13,13 +14,11 @@ invitation for.
 The member account status in the behavior graph must be \code{INVITED}.}
 }
 \description{
-Amazon Detective is currently in preview.
-}
-\details{
 Accepts an invitation for the member account to contribute data to a
 behavior graph. This operation can only be called by an invited member
 account.
-
+}
+\details{
 The request provides the ARN of behavior graph.
 
 The member account status in the graph must be \code{INVITED}.

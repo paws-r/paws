@@ -2,13 +2,13 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_create_db_cluster_snapshot}
 \alias{docdb_create_db_cluster_snapshot}
-\title{Creates a snapshot of a DB cluster}
+\title{Creates a snapshot of a cluster}
 \usage{
 docdb_create_db_cluster_snapshot(DBClusterSnapshotIdentifier,
   DBClusterIdentifier, Tags)
 }
 \arguments{
-\item{DBClusterSnapshotIdentifier}{[required] The identifier of the DB cluster snapshot. This parameter is stored as a
+\item{DBClusterSnapshotIdentifier}{[required] The identifier of the cluster snapshot. This parameter is stored as a
 lowercase string.
 
 Constraints:
@@ -20,8 +20,8 @@ Constraints:
 
 Example: \code{my-cluster-snapshot1}}
 
-\item{DBClusterIdentifier}{[required] The identifier of the DB cluster to create a snapshot for. This
-parameter is not case sensitive.
+\item{DBClusterIdentifier}{[required] The identifier of the cluster to create a snapshot for. This parameter
+is not case sensitive.
 
 Constraints:
 \itemize{
@@ -30,10 +30,10 @@ Constraints:
 
 Example: \code{my-cluster}}
 
-\item{Tags}{The tags to be assigned to the DB cluster snapshot.}
+\item{Tags}{The tags to be assigned to the cluster snapshot.}
 }
 \description{
-Creates a snapshot of a DB cluster.
+Creates a snapshot of a cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$create_db_cluster_snapshot(

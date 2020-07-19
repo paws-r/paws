@@ -13,7 +13,7 @@ NULL
 #'
 #' @usage
 #' cloud9_create_environment_ec2(name, description, clientRequestToken,
-#'   instanceType, subnetId, automaticStopTimeMinutes, ownerArn)
+#'   instanceType, subnetId, automaticStopTimeMinutes, ownerArn, tags)
 #'
 #' @param name &#91;required&#93; The name of the environment to create.
 #' 
@@ -34,6 +34,8 @@ NULL
 #' @param ownerArn The Amazon Resource Name (ARN) of the environment owner. This ARN can be
 #' the ARN of any AWS IAM principal. If this value is not specified, the
 #' ARN defaults to this environment\'s creator.
+#' @param tags An array of key-value pairs that will be associated with the new AWS
+#' Cloud9 development environment.
 #'
 #' @section Request syntax:
 #' ```
@@ -44,7 +46,13 @@ NULL
 #'   instanceType = "string",
 #'   subnetId = "string",
 #'   automaticStopTimeMinutes = 123,
-#'   ownerArn = "string"
+#'   ownerArn = "string",
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -64,14 +72,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloud9_create_environment_ec2
-cloud9_create_environment_ec2 <- function(name, description = NULL, clientRequestToken = NULL, instanceType, subnetId = NULL, automaticStopTimeMinutes = NULL, ownerArn = NULL) {
+cloud9_create_environment_ec2 <- function(name, description = NULL, clientRequestToken = NULL, instanceType, subnetId = NULL, automaticStopTimeMinutes = NULL, ownerArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentEC2",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloud9$create_environment_ec2_input(name = name, description = description, clientRequestToken = clientRequestToken, instanceType = instanceType, subnetId = subnetId, automaticStopTimeMinutes = automaticStopTimeMinutes, ownerArn = ownerArn)
+  input <- .cloud9$create_environment_ec2_input(name = name, description = description, clientRequestToken = clientRequestToken, instanceType = instanceType, subnetId = subnetId, automaticStopTimeMinutes = automaticStopTimeMinutes, ownerArn = ownerArn, tags = tags)
   output <- .cloud9$create_environment_ec2_output()
   config <- get_config()
   svc <- .cloud9$service(config)
@@ -464,6 +472,134 @@ cloud9_list_environments <- function(nextToken = NULL, maxResults = NULL) {
   return(response)
 }
 .cloud9$operations$list_environments <- cloud9_list_environments
+
+#' Gets a list of the tags associated with an AWS Cloud9 development
+#' environment
+#'
+#' Gets a list of the tags associated with an AWS Cloud9 development
+#' environment.
+#'
+#' @usage
+#' cloud9_list_tags_for_resource(ResourceARN)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Cloud9 development environment
+#' to get the tags for.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloud9_list_tags_for_resource
+cloud9_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloud9$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .cloud9$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .cloud9$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloud9$operations$list_tags_for_resource <- cloud9_list_tags_for_resource
+
+#' Adds tags to an AWS Cloud9 development environment
+#'
+#' Adds tags to an AWS Cloud9 development environment.
+#' 
+#' Tags that you add to an AWS Cloud9 environment by using this method will
+#' NOT be automatically propagated to underlying resources.
+#'
+#' @usage
+#' cloud9_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Cloud9 development environment
+#' to add tags to.
+#' @param Tags &#91;required&#93; The list of tags to add to the given AWS Cloud9 development environment.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloud9_tag_resource
+cloud9_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloud9$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .cloud9$tag_resource_output()
+  config <- get_config()
+  svc <- .cloud9$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloud9$operations$tag_resource <- cloud9_tag_resource
+
+#' Removes tags from an AWS Cloud9 development environment
+#'
+#' Removes tags from an AWS Cloud9 development environment.
+#'
+#' @usage
+#' cloud9_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Cloud9 development environment
+#' to remove tags from.
+#' @param TagKeys &#91;required&#93; The tag names of the tags to remove from the given AWS Cloud9
+#' development environment.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloud9_untag_resource
+cloud9_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloud9$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .cloud9$untag_resource_output()
+  config <- get_config()
+  svc <- .cloud9$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloud9$operations$untag_resource <- cloud9_untag_resource
 
 #' Changes the settings of an existing AWS Cloud9 development environment
 #'

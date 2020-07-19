@@ -2,8 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_batch_check_layer_availability}
 \alias{ecr_batch_check_layer_availability}
-\title{Check the availability of multiple image layers in a specified registry
-and repository}
+\title{Checks the availability of one or more image layers in a repository}
 \usage{
 ecr_batch_check_layer_availability(registryId, repositoryName,
   layerDigests)
@@ -19,13 +18,16 @@ check.}
 \item{layerDigests}{[required] The digests of the image layers to check.}
 }
 \description{
-Check the availability of multiple image layers in a specified registry
-and repository.
+Checks the availability of one or more image layers in a repository.
 }
 \details{
-This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers for pulling and pushing images. In most
-cases, you should use the \code{docker} CLI to pull, tag, and push images.
+When an image is pushed to a repository, each image layer is checked to
+verify if it has been uploaded before. If it has been uploaded, then the
+image layer is skipped.
+
+This operation is used by the Amazon ECR proxy and is not generally used
+by customers for pulling and pushing images. In most cases, you should
+use the \code{docker} CLI to pull, tag, and push images.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_check_layer_availability(

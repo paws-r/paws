@@ -2,22 +2,20 @@
 % Please edit documentation in R/fsx_operations.R
 \name{fsx_delete_backup}
 \alias{fsx_delete_backup}
-\title{Deletes an Amazon FSx for Windows File Server backup, deleting its
-contents}
+\title{Deletes an Amazon FSx backup, deleting its contents}
 \usage{
 fsx_delete_backup(BackupId, ClientRequestToken)
 }
 \arguments{
 \item{BackupId}{[required] The ID of the backup you want to delete.}
 
-\item{ClientRequestToken}{(Optional) A string of up to 64 ASCII characters that Amazon FSx uses to
-ensure idempotent deletion. This is automatically filled on your behalf
-when using the AWS CLI or SDK.}
+\item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
+idempotent deletion. This is automatically filled on your behalf when
+using the AWS CLI or SDK.}
 }
 \description{
-Deletes an Amazon FSx for Windows File Server backup, deleting its
-contents. After deletion, the backup no longer exists, and its data is
-gone.
+Deletes an Amazon FSx backup, deleting its contents. After deletion, the
+backup no longer exists, and its data is gone.
 }
 \details{
 The \code{DeleteBackup} call returns instantly. The backup will not show up

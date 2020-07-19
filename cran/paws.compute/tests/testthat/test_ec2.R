@@ -190,6 +190,10 @@ test_that("describe_instance_credit_specifications", {
   expect_error(svc$describe_instance_credit_specifications(MaxResults = 20), NA)
 })
 
+test_that("describe_instance_event_notification_attributes", {
+  expect_error(svc$describe_instance_event_notification_attributes(), NA)
+})
+
 test_that("describe_instance_status", {
   expect_error(svc$describe_instance_status(), NA)
 })
@@ -228,6 +232,14 @@ test_that("describe_internet_gateways", {
 
 test_that("describe_internet_gateways", {
   expect_error(svc$describe_internet_gateways(MaxResults = 20), NA)
+})
+
+test_that("describe_ipv_6_pools", {
+  expect_error(svc$describe_ipv_6_pools(), NA)
+})
+
+test_that("describe_ipv_6_pools", {
+  expect_error(svc$describe_ipv_6_pools(MaxResults = 20), NA)
 })
 
 test_that("describe_key_pairs", {
@@ -288,6 +300,14 @@ test_that("describe_local_gateways", {
 
 test_that("describe_local_gateways", {
   expect_error(svc$describe_local_gateways(MaxResults = 20), NA)
+})
+
+test_that("describe_managed_prefix_lists", {
+  expect_error(svc$describe_managed_prefix_lists(), NA)
+})
+
+test_that("describe_managed_prefix_lists", {
+  expect_error(svc$describe_managed_prefix_lists(MaxResults = 20), NA)
 })
 
 test_that("describe_moving_addresses", {

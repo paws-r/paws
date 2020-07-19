@@ -12,7 +12,7 @@ eventbridge_put_permission(EventBusName, Action, Principal, StatementId,
 \item{EventBusName}{The event bus associated with the rule. If you omit this, the default
 event bus is used.}
 
-\item{Action}{[required] The action that you\'re enabling the other account to perform.
+\item{Action}{[required] The action that you are enabling the other account to perform.
 Currently, this must be \code{events:PutEvents}.}
 
 \item{Principal}{[required] The 12-digit AWS account ID that you are permitting to put events to
@@ -20,40 +20,40 @@ your default event bus. Specify \"*\" to permit any account to put
 events to your default event bus.
 
 If you specify \"*\" without specifying \code{Condition}, avoid creating
-rules that might match undesirable events. To create more secure rules,
+rules that may match undesirable events. To create more secure rules,
 make sure that the event pattern for each rule contains an \code{account}
-field with a specific account ID to receive events from. Rules that have
-an account field match events sent only from accounts that are listed in
-the rule\'s \code{account} field.}
+field with a specific account ID from which to receive events. Rules
+with an account field do not match any events sent from other accounts.}
 
-\item{StatementId}{[required] An identifier string for the external account that you\'re granting
+\item{StatementId}{[required] An identifier string for the external account that you are granting
 permissions to. If you later want to revoke the permission for this
 external account, specify this \code{StatementId} when you run
 RemovePermission.}
 
 \item{Condition}{This parameter enables you to limit the permission to accounts that
 fulfill a certain condition, such as being a member of a certain AWS
-organization. For more information about AWS Organizations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html}{What Is AWS Organizations?}
+organization. For more information about AWS Organizations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html}{What Is AWS Organizations}
 in the \emph{AWS Organizations User Guide}.
 
-If you specify \code{Condition} with an AWS organization ID and specify
+If you specify \code{Condition} with an AWS organization ID, and specify
 \"*\" as the value for \code{Principal}, you grant permission to all the
 accounts in the named organization.
 
-The \code{Condition} is a JSON string that must contain \code{Type}, \code{Key}, and
+The \code{Condition} is a JSON string which must contain \code{Type}, \code{Key}, and
 \code{Value} fields.}
 }
 \description{
 Running \code{PutPermission} permits the specified AWS account or AWS
-organization to put events to the specified \emph{event bus}. Rules in your
-account are triggered by these events arriving to an event bus in your
-account.
+organization to put events to the specified \emph{event bus}. Amazon
+EventBridge (CloudWatch Events) rules in your account are triggered by
+these events arriving to an event bus in your account.
 }
 \details{
 For another account to send events to your account, that external
-account must have a rule with your account\'s event bus as a target.
+account must have an EventBridge rule with your account\'s event bus as
+a target.
 
-To enable multiple AWS accounts to put events to an event bus, run
+To enable multiple AWS accounts to put events to your event bus, run
 \code{PutPermission} once for each of these accounts. Or, if all the accounts
 are members of the same AWS organization, you can run \code{PutPermission}
 once specifying \code{Principal} as \"*\" and specifying the AWS
@@ -66,7 +66,8 @@ use \code{PutTarget} to add your account\'s event bus as a target. For more
 information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html}{Sending and Receiving Events Between AWS Accounts}
 in the \emph{Amazon EventBridge User Guide}.
 
-The permission policy on an event bus can\'t exceed 10 KB in size.
+The permission policy on the default event bus cannot exceed 10 KB in
+size.
 }
 \section{Request syntax}{
 \preformatted{svc$put_permission(

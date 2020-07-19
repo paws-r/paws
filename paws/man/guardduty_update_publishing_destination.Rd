@@ -9,10 +9,10 @@ guardduty_update_publishing_destination(DetectorId, DestinationId,
   DestinationProperties)
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the}
-
-\item{DestinationId}{[required] The ID of the detector associated with the publishing destinations to
+\item{DetectorId}{[required] The ID of the detector associated with the publishing destinations to
 update.}
+
+\item{DestinationId}{[required] The ID of the publishing destination to update.}
 
 \item{DestinationProperties}{A \code{DestinationProperties} object that includes the \code{DestinationArn} and
 \code{KmsKeyArn} of the publishing destination.}

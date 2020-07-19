@@ -38,6 +38,12 @@ Gets a list of all grants for the specified customer master key (CMK).
 \details{
 To perform this operation on a CMK in a different AWS account, specify
 the key ARN in the value of the \code{KeyId} parameter.
+
+The \code{GranteePrincipal} field in the \code{ListGrants} response usually
+contains the user or role designated as the grantee principal in the
+grant. However, when the grantee principal in the grant is an AWS
+service, the \code{GranteePrincipal} field contains the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#principal-services}{service principal},
+which might represent several different grantee principals.
 }
 \section{Request syntax}{
 \preformatted{svc$list_grants(
