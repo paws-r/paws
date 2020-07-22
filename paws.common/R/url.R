@@ -40,7 +40,7 @@ build_url <- function(url) {
   } else {
     return("")
   }
-  if (url$path != "") l <- paste0(l, url$path)
+  if (url$path != "") l <- paste0(l, escaped_path(url))
   if (url$raw_query != "") l <- paste(l, url$raw_query, sep = "?")
   if (url$fragment != "") l <- paste0(l, "#", url$fragment)
   return(l)
