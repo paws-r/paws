@@ -23,10 +23,13 @@ parse_url <- function(url) {
   if (!is.null(p$port)) p$host <- paste0(p$host, ":", p$port)
   if (p$path == "") p$path <- "/"
   if (substr(p$path, 1, 1) != "/") p$path <- paste0("/", p$path)
+  raw_path <- escape(p$path, "encodePath")
+  if (raw_path == p$path) raw_path <- ""
   u <- Url(
     scheme = p$scheme,
     host = p$host,
     path = p$path,
+    raw_path = raw_path,
     raw_query = build_query_string(p$query),
   )
   return(u)
