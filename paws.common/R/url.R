@@ -21,12 +21,17 @@ parse_url <- function(url) {
   if (is.null(p$scheme)) p$scheme <- ""
   if (is.null(p$host)) p$host <- ""
   if (!is.null(p$port)) p$host <- paste0(p$host, ":", p$port)
-  if (p$path == "") p$path <- "/"
-  if (substr(p$path, 1, 1) != "/") p$path <- paste0("/", p$path)
+  raw_path <- p$path
+  if (raw_path == "") raw_path <- "/"
+  else if (substr(raw_path, 1, 1) != "/") raw_path <- paste0("/", raw_path)
+  path <- unescape(raw_path)
+  escaped_path <- escape(raw_path, "encodePath")
+  if (escaped_path == raw_path) raw_path <- ""
   u <- Url(
     scheme = p$scheme,
     host = p$host,
-    path = p$path,
+    path = path,
+    raw_path = raw_path,
     raw_query = build_query_string(p$query),
   )
   return(u)
@@ -40,7 +45,8 @@ build_url <- function(url) {
   } else {
     return("")
   }
-  if (url$path != "") l <- paste0(l, url$path)
+  if (url$raw_path != "") l <- paste0(l, url$raw_path)
+  else if (url$path != "") l <- paste0(l, url$path)
   if (url$raw_query != "") l <- paste(l, url$raw_query, sep = "?")
   if (url$fragment != "") l <- paste0(l, "#", url$fragment)
   return(l)
@@ -148,7 +154,7 @@ should_escape <- function(char, mode) {
   return(TRUE)
 }
 
-# unescape a string.
+# Un-escape a string.
 # TODO: Complete.
 unescape <- function(string) {
   return(utils::URLdecode(string))
