@@ -16,6 +16,8 @@ Description: Interface to Amazon Web Services business applications APIs,
     including online meetings and video conferencing, email and calendar
     service, and more <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
+URL: https://github.com/paws-r/paws
+BugReports: https://github.com/paws-r/paws/issues
 Imports: 
     paws.common (>= 0.3.0)
 Suggests: 
