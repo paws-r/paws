@@ -10,7 +10,7 @@ ec2_modify_availability_zone_group(GroupName, OptInStatus, DryRun)
 \item{GroupName}{[required] The name of the Availability Zone Group.}
 
 \item{OptInStatus}{[required] Indicates whether to enable or disable membership. The valid values are
-\verb{opted-in}. You must contact \href{https://console.aws.amazon.com/support/home#/case/create%3FissueType=customer-service%26serviceCode=general-info%26getting-started%26categoryCode=using-aws%26services}{AWS Support}
+\verb{opted-in}. You must contact \href{https://console.aws.amazon.com/support/home#/case/create?issueType=customer-service&serviceCode=general-info&getting-started&categoryCode=using-aws&services}{AWS Support}
 to disable an Availability Zone group.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
