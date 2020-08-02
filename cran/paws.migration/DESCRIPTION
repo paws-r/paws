@@ -1,6 +1,6 @@
 Package: paws.migration
 Title: Amazon Web Services Migration & Transfer APIs
-Version: 0.1.8
+Version: 0.1.9
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

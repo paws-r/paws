@@ -1,6 +1,6 @@
 Package: paws.database
 Title: Amazon Web Services Database APIs
-Version: 0.1.8
+Version: 0.1.9
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
