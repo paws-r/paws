@@ -1,5 +1,5 @@
 Package: paws.networking
-Title: Amazon Web Services Networking & Content Delivery APIs
+Title: Amazon Web Services Networking & Content Delivery Services
 Version: 0.1.9
 Authors@R: 
     c(person(given = "David",
@@ -13,7 +13,7 @@ Authors@R:
       person(given = "Amazon.com, Inc.",
              role = "cph"))
 Description: Interface to Amazon Web Services networking and content
-    delivery APIs, including 'Route 53' Domain Name System service,
+    delivery services, including 'Route 53' Domain Name System service,
     'CloudFront' content delivery, load balancing, and more
     <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
