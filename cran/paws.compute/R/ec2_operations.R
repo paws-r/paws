@@ -23885,7 +23885,7 @@ ec2_import_volume <- function(AvailabilityZone, Description = NULL, DryRun = NUL
 #' @param GroupName &#91;required&#93; The name of the Availability Zone Group.
 #' @param OptInStatus &#91;required&#93; Indicates whether to enable or disable membership. The valid values are
 #' `opted-in`. You must contact [AWS
-#' Support](https://console.aws.amazon.com/support/home#/case/create%3FissueType=customer-service%26serviceCode=general-info%26getting-started%26categoryCode=using-aws%26services)
+#' Support](https://console.aws.amazon.com/support/home#/case/create?issueType=customer-service&serviceCode=general-info&getting-started&categoryCode=using-aws&services)
 #' to disable an Availability Zone group.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have

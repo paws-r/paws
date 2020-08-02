@@ -514,6 +514,10 @@ test_that("convert", {
   expected <- c("[foo](https://example.com)")
   expect_equal(convert(text), expected)
 
+  text <- "<a href='https://console.aws.amazon.com/support/home#/case/create%3FissueType=customer-service%26serviceCode=general-info%26getting-started%26categoryCode=using-aws%26services'>foo</a>"
+  expected <- c("[foo](https://console.aws.amazon.com/support/home#/case/create?issueType=customer-service&serviceCode=general-info&getting-started&categoryCode=using-aws&services)")
+  expect_equal(convert(text), expected)
+
   text <- "<dt>Description</dt><dd>Definition.</dd>"
   expected <- c("### Description", "", "Definition.")
   expect_equal(convert(text), expected)
