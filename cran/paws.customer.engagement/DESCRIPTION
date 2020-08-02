@@ -1,6 +1,6 @@
 Package: paws.customer.engagement
 Title: Amazon Web Services Customer Engagement APIs
-Version: 0.1.8
+Version: 0.1.9
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

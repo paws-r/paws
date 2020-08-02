@@ -1,6 +1,6 @@
 Package: paws.compute
 Title: Amazon Web Services Compute APIs
-Version: 0.1.8
+Version: 0.1.9
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

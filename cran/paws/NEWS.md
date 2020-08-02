@@ -1,3 +1,15 @@
+# paws 0.1.9
+
+* Support the S3 operation `SelectObjectContent` in `s3$select_object_content`.
+  This operation allows you to query a data file in S3 using SQL.
+* Correctly decode Unicode strings in API responses received from AWS, such as
+  "Me voy a casa mañana.".
+* Decode base64-encoded blobs to raw vectors. Previously, Paws decoded them to
+  UTF-8 inappropriately, which would fail for any data other than text.
+* In some cases, httr/curl do not decompress the response body. In these cases,
+  check whether it looks compressed and try decompressing it.
+* Update Paws with the latest AWS services and features.
+
 # paws 0.1.8
 
 * Fix a small number of operations that require additional metadata sent to AWS,
