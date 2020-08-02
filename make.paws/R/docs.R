@@ -286,6 +286,13 @@ clean_html_a <- function(node) {
     xml2::xml_attr(node, "href") <- url
   }
 
+  # Decode encoded ? and & in URLs.
+  if (grepl("%", url, fixed = TRUE)) {
+    url <- gsub("%3F", "?", url, fixed = TRUE)
+    url <- gsub("%26", "&", url, fixed = TRUE)
+    xml2::xml_attr(node, "href") <- url
+  }
+
   # Delete URLs when the page is unreachable or explicitly missing.
   if (!url_ok(url)) {
     xml2::xml_attr(node, "href") <- NULL
