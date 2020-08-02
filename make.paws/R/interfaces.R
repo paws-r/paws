@@ -43,7 +43,7 @@ make_interface <- function(name, shape_data, api) {
   shape <- tag_del(shape, c("enum", "min", "max", "pattern"))
   for (key in names(shape_data)) {
     if (key == "shape") next
-    shape <- tag_add(shape, setNames(shape_data[[key]], key))
+    shape <- tag_add(shape, stats::setNames(shape_data[[key]], key))
   }
   interface <- render(
     interface_template,
