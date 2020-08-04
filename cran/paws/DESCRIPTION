@@ -1,6 +1,6 @@
 Package: paws
 Title: Amazon Web Services Software Development Kit
-Version: 0.1.8
+Version: 0.1.9
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
@@ -20,17 +20,17 @@ License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
-    paws.compute (>= 0.1.8),
-    paws.storage (>= 0.1.8),
-    paws.database (>= 0.1.8),
-    paws.networking (>= 0.1.8),
-    paws.management (>= 0.1.8),
-    paws.machine.learning (>= 0.1.8),
-    paws.analytics (>= 0.1.8),
-    paws.security.identity (>= 0.1.8),
-    paws.application.integration (>= 0.1.8),
-    paws.cost.management (>= 0.1.8),
-    paws.customer.engagement (>= 0.1.8)
+    paws.compute (>= 0.1.9),
+    paws.storage (>= 0.1.9),
+    paws.database (>= 0.1.9),
+    paws.networking (>= 0.1.9),
+    paws.management (>= 0.1.9),
+    paws.machine.learning (>= 0.1.9),
+    paws.analytics (>= 0.1.9),
+    paws.security.identity (>= 0.1.9),
+    paws.application.integration (>= 0.1.9),
+    paws.cost.management (>= 0.1.9),
+    paws.customer.engagement (>= 0.1.9)
 Suggests: 
     testthat
 Encoding: UTF-8
