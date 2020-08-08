@@ -2,7 +2,7 @@
 # This example will go through how to use SageMaker using Paws
 # Author: Dyfan Jones (https://github.com/DyfanJones)
 #
-# This example is an adaptation from 
+# This example is an adaptation from
 # https://github.com/awslabs/amazon-sagemaker-examples/blob/master/introduction_to_applying_machine_learning/xgboost_direct_marketing/xgboost_direct_marketing_sagemaker.ipynb
 ################################################################################
 
@@ -16,7 +16,7 @@ library(pROC) # Evaluate the model at the end
 ###################################################
 # Helper Functions
 ###################################################
-# As Paws works with the lower level API of AWS similar to boto3, we have to 
+# As Paws works with the lower level API of AWS similar to boto3, we have to
 # create some helper functions to get some of the Python `sagemaker` package's
 # functionality.
 
@@ -26,27 +26,27 @@ get_execution_role <- function(config = list()){
   if (grepl("AmazonSageMaker-ExecutionRole",assumed_role)){
     role <- gsub("^(.+)sts::(\\d+):assumed-role/(.+?)/.*$", "\\1iam::\\2:role/service-role/\\3", role)
     return(role)}
-  
+
   role <- gsub("^(.+)sts::(\\d+):assumed-role/(.+?)/.*$", "\\1iam::\\2:role/\\3", assumed_role)
-  
+
   # Call IAM to get the role's path
   role_name = gsub(".*/","", role)
-  
+
   tryCatch({role = paws::iam(config = config)$get_role(RoleName = role_name)$Role$Arn},
            error = function(e) stop("Couldn't call 'get_role' to get Role ARN from role name ", role_name ," to get Role path."))
-  
-  return(role)    
+
+  return(role)
 }
 
 # Waits for the training job/creation of endpoint to be completed.
-sagemaker_waiter <- function(TrainingJobName = NULL, EndpointName = NULL){    
+sagemaker_waiter <- function(TrainingJobName = NULL, EndpointName = NULL){
   if(!is.null(TrainingJobName)){
     while (TRUE){
       tryCatch(job_status <- paws::sagemaker()$describe_training_job(TrainingJobName=TrainingJobName)$TrainingJobStatus)
       if (job_status %in% c("Completed", "Failed", "Stopped")){return (job_status)} else {Sys.sleep(1)}
     }
   }
-  
+
   if(!is.null(EndpointName)){
     while (TRUE){
       tryCatch(job_status <- paws::sagemaker()$describe_endpoint(EndpointName=job_name)$EndpointStatus)
@@ -58,7 +58,7 @@ sagemaker_waiter <- function(TrainingJobName = NULL, EndpointName = NULL){
 ###################################################
 # Setting initial Parameters
 ###################################################
-# Get execution role for SageMaker.
+# Get execution role for SageMaker. Assumes you are using an IAM role.
 role <- get_execution_role()
 
 # S3 parameter set up.
@@ -72,11 +72,11 @@ my_region <- paws.common:::get_region()
 # Each Docker image is linked to a region.
 # AWS prebuilt Docker image URLs follow a pattern:
 # <account id>.dkr.ecr.<region>.amazonaws.com/sagemaker-<model>:<version>-cpu-py<python version>'
-# For more information go to: 
+# To get the account ID for your region, go to:
 # https://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-docker-containers-frameworks.html
 
 # This is the Docker image for xgboost on the eu-west-1 region.
-xgb_img <- "141502667606.dkr.ecr.eu-west-1.amazonaws.com/sagemaker-xgboost:1.0-1-cpu-py3" 
+xgb_img <- "141502667606.dkr.ecr.eu-west-1.amazonaws.com/sagemaker-xgboost:1.0-1-cpu-py3"
 
 
 ###################################################
@@ -103,7 +103,7 @@ data[,no_previous_contact := fifelse(pdays == 999, 1,0)]
 data[,not_working := fifelse(job %in% c("student", "retired", "unemployed"), 1, 0)]
 
 # Convert categorical variables to sets of indicators.
-model_data <- dummy_cols(data, remove_selected_columns = T) 
+model_data <- dummy_cols(data, remove_selected_columns = T)
 
 # Remove unwanted columns.
 model_data <- model_data[,-c("duration", "emp.var.rate", "cons.price.idx", "cons.conf.idx", "euribor3m", "nr.employed")]
@@ -185,7 +185,7 @@ s3_input_val <- list(
 # Combine train and validation so that they can be sent to SageMaker.
 input_config <- list(s3_input_train, s3_input_val)
 
-# Set xgboost gyperparameters.
+# Set xgboost hyperparameters.
 # xgboost hyperparameter docs: https://xgboost.readthedocs.io/en/latest/parameter.html
 hyper_param <- list(
   max_depth = 5,
@@ -268,7 +268,7 @@ create_endpoint_config_response <- sm$create_endpoint_config(
 ## Invoke endpoint with model
 # This builds the endpoint.
 create_endpoint_response <- sm$create_endpoint(
-  EndpointName = job_name, 
+  EndpointName = job_name,
   EndpointConfigName = job_name
 )
 
@@ -288,7 +288,7 @@ sm_run <- paws::sagemakerruntime()
 fwrite(test_data[,-c("y_no", "y_yes")], "test.csv", col.names = FALSE)
 obj <- readBin("test.csv", "raw", n = file.size("test.csv"))
 
-# Next we need to send it to the endpoint and tell it we are sending data 
+# Next we need to send it to the endpoint and tell it we are sending data
 # in CSV format.
 resp <- sm_run$invoke_endpoint(
   EndpointName = job_name,
