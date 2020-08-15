@@ -77,6 +77,7 @@ content_md5 <- function(request) {
                               "PutBucketReplication", "PutObject",
                               "UploadPart"))) {return(request)}
   body <- request$body
+  if (length(body) == 0) body <- raw(0)
   hash <- digest::digest(body, serialize = FALSE, raw = TRUE)
   base64_hash <- base64enc::base64encode(hash)
   request$http_request$header$`Content-Md5` <- base64_hash

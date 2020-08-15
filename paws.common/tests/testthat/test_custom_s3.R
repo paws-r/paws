@@ -36,6 +36,42 @@ test_that("update_endpoint_for_s3_config", {
   expect_equal(result$http_request$url$host, "s3.amazonaws.com")
 })
 
+test_that("content_md5 works with an empty body", {
+  metadata <- list(
+    endpoints = list("*" = list(endpoint = "s3.amazonaws.com", global = FALSE)),
+    service_name = "s3"
+  )
+  op <- new_operation(
+    name = "PutObject",
+    http_method = "PUT",
+    http_path = "/{Bucket}/{Key+}",
+    paginator = list()
+  )
+  op_input <- function(Body, Bucket, Key) {
+    args <- list(Body = Body, Bucket = Bucket, Key = Key)
+    interface <- Structure(
+      Body = structure(logical(0), tags = list(streaming = TRUE, type = "blob")),
+      Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")),
+      Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string"))
+    )
+    return(populate(args, interface))
+  }
+  input <- op_input(
+    Body = raw(0),
+    Bucket = "foo",
+    Key = "bar"
+  )
+  output <- list()
+  svc <- new_service(metadata, new_handlers("restxml", "s3"))
+  svc$handlers$build <- handlers_add_front(svc$handlers$build, content_md5)
+  request <- new_request(svc, op, input, output)
+  expect_error(result <- build(request), NA)
+
+  actual <- result$http_request$header["Content-Md5"]
+  expected <- base64enc::base64encode(digest::digest(raw(0), serialize = FALSE, raw = TRUE))
+  expect_equivalent(actual, expected)
+})
+
 test_that("s3_unmarshal_get_bucket_location", {
 
   op <- Operation(name = "GetBucketLocation")
