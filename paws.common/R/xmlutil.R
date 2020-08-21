@@ -144,7 +144,7 @@ xml_build_scalar <- function(params) {
     boolean = convert_boolean,
     double = as.numeric,
     float = as.numeric,
-    integer = as.integer,
+    integer = as.numeric,
     long = as.numeric,
     timestamp = function(x) as_timestamp(x, format = "iso8601"),
     as.character
@@ -286,7 +286,7 @@ xml_parse_scalar <- function(node, interface) {
     boolean = as.logical,
     double = as.numeric,
     float = as.numeric,
-    integer = as.integer,
+    integer = as.numeric,
     long = as.numeric,
     timestamp = function(x) as_timestamp(x, format = "iso8601"),
     as.character
