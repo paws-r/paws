@@ -243,7 +243,7 @@ json_parse_scalar <- function(node, interface) {
     boolean = as.logical,
     double = as.numeric,
     float = as.numeric,
-    integer = as.integer,
+    integer = as.numeric,
     long = as.numeric,
     string = as.character,
     timestamp = unix_time,
