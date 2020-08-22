@@ -1,3 +1,10 @@
+# paws.common 0.3.4
+
+* Support S3 object keys with spaces.
+* Support writing empty S3 objects.
+* Support numbers larger than 2^31 - 1 in API responses, e.g. S3 object size,
+  by using `numeric` rather than `integer`.
+
 # paws.common 0.3.3
 
 * Decode base64-encoded blobs to raw vectors. Previously, Paws decoded them to
