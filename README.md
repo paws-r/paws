@@ -123,13 +123,19 @@ There are also examples for [EC2](examples/ec2.R), [S3](examples/s3.R),
 [Athena](https://aws.amazon.com/athena/) serverless interactive query
 service, which allows you to query files stored in S3 using SQL or
 [`dplyr`](https://dplyr.tidyverse.org/).
+* [`R6sagemaker`](https://github.com/DyfanJones/sagemaker-r-sdk) is an
+interface to the [SageMaker](https://aws.amazon.com/sagemaker/) machine
+learning service, designed to work like the Python SageMaker SDK.
 * [`redshiftTools`](https://github.com/RedOakStrategic/redshiftTools) is
 a collection of tools for working with the
 [Redshift](https://aws.amazon.com/redshift/) data warehouse service,
 such as performing bulk uploads.
-* [`R6sagemaker`](https://github.com/DyfanJones/sagemaker-r-sdk) is an
-interface to the [SageMaker](https://aws.amazon.com/sagemaker/) machine
-learning service, designed to work like the Python SageMaker SDK.
+
+## Examples, tutorials, and workshops
+
+* [AWS AI Services for R Users](https://github.com/alex23lemm/AWS-AI-Services-R-Workshop)
+shows how to use AWS to add deep learning capabilities like image recognition,
+text translation, and text-to-speech conversion to R and Shiny applications.
 
 ## Credits
 
