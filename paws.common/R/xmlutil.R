@@ -15,7 +15,8 @@ xml_to_list <- function(value) {
 list_to_xml <- function(value) {
   value_xml <- xml2::as_xml_document(x = value)
   value_character <- as.character(value_xml, options = "no_declaration")
-  value_character <- gsub("\\n", "", value_character)
+  value_character <- gsub("\\n$", "", value_character) # Delete trailing newline.
+  value_character <- gsub("\\n", "&#xA;", value_character) # Keep other newlines.
   return(value_character)
 }
 
