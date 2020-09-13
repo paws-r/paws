@@ -484,6 +484,25 @@ test_that("skip empty argument", {
   expect_equal(r, '<OperationRequest xmlns="https://foo/"><Description xmlns="https://foo/">bar</Description></OperationRequest>')
 })
 
+test_that("newline in XML", {
+  op_test <- Operation(name = "OperationName")
+  op_input_test <- function(Description) {
+    args <- list(Description = Description)
+    interface <- Structure(
+      Description = Scalar(type = "string"),
+      .tags = list(locationName = "OperationRequest", xmlURI = "https://foo/")
+    )
+    return(populate(args, interface))
+  }
+  input <- op_input_test(
+    Description = "foo\nbar"
+  )
+
+  req <- new_request(svc, op_test, input, NULL)
+  req <- build(req)
+  r <- req$body
+  expect_equal(r, '<OperationRequest xmlns="https://foo/"><Description xmlns="https://foo/">foo&#xA;bar</Description></OperationRequest>')
+})
 
 #-------------------------------------------------------------------------------
 
