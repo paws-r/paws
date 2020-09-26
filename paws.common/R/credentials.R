@@ -17,6 +17,7 @@ Credentials <- struct(
     r_env_provider,
     os_env_provider,
     credentials_file_provider,
+    config_file_provider,
     container_credentials_provider,
     iam_credentials_provider,
     no_credentials

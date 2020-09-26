@@ -75,6 +75,53 @@ credentials_file_provider <- function(profile = "") {
   return(creds)
 }
 
+# Get credentials that are specified by an item in the AWS config file.
+config_file_provider <- function(profile = "") {
+
+  config_path <- file.path(get_aws_path(), "config")
+
+  if (!file.exists(config_path)) return(NULL)
+  config <- ini::read.ini(config_path)
+
+  profile_name <- get_profile_name(profile)
+  if (profile_name != "default") profile_name <- paste("profile", profile_name)
+  if (is.null(config[[profile_name]])) return(NULL)
+  profile <- config[[profile_name]]
+
+  if ("credential_process" %in% names(profile)) {
+    creds <- config_file_credential_process(profile$credential_process)
+    if (!is.null(creds)) return(creds)
+  }
+
+  return(NULL)
+}
+
+# Get credentials by running a process specified in `command`.
+config_file_credential_process <- function(command) {
+  output <- system(command, intern = TRUE)
+  data <- jsonlite::fromJSON(output)
+
+  if (data$Version != 1) return(NULL)
+
+  access_key_id <- data$AccessKeyId
+  secret_access_key <- data$SecretAccessKey
+  if (is.null(access_key_id) || access_key_id == "" ||
+      is.null(secret_access_key) || secret_access_key == "") {
+    return(NULL)
+  }
+
+  session_token <- data$SessionToken
+  if (is.null(session_token)) session_token <- ""
+
+  creds <- list(
+    access_key_id = access_key_id,
+    secret_access_key = secret_access_key,
+    session_token = session_token,
+    provider_name = ""
+  )
+  return(creds)
+}
+
 # Retrieve container job role credentials
 container_credentials_provider <- function() {
 
@@ -114,7 +161,6 @@ container_credentials_provider <- function() {
   }
   return(creds)
 }
-
 
 # Retrieve credentials for EC2 IAM Role
 iam_credentials_provider <- function() {
