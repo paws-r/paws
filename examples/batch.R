@@ -43,7 +43,7 @@ trust_policy <- list(
 
 iam <- paws::iam()
 
-iam <- iam$create_role(
+role <- iam$create_role(
   RoleName = role_name,
   AssumeRolePolicyDocument = jsonlite::toJSON(trust_policy, auto_unbox = TRUE)
 )
@@ -72,7 +72,7 @@ batch$create_compute_environment(
     securityGroupIds = security_group$GroupId,
     subnets = sapply(subnets, function(x) x$SubnetId)
   ),
-  serviceRole = iam$Role$Arn,
+  serviceRole = role$Role$Arn,
   state = "ENABLED"
 )
 
@@ -105,11 +105,12 @@ job_def <- batch$register_job_definition(
 )
 
 # Submit a job.
-batch$submit_job(
+job <- batch$submit_job(
   jobDefinition = "sleep10",
   jobName = "Example",
   jobQueue = "TestJobQueue"
 )
+print(job)
 
 # List the submitted job(s).
 batch$list_jobs(
