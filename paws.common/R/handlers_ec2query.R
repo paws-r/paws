@@ -36,11 +36,9 @@ ec2query_unmarshal_meta <- function(request) {
 # Unmarshal errors from an EC2 protocol response.
 ec2query_unmarshal_error <- function(request) {
   body <- decode_xml(request$http_response$body)
-  data <- body[[1]]
-  error_response <- lapply(data$Error, unlist)
+  error_response <- lapply(body$Response$Errors[[1]], unlist)
   code <- error_response$Code
   message <- error_response$Message
-
   request$error <- Error(code, message, request$http_response$status_code, error_response)
   return(request)
 }

@@ -417,7 +417,7 @@ test_that("unmarshal error", {
   req <- new_request(svc, op, NULL, op_output10)
   req$http_response <- HttpResponse(
     status_code = 404,
-    body = charToRaw("<Response><Error><Code>Foo</Code><Message>Bar</Message><RequestID>Baz</RequestID></Error></Response>")
+    body = charToRaw("<Response><Errors><Error><Code>Foo</Code><Message>Bar</Message><RequestID>Baz</RequestID></Error></Errors></Response>")
   )
 
   req <- unmarshal_error(req)
