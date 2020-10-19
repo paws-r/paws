@@ -1,3 +1,5 @@
+context("Parsing and building URLs")
+
 test_that("parsing and building URLs", {
   input <- "https://example.com/a%20path%20with%20spaces"
   actual <- build_url(parse_url(input))
