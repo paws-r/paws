@@ -1,4 +1,5 @@
 #' @include net.R
+#' @include credential_sts.R
 NULL
 
 # Retrieve credentials stored in R environment variables.
@@ -93,6 +94,25 @@ config_file_provider <- function(profile = "") {
     if (!is.null(creds)) return(creds)
   }
 
+  if ("role_arn" %in% names(profile)) {
+    role_arn <- profile$role_arn
+    role_session_name <- profile$role_session_name
+    if (is.null(role_session_name)) {
+      sys <- Sys.info()
+      role_session_name <- digest::digest(paste0(sys["user"], sys["nodename"]))
+    }
+    if ("credential_source" %in% names(profile)) {
+      credential_source <- profile$credential_source
+      creds <- config_file_credential_source(role_arn, role_session_name, credential_source)
+      if (!is.null(creds)) return(creds)
+    }
+    if ("source_profile" %in% names(profile)) {
+      source_profile <- profile$source_profile
+      creds <- config_file_source_profile(role_arn, role_session_name, source_profile)
+      if (!is.null(creds)) return(creds)
+    }
+  }
+
   return(NULL)
 }
 
@@ -120,6 +140,50 @@ config_file_credential_process <- function(command) {
     provider_name = ""
   )
   return(creds)
+}
+
+# Get the `role_arn`'s temporary credentials given a `credential_source`,
+# either "Environment", "Ec2InstanceMetadata", or "EcsContainer".
+# See https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-credential_source.html.
+config_file_credential_source <- function(role_arn, role_session_name, credential_source) {
+  if (credential_source == "Environment") {
+    creds <- r_env_provider()
+    if (is.null(creds)) creds <- os_env_provider()
+  } else if (credential_source == "Ec2InstanceMetadata") {
+    creds <- iam_credentials_provider()
+  } else if (credential_source == "EcsContainer") {
+    creds <- container_credentials_provider()
+  }
+  if (is.null(creds)) return(NULL)
+  svc <- sts(config = list(credentials = list(creds = creds), region = "us-east-1"))
+  resp <- svc$assume_role(role_arn, role_session_name)
+  if (is.null(resp)) return(NULL)
+  role_creds <- list(
+    access_key_id = resp$Credentials$AccessKeyId,
+    secret_access_key = resp$Credentials$SecretAccessKey,
+    session_token = resp$Credentials$SessionToken,
+    provider_name = ""
+  )
+  return(role_creds)
+}
+
+# Get STS temporary credentials for the role with ARN `role_arn` using
+# credentials found in profile named `source_profile`.
+# See https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-source_profile.html.
+config_file_source_profile <- function(role_arn, role_session_name, source_profile) {
+  creds <- credentials_file_provider(source_profile)
+  if (is.null(creds)) creds <- config_file_provider(source_profile)
+  if (is.null(creds)) return(NULL)
+  svc <- sts(config = list(credentials = list(creds = creds), region = "us-east-1"))
+  resp <- svc$assume_role(role_arn, role_session_name)
+  if (is.null(resp)) return(NULL)
+  role_creds <- list(
+    access_key_id = resp$Credentials$AccessKeyId,
+    secret_access_key = resp$Credentials$SecretAccessKey,
+    session_token = resp$Credentials$SessionToken,
+    provider_name = ""
+  )
+  return(role_creds)
 }
 
 # Retrieve container job role credentials

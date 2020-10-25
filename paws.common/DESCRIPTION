@@ -33,6 +33,7 @@ RoxygenNote: 7.1.1
 Collate: 
     'struct.R'
     'handlers.R'
+    'credential_sts.R'
     'url.R'
     'net.R'
     'credential_providers.R'
