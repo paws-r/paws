@@ -1,3 +1,12 @@
+# paws.common 0.3.5
+
+* Support getting AWS credentials from IAM roles using shared configuration
+  file items `role_arn`, `credential_source`, and `source_profile`.
+* Support getting AWS credentials from running a process using shared
+  configuration file item `credential_process`.
+* Fix decoding of errors from the EC2 API.
+* Fix support for newlines in arguments in S3 and other REST XML protocol APIs.
+
 # paws.common 0.3.4
 
 * Support S3 object keys with spaces.
