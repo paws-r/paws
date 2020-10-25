@@ -12,7 +12,8 @@ for them in this order.
 2.  R environment variables.
 3.  System environment variables (Mac and Linux Only).
 4.  AWS credentials file.
-5.  IAM role.
+5.  AWS shared configuration file.
+6.  IAM role.
 
 If you are running the package on an instance with an appropriate IAM
 role, Paws will use it automatically and you don’t need to do anything
@@ -98,7 +99,30 @@ below the default:
     [other_profile]
     aws_access_key_id=awsOtherAccessKeyID
     aws_secret_access_key=awsOtherSecretAccessKey
+    
+### Setting Credentials with AWS Shared Configuration File
 
+You can set the credentials using the following settings in the AWS
+shared configuration file in `~/.aws/config`.
+
+1. `credential_process` - Retrieve credentials by running a command which 
+outputs JSON containing the credentials. See the [AWS documentation](https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-credential_process.html)
+for more info.
+2. `role_arn` with `credential_source` - Retrieve temporary credentials for
+IAM role `role_arn` using `"Environment"`, `"Ec2InstanceMetadata"`, or
+`"EcsContainer"`. See the [AWS documentation](https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-credential_source.html)
+for more info.
+3. `role_arn` with `source_profile` - Retrieve temporary credentials for
+IAM role `role_arn` using credentials found in another profile. See the [AWS documentation](https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-source_profile.html)
+for more info.
+
+You may set these items in a profile within the shared configuration
+file. The profile, e.g. `my_profile`, should appear as follows.
+
+    [profile my_profile]
+    key1=value1
+    key2=value2
+    
 ## Region
 
 In order to use a Paws package, you must also set your AWS region.
