@@ -36,26 +36,25 @@ aws_error <- function(e, call = sys.call(-1), use_call = FALSE) {
   full_message <- sprintf("%s (HTTP %d). %s", e$code, e$status_code, e$message)
 
   status_type <- (e$status_code %/% 100) * 100
-  if(is.na(e$status_code)){
+  if (is.na(e$status_code)) {
     # If the http_error is still NA (default), don't set specific classes.
     http_class <- c("http_error")
   } else {
     http_class <- paste0("http_", unique(c(e$status_code, status_type, "error")))
   }
-  if(use_call){
-    structure(
-      list(message = full_message, call = call),
-      class = c(http_class, "error", "condition"),
-      status_code = e$status_code,
-      error_response = e$error_response
-    )
-  } else {
-    structure(
-      list(message = full_message),
-      class = c(http_class, "error", "condition"),
-      status_code = e$status_code,
-      error_response = e$error_response
-    )
+  if (!use_call) {
+    call = NULL
   }
 
+  structure(
+    list(
+      message = full_message,
+      call = call,
+      status_code = e$status_code,
+      error_response = e$error_response
+    ),
+    class = c("paws_error", http_class, "error", "condition"),
+    status_code = e$status_code,
+    error_response = e$error_response
+  )
 }
