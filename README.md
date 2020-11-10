@@ -145,3 +145,5 @@ design based on [AWS SDK for Go](https://github.com/aws/aws-sdk-go).
 [Logo](docs/logo.png) by [Hsinyi Chen](https://linktr.ee/starfolio).
 
 [Home page design](https://paws-r.github.io) and [cheat sheet](docs/cheat_sheet.pdf) by Mara Ursu.
+
+Supported by the AWS Open Source promotional credits program.
