@@ -1,3 +1,12 @@
+# paws.common 0.3.6
+
+* Add the error response and HTTP status code to the condition object, in 
+  addition to having it be in the condition object's attributes. This is in 
+  response to a request in issue #329.
+* Make errors be of class `paws_error` in addition to their other classes, e.g. 
+  `http_400`, `error`, `condition`.
+* Correctly unmarshal EC2 API error responses.
+
 # paws.common 0.3.5
 
 * Support getting AWS credentials from IAM roles using shared configuration
