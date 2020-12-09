@@ -33,18 +33,35 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 
+      - name: List dependencies
+        run: |
+          install.packages('remotes')
+          saveRDS(
+            c(
+              remotes::local_package_deps("paws.common", dependencies = TRUE),
+              remotes::local_package_deps("cran/paws", dependencies = TRUE)
+            ),
+            ".github/depends.Rds", version = 2
+          )
+        shell: Rscript {0}
+
+      - name: Cache R packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-${{ matrix.config.R }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.config.R }}-1-
+
       - name: Install paws packages
         run: |
           install.packages('remotes')
-          remotes::install_local('paws.common', dependencies = T)
-          remotes::install_local('make.paws', dependencies = T)
-          remotes::install_local('cran/paws', dependencies = T)
+          remotes::install_local('paws.common', dependencies = TRUE)
+          remotes::install_local('cran/paws', dependencies = TRUE)
         shell: Rscript {0}
 
       - name: Run checks
         run: |
           R CMD build paws.common && R CMD check --as-cran --run-donttest --no-manual paws.common_*.tar.gz
-          R CMD build make.paws && R CMD check --as-cran --run-donttest --no-manual make.paws_*.tar.gz
           R CMD build cran/paws && R CMD check --as-cran --run-donttest --no-manual paws_*.tar.gz
 
       - name: Install covr
@@ -54,4 +71,4 @@ jobs:
 
       - name: Get code coverage
         run: |
-          Rscript script/codecov.R paws.common make.paws
+          Rscript script/codecov.R paws.common
