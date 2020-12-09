@@ -35,17 +35,17 @@ jobs:
 
       - name: Install paws packages
         run: |
-          install.packages('devtools')
-          devtools::install_deps('paws.common', dep = T)
-          devtools::install_deps('make.paws', dep = T)
-          devtools::install_deps('cran/paws', dep = T)
+          install.packages('remotes')
+          remotes::install_local('paws.common', dependencies = T)
+          remotes::install_local('make.paws', dependencies = T)
+          remotes::install_local('cran/paws', dependencies = T)
         shell: Rscript {0}
 
       - name: Run checks
         run: |
-          R CMD build paws.common && R CMD check --as-cran --run-donttest paws.common_*.tar.gz
-          R CMD build make.paws && R CMD check --as-cran --run-donttest make.paws_*.tar.gz
-          R CMD build cran/paws && R CMD check --as-cran --run-donttest paws_*.tar.gz
+          R CMD build paws.common && R CMD check --as-cran --run-donttest --no-manual paws.common_*.tar.gz
+          R CMD build make.paws && R CMD check --as-cran --run-donttest --no-manual make.paws_*.tar.gz
+          R CMD build cran/paws && R CMD check --as-cran --run-donttest --no-manual paws_*.tar.gz
 
       - name: Install covr
         run: |
