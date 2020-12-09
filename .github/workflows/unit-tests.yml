@@ -28,6 +28,11 @@ jobs:
         with:
           r-version: ${{ matrix.config.R }}
 
+      - name: Install system dependencies
+        run: |
+          apt-get update
+          apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+
       - name: Install paws packages
         run: |
           install.packages('devtools')
@@ -41,6 +46,11 @@ jobs:
           R CMD build paws.common && R CMD check --as-cran --run-donttest paws.common_*.tar.gz
           R CMD build make.paws && R CMD check --as-cran --run-donttest make.paws_*.tar.gz
           R CMD build cran/paws && R CMD check --as-cran --run-donttest paws_*.tar.gz
+
+      - name: Install covr
+        run: |
+          install.packages('covr')
+        shell: Rscript {0}
 
       - name: Get code coverage
         run: |
