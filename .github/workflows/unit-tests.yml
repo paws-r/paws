@@ -30,7 +30,7 @@ jobs:
 
       - name: Install paws packages
         run: |
-          install.packages('devtools')"
+          install.packages('devtools')
           devtools::install_deps('paws.common', dep = T)
           devtools::install_deps('make.paws', dep = T)
           devtools::install_deps('cran/paws', dep = T)
