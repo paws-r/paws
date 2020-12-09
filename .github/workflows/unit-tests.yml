@@ -1,0 +1,47 @@
+name: Unit Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Unit-Tests:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { os: 'ubuntu-18.04', R: '4.0' }
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@master
+        with:
+          r-version: ${{ matrix.config.R }}
+
+      - name: Install paws packages
+        run: |
+          install.packages('devtools')"
+          devtools::install_deps('paws.common', dep = T)
+          devtools::install_deps('make.paws', dep = T)
+          devtools::install_deps('cran/paws', dep = T)
+        shell: Rscript {0}
+
+      - name: Run checks
+        run: |
+          R CMD build paws.common && R CMD check --as-cran --run-donttest paws.common_*.tar.gz
+          R CMD build make.paws && R CMD check --as-cran --run-donttest make.paws_*.tar.gz
+          R CMD build cran/paws && R CMD check --as-cran --run-donttest paws_*.tar.gz
+
+      - name: Get code coverage
+        run: |
+          Rscript script/codecov.R paws.common make.paws
