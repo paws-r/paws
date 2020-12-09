@@ -28,6 +28,8 @@ jobs:
         with:
           r-version: ${{ matrix.config.R }}
 
+      - uses: r-lib/actions/setup-pandoc@v1
+
       - name: Install system dependencies
         run: |
           sudo apt-get update
@@ -37,7 +39,13 @@ jobs:
         run: |
           install.packages('remotes')
           saveRDS(
-            remotes::local_package_deps("paws.common", dependencies = TRUE),
+            c(
+              remotes::local_package_deps("paws.common", dependencies = TRUE),
+              Filter(
+                function(x) !grepl("paws.", x),
+                remotes::local_package_deps("make.paws", dependencies = TRUE)
+              )
+            ),
             ".github/depends.Rds", version = 2
           )
         shell: Rscript {0}
@@ -53,12 +61,14 @@ jobs:
         run: |
           install.packages('remotes')
           remotes::install_local('paws.common', dependencies = TRUE)
+          remotes::install_local('make.paws', dependencies = TRUE)
           remotes::install_local('cran/paws', dependencies = TRUE)
         shell: Rscript {0}
 
       - name: Run checks
         run: |
           R CMD build paws.common && R CMD check --as-cran --run-donttest --no-manual paws.common_*.tar.gz
+          R CMD build make.paws && R CMD check --as-cran --run-donttest --no-manual make.paws_*.tar.gz
           R CMD build cran/paws && R CMD check --as-cran --run-donttest --no-manual paws_*.tar.gz
 
       - name: Install covr
@@ -68,4 +78,4 @@ jobs:
 
       - name: Get code coverage
         run: |
-          Rscript script/codecov.R paws.common
+          Rscript script/codecov.R paws.common make.paws
