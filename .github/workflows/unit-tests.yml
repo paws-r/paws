@@ -41,10 +41,7 @@ jobs:
           saveRDS(
             c(
               remotes::local_package_deps("paws.common", dependencies = TRUE),
-              Filter(
-                function(x) !grepl("paws.", x),
-                remotes::local_package_deps("make.paws", dependencies = TRUE)
-              )
+              remotes::local_package_deps("make.paws", dependencies = TRUE)
             ),
             ".github/depends.Rds", version = 2
           )
@@ -57,12 +54,18 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.config.R }}-2-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ matrix.config.R }}-2-
 
-      - name: Install paws packages
+      - name: Install dependencies
         run: |
           install.packages('remotes')
-          remotes::install_local('paws.common', dependencies = TRUE)
-          remotes::install_local('make.paws', dependencies = TRUE)
-          remotes::install_local('cran/paws', dependencies = TRUE)
+          remotes::install_deps('paws.common')
+          remotes::install_deps('make.paws')
+        shell: Rscript {0}
+
+      - name: Install make.paws and cran paws packages
+        run: |
+          remotes::install_local('paws.common', force = TRUE)
+          remotes::install_local('make.paws', force = TRUE)
+          remotes::install_local('cran/paws', force = TRUE)
         shell: Rscript {0}
 
       - name: Run checks
