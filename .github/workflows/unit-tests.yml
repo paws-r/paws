@@ -18,7 +18,9 @@ jobs:
       fail-fast: false
       matrix:
         config:
+          - { os: 'macOS-latest', R: '3.6' }
           - { os: 'macOS-latest', R: '4.0' }
+          - { os: 'ubuntu-18.04', R: '3.6' }
           - { os: 'ubuntu-18.04', R: '4.0' }
 
     steps:
