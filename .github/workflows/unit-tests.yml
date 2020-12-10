@@ -42,9 +42,9 @@ jobs:
           install.packages('remotes')
           saveRDS(
             c(
-              remotes::local_package_deps('paws.common', dependencies = TRUE),
-              remotes::local_package_deps('make.paws', dependencies = TRUE),
-              'remotes', 'covr'
+              remotes::dev_package_deps('paws.common', dependencies = TRUE),
+              remotes::dev_package_deps('make.paws', dependencies = TRUE),
+              'remotes', 'covr', 'rcmdcheck'
             ),
             '.github/depends.Rds', version = 2
           )
@@ -60,6 +60,7 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages('remotes')
+          remotes::install_cran('rcmdcheck')
           remotes::install_deps('paws.common')
           remotes::install_deps('make.paws')
         shell: Rscript {0}
