@@ -18,6 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
+          - { os: 'macOS-latest', R: '4.0' }
           - { os: 'ubuntu-18.04', R: '4.0' }
 
     steps:
@@ -31,6 +32,7 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v1
 
       - name: Install system dependencies
+        if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
@@ -40,10 +42,11 @@ jobs:
           install.packages('remotes')
           saveRDS(
             c(
-              remotes::local_package_deps("paws.common", dependencies = TRUE),
-              remotes::local_package_deps("make.paws", dependencies = TRUE)
+              remotes::local_package_deps('paws.common', dependencies = TRUE),
+              remotes::local_package_deps('make.paws', dependencies = TRUE),
+              'remotes', 'covr'
             ),
-            ".github/depends.Rds", version = 2
+            '.github/depends.Rds', version = 2
           )
         shell: Rscript {0}
 
@@ -61,7 +64,7 @@ jobs:
           remotes::install_deps('make.paws')
         shell: Rscript {0}
 
-      - name: Install make.paws and cran paws packages
+      - name: Install paws packages
         run: |
           remotes::install_local('paws.common', force = TRUE)
           remotes::install_local('make.paws', force = TRUE)
