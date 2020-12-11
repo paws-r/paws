@@ -19,8 +19,8 @@ Url <- struct(
 parse_url <- function(url) {
   p <- httr::parse_url(url)
   if (is.null(p$scheme)) p$scheme <- ""
-  if (is.null(p$host)) p$host <- ""
-  if (!is.null(p$port)) p$host <- paste0(p$host, ":", p$port)
+  if (is.null(p$hostname)) p$hostname <- ""
+  if (!is.null(p$port)) p$hostname <- paste0(p$hostname, ":", p$port)
   raw_path <- p$path
   if (raw_path == "") raw_path <- "/"
   else if (substr(raw_path, 1, 1) != "/") raw_path <- paste0("/", raw_path)
@@ -29,7 +29,7 @@ parse_url <- function(url) {
   if (escaped_path == raw_path) raw_path <- ""
   u <- Url(
     scheme = p$scheme,
-    host = p$host,
+    host = p$hostname,
     path = path,
     raw_path = raw_path,
     raw_query = build_query_string(p$query),
