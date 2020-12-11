@@ -2,7 +2,7 @@
 # Paws, an AWS SDK for R [<img src="docs/logo.png" align="right" height="150" />](https://paws-r.github.io)
 
 [![CRAN status](https://www.r-pkg.org/badges/version/paws)](https://cran.r-project.org/package=paws)
-[![Build Status](https://travis-ci.com/paws-r/paws.svg?branch=main)](https://travis-ci.com/paws-r/paws)
+[![Build Status](https://github.com/paws-r/paws/workflows/Unit%20Tests/badge.svg)](https://github.com/paws-r/paws/actions?workflow=Unit%20Tests)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/2ma1spb2f55129qc/branch/main?svg=true)](https://ci.appveyor.com/project/paws-r/paws/branch/main)
 [![codecov](https://codecov.io/gh/paws-r/paws/branch/main/graph/badge.svg)](https://codecov.io/gh/paws-r/paws)
 [![view examples](https://img.shields.io/badge/learn%20by-examples-0077b3.svg)](https://github.com/paws-r/paws/tree/main/examples)

@@ -1,0 +1,89 @@
+name: Unit Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Unit-Tests:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { os: 'macOS-latest', R: '3.6' }
+          - { os: 'macOS-latest', R: '4.0' }
+          - { os: 'ubuntu-18.04', R: '3.6' }
+          - { os: 'ubuntu-18.04', R: '4.0' }
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@master
+        with:
+          r-version: ${{ matrix.config.R }}
+
+      - uses: r-lib/actions/setup-pandoc@v1
+
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
+
+      - name: List dependencies
+        run: |
+          install.packages('remotes')
+          saveRDS(
+            c(
+              remotes::dev_package_deps('paws.common', dependencies = TRUE),
+              remotes::dev_package_deps('make.paws', dependencies = TRUE),
+              'remotes', 'covr'
+            ),
+            '.github/depends.Rds', version = 2
+          )
+        shell: Rscript {0}
+
+      - name: Cache R packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-${{ matrix.config.R }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.config.R }}-1-
+
+      - name: Install dependencies
+        run: |
+          install.packages('remotes')
+          remotes::install_deps('paws.common', dependencies = TRUE)
+          remotes::install_deps('make.paws', dependencies = TRUE)
+        shell: Rscript {0}
+
+      - name: Install paws packages
+        run: |
+          remotes::install_local('paws.common', force = TRUE)
+          remotes::install_local('make.paws', force = TRUE)
+          remotes::install_local('cran/paws', force = TRUE)
+        shell: Rscript {0}
+
+      - name: Run checks
+        run: |
+          R CMD build paws.common && R CMD check --as-cran --run-donttest --no-manual paws.common_*.tar.gz
+          R CMD build make.paws && R CMD check --as-cran --run-donttest --no-manual make.paws_*.tar.gz
+          R CMD build cran/paws && R CMD check --as-cran --run-donttest --no-manual paws_*.tar.gz
+
+      - name: Install covr
+        run: |
+          install.packages('covr')
+        shell: Rscript {0}
+
+      - name: Get code coverage
+        run: |
+          Rscript script/codecov.R paws.common make.paws
