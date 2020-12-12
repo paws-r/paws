@@ -89,14 +89,17 @@ url_ok <- function(url, tries = 3) {
   if (url == "") {
     return(FALSE)
   }
-  try <- 0
-  while (try < tries) {
-    resp <- tryCatch(
-      httr::status_code(httr::HEAD(url, httr::timeout(1))),
-      error = function(e) NA
-    )
-    if (!is.na(resp) && resp != 404) return(TRUE)
-    try <- try + 1
-  }
-  return(FALSE)
+
+  cached_expr(list("url_ok", url = url), function() {
+    try <- 0
+    while (try < tries) {
+      resp <- tryCatch(
+        httr::status_code(httr::HEAD(url, httr::timeout(1))),
+        error = function(e) NA
+      )
+      if (!is.na(resp) && resp != 404) return(TRUE)
+      try <- try + 1
+    }
+    return(FALSE)
+  })
 }

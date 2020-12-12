@@ -2,17 +2,23 @@
 #'
 #' @param in_dir Directory containing API files.
 #' @param out_dir Directory of the R package.
+#' @param cache_dir Directory to store cached artifacts. Providing a non-`NULL`
+#'   value will greatly speed up subsequent runs that use the same value.
 #'
 #' @export
-make_sdk <- function(in_dir, out_dir) {
-  clear_dir(out_dir)
-  write_skeleton(out_dir)
-  for (api in list_apis(file.path(in_dir, "apis"))) {
-    cat(paste0(api, "\n"))
-    write_sdk_for_api(api, in_dir, out_dir)
-  }
-  write_documentation(out_dir)
-  return(invisible(TRUE))
+make_sdk <- function(in_dir = "./vendor/aws-sdk-js", out_dir = "./paws",
+  cache_dir = "./cache") {
+
+  with_cache_dir(cache_dir, {
+    clear_dir(out_dir)
+    write_skeleton(out_dir)
+    for (api in list_apis(file.path(in_dir, "apis"))) {
+      cat(paste0(api, "\n"))
+      write_sdk_for_api(api, in_dir, out_dir)
+    }
+    write_documentation(out_dir)
+    return(invisible(TRUE))
+  })
 }
 
 # Clear out files from the output directory.
