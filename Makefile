@@ -76,8 +76,8 @@ deps:
 	@Rscript -e "if (!require(devtools)) install.packages('devtools', repos = 'https://cran.rstudio.com')"
 	@Rscript -e "devtools::install_dev_deps('make.paws')"
 	@Rscript -e "devtools::install_dev_deps('paws.common')"
-	@if [ ! -x "$(command -v pandoc)" ]; then echo "Please install Pandoc. See https://pandoc.org."; fi
-	@if [ ! -d ${IN_DIR} ]; then git submodule init && git submodule update; fi
+	@command -v pandoc >/dev/null 2>&1 || echo "Please install Pandoc. See https://pandoc.org." >&2
+	@if [ ! -d ${IN_DIR}/apis ]; then git submodule init && git submodule update; fi
 
 update-deps:
 	@echo "update project dependencies"
