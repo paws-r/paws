@@ -102,6 +102,7 @@ as_cache_key <- function(obj) {
 #' @param value_expr The `value_expr` passed through from `cached_expr`.
 #' @return Nothing is returned if the test was skipped or passed; an error is
 #'   raised if the test failed.
+#' @noRd
 maybe_spot_check <- function(cache_result, value_expr) {
   if (getOption("cache.spotcheck.level", 0.01) > stats::runif(1)) {
     value <- force_for_cache(value_expr)
