@@ -103,7 +103,7 @@ as_cache_key <- function(obj) {
 #' @return Nothing is returned if the test was skipped or passed; an error is
 #'   raised if the test failed.
 maybe_spot_check <- function(cache_result, value_expr) {
-  if (getOption("cache.spotcheck.level", 0.01) > runif(1)) {
+  if (getOption("cache.spotcheck.level", 0.01) > stats::runif(1)) {
     value <- force_for_cache(value_expr)
 
     if (!identical(cache_result, value)) {
@@ -113,7 +113,7 @@ maybe_spot_check <- function(cache_result, value_expr) {
       )
       cat(file = stderr(),
         paste0(collapse = "\n",
-          capture.output(print(waldo::compare(
+          utils::capture.output(print(waldo::compare(
             cache_result, value,
             x_arg = "cached", y_arg = "live"
           )))
