@@ -70,7 +70,7 @@ copy_custom_operations <- function(api, path) {
   package <- package_name(api)
   from <- system_file(sprintf("src/custom/%s.R", package), package = methods::getPackageName())
   to <- file.path(path, paste0(package, "_custom.R"))
-  if (file.exists(from)) {
+  if (from != "" && file.exists(from)) {
     file.copy(from, to)
   }
 }
