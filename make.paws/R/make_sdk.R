@@ -58,7 +58,8 @@ use_description <- function(path) {
     `Authors@R` = make_authors(),
     Description = "An Amazon Web Services SDK for R.",
     License = "Apache License (>= 2.0)",
-    Encoding = "UTF-8"
+    Encoding = "UTF-8",
+    ByteCompile = "false"
   )
   for (key in names(contents)) {
     value <- contents[[key]]
