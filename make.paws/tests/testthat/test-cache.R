@@ -1,5 +1,8 @@
 context("cache")
 
+op <- options(cache.disable = NULL)
+on.exit(options(op), add = TRUE)
+
 slow_operation <- function(x) {
   cached_expr(x, {
     Sys.sleep(0.5)

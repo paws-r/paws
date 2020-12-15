@@ -37,7 +37,9 @@ with_cache_dir <- function(cache_dir, expr) {
 # Calling `current_cache()` outside of a `with_cache_dir()` is probably a bug,
 # so we warn.
 current_cache <- function() {
-  if (is.null(.cache$current)) {
+  if (isTRUE(getOption("cache.disable", FALSE))) {
+    cachem::cache_layered()
+  } else if (is.null(.cache$current)) {
     warning(call. = TRUE, "current_cache called when no cache was set")
     cachem::cache_layered()
   } else {
@@ -72,7 +74,7 @@ cached_expr <- function(key_expr, value_expr) {
   cache_key <- as_cache_key(key_expr)
   cache_result <- cache$get(cache_key)
   if (!is.null(cache_result)) {
-    maybe_spot_check(cache_result, value_expr)
+    maybe_spot_check(cache_result, value_expr, key_label = deparse(key_expr))
     return(cache_result)
   }
 
@@ -100,10 +102,12 @@ as_cache_key <- function(obj) {
 #'
 #' @param cache_result The value that was retrieved from the cache.
 #' @param value_expr The `value_expr` passed through from `cached_expr`.
+#' @param key_label A human-readable-ish indicator of what cache key is being
+#'   tested
 #' @return Nothing is returned if the test was skipped or passed; an error is
 #'   raised if the test failed.
 #' @noRd
-maybe_spot_check <- function(cache_result, value_expr) {
+maybe_spot_check <- function(cache_result, value_expr, key_label) {
   if (getOption("cache.spotcheck.level", 0.01) > stats::runif(1)) {
     value <- force_for_cache(value_expr)
 
@@ -112,8 +116,18 @@ maybe_spot_check <- function(cache_result, value_expr) {
         "Random cache spot-check failed! You may want to `make clean`!",
         immediate. = TRUE, call. = FALSE
       )
+      cat(file = stderr(), "Key:\n")
       cat(file = stderr(),
         paste0(collapse = "\n",
+          "  ",
+          key_label
+        )
+      )
+      cat(file = stderr(), "\n")
+      cat(file = stderr(), "Difference:\n")
+      cat(file = stderr(),
+        paste0(collapse = "\n",
+          "  ",
           utils::capture.output(print(waldo::compare(
             cache_result, value,
             x_arg = "cached", y_arg = "live"

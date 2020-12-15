@@ -32,7 +32,8 @@ Imports:
 Suggests: 
     covr,
     formatR,
-    testthat
+    testthat,
+    withr
 Remotes:
     r-lib/cachem
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org

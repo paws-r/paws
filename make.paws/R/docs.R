@@ -217,14 +217,16 @@ comment <- function(s, char = "#") {
 # this avoids any changes that would otherwise be made by Pandoc.
 convert <- function(docs) {
   if (is.null(docs) || docs == "") return("")
-  if (grepl("^<", docs)) {
-    html <- clean_html(docs)
-    result <- html_to_markdown(html)
-  } else {
-    result <- strsplit(docs, "\n")[[1]]
-  }
-  result <- escape_special_chars(result)
-  result
+  cached_expr(list("convert", docs = docs), {
+    if (grepl("^<", docs)) {
+      html <- clean_html(docs)
+      result <- html_to_markdown(html)
+    } else {
+      result <- strsplit(docs, "\n")[[1]]
+    }
+    result <- escape_special_chars(result)
+    result
+  })
 }
 
 # Clean an HTML string to avoid issues that result in invalid Rd
