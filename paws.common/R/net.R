@@ -23,6 +23,7 @@ HttpRequest <- struct(
   request_uri = "",
   tls = NULL,
   cancel = NULL,
+  timeout = 10,
   response = NULL,
   ctx = list()
 )
@@ -46,7 +47,7 @@ HttpResponse <- struct(
 )
 
 # Returns an HTTP request given a method, URL, and an optional body.
-new_http_request <- function(method, url, body = NULL) {
+new_http_request <- function(method, url, body = NULL, timeout = 10) {
   if (method == "") {
     method <- "GET"
   }
@@ -62,7 +63,8 @@ new_http_request <- function(method, url, body = NULL) {
     proto_minor = 1,
     header = list(), # TODO
     body = body,
-    host = u$host
+    host = u$host,
+    timeout = timeout
   )
   return(req)
 }
@@ -88,6 +90,7 @@ issue <- function(http_request) {
   url <- build_url(http_request$url)
   headers <- unlist(http_request$header)
   body <- http_request$body
+  timeout <- if (!is.null(http_request$timeout)) httr::timeout(http_request$timeout)
 
   if (url == "") {
     stop("no url provided")
@@ -97,7 +100,8 @@ issue <- function(http_request) {
     method,
     url = url,
     config = httr::add_headers(.headers = headers),
-    body = body
+    body = body,
+    timeout
   )
 
   response <- HttpResponse(
