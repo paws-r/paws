@@ -106,7 +106,14 @@ has_params <- function(operation, api, params) {
   input_shape <- operation$input$shape
   if (!is.null(input_shape)) {
     inputs <- api$shapes[[input_shape]]
-    operation_params <- names(inputs$member) # matches "member" or "members".
+
+    # matches "members" or "member".
+    operation_params <- if ("members" %in% names(inputs)) {
+      names(inputs$members)
+    } else {
+      names(inputs$member)
+    }
+
     if (all(params %in% operation_params)) {
       return(TRUE)
     }

@@ -181,6 +181,9 @@ service_operations <- function(api) {
 get_custom_operations <- function(api) {
   package <- package_name(api)
   from <- system_file(sprintf("src/custom/%s.R", package), package = methods::getPackageName())
+  if (from == "") {
+    return(list())
+  }
   text <- readLines(from)
   operations <- parse_operations(text)
   return(operations)
