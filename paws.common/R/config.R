@@ -115,9 +115,13 @@ get_profile_name <- function(profile = "") {
 get_container_credentials <- function() {
 
   credentials_uri <- Sys.getenv("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
+  if (nchar(credentials_uri) == 0) {
+    return(NULL)
+  }
+
   metadata_url <- file.path("http://169.254.170.2", credentials_uri)
   metadata_request <-
-    new_http_request("GET", metadata_url)
+    new_http_request("GET", metadata_url, timeout = 1)
 
   metadata_response <- tryCatch({
     issue(metadata_request)
@@ -138,7 +142,7 @@ get_instance_metadata <- function(query_path = "") {
   metadata_url <- file.path("http://169.254.169.254/latest/meta-data",
                            query_path)
   metadata_request <-
-    new_http_request("GET", metadata_url)
+    new_http_request("GET", metadata_url, timeout = 1)
 
   metadata_response <- tryCatch({
     issue(metadata_request)
