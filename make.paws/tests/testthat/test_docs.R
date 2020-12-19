@@ -451,7 +451,7 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 
   text <- "<body>\\'{</body>"
-  expected <- "\\\\\\'\\{"
+  expected <- "\\\\'\\{"
   expect_equal(convert(text), expected)
 
   text <- "<body>%{}\\</body>"
