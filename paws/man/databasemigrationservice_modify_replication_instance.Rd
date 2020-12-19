@@ -42,12 +42,12 @@ Default: Uses existing setting
 
 Format: ddd:hh24:mi-ddd:hh24:mi
 
-Valid Days: Mon \\| Tue \\| Wed \\| Thu \\| Fri \\| Sat \\| Sun
+Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 
 Constraints: Must be at least 30 minutes}
 
 \item{MultiAZ}{Specifies whether the replication instance is a Multi-AZ deployment. You
-can\'t set the \code{AvailabilityZone} parameter if the Multi-AZ parameter is
+can't set the \code{AvailabilityZone} parameter if the Multi-AZ parameter is
 set to \code{true}.}
 
 \item{EngineVersion}{The engine version number of the replication instance.}
@@ -58,11 +58,11 @@ applied as soon as possible.
 
 This parameter must be set to \code{true} when specifying a value for the
 \code{EngineVersion} parameter that is a different major version than the
-replication instance\'s current version.}
+replication instance's current version.}
 
 \item{AutoMinorVersionUpgrade}{A value that indicates that minor version upgrades are applied
 automatically to the replication instance during the maintenance window.
-Changing this parameter doesn\'t result in an outage, except in the case
+Changing this parameter doesn't result in an outage, except in the case
 dsecribed following. The change is asynchronously applied as soon as
 possible.
 

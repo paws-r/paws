@@ -18,13 +18,13 @@ different levels of access. For more information, see \href{http://docs.aws.amaz
 in the \emph{AWS CodeStar User Guide}.}
 
 \item{remoteAccessAllowed}{Whether a team member is allowed to remotely access project resources
-using the SSH public key associated with the user\'s profile. Even if
+using the SSH public key associated with the user's profile. Even if
 this is set to True, the user must associate a public key with their
 profile before the user can access resources.}
 }
 \description{
-Updates a team member\'s attributes in an AWS CodeStar project. For
-example, you can change a team member\'s role in the project, or change
+Updates a team member's attributes in an AWS CodeStar project. For
+example, you can change a team member's role in the project, or change
 whether they have remote access to project resources.
 }
 \section{Request syntax}{

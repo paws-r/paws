@@ -10,7 +10,7 @@ eks_create_cluster(name, version, roleArn, resourcesVpcConfig, logging,
 \arguments{
 \item{name}{[required] The unique name to give to your cluster.}
 
-\item{version}{The desired Kubernetes version for your cluster. If you don\'t specify a
+\item{version}{The desired Kubernetes version for your cluster. If you don't specify a
 value here, the latest version available in Amazon EKS is used.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that provides permissions
@@ -28,7 +28,7 @@ use a dedicated security group for your cluster control plane.}
 
 \item{logging}{Enable or disable exporting the Kubernetes control plane logs for your
 cluster to CloudWatch Logs. By default, cluster control plane logs
-aren\'t exported to CloudWatch Logs. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html}{Amazon EKS Cluster Control Plane Logs}
+aren't exported to CloudWatch Logs. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html}{Amazon EKS Cluster Control Plane Logs}
 in the \strong{Amazon EKS User Guide} .
 
 CloudWatch Logs ingestion, archive storage, and data scanning rates
@@ -62,19 +62,19 @@ worker nodes (for example, to support \verb{kubectl exec}, \code{logs}, and
 \code{proxy} data flows).
 
 Amazon EKS worker nodes run in your AWS account and connect to your
-cluster\'s control plane via the Kubernetes API server endpoint and a
+cluster's control plane via the Kubernetes API server endpoint and a
 certificate file that is created for your cluster.
 
 You can use the \code{endpointPublicAccess} and \code{endpointPrivateAccess}
 parameters to enable or disable public and private access to your
-cluster\'s Kubernetes API server endpoint. By default, public access is
+cluster's Kubernetes API server endpoint. By default, public access is
 enabled, and private access is disabled. For more information, see
 \href{https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html}{Amazon EKS Cluster Endpoint Access Control}
 in the \strong{Amazon EKS User Guide} .
 
 You can use the \code{logging} parameter to enable or disable exporting the
 Kubernetes control plane logs for your cluster to CloudWatch Logs. By
-default, cluster control plane logs aren\'t exported to CloudWatch Logs.
+default, cluster control plane logs aren't exported to CloudWatch Logs.
 For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html}{Amazon EKS Cluster Control Plane Logs}
 in the \strong{Amazon EKS User Guide} .
 

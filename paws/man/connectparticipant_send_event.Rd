@@ -20,7 +20,7 @@ not yet supported.}
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 
-\item{ConnectionToken}{[required] The authentication token associated with the participant\'s connection.}
+\item{ConnectionToken}{[required] The authentication token associated with the participant's connection.}
 }
 \description{
 Sends an event. Note that ConnectionToken is used for invoking this API

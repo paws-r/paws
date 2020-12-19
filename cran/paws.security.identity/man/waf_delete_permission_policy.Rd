@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_delete_permission_policy}
 \alias{waf_delete_permission_policy}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_delete_permission_policy(ResourceArn)
 }

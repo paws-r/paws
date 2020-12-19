@@ -15,13 +15,13 @@ Constraints:
 \itemize{
 \item Must contain from 1 to 63 letters, numbers, or hyphens.
 \item First character must be a letter.
-\item Can\'t end with a hyphen or contain two consecutive hyphens.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{my-cluster1-snapshot1}}
 
 \item{DBClusterIdentifier}{[required] The identifier of the DB cluster to create a snapshot for. This
-parameter isn\'t case-sensitive.
+parameter isn't case-sensitive.
 
 Constraints:
 \itemize{

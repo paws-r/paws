@@ -8,7 +8,7 @@ resource}
 cloudwatch_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the CloudWatch resource that you\'re adding tags to.
+\item{ResourceARN}{[required] The ARN of the CloudWatch resource that you're adding tags to.
 
 The ARN format of an alarm is
 \verb{arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:alarm:<i>alarm-name</i> }
@@ -31,8 +31,8 @@ Tags can help you organize and categorize your resources. You can also
 use them to scope user permissions, by granting a user permission to
 access or change only resources with certain tag values.
 
-Tags don\'t have any semantic meaning to AWS and are interpreted
-strictly as strings of characters.
+Tags don't have any semantic meaning to AWS and are interpreted strictly
+as strings of characters.
 
 You can use the \code{TagResource} action with an alarm that already has
 tags. If you specify a new tag key for the alarm, this tag is appended

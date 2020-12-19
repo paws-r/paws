@@ -11,16 +11,16 @@ ec2_describe_identity_id_format(PrincipalArn, Resource)
 \item{PrincipalArn}{[required] The ARN of the principal, which can be an IAM role, IAM user, or the
 root user.}
 
-\item{Resource}{The type of resource: \code{bundle} \\| \code{conversion-task} \\|
-\code{customer-gateway} \\| \code{dhcp-options} \\| \code{elastic-ip-allocation} \\|
-\code{elastic-ip-association} \\| \code{export-task} \\| \code{flow-log} \\| \code{image} \\|
-\code{import-task} \\| \code{instance} \\| \code{internet-gateway} \\| \code{network-acl} \\|
-\code{network-acl-association} \\| \code{network-interface} \\|
-\code{network-interface-attachment} \\| \code{prefix-list} \\| \code{reservation} \\|
-\code{route-table} \\| \code{route-table-association} \\| \code{security-group} \\|
-\code{snapshot} \\| \code{subnet} \\| \code{subnet-cidr-block-association} \\| \code{volume} \\|
-\code{vpc} \\| \code{vpc-cidr-block-association} \\| \code{vpc-endpoint} \\|
-\code{vpc-peering-connection} \\| \code{vpn-connection} \\| \code{vpn-gateway}}
+\item{Resource}{The type of resource: \code{bundle} | \code{conversion-task} | \code{customer-gateway}
+| \code{dhcp-options} | \code{elastic-ip-allocation} | \code{elastic-ip-association} |
+\code{export-task} | \code{flow-log} | \code{image} | \code{import-task} | \code{instance} |
+\code{internet-gateway} | \code{network-acl} | \code{network-acl-association} |
+\code{network-interface} | \code{network-interface-attachment} | \code{prefix-list} |
+\code{reservation} | \code{route-table} | \code{route-table-association} |
+\code{security-group} | \code{snapshot} | \code{subnet} |
+\code{subnet-cidr-block-association} | \code{volume} | \code{vpc} |
+\code{vpc-cidr-block-association} | \code{vpc-endpoint} | \code{vpc-peering-connection}
+| \code{vpn-connection} | \code{vpn-gateway}}
 }
 \description{
 Describes the ID format settings for resources for the specified IAM
@@ -32,17 +32,16 @@ information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resou
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \details{
-The following resource types support longer IDs: \code{bundle} \\|
-\code{conversion-task} \\| \code{customer-gateway} \\| \code{dhcp-options} \\|
-\code{elastic-ip-allocation} \\| \code{elastic-ip-association} \\| \code{export-task} \\|
-\code{flow-log} \\| \code{image} \\| \code{import-task} \\| \code{instance} \\|
-\code{internet-gateway} \\| \code{network-acl} \\| \code{network-acl-association} \\|
-\code{network-interface} \\| \code{network-interface-attachment} \\| \code{prefix-list}
-\\| \code{reservation} \\| \code{route-table} \\| \code{route-table-association} \\|
-\code{security-group} \\| \code{snapshot} \\| \code{subnet} \\|
-\code{subnet-cidr-block-association} \\| \code{volume} \\| \code{vpc} \\|
-\code{vpc-cidr-block-association} \\| \code{vpc-endpoint} \\|
-\code{vpc-peering-connection} \\| \code{vpn-connection} \\| \code{vpn-gateway}.
+The following resource types support longer IDs: \code{bundle} |
+\code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} |
+\code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} |
+\code{flow-log} | \code{image} | \code{import-task} | \code{instance} | \code{internet-gateway} |
+\code{network-acl} | \code{network-acl-association} | \code{network-interface} |
+\code{network-interface-attachment} | \code{prefix-list} | \code{reservation} |
+\code{route-table} | \code{route-table-association} | \code{security-group} |
+\code{snapshot} | \code{subnet} | \code{subnet-cidr-block-association} | \code{volume} |
+\code{vpc} | \code{vpc-cidr-block-association} | \code{vpc-endpoint} |
+\code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
 
 These settings apply to the principal specified in the request. They do
 not apply to the principal that makes the request.

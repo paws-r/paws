@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsm_operations.R
 \name{cloudhsm_add_tags_to_resource}
 \alias{cloudhsm_add_tags_to_resource}
-\title{This is documentation for AWS CLOUDHSM CLASSIC}
+\title{This is documentation for AWS CloudHSM Classic}
 \usage{
 cloudhsm_add_tags_to_resource(ResourceArn, TagList)
 }

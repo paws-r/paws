@@ -18,25 +18,25 @@ targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{Targets}{(Optional) An array of search criteria that targets instances using a
-Key,Value combination that you specify. Targets is required if you
-don\'t provide one or more instance IDs in the call. For more
-information about how to use targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending commands to a fleet}
+Key,Value combination that you specify. Targets is required if you don't
+provide one or more instance IDs in the call. For more information about
+how to use targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending commands to a fleet}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{DocumentName}{[required] Required. The name of the Systems Manager document to run. This can be a
 public document or a custom document.}
 
 \item{DocumentVersion}{The SSM document version to use in the request. You can specify
-\\$DEFAULT, \\$LATEST, or a specific version number. If you run commands
-by using the AWS CLI, then you must escape the first two options by
-using a backslash. If you specify a version number, then you don\'t need
-to use the backslash. For example:
+$DEFAULT, $LATEST, or a specific version number. If you run commands by
+using the AWS CLI, then you must escape the first two options by using a
+backslash. If you specify a version number, then you don't need to use
+the backslash. For example:
 
-\\--document-version \"\\\$DEFAULT\"
+--document-version "\\$DEFAULT"
 
-\\--document-version \"\\\$LATEST\"
+--document-version "\\$LATEST"
 
-\\--document-version \"3\"}
+--document-version "3"}
 
 \item{DocumentHash}{The Sha256 or Sha1 hash created by the system when the document was
 created.

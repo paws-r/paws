@@ -26,8 +26,8 @@ permissions to a profiling group for the first time. If a policy already
 exists on the profiling group, you must specify the \code{revisionId}.}
 }
 \description{
-Adds permissions to a profiling group\'s resource-based policy that are
-provided using an action group. If a profiling group doesn\'t have a
+Adds permissions to a profiling group's resource-based policy that are
+provided using an action group. If a profiling group doesn't have a
 resource-based policy, one is created for it using the permissions in
 the action group and the roles and users in the \code{principals} parameter.
 }

@@ -25,8 +25,8 @@ For more information, see
 languages supported by Amazon Comprehend. All documents must be in the
 same language.}
 
-\item{ClientRequestToken}{A unique identifier for the request. If you don\'t set the client
-request token, Amazon Comprehend generates one.}
+\item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request
+token, Amazon Comprehend generates one.}
 
 \item{VolumeKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
 uses to encrypt data on the storage volume attached to the ML compute

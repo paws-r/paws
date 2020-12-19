@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_get_web_acl}
 \alias{waf_get_web_acl}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_get_web_acl(WebACLId)
 }

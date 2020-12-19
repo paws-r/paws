@@ -18,7 +18,7 @@ and used as a suffix for the target ARN. For example, specifying
 \verb{arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume}.
 The target name must be unique across all volumes on a gateway.
 
-If you don\'t specify a value, Storage Gateway uses the value that was
+If you don't specify a value, Storage Gateway uses the value that was
 previously used for this volume as the new target name.}
 
 \item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume to attach to the specified

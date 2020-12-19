@@ -16,7 +16,7 @@ include:
 \item \code{CREATED_TIME}: List based on when each report group was created.
 \item \code{LAST_MODIFIED_TIME}: List based on when each report group was last
 changed.
-\item \code{NAME}: List based on each report group\'s name.
+\item \code{NAME}: List based on each report group's name.
 }}
 
 \item{nextToken}{During a previous call, the maximum number of items that can be returned

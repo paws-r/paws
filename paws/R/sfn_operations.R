@@ -16,8 +16,8 @@ NULL
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
 #' 
-#' `CreateActivity` is an idempotent API. Subsequent requests won't create
-#' a duplicate resource if it was already created. `CreateActivity`\'s
+#' `CreateActivity` is an idempotent API. Subsequent requests won’t create
+#' a duplicate resource if it was already created. `CreateActivity`'s
 #' idempotency check is based on the activity `name`. If a following
 #' request has different `tags` values, Step Functions will ignore these
 #' differences and treat it as an idempotent request of the previous. In
@@ -105,9 +105,9 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
 #' 
-#' `CreateStateMachine` is an idempotent API. Subsequent requests won't
+#' `CreateStateMachine` is an idempotent API. Subsequent requests won’t
 #' create a duplicate resource if it was already created.
-#' `CreateStateMachine`\'s idempotency check is based on the state machine
+#' `CreateStateMachine`'s idempotency check is based on the state machine
 #' `name`, `definition`, `type`, and `LoggingConfiguration`. If a following
 #' request has a different `roleArn` or `tags`, Step Functions will ignore
 #' these differences and treat it as an idempotent request of the previous.
@@ -246,7 +246,7 @@ sfn_delete_activity <- function(activityArn) {
 #' Deletes a state machine
 #'
 #' Deletes a state machine. This is an asynchronous operation: It sets the
-#' state machine\'s status to `DELETING` and begins the deletion process.
+#' state machine's status to `DELETING` and begins the deletion process.
 #' 
 #' For `EXPRESS`state machines, the deletion will happen eventually
 #' (usually less than a minute). Running executions may emit logs after
@@ -806,7 +806,7 @@ sfn_list_tags_for_resource <- function(resourceArn) {
 #' Functions when tasks are assigned to a worker, or in the [context
 #' object](https://docs.aws.amazon.com/step-functions/latest/dg/input-output-contextobject.html)
 #' when a workflow enters a task state. See
-#' GetActivityTaskOutput\\$taskToken.
+#' GetActivityTaskOutput$taskToken.
 #' @param error The error code of the failure.
 #' @param cause A more detailed explanation of the cause of the failure.
 #'
@@ -848,7 +848,7 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
 #' pattern to report to Step Functions that the task represented by the
 #' specified `taskToken` is still making progress. This action resets the
 #' `Heartbeat` clock. The `Heartbeat` threshold is specified in the state
-#' machine\'s Amazon States Language definition (`HeartbeatSeconds`). This
+#' machine's Amazon States Language definition (`HeartbeatSeconds`). This
 #' action does not in itself create an event in the execution history.
 #' However, if the task times out, the execution history contains an
 #' `ActivityTimedOut` entry for activities, or a `TaskTimedOut` entry for
@@ -858,7 +858,7 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
 #' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
 #' pattern.
 #' 
-#' The `Timeout` of a task, defined in the state machine\'s Amazon States
+#' The `Timeout` of a task, defined in the state machine's Amazon States
 #' Language definition, is its maximum allowed duration, regardless of the
 #' number of SendTaskHeartbeat requests received. Use `HeartbeatSeconds` to
 #' configure the timeout interval for heartbeats.
@@ -870,7 +870,7 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
 #' Functions when tasks are assigned to a worker, or in the [context
 #' object](https://docs.aws.amazon.com/step-functions/latest/dg/input-output-contextobject.html)
 #' when a workflow enters a task state. See
-#' GetActivityTaskOutput\\$taskToken.
+#' GetActivityTaskOutput$taskToken.
 #'
 #' @section Request syntax:
 #' ```
@@ -914,7 +914,7 @@ sfn_send_task_heartbeat <- function(taskToken) {
 #' Functions when tasks are assigned to a worker, or in the [context
 #' object](https://docs.aws.amazon.com/step-functions/latest/dg/input-output-contextobject.html)
 #' when a workflow enters a task state. See
-#' GetActivityTaskOutput\\$taskToken.
+#' GetActivityTaskOutput$taskToken.
 #' @param output &#91;required&#93; The JSON output of the task.
 #'
 #' @section Request syntax:
@@ -984,8 +984,8 @@ sfn_send_task_success <- function(taskToken, output) {
 #' 
 #' `"input": "\{\"first_name\" : \"test\"\}"`
 #' 
-#' If you don\'t include any JSON input data, you still must include the
-#' two braces, for example: `"input": "\{\}"`
+#' If you don't include any JSON input data, you still must include the two
+#' braces, for example: `"input": "\{\}"`
 #'
 #' @section Request syntax:
 #' ```

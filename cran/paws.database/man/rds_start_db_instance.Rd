@@ -18,7 +18,7 @@ the stop-db-instance AWS CLI command, or the StopDBInstance action.
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StartInstance.html}{Starting an Amazon RDS DB instance That Was Previously Stopped}
 in the \emph{Amazon RDS User Guide.}
 
-This command doesn\'t apply to Aurora MySQL and Aurora PostgreSQL. For
+This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 Aurora DB clusters, use \code{StartDBCluster} instead.
 }
 \section{Request syntax}{

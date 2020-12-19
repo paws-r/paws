@@ -36,7 +36,7 @@ Valid Values: \code{"Partial Upfront" | "All Upfront" | "No Upfront" }}
 \item{MultiAZ}{A value that indicates whether to show only those reservations that
 support Multi-AZ.}
 
-\item{Filters}{This parameter isn\'t currently supported.}
+\item{Filters}{This parameter isn't currently supported.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more than
 the \code{MaxRecords} value is available, a pagination token called a marker

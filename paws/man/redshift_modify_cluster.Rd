@@ -35,9 +35,8 @@ must also specify the number of nodes parameter.
 For more information about resizing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html}{Resizing Clusters in Amazon Redshift}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
-Valid Values: \code{ds2.xlarge} \\| \code{ds2.8xlarge} \\| \code{dc1.large} \\|
-\code{dc1.8xlarge} \\| \code{dc2.large} \\| \code{dc2.8xlarge} \\| \code{ra3.4xlarge} \\|
-\code{ra3.16xlarge}}
+Valid Values: \code{ds2.xlarge} | \code{ds2.8xlarge} | \code{dc1.large} | \code{dc1.8xlarge}
+| \code{dc2.large} | \code{dc2.8xlarge} | \code{ra3.4xlarge} | \code{ra3.16xlarge}}
 
 \item{NumberOfNodes}{The new number of nodes of the cluster. If you specify a new number of
 nodes, you must also specify the node type parameter.
@@ -82,8 +81,8 @@ Constraints:
 \item Must contain at least one uppercase letter.
 \item Must contain at least one lowercase letter.
 \item Must contain one number.
-\item Can be any printable ASCII character (ASCII code 33 to 126) except
-\' (single quote), \" (double quote), \\, /, @, or space.
+\item Can be any printable ASCII character (ASCII code 33 to 126) except '
+(single quote), " (double quote), \\, /, @, or space.
 }}
 
 \item{ClusterParameterGroupName}{The name of the cluster parameter group to apply to this cluster. This
@@ -110,7 +109,7 @@ Constraints: Must be a value from 0 to 35.}
 
 \item{ManualSnapshotRetentionPeriod}{The default for number of days that a newly created manual snapshot is
 retained. If the value is -1, the manual snapshot is retained
-indefinitely. This value doesn\'t retroactively change the retention
+indefinitely. This value doesn't retroactively change the retention
 periods of existing manual snapshots.
 
 The value must be either -1 or an integer between 1 and 3,653.
@@ -130,7 +129,7 @@ Default: Uses existing setting.
 
 Format: ddd:hh24:mi-ddd:hh24:mi, for example \code{wed:07:30-wed:08:00}.
 
-Valid Days: Mon \\| Tue \\| Wed \\| Thu \\| Fri \\| Sat \\| Sun
+Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 
 Constraints: Must be at least 30 minutes.}
 
@@ -199,7 +198,7 @@ point, the maintenance track name is applied.}
 
 \item{Encrypted}{Indicates whether the cluster is encrypted. If the value is encrypted
 (true) and you provide a value for the \code{KmsKeyId} parameter, we encrypt
-the cluster with the provided \code{KmsKeyId}. If you don\'t provide a
+the cluster with the provided \code{KmsKeyId}. If you don't provide a
 \code{KmsKeyId}, we encrypt with the default key. In the China region we use
 legacy encryption if you specify that the cluster is encrypted.
 

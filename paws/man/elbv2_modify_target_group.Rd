@@ -18,7 +18,7 @@ targets. The TCP protocol is supported for health checks only if the
 protocol of the target group is TCP, TLS, UDP, or TCP\\_UDP. The TLS,
 UDP, and TCP\\_UDP protocols are not supported for health checks.
 
-With Network Load Balancers, you can\'t modify this setting.}
+With Network Load Balancers, you can't modify this setting.}
 
 \item{HealthCheckPort}{The port the load balancer uses when performing health checks on
 targets.}
@@ -33,12 +33,12 @@ individual target. For Application Load Balancers, the range is 5 to 300
 seconds. For Network Load Balancers, the supported values are 10 or 30
 seconds.
 
-With Network Load Balancers, you can\'t modify this setting.}
+With Network Load Balancers, you can't modify this setting.}
 
 \item{HealthCheckTimeoutSeconds}{[HTTP/HTTPS health checks] The amount of time, in seconds, during
 which no response means a failed health check.
 
-With Network Load Balancers, you can\'t modify this setting.}
+With Network Load Balancers, you can't modify this setting.}
 
 \item{HealthyThresholdCount}{The number of consecutive health checks successes required before
 considering an unhealthy target healthy.}
@@ -50,7 +50,7 @@ must be the same as the healthy threshold count.}
 \item{Matcher}{[HTTP/HTTPS health checks] The HTTP codes to use when checking for a
 successful response from a target.
 
-With Network Load Balancers, you can\'t modify this setting.}
+With Network Load Balancers, you can't modify this setting.}
 }
 \description{
 Modifies the health checks used when evaluating the health state of the

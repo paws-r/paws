@@ -15,8 +15,7 @@ mturk_list_assignments_for_hit(HITId, NextToken, MaxResults,
 
 \item{MaxResults}{}
 
-\item{AssignmentStatuses}{The status of the assignments to return: Submitted \\| Approved \\|
-Rejected}
+\item{AssignmentStatuses}{The status of the assignments to return: Submitted | Approved | Rejected}
 }
 \description{
 The \code{ListAssignmentsForHIT} operation retrieves completed assignments

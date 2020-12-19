@@ -600,12 +600,12 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' To create an asymmetric CMK, use the `CustomerMasterKeySpec` parameter
 #' to specify the type of key material in the CMK. Then, use the `KeyUsage`
 #' parameter to determine whether the CMK will be used to encrypt and
-#' decrypt or sign and verify. You can\'t change these properties after the
+#' decrypt or sign and verify. You can't change these properties after the
 #' CMK is created.
 #' 
 #' ### Symmetric CMKs
 #' 
-#' When creating a symmetric CMK, you don\'t need to specify the
+#' When creating a symmetric CMK, you don't need to specify the
 #' `CustomerMasterKeySpec` or `KeyUsage` parameters. The default value for
 #' `CustomerMasterKeySpec`, `SYMMETRIC_DEFAULT`, and the default value for
 #' `KeyUsage`, `ENCRYPT_DECRYPT`, are the only valid values for symmetric
@@ -647,7 +647,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #' If you provide a key policy, it must meet the following criteria:
 #' 
-#' -   If you don\'t set `BypassPolicyLockoutSafetyCheck` to true, the key
+#' -   If you don't set `BypassPolicyLockoutSafetyCheck` to true, the key
 #'     policy must allow the principal that is making the `CreateKey`
 #'     request to make a subsequent PutKeyPolicy request on the CMK. This
 #'     reduces the risk that the CMK becomes unmanageable. For more
@@ -678,7 +678,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' @param KeyUsage Determines the [cryptographic
 #' operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
 #' for which you can use the CMK. The default value is `ENCRYPT_DECRYPT`.
-#' This parameter is required only for asymmetric CMKs. You can\'t change
+#' This parameter is required only for asymmetric CMKs. You can't change
 #' the `KeyUsage` value after the CMK is created.
 #' 
 #' Select only one valid value.
@@ -699,7 +699,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' The `CustomerMasterKeySpec` determines whether the CMK contains a
 #' symmetric key or an asymmetric key pair. It also determines the
 #' encryption algorithms or signing algorithms that the CMK supports. You
-#' can\'t change the `CustomerMasterKeySpec` after the CMK is created. To
+#' can't change the `CustomerMasterKeySpec` after the CMK is created. To
 #' further restrict the algorithms that can be used with the CMK, use a
 #' condition key in its key policy or IAM policy. For more information, see
 #' [kms:EncryptionAlgorithm](https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm)
@@ -1167,7 +1167,7 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 #' this operation on a CMK in a different AWS account.
 #' 
 #' When the specified CMK is in the `PendingDeletion` state, this operation
-#' does not change the CMK\'s state. Otherwise, it changes the CMK\'s state
+#' does not change the CMK's state. Otherwise, it changes the CMK's state
 #' to `PendingImport`.
 #' 
 #' After you delete key material, you can use ImportKeyMaterial to reimport
@@ -1797,9 +1797,9 @@ kms_enable_key_rotation <- function(KeyId) {
 #'     encrypted data key and the encrypted data entirely within in
 #'     Region B.
 #' 
-#' You don\'t need to use the `Encrypt` operation to encrypt a data key.
-#' The GenerateDataKey and GenerateDataKeyPair operations return a
-#' plaintext data key and an encrypted copy of that data key.
+#' You don't need to use the `Encrypt` operation to encrypt a data key. The
+#' GenerateDataKey and GenerateDataKeyPair operations return a plaintext
+#' data key and an encrypted copy of that data key.
 #' 
 #' When you encrypt data, you must specify a symmetric or asymmetric CMK to
 #' use in the encryption operation. The CMK must have a `KeyUsage` value of
@@ -2157,7 +2157,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' type and origin of your CMK, use the DescribeKey operation.
 #' 
 #' If you are using the data key pair to encrypt data, or for any operation
-#' where you don\'t immediately need a private key, consider using the
+#' where you don't immediately need a private key, consider using the
 #' GenerateDataKeyPairWithoutPlaintext operation.
 #' `GenerateDataKeyPairWithoutPlaintext` returns a plaintext public key and
 #' an encrypted private key, but omits the plaintext private key that you
@@ -2400,7 +2400,7 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' point, but not immediately. When you need to encrypt the data, you call
 #' the Decrypt operation on the encrypted copy of the key.
 #' 
-#' It\'s also useful in distributed systems with different levels of trust.
+#' It's also useful in distributed systems with different levels of trust.
 #' For example, you might store encrypted data in containers. One component
 #' of your system creates new containers and stores an encrypted data key
 #' with each container. Then, a different component puts the data into the
@@ -2750,7 +2750,7 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' send with a subsequent ImportKeyMaterial request.
 #' 
 #' You must specify the key ID of the symmetric CMK into which you will
-#' import key material. This CMK\'s `Origin` must be `EXTERNAL`. You must
+#' import key material. This CMK's `Origin` must be `EXTERNAL`. You must
 #' also specify the wrapping algorithm and type of wrapping key (public
 #' key) that you will use to encrypt the key material. You cannot perform
 #' this operation on an asymmetric CMK or on any CMK in a different AWS
@@ -3005,7 +3005,7 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #'   ValidTo, ExpirationModel)
 #'
 #' @param KeyId &#91;required&#93; The identifier of the symmetric CMK that receives the imported key
-#' material. The CMK\'s `Origin` must be `EXTERNAL`. This must be the same
+#' material. The CMK's `Origin` must be `EXTERNAL`. This must be the same
 #' CMK specified in the `KeyID` parameter of the corresponding
 #' GetParametersForImport request.
 #' 
@@ -3082,7 +3082,7 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
 
 #' Gets a list of aliases in the caller's AWS account and region
 #'
-#' Gets a list of aliases in the caller\'s AWS account and region. You
+#' Gets a list of aliases in the caller's AWS account and region. You
 #' cannot list aliases in other accounts. For more information about
 #' aliases, see CreateAlias.
 #' 
@@ -3107,7 +3107,7 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
 #'
 #' @param KeyId Lists only aliases that refer to the specified CMK. The value of this
 #' parameter can be the ID or Amazon Resource Name (ARN) of a CMK in the
-#' caller\'s account and region. You cannot use an alias name or alias ARN
+#' caller's account and region. You cannot use an alias name or alias ARN
 #' in this value.
 #' 
 #' This parameter is optional. If you omit it, `ListAliases` returns all
@@ -3310,7 +3310,7 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' Gets a list of all customer master keys (CMKs) in the caller's AWS
 #' account and Region
 #'
-#' Gets a list of all customer master keys (CMKs) in the caller\'s AWS
+#' Gets a list of all customer master keys (CMKs) in the caller's AWS
 #' account and Region.
 #'
 #' @usage
@@ -3434,7 +3434,7 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' Returns a list of all grants for which the grant's RetiringPrincipal
 #' matches the one specified
 #'
-#' Returns a list of all grants for which the grant\'s `RetiringPrincipal`
+#' Returns a list of all grants for which the grant's `RetiringPrincipal`
 #' matches the one specified.
 #' 
 #' A typical use is to list all grants that you are able to retire. To
@@ -3532,7 +3532,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' 
 #' The key policy must meet the following criteria:
 #' 
-#' -   If you don\'t set `BypassPolicyLockoutSafetyCheck` to true, the key
+#' -   If you don't set `BypassPolicyLockoutSafetyCheck` to true, the key
 #'     policy must allow the principal that is making the `PutKeyPolicy`
 #'     request to make a subsequent `PutKeyPolicy` request on the CMK. This
 #'     reduces the risk that the CMK becomes unmanageable. For more
@@ -3847,7 +3847,7 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 
 #' Retires a grant
 #'
-#' Retires a grant. To clean up, you can retire a grant when you\'re done
+#' Retires a grant. To clean up, you can retire a grant when you're done
 #' using it. You should revoke a grant when you intend to actively deny
 #' operations that depend on it. The following are permitted to call this
 #' API:
@@ -4093,7 +4093,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' customer master key (CMK). The key owner (or an authorized user) uses
 #' their private key to sign a message. Anyone with the public key can
 #' verify that the message was signed with that particular private key and
-#' that the message hasn\'t changed since it was signed.
+#' that the message hasn't changed since it was signed.
 #' 
 #' To use the `Sign` operation, provide the following information:
 #' 
@@ -4622,7 +4622,7 @@ kms_update_key_description <- function(KeyId, Description) {
 #' Verifies a digital signature that was generated by the Sign operation.
 #' 
 #' Verification confirms that an authorized user signed the message with
-#' the specified CMK and signing algorithm, and the message hasn\'t changed
+#' the specified CMK and signing algorithm, and the message hasn't changed
 #' since it was signed. If the signature is verified, the value of the
 #' `SignatureValid` field in the response is `True`. If the signature
 #' verification fails, the `Verify` operation fails with an
@@ -4643,8 +4643,8 @@ kms_update_key_description <- function(KeyId, Description) {
 #' CMK outside of AWS KMS. Use the GetPublicKey operation to download the
 #' public key in the asymmetric CMK and then use the public key to verify
 #' the signature outside of AWS KMS. The advantage of using the `Verify`
-#' operation is that it is performed within AWS KMS. As a result, it\'s
-#' easy to call, the operation is performed within the FIPS boundary, it is
+#' operation is that it is performed within AWS KMS. As a result, it's easy
+#' to call, the operation is performed within the FIPS boundary, it is
 #' logged in AWS CloudTrail, and you can use key policy and IAM policy to
 #' determine who is authorized to use the CMK to verify signatures.
 #' 

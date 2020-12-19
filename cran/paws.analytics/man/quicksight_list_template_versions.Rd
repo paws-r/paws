@@ -9,7 +9,7 @@ quicksight_list_template_versions(AwsAccountId, TemplateId, NextToken,
   MaxResults)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the templates that you\'re
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the templates that you're
 listing.}
 
 \item{TemplateId}{[required] The ID for the template.}

@@ -21,7 +21,7 @@ NULL
 #' 
 #' -   Lines and words of text. A LINE `Block` object contains one or more
 #'     WORD `Block` objects. All lines and words that are detected in the
-#'     document are returned (including text that doesn\'t have a
+#'     document are returned (including text that doesn't have a
 #'     relationship with the value of `FeatureTypes`).
 #' 
 #' Selection elements such as check boxes and option buttons (radio
@@ -44,17 +44,17 @@ NULL
 #' textract_analyze_document(Document, FeatureTypes, HumanLoopConfig)
 #'
 #' @param Document &#91;required&#93; The input document as base64-encoded bytes or an Amazon S3 object. If
-#' you use the AWS CLI to call Amazon Textract operations, you can\'t pass
+#' you use the AWS CLI to call Amazon Textract operations, you can't pass
 #' image bytes. The document must be an image in JPEG or PNG format.
 #' 
-#' If you\'re using an AWS SDK to call Amazon Textract, you might not need
+#' If you're using an AWS SDK to call Amazon Textract, you might not need
 #' to base64-encode image bytes that are passed using the `Bytes` field.
 #' @param FeatureTypes &#91;required&#93; A list of the types of analysis to perform. Add TABLES to the list to
 #' return information about the tables that are detected in the input
 #' document. Add FORMS to return detected form data. To perform both types
 #' of analysis, add TABLES and FORMS to `FeatureTypes`. All lines and words
 #' detected in the document are included in the response (including text
-#' that isn\'t related to the value of `FeatureTypes`).
+#' that isn't related to the value of `FeatureTypes`).
 #' @param HumanLoopConfig Sets the configuration for the human in the loop workflow for analyzing
 #' documents.
 #'
@@ -127,10 +127,10 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 #' textract_detect_document_text(Document)
 #'
 #' @param Document &#91;required&#93; The input document as base64-encoded bytes or an Amazon S3 object. If
-#' you use the AWS CLI to call Amazon Textract operations, you can\'t pass
+#' you use the AWS CLI to call Amazon Textract operations, you can't pass
 #' image bytes. The document must be an image in JPEG or PNG format.
 #' 
-#' If you\'re using an AWS SDK to call Amazon Textract, you might not need
+#' If you're using an AWS SDK to call Amazon Textract, you might not need
 #' to base64-encode image bytes that are passed using the `Bytes` field.
 #'
 #' @section Request syntax:
@@ -176,7 +176,7 @@ textract_detect_document_text <- function(Document) {
 #' You start asynchronous text analysis by calling StartDocumentAnalysis,
 #' which returns a job identifier (`JobId`). When the text analysis
 #' operation finishes, Amazon Textract publishes a completion status to the
-#' Amazon Simple Notification Service (Amazon SNS) topic that\'s registered
+#' Amazon Simple Notification Service (Amazon SNS) topic that's registered
 #' in the initial call to `StartDocumentAnalysis`. To get the results of
 #' the text-detection operation, first check that the status value
 #' published to the Amazon SNS topic is `SUCCEEDED`. If so, call
@@ -198,7 +198,7 @@ textract_detect_document_text <- function(Document) {
 #' 
 #' -   Lines and words of text. A LINE `Block` object contains one or more
 #'     WORD `Block` objects. All lines and words that are detected in the
-#'     document are returned (including text that doesn\'t have a
+#'     document are returned (including text that doesn't have a
 #'     relationship with the value of the `StartDocumentAnalysis`
 #'     `FeatureTypes` input parameter).
 #' 
@@ -212,8 +212,8 @@ textract_detect_document_text <- function(Document) {
 #' value of `NextToken` in the operation response contains a pagination
 #' token for getting the next set of results. To get the next page of
 #' results, call `GetDocumentAnalysis`, and populate the `NextToken`
-#' request parameter with the token value that\'s returned from the
-#' previous call to `GetDocumentAnalysis`.
+#' request parameter with the token value that's returned from the previous
+#' call to `GetDocumentAnalysis`.
 #' 
 #' For more information, see [Document Text
 #' Analysis](https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html).
@@ -272,7 +272,7 @@ textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken =
 #' StartDocumentTextDetection, which returns a job identifier (`JobId`).
 #' When the text detection operation finishes, Amazon Textract publishes a
 #' completion status to the Amazon Simple Notification Service (Amazon SNS)
-#' topic that\'s registered in the initial call to
+#' topic that's registered in the initial call to
 #' `StartDocumentTextDetection`. To get the results of the text-detection
 #' operation, first check that the status value published to the Amazon SNS
 #' topic is `SUCCEEDED`. If so, call `GetDocumentTextDetection`, and pass
@@ -292,8 +292,8 @@ textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken =
 #' value of `NextToken` in the operation response contains a pagination
 #' token for getting the next set of results. To get the next page of
 #' results, call `GetDocumentTextDetection`, and populate the `NextToken`
-#' request parameter with the token value that\'s returned from the
-#' previous call to `GetDocumentTextDetection`.
+#' request parameter with the token value that's returned from the previous
+#' call to `GetDocumentTextDetection`.
 #' 
 #' For more information, see [Document Text
 #' Detection](https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html).
@@ -377,14 +377,14 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #' document. Add FORMS to return detected form data. To perform both types
 #' of analysis, add TABLES and FORMS to `FeatureTypes`. All lines and words
 #' detected in the document are included in the response (including text
-#' that isn\'t related to the value of `FeatureTypes`).
+#' that isn't related to the value of `FeatureTypes`).
 #' @param ClientRequestToken The idempotent token that you use to identify the start request. If you
 #' use the same token with multiple `StartDocumentAnalysis` requests, the
 #' same `JobId` is returned. Use `ClientRequestToken` to prevent the same
 #' job from being accidentally started more than once. For more
 #' information, see [Calling Amazon Textract Asynchronous
 #' Operations](https://docs.aws.amazon.com/textract/latest/dg/api-async.html).
-#' @param JobTag An identifier that you specify that\'s included in the completion
+#' @param JobTag An identifier that you specify that's included in the completion
 #' notification published to the Amazon SNS topic. For example, you can use
 #' `JobTag` to identify the type of document that the completion
 #' notification corresponds to (such as a tax form or a receipt).
@@ -461,13 +461,13 @@ textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, Cli
 #'   ClientRequestToken, JobTag, NotificationChannel)
 #'
 #' @param DocumentLocation &#91;required&#93; The location of the document to be processed.
-#' @param ClientRequestToken The idempotent token that\'s used to identify the start request. If you
+#' @param ClientRequestToken The idempotent token that's used to identify the start request. If you
 #' use the same token with multiple `StartDocumentTextDetection` requests,
 #' the same `JobId` is returned. Use `ClientRequestToken` to prevent the
 #' same job from being accidentally started more than once. For more
 #' information, see [Calling Amazon Textract Asynchronous
 #' Operations](https://docs.aws.amazon.com/textract/latest/dg/api-async.html).
-#' @param JobTag An identifier that you specify that\'s included in the completion
+#' @param JobTag An identifier that you specify that's included in the completion
 #' notification published to the Amazon SNS topic. For example, you can use
 #' `JobTag` to identify the type of document that the completion
 #' notification corresponds to (such as a tax form or a receipt).

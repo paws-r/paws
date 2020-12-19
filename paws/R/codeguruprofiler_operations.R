@@ -83,11 +83,11 @@ codeguruprofiler_add_notification_channels <- function(channels, profilingGroupN
 #' the most granular available resolution after the target resolution.
 #' There are 3 valid values.
 #' 
-#' -   `P1D` --- 1 day
+#' -   `P1D` — 1 day
 #' 
-#' -   `PT1H` --- 1 hour
+#' -   `PT1H` — 1 hour
 #' 
-#' -   `PT5M` --- 5 minutes
+#' -   `PT5M` — 5 minutes
 #'
 #' @section Request syntax:
 #' ```
@@ -147,7 +147,7 @@ codeguruprofiler_batch_get_frame_metric_data <- function(endTime = NULL, frameMe
 #'
 #' @param fleetInstanceId A universally unique identifier (UUID) for a profiling instance. For
 #' example, if the profiling instance is an Amazon EC2 instance, it is the
-#' instance ID. If it is an AWS Fargate container, it is the container\'s
+#' instance ID. If it is an AWS Fargate container, it is the container's
 #' task ID.
 #' @param metadata Metadata captured about the compute platform the agent is running on. It
 #' includes information about sampling and reporting. The valid fields are:
@@ -491,7 +491,7 @@ codeguruprofiler_get_policy <- function(profilingGroupName) {
 #' `Accept` and `Content-Type` headers of the HTTP request. You can specify
 #' one of the following: or the default .
 #' 
-#'      &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/json&lt;/code&gt; â€” standard JSON format &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/x-amzn-ion&lt;/code&gt; â€” the Amazon Ion data format. For more information, see &lt;a href="http://amzn.github.io/ion-docs/"&gt;Amazon Ion&lt;/a&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; 
+#'      &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/json&lt;/code&gt; — standard JSON format &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/x-amzn-ion&lt;/code&gt; — the Amazon Ion data format. For more information, see &lt;a href="http://amzn.github.io/ion-docs/"&gt;Amazon Ion&lt;/a&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; 
 #' @param endTime The end time of the requested profile. Specify using the ISO 8601
 #' format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond
 #' past June 1, 2020 1:15:02 PM UTC.
@@ -739,11 +739,11 @@ codeguruprofiler_list_findings_reports <- function(dailyReportsOnly = NULL, endT
 #' aggregation profile collects posted agent profiles for a profiling
 #' group. There are 3 valid values.
 #' 
-#' -   `P1D` --- 1 day
+#' -   `P1D` — 1 day
 #' 
-#' -   `PT1H` --- 1 hour
+#' -   `PT1H` — 1 hour
 #' 
-#' -   `PT5M` --- 5 minutes
+#' -   `PT5M` — 5 minutes
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group.
 #' @param startTime &#91;required&#93; The start time of the time range from which to list the profiles.
 #'
@@ -859,7 +859,7 @@ codeguruprofiler_list_profiling_groups <- function(includeDescription = NULL, ma
 #' `Accept` and `Content-Type` headers of the HTTP request. You can specify
 #' one of the following: or the default .
 #' 
-#'      &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/json&lt;/code&gt; â€” standard JSON format &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/x-amzn-ion&lt;/code&gt; â€” the Amazon Ion data format. For more information, see &lt;a href="http://amzn.github.io/ion-docs/"&gt;Amazon Ion&lt;/a&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; 
+#'      &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/json&lt;/code&gt; — standard JSON format &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;application/x-amzn-ion&lt;/code&gt; — the Amazon Ion data format. For more information, see &lt;a href="http://amzn.github.io/ion-docs/"&gt;Amazon Ion&lt;/a&gt;. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; 
 #' @param profileToken Amazon CodeGuru Profiler uses this universally unique identifier (UUID)
 #' to prevent the accidental submission of duplicate profiling data if
 #' there are failures and retries.
@@ -899,8 +899,8 @@ codeguruprofiler_post_agent_profile <- function(agentProfile, contentType, profi
 #' Adds permissions to a profiling group's resource-based policy that are
 #' provided using an action group
 #'
-#' Adds permissions to a profiling group\'s resource-based policy that are
-#' provided using an action group. If a profiling group doesn\'t have a
+#' Adds permissions to a profiling group's resource-based policy that are
+#' provided using an action group. If a profiling group doesn't have a
 #' resource-based policy, one is created for it using the permissions in
 #' the action group and the roles and users in the `principals` parameter.
 #' 
@@ -998,7 +998,7 @@ codeguruprofiler_remove_notification_channel <- function(channelId, profilingGro
 #' Removes permissions from a profiling group's resource-based policy that
 #' are provided using an action group
 #'
-#' Removes permissions from a profiling group\'s resource-based policy that
+#' Removes permissions from a profiling group's resource-based policy that
 #' are provided using an action group. The one supported action group that
 #' can be removed is `agentPermission` which grants `ConfigureAgent` and
 #' `PostAgent` permissions. For more information, see [Resource-based
@@ -1015,7 +1015,7 @@ codeguruprofiler_remove_notification_channel <- function(channelId, profilingGro
 #'   revisionId)
 #'
 #' @param actionGroup &#91;required&#93; Specifies an action group that contains the permissions to remove from a
-#' profiling group\'s resource-based policy. One action group is supported,
+#' profiling group's resource-based policy. One action group is supported,
 #' `agentPermissions`, which grants `ConfigureAgent` and `PostAgentProfile`
 #' permissions.
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group.

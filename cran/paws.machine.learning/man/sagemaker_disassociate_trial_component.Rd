@@ -12,7 +12,7 @@ sagemaker_disassociate_trial_component(TrialComponentName, TrialName)
 \item{TrialName}{[required] The name of the trial to disassociate from.}
 }
 \description{
-Disassociates a trial component from a trial. This doesn\'t effect other
+Disassociates a trial component from a trial. This doesn't effect other
 trials the component is associated with. Before you can delete a
 component, you must disassociate the component from all trials it is
 associated with. To associate a trial component with a trial, call the

@@ -13,7 +13,7 @@ alexaforbusiness_update_network_profile(NetworkProfileArn,
 
 \item{NetworkProfileName}{The name of the network profile associated with a device.}
 
-\item{Description}{Detailed information about a device\'s network profile.}
+\item{Description}{Detailed information about a device's network profile.}
 
 \item{CurrentPassword}{The current password of the Wi-Fi network.}
 

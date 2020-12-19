@@ -48,7 +48,7 @@ The policy includes parameters that not only define the distribution of
 On-Demand Instances and Spot Instances, the maximum price to pay for
 Spot Instances, and how the Auto Scaling group allocates instance types
 to fulfill On-Demand and Spot capacity, but also the parameters that
-specify the instance configuration information---the launch template and
+specify the instance configuration information—the launch template and
 instance types.
 
 For more information, see

@@ -24,16 +24,15 @@ you specify a checksum you get a \code{BadRequestException} exception.
 
 When you want to update a bot alias, set the \code{checksum} field to the
 checksum of the most recent revision of the \verb{$LATEST} version. If you
-don\'t specify the \code{ checksum} field, or if the checksum does not match
+don't specify the \code{ checksum} field, or if the checksum does not match
 the \verb{$LATEST} version, you get a \code{PreconditionFailedException}
 exception.}
 
 \item{conversationLogs}{Settings for conversation logs for the alias.}
 
 \item{tags}{A list of tags to add to the bot alias. You can only add tags when you
-create an alias, you can\'t use the \code{PutBotAlias} operation to update
-the tags on a bot alias. To update tags, use the \code{TagResource}
-operation.}
+create an alias, you can't use the \code{PutBotAlias} operation to update the
+tags on a bot alias. To update tags, use the \code{TagResource} operation.}
 }
 \description{
 Creates an alias for the specified version of the bot or replaces an

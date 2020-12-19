@@ -54,7 +54,7 @@ DBSubnetGroup.
 Example: \code{mySubnetGroup}}
 
 \item{DBSecurityGroups}{A list of DB security groups to authorize on this DB instance. Changing
-this setting doesn\'t result in an outage and the change is
+this setting doesn't result in an outage and the change is
 asynchronously applied as soon as possible.
 
 Constraints:
@@ -87,7 +87,7 @@ Default: \code{false}}
 \item{MasterUserPassword}{Not applicable.}
 
 \item{DBParameterGroupName}{The name of the DB parameter group to apply to the DB instance. Changing
-this setting doesn\'t result in an outage. The parameter group name
+this setting doesn't result in an outage. The parameter group name
 itself is changed immediately, but the actual parameter changes are not
 applied until you reboot the instance without failover. The db instance
 will NOT be rebooted automatically and the parameter changes will NOT be
@@ -118,7 +118,7 @@ Constraints:
 }}
 
 \item{PreferredMaintenanceWindow}{The weekly time range (in UTC) during which system maintenance can
-occur, which might result in an outage. Changing this parameter doesn\'t
+occur, which might result in an outage. Changing this parameter doesn't
 result in an outage, except in the following situation, and the change
 is asynchronously applied as soon as possible. If there are pending
 actions that cause a reboot, and the maintenance window is changed to
@@ -131,12 +131,12 @@ Default: Uses existing setting
 
 Format: ddd:hh24:mi-ddd:hh24:mi
 
-Valid Days: Mon \\| Tue \\| Wed \\| Thu \\| Fri \\| Sat \\| Sun
+Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 
 Constraints: Must be at least 30 minutes}
 
 \item{MultiAZ}{Specifies if the DB instance is a Multi-AZ deployment. Changing this
-parameter doesn\'t result in an outage and the change is applied during
+parameter doesn't result in an outage and the change is applied during
 the next maintenance window unless the \code{ApplyImmediately} parameter is
 set to \code{true} for this request.}
 
@@ -145,12 +145,12 @@ setting this parameter has no effect. To upgrade your database engine to
 the most recent release, use the ApplyPendingMaintenanceAction API.}
 
 \item{AllowMajorVersionUpgrade}{Indicates that major version upgrades are allowed. Changing this
-parameter doesn\'t result in an outage and the change is asynchronously
+parameter doesn't result in an outage and the change is asynchronously
 applied as soon as possible.}
 
 \item{AutoMinorVersionUpgrade}{Indicates that minor version upgrades are applied automatically to the
 DB instance during the maintenance window. Changing this parameter
-doesn\'t result in an outage except in the following case and the change
+doesn't result in an outage except in the following case and the change
 is asynchronously applied as soon as possible. An outage will result if
 this parameter is set to \code{true} during the maintenance window, and a
 newer minor version is available, and Neptune has enabled auto patching
@@ -161,7 +161,7 @@ for that engine version.}
 \item{Iops}{The new Provisioned IOPS (I/O operations per second) value for the
 instance.
 
-Changing this setting doesn\'t result in an outage and the change is
+Changing this setting doesn't result in an outage and the change is
 applied during the next maintenance window unless the \code{ApplyImmediately}
 parameter is set to \code{true} for this request.
 
@@ -255,7 +255,7 @@ Default: \code{false}}
 CloudWatch Logs for a specific DB instance or DB cluster.}
 
 \item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
-enabled. The database can\'t be deleted when deletion protection is
+enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled. See \href{https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-instances-delete.html}{Deleting a DB Instance}.}
 }
 \description{

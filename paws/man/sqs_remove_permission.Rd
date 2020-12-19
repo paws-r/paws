@@ -22,7 +22,7 @@ Revokes any permissions in the queue policy that matches the specified
 \details{
 \itemize{
 \item Only the owner of a queue can remove permissions from it.
-\item Cross-account permissions don\'t apply to this action. For more
+\item Cross-account permissions don't apply to this action. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \item To remove the ability to change queue permissions, you must deny

@@ -37,9 +37,9 @@ NULL
 #' The AWS SDKs prepopulate client request tokens. If you are using an AWS
 #' SDK, an idempotency token is created for you.
 #' @param Tags A list of tags to apply to this notification rule. Key names cannot
-#' start with \"aws\".
+#' start with "aws".
 #' @param Status The status of the notification rule. The default value is ENABLED. If
-#' the status is set to DISABLED, notifications aren\'t sent for the
+#' the status is set to DISABLED, notifications aren't sent for the
 #' notification rule.
 #'
 #' @section Request syntax:
@@ -448,7 +448,7 @@ codestarnotifications_subscribe <- function(Arn, Target, ClientRequestToken = NU
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule to tag.
 #' @param Tags &#91;required&#93; The list of tags to associate with the resource. Tag key names cannot
-#' start with \"aws\".
+#' start with "aws".
 #'
 #' @section Request syntax:
 #' ```

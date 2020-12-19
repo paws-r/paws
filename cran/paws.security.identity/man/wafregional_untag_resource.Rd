@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_untag_resource}
 \alias{wafregional_untag_resource}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_untag_resource(ResourceARN, TagKeys)
 }

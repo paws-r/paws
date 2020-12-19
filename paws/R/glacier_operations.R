@@ -17,7 +17,7 @@ NULL
 #' This operation is idempotent.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -35,9 +35,9 @@ NULL
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param uploadId &#91;required&#93; The upload ID of the multipart upload to delete.
 #'
@@ -109,10 +109,10 @@ glacier_abort_multipart_upload <- function(accountId, vaultName, uploadId) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
-#' You can either specify an AWS account ID or optionally a single \'`-`\'
+#' You can either specify an AWS account ID or optionally a single '`-`'
 #' (hyphen), in which case Amazon Glacier uses the AWS account ID
 #' associated with the credentials used to sign the request. If you specify
-#' your account ID, do not include any hyphens (\'-\') in the ID.
+#' your account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
 #' @section Request syntax:
@@ -169,9 +169,9 @@ glacier_abort_vault_lock <- function(accountId, vaultName) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param Tags The tags to add to the vault. Each tag is composed of a key and a value.
 #' The value can be an empty string.
@@ -261,7 +261,7 @@ glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
 #' Multipart Uploads response, even if idempotent complete is possible.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -280,9 +280,9 @@ glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param uploadId &#91;required&#93; The upload ID of the multipart upload.
 #' @param archiveSize The total size, in bytes, of the entire archive. This value should be
@@ -363,10 +363,10 @@ glacier_complete_multipart_upload <- function(accountId, vaultName, uploadId, ar
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
-#' You can either specify an AWS account ID or optionally a single \'`-`\'
+#' You can either specify an AWS account ID or optionally a single '`-`'
 #' (hyphen), in which case Amazon Glacier uses the AWS account ID
 #' associated with the credentials used to sign the request. If you specify
-#' your account ID, do not include any hyphens (\'-\') in the ID.
+#' your account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param lockId &#91;required&#93; The `lockId` value is the lock ID obtained from a InitiateVaultLock
 #' request.
@@ -422,13 +422,13 @@ glacier_complete_vault_lock <- function(accountId, vaultName, lockId) {
 #' 
 #' -   Names can be between 1 and 255 characters long.
 #' 
-#' -   Allowed characters are a-z, A-Z, 0-9, \'\\_\' (underscore), \'-\'
-#'     (hyphen), and \'.\' (period).
+#' -   Allowed characters are a-z, A-Z, 0-9, '\\_' (underscore), '-'
+#'     (hyphen), and '.' (period).
 #' 
 #' This operation is idempotent.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -446,10 +446,10 @@ glacier_complete_vault_lock <- function(accountId, vaultName, lockId) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
-#' You can either specify an AWS account ID or optionally a single \'`-`\'
+#' You can either specify an AWS account ID or optionally a single '`-`'
 #' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
 #' associated with the credentials used to sign the request. If you specify
-#' your account ID, do not include any hyphens (\'-\') in the ID.
+#' your account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
 #' @section Request syntax:
@@ -508,7 +508,7 @@ glacier_create_vault <- function(accountId, vaultName) {
 #' archive does not result in an error.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -526,9 +526,9 @@ glacier_create_vault <- function(accountId, vaultName) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param archiveId &#91;required&#93; The ID of the archive to delete.
 #'
@@ -589,7 +589,7 @@ glacier_delete_archive <- function(accountId, vaultName, archiveId) {
 #' This operation is idempotent.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -607,9 +607,9 @@ glacier_delete_archive <- function(accountId, vaultName, archiveId) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
 #' @section Request syntax:
@@ -669,9 +669,9 @@ glacier_delete_vault <- function(accountId, vaultName) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
 #' @section Request syntax:
@@ -721,7 +721,7 @@ glacier_delete_vault_access_policy <- function(accountId, vaultName) {
 #' the delete request.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -739,9 +739,9 @@ glacier_delete_vault_access_policy <- function(accountId, vaultName) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
 #' @section Request syntax:
@@ -802,7 +802,7 @@ glacier_delete_vault_notifications <- function(accountId, vaultName) {
 #' the job.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -818,9 +818,9 @@ glacier_delete_vault_notifications <- function(accountId, vaultName) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param jobId &#91;required&#93; The ID of the job to describe.
 #'
@@ -869,7 +869,7 @@ glacier_describe_job <- function(accountId, vaultName, jobId) {
 #' of archives it contains, and the total size of all the archives in the
 #' vault
 #'
-#' This operation returns information about a vault, including the vault\'s
+#' This operation returns information about a vault, including the vault's
 #' Amazon Resource Name (ARN), the date the vault was created, the number
 #' of archives it contains, and the total size of all the archives in the
 #' vault. The number of archives and their total size are as of the last
@@ -882,7 +882,7 @@ glacier_describe_job <- function(accountId, vaultName, jobId) {
 #' Glacier](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html).
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -900,9 +900,9 @@ glacier_describe_job <- function(accountId, vaultName, jobId) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
 #' @section Request syntax:
@@ -955,10 +955,10 @@ glacier_describe_vault <- function(accountId, vaultName) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
-#' You can either specify an AWS account ID or optionally a single \'`-`\'
+#' You can either specify an AWS account ID or optionally a single '`-`'
 #' (hyphen), in which case Amazon Glacier uses the AWS account ID
 #' associated with the credentials used to sign the request. If you specify
-#' your account ID, do not include any hyphens (\'-\') in the ID.
+#' your account ID, do not include any hyphens ('-') in the ID.
 #'
 #' @section Request syntax:
 #' ```
@@ -1035,7 +1035,7 @@ glacier_get_data_retrieval_policy <- function(accountId) {
 #' period after Amazon Glacier completes the job.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -1054,9 +1054,9 @@ glacier_get_data_retrieval_policy <- function(accountId) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param jobId &#91;required&#93; The job ID whose data is downloaded.
 #' @param range The range of bytes to retrieve from the output. For example, if you want
@@ -1151,9 +1151,9 @@ glacier_get_job_output <- function(accountId, vaultName, jobId, range = NULL) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
 #' @section Request syntax:
@@ -1229,9 +1229,9 @@ glacier_get_vault_access_policy <- function(accountId, vaultName) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
 #' @section Request syntax:
@@ -1286,7 +1286,7 @@ glacier_get_vault_lock <- function(accountId, vaultName) {
 #' Glacier](https://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html).
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -1304,9 +1304,9 @@ glacier_get_vault_lock <- function(accountId, vaultName) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
 #' @section Request syntax:
@@ -1361,9 +1361,9 @@ glacier_get_vault_notifications <- function(accountId, vaultName) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param jobParameters Provides options for specifying job information.
 #'
@@ -1499,7 +1499,7 @@ glacier_initiate_job <- function(accountId, vaultName, jobParameters = NULL) {
 #' you initiate the multipart upload with a part size of 4 MB, you will
 #' upload four parts of 4 MB each and one part of 0.2 MB.
 #' 
-#' You don\'t need to know the size of the archive when you start a
+#' You don't need to know the size of the archive when you start a
 #' multipart upload because Amazon S3 Glacier does not require you to
 #' specify the overall archive size.
 #' 
@@ -1509,7 +1509,7 @@ glacier_initiate_job <- function(accountId, vaultName, jobParameters = NULL) {
 #' or it may be removed if there is no activity for a period of 24 hours.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -1528,9 +1528,9 @@ glacier_initiate_job <- function(accountId, vaultName, jobParameters = NULL) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param archiveDescription The archive description that you are uploading in parts.
 #' 
@@ -1625,12 +1625,12 @@ glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescr
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
-#' You can either specify an AWS account ID or optionally a single \'`-`\'
+#' You can either specify an AWS account ID or optionally a single '`-`'
 #' (hyphen), in which case Amazon Glacier uses the AWS account ID
 #' associated with the credentials used to sign the request. If you specify
-#' your account ID, do not include any hyphens (\'-\') in the ID.
+#' your account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
-#' @param policy The vault lock policy as a JSON string, which uses \"\\\" as an escape
+#' @param policy The vault lock policy as a JSON string, which uses "\\" as an escape
 #' character.
 #'
 #' @section Request syntax:
@@ -1724,9 +1724,9 @@ glacier_initiate_vault_lock <- function(accountId, vaultName, policy = NULL) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param limit The maximum number of jobs to be returned. The default limit is 50. The
 #' number of jobs returned might be fewer than the specified limit, but the
@@ -1807,7 +1807,7 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
 #' associated with a single upload.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -1825,9 +1825,9 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param marker An opaque string used for pagination. This value specifies the upload at
 #' which the listing of uploads should begin. Get the marker value from a
@@ -1898,7 +1898,7 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
 #' `limit` parameter in the request.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -1916,9 +1916,9 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param uploadId &#91;required&#93; The upload ID of the multipart upload.
 #' @param marker An opaque string used for pagination. This value specifies the part at
@@ -1981,10 +1981,10 @@ glacier_list_parts <- function(accountId, vaultName, uploadId, marker = NULL, li
 #' glacier_list_provisioned_capacity(accountId)
 #'
 #' @param accountId &#91;required&#93; The AWS account ID of the account that owns the vault. You can either
-#' specify an AWS account ID or optionally a single \'-\' (hyphen), in
-#' which case Amazon S3 Glacier uses the AWS account ID associated with the
-#' credentials used to sign the request. If you use an account ID, don\'t
-#' include any hyphens (\'-\') in the ID.
+#' specify an AWS account ID or optionally a single '-' (hyphen), in which
+#' case Amazon S3 Glacier uses the AWS account ID associated with the
+#' credentials used to sign the request. If you use an account ID, don't
+#' include any hyphens ('-') in the ID.
 #'
 #' @section Request syntax:
 #' ```
@@ -2033,9 +2033,9 @@ glacier_list_provisioned_capacity <- function(accountId) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #'
 #' @section Request syntax:
@@ -2077,8 +2077,8 @@ glacier_list_tags_for_vault <- function(accountId, vaultName) {
 
 #' This operation lists all vaults owned by the calling user's account
 #'
-#' This operation lists all vaults owned by the calling user\'s account.
-#' The list returned in the response is ASCII-sorted by vault name.
+#' This operation lists all vaults owned by the calling user's account. The
+#' list returned in the response is ASCII-sorted by vault name.
 #' 
 #' By default, this operation returns up to 10 items. If there are more
 #' vaults to list, the response `marker` field contains the vault Amazon
@@ -2090,7 +2090,7 @@ glacier_list_tags_for_vault <- function(accountId, vaultName) {
 #' response by specifying the `limit` parameter in the request.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -2108,10 +2108,10 @@ glacier_list_tags_for_vault <- function(accountId, vaultName) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
-#' You can either specify an AWS account ID or optionally a single \'`-`\'
+#' You can either specify an AWS account ID or optionally a single '`-`'
 #' (hyphen), in which case Amazon Glacier uses the AWS account ID
 #' associated with the credentials used to sign the request. If you specify
-#' your account ID, do not include any hyphens (\'-\') in the ID.
+#' your account ID, do not include any hyphens ('-') in the ID.
 #' @param marker A string used for pagination. The marker specifies the vault ARN after
 #' which the listing of vaults should begin.
 #' @param limit The maximum number of vaults to be returned. The default limit is 10.
@@ -2165,10 +2165,10 @@ glacier_list_vaults <- function(accountId, marker = NULL, limit = NULL) {
 #' glacier_purchase_provisioned_capacity(accountId)
 #'
 #' @param accountId &#91;required&#93; The AWS account ID of the account that owns the vault. You can either
-#' specify an AWS account ID or optionally a single \'-\' (hyphen), in
-#' which case Amazon S3 Glacier uses the AWS account ID associated with the
-#' credentials used to sign the request. If you use an account ID, don\'t
-#' include any hyphens (\'-\') in the ID.
+#' specify an AWS account ID or optionally a single '-' (hyphen), in which
+#' case Amazon S3 Glacier uses the AWS account ID associated with the
+#' credentials used to sign the request. If you use an account ID, don't
+#' include any hyphens ('-') in the ID.
 #'
 #' @section Request syntax:
 #' ```
@@ -2219,9 +2219,9 @@ glacier_purchase_provisioned_capacity <- function(accountId) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param TagKeys A list of tag keys. Each corresponding tag is removed from the vault.
 #'
@@ -2287,10 +2287,10 @@ glacier_remove_tags_from_vault <- function(accountId, vaultName, TagKeys = NULL)
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
-#' You can either specify an AWS account ID or optionally a single \'`-`\'
+#' You can either specify an AWS account ID or optionally a single '`-`'
 #' (hyphen), in which case Amazon Glacier uses the AWS account ID
 #' associated with the credentials used to sign the request. If you specify
-#' your account ID, do not include any hyphens (\'-\') in the ID.
+#' your account ID, do not include any hyphens ('-') in the ID.
 #' @param Policy The data retrieval policy in JSON format.
 #'
 #' @section Request syntax:
@@ -2361,9 +2361,9 @@ glacier_set_data_retrieval_policy <- function(accountId, Policy = NULL) {
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param policy The vault access policy as a JSON string.
 #'
@@ -2415,7 +2415,7 @@ glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL)
 #' events happen to a vault
 #'
 #' This operation configures notifications that will be sent when specific
-#' events happen to a vault. By default, you don\'t get any notifications.
+#' events happen to a vault. By default, you don't get any notifications.
 #' 
 #' To configure vault notifications, send a PUT request to the
 #' `notification-configuration` subresource of the vault. The request
@@ -2429,18 +2429,18 @@ glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL)
 #' 
 #' -   **ArchiveRetrievalCompleted** This event occurs when a job that was
 #'     initiated for an archive retrieval is completed (InitiateJob). The
-#'     status of the completed job can be \"Succeeded\" or \"Failed\". The
+#'     status of the completed job can be "Succeeded" or "Failed". The
 #'     notification sent to the SNS topic is the same output as returned
 #'     from DescribeJob.
 #' 
 #' -   **InventoryRetrievalCompleted** This event occurs when a job that
 #'     was initiated for an inventory retrieval is completed (InitiateJob).
-#'     The status of the completed job can be \"Succeeded\" or \"Failed\".
-#'     The notification sent to the SNS topic is the same output as
-#'     returned from DescribeJob.
+#'     The status of the completed job can be "Succeeded" or "Failed". The
+#'     notification sent to the SNS topic is the same output as returned
+#'     from DescribeJob.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -2459,9 +2459,9 @@ glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL)
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param vaultNotificationConfig Provides options for specifying notification configuration.
 #'
@@ -2548,7 +2548,7 @@ glacier_set_vault_notifications <- function(accountId, vaultName, vaultNotificat
 #' archive or its description.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -2568,9 +2568,9 @@ glacier_set_vault_notifications <- function(accountId, vaultName, vaultNotificat
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param archiveDescription The optional description of the archive you are uploading.
 #' @param checksum The SHA256 tree hash of the data being uploaded.
 #' @param body The data to upload.
@@ -2631,7 +2631,7 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
 #'     corrupted in transmission, you compute a SHA256 tree hash of the
 #'     part and include it in your request. Upon receiving the part data,
 #'     Amazon S3 Glacier also computes a SHA256 tree hash. If these hash
-#'     values don\'t match, the operation fails. For information about
+#'     values don't match, the operation fails. For information about
 #'     computing a SHA256 tree hash, see [Computing
 #'     Checksums](https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html).
 #' 
@@ -2658,7 +2658,7 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
 #' previously uploaded data.
 #' 
 #' An AWS account has full permission to perform all operations (actions).
-#' However, AWS Identity and Access Management (IAM) users don\'t have any
+#' However, AWS Identity and Access Management (IAM) users don't have any
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
@@ -2677,9 +2677,9 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
-#' \'`-`\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-#' ID associated with the credentials used to sign the request. If you use
-#' an account ID, do not include any hyphens (\'-\') in the ID.
+#' '`-`' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+#' associated with the credentials used to sign the request. If you use an
+#' account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param uploadId &#91;required&#93; The upload ID of the multipart upload.
 #' @param checksum The SHA256 tree hash of the data being uploaded.

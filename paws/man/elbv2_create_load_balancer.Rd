@@ -13,7 +13,7 @@ elbv2_create_load_balancer(Name, Subnets, SubnetMappings,
 This name must be unique per region per account, can have a maximum of
 32 characters, must contain only alphanumeric characters or hyphens,
 must not begin or end with a hyphen, and must not begin with
-\"internal-\".}
+"internal-".}
 
 \item{Subnets}{The IDs of the public subnets. You can specify only one subnet per
 Availability Zone. You must specify either subnets or subnet mappings.

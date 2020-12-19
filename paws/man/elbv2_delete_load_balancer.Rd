@@ -15,7 +15,7 @@ Deletes the specified Application Load Balancer or Network Load Balancer
 and its attached listeners.
 }
 \details{
-You can\'t delete a load balancer if deletion protection is enabled. If
+You can't delete a load balancer if deletion protection is enabled. If
 the load balancer does not exist or has already been deleted, the call
 succeeds.
 

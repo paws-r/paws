@@ -9,7 +9,7 @@ NULL
 #' 
 #' An attachment set is a temporary container for attachments that you add
 #' to a case or case communication. The set is available for 1 hour after
-#' it\'s created. The `expiryTime` returned in the response is when the set
+#' it's created. The `expiryTime` returned in the response is when the set
 #' expires.
 #' 
 #' -   You must have a Business or Enterprise support plan to use the AWS
@@ -138,7 +138,7 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' how you create a case in the AWS Support Center [Create
 #' Case](https://console.aws.amazon.com/support/home#/case/create) page.
 #' 
-#' The AWS Support API doesn\'t support requesting service limit increases.
+#' The AWS Support API doesn't support requesting service limit increases.
 #' You can submit a service limit increase in the following ways:
 #' 
 #' -   Submit a request from the AWS Support Center [Create
@@ -201,10 +201,9 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' [AWS SDKs](http://aws.amazon.com/tools/).
 #' @param language The language in which AWS Support handles the case. You must specify the
 #' ISO 639-1 code for the `language` parameter if you want support in that
-#' language. Currently, English (\"en\") and Japanese (\"ja\") are
-#' supported.
+#' language. Currently, English ("en") and Japanese ("ja") are supported.
 #' @param issueType The type of issue for the case. You can specify `customer-service` or
-#' `technical`. If you don\'t specify a value, the default is `technical`.
+#' `technical`. If you don't specify a value, the default is `technical`.
 #' @param attachmentSetId The ID of a set of one or more attachments for the case. Create the set
 #' by using the AddAttachmentsToSet operation.
 #'
@@ -339,13 +338,12 @@ support_describe_attachment <- function(attachmentId) {
 #' @param beforeTime The end date for a filtered date search on support case communications.
 #' Case communications are available for 12 months after creation.
 #' @param includeResolvedCases Specifies whether to include resolved support cases in the
-#' `DescribeCases` response. By default, resolved cases aren\'t included.
+#' `DescribeCases` response. By default, resolved cases aren't included.
 #' @param nextToken A resumption point for pagination.
 #' @param maxResults The maximum number of results to return before paginating.
 #' @param language The ISO 639-1 code for the language in which AWS provides support. AWS
-#' Support currently supports English (\"en\") and Japanese (\"ja\").
-#' Language parameters must be passed explicitly for operations that take
-#' them.
+#' Support currently supports English ("en") and Japanese ("ja"). Language
+#' parameters must be passed explicitly for operations that take them.
 #' @param includeCommunications Specifies whether to include communications in the `DescribeCases`
 #' response. By default, communications are incuded.
 #'
@@ -469,9 +467,9 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #' appear in the **Service** and **Category** lists on the AWS Support
 #' Center [Create
 #' Case](https://console.aws.amazon.com/support/home#/case/create) page.
-#' The values in those fields don\'t necessarily match the service codes
-#' and categories returned by the `DescribeServices` operation. Always use
-#' the service codes and categories that the `DescribeServices` operation
+#' The values in those fields don't necessarily match the service codes and
+#' categories returned by the `DescribeServices` operation. Always use the
+#' service codes and categories that the `DescribeServices` operation
 #' returns, so that you have the most recent set of service and category
 #' codes.
 #' 
@@ -489,9 +487,8 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #'
 #' @param serviceCodeList A JSON-formatted list of service codes available for AWS services.
 #' @param language The ISO 639-1 code for the language in which AWS provides support. AWS
-#' Support currently supports English (\"en\") and Japanese (\"ja\").
-#' Language parameters must be passed explicitly for operations that take
-#' them.
+#' Support currently supports English ("en") and Japanese ("ja"). Language
+#' parameters must be passed explicitly for operations that take them.
 #'
 #' @section Request syntax:
 #' ```
@@ -543,9 +540,8 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #' support_describe_severity_levels(language)
 #'
 #' @param language The ISO 639-1 code for the language in which AWS provides support. AWS
-#' Support currently supports English (\"en\") and Japanese (\"ja\").
-#' Language parameters must be passed explicitly for operations that take
-#' them.
+#' Support currently supports English ("en") and Japanese ("ja"). Language
+#' parameters must be passed explicitly for operations that take them.
 #'
 #' @section Request syntax:
 #' ```
@@ -581,7 +577,7 @@ support_describe_severity_levels <- function(language = NULL) {
 #' the specified check IDs. You can get the check IDs by calling the
 #' DescribeTrustedAdvisorChecks operation.
 #' 
-#' Some checks are refreshed automatically, and you can\'t return their
+#' Some checks are refreshed automatically, and you can't return their
 #' refresh statuses by using the
 #' `DescribeTrustedAdvisorCheckRefreshStatuses` operation. If you call this
 #' operation for these checks, you might see an `InvalidParameterValue`
@@ -651,8 +647,8 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #' 
 #' In addition, the response contains these fields:
 #' 
-#' -   **status** - The alert status of the check: \"ok\" (green),
-#'     \"warning\" (yellow), \"error\" (red), or \"not\\_available\".
+#' -   **status** - The alert status of the check: "ok" (green), "warning"
+#'     (yellow), "error" (red), or "not\\_available".
 #' 
 #' -   **timestamp** - The time of the last refresh of the check.
 #' 
@@ -674,9 +670,8 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #'
 #' @param checkId &#91;required&#93; The unique identifier for the Trusted Advisor check.
 #' @param language The ISO 639-1 code for the language in which AWS provides support. AWS
-#' Support currently supports English (\"en\") and Japanese (\"ja\").
-#' Language parameters must be passed explicitly for operations that take
-#' them.
+#' Support currently supports English ("en") and Japanese ("ja"). Language
+#' parameters must be passed explicitly for operations that take them.
 #'
 #' @section Request syntax:
 #' ```
@@ -764,7 +759,7 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #' Returns information about all available AWS Trusted Advisor checks,
 #' including the name, ID, category, description, and metadata. You must
 #' specify a language code. The AWS Support API currently supports English
-#' (\"en\") and Japanese (\"ja\"). The response contains a
+#' ("en") and Japanese ("ja"). The response contains a
 #' TrustedAdvisorCheckDescription object for each check. You must set the
 #' AWS Region to us-east-1.
 #' 
@@ -781,9 +776,8 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #' support_describe_trusted_advisor_checks(language)
 #'
 #' @param language &#91;required&#93; The ISO 639-1 code for the language in which AWS provides support. AWS
-#' Support currently supports English (\"en\") and Japanese (\"ja\").
-#' Language parameters must be passed explicitly for operations that take
-#' them.
+#' Support currently supports English ("en") and Japanese ("ja"). Language
+#' parameters must be passed explicitly for operations that take them.
 #'
 #' @section Request syntax:
 #' ```

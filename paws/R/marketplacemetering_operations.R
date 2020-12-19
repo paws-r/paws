@@ -69,8 +69,8 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' API to emit metering records. For identical requests, the API is
 #' idempotent. It simply returns the metering record ID.
 #' 
-#' MeterUsage is authenticated on the buyer\'s AWS account using
-#' credentials from the EC2 instance, ECS task, or EKS pod.
+#' MeterUsage is authenticated on the buyer's AWS account using credentials
+#' from the EC2 instance, ECS task, or EKS pod.
 #'
 #' @usage
 #' marketplacemetering_meter_usage(ProductCode, Timestamp, UsageDimension,
@@ -130,7 +130,7 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
 #' Paid container software products sold through AWS Marketplace must
 #' integrate with the AWS Marketplace Metering Service and call the
 #' RegisterUsage operation for software entitlement and metering. Free and
-#' BYOL products for Amazon ECS or Amazon EKS aren\'t required to call
+#' BYOL products for Amazon ECS or Amazon EKS aren't required to call
 #' RegisterUsage, but you may choose to do so if you would like to receive
 #' usage data in your seller reports. The sections below explain the
 #' behavior of RegisterUsage. RegisterUsage performs two primary functions:
@@ -156,7 +156,7 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
 #'     Amazon EKS will launch a task on all 10 cluster nodes and the
 #'     customer will be charged: (10 * hourly\\_rate). Metering for
 #'     software use is automatically handled by the AWS Marketplace
-#'     Metering Control Plane \\-- your software is not required to perform
+#'     Metering Control Plane -- your software is not required to perform
 #'     any metering specific actions, other than call RegisterUsage once
 #'     for metering of software use to commence. The AWS Marketplace
 #'     Metering Control Plane will also continue to bill customers for

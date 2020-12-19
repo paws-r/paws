@@ -18,7 +18,7 @@ cognitoidentityprovider_admin_set_user_mfa_preference(SMSMfaSettings,
 \item{UserPoolId}{[required] The user pool ID.}
 }
 \description{
-Sets the user\'s multi-factor authentication (MFA) preference, including
+Sets the user's multi-factor authentication (MFA) preference, including
 which MFA options are enabled and if any are preferred. Only one factor
 can be set as preferred. The preferred MFA factor will be used to
 authenticate a user if multiple factors are enabled. If multiple options

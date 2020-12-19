@@ -24,7 +24,7 @@ to us-west-2.
 For listings of the bucket policies, see the Examples section.
 }}
 
-\item{IgnoreUnsupportedType}{[required] Indicates whether to exclude entities that can\'t be migrated or to stop
+\item{IgnoreUnsupportedType}{[required] Indicates whether to exclude entities that can't be migrated or to stop
 the migration. Set this to true to ignore unsupported entities in the
 web ACL during the migration. Otherwise, if AWS WAF encounters
 unsupported entities, it stops the process and throws an exception.}

@@ -252,7 +252,7 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #' the deprecated `BatchGetDeploymentInstances`. The maximum number of
 #' targets that can be returned is 25.
 #' 
-#' The type of targets returned depends on the deployment\'s compute
+#' The type of targets returned depends on the deployment's compute
 #' platform or deployment method:
 #' 
 #' -   **EC2/On-premises**: Information about EC2 instance targets.
@@ -416,7 +416,7 @@ codedeploy_batch_get_on_premises_instances <- function(instanceNames) {
 #'
 #' @param deploymentId The unique ID of a blue/green deployment for which you want to start
 #' rerouting traffic to the replacement environment.
-#' @param deploymentWaitType The status of the deployment\'s waiting period. `READY_WAIT` indicates
+#' @param deploymentWaitType The status of the deployment's waiting period. `READY_WAIT` indicates
 #' that the deployment is ready to start shifting traffic.
 #' `TERMINATION_WAIT` indicates that the traffic is shifted, but the
 #' original target is not terminated.
@@ -554,8 +554,8 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
 #' @param updateOutdatedInstancesOnly Indicates whether to deploy to all instances or only to instances that
 #' are not running the latest application revision.
 #' @param fileExistsBehavior Information about how AWS CodeDeploy handles files that already exist in
-#' a deployment target location but weren\'t part of the previous
-#' successful deployment.
+#' a deployment target location but weren't part of the previous successful
+#' deployment.
 #' 
 #' The `fileExistsBehavior` parameter takes any of the following values:
 #' 
@@ -749,7 +749,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' deployment configuration operation.
 #' 
 #' `CodeDeployDefault.OneAtATime` is the default deployment configuration.
-#' It is used if a configuration isn\'t specified for the deployment or
+#' It is used if a configuration isn't specified for the deployment or
 #' deployment group.
 #' 
 #' For more information about the predefined deployment configurations in
@@ -764,7 +764,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' used in the same call as `OnPremisesTagSet`.
 #' @param autoScalingGroups A list of associated Amazon EC2 Auto Scaling groups.
 #' @param serviceRoleArn &#91;required&#93; A service role Amazon Resource Name (ARN) that allows AWS CodeDeploy to
-#' act on the user\'s behalf when interacting with AWS services.
+#' act on the user's behalf when interacting with AWS services.
 #' @param triggerConfigurations Information about triggers to create when the deployment group is
 #' created. For examples, see [Create a Trigger for an AWS CodeDeploy
 #' Event](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html)
@@ -1276,7 +1276,7 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
 #' The `content` property of the `appSpecContent` object in the returned
 #' revision is always null. Use `GetApplicationRevision` and the `sha256`
 #' property of the returned `appSpecContent` object to get the content of
-#' the deployment's AppSpec file.
+#' the deployment’s AppSpec file.
 #'
 #' @usage
 #' codedeploy_get_deployment(deploymentId)
@@ -1533,7 +1533,7 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
 #' If set to null, the results are sorted in an arbitrary order.
 #' @param s3Bucket An Amazon S3 bucket name to limit the search for revisions.
 #' 
-#' If set to null, all of the user\'s buckets are searched.
+#' If set to null, all of the user's buckets are searched.
 #' @param s3KeyPrefix A key prefix for the set of Amazon S3 objects to limit the search for
 #' revisions.
 #' @param deployed Whether to list revisions based on whether the revision is the target
@@ -1734,8 +1734,8 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
 #' -   `Unknown`: Include those instances with deployments in an unknown
 #'     state.
 #' @param instanceTypeFilter The set of instances in a blue/green deployment, either those in the
-#' original environment (\"BLUE\") or those in the replacement environment
-#' (\"GREEN\"), for which you want to view instance information.
+#' original environment ("BLUE") or those in the replacement environment
+#' ("GREEN"), for which you want to view instance information.
 #'
 #' @section Request syntax:
 #' ```
@@ -2059,9 +2059,9 @@ codedeploy_list_tags_for_resource <- function(ResourceArn, NextToken = NULL) {
 #' `BeforeInstall`, `AfterInstall`, `AfterAllowTestTraffic`,
 #' `BeforeAllowTraffic`, and `AfterAllowTraffic`. Lambda validation
 #' functions return `Succeeded` or `Failed`. For more information, see
-#' [AppSpec \'hooks\' Section for an AWS Lambda
+#' [AppSpec 'hooks' Section for an AWS Lambda
 #' Deployment](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda)
-#' and [AppSpec \'hooks\' Section for an Amazon ECS
+#' and [AppSpec 'hooks' Section for an Amazon ECS
 #' Deployment](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs).
 #'
 #' @usage
@@ -2070,7 +2070,7 @@ codedeploy_list_tags_for_resource <- function(ResourceArn, NextToken = NULL) {
 #'
 #' @param deploymentId The unique ID of a deployment. Pass this ID to a Lambda function that
 #' validates a deployment lifecycle event.
-#' @param lifecycleEventHookExecutionId The execution ID of a deployment\'s lifecycle hook. A deployment
+#' @param lifecycleEventHookExecutionId The execution ID of a deployment's lifecycle hook. A deployment
 #' lifecycle hook is specified in the `hooks` section of the AppSpec file.
 #' @param status The result of a Lambda function that validates a deployment lifecycle
 #' event (`Succeeded` or `Failed`).

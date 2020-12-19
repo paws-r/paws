@@ -31,7 +31,7 @@ compliance violation. The default value is UNSPECIFIED.}
 
 \item{ApprovedPatchesEnableNonSecurity}{Indicates whether the list of approved patches includes non-security
 updates that should be applied to the instances. The default value is
-\'false\'. Applies to Linux instances only.}
+'false'. Applies to Linux instances only.}
 
 \item{RejectedPatches}{A list of explicitly rejected patches for the baseline.
 

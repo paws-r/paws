@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_set_user_settings}
 \alias{cognitoidentityprovider_set_user_settings}
-\title{_This action is no longer supported}
+\title{This action is no longer supported}
 \usage{
 cognitoidentityprovider_set_user_settings(AccessToken, MFAOptions)
 }
@@ -14,7 +14,7 @@ SMS for delivery.}
 }
 \description{
 \emph{This action is no longer supported.} You can use it to configure only
-SMS MFA. You can\'t use it to configure TOTP software token MFA. To
+SMS MFA. You can't use it to configure TOTP software token MFA. To
 configure either type of MFA, use the SetUserMFAPreference action
 instead.
 }

@@ -11,7 +11,7 @@ kinesis_register_stream_consumer(StreamARN, ConsumerName)
 consumer with. For more info, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
 
 \item{ConsumerName}{[required] For a given Kinesis data stream, each consumer must have a unique name.
-However, consumer names don\'t have to be unique across data streams.}
+However, consumer names don't have to be unique across data streams.}
 }
 \description{
 Registers a consumer with a Kinesis data stream. When you use this

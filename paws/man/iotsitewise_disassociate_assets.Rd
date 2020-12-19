@@ -11,7 +11,7 @@ iotsitewise_disassociate_assets(assetId, hierarchyId, childAssetId,
 \arguments{
 \item{assetId}{[required] The ID of the parent asset from which to disassociate the child asset.}
 
-\item{hierarchyId}{[required] The ID of a hierarchy in the parent asset\'s model. Hierarchies allow
+\item{hierarchyId}{[required] The ID of a hierarchy in the parent asset's model. Hierarchies allow
 different groupings of assets to be formed that all come from the same
 asset model. You can use the hierarchy ID to identify the correct asset
 to disassociate. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html}{Asset Hierarchies}
@@ -20,12 +20,12 @@ in the \emph{AWS IoT SiteWise User Guide}.}
 \item{childAssetId}{[required] The ID of the child asset to disassociate.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{
 Disassociates a child asset from the given parent asset through a
-hierarchy defined in the parent asset\'s model.
+hierarchy defined in the parent asset's model.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_assets(

@@ -14,9 +14,9 @@ Deletes a SAML provider resource in IAM.
 }
 \details{
 Deleting the provider resource from IAM does not update any roles that
-reference the SAML provider resource\'s ARN as a principal in their
-trust policies. Any attempt to assume a role that references a
-non-existent provider resource ARN fails.
+reference the SAML provider resource's ARN as a principal in their trust
+policies. Any attempt to assume a role that references a non-existent
+provider resource ARN fails.
 
 This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }

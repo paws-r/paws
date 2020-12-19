@@ -38,12 +38,12 @@ When pcm is used, the content returned is audio/pcm in a signed 16-bit,
 
 \item{SampleRate}{The audio frequency specified in Hz.
 
-The valid values for mp3 and ogg\\_vorbis are \"8000\", \"16000\",
-\"22050\", and \"24000\". The default value for standard voices is
-\"22050\". The default value for neural voices is \"24000\".
+The valid values for mp3 and ogg\\_vorbis are "8000", "16000", "22050",
+and "24000". The default value for standard voices is "22050". The
+default value for neural voices is "24000".
 
-Valid values for pcm are \"8000\" and \"16000\" The default value is
-\"16000\".}
+Valid values for pcm are "8000" and "16000" The default value is
+"16000".}
 
 \item{SpeechMarkTypes}{The type of speech marks returned for the input text.}
 

@@ -17,7 +17,7 @@ deregistration, the task definition is marked as \code{INACTIVE}. Existing
 tasks and services that reference an \code{INACTIVE} task definition continue
 to run without disruption. Existing services that reference an
 \code{INACTIVE} task definition can still scale up or down by modifying the
-service\'s desired count.
+service's desired count.
 }
 \details{
 You cannot use an \code{INACTIVE} task definition to run new tasks or create

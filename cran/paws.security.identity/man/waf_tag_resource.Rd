@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_tag_resource}
 \alias{waf_tag_resource}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_tag_resource(ResourceARN, Tags)
 }
@@ -25,11 +25,10 @@ regional and global use.
 Associates tags with the specified AWS resource. Tags are key:value
 pairs that you can use to categorize and manage your resources, for
 purposes like billing. For example, you might set the tag key to
-\"customer\" and the value to the customer name or ID. You can specify
-one or more tags to add to each AWS resource, up to 50 tags for a
-resource.
+"customer" and the value to the customer name or ID. You can specify one
+or more tags to add to each AWS resource, up to 50 tags for a resource.
 
-Tagging is only available through the API, SDKs, and CLI. You can\'t
+Tagging is only available through the API, SDKs, and CLI. You can't
 manage or view tags through the AWS WAF Classic console. You can use
 this action to tag the AWS resources that you manage through AWS WAF
 Classic: web ACLs, rule groups, and rules.

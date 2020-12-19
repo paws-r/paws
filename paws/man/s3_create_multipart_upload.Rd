@@ -47,7 +47,7 @@ object.}
 \item{ServerSideEncryption}{The server-side encryption algorithm used when storing this object in
 Amazon S3 (for example, AES256, aws:kms).}
 
-\item{StorageClass}{The type of storage to use for the object. Defaults to \'STANDARD\'.}
+\item{StorageClass}{The type of storage to use for the object. Defaults to 'STANDARD'.}
 
 \item{WebsiteRedirectLocation}{If the bucket is configured as a website, redirects requests for this
 object to another object in the same bucket or to an external URL.
@@ -60,7 +60,7 @@ example, AES256).}
 encrypting data. This value is used to store the object and then it is
 discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-\verb{x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm} header.}
+\code{x-amz-server-side​-encryption​-customer-algorithm} header.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to ensure
@@ -174,31 +174,31 @@ on whether you want to use AWS managed encryption keys or provide your
 own encryption key.
 \itemize{
 \item Use encryption keys managed by Amazon S3 or customer master keys
-(CMKs) stored in AWS Key Management Service (AWS KMS) -- If you want
+(CMKs) stored in AWS Key Management Service (AWS KMS) – If you want
 AWS to manage the keys used to encrypt data, specify the following
 headers in the request.
 \itemize{
-\item x-amz-server-sideâ€‹-encryption
+\item x-amz-server-side​-encryption
 \item x-amz-server-side-encryption-aws-kms-key-id
 \item x-amz-server-side-encryption-context
 }
 
-If you specify \code{x-amz-server-side-encryption:aws:kms}, but don\'t
+If you specify \code{x-amz-server-side-encryption:aws:kms}, but don't
 provide \code{x-amz-server-side-encryption-aws-kms-key-id}, Amazon S3
 uses the AWS managed CMK in AWS KMS to protect the data.
 
 All GET and PUT requests for an object protected by AWS KMS fail if
-you don\'t make them with SSL or by using SigV4.
+you don't make them with SSL or by using SigV4.
 
 For more information about server-side encryption with CMKs stored
 in AWS KMS (SSE-KMS), see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html}{Protecting Data Using Server-Side Encryption with CMKs stored in AWS KMS}.
-\item Use customer-provided encryption keys -- If you want to manage your
+\item Use customer-provided encryption keys – If you want to manage your
 own encryption keys, provide all the following headers in the
 request.
 \itemize{
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+\item x-amz-server-side​-encryption​-customer-algorithm
+\item x-amz-server-side​-encryption​-customer-key
+\item x-amz-server-side​-encryption​-customer-key-MD5
 }
 
 For more information about server-side encryption with CMKs stored
@@ -208,7 +208,7 @@ in AWS KMS (SSE-KMS), see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/
 
 \subsection{Access-Control-List (ACL)-Specific Request Headers}{
 
-You also can use the following access control--related headers with this
+You also can use the following access control–related headers with this
 operation. By default, all objects are private. Only the owner has full
 access control. When adding a new object, you can grant permissions to
 individual AWS accounts or to predefined groups defined by Amazon S3.
@@ -217,11 +217,11 @@ object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/lat
 With this operation, you can grant access permissions using one of the
 following two methods:
 \itemize{
-\item Specify a canned ACL (\code{x-amz-acl}) --- Amazon S3 supports a set of
+\item Specify a canned ACL (\code{x-amz-acl}) — Amazon S3 supports a set of
 predefined ACLs, known as \emph{canned ACLs}. Each canned ACL has a
 predefined set of grantees and permissions. For more information,
 see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL}{Canned ACL}.
-\item Specify access permissions explicitly --- To explicitly grant access
+\item Specify access permissions explicitly — To explicitly grant access
 permissions to specific AWS accounts or groups, use the following
 headers. Each header maps to specific permissions that Amazon S3
 supports in an ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}.
@@ -238,10 +238,10 @@ permission. To grant permissions explicitly, use:
 You specify each grantee as a type=value pair, where the type is one
 of the following:
 \itemize{
-\item \code{id} -- if the value specified is the canonical user ID of an
-AWS account
-\item \code{uri} -- if you are granting permissions to a predefined group
-\item \code{emailAddress} -- if the value specified is the email address of
+\item \code{id} – if the value specified is the canonical user ID of an AWS
+account
+\item \code{uri} – if you are granting permissions to a predefined group
+\item \code{emailAddress} – if the value specified is the email address of
 an AWS account
 
 Using email addresses to specify a grantee is only supported in
@@ -254,7 +254,7 @@ the following AWS Regions:
 \item Asia Pacific (Sydney)
 \item Asia Pacific (Tokyo)
 \item Europe (Ireland)
-\item South America (SÃ£o Paulo)
+\item South America (São Paulo)
 }
 
 For a list of all the Amazon S3 supported Regions and endpoints,

@@ -17,13 +17,13 @@ rds_restore_db_cluster_from_snapshot(AvailabilityZones,
 restored DB cluster can be created.}
 
 \item{DBClusterIdentifier}{[required] The name of the DB cluster to create from the DB snapshot or DB cluster
-snapshot. This parameter isn\'t case-sensitive.
+snapshot. This parameter isn't case-sensitive.
 
 Constraints:
 \itemize{
 \item Must contain from 1 to 63 letters, numbers, or hyphens
 \item First character must be a letter
-\item Can\'t end with a hyphen or contain two consecutive hyphens
+\item Can't end with a hyphen or contain two consecutive hyphens
 }
 
 Example: \code{my-snapshot-id}}
@@ -63,7 +63,7 @@ use the following command:
 
 \verb{aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions\\\[\\\].EngineVersion"}
 
-If you aren\'t using the default engine version, then you must specify
+If you aren't using the default engine version, then you must specify
 the engine version.
 
 \strong{Aurora MySQL}
@@ -105,14 +105,14 @@ account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KMS encryption key.
 
-If you don\'t specify a value for the \code{KmsKeyId} parameter, then the
+If you don't specify a value for the \code{KmsKeyId} parameter, then the
 following occurs:
 \itemize{
 \item If the DB snapshot or DB cluster snapshot in \code{SnapshotIdentifier} is
 encrypted, then the restored DB cluster is encrypted using the KMS
 key that was used to encrypt the DB snapshot or DB cluster snapshot.
 \item If the DB snapshot or DB cluster snapshot in \code{SnapshotIdentifier}
-isn\'t encrypted, then the restored DB cluster isn\'t encrypted.
+isn't encrypted, then the restored DB cluster isn't encrypted.
 }}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
@@ -156,11 +156,11 @@ Constraints:
 parameter group.
 \item Must be 1 to 255 letters, numbers, or hyphens.
 \item First character must be a letter.
-\item Can\'t end with a hyphen or contain two consecutive hyphens.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can\'t be deleted when deletion protection is
+enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
@@ -179,8 +179,8 @@ action only applies to Aurora DB clusters.
 }
 \details{
 The target DB cluster is created from the source snapshot with a default
-configuration. If you don\'t specify a security group, the new DB
-cluster is associated with the default security group.
+configuration. If you don't specify a security group, the new DB cluster
+is associated with the default security group.
 
 This action only restores the DB cluster, not the DB instances for that
 DB cluster. You must invoke the \code{CreateDBInstance} action to create DB

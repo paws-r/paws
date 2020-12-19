@@ -64,7 +64,7 @@ kinesisvideo_create_signaling_channel <- function(ChannelName, ChannelType = NUL
 #' Creates a new Kinesis video stream.
 #' 
 #' When you create a new stream, Kinesis Video Streams assigns it a version
-#' number. When you change the stream\'s metadata, Kinesis Video Streams
+#' number. When you change the stream's metadata, Kinesis Video Streams
 #' updates the version.
 #' 
 #' `CreateStream` is an asynchronous operation.
@@ -94,8 +94,7 @@ kinesisvideo_create_signaling_channel <- function(ChannelName, ChannelType = NUL
 #' Requirements](https://tools.ietf.org/html/rfc6838#section-4.2) for
 #' guidelines.
 #' 
-#' Example valid values include \"video/h264\" and
-#' \"video/h264,audio/aac\".
+#' Example valid values include "video/h264" and "video/h264,audio/aac".
 #' 
 #' This parameter is optional; the default value is `null` (or empty in
 #' JSON).
@@ -158,7 +157,7 @@ kinesisvideo_create_stream <- function(DeviceName = NULL, StreamName, MediaType 
 #' Deletes a specified signaling channel
 #'
 #' Deletes a specified signaling channel. `DeleteSignalingChannel` is an
-#' asynchronous operation. If you don\'t specify the channel\'s current
+#' asynchronous operation. If you don't specify the channel's current
 #' version, the most recent version is deleted.
 #'
 #' @usage
@@ -745,8 +744,8 @@ kinesisvideo_tag_stream <- function(StreamARN = NULL, StreamName = NULL, Tags) {
 #' Removes one or more tags from a signaling channel
 #'
 #' Removes one or more tags from a signaling channel. In the request,
-#' specify only a tag key or keys; don\'t specify the value. If you specify
-#' a tag key that does not exist, it\'s ignored.
+#' specify only a tag key or keys; don't specify the value. If you specify
+#' a tag key that does not exist, it's ignored.
 #'
 #' @usage
 #' kinesisvideo_untag_resource(ResourceARN, TagKeyList)
@@ -788,8 +787,8 @@ kinesisvideo_untag_resource <- function(ResourceARN, TagKeyList) {
 #' Removes one or more tags from a stream
 #'
 #' Removes one or more tags from a stream. In the request, specify only a
-#' tag key or keys; don\'t specify the value. If you specify a tag key that
-#' does not exist, it\'s ignored.
+#' tag key or keys; don't specify the value. If you specify a tag key that
+#' does not exist, it's ignored.
 #' 
 #' In the request, you must provide the `StreamName` or `StreamARN`.
 #'
@@ -835,7 +834,7 @@ kinesisvideo_untag_stream <- function(StreamARN = NULL, StreamName = NULL, TagKe
 #' Increases or decreases the stream's data retention period by the value
 #' that you specify
 #'
-#' Increases or decreases the stream\'s data retention period by the value
+#' Increases or decreases the stream's data retention period by the value
 #' that you specify. To indicate whether you want to increase or decrease
 #' the data retention period, specify the `Operation` parameter in the
 #' request body. In the request, you must specify either the `StreamName`
@@ -913,7 +912,7 @@ kinesisvideo_update_data_retention <- function(StreamName = NULL, StreamARN = NU
 #' 
 #' If the `MessageTtlSeconds` value is updated (either increased or
 #' reduced), it only applies to new messages sent via this channel after
-#' it\'s been updated. Existing messages are still expired as per the
+#' it's been updated. Existing messages are still expired as per the
 #' previous `MessageTtlSeconds` value.
 #'
 #' @usage
@@ -986,7 +985,7 @@ kinesisvideo_update_signaling_channel <- function(ChannelARN, CurrentVersion, Si
 #' 
 #' In the current implementation, Kinesis Video Streams does not use this
 #' name.
-#' @param MediaType The stream\'s media type. Use `MediaType` to specify the type of content
+#' @param MediaType The stream's media type. Use `MediaType` to specify the type of content
 #' that the stream contains to the consumers of the stream. For more
 #' information about media types, see [Media
 #' Types](http://www.iana.org/assignments/media-types/media-types.xhtml).

@@ -2,7 +2,7 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_get_blueprints}
 \alias{lightsail_get_blueprints}
-\title{Returns the list of available instance images, or \emph{blueprints}}
+\title{Returns the list of available instance images, or blueprints}
 \usage{
 lightsail_get_blueprints(includeInactive, pageToken)
 }

@@ -31,7 +31,7 @@ Default: \code{m1.small}}
 network interface. Amazon EC2 chooses the IPv6 addresses from the range
 of your subnet. You cannot specify this option and the option to assign
 specific IPv6 addresses in the same request. You can specify this option
-if you\'ve specified a minimum number of instances to launch.
+if you've specified a minimum number of instances to launch.
 
 You cannot specify this option and the network interfaces option in the
 same request.}
@@ -39,7 +39,7 @@ same request.}
 \item{Ipv6Addresses}{[EC2-VPC] The IPv6 addresses from the range of the subnet to associate
 with the primary network interface. You cannot specify this option and
 the option to assign a number of IPv6 addresses in the same request. You
-cannot specify this option if you\'ve specified a minimum number of
+cannot specify this option if you've specified a minimum number of
 instances to launch.
 
 You cannot specify this option and the network interfaces option in the
@@ -57,7 +57,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 or
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html}{ImportKeyPair}.
 
-If you do not specify a key pair, you can\'t connect to the instance
+If you do not specify a key pair, you can't connect to the instance
 unless you choose an AMI that is configured to allow users another way
 to log in.}
 
@@ -65,7 +65,7 @@ to log in.}
 than Amazon EC2 can launch in the target Availability Zone, Amazon EC2
 launches the largest possible number of instances above \code{MinCount}.
 
-Constraints: Between 1 and the maximum number you\'re allowed for the
+Constraints: Between 1 and the maximum number you're allowed for the
 specified instance type. For more information about the default limits,
 and how to request an increase, see \href{http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2}{How many instances can I run in Amazon EC2}
 in the Amazon EC2 FAQ.}
@@ -74,7 +74,7 @@ in the Amazon EC2 FAQ.}
 is more instances than Amazon EC2 can launch in the target Availability
 Zone, Amazon EC2 launches no instances.
 
-Constraints: Between 1 and the maximum number you\'re allowed for the
+Constraints: Between 1 and the maximum number you're allowed for the
 specified instance type. For more information about the default limits,
 and how to request an increase, see \href{http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2}{How many instances can I run in Amazon EC2}
 in the Amazon EC2 General FAQ.}
@@ -129,7 +129,7 @@ For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIRef
 
 Constraints: Maximum 64 ASCII characters}
 
-\item{DisableApiTermination}{If you set this parameter to \code{true}, you can\'t terminate the instance
+\item{DisableApiTermination}{If you set this parameter to \code{true}, you can't terminate the instance
 using the Amazon EC2 console, CLI, or API; otherwise, you can. To change
 this attribute after launch, use
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html}{ModifyInstanceAttribute}.
@@ -147,7 +147,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{EbsOptimized}{Indicates whether the instance is optimized for Amazon EBS I/O. This
 optimization provides dedicated throughput to Amazon EBS and an
 optimized configuration stack to provide optimal Amazon EBS I/O
-performance. This optimization isn\'t available with all instance types.
+performance. This optimization isn't available with all instance types.
 Additional usage charges apply when using an EBS-optimized instance.
 
 Default: \code{false}}
@@ -167,10 +167,10 @@ part of the network interface.}
 \item{PrivateIpAddress}{[EC2-VPC] The primary IPv4 address. You must specify a value from the
 IPv4 address range of the subnet.
 
-Only one private IP address can be designated as primary. You can\'t
-specify this option if you\'ve specified the option to designate a
+Only one private IP address can be designated as primary. You can't
+specify this option if you've specified the option to designate a
 private IP address as the primary IP address in a network interface
-specification. You cannot specify this option if you\'re launching more
+specification. You cannot specify this option if you're launching more
 than one instance in the request.
 
 You cannot specify this option and the network interfaces option in the
@@ -219,7 +219,7 @@ Default: \code{standard} (T2 instances) or \code{unlimited} (T3/T3a instances)}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{CapacityReservationSpecification}{Information about the Capacity Reservation targeting option. If you do
-not specify this parameter, the instance\'s Capacity Reservation
+not specify this parameter, the instance's Capacity Reservation
 preference defaults to \code{open}, which enables it to run in any open
 Capacity Reservation that has matching attributes (instance type,
 platform, Availability Zone).}
@@ -241,20 +241,20 @@ have permissions.
 You can specify a number of options, or leave the default options. The
 following rules apply:
 \itemize{
-\item [EC2-VPC] If you don\'t specify a subnet ID, we choose a default
-subnet from your default VPC for you. If you don\'t have a default
+\item [EC2-VPC] If you don't specify a subnet ID, we choose a default
+subnet from your default VPC for you. If you don't have a default
 VPC, you must specify a subnet ID in the request.
-\item [EC2-Classic] If don\'t specify an Availability Zone, we choose
-one for you.
+\item [EC2-Classic] If don't specify an Availability Zone, we choose one
+for you.
 \item Some instance types must be launched into a VPC. If you do not have
 a default VPC, or if you do not specify a subnet ID, the request
 fails. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types}{Instance types available only in a VPC}.
 \item [EC2-VPC] All instances have a network interface with a primary
-private IPv4 address. If you don\'t specify this address, we choose
+private IPv4 address. If you don't specify this address, we choose
 one from the IPv4 range of your subnet.
 \item Not all instance types support IPv6 addresses. For more information,
 see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}.
-\item If you don\'t specify a security group ID, we use the default
+\item If you don't specify a security group ID, we use the default
 security group. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Security groups}.
 \item If any of the AMIs have a product code attached for which the user
 has not subscribed, the request fails.
@@ -269,7 +269,7 @@ To ensure faster instance launches, break up large requests into smaller
 batches. For example, create five separate launch requests for 100
 instances each instead of one launch request for 500 instances.
 
-An instance is ready for you to use when it\'s in the \code{running} state.
+An instance is ready for you to use when it's in the \code{running} state.
 You can check the state of your instance using DescribeInstances. You
 can tag instances and EBS volumes during launch, after launch, or both.
 For more information, see CreateTags and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging your Amazon EC2 resources}.

@@ -22,7 +22,7 @@ NULL
 #' To use an Amazon RDS instance as a data source, you specify its
 #' `DbiResourceId` value - for example: `db-FAIHNTYBKTGAUSUZQYPDS2GW4A`
 #' @param StartTime &#91;required&#93; The date and time specifying the beginning of the requested time series
-#' data. You can\'t specify a `StartTime` that\'s earlier than 7 days ago.
+#' data. You can't specify a `StartTime` that's earlier than 7 days ago.
 #' The value specified is *inclusive* - data points equal to or greater
 #' than `StartTime` will be returned.
 #' 
@@ -55,7 +55,7 @@ NULL
 #' 
 #' -   `86400` (twenty-four hours)
 #' 
-#' If you don\'t specify `PeriodInSeconds`, then Performance Insights will
+#' If you don't specify `PeriodInSeconds`, then Performance Insights will
 #' choose a value for you, with a goal of returning roughly 100-200 data
 #' points in the response.
 #' @param GroupBy &#91;required&#93; A specification for how to aggregate the data points from a query
@@ -156,7 +156,7 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' Performance Insights metric, and can optionally specify aggregation and
 #' filtering criteria.
 #' @param StartTime &#91;required&#93; The date and time specifying the beginning of the requested time series
-#' data. You can\'t specify a `StartTime` that\'s earlier than 7 days ago.
+#' data. You can't specify a `StartTime` that's earlier than 7 days ago.
 #' The value specified is *inclusive* - data points equal to or greater
 #' than `StartTime` will be returned.
 #' 
@@ -180,7 +180,7 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' 
 #' -   `86400` (twenty-four hours)
 #' 
-#' If you don\'t specify `PeriodInSeconds`, then Performance Insights will
+#' If you don't specify `PeriodInSeconds`, then Performance Insights will
 #' choose a value for you, with a goal of returning roughly 100-200 data
 #' points in the response.
 #' @param MaxResults The maximum number of items to return in the response. If more items

@@ -122,7 +122,7 @@ datapipeline_add_tags <- function(pipelineId, tags) {
 #' pipeline name combination on a subsequent call to `CreatePipeline`.
 #' `CreatePipeline` ensures that if a pipeline already exists with the same
 #' name and unique identifier, a new pipeline is not created. Instead,
-#' you\'ll receive the pipeline identifier from the previous attempt. The
+#' you'll receive the pipeline identifier from the previous attempt. The
 #' uniqueness of the name and unique identifier combination is scoped to
 #' the AWS account or IAM user credentials.
 #' @param description The description for the pipeline.
@@ -929,7 +929,7 @@ datapipeline_set_status <- function(pipelineId, objectIds, status) {
 #' @param errorId If an error occurred during the task, this value specifies the error
 #' code. This value is set on the physical attempt object. It is used to
 #' display error information to the user. It should not start with string
-#' \"Service\\_\" which is reserved by the system.
+#' "Service\\_" which is reserved by the system.
 #' @param errorMessage If an error occurred during the task, this value specifies a text
 #' description of the error. This value is set on the physical attempt
 #' object. It is used to display error information to the user. The web

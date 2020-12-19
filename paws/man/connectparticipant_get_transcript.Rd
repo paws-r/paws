@@ -24,7 +24,7 @@ StartPosition.}
 
 \item{StartPosition}{A filtering option for where to start.}
 
-\item{ConnectionToken}{[required] The authentication token associated with the participant\'s connection.}
+\item{ConnectionToken}{[required] The authentication token associated with the participant's connection.}
 }
 \description{
 Retrieves a transcript of the session. Note that ConnectionToken is used

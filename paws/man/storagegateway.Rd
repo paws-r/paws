@@ -14,10 +14,10 @@ AWS Storage Gateway Service
 
 AWS Storage Gateway is the service that connects an on-premises software
 appliance with cloud-based storage to provide seamless and secure
-integration between an organization\'s on-premises IT environment and
-the AWS storage infrastructure. The service enables you to securely
-upload data to the AWS Cloud for cost effective backup and rapid
-disaster recovery.
+integration between an organization's on-premises IT environment and the
+AWS storage infrastructure. The service enables you to securely upload
+data to the AWS Cloud for cost effective backup and rapid disaster
+recovery.
 
 Use the following links to get started using the \emph{AWS Storage Gateway
 Service API Reference}:
@@ -62,7 +62,7 @@ ID format looks like the following:
 A snapshot ID with the longer ID format looks like the following:
 \verb{snap-78e226633445566ee}.
 
-For more information, see \href{http://forums.aws.amazon.com/ann.jspa?annID=3557}{Announcement: Heads-up -- Longer AWS Storage Gateway volume and snapshot IDs coming in 2016}.
+For more information, see \href{http://forums.aws.amazon.com/ann.jspa?annID=3557}{Announcement: Heads-up – Longer AWS Storage Gateway volume and snapshot IDs coming in 2016}.
 }
 \section{Service syntax}{
 \preformatted{svc <- storagegateway(

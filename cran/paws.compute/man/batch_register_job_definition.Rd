@@ -19,14 +19,14 @@ Parameters in a \code{SubmitJob} request override any corresponding parameter
 defaults from the job definition.}
 
 \item{containerProperties}{An object with various properties specific to single-node
-container-based jobs. If the job definition\'s \code{type} parameter is
+container-based jobs. If the job definition's \code{type} parameter is
 \code{container}, then you must specify either \code{containerProperties} or
 \code{nodeProperties}.}
 
 \item{nodeProperties}{An object with various properties specific to multi-node parallel jobs.
 If you specify node properties for a job, it becomes a multi-node
 parallel job. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html}{Multi-node Parallel Jobs}
-in the \emph{AWS Batch User Guide}. If the job definition\'s \code{type} parameter
+in the \emph{AWS Batch User Guide}. If the job definition's \code{type} parameter
 is \code{container}, then you must specify either \code{containerProperties} or
 \code{nodeProperties}.}
 

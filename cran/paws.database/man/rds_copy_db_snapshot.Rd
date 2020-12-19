@@ -28,7 +28,7 @@ ARN format for the source AWS Region, and must match the
 
 Constraints:
 \itemize{
-\item Must specify a valid system snapshot in the \"available\" state.
+\item Must specify a valid system snapshot in the "available" state.
 }
 
 Example: \code{rds:mydb-2012-04-02-00-01}
@@ -40,10 +40,10 @@ Example:
 
 Constraints:
 \itemize{
-\item Can\'t be null, empty, or blank
+\item Can't be null, empty, or blank
 \item Must contain from 1 to 255 letters, numbers, or hyphens
 \item First character must be a letter
-\item Can\'t end with a hyphen or contain two consecutive hyphens
+\item Can't end with a hyphen or contain two consecutive hyphens
 }
 
 Example: \code{my-db-snapshot}}
@@ -54,7 +54,7 @@ the KMS encryption key.
 
 If you copy an encrypted DB snapshot from your AWS account, you can
 specify a value for this parameter to encrypt the copy with a new KMS
-encryption key. If you don\'t specify a value for this parameter, then
+encryption key. If you don't specify a value for this parameter, then
 the copy of the DB snapshot is encrypted with the same KMS key as the
 source DB snapshot.
 
@@ -67,7 +67,7 @@ copy is encrypted.
 If you copy an encrypted snapshot to a different AWS Region, then you
 must specify a KMS key for the destination AWS Region. KMS encryption
 keys are specific to the AWS Region that they are created in, and you
-can\'t use encryption keys from one AWS Region in another AWS Region.}
+can't use encryption keys from one AWS Region in another AWS Region.}
 
 \item{Tags}{}
 
@@ -79,7 +79,7 @@ snapshot to the target DB snapshot. By default, tags are not copied.}
 source DB snapshot to copy.
 
 You must specify this parameter when you copy an encrypted DB snapshot
-from another AWS Region by using the Amazon RDS API. Don\'t specify
+from another AWS Region by using the Amazon RDS API. Don't specify
 \code{PreSignedUrl} when you are copying an encrypted DB snapshot in the same
 AWS Region.
 
@@ -122,7 +122,7 @@ specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion}
 autogenerates a pre-signed URL that is a valid request for the operation
 that can be executed in the source AWS Region.
 
-If you supply a value for this operation\'s \code{SourceRegion} parameter, a
+If you supply a value for this operation's \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
 
 \item{OptionGroupName}{The name of an option group to associate with the copy of the snapshot.
@@ -138,7 +138,7 @@ in the \emph{Amazon RDS User Guide.}}
 }
 \description{
 Copies the specified DB snapshot. The source DB snapshot must be in the
-\"available\" state.
+"available" state.
 }
 \details{
 You can copy a snapshot from one AWS Region to another. In that case,

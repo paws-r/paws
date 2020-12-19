@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_list_web_ac_ls}
 \alias{waf_list_web_ac_ls}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_list_web_ac_ls(NextMarker, Limit)
 }

@@ -10,7 +10,7 @@ iot_create_authorizer(authorizerName, authorizerFunctionArn,
 \arguments{
 \item{authorizerName}{[required] The authorizer name.}
 
-\item{authorizerFunctionArn}{[required] The ARN of the authorizer\'s Lambda function.}
+\item{authorizerFunctionArn}{[required] The ARN of the authorizer's Lambda function.}
 
 \item{tokenKeyName}{The name of the token key used to extract the token from the HTTP
 headers.}
@@ -22,13 +22,13 @@ custom authentication service.}
 
 \item{tags}{Metadata which can be used to manage the custom authorizer.
 
-For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+For URI Request parameters use format: ...key1=value1&key2=value2...
 
 For the CLI command-line parameter use format: &&tags
-\"key1=value1&key2=value2\\...\"
+"key1=value1&key2=value2..."
 
-For the cli-input-json file use format: \"tags\":
-\"key1=value1&key2=value2\\...\"}
+For the cli-input-json file use format: "tags":
+"key1=value1&key2=value2..."}
 
 \item{signingDisabled}{Specifies whether AWS IoT validates the token signature in an
 authorization request.}

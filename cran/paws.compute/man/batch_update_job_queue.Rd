@@ -10,7 +10,7 @@ batch_update_job_queue(jobQueue, state, priority,
 \arguments{
 \item{jobQueue}{[required] The name or the Amazon Resource Name (ARN) of the job queue.}
 
-\item{state}{Describes the queue\'s ability to accept new jobs.}
+\item{state}{Describes the queue's ability to accept new jobs.}
 
 \item{priority}{The priority of the job queue. Job queues with a higher priority (or a
 higher integer value for the \code{priority} parameter) are evaluated first

@@ -12,8 +12,8 @@ route53_list_traffic_policy_versions(Id, TrafficPolicyVersionMarker,
 \item{Id}{[required] Specify the value of \code{Id} of the traffic policy for which you want to
 list all versions.}
 
-\item{TrafficPolicyVersionMarker}{For your first request to \code{ListTrafficPolicyVersions}, don\'t include
-the \code{TrafficPolicyVersionMarker} parameter.
+\item{TrafficPolicyVersionMarker}{For your first request to \code{ListTrafficPolicyVersions}, don't include the
+\code{TrafficPolicyVersionMarker} parameter.
 
 If you have more traffic policy versions than the value of \code{MaxItems},
 \code{ListTrafficPolicyVersions} returns only the first group of \code{MaxItems}

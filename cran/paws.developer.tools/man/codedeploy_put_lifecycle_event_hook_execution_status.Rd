@@ -11,7 +11,7 @@ codedeploy_put_lifecycle_event_hook_execution_status(deploymentId,
 \item{deploymentId}{The unique ID of a deployment. Pass this ID to a Lambda function that
 validates a deployment lifecycle event.}
 
-\item{lifecycleEventHookExecutionId}{The execution ID of a deployment\'s lifecycle hook. A deployment
+\item{lifecycleEventHookExecutionId}{The execution ID of a deployment's lifecycle hook. A deployment
 lifecycle hook is specified in the \code{hooks} section of the AppSpec file.}
 
 \item{status}{The result of a Lambda function that validates a deployment lifecycle
@@ -26,8 +26,8 @@ Amazon ECS deployments, the available lifecycle hooks are
 \code{BeforeInstall}, \code{AfterInstall}, \code{AfterAllowTestTraffic},
 \code{BeforeAllowTraffic}, and \code{AfterAllowTraffic}. Lambda validation
 functions return \code{Succeeded} or \code{Failed}. For more information, see
-\href{https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda}{AppSpec \'hooks\' Section for an AWS Lambda Deployment}
-and \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs}{AppSpec \'hooks\' Section for an Amazon ECS Deployment}.
+\href{https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda}{AppSpec 'hooks' Section for an AWS Lambda Deployment}
+and \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs}{AppSpec 'hooks' Section for an Amazon ECS Deployment}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_lifecycle_event_hook_execution_status(

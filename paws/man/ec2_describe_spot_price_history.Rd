@@ -15,9 +15,8 @@ ec2_describe_spot_price_history(Filters, AvailabilityZone, DryRun,
 be returned.
 \item \code{instance-type} - The type of instance (for example, \code{m3.medium}).
 \item \code{product-description} - The product description for the Spot price
-(\code{Linux/UNIX} \\| \verb{SUSE Linux} \\| \code{Windows} \\|
-\verb{Linux/UNIX (Amazon VPC)} \\| \verb{SUSE Linux (Amazon VPC)} \\|
-\verb{Windows (Amazon VPC)}).
+(\code{Linux/UNIX} | \verb{SUSE Linux} | \code{Windows} | \verb{Linux/UNIX (Amazon VPC)}
+| \verb{SUSE Linux (Amazon VPC)} | \verb{Windows (Amazon VPC)}).
 \item \code{spot-price} - The Spot price. The value must match exactly (or use
 wildcards; greater than or less than comparison is not supported).
 \item \code{timestamp} - The time stamp of the Spot price history, in UTC

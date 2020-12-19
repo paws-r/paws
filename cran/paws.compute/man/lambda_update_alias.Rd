@@ -30,7 +30,7 @@ the function name, it is limited to 64 characters in length.}
 \item{RoutingConfig}{The \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html#configuring-alias-routing}{routing configuration}
 of the alias.}
 
-\item{RevisionId}{Only update the alias if the revision ID matches the ID that\'s
+\item{RevisionId}{Only update the alias if the revision ID matches the ID that's
 specified. Use this option to avoid modifying an alias that has changed
 since you last read it.}
 }

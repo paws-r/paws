@@ -20,7 +20,7 @@ Virginia) as follows:
 \item API and SDKs - For all calls, use the Region endpoint us-east-1.
 }}
 
-\item{Rules}{[required] An array of Rule that you\'re configuring to use in a rule group or web
+\item{Rules}{[required] An array of Rule that you're configuring to use in a rule group or web
 ACL.}
 }
 \description{

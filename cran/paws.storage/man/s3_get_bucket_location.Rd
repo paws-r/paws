@@ -10,7 +10,7 @@ s3_get_bucket_location(Bucket)
 \item{Bucket}{[required] The name of the bucket for which to get the location.}
 }
 \description{
-Returns the Region the bucket resides in. You set the bucket\'s Region
+Returns the Region the bucket resides in. You set the bucket's Region
 using the \code{LocationConstraint} request parameter in a \code{CreateBucket}
 request. For more information, see CreateBucket.
 }

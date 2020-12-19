@@ -9,23 +9,23 @@ organizations_list_parents(ChildId, NextToken, MaxResults)
 }
 \arguments{
 \item{ChildId}{[required] The unique identifier (ID) of the OU or account whose parent containers
-you want to list. Don\'t specify a root.
+you want to list. Don't specify a root.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a child ID
 string requires one of the following:
 \itemize{
 \item \strong{Account} - A string that consists of exactly 12 digits.
-\item \strong{Organizational unit (OU)} - A string that begins with \"ou-\"
+\item \strong{Organizational unit (OU)} - A string that begins with "ou-"
 followed by from 4 to 32 lowercase letters or digits (the ID of the
-root that contains the OU). This string is followed by a second
-\"-\" dash and from 8 to 32 additional lowercase letters or digits.
+root that contains the OU). This string is followed by a second "-"
+dash and from 8 to 32 additional lowercase letters or digits.
 }}
 
 \item{NextToken}{The parameter for receiving additional results if you receive a
 \code{NextToken} response in a previous request. A \code{NextToken} response
 indicates that more output is available. Set this parameter to the value
-of the previous call\'s \code{NextToken} response to indicate where the
-output should continue from.}
+of the previous call's \code{NextToken} response to indicate where the output
+should continue from.}
 
 \item{MaxResults}{The total number of results that you want included on each page of the
 response. If you do not include this parameter, it defaults to a value
@@ -51,9 +51,9 @@ empty set of results even when there are more results available. The
 \code{NextToken} response parameter value is \code{null} \emph{only} when there are no
 more results to display.
 
-This operation can be called only from the organization\'s master
-account or by a member account that is a delegated administrator for an
-AWS service.
+This operation can be called only from the organization's master account
+or by a member account that is a delegated administrator for an AWS
+service.
 
 In the current release, a child can have only a single parent.
 }

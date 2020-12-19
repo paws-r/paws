@@ -123,11 +123,11 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
 #' Category that's defined in the account
 #'
 #' Returns the name, ARN, rules, definition, and effective dates of a Cost
-#' Category that\'s defined in the account.
+#' Category that's defined in the account.
 #' 
 #' You have the option to use `EffectiveOn` to return a Cost Category that
 #' is active on a specific date. If there is no `EffectiveOn` specified,
-#' you'll see a Cost Category that is effective on the current date. If
+#' you’ll see a Cost Category that is effective on the current date. If
 #' Cost Category is still effective, `EffectiveEnd` is omitted in the
 #' response.
 #'
@@ -188,16 +188,16 @@ costexplorer_describe_cost_category_definition <- function(CostCategoryArn, Effe
 #' retrieved from `2017-01-01` up to and including `2017-04-30` but not
 #' including `2017-05-01`.
 #' @param Granularity Sets the AWS cost granularity to `MONTHLY` or `DAILY`, or `HOURLY`. If
-#' `Granularity` isn\'t set, the response object doesn\'t include the
+#' `Granularity` isn't set, the response object doesn't include the
 #' `Granularity`, either `MONTHLY` or `DAILY`, or `HOURLY`.
 #' @param Filter Filters AWS costs by different dimensions. For example, you can specify
 #' `SERVICE` and `LINKED_ACCOUNT` and get the costs that are associated
-#' with that account\'s usage of that service. You can nest `Expression`
+#' with that account's usage of that service. You can nest `Expression`
 #' objects to define any combination of dimension filters. For more
 #' information, see
 #' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
 #' @param Metrics Which metrics are returned in the query. For more information about
-#' blended and unblended rates, see [Why does the \"blended\" annotation
+#' blended and unblended rates, see [Why does the "blended" annotation
 #' appear on some line items in my
 #' bill?](http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
 #' 
@@ -207,7 +207,7 @@ costexplorer_describe_cost_category_definition <- function(CostCategoryArn, Effe
 #' 
 #' If you return the `UsageQuantity` metric, the service aggregates all
 #' usage numbers without taking into account the units. For example, if you
-#' aggregate `usageQuantity` across all of Amazon EC2, the results aren\'t
+#' aggregate `usageQuantity` across all of Amazon EC2, the results aren't
 #' meaningful because Amazon EC2 compute hours and data transfer are
 #' measured in different units (for example, hours vs. GB). To get more
 #' meaningful `UsageQuantity` metrics, filter by `UsageType` or
@@ -312,7 +312,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity = NULL, Filt
 #' [GetDimensionValues](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html)
 #' operation. Master accounts in an organization in AWS Organizations have
 #' access to all member accounts. This API is currently available for the
-#' Amazon Elastic Compute Cloud -- Compute service only.
+#' Amazon Elastic Compute Cloud – Compute service only.
 #' 
 #' This is an opt-in only feature. You can enable this feature from the
 #' Cost Explorer Settings page. For information on how to access the
@@ -332,11 +332,11 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity = NULL, Filt
 #' `2017-01-01` up to and including `2017-04-30` but not including
 #' `2017-05-01`.
 #' @param Granularity Sets the AWS cost granularity to `MONTHLY`, `DAILY`, or `HOURLY`. If
-#' `Granularity` isn\'t set, the response object doesn\'t include the
+#' `Granularity` isn't set, the response object doesn't include the
 #' `Granularity`, `MONTHLY`, `DAILY`, or `HOURLY`.
 #' @param Filter Filters Amazon Web Services costs by different dimensions. For example,
 #' you can specify `SERVICE` and `LINKED_ACCOUNT` and get the costs that
-#' are associated with that account\'s usage of that service. You can nest
+#' are associated with that account's usage of that service. You can nest
 #' `Expression` objects to define any combination of dimension filters. For
 #' more information, see
 #' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
@@ -344,7 +344,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity = NULL, Filt
 #' The `GetCostAndUsageWithResources` operation requires that you either
 #' group by or filter by a `ResourceId`.
 #' @param Metrics Which metrics are returned in the query. For more information about
-#' blended and unblended rates, see [Why does the \"blended\" annotation
+#' blended and unblended rates, see [Why does the "blended" annotation
 #' appear on some line items in my
 #' bill?](http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
 #' 
@@ -354,7 +354,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity = NULL, Filt
 #' 
 #' If you return the `UsageQuantity` metric, the service aggregates all
 #' usage numbers without taking the units into account. For example, if you
-#' aggregate `usageQuantity` across all of Amazon EC2, the results aren\'t
+#' aggregate `usageQuantity` across all of Amazon EC2, the results aren't
 #' meaningful because Amazon EC2 compute hours and data transfer are
 #' measured in different units (for example, hours vs. GB). To get more
 #' meaningful `UsageQuantity` metrics, filter by `UsageType` or
@@ -456,7 +456,7 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #' @param TimePeriod &#91;required&#93; The period of time that you want the forecast to cover.
 #' @param Metric &#91;required&#93; Which metric Cost Explorer uses to create your forecast. For more
 #' information about blended and unblended rates, see [Why does the
-#' \"blended\" annotation appear on some line items in my
+#' "blended" annotation appear on some line items in my
 #' bill?](http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
 #' 
 #' Valid values for a `GetCostForecast` call are the following:
@@ -613,7 +613,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #'     operation includes a unit attribute. Examples include GB and Hrs.
 #' 
 #' -   USAGE\\_TYPE\\_GROUP - The grouping of common usage types. An example
-#'     is Amazon EC2: CloudWatch -- Alarms. The response for this operation
+#'     is Amazon EC2: CloudWatch – Alarms. The response for this operation
 #'     includes a unit attribute.
 #' 
 #' -   RECORD\\_TYPE - The different types of charges such as RI fees, usage
@@ -716,7 +716,7 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #' Retrieves the reservation coverage for your account. This enables you to
 #' see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache,
 #' Amazon Relational Database Service, or Amazon Redshift usage is covered
-#' by a reservation. An organization\'s master account can see the coverage
+#' by a reservation. An organization's master account can see the coverage
 #' of the associated member accounts. This supports dimensions, Cost
 #' Categories, and nested expressions. For any time period, you can filter
 #' data about reservation usage by the following dimensions:
@@ -783,9 +783,9 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #' @param Granularity The granularity of the AWS cost data for the reservation. Valid values
 #' are `MONTHLY` and `DAILY`.
 #' 
-#' If `GroupBy` is set, `Granularity` can\'t be set. If `Granularity`
-#' isn\'t set, the response object doesn\'t include `Granularity`, either
-#' `MONTHLY` or `DAILY`.
+#' If `GroupBy` is set, `Granularity` can't be set. If `Granularity` isn't
+#' set, the response object doesn't include `Granularity`, either `MONTHLY`
+#' or `DAILY`.
 #' 
 #' The `GetReservationCoverage` operation supports only `DAILY` and
 #' `MONTHLY` granularities.
@@ -820,9 +820,9 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
 #' object as the other operations, but only `AND` is supported among each
 #' dimension. You can nest only one level deep. If there are multiple
-#' values for a dimension, they are OR\'d together.
+#' values for a dimension, they are OR'd together.
 #' 
-#' If you don\'t provide a `SERVICE` filter, Cost Explorer defaults to EC2.
+#' If you don't provide a `SERVICE` filter, Cost Explorer defaults to EC2.
 #' 
 #' Cost category is also supported.
 #' @param Metrics The measurement that you want your reservation coverage reported in.
@@ -1011,9 +1011,9 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #' usage data is retrieved from `2017-01-01` up to and including
 #' `2017-04-30` but not including `2017-05-01`.
 #' @param GroupBy Groups only by `SUBSCRIPTION_ID`. Metadata is included.
-#' @param Granularity If `GroupBy` is set, `Granularity` can\'t be set. If `Granularity`
-#' isn\'t set, the response object doesn\'t include `Granularity`, either
-#' `MONTHLY` or `DAILY`. If both `GroupBy` and `Granularity` aren\'t set,
+#' @param Granularity If `GroupBy` is set, `Granularity` can't be set. If `Granularity` isn't
+#' set, the response object doesn't include `Granularity`, either `MONTHLY`
+#' or `DAILY`. If both `GroupBy` and `Granularity` aren't set,
 #' `GetReservationUtilization` defaults to `DAILY`.
 #' 
 #' The `GetReservationUtilization` operation supports only `DAILY` and
@@ -1047,7 +1047,7 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
 #' object as the other operations, but only `AND` is supported among each
 #' dimension, and nesting is supported up to only one level deep. If there
-#' are multiple values for a dimension, they are OR\'d together.
+#' are multiple values for a dimension, they are OR'd together.
 #' @param NextPageToken The token to retrieve the next set of results. AWS provides the token
 #' when the response from a previous call has more results than the maximum
 #' page size.
@@ -1146,7 +1146,7 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
 #' view your estimated savings associated with recommendations with
 #' consideration of existing Savings Plans or RI benefits, or neither.
 #' @param Service &#91;required&#93; The specific service that you want recommendations for. The only valid
-#' value for `GetRightsizingRecommendation` is \"`AmazonEC2`\".
+#' value for `GetRightsizingRecommendation` is "`AmazonEC2`".
 #' @param PageSize The number of recommendations that you want returned in a single
 #' response object.
 #' @param NextPageToken The pagination token that indicates the next set of results that you
@@ -1222,7 +1222,7 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
 #'
 #' Retrieves the Savings Plans covered for your account. This enables you
 #' to see how much of your cost is covered by a Savings Plan. An
-#' organization's master account can see the coverage of the associated
+#' organization’s master account can see the coverage of the associated
 #' member accounts. This supports dimensions, Cost Categories, and nested
 #' expressions. For any time period, you can filter data for Savings Plans
 #' usage with the following dimensions:
@@ -1244,12 +1244,12 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
 #'
 #' @param TimePeriod &#91;required&#93; The time period that you want the usage and costs for. The `Start` date
 #' must be within 13 months. The `End` date must be after the `Start` date,
-#' and before the current date. Future dates can\'t be used as an `End`
+#' and before the current date. Future dates can't be used as an `End`
 #' date.
 #' @param GroupBy You can group the data using the attributes `INSTANCE_FAMILY`, `REGION`,
 #' or `SERVICE`.
 #' @param Granularity The granularity of the Amazon Web Services cost data for your Savings
-#' Plans. `Granularity` can\'t be set if `GroupBy` is set.
+#' Plans. `Granularity` can't be set if `GroupBy` is set.
 #' 
 #' The `GetSavingsPlansCoverage` operation supports only `DAILY` and
 #' `MONTHLY` granularities.
@@ -1267,7 +1267,7 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
 #' `GetSavingsPlansCoverage` uses the same
 #' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
 #' object as the other operations, but only `AND` is supported among each
-#' dimension. If there are multiple values for a dimension, they are OR\'d
+#' dimension. If there are multiple values for a dimension, they are OR'd
 #' together.
 #' 
 #' Cost category is also supported.
@@ -1477,7 +1477,7 @@ costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansT
 #'
 #' @param TimePeriod &#91;required&#93; The time period that you want the usage and costs for. The `Start` date
 #' must be within 13 months. The `End` date must be after the `Start` date,
-#' and before the current date. Future dates can\'t be used as an `End`
+#' and before the current date. Future dates can't be used as an `End`
 #' date.
 #' @param Granularity The granularity of the Amazon Web Services utillization data for your
 #' Savings Plans.
@@ -1572,8 +1572,8 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
 #' data for a given time period
 #'
 #' Retrieves attribute data along with aggregate utilization and savings
-#' data for a given time period. This doesn\'t support granular or grouped
-#' data (daily/monthly) in response. You can\'t retrieve data by dates in a
+#' data for a given time period. This doesn't support granular or grouped
+#' data (daily/monthly) in response. You can't retrieve data by dates in a
 #' single response similar to `GetSavingsPlanUtilization`, but you have the
 #' option to make multiple calls to `GetSavingsPlanUtilizationDetails` by
 #' providing individual dates. You can use `GetDimensionValues` in
@@ -1588,7 +1588,7 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
 #'
 #' @param TimePeriod &#91;required&#93; The time period that you want the usage and costs for. The `Start` date
 #' must be within 13 months. The `End` date must be after the `Start` date,
-#' and before the current date. Future dates can\'t be used as an `End`
+#' and before the current date. Future dates can't be used as an `End`
 #' date.
 #' @param Filter Filters Savings Plans utilization coverage data for active Savings Plans
 #' dimensions. You can filter data with the following dimensions:
@@ -1840,7 +1840,7 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
 #' Returns the name, ARN, `NumberOfRules` and effective dates of all Cost
 #' Categories defined in the account. You have the option to use
 #' `EffectiveOn` to return a list of Cost Categories that were active on a
-#' specific date. If there is no `EffectiveOn` specified, you'll see Cost
+#' specific date. If there is no `EffectiveOn` specified, you’ll see Cost
 #' Categories that are effective on the current date. If Cost Category is
 #' still effective, `EffectiveEnd` is omitted in the response.
 #' `ListCostCategoryDefinitions` supports pagination. The request can have
@@ -1888,8 +1888,8 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
 #' Updates an existing Cost Category
 #'
 #' Updates an existing Cost Category. Changes made to the Cost Category
-#' rules will be used to categorize the current month's expenses and future
-#' expenses. This won't change categorization for the previous months.
+#' rules will be used to categorize the current month’s expenses and future
+#' expenses. This won’t change categorization for the previous months.
 #'
 #' @usage
 #' costexplorer_update_cost_category_definition(CostCategoryArn,

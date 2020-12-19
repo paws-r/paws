@@ -21,8 +21,8 @@ NULL
 #' @param CredentialsArn This property is part of quick create. It specifies the credentials
 #' required for the integration, if any. For a Lambda integration, three
 #' options are available. To specify an IAM Role for API Gateway to assume,
-#' use the role\'s Amazon Resource Name (ARN). To require that the
-#' caller\'s identity be passed through from the request, specify
+#' use the role's Amazon Resource Name (ARN). To require that the caller's
+#' identity be passed through from the request, specify
 #' arn:aws:iam::*:user/*. To use resource-based permissions on supported
 #' AWS services, specify null. Currently, this property is not used for
 #' HTTP integrations. Supported only for HTTP APIs.
@@ -31,14 +31,14 @@ NULL
 #' WebSocket APIs.
 #' @param Name &#91;required&#93; The name of the API.
 #' @param ProtocolType &#91;required&#93; The API protocol.
-#' @param RouteKey This property is part of quick create. If you don\'t specify a routeKey,
-#' a default route of \\$default is created. The \\$default route acts as a
+#' @param RouteKey This property is part of quick create. If you don't specify a routeKey,
+#' a default route of $default is created. The $default route acts as a
 #' catch-all for any request made to your API, for a particular stage. The
-#' \\$default route key can\'t be modified. You can add routes after
-#' creating the API, and you can update the route keys of additional
-#' routes. Supported only for HTTP APIs.
+#' $default route key can't be modified. You can add routes after creating
+#' the API, and you can update the route keys of additional routes.
+#' Supported only for HTTP APIs.
 #' @param RouteSelectionExpression The route selection expression for the API. For HTTP APIs, the
-#' routeSelectionExpression must be \\$\{request.method\} \\$\{request.path\}. If
+#' routeSelectionExpression must be $\{request.method\} $\{request.path\}. If
 #' not provided, this will be the default for HTTP APIs. This property is
 #' required for WebSocket APIs.
 #' @param Tags The collection of tags. Each tag element is associated with a given
@@ -160,15 +160,15 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerCredentialsArn Specifies the required credentials as an IAM role for API Gateway to
 #' invoke the authorizer. To specify an IAM role for API Gateway to assume,
-#' use the role\'s Amazon Resource Name (ARN). To use resource-based
+#' use the role's Amazon Resource Name (ARN). To use resource-based
 #' permissions on the Lambda function, specify null. Supported only for
 #' REQUEST authorizers.
-#' @param AuthorizerResultTtlInSeconds Authorizer caching is not currently supported. Don\'t specify this value
+#' @param AuthorizerResultTtlInSeconds Authorizer caching is not currently supported. Don't specify this value
 #' for authorizers.
 #' @param AuthorizerType &#91;required&#93; The authorizer type. For WebSocket APIs, specify REQUEST for a Lambda
 #' function using incoming request parameters. For HTTP APIs, specify JWT
 #' to use JSON Web Tokens.
-#' @param AuthorizerUri The authorizer\'s Uniform Resource Identifier (URI). For REQUEST
+#' @param AuthorizerUri The authorizer's Uniform Resource Identifier (URI). For REQUEST
 #' authorizers, this must be a well-formed Lambda function URI, for
 #' example,
 #' arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account\\_id\}:function:\{lambda\\_function\\_name\}/invocations.
@@ -197,7 +197,7 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
 #' For JWT, a single entry that specifies where to extract the JSON Web
 #' Token (JWT )from inbound requests. Currently only header-based and query
 #' parameter-based selections are supported, for example
-#' \"\\$request.header.Authorization\".
+#' "$request.header.Authorization".
 #' @param IdentityValidationExpression This parameter is not used.
 #' @param JwtConfiguration Represents the configuration of a JWT authorizer. Required for the JWT
 #' authorizer type. Supported only for HTTP APIs.
@@ -375,12 +375,12 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' response without modification.
 #' @param CredentialsArn Specifies the credentials required for the integration, if any. For AWS
 #' integrations, three options are available. To specify an IAM Role for
-#' API Gateway to assume, use the role\'s Amazon Resource Name (ARN). To
-#' require that the caller\'s identity be passed through from the request,
+#' API Gateway to assume, use the role's Amazon Resource Name (ARN). To
+#' require that the caller's identity be passed through from the request,
 #' specify the string arn:aws:iam::*:user/*. To use resource-based
 #' permissions on supported AWS services, specify null.
 #' @param Description The description of the integration.
-#' @param IntegrationMethod Specifies the integration\'s HTTP method type.
+#' @param IntegrationMethod Specifies the integration's HTTP method type.
 #' @param IntegrationType &#91;required&#93; The integration type of an integration. One of the following:
 #' 
 #' AWS: for integrating the route or method request with an AWS service
@@ -403,7 +403,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' integrations, use an HTTP\\_PROXY integration.
 #' 
 #' MOCK: for integrating the route or method request with API Gateway as a
-#' \"loopback\" endpoint without invoking any backend. Supported only for
+#' "loopback" endpoint without invoking any backend. Supported only for
 #' WebSocket APIs.
 #' @param IntegrationUri For a Lambda integration, specify the URI of a Lambda function.
 #' 
@@ -539,7 +539,7 @@ apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' pattern of integration.response.header.\{name\} or
 #' integration.response.body.\{JSON-expression\}, where \{name\} is a valid and
 #' unique response header name and \{JSON-expression\} is a valid JSON
-#' expression without the \\$ prefix.
+#' expression without the $ prefix.
 #' @param ResponseTemplates The collection of response templates for the integration response as a
 #' string-to-string map of key-value pairs. Response templates are
 #' represented as a key/value map, with a content-type as the key and a
@@ -592,7 +592,7 @@ apigatewayv2_create_integration_response <- function(ApiId, ContentHandlingStrat
 #' apigatewayv2_create_model(ApiId, ContentType, Description, Name, Schema)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ContentType The content-type for the model, for example, \"application/json\".
+#' @param ContentType The content-type for the model, for example, "application/json".
 #' @param Description The description of the model.
 #' @param Name &#91;required&#93; The name of the model. Must be alphanumeric.
 #' @param Schema &#91;required&#93; The schema for the model. For application/json models, this should be
@@ -782,7 +782,7 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #' @param StageName &#91;required&#93; The name of the stage.
 #' @param StageVariables A map that defines the stage variables for a Stage. Variable names can
 #' have alphanumeric and underscore characters, and the values must match
-#' \[A-Za-z0-9-.\\_\~:/?\\#&=,\]+.
+#' \[A-Za-z0-9-.\\_~:/?\\#&=,\]+.
 #' @param Tags The collection of tags. Each tag element is associated with a given
 #' resource.
 #'
@@ -1525,8 +1525,8 @@ apigatewayv2_delete_vpc_link <- function(VpcLinkId) {
 #' and YAML.
 #' @param Specification &#91;required&#93; The version of the API specification to use. OAS30, for OpenAPI 3.0, is
 #' the only supported value.
-#' @param StageName The name of the API stage to export. If you don\'t specify this
-#' property, a representation of the latest API configuration is exported.
+#' @param StageName The name of the API stage to export. If you don't specify this property,
+#' a representation of the latest API configuration is exported.
 #'
 #' @section Request syntax:
 #' ```
@@ -2773,8 +2773,8 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param CredentialsArn This property is part of quick create. It specifies the credentials
 #' required for the integration, if any. For a Lambda integration, three
 #' options are available. To specify an IAM Role for API Gateway to assume,
-#' use the role\'s Amazon Resource Name (ARN). To require that the
-#' caller\'s identity be passed through from the request, specify
+#' use the role's Amazon Resource Name (ARN). To require that the caller's
+#' identity be passed through from the request, specify
 #' arn:aws:iam::*:user/*. To use resource-based permissions on supported
 #' AWS services, specify null. Currently, this property is not used for
 #' HTTP integrations. If provided, this value replaces the credentials
@@ -2789,14 +2789,14 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' route key of the quick create route. Additional routes may still be
 #' added after the API is updated. Supported only for HTTP APIs.
 #' @param RouteSelectionExpression The route selection expression for the API. For HTTP APIs, the
-#' routeSelectionExpression must be \\$\{request.method\} \\$\{request.path\}. If
+#' routeSelectionExpression must be $\{request.method\} $\{request.path\}. If
 #' not provided, this will be the default for HTTP APIs. This property is
 #' required for WebSocket APIs.
 #' @param Target This property is part of quick create. For HTTP integrations, specify a
 #' fully qualified URL. For Lambda integrations, specify a function ARN.
 #' The type of the integration will be HTTP\\_PROXY or AWS\\_PROXY,
 #' respectively. The value provided updates the integration URI and
-#' integration type. You can update a quick-created target, but you can\'t
+#' integration type. You can update a quick-created target, but you can't
 #' remove it from an API. Supported only for HTTP APIs.
 #' @param Version A version identifier for the API.
 #'
@@ -2910,15 +2910,15 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param AuthorizerCredentialsArn Specifies the required credentials as an IAM role for API Gateway to
 #' invoke the authorizer. To specify an IAM role for API Gateway to assume,
-#' use the role\'s Amazon Resource Name (ARN). To use resource-based
+#' use the role's Amazon Resource Name (ARN). To use resource-based
 #' permissions on the Lambda function, specify null.
 #' @param AuthorizerId &#91;required&#93; The authorizer identifier.
-#' @param AuthorizerResultTtlInSeconds Authorizer caching is not currently supported. Don\'t specify this value
+#' @param AuthorizerResultTtlInSeconds Authorizer caching is not currently supported. Don't specify this value
 #' for authorizers.
 #' @param AuthorizerType The authorizer type. For WebSocket APIs, specify REQUEST for a Lambda
 #' function using incoming request parameters. For HTTP APIs, specify JWT
 #' to use JSON Web Tokens.
-#' @param AuthorizerUri The authorizer\'s Uniform Resource Identifier (URI). For REQUEST
+#' @param AuthorizerUri The authorizer's Uniform Resource Identifier (URI). For REQUEST
 #' authorizers, this must be a well-formed Lambda function URI, for
 #' example,
 #' arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account\\_id\}:function:\{lambda\\_function\\_name\}/invocations.
@@ -2947,7 +2947,7 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 #' For JWT, a single entry that specifies where to extract the JSON Web
 #' Token (JWT) from inbound requests. Currently only header-based and query
 #' parameter-based selections are supported, for example
-#' \"\\$request.header.Authorization\".
+#' "$request.header.Authorization".
 #' @param IdentityValidationExpression This parameter is not used.
 #' @param JwtConfiguration Represents the configuration of a JWT authorizer. Required for the JWT
 #' authorizer type. Supported only for HTTP APIs.
@@ -3121,13 +3121,13 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' response without modification.
 #' @param CredentialsArn Specifies the credentials required for the integration, if any. For AWS
 #' integrations, three options are available. To specify an IAM Role for
-#' API Gateway to assume, use the role\'s Amazon Resource Name (ARN). To
-#' require that the caller\'s identity be passed through from the request,
+#' API Gateway to assume, use the role's Amazon Resource Name (ARN). To
+#' require that the caller's identity be passed through from the request,
 #' specify the string arn:aws:iam::*:user/*. To use resource-based
 #' permissions on supported AWS services, specify null.
 #' @param Description The description of the integration
 #' @param IntegrationId &#91;required&#93; The integration ID.
-#' @param IntegrationMethod Specifies the integration\'s HTTP method type.
+#' @param IntegrationMethod Specifies the integration's HTTP method type.
 #' @param IntegrationType The integration type of an integration. One of the following:
 #' 
 #' AWS: for integrating the route or method request with an AWS service
@@ -3150,7 +3150,7 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' integrations, use an HTTP\\_PROXY integration.
 #' 
 #' MOCK: for integrating the route or method request with API Gateway as a
-#' \"loopback\" endpoint without invoking any backend. Supported only for
+#' "loopback" endpoint without invoking any backend. Supported only for
 #' WebSocket APIs.
 #' @param IntegrationUri For a Lambda integration, specify the URI of a Lambda function.
 #' 
@@ -3288,7 +3288,7 @@ apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' pattern of integration.response.header.\{name\} or
 #' integration.response.body.\{JSON-expression\} , where \{name\} is a valid
 #' and unique response header name and \{JSON-expression\} is a valid JSON
-#' expression without the \\$ prefix.
+#' expression without the $ prefix.
 #' @param ResponseTemplates The collection of response templates for the integration response as a
 #' string-to-string map of key-value pairs. Response templates are
 #' represented as a key/value map, with a content-type as the key and a
@@ -3343,7 +3343,7 @@ apigatewayv2_update_integration_response <- function(ApiId, ContentHandlingStrat
 #'   Name, Schema)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
-#' @param ContentType The content-type for the model, for example, \"application/json\".
+#' @param ContentType The content-type for the model, for example, "application/json".
 #' @param Description The description of the model.
 #' @param ModelId &#91;required&#93; The model ID.
 #' @param Name The name of the model.
@@ -3533,7 +3533,7 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #' deployment. The default value is false.
 #' @param ClientCertificateId The identifier of a client certificate for a Stage.
 #' @param DefaultRouteSettings The default route settings for the stage.
-#' @param DeploymentId The deployment identifier for the API stage. Can\'t be updated if
+#' @param DeploymentId The deployment identifier for the API stage. Can't be updated if
 #' autoDeploy is enabled.
 #' @param Description The description for the API stage.
 #' @param RouteSettings Route settings for the stage.
@@ -3541,7 +3541,7 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #' hyphens, and underscores. Maximum length is 128 characters.
 #' @param StageVariables A map that defines the stage variables for a Stage. Variable names can
 #' have alphanumeric and underscore characters, and the values must match
-#' \[A-Za-z0-9-.\\_\~:/?\\#&=,\]+.
+#' \[A-Za-z0-9-.\\_~:/?\\#&=,\]+.
 #'
 #' @section Request syntax:
 #' ```

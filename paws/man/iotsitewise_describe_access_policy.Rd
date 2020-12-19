@@ -11,7 +11,7 @@ iotsitewise_describe_access_policy(accessPolicyId)
 \item{accessPolicyId}{[required] The ID of the access policy.}
 }
 \description{
-Describes an access policy, which specifies an AWS SSO user or group\'s
+Describes an access policy, which specifies an AWS SSO user or group's
 access to an AWS IoT SiteWise Monitor portal or project.
 }
 \section{Request syntax}{

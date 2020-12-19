@@ -379,8 +379,8 @@ savingsplans_list_tags_for_resource <- function(resourceArn) {
 #' savingsplans_tag_resource(resourceArn, tags)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#' @param tags &#91;required&#93; One or more tags. For example, \{ \"tags\": \{\"key1\":\"value1\",
-#' \"key2\":\"value2\"\} \}.
+#' @param tags &#91;required&#93; One or more tags. For example, \{ "tags": \{"key1":"value1",
+#' "key2":"value2"\} \}.
 #'
 #' @section Request syntax:
 #' ```

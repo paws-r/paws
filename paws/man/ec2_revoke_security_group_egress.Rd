@@ -17,7 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GroupId}{[required] The ID of the security group.}
 
-\item{IpPermissions}{The sets of IP permissions. You can\'t specify a destination security
+\item{IpPermissions}{The sets of IP permissions. You can't specify a destination security
 group and a CIDR IP address range in the same set of permissions.}
 
 \item{CidrIp}{Not supported. Use a set of IP permissions to specify the CIDR.}
@@ -37,9 +37,9 @@ security group.}
 }
 \description{
 [VPC only] Removes the specified egress rules from a security group
-for EC2-VPC. This action doesn\'t apply to security groups for use in
+for EC2-VPC. This action doesn't apply to security groups for use in
 EC2-Classic. To remove a rule, the values that you specify (for example,
-ports) must match the existing rule\'s values exactly.
+ports) must match the existing rule's values exactly.
 }
 \details{
 Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or

@@ -13,7 +13,7 @@ route53resolver_update_resolver_rule(ResolverRuleId, Config)
 }
 \description{
 Updates settings for a specified resolver rule. \code{ResolverRuleId} is
-required, and all other parameters are optional. If you don\'t specify a
+required, and all other parameters are optional. If you don't specify a
 parameter, it retains its current value.
 }
 \section{Request syntax}{

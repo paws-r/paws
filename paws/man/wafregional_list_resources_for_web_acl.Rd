@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_list_resources_for_web_acl}
 \alias{wafregional_list_resources_for_web_acl}
-\title{This is AWS WAF CLASSIC REGIONAL documentation}
+\title{This is AWS WAF Classic Regional documentation}
 \usage{
 wafregional_list_resources_for_web_acl(WebACLId, ResourceType)
 }

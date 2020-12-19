@@ -27,31 +27,31 @@ you use.
 \strong{MySQL}
 
 The name of the database to create when the DB instance is created. If
-this parameter isn\'t specified, no database is created in the DB
+this parameter isn't specified, no database is created in the DB
 instance.
 
 Constraints:
 \itemize{
 \item Must contain 1 to 64 letters or numbers.
-\item Can\'t be a word reserved by the specified database engine
+\item Can't be a word reserved by the specified database engine
 }
 
 \strong{MariaDB}
 
 The name of the database to create when the DB instance is created. If
-this parameter isn\'t specified, no database is created in the DB
+this parameter isn't specified, no database is created in the DB
 instance.
 
 Constraints:
 \itemize{
 \item Must contain 1 to 64 letters or numbers.
-\item Can\'t be a word reserved by the specified database engine
+\item Can't be a word reserved by the specified database engine
 }
 
 \strong{PostgreSQL}
 
 The name of the database to create when the DB instance is created. If
-this parameter isn\'t specified, the default \"postgres\" database is
+this parameter isn't specified, the default "postgres" database is
 created in the DB instance.
 
 Constraints:
@@ -59,20 +59,20 @@ Constraints:
 \item Must contain 1 to 63 letters, numbers, or underscores.
 \item Must begin with a letter or an underscore. Subsequent characters can
 be letters, underscores, or digits (0-9).
-\item Can\'t be a word reserved by the specified database engine
+\item Can't be a word reserved by the specified database engine
 }
 
 \strong{Oracle}
 
 The Oracle System ID (SID) of the created DB instance. If you specify
-\code{null}, the default value \code{ORCL} is used. You can\'t specify the string
+\code{null}, the default value \code{ORCL} is used. You can't specify the string
 NULL, or any other reserved word, for \code{DBName}.
 
 Default: \code{ORCL}
 
 Constraints:
 \itemize{
-\item Can\'t be longer than 8 characters
+\item Can't be longer than 8 characters
 }
 
 \strong{SQL Server}
@@ -82,13 +82,13 @@ Not applicable. Must be null.
 \strong{Amazon Aurora}
 
 The name of the database to create when the primary instance of the DB
-cluster is created. If this parameter isn\'t specified, no database is
+cluster is created. If this parameter isn't specified, no database is
 created in the DB instance.
 
 Constraints:
 \itemize{
 \item Must contain 1 to 64 letters or numbers.
-\item Can\'t be a word reserved by the specified database engine
+\item Can't be a word reserved by the specified database engine
 }}
 
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase
@@ -98,7 +98,7 @@ Constraints:
 \itemize{
 \item Must contain from 1 to 63 letters, numbers, or hyphens.
 \item First character must be a letter.
-\item Can\'t end with a hyphen or contain two consecutive hyphens.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{mydbinstance}}
@@ -227,7 +227,7 @@ Constraints:
 \itemize{
 \item Required for MariaDB.
 \item Must be 1 to 16 letters or numbers.
-\item Can\'t be a reserved word for the chosen database engine.
+\item Can't be a reserved word for the chosen database engine.
 }
 
 \strong{Microsoft SQL Server}
@@ -237,7 +237,7 @@ Constraints:
 \item Required for SQL Server.
 \item Must be 1 to 128 letters or numbers.
 \item The first character must be a letter.
-\item Can\'t be a reserved word for the chosen database engine.
+\item Can't be a reserved word for the chosen database engine.
 }
 
 \strong{MySQL}
@@ -247,7 +247,7 @@ Constraints:
 \item Required for MySQL.
 \item Must be 1 to 16 letters or numbers.
 \item First character must be a letter.
-\item Can\'t be a reserved word for the chosen database engine.
+\item Can't be a reserved word for the chosen database engine.
 }
 
 \strong{Oracle}
@@ -257,7 +257,7 @@ Constraints:
 \item Required for Oracle.
 \item Must be 1 to 30 letters or numbers.
 \item First character must be a letter.
-\item Can\'t be a reserved word for the chosen database engine.
+\item Can't be a reserved word for the chosen database engine.
 }
 
 \strong{PostgreSQL}
@@ -267,11 +267,11 @@ Constraints:
 \item Required for PostgreSQL.
 \item Must be 1 to 63 letters or numbers.
 \item First character must be a letter.
-\item Can\'t be a reserved word for the chosen database engine.
+\item Can't be a reserved word for the chosen database engine.
 }}
 
 \item{MasterUserPassword}{The password for the master user. The password can include any printable
-ASCII character except \"/\", \"\"\", or \"@\".
+ASCII character except "/", """, or "@".
 
 \strong{Amazon Aurora}
 
@@ -310,22 +310,22 @@ instance.
 Not applicable. The associated list of EC2 VPC security groups is
 managed by the DB cluster.
 
-Default: The default EC2 VPC security group for the DB subnet group\'s
+Default: The default EC2 VPC security group for the DB subnet group's
 VPC.}
 
 \item{AvailabilityZone}{The Availability Zone (AZ) where the database will be created. For
 information on AWS Regions and Availability Zones, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html}{Regions and Availability Zones}.
 
-Default: A random, system-chosen Availability Zone in the endpoint\'s
-AWS Region.
+Default: A random, system-chosen Availability Zone in the endpoint's AWS
+Region.
 
 Example: \verb{us-east-1d}
 
-Constraint: The \code{AvailabilityZone} parameter can\'t be specified if the
+Constraint: The \code{AvailabilityZone} parameter can't be specified if the
 DB instance is a Multi-AZ deployment. The specified Availability Zone
 must be in the same AWS Region as the current endpoint.
 
-If you\'re creating a DB instance in an RDS on VMware environment,
+If you're creating a DB instance in an RDS on VMware environment,
 specify the identifier of the custom Availability Zone to create the DB
 instance in.
 
@@ -356,7 +356,7 @@ Constraints:
 \itemize{
 \item Must be 1 to 255 letters, numbers, or hyphens.
 \item First character must be a letter
-\item Can\'t end with a hyphen or contain two consecutive hyphens
+\item Can't end with a hyphen or contain two consecutive hyphens
 }}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups are retained. Setting
@@ -373,7 +373,7 @@ Default: 1
 Constraints:
 \itemize{
 \item Must be a value from 0 to 35
-\item Can\'t be set to 0 if the DB instance is a source to read replicas
+\item Can't be set to 0 if the DB instance is a source to read replicas
 }}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
@@ -447,7 +447,7 @@ Valid values: \code{1150-65535}
 Type: Integer}
 
 \item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
-You can\'t set the \code{AvailabilityZone} parameter if the DB instance is a
+You can't set the \code{AvailabilityZone} parameter if the DB instance is a
 Multi-AZ deployment.}
 
 \item{EngineVersion}{The version number of the database engine to use.
@@ -495,7 +495,7 @@ default, minor engine upgrades are applied automatically.}
 
 \item{LicenseModel}{License model information for this DB instance.
 
-Valid values: \code{license-included} \\| \code{bring-your-own-license} \\|
+Valid values: \code{license-included} | \code{bring-your-own-license} |
 \code{general-public-license}}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
@@ -512,8 +512,8 @@ instance. For SQL Server DB instances, must be a multiple between 1 and
 option group.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, can\'t be removed from an option group. Also, that option group
-can\'t be removed from a DB instance once it is associated with a DB
+TDE, can't be removed from an option group. Also, that option group
+can't be removed from a DB instance once it is associated with a DB
 instance}
 
 \item{CharacterSetName}{For supported engines, indicates that the DB instance should be
@@ -527,31 +527,31 @@ information, see \code{CreateDBCluster}.}
 \item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
 
 When the DB instance is publicly accessible, its DNS endpoint resolves
-to the private IP address from within the DB instance\'s VPC, and to the
-public IP address from outside of the DB instance\'s VPC. Access to the
+to the private IP address from within the DB instance's VPC, and to the
+public IP address from outside of the DB instance's VPC. Access to the
 DB instance is ultimately controlled by the security group it uses, and
 that public access is not permitted if the security group assigned to
-the DB instance doesn\'t permit it.
+the DB instance doesn't permit it.
 
-When the DB instance isn\'t publicly accessible, it is an internal DB
+When the DB instance isn't publicly accessible, it is an internal DB
 instance with a DNS name that resolves to a private IP address.
 
 Default: The default behavior varies depending on whether
 \code{DBSubnetGroupName} is specified.
 
-If \code{DBSubnetGroupName} isn\'t specified, and \code{PubliclyAccessible} isn\'t
+If \code{DBSubnetGroupName} isn't specified, and \code{PubliclyAccessible} isn't
 specified, the following applies:
 \itemize{
-\item If the default VPC in the target region doesn't have an Internet
+\item If the default VPC in the target region doesn’t have an Internet
 gateway attached to it, the DB instance is private.
 \item If the default VPC in the target region has an Internet gateway
 attached to it, the DB instance is public.
 }
 
-If \code{DBSubnetGroupName} is specified, and \code{PubliclyAccessible} isn\'t
+If \code{DBSubnetGroupName} is specified, and \code{PubliclyAccessible} isn't
 specified, the following applies:
 \itemize{
-\item If the subnets are part of a VPC that doesn't have an Internet
+\item If the subnets are part of a VPC that doesn’t have an Internet
 gateway attached to it, the DB instance is private.
 \item If the subnets are part of a VPC that has an Internet gateway
 attached to it, the DB instance is public.
@@ -577,7 +577,7 @@ encryption.}
 device.}
 
 \item{StorageEncrypted}{A value that indicates whether the DB instance is encrypted. By default,
-it isn\'t encrypted.
+it isn't encrypted.
 
 \strong{Amazon Aurora}
 
@@ -715,7 +715,7 @@ in the \emph{Amazon Relational Database Service User Guide}.}
 instance class of the DB instance.}
 
 \item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
-enabled. The database can\'t be deleted when deletion protection is
+enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.
 

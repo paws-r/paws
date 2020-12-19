@@ -18,7 +18,7 @@ results. Specify the value of \code{NextToken} from the previous response in
 the next request.}
 
 \item{MaxResults}{The maximum number of instances that you want AWS Cloud Map to return in
-the response to a \code{ListInstances} request. If you don\'t specify a value
+the response to a \code{ListInstances} request. If you don't specify a value
 for \code{MaxResults}, AWS Cloud Map returns up to 100 instances.}
 }
 \description{

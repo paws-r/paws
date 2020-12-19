@@ -10,7 +10,7 @@ rds_describe_db_security_groups(DBSecurityGroupName, Filters,
 \arguments{
 \item{DBSecurityGroupName}{The name of the DB security group to return details for.}
 
-\item{Filters}{This parameter isn\'t currently supported.}
+\item{Filters}{This parameter isn't currently supported.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token

@@ -23,7 +23,7 @@ the function name, it is limited to 64 characters in length.}
 \item{FunctionVersion}{Specify a function version to only list aliases that invoke that
 version.}
 
-\item{Marker}{Specify the pagination token that\'s returned by a previous request to
+\item{Marker}{Specify the pagination token that's returned by a previous request to
 retrieve the next page of results.}
 
 \item{MaxItems}{Limit the number of aliases returned.}

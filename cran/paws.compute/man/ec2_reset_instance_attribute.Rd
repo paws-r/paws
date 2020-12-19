@@ -9,7 +9,7 @@ ec2_reset_instance_attribute(Attribute, DryRun, InstanceId)
 \arguments{
 \item{Attribute}{[required] The attribute to reset.
 
-You can only reset the following attributes: \code{kernel} \\| \code{ramdisk} \\|
+You can only reset the following attributes: \code{kernel} | \code{ramdisk} |
 \code{sourceDestCheck}. To change an instance attribute, use
 ModifyInstanceAttribute.}
 

@@ -209,7 +209,7 @@ frauddetector_create_model_version <- function(modelId, modelType, description =
 #'   language, outcomes)
 #'
 #' @param ruleId &#91;required&#93; The rule ID.
-#' @param detectorId &#91;required&#93; The detector ID for the rule\'s parent detector.
+#' @param detectorId &#91;required&#93; The detector ID for the rule's parent detector.
 #' @param description The rule description.
 #' @param expression &#91;required&#93; The rule expression.
 #' @param language &#91;required&#93; The language of the rule.
@@ -801,7 +801,7 @@ frauddetector_get_outcomes <- function(name = NULL, nextToken = NULL, maxResults
 #' Evaluates an event against a detector version
 #'
 #' Evaluates an event against a detector version. If a version ID is not
-#' provided, the detector's (`ACTIVE`) version is used.
+#' provided, the detector’s (`ACTIVE`) version is used.
 #'
 #' @usage
 #' frauddetector_get_prediction(detectorId, detectorVersionId, eventId,
@@ -996,7 +996,7 @@ frauddetector_put_detector <- function(detectorId, description = NULL) {
 #' @param role &#91;required&#93; The IAM role used to invoke the model endpoint.
 #' @param inputConfiguration &#91;required&#93; The model endpoint input configuration.
 #' @param outputConfiguration &#91;required&#93; The model endpoint output configuration.
-#' @param modelEndpointStatus &#91;required&#93; The model endpoint's status in Amazon Fraud Detector.
+#' @param modelEndpointStatus &#91;required&#93; The model endpoint’s status in Amazon Fraud Detector.
 #'
 #' @section Request syntax:
 #' ```
@@ -1224,7 +1224,7 @@ frauddetector_update_detector_version <- function(detectorId, detectorVersionId,
 
 #' Updates the detector version's description
 #'
-#' Updates the detector version\'s description. You can update the metadata
+#' Updates the detector version's description. You can update the metadata
 #' for any detector version (`DRAFT, ACTIVE,` or `INACTIVE`).
 #'
 #' @usage
@@ -1264,9 +1264,9 @@ frauddetector_update_detector_version_metadata <- function(detectorId, detectorV
 }
 .frauddetector$operations$update_detector_version_metadata <- frauddetector_update_detector_version_metadata
 
-#' Updates the detector versionâ€™s status
+#' Updates the detector version’s status
 #'
-#' Updates the detector version's status. You can perform the following
+#' Updates the detector version’s status. You can perform the following
 #' promotions or demotions using `UpdateDetectorVersionStatus`: `DRAFT` to
 #' `ACTIVE`, `ACTIVE` to `INACTIVE`, and `INACTIVE` to `ACTIVE`.
 #'
@@ -1360,7 +1360,7 @@ frauddetector_update_model_version <- function(modelId, modelType, modelVersionN
 
 #' Updates a rule's metadata
 #'
-#' Updates a rule\'s metadata.
+#' Updates a rule's metadata.
 #'
 #' @usage
 #' frauddetector_update_rule_metadata(rule, description)

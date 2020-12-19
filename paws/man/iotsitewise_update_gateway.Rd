@@ -12,7 +12,7 @@ iotsitewise_update_gateway(gatewayId, gatewayName)
 \item{gatewayName}{[required] A unique, friendly name for the gateway.}
 }
 \description{
-Updates a gateway\'s name.
+Updates a gateway's name.
 }
 \section{Request syntax}{
 \preformatted{svc$update_gateway(

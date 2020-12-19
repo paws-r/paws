@@ -22,7 +22,7 @@ predict.}
 \item{OutputUri}{[required] The location of an Amazon Simple Storage Service (Amazon S3) bucket or
 directory to store the batch prediction results. The following
 substrings are not allowed in the \verb{s3 key} portion of the \code{outputURI}
-field: \':\', \'//\', \'/./\', \'/../\'.
+field: ':', '//', '/./', '/../'.
 
 Amazon ML needs permissions to store and retrieve the logs on your
 behalf. For information about how to set permissions, see the \href{http://docs.aws.amazon.com/machine-learning/latest/dg}{Amazon Machine Learning Developer Guide}.}

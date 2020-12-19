@@ -27,10 +27,10 @@ transform.
 \details{
 After the \code{StartMLLabelingSetGenerationTaskRun} finishes, AWS Glue
 machine learning will have generated a series of questions for humans to
-answer. (Answering these questions is often called \'labeling\' in the
+answer. (Answering these questions is often called 'labeling' in the
 machine learning workflows). In the case of the \code{FindMatches} transform,
-these questions are of the form, "What is the correct way to group these
-rows together into groups composed entirely of matching records?" After
+these questions are of the form, “What is the correct way to group these
+rows together into groups composed entirely of matching records?” After
 the labeling process is finished, users upload their answers/labels with
 a call to \code{StartImportLabelsTaskRun}. After \code{StartImportLabelsTaskRun}
 finishes, all future runs of the machine learning transform use the new

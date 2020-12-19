@@ -11,7 +11,7 @@ iotsitewise_delete_access_policy(accessPolicyId, clientToken)
 \item{accessPolicyId}{[required] The ID of the access policy to be deleted.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{

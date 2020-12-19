@@ -14,7 +14,7 @@ NULL
 #' [CreateEventTracker](https://docs.aws.amazon.com/personalize/latest/dg/API_CreateEventTracker.html)
 #' API.
 #' @param userId The user associated with the event.
-#' @param sessionId &#91;required&#93; The session ID associated with the user\'s visit.
+#' @param sessionId &#91;required&#93; The session ID associated with the user's visit.
 #' @param eventList &#91;required&#93; A list of event data from the session.
 #'
 #' @section Request syntax:

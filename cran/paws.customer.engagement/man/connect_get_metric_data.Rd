@@ -220,7 +220,7 @@ Unit: PERCENT
 
 Statistic: AVG
 
-Threshold: Only \"Less than\" comparisons are supported, with the
+Threshold: Only "Less than" comparisons are supported, with the
 following service level thresholds: 15, 20, 25, 30, 45, 60, 90, 120,
 180, 240, 300, 600
 }}

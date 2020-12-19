@@ -18,7 +18,7 @@ spaces. You can also include any of the following characters: =,.@:/-}
 Deletes a virtual MFA device.
 }
 \details{
-You must deactivate a user\'s virtual MFA device before you can delete
+You must deactivate a user's virtual MFA device before you can delete
 it. For information about deactivating MFA devices, see
 DeactivateMFADevice.
 }

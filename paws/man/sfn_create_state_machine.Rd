@@ -57,9 +57,9 @@ in the AWS Step Functions User Guide.
 This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 
-\code{CreateStateMachine} is an idempotent API. Subsequent requests won't
+\code{CreateStateMachine} is an idempotent API. Subsequent requests won’t
 create a duplicate resource if it was already created.
-\code{CreateStateMachine}\'s idempotency check is based on the state machine
+\code{CreateStateMachine}'s idempotency check is based on the state machine
 \code{name}, \code{definition}, \code{type}, and \code{LoggingConfiguration}. If a following
 request has a different \code{roleArn} or \code{tags}, Step Functions will ignore
 these differences and treat it as an idempotent request of the previous.

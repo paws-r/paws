@@ -44,7 +44,7 @@ same Region.}
 \item{NotificationTarget}{An SNS topic ARN that is set up to receive matchmaking notifications.}
 
 \item{AdditionalPlayerCount}{The number of player slots in a match to keep open for future players.
-For example, assume that the configuration\'s rule set specifies a match
+For example, assume that the configuration's rule set specifies a match
 for a single 12-person team. If the additional player count is set to 2,
 only 10 players are initially selected for the match.}
 
@@ -101,9 +101,9 @@ polling ticket status with DescribeMatchmaking; or (2) receiving
 notifications with Amazon Simple Notification Service (SNS). To use
 notifications, you first need to set up an SNS topic to receive the
 notifications, and provide the topic ARN in the matchmaking
-configuration. Since notifications promise only \"best effort\"
-delivery, we recommend calling \code{DescribeMatchmaking} if no notifications
-are received within 30 seconds.
+configuration. Since notifications promise only "best effort" delivery,
+we recommend calling \code{DescribeMatchmaking} if no notifications are
+received within 30 seconds.
 
 \strong{Learn more}
 

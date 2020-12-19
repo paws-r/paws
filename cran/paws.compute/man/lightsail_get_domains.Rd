@@ -14,7 +14,7 @@ results are paginated, the response will return a next page token that
 you can specify as the page token in a subsequent request.}
 }
 \description{
-Returns a list of all domains in the user\'s account.
+Returns a list of all domains in the user's account.
 }
 \section{Request syntax}{
 \preformatted{svc$get_domains(

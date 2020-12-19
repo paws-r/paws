@@ -11,7 +11,7 @@ organizations_tag_resource(ResourceId, Tags)
 
 \item{Tags}{[required] The tag to add to the specified resource. You must specify both a tag
 key and value. You can set the value of a tag to an empty string, but
-you can\'t set it to null.}
+you can't set it to null.}
 }
 \description{
 Adds one or more tags to the specified resource.
@@ -19,7 +19,7 @@ Adds one or more tags to the specified resource.
 \details{
 Currently, you can tag and untag accounts in AWS Organizations.
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{

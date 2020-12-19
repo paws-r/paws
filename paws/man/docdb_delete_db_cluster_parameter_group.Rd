@@ -12,13 +12,13 @@ docdb_delete_db_cluster_parameter_group(DBClusterParameterGroupName)
 Constraints:
 \itemize{
 \item Must be the name of an existing cluster parameter group.
-\item You can\'t delete a default cluster parameter group.
+\item You can't delete a default cluster parameter group.
 \item Cannot be associated with any clusters.
 }}
 }
 \description{
 Deletes a specified cluster parameter group. The cluster parameter group
-to be deleted can\'t be associated with any clusters.
+to be deleted can't be associated with any clusters.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_db_cluster_parameter_group(

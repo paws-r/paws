@@ -52,8 +52,8 @@ A list of strings that indicates third-party software to use. For more
 information, see the \href{https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf}{Amazon EMR Developer Guide}.
 Currently supported values are:
 \itemize{
-\item \"mapr-m3\" - launch the job flow using MapR M3 Edition.
-\item \"mapr-m5\" - launch the job flow using MapR M5 Edition.
+\item "mapr-m3" - launch the job flow using MapR M3 Edition.
+\item "mapr-m5" - launch the job flow using MapR M5 Edition.
 }}
 
 \item{NewSupportedProducts}{For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
@@ -62,21 +62,21 @@ later, use Applications.
 A list of strings that indicates third-party software to use with the
 job flow that accepts a user argument list. EMR accepts and forwards the
 argument list to the corresponding installation script as bootstrap
-action arguments. For more information, see \"Launch a Job Flow on the
-MapR Distribution for Hadoop\" in the \href{https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf}{Amazon EMR Developer Guide}.
+action arguments. For more information, see "Launch a Job Flow on the
+MapR Distribution for Hadoop" in the \href{https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf}{Amazon EMR Developer Guide}.
 Supported values are:
 \itemize{
-\item \"mapr-m3\" - launch the cluster using MapR M3 Edition.
-\item \"mapr-m5\" - launch the cluster using MapR M5 Edition.
-\item \"mapr\" with the user arguments specifying \"\\--edition,m3\" or
-\"\\--edition,m5\" - launch the job flow using MapR M3 or M5 Edition
+\item "mapr-m3" - launch the cluster using MapR M3 Edition.
+\item "mapr-m5" - launch the cluster using MapR M5 Edition.
+\item "mapr" with the user arguments specifying "--edition,m3" or
+"--edition,m5" - launch the job flow using MapR M3 or M5 Edition
 respectively.
-\item \"mapr-m7\" - launch the cluster using MapR M7 Edition.
-\item \"hunk\" - launch the cluster with the Hunk Big Data Analtics
+\item "mapr-m7" - launch the cluster using MapR M7 Edition.
+\item "hunk" - launch the cluster with the Hunk Big Data Analtics
 Platform.
-\item \"hue\"- launch the cluster with Hue installed.
-\item \"spark\" - launch the cluster with Apache Spark installed.
-\item \"ganglia\" - launch the cluster with the Ganglia Monitoring System
+\item "hue"- launch the cluster with Hue installed.
+\item "spark" - launch the cluster with Apache Spark installed.
+\item "ganglia" - launch the cluster with the Ganglia Monitoring System
 installed.
 }}
 

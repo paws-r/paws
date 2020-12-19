@@ -111,14 +111,14 @@ to the ARN of the user that you specify in \code{PolicySourceArn}, if you
 specified a user. If you include both a \code{PolicySourceArn} (for example,
 \verb{arn:aws:iam::123456789012:user/David}) and a \code{CallerArn} (for example,
 \verb{arn:aws:iam::123456789012:user/Bob}), the result is that you simulate
-calling the API operations as Bob, as if Bob had David\'s policies.
+calling the API operations as Bob, as if Bob had David's policies.
 
 You can specify only the ARN of an IAM user. You cannot specify the ARN
 of an assumed role, federated user, or a service principal.
 
 \code{CallerArn} is required if you include a \code{ResourcePolicy} and the
 \code{PolicySourceArn} is not the ARN for an IAM user. This is required so
-that the resource-based policy\'s \code{Principal} element has a value to use
+that the resource-based policy's \code{Principal} element has a value to use
 in evaluating the policy.
 
 For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
@@ -182,7 +182,7 @@ indicate where the next call should start.}
 }
 \description{
 Simulate how a set of IAM policies attached to an IAM entity works with
-a list of API operations and AWS resources to determine the policies\'
+a list of API operations and AWS resources to determine the policies'
 effective permissions. The entity can be an IAM user, group, or role. If
 you specify a user, then the simulation also includes all of the
 policies that are attached to groups that the user belongs to.
@@ -201,7 +201,7 @@ authorization to determine if the simulated policies allow or deny the
 operations.
 
 \strong{Note:} This API discloses information about the permissions granted
-to other users. If you do not want users to see other user\'s
+to other users. If you do not want users to see other user's
 permissions, then consider allowing them to use SimulateCustomPolicy
 instead.
 

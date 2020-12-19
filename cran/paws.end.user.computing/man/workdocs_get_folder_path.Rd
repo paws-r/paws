@@ -16,8 +16,8 @@ administrator credentials to access the API.}
 
 \item{Limit}{The maximum number of levels in the hierarchy to return.}
 
-\item{Fields}{A comma-separated list of values. Specify \"NAME\" to include the names
-of the parent folders.}
+\item{Fields}{A comma-separated list of values. Specify "NAME" to include the names of
+the parent folders.}
 
 \item{Marker}{This value is not supported.}
 }

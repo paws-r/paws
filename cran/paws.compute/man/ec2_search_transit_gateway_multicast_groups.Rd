@@ -16,18 +16,16 @@ ec2_search_transit_gateway_multicast_groups(
 \item \code{group-ip-address} - The IP address of the transit gateway multicast
 group.
 \item \code{is-group-member} - The resource is a group member. Valid values are
-\code{true} \\| \code{false}.
+\code{true} | \code{false}.
 \item \code{is-group-source} - The resource is a group source. Valid values are
-\code{true} \\| \code{false}.
-\item \code{member-type} - The member type. Valid values are \code{igmp} \\|
-\code{static}.
+\code{true} | \code{false}.
+\item \code{member-type} - The member type. Valid values are \code{igmp} | \code{static}.
 \item \code{resource-id} - The ID of the resource.
-\item \code{resource-type} - The type of resource. Valid values are \code{vpc} \\|
-\code{vpn} \\| \code{direct-connect-gateway} \\| \code{tgw-peering}.
-\item \code{source-type} - The source type. Valid values are \code{igmp} \\|
-\code{static}.
+\item \code{resource-type} - The type of resource. Valid values are \code{vpc} |
+\code{vpn} | \code{direct-connect-gateway} | \code{tgw-peering}.
+\item \code{source-type} - The source type. Valid values are \code{igmp} | \code{static}.
 \item \code{state} - The state of the subnet association. Valid values are
-\code{associated} \\| \code{associated} \\| \code{disassociated} \\| \code{disassociating}.
+\code{associated} | \code{associated} | \code{disassociated} | \code{disassociating}.
 \item \code{subnet-id} - The ID of the subnet.
 \item \code{transit-gateway-attachment-id} - The id of the transit gateway
 attachment.

@@ -14,7 +14,7 @@ protocol client.
 
 An example is \verb{your-Amazon-S3-bucket-name&gt;/home/username}.}
 
-\item{HomeDirectoryType}{The type of landing directory (folder) you want your users\' home
+\item{HomeDirectoryType}{The type of landing directory (folder) you want your users' home
 directory to be when they log into the file transfer protocol-enabled
 server. If you set it to \code{PATH}, the user will see the absolute Amazon
 S3 bucket paths as is in their file transfer protocol clients. If you
@@ -24,7 +24,7 @@ to your users.}
 
 \item{HomeDirectoryMappings}{Logical directory mappings that specify what Amazon S3 paths and keys
 should be visible to your user and how you want to make them visible.
-You will need to specify the \"\code{Entry}\" and \"\code{Target}\" pair, where
+You will need to specify the "\code{Entry}" and "\code{Target}" pair, where
 \code{Entry} shows how the path is made visible and \code{Target} is the actual
 Amazon S3 path. If you only specify a target, it will be displayed as
 is. You will need to also make sure that your IAM role provides access
@@ -33,8 +33,8 @@ to paths in \code{Target}. The following is an example.
 \verb{'\\\[ "/bucket2/documentation", \\\{ "Entry": "your-personal-report.pdf", "Target": "/bucket3/customized-reports/$\\\{transfer:UserName\\\}.pdf" \\\} \\\]'}
 
 In most cases, you can use this value instead of the scope-down policy
-to lock your user down to the designated home directory (\"chroot\"). To
-do this, you can set \code{Entry} to \'/\' and set \code{Target} to the
+to lock your user down to the designated home directory ("chroot"). To
+do this, you can set \code{Entry} to '/' and set \code{Target} to the
 HomeDirectory parameter value.
 
 If the target of a logical directory entry does not exist in Amazon S3,
@@ -62,12 +62,12 @@ For more information, see
 \href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html}{AssumeRole}
 in the \emph{AWS Security Token Service API Reference}.}
 
-\item{Role}{The IAM role that controls your users\' access to your Amazon S3 bucket.
+\item{Role}{The IAM role that controls your users' access to your Amazon S3 bucket.
 The policies attached to this role will determine the level of access
 you want to provide your users when transferring files into and out of
 your Amazon S3 bucket or buckets. The IAM role should also contain a
 trust relationship that allows the file transfer protocol-enabled server
-to access your resources when servicing your users\' transfer requests.}
+to access your resources when servicing your users' transfer requests.}
 
 \item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
 server instance that the user account is assigned to.}
@@ -77,7 +77,7 @@ transfer protocol-enabled server as specified by the \code{ServerId}. This is
 the string that will be used by your user when they log in to your
 server. This user name is a minimum of 3 and a maximum of 32 characters
 long. The following are valid characters: a-z, A-Z, 0-9, underscore, and
-hyphen. The user name can\'t start with a hyphen.}
+hyphen. The user name can't start with a hyphen.}
 }
 \description{
 Assigns new properties to a user. Parameters you pass modify any or all

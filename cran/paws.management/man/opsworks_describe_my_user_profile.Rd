@@ -7,7 +7,7 @@
 opsworks_describe_my_user_profile()
 }
 \description{
-Describes a user\'s SSH information.
+Describes a user's SSH information.
 }
 \details{
 \strong{Required Permissions}: To use this action, an IAM user must have

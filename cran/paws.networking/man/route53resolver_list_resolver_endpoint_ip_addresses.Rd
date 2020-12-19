@@ -11,7 +11,7 @@ route53resolver_list_resolver_endpoint_ip_addresses(ResolverEndpointId,
 \item{ResolverEndpointId}{[required] The ID of the resolver endpoint that you want to get IP addresses for.}
 
 \item{MaxResults}{The maximum number of IP addresses that you want to return in the
-response to a \code{ListResolverEndpointIpAddresses} request. If you don\'t
+response to a \code{ListResolverEndpointIpAddresses} request. If you don't
 specify a value for \code{MaxResults}, Resolver returns up to 100 IP
 addresses.}
 

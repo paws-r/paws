@@ -13,14 +13,14 @@ ec2_describe_transit_gateway_route_tables(TransitGatewayRouteTableIds,
 \item{Filters}{One or more filters. The possible values are:
 \itemize{
 \item \code{default-association-route-table} - Indicates whether this is the
-default association route table for the transit gateway (\code{true} \\|
+default association route table for the transit gateway (\code{true} |
 \code{false}).
 \item \code{default-propagation-route-table} - Indicates whether this is the
-default propagation route table for the transit gateway (\code{true} \\|
+default propagation route table for the transit gateway (\code{true} |
 \code{false}).
-\item \code{state} - The state of the attachment (\code{available} \\| \code{deleted} \\|
-\code{deleting} \\| \code{failed} \\| \code{modifying} \\| \code{pendingAcceptance} \\|
-\code{pending} \\| \code{rollingBack} \\| \code{rejected} \\| \code{rejecting}).
+\item \code{state} - The state of the attachment (\code{available} | \code{deleted} |
+\code{deleting} | \code{failed} | \code{modifying} | \code{pendingAcceptance} |
+\code{pending} | \code{rollingBack} | \code{rejected} | \code{rejecting}).
 \item \code{transit-gateway-id} - The ID of the transit gateway.
 \item \code{transit-gateway-route-table-id} - The ID of the transit gateway
 route table.

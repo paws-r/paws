@@ -18,7 +18,7 @@ Removes the specified certificate from the certificate list for the
 specified HTTPS or TLS listener.
 }
 \details{
-You can\'t remove the default certificate for a listener. To replace the
+You can't remove the default certificate for a listener. To replace the
 default certificate, call ModifyListener.
 
 To list the certificates for your listener, use

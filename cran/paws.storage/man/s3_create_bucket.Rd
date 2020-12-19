@@ -73,10 +73,10 @@ ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest
 You specify each grantee as a type=value pair, where the type is one
 of the following:
 \itemize{
-\item \code{id} -- if the value specified is the canonical user ID of an
-AWS account
-\item \code{uri} -- if you are granting permissions to a predefined group
-\item \code{emailAddress} -- if the value specified is the email address of
+\item \code{id} – if the value specified is the canonical user ID of an AWS
+account
+\item \code{uri} – if you are granting permissions to a predefined group
+\item \code{emailAddress} – if the value specified is the email address of
 an AWS account
 
 Using email addresses to specify a grantee is only supported in
@@ -89,7 +89,7 @@ the following AWS Regions:
 \item Asia Pacific (Sydney)
 \item Asia Pacific (Tokyo)
 \item Europe (Ireland)
-\item South America (SÃ£o Paulo)
+\item South America (São Paulo)
 }
 
 For a list of all the Amazon S3 supported Regions and endpoints,

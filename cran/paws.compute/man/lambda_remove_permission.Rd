@@ -28,7 +28,7 @@ function name, it is limited to 64 characters in length.}
 \item{Qualifier}{Specify a version or alias to remove permissions from a published
 version of the function.}
 
-\item{RevisionId}{Only update the policy if the revision ID matches the ID that\'s
+\item{RevisionId}{Only update the policy if the revision ID matches the ID that's
 specified. Use this option to avoid modifying a policy that has changed
 since you last read it.}
 }

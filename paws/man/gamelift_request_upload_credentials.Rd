@@ -13,8 +13,8 @@ either the build ID or ARN value.}
 }
 \description{
 Retrieves a fresh set of credentials for use when uploading a new set of
-game build files to Amazon GameLift\'s Amazon S3. This is done as part
-of the build creation process; see CreateBuild.
+game build files to Amazon GameLift's Amazon S3. This is done as part of
+the build creation process; see CreateBuild.
 }
 \details{
 To request new credentials, specify the build ID as returned with an

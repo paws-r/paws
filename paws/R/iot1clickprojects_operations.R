@@ -601,7 +601,7 @@ iot1clickprojects_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates a placement with the given attributes
 #'
 #' Updates a placement with the given attributes. To clear an attribute,
-#' pass an empty value (i.e., \"\").
+#' pass an empty value (i.e., "").
 #'
 #' @usage
 #' iot1clickprojects_update_placement(placementName, projectName,

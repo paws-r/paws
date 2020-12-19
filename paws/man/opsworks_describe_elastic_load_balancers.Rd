@@ -7,14 +7,14 @@
 opsworks_describe_elastic_load_balancers(StackId, LayerIds)
 }
 \arguments{
-\item{StackId}{A stack ID. The action describes the stack\'s Elastic Load Balancing
+\item{StackId}{A stack ID. The action describes the stack's Elastic Load Balancing
 instances.}
 
 \item{LayerIds}{A list of layer IDs. The action describes the Elastic Load Balancing
 instances for the specified layers.}
 }
 \description{
-Describes a stack\'s Elastic Load Balancing instances.
+Describes a stack's Elastic Load Balancing instances.
 }
 \details{
 This call accepts only one resource-identifying parameter.

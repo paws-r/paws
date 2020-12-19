@@ -8,7 +8,7 @@ kendra_create_data_source(Name, IndexId, Type, Configuration,
   Description, Schedule, RoleArn, Tags)
 }
 \arguments{
-\item{Name}{[required] A unique name for the data source. A data source name can\'t be changed
+\item{Name}{[required] A unique name for the data source. A data source name can't be changed
 without deleting and recreating the data source.}
 
 \item{IndexId}{[required] The identifier of the index that should be associated with this data
@@ -22,7 +22,7 @@ repository.}
 \item{Description}{A description for the data source.}
 
 \item{Schedule}{Sets the frequency that Amazon Kendra will check the documents in your
-repository and update the index. If you don\'t set a schedule Amazon
+repository and update the index. If you don't set a schedule Amazon
 Kendra will not periodically update the index. You can call the
 \code{StartDataSourceSyncJob} operation to update the index.}
 

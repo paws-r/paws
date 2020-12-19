@@ -26,9 +26,9 @@ from a previous call.)
 
 Using this token works only when you specify \code{true} for \code{startFromHead}.}
 
-\item{limit}{The maximum number of log events returned. If you don\'t specify a
-value, the maximum is as many log events as can fit in a response size
-of 1 MB, up to 10,000 log events.}
+\item{limit}{The maximum number of log events returned. If you don't specify a value,
+the maximum is as many log events as can fit in a response size of 1 MB,
+up to 10,000 log events.}
 
 \item{startFromHead}{If the value is true, the earliest log events are returned first. If the
 value is false, the latest log events are returned first. The default

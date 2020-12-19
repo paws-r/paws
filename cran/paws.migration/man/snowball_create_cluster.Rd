@@ -36,8 +36,8 @@ API action in AWS Identity and Access Management (IAM).}
 For cluster jobs, AWS Snowball currently supports only the \code{EDGE} device
 type.}
 
-\item{ShippingOption}{[required] The shipping speed for each node in this cluster. This speed doesn\'t
-dictate how soon you\'ll get each Snowball Edge device, rather it
+\item{ShippingOption}{[required] The shipping speed for each node in this cluster. This speed doesn't
+dictate how soon you'll get each Snowball Edge device, rather it
 represents how quickly each device moves to its destination while in
 transit. Regional shipping speeds are as follows:
 \itemize{

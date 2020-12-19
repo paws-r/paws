@@ -12,7 +12,7 @@ output. When you use this parameter, \code{ListMeshes} returns only \code{limit}
 results in a single page along with a \code{nextToken} response element. You
 can see the remaining results of the initial request by sending another
 \code{ListMeshes} request with the returned \code{nextToken} value. This value can
-be between 1 and 100. If you don\'t use this parameter, \code{ListMeshes}
+be between 1 and 100. If you don't use this parameter, \code{ListMeshes}
 returns up to 100 results and a \code{nextToken} value if applicable.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListMeshes}

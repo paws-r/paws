@@ -422,7 +422,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' This parameter is only valid if the `Engine` parameter is `redis`.
 #' @param AZMode Specifies whether the nodes in this Memcached cluster are created in a
 #' single Availability Zone or created across multiple Availability Zones
-#' in the cluster\'s region.
+#' in the cluster's region.
 #' 
 #' This parameter is only supported for Memcached clusters.
 #' 
@@ -535,7 +535,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     supported on Redis version 2.8.22 and later.
 #' @param Engine The name of the cache engine to be used for this cluster.
 #' 
-#' Valid values for this parameter are: `memcached` \\| `redis`
+#' Valid values for this parameter are: `memcached` | `redis`
 #' @param EngineVersion The version number of the cache engine to be used for this cluster. To
 #' view the supported cache engine versions, use the
 #' DescribeCacheEngineVersions operation.
@@ -555,7 +555,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' Use this parameter only when you are creating a cluster in an Amazon
 #' Virtual Private Cloud (Amazon VPC).
 #' 
-#' If you\'re going to launch your cluster in an Amazon VPC, you need to
+#' If you're going to launch your cluster in an Amazon VPC, you need to
 #' create a subnet group before you start creating a cluster. For more
 #' information, see [Subnets and Subnet
 #' Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
@@ -642,8 +642,8 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' -   Must be at least 16 characters and no more than 128 characters in
 #'     length.
 #' 
-#' -   The only permitted printable special characters are !, &, \\#, \\$,
-#'     \\^, \\<, \\>, and -. Other printable special characters cannot be used
+#' -   The only permitted printable special characters are !, &, \\#, $, ^,
+#'     &lt;, &gt;, and -. Other printable special characters cannot be used
 #'     in the AUTH token.
 #' 
 #' For more information, see [AUTH password](http://redis.io/commands/AUTH)
@@ -738,8 +738,8 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #' @param CacheParameterGroupFamily &#91;required&#93; The name of the cache parameter group family that the cache parameter
 #' group can be used with.
 #' 
-#' Valid values are: `memcached1.4` \\| `memcached1.5` \\| `redis2.6` \\|
-#' `redis2.8` \\| `redis3.2` \\| `redis4.0` \\| `redis5.0` \\|
+#' Valid values are: `memcached1.4` | `memcached1.5` | `redis2.6` |
+#' `redis2.8` | `redis3.2` | `redis4.0` | `redis5.0` |
 #' @param Description &#91;required&#93; A user-specified description for the cache parameter group.
 #'
 #' @section Request syntax:
@@ -790,7 +790,7 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
 #' string.
 #' 
 #' Constraints: Must contain no more than 255 alphanumeric characters.
-#' Cannot be the word \"Default\".
+#' Cannot be the word "Default".
 #' 
 #' Example: `mysecuritygroup`
 #' @param Description &#91;required&#93; A description for the cache security group.
@@ -956,7 +956,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' successfully created, you can add one or more read replicas to it, up to
 #' a total of 5 read replicas. If you need to increase or decrease the
 #' number of node groups (console: shards), you can avail yourself of
-#' ElastiCache for Redis\' scaling. For more information, see [Scaling
+#' ElastiCache for Redis' scaling. For more information, see [Scaling
 #' ElastiCache for Redis
 #' Clusters](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.html)
 #' in the *ElastiCache User Guide*.
@@ -1015,7 +1015,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' The maximum permitted value for `NumCacheClusters` is 6 (1 primary plus
 #' 5 replicas).
-#' @param PreferredCacheClusterAZs A list of EC2 Availability Zones in which the replication group\'s
+#' @param PreferredCacheClusterAZs A list of EC2 Availability Zones in which the replication group's
 #' clusters are created. The order of the Availability Zones in the list is
 #' the order in which clusters are allocated. The primary cluster is
 #' created in the first AZ in the list.
@@ -1043,7 +1043,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' `PrimaryAvailabilityZone`, `ReplicaAvailabilityZones`, `ReplicaCount`,
 #' and `Slots`.
 #' 
-#' If you\'re creating a Redis (cluster mode disabled) or a Redis (cluster
+#' If you're creating a Redis (cluster mode disabled) or a Redis (cluster
 #' mode enabled) replication group, you can use this parameter to
 #' individually configure each node group (shard), or you can omit this
 #' parameter. However, it is required when seeding a Redis (cluster mode
@@ -1155,7 +1155,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'     `CacheParameterGroupName=default.redis3.2.cluster.on`.
 #' @param CacheSubnetGroupName The name of the cache subnet group to be used for the replication group.
 #' 
-#' If you\'re going to launch your cluster in an Amazon VPC, you need to
+#' If you're going to launch your cluster in an Amazon VPC, you need to
 #' create a subnet group before you start creating a cluster. For more
 #' information, see [Subnets and Subnet
 #' Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
@@ -1246,8 +1246,8 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' -   Must be at least 16 characters and no more than 128 characters in
 #'     length.
 #' 
-#' -   The only permitted printable special characters are !, &, \\#, \\$,
-#'     \\^, \\<, \\>, and -. Other printable special characters cannot be used
+#' -   The only permitted printable special characters are !, &, \\#, $, ^,
+#'     &lt;, &gt;, and -. Other printable special characters cannot be used
 #'     in the AUTH token.
 #' 
 #' For more information, see [AUTH password](http://redis.io/commands/AUTH)
@@ -1494,7 +1494,7 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
 #' operation. For Redis (cluster mode disabled) replication groups, this is
 #' the number of replica nodes in the replication group. For Redis (cluster
 #' mode enabled) replication groups, this is the number of replica nodes in
-#' each of the replication group\'s node groups.
+#' each of the replication group's node groups.
 #' 
 #' The minimum number of replicas in a shard or replication group is:
 #' 
@@ -1748,7 +1748,7 @@ elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
 #' 
 #' -   Once the Global Datastore contains only the primary cluster, you can
 #'     use DeleteGlobalReplicationGroup API to delete the Global Datastore
-#'     while retainining the primary cluster using Retain...= true.
+#'     while retainining the primary cluster using Retain…= true.
 #' 
 #' Since the Global Datastore has only a primary cluster, you can delete
 #' the Global Datastore while retaining the primary by setting
@@ -1925,7 +1925,7 @@ elasticache_delete_snapshot <- function(SnapshotName) {
 #'
 #' @param CacheClusterId The user-supplied cluster identifier. If this parameter is specified,
 #' only information about that specific cluster is returned. This parameter
-#' isn\'t case sensitive.
+#' isn't case sensitive.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a marker is
 #' included in the response so that the remaining results can be retrieved.
@@ -1983,15 +1983,15 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
 #' elasticache_describe_cache_engine_versions(Engine, EngineVersion,
 #'   CacheParameterGroupFamily, MaxRecords, Marker, DefaultOnly)
 #'
-#' @param Engine The cache engine to return. Valid values: `memcached` \\| `redis`
+#' @param Engine The cache engine to return. Valid values: `memcached` | `redis`
 #' @param EngineVersion The cache engine version to return.
 #' 
 #' Example: `1.4.14`
 #' @param CacheParameterGroupFamily The name of a specific cache parameter group family to return details
 #' for.
 #' 
-#' Valid values are: `memcached1.4` \\| `memcached1.5` \\| `redis2.6` \\|
-#' `redis2.8` \\| `redis3.2` \\| `redis4.0` \\| `redis5.0` \\|
+#' Valid values are: `memcached1.4` | `memcached1.5` | `redis2.6` |
+#' `redis2.8` | `redis3.2` | `redis4.0` | `redis5.0` |
 #' 
 #' Constraints:
 #' 
@@ -2111,7 +2111,7 @@ elasticache_describe_cache_parameter_groups <- function(CacheParameterGroupName 
 #' @param CacheParameterGroupName &#91;required&#93; The name of a specific cache parameter group to return details for.
 #' @param Source The parameter types to return.
 #' 
-#' Valid values: `user` \\| `system` \\| `engine-default`
+#' Valid values: `user` | `system` | `engine-default`
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a marker is
 #' included in the response so that the remaining results can be retrieved.
@@ -2271,8 +2271,8 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
 #'
 #' @param CacheParameterGroupFamily &#91;required&#93; The name of the cache parameter group family.
 #' 
-#' Valid values are: `memcached1.4` \\| `memcached1.5` \\| `redis2.6` \\|
-#' `redis2.8` \\| `redis3.2` \\| `redis4.0` \\| `redis5.0` \\|
+#' Valid values are: `memcached1.4` | `memcached1.5` | `redis2.6` |
+#' `redis2.8` | `redis3.2` | `redis4.0` | `redis5.0` |
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a marker is
 #' included in the response so that the remaining results can be retrieved.
@@ -2323,7 +2323,7 @@ elasticache_describe_engine_default_parameters <- function(CacheParameterGroupFa
 #' name as a parameter.
 #' 
 #' By default, only the events occurring within the last hour are returned;
-#' however, you can retrieve up to 14 days\' worth of events if necessary.
+#' however, you can retrieve up to 14 days' worth of events if necessary.
 #'
 #' @usage
 #' elasticache_describe_events(SourceIdentifier, SourceType, StartTime,
@@ -3154,7 +3154,7 @@ elasticache_increase_node_groups_in_global_replication_group <- function(GlobalR
 #' operation. For Redis (cluster mode disabled) replication groups, this is
 #' the number of replica nodes in the replication group. For Redis (cluster
 #' mode enabled) replication groups, this is the number of replica nodes in
-#' each of the replication group\'s node groups.
+#' each of the replication group's node groups.
 #' @param ReplicaConfiguration A list of `ConfigureShard` objects that can be used to configure each
 #' shard in a Redis (cluster mode enabled) replication group. The
 #' `ConfigureShard` has three members: `NewReplicaCount`, `NodeGroupId`,
@@ -3203,8 +3203,8 @@ elasticache_increase_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #' Lists all available node types that you can scale your Redis cluster's
 #' or replication group's current node type
 #'
-#' Lists all available node types that you can scale your Redis cluster\'s
-#' or replication group\'s current node type.
+#' Lists all available node types that you can scale your Redis cluster's
+#' or replication group's current node type.
 #' 
 #' When you use the `ModifyCacheCluster` or `ModifyReplicationGroup`
 #' operations to scale your cluster or replication group, the value of the
@@ -3347,7 +3347,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' A pending operation to modify the number of cache nodes in a cluster
 #' during its maintenance window, whether by adding or removing nodes in
 #' accordance with the scale out architecture, is not queued. The
-#' customer\'s latest request to add or remove nodes to the cluster
+#' customer's latest request to add or remove nodes to the cluster
 #' overrides any previous pending operations to modify the number of cache
 #' nodes in the cluster. For example, a request to remove 2 nodes would
 #' override a previous pending operation to remove 3 nodes. Similarly, a
@@ -3376,7 +3376,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' created in a single Availability Zone or created across multiple
 #' Availability Zones.
 #' 
-#' Valid values: `single-az` \\| `cross-az`.
+#' Valid values: `single-az` | `cross-az`.
 #' 
 #' This option is only supported for Memcached clusters.
 #' 
@@ -3469,7 +3469,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' of an Amazon Virtual Private Cloud (Amazon VPC).
 #' 
 #' Constraints: Must contain no more than 255 alphanumeric characters. Must
-#' not be \"Default\".
+#' not be "Default".
 #' @param SecurityGroupIds Specifies the VPC Security Groups associated with the cluster.
 #' 
 #' This parameter can be used only with clusters that are created in an
@@ -3507,7 +3507,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' @param NotificationTopicStatus The status of the Amazon SNS notification topic. Notifications are sent
 #' only if the status is `active`.
 #' 
-#' Valid values: `active` \\| `inactive`
+#' Valid values: `active` | `inactive`
 #' @param ApplyImmediately If `true`, this parameter causes the modifications in this request and
 #' any pending modifications to be applied, asynchronously and as soon as
 #' possible, regardless of the `PreferredMaintenanceWindow` setting for the
@@ -3519,7 +3519,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' If you perform a `ModifyCacheCluster` before a pending modification is
 #' applied, the pending modification is replaced by the newer modification.
 #' 
-#' Valid values: `true` \\| `false`
+#' Valid values: `true` | `false`
 #' 
 #' Default: `false`
 #' @param EngineVersion The upgraded version of the cache engine to be run on the cache nodes.
@@ -3550,8 +3550,8 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' -   Must be at least 16 characters and no more than 128 characters in
 #'     length
 #' 
-#' -   Cannot contain any of the following characters: \'/\', \'\"\', or
-#'     \'@@\', \'%\'
+#' -   Cannot contain any of the following characters: '/', '"', or '@@',
+#'     '%'
 #' 
 #' For more information, see AUTH password at
 #' [AUTH](http://redis.io/commands/AUTH).
@@ -3804,7 +3804,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' @param AutomaticFailoverEnabled Determines whether a read replica is automatically promoted to
 #' read/write primary if the existing primary encounters a failure.
 #' 
-#' Valid values: `true` \\| `false`
+#' Valid values: `true` | `false`
 #' @param MultiAZEnabled A flag indicating if you have Multi-AZ enabled to enhance fault
 #' tolerance. For more information, see [Minimizing Downtime:
 #' Multi-AZ](http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html).
@@ -3857,7 +3857,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' @param NotificationTopicStatus The status of the Amazon SNS notification topic for the replication
 #' group. Notifications are sent only if the status is `active`.
 #' 
-#' Valid values: `active` \\| `inactive`
+#' Valid values: `active` | `inactive`
 #' @param ApplyImmediately If `true`, this parameter causes the modifications in this request and
 #' any pending modifications to be applied, asynchronously and as soon as
 #' possible, regardless of the `PreferredMaintenanceWindow` setting for the
@@ -3867,7 +3867,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' the next maintenance reboot, or the next failure reboot, whichever
 #' occurs first.
 #' 
-#' Valid values: `true` \\| `false`
+#' Valid values: `true` | `false`
 #' 
 #' Default: `false`
 #' @param EngineVersion The upgraded version of the cache engine to be run on the clusters in
@@ -3906,8 +3906,8 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' -   Must be at least 16 characters and no more than 128 characters in
 #'     length
 #' 
-#' -   Cannot contain any of the following characters: \'/\', \'\"\', or
-#'     \'@@\', \'%\'
+#' -   Cannot contain any of the following characters: '/', '"', or '@@',
+#'     '%'
 #' 
 #' For more information, see AUTH password at
 #' [AUTH](http://redis.io/commands/AUTH).
@@ -3976,7 +3976,7 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
 #' add shards, remove shards, or rebalance the keyspaces among exisiting
 #' shards
 #'
-#' Modifies a replication group\'s shards (node groups) by allowing you to
+#' Modifies a replication group's shards (node groups) by allowing you to
 #' add shards, remove shards, or rebalance the keyspaces among exisiting
 #' shards.
 #'
@@ -3996,7 +3996,7 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
 #' @param ReshardingConfiguration Specifies the preferred availability zones for each node group in the
 #' cluster. If the value of `NodeGroupCount` is greater than the current
 #' number of node groups (shards), you can use this parameter to specify
-#' the preferred availability zones of the cluster\'s shards. If you omit
+#' the preferred availability zones of the cluster's shards. If you omit
 #' this parameter ElastiCache selects availability zones for you.
 #' 
 #' You can specify this parameter only if the value of `NodeGroupCount` is
@@ -4278,7 +4278,7 @@ elasticache_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' their default values. If `false`, only the parameters listed by
 #' `ParameterNameValues` are reset to their default values.
 #' 
-#' Valid values: `true` \\| `false`
+#' Valid values: `true` | `false`
 #' @param ParameterNameValues An array of parameter names to reset to their default values. If
 #' `ResetAllParameters` is `true`, do not use `ParameterNameValues`. If
 #' `ResetAllParameters` is `false`, you must specify the name of at least

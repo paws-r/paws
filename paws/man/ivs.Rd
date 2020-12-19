@@ -37,12 +37,12 @@ For a summary of notable documentation changes in each release, see
 The following resources contain information about your IVS live stream
 (see \href{https://docs.aws.amazon.com/ivs/latest/userguide/GSIVS.html}{Getting Started with Amazon IVS}):
 \itemize{
-\item Channel --- Stores configuration data related to your live stream.
-You first create a channel and then use the channel's stream key to
+\item Channel — Stores configuration data related to your live stream. You
+first create a channel and then use the channel’s stream key to
 start your live stream. See the Channel endpoints for more
 information.
-\item Stream key --- An identifier assigned by Amazon IVS when you create
-a channel, which is then used to authorize streaming. See the
+\item Stream key — An identifier assigned by Amazon IVS when you create a
+channel, which is then used to authorize streaming. See the
 StreamKey endpoints for more information. \emph{\strong{Treat the stream key
 like a secret, since it allows anyone to stream to the channel.}}
 }
@@ -67,39 +67,39 @@ tagging: Channels and Stream Keys.
 
 Channel:
 \itemize{
-\item CreateChannel --- Creates a new channel and an associated stream key
+\item CreateChannel — Creates a new channel and an associated stream key
 to start streaming.
-\item GetChannel --- Gets the channel configuration for a specified
-channel ARN (Amazon Resource Name).
-\item BatchGetChannel --- Performs GetChannel on multiple ARNs
+\item GetChannel — Gets the channel configuration for a specified channel
+ARN (Amazon Resource Name).
+\item BatchGetChannel — Performs GetChannel on multiple ARNs
 simultaneously.
-\item ListChannels --- Gets summary information about channels. This list
+\item ListChannels — Gets summary information about channels. This list
 can be filtered to match a specified string.
-\item UpdateChannel --- Updates a channel\'s configuration. This does not
+\item UpdateChannel — Updates a channel's configuration. This does not
 affect an ongoing stream of this channel. You must stop and restart
 the stream for the changes to take effect.
-\item DeleteChannel --- Deletes a specified channel.
+\item DeleteChannel — Deletes a specified channel.
 }
 
 StreamKey:
 \itemize{
-\item CreateStreamKey --- Creates a stream key, used to initiate a stream,
+\item CreateStreamKey — Creates a stream key, used to initiate a stream,
 for a specified channel ARN.
-\item GetStreamKey --- Gets stream key information for the specified ARN.
-\item BatchGetStreamKey --- Performs GetStreamKey on multiple ARNs
+\item GetStreamKey — Gets stream key information for the specified ARN.
+\item BatchGetStreamKey — Performs GetStreamKey on multiple ARNs
 simultaneously.
-\item ListStreamKeys --- Gets a list of stream keys. The list can be
+\item ListStreamKeys — Gets a list of stream keys. The list can be
 filtered to a particular channel.
-\item DeleteStreamKey --- Deletes the stream key for a specified ARN, so
-it can no longer be used to stream.
+\item DeleteStreamKey — Deletes the stream key for a specified ARN, so it
+can no longer be used to stream.
 }
 
 Stream:
 \itemize{
-\item GetStream --- Gets information about the active (live) stream on a
+\item GetStream — Gets information about the active (live) stream on a
 specified channel.
-\item ListStreams --- Gets summary information about live streams.
-\item StopStream --- Disconnects a streamer on a specified channel. This
+\item ListStreams — Gets summary information about live streams.
+\item StopStream — Disconnects a streamer on a specified channel. This
 disconnects the incoming RTMP stream from the client. Can be used in
 conjunction with DeleteStreamKey to prevent further streaming to a
 channel.
@@ -110,10 +110,10 @@ each with a maximum 1KB payload.
 
 \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{AWS Tags}:
 \itemize{
-\item TagResource --- Adds or updates tags for an AWS resource with a
+\item TagResource — Adds or updates tags for an AWS resource with a
 specified ARN.
-\item UntagResource --- Removes tags from a resource with a specified ARN.
-\item ListTagsForResource --- Gets information about AWS tags for a
+\item UntagResource — Removes tags from a resource with a specified ARN.
+\item ListTagsForResource — Gets information about AWS tags for a
 specified ARN.
 }
 }

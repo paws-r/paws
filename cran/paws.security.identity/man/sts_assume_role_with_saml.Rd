@@ -25,7 +25,7 @@ same account as the role.
 
 This parameter is optional. You can provide up to 10 managed policy
 ARNs. However, the plain text that you use for both inline and managed
-session policies can\'t exceed 2,048 characters. For more information
+session policies can't exceed 2,048 characters. For more information
 about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the AWS General Reference.
 
@@ -37,8 +37,8 @@ percentage how close the policies and tags for your request are to the
 upper size limit.
 
 Passing policies to this operation returns new temporary credentials.
-The resulting session\'s permissions are the intersection of the role\'s
-identity-based policy and the session policies. You can use the role\'s
+The resulting session's permissions are the intersection of the role's
+identity-based policy and the session policies. You can use the role's
 temporary credentials in subsequent AWS API calls to access resources in
 the account that owns the role. You cannot use session policies to grant
 more permissions than those allowed by the identity-based policy of the
@@ -49,17 +49,17 @@ in the \emph{IAM User Guide}.}
 policy.
 
 This parameter is optional. Passing policies to this operation returns
-new temporary credentials. The resulting session\'s permissions are the
-intersection of the role\'s identity-based policy and the session
-policies. You can use the role\'s temporary credentials in subsequent
-AWS API calls to access resources in the account that owns the role. You
+new temporary credentials. The resulting session's permissions are the
+intersection of the role's identity-based policy and the session
+policies. You can use the role's temporary credentials in subsequent AWS
+API calls to access resources in the account that owns the role. You
 cannot use session policies to grant more permissions than those allowed
 by the identity-based policy of the role that is being assumed. For more
 information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{Session Policies}
 in the \emph{IAM User Guide}.
 
 The plain text that you use for both inline and managed session policies
-can\'t exceed 2,048 characters. The JSON policy characters can be any
+can't exceed 2,048 characters. The JSON policy characters can be any
 ASCII character from the space character to the end of the valid
 character list (\code{U+0020} through \verb{U+00FF}). It can also include the tab
 (\code{U+0009}), linefeed (\verb{U+000A}), and carriage return (\verb{U+000D}) characters.
@@ -73,7 +73,7 @@ upper size limit.}
 
 \item{DurationSeconds}{The duration, in seconds, of the role session. Your role session lasts
 for the duration that you specify for the \code{DurationSeconds} parameter,
-or until the time specified in the SAML authentication response\'s
+or until the time specified in the SAML authentication response's
 \code{SessionNotOnOrAfter} value, whichever is shorter. You can provide a
 \code{DurationSeconds} value from 900 seconds (15 minutes) up to the maximum
 session duration setting for the role. This setting can have a value
@@ -115,7 +115,7 @@ By default, the temporary security credentials created by
 \code{AssumeRoleWithSAML} last for one hour. However, you can use the
 optional \code{DurationSeconds} parameter to specify the duration of your
 session. Your role session lasts for the duration that you specify, or
-until the time specified in the SAML authentication response\'s
+until the time specified in the SAML authentication response's
 \code{SessionNotOnOrAfter} value, whichever is shorter. You can provide a
 \code{DurationSeconds} value from 900 seconds (15 minutes) up to the maximum
 session duration setting for the role. This setting can have a value
@@ -138,10 +138,10 @@ exception: you cannot call the STS \code{GetFederationToken} or
 to this operation. You can pass a single JSON policy document to use as
 an inline session policy. You can also specify up to 10 managed policies
 to use as managed session policies. The plain text that you use for both
-inline and managed session policies can\'t exceed 2,048 characters.
+inline and managed session policies can't exceed 2,048 characters.
 Passing policies to this operation returns new temporary credentials.
-The resulting session\'s permissions are the intersection of the role\'s
-identity-based policy and the session policies. You can use the role\'s
+The resulting session's permissions are the intersection of the role's
+identity-based policy and the session policies. You can use the role's
 temporary credentials in subsequent AWS API calls to access resources in
 the account that owns the role. You cannot use session policies to grant
 more permissions than those allowed by the identity-based policy of the
@@ -169,7 +169,7 @@ an associated value. For more information about session tags, see
 in the \emph{IAM User Guide}.
 
 You can pass up to 50 session tags. The plain text session tag keys
-can't exceed 128 characters and the values can't exceed 256 characters.
+can’t exceed 128 characters and the values can’t exceed 256 characters.
 For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
 in the \emph{IAM User Guide}.
 
@@ -181,8 +181,8 @@ percentage how close the policies and tags for your request are to the
 upper size limit.
 
 You can pass a session tag with the same key as a tag that is attached
-to the role. When you do, session tags override the role\'s tags with
-the same key.
+to the role. When you do, session tags override the role's tags with the
+same key.
 
 An administrator must grant you the permissions necessary to pass
 session tags. The administrator can also create granular permissions to

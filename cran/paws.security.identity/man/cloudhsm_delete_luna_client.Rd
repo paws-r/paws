@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsm_operations.R
 \name{cloudhsm_delete_luna_client}
 \alias{cloudhsm_delete_luna_client}
-\title{This is documentation for AWS CLOUDHSM CLASSIC}
+\title{This is documentation for AWS CloudHSM Classic}
 \usage{
 cloudhsm_delete_luna_client(ClientArn)
 }

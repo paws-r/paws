@@ -35,7 +35,7 @@ Constraints:
 specified CharacterSet.}
 
 \item{DatabaseName}{The name for your database of up to 64 alphanumeric characters. If you
-do not provide a name, Amazon RDS doesn\'t create a database in the DB
+do not provide a name, Amazon RDS doesn't create a database in the DB
 cluster you are creating.}
 
 \item{DBClusterIdentifier}{[required] The DB cluster identifier. This parameter is stored as a lowercase
@@ -45,7 +45,7 @@ Constraints:
 \itemize{
 \item Must contain from 1 to 63 letters, numbers, or hyphens.
 \item First character must be a letter.
-\item Can\'t end with a hyphen or contain two consecutive hyphens.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{my-cluster1}}
@@ -112,20 +112,20 @@ Constraints:
 \itemize{
 \item Must be 1 to 16 letters or numbers.
 \item First character must be a letter.
-\item Can\'t be a reserved word for the chosen database engine.
+\item Can't be a reserved word for the chosen database engine.
 }}
 
 \item{MasterUserPassword}{The password for the master database user. This password can contain any
-printable ASCII character except \"/\", \"\"\", or \"@\".
+printable ASCII character except "/", """, or "@".
 
 Constraints: Must contain from 8 to 41 characters.}
 
 \item{OptionGroupName}{A value that indicates that the DB cluster should be associated with the
 specified option group.
 
-Permanent options can\'t be removed from an option group. The option
-group can\'t be removed from a DB cluster once it is associated with a
-DB cluster.}
+Permanent options can't be removed from an option group. The option
+group can't be removed from a DB cluster once it is associated with a DB
+cluster.}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
 automated backups are enabled using the \code{BackupRetentionPeriod}
@@ -173,13 +173,13 @@ account that owns the KMS encryption key used to encrypt the new DB
 cluster, then you can use the KMS key alias instead of the ARN for the
 KMS encryption key.
 
-If an encryption key isn\'t specified in \code{KmsKeyId}:
+If an encryption key isn't specified in \code{KmsKeyId}:
 \itemize{
 \item If \code{ReplicationSourceIdentifier} identifies an encrypted source,
 then Amazon RDS will use the encryption key used to encrypt the
 source. Otherwise, Amazon RDS will use your default encryption key.
 \item If the \code{StorageEncrypted} parameter is enabled and
-\code{ReplicationSourceIdentifier} isn\'t specified, then Amazon RDS will
+\code{ReplicationSourceIdentifier} isn't specified, then Amazon RDS will
 use your default encryption key.
 }
 
@@ -229,7 +229,7 @@ specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion}
 autogenerates a pre-signed URL that is a valid request for the operation
 that can be executed in the source AWS Region.
 
-If you supply a value for this operation\'s \code{SourceRegion} parameter, a
+If you supply a value for this operation's \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
@@ -278,7 +278,7 @@ Guide}:
 of the DB cluster.}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can\'t be deleted when deletion protection is
+enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 
 \item{GlobalClusterIdentifier}{The global cluster ID of an Aurora cluster that becomes the primary

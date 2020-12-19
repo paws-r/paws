@@ -32,7 +32,7 @@ character set (through \verb{U+00FF})
 carriage return (\verb{U+000D})
 }}
 
-\item{SetAsDefault}{Specifies whether to set this version as the policy\'s default version.
+\item{SetAsDefault}{Specifies whether to set this version as the policy's default version.
 
 When this parameter is \code{true}, the new policy version becomes the
 operative version. That is, it becomes the version that is in effect for
@@ -49,9 +49,9 @@ delete an existing version using DeletePolicyVersion before you create a
 new version.
 }
 \details{
-Optionally, you can set the new version as the policy\'s default
-version. The default version is the version that is in effect for the
-IAM users, groups, and roles to which the policy is attached.
+Optionally, you can set the new version as the policy's default version.
+The default version is the version that is in effect for the IAM users,
+groups, and roles to which the policy is attached.
 
 For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.

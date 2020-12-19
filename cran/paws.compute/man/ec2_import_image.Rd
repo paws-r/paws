@@ -12,7 +12,7 @@ ec2_import_image(Architecture, ClientData, ClientToken, Description,
 \arguments{
 \item{Architecture}{The architecture of the virtual machine.
 
-Valid values: \code{i386} \\| \code{x86_64} \\| \code{arm64}}
+Valid values: \code{i386} | \code{x86_64} | \code{arm64}}
 
 \item{ClientData}{The client-specific data.}
 
@@ -85,10 +85,9 @@ in the VM Import/Export User Guide.}
 
 \item{Platform}{The operating system of the virtual machine.
 
-Valid values: \code{Windows} \\| \code{Linux}}
+Valid values: \code{Windows} | \code{Linux}}
 
-\item{RoleName}{The name of the role to use when not using the default role,
-\'vmimport\'.}
+\item{RoleName}{The name of the role to use when not using the default role, 'vmimport'.}
 
 \item{LicenseSpecifications}{The ARNs of the license configurations.}
 

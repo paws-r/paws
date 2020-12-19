@@ -113,7 +113,7 @@ notebook instance, assuming that the security groups allow it.
 }
 
 After creating the notebook instance, Amazon SageMaker returns its
-Amazon Resource Name (ARN). You can\'t change the name of a notebook
+Amazon Resource Name (ARN). You can't change the name of a notebook
 instance after you create it.
 
 After Amazon SageMaker creates the notebook instance, you can connect to

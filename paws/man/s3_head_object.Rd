@@ -30,7 +30,7 @@ time, otherwise return a 412 (precondition failed).}
 about the HTTP Range header, see
 http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html\\#sec14.35.
 
-Amazon S3 doesn\'t support retrieving multiple ranges of data per \code{GET}
+Amazon S3 doesn't support retrieving multiple ranges of data per \code{GET}
 request.}
 
 \item{VersionId}{VersionId used to reference a specific version of the object.}
@@ -42,7 +42,7 @@ example, AES256).}
 encrypting data. This value is used to store the object and then it is
 discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-\verb{x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm} header.}
+\code{x-amz-server-side​-encryption​-customer-algorithm} header.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to ensure
@@ -51,14 +51,14 @@ that the encryption key was transmitted without error.}
 \item{RequestPayer}{}
 
 \item{PartNumber}{Part number of the object being read. This is a positive integer between
-1 and 10,000. Effectively performs a \'ranged\' HEAD request for the
-part specified. Useful querying about the size of the part and the
-number of parts in this object.}
+1 and 10,000. Effectively performs a 'ranged' HEAD request for the part
+specified. Useful querying about the size of the part and the number of
+parts in this object.}
 }
 \description{
 The HEAD operation retrieves metadata from an object without returning
-the object itself. This operation is useful if you\'re only interested
-in an object\'s metadata. To use HEAD, you must have READ access to the
+the object itself. This operation is useful if you're only interested in
+an object's metadata. To use HEAD, you must have READ access to the
 object.
 }
 \details{
@@ -71,9 +71,9 @@ customer-provided encryption keys (SSE-C) when you store the object in
 Amazon S3, then when you retrieve the metadata from the object, you must
 use the following headers:
 \itemize{
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+\item x-amz-server-side​-encryption​-customer-algorithm
+\item x-amz-server-side​-encryption​-customer-key
+\item x-amz-server-side​-encryption​-customer-key-MD5
 }
 
 For more information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}.
@@ -81,15 +81,15 @@ For more information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3
 Encryption request headers, like \code{x-amz-server-side-encryption}, should
 not be sent for GET requests if your object uses server-side encryption
 with CMKs stored in AWS KMS (SSE-KMS) or server-side encryption with
-Amazon S3--managed encryption keys (SSE-S3). If your object does use
-these types of keys, you'll get an HTTP 400 BadRequest error.
+Amazon S3–managed encryption keys (SSE-S3). If your object does use
+these types of keys, you’ll get an HTTP 400 BadRequest error.
 
 Request headers are limited to 8 KB in size. For more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html}{Common Request Headers}.
 
 Consider the following when using request headers:
 \itemize{
-\item Consideration 1 -- If both of the \code{If-Match} and
+\item Consideration 1 – If both of the \code{If-Match} and
 \code{If-Unmodified-Since} headers are present in the request as follows:
 \itemize{
 \item \code{If-Match} condition evaluates to \code{true}, and;
@@ -97,7 +97,7 @@ Consider the following when using request headers:
 }
 
 Then Amazon S3 returns \verb{200 OK} and the data requested.
-\item Consideration 2 -- If both of the \code{If-None-Match} and
+\item Consideration 2 – If both of the \code{If-None-Match} and
 \code{If-Modified-Since} headers are present in the request as follows:
 \itemize{
 \item \code{If-None-Match} condition evaluates to \code{false}, and;
@@ -117,9 +117,9 @@ If the object you request does not exist, the error Amazon S3 returns
 depends on whether you also have the s3:ListBucket permission.
 \itemize{
 \item If you have the \code{s3:ListBucket} permission on the bucket, Amazon S3
-returns an HTTP status code 404 (\"no such key\") error.
-\item If you don't have the \code{s3:ListBucket} permission, Amazon S3 returns
-an HTTP status code 403 (\"access denied\") error.
+returns an HTTP status code 404 ("no such key") error.
+\item If you don’t have the \code{s3:ListBucket} permission, Amazon S3 returns
+an HTTP status code 403 ("access denied") error.
 }
 
 The following operation is related to \code{HeadObject}:

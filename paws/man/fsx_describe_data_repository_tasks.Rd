@@ -28,7 +28,7 @@ request, or if filters are used in the request. You can use filters to
 narrow the response to include just tasks for specific file systems, or
 tasks in a specific lifecycle state. Otherwise, it returns all data
 repository tasks owned by your AWS account in the AWS Region of the
-endpoint that you\'re calling.
+endpoint that you're calling.
 }
 \details{
 When retrieving all tasks, you can paginate the response by using the

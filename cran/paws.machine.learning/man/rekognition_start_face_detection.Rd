@@ -26,10 +26,10 @@ BoundingBox, Confidence, Pose, Quality and Landmarks.
 
 \code{ALL} - All facial attributes are returned.}
 
-\item{JobTag}{An identifier you specify that\'s returned in the completion
-notification that\'s published to your Amazon Simple Notification
-Service topic. For example, you can use \code{JobTag} to group related jobs
-and identify them in the completion notification.}
+\item{JobTag}{An identifier you specify that's returned in the completion notification
+that's published to your Amazon Simple Notification Service topic. For
+example, you can use \code{JobTag} to group related jobs and identify them in
+the completion notification.}
 }
 \description{
 Starts asynchronous detection of faces in a stored video.

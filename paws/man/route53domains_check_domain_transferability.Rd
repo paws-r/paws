@@ -16,7 +16,7 @@ The domain name can contain only the following characters:
 \itemize{
 \item Letters a through z. Domain names are not case sensitive.
 \item Numbers 0 through 9.
-\item Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+\item Hyphen (-). You can't specify a hyphen at the beginning or end of a
 label.
 \item Period (.) to separate the labels in the name, such as the \code{.} in
 \code{example.com}.

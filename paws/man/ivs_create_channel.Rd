@@ -18,7 +18,7 @@ whichever is lower; and bitrate can be up to 8.5 Mbps. \code{BASIC}: The
 stream is transfixed; resolution can be up to 480p; and bitrate can be
 up to 1.5 Mbps. Default: \code{STANDARD}.}
 
-\item{tags}{See Channel\\$tags.}
+\item{tags}{See Channel$tags.}
 }
 \description{
 Creates a new channel and an associated stream key to start streaming.

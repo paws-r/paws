@@ -12,6 +12,6 @@ Returns attributes related to AWS Elastic Beanstalk that are associated
 with the calling AWS account.
 }
 \details{
-The result currently has one set of attributes---resource quotas.
+The result currently has one set of attributes—resource quotas.
 }
 \keyword{internal}

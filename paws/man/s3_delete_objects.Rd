@@ -21,10 +21,10 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Delete}{[required] Container for the request.}
 
-\item{MFA}{The concatenation of the authentication device\'s serial number, a
-space, and the value that is displayed on your authentication device.
-Required to permanently delete a versioned object if versioning is
-configured with MFA delete enabled.}
+\item{MFA}{The concatenation of the authentication device's serial number, a space,
+and the value that is displayed on your authentication device. Required
+to permanently delete a versioned object if versioning is configured
+with MFA delete enabled.}
 
 \item{RequestPayer}{}
 

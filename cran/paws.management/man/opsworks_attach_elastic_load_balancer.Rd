@@ -7,7 +7,7 @@
 opsworks_attach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
 }
 \arguments{
-\item{ElasticLoadBalancerName}{[required] The Elastic Load Balancing instance\'s name.}
+\item{ElasticLoadBalancerName}{[required] The Elastic Load Balancing instance's name.}
 
 \item{LayerId}{[required] The ID of the layer to which the Elastic Load Balancing instance is to
 be attached.}

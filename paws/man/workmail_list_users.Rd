@@ -15,7 +15,7 @@ does not contain any tokens.}
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \description{
-Returns summaries of the organization\'s users.
+Returns summaries of the organization's users.
 }
 \section{Request syntax}{
 \preformatted{svc$list_users(

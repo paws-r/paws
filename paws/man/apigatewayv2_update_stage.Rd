@@ -20,7 +20,7 @@ deployment. The default value is false.}
 
 \item{DefaultRouteSettings}{The default route settings for the stage.}
 
-\item{DeploymentId}{The deployment identifier for the API stage. Can\'t be updated if
+\item{DeploymentId}{The deployment identifier for the API stage. Can't be updated if
 autoDeploy is enabled.}
 
 \item{Description}{The description for the API stage.}
@@ -32,7 +32,7 @@ hyphens, and underscores. Maximum length is 128 characters.}
 
 \item{StageVariables}{A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
-[A-Za-z0-9-.\\_\~:/?\\#&=,]+.}
+[A-Za-z0-9-.\\_~:/?\\#&=,]+.}
 }
 \description{
 Updates a Stage.

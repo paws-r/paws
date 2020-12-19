@@ -12,7 +12,7 @@ worklink_update_identity_provider_configuration(FleetArn,
 
 \item{IdentityProviderType}{[required] The type of identity provider.}
 
-\item{IdentityProviderSamlMetadata}{The SAML metadata document provided by the customer's identity provider.
+\item{IdentityProviderSamlMetadata}{The SAML metadata document provided by the customer’s identity provider.
 The existing IdentityProviderSamlMetadata is unset if null is passed.}
 }
 \description{

@@ -14,8 +14,8 @@ want to remove tags.}
 }
 \description{
 Removes one or more tags from a signaling channel. In the request,
-specify only a tag key or keys; don\'t specify the value. If you specify
-a tag key that does not exist, it\'s ignored.
+specify only a tag key or keys; don't specify the value. If you specify
+a tag key that does not exist, it's ignored.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

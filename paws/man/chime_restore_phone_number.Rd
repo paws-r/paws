@@ -2,8 +2,8 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_restore_phone_number}
 \alias{chime_restore_phone_number}
-\title{Moves a phone number from the DELETION QUEUE back into the phone number
-INVENTORY}
+\title{Moves a phone number from the Deletion queue back into the phone number
+Inventory}
 \usage{
 chime_restore_phone_number(PhoneNumberId)
 }

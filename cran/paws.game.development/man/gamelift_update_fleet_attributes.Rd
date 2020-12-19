@@ -21,9 +21,9 @@ need to be unique.}
 this fleet. Instances that already exist are not affected. You can set
 protection for individual instances using UpdateGameSession.
 \itemize{
-\item \strong{NoProtection} \\-- The game session can be terminated during a
+\item \strong{NoProtection} -- The game session can be terminated during a
 scale-down event.
-\item \strong{FullProtection} \\-- If the game session is in an \code{ACTIVE} status,
+\item \strong{FullProtection} -- If the game session is in an \code{ACTIVE} status,
 it cannot be terminated during a scale-down event.
 }}
 

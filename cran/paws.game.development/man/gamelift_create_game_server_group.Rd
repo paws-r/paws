@@ -2,8 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_create_game_server_group}
 \alias{gamelift_create_game_server_group}
-\title{THIS ACTION IS PART OF AMAZON GAMELIFT FLEETIQ WITH GAME SERVER GROUPS,
-WHICH IS IN PREVIEW RELEASE AND IS SUBJECT TO CHANGE}
+\title{This action is part of Amazon GameLift FleetIQ with game server groups,
+which is in preview release and is subject to change}
 \usage{
 gamelift_create_game_server_group(GameServerGroupName, RoleArn, MinSize,
   MaxSize, LaunchTemplate, InstanceDefinitions, AutoScalingPolicy,
@@ -44,7 +44,7 @@ in the \emph{Amazon EC2 User Guide}.}
 
 \item{AutoScalingPolicy}{Configuration settings to define a scaling policy for the Auto Scaling
 group that is optimized for game hosting. The scaling policy uses the
-metric \"PercentUtilizedGameServers\" to maintain a buffer of idle game
+metric "PercentUtilizedGameServers" to maintain a buffer of idle game
 servers that can immediately accommodate new games and players. Once the
 game server and Auto Scaling groups are created, you can update the
 scaling policy settings directly in Auto Scaling Groups.}
@@ -54,11 +54,11 @@ instances in a Region become unavailable or are not viable for game
 hosting. Once triggered, this method remains active until Spot instances
 can once again be used. Method options include:
 \itemize{
-\item SPOT\\_ONLY \\-- If Spot instances are unavailable, the game server
+\item SPOT\\_ONLY -- If Spot instances are unavailable, the game server
 group provides no hosting capacity. No new instances are started,
 and the existing nonviable Spot instances are terminated (once
 current gameplay ends) and not replaced.
-\item SPOT\\_PREFERRED \\-- If Spot instances are unavailable, the game
+\item SPOT\\_PREFERRED -- If Spot instances are unavailable, the game
 server group continues to provide hosting capacity by using
 On-Demand instances. Existing nonviable Spot instances are
 terminated (once current gameplay ends) and replaced with new
@@ -76,7 +76,7 @@ protection status. This property is set to NO\\_PROTECTION by default.}
 \item{VpcSubnets}{A list of virtual private cloud (VPC) subnets to use with instances in
 the game server group. By default, all GameLift FleetIQ-supported
 availability zones are used; this parameter allows you to specify VPCs
-that you\'ve set up.}
+that you've set up.}
 
 \item{Tags}{A list of labels to assign to the new game server group resource. Tags
 are developer-defined key-value pairs. Tagging AWS resources are useful
@@ -98,7 +98,7 @@ group, this action also creates an Auto Scaling group in your AWS
 account and establishes a link between the two groups. You have full
 control over configuration of the Auto Scaling group, but GameLift
 FleetIQ routinely certain Auto Scaling group properties in order to
-optimize the group\'s instances for low-cost game hosting. You can view
+optimize the group's instances for low-cost game hosting. You can view
 the status of your game server groups in the GameLift Console. Game
 server group metrics and events are emitted to Amazon CloudWatch.
 
@@ -120,14 +120,14 @@ in the \emph{Amazon S3 Developer Guide}.
 To create a new game server group, provide a name and specify the IAM
 role and EC2 launch template. You also need to provide a list of
 instance types to be used in the group and set initial maximum and
-minimum limits on the group\'s instance count. You can optionally set an
+minimum limits on the group's instance count. You can optionally set an
 autoscaling policy with target tracking based on a GameLift FleetIQ
 metric.
 
 Once the game server group and corresponding Auto Scaling group are
-created, you have full access to change the Auto Scaling group\'s
+created, you have full access to change the Auto Scaling group's
 configuration as needed. Keep in mind, however, that some properties are
-periodically updated by GameLift FleetIQ as it balances the group\'s
+periodically updated by GameLift FleetIQ as it balances the group's
 instances based on availability and cost.
 
 \strong{Learn more}

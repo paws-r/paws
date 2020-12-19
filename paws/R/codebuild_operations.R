@@ -231,13 +231,13 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     that corresponds to the version of the source code you want to
 #'     build. If a pull request ID is specified, it must use the format
 #'     `pr/pull-request-ID` (for example `pr/25`). If a branch name is
-#'     specified, the branch\'s HEAD commit ID is used. If not specified,
-#'     the default branch\'s HEAD commit ID is used.
+#'     specified, the branch's HEAD commit ID is used. If not specified,
+#'     the default branch's HEAD commit ID is used.
 #' 
 #' -   For Bitbucket: the commit ID, branch name, or tag name that
 #'     corresponds to the version of the source code you want to build. If
-#'     a branch name is specified, the branch\'s HEAD commit ID is used. If
-#'     not specified, the default branch\'s HEAD commit ID is used.
+#'     a branch name is specified, the branch's HEAD commit ID is used. If
+#'     not specified, the default branch's HEAD commit ID is used.
 #' 
 #' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the
 #'     object that represents the build input ZIP file to use.
@@ -271,7 +271,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' artifacts if your service role has permission to that key.
 #' 
 #' You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-#' available, the CMK\'s alias (using the format
+#' available, the CMK's alias (using the format
 #' `alias/<i>alias-name</i> `).
 #' @param tags A list of tag key and value pairs associated with this build project.
 #' 
@@ -279,7 +279,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' CodeBuild build project tags.
 #' @param vpcConfig VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
 #' @param badgeEnabled Set this to true to generate a publicly accessible URL for your
-#' project\'s build badge.
+#' project's build badge.
 #' @param logsConfig Information about logs for the build project. These can be logs in
 #' Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.
 #' @param fileSystemLocations An array of `ProjectFileSystemLocation` objects for a CodeBuild build
@@ -532,7 +532,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #' you are billed for both builds. Therefore, if you are using AWS
 #' CodePipeline, we recommend that you disable webhooks in AWS CodeBuild.
 #' In the AWS CodeBuild console, clear the Webhook box. For more
-#' information, see step 5 in [Change a Build Project\'s
+#' information, see step 5 in [Change a Build Project's
 #' Settings](https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
 #'
 #' @usage
@@ -1150,7 +1150,7 @@ codebuild_list_curated_environment_images <- function() {
 #' -   `LAST_MODIFIED_TIME`: List based on when information about each
 #'     build project was last changed.
 #' 
-#' -   `NAME`: List based on each build project\'s name.
+#' -   `NAME`: List based on each build project's name.
 #' 
 #' Use `sortOrder` to specify in what order to list the build project names
 #' based on the preceding criteria.
@@ -1215,7 +1215,7 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
 #' -   `LAST_MODIFIED_TIME`: List based on when each report group was last
 #'     changed.
 #' 
-#' -   `NAME`: List based on each report group\'s name.
+#' -   `NAME`: List based on each report group's name.
 #' @param nextToken During a previous call, the maximum number of items that can be returned
 #' is the value specified in `maxResults`. If there more items in the list,
 #' then a unique string called a *nextToken* is returned. To get the next
@@ -1593,7 +1593,7 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' @param projectName &#91;required&#93; The name of the AWS CodeBuild build project to start running a build.
 #' @param secondarySourcesOverride An array of `ProjectSource` objects.
 #' @param secondarySourcesVersionOverride An array of `ProjectSourceVersion` objects that specify one or more
-#' versions of the project\'s secondary sources to be used for this build
+#' versions of the project's secondary sources to be used for this build
 #' only.
 #' @param sourceVersion A version of the build input to be built, for this build only. If not
 #' specified, the latest version is used. If specified, must be one of:
@@ -1604,13 +1604,13 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'     that corresponds to the version of the source code you want to
 #'     build. If a pull request ID is specified, it must use the format
 #'     `pr/pull-request-ID` (for example `pr/25`). If a branch name is
-#'     specified, the branch\'s HEAD commit ID is used. If not specified,
-#'     the default branch\'s HEAD commit ID is used.
+#'     specified, the branch's HEAD commit ID is used. If not specified,
+#'     the default branch's HEAD commit ID is used.
 #' 
 #' -   For Bitbucket: the commit ID, branch name, or tag name that
 #'     corresponds to the version of the source code you want to build. If
-#'     a branch name is specified, the branch\'s HEAD commit ID is used. If
-#'     not specified, the default branch\'s HEAD commit ID is used.
+#'     a branch name is specified, the branch's HEAD commit ID is used. If
+#'     not specified, the default branch's HEAD commit ID is used.
 #' 
 #' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the
 #'     object that represents the build input ZIP file to use.
@@ -1631,7 +1631,7 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' @param sourceLocationOverride A location that overrides, for this build, the source location for the
 #' one defined in the build project.
 #' @param sourceAuthOverride An authorization type for this build that overrides the one defined in
-#' the build project. This override applies only if the build project\'s
+#' the build project. This override applies only if the build project's
 #' source is BitBucket or GitHub.
 #' @param gitCloneDepthOverride The user-defined depth of history, with a minimum value of 0, that
 #' overrides, for this build only, any previous depth of history defined in
@@ -1654,8 +1654,8 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' @param insecureSslOverride Enable this flag to override the insecure SSL setting that is specified
 #' in the build project. The insecure SSL setting determines whether to
 #' ignore SSL warnings while connecting to the project source code. This
-#' override applies only if the build\'s source is GitHub Enterprise.
-#' @param reportBuildStatusOverride Set to true to report to your source provider the status of a build\'s
+#' override applies only if the build's source is GitHub Enterprise.
+#' @param reportBuildStatusOverride Set to true to report to your source provider the status of a build's
 #' start and completion. If you use this option with a source provider
 #' other than GitHub, GitHub Enterprise, or Bitbucket, an
 #' invalidInputException is thrown.
@@ -1691,7 +1691,7 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' artifacts if your service role has permission to that key.
 #' 
 #' You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-#' available, the CMK\'s alias (using the format
+#' available, the CMK's alias (using the format
 #' `alias/<i>alias-name</i> `).
 #' @param idempotencyToken A unique, case sensitive identifier you provide to ensure the
 #' idempotency of the StartBuild request. The token is included in the
@@ -1706,10 +1706,10 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' 
 #' -   `CODEBUILD` specifies that AWS CodeBuild uses its own credentials.
 #'     This requires that you modify your ECR repository policy to trust
-#'     AWS CodeBuild\'s service principal.
+#'     AWS CodeBuild's service principal.
 #' 
 #' -   `SERVICE_ROLE` specifies that AWS CodeBuild uses your build
-#'     project\'s service role.
+#'     project's service role.
 #' 
 #' When using a cross-account or private registry image, you must use
 #' SERVICE\\_ROLE credentials. When using an AWS CodeBuild curated image,
@@ -1902,7 +1902,7 @@ codebuild_stop_build <- function(id) {
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' 
-#' You cannot change a build project\'s name.
+#' You cannot change a build project's name.
 #' @param description A new or replacement description of the build project.
 #' @param source Information to be changed about the build input source code for the
 #' build project.
@@ -1916,13 +1916,13 @@ codebuild_stop_build <- function(id) {
 #'     that corresponds to the version of the source code you want to
 #'     build. If a pull request ID is specified, it must use the format
 #'     `pr/pull-request-ID` (for example `pr/25`). If a branch name is
-#'     specified, the branch\'s HEAD commit ID is used. If not specified,
-#'     the default branch\'s HEAD commit ID is used.
+#'     specified, the branch's HEAD commit ID is used. If not specified,
+#'     the default branch's HEAD commit ID is used.
 #' 
 #' -   For Bitbucket: the commit ID, branch name, or tag name that
 #'     corresponds to the version of the source code you want to build. If
-#'     a branch name is specified, the branch\'s HEAD commit ID is used. If
-#'     not specified, the default branch\'s HEAD commit ID is used.
+#'     a branch name is specified, the branch's HEAD commit ID is used. If
+#'     not specified, the default branch's HEAD commit ID is used.
 #' 
 #' -   For Amazon Simple Storage Service (Amazon S3): the version ID of the
 #'     object that represents the build input ZIP file to use.
@@ -1958,7 +1958,7 @@ codebuild_stop_build <- function(id) {
 #' artifacts if your service role has permission to that key.
 #' 
 #' You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-#' available, the CMK\'s alias (using the format
+#' available, the CMK's alias (using the format
 #' `alias/<i>alias-name</i> `).
 #' @param tags An updated list of tag key and value pairs associated with this build
 #' project.
@@ -1967,7 +1967,7 @@ codebuild_stop_build <- function(id) {
 #' CodeBuild build project tags.
 #' @param vpcConfig VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
 #' @param badgeEnabled Set this to true to generate a publicly accessible URL for your
-#' project\'s build badge.
+#' project's build badge.
 #' @param logsConfig Information about logs for the build project. A project can create logs
 #' in Amazon CloudWatch Logs, logs in an S3 bucket, or both.
 #' @param fileSystemLocations An array of `ProjectFileSystemLocation` objects for a CodeBuild build
@@ -2223,7 +2223,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #' 
 #' It is recommended that you use `filterGroups` instead of `branchFilter`.
 #' @param rotateSecret A boolean value that specifies whether the associated GitHub
-#' repository\'s secret token should be updated. If you use Bitbucket for
+#' repository's secret token should be updated. If you use Bitbucket for
 #' your repository, `rotateSecret` is ignored.
 #' @param filterGroups An array of arrays of `WebhookFilter` objects used to determine if a
 #' webhook event can trigger a build. A filter group must contain at least

@@ -23,7 +23,7 @@ paginated response.}
 }
 \description{
 Retrieves information about the configuration, dimension, and other
-settings for all the versions of a specific segment that\'s associated
+settings for all the versions of a specific segment that's associated
 with an application.
 }
 \section{Request syntax}{

@@ -18,13 +18,13 @@ Discovery Service offers three ways of performing discovery and
 collecting data about your on-premises servers:
 \itemize{
 \item \strong{Agentless discovery} is recommended for environments that use
-VMware vCenter Server. This mode doesn\'t require you to install an
+VMware vCenter Server. This mode doesn't require you to install an
 agent on each host. It does not work in non-VMware environments.
 \itemize{
 \item Agentless discovery gathers server information regardless of the
 operating systems, which minimizes the time required for initial
 on-premises infrastructure assessment.
-\item Agentless discovery doesn\'t collect information about network
+\item Agentless discovery doesn't collect information about network
 dependencies, only agent-based discovery collects that
 information.
 }
@@ -74,8 +74,8 @@ This API reference provides descriptions, syntax, and usage examples for
 each of the actions and data types for Application Discovery Service.
 The topic for each action shows the API request parameters and the
 response. Alternatively, you can use one of the AWS SDKs to access an
-API that is tailored to the programming language or platform that
-you\'re using. For more information, see \href{http://aws.amazon.com/tools/#SDKs}{AWS SDKs}.
+API that is tailored to the programming language or platform that you're
+using. For more information, see \href{http://aws.amazon.com/tools/#SDKs}{AWS SDKs}.
 \itemize{
 \item Remember that you must set your Migration Hub home region before you
 call any of these APIs.

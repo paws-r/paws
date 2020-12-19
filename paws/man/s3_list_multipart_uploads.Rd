@@ -22,7 +22,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 All keys that contain the same string between the prefix, if specified,
 and the first occurrence of the delimiter after the prefix are grouped
-under a single result element, \code{CommonPrefixes}. If you don\'t specify
+under a single result element, \code{CommonPrefixes}. If you don't specify
 the prefix parameter, then the substring starts at the beginning of the
 key. The keys that are grouped under \code{CommonPrefixes} result element are
 not returned elsewhere in the response.}
@@ -47,7 +47,7 @@ returned in a response.}
 \item{Prefix}{Lists in-progress uploads only for those keys that begin with the
 specified prefix. You can use prefixes to separate a bucket into
 different grouping of keys. (You can think of using prefix to make
-groups in the same way you\'d use a folder in a file system.)}
+groups in the same way you'd use a folder in a file system.)}
 
 \item{UploadIdMarker}{Together with key-marker, specifies the multipart upload after which
 listing should begin. If key-marker is not specified, the

@@ -30,7 +30,7 @@ in the \emph{AWS Key Management Service Developer Guide}.}
 Creates a domain. CodeArtifact \emph{domains} make it easier to manage
 multiple repositories across an organization. You can use a domain to
 apply permissions across many repositories owned by different AWS
-accounts. An asset is stored only once in a domain, even if it\'s in
+accounts. An asset is stored only once in a domain, even if it's in
 multiple repositories.
 }
 \details{

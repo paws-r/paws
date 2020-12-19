@@ -37,7 +37,7 @@ view of search results, and in the HIT and assignment screens. A good
 description gives the user enough information to evaluate the HIT before
 accepting it.}
 
-\item{QualificationRequirements}{Conditions that a Worker\'s Qualifications must meet in order to accept
+\item{QualificationRequirements}{Conditions that a Worker's Qualifications must meet in order to accept
 the HIT. A HIT can have between zero and ten Qualification requirements.
 All requirements must be met in order for a Worker to accept the HIT.
 Additionally, other actions can be restricted using the \code{ActionsGuarded}

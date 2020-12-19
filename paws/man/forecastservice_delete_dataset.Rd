@@ -19,7 +19,7 @@ DescribeDataset operation.
 \details{
 Forecast does not automatically update any dataset groups that contain
 the deleted dataset. In order to update the dataset group, use the
-operation, omitting the deleted dataset\'s ARN.
+operation, omitting the deleted dataset's ARN.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_dataset(

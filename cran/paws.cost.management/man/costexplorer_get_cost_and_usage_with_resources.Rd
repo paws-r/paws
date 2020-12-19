@@ -17,12 +17,12 @@ is exclusive. For example, if \code{start} is \code{2017-01-01} and \code{end} i
 \code{2017-05-01}.}
 
 \item{Granularity}{Sets the AWS cost granularity to \code{MONTHLY}, \code{DAILY}, or \code{HOURLY}. If
-\code{Granularity} isn\'t set, the response object doesn\'t include the
+\code{Granularity} isn't set, the response object doesn't include the
 \code{Granularity}, \code{MONTHLY}, \code{DAILY}, or \code{HOURLY}.}
 
 \item{Filter}{Filters Amazon Web Services costs by different dimensions. For example,
 you can specify \code{SERVICE} and \code{LINKED_ACCOUNT} and get the costs that
-are associated with that account\'s usage of that service. You can nest
+are associated with that account's usage of that service. You can nest
 \code{Expression} objects to define any combination of dimension filters. For
 more information, see
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}.
@@ -31,7 +31,7 @@ The \code{GetCostAndUsageWithResources} operation requires that you either
 group by or filter by a \code{ResourceId}.}
 
 \item{Metrics}{Which metrics are returned in the query. For more information about
-blended and unblended rates, see \href{http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the \"blended\" annotation appear on some line items in my bill?}.
+blended and unblended rates, see \href{http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
 
 Valid values are \code{AmortizedCost}, \code{BlendedCost}, \code{NetAmortizedCost},
 \code{NetUnblendedCost}, \code{NormalizedUsageAmount}, \code{UnblendedCost}, and
@@ -39,7 +39,7 @@ Valid values are \code{AmortizedCost}, \code{BlendedCost}, \code{NetAmortizedCos
 
 If you return the \code{UsageQuantity} metric, the service aggregates all
 usage numbers without taking the units into account. For example, if you
-aggregate \code{usageQuantity} across all of Amazon EC2, the results aren\'t
+aggregate \code{usageQuantity} across all of Amazon EC2, the results aren't
 meaningful because Amazon EC2 compute hours and data transfer are
 measured in different units (for example, hours vs. GB). To get more
 meaningful \code{UsageQuantity} metrics, filter by \code{UsageType} or
@@ -64,7 +64,7 @@ see the
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html}{GetDimensionValues}
 operation. Master accounts in an organization in AWS Organizations have
 access to all member accounts. This API is currently available for the
-Amazon Elastic Compute Cloud -- Compute service only.
+Amazon Elastic Compute Cloud – Compute service only.
 }
 \details{
 This is an opt-in only feature. You can enable this feature from the

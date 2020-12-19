@@ -41,7 +41,7 @@ NULL
 #' -   Paid container software products sold through AWS Marketplace must
 #'     integrate with the AWS Marketplace Metering Service and call the
 #'     RegisterUsage operation for software entitlement and metering. Free
-#'     and BYOL products for Amazon ECS or Amazon EKS aren\'t required to
+#'     and BYOL products for Amazon ECS or Amazon EKS aren't required to
 #'     call RegisterUsage, but you can do so if you want to receive usage
 #'     data in your seller reports. For more information on using the
 #'     RegisterUsage operation, see [Container-Based

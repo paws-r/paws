@@ -162,7 +162,7 @@ If you no longer need a scalable target, you can deregister it by using
 To update a scalable target, specify the parameters that you want to
 change. Include the parameters that identify the scalable target:
 resource ID, scalable dimension, and namespace. Any parameters that you
-don\'t specify are not changed by this update request.
+don't specify are not changed by this update request.
 }
 \section{Request syntax}{
 \preformatted{svc$register_scalable_target(

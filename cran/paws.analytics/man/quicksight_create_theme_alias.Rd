@@ -14,7 +14,7 @@ alias.}
 \item{ThemeId}{[required] An ID for the theme alias.}
 
 \item{AliasName}{[required] The name that you want to give to the theme alias that you are creating.
-The alias name can\'t begin with a \code{$}. Alias names that start with \code{$}
+The alias name can't begin with a \code{$}. Alias names that start with \code{$}
 are reserved by Amazon QuickSight.}
 
 \item{ThemeVersionNumber}{[required] The version number of the theme.}

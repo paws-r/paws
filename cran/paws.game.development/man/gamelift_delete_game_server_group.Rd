@@ -2,8 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_delete_game_server_group}
 \alias{gamelift_delete_game_server_group}
-\title{THIS ACTION IS PART OF AMAZON GAMELIFT FLEETIQ WITH GAME SERVER GROUPS,
-WHICH IS IN PREVIEW RELEASE AND IS SUBJECT TO CHANGE}
+\title{This action is part of Amazon GameLift FleetIQ with game server groups,
+which is in preview release and is subject to change}
 \usage{
 gamelift_delete_game_server_group(GameServerGroupName, DeleteOption)
 }
@@ -13,14 +13,13 @@ GameServerGroup name or ARN value.}
 
 \item{DeleteOption}{The type of delete to perform. Options include:
 \itemize{
-\item SAFE\\_DELETE -- Terminates the game server group and EC2 Auto
-Scaling group only when it has no game servers that are in IN\\_USE
-status.
-\item FORCE\\_DELETE -- Terminates the game server group, including all
+\item SAFE\\_DELETE – Terminates the game server group and EC2 Auto Scaling
+group only when it has no game servers that are in IN\\_USE status.
+\item FORCE\\_DELETE – Terminates the game server group, including all
 active game servers regardless of their utilization status, and the
 EC2 Auto Scaling group.
-\item RETAIN -- Does a safe delete of the game server group but retains
-the EC2 Auto Scaling group as is.
+\item RETAIN – Does a safe delete of the game server group but retains the
+EC2 Auto Scaling group as is.
 }}
 }
 \description{

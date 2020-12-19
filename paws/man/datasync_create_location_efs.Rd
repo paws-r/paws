@@ -8,7 +8,7 @@ datasync_create_location_efs(Subdirectory, EfsFilesystemArn, Ec2Config,
   Tags)
 }
 \arguments{
-\item{Subdirectory}{A subdirectory in the location's path. This subdirectory in the EFS file
+\item{Subdirectory}{A subdirectory in the location’s path. This subdirectory in the EFS file
 system is used to read data from the EFS source location or write data
 to the EFS destination. By default, AWS DataSync uses the root
 directory.
@@ -32,7 +32,7 @@ the NFS port (2049) from security group S. You can enable inbound
 connections either by IP address (CIDR range) or security group.
 \item Security group S (provided to DataSync to access EFS) should have a
 rule that enables outbound connections to the NFS port on one of the
-file system's mount targets. You can enable outbound connections
+file system’s mount targets. You can enable outbound connections
 either by IP address (CIDR range) or security group.
 
 For information about security groups and mount targets, see

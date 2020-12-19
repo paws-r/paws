@@ -43,7 +43,7 @@ separated by a slash (/). Must be URL-encoded.}
 \item{CopySourceIfNoneMatch}{Copies the object if its entity tag (ETag) is different than the
 specified ETag.}
 
-\item{CopySourceIfUnmodifiedSince}{Copies the object if it hasn\'t been modified since the specified time.}
+\item{CopySourceIfUnmodifiedSince}{Copies the object if it hasn't been modified since the specified time.}
 
 \item{Expires}{The date and time at which the object is no longer cacheable.}
 
@@ -69,7 +69,7 @@ or replaced with tag-set provided in the request.}
 \item{ServerSideEncryption}{The server-side encryption algorithm used when storing this object in
 Amazon S3 (for example, AES256, aws:kms).}
 
-\item{StorageClass}{The type of storage to use for the object. Defaults to \'STANDARD\'.}
+\item{StorageClass}{The type of storage to use for the object. Defaults to 'STANDARD'.}
 
 \item{WebsiteRedirectLocation}{If the bucket is configured as a website, redirects requests for this
 object to another object in the same bucket or to an external URL.
@@ -82,7 +82,7 @@ example, AES256).}
 encrypting data. This value is used to store the object and then it is
 discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-\verb{x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm} header.}
+\code{x-amz-server-side​-encryption​-customer-algorithm} header.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to ensure
@@ -117,7 +117,7 @@ URL Query parameters.}
 
 \item{ObjectLockMode}{The Object Lock mode that you want to apply to the copied object.}
 
-\item{ObjectLockRetainUntilDate}{The date and time when you want the copied object\'s Object Lock to
+\item{ObjectLockRetainUntilDate}{The date and time when you want the copied object's Object Lock to
 expire.}
 
 \item{ObjectLockLegalHoldStatus}{Specifies whether you want to apply a Legal Hold to the copied object.}
@@ -262,9 +262,9 @@ header in the response.
 If you do not enable versioning or suspend it on the target bucket, the
 version ID that Amazon S3 generates is always null.
 
-If the source object\'s storage class is GLACIER, you must restore a
-copy of this object before you can use it as a source object for the
-copy operation. For more information, see .
+If the source object's storage class is GLACIER, you must restore a copy
+of this object before you can use it as a source object for the copy
+operation. For more information, see .
 
 The following operations are related to \code{CopyObject}:
 \itemize{

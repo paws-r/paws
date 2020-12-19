@@ -22,7 +22,7 @@ sending for evaluation.}
 }
 \description{
 Evaluates an event against a detector version. If a version ID is not
-provided, the detector's (\code{ACTIVE}) version is used.
+provided, the detector’s (\code{ACTIVE}) version is used.
 }
 \section{Request syntax}{
 \preformatted{svc$get_prediction(

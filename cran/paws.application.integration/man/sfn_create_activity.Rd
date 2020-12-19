@@ -44,8 +44,8 @@ from the activity.
 This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 
-\code{CreateActivity} is an idempotent API. Subsequent requests won't create
-a duplicate resource if it was already created. \code{CreateActivity}\'s
+\code{CreateActivity} is an idempotent API. Subsequent requests won’t create
+a duplicate resource if it was already created. \code{CreateActivity}'s
 idempotency check is based on the activity \code{name}. If a following
 request has different \code{tags} values, Step Functions will ignore these
 differences and treat it as an idempotent request of the previous. In

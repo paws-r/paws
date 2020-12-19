@@ -30,7 +30,7 @@ this operation on a CMK in a different AWS account.
 }
 \details{
 When the specified CMK is in the \code{PendingDeletion} state, this operation
-does not change the CMK\'s state. Otherwise, it changes the CMK\'s state
+does not change the CMK's state. Otherwise, it changes the CMK's state
 to \code{PendingImport}.
 
 After you delete key material, you can use ImportKeyMaterial to reimport

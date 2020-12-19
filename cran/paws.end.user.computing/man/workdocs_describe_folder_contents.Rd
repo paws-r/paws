@@ -25,7 +25,7 @@ previous call.}
 
 \item{Type}{The type of items.}
 
-\item{Include}{The contents to include. Specify \"INITIALIZED\" to include initialized
+\item{Include}{The contents to include. Specify "INITIALIZED" to include initialized
 documents.}
 }
 \description{

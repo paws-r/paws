@@ -11,7 +11,7 @@ alexaforbusiness_approve_skill(SkillId)
 \item{SkillId}{[required] The unique identifier of the skill.}
 }
 \description{
-Associates a skill with the organization under the customer\'s AWS
+Associates a skill with the organization under the customer's AWS
 account. If a skill is private, the user implicitly accepts access to
 this skill during enablement.
 }

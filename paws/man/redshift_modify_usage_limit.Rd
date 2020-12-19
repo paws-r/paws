@@ -16,7 +16,7 @@ UsageLimit.}
 more information about this parameter, see UsageLimit.}
 }
 \description{
-Modifies a usage limit in a cluster. You can\'t modify the feature type
+Modifies a usage limit in a cluster. You can't modify the feature type
 or period of a usage limit.
 }
 \section{Request syntax}{

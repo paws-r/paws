@@ -16,8 +16,7 @@ filters. If any IDs are not found, BackupNotFound will be thrown.}
 \item{MaxResults}{Maximum number of backups to return in the response (integer). This
 parameter value must be greater than 0. The number of items that Amazon
 FSx returns is the minimum of the \code{MaxResults} parameter specified in
-the request and the service\'s internal maximum number of items per
-page.}
+the request and the service's internal maximum number of items per page.}
 
 \item{NextToken}{Opaque pagination token returned from a previous \code{DescribeBackups}
 operation (String). If a token present, the action continues the list
@@ -26,7 +25,7 @@ from where the returning call left off.}
 \description{
 Returns the description of specific Amazon FSx backups, if a \code{BackupIds}
 value is provided for that backup. Otherwise, it returns all backups
-owned by your AWS account in the AWS Region of the endpoint that you\'re
+owned by your AWS account in the AWS Region of the endpoint that you're
 calling.
 }
 \details{

@@ -9,10 +9,10 @@ glacier_create_vault(accountId, vaultName)
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID. This value must match the
 AWS account ID associated with the credentials used to sign the request.
-You can either specify an AWS account ID or optionally a single \'\code{-}\'
+You can either specify an AWS account ID or optionally a single '\code{-}'
 (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
 associated with the credentials used to sign the request. If you specify
-your account ID, do not include any hyphens (\'-\') in the ID.}
+your account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
@@ -26,14 +26,14 @@ vaults, contact Amazon S3 Glacier.
 You must use the following guidelines when naming a vault.
 \itemize{
 \item Names can be between 1 and 255 characters long.
-\item Allowed characters are a-z, A-Z, 0-9, \'\\_\' (underscore), \'-\'
-(hyphen), and \'.\' (period).
+\item Allowed characters are a-z, A-Z, 0-9, '\\_' (underscore), '-'
+(hyphen), and '.' (period).
 }
 
 This operation is idempotent.
 
 An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don\'t have any
+However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html}{Access Control Using AWS Identity and Access Management (IAM)}.
 

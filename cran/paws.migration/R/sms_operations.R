@@ -14,7 +14,7 @@ NULL
 #'
 #' @param name Name of the new application.
 #' @param description Description of the new application
-#' @param roleName Name of service role in customer\'s account to be used by AWS SMS.
+#' @param roleName Name of service role in customer's account to be used by AWS SMS.
 #' @param clientToken A unique, case-sensitive identifier you provide to ensure idempotency of
 #' application creation.
 #' @param serverGroups List of server groups to include in the application.
@@ -114,8 +114,8 @@ sms_create_app <- function(name = NULL, description = NULL, roleName = NULL, cli
 #' 
 #' -   ARN referring to KMS key alias
 #' 
-#' If encrypted is *true* but a KMS key id is not specified, the
-#' customer\'s default KMS key for EBS is used.
+#' If encrypted is *true* but a KMS key id is not specified, the customer's
+#' default KMS key for EBS is used.
 #'
 #' @section Request syntax:
 #' ```
@@ -383,10 +383,10 @@ sms_disassociate_connector <- function(connectorId) {
 .sms$operations$disassociate_connector <- sms_disassociate_connector
 
 #' Generates a target change set for a currently launched stack and writes
-#' it to an Amazon S3 object in the customerâ€™s Amazon S3 bucket
+#' it to an Amazon S3 object in the customer’s Amazon S3 bucket
 #'
 #' Generates a target change set for a currently launched stack and writes
-#' it to an Amazon S3 object in the customer's Amazon S3 bucket.
+#' it to an Amazon S3 object in the customer’s Amazon S3 bucket.
 #'
 #' @usage
 #' sms_generate_change_set(appId, changesetFormat)
@@ -423,11 +423,11 @@ sms_generate_change_set <- function(appId = NULL, changesetFormat = NULL) {
 .sms$operations$generate_change_set <- sms_generate_change_set
 
 #' Generates an Amazon CloudFormation template based on the current launch
-#' configuration and writes it to an Amazon S3 object in the customerâ€™s
+#' configuration and writes it to an Amazon S3 object in the customer’s
 #' Amazon S3 bucket
 #'
 #' Generates an Amazon CloudFormation template based on the current launch
-#' configuration and writes it to an Amazon S3 object in the customer's
+#' configuration and writes it to an Amazon S3 object in the customer’s
 #' Amazon S3 bucket.
 #'
 #' @usage
@@ -876,7 +876,7 @@ sms_list_apps <- function(appIds = NULL, nextToken = NULL, maxResults = NULL) {
 #'   serverGroupLaunchConfigurations)
 #'
 #' @param appId ID of the application associated with the launch configuration.
-#' @param roleName Name of service role in the customer\'s account that Amazon
+#' @param roleName Name of service role in the customer's account that Amazon
 #' CloudFormation uses to launch the application.
 #' @param serverGroupLaunchConfigurations Launch configurations for server groups in the application.
 #'
@@ -1182,7 +1182,7 @@ sms_terminate_app <- function(appId = NULL) {
 #' @param appId ID of the application to update.
 #' @param name New name of the application.
 #' @param description New description of the application.
-#' @param roleName Name of the service role in the customer\'s account used by AWS SMS.
+#' @param roleName Name of the service role in the customer's account used by AWS SMS.
 #' @param serverGroups List of server groups in the application to update.
 #' @param tags List of tags to associate with the application.
 #'
@@ -1277,8 +1277,8 @@ sms_update_app <- function(appId = NULL, name = NULL, description = NULL, roleNa
 #' 
 #' -   ARN referring to KMS key alias
 #' 
-#' If encrypted is *true* but a KMS key id is not specified, the
-#' customer\'s default KMS key for EBS is used.
+#' If encrypted is *true* but a KMS key id is not specified, the customer's
+#' default KMS key for EBS is used.
 #'
 #' @section Request syntax:
 #' ```

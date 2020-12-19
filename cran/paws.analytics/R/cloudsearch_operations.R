@@ -499,7 +499,7 @@ cloudsearch_delete_expression <- function(DomainName, ExpressionName) {
 #' cloudsearch_delete_index_field(DomainName, IndexFieldName)
 #'
 #' @param DomainName &#91;required&#93; 
-#' @param IndexFieldName &#91;required&#93; The name of the index field your want to remove from the domain\'s
+#' @param IndexFieldName &#91;required&#93; The name of the index field your want to remove from the domain's
 #' indexing options.
 #'
 #' @section Request syntax:
@@ -669,8 +669,8 @@ cloudsearch_describe_availability_options <- function(DomainName, Deployed = NUL
 #' Returns the domain's endpoint options, specifically whether all requests
 #' to the domain must arrive over HTTPS
 #'
-#' Returns the domain\'s endpoint options, specifically whether all
-#' requests to the domain must arrive over HTTPS. For more information, see
+#' Returns the domain's endpoint options, specifically whether all requests
+#' to the domain must arrive over HTTPS. For more information, see
 #' [Configuring Domain Endpoint
 #' Options](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html)
 #' in the *Amazon CloudSearch Developer Guide*.
@@ -716,7 +716,7 @@ cloudsearch_describe_domain_endpoint_options <- function(DomainName, Deployed = 
 #' Gets information about the search domains owned by this account. Can be
 #' limited to specific domains. Shows all domains by default. To get the
 #' number of searchable documents in a domain, use the console or submit a
-#' `matchall` request to your domain\'s search endpoint:
+#' `matchall` request to your domain's search endpoint:
 #' `q=matchall&amp;amp;q.parser=structured&amp;amp;size=0`. For more
 #' information, see [Getting Information about a Search
 #' Domain](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html)
@@ -858,7 +858,7 @@ cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Dep
 
 #' Gets the scaling parameters configured for a domain
 #'
-#' Gets the scaling parameters configured for a domain. A domain\'s scaling
+#' Gets the scaling parameters configured for a domain. A domain's scaling
 #' parameters specify the desired search instance type and replication
 #' count. For more information, see [Configuring Scaling
 #' Options](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html)
@@ -900,7 +900,7 @@ cloudsearch_describe_scaling_parameters <- function(DomainName) {
 #' domain's document and search endpoints
 #'
 #' Gets information about the access policies that control access to the
-#' domain\'s document and search endpoints. By default, shows the
+#' domain's document and search endpoints. By default, shows the
 #' configuration with any pending changes. Set the `Deployed` option to
 #' `true` to show the active configuration and exclude pending changes. For
 #' more information, see [Configuring Access for a Search
@@ -1113,8 +1113,8 @@ cloudsearch_update_availability_options <- function(DomainName, MultiAZ) {
 #' Updates the domain's endpoint options, specifically whether all requests
 #' to the domain must arrive over HTTPS
 #'
-#' Updates the domain\'s endpoint options, specifically whether all
-#' requests to the domain must arrive over HTTPS. For more information, see
+#' Updates the domain's endpoint options, specifically whether all requests
+#' to the domain must arrive over HTTPS. For more information, see
 #' [Configuring Domain Endpoint
 #' Options](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html)
 #' in the *Amazon CloudSearch Developer Guide*.
@@ -1162,7 +1162,7 @@ cloudsearch_update_domain_endpoint_options <- function(DomainName, DomainEndpoin
 
 #' Configures scaling parameters for a domain
 #'
-#' Configures scaling parameters for a domain. A domain\'s scaling
+#' Configures scaling parameters for a domain. A domain's scaling
 #' parameters specify the desired search instance type and replication
 #' count. Amazon CloudSearch will still automatically scale your domain
 #' based on the volume of data and traffic, but not below the desired
@@ -1213,9 +1213,9 @@ cloudsearch_update_scaling_parameters <- function(DomainName, ScalingParameters)
 #' Configures the access rules that control access to the domain's document
 #' and search endpoints
 #'
-#' Configures the access rules that control access to the domain\'s
-#' document and search endpoints. For more information, see [Configuring
-#' Access for an Amazon CloudSearch
+#' Configures the access rules that control access to the domain's document
+#' and search endpoints. For more information, see [Configuring Access for
+#' an Amazon CloudSearch
 #' Domain](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html).
 #'
 #' @usage

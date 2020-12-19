@@ -19,7 +19,7 @@ the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
 \description{
-Gets the invitations for resource sharing that you\'ve received.
+Gets the invitations for resource sharing that you've received.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resource_share_invitations(

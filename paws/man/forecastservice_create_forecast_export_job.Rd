@@ -53,9 +53,9 @@ Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name
 will match the following conventions:
 }
 \details{
-\\<ForecastExportJobName\\>\\\emph{\\<ExportTimestamp\\>\\}\\<PartNumber\\>
+<ForecastExportJobName>\\\emph{<ExportTimestamp>\\}<PartNumber>
 
-where the \\<ExportTimestamp\\> component is in Java SimpleDateFormat
+where the <ExportTimestamp> component is in Java SimpleDateFormat
 (yyyy-MM-ddTHH-mm-ssZ).
 
 You must specify a DataDestination object that includes an AWS Identity

@@ -16,7 +16,7 @@ cognitoidentityprovider_set_user_mfa_preference(SMSMfaSettings,
 \item{AccessToken}{[required] The access token for the user.}
 }
 \description{
-Set the user\'s multi-factor authentication (MFA) method preference,
+Set the user's multi-factor authentication (MFA) method preference,
 including which MFA factors are enabled and if any are preferred. Only
 one factor can be set as preferred. The preferred MFA factor will be
 used to authenticate a user if multiple factors are enabled. If multiple

@@ -10,13 +10,13 @@ textract_start_document_text_detection(DocumentLocation,
 \arguments{
 \item{DocumentLocation}{[required] The location of the document to be processed.}
 
-\item{ClientRequestToken}{The idempotent token that\'s used to identify the start request. If you
+\item{ClientRequestToken}{The idempotent token that's used to identify the start request. If you
 use the same token with multiple \code{StartDocumentTextDetection} requests,
 the same \code{JobId} is returned. Use \code{ClientRequestToken} to prevent the
 same job from being accidentally started more than once. For more
 information, see \href{https://docs.aws.amazon.com/textract/latest/dg/api-async.html}{Calling Amazon Textract Asynchronous Operations}.}
 
-\item{JobTag}{An identifier that you specify that\'s included in the completion
+\item{JobTag}{An identifier that you specify that's included in the completion
 notification published to the Amazon SNS topic. For example, you can use
 \code{JobTag} to identify the type of document that the completion
 notification corresponds to (such as a tax form or a receipt).}

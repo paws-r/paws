@@ -499,7 +499,7 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' ### LAUNCH
 #' 
 #' You are required to specify either the `RoleArn` or the `LocalRoleName`
-#' but can\'t use both.
+#' but can't use both.
 #' 
 #' Specify the `RoleArn` property as follows:
 #' 
@@ -1964,8 +1964,8 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #' there is a TagOption conflict for that key. The end user cannot take
 #' action to fix the conflict, and launch is not blocked. In subsequent
 #' calls to ProvisionProduct, do not include conflicted TagOption keys as
-#' tags, or this causes the error \"Parameter validation failed: Missing
-#' required parameter in Tags\[*N*\]:*Value*\". Tag the provisioned product
+#' tags, or this causes the error "Parameter validation failed: Missing
+#' required parameter in Tags\[*N*\]:*Value*". Tag the provisioned product
 #' with the value `sc-tagoption-conflict-portfolioId-productId`.
 #'
 #' @usage
@@ -2027,7 +2027,7 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #' UpdateProvisionedProductProperties, the new owner will be able to
 #' describe all past records for that product. The previous owner will no
 #' longer be able to describe the records, but will be able to use
-#' ListRecordHistory to see the product\'s history from when he was the
+#' ListRecordHistory to see the product's history from when he was the
 #' owner.
 #'
 #' @usage
@@ -2216,7 +2216,7 @@ servicecatalog_describe_tag_option <- function(Id) {
 #' calling this API. This API can only be called by the master account in
 #' the organization.
 #' 
-#' This API can\'t be invoked if there are active delegated administrators
+#' This API can't be invoked if there are active delegated administrators
 #' in the organization.
 #' 
 #' Note that a delegated administrator is not authorized to invoke
@@ -3622,8 +3622,8 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #' 
 #' If the request contains a tag key with an empty list of values, there is
 #' a tag conflict for that key. Do not include conflicted keys as tags, or
-#' this causes the error \"Parameter validation failed: Missing required
-#' parameter in Tags\[*N*\]:*Value*\".
+#' this causes the error "Parameter validation failed: Missing required
+#' parameter in Tags\[*N*\]:*Value*".
 #'
 #' @usage
 #' servicecatalog_provision_product(AcceptLanguage, ProductId,
@@ -4110,7 +4110,7 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' ### LAUNCH
 #' 
 #' You are required to specify either the `RoleArn` or the `LocalRoleName`
-#' but can\'t use both.
+#' but can't use both.
 #' 
 #' Specify the `RoleArn` property as follows:
 #' 
@@ -4464,7 +4464,7 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' using the `ListRecordHistory` API. The new owner can describe all past
 #' records for the provisioned product using the `DescribeRecord` API. The
 #' previous owner can no longer use `DescribeRecord`, but can still see the
-#' product\'s history from when he was an owner using `ListRecordHistory`.
+#' product's history from when he was an owner using `ListRecordHistory`.
 #' 
 #' If a provisioned product ownership is assigned to an end user, they can
 #' see and perform any action through the API or Service Catalog console

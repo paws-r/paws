@@ -19,7 +19,7 @@ per AWS Region in each AWS account.}
 \item{Permissions}{A list of resource permissions to be set on the template.}
 
 \item{SourceEntity}{[required] The entity that you are using as a source when you create the template.
-In \code{SourceEntity}, you specify the type of object you\'re using as
+In \code{SourceEntity}, you specify the type of object you're using as
 source: \code{SourceTemplate} for a template or \code{SourceAnalysis} for an
 analysis. Both of these require an Amazon Resource Name (ARN). For
 \code{SourceTemplate}, specify the ARN of the source template. For

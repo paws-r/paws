@@ -30,7 +30,7 @@ For a current list of services that support it, see the column \emph{Supports
 Delegated Administrator} in the table at \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrated-services-list.html}{AWS Services that you can use with AWS Organizations}
 in the \emph{AWS Organizations User Guide.}
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{

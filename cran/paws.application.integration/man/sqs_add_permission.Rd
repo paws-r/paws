@@ -11,9 +11,9 @@ sqs_add_permission(QueueUrl, Label, AWSAccountIds, Actions)
 
 Queue URLs and names are case-sensitive.}
 
-\item{Label}{[required] The unique identification of the permission you\'re setting (for
-example, \code{AliceSendMessage}). Maximum 80 characters. Allowed characters
-include alphanumeric characters, hyphens (\code{-}), and underscores (\verb{_}).}
+\item{Label}{[required] The unique identification of the permission you're setting (for example,
+\code{AliceSendMessage}). Maximum 80 characters. Allowed characters include
+alphanumeric characters, hyphens (\code{-}), and underscores (\verb{_}).}
 
 \item{AWSAccountIds}{[required] The AWS account number of the
 \href{https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P}{principal}
@@ -62,7 +62,7 @@ example, a parameter list with two elements looks like this:
 
 \verb{&amp;AttributeName.2=second}
 
-Cross-account permissions don\'t apply to this action. For more
+Cross-account permissions don't apply to this action. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }

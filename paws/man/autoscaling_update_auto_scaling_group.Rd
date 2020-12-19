@@ -16,11 +16,11 @@ autoscaling_update_auto_scaling_group(AutoScalingGroupName,
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{LaunchConfigurationName}{The name of the launch configuration. If you specify
-\code{LaunchConfigurationName} in your update request, you can\'t specify
+\code{LaunchConfigurationName} in your update request, you can't specify
 \code{LaunchTemplate} or \code{MixedInstancesPolicy}.}
 
 \item{LaunchTemplate}{The launch template and version to use to specify the updates. If you
-specify \code{LaunchTemplate} in your update request, you can\'t specify
+specify \code{LaunchTemplate} in your update request, you can't specify
 \code{LaunchConfigurationName} or \code{MixedInstancesPolicy}.
 
 For more information, see
@@ -127,9 +127,9 @@ Updates the configuration for the specified Auto Scaling group.
 }
 \details{
 To update an Auto Scaling group, specify the name of the group and the
-parameter that you want to change. Any parameters that you don\'t
-specify are not changed by this update request. The new settings take
-effect on any scaling activities after this call returns.
+parameter that you want to change. Any parameters that you don't specify
+are not changed by this update request. The new settings take effect on
+any scaling activities after this call returns.
 
 If you associate a new launch configuration or template with an Auto
 Scaling group, all new instances will get the updated configuration.
@@ -154,11 +154,11 @@ Scaling group uses its termination policy to determine which
 instances to terminate.
 \item If you specify a new value for \code{MinSize} without specifying a value
 for \code{DesiredCapacity}, and the new \code{MinSize} is larger than the
-current size of the group, this sets the group\'s \code{DesiredCapacity}
+current size of the group, this sets the group's \code{DesiredCapacity}
 to the new \code{MinSize} value.
 \item If you specify a new value for \code{MaxSize} without specifying a value
 for \code{DesiredCapacity}, and the new \code{MaxSize} is smaller than the
-current size of the group, this sets the group\'s \code{DesiredCapacity}
+current size of the group, this sets the group's \code{DesiredCapacity}
 to the new \code{MaxSize} value.
 }
 

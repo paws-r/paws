@@ -10,7 +10,7 @@ codestarnotifications_tag_resource(Arn, Tags)
 \item{Arn}{[required] The Amazon Resource Name (ARN) of the notification rule to tag.}
 
 \item{Tags}{[required] The list of tags to associate with the resource. Tag key names cannot
-start with \"aws\".}
+start with "aws".}
 }
 \description{
 Associates a set of provided tags with a notification rule.

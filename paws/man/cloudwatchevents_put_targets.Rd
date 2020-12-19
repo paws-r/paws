@@ -64,8 +64,8 @@ in the \emph{Amazon EventBridge User Guide}.
 
 If another AWS account is in the same region and has granted you
 permission (using \code{PutPermission}), you can send events to that account.
-Set that account\'s event bus as a target of the rules in your account.
-To send the matched events to the other account, specify that account\'s
+Set that account's event bus as a target of the rules in your account.
+To send the matched events to the other account, specify that account's
 event bus as the \code{Arn} value when you run \code{PutTargets}. If your account
 sends events to another account, your account is charged for each sent
 event. Each event sent to another account is charged as a custom event.

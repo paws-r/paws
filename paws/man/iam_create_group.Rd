@@ -24,7 +24,7 @@ lowercased letters.}
 
 IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
-create resources named both \"MyResource\" and \"myresource\".}
+create resources named both "MyResource" and "myresource".}
 }
 \description{
 Creates a new group.

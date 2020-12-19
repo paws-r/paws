@@ -914,15 +914,15 @@ securityhub_batch_import_findings <- function(Findings) {
 #' 
 #' The available values for `VerificationState` are as follows.
 #' 
-#' -   `UNKNOWN` -- The default disposition of a security finding
+#' -   `UNKNOWN` – The default disposition of a security finding
 #' 
-#' -   `TRUE_POSITIVE` -- The security finding is confirmed
+#' -   `TRUE_POSITIVE` – The security finding is confirmed
 #' 
-#' -   `FALSE_POSITIVE` -- The security finding was determined to be a
-#'     false alarm
+#' -   `FALSE_POSITIVE` – The security finding was determined to be a false
+#'     alarm
 #' 
-#' -   `BENIGN_POSITIVE` -- A special case of `TRUE_POSITIVE` where the
-#'     finding doesn\'t pose any threat, is expected, or both
+#' -   `BENIGN_POSITIVE` – A special case of `TRUE_POSITIVE` where the
+#'     finding doesn't pose any threat, is expected, or both
 #' @param Confidence The updated value for the finding confidence. Confidence is defined as
 #' the likelihood that a finding accurately identifies the behavior or
 #' issue that it was intended to identify.
@@ -2196,7 +2196,7 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 #' disable Security Hub in all Regions, you must submit one request per
 #' Region where you have enabled Security Hub.
 #' 
-#' When you disable Security Hub for a master account, it doesn\'t disable
+#' When you disable Security Hub for a master account, it doesn't disable
 #' Security Hub for any associated member accounts.
 #' 
 #' When you disable Security Hub, your existing findings and insights and

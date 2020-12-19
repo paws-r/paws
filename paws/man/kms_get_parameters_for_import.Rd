@@ -41,7 +41,7 @@ key to encrypt the symmetric key material. Store the import token to
 send with a subsequent ImportKeyMaterial request.
 
 You must specify the key ID of the symmetric CMK into which you will
-import key material. This CMK\'s \code{Origin} must be \code{EXTERNAL}. You must
+import key material. This CMK's \code{Origin} must be \code{EXTERNAL}. You must
 also specify the wrapping algorithm and type of wrapping key (public
 key) that you will use to encrypt the key material. You cannot perform
 this operation on an asymmetric CMK or on any CMK in a different AWS

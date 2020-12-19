@@ -43,7 +43,7 @@ create a new VPN connection, you must reconfigure your customer gateway
 with the new information returned from this call.
 
 This is an idempotent operation. If you perform the operation more than
-once, Amazon EC2 doesn\'t return an error.
+once, Amazon EC2 doesn't return an error.
 
 For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
 \emph{AWS Site-to-Site VPN User Guide}.

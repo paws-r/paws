@@ -19,23 +19,23 @@ BGP session.
 \item \code{options.association-default-route-table-id} - The ID of the default
 association route table.
 \item \code{options.auto-accept-shared-attachments} - Indicates whether there
-is automatic acceptance of attachment requests (\code{enable} \\|
+is automatic acceptance of attachment requests (\code{enable} |
 \code{disable}).
 \item \code{options.default-route-table-association} - Indicates whether
 resource attachments are automatically associated with the default
-association route table (\code{enable} \\| \code{disable}).
+association route table (\code{enable} | \code{disable}).
 \item \code{options.default-route-table-propagation} - Indicates whether
 resource attachments automatically propagate routes to the default
-propagation route table (\code{enable} \\| \code{disable}).
+propagation route table (\code{enable} | \code{disable}).
 \item \code{options.dns-support} - Indicates whether DNS support is enabled
-(\code{enable} \\| \code{disable}).
+(\code{enable} | \code{disable}).
 \item \code{options.vpn-ecmp-support} - Indicates whether Equal Cost Multipath
-Protocol support is enabled (\code{enable} \\| \code{disable}).
+Protocol support is enabled (\code{enable} | \code{disable}).
 \item \code{owner-id} - The ID of the AWS account that owns the transit
 gateway.
-\item \code{state} - The state of the attachment (\code{available} \\| \code{deleted} \\|
-\code{deleting} \\| \code{failed} \\| \code{modifying} \\| \code{pendingAcceptance} \\|
-\code{pending} \\| \code{rollingBack} \\| \code{rejected} \\| \code{rejecting}).
+\item \code{state} - The state of the attachment (\code{available} | \code{deleted} |
+\code{deleting} | \code{failed} | \code{modifying} | \code{pendingAcceptance} |
+\code{pending} | \code{rollingBack} | \code{rejected} | \code{rejecting}).
 \item \code{transit-gateway-id} - The ID of the transit gateway.
 }}
 

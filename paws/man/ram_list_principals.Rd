@@ -17,13 +17,12 @@ ram_list_principals(resourceOwner, resourceArn, principals,
 
 \item{resourceType}{The resource type.
 
-Valid values: \code{codebuild:Project} \\| \code{codebuild:ReportGroup} \\|
-\code{ec2:CapacityReservation} \\| \code{ec2:DedicatedHost} \\| \code{ec2:Subnet} \\|
-\code{ec2:TrafficMirrorTarget} \\| \code{ec2:TransitGateway} \\|
-\code{imagebuilder:Component} \\| \code{imagebuilder:Image} \\|
-\code{imagebuilder:ImageRecipe} \\| \code{license-manager:LicenseConfiguration} I
-\code{resource-groups:Group} \\| \code{rds:Cluster} \\|
-\code{route53resolver:ResolverRule}}
+Valid values: \code{codebuild:Project} | \code{codebuild:ReportGroup} |
+\code{ec2:CapacityReservation} | \code{ec2:DedicatedHost} | \code{ec2:Subnet} |
+\code{ec2:TrafficMirrorTarget} | \code{ec2:TransitGateway} |
+\code{imagebuilder:Component} | \code{imagebuilder:Image} |
+\code{imagebuilder:ImageRecipe} | \code{license-manager:LicenseConfiguration} I
+\code{resource-groups:Group} | \code{rds:Cluster} | \code{route53resolver:ResolverRule}}
 
 \item{resourceShareArns}{The Amazon Resource Names (ARN) of the resource shares.}
 

@@ -12,21 +12,21 @@ servicequotas_list_aws_default_service_quotas(ServiceCode, NextToken,
 \item{ServiceCode}{[required] Specifies the service that you want to use.}
 
 \item{NextToken}{(Optional) Use this parameter in a request if you receive a \code{NextToken}
-response in a previous request that indicates that there\'s more output
+response in a previous request that indicates that there's more output
 available. In a subsequent call, set it to the value of the previous
-call\'s \code{NextToken} response to indicate where the output should
-continue from. If additional items exist beyond the specified maximum,
-the \code{NextToken} element is present and has a value (isn\'t null).
-Include that value as the \code{NextToken} request parameter in the call to
-the operation to get the next part of the results. You should check
+call's \code{NextToken} response to indicate where the output should continue
+from. If additional items exist beyond the specified maximum, the
+\code{NextToken} element is present and has a value (isn't null). Include
+that value as the \code{NextToken} request parameter in the call to the
+operation to get the next part of the results. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 
 \item{MaxResults}{(Optional) Limits the number of results that you want to include in the
-response. If you don\'t include this parameter, the response defaults to
-a value that\'s specific to the operation. If additional items exist
+response. If you don't include this parameter, the response defaults to
+a value that's specific to the operation. If additional items exist
 beyond the specified maximum, the \code{NextToken} element is present and has
-a value (isn\'t null). Include that value as the \code{NextToken} request
+a value (isn't null). Include that value as the \code{NextToken} request
 parameter in the call to the operation to get the next part of the
 results. You should check \code{NextToken} after every operation to ensure
 that you receive all of the results.}
@@ -37,7 +37,7 @@ AWS services. ListAWSDefaultServiceQuotas is similar to
 ListServiceQuotas except for the Value object. The Value object returned
 by \code{ListAWSDefaultServiceQuotas} is the default value assigned by AWS.
 This request returns a list of all service quotas for the specified
-service. The listing of each you\'ll see the default values are the
+service. The listing of each you'll see the default values are the
 values that AWS provides for the quotas.
 }
 \details{

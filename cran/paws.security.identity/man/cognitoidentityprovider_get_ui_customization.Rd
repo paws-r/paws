@@ -13,7 +13,7 @@ cognitoidentityprovider_get_ui_customization(UserPoolId, ClientId)
 \item{ClientId}{The client ID for the client app.}
 }
 \description{
-Gets the UI Customization information for a particular app client\'s app
+Gets the UI Customization information for a particular app client's app
 UI, if there is something set. If nothing is set for the particular
 client, but there is an existing pool level customization (app
 \code{clientId} will be \code{ALL}), then that is returned. If nothing is present,

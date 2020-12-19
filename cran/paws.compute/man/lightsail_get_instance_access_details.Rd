@@ -3,7 +3,7 @@
 \name{lightsail_get_instance_access_details}
 \alias{lightsail_get_instance_access_details}
 \title{Returns temporary SSH keys you can use to connect to a specific virtual
-private server, or \emph{instance}}
+private server, or instance}
 \usage{
 lightsail_get_instance_access_details(instanceName, protocol)
 }

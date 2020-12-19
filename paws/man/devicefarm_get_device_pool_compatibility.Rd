@@ -8,7 +8,7 @@ devicefarm_get_device_pool_compatibility(devicePoolArn, appArn,
   testType, test, configuration)
 }
 \arguments{
-\item{devicePoolArn}{[required] The device pool\'s ARN.}
+\item{devicePoolArn}{[required] The device pool's ARN.}
 
 \item{appArn}{The ARN of the app that is associated with the specified device pool.}
 

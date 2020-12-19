@@ -24,7 +24,7 @@ example, \verb{arn:aws:iam::123456789012:role/S3Access}.}
 to \code{StartBackupJob}.}
 
 \item{StartWindowMinutes}{A value in minutes after a backup is scheduled before a job will be
-canceled if it doesn\'t start successfully. This value is optional.}
+canceled if it doesn't start successfully. This value is optional.}
 
 \item{CompleteWindowMinutes}{A value in minutes after a backup job is successfully started before it
 must be completed or it will be canceled by AWS Backup. This value is
@@ -35,9 +35,9 @@ storage and when it expires. AWS Backup will transition and expire
 backups automatically according to the lifecycle that you define.
 
 Backups transitioned to cold storage must be stored in cold storage for
-a minimum of 90 days. Therefore, the "expire after days" setting must be
-90 days greater than the "transition to cold after days" setting. The
-"transition to cold after days" setting cannot be changed after a backup
+a minimum of 90 days. Therefore, the “expire after days” setting must be
+90 days greater than the “transition to cold after days” setting. The
+“transition to cold after days” setting cannot be changed after a backup
 has been transitioned to cold.}
 
 \item{RecoveryPointTags}{To help organize your resources, you can assign your own metadata to the

@@ -16,7 +16,7 @@ with the pool. When you use your backup application to eject the tape,
 the tape is archived directly into the storage class (S3 Glacier or S3
 Glacier Deep Archive) that corresponds to the pool.
 
-Valid Values: \code{GLACIER} \\| \code{DEEP_ARCHIVE}}
+Valid Values: \code{GLACIER} | \code{DEEP_ARCHIVE}}
 }
 \description{
 Assigns a tape to a tape pool for archiving. The tape assigned to a pool
@@ -26,7 +26,7 @@ archived directly into the S3 storage class (S3 Glacier or S3 Glacier
 Deep Archive) that corresponds to the pool.
 }
 \details{
-Valid Values: \code{GLACIER} \\| \code{DEEP_ARCHIVE}
+Valid Values: \code{GLACIER} | \code{DEEP_ARCHIVE}
 }
 \section{Request syntax}{
 \preformatted{svc$assign_tape_pool(

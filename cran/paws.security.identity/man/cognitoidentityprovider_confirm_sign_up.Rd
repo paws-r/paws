@@ -18,7 +18,7 @@ message.}
 
 \item{Username}{[required] The user name of the user whose registration you wish to confirm.}
 
-\item{ConfirmationCode}{[required] The confirmation code sent by a user\'s request to confirm registration.}
+\item{ConfirmationCode}{[required] The confirmation code sent by a user's request to confirm registration.}
 
 \item{ForceAliasCreation}{Boolean to be specified to force user confirmation irrespective of
 existing alias. By default set to \code{False}. If this parameter is set to
@@ -30,7 +30,7 @@ If set to \code{False}, the API will throw an \strong{AliasExistsException} erro
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
 \code{ConfirmSignUp} calls.}
 
-\item{UserContextData}{Contextual data such as the user\'s device fingerprint, IP address, or
+\item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon
 Cognito advanced security.}
 
@@ -60,7 +60,7 @@ does not include triggers, the ClientMetadata parameter serves no
 purpose.
 \item Amazon Cognito does not validate the ClientMetadata value.
 \item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don\'t use it to provide sensitive information.
+don't use it to provide sensitive information.
 }}
 }
 \description{

@@ -9,10 +9,10 @@ secretsmanager_list_secrets(MaxResults, NextToken, Filters, SortOrder)
 }
 \arguments{
 \item{MaxResults}{(Optional) Limits the number of results you want to include in the
-response. If you don\'t include this parameter, it defaults to a value
-that\'s specific to the operation. If additional items exist beyond the
+response. If you don't include this parameter, it defaults to a value
+that's specific to the operation. If additional items exist beyond the
 maximum you specify, the \code{NextToken} response element is present and has
-a value (isn\'t null). Include that value as the \code{NextToken} request
+a value (isn't null). Include that value as the \code{NextToken} request
 parameter in the next call to the operation to get the next part of the
 results. Note that Secrets Manager might return fewer results than the
 maximum even when there are more results available. You should check
@@ -20,10 +20,9 @@ maximum even when there are more results available. You should check
 results.}
 
 \item{NextToken}{(Optional) Use this parameter in a request if you receive a \code{NextToken}
-response in a previous request indicating there\'s more output
-available. In a subsequent call, set it to the value of the previous
-call \code{NextToken} response to indicate where the output should continue
-from.}
+response in a previous request indicating there's more output available.
+In a subsequent call, set it to the value of the previous call
+\code{NextToken} response to indicate where the output should continue from.}
 
 \item{Filters}{Lists the secret request filters.}
 

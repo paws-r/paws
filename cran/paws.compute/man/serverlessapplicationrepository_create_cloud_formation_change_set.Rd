@@ -49,8 +49,8 @@ specify CAPABILITY\\_AUTO\\_EXPAND.
 
 If your application template contains any of the above resources, we
 recommend that you review all permissions associated with the
-application before deploying. If you don\'t specify this parameter for
-an application that requires capabilities, the call will fail.}
+application before deploying. If you don't specify this parameter for an
+application that requires capabilities, the call will fail.}
 
 \item{ChangeSetName}{This property corresponds to the parameter of the same name for the \emph{AWS
 CloudFormation

@@ -18,13 +18,13 @@ licensemanager_list_license_configurations(LicenseConfigurationArns,
 operators are supported:
 \itemize{
 \item \code{licenseCountingType} - The dimension on which licenses are counted
-(vCPU). Logical operators are \code{EQUALS} \\| \code{NOT_EQUALS}.
+(vCPU). Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.
 \item \code{enforceLicenseCount} - A Boolean value that indicates whether hard
-license enforcement is used. Logical operators are \code{EQUALS} \\|
+license enforcement is used. Logical operators are \code{EQUALS} |
 \code{NOT_EQUALS}.
 \item \code{usagelimitExceeded} - A Boolean value that indicates whether the
 available licenses have been exceeded. Logical operators are
-\code{EQUALS} \\| \code{NOT_EQUALS}.
+\code{EQUALS} | \code{NOT_EQUALS}.
 }}
 }
 \description{

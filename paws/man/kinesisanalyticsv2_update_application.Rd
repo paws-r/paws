@@ -19,7 +19,7 @@ version ID using DescribeApplication.}
 
 \item{ServiceExecutionRoleUpdate}{Describes updates to the service execution role.}
 
-\item{RunConfigurationUpdate}{Describes updates to the application\'s starting parameters.}
+\item{RunConfigurationUpdate}{Describes updates to the application's starting parameters.}
 
 \item{CloudWatchLoggingOptionUpdates}{Describes application Amazon CloudWatch logging option updates. You can
 only update existing CloudWatch logging options with this action. To add

@@ -55,7 +55,7 @@ NULL
 #'  \link[=iotthingsgraph_delete_namespace]{delete_namespace} \tab Deletes the specified namespace \cr
 #'  \link[=iotthingsgraph_delete_system_instance]{delete_system_instance} \tab Deletes a system instance \cr
 #'  \link[=iotthingsgraph_delete_system_template]{delete_system_template} \tab Deletes a system \cr
-#'  \link[=iotthingsgraph_deploy_system_instance]{deploy_system_instance} \tab GREENGRASS AND CLOUD DEPLOYMENTS Deploys the system instance to the target specified in CreateSystemInstance\cr
+#'  \link[=iotthingsgraph_deploy_system_instance]{deploy_system_instance} \tab Greengrass and Cloud Deployments Deploys the system instance to the target specified in CreateSystemInstance\cr
 #'  \link[=iotthingsgraph_deprecate_flow_template]{deprecate_flow_template} \tab Deprecates the specified workflow \cr
 #'  \link[=iotthingsgraph_deprecate_system_template]{deprecate_system_template} \tab Deprecates the specified system \cr
 #'  \link[=iotthingsgraph_describe_namespace]{describe_namespace} \tab Gets the latest version of the user's namespace and the public version that it is tracking \cr

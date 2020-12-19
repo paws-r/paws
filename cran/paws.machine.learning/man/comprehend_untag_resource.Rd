@@ -11,7 +11,7 @@ comprehend_untag_resource(ResourceArn, TagKeys)
 from which you want to remove the tags.}
 
 \item{TagKeys}{[required] The initial part of a key-value pair that forms a tag being removed from
-a given resource. For example, a tag with \"Sales\" as the key might be
+a given resource. For example, a tag with "Sales" as the key might be
 added to a resource to indicate its use by the sales department. Keys
 must be unique and cannot be duplicated for a particular resource.}
 }

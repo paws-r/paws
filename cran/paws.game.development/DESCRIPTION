@@ -12,8 +12,8 @@ Authors@R:
              email = "adam.banker39@gmail.com"),
       person(given = "Amazon.com, Inc.",
              role = "cph"))
-Description: Interface to Amazon Web Services game development services,
-    including 'GameLift' game server hosting
+Description: Interface to Amazon Web Services game development
+    services, including 'GameLift' game server hosting
     <https://aws.amazon.com/gametech/>.
 License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
@@ -24,7 +24,8 @@ Suggests:
     testthat
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
+    "collate"))
 RoxygenNote: 7.1.0
 Collate: 
     'gamelift_service.R'

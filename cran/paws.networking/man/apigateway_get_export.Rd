@@ -12,8 +12,8 @@ apigateway_get_export(restApiId, stageName, exportType, parameters,
 
 \item{stageName}{[required] [Required] The name of the Stage that will be exported.}
 
-\item{exportType}{[required] [Required] The type of export. Acceptable values are \'oas30\' for
-OpenAPI 3.0.x and \'swagger\' for Swagger/OpenAPI 2.0.}
+\item{exportType}{[required] [Required] The type of export. Acceptable values are 'oas30' for
+OpenAPI 3.0.x and 'swagger' for Swagger/OpenAPI 2.0.}
 
 \item{parameters}{A key-value map of query string parameters that specify properties of
 the export, depending on the requested \code{exportType}. For \code{exportType}

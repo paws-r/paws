@@ -7,7 +7,7 @@
 iot_update_mitigation_action(actionName, roleArn, actionParams)
 }
 \arguments{
-\item{actionName}{[required] The friendly name for the mitigation action. You can\'t change the name
+\item{actionName}{[required] The friendly name for the mitigation action. You can't change the name
 by using \code{UpdateMitigationAction}. Instead, you must delete and
 re-create the mitigation action with the new name.}
 

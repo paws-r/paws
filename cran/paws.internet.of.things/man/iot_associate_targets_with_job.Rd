@@ -21,8 +21,8 @@ met:
 \details{
 \itemize{
 \item The job must have been created with the \code{targetSelection} field set
-to \"CONTINUOUS\".
-\item The job status must currently be \"IN\\_PROGRESS\".
+to "CONTINUOUS".
+\item The job status must currently be "IN\\_PROGRESS".
 \item The total number of targets associated with a job must not
 exceed 100.
 }

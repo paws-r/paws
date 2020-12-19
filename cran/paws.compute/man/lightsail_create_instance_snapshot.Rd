@@ -2,7 +2,7 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_create_instance_snapshot}
 \alias{lightsail_create_instance_snapshot}
-\title{Creates a snapshot of a specific virtual private server, or \emph{instance}}
+\title{Creates a snapshot of a specific virtual private server, or instance}
 \usage{
 lightsail_create_instance_snapshot(instanceSnapshotName, instanceName,
   tags)

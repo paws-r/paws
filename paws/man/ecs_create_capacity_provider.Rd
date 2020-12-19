@@ -9,8 +9,8 @@ ecs_create_capacity_provider(name, autoScalingGroupProvider, tags)
 \arguments{
 \item{name}{[required] The name of the capacity provider. Up to 255 characters are allowed,
 including letters (upper and lowercase), numbers, underscores, and
-hyphens. The name cannot be prefixed with \"\code{aws}\", \"\code{ecs}\", or
-\"\code{fargate}\".}
+hyphens. The name cannot be prefixed with "\code{aws}", "\code{ecs}", or
+"\code{fargate}".}
 
 \item{autoScalingGroupProvider}{[required] The details of the Auto Scaling group for the capacity provider.}
 

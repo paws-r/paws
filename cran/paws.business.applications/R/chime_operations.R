@@ -286,7 +286,7 @@ chime_batch_create_room_membership <- function(AccountId, RoomId, MembershipItem
 }
 .chime$operations$batch_create_room_membership <- chime_batch_create_room_membership
 
-#' Moves phone numbers into the DELETION QUEUE
+#' Moves phone numbers into the Deletion queue
 #'
 #' Moves phone numbers into the **Deletion queue**. Phone numbers must be
 #' disassociated from any users or Amazon Chime Voice Connectors before
@@ -544,7 +544,7 @@ chime_batch_update_user <- function(AccountId, UpdateUserRequestItems) {
 
 #' Creates an Amazon Chime account under the administrator's AWS account
 #'
-#' Creates an Amazon Chime account under the administrator\'s AWS account.
+#' Creates an Amazon Chime account under the administrator's AWS account.
 #' Only `Team` account types are currently supported for this action. For
 #' more information about different account types, see [Managing Your
 #' Amazon Chime
@@ -1023,7 +1023,7 @@ chime_create_room_membership <- function(AccountId, RoomId, MemberId, Role = NUL
 #'
 #' @param AccountId &#91;required&#93; The Amazon Chime account ID.
 #' @param Username The user name.
-#' @param Email The user\'s email address.
+#' @param Email The user's email address.
 #' @param UserType The user type.
 #'
 #' @section Request syntax:
@@ -1059,11 +1059,11 @@ chime_create_user <- function(AccountId, Username = NULL, Email = NULL, UserType
 #' Creates an Amazon Chime Voice Connector under the administrator's AWS
 #' account
 #'
-#' Creates an Amazon Chime Voice Connector under the administrator\'s AWS
+#' Creates an Amazon Chime Voice Connector under the administrator's AWS
 #' account. You can choose to create an Amazon Chime Voice Connector in a
 #' specific AWS Region.
 #' 
-#' Enabling CreateVoiceConnectorRequest\\$RequireEncryption configures your
+#' Enabling CreateVoiceConnectorRequest$RequireEncryption configures your
 #' Amazon Chime Voice Connector to use TLS transport for SIP signaling and
 #' Secure RTP (SRTP) for media. Inbound calls use TLS transport, and
 #' unencrypted outbound calls are blocked.
@@ -1108,7 +1108,7 @@ chime_create_voice_connector <- function(Name, AwsRegion = NULL, RequireEncrypti
 #' Creates an Amazon Chime Voice Connector group under the administrator's
 #' AWS account
 #'
-#' Creates an Amazon Chime Voice Connector group under the administrator\'s
+#' Creates an Amazon Chime Voice Connector group under the administrator's
 #' AWS account. You can associate Amazon Chime Voice Connectors with the
 #' Amazon Chime Voice Connector group by including `VoiceConnectorItems` in
 #' the request.
@@ -1330,7 +1330,7 @@ chime_delete_meeting <- function(MeetingId) {
 }
 .chime$operations$delete_meeting <- chime_delete_meeting
 
-#' Moves the specified phone number into the DELETION QUEUE
+#' Moves the specified phone number into the Deletion queue
 #'
 #' Moves the specified phone number into the **Deletion queue**. A phone
 #' number must be disassociated from any users or Amazon Chime Voice
@@ -2180,7 +2180,7 @@ chime_get_events_configuration <- function(AccountId, BotId) {
 #' Retrieves global settings for the administrator's AWS account, such as
 #' Amazon Chime Business Calling and Amazon Chime Voice Connector settings
 #'
-#' Retrieves global settings for the administrator\'s AWS account, such as
+#' Retrieves global settings for the administrator's AWS account, such as
 #' Amazon Chime Business Calling and Amazon Chime Voice Connector settings.
 #'
 #' @usage
@@ -2330,8 +2330,8 @@ chime_get_phone_number_order <- function(PhoneNumberOrderId) {
 #' Retrieves the phone number settings for the administrator's AWS account,
 #' such as the default outbound calling name
 #'
-#' Retrieves the phone number settings for the administrator\'s AWS
-#' account, such as the default outbound calling name.
+#' Retrieves the phone number settings for the administrator's AWS account,
+#' such as the default outbound calling name.
 #'
 #' @usage
 #' chime_get_phone_number_settings()
@@ -2959,9 +2959,9 @@ chime_invite_users <- function(AccountId, UserEmailList, UserType = NULL) {
 
 #' Lists the Amazon Chime accounts under the administrator's AWS account
 #'
-#' Lists the Amazon Chime accounts under the administrator\'s AWS account.
+#' Lists the Amazon Chime accounts under the administrator's AWS account.
 #' You can filter accounts by account name prefix. To find out which Amazon
-#' Chime account a user belongs to, you can filter by the user\'s email
+#' Chime account a user belongs to, you can filter by the user's email
 #' address, which returns one account result.
 #'
 #' @usage
@@ -3087,7 +3087,7 @@ chime_list_attendees <- function(MeetingId, NextToken = NULL, MaxResults = NULL)
 #' Lists the bots associated with the administrator's Amazon Chime
 #' Enterprise account ID
 #'
-#' Lists the bots associated with the administrator\'s Amazon Chime
+#' Lists the bots associated with the administrator's Amazon Chime
 #' Enterprise account ID.
 #'
 #' @usage
@@ -3207,7 +3207,7 @@ chime_list_meetings <- function(NextToken = NULL, MaxResults = NULL) {
 #' Lists the phone number orders for the administrator's Amazon Chime
 #' account
 #'
-#' Lists the phone number orders for the administrator\'s Amazon Chime
+#' Lists the phone number orders for the administrator's Amazon Chime
 #' account.
 #'
 #' @usage
@@ -3342,7 +3342,7 @@ chime_list_proxy_sessions <- function(VoiceConnectorId, Status = NULL, NextToken
 #' Enterprise account, such as the members' IDs, email addresses, and names
 #'
 #' Lists the membership details for the specified room in an Amazon Chime
-#' Enterprise account, such as the members\' IDs, email addresses, and
+#' Enterprise account, such as the members' IDs, email addresses, and
 #' names.
 #'
 #' @usage
@@ -3513,7 +3513,7 @@ chime_list_users <- function(AccountId, UserEmail = NULL, UserType = NULL, MaxRe
 #' Lists the Amazon Chime Voice Connector groups for the administrator's
 #' AWS account
 #'
-#' Lists the Amazon Chime Voice Connector groups for the administrator\'s
+#' Lists the Amazon Chime Voice Connector groups for the administrator's
 #' AWS account.
 #'
 #' @usage
@@ -3590,7 +3590,7 @@ chime_list_voice_connector_termination_credentials <- function(VoiceConnectorId)
 #' Lists the Amazon Chime Voice Connectors for the administrator's AWS
 #' account
 #'
-#' Lists the Amazon Chime Voice Connectors for the administrator\'s AWS
+#' Lists the Amazon Chime Voice Connectors for the administrator's AWS
 #' account.
 #'
 #' @usage
@@ -4281,8 +4281,8 @@ chime_reset_personal_pin <- function(AccountId, UserId) {
 }
 .chime$operations$reset_personal_pin <- chime_reset_personal_pin
 
-#' Moves a phone number from the DELETION QUEUE back into the phone number
-#' INVENTORY
+#' Moves a phone number from the Deletion queue back into the phone number
+#' Inventory
 #'
 #' Moves a phone number from the **Deletion queue** back into the phone
 #' number **Inventory**.
@@ -4755,7 +4755,7 @@ chime_update_bot <- function(AccountId, BotId, Disabled = NULL) {
 #' Updates global settings for the administrator's AWS account, such as
 #' Amazon Chime Business Calling and Amazon Chime Voice Connector settings
 #'
-#' Updates global settings for the administrator\'s AWS account, such as
+#' Updates global settings for the administrator's AWS account, such as
 #' Amazon Chime Business Calling and Amazon Chime Voice Connector settings.
 #'
 #' @usage
@@ -4850,7 +4850,7 @@ chime_update_phone_number <- function(PhoneNumberId, ProductType = NULL, Calling
 #' Updates the phone number settings for the administrator's AWS account,
 #' such as the default outbound calling name
 #'
-#' Updates the phone number settings for the administrator\'s AWS account,
+#' Updates the phone number settings for the administrator's AWS account,
 #' such as the default outbound calling name. You can update the default
 #' outbound calling name once every seven days. Outbound calling names can
 #' take up to 72 hours to update.

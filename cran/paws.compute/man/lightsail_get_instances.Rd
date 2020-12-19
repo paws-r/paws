@@ -3,7 +3,7 @@
 \name{lightsail_get_instances}
 \alias{lightsail_get_instances}
 \title{Returns information about all Amazon Lightsail virtual private servers,
-or \emph{instances}}
+or instances}
 \usage{
 lightsail_get_instances(pageToken)
 }

@@ -16,7 +16,7 @@ You can obtain the current version by invoking the
 }
 \description{
 Deletes a specified signaling channel. \code{DeleteSignalingChannel} is an
-asynchronous operation. If you don\'t specify the channel\'s current
+asynchronous operation. If you don't specify the channel's current
 version, the most recent version is deleted.
 }
 \section{Request syntax}{

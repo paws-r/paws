@@ -27,7 +27,7 @@ maximum of 20 parameters can be modified in a single request.
 
 \strong{MySQL}
 
-Valid Values (for Apply method): \code{immediate} \\| \code{pending-reboot}
+Valid Values (for Apply method): \code{immediate} | \code{pending-reboot}
 
 You can use the immediate value with dynamic parameters only. You can
 use the \code{pending-reboot} value for both dynamic and static parameters,
@@ -35,7 +35,7 @@ and changes are applied when DB instance reboots.
 
 \strong{MariaDB}
 
-Valid Values (for Apply method): \code{immediate} \\| \code{pending-reboot}
+Valid Values (for Apply method): \code{immediate} | \code{pending-reboot}
 
 You can use the immediate value with dynamic parameters only. You can
 use the \code{pending-reboot} value for both dynamic and static parameters,

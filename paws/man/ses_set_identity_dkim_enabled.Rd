@@ -26,7 +26,7 @@ enable DKIM signing if the corresponding domain (in this case,
 
 You can enable DKIM signing for an identity at any time after you start
 the verification process for the identity, even if the verification
-process isn\'t complete.
+process isn't complete.
 
 You can execute this operation no more than once per second.
 

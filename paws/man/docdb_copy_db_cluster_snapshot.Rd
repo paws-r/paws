@@ -12,12 +12,12 @@ docdb_copy_db_cluster_snapshot(SourceDBClusterSnapshotIdentifier,
 \item{SourceDBClusterSnapshotIdentifier}{[required] The identifier of the cluster snapshot to copy. This parameter is not
 case sensitive.
 
-You can\'t copy an encrypted, shared cluster snapshot from one AWS
-Region to another.
+You can't copy an encrypted, shared cluster snapshot from one AWS Region
+to another.
 
 Constraints:
 \itemize{
-\item Must specify a valid system snapshot in the \"available\" state.
+\item Must specify a valid system snapshot in the "available" state.
 \item If the source snapshot is in the same AWS Region as the copy,
 specify a valid snapshot identifier.
 \item If the source snapshot is in a different AWS Region than the copy,
@@ -44,7 +44,7 @@ KMS key alias for the AWS KMS encryption key.
 
 If you copy an encrypted cluster snapshot from your AWS account, you can
 specify a value for \code{KmsKeyId} to encrypt the copy with a new AWS KMS
-encryption key. If you don\'t specify a value for \code{KmsKeyId}, then the
+encryption key. If you don't specify a value for \code{KmsKeyId}, then the
 copy of the cluster snapshot is encrypted with the same AWS KMS key as
 the source cluster snapshot.
 
@@ -55,7 +55,7 @@ To copy an encrypted cluster snapshot to another AWS Region, set
 \code{KmsKeyId} to the AWS KMS key ID that you want to use to encrypt the
 copy of the cluster snapshot in the destination Region. AWS KMS
 encryption keys are specific to the AWS Region that they are created in,
-and you can\'t use encryption keys from one Region in another Region.
+and you can't use encryption keys from one Region in another Region.
 
 If you copy an unencrypted cluster snapshot and specify a value for the
 \code{KmsKeyId} parameter, an error is returned.}

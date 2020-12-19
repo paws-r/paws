@@ -52,7 +52,7 @@ applicationdiscoveryservice_associate_configuration_items_to_application <- func
 #' applications.
 #' 
 #' AWS Application Discovery Service has built-in matching logic that will
-#' identify when discovered servers match existing entries that you\'ve
+#' identify when discovered servers match existing entries that you've
 #' previously discovered, the information for the already-existing
 #' discovered server is updated. When you delete an import task that
 #' contains records that were used to match, the information in those
@@ -566,7 +566,7 @@ applicationdiscoveryservice_describe_export_tasks <- function(exportIds = NULL, 
 #'
 #' @param filters An array of name-value pairs that you provide to filter the results for
 #' the `DescribeImportTask` request to a specific subset of results.
-#' Currently, wildcard values aren\'t supported for filters.
+#' Currently, wildcard values aren't supported for filters.
 #' @param maxResults The maximum number of results that you want this request to return, up
 #' to 100.
 #' @param nextToken The token to request a specific page of results.
@@ -924,8 +924,7 @@ applicationdiscoveryservice_list_server_neighbors <- function(configurationId, p
 
 #' Start the continuous flow of agent's discovered data into Amazon Athena
 #'
-#' Start the continuous flow of agent\'s discovered data into Amazon
-#' Athena.
+#' Start the continuous flow of agent's discovered data into Amazon Athena.
 #'
 #' @usage
 #' applicationdiscoveryservice_start_continuous_export()
@@ -1101,7 +1100,7 @@ applicationdiscoveryservice_start_export_task <- function(exportDataFormat = NUL
 #' 2.  Fill out the template with your server and application data.
 #' 
 #' 3.  Upload your import file to an Amazon S3 bucket, and make a note of
-#'     it\'s Object URL. Your import file must be in the CSV format.
+#'     it's Object URL. Your import file must be in the CSV format.
 #' 
 #' 4.  Use the console or the `StartImportTask` command with the AWS CLI or
 #'     one of the AWS SDKs to import the records from your file.
@@ -1122,7 +1121,7 @@ applicationdiscoveryservice_start_export_task <- function(exportDataFormat = NUL
 #'   importUrl)
 #'
 #' @param clientRequestToken Optional. A unique token that you can provide to prevent the same import
-#' request from occurring more than once. If you don\'t provide a token, a
+#' request from occurring more than once. If you don't provide a token, a
 #' token is automatically generated.
 #' 
 #' Sending more than one `StartImportTask` request with the same client
@@ -1132,9 +1131,9 @@ applicationdiscoveryservice_start_export_task <- function(exportDataFormat = NUL
 #' future requests related to this import task, such as identifying
 #' applications and servers that were included in this import task. We
 #' recommend that you use a meaningful name for each import task.
-#' @param importUrl &#91;required&#93; The URL for your import file that you\'ve uploaded to Amazon S3.
+#' @param importUrl &#91;required&#93; The URL for your import file that you've uploaded to Amazon S3.
 #' 
-#' If you\'re using the AWS CLI, this URL is structured as follows:
+#' If you're using the AWS CLI, this URL is structured as follows:
 #' `s3://BucketName/ImportFileName.CSV`
 #'
 #' @section Request syntax:
@@ -1168,7 +1167,7 @@ applicationdiscoveryservice_start_import_task <- function(clientRequestToken = N
 
 #' Stop the continuous flow of agent's discovered data into Amazon Athena
 #'
-#' Stop the continuous flow of agent\'s discovered data into Amazon Athena.
+#' Stop the continuous flow of agent's discovered data into Amazon Athena.
 #'
 #' @usage
 #' applicationdiscoveryservice_stop_continuous_export(exportId)

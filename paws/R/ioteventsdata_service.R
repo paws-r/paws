@@ -8,7 +8,7 @@ NULL
 #' AWS IoT Events monitors your equipment or device fleets for failures or
 #' changes in operation, and triggers actions when such events occur. AWS
 #' IoT Events Data API commands enable you to send inputs to detectors,
-#' list detectors, and view or update a detector\'s status.
+#' list detectors, and view or update a detector's status.
 #'
 #' @param
 #' config

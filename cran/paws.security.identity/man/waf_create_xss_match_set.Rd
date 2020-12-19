@@ -2,13 +2,13 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_create_xss_match_set}
 \alias{waf_create_xss_match_set}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_create_xss_match_set(Name, ChangeToken)
 }
 \arguments{
-\item{Name}{[required] A friendly name or description for the XssMatchSet that you\'re
-creating. You can\'t change \code{Name} after you create the \code{XssMatchSet}.}
+\item{Name}{[required] A friendly name or description for the XssMatchSet that you're creating.
+You can't change \code{Name} after you create the \code{XssMatchSet}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}
 }

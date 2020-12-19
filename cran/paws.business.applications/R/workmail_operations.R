@@ -5,7 +5,7 @@ NULL
 
 #' Adds a member (user or group) to the resource's set of delegates
 #'
-#' Adds a member (user or group) to the resource\'s set of delegates.
+#' Adds a member (user or group) to the resource's set of delegates.
 #'
 #' @usage
 #' workmail_associate_delegate_to_resource(OrganizationId, ResourceId,
@@ -46,7 +46,7 @@ workmail_associate_delegate_to_resource <- function(OrganizationId, ResourceId, 
 
 #' Adds a member (user or group) to the group's set
 #'
-#' Adds a member (user or group) to the group\'s set.
+#' Adds a member (user or group) to the group's set.
 #'
 #' @usage
 #' workmail_associate_member_to_group(OrganizationId, GroupId, MemberId)
@@ -303,7 +303,7 @@ workmail_delete_access_control_rule <- function(OrganizationId, Name) {
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the user exists.
 #' @param EntityId &#91;required&#93; The identifier for the member (user or group) from which to have the
 #' aliases removed.
-#' @param Alias &#91;required&#93; The aliases to be removed from the user\'s set of aliases. Duplicate
+#' @param Alias &#91;required&#93; The aliases to be removed from the user's set of aliases. Duplicate
 #' entries in the list are collapsed into single entries (the list is
 #' transformed into a set).
 #'
@@ -733,17 +733,17 @@ workmail_describe_user <- function(OrganizationId, UserId) {
 
 #' Removes a member from the resource's set of delegates
 #'
-#' Removes a member from the resource\'s set of delegates.
+#' Removes a member from the resource's set of delegates.
 #'
 #' @usage
 #' workmail_disassociate_delegate_from_resource(OrganizationId, ResourceId,
 #'   EntityId)
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the resource exists.
-#' @param ResourceId &#91;required&#93; The identifier of the resource from which delegates\' set members are
+#' @param ResourceId &#91;required&#93; The identifier of the resource from which delegates' set members are
 #' removed.
 #' @param EntityId &#91;required&#93; The identifier for the member (user, group) to be removed from the
-#' resource\'s delegates.
+#' resource's delegates.
 #'
 #' @section Request syntax:
 #' ```
@@ -818,8 +818,8 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
 #' Gets the effects of an organization's access control rules as they apply
 #' to a specified IPv4 address, access protocol action, or user ID
 #'
-#' Gets the effects of an organization\'s access control rules as they
-#' apply to a specified IPv4 address, access protocol action, or user ID.
+#' Gets the effects of an organization's access control rules as they apply
+#' to a specified IPv4 address, access protocol action, or user ID.
 #'
 #' @usage
 #' workmail_get_access_control_effect(OrganizationId, IpAddress, Action,
@@ -900,8 +900,7 @@ workmail_get_default_retention_policy <- function(OrganizationId) {
 
 #' Requests a user's mailbox details for a specified organization and user
 #'
-#' Requests a user\'s mailbox details for a specified organization and
-#' user.
+#' Requests a user's mailbox details for a specified organization and user.
 #'
 #' @usage
 #' workmail_get_mailbox_details(OrganizationId, UserId)
@@ -1067,7 +1066,7 @@ workmail_list_group_members <- function(OrganizationId, GroupId, NextToken = NUL
 
 #' Returns summaries of the organization's groups
 #'
-#' Returns summaries of the organization\'s groups.
+#' Returns summaries of the organization's groups.
 #'
 #' @usage
 #' workmail_list_groups(OrganizationId, NextToken, MaxResults)
@@ -1156,7 +1155,7 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
 
 #' Returns summaries of the customer's organizations
 #'
-#' Returns summaries of the customer\'s organizations.
+#' Returns summaries of the customer's organizations.
 #'
 #' @usage
 #' workmail_list_organizations(NextToken, MaxResults)
@@ -1241,7 +1240,7 @@ workmail_list_resource_delegates <- function(OrganizationId, ResourceId, NextTok
 
 #' Returns summaries of the organization's resources
 #'
-#' Returns summaries of the organization\'s resources.
+#' Returns summaries of the organization's resources.
 #'
 #' @usage
 #' workmail_list_resources(OrganizationId, NextToken, MaxResults)
@@ -1318,7 +1317,7 @@ workmail_list_tags_for_resource <- function(ResourceARN) {
 
 #' Returns summaries of the organization's users
 #'
-#' Returns summaries of the organization\'s users.
+#' Returns summaries of the organization's users.
 #'
 #' @usage
 #' workmail_list_users(OrganizationId, NextToken, MaxResults)
@@ -1720,7 +1719,7 @@ workmail_untag_resource <- function(ResourceARN, TagKeys) {
 #' Updates a user's current mailbox quota for a specified organization and
 #' user
 #'
-#' Updates a user\'s current mailbox quota for a specified organization and
+#' Updates a user's current mailbox quota for a specified organization and
 #' user.
 #'
 #' @usage
@@ -1818,7 +1817,7 @@ workmail_update_primary_email_address <- function(OrganizationId, EntityId, Emai
 #' is updated.
 #' @param ResourceId &#91;required&#93; The identifier of the resource to be updated.
 #' @param Name The name of the resource to be updated.
-#' @param BookingOptions The resource\'s booking options to be updated.
+#' @param BookingOptions The resource's booking options to be updated.
 #'
 #' @section Request syntax:
 #' ```

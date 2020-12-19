@@ -58,7 +58,7 @@ instance. If you associate an Elastic IP address with an instance that
 has an existing Elastic IP address, the existing address is
 disassociated from the instance, but remains allocated to your account.
 
-[VPC in an EC2-Classic account] If you don\'t specify a private IP
+[VPC in an EC2-Classic account] If you don't specify a private IP
 address, the Elastic IP address is associated with the primary IP
 address. If the Elastic IP address is already associated with a
 different instance or a network interface, you get an error unless you
@@ -69,7 +69,7 @@ You cannot associate an Elastic IP address with an interface in a
 different network border group.
 
 This is an idempotent operation. If you perform the operation more than
-once, Amazon EC2 doesn\'t return an error, and you may be charged for
+once, Amazon EC2 doesn't return an error, and you may be charged for
 each time the Elastic IP address is remapped to the same instance. For
 more information, see the \emph{Elastic IP Addresses} section of \href{http://aws.amazon.com/ec2/pricing/}{Amazon EC2 Pricing}.
 }

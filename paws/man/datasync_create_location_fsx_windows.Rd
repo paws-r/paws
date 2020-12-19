@@ -8,7 +8,7 @@ datasync_create_location_fsx_windows(Subdirectory, FsxFilesystemArn,
   SecurityGroupArns, Tags, User, Domain, Password)
 }
 \arguments{
-\item{Subdirectory}{A subdirectory in the location's path. This subdirectory in the Amazon
+\item{Subdirectory}{A subdirectory in the location’s path. This subdirectory in the Amazon
 FSx for Windows file system is used to read data from the Amazon FSx for
 Windows source location or write data to the FSx for Windows
 destination.}

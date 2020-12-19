@@ -15,7 +15,7 @@ instance.}
 instance.}
 
 \item{MaxResults}{The maximum number of instances that you want AWS Cloud Map to return in
-the response to a \code{DiscoverInstances} request. If you don\'t specify a
+the response to a \code{DiscoverInstances} request. If you don't specify a
 value for \code{MaxResults}, AWS Cloud Map returns up to 100 instances.}
 
 \item{QueryParameters}{A string map that contains attributes with values that you can use to

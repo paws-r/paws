@@ -9,8 +9,8 @@ iam_create_open_id_connect_provider(Url, ClientIDList, ThumbprintList)
 }
 \arguments{
 \item{Url}{[required] The URL of the identity provider. The URL must begin with \verb{https://} and
-should correspond to the \code{iss} claim in the provider\'s OpenID Connect
-ID tokens. Per the OIDC standard, path components are allowed but query
+should correspond to the \code{iss} claim in the provider's OpenID Connect ID
+tokens. Per the OIDC standard, path components are allowed but query
 parameters are not. Typically the URL consists of only a hostname, like
 \verb{https://server.example.org} or \verb{https://example.com}.
 
@@ -20,7 +20,7 @@ OpenID Connect provider in the AWS account, you will get an error.}
 
 \item{ClientIDList}{A list of client IDs (also known as audiences). When a mobile or web app
 registers with an OpenID Connect provider, they establish a value that
-identifies the application. (This is the value that\'s sent as the
+identifies the application. (This is the value that's sent as the
 \code{client_id} parameter on OAuth requests.)
 
 You can register multiple client IDs with the same provider. For
@@ -33,7 +33,7 @@ There is no defined format for a client ID. The
 255 characters long.}
 
 \item{ThumbprintList}{[required] A list of server certificate thumbprints for the OpenID Connect (OIDC)
-identity provider\'s server certificates. Typically this list includes
+identity provider's server certificates. Typically this list includes
 only one entry. However, IAM lets you have up to five thumbprints for an
 OIDC provider. This lets you maintain multiple thumbprints if the
 identity provider is rotating certificates.
@@ -49,8 +49,8 @@ https://keys.server.example.com/openid-connect. In that case, the
 thumbprint string would be the hex-encoded SHA-1 hash value of the
 certificate used by https://keys.server.example.com.
 
-For more information about obtaining the OIDC provider\'s thumbprint,
-see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html}{Obtaining the Thumbprint for an OpenID Connect Provider}
+For more information about obtaining the OIDC provider's thumbprint, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html}{Obtaining the Thumbprint for an OpenID Connect Provider}
 in the \emph{IAM User Guide}.}
 }
 \description{
@@ -59,7 +59,7 @@ supports \href{http://openid.net/connect/}{OpenID Connect (OIDC)}.
 }
 \details{
 The OIDC provider that you create with this operation can be used as a
-principal in a role\'s trust policy. Such a policy establishes a trust
+principal in a role's trust policy. Such a policy establishes a trust
 relationship between AWS and the OIDC provider.
 
 When you create the IAM OIDC provider, you specify the following:

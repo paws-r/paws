@@ -9,7 +9,7 @@ sqs_change_message_visibility(QueueUrl, ReceiptHandle,
   VisibilityTimeout)
 }
 \arguments{
-\item{QueueUrl}{[required] The URL of the Amazon SQS queue whose message\'s visibility is changed.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue whose message's visibility is changed.
 
 Queue URLs and names are case-sensitive.}
 
@@ -17,7 +17,7 @@ Queue URLs and names are case-sensitive.}
 is changed. This parameter is returned by the \verb{<a>ReceiveMessage</a>}
 action.}
 
-\item{VisibilityTimeout}{[required] The new value for the message\'s visibility timeout (in seconds). Values
+\item{VisibilityTimeout}{[required] The new value for the message's visibility timeout (in seconds). Values
 values: \code{0} to \code{43200}. Maximum: 12 hours.}
 }
 \description{
@@ -57,23 +57,23 @@ backlog), there can be a maximum of approximately 120,000 inflight
 messages (received from a queue by a consumer, but not yet deleted from
 the queue). If you reach this limit, Amazon SQS returns the \code{OverLimit}
 error message. To avoid reaching the limit, you should delete messages
-from the queue after they\'re processed. You can also increase the
-number of queues you use to process your messages. To request a limit
-increase, \href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sqs}{file a support request}.
+from the queue after they're processed. You can also increase the number
+of queues you use to process your messages. To request a limit increase,
+\href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sqs}{file a support request}.
 
 For FIFO queues, there can be a maximum of 20,000 inflight messages
 (received from a queue by a consumer, but not yet deleted from the
 queue). If you reach this limit, Amazon SQS returns no error messages.
 
 If you attempt to set the \code{VisibilityTimeout} to a value greater than
-the maximum time left, Amazon SQS returns an error. Amazon SQS doesn\'t
+the maximum time left, Amazon SQS returns an error. Amazon SQS doesn't
 automatically recalculate and increase the timeout to the maximum
 remaining time.
 
 Unlike with a queue, when you change the visibility timeout for a
-specific message the timeout value is applied immediately but isn\'t
-saved in memory for that message. If you don\'t delete a message after
-it is received, the visibility timeout for the message reverts to the
+specific message the timeout value is applied immediately but isn't
+saved in memory for that message. If you don't delete a message after it
+is received, the visibility timeout for the message reverts to the
 original timeout value (not to the value you set using the
 \code{ChangeMessageVisibility} action) the next time the message is received.
 }

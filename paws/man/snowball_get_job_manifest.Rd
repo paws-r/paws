@@ -15,7 +15,7 @@ snowball_get_job_manifest(JobId)
 Returns a link to an Amazon S3 presigned URL for the manifest file
 associated with the specified \code{JobId} value. You can access the manifest
 file for up to 60 minutes after this request has been made. To access
-the manifest file after 60 minutes have passed, you\'ll have to make
+the manifest file after 60 minutes have passed, you'll have to make
 another call to the \code{GetJobManifest} action.
 }
 \details{
@@ -25,7 +25,7 @@ enters the \code{WithCustomer} status. The manifest is decrypted by using the
 through the Snowball client when the client is started for the first
 time.
 
-As a best practice, we recommend that you don\'t save a copy of an
+As a best practice, we recommend that you don't save a copy of an
 \code{UnlockCode} value in the same location as the manifest file for that
 job. Saving these separately helps prevent unauthorized parties from
 gaining access to the Snowball associated with that job.

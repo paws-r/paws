@@ -23,7 +23,7 @@ NULL
 #' globalaccelerator_advertise_byoip_cidr(Cidr)
 #'
 #' @param Cidr &#91;required&#93; The address range, in CIDR notation. This must be the exact range that
-#' you provisioned. You can\'t advertise only a portion of the provisioned
+#' you provisioned. You can't advertise only a portion of the provisioned
 #' range.
 #'
 #' @section Request syntax:
@@ -77,9 +77,9 @@ globalaccelerator_advertise_byoip_cidr <- function(Cidr) {
 #' characters, must contain only alphanumeric characters or hyphens (-),
 #' and must not begin or end with a hyphen.
 #' @param IpAddressType The value for the address type must be IPv4.
-#' @param IpAddresses Optionally, if you\'ve added your own IP address pool to Global
+#' @param IpAddresses Optionally, if you've added your own IP address pool to Global
 #' Accelerator, you can choose IP addresses from your own pool to use for
-#' the accelerator\'s static IP addresses. You can specify one or two
+#' the accelerator's static IP addresses. You can specify one or two
 #' addresses, separated by a comma. Do not include the /32 suffix.
 #' 
 #' If you specify only one IP address from your IP address range, Global
@@ -95,7 +95,7 @@ globalaccelerator_advertise_byoip_cidr <- function(Cidr) {
 #' If the value is set to true, an accelerator cannot be deleted. If set to
 #' false, the accelerator can be deleted.
 #' @param IdempotencyToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency---that is, the uniqueness---of an accelerator.
+#' idempotency—that is, the uniqueness—of an accelerator.
 #' @param Tags Create tags for an accelerator.
 #' 
 #' For more information, see [Tagging in AWS Global
@@ -175,13 +175,13 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' TCP.
 #' @param HealthCheckPath If the protocol is HTTP/S, then this specifies the path that is the
 #' destination for health check targets. The default value is slash (/).
-#' @param HealthCheckIntervalSeconds The time---10 seconds or 30 seconds---between each health check for an
+#' @param HealthCheckIntervalSeconds The time—10 seconds or 30 seconds—between each health check for an
 #' endpoint. The default value is 30.
 #' @param ThresholdCount The number of consecutive health checks required to set the state of a
 #' healthy endpoint to unhealthy, or to set an unhealthy endpoint to
 #' healthy. The default value is 3.
 #' @param IdempotencyToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency---that is, the uniqueness---of the request.
+#' idempotency—that is, the uniqueness—of the request.
 #'
 #' @section Request syntax:
 #' ```
@@ -248,9 +248,9 @@ globalaccelerator_create_endpoint_group <- function(ListenerArn, EndpointGroupRe
 #' 
 #' AWS Global Accelerator uses a consistent-flow hashing algorithm to
 #' choose the optimal endpoint for a connection. If client affinity is
-#' `NONE`, Global Accelerator uses the \"five-tuple\" (5-tuple)
-#' properties---source IP address, source port, destination IP address,
-#' destination port, and protocol---to select the hash value, and then
+#' `NONE`, Global Accelerator uses the "five-tuple" (5-tuple)
+#' properties—source IP address, source port, destination IP address,
+#' destination port, and protocol—to select the hash value, and then
 #' chooses the best endpoint. However, with this setting, if someone uses
 #' different ports to connect to Global Accelerator, their connections
 #' might not be always routed to the same endpoint because the hash value
@@ -258,13 +258,13 @@ globalaccelerator_create_endpoint_group <- function(ListenerArn, EndpointGroupRe
 #' 
 #' If you want a given client to always be routed to the same endpoint, set
 #' client affinity to `SOURCE_IP` instead. When you use the `SOURCE_IP`
-#' setting, Global Accelerator uses the \"two-tuple\" (2-tuple)
-#' properties--- source (client) IP address and destination IP address---to
-#' select the hash value.
+#' setting, Global Accelerator uses the "two-tuple" (2-tuple) properties—
+#' source (client) IP address and destination IP address—to select the hash
+#' value.
 #' 
 #' The default value is `NONE`.
 #' @param IdempotencyToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency---that is, the uniqueness---of the request.
+#' idempotency—that is, the uniqueness—of the request.
 #'
 #' @section Request syntax:
 #' ```
@@ -872,7 +872,7 @@ globalaccelerator_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @param Cidr &#91;required&#93; The public IPv4 address range, in CIDR notation. The most specific IP
 #' prefix that you can specify is /24. The address range cannot overlap
-#' with another address range that you\'ve brought to this or another
+#' with another address range that you've brought to this or another
 #' Region.
 #' @param CidrAuthorizationContext &#91;required&#93; A signed document that proves that you are authorized to bring the
 #' specified IP address range to Amazon using BYOIP.
@@ -1085,7 +1085,7 @@ globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, Ip
 #' @param FlowLogsS3Prefix Update the prefix for the location in the Amazon S3 bucket for the flow
 #' logs. Attribute is required if `FlowLogsEnabled` is `true`.
 #' 
-#' If you don't specify a prefix, the flow logs are stored in the root of
+#' If you don’t specify a prefix, the flow logs are stored in the root of
 #' the bucket. If you specify slash (/) for the S3 bucket prefix, the log
 #' file bucket folder structure will include a double slash (//), like the
 #' following:
@@ -1153,7 +1153,7 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, Flow
 #' TCP.
 #' @param HealthCheckPath If the protocol is HTTP/S, then this specifies the path that is the
 #' destination for health check targets. The default value is slash (/).
-#' @param HealthCheckIntervalSeconds The time---10 seconds or 30 seconds---between each health check for an
+#' @param HealthCheckIntervalSeconds The time—10 seconds or 30 seconds—between each health check for an
 #' endpoint. The default value is 30.
 #' @param ThresholdCount The number of consecutive health checks required to set the state of a
 #' healthy endpoint to unhealthy, or to set an unhealthy endpoint to
@@ -1220,9 +1220,9 @@ globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointCo
 #' 
 #' AWS Global Accelerator uses a consistent-flow hashing algorithm to
 #' choose the optimal endpoint for a connection. If client affinity is
-#' `NONE`, Global Accelerator uses the \"five-tuple\" (5-tuple)
-#' properties---source IP address, source port, destination IP address,
-#' destination port, and protocol---to select the hash value, and then
+#' `NONE`, Global Accelerator uses the "five-tuple" (5-tuple)
+#' properties—source IP address, source port, destination IP address,
+#' destination port, and protocol—to select the hash value, and then
 #' chooses the best endpoint. However, with this setting, if someone uses
 #' different ports to connect to Global Accelerator, their connections
 #' might not be always routed to the same endpoint because the hash value
@@ -1230,9 +1230,9 @@ globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointCo
 #' 
 #' If you want a given client to always be routed to the same endpoint, set
 #' client affinity to `SOURCE_IP` instead. When you use the `SOURCE_IP`
-#' setting, Global Accelerator uses the \"two-tuple\" (2-tuple)
-#' properties--- source (client) IP address and destination IP address---to
-#' select the hash value.
+#' setting, Global Accelerator uses the "two-tuple" (2-tuple) properties—
+#' source (client) IP address and destination IP address—to select the hash
+#' value.
 #' 
 #' The default value is `NONE`.
 #'

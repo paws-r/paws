@@ -10,7 +10,7 @@ frauddetector_create_rule(ruleId, detectorId, description, expression,
 \arguments{
 \item{ruleId}{[required] The rule ID.}
 
-\item{detectorId}{[required] The detector ID for the rule\'s parent detector.}
+\item{detectorId}{[required] The detector ID for the rule's parent detector.}
 
 \item{description}{The rule description.}
 

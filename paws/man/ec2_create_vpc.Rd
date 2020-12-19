@@ -60,7 +60,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \details{
 You can optionally request an IPv6 CIDR block for the VPC. You can
-request an Amazon-provided IPv6 CIDR block from Amazon\'s pool of IPv6
+request an Amazon-provided IPv6 CIDR block from Amazon's pool of IPv6
 addresses, or an IPv6 CIDR block from an IPv6 address pool that you
 provisioned through bring your own IP addresses
 (\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html}{BYOIP}).
@@ -71,7 +71,7 @@ options, which include only a default DNS server that we provide
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 You can specify the instance tenancy value for the VPC when you create
-it. You can\'t change this value for the VPC after you create it. For
+it. You can't change this value for the VPC after you create it. For
 more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html}{Dedicated Instances}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }

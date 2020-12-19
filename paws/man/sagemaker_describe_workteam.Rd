@@ -12,7 +12,7 @@ sagemaker_describe_workteam(WorkteamName)
 \description{
 Gets information about a specific work team. You can see information
 such as the create date, the last updated date, membership information,
-and the work team\'s Amazon Resource Name (ARN).
+and the work team's Amazon Resource Name (ARN).
 }
 \section{Request syntax}{
 \preformatted{svc$describe_workteam(

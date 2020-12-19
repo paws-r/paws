@@ -18,7 +18,7 @@ Constraints:
 
 \item{LogFileName}{[required] The name of the log file to be downloaded.}
 
-\item{Marker}{The pagination token provided in the previous request or \"0\". If the
+\item{Marker}{The pagination token provided in the previous request or "0". If the
 Marker parameter is specified the response includes only records beyond
 the marker until the end of the file or up to NumberOfLines.}
 
@@ -33,13 +33,13 @@ on the value of the Marker parameter.
 \item If neither Marker or NumberOfLines are specified, the entire log
 file is returned up to a maximum of 10000 lines, starting with the
 most recent log entries first.
-\item If NumberOfLines is specified and Marker isn\'t specified, then the
+\item If NumberOfLines is specified and Marker isn't specified, then the
 most recent lines from the end of the log file are returned.
-\item If Marker is specified as \"0\", then the specified number of lines
+\item If Marker is specified as "0", then the specified number of lines
 from the beginning of the log file are returned.
 \item You can download the log file in blocks of lines by specifying the
 size of the block using the NumberOfLines parameter, and by
-specifying a value of \"0\" for the Marker parameter in your first
+specifying a value of "0" for the Marker parameter in your first
 request. Include the Marker value returned in the response as the
 Marker value for the next request, continuing until the
 AdditionalDataPending response element returns false.

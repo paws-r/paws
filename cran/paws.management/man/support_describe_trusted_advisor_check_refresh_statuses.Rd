@@ -19,7 +19,7 @@ the specified check IDs. You can get the check IDs by calling the
 DescribeTrustedAdvisorChecks operation.
 }
 \details{
-Some checks are refreshed automatically, and you can\'t return their
+Some checks are refreshed automatically, and you can't return their
 refresh statuses by using the
 \code{DescribeTrustedAdvisorCheckRefreshStatuses} operation. If you call this
 operation for these checks, you might see an \code{InvalidParameterValue}

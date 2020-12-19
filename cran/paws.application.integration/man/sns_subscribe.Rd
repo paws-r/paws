@@ -12,15 +12,15 @@ sns_subscribe(TopicArn, Protocol, Endpoint, Attributes,
 
 \item{Protocol}{[required] The protocol you want to use. Supported protocols include:
 \itemize{
-\item \code{http} -- delivery of JSON-encoded message via HTTP POST
-\item \code{https} -- delivery of JSON-encoded message via HTTPS POST
-\item \code{email} -- delivery of message via SMTP
-\item \code{email-json} -- delivery of JSON-encoded message via SMTP
-\item \code{sms} -- delivery of message via SMS
-\item \code{sqs} -- delivery of JSON-encoded message to an Amazon SQS queue
-\item \code{application} -- delivery of JSON-encoded message to an EndpointArn
+\item \code{http} – delivery of JSON-encoded message via HTTP POST
+\item \code{https} – delivery of JSON-encoded message via HTTPS POST
+\item \code{email} – delivery of message via SMTP
+\item \code{email-json} – delivery of JSON-encoded message via SMTP
+\item \code{sms} – delivery of message via SMS
+\item \code{sqs} – delivery of JSON-encoded message to an Amazon SQS queue
+\item \code{application} – delivery of JSON-encoded message to an EndpointArn
 for a mobile app and device.
-\item \code{lambda} -- delivery of JSON-encoded message to an Amazon Lambda
+\item \code{lambda} – delivery of JSON-encoded message to an Amazon Lambda
 function.
 }}
 
@@ -48,17 +48,17 @@ Lambda function.
 The following lists the names, descriptions, and values of the special
 request parameters that the \code{SetTopicAttributes} action uses:
 \itemize{
-\item \code{DeliveryPolicy} -- The policy that defines how Amazon SNS retries
+\item \code{DeliveryPolicy} – The policy that defines how Amazon SNS retries
 failed deliveries to HTTP/S endpoints.
-\item \code{FilterPolicy} -- The simple JSON object that lets your subscriber
+\item \code{FilterPolicy} – The simple JSON object that lets your subscriber
 receive only a subset of messages, rather than receiving every
 message published to the topic.
-\item \code{RawMessageDelivery} -- When set to \code{true}, enables raw message
+\item \code{RawMessageDelivery} – When set to \code{true}, enables raw message
 delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need
 for the endpoints to process JSON formatting, which is otherwise
 created for Amazon SNS metadata.
-\item \code{RedrivePolicy} -- When specified, sends undeliverable messages to
-the specified Amazon SQS dead-letter queue. Messages that can\'t be
+\item \code{RedrivePolicy} – When specified, sends undeliverable messages to
+the specified Amazon SQS dead-letter queue. Messages that can't be
 delivered due to client errors (for example, when the subscribed
 endpoint is unreachable) or server errors (for example, when the
 service that powers the subscribed endpoint becomes unavailable) are
@@ -72,7 +72,7 @@ subscription ARN, even if the subscription is not yet confirmed.
 in all cases, even if the subscription is not yet confirmed. In
 addition to the ARN for confirmed subscriptions, the response also
 includes the \verb{pending subscription} ARN value for subscriptions that
-aren\'t yet confirmed. A subscription becomes confirmed when the
+aren't yet confirmed. A subscription becomes confirmed when the
 subscriber calls the \code{ConfirmSubscription} action with a
 confirmation token.
 }

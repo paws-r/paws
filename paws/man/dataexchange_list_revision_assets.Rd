@@ -19,7 +19,7 @@ of results.}
 \item{RevisionId}{[required] The unique identifier for a revision.}
 }
 \description{
-This operation lists a revision\'s assets sorted alphabetically in
+This operation lists a revision's assets sorted alphabetically in
 descending order.
 }
 \section{Request syntax}{

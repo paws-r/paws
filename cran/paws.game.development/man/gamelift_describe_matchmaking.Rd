@@ -12,9 +12,9 @@ ID values.}
 }
 \description{
 Retrieves one or more matchmaking tickets. Use this operation to
-retrieve ticket information, including status and\\--once a successful
-match is made\\--acquire connection information for the resulting new
-game session.
+retrieve ticket information, including status and--once a successful
+match is made--acquire connection information for the resulting new game
+session.
 }
 \details{
 You can use this operation to track the progress of matchmaking requests

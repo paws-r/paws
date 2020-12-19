@@ -16,7 +16,7 @@ need to base64-encode image bytes passed using the \code{Bytes} field. For
 more information, see Images in the Amazon Rekognition developer guide.}
 
 \item{Attributes}{An array of facial attributes you want to be returned. This can be the
-default list of attributes or all attributes. If you don\'t specify a
+default list of attributes or all attributes. If you don't specify a
 value for \code{Attributes} or if you specify \verb{\\\["DEFAULT"\\\]}, the API
 returns the following subset of facial attributes: \code{BoundingBox},
 \code{Confidence}, \code{Pose}, \code{Quality}, and \code{Landmarks}. If you provide

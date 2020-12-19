@@ -24,7 +24,7 @@ configuration with at least one server process configuration.}
 \description{
 Updates the current runtime configuration for the specified fleet, which
 tells Amazon GameLift how to launch server processes on instances in the
-fleet. You can update a fleet\'s runtime configuration at any time after
+fleet. You can update a fleet's runtime configuration at any time after
 the fleet is created; it does not need to be in an \code{ACTIVE} status.
 }
 \details{
@@ -37,7 +37,7 @@ runtime configuration and changes how it launches server processes to
 comply with the latest version. Existing server processes are not
 affected by the update; runtime configuration changes are applied
 gradually as existing processes shut down and new processes are launched
-during Amazon GameLift\'s normal process recycling activity.
+during Amazon GameLift's normal process recycling activity.
 
 \strong{Learn more}
 

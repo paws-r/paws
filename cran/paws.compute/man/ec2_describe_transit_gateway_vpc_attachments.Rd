@@ -12,9 +12,9 @@ ec2_describe_transit_gateway_vpc_attachments(
 
 \item{Filters}{One or more filters. The possible values are:
 \itemize{
-\item \code{state} - The state of the attachment (\code{available} \\| \code{deleted} \\|
-\code{deleting} \\| \code{failed} \\| \code{modifying} \\| \code{pendingAcceptance} \\|
-\code{pending} \\| \code{rollingBack} \\| \code{rejected} \\| \code{rejecting}).
+\item \code{state} - The state of the attachment (\code{available} | \code{deleted} |
+\code{deleting} | \code{failed} | \code{modifying} | \code{pendingAcceptance} |
+\code{pending} | \code{rollingBack} | \code{rejected} | \code{rejecting}).
 \item \code{transit-gateway-attachment-id} - The ID of the attachment.
 \item \code{transit-gateway-id} - The ID of the transit gateway.
 \item \code{vpc-id} - The ID of the VPC.

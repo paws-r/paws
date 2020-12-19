@@ -12,9 +12,9 @@ sesv2_get_email_identity(EmailIdentity)
 \item{EmailIdentity}{[required] The email identity that you want to retrieve details for.}
 }
 \description{
-Provides information about a specific identity, including the
-identity\'s verification status, its DKIM authentication status, and its
-custom Mail-From settings.
+Provides information about a specific identity, including the identity's
+verification status, its DKIM authentication status, and its custom
+Mail-From settings.
 }
 \section{Request syntax}{
 \preformatted{svc$get_email_identity(

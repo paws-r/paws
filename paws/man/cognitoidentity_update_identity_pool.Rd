@@ -23,7 +23,7 @@ in the \emph{Amazon Cognito Developer Guide}.}
 
 \item{SupportedLoginProviders}{Optional key:value pairs mapping provider names to provider app IDs.}
 
-\item{DeveloperProviderName}{The \"domain\" by which Cognito will refer to your users.}
+\item{DeveloperProviderName}{The "domain" by which Cognito will refer to your users.}
 
 \item{OpenIdConnectProviderARNs}{A list of OpendID Connect provider ARNs.}
 

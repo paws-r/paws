@@ -17,7 +17,7 @@ when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.}
 
 \item{StorageCapacity}{Use this parameter to increase the storage capacity of an Amazon FSx for
 Windows File Server file system. Specifies the storage capacity target
-value, GiB, for the file system you\'re updating. The storage capacity
+value, GiB, for the file system you're updating. The storage capacity
 target value must be at least 10 percent (\%) greater than the current
 storage capacity value. In order to increase storage capacity, the file
 system needs to have at least 16 MB/s of throughput capacity. You cannot

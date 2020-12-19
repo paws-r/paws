@@ -13,13 +13,13 @@ returns only \code{limit} results in a single page along with a \code{nextToken}
 response element. You can see the remaining results of the initial
 request by sending another \code{ListVirtualServices} request with the
 returned \code{nextToken} value. This value can be between 1 and 100. If you
-don\'t use this parameter, \code{ListVirtualServices} returns up to 100
+don't use this parameter, \code{ListVirtualServices} returns up to 100
 results and a \code{nextToken} value if applicable.}
 
 \item{meshName}{[required] The name of the service mesh to list virtual services in.}
 
 \item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
-not your own, then it\'s the ID of the account that shared the mesh with
+not your own, then it's the ID of the account that shared the mesh with
 your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated

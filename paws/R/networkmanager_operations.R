@@ -234,13 +234,13 @@ networkmanager_create_global_network <- function(Description = NULL, Tags = NULL
 #' Length Constraints: Maximum length of 256 characters.
 #' @param Type The type of the link.
 #' 
-#' Constraints: Cannot include the following characters: \\| \\ \\^
+#' Constraints: Cannot include the following characters: | \\ ^
 #' 
 #' Length Constraints: Maximum length of 128 characters.
 #' @param Bandwidth &#91;required&#93; The upload speed and download speed in Mbps.
 #' @param Provider The provider of the link.
 #' 
-#' Constraints: Cannot include the following characters: \\| \\ \\^
+#' Constraints: Cannot include the following characters: | \\ ^
 #' 
 #' Length Constraints: Maximum length of 128 characters.
 #' @param SiteId &#91;required&#93; The ID of the site.

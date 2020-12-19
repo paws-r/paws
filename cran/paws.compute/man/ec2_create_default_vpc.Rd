@@ -26,8 +26,8 @@ You cannot have more than one default VPC per Region.
 
 If your account supports EC2-Classic, you cannot use this action to
 create a default VPC in a Region that supports EC2-Classic. If you want
-a default VPC in a Region that supports EC2-Classic, see \"I really want
-a default VPC for my existing EC2 account. Is that possible?\" in the
+a default VPC in a Region that supports EC2-Classic, see "I really want
+a default VPC for my existing EC2 account. Is that possible?" in the
 \href{http://aws.amazon.com/vpc/faqs/#Default_VPCs}{Default VPCs FAQ}.
 }
 \section{Request syntax}{

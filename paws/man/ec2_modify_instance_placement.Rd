@@ -16,7 +16,7 @@ For cluster and partition placement groups, the instance must have a
 tenancy of \code{default} or \code{dedicated}.
 
 To remove an instance from a placement group, specify an empty string
-(\"\").}
+("").}
 
 \item{HostId}{The ID of the Dedicated Host with which to associate the instance.}
 

@@ -27,7 +27,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{UserGroups}{The user groups. This parameter is valid only when modifying the
 \code{loadPermission} attribute.}
 
-\item{ProductCodes}{The product codes. After you add a product code to an AFI, it can\'t be
+\item{ProductCodes}{The product codes. After you add a product code to an AFI, it can't be
 removed. This parameter is valid only when modifying the \code{productCodes}
 attribute.}
 

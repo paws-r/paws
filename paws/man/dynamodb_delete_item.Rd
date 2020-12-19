@@ -131,7 +131,7 @@ conditional delete operation that deletes the item if it exists, or if
 it has an expected attribute value.
 }
 \details{
-In addition to deleting an item, you can also return the item\'s
+In addition to deleting an item, you can also return the item's
 attribute values in the same operation, using the \code{ReturnValues}
 parameter.
 

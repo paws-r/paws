@@ -7,7 +7,7 @@
 quicksight_describe_dashboard_permissions(AwsAccountId, DashboardId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you\'re
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you're
 describing permissions for.}
 
 \item{DashboardId}{[required] The ID for the dashboard, also added to the IAM policy.}

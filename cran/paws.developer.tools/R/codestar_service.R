@@ -43,7 +43,7 @@ NULL
 #' -   `ListTeamMembers`, which lists all the IAM users in the team for a
 #'     project, including their roles and attributes.
 #' 
-#' -   `UpdateTeamMember`, which updates a team member\'s attributes in a
+#' -   `UpdateTeamMember`, which updates a team member's attributes in a
 #'     project.
 #' 
 #' Users, by calling the following:

@@ -16,18 +16,18 @@ entire S3 bucket that the file share has access to is refreshed.}
 
 \item{Recursive}{A value that specifies whether to recursively refresh folders in the
 cache. The refresh includes folders that were in the cache the last time
-the gateway listed the folder\'s contents. If this value set to \code{true},
+the gateway listed the folder's contents. If this value set to \code{true},
 each folder that is listed in \code{FolderList} is recursively updated.
 Otherwise, subfolders listed in \code{FolderList} are not refreshed. Only
 objects that are in folders listed directly under \code{FolderList} are found
 and used for the update. The default is \code{true}.
 
-Valid Values: \code{true} \\| \code{false}}
+Valid Values: \code{true} | \code{false}}
 }
 \description{
 Refreshes the cache for the specified file share. This operation finds
 objects in the Amazon S3 bucket that were added, removed, or replaced
-since the gateway last listed the bucket\'s contents and cached the
+since the gateway last listed the bucket's contents and cached the
 results. This operation is only supported in the file gateway type. You
 can subscribe to be notified through an Amazon CloudWatch event when
 your RefreshCache operation completes. For more information, see
@@ -36,7 +36,7 @@ in the \emph{AWS Storage Gateway User Guide}.
 }
 \details{
 When this API is called, it only initiates the refresh operation. When
-the API call completes and returns a success code, it doesn\'t
+the API call completes and returns a success code, it doesn't
 necessarily mean that the file refresh has completed. You should use the
 refresh-complete notification to determine that the operation has
 completed before you check for new files on the gateway file share. You

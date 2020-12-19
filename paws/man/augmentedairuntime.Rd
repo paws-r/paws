@@ -14,7 +14,7 @@ Amazon Augmented AI is in preview release and is subject to change. We
 do not recommend using this product in production environments.
 
 Amazon Augmented AI (Amazon A2I) adds the benefit of human judgment to
-any machine learning application. When an AI application can\'t evaluate
+any machine learning application. When an AI application can't evaluate
 data with a high degree of confidence, human reviewers can take over.
 This human review is called a human review workflow. To create and start
 a human review workflow, you need three resources: a \emph{worker task

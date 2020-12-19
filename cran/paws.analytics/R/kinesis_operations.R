@@ -144,11 +144,11 @@ kinesis_create_stream <- function(StreamName, ShardCount) {
 #' length of time data records are accessible after they are added to the
 #' stream
 #'
-#' Decreases the Kinesis data stream\'s retention period, which is the
+#' Decreases the Kinesis data stream's retention period, which is the
 #' length of time data records are accessible after they are added to the
-#' stream. The minimum value of a stream\'s retention period is 24 hours.
+#' stream. The minimum value of a stream's retention period is 24 hours.
 #' 
-#' This operation may result in lost data. For example, if the stream\'s
+#' This operation may result in lost data. For example, if the stream's
 #' retention period is 48 hours and is decreased to 24 hours, any data
 #' already in the stream that is older than 24 hours is inaccessible.
 #'
@@ -252,8 +252,8 @@ kinesis_delete_stream <- function(StreamName, EnforceConsumerDeletion = NULL) {
 #' To deregister a consumer, provide its ARN. Alternatively, you can
 #' provide the ARN of the data stream and the name you gave the consumer
 #' when you registered it. You may also provide all three parameters, as
-#' long as they don\'t conflict with each other. If you don\'t know the
-#' name or ARN of the consumer that you want to deregister, you can use the
+#' long as they don't conflict with each other. If you don't know the name
+#' or ARN of the consumer that you want to deregister, you can use the
 #' ListStreamConsumers operation to get a list of the descriptions of all
 #' the consumers that are currently registered with a given data stream.
 #' The description of a consumer contains its name and ARN.
@@ -268,7 +268,7 @@ kinesis_delete_stream <- function(StreamName, EnforceConsumerDeletion = NULL) {
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams).
 #' @param ConsumerName The name that you gave to the consumer.
 #' @param ConsumerARN The ARN returned by Kinesis Data Streams when you registered the
-#' consumer. If you don\'t know the ARN of the consumer that you want to
+#' consumer. If you don't know the ARN of the consumer that you want to
 #' deregister, you can use the ListStreamConsumers operation to get a list
 #' of the descriptions of all the consumers that are currently registered
 #' with a given data stream. The description of a consumer contains its
@@ -407,8 +407,8 @@ kinesis_describe_stream <- function(StreamName, Limit = NULL, ExclusiveStartShar
 #' To get the description of a registered consumer, provide the ARN of the
 #' consumer. Alternatively, you can provide the ARN of the data stream and
 #' the name you gave the consumer when you registered it. You may also
-#' provide all three parameters, as long as they don\'t conflict with each
-#' other. If you don\'t know the name or ARN of the consumer that you want
+#' provide all three parameters, as long as they don't conflict with each
+#' other. If you don't know the name or ARN of the consumer that you want
 #' to describe, you can use the ListStreamConsumers operation to get a list
 #' of the descriptions of all the consumers that are currently registered
 #' with a given data stream.
@@ -507,7 +507,7 @@ kinesis_describe_stream_summary <- function(StreamName) {
 #' monitoring.
 #' @param ShardLevelMetrics &#91;required&#93; List of shard-level metrics to disable.
 #' 
-#' The following are the valid shard-level metrics. The value \"`ALL`\"
+#' The following are the valid shard-level metrics. The value "`ALL`"
 #' disables every metric.
 #' 
 #' -   `IncomingBytes`
@@ -571,7 +571,7 @@ kinesis_disable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #' @param StreamName &#91;required&#93; The name of the stream for which to enable enhanced monitoring.
 #' @param ShardLevelMetrics &#91;required&#93; List of shard-level metrics to enable.
 #' 
-#' The following are the valid shard-level metrics. The value \"`ALL`\"
+#' The following are the valid shard-level metrics. The value "`ALL`"
 #' enables every metric.
 #' 
 #' -   `IncomingBytes`
@@ -627,7 +627,7 @@ kinesis_enable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 
 #' Gets data records from a Kinesis data stream's shard
 #'
-#' Gets data records from a Kinesis data stream\'s shard.
+#' Gets data records from a Kinesis data stream's shard.
 #' 
 #' Specify a shard iterator using the `ShardIterator` parameter. The shard
 #' iterator specifies the position in the shard from which you want to
@@ -647,14 +647,14 @@ kinesis_enable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #' GetRecords call. GetRecords returns a new shard iterator in
 #' `NextShardIterator`. Specify the shard iterator returned in
 #' `NextShardIterator` in subsequent calls to GetRecords. If the shard has
-#' been closed, the shard iterator can\'t return more data and GetRecords
+#' been closed, the shard iterator can't return more data and GetRecords
 #' returns `null` in `NextShardIterator`. You can terminate the loop when
 #' the shard is closed, or when the shard iterator reaches the record with
 #' the sequence number or other attribute that marks it as the last record
 #' to process.
 #' 
 #' Each data record can be up to 1 MiB in size, and each shard can read up
-#' to 2 MiB per second. You can ensure that your calls don\'t exceed the
+#' to 2 MiB per second. You can ensure that your calls don't exceed the
 #' maximum supported size or throughput by using the `Limit` parameter to
 #' specify the maximum number of records that GetRecords can return.
 #' Consider your average record size when determining this limit. The
@@ -667,10 +667,10 @@ kinesis_enable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #' `ProvisionedThroughputExceededException`. If there is insufficient
 #' provisioned throughput on the stream, subsequent calls made within the
 #' next 1 second throw `ProvisionedThroughputExceededException`. GetRecords
-#' doesn\'t return any data when it throws an exception. For this reason,
-#' we recommend that you wait 1 second between calls to GetRecords.
-#' However, it\'s possible that the application will get exceptions for
-#' longer than 1 second.
+#' doesn't return any data when it throws an exception. For this reason, we
+#' recommend that you wait 1 second between calls to GetRecords. However,
+#' it's possible that the application will get exceptions for longer than 1
+#' second.
 #' 
 #' To detect whether the application is falling behind in processing, you
 #' can use the `MillisBehindLatest` response attribute. You can also
@@ -850,16 +850,16 @@ kinesis_get_shard_iterator <- function(StreamName, ShardId, ShardIteratorType, S
 #' length of time data records are accessible after they are added to the
 #' stream
 #'
-#' Increases the Kinesis data stream\'s retention period, which is the
+#' Increases the Kinesis data stream's retention period, which is the
 #' length of time data records are accessible after they are added to the
-#' stream. The maximum value of a stream\'s retention period is 168 hours
-#' (7 days).
+#' stream. The maximum value of a stream's retention period is 168 hours (7
+#' days).
 #' 
 #' If you choose a longer stream retention period, this operation increases
 #' the time period during which records that have not yet expired are
 #' accessible. However, it does not make previous, expired data (older than
-#' the stream\'s previous retention period) accessible after the operation
-#' has been called. For example, if a stream\'s retention period is set to
+#' the stream's previous retention period) accessible after the operation
+#' has been called. For example, if a stream's retention period is set to
 #' 24 hours and is increased to 168 hours, any data that is older than 24
 #' hours remains inaccessible to consumer applications.
 #'
@@ -927,12 +927,12 @@ kinesis_increase_stream_retention_period <- function(StreamName, RetentionPeriod
 #' You can specify this `NextToken` value in a subsequent call to
 #' `ListShards` to list the next set of shards.
 #' 
-#' Don\'t specify `StreamName` or `StreamCreationTimestamp` if you specify
+#' Don't specify `StreamName` or `StreamCreationTimestamp` if you specify
 #' `NextToken` because the latter unambiguously identifies the stream.
 #' 
 #' You can optionally specify a value for the `MaxResults` parameter when
 #' you specify `NextToken`. If you specify a `MaxResults` value that is
-#' less than the number of shards that the operation returns if you don\'t
+#' less than the number of shards that the operation returns if you don't
 #' specify `MaxResults`, the response will contain a new `NextToken` value.
 #' You can use the new `NextToken` value in a subsequent call to the
 #' `ListShards` operation.
@@ -945,7 +945,7 @@ kinesis_increase_stream_retention_period <- function(StreamName, RetentionPeriod
 #' starting with the shard whose ID immediately follows
 #' `ExclusiveStartShardId`.
 #' 
-#' If you don\'t specify this parameter, the default behavior is for
+#' If you don't specify this parameter, the default behavior is for
 #' `ListShards` to list the shards starting with the first one in the
 #' stream.
 #' 
@@ -1023,13 +1023,13 @@ kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveSt
 #' `NextToken` value in a subsequent call to `ListStreamConsumers` to list
 #' the next set of registered consumers.
 #' 
-#' Don\'t specify `StreamName` or `StreamCreationTimestamp` if you specify
+#' Don't specify `StreamName` or `StreamCreationTimestamp` if you specify
 #' `NextToken` because the latter unambiguously identifies the stream.
 #' 
 #' You can optionally specify a value for the `MaxResults` parameter when
 #' you specify `NextToken`. If you specify a `MaxResults` value that is
 #' less than the number of consumers that the operation returns if you
-#' don\'t specify `MaxResults`, the response will contain a new `NextToken`
+#' don't specify `MaxResults`, the response will contain a new `NextToken`
 #' value. You can use the new `NextToken` value in a subsequent call to the
 #' `ListStreamConsumers` operation to list the next set of consumers.
 #' 
@@ -1045,8 +1045,7 @@ kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveSt
 #' this input parameter to specify which of the two streams you want to
 #' list the consumers for.
 #' 
-#' You can\'t specify this parameter if you specify the NextToken
-#' parameter.
+#' You can't specify this parameter if you specify the NextToken parameter.
 #'
 #' @section Request syntax:
 #' ```
@@ -1186,14 +1185,14 @@ kinesis_list_tags_for_stream <- function(StreamName, ExclusiveStartTagKey = NULL
 #' transport data
 #'
 #' Merges two adjacent shards in a Kinesis data stream and combines them
-#' into a single shard to reduce the stream\'s capacity to ingest and
+#' into a single shard to reduce the stream's capacity to ingest and
 #' transport data. Two shards are considered adjacent if the union of the
 #' hash key ranges for the two shards form a contiguous set with no gaps.
 #' For example, if you have two shards, one with a hash key range of
-#' 276\\...381 and the other with a hash key range of 382\\...454, then you
+#' 276...381 and the other with a hash key range of 382...454, then you
 #' could merge these two shards into a single shard that would have a hash
-#' key range of 276\\...454. After the merge, the single child shard
-#' receives data for all hash key values covered by the two parent shards.
+#' key range of 276...454. After the merge, the single child shard receives
+#' data for all hash key values covered by the two parent shards.
 #' 
 #' `MergeShards` is called when there is a need to reduce the overall
 #' capacity of a stream because of excess capacity that is not being used.
@@ -1501,7 +1500,7 @@ kinesis_put_records <- function(Records, StreamName) {
 #' Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams).
 #' @param ConsumerName &#91;required&#93; For a given Kinesis data stream, each consumer must have a unique name.
-#' However, consumer names don\'t have to be unique across data streams.
+#' However, consumer names don't have to be unique across data streams.
 #'
 #' @section Request syntax:
 #' ```
@@ -1582,7 +1581,7 @@ kinesis_remove_tags_from_stream <- function(StreamName, TagKeys) {
 #' increase the stream's capacity to ingest and transport data
 #'
 #' Splits a shard into two new shards in the Kinesis data stream, to
-#' increase the stream\'s capacity to ingest and transport data.
+#' increase the stream's capacity to ingest and transport data.
 #' `SplitShard` is called when there is a need to increase the overall
 #' capacity of a stream because of an expected increase in the volume of
 #' data records being ingested.
@@ -1708,8 +1707,8 @@ kinesis_split_shard <- function(StreamName, ShardToSplit, NewStartingHashKey) {
 #' @param KeyId &#91;required&#93; The GUID for the customer-managed AWS KMS key to use for encryption.
 #' This value can be a globally unique identifier, a fully specified Amazon
 #' Resource Name (ARN) to either an alias or a key, or an alias name
-#' prefixed by \"alias/\".You can also use a master key owned by Kinesis
-#' Data Streams by specifying the alias `aws/kinesis`.
+#' prefixed by "alias/".You can also use a master key owned by Kinesis Data
+#' Streams by specifying the alias `aws/kinesis`.
 #' 
 #' -   Key ARN example:
 #'     `arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012`
@@ -1784,8 +1783,8 @@ kinesis_start_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' @param KeyId &#91;required&#93; The GUID for the customer-managed AWS KMS key to use for encryption.
 #' This value can be a globally unique identifier, a fully specified Amazon
 #' Resource Name (ARN) to either an alias or a key, or an alias name
-#' prefixed by \"alias/\".You can also use a master key owned by Kinesis
-#' Data Streams by specifying the alias `aws/kinesis`.
+#' prefixed by "alias/".You can also use a master key owned by Kinesis Data
+#' Streams by specifying the alias `aws/kinesis`.
 #' 
 #' -   Key ARN example:
 #'     `arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012`

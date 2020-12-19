@@ -76,7 +76,7 @@ inspector_add_attributes_to_findings <- function(findingArns, attributes) {
 #' specified, all EC2 instances in the current AWS account and region are
 #' included in the assessment target. If the [service-linked
 #' role](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_slr.html)
-#' isn't already registered, this action also creates and registers a
+#' isn’t already registered, this action also creates and registers a
 #' service-linked role to grant Amazon Inspector access to AWS Services
 #' needed to perform security assessments. You can create up to 50
 #' assessment targets per AWS account. You can run up to 500 concurrent
@@ -141,7 +141,7 @@ inspector_create_assessment_target <- function(assessmentTargetName, resourceGro
 #' Creates an assessment template for the assessment target that is
 #' specified by the ARN of the assessment target. If the [service-linked
 #' role](https://docs.aws.amazon.com/inspector/latest/userguide/inspector_slr.html)
-#' isn't already registered, this action also creates and registers a
+#' isn’t already registered, this action also creates and registers a
 #' service-linked role to grant Amazon Inspector access to AWS Services
 #' needed to perform security assessments.
 #'
@@ -277,10 +277,9 @@ inspector_create_exclusions_preview <- function(assessmentTemplateArn) {
 #' inspector_create_resource_group(resourceGroupTags)
 #'
 #' @param resourceGroupTags &#91;required&#93; A collection of keys and an array of possible values,
-#' \'\[\{\"key\":\"key1\",\"values\":\[\"Value1\",\"Value2\"\]\},\{\"key\":\"Key2\",\"values\":\[\"Value3\"\]\}\]\'.
+#' '\[\{"key":"key1","values":\["Value1","Value2"\]\},\{"key":"Key2","values":\["Value3"\]\}\]'.
 #' 
-#' For
-#' example,\'\[\{\"key\":\"Name\",\"values\":\[\"TestEC2Instance\"\]\}\]\'.
+#' For example,'\[\{"key":"Name","values":\["TestEC2Instance"\]\}\]'.
 #'
 #' @section Request syntax:
 #' ```
@@ -667,13 +666,13 @@ inspector_describe_cross_account_access_role <- function() {
 
 #' Describes the exclusions that are specified by the exclusions' ARNs
 #'
-#' Describes the exclusions that are specified by the exclusions\' ARNs.
+#' Describes the exclusions that are specified by the exclusions' ARNs.
 #'
 #' @usage
 #' inspector_describe_exclusions(exclusionArns, locale)
 #'
 #' @param exclusionArns &#91;required&#93; The list of ARNs that specify the exclusions that you want to describe.
-#' @param locale The locale into which you want to translate the exclusion\'s title,
+#' @param locale The locale into which you want to translate the exclusion's title,
 #' description, and recommendation.
 #'
 #' @section Request syntax:
@@ -931,7 +930,7 @@ inspector_get_assessment_report <- function(assessmentRunArn, reportFileFormat, 
 #' @param maxResults You can use this parameter to indicate the maximum number of items you
 #' want in the response. The default value is 100. The maximum value is
 #' 500.
-#' @param locale The locale into which you want to translate the exclusion\'s title,
+#' @param locale The locale into which you want to translate the exclusion's title,
 #' description, and recommendation.
 #'
 #' @section Request syntax:
@@ -1025,7 +1024,7 @@ inspector_get_telemetry_metadata <- function(assessmentRunArn) {
 #'
 #' @param assessmentRunArn &#91;required&#93; The ARN that specifies the assessment run whose agents you want to list.
 #' @param filter You can use this parameter to specify a subset of data to be included in
-#' the action\'s response.
+#' the action's response.
 #' 
 #' For a record to match a filter, all specified filter attributes must
 #' match. When multiple values are specified for a filter attribute, any of
@@ -1099,7 +1098,7 @@ inspector_list_assessment_run_agents <- function(assessmentRunArn, filter = NULL
 #' @param assessmentTemplateArns The ARNs that specify the assessment templates whose assessment runs you
 #' want to list.
 #' @param filter You can use this parameter to specify a subset of data to be included in
-#' the action\'s response.
+#' the action's response.
 #' 
 #' For a record to match a filter, all specified filter attributes must
 #' match. When multiple values are specified for a filter attribute, any of
@@ -1204,7 +1203,7 @@ inspector_list_assessment_runs <- function(assessmentTemplateArns = NULL, filter
 #' inspector_list_assessment_targets(filter, nextToken, maxResults)
 #'
 #' @param filter You can use this parameter to specify a subset of data to be included in
-#' the action\'s response.
+#' the action's response.
 #' 
 #' For a record to match a filter, all specified filter attributes must
 #' match. When multiple values are specified for a filter attribute, any of
@@ -1269,7 +1268,7 @@ inspector_list_assessment_targets <- function(filter = NULL, nextToken = NULL, m
 #' @param assessmentTargetArns A list of ARNs that specifies the assessment targets whose assessment
 #' templates you want to list.
 #' @param filter You can use this parameter to specify a subset of data to be included in
-#' the action\'s response.
+#' the action's response.
 #' 
 #' For a record to match a filter, all specified filter attributes must
 #' match. When multiple values are specified for a filter attribute, any of
@@ -1454,7 +1453,7 @@ inspector_list_exclusions <- function(assessmentRunArn, nextToken = NULL, maxRes
 #' @param assessmentRunArns The ARNs of the assessment runs that generate the findings that you want
 #' to list.
 #' @param filter You can use this parameter to specify a subset of data to be included in
-#' the action\'s response.
+#' the action's response.
 #' 
 #' For a record to match a filter, all specified filter attributes must
 #' match. When multiple values are specified for a filter attribute, any of

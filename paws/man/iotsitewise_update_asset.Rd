@@ -12,11 +12,11 @@ iotsitewise_update_asset(assetId, assetName, clientToken)
 \item{assetName}{[required] A unique, friendly name for the asset.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{
-Updates an asset\'s name. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html}{Updating Assets and Models}
+Updates an asset's name. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html}{Updating Assets and Models}
 in the \emph{AWS IoT SiteWise User Guide}.
 }
 \section{Request syntax}{

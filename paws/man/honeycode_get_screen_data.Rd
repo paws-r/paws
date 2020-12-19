@@ -24,7 +24,7 @@ value of the variable to be passed to the screen.}
 \item{maxResults}{The number of results to be returned on a single page. Specify a number
 between 1 and 100. The maximum value is 100.
 
-This parameter is optional. If you don\'t specify this parameter, the
+This parameter is optional. If you don't specify this parameter, the
 default page size is 100.}
 
 \item{nextToken}{This parameter is optional. If a nextToken is not specified, the API

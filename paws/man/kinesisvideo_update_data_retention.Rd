@@ -25,7 +25,7 @@ current value. The maximum value for this parameter is 87600 (ten
 years).}
 }
 \description{
-Increases or decreases the stream\'s data retention period by the value
+Increases or decreases the stream's data retention period by the value
 that you specify. To indicate whether you want to increase or decrease
 the data retention period, specify the \code{Operation} parameter in the
 request body. In the request, you must specify either the \code{StreamName}

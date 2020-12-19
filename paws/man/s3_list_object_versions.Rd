@@ -33,15 +33,15 @@ response.}
 API returns up to 1,000 key names. The response might contain fewer keys
 but will never contain more. If additional keys satisfy the search
 criteria, but were not returned because max-keys was exceeded, the
-response contains \\<isTruncated\\>true\\</isTruncated\\>. To return the
-additional keys, see key-marker and version-id-marker.}
+response contains <isTruncated>true</isTruncated>. To return
+the additional keys, see key-marker and version-id-marker.}
 
 \item{Prefix}{Use this parameter to select only those keys that begin with the
 specified prefix. You can use prefixes to separate a bucket into
 different groupings of keys. (You can think of using prefix to make
-groups in the same way you\'d use a folder in a file system.) You can
-use prefix with delimiter to roll up numerous objects into a single
-result under CommonPrefixes.}
+groups in the same way you'd use a folder in a file system.) You can use
+prefix with delimiter to roll up numerous objects into a single result
+under CommonPrefixes.}
 
 \item{VersionIdMarker}{Specifies the object version you want to start listing from.}
 }

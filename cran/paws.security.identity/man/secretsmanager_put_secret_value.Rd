@@ -13,20 +13,20 @@ specify either the Amazon Resource Name (ARN) or the friendly name of
 the secret. The secret must already exist.
 
 If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too---for example, if you
-don't include the final hyphen and six random characters that Secrets
+complete ARN. You can specify a partial ARN too—for example, if you
+don’t include the final hyphen and six random characters that Secrets
 Manager adds at the end of the ARN when you created the secret. A
 partial ARN match can work as long as it uniquely matches only one
 secret. However, if your secret has a name that ends in a hyphen
 followed by six characters (before Secrets Manager adds the hyphen and
 six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you're
+then those characters cause Secrets Manager to assume that you’re
 specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don't create secret names
+To avoid this situation, we recommend that you don’t create secret names
 ending with a hyphen followed by six characters.
 
 If you specify an incomplete ARN without the random suffix, and instead
-provide the \'friendly name\', you \emph{must} not include the random suffix.
+provide the 'friendly name', you \emph{must} not include the random suffix.
 If you do include the random suffix added by Secrets Manager, you
 receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
@@ -36,21 +36,21 @@ secret.
 
 If you use the AWS CLI or one of the AWS SDK to call this operation,
 then you can leave this parameter empty. The CLI or SDK generates a
-random UUID for you and includes that in the request. If you don\'t use
+random UUID for you and includes that in the request. If you don't use
 the SDK and instead generate a raw HTTP request to the Secrets Manager
 service endpoint, then you must generate a \code{ClientRequestToken} yourself
 for new versions and include that value in the request.
 
 This value helps ensure idempotency. Secrets Manager uses this value to
 prevent the accidental creation of duplicate versions if there are
-failures and retries during the Lambda rotation function\'s processing.
+failures and retries during the Lambda rotation function's processing.
 We recommend that you generate a
 \href{https://wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
 value to ensure uniqueness within the specified secret.
 \itemize{
-\item If the \code{ClientRequestToken} value isn\'t already associated with a
+\item If the \code{ClientRequestToken} value isn't already associated with a
 version of the secret then a new version of the secret is created.
-\item If a version with this value already exists and that version\'s
+\item If a version with this value already exists and that version's
 \code{SecretString} or \code{SecretBinary} values are the same as those in the
 request then the request is ignored (the operation is idempotent).
 \item If a version with this value already exists and the version of the
@@ -101,7 +101,7 @@ version of the secret. These staging labels are used to track the
 versions through the rotation process by the Lambda rotation function.
 
 A staging label must be unique to a single version of the secret. If you
-specify a staging label that\'s already associated with a different
+specify a staging label that's already associated with a different
 version of the same secret then that staging label is automatically
 removed from the other version and attached to this version.
 
@@ -142,25 +142,25 @@ can only create new ones.
 \itemize{
 \item If you call an operation to encrypt or decrypt the \code{SecretString} or
 \code{SecretBinary} for a secret in the same account as the calling user
-and that secret doesn\'t specify a AWS KMS encryption key, Secrets
-Manager uses the account\'s default AWS managed customer master key
-(CMK) with the alias \code{aws/secretsmanager}. If this key doesn\'t
+and that secret doesn't specify a AWS KMS encryption key, Secrets
+Manager uses the account's default AWS managed customer master key
+(CMK) with the alias \code{aws/secretsmanager}. If this key doesn't
 already exist in your account then Secrets Manager creates it for
 you automatically. All users and roles in the same AWS account
 automatically have access to use the default CMK. Note that if an
-Secrets Manager API call results in AWS creating the account\'s
+Secrets Manager API call results in AWS creating the account's
 AWS-managed CMK, it can result in a one-time significant delay in
 returning the result.
 \item If the secret resides in a different AWS account from the
 credentials calling an API that requires encryption or decryption of
 the secret value then you must create and use a custom AWS KMS CMK
-because you can\'t access the default CMK for the account using
+because you can't access the default CMK for the account using
 credentials from a different AWS account. Store the ARN of the CMK
 in the secret when you create the secret or when you update it by
 including it in the \code{KMSKeyId}. If you call an API that must encrypt
 or decrypt \code{SecretString} or \code{SecretBinary} using credentials from a
 different account then the AWS KMS key policy must grant
-cross-account access to that other account\'s user or role for both
+cross-account access to that other account's user or role for both
 the kms:GenerateDataKey and kms:Decrypt operations.
 }
 
@@ -171,7 +171,7 @@ To run this command, you must have the following permissions:
 \item secretsmanager:PutSecretValue
 \item kms:GenerateDataKey - needed only if you use a customer-managed AWS
 KMS key to encrypt the secret. You do not need this permission to
-use the account\'s default AWS managed CMK for Secrets Manager.
+use the account's default AWS managed CMK for Secrets Manager.
 }
 
 \strong{Related operations}

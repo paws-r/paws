@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsm_operations.R
 \name{cloudhsm_get_config}
 \alias{cloudhsm_get_config}
-\title{This is documentation for AWS CLOUDHSM CLASSIC}
+\title{This is documentation for AWS CloudHSM Classic}
 \usage{
 cloudhsm_get_config(ClientArn, ClientVersion, HapgList)
 }

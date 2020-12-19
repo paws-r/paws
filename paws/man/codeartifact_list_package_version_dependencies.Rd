@@ -34,7 +34,7 @@ namespace depends on its type. For example:
 Python packages do not have a namespace.
 }}
 
-\item{package}{[required] The name of the package versions\' package.}
+\item{package}{[required] The name of the package versions' package.}
 
 \item{packageVersion}{[required] A string that contains the package version (for example, \verb{3.5.2}).}
 

@@ -9,9 +9,9 @@ verification status}
 ses_list_identities(IdentityType, NextToken, MaxItems)
 }
 \arguments{
-\item{IdentityType}{The type of the identities to list. Possible values are \"EmailAddress\"
-and \"Domain\". If this parameter is omitted, then all identities will
-be listed.}
+\item{IdentityType}{The type of the identities to list. Possible values are "EmailAddress"
+and "Domain". If this parameter is omitted, then all identities will be
+listed.}
 
 \item{NextToken}{The token to use for pagination.}
 

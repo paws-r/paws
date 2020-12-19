@@ -163,9 +163,9 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 #' Services are specified by their service principals and can be given
 #' permission to create and retrieve certificates on a private CA. Services
 #' can also be given permission to list the active permissions that the
-#' private CA has granted. For ACM to automatically renew your private
-#' CA\'s certificates, you must assign all possible permissions from the CA
-#' to the ACM service principal.
+#' private CA has granted. For ACM to automatically renew your private CA's
+#' certificates, you must assign all possible permissions from the CA to
+#' the ACM service principal.
 #' 
 #' At this time, you can only assign permissions to ACM
 #' (`acm.amazonaws.com`). Permissions can be revoked with the
@@ -233,15 +233,15 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' 
 #' Additionally, you can delete a CA if you are waiting for it to be
 #' created (that is, the status of the CA is `CREATING`). You can also
-#' delete it if the CA has been created but you haven\'t yet imported the
+#' delete it if the CA has been created but you haven't yet imported the
 #' signed certificate into ACM Private CA (that is, the status of the CA is
 #' `PENDING_CERTIFICATE`).
 #' 
-#' When you successfully call DeleteCertificateAuthority, the CA\'s status
-#' changes to `DELETED`. However, the CA won\'t be permanently deleted
-#' until the restoration period has passed. By default, if you do not set
-#' the `PermanentDeletionTimeInDays` parameter, the CA remains restorable
-#' for 30 days. You can set the parameter from 7 to 30 days. The
+#' When you successfully call DeleteCertificateAuthority, the CA's status
+#' changes to `DELETED`. However, the CA won't be permanently deleted until
+#' the restoration period has passed. By default, if you do not set the
+#' `PermanentDeletionTimeInDays` parameter, the CA remains restorable for
+#' 30 days. You can set the parameter from 7 to 30 days. The
 #' DescribeCertificateAuthority action returns the time remaining in the
 #' restoration window of a private CA in the `DELETED` state. To restore an
 #' eligible CA, call the RestoreCertificateAuthority action.
@@ -297,7 +297,7 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
 #'   SourceAccount)
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that issued the
-#' permissions. You can find the CA\'s ARN by calling the
+#' permissions. You can find the CA's ARN by calling the
 #' ListCertificateAuthorities action. This must have the following form:
 #' 
 #' `arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> `.
@@ -360,7 +360,7 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' 
 #' -   `DELETED` - Your private CA is within the restoration period, after
 #'     which it is permanently deleted. The length of time remaining in the
-#'     CA\'s restoration period is also included in this action\'s output.
+#'     CA's restoration period is also included in this action's output.
 #'
 #' @usage
 #' acmpca_describe_certificate_authority(CertificateAuthorityArn)
@@ -635,7 +635,7 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 #' certificate in the case of a root CA, or it may be signed by another CA
 #' that you control.
 #' @param CertificateChain A PEM-encoded file that contains all of your certificates, other than
-#' the certificate you\'re importing, chaining up to your root CA. Your ACM
+#' the certificate you're importing, chaining up to your root CA. Your ACM
 #' Private CA-hosted or on-premises root certificate is the last in the
 #' chain, and each certificate in the chain signs the one preceding.
 #' 
@@ -828,8 +828,8 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
 #' find the ARN by calling the ListCertificateAuthorities action. This must
 #' be of the form:
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012`
-#' You can get a private CA\'s ARN by running the
-#' ListCertificateAuthorities action.
+#' You can get a private CA's ARN by running the ListCertificateAuthorities
+#' action.
 #' @param NextToken When paginating results, use this parameter in a subsequent request
 #' after you receive a response with truncated results. Set it to the value
 #' of **NextToken** from the response you just received.

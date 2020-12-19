@@ -13,11 +13,11 @@ apigateway_put_integration(restApiId, resourceId, httpMethod, type,
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] Specifies a put integration request\'s resource ID.}
+\item{resourceId}{[required] [Required] Specifies a put integration request's resource ID.}
 
-\item{httpMethod}{[required] [Required] Specifies a put integration request\'s HTTP method.}
+\item{httpMethod}{[required] [Required] Specifies a put integration request's HTTP method.}
 
-\item{type}{[required] [Required] Specifies a put integration input\'s type.}
+\item{type}{[required] [Required] Specifies a put integration input's type.}
 
 \item{integrationHttpMethod}{Specifies a put integration HTTP method. When the integration type is
 HTTP or AWS, this field is required.}
@@ -84,8 +84,8 @@ resource. There are three valid values: \code{WHEN_NO_MATCH},
 \itemize{
 \item \code{WHEN_NO_MATCH} passes the request body for unmapped content types
 through to the integration back end without transformation.
-\item \code{NEVER} rejects unmapped content types with an HTTP 415
-\'Unsupported Media Type\' response.
+\item \code{NEVER} rejects unmapped content types with an HTTP 415 'Unsupported
+Media Type' response.
 \item \code{WHEN_NO_TEMPLATES} allows pass-through when the integration has NO
 content types mapped to templates. However if there is at least one
 content type defined, unmapped content types will be rejected with
@@ -122,7 +122,7 @@ support payload pass-through.}
 \item{tlsConfig}{}
 }
 \description{
-Sets up a method\'s integration.
+Sets up a method's integration.
 }
 \section{Request syntax}{
 \preformatted{svc$put_integration(

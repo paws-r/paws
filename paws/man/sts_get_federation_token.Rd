@@ -46,7 +46,7 @@ granted in addition to the permissions that are granted by the session
 policies.
 
 The plain text that you use for both inline and managed session policies
-can\'t exceed 2,048 characters. The JSON policy characters can be any
+can't exceed 2,048 characters. The JSON policy characters can be any
 ASCII character from the space character to the end of the valid
 character list (\code{U+0020} through \verb{U+00FF}). It can also include the tab
 (\code{U+0009}), linefeed (\verb{U+000A}), and carriage return (\verb{U+000D}) characters.
@@ -66,7 +66,7 @@ You must pass an inline or managed \href{https://docs.aws.amazon.com/IAM/latest/
 to this operation. You can pass a single JSON policy document to use as
 an inline session policy. You can also specify up to 10 managed policies
 to use as managed session policies. The plain text that you use for both
-inline and managed session policies can\'t exceed 2,048 characters. You
+inline and managed session policies can't exceed 2,048 characters. You
 can provide up to 10 managed policy ARNs. For more information about
 ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the AWS General Reference.
@@ -109,8 +109,8 @@ associated value. For more information about session tags, see \href{https://doc
 in the \emph{IAM User Guide}.
 
 This parameter is optional. You can pass up to 50 session tags. The
-plain text session tag keys can't exceed 128 characters and the values
-can't exceed 256 characters. For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
+plain text session tag keys can’t exceed 128 characters and the values
+can’t exceed 256 characters. For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
 in the \emph{IAM User Guide}.
 
 An AWS conversion compresses the passed session policies and session
@@ -124,7 +124,7 @@ You can pass a session tag with the same key as a tag that is already
 attached to the user you are federating. When you do, session tags
 override a user tag with the same key.
 
-Tag key--value pairs are not case sensitive, but case is preserved. This
+Tag key–value pairs are not case sensitive, but case is preserved. This
 means that you cannot have separate \code{Department} and \code{department} tag
 keys. Assume that the role has the \code{Department}=\code{Marketing} tag and you
 pass the \code{department}=\code{engineering} session tag. \code{Department} and
@@ -182,7 +182,7 @@ You must pass an inline or managed \href{https://docs.aws.amazon.com/IAM/latest/
 to this operation. You can pass a single JSON policy document to use as
 an inline session policy. You can also specify up to 10 managed policies
 to use as managed session policies. The plain text that you use for both
-inline and managed session policies can\'t exceed 2,048 characters.
+inline and managed session policies can't exceed 2,048 characters.
 
 Though the session policy parameters are optional, if you do not pass a
 policy, then the resulting federated user session has no permissions.
@@ -194,7 +194,7 @@ permissions than those that are defined in the permissions policy of the
 IAM user. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{Session Policies}
 in the \emph{IAM User Guide}. For information about using
 \code{GetFederationToken} to create temporary security credentials, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken}{GetFederationToken---Federation Through a Custom Identity Broker}.
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken}{GetFederationToken—Federation Through a Custom Identity Broker}.
 
 You can use the credentials to access a resource that has a
 resource-based policy. If that policy specifically references the
@@ -215,7 +215,7 @@ allow you to pass only specific session tags. For more information, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_attribute-based-access-control.html}{Tutorial: Using Tags for Attribute-Based Access Control}
 in the \emph{IAM User Guide}.
 
-Tag key--value pairs are not case sensitive, but case is preserved. This
+Tag key–value pairs are not case sensitive, but case is preserved. This
 means that you cannot have separate \code{Department} and \code{department} tag
 keys. Assume that the user that you are federating has the
 \code{Department}=\code{Marketing} tag and you pass the \code{department}=\code{engineering}

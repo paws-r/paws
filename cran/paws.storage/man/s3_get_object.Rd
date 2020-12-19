@@ -40,7 +40,7 @@ time, otherwise return a 412 (precondition failed).}
 about the HTTP Range header, see
 \url{https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35}.
 
-Amazon S3 doesn\'t support retrieving multiple ranges of data per \code{GET}
+Amazon S3 doesn't support retrieving multiple ranges of data per \code{GET}
 request.}
 
 \item{ResponseCacheControl}{Sets the \code{Cache-Control} header of the response.}
@@ -64,7 +64,7 @@ example, AES256).}
 encrypting data. This value is used to store the object and then it is
 discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-\verb{x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm} header.}
+\code{x-amz-server-side​-encryption​-customer-algorithm} header.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to ensure
@@ -73,7 +73,7 @@ that the encryption key was transmitted without error.}
 \item{RequestPayer}{}
 
 \item{PartNumber}{Part number of the object being read. This is a positive integer between
-1 and 10,000. Effectively performs a \'ranged\' GET request for the part
+1 and 10,000. Effectively performs a 'ranged' GET request for the part
 specified. Useful for downloading just a part of an object.}
 }
 \description{
@@ -112,17 +112,17 @@ archived objects, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/rest
 Encryption request headers, like \code{x-amz-server-side-encryption}, should
 not be sent for GET requests if your object uses server-side encryption
 with CMKs stored in AWS KMS (SSE-KMS) or server-side encryption with
-Amazon S3--managed encryption keys (SSE-S3). If your object does use
-these types of keys, you'll get an HTTP 400 BadRequest error.
+Amazon S3–managed encryption keys (SSE-S3). If your object does use
+these types of keys, you’ll get an HTTP 400 BadRequest error.
 
 If you encrypt an object by using server-side encryption with
 customer-provided encryption keys (SSE-C) when you store the object in
 Amazon S3, then when you GET the object, you must use the following
 headers:
 \itemize{
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+\item x-amz-server-side​-encryption​-customer-algorithm
+\item x-amz-server-side​-encryption​-customer-key
+\item x-amz-server-side​-encryption​-customer-key-MD5
 }
 
 For more information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}.
@@ -141,9 +141,9 @@ If the object you request does not exist, the error Amazon S3 returns
 depends on whether you also have the \code{s3:ListBucket} permission.
 \itemize{
 \item If you have the \code{s3:ListBucket} permission on the bucket, Amazon S3
-will return an HTTP status code 404 (\"no such key\") error.
-\item If you don't have the \code{s3:ListBucket} permission, Amazon S3 will
-return an HTTP status code 403 (\"access denied\") error.
+will return an HTTP status code 404 ("no such key") error.
+\item If you don’t have the \code{s3:ListBucket} permission, Amazon S3 will
+return an HTTP status code 403 ("access denied") error.
 }
 
 \strong{Versioning}

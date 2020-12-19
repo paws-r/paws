@@ -7,7 +7,7 @@
 quicksight_list_themes(AwsAccountId, NextToken, MaxResults, Type)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the themes that you\'re listing.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the themes that you're listing.}
 
 \item{NextToken}{The token for the next set of results, or null if there are no more
 results.}

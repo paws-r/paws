@@ -16,7 +16,7 @@ dataexchange_list_data_set_revisions(DataSetId, MaxResults, NextToken)
 of results.}
 }
 \description{
-This operation lists a data set\'s revisions sorted by CreatedAt in
+This operation lists a data set's revisions sorted by CreatedAt in
 descending order.
 }
 \section{Request syntax}{

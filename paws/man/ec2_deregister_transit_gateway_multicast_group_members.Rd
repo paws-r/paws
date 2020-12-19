@@ -14,7 +14,7 @@ ec2_deregister_transit_gateway_multicast_group_members(
 
 \item{GroupIpAddress}{The IP address assigned to the transit gateway multicast group.}
 
-\item{NetworkInterfaceIds}{The IDs of the group members\' network interfaces.}
+\item{NetworkInterfaceIds}{The IDs of the group members' network interfaces.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

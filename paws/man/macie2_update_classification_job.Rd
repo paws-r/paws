@@ -9,7 +9,7 @@ macie2_update_classification_job(jobId, jobStatus)
 \arguments{
 \item{jobId}{[required] The unique identifier for the classification job.}
 
-\item{jobStatus}{[required] The status to change the job\'s status to. The only supported value is
+\item{jobStatus}{[required] The status to change the job's status to. The only supported value is
 CANCELLED, which cancels the job completely.}
 }
 \description{

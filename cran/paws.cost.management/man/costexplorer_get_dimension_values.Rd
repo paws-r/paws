@@ -54,7 +54,7 @@ Reserved Instances.
 DataTransfer-In-Bytes. The response for the \code{GetDimensionValues}
 operation includes a unit attribute. Examples include GB and Hrs.
 \item USAGE\\_TYPE\\_GROUP - The grouping of common usage types. An example
-is Amazon EC2: CloudWatch -- Alarms. The response for this operation
+is Amazon EC2: CloudWatch – Alarms. The response for this operation
 includes a unit attribute.
 \item RECORD\\_TYPE - The different types of charges such as RI fees, usage
 costs, tax refunds, and credits.

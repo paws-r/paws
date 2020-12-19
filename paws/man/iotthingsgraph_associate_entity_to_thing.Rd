@@ -16,11 +16,11 @@ The ID should be in the following format.
 
 \verb{urn:tdm:REGION/ACCOUNT ID/default:device:DEVICENAME}}
 
-\item{namespaceVersion}{The version of the user\'s namespace. Defaults to the latest version of
-the user\'s namespace.}
+\item{namespaceVersion}{The version of the user's namespace. Defaults to the latest version of
+the user's namespace.}
 }
 \description{
-Associates a device with a concrete thing that is in the user\'s
+Associates a device with a concrete thing that is in the user's
 registry.
 }
 \details{

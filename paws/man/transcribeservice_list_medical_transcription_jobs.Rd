@@ -11,7 +11,7 @@ transcribeservice_list_medical_transcription_jobs(Status,
 \arguments{
 \item{Status}{When specified, returns only medical transcription jobs with the
 specified status. Jobs are ordered by creation date, with the newest
-jobs returned first. If you don\'t specify a status, Amazon Transcribe
+jobs returned first. If you don't specify a status, Amazon Transcribe
 Medical returns all transcription jobs ordered by creation date.}
 
 \item{JobNameContains}{When specified, the jobs returned in the list are limited to jobs whose

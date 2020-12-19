@@ -8,7 +8,7 @@ quicksight_list_dashboard_versions(AwsAccountId, DashboardId, NextToken,
   MaxResults)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you\'re
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you're
 listing versions for.}
 
 \item{DashboardId}{[required] The ID for the dashboard.}

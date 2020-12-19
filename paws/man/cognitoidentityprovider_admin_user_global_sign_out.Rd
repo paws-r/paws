@@ -13,7 +13,7 @@ cognitoidentityprovider_admin_user_global_sign_out(UserPoolId, Username)
 }
 \description{
 Signs out users from all devices, as an administrator. It also
-invalidates all refresh tokens issued to a user. The user\'s current
+invalidates all refresh tokens issued to a user. The user's current
 access and Id tokens remain valid until their expiry. Access and Id
 tokens expire one hour after they are issued.
 }

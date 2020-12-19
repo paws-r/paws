@@ -22,7 +22,7 @@ instance and guard against replay attacks.}
 Paid container software products sold through AWS Marketplace must
 integrate with the AWS Marketplace Metering Service and call the
 RegisterUsage operation for software entitlement and metering. Free and
-BYOL products for Amazon ECS or Amazon EKS aren\'t required to call
+BYOL products for Amazon ECS or Amazon EKS aren't required to call
 RegisterUsage, but you may choose to do so if you would like to receive
 usage data in your seller reports. The sections below explain the
 behavior of RegisterUsage. RegisterUsage performs two primary functions:
@@ -49,7 +49,7 @@ cluster and a service configured as a Daemon Set, then Amazon ECS or
 Amazon EKS will launch a task on all 10 cluster nodes and the
 customer will be charged: (10 * hourly\\_rate). Metering for
 software use is automatically handled by the AWS Marketplace
-Metering Control Plane \\-- your software is not required to perform
+Metering Control Plane -- your software is not required to perform
 any metering specific actions, other than call RegisterUsage once
 for metering of software use to commence. The AWS Marketplace
 Metering Control Plane will also continue to bill customers for

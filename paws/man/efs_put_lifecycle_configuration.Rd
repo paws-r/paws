@@ -11,7 +11,7 @@ efs_put_lifecycle_configuration(FileSystemId, LifecyclePolicies)
 \item{FileSystemId}{[required] The ID of the file system for which you are creating the
 \code{LifecycleConfiguration} object (String).}
 
-\item{LifecyclePolicies}{[required] An array of \code{LifecyclePolicy} objects that define the file system\'s
+\item{LifecyclePolicies}{[required] An array of \code{LifecyclePolicy} objects that define the file system's
 \code{LifecycleConfiguration} object. A \code{LifecycleConfiguration} object tells
 lifecycle management when to transition files from the Standard storage
 class to the Infrequent Access storage class.}

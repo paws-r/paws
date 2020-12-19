@@ -17,15 +17,15 @@ CreateTestGridProject and ListTestGridProjects.}
 }
 \description{
 A session is an instance of a browser created through a
-\code{RemoteWebDriver} with the URL from CreateTestGridUrlResult\\$url. You
-can use the following to look up sessions:
+\code{RemoteWebDriver} with the URL from CreateTestGridUrlResult$url. You can
+use the following to look up sessions:
 }
 \details{
 \itemize{
-\item The session ARN (GetTestGridSessionRequest\\$sessionArn).
+\item The session ARN (GetTestGridSessionRequest$sessionArn).
 \item The project ARN and a session ID
-(GetTestGridSessionRequest\\$projectArn and
-GetTestGridSessionRequest\\$sessionId).
+(GetTestGridSessionRequest$projectArn and
+GetTestGridSessionRequest$sessionId).
 }
 }
 \section{Request syntax}{

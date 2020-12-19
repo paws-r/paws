@@ -13,18 +13,18 @@ either the fleet ID or ARN value.}
 
 \item{DesiredInstances}{Number of EC2 instances you want this fleet to host.}
 
-\item{MinSize}{The minimum value allowed for the fleet\'s instance count. Default if
-not set is 0.}
+\item{MinSize}{The minimum value allowed for the fleet's instance count. Default if not
+set is 0.}
 
-\item{MaxSize}{The maximum value allowed for the fleet\'s instance count. Default if
-not set is 1.}
+\item{MaxSize}{The maximum value allowed for the fleet's instance count. Default if not
+set is 1.}
 }
 \description{
 Updates capacity settings for a fleet. Use this action to specify the
 number of EC2 instances (hosts) that you want this fleet to contain.
 Before calling this action, you may want to call
 DescribeEC2InstanceLimits to get the maximum capacity based on the
-fleet\'s EC2 instance type.
+fleet's EC2 instance type.
 }
 \details{
 Specify minimum and maximum number of instances. Amazon GameLift will
@@ -35,11 +35,11 @@ automatic adjustments.
 
 To update fleet capacity, specify the fleet ID and the number of
 instances you want the fleet to host. If successful, Amazon GameLift
-starts or terminates instances so that the fleet\'s active instance
-count matches the desired instance count. You can view a fleet\'s
-current capacity information by calling DescribeFleetCapacity. If the
-desired instance count is higher than the instance type\'s limit, the
-\"Limit Exceeded\" exception occurs.
+starts or terminates instances so that the fleet's active instance count
+matches the desired instance count. You can view a fleet's current
+capacity information by calling DescribeFleetCapacity. If the desired
+instance count is higher than the instance type's limit, the "Limit
+Exceeded" exception occurs.
 
 \strong{Learn more}
 

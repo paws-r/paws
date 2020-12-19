@@ -8,7 +8,7 @@ NULL
 #' Ends a given Amazon QLDB journal stream. Before a stream can be
 #' canceled, its current status must be `ACTIVE`.
 #' 
-#' You can\'t restart a stream after you cancel it. Canceled QLDB stream
+#' You can't restart a stream after you cancel it. Canceled QLDB stream
 #' resources are subject to a 7-day retention period, so they are
 #' automatically deleted after this limit expires.
 #'
@@ -201,10 +201,10 @@ qldb_describe_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' Expiration](https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration)
 #' in the *Amazon QLDB Developer Guide*.
 #' 
-#' If the export job with the given `ExportId` doesn\'t exist, then throws
+#' If the export job with the given `ExportId` doesn't exist, then throws
 #' `ResourceNotFoundException`.
 #' 
-#' If the ledger with the given `Name` doesn\'t exist, then throws
+#' If the ledger with the given `Name` doesn't exist, then throws
 #' `ResourceNotFoundException`.
 #'
 #' @usage
@@ -286,7 +286,7 @@ qldb_describe_ledger <- function(Name) {
 #' a specified Amazon Simple Storage Service (Amazon S3) bucket. The data
 #' is written as files in Amazon Ion format.
 #' 
-#' If the ledger with the given `Name` doesn\'t exist, then throws
+#' If the ledger with the given `Name` doesn't exist, then throws
 #' `ResourceNotFoundException`.
 #' 
 #' If the ledger with the given `Name` is in `CREATING` status, then throws
@@ -309,8 +309,8 @@ qldb_describe_ledger <- function(Name) {
 #' 
 #' The `InclusiveStartTime` must be before `ExclusiveEndTime`.
 #' 
-#' If you provide an `InclusiveStartTime` that is before the ledger\'s
-#' `CreationDateTime`, Amazon QLDB defaults it to the ledger\'s
+#' If you provide an `InclusiveStartTime` that is before the ledger's
+#' `CreationDateTime`, Amazon QLDB defaults it to the ledger's
 #' `CreationDateTime`.
 #' @param ExclusiveEndTime &#91;required&#93; The exclusive end date and time for the range of journal contents that
 #' you want to export.
@@ -383,7 +383,7 @@ qldb_export_journal_to_s3 <- function(Name, InclusiveStartTime, ExclusiveEndTime
 #' contents](https://docs.aws.amazon.com/qldb/latest/developerguide/journal-contents.html)
 #' in the *Amazon QLDB Developer Guide*.
 #' 
-#' If the specified ledger doesn\'t exist or is in `DELETING` status, then
+#' If the specified ledger doesn't exist or is in `DELETING` status, then
 #' throws `ResourceNotFoundException`.
 #' 
 #' If the specified ledger is in `CREATING` status, then throws
@@ -786,7 +786,7 @@ qldb_list_tags_for_resource <- function(ResourceArn) {
 #' Creates a journal stream for a given Amazon QLDB ledger
 #'
 #' Creates a journal stream for a given Amazon QLDB ledger. The stream
-#' captures every document revision that is committed to the ledger\'s
+#' captures every document revision that is committed to the ledger's
 #' journal and delivers the data to a specified Amazon Kinesis Data Streams
 #' resource.
 #'
@@ -808,11 +808,11 @@ qldb_list_tags_for_resource <- function(ResourceArn) {
 #' The `InclusiveStartTime` cannot be in the future and must be before
 #' `ExclusiveEndTime`.
 #' 
-#' If you provide an `InclusiveStartTime` that is before the ledger\'s
-#' `CreationDateTime`, QLDB effectively defaults it to the ledger\'s
+#' If you provide an `InclusiveStartTime` that is before the ledger's
+#' `CreationDateTime`, QLDB effectively defaults it to the ledger's
 #' `CreationDateTime`.
 #' @param ExclusiveEndTime The exclusive date and time that specifies when the stream ends. If you
-#' don\'t define this parameter, the stream runs indefinitely until you
+#' don't define this parameter, the stream runs indefinitely until you
 #' cancel it.
 #' 
 #' The `ExclusiveEndTime` must be in `ISO 8601` date and time format and in

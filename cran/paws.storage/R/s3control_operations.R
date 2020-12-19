@@ -92,17 +92,17 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
 #' Operations](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-operations.html)
 #' in the *Amazon Simple Storage Service Developer Guide*.
 #' @param Report &#91;required&#93; Configuration parameters for the optional job-completion report.
-#' @param ClientRequestToken &#91;required&#93; An idempotency token to ensure that you don\'t accidentally submit the
+#' @param ClientRequestToken &#91;required&#93; An idempotency token to ensure that you don't accidentally submit the
 #' same request twice. You can use any string up to the maximum length.
 #' @param Manifest &#91;required&#93; Configuration parameters for the manifest.
 #' @param Description A description for this job. You can use any string within the permitted
-#' length. Descriptions don\'t need to be unique and can be used for
+#' length. Descriptions don't need to be unique and can be used for
 #' multiple jobs.
 #' @param Priority &#91;required&#93; The numerical priority for this job. Higher numbers indicate higher
 #' priority.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) for the AWS Identity and Access
 #' Management (IAM) role that Batch Operations will use to execute this
-#' job\'s operation on each object in the manifest.
+#' job's operation on each object in the manifest.
 #' @param Tags A set of tags to associate with the Amazon S3 Batch Operations job. This
 #' is an optional parameter.
 #'
@@ -1013,7 +1013,7 @@ s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, Ac
 
 #' Updates an existing Amazon S3 Batch Operations job's priority
 #'
-#' Updates an existing Amazon S3 Batch Operations job\'s priority. For more
+#' Updates an existing Amazon S3 Batch Operations job's priority. For more
 #' information, see [Amazon S3 Batch
 #' Operations](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html)
 #' in the Amazon Simple Storage Service Developer Guide.
@@ -1089,7 +1089,7 @@ s3control_update_job_priority <- function(AccountId, JobId, Priority) {
 #' @param AccountId &#91;required&#93; 
 #' @param JobId &#91;required&#93; The ID of the job whose status you want to update.
 #' @param RequestedJobStatus &#91;required&#93; The status that you want to move the specified job to.
-#' @param StatusUpdateReason A description of the reason why you want to change the specified job\'s
+#' @param StatusUpdateReason A description of the reason why you want to change the specified job's
 #' status. This field can be any string up to the maximum length.
 #'
 #' @section Request syntax:

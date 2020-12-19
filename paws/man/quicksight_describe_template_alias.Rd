@@ -7,7 +7,7 @@
 quicksight_describe_template_alias(AwsAccountId, TemplateId, AliasName)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the template alias that you\'re
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the template alias that you're
 describing.}
 
 \item{TemplateId}{[required] The ID for the template.}
@@ -15,8 +15,8 @@ describing.}
 \item{AliasName}{[required] The name of the template alias that you want to describe. If you name a
 specific alias, you describe the version that the alias points to. You
 can specify the latest version of the template by providing the keyword
-\verb{$LATEST} in the \code{AliasName} parameter. The keyword \verb{$PUBLISHED}
-doesn\'t apply to templates.}
+\verb{$LATEST} in the \code{AliasName} parameter. The keyword \verb{$PUBLISHED} doesn't
+apply to templates.}
 }
 \description{
 Describes the template alias for a template.

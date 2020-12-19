@@ -14,9 +14,9 @@ and must not begin or end with a hyphen.}
 
 \item{IpAddressType}{The value for the address type must be IPv4.}
 
-\item{IpAddresses}{Optionally, if you\'ve added your own IP address pool to Global
+\item{IpAddresses}{Optionally, if you've added your own IP address pool to Global
 Accelerator, you can choose IP addresses from your own pool to use for
-the accelerator\'s static IP addresses. You can specify one or two
+the accelerator's static IP addresses. You can specify one or two
 addresses, separated by a comma. Do not include the /32 suffix.
 
 If you specify only one IP address from your IP address range, Global
@@ -33,7 +33,7 @@ If the value is set to true, an accelerator cannot be deleted. If set to
 false, the accelerator can be deleted.}
 
 \item{IdempotencyToken}{[required] A unique, case-sensitive identifier that you provide to ensure the
-idempotency---that is, the uniqueness---of an accelerator.}
+idempotency—that is, the uniqueness—of an accelerator.}
 
 \item{Tags}{Create tags for an accelerator.
 

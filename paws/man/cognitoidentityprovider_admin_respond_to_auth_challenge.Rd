@@ -30,7 +30,7 @@ attributes, \code{USERNAME}, \code{SECRET_HASH} (if app client is configured
 with client secret).
 }
 
-The value of the \code{USERNAME} attribute must be the user\'s actual
+The value of the \code{USERNAME} attribute must be the user's actual
 username, not an alias (such as email address or phone number). To make
 this easier, the \code{AdminInitiateAuth} response includes the actual
 username value in the \code{USERNAMEUSER_ID_FOR_SRP} attribute, even if you
@@ -45,7 +45,7 @@ passed as it is to the next \code{RespondToAuthChallenge} API call.}
 \item{AnalyticsMetadata}{The analytics metadata for collecting Amazon Pinpoint metrics for
 \code{AdminRespondToAuthChallenge} calls.}
 
-\item{ContextData}{Contextual data such as the user\'s device fingerprint, IP address, or
+\item{ContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon
 Cognito advanced security.}
 
@@ -78,7 +78,7 @@ does not include triggers, the ClientMetadata parameter serves no
 purpose.
 \item Amazon Cognito does not validate the ClientMetadata value.
 \item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don\'t use it to provide sensitive information.
+don't use it to provide sensitive information.
 }}
 }
 \description{

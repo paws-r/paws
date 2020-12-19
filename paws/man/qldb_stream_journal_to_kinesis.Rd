@@ -25,12 +25,12 @@ Universal Coordinated Time (UTC). For example: \verb{2019-06-13T21:36:34Z}
 The \code{InclusiveStartTime} cannot be in the future and must be before
 \code{ExclusiveEndTime}.
 
-If you provide an \code{InclusiveStartTime} that is before the ledger\'s
-\code{CreationDateTime}, QLDB effectively defaults it to the ledger\'s
+If you provide an \code{InclusiveStartTime} that is before the ledger's
+\code{CreationDateTime}, QLDB effectively defaults it to the ledger's
 \code{CreationDateTime}.}
 
 \item{ExclusiveEndTime}{The exclusive date and time that specifies when the stream ends. If you
-don\'t define this parameter, the stream runs indefinitely until you
+don't define this parameter, the stream runs indefinitely until you
 cancel it.
 
 The \code{ExclusiveEndTime} must be in \verb{ISO 8601} date and time format and in
@@ -50,7 +50,7 @@ in the \emph{Amazon QLDB Developer Guide}.}
 }
 \description{
 Creates a journal stream for a given Amazon QLDB ledger. The stream
-captures every document revision that is committed to the ledger\'s
+captures every document revision that is committed to the ledger's
 journal and delivers the data to a specified Amazon Kinesis Data Streams
 resource.
 }

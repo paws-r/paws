@@ -19,7 +19,7 @@ date/time stamp.}
 \item{Name}{A friendly name that lets you easily find a rule in the Resolver
 dashboard in the Route 53 console.}
 
-\item{RuleType}{[required] Specify \code{FORWARD}. Other resolver rule types aren\'t supported.}
+\item{RuleType}{[required] Specify \code{FORWARD}. Other resolver rule types aren't supported.}
 
 \item{DomainName}{[required] DNS queries for this domain name are forwarded to the IP addresses that
 you specify in \code{TargetIps}. If a query matches multiple resolver rules

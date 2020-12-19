@@ -26,8 +26,8 @@ options as well as the possible and default values. For more
 information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html}{Supported Platforms}
 in the \emph{AWS Elastic Beanstalk Developer Guide}.
 
-You must specify \code{SolutionStackName} if you don\'t specify
-\code{PlatformArn}, \code{EnvironmentId}, or \code{SourceConfiguration}.
+You must specify \code{SolutionStackName} if you don't specify \code{PlatformArn},
+\code{EnvironmentId}, or \code{SourceConfiguration}.
 
 Use the
 \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/api/API_ListAvailableSolutionStacks.html}{\code{ListAvailableSolutionStacks}}
@@ -37,7 +37,7 @@ API to obtain a list of available solution stacks.}
 information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/custom-platforms.html}{Custom Platforms}
 in the \emph{AWS Elastic Beanstalk Developer Guide}.
 
-If you specify \code{PlatformArn}, then don\'t specify \code{SolutionStackName}.}
+If you specify \code{PlatformArn}, then don't specify \code{SolutionStackName}.}
 
 \item{SourceConfiguration}{An Elastic Beanstalk configuration template to base this one on. If
 specified, Elastic Beanstalk uses the configuration values from the
@@ -46,7 +46,7 @@ specified configuration template to create a new configuration.
 Values specified in \code{OptionSettings} override any values obtained from
 the \code{SourceConfiguration}.
 
-You must specify \code{SourceConfiguration} if you don\'t specify
+You must specify \code{SourceConfiguration} if you don't specify
 \code{PlatformArn}, \code{EnvironmentId}, or \code{SolutionStackName}.
 
 Constraint: If both solution stack name and source configuration are
@@ -54,7 +54,7 @@ specified, the solution stack of the source configuration template must
 match the specified solution stack name.}
 
 \item{EnvironmentId}{The ID of an environment whose settings you want to use to create the
-configuration template. You must specify \code{EnvironmentId} if you don\'t
+configuration template. You must specify \code{EnvironmentId} if you don't
 specify \code{PlatformArn}, \code{SolutionStackName}, or \code{SourceConfiguration}.}
 
 \item{Description}{An optional description for this configuration.}
@@ -75,7 +75,7 @@ configuration template to deploy different versions of the application
 with the same configuration settings.
 }
 \details{
-Templates aren\'t associated with any environment. The \code{EnvironmentName}
+Templates aren't associated with any environment. The \code{EnvironmentName}
 response element is always \code{null}.
 
 Related Topics

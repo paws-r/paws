@@ -25,7 +25,7 @@ that the key cannot be used.}
 }
 \description{
 Changes the status of the specified access key from Active to Inactive,
-or vice versa. This operation can be used to disable a user\'s key as
+or vice versa. This operation can be used to disable a user's key as
 part of a key rotation workflow.
 }
 \details{

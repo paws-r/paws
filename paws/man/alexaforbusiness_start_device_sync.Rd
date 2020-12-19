@@ -23,10 +23,10 @@ following ways:
 \itemize{
 \item Bluetooth - This unpairs all bluetooth devices paired with your echo
 device.
-\item Volume - This resets the echo device\'s volume to the default value.
+\item Volume - This resets the echo device's volume to the default value.
 \item Notifications - This clears all notifications from your echo device.
 \item Lists - This clears all to-do items from your echo device.
-\item Settings - This internally syncs the room\'s profile (if the device
+\item Settings - This internally syncs the room's profile (if the device
 is assigned to a room), contacts, address books, delegation access
 for account linking, and communications (if enabled on the room
 profile).

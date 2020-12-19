@@ -8,7 +8,7 @@ quicksight_list_theme_aliases(AwsAccountId, ThemeId, NextToken,
   MaxResults)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme aliases that you\'re
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme aliases that you're
 listing.}
 
 \item{ThemeId}{[required] The ID for the theme.}

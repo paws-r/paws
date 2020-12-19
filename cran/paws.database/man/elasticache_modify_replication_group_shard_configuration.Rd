@@ -25,7 +25,7 @@ Value: true}
 \item{ReshardingConfiguration}{Specifies the preferred availability zones for each node group in the
 cluster. If the value of \code{NodeGroupCount} is greater than the current
 number of node groups (shards), you can use this parameter to specify
-the preferred availability zones of the cluster\'s shards. If you omit
+the preferred availability zones of the cluster's shards. If you omit
 this parameter ElastiCache selects availability zones for you.
 
 You can specify this parameter only if the value of \code{NodeGroupCount} is
@@ -48,7 +48,7 @@ ElastiCache for Redis will attempt to remove all node groups except
 those listed by \code{NodeGroupsToRetain} from the cluster.}
 }
 \description{
-Modifies a replication group\'s shards (node groups) by allowing you to
+Modifies a replication group's shards (node groups) by allowing you to
 add shards, remove shards, or rebalance the keyspaces among exisiting
 shards.
 }

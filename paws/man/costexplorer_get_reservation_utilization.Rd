@@ -16,9 +16,9 @@ usage data is retrieved from \code{2017-01-01} up to and including
 
 \item{GroupBy}{Groups only by \code{SUBSCRIPTION_ID}. Metadata is included.}
 
-\item{Granularity}{If \code{GroupBy} is set, \code{Granularity} can\'t be set. If \code{Granularity}
-isn\'t set, the response object doesn\'t include \code{Granularity}, either
-\code{MONTHLY} or \code{DAILY}. If both \code{GroupBy} and \code{Granularity} aren\'t set,
+\item{Granularity}{If \code{GroupBy} is set, \code{Granularity} can't be set. If \code{Granularity} isn't
+set, the response object doesn't include \code{Granularity}, either \code{MONTHLY}
+or \code{DAILY}. If both \code{GroupBy} and \code{Granularity} aren't set,
 \code{GetReservationUtilization} defaults to \code{DAILY}.
 
 The \code{GetReservationUtilization} operation supports only \code{DAILY} and
@@ -44,7 +44,7 @@ dimensions:
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}
 object as the other operations, but only \code{AND} is supported among each
 dimension, and nesting is supported up to only one level deep. If there
-are multiple values for a dimension, they are OR\'d together.}
+are multiple values for a dimension, they are OR'd together.}
 
 \item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
 when the response from a previous call has more results than the maximum

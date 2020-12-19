@@ -41,7 +41,7 @@ valid and unique header name. The mapped non-static value must match the
 pattern of integration.response.header.\{name\} or
 integration.response.body.\{JSON-expression\} , where \{name\} is a valid
 and unique response header name and \{JSON-expression\} is a valid JSON
-expression without the \\$ prefix.}
+expression without the $ prefix.}
 
 \item{ResponseTemplates}{The collection of response templates for the integration response as a
 string-to-string map of key-value pairs. Response templates are

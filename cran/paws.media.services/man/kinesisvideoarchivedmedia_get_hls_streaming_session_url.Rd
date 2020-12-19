@@ -29,7 +29,7 @@ continually updated with the latest fragments as they become
 available. We recommend that the media player retrieve a new
 playlist on a one-second interval. When this type of session is
 played in a media player, the user interface typically displays a
-\"live\" notification, with no scrubber control for choosing the
+"live" notification, with no scrubber control for choosing the
 position in the playback window to display.
 
 In \code{LIVE} mode, the newest available fragments are included in an
@@ -209,10 +209,10 @@ parameter.
 Video Streams creates an HLS streaming session to be used for
 accessing content in a stream using the HLS protocol.
 \code{GetHLSStreamingSessionURL} returns an authenticated URL (that
-includes an encrypted session token) for the session\'s HLS \emph{master
+includes an encrypted session token) for the session's HLS \emph{master
 playlist} (the root resource needed for streaming with HLS).
 
-Don\'t share or store this token where an unauthorized entity could
+Don't share or store this token where an unauthorized entity could
 access it. The token provides access to the content of the stream.
 Safeguard the token with the same measures that you would use with
 your AWS credentials.
@@ -252,7 +252,7 @@ applicable) that contains MP4 media URLs for the specific track.
 \item \strong{GetMP4InitFragment:} Retrieves the MP4 initialization
 fragment. The media player typically loads the initialization
 fragment before loading any media fragments. This fragment
-contains the \"\code{fytp}\" and \"\code{moov}\" MP4 atoms, and the child
+contains the "\code{fytp}" and "\code{moov}" MP4 atoms, and the child
 atoms that are needed to initialize the media player decoder.
 
 The initialization fragment does not correspond to a fragment in
@@ -260,17 +260,17 @@ a Kinesis video stream. It contains only the codec private data
 for the stream and respective track, which the media player
 needs to decode the media frames.
 \item \strong{GetMP4MediaFragment:} Retrieves MP4 media fragments. These
-fragments contain the \"\code{moof}\" and \"\code{mdat}\" MP4 atoms and
-their child atoms, containing the encoded fragment\'s media
-frames and their timestamps.
+fragments contain the "\code{moof}" and "\code{mdat}" MP4 atoms and their
+child atoms, containing the encoded fragment's media frames and
+their timestamps.
 
 After the first media fragment is made available in a streaming
-session, any fragments that don\'t contain the same codec
-private data cause an error to be returned when those different
-media fragments are loaded. Therefore, the codec private data
-should not change between fragments in a session. This also
-means that the session fails if the fragments in a stream change
-from having only video to having both audio and video.
+session, any fragments that don't contain the same codec private
+data cause an error to be returned when those different media
+fragments are loaded. Therefore, the codec private data should
+not change between fragments in a session. This also means that
+the session fails if the fragments in a stream change from
+having only video to having both audio and video.
 
 Data retrieved with this action is billable. See
 \href{https://aws.amazon.com/kinesis/video-streams/pricing/}{Pricing}
@@ -317,9 +317,9 @@ If an error is thrown after invoking a Kinesis Video Streams archived
 media API, in addition to the HTTP status code and the response body, it
 includes the following pieces of information:
 \itemize{
-\item \code{x-amz-ErrorType} HTTP header -- contains a more specific error type
+\item \code{x-amz-ErrorType} HTTP header – contains a more specific error type
 in addition to what the HTTP status code provides.
-\item \code{x-amz-RequestId} HTTP header -- if you want to report an issue to
+\item \code{x-amz-RequestId} HTTP header – if you want to report an issue to
 AWS, the support team can better diagnose the problem if given the
 Request Id.
 }

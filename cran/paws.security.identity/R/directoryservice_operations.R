@@ -69,8 +69,8 @@ directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
 #' often the IP address block of the DNS server used for your on-premises
 #' domain.
 #' @param UpdateSecurityGroupForDirectoryControllers If set to true, updates the inbound and outbound rules of the security
-#' group that has the description: \"AWS created security group for
-#' *directory ID* directory controllers.\" Following are the new rules:
+#' group that has the description: "AWS created security group for
+#' *directory ID* directory controllers." Following are the new rules:
 #' 
 #' Inbound:
 #' 
@@ -600,8 +600,8 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #' @param Name &#91;required&#93; The fully qualified domain name for the AWS Managed Microsoft AD
 #' directory, such as `corp.example.com`. This name will resolve inside
 #' your VPC only. It does not need to be publicly resolvable.
-#' @param ShortName The NetBIOS name for your domain, such as `CORP`. If you don\'t specify
-#' a NetBIOS name, it will default to the first part of your directory DNS.
+#' @param ShortName The NetBIOS name for your domain, such as `CORP`. If you don't specify a
+#' NetBIOS name, it will default to the first part of your directory DNS.
 #' For example, `CORP` for the directory DNS `corp.example.com`.
 #' @param Password &#91;required&#93; The password for the default administrative user named `Admin`.
 #' 

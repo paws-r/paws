@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_get_web_acl_for_resource}
 \alias{wafregional_get_web_acl_for_resource}
-\title{This is AWS WAF CLASSIC REGIONAL documentation}
+\title{This is AWS WAF Classic Regional documentation}
 \usage{
 wafregional_get_web_acl_for_resource(ResourceArn)
 }

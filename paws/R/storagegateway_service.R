@@ -9,10 +9,10 @@ NULL
 #' 
 #' AWS Storage Gateway is the service that connects an on-premises software
 #' appliance with cloud-based storage to provide seamless and secure
-#' integration between an organization\'s on-premises IT environment and
-#' the AWS storage infrastructure. The service enables you to securely
-#' upload data to the AWS Cloud for cost effective backup and rapid
-#' disaster recovery.
+#' integration between an organization's on-premises IT environment and the
+#' AWS storage infrastructure. The service enables you to securely upload
+#' data to the AWS Cloud for cost effective backup and rapid disaster
+#' recovery.
 #' 
 #' Use the following links to get started using the *AWS Storage Gateway
 #' Service API Reference*:
@@ -66,7 +66,7 @@ NULL
 #' A snapshot ID with the longer ID format looks like the following:
 #' `snap-78e226633445566ee`.
 #' 
-#' For more information, see [Announcement: Heads-up -- Longer AWS Storage
+#' For more information, see [Announcement: Heads-up – Longer AWS Storage
 #' Gateway volume and snapshot IDs coming in
 #' 2016](http://forums.aws.amazon.com/ann.jspa?annID=3557).
 #'

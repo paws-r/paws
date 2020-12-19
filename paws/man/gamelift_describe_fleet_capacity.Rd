@@ -22,7 +22,7 @@ IDs.}
 }
 \description{
 Retrieves the current capacity statistics for one or more fleets. These
-statistics present a snapshot of the fleet\'s instances and provide
+statistics present a snapshot of the fleet's instances and provide
 insight on current or imminent scaling activity. To get statistics on
 game hosting activity in the fleet, see DescribeFleetUtilization.
 }

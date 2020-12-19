@@ -20,9 +20,9 @@ resources from the prior release, see the \href{https://docs.aws.amazon.com/waf/
 \details{
 Disassociates tags from an AWS resource. Tags are key:value pairs that
 you can associate with AWS resources. For example, the tag key might be
-\"customer\" and the tag value might be \"companyA.\" You can specify
-one or more tags to add to each container. You can add up to 50 tags to
-each AWS resource.
+"customer" and the tag value might be "companyA." You can specify one or
+more tags to add to each container. You can add up to 50 tags to each
+AWS resource.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

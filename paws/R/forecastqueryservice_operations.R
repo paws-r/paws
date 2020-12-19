@@ -30,10 +30,10 @@ NULL
 #'
 #' @param ForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast to query.
 #' @param StartDate The start date for the forecast. Specify the date using this format:
-#' yyyy-MM-dd\'T\'HH:mm:ss (ISO 8601 format). For example,
+#' yyyy-MM-dd'T'HH:mm:ss (ISO 8601 format). For example,
 #' 2015-01-01T08:00:00.
 #' @param EndDate The end date for the forecast. Specify the date using this format:
-#' yyyy-MM-dd\'T\'HH:mm:ss (ISO 8601 format). For example,
+#' yyyy-MM-dd'T'HH:mm:ss (ISO 8601 format). For example,
 #' 2015-01-01T20:00:00.
 #' @param Filters &#91;required&#93; The filtering criteria to apply when retrieving the forecast. For
 #' example, to get the forecast for `client_21` in the electricity usage

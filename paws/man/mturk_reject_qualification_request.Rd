@@ -15,7 +15,7 @@ mturk_reject_qualification_request(QualificationRequestId, Reason)
 the Worker who made the request.}
 }
 \description{
-The \code{RejectQualificationRequest} operation rejects a user\'s request for
+The \code{RejectQualificationRequest} operation rejects a user's request for
 a Qualification.
 }
 \details{

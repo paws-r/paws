@@ -100,9 +100,9 @@ elasticinference_describe_accelerator_types <- function() {
 #' filter names are: accelerator-types: can provide a list of accelerator
 #' type names to filter for. instance-id: can provide a list of EC2
 #' instance ids to filter for.
-#' @param maxResults The total number of items to return in the command\'s output. If the
+#' @param maxResults The total number of items to return in the command's output. If the
 #' total number of items available is more than the value specified, a
-#' NextToken is provided in the command\'s output. To resume pagination,
+#' NextToken is provided in the command's output. To resume pagination,
 #' provide the NextToken value in the starting-token argument of a
 #' subsequent command. Do not use the NextToken response element directly
 #' outside of the AWS CLI.

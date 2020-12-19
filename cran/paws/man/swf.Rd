@@ -11,7 +11,7 @@ swf(config = list())
 }
 \description{
 The Amazon Simple Workflow Service (Amazon SWF) makes it easy to build
-applications that use Amazon\'s cloud to coordinate work across
+applications that use Amazon's cloud to coordinate work across
 distributed components. In Amazon SWF, a \emph{task} represents a logical
 unit of work that is performed by a component of your workflow.
 Coordinating tasks in a workflow involves managing intertask
@@ -50,13 +50,13 @@ the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.co
 \link[=swf_count_open_workflow_executions]{count_open_workflow_executions} \tab Returns the number of open workflow executions within the given domain that meet the specified filtering criteria \cr
 \link[=swf_count_pending_activity_tasks]{count_pending_activity_tasks} \tab Returns the estimated number of activity tasks in the specified task list \cr
 \link[=swf_count_pending_decision_tasks]{count_pending_decision_tasks} \tab Returns the estimated number of decision tasks in the specified task list \cr
-\link[=swf_deprecate_activity_type]{deprecate_activity_type} \tab Deprecates the specified \emph{activity type} \cr
+\link[=swf_deprecate_activity_type]{deprecate_activity_type} \tab Deprecates the specified activity type \cr
 \link[=swf_deprecate_domain]{deprecate_domain} \tab Deprecates the specified domain \cr
-\link[=swf_deprecate_workflow_type]{deprecate_workflow_type} \tab Deprecates the specified \emph{workflow type} \cr
+\link[=swf_deprecate_workflow_type]{deprecate_workflow_type} \tab Deprecates the specified workflow type \cr
 \link[=swf_describe_activity_type]{describe_activity_type} \tab Returns information about the specified activity type \cr
 \link[=swf_describe_domain]{describe_domain} \tab Returns information about the specified domain, including description and status \cr
 \link[=swf_describe_workflow_execution]{describe_workflow_execution} \tab Returns information about the specified workflow execution including its type and some statistics \cr
-\link[=swf_describe_workflow_type]{describe_workflow_type} \tab Returns information about the specified \emph{workflow type} \cr
+\link[=swf_describe_workflow_type]{describe_workflow_type} \tab Returns information about the specified workflow type \cr
 \link[=swf_get_workflow_execution_history]{get_workflow_execution_history} \tab Returns the history of the specified workflow execution \cr
 \link[=swf_list_activity_types]{list_activity_types} \tab Returns information about all activities registered in the specified domain that match the specified name and registration status \cr
 \link[=swf_list_closed_workflow_executions]{list_closed_workflow_executions} \tab Returns a list of closed workflow executions in the specified domain that meet the filtering criteria \cr
@@ -67,9 +67,9 @@ the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.co
 \link[=swf_poll_for_activity_task]{poll_for_activity_task} \tab Used by workers to get an ActivityTask from the specified activity taskList \cr
 \link[=swf_poll_for_decision_task]{poll_for_decision_task} \tab Used by deciders to get a DecisionTask from the specified decision taskList \cr
 \link[=swf_record_activity_task_heartbeat]{record_activity_task_heartbeat} \tab Used by activity workers to report to the service that the ActivityTask represented by the specified taskToken is still making progress \cr
-\link[=swf_register_activity_type]{register_activity_type} \tab Registers a new \emph{activity type} along with its configuration settings in the specified domain \cr
+\link[=swf_register_activity_type]{register_activity_type} \tab Registers a new activity type along with its configuration settings in the specified domain \cr
 \link[=swf_register_domain]{register_domain} \tab Registers a new domain \cr
-\link[=swf_register_workflow_type]{register_workflow_type} \tab Registers a new \emph{workflow type} and its configuration settings in the specified domain \cr
+\link[=swf_register_workflow_type]{register_workflow_type} \tab Registers a new workflow type and its configuration settings in the specified domain \cr
 \link[=swf_request_cancel_workflow_execution]{request_cancel_workflow_execution} \tab Records a WorkflowExecutionCancelRequested event in the currently running workflow execution identified by the given domain, workflowId, and runId \cr
 \link[=swf_respond_activity_task_canceled]{respond_activity_task_canceled} \tab Used by workers to tell the service that the ActivityTask identified by the taskToken was successfully canceled \cr
 \link[=swf_respond_activity_task_completed]{respond_activity_task_completed} \tab Used by workers to tell the service that the ActivityTask identified by the taskToken completed successfully with a result (if provided) \cr
@@ -79,9 +79,9 @@ the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.co
 \link[=swf_start_workflow_execution]{start_workflow_execution} \tab Starts an execution of the workflow type in the specified domain using the provided workflowId and input data \cr
 \link[=swf_tag_resource]{tag_resource} \tab Add a tag to a Amazon SWF domain \cr
 \link[=swf_terminate_workflow_execution]{terminate_workflow_execution} \tab Records a WorkflowExecutionTerminated event and forces closure of the workflow execution identified by the given domain, runId, and workflowId \cr
-\link[=swf_undeprecate_activity_type]{undeprecate_activity_type} \tab Undeprecates a previously deprecated \emph{activity type} \cr
+\link[=swf_undeprecate_activity_type]{undeprecate_activity_type} \tab Undeprecates a previously deprecated activity type \cr
 \link[=swf_undeprecate_domain]{undeprecate_domain} \tab Undeprecates a previously deprecated domain \cr
-\link[=swf_undeprecate_workflow_type]{undeprecate_workflow_type} \tab Undeprecates a previously deprecated \emph{workflow type} \cr
+\link[=swf_undeprecate_workflow_type]{undeprecate_workflow_type} \tab Undeprecates a previously deprecated workflow type \cr
 \link[=swf_untag_resource]{untag_resource} \tab Remove a tag from a Amazon SWF domain
 }
 }

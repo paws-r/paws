@@ -9,13 +9,13 @@ snowball_list_jobs(MaxResults, NextToken)
 \arguments{
 \item{MaxResults}{The number of \code{JobListEntry} objects to return.}
 
-\item{NextToken}{HTTP requests are stateless. To identify what object comes \"next\" in
-the list of \code{JobListEntry} objects, you have the option of specifying
+\item{NextToken}{HTTP requests are stateless. To identify what object comes "next" in the
+list of \code{JobListEntry} objects, you have the option of specifying
 \code{NextToken} as the starting point for your returned list.}
 }
 \description{
 Returns an array of \code{JobListEntry} objects of the specified length. Each
-\code{JobListEntry} object contains a job\'s state, a job\'s ID, and a value
+\code{JobListEntry} object contains a job's state, a job's ID, and a value
 that indicates whether the job is a job part, in the case of export
 jobs. Calling this API action in one of the US regions will return jobs
 from the list of all jobs associated with this account in all US

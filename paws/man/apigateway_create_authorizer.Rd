@@ -27,7 +27,7 @@ a \code{TOKEN} or \code{REQUEST} authorizer, this is not defined.}
 \item{authType}{Optional customer-defined field, used in OpenAPI imports and exports
 without functional impact.}
 
-\item{authorizerUri}{Specifies the authorizer\'s Uniform Resource Identifier (URI). For
+\item{authorizerUri}{Specifies the authorizer's Uniform Resource Identifier (URI). For
 \code{TOKEN} or \code{REQUEST} authorizers, this must be a well-formed Lambda
 function URI, for example,
 \verb{arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\\\{account_id\\\}:function:\\\{lambda_function_name\\\}/invocations}.
@@ -41,7 +41,7 @@ functions, this is usually of the form
 
 \item{authorizerCredentials}{Specifies the required credentials as an IAM role for API Gateway to
 invoke the authorizer. To specify an IAM role for API Gateway to assume,
-use the role\'s Amazon Resource Name (ARN). To use resource-based
+use the role's Amazon Resource Name (ARN). To use resource-based
 permissions on the Lambda function, specify null.}
 
 \item{identitySource}{The identity source for which authorization is requested.
@@ -72,7 +72,7 @@ authorization caching is not enabled, this property is optional.
 authorizers, this value is a regular expression. For
 \code{COGNITO_USER_POOLS} authorizers, API Gateway will match the \code{aud} field
 of the incoming token from the client against the specified regular
-expression. It will invoke the authorizer\'s Lambda function when there
+expression. It will invoke the authorizer's Lambda function when there
 is a match. Otherwise, it will return a 401 Unauthorized response
 without calling the Lambda function. The validation expression does not
 apply to the \code{REQUEST} authorizer.}
@@ -86,9 +86,7 @@ value is 300. The maximum value is 3600, or 1 hour.}
 Adds a new Authorizer resource to an existing RestApi resource.
 }
 \details{
-::: \{.seeAlso\}
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html}{AWS CLI}
-:::
 }
 \section{Request syntax}{
 \preformatted{svc$create_authorizer(

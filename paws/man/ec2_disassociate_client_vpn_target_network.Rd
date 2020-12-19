@@ -28,7 +28,7 @@ following happens:
 \item The route that was automatically added for the VPC is deleted
 \item All active client connections are terminated
 \item New client connections are disallowed
-\item The Client VPN endpoint\'s status changes to \code{pending-associate}
+\item The Client VPN endpoint's status changes to \code{pending-associate}
 }
 }
 \section{Request syntax}{

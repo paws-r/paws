@@ -11,7 +11,7 @@ NULL
 #' @usage
 #' iot1clickdevicesservice_claim_devices_by_claim_code(ClaimCode)
 #'
-#' @param ClaimCode &#91;required&#93; The claim code, starting with \"C-\", as provided by the device
+#' @param ClaimCode &#91;required&#93; The claim code, starting with "C-", as provided by the device
 #' manufacturer.
 #'
 #' @section Request syntax:
@@ -93,8 +93,8 @@ iot1clickdevicesservice_describe_device <- function(DeviceId) {
 #'
 #' @param DeviceId &#91;required&#93; The unique identifier of the device.
 #' @param Tags A collection of key/value pairs defining the resource tags. For example,
-#' \{ \"tags\": \{\"key1\": \"value1\", \"key2\": \"value2\"\} \}. For more
-#' information, see [AWS Tagging
+#' \{ "tags": \{"key1": "value1", "key2": "value2"\} \}. For more information,
+#' see [AWS Tagging
 #' Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
 #'
 #' @section Request syntax:
@@ -209,7 +209,7 @@ iot1clickdevicesservice_initiate_device_claim <- function(DeviceId) {
 #' (with possible parameters)
 #'
 #' Given a device ID, issues a request to invoke a named device method
-#' (with possible parameters). See the \"Example POST\" code snippet below.
+#' (with possible parameters). See the "Example POST" code snippet below.
 #'
 #' @usage
 #' iot1clickdevicesservice_invoke_device_method(DeviceId, DeviceMethod,
@@ -312,7 +312,7 @@ iot1clickdevicesservice_list_device_events <- function(DeviceId, FromTimeStamp, 
 #' @usage
 #' iot1clickdevicesservice_list_devices(DeviceType, MaxResults, NextToken)
 #'
-#' @param DeviceType The type of the device, such as \"button\".
+#' @param DeviceType The type of the device, such as "button".
 #' @param MaxResults The maximum number of results to return per request. If not set, a
 #' default value of 100 is used.
 #' @param NextToken The token to retrieve the next set of results.
@@ -394,8 +394,8 @@ iot1clickdevicesservice_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource.
 #' @param Tags &#91;required&#93; A collection of key/value pairs defining the resource tags. For example,
-#' \{ \"tags\": \{\"key1\": \"value1\", \"key2\": \"value2\"\} \}. For more
-#' information, see [AWS Tagging
+#' \{ "tags": \{"key1": "value1", "key2": "value2"\} \}. For more information,
+#' see [AWS Tagging
 #' Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
 #'
 #' @section Request syntax:
@@ -474,7 +474,7 @@ iot1clickdevicesservice_unclaim_device <- function(DeviceId) {
 #' iot1clickdevicesservice_untag_resource(ResourceArn, TagKeys)
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource.
-#' @param TagKeys &#91;required&#93; A collections of tag keys. For example, \{\"key1\",\"key2\"\}
+#' @param TagKeys &#91;required&#93; A collections of tag keys. For example, \{"key1","key2"\}
 #'
 #' @section Request syntax:
 #' ```

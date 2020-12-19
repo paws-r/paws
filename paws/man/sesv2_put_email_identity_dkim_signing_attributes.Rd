@@ -14,9 +14,9 @@ sesv2_put_email_identity_dkim_signing_attributes(EmailIdentity,
 \item{SigningAttributesOrigin}{[required] The method that you want to use to configure DKIM for the identity.
 There are two possible values:
 \itemize{
-\item \code{AWS_SES} -- Configure DKIM for the identity by using \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html}{Easy DKIM}.
-\item \code{EXTERNAL} -- Configure DKIM for the identity by using Bring Your
-Own DKIM (BYODKIM).
+\item \code{AWS_SES} – Configure DKIM for the identity by using \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html}{Easy DKIM}.
+\item \code{EXTERNAL} – Configure DKIM for the identity by using Bring Your Own
+DKIM (BYODKIM).
 }}
 
 \item{SigningAttributes}{An object that contains information about the private key and selector

@@ -49,7 +49,7 @@ Other Resources:
 \link[=sagemaker_create_domain]{create_domain} \tab Creates a Domain used by SageMaker Studio \cr
 \link[=sagemaker_create_endpoint]{create_endpoint} \tab Creates an endpoint using the endpoint configuration specified in the request \cr
 \link[=sagemaker_create_endpoint_config]{create_endpoint_config} \tab Creates an endpoint configuration that Amazon SageMaker hosting services uses to deploy models \cr
-\link[=sagemaker_create_experiment]{create_experiment} \tab Creates an Amazon SageMaker \emph{experiment} \cr
+\link[=sagemaker_create_experiment]{create_experiment} \tab Creates an Amazon SageMaker experiment \cr
 \link[=sagemaker_create_flow_definition]{create_flow_definition} \tab Creates a flow definition \cr
 \link[=sagemaker_create_human_task_ui]{create_human_task_ui} \tab Defines the settings you will use for the human review workflow user interface \cr
 \link[=sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job} \tab Starts a hyperparameter tuning job \cr
@@ -64,8 +64,8 @@ Other Resources:
 \link[=sagemaker_create_processing_job]{create_processing_job} \tab Creates a processing job \cr
 \link[=sagemaker_create_training_job]{create_training_job} \tab Starts a model training job \cr
 \link[=sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job \cr
-\link[=sagemaker_create_trial]{create_trial} \tab Creates an Amazon SageMaker \emph{trial} \cr
-\link[=sagemaker_create_trial_component]{create_trial_component} \tab Creates a \emph{trial component}, which is a stage of a machine learning \emph{trial} \cr
+\link[=sagemaker_create_trial]{create_trial} \tab Creates an Amazon SageMaker trial \cr
+\link[=sagemaker_create_trial_component]{create_trial_component} \tab Creates a trial component, which is a stage of a machine learning trial \cr
 \link[=sagemaker_create_user_profile]{create_user_profile} \tab Creates a user profile \cr
 \link[=sagemaker_create_workteam]{create_workteam} \tab Creates a new work team for labeling your data \cr
 \link[=sagemaker_delete_algorithm]{delete_algorithm} \tab Removes the specified algorithm from your account \cr

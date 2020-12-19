@@ -7,9 +7,9 @@
 iam_change_password(OldPassword, NewPassword)
 }
 \arguments{
-\item{OldPassword}{[required] The IAM user\'s current password.}
+\item{OldPassword}{[required] The IAM user's current password.}
 
-\item{NewPassword}{[required] The new password. The new password must conform to the AWS account\'s
+\item{NewPassword}{[required] The new password. The new password must conform to the AWS account's
 password policy, if one exists.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to

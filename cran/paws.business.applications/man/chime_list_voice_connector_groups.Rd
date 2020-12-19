@@ -13,7 +13,7 @@ chime_list_voice_connector_groups(NextToken, MaxResults)
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
 \description{
-Lists the Amazon Chime Voice Connector groups for the administrator\'s
+Lists the Amazon Chime Voice Connector groups for the administrator's
 AWS account.
 }
 \section{Request syntax}{

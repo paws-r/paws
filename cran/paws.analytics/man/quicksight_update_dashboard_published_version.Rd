@@ -8,7 +8,7 @@ quicksight_update_dashboard_published_version(AwsAccountId, DashboardId,
   VersionNumber)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you\'re
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you're
 updating.}
 
 \item{DashboardId}{[required] The ID for the dashboard.}

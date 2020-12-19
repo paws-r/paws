@@ -46,14 +46,14 @@ following conditions about the rules that evaluate the resource:
 whether it has, use the \code{DescribeConfigRuleEvaluationStatus} action
 to get the \code{LastSuccessfulInvocationTime} and
 \code{LastFailedInvocationTime}.
-\item The rule\'s AWS Lambda function is failing to send evaluation
-results to AWS Config. Verify that the role that you assigned to
-your configuration recorder includes the \code{config:PutEvaluations}
+\item The rule's AWS Lambda function is failing to send evaluation results
+to AWS Config. Verify that the role that you assigned to your
+configuration recorder includes the \code{config:PutEvaluations}
 permission. If the rule is a custom rule, verify that the AWS Lambda
 execution role includes the \code{config:PutEvaluations} permission.
-\item The rule\'s AWS Lambda function has returned \code{NOT_APPLICABLE} for
-all evaluation results. This can occur if the resources were deleted
-or removed from the rule\'s scope.
+\item The rule's AWS Lambda function has returned \code{NOT_APPLICABLE} for all
+evaluation results. This can occur if the resources were deleted or
+removed from the rule's scope.
 }
 }
 \section{Request syntax}{

@@ -40,7 +40,7 @@ hardware that is dedicated to a single AWS account.
 \item{EbsOptimized}{Indicates whether the Capacity Reservation supports EBS-optimized
 instances. This optimization provides dedicated throughput to Amazon EBS
 and an optimized configuration stack to provide optimal I/O performance.
-This optimization isn\'t available with all instance types. Additional
+This optimization isn't available with all instance types. Additional
 usage charges apply when using an EBS- optimized instance.}
 
 \item{EphemeralStorage}{Indicates whether the Capacity Reservation supports instances with
@@ -48,8 +48,8 @@ temporary, block-level storage.}
 
 \item{EndDate}{The date and time at which the Capacity Reservation expires. When a
 Capacity Reservation expires, the reserved capacity is released and you
-can no longer launch instances into it. The Capacity Reservation\'s
-state changes to \code{expired} when it reaches its end date and time.
+can no longer launch instances into it. The Capacity Reservation's state
+changes to \code{expired} when it reaches its end date and time.
 
 You must provide an \code{EndDate} value if \code{EndDateType} is \code{limited}. Omit
 \code{EndDate} if \code{EndDateType} is \code{unlimited}.

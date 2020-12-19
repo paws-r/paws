@@ -145,7 +145,7 @@ kinesisanalyticsv2_add_application_input <- function(ApplicationName, CurrentApp
 #'
 #' Adds an InputProcessingConfiguration to an SQL-based Kinesis Data
 #' Analytics application. An input processor pre-processes records on the
-#' input stream before the application\'s SQL code executes. Currently, the
+#' input stream before the application's SQL code executes. Currently, the
 #' only input processor available is [AWS
 #' Lambda](https://aws.amazon.com/documentation/lambda/).
 #'
@@ -642,7 +642,7 @@ kinesisanalyticsv2_create_application <- function(ApplicationName, ApplicationDe
 
 #' Creates a snapshot of the application's state data
 #'
-#' Creates a snapshot of the application\'s state data.
+#' Creates a snapshot of the application's state data.
 #'
 #' @usage
 #' kinesisanalyticsv2_create_application_snapshot(ApplicationName,
@@ -815,7 +815,7 @@ kinesisanalyticsv2_delete_application_input_processing_configuration <- function
 #' Kinesis Data Analytics application's configuration
 #'
 #' Deletes the output destination configuration from your SQL-based Amazon
-#' Kinesis Data Analytics application\'s configuration. Kinesis Data
+#' Kinesis Data Analytics application's configuration. Kinesis Data
 #' Analytics will no longer write data from the corresponding
 #' in-application stream to the external output destination.
 #'
@@ -867,7 +867,7 @@ kinesisanalyticsv2_delete_application_output <- function(ApplicationName, Curren
 #' SQL-based Amazon Kinesis Data Analytics application's configuration
 #'
 #' Deletes a reference data source configuration from the specified
-#' SQL-based Amazon Kinesis Data Analytics application\'s configuration.
+#' SQL-based Amazon Kinesis Data Analytics application's configuration.
 #' 
 #' If the application is running, Kinesis Data Analytics immediately
 #' removes the in-application table that you created using the
@@ -1017,7 +1017,7 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application.
 #' @param IncludeAdditionalDetails Displays verbose information about a Kinesis Data Analytics application,
-#' including the application\'s job plan.
+#' including the application's job plan.
 #'
 #' @section Request syntax:
 #' ```
@@ -1170,7 +1170,7 @@ kinesisanalyticsv2_discover_input_schema <- function(ResourceARN = NULL, Service
 #' @param Limit The maximum number of application snapshots to list.
 #' @param NextToken Use this parameter if you receive a `NextToken` response in a previous
 #' request that indicates that there is more output available. Set it to
-#' the value of the previous call\'s `NextToken` response to indicate where
+#' the value of the previous call's `NextToken` response to indicate where
 #' the output should continue from.
 #'
 #' @section Request syntax:
@@ -1218,7 +1218,7 @@ kinesisanalyticsv2_list_application_snapshots <- function(ApplicationName, Limit
 #' @param Limit The maximum number of applications to list.
 #' @param NextToken If a previous command returned a pagination token, pass it into this
 #' value to retrieve the next set of results. For more information about
-#' pagination, see [Using the AWS Command Line Interface\'s Pagination
+#' pagination, see [Using the AWS Command Line Interface's Pagination
 #' Options](https://docs.aws.amazon.com/cli/latest/userguide/pagination.html).
 #'
 #' @section Request syntax:
@@ -1492,7 +1492,7 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' version ID using DescribeApplication.
 #' @param ApplicationConfigurationUpdate Describes application configuration updates.
 #' @param ServiceExecutionRoleUpdate Describes updates to the service execution role.
-#' @param RunConfigurationUpdate Describes updates to the application\'s starting parameters.
+#' @param RunConfigurationUpdate Describes updates to the application's starting parameters.
 #' @param CloudWatchLoggingOptionUpdates Describes application Amazon CloudWatch logging option updates. You can
 #' only update existing CloudWatch logging options with this action. To add
 #' a new CloudWatch logging option, use

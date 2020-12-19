@@ -16,7 +16,7 @@ Constraints:
 \itemize{
 \item Must contain from 1 to 63 alphanumeric characters or hyphens.
 \item First character must be a letter.
-\item Can\'t end with a hyphen or contain two consecutive hyphens.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{my-cluster1}}
@@ -24,14 +24,14 @@ Example: \code{my-cluster1}}
 \item{BacktrackTo}{[required] The timestamp of the time to backtrack the DB cluster to, specified in
 ISO 8601 format. For more information about ISO 8601, see the \href{http://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
 
-If the specified time isn\'t a consistent time for the DB cluster,
-Aurora automatically chooses the nearest possible consistent time for
-the DB cluster.
+If the specified time isn't a consistent time for the DB cluster, Aurora
+automatically chooses the nearest possible consistent time for the DB
+cluster.
 
 Constraints:
 \itemize{
 \item Must contain a valid ISO 8601 timestamp.
-\item Can\'t contain a timestamp set in the future.
+\item Can't contain a timestamp set in the future.
 }
 
 Example: \verb{2017-07-08T18:00Z}}

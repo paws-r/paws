@@ -61,7 +61,7 @@ the start of the video). You can also sort the array by celebrity by
 specifying the value \code{ID} in the \code{SortBy} input parameter.
 
 The \code{CelebrityDetail} object includes the celebrity identifer and
-additional information urls. If you don\'t store the additional
+additional information urls. If you don't store the additional
 information urls, you can get them later by calling GetCelebrityInfo
 with the celebrity identifer.
 

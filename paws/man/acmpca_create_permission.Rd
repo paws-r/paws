@@ -27,9 +27,9 @@ Assigns permissions from a private CA to a designated AWS service.
 Services are specified by their service principals and can be given
 permission to create and retrieve certificates on a private CA. Services
 can also be given permission to list the active permissions that the
-private CA has granted. For ACM to automatically renew your private
-CA\'s certificates, you must assign all possible permissions from the CA
-to the ACM service principal.
+private CA has granted. For ACM to automatically renew your private CA's
+certificates, you must assign all possible permissions from the CA to
+the ACM service principal.
 }
 \details{
 At this time, you can only assign permissions to ACM

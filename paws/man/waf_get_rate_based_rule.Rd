@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_get_rate_based_rule}
 \alias{waf_get_rate_based_rule}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_get_rate_based_rule(RuleId)
 }

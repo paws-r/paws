@@ -22,7 +22,7 @@ Zero is the highest precedence value. Groups with lower \code{Precedence}
 values take precedence over groups with higher or null \code{Precedence}
 values. If a user belongs to two or more groups, it is the group with
 the lowest precedence value whose role ARN will be used in the
-\code{cognito:roles} and \code{cognito:preferred_role} claims in the user\'s
+\code{cognito:roles} and \code{cognito:preferred_role} claims in the user's
 tokens.
 
 Two groups can have the same \code{Precedence} value. If this happens,
@@ -30,7 +30,7 @@ neither group takes precedence over the other. If two groups with the
 same \code{Precedence} have the same role ARN, that role is used in the
 \code{cognito:preferred_role} claim in tokens for users in each group. If the
 two groups have different role ARNs, the \code{cognito:preferred_role} claim
-is not set in users\' tokens.
+is not set in users' tokens.
 
 The default \code{Precedence} value is null.}
 }

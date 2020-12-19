@@ -3,7 +3,7 @@
 #' @include waf_service.R
 NULL
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -44,7 +44,7 @@ NULL
 #' @usage
 #' waf_create_byte_match_set(Name, ChangeToken)
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the ByteMatchSet. You can\'t change
+#' @param Name &#91;required&#93; A friendly name or description of the ByteMatchSet. You can't change
 #' `Name` after you create a `ByteMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #'
@@ -76,7 +76,7 @@ waf_create_byte_match_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_byte_match_set <- waf_create_byte_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -91,7 +91,7 @@ waf_create_byte_match_set <- function(Name, ChangeToken) {
 #' 
 #' Creates an GeoMatchSet, which you use to specify which web requests you
 #' want to allow or block based on the country that the requests originate
-#' from. For example, if you\'re receiving a lot of requests from one or
+#' from. For example, if you're receiving a lot of requests from one or
 #' more countries and you want to block the requests, you can create an
 #' `GeoMatchSet` that contains those countries and then configure AWS WAF
 #' to block the requests.
@@ -116,7 +116,7 @@ waf_create_byte_match_set <- function(Name, ChangeToken) {
 #' @usage
 #' waf_create_geo_match_set(Name, ChangeToken)
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the GeoMatchSet. You can\'t change
+#' @param Name &#91;required&#93; A friendly name or description of the GeoMatchSet. You can't change
 #' `Name` after you create the `GeoMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #'
@@ -148,7 +148,7 @@ waf_create_geo_match_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_geo_match_set <- waf_create_geo_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -163,7 +163,7 @@ waf_create_geo_match_set <- function(Name, ChangeToken) {
 #' 
 #' Creates an IPSet, which you use to specify which web requests that you
 #' want to allow or block based on the IP addresses that the requests
-#' originate from. For example, if you\'re receiving a lot of requests from
+#' originate from. For example, if you're receiving a lot of requests from
 #' one or more individual IP addresses or one or more ranges of IP
 #' addresses and you want to block the requests, you can create an `IPSet`
 #' that contains those IP addresses and then configure AWS WAF to block the
@@ -189,7 +189,7 @@ waf_create_geo_match_set <- function(Name, ChangeToken) {
 #' @usage
 #' waf_create_ip_set(Name, ChangeToken)
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the IPSet. You can\'t change `Name`
+#' @param Name &#91;required&#93; A friendly name or description of the IPSet. You can't change `Name`
 #' after you create the `IPSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #'
@@ -230,7 +230,7 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_ip_set <- waf_create_ip_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -314,13 +314,13 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 #' waf_create_rate_based_rule(Name, MetricName, RateKey, RateLimit,
 #'   ChangeToken, Tags)
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the RateBasedRule. You can\'t change
+#' @param Name &#91;required&#93; A friendly name or description of the RateBasedRule. You can't change
 #' the name of a `RateBasedRule` after you create it.
 #' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `RateBasedRule`.
 #' The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
-#' maximum length 128 and minimum length one. It can\'t contain whitespace
-#' or metric names reserved for AWS WAF, including \"All\" and
-#' \"Default\\_Action.\" You can\'t change the name of the metric after you
+#' maximum length 128 and minimum length one. It can't contain whitespace
+#' or metric names reserved for AWS WAF, including "All" and
+#' "Default\\_Action." You can't change the name of the metric after you
 #' create the `RateBasedRule`.
 #' @param RateKey &#91;required&#93; The field that AWS WAF uses to determine if requests are likely arriving
 #' from a single source and thus subject to rate monitoring. The only valid
@@ -374,7 +374,7 @@ waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, Cha
 }
 .waf$operations$create_rate_based_rule <- waf_create_rate_based_rule
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -417,7 +417,7 @@ waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, Cha
 #' @usage
 #' waf_create_regex_match_set(Name, ChangeToken)
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the RegexMatchSet. You can\'t change
+#' @param Name &#91;required&#93; A friendly name or description of the RegexMatchSet. You can't change
 #' `Name` after you create a `RegexMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #'
@@ -449,7 +449,7 @@ waf_create_regex_match_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_regex_match_set <- waf_create_regex_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -488,7 +488,7 @@ waf_create_regex_match_set <- function(Name, ChangeToken) {
 #' @usage
 #' waf_create_regex_pattern_set(Name, ChangeToken)
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the RegexPatternSet. You can\'t change
+#' @param Name &#91;required&#93; A friendly name or description of the RegexPatternSet. You can't change
 #' `Name` after you create a `RegexPatternSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #'
@@ -520,7 +520,7 @@ waf_create_regex_pattern_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_regex_pattern_set <- waf_create_regex_pattern_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -575,14 +575,13 @@ waf_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' @usage
 #' waf_create_rule(Name, MetricName, ChangeToken, Tags)
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the Rule. You can\'t change the name
-#' of a `Rule` after you create it.
+#' @param Name &#91;required&#93; A friendly name or description of the Rule. You can't change the name of
+#' a `Rule` after you create it.
 #' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `Rule`. The name
 #' can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum
-#' length 128 and minimum length one. It can\'t contain whitespace or
-#' metric names reserved for AWS WAF, including \"All\" and
-#' \"Default\\_Action.\" You can\'t change the name of the metric after you
-#' create the `Rule`.
+#' length 128 and minimum length one. It can't contain whitespace or metric
+#' names reserved for AWS WAF, including "All" and "Default\\_Action." You
+#' can't change the name of the metric after you create the `Rule`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #' @param Tags 
 #'
@@ -631,7 +630,7 @@ waf_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 }
 .waf$operations$create_rule <- waf_create_rule
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -664,13 +663,13 @@ waf_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 #' @usage
 #' waf_create_rule_group(Name, MetricName, ChangeToken, Tags)
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the RuleGroup. You can\'t change
-#' `Name` after you create a `RuleGroup`.
+#' @param Name &#91;required&#93; A friendly name or description of the RuleGroup. You can't change `Name`
+#' after you create a `RuleGroup`.
 #' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `RuleGroup`. The
 #' name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
-#' maximum length 128 and minimum length one. It can\'t contain whitespace
-#' or metric names reserved for AWS WAF, including \"All\" and
-#' \"Default\\_Action.\" You can\'t change the name of the metric after you
+#' maximum length 128 and minimum length one. It can't contain whitespace
+#' or metric names reserved for AWS WAF, including "All" and
+#' "Default\\_Action." You can't change the name of the metric after you
 #' create the `RuleGroup`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #' @param Tags 
@@ -710,7 +709,7 @@ waf_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 }
 .waf$operations$create_rule_group <- waf_create_rule_group
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -752,7 +751,7 @@ waf_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 #' @usage
 #' waf_create_size_constraint_set(Name, ChangeToken)
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the SizeConstraintSet. You can\'t
+#' @param Name &#91;required&#93; A friendly name or description of the SizeConstraintSet. You can't
 #' change `Name` after you create a `SizeConstraintSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #'
@@ -794,7 +793,7 @@ waf_create_size_constraint_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_size_constraint_set <- waf_create_size_constraint_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -834,8 +833,8 @@ waf_create_size_constraint_set <- function(Name, ChangeToken) {
 #' @usage
 #' waf_create_sql_injection_match_set(Name, ChangeToken)
 #'
-#' @param Name &#91;required&#93; A friendly name or description for the SqlInjectionMatchSet that you\'re
-#' creating. You can\'t change `Name` after you create the
+#' @param Name &#91;required&#93; A friendly name or description for the SqlInjectionMatchSet that you're
+#' creating. You can't change `Name` after you create the
 #' `SqlInjectionMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #'
@@ -877,7 +876,7 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_sql_injection_match_set <- waf_create_sql_injection_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -896,8 +895,8 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' `Rule`.
 #' 
 #' You also specify a default action, either `ALLOW` or `BLOCK`. If a web
-#' request doesn\'t match any of the `Rules` in a `WebACL`, AWS WAF
-#' responds to the request with the default action.
+#' request doesn't match any of the `Rules` in a `WebACL`, AWS WAF responds
+#' to the request with the default action.
 #' 
 #' To create and configure a `WebACL`, perform the following steps:
 #' 
@@ -928,15 +927,15 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' @usage
 #' waf_create_web_acl(Name, MetricName, DefaultAction, ChangeToken, Tags)
 #'
-#' @param Name &#91;required&#93; A friendly name or description of the WebACL. You can\'t change `Name`
+#' @param Name &#91;required&#93; A friendly name or description of the WebACL. You can't change `Name`
 #' after you create the `WebACL`.
 #' @param MetricName &#91;required&#93; A friendly name or description for the metrics for this `WebACL`.The
 #' name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
-#' maximum length 128 and minimum length one. It can\'t contain whitespace
-#' or metric names reserved for AWS WAF, including \"All\" and
-#' \"Default\\_Action.\" You can\'t change `MetricName` after you create the
+#' maximum length 128 and minimum length one. It can't contain whitespace
+#' or metric names reserved for AWS WAF, including "All" and
+#' "Default\\_Action." You can't change `MetricName` after you create the
 #' `WebACL`.
-#' @param DefaultAction &#91;required&#93; The action that you want AWS WAF to take when a request doesn\'t match
+#' @param DefaultAction &#91;required&#93; The action that you want AWS WAF to take when a request doesn't match
 #' the criteria specified in any of the `Rule` objects that are associated
 #' with the `WebACL`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
@@ -1029,7 +1028,7 @@ waf_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeToken, Tag
 #' 
 #' -   The bucket policies must permit the migration process to write data.
 #'     For listings of the bucket policies, see the Examples section.
-#' @param IgnoreUnsupportedType &#91;required&#93; Indicates whether to exclude entities that can\'t be migrated or to stop
+#' @param IgnoreUnsupportedType &#91;required&#93; Indicates whether to exclude entities that can't be migrated or to stop
 #' the migration. Set this to true to ignore unsupported entities in the
 #' web ACL during the migration. Otherwise, if AWS WAF encounters
 #' unsupported entities, it stops the process and throws an exception.
@@ -1063,7 +1062,7 @@ waf_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, IgnoreUns
 }
 .waf$operations$create_web_acl_migration_stack <- waf_create_web_acl_migration_stack
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1102,8 +1101,8 @@ waf_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, IgnoreUns
 #' @usage
 #' waf_create_xss_match_set(Name, ChangeToken)
 #'
-#' @param Name &#91;required&#93; A friendly name or description for the XssMatchSet that you\'re
-#' creating. You can\'t change `Name` after you create the `XssMatchSet`.
+#' @param Name &#91;required&#93; A friendly name or description for the XssMatchSet that you're creating.
+#' You can't change `Name` after you create the `XssMatchSet`.
 #' @param ChangeToken &#91;required&#93; The value returned by the most recent call to GetChangeToken.
 #'
 #' @section Request syntax:
@@ -1144,7 +1143,7 @@ waf_create_xss_match_set <- function(Name, ChangeToken) {
 }
 .waf$operations$create_xss_match_set <- waf_create_xss_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1157,8 +1156,8 @@ waf_create_xss_match_set <- function(Name, ChangeToken) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Permanently deletes a ByteMatchSet. You can\'t delete a `ByteMatchSet`
-#' if it\'s still used in any `Rules` or if it still includes any
+#' Permanently deletes a ByteMatchSet. You can't delete a `ByteMatchSet` if
+#' it's still used in any `Rules` or if it still includes any
 #' ByteMatchTuple objects (any filters).
 #' 
 #' If you just want to remove a `ByteMatchSet` from a `Rule`, use
@@ -1220,7 +1219,7 @@ waf_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
 }
 .waf$operations$delete_byte_match_set <- waf_delete_byte_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1233,8 +1232,8 @@ waf_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Permanently deletes a GeoMatchSet. You can\'t delete a `GeoMatchSet` if
-#' it\'s still used in any `Rules` or if it still includes any countries.
+#' Permanently deletes a GeoMatchSet. You can't delete a `GeoMatchSet` if
+#' it's still used in any `Rules` or if it still includes any countries.
 #' 
 #' If you just want to remove a `GeoMatchSet` from a `Rule`, use
 #' UpdateRule.
@@ -1286,7 +1285,7 @@ waf_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
 }
 .waf$operations$delete_geo_match_set <- waf_delete_geo_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1299,8 +1298,8 @@ waf_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Permanently deletes an IPSet. You can\'t delete an `IPSet` if it\'s
-#' still used in any `Rules` or if it still includes any IP addresses.
+#' Permanently deletes an IPSet. You can't delete an `IPSet` if it's still
+#' used in any `Rules` or if it still includes any IP addresses.
 #' 
 #' If you just want to remove an `IPSet` from a `Rule`, use UpdateRule.
 #' 
@@ -1360,7 +1359,7 @@ waf_delete_ip_set <- function(IPSetId, ChangeToken) {
 }
 .waf$operations$delete_ip_set <- waf_delete_ip_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1408,7 +1407,7 @@ waf_delete_logging_configuration <- function(ResourceArn) {
 }
 .waf$operations$delete_logging_configuration <- waf_delete_logging_configuration
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1460,7 +1459,7 @@ waf_delete_permission_policy <- function(ResourceArn) {
 }
 .waf$operations$delete_permission_policy <- waf_delete_permission_policy
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1473,7 +1472,7 @@ waf_delete_permission_policy <- function(ResourceArn) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Permanently deletes a RateBasedRule. You can\'t delete a rule if it\'s
+#' Permanently deletes a RateBasedRule. You can't delete a rule if it's
 #' still used in any `WebACL` objects or if it still includes any
 #' predicates, such as `ByteMatchSet` objects.
 #' 
@@ -1525,7 +1524,7 @@ waf_delete_rate_based_rule <- function(RuleId, ChangeToken) {
 }
 .waf$operations$delete_rate_based_rule <- waf_delete_rate_based_rule
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1538,8 +1537,8 @@ waf_delete_rate_based_rule <- function(RuleId, ChangeToken) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Permanently deletes a RegexMatchSet. You can\'t delete a `RegexMatchSet`
-#' if it\'s still used in any `Rules` or if it still includes any
+#' Permanently deletes a RegexMatchSet. You can't delete a `RegexMatchSet`
+#' if it's still used in any `Rules` or if it still includes any
 #' `RegexMatchTuples` objects (any filters).
 #' 
 #' If you just want to remove a `RegexMatchSet` from a `Rule`, use
@@ -1591,7 +1590,7 @@ waf_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
 }
 .waf$operations$delete_regex_match_set <- waf_delete_regex_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1604,8 +1603,8 @@ waf_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Permanently deletes a RegexPatternSet. You can\'t delete a
-#' `RegexPatternSet` if it\'s still used in any `RegexMatchSet` or if the
+#' Permanently deletes a RegexPatternSet. You can't delete a
+#' `RegexPatternSet` if it's still used in any `RegexMatchSet` or if the
 #' `RegexPatternSet` is not empty.
 #'
 #' @usage
@@ -1644,7 +1643,7 @@ waf_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken) {
 }
 .waf$operations$delete_regex_pattern_set <- waf_delete_regex_pattern_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1657,9 +1656,9 @@ waf_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Permanently deletes a Rule. You can\'t delete a `Rule` if it\'s still
-#' used in any `WebACL` objects or if it still includes any predicates,
-#' such as `ByteMatchSet` objects.
+#' Permanently deletes a Rule. You can't delete a `Rule` if it's still used
+#' in any `WebACL` objects or if it still includes any predicates, such as
+#' `ByteMatchSet` objects.
 #' 
 #' If you just want to remove a `Rule` from a `WebACL`, use UpdateWebACL.
 #' 
@@ -1718,7 +1717,7 @@ waf_delete_rule <- function(RuleId, ChangeToken) {
 }
 .waf$operations$delete_rule <- waf_delete_rule
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1731,9 +1730,8 @@ waf_delete_rule <- function(RuleId, ChangeToken) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Permanently deletes a RuleGroup. You can\'t delete a `RuleGroup` if
-#' it\'s still used in any `WebACL` objects or if it still includes any
-#' rules.
+#' Permanently deletes a RuleGroup. You can't delete a `RuleGroup` if it's
+#' still used in any `WebACL` objects or if it still includes any rules.
 #' 
 #' If you just want to remove a `RuleGroup` from a `WebACL`, use
 #' UpdateWebACL.
@@ -1784,7 +1782,7 @@ waf_delete_rule_group <- function(RuleGroupId, ChangeToken) {
 }
 .waf$operations$delete_rule_group <- waf_delete_rule_group
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1797,8 +1795,8 @@ waf_delete_rule_group <- function(RuleGroupId, ChangeToken) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Permanently deletes a SizeConstraintSet. You can\'t delete a
-#' `SizeConstraintSet` if it\'s still used in any `Rules` or if it still
+#' Permanently deletes a SizeConstraintSet. You can't delete a
+#' `SizeConstraintSet` if it's still used in any `Rules` or if it still
 #' includes any SizeConstraint objects (any filters).
 #' 
 #' If you just want to remove a `SizeConstraintSet` from a `Rule`, use
@@ -1861,7 +1859,7 @@ waf_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeToken) {
 }
 .waf$operations$delete_size_constraint_set <- waf_delete_size_constraint_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1874,8 +1872,8 @@ waf_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeToken) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Permanently deletes a SqlInjectionMatchSet. You can\'t delete a
-#' `SqlInjectionMatchSet` if it\'s still used in any `Rules` or if it still
+#' Permanently deletes a SqlInjectionMatchSet. You can't delete a
+#' `SqlInjectionMatchSet` if it's still used in any `Rules` or if it still
 #' contains any SqlInjectionMatchTuple objects.
 #' 
 #' If you just want to remove a `SqlInjectionMatchSet` from a `Rule`, use
@@ -1938,7 +1936,7 @@ waf_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 }
 .waf$operations$delete_sql_injection_match_set <- waf_delete_sql_injection_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -1951,7 +1949,7 @@ waf_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Permanently deletes a WebACL. You can\'t delete a `WebACL` if it still
+#' Permanently deletes a WebACL. You can't delete a `WebACL` if it still
 #' contains any `Rules`.
 #' 
 #' To delete a `WebACL`, perform the following steps:
@@ -2009,7 +2007,7 @@ waf_delete_web_acl <- function(WebACLId, ChangeToken) {
 }
 .waf$operations$delete_web_acl <- waf_delete_web_acl
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2022,9 +2020,9 @@ waf_delete_web_acl <- function(WebACLId, ChangeToken) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Permanently deletes an XssMatchSet. You can\'t delete an `XssMatchSet`
-#' if it\'s still used in any `Rules` or if it still contains any
-#' XssMatchTuple objects.
+#' Permanently deletes an XssMatchSet. You can't delete an `XssMatchSet` if
+#' it's still used in any `Rules` or if it still contains any XssMatchTuple
+#' objects.
 #' 
 #' If you just want to remove an `XssMatchSet` from a `Rule`, use
 #' UpdateRule.
@@ -2086,7 +2084,7 @@ waf_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
 }
 .waf$operations$delete_xss_match_set <- waf_delete_xss_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2144,7 +2142,7 @@ waf_get_byte_match_set <- function(ByteMatchSetId) {
 }
 .waf$operations$get_byte_match_set <- waf_get_byte_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2159,7 +2157,7 @@ waf_get_byte_match_set <- function(ByteMatchSetId) {
 #' 
 #' When you want to create, update, or delete AWS WAF objects, get a change
 #' token and include the change token in the create, update, or delete
-#' request. Change tokens ensure that your application doesn\'t submit
+#' request. Change tokens ensure that your application doesn't submit
 #' conflicting requests to AWS WAF.
 #' 
 #' Each create, update, or delete request must use a unique change token.
@@ -2208,7 +2206,7 @@ waf_get_change_token <- function() {
 }
 .waf$operations$get_change_token <- waf_get_change_token
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2225,7 +2223,7 @@ waf_get_change_token <- function() {
 #' GetChangeToken. `ChangeTokenStatus` is one of the following values:
 #' 
 #' -   `PROVISIONED`: You requested the change token by calling
-#'     `GetChangeToken`, but you haven\'t used it yet in a call to create,
+#'     `GetChangeToken`, but you haven't used it yet in a call to create,
 #'     update, or delete an AWS WAF object.
 #' 
 #' -   `PENDING`: AWS WAF is propagating the create, update, or delete
@@ -2275,7 +2273,7 @@ waf_get_change_token_status <- function(ChangeToken) {
 }
 .waf$operations$get_change_token_status <- waf_get_change_token_status
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2324,7 +2322,7 @@ waf_get_geo_match_set <- function(GeoMatchSetId) {
 }
 .waf$operations$get_geo_match_set <- waf_get_geo_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2381,7 +2379,7 @@ waf_get_ip_set <- function(IPSetId) {
 }
 .waf$operations$get_ip_set <- waf_get_ip_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2429,7 +2427,7 @@ waf_get_logging_configuration <- function(ResourceArn) {
 }
 .waf$operations$get_logging_configuration <- waf_get_logging_configuration
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2477,7 +2475,7 @@ waf_get_permission_policy <- function(ResourceArn) {
 }
 .waf$operations$get_permission_policy <- waf_get_permission_policy
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2526,7 +2524,7 @@ waf_get_rate_based_rule <- function(RuleId) {
 }
 .waf$operations$get_rate_based_rule <- waf_get_rate_based_rule
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2582,7 +2580,7 @@ waf_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NULL) {
 }
 .waf$operations$get_rate_based_rule_managed_keys <- waf_get_rate_based_rule_managed_keys
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2631,7 +2629,7 @@ waf_get_regex_match_set <- function(RegexMatchSetId) {
 }
 .waf$operations$get_regex_match_set <- waf_get_regex_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2680,7 +2678,7 @@ waf_get_regex_pattern_set <- function(RegexPatternSetId) {
 }
 .waf$operations$get_regex_pattern_set <- waf_get_regex_pattern_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2738,7 +2736,7 @@ waf_get_rule <- function(RuleId) {
 }
 .waf$operations$get_rule <- waf_get_rule
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2789,7 +2787,7 @@ waf_get_rule_group <- function(RuleGroupId) {
 }
 .waf$operations$get_rule_group <- waf_get_rule_group
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2802,8 +2800,8 @@ waf_get_rule_group <- function(RuleGroupId) {
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
 #' 
-#' Gets detailed information about a specified number of requests\\--a
-#' sample\\--that AWS WAF randomly selects from among the first 5,000
+#' Gets detailed information about a specified number of requests--a
+#' sample--that AWS WAF randomly selects from among the first 5,000
 #' requests that your AWS resource received during a time range that you
 #' choose. You can specify a sample size of up to 500 requests, and you can
 #' specify any time range in the previous three hours.
@@ -2827,7 +2825,7 @@ waf_get_rule_group <- function(RuleGroupId) {
 #'     requests.
 #' 
 #' -   `Default_Action`, which causes `GetSampledRequests` to return a
-#'     sample of the requests that didn\'t match any of the rules in the
+#'     sample of the requests that didn't match any of the rules in the
 #'     specified `WebACL`.
 #' @param TimeWindow &#91;required&#93; The start date and time and the end date and time of the range for which
 #' you want `GetSampledRequests` to return a sample of requests. You must
@@ -2894,7 +2892,7 @@ waf_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxItems) {
 }
 .waf$operations$get_sampled_requests <- waf_get_sampled_requests
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -2952,7 +2950,7 @@ waf_get_size_constraint_set <- function(SizeConstraintSetId) {
 }
 .waf$operations$get_size_constraint_set <- waf_get_size_constraint_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3011,7 +3009,7 @@ waf_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
 }
 .waf$operations$get_sql_injection_match_set <- waf_get_sql_injection_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3068,7 +3066,7 @@ waf_get_web_acl <- function(WebACLId) {
 }
 .waf$operations$get_web_acl <- waf_get_web_acl
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3126,7 +3124,7 @@ waf_get_xss_match_set <- function(XssMatchSetId) {
 }
 .waf$operations$get_xss_match_set <- waf_get_xss_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3186,7 +3184,7 @@ waf_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, NextMarke
 }
 .waf$operations$list_activated_rules_in_rule_group <- waf_list_activated_rules_in_rule_group
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3243,7 +3241,7 @@ waf_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_byte_match_sets <- waf_list_byte_match_sets
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3300,7 +3298,7 @@ waf_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_geo_match_sets <- waf_list_geo_match_sets
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3363,7 +3361,7 @@ waf_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_ip_sets <- waf_list_ip_sets
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3422,7 +3420,7 @@ waf_list_logging_configurations <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_logging_configurations <- waf_list_logging_configurations
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3479,7 +3477,7 @@ waf_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_rate_based_rules <- waf_list_rate_based_rules
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3536,7 +3534,7 @@ waf_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_regex_match_sets <- waf_list_regex_match_sets
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3595,7 +3593,7 @@ waf_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_regex_pattern_sets <- waf_list_regex_pattern_sets
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3652,7 +3650,7 @@ waf_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_rule_groups <- waf_list_rule_groups
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3716,7 +3714,7 @@ waf_list_rules <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_rules <- waf_list_rules
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3784,7 +3782,7 @@ waf_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_size_constraint_sets <- waf_list_size_constraint_sets
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3851,7 +3849,7 @@ waf_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_sql_injection_match_sets <- waf_list_sql_injection_match_sets
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3909,7 +3907,7 @@ waf_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_subscribed_rule_groups <- waf_list_subscribed_rule_groups
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -3925,11 +3923,11 @@ waf_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 #' Retrieves the tags associated with the specified AWS resource. Tags are
 #' key:value pairs that you can use to categorize and manage your
 #' resources, for purposes like billing. For example, you might set the tag
-#' key to \"customer\" and the value to the customer name or ID. You can
+#' key to "customer" and the value to the customer name or ID. You can
 #' specify one or more tags to add to each AWS resource, up to 50 tags for
 #' a resource.
 #' 
-#' Tagging is only available through the API, SDKs, and CLI. You can\'t
+#' Tagging is only available through the API, SDKs, and CLI. You can't
 #' manage or view tags through the AWS WAF Classic console. You can tag the
 #' AWS resources that you manage through AWS WAF Classic: web ACLs, rule
 #' groups, and rules.
@@ -3970,7 +3968,7 @@ waf_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resource
 }
 .waf$operations$list_tags_for_resource <- waf_list_tags_for_resource
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -4035,7 +4033,7 @@ waf_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_web_ac_ls <- waf_list_web_ac_ls
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -4100,7 +4098,7 @@ waf_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 }
 .waf$operations$list_xss_match_sets <- waf_list_xss_match_sets
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -4185,7 +4183,7 @@ waf_put_logging_configuration <- function(LoggingConfiguration) {
 }
 .waf$operations$put_logging_configuration <- waf_put_logging_configuration
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -4265,7 +4263,7 @@ waf_put_permission_policy <- function(ResourceArn, Policy) {
 }
 .waf$operations$put_permission_policy <- waf_put_permission_policy
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -4281,11 +4279,10 @@ waf_put_permission_policy <- function(ResourceArn, Policy) {
 #' Associates tags with the specified AWS resource. Tags are key:value
 #' pairs that you can use to categorize and manage your resources, for
 #' purposes like billing. For example, you might set the tag key to
-#' \"customer\" and the value to the customer name or ID. You can specify
-#' one or more tags to add to each AWS resource, up to 50 tags for a
-#' resource.
+#' "customer" and the value to the customer name or ID. You can specify one
+#' or more tags to add to each AWS resource, up to 50 tags for a resource.
 #' 
-#' Tagging is only available through the API, SDKs, and CLI. You can\'t
+#' Tagging is only available through the API, SDKs, and CLI. You can't
 #' manage or view tags through the AWS WAF Classic console. You can use
 #' this action to tag the AWS resources that you manage through AWS WAF
 #' Classic: web ACLs, rule groups, and rules.
@@ -4329,7 +4326,7 @@ waf_tag_resource <- function(ResourceARN, Tags) {
 }
 .waf$operations$tag_resource <- waf_tag_resource
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -4378,7 +4375,7 @@ waf_untag_resource <- function(ResourceARN, TagKeys) {
 }
 .waf$operations$untag_resource <- waf_untag_resource
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -4517,7 +4514,7 @@ waf_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updates) {
 }
 .waf$operations$update_byte_match_set <- waf_update_byte_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -4541,7 +4538,7 @@ waf_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updates) {
 #' 
 #' -   The `Value`, which is a two character code for the country to add to
 #'     the `GeoMatchConstraint` object. Valid codes are listed in
-#'     GeoMatchConstraint\\$Value.
+#'     GeoMatchConstraint$Value.
 #' 
 #' To create and configure an `GeoMatchSet`, perform the following steps:
 #' 
@@ -4617,7 +4614,7 @@ waf_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates) {
 }
 .waf$operations$update_geo_match_set <- waf_update_geo_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -4661,7 +4658,7 @@ waf_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates) {
 #' 
 #' You use an `IPSet` to specify which web requests you want to allow or
 #' block based on the IP addresses that the requests originated from. For
-#' example, if you\'re receiving a lot of requests from one or a small
+#' example, if you're receiving a lot of requests from one or a small
 #' number of IP addresses and you want to block the requests, you can
 #' create an `IPSet` that specifies those IP addresses, and then configure
 #' AWS WAF to block the requests.
@@ -4758,7 +4755,7 @@ waf_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 }
 .waf$operations$update_ip_set <- waf_update_ip_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -4866,7 +4863,7 @@ waf_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, RateLimit) 
 }
 .waf$operations$update_rate_based_rule <- waf_update_rate_based_rule
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -4970,7 +4967,7 @@ waf_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeToken) {
 }
 .waf$operations$update_regex_match_set <- waf_update_regex_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -4998,9 +4995,9 @@ waf_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeToken) {
 #' 
 #' -   BadB0t
 #' 
-#' -   B\\@@dBot
+#' -   B@@dBot
 #' 
-#' -   B\\@@dB0t
+#' -   B@@dB0t
 #' 
 #' To create and configure a `RegexPatternSet`, perform the following
 #' steps:
@@ -5062,7 +5059,7 @@ waf_update_regex_pattern_set <- function(RegexPatternSetId, Updates, ChangeToken
 }
 .waf$operations$update_regex_pattern_set <- waf_update_regex_pattern_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -5187,7 +5184,7 @@ waf_update_rule <- function(RuleId, ChangeToken, Updates) {
 }
 .waf$operations$update_rule <- waf_update_rule
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -5293,7 +5290,7 @@ waf_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 }
 .waf$operations$update_rule_group <- waf_update_rule_group
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -5440,7 +5437,7 @@ waf_update_size_constraint_set <- function(SizeConstraintSetId, ChangeToken, Upd
 }
 .waf$operations$update_size_constraint_set <- waf_update_size_constraint_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -5472,9 +5469,9 @@ waf_update_size_constraint_set <- function(SizeConstraintSetId, ChangeToken, Upd
 #'     You can only specify a single type of TextTransformation.
 #' 
 #' You use `SqlInjectionMatchSet` objects to specify which CloudFront
-#' requests that you want to allow, block, or count. For example, if
-#' you\'re receiving requests that contain snippets of SQL code in the
-#' query string and you want to block the requests, you can create a
+#' requests that you want to allow, block, or count. For example, if you're
+#' receiving requests that contain snippets of SQL code in the query string
+#' and you want to block the requests, you can create a
 #' `SqlInjectionMatchSet` with the applicable settings, and then configure
 #' AWS WAF to block the requests.
 #' 
@@ -5576,7 +5573,7 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 }
 .waf$operations$update_sql_injection_match_set <- waf_update_sql_injection_match_set
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -5594,7 +5591,7 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #' you update a `WebACL`, you specify the following values:
 #' 
 #' -   A default action for the `WebACL`, either `ALLOW` or `BLOCK`. AWS
-#'     WAF performs the default action if a request doesn\'t match the
+#'     WAF performs the default action if a request doesn't match the
 #'     criteria in any of the `Rules` in a `WebACL`.
 #' 
 #' -   The `Rules` that you want to add or delete. If you want to replace
@@ -5611,7 +5608,7 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #'     `Priority` is evaluated first.) When a web request matches all the
 #'     predicates (such as `ByteMatchSets` and `IPSets`) in a `Rule`, AWS
 #'     WAF immediately takes the corresponding action, allow or block, and
-#'     doesn\'t evaluate the request against the remaining `Rules` in the
+#'     doesn't evaluate the request against the remaining `Rules` in the
 #'     `WebACL`, if any.
 #' 
 #' To create and configure a `WebACL`, perform the following steps:
@@ -5641,7 +5638,7 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #'     to submit an `UpdateWebACL` request to exclude certain rules from
 #'     that rule group, you must first remove the rule group from the web
 #'     ACL, the re-insert it again, specifying the excluded rules. For
-#'     details, see ActivatedRule\\$ExcludedRules .
+#'     details, see ActivatedRule$ExcludedRules .
 #' 
 #' Be aware that if you try to add a RATE\\_BASED rule to a web ACL without
 #' setting the rule type when first creating the rule, the UpdateWebACL
@@ -5675,7 +5672,7 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #' 
 #' -   WafAction: Contains `Type`
 #' @param DefaultAction A default action for the web ACL, either ALLOW or BLOCK. AWS WAF
-#' performs the default action if a request doesn\'t match the criteria in
+#' performs the default action if a request doesn't match the criteria in
 #' any of the rules in a web ACL.
 #'
 #' @section Request syntax:
@@ -5755,7 +5752,7 @@ waf_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, DefaultAct
 }
 .waf$operations$update_web_acl <- waf_update_web_acl
 
-#' This is AWS WAF CLASSIC documentation
+#' This is AWS WAF Classic documentation
 #'
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
@@ -5786,7 +5783,7 @@ waf_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, DefaultAct
 #'     You can only specify a single type of TextTransformation.
 #' 
 #' You use `XssMatchSet` objects to specify which CloudFront requests that
-#' you want to allow, block, or count. For example, if you\'re receiving
+#' you want to allow, block, or count. For example, if you're receiving
 #' requests that contain cross-site scripting attacks in the request body
 #' and you want to block the requests, you can create an `XssMatchSet` with
 #' the applicable settings, and then configure AWS WAF to block the

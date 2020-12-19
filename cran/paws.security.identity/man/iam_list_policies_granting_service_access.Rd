@@ -25,7 +25,7 @@ in the \emph{IAM User Guide}. Choose the name of the service to view details
 for that service. In the first paragraph, find the service prefix. For
 example, \verb{(service prefix: a4b)}. For more information about service
 namespaces, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}
-in theÂ \emph{AWS General Reference}.}
+in the \emph{AWS General Reference}.}
 }
 \description{
 Retrieves a list of policies that the IAM identity (user, group, or
@@ -43,15 +43,15 @@ in the \emph{IAM User Guide}.
 The list of policies returned by the operation depends on the ARN of the
 identity that you provide.
 \itemize{
-\item \strong{User} -- The list of policies includes the managed and inline
+\item \strong{User} – The list of policies includes the managed and inline
 policies that are attached to the user directly. The list also
 includes any additional managed and inline policies that are
 attached to the group to which the user belongs.
-\item \strong{Group} -- The list of policies includes only the managed and
+\item \strong{Group} – The list of policies includes only the managed and
 inline policies that are attached to the group directly. Policies
-that are attached to the group's user are not included.
-\item \strong{Role} -- The list of policies includes only the managed and
-inline policies that are attached to the role.
+that are attached to the group’s user are not included.
+\item \strong{Role} – The list of policies includes only the managed and inline
+policies that are attached to the role.
 }
 
 For each managed policy, this operation returns the ARN and policy name.

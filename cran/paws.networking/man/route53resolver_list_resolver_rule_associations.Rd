@@ -10,7 +10,7 @@ route53resolver_list_resolver_rule_associations(MaxResults, NextToken,
 }
 \arguments{
 \item{MaxResults}{The maximum number of rule associations that you want to return in the
-response to a \code{ListResolverRuleAssociations} request. If you don\'t
+response to a \code{ListResolverRuleAssociations} request. If you don't
 specify a value for \code{MaxResults}, Resolver returns up to 100 rule
 associations.}
 

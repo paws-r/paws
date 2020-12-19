@@ -7,12 +7,12 @@
 cloudfront_update_distribution(DistributionConfig, Id, IfMatch)
 }
 \arguments{
-\item{DistributionConfig}{[required] The distribution\'s configuration information.}
+\item{DistributionConfig}{[required] The distribution's configuration information.}
 
-\item{Id}{[required] The distribution\'s id.}
+\item{Id}{[required] The distribution's id.}
 
 \item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the
-distribution\'s configuration. For example: \code{E2QWRUHAPOMQZL}.}
+distribution's configuration. For example: \code{E2QWRUHAPOMQZL}.}
 }
 \description{
 Updates the configuration for a web distribution.
@@ -51,9 +51,9 @@ When you edit the XML file, be aware of the following:
 \item You must strip out the ETag parameter that is returned.
 \item Additional fields are required when you update a distribution.
 There may be fields included in the XML file for features that
-you haven\'t configured for your distribution. This is expected
+you haven't configured for your distribution. This is expected
 and required to successfully update the distribution.
-\item You can\'t change the value of \code{CallerReference}. If you try to
+\item You can't change the value of \code{CallerReference}. If you try to
 change this value, CloudFront returns an \code{IllegalUpdate} error.
 \item The new configuration replaces the existing configuration; the
 values that you specify in an \code{UpdateDistribution} request are

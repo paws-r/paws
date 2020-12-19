@@ -13,9 +13,9 @@ role.}
 }
 \description{
 Disassociate the operations role from an environment. After this call is
-made, Elastic Beanstalk uses the caller\'s permissions for permissions
-to downstream services during subsequent calls acting on this
-environment. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html}{Operations roles}
+made, Elastic Beanstalk uses the caller's permissions for permissions to
+downstream services during subsequent calls acting on this environment.
+For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html}{Operations roles}
 in the \emph{AWS Elastic Beanstalk Developer Guide}.
 }
 \section{Request syntax}{

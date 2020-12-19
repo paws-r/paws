@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_trial}
 \alias{sagemaker_create_trial}
-\title{Creates an Amazon SageMaker \emph{trial}}
+\title{Creates an Amazon SageMaker trial}
 \usage{
 sagemaker_create_trial(TrialName, DisplayName, ExperimentName, Tags)
 }
@@ -10,8 +10,8 @@ sagemaker_create_trial(TrialName, DisplayName, ExperimentName, Tags)
 \item{TrialName}{[required] The name of the trial. The name must be unique in your AWS account and
 is not case-sensitive.}
 
-\item{DisplayName}{The name of the trial as displayed. The name doesn\'t need to be unique.
-If \code{DisplayName} isn\'t specified, \code{TrialName} is displayed.}
+\item{DisplayName}{The name of the trial as displayed. The name doesn't need to be unique.
+If \code{DisplayName} isn't specified, \code{TrialName} is displayed.}
 
 \item{ExperimentName}{[required] The name of the experiment to associate the trial with.}
 
@@ -33,7 +33,7 @@ You can add tags to a trial and then use the Search API to search for
 the tags.
 
 To get a list of all your trials, call the ListTrials API. To view a
-trial\'s properties, call the DescribeTrial API. To create a trial
+trial's properties, call the DescribeTrial API. To create a trial
 component, call the CreateTrialComponent API.
 }
 \section{Request syntax}{

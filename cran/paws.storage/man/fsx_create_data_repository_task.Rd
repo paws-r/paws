@@ -16,7 +16,7 @@ system root directory. The paths you provide need to be relative to the
 mount point of the file system. If the mount point is \verb{/mnt/fsx} and
 \verb{/mnt/fsx/path1} is a directory or file on the file system you want to
 export, then the path to provide is \code{path1}. If a path that you provide
-isn\'t valid, the task fails.}
+isn't valid, the task fails.}
 
 \item{FileSystemId}{[required]}
 

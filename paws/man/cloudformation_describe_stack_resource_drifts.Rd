@@ -18,8 +18,8 @@ drift results returned.
 configuration in that the resource has been deleted.
 \item \code{MODIFIED}: One or more resource properties differ from their
 expected template values.
-\item \code{IN_SYNC}: The resources\'s actual configuration matches its
-expected template configuration.
+\item \code{IN_SYNC}: The resources's actual configuration matches its expected
+template configuration.
 \item \code{NOT_CHECKED}: AWS CloudFormation does not currently return this
 value.
 }}

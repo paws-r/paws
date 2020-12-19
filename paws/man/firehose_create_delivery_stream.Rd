@@ -70,9 +70,8 @@ not in the \code{ACTIVE} state cause an exception. To check the state of a
 delivery stream, use DescribeDeliveryStream.
 
 If the status of a delivery stream is \code{CREATING_FAILED}, this status
-doesn\'t change, and you can\'t invoke \code{CreateDeliveryStream} again on
-it. However, you can invoke the DeleteDeliveryStream operation to delete
-it.
+doesn't change, and you can't invoke \code{CreateDeliveryStream} again on it.
+However, you can invoke the DeleteDeliveryStream operation to delete it.
 
 A Kinesis Data Firehose delivery stream can be configured to receive
 records directly from providers using PutRecord or PutRecordBatch, or it
@@ -85,7 +84,7 @@ Amazon Resource Name (ARN) and role ARN in the
 To create a delivery stream with server-side encryption (SSE) enabled,
 include DeliveryStreamEncryptionConfigurationInput in your request. This
 is optional. You can also invoke StartDeliveryStreamEncryption to turn
-on SSE for an existing delivery stream that doesn\'t have SSE enabled.
+on SSE for an existing delivery stream that doesn't have SSE enabled.
 
 A delivery stream is configured with a single destination: Amazon S3,
 Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the
@@ -115,7 +114,7 @@ This is specified in the
 \item The compression formats \code{SNAPPY} or \code{ZIP} cannot be specified in
 \code{RedshiftDestinationConfiguration.S3Configuration} because the
 Amazon Redshift \code{COPY} operation that reads from the S3 bucket
-doesn\'t support these compression formats.
+doesn't support these compression formats.
 \item We strongly recommend that you use the user name and password you
 provide exclusively with Kinesis Data Firehose, and that the
 permissions for the account are restricted for Amazon Redshift

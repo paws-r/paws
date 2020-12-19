@@ -57,7 +57,7 @@ retained for 60 minutes.
 \item \code{end-date} - The date and time at which the Capacity Reservation
 expires. When a Capacity Reservation expires, the reserved capacity
 is released and you can no longer launch instances into it. The
-Capacity Reservation\'s state changes to expired when it reaches its
+Capacity Reservation's state changes to expired when it reaches its
 end date and time.
 \item \code{end-date-type} - Indicates the way in which the Capacity
 Reservation ends. A Capacity Reservation can have one of the
@@ -91,7 +91,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Describes one or more of your Capacity Reservations. The results
-describe only the Capacity Reservations in the AWS Region that you\'re
+describe only the Capacity Reservations in the AWS Region that you're
 currently using.
 }
 \section{Request syntax}{

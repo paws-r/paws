@@ -19,8 +19,8 @@ the \emph{Amazon SNS Developer Guide}.
 \details{
 When you use topic tags, keep the following guidelines in mind:
 \itemize{
-\item Adding more than 50 tags to a topic isn\'t recommended.
-\item Tags don\'t have any semantic meaning. Amazon SNS interprets tags as
+\item Adding more than 50 tags to a topic isn't recommended.
+\item Tags don't have any semantic meaning. Amazon SNS interprets tags as
 character strings.
 \item Tags are case-sensitive.
 \item A new tag with a key identical to that of an existing tag overwrites

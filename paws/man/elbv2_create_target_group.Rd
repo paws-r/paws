@@ -50,7 +50,7 @@ and cannot be disabled.}
 the targets for health checks. The default is /.}
 
 \item{HealthCheckIntervalSeconds}{The approximate amount of time, in seconds, between health checks of an
-individual target. For HTTP and HTTPS health checks, the range is 5--300
+individual target. For HTTP and HTTPS health checks, the range is 5–300
 seconds. For TCP health checks, the supported values are 10 and 30
 seconds. If the target type is \code{instance} or \code{ip}, the default is 30
 seconds. If the target type is \code{lambda}, the default is 35 seconds.}
@@ -78,7 +78,7 @@ If the target type is \code{lambda}, the default is 2.}
 successful response from a target.}
 
 \item{TargetType}{The type of target that you must specify when registering targets with
-this target group. You can\'t specify targets for a target group using
+this target group. You can't specify targets for a target group using
 more than one target type.
 \itemize{
 \item \code{instance} - Targets are specified by instance ID. This is the
@@ -87,7 +87,7 @@ target type must be \code{instance}.
 \item \code{ip} - Targets are specified by IP address. You can specify IP
 addresses from the subnets of the virtual private cloud (VPC) for
 the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and
-192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can\'t
+192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't
 specify publicly routable IP addresses.
 \item \code{lambda} - The target groups contains a single Lambda function.
 }}

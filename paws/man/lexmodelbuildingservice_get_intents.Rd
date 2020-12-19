@@ -18,8 +18,8 @@ pagination token in the next request.}
 10.}
 
 \item{nameContains}{Substring to match in intent names. An intent will be returned if any
-part of its name matches the substring. For example, \"xyz\" matches
-both \"xyzabc\" and \"abcxyz.\"}
+part of its name matches the substring. For example, "xyz" matches both
+"xyzabc" and "abcxyz."}
 }
 \description{
 Returns intent information as follows:
@@ -28,7 +28,7 @@ Returns intent information as follows:
 \itemize{
 \item If you specify the \code{nameContains} field, returns the \verb{$LATEST}
 version of all intents that contain the specified string.
-\item If you don\'t specify the \code{nameContains} field, returns information
+\item If you don't specify the \code{nameContains} field, returns information
 about the \verb{$LATEST} version of all intents.
 }
 

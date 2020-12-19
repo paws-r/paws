@@ -13,7 +13,7 @@ identical health checks:
 \itemize{
 \item If you send a \code{CreateHealthCheck} request with the same
 \code{CallerReference} and settings as a previous request, and if the
-health check doesn\'t exist, Amazon Route 53 creates the health
+health check doesn't exist, Amazon Route 53 creates the health
 check. If the health check does exist, Route 53 returns the settings
 for the existing health check.
 \item If you send a \code{CreateHealthCheck} request with the same
@@ -40,10 +40,10 @@ in
 
 \strong{ELB Load Balancers}
 
-If you\'re registering EC2 instances with an Elastic Load Balancing
-(ELB) load balancer, do not create Amazon Route 53 health checks for the
-EC2 instances. When you register an EC2 instance with a load balancer,
-you configure settings for an ELB health check, which performs a similar
+If you're registering EC2 instances with an Elastic Load Balancing (ELB)
+load balancer, do not create Amazon Route 53 health checks for the EC2
+instances. When you register an EC2 instance with a load balancer, you
+configure settings for an ELB health check, which performs a similar
 function to a Route 53 health check.
 
 \strong{Private Hosted Zones}

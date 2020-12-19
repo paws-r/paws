@@ -24,12 +24,12 @@ of the finding provider.}
 
 The available values for \code{VerificationState} are as follows.
 \itemize{
-\item \code{UNKNOWN} -- The default disposition of a security finding
-\item \code{TRUE_POSITIVE} -- The security finding is confirmed
-\item \code{FALSE_POSITIVE} -- The security finding was determined to be a
-false alarm
-\item \code{BENIGN_POSITIVE} -- A special case of \code{TRUE_POSITIVE} where the
-finding doesn\'t pose any threat, is expected, or both
+\item \code{UNKNOWN} – The default disposition of a security finding
+\item \code{TRUE_POSITIVE} – The security finding is confirmed
+\item \code{FALSE_POSITIVE} – The security finding was determined to be a false
+alarm
+\item \code{BENIGN_POSITIVE} – A special case of \code{TRUE_POSITIVE} where the
+finding doesn't pose any threat, is expected, or both
 }}
 
 \item{Confidence}{The updated value for the finding confidence. Confidence is defined as

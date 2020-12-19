@@ -21,8 +21,8 @@ group size.
 \details{
 This call simply makes a termination request. The instance is not
 terminated immediately. When an instance is terminated, the instance
-status changes to \code{terminated}. You can\'t connect to or start an
-instance after you\'ve terminated it.
+status changes to \code{terminated}. You can't connect to or start an
+instance after you've terminated it.
 
 If you do not specify the option to decrement the desired capacity,
 Amazon EC2 Auto Scaling launches instances to replace the ones that are

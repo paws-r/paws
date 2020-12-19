@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsm_operations.R
 \name{cloudhsm_modify_luna_client}
 \alias{cloudhsm_modify_luna_client}
-\title{This is documentation for AWS CLOUDHSM CLASSIC}
+\title{This is documentation for AWS CloudHSM Classic}
 \usage{
 cloudhsm_modify_luna_client(ClientArn, Certificate)
 }
@@ -23,7 +23,7 @@ information, see \href{http://aws.amazon.com/cloudhsm/faqs-classic/}{AWS CloudHS
 Modifies the certificate used by the client.
 
 This action can potentially start a workflow to install the new
-certificate on the client\'s HSMs.
+certificate on the client's HSMs.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_luna_client(

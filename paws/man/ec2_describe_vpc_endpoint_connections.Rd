@@ -20,8 +20,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item \code{vpc-endpoint-owner} - The AWS account number of the owner of the
 endpoint.
 \item \code{vpc-endpoint-state} - The state of the endpoint
-(\code{pendingAcceptance} \\| \code{pending} \\| \code{available} \\| \code{deleting} \\|
-\code{deleted} \\| \code{rejected} \\| \code{failed}).
+(\code{pendingAcceptance} | \code{pending} | \code{available} | \code{deleting} |
+\code{deleted} | \code{rejected} | \code{failed}).
 \item \code{vpc-endpoint-id} - The ID of the endpoint.
 }}
 

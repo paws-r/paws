@@ -3,8 +3,8 @@
 #' @include rekognition_service.R
 NULL
 
-#' Compares a face in the _source_ input image with each of the 100 largest
-#' faces detected in the _target_ input image
+#' Compares a face in the source input image with each of the 100 largest
+#' faces detected in the target input image
 #'
 #' Compares a face in the *source* input image with each of the 100 largest
 #' faces detected in the *target* input image.
@@ -15,8 +15,8 @@ NULL
 #' 
 #' You pass the input and target images either as base64-encoded image
 #' bytes or as references to images in an Amazon S3 bucket. If you use the
-#' AWS CLI to call Amazon Rekognition operations, passing image bytes
-#' isn\'t supported. The image must be formatted as a PNG or JPEG file.
+#' AWS CLI to call Amazon Rekognition operations, passing image bytes isn't
+#' supported. The image must be formatted as a PNG or JPEG file.
 #' 
 #' In response, the operation returns an array of face matches ordered by
 #' similarity score in descending order. For each face match, the response
@@ -30,14 +30,14 @@ NULL
 #' to 80% are returned in the response. You can change this value by
 #' specifying the `SimilarityThreshold` parameter.
 #' 
-#' `CompareFaces` also returns an array of faces that don\'t match the
+#' `CompareFaces` also returns an array of faces that don't match the
 #' source image. For each face, it returns a bounding box, confidence
 #' value, landmarks, pose details, and quality. The response also returns
 #' information about the face in the source image, including the bounding
 #' box of the face and confidence value.
 #' 
 #' The `QualityFilter` input parameter allows you to filter out detected
-#' faces that don't meet a required quality bar. The quality bar is based
+#' faces that don’t meet a required quality bar. The quality bar is based
 #' on a variety of common use cases. Use `QualityFilter` to set the quality
 #' bar by specifying `LOW`, `MEDIUM`, or `HIGH`. If you do not want to
 #' filter detected faces, specify `NONE`. The default value is `NONE`.
@@ -46,7 +46,7 @@ NULL
 #' 3 of the face model or higher. To get the version of the face model
 #' associated with a collection, call DescribeCollection.
 #' 
-#' If the image doesn\'t contain Exif metadata, `CompareFaces` returns
+#' If the image doesn't contain Exif metadata, `CompareFaces` returns
 #' orientation information for the source and target images. Use these
 #' values to display the images with the correct image orientation.
 #' 
@@ -54,7 +54,7 @@ NULL
 #' returns an `InvalidParameterException` error.
 #' 
 #' This is a stateless API operation. That is, data returned by this
-#' operation doesn\'t persist.
+#' operation doesn't persist.
 #' 
 #' For an example, see Comparing Faces in Images in the Amazon Rekognition
 #' Developer Guide.
@@ -83,14 +83,14 @@ NULL
 #' @param SimilarityThreshold The minimum level of confidence in the face matches that a match must
 #' meet to be included in the `FaceMatches` array.
 #' @param QualityFilter A filter that specifies a quality bar for how much filtering is done to
-#' identify faces. Filtered faces aren\'t compared. If you specify `AUTO`,
+#' identify faces. Filtered faces aren't compared. If you specify `AUTO`,
 #' Amazon Rekognition chooses the quality bar. If you specify `LOW`,
-#' `MEDIUM`, or `HIGH`, filtering removes all faces that don't meet the
+#' `MEDIUM`, or `HIGH`, filtering removes all faces that don’t meet the
 #' chosen quality bar. The quality bar is based on a variety of common use
 #' cases. Low-quality detections can occur for a number of reasons. Some
-#' examples are an object that\'s misidentified as a face, a face that\'s
-#' too blurry, or a face with a pose that\'s too extreme to use. If you
-#' specify `NONE`, no filtering is performed. The default value is `NONE`.
+#' examples are an object that's misidentified as a face, a face that's too
+#' blurry, or a face with a pose that's too extreme to use. If you specify
+#' `NONE`, no filtering is performed. The default value is `NONE`.
 #' 
 #' To use quality filtering, the collection you are using must be
 #' associated with version 3 of the face model or higher.
@@ -582,8 +582,8 @@ rekognition_delete_project <- function(ProjectArn) {
 #'
 #' Deletes an Amazon Rekognition Custom Labels model.
 #' 
-#' You can\'t delete a model if it is running or if it is training. To
-#' check the status of a model, use the `Status` field returned from
+#' You can't delete a model if it is running or if it is training. To check
+#' the status of a model, use the `Status` field returned from
 #' DescribeProjectVersions. To stop a running model call
 #' StopProjectVersion. If the model is training, wait until it finishes.
 #' 
@@ -709,8 +709,8 @@ rekognition_describe_collection <- function(CollectionId) {
 #'
 #' Lists and describes the models in an Amazon Rekognition Custom Labels
 #' project. You can specify up to 10 model versions in
-#' `ProjectVersionArns`. If you don\'t specify a value, descriptions for
-#' all models are returned.
+#' `ProjectVersionArns`. If you don't specify a value, descriptions for all
+#' models are returned.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:DescribeProjectVersions` action.
@@ -722,8 +722,8 @@ rekognition_describe_collection <- function(CollectionId) {
 #' @param ProjectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project that contains the models
 #' you want to describe.
 #' @param VersionNames A list of model version names that you want to describe. You can add up
-#' to 10 model version names to the list. If you don\'t specify a value,
-#' all model descriptions are returned. A version name is part of a model
+#' to 10 model version names to the list. If you don't specify a value, all
+#' model descriptions are returned. A version name is part of a model
 #' (ProjectVersion) ARN. For example, `my-model.2020-01-21T09.10.15` is the
 #' version name in the following ARN.
 #' `arn:aws:rekognition:us-east-1:123456789012:project/getting-started/version/<i>my-model.2020-01-21T09.10.15</i>/1234567890123`.
@@ -877,14 +877,14 @@ rekognition_describe_stream_processor <- function(Name) {
 #' (`Geometry`).
 #' 
 #' During training model calculates a threshold value that determines if a
-#' prediction for a label is true. By default, `DetectCustomLabels`
-#' doesn\'t return labels whose confidence value is below the model\'s
-#' calculated threshold value. To filter labels that are returned, specify
-#' a value for `MinConfidence` that is higher than the model\'s calculated
-#' threshold. You can get the model\'s calculated threshold from the
-#' model\'s training results shown in the Amazon Rekognition Custom Labels
-#' console. To get all labels, regardless of confidence, specify a
-#' `MinConfidence` value of 0.
+#' prediction for a label is true. By default, `DetectCustomLabels` doesn't
+#' return labels whose confidence value is below the model's calculated
+#' threshold value. To filter labels that are returned, specify a value for
+#' `MinConfidence` that is higher than the model's calculated threshold.
+#' You can get the model's calculated threshold from the model's training
+#' results shown in the Amazon Rekognition Custom Labels console. To get
+#' all labels, regardless of confidence, specify a `MinConfidence` value of
+#' 0.
 #' 
 #' You can also add the `MaxResults` parameter to limit the number of
 #' labels returned.
@@ -905,7 +905,7 @@ rekognition_describe_stream_processor <- function(Name) {
 #' response. The service returns the specified number of highest confidence
 #' labels ranked from highest confidence to lowest.
 #' @param MinConfidence Specifies the minimum confidence level for the labels to return. Amazon
-#' Rekognition doesn\'t return any labels with a confidence lower than this
+#' Rekognition doesn't return any labels with a confidence lower than this
 #' specified value. If you specify a value of 0, all labels are return,
 #' regardless of the default thresholds that the model version applies.
 #'
@@ -983,7 +983,7 @@ rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResult
 #' need to base64-encode image bytes passed using the `Bytes` field. For
 #' more information, see Images in the Amazon Rekognition developer guide.
 #' @param Attributes An array of facial attributes you want to be returned. This can be the
-#' default list of attributes or all attributes. If you don\'t specify a
+#' default list of attributes or all attributes. If you don't specify a
 #' value for `Attributes` or if you specify `\\["DEFAULT"\\]`, the API
 #' returns the following subset of facial attributes: `BoundingBox`,
 #' `Confidence`, `Pose`, `Quality`, and `Landmarks`. If you provide
@@ -1098,7 +1098,7 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' labels returned. The default is 55%. You can also add the `MaxLabels`
 #' parameter to limit the number of labels returned.
 #' 
-#' If the object detected is a person, the operation doesn\'t provide the
+#' If the object detected is a person, the operation doesn't provide the
 #' same facial details that the DetectFaces operation provides.
 #' 
 #' `DetectLabels` returns bounding boxes for instances of common object
@@ -1134,7 +1134,7 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' @param MaxLabels Maximum number of labels you want the service to return in the response.
 #' The service returns the specified number of highest confidence labels.
 #' @param MinConfidence Specifies the minimum confidence level for the labels to return. Amazon
-#' Rekognition doesn\'t return any labels with confidence lower than this
+#' Rekognition doesn't return any labels with confidence lower than this
 #' specified value.
 #' 
 #' If `MinConfidence` is not specified, the operation returns labels with a
@@ -1221,10 +1221,10 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #' need to base64-encode image bytes passed using the `Bytes` field. For
 #' more information, see Images in the Amazon Rekognition developer guide.
 #' @param MinConfidence Specifies the minimum confidence level for the labels to return. Amazon
-#' Rekognition doesn\'t return any labels with a confidence level lower
-#' than this specified value.
+#' Rekognition doesn't return any labels with a confidence level lower than
+#' this specified value.
 #' 
-#' If you don\'t specify `MinConfidence`, the operation returns labels with
+#' If you don't specify `MinConfidence`, the operation returns labels with
 #' confidence values greater than or equal to 50 percent.
 #' @param HumanLoopConfig Sets up the configuration for human evaluation, including the
 #' FlowDefinition the image will be sent to.
@@ -1293,13 +1293,13 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
 #' A word is one or more ISO basic latin script characters that are not
 #' separated by spaces. `DetectText` can detect up to 50 words in an image.
 #' 
-#' A line is a string of equally spaced words. A line isn\'t necessarily a
-#' complete sentence. For example, a driver\'s license number is detected
-#' as a line. A line ends when there is no aligned text after it. Also, a
-#' line ends when there is a large gap between words, relative to the
-#' length of the words. This means, depending on the gap between words,
-#' Amazon Rekognition may detect multiple lines in text aligned in the same
-#' direction. Periods don\'t represent the end of a line. If a sentence
+#' A line is a string of equally spaced words. A line isn't necessarily a
+#' complete sentence. For example, a driver's license number is detected as
+#' a line. A line ends when there is no aligned text after it. Also, a line
+#' ends when there is a large gap between words, relative to the length of
+#' the words. This means, depending on the gap between words, Amazon
+#' Rekognition may detect multiple lines in text aligned in the same
+#' direction. Periods don't represent the end of a line. If a sentence
 #' spans multiple lines, the `DetectText` operation returns multiple lines.
 #' 
 #' To determine whether a `TextDetection` element is a line of text or a
@@ -1315,7 +1315,7 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
 #' rekognition_detect_text(Image, Filters)
 #'
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an Amazon S3 object. If you
-#' use the AWS CLI to call Amazon Rekognition operations, you can\'t pass
+#' use the AWS CLI to call Amazon Rekognition operations, you can't pass
 #' image bytes.
 #' 
 #' If you are using an AWS SDK to call Amazon Rekognition, you might not
@@ -1460,7 +1460,7 @@ rekognition_get_celebrity_info <- function(Id) {
 #' specifying the value `ID` in the `SortBy` input parameter.
 #' 
 #' The `CelebrityDetail` object includes the celebrity identifer and
-#' additional information urls. If you don\'t store the additional
+#' additional information urls. If you don't store the additional
 #' information urls, you can get them later by calling GetCelebrityInfo
 #' with the celebrity identifer.
 #' 
@@ -1870,7 +1870,7 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
 #' For more information, see FaceDetail in the Amazon Rekognition Developer
 #' Guide.
 #' 
-#' By default, the array is sorted by the time(s) a person\'s path is
+#' By default, the array is sorted by the time(s) a person's path is
 #' tracked in the video. You can sort by tracked persons by specifying
 #' `INDEX` for the `SortBy` input parameter.
 #' 
@@ -2090,7 +2090,7 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' Detects faces in the input image and adds them to the specified
 #' collection.
 #' 
-#' Amazon Rekognition doesn\'t save the actual faces that are detected.
+#' Amazon Rekognition doesn't save the actual faces that are detected.
 #' Instead, the underlying detection algorithm first detects the faces in
 #' the input image. For each face, the algorithm extracts facial features
 #' into a feature vector, and stores it in the backend database. Amazon
@@ -2102,14 +2102,14 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' 
 #' To get the number of faces in a collection, call DescribeCollection.
 #' 
-#' If you\'re using version 1.0 of the face detection model, `IndexFaces`
+#' If you're using version 1.0 of the face detection model, `IndexFaces`
 #' indexes the 15 largest faces in the input image. Later versions of the
 #' face detection model index the 100 largest faces in the input image.
 #' 
-#' If you\'re using version 4 or later of the face model, image orientation
+#' If you're using version 4 or later of the face model, image orientation
 #' information is not returned in the `OrientationCorrection` field.
 #' 
-#' To determine which version of the model you\'re using, call
+#' To determine which version of the model you're using, call
 #' DescribeCollection and supply the collection ID. You can also get the
 #' model version from the value of `FaceModelVersion` in the response from
 #' `IndexFaces`
@@ -2126,13 +2126,13 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' 
 #' You can specify the maximum number of faces to index with the `MaxFaces`
 #' input parameter. This is useful when you want to index the largest faces
-#' in an image and don\'t want to index smaller faces, such as those
+#' in an image and don't want to index smaller faces, such as those
 #' belonging to people standing in the background.
 #' 
 #' The `QualityFilter` input parameter allows you to filter out detected
-#' faces that don't meet a required quality bar. The quality bar is based
+#' faces that don’t meet a required quality bar. The quality bar is based
 #' on a variety of common use cases. By default, `IndexFaces` chooses the
-#' quality bar that\'s used to filter faces. You can also explicitly choose
+#' quality bar that's used to filter faces. You can also explicitly choose
 #' the quality bar. Use `QualityFilter`, to set the quality bar by
 #' specifying `LOW`, `MEDIUM`, or `HIGH`. If you do not want to filter
 #' detected faces, specify `NONE`.
@@ -2143,7 +2143,7 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' 
 #' Information about faces detected in an image, but not indexed, is
 #' returned in an array of UnindexedFace objects, `UnindexedFaces`. Faces
-#' aren\'t indexed for reasons such as:
+#' aren't indexed for reasons such as:
 #' 
 #' -   The number of faces detected exceeds the value of the `MaxFaces`
 #'     request parameter.
@@ -2156,7 +2156,7 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' 
 #' -   The face has an extreme pose.
 #' 
-#' -   The face doesn't have enough detail to be suitable for face search.
+#' -   The face doesn’t have enough detail to be suitable for face search.
 #' 
 #' In response, the `IndexFaces` operation returns an array of metadata for
 #' all detected faces, `FaceRecords`. This includes:
@@ -2166,7 +2166,7 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' -   A confidence value, `Confidence`, which indicates the confidence
 #'     that the bounding box contains a face.
 #' 
-#' -   A face ID, `FaceId`, assigned by the service for each face that\'s
+#' -   A face ID, `FaceId`, assigned by the service for each face that's
 #'     detected and stored.
 #' 
 #' -   An image ID, `ImageId`, assigned by the service for the input image.
@@ -2176,12 +2176,12 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' as facial landmarks (for example, location of eye and mouth) and other
 #' facial attributes. If you provide the same image, specify the same
 #' collection, and use the same external ID in the `IndexFaces` operation,
-#' Amazon Rekognition doesn\'t save duplicate face metadata.
+#' Amazon Rekognition doesn't save duplicate face metadata.
 #' 
 #' The input image is passed either as base64-encoded image bytes, or as a
 #' reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
-#' call Amazon Rekognition operations, passing image bytes isn\'t
-#' supported. The image must be formatted as a PNG or JPEG file.
+#' call Amazon Rekognition operations, passing image bytes isn't supported.
+#' The image must be formatted as a PNG or JPEG file.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:IndexFaces` action.
@@ -2194,15 +2194,15 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' are detected in the input images.
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
-#' image bytes isn\'t supported.
+#' image bytes isn't supported.
 #' 
 #' If you are using an AWS SDK to call Amazon Rekognition, you might not
 #' need to base64-encode image bytes passed using the `Bytes` field. For
 #' more information, see Images in the Amazon Rekognition developer guide.
 #' @param ExternalImageId The ID you want to assign to all the faces detected in the image.
 #' @param DetectionAttributes An array of facial attributes that you want to be returned. This can be
-#' the default list of attributes or all attributes. If you don\'t specify
-#' a value for `Attributes` or if you specify `\\["DEFAULT"\\]`, the API
+#' the default list of attributes or all attributes. If you don't specify a
+#' value for `Attributes` or if you specify `\\["DEFAULT"\\]`, the API
 #' returns the following subset of facial attributes: `BoundingBox`,
 #' `Confidence`, `Pose`, `Quality`, and `Landmarks`. If you provide
 #' `\\["ALL"\\]`, all facial attributes are returned, but the operation
@@ -2219,7 +2219,7 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' If `IndexFaces` detects more faces than the value of `MaxFaces`, the
 #' faces with the lowest quality are filtered out first. If there are still
 #' more faces than the value of `MaxFaces`, the faces with the smallest
-#' bounding boxes are filtered out (up to the number that\'s needed to
+#' bounding boxes are filtered out (up to the number that's needed to
 #' satisfy the value of `MaxFaces`). Information about the unindexed faces
 #' is available in the `UnindexedFaces` array.
 #' 
@@ -2229,14 +2229,14 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' `MaxFaces` can be used with a collection associated with any version of
 #' the face model.
 #' @param QualityFilter A filter that specifies a quality bar for how much filtering is done to
-#' identify faces. Filtered faces aren\'t indexed. If you specify `AUTO`,
+#' identify faces. Filtered faces aren't indexed. If you specify `AUTO`,
 #' Amazon Rekognition chooses the quality bar. If you specify `LOW`,
-#' `MEDIUM`, or `HIGH`, filtering removes all faces that don't meet the
+#' `MEDIUM`, or `HIGH`, filtering removes all faces that don’t meet the
 #' chosen quality bar. The default value is `AUTO`. The quality bar is
 #' based on a variety of common use cases. Low-quality detections can occur
-#' for a number of reasons. Some examples are an object that\'s
-#' misidentified as a face, a face that\'s too blurry, or a face with a
-#' pose that\'s too extreme to use. If you specify `NONE`, no filtering is
+#' for a number of reasons. Some examples are an object that's
+#' misidentified as a face, a face that's too blurry, or a face with a pose
+#' that's too extreme to use. If you specify `NONE`, no filtering is
 #' performed.
 #' 
 #' To use quality filtering, the collection you are using must be
@@ -2464,19 +2464,19 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 #' `RecognizeCelebrities` returns the 100 largest faces in the image. It
 #' lists recognized celebrities in the `CelebrityFaces` array and
 #' unrecognized faces in the `UnrecognizedFaces` array.
-#' `RecognizeCelebrities` doesn\'t return celebrities whose faces aren\'t
+#' `RecognizeCelebrities` doesn't return celebrities whose faces aren't
 #' among the largest 100 faces in the image.
 #' 
 #' For each celebrity recognized, `RecognizeCelebrities` returns a
 #' `Celebrity` object. The `Celebrity` object contains the celebrity name,
 #' ID, URL links to additional information, match confidence, and a
-#' `ComparedFace` object that you can use to locate the celebrity\'s face
-#' on the image.
+#' `ComparedFace` object that you can use to locate the celebrity's face on
+#' the image.
 #' 
-#' Amazon Rekognition doesn\'t retain information about which images a
+#' Amazon Rekognition doesn't retain information about which images a
 #' celebrity has been recognized in. Your application must store this
 #' information and use the `Celebrity` ID property as a unique identifier
-#' for the celebrity. If you don\'t store the celebrity name or additional
+#' for the celebrity. If you don't store the celebrity name or additional
 #' information URLs returned by `RecognizeCelebrities`, you will need the
 #' ID to identify the celebrity in a call to the GetCelebrityInfo
 #' operation.
@@ -2570,7 +2570,7 @@ rekognition_recognize_celebrities <- function(Image) {
 #' @param MaxFaces Maximum number of faces to return. The operation returns the maximum
 #' number of faces with the highest confidence in the match.
 #' @param FaceMatchThreshold Optional value specifying the minimum confidence in the face match to
-#' return. For example, don\'t return any matches where confidence in
+#' return. For example, don't return any matches where confidence in
 #' matches is less than 70%. The default value is 80%.
 #'
 #' @section Request syntax:
@@ -2648,7 +2648,7 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' Rekognition Developer Guide.
 #' 
 #' The `QualityFilter` input parameter allows you to filter out detected
-#' faces that don't meet a required quality bar. The quality bar is based
+#' faces that don’t meet a required quality bar. The quality bar is based
 #' on a variety of common use cases. Use `QualityFilter` to set the quality
 #' bar for filtering by specifying `LOW`, `MEDIUM`, or `HIGH`. If you do
 #' not want to filter detected faces, specify `NONE`. The default value is
@@ -2676,18 +2676,18 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' @param MaxFaces Maximum number of faces to return. The operation returns the maximum
 #' number of faces with the highest confidence in the match.
 #' @param FaceMatchThreshold (Optional) Specifies the minimum confidence in the face match to return.
-#' For example, don\'t return any matches where confidence in matches is
+#' For example, don't return any matches where confidence in matches is
 #' less than 70%. The default value is 80%.
 #' @param QualityFilter A filter that specifies a quality bar for how much filtering is done to
-#' identify faces. Filtered faces aren\'t searched for in the collection.
-#' If you specify `AUTO`, Amazon Rekognition chooses the quality bar. If
-#' you specify `LOW`, `MEDIUM`, or `HIGH`, filtering removes all faces that
-#' don't meet the chosen quality bar. The quality bar is based on a variety
+#' identify faces. Filtered faces aren't searched for in the collection. If
+#' you specify `AUTO`, Amazon Rekognition chooses the quality bar. If you
+#' specify `LOW`, `MEDIUM`, or `HIGH`, filtering removes all faces that
+#' don’t meet the chosen quality bar. The quality bar is based on a variety
 #' of common use cases. Low-quality detections can occur for a number of
-#' reasons. Some examples are an object that\'s misidentified as a face, a
-#' face that\'s too blurry, or a face with a pose that\'s too extreme to
-#' use. If you specify `NONE`, no filtering is performed. The default value
-#' is `NONE`.
+#' reasons. Some examples are an object that's misidentified as a face, a
+#' face that's too blurry, or a face with a pose that's too extreme to use.
+#' If you specify `NONE`, no filtering is performed. The default value is
+#' `NONE`.
 #' 
 #' To use quality filtering, the collection you are using must be
 #' associated with version 3 of the face model or higher.
@@ -2778,10 +2778,10 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
 #' from being accidently started more than once.
 #' @param NotificationChannel The Amazon SNS topic ARN that you want Amazon Rekognition Video to
 #' publish the completion status of the celebrity recognition analysis to.
-#' @param JobTag An identifier you specify that\'s returned in the completion
-#' notification that\'s published to your Amazon Simple Notification
-#' Service topic. For example, you can use `JobTag` to group related jobs
-#' and identify them in the completion notification.
+#' @param JobTag An identifier you specify that's returned in the completion notification
+#' that's published to your Amazon Simple Notification Service topic. For
+#' example, you can use `JobTag` to group related jobs and identify them in
+#' the completion notification.
 #'
 #' @section Request syntax:
 #' ```
@@ -2852,8 +2852,8 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 #' order to return a moderated content label. Confidence represents how
 #' certain Amazon Rekognition is that the moderated content is correctly
 #' identified. 0 is the lowest confidence. 100 is the highest confidence.
-#' Amazon Rekognition doesn\'t return any moderated content labels with a
-#' confidence level lower than this specified value. If you don\'t specify
+#' Amazon Rekognition doesn't return any moderated content labels with a
+#' confidence level lower than this specified value. If you don't specify
 #' `MinConfidence`, `GetContentModeration` returns labels with confidence
 #' values greater than or equal to 50 percent.
 #' @param ClientRequestToken Idempotent token used to identify the start request. If you use the same
@@ -2862,10 +2862,10 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 #' accidently started more than once.
 #' @param NotificationChannel The Amazon SNS topic ARN that you want Amazon Rekognition Video to
 #' publish the completion status of the unsafe content analysis to.
-#' @param JobTag An identifier you specify that\'s returned in the completion
-#' notification that\'s published to your Amazon Simple Notification
-#' Service topic. For example, you can use `JobTag` to group related jobs
-#' and identify them in the completion notification.
+#' @param JobTag An identifier you specify that's returned in the completion notification
+#' that's published to your Amazon Simple Notification Service topic. For
+#' example, you can use `JobTag` to group related jobs and identify them in
+#' the completion notification.
 #'
 #' @section Request syntax:
 #' ```
@@ -2943,10 +2943,10 @@ rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, Cl
 #' BoundingBox, Confidence, Pose, Quality and Landmarks.
 #' 
 #' `ALL` - All facial attributes are returned.
-#' @param JobTag An identifier you specify that\'s returned in the completion
-#' notification that\'s published to your Amazon Simple Notification
-#' Service topic. For example, you can use `JobTag` to group related jobs
-#' and identify them in the completion notification.
+#' @param JobTag An identifier you specify that's returned in the completion notification
+#' that's published to your Amazon Simple Notification Service topic. For
+#' example, you can use `JobTag` to group related jobs and identify them in
+#' the completion notification.
 #'
 #' @section Request syntax:
 #' ```
@@ -3015,16 +3015,16 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
 #' token with multiple `StartFaceSearch` requests, the same `JobId` is
 #' returned. Use `ClientRequestToken` to prevent the same job from being
 #' accidently started more than once.
-#' @param FaceMatchThreshold The minimum confidence in the person match to return. For example,
-#' don\'t return any matches where confidence in matches is less than 70%.
-#' The default value is 80%.
+#' @param FaceMatchThreshold The minimum confidence in the person match to return. For example, don't
+#' return any matches where confidence in matches is less than 70%. The
+#' default value is 80%.
 #' @param CollectionId &#91;required&#93; ID of the collection that contains the faces you want to search for.
 #' @param NotificationChannel The ARN of the Amazon SNS topic to which you want Amazon Rekognition
 #' Video to publish the completion status of the search.
-#' @param JobTag An identifier you specify that\'s returned in the completion
-#' notification that\'s published to your Amazon Simple Notification
-#' Service topic. For example, you can use `JobTag` to group related jobs
-#' and identify them in the completion notification.
+#' @param JobTag An identifier you specify that's returned in the completion notification
+#' that's published to your Amazon Simple Notification Service topic. For
+#' example, you can use `JobTag` to group related jobs and identify them in
+#' the completion notification.
 #'
 #' @section Request syntax:
 #' ```
@@ -3103,17 +3103,17 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
 #' in order to return a detected label. Confidence represents how certain
 #' Amazon Rekognition is that a label is correctly identified.0 is the
 #' lowest confidence. 100 is the highest confidence. Amazon Rekognition
-#' Video doesn\'t return any labels with a confidence level lower than this
+#' Video doesn't return any labels with a confidence level lower than this
 #' specified value.
 #' 
-#' If you don\'t specify `MinConfidence`, the operation returns labels with
+#' If you don't specify `MinConfidence`, the operation returns labels with
 #' confidence values greater than or equal to 50 percent.
 #' @param NotificationChannel The Amazon SNS topic ARN you want Amazon Rekognition Video to publish
 #' the completion status of the label detection operation to.
-#' @param JobTag An identifier you specify that\'s returned in the completion
-#' notification that\'s published to your Amazon Simple Notification
-#' Service topic. For example, you can use `JobTag` to group related jobs
-#' and identify them in the completion notification.
+#' @param JobTag An identifier you specify that's returned in the completion notification
+#' that's published to your Amazon Simple Notification Service topic. For
+#' example, you can use `JobTag` to group related jobs and identify them in
+#' the completion notification.
 #'
 #' @section Request syntax:
 #' ```
@@ -3157,7 +3157,7 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 
 #' Starts the asynchronous tracking of a person's path in a stored video
 #'
-#' Starts the asynchronous tracking of a person\'s path in a stored video.
+#' Starts the asynchronous tracking of a person's path in a stored video.
 #' 
 #' Amazon Rekognition Video can track the path of people in a video stored
 #' in an Amazon S3 bucket. Use Video to specify the bucket name and the
@@ -3184,10 +3184,10 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 #' accidently started more than once.
 #' @param NotificationChannel The Amazon SNS topic ARN you want Amazon Rekognition Video to publish
 #' the completion status of the people detection operation to.
-#' @param JobTag An identifier you specify that\'s returned in the completion
-#' notification that\'s published to your Amazon Simple Notification
-#' Service topic. For example, you can use `JobTag` to group related jobs
-#' and identify them in the completion notification.
+#' @param JobTag An identifier you specify that's returned in the completion notification
+#' that's published to your Amazon Simple Notification Service topic. For
+#' example, you can use `JobTag` to group related jobs and identify them in
+#' the completion notification.
 #'
 #' @section Request syntax:
 #' ```
@@ -3319,10 +3319,10 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
 #' @param NotificationChannel The ARN of the Amazon SNS topic to which you want Amazon Rekognition
 #' Video to publish the completion status of the segment detection
 #' operation.
-#' @param JobTag An identifier you specify that\'s returned in the completion
-#' notification that\'s published to your Amazon Simple Notification
-#' Service topic. For example, you can use `JobTag` to group related jobs
-#' and identify them in the completion notification.
+#' @param JobTag An identifier you specify that's returned in the completion notification
+#' that's published to your Amazon Simple Notification Service topic. For
+#' example, you can use `JobTag` to group related jobs and identify them in
+#' the completion notification.
 #' @param Filters Filters for technical cue or shot detection.
 #' @param SegmentTypes &#91;required&#93; An array of segment types to detect in the video. Valid values are
 #' TECHNICAL\\_CUE and SHOT.

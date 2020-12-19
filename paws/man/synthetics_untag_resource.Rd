@@ -7,7 +7,7 @@
 synthetics_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] The ARN of the canary that you\'re removing tags from.
+\item{ResourceArn}{[required] The ARN of the canary that you're removing tags from.
 
 The ARN format of a canary is
 \verb{arn:aws:synthetics:<i>Region</i>:<i>account-id</i>:canary:<i>canary-name</i> }.}

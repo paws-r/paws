@@ -11,7 +11,7 @@ iam_create_policy(PolicyName, Path, PolicyDocument, Description)
 
 IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
-create resources named both \"MyResource\" and \"myresource\".}
+create resources named both "MyResource" and "myresource".}
 
 \item{Path}{The path for the policy.
 
@@ -50,7 +50,7 @@ carriage return (\verb{U+000D})
 \item{Description}{A friendly description of the policy.
 
 Typically used to store information about the permissions defined in the
-policy. For example, \"Grants access to production DynamoDB tables.\"
+policy. For example, "Grants access to production DynamoDB tables."
 
 The policy description is immutable. After a value is assigned, it
 cannot be changed.}
@@ -60,7 +60,7 @@ Creates a new managed policy for your AWS account.
 }
 \details{
 This operation creates a policy version with a version identifier of
-\code{v1} and sets v1 as the policy\'s default version. For more information
+\code{v1} and sets v1 as the policy's default version. For more information
 about policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.
 

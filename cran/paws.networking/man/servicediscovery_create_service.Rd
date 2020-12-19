@@ -19,7 +19,7 @@ servicediscovery_create_service(Name, NamespaceId, CreatorRequestId,
 \item{Name}{[required] The name that you want to assign to the service.
 
 If you want AWS Cloud Map to create an SRV record when you register an
-instance, and if you\'re using a system that requires a specific SRV
+instance, and if you're using a system that requires a specific SRV
 format, such as \href{http://www.haproxy.org/}{HAProxy}, specify the
 following for \code{Name}:
 \itemize{
@@ -62,7 +62,7 @@ check.
 If you specify a health check configuration, you can specify either
 \code{HealthCheckCustomConfig} or \code{HealthCheckConfig} but not both.
 
-You can\'t add, update, or delete a \code{HealthCheckCustomConfig}
+You can't add, update, or delete a \code{HealthCheckCustomConfig}
 configuration from an existing service.}
 
 \item{Tags}{The tags to add to the service. Each tag consists of a key and an

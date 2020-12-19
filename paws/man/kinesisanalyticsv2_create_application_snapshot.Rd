@@ -13,7 +13,7 @@ kinesisanalyticsv2_create_application_snapshot(ApplicationName,
 \item{SnapshotName}{[required] An identifier for the application snapshot.}
 }
 \description{
-Creates a snapshot of the application\'s state data.
+Creates a snapshot of the application's state data.
 }
 \section{Request syntax}{
 \preformatted{svc$create_application_snapshot(

@@ -26,8 +26,8 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 The Transfer Acceleration state of a bucket can be set to one of the
 following two values:
 \itemize{
-\item Enabled -- Enables accelerated data transfers to the bucket.
-\item Suspended -- Disables accelerated data transfers to the bucket.
+\item Enabled – Enables accelerated data transfers to the bucket.
+\item Suspended – Disables accelerated data transfers to the bucket.
 }
 
 The GetBucketAccelerateConfiguration operation returns the transfer
@@ -38,7 +38,7 @@ might take up to thirty minutes before the data transfer rates to the
 bucket increase.
 
 The name of the bucket used for Transfer Acceleration must be
-DNS-compliant and must not contain periods (\".\").
+DNS-compliant and must not contain periods (".").
 
 For more information about transfer acceleration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html}{Transfer Acceleration}.
 

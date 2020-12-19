@@ -8,8 +8,8 @@ quicksight_search_dashboards(AwsAccountId, Filters, NextToken,
   MaxResults)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the user whose dashboards
-you\'re searching for.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the user whose dashboards you're
+searching for.}
 
 \item{Filters}{[required] The filters to apply to the search. Currently, you can search only by
 user name, for example,

@@ -12,8 +12,8 @@ rds_cancel_export_task(ExportTaskIdentifier)
 }
 \description{
 Cancels an export task in progress that is exporting a snapshot to
-Amazon S3. Any data that has already been written to the S3 bucket
-isn\'t removed.
+Amazon S3. Any data that has already been written to the S3 bucket isn't
+removed.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_export_task(

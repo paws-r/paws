@@ -18,7 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{CpuCredits}{[required] The credit option for CPU usage of the instance family.
 
-Valid Values: \code{standard} \\| \code{unlimited}}
+Valid Values: \code{standard} | \code{unlimited}}
 }
 \description{
 Modifies the default credit option for CPU usage of burstable

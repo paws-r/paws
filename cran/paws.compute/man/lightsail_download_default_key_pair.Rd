@@ -7,7 +7,7 @@
 lightsail_download_default_key_pair()
 }
 \description{
-Downloads the default SSH key pair from the user\'s account.
+Downloads the default SSH key pair from the user's account.
 }
 \section{Request syntax}{
 \preformatted{svc$download_default_key_pair()

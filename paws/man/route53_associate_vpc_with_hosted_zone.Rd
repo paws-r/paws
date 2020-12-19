@@ -10,8 +10,8 @@ route53_associate_vpc_with_hosted_zone(HostedZoneId, VPC, Comment)
 \item{HostedZoneId}{[required] The ID of the private hosted zone that you want to associate an Amazon
 VPC with.
 
-Note that you can\'t associate a VPC with a hosted zone that doesn\'t
-have an existing VPC association.}
+Note that you can't associate a VPC with a hosted zone that doesn't have
+an existing VPC association.}
 
 \item{VPC}{[required] A complex type that contains information about the VPC that you want to
 associate with a private hosted zone.}
@@ -23,7 +23,7 @@ Associates an Amazon VPC with a private hosted zone.
 }
 \details{
 To perform the association, the VPC and the private hosted zone must
-already exist. Also, you can\'t convert a public hosted zone into a
+already exist. Also, you can't convert a public hosted zone into a
 private hosted zone.
 
 If you want to associate a VPC that was created by one AWS account with

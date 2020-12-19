@@ -21,7 +21,7 @@ results than the maximum page size.}
 Returns the name, ARN, \code{NumberOfRules} and effective dates of all Cost
 Categories defined in the account. You have the option to use
 \code{EffectiveOn} to return a list of Cost Categories that were active on a
-specific date. If there is no \code{EffectiveOn} specified, you'll see Cost
+specific date. If there is no \code{EffectiveOn} specified, you’ll see Cost
 Categories that are effective on the current date. If Cost Category is
 still effective, \code{EffectiveEnd} is omitted in the response.
 \code{ListCostCategoryDefinitions} supports pagination. The request can have

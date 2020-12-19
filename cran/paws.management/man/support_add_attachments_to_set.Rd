@@ -27,7 +27,7 @@ Adds one or more attachments to an attachment set.
 \details{
 An attachment set is a temporary container for attachments that you add
 to a case or case communication. The set is available for 1 hour after
-it\'s created. The \code{expiryTime} returned in the response is when the set
+it's created. The \code{expiryTime} returned in the response is when the set
 expires.
 \itemize{
 \item You must have a Business or Enterprise support plan to use the AWS

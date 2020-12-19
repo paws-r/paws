@@ -21,16 +21,16 @@ null, all attributes are returned.}
 operation, which can be used to return the next set of items in the
 list.}
 
-\item{Filter}{A filter string of the form \"\emph{AttributeName} \emph{Filter-Type}
-\"\emph{AttributeValue}\"\". Quotation marks within the filter string must be
-escaped using the backslash (\\) character. For example, \"\code{family_name}
-= \\\"Reddy\\\"\".
+\item{Filter}{A filter string of the form "\emph{AttributeName} \emph{Filter-Type}
+"\emph{AttributeValue}"". Quotation marks within the filter string must be
+escaped using the backslash (\\) character. For example, "\code{family_name}
+= \\"Reddy\\"".
 \itemize{
 \item \emph{AttributeName}: The name of the attribute to search for. You can
 only search for one attribute at a time.
-\item \emph{Filter-Type}: For an exact match, use =, for example,
-\"\code{given_name} = \\\"Jon\\\"\". For a prefix (\"starts with\")
-match, use \\^=, for example, \"\code{given_name} \\^= \\\"Jon\\\"\".
+\item \emph{Filter-Type}: For an exact match, use =, for example, "\code{given_name}
+= \\"Jon\\"". For a prefix ("starts with") match, use ^=, for
+example, "\code{given_name} ^= \\"Jon\\"".
 \item \emph{AttributeValue}: The attribute value that must be matched for each
 user.
 }

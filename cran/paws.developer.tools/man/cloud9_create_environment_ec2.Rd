@@ -33,7 +33,7 @@ environment has last been used.}
 
 \item{ownerArn}{The Amazon Resource Name (ARN) of the environment owner. This ARN can be
 the ARN of any AWS IAM principal. If this value is not specified, the
-ARN defaults to this environment\'s creator.}
+ARN defaults to this environment's creator.}
 
 \item{tags}{An array of key-value pairs that will be associated with the new AWS
 Cloud9 development environment.}

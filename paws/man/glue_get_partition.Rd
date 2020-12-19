@@ -12,7 +12,7 @@ none is provided, the AWS account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database where the partition resides.}
 
-\item{TableName}{[required] The name of the partition\'s table.}
+\item{TableName}{[required] The name of the partition's table.}
 
 \item{PartitionValues}{[required] The values that define the partition.}
 }

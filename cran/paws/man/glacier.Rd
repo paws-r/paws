@@ -10,16 +10,16 @@ glacier(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-Amazon S3 Glacier (Glacier) is a storage solution for \"cold data.\"
+Amazon S3 Glacier (Glacier) is a storage solution for "cold data."
 
 Glacier is an extremely low-cost storage service that provides secure,
 durable, and easy-to-use storage for data backup and archival. With
 Glacier, customers can store their data cost effectively for months,
 years, or decades. Glacier also enables customers to offload the
 administrative burdens of operating and scaling storage to AWS, so they
-don\'t have to worry about capacity planning, hardware provisioning,
-data replication, hardware failure and recovery, or time-consuming
-hardware migrations.
+don't have to worry about capacity planning, hardware provisioning, data
+replication, hardware failure and recovery, or time-consuming hardware
+migrations.
 
 Glacier is a great storage choice when low storage cost is paramount and
 your data is rarely retrieved. If your application requires fast or

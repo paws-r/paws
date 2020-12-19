@@ -12,7 +12,7 @@ iotsitewise_create_asset(assetName, assetModelId, clientToken, tags)
 \item{assetModelId}{[required] The ID of the asset model from which to create the asset.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 
 \item{tags}{A list of key-value pairs that contain metadata for the asset. For more

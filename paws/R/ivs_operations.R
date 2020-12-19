@@ -94,7 +94,7 @@ ivs_batch_get_stream_key <- function(arns) {
 #' whichever is lower; and bitrate can be up to 8.5 Mbps. `BASIC`: The
 #' stream is transfixed; resolution can be up to 480p; and bitrate can be
 #' up to 1.5 Mbps. Default: `STANDARD`.
-#' @param tags See Channel\\$tags.
+#' @param tags See Channel$tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -144,7 +144,7 @@ ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, tag
 #' ivs_create_stream_key(channelArn, tags)
 #'
 #' @param channelArn &#91;required&#93; ARN of the channel for which to create the stream key.
-#' @param tags See Channel\\$tags.
+#' @param tags See Channel$tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -688,7 +688,7 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates a channel's configuration
 #'
-#' Updates a channel\'s configuration. This does not affect an ongoing
+#' Updates a channel's configuration. This does not affect an ongoing
 #' stream of this channel. You must stop and restart the stream for the
 #' changes to take effect.
 #'

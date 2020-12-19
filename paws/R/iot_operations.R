@@ -143,9 +143,9 @@ iot_add_thing_to_thing_group <- function(thingGroupName = NULL, thingGroupArn = 
 #' met:
 #' 
 #' -   The job must have been created with the `targetSelection` field set
-#'     to \"CONTINUOUS\".
+#'     to "CONTINUOUS".
 #' 
-#' -   The job status must currently be \"IN\\_PROGRESS\".
+#' -   The job status must currently be "IN\\_PROGRESS".
 #' 
 #' -   The total number of targets associated with a job must not
 #'     exceed 100.
@@ -397,13 +397,13 @@ iot_cancel_audit_mitigation_actions_task <- function(taskId) {
 #'
 #' Cancels an audit that is in progress. The audit can be either scheduled
 #' or on-demand. If the audit is not in progress, an
-#' \"InvalidRequestException\" occurs.
+#' "InvalidRequestException" occurs.
 #'
 #' @usage
 #' iot_cancel_audit_task(taskId)
 #'
 #' @param taskId &#91;required&#93; The ID of the audit you want to cancel. You can only cancel an audit
-#' that is \"IN\\_PROGRESS\".
+#' that is "IN\\_PROGRESS".
 #'
 #' @section Request syntax:
 #' ```
@@ -489,11 +489,11 @@ iot_cancel_certificate_transfer <- function(certificateId) {
 #' @param jobId &#91;required&#93; The unique identifier you assigned to this job when it was created.
 #' @param reasonCode (Optional)A reason code string that explains why the job was canceled.
 #' @param comment An optional comment string describing why the job was canceled.
-#' @param force (Optional) If `true` job executions with status \"IN\\_PROGRESS\" and
-#' \"QUEUED\" are canceled, otherwise only job executions with status
-#' \"QUEUED\" are canceled. The default is `false`.
+#' @param force (Optional) If `true` job executions with status "IN\\_PROGRESS" and
+#' "QUEUED" are canceled, otherwise only job executions with status
+#' "QUEUED" are canceled. The default is `false`.
 #' 
-#' Canceling a job which is \"IN\\_PROGRESS\", will cause a device which is
+#' Canceling a job which is "IN\\_PROGRESS", will cause a device which is
 #' executing the job to be unable to update the job execution status. Use
 #' caution and ensure that each device executing a job which is canceled is
 #' able to recover to a valid state.
@@ -545,9 +545,9 @@ iot_cancel_job <- function(jobId, reasonCode = NULL, comment = NULL, force = NUL
 #' `InvalidStateTransitionException` will be thrown. The default is
 #' `false`.
 #' 
-#' Canceling a job execution which is \"IN\\_PROGRESS\", will cause the
-#' device to be unable to update the job execution status. Use caution and
-#' ensure that the device is able to recover to a valid state.
+#' Canceling a job execution which is "IN\\_PROGRESS", will cause the device
+#' to be unable to update the job execution status. Use caution and ensure
+#' that the device is able to recover to a valid state.
 #' @param expectedVersion (Optional) The expected current version of the job execution. Each time
 #' you update the job execution, its version is incremented. If the version
 #' of the job execution stored in Jobs does not match, the update is
@@ -674,7 +674,7 @@ iot_confirm_topic_rule_destination <- function(confirmationToken) {
 #'   tokenKeyName, tokenSigningPublicKeys, status, tags, signingDisabled)
 #'
 #' @param authorizerName &#91;required&#93; The authorizer name.
-#' @param authorizerFunctionArn &#91;required&#93; The ARN of the authorizer\'s Lambda function.
+#' @param authorizerFunctionArn &#91;required&#93; The ARN of the authorizer's Lambda function.
 #' @param tokenKeyName The name of the token key used to extract the token from the HTTP
 #' headers.
 #' @param tokenSigningPublicKeys The public keys used to verify the digital signature returned by your
@@ -682,13 +682,13 @@ iot_confirm_topic_rule_destination <- function(confirmationToken) {
 #' @param status The status of the create authorizer request.
 #' @param tags Metadata which can be used to manage the custom authorizer.
 #' 
-#' For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+#' For URI Request parameters use format: ...key1=value1&key2=value2...
 #' 
 #' For the CLI command-line parameter use format: &&tags
-#' \"key1=value1&key2=value2\\...\"
+#' "key1=value1&key2=value2..."
 #' 
-#' For the cli-input-json file use format: \"tags\":
-#' \"key1=value1&key2=value2\\...\"
+#' For the cli-input-json file use format: "tags":
+#' "key1=value1&key2=value2..."
 #' @param signingDisabled Specifies whether AWS IoT validates the token signature in an
 #' authorization request.
 #'
@@ -801,9 +801,8 @@ iot_create_billing_group <- function(billingGroupName, billingGroupProperties = 
 #' 
 #' On Linux and OS X, the command is:
 #' 
-#' \\$ ls my-csr-directory/ \\| xargs -I \{\} aws iot
-#' create-certificate-from-csr \\--certificate-signing-request
-#' file://my-csr-directory/\{\}
+#' $ ls my-csr-directory/ | xargs -I \{\} aws iot create-certificate-from-csr
+#' --certificate-signing-request file://my-csr-directory/\{\}
 #' 
 #' This command lists all of the CSRs in my-csr-directory and pipes each
 #' CSR file name to the aws iot create-certificate-from-csr AWS CLI command
@@ -812,22 +811,21 @@ iot_create_billing_group <- function(billingGroupName, billingGroupProperties = 
 #' The aws iot create-certificate-from-csr part of the command can also be
 #' run in parallel to speed up the certificate creation process:
 #' 
-#' \\$ ls my-csr-directory/ \\| xargs -P 10 -I \{\} aws iot
-#' create-certificate-from-csr \\--certificate-signing-request
+#' $ ls my-csr-directory/ | xargs -P 10 -I \{\} aws iot
+#' create-certificate-from-csr --certificate-signing-request
 #' file://my-csr-directory/\{\}
 #' 
 #' On Windows PowerShell, the command to create certificates for all CSRs
 #' in my-csr-directory is:
 #' 
-#' \\> ls -Name my-csr-directory \\| %\{aws iot create-certificate-from-csr
-#' \\--certificate-signing-request file://my-csr-directory/\\$\\_\}
+#' &gt; ls -Name my-csr-directory | %\{aws iot create-certificate-from-csr
+#' --certificate-signing-request file://my-csr-directory/$\\_\}
 #' 
 #' On a Windows command prompt, the command to create certificates for all
 #' CSRs in my-csr-directory is:
 #' 
-#' \\> forfiles /p my-csr-directory /c \"cmd /c aws iot
-#' create-certificate-from-csr \\--certificate-signing-request
-#' file://\\@@path\"
+#' &gt; forfiles /p my-csr-directory /c "cmd /c aws iot
+#' create-certificate-from-csr --certificate-signing-request file://@@path"
 #'
 #' @usage
 #' iot_create_certificate_from_csr(certificateSigningRequest, setAsActive)
@@ -880,7 +878,7 @@ iot_create_certificate_from_csr <- function(certificateSigningRequest, setAsActi
 #' @param type &#91;required&#93; Specifies the type of dimension. Supported types: `TOPIC_FILTER.`
 #' @param stringValues &#91;required&#93; Specifies the value or list of values for the dimension. For
 #' `TOPIC_FILTER` dimensions, this is a pattern used to match the MQTT
-#' topic (for example, \"admin/\\#\").
+#' topic (for example, "admin/\\#").
 #' @param tags Metadata that can be used to manage the dimension.
 #' @param clientRequestToken &#91;required&#93; Each dimension must have a unique client request token. If you try to
 #' create a new dimension with the same token as a dimension that already
@@ -952,13 +950,13 @@ iot_create_dimension <- function(name, type, stringValues, tags = NULL, clientRe
 #' AWS IoT Core currently supports only the `DATA` service type.
 #' @param tags Metadata which can be used to manage the domain configuration.
 #' 
-#' For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+#' For URI Request parameters use format: ...key1=value1&key2=value2...
 #' 
 #' For the CLI command-line parameter use format: &&tags
-#' \"key1=value1&key2=value2\\...\"
+#' "key1=value1&key2=value2..."
 #' 
-#' For the cli-input-json file use format: \"tags\":
-#' \"key1=value1&key2=value2\\...\"
+#' For the cli-input-json file use format: "tags":
+#' "key1=value1&key2=value2..."
 #'
 #' @section Request syntax:
 #' ```
@@ -1015,7 +1013,7 @@ iot_create_domain_configuration <- function(domainConfigurationName, domainName 
 #' @param thingGroupProperties The dynamic thing group properties.
 #' @param indexName The dynamic thing group index name.
 #' 
-#' Currently one index is supported: \"AWS\\_Things\".
+#' Currently one index is supported: "AWS\\_Things".
 #' @param queryString &#91;required&#93; The dynamic thing group search query string.
 #' 
 #' See [Query
@@ -1023,7 +1021,7 @@ iot_create_domain_configuration <- function(domainConfigurationName, domainName 
 #' for information about query string syntax.
 #' @param queryVersion The dynamic thing group query version.
 #' 
-#' Currently one query version is supported: \"2017-09-30\". If not
+#' Currently one query version is supported: "2017-09-30". If not
 #' specified, the query version defaults to this value.
 #' @param tags Metadata which can be used to manage the dynamic thing group.
 #'
@@ -1082,8 +1080,8 @@ iot_create_dynamic_thing_group <- function(thingGroupName, thingGroupProperties 
 #'   abortConfig, timeoutConfig, tags)
 #'
 #' @param jobId &#91;required&#93; A job identifier which must be unique for your AWS account. We recommend
-#' using a UUID. Alpha-numeric characters, \"-\" and \"\\_\" are valid for
-#' use here.
+#' using a UUID. Alpha-numeric characters, "-" and "\\_" are valid for use
+#' here.
 #' @param targets &#91;required&#93; A list of things and thing groups to which the job should be sent.
 #' @param documentSource An S3 link to the job document.
 #' @param document The job document.
@@ -1320,7 +1318,7 @@ iot_create_mitigation_action <- function(actionName, roleArn, actionParams, tags
 #' when a change is detected in a target. For example, an update will run
 #' on a thing when the thing is added to a target group, even after the
 #' update was completed by all things originally in the group. Valid
-#' values: CONTINUOUS \\| SNAPSHOT.
+#' values: CONTINUOUS | SNAPSHOT.
 #' @param awsJobExecutionsRolloutConfig Configuration for the rollout of OTA updates.
 #' @param awsJobPresignedUrlConfig Configuration information for pre-signed URLs.
 #' @param awsJobAbortConfig The criteria that determine when and how a job abort takes place.
@@ -1461,7 +1459,7 @@ iot_create_ota_update <- function(otaUpdateId, description = NULL, targets, prot
 #' 
 #' The created policy is the default version for the policy. This operation
 #' creates a policy version with a version identifier of **1** and sets
-#' **1** as the policy\'s default version.
+#' **1** as the policy's default version.
 #'
 #' @usage
 #' iot_create_policy(policyName, policyDocument, tags)
@@ -1472,13 +1470,13 @@ iot_create_ota_update <- function(otaUpdateId, description = NULL, targets, prot
 #' whitespace.
 #' @param tags Metadata which can be used to manage the policy.
 #' 
-#' For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+#' For URI Request parameters use format: ...key1=value1&key2=value2...
 #' 
 #' For the CLI command-line parameter use format: &&tags
-#' \"key1=value1&key2=value2\\...\"
+#' "key1=value1&key2=value2..."
 #' 
-#' For the cli-input-json file use format: \"tags\":
-#' \"key1=value1&key2=value2\\...\"
+#' For the cli-input-json file use format: "tags":
+#' "key1=value1&key2=value2..."
 #'
 #' @section Request syntax:
 #' ```
@@ -1522,10 +1520,9 @@ iot_create_policy <- function(policyName, policyDocument, tags = NULL) {
 #' DeletePolicyVersion to delete an existing version before you create a
 #' new one.
 #' 
-#' Optionally, you can set the new version as the policy\'s default
-#' version. The default version is the operative version (that is, the
-#' version that is in effect for the certificates to which the policy is
-#' attached).
+#' Optionally, you can set the new version as the policy's default version.
+#' The default version is the operative version (that is, the version that
+#' is in effect for the certificates to which the policy is attached).
 #'
 #' @usage
 #' iot_create_policy_version(policyName, policyDocument, setAsDefault)
@@ -1620,13 +1617,13 @@ iot_create_provisioning_claim <- function(templateName) {
 #' @param preProvisioningHook Creates a pre-provisioning hook template.
 #' @param tags Metadata which can be used to manage the fleet provisioning template.
 #' 
-#' For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+#' For URI Request parameters use format: ...key1=value1&key2=value2...
 #' 
 #' For the CLI command-line parameter use format: &&tags
-#' \"key1=value1&key2=value2\\...\"
+#' "key1=value1&key2=value2..."
 #' 
-#' For the cli-input-json file use format: \"tags\":
-#' \"key1=value1&key2=value2\\...\"
+#' For the cli-input-json file use format: "tags":
+#' "key1=value1&key2=value2..."
 #'
 #' @section Request syntax:
 #' ```
@@ -1724,13 +1721,13 @@ iot_create_provisioning_template_version <- function(templateName, templateBody,
 #' @param credentialDurationSeconds How long (in seconds) the credentials will be valid.
 #' @param tags Metadata which can be used to manage the role alias.
 #' 
-#' For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+#' For URI Request parameters use format: ...key1=value1&key2=value2...
 #' 
 #' For the CLI command-line parameter use format: &&tags
-#' \"key1=value1&key2=value2\\...\"
+#' "key1=value1&key2=value2..."
 #' 
-#' For the cli-input-json file use format: \"tags\":
-#' \"key1=value1&key2=value2\\...\"
+#' For the cli-input-json file use format: "tags":
+#' "key1=value1&key2=value2..."
 #'
 #' @section Request syntax:
 #' ```
@@ -1775,18 +1772,17 @@ iot_create_role_alias <- function(roleAlias, roleArn, credentialDurationSeconds 
 #' iot_create_scheduled_audit(frequency, dayOfMonth, dayOfWeek,
 #'   targetCheckNames, scheduledAuditName, tags)
 #'
-#' @param frequency &#91;required&#93; How often the scheduled audit takes place. Can be one of \"DAILY\",
-#' \"WEEKLY\", \"BIWEEKLY\" or \"MONTHLY\". The start time of each audit is
+#' @param frequency &#91;required&#93; How often the scheduled audit takes place. Can be one of "DAILY",
+#' "WEEKLY", "BIWEEKLY" or "MONTHLY". The start time of each audit is
 #' determined by the system.
 #' @param dayOfMonth The day of the month on which the scheduled audit takes place. Can be
-#' \"1\" through \"31\" or \"LAST\". This field is required if the
-#' \"frequency\" parameter is set to \"MONTHLY\". If days 29-31 are
-#' specified, and the month does not have that many days, the audit takes
-#' place on the \"LAST\" day of the month.
+#' "1" through "31" or "LAST". This field is required if the "frequency"
+#' parameter is set to "MONTHLY". If days 29-31 are specified, and the
+#' month does not have that many days, the audit takes place on the "LAST"
+#' day of the month.
 #' @param dayOfWeek The day of the week on which the scheduled audit takes place. Can be one
-#' of \"SUN\", \"MON\", \"TUE\", \"WED\", \"THU\", \"FRI\", or \"SAT\".
-#' This field is required if the \"frequency\" parameter is set to
-#' \"WEEKLY\" or \"BIWEEKLY\".
+#' of "SUN", "MON", "TUE", "WED", "THU", "FRI", or "SAT". This field is
+#' required if the "frequency" parameter is set to "WEEKLY" or "BIWEEKLY".
 #' @param targetCheckNames &#91;required&#93; Which checks are performed during the scheduled audit. Checks must be
 #' enabled for your account. (Use `DescribeAccountAuditConfiguration` to
 #' see the list of all checks, including those that are enabled or use
@@ -1850,13 +1846,13 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #' sent to the console.) Alerts are generated when a device (thing)
 #' violates a behavior.
 #' @param additionalMetricsToRetain A list of metrics whose data is retained (stored). By default, data is
-#' retained for any metric used in the profile\'s `behaviors`, but it is
+#' retained for any metric used in the profile's `behaviors`, but it is
 #' also retained for any metric specified here.
 #' 
 #' **Note:** This API field is deprecated. Please use
-#' CreateSecurityProfileRequest\\$additionalMetricsToRetainV2 instead.
+#' CreateSecurityProfileRequest$additionalMetricsToRetainV2 instead.
 #' @param additionalMetricsToRetainV2 A list of metrics whose data is retained (stored). By default, data is
-#' retained for any metric used in the profile\'s `behaviors`, but it is
+#' retained for any metric used in the profile's `behaviors`, but it is
 #' also retained for any metric specified here.
 #' @param tags Metadata that can be used to manage the security profile.
 #'
@@ -2020,9 +2016,9 @@ iot_create_stream <- function(streamId, description = NULL, files, roleArn, tags
 #'
 #' @param thingName &#91;required&#93; The name of the thing to create.
 #' 
-#' You can\'t change a thing\'s name after you create it. To change a
-#' thing\'s name, you must create a new thing, give it the new name, and
-#' then delete the old thing.
+#' You can't change a thing's name after you create it. To change a thing's
+#' name, you must create a new thing, give it the new name, and then delete
+#' the old thing.
 #' @param thingTypeName The name of the thing type associated with the new thing.
 #' @param attributePayload The attribute payload, which consists of up to three name/value pairs in
 #' a JSON document. For example:
@@ -2190,13 +2186,13 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 #' @param topicRulePayload &#91;required&#93; The rule payload.
 #' @param tags Metadata which can be used to manage the topic rule.
 #' 
-#' For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+#' For URI Request parameters use format: ...key1=value1&key2=value2...
 #' 
-#' For the CLI command-line parameter use format: \\--tags
-#' \"key1=value1&key2=value2\\...\"
+#' For the CLI command-line parameter use format: --tags
+#' "key1=value1&key2=value2..."
 #' 
-#' For the cli-input-json file use format: \"tags\":
-#' \"key1=value1&key2=value2\\...\"
+#' For the cli-input-json file use format: "tags":
+#' "key1=value1&key2=value2..."
 #'
 #' @section Request syntax:
 #' ```
@@ -2875,11 +2871,11 @@ iot_delete_dynamic_thing_group <- function(thingGroupName, expectedVersion = NUL
 #' Deleting a job may take time, depending on the number of job executions
 #' created for the job and various other factors. While the job is being
 #' deleted, the status of the job will be shown as
-#' \"DELETION\\_IN\\_PROGRESS\". Attempting to delete or cancel a job whose
-#' status is already \"DELETION\\_IN\\_PROGRESS\" will result in an error.
+#' "DELETION\\_IN\\_PROGRESS". Attempting to delete or cancel a job whose
+#' status is already "DELETION\\_IN\\_PROGRESS" will result in an error.
 #' 
-#' Only 10 jobs may have status \"DELETION\\_IN\\_PROGRESS\" at the same
-#' time, or a LimitExceededException will occur.
+#' Only 10 jobs may have status "DELETION\\_IN\\_PROGRESS" at the same time,
+#' or a LimitExceededException will occur.
 #'
 #' @usage
 #' iot_delete_job(jobId, force)
@@ -2889,12 +2885,12 @@ iot_delete_dynamic_thing_group <- function(thingGroupName, expectedVersion = NUL
 #' After a job deletion is completed, you may reuse this jobId when you
 #' create a new job. However, this is not recommended, and you must ensure
 #' that your devices are not using the jobId to refer to the deleted job.
-#' @param force (Optional) When true, you can delete a job which is \"IN\\_PROGRESS\".
+#' @param force (Optional) When true, you can delete a job which is "IN\\_PROGRESS".
 #' Otherwise, you can only delete a job which is in a terminal state
-#' (\"COMPLETED\" or \"CANCELED\") or an exception will occur. The default
-#' is false.
+#' ("COMPLETED" or "CANCELED") or an exception will occur. The default is
+#' false.
 #' 
-#' Deleting a job which is \"IN\\_PROGRESS\", will cause a device which is
+#' Deleting a job which is "IN\\_PROGRESS", will cause a device which is
 #' executing the job to be unable to access job information or update the
 #' job execution status. Use caution and ensure that each device executing
 #' a job which is deleted is able to recover to a valid state.
@@ -2943,15 +2939,14 @@ iot_delete_job <- function(jobId, force = NULL) {
 #' Note that once a job execution is deleted, the `executionNumber` may be
 #' reused by IoT, so be sure you get and use the correct value here.
 #' @param force (Optional) When true, you can delete a job execution which is
-#' \"IN\\_PROGRESS\". Otherwise, you can only delete a job execution which
-#' is in a terminal state (\"SUCCEEDED\", \"FAILED\", \"REJECTED\",
-#' \"REMOVED\" or \"CANCELED\") or an exception will occur. The default is
-#' false.
+#' "IN\\_PROGRESS". Otherwise, you can only delete a job execution which is
+#' in a terminal state ("SUCCEEDED", "FAILED", "REJECTED", "REMOVED" or
+#' "CANCELED") or an exception will occur. The default is false.
 #' 
-#' Deleting a job execution which is \"IN\\_PROGRESS\", will cause the
-#' device to be unable to access job information or update the job
-#' execution status. Use caution and ensure that the device is able to
-#' recover to a valid state.
+#' Deleting a job execution which is "IN\\_PROGRESS", will cause the device
+#' to be unable to access job information or update the job execution
+#' status. Use caution and ensure that the device is able to recover to a
+#' valid state.
 #'
 #' @section Request syntax:
 #' ```
@@ -3407,7 +3402,7 @@ iot_delete_stream <- function(streamId) {
 #' Deletes the specified thing
 #'
 #' Deletes the specified thing. Returns successfully with no error if the
-#' deletion is successful or you specify a thing that doesn\'t exist.
+#' deletion is successful or you specify a thing that doesn't exist.
 #'
 #' @usage
 #' iot_delete_thing(thingName, expectedVersion)
@@ -3755,7 +3750,7 @@ iot_describe_audit_finding <- function(findingId) {
 #'
 #' Gets information about an audit mitigation task that is used to apply
 #' mitigation actions to a set of audit findings. Properties include the
-#' actions being applied, the audit checks to which they\'re being applied,
+#' actions being applied, the audit checks to which they're being applied,
 #' the task status, and aggregated task statistics.
 #'
 #' @usage
@@ -4246,7 +4241,7 @@ iot_describe_job <- function(jobId) {
 #'
 #' @param jobId &#91;required&#93; The unique identifier you assigned to this job when it was created.
 #' @param thingName &#91;required&#93; The name of the thing on which the job execution is running.
-#' @param executionNumber A string (consisting of the digits \"0\" through \"9\" which is used to
+#' @param executionNumber A string (consisting of the digits "0" through "9" which is used to
 #' specify a particular job execution on a particular device.
 #'
 #' @section Request syntax:
@@ -5148,9 +5143,9 @@ iot_get_ota_update <- function(otaUpdateId) {
 #' groupings. The default percentile groupings are: 1,5,25,50,75,95,99,
 #' although you can specify your own when you call `GetPercentiles`. This
 #' function returns a value for each percentile group specified (or the
-#' default percentile groupings). The percentile group \"1\" contains the
+#' default percentile groupings). The percentile group "1" contains the
 #' aggregated field value that occurs in approximately one percent of the
-#' values that match the query. The percentile group \"5\" contains the
+#' values that match the query. The percentile group "5" contains the
 #' aggregated field value that occurs in approximately five percent of the
 #' values that match the query, and so on. The result is an approximation,
 #' the more values that match the query, the more accurate the percentile
@@ -5320,7 +5315,7 @@ iot_get_registration_code <- function() {
 #'   queryVersion)
 #'
 #' @param indexName The name of the index to search. The default value is `AWS_Things`.
-#' @param queryString &#91;required&#93; The query used to search. You can specify \"*\" for the query string to
+#' @param queryString &#91;required&#93; The query used to search. You can specify "*" for the query string to
 #' get the count of all indexed things in your AWS account.
 #' @param aggregationField The aggregation field name.
 #' @param queryVersion The version of the query used to search.
@@ -5738,13 +5733,13 @@ iot_list_audit_mitigation_actions_tasks <- function(auditTaskId = NULL, findingI
 #'
 #' @param startTime &#91;required&#93; The beginning of the time period. Audit information is retained for a
 #' limited time (180 days). Requesting a start time prior to what is
-#' retained results in an \"InvalidRequestException\".
+#' retained results in an "InvalidRequestException".
 #' @param endTime &#91;required&#93; The end of the time period.
 #' @param taskType A filter to limit the output to the specified type of audit: can be one
-#' of \"ON\\_DEMAND\\_AUDIT\\_TASK\" or \"SCHEDULED\\_\\_AUDIT\\_TASK\".
+#' of "ON\\_DEMAND\\_AUDIT\\_TASK" or "SCHEDULED\\_\\_AUDIT\\_TASK".
 #' @param taskStatus A filter to limit the output to audits with the specified completion
-#' status: can be one of \"IN\\_PROGRESS\", \"COMPLETED\", \"FAILED\", or
-#' \"CANCELED\".
+#' status: can be one of "IN\\_PROGRESS", "COMPLETED", "FAILED", or
+#' "CANCELED".
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time. The default is 25.
 #'
@@ -7585,13 +7580,13 @@ iot_list_violation_events <- function(startTime, endTime, thingName = NULL, secu
 #' @param registrationConfig Information about the registration configuration.
 #' @param tags Metadata which can be used to manage the CA certificate.
 #' 
-#' For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+#' For URI Request parameters use format: ...key1=value1&key2=value2...
 #' 
 #' For the CLI command-line parameter use format: &&tags
-#' \"key1=value1&key2=value2\\...\"
+#' "key1=value1&key2=value2..."
 #' 
-#' For the cli-input-json file use format: \"tags\":
-#' \"key1=value1&key2=value2\\...\"
+#' For the cli-input-json file use format: "tags":
+#' "key1=value1&key2=value2..."
 #'
 #' @section Request syntax:
 #' ```
@@ -7777,7 +7772,7 @@ iot_register_thing <- function(templateBody, parameters = NULL) {
 #' enumerate your certificates.
 #' 
 #' This operation can only be called by the transfer destination. After it
-#' is called, the certificate will be returned to the source\'s account in
+#' is called, the certificate will be returned to the source's account in
 #' the INACTIVE state.
 #'
 #' @usage
@@ -8321,7 +8316,7 @@ iot_set_default_authorizer <- function(authorizerName) {
 #' Sets the specified version of the specified policy as the policy's
 #' default (operative) version
 #'
-#' Sets the specified version of the specified policy as the policy\'s
+#' Sets the specified version of the specified policy as the policy's
 #' default (operative) version. This action affects all certificates to
 #' which the policy is attached. To list the principals the policy is
 #' attached to, use the ListPrincipalPolicy API.
@@ -8795,7 +8790,7 @@ iot_test_authorization <- function(principal = NULL, cognitoIdentityPoolId = NUL
 #' @param authorizerName &#91;required&#93; The custom authorizer name.
 #' @param token The token returned by your custom authentication service.
 #' @param tokenSignature The signature made with the token and your custom authentication
-#' service\'s private key. This value must be Base-64-encoded.
+#' service's private key. This value must be Base-64-encoded.
 #' @param httpContext Specifies a test HTTP authorization request.
 #' @param mqttContext Specifies a test MQTT authorization request.
 #' @param tlsContext Specifies a test TLS authorization request.
@@ -8849,7 +8844,7 @@ iot_test_invoke_authorizer <- function(authorizerName, token = NULL, tokenSignat
 #' 
 #' You can cancel the transfer until it is acknowledged by the recipient.
 #' 
-#' No notification is sent to the transfer destination\'s account. It is up
+#' No notification is sent to the transfer destination's account. It is up
 #' to the caller to notify the transfer target.
 #' 
 #' The certificate being transferred must not be in the ACTIVE state. You
@@ -9014,7 +9009,7 @@ iot_update_account_audit_configuration <- function(roleArn = NULL, auditNotifica
 #'   tokenKeyName, tokenSigningPublicKeys, status)
 #'
 #' @param authorizerName &#91;required&#93; The authorizer name.
-#' @param authorizerFunctionArn The ARN of the authorizer\'s Lambda function.
+#' @param authorizerFunctionArn The ARN of the authorizer's Lambda function.
 #' @param tokenKeyName The key used to extract the token from the HTTP headers.
 #' @param tokenSigningPublicKeys The public keys used to verify the token signature.
 #' @param status The status of the update authorizer request.
@@ -9112,7 +9107,7 @@ iot_update_billing_group <- function(billingGroupName, billingGroupProperties, e
 #' **Note:** The status value REGISTER\\_INACTIVE is deprecated and should
 #' not be used.
 #' @param newAutoRegistrationStatus The new value for the auto registration status. Valid values are:
-#' \"ENABLE\" or \"DISABLE\".
+#' "ENABLE" or "DISABLE".
 #' @param registrationConfig Information about the registration configuration.
 #' @param removeAutoRegistration If true, removes auto registration.
 #'
@@ -9217,7 +9212,7 @@ iot_update_certificate <- function(certificateId, newStatus) {
 #' the type and value to make it easy to remember what it does.
 #' @param stringValues &#91;required&#93; Specifies the value or list of values for the dimension. For
 #' `TOPIC_FILTER` dimensions, this is a pattern used to match the MQTT
-#' topic (for example, \"admin/\\#\").
+#' topic (for example, "admin/\\#").
 #'
 #' @section Request syntax:
 #' ```
@@ -9252,7 +9247,7 @@ iot_update_dimension <- function(name, stringValues) {
 #' Updates values stored in the domain configuration
 #'
 #' Updates values stored in the domain configuration. Domain configurations
-#' for default endpoints can\'t be updated.
+#' for default endpoints can't be updated.
 #' 
 #' The domain configuration feature is in public preview and is subject to
 #' change.
@@ -9312,11 +9307,11 @@ iot_update_domain_configuration <- function(domainConfigurationName, authorizerC
 #' @param expectedVersion The expected version of the dynamic thing group to update.
 #' @param indexName The dynamic thing group index to update.
 #' 
-#' Currently one index is supported: \'AWS\\_Things\'.
+#' Currently one index is supported: 'AWS\\_Things'.
 #' @param queryString The dynamic thing group search query string to update.
 #' @param queryVersion The dynamic thing group query version to update.
 #' 
-#' Currently one query version is supported: \"2017-09-30\". If not
+#' Currently one query version is supported: "2017-09-30". If not
 #' specified, the query version defaults to this value.
 #'
 #' @section Request syntax:
@@ -9549,7 +9544,7 @@ iot_update_job <- function(jobId, description = NULL, presignedUrlConfig = NULL,
 #' @usage
 #' iot_update_mitigation_action(actionName, roleArn, actionParams)
 #'
-#' @param actionName &#91;required&#93; The friendly name for the mitigation action. You can\'t change the name
+#' @param actionName &#91;required&#93; The friendly name for the mitigation action. You can't change the name
 #' by using `UpdateMitigationAction`. Instead, you must delete and
 #' re-create the mitigation action with the new name.
 #' @param roleArn The ARN of the IAM role that is used to apply the mitigation action.
@@ -9711,18 +9706,17 @@ iot_update_role_alias <- function(roleAlias, roleArn = NULL, credentialDurationS
 #' iot_update_scheduled_audit(frequency, dayOfMonth, dayOfWeek,
 #'   targetCheckNames, scheduledAuditName)
 #'
-#' @param frequency How often the scheduled audit takes place. Can be one of \"DAILY\",
-#' \"WEEKLY\", \"BIWEEKLY\", or \"MONTHLY\". The start time of each audit
-#' is determined by the system.
+#' @param frequency How often the scheduled audit takes place. Can be one of "DAILY",
+#' "WEEKLY", "BIWEEKLY", or "MONTHLY". The start time of each audit is
+#' determined by the system.
 #' @param dayOfMonth The day of the month on which the scheduled audit takes place. Can be
-#' \"1\" through \"31\" or \"LAST\". This field is required if the
-#' \"frequency\" parameter is set to \"MONTHLY\". If days 29-31 are
-#' specified, and the month does not have that many days, the audit takes
-#' place on the \"LAST\" day of the month.
+#' "1" through "31" or "LAST". This field is required if the "frequency"
+#' parameter is set to "MONTHLY". If days 29-31 are specified, and the
+#' month does not have that many days, the audit takes place on the "LAST"
+#' day of the month.
 #' @param dayOfWeek The day of the week on which the scheduled audit takes place. Can be one
-#' of \"SUN\", \"MON\", \"TUE\", \"WED\", \"THU\", \"FRI\", or \"SAT\".
-#' This field is required if the \"frequency\" parameter is set to
-#' \"WEEKLY\" or \"BIWEEKLY\".
+#' of "SUN", "MON", "TUE", "WED", "THU", "FRI", or "SAT". This field is
+#' required if the "frequency" parameter is set to "WEEKLY" or "BIWEEKLY".
 #' @param targetCheckNames Which checks are performed during the scheduled audit. Checks must be
 #' enabled for your account. (Use `DescribeAccountAuditConfiguration` to
 #' see the list of all checks, including those that are enabled or use
@@ -9778,13 +9772,13 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #' an alert.
 #' @param alertTargets Where the alerts are sent. (Alerts are always sent to the console.)
 #' @param additionalMetricsToRetain A list of metrics whose data is retained (stored). By default, data is
-#' retained for any metric used in the profile\'s `behaviors`, but it is
+#' retained for any metric used in the profile's `behaviors`, but it is
 #' also retained for any metric specified here.
 #' 
 #' **Note:** This API field is deprecated. Please use
-#' UpdateSecurityProfileRequest\\$additionalMetricsToRetainV2 instead.
+#' UpdateSecurityProfileRequest$additionalMetricsToRetainV2 instead.
 #' @param additionalMetricsToRetainV2 A list of metrics whose data is retained (stored). By default, data is
-#' retained for any metric used in the profile\'s behaviors, but it is also
+#' retained for any metric used in the profile's behaviors, but it is also
 #' retained for any metric specified here.
 #' @param deleteBehaviors If true, delete all `behaviors` defined for this security profile. If
 #' any `behaviors` are defined in the current invocation, an exception
@@ -9941,7 +9935,7 @@ iot_update_stream <- function(streamId, description = NULL, files = NULL, roleAr
 #'
 #' @param thingName &#91;required&#93; The name of the thing to update.
 #' 
-#' You can\'t change a thing\'s name. To change a thing\'s name, you must
+#' You can't change a thing's name. To change a thing's name, you must
 #' create a new thing, give it the new name, and then delete the old thing.
 #' @param thingTypeName The name of the thing type.
 #' @param attributePayload A list of thing attributes, a JSON string containing name-value pairs.

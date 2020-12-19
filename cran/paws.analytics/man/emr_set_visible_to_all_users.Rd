@@ -17,7 +17,7 @@ This is the default. A value of \code{false} indicates that only the IAM user
 who created the cluster can perform actions.}
 }
 \description{
-Sets the Cluster\\$VisibleToAllUsers value, which determines whether the
+Sets the Cluster$VisibleToAllUsers value, which determines whether the
 cluster is visible to all IAM users of the AWS account associated with
 the cluster. Only the IAM user who created the cluster or the AWS
 account root user can call this action. The default value, \code{true},

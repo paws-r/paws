@@ -8,7 +8,7 @@ Amazon Chime Business Calling and Amazon Chime Voice Connector settings}
 chime_get_global_settings()
 }
 \description{
-Retrieves global settings for the administrator\'s AWS account, such as
+Retrieves global settings for the administrator's AWS account, such as
 Amazon Chime Business Calling and Amazon Chime Voice Connector settings.
 }
 \keyword{internal}

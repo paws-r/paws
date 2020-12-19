@@ -10,7 +10,7 @@ iot_update_authorizer(authorizerName, authorizerFunctionArn,
 \arguments{
 \item{authorizerName}{[required] The authorizer name.}
 
-\item{authorizerFunctionArn}{The ARN of the authorizer\'s Lambda function.}
+\item{authorizerFunctionArn}{The ARN of the authorizer's Lambda function.}
 
 \item{tokenKeyName}{The key used to extract the token from the HTTP headers.}
 

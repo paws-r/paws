@@ -25,7 +25,7 @@ addresses by creating a list of up to ten
 \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{CIDRs}.
 }
 \details{
-By default, a workforce isn\'t restricted to specific IP addresses. If
+By default, a workforce isn't restricted to specific IP addresses. If
 you specify a range of IP addresses, workers who attempt to access tasks
 using any IP address outside the specified range are denied access and
 get a \verb{Not Found} error message on the worker portal. After restricting

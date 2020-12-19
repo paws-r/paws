@@ -28,7 +28,7 @@ Gets usage information about a Capacity Reservation. If the Capacity
 Reservation is shared, it shows usage information for the Capacity
 Reservation owner and each AWS account that is currently using the
 shared capacity. If the Capacity Reservation is not shared, it shows
-only the Capacity Reservation owner\'s usage.
+only the Capacity Reservation owner's usage.
 }
 \section{Request syntax}{
 \preformatted{svc$get_capacity_reservation_usage(

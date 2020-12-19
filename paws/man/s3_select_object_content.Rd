@@ -67,7 +67,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Permissions}
 
-You must have \code{s3:GetObject} permission for this operation.Â Amazon S3
+You must have \code{s3:GetObject} permission for this operation. Amazon S3
 Select does not support anonymous access. For more information about
 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html}{Specifying Permissions in a Policy}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
@@ -98,7 +98,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 For objects that are encrypted with Amazon S3 managed encryption
 keys (SSE-S3) and customer master keys (CMKs) stored in AWS Key
 Management Service (SSE-KMS), server-side encryption is handled
-transparently, so you don\'t need to specify anything. For more
+transparently, so you don't need to specify anything. For more
 information about server-side encryption, including SSE-S3 and
 SSE-KMS, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html}{Protecting Data Using Server-Side Encryption}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
@@ -117,7 +117,7 @@ The \code{SelectObjectContent} operation does not support the following
 \code{GetObject} functionality. For more information, see GetObject.
 \itemize{
 \item \code{Range}: Although you can specify a scan range for an Amazon S3
-Select request (see SelectObjectContentRequest\\$ScanRange in the
+Select request (see SelectObjectContentRequest$ScanRange in the
 request parameters), you cannot specify the range of bytes of an
 object to return.
 \item GLACIER, DEEP\\_ARCHIVE and REDUCED\\_REDUNDANCY storage classes: You

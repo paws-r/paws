@@ -33,11 +33,11 @@ supports tagging on data set, data source, dashboard, and template.
 Tagging for QuickSight works in a similar way to tagging for other AWS
 services, except for the following:
 \itemize{
-\item You can\'t use tags to track AWS costs for QuickSight. This
+\item You can't use tags to track AWS costs for QuickSight. This
 restriction is because QuickSight costs are based on users and SPICE
-capacity, which aren\'t taggable resources.
-\item QuickSight doesn\'t currently support the Tag Editor for AWS
-Resource Groups.
+capacity, which aren't taggable resources.
+\item QuickSight doesn't currently support the Tag Editor for AWS Resource
+Groups.
 }
 }
 \section{Request syntax}{

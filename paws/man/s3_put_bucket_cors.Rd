@@ -29,7 +29,7 @@ permission and can grant it to others.
 You set this configuration on a bucket so that the bucket can service
 cross-origin requests. For example, you might want to enable a request
 whose origin is \verb{http://www.example.com} to access your Amazon S3 bucket
-at \code{my.example.bucket.com} by using the browser\'s \code{XMLHttpRequest}
+at \code{my.example.bucket.com} by using the browser's \code{XMLHttpRequest}
 capability.
 
 To enable cross-origin resource sharing (CORS) on a bucket, you add the
@@ -44,7 +44,7 @@ bucket and uses the first \code{CORSRule} rule that matches the incoming
 browser request to enable a cross-origin request. For a rule to match,
 the following conditions must be met:
 \itemize{
-\item The request\'s \code{Origin} header must match \code{AllowedOrigin} elements.
+\item The request's \code{Origin} header must match \code{AllowedOrigin} elements.
 \item The request method (for example, GET, PUT, HEAD, and so on) or the
 \code{Access-Control-Request-Method} header in case of a pre-flight
 \code{OPTIONS} request must be one of the \code{AllowedMethod} elements.

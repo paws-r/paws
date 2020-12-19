@@ -21,7 +21,7 @@ backup no longer exists, and its data is gone.
 The \code{DeleteBackup} call returns instantly. The backup will not show up
 in later \code{DescribeBackups} calls.
 
-The data in a deleted backup is also deleted and can\'t be recovered by
+The data in a deleted backup is also deleted and can't be recovered by
 any means.
 }
 \section{Request syntax}{

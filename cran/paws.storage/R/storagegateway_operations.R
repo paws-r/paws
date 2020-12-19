@@ -25,20 +25,19 @@ NULL
 #' address (port 80). The redirect URL returned in the response provides
 #' you the activation key for your gateway in the query string parameter
 #' `activationKey`. It may also include other activation-related
-#' parameters, however, these are merely defaults \\-- the arguments you
-#' pass to the `ActivateGateway` API call determine the actual
-#' configuration of your gateway.
+#' parameters, however, these are merely defaults -- the arguments you pass
+#' to the `ActivateGateway` API call determine the actual configuration of
+#' your gateway.
 #' 
 #' For more information, see [Getting activation
 #' key](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html)
 #' in the *AWS Storage Gateway User Guide*.
 #' @param GatewayName &#91;required&#93; The name you configured for your gateway.
 #' @param GatewayTimezone &#91;required&#93; A value that indicates the time zone you want to set for the gateway.
-#' The time zone is of the format \"GMT-hr:mm\" or \"GMT+hr:mm\". For
-#' example, GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00
-#' indicates the time is 2 hours ahead of GMT. The time zone is used, for
-#' example, for scheduling snapshots and your gateway\'s maintenance
-#' schedule.
+#' The time zone is of the format "GMT-hr:mm" or "GMT+hr:mm". For example,
+#' GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00 indicates
+#' the time is 2 hours ahead of GMT. The time zone is used, for example,
+#' for scheduling snapshots and your gateway's maintenance schedule.
 #' @param GatewayRegion &#91;required&#93; A value that indicates the AWS Region where you want to store your data.
 #' The gateway AWS Region specified must be the same AWS Region as the AWS
 #' Region in your `Host` header in the request. For more information about
@@ -54,7 +53,7 @@ NULL
 #' is critical to all later functions of the gateway and cannot be changed
 #' after activation. The default value is `CACHED`.
 #' 
-#' Valid Values: `STORED` \\| `CACHED` \\| `VTL` \\| `FILE_S3`
+#' Valid Values: `STORED` | `CACHED` | `VTL` | `FILE_S3`
 #' @param TapeDriveType The value that indicates the type of tape drive to use for tape gateway.
 #' This field is optional.
 #' 
@@ -62,14 +61,14 @@ NULL
 #' @param MediumChangerType The value that indicates the type of medium changer to use for tape
 #' gateway. This field is optional.
 #' 
-#' Valid Values: `STK-L700` \\| `AWS-Gateway-VTL`
+#' Valid Values: `STK-L700` | `AWS-Gateway-VTL`
 #' @param Tags A list of up to 50 tags that you can assign to the gateway. Each tag is
 #' a key-value pair.
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers that
 #' can be represented in UTF-8 format, and the following special
-#' characters: + - = . \\_ : / @@. The maximum length of a tag\'s key is 128
-#' characters, and the maximum length for a tag\'s value is 256 characters.
+#' characters: + - = . \\_ : / @@. The maximum length of a tag's key is 128
+#' characters, and the maximum length for a tag's value is 256 characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -214,8 +213,8 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag\'s key is 128 characters, and
-#' the maximum length for a tag\'s value is 256.
+#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' the maximum length for a tag's value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -401,7 +400,7 @@ storagegateway_add_working_storage <- function(GatewayARN, DiskIds) {
 #' archived directly into the S3 storage class (S3 Glacier or S3 Glacier
 #' Deep Archive) that corresponds to the pool.
 #' 
-#' Valid Values: `GLACIER` \\| `DEEP_ARCHIVE`
+#' Valid Values: `GLACIER` | `DEEP_ARCHIVE`
 #'
 #' @usage
 #' storagegateway_assign_tape_pool(TapeARN, PoolId)
@@ -414,7 +413,7 @@ storagegateway_add_working_storage <- function(GatewayARN, DiskIds) {
 #' the tape is archived directly into the storage class (S3 Glacier or S3
 #' Glacier Deep Archive) that corresponds to the pool.
 #' 
-#' Valid Values: `GLACIER` \\| `DEEP_ARCHIVE`
+#' Valid Values: `GLACIER` | `DEEP_ARCHIVE`
 #'
 #' @section Request syntax:
 #' ```
@@ -465,7 +464,7 @@ storagegateway_assign_tape_pool <- function(TapeARN, PoolId) {
 #' `arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume`.
 #' The target name must be unique across all volumes on a gateway.
 #' 
-#' If you don\'t specify a value, Storage Gateway uses the value that was
+#' If you don't specify a value, Storage Gateway uses the value that was
 #' previously used for this volume as the new target name.
 #' @param VolumeARN &#91;required&#93; The Amazon Resource Name (ARN) of the volume to attach to the specified
 #' gateway.
@@ -632,7 +631,7 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' 
 #' Optionally, you can provide the ARN for an existing volume as the
 #' `SourceVolumeARN` for this cached volume, which creates an exact copy of
-#' the existing volume's latest recovery point. The `VolumeSizeInBytes`
+#' the existing volume’s latest recovery point. The `VolumeSizeInBytes`
 #' value must be equal to or larger than the size of the copied volume, in
 #' bytes.
 #'
@@ -643,10 +642,10 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param VolumeSizeInBytes &#91;required&#93; The size of the volume in bytes.
-#' @param SnapshotId The snapshot ID (e.g. \"snap-1122aabb\") of the snapshot to restore as
-#' the new cached volume. Specify this field if you want to create the
-#' iSCSI storage volume from a snapshot; otherwise, do not include this
-#' field. To list snapshots for your account use
+#' @param SnapshotId The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the
+#' new cached volume. Specify this field if you want to create the iSCSI
+#' storage volume from a snapshot; otherwise, do not include this field. To
+#' list snapshots for your account use
 #' [DescribeSnapshots](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
 #' in the *Amazon Elastic Compute Cloud API Reference*.
 #' @param TargetName &#91;required&#93; The name of the iSCSI target used by an initiator to connect to a volume
@@ -655,10 +654,10 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' `arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume`.
 #' The target name must be unique across all volumes on a gateway.
 #' 
-#' If you don\'t specify a value, Storage Gateway uses the value that was
+#' If you don't specify a value, Storage Gateway uses the value that was
 #' previously used for this volume as the new target name.
 #' @param SourceVolumeARN The ARN for an existing volume. Specifying this ARN makes the new volume
-#' into an exact copy of the specified existing volume\'s latest recovery
+#' into an exact copy of the specified existing volume's latest recovery
 #' point. The `VolumeSizeInBytes` value for this new volume must be equal
 #' to or larger than the size of the existing volume, in bytes.
 #' @param NetworkInterfaceId &#91;required&#93; The network interface of the gateway on which to expose the iSCSI
@@ -672,7 +671,7 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
 #' KMS key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
 #' used for Amazon S3 server-side encryption. Storage Gateway does not
 #' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
@@ -682,8 +681,8 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers that
 #' you can represent in UTF-8 format, and the following special characters:
-#' + - = . \\_ : / @@. The maximum length of a tag\'s key is 128 characters,
-#' and the maximum length for a tag\'s value is 256 characters.
+#' + - = . \\_ : / @@. The maximum length of a tag's key is 128 characters,
+#' and the maximum length for a tag's value is 256 characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -775,7 +774,7 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
 #' KMS key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
 #' used for Amazon S3 server-side encryption. Storage Gateway does not
 #' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
@@ -783,13 +782,13 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' @param Role &#91;required&#93; The ARN of the AWS Identity and Access Management (IAM) role that a file
 #' gateway assumes when it accesses the underlying storage.
 #' @param LocationARN &#91;required&#93; The ARN of the backend storage used for storing file data. A prefix name
-#' can be added to the S3 bucket name. It must end with a \"/\".
+#' can be added to the S3 bucket name. It must end with a "/".
 #' @param DefaultStorageClass The default storage class for objects put into an Amazon S3 bucket by
 #' the file gateway. The default value is `S3_INTELLIGENT_TIERING`.
 #' Optional.
 #' 
-#' Valid Values: `S3_STANDARD` \\| `S3_INTELLIGENT_TIERING` \\|
-#' `S3_STANDARD_IA` \\| `S3_ONEZONE_IA`
+#' Valid Values: `S3_STANDARD` | `S3_INTELLIGENT_TIERING` |
+#' `S3_STANDARD_IA` | `S3_ONEZONE_IA`
 #' @param ObjectACL A value that sets the access control list (ACL) permission for objects
 #' in the S3 bucket that a file gateway puts objects into. The default
 #' value is `private`.
@@ -807,12 +806,12 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' @param ReadOnly A value that sets the write status of a file share. Set this value to
 #' `true` to set the write status to read-only, otherwise set to `false`.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param GuessMIMETypeEnabled A value that enables guessing of the MIME type for uploaded objects
 #' based on file extensions. Set this value to `true` to enable MIME type
 #' guessing, otherwise set to `false`. The default value is `true`.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param RequesterPays A value that sets who pays the cost of the request and the cost
 #' associated with data download from the S3 bucket. If this value is set
 #' to `true`, the requester pays the costs; otherwise, the S3 bucket owner
@@ -822,14 +821,14 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' share, so make sure that the configuration on the file share is the same
 #' as the S3 bucket configuration.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param Tags A list of up to 50 tags that can be assigned to the NFS file share. Each
 #' tag is a key-value pair.
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag\'s key is 128 characters, and
-#' the maximum length for a tag\'s value is 256.
+#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' the maximum length for a tag's value is 256.
 #' @param FileShareName The name of the file share. Optional.
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
@@ -911,7 +910,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 #' in the *AWS Identity and Access Management User Guide*.
 #' 
-#' File gateways don\'t support creating hard or symbolic links on a file
+#' File gateways don't support creating hard or symbolic links on a file
 #' share.
 #'
 #' @usage
@@ -927,7 +926,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
 #' KMS key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
 #' used for Amazon S3 server-side encryption. Storage Gateway does not
 #' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
@@ -935,25 +934,25 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' @param Role &#91;required&#93; The ARN of the AWS Identity and Access Management (IAM) role that a file
 #' gateway assumes when it accesses the underlying storage.
 #' @param LocationARN &#91;required&#93; The ARN of the backend storage used for storing file data. A prefix name
-#' can be added to the S3 bucket name. It must end with a \"/\".
+#' can be added to the S3 bucket name. It must end with a "/".
 #' @param DefaultStorageClass The default storage class for objects put into an Amazon S3 bucket by
 #' the file gateway. The default value is `S3_INTELLIGENT_TIERING`.
 #' Optional.
 #' 
-#' Valid Values: `S3_STANDARD` \\| `S3_INTELLIGENT_TIERING` \\|
-#' `S3_STANDARD_IA` \\| `S3_ONEZONE_IA`
+#' Valid Values: `S3_STANDARD` | `S3_INTELLIGENT_TIERING` |
+#' `S3_STANDARD_IA` | `S3_ONEZONE_IA`
 #' @param ObjectACL A value that sets the access control list (ACL) permission for objects
 #' in the S3 bucket that a file gateway puts objects into. The default
 #' value is `private`.
 #' @param ReadOnly A value that sets the write status of a file share. Set this value to
 #' `true` to set the write status to read-only, otherwise set to `false`.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param GuessMIMETypeEnabled A value that enables guessing of the MIME type for uploaded objects
 #' based on file extensions. Set this value to `true` to enable MIME type
 #' guessing, otherwise set to `false`. The default value is `true`.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param RequesterPays A value that sets who pays the cost of the request and the cost
 #' associated with data download from the S3 bucket. If this value is set
 #' to `true`, the requester pays the costs; otherwise, the S3 bucket owner
@@ -963,7 +962,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' share, so make sure that the configuration on the file share is the same
 #' as the S3 bucket configuration.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param SMBACLEnabled Set this value to `true` to enable access control list (ACL) on the SMB
 #' file share. Set it to `false` to map file and directory permissions to
 #' the POSIX permissions.
@@ -973,7 +972,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' share](https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html)
 #' in the *AWS Storage Gateway User Guide*.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param AdminUserList A list of users or groups in the Active Directory that will be granted
 #' administrator privileges on the file share. These users can do all file
 #' operations as the super-user. Acceptable formats include:
@@ -995,7 +994,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' @param Authentication The authentication method that users use to access the file share. The
 #' default is `ActiveDirectory`.
 #' 
-#' Valid Values: `ActiveDirectory` \\| `GuestAccess`
+#' Valid Values: `ActiveDirectory` | `GuestAccess`
 #' @param CaseSensitivity The case of an object name in an Amazon S3 bucket. For
 #' `ClientSpecified`, the client determines the case sensitivity. For
 #' `CaseSensitive`, the gateway determines the case sensitivity. The
@@ -1005,8 +1004,8 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag\'s key is 128 characters, and
-#' the maximum length for a tag\'s value is 256.
+#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' the maximum length for a tag's value is 256.
 #' @param FileShareName The name of the file share. Optional.
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
@@ -1121,8 +1120,8 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag\'s key is 128 characters, and
-#' the maximum length for a tag\'s value is 256.
+#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' the maximum length for a tag's value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -1209,8 +1208,8 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag\'s key is 128 characters, and
-#' the maximum length for a tag\'s value is 256.
+#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' the maximum length for a tag's value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -1281,23 +1280,23 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' stored volume. Use
 #' [ListLocalDisks](https://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html)
 #' to list disk IDs for a gateway.
-#' @param SnapshotId The snapshot ID (e.g. \"snap-1122aabb\") of the snapshot to restore as
-#' the new stored volume. Specify this field if you want to create the
-#' iSCSI storage volume from a snapshot; otherwise, do not include this
-#' field. To list snapshots for your account use
+#' @param SnapshotId The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the
+#' new stored volume. Specify this field if you want to create the iSCSI
+#' storage volume from a snapshot; otherwise, do not include this field. To
+#' list snapshots for your account use
 #' [DescribeSnapshots](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html)
 #' in the *Amazon Elastic Compute Cloud API Reference*.
 #' @param PreserveExistingData &#91;required&#93; Set to true `true` if you want to preserve the data on the local disk.
 #' Otherwise, set to `false` to create an empty volume.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param TargetName &#91;required&#93; The name of the iSCSI target used by an initiator to connect to a volume
 #' and used as a suffix for the target ARN. For example, specifying
 #' `TargetName` as *myvolume* results in the target ARN of
 #' `arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume`.
 #' The target name must be unique across all volumes on a gateway.
 #' 
-#' If you don\'t specify a value, Storage Gateway uses the value that was
+#' If you don't specify a value, Storage Gateway uses the value that was
 #' previously used for this volume as the new target name.
 #' @param NetworkInterfaceId &#91;required&#93; The network interface of the gateway on which to expose the iSCSI
 #' target. Only IPv4 addresses are accepted. Use DescribeGatewayInformation
@@ -1307,7 +1306,7 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
 #' KMS key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
 #' used for Amazon S3 server-side encryption. Storage Gateway does not
 #' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
@@ -1317,8 +1316,8 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag\'s key is 128 characters, and
-#' the maximum length for a tag\'s value is 256.
+#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' the maximum length for a tag's value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -1402,7 +1401,7 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
 #' KMS key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
 #' used for Amazon S3 server-side encryption. Storage Gateway does not
 #' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
@@ -1413,14 +1412,14 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #' the tape is archived directly into the storage class (S3 Glacier or S3
 #' Deep Archive) that corresponds to the pool.
 #' 
-#' Valid Values: `GLACIER` \\| `DEEP_ARCHIVE`
+#' Valid Values: `GLACIER` | `DEEP_ARCHIVE`
 #' @param Tags A list of up to 50 tags that can be assigned to a virtual tape that has
 #' a barcode. Each tag is a key-value pair.
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag\'s key is 128 characters, and
-#' the maximum length for a tag\'s value is 256.
+#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' the maximum length for a tag's value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -1504,7 +1503,7 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
 #' KMS key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
 #' used for Amazon S3 server-side encryption. Storage Gateway does not
 #' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
@@ -1515,14 +1514,14 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' the tape is archived directly into the storage class (S3 Glacier or S3
 #' Glacier Deep Archive) that corresponds to the pool.
 #' 
-#' Valid Values: `GLACIER` \\| `DEEP_ARCHIVE`
+#' Valid Values: `GLACIER` | `DEEP_ARCHIVE`
 #' @param Tags A list of up to 50 tags that can be assigned to a virtual tape. Each tag
 #' is a key-value pair.
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag\'s key is 128 characters, and
-#' the maximum length for a tag\'s value is 256.
+#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' the maximum length for a tag's value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -1630,7 +1629,7 @@ storagegateway_delete_automatic_tape_creation_policy <- function(GatewayARN) {
 #' @param BandwidthType &#91;required&#93; One of the BandwidthType values that indicates the gateway bandwidth
 #' rate limit to delete.
 #' 
-#' Valid Values: `Upload` \\| `Download` \\| `All`
+#' Valid Values: `Upload` | `Download` | `All`
 #'
 #' @section Request syntax:
 #' ```
@@ -1738,7 +1737,7 @@ storagegateway_delete_chap_credentials <- function(TargetARN, InitiatorName) {
 #' aborts the data upload process, and the file share enters the
 #' `FORCE_DELETING` status.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #'
 #' @section Request syntax:
 #' ```
@@ -1782,9 +1781,9 @@ storagegateway_delete_file_share <- function(FileShareARN, ForceDelete = NULL) {
 #' 
 #' You no longer pay software charges after the gateway is deleted;
 #' however, your existing Amazon EBS snapshots persist and you will
-#' continue to be billed for these snapshots.Â You can choose to remove all
+#' continue to be billed for these snapshots. You can choose to remove all
 #' remaining Amazon EBS snapshots by canceling your Amazon EC2
-#' subscription.Â  If you prefer not to cancel your Amazon EC2 subscription,
+#' subscription.  If you prefer not to cancel your Amazon EC2 subscription,
 #' you can delete your snapshots using the Amazon EC2 console. For more
 #' information, see the [AWS Storage Gateway detail
 #' page](http://aws.amazon.com/storagegateway).
@@ -2049,7 +2048,7 @@ storagegateway_delete_volume <- function(VolumeARN) {
 #' test that was performed on the host in a cluster
 #'
 #' Returns information about the most recent High Availability monitoring
-#' test that was performed on the host in a cluster. If a test isn\'t
+#' test that was performed on the host in a cluster. If a test isn't
 #' performed, the status and start time in the response would be null.
 #'
 #' @usage
@@ -2350,8 +2349,8 @@ storagegateway_describe_gateway_information <- function(GatewayARN) {
 #' Returns your gateway's weekly maintenance start time including the day
 #' and time of the week
 #'
-#' Returns your gateway\'s weekly maintenance start time including the day
-#' and time of the week. Note that values are in terms of the gateway\'s
+#' Returns your gateway's weekly maintenance start time including the day
+#' and time of the week. Note that values are in terms of the gateway's
 #' time zone.
 #'
 #' @usage
@@ -3020,7 +3019,7 @@ storagegateway_describe_working_storage <- function(GatewayARN) {
 #' set to `false`, you must manually disconnect the iSCSI connection from
 #' the target volume.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #'
 #' @section Request syntax:
 #' ```
@@ -3119,7 +3118,7 @@ storagegateway_disable_gateway <- function(GatewayARN) {
 #' specifies the OU that the gateway will join within the AD domain.
 #' @param DomainControllers List of IPv4 addresses, NetBIOS names, or host names of your domain
 #' server. If you need to specify the port number include it after the
-#' colon (":"). For example, `mydc.mydomain.com:389`.
+#' colon (“:”). For example, `mydc.mydomain.com:389`.
 #' @param TimeoutInSeconds Specifies the time in seconds, in which the `JoinDomain` operation must
 #' complete. The default is 20 seconds.
 #' @param UserName &#91;required&#93; Sets the user name of user who has permission to add the gateway to the
@@ -3318,9 +3317,9 @@ storagegateway_list_gateways <- function(Marker = NULL, Limit = NULL) {
 
 #' Returns a list of the gateway's local disks
 #'
-#' Returns a list of the gateway\'s local disks. To specify which gateway
-#' to describe, you use the Amazon Resource Name (ARN) of the gateway in
-#' the body of the request.
+#' Returns a list of the gateway's local disks. To specify which gateway to
+#' describe, you use the Amazon Resource Name (ARN) of the gateway in the
+#' body of the request.
 #' 
 #' The request returns a list of all disks, specifying which are configured
 #' as working storage, cache storage, or stored volume or not configured at
@@ -3430,8 +3429,8 @@ storagegateway_list_tags_for_resource <- function(ResourceARN, Marker = NULL, Li
 #'
 #' Lists virtual tapes in your virtual tape library (VTL) and your virtual
 #' tape shelf (VTS). You specify the tapes to list by specifying one or
-#' more tape Amazon Resource Names (ARNs). If you don\'t specify a tape
-#' ARN, the operation lists all virtual tapes in both your VTL and VTS.
+#' more tape Amazon Resource Names (ARNs). If you don't specify a tape ARN,
+#' the operation lists all virtual tapes in both your VTL and VTS.
 #' 
 #' This operation supports pagination. By default, the operation returns a
 #' maximum of up to 100 tapes. You can optionally specify the `Limit`
@@ -3694,7 +3693,7 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #'
 #' Refreshes the cache for the specified file share. This operation finds
 #' objects in the Amazon S3 bucket that were added, removed, or replaced
-#' since the gateway last listed the bucket\'s contents and cached the
+#' since the gateway last listed the bucket's contents and cached the
 #' results. This operation is only supported in the file gateway type. You
 #' can subscribe to be notified through an Amazon CloudWatch event when
 #' your RefreshCache operation completes. For more information, see
@@ -3703,7 +3702,7 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' in the *AWS Storage Gateway User Guide*.
 #' 
 #' When this API is called, it only initiates the refresh operation. When
-#' the API call completes and returns a success code, it doesn\'t
+#' the API call completes and returns a success code, it doesn't
 #' necessarily mean that the file refresh has completed. You should use the
 #' refresh-complete notification to determine that the operation has
 #' completed before you check for new files on the gateway file share. You
@@ -3736,13 +3735,13 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' entire S3 bucket that the file share has access to is refreshed.
 #' @param Recursive A value that specifies whether to recursively refresh folders in the
 #' cache. The refresh includes folders that were in the cache the last time
-#' the gateway listed the folder\'s contents. If this value set to `true`,
+#' the gateway listed the folder's contents. If this value set to `true`,
 #' each folder that is listed in `FolderList` is recursively updated.
 #' Otherwise, subfolders listed in `FolderList` are not refreshed. Only
 #' objects that are in folders listed directly under `FolderList` are found
 #' and used for the update. The default is `true`.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #'
 #' @section Request syntax:
 #' ```
@@ -4016,8 +4015,8 @@ storagegateway_retrieve_tape_recovery_point <- function(TapeARN, GatewayARN) {
 #'
 #' Sets the password for your VM local console. When you log in to the
 #' local console for the first time, you log in to the VM with the default
-#' credentials. We recommend that you set a new password. You don\'t need
-#' to know the default password to set a new password.
+#' credentials. We recommend that you set a new password. You don't need to
+#' know the default password to set a new password.
 #'
 #' @usage
 #' storagegateway_set_local_console_password(GatewayARN,
@@ -4110,7 +4109,7 @@ storagegateway_set_smb_guest_password <- function(GatewayARN, Password) {
 #' Amazon Resource Name (ARN) of the gateway in the body of your request.
 #' 
 #' The operation shuts down the gateway service component running in the
-#' gateway\'s virtual machine (VM) and not the host VM.
+#' gateway's virtual machine (VM) and not the host VM.
 #' 
 #' If you want to shut down the VM, it is recommended that you first shut
 #' down the gateway component in the VM to avoid unpredictable conditions.
@@ -4118,7 +4117,7 @@ storagegateway_set_smb_guest_password <- function(GatewayARN, Password) {
 #' After the gateway is shutdown, you cannot call any other API except
 #' StartGateway, DescribeGatewayInformation, and ListGateways. For more
 #' information, see ActivateGateway. Your applications cannot read from or
-#' write to the gateway\'s storage volumes, and there are no snapshots
+#' write to the gateway's storage volumes, and there are no snapshots
 #' taken.
 #' 
 #' When you make a shutdown request, you will get a `200 OK` success
@@ -4177,7 +4176,7 @@ storagegateway_shutdown_gateway <- function(GatewayARN) {
 #' Start a test that verifies that the specified gateway is configured for
 #' High Availability monitoring in your host environment. This request only
 #' initiates the test and that a successful response only indicates that
-#' the test was started. It doesn\'t indicate that the test passed. For the
+#' the test was started. It doesn't indicate that the test passed. For the
 #' status of the test, invoke the `DescribeAvailabilityMonitorTest` API.
 #' 
 #' Starting this test will cause your gateway to go offline for a brief
@@ -4219,8 +4218,8 @@ storagegateway_start_availability_monitor_test <- function(GatewayARN) {
 #'
 #' Starts a gateway that you previously shut down (see ShutdownGateway).
 #' After the gateway starts, you can then make other API calls, your
-#' applications can read from or write to the gateway\'s storage volumes
-#' and you will be able to take snapshot backups.
+#' applications can read from or write to the gateway's storage volumes and
+#' you will be able to take snapshot backups.
 #' 
 #' When you make a request, you will get a 200 OK success response
 #' immediately. However, it might take some time for the gateway to be
@@ -4329,12 +4328,12 @@ storagegateway_update_automatic_tape_creation_policy <- function(AutomaticTapeCr
 #'
 #' Updates the bandwidth rate limits of a gateway. You can update both the
 #' upload and download bandwidth rate limit or specify only one of the two.
-#' If you don\'t set a bandwidth rate limit, the existing rate limit
+#' If you don't set a bandwidth rate limit, the existing rate limit
 #' remains. This operation is supported for the stored volume, cached
 #' volume, and tape gateway types.
 #' 
-#' By default, a gateway\'s bandwidth rate limits are not set. If you
-#' don\'t set any limit, the gateway does not have any limitations on its
+#' By default, a gateway's bandwidth rate limits are not set. If you don't
+#' set any limit, the gateway does not have any limitations on its
 #' bandwidth usage and could potentially use the maximum available
 #' bandwidth.
 #' 
@@ -4467,13 +4466,13 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
 #' Updates a gateway's metadata, which includes the gateway's name and time
 #' zone
 #'
-#' Updates a gateway\'s metadata, which includes the gateway\'s name and
-#' time zone. To specify which gateway to update, use the Amazon Resource
-#' Name (ARN) of the gateway in your request.
+#' Updates a gateway's metadata, which includes the gateway's name and time
+#' zone. To specify which gateway to update, use the Amazon Resource Name
+#' (ARN) of the gateway in your request.
 #' 
-#' For Gateways activated after September 2, 2015, the gateway\'s ARN
+#' For Gateways activated after September 2, 2015, the gateway's ARN
 #' contains the gateway ID rather than the gateway name. However, changing
-#' the name of the gateway has no effect on the gateway\'s ARN.
+#' the name of the gateway has no effect on the gateway's ARN.
 #'
 #' @usage
 #' storagegateway_update_gateway_information(GatewayARN, GatewayName,
@@ -4541,7 +4540,7 @@ storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = 
 #' 
 #' A software update forces a system restart of your gateway. You can
 #' minimize the chance of any disruption to your applications by increasing
-#' your iSCSI Initiators\' timeouts. For more information about increasing
+#' your iSCSI Initiators' timeouts. For more information about increasing
 #' iSCSI Initiator timeouts for Windows and Linux, see [Customizing your
 #' Windows iSCSI
 #' settings](https://docs.aws.amazon.com/storagegateway/latest/userguide/ConfiguringiSCSIClientInitiatorWindowsClient.html#CustomizeWindowsiSCSISettings)
@@ -4593,9 +4592,9 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
 #' Updates a gateway's weekly maintenance start time information, including
 #' day and time of the week
 #'
-#' Updates a gateway\'s weekly maintenance start time information,
-#' including day and time of the week. The maintenance time is the time in
-#' your gateway\'s time zone.
+#' Updates a gateway's weekly maintenance start time information, including
+#' day and time of the week. The maintenance time is the time in your
+#' gateway's time zone.
 #'
 #' @usage
 #' storagegateway_update_maintenance_start_time(GatewayARN, HourOfDay,
@@ -4692,7 +4691,7 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
 #' KMS key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
 #' used for Amazon S3 server-side encryption. Storage Gateway does not
 #' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
@@ -4702,8 +4701,8 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #' the file gateway. The default value is `S3_INTELLIGENT_TIERING`.
 #' Optional.
 #' 
-#' Valid Values: `S3_STANDARD` \\| `S3_INTELLIGENT_TIERING` \\|
-#' `S3_STANDARD_IA` \\| `S3_ONEZONE_IA`
+#' Valid Values: `S3_STANDARD` | `S3_INTELLIGENT_TIERING` |
+#' `S3_STANDARD_IA` | `S3_ONEZONE_IA`
 #' @param ObjectACL A value that sets the access control list (ACL) permission for objects
 #' in the S3 bucket that a file gateway puts objects into. The default
 #' value is `private`.
@@ -4721,12 +4720,12 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #' @param ReadOnly A value that sets the write status of a file share. Set this value to
 #' `true` to set the write status to read-only, otherwise set to `false`.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param GuessMIMETypeEnabled A value that enables guessing of the MIME type for uploaded objects
 #' based on file extensions. Set this value to `true` to enable MIME type
 #' guessing, otherwise set to `false`. The default value is `true`.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param RequesterPays A value that sets who pays the cost of the request and the cost
 #' associated with data download from the S3 bucket. If this value is set
 #' to `true`, the requester pays the costs; otherwise, the S3 bucket owner
@@ -4736,7 +4735,7 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #' share, so make sure that the configuration on the file share is the same
 #' as the S3 bucket configuration.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param FileShareName The name of the file share. Optional.
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
@@ -4807,7 +4806,7 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 #' in the *AWS Identity and Access Management User Guide*.
 #' 
-#' File gateways don\'t support creating hard or symbolic links on a file
+#' File gateways don't support creating hard or symbolic links on a file
 #' share.
 #'
 #' @usage
@@ -4822,7 +4821,7 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
 #' KMS key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
 #' used for Amazon S3 server-side encryption. Storage Gateway does not
 #' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
@@ -4831,20 +4830,20 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' the file gateway. The default value is `S3_INTELLIGENT_TIERING`.
 #' Optional.
 #' 
-#' Valid Values: `S3_STANDARD` \\| `S3_INTELLIGENT_TIERING` \\|
-#' `S3_STANDARD_IA` \\| `S3_ONEZONE_IA`
+#' Valid Values: `S3_STANDARD` | `S3_INTELLIGENT_TIERING` |
+#' `S3_STANDARD_IA` | `S3_ONEZONE_IA`
 #' @param ObjectACL A value that sets the access control list (ACL) permission for objects
 #' in the S3 bucket that a file gateway puts objects into. The default
 #' value is `private`.
 #' @param ReadOnly A value that sets the write status of a file share. Set this value to
 #' `true` to set write status to read-only, otherwise set to `false`.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param GuessMIMETypeEnabled A value that enables guessing of the MIME type for uploaded objects
 #' based on file extensions. Set this value to `true` to enable MIME type
 #' guessing, otherwise set to `false`. The default value is `true`.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param RequesterPays A value that sets who pays the cost of the request and the cost
 #' associated with data download from the S3 bucket. If this value is set
 #' to `true`, the requester pays the costs; otherwise, the S3 bucket owner
@@ -4854,7 +4853,7 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' share, so make sure that the configuration on the file share is the same
 #' as the S3 bucket configuration.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param SMBACLEnabled Set this value to `true` to enable access control list (ACL) on the SMB
 #' file share. Set it to `false` to map file and directory permissions to
 #' the POSIX permissions.
@@ -4864,7 +4863,7 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' share](https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html)
 #' in the *AWS Storage Gateway User Guide*.
 #' 
-#' Valid Values: `true` \\| `false`
+#' Valid Values: `true` | `false`
 #' @param AdminUserList A list of users or groups in the Active Directory that have
 #' administrator rights to the file share. A group must be prefixed with
 #' the @@ character. Acceptable formats include: `DOMAIN\\User1`, `user1`,
@@ -5033,8 +5032,8 @@ storagegateway_update_smb_security_strategy <- function(GatewayARN, SMBSecurityS
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
-#' = . \\_ : / @@. The maximum length of a tag\'s key is 128 characters, and
-#' the maximum length for a tag\'s value is 256.
+#' = . \\_ : / @@. The maximum length of a tag's key is 128 characters, and
+#' the maximum length for a tag's value is 256.
 #'
 #' @section Request syntax:
 #' ```
@@ -5097,7 +5096,7 @@ storagegateway_update_snapshot_schedule <- function(VolumeARN, StartAt, Recurren
 #' @param VTLDeviceARN &#91;required&#93; The Amazon Resource Name (ARN) of the medium changer you want to select.
 #' @param DeviceType &#91;required&#93; The type of medium changer you want to select.
 #' 
-#' Valid Values: `STK-L700` \\| `AWS-Gateway-VTL`
+#' Valid Values: `STK-L700` | `AWS-Gateway-VTL`
 #'
 #' @section Request syntax:
 #' ```

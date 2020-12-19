@@ -16,7 +16,7 @@ chime_list_bots(AccountId, MaxResults, NextToken)
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
 \description{
-Lists the bots associated with the administrator\'s Amazon Chime
+Lists the bots associated with the administrator's Amazon Chime
 Enterprise account ID.
 }
 \section{Request syntax}{

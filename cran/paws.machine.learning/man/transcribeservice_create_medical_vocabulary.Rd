@@ -21,7 +21,7 @@ available for Amazon Transcribe Medical.}
 
 \item{VocabularyFileUri}{[required] The Amazon S3 location of the text file you use to define your custom
 vocabulary. The URI must be in the same AWS region as the API endpoint
-you\'re calling. Enter information about your \code{VocabularyFileUri} in the
+you're calling. Enter information about your \code{VocabularyFileUri} in the
 following format:
 
 \verb{https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt;}

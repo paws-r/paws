@@ -7,7 +7,7 @@
 iot1clickdevicesservice_claim_devices_by_claim_code(ClaimCode)
 }
 \arguments{
-\item{ClaimCode}{[required] The claim code, starting with \"C-\", as provided by the device
+\item{ClaimCode}{[required] The claim code, starting with "C-", as provided by the device
 manufacturer.}
 }
 \description{

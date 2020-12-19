@@ -17,7 +17,7 @@ for the target group.}
 
 \item{NewName}{The new name for the modified \code{DBProxyTarget}. An identifier must begin
 with a letter and must contain only ASCII letters, digits, and hyphens;
-it can\'t end with a hyphen or contain two consecutive hyphens.}
+it can't end with a hyphen or contain two consecutive hyphens.}
 }
 \description{
 Modifies the properties of a \code{DBProxyTargetGroup}.

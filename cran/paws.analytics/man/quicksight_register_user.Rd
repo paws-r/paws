@@ -28,15 +28,15 @@ following:
 and dashboards.
 \item \code{ADMIN}: A user who is an author, who can also manage Amazon
 QuickSight settings.
-\item \code{RESTRICTED_READER}: This role isn\'t currently available for use.
-\item \code{RESTRICTED_AUTHOR}: This role isn\'t currently available for use.
+\item \code{RESTRICTED_READER}: This role isn't currently available for use.
+\item \code{RESTRICTED_AUTHOR}: This role isn't currently available for use.
 }}
 
 \item{IamArn}{The ARN of the IAM user or role that you are registering with Amazon
 QuickSight.}
 
 \item{SessionName}{You need to use this parameter only when you register one or more users
-using an assumed IAM role. You don\'t need to provide the session name
+using an assumed IAM role. You don't need to provide the session name
 for other scenarios, for example when you are registering an IAM user or
 an Amazon QuickSight user. You can register multiple users using the
 same IAM role if each user has a different session name. For more

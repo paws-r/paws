@@ -40,11 +40,10 @@ when you specify your AWS credentials in an HTTP POST method or use the
 
 \item{language}{The language in which AWS Support handles the case. You must specify the
 ISO 639-1 code for the \code{language} parameter if you want support in that
-language. Currently, English (\"en\") and Japanese (\"ja\") are
-supported.}
+language. Currently, English ("en") and Japanese ("ja") are supported.}
 
 \item{issueType}{The type of issue for the case. You can specify \code{customer-service} or
-\code{technical}. If you don\'t specify a value, the default is \code{technical}.}
+\code{technical}. If you don't specify a value, the default is \code{technical}.}
 
 \item{attachmentSetId}{The ID of a set of one or more attachments for the case. Create the set
 by using the AddAttachmentsToSet operation.}
@@ -54,7 +53,7 @@ Creates a case in the AWS Support Center. This operation is similar to
 how you create a case in the AWS Support Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case} page.
 }
 \details{
-The AWS Support API doesn\'t support requesting service limit increases.
+The AWS Support API doesn't support requesting service limit increases.
 You can submit a service limit increase in the following ways:
 \itemize{
 \item Submit a request from the AWS Support Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case}

@@ -10,7 +10,7 @@ sms_put_app_launch_configuration(appId, roleName,
 \arguments{
 \item{appId}{ID of the application associated with the launch configuration.}
 
-\item{roleName}{Name of service role in the customer\'s account that Amazon
+\item{roleName}{Name of service role in the customer's account that Amazon
 CloudFormation uses to launch the application.}
 
 \item{serverGroupLaunchConfigurations}{Launch configurations for server groups in the application.}

@@ -29,7 +29,7 @@ consumer.
 }
 
 The length constraint applies only to the full ARN. If you specify only
-the function name, it\'s limited to 64 characters in length.}
+the function name, it's limited to 64 characters in length.}
 
 \item{Marker}{A pagination token returned by a previous call.}
 

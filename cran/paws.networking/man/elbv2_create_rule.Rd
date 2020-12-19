@@ -14,7 +14,7 @@ conditions: \code{http-request-method}, \code{host-header}, \code{path-pattern},
 \code{source-ip}, and zero or more of the following conditions: \code{http-header}
 and \code{query-string}.}
 
-\item{Priority}{[required] The rule priority. A listener can\'t have multiple rules with the same
+\item{Priority}{[required] The rule priority. A listener can't have multiple rules with the same
 priority.}
 
 \item{Actions}{[required] The actions. Each rule must include exactly one of the following types

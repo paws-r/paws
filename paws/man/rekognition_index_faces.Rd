@@ -14,7 +14,7 @@ are detected in the input images.}
 
 \item{Image}{[required] The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded
-image bytes isn\'t supported.
+image bytes isn't supported.
 
 If you are using an AWS SDK to call Amazon Rekognition, you might not
 need to base64-encode image bytes passed using the \code{Bytes} field. For
@@ -23,8 +23,8 @@ more information, see Images in the Amazon Rekognition developer guide.}
 \item{ExternalImageId}{The ID you want to assign to all the faces detected in the image.}
 
 \item{DetectionAttributes}{An array of facial attributes that you want to be returned. This can be
-the default list of attributes or all attributes. If you don\'t specify
-a value for \code{Attributes} or if you specify \verb{\\\["DEFAULT"\\\]}, the API
+the default list of attributes or all attributes. If you don't specify a
+value for \code{Attributes} or if you specify \verb{\\\["DEFAULT"\\\]}, the API
 returns the following subset of facial attributes: \code{BoundingBox},
 \code{Confidence}, \code{Pose}, \code{Quality}, and \code{Landmarks}. If you provide
 \verb{\\\["ALL"\\\]}, all facial attributes are returned, but the operation
@@ -42,7 +42,7 @@ detected faces in an image, even if you specify a larger value for
 If \code{IndexFaces} detects more faces than the value of \code{MaxFaces}, the
 faces with the lowest quality are filtered out first. If there are still
 more faces than the value of \code{MaxFaces}, the faces with the smallest
-bounding boxes are filtered out (up to the number that\'s needed to
+bounding boxes are filtered out (up to the number that's needed to
 satisfy the value of \code{MaxFaces}). Information about the unindexed faces
 is available in the \code{UnindexedFaces} array.
 
@@ -53,14 +53,14 @@ face bounding box size to the smallest size, in descending order.
 the face model.}
 
 \item{QualityFilter}{A filter that specifies a quality bar for how much filtering is done to
-identify faces. Filtered faces aren\'t indexed. If you specify \code{AUTO},
+identify faces. Filtered faces aren't indexed. If you specify \code{AUTO},
 Amazon Rekognition chooses the quality bar. If you specify \code{LOW},
-\code{MEDIUM}, or \code{HIGH}, filtering removes all faces that don't meet the
+\code{MEDIUM}, or \code{HIGH}, filtering removes all faces that don’t meet the
 chosen quality bar. The default value is \code{AUTO}. The quality bar is
 based on a variety of common use cases. Low-quality detections can occur
-for a number of reasons. Some examples are an object that\'s
-misidentified as a face, a face that\'s too blurry, or a face with a
-pose that\'s too extreme to use. If you specify \code{NONE}, no filtering is
+for a number of reasons. Some examples are an object that's
+misidentified as a face, a face that's too blurry, or a face with a pose
+that's too extreme to use. If you specify \code{NONE}, no filtering is
 performed.
 
 To use quality filtering, the collection you are using must be
@@ -71,7 +71,7 @@ Detects faces in the input image and adds them to the specified
 collection.
 }
 \details{
-Amazon Rekognition doesn\'t save the actual faces that are detected.
+Amazon Rekognition doesn't save the actual faces that are detected.
 Instead, the underlying detection algorithm first detects the faces in
 the input image. For each face, the algorithm extracts facial features
 into a feature vector, and stores it in the backend database. Amazon
@@ -83,14 +83,14 @@ Rekognition Developer Guide.
 
 To get the number of faces in a collection, call DescribeCollection.
 
-If you\'re using version 1.0 of the face detection model, \code{IndexFaces}
+If you're using version 1.0 of the face detection model, \code{IndexFaces}
 indexes the 15 largest faces in the input image. Later versions of the
 face detection model index the 100 largest faces in the input image.
 
-If you\'re using version 4 or later of the face model, image orientation
+If you're using version 4 or later of the face model, image orientation
 information is not returned in the \code{OrientationCorrection} field.
 
-To determine which version of the model you\'re using, call
+To determine which version of the model you're using, call
 DescribeCollection and supply the collection ID. You can also get the
 model version from the value of \code{FaceModelVersion} in the response from
 \code{IndexFaces}
@@ -107,13 +107,13 @@ to find all faces in an image.
 
 You can specify the maximum number of faces to index with the \code{MaxFaces}
 input parameter. This is useful when you want to index the largest faces
-in an image and don\'t want to index smaller faces, such as those
+in an image and don't want to index smaller faces, such as those
 belonging to people standing in the background.
 
 The \code{QualityFilter} input parameter allows you to filter out detected
-faces that don't meet a required quality bar. The quality bar is based
+faces that don’t meet a required quality bar. The quality bar is based
 on a variety of common use cases. By default, \code{IndexFaces} chooses the
-quality bar that\'s used to filter faces. You can also explicitly choose
+quality bar that's used to filter faces. You can also explicitly choose
 the quality bar. Use \code{QualityFilter}, to set the quality bar by
 specifying \code{LOW}, \code{MEDIUM}, or \code{HIGH}. If you do not want to filter
 detected faces, specify \code{NONE}.
@@ -124,7 +124,7 @@ associated with a collection, call DescribeCollection.
 
 Information about faces detected in an image, but not indexed, is
 returned in an array of UnindexedFace objects, \code{UnindexedFaces}. Faces
-aren\'t indexed for reasons such as:
+aren't indexed for reasons such as:
 \itemize{
 \item The number of faces detected exceeds the value of the \code{MaxFaces}
 request parameter.
@@ -132,7 +132,7 @@ request parameter.
 \item The face is too blurry.
 \item The image is too dark.
 \item The face has an extreme pose.
-\item The face doesn't have enough detail to be suitable for face search.
+\item The face doesn’t have enough detail to be suitable for face search.
 }
 
 In response, the \code{IndexFaces} operation returns an array of metadata for
@@ -141,7 +141,7 @@ all detected faces, \code{FaceRecords}. This includes:
 \item The bounding box, \code{BoundingBox}, of the detected face.
 \item A confidence value, \code{Confidence}, which indicates the confidence
 that the bounding box contains a face.
-\item A face ID, \code{FaceId}, assigned by the service for each face that\'s
+\item A face ID, \code{FaceId}, assigned by the service for each face that's
 detected and stored.
 \item An image ID, \code{ImageId}, assigned by the service for the input image.
 }
@@ -151,12 +151,12 @@ parameter), Amazon Rekognition returns detailed facial attributes, such
 as facial landmarks (for example, location of eye and mouth) and other
 facial attributes. If you provide the same image, specify the same
 collection, and use the same external ID in the \code{IndexFaces} operation,
-Amazon Rekognition doesn\'t save duplicate face metadata.
+Amazon Rekognition doesn't save duplicate face metadata.
 
 The input image is passed either as base64-encoded image bytes, or as a
 reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
-call Amazon Rekognition operations, passing image bytes isn\'t
-supported. The image must be formatted as a PNG or JPEG file.
+call Amazon Rekognition operations, passing image bytes isn't supported.
+The image must be formatted as a PNG or JPEG file.
 
 This operation requires permissions to perform the
 \code{rekognition:IndexFaces} action.

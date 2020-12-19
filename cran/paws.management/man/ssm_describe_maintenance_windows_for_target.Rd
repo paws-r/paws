@@ -12,7 +12,7 @@ ssm_describe_maintenance_windows_for_target(Targets, ResourceType,
 \item{Targets}{[required] The instance ID or key/value pair to retrieve information about.}
 
 \item{ResourceType}{[required] The type of resource you want to retrieve information about. For
-example, \"INSTANCE\".}
+example, "INSTANCE".}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the

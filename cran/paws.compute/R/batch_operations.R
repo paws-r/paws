@@ -788,9 +788,9 @@ batch_describe_jobs <- function(jobs) {
 #' 
 #' -   a job queue ID to return a list of jobs in that job queue
 #' 
-#' -   a multi-node parallel job ID to return a list of that job\'s nodes
+#' -   a multi-node parallel job ID to return a list of that job's nodes
 #' 
-#' -   an array job ID to return a list of that job\'s children
+#' -   an array job ID to return a list of that job's children
 #' 
 #' You can filter the results by job status with the `jobStatus` parameter.
 #' If you do not specify a status, only `RUNNING` jobs are returned.
@@ -889,14 +889,14 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #' Parameters in a `SubmitJob` request override any corresponding parameter
 #' defaults from the job definition.
 #' @param containerProperties An object with various properties specific to single-node
-#' container-based jobs. If the job definition\'s `type` parameter is
+#' container-based jobs. If the job definition's `type` parameter is
 #' `container`, then you must specify either `containerProperties` or
 #' `nodeProperties`.
 #' @param nodeProperties An object with various properties specific to multi-node parallel jobs.
 #' If you specify node properties for a job, it becomes a multi-node
 #' parallel job. For more information, see [Multi-node Parallel
 #' Jobs](https://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html)
-#' in the *AWS Batch User Guide*. If the job definition\'s `type` parameter
+#' in the *AWS Batch User Guide*. If the job definition's `type` parameter
 #' is `container`, then you must specify either `containerProperties` or
 #' `nodeProperties`.
 #' @param retryStrategy The retry strategy to use for failed jobs that are submitted with this
@@ -1391,7 +1391,7 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, c
 #'   computeEnvironmentOrder)
 #'
 #' @param jobQueue &#91;required&#93; The name or the Amazon Resource Name (ARN) of the job queue.
-#' @param state Describes the queue\'s ability to accept new jobs.
+#' @param state Describes the queue's ability to accept new jobs.
 #' @param priority The priority of the job queue. Job queues with a higher priority (or a
 #' higher integer value for the `priority` parameter) are evaluated first
 #' when associated with the same compute environment. Priority is

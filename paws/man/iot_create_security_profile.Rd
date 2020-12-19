@@ -21,14 +21,14 @@ sent to the console.) Alerts are generated when a device (thing)
 violates a behavior.}
 
 \item{additionalMetricsToRetain}{A list of metrics whose data is retained (stored). By default, data is
-retained for any metric used in the profile\'s \code{behaviors}, but it is
+retained for any metric used in the profile's \code{behaviors}, but it is
 also retained for any metric specified here.
 
 \strong{Note:} This API field is deprecated. Please use
-CreateSecurityProfileRequest\\$additionalMetricsToRetainV2 instead.}
+CreateSecurityProfileRequest$additionalMetricsToRetainV2 instead.}
 
 \item{additionalMetricsToRetainV2}{A list of metrics whose data is retained (stored). By default, data is
-retained for any metric used in the profile\'s \code{behaviors}, but it is
+retained for any metric used in the profile's \code{behaviors}, but it is
 also retained for any metric specified here.}
 
 \item{tags}{Metadata that can be used to manage the security profile.}

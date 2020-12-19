@@ -66,7 +66,7 @@ also returns an S3 location with temporary access credentials. Use
 the credentials to manually upload your build files to the specified
 S3 location. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html}{Uploading Objects}
 in the \emph{Amazon S3 Developer Guide}. Build files can be uploaded to
-the GameLift S3 location once only; that can\'t be updated.
+the GameLift S3 location once only; that can't be updated.
 }
 
 If successful, this operation creates a new build resource with a unique

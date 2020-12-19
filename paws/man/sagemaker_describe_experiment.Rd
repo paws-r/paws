@@ -10,7 +10,7 @@ sagemaker_describe_experiment(ExperimentName)
 \item{ExperimentName}{[required] The name of the experiment to describe.}
 }
 \description{
-Provides a list of an experiment\'s properties.
+Provides a list of an experiment's properties.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_experiment(

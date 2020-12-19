@@ -7,7 +7,7 @@
 sagemaker_describe_auto_ml_job(AutoMLJobName)
 }
 \arguments{
-\item{AutoMLJobName}{[required] Request information about a job using that job\'s unique name.}
+\item{AutoMLJobName}{[required] Request information about a job using that job's unique name.}
 }
 \description{
 Returns information about an Amazon SageMaker job.

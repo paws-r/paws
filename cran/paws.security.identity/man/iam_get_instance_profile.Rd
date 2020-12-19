@@ -16,7 +16,7 @@ spaces. You can also include any of the following characters: \\_+=,.@-}
 }
 \description{
 Retrieves information about the specified instance profile, including
-the instance profile\'s path, GUID, ARN, and role. For more information
+the instance profile's path, GUID, ARN, and role. For more information
 about instance profiles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}
 in the \emph{IAM User Guide}.
 }

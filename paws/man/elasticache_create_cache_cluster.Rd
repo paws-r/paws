@@ -38,7 +38,7 @@ This parameter is only valid if the \code{Engine} parameter is \code{redis}.}
 
 \item{AZMode}{Specifies whether the nodes in this Memcached cluster are created in a
 single Availability Zone or created across multiple Availability Zones
-in the cluster\'s region.
+in the cluster's region.
 
 This parameter is only supported for Memcached clusters.
 
@@ -154,7 +154,7 @@ supported on Redis version 2.8.22 and later.
 
 \item{Engine}{The name of the cache engine to be used for this cluster.
 
-Valid values for this parameter are: \code{memcached} \\| \code{redis}}
+Valid values for this parameter are: \code{memcached} | \code{redis}}
 
 \item{EngineVersion}{The version number of the cache engine to be used for this cluster. To
 view the supported cache engine versions, use the
@@ -175,7 +175,7 @@ engine is used. You cannot use any parameter group which has
 Use this parameter only when you are creating a cluster in an Amazon
 Virtual Private Cloud (Amazon VPC).
 
-If you\'re going to launch your cluster in an Amazon VPC, you need to
+If you're going to launch your cluster in an Amazon VPC, you need to
 create a subnet group before you start creating a cluster. For more
 information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html}{Subnets and Subnet Groups}.}
 
@@ -266,8 +266,8 @@ Password constraints:
 \item Must be only printable ASCII characters.
 \item Must be at least 16 characters and no more than 128 characters in
 length.
-\item The only permitted printable special characters are !, &, \\#, \\$,
-\\^, \\<, \\>, and -. Other printable special characters cannot be used
+\item The only permitted printable special characters are !, &, \\#, $, ^,
+<, >, and -. Other printable special characters cannot be used
 in the AUTH token.
 }
 

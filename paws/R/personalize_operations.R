@@ -21,7 +21,7 @@ NULL
 #' @param numResults The number of recommendations to retreive.
 #' @param jobInput &#91;required&#93; The Amazon S3 path that leads to the input file to base your
 #' recommendations on. The input material must be in JSON format.
-#' @param jobOutput &#91;required&#93; The path to the Amazon S3 bucket where the job\'s output will be stored.
+#' @param jobOutput &#91;required&#93; The path to the Amazon S3 bucket where the job's output will be stored.
 #' @param roleArn &#91;required&#93; The ARN of the Amazon Identity and Access Management role that has
 #' permissions to read and write to your input and out Amazon S3 buckets
 #' respectively.
@@ -87,9 +87,9 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
 #' provisioned by Amazon Personalize, and thus, the minimum billing charge.
 #' If your TPS increases beyond `minProvisionedTPS`, Amazon Personalize
 #' auto-scales the provisioned capacity up and down, but never below
-#' `minProvisionedTPS`, to maintain a 70% utilization. There\'s a short
-#' time delay while the capacity is increased that might cause loss of
-#' transactions. It\'s recommended to start with a low `minProvisionedTPS`,
+#' `minProvisionedTPS`, to maintain a 70% utilization. There's a short time
+#' delay while the capacity is increased that might cause loss of
+#' transactions. It's recommended to start with a low `minProvisionedTPS`,
 #' track your usage using Amazon CloudWatch metrics, and then increase the
 #' `minProvisionedTPS` as necessary.
 #' 
@@ -97,9 +97,10 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
 #' 
 #' A campaign can be in one of the following states:
 #' 
-#' -   CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#'     FAILED
 #' 
-#' -   DELETE PENDING \\> DELETE IN\\_PROGRESS
+#' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
 #' 
 #' To get the campaign status, call DescribeCampaign.
 #' 
@@ -173,9 +174,10 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
 #' 
 #' A dataset can be in one of the following states:
 #' 
-#' -   CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#'     FAILED
 #' 
-#' -   DELETE PENDING \\> DELETE IN\\_PROGRESS
+#' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
 #' 
 #' To get the status of the dataset, call DescribeDataset.
 #' 
@@ -256,7 +258,8 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
 #' 
 #' A dataset group can be in one of the following states:
 #' 
-#' -   CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#'     FAILED
 #' 
 #' -   DELETE PENDING
 #' 
@@ -341,7 +344,8 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' 
 #' A dataset import job can be in one of the following states:
 #' 
-#' -   CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#'     FAILED
 #' 
 #' To get the status of the import job, call DescribeDatasetImportJob,
 #' providing the Amazon Resource Name (ARN) of the dataset import job. The
@@ -423,9 +427,10 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
 #' 
 #' The event tracker can be in one of the following states:
 #' 
-#' -   CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#'     FAILED
 #' 
-#' -   DELETE PENDING \\> DELETE IN\\_PROGRESS
+#' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
 #' 
 #' To get the status of the event tracker, call DescribeEventTracker.
 #' 
@@ -491,7 +496,7 @@ personalize_create_event_tracker <- function(name, datasetGroupArn) {
 #' 
 #' `EXCLUDE itemId WHERE INTERACTIONS.event_type in ("EVENT_TYPE")`
 #' 
-#' Where \"EVENT\\_TYPE\" is the type of event to filter out. To filter out
+#' Where "EVENT\\_TYPE" is the type of event to filter out. To filter out
 #' all items with any interactions history, set `"*"` as the EVENT\\_TYPE.
 #' For more information, see Using Filters with Amazon Personalize.
 #'
@@ -602,9 +607,10 @@ personalize_create_schema <- function(name, schema) {
 #' 
 #' A solution can be in one of the following states:
 #' 
-#' -   CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#'     FAILED
 #' 
-#' -   DELETE PENDING \\> DELETE IN\\_PROGRESS
+#' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
 #' 
 #' To get the status of the solution, call DescribeSolution. Wait until the
 #' status shows as ACTIVE before calling `CreateSolutionVersion`.
@@ -649,8 +655,8 @@ personalize_create_schema <- function(name, schema) {
 #' @param datasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset group that provides the
 #' training data.
 #' @param eventType When your have multiple event types (using an `EVENT_TYPE` schema
-#' field), this parameter specifies which event type (for example,
-#' \'click\' or \'like\') is used for training the model.
+#' field), this parameter specifies which event type (for example, 'click'
+#' or 'like') is used for training the model.
 #' @param solutionConfig The configuration to use with the solution. When `performAutoML` is set
 #' to true, Amazon Personalize only evaluates the `autoMLConfig` section of
 #' the solution configuration.
@@ -748,7 +754,8 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' 
 #' A solution version can be in one of the following states:
 #' 
-#' -   CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#'     FAILED
 #' 
 #' To get the status of the version, call DescribeSolutionVersion. Wait
 #' until the status shows as ACTIVE before calling `CreateCampaign`.
@@ -779,7 +786,7 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' configuration information.
 #' @param trainingMode The scope of training to be performed when creating the solution
 #' version. The `FULL` option trains the solution version based on the
-#' entirety of the input solution\'s training data, while the `UPDATE`
+#' entirety of the input solution's training data, while the `UPDATE`
 #' option processes only the data that has changed in comparison to the
 #' input solution. Choose `UPDATE` when you want to incrementally update
 #' your solution version instead of creating an entirely new one.
@@ -859,7 +866,7 @@ personalize_delete_campaign <- function(campaignArn) {
 
 #' Deletes a dataset
 #'
-#' Deletes a dataset. You can\'t delete a dataset if an associated
+#' Deletes a dataset. You can't delete a dataset if an associated
 #' `DatasetImportJob` or `SolutionVersion` is in the CREATE PENDING or IN
 #' PROGRESS state. For more information on datasets, see CreateDataset.
 #'
@@ -1056,9 +1063,9 @@ personalize_delete_schema <- function(schemaArn) {
 #' Before deleting a solution, you must delete all campaigns based on the
 #' solution. To determine what campaigns are using the solution, call
 #' ListCampaigns and supply the Amazon Resource Name (ARN) of the solution.
-#' You can\'t delete a solution if an associated `SolutionVersion` is in
-#' the CREATE PENDING or IN PROGRESS state. For more information on
-#' solutions, see CreateSolution.
+#' You can't delete a solution if an associated `SolutionVersion` is in the
+#' CREATE PENDING or IN PROGRESS state. For more information on solutions,
+#' see CreateSolution.
 #'
 #' @usage
 #' personalize_delete_solution(solutionArn)
@@ -1174,9 +1181,10 @@ personalize_describe_batch_inference_job <- function(batchInferenceJobArn) {
 #' 
 #' A campaign can be in one of the following states:
 #' 
-#' -   CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING &gt; CREATE IN\\_PROGRESS &gt; ACTIVE -or- CREATE
+#'     FAILED
 #' 
-#' -   DELETE PENDING \\> DELETE IN\\_PROGRESS
+#' -   DELETE PENDING &gt; DELETE IN\\_PROGRESS
 #' 
 #' When the `status` is `CREATE FAILED`, the response includes the
 #' `failureReason` key, which describes why.
@@ -1404,7 +1412,7 @@ personalize_describe_feature_transformation <- function(featureTransformationArn
 
 #' Describes a filter's properties
 #'
-#' Describes a filter\'s properties.
+#' Describes a filter's properties.
 #'
 #' @usage
 #' personalize_describe_filter(filterArn)
@@ -1951,7 +1959,7 @@ personalize_list_filters <- function(datasetGroupArn = NULL, nextToken = NULL, m
 #' Returns a list of available recipes
 #'
 #' Returns a list of available recipes. The response provides the
-#' properties for each recipe, including the recipe\'s Amazon Resource Name
+#' properties for each recipe, including the recipe's Amazon Resource Name
 #' (ARN).
 #'
 #' @usage
@@ -2126,7 +2134,7 @@ personalize_list_solutions <- function(datasetGroupArn = NULL, nextToken = NULL,
 #' value of the campaign's minProvisionedTPS parameter
 #'
 #' Updates a campaign by either deploying a new solution or changing the
-#' value of the campaign\'s `minProvisionedTPS` parameter.
+#' value of the campaign's `minProvisionedTPS` parameter.
 #' 
 #' To update a campaign, the campaign status must be ACTIVE or CREATE
 #' FAILED. Check the campaign status using the DescribeCampaign API.

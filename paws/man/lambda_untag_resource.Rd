@@ -7,7 +7,7 @@
 lambda_untag_resource(Resource, TagKeys)
 }
 \arguments{
-\item{Resource}{[required] The function\'s Amazon Resource Name (ARN).}
+\item{Resource}{[required] The function's Amazon Resource Name (ARN).}
 
 \item{TagKeys}{[required] A list of tag keys to remove from the function.}
 }

@@ -20,7 +20,7 @@ with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
 \description{
-Gets a list of all customer master keys (CMKs) in the caller\'s AWS
+Gets a list of all customer master keys (CMKs) in the caller's AWS
 account and Region.
 }
 \section{Request syntax}{

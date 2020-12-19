@@ -53,9 +53,9 @@ cloudwatchevents_activate_event_source <- function(Name) {
 #'
 #' @param Name &#91;required&#93; The name of the new event bus.
 #' 
-#' Event bus names cannot contain the / character. You can\'t use the name
+#' Event bus names cannot contain the / character. You can't use the name
 #' `default` for a custom event bus, as this name is already used for your
-#' account\'s default event bus.
+#' account's default event bus.
 #' 
 #' If this is a partner event bus, the name must exactly match the name of
 #' the partner event source that this event bus is matched to.
@@ -108,7 +108,7 @@ cloudwatchevents_create_event_bus <- function(Name, EventSourceName = NULL, Tags
 #' receive those event types.
 #' 
 #' A partner event source creates events based on resources within the SaaS
-#' partner\'s service or application.
+#' partner's service or application.
 #' 
 #' An AWS account that creates a partner event bus that matches the partner
 #' event source can use that event bus to receive events from the partner,
@@ -213,8 +213,8 @@ cloudwatchevents_deactivate_event_source <- function(Name) {
 #' Deletes the specified custom event bus or partner event bus
 #'
 #' Deletes the specified custom event bus or partner event bus. All rules
-#' associated with this event bus need to be deleted. You can\'t delete
-#' your account\'s default event bus.
+#' associated with this event bus need to be deleted. You can't delete your
+#' account's default event bus.
 #'
 #' @usage
 #' cloudwatchevents_delete_event_bus(Name)
@@ -516,8 +516,8 @@ cloudwatchevents_describe_rule <- function(Name, EventBusName = NULL) {
 
 #' Disables the specified rule
 #'
-#' Disables the specified rule. A disabled rule won\'t match any events,
-#' and won\'t self-trigger if it has a schedule expression.
+#' Disables the specified rule. A disabled rule won't match any events, and
+#' won't self-trigger if it has a schedule expression.
 #' 
 #' When you disable a rule, incoming events might continue to match to the
 #' disabled rule. Allow a short period of time for changes to take effect.
@@ -1022,7 +1022,7 @@ cloudwatchevents_put_events <- function(Entries) {
 #' This is used by SaaS partners to write events to a customer's partner
 #' event bus
 #'
-#' This is used by SaaS partners to write events to a customer\'s partner
+#' This is used by SaaS partners to write events to a customer's partner
 #' event bus. AWS customers do not use this operation.
 #'
 #' @usage
@@ -1070,7 +1070,7 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 .cloudwatchevents$operations$put_partner_events <- cloudwatchevents_put_partner_events
 
 #' Running PutPermission permits the specified AWS account or AWS
-#' organization to put events to the specified _event bus_
+#' organization to put events to the specified event bus
 #'
 #' Running `PutPermission` permits the specified AWS account or AWS
 #' organization to put events to the specified *event bus*. Amazon
@@ -1078,19 +1078,19 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' these events arriving to an event bus in your account.
 #' 
 #' For another account to send events to your account, that external
-#' account must have an EventBridge rule with your account\'s event bus as
-#' a target.
+#' account must have an EventBridge rule with your account's event bus as a
+#' target.
 #' 
 #' To enable multiple AWS accounts to put events to your event bus, run
 #' `PutPermission` once for each of these accounts. Or, if all the accounts
 #' are members of the same AWS organization, you can run `PutPermission`
-#' once specifying `Principal` as \"*\" and specifying the AWS
-#' organization ID in `Condition`, to grant permissions to all accounts in
-#' that organization.
+#' once specifying `Principal` as "*" and specifying the AWS organization
+#' ID in `Condition`, to grant permissions to all accounts in that
+#' organization.
 #' 
 #' If you grant permissions using an organization, then accounts in that
 #' organization must specify a `RoleArn` with proper permissions when they
-#' use `PutTarget` to add your account\'s event bus as a target. For more
+#' use `PutTarget` to add your account's event bus as a target. For more
 #' information, see [Sending and Receiving Events Between AWS
 #' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html)
 #' in the *Amazon EventBridge User Guide*.
@@ -1107,14 +1107,14 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' @param Action &#91;required&#93; The action that you are enabling the other account to perform.
 #' Currently, this must be `events:PutEvents`.
 #' @param Principal &#91;required&#93; The 12-digit AWS account ID that you are permitting to put events to
-#' your default event bus. Specify \"*\" to permit any account to put
-#' events to your default event bus.
+#' your default event bus. Specify "*" to permit any account to put events
+#' to your default event bus.
 #' 
-#' If you specify \"*\" without specifying `Condition`, avoid creating
-#' rules that may match undesirable events. To create more secure rules,
-#' make sure that the event pattern for each rule contains an `account`
-#' field with a specific account ID from which to receive events. Rules
-#' with an account field do not match any events sent from other accounts.
+#' If you specify "*" without specifying `Condition`, avoid creating rules
+#' that may match undesirable events. To create more secure rules, make
+#' sure that the event pattern for each rule contains an `account` field
+#' with a specific account ID from which to receive events. Rules with an
+#' account field do not match any events sent from other accounts.
 #' @param StatementId &#91;required&#93; An identifier string for the external account that you are granting
 #' permissions to. If you later want to revoke the permission for this
 #' external account, specify this `StatementId` when you run
@@ -1126,9 +1126,9 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
 #' in the *AWS Organizations User Guide*.
 #' 
-#' If you specify `Condition` with an AWS organization ID, and specify
-#' \"*\" as the value for `Principal`, you grant permission to all the
-#' accounts in the named organization.
+#' If you specify `Condition` with an AWS organization ID, and specify "*"
+#' as the value for `Principal`, you grant permission to all the accounts
+#' in the named organization.
 #' 
 #' The `Condition` is a JSON string which must contain `Type`, `Key`, and
 #' `Value` fields.
@@ -1174,11 +1174,11 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action, Princip
 #' based on value of the state. You can disable a rule using DisableRule.
 #' 
 #' A single rule watches for events from a single event bus. Events
-#' generated by AWS services go to your account\'s default event bus.
-#' Events generated by SaaS partner services or applications go to the
-#' matching partner event bus. If you have custom applications or services,
-#' you can specify whether their events go to your default event bus or a
-#' custom event bus that you have created. For more information, see
+#' generated by AWS services go to your account's default event bus. Events
+#' generated by SaaS partner services or applications go to the matching
+#' partner event bus. If you have custom applications or services, you can
+#' specify whether their events go to your default event bus or a custom
+#' event bus that you have created. For more information, see
 #' CreateEventBus.
 #' 
 #' If you are updating an existing rule, the rule is replaced with what you
@@ -1236,8 +1236,8 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action, Princip
 #'   Description, RoleArn, Tags, EventBusName)
 #'
 #' @param Name &#91;required&#93; The name of the rule that you are creating or updating.
-#' @param ScheduleExpression The scheduling expression. For example, \"cron(0 20 * * ? *)\" or
-#' \"rate(5 minutes)\".
+#' @param ScheduleExpression The scheduling expression. For example, "cron(0 20 * * ? *)" or
+#' "rate(5 minutes)".
 #' @param EventPattern The event pattern. For more information, see [Events and Event
 #' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
 #' in the *Amazon EventBridge User Guide*.
@@ -1352,8 +1352,8 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' 
 #' If another AWS account is in the same region and has granted you
 #' permission (using `PutPermission`), you can send events to that account.
-#' Set that account\'s event bus as a target of the rules in your account.
-#' To send the matched events to the other account, specify that account\'s
+#' Set that account's event bus as a target of the rules in your account.
+#' To send the matched events to the other account, specify that account's
 #' event bus as the `Arn` value when you run `PutTargets`. If your account
 #' sends events to another account, your account is charged for each sent
 #' event. Each event sent to another account is charged as a custom event.
@@ -1626,8 +1626,8 @@ cloudwatchevents_remove_targets <- function(Rule, EventBusName = NULL, Ids, Forc
 #' permission to access or change only resources with certain tag values.
 #' In EventBridge, rules and event buses can be tagged.
 #' 
-#' Tags don\'t have any semantic meaning to AWS and are interpreted
-#' strictly as strings of characters.
+#' Tags don't have any semantic meaning to AWS and are interpreted strictly
+#' as strings of characters.
 #' 
 #' You can use the `TagResource` action with a resource that already has
 #' tags. If you specify a new tag key, this tag is appended to the list of
@@ -1640,7 +1640,7 @@ cloudwatchevents_remove_targets <- function(Rule, EventBusName = NULL, Ids, Forc
 #' @usage
 #' cloudwatchevents_tag_resource(ResourceARN, Tags)
 #'
-#' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource that you\'re adding tags to.
+#' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource that you're adding tags to.
 #' @param Tags &#91;required&#93; The list of key-value pairs to associate with the resource.
 #'
 #' @section Request syntax:

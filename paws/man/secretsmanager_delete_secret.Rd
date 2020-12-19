@@ -12,32 +12,32 @@ secretsmanager_delete_secret(SecretId, RecoveryWindowInDays,
 Amazon Resource Name (ARN) or the friendly name of the secret.
 
 If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too---for example, if you
-don't include the final hyphen and six random characters that Secrets
+complete ARN. You can specify a partial ARN too—for example, if you
+don’t include the final hyphen and six random characters that Secrets
 Manager adds at the end of the ARN when you created the secret. A
 partial ARN match can work as long as it uniquely matches only one
 secret. However, if your secret has a name that ends in a hyphen
 followed by six characters (before Secrets Manager adds the hyphen and
 six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you're
+then those characters cause Secrets Manager to assume that you’re
 specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don't create secret names
+To avoid this situation, we recommend that you don’t create secret names
 ending with a hyphen followed by six characters.
 
 If you specify an incomplete ARN without the random suffix, and instead
-provide the \'friendly name\', you \emph{must} not include the random suffix.
+provide the 'friendly name', you \emph{must} not include the random suffix.
 If you do include the random suffix added by Secrets Manager, you
 receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 
 \item{RecoveryWindowInDays}{(Optional) Specifies the number of days that Secrets Manager waits
-before it can delete the secret. You can\'t use both this parameter and
+before it can delete the secret. You can't use both this parameter and
 the \code{ForceDeleteWithoutRecovery} parameter in the same API call.
 
 This value can range from 7 to 30 days. The default value is 30.}
 
 \item{ForceDeleteWithoutRecovery}{(Optional) Specifies that the secret is to be deleted without any
-recovery window. You can\'t use both this parameter and the
+recovery window. You can't use both this parameter and the
 \code{RecoveryWindowInDays} parameter in the same API call.
 
 An asynchronous background process performs the actual deletion, so
@@ -55,7 +55,7 @@ have no opportunity to recover the secret. It is permanently lost.}
 \description{
 Deletes an entire secret and all of its versions. You can optionally
 include a recovery window during which you can restore the secret. If
-you don\'t specify a recovery window value, the operation defaults to 30
+you don't specify a recovery window value, the operation defaults to 30
 days. Secrets Manager attaches a \code{DeletionDate} stamp to the secret that
 specifies the end of the recovery window. At the end of the recovery
 window, Secrets Manager deletes the secret permanently.

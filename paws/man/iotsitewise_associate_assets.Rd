@@ -11,7 +11,7 @@ iotsitewise_associate_assets(assetId, hierarchyId, childAssetId,
 \arguments{
 \item{assetId}{[required] The ID of the parent asset.}
 
-\item{hierarchyId}{[required] The ID of a hierarchy in the parent asset\'s model. Hierarchies allow
+\item{hierarchyId}{[required] The ID of a hierarchy in the parent asset's model. Hierarchies allow
 different groupings of assets to be formed that all come from the same
 asset model. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html}{Asset Hierarchies}
 in the \emph{AWS IoT SiteWise User Guide}.}
@@ -19,12 +19,12 @@ in the \emph{AWS IoT SiteWise User Guide}.}
 \item{childAssetId}{[required] The ID of the child asset to be associated.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{
 Associates a child asset with the given parent asset through a hierarchy
-defined in the parent asset\'s model. For more information, see
+defined in the parent asset's model. For more information, see
 \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/add-associated-assets.html}{Associating Assets}
 in the \emph{AWS IoT SiteWise User Guide}.
 }

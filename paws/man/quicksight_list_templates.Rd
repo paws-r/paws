@@ -7,7 +7,7 @@
 quicksight_list_templates(AwsAccountId, NextToken, MaxResults)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the templates that you\'re
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the templates that you're
 listing.}
 
 \item{NextToken}{The token for the next set of results, or null if there are no more

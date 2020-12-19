@@ -16,7 +16,7 @@ when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.}
 \item{FileSystemType}{[required] The type of Amazon FSx file system to create, either \code{WINDOWS} or
 \code{LUSTRE}.}
 
-\item{StorageCapacity}{[required] Sets the storage capacity of the file system that you\'re creating.
+\item{StorageCapacity}{[required] Sets the storage capacity of the file system that you're creating.
 
 For Lustre file systems:
 \itemize{
@@ -33,7 +33,7 @@ For Windows file systems:
 TiB).
 }}
 
-\item{StorageType}{Sets the storage type for the Amazon FSx for Windows file system you\'re
+\item{StorageType}{Sets the storage type for the Amazon FSx for Windows file system you're
 creating. Valid values are \code{SSD} and \code{HDD}.
 \itemize{
 \item Set to \code{SSD} to use solid state drive storage. SSD is supported on
@@ -54,10 +54,10 @@ property.
 
 For Windows \code{SINGLE_AZ_1} and \code{SINGLE_AZ_2} file system deployment types
 and Lustre file systems, provide exactly one subnet ID. The file server
-is launched in that subnet\'s Availability Zone.}
+is launched in that subnet's Availability Zone.}
 
 \item{SecurityGroupIds}{A list of IDs specifying the security groups to apply to all network
-interfaces created for file system access. This list isn\'t returned in
+interfaces created for file system access. This list isn't returned in
 later requests to describe the file system.}
 
 \item{Tags}{The tags to apply to the file system being created. The key value of the
@@ -76,9 +76,9 @@ Creates a new, empty Amazon FSx file system.
 If a file system with the specified client request token exists and the
 parameters match, \code{CreateFileSystem} returns the description of the
 existing file system. If a file system specified client request token
-exists and the parameters don\'t match, this call returns
+exists and the parameters don't match, this call returns
 \code{IncompatibleParameterError}. If a file system with the specified client
-request token doesn\'t exist, \code{CreateFileSystem} does the following:
+request token doesn't exist, \code{CreateFileSystem} does the following:
 \itemize{
 \item Creates a new, empty Amazon FSx file system with an assigned ID, and
 an initial lifecycle state of \code{CREATING}.
@@ -97,7 +97,7 @@ use the same client request token and the initial call created a file
 system, the client receives success as long as the parameters are the
 same.
 
-The \code{CreateFileSystem} call returns while the file system\'s lifecycle
+The \code{CreateFileSystem} call returns while the file system's lifecycle
 state is still \code{CREATING}. You can check the file-system creation status
 by calling the DescribeFileSystems operation, which returns the file
 system state along with other information.

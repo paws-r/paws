@@ -11,7 +11,7 @@ sagemaker_create_processing_job(ProcessingInputs,
 }
 \arguments{
 \item{ProcessingInputs}{For each input, data is downloaded from S3 into the processing container
-before the processing job begins running if \"S3InputMode\" is set to
+before the processing job begins running if "S3InputMode" is set to
 \code{File}.}
 
 \item{ProcessingOutputConfig}{Output configuration for the processing job.}

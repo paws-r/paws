@@ -16,7 +16,7 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
 \description{
-Returns an Amazon QuickSight group\'s description and Amazon Resource
+Returns an Amazon QuickSight group's description and Amazon Resource
 Name (ARN).
 }
 \section{Request syntax}{

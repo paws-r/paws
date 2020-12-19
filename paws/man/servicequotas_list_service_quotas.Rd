@@ -11,23 +11,23 @@ servicequotas_list_service_quotas(ServiceCode, NextToken, MaxResults)
 \code{ServiceCode} to specify a particular service.}
 
 \item{NextToken}{(Optional) Use this parameter in a request if you receive a \code{NextToken}
-response in a previous request that indicates that there\'s more output
+response in a previous request that indicates that there's more output
 available. In a subsequent call, set it to the value of the previous
-call\'s \code{NextToken} response to indicate where the output should
-continue from.}
+call's \code{NextToken} response to indicate where the output should continue
+from.}
 
 \item{MaxResults}{(Optional) Limits the number of results that you want to include in the
-response. If you don\'t include this parameter, the response defaults to
-a value that\'s specific to the operation. If additional items exist
+response. If you don't include this parameter, the response defaults to
+a value that's specific to the operation. If additional items exist
 beyond the specified maximum, the \code{NextToken} element is present and has
-a value (isn\'t null). Include that value as the \code{NextToken} request
+a value (isn't null). Include that value as the \code{NextToken} request
 parameter in the call to the operation to get the next part of the
 results. You should check \code{NextToken} after every operation to ensure
 that you receive all of the results.}
 }
 \description{
 Lists all service quotas for the specified AWS service. This request
-returns a list of the service quotas for the specified service. you\'ll
+returns a list of the service quotas for the specified service. you'll
 see the default values are the values that AWS provides for the quotas.
 }
 \details{

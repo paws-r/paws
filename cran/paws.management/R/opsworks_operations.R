@@ -61,7 +61,7 @@ opsworks_assign_instance <- function(InstanceId, LayerIds) {
 #' Assigns one of the stack's registered Amazon EBS volumes to a specified
 #' instance
 #'
-#' Assigns one of the stack\'s registered Amazon EBS volumes to a specified
+#' Assigns one of the stack's registered Amazon EBS volumes to a specified
 #' instance. The volume must first be registered with the stack by calling
 #' RegisterVolume. After you register the volume, you must call
 #' UpdateVolume to specify a mount point before calling `AssignVolume`. For
@@ -111,7 +111,7 @@ opsworks_assign_volume <- function(VolumeId, InstanceId = NULL) {
 #' Associates one of the stack's registered Elastic IP addresses with a
 #' specified instance
 #'
-#' Associates one of the stack\'s registered Elastic IP addresses with a
+#' Associates one of the stack's registered Elastic IP addresses with a
 #' specified instance. The address must first be registered with the stack
 #' by calling RegisterElasticIp. For more information, see [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
@@ -178,7 +178,7 @@ opsworks_associate_elastic_ip <- function(ElasticIp, InstanceId = NULL) {
 #' @usage
 #' opsworks_attach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
 #'
-#' @param ElasticLoadBalancerName &#91;required&#93; The Elastic Load Balancing instance\'s name.
+#' @param ElasticLoadBalancerName &#91;required&#93; The Elastic Load Balancing instance's name.
 #' @param LayerId &#91;required&#93; The ID of the layer to which the Elastic Load Balancing instance is to
 #' be attached.
 #'
@@ -232,7 +232,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #'
 #' @param SourceStackId &#91;required&#93; The source stack ID.
 #' @param Name The cloned stack name.
-#' @param Region The cloned stack AWS region, such as \"ap-northeast-2\". For more
+#' @param Region The cloned stack AWS region, such as "ap-northeast-2". For more
 #' information about AWS regions, see [Regions and
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html).
 #' @param VpcId The ID of the VPC that the cloned stack is to be launched into. It must
@@ -269,20 +269,19 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' AWS OpsWorks Stacks to work with AWS resources on your behalf. You must
 #' set this parameter to the Amazon Resource Name (ARN) for an existing IAM
 #' role. If you create a stack by using the AWS OpsWorks Stacks console, it
-#' creates the role for you. You can obtain an existing stack\'s IAM ARN
+#' creates the role for you. You can obtain an existing stack's IAM ARN
 #' programmatically by calling DescribePermissions. For more information
 #' about IAM ARNs, see [Using
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 #' 
 #' You must set this parameter to a valid service role ARN or the action
-#' will fail; there is no default value. You can specify the source
-#' stack\'s service role ARN, if you prefer, but you must do so explicitly.
+#' will fail; there is no default value. You can specify the source stack's
+#' service role ARN, if you prefer, but you must do so explicitly.
 #' @param DefaultInstanceProfileArn The Amazon Resource Name (ARN) of an IAM profile that is the default
-#' profile for all of the stack\'s EC2 instances. For more information
-#' about IAM ARNs, see [Using
+#' profile for all of the stack's EC2 instances. For more information about
+#' IAM ARNs, see [Using
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
-#' @param DefaultOs The stack\'s operating system, which must be set to one of the
-#' following.
+#' @param DefaultOs The stack's operating system, which must be set to one of the following.
 #' 
 #' -   A supported Linux operating system: An Amazon Linux version, such as
 #'     `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
@@ -307,17 +306,17 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #'     custom AMIs with OpsWorks, see [Using Custom
 #'     AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 #' 
-#' The default option is the parent stack\'s operating system. For more
+#' The default option is the parent stack's operating system. For more
 #' information about supported operating systems, see [AWS OpsWorks Stacks
 #' Operating
 #' Systems](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 #' 
 #' You can specify a different Linux operating system for the cloned stack,
 #' but you cannot change from Linux to Windows or Windows to Linux.
-#' @param HostnameTheme The stack\'s host name theme, with spaces are replaced by underscores.
-#' The theme is used to generate host names for the stack\'s instances. By
+#' @param HostnameTheme The stack's host name theme, with spaces are replaced by underscores.
+#' The theme is used to generate host names for the stack's instances. By
 #' default, `HostnameTheme` is set to `Layer_Dependent`, which creates host
-#' names by appending integers to the layer\'s short name. The other themes
+#' names by appending integers to the layer's short name. The other themes
 #' are:
 #' 
 #' -   `Baked_Goods`
@@ -344,13 +343,13 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' 
 #' To obtain a generated host name, call `GetHostNameSuggestion`, which
 #' returns a host name based on the current theme.
-#' @param DefaultAvailabilityZone The cloned stack\'s default Availability Zone, which must be in the
+#' @param DefaultAvailabilityZone The cloned stack's default Availability Zone, which must be in the
 #' specified region. For more information, see [Regions and
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html). If
 #' you also specify a value for `DefaultSubnetId`, the subnet must be in
 #' the same zone. For more information, see the `VpcId` parameter
 #' description.
-#' @param DefaultSubnetId The stack\'s default VPC subnet ID. This parameter is required if you
+#' @param DefaultSubnetId The stack's default VPC subnet ID. This parameter is required if you
 #' specify a value for the `VpcId` parameter. All instances are launched
 #' into this subnet unless you specify otherwise when you create the
 #' instance. If you also specify a value for `DefaultAvailabilityZone`, the
@@ -375,7 +374,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
 #' @param UseCustomCookbooks Whether to use custom cookbooks.
 #' @param UseOpsworksSecurityGroups Whether to associate the AWS OpsWorks Stacks built-in security groups
-#' with the stack\'s layers.
+#' with the stack's layers.
 #' 
 #' AWS OpsWorks Stacks provides a standard set of built-in security groups,
 #' one for each layer, which are associated with layers by default. With
@@ -413,7 +412,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' You can override this setting by specifying a different key pair, or no
 #' key pair, when you [create an
 #' instance](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
-#' @param ClonePermissions Whether to clone the source stack\'s permissions.
+#' @param ClonePermissions Whether to clone the source stack's permissions.
 #' @param CloneAppIds A list of source stack app IDs to be included in the cloned stack.
 #' @param DefaultRootDeviceType The default root device type. This value is used by default for all
 #' instances in the cloned stack, but you can override it when you create
@@ -423,13 +422,13 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' options:
 #' 
 #' -   Auto-update - Set this parameter to `LATEST`. AWS OpsWorks Stacks
-#'     automatically installs new agent versions on the stack\'s instances
+#'     automatically installs new agent versions on the stack's instances
 #'     as soon as they are available.
 #' 
 #' -   Fixed version - Set this parameter to your preferred agent version.
 #'     To update the agent version, you must edit the stack configuration
 #'     and specify a new version. AWS OpsWorks Stacks then automatically
-#'     installs that version on the stack\'s instances.
+#'     installs that version on the stack's instances.
 #' 
 #' The default setting is `LATEST`. To specify an agent version, you must
 #' use the complete version number, not the abbreviated number shown on the
@@ -437,7 +436,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
 #' 
 #' You can also specify an agent version when you create or update an
-#' instance, which overrides the stack\'s default setting.
+#' instance, which overrides the stack's default setting.
 #'
 #' @section Request syntax:
 #' ```
@@ -522,14 +521,14 @@ opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcI
 #'   Environment)
 #'
 #' @param StackId &#91;required&#93; The stack ID.
-#' @param Shortname The app\'s short name.
+#' @param Shortname The app's short name.
 #' @param Name &#91;required&#93; The app name.
 #' @param Description A description of the app.
-#' @param DataSources The app\'s data source.
+#' @param DataSources The app's data source.
 #' @param Type &#91;required&#93; The app type. Each supported type is associated with a particular layer.
 #' For example, PHP applications are associated with a PHP layer. AWS
 #' OpsWorks Stacks deploys an application to those instances that are
-#' members of the corresponding layer. If your app isn\'t one of the
+#' members of the corresponding layer. If your app isn't one of the
 #' standard types, or you prefer to implement your own Deploy recipes,
 #' specify `other`.
 #' @param AppSource A `Source` object that specifies the app repository.
@@ -547,13 +546,13 @@ opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcI
 #' 
 #' There is no specific limit on the number of environment variables.
 #' However, the size of the associated data structure - which includes the
-#' variables\' names, values, and protected flag values - cannot exceed 20
+#' variables' names, values, and protected flag values - cannot exceed 20
 #' KB. This limit should accommodate most if not all use cases. Exceeding
-#' it will cause an exception with the message, \"Environment: is too large
-#' (maximum is 20KB).\"
+#' it will cause an exception with the message, "Environment: is too large
+#' (maximum is 20KB)."
 #' 
 #' If you have specified one or more environment variables, you cannot
-#' modify the stack\'s Chef version.
+#' modify the stack's Chef version.
 #'
 #' @section Request syntax:
 #' ```
@@ -721,7 +720,7 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #'   Tenancy)
 #'
 #' @param StackId &#91;required&#93; The stack ID.
-#' @param LayerIds &#91;required&#93; An array that contains the instance\'s layer IDs.
+#' @param LayerIds &#91;required&#93; An array that contains the instance's layer IDs.
 #' @param InstanceType &#91;required&#93; The instance type, such as `t2.micro`. For a list of supported instance
 #' types, open the stack in the console, choose **Instances**, and choose
 #' **+ Instance**. The **Size** list contains the currently supported
@@ -732,7 +731,7 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' @param AutoScalingType For load-based or time-based instances, the type. Windows stacks can use
 #' only time-based instances.
 #' @param Hostname The instance host name.
-#' @param Os The instance\'s operating system, which must be set to one of the
+#' @param Os The instance's operating system, which must be set to one of the
 #' following.
 #' 
 #' -   A supported Linux operating system: An Amazon Linux version, such as
@@ -761,7 +760,7 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' Systems](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
 #' 
 #' The default option is the current Amazon Linux version. If you set this
-#' parameter to `Custom`, you must use the CreateInstance action\'s AmiId
+#' parameter to `Custom`, you must use the CreateInstance action's AmiId
 #' parameter to specify the custom AMI that you want to use. Block device
 #' mappings are not supported if the value is `Custom`. For more
 #' information about supported operating systems, see [Operating
@@ -775,12 +774,12 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 #' 
 #' If you specify a custom AMI, you must set `Os` to `Custom`.
-#' @param SshKeyName The instance\'s Amazon EC2 key-pair name.
+#' @param SshKeyName The instance's Amazon EC2 key-pair name.
 #' @param AvailabilityZone The instance Availability Zone. For more information, see [Regions and
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html).
-#' @param VirtualizationType The instance\'s virtualization type, `paravirtual` or `hvm`.
-#' @param SubnetId The ID of the instance\'s subnet. If the stack is running in a VPC, you
-#' can use this parameter to override the stack\'s default subnet ID value
+#' @param VirtualizationType The instance's virtualization type, `paravirtual` or `hvm`.
+#' @param SubnetId The ID of the instance's subnet. If the stack is running in a VPC, you
+#' can use this parameter to override the stack's default subnet ID value
 #' and direct AWS OpsWorks Stacks to launch the instance in a different
 #' subnet.
 #' @param Architecture The instance architecture. The default option is `x86_64`. Instance
@@ -791,7 +790,7 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' @param RootDeviceType The instance root device type. For more information, see [Storage for
 #' the Root
 #' Device](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
-#' @param BlockDeviceMappings An array of `BlockDeviceMapping` objects that specify the instance\'s
+#' @param BlockDeviceMappings An array of `BlockDeviceMapping` objects that specify the instance's
 #' block devices. For more information, see [Block Device
 #' Mapping](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html).
 #' Note that block device mappings are not supported for custom AMIs.
@@ -808,10 +807,10 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' @param AgentVersion The default AWS OpsWorks Stacks agent version. You have the following
 #' options:
 #' 
-#' -   `INHERIT` - Use the stack\'s default agent version setting.
+#' -   `INHERIT` - Use the stack's default agent version setting.
 #' 
 #' -   *version\\_number* - Use the specified agent version. This value
-#'     overrides the stack\'s default setting. To update the agent version,
+#'     overrides the stack's default setting. To update the agent version,
 #'     edit the instance configuration and specify a new version. AWS
 #'     OpsWorks Stacks then automatically installs that version on the
 #'     instance.
@@ -820,7 +819,7 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' use the complete version number, not the abbreviated number shown on the
 #' console. For a list of available agent version numbers, call
 #' DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
-#' @param Tenancy The instance\'s tenancy option. The default option is no tenancy, or if
+#' @param Tenancy The instance's tenancy option. The default option is no tenancy, or if
 #' the instance is running in a VPC, inherit tenancy settings from the VPC.
 #' The following are valid values for this parameter: `dedicated`,
 #' `default`, or `host`. Because there are costs associated with changes in
@@ -924,42 +923,41 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' same type. It can have any number of custom layers. Built-in layers are
 #' not available in Chef 12 stacks.
 #' @param Name &#91;required&#93; The layer name, which is used by the console.
-#' @param Shortname &#91;required&#93; For custom layers only, use this parameter to specify the layer\'s short
+#' @param Shortname &#91;required&#93; For custom layers only, use this parameter to specify the layer's short
 #' name, which is used internally by AWS OpsWorks Stacks and by Chef
 #' recipes. The short name is also used as the name for the directory where
 #' your app files are installed. It can have a maximum of 200 characters,
-#' which are limited to the alphanumeric characters, \'-\', \'\\_\', and
-#' \'.\'.
+#' which are limited to the alphanumeric characters, '-', '\\_', and '.'.
 #' 
-#' The built-in layers\' short names are defined by AWS OpsWorks Stacks.
-#' For more information, see the [Layer
+#' The built-in layers' short names are defined by AWS OpsWorks Stacks. For
+#' more information, see the [Layer
 #' Reference](https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html).
 #' @param Attributes One or more user-defined key-value pairs to be added to the stack
 #' attributes.
 #' 
 #' To create a cluster layer, set the `EcsClusterArn` attribute to the
-#' cluster\'s ARN.
+#' cluster's ARN.
 #' @param CloudWatchLogsConfiguration Specifies CloudWatch Logs configuration options for the layer. For more
 #' information, see CloudWatchLogsLogStream.
-#' @param CustomInstanceProfileArn The ARN of an IAM profile to be used for the layer\'s EC2 instances. For
+#' @param CustomInstanceProfileArn The ARN of an IAM profile to be used for the layer's EC2 instances. For
 #' more information about IAM ARNs, see [Using
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 #' @param CustomJson A JSON-formatted string containing custom stack configuration and
-#' deployment attributes to be installed on the layer\'s instances. For
-#' more information, see [Using Custom
+#' deployment attributes to be installed on the layer's instances. For more
+#' information, see [Using Custom
 #' JSON](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html).
 #' This feature is supported as of version 1.7.42 of the AWS CLI.
 #' @param CustomSecurityGroupIds An array containing the layer custom security group IDs.
 #' @param Packages An array of `Package` objects that describes the layer packages.
-#' @param VolumeConfigurations A `VolumeConfigurations` object that describes the layer\'s Amazon EBS
+#' @param VolumeConfigurations A `VolumeConfigurations` object that describes the layer's Amazon EBS
 #' volumes.
 #' @param EnableAutoHealing Whether to disable auto healing for the layer.
 #' @param AutoAssignElasticIps Whether to automatically assign an [Elastic IP
 #' address](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
-#' to the layer\'s instances. For more information, see [How to Edit a
+#' to the layer's instances. For more information, see [How to Edit a
 #' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 #' @param AutoAssignPublicIps For stacks that are running in a VPC, whether to automatically assign a
-#' public IP address to the layer\'s instances. For more information, see
+#' public IP address to the layer's instances. For more information, see
 #' [How to Edit a
 #' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 #' @param CustomRecipes A `LayerCustomRecipes` object that specifies the layer custom recipes.
@@ -1094,8 +1092,8 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #'   DefaultRootDeviceType, AgentVersion)
 #'
 #' @param Name &#91;required&#93; The stack name.
-#' @param Region &#91;required&#93; The stack\'s AWS region, such as `ap-south-1`. For more information
-#' about Amazon regions, see [Regions and
+#' @param Region &#91;required&#93; The stack's AWS region, such as `ap-south-1`. For more information about
+#' Amazon regions, see [Regions and
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html).
 #' 
 #' In the AWS CLI, this API maps to the `--stack-region` parameter. If the
@@ -1115,7 +1113,7 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' `--region` parameter always specifies a regional API endpoint; it cannot
 #' be used to specify a classic AWS OpsWorks Stacks region.
 #' @param VpcId The ID of the VPC that the stack is to be launched into. The VPC must be
-#' in the stack\'s region. All instances are launched into this VPC. You
+#' in the stack's region. All instances are launched into this VPC. You
 #' cannot change the ID later.
 #' 
 #' -   If your account supports EC2-Classic, the default value is `no VPC`.
@@ -1144,16 +1142,16 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
 #' @param Attributes One or more user-defined key-value pairs to be added to the stack
 #' attributes.
-#' @param ServiceRoleArn &#91;required&#93; The stack\'s AWS Identity and Access Management (IAM) role, which allows
+#' @param ServiceRoleArn &#91;required&#93; The stack's AWS Identity and Access Management (IAM) role, which allows
 #' AWS OpsWorks Stacks to work with AWS resources on your behalf. You must
 #' set this parameter to the Amazon Resource Name (ARN) for an existing IAM
 #' role. For more information about IAM ARNs, see [Using
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 #' @param DefaultInstanceProfileArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM profile that is the default
-#' profile for all of the stack\'s EC2 instances. For more information
-#' about IAM ARNs, see [Using
+#' profile for all of the stack's EC2 instances. For more information about
+#' IAM ARNs, see [Using
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
-#' @param DefaultOs The stack\'s default operating system, which is installed on every
+#' @param DefaultOs The stack's default operating system, which is installed on every
 #' instance unless you specify a different operating system when you create
 #' the instance. You can specify one of the following.
 #' 
@@ -1184,10 +1182,10 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' information about supported operating systems, see [AWS OpsWorks Stacks
 #' Operating
 #' Systems](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
-#' @param HostnameTheme The stack\'s host name theme, with spaces replaced by underscores. The
-#' theme is used to generate host names for the stack\'s instances. By
+#' @param HostnameTheme The stack's host name theme, with spaces replaced by underscores. The
+#' theme is used to generate host names for the stack's instances. By
 #' default, `HostnameTheme` is set to `Layer_Dependent`, which creates host
-#' names by appending integers to the layer\'s short name. The other themes
+#' names by appending integers to the layer's short name. The other themes
 #' are:
 #' 
 #' -   `Baked_Goods`
@@ -1214,13 +1212,13 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' 
 #' To obtain a generated host name, call `GetHostNameSuggestion`, which
 #' returns a host name based on the current theme.
-#' @param DefaultAvailabilityZone The stack\'s default Availability Zone, which must be in the specified
+#' @param DefaultAvailabilityZone The stack's default Availability Zone, which must be in the specified
 #' region. For more information, see [Regions and
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html). If
 #' you also specify a value for `DefaultSubnetId`, the subnet must be in
 #' the same zone. For more information, see the `VpcId` parameter
 #' description.
-#' @param DefaultSubnetId The stack\'s default VPC subnet ID. This parameter is required if you
+#' @param DefaultSubnetId The stack's default VPC subnet ID. This parameter is required if you
 #' specify a value for the `VpcId` parameter. All instances are launched
 #' into this subnet unless you specify otherwise when you create the
 #' instance. If you also specify a value for `DefaultAvailabilityZone`, the
@@ -1246,7 +1244,7 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
 #' @param UseCustomCookbooks Whether the stack uses custom cookbooks.
 #' @param UseOpsworksSecurityGroups Whether to associate the AWS OpsWorks Stacks built-in security groups
-#' with the stack\'s layers.
+#' with the stack's layers.
 #' 
 #' AWS OpsWorks Stacks provides a standard set of built-in security groups,
 #' one for each layer, which are associated with layers by default. With
@@ -1292,13 +1290,13 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' options:
 #' 
 #' -   Auto-update - Set this parameter to `LATEST`. AWS OpsWorks Stacks
-#'     automatically installs new agent versions on the stack\'s instances
+#'     automatically installs new agent versions on the stack's instances
 #'     as soon as they are available.
 #' 
 #' -   Fixed version - Set this parameter to your preferred agent version.
 #'     To update the agent version, you must edit the stack configuration
 #'     and specify a new version. AWS OpsWorks Stacks then automatically
-#'     installs that version on the stack\'s instances.
+#'     installs that version on the stack's instances.
 #' 
 #' The default setting is the most recent release of the agent. To specify
 #' an agent version, you must use the complete version number, not the
@@ -1307,7 +1305,7 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' to Chef 12.2.
 #' 
 #' You can also specify an agent version when you create or update an
-#' instance, which overrides the stack\'s default setting.
+#' instance, which overrides the stack's default setting.
 #'
 #' @section Request syntax:
 #' ```
@@ -1382,15 +1380,15 @@ opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL,
 #' opsworks_create_user_profile(IamUserArn, SshUsername, SshPublicKey,
 #'   AllowSelfManagement)
 #'
-#' @param IamUserArn &#91;required&#93; The user\'s IAM ARN; this can also be a federated user\'s ARN.
-#' @param SshUsername The user\'s SSH user name. The allowable characters are \[a-z\],
-#' \[A-Z\], \[0-9\], \'-\', and \'\\_\'. If the specified name includes
-#' other punctuation marks, AWS OpsWorks Stacks removes them. For example,
-#' `my.name` will be changed to `myname`. If you do not specify an SSH user
-#' name, AWS OpsWorks Stacks generates one from the IAM user name.
-#' @param SshPublicKey The user\'s public SSH key.
+#' @param IamUserArn &#91;required&#93; The user's IAM ARN; this can also be a federated user's ARN.
+#' @param SshUsername The user's SSH user name. The allowable characters are \[a-z\], \[A-Z\],
+#' \[0-9\], '-', and '\\_'. If the specified name includes other punctuation
+#' marks, AWS OpsWorks Stacks removes them. For example, `my.name` will be
+#' changed to `myname`. If you do not specify an SSH user name, AWS
+#' OpsWorks Stacks generates one from the IAM user name.
+#' @param SshPublicKey The user's public SSH key.
 #' @param AllowSelfManagement Whether users can specify their own SSH public key through the My
-#' Settings page. For more information, see [Setting an IAM User\'s Public
+#' Settings page. For more information, see [Setting an IAM User's Public
 #' SSH
 #' Key](https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
 #'
@@ -1486,7 +1484,7 @@ opsworks_delete_app <- function(AppId) {
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #' @param DeleteElasticIp Whether to delete the instance Elastic IP address.
-#' @param DeleteVolumes Whether to delete the instance\'s Amazon EBS volumes.
+#' @param DeleteVolumes Whether to delete the instance's Amazon EBS volumes.
 #'
 #' @section Request syntax:
 #' ```
@@ -1619,7 +1617,7 @@ opsworks_delete_stack <- function(StackId) {
 #' @usage
 #' opsworks_delete_user_profile(IamUserArn)
 #'
-#' @param IamUserArn &#91;required&#93; The user\'s IAM ARN. This can also be a federated user\'s ARN.
+#' @param IamUserArn &#91;required&#93; The user's IAM ARN. This can also be a federated user's ARN.
 #'
 #' @section Request syntax:
 #' ```
@@ -1663,7 +1661,7 @@ opsworks_delete_user_profile <- function(IamUserArn) {
 #' @usage
 #' opsworks_deregister_ecs_cluster(EcsClusterArn)
 #'
-#' @param EcsClusterArn &#91;required&#93; The cluster\'s Amazon Resource Number (ARN).
+#' @param EcsClusterArn &#91;required&#93; The cluster's Amazon Resource Number (ARN).
 #'
 #' @section Request syntax:
 #' ```
@@ -1794,7 +1792,7 @@ opsworks_deregister_instance <- function(InstanceId) {
 #' @usage
 #' opsworks_deregister_rds_db_instance(RdsDbInstanceArn)
 #'
-#' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance\'s ARN.
+#' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance's ARN.
 #'
 #' @section Request syntax:
 #' ```
@@ -2098,11 +2096,11 @@ opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, Deployme
 #' @param StackId A stack ID. `DescribeEcsClusters` returns a description of the cluster
 #' that is registered with the stack.
 #' @param NextToken If the previous paginated request did not return all of the remaining
-#' results, the response object\'s`NextToken` parameter value is set to a
+#' results, the response object's`NextToken` parameter value is set to a
 #' token. To retrieve the next set of results, call `DescribeEcsClusters`
-#' again and assign that token to the request object\'s `NextToken`
+#' again and assign that token to the request object's `NextToken`
 #' parameter. If there are no remaining results, the previous response
-#' object\'s `NextToken` parameter is set to `null`.
+#' object's `NextToken` parameter is set to `null`.
 #' @param MaxResults To receive a paginated response, use this parameter to specify the
 #' maximum number of results to be returned with a single call. If the
 #' number of available results exceeds this maximum, the response includes
@@ -2201,7 +2199,7 @@ opsworks_describe_elastic_ips <- function(InstanceId = NULL, StackId = NULL, Ips
 
 #' Describes a stack's Elastic Load Balancing instances
 #'
-#' Describes a stack\'s Elastic Load Balancing instances.
+#' Describes a stack's Elastic Load Balancing instances.
 #' 
 #' This call accepts only one resource-identifying parameter.
 #' 
@@ -2214,7 +2212,7 @@ opsworks_describe_elastic_ips <- function(InstanceId = NULL, StackId = NULL, Ips
 #' @usage
 #' opsworks_describe_elastic_load_balancers(StackId, LayerIds)
 #'
-#' @param StackId A stack ID. The action describes the stack\'s Elastic Load Balancing
+#' @param StackId A stack ID. The action describes the stack's Elastic Load Balancing
 #' instances.
 #' @param LayerIds A list of layer IDs. The action describes the Elastic Load Balancing
 #' instances for the specified layers.
@@ -2401,7 +2399,7 @@ opsworks_describe_load_based_auto_scaling <- function(LayerIds) {
 
 #' Describes a user's SSH information
 #'
-#' Describes a user\'s SSH information.
+#' Describes a user's SSH information.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have
 #' self-management enabled or an attached policy that explicitly grants
@@ -2482,7 +2480,7 @@ opsworks_describe_operating_systems <- function() {
 #' @usage
 #' opsworks_describe_permissions(IamUserArn, StackId)
 #'
-#' @param IamUserArn The user\'s IAM ARN. This can also be a federated user\'s ARN. For more
+#' @param IamUserArn The user's IAM ARN. This can also be a federated user's ARN. For more
 #' information about IAM ARNs, see [Using
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 #' @param StackId The stack ID.
@@ -2517,7 +2515,7 @@ opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
 
 #' Describe an instance's RAID arrays
 #'
-#' Describe an instance\'s RAID arrays.
+#' Describe an instance's RAID arrays.
 #' 
 #' This call accepts only one resource-identifying parameter.
 #' 
@@ -2674,7 +2672,7 @@ opsworks_describe_service_errors <- function(StackId = NULL, InstanceId = NULL, 
 
 #' Requests a description of a stack's provisioning parameters
 #'
-#' Requests a description of a stack\'s provisioning parameters.
+#' Requests a description of a stack's provisioning parameters.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Show, Deploy, or Manage permissions level for the stack or an attached
@@ -2897,7 +2895,7 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
 
 #' Describes an instance's Amazon EBS volumes
 #'
-#' Describes an instance\'s Amazon EBS volumes.
+#' Describes an instance's Amazon EBS volumes.
 #' 
 #' This call accepts only one resource-identifying parameter.
 #' 
@@ -2912,7 +2910,7 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
 #'
 #' @param InstanceId The instance ID. If you use this parameter, `DescribeVolumes` returns
 #' descriptions of the volumes associated with the specified instance.
-#' @param StackId A stack ID. The action describes the stack\'s registered Amazon EBS
+#' @param StackId A stack ID. The action describes the stack's registered Amazon EBS
 #' volumes.
 #' @param RaidArrayId The RAID array ID. If you use this parameter, `DescribeVolumes` returns
 #' descriptions of the volumes associated with the specified RAID array.
@@ -2965,7 +2963,7 @@ opsworks_describe_volumes <- function(InstanceId = NULL, StackId = NULL, RaidArr
 #' @usage
 #' opsworks_detach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
 #'
-#' @param ElasticLoadBalancerName &#91;required&#93; The Elastic Load Balancing instance\'s name.
+#' @param ElasticLoadBalancerName &#91;required&#93; The Elastic Load Balancing instance's name.
 #' @param LayerId &#91;required&#93; The ID of the layer that the Elastic Load Balancing instance is attached
 #' to.
 #'
@@ -3094,7 +3092,7 @@ opsworks_get_hostname_suggestion <- function(LayerId) {
 #' @usage
 #' opsworks_grant_access(InstanceId, ValidForInMinutes)
 #'
-#' @param InstanceId &#91;required&#93; The instance\'s AWS OpsWorks Stacks ID.
+#' @param InstanceId &#91;required&#93; The instance's AWS OpsWorks Stacks ID.
 #' @param ValidForInMinutes The length of time (in minutes) that the grant is valid. When the grant
 #' expires at the end of this period, the user will no longer be able to
 #' use the credentials to log in. If the user is logged in at the time, he
@@ -3135,7 +3133,7 @@ opsworks_grant_access <- function(InstanceId, ValidForInMinutes = NULL) {
 #' @usage
 #' opsworks_list_tags(ResourceArn, MaxResults, NextToken)
 #'
-#' @param ResourceArn &#91;required&#93; The stack or layer\'s Amazon Resource Number (ARN).
+#' @param ResourceArn &#91;required&#93; The stack or layer's Amazon Resource Number (ARN).
 #' @param MaxResults Do not use. A validation exception occurs if you add a `MaxResults`
 #' parameter to a `ListTagsRequest` call.
 #' @param NextToken Do not use. A validation exception occurs if you add a `NextToken`
@@ -3230,7 +3228,7 @@ opsworks_reboot_instance <- function(InstanceId) {
 #' @usage
 #' opsworks_register_ecs_cluster(EcsClusterArn, StackId)
 #'
-#' @param EcsClusterArn &#91;required&#93; The cluster\'s ARN.
+#' @param EcsClusterArn &#91;required&#93; The cluster's ARN.
 #' @param StackId &#91;required&#93; The stack ID.
 #'
 #' @section Request syntax:
@@ -3342,13 +3340,13 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
 #'   RsaPublicKey, RsaPublicKeyFingerprint, InstanceIdentity)
 #'
 #' @param StackId &#91;required&#93; The ID of the stack that the instance is to be registered with.
-#' @param Hostname The instance\'s hostname.
-#' @param PublicIp The instance\'s public IP address.
-#' @param PrivateIp The instance\'s private IP address.
+#' @param Hostname The instance's hostname.
+#' @param PublicIp The instance's public IP address.
+#' @param PrivateIp The instance's private IP address.
 #' @param RsaPublicKey The instances public RSA key. This key is used to encrypt communication
 #' between the instance and the service.
 #' @param RsaPublicKeyFingerprint The instances public RSA key fingerprint.
-#' @param InstanceIdentity An InstanceIdentity object that contains the instance\'s identity.
+#' @param InstanceIdentity An InstanceIdentity object that contains the instance's identity.
 #'
 #' @section Request syntax:
 #' ```
@@ -3401,8 +3399,8 @@ opsworks_register_instance <- function(StackId, Hostname = NULL, PublicIp = NULL
 #'   DbPassword)
 #'
 #' @param StackId &#91;required&#93; The stack ID.
-#' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance\'s ARN.
-#' @param DbUser &#91;required&#93; The database\'s master user name.
+#' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance's ARN.
+#' @param DbUser &#91;required&#93; The database's master user name.
 #' @param DbPassword &#91;required&#93; The database password.
 #'
 #' @section Request syntax:
@@ -3567,7 +3565,7 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
 
 #' Specifies a user's permissions
 #'
-#' Specifies a user\'s permissions. For more information, see [Security and
+#' Specifies a user's permissions. For more information, see [Security and
 #' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -3580,10 +3578,10 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
 #' opsworks_set_permission(StackId, IamUserArn, AllowSsh, AllowSudo, Level)
 #'
 #' @param StackId &#91;required&#93; The stack ID.
-#' @param IamUserArn &#91;required&#93; The user\'s IAM ARN. This can also be a federated user\'s ARN.
+#' @param IamUserArn &#91;required&#93; The user's IAM ARN. This can also be a federated user's ARN.
 #' @param AllowSsh The user is allowed to use SSH to communicate with the instance.
 #' @param AllowSudo The user is allowed to use **sudo** to elevate privileges.
-#' @param Level The user\'s permission level, which must be set to one of the following
+#' @param Level The user's permission level, which must be set to one of the following
 #' strings. You cannot set your own permissions level.
 #' 
 #' -   `deny`
@@ -3747,7 +3745,7 @@ opsworks_start_instance <- function(InstanceId) {
 
 #' Starts a stack's instances
 #'
-#' Starts a stack\'s instances.
+#' Starts a stack's instances.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
@@ -3805,7 +3803,7 @@ opsworks_start_stack <- function(StackId) {
 #' opsworks_stop_instance(InstanceId, Force)
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
-#' @param Force Specifies whether to force an instance to stop. If the instance\'s root
+#' @param Force Specifies whether to force an instance to stop. If the instance's root
 #' device type is `ebs`, or EBS-backed, adding the `Force` parameter to the
 #' `StopInstances` API call disassociates the AWS OpsWorks Stacks instance
 #' from EC2, and forces deletion of *only* the OpsWorks Stacks instance.
@@ -3894,7 +3892,7 @@ opsworks_stop_stack <- function(StackId) {
 #' @usage
 #' opsworks_tag_resource(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; The stack or layer\'s Amazon Resource Number (ARN).
+#' @param ResourceArn &#91;required&#93; The stack or layer's Amazon Resource Number (ARN).
 #' @param Tags &#91;required&#93; A map that contains tag keys and tag values that are attached to a stack
 #' or layer.
 #' 
@@ -4040,7 +4038,7 @@ opsworks_unassign_volume <- function(VolumeId) {
 #' @usage
 #' opsworks_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The stack or layer\'s Amazon Resource Number (ARN).
+#' @param ResourceArn &#91;required&#93; The stack or layer's Amazon Resource Number (ARN).
 #' @param TagKeys &#91;required&#93; A list of the keys of tags to be removed from a stack or layer.
 #'
 #' @section Request syntax:
@@ -4091,10 +4089,10 @@ opsworks_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param AppId &#91;required&#93; The app ID.
 #' @param Name The app name.
 #' @param Description A description of the app.
-#' @param DataSources The app\'s data sources.
+#' @param DataSources The app's data sources.
 #' @param Type The app type.
 #' @param AppSource A `Source` object that specifies the app repository.
-#' @param Domains The app\'s virtual host settings, with multiple domains separated by
+#' @param Domains The app's virtual host settings, with multiple domains separated by
 #' commas. For example: `'www.example.com, example.com'`
 #' @param EnableSsl Whether SSL is enabled for the app.
 #' @param SslConfiguration An `SslConfiguration` object with the SSL configuration.
@@ -4108,13 +4106,13 @@ opsworks_untag_resource <- function(ResourceArn, TagKeys) {
 #' 
 #' There is no specific limit on the number of environment variables.
 #' However, the size of the associated data structure - which includes the
-#' variables\' names, values, and protected flag values - cannot exceed 20
+#' variables' names, values, and protected flag values - cannot exceed 20
 #' KB. This limit should accommodate most if not all use cases. Exceeding
-#' it will cause an exception with the message, \"Environment: is too large
-#' (maximum is 20 KB).\"
+#' it will cause an exception with the message, "Environment: is too large
+#' (maximum is 20 KB)."
 #' 
 #' If you have specified one or more environment variables, you cannot
-#' modify the stack\'s Chef version.
+#' modify the stack's Chef version.
 #'
 #' @section Request syntax:
 #' ```
@@ -4182,7 +4180,7 @@ opsworks_update_app <- function(AppId, Name = NULL, Description = NULL, DataSour
 
 #' Updates a registered Elastic IP address's name
 #'
-#' Updates a registered Elastic IP address\'s name. For more information,
+#' Updates a registered Elastic IP address's name. For more information,
 #' see [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 
@@ -4242,7 +4240,7 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #'   InstallUpdatesOnBoot, EbsOptimized, AgentVersion)
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
-#' @param LayerIds The instance\'s layer IDs.
+#' @param LayerIds The instance's layer IDs.
 #' @param InstanceType The instance type, such as `t2.micro`. For a list of supported instance
 #' types, open the stack in the console, choose **Instances**, and choose
 #' **+ Instance**. The **Size** list contains the currently supported
@@ -4253,7 +4251,7 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' @param AutoScalingType For load-based or time-based instances, the type. Windows stacks can use
 #' only time-based instances.
 #' @param Hostname The instance host name.
-#' @param Os The instance\'s operating system, which must be set to one of the
+#' @param Os The instance's operating system, which must be set to one of the
 #' following. You cannot update an instance that is using a custom AMI.
 #' 
 #' -   A supported Linux operating system: An Amazon Linux version, such as
@@ -4295,7 +4293,7 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' using. You cannot apply a new AMI to an instance by running
 #' UpdateInstance. UpdateInstance does not work on instances that are using
 #' custom AMIs.
-#' @param SshKeyName The instance\'s Amazon EC2 key name.
+#' @param SshKeyName The instance's Amazon EC2 key name.
 #' @param Architecture The instance architecture. Instance types do not necessarily support
 #' both architectures. For a list of the architectures that are supported
 #' by the different instance types, see [Instance Families and
@@ -4313,10 +4311,10 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' @param AgentVersion The default AWS OpsWorks Stacks agent version. You have the following
 #' options:
 #' 
-#' -   `INHERIT` - Use the stack\'s default agent version setting.
+#' -   `INHERIT` - Use the stack's default agent version setting.
 #' 
 #' -   *version\\_number* - Use the specified agent version. This value
-#'     overrides the stack\'s default setting. To update the agent version,
+#'     overrides the stack's default setting. To update the agent version,
 #'     you must edit the instance configuration and specify a new version.
 #'     AWS OpsWorks Stacks then automatically installs that version on the
 #'     instance.
@@ -4388,41 +4386,40 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #'
 #' @param LayerId &#91;required&#93; The layer ID.
 #' @param Name The layer name, which is used by the console.
-#' @param Shortname For custom layers only, use this parameter to specify the layer\'s short
+#' @param Shortname For custom layers only, use this parameter to specify the layer's short
 #' name, which is used internally by AWS OpsWorks Stacks and by Chef. The
 #' short name is also used as the name for the directory where your app
 #' files are installed. It can have a maximum of 200 characters and must be
 #' in the following format: /`\\A`\[a-z0-9\\-\\\_\\.\]+`\\Z`/.
 #' 
-#' The built-in layers\' short names are defined by AWS OpsWorks Stacks.
-#' For more information, see the [Layer
+#' The built-in layers' short names are defined by AWS OpsWorks Stacks. For
+#' more information, see the [Layer
 #' Reference](https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html)
 #' @param Attributes One or more user-defined key/value pairs to be added to the stack
 #' attributes.
 #' @param CloudWatchLogsConfiguration Specifies CloudWatch Logs configuration options for the layer. For more
 #' information, see CloudWatchLogsLogStream.
-#' @param CustomInstanceProfileArn The ARN of an IAM profile to be used for all of the layer\'s EC2
+#' @param CustomInstanceProfileArn The ARN of an IAM profile to be used for all of the layer's EC2
 #' instances. For more information about IAM ARNs, see [Using
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
 #' @param CustomJson A JSON-formatted string containing custom stack configuration and
-#' deployment attributes to be installed on the layer\'s instances. For
-#' more information, see [Using Custom
+#' deployment attributes to be installed on the layer's instances. For more
+#' information, see [Using Custom
 #' JSON](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html).
-#' @param CustomSecurityGroupIds An array containing the layer\'s custom security group IDs.
-#' @param Packages An array of `Package` objects that describe the layer\'s packages.
-#' @param VolumeConfigurations A `VolumeConfigurations` object that describes the layer\'s Amazon EBS
+#' @param CustomSecurityGroupIds An array containing the layer's custom security group IDs.
+#' @param Packages An array of `Package` objects that describe the layer's packages.
+#' @param VolumeConfigurations A `VolumeConfigurations` object that describes the layer's Amazon EBS
 #' volumes.
 #' @param EnableAutoHealing Whether to disable auto healing for the layer.
 #' @param AutoAssignElasticIps Whether to automatically assign an [Elastic IP
 #' address](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
-#' to the layer\'s instances. For more information, see [How to Edit a
+#' to the layer's instances. For more information, see [How to Edit a
 #' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 #' @param AutoAssignPublicIps For stacks that are running in a VPC, whether to automatically assign a
-#' public IP address to the layer\'s instances. For more information, see
+#' public IP address to the layer's instances. For more information, see
 #' [How to Edit a
 #' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
-#' @param CustomRecipes A `LayerCustomRecipes` object that specifies the layer\'s custom
-#' recipes.
+#' @param CustomRecipes A `LayerCustomRecipes` object that specifies the layer's custom recipes.
 #' @param InstallUpdatesOnBoot Whether to install operating system and package updates when the
 #' instance boots. The default value is `true`. To control when updates are
 #' installed, set this value to `false`. You must then update your
@@ -4534,7 +4531,7 @@ opsworks_update_layer <- function(LayerId, Name = NULL, Shortname = NULL, Attrib
 
 #' Updates a user's SSH public key
 #'
-#' Updates a user\'s SSH public key.
+#' Updates a user's SSH public key.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have
 #' self-management enabled or an attached policy that explicitly grants
@@ -4545,7 +4542,7 @@ opsworks_update_layer <- function(LayerId, Name = NULL, Shortname = NULL, Attrib
 #' @usage
 #' opsworks_update_my_user_profile(SshPublicKey)
 #'
-#' @param SshPublicKey The user\'s SSH public key.
+#' @param SshPublicKey The user's SSH public key.
 #'
 #' @section Request syntax:
 #' ```
@@ -4587,7 +4584,7 @@ opsworks_update_my_user_profile <- function(SshPublicKey = NULL) {
 #' @usage
 #' opsworks_update_rds_db_instance(RdsDbInstanceArn, DbUser, DbPassword)
 #'
-#' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance\'s ARN.
+#' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance's ARN.
 #' @param DbUser The master user name.
 #' @param DbPassword The database password.
 #'
@@ -4639,15 +4636,14 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #'   UseOpsworksSecurityGroups, AgentVersion)
 #'
 #' @param StackId &#91;required&#93; The stack ID.
-#' @param Name The stack\'s new name.
+#' @param Name The stack's new name.
 #' @param Attributes One or more user-defined key-value pairs to be added to the stack
 #' attributes.
-#' @param ServiceRoleArn Do not use this parameter. You cannot update a stack\'s service role.
+#' @param ServiceRoleArn Do not use this parameter. You cannot update a stack's service role.
 #' @param DefaultInstanceProfileArn The ARN of an IAM profile that is the default profile for all of the
-#' stack\'s EC2 instances. For more information about IAM ARNs, see [Using
+#' stack's EC2 instances. For more information about IAM ARNs, see [Using
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
-#' @param DefaultOs The stack\'s operating system, which must be set to one of the
-#' following:
+#' @param DefaultOs The stack's operating system, which must be set to one of the following:
 #' 
 #' -   A supported Linux operating system: An Amazon Linux version, such as
 #'     `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
@@ -4673,14 +4669,14 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #'     custom AMIs with OpsWorks, see [Using Custom
 #'     AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 #' 
-#' The default option is the stack\'s current operating system. For more
+#' The default option is the stack's current operating system. For more
 #' information about supported operating systems, see [AWS OpsWorks Stacks
 #' Operating
 #' Systems](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html).
-#' @param HostnameTheme The stack\'s new host name theme, with spaces replaced by underscores.
-#' The theme is used to generate host names for the stack\'s instances. By
+#' @param HostnameTheme The stack's new host name theme, with spaces replaced by underscores.
+#' The theme is used to generate host names for the stack's instances. By
 #' default, `HostnameTheme` is set to `Layer_Dependent`, which creates host
-#' names by appending integers to the layer\'s short name. The other themes
+#' names by appending integers to the layer's short name. The other themes
 #' are:
 #' 
 #' -   `Baked_Goods`
@@ -4707,12 +4703,12 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' 
 #' To obtain a generated host name, call `GetHostNameSuggestion`, which
 #' returns a host name based on the current theme.
-#' @param DefaultAvailabilityZone The stack\'s default Availability Zone, which must be in the stack\'s
+#' @param DefaultAvailabilityZone The stack's default Availability Zone, which must be in the stack's
 #' region. For more information, see [Regions and
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html). If
 #' you also specify a value for `DefaultSubnetId`, the subnet must be in
 #' the same zone. For more information, see CreateStack.
-#' @param DefaultSubnetId The stack\'s default VPC subnet ID. This parameter is required if you
+#' @param DefaultSubnetId The stack's default VPC subnet ID. This parameter is required if you
 #' specify a value for the `VpcId` parameter. All instances are launched
 #' into this subnet unless you specify otherwise when you create the
 #' instance. If you also specify a value for `DefaultAvailabilityZone`, the
@@ -4757,7 +4753,7 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' instance. For more information, see [Storage for the Root
 #' Device](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device).
 #' @param UseOpsworksSecurityGroups Whether to associate the AWS OpsWorks Stacks built-in security groups
-#' with the stack\'s layers.
+#' with the stack's layers.
 #' 
 #' AWS OpsWorks Stacks provides a standard set of built-in security groups,
 #' one for each layer, which are associated with layers by default.
@@ -4783,13 +4779,13 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' options:
 #' 
 #' -   Auto-update - Set this parameter to `LATEST`. AWS OpsWorks Stacks
-#'     automatically installs new agent versions on the stack\'s instances
+#'     automatically installs new agent versions on the stack's instances
 #'     as soon as they are available.
 #' 
 #' -   Fixed version - Set this parameter to your preferred agent version.
 #'     To update the agent version, you must edit the stack configuration
 #'     and specify a new version. AWS OpsWorks Stacks then automatically
-#'     installs that version on the stack\'s instances.
+#'     installs that version on the stack's instances.
 #' 
 #' The default setting is `LATEST`. To specify an agent version, you must
 #' use the complete version number, not the abbreviated number shown on the
@@ -4797,7 +4793,7 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' DescribeAgentVersions. AgentVersion cannot be set to Chef 12.2.
 #' 
 #' You can also specify an agent version when you create or update an
-#' instance, which overrides the stack\'s default setting.
+#' instance, which overrides the stack's default setting.
 #'
 #' @section Request syntax:
 #' ```
@@ -4871,13 +4867,13 @@ opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, Servi
 #' opsworks_update_user_profile(IamUserArn, SshUsername, SshPublicKey,
 #'   AllowSelfManagement)
 #'
-#' @param IamUserArn &#91;required&#93; The user IAM ARN. This can also be a federated user\'s ARN.
-#' @param SshUsername The user\'s SSH user name. The allowable characters are \[a-z\],
-#' \[A-Z\], \[0-9\], \'-\', and \'\\_\'. If the specified name includes
-#' other punctuation marks, AWS OpsWorks Stacks removes them. For example,
-#' `my.name` will be changed to `myname`. If you do not specify an SSH user
-#' name, AWS OpsWorks Stacks generates one from the IAM user name.
-#' @param SshPublicKey The user\'s new SSH public key.
+#' @param IamUserArn &#91;required&#93; The user IAM ARN. This can also be a federated user's ARN.
+#' @param SshUsername The user's SSH user name. The allowable characters are \[a-z\], \[A-Z\],
+#' \[0-9\], '-', and '\\_'. If the specified name includes other punctuation
+#' marks, AWS OpsWorks Stacks removes them. For example, `my.name` will be
+#' changed to `myname`. If you do not specify an SSH user name, AWS
+#' OpsWorks Stacks generates one from the IAM user name.
+#' @param SshPublicKey The user's new SSH public key.
 #' @param AllowSelfManagement Whether users can specify their own SSH public key through the My
 #' Settings page. For more information, see [Managing User
 #' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
@@ -4914,7 +4910,7 @@ opsworks_update_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 
 #' Updates an Amazon EBS volume's name or mount point
 #'
-#' Updates an Amazon EBS volume\'s name or mount point. For more
+#' Updates an Amazon EBS volume's name or mount point. For more
 #' information, see [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #' 

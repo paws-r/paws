@@ -22,7 +22,7 @@ account of the API owner.}
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
 \description{
-Creates a VPC link, under the caller\'s account in a selected region, in
+Creates a VPC link, under the caller's account in a selected region, in
 an asynchronous operation that typically takes 2-4 minutes to complete
 and become operational. The caller must have permissions to create and
 update VPC Endpoint services.

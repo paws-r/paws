@@ -32,7 +32,7 @@ You start asynchronous text detection by calling
 StartDocumentTextDetection, which returns a job identifier (\code{JobId}).
 When the text detection operation finishes, Amazon Textract publishes a
 completion status to the Amazon Simple Notification Service (Amazon SNS)
-topic that\'s registered in the initial call to
+topic that's registered in the initial call to
 \code{StartDocumentTextDetection}. To get the results of the text-detection
 operation, first check that the status value published to the Amazon SNS
 topic is \code{SUCCEEDED}. If so, call \code{GetDocumentTextDetection}, and pass
@@ -52,8 +52,8 @@ returned. If there are more results than specified in \code{MaxResults}, the
 value of \code{NextToken} in the operation response contains a pagination
 token for getting the next set of results. To get the next page of
 results, call \code{GetDocumentTextDetection}, and populate the \code{NextToken}
-request parameter with the token value that\'s returned from the
-previous call to \code{GetDocumentTextDetection}.
+request parameter with the token value that's returned from the previous
+call to \code{GetDocumentTextDetection}.
 
 For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html}{Document Text Detection}.
 }

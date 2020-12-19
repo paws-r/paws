@@ -31,9 +31,8 @@ resources, resource attributes, created artifacts).
 \code{ListProgressUpdateStreams} call.
 \item \code{CreateProgressUpdateStream}, \code{ImportMigrationTask},
 \code{NotifyMigrationTaskState}, and all Associate[*] APIs related to
-the tasks belonging to the stream will throw
-\"InvalidInputException\" if the stream of the same name is in the
-process of being deleted.
+the tasks belonging to the stream will throw "InvalidInputException"
+if the stream of the same name is in the process of being deleted.
 \item Once the stream and all of its resources are deleted,
 \code{CreateProgressUpdateStream} for a stream of the same name will
 succeed, and that stream will be an entirely new logical resource

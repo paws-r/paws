@@ -12,14 +12,14 @@ rds_modify_db_proxy(DBProxyName, NewDBProxyName, Auth, RequireTLS,
 
 \item{NewDBProxyName}{The new identifier for the \code{DBProxy}. An identifier must begin with a
 letter and must contain only ASCII letters, digits, and hyphens; it
-can\'t end with a hyphen or contain two consecutive hyphens.}
+can't end with a hyphen or contain two consecutive hyphens.}
 
 \item{Auth}{The new authentication settings for the \code{DBProxy}.}
 
 \item{RequireTLS}{Whether Transport Layer Security (TLS) encryption is required for
 connections to the proxy. By enabling this setting, you can enforce
 encrypted TLS connections to the proxy, even if the associated database
-doesn\'t use TLS.}
+doesn't use TLS.}
 
 \item{IdleClientTimeout}{The number of seconds that a connection to the proxy can be inactive
 before the proxy disconnects it. You can set this value higher or lower

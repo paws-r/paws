@@ -12,9 +12,9 @@ NULL
 #'   maxDevices)
 #'
 #' @param projectArn &#91;required&#93; The ARN of the project for the device pool.
-#' @param name &#91;required&#93; The device pool\'s name.
-#' @param description The device pool\'s description.
-#' @param rules &#91;required&#93; The device pool\'s rules.
+#' @param name &#91;required&#93; The device pool's name.
+#' @param description The device pool's description.
+#' @param rules &#91;required&#93; The device pool's rules.
 #' @param maxDevices The number of devices that Device Farm can add to your device pool.
 #' Device Farm adds devices that are available and meet the criteria that
 #' you assign for the `rules` parameter. Depending on how many devices meet
@@ -205,7 +205,7 @@ devicefarm_create_network_profile <- function(projectArn, name, description = NU
 #' @usage
 #' devicefarm_create_project(name, defaultJobTimeoutMinutes)
 #'
-#' @param name &#91;required&#93; The project\'s name.
+#' @param name &#91;required&#93; The project's name.
 #' @param defaultJobTimeoutMinutes Sets the execution timeout value (in minutes) for a project. All test
 #' runs in this project use the specified execution timeout value unless
 #' overridden when scheduling a run.
@@ -449,12 +449,12 @@ devicefarm_create_test_grid_url <- function(projectArn, expiresInSeconds) {
 #' devicefarm_create_upload(projectArn, name, type, contentType)
 #'
 #' @param projectArn &#91;required&#93; The ARN of the project for the upload.
-#' @param name &#91;required&#93; The upload\'s file name. The name should not contain any forward slashes
+#' @param name &#91;required&#93; The upload's file name. The name should not contain any forward slashes
 #' (`/`). If you are uploading an iOS app, the file name must end with the
 #' `.ipa` extension. If you are uploading an Android app, the file name
 #' must end with the `.apk` extension. For all others, the file name must
 #' end with the `.zip` file extension.
-#' @param type &#91;required&#93; The upload\'s upload type.
+#' @param type &#91;required&#93; The upload's upload type.
 #' 
 #' Must be one of the following values:
 #' 
@@ -524,7 +524,7 @@ devicefarm_create_test_grid_url <- function(projectArn, expiresInSeconds) {
 #' 
 #' If you call `CreateUpload` with `WEB_APP` specified, AWS Device Farm
 #' throws an `ArgumentException` error.
-#' @param contentType The upload\'s content type (for example, `application/octet-stream`).
+#' @param contentType The upload's content type (for example, `application/octet-stream`).
 #'
 #' @section Request syntax:
 #' ```
@@ -1048,7 +1048,7 @@ devicefarm_get_account_settings <- function() {
 #' @usage
 #' devicefarm_get_device(arn)
 #'
-#' @param arn &#91;required&#93; The device type\'s ARN.
+#' @param arn &#91;required&#93; The device type's ARN.
 #'
 #' @section Request syntax:
 #' ```
@@ -1094,7 +1094,7 @@ devicefarm_get_device <- function(arn) {
 #' @usage
 #' devicefarm_get_device_instance(arn)
 #'
-#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the instance you\'re requesting
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the instance you're requesting
 #' information about.
 #'
 #' @section Request syntax:
@@ -1131,7 +1131,7 @@ devicefarm_get_device_instance <- function(arn) {
 #' @usage
 #' devicefarm_get_device_pool(arn)
 #'
-#' @param arn &#91;required&#93; The device pool\'s ARN.
+#' @param arn &#91;required&#93; The device pool's ARN.
 #'
 #' @section Request syntax:
 #' ```
@@ -1177,7 +1177,7 @@ devicefarm_get_device_pool <- function(arn) {
 #' devicefarm_get_device_pool_compatibility(devicePoolArn, appArn,
 #'   testType, test, configuration)
 #'
-#' @param devicePoolArn &#91;required&#93; The device pool\'s ARN.
+#' @param devicePoolArn &#91;required&#93; The device pool's ARN.
 #' @param appArn The ARN of the app that is associated with the specified device pool.
 #' @param testType The test type for the specified device pool.
 #' 
@@ -1348,7 +1348,7 @@ devicefarm_get_instance_profile <- function(arn) {
 #' @usage
 #' devicefarm_get_job(arn)
 #'
-#' @param arn &#91;required&#93; The job\'s ARN.
+#' @param arn &#91;required&#93; The job's ARN.
 #'
 #' @section Request syntax:
 #' ```
@@ -1481,7 +1481,7 @@ devicefarm_get_offering_status <- function(nextToken = NULL) {
 #' @usage
 #' devicefarm_get_project(arn)
 #'
-#' @param arn &#91;required&#93; The project\'s ARN.
+#' @param arn &#91;required&#93; The project's ARN.
 #'
 #' @section Request syntax:
 #' ```
@@ -1570,7 +1570,7 @@ devicefarm_get_remote_access_session <- function(arn) {
 #' @usage
 #' devicefarm_get_run(arn)
 #'
-#' @param arn &#91;required&#93; The run\'s ARN.
+#' @param arn &#91;required&#93; The run's ARN.
 #'
 #' @section Request syntax:
 #' ```
@@ -1614,7 +1614,7 @@ devicefarm_get_run <- function(arn) {
 #' @usage
 #' devicefarm_get_suite(arn)
 #'
-#' @param arn &#91;required&#93; The suite\'s ARN.
+#' @param arn &#91;required&#93; The suite's ARN.
 #'
 #' @section Request syntax:
 #' ```
@@ -1658,7 +1658,7 @@ devicefarm_get_suite <- function(arn) {
 #' @usage
 #' devicefarm_get_test(arn)
 #'
-#' @param arn &#91;required&#93; The test\'s ARN.
+#' @param arn &#91;required&#93; The test's ARN.
 #'
 #' @section Request syntax:
 #' ```
@@ -1736,14 +1736,14 @@ devicefarm_get_test_grid_project <- function(projectArn) {
 #' with the URL from CreateTestGridUrlResult$url
 #'
 #' A session is an instance of a browser created through a
-#' `RemoteWebDriver` with the URL from CreateTestGridUrlResult\\$url. You
-#' can use the following to look up sessions:
+#' `RemoteWebDriver` with the URL from CreateTestGridUrlResult$url. You can
+#' use the following to look up sessions:
 #' 
-#' -   The session ARN (GetTestGridSessionRequest\\$sessionArn).
+#' -   The session ARN (GetTestGridSessionRequest$sessionArn).
 #' 
 #' -   The project ARN and a session ID
-#'     (GetTestGridSessionRequest\\$projectArn and
-#'     GetTestGridSessionRequest\\$sessionId).
+#'     (GetTestGridSessionRequest$projectArn and
+#'     GetTestGridSessionRequest$sessionId).
 #'
 #' @usage
 #' devicefarm_get_test_grid_session(projectArn, sessionId, sessionArn)
@@ -1789,7 +1789,7 @@ devicefarm_get_test_grid_session <- function(projectArn = NULL, sessionId = NULL
 #' @usage
 #' devicefarm_get_upload(arn)
 #'
-#' @param arn &#91;required&#93; The upload\'s ARN.
+#' @param arn &#91;required&#93; The upload's ARN.
 #'
 #' @section Request syntax:
 #' ```
@@ -1925,7 +1925,7 @@ devicefarm_install_to_remote_access_session <- function(remoteAccessSessionArn, 
 #' devicefarm_list_artifacts(arn, type, nextToken)
 #'
 #' @param arn &#91;required&#93; The run, job, suite, or test ARN.
-#' @param type &#91;required&#93; The artifacts\' type.
+#' @param type &#91;required&#93; The artifacts' type.
 #' 
 #' Allowed values include:
 #' 
@@ -2027,7 +2027,7 @@ devicefarm_list_device_instances <- function(maxResults = NULL, nextToken = NULL
 #' devicefarm_list_device_pools(arn, type, nextToken)
 #'
 #' @param arn &#91;required&#93; The project ARN.
-#' @param type The device pools\' type.
+#' @param type The device pools' type.
 #' 
 #' Allowed values include:
 #' 
@@ -2252,7 +2252,7 @@ devicefarm_list_instance_profiles <- function(maxResults = NULL, nextToken = NUL
 #' @usage
 #' devicefarm_list_jobs(arn, nextToken)
 #'
-#' @param arn &#91;required&#93; The run\'s Amazon Resource Name (ARN).
+#' @param arn &#91;required&#93; The run's Amazon Resource Name (ARN).
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
@@ -2696,7 +2696,7 @@ devicefarm_list_samples <- function(arn, nextToken = NULL) {
 #' @usage
 #' devicefarm_list_suites(arn, nextToken)
 #'
-#' @param arn &#91;required&#93; The job\'s Amazon Resource Name (ARN).
+#' @param arn &#91;required&#93; The job's Amazon Resource Name (ARN).
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
@@ -2968,7 +2968,7 @@ devicefarm_list_test_grid_sessions <- function(projectArn, status = NULL, creati
 #' @usage
 #' devicefarm_list_tests(arn, nextToken)
 #'
-#' @param arn &#91;required&#93; The test suite\'s Amazon Resource Name (ARN).
+#' @param arn &#91;required&#93; The test suite's Amazon Resource Name (ARN).
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
@@ -3025,7 +3025,7 @@ devicefarm_list_tests <- function(arn, nextToken = NULL) {
 #' @usage
 #' devicefarm_list_unique_problems(arn, nextToken)
 #'
-#' @param arn &#91;required&#93; The unique problems\' ARNs.
+#' @param arn &#91;required&#93; The unique problems' ARNs.
 #' @param nextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
 #' list.
@@ -4055,10 +4055,10 @@ devicefarm_update_test_grid_project <- function(projectArn, name = NULL, descrip
 #' devicefarm_update_upload(arn, name, contentType, editContent)
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the uploaded test spec.
-#' @param name The upload\'s test spec file name. The name must not contain any forward
+#' @param name The upload's test spec file name. The name must not contain any forward
 #' slashes (/). The test spec file name must end with the `.yaml` or `.yml`
 #' file extension.
-#' @param contentType The upload\'s content type (for example, `application/x-yaml`).
+#' @param contentType The upload's content type (for example, `application/x-yaml`).
 #' @param editContent Set to true if the YAML file has changed and must be updated. Otherwise,
 #' set to false.
 #'

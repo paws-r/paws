@@ -55,7 +55,7 @@ such as by purpose, owner, environment, or other criteria.}
 \item{AdminCreateUserConfig}{The configuration for \code{AdminCreateUser} requests.}
 
 \item{UserPoolAddOns}{Used to enable advanced security risk detection. Set the key
-\code{AdvancedSecurityMode} to the value \"AUDIT\".}
+\code{AdvancedSecurityMode} to the value "AUDIT".}
 
 \item{AccountRecoverySetting}{Use this setting to define which verified available method a user can
 use to recover their password when they call \code{ForgotPassword}. It allows
@@ -70,7 +70,7 @@ Updates the specified user pool with the specified attributes. You can
 get a list of the current user pool settings with .
 }
 \details{
-If you don\'t provide a value for an attribute, it will be set to the
+If you don't provide a value for an attribute, it will be set to the
 default value.
 }
 \section{Request syntax}{

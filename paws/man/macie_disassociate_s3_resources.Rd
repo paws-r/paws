@@ -16,7 +16,7 @@ being monitored and classified by Amazon Macie Classic.}
 }
 \description{
 Removes specified S3 resources from being monitored by Amazon Macie
-Classic. If memberAccountId isn\'t specified, the action removes
+Classic. If memberAccountId isn't specified, the action removes
 specified S3 resources from Macie Classic for the current master
 account. If memberAccountId is specified, the action removes specified
 S3 resources from Macie Classic for the specified member account.

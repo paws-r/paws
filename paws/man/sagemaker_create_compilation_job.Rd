@@ -57,7 +57,7 @@ that the model runs on
 \item \verb{The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker assumes to perform the model compilation job}
 }
 
-You can also provide a \code{Tag} to track the model compilation job\'s
+You can also provide a \code{Tag} to track the model compilation job's
 resource use and costs. The response body contains the
 \code{CompilationJobArn} for the compiled job.
 

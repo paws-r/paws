@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_get_change_token}
 \alias{waf_get_change_token}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_get_change_token()
 }
@@ -19,7 +19,7 @@ regional and global use.
 
 When you want to create, update, or delete AWS WAF objects, get a change
 token and include the change token in the create, update, or delete
-request. Change tokens ensure that your application doesn\'t submit
+request. Change tokens ensure that your application doesn't submit
 conflicting requests to AWS WAF.
 
 Each create, update, or delete request must use a unique change token.

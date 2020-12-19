@@ -27,7 +27,7 @@ retrieve.}
 \item{RequestPayer}{}
 }
 \description{
-Gets an object\'s current Legal Hold status. For more information, see
+Gets an object's current Legal Hold status. For more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html}{Locking Objects}.
 }
 \section{Request syntax}{

@@ -14,7 +14,7 @@ iotsitewise_batch_disassociate_project_assets(projectId, assetIds,
 \item{assetIds}{[required] The IDs of the assets to be disassociated from the project.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{

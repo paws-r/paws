@@ -17,16 +17,16 @@ resource provided by your own application or service, use
 \item{Schedule}{The schedule for this action. The following formats are supported:
 \itemize{
 \item At expressions -
-\"\verb{at(<i>yyyy</i>-<i>mm</i>-<i>dd</i>T<i>hh</i>:<i>mm</i>:<i>ss</i>)}\"
-\item Rate expressions - \"\verb{rate(<i>value</i> <i>unit</i>)}\"
-\item Cron expressions - \"\verb{cron(<i>fields</i>)}\"
+"\verb{at(<i>yyyy</i>-<i>mm</i>-<i>dd</i>T<i>hh</i>:<i>mm</i>:<i>ss</i>)}"
+\item Rate expressions - "\verb{rate(<i>value</i> <i>unit</i>)}"
+\item Cron expressions - "\verb{cron(<i>fields</i>)}"
 }
 
 At expressions are useful for one-time schedules. Specify the time in
 UTC.
 
 For rate expressions, \emph{value} is a positive integer and \emph{unit} is
-\code{minute} \\| \code{minutes} \\| \code{hour} \\| \code{hours} \\| \code{day} \\| \code{days}.
+\code{minute} | \code{minutes} | \code{hour} | \code{hours} | \code{day} | \code{days}.
 
 For more information about cron expressions, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions}{Cron Expressions}
 in the \emph{Amazon CloudWatch Events User Guide}.
@@ -142,7 +142,7 @@ cron expression or rates, they form the boundaries of when the recurring
 action starts and stops.
 
 To update a scheduled action, specify the parameters that you want to
-change. If you don\'t specify start and end times, the old values are
+change. If you don't specify start and end times, the old values are
 deleted.
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html}{Scheduled Scaling}

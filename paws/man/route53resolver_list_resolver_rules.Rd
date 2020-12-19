@@ -8,7 +8,7 @@ route53resolver_list_resolver_rules(MaxResults, NextToken, Filters)
 }
 \arguments{
 \item{MaxResults}{The maximum number of resolver rules that you want to return in the
-response to a \code{ListResolverRules} request. If you don\'t specify a value
+response to a \code{ListResolverRules} request. If you don't specify a value
 for \code{MaxResults}, Resolver returns up to 100 resolver rules.}
 
 \item{NextToken}{For the first \code{ListResolverRules} request, omit this value.

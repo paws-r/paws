@@ -11,7 +11,7 @@ costexplorer_get_savings_plans_utilization(TimePeriod, Granularity,
 \arguments{
 \item{TimePeriod}{[required] The time period that you want the usage and costs for. The \code{Start} date
 must be within 13 months. The \code{End} date must be after the \code{Start} date,
-and before the current date. Future dates can\'t be used as an \code{End}
+and before the current date. Future dates can't be used as an \code{End}
 date.}
 
 \item{Granularity}{The granularity of the Amazon Web Services utillization data for your

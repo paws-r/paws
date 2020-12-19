@@ -17,11 +17,11 @@ idempotency of the request.}
 \item{description}{A custom description of the job. The description can contain as many as
 200 characters.}
 
-\item{initialRun}{Specifies whether to run the job immediately, after it\'s created.}
+\item{initialRun}{Specifies whether to run the job immediately, after it's created.}
 
 \item{jobType}{[required] The schedule for running the job. Valid values are:
 \itemize{
-\item ONE\\_TIME - Run the job only once. If you specify this value, don\'t
+\item ONE\\_TIME - Run the job only once. If you specify this value, don't
 specify a value for the scheduleFrequency property.
 \item SCHEDULED - Run the job on a daily, weekly, or monthly basis. If you
 specify this value, use the scheduleFrequency property to define the
@@ -40,8 +40,8 @@ analyzes. If the value is less than 100, Amazon Macie randomly selects
 the objects to analyze, up to the specified percentage.}
 
 \item{scheduleFrequency}{The recurrence pattern for running the job. To run the job only once,
-don\'t specify a value for this property and set the value of the
-jobType property to ONE\\_TIME.}
+don't specify a value for this property and set the value of the jobType
+property to ONE\\_TIME.}
 
 \item{tags}{A map of key-value pairs that specifies the tags to associate with the
 job.

@@ -70,7 +70,7 @@ performance, and operational health.
 \link[=cloudwatch_list_metrics]{list_metrics} \tab List the specified metrics \cr
 \link[=cloudwatch_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch resource \cr
 \link[=cloudwatch_put_anomaly_detector]{put_anomaly_detector} \tab Creates an anomaly detection model for a CloudWatch metric \cr
-\link[=cloudwatch_put_composite_alarm]{put_composite_alarm} \tab Creates or updates a \emph{composite alarm} \cr
+\link[=cloudwatch_put_composite_alarm]{put_composite_alarm} \tab Creates or updates a composite alarm \cr
 \link[=cloudwatch_put_dashboard]{put_dashboard} \tab Creates a dashboard if it does not already exist, or updates an existing dashboard \cr
 \link[=cloudwatch_put_insight_rule]{put_insight_rule} \tab Creates a Contributor Insights rule \cr
 \link[=cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric, metric math expression, or anomaly detection model \cr

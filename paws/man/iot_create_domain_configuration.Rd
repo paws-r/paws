@@ -30,13 +30,13 @@ AWS IoT Core currently supports only the \code{DATA} service type.}
 
 \item{tags}{Metadata which can be used to manage the domain configuration.
 
-For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+For URI Request parameters use format: ...key1=value1&key2=value2...
 
 For the CLI command-line parameter use format: &&tags
-\"key1=value1&key2=value2\\...\"
+"key1=value1&key2=value2..."
 
-For the cli-input-json file use format: \"tags\":
-\"key1=value1&key2=value2\\...\"}
+For the cli-input-json file use format: "tags":
+"key1=value1&key2=value2..."}
 }
 \description{
 Creates a domain configuration.

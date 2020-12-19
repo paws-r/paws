@@ -15,7 +15,7 @@ elasticbeanstalk_describe_environment_managed_actions(EnvironmentName,
 \item{Status}{To show only actions with a particular status, specify a status.}
 }
 \description{
-Lists an environment\'s upcoming and in-progress managed actions.
+Lists an environment's upcoming and in-progress managed actions.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_environment_managed_actions(

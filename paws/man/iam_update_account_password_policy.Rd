@@ -18,7 +18,7 @@ uses the default value of \code{6}.}
 \item{RequireSymbols}{Specifies whether IAM user passwords must contain at least one of the
 following non-alphanumeric characters:
 
-! @ \\# \\$ \% \\^ & * ( ) \\_ + - = [ ] \{ \} \\| \'
+! @ \\# $ \% ^ & * ( ) \\_ + - = [ ] \{ \} | '
 
 If you do not specify a value for this parameter, then the operation
 uses the default value of \code{false}. The result is that passwords do not
@@ -82,9 +82,9 @@ Updates the password policy settings for the AWS account.
 \details{
 \itemize{
 \item This operation does not support partial updates. No parameters are
-required, but if you do not specify a parameter, that parameter\'s
+required, but if you do not specify a parameter, that parameter's
 value reverts to its default value. See the \strong{Request Parameters}
-section for each parameter\'s default value. Also note that some
+section for each parameter's default value. Also note that some
 parameters do not allow the default parameter to be explicitly set.
 Instead, to invoke the default value, do not include that parameter
 when you invoke the operation.

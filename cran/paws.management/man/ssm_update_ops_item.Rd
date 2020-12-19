@@ -21,7 +21,7 @@ strings, license keys, troubleshooting tips, or other relevant data. You
 enter operational data as key-value pairs. The key has a maximum length
 of 128 characters. The value has a maximum size of 20 KB.
 
-Operational data keys \emph{can\'t} begin with the following: amazon, aws,
+Operational data keys \emph{can't} begin with the following: amazon, aws,
 amzn, ssm, /amazon, /aws, /amzn, /ssm.
 
 You can choose to make the data searchable by other users in the account

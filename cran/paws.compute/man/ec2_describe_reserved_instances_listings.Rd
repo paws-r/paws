@@ -14,8 +14,8 @@ ec2_describe_reserved_instances_listings(Filters, ReservedInstancesId,
 \item \code{reserved-instances-id} - The ID of the Reserved Instances.
 \item \code{reserved-instances-listing-id} - The ID of the Reserved Instances
 listing.
-\item \code{status} - The status of the Reserved Instance listing (\code{pending} \\|
-\code{active} \\| \code{cancelled} \\| \code{closed}).
+\item \code{status} - The status of the Reserved Instance listing (\code{pending} |
+\code{active} | \code{cancelled} | \code{closed}).
 \item \code{status-message} - The reason for the status.
 }}
 
@@ -24,7 +24,7 @@ listing.
 \item{ReservedInstancesListingId}{One or more Reserved Instance listing IDs.}
 }
 \description{
-Describes your account\'s Reserved Instance listings in the Reserved
+Describes your account's Reserved Instance listings in the Reserved
 Instance Marketplace.
 }
 \details{
@@ -40,11 +40,11 @@ Instances are then listed in the Reserved Instance Marketplace and are
 available for purchase.
 
 As a buyer, you specify the configuration of the Reserved Instance to
-purchase, and the Marketplace matches what you\'re searching for with
-what\'s available. The Marketplace first sells the lowest priced
-Reserved Instances to you, and continues to sell available Reserved
-Instance listings to you until your demand is met. You are charged based
-on the total price of all of the listings that you purchase.
+purchase, and the Marketplace matches what you're searching for with
+what's available. The Marketplace first sells the lowest priced Reserved
+Instances to you, and continues to sell available Reserved Instance
+listings to you until your demand is met. You are charged based on the
+total price of all of the listings that you purchase.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

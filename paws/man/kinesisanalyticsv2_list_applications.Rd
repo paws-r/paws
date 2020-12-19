@@ -12,7 +12,7 @@ kinesisanalyticsv2_list_applications(Limit, NextToken)
 
 \item{NextToken}{If a previous command returned a pagination token, pass it into this
 value to retrieve the next set of results. For more information about
-pagination, see \href{https://docs.aws.amazon.com/cli/latest/userguide/pagination.html}{Using the AWS Command Line Interface\'s Pagination Options}.}
+pagination, see \href{https://docs.aws.amazon.com/cli/latest/userguide/pagination.html}{Using the AWS Command Line Interface's Pagination Options}.}
 }
 \description{
 Returns a list of Amazon Kinesis Data Analytics applications in your

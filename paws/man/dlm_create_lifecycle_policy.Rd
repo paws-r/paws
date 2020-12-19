@@ -11,8 +11,8 @@ dlm_create_lifecycle_policy(ExecutionRoleArn, Description, State,
 \item{ExecutionRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role used to run the
 operations specified by the lifecycle policy.}
 
-\item{Description}{[required] A description of the lifecycle policy. The characters \\^[0-9A-Za-z
-\\_-]+\\$ are supported.}
+\item{Description}{[required] A description of the lifecycle policy. The characters ^[0-9A-Za-z
+\\_-]+$ are supported.}
 
 \item{State}{[required] The desired activation state of the lifecycle policy after creation.}
 

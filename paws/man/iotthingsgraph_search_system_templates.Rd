@@ -10,13 +10,13 @@ iotthingsgraph_search_system_templates(filters, nextToken, maxResults)
 \item{filters}{An array of filters that limit the result set. The only valid filter is
 \code{FLOW_TEMPLATE_ID}.}
 
-\item{nextToken}{The string that specifies the next page of results. Use this when
-you\'re paginating results.}
+\item{nextToken}{The string that specifies the next page of results. Use this when you're
+paginating results.}
 
 \item{maxResults}{The maximum number of results to return in the response.}
 }
 \description{
-Searches for summary information about systems in the user\'s account.
+Searches for summary information about systems in the user's account.
 You can filter by the ID of a workflow to return only systems that use
 the specified workflow.
 }

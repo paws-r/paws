@@ -19,8 +19,8 @@ NULL
 #'     for example:
 #'     `arn:aws:ec2:us-east-1:488216288981:image/ami-6d0ba87b`.
 #' 
-#' -   Examples of the AWS resource behind the created artifact are,
-#'     AMI\'s, EC2 instance, or DMS endpoint, etc.
+#' -   Examples of the AWS resource behind the created artifact are, AMI's,
+#'     EC2 instance, or DMS endpoint, etc.
 #'
 #' @usage
 #' migrationhub_associate_created_artifact(ProgressUpdateStream,
@@ -184,9 +184,8 @@ migrationhub_create_progress_update_stream <- function(ProgressUpdateStreamName,
 #' 
 #' -   `CreateProgressUpdateStream`, `ImportMigrationTask`,
 #'     `NotifyMigrationTaskState`, and all Associate\[*\] APIs related to
-#'     the tasks belonging to the stream will throw
-#'     \"InvalidInputException\" if the stream of the same name is in the
-#'     process of being deleted.
+#'     the tasks belonging to the stream will throw "InvalidInputException"
+#'     if the stream of the same name is in the process of being deleted.
 #' 
 #' -   Once the stream and all of its resources are deleted,
 #'     `CreateProgressUpdateStream` for a stream of the same name will
@@ -325,8 +324,8 @@ migrationhub_describe_migration_task <- function(ProgressUpdateStream, Migration
 #'     for example:
 #'     `arn:aws:ec2:us-east-1:488216288981:image/ami-6d0ba87b`.
 #' 
-#' -   Examples of the AWS resource behind the created artifact are,
-#'     AMI\'s, EC2 instance, or RDS instance, etc.
+#' -   Examples of the AWS resource behind the created artifact are, AMI's,
+#'     EC2 instance, or RDS instance, etc.
 #'
 #' @usage
 #' migrationhub_disassociate_created_artifact(ProgressUpdateStream,
@@ -431,7 +430,7 @@ migrationhub_disassociate_discovered_resource <- function(ProgressUpdateStream, 
 #' migrationhub_import_migration_task(ProgressUpdateStream,
 #'   MigrationTaskName, DryRun)
 #'
-#' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream. \\>
+#' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream. &gt;
 #' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task. *Do not store
 #' personal data in this field.*
 #' @param DryRun Optional boolean flag to indicate whether any effect should take place.
@@ -781,7 +780,7 @@ migrationhub_notify_application_state <- function(ApplicationId, Status, UpdateD
 #' @param ProgressUpdateStream &#91;required&#93; The name of the ProgressUpdateStream.
 #' @param MigrationTaskName &#91;required&#93; Unique identifier that references the migration task. *Do not store
 #' personal data in this field.*
-#' @param Task &#91;required&#93; Information about the task\'s progress and status.
+#' @param Task &#91;required&#93; Information about the task's progress and status.
 #' @param UpdateDateTime &#91;required&#93; The timestamp when the task was gathered.
 #' @param NextUpdateSeconds &#91;required&#93; Number of seconds after the UpdateDateTime within which the Migration
 #' Hub can expect an update. If Migration Hub does not receive an update
@@ -843,7 +842,7 @@ migrationhub_notify_migration_task_state <- function(ProgressUpdateStream, Migra
 #' 
 #' -   Note the instructions regarding the special use case of the
 #'     [`ResourceAttributeList`](https://docs.aws.amazon.com/migrationhub/latest/ug/API_PutResourceAttributes.html#migrationhub-PutResourceAttributes-request-ResourceAttributeList)
-#'     parameter when specifying any \"VM\" related value.
+#'     parameter when specifying any "VM" related value.
 #' 
 #' Because this is an asynchronous call, it will always return 200, whether
 #' an association occurs or not. To confirm if an association was found
@@ -865,13 +864,13 @@ migrationhub_notify_migration_task_state <- function(ProgressUpdateStream, Migra
 #' `IPV4_ADDRESS | IPV6_ADDRESS | MAC_ADDRESS | FQDN | VM_MANAGER_ID | VM_MANAGED_OBJECT_REFERENCE | VM_NAME | VM_PATH | BIOS_ID | MOTHERBOARD_SERIAL_NUMBER`
 #' where the identifying value can be a string up to 256 characters.
 #' 
-#' -   If any \"VM\" related value is set for a `ResourceAttribute` object,
+#' -   If any "VM" related value is set for a `ResourceAttribute` object,
 #'     it is required that `VM_MANAGER_ID`, as a minimum, is always set. If
-#'     `VM_MANAGER_ID` is not set, then all \"VM\" fields will be discarded
-#'     and \"VM\" fields will not be used for matching the migration task
-#'     to a server in Application Discovery Service repository. See the
+#'     `VM_MANAGER_ID` is not set, then all "VM" fields will be discarded
+#'     and "VM" fields will not be used for matching the migration task to
+#'     a server in Application Discovery Service repository. See the
 #'     [Example](https://docs.aws.amazon.com/migrationhub/latest/ug/API_PutResourceAttributes.html#API_PutResourceAttributes_Examples)
-#'     section below for a use case of specifying \"VM\" related values.
+#'     section below for a use case of specifying "VM" related values.
 #' 
 #' -   If a server you are trying to match has multiple IP or MAC
 #'     addresses, you should provide as many as you know in separate

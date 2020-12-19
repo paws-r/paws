@@ -134,7 +134,7 @@ route53domains_cancel_domain_transfer_to_another_aws_account <- function(DomainN
 #' 
 #' -   Numbers 0 through 9.
 #' 
-#' -   Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+#' -   Hyphen (-). You can't specify a hyphen at the beginning or end of a
 #'     label.
 #' 
 #' -   Period (.) to separate the labels in the name, such as the `.` in
@@ -197,7 +197,7 @@ route53domains_check_domain_availability <- function(DomainName, IdnLangCode = N
 #' 
 #' -   Numbers 0 through 9.
 #' 
-#' -   Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+#' -   Hyphen (-). You can't specify a hyphen at the beginning or end of a
 #'     label.
 #' 
 #' -   Period (.) to separate the labels in the name, such as the `.` in
@@ -554,7 +554,7 @@ route53domains_get_domain_detail <- function(DomainName) {
 #' 
 #' -   Numbers 0 through 9.
 #' 
-#' -   Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+#' -   Hyphen (-). You can't specify a hyphen at the beginning or end of a
 #'     label.
 #' 
 #' -   Period (.) to separate the labels in the name, such as the `.` in
@@ -569,7 +569,7 @@ route53domains_get_domain_detail <- function(DomainName) {
 #' Specify a value between 1 and 50.
 #' @param OnlyAvailable &#91;required&#93; If `OnlyAvailable` is `true`, Route 53 returns only domain names that
 #' are available. If `OnlyAvailable` is `false`, Route 53 returns domain
-#' names without checking whether they\'re available to be registered. To
+#' names without checking whether they're available to be registered. To
 #' determine whether the domain is available, you can call
 #' `checkDomainAvailability` for each suggestion.
 #'
@@ -804,13 +804,13 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #'     these name servers.
 #' 
 #' -   Enables autorenew, so your domain registration will renew
-#'     automatically each year. We\'ll notify you in advance of the renewal
+#'     automatically each year. We'll notify you in advance of the renewal
 #'     date so you can choose whether to renew the registration.
 #' 
 #' -   Optionally enables privacy protection, so WHOIS queries return
 #'     contact information either for Amazon Registrar (for .com, .net, and
 #'     .org domains) or for our registrar associate, Gandi (for all other
-#'     TLDs). If you don\'t enable privacy protection, WHOIS queries return
+#'     TLDs). If you don't enable privacy protection, WHOIS queries return
 #'     the information that you entered for the registrant, admin, and tech
 #'     contacts.
 #' 
@@ -841,7 +841,7 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' 
 #' -   Numbers 0 through 9.
 #' 
-#' -   Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+#' -   Hyphen (-). You can't specify a hyphen at the beginning or end of a
 #'     label.
 #' 
 #' -   Period (.) to separate the labels in the name, such as the `.` in
@@ -878,27 +878,27 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' that you specify for each element, see
 #' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
 #' @param PrivacyProtectAdminContact Whether you want to conceal contact information from WHOIS queries. If
-#' you specify `true`, WHOIS (\"who is\") queries return contact
-#' information either for Amazon Registrar (for .com, .net, and .org
-#' domains) or for our registrar associate, Gandi (for all other TLDs). If
-#' you specify `false`, WHOIS queries return the information that you
-#' entered for the admin contact.
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar (for .com, .net, and .org domains) or for
+#' our registrar associate, Gandi (for all other TLDs). If you specify
+#' `false`, WHOIS queries return the information that you entered for the
+#' admin contact.
 #' 
 #' Default: `true`
 #' @param PrivacyProtectRegistrantContact Whether you want to conceal contact information from WHOIS queries. If
-#' you specify `true`, WHOIS (\"who is\") queries return contact
-#' information either for Amazon Registrar (for .com, .net, and .org
-#' domains) or for our registrar associate, Gandi (for all other TLDs). If
-#' you specify `false`, WHOIS queries return the information that you
-#' entered for the registrant contact (the domain owner).
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar (for .com, .net, and .org domains) or for
+#' our registrar associate, Gandi (for all other TLDs). If you specify
+#' `false`, WHOIS queries return the information that you entered for the
+#' registrant contact (the domain owner).
 #' 
 #' Default: `true`
 #' @param PrivacyProtectTechContact Whether you want to conceal contact information from WHOIS queries. If
-#' you specify `true`, WHOIS (\"who is\") queries return contact
-#' information either for Amazon Registrar (for .com, .net, and .org
-#' domains) or for our registrar associate, Gandi (for all other TLDs). If
-#' you specify `false`, WHOIS queries return the information that you
-#' entered for the technical contact.
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar (for .com, .net, and .org domains) or for
+#' our registrar associate, Gandi (for all other TLDs). If you specify
+#' `false`, WHOIS queries return the information that you entered for the
+#' technical contact.
 #' 
 #' Default: `true`
 #'
@@ -1057,7 +1057,7 @@ route53domains_reject_domain_transfer_from_another_aws_account <- function(Domai
 #' 
 #' We recommend that you renew your domain several weeks before the
 #' expiration date. Some TLD registries delete domains before the
-#' expiration date if you haven\'t renewed far enough in advance. For more
+#' expiration date if you haven't renewed far enough in advance. For more
 #' information about renewing domain registration, see [Renewing
 #' Registration for a
 #' Domain](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html)
@@ -1199,7 +1199,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' topics:
 #' 
 #' -   For transfer requirements, a detailed procedure, and information
-#'     about viewing the status of a domain that you\'re transferring to
+#'     about viewing the status of a domain that you're transferring to
 #'     Route 53, see [Transferring Registration for a Domain to Amazon
 #'     Route
 #'     53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html)
@@ -1224,13 +1224,13 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' service at any time.
 #' 
 #' If the registrar for your domain is also the DNS service provider for
-#' the domain and you don\'t transfer DNS service to another provider, your
+#' the domain and you don't transfer DNS service to another provider, your
 #' website, email, and the web applications associated with the domain
 #' might become unavailable.
 #' 
 #' If the transfer is successful, this method returns an operation ID that
 #' you can use to track the progress and completion of the action. If the
-#' transfer doesn\'t complete successfully, the domain registrant will be
+#' transfer doesn't complete successfully, the domain registrant will be
 #' notified by email.
 #'
 #' @usage
@@ -1252,7 +1252,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' 
 #' -   Numbers 0 through 9.
 #' 
-#' -   Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+#' -   Hyphen (-). You can't specify a hyphen at the beginning or end of a
 #'     label.
 #' 
 #' -   Period (.) to separate the labels in the name, such as the `.` in
@@ -1274,27 +1274,27 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' @param RegistrantContact &#91;required&#93; Provides detailed contact information.
 #' @param TechContact &#91;required&#93; Provides detailed contact information.
 #' @param PrivacyProtectAdminContact Whether you want to conceal contact information from WHOIS queries. If
-#' you specify `true`, WHOIS (\"who is\") queries return contact
-#' information either for Amazon Registrar (for .com, .net, and .org
-#' domains) or for our registrar associate, Gandi (for all other TLDs). If
-#' you specify `false`, WHOIS queries return the information that you
-#' entered for the admin contact.
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar (for .com, .net, and .org domains) or for
+#' our registrar associate, Gandi (for all other TLDs). If you specify
+#' `false`, WHOIS queries return the information that you entered for the
+#' admin contact.
 #' 
 #' Default: `true`
 #' @param PrivacyProtectRegistrantContact Whether you want to conceal contact information from WHOIS queries. If
-#' you specify `true`, WHOIS (\"who is\") queries return contact
-#' information either for Amazon Registrar (for .com, .net, and .org
-#' domains) or for our registrar associate, Gandi (for all other TLDs). If
-#' you specify `false`, WHOIS queries return the information that you
-#' entered for the registrant contact (domain owner).
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar (for .com, .net, and .org domains) or for
+#' our registrar associate, Gandi (for all other TLDs). If you specify
+#' `false`, WHOIS queries return the information that you entered for the
+#' registrant contact (domain owner).
 #' 
 #' Default: `true`
 #' @param PrivacyProtectTechContact Whether you want to conceal contact information from WHOIS queries. If
-#' you specify `true`, WHOIS (\"who is\") queries return contact
-#' information either for Amazon Registrar (for .com, .net, and .org
-#' domains) or for our registrar associate, Gandi (for all other TLDs). If
-#' you specify `false`, WHOIS queries return the information that you
-#' entered for the technical contact.
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar (for .com, .net, and .org domains) or for
+#' our registrar associate, Gandi (for all other TLDs). If you specify
+#' `false`, WHOIS queries return the information that you entered for the
+#' technical contact.
 #' 
 #' Default: `true`
 #'
@@ -1408,8 +1408,8 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #' Transfers a domain from the current AWS account to another AWS account.
 #' Note the following:
 #' 
-#' -   The AWS account that you\'re transferring the domain to must accept
-#'     the transfer. If the other account doesn\'t accept the transfer
+#' -   The AWS account that you're transferring the domain to must accept
+#'     the transfer. If the other account doesn't accept the transfer
 #'     within 3 days, we cancel the transfer. See
 #'     [AcceptDomainTransferFromAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_AcceptDomainTransferFromAnotherAwsAccount.html).
 #' 
@@ -1420,11 +1420,11 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #'     [RejectDomainTransferFromAnotherAwsAccount](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_RejectDomainTransferFromAnotherAwsAccount.html).
 #' 
 #' When you transfer a domain from one AWS account to another, Route 53
-#' doesn\'t transfer the hosted zone that is associated with the domain.
-#' DNS resolution isn\'t affected if the domain and the hosted zone are
-#' owned by separate accounts, so transferring the hosted zone is optional.
-#' For information about transferring the hosted zone to another AWS
-#' account, see [Migrating a Hosted Zone to a Different AWS
+#' doesn't transfer the hosted zone that is associated with the domain. DNS
+#' resolution isn't affected if the domain and the hosted zone are owned by
+#' separate accounts, so transferring the hosted zone is optional. For
+#' information about transferring the hosted zone to another AWS account,
+#' see [Migrating a Hosted Zone to a Different AWS
 #' Account](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-migrating.html)
 #' in the *Amazon Route 53 Developer Guide*.
 #' 
@@ -1586,7 +1586,7 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 
 #' This operation updates the specified domain contact's privacy setting
 #'
-#' This operation updates the specified domain contact\'s privacy setting.
+#' This operation updates the specified domain contact's privacy setting.
 #' When privacy protection is enabled, contact information such as email
 #' address is replaced either with contact information for Amazon Registrar
 #' (for .com, .net, and .org domains) or with contact information for our
@@ -1597,8 +1597,8 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #' succeeds, Amazon Route 53 returns an operation ID that you can use with
 #' [GetOperationDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html)
 #' to track the progress and completion of the action. If the request
-#' doesn\'t complete successfully, the domain registrant will be notified
-#' by email.
+#' doesn't complete successfully, the domain registrant will be notified by
+#' email.
 #' 
 #' By disabling the privacy service via API, you consent to the publication
 #' of the contact information provided for this domain via the public WHOIS
@@ -1616,23 +1616,23 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to update the privacy setting for.
 #' @param AdminPrivacy Whether you want to conceal contact information from WHOIS queries. If
-#' you specify `true`, WHOIS (\"who is\") queries return contact
-#' information either for Amazon Registrar (for .com, .net, and .org
-#' domains) or for our registrar associate, Gandi (for all other TLDs). If
-#' you specify `false`, WHOIS queries return the information that you
-#' entered for the admin contact.
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar (for .com, .net, and .org domains) or for
+#' our registrar associate, Gandi (for all other TLDs). If you specify
+#' `false`, WHOIS queries return the information that you entered for the
+#' admin contact.
 #' @param RegistrantPrivacy Whether you want to conceal contact information from WHOIS queries. If
-#' you specify `true`, WHOIS (\"who is\") queries return contact
-#' information either for Amazon Registrar (for .com, .net, and .org
-#' domains) or for our registrar associate, Gandi (for all other TLDs). If
-#' you specify `false`, WHOIS queries return the information that you
-#' entered for the registrant contact (domain owner).
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar (for .com, .net, and .org domains) or for
+#' our registrar associate, Gandi (for all other TLDs). If you specify
+#' `false`, WHOIS queries return the information that you entered for the
+#' registrant contact (domain owner).
 #' @param TechPrivacy Whether you want to conceal contact information from WHOIS queries. If
-#' you specify `true`, WHOIS (\"who is\") queries return contact
-#' information either for Amazon Registrar (for .com, .net, and .org
-#' domains) or for our registrar associate, Gandi (for all other TLDs). If
-#' you specify `false`, WHOIS queries return the information that you
-#' entered for the technical contact.
+#' you specify `true`, WHOIS ("who is") queries return contact information
+#' either for Amazon Registrar (for .com, .net, and .org domains) or for
+#' our registrar associate, Gandi (for all other TLDs). If you specify
+#' `false`, WHOIS queries return the information that you entered for the
+#' technical contact.
 #'
 #' @section Request syntax:
 #' ```

@@ -30,7 +30,7 @@ source DB cluster.
 source DB cluster.
 }
 
-If you don\'t specify a \code{RestoreType} value, then the new DB cluster is
+If you don't specify a \code{RestoreType} value, then the new DB cluster is
 restored as a full copy of the source DB cluster.}
 
 \item{SourceDBClusterIdentifier}{[required] The identifier of the source DB cluster from which to restore.
@@ -128,7 +128,7 @@ DBClusterParameterGroup.
 }}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can\'t be deleted when deletion protection is
+enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 }
 \description{

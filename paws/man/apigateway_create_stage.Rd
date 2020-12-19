@@ -23,7 +23,7 @@ resource.}
 
 \item{cacheClusterEnabled}{Whether cache clustering is enabled for the stage.}
 
-\item{cacheClusterSize}{The stage\'s cache cluster size.}
+\item{cacheClusterSize}{The stage's cache cluster size.}
 
 \item{variables}{A map that defines the stage variables for the new Stage resource.
 Variable names can have alphanumeric and underscore characters, and the

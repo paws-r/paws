@@ -9,7 +9,7 @@ neptune_delete_db_instance(DBInstanceIdentifier, SkipFinalSnapshot,
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier for the DB instance to be deleted. This
-parameter isn\'t case-sensitive.
+parameter isn't case-sensitive.
 
 Constraints:
 \itemize{
@@ -22,9 +22,8 @@ is specified, a DB snapshot is created before the DB instance is
 deleted.
 
 Note that when a DB instance is in a failure state and has a status of
-\'failed\', \'incompatible-restore\', or \'incompatible-network\', it
-can only be deleted when the SkipFinalSnapshot parameter is set to
-\"true\".
+'failed', 'incompatible-restore', or 'incompatible-network', it can only
+be deleted when the SkipFinalSnapshot parameter is set to "true".
 
 Specify \code{true} when deleting a Read Replica.
 
@@ -50,20 +49,20 @@ Constraints:
 \description{
 The DeleteDBInstance action deletes a previously provisioned DB
 instance. When you delete a DB instance, all automated backups for that
-instance are deleted and can\'t be recovered. Manual DB snapshots of the
+instance are deleted and can't be recovered. Manual DB snapshots of the
 DB instance to be deleted by \code{DeleteDBInstance} are not deleted.
 }
 \details{
 If you request a final DB snapshot the status of the Amazon Neptune DB
 instance is \code{deleting} until the DB snapshot is created. The API action
 \code{DescribeDBInstance} is used to monitor the status of this operation.
-The action can\'t be canceled or reverted once submitted.
+The action can't be canceled or reverted once submitted.
 
 Note that when a DB instance is in a failure state and has a status of
 \code{failed}, \code{incompatible-restore}, or \code{incompatible-network}, you can
 only delete it when the \code{SkipFinalSnapshot} parameter is set to \code{true}.
 
-You can\'t delete a DB instance if it is the only instance in the DB
+You can't delete a DB instance if it is the only instance in the DB
 cluster, or if it has deletion protection enabled.
 }
 \section{Request syntax}{

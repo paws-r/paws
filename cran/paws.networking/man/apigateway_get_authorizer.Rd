@@ -15,9 +15,7 @@ apigateway_get_authorizer(restApiId, authorizerId)
 Describe an existing Authorizer resource.
 }
 \details{
-::: \{.seeAlso\}
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html}{AWS CLI}
-:::
 }
 \section{Request syntax}{
 \preformatted{svc$get_authorizer(

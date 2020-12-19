@@ -7,7 +7,7 @@
 cloudfront_get_cloud_front_origin_access_identity_config(Id)
 }
 \arguments{
-\item{Id}{[required] The identity\'s ID.}
+\item{Id}{[required] The identity's ID.}
 }
 \description{
 Get the configuration information about an origin access identity.

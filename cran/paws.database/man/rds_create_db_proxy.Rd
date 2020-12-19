@@ -12,7 +12,7 @@ rds_create_db_proxy(DBProxyName, EngineFamily, Auth, RoleArn,
 \item{DBProxyName}{[required] The identifier for the proxy. This name must be unique for all proxies
 owned by your AWS account in the specified AWS Region. An identifier
 must begin with a letter and must contain only ASCII letters, digits,
-and hyphens; it can\'t end with a hyphen or contain two consecutive
+and hyphens; it can't end with a hyphen or contain two consecutive
 hyphens.}
 
 \item{EngineFamily}{[required] The kinds of databases that the proxy can connect to. This value

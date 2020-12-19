@@ -23,7 +23,7 @@ CloudWatch logs.}
 should be used by the index. You can change the capacity of the index up
 to 5 times per day.
 
-If you are using extra storage units, you can\'t reduce the storage
+If you are using extra storage units, you can't reduce the storage
 capacity below that required to meet the storage needs for your index.}
 }
 \description{

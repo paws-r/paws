@@ -8,7 +8,7 @@ such as the default outbound calling name}
 chime_get_phone_number_settings()
 }
 \description{
-Retrieves the phone number settings for the administrator\'s AWS
-account, such as the default outbound calling name.
+Retrieves the phone number settings for the administrator's AWS account,
+such as the default outbound calling name.
 }
 \keyword{internal}

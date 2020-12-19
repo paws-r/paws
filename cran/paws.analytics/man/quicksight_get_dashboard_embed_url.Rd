@@ -10,7 +10,7 @@ quicksight_get_dashboard_embed_url(AwsAccountId, DashboardId,
   UserArn)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the AWS account that contains the dashboard that you\'re
+\item{AwsAccountId}{[required] The ID for the AWS account that contains the dashboard that you're
 embedding.}
 
 \item{DashboardId}{[required] The ID for the dashboard, also added to the IAM policy.}
@@ -26,7 +26,7 @@ FALSE, which enables the undo/redo button.}
 \item{ResetDisabled}{Remove the reset button on the embedded dashboard. The default is FALSE,
 which enables the reset button.}
 
-\item{UserArn}{The Amazon QuickSight user\'s Amazon Resource Name (ARN), for use with
+\item{UserArn}{The Amazon QuickSight user's Amazon Resource Name (ARN), for use with
 \code{QUICKSIGHT} identity type. You can use this for any Amazon QuickSight
 users in your account (readers, authors, or admins) authenticated as one
 of the following:
@@ -45,8 +45,8 @@ configured the dashboards and permissions.
 }
 \details{
 Currently, you can use \code{GetDashboardEmbedURL} only from the server, not
-from the user\'s browser. The following rules apply to the combination
-of URL and authorization code:
+from the user's browser. The following rules apply to the combination of
+URL and authorization code:
 \itemize{
 \item They must be used together.
 \item They can be used one time only.

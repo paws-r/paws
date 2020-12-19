@@ -12,18 +12,18 @@ ec2_describe_vpn_gateways(Filters, VpnGatewayIds, DryRun)
 \item \code{amazon-side-asn} - The Autonomous System Number (ASN) for the
 Amazon side of the gateway.
 \item \code{attachment.state} - The current state of the attachment between the
-gateway and the VPC (\code{attaching} \\| \code{attached} \\| \code{detaching} \\|
+gateway and the VPC (\code{attaching} | \code{attached} | \code{detaching} |
 \code{detached}).
 \item \code{attachment.vpc-id} - The ID of an attached VPC.
 \item \code{availability-zone} - The Availability Zone for the virtual private
 gateway (if applicable).
-\item \code{state} - The state of the virtual private gateway (\code{pending} \\|
-\code{available} \\| \code{deleting} \\| \code{deleted}).
-\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
+\item \code{state} - The state of the virtual private gateway (\code{pending} |
+\code{available} | \code{deleting} | \code{deleted}).
+\item \code{tag}:<key> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value
+as the filter value. For example, to find all resources that have a
+tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
+for the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.

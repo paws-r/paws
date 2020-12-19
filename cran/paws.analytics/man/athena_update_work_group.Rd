@@ -18,7 +18,7 @@ workgroup.}
 \item{State}{The workgroup state that will be updated for the given workgroup.}
 }
 \description{
-Updates the workgroup with the specified name. The workgroup\'s name
+Updates the workgroup with the specified name. The workgroup's name
 cannot be changed.
 }
 \section{Request syntax}{

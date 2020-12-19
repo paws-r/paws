@@ -36,7 +36,7 @@ cluster, the service can be updated to use one or more capacity
 providers as opposed to the default capacity provider strategy. However,
 when a service is using a capacity provider strategy that is not the
 default capacity provider strategy, the service cannot be updated to use
-the cluster\'s default capacity provider strategy.
+the cluster's default capacity provider strategy.
 
 A capacity provider strategy consists of one or more capacity providers
 along with the \code{base} and \code{weight} to assign to them. A capacity
@@ -90,14 +90,14 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 \item{forceNewDeployment}{Whether to force a new deployment of the service. Deployments are not
 forced by default. You can use this option to trigger a new deployment
 with no service definition changes. For example, you can update a
-service\'s tasks to use a newer Docker image with the same image/tag
+service's tasks to use a newer Docker image with the same image/tag
 combination (\code{my_image:latest}) or to roll Fargate tasks onto a newer
 platform version.}
 
 \item{healthCheckGracePeriodSeconds}{The period of time, in seconds, that the Amazon ECS service scheduler
 should ignore unhealthy Elastic Load Balancing target health checks
 after a task has first started. This is only valid if your service is
-configured to use a load balancer. If your service\'s tasks take a while
+configured to use a load balancer. If your service's tasks take a while
 to start and respond to Elastic Load Balancing health checks, you can
 specify a health check grace period of up to 2,147,483,647 seconds.
 During that time, the Amazon ECS service scheduler ignores the Elastic
@@ -109,8 +109,8 @@ before they have time to come up.}
 Updating the task placement strategies and constraints on an Amazon ECS
 service remains in preview and is a Beta Service as defined by and
 subject to the Beta Service Participation Service Terms located at
-\url{https://aws.amazon.com/service-terms} (\"Beta Terms\"). These Beta
-Terms apply to your participation in this preview.
+\url{https://aws.amazon.com/service-terms} ("Beta Terms"). These Beta Terms
+apply to your participation in this preview.
 }
 \details{
 Modifies the parameters of a service.
@@ -143,7 +143,7 @@ running in and a new \code{desiredCount} parameter.
 If you have updated the Docker image of your application, you can create
 a new task definition with that image and deploy it to your service. The
 service scheduler uses the minimum healthy percent and maximum percent
-parameters (in the service\'s deployment configuration) to determine the
+parameters (in the service's deployment configuration) to determine the
 deployment strategy.
 
 If your updated Docker image uses the same tag as what is in the
@@ -188,7 +188,7 @@ When the service scheduler launches new tasks, it determines task
 placement in your cluster with the following logic:
 \itemize{
 \item Determine which of the container instances in your cluster can
-support your service\'s task definition (for example, they have the
+support your service's task definition (for example, they have the
 required CPU, memory, ports, and container instance attributes).
 \item By default, the service scheduler attempts to balance tasks across
 Availability Zones in this manner (although you can choose a

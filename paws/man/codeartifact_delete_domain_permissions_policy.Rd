@@ -16,7 +16,7 @@ does not include dashes or spaces.}
 
 \item{policyRevision}{The current revision of the resource policy to be deleted. This revision
 is used for optimistic locking, which prevents others from overwriting
-your changes to the domain\'s resource policy.}
+your changes to the domain's resource policy.}
 }
 \description{
 Deletes the resource policy set on a domain.

@@ -42,7 +42,7 @@ the reservation that matches the specified lease ID.
 AWS Support might request the lease ID for an issue related to a
 reserved DB instance.}
 
-\item{Filters}{This parameter isn\'t currently supported.}
+\item{Filters}{This parameter isn't currently supported.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more than
 the \code{MaxRecords} value is available, a pagination token called a marker

@@ -10,15 +10,15 @@ rds_describe_db_snapshots(DBInstanceIdentifier, DBSnapshotIdentifier,
 }
 \arguments{
 \item{DBInstanceIdentifier}{The ID of the DB instance to retrieve the list of DB snapshots for. This
-parameter can\'t be used in conjunction with \code{DBSnapshotIdentifier}.
-This parameter isn\'t case-sensitive.
+parameter can't be used in conjunction with \code{DBSnapshotIdentifier}. This
+parameter isn't case-sensitive.
 
 Constraints:
 \itemize{
 \item If supplied, must match the identifier of an existing DBInstance.
 }}
 
-\item{DBSnapshotIdentifier}{A specific DB snapshot identifier to describe. This parameter can\'t be
+\item{DBSnapshotIdentifier}{A specific DB snapshot identifier to describe. This parameter can't be
 used in conjunction with \code{DBInstanceIdentifier}. This value is stored as
 a lowercase string.
 
@@ -47,17 +47,17 @@ For information about AWS Backup, see the \href{https://docs.aws.amazon.com/aws-
 The \code{awsbackup} type does not apply to Aurora.
 }
 
-If you don\'t specify a \code{SnapshotType} value, then both automated and
+If you don't specify a \code{SnapshotType} value, then both automated and
 manual snapshots are returned. Shared and public DB snapshots are not
 included in the returned results by default. You can include shared
 snapshots with these results by enabling the \code{IncludeShared} parameter.
 You can include public snapshots with these results by enabling the
 \code{IncludePublic} parameter.
 
-The \code{IncludeShared} and \code{IncludePublic} parameters don\'t apply for
+The \code{IncludeShared} and \code{IncludePublic} parameters don't apply for
 \code{SnapshotType} values of \code{manual} or \code{automated}. The \code{IncludePublic}
-parameter doesn\'t apply when \code{SnapshotType} is set to \code{shared}. The
-\code{IncludeShared} parameter doesn\'t apply when \code{SnapshotType} is set to
+parameter doesn't apply when \code{SnapshotType} is set to \code{shared}. The
+\code{IncludeShared} parameter doesn't apply when \code{SnapshotType} is set to
 \code{public}.}
 
 \item{Filters}{A filter that specifies one or more DB snapshots to describe.

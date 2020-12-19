@@ -26,7 +26,7 @@ marker, up to the value specified by \code{MaxRecords}.}
 
 \item{Filters}{Filters applied to the describe table statistics action.
 
-Valid filter names: schema-name \\| table-name \\| table-state
+Valid filter names: schema-name | table-name | table-state
 
 A combination of filters creates an AND condition where each record
 matches all specified filters.}
@@ -36,7 +36,7 @@ Returns table statistics on the database migration task, including table
 name, rows inserted, rows updated, and rows deleted.
 }
 \details{
-Note that the \"last updated\" column the DMS console only indicates the
+Note that the "last updated" column the DMS console only indicates the
 time that AWS DMS last updated the table statistics record for a table.
 It does not indicate the time of the last update to the table.
 }

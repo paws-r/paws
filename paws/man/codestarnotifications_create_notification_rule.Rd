@@ -38,10 +38,10 @@ The AWS SDKs prepopulate client request tokens. If you are using an AWS
 SDK, an idempotency token is created for you.}
 
 \item{Tags}{A list of tags to apply to this notification rule. Key names cannot
-start with \"aws\".}
+start with "aws".}
 
 \item{Status}{The status of the notification rule. The default value is ENABLED. If
-the status is set to DISABLED, notifications aren\'t sent for the
+the status is set to DISABLED, notifications aren't sent for the
 notification rule.}
 }
 \description{

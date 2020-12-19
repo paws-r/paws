@@ -14,18 +14,18 @@ iotsitewise_update_portal(portalId, portalName, portalDescription,
 
 \item{portalDescription}{A new description for the portal.}
 
-\item{portalContactEmail}{[required] The AWS administrator\'s contact email address.}
+\item{portalContactEmail}{[required] The AWS administrator's contact email address.}
 
 \item{portalLogoImage}{}
 
 \item{roleArn}{[required] The
 \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{ARN}
-of a service role that allows the portal\'s users to access your AWS IoT
+of a service role that allows the portal's users to access your AWS IoT
 SiteWise resources on your behalf. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/monitor-service-role.html}{Using service roles for AWS IoT SiteWise Monitor}
 in the \emph{AWS IoT SiteWise User Guide}.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{

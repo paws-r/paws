@@ -188,7 +188,7 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #' @param PersonalizationThresholdSeconds The maximum duration of underfilled ad time (in seconds) allowed in an
 #' ad break.
 #' @param SlateAdUrl The URL for a high-quality video asset to transcode and use to fill in
-#' time that\'s not used by ads. AWS Elemental MediaTailor shows the slate
+#' time that's not used by ads. AWS Elemental MediaTailor shows the slate
 #' to fill in gaps in media content. Configuring the slate is optional for
 #' non-VPAID configurations. For VPAID, the slate is required because
 #' MediaTailor provides it in the slots that are designated for dynamic ad
@@ -267,8 +267,8 @@ mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, A
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the playback configuration. You can
 #' get this from the response to any playback configuration request.
-#' @param Tags &#91;required&#93; A comma-separated list of tag key:value pairs. For example: \{ \"Key1\":
-#' \"Value1\", \"Key2\": \"Value2\" \}
+#' @param Tags &#91;required&#93; A comma-separated list of tag key:value pairs. For example: \{ "Key1":
+#' "Value1", "Key2": "Value2" \}
 #'
 #' @section Request syntax:
 #' ```

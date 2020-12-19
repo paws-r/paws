@@ -20,8 +20,8 @@ supported currency is \code{USD}.}
 associated.}
 
 \item{LimitPrice}{The specified limit is checked against the total upfront cost of the
-reservation (calculated as the offering\'s upfront cost multiplied by
-the host count). If the total upfront cost is greater than the specified
+reservation (calculated as the offering's upfront cost multiplied by the
+host count). If the total upfront cost is greater than the specified
 price limit, the request fails. This is used to ensure that the purchase
 does not exceed the expected upfront cost of the purchase. At this time,
 the only supported currency is \code{USD}. For example, to indicate a limit

@@ -44,8 +44,8 @@ The default value is \code{false}. In this case, you are required to specify
 an algorithm.
 
 Set \code{PerformAutoML} to \code{true} to have Amazon Forecast perform AutoML.
-This is a good option if you aren\'t sure which algorithm is suitable
-for your training data. In this case, \code{PerformHPO} must be false.}
+This is a good option if you aren't sure which algorithm is suitable for
+your training data. In this case, \code{PerformHPO} must be false.}
 
 \item{PerformHPO}{Whether to perform hyperparameter optimization (HPO). HPO finds optimal
 hyperparameter values for your training data. The process of performing
@@ -75,7 +75,7 @@ algorithm. Amazon Forecast evaluates a predictor by splitting a dataset
 into training data and testing data. The evaluation parameters define
 how to perform the split and the number of iterations.}
 
-\item{HPOConfig}{Provides hyperparameter override values for the algorithm. If you don\'t
+\item{HPOConfig}{Provides hyperparameter override values for the algorithm. If you don't
 provide this parameter, Amazon Forecast uses default values. The
 individual algorithms specify which hyperparameters support
 hyperparameter optimization (HPO). For more information, see
@@ -143,7 +143,7 @@ model training. For more information, see FeaturizationConfig.
 
 For RELATED\\_TIME\\_SERIES datasets, \code{CreatePredictor} verifies that the
 \code{DataFrequency} specified when the dataset was created matches the
-\code{ForecastFrequency}. TARGET\\_TIME\\_SERIES datasets don\'t have this
+\code{ForecastFrequency}. TARGET\\_TIME\\_SERIES datasets don't have this
 restriction. Amazon Forecast also verifies the delimiter and timestamp
 format. For more information, see howitworks-datasets-groups.
 

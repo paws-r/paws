@@ -23,7 +23,7 @@ To authorize other AWS accounts to copy or restore a manual cluster
 snapshot, set this list to include one or more AWS account IDs. To make
 the manual cluster snapshot restorable by any AWS account, set it to
 \code{all}. Do not add the \code{all} value for any manual cluster snapshots that
-contain private information that you don\'t want to be available to all
+contain private information that you don't want to be available to all
 AWS accounts.}
 
 \item{ValuesToRemove}{A list of cluster snapshot attributes to remove from the attribute
@@ -47,11 +47,11 @@ add a list of IDs of the AWS accounts that are authorized to restore the
 manual cluster snapshot. Use the value \code{all} to make the manual cluster
 snapshot public, which means that it can be copied or restored by all
 AWS accounts. Do not add the \code{all} value for any manual DB cluster
-snapshots that contain private information that you don\'t want
-available to all AWS accounts. If a manual cluster snapshot is
-encrypted, it can be shared, but only by specifying a list of authorized
-AWS account IDs for the \code{ValuesToAdd} parameter. You can\'t use \code{all} as
-a value for that parameter in this case.
+snapshots that contain private information that you don't want available
+to all AWS accounts. If a manual cluster snapshot is encrypted, it can
+be shared, but only by specifying a list of authorized AWS account IDs
+for the \code{ValuesToAdd} parameter. You can't use \code{all} as a value for that
+parameter in this case.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_db_cluster_snapshot_attribute(

@@ -33,7 +33,7 @@ SDKs provide similar functionality.
 
 An IAM user can also have managed policies attached to it. To retrieve a
 managed policy document that is attached to a user, use GetPolicy to
-determine the policy\'s default version. Then use GetPolicyVersion to
+determine the policy's default version. Then use GetPolicyVersion to
 retrieve the policy document.
 
 For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}

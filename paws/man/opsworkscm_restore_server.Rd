@@ -24,9 +24,9 @@ helpful if the administrator no longer has the SSH key.}
 \description{
 Restores a backup to a server that is in a \code{CONNECTION_LOST}, \code{HEALTHY},
 \code{RUNNING}, \code{UNHEALTHY}, or \code{TERMINATED} state. When you run
-RestoreServer, the server\'s EC2 instance is deleted, and a new EC2
+RestoreServer, the server's EC2 instance is deleted, and a new EC2
 instance is configured. RestoreServer maintains the existing server
-endpoint, so configuration management of the server\'s client devices
+endpoint, so configuration management of the server's client devices
 (nodes) should continue to work.
 }
 \details{

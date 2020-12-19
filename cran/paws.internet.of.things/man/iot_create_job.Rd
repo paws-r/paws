@@ -10,8 +10,8 @@ iot_create_job(jobId, targets, documentSource, document, description,
 }
 \arguments{
 \item{jobId}{[required] A job identifier which must be unique for your AWS account. We recommend
-using a UUID. Alpha-numeric characters, \"-\" and \"\\_\" are valid for
-use here.}
+using a UUID. Alpha-numeric characters, "-" and "\\_" are valid for use
+here.}
 
 \item{targets}{[required] A list of things and thing groups to which the job should be sent.}
 

@@ -39,8 +39,8 @@ of the following:
 \item ARN referring to KMS key alias
 }
 
-If encrypted is \emph{true} but a KMS key id is not specified, the
-customer\'s default KMS key for EBS is used.}
+If encrypted is \emph{true} but a KMS key id is not specified, the customer's
+default KMS key for EBS is used.}
 }
 \description{
 Creates a replication job. The replication job schedules periodic

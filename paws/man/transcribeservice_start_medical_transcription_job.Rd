@@ -10,11 +10,11 @@ transcribeservice_start_medical_transcription_job(
   Settings, Specialty, Type)
 }
 \arguments{
-\item{MedicalTranscriptionJobName}{[required] The name of the medical transcription job. You can\'t use the strings
-\".\" or \"..\" by themselves as the job name. The name must also be
-unique within an AWS account. If you try to create a medical
-transcription job with the same name as a previous medical transcription
-job you will receive a \code{ConflictException} error.}
+\item{MedicalTranscriptionJobName}{[required] The name of the medical transcription job. You can't use the strings "."
+or ".." by themselves as the job name. The name must also be unique
+within an AWS account. If you try to create a medical transcription job
+with the same name as a previous medical transcription job you will
+receive a \code{ConflictException} error.}
 
 \item{LanguageCode}{[required] The language code for the language spoken in the input media file. US
 English (en-US) is the valid value for medical transcription jobs. Any
@@ -44,7 +44,7 @@ in the bucket. For more information, see \href{https://docs.aws.amazon.com/trans
 
 You can specify an AWS Key Management Service (KMS) key to encrypt the
 output of your transcription using the \code{OutputEncryptionKMSKeyId}
-parameter. If you don\'t specify a KMS key, Amazon Transcribe Medical
+parameter. If you don't specify a KMS key, Amazon Transcribe Medical
 uses the default Amazon S3 key for server-side encryption of transcripts
 that are placed in your S3 bucket.}
 
@@ -56,21 +56,21 @@ to use the specified KMS key.
 You use either of the following to identify a KMS key in the current
 account:
 \itemize{
-\item KMS Key ID: \"1234abcd-12ab-34cd-56ef-1234567890ab\"
-\item KMS Key Alias: \"alias/ExampleAlias\"
+\item KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+\item KMS Key Alias: "alias/ExampleAlias"
 }
 
 You can use either of the following to identify a KMS key in the current
 account or another account:
 \itemize{
 \item Amazon Resource Name (ARN) of a KMS key in the current account or
-another account: \"arn:aws:kms:region:account
-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab\"
-\item ARN of a KMS Key Alias: \"arn:aws:kms:region:account
-ID:alias/ExampleAlias\"
+another account: "arn:aws:kms:region:account
+ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+\item ARN of a KMS Key Alias: "arn:aws:kms:region:account
+ID:alias/ExampleAlias"
 }
 
-If you don\'t specify an encryption key, the output of the medical
+If you don't specify an encryption key, the output of the medical
 transcription job is encrypted with the default Amazon S3 key (SSE-S3).
 
 If you specify a KMS key to encrypt your output, you must also specify

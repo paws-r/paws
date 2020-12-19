@@ -35,8 +35,8 @@ The request body must include a document with a
 list of change items, known as a change batch. Change batches are
 considered transactional changes. Route 53 validates the changes in the
 request and then either makes all or none of the changes in the change
-batch request. This ensures that DNS routing isn\'t adversely affected
-by partial changes to the resource record sets in a hosted zone.
+batch request. This ensures that DNS routing isn't adversely affected by
+partial changes to the resource record sets in a hosted zone.
 
 For example, suppose a change batch request contains two changes: it
 deletes the \code{CNAME} resource record set for www.example.com and creates
@@ -58,7 +58,7 @@ actions for traffic policies and traffic policy instances. Save the
 configuration as a traffic policy, then associate the traffic policy
 with one or more domain names (such as example.com) or subdomain names
 (such as www.example.com), in the same hosted zone or in multiple hosted
-zones. You can roll back the updates if the new configuration isn\'t
+zones. You can roll back the updates if the new configuration isn't
 performing as expected. For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/traffic-flow.html}{Using Traffic Flow to Route DNS Traffic}
 in the \emph{Amazon Route 53 Developer Guide}.
 
@@ -82,9 +82,9 @@ you want to create, delete, or update, such as weighted, alias, or
 failover. The XML elements in your request must appear in the order
 listed in the syntax.
 
-For an example for each type of resource record set, see \"Examples.\"
+For an example for each type of resource record set, see "Examples."
 
-Don\'t refer to the syntax in the \"Parameter Syntax\" section, which
+Don't refer to the syntax in the "Parameter Syntax" section, which
 includes all of the elements for every kind of resource record set that
 you can create, delete, or update by using \code{ChangeResourceRecordSets}.
 

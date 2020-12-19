@@ -12,7 +12,7 @@ organizations_create_account(Email, AccountName, RoleName,
 \item{Email}{[required] The email address of the owner to assign to the new member account. This
 email address must not already be associated with another AWS account.
 You must use a valid email address to complete account creation. You
-can\'t access the root user of the account or remove an account that was
+can't access the root user of the account or remove an account that was
 created with an invalid email address.}
 
 \item{AccountName}{[required] The friendly name of the member account.}
@@ -25,7 +25,7 @@ account, allowing users in the master account to assume the role, as
 permitted by the master account administrator. The role has
 administrator permissions in the new member account.
 
-If you don\'t specify this parameter, the role name defaults to
+If you don't specify this parameter, the role name defaults to
 \code{OrganizationAccountAccessRole}.
 
 For more information about how to use this role to access the member
@@ -48,7 +48,7 @@ billing information \emph{if} they have the required permissions. If set to
 information. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate}{Activating Access to the Billing and Cost Management Console}
 in the \emph{AWS Billing and Cost Management User Guide}.
 
-If you don\'t specify this parameter, the value defaults to \code{ALLOW}, and
+If you don't specify this parameter, the value defaults to \code{ALLOW}, and
 IAM users and roles with the required permissions can access billing
 information for the new account.}
 }
@@ -83,9 +83,9 @@ AWS Organizations preconfigures the new member account with a role
 the master account administrator permissions in the new member account.
 Principals in the master account can assume the role. AWS Organizations
 clones the company name and address information for the new account from
-the organization\'s master account.
+the organization's master account.
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's master
 account.
 
 For more information about creating accounts, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html}{Creating an AWS Account in Your Organization}
@@ -104,7 +104,7 @@ account limits for the organization, contact \href{https://console.aws.amazon.co
 \item If you get an exception that indicates that the operation failed
 because your organization is still initializing, wait one hour and
 then try again. If the error persists, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
-\item Using \code{CreateAccount} to create multiple temporary accounts isn\'t
+\item Using \code{CreateAccount} to create multiple temporary accounts isn't
 recommended. You can only close an account from the Billing and Cost
 Management Console, and you must be signed in as the root user. For
 information on the requirements and process for closing an account,

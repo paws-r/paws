@@ -86,7 +86,7 @@ polly_delete_lexicon <- function(Name) {
 #' processing input text for speech synthesis.
 #' @param LanguageCode The language identification tag (ISO 639 code for the language name-ISO
 #' 3166 country code) for filtering the list of voices returned. If you
-#' don\'t specify this optional parameter, all available voices are
+#' don't specify this optional parameter, all available voices are
 #' returned.
 #' @param IncludeAdditionalLanguageCodes Boolean value indicating whether to return any bilingual voices that use
 #' the specified language as an additional language. For instance, if you
@@ -409,12 +409,12 @@ polly_put_lexicon <- function(Name, Content) {
 #' @param OutputS3KeyPrefix The Amazon S3 key prefix for the output speech file.
 #' @param SampleRate The audio frequency specified in Hz.
 #' 
-#' The valid values for mp3 and ogg\\_vorbis are \"8000\", \"16000\",
-#' \"22050\", and \"24000\". The default value for standard voices is
-#' \"22050\". The default value for neural voices is \"24000\".
+#' The valid values for mp3 and ogg\\_vorbis are "8000", "16000", "22050",
+#' and "24000". The default value for standard voices is "22050". The
+#' default value for neural voices is "24000".
 #' 
-#' Valid values for pcm are \"8000\" and \"16000\" The default value is
-#' \"16000\".
+#' Valid values for pcm are "8000" and "16000" The default value is
+#' "16000".
 #' @param SnsTopicArn ARN for the SNS topic optionally used for providing status notification
 #' for a speech synthesis task.
 #' @param SpeechMarkTypes The type of speech marks returned for the input text.
@@ -505,12 +505,12 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' 1 channel (mono), little-endian format.
 #' @param SampleRate The audio frequency specified in Hz.
 #' 
-#' The valid values for mp3 and ogg\\_vorbis are \"8000\", \"16000\",
-#' \"22050\", and \"24000\". The default value for standard voices is
-#' \"22050\". The default value for neural voices is \"24000\".
+#' The valid values for mp3 and ogg\\_vorbis are "8000", "16000", "22050",
+#' and "24000". The default value for standard voices is "22050". The
+#' default value for neural voices is "24000".
 #' 
-#' Valid values for pcm are \"8000\" and \"16000\" The default value is
-#' \"16000\".
+#' Valid values for pcm are "8000" and "16000" The default value is
+#' "16000".
 #' @param SpeechMarkTypes The type of speech marks returned for the input text.
 #' @param Text &#91;required&#93; Input text to synthesize. If you specify `ssml` as the `TextType`,
 #' follow the SSML format for the input text.

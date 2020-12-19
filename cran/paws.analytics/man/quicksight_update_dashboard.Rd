@@ -9,7 +9,7 @@ quicksight_update_dashboard(AwsAccountId, DashboardId, Name,
   ThemeArn)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you\'re
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you're
 updating.}
 
 \item{DashboardId}{[required] The ID for the dashboard.}
@@ -17,7 +17,7 @@ updating.}
 \item{Name}{[required] The display name of the dashboard.}
 
 \item{SourceEntity}{[required] The entity that you are using as a source when you update the dashboard.
-In \code{SourceEntity}, you specify the type of object you\'re using as
+In \code{SourceEntity}, you specify the type of object you're using as
 source. You can only update a dashboard from a template, so you use a
 \code{SourceTemplate} entity. If you need to update a dashboard from an
 analysis, first convert the analysis to a template by using the
@@ -44,7 +44,7 @@ which can be used for ad hoc (one-time) filtering. This option is
 \code{ENABLED} by default.
 \item \code{AvailabilityStatus} for \code{ExportToCSVOption} - This status can be
 either \code{ENABLED} or \code{DISABLED}. The visual option to export data to
-.csv format isn\'t enabled when this is set to \code{DISABLED}. This
+.csv format isn't enabled when this is set to \code{DISABLED}. This
 option is \code{ENABLED} by default.
 \item \code{VisibilityState} for \code{SheetControlsOption} - This visibility state
 can be either \code{COLLAPSED} or \code{EXPANDED}. This option is \code{COLLAPSED}

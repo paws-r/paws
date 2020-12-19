@@ -13,7 +13,7 @@ costexplorer_get_cost_forecast(TimePeriod, Metric, Granularity, Filter,
 \item{TimePeriod}{[required] The period of time that you want the forecast to cover.}
 
 \item{Metric}{[required] Which metric Cost Explorer uses to create your forecast. For more
-information about blended and unblended rates, see \href{http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the \"blended\" annotation appear on some line items in my bill?}.
+information about blended and unblended rates, see \href{http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
 
 Valid values for a \code{GetCostForecast} call are the following:
 \itemize{

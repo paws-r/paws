@@ -9,7 +9,7 @@ rds_delete_db_cluster(DBClusterIdentifier, SkipFinalSnapshot,
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the DB cluster to be deleted. This
-parameter isn\'t case-sensitive.
+parameter isn't case-sensitive.
 
 Constraints:
 \itemize{
@@ -18,10 +18,10 @@ Constraints:
 
 \item{SkipFinalSnapshot}{A value that indicates whether to skip the creation of a final DB
 cluster snapshot before the DB cluster is deleted. If skip is specified,
-no DB cluster snapshot is created. If skip isn\'t specified, a DB
-cluster snapshot is created before the DB cluster is deleted. By
-default, skip isn\'t specified, and the DB cluster snapshot is created.
-By default, this parameter is disabled.
+no DB cluster snapshot is created. If skip isn't specified, a DB cluster
+snapshot is created before the DB cluster is deleted. By default, skip
+isn't specified, and the DB cluster snapshot is created. By default,
+this parameter is disabled.
 
 You must specify a \code{FinalDBSnapshotIdentifier} parameter if
 \code{SkipFinalSnapshot} is disabled.}
@@ -37,13 +37,13 @@ Constraints:
 \itemize{
 \item Must be 1 to 255 letters, numbers, or hyphens.
 \item First character must be a letter
-\item Can\'t end with a hyphen or contain two consecutive hyphens
+\item Can't end with a hyphen or contain two consecutive hyphens
 }}
 }
 \description{
 The DeleteDBCluster action deletes a previously provisioned DB cluster.
 When you delete a DB cluster, all automated backups for that DB cluster
-are deleted and can\'t be recovered. Manual DB cluster snapshots of the
+are deleted and can't be recovered. Manual DB cluster snapshots of the
 specified DB cluster are not deleted.
 }
 \details{

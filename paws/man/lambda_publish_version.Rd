@@ -21,7 +21,7 @@ lambda_publish_version(FunctionName, CodeSha256, Description,
 The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 
-\item{CodeSha256}{Only publish a version if the hash value matches the value that\'s
+\item{CodeSha256}{Only publish a version if the hash value matches the value that's
 specified. Use this option to avoid publishing a version if the function
 code has changed since you last updated it. You can get the hash for the
 version that you uploaded from the output of UpdateFunctionCode.}
@@ -29,7 +29,7 @@ version that you uploaded from the output of UpdateFunctionCode.}
 \item{Description}{A description for the version to override the description in the
 function configuration.}
 
-\item{RevisionId}{Only update the function if the revision ID matches the ID that\'s
+\item{RevisionId}{Only update the function if the revision ID matches the ID that's
 specified. Use this option to avoid publishing a version if the function
 configuration has changed since you last updated it.}
 }
@@ -37,14 +37,14 @@ configuration has changed since you last updated it.}
 Creates a
 \href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{version}
 from the current code and configuration of a function. Use versions to
-create a snapshot of your function code and configuration that doesn\'t
+create a snapshot of your function code and configuration that doesn't
 change.
 }
 \details{
-AWS Lambda doesn\'t publish a version if the function\'s configuration
-and code haven\'t changed since the last version. Use UpdateFunctionCode
-or UpdateFunctionConfiguration to update the function before publishing
-a version.
+AWS Lambda doesn't publish a version if the function's configuration and
+code haven't changed since the last version. Use UpdateFunctionCode or
+UpdateFunctionConfiguration to update the function before publishing a
+version.
 
 Clients can invoke versions directly or with an alias. To create an
 alias, use CreateAlias.

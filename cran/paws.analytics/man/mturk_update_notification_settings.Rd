@@ -27,7 +27,7 @@ with a new one. You can call the UpdateNotificationSettings operation to
 enable or disable notifications for the HIT type, without having to
 modify the notification specification itself by providing updates to the
 Active status without specifying a new notification specification. To
-change the Active status of a HIT type\'s notifications, the HIT type
+change the Active status of a HIT type's notifications, the HIT type
 must already have a notification specification, or one must be provided
 in the same call to \code{UpdateNotificationSettings}.
 }

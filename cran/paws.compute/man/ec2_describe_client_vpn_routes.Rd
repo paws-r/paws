@@ -14,7 +14,7 @@ ec2_describe_client_vpn_routes(ClientVpnEndpointId, Filters, MaxResults,
 \itemize{
 \item \code{destination-cidr} - The CIDR of the route destination.
 \item \code{origin} - How the route was associated with the Client VPN endpoint
-(\code{associate} \\| \code{add-route}).
+(\code{associate} | \code{add-route}).
 \item \code{target-subnet} - The ID of the subnet through which traffic is
 routed.
 }}

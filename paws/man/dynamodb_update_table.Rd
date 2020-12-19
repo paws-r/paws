@@ -52,7 +52,7 @@ in the \emph{Amazon DynamoDB Developer Guide}.}
 
 You receive a \code{ResourceInUseException} if you try to enable a stream on
 a table that already has a stream, or if you try to disable a stream on
-a table that doesn\'t have a stream.}
+a table that doesn't have a stream.}
 
 \item{SSESpecification}{The new server-side encryption settings for the specified table.}
 

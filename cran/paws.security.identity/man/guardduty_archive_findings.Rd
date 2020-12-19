@@ -18,8 +18,8 @@ Archives GuardDuty findings that are specified by the list of finding
 IDs.
 }
 \details{
-Only the master account can archive findings. Member accounts don\'t
-have permission to archive findings from their accounts.
+Only the master account can archive findings. Member accounts don't have
+permission to archive findings from their accounts.
 }
 \section{Request syntax}{
 \preformatted{svc$archive_findings(

@@ -16,7 +16,7 @@ lowercase string.}
 \item{StaticMembers}{List of DB instance identifiers that are part of the custom endpoint
 group.}
 
-\item{ExcludedMembers}{List of DB instance identifiers that aren\'t part of the custom endpoint
+\item{ExcludedMembers}{List of DB instance identifiers that aren't part of the custom endpoint
 group. All other eligible instances are reachable through the custom
 endpoint. Only relevant if the list of static members is empty.}
 }

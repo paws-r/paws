@@ -17,13 +17,13 @@ tag value is 256 characters.}
 }
 \description{
 Add one or more tags (keys and values) to a specified resource. A
-\emph{tag}Â is a label that you optionally define and associate with a
+\emph{tag} is a label that you optionally define and associate with a
 resource in Amazon Pinpoint. Tags can help you categorize and manage
 resources in different ways, such as by purpose, owner, environment, or
 other criteria. A resource can have as many as 50 tags.
 }
 \details{
-Each tag consists of a requiredÂ \emph{tag key}Â and an associatedÂ \emph{tag value},
+Each tag consists of a required \emph{tag key} and an associated \emph{tag value},
 both of which you define. A tag key is a general label that acts as a
 category for more specific tag values. A tag value acts as a descriptor
 within a tag key.

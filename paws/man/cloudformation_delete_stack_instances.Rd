@@ -28,15 +28,15 @@ You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 \item{OperationPreferences}{Preferences for how AWS CloudFormation performs this stack set
 operation.}
 
-\item{RetainStacks}{[required] Removes the stack instances from the specified stack set, but doesn\'t
-delete the stacks. You can\'t reassociate a retained stack or add an
+\item{RetainStacks}{[required] Removes the stack instances from the specified stack set, but doesn't
+delete the stacks. You can't reassociate a retained stack or add an
 existing, saved stack to a new stack set.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options}{Stack set operation options}.}
 
 \item{OperationId}{The unique identifier for this stack set operation.
 
-If you don\'t specify an operation ID, the SDK generates one
+If you don't specify an operation ID, the SDK generates one
 automatically.
 
 The operation ID also functions as an idempotency token, to ensure that

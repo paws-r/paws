@@ -18,11 +18,11 @@ only the topic owner and the subscription owner can unsubscribe the
 endpoint. The unsubscribe action requires AWS authentication.}
 }
 \description{
-Verifies an endpoint owner\'s intent to receive messages by validating
+Verifies an endpoint owner's intent to receive messages by validating
 the token sent to the endpoint by an earlier \code{Subscribe} action. If the
 token is valid, the action creates a new subscription and returns its
 Amazon Resource Name (ARN). This call requires an AWS signature only
-when the \code{AuthenticateOnUnsubscribe} flag is set to \"true\".
+when the \code{AuthenticateOnUnsubscribe} flag is set to "true".
 }
 \section{Request syntax}{
 \preformatted{svc$confirm_subscription(

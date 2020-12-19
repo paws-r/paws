@@ -8,7 +8,7 @@ rds_promote_read_replica_db_cluster(DBClusterIdentifier)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The identifier of the DB cluster read replica to promote. This parameter
-isn\'t case-sensitive.
+isn't case-sensitive.
 
 Constraints:
 \itemize{

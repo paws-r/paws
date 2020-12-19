@@ -31,7 +31,7 @@ enabled) replication groups.}
 \item{AutomaticFailoverEnabled}{Determines whether a read replica is automatically promoted to
 read/write primary if the existing primary encounters a failure.
 
-Valid values: \code{true} \\| \code{false}}
+Valid values: \code{true} | \code{false}}
 
 \item{MultiAZEnabled}{A flag indicating if you have Multi-AZ enabled to enhance fault
 tolerance. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html}{Minimizing Downtime: Multi-AZ}.}
@@ -86,7 +86,7 @@ specified as \code{true} for this request.}
 \item{NotificationTopicStatus}{The status of the Amazon SNS notification topic for the replication
 group. Notifications are sent only if the status is \code{active}.
 
-Valid values: \code{active} \\| \code{inactive}}
+Valid values: \code{active} | \code{inactive}}
 
 \item{ApplyImmediately}{If \code{true}, this parameter causes the modifications in this request and
 any pending modifications to be applied, asynchronously and as soon as
@@ -97,7 +97,7 @@ If \code{false}, changes to the nodes in the replication group are applied on
 the next maintenance reboot, or the next failure reboot, whichever
 occurs first.
 
-Valid values: \code{true} \\| \code{false}
+Valid values: \code{true} | \code{false}
 
 Default: \code{false}}
 
@@ -138,8 +138,8 @@ server. This parameter must be specified with the
 \item Must be only printable ASCII characters
 \item Must be at least 16 characters and no more than 128 characters in
 length
-\item Cannot contain any of the following characters: \'/\', \'\"\', or
-\'@\', \'\%\'
+\item Cannot contain any of the following characters: '/', '"', or '@',
+'\%'
 }
 
 For more information, see AUTH password at

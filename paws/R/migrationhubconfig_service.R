@@ -20,7 +20,7 @@ NULL
 #' -   If you call a write API outside the home region, an
 #'     `InvalidInputException` is returned.
 #' 
-#' -   You can call `GetHomeRegion` action to obtain the account\'s
+#' -   You can call `GetHomeRegion` action to obtain the account's
 #'     Migration Hub home region.
 #' 
 #' For specific API usage, see the sections that follow in this AWS

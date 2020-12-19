@@ -24,7 +24,7 @@ the function name, it is limited to 64 characters in length.}
 \item{Qualifier}{[required] The version number or alias name.}
 }
 \description{
-Retrieves the provisioned concurrency configuration for a function\'s
+Retrieves the provisioned concurrency configuration for a function's
 alias or version.
 }
 \section{Request syntax}{

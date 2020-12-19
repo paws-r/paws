@@ -10,7 +10,7 @@ cloudformation_get_template(StackName, ChangeSetName, TemplateStage)
 \item{StackName}{The name or the unique stack ID that is associated with the stack, which
 are not always interchangeable:
 \itemize{
-\item Running stacks: You can specify either the stack\'s name or its
+\item Running stacks: You can specify either the stack's name or its
 unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
 }
@@ -26,7 +26,7 @@ AWS CloudFormation returns. To get the user-submitted template, specify
 \code{Original}. To get the template after AWS CloudFormation has processed
 all transforms, specify \code{Processed}.
 
-If the template doesn\'t include transforms, \code{Original} and \code{Processed}
+If the template doesn't include transforms, \code{Original} and \code{Processed}
 return the same template. By default, AWS CloudFormation specifies
 \code{Original}.}
 }

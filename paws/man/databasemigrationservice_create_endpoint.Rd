@@ -14,8 +14,8 @@ databasemigrationservice_create_endpoint(EndpointIdentifier,
 }
 \arguments{
 \item{EndpointIdentifier}{[required] The database endpoint identifier. Identifiers must begin with a letter
-and must contain only ASCII letters, digits, and hyphens. They can\'t
-end with a hyphen or contain two consecutive hyphens.}
+and must contain only ASCII letters, digits, and hyphens. They can't end
+with a hyphen or contain two consecutive hyphens.}
 
 \item{EndpointType}{[required] The type of endpoint. Valid values are \code{source} and \code{target}.}
 
@@ -46,7 +46,7 @@ in the \emph{AWS Database Migration Service User Guide.}}
 \item{KmsKeyId}{An AWS KMS key identifier that is used to encrypt the connection
 parameters for the endpoint.
 
-If you don\'t specify a value for the \code{KmsKeyId} parameter, then AWS DMS
+If you don't specify a value for the \code{KmsKeyId} parameter, then AWS DMS
 uses your default encryption key.
 
 AWS KMS creates the default encryption key for your AWS account. Your
@@ -82,7 +82,7 @@ the Amazon S3 bucket.
 \item \code{BucketName} - The name of the S3 bucket to use.
 \item \code{CompressionType} - An optional parameter to use GZIP to compress
 the target files. To use GZIP, set this value to \code{NONE} (the
-default). To keep the files uncompressed, don\'t use this value.
+default). To keep the files uncompressed, don't use this value.
 }
 
 Shorthand syntax for these settings is as follows:

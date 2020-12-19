@@ -21,7 +21,7 @@ stream is transfixed; resolution can be up to 480p; and bitrate can be
 up to 1.5 Mbps. Default \code{STANDARD}.}
 }
 \description{
-Updates a channel\'s configuration. This does not affect an ongoing
+Updates a channel's configuration. This does not affect an ongoing
 stream of this channel. You must stop and restart the stream for the
 changes to take effect.
 }

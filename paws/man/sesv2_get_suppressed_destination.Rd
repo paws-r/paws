@@ -8,10 +8,10 @@ suppression list for your account}
 sesv2_get_suppressed_destination(EmailAddress)
 }
 \arguments{
-\item{EmailAddress}{[required] The email address that\'s on the account suppression list.}
+\item{EmailAddress}{[required] The email address that's on the account suppression list.}
 }
 \description{
-Retrieves information about a specific email address that\'s on the
+Retrieves information about a specific email address that's on the
 suppression list for your account.
 }
 \section{Request syntax}{

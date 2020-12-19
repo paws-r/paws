@@ -18,7 +18,7 @@ task, Amazon FSx does the following.
 \details{
 \itemize{
 \item Any files that FSx has already exported are not reverted.
-\item FSx continues to export any files that are \"in-flight\" when the
+\item FSx continues to export any files that are "in-flight" when the
 cancel operation is received.
 \item FSx does not export any files that have not yet been exported.
 }

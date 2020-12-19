@@ -18,7 +18,7 @@ iot_update_domain_configuration(domainConfigurationName,
 }
 \description{
 Updates values stored in the domain configuration. Domain configurations
-for default endpoints can\'t be updated.
+for default endpoints can't be updated.
 }
 \details{
 The domain configuration feature is in public preview and is subject to

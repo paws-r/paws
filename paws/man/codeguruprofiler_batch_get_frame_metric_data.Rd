@@ -37,9 +37,9 @@ not being retained we provide a best effort result by falling back to
 the most granular available resolution after the target resolution.
 There are 3 valid values.
 \itemize{
-\item \code{P1D} --- 1 day
-\item \code{PT1H} --- 1 hour
-\item \code{PT5M} --- 5 minutes
+\item \code{P1D} — 1 day
+\item \code{PT1H} — 1 hour
+\item \code{PT5M} — 5 minutes
 }}
 }
 \description{

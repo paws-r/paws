@@ -36,7 +36,7 @@ must do the following steps:
 }
 
 AWS uses the payment method to charge for any billable (not free
-tier) AWS activity that occurs while the account isn\'t attached to
+tier) AWS activity that occurs while the account isn't attached to
 an organization. Follow the steps at \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization when all required account information has not yet been provided}
 in the \emph{AWS Organizations User Guide.}
 \item You can leave an organization only after you enable IAM user access

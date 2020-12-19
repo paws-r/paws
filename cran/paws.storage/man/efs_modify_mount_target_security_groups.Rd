@@ -26,8 +26,8 @@ target is not \code{deleted}.
 The operation requires permissions for the following actions:
 \itemize{
 \item \code{elasticfilesystem:ModifyMountTargetSecurityGroups} action on the
-mount target\'s file system.
-\item \code{ec2:ModifyNetworkInterfaceAttribute} action on the mount target\'s
+mount target's file system.
+\item \code{ec2:ModifyNetworkInterfaceAttribute} action on the mount target's
 network interface.
 }
 }

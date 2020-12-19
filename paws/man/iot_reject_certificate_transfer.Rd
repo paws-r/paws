@@ -22,7 +22,7 @@ To check for pending certificate transfers, call ListCertificates to
 enumerate your certificates.
 
 This operation can only be called by the transfer destination. After it
-is called, the certificate will be returned to the source\'s account in
+is called, the certificate will be returned to the source's account in
 the INACTIVE state.
 }
 \section{Request syntax}{

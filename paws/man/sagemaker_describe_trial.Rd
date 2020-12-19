@@ -10,7 +10,7 @@ sagemaker_describe_trial(TrialName)
 \item{TrialName}{[required] The name of the trial to describe.}
 }
 \description{
-Provides a list of a trial\'s properties.
+Provides a list of a trial's properties.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_trial(

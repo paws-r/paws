@@ -11,14 +11,14 @@ rds_describe_certificates(CertificateIdentifier, Filters, MaxRecords,
 \arguments{
 \item{CertificateIdentifier}{The user-supplied certificate identifier. If this parameter is
 specified, information for only the identified certificate is returned.
-This parameter isn\'t case-sensitive.
+This parameter isn't case-sensitive.
 
 Constraints:
 \itemize{
 \item Must match an existing CertificateIdentifier.
 }}
 
-\item{Filters}{This parameter isn\'t currently supported.}
+\item{Filters}{This parameter isn't currently supported.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token

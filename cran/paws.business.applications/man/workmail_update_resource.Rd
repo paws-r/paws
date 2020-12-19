@@ -15,7 +15,7 @@ is updated.}
 
 \item{Name}{The name of the resource to be updated.}
 
-\item{BookingOptions}{The resource\'s booking options to be updated.}
+\item{BookingOptions}{The resource's booking options to be updated.}
 }
 \description{
 Updates data for the resource. To have the latest information, it must

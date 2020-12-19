@@ -20,12 +20,12 @@ next page of results, submit another request, and include the value of
 \code{ListVPCAssociationAuthorizations} request.}
 
 \item{MaxResults}{\emph{Optional}: An integer that specifies the maximum number of VPCs that
-you want Amazon Route 53 to return. If you don\'t specify a value for
+you want Amazon Route 53 to return. If you don't specify a value for
 \code{MaxResults}, Route 53 returns up to 50 VPCs per page.}
 }
 \description{
 Gets a list of the VPCs that were created by other accounts and that can
-be associated with a specified hosted zone because you\'ve submitted one
+be associated with a specified hosted zone because you've submitted one
 or more \code{CreateVPCAssociationAuthorization} requests.
 }
 \details{

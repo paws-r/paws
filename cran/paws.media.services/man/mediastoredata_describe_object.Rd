@@ -8,7 +8,8 @@ mediastoredata_describe_object(Path)
 }
 \arguments{
 \item{Path}{[required] The path (including the file name) where the object is stored in the
-container. Format: \\<folder name\\>/\\<folder name\\>/\\<file name\\>}
+container. Format: <folder name>/<folder name>/<file
+name>}
 }
 \description{
 Gets the headers for an object at the specified path.

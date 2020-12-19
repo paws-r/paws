@@ -31,8 +31,8 @@ API to emit metering records. For identical requests, the API is
 idempotent. It simply returns the metering record ID.
 }
 \details{
-MeterUsage is authenticated on the buyer\'s AWS account using
-credentials from the EC2 instance, ECS task, or EKS pod.
+MeterUsage is authenticated on the buyer's AWS account using credentials
+from the EC2 instance, ECS task, or EKS pod.
 }
 \section{Request syntax}{
 \preformatted{svc$meter_usage(

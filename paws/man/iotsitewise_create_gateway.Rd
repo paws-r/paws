@@ -10,7 +10,7 @@ iotsitewise_create_gateway(gatewayName, gatewayPlatform, tags)
 \arguments{
 \item{gatewayName}{[required] A unique, friendly name for the gateway.}
 
-\item{gatewayPlatform}{[required] The gateway\'s platform. You can only specify one platform in a gateway.}
+\item{gatewayPlatform}{[required] The gateway's platform. You can only specify one platform in a gateway.}
 
 \item{tags}{A list of key-value pairs that contain metadata for the gateway. For
 more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html}{Tagging your AWS IoT SiteWise resources}

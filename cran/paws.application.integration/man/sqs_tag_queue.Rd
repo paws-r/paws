@@ -19,8 +19,8 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.
 \details{
 When you use queue tags, keep the following guidelines in mind:
 \itemize{
-\item Adding more than 50 tags to a queue isn\'t recommended.
-\item Tags don\'t have any semantic meaning. Amazon SQS interprets tags as
+\item Adding more than 50 tags to a queue isn't recommended.
+\item Tags don't have any semantic meaning. Amazon SQS interprets tags as
 character strings.
 \item Tags are case-sensitive.
 \item A new tag with a key identical to that of an existing tag overwrites
@@ -30,7 +30,7 @@ the existing tag.
 For a full list of tag restrictions, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues}{Limits Related to Queues}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
-Cross-account permissions don\'t apply to this action. For more
+Cross-account permissions don't apply to this action. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }

@@ -22,7 +22,7 @@ made using the access point.}
 \item{RootDirectory}{Specifies the directory on the Amazon EFS file system that the access
 point exposes as the root directory of your file system to NFS clients
 using the access point. The clients using the access point can only
-access the root directory and below. If the \code{RootDirectory} \\> \code{Path}
+access the root directory and below. If the \code{RootDirectory} > \code{Path}
 specified does not exist, EFS creates it and applies the \code{CreationInfo}
 settings when a client connects to an access point. When specifying a
 \code{RootDirectory}, you need to provide the \code{Path}, and the \code{CreationInfo}
@@ -34,7 +34,7 @@ view into an EFS file system that applies an operating system user and
 group, and a file system path, to any file system request made through
 the access point. The operating system user and group override any
 identity information provided by the NFS client. The file system path is
-exposed as the access point\'s root directory. Applications using the
+exposed as the access point's root directory. Applications using the
 access point can only access data in its own directory and below. To
 learn more, see \href{https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html}{Mounting a File System Using EFS Access Points}.
 }

@@ -44,7 +44,7 @@ For more information about modifying an EBS volume running Windows, see
 }
 \details{
 When you complete a resize operation on your volume, you need to extend
-the volume\'s file-system size to take advantage of the new storage
+the volume's file-system size to take advantage of the new storage
 capacity. For information about extending a Linux file system, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux}{Extending a Linux File System}.
 For information about extending a Windows file system, see \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows}{Extending a Windows File System}.

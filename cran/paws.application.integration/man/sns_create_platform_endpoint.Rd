@@ -35,7 +35,7 @@ returned \code{EndpointArn} to send a message to a mobile app or by the
 \code{Subscribe} action for subscription to a topic. The
 \code{CreatePlatformEndpoint} action is idempotent, so if the requester
 already owns an endpoint with the same device token and attributes, that
-endpoint\'s ARN is returned without creating a new endpoint. For more
+endpoint's ARN is returned without creating a new endpoint. For more
 information, see \href{https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html}{Using Amazon SNS Mobile Push Notifications}.
 }
 \details{

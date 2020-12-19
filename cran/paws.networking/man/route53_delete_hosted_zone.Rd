@@ -24,7 +24,7 @@ routing internet traffic to your website or web application, we
 recommend that you delete resource record sets in the hosted zone
 instead of deleting the hosted zone.
 
-If you delete a hosted zone, you can\'t undelete it. You must create a
+If you delete a hosted zone, you can't undelete it. You must create a
 new hosted zone and update the name servers for your domain
 registration, which can require up to 48 hours to take effect. (If you
 delegated responsibility for a subdomain to a hosted zone and you delete
@@ -42,7 +42,7 @@ for information about how to replace Route 53 name servers with name
 servers for the new DNS service. If the domain is registered with
 another registrar, use the method provided by the registrar to update
 name servers for the domain registration. For more information, perform
-an internet search on \"free DNS service.\"
+an internet search on "free DNS service."
 
 You can delete a hosted zone only if it contains only the default SOA
 record and NS resource record sets. If the hosted zone contains other

@@ -20,7 +20,7 @@ does not succeed, you can pass in the same unique identifier and
 pipeline name combination on a subsequent call to \code{CreatePipeline}.
 \code{CreatePipeline} ensures that if a pipeline already exists with the same
 name and unique identifier, a new pipeline is not created. Instead,
-you\'ll receive the pipeline identifier from the previous attempt. The
+you'll receive the pipeline identifier from the previous attempt. The
 uniqueness of the name and unique identifier combination is scoped to
 the AWS account or IAM user credentials.}
 

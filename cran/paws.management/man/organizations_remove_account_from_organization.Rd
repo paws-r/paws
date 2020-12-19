@@ -17,13 +17,13 @@ string requires exactly 12 digits.}
 Removes the specified account from the organization.
 }
 \details{
-The removed account becomes a standalone account that isn\'t a member of
-any organization. It\'s no longer subject to any policies and is
-responsible for its own bill payments. The organization\'s master
-account is no longer charged for any expenses accrued by the member
-account after it\'s removed from the organization.
+The removed account becomes a standalone account that isn't a member of
+any organization. It's no longer subject to any policies and is
+responsible for its own bill payments. The organization's master account
+is no longer charged for any expenses accrued by the member account
+after it's removed from the organization.
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's master
 account. Member accounts can remove themselves with LeaveOrganization
 instead.
 
@@ -36,8 +36,8 @@ that you want to make standalone, you must accept the end user license
 agreement (EULA), choose a support plan, provide and verify the required
 contact information, and provide a current payment method. AWS uses the
 payment method to charge for any billable (not free tier) AWS activity
-that occurs while the account isn\'t attached to an organization. To
-remove an account that doesn\'t yet have this information, you must sign
+that occurs while the account isn't attached to an organization. To
+remove an account that doesn't yet have this information, you must sign
 in as the member account and follow the steps at \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization when all required account information has not yet been provided}
 in the \emph{AWS Organizations User Guide.}
 }

@@ -13,7 +13,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{Groups}{[required] The ID of one or more of the VPC\'s security groups. You cannot specify
+\item{Groups}{[required] The ID of one or more of the VPC's security groups. You cannot specify
 security groups from a different VPC.}
 
 \item{InstanceId}{[required] The ID of an EC2-Classic instance to link to the ClassicLink-enabled
@@ -23,14 +23,14 @@ VPC.}
 }
 \description{
 Links an EC2-Classic instance to a ClassicLink-enabled VPC through one
-or more of the VPC\'s security groups. You cannot link an EC2-Classic
+or more of the VPC's security groups. You cannot link an EC2-Classic
 instance to more than one VPC at a time. You can only link an instance
-that\'s in the \code{running} state. An instance is automatically unlinked
-from a VPC when it\'s stopped - you can link it to the VPC again when
-you restart it.
+that's in the \code{running} state. An instance is automatically unlinked
+from a VPC when it's stopped - you can link it to the VPC again when you
+restart it.
 }
 \details{
-After you\'ve linked an instance, you cannot change the VPC security
+After you've linked an instance, you cannot change the VPC security
 groups that are associated with it. To change the security groups, you
 must first unlink the instance, and then link it again.
 

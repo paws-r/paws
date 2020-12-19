@@ -69,7 +69,7 @@ Constraints: Value must be \code{1150-65535}
 Default: The same port as the original DB cluster.}
 
 \item{MasterUserPassword}{The new password for the master database user. This password can contain
-any printable ASCII character except \"/\", \"\"\", or \"@\".
+any printable ASCII character except "/", """, or "@".
 
 Constraints: Must contain from 8 to 41 characters.}
 
@@ -119,7 +119,7 @@ For a list of valid engine versions, see CreateDBInstance, or call
 DescribeDBEngineVersions.}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can\'t be deleted when deletion protection is
+enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 }
 \description{

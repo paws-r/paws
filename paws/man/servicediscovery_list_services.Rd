@@ -15,13 +15,13 @@ request to get the next group of results. Specify the value of
 \code{NextToken} from the previous response in the next request.
 
 AWS Cloud Map gets \code{MaxResults} services and then filters them based on
-the specified criteria. It\'s possible that no services in the first
+the specified criteria. It's possible that no services in the first
 \code{MaxResults} services matched the specified criteria but that subsequent
 groups of \code{MaxResults} services do contain services that match the
 criteria.}
 
 \item{MaxResults}{The maximum number of services that you want AWS Cloud Map to return in
-the response to a \code{ListServices} request. If you don\'t specify a value
+the response to a \code{ListServices} request. If you don't specify a value
 for \code{MaxResults}, AWS Cloud Map returns up to 100 services.}
 
 \item{Filters}{A complex type that contains specifications for the namespaces that you

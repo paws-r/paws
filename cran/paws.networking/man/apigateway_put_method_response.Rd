@@ -14,7 +14,7 @@ apigateway_put_method_response(restApiId, resourceId, httpMethod,
 
 \item{httpMethod}{[required] [Required] The HTTP verb of the Method resource.}
 
-\item{statusCode}{[required] [Required] The method response\'s status code.}
+\item{statusCode}{[required] [Required] The method response's status code.}
 
 \item{responseParameters}{A key-value map specifying required or optional response parameters that
 API Gateway can send back to the caller. A key defines a method response
@@ -30,7 +30,7 @@ a JSON expression from the back-end response payload in the form of
 \verb{integration.response.body.\\\{JSON-expression\\\}}, where \code{JSON-expression}
 is a valid JSON expression without the \code{$} prefix.)}
 
-\item{responseModels}{Specifies the Model resources used for the response\'s content type.
+\item{responseModels}{Specifies the Model resources used for the response's content type.
 Response models are represented as a key/value map, with a content type
 as the key and a Model name as the value.}
 }

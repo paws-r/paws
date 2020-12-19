@@ -16,7 +16,7 @@ Gets details for a specific task run on a machine learning transform.
 Machine learning task runs are asynchronous tasks that AWS Glue runs on
 your behalf as part of various machine learning workflows. You can check
 the stats of any task run by calling \code{GetMLTaskRun} with the \code{TaskRunID}
-and its parent transform\'s \code{TransformID}.
+and its parent transform's \code{TransformID}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_ml_task_run(

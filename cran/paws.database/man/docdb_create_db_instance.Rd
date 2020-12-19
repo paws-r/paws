@@ -29,12 +29,12 @@ Valid value: \code{docdb}}
 
 \item{AvailabilityZone}{The Amazon EC2 Availability Zone that the instance is created in.
 
-Default: A random, system-chosen Availability Zone in the endpoint\'s
-AWS Region.
+Default: A random, system-chosen Availability Zone in the endpoint's AWS
+Region.
 
 Example: \verb{us-east-1d}
 
-Constraint: The \code{AvailabilityZone} parameter can\'t be specified if the
+Constraint: The \code{AvailabilityZone} parameter can't be specified if the
 \code{MultiAZ} parameter is set to \code{true}. The specified Availability Zone
 must be in the same AWS Region as the current endpoint.}
 

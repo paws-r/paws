@@ -23,9 +23,8 @@ default is 50.}
 
 \item{nameContains}{Substring to match in channel association names. An association will be
 returned if any part of its name matches the substring. For example,
-\"xyz\" matches both \"xyzabc\" and \"abcxyz.\" To return all bot
-channel associations, use a hyphen (\"-\") as the \code{nameContains}
-parameter.}
+"xyz" matches both "xyzabc" and "abcxyz." To return all bot channel
+associations, use a hyphen ("-") as the \code{nameContains} parameter.}
 }
 \description{
 Returns a list of all of the channels associated with the specified bot.

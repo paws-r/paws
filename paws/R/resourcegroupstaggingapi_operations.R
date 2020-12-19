@@ -7,7 +7,7 @@ NULL
 #'
 #' Describes the status of the `StartReportCreation` operation.
 #' 
-#' You can call this operation only from the organization\'s master account
+#' You can call this operation only from the organization's master account
 #' and from the us-east-1 Region.
 #'
 #' @usage
@@ -48,7 +48,7 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' Policies](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
 #' in the *AWS Organizations User Guide.*
 #' 
-#' You can call this operation only from the organization\'s master account
+#' You can call this operation only from the organization's master account
 #' and from the us-east-1 Region.
 #'
 #' @usage
@@ -69,7 +69,7 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' `ec2:instance` returns only EC2 instances.
 #' 
 #' The string for each service name and resource type is the same as that
-#' embedded in a resource\'s Amazon Resource Name (ARN). Consult the *AWS
+#' embedded in a resource's Amazon Resource Name (ARN). Consult the *AWS
 #' General Reference* for the following:
 #' 
 #' -   For a list of service name strings, see [AWS Service
@@ -152,7 +152,7 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #'     returned. The response includes all tags that are associated with
 #'     the requested resources.
 #' 
-#' -   Information about compliance with the account\'s effective tag
+#' -   Information about compliance with the account's effective tag
 #'     policy. For more information on tag policies, see [Tag
 #'     Policies](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
 #'     in the *AWS Organizations User Guide.*
@@ -180,9 +180,9 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' -   If you *do* specify a TagFilter, the response returns only those
 #'     resources that are currently associated with the specified tag.
 #' 
-#' -   If you *don\'t* specify a TagFilter, the response includes all
+#' -   If you *don't* specify a TagFilter, the response includes all
 #'     resources that were ever associated with tags. Resources that
-#'     currently don\'t have associated tags are shown with an empty tag
+#'     currently don't have associated tags are shown with an empty tag
 #'     set, like this: `"Tags": \\[\\]`.
 #' 
 #' -   If you specify more than one filter in a single request, the
@@ -193,7 +193,7 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #'     the response returns resources that match any of the specified
 #'     values for that key.
 #' 
-#' -   If you don\'t specify any values for a key, the response returns
+#' -   If you don't specify any values for a key, the response returns
 #'     resources that are tagged with that key irrespective of the value.
 #' 
 #'     For example, for filters: filter1 = \{key1, \{value1\}\}, filter2 =
@@ -240,7 +240,7 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' `ec2:instance` returns only EC2 instances.
 #' 
 #' The string for each service name and resource type is the same as that
-#' embedded in a resource\'s Amazon Resource Name (ARN). Consult the *AWS
+#' embedded in a resource's Amazon Resource Name (ARN). Consult the *AWS
 #' General Reference* for the following:
 #' 
 #' -   For a list of service name strings, see [AWS Service
@@ -403,7 +403,7 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
 #' 
 #' `s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv`
 #' 
-#' You can call this operation only from the organization\'s master account
+#' You can call this operation only from the organization's master account
 #' and from the us-east-1 Region.
 #'
 #' @usage

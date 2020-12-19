@@ -13,7 +13,7 @@ mediastore_describe_container(ContainerName)
 Retrieves the properties of the requested container. This request is
 commonly used to retrieve the endpoint of a container. An endpoint is a
 value assigned by the service when a new container is created. A
-container\'s endpoint does not change after it has been assigned. The
+container's endpoint does not change after it has been assigned. The
 \code{DescribeContainer} request returns a single \code{Container} object based on
 \code{ContainerName}. To return all \code{Container} objects that are associated
 with a specified AWS account, use ListContainers.

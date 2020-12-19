@@ -396,7 +396,7 @@ directconnect_allocate_transit_virtual_interface <- function(connectionId, owner
 #' (connectivity to AWS is interrupted). The connection must be hosted on
 #' the same AWS Direct Connect endpoint as the LAG, and its bandwidth must
 #' match the bandwidth for the LAG. You can re-associate a connection
-#' that\'s currently associated with a different LAG; however, if removing
+#' that's currently associated with a different LAG; however, if removing
 #' the connection would cause the original LAG to fall below its setting
 #' for minimum number of operational connections, the request fails.
 #' 
@@ -451,7 +451,7 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 #' aggregation group (LAG) or interconnect. If the target interconnect or
 #' LAG has an existing hosted connection with a conflicting VLAN number or
 #' IP address, the operation fails. This action temporarily interrupts the
-#' hosted connection\'s connectivity to AWS as it is being migrated.
+#' hosted connection's connectivity to AWS as it is being migrated.
 #' 
 #' Intended for use by AWS Direct Connect Partners only.
 #'
@@ -1020,15 +1020,15 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #' Creates an interconnect between an AWS Direct Connect Partner's network
 #' and a specific AWS Direct Connect location
 #'
-#' Creates an interconnect between an AWS Direct Connect Partner\'s network
+#' Creates an interconnect between an AWS Direct Connect Partner's network
 #' and a specific AWS Direct Connect location.
 #' 
 #' An interconnect is a connection that is capable of hosting other
 #' connections. The AWS Direct Connect partner can use an interconnect to
 #' provide AWS Direct Connect hosted connections to customers through their
 #' own network services. Like a standard connection, an interconnect links
-#' the partner\'s network to an AWS Direct Connect location over a standard
-#' Ethernet fiber-optic cable. One end is connected to the partner\'s
+#' the partner's network to an AWS Direct Connect location over a standard
+#' Ethernet fiber-optic cable. One end is connected to the partner's
 #' router, the other to an AWS Direct Connect router.
 #' 
 #' You can automatically add the new interconnect to a link aggregation
@@ -1197,7 +1197,7 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #' Region.
 #' 
 #' Setting the MTU of a virtual interface to 9001 (jumbo frames) can cause
-#' an update to the underlying physical connection if it wasn\'t updated to
+#' an update to the underlying physical connection if it wasn't updated to
 #' support jumbo frames. Updating the connection disrupts network
 #' connectivity for all virtual interfaces associated with the connection
 #' for up to 30 seconds. To check whether your connection supports jumbo
@@ -1334,7 +1334,7 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #' Connect gateway, the association request fails.
 #' 
 #' Setting the MTU of a virtual interface to 8500 (jumbo frames) can cause
-#' an update to the underlying physical connection if it wasn\'t updated to
+#' an update to the underlying physical connection if it wasn't updated to
 #' support jumbo frames. Updating the connection disrupts network
 #' connectivity for all virtual interfaces associated with the connection
 #' for up to 30 seconds. To check whether your connection supports jumbo
@@ -2452,7 +2452,7 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #' 
 #' If disassociating the connection would cause the LAG to fall below its
 #' setting for minimum number of operational connections, the request
-#' fails, except when it\'s the last member of the LAG. If all connections
+#' fails, except when it's the last member of the LAG. If all connections
 #' are disassociated, the LAG continues to exist as an empty LAG with no
 #' physical connections.
 #'
@@ -2848,7 +2848,7 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL)
 #' interface.
 #' 
 #' Setting the MTU of a virtual interface to 9001 (jumbo frames) can cause
-#' an update to the underlying physical connection if it wasn\'t updated to
+#' an update to the underlying physical connection if it wasn't updated to
 #' support jumbo frames. Updating the connection disrupts network
 #' connectivity for all virtual interfaces associated with the connection
 #' for up to 30 seconds. To check whether your connection supports jumbo

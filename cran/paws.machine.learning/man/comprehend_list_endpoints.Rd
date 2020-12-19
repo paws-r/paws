@@ -17,7 +17,7 @@ You can only set one filter at a time.}
 100.}
 }
 \description{
-Gets a list of all existing endpoints that you\'ve created.
+Gets a list of all existing endpoints that you've created.
 }
 \section{Request syntax}{
 \preformatted{svc$list_endpoints(

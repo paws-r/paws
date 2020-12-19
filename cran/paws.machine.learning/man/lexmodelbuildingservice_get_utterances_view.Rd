@@ -26,7 +26,7 @@ to tune the utterances that your bot responds to.
 For example, say that you have created a bot to order flowers. After
 your users have used your bot for a while, use the \code{GetUtterancesView}
 operation to see the requests that they have made and whether they have
-been successful. You might find that the utterance \"I want flowers\" is
+been successful. You might find that the utterance "I want flowers" is
 not being recognized. You could add this utterance to the \code{OrderFlowers}
 intent so that your bot recognizes that utterance.
 

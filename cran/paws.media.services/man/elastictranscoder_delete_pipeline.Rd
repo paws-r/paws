@@ -14,7 +14,7 @@ The DeletePipeline operation removes a pipeline.
 }
 \details{
 You can only delete a pipeline that has never been used or that is not
-currently in use (doesn\'t contain any active jobs). If the pipeline is
+currently in use (doesn't contain any active jobs). If the pipeline is
 currently in use, \code{DeletePipeline} returns an error.
 }
 \section{Request syntax}{

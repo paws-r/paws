@@ -35,9 +35,9 @@ when listing profiles. Defaults to \code{TIMESTAMP_DESCENDING}.}
 aggregation profile collects posted agent profiles for a profiling
 group. There are 3 valid values.
 \itemize{
-\item \code{P1D} --- 1 day
-\item \code{PT1H} --- 1 hour
-\item \code{PT5M} --- 5 minutes
+\item \code{P1D} — 1 day
+\item \code{PT1H} — 1 hour
+\item \code{PT5M} — 5 minutes
 }}
 
 \item{profilingGroupName}{[required] The name of the profiling group.}

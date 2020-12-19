@@ -27,7 +27,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 
 The key policy must meet the following criteria:
 \itemize{
-\item If you don\'t set \code{BypassPolicyLockoutSafetyCheck} to true, the key
+\item If you don't set \code{BypassPolicyLockoutSafetyCheck} to true, the key
 policy must allow the principal that is making the \code{PutKeyPolicy}
 request to make a subsequent \code{PutKeyPolicy} request on the CMK. This
 reduces the risk that the CMK becomes unmanageable. For more

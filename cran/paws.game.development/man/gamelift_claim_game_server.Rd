@@ -2,8 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_claim_game_server}
 \alias{gamelift_claim_game_server}
-\title{THIS ACTION IS PART OF AMAZON GAMELIFT FLEETIQ WITH GAME SERVER GROUPS,
-WHICH IS IN PREVIEW RELEASE AND IS SUBJECT TO CHANGE}
+\title{This action is part of Amazon GameLift FleetIQ with game server groups,
+which is in preview release and is subject to change}
 \usage{
 gamelift_claim_game_server(GameServerGroupName, GameServerId,
   GameServerData)
@@ -32,7 +32,7 @@ gameplay and players. This action is called by a game client or client
 service (such as a matchmaker) to request hosting resources for a new
 game session. In response, GameLift FleetIQ searches for an available
 game server in the specified game server group, places the game server
-in \"claimed\" status for 60 seconds, and returns connection information
+in "claimed" status for 60 seconds, and returns connection information
 back to the requester so that players can connect to the game server.
 
 There are two ways you can claim a game server. For the first option,
@@ -51,10 +51,10 @@ game server at the start of a game, such as a game map or player
 information, you can provide it in your claim request.
 
 When a game server is successfully claimed, connection information is
-returned. A claimed game server\'s utilization status remains AVAILABLE,
+returned. A claimed game server's utilization status remains AVAILABLE,
 while the claim status is set to CLAIMED for up to 60 seconds. This time
 period allows the game server to be prompted to update its status to
-UTILIZED (using UpdateGameServer). If the game server\'s status is not
+UTILIZED (using UpdateGameServer). If the game server's status is not
 updated within 60 seconds, the game server reverts to unclaimed status
 and is available to be claimed by another request.
 

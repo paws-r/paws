@@ -13,8 +13,8 @@ snowball_cancel_job(JobId)
 \description{
 Cancels the specified job. You can only cancel a job before its
 \code{JobState} value changes to \code{PreparingAppliance}. Requesting the
-\code{ListJobs} or \code{DescribeJob} action returns a job\'s \code{JobState} as part
-of the response element data returned.
+\code{ListJobs} or \code{DescribeJob} action returns a job's \code{JobState} as part of
+the response element data returned.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_job(

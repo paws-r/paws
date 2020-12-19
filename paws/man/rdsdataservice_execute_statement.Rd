@@ -40,14 +40,14 @@ Array parameters are not supported.}
 \code{BeginTransaction} operation. Specify the transaction ID of the
 transaction that you want to include the SQL statement in.
 
-If the SQL statement is not part of a transaction, don\'t set this
+If the SQL statement is not part of a transaction, don't set this
 parameter.}
 }
 \description{
 Runs a SQL statement against a database.
 }
 \details{
-If a call isn\'t part of a transaction because it doesn\'t include the
+If a call isn't part of a transaction because it doesn't include the
 \code{transactionID} parameter, changes that result from the call are
 committed automatically.
 

@@ -8,7 +8,7 @@ NULL
 #' The CancelJob operation cancels an unfinished job.
 #' 
 #' You can only cancel a job that has a status of `Submitted`. To prevent a
-#' pipeline from starting to process a job while you\'re getting the job
+#' pipeline from starting to process a job while you're getting the job
 #' identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
 #'
 #' @usage
@@ -459,7 +459,7 @@ elastictranscoder_create_job <- function(PipelineId, Input = NULL, Inputs = NULL
 #' this pipeline.
 #' 
 #' If you use either `s3` or `s3-aws-kms` as your `Encryption:Mode`, you
-#' don\'t need to provide a key with your job because a default key, known
+#' don't need to provide a key with your job because a default key, known
 #' as an AWS-KMS key, is created for you automatically. You need to provide
 #' an AWS-KMS key only if you want to use a non-default AWS-KMS key, or if
 #' you are using an `Encryption:Mode` of `aes-cbc-pkcs7`, `aes-ctr`, or
@@ -568,7 +568,7 @@ elastictranscoder_create_job <- function(PipelineId, Input = NULL, Inputs = NULL
 #' assign to the files.
 #' 
 #' If you specify values for `ContentConfig`, you must also specify values
-#' for `ThumbnailConfig` even if you don\'t want to create thumbnails.
+#' for `ThumbnailConfig` even if you don't want to create thumbnails.
 #' 
 #' If you specify values for `ContentConfig` and `ThumbnailConfig`, omit
 #' the `OutputBucket` object.
@@ -700,7 +700,7 @@ elastictranscoder_create_pipeline <- function(Name, InputBucket, OutputBucket = 
 #' comply with H.264 standards. If your settings are not valid for Elastic
 #' Transcoder, Elastic Transcoder returns an HTTP 400 response
 #' (`ValidationException`) and does not create the preset. If the settings
-#' are valid for Elastic Transcoder but aren\'t strictly compliant with the
+#' are valid for Elastic Transcoder but aren't strictly compliant with the
 #' H.264 standard, Elastic Transcoder creates the preset and returns a
 #' warning message in the response. This helps you determine whether your
 #' settings comply with the H.264 standard while giving you greater
@@ -815,7 +815,7 @@ elastictranscoder_create_preset <- function(Name, Description = NULL, Container,
 #' The DeletePipeline operation removes a pipeline.
 #' 
 #' You can only delete a pipeline that has never been used or that is not
-#' currently in use (doesn\'t contain any active jobs). If the pipeline is
+#' currently in use (doesn't contain any active jobs). If the pipeline is
 #' currently in use, `DeletePipeline` returns an error.
 #'
 #' @usage
@@ -853,10 +853,10 @@ elastictranscoder_delete_pipeline <- function(Id) {
 #' The DeletePreset operation removes a preset that you've added in an AWS
 #' region
 #'
-#' The DeletePreset operation removes a preset that you\'ve added in an AWS
+#' The DeletePreset operation removes a preset that you've added in an AWS
 #' region.
 #' 
-#' You can\'t delete the default presets that are included with Elastic
+#' You can't delete the default presets that are included with Elastic
 #' Transcoder.
 #'
 #' @usage
@@ -1041,7 +1041,7 @@ elastictranscoder_list_pipelines <- function(Ascending = NULL, PageToken = NULL)
 #' region
 #'
 #' The ListPresets operation gets a list of the default presets included
-#' with Elastic Transcoder and the presets that you\'ve added in an AWS
+#' with Elastic Transcoder and the presets that you've added in an AWS
 #' region.
 #'
 #' @usage
@@ -1273,7 +1273,7 @@ elastictranscoder_test_role <- function(Role, InputBucket, OutputBucket, Topics)
 #' this pipeline.
 #' 
 #' If you use either `s3` or `s3-aws-kms` as your `Encryption:Mode`, you
-#' don\'t need to provide a key with your job because a default key, known
+#' don't need to provide a key with your job because a default key, known
 #' as an AWS-KMS key, is created for you automatically. You need to provide
 #' an AWS-KMS key only if you want to use a non-default AWS-KMS key, or if
 #' you are using an `Encryption:Mode` of `aes-cbc-pkcs7`, `aes-ctr`, or
@@ -1378,7 +1378,7 @@ elastictranscoder_test_role <- function(Role, InputBucket, OutputBucket, Topics)
 #' assign to the files.
 #' 
 #' If you specify values for `ContentConfig`, you must also specify values
-#' for `ThumbnailConfig` even if you don\'t want to create thumbnails.
+#' for `ThumbnailConfig` even if you don't want to create thumbnails.
 #' 
 #' If you specify values for `ContentConfig` and `ThumbnailConfig`, omit
 #' the `OutputBucket` object.
@@ -1577,7 +1577,7 @@ elastictranscoder_update_pipeline_notifications <- function(Id, Notifications) {
 #' that the pipeline stops or restarts the processing of jobs.
 #' 
 #' Changing the pipeline status is useful if you want to cancel one or more
-#' jobs. You can\'t cancel jobs after Elastic Transcoder has started
+#' jobs. You can't cancel jobs after Elastic Transcoder has started
 #' processing them; if you pause the pipeline to which you submitted the
 #' jobs, you have more time to get the job IDs for the jobs that you want
 #' to cancel, and to send a CancelJob request.

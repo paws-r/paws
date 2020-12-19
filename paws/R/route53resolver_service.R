@@ -5,7 +5,7 @@ NULL
 #' Amazon Route 53 Resolver
 #'
 #' @description
-#' Here\'s how you set up to query an Amazon Route 53 private hosted zone
+#' Here's how you set up to query an Amazon Route 53 private hosted zone
 #' from your network:
 #' 
 #' 1.  Connect your network to a VPC using AWS Direct Connect or a VPN.
@@ -14,7 +14,7 @@ NULL
 #' 
 #'     `create-resolver-endpoint --name \\[endpoint_name\\] --direction INBOUND --creator-request-id \\[unique_string\\] --security-group-ids \\[security_group_with_inbound_rules\\] --ip-addresses SubnetId=\\[subnet_id\\] SubnetId=\\[subnet_id_in_different_AZ\\]`
 #' 
-#'     Note the resolver endpoint ID that appears in the response. You\'ll
+#'     Note the resolver endpoint ID that appears in the response. You'll
 #'     use it in step 3.
 #' 
 #' 3.  Get the IP addresses for the Resolver endpoints:

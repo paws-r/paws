@@ -2,7 +2,7 @@
 % Please edit documentation in R/frauddetector_operations.R
 \name{frauddetector_update_detector_version_status}
 \alias{frauddetector_update_detector_version_status}
-\title{Updates the detector versionâ€™s status}
+\title{Updates the detector version’s status}
 \usage{
 frauddetector_update_detector_version_status(detectorId,
   detectorVersionId, status)
@@ -15,7 +15,7 @@ frauddetector_update_detector_version_status(detectorId,
 \item{status}{[required] The new status.}
 }
 \description{
-Updates the detector version's status. You can perform the following
+Updates the detector version’s status. You can perform the following
 promotions or demotions using \code{UpdateDetectorVersionStatus}: \code{DRAFT} to
 \code{ACTIVE}, \code{ACTIVE} to \code{INACTIVE}, and \code{INACTIVE} to \code{ACTIVE}.
 }

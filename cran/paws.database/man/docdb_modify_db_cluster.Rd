@@ -69,8 +69,8 @@ Constraints: Must be a value from \code{1150} to \code{65535}.
 Default: The same port as the original cluster.}
 
 \item{MasterUserPassword}{The password for the master database user. This password can contain any
-printable ASCII character except forward slash (/), double quote (\"),
-or the \"at\" symbol (@).
+printable ASCII character except forward slash (/), double quote ("), or
+the "at" symbol (@).
 
 Constraints: Must contain from 8 to 100 characters.}
 

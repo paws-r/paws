@@ -24,12 +24,12 @@ number of new Reserved Instances.
 \item \code{modification-result.target-configuration.instance-type} - The
 instance type of the new Reserved Instances.
 \item \code{modification-result.target-configuration.platform} - The network
-platform of the new Reserved Instances (\code{EC2-Classic} \\| \code{EC2-VPC}).
+platform of the new Reserved Instances (\code{EC2-Classic} | \code{EC2-VPC}).
 \item \code{reserved-instances-id} - The ID of the Reserved Instances modified.
 \item \code{reserved-instances-modification-id} - The ID of the modification
 request.
 \item \code{status} - The status of the Reserved Instances modification request
-(\code{processing} \\| \code{fulfilled} \\| \code{failed}).
+(\code{processing} | \code{fulfilled} | \code{failed}).
 \item \code{status-message} - The reason for the status.
 \item \code{update-date} - The time when the modification request was last
 updated.

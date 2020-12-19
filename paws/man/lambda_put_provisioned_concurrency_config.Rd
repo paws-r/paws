@@ -28,7 +28,7 @@ the function name, it is limited to 64 characters in length.}
 alias.}
 }
 \description{
-Adds a provisioned concurrency configuration to a function\'s alias or
+Adds a provisioned concurrency configuration to a function's alias or
 version.
 }
 \section{Request syntax}{

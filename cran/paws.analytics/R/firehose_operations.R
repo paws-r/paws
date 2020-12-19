@@ -18,9 +18,8 @@ NULL
 #' delivery stream, use DescribeDeliveryStream.
 #' 
 #' If the status of a delivery stream is `CREATING_FAILED`, this status
-#' doesn\'t change, and you can\'t invoke `CreateDeliveryStream` again on
-#' it. However, you can invoke the DeleteDeliveryStream operation to delete
-#' it.
+#' doesn't change, and you can't invoke `CreateDeliveryStream` again on it.
+#' However, you can invoke the DeleteDeliveryStream operation to delete it.
 #' 
 #' A Kinesis Data Firehose delivery stream can be configured to receive
 #' records directly from providers using PutRecord or PutRecordBatch, or it
@@ -33,7 +32,7 @@ NULL
 #' To create a delivery stream with server-side encryption (SSE) enabled,
 #' include DeliveryStreamEncryptionConfigurationInput in your request. This
 #' is optional. You can also invoke StartDeliveryStreamEncryption to turn
-#' on SSE for an existing delivery stream that doesn\'t have SSE enabled.
+#' on SSE for an existing delivery stream that doesn't have SSE enabled.
 #' 
 #' A delivery stream is configured with a single destination: Amazon S3,
 #' Amazon ES, Amazon Redshift, or Splunk. You must specify only one of the
@@ -64,7 +63,7 @@ NULL
 #' -   The compression formats `SNAPPY` or `ZIP` cannot be specified in
 #'     `RedshiftDestinationConfiguration.S3Configuration` because the
 #'     Amazon Redshift `COPY` operation that reads from the S3 bucket
-#'     doesn\'t support these compression formats.
+#'     doesn't support these compression formats.
 #' 
 #' -   We strongly recommend that you use the user name and password you
 #'     provide exclusively with Kinesis Data Firehose, and that the
@@ -500,12 +499,12 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 #' To check the state of a delivery stream, use DescribeDeliveryStream. You
 #' can delete a delivery stream only if it is in one of the following
 #' states: `ACTIVE`, `DELETING`, `CREATING_FAILED`, or `DELETING_FAILED`.
-#' You can\'t delete a delivery stream that is in the `CREATING` state.
+#' You can't delete a delivery stream that is in the `CREATING` state.
 #' While the deletion request is in process, the delivery stream is in the
 #' `DELETING` state.
 #' 
 #' While the delivery stream is in the `DELETING` state, the service might
-#' continue to accept records, but it doesn\'t make any guarantees with
+#' continue to accept records, but it doesn't make any guarantees with
 #' respect to delivering the data. Therefore, as a best practice, first
 #' stop any applications that are sending records before you delete a
 #' delivery stream.
@@ -562,11 +561,11 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #' to be sent to it.
 #' 
 #' If the status of a delivery stream is `CREATING_FAILED`, this status
-#' doesn\'t change, and you can\'t invoke CreateDeliveryStream again on it.
+#' doesn't change, and you can't invoke CreateDeliveryStream again on it.
 #' However, you can invoke the DeleteDeliveryStream operation to delete it.
 #' If the status is `DELETING_FAILED`, you can force deletion by invoking
 #' DeleteDeliveryStream again but with
-#' DeleteDeliveryStreamInput\\$AllowForceDelete set to true.
+#' DeleteDeliveryStreamInput$AllowForceDelete set to true.
 #'
 #' @usage
 #' firehose_describe_delivery_stream(DeliveryStreamName, Limit,
@@ -758,7 +757,7 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #' records to the destination. If the destination is unreachable for more
 #' than 24 hours, the data is no longer available.
 #' 
-#' Don\'t concatenate two or more base64 strings to form the data fields of
+#' Don't concatenate two or more base64 strings to form the data fields of
 #' your records. Instead, concatenate the raw data, then perform base64
 #' encoding.
 #'
@@ -836,7 +835,7 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' `FailedPutCount`, and an array of responses, `RequestResponses`. Even if
 #' the PutRecordBatch call succeeds, the value of `FailedPutCount` may be
 #' greater than 0, indicating that there are records for which the
-#' operation didn\'t succeed. Each entry in the `RequestResponses` array
+#' operation didn't succeed. Each entry in the `RequestResponses` array
 #' provides additional information about the processed record. It directly
 #' correlates with a record in the request array using the same ordering,
 #' from the top to the bottom. The response array always includes the same
@@ -868,7 +867,7 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' records to the destination. If the destination is unreachable for more
 #' than 24 hours, the data is no longer available.
 #' 
-#' Don\'t concatenate two or more base64 strings to form the data fields of
+#' Don't concatenate two or more base64 strings to form the data fields of
 #' your records. Instead, concatenate the raw data, then perform base64
 #' encoding.
 #'
@@ -925,7 +924,7 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 #' after the encryption status changes to `ENABLED` before all records
 #' written to the delivery stream are encrypted. To find out whether a
 #' record or a batch of records was encrypted, check the response elements
-#' PutRecordOutput\\$Encrypted and PutRecordBatchOutput\\$Encrypted,
+#' PutRecordOutput$Encrypted and PutRecordBatchOutput$Encrypted,
 #' respectively.
 #' 
 #' To check the encryption status of a delivery stream, use
@@ -948,10 +947,10 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 #' 
 #' If the encryption status of your delivery stream is `ENABLING_FAILED`,
 #' you can invoke this operation again with a valid CMK. The CMK must be
-#' enabled and the key policy mustn\'t explicitly deny the permission for
+#' enabled and the key policy mustn't explicitly deny the permission for
 #' Kinesis Data Firehose to invoke KMS encrypt and decrypt operations.
 #' 
-#' You can enable SSE for a delivery stream only if it\'s a delivery stream
+#' You can enable SSE for a delivery stream only if it's a delivery stream
 #' that uses `DirectPut` as its source.
 #' 
 #' The `StartDeliveryStreamEncryption` and `StopDeliveryStreamEncryption`
@@ -1012,8 +1011,8 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, Delive
 #' up to 5 seconds after the encryption status changes to `DISABLED` before
 #' all records written to the delivery stream are no longer subject to
 #' encryption. To find out whether a record or a batch of records was
-#' encrypted, check the response elements PutRecordOutput\\$Encrypted and
-#' PutRecordBatchOutput\\$Encrypted, respectively.
+#' encrypted, check the response elements PutRecordOutput$Encrypted and
+#' PutRecordBatchOutput$Encrypted, respectively.
 #' 
 #' To check the encryption state of a delivery stream, use
 #' DescribeDeliveryStream.
@@ -1121,10 +1120,10 @@ firehose_tag_delivery_stream <- function(DeliveryStreamName, Tags) {
 #' Removes tags from the specified delivery stream
 #'
 #' Removes tags from the specified delivery stream. Removed tags are
-#' deleted, and you can\'t recover them after this operation successfully
+#' deleted, and you can't recover them after this operation successfully
 #' completes.
 #' 
-#' If you specify a tag that doesn\'t exist, the operation ignores it.
+#' If you specify a tag that doesn't exist, the operation ignores it.
 #' 
 #' This operation has a limit of five transactions per second per account.
 #'

@@ -21,7 +21,7 @@ specified time period.}
 }
 \description{
 Describes the history for \code{DAILY}, \code{MONTHLY}, and \code{QUARTERLY} budgets.
-Budget history isn\'t available for \code{ANNUAL} budgets.
+Budget history isn't available for \code{ANNUAL} budgets.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_budget_performance_history(

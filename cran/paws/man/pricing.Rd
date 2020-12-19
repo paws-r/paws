@@ -26,7 +26,7 @@ the attribute names for that service. After you have the service code
 and attribute names, you can use \code{GetAttributeValues} to see what values
 are available for an attribute. With the service code and an attribute
 name and value, you can use \code{GetProducts} to find specific products that
-you\'re interested in, such as an \code{AmazonEC2} instance, with a
+you're interested in, such as an \code{AmazonEC2} instance, with a
 \verb{Provisioned IOPS} \code{volumeType}.
 
 Service Endpoint

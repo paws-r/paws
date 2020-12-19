@@ -28,7 +28,7 @@ endpoint.}
 
 \item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of a replication instance.}
 
-\item{MigrationType}{[required] The migration type. Valid values: \code{full-load} \\| \code{cdc} \\|
+\item{MigrationType}{[required] The migration type. Valid values: \code{full-load} | \code{cdc} |
 \code{full-load-and-cdc}}
 
 \item{TableMappings}{[required] The table mappings for the task, in JSON format. For more information,
@@ -43,7 +43,7 @@ in the \emph{AWS Database Migration User Guide.}}
 either CdcStartTime or CdcStartPosition to specify when you want a CDC
 operation to start. Specifying both values results in an error.
 
-Timestamp Example: \\--cdc-start-time "2018-03-08T12:12:12"}
+Timestamp Example: --cdc-start-time “2018-03-08T12:12:12”}
 
 \item{CdcStartPosition}{Indicates when you want a change data capture (CDC) operation to start.
 Use either CdcStartPosition or CdcStartTime to specify when you want a
@@ -51,12 +51,12 @@ CDC operation to start. Specifying both values results in an error.
 
 The value can be in date, checkpoint, or LSN/SCN format.
 
-Date Example: \\--cdc-start-position "2018-03-08T12:12:12"
+Date Example: --cdc-start-position “2018-03-08T12:12:12”
 
-Checkpoint Example: \\--cdc-start-position
-\"checkpoint:V1\\#27\\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\\#0\\#0\\#*\\#0\\#93\"
+Checkpoint Example: --cdc-start-position
+"checkpoint:V1\\#27\\#mysql-bin-changelog.157832:1975:-1:2002:677883278264080:mysql-bin-changelog.157832:1876\\#0\\#0\\#*\\#0\\#93"
 
-LSN Example: \\--cdc-start-position "mysql-bin-changelog.000024:373"
+LSN Example: --cdc-start-position “mysql-bin-changelog.000024:373”
 
 When you use this task setting with a source PostgreSQL database, a
 logical replication slot should already be created and associated with
@@ -67,11 +67,11 @@ more information, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHA
 \item{CdcStopPosition}{Indicates when you want a change data capture (CDC) operation to stop.
 The value can be either server time or commit time.
 
-Server time example: \\--cdc-stop-position
-"server\\_time:3018-02-09T12:12:12"
+Server time example: --cdc-stop-position
+“server\\_time:3018-02-09T12:12:12”
 
-Commit time example: \\--cdc-stop-position "commit\\_time:
-3018-02-09T12:12:12 "}
+Commit time example: --cdc-stop-position “commit\\_time:
+3018-02-09T12:12:12 “}
 
 \item{Tags}{One or more tags to be assigned to the replication task.}
 

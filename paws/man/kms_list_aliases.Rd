@@ -9,7 +9,7 @@ kms_list_aliases(KeyId, Limit, Marker)
 \arguments{
 \item{KeyId}{Lists only aliases that refer to the specified CMK. The value of this
 parameter can be the ID or Amazon Resource Name (ARN) of a CMK in the
-caller\'s account and region. You cannot use an alias name or alias ARN
+caller's account and region. You cannot use an alias name or alias ARN
 in this value.
 
 This parameter is optional. If you omit it, \code{ListAliases} returns all
@@ -27,7 +27,7 @@ with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
 \description{
-Gets a list of aliases in the caller\'s AWS account and region. You
+Gets a list of aliases in the caller's AWS account and region. You
 cannot list aliases in other accounts. For more information about
 aliases, see CreateAlias.
 }

@@ -32,12 +32,12 @@ NULL
 #'     known as a *domain*. All package assets and metadata are stored in
 #'     the domain, but are consumed through repositories. A given package
 #'     asset, such as a Maven JAR file, is stored once per domain, no
-#'     matter how many repositories it\'s present in. All of the assets and
+#'     matter how many repositories it's present in. All of the assets and
 #'     metadata in a domain are encrypted with the same customer master key
 #'     (CMK) stored in AWS Key Management Service (AWS KMS).
 #' 
-#'     Each repository is a member of a single domain and can\'t be moved
-#'     to a different domain.
+#'     Each repository is a member of a single domain and can't be moved to
+#'     a different domain.
 #' 
 #'     The domain allows organizational policy to be applied across
 #'     multiple repositories, such as which accounts can access

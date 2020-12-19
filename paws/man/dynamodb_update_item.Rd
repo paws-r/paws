@@ -101,13 +101,13 @@ attribute. If \code{Value} is a negative number, then it is
 subtracted from the existing attribute.
 
 If you use \code{ADD} to increment or decrement a number value for an
-item that doesn\'t exist before the update, DynamoDB uses \code{0} as
+item that doesn't exist before the update, DynamoDB uses \code{0} as
 the initial value.
 
 Similarly, if you use \code{ADD} for an existing item to increment or
-decrement an attribute value that doesn\'t exist before the
+decrement an attribute value that doesn't exist before the
 update, DynamoDB uses \code{0} as the initial value. For example,
-suppose that the item you want to update doesn\'t have an
+suppose that the item you want to update doesn't have an
 attribute named \code{itemcount}, but you decide to \code{ADD} the number
 \code{3} to this attribute anyway. DynamoDB will create the
 \code{itemcount} attribute, set its initial value to \code{0}, and finally
@@ -223,15 +223,15 @@ For more information on expression attribute values, see \href{https://docs.aws.
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \description{
-Edits an existing item\'s attributes, or adds a new item to the table if
+Edits an existing item's attributes, or adds a new item to the table if
 it does not already exist. You can put, delete, or add attribute values.
 You can also perform a conditional update on an existing item (insert a
-new attribute name-value pair if it doesn\'t exist, or replace an
+new attribute name-value pair if it doesn't exist, or replace an
 existing name-value pair if it has certain expected attribute values).
 }
 \details{
-You can also return the item\'s attribute values in the same
-\code{UpdateItem} operation using the \code{ReturnValues} parameter.
+You can also return the item's attribute values in the same \code{UpdateItem}
+operation using the \code{ReturnValues} parameter.
 }
 \section{Request syntax}{
 \preformatted{svc$update_item(

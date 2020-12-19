@@ -519,7 +519,7 @@ ram_get_resource_share_associations <- function(associationType, resourceShareAr
 
 #' Gets the invitations for resource sharing that you've received
 #'
-#' Gets the invitations for resource sharing that you\'ve received.
+#' Gets the invitations for resource sharing that you've received.
 #'
 #' @usage
 #' ram_get_resource_share_invitations(resourceShareInvitationArns,
@@ -732,13 +732,12 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' @param principals The principals.
 #' @param resourceType The resource type.
 #' 
-#' Valid values: `codebuild:Project` \\| `codebuild:ReportGroup` \\|
-#' `ec2:CapacityReservation` \\| `ec2:DedicatedHost` \\| `ec2:Subnet` \\|
-#' `ec2:TrafficMirrorTarget` \\| `ec2:TransitGateway` \\|
-#' `imagebuilder:Component` \\| `imagebuilder:Image` \\|
-#' `imagebuilder:ImageRecipe` \\| `license-manager:LicenseConfiguration` I
-#' `resource-groups:Group` \\| `rds:Cluster` \\|
-#' `route53resolver:ResolverRule`
+#' Valid values: `codebuild:Project` | `codebuild:ReportGroup` |
+#' `ec2:CapacityReservation` | `ec2:DedicatedHost` | `ec2:Subnet` |
+#' `ec2:TrafficMirrorTarget` | `ec2:TransitGateway` |
+#' `imagebuilder:Component` | `imagebuilder:Image` |
+#' `imagebuilder:ImageRecipe` | `license-manager:LicenseConfiguration` I
+#' `resource-groups:Group` | `rds:Cluster` | `route53resolver:ResolverRule`
 #' @param resourceShareArns The Amazon Resource Names (ARN) of the resource shares.
 #' @param nextToken The token for the next page of results.
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
@@ -879,13 +878,12 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL) {
 #' @param principal The principal.
 #' @param resourceType The resource type.
 #' 
-#' Valid values: `codebuild:Project` \\| `codebuild:ReportGroup` \\|
-#' `ec2:CapacityReservation` \\| `ec2:DedicatedHost` \\| `ec2:Subnet` \\|
-#' `ec2:TrafficMirrorTarget` \\| `ec2:TransitGateway` \\|
-#' `imagebuilder:Component` \\| `imagebuilder:Image` \\|
-#' `imagebuilder:ImageRecipe` \\| `license-manager:LicenseConfiguration` I
-#' `resource-groups:Group` \\| `rds:Cluster` \\|
-#' `route53resolver:ResolverRule`
+#' Valid values: `codebuild:Project` | `codebuild:ReportGroup` |
+#' `ec2:CapacityReservation` | `ec2:DedicatedHost` | `ec2:Subnet` |
+#' `ec2:TrafficMirrorTarget` | `ec2:TransitGateway` |
+#' `imagebuilder:Component` | `imagebuilder:Image` |
+#' `imagebuilder:ImageRecipe` | `license-manager:LicenseConfiguration` I
+#' `resource-groups:Group` | `rds:Cluster` | `route53resolver:ResolverRule`
 #' @param resourceArns The Amazon Resource Names (ARN) of the resources.
 #' @param resourceShareArns The Amazon Resource Names (ARN) of the resource shares.
 #' @param nextToken The token for the next page of results.

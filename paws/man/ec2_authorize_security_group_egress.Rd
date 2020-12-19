@@ -17,7 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GroupId}{[required] The ID of the security group.}
 
-\item{IpPermissions}{The sets of IP permissions. You can\'t specify a destination security
+\item{IpPermissions}{The sets of IP permissions. You can't specify a destination security
 group and a CIDR IP address range in the same set of permissions.}
 
 \item{CidrIp}{Not supported. Use a set of IP permissions to specify the CIDR.}

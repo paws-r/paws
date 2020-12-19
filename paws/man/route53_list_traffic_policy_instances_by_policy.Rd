@@ -68,7 +68,7 @@ using a specify traffic policy version.
 }
 \details{
 After you submit a \code{CreateTrafficPolicyInstance} or an
-\code{UpdateTrafficPolicyInstance} request, there\'s a brief delay while
+\code{UpdateTrafficPolicyInstance} request, there's a brief delay while
 Amazon Route 53 creates the resource record sets that are specified in
 the traffic policy definition. For more information, see the \code{State}
 response element.

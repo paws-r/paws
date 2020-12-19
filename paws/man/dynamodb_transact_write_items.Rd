@@ -56,31 +56,31 @@ transaction cannot exceed 4 MB.
 The actions are completed atomically so that either all of them succeed,
 or all of them fail. They are defined by the following objects:
 \itemize{
-\item \code{Put} Â --- Â  Initiates a \code{PutItem} operation to write a new item.
-This structure specifies the primary key of the item to be written,
-the name of the table to write it in, an optional condition
-expression that must be satisfied for the write to succeed, a list
-of the item\'s attributes, and a field indicating whether to
-retrieve the item\'s attributes if the condition is not met.
-\item \code{Update} Â --- Â  Initiates an \code{UpdateItem} operation to update an
+\item \code{Put}  —   Initiates a \code{PutItem} operation to write a new item. This
+structure specifies the primary key of the item to be written, the
+name of the table to write it in, an optional condition expression
+that must be satisfied for the write to succeed, a list of the
+item's attributes, and a field indicating whether to retrieve the
+item's attributes if the condition is not met.
+\item \code{Update}  —   Initiates an \code{UpdateItem} operation to update an
 existing item. This structure specifies the primary key of the item
 to be updated, the name of the table where it resides, an optional
 condition expression that must be satisfied for the update to
 succeed, an expression that defines one or more attributes to be
-updated, and a field indicating whether to retrieve the item\'s
+updated, and a field indicating whether to retrieve the item's
 attributes if the condition is not met.
-\item \code{Delete} Â --- Â  Initiates a \code{DeleteItem} operation to delete an
+\item \code{Delete}  —   Initiates a \code{DeleteItem} operation to delete an
 existing item. This structure specifies the primary key of the item
 to be deleted, the name of the table where it resides, an optional
 condition expression that must be satisfied for the deletion to
-succeed, and a field indicating whether to retrieve the item\'s
+succeed, and a field indicating whether to retrieve the item's
 attributes if the condition is not met.
-\item \code{ConditionCheck} Â --- Â  Applies a condition to an item that is not
+\item \code{ConditionCheck}  —   Applies a condition to an item that is not
 being modified by the transaction. This structure specifies the
 primary key of the item to be checked, the name of the table where
 it resides, a condition expression that must be satisfied for the
 transaction to succeed, and a field indicating whether to retrieve
-the item\'s attributes if the condition is not met.
+the item's attributes if the condition is not met.
 }
 
 DynamoDB rejects the entire \code{TransactWriteItems} request if any of the

@@ -45,7 +45,7 @@ See \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notif
 for more information.}
 
 \item{AdditionalPlayerCount}{The number of player slots in a match to keep open for future players.
-For example, assume that the configuration\'s rule set specifies a match
+For example, assume that the configuration's rule set specifies a match
 for a single 12-person team. If the additional player count is set to 2,
 only 10 players are initially selected for the match.}
 

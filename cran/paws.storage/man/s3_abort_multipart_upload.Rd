@@ -33,8 +33,8 @@ to abort a given multipart upload multiple times in order to completely
 free all storage consumed by all parts.
 }
 \details{
-To verify that all parts have been removed, so you don\'t get charged
-for the part storage, you should call the ListParts operation and ensure
+To verify that all parts have been removed, so you don't get charged for
+the part storage, you should call the ListParts operation and ensure
 that the parts list is empty.
 
 For information about permissions required to use the multipart upload

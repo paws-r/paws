@@ -11,7 +11,7 @@ datasync_create_location_smb(Subdirectory, ServerHostname, User, Domain,
 \arguments{
 \item{Subdirectory}{[required] The subdirectory in the SMB file system that is used to read data from
 the SMB source location or write data to the SMB destination. The SMB
-path should be a path that\'s exported by the SMB server, or a
+path should be a path that's exported by the SMB server, or a
 subdirectory of that path. The path should be such that it can be
 mounted by other SMB clients in your network.
 

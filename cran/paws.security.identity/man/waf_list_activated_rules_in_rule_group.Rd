@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_list_activated_rules_in_rule_group}
 \alias{waf_list_activated_rules_in_rule_group}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_list_activated_rules_in_rule_group(RuleGroupId, NextMarker, Limit)
 }

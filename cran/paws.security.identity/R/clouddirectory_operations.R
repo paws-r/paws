@@ -1859,7 +1859,7 @@ clouddirectory_get_directory <- function(DirectoryArn) {
 #' ObjectType
 #'
 #' Gets details of the Facet, such as facet name, attributes, Rules, or
-#' `ObjectType`. You can call this on all kinds of schema facets \\--
+#' `ObjectType`. You can call this on all kinds of schema facets --
 #' published, development, or applied.
 #'
 #' @usage
@@ -2808,7 +2808,7 @@ clouddirectory_list_object_parent_paths <- function(DirectoryArn, ObjectReferenc
 #' @param ConsistencyLevel Represents the manner and timing in which the successful write or update
 #' of an object is reflected in a subsequent read operation of that same
 #' object.
-#' @param IncludeAllLinksToEachParent When set to True, returns all ListObjectParentsResponse\\$ParentLinks.
+#' @param IncludeAllLinksToEachParent When set to True, returns all ListObjectParentsResponse$ParentLinks.
 #' There could be multiple links between a parent-child pair.
 #'
 #' @section Request syntax:
@@ -3225,10 +3225,10 @@ clouddirectory_list_typed_link_facet_names <- function(SchemaArn, NextToken = NU
 #'
 #' Lists all policies from the root of the Directory to the object
 #' specified. If there are no policies present, an empty list is returned.
-#' If policies are present, and if some objects don\'t have the policies
+#' If policies are present, and if some objects don't have the policies
 #' attached, it returns the `ObjectIdentifier` for such objects. If
 #' policies are present, it returns `ObjectIdentifier`, `policyId`, and
-#' `policyType`. Paths that don\'t lead to the root from the target object
+#' `policyType`. Paths that don't lead to the root from the target object
 #' are ignored. For more information, see
 #' [Policies](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies).
 #'
@@ -3518,7 +3518,7 @@ clouddirectory_untag_resource <- function(ResourceArn, TagKeys) {
 #' attribute is followed by `AttributeAction`, which specifies the type of
 #' update operation to perform.
 #' @param ObjectType The object type that is associated with the facet. See
-#' CreateFacetRequest\\$ObjectType for more details.
+#' CreateFacetRequest$ObjectType for more details.
 #'
 #' @section Request syntax:
 #' ```
@@ -3583,10 +3583,10 @@ clouddirectory_update_facet <- function(SchemaArn, Name, AttributeUpdates = NULL
 }
 .clouddirectory$operations$update_facet <- clouddirectory_update_facet
 
-#' Updates a given typed linkâ€™s attributes
+#' Updates a given typed link’s attributes
 #'
-#' Updates a given typed link's attributes. Attributes to be updated must
-#' not contribute to the typed link's identity, as defined by its
+#' Updates a given typed link’s attributes. Attributes to be updated must
+#' not contribute to the typed link’s identity, as defined by its
 #' `IdentityAttributeOrder`.
 #'
 #' @usage
@@ -3676,7 +3676,7 @@ clouddirectory_update_link_attributes <- function(DirectoryArn, TypedLinkSpecifi
 
 #' Updates a given object's attributes
 #'
-#' Updates a given object\'s attributes.
+#' Updates a given object's attributes.
 #'
 #' @usage
 #' clouddirectory_update_object_attributes(DirectoryArn, ObjectReference,

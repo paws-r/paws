@@ -55,8 +55,8 @@ NULL
 #' 
 #' Valid intervals are Y (Year), M (Month), W (Week), D (Day), H (Hour),
 #' 30min (30 minutes), 15min (15 minutes), 10min (10 minutes), 5min (5
-#' minutes), and 1min (1 minute). For example, \"D\" indicates every day
-#' and \"15min\" indicates every 15 minutes.
+#' minutes), and 1min (1 minute). For example, "D" indicates every day and
+#' "15min" indicates every 15 minutes.
 #' @param Schema &#91;required&#93; The schema for the dataset. The schema attributes and their order must
 #' match the fields in your data. The dataset `Domain` and `DatasetType`
 #' that you choose determine the minimum required fields in your training
@@ -295,17 +295,17 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' depends on the `DataFrequency` specified when the dataset was created.
 #' The following formats are supported
 #' 
-#' -   \"yyyy-MM-dd\"
+#' -   "yyyy-MM-dd"
 #' 
 #'     For the following data frequencies: Y, M, W, and D
 #' 
-#' -   \"yyyy-MM-dd HH:mm:ss\"
+#' -   "yyyy-MM-dd HH:mm:ss"
 #' 
 #'     For the following data frequencies: H, 30min, 15min, and 1min; and
 #'     optionally, for: Y, M, W, and D
 #' 
-#' If the format isn\'t specified, Amazon Forecast expects the format to be
-#' \"yyyy-MM-dd HH:mm:ss\".
+#' If the format isn't specified, Amazon Forecast expects the format to be
+#' "yyyy-MM-dd HH:mm:ss".
 #' @param Tags The optional metadata that you apply to the dataset import job to help
 #' you categorize and organize them. Each tag consists of a key and an
 #' optional value, both of which you define.
@@ -492,9 +492,9 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name
 #' will match the following conventions:
 #' 
-#' \\<ForecastExportJobName\\>\\_\\<ExportTimestamp\\>\\_\\<PartNumber\\>
+#' &lt;ForecastExportJobName&gt;\\_&lt;ExportTimestamp&gt;\\_&lt;PartNumber&gt;
 #' 
-#' where the \\<ExportTimestamp\\> component is in Java SimpleDateFormat
+#' where the &lt;ExportTimestamp&gt; component is in Java SimpleDateFormat
 #' (yyyy-MM-ddTHH-mm-ssZ).
 #' 
 #' You must specify a DataDestination object that includes an AWS Identity
@@ -621,7 +621,7 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' 
 #' For RELATED\\_TIME\\_SERIES datasets, `CreatePredictor` verifies that the
 #' `DataFrequency` specified when the dataset was created matches the
-#' `ForecastFrequency`. TARGET\\_TIME\\_SERIES datasets don\'t have this
+#' `ForecastFrequency`. TARGET\\_TIME\\_SERIES datasets don't have this
 #' restriction. Amazon Forecast also verifies the delimiter and timestamp
 #' format. For more information, see howitworks-datasets-groups.
 #' 
@@ -690,8 +690,8 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' an algorithm.
 #' 
 #' Set `PerformAutoML` to `true` to have Amazon Forecast perform AutoML.
-#' This is a good option if you aren\'t sure which algorithm is suitable
-#' for your training data. In this case, `PerformHPO` must be false.
+#' This is a good option if you aren't sure which algorithm is suitable for
+#' your training data. In this case, `PerformHPO` must be false.
 #' @param PerformHPO Whether to perform hyperparameter optimization (HPO). HPO finds optimal
 #' hyperparameter values for your training data. The process of performing
 #' HPO is known as running a hyperparameter tuning job.
@@ -716,7 +716,7 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' algorithm. Amazon Forecast evaluates a predictor by splitting a dataset
 #' into training data and testing data. The evaluation parameters define
 #' how to perform the split and the number of iterations.
-#' @param HPOConfig Provides hyperparameter override values for the algorithm. If you don\'t
+#' @param HPOConfig Provides hyperparameter override values for the algorithm. If you don't
 #' provide this parameter, Amazon Forecast uses default values. The
 #' individual algorithms specify which hyperparameters support
 #' hyperparameter optimization (HPO). For more information, see
@@ -874,7 +874,7 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #' 
 #' Forecast does not automatically update any dataset groups that contain
 #' the deleted dataset. In order to update the dataset group, use the
-#' operation, omitting the deleted dataset\'s ARN.
+#' operation, omitting the deleted dataset's ARN.
 #'
 #' @usage
 #' forecastservice_delete_dataset(DatasetArn)
@@ -996,8 +996,8 @@ forecastservice_delete_dataset_import_job <- function(DatasetImportJobArn) {
 #' delete only forecasts that have a status of `ACTIVE` or `CREATE_FAILED`.
 #' To get the status, use the DescribeForecast operation.
 #' 
-#' You can\'t delete a forecast while it is being exported. After a
-#' forecast is deleted, you can no longer query the forecast.
+#' You can't delete a forecast while it is being exported. After a forecast
+#' is deleted, you can no longer query the forecast.
 #'
 #' @usage
 #' forecastservice_delete_forecast(ForecastArn)
@@ -1425,7 +1425,7 @@ forecastservice_describe_predictor <- function(PredictorArn) {
 #' evaluated. The number of backtest windows (`NumberOfBacktestWindows`) is
 #' specified using the EvaluationParameters object, which is optionally
 #' included in the `CreatePredictor` request. If `NumberOfBacktestWindows`
-#' isn\'t specified, the number defaults to one.
+#' isn't specified, the number defaults to one.
 #' 
 #' The parameters of the `filling` method determine which items contribute
 #' to the metrics. If you want all items to contribute, specify `zero`. If

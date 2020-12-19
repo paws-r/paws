@@ -52,7 +52,7 @@ Operations: Equals
 
 *If you filter the response by using the OperationalData operator,
 specify a key-value pair by using the following JSON format:
-\{\"key\":\"key\\_name\",\"value\":\"a\\_value\"\}}
+\{"key":"key\\_name","value":"a\\_value"\}}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the

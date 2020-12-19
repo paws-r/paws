@@ -25,7 +25,7 @@ characters. The default if you do not include this switch parameter is
 that punctuation characters can be included.
 
 The following are the punctuation characters that \emph{can} be included in
-the generated password if you don\'t explicitly exclude them with
+the generated password if you don't explicitly exclude them with
 \code{ExcludeCharacters} or \code{ExcludePunctuation}:
 
 \verb{! \\" # $ \% &amp; \\' ( ) * + , - . / : ; &lt; = &gt; ? @ \\\[ \\\\ \\\] ^ _ \\` \\\{ | \\\} ~}}

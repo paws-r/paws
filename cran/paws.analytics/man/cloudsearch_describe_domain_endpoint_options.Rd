@@ -15,8 +15,8 @@ Processing state) or the current, active configuration. Defaults to
 \code{false}.}
 }
 \description{
-Returns the domain\'s endpoint options, specifically whether all
-requests to the domain must arrive over HTTPS. For more information, see
+Returns the domain's endpoint options, specifically whether all requests
+to the domain must arrive over HTTPS. For more information, see
 \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html}{Configuring Domain Endpoint Options}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }

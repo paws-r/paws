@@ -20,8 +20,8 @@ Note the following:
 }
 \details{
 \itemize{
-\item The AWS account that you\'re transferring the domain to must accept
-the transfer. If the other account doesn\'t accept the transfer
+\item The AWS account that you're transferring the domain to must accept
+the transfer. If the other account doesn't accept the transfer
 within 3 days, we cancel the transfer. See
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_AcceptDomainTransferFromAnotherAwsAccount.html}{AcceptDomainTransferFromAnotherAwsAccount}.
 \item You can cancel the transfer before the other account accepts it. See
@@ -31,11 +31,11 @@ within 3 days, we cancel the transfer. See
 }
 
 When you transfer a domain from one AWS account to another, Route 53
-doesn\'t transfer the hosted zone that is associated with the domain.
-DNS resolution isn\'t affected if the domain and the hosted zone are
-owned by separate accounts, so transferring the hosted zone is optional.
-For information about transferring the hosted zone to another AWS
-account, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-migrating.html}{Migrating a Hosted Zone to a Different AWS Account}
+doesn't transfer the hosted zone that is associated with the domain. DNS
+resolution isn't affected if the domain and the hosted zone are owned by
+separate accounts, so transferring the hosted zone is optional. For
+information about transferring the hosted zone to another AWS account,
+see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-migrating.html}{Migrating a Hosted Zone to a Different AWS Account}
 in the \emph{Amazon Route 53 Developer Guide}.
 
 Use either

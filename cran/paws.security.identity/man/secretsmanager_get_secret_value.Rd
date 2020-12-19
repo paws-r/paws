@@ -14,27 +14,27 @@ You can specify either the Amazon Resource Name (ARN) or the friendly
 name of the secret.
 
 If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too---for example, if you
-don't include the final hyphen and six random characters that Secrets
+complete ARN. You can specify a partial ARN too—for example, if you
+don’t include the final hyphen and six random characters that Secrets
 Manager adds at the end of the ARN when you created the secret. A
 partial ARN match can work as long as it uniquely matches only one
 secret. However, if your secret has a name that ends in a hyphen
 followed by six characters (before Secrets Manager adds the hyphen and
 six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you're
+then those characters cause Secrets Manager to assume that you’re
 specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don't create secret names
+To avoid this situation, we recommend that you don’t create secret names
 ending with a hyphen followed by six characters.
 
 If you specify an incomplete ARN without the random suffix, and instead
-provide the \'friendly name\', you \emph{must} not include the random suffix.
+provide the 'friendly name', you \emph{must} not include the random suffix.
 If you do include the random suffix added by Secrets Manager, you
 receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
 
 \item{VersionId}{Specifies the unique identifier of the version of the secret that you
-want to retrieve. If you specify this parameter then don\'t specify
-\code{VersionStage}. If you don\'t specify either a \code{VersionStage} or
+want to retrieve. If you specify this parameter then don't specify
+\code{VersionStage}. If you don't specify either a \code{VersionStage} or
 \code{VersionId} then the default is to perform the operation on the version
 with the \code{VersionStage} value of \code{AWSCURRENT}.
 
@@ -46,8 +46,8 @@ value with 32 hexadecimal digits.}
 label attached to the version.
 
 Staging labels are used to keep track of different versions during the
-rotation process. If you use this parameter then don\'t specify
-\code{VersionId}. If you don\'t specify either a \code{VersionStage} or
+rotation process. If you use this parameter then don't specify
+\code{VersionId}. If you don't specify either a \code{VersionStage} or
 \code{VersionId}, then the default is to perform the operation on the version
 with the \code{VersionStage} value of \code{AWSCURRENT}.}
 }
@@ -64,7 +64,7 @@ To run this command, you must have the following permissions:
 \item secretsmanager:GetSecretValue
 \item kms:Decrypt - required only if you use a customer-managed AWS KMS
 key to encrypt the secret. You do not need this permission to use
-the account\'s default AWS managed CMK for Secrets Manager.
+the account's default AWS managed CMK for Secrets Manager.
 }
 
 \strong{Related operations}

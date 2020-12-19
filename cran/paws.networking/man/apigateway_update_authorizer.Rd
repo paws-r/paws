@@ -18,9 +18,7 @@ in the order specified in this list.}
 Updates an existing Authorizer resource.
 }
 \details{
-::: \{.seeAlso\}
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html}{AWS CLI}
-:::
 }
 \section{Request syntax}{
 \preformatted{svc$update_authorizer(

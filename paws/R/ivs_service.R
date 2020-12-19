@@ -35,13 +35,13 @@ NULL
 #' (see [Getting Started with Amazon
 #' IVS](https://docs.aws.amazon.com/ivs/latest/userguide/GSIVS.html)):
 #' 
-#' -   Channel --- Stores configuration data related to your live stream.
-#'     You first create a channel and then use the channel's stream key to
+#' -   Channel — Stores configuration data related to your live stream. You
+#'     first create a channel and then use the channel’s stream key to
 #'     start your live stream. See the Channel endpoints for more
 #'     information.
 #' 
-#' -   Stream key --- An identifier assigned by Amazon IVS when you create
-#'     a channel, which is then used to authorize streaming. See the
+#' -   Stream key — An identifier assigned by Amazon IVS when you create a
+#'     channel, which is then used to authorize streaming. See the
 #'     StreamKey endpoints for more information. ***Treat the stream key
 #'     like a secret, since it allows anyone to stream to the channel.***
 #' 
@@ -67,48 +67,48 @@ NULL
 #' 
 #' Channel:
 #' 
-#' -   CreateChannel --- Creates a new channel and an associated stream key
+#' -   CreateChannel — Creates a new channel and an associated stream key
 #'     to start streaming.
 #' 
-#' -   GetChannel --- Gets the channel configuration for a specified
-#'     channel ARN (Amazon Resource Name).
+#' -   GetChannel — Gets the channel configuration for a specified channel
+#'     ARN (Amazon Resource Name).
 #' 
-#' -   BatchGetChannel --- Performs GetChannel on multiple ARNs
+#' -   BatchGetChannel — Performs GetChannel on multiple ARNs
 #'     simultaneously.
 #' 
-#' -   ListChannels --- Gets summary information about channels. This list
+#' -   ListChannels — Gets summary information about channels. This list
 #'     can be filtered to match a specified string.
 #' 
-#' -   UpdateChannel --- Updates a channel\'s configuration. This does not
+#' -   UpdateChannel — Updates a channel's configuration. This does not
 #'     affect an ongoing stream of this channel. You must stop and restart
 #'     the stream for the changes to take effect.
 #' 
-#' -   DeleteChannel --- Deletes a specified channel.
+#' -   DeleteChannel — Deletes a specified channel.
 #' 
 #' StreamKey:
 #' 
-#' -   CreateStreamKey --- Creates a stream key, used to initiate a stream,
+#' -   CreateStreamKey — Creates a stream key, used to initiate a stream,
 #'     for a specified channel ARN.
 #' 
-#' -   GetStreamKey --- Gets stream key information for the specified ARN.
+#' -   GetStreamKey — Gets stream key information for the specified ARN.
 #' 
-#' -   BatchGetStreamKey --- Performs GetStreamKey on multiple ARNs
+#' -   BatchGetStreamKey — Performs GetStreamKey on multiple ARNs
 #'     simultaneously.
 #' 
-#' -   ListStreamKeys --- Gets a list of stream keys. The list can be
+#' -   ListStreamKeys — Gets a list of stream keys. The list can be
 #'     filtered to a particular channel.
 #' 
-#' -   DeleteStreamKey --- Deletes the stream key for a specified ARN, so
-#'     it can no longer be used to stream.
+#' -   DeleteStreamKey — Deletes the stream key for a specified ARN, so it
+#'     can no longer be used to stream.
 #' 
 #' Stream:
 #' 
-#' -   GetStream --- Gets information about the active (live) stream on a
+#' -   GetStream — Gets information about the active (live) stream on a
 #'     specified channel.
 #' 
-#' -   ListStreams --- Gets summary information about live streams.
+#' -   ListStreams — Gets summary information about live streams.
 #' 
-#' -   StopStream --- Disconnects a streamer on a specified channel. This
+#' -   StopStream — Disconnects a streamer on a specified channel. This
 #'     disconnects the incoming RTMP stream from the client. Can be used in
 #'     conjunction with DeleteStreamKey to prevent further streaming to a
 #'     channel.
@@ -120,12 +120,12 @@ NULL
 #' [AWS
 #' Tags](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html):
 #' 
-#' -   TagResource --- Adds or updates tags for an AWS resource with a
+#' -   TagResource — Adds or updates tags for an AWS resource with a
 #'     specified ARN.
 #' 
-#' -   UntagResource --- Removes tags from a resource with a specified ARN.
+#' -   UntagResource — Removes tags from a resource with a specified ARN.
 #' 
-#' -   ListTagsForResource --- Gets information about AWS tags for a
+#' -   ListTagsForResource — Gets information about AWS tags for a
 #'     specified ARN.
 #'
 #' @param

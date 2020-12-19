@@ -59,7 +59,7 @@ migrationhubconfig_create_home_region_control <- function(HomeRegion, Target, Dr
 #'
 #' @param ControlId The `ControlID` is a unique identifier string of your
 #' `HomeRegionControl` object.
-#' @param HomeRegion The name of the home region you\'d like to view.
+#' @param HomeRegion The name of the home region you'd like to view.
 #' @param Target The target parameter specifies the identifier to which the home region
 #' is applied, which is always of type `ACCOUNT`. It applies the home
 #' region to the current `ACCOUNT`.
@@ -102,14 +102,14 @@ migrationhubconfig_describe_home_region_controls <- function(ControlId = NULL, H
 }
 .migrationhubconfig$operations$describe_home_region_controls <- migrationhubconfig_describe_home_region_controls
 
-#' Returns the calling accountâ€™s home region, if configured
+#' Returns the calling account’s home region, if configured
 #'
-#' Returns the calling account's home region, if configured. This API is
+#' Returns the calling account’s home region, if configured. This API is
 #' used by other AWS services to determine the regional endpoint for
 #' calling AWS Application Discovery Service and Migration Hub. You must
 #' call `GetHomeRegion` at least once before you call any other AWS
 #' Application Discovery Service and AWS Migration Hub APIs, to obtain the
-#' account\'s Migration Hub home region.
+#' account's Migration Hub home region.
 #'
 #' @usage
 #' migrationhubconfig_get_home_region()

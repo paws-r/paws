@@ -13,7 +13,7 @@ lexruntimeservice_post_content(botName, botAlias, userId,
 \item{botAlias}{[required] Alias of the Amazon Lex bot.}
 
 \item{userId}{[required] The ID of the client application user. Amazon Lex uses this to identify
-a user\'s conversation with your bot. At runtime, each request must
+a user's conversation with your bot. At runtime, each request must
 contain the \code{userID} field.
 
 To decide the user ID to use for your application, consider the
@@ -27,8 +27,8 @@ continue on another device, use a user-specific identifier.
 \item If you want the same user to be able to have two independent
 conversations on two different devices, choose a device-specific
 identifier.
-\item A user can\'t have two independent conversations with two different
-versions of the same bot. For example, a user can\'t have a
+\item A user can't have two independent conversations with two different
+versions of the same bot. For example, a user can't have a
 conversation with the PROD and BETA versions of the same bot. If you
 anticipate that a user will need to have conversation with two
 different versions, for example, while testing, include the bot
@@ -51,7 +51,7 @@ application. The value must be a JSON serialized and base64 encoded map
 with string keys and values. The total size of the \code{requestAttributes}
 and \code{sessionAttributes} headers is limited to 12 KB.
 
-The namespace \verb{x-amz-lex:} is reserved for special attributes. Don\'t
+The namespace \verb{x-amz-lex:} is reserved for special attributes. Don't
 create any request attributes with the prefix \verb{x-amz-lex:}.
 
 For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs}{Setting Request Attributes}.}
@@ -125,15 +125,15 @@ telephone audio applications.
 In response, Amazon Lex returns the next message to convey to the user.
 Consider the following example messages:
 \itemize{
-\item For a user input \"I would like a pizza,\" Amazon Lex might return a
+\item For a user input "I would like a pizza," Amazon Lex might return a
 response with a message eliciting slot data (for example,
-\code{PizzaSize}): \"What size pizza would you like?\".
+\code{PizzaSize}): "What size pizza would you like?".
 \item After the user provides all of the pizza order information, Amazon
 Lex might return a response with a message to get user confirmation:
-\"Order the pizza?\".
-\item After the user replies \"Yes\" to the confirmation prompt, Amazon
-Lex might return a conclusion statement: \"Thank you, your cheese
-pizza has been ordered.\".
+"Order the pizza?".
+\item After the user replies "Yes" to the confirmation prompt, Amazon Lex
+might return a conclusion statement: "Thank you, your cheese pizza
+has been ordered.".
 }
 
 Not all Amazon Lex messages require a response from the user. For

@@ -20,9 +20,9 @@ Retrieves AWS Organizations-related information about the specified
 account.
 }
 \details{
-This operation can be called only from the organization\'s master
-account or by a member account that is a delegated administrator for an
-AWS service.
+This operation can be called only from the organization's master account
+or by a member account that is a delegated administrator for an AWS
+service.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_account(

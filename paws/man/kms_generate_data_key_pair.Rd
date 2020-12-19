@@ -79,7 +79,7 @@ cannot use an asymmetric CMK or a CMK in a custom key store. To get the
 type and origin of your CMK, use the DescribeKey operation.
 
 If you are using the data key pair to encrypt data, or for any operation
-where you don\'t immediately need a private key, consider using the
+where you don't immediately need a private key, consider using the
 GenerateDataKeyPairWithoutPlaintext operation.
 \code{GenerateDataKeyPairWithoutPlaintext} returns a plaintext public key and
 an encrypted private key, but omits the plaintext private key that you

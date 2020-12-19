@@ -20,7 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the
 instance has been unlinked, the VPC security groups are no longer
 associated with it. An instance is automatically unlinked from a VPC
-when it\'s stopped.
+when it's stopped.
 }
 \section{Request syntax}{
 \preformatted{svc$detach_classic_link_vpc(

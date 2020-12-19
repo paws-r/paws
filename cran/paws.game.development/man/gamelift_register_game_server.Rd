@@ -2,8 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_register_game_server}
 \alias{gamelift_register_game_server}
-\title{THIS ACTION IS PART OF AMAZON GAMELIFT FLEETIQ WITH GAME SERVER GROUPS,
-WHICH IS IN PREVIEW RELEASE AND IS SUBJECT TO CHANGE}
+\title{This action is part of Amazon GameLift FleetIQ with game server groups,
+which is in preview release and is subject to change}
 \usage{
 gamelift_register_game_server(GameServerGroupName, GameServerId,
   InstanceId, ConnectionInfo, GameServerData, CustomSortKey, Tags)

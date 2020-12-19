@@ -12,13 +12,13 @@ rds_delete_db_parameter_group(DBParameterGroupName)
 Constraints:
 \itemize{
 \item Must be the name of an existing DB parameter group
-\item You can\'t delete a default DB parameter group
-\item Can\'t be associated with any DB instances
+\item You can't delete a default DB parameter group
+\item Can't be associated with any DB instances
 }}
 }
 \description{
 Deletes a specified DB parameter group. The DB parameter group to be
-deleted can\'t be associated with any DB instances.
+deleted can't be associated with any DB instances.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_db_parameter_group(

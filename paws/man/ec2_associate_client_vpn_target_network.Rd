@@ -30,9 +30,9 @@ subnets to provide Availability Zone redundancy.
 \details{
 If you specified a VPC when you created the Client VPN endpoint or if
 you have previous subnet associations, the specified subnet must be in
-the same VPC. To specify a subnet that\'s in a different VPC, you must
+the same VPC. To specify a subnet that's in a different VPC, you must
 first modify the Client VPN endpoint (ModifyClientVpnEndpoint) and
-change the VPC that\'s associated with it.
+change the VPC that's associated with it.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_client_vpn_target_network(

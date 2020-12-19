@@ -11,7 +11,8 @@ NULL
 #' mediastoredata_delete_object(Path)
 #'
 #' @param Path &#91;required&#93; The path (including the file name) where the object is stored in the
-#' container. Format: \\<folder name\\>/\\<folder name\\>/\\<file name\\>
+#' container. Format: &lt;folder name&gt;/&lt;folder name&gt;/&lt;file
+#' name&gt;
 #'
 #' @section Request syntax:
 #' ```
@@ -48,7 +49,8 @@ mediastoredata_delete_object <- function(Path) {
 #' mediastoredata_describe_object(Path)
 #'
 #' @param Path &#91;required&#93; The path (including the file name) where the object is stored in the
-#' container. Format: \\<folder name\\>/\\<folder name\\>/\\<file name\\>
+#' container. Format: &lt;folder name&gt;/&lt;folder name&gt;/&lt;file
+#' name&gt;
 #'
 #' @section Request syntax:
 #' ```
@@ -79,15 +81,16 @@ mediastoredata_describe_object <- function(Path) {
 
 #' Downloads the object at the specified path
 #'
-#' Downloads the object at the specified path. If the object's upload
+#' Downloads the object at the specified path. If the object’s upload
 #' availability is set to `streaming`, AWS Elemental MediaStore downloads
-#' the object even if it's still uploading the object.
+#' the object even if it’s still uploading the object.
 #'
 #' @usage
 #' mediastoredata_get_object(Path, Range)
 #'
 #' @param Path &#91;required&#93; The path (including the file name) where the object is stored in the
-#' container. Format: \\<folder name\\>/\\<folder name\\>/\\<file name\\>
+#' container. Format: &lt;folder name&gt;/&lt;folder name&gt;/&lt;file
+#' name&gt;
 #' 
 #' For example, to upload the file `mlaw.avi` to the folder path
 #' `premium\\canada` in the container `movies`, enter the path
@@ -95,7 +98,7 @@ mediastoredata_describe_object <- function(Path) {
 #' 
 #' Do not include the container name in this path.
 #' 
-#' If the path includes any folders that don\'t exist yet, the service
+#' If the path includes any folders that don't exist yet, the service
 #' creates them. For example, suppose you have an existing `premium/usa`
 #' subfolder. If you specify `premium/canada`, the service creates a
 #' `canada` subfolder in the `premium` folder. You then have two
@@ -155,8 +158,8 @@ mediastoredata_get_object <- function(Path, Range = NULL) {
 #' @usage
 #' mediastoredata_list_items(Path, MaxResults, NextToken)
 #'
-#' @param Path The path in the container from which to retrieve items. Format: \\<folder
-#' name\\>/\\<folder name\\>/\\<file name\\>
+#' @param Path The path in the container from which to retrieve items. Format:
+#' &lt;folder name&gt;/&lt;folder name&gt;/&lt;file name&gt;
 #' @param MaxResults The maximum number of results to return per API request. For example,
 #' you submit a `ListItems` request with `MaxResults` set at 500. Although
 #' 2,000 items match your request, the service returns no more than the
@@ -215,7 +218,8 @@ mediastoredata_list_items <- function(Path = NULL, MaxResults = NULL, NextToken 
 #'
 #' @param Body &#91;required&#93; The bytes to be stored.
 #' @param Path &#91;required&#93; The path (including the file name) where the object is stored in the
-#' container. Format: \\<folder name\\>/\\<folder name\\>/\\<file name\\>
+#' container. Format: &lt;folder name&gt;/&lt;folder name&gt;/&lt;file
+#' name&gt;
 #' 
 #' For example, to upload the file `mlaw.avi` to the folder path
 #' `premium\\canada` in the container `movies`, enter the path
@@ -223,7 +227,7 @@ mediastoredata_list_items <- function(Path = NULL, MaxResults = NULL, NextToken 
 #' 
 #' Do not include the container name in this path.
 #' 
-#' If the path includes any folders that don\'t exist yet, the service
+#' If the path includes any folders that don't exist yet, the service
 #' creates them. For example, suppose you have an existing `premium/usa`
 #' subfolder. If you specify `premium/canada`, the service creates a
 #' `canada` subfolder in the `premium` folder. You then have two
@@ -242,7 +246,7 @@ mediastoredata_list_items <- function(Path = NULL, MaxResults = NULL, NextToken 
 #' omit an extension.
 #' @param ContentType The content type of the object.
 #' @param CacheControl An optional `CacheControl` header that allows the caller to control the
-#' object\'s cache behavior. Headers can be passed in as specified in the
+#' object's cache behavior. Headers can be passed in as specified in the
 #' HTTP at
 #' <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9>.
 #' 

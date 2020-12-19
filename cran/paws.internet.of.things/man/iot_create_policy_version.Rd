@@ -25,10 +25,9 @@ DeletePolicyVersion to delete an existing version before you create a
 new one.
 }
 \details{
-Optionally, you can set the new version as the policy\'s default
-version. The default version is the operative version (that is, the
-version that is in effect for the certificates to which the policy is
-attached).
+Optionally, you can set the new version as the policy's default version.
+The default version is the operative version (that is, the version that
+is in effect for the certificates to which the policy is attached).
 }
 \section{Request syntax}{
 \preformatted{svc$create_policy_version(

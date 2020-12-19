@@ -23,7 +23,7 @@ intend to use again, you should also delete the following:
 prefix \verb{cwsyn-<i>MyCanaryName</i> }.
 \item The CloudWatch alarms created for this canary. These alarms have a
 name of \verb{Synthetics-SharpDrop-Alarm-<i>MyCanaryName</i> }.
-\item Amazon S3 objects and buckets, such as the canary\'s artifact
+\item Amazon S3 objects and buckets, such as the canary's artifact
 location.
 \item IAM roles created for the canary. If they were created in the
 console, these roles have the name

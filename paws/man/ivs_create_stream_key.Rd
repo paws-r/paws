@@ -10,7 +10,7 @@ ivs_create_stream_key(channelArn, tags)
 \arguments{
 \item{channelArn}{[required] ARN of the channel for which to create the stream key.}
 
-\item{tags}{See Channel\\$tags.}
+\item{tags}{See Channel$tags.}
 }
 \description{
 Creates a stream key, used to initiate a stream, for a specified channel

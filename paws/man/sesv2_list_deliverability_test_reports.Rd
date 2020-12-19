@@ -21,7 +21,7 @@ The value you specify has to be at least 0, and can be no more than
 1000.}
 }
 \description{
-Show a list of the predictive inbox placement tests that you\'ve
+Show a list of the predictive inbox placement tests that you've
 performed, regardless of their statuses. For predictive inbox placement
 tests that are complete, you can use the \code{GetDeliverabilityTestReport}
 operation to view the results.

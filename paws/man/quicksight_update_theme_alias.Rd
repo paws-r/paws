@@ -8,7 +8,7 @@ quicksight_update_theme_alias(AwsAccountId, ThemeId, AliasName,
   ThemeVersionNumber)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme alias that you\'re
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme alias that you're
 updating.}
 
 \item{ThemeId}{[required] The ID for the theme.}

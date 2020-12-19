@@ -32,7 +32,7 @@ consumer.
 }
 
 The length constraint applies only to the full ARN. If you specify only
-the function name, it\'s limited to 64 characters in length.}
+the function name, it's limited to 64 characters in length.}
 
 \item{Enabled}{Disables the event source mapping to pause polling and invocation.}
 

@@ -11,7 +11,7 @@ chime_create_user(AccountId, Username, Email, UserType)
 
 \item{Username}{The user name.}
 
-\item{Email}{The user\'s email address.}
+\item{Email}{The user's email address.}
 
 \item{UserType}{The user type.}
 }

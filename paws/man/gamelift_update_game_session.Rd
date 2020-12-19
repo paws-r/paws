@@ -20,9 +20,9 @@ names do not need to be unique.}
 
 \item{ProtectionPolicy}{Game session protection policy to apply to this game session only.
 \itemize{
-\item \strong{NoProtection} \\-- The game session can be terminated during a
+\item \strong{NoProtection} -- The game session can be terminated during a
 scale-down event.
-\item \strong{FullProtection} \\-- If the game session is in an \code{ACTIVE} status,
+\item \strong{FullProtection} -- If the game session is in an \code{ACTIVE} status,
 it cannot be terminated during a scale-down event.
 }}
 }

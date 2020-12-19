@@ -56,7 +56,7 @@ a positive value.
 Required if the policy type is \code{SimpleScaling}. (Not used with any other
 policy type.)}
 
-\item{Cooldown}{The duration of the policy\'s cooldown period, in seconds. When a
+\item{Cooldown}{The duration of the policy's cooldown period, in seconds. When a
 cooldown period is specified here, it overrides the default cooldown
 period defined for the Auto Scaling group.
 

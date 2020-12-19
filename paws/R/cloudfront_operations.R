@@ -5,11 +5,11 @@ NULL
 
 #' Creates a new origin access identity
 #'
-#' Creates a new origin access identity. If you\'re using Amazon S3 for
-#' your origin, you can use an origin access identity to require users to
-#' access your content using a CloudFront URL instead of the Amazon S3 URL.
-#' For more information about how to use origin access identities, see
-#' [Serving Private Content through
+#' Creates a new origin access identity. If you're using Amazon S3 for your
+#' origin, you can use an origin access identity to require users to access
+#' your content using a CloudFront URL instead of the Amazon S3 URL. For
+#' more information about how to use origin access identities, see [Serving
+#' Private Content through
 #' CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
 #' in the *Amazon CloudFront Developer Guide*.
 #'
@@ -71,7 +71,7 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' @usage
 #' cloudfront_create_distribution(DistributionConfig)
 #'
-#' @param DistributionConfig &#91;required&#93; The distribution\'s configuration information.
+#' @param DistributionConfig &#91;required&#93; The distribution's configuration information.
 #'
 #' @section Request syntax:
 #' ```
@@ -350,7 +350,7 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #' @usage
 #' cloudfront_create_distribution_with_tags(DistributionConfigWithTags)
 #'
-#' @param DistributionConfigWithTags &#91;required&#93; The distribution\'s configuration information.
+#' @param DistributionConfigWithTags &#91;required&#93; The distribution's configuration information.
 #'
 #' @section Request syntax:
 #' ```
@@ -760,7 +760,7 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #' @usage
 #' cloudfront_create_invalidation(DistributionId, InvalidationBatch)
 #'
-#' @param DistributionId &#91;required&#93; The distribution\'s id.
+#' @param DistributionId &#91;required&#93; The distribution's id.
 #' @param InvalidationBatch &#91;required&#93; The batch information for the invalidation.
 #'
 #' @section Request syntax:
@@ -873,14 +873,13 @@ cloudfront_create_public_key <- function(PublicKeyConfig) {
 #' delete one or more values for an element that accepts multiple values,
 #' for example, CNAMEs and trusted signers. Our changes for the 2012-05-05
 #' release are intended to prevent these accidental deletions and to notify
-#' you when there\'s a mismatch between the number of values you say
-#' you\'re specifying in the `Quantity` element and the number of values
-#' specified.
+#' you when there's a mismatch between the number of values you say you're
+#' specifying in the `Quantity` element and the number of values specified.
 #'
 #' @usage
 #' cloudfront_create_streaming_distribution(StreamingDistributionConfig)
 #'
-#' @param StreamingDistributionConfig &#91;required&#93; The streaming distribution\'s configuration information.
+#' @param StreamingDistributionConfig &#91;required&#93; The streaming distribution's configuration information.
 #'
 #' @section Request syntax:
 #' ```
@@ -944,7 +943,7 @@ cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig
 #' cloudfront_create_streaming_distribution_with_tags(
 #'   StreamingDistributionConfigWithTags)
 #'
-#' @param StreamingDistributionConfigWithTags &#91;required&#93; The streaming distribution\'s configuration information.
+#' @param StreamingDistributionConfigWithTags &#91;required&#93; The streaming distribution's configuration information.
 #'
 #' @section Request syntax:
 #' ```
@@ -1017,7 +1016,7 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
 #' @usage
 #' cloudfront_delete_cloud_front_origin_access_identity(Id, IfMatch)
 #'
-#' @param Id &#91;required&#93; The origin access identity\'s ID.
+#' @param Id &#91;required&#93; The origin access identity's ID.
 #' @param IfMatch The value of the `ETag` header you received from a previous `GET` or
 #' `PUT` request. For example: `E2QWRUHAPOMQZL`.
 #'
@@ -1290,7 +1289,7 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 #' @usage
 #' cloudfront_get_cloud_front_origin_access_identity(Id)
 #'
-#' @param Id &#91;required&#93; The identity\'s ID.
+#' @param Id &#91;required&#93; The identity's ID.
 #'
 #' @section Request syntax:
 #' ```
@@ -1326,7 +1325,7 @@ cloudfront_get_cloud_front_origin_access_identity <- function(Id) {
 #' @usage
 #' cloudfront_get_cloud_front_origin_access_identity_config(Id)
 #'
-#' @param Id &#91;required&#93; The identity\'s ID.
+#' @param Id &#91;required&#93; The identity's ID.
 #'
 #' @section Request syntax:
 #' ```
@@ -1362,7 +1361,7 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
 #' @usage
 #' cloudfront_get_distribution(Id)
 #'
-#' @param Id &#91;required&#93; The distribution\'s ID. If the ID is empty, an empty distribution
+#' @param Id &#91;required&#93; The distribution's ID. If the ID is empty, an empty distribution
 #' configuration is returned.
 #'
 #' @section Request syntax:
@@ -1399,7 +1398,7 @@ cloudfront_get_distribution <- function(Id) {
 #' @usage
 #' cloudfront_get_distribution_config(Id)
 #'
-#' @param Id &#91;required&#93; The distribution\'s ID. If the ID is empty, an empty distribution
+#' @param Id &#91;required&#93; The distribution's ID. If the ID is empty, an empty distribution
 #' configuration is returned.
 #'
 #' @section Request syntax:
@@ -1581,7 +1580,7 @@ cloudfront_get_field_level_encryption_profile_config <- function(Id) {
 #' @usage
 #' cloudfront_get_invalidation(DistributionId, Id)
 #'
-#' @param DistributionId &#91;required&#93; The distribution\'s ID.
+#' @param DistributionId &#91;required&#93; The distribution's ID.
 #' @param Id &#91;required&#93; The identifier for the invalidation request, for example,
 #' `IDFDVBD632BHDS5`.
 #'
@@ -1694,7 +1693,7 @@ cloudfront_get_public_key_config <- function(Id) {
 #' @usage
 #' cloudfront_get_streaming_distribution(Id)
 #'
-#' @param Id &#91;required&#93; The streaming distribution\'s ID.
+#' @param Id &#91;required&#93; The streaming distribution's ID.
 #'
 #' @section Request syntax:
 #' ```
@@ -1730,7 +1729,7 @@ cloudfront_get_streaming_distribution <- function(Id) {
 #' @usage
 #' cloudfront_get_streaming_distribution_config(Id)
 #'
-#' @param Id &#91;required&#93; The streaming distribution\'s ID.
+#' @param Id &#91;required&#93; The streaming distribution's ID.
 #'
 #' @section Request syntax:
 #' ```
@@ -1769,7 +1768,7 @@ cloudfront_get_streaming_distribution_config <- function(Id) {
 #' @param Marker Use this when paginating results to indicate where to begin in your list
 #' of origin access identities. The results include identities in the list
 #' that occur after the marker. To get the next page of results, set the
-#' `Marker` to the value of the `NextMarker` from the current page\'s
+#' `Marker` to the value of the `NextMarker` from the current page's
 #' response (which is also the ID of the last identity on that page).
 #' @param MaxItems The maximum number of origin access identities you want in the response
 #' body.
@@ -1812,7 +1811,7 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
 #' @param Marker Use this when paginating results to indicate where to begin in your list
 #' of distributions. The results include distributions in the list that
 #' occur after the marker. To get the next page of results, set the
-#' `Marker` to the value of the `NextMarker` from the current page\'s
+#' `Marker` to the value of the `NextMarker` from the current page's
 #' response (which is also the ID of the last distribution on that page).
 #' @param MaxItems The maximum number of distributions you want in the response body.
 #'
@@ -1862,8 +1861,8 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #' @param MaxItems The maximum number of distributions that you want CloudFront to return
 #' in the response body. The maximum and default values are both 100.
 #' @param WebACLId &#91;required&#93; The ID of the AWS WAF web ACL that you want to list the associated
-#' distributions. If you specify \"null\" for the ID, the request returns a
-#' list of the distributions that aren\'t associated with a web ACL.
+#' distributions. If you specify "null" for the ID, the request returns a
+#' list of the distributions that aren't associated with a web ACL.
 #'
 #' @section Request syntax:
 #' ```
@@ -1906,7 +1905,7 @@ cloudfront_list_distributions_by_web_acl_id <- function(Marker = NULL, MaxItems 
 #' @param Marker Use this when paginating results to indicate where to begin in your list
 #' of configurations. The results include configurations in the list that
 #' occur after the marker. To get the next page of results, set the
-#' `Marker` to the value of the `NextMarker` from the current page\'s
+#' `Marker` to the value of the `NextMarker` from the current page's
 #' response (which is also the ID of the last configuration on that page).
 #' @param MaxItems The maximum number of field-level encryption configurations you want in
 #' the response body.
@@ -1951,7 +1950,7 @@ cloudfront_list_field_level_encryption_configs <- function(Marker = NULL, MaxIte
 #' @param Marker Use this when paginating results to indicate where to begin in your list
 #' of profiles. The results include profiles in the list that occur after
 #' the marker. To get the next page of results, set the `Marker` to the
-#' value of the `NextMarker` from the current page\'s response (which is
+#' value of the `NextMarker` from the current page's response (which is
 #' also the ID of the last profile on that page).
 #' @param MaxItems The maximum number of field-level encryption profiles you want in the
 #' response body.
@@ -1991,14 +1990,14 @@ cloudfront_list_field_level_encryption_profiles <- function(Marker = NULL, MaxIt
 #' @usage
 #' cloudfront_list_invalidations(DistributionId, Marker, MaxItems)
 #'
-#' @param DistributionId &#91;required&#93; The distribution\'s ID.
+#' @param DistributionId &#91;required&#93; The distribution's ID.
 #' @param Marker Use this parameter when paginating results to indicate where to begin in
 #' your list of invalidation batches. Because the results are returned in
 #' decreasing order from most recent to oldest, the most recent results are
 #' on the first page, the second page will contain earlier results, and so
 #' on. To get the next page of results, set `Marker` to the value of the
-#' `NextMarker` from the current page\'s response. This value is the same
-#' as the ID of the last invalidation batch on that page.
+#' `NextMarker` from the current page's response. This value is the same as
+#' the ID of the last invalidation batch on that page.
 #' @param MaxItems The maximum number of invalidation batches that you want in the response
 #' body.
 #'
@@ -2042,8 +2041,8 @@ cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItem
 #' @param Marker Use this when paginating results to indicate where to begin in your list
 #' of public keys. The results include public keys in the list that occur
 #' after the marker. To get the next page of results, set the `Marker` to
-#' the value of the `NextMarker` from the current page\'s response (which
-#' is also the ID of the last public key on that page).
+#' the value of the `NextMarker` from the current page's response (which is
+#' also the ID of the last public key on that page).
 #' @param MaxItems The maximum number of public keys you want in the response body.
 #'
 #' @section Request syntax:
@@ -2243,10 +2242,10 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 #' cloudfront_update_cloud_front_origin_access_identity(
 #'   CloudFrontOriginAccessIdentityConfig, Id, IfMatch)
 #'
-#' @param CloudFrontOriginAccessIdentityConfig &#91;required&#93; The identity\'s configuration information.
-#' @param Id &#91;required&#93; The identity\'s id.
+#' @param CloudFrontOriginAccessIdentityConfig &#91;required&#93; The identity's configuration information.
+#' @param Id &#91;required&#93; The identity's id.
 #' @param IfMatch The value of the `ETag` header that you received when retrieving the
-#' identity\'s configuration. For example: `E2QWRUHAPOMQZL`.
+#' identity's configuration. For example: `E2QWRUHAPOMQZL`.
 #'
 #' @section Request syntax:
 #' ```
@@ -2322,10 +2321,10 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' 
 #'     -   Additional fields are required when you update a distribution.
 #'         There may be fields included in the XML file for features that
-#'         you haven\'t configured for your distribution. This is expected
+#'         you haven't configured for your distribution. This is expected
 #'         and required to successfully update the distribution.
 #' 
-#'     -   You can\'t change the value of `CallerReference`. If you try to
+#'     -   You can't change the value of `CallerReference`. If you try to
 #'         change this value, CloudFront returns an `IllegalUpdate` error.
 #' 
 #'     -   The new configuration replaces the existing configuration; the
@@ -2358,10 +2357,10 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' @usage
 #' cloudfront_update_distribution(DistributionConfig, Id, IfMatch)
 #'
-#' @param DistributionConfig &#91;required&#93; The distribution\'s configuration information.
-#' @param Id &#91;required&#93; The distribution\'s id.
+#' @param DistributionConfig &#91;required&#93; The distribution's configuration information.
+#' @param Id &#91;required&#93; The distribution's id.
 #' @param IfMatch The value of the `ETag` header that you received when retrieving the
-#' distribution\'s configuration. For example: `E2QWRUHAPOMQZL`.
+#' distribution's configuration. For example: `E2QWRUHAPOMQZL`.
 #'
 #' @section Request syntax:
 #' ```
@@ -2821,10 +2820,10 @@ cloudfront_update_public_key <- function(PublicKeyConfig, Id, IfMatch = NULL) {
 #' cloudfront_update_streaming_distribution(StreamingDistributionConfig,
 #'   Id, IfMatch)
 #'
-#' @param StreamingDistributionConfig &#91;required&#93; The streaming distribution\'s configuration information.
-#' @param Id &#91;required&#93; The streaming distribution\'s id.
+#' @param StreamingDistributionConfig &#91;required&#93; The streaming distribution's configuration information.
+#' @param Id &#91;required&#93; The streaming distribution's id.
 #' @param IfMatch The value of the `ETag` header that you received when retrieving the
-#' streaming distribution\'s configuration. For example: `E2QWRUHAPOMQZL`.
+#' streaming distribution's configuration. For example: `E2QWRUHAPOMQZL`.
 #'
 #' @section Request syntax:
 #' ```

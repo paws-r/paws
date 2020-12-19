@@ -23,13 +23,13 @@ reserved for the following values:
 \code{IPV4_ADDRESS | IPV6_ADDRESS | MAC_ADDRESS | FQDN | VM_MANAGER_ID | VM_MANAGED_OBJECT_REFERENCE | VM_NAME | VM_PATH | BIOS_ID | MOTHERBOARD_SERIAL_NUMBER}
 where the identifying value can be a string up to 256 characters.
 \itemize{
-\item If any \"VM\" related value is set for a \code{ResourceAttribute} object,
+\item If any "VM" related value is set for a \code{ResourceAttribute} object,
 it is required that \code{VM_MANAGER_ID}, as a minimum, is always set. If
-\code{VM_MANAGER_ID} is not set, then all \"VM\" fields will be discarded
-and \"VM\" fields will not be used for matching the migration task
-to a server in Application Discovery Service repository. See the
+\code{VM_MANAGER_ID} is not set, then all "VM" fields will be discarded
+and "VM" fields will not be used for matching the migration task to
+a server in Application Discovery Service repository. See the
 \href{https://docs.aws.amazon.com/migrationhub/latest/ug/API_PutResourceAttributes.html#API_PutResourceAttributes_Examples}{Example}
-section below for a use case of specifying \"VM\" related values.
+section below for a use case of specifying "VM" related values.
 \item If a server you are trying to match has multiple IP or MAC
 addresses, you should provide as many as you know in separate
 type/value pairs passed to the \code{ResourceAttributeList} parameter to
@@ -53,7 +53,7 @@ address, it will then be required to call it with \emph{both} the IP and
 MAC addresses to prevent overriding the MAC address.
 \item Note the instructions regarding the special use case of the
 \href{https://docs.aws.amazon.com/migrationhub/latest/ug/API_PutResourceAttributes.html#migrationhub-PutResourceAttributes-request-ResourceAttributeList}{\code{ResourceAttributeList}}
-parameter when specifying any \"VM\" related value.
+parameter when specifying any "VM" related value.
 }
 
 Because this is an asynchronous call, it will always return 200, whether

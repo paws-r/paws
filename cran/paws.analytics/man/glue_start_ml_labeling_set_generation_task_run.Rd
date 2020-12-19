@@ -17,17 +17,17 @@ the labeling set.}
 }
 \description{
 Starts the active learning workflow for your machine learning transform
-to improve the transform\'s quality by generating label sets and adding
+to improve the transform's quality by generating label sets and adding
 labels.
 }
 \details{
 When the \code{StartMLLabelingSetGenerationTaskRun} finishes, AWS Glue will
-have generated a \"labeling set\" or a set of questions for humans to
+have generated a "labeling set" or a set of questions for humans to
 answer.
 
 In the case of the \code{FindMatches} transform, these questions are of the
-form, "What is the correct way to group these rows together into groups
-composed entirely of matching records?"
+form, “What is the correct way to group these rows together into groups
+composed entirely of matching records?”
 
 After the labeling process is finished, you can upload your labels with
 a call to \code{StartImportLabelsTaskRun}. After \code{StartImportLabelsTaskRun}

@@ -30,7 +30,7 @@ Keep the connection open until the function returns a response or
 times out. The API response includes the function response and
 additional data.
 \item \code{Event} - Invoke the function asynchronously. Send events that fail
-multiple times to the function\'s dead-letter queue (if it\'s
+multiple times to the function's dead-letter queue (if it's
 configured). The API response only includes a status code.
 \item \code{DryRun} - Validate parameter values and verify that the user or
 role has permission to invoke the function.
@@ -72,10 +72,10 @@ events may be lost. Occasionally, your function may receive the same
 event multiple times, even if no error occurs. To retain events that
 were not processed, configure your function with a \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq}{dead-letter queue}.
 
-The status code in the API response doesn\'t reflect function errors.
+The status code in the API response doesn't reflect function errors.
 Error codes are reserved for errors that prevent your function from
 executing, such as permissions errors, \href{https://docs.aws.amazon.com/lambda/latest/dg/limits.html}{limit errors}, or
-issues with your function\'s code and configuration. For example, Lambda
+issues with your function's code and configuration. For example, Lambda
 returns \code{TooManyRequestsException} if executing the function would cause
 you to exceed a concurrency limit at either the account level
 (\code{ConcurrentInvocationLimitExceeded}) or function level

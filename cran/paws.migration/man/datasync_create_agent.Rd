@@ -35,8 +35,7 @@ representable in UTF-8 format, and the following special characters: + -
 
 \item{VpcEndpointId}{The ID of the VPC (Virtual Private Cloud) endpoint that the agent has
 access to. This is the client-side VPC endpoint, also called a
-PrivateLink. If you don\'t have a PrivateLink VPC endpoint, see
-\href{https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html#create-endpoint-service}{Creating a VPC Endpoint Service Configuration}
+PrivateLink. If you don't have a PrivateLink VPC endpoint, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html#create-endpoint-service}{Creating a VPC Endpoint Service Configuration}
 in the AWS VPC User Guide.
 
 VPC endpoint ID looks like this: \verb{vpce-01234d5aff67890e1}.}
@@ -51,7 +50,7 @@ For a data transfer to work, the agent must be able to route to all
 these four network interfaces.}
 
 \item{SecurityGroupArns}{The ARNs of the security groups used to protect your data transfer task
-subnets. See CreateAgentRequest\\$SubnetArns.}
+subnets. See CreateAgentRequest$SubnetArns.}
 }
 \description{
 Activates an AWS DataSync agent that you have deployed on your host. The

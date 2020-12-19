@@ -171,7 +171,7 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #' kendra_create_data_source(Name, IndexId, Type, Configuration,
 #'   Description, Schedule, RoleArn, Tags)
 #'
-#' @param Name &#91;required&#93; A unique name for the data source. A data source name can\'t be changed
+#' @param Name &#91;required&#93; A unique name for the data source. A data source name can't be changed
 #' without deleting and recreating the data source.
 #' @param IndexId &#91;required&#93; The identifier of the index that should be associated with this data
 #' source.
@@ -180,7 +180,7 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 #' repository.
 #' @param Description A description for the data source.
 #' @param Schedule Sets the frequency that Amazon Kendra will check the documents in your
-#' repository and update the index. If you don\'t set a schedule Amazon
+#' repository and update the index. If you don't set a schedule Amazon
 #' Kendra will not periodically update the index. You can call the
 #' `StartDataSourceSyncJob` operation to update the index.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of a role with permission to access the
@@ -536,18 +536,18 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 #' @param Edition The Amazon Kendra edition to use for the index. Choose
 #' `DEVELOPER_EDITION` for indexes intended for development, testing, or
 #' proof of concept. Use `ENTERPRISE_EDITION` for your production
-#' databases. Once you set the edition for an index, it can\'t be changed.
+#' databases. Once you set the edition for an index, it can't be changed.
 #' @param RoleArn &#91;required&#93; An IAM role that gives Amazon Kendra permissions to access your Amazon
 #' CloudWatch logs and metrics. This is also the role used when you use the
 #' `BatchPutDocument` operation to index documents from an Amazon S3
 #' bucket.
 #' @param ServerSideEncryptionConfiguration The identifier of the AWS KMS customer managed key (CMK) to use to
-#' encrypt data indexed by Amazon Kendra. Amazon Kendra doesn\'t support
+#' encrypt data indexed by Amazon Kendra. Amazon Kendra doesn't support
 #' asymmetric CMKs.
 #' @param Description A description for the index.
 #' @param ClientToken A token that you provide to identify the request to create an index.
 #' Multiple calls to the `CreateIndex` operation with the same client token
-#' will create only one index."
+#' will create only one index.”
 #' @param Tags A list of key-value pairs that identify the index. You can use the tags
 #' to identify and organize your resources and to control access to
 #' resources.
@@ -1278,7 +1278,7 @@ kendra_start_data_source_sync_job <- function(Id, IndexId) {
 
 #' Stops a running synchronization job
 #'
-#' Stops a running synchronization job. You can\'t stop a scheduled
+#' Stops a running synchronization job. You can't stop a scheduled
 #' synchronization job.
 #'
 #' @usage
@@ -1474,9 +1474,9 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #'   Schedule, RoleArn)
 #'
 #' @param Id &#91;required&#93; The unique identifier of the data source to update.
-#' @param Name The name of the data source to update. The name of the data source
-#' can\'t be updated. To rename a data source you must delete the data
-#' source and re-create it.
+#' @param Name The name of the data source to update. The name of the data source can't
+#' be updated. To rename a data source you must delete the data source and
+#' re-create it.
 #' @param IndexId &#91;required&#93; The identifier of the index that contains the data source to update.
 #' @param Configuration 
 #' @param Description The new description for the data source.
@@ -1764,7 +1764,7 @@ kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = 
 #' should be used by the index. You can change the capacity of the index up
 #' to 5 times per day.
 #' 
-#' If you are using extra storage units, you can\'t reduce the storage
+#' If you are using extra storage units, you can't reduce the storage
 #' capacity below that required to meet the storage needs for your index.
 #'
 #' @section Request syntax:

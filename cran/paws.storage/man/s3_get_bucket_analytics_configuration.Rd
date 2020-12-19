@@ -27,10 +27,15 @@ others. For more information about permissions, see \href{https://docs.aws.amazo
 and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
-For information about Amazon S3 analytics feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html}{Amazon S3 Analytics -- Storage Class Analysis}
+For information about Amazon S3 analytics feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html}{Amazon S3 Analytics – Storage Class Analysis}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Related Resources}
+\itemize{
+\item 
+\item 
+\item 
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_analytics_configuration(

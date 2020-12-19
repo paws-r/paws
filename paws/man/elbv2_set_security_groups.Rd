@@ -18,7 +18,7 @@ Load Balancer. The specified security groups override the previously
 associated security groups.
 }
 \details{
-You can\'t specify a security group for a Network Load Balancer.
+You can't specify a security group for a Network Load Balancer.
 }
 \section{Request syntax}{
 \preformatted{svc$set_security_groups(

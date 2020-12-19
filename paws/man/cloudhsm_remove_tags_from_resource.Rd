@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsm_operations.R
 \name{cloudhsm_remove_tags_from_resource}
 \alias{cloudhsm_remove_tags_from_resource}
-\title{This is documentation for AWS CLOUDHSM CLASSIC}
+\title{This is documentation for AWS CloudHSM Classic}
 \usage{
 cloudhsm_remove_tags_from_resource(ResourceArn, TagKeyList)
 }

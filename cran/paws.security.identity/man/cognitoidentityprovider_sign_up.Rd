@@ -30,7 +30,7 @@ attribute name.}
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
 \code{SignUp} calls.}
 
-\item{UserContextData}{Contextual data such as the user\'s device fingerprint, IP address, or
+\item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon
 Cognito advanced security.}
 
@@ -61,7 +61,7 @@ does not include triggers, the ClientMetadata parameter serves no
 purpose.
 \item Amazon Cognito does not validate the ClientMetadata value.
 \item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don\'t use it to provide sensitive information.
+don't use it to provide sensitive information.
 }}
 }
 \description{

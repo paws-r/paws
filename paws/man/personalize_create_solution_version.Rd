@@ -12,7 +12,7 @@ configuration information.}
 
 \item{trainingMode}{The scope of training to be performed when creating the solution
 version. The \code{FULL} option trains the solution version based on the
-entirety of the input solution\'s training data, while the \code{UPDATE}
+entirety of the input solution's training data, while the \code{UPDATE}
 option processes only the data that has changed in comparison to the
 input solution. Choose \code{UPDATE} when you want to incrementally update
 your solution version instead of creating an entirely new one.
@@ -33,7 +33,8 @@ time you call this operation.
 
 A solution version can be in one of the following states:
 \itemize{
-\item CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
+\item CREATE PENDING > CREATE IN\\_PROGRESS > ACTIVE -or- CREATE
+FAILED
 }
 
 To get the status of the version, call DescribeSolutionVersion. Wait

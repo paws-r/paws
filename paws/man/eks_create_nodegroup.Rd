@@ -62,9 +62,8 @@ Kubernetes version of the cluster is used, and this is the only accepted
 specified value.}
 
 \item{releaseVersion}{The AMI version of the Amazon EKS-optimized AMI to use with your node
-group. By default, the latest available AMI version for the node
-group\'s current Kubernetes version is used. For more information, see
-\href{https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html}{Amazon EKS-Optimized Linux AMI Versions}
+group. By default, the latest available AMI version for the node group's
+current Kubernetes version is used. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html}{Amazon EKS-Optimized Linux AMI Versions}
 in the \emph{Amazon EKS User Guide}.}
 }
 \description{

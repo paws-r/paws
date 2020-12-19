@@ -13,17 +13,17 @@ is case sensitive.}
 \item{checksum}{Identifies a specific revision of the \verb{$LATEST} version of the bot. If
 you specify a checksum and the \verb{$LATEST} version of the bot has a
 different checksum, a \code{PreconditionFailedException} exception is
-returned and Amazon Lex doesn\'t publish a new version. If you don\'t
+returned and Amazon Lex doesn't publish a new version. If you don't
 specify a checksum, Amazon Lex publishes the \verb{$LATEST} version.}
 }
 \description{
 Creates a new version of the bot based on the \verb{$LATEST} version. If the
-\verb{$LATEST} version of this resource hasn\'t changed since you created the
-last version, Amazon Lex doesn\'t create a new version. It returns the
+\verb{$LATEST} version of this resource hasn't changed since you created the
+last version, Amazon Lex doesn't create a new version. It returns the
 last created version.
 }
 \details{
-You can update only the \verb{$LATEST} version of the bot. You can\'t update
+You can update only the \verb{$LATEST} version of the bot. You can't update
 the numbered versions that you create with the \code{CreateBotVersion}
 operation.
 

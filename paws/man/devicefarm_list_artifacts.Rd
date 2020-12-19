@@ -9,7 +9,7 @@ devicefarm_list_artifacts(arn, type, nextToken)
 \arguments{
 \item{arn}{[required] The run, job, suite, or test ARN.}
 
-\item{type}{[required] The artifacts\' type.
+\item{type}{[required] The artifacts' type.
 
 Allowed values include:
 \itemize{

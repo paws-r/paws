@@ -53,11 +53,11 @@ example, 2017-09-15T13:45:30.)
 hours. Otherwise, the operation fails.
 \item The maximum number of log events in a batch is 10,000.
 \item There is a quota of 5 requests per second per log stream. Additional
-requests are throttled. This quota can\'t be changed.
+requests are throttled. This quota can't be changed.
 }
 
-If a call to PutLogEvents returns \"UnrecognizedClientException\" the
-most likely cause is an invalid AWS access key ID or secret key.
+If a call to PutLogEvents returns "UnrecognizedClientException" the most
+likely cause is an invalid AWS access key ID or secret key.
 }
 \section{Request syntax}{
 \preformatted{svc$put_log_events(

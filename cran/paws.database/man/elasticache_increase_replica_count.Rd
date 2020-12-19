@@ -17,7 +17,7 @@ elasticache_increase_replica_count(ReplicationGroupId, NewReplicaCount,
 operation. For Redis (cluster mode disabled) replication groups, this is
 the number of replica nodes in the replication group. For Redis (cluster
 mode enabled) replication groups, this is the number of replica nodes in
-each of the replication group\'s node groups.}
+each of the replication group's node groups.}
 
 \item{ReplicaConfiguration}{A list of \code{ConfigureShard} objects that can be used to configure each
 shard in a Redis (cluster mode enabled) replication group. The

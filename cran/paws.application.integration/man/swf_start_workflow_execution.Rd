@@ -21,7 +21,7 @@ within the same domain.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{U+0000`-`U+001f} \\| \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{workflowType}{[required] The type of the workflow to start.}
@@ -37,13 +37,13 @@ time then a fault is returned.
 
 The specified string must not start or end with whitespace. It must not
 contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{U+0000`-`U+001f} \\| \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
+characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
 the literal string \code{arn}.}
 
 \item{taskPriority}{The task priority to use for this workflow execution. This overrides any
 default priority that was assigned when the workflow type was
 registered. If not set, then the default task priority for the workflow
-type is used. Valid values are integers that range from Java\'s
+type is used. Valid values are integers that range from Java's
 \code{Integer.MIN_VALUE} (-2147483648) to \code{Integer.MAX_VALUE} (2147483647).
 Higher numbers indicate higher priority.
 
@@ -62,7 +62,7 @@ workflow type.
 The duration is specified in seconds; an integer greater than or equal
 to \code{0}. Exceeding this limit causes the workflow execution to time out.
 Unlike some of the other timeout parameters in Amazon SWF, you cannot
-specify a value of \"NONE\" for this timeout; there is a one-year max
+specify a value of "NONE" for this timeout; there is a one-year max
 limit on the time that a workflow execution can run.
 
 An execution start-to-close timeout must be specified either through
@@ -96,12 +96,12 @@ registering the workflow type using RegisterWorkflowType.
 
 The supported child policies are:
 \itemize{
-\item \code{TERMINATE} -- The child executions are terminated.
-\item \code{REQUEST_CANCEL} -- A request to cancel is attempted for each child
+\item \code{TERMINATE} – The child executions are terminated.
+\item \code{REQUEST_CANCEL} – A request to cancel is attempted for each child
 execution by recording a \code{WorkflowExecutionCancelRequested} event in
 its history. It is up to the decider to take appropriate actions
 when it receives an execution history with this event.
-\item \code{ABANDON} -- No action is taken. The child executions continue to
+\item \code{ABANDON} – No action is taken. The child executions continue to
 run.
 }
 
@@ -113,7 +113,7 @@ registration time then a fault is returned.}
 \item{lambdaRole}{The IAM role to attach to this workflow execution.
 
 Executions of this workflow type need IAM roles to invoke Lambda
-functions. If you don\'t attach an IAM role, any attempt to schedule a
+functions. If you don't attach an IAM role, any attempt to schedule a
 Lambda task fails. This results in a \code{ScheduleLambdaFunctionFailed}
 history event. For more information, see
 \url{https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html}
@@ -128,7 +128,7 @@ This action returns the newly started workflow execution.
 
 \strong{Access Control}
 
-You can use IAM policies to control this action\'s access to Amazon SWF
+You can use IAM policies to control this action's access to Amazon SWF
 resources as follows:
 \itemize{
 \item Use a \code{Resource} element with the domain name to limit the action to
@@ -151,9 +151,9 @@ with the appropriate keys.
 }
 }
 
-If the caller doesn\'t have sufficient permissions to invoke the action,
+If the caller doesn't have sufficient permissions to invoke the action,
 or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute\'s \code{cause} parameter is set
+action fails. The associated event attribute's \code{cause} parameter is set
 to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
 \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
 in the \emph{Amazon SWF Developer Guide}.

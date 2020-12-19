@@ -59,7 +59,7 @@ Calls to \code{InvokeEndpoint} are authenticated by using AWS Signature
 Version 4. For information, see \href{http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html}{Authenticating Requests (AWS Signature Version 4)}
 in the \emph{Amazon S3 API Reference}.
 
-A customer\'s model containers must respond to requests within 60
+A customer's model containers must respond to requests within 60
 seconds. The model itself can have a maximum processing time of 60
 seconds before responding to the /invocations. If your model is going to
 take 50-60 seconds of processing time, the SDK socket timeout should be

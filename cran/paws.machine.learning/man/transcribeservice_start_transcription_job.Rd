@@ -10,11 +10,11 @@ transcribeservice_start_transcription_job(TranscriptionJobName,
   JobExecutionSettings, ContentRedaction)
 }
 \arguments{
-\item{TranscriptionJobName}{[required] The name of the job. Note that you can\'t use the strings \".\" or
-\"..\" by themselves as the job name. The name must also be unique
-within an AWS account. If you try to create a transcription job with the
-same name as a previous transcription job you will receive a
-\code{ConflictException} error.}
+\item{TranscriptionJobName}{[required] The name of the job. Note that you can't use the strings "." or ".." by
+themselves as the job name. The name must also be unique within an AWS
+account. If you try to create a transcription job with the same name as
+a previous transcription job you will receive a \code{ConflictException}
+error.}
 
 \item{LanguageCode}{[required] The language code for the language used in the input media file.}
 
@@ -38,17 +38,17 @@ operation, the operation returns this location in the
 \code{TranscriptFileUri} field. If you enable content redaction, the redacted
 transcript appears in \code{RedactedTranscriptFileUri}. If you enable content
 redaction and choose to output an unredacted transcript, that
-transcript\'s location still appears in the \code{TranscriptFileUri}. The S3
+transcript's location still appears in the \code{TranscriptFileUri}. The S3
 bucket must have permissions that allow Amazon Transcribe to put files
 in the bucket. For more information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.
 
 You can specify an AWS Key Management Service (KMS) key to encrypt the
 output of your transcription using the \code{OutputEncryptionKMSKeyId}
-parameter. If you don\'t specify a KMS key, Amazon Transcribe uses the
+parameter. If you don't specify a KMS key, Amazon Transcribe uses the
 default Amazon S3 key for server-side encryption of transcripts that are
 placed in your S3 bucket.
 
-If you don\'t set the \code{OutputBucketName}, Amazon Transcribe generates a
+If you don't set the \code{OutputBucketName}, Amazon Transcribe generates a
 pre-signed URL, a shareable URL that provides secure access to your
 transcription, and returns it in the \code{TranscriptFileUri} field. Use this
 URL to download the transcription.}
@@ -61,21 +61,20 @@ use the specified KMS key.
 You can use either of the following to identify a KMS key in the current
 account:
 \itemize{
-\item KMS Key ID: \"1234abcd-12ab-34cd-56ef-1234567890ab\"
-\item KMS Key Alias: \"alias/ExampleAlias\"
+\item KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+\item KMS Key Alias: "alias/ExampleAlias"
 }
 
 You can use either of the following to identify a KMS key in the current
 account or another account:
 \itemize{
-\item Amazon Resource Name (ARN) of a KMS Key:
-\"arn:aws:kms:region:account
-ID:key/1234abcd-12ab-34cd-56ef-1234567890ab\"
-\item ARN of a KMS Key Alias: \"arn:aws:kms:region:account
-ID:alias/ExampleAlias\"
+\item Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:region:account
+ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+\item ARN of a KMS Key Alias: "arn:aws:kms:region:account
+ID:alias/ExampleAlias"
 }
 
-If you don\'t specify an encryption key, the output of the transcription
+If you don't specify an encryption key, the output of the transcription
 job is encrypted with the default Amazon S3 key (SSE-S3).
 
 If you specify a KMS key to encrypt your output, you must also specify

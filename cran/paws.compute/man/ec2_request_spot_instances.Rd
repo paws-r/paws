@@ -42,7 +42,7 @@ Spot Instance for termination and provides a Spot Instance termination
 notice, which gives the instance a two-minute warning before it
 terminates.
 
-You can\'t specify an Availability Zone group or a launch group if you
+You can't specify an Availability Zone group or a launch group if you
 specify a duration.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the

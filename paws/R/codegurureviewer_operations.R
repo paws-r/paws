@@ -9,7 +9,7 @@ NULL
 #' Use to associate an AWS CodeCommit repository or a repostory managed by
 #' AWS CodeStar Connections with Amazon CodeGuru Reviewer. When you
 #' associate a repository, CodeGuru Reviewer reviews source code changes in
-#' the repository\'s pull requests and provides automatic recommendations.
+#' the repository's pull requests and provides automatic recommendations.
 #' You can view recommendations using the CodeGuru Reviewer console. For
 #' more information, see [Recommendations in Amazon CodeGuru
 #' Reviewer](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/recommendations.html)
@@ -44,7 +44,7 @@ NULL
 #' 
 #' If you use the AWS CLI or one of the AWS SDKs to call this operation,
 #' you can leave this parameter empty. The CLI or SDK generates a random
-#' UUID for you and includes that in the request. If you don\'t use the SDK
+#' UUID for you and includes that in the request. If you don't use the SDK
 #' and instead generate a raw HTTP request to the Secrets Manager service
 #' endpoint, you must generate a ClientRequestToken yourself for new
 #' versions and include that value in the request.
@@ -368,7 +368,7 @@ codegurureviewer_list_code_reviews <- function(ProviderTypes = NULL, States = NU
 #' @param CodeReviewArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [`CodeReview`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html)
 #' object.
-#' @param UserIds An AWS user\'s account ID or Amazon Resource Name (ARN). Use this ID to
+#' @param UserIds An AWS user's account ID or Amazon Resource Name (ARN). Use this ID to
 #' query the recommendation feedback for a code review from that user.
 #' 
 #' The `UserId` is an IAM principal that can be specified as an AWS account
@@ -499,7 +499,7 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
 #' 
 #' -   **Failed**: The repository failed to associate or disassociate.
 #' 
-#' -   **Disassociating**: CodeGuru Reviewer is removing the repository\'s
+#' -   **Disassociating**: CodeGuru Reviewer is removing the repository's
 #'     pull request notifications and source code access.
 #' @param Names List of repository names to use as a filter.
 #' @param Owners List of owners to use as a filter. For AWS CodeCommit, it is the name of

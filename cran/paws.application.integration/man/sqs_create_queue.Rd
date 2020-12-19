@@ -22,33 +22,33 @@ Queue URLs and names are case-sensitive.}
 The following lists the names, descriptions, and values of the special
 request parameters that the \code{CreateQueue} action uses:
 \itemize{
-\item \code{DelaySeconds} -- The length of time, in seconds, for which the
+\item \code{DelaySeconds} – The length of time, in seconds, for which the
 delivery of all messages in the queue is delayed. Valid values: An
 integer from 0 to 900 seconds (15 minutes). Default: 0.
-\item \code{MaximumMessageSize} -- The limit of how many bytes a message can
+\item \code{MaximumMessageSize} – The limit of how many bytes a message can
 contain before Amazon SQS rejects it. Valid values: An integer from
 1,024 bytes (1 KiB) to 262,144 bytes (256 KiB). Default: 262,144
 (256 KiB).
-\item \code{MessageRetentionPeriod} -- The length of time, in seconds, for
-which Amazon SQS retains a message. Valid values: An integer from 60
+\item \code{MessageRetentionPeriod} – The length of time, in seconds, for which
+Amazon SQS retains a message. Valid values: An integer from 60
 seconds (1 minute) to 1,209,600 seconds (14 days). Default: 345,600
 (4 days).
-\item \code{Policy} -- The queue\'s policy. A valid AWS policy. For more
+\item \code{Policy} – The queue's policy. A valid AWS policy. For more
 information about policy structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html}{Overview of AWS IAM Policies}
 in the \emph{Amazon IAM User Guide}.
-\item \code{ReceiveMessageWaitTimeSeconds} -- The length of time, in seconds,
+\item \code{ReceiveMessageWaitTimeSeconds} – The length of time, in seconds,
 for which a \verb{<a>ReceiveMessage</a>} action waits for a message to
 arrive. Valid values: An integer from 0 to 20 (seconds). Default: 0.
-\item \code{RedrivePolicy} -- The string that includes the parameters for the
+\item \code{RedrivePolicy} – The string that includes the parameters for the
 dead-letter queue functionality of the source queue as a JSON
 object. For more information about the redrive policy and
 dead-letter queues, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Using Amazon SQS Dead-Letter Queues}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \itemize{
-\item \code{deadLetterTargetArn} -- The Amazon Resource Name (ARN) of the
+\item \code{deadLetterTargetArn} – The Amazon Resource Name (ARN) of the
 dead-letter queue to which Amazon SQS moves messages after the
 value of \code{maxReceiveCount} is exceeded.
-\item \code{maxReceiveCount} -- The number of times a message is delivered
+\item \code{maxReceiveCount} – The number of times a message is delivered
 to the source queue before being moved to the dead-letter queue.
 When the \code{ReceiveCount} for a message exceeds the
 \code{maxReceiveCount} for a queue, Amazon SQS moves the message to
@@ -58,7 +58,7 @@ the dead-letter-queue.
 The dead-letter queue of a FIFO queue must also be a FIFO queue.
 Similarly, the dead-letter queue of a standard queue must also be a
 standard queue.
-\item \code{VisibilityTimeout} -- The visibility timeout for the queue, in
+\item \code{VisibilityTimeout} – The visibility timeout for the queue, in
 seconds. Valid values: An integer from 0 to 43,200 (12 hours).
 Default: 30. For more information about the visibility timeout, see
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
@@ -68,15 +68,15 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.
 The following attributes apply only to
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html}{server-side-encryption}:
 \itemize{
-\item \code{KmsMasterKeyId} -- The ID of an AWS-managed customer master key
+\item \code{KmsMasterKeyId} – The ID of an AWS-managed customer master key
 (CMK) for Amazon SQS or a custom CMK. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms}{Key Terms}.
 While the alias of the AWS-managed CMK for Amazon SQS is always
 \code{alias/aws/sqs}, the alias of a custom CMK can, for example, be
 \verb{alias/<i>MyAlias</i> }. For more examples, see
 \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{KeyId}
 in the \emph{AWS Key Management Service API Reference}.
-\item \code{KmsDataKeyReusePeriodSeconds} -- The length of time, in seconds,
-for which Amazon SQS can reuse a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys}{data key}
+\item \code{KmsDataKeyReusePeriodSeconds} – The length of time, in seconds, for
+which Amazon SQS can reuse a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys}{data key}
 to encrypt or decrypt messages before calling AWS KMS again. An
 integer representing seconds, between 60 seconds (1 minute) and
 86,400 seconds (24 hours). Default: 300 (5 minutes). A shorter time
@@ -87,16 +87,16 @@ which might incur charges after Free Tier. For more information, see
 
 The following attributes apply only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO (first-in-first-out) queues}:
 \itemize{
-\item \code{FifoQueue} -- Designates a queue as FIFO. Valid values: \code{true},
-\code{false}. If you don\'t specify the \code{FifoQueue} attribute, Amazon SQS
+\item \code{FifoQueue} – Designates a queue as FIFO. Valid values: \code{true},
+\code{false}. If you don't specify the \code{FifoQueue} attribute, Amazon SQS
 creates a standard queue. You can provide this attribute only during
-queue creation. You can\'t change it for an existing queue. When you
+queue creation. You can't change it for an existing queue. When you
 set this attribute, you must also provide the \code{MessageGroupId} for
 your messages explicitly.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic}{FIFO Queue Logic}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
-\item \code{ContentBasedDeduplication} -- Enables content-based deduplication.
+\item \code{ContentBasedDeduplication} – Enables content-based deduplication.
 Valid values: \code{true}, \code{false}. For more information, see
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing}{Exactly-Once Processing}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
@@ -104,13 +104,13 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.
 \item Every message must have a unique \code{MessageDeduplicationId},
 \itemize{
 \item You may provide a \code{MessageDeduplicationId} explicitly.
-\item If you aren\'t able to provide a \code{MessageDeduplicationId}
-and you enable \code{ContentBasedDeduplication} for your queue,
+\item If you aren't able to provide a \code{MessageDeduplicationId} and
+you enable \code{ContentBasedDeduplication} for your queue,
 Amazon SQS uses a SHA-256 hash to generate the
 \code{MessageDeduplicationId} using the body of the message (but
 not the attributes of the message).
-\item If you don\'t provide a \code{MessageDeduplicationId} and the
-queue doesn\'t have \code{ContentBasedDeduplication} set, the
+\item If you don't provide a \code{MessageDeduplicationId} and the
+queue doesn't have \code{ContentBasedDeduplication} set, the
 action fails with an error.
 \item If the queue has \code{ContentBasedDeduplication} set, your
 \code{MessageDeduplicationId} overrides the generated one.
@@ -133,8 +133,8 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 When you use queue tags, keep the following guidelines in mind:
 \itemize{
-\item Adding more than 50 tags to a queue isn\'t recommended.
-\item Tags don\'t have any semantic meaning. Amazon SQS interprets tags as
+\item Adding more than 50 tags to a queue isn't recommended.
+\item Tags don't have any semantic meaning. Amazon SQS interprets tags as
 character strings.
 \item Tags are case-sensitive.
 \item A new tag with a key identical to that of an existing tag overwrites
@@ -147,7 +147,7 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.
 To be able to tag a queue on creation, you must have the
 \code{sqs:CreateQueue} and \code{sqs:TagQueue} permissions.
 
-Cross-account permissions don\'t apply to this action. For more
+Cross-account permissions don't apply to this action. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
 }
@@ -157,16 +157,16 @@ attributes in the request. Keep the following in mind:
 }
 \details{
 \itemize{
-\item If you don\'t specify the \code{FifoQueue} attribute, Amazon SQS creates
-a standard queue.
+\item If you don't specify the \code{FifoQueue} attribute, Amazon SQS creates a
+standard queue.
 
-You can\'t change the queue type after you create it and you can\'t
+You can't change the queue type after you create it and you can't
 convert an existing standard queue into a FIFO queue. You must
 either create a new FIFO queue for your application or delete your
 existing standard queue and recreate it as a FIFO queue. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-moving}{Moving From a Standard Queue to a FIFO Queue}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
-\item If you don\'t provide a value for an attribute, the queue is created
+\item If you don't provide a value for an attribute, the queue is created
 with the default value for the attribute.
 \item If you delete a queue, you must wait at least 60 seconds before
 creating a queue with the same name.
@@ -184,9 +184,9 @@ To get the queue URL, use the \verb{<a>GetQueueUrl</a>} action.
 of existing queue names:
 \itemize{
 \item If you provide the name of an existing queue along with the exact
-names and values of all the queue\'s attributes, \code{CreateQueue}
+names and values of all the queue's attributes, \code{CreateQueue}
 returns the queue URL for the existing queue.
-\item If the queue name, attribute names, or attribute values don\'t match
+\item If the queue name, attribute names, or attribute values don't match
 an existing queue, \code{CreateQueue} returns an error.
 }
 
@@ -198,7 +198,7 @@ example, a parameter list with two elements looks like this:
 
 \verb{&amp;AttributeName.2=second}
 
-Cross-account permissions don\'t apply to this action. For more
+Cross-account permissions don't apply to this action. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }

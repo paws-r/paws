@@ -34,9 +34,9 @@ not throw an error.}
 
 \item{VolumeSizeInGB}{The size, in GB, of the ML storage volume to attach to the notebook
 instance. The default value is 5 GB. ML storage volumes are encrypted,
-so Amazon SageMaker can\'t determine the amount of available free space
+so Amazon SageMaker can't determine the amount of available free space
 on the volume. Because of this, you can increase the volume size when
-you update a notebook instance, but you can\'t decrease the volume size.
+you update a notebook instance, but you can't decrease the volume size.
 If you want to decrease the size of the ML storage volume in use, create
 a new notebook instance with the desired size.}
 
@@ -77,7 +77,7 @@ you call this method, it does not throw an error.}
 \item{RootAccess}{Whether root access is enabled or disabled for users of the notebook
 instance. The default value is \code{Enabled}.
 
-If you set this to \code{Disabled}, users don\'t have root access on the
+If you set this to \code{Disabled}, users don't have root access on the
 notebook instance, but lifecycle configuration scripts still run with
 root permissions.}
 }

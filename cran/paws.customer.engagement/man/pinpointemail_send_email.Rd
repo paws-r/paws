@@ -9,12 +9,12 @@ pinpointemail_send_email(FromEmailAddress, Destination,
   ConfigurationSetName)
 }
 \arguments{
-\item{FromEmailAddress}{The email address that you want to use as the \"From\" address for the
+\item{FromEmailAddress}{The email address that you want to use as the "From" address for the
 email. The address that you specify has to be verified.}
 
 \item{Destination}{[required] An object that contains the recipients of the email message.}
 
-\item{ReplyToAddresses}{The \"Reply-to\" email addresses for the message. When the recipient
+\item{ReplyToAddresses}{The "Reply-to" email addresses for the message. When the recipient
 replies to the message, each Reply-to address receives the reply.}
 
 \item{FeedbackForwardingEmailAddress}{The address that Amazon Pinpoint should send bounce and complaint
@@ -37,10 +37,10 @@ send two types of messages:
 }
 \details{
 \itemize{
-\item \strong{Simple} -- A standard email message. When you create this type of
+\item \strong{Simple} – A standard email message. When you create this type of
 message, you specify the sender, the recipient, and the message
 body, and Amazon Pinpoint assembles the message for you.
-\item \strong{Raw} -- A raw, MIME-formatted email message. When you send this
+\item \strong{Raw} – A raw, MIME-formatted email message. When you send this
 type of email, you have to specify all of the message headers, as
 well as the message body. You can use this message type to send
 messages that contain attachments. The message that you specify has

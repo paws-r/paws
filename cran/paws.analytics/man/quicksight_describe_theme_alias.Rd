@@ -7,7 +7,7 @@
 quicksight_describe_theme_alias(AwsAccountId, ThemeId, AliasName)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme alias that you\'re
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme alias that you're
 describing.}
 
 \item{ThemeId}{[required] The ID for the theme.}

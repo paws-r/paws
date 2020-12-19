@@ -36,8 +36,8 @@ events.
 \details{
 When an event occurs in your account, CloudTrail evaluates the event
 selectors in all trails. For each trail, if the event matches any event
-selector, the trail processes and logs the event. If the event doesn\'t
-match any event selector, the trail doesn\'t log the event.
+selector, the trail processes and logs the event. If the event doesn't
+match any event selector, the trail doesn't log the event.
 
 Example
 \enumerate{
@@ -48,8 +48,8 @@ in your account.
 \item CloudTrail evaluates whether the events match your event selectors.
 \item The \code{RunInstances} is a write-only event and it matches your event
 selector. The trail logs the event.
-\item The \code{GetConsoleOutput} is a read-only event but it doesn\'t match
-your event selector. The trail doesn\'t log the event.
+\item The \code{GetConsoleOutput} is a read-only event but it doesn't match
+your event selector. The trail doesn't log the event.
 }
 
 The \code{PutEventSelectors} operation must be called from the region in

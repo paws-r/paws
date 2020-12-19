@@ -24,7 +24,7 @@ approximate number.}
 of an object is reflected in a subsequent read operation of that same
 object.}
 
-\item{IncludeAllLinksToEachParent}{When set to True, returns all ListObjectParentsResponse\\$ParentLinks.
+\item{IncludeAllLinksToEachParent}{When set to True, returns all ListObjectParentsResponse$ParentLinks.
 There could be multiple links between a parent-child pair.}
 }
 \description{

@@ -478,7 +478,7 @@ dataexchange_get_revision <- function(DataSetId, RevisionId) {
 #' This operation lists a data set's revisions sorted by CreatedAt in
 #' descending order
 #'
-#' This operation lists a data set\'s revisions sorted by CreatedAt in
+#' This operation lists a data set's revisions sorted by CreatedAt in
 #' descending order.
 #'
 #' @usage
@@ -609,7 +609,7 @@ dataexchange_list_jobs <- function(DataSetId = NULL, MaxResults = NULL, NextToke
 #' This operation lists a revision's assets sorted alphabetically in
 #' descending order
 #'
-#' This operation lists a revision\'s assets sorted alphabetically in
+#' This operation lists a revision's assets sorted alphabetically in
 #' descending order.
 #'
 #' @usage
@@ -898,8 +898,8 @@ dataexchange_update_data_set <- function(DataSetId, Description = NULL, Name = N
 #' @param Comment An optional comment about the revision.
 #' @param DataSetId &#91;required&#93; The unique identifier for a data set.
 #' @param Finalized Finalizing a revision tells AWS Data Exchange that your changes to the
-#' assets in the revision are complete. After it\'s in this read-only
-#' state, you can publish the revision to your products.
+#' assets in the revision are complete. After it's in this read-only state,
+#' you can publish the revision to your products.
 #' @param RevisionId &#91;required&#93; The unique identifier for a revision.
 #'
 #' @section Request syntax:

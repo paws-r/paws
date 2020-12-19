@@ -12,13 +12,13 @@ ec2_create_traffic_mirror_filter_rule(TrafficMirrorFilterId,
 \arguments{
 \item{TrafficMirrorFilterId}{[required] The ID of the filter that this rule is associated with.}
 
-\item{TrafficDirection}{[required] The type of traffic (\code{ingress} \\| \code{egress}).}
+\item{TrafficDirection}{[required] The type of traffic (\code{ingress} | \code{egress}).}
 
 \item{RuleNumber}{[required] The number of the Traffic Mirror rule. This number must be unique for
 each Traffic Mirror rule in a given direction. The rules are processed
 in ascending order by rule number.}
 
-\item{RuleAction}{[required] The action to take (\code{accept} \\| \code{reject}) on the filtered traffic.}
+\item{RuleAction}{[required] The action to take (\code{accept} | \code{reject}) on the filtered traffic.}
 
 \item{DestinationPortRange}{The destination port range.}
 

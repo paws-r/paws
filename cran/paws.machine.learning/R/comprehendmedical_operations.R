@@ -615,8 +615,8 @@ comprehendmedical_list_rx_norm_inference_jobs <- function(Filter = NULL, NextTok
 #' for Asynchronous
 #' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
-#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
-#' request token, Amazon Comprehend Medical generates one.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend Medical generates one.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
@@ -681,8 +681,8 @@ comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, O
 #' for Asynchronous
 #' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
-#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
-#' request token, Amazon Comprehend Medical generates one.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend Medical generates one.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
@@ -746,8 +746,8 @@ comprehendmedical_start_icd10cm_inference_job <- function(InputDataConfig, Outpu
 #' for Asynchronous
 #' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
-#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
-#' request token, Amazon Comprehend Medical generates one.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend Medical generates one.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
@@ -812,8 +812,8 @@ comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDat
 #' for Asynchronous
 #' Operations](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions-med.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
-#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
-#' request token, Amazon Comprehend Medical generates one.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend Medical generates one.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same

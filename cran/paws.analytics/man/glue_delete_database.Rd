@@ -20,7 +20,7 @@ Removes a specified database from a Data Catalog.
 After completing this operation, you no longer have access to the tables
 (and all table versions and partitions that might belong to the tables)
 and the user-defined functions in the deleted database. AWS Glue deletes
-these \"orphaned\" resources asynchronously in a timely manner, at the
+these "orphaned" resources asynchronously in a timely manner, at the
 discretion of the service.
 
 To ensure the immediate deletion of all related resources, before

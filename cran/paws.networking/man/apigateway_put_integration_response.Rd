@@ -11,11 +11,10 @@ apigateway_put_integration_response(restApiId, resourceId, httpMethod,
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] Specifies a put integration response request\'s resource
+\item{resourceId}{[required] [Required] Specifies a put integration response request's resource
 identifier.}
 
-\item{httpMethod}{[required] [Required] Specifies a put integration response request\'s HTTP
-method.}
+\item{httpMethod}{[required] [Required] Specifies a put integration response request's HTTP method.}
 
 \item{statusCode}{[required] [Required] Specifies the status code that is used to map the
 integration response to an existing MethodResponse.}
@@ -34,7 +33,7 @@ pattern of \verb{integration.response.header.\\\{name\\\}} or
 valid and unique response header name and \code{JSON-expression} a valid JSON
 expression without the \code{$} prefix.}
 
-\item{responseTemplates}{Specifies a put integration response\'s templates.}
+\item{responseTemplates}{Specifies a put integration response's templates.}
 
 \item{contentHandling}{Specifies how to handle response payload content type conversions.
 Supported values are \code{CONVERT_TO_BINARY} and \code{CONVERT_TO_TEXT}, with the

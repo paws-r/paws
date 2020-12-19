@@ -75,9 +75,9 @@ encrypted data key and the encrypted data entirely within in
 Region B.
 }
 
-You don\'t need to use the \code{Encrypt} operation to encrypt a data key.
-The GenerateDataKey and GenerateDataKeyPair operations return a
-plaintext data key and an encrypted copy of that data key.
+You don't need to use the \code{Encrypt} operation to encrypt a data key. The
+GenerateDataKey and GenerateDataKeyPair operations return a plaintext
+data key and an encrypted copy of that data key.
 
 When you encrypt data, you must specify a symmetric or asymmetric CMK to
 use in the encryption operation. The CMK must have a \code{KeyUsage} value of

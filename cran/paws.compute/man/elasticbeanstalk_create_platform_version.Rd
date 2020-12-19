@@ -21,7 +21,7 @@ elasticbeanstalk_create_platform_version(PlatformName, PlatformVersion,
 \item{Tags}{Specifies the tags applied to the new platform version.
 
 Elastic Beanstalk applies these tags only to the platform version.
-Environments that you create using the platform version don\'t inherit
+Environments that you create using the platform version don't inherit
 the tags.}
 }
 \description{

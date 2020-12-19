@@ -352,7 +352,7 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' 
 #' If you enable this feature, we recommend that you specify a value that
 #' corresponds exactly to a whole number of minutes (for example, 60, 120,
-#' and 180). If you don\'t do this, the value is rounded to the nearest
+#' and 180). If you don't do this, the value is rounded to the nearest
 #' minute. For example, if you specify a value of 70, users are
 #' disconnected after 1 minute of inactivity. If you specify a value that
 #' is at the midpoint between two different minutes, the value is rounded
@@ -821,17 +821,17 @@ appstream_create_usage_report_subscription <- function() {
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
 #' 
-#' Users\' email addresses are case-sensitive. During login, if they
-#' specify an email address that doesn\'t use the same capitalization as
-#' the email address specified when their user pool account was created, a
-#' \"user does not exist\" error message displays.
+#' Users' email addresses are case-sensitive. During login, if they specify
+#' an email address that doesn't use the same capitalization as the email
+#' address specified when their user pool account was created, a "user does
+#' not exist" error message displays.
 #' @param MessageAction The action to take for the welcome email that is sent to a user after
 #' the user is created in the user pool. If you specify SUPPRESS, no email
 #' is sent. If you specify RESEND, do not specify the first name or last
 #' name of the user. If the value is null, the email is sent.
 #' 
 #' The temporary password in the welcome email is valid for only 7 days. If
-#' users don't set their passwords within 7 days, you must send them a new
+#' users don’t set their passwords within 7 days, you must send them a new
 #' welcome email.
 #' @param FirstName The first name, or given name, of the user.
 #' @param LastName The last name, or surname, of the user.
@@ -1137,7 +1137,7 @@ appstream_delete_usage_report_subscription <- function() {
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
 #' 
-#' Users\' email addresses are case-sensitive.
+#' Users' email addresses are case-sensitive.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
 #'
 #' @section Request syntax:
@@ -1568,7 +1568,7 @@ appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, Nex
 #' @param StackName The name of the stack that is associated with the user.
 #' @param UserName The email address of the user who is associated with the stack.
 #' 
-#' Users\' email addresses are case-sensitive.
+#' Users' email addresses are case-sensitive.
 #' @param AuthenticationType The authentication type for the user who is associated with the stack.
 #' You must specify USERPOOL.
 #' @param MaxResults The maximum size of each page of results.
@@ -1652,7 +1652,7 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
 
 #' Disables the specified user in the user pool
 #'
-#' Disables the specified user in the user pool. Users can\'t sign in to
+#' Disables the specified user in the user pool. Users can't sign in to
 #' AppStream 2.0 until they are re-enabled. This action does not delete the
 #' user.
 #'
@@ -1661,7 +1661,7 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
 #' 
-#' Users\' email addresses are case-sensitive.
+#' Users' email addresses are case-sensitive.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
 #'
 #' @section Request syntax:
@@ -1741,10 +1741,10 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
 #' 
-#' Users\' email addresses are case-sensitive. During login, if they
-#' specify an email address that doesn\'t use the same capitalization as
-#' the email address specified when their user pool account was created, a
-#' \"user does not exist\" error message displays.
+#' Users' email addresses are case-sensitive. During login, if they specify
+#' an email address that doesn't use the same capitalization as the email
+#' address specified when their user pool account was created, a "user does
+#' not exist" error message displays.
 #' @param AuthenticationType &#91;required&#93; The authentication type for the user. You must specify USERPOOL.
 #'
 #' @section Request syntax:
@@ -2248,7 +2248,7 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' update the `DisplayName`, `ComputeCapacity`, `ImageARN`, `ImageName`,
 #' `IdleDisconnectTimeoutInSeconds`, and `DisconnectTimeoutInSeconds`
 #' attributes. If the fleet is in the `STARTING` or `STOPPING` state, you
-#' can\'t update it.
+#' can't update it.
 #'
 #' @usage
 #' appstream_update_fleet(ImageName, ImageArn, Name, InstanceType,
@@ -2342,7 +2342,7 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' 
 #' If you enable this feature, we recommend that you specify a value that
 #' corresponds exactly to a whole number of minutes (for example, 60, 120,
-#' and 180). If you don\'t do this, the value is rounded to the nearest
+#' and 180). If you don't do this, the value is rounded to the nearest
 #' minute. For example, if you specify a value of 70, users are
 #' disconnected after 1 minute of inactivity. If you specify a value that
 #' is at the midpoint between two different minutes, the value is rounded

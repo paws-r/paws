@@ -643,8 +643,8 @@ shield_disable_proactive_engagement <- function() {
 #' Removes the DDoS Response Team's (DRT) access to the specified Amazon S3
 #' bucket containing your AWS WAF logs
 #'
-#' Removes the DDoS Response Team\'s (DRT) access to the specified Amazon
-#' S3 bucket containing your AWS WAF logs.
+#' Removes the DDoS Response Team's (DRT) access to the specified Amazon S3
+#' bucket containing your AWS WAF logs.
 #' 
 #' To make a `DisassociateDRTLogBucket` request, you must be subscribed to
 #' the [Business Support
@@ -689,7 +689,7 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
 
 #' Removes the DDoS Response Team's (DRT) access to your AWS account
 #'
-#' Removes the DDoS Response Team\'s (DRT) access to your AWS account.
+#' Removes the DDoS Response Team's (DRT) access to your AWS account.
 #' 
 #' To make a `DisassociateDRTRole` request, you must be subscribed to the
 #' [Business Support

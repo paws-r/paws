@@ -28,12 +28,12 @@ Deletes a delivery stream and its data.
 To check the state of a delivery stream, use DescribeDeliveryStream. You
 can delete a delivery stream only if it is in one of the following
 states: \code{ACTIVE}, \code{DELETING}, \code{CREATING_FAILED}, or \code{DELETING_FAILED}.
-You can\'t delete a delivery stream that is in the \code{CREATING} state.
+You can't delete a delivery stream that is in the \code{CREATING} state.
 While the deletion request is in process, the delivery stream is in the
 \code{DELETING} state.
 
 While the delivery stream is in the \code{DELETING} state, the service might
-continue to accept records, but it doesn\'t make any guarantees with
+continue to accept records, but it doesn't make any guarantees with
 respect to delivering the data. Therefore, as a best practice, first
 stop any applications that are sending records before you delete a
 delivery stream.

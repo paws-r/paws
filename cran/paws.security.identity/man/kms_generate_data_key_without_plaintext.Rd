@@ -67,7 +67,7 @@ This operation is useful for systems that need to encrypt data at some
 point, but not immediately. When you need to encrypt the data, you call
 the Decrypt operation on the encrypted copy of the key.
 
-It\'s also useful in distributed systems with different levels of trust.
+It's also useful in distributed systems with different levels of trust.
 For example, you might store encrypted data in containers. One component
 of your system creates new containers and stores an encrypted data key
 with each container. Then, a different component puts the data into the

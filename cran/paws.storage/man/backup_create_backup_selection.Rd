@@ -45,10 +45,10 @@ Using these patterns would back up all Amazon Elastic Block Store
 volume Id.
 
 Resources and conditions are additive in that all resources that match
-the pattern are selected. This shouldn\'t be confused with a logical
-AND, where all conditions must match. The matching patterns are
-logically \'put together using the OR operator. In other words, all
-patterns that match are selected for backup.
+the pattern are selected. This shouldn't be confused with a logical AND,
+where all conditions must match. The matching patterns are logically
+'put together using the OR operator. In other words, all patterns that
+match are selected for backup.
 }
 \section{Request syntax}{
 \preformatted{svc$create_backup_selection(

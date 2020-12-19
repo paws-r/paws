@@ -87,7 +87,7 @@ Constraints:
 }}
 
 \item{MasterUserPassword}{The password for the master database user. This password can contain any
-printable ASCII character except \"/\", \"\"\", or \"@\".
+printable ASCII character except "/", """, or "@".
 
 Constraints: Must contain from 8 to 41 characters.}
 
@@ -169,7 +169,7 @@ Default: \code{false}}
 CloudWatch Logs.}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can\'t be deleted when deletion protection is
+enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is enabled.}
 }
 \description{

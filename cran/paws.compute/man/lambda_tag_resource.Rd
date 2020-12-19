@@ -7,7 +7,7 @@
 lambda_tag_resource(Resource, Tags)
 }
 \arguments{
-\item{Resource}{[required] The function\'s Amazon Resource Name (ARN).}
+\item{Resource}{[required] The function's Amazon Resource Name (ARN).}
 
 \item{Tags}{[required] A list of tags to apply to the function.}
 }

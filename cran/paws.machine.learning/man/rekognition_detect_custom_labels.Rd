@@ -18,7 +18,7 @@ response. The service returns the specified number of highest confidence
 labels ranked from highest confidence to lowest.}
 
 \item{MinConfidence}{Specifies the minimum confidence level for the labels to return. Amazon
-Rekognition doesn\'t return any labels with a confidence lower than this
+Rekognition doesn't return any labels with a confidence lower than this
 specified value. If you specify a value of 0, all labels are return,
 regardless of the default thresholds that the model version applies.}
 }
@@ -43,14 +43,14 @@ location information, if it exists, for the label on the image
 (\code{Geometry}).
 
 During training model calculates a threshold value that determines if a
-prediction for a label is true. By default, \code{DetectCustomLabels}
-doesn\'t return labels whose confidence value is below the model\'s
-calculated threshold value. To filter labels that are returned, specify
-a value for \code{MinConfidence} that is higher than the model\'s calculated
-threshold. You can get the model\'s calculated threshold from the
-model\'s training results shown in the Amazon Rekognition Custom Labels
-console. To get all labels, regardless of confidence, specify a
-\code{MinConfidence} value of 0.
+prediction for a label is true. By default, \code{DetectCustomLabels} doesn't
+return labels whose confidence value is below the model's calculated
+threshold value. To filter labels that are returned, specify a value for
+\code{MinConfidence} that is higher than the model's calculated threshold.
+You can get the model's calculated threshold from the model's training
+results shown in the Amazon Rekognition Custom Labels console. To get
+all labels, regardless of confidence, specify a \code{MinConfidence} value of
+0.
 
 You can also add the \code{MaxResults} parameter to limit the number of
 labels returned.

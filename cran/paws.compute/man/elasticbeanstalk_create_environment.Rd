@@ -16,19 +16,18 @@ elasticbeanstalk_create_environment(ApplicationName, EnvironmentName,
 \item{EnvironmentName}{A unique name for the environment.
 
 Constraint: Must be from 4 to 40 characters in length. The name can
-contain only letters, numbers, and hyphens. It can\'t start or end with
-a hyphen. This name must be unique within a region in your account. If
-the specified name already exists in the region, Elastic Beanstalk
-returns an \code{InvalidParameterValue} error.
+contain only letters, numbers, and hyphens. It can't start or end with a
+hyphen. This name must be unique within a region in your account. If the
+specified name already exists in the region, Elastic Beanstalk returns
+an \code{InvalidParameterValue} error.
 
-If you don\'t specify the \code{CNAMEPrefix} parameter, the environment name
+If you don't specify the \code{CNAMEPrefix} parameter, the environment name
 becomes part of the CNAME, and therefore part of the visible URL for
 your application.}
 
 \item{GroupName}{The name of the group to which the target environment belongs. Specify a
-group name only if the environment\'s name is specified in an
-environment manifest and not with the environment name parameter. See
-\href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html}{Environment Manifest (env.yaml)}
+group name only if the environment's name is specified in an environment
+manifest and not with the environment name parameter. See \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html}{Environment Manifest (env.yaml)}
 for details.}
 
 \item{Description}{Your description for this environment.}
@@ -53,7 +52,7 @@ sample application.}
 \item{TemplateName}{The name of the Elastic Beanstalk configuration template to use with the
 environment.
 
-If you specify \code{TemplateName}, then don\'t specify \code{SolutionStackName}.}
+If you specify \code{TemplateName}, then don't specify \code{SolutionStackName}.}
 
 \item{SolutionStackName}{The name of an Elastic Beanstalk solution stack (platform version) to
 use with the environment. If specified, Elastic Beanstalk sets the
@@ -61,14 +60,14 @@ configuration values to the default values associated with the specified
 solution stack. For a list of current solution stacks, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html}{Elastic Beanstalk Supported Platforms}
 in the \emph{AWS Elastic Beanstalk Platforms} guide.
 
-If you specify \code{SolutionStackName}, don\'t specify \code{PlatformArn} or
+If you specify \code{SolutionStackName}, don't specify \code{PlatformArn} or
 \code{TemplateName}.}
 
 \item{PlatformArn}{The Amazon Resource Name (ARN) of the custom platform to use with the
 environment. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/custom-platforms.html}{Custom Platforms}
 in the \emph{AWS Elastic Beanstalk Developer Guide}.
 
-If you specify \code{PlatformArn}, don\'t specify \code{SolutionStackName}.}
+If you specify \code{PlatformArn}, don't specify \code{SolutionStackName}.}
 
 \item{OptionSettings}{If specified, AWS Elastic Beanstalk sets the specified configuration
 options to the requested value in the configuration set for the new
@@ -79,7 +78,7 @@ or the configuration template.}
 configuration set for this new environment.}
 
 \item{OperationsRole}{The Amazon Resource Name (ARN) of an existing IAM role to be used as the
-environment\'s operations role. If specified, Elastic Beanstalk uses the
+environment's operations role. If specified, Elastic Beanstalk uses the
 operations role for permissions to downstream services during this call
 and during subsequent calls acting on this environment. To specify an
 operations role, you must have the \code{iam:PassRole} permission for the

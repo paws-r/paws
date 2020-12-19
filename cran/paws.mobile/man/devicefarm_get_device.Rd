@@ -7,7 +7,7 @@
 devicefarm_get_device(arn)
 }
 \arguments{
-\item{arn}{[required] The device type\'s ARN.}
+\item{arn}{[required] The device type's ARN.}
 }
 \description{
 Gets information about a unique device type.

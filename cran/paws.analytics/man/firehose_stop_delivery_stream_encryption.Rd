@@ -21,8 +21,8 @@ write data to your stream while its status is \code{DISABLING}. It can take
 up to 5 seconds after the encryption status changes to \code{DISABLED} before
 all records written to the delivery stream are no longer subject to
 encryption. To find out whether a record or a batch of records was
-encrypted, check the response elements PutRecordOutput\\$Encrypted and
-PutRecordBatchOutput\\$Encrypted, respectively.
+encrypted, check the response elements PutRecordOutput$Encrypted and
+PutRecordBatchOutput$Encrypted, respectively.
 
 To check the encryption state of a delivery stream, use
 DescribeDeliveryStream.

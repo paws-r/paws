@@ -26,7 +26,7 @@ Specify maintenance window targets using the following format:
 
 \item{ServiceRoleArn}{The ARN of the IAM service role for Systems Manager to assume when
 running a maintenance window task. If you do not specify a service role
-ARN, Systems Manager uses your account\'s service-linked role. If no
+ARN, Systems Manager uses your account's service-linked role. If no
 service-linked role for Systems Manager exists in your account, it is
 created when you run \code{RegisterTaskWithMaintenanceWindow}.
 

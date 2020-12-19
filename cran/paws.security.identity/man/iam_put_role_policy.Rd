@@ -44,9 +44,9 @@ specified IAM role.
 }
 \details{
 When you embed an inline policy in a role, the inline policy is used as
-part of the role\'s access (permissions) policy. The role\'s trust
-policy is created at the same time as the role, using CreateRole. You
-can update a role\'s trust policy using UpdateAssumeRolePolicy. For more
+part of the role's access (permissions) policy. The role's trust policy
+is created at the same time as the role, using CreateRole. You can
+update a role's trust policy using UpdateAssumeRolePolicy. For more
 information about IAM roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html}{Using Roles to Delegate Permissions and Federate Identities}.
 
 A role can also have a managed policy attached to it. To attach a

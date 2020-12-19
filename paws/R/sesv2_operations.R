@@ -295,8 +295,8 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' Starts the process of verifying an email identity. An *identity* is an
 #' email address or domain that you use when you send email. Before you can
 #' use an identity to send email, you first have to verify it. By verifying
-#' an identity, you demonstrate that you\'re the owner of the identity, and
-#' that you\'ve given Amazon SES API v2 permission to send email from the
+#' an identity, you demonstrate that you're the owner of the identity, and
+#' that you've given Amazon SES API v2 permission to send email from the
 #' identity.
 #' 
 #' When you verify an email address, Amazon SES sends an email to the
@@ -652,8 +652,8 @@ sesv2_get_blacklist_reports <- function(BlacklistItemNames) {
 #' for sending email, and more
 #'
 #' Get information about an existing configuration set, including the
-#' dedicated IP pool that it\'s associated with, whether or not it\'s
-#' enabled for sending email, and more.
+#' dedicated IP pool that it's associated with, whether or not it's enabled
+#' for sending email, and more.
 #' 
 #' *Configuration sets* are groups of rules that you can apply to the
 #' emails you send. You apply a configuration set to an email by including
@@ -744,15 +744,15 @@ sesv2_get_configuration_set_event_destinations <- function(ConfigurationSetName)
 #' the automatic warm-up process for the address
 #'
 #' Get information about a dedicated IP address, including the name of the
-#' dedicated IP pool that it\'s associated with, as well information about
+#' dedicated IP pool that it's associated with, as well information about
 #' the automatic warm-up process for the address.
 #'
 #' @usage
 #' sesv2_get_dedicated_ip(Ip)
 #'
 #' @param Ip &#91;required&#93; The IP address that you want to obtain more information about. The value
-#' you specify has to be a dedicated IP address that\'s assocaited with
-#' your AWS account.
+#' you specify has to be a dedicated IP address that's assocaited with your
+#' AWS account.
 #'
 #' @section Request syntax:
 #' ```
@@ -999,9 +999,9 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
 #' verification status, its DKIM authentication status, and its custom
 #' Mail-From settings
 #'
-#' Provides information about a specific identity, including the
-#' identity\'s verification status, its DKIM authentication status, and its
-#' custom Mail-From settings.
+#' Provides information about a specific identity, including the identity's
+#' verification status, its DKIM authentication status, and its custom
+#' Mail-From settings.
 #'
 #' @usage
 #' sesv2_get_email_identity(EmailIdentity)
@@ -1038,13 +1038,13 @@ sesv2_get_email_identity <- function(EmailIdentity) {
 #' Retrieves information about a specific email address that's on the
 #' suppression list for your account
 #'
-#' Retrieves information about a specific email address that\'s on the
+#' Retrieves information about a specific email address that's on the
 #' suppression list for your account.
 #'
 #' @usage
 #' sesv2_get_suppressed_destination(EmailAddress)
 #'
-#' @param EmailAddress &#91;required&#93; The email address that\'s on the account suppression list.
+#' @param EmailAddress &#91;required&#93; The email address that's on the account suppression list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1170,7 +1170,7 @@ sesv2_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = NULL) {
 #' Show a list of the predictive inbox placement tests that you've
 #' performed, regardless of their statuses
 #'
-#' Show a list of the predictive inbox placement tests that you\'ve
+#' Show a list of the predictive inbox placement tests that you've
 #' performed, regardless of their statuses. For predictive inbox placement
 #' tests that are complete, you can use the `GetDeliverabilityTestReport`
 #' operation to view the results.
@@ -1235,7 +1235,7 @@ sesv2_list_deliverability_test_reports <- function(NextToken = NULL, PageSize = 
 #' deliverability data for. This value has to be less than or equal to 30
 #' days after the value of the `StartDate` parameter.
 #' @param SubscribedDomain &#91;required&#93; The domain to obtain deliverability data for.
-#' @param NextToken A token that's returned from a previous call to the
+#' @param NextToken A token that’s returned from a previous call to the
 #' `ListDomainDeliverabilityCampaigns` operation. This token indicates the
 #' position of a campaign in the list of campaigns.
 #' @param PageSize The maximum number of results to include in response to a single call to
@@ -1285,8 +1285,8 @@ sesv2_list_domain_deliverability_campaigns <- function(StartDate, EndDate, Subsc
 #' Returns a list of all of the email identities that are associated with
 #' your AWS account. An identity can be either an email address or a
 #' domain. This operation returns identities that are verified as well as
-#' those that aren\'t. This operation returns identities that are
-#' associated with Amazon SES and Amazon Pinpoint.
+#' those that aren't. This operation returns identities that are associated
+#' with Amazon SES and Amazon Pinpoint.
 #'
 #' @usage
 #' sesv2_list_email_identities(NextToken, PageSize)
@@ -1394,9 +1394,9 @@ sesv2_list_suppressed_destinations <- function(Reasons = NULL, StartDate = NULL,
 #' specified resource
 #'
 #' Retrieve a list of the tags (keys and values) that are associated with a
-#' specified resource. AÂ *tag*Â is a label that you optionally define and
-#' associate with a resource. Each tag consists of a requiredÂ *tag key*Â and
-#' an optional associatedÂ *tag value*. A tag key is a general label that
+#' specified resource. A *tag* is a label that you optionally define and
+#' associate with a resource. Each tag consists of a required *tag key* and
+#' an optional associated *tag value*. A tag key is a general label that
 #' acts as a category for more specific tag values. A tag value acts as a
 #' descriptor within a tag key.
 #'
@@ -1481,11 +1481,11 @@ sesv2_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupEnabled =
 #' @usage
 #' sesv2_put_account_sending_attributes(SendingEnabled)
 #'
-#' @param SendingEnabled Enables or disables your account\'s ability to send email. Set to `true`
+#' @param SendingEnabled Enables or disables your account's ability to send email. Set to `true`
 #' to enable email sending, or set to `false` to disable email sending.
 #' 
-#' If AWS paused your account\'s ability to send email, you can\'t use this
-#' operation to resume your account\'s ability to send email.
+#' If AWS paused your account's ability to send email, you can't use this
+#' operation to resume your account's ability to send email.
 #'
 #' @section Request syntax:
 #' ```
@@ -1525,11 +1525,11 @@ sesv2_put_account_sending_attributes <- function(SendingEnabled = NULL) {
 #' automatically added to the suppression list for your account. This list
 #' can contain any or all of the following:
 #' 
-#' -   `COMPLAINT` -- Amazon SES adds an email address to the suppression
+#' -   `COMPLAINT` – Amazon SES adds an email address to the suppression
 #'     list for your account when a message sent to that address results in
 #'     a complaint.
 #' 
-#' -   `BOUNCE` -- Amazon SES adds an email address to the suppression list
+#' -   `BOUNCE` – Amazon SES adds an email address to the suppression list
 #'     for your account when a message sent to that address results in a
 #'     hard bounce.
 #'
@@ -1578,7 +1578,7 @@ sesv2_put_account_suppression_attributes <- function(SuppressedReasons = NULL) {
 #' to use Transport Layer Security (TLS). If the value is `Require`,
 #' messages are only delivered if a TLS connection can be established. If
 #' the value is `Optional`, messages can be delivered in plain text if a
-#' TLS connection can\'t be established.
+#' TLS connection can't be established.
 #' @param SendingPoolName The name of the dedicated IP pool that you want to associate with the
 #' configuration set.
 #'
@@ -1713,11 +1713,11 @@ sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, Se
 #' added to the suppression list for your account. This list can contain
 #' any or all of the following:
 #' 
-#' -   `COMPLAINT` -- Amazon SES adds an email address to the suppression
+#' -   `COMPLAINT` – Amazon SES adds an email address to the suppression
 #'     list for your account when a message sent to that address results in
 #'     a complaint.
 #' 
-#' -   `BOUNCE` -- Amazon SES adds an email address to the suppression list
+#' -   `BOUNCE` – Amazon SES adds an email address to the suppression list
 #'     for your account when a message sent to that address results in a
 #'     hard bounce.
 #'
@@ -1807,8 +1807,8 @@ sesv2_put_configuration_set_tracking_options <- function(ConfigurationSetName, C
 #' sesv2_put_dedicated_ip_in_pool(Ip, DestinationPoolName)
 #'
 #' @param Ip &#91;required&#93; The IP address that you want to move to the dedicated IP pool. The value
-#' you specify has to be a dedicated IP address that\'s associated with
-#' your AWS account.
+#' you specify has to be a dedicated IP address that's associated with your
+#' AWS account.
 #' @param DestinationPoolName &#91;required&#93; The name of the IP pool that you want to add the dedicated IP address
 #' to. You have to specify an IP pool that already exists.
 #'
@@ -2011,11 +2011,11 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
 #' @param SigningAttributesOrigin &#91;required&#93; The method that you want to use to configure DKIM for the identity.
 #' There are two possible values:
 #' 
-#' -   `AWS_SES` -- Configure DKIM for the identity by using [Easy
+#' -   `AWS_SES` – Configure DKIM for the identity by using [Easy
 #'     DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
 #' 
-#' -   `EXTERNAL` -- Configure DKIM for the identity by using Bring Your
-#'     Own DKIM (BYODKIM).
+#' -   `EXTERNAL` – Configure DKIM for the identity by using Bring Your Own
+#'     DKIM (BYODKIM).
 #' @param SigningAttributes An object that contains information about the private key and selector
 #' that you want to use to configure DKIM for the identity. This object is
 #' only required if you want to configure Bring Your Own DKIM (BYODKIM) for
@@ -2063,8 +2063,8 @@ sesv2_put_email_identity_dkim_signing_attributes <- function(EmailIdentity, Sign
 #' complaint events occur. These notifications are sent to the address that
 #' you specified in the `Return-Path` header of the original email.
 #' 
-#' You\'re required to have a method of tracking bounces and complaints. If
-#' you haven\'t set up another mechanism for receiving bounce or complaint
+#' You're required to have a method of tracking bounces and complaints. If
+#' you haven't set up another mechanism for receiving bounce or complaint
 #' notifications (for example, by setting up an event destination), you
 #' receive an email notification when these events occur (even if this
 #' setting is disabled).
@@ -2081,8 +2081,8 @@ sesv2_put_email_identity_dkim_signing_attributes <- function(EmailIdentity, Sign
 #' complaint events occur. These notifications are sent to the address that
 #' you specified in the `Return-Path` header of the original email.
 #' 
-#' You\'re required to have a method of tracking bounces and complaints. If
-#' you haven\'t set up another mechanism for receiving bounce or complaint
+#' You're required to have a method of tracking bounces and complaints. If
+#' you haven't set up another mechanism for receiving bounce or complaint
 #' notifications (for example, by setting up an event destination), you
 #' receive an email notification when these events occur (even if this
 #' setting is disabled).
@@ -2132,15 +2132,15 @@ sesv2_put_email_identity_feedback_attributes <- function(EmailIdentity, EmailFor
 #' 
 #' -   It has to be a subdomain of the verified identity.
 #' 
-#' -   It can\'t be used to receive email.
+#' -   It can't be used to receive email.
 #' 
-#' -   It can\'t be used in a \"From\" address if the MAIL FROM domain is a
+#' -   It can't be used in a "From" address if the MAIL FROM domain is a
 #'     destination for feedback forwarding emails.
-#' @param BehaviorOnMxFailure The action that you want to take if the required MX record isn\'t found
+#' @param BehaviorOnMxFailure The action that you want to take if the required MX record isn't found
 #' when you send an email. When you set this value to `UseDefaultValue`,
 #' the mail is sent using *amazonses.com* as the MAIL FROM domain. When you
 #' set this value to `RejectMessage`, the Amazon SES API v2 returns a
-#' `MailFromDomainNotVerified` error, and doesn\'t attempt to deliver the
+#' `MailFromDomainNotVerified` error, and doesn't attempt to deliver the
 #' email.
 #' 
 #' These behaviors are taken when the custom MAIL FROM domain configuration
@@ -2220,11 +2220,11 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' Sends an email message. You can use the Amazon SES API v2 to send two
 #' types of messages:
 #' 
-#' -   **Simple** -- A standard email message. When you create this type of
+#' -   **Simple** – A standard email message. When you create this type of
 #'     message, you specify the sender, the recipient, and the message
 #'     body, and Amazon SES assembles the message for you.
 #' 
-#' -   **Raw** -- A raw, MIME-formatted email message. When you send this
+#' -   **Raw** – A raw, MIME-formatted email message. When you send this
 #'     type of email, you have to specify all of the message headers, as
 #'     well as the message body. You can use this message type to send
 #'     messages that contain attachments. The message that you specify has
@@ -2235,10 +2235,10 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #'   FeedbackForwardingEmailAddress, Content, EmailTags,
 #'   ConfigurationSetName)
 #'
-#' @param FromEmailAddress The email address that you want to use as the \"From\" address for the
+#' @param FromEmailAddress The email address that you want to use as the "From" address for the
 #' email. The address that you specify has to be verified.
 #' @param Destination &#91;required&#93; An object that contains the recipients of the email message.
-#' @param ReplyToAddresses The \"Reply-to\" email addresses for the message. When the recipient
+#' @param ReplyToAddresses The "Reply-to" email addresses for the message. When the recipient
 #' replies to the message, each Reply-to address receives the reply.
 #' @param FeedbackForwardingEmailAddress The address that you want bounce and complaint notifications to be sent
 #' to.
@@ -2328,12 +2328,12 @@ sesv2_send_email <- function(FromEmailAddress = NULL, Destination, ReplyToAddres
 #' Add one or more tags (keys and values) to a specified resource
 #'
 #' Add one or more tags (keys and values) to a specified resource. A
-#' *tag*Â is a label that you optionally define and associate with a
+#' *tag* is a label that you optionally define and associate with a
 #' resource. Tags can help you categorize and manage resources in different
 #' ways, such as by purpose, owner, environment, or other criteria. A
 #' resource can have as many as 50 tags.
 #' 
-#' Each tag consists of a requiredÂ *tag key*Â and an associatedÂ *tag value*,
+#' Each tag consists of a required *tag key* and an associated *tag value*,
 #' both of which you define. A tag key is a general label that acts as a
 #' category for more specific tag values. A tag value acts as a descriptor
 #' within a tag key.

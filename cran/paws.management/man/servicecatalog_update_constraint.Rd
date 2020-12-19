@@ -24,7 +24,7 @@ constraint type as follows:
 \subsection{LAUNCH}{
 
 You are required to specify either the \code{RoleArn} or the \code{LocalRoleName}
-but can\'t use both.
+but can't use both.
 
 Specify the \code{RoleArn} property as follows:
 

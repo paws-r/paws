@@ -13,7 +13,7 @@ kms_create_key(Policy, Description, KeyUsage, CustomerMasterKeySpec,
 
 If you provide a key policy, it must meet the following criteria:
 \itemize{
-\item If you don\'t set \code{BypassPolicyLockoutSafetyCheck} to true, the key
+\item If you don't set \code{BypassPolicyLockoutSafetyCheck} to true, the key
 policy must allow the principal that is making the \code{CreateKey}
 request to make a subsequent PutKeyPolicy request on the CMK. This
 reduces the risk that the CMK becomes unmanageable. For more
@@ -42,7 +42,7 @@ for a task.}
 
 \item{KeyUsage}{Determines the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}
 for which you can use the CMK. The default value is \code{ENCRYPT_DECRYPT}.
-This parameter is required only for asymmetric CMKs. You can\'t change
+This parameter is required only for asymmetric CMKs. You can't change
 the \code{KeyUsage} value after the CMK is created.
 
 Select only one valid value.
@@ -62,7 +62,7 @@ in the \emph{AWS Key Management Service Developer Guide}.
 The \code{CustomerMasterKeySpec} determines whether the CMK contains a
 symmetric key or an asymmetric key pair. It also determines the
 encryption algorithms or signing algorithms that the CMK supports. You
-can\'t change the \code{CustomerMasterKeySpec} after the CMK is created. To
+can't change the \code{CustomerMasterKeySpec} after the CMK is created. To
 further restrict the algorithms that can be used with the CMK, use a
 condition key in its key policy or IAM policy. For more information, see
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm}{kms:EncryptionAlgorithm}
@@ -197,13 +197,13 @@ To create different types of CMKs, use the following guidance:
 To create an asymmetric CMK, use the \code{CustomerMasterKeySpec} parameter
 to specify the type of key material in the CMK. Then, use the \code{KeyUsage}
 parameter to determine whether the CMK will be used to encrypt and
-decrypt or sign and verify. You can\'t change these properties after the
+decrypt or sign and verify. You can't change these properties after the
 CMK is created.
 }
 
 \subsection{Symmetric CMKs}{
 
-When creating a symmetric CMK, you don\'t need to specify the
+When creating a symmetric CMK, you don't need to specify the
 \code{CustomerMasterKeySpec} or \code{KeyUsage} parameters. The default value for
 \code{CustomerMasterKeySpec}, \code{SYMMETRIC_DEFAULT}, and the default value for
 \code{KeyUsage}, \code{ENCRYPT_DECRYPT}, are the only valid values for symmetric

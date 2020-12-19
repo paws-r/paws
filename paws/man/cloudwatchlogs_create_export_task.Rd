@@ -13,7 +13,7 @@ cloudwatchlogs_create_export_task(taskName, logGroupName,
 
 \item{logGroupName}{[required] The name of the log group.}
 
-\item{logStreamNamePrefix}{Export only log streams that match the provided prefix. If you don\'t
+\item{logStreamNamePrefix}{Export only log streams that match the provided prefix. If you don't
 specify a value, no prefix filter is applied.}
 
 \item{from}{[required] The start time of the range for the request, expressed as the number of
@@ -28,7 +28,7 @@ later than this time are not exported.}
 the same AWS region.}
 
 \item{destinationPrefix}{The prefix used as the start of the key for every object exported. If
-you don\'t specify a value, the default is \code{exportedlogs}.}
+you don't specify a value, the default is \code{exportedlogs}.}
 }
 \description{
 Creates an export task, which allows you to efficiently export data from

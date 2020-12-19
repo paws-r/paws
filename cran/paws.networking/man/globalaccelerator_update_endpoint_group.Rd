@@ -36,7 +36,7 @@ TCP.}
 \item{HealthCheckPath}{If the protocol is HTTP/S, then this specifies the path that is the
 destination for health check targets. The default value is slash (/).}
 
-\item{HealthCheckIntervalSeconds}{The time---10 seconds or 30 seconds---between each health check for an
+\item{HealthCheckIntervalSeconds}{The time—10 seconds or 30 seconds—between each health check for an
 endpoint. The default value is 30.}
 
 \item{ThresholdCount}{The number of consecutive health checks required to set the state of a

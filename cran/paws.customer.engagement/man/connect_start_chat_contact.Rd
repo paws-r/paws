@@ -35,7 +35,7 @@ API in the Amazon Connect Participant Service.
 }
 \details{
 When a new chat contact is successfully created, clients need to
-subscribe to the participant's connection for the created chat within 5
+subscribe to the participant’s connection for the created chat within 5
 minutes. This is achieved by invoking
 \href{https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html}{CreateParticipantConnection}
 with WEBSOCKET and CONNECTION\\_CREDENTIALS.

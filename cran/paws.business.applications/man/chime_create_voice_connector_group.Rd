@@ -13,7 +13,7 @@ chime_create_voice_connector_group(Name, VoiceConnectorItems)
 \item{VoiceConnectorItems}{The Amazon Chime Voice Connectors to route inbound calls to.}
 }
 \description{
-Creates an Amazon Chime Voice Connector group under the administrator\'s
+Creates an Amazon Chime Voice Connector group under the administrator's
 AWS account. You can associate Amazon Chime Voice Connectors with the
 Amazon Chime Voice Connector group by including \code{VoiceConnectorItems} in
 the request.

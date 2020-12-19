@@ -28,7 +28,7 @@ DescribeAffectedEntitiesForOrganization operation.
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
 EnableHealthServiceAccessForOrganization operation from your
-organization\'s master account.
+organization's master account.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_event_details_for_organization(

@@ -13,14 +13,14 @@ s3_get_bucket_policy(Bucket)
 Returns the policy of a specified bucket. If you are using an identity
 other than the root user of the AWS account that owns the bucket, the
 calling identity must have the \code{GetBucketPolicy} permissions on the
-specified bucket and belong to the bucket owner\'s account in order to
+specified bucket and belong to the bucket owner's account in order to
 use this operation.
 }
 \details{
-If you don\'t have \code{GetBucketPolicy} permissions, Amazon S3 returns a
+If you don't have \code{GetBucketPolicy} permissions, Amazon S3 returns a
 \verb{403 Access Denied} error. If you have the correct permissions, but
-you\'re not using an identity that belongs to the bucket owner\'s
-account, Amazon S3 returns a \verb{405 Method Not Allowed} error.
+you're not using an identity that belongs to the bucket owner's account,
+Amazon S3 returns a \verb{405 Method Not Allowed} error.
 
 As a security precaution, the root user of the AWS account that owns a
 bucket can always use this operation, even if the policy explicitly

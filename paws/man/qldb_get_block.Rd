@@ -29,7 +29,7 @@ provided.
 For information about the data contents in a block, see \href{https://docs.aws.amazon.com/qldb/latest/developerguide/journal-contents.html}{Journal contents}
 in the \emph{Amazon QLDB Developer Guide}.
 
-If the specified ledger doesn\'t exist or is in \code{DELETING} status, then
+If the specified ledger doesn't exist or is in \code{DELETING} status, then
 throws \code{ResourceNotFoundException}.
 
 If the specified ledger is in \code{CREATING} status, then throws

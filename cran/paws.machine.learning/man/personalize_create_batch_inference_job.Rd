@@ -21,7 +21,7 @@ information on using filters, see Using Filters with Amazon Personalize.}
 \item{jobInput}{[required] The Amazon S3 path that leads to the input file to base your
 recommendations on. The input material must be in JSON format.}
 
-\item{jobOutput}{[required] The path to the Amazon S3 bucket where the job\'s output will be stored.}
+\item{jobOutput}{[required] The path to the Amazon S3 bucket where the job's output will be stored.}
 
 \item{roleArn}{[required] The ARN of the Amazon Identity and Access Management role that has
 permissions to read and write to your input and out Amazon S3 buckets

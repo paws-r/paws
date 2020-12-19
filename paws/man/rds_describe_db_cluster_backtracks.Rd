@@ -15,7 +15,7 @@ Constraints:
 \itemize{
 \item Must contain from 1 to 63 alphanumeric characters or hyphens.
 \item First character must be a letter.
-\item Can\'t end with a hyphen or contain two consecutive hyphens.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{my-cluster1}}

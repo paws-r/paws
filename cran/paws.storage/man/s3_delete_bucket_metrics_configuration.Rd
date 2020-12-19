@@ -15,7 +15,7 @@ s3_delete_bucket_metrics_configuration(Bucket, Id)
 \description{
 Deletes a metrics configuration for the Amazon CloudWatch request
 metrics (specified by the metrics configuration ID) from the bucket.
-Note that this doesn\'t include the daily storage metrics.
+Note that this doesn't include the daily storage metrics.
 }
 \details{
 To use this operation, you must have permissions to perform the

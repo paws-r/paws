@@ -13,14 +13,12 @@ none is provided, the AWS account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database where the partitions reside.}
 
-\item{TableName}{[required] The name of the partitions\' table.}
+\item{TableName}{[required] The name of the partitions' table.}
 
 \item{Expression}{An expression that filters the partitions to be returned.
 
 The expression uses SQL syntax similar to the SQL \code{WHERE} filter clause.
-The SQL statement parser
-\href{http://jsqlparser.sourceforge.net/home.php}{JSQLParser} parses the
-expression.
+The SQL statement parser JSQLParser parses the expression.
 
 \emph{Operators}: The following are the operators that you can use in the
 \code{Expression} API call:
@@ -29,49 +27,49 @@ expression.
 Checks whether the values of the two operands are equal; if yes, then
 the condition becomes true.
 
-Example: Assume \'variable a\' holds 10 and \'variable b\' holds 20.
+Example: Assume 'variable a' holds 10 and 'variable b' holds 20.
 
 (a = b) is not true.
 }
 
-\subsection{\\< \\>}{
+\subsection{< >}{
 
 Checks whether the values of two operands are equal; if the values are
 not equal, then the condition becomes true.
 
-Example: (a \\< \\> b) is true.
+Example: (a < > b) is true.
 }
 
-\subsection{\\>}{
+\subsection{>}{
 
 Checks whether the value of the left operand is greater than the value
 of the right operand; if yes, then the condition becomes true.
 
-Example: (a \\> b) is not true.
+Example: (a > b) is not true.
 }
 
-\subsection{\\<}{
+\subsection{<}{
 
 Checks whether the value of the left operand is less than the value of
 the right operand; if yes, then the condition becomes true.
 
-Example: (a \\< b) is true.
+Example: (a < b) is true.
 }
 
-\subsection{\\>=}{
+\subsection{>=}{
 
 Checks whether the value of the left operand is greater than or equal to
 the value of the right operand; if yes, then the condition becomes true.
 
-Example: (a \\>= b) is not true.
+Example: (a >= b) is not true.
 }
 
-\subsection{\\<=}{
+\subsection{<=}{
 
 Checks whether the value of the left operand is less than or equal to
 the value of the right operand; if yes, then the condition becomes true.
 
-Example: (a \\<= b) is true.
+Example: (a <= b) is true.
 }
 
 \subsection{AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL}{
@@ -104,7 +102,7 @@ be compatible with the catalog partitions.
 \item{NextToken}{A continuation token, if this is not the first call to retrieve these
 partitions.}
 
-\item{Segment}{The segment of the table\'s partitions to scan in this request.}
+\item{Segment}{The segment of the table's partitions to scan in this request.}
 
 \item{MaxResults}{The maximum number of partitions to return in a single response.}
 }

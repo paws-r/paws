@@ -2,8 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_update_game_server_group}
 \alias{gamelift_update_game_server_group}
-\title{THIS ACTION IS PART OF AMAZON GAMELIFT FLEETIQ WITH GAME SERVER GROUPS,
-WHICH IS IN PREVIEW RELEASE AND IS SUBJECT TO CHANGE}
+\title{This action is part of Amazon GameLift FleetIQ with game server groups,
+which is in preview release and is subject to change}
 \usage{
 gamelift_update_game_server_group(GameServerGroupName, RoleArn,
   InstanceDefinitions, GameServerProtectionPolicy, BalancingStrategy)
@@ -39,11 +39,11 @@ instances in a Region become unavailable or are not viable for game
 hosting. Once triggered, this method remains active until Spot instances
 can once again be used. Method options include:
 \itemize{
-\item SPOT\\_ONLY \\-- If Spot instances are unavailable, the game server
+\item SPOT\\_ONLY -- If Spot instances are unavailable, the game server
 group provides no hosting capacity. No new instances are started,
 and the existing nonviable Spot instances are terminated (once
 current gameplay ends) and not replaced.
-\item SPOT\\_PREFERRED \\-- If Spot instances are unavailable, the game
+\item SPOT\\_PREFERRED -- If Spot instances are unavailable, the game
 server group continues to provide hosting capacity by using
 On-Demand instances. Existing nonviable Spot instances are
 terminated (once current gameplay ends) and replaced with new

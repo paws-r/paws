@@ -8,11 +8,11 @@ NULL
 #' This is the latest version of the **AWS WAF** API, released in November,
 #' 2019. The names of the entities that you use to access this API, like
 #' endpoints and namespaces, all have the versioning information added,
-#' like \"V2\" or \"v2\", to distinguish from the prior version. We
-#' recommend migrating your resources to this version, because it has a
-#' number of significant improvements.
+#' like "V2" or "v2", to distinguish from the prior version. We recommend
+#' migrating your resources to this version, because it has a number of
+#' significant improvements.
 #' 
-#' If you used AWS WAF prior to this release, you can\'t use this AWS WAFV2
+#' If you used AWS WAF prior to this release, you can't use this AWS WAFV2
 #' API to access any AWS WAF resources that you created before. You can
 #' access your old rules, web ACLs, and other AWS WAF resources only
 #' through the AWS WAF Classic APIs. The AWS WAF Classic APIs have retained
@@ -49,8 +49,8 @@ NULL
 #' -   For AWS CloudFront applications, you must use the API endpoint
 #'     listed for US East (N. Virginia): us-east-1.
 #' 
-#' Alternatively, you can use one of the AWS SDKs to access an API that\'s
-#' tailored to the programming language or platform that you\'re using. For
+#' Alternatively, you can use one of the AWS SDKs to access an API that's
+#' tailored to the programming language or platform that you're using. For
 #' more information, see [AWS SDKs](http://aws.amazon.com/tools/#SDKs).
 #' 
 #' We currently provide two versions of the AWS WAF API: this API and the

@@ -48,7 +48,7 @@ name as a parameter.
 }
 \details{
 By default, only the events occurring within the last hour are returned;
-however, you can retrieve up to 14 days\' worth of events if necessary.
+however, you can retrieve up to 14 days' worth of events if necessary.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_events(

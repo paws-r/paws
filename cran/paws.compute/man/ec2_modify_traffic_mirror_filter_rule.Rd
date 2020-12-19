@@ -12,7 +12,7 @@ ec2_modify_traffic_mirror_filter_rule(TrafficMirrorFilterRuleId,
 \arguments{
 \item{TrafficMirrorFilterRuleId}{[required] The ID of the Traffic Mirror rule.}
 
-\item{TrafficDirection}{The type of traffic (\code{ingress} \\| \code{egress}) to assign to the rule.}
+\item{TrafficDirection}{The type of traffic (\code{ingress} | \code{egress}) to assign to the rule.}
 
 \item{RuleNumber}{The number of the Traffic Mirror rule. This number must be unique for
 each Traffic Mirror rule in a given direction. The rules are processed

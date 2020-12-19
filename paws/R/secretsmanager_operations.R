@@ -58,20 +58,20 @@ NULL
 #' secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
@@ -121,13 +121,13 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' secret.
 #' 
 #' Secrets Manager stores the encrypted secret data in one of a collection
-#' of \"versions\" associated with the secret. Each version contains a copy
+#' of "versions" associated with the secret. Each version contains a copy
 #' of the encrypted secret data. Each version is associated with one or
-#' more \"staging labels\" that identify where the version is in the
-#' rotation cycle. The `SecretVersionsToStages` field of the secret
-#' contains the mapping of staging labels to the active versions of the
-#' secret. Versions without a staging label are considered deprecated and
-#' not included in the list.
+#' more "staging labels" that identify where the version is in the rotation
+#' cycle. The `SecretVersionsToStages` field of the secret contains the
+#' mapping of staging labels to the active versions of the secret. Versions
+#' without a staging label are considered deprecated and not included in
+#' the list.
 #' 
 #' You provide the secret data to be encrypted by putting text in either
 #' the `SecretString` parameter or binary data in the `SecretBinary`
@@ -138,26 +138,26 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' 
 #' -   If you call an operation to encrypt or decrypt the `SecretString` or
 #'     `SecretBinary` for a secret in the same account as the calling user
-#'     and that secret doesn\'t specify a AWS KMS encryption key, Secrets
-#'     Manager uses the account\'s default AWS managed customer master key
-#'     (CMK) with the alias `aws/secretsmanager`. If this key doesn\'t
+#'     and that secret doesn't specify a AWS KMS encryption key, Secrets
+#'     Manager uses the account's default AWS managed customer master key
+#'     (CMK) with the alias `aws/secretsmanager`. If this key doesn't
 #'     already exist in your account then Secrets Manager creates it for
 #'     you automatically. All users and roles in the same AWS account
 #'     automatically have access to use the default CMK. Note that if an
-#'     Secrets Manager API call results in AWS creating the account\'s
+#'     Secrets Manager API call results in AWS creating the account's
 #'     AWS-managed CMK, it can result in a one-time significant delay in
 #'     returning the result.
 #' 
 #' -   If the secret resides in a different AWS account from the
 #'     credentials calling an API that requires encryption or decryption of
 #'     the secret value then you must create and use a custom AWS KMS CMK
-#'     because you can\'t access the default CMK for the account using
+#'     because you can't access the default CMK for the account using
 #'     credentials from a different AWS account. Store the ARN of the CMK
 #'     in the secret when you create the secret or when you update it by
 #'     including it in the `KMSKeyId`. If you call an API that must encrypt
 #'     or decrypt `SecretString` or `SecretBinary` using credentials from a
 #'     different account then the AWS KMS key policy must grant
-#'     cross-account access to that other account\'s user or role for both
+#'     cross-account access to that other account's user or role for both
 #'     the kms:GenerateDataKey and kms:Decrypt operations.
 #' 
 #' **Minimum permissions**
@@ -216,7 +216,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' If you use the AWS CLI or one of the AWS SDK to call this operation,
 #' then you can leave this parameter empty. The CLI or SDK generates a
 #' random UUID for you and includes it as the value for this parameter in
-#' the request. If you don\'t use the SDK and instead generate a raw HTTP
+#' the request. If you don't use the SDK and instead generate a raw HTTP
 #' request to the Secrets Manager service endpoint, then you must generate
 #' a `ClientRequestToken` yourself for the new version and include the
 #' value in the request.
@@ -227,14 +227,14 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' [UUID-type](https://wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness of your versions within the specified secret.
 #' 
-#' -   If the `ClientRequestToken` value isn\'t already associated with a
+#' -   If the `ClientRequestToken` value isn't already associated with a
 #'     version of the secret then a new version of the secret is created.
 #' 
 #' -   If a version with this value already exists and the version
 #'     `SecretString` and `SecretBinary` values are the same as those in
 #'     the request, then the request is ignored.
 #' 
-#' -   If a version with this value already exists and that version\'s
+#' -   If a version with this value already exists and that version's
 #'     `SecretString` and `SecretBinary` values are different from those in
 #'     the request then the request fails because you cannot modify an
 #'     existing version. Instead, use PutSecretValue to create a new
@@ -250,11 +250,11 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' If you need to reference a CMK in a different account, you can use only
 #' the key ARN or the alias ARN.
 #' 
-#' If you don\'t specify this value, then Secrets Manager defaults to using
-#' the AWS account\'s default CMK (the one named `aws/secretsmanager`). If
-#' a AWS KMS CMK with that name doesn\'t yet exist, then Secrets Manager
+#' If you don't specify this value, then Secrets Manager defaults to using
+#' the AWS account's default CMK (the one named `aws/secretsmanager`). If a
+#' AWS KMS CMK with that name doesn't yet exist, then Secrets Manager
 #' creates it for you automatically the first time it needs to encrypt a
-#' version\'s `SecretString` or `SecretBinary` fields.
+#' version's `SecretString` or `SecretBinary` fields.
 #' 
 #' You can use the account default CMK to encrypt and decrypt only if you
 #' call this operation using credentials from the same account that owns
@@ -296,12 +296,12 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' parameter, you should use single quotes to avoid confusion with the
 #' double quotes required in the JSON text.
 #' @param Tags (Optional) Specifies a list of user-defined tags that are attached to
-#' the secret. Each tag is a \"Key\" and \"Value\" pair of strings. This
+#' the secret. Each tag is a "Key" and "Value" pair of strings. This
 #' operation only appends tags to the existing list of tags. To remove
 #' tags, you must use UntagResource.
 #' 
 #' -   Secrets Manager tag key names are case sensitive. A tag with the key
-#'     \"ABC\" is a different tag from one with key \"abc\".
+#'     "ABC" is a different tag from one with key "abc".
 #' 
 #' -   If you check tags in IAM policy `Condition` elements as part of your
 #'     security strategy, then adding or removing a tag can change
@@ -323,16 +323,16 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' -   Maximum number of tags per secret---50
+#' -   Maximum number of tags per secret—50
 #' 
-#' -   Maximum key length---127 Unicode characters in UTF-8
+#' -   Maximum key length—127 Unicode characters in UTF-8
 #' 
-#' -   Maximum value length---255 Unicode characters in UTF-8
+#' -   Maximum value length—255 Unicode characters in UTF-8
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
 #' -   Do not use the `aws:` prefix in your tag names or values because AWS
-#'     reserves it for AWS use. You can\'t edit or delete tag names or
+#'     reserves it for AWS use. You can't edit or delete tag names or
 #'     values with this prefix. Tags with this prefix do not count against
 #'     your tags per secret limit.
 #' 
@@ -407,7 +407,7 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #' 
 #' -   To attach a resource policy to a secret, use PutResourcePolicy.
 #' 
-#' -   To retrieve the current resource-based policy that\'s attached to a
+#' -   To retrieve the current resource-based policy that's attached to a
 #'     secret, use GetResourcePolicy.
 #' 
 #' -   To list all of the currently available secrets, use ListSecrets.
@@ -420,20 +420,20 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #' friendly name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
@@ -478,7 +478,7 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #'
 #' Deletes an entire secret and all of its versions. You can optionally
 #' include a recovery window during which you can restore the secret. If
-#' you don\'t specify a recovery window value, the operation defaults to 30
+#' you don't specify a recovery window value, the operation defaults to 30
 #' days. Secrets Manager attaches a `DeletionDate` stamp to the secret that
 #' specifies the end of the recovery window. At the end of the recovery
 #' window, Secrets Manager deletes the secret permanently.
@@ -524,30 +524,30 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' Amazon Resource Name (ARN) or the friendly name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
 #' @param RecoveryWindowInDays (Optional) Specifies the number of days that Secrets Manager waits
-#' before it can delete the secret. You can\'t use both this parameter and
+#' before it can delete the secret. You can't use both this parameter and
 #' the `ForceDeleteWithoutRecovery` parameter in the same API call.
 #' 
 #' This value can range from 7 to 30 days. The default value is 30.
 #' @param ForceDeleteWithoutRecovery (Optional) Specifies that the secret is to be deleted without any
-#' recovery window. You can\'t use both this parameter and the
+#' recovery window. You can't use both this parameter and the
 #' `RecoveryWindowInDays` parameter in the same API call.
 #' 
 #' An asynchronous background process performs the actual deletion, so
@@ -634,20 +634,20 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #' the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
@@ -719,7 +719,7 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' that punctuation characters can be included.
 #' 
 #' The following are the punctuation characters that *can* be included in
-#' the generated password if you don\'t explicitly exclude them with
+#' the generated password if you don't explicitly exclude them with
 #' `ExcludeCharacters` or `ExcludePunctuation`:
 #' 
 #' `` ! \" # $ % &amp; \' ( ) * + , - . / : ; &lt; = &gt; ? @@ \\[ \\ \\] ^ _ \` \{ | \} ~ ``
@@ -815,20 +815,20 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #' Name (ARN) or the friendly name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
@@ -885,7 +885,7 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' 
 #' -   kms:Decrypt - required only if you use a customer-managed AWS KMS
 #'     key to encrypt the secret. You do not need this permission to use
-#'     the account\'s default AWS managed CMK for Secrets Manager.
+#'     the account's default AWS managed CMK for Secrets Manager.
 #' 
 #' **Related operations**
 #' 
@@ -903,26 +903,26 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
 #' @param VersionId Specifies the unique identifier of the version of the secret that you
-#' want to retrieve. If you specify this parameter then don\'t specify
-#' `VersionStage`. If you don\'t specify either a `VersionStage` or
+#' want to retrieve. If you specify this parameter then don't specify
+#' `VersionStage`. If you don't specify either a `VersionStage` or
 #' `VersionId` then the default is to perform the operation on the version
 #' with the `VersionStage` value of `AWSCURRENT`.
 #' 
@@ -933,8 +933,8 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' label attached to the version.
 #' 
 #' Staging labels are used to keep track of different versions during the
-#' rotation process. If you use this parameter then don\'t specify
-#' `VersionId`. If you don\'t specify either a `VersionStage` or
+#' rotation process. If you use this parameter then don't specify
+#' `VersionId`. If you don't specify either a `VersionStage` or
 #' `VersionId`, then the default is to perform the operation on the version
 #' with the `VersionStage` value of `AWSCURRENT`.
 #'
@@ -1013,38 +1013,37 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
 #' @param MaxResults (Optional) Limits the number of results you want to include in the
-#' response. If you don\'t include this parameter, it defaults to a value
-#' that\'s specific to the operation. If additional items exist beyond the
+#' response. If you don't include this parameter, it defaults to a value
+#' that's specific to the operation. If additional items exist beyond the
 #' maximum you specify, the `NextToken` response element is present and has
-#' a value (isn\'t null). Include that value as the `NextToken` request
+#' a value (isn't null). Include that value as the `NextToken` request
 #' parameter in the next call to the operation to get the next part of the
 #' results. Note that Secrets Manager might return fewer results than the
 #' maximum even when there are more results available. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
 #' @param NextToken (Optional) Use this parameter in a request if you receive a `NextToken`
-#' response in a previous request indicating there\'s more output
-#' available. In a subsequent call, set it to the value of the previous
-#' call `NextToken` response to indicate where the output should continue
-#' from.
+#' response in a previous request indicating there's more output available.
+#' In a subsequent call, set it to the value of the previous call
+#' `NextToken` response to indicate where the output should continue from.
 #' @param IncludeDeprecated (Optional) Specifies that you want the results to include versions that
 #' do not have any staging labels attached to them. Such versions are
 #' considered deprecated and are subject to deletion by Secrets Manager as
@@ -1120,20 +1119,19 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' secretsmanager_list_secrets(MaxResults, NextToken, Filters, SortOrder)
 #'
 #' @param MaxResults (Optional) Limits the number of results you want to include in the
-#' response. If you don\'t include this parameter, it defaults to a value
-#' that\'s specific to the operation. If additional items exist beyond the
+#' response. If you don't include this parameter, it defaults to a value
+#' that's specific to the operation. If additional items exist beyond the
 #' maximum you specify, the `NextToken` response element is present and has
-#' a value (isn\'t null). Include that value as the `NextToken` request
+#' a value (isn't null). Include that value as the `NextToken` request
 #' parameter in the next call to the operation to get the next part of the
 #' results. Note that Secrets Manager might return fewer results than the
 #' maximum even when there are more results available. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
 #' @param NextToken (Optional) Use this parameter in a request if you receive a `NextToken`
-#' response in a previous request indicating there\'s more output
-#' available. In a subsequent call, set it to the value of the previous
-#' call `NextToken` response to indicate where the output should continue
-#' from.
+#' response in a previous request indicating there's more output available.
+#' In a subsequent call, set it to the value of the previous call
+#' `NextToken` response to indicate where the output should continue from.
 #' @param Filters Lists the secret request filters.
 #' @param SortOrder Lists secrets in the requested order.
 #'
@@ -1186,8 +1184,8 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #'
 #' Attaches the contents of the specified resource-based permission policy
 #' to a secret. A resource-based policy is optional. Alternatively, you can
-#' use IAM identity-based policies that specify the secret\'s Amazon
-#' Resource Name (ARN) in the policy statement\'s `Resources` element. You
+#' use IAM identity-based policies that specify the secret's Amazon
+#' Resource Name (ARN) in the policy statement's `Resources` element. You
 #' can also use a combination of both identity-based and resource-based
 #' policies. The affected users and roles receive the permissions that are
 #' permitted by all of the relevant policies. For more information, see
@@ -1209,8 +1207,8 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' -   To retrieve the resource policy attached to a secret, use
 #'     GetResourcePolicy.
 #' 
-#' -   To delete the resource-based policy that\'s attached to a secret,
-#'     use DeleteResourcePolicy.
+#' -   To delete the resource-based policy that's attached to a secret, use
+#'     DeleteResourcePolicy.
 #' 
 #' -   To list all of the currently available secrets, use ListSecrets.
 #'
@@ -1222,24 +1220,24 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' to. You can specify either the ARN or the friendly name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
-#' @param ResourcePolicy &#91;required&#93; A JSON-formatted string that\'s constructed according to the grammar and
+#' @param ResourcePolicy &#91;required&#93; A JSON-formatted string that's constructed according to the grammar and
 #' syntax for an AWS resource-based policy. The policy in the string
 #' identifies who can access or manage this secret and its versions. For
 #' information on how to format a JSON parameter for the various command
@@ -1325,26 +1323,26 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' 
 #' -   If you call an operation to encrypt or decrypt the `SecretString` or
 #'     `SecretBinary` for a secret in the same account as the calling user
-#'     and that secret doesn\'t specify a AWS KMS encryption key, Secrets
-#'     Manager uses the account\'s default AWS managed customer master key
-#'     (CMK) with the alias `aws/secretsmanager`. If this key doesn\'t
+#'     and that secret doesn't specify a AWS KMS encryption key, Secrets
+#'     Manager uses the account's default AWS managed customer master key
+#'     (CMK) with the alias `aws/secretsmanager`. If this key doesn't
 #'     already exist in your account then Secrets Manager creates it for
 #'     you automatically. All users and roles in the same AWS account
 #'     automatically have access to use the default CMK. Note that if an
-#'     Secrets Manager API call results in AWS creating the account\'s
+#'     Secrets Manager API call results in AWS creating the account's
 #'     AWS-managed CMK, it can result in a one-time significant delay in
 #'     returning the result.
 #' 
 #' -   If the secret resides in a different AWS account from the
 #'     credentials calling an API that requires encryption or decryption of
 #'     the secret value then you must create and use a custom AWS KMS CMK
-#'     because you can\'t access the default CMK for the account using
+#'     because you can't access the default CMK for the account using
 #'     credentials from a different AWS account. Store the ARN of the CMK
 #'     in the secret when you create the secret or when you update it by
 #'     including it in the `KMSKeyId`. If you call an API that must encrypt
 #'     or decrypt `SecretString` or `SecretBinary` using credentials from a
 #'     different account then the AWS KMS key policy must grant
-#'     cross-account access to that other account\'s user or role for both
+#'     cross-account access to that other account's user or role for both
 #'     the kms:GenerateDataKey and kms:Decrypt operations.
 #' 
 #' **Minimum permissions**
@@ -1355,7 +1353,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' 
 #' -   kms:GenerateDataKey - needed only if you use a customer-managed AWS
 #'     KMS key to encrypt the secret. You do not need this permission to
-#'     use the account\'s default AWS managed CMK for Secrets Manager.
+#'     use the account's default AWS managed CMK for Secrets Manager.
 #' 
 #' **Related operations**
 #' 
@@ -1377,20 +1375,20 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' the secret. The secret must already exist.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
@@ -1399,22 +1397,22 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' 
 #' If you use the AWS CLI or one of the AWS SDK to call this operation,
 #' then you can leave this parameter empty. The CLI or SDK generates a
-#' random UUID for you and includes that in the request. If you don\'t use
+#' random UUID for you and includes that in the request. If you don't use
 #' the SDK and instead generate a raw HTTP request to the Secrets Manager
 #' service endpoint, then you must generate a `ClientRequestToken` yourself
 #' for new versions and include that value in the request.
 #' 
 #' This value helps ensure idempotency. Secrets Manager uses this value to
 #' prevent the accidental creation of duplicate versions if there are
-#' failures and retries during the Lambda rotation function\'s processing.
+#' failures and retries during the Lambda rotation function's processing.
 #' We recommend that you generate a
 #' [UUID-type](https://wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness within the specified secret.
 #' 
-#' -   If the `ClientRequestToken` value isn\'t already associated with a
+#' -   If the `ClientRequestToken` value isn't already associated with a
 #'     version of the secret then a new version of the secret is created.
 #' 
-#' -   If a version with this value already exists and that version\'s
+#' -   If a version with this value already exists and that version's
 #'     `SecretString` or `SecretBinary` values are the same as those in the
 #'     request then the request is ignored (the operation is idempotent).
 #' 
@@ -1463,7 +1461,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' versions through the rotation process by the Lambda rotation function.
 #' 
 #' A staging label must be unique to a single version of the secret. If you
-#' specify a staging label that\'s already associated with a different
+#' specify a staging label that's already associated with a different
 #' version of the same secret then that staging label is automatically
 #' removed from the other version and attached to this version.
 #' 
@@ -1538,20 +1536,20 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
 #' (ARN) or the friendly name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
@@ -1642,7 +1640,7 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' 
 #' -   secretsmanager:RotateSecret
 #' 
-#' -   lambda:InvokeFunction (on the function specified in the secret\'s
+#' -   lambda:InvokeFunction (on the function specified in the secret's
 #'     metadata)
 #' 
 #' **Related operations**
@@ -1664,20 +1662,20 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' Amazon Resource Name (ARN) or the friendly name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
@@ -1687,7 +1685,7 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' If you use the AWS CLI or one of the AWS SDK to call this operation,
 #' then you can leave this parameter empty. The CLI or SDK generates a
 #' random UUID for you and includes that in the request for this parameter.
-#' If you don\'t use the SDK and instead generate a raw HTTP request to the
+#' If you don't use the SDK and instead generate a raw HTTP request to the
 #' Secrets Manager service endpoint, then you must generate a
 #' `ClientRequestToken` yourself for new versions and include that value in
 #' the request.
@@ -1700,7 +1698,7 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' 
 #' Secrets Manager uses this value to prevent the accidental creation of
 #' duplicate versions if there are failures and retries during the
-#' function\'s processing. This value becomes the `VersionId` of the new
+#' function's processing. This value becomes the `VersionId` of the new
 #' version.
 #' @param RotationLambdaARN (Optional) Specifies the ARN of the Lambda function that can rotate the
 #' secret.
@@ -1766,23 +1764,23 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' the specified secret
 #'
 #' Attaches one or more tags, each consisting of a key name and a value, to
-#' the specified secret. Tags are part of the secret\'s overall metadata,
+#' the specified secret. Tags are part of the secret's overall metadata,
 #' and are not associated with any specific version of the secret. This
 #' operation only appends tags to the existing list of tags. To remove
 #' tags, you must use UntagResource.
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' -   Maximum number of tags per secret---50
+#' -   Maximum number of tags per secret—50
 #' 
-#' -   Maximum key length---127 Unicode characters in UTF-8
+#' -   Maximum key length—127 Unicode characters in UTF-8
 #' 
-#' -   Maximum value length---255 Unicode characters in UTF-8
+#' -   Maximum value length—255 Unicode characters in UTF-8
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
 #' -   Do not use the `aws:` prefix in your tag names or values because AWS
-#'     reserves it for AWS use. You can\'t edit or delete tag names or
+#'     reserves it for AWS use. You can't edit or delete tag names or
 #'     values with this prefix. Tags with this prefix do not count against
 #'     your tags per secret limit.
 #' 
@@ -1818,20 +1816,20 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
@@ -1844,7 +1842,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 #' in the *AWS CLI User Guide*. For the AWS CLI, you can also use the
 #' syntax:
-#' `--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\[,â€¦\\]`
+#' `--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\[,…\\]`
 #'
 #' @section Request syntax:
 #' ```
@@ -1932,25 +1930,25 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #' the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
-#' @param TagKeys &#91;required&#93; A list of tag key names to remove from the secret. You don\'t specify
-#' the value. Both the key and its associated value are removed.
+#' @param TagKeys &#91;required&#93; A list of tag key names to remove from the secret. You don't specify the
+#' value. Both the key and its associated value are removed.
 #' 
 #' This parameter to the API requires a JSON text string argument. For
 #' information on how to format a JSON parameter for the various command
@@ -2030,26 +2028,26 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' 
 #' -   If you call an operation to encrypt or decrypt the `SecretString` or
 #'     `SecretBinary` for a secret in the same account as the calling user
-#'     and that secret doesn\'t specify a AWS KMS encryption key, Secrets
-#'     Manager uses the account\'s default AWS managed customer master key
-#'     (CMK) with the alias `aws/secretsmanager`. If this key doesn\'t
+#'     and that secret doesn't specify a AWS KMS encryption key, Secrets
+#'     Manager uses the account's default AWS managed customer master key
+#'     (CMK) with the alias `aws/secretsmanager`. If this key doesn't
 #'     already exist in your account then Secrets Manager creates it for
 #'     you automatically. All users and roles in the same AWS account
 #'     automatically have access to use the default CMK. Note that if an
-#'     Secrets Manager API call results in AWS creating the account\'s
+#'     Secrets Manager API call results in AWS creating the account's
 #'     AWS-managed CMK, it can result in a one-time significant delay in
 #'     returning the result.
 #' 
 #' -   If the secret resides in a different AWS account from the
 #'     credentials calling an API that requires encryption or decryption of
 #'     the secret value then you must create and use a custom AWS KMS CMK
-#'     because you can\'t access the default CMK for the account using
+#'     because you can't access the default CMK for the account using
 #'     credentials from a different AWS account. Store the ARN of the CMK
 #'     in the secret when you create the secret or when you update it by
 #'     including it in the `KMSKeyId`. If you call an API that must encrypt
 #'     or decrypt `SecretString` or `SecretBinary` using credentials from a
 #'     different account then the AWS KMS key policy must grant
-#'     cross-account access to that other account\'s user or role for both
+#'     cross-account access to that other account's user or role for both
 #'     the kms:GenerateDataKey and kms:Decrypt operations.
 #' 
 #' **Minimum permissions**
@@ -2060,11 +2058,11 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' 
 #' -   kms:GenerateDataKey - needed only if you use a custom AWS KMS key to
 #'     encrypt the secret. You do not need this permission to use the
-#'     account\'s AWS managed CMK for Secrets Manager.
+#'     account's AWS managed CMK for Secrets Manager.
 #' 
 #' -   kms:Decrypt - needed only if you use a custom AWS KMS key to encrypt
-#'     the secret. You do not need this permission to use the account\'s
-#'     AWS managed CMK for Secrets Manager.
+#'     the secret. You do not need this permission to use the account's AWS
+#'     managed CMK for Secrets Manager.
 #' 
 #' **Related operations**
 #' 
@@ -2086,20 +2084,20 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' the friendly name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
@@ -2109,7 +2107,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' 
 #' If you use the AWS CLI or one of the AWS SDK to call this operation,
 #' then you can leave this parameter empty. The CLI or SDK generates a
-#' random UUID for you and includes that in the request. If you don\'t use
+#' random UUID for you and includes that in the request. If you don't use
 #' the SDK and instead generate a raw HTTP request to the Secrets Manager
 #' service endpoint, then you must generate a `ClientRequestToken` yourself
 #' for new versions and include that value in the request.
@@ -2122,17 +2120,17 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' 
 #' Secrets Manager uses this value to prevent the accidental creation of
 #' duplicate versions if there are failures and retries during the Lambda
-#' rotation function\'s processing.
+#' rotation function's processing.
 #' 
-#' -   If the `ClientRequestToken` value isn\'t already associated with a
+#' -   If the `ClientRequestToken` value isn't already associated with a
 #'     version of the secret then a new version of the secret is created.
 #' 
-#' -   If a version with this value already exists and that version\'s
+#' -   If a version with this value already exists and that version's
 #'     `SecretString` and `SecretBinary` values are the same as those in
 #'     the request then the request is ignored (the operation is
 #'     idempotent).
 #' 
-#' -   If a version with this value already exists and that version\'s
+#' -   If a version with this value already exists and that version's
 #'     `SecretString` and `SecretBinary` values are different from the
 #'     request then an error occurs because you cannot modify an existing
 #'     secret value.
@@ -2143,9 +2141,9 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' master key (CMK) to be used to encrypt the protected text in new
 #' versions of this secret.
 #' 
-#' You can only use the account\'s default CMK to encrypt and decrypt if
-#' you call this operation using credentials from the same account that
-#' owns the secret. If the secret is in a different account, then you must
+#' You can only use the account's default CMK to encrypt and decrypt if you
+#' call this operation using credentials from the same account that owns
+#' the secret. If the secret is in a different account, then you must
 #' create a custom CMK and provide the ARN of that CMK in this field. The
 #' user making the call must have permissions to both the secret and the
 #' CMK in their respective accounts.
@@ -2180,7 +2178,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' 
 #' If your command-line tool or SDK requires quotation marks around the
 #' parameter, you should use single quotes to avoid confusion with the
-#' double quotes required in the JSON text. You can also \'escape\' the
+#' double quotes required in the JSON text. You can also 'escape' the
 #' double quote character in the embedded JSON text by prefacing each with
 #' a backslash. For example, the following string is surrounded by
 #' double-quotes. All of the embedded double quotes are escaped:
@@ -2251,14 +2249,14 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' labels are used to track a version as it progresses through the secret
 #' rotation process. You can attach a staging label to only one version of
 #' a secret at a time. If a staging label to be added is already attached
-#' to another version, then it is moved\\--removed from the other version
+#' to another version, then it is moved--removed from the other version
 #' first and then attached to this one. For more information about staging
 #' labels, see [Staging
 #' Labels](https://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label)
 #' in the *AWS Secrets Manager User Guide*.
 #' 
 #' The staging labels that you specify in the `VersionStage` parameter are
-#' added to the existing list of staging labels\\--they don\'t replace it.
+#' added to the existing list of staging labels--they don't replace it.
 #' 
 #' You can move the `AWSCURRENT` staging label to this version by including
 #' it in this call.
@@ -2267,8 +2265,8 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' label `AWSPREVIOUS` to the version that `AWSCURRENT` was removed from.
 #' 
 #' If this action results in the last label being removed from a version,
-#' then the version is considered to be \'deprecated\' and can be deleted
-#' by Secrets Manager.
+#' then the version is considered to be 'deprecated' and can be deleted by
+#' Secrets Manager.
 #' 
 #' **Minimum permissions**
 #' 
@@ -2291,20 +2289,20 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' (ARN) or the friendly name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.
@@ -2404,20 +2402,20 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' friendly name of the secret.
 #' 
 #' If you specify an ARN, we generally recommend that you specify a
-#' complete ARN. You can specify a partial ARN too---for example, if you
-#' don't include the final hyphen and six random characters that Secrets
+#' complete ARN. You can specify a partial ARN too—for example, if you
+#' don’t include the final hyphen and six random characters that Secrets
 #' Manager adds at the end of the ARN when you created the secret. A
 #' partial ARN match can work as long as it uniquely matches only one
 #' secret. However, if your secret has a name that ends in a hyphen
 #' followed by six characters (before Secrets Manager adds the hyphen and
 #' six characters to the ARN) and you try to use that as a partial ARN,
-#' then those characters cause Secrets Manager to assume that you're
+#' then those characters cause Secrets Manager to assume that you’re
 #' specifying a complete ARN. This confusion can cause unexpected results.
-#' To avoid this situation, we recommend that you don't create secret names
+#' To avoid this situation, we recommend that you don’t create secret names
 #' ending with a hyphen followed by six characters.
 #' 
 #' If you specify an incomplete ARN without the random suffix, and instead
-#' provide the \'friendly name\', you *must* not include the random suffix.
+#' provide the 'friendly name', you *must* not include the random suffix.
 #' If you do include the random suffix added by Secrets Manager, you
 #' receive either a *ResourceNotFoundException* or an
 #' *AccessDeniedException* error, depending on your permissions.

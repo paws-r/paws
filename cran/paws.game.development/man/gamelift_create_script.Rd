@@ -17,7 +17,7 @@ later.}
 
 \item{StorageLocation}{The location of the Amazon S3 bucket where a zipped file containing your
 Realtime scripts is stored. The storage location must specify the Amazon
-S3 bucket name, the zip file name (the \"key\"), and a role ARN that
+S3 bucket name, the zip file name (the "key"), and a role ARN that
 allows Amazon GameLift to access the Amazon S3 storage location. The S3
 bucket must be in the same Region where you want to create a new script.
 By default, Amazon GameLift uploads the latest version of the zip file;
@@ -29,7 +29,7 @@ file. The zip file can have one or multiple files. Maximum size of a zip
 file is 5 MB.
 
 When using the AWS CLI tool to create a script, this parameter is set to
-the zip file name. It must be prepended with the string \"fileb://\" to
+the zip file name. It must be prepended with the string "fileb://" to
 indicate that the file data is a binary object. For example:
 \verb{--zip-file fileb://myRealtimeScript.zip}.}
 
@@ -58,14 +58,14 @@ locations:
 \item A locally available directory. Use the \emph{ZipFile} parameter for this
 option.
 \item An Amazon Simple Storage Service (Amazon S3) bucket under your AWS
-account. Use the \emph{StorageLocation} parameter for this option.
-You\'ll need to have an Identity Access Management (IAM) role that
-allows the Amazon GameLift service to access your S3 bucket.
+account. Use the \emph{StorageLocation} parameter for this option. You'll
+need to have an Identity Access Management (IAM) role that allows
+the Amazon GameLift service to access your S3 bucket.
 }
 
 If the call is successful, a new script record is created with a unique
 script ID. If the script file is provided as a local file, the file is
-uploaded to an Amazon GameLift-owned S3 bucket and the script record\'s
+uploaded to an Amazon GameLift-owned S3 bucket and the script record's
 storage location reflects this location. If the script file is provided
 as an S3 bucket, Amazon GameLift accesses the file at this storage
 location as needed for deployment.

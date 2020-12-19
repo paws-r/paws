@@ -16,7 +16,7 @@ specified in the request, the \code{DeleteThing} request is rejected with a
 }
 \description{
 Deletes the specified thing. Returns successfully with no error if the
-deletion is successful or you specify a thing that doesn\'t exist.
+deletion is successful or you specify a thing that doesn't exist.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_thing(

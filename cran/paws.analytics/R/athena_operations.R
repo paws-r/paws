@@ -59,7 +59,7 @@ athena_batch_get_named_query <- function(NamedQueryIds) {
 #' query executions, which you provide as an array of query execution ID
 #' strings. Requires you to have access to the workgroup in which the
 #' queries ran. To get a list of query execution IDs, use
-#' ListQueryExecutionsInput\\$WorkGroup. Query executions differ from named
+#' ListQueryExecutionsInput$WorkGroup. Query executions differ from named
 #' (saved) queries. Use BatchGetNamedQueryInput to get details about named
 #' queries.
 #'
@@ -253,10 +253,10 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
 #' Amazon S3 where query results are stored, the encryption configuration,
 #' if any, used for encrypting query results, whether the Amazon CloudWatch
 #' Metrics are enabled for the workgroup, the limit for the amount of bytes
-#' scanned (cutoff) per query, if it is specified, and whether workgroup\'s
+#' scanned (cutoff) per query, if it is specified, and whether workgroup's
 #' settings (specified with EnforceWorkGroupConfiguration) in the
 #' WorkGroupConfiguration override client-side settings. See
-#' WorkGroupConfiguration\\$EnforceWorkGroupConfiguration.
+#' WorkGroupConfiguration$EnforceWorkGroupConfiguration.
 #' @param Description The workgroup description.
 #' @param Tags A list of comma separated tags to add to the workgroup that is created.
 #'
@@ -1066,12 +1066,12 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' action will fail.
 #' @param QueryExecutionContext The database within which the query executes.
 #' @param ResultConfiguration Specifies information about where and how to save the results of the
-#' query execution. If the query runs in a workgroup, then workgroup\'s
+#' query execution. If the query runs in a workgroup, then workgroup's
 #' settings may override query settings. This affects the query results
 #' location. The workgroup settings override is specified in
 #' EnforceWorkGroupConfiguration (true/false) in the
 #' WorkGroupConfiguration. See
-#' WorkGroupConfiguration\\$EnforceWorkGroupConfiguration.
+#' WorkGroupConfiguration$EnforceWorkGroupConfiguration.
 #' @param WorkGroup The name of the workgroup in which the query is being started.
 #'
 #' @section Request syntax:
@@ -1329,7 +1329,7 @@ athena_update_data_catalog <- function(Name, Type, Description = NULL, Parameter
 
 #' Updates the workgroup with the specified name
 #'
-#' Updates the workgroup with the specified name. The workgroup\'s name
+#' Updates the workgroup with the specified name. The workgroup's name
 #' cannot be changed.
 #'
 #' @usage

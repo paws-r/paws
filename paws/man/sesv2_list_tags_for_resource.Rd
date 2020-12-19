@@ -13,9 +13,9 @@ tag information for.}
 }
 \description{
 Retrieve a list of the tags (keys and values) that are associated with a
-specified resource. AÂ \emph{tag}Â is a label that you optionally define and
-associate with a resource. Each tag consists of a requiredÂ \emph{tag key}Â and
-an optional associatedÂ \emph{tag value}. A tag key is a general label that
+specified resource. A \emph{tag} is a label that you optionally define and
+associate with a resource. Each tag consists of a required \emph{tag key} and
+an optional associated \emph{tag value}. A tag key is a general label that
 acts as a category for more specific tag values. A tag value acts as a
 descriptor within a tag key.
 }

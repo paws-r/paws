@@ -24,11 +24,11 @@ property.
 
 For Windows \code{SINGLE_AZ_1} and \code{SINGLE_AZ_2} deployment types and Lustre
 file systems, provide exactly one subnet ID. The file server is launched
-in that subnet\'s Availability Zone.}
+in that subnet's Availability Zone.}
 
 \item{SecurityGroupIds}{A list of IDs for the security groups that apply to the specified
 network interfaces created for file system access. These security groups
-apply to all network interfaces. This value isn\'t returned in later
+apply to all network interfaces. This value isn't returned in later
 DescribeFileSystem requests.}
 
 \item{Tags}{The tags to be applied to the file system at file system creation. The
@@ -39,8 +39,8 @@ name.}
 
 \item{LustreConfiguration}{}
 
-\item{StorageType}{Sets the storage type for the Windows file system you\'re creating from
-a backup. Valid values are \code{SSD} and \code{HDD}.
+\item{StorageType}{Sets the storage type for the Windows file system you're creating from a
+backup. Valid values are \code{SSD} and \code{HDD}.
 \itemize{
 \item Set to \code{SSD} to use solid state drive storage. Supported on all
 Windows deployment types.
@@ -51,7 +51,7 @@ Windows deployment types.
 Default value is \code{SSD}.
 
 HDD and SSD storage types have different minimum storage capacity
-requirements. A restored file system\'s storage capacity is tied to the
+requirements. A restored file system's storage capacity is tied to the
 file system that was backed up. You can create a file system that uses
 HDD storage from a backup of a file system that used SSD storage only if
 the original SSD file system had a storage capacity of at least 2000
@@ -64,9 +64,9 @@ Creates a new Amazon FSx file system from an existing Amazon FSx backup.
 If a file system with the specified client request token exists and the
 parameters match, this operation returns the description of the file
 system. If a client request token specified by the file system exists
-and the parameters don\'t match, this call returns
+and the parameters don't match, this call returns
 \code{IncompatibleParameterError}. If a file system with the specified client
-request token doesn\'t exist, this operation does the following:
+request token doesn't exist, this operation does the following:
 \itemize{
 \item Creates a new Amazon FSx file system from backup with an assigned
 ID, and an initial lifecycle state of \code{CREATING}.
@@ -87,7 +87,7 @@ If you use the same client request token and the initial call created a
 file system, the client receives success as long as the parameters are
 the same.
 
-The \code{CreateFileSystemFromBackup} call returns while the file system\'s
+The \code{CreateFileSystemFromBackup} call returns while the file system's
 lifecycle state is still \code{CREATING}. You can check the file-system
 creation status by calling the DescribeFileSystems operation, which
 returns the file system state along with other information.

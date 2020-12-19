@@ -22,7 +22,7 @@ are specified using Key=tag\\_name,Values=tag\\_value.}
 
 \item{ServiceRoleArn}{The ARN of the IAM service role for Systems Manager to assume when
 running a maintenance window task. If you do not specify a service role
-ARN, Systems Manager uses your account\'s service-linked role. If no
+ARN, Systems Manager uses your account's service-linked role. If no
 service-linked role for Systems Manager exists in your account, it is
 created when you run \code{RegisterTaskWithMaintenanceWindow}.
 
@@ -77,7 +77,7 @@ RegisterTaskWithMaintenanceWndow action are also required for this API
 request. Optional fields that are not specified are set to null.}
 }
 \description{
-Modifies a task assigned to a maintenance window. You can\'t change the
+Modifies a task assigned to a maintenance window. You can't change the
 task type, but you can change the following values:
 }
 \details{
@@ -94,7 +94,7 @@ AWS-RunPowerShellScript to AWS-RunShellScript.
 If a parameter is null, then the corresponding field is not modified.
 Also, if you set Replace to true, then all fields required by the
 RegisterTaskWithMaintenanceWindow action are required for this request.
-Optional fields that aren\'t specified are set to null.
+Optional fields that aren't specified are set to null.
 }
 \section{Request syntax}{
 \preformatted{svc$update_maintenance_window_task(

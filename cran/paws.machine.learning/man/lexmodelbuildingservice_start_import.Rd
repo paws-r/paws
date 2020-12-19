@@ -28,12 +28,12 @@ resource. The name of the resource causing the conflict is in the
 \code{failureReason} field of the response to the \code{GetImport} operation.
 
 OVERWRITE\\_LATEST - The import operation proceeds even if there is a
-conflict with an existing resource. The \\$LASTEST version of the
+conflict with an existing resource. The $LASTEST version of the
 existing resource is overwritten with the data from the import file.
 }}
 
 \item{tags}{A list of tags to add to the imported bot. You can only add tags when
-you import a bot, you can\'t add tags to an intent or slot type.}
+you import a bot, you can't add tags to an intent or slot type.}
 }
 \description{
 Starts a job to import a resource to Amazon Lex.

@@ -108,13 +108,13 @@ does not include triggers, the ClientMetadata parameter serves no
 purpose.
 \item Amazon Cognito does not validate the ClientMetadata value.
 \item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don\'t use it to provide sensitive information.
+don't use it to provide sensitive information.
 }}
 
 \item{AnalyticsMetadata}{The analytics metadata for collecting Amazon Pinpoint metrics for
 \code{AdminInitiateAuth} calls.}
 
-\item{ContextData}{Contextual data such as the user\'s device fingerprint, IP address, or
+\item{ContextData}{Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon
 Cognito advanced security.}
 }

@@ -91,7 +91,7 @@ value is 0.
 
 If you enable this feature, we recommend that you specify a value that
 corresponds exactly to a whole number of minutes (for example, 60, 120,
-and 180). If you don\'t do this, the value is rounded to the nearest
+and 180). If you don't do this, the value is rounded to the nearest
 minute. For example, if you specify a value of 70, users are
 disconnected after 1 minute of inactivity. If you specify a value that
 is at the midpoint between two different minutes, the value is rounded
@@ -119,7 +119,7 @@ except the fleet name. If the fleet is in the \code{RUNNING} state, you can
 update the \code{DisplayName}, \code{ComputeCapacity}, \code{ImageARN}, \code{ImageName},
 \code{IdleDisconnectTimeoutInSeconds}, and \code{DisconnectTimeoutInSeconds}
 attributes. If the fleet is in the \code{STARTING} or \code{STOPPING} state, you
-can\'t update it.
+can't update it.
 }
 \section{Request syntax}{
 \preformatted{svc$update_fleet(

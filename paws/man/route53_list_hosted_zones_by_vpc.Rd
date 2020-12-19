@@ -27,8 +27,8 @@ submit another \code{ListHostedZonesByVPC} request.
 For the value of \code{NextToken}, specify the value of \code{NextToken} from the
 previous response.
 
-If the previous response didn\'t include a \code{NextToken} element, there
-are no more hosted zones to get.}
+If the previous response didn't include a \code{NextToken} element, there are
+no more hosted zones to get.}
 }
 \description{
 Lists all the private hosted zones that a specified VPC is associated

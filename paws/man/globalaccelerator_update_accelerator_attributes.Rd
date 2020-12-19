@@ -26,7 +26,7 @@ to the bucket.}
 \item{FlowLogsS3Prefix}{Update the prefix for the location in the Amazon S3 bucket for the flow
 logs. Attribute is required if \code{FlowLogsEnabled} is \code{true}.
 
-If you don't specify a prefix, the flow logs are stored in the root of
+If you don’t specify a prefix, the flow logs are stored in the root of
 the bucket. If you specify slash (/) for the S3 bucket prefix, the log
 file bucket folder structure will include a double slash (//), like the
 following:
