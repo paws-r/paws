@@ -1,6 +1,7 @@
 IN_DIR := ./vendor/aws-sdk-js
 OUT_DIR := ./paws
 CRAN_DIR := ./cran
+CACHE_DIR := ./cache
 
 # Make R use the user's package library by setting the R user home path (R_USER)
 # to the folder containing their package library. On Windows, it is in
@@ -22,6 +23,7 @@ help:
 	@echo "  check              run R CMD check on packages"
 	@echo "  unit               run unit tests for common and codegen"
 	@echo "  integration        run integration tests for the AWS SDK"
+	@echo "  clean              clear the build cache"
 	@echo "  deps               get project dependencies"
 	@echo "  update-deps        update project dependencies"
 
@@ -33,7 +35,7 @@ install: build
 
 build-full: codegen
 	@echo "build the AWS SDK package"
-	@Rscript -e "library(make.paws); make_sdk('${IN_DIR}', '${OUT_DIR}')"
+	@Rscript -e "library(make.paws); make_sdk('${IN_DIR}', '${OUT_DIR}', '${CACHE_DIR}')"
 
 build-cran: codegen
 	@echo "build CRAN packages"
@@ -70,6 +72,9 @@ codegen: common
 test-codegen: codegen
 	@echo "run unit tests for the code generator"
 	@Rscript -e "devtools::test('make.paws')"
+
+clean:
+	@if [ -d "${CACHE_DIR}" ]; then rm -rf "${CACHE_DIR}"; fi
 
 deps:
 	@echo "get project dependencies"

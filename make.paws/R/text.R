@@ -9,14 +9,17 @@ write_utf8 <- function(x, file) {
 # Convert HTML to other formats using Pandoc.
 html_to <- function(html, to) {
   if (is.null(html)) return("")
-  temp_in <- tempfile()
-  write_utf8(html, temp_in)
-  temp_out <- tempfile()
-  rmarkdown::pandoc_convert(temp_in, output = temp_out, from = "html", to = to)
-  result <- readLines(temp_out)
-  # Pandoc inappropriately escapes "%" and "*"; undo this escaping.
-  result <- gsub("\\\\(\\%|\\*)", "\\1", result)
-  result
+
+  cached_expr(list("html_to", html = html, to = to), {
+    temp_in <- tempfile()
+    write_utf8(html, temp_in)
+    temp_out <- tempfile()
+    rmarkdown::pandoc_convert(temp_in, output = temp_out, from = "html", to = to)
+    result <- readLines(temp_out)
+    # Pandoc inappropriately escapes "%" and "*"; undo this escaping.
+    result <- gsub("\\\\(\\%|\\*)", "\\1", result)
+    result
+  })
 }
 
 # Convert HTML to markdown

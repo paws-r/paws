@@ -5,3 +5,4 @@
 *.Rcheck
 .vscode
 .DS_Store
+cache

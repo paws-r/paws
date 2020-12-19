@@ -4,12 +4,19 @@
 \alias{make_sdk}
 \title{Make the AWS SDK R package}
 \usage{
-make_sdk(in_dir, out_dir)
+make_sdk(
+  in_dir = "./vendor/aws-sdk-js",
+  out_dir = "./paws",
+  cache_dir = "./cache"
+)
 }
 \arguments{
 \item{in_dir}{Directory containing API files.}
 
 \item{out_dir}{Directory of the R package.}
+
+\item{cache_dir}{Directory to store cached artifacts. Providing a non-\code{NULL}
+value will greatly speed up subsequent runs that use the same value.}
 }
 \description{
 Make the AWS SDK R package

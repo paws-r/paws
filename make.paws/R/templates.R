@@ -11,6 +11,12 @@ template <- function(x) {
 # Returns a string by rendering a template, replacing variables enclosed with
 # ${} with corresponding named argument values in `...`.
 render <- function(template, ...) {
+
+  # makes str_interp much faster, due to underlying call to
+  # parse(keep.source=getOption("keep.source"))
+  op <- options(keep.source = FALSE)
+  on.exit(options(op), add = TRUE)
+
   as.character(stringr::str_interp(template, env = list(...)))
 }
 
