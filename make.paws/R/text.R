@@ -6,6 +6,11 @@ write_utf8 <- function(x, file) {
   writeLines(rlang::as_utf8_character(x), con = file, useBytes = TRUE)
 }
 
+# Read a UTF-8 encoded file
+read_utf8 <- function(file) {
+  readLines(file, encoding = "UTF-8")
+}
+
 # Convert HTML to other formats using Pandoc.
 html_to <- function(html, to) {
   if (is.null(html)) return("")
@@ -15,7 +20,7 @@ html_to <- function(html, to) {
     write_utf8(html, temp_in)
     temp_out <- tempfile()
     rmarkdown::pandoc_convert(temp_in, output = temp_out, from = "html", to = to)
-    result <- readLines(temp_out)
+    result <- read_utf8(temp_out)
     # Pandoc inappropriately escapes "%" and "*"; undo this escaping.
     result <- gsub("\\\\(\\%|\\*)", "\\1", result)
     result
@@ -64,24 +69,15 @@ unmask <- function(object, masks) {
   return(mask(object, unmasks))
 }
 
-# Returns a LaTeX table, given a data frame.
-# Source: https://cran.r-project.org/web/packages/roxygen2/vignettes/formatting.html
-tabular <- function(df, ...) {
-  stopifnot(is.data.frame(df))
-
-  align <- function(x) if (is.numeric(x)) "r" else "l"
-  col_align <- vapply(df, align, character(1))
-
-  cols <- lapply(df, format, ...)
-  contents <- do.call("paste",
-                      c(cols, list(sep = " \\tab ", collapse = "\\cr\n  ")))
-
-  paste("\\tabular{", paste(col_align, collapse = ""), "}{\n  ",
-        contents, "\n}\n", sep = "")
+# Returns a LaTeX table, given a data frame of character columns.
+tabular <- function(cols) {
+  stopifnot(is.data.frame(cols))
+  col_align <- paste(rep("l", ncol(cols)), collapse = "")
+  contents <- do.call("paste", c(cols, list(sep = " \\tab ", collapse = "\\cr\n  ")))
+  paste("\\tabular{", col_align, "}{\n  ", contents, "\n}\n", sep = "")
 }
 
 # Return a LaTeX link to a documentation page in the same package.
-# See https://cran.r-project.org/web/packages/roxygen2/vignettes/formatting.html
 link <- function(text, ref) {
   stopifnot(is.character(text) && length(text) == 1)
   paste("\\link[=", ref, "]{", text, "}", sep = "")
