@@ -15,7 +15,7 @@ frauddetector_update_detector_version_metadata(detectorId,
 \item{description}{[required] The description.}
 }
 \description{
-Updates the detector version\'s description. You can update the metadata
+Updates the detector version's description. You can update the metadata
 for any detector version (\verb{DRAFT, ACTIVE,} or \code{INACTIVE}).
 }
 \section{Request syntax}{

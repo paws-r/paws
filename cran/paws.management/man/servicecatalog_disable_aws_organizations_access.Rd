@@ -15,7 +15,7 @@ calling this API. This API can only be called by the master account in
 the organization.
 }
 \details{
-This API can\'t be invoked if there are active delegated administrators
+This API can't be invoked if there are active delegated administrators
 in the organization.
 
 Note that a delegated administrator is not authorized to invoke

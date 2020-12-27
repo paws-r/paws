@@ -22,7 +22,7 @@ action has a higher priority than \emph{AccountIdsToAdd}. If you specify an
 account ID to add and the same ID to remove, the system removes access
 to the document.}
 
-\item{SharedDocumentVersion}{(Optional) The version of the document to share. If it\'s not specified,
+\item{SharedDocumentVersion}{(Optional) The version of the document to share. If it's not specified,
 the system choose the \code{Default} version to share.}
 }
 \description{

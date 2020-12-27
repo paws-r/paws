@@ -15,7 +15,7 @@ NULL
 #' 
 #' AWS provides SDKs that consist of libraries and sample code for
 #' programming languages and platforms (Java, Ruby, .NET, iOS, Android,
-#' etc\\...,). The SDKs provide a convenient way to create programmatic
+#' etc...,). The SDKs provide a convenient way to create programmatic
 #' access to Service Quotas and AWS. For information about the AWS SDKs,
 #' including how to download and install them, see the Tools for Amazon Web
 #' Services page.

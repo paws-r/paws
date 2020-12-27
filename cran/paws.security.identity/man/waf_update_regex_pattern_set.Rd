@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_update_regex_pattern_set}
 \alias{waf_update_regex_pattern_set}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_update_regex_pattern_set(RegexPatternSetId, Updates, ChangeToken)
 }
@@ -40,8 +40,8 @@ For example, you can create a \code{RegexPatternString} such as
 \itemize{
 \item BadBot
 \item BadB0t
-\item B\\@dBot
-\item B\\@dB0t
+\item B@dBot
+\item B@dB0t
 }
 
 To create and configure a \code{RegexPatternSet}, perform the following

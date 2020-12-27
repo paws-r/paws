@@ -13,7 +13,7 @@ rds_revoke_db_security_group_ingress(DBSecurityGroupName, CIDRIP,
 
 \item{CIDRIP}{The IP range to revoke access from. Must be a valid CIDR range. If
 \code{CIDRIP} is specified, \code{EC2SecurityGroupName}, \code{EC2SecurityGroupId} and
-\code{EC2SecurityGroupOwnerId} can\'t be provided.}
+\code{EC2SecurityGroupOwnerId} can't be provided.}
 
 \item{EC2SecurityGroupName}{The name of the EC2 security group to revoke access from. For VPC DB
 security groups, \code{EC2SecurityGroupId} must be provided. Otherwise,
@@ -26,7 +26,7 @@ EC2SecurityGroupOwnerId and either \code{EC2SecurityGroupName} or
 \code{EC2SecurityGroupId} must be provided.}
 
 \item{EC2SecurityGroupOwnerId}{The AWS account number of the owner of the EC2 security group specified
-in the \code{EC2SecurityGroupName} parameter. The AWS access key ID isn\'t an
+in the \code{EC2SecurityGroupName} parameter. The AWS access key ID isn't an
 acceptable value. For VPC DB security groups, \code{EC2SecurityGroupId} must
 be provided. Otherwise, EC2SecurityGroupOwnerId and either
 \code{EC2SecurityGroupName} or \code{EC2SecurityGroupId} must be provided.}

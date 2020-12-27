@@ -12,7 +12,7 @@ applicationdiscoveryservice_describe_import_tasks(filters, maxResults,
 \arguments{
 \item{filters}{An array of name-value pairs that you provide to filter the results for
 the \code{DescribeImportTask} request to a specific subset of results.
-Currently, wildcard values aren\'t supported for filters.}
+Currently, wildcard values aren't supported for filters.}
 
 \item{maxResults}{The maximum number of results that you want this request to return, up
 to 100.}

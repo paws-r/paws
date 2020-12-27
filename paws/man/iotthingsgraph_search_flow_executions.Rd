@@ -16,8 +16,8 @@ iotthingsgraph_search_flow_executions(systemInstanceId, flowExecutionId,
 
 \item{endTime}{The date and time of the latest flow execution to return.}
 
-\item{nextToken}{The string that specifies the next page of results. Use this when
-you\'re paginating results.}
+\item{nextToken}{The string that specifies the next page of results. Use this when you're
+paginating results.}
 
 \item{maxResults}{The maximum number of results to return in the response.}
 }

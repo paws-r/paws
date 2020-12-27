@@ -14,7 +14,7 @@ AMIs).}
 
 \item{Filters}{The filters.
 \itemize{
-\item \code{architecture} - The image architecture (\code{i386} \\| \code{x86_64} \\|
+\item \code{architecture} - The image architecture (\code{i386} | \code{x86_64} |
 \code{arm64}).
 \item \code{block-device-mapping.delete-on-termination} - A Boolean value that
 indicates whether the Amazon EBS volume is deleted on instance
@@ -26,22 +26,22 @@ the EBS volume.
 \item \code{block-device-mapping.volume-size} - The volume size of the EBS
 volume, in GiB.
 \item \code{block-device-mapping.volume-type} - The volume type of the EBS
-volume (\code{gp2} \\| \code{io1} \\| \code{st1 }\\| \code{sc1} \\| \code{standard}).
+volume (\code{gp2} | \code{io1} | \code{st1 }| \code{sc1} | \code{standard}).
 \item \code{block-device-mapping.encrypted} - A Boolean that indicates whether
 the EBS volume is encrypted.
 \item \code{description} - The description of the image (provided during image
 creation).
 \item \code{ena-support} - A Boolean that indicates whether enhanced networking
 with ENA is enabled.
-\item \code{hypervisor} - The hypervisor type (\code{ovm} \\| \code{xen}).
+\item \code{hypervisor} - The hypervisor type (\code{ovm} | \code{xen}).
 \item \code{image-id} - The ID of the image.
-\item \code{image-type} - The image type (\code{machine} \\| \code{kernel} \\| \code{ramdisk}).
+\item \code{image-type} - The image type (\code{machine} | \code{kernel} | \code{ramdisk}).
 \item \code{is-public} - A Boolean that indicates whether the image is public.
 \item \code{kernel-id} - The kernel ID.
 \item \code{manifest-location} - The location of the image manifest.
 \item \code{name} - The name of the AMI (provided during image creation).
 \item \code{owner-alias} - The owner alias, from an Amazon-maintained list
-(\code{amazon} \\| \code{aws-marketplace}). This is not the user-configured AWS
+(\code{amazon} | \code{aws-marketplace}). This is not the user-configured AWS
 account alias set using the IAM console. We recommend that you use
 the related parameter instead of this filter.
 \item \code{owner-id} - The AWS account ID of the owner. We recommend that you
@@ -49,28 +49,28 @@ use the related parameter instead of this filter.
 \item \code{platform} - The platform. To only list Windows-based AMIs, use
 \code{windows}.
 \item \code{product-code} - The product code.
-\item \code{product-code.type} - The type of the product code (\code{devpay} \\|
+\item \code{product-code.type} - The type of the product code (\code{devpay} |
 \code{marketplace}).
 \item \code{ramdisk-id} - The RAM disk ID.
 \item \code{root-device-name} - The device name of the root device volume (for
 example, \verb{/dev/sda1}).
-\item \code{root-device-type} - The type of the root device volume (\code{ebs} \\|
+\item \code{root-device-type} - The type of the root device volume (\code{ebs} |
 \code{instance-store}).
-\item \code{state} - The state of the image (\code{available} \\| \code{pending} \\|
+\item \code{state} - The state of the image (\code{available} | \code{pending} |
 \code{failed}).
 \item \code{state-reason-code} - The reason code for the state change.
 \item \code{state-reason-message} - The message for the state change.
 \item \code{sriov-net-support} - A value of \code{simple} indicates that enhanced
 networking with the Intel 82599 VF interface is enabled.
-\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:<key> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value
+as the filter value. For example, to find all resources that have a
+tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
+for the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
-\item \code{virtualization-type} - The virtualization type (\code{paravirtual} \\|
+\item \code{virtualization-type} - The virtualization type (\code{paravirtual} |
 \code{hvm}).
 }}
 

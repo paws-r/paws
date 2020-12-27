@@ -60,8 +60,8 @@ include:
 \item service.additionalInfo.threatListName
 \item service.archived
 
-When this attribute is set to \'true\', only archived findings are
-listed. When it\'s set to \'false\', only unarchived findings are
+When this attribute is set to 'true', only archived findings are
+listed. When it's set to 'false', only unarchived findings are
 listed. When this attribute is not set, all existing findings are
 listed.
 \item service.resourceRole

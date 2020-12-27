@@ -11,8 +11,8 @@ cognitoidentity_get_credentials_for_identity(IdentityId, Logins,
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
 
 \item{Logins}{A set of optional name-value pairs that map provider names to provider
-tokens. The name-value pair will follow the syntax \"provider\\_name\":
-\"provider\\_user\\_identifier\".
+tokens. The name-value pair will follow the syntax "provider\\_name":
+"provider\\_user\\_identifier".
 
 Logins should not be specified when trying to get credentials for an
 unauthenticated identity.

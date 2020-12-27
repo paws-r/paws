@@ -42,7 +42,7 @@ to the message, each reply-to address will receive the reply.}
 \item{ReturnPath}{The email address that bounces and complaints will be forwarded to when
 feedback forwarding is enabled. If the message cannot be delivered to
 the recipient, then an error message will be returned from the
-recipient\'s ISP; this message will then be forwarded to the email
+recipient's ISP; this message will then be forwarded to the email
 address specified by the \code{ReturnPath} parameter. The \code{ReturnPath}
 parameter is never overwritten. This email address must be either
 individually verified with Amazon SES, or from a domain that has been
@@ -125,9 +125,9 @@ are valid.
 
 If your call to the \code{SendTemplatedEmail} operation includes all of the
 required parameters, Amazon SES accepts it and returns a Message ID.
-However, if Amazon SES can\'t render the email because the template
-contains errors, it doesn\'t send the email. Additionally, because it
-already accepted the message, Amazon SES doesn\'t return a message
+However, if Amazon SES can't render the email because the template
+contains errors, it doesn't send the email. Additionally, because it
+already accepted the message, Amazon SES doesn't return a message
 stating that it was unable to send the email.
 
 For these reasons, we highly recommend that you set up Amazon SES to

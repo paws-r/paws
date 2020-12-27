@@ -53,8 +53,8 @@ status of this request using DescribeRecord.
 
 If the request contains a tag key with an empty list of values, there is
 a tag conflict for that key. Do not include conflicted keys as tags, or
-this causes the error \"Parameter validation failed: Missing required
-parameter in Tags[\emph{N}]:\emph{Value}\".
+this causes the error "Parameter validation failed: Missing required
+parameter in Tags[\emph{N}]:\emph{Value}".
 }
 \section{Request syntax}{
 \preformatted{svc$provision_product(

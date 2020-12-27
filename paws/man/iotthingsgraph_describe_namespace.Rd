@@ -8,11 +8,11 @@ that it is tracking}
 iotthingsgraph_describe_namespace(namespaceName)
 }
 \arguments{
-\item{namespaceName}{The name of the user\'s namespace. Set this to \code{aws} to get the public
+\item{namespaceName}{The name of the user's namespace. Set this to \code{aws} to get the public
 namespace.}
 }
 \description{
-Gets the latest version of the user\'s namespace and the public version
+Gets the latest version of the user's namespace and the public version
 that it is tracking.
 }
 \section{Request syntax}{

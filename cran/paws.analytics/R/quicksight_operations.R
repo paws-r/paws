@@ -71,7 +71,7 @@ quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
 #' this structure for granting permissions with principal and action
 #' information.
 #' @param SourceEntity &#91;required&#93; The entity that you are using as a source when you create the dashboard.
-#' In `SourceEntity`, you specify the type of object you\'re using as
+#' In `SourceEntity`, you specify the type of object you're using as
 #' source. You can only create a dashboard from a template, so you use a
 #' `SourceTemplate` entity. If you need to create a dashboard from an
 #' analysis, first convert the analysis to a template by using the
@@ -95,7 +95,7 @@ quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
 #' 
 #' -   `AvailabilityStatus` for `ExportToCSVOption` - This status can be
 #'     either `ENABLED` or `DISABLED`. The visual option to export data to
-#'     .csv format isn\'t enabled when this is set to `DISABLED`. This
+#'     .csv format isn't enabled when this is set to `DISABLED`. This
 #'     option is `ENABLED` by default.
 #' 
 #' -   `VisibilityState` for `SheetControlsOption` - This visibility state
@@ -761,11 +761,11 @@ quicksight_create_group_membership <- function(MemberName, GroupName, AwsAccount
 #' -   `ENABLED` - Anything specified in this assignment is used when
 #'     creating the data source.
 #' 
-#' -   `DISABLED` - This assignment isn\'t used when creating the data
+#' -   `DISABLED` - This assignment isn't used when creating the data
 #'     source.
 #' 
-#' -   `DRAFT` - This assignment is an unfinished draft and isn\'t used
-#'     when creating the data source.
+#' -   `DRAFT` - This assignment is an unfinished draft and isn't used when
+#'     creating the data source.
 #' @param PolicyArn The ARN for the IAM policy to apply to the QuickSight users and groups
 #' specified in this assignment.
 #' @param Identities The QuickSight users, groups, or both that you want to assign the policy
@@ -881,7 +881,7 @@ quicksight_create_ingestion <- function(DataSetId, IngestionId, AwsAccountId) {
 #' @param Name A display name for the template.
 #' @param Permissions A list of resource permissions to be set on the template.
 #' @param SourceEntity &#91;required&#93; The entity that you are using as a source when you create the template.
-#' In `SourceEntity`, you specify the type of object you\'re using as
+#' In `SourceEntity`, you specify the type of object you're using as
 #' source: `SourceTemplate` for a template or `SourceAnalysis` for an
 #' analysis. Both of these require an Amazon Resource Name (ARN). For
 #' `SourceTemplate`, specify the ARN of the source template. For
@@ -970,9 +970,9 @@ quicksight_create_template <- function(AwsAccountId, TemplateId, Name = NULL, Pe
 #' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you creating
 #' an alias for.
 #' @param TemplateId &#91;required&#93; An ID for the template.
-#' @param AliasName &#91;required&#93; The name that you want to give to the template alias that you\'re
-#' creating. Don\'t start the alias name with the `$` character. Alias
-#' names that start with `$` are reserved by QuickSight.
+#' @param AliasName &#91;required&#93; The name that you want to give to the template alias that you're
+#' creating. Don't start the alias name with the `$` character. Alias names
+#' that start with `$` are reserved by QuickSight.
 #' @param TemplateVersionNumber &#91;required&#93; The version number of the template.
 #'
 #' @section Request syntax:
@@ -1027,7 +1027,7 @@ quicksight_create_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #' inherit from one of the starting themes defined by Amazon QuickSight.
 #' For a list of the starting themes, use `ListThemes` or choose **Themes**
 #' from within a QuickSight analysis.
-#' @param VersionDescription A description of the first version of the theme that you\'re creating.
+#' @param VersionDescription A description of the first version of the theme that you're creating.
 #' Every time `UpdateTheme` is called, a new version is created. Each
 #' version of the theme has a description of the version in the
 #' `VersionDescription` field.
@@ -1137,7 +1137,7 @@ quicksight_create_theme <- function(AwsAccountId, ThemeId, Name, BaseThemeId, Ve
 #' alias.
 #' @param ThemeId &#91;required&#93; An ID for the theme alias.
 #' @param AliasName &#91;required&#93; The name that you want to give to the theme alias that you are creating.
-#' The alias name can\'t begin with a `$`. Alias names that start with `$`
+#' The alias name can't begin with a `$`. Alias names that start with `$`
 #' are reserved by Amazon QuickSight.
 #' @param ThemeVersionNumber &#91;required&#93; The version number of the theme.
 #'
@@ -1178,7 +1178,7 @@ quicksight_create_theme_alias <- function(AwsAccountId, ThemeId, AliasName, Them
 #' @usage
 #' quicksight_delete_dashboard(AwsAccountId, DashboardId, VersionNumber)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you're
 #' deleting.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard.
 #' @param VersionNumber The version number of the dashboard. If the version number property is
@@ -1427,12 +1427,12 @@ quicksight_delete_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' @usage
 #' quicksight_delete_template(AwsAccountId, TemplateId, VersionNumber)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you're
 #' deleting.
 #' @param TemplateId &#91;required&#93; An ID for the template you want to delete.
 #' @param VersionNumber Specifies the version of the template that you want to delete. If you
-#' don\'t provide a version number, `DeleteTemplate` deletes all versions
-#' of the template.
+#' don't provide a version number, `DeleteTemplate` deletes all versions of
+#' the template.
 #'
 #' @section Request syntax:
 #' ```
@@ -1515,12 +1515,12 @@ quicksight_delete_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #' @usage
 #' quicksight_delete_theme(AwsAccountId, ThemeId, VersionNumber)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you\'re deleting.
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you're deleting.
 #' @param ThemeId &#91;required&#93; An ID for the theme that you want to delete.
 #' @param VersionNumber The version of the theme that you want to delete.
 #' 
-#' **Note:** If you don\'t provide a version number, you\'re using this
-#' call to `DeleteTheme` to delete all versions of the theme.
+#' **Note:** If you don't provide a version number, you're using this call
+#' to `DeleteTheme` to delete all versions of the theme.
 #'
 #' @section Request syntax:
 #' ```
@@ -1599,8 +1599,8 @@ quicksight_delete_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
 #' making the call
 #'
 #' Deletes the Amazon QuickSight user that is associated with the identity
-#' of the AWS Identity and Access Management (IAM) user or role that\'s
-#' making the call. The IAM user isn\'t deleted as a result of this call.
+#' of the AWS Identity and Access Management (IAM) user or role that's
+#' making the call. The IAM user isn't deleted as a result of this call.
 #'
 #' @usage
 #' quicksight_delete_user(UserName, AwsAccountId, Namespace)
@@ -1689,10 +1689,10 @@ quicksight_delete_user_by_principal_id <- function(PrincipalId, AwsAccountId, Na
 #' quicksight_describe_dashboard(AwsAccountId, DashboardId, VersionNumber,
 #'   AliasName)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you're
 #' describing.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard.
-#' @param VersionNumber The version number for the dashboard. If a version number isn\'t passed,
+#' @param VersionNumber The version number for the dashboard. If a version number isn't passed,
 #' the latest published dashboard version is described.
 #' @param AliasName The alias name.
 #'
@@ -1733,7 +1733,7 @@ quicksight_describe_dashboard <- function(AwsAccountId, DashboardId, VersionNumb
 #' @usage
 #' quicksight_describe_dashboard_permissions(AwsAccountId, DashboardId)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you're
 #' describing permissions for.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard, also added to the IAM policy.
 #'
@@ -1927,7 +1927,7 @@ quicksight_describe_data_source_permissions <- function(AwsAccountId, DataSource
 #' Returns an Amazon QuickSight group's description and Amazon Resource
 #' Name (ARN)
 #'
-#' Returns an Amazon QuickSight group\'s description and Amazon Resource
+#' Returns an Amazon QuickSight group's description and Amazon Resource
 #' Name (ARN).
 #'
 #' @usage
@@ -2053,23 +2053,23 @@ quicksight_describe_ingestion <- function(AwsAccountId, DataSetId, IngestionId) 
 
 #' Describes a template's metadata
 #'
-#' Describes a template\'s metadata.
+#' Describes a template's metadata.
 #'
 #' @usage
 #' quicksight_describe_template(AwsAccountId, TemplateId, VersionNumber,
 #'   AliasName)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you're
 #' describing.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param VersionNumber (Optional) The number for the version to describe. If a `VersionNumber`
-#' parameter value isn\'t provided, the latest version of the template is
+#' parameter value isn't provided, the latest version of the template is
 #' described.
 #' @param AliasName The alias of the template that you want to describe. If you name a
 #' specific alias, you describe the version that the alias points to. You
 #' can specify the latest version of the template by providing the keyword
-#' `$LATEST` in the `AliasName` parameter. The keyword `$PUBLISHED`
-#' doesn\'t apply to templates.
+#' `$LATEST` in the `AliasName` parameter. The keyword `$PUBLISHED` doesn't
+#' apply to templates.
 #'
 #' @section Request syntax:
 #' ```
@@ -2108,14 +2108,14 @@ quicksight_describe_template <- function(AwsAccountId, TemplateId, VersionNumber
 #' @usage
 #' quicksight_describe_template_alias(AwsAccountId, TemplateId, AliasName)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template alias that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template alias that you're
 #' describing.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param AliasName &#91;required&#93; The name of the template alias that you want to describe. If you name a
 #' specific alias, you describe the version that the alias points to. You
 #' can specify the latest version of the template by providing the keyword
-#' `$LATEST` in the `AliasName` parameter. The keyword `$PUBLISHED`
-#' doesn\'t apply to templates.
+#' `$LATEST` in the `AliasName` parameter. The keyword `$PUBLISHED` doesn't
+#' apply to templates.
 #'
 #' @section Request syntax:
 #' ```
@@ -2153,7 +2153,7 @@ quicksight_describe_template_alias <- function(AwsAccountId, TemplateId, AliasNa
 #' @usage
 #' quicksight_describe_template_permissions(AwsAccountId, TemplateId)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you're
 #' describing.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #'
@@ -2193,17 +2193,17 @@ quicksight_describe_template_permissions <- function(AwsAccountId, TemplateId) {
 #' quicksight_describe_theme(AwsAccountId, ThemeId, VersionNumber,
 #'   AliasName)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you're
 #' describing.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
 #' @param VersionNumber The version number for the version to describe. If a `VersionNumber`
-#' parameter value isn\'t provided, the latest version of the theme is
+#' parameter value isn't provided, the latest version of the theme is
 #' described.
 #' @param AliasName The alias of the theme that you want to describe. If you name a specific
 #' alias, you describe the version that the alias points to. You can
 #' specify the latest version of the theme by providing the keyword
-#' `$LATEST` in the `AliasName` parameter. The keyword `$PUBLISHED`
-#' doesn\'t apply to themes.
+#' `$LATEST` in the `AliasName` parameter. The keyword `$PUBLISHED` doesn't
+#' apply to themes.
 #'
 #' @section Request syntax:
 #' ```
@@ -2242,7 +2242,7 @@ quicksight_describe_theme <- function(AwsAccountId, ThemeId, VersionNumber = NUL
 #' @usage
 #' quicksight_describe_theme_alias(AwsAccountId, ThemeId, AliasName)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme alias that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme alias that you're
 #' describing.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
 #' @param AliasName &#91;required&#93; The name of the theme alias that you want to describe.
@@ -2283,7 +2283,7 @@ quicksight_describe_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
 #' @usage
 #' quicksight_describe_theme_permissions(AwsAccountId, ThemeId)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you're
 #' describing.
 #' @param ThemeId &#91;required&#93; The ID for the theme that you want to describe permissions for.
 #'
@@ -2364,8 +2364,8 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 #' configured the dashboards and permissions.
 #' 
 #' Currently, you can use `GetDashboardEmbedURL` only from the server, not
-#' from the user\'s browser. The following rules apply to the combination
-#' of URL and authorization code:
+#' from the user's browser. The following rules apply to the combination of
+#' URL and authorization code:
 #' 
 #' -   They must be used together.
 #' 
@@ -2386,7 +2386,7 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 #'   IdentityType, SessionLifetimeInMinutes, UndoRedoDisabled, ResetDisabled,
 #'   UserArn)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that contains the dashboard that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that contains the dashboard that you're
 #' embedding.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard, also added to the IAM policy.
 #' @param IdentityType &#91;required&#93; The authentication method that the user uses to sign in.
@@ -2396,7 +2396,7 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 #' FALSE, which enables the undo/redo button.
 #' @param ResetDisabled Remove the reset button on the embedded dashboard. The default is FALSE,
 #' which enables the reset button.
-#' @param UserArn The Amazon QuickSight user\'s Amazon Resource Name (ARN), for use with
+#' @param UserArn The Amazon QuickSight user's Amazon Resource Name (ARN), for use with
 #' `QUICKSIGHT` identity type. You can use this for any Amazon QuickSight
 #' users in your account (readers, authors, or admins) authenticated as one
 #' of the following:
@@ -2450,7 +2450,7 @@ quicksight_get_dashboard_embed_url <- function(AwsAccountId, DashboardId, Identi
 #' quicksight_list_dashboard_versions(AwsAccountId, DashboardId, NextToken,
 #'   MaxResults)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you're
 #' listing versions for.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard.
 #' @param NextToken The token for the next set of results, or null if there are no more
@@ -2494,7 +2494,7 @@ quicksight_list_dashboard_versions <- function(AwsAccountId, DashboardId, NextTo
 #' @usage
 #' quicksight_list_dashboards(AwsAccountId, NextToken, MaxResults)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboards that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboards that you're
 #' listing.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
@@ -2891,8 +2891,8 @@ quicksight_list_tags_for_resource <- function(ResourceArn) {
 #' quicksight_list_template_aliases(AwsAccountId, TemplateId, NextToken,
 #'   MaxResults)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template aliases that
-#' you\'re listing.
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template aliases that you're
+#' listing.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
@@ -2938,7 +2938,7 @@ quicksight_list_template_aliases <- function(AwsAccountId, TemplateId, NextToken
 #' quicksight_list_template_versions(AwsAccountId, TemplateId, NextToken,
 #'   MaxResults)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the templates that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the templates that you're
 #' listing.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param NextToken The token for the next set of results, or null if there are no more
@@ -2982,7 +2982,7 @@ quicksight_list_template_versions <- function(AwsAccountId, TemplateId, NextToke
 #' @usage
 #' quicksight_list_templates(AwsAccountId, NextToken, MaxResults)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the templates that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the templates that you're
 #' listing.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
@@ -3025,7 +3025,7 @@ quicksight_list_templates <- function(AwsAccountId, NextToken = NULL, MaxResults
 #' quicksight_list_theme_aliases(AwsAccountId, ThemeId, NextToken,
 #'   MaxResults)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme aliases that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme aliases that you're
 #' listing.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
 #' @param NextToken The token for the next set of results, or null if there are no more
@@ -3070,7 +3070,7 @@ quicksight_list_theme_aliases <- function(AwsAccountId, ThemeId, NextToken = NUL
 #' quicksight_list_theme_versions(AwsAccountId, ThemeId, NextToken,
 #'   MaxResults)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the themes that you\'re listing.
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the themes that you're listing.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
@@ -3113,7 +3113,7 @@ quicksight_list_theme_versions <- function(AwsAccountId, ThemeId, NextToken = NU
 #' @usage
 #' quicksight_list_themes(AwsAccountId, NextToken, MaxResults, Type)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the themes that you\'re listing.
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the themes that you're listing.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
@@ -3283,13 +3283,13 @@ quicksight_list_users <- function(AwsAccountId, NextToken = NULL, MaxResults = N
 #' -   `ADMIN`: A user who is an author, who can also manage Amazon
 #'     QuickSight settings.
 #' 
-#' -   `RESTRICTED_READER`: This role isn\'t currently available for use.
+#' -   `RESTRICTED_READER`: This role isn't currently available for use.
 #' 
-#' -   `RESTRICTED_AUTHOR`: This role isn\'t currently available for use.
+#' -   `RESTRICTED_AUTHOR`: This role isn't currently available for use.
 #' @param IamArn The ARN of the IAM user or role that you are registering with Amazon
 #' QuickSight.
 #' @param SessionName You need to use this parameter only when you register one or more users
-#' using an assumed IAM role. You don\'t need to provide the session name
+#' using an assumed IAM role. You don't need to provide the session name
 #' for other scenarios, for example when you are registering an IAM user or
 #' an Amazon QuickSight user. You can register multiple users using the
 #' same IAM role if each user has a different session name. For more
@@ -3344,8 +3344,8 @@ quicksight_register_user <- function(IdentityType, Email, UserRole, IamArn = NUL
 #' quicksight_search_dashboards(AwsAccountId, Filters, NextToken,
 #'   MaxResults)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the user whose dashboards
-#' you\'re searching for.
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the user whose dashboards you're
+#' searching for.
 #' @param Filters &#91;required&#93; The filters to apply to the search. Currently, you can search only by
 #' user name, for example,
 #' `"Filters": \\[ \{ "Name": "QUICKSIGHT_USER", "Operator": "StringEquals", "Value": "arn:aws:quicksight:us-east-1:1:user/default/UserName1" \} \\]`
@@ -3410,12 +3410,12 @@ quicksight_search_dashboards <- function(AwsAccountId, Filters, NextToken = NULL
 #' Tagging for QuickSight works in a similar way to tagging for other AWS
 #' services, except for the following:
 #' 
-#' -   You can\'t use tags to track AWS costs for QuickSight. This
+#' -   You can't use tags to track AWS costs for QuickSight. This
 #'     restriction is because QuickSight costs are based on users and SPICE
-#'     capacity, which aren\'t taggable resources.
+#'     capacity, which aren't taggable resources.
 #' 
-#' -   QuickSight doesn\'t currently support the Tag Editor for AWS
-#'     Resource Groups.
+#' -   QuickSight doesn't currently support the Tag Editor for AWS Resource
+#'     Groups.
 #'
 #' @usage
 #' quicksight_tag_resource(ResourceArn, Tags)
@@ -3507,12 +3507,12 @@ quicksight_untag_resource <- function(ResourceArn, TagKeys) {
 #'   SourceEntity, Parameters, VersionDescription, DashboardPublishOptions,
 #'   ThemeArn)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you're
 #' updating.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard.
 #' @param Name &#91;required&#93; The display name of the dashboard.
 #' @param SourceEntity &#91;required&#93; The entity that you are using as a source when you update the dashboard.
-#' In `SourceEntity`, you specify the type of object you\'re using as
+#' In `SourceEntity`, you specify the type of object you're using as
 #' source. You can only update a dashboard from a template, so you use a
 #' `SourceTemplate` entity. If you need to update a dashboard from an
 #' analysis, first convert the analysis to a template by using the
@@ -3537,7 +3537,7 @@ quicksight_untag_resource <- function(ResourceArn, TagKeys) {
 #' 
 #' -   `AvailabilityStatus` for `ExportToCSVOption` - This status can be
 #'     either `ENABLED` or `DISABLED`. The visual option to export data to
-#'     .csv format isn\'t enabled when this is set to `DISABLED`. This
+#'     .csv format isn't enabled when this is set to `DISABLED`. This
 #'     option is `ENABLED` by default.
 #' 
 #' -   `VisibilityState` for `SheetControlsOption` - This visibility state
@@ -3646,7 +3646,7 @@ quicksight_update_dashboard <- function(AwsAccountId, DashboardId, Name, SourceE
 #'   GrantPermissions, RevokePermissions)
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard whose permissions
-#' you\'re updating.
+#' you're updating.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard.
 #' @param GrantPermissions The permissions that you want to grant on this resource.
 #' @param RevokePermissions The permissions that you want to revoke from this resource.
@@ -3703,7 +3703,7 @@ quicksight_update_dashboard_permissions <- function(AwsAccountId, DashboardId, G
 #' quicksight_update_dashboard_published_version(AwsAccountId, DashboardId,
 #'   VersionNumber)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you're
 #' updating.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard.
 #' @param VersionNumber &#91;required&#93; The version number of the dashboard.
@@ -4319,11 +4319,11 @@ quicksight_update_group <- function(GroupName, Description = NULL, AwsAccountId,
 #' -   `ENABLED` - Anything specified in this assignment is used when
 #'     creating the data source.
 #' 
-#' -   `DISABLED` - This assignment isn\'t used when creating the data
+#' -   `DISABLED` - This assignment isn't used when creating the data
 #'     source.
 #' 
-#' -   `DRAFT` - This assignment is an unfinished draft and isn\'t used
-#'     when creating the data source.
+#' -   `DRAFT` - This assignment is an unfinished draft and isn't used when
+#'     creating the data source.
 #' @param PolicyArn The ARN for the IAM policy to apply to the QuickSight users and groups
 #' specified in this assignment.
 #' @param Identities The QuickSight users, groups, or both that you want to assign the policy
@@ -4375,11 +4375,11 @@ quicksight_update_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' quicksight_update_template(AwsAccountId, TemplateId, SourceEntity,
 #'   VersionDescription, Name)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you're
 #' updating.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param SourceEntity &#91;required&#93; The entity that you are using as a source when you update the template.
-#' In `SourceEntity`, you specify the type of object you\'re using as
+#' In `SourceEntity`, you specify the type of object you're using as
 #' source: `SourceTemplate` for a template or `SourceAnalysis` for an
 #' analysis. Both of these require an Amazon Resource Name (ARN). For
 #' `SourceTemplate`, specify the ARN of the source template. For
@@ -4449,14 +4449,14 @@ quicksight_update_template <- function(AwsAccountId, TemplateId, SourceEntity, V
 #' quicksight_update_template_alias(AwsAccountId, TemplateId, AliasName,
 #'   TemplateVersionNumber)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template alias that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template alias that you're
 #' updating.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param AliasName &#91;required&#93; The alias of the template that you want to update. If you name a
 #' specific alias, you update the version that the alias points to. You can
 #' specify the latest version of the template by providing the keyword
-#' `$LATEST` in the `AliasName` parameter. The keyword `$PUBLISHED`
-#' doesn\'t apply to templates.
+#' `$LATEST` in the `AliasName` parameter. The keyword `$PUBLISHED` doesn't
+#' apply to templates.
 #' @param TemplateVersionNumber &#91;required&#93; The version number of the template.
 #'
 #' @section Request syntax:
@@ -4554,12 +4554,12 @@ quicksight_update_template_permissions <- function(AwsAccountId, TemplateId, Gra
 #' quicksight_update_theme(AwsAccountId, ThemeId, Name, BaseThemeId,
 #'   VersionDescription, Configuration)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you\'re updating.
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you're updating.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
 #' @param Name The name for the theme.
 #' @param BaseThemeId &#91;required&#93; The theme ID, defined by Amazon QuickSight, that a custom theme inherits
 #' from. All themes initially inherit from a default QuickSight theme.
-#' @param VersionDescription A description of the theme version that you\'re updating Every time that
+#' @param VersionDescription A description of the theme version that you're updating Every time that
 #' you call `UpdateTheme`, you create a new version of the theme. Each
 #' version of the theme maintains a description of the version in
 #' `VersionDescription`.
@@ -4648,7 +4648,7 @@ quicksight_update_theme <- function(AwsAccountId, ThemeId, Name = NULL, BaseThem
 #' quicksight_update_theme_alias(AwsAccountId, ThemeId, AliasName,
 #'   ThemeVersionNumber)
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme alias that you\'re
+#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme alias that you're
 #' updating.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
 #' @param AliasName &#91;required&#93; The name of the theme alias that you want to update.

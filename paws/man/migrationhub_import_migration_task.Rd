@@ -8,7 +8,7 @@ migrationhub_import_migration_task(ProgressUpdateStream,
   MigrationTaskName, DryRun)
 }
 \arguments{
-\item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream. \\>}
+\item{ProgressUpdateStream}{[required] The name of the ProgressUpdateStream. >}
 
 \item{MigrationTaskName}{[required] Unique identifier that references the migration task. \emph{Do not store
 personal data in this field.}}

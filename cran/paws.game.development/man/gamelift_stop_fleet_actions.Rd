@@ -14,10 +14,10 @@ the fleet ID or ARN value.}
 }
 \description{
 Suspends activity on a fleet. Currently, this operation is used to stop
-a fleet\'s auto-scaling activity. It is used to temporarily stop
+a fleet's auto-scaling activity. It is used to temporarily stop
 triggering scaling events. The policies can be retained and auto-scaling
 activity can be restarted using StartFleetActions. You can view a
-fleet\'s stopped actions using DescribeFleetAttributes.
+fleet's stopped actions using DescribeFleetAttributes.
 }
 \details{
 To stop fleet actions, specify the fleet ID and the type of actions to

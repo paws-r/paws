@@ -10,7 +10,7 @@ route53resolver(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-Here\'s how you set up to query an Amazon Route 53 private hosted zone
+Here's how you set up to query an Amazon Route 53 private hosted zone
 from your network:
 \enumerate{
 \item Connect your network to a VPC using AWS Direct Connect or a VPN.
@@ -18,7 +18,7 @@ from your network:
 
 \verb{create-resolver-endpoint --name \\\[endpoint_name\\\] --direction INBOUND --creator-request-id \\\[unique_string\\\] --security-group-ids \\\[security_group_with_inbound_rules\\\] --ip-addresses SubnetId=\\\[subnet_id\\\] SubnetId=\\\[subnet_id_in_different_AZ\\\]}
 
-Note the resolver endpoint ID that appears in the response. You\'ll
+Note the resolver endpoint ID that appears in the response. You'll
 use it in step 3.
 \item Get the IP addresses for the Resolver endpoints:
 

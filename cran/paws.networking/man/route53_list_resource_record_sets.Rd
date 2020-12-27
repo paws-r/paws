@@ -12,19 +12,18 @@ route53_list_resource_record_sets(HostedZoneId, StartRecordName,
 you want to list.}
 
 \item{StartRecordName}{The first name in the lexicographic ordering of resource record sets
-that you want to list. If the specified record name doesn\'t exist, the
+that you want to list. If the specified record name doesn't exist, the
 results begin with the first resource record set that has a name greater
 than the value of \code{name}.}
 
 \item{StartRecordType}{The type of resource record set to begin the record listing from.
 
-Valid values for basic resource record sets: \code{A} \\| \code{AAAA} \\| \code{CAA} \\|
-\code{CNAME} \\| \code{MX} \\| \code{NAPTR} \\| \code{NS} \\| \code{PTR} \\| \code{SOA} \\| \code{SPF} \\| \code{SRV}
-\\| \code{TXT}
+Valid values for basic resource record sets: \code{A} | \code{AAAA} | \code{CAA} |
+\code{CNAME} | \code{MX} | \code{NAPTR} | \code{NS} | \code{PTR} | \code{SOA} | \code{SPF} | \code{SRV} | \code{TXT}
 
 Values for weighted, latency, geolocation, and failover resource record
-sets: \code{A} \\| \code{AAAA} \\| \code{CAA} \\| \code{CNAME} \\| \code{MX} \\| \code{NAPTR} \\| \code{PTR} \\|
-\code{SPF} \\| \code{SRV} \\| \code{TXT}
+sets: \code{A} | \code{AAAA} | \code{CAA} | \code{CNAME} | \code{MX} | \code{NAPTR} | \code{PTR} | \code{SPF} |
+\code{SRV} | \code{TXT}
 
 Values for alias resource record sets:
 \itemize{
@@ -32,7 +31,7 @@ Values for alias resource record sets:
 \item \strong{CloudFront distribution}: A or AAAA
 \item \strong{Elastic Beanstalk environment that has a regionalized subdomain}:
 A
-\item \strong{Elastic Load Balancing load balancer}: A \\| AAAA
+\item \strong{Elastic Load Balancing load balancer}: A | AAAA
 \item \strong{S3 bucket}: A
 \item \strong{VPC interface VPC endpoint}: A
 \item \strong{Another resource record set in this hosted zone:} The type of the
@@ -114,7 +113,7 @@ all Route 53 DNS servers.
 
 To ensure that you get an accurate listing of the resource record sets
 for a hosted zone at a point in time, do not submit a
-\code{ChangeResourceRecordSets} request while you\'re paging through the
+\code{ChangeResourceRecordSets} request while you're paging through the
 results of a \code{ListResourceRecordSets} request. If you do, some pages may
 display results without the latest changes while other pages display
 results with the latest changes.

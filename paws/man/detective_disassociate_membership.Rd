@@ -9,7 +9,7 @@ detective_disassociate_membership(GraphArn)
 \arguments{
 \item{GraphArn}{[required] The ARN of the behavior graph to remove the member account from.
 
-The member account\'s member status in the behavior graph must be
+The member account's member status in the behavior graph must be
 \code{ENABLED}.}
 }
 \description{

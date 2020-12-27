@@ -21,12 +21,12 @@ in the \emph{AWS General Reference}.}
 \description{
 Attaches the specified managed policy to the specified IAM role. When
 you attach a managed policy to a role, the managed policy becomes part
-of the role\'s permission (access) policy.
+of the role's permission (access) policy.
 }
 \details{
-You cannot use a managed policy as the role\'s trust policy. The role\'s
+You cannot use a managed policy as the role's trust policy. The role's
 trust policy is created at the same time as the role, using CreateRole.
-You can update a role\'s trust policy using UpdateAssumeRolePolicy.
+You can update a role's trust policy using UpdateAssumeRolePolicy.
 
 Use this API to attach a \emph{managed} policy to a role. To embed an inline
 policy in a role, use PutRolePolicy. For more information about

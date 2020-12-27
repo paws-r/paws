@@ -30,12 +30,12 @@ resources from the prior release, see the \href{https://docs.aws.amazon.com/waf/
 Retrieves the TagInfoForResource for the specified resource. Tags are
 key:value pairs that you can use to categorize and manage your
 resources, for purposes like billing. For example, you might set the tag
-key to \"customer\" and the value to the customer name or ID. You can
+key to "customer" and the value to the customer name or ID. You can
 specify one or more tags to add to each AWS resource, up to 50 tags for
 a resource.
 
 You can tag the AWS resources that you manage through AWS WAF: web ACLs,
-rule groups, IP sets, and regex pattern sets. You can\'t manage or view
+rule groups, IP sets, and regex pattern sets. You can't manage or view
 tags through the AWS WAF console.
 }
 \section{Request syntax}{

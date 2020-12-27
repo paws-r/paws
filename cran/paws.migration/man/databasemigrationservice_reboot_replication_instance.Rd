@@ -11,8 +11,8 @@ databasemigrationservice_reboot_replication_instance(
 \item{ReplicationInstanceArn}{[required] The Amazon Resource Name (ARN) of the replication instance.}
 
 \item{ForceFailover}{If this parameter is \code{true}, the reboot is conducted through a Multi-AZ
-failover. (If the instance isn\'t configured for Multi-AZ, then you
-can\'t specify \code{true}.)}
+failover. (If the instance isn't configured for Multi-AZ, then you can't
+specify \code{true}.)}
 }
 \description{
 Reboots a replication instance. Rebooting results in a momentary outage,

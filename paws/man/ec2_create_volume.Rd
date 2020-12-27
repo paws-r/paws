@@ -60,8 +60,8 @@ Constraints: 1-16,384 for \code{gp2}, 4-16,384 for \code{io1}, 500-16,384 for
 a snapshot, the volume size must be equal to or larger than the snapshot
 size.
 
-Default: If you\'re creating the volume from a snapshot and don\'t
-specify a volume size, the default is the snapshot size.}
+Default: If you're creating the volume from a snapshot and don't specify
+a volume size, the default is the snapshot size.}
 
 \item{SnapshotId}{The snapshot from which to create the volume. You must specify either a
 snapshot ID or a volume size.}

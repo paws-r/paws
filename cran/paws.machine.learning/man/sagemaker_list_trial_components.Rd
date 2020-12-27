@@ -9,16 +9,16 @@ sagemaker_list_trial_components(ExperimentName, TrialName, SourceArn,
 }
 \arguments{
 \item{ExperimentName}{A filter that returns only components that are part of the specified
-experiment. If you specify \code{ExperimentName}, you can\'t filter by
+experiment. If you specify \code{ExperimentName}, you can't filter by
 \code{SourceArn} or \code{TrialName}.}
 
 \item{TrialName}{A filter that returns only components that are part of the specified
-trial. If you specify \code{TrialName}, you can\'t filter by \code{ExperimentName}
+trial. If you specify \code{TrialName}, you can't filter by \code{ExperimentName}
 or \code{SourceArn}.}
 
 \item{SourceArn}{A filter that returns only components that have the specified source
-Amazon Resource Name (ARN). If you specify \code{SourceArn}, you can\'t
-filter by \code{ExperimentName} or \code{TrialName}.}
+Amazon Resource Name (ARN). If you specify \code{SourceArn}, you can't filter
+by \code{ExperimentName} or \code{TrialName}.}
 
 \item{CreatedAfter}{A filter that returns only components created after the specified time.}
 
@@ -31,8 +31,8 @@ filter by \code{ExperimentName} or \code{TrialName}.}
 \item{MaxResults}{The maximum number of components to return in the response. The default
 value is 10.}
 
-\item{NextToken}{If the previous call to \code{ListTrialComponents} didn\'t return the full
-set of components, the call returns a token for getting the next set of
+\item{NextToken}{If the previous call to \code{ListTrialComponents} didn't return the full set
+of components, the call returns a token for getting the next set of
 components.}
 }
 \description{

@@ -12,17 +12,17 @@ ec2_describe_transit_gateway_attachments(TransitGatewayAttachmentIds,
 
 \item{Filters}{One or more filters. The possible values are:
 \itemize{
-\item \code{association.state} - The state of the association (\code{associating} \\|
-\code{associated} \\| \code{disassociating}).
+\item \code{association.state} - The state of the association (\code{associating} |
+\code{associated} | \code{disassociating}).
 \item \code{association.transit-gateway-route-table-id} - The ID of the route
 table for the transit gateway.
 \item \code{resource-id} - The ID of the resource.
 \item \code{resource-owner-id} - The ID of the AWS account that owns the
 resource.
-\item \code{resource-type} - The resource type (\code{vpc} \\| \code{vpn}).
-\item \code{state} - The state of the attachment (\code{available} \\| \code{deleted} \\|
-\code{deleting} \\| \code{failed} \\| \code{modifying} \\| \code{pendingAcceptance} \\|
-\code{pending} \\| \code{rollingBack} \\| \code{rejected} \\| \code{rejecting}).
+\item \code{resource-type} - The resource type (\code{vpc} | \code{vpn}).
+\item \code{state} - The state of the attachment (\code{available} | \code{deleted} |
+\code{deleting} | \code{failed} | \code{modifying} | \code{pendingAcceptance} |
+\code{pending} | \code{rollingBack} | \code{rejected} | \code{rejecting}).
 \item \code{transit-gateway-attachment-id} - The ID of the attachment.
 \item \code{transit-gateway-id} - The ID of the transit gateway.
 \item \code{transit-gateway-owner-id} - The ID of the AWS account that owns the

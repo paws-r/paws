@@ -58,7 +58,7 @@ add more by updating the fleet.}
 
 \item{NewGameSessionProtectionPolicy}{A game session protection policy to apply to all instances in this
 fleet. If this parameter is not set, instances in this fleet default to
-no protection. You can change a fleet\'s protection policy using
+no protection. You can change a fleet's protection policy using
 UpdateFleetAttributes, but this change will only affect sessions created
 after the policy change. You can also set protection for individual
 instances using UpdateGameSession.
@@ -111,7 +111,7 @@ instance type selected for this fleet. Learn more about \href{https://docs.aws.a
 services. With an instance role ARN set, any application that runs on an
 instance in this fleet can assume the role, including install scripts,
 server processes, and daemons (background processes). Create a role or
-look up a role\'s ARN from the \href{https://console.aws.amazon.com/iam/}{IAM dashboard} in the AWS Management
+look up a role's ARN from the \href{https://console.aws.amazon.com/iam/}{IAM dashboard} in the AWS Management
 Console. Learn more about using on-box credentials for your game servers
 at \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-resources.html}{Access external resources from a game server}.}
 
@@ -165,7 +165,7 @@ fleet status or by monitoring fleet creation events:
 \item Creates a fleet resource. Status: \code{NEW}.
 \item Begins writing events to the fleet event log, which can be accessed
 in the Amazon GameLift console.
-\item Sets the fleet\'s target capacity to 1 (desired instances), which
+\item Sets the fleet's target capacity to 1 (desired instances), which
 triggers Amazon GameLift to start one new EC2 instance.
 \item Downloads the game build or Realtime script to the new instance and
 installs it. Statuses: \code{DOWNLOADING}, \code{VALIDATING}, \code{BUILDING}.
@@ -173,8 +173,8 @@ installs it. Statuses: \code{DOWNLOADING}, \code{VALIDATING}, \code{BUILDING}.
 configured to run multiple server processes per instance, Amazon
 GameLift staggers each process launch by a few seconds. Status:
 \code{ACTIVATING}.
-\item Sets the fleet\'s status to \code{ACTIVE} as soon as one server process
-is ready to host a game session.
+\item Sets the fleet's status to \code{ACTIVE} as soon as one server process is
+ready to host a game session.
 }
 
 \strong{Learn more}

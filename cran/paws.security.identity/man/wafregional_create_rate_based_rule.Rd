@@ -2,20 +2,20 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_create_rate_based_rule}
 \alias{wafregional_create_rate_based_rule}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_create_rate_based_rule(Name, MetricName, RateKey, RateLimit,
   ChangeToken, Tags)
 }
 \arguments{
-\item{Name}{[required] A friendly name or description of the RateBasedRule. You can\'t change
+\item{Name}{[required] A friendly name or description of the RateBasedRule. You can't change
 the name of a \code{RateBasedRule} after you create it.}
 
 \item{MetricName}{[required] A friendly name or description for the metrics for this \code{RateBasedRule}.
 The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with
-maximum length 128 and minimum length one. It can\'t contain whitespace
-or metric names reserved for AWS WAF, including \"All\" and
-\"Default\\_Action.\" You can\'t change the name of the metric after you
+maximum length 128 and minimum length one. It can't contain whitespace
+or metric names reserved for AWS WAF, including "All" and
+"Default\\_Action." You can't change the name of the metric after you
 create the \code{RateBasedRule}.}
 
 \item{RateKey}{[required] The field that AWS WAF uses to determine if requests are likely arriving

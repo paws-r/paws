@@ -36,7 +36,7 @@ organizational unit (OU), or an individual AWS account.
 \details{
 For more information about policies and their use, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html}{Managing Organization Policies}.
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{

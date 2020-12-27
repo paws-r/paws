@@ -43,14 +43,14 @@ status set to \code{QUEUED}. Track the status of the ticket to respond as
 needed and acquire game session connection information for successfully
 completed matches.
 
-\strong{Tracking ticket status} \\-- A couple of options are available for
+\strong{Tracking ticket status} -- A couple of options are available for
 tracking the status of matchmaking requests:
 \itemize{
-\item Polling \\-- Call \code{DescribeMatchmaking}. This operation returns the
+\item Polling -- Call \code{DescribeMatchmaking}. This operation returns the
 full ticket object, including current status and (for completed
 tickets) game session connection info. We recommend polling no more
 than once every 10 seconds.
-\item Notifications \\-- Get event notifications for changes in ticket
+\item Notifications -- Get event notifications for changes in ticket
 status using Amazon Simple Notification Service (SNS). Notifications
 are easy to set up (see CreateMatchmakingConfiguration) and
 typically deliver match status changes faster and more efficiently
@@ -60,7 +60,7 @@ notifications (since delivery is not guaranteed) and call
 within 30 seconds.
 }
 
-\strong{Processing a matchmaking request} \\-- FlexMatch handles a matchmaking
+\strong{Processing a matchmaking request} -- FlexMatch handles a matchmaking
 request as follows:
 \enumerate{
 \item Your client code submits a \code{StartMatchmaking} request for one or

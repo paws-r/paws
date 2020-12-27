@@ -74,9 +74,8 @@ You can only use the following attributes to query findings:
 \item service.archived
 
 When this attribute is set to TRUE, only archived findings are
-listed. When it\'s set to FALSE, only unarchived findings are
-listed. When this attribute is not set, all existing findings are
-listed.
+listed. When it's set to FALSE, only unarchived findings are listed.
+When this attribute is not set, all existing findings are listed.
 \item service.resourceRole
 \item severity
 \item type

@@ -13,8 +13,7 @@ details are being requested.}
 \item{UserId}{[required] The identifier for the user whose mailbox details are being requested.}
 }
 \description{
-Requests a user\'s mailbox details for a specified organization and
-user.
+Requests a user's mailbox details for a specified organization and user.
 }
 \section{Request syntax}{
 \preformatted{svc$get_mailbox_details(

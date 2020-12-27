@@ -24,7 +24,7 @@ S3Resource objects or LambdaResource objects.}
 
 \item{AddressId}{The ID of the updated Address object.}
 
-\item{ShippingOption}{The updated shipping option value of this cluster\'s ShippingDetails
+\item{ShippingOption}{The updated shipping option value of this cluster's ShippingDetails
 object.}
 
 \item{Notification}{The new or updated Notification object.}
@@ -33,10 +33,10 @@ object.}
 not supported in most regions.}
 }
 \description{
-While a cluster\'s \code{ClusterState} value is in the \code{AwaitingQuorum}
-state, you can update some of the information associated with a cluster.
-Once the cluster changes to a different job state, usually 60 minutes
-after the cluster being created, this action is no longer available.
+While a cluster's \code{ClusterState} value is in the \code{AwaitingQuorum} state,
+you can update some of the information associated with a cluster. Once
+the cluster changes to a different job state, usually 60 minutes after
+the cluster being created, this action is no longer available.
 }
 \section{Request syntax}{
 \preformatted{svc$update_cluster(

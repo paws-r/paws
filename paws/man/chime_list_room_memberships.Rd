@@ -18,7 +18,7 @@ chime_list_room_memberships(AccountId, RoomId, MaxResults, NextToken)
 }
 \description{
 Lists the membership details for the specified room in an Amazon Chime
-Enterprise account, such as the members\' IDs, email addresses, and
+Enterprise account, such as the members' IDs, email addresses, and
 names.
 }
 \section{Request syntax}{

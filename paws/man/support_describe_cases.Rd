@@ -22,16 +22,15 @@ creation.}
 Case communications are available for 12 months after creation.}
 
 \item{includeResolvedCases}{Specifies whether to include resolved support cases in the
-\code{DescribeCases} response. By default, resolved cases aren\'t included.}
+\code{DescribeCases} response. By default, resolved cases aren't included.}
 
 \item{nextToken}{A resumption point for pagination.}
 
 \item{maxResults}{The maximum number of results to return before paginating.}
 
 \item{language}{The ISO 639-1 code for the language in which AWS provides support. AWS
-Support currently supports English (\"en\") and Japanese (\"ja\").
-Language parameters must be passed explicitly for operations that take
-them.}
+Support currently supports English ("en") and Japanese ("ja"). Language
+parameters must be passed explicitly for operations that take them.}
 
 \item{includeCommunications}{Specifies whether to include communications in the \code{DescribeCases}
 response. By default, communications are incuded.}

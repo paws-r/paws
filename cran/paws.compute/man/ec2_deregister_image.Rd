@@ -15,16 +15,16 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Deregisters the specified AMI. After you deregister an AMI, it can\'t be
-used to launch new instances; however, it doesn\'t affect any instances
-that you\'ve already launched from the AMI. You\'ll continue to incur
+Deregisters the specified AMI. After you deregister an AMI, it can't be
+used to launch new instances; however, it doesn't affect any instances
+that you've already launched from the AMI. You'll continue to incur
 usage costs for those instances until you terminate them.
 }
 \details{
-When you deregister an Amazon EBS-backed AMI, it doesn\'t affect the
+When you deregister an Amazon EBS-backed AMI, it doesn't affect the
 snapshot that was created for the root volume of the instance during the
 AMI creation process. When you deregister an instance store-backed AMI,
-it doesn\'t affect the files that you uploaded to Amazon S3 when you
+it doesn't affect the files that you uploaded to Amazon S3 when you
 created the AMI.
 }
 \section{Request syntax}{

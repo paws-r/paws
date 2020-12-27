@@ -27,7 +27,7 @@ contact.
 }
 \details{
 You can add or update attributes for both ongoing and completed
-contacts. For example, you can update the customer\'s name or the reason
+contacts. For example, you can update the customer's name or the reason
 the customer called while the call is active, or add notes about steps
 that the agent took during the call that are displayed to the next agent
 that takes the call. You can also update attributes for a contact using

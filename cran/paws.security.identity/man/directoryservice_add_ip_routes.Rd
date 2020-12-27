@@ -17,8 +17,8 @@ often the IP address block of the DNS server used for your on-premises
 domain.}
 
 \item{UpdateSecurityGroupForDirectoryControllers}{If set to true, updates the inbound and outbound rules of the security
-group that has the description: \"AWS created security group for
-\emph{directory ID} directory controllers.\" Following are the new rules:
+group that has the description: "AWS created security group for
+\emph{directory ID} directory controllers." Following are the new rules:
 
 Inbound:
 \itemize{

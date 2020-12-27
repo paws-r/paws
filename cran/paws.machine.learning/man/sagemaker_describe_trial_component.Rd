@@ -10,7 +10,7 @@ sagemaker_describe_trial_component(TrialComponentName)
 \item{TrialComponentName}{[required] The name of the trial component to describe.}
 }
 \description{
-Provides a list of a trials component\'s properties.
+Provides a list of a trials component's properties.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_trial_component(

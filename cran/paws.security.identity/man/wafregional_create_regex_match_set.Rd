@@ -2,12 +2,12 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_create_regex_match_set}
 \alias{wafregional_create_regex_match_set}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_create_regex_match_set(Name, ChangeToken)
 }
 \arguments{
-\item{Name}{[required] A friendly name or description of the RegexMatchSet. You can\'t change
+\item{Name}{[required] A friendly name or description of the RegexMatchSet. You can't change
 \code{Name} after you create a \code{RegexMatchSet}.}
 
 \item{ChangeToken}{[required] The value returned by the most recent call to GetChangeToken.}

@@ -38,8 +38,7 @@ Sets the permissions on an existing bucket using access control lists
 To set the ACL of a bucket, you must have \code{WRITE_ACP} permission.
 }
 \details{
-You can use one of the following two ways to set a bucket\'s
-permissions:
+You can use one of the following two ways to set a bucket's permissions:
 \itemize{
 \item Specify the ACL in the request body
 \item Specify permissions using request headers
@@ -75,10 +74,10 @@ Amazon S3 supports in an ACL. For more information, see \href{https://docs.aws.a
 You specify each grantee as a type=value pair, where the type is one
 of the following:
 \itemize{
-\item \code{id} -- if the value specified is the canonical user ID of an
-AWS account
-\item \code{uri} -- if you are granting permissions to a predefined group
-\item \code{emailAddress} -- if the value specified is the email address of
+\item \code{id} – if the value specified is the canonical user ID of an AWS
+account
+\item \code{uri} – if you are granting permissions to a predefined group
+\item \code{emailAddress} – if the value specified is the email address of
 an AWS account
 
 Using email addresses to specify a grantee is only supported in
@@ -91,7 +90,7 @@ the following AWS Regions:
 \item Asia Pacific (Sydney)
 \item Asia Pacific (Tokyo)
 \item Europe (Ireland)
-\item South America (SÃ£o Paulo)
+\item South America (São Paulo)
 }
 
 For a list of all the Amazon S3 supported Regions and endpoints,
@@ -112,10 +111,10 @@ explicitly. You cannot do both.
 
 \strong{Grantee Values}
 
-You can specify the person (grantee) to whom you\'re assigning access
+You can specify the person (grantee) to whom you're assigning access
 rights (using request elements) in the following ways:
 \itemize{
-\item By the person\'s ID:
+\item By the person's ID:
 
 \verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;}
 
@@ -140,7 +139,7 @@ following AWS Regions:
 \item Asia Pacific (Sydney)
 \item Asia Pacific (Tokyo)
 \item Europe (Ireland)
-\item South America (SÃ£o Paulo)
+\item South America (São Paulo)
 }
 
 For a list of all the Amazon S3 supported Regions and endpoints, see

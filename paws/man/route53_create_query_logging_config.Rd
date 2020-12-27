@@ -56,13 +56,13 @@ you use a consistent prefix, for example:
 
 \verb{/aws/route53/<i>hosted zone name</i> }
 
-In the next step, you\'ll create a resource policy, which
+In the next step, you'll create a resource policy, which
 controls access to one or more log groups and the associated AWS
-resources, such as Route 53 hosted zones. There\'s a limit on
-the number of resource policies that you can create, so we
-recommend that you use a consistent prefix so you can use the
-same resource policy for all the log groups that you create for
-query logging.
+resources, such as Route 53 hosted zones. There's a limit on the
+number of resource policies that you can create, so we recommend
+that you use a consistent prefix so you can use the same
+resource policy for all the log groups that you create for query
+logging.
 }
 \item Create a CloudWatch Logs resource policy, and give it the
 permissions that Route 53 needs to create log streams and to send
@@ -74,7 +74,7 @@ zone name with \code{*}, for example:
 
 \verb{arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*}
 
-You can\'t use the CloudWatch console to create or edit a resource
+You can't use the CloudWatch console to create or edit a resource
 policy. You must use the CloudWatch API, one of the AWS SDKs, or the
 AWS CLI.
 }
@@ -100,8 +100,8 @@ The edge location code is a three-letter code and an arbitrarily
 assigned number, for example, DFW3. The three-letter code typically
 corresponds with the International Air Transport Association airport
 code for an airport near the edge location. (These abbreviations might
-change in the future.) For a list of edge locations, see \"The Route 53
-Global Network\" on the \href{http://aws.amazon.com/route53/details/}{Route 53 Product Details} page.
+change in the future.) For a list of edge locations, see "The Route 53
+Global Network" on the \href{http://aws.amazon.com/route53/details/}{Route 53 Product Details} page.
 }
 
 \subsection{Queries That Are Logged}{
@@ -109,7 +109,7 @@ Global Network\" on the \href{http://aws.amazon.com/route53/details/}{Route 53 P
 Query logs contain only the queries that DNS resolvers forward to Route
 53. If a DNS resolver has already cached the response to a query (such
 as the IP address for a load balancer for example.com), the resolver
-will continue to return the cached response. It doesn\'t forward another
+will continue to return the cached response. It doesn't forward another
 query to Route 53 until the TTL for the corresponding resource record
 set expires. Depending on how many DNS queries are submitted for a
 resource record set, and depending on the TTL for that resource record

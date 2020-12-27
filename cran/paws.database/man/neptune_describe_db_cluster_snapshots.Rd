@@ -10,7 +10,7 @@ neptune_describe_db_cluster_snapshots(DBClusterIdentifier,
 }
 \arguments{
 \item{DBClusterIdentifier}{The ID of the DB cluster to retrieve the list of DB cluster snapshots
-for. This parameter can\'t be used in conjunction with the
+for. This parameter can't be used in conjunction with the
 \code{DBClusterSnapshotIdentifier} parameter. This parameter is not
 case-sensitive.
 
@@ -20,7 +20,7 @@ Constraints:
 }}
 
 \item{DBClusterSnapshotIdentifier}{A specific DB cluster snapshot identifier to describe. This parameter
-can\'t be used in conjunction with the \code{DBClusterIdentifier} parameter.
+can't be used in conjunction with the \code{DBClusterIdentifier} parameter.
 This value is stored as a lowercase string.
 
 Constraints:
@@ -44,16 +44,16 @@ shared to my AWS account.
 public.
 }
 
-If you don\'t specify a \code{SnapshotType} value, then both automated and
+If you don't specify a \code{SnapshotType} value, then both automated and
 manual DB cluster snapshots are returned. You can include shared DB
 cluster snapshots with these results by setting the \code{IncludeShared}
 parameter to \code{true}. You can include public DB cluster snapshots with
 these results by setting the \code{IncludePublic} parameter to \code{true}.
 
-The \code{IncludeShared} and \code{IncludePublic} parameters don\'t apply for
+The \code{IncludeShared} and \code{IncludePublic} parameters don't apply for
 \code{SnapshotType} values of \code{manual} or \code{automated}. The \code{IncludePublic}
-parameter doesn\'t apply when \code{SnapshotType} is set to \code{shared}. The
-\code{IncludeShared} parameter doesn\'t apply when \code{SnapshotType} is set to
+parameter doesn't apply when \code{SnapshotType} is set to \code{shared}. The
+\code{IncludeShared} parameter doesn't apply when \code{SnapshotType} is set to
 \code{public}.}
 
 \item{Filters}{This parameter is not currently supported.}

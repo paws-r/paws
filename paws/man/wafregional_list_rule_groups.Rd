@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_list_rule_groups}
 \alias{wafregional_list_rule_groups}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_list_rule_groups(NextMarker, Limit)
 }

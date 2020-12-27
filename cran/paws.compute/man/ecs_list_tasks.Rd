@@ -56,7 +56,7 @@ that Amazon ECS has set the desired status to \code{RUNNING}.
 
 Although you can filter results based on a desired status of \code{PENDING},
 this does not return any results. Amazon ECS never sets the desired
-status of a task to that value (only a task\'s \code{lastStatus} may have a
+status of a task to that value (only a task's \code{lastStatus} may have a
 value of \code{PENDING}).}
 
 \item{launchType}{The launch type for services to list.}

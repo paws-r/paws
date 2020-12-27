@@ -16,13 +16,13 @@ The ID should be in the following format.
 
 \item{definition}{[required] The \code{DefinitionDocument} that contains the updated system definition.}
 
-\item{compatibleNamespaceVersion}{The version of the user\'s namespace. Defaults to the latest version of
-the user\'s namespace.
+\item{compatibleNamespaceVersion}{The version of the user's namespace. Defaults to the latest version of
+the user's namespace.
 
 If no value is specified, the latest version is used by default.}
 }
 \description{
-Updates the specified system. You don\'t need to run this action after
+Updates the specified system. You don't need to run this action after
 updating a workflow. Any deployment that uses the system will see the
 changes in the system when it is redeployed.
 }

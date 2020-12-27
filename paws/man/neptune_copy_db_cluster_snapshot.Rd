@@ -12,11 +12,11 @@ neptune_copy_db_cluster_snapshot(SourceDBClusterSnapshotIdentifier,
 \item{SourceDBClusterSnapshotIdentifier}{[required] The identifier of the DB cluster snapshot to copy. This parameter is not
 case-sensitive.
 
-You can\'t copy from one AWS Region to another.
+You can't copy from one AWS Region to another.
 
 Constraints:
 \itemize{
-\item Must specify a valid system snapshot in the \"available\" state.
+\item Must specify a valid system snapshot in the "available" state.
 \item Specify a valid DB snapshot identifier.
 }
 
@@ -40,7 +40,7 @@ alias for the KMS encryption key.
 
 If you copy an encrypted DB cluster snapshot from your AWS account, you
 can specify a value for \code{KmsKeyId} to encrypt the copy with a new KMS
-encryption key. If you don\'t specify a value for \code{KmsKeyId}, then the
+encryption key. If you don't specify a value for \code{KmsKeyId}, then the
 copy of the DB cluster snapshot is encrypted with the same KMS key as
 the source DB cluster snapshot.
 
@@ -48,8 +48,8 @@ If you copy an encrypted DB cluster snapshot that is shared from another
 AWS account, then you must specify a value for \code{KmsKeyId}.
 
 KMS encryption keys are specific to the AWS Region that they are created
-in, and you can\'t use encryption keys from one AWS Region in another
-AWS Region.
+in, and you can't use encryption keys from one AWS Region in another AWS
+Region.
 
 You cannot encrypt an unencrypted DB cluster snapshot when you copy it.
 If you try to copy an unencrypted DB cluster snapshot and specify a

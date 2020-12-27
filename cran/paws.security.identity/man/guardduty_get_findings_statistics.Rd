@@ -9,7 +9,7 @@ guardduty_get_findings_statistics(DetectorId, FindingStatisticTypes,
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
-findings\' statistics you want to retrieve.}
+findings' statistics you want to retrieve.}
 
 \item{FindingStatisticTypes}{[required] The types of finding statistics to retrieve.}
 

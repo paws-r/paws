@@ -74,7 +74,7 @@ is received.
 
 Executions that are already running an association when MaxErrors is
 reached are allowed to complete, but some of these executions may fail
-as well. If you need to ensure that there won\'t be more than max-errors
+as well. If you need to ensure that there won't be more than max-errors
 failed executions, set MaxConcurrency to 1 so that executions proceed
 one at a time.}
 
@@ -95,7 +95,7 @@ MaxConcurrency.}
 or \code{MANUAL}. In \code{AUTO} mode, the system uses the status of the
 association execution to determine the compliance status. If the
 association execution runs successfully, then the association is
-\code{COMPLIANT}. If the association execution doesn\'t run successfully, the
+\code{COMPLIANT}. If the association execution doesn't run successfully, the
 association is \code{NON-COMPLIANT}.
 
 In \code{MANUAL} mode, you must specify the \code{AssociationId} as a parameter
@@ -107,7 +107,7 @@ By default, all associations use \code{AUTO} mode.}
 
 \item{ApplyOnlyAtCronInterval}{By default, when you create a new associations, the system runs it
 immediately after it is created and then according to the schedule you
-specified. Specify this option if you don\'t want an association to run
+specified. Specify this option if you don't want an association to run
 immediately after you create it.}
 }
 \description{

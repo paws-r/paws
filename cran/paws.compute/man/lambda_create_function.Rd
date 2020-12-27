@@ -22,10 +22,10 @@ lambda_create_function(FunctionName, Runtime, Role, Handler, Code,
 The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 
-\item{Runtime}{[required] The identifier of the function\'s
+\item{Runtime}{[required] The identifier of the function's
 \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime}.}
 
-\item{Role}{[required] The Amazon Resource Name (ARN) of the function\'s execution role.}
+\item{Role}{[required] The Amazon Resource Name (ARN) of the function's execution role.}
 
 \item{Handler}{[required] The name of the method within your code that Lambda calls to execute
 your function. The format includes the file name. It can also include
@@ -40,7 +40,7 @@ information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/programming-
 it. The default is 3 seconds. The maximum allowed value is 900 seconds.}
 
 \item{MemorySize}{The amount of memory that your function has access to. Increasing the
-function\'s memory also increases its CPU allocation. The default value
+function's memory also increases its CPU allocation. The default value
 is 128 MB. The value must be a multiple of 64 MB.}
 
 \item{Publish}{Set to true to publish the first version of the function during
@@ -58,9 +58,9 @@ more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/invocat
 \item{Environment}{Environment variables that are accessible from function code during
 execution.}
 
-\item{KMSKeyArn}{The ARN of the AWS Key Management Service (AWS KMS) key that\'s used to
-encrypt your function\'s environment variables. If it\'s not provided,
-AWS Lambda uses a default service key.}
+\item{KMSKeyArn}{The ARN of the AWS Key Management Service (AWS KMS) key that's used to
+encrypt your function's environment variables. If it's not provided, AWS
+Lambda uses a default service key.}
 
 \item{TracingConfig}{Set \code{Mode} to \code{Active} to sample and trace a subset of incoming requests
 with AWS X-Ray.}
@@ -70,7 +70,7 @@ with AWS X-Ray.}
 apply to the function.}
 
 \item{Layers}{A list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{function layers}
-to add to the function\'s execution environment. Specify each layer by
+to add to the function's execution environment. Specify each layer by
 its ARN, including the version.}
 
 \item{FileSystemConfigs}{Connection settings for an Amazon EFS file system.}
@@ -85,7 +85,7 @@ CloudWatch Logs for log streaming and AWS X-Ray for request tracing.
 \details{
 When you create a function, Lambda provisions an instance of the
 function and its supporting resources. If your function connects to a
-VPC, this process can take a minute or so. During this time, you can\'t
+VPC, this process can take a minute or so. During this time, you can't
 invoke or modify the function. The \code{State}, \code{StateReason}, and
 \code{StateReasonCode} fields in the response from GetFunctionConfiguration
 indicate when the function is ready to invoke. For more information, see
@@ -93,8 +93,8 @@ indicate when the function is ready to invoke. For more information, see
 
 A function has an unpublished version, and can have published versions
 and aliases. The unpublished version changes when you update your
-function\'s code and configuration. A published version is a snapshot of
-your function code and configuration that can\'t be changed. An alias is
+function's code and configuration. A published version is a snapshot of
+your function code and configuration that can't be changed. An alias is
 a named resource that maps to a version, and can be changed to map to a
 different version. Use the \code{Publish} parameter to create version \code{1} of
 your function from its initial configuration.

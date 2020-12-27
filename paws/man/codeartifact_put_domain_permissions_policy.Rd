@@ -16,7 +16,7 @@ does not include dashes or spaces.}
 
 \item{policyRevision}{The current revision of the resource policy to be set. This revision is
 used for optimistic locking, which prevents others from overwriting your
-changes to the domain\'s resource policy.}
+changes to the domain's resource policy.}
 
 \item{policyDocument}{[required] A valid displayable JSON Aspen policy string to be set as the access
 control resource policy on the provided domain.}

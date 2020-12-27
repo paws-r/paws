@@ -12,7 +12,7 @@ NULL
 #' provide a significant performance improvement over individual insert and
 #' update operations.
 #' 
-#' If a call isn\'t part of a transaction because it doesn\'t include the
+#' If a call isn't part of a transaction because it doesn't include the
 #' `transactionID` parameter, changes that result from the call are
 #' committed automatically.
 #'
@@ -41,7 +41,7 @@ NULL
 #' `BeginTransaction` operation. Specify the transaction ID of the
 #' transaction that you want to include the SQL statement in.
 #' 
-#' If the SQL statement is not part of a transaction, don\'t set this
+#' If the SQL statement is not part of a transaction, don't set this
 #' parameter.
 #'
 #' @section Request syntax:
@@ -253,7 +253,7 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #'
 #' Runs a SQL statement against a database.
 #' 
-#' If a call isn\'t part of a transaction because it doesn\'t include the
+#' If a call isn't part of a transaction because it doesn't include the
 #' `transactionID` parameter, changes that result from the call are
 #' committed automatically.
 #' 
@@ -287,7 +287,7 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #' `BeginTransaction` operation. Specify the transaction ID of the
 #' transaction that you want to include the SQL statement in.
 #' 
-#' If the SQL statement is not part of a transaction, don\'t set this
+#' If the SQL statement is not part of a transaction, don't set this
 #' parameter.
 #'
 #' @section Request syntax:

@@ -13,11 +13,11 @@ create the new OU in.
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID
 string requires one of the following:
 \itemize{
-\item \strong{Root} - A string that begins with \"r-\" followed by from 4 to 32
+\item \strong{Root} - A string that begins with "r-" followed by from 4 to 32
 lowercase letters or digits.
-\item \strong{Organizational unit (OU)} - A string that begins with \"ou-\"
+\item \strong{Organizational unit (OU)} - A string that begins with "ou-"
 followed by from 4 to 32 lowercase letters or digits (the ID of the
-root that the OU is in). This string is followed by a second \"-\"
+root that the OU is in). This string is followed by a second "-"
 dash and from 8 to 32 additional lowercase letters or digits.
 }}
 
@@ -34,7 +34,7 @@ enabled for that root. For service control policies, the limit is five.
 For more information about OUs, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html}{Managing Organizational Units}
 in the \emph{AWS Organizations User Guide.}
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{

@@ -9,13 +9,13 @@ snowball_list_clusters(MaxResults, NextToken)
 \arguments{
 \item{MaxResults}{The number of \code{ClusterListEntry} objects to return.}
 
-\item{NextToken}{HTTP requests are stateless. To identify what object comes \"next\" in
-the list of \code{ClusterListEntry} objects, you have the option of
-specifying \code{NextToken} as the starting point for your returned list.}
+\item{NextToken}{HTTP requests are stateless. To identify what object comes "next" in the
+list of \code{ClusterListEntry} objects, you have the option of specifying
+\code{NextToken} as the starting point for your returned list.}
 }
 \description{
 Returns an array of \code{ClusterListEntry} objects of the specified length.
-Each \code{ClusterListEntry} object contains a cluster\'s state, a cluster\'s
+Each \code{ClusterListEntry} object contains a cluster's state, a cluster's
 ID, and other important status information.
 }
 \section{Request syntax}{

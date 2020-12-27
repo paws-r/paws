@@ -15,17 +15,17 @@ licensemanager_list_resource_inventory(MaxResults, NextToken, Filters)
 operators are supported:
 \itemize{
 \item \code{account_id} - The ID of the AWS account that owns the resource.
-Logical operators are \code{EQUALS} \\| \code{NOT_EQUALS}.
+Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.
 \item \code{application_name} - The name of the application. Logical operators
-are \code{EQUALS} \\| \code{BEGINS_WITH}.
+are \code{EQUALS} | \code{BEGINS_WITH}.
 \item \code{license_included} - The type of license included. Logical operators
-are \code{EQUALS} \\| \code{NOT_EQUALS}. Possible values are
-\code{sql-server-enterprise} \\| \code{sql-server-standard} \\| \code{sql-server-web}
-\\| \code{windows-server-datacenter}.
+are \code{EQUALS} | \code{NOT_EQUALS}. Possible values are
+\code{sql-server-enterprise} | \code{sql-server-standard} | \code{sql-server-web} |
+\code{windows-server-datacenter}.
 \item \code{platform} - The platform of the resource. Logical operators are
-\code{EQUALS} \\| \code{BEGINS_WITH}.
+\code{EQUALS} | \code{BEGINS_WITH}.
 \item \code{resource_id} - The ID of the resource. Logical operators are
-\code{EQUALS} \\| \code{NOT_EQUALS}.
+\code{EQUALS} | \code{NOT_EQUALS}.
 }}
 }
 \description{

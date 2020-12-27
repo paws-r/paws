@@ -19,8 +19,8 @@ omit \code{Marker}.)}
 in the response body. The maximum and default values are both 100.}
 
 \item{WebACLId}{[required] The ID of the AWS WAF web ACL that you want to list the associated
-distributions. If you specify \"null\" for the ID, the request returns a
-list of the distributions that aren\'t associated with a web ACL.}
+distributions. If you specify "null" for the ID, the request returns a
+list of the distributions that aren't associated with a web ACL.}
 }
 \description{
 List the distributions that are associated with a specified AWS WAF web

@@ -19,7 +19,7 @@ Valid instance metric names are listed below, along with the most useful
 \item \strong{\code{BurstCapacityPercentage}} - The percentage of CPU performance
 available for your instance to burst above its baseline. Your
 instance continuously accrues and consumes burst capacity. Burst
-capacity stops accruing when your instance\'s
+capacity stops accruing when your instance's
 \code{BurstCapacityPercentage} reaches 100\%. For more information, see
 \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-viewing-instance-burst-capacity}{Viewing instance burst capacity in Amazon Lightsail}.
 
@@ -30,7 +30,7 @@ capacity stops accruing when your instance\'s
 \item \strong{\code{BurstCapacityTime}} - The available amount of time for your
 instance to burst at 100\% CPU utilization. Your instance
 continuously accrues and consumes burst capacity. Burst capacity
-time stops accruing when your instance\'s \code{BurstCapacityPercentage}
+time stops accruing when your instance's \code{BurstCapacityPercentage}
 metric reaches 100\%.
 
 Burst capacity time is consumed at the full rate only when your

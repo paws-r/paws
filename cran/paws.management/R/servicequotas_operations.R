@@ -330,7 +330,7 @@ servicequotas_get_service_quota_increase_request_from_template <- function(Servi
 #' ListServiceQuotas except for the Value object. The Value object returned
 #' by `ListAWSDefaultServiceQuotas` is the default value assigned by AWS.
 #' This request returns a list of all service quotas for the specified
-#' service. The listing of each you\'ll see the default values are the
+#' service. The listing of each you'll see the default values are the
 #' values that AWS provides for the quotas.
 #' 
 #' Always check the `NextToken` response parameter when calling any of the
@@ -345,20 +345,20 @@ servicequotas_get_service_quota_increase_request_from_template <- function(Servi
 #'
 #' @param ServiceCode &#91;required&#93; Specifies the service that you want to use.
 #' @param NextToken (Optional) Use this parameter in a request if you receive a `NextToken`
-#' response in a previous request that indicates that there\'s more output
+#' response in a previous request that indicates that there's more output
 #' available. In a subsequent call, set it to the value of the previous
-#' call\'s `NextToken` response to indicate where the output should
-#' continue from. If additional items exist beyond the specified maximum,
-#' the `NextToken` element is present and has a value (isn\'t null).
-#' Include that value as the `NextToken` request parameter in the call to
-#' the operation to get the next part of the results. You should check
+#' call's `NextToken` response to indicate where the output should continue
+#' from. If additional items exist beyond the specified maximum, the
+#' `NextToken` element is present and has a value (isn't null). Include
+#' that value as the `NextToken` request parameter in the call to the
+#' operation to get the next part of the results. You should check
 #' `NextToken` after every operation to ensure that you receive all of the
 #' results.
 #' @param MaxResults (Optional) Limits the number of results that you want to include in the
-#' response. If you don\'t include this parameter, the response defaults to
-#' a value that\'s specific to the operation. If additional items exist
+#' response. If you don't include this parameter, the response defaults to
+#' a value that's specific to the operation. If additional items exist
 #' beyond the specified maximum, the `NextToken` element is present and has
-#' a value (isn\'t null). Include that value as the `NextToken` request
+#' a value (isn't null). Include that value as the `NextToken` request
 #' parameter in the call to the operation to get the next part of the
 #' results. You should check `NextToken` after every operation to ensure
 #' that you receive all of the results.
@@ -403,15 +403,15 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 #' @param ServiceCode Specifies the service that you want to use.
 #' @param Status Specifies the status value of the quota increase request.
 #' @param NextToken (Optional) Use this parameter in a request if you receive a `NextToken`
-#' response in a previous request that indicates that there\'s more output
+#' response in a previous request that indicates that there's more output
 #' available. In a subsequent call, set it to the value of the previous
-#' call\'s `NextToken` response to indicate where the output should
-#' continue from.
+#' call's `NextToken` response to indicate where the output should continue
+#' from.
 #' @param MaxResults (Optional) Limits the number of results that you want to include in the
-#' response. If you don\'t include this parameter, the response defaults to
-#' a value that\'s specific to the operation. If additional items exist
+#' response. If you don't include this parameter, the response defaults to
+#' a value that's specific to the operation. If additional items exist
 #' beyond the specified maximum, the `NextToken` element is present and has
-#' a value (isn\'t null). Include that value as the `NextToken` request
+#' a value (isn't null). Include that value as the `NextToken` request
 #' parameter in the call to the operation to get the next part of the
 #' results. You should check `NextToken` after every operation to ensure
 #' that you receive all of the results.
@@ -462,15 +462,15 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #' @param QuotaCode &#91;required&#93; Specifies the service quota that you want to use
 #' @param Status Specifies the status value of the quota increase request.
 #' @param NextToken (Optional) Use this parameter in a request if you receive a `NextToken`
-#' response in a previous request that indicates that there\'s more output
+#' response in a previous request that indicates that there's more output
 #' available. In a subsequent call, set it to the value of the previous
-#' call\'s `NextToken` response to indicate where the output should
-#' continue from.
+#' call's `NextToken` response to indicate where the output should continue
+#' from.
 #' @param MaxResults (Optional) Limits the number of results that you want to include in the
-#' response. If you don\'t include this parameter, the response defaults to
-#' a value that\'s specific to the operation. If additional items exist
+#' response. If you don't include this parameter, the response defaults to
+#' a value that's specific to the operation. If additional items exist
 #' beyond the specified maximum, the `NextToken` element is present and has
-#' a value (isn\'t null). Include that value as the `NextToken` request
+#' a value (isn't null). Include that value as the `NextToken` request
 #' parameter in the call to the operation to get the next part of the
 #' results. You should check `NextToken` after every operation to ensure
 #' that you receive all of the results.
@@ -518,15 +518,15 @@ servicequotas_list_requested_service_quota_change_history_by_quota <- function(S
 #' `ServiceCode` to specify a particular service.
 #' @param AwsRegion Specifies the AWS Region for the quota that you want to use.
 #' @param NextToken (Optional) Use this parameter in a request if you receive a `NextToken`
-#' response in a previous request that indicates that there\'s more output
+#' response in a previous request that indicates that there's more output
 #' available. In a subsequent call, set it to the value of the previous
-#' call\'s `NextToken` response to indicate where the output should
-#' continue from.
+#' call's `NextToken` response to indicate where the output should continue
+#' from.
 #' @param MaxResults (Optional) Limits the number of results that you want to include in the
-#' response. If you don\'t include this parameter, the response defaults to
-#' a value that\'s specific to the operation. If additional items exist
+#' response. If you don't include this parameter, the response defaults to
+#' a value that's specific to the operation. If additional items exist
 #' beyond the specified maximum, the `NextToken` element is present and has
-#' a value (isn\'t null). Include that value as the `NextToken` request
+#' a value (isn't null). Include that value as the `NextToken` request
 #' parameter in the call to the operation to get the next part of the
 #' results. You should check `NextToken` after every operation to ensure
 #' that you receive all of the results.
@@ -564,7 +564,7 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 #' Lists all service quotas for the specified AWS service
 #'
 #' Lists all service quotas for the specified AWS service. This request
-#' returns a list of the service quotas for the specified service. you\'ll
+#' returns a list of the service quotas for the specified service. you'll
 #' see the default values are the values that AWS provides for the quotas.
 #' 
 #' Always check the `NextToken` response parameter when calling any of the
@@ -579,15 +579,15 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 #' @param ServiceCode &#91;required&#93; The identifier for a service. When performing an operation, use the
 #' `ServiceCode` to specify a particular service.
 #' @param NextToken (Optional) Use this parameter in a request if you receive a `NextToken`
-#' response in a previous request that indicates that there\'s more output
+#' response in a previous request that indicates that there's more output
 #' available. In a subsequent call, set it to the value of the previous
-#' call\'s `NextToken` response to indicate where the output should
-#' continue from.
+#' call's `NextToken` response to indicate where the output should continue
+#' from.
 #' @param MaxResults (Optional) Limits the number of results that you want to include in the
-#' response. If you don\'t include this parameter, the response defaults to
-#' a value that\'s specific to the operation. If additional items exist
+#' response. If you don't include this parameter, the response defaults to
+#' a value that's specific to the operation. If additional items exist
 #' beyond the specified maximum, the `NextToken` element is present and has
-#' a value (isn\'t null). Include that value as the `NextToken` request
+#' a value (isn't null). Include that value as the `NextToken` request
 #' parameter in the call to the operation to get the next part of the
 #' results. You should check `NextToken` after every operation to ensure
 #' that you receive all of the results.
@@ -631,15 +631,15 @@ servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, Max
 #' servicequotas_list_services(NextToken, MaxResults)
 #'
 #' @param NextToken (Optional) Use this parameter in a request if you receive a `NextToken`
-#' response in a previous request that indicates that there\'s more output
+#' response in a previous request that indicates that there's more output
 #' available. In a subsequent call, set it to the value of the previous
-#' call\'s `NextToken` response to indicate where the output should
-#' continue from.
+#' call's `NextToken` response to indicate where the output should continue
+#' from.
 #' @param MaxResults (Optional) Limits the number of results that you want to include in the
-#' response. If you don\'t include this parameter, the response defaults to
-#' a value that\'s specific to the operation. If additional items exist
+#' response. If you don't include this parameter, the response defaults to
+#' a value that's specific to the operation. If additional items exist
 #' beyond the specified maximum, the `NextToken` element is present and has
-#' a value (isn\'t null). Include that value as the `NextToken` request
+#' a value (isn't null). Include that value as the `NextToken` request
 #' parameter in the call to the operation to get the next part of the
 #' results. You should check `NextToken` after every operation to ensure
 #' that you receive all of the results.

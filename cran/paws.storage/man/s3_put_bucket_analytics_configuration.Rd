@@ -29,7 +29,7 @@ destination bucket and an optional destination prefix where the file is
 written. You can export the data to a destination bucket in a different
 account. However, the destination bucket must be in the same Region as
 the bucket that you are making the PUT analytics configuration to. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html}{Amazon S3 Analytics -- Storage Class Analysis}.
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html}{Amazon S3 Analytics – Storage Class Analysis}.
 
 You must create a bucket policy on the destination bucket where the
 exported file is written to grant permissions to Amazon S3 to write
@@ -67,6 +67,11 @@ set the configuration on the bucket.}
 }
 
 \strong{Related Resources}
+\itemize{
+\item 
+\item 
+\item 
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_analytics_configuration(

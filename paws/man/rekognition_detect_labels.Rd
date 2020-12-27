@@ -21,7 +21,7 @@ more information, see Images in the Amazon Rekognition developer guide.}
 The service returns the specified number of highest confidence labels.}
 
 \item{MinConfidence}{Specifies the minimum confidence level for the labels to return. Amazon
-Rekognition doesn\'t return any labels with confidence lower than this
+Rekognition doesn't return any labels with confidence lower than this
 specified value.
 
 If \code{MinConfidence} is not specified, the operation returns labels with a
@@ -80,7 +80,7 @@ specify \code{MinConfidence} to control the confidence threshold for the
 labels returned. The default is 55\%. You can also add the \code{MaxLabels}
 parameter to limit the number of labels returned.
 
-If the object detected is a person, the operation doesn\'t provide the
+If the object detected is a person, the operation doesn't provide the
 same facial details that the DetectFaces operation provides.
 
 \code{DetectLabels} returns bounding boxes for instances of common object

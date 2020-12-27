@@ -16,7 +16,7 @@ next set of recipes (if they exist).}
 }
 \description{
 Returns a list of available recipes. The response provides the
-properties for each recipe, including the recipe\'s Amazon Resource Name
+properties for each recipe, including the recipe's Amazon Resource Name
 (ARN).
 }
 \section{Request syntax}{

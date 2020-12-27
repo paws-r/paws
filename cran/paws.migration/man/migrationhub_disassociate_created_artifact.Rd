@@ -34,8 +34,8 @@ task.
 Name) format which will contain information about type and region;
 for example:
 \verb{arn:aws:ec2:us-east-1:488216288981:image/ami-6d0ba87b}.
-\item Examples of the AWS resource behind the created artifact are,
-AMI\'s, EC2 instance, or RDS instance, etc.
+\item Examples of the AWS resource behind the created artifact are, AMI's,
+EC2 instance, or RDS instance, etc.
 }
 }
 \section{Request syntax}{

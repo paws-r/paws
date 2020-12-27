@@ -7,7 +7,7 @@
 quicksight_describe_theme_permissions(AwsAccountId, ThemeId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme that you\'re
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme that you're
 describing.}
 
 \item{ThemeId}{[required] The ID for the theme that you want to describe permissions for.}

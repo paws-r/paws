@@ -32,10 +32,10 @@ classification.}
 
 \item{TablePrefix}{The table prefix used for catalog tables that are created.}
 
-\item{SchemaChangePolicy}{The policy for the crawler\'s update and deletion behavior.}
+\item{SchemaChangePolicy}{The policy for the crawler's update and deletion behavior.}
 
 \item{Configuration}{Crawler configuration information. This versioned JSON string allows
-users to specify aspects of a crawler\'s behavior. For more information,
+users to specify aspects of a crawler's behavior. For more information,
 see \href{https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Configuring a Crawler}.}
 
 \item{CrawlerSecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used by this

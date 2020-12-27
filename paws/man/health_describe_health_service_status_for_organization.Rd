@@ -11,6 +11,6 @@ health_describe_health_service_status_for_organization()
 This operation provides status information on enabling or disabling AWS
 Health to work with your organization. To call this operation, you must
 sign in as an IAM user, assume an IAM role, or sign in as the root user
-(not recommended) in the organization\'s master account.
+(not recommended) in the organization's master account.
 }
 \keyword{internal}

@@ -56,7 +56,7 @@ Use this operation to change the settings of a canary that has already
 been created.
 }
 \details{
-You can\'t use this operation to update the tags of an existing canary.
+You can't use this operation to update the tags of an existing canary.
 To change the tags of an existing canary, use
 \href{https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_TagResource.html}{TagResource}.
 }

@@ -33,8 +33,8 @@ selecting a specific recipe.}
 training data.}
 
 \item{eventType}{When your have multiple event types (using an \code{EVENT_TYPE} schema
-field), this parameter specifies which event type (for example,
-\'click\' or \'like\') is used for training the model.}
+field), this parameter specifies which event type (for example, 'click'
+or 'like') is used for training the model.}
 
 \item{solutionConfig}{The configuration to use with the solution. When \code{performAutoML} is set
 to true, Amazon Personalize only evaluates the \code{autoMLConfig} section of
@@ -67,8 +67,9 @@ USER\\_PERSONALIZATION recipe for you.
 
 A solution can be in one of the following states:
 \itemize{
-\item CREATE PENDING \\> CREATE IN\\_PROGRESS \\> ACTIVE -or- CREATE FAILED
-\item DELETE PENDING \\> DELETE IN\\_PROGRESS
+\item CREATE PENDING > CREATE IN\\_PROGRESS > ACTIVE -or- CREATE
+FAILED
+\item DELETE PENDING > DELETE IN\\_PROGRESS
 }
 
 To get the status of the solution, call DescribeSolution. Wait until the

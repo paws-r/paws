@@ -28,11 +28,11 @@ encompass the CIDR filter. For example, if you have 10.0.1.0/29 and
 10.0.1.0/31 routes in your route table and you specify
 supernet-of-match as 10.0.1.0/30, then the result returns
 10.0.1.0/29.
-\item \code{state} - The state of the attachment (\code{available} \\| \code{deleted} \\|
-\code{deleting} \\| \code{failed} \\| \code{modifying} \\| \code{pendingAcceptance} \\|
-\code{pending} \\| \code{rollingBack} \\| \code{rejected} \\| \code{rejecting}).
+\item \code{state} - The state of the attachment (\code{available} | \code{deleted} |
+\code{deleting} | \code{failed} | \code{modifying} | \code{pendingAcceptance} |
+\code{pending} | \code{rollingBack} | \code{rejected} | \code{rejecting}).
 \item \code{transit-gateway-route-destination-cidr-block} - The CIDR range.
-\item \code{type} - The type of route (\code{active} \\| \code{blackhole}).
+\item \code{type} - The type of route (\code{active} | \code{blackhole}).
 }}
 
 \item{S3Bucket}{[required] The name of the S3 bucket.}

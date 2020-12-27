@@ -25,7 +25,7 @@ date, in POSIX timestamp format with milliseconds.}
 \item{FileSize}{Filters the available log files for files larger than the specified
 size.}
 
-\item{Filters}{This parameter isn\'t currently supported.}
+\item{Filters}{This parameter isn't currently supported.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified MaxRecords value, a pagination token

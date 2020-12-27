@@ -29,7 +29,7 @@ Constraints:
 \itemize{
 \item Must contain from 1 to 63 letters, numbers, or hyphens
 \item First character must be a letter
-\item Can\'t end with a hyphen or contain two consecutive hyphens
+\item Can't end with a hyphen or contain two consecutive hyphens
 }}
 
 \item{RestoreTime}{The date and time to restore from.
@@ -40,17 +40,17 @@ format
 Constraints:
 \itemize{
 \item Must be before the latest restorable time for the DB instance
-\item Can\'t be specified if the \code{UseLatestRestorableTime} parameter is
+\item Can't be specified if the \code{UseLatestRestorableTime} parameter is
 enabled
 }
 
 Example: \verb{2009-09-07T23:45:00Z}}
 
 \item{UseLatestRestorableTime}{A value that indicates whether the DB instance is restored from the
-latest backup time. By default, the DB instance isn\'t restored from the
+latest backup time. By default, the DB instance isn't restored from the
 latest backup time.
 
-Constraints: Can\'t be specified if the \code{RestoreTime} parameter is
+Constraints: Can't be specified if the \code{RestoreTime} parameter is
 provided.}
 
 \item{DBInstanceClass}{The compute and memory capacity of the Amazon RDS DB instance, for
@@ -71,8 +71,8 @@ Default: The same port as the original DB instance.}
 
 Default: A random, system-chosen Availability Zone.
 
-Constraint: You can\'t specify the \code{AvailabilityZone} parameter if the
-DB instance is a Multi-AZ deployment.
+Constraint: You can't specify the \code{AvailabilityZone} parameter if the DB
+instance is a Multi-AZ deployment.
 
 Example: \verb{us-east-1a}}
 
@@ -85,19 +85,19 @@ Example: \code{mySubnetgroup}}
 
 \item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
 
-Constraint: You can\'t specify the \code{AvailabilityZone} parameter if the
-DB instance is a Multi-AZ deployment.}
+Constraint: You can't specify the \code{AvailabilityZone} parameter if the DB
+instance is a Multi-AZ deployment.}
 
 \item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
 
 When the DB instance is publicly accessible, its DNS endpoint resolves
-to the private IP address from within the DB instance\'s VPC, and to the
-public IP address from outside of the DB instance\'s VPC. Access to the
+to the private IP address from within the DB instance's VPC, and to the
+public IP address from outside of the DB instance's VPC. Access to the
 DB instance is ultimately controlled by the security group it uses, and
 that public access is not permitted if the security group assigned to
-the DB instance doesn\'t permit it.
+the DB instance doesn't permit it.
 
-When the DB instance isn\'t publicly accessible, it is an internal DB
+When the DB instance isn't publicly accessible, it is an internal DB
 instance with a DNS name that resolves to a private IP address.
 
 For more information, see CreateDBInstance.}
@@ -109,12 +109,12 @@ automatically to the DB instance during the maintenance window.}
 
 Default: Same as source.
 
-Valid values: \code{license-included} \\| \code{bring-your-own-license} \\|
+Valid values: \code{license-included} | \code{bring-your-own-license} |
 \code{general-public-license}}
 
 \item{DBName}{The database name for the restored DB instance.
 
-This parameter isn\'t used for the MySQL or MariaDB engines.}
+This parameter isn't used for the MySQL or MariaDB engines.}
 
 \item{Engine}{The database engine to use for the new instance.
 
@@ -144,15 +144,14 @@ Constraints: Must be an integer greater than 1000.
 
 \strong{SQL Server}
 
-Setting the IOPS value for the SQL Server database engine isn\'t
+Setting the IOPS value for the SQL Server database engine isn't
 supported.}
 
 \item{OptionGroupName}{The name of the option group to be used for the restored DB instance.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
-TDE, can\'t be removed from an option group, and that option group
-can\'t be removed from a DB instance once it is associated with a DB
-instance}
+TDE, can't be removed from an option group, and that option group can't
+be removed from a DB instance once it is associated with a DB instance}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
 instance to snapshots of the DB instance. By default, tags are not
@@ -177,7 +176,7 @@ device.}
 
 \item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with this DB instance.
 
-Default: The default EC2 VPC security group for the DB subnet group\'s
+Default: The default EC2 VPC security group for the DB subnet group's
 VPC.}
 
 \item{Domain}{Specify the Active Directory directory ID to restore the DB instance in.
@@ -227,11 +226,11 @@ Constraints:
 \item If supplied, must match the name of an existing DBParameterGroup.
 \item Must be 1 to 255 letters, numbers, or hyphens.
 \item First character must be a letter.
-\item Can\'t end with a hyphen or contain two consecutive hyphens.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
 \item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
-enabled. The database can\'t be deleted when deletion protection is
+enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
@@ -252,7 +251,7 @@ when the instance is a SQL Server instance that has an option group that
 is associated with mirroring; in this case, the instance becomes a
 mirrored deployment and not a single-AZ deployment.
 
-This command doesn\'t apply to Aurora MySQL and Aurora PostgreSQL. For
+This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 Aurora, use \code{RestoreDBClusterToPointInTime}.
 }
 \section{Request syntax}{

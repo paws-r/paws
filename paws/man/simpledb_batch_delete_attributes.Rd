@@ -22,7 +22,7 @@ If you specify BatchDeleteAttributes without attributes or values, all
 the attributes for the item are deleted.
 
 BatchDeleteAttributes is an idempotent operation; running it multiple
-times on the same item or attribute doesn\'t result in an error.
+times on the same item or attribute doesn't result in an error.
 
 The BatchDeleteAttributes operation succeeds or fails in its entirety.
 There are no partial deletes. You can execute multiple

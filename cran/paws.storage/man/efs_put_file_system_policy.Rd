@@ -11,7 +11,7 @@ efs_put_file_system_policy(FileSystemId, Policy,
 \item{FileSystemId}{[required] The ID of the EFS file system that you want to create or update the
 \code{FileSystemPolicy} for.}
 
-\item{Policy}{[required] The \code{FileSystemPolicy} that you\'re creating. Accepts a JSON formatted
+\item{Policy}{[required] The \code{FileSystemPolicy} that you're creating. Accepts a JSON formatted
 policy definition. To find out more about the elements that make up a
 file system policy, see \href{https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies}{EFS Resource-based Policies}.}
 

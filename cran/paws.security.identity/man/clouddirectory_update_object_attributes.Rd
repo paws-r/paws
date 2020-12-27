@@ -16,7 +16,7 @@ where the object resides. For more information, see arns.}
 \item{AttributeUpdates}{[required] The attributes update structure.}
 }
 \description{
-Updates a given object\'s attributes.
+Updates a given object's attributes.
 }
 \section{Request syntax}{
 \preformatted{svc$update_object_attributes(

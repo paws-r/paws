@@ -13,9 +13,9 @@ activation process.}
 }
 \description{
 Removes the server or virtual machine from the list of registered
-servers. You can reregister the instance again at any time. If you
-don\'t plan to use Run Command on the server, we suggest uninstalling
-SSM Agent first.
+servers. You can reregister the instance again at any time. If you don't
+plan to use Run Command on the server, we suggest uninstalling SSM Agent
+first.
 }
 \section{Request syntax}{
 \preformatted{svc$deregister_managed_instance(

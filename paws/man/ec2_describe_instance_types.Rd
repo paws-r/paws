@@ -20,13 +20,13 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 \item{Filters}{One or more filters. Filter names and values are case-sensitive.
 \itemize{
 \item \code{auto-recovery-supported} - Indicates whether auto recovery is
-supported. (\code{true} \\| \code{false})
+supported. (\code{true} | \code{false})
 \item \code{bare-metal} - Indicates whether it is a bare metal instance type.
-(\code{true} \\| \code{false})
+(\code{true} | \code{false})
 \item \code{burstable-performance-supported} - Indicates whether it is a
-burstable performance instance type. (\code{true} \\| \code{false})
+burstable performance instance type. (\code{true} | \code{false})
 \item \code{current-generation} - Indicates whether this instance type is the
-latest generation instance type of an instance family. (\code{true} \\|
+latest generation instance type of an instance family. (\code{true} |
 \code{false})
 \item \verb{ebs-info.ebs-optimized-info.baseline-bandwidth-in-mbps} - The
 baseline bandwidth performance for an EBS-optimized instance type,
@@ -47,38 +47,38 @@ in MBps.
 input/output storage operations per second for an EBS-optimized
 instance type.
 \item \code{ebs-info.ebs-optimized-support} - Indicates whether the instance
-type is EBS-optimized. (\code{supported} \\| \code{unsupported} \\| \code{default})
+type is EBS-optimized. (\code{supported} | \code{unsupported} | \code{default})
 \item \code{ebs-info.encryption-support} - Indicates whether EBS encryption is
-supported. (\code{supported} \\| \code{unsupported})
+supported. (\code{supported} | \code{unsupported})
 \item \code{ebs-info.nvme-support} - Indicates whether non-volatile memory
-express (NVMe) is supported or required. (\code{required} \\| \code{supported}
-\\| \code{unsupported})
+express (NVMe) is supported or required. (\code{required} | \code{supported} |
+\code{unsupported})
 \item \code{free-tier-eligible} - Indicates whether the instance type is
-eligible to use in the free tier. (\code{true} \\| \code{false})
+eligible to use in the free tier. (\code{true} | \code{false})
 \item \code{hibernation-supported} - Indicates whether On-Demand hibernation is
-supported. (\code{true} \\| \code{false})
-\item \code{hypervisor} - The hypervisor used. (\code{nitro} \\| \code{xen})
+supported. (\code{true} | \code{false})
+\item \code{hypervisor} - The hypervisor used. (\code{nitro} | \code{xen})
 \item \code{instance-storage-info.disk.count} - The number of local disks.
 \item \verb{instance-storage-info.disk.size-in-gb} - The storage size of each
 instance storage disk, in GB.
 \item \code{instance-storage-info.disk.type} - The storage technology for the
-local instance storage disks. (\code{hdd} \\| \code{ssd})
+local instance storage disks. (\code{hdd} | \code{ssd})
 \item \verb{instance-storage-info.total-size-in-gb} - The total amount of
 storage available from all local instance storage, in GB.
 \item \code{instance-storage-supported} - Indicates whether the instance type
-has local instance storage. (\code{true} \\| \code{false})
+has local instance storage. (\code{true} | \code{false})
 \item \verb{memory-info.size-in-mib} - The memory size.
 \item \code{network-info.ena-support} - Indicates whether Elastic Network
-Adapter (ENA) is supported or required. (\code{required} \\| \code{supported}
-\\| \code{unsupported})
+Adapter (ENA) is supported or required. (\code{required} | \code{supported} |
+\code{unsupported})
 \item \code{network-info.efa-supported} - Indicates whether the instance type
-supports Elastic Fabric Adapter (EFA). (\code{true} \\| \code{false})
+supports Elastic Fabric Adapter (EFA). (\code{true} | \code{false})
 \item \code{network-info.ipv4-addresses-per-interface} - The maximum number of
 private IPv4 addresses per network interface.
 \item \code{network-info.ipv6-addresses-per-interface} - The maximum number of
 private IPv6 addresses per network interface.
 \item \code{network-info.ipv6-supported} - Indicates whether the instance type
-supports IPv6. (\code{true} \\| \code{false})
+supports IPv6. (\code{true} | \code{false})
 \item \code{network-info.maximum-network-interfaces} - The maximum number of
 network interfaces per instance.
 \item \code{network-info.network-performance} - Describes the network

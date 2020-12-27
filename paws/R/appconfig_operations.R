@@ -577,7 +577,7 @@ appconfig_get_application <- function(ApplicationId) {
 #' 
 #' AWS AppConfig uses the value of the `ClientConfigurationVersion`
 #' parameter to identify the configuration version on your clients. If you
-#' don't send `ClientConfigurationVersion` with each call to
+#' don’t send `ClientConfigurationVersion` with each call to
 #' `GetConfiguration`, your clients receive the current configuration. You
 #' are charged each time your clients receive a configuration.
 #' 
@@ -605,7 +605,7 @@ appconfig_get_application <- function(ApplicationId) {
 #' 
 #' AWS AppConfig uses the value of the `ClientConfigurationVersion`
 #' parameter to identify the configuration version on your clients. If you
-#' don't send `ClientConfigurationVersion` with each call to
+#' don’t send `ClientConfigurationVersion` with each call to
 #' `GetConfiguration`, your clients receive the current configuration. You
 #' are charged each time your clients receive a configuration.
 #' 

@@ -18,13 +18,12 @@ equal to the specified vocabulary state.}
 
 \item{NameContains}{Returns vocabularies in the list whose name contains the specified
 string. The search is case-insensitive, \code{ListMedicalVocabularies}
-returns both \"vocabularyname\" and \"VocabularyName\" in the response
-list.}
+returns both "vocabularyname" and "VocabularyName" in the response list.}
 }
 \description{
 Returns a list of vocabularies that match the specified criteria. You
-get the entire list of vocabularies if you don\'t enter a value in any
-of the request parameters.
+get the entire list of vocabularies if you don't enter a value in any of
+the request parameters.
 }
 \section{Request syntax}{
 \preformatted{svc$list_medical_vocabularies(

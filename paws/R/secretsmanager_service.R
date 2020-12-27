@@ -36,7 +36,7 @@ NULL
 #' in the *AWS Secrets Manager User Guide*.
 #' 
 #' Secrets Manager API supports GET and POST requests for all actions, and
-#' doesn\'t require you to use GET for some actions and POST for others.
+#' doesn't require you to use GET for some actions and POST for others.
 #' However, GET requests are subject to the limitation size of a URL.
 #' Therefore, for operations that require larger sizes, use a POST request.
 #' 
@@ -64,11 +64,11 @@ NULL
 #' 
 #' AWS Secrets Manager supports AWS CloudTrail, a service that records AWS
 #' API calls for your AWS account and delivers log files to an Amazon S3
-#' bucket. By using information that\'s collected by AWS CloudTrail, you
-#' can determine the requests successfully made to Secrets Manager, who
-#' made the request, when it was made, and so on. For more about AWS
-#' Secrets Manager and support for AWS CloudTrail, see [Logging AWS Secrets
-#' Manager Events with AWS
+#' bucket. By using information that's collected by AWS CloudTrail, you can
+#' determine the requests successfully made to Secrets Manager, who made
+#' the request, when it was made, and so on. For more about AWS Secrets
+#' Manager and support for AWS CloudTrail, see [Logging AWS Secrets Manager
+#' Events with AWS
 #' CloudTrail](http://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail)
 #' in the *AWS Secrets Manager User Guide*. To learn more about CloudTrail,
 #' including enabling it and find your log files, see the [AWS CloudTrail

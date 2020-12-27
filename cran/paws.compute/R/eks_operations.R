@@ -22,12 +22,12 @@ NULL
 #' `proxy` data flows).
 #' 
 #' Amazon EKS worker nodes run in your AWS account and connect to your
-#' cluster\'s control plane via the Kubernetes API server endpoint and a
+#' cluster's control plane via the Kubernetes API server endpoint and a
 #' certificate file that is created for your cluster.
 #' 
 #' You can use the `endpointPublicAccess` and `endpointPrivateAccess`
 #' parameters to enable or disable public and private access to your
-#' cluster\'s Kubernetes API server endpoint. By default, public access is
+#' cluster's Kubernetes API server endpoint. By default, public access is
 #' enabled, and private access is disabled. For more information, see
 #' [Amazon EKS Cluster Endpoint Access
 #' Control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
@@ -35,7 +35,7 @@ NULL
 #' 
 #' You can use the `logging` parameter to enable or disable exporting the
 #' Kubernetes control plane logs for your cluster to CloudWatch Logs. By
-#' default, cluster control plane logs aren\'t exported to CloudWatch Logs.
+#' default, cluster control plane logs aren't exported to CloudWatch Logs.
 #' For more information, see [Amazon EKS Cluster Control Plane
 #' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 #' in the **Amazon EKS User Guide** .
@@ -58,7 +58,7 @@ NULL
 #'   clientRequestToken, tags, encryptionConfig)
 #'
 #' @param name &#91;required&#93; The unique name to give to your cluster.
-#' @param version The desired Kubernetes version for your cluster. If you don\'t specify a
+#' @param version The desired Kubernetes version for your cluster. If you don't specify a
 #' value here, the latest version available in Amazon EKS is used.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that provides permissions
 #' for Amazon EKS to make calls to other AWS API operations on your behalf.
@@ -76,7 +76,7 @@ NULL
 #' use a dedicated security group for your cluster control plane.
 #' @param logging Enable or disable exporting the Kubernetes control plane logs for your
 #' cluster to CloudWatch Logs. By default, cluster control plane logs
-#' aren\'t exported to CloudWatch Logs. For more information, see [Amazon
+#' aren't exported to CloudWatch Logs. For more information, see [Amazon
 #' EKS Cluster Control Plane
 #' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 #' in the **Amazon EKS User Guide** .
@@ -185,7 +185,7 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 #' 
 #' The Fargate profile allows an administrator to declare which pods run on
 #' Fargate and specify which pods run on which Fargate profile. This
-#' declaration is done through the profile's selectors. Each profile can
+#' declaration is done through the profile’s selectors. Each profile can
 #' have up to five selectors that contain a namespace and labels. A
 #' namespace is required for every selector. The label field consists of
 #' multiple optional key-value pairs. Pods that match the selectors are
@@ -194,7 +194,7 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 #' 
 #' When you create a Fargate profile, you must specify a pod execution role
 #' to use with the pods that are scheduled with the profile. This role is
-#' added to the cluster\'s Kubernetes [Role Based Access
+#' added to the cluster's Kubernetes [Role Based Access
 #' Control](https://kubernetes.io/docs/admin/authorization/rbac/) (RBAC)
 #' for authorization so that the `kubelet` that is running on the Fargate
 #' infrastructure can register with your Amazon EKS cluster so that it can
@@ -350,9 +350,9 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' Kubernetes version of the cluster is used, and this is the only accepted
 #' specified value.
 #' @param releaseVersion The AMI version of the Amazon EKS-optimized AMI to use with your node
-#' group. By default, the latest available AMI version for the node
-#' group\'s current Kubernetes version is used. For more information, see
-#' [Amazon EKS-Optimized Linux AMI
+#' group. By default, the latest available AMI version for the node group's
+#' current Kubernetes version is used. For more information, see [Amazon
+#' EKS-Optimized Linux AMI
 #' Versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
 #' in the *Amazon EKS User Guide*.
 #'
@@ -568,7 +568,7 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
 #' kubeconfig for Amazon
 #' EKS](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html).
 #' 
-#' The API server endpoint and certificate authority data aren\'t available
+#' The API server endpoint and certificate authority data aren't available
 #' until the cluster reaches the `ACTIVE` state.
 #'
 #' @usage
@@ -748,8 +748,8 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL) {
 #' only `maxResults` results in a single page along with a `nextToken`
 #' response element. You can see the remaining results of the initial
 #' request by sending another `ListClusters` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If you don\'t
-#' use this parameter, `ListClusters` returns up to 100 results and a
+#' `nextToken` value. This value can be between 1 and 100. If you don't use
+#' this parameter, `ListClusters` returns up to 100 results and a
 #' `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated `ListClusters`
 #' request where `maxResults` was used and the results exceeded the value
@@ -812,7 +812,7 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
 #' along with a `nextToken` response element. You can see the remaining
 #' results of the initial request by sending another `ListFargateProfiles`
 #' request with the returned `nextToken` value. This value can be between 1
-#' and 100. If you don\'t use this parameter, `ListFargateProfiles` returns
+#' and 100. If you don't use this parameter, `ListFargateProfiles` returns
 #' up to 100 results and a `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `ListFargateProfiles` request where `maxResults` was used and the
@@ -865,8 +865,8 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
 #' only `maxResults` results in a single page along with a `nextToken`
 #' response element. You can see the remaining results of the initial
 #' request by sending another `ListNodegroups` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If you don\'t
-#' use this parameter, `ListNodegroups` returns up to 100 results and a
+#' `nextToken` value. This value can be between 1 and 100. If you don't use
+#' this parameter, `ListNodegroups` returns up to 100 results and a
 #' `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `ListNodegroups` request where `maxResults` was used and the results
@@ -968,8 +968,8 @@ eks_list_tags_for_resource <- function(resourceArn) {
 #' only `maxResults` results in a single page along with a `nextToken`
 #' response element. You can see the remaining results of the initial
 #' request by sending another `ListUpdates` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If you don\'t
-#' use this parameter, `ListUpdates` returns up to 100 results and a
+#' `nextToken` value. This value can be between 1 and 100. If you don't use
+#' this parameter, `ListUpdates` returns up to 100 results and a
 #' `nextToken` value if applicable.
 #'
 #' @section Request syntax:
@@ -1103,7 +1103,7 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #' 
 #' You can use this API operation to enable or disable exporting the
 #' Kubernetes control plane logs for your cluster to CloudWatch Logs. By
-#' default, cluster control plane logs aren\'t exported to CloudWatch Logs.
+#' default, cluster control plane logs aren't exported to CloudWatch Logs.
 #' For more information, see [Amazon EKS Cluster Control Plane
 #' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 #' in the **Amazon EKS User Guide** .
@@ -1113,7 +1113,7 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #' CloudWatch Pricing](http://aws.amazon.com/cloudwatch/pricing/).
 #' 
 #' You can also use this API operation to enable or disable public and
-#' private access to your cluster\'s Kubernetes API server endpoint. By
+#' private access to your cluster's Kubernetes API server endpoint. By
 #' default, public access is enabled, and private access is disabled. For
 #' more information, see [Amazon EKS Cluster Endpoint Access
 #' Control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
@@ -1135,7 +1135,7 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #' @param resourcesVpcConfig 
 #' @param logging Enable or disable exporting the Kubernetes control plane logs for your
 #' cluster to CloudWatch Logs. By default, cluster control plane logs
-#' aren\'t exported to CloudWatch Logs. For more information, see [Amazon
+#' aren't exported to CloudWatch Logs. For more information, see [Amazon
 #' EKS Cluster Control Plane
 #' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 #' in the **Amazon EKS User Guide** .
@@ -1210,7 +1210,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' (either `Failed` or `Successful`), the cluster status moves to `Active`.
 #' 
 #' If your cluster has managed node groups attached to it, all of your node
-#' groups' Kubernetes versions must match the cluster's Kubernetes version
+#' groups’ Kubernetes versions must match the cluster’s Kubernetes version
 #' in order to update the cluster to a new Kubernetes version.
 #'
 #' @usage
@@ -1320,10 +1320,10 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' Updates the Kubernetes version or AMI version of an Amazon EKS managed
 #' node group.
 #' 
-#' You can update to the latest available AMI version of a node group\'s
+#' You can update to the latest available AMI version of a node group's
 #' current Kubernetes version by not specifying a Kubernetes version in the
-#' request. You can update to the latest AMI version of your cluster\'s
-#' current Kubernetes version by specifying your cluster\'s Kubernetes
+#' request. You can update to the latest AMI version of your cluster's
+#' current Kubernetes version by specifying your cluster's Kubernetes
 #' version in the request. For more information, see [Amazon EKS-Optimized
 #' Linux AMI
 #' Versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
@@ -1348,14 +1348,14 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' @param version The Kubernetes version to update to. If no version is specified, then
 #' the Kubernetes version of the node group does not change. You can
 #' specify the Kubernetes version of the cluster to update the node group
-#' to the latest AMI version of the cluster\'s Kubernetes version.
+#' to the latest AMI version of the cluster's Kubernetes version.
 #' @param releaseVersion The AMI version of the Amazon EKS-optimized AMI to use for the update.
-#' By default, the latest available AMI version for the node group\'s
+#' By default, the latest available AMI version for the node group's
 #' Kubernetes version is used. For more information, see [Amazon
 #' EKS-Optimized Linux AMI
 #' Versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
 #' in the *Amazon EKS User Guide*.
-#' @param force Force the update if the existing node group\'s pods are unable to be
+#' @param force Force the update if the existing node group's pods are unable to be
 #' drained due to a pod disruption budget issue. If an update fails because
 #' pods could not be drained, you can force the update after it fails to
 #' terminate the old node whether or not any pods are running on the node.

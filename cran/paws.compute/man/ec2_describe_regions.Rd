@@ -12,7 +12,7 @@ ec2_describe_regions(Filters, RegionNames, DryRun, AllRegions)
 \item \code{endpoint} - The endpoint of the Region (for example,
 \verb{ec2.us-east-1.amazonaws.com}).
 \item \verb{opt-in-status} - The opt-in status of the Region
-(\verb{opt-in-not-required} \\| \verb{opted-in} \\| \verb{not-opted-in}).
+(\verb{opt-in-not-required} | \verb{opted-in} | \verb{not-opted-in}).
 \item \code{region-name} - The name of the Region (for example, \code{us-east-1}).
 }}
 

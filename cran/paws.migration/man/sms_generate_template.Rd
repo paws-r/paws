@@ -3,7 +3,7 @@
 \name{sms_generate_template}
 \alias{sms_generate_template}
 \title{Generates an Amazon CloudFormation template based on the current launch
-configuration and writes it to an Amazon S3 object in the customerâ€™s
+configuration and writes it to an Amazon S3 object in the customer’s
 Amazon S3 bucket}
 \usage{
 sms_generate_template(appId, templateFormat)
@@ -16,7 +16,7 @@ template.}
 }
 \description{
 Generates an Amazon CloudFormation template based on the current launch
-configuration and writes it to an Amazon S3 object in the customer's
+configuration and writes it to an Amazon S3 object in the customer’s
 Amazon S3 bucket.
 }
 \section{Request syntax}{

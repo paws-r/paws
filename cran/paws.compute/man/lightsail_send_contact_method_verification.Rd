@@ -11,8 +11,8 @@ lightsail_send_contact_method_verification(protocol)
 \item{protocol}{[required] The protocol to verify, such as \code{Email} or \code{SMS} (text messaging).}
 }
 \description{
-Sends a verification request to an email contact method to ensure it\'s
-owned by the requester. SMS contact methods don\'t need to be verified.
+Sends a verification request to an email contact method to ensure it's
+owned by the requester. SMS contact methods don't need to be verified.
 }
 \details{
 A contact method is used to send you notifications about your Amazon

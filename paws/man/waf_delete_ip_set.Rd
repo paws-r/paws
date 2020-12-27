@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_delete_ip_set}
 \alias{waf_delete_ip_set}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_delete_ip_set(IPSetId, ChangeToken)
 }
@@ -23,8 +23,8 @@ in the developer guide.
 With the latest version, AWS WAF has a single set of endpoints for
 regional and global use.
 
-Permanently deletes an IPSet. You can\'t delete an \code{IPSet} if it\'s
-still used in any \code{Rules} or if it still includes any IP addresses.
+Permanently deletes an IPSet. You can't delete an \code{IPSet} if it's still
+used in any \code{Rules} or if it still includes any IP addresses.
 
 If you just want to remove an \code{IPSet} from a \code{Rule}, use UpdateRule.
 

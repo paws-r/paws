@@ -11,9 +11,9 @@ snowball_cancel_cluster(ClusterId)
 \verb{CID123e4567-e89b-12d3-a456-426655440000}.}
 }
 \description{
-Cancels a cluster job. You can only cancel a cluster job while it\'s in
-the \code{AwaitingQuorum} status. You\'ll have at least an hour after
-creating a cluster job to cancel it.
+Cancels a cluster job. You can only cancel a cluster job while it's in
+the \code{AwaitingQuorum} status. You'll have at least an hour after creating
+a cluster job to cancel it.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_cluster(

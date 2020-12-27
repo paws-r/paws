@@ -30,9 +30,9 @@ bucket; however, bucket owners can allow other users to set the website
 configuration by writing a bucket policy that grants them the
 \code{S3:PutBucketWebsite} permission.
 
-To redirect all website requests sent to the bucket\'s website endpoint,
+To redirect all website requests sent to the bucket's website endpoint,
 you add a website configuration with the following elements. Because all
-requests are sent to another website, you don\'t need to provide index
+requests are sent to another website, you don't need to provide index
 document name for the bucket.
 \itemize{
 \item \code{WebsiteConfiguration}

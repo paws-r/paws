@@ -42,7 +42,7 @@ if an item \code{I} has the attributes \verb{\\\{ 'a', '1' \\\}, \\\{ 'b', '2'\\
 \verb{\\\{ 'b', '3' \\\}} and the requester does a BatchPutAttributes of
 \verb{\\\{'I', 'b', '4' \\\}} with the Replace parameter set to true, the final
 attributes of the item will be \verb{\\\{ 'a', '1' \\\}} and \verb{\\\{ 'b', '4' \\\}},
-replacing the previous values of the \'b\' attribute with the new value.
+replacing the previous values of the 'b' attribute with the new value.
 
 You cannot specify an empty string as an item or as an attribute name.
 The \code{BatchPutAttributes} operation succeeds or fails in its entirety.

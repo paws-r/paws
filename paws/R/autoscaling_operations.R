@@ -503,7 +503,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' On-Demand Instances and Spot Instances, the maximum price to pay for
 #' Spot Instances, and how the Auto Scaling group allocates instance types
 #' to fulfill On-Demand and Spot capacity, but also the parameters that
-#' specify the instance configuration information---the launch template and
+#' specify the instance configuration information—the launch template and
 #' instance types.
 #' 
 #' For more information, see
@@ -945,7 +945,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' 
 #' The default value is `false`.
 #' @param AssociatePublicIpAddress For Auto Scaling groups that are running in a virtual private cloud
-#' (VPC), specifies whether to assign a public IP address to the group\'s
+#' (VPC), specifies whether to assign a public IP address to the group's
 #' instances. If you specify `true`, each instance in the Auto Scaling
 #' group receives a unique public IP address. For more information, see
 #' [Launching Auto Scaling Instances in a
@@ -975,7 +975,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' Tenancy](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-tenancy)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
-#' Valid Values: `default` \\| `dedicated`
+#' Valid Values: `default` | `dedicated`
 #'
 #' @section Request syntax:
 #' ```
@@ -2368,9 +2368,9 @@ autoscaling_describe_scaling_process_types <- function() {
 #' Describes the actions scheduled for your Auto Scaling group that haven't
 #' run or that have not reached their end time
 #'
-#' Describes the actions scheduled for your Auto Scaling group that
-#' haven\'t run or that have not reached their end time. To describe the
-#' actions that have already run, call the DescribeScalingActivities API.
+#' Describes the actions scheduled for your Auto Scaling group that haven't
+#' run or that have not reached their end time. To describe the actions
+#' that have already run, call the DescribeScalingActivities API.
 #'
 #' @usage
 #' autoscaling_describe_scheduled_actions(AutoScalingGroupName,
@@ -2447,7 +2447,7 @@ autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, 
 #' values for it to be included in the results.
 #' 
 #' You can also specify multiple filters. The result includes information
-#' for a particular tag only if it matches all the filters. If there\'s no
+#' for a particular tag only if it matches all the filters. If there's no
 #' match, no special message is returned.
 #' 
 #' For more information, see [Tagging Auto Scaling Groups and
@@ -3013,7 +3013,7 @@ autoscaling_enter_standby <- function(InstanceIds = NULL, AutoScalingGroupName, 
 #' want to use a step adjustment with a lower bound of 0 and an upper bound
 #' of 10, you can set the metric value to 59.
 #' 
-#' If you specify a metric value that doesn\'t correspond to a step
+#' If you specify a metric value that doesn't correspond to a step
 #' adjustment for the policy, the call returns an error.
 #' 
 #' Required if the policy type is `StepScaling` and not supported
@@ -3389,7 +3389,7 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #' 
 #' Required if the policy type is `SimpleScaling`. (Not used with any other
 #' policy type.)
-#' @param Cooldown The duration of the policy\'s cooldown period, in seconds. When a
+#' @param Cooldown The duration of the policy's cooldown period, in seconds. When a
 #' cooldown period is specified here, it overrides the default cooldown
 #' period defined for the Auto Scaling group.
 #' 
@@ -4168,8 +4168,8 @@ autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses
 #' 
 #' This call simply makes a termination request. The instance is not
 #' terminated immediately. When an instance is terminated, the instance
-#' status changes to `terminated`. You can\'t connect to or start an
-#' instance after you\'ve terminated it.
+#' status changes to `terminated`. You can't connect to or start an
+#' instance after you've terminated it.
 #' 
 #' If you do not specify the option to decrement the desired capacity,
 #' Amazon EC2 Auto Scaling launches instances to replace the ones that are
@@ -4236,9 +4236,9 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' Updates the configuration for the specified Auto Scaling group.
 #' 
 #' To update an Auto Scaling group, specify the name of the group and the
-#' parameter that you want to change. Any parameters that you don\'t
-#' specify are not changed by this update request. The new settings take
-#' effect on any scaling activities after this call returns.
+#' parameter that you want to change. Any parameters that you don't specify
+#' are not changed by this update request. The new settings take effect on
+#' any scaling activities after this call returns.
 #' 
 #' If you associate a new launch configuration or template with an Auto
 #' Scaling group, all new instances will get the updated configuration.
@@ -4264,12 +4264,12 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' 
 #' -   If you specify a new value for `MinSize` without specifying a value
 #'     for `DesiredCapacity`, and the new `MinSize` is larger than the
-#'     current size of the group, this sets the group\'s `DesiredCapacity`
+#'     current size of the group, this sets the group's `DesiredCapacity`
 #'     to the new `MinSize` value.
 #' 
 #' -   If you specify a new value for `MaxSize` without specifying a value
 #'     for `DesiredCapacity`, and the new `MaxSize` is smaller than the
-#'     current size of the group, this sets the group\'s `DesiredCapacity`
+#'     current size of the group, this sets the group's `DesiredCapacity`
 #'     to the new `MaxSize` value.
 #' 
 #' To see which parameters have been set, call the
@@ -4288,10 +4288,10 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param LaunchConfigurationName The name of the launch configuration. If you specify
-#' `LaunchConfigurationName` in your update request, you can\'t specify
+#' `LaunchConfigurationName` in your update request, you can't specify
 #' `LaunchTemplate` or `MixedInstancesPolicy`.
 #' @param LaunchTemplate The launch template and version to use to specify the updates. If you
-#' specify `LaunchTemplate` in your update request, you can\'t specify
+#' specify `LaunchTemplate` in your update request, you can't specify
 #' `LaunchConfigurationName` or `MixedInstancesPolicy`.
 #' 
 #' For more information, see

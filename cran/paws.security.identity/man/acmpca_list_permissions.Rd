@@ -12,8 +12,8 @@ acmpca_list_permissions(CertificateAuthorityArn, NextToken, MaxResults)
 find the ARN by calling the ListCertificateAuthorities action. This must
 be of the form:
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012}
-You can get a private CA\'s ARN by running the
-ListCertificateAuthorities action.}
+You can get a private CA's ARN by running the ListCertificateAuthorities
+action.}
 
 \item{NextToken}{When paginating results, use this parameter in a subsequent request
 after you receive a response with truncated results. Set it to the value

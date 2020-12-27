@@ -16,12 +16,12 @@ a document.}
 \item{Name}{[required] The name of the document that you want to update.}
 
 \item{VersionName}{An optional field specifying the version of the artifact you are
-updating with the document. For example, \"Release 12, Update 6\". This
+updating with the document. For example, "Release 12, Update 6". This
 value is unique across all versions of a document, and cannot be
 changed.}
 
 \item{DocumentVersion}{(Required) The latest version of the document that you want to update.
-The latest document version can be specified using the \\$LATEST variable
+The latest document version can be specified using the $LATEST variable
 or by the version number. Updating a previous version of a document is
 not supported.}
 

@@ -20,7 +20,7 @@ For more information about managed policy versions, see \href{https://docs.aws.a
 in the \emph{IAM User Guide}.}
 }
 \description{
-Sets the specified version of the specified policy as the policy\'s
+Sets the specified version of the specified policy as the policy's
 default (operative) version.
 }
 \details{

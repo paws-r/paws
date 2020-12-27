@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudwatch_operations.R
 \name{cloudwatch_put_composite_alarm}
 \alias{cloudwatch_put_composite_alarm}
-\title{Creates or updates a \emph{composite alarm}}
+\title{Creates or updates a composite alarm}
 \usage{
 cloudwatch_put_composite_alarm(ActionsEnabled, AlarmActions,
   AlarmDescription, AlarmName, AlarmRule, InsufficientDataActions,
@@ -25,7 +25,7 @@ Valid Values:
 AWS account.}
 
 \item{AlarmRule}{[required] An expression that specifies which other alarms are to be evaluated to
-determine this composite alarm\'s state. For each alarm that you
+determine this composite alarm's state. For each alarm that you
 reference, you designate a function that specifies whether that alarm
 needs to be in ALARM state, OK state, or INSUFFICIENT\\_DATA state. You
 can use operators (AND, OR and NOT) to combine multiple functions in a
@@ -51,7 +51,7 @@ TRUE and FALSE are useful for testing a complex \code{AlarmRule} structure,
 and for testing your alarm actions.
 
 Alarm names specified in \code{AlarmRule} can be surrounded with
-double-quotes (\"), but do not have to be.
+double-quotes ("), but do not have to be.
 
 The following are some examples of \code{AlarmRule}:
 \itemize{
@@ -73,7 +73,7 @@ action on high CPU or disk usage if a known network problem is also
 occurring.
 }
 
-The \code{AlarmRule} can specify as many as 100 \"children\" alarms. The
+The \code{AlarmRule} can specify as many as 100 "children" alarms. The
 \code{AlarmRule} expression can have as many as 500 elements. Elements are
 child alarms, TRUE or FALSE statements, and parentheses.}
 
@@ -106,7 +106,7 @@ composite alarm goes into ALARM state only if all conditions of the rule
 are met.
 }
 \details{
-The alarms specified in a composite alarm\'s rule expression can include
+The alarms specified in a composite alarm's rule expression can include
 metric alarms and other composite alarms.
 
 Using composite alarms can reduce alarm noise. You can create multiple
@@ -120,7 +120,7 @@ are notifying SNS topics.
 
 It is possible to create a loop or cycle of composite alarms, where
 composite alarm A depends on composite alarm B, and composite alarm B
-also depends on composite alarm A. In this scenario, you can\'t delete
+also depends on composite alarm A. In this scenario, you can't delete
 any composite alarm that is part of the cycle because there is always
 still a composite alarm that depends on that alarm that you want to
 delete.

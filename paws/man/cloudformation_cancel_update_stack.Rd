@@ -11,7 +11,7 @@ cloudformation_cancel_update_stack(StackName, ClientRequestToken)
 
 \item{ClientRequestToken}{A unique identifier for this \code{CancelUpdateStack} request. Specify this
 token if you plan to retry requests so that AWS CloudFormation knows
-that you\'re not attempting to cancel an update on a stack with the same
+that you're not attempting to cancel an update on a stack with the same
 name. You might retry \code{CancelUpdateStack} requests to ensure that AWS
 CloudFormation successfully received them.}
 }

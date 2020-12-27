@@ -13,7 +13,7 @@ can get the ID from the response to an earlier CreateAccount request, or
 from the ListCreateAccountStatus operation.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a create
-account request ID string requires \"car-\" followed by from 8 to 32
+account request ID string requires "car-" followed by from 8 to 32
 lowercase letters or digits.}
 }
 \description{
@@ -21,9 +21,9 @@ Retrieves the current status of an asynchronous request to create an
 account.
 }
 \details{
-This operation can be called only from the organization\'s master
-account or by a member account that is a delegated administrator for an
-AWS service.
+This operation can be called only from the organization's master account
+or by a member account that is a delegated administrator for an AWS
+service.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_create_account_status(

@@ -43,7 +43,7 @@ object with a request to start a new game session (see \href{https://docs.aws.am
 \description{
 Places a request for a new game session in a queue (see
 CreateGameSessionQueue). When processing a placement request, Amazon
-GameLift searches for available resources on the queue\'s destinations,
+GameLift searches for available resources on the queue's destinations,
 scanning each until it finds resources or the placement request times
 out.
 }
@@ -54,7 +54,7 @@ player session for each player included in the request.
 
 When placing a game session, by default Amazon GameLift tries each fleet
 in the order they are listed in the queue configuration. Ideally, a
-queue\'s destinations are listed in preference order.
+queue's destinations are listed in preference order.
 
 Alternatively, when requesting a game session with players, you can also
 provide latency data for each player in relevant Regions. Latency data
@@ -62,8 +62,8 @@ indicates the performance lag a player experiences when connected to a
 fleet in the Region. Amazon GameLift uses latency data to reorder the
 list of destinations to place the game session in a Region with minimal
 lag. If latency data is provided for multiple players, Amazon GameLift
-calculates each Region\'s average lag for all players and reorders to
-get the best game play across all players.
+calculates each Region's average lag for all players and reorders to get
+the best game play across all players.
 
 To place a new game session request, specify the following:
 \itemize{
@@ -81,7 +81,7 @@ the players)
 If successful, a new game session placement is created.
 
 To track the status of a placement request, call
-DescribeGameSessionPlacement and check the request\'s status. If the
+DescribeGameSessionPlacement and check the request's status. If the
 status is \code{FULFILLED}, a new game session has been created and a game
 session ARN and Region are referenced. If the placement request times
 out, you can resubmit the request or retry it with a different queue.

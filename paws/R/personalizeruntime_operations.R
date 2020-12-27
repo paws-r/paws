@@ -18,14 +18,14 @@ NULL
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign to use for generating the
 #' personalized ranking.
-#' @param inputList &#91;required&#93; A list of items (itemId\'s) to rank. If an item was not included in the
+#' @param inputList &#91;required&#93; A list of items (itemId's) to rank. If an item was not included in the
 #' training dataset, the item is appended to the end of the reranked list.
 #' The maximum is 500.
 #' @param userId &#91;required&#93; The user for which you want the campaign to provide a personalized
 #' ranking.
 #' @param context The contextual metadata to use when getting recommendations. Contextual
 #' metadata includes any interaction information that might be relevant
-#' when getting a user\'s recommendations, such as the user\'s current
+#' when getting a user's recommendations, such as the user's current
 #' location or device type.
 #'
 #' @section Request syntax:
@@ -90,7 +90,7 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' @param numResults The number of results to return. The default is 25. The maximum is 500.
 #' @param context The contextual metadata to use when getting recommendations. Contextual
 #' metadata includes any interaction information that might be relevant
-#' when getting a user\'s recommendations, such as the user\'s current
+#' when getting a user's recommendations, such as the user's current
 #' location or device type.
 #' @param filterArn The ARN of the filter to apply to the returned recommendations. For more
 #' information, see Using Filters with Amazon Personalize.

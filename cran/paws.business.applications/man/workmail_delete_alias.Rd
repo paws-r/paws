@@ -13,7 +13,7 @@ workmail_delete_alias(OrganizationId, EntityId, Alias)
 \item{EntityId}{[required] The identifier for the member (user or group) from which to have the
 aliases removed.}
 
-\item{Alias}{[required] The aliases to be removed from the user\'s set of aliases. Duplicate
+\item{Alias}{[required] The aliases to be removed from the user's set of aliases. Duplicate
 entries in the list are collapsed into single entries (the list is
 transformed into a set).}
 }

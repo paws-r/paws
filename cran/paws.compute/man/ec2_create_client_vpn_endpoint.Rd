@@ -45,7 +45,7 @@ Default value: \code{udp}}
 \item{VpnPort}{The port number to assign to the Client VPN endpoint for TCP and UDP
 traffic.
 
-Valid Values: \code{443} \\| \code{1194}
+Valid Values: \code{443} | \code{1194}
 
 Default Value: \code{443}}
 

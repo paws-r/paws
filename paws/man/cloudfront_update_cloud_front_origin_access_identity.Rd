@@ -8,12 +8,12 @@ cloudfront_update_cloud_front_origin_access_identity(
   CloudFrontOriginAccessIdentityConfig, Id, IfMatch)
 }
 \arguments{
-\item{CloudFrontOriginAccessIdentityConfig}{[required] The identity\'s configuration information.}
+\item{CloudFrontOriginAccessIdentityConfig}{[required] The identity's configuration information.}
 
-\item{Id}{[required] The identity\'s id.}
+\item{Id}{[required] The identity's id.}
 
 \item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the
-identity\'s configuration. For example: \code{E2QWRUHAPOMQZL}.}
+identity's configuration. For example: \code{E2QWRUHAPOMQZL}.}
 }
 \description{
 Update an origin access identity.

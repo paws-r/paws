@@ -10,7 +10,7 @@ ssm_describe_instance_information(InstanceInformationFilterList,
   Filters, MaxResults, NextToken)
 }
 \arguments{
-\item{InstanceInformationFilterList}{This is a legacy method. We recommend that you don\'t use this method.
+\item{InstanceInformationFilterList}{This is a legacy method. We recommend that you don't use this method.
 Instead, use the \code{Filters} data type. \code{Filters} enables you to return
 instance information by filtering based on tags applied to managed
 instances.

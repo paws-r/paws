@@ -12,8 +12,8 @@ dataexchange_update_revision(Comment, DataSetId, Finalized, RevisionId)
 \item{DataSetId}{[required] The unique identifier for a data set.}
 
 \item{Finalized}{Finalizing a revision tells AWS Data Exchange that your changes to the
-assets in the revision are complete. After it\'s in this read-only
-state, you can publish the revision to your products.}
+assets in the revision are complete. After it's in this read-only state,
+you can publish the revision to your products.}
 
 \item{RevisionId}{[required] The unique identifier for a revision.}
 }

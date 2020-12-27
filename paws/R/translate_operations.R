@@ -313,7 +313,7 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #' @param ClientToken &#91;required&#93; The client token of the EC2 instance calling the request. This token is
 #' auto-generated when using the Amazon Translate SDK. Otherwise, use the
 #' [DescribeInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
-#' EC2 operation to retreive an instance\'s client token. For more
+#' EC2 operation to retreive an instance's client token. For more
 #' information, see [Client
 #' Tokens](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html#client-tokens)
 #' in the EC2 User Guide.
@@ -365,7 +365,7 @@ translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig
 #'
 #' Stops an asynchronous batch translation job that is in progress.
 #' 
-#' If the job\'s state is `IN_PROGRESS`, the job will be marked for
+#' If the job's state is `IN_PROGRESS`, the job will be marked for
 #' termination and put into the `STOP_REQUESTED` state. If the job
 #' completes before it can be stopped, it is put into the `COMPLETED`
 #' state. Otherwise, the job is put into the `STOPPED` state.
@@ -373,7 +373,7 @@ translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig
 #' Asynchronous batch translation jobs are started with the
 #' StartTextTranslationJob operation. You can use the
 #' DescribeTextTranslationJob or ListTextTranslationJobs operations to get
-#' a batch translation job\'s `JobId`.
+#' a batch translation job's `JobId`.
 #'
 #' @usage
 #' translate_stop_text_translation_job(JobId)

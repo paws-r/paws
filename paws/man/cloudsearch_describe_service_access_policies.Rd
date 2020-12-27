@@ -15,7 +15,7 @@ pending changes (\code{false}). Defaults to \code{false}.}
 }
 \description{
 Gets information about the access policies that control access to the
-domain\'s document and search endpoints. By default, shows the
+domain's document and search endpoints. By default, shows the
 configuration with any pending changes. Set the \code{Deployed} option to
 \code{true} to show the active configuration and exclude pending changes. For
 more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html}{Configuring Access for a Search Domain}

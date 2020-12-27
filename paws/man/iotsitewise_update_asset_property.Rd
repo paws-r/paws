@@ -29,17 +29,17 @@ in the \emph{AWS IoT SiteWise User Guide}.
 If you omit this parameter, the notification state is set to \code{DISABLED}.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{
-Updates an asset property\'s alias and notification state.
+Updates an asset property's alias and notification state.
 }
 \details{
-This operation overwrites the property\'s existing alias and
-notification state. To keep your existing property\'s alias or
-notification state, you must include the existing values in the
-UpdateAssetProperty request. For more information, see
+This operation overwrites the property's existing alias and notification
+state. To keep your existing property's alias or notification state, you
+must include the existing values in the UpdateAssetProperty request. For
+more information, see
 \href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetProperty.html}{DescribeAssetProperty}.
 }
 \section{Request syntax}{

@@ -16,7 +16,7 @@ iot_update_ca_certificate(certificateId, newStatus,
 not be used.}
 
 \item{newAutoRegistrationStatus}{The new value for the auto registration status. Valid values are:
-\"ENABLE\" or \"DISABLE\".}
+"ENABLE" or "DISABLE".}
 
 \item{registrationConfig}{Information about the registration configuration.}
 

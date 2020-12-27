@@ -11,7 +11,7 @@ alexaforbusiness_create_network_profile(NetworkProfileName, Description,
 \arguments{
 \item{NetworkProfileName}{[required] The name of the network profile associated with a device.}
 
-\item{Description}{Detailed information about a device\'s network profile.}
+\item{Description}{Detailed information about a device's network profile.}
 
 \item{Ssid}{[required] The SSID of the Wi-Fi network.}
 

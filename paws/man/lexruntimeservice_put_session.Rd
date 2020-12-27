@@ -14,7 +14,7 @@ lexruntimeservice_put_session(botName, botAlias, userId,
 \item{botAlias}{[required] The alias in use for the bot that contains the session data.}
 
 \item{userId}{[required] The ID of the client application user. Amazon Lex uses this to identify
-a user\'s conversation with your bot.}
+a user's conversation with your bot.}
 
 \item{sessionAttributes}{Map of key/value pairs representing the session-specific context
 information. It contains application information passed between Amazon

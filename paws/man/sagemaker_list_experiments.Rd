@@ -17,7 +17,7 @@ time.}
 
 \item{SortOrder}{The sort order. The default value is \code{Descending}.}
 
-\item{NextToken}{If the previous call to \code{ListExperiments} didn\'t return the full set of
+\item{NextToken}{If the previous call to \code{ListExperiments} didn't return the full set of
 experiments, the call returns a token for getting the next set of
 experiments.}
 

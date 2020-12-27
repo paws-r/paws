@@ -12,7 +12,7 @@ elasticache_describe_cache_clusters(CacheClusterId, MaxRecords, Marker,
 \arguments{
 \item{CacheClusterId}{The user-supplied cluster identifier. If this parameter is specified,
 only information about that specific cluster is returned. This parameter
-isn\'t case sensitive.}
+isn't case sensitive.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a marker is

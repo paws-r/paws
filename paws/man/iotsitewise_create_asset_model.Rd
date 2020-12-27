@@ -32,7 +32,7 @@ information, see
 in the \emph{AWS IoT SiteWise User Guide}.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 
 \item{tags}{A list of key-value pairs that contain metadata for the asset model. For
@@ -43,7 +43,7 @@ in the \emph{AWS IoT SiteWise User Guide}.}
 Creates an asset model from specified property and hierarchy
 definitions. You create assets from asset models. With asset models, you
 can easily create assets of the same type that have standardized
-definitions. Each asset created from a model inherits the asset model\'s
+definitions. Each asset created from a model inherits the asset model's
 property and hierarchy definitions. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/define-models.html}{Defining Asset Models}
 in the \emph{AWS IoT SiteWise User Guide}.
 }

@@ -533,7 +533,7 @@ batch <- function(config = list()) {
 #'  \link[=ec2_search_local_gateway_routes]{search_local_gateway_routes} \tab Searches for routes in the specified local gateway route table \cr
 #'  \link[=ec2_search_transit_gateway_multicast_groups]{search_transit_gateway_multicast_groups} \tab Searches one or more transit gateway multicast groups and returns the group membership information \cr
 #'  \link[=ec2_search_transit_gateway_routes]{search_transit_gateway_routes} \tab Searches for routes in the specified transit gateway route table \cr
-#'  \link[=ec2_send_diagnostic_interrupt]{send_diagnostic_interrupt} \tab Sends a diagnostic interrupt to the specified Amazon EC2 instance to trigger a _kernel panic_ (on Linux instances), or a _blue screen_/_stop error_ (on Windows instances) \cr
+#'  \link[=ec2_send_diagnostic_interrupt]{send_diagnostic_interrupt} \tab Sends a diagnostic interrupt to the specified Amazon EC2 instance to trigger a kernel panic (on Linux instances), or a blue screen/stop error (on Windows instances) \cr
 #'  \link[=ec2_start_instances]{start_instances} \tab Starts an Amazon EBS-backed instance that you've previously stopped \cr
 #'  \link[=ec2_start_vpc_endpoint_service_private_dns_verification]{start_vpc_endpoint_service_private_dns_verification} \tab Initiates the verification process to prove that the service provider owns the private DNS name domain for the endpoint service \cr
 #'  \link[=ec2_stop_instances]{stop_instances} \tab Stops an Amazon EBS-backed instance \cr
@@ -1189,7 +1189,7 @@ lambda <- function(config = list()) {
 #'  \link[=lightsail_create_domain_entry]{create_domain_entry} \tab Creates one of the following entry records associated with the domain: Address (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT)\cr
 #'  \link[=lightsail_create_instances]{create_instances} \tab Creates one or more Amazon Lightsail instances \cr
 #'  \link[=lightsail_create_instances_from_snapshot]{create_instances_from_snapshot} \tab Creates one or more new instances from a manual or automatic snapshot of an instance \cr
-#'  \link[=lightsail_create_instance_snapshot]{create_instance_snapshot} \tab Creates a snapshot of a specific virtual private server, or _instance_ \cr
+#'  \link[=lightsail_create_instance_snapshot]{create_instance_snapshot} \tab Creates a snapshot of a specific virtual private server, or instance \cr
 #'  \link[=lightsail_create_key_pair]{create_key_pair} \tab Creates an SSH key pair \cr
 #'  \link[=lightsail_create_load_balancer]{create_load_balancer} \tab Creates a Lightsail load balancer \cr
 #'  \link[=lightsail_create_load_balancer_tls_certificate]{create_load_balancer_tls_certificate} \tab Creates a Lightsail load balancer TLS certificate \cr
@@ -1204,7 +1204,7 @@ lambda <- function(config = list()) {
 #'  \link[=lightsail_delete_domain]{delete_domain} \tab Deletes the specified domain recordset and all of its domain records \cr
 #'  \link[=lightsail_delete_domain_entry]{delete_domain_entry} \tab Deletes a specific domain entry \cr
 #'  \link[=lightsail_delete_instance]{delete_instance} \tab Deletes an Amazon Lightsail instance \cr
-#'  \link[=lightsail_delete_instance_snapshot]{delete_instance_snapshot} \tab Deletes a specific snapshot of a virtual private server (or _instance_) \cr
+#'  \link[=lightsail_delete_instance_snapshot]{delete_instance_snapshot} \tab Deletes a specific snapshot of a virtual private server (or instance) \cr
 #'  \link[=lightsail_delete_key_pair]{delete_key_pair} \tab Deletes a specific SSH key pair \cr
 #'  \link[=lightsail_delete_known_host_keys]{delete_known_host_keys} \tab Deletes the known host key or certificate used by the Amazon Lightsail browser-based SSH or RDP clients to authenticate an instance \cr
 #'  \link[=lightsail_delete_load_balancer]{delete_load_balancer} \tab Deletes a Lightsail load balancer and all its associated SSL/TLS certificates \cr
@@ -1221,7 +1221,7 @@ lambda <- function(config = list()) {
 #'  \link[=lightsail_get_active_names]{get_active_names} \tab Returns the names of all active (not deleted) resources \cr
 #'  \link[=lightsail_get_alarms]{get_alarms} \tab Returns information about the configured alarms \cr
 #'  \link[=lightsail_get_auto_snapshots]{get_auto_snapshots} \tab Returns the available automatic snapshots for an instance or disk \cr
-#'  \link[=lightsail_get_blueprints]{get_blueprints} \tab Returns the list of available instance images, or _blueprints_ \cr
+#'  \link[=lightsail_get_blueprints]{get_blueprints} \tab Returns the list of available instance images, or blueprints \cr
 #'  \link[=lightsail_get_bundles]{get_bundles} \tab Returns the list of bundles that are available for purchase \cr
 #'  \link[=lightsail_get_cloud_formation_stack_records]{get_cloud_formation_stack_records} \tab Returns the CloudFormation stack record created as a result of the create cloud formation stack operation \cr
 #'  \link[=lightsail_get_contact_methods]{get_contact_methods} \tab Returns information about the configured contact methods \cr
@@ -1233,10 +1233,10 @@ lambda <- function(config = list()) {
 #'  \link[=lightsail_get_domains]{get_domains} \tab Returns a list of all domains in the user's account \cr
 #'  \link[=lightsail_get_export_snapshot_records]{get_export_snapshot_records} \tab Returns the export snapshot record created as a result of the export snapshot operation \cr
 #'  \link[=lightsail_get_instance]{get_instance} \tab Returns information about a specific Amazon Lightsail instance, which is a virtual private server \cr
-#'  \link[=lightsail_get_instance_access_details]{get_instance_access_details} \tab Returns temporary SSH keys you can use to connect to a specific virtual private server, or _instance_ \cr
+#'  \link[=lightsail_get_instance_access_details]{get_instance_access_details} \tab Returns temporary SSH keys you can use to connect to a specific virtual private server, or instance \cr
 #'  \link[=lightsail_get_instance_metric_data]{get_instance_metric_data} \tab Returns the data points for the specified Amazon Lightsail instance metric, given an instance name \cr
 #'  \link[=lightsail_get_instance_port_states]{get_instance_port_states} \tab Returns the firewall port states for a specific Amazon Lightsail instance, the IP addresses allowed to connect to the instance through the ports, and the protocol \cr
-#'  \link[=lightsail_get_instances]{get_instances} \tab Returns information about all Amazon Lightsail virtual private servers, or _instances_ \cr
+#'  \link[=lightsail_get_instances]{get_instances} \tab Returns information about all Amazon Lightsail virtual private servers, or instances \cr
 #'  \link[=lightsail_get_instance_snapshot]{get_instance_snapshot} \tab Returns information about a specific instance snapshot \cr
 #'  \link[=lightsail_get_instance_snapshots]{get_instance_snapshots} \tab Returns all instance snapshots for the user's account \cr
 #'  \link[=lightsail_get_instance_state]{get_instance_state} \tab Returns the state of a specific instance \cr
@@ -1323,11 +1323,11 @@ lightsail <- function(config = list()) {
 #' The AWS Serverless Application Repository Developer Guide contains more
 #' information about the two developer experiences available:
 #' 
-#' -   Consuming Applications -- Browse for applications and view
+#' -   Consuming Applications – Browse for applications and view
 #'     information about them, including source code and readme files. Also
 #'     install, configure, and deploy applications of your choosing.
 #' 
-#'     Publishing Applications -- Configure and upload applications to make
+#'     Publishing Applications – Configure and upload applications to make
 #'     them available to other developers, and publish new versions of
 #'     applications.
 #'
@@ -1696,16 +1696,16 @@ fsx <- function(config = list()) {
 #' Amazon Glacier
 #'
 #' @description
-#' Amazon S3 Glacier (Glacier) is a storage solution for \"cold data.\"
+#' Amazon S3 Glacier (Glacier) is a storage solution for "cold data."
 #' 
 #' Glacier is an extremely low-cost storage service that provides secure,
 #' durable, and easy-to-use storage for data backup and archival. With
 #' Glacier, customers can store their data cost effectively for months,
 #' years, or decades. Glacier also enables customers to offload the
 #' administrative burdens of operating and scaling storage to AWS, so they
-#' don\'t have to worry about capacity planning, hardware provisioning,
-#' data replication, hardware failure and recovery, or time-consuming
-#' hardware migrations.
+#' don't have to worry about capacity planning, hardware provisioning, data
+#' replication, hardware failure and recovery, or time-consuming hardware
+#' migrations.
 #' 
 #' Glacier is a great storage choice when low storage cost is paramount and
 #' your data is rarely retrieved. If your application requires fast or
@@ -2015,10 +2015,10 @@ s3control <- function(config = list()) {
 #' 
 #' AWS Storage Gateway is the service that connects an on-premises software
 #' appliance with cloud-based storage to provide seamless and secure
-#' integration between an organization\'s on-premises IT environment and
-#' the AWS storage infrastructure. The service enables you to securely
-#' upload data to the AWS Cloud for cost effective backup and rapid
-#' disaster recovery.
+#' integration between an organization's on-premises IT environment and the
+#' AWS storage infrastructure. The service enables you to securely upload
+#' data to the AWS Cloud for cost effective backup and rapid disaster
+#' recovery.
 #' 
 #' Use the following links to get started using the *AWS Storage Gateway
 #' Service API Reference*:
@@ -2072,7 +2072,7 @@ s3control <- function(config = list()) {
 #' A snapshot ID with the longer ID format looks like the following:
 #' `snap-78e226633445566ee`.
 #' 
-#' For more information, see [Announcement: Heads-up -- Longer AWS Storage
+#' For more information, see [Announcement: Heads-up – Longer AWS Storage
 #' Gateway volume and snapshot IDs coming in
 #' 2016](http://forums.aws.amazon.com/ann.jspa?annID=3557).
 #'
@@ -2366,13 +2366,13 @@ docdb <- function(config = list()) {
 #' Amazon DynamoDB is a fully managed NoSQL database service that provides
 #' fast and predictable performance with seamless scalability. DynamoDB
 #' lets you offload the administrative burdens of operating and scaling a
-#' distributed database, so that you don\'t have to worry about hardware
+#' distributed database, so that you don't have to worry about hardware
 #' provisioning, setup and configuration, replication, software patching,
 #' or cluster scaling.
 #' 
 #' With DynamoDB, you can create database tables that can store and
 #' retrieve any amount of data, and serve any level of request traffic. You
-#' can scale up or scale down your tables\' throughput capacity without
+#' can scale up or scale down your tables' throughput capacity without
 #' downtime or performance degradation, and use the AWS Management Console
 #' to monitor resource utilization and performance metrics.
 #' 
@@ -2673,7 +2673,7 @@ elasticache <- function(config = list()) {
 #' connected datasets. The core of Amazon Neptune is a purpose-built,
 #' high-performance graph database engine optimized for storing billions of
 #' relationships and querying the graph with milliseconds latency. Amazon
-#' Neptune supports popular graph models Property Graph and W3C\'s RDF, and
+#' Neptune supports popular graph models Property Graph and W3C's RDF, and
 #' their respective query languages Apache TinkerPop Gremlin and SPARQL,
 #' allowing you to easily build queries that efficiently navigate highly
 #' connected datasets. Neptune powers graph use cases such as
@@ -2805,8 +2805,8 @@ neptune <- function(config = list()) {
 #' you already use today with your existing databases work with Amazon RDS
 #' without modification. Amazon RDS automatically backs up your database
 #' and maintains the database software that powers your DB instance. Amazon
-#' RDS is flexible: you can scale your DB instance\'s compute resources and
-#' storage capacity to meet your application\'s demand. As with all Amazon
+#' RDS is flexible: you can scale your DB instance's compute resources and
+#' storage capacity to meet your application's demand. As with all Amazon
 #' Web Services, there are no up-front investments, and you pay only for
 #' the resources you use.
 #' 
@@ -3470,11 +3470,11 @@ apigateway <- function(config = list()) {
 #' @description
 #' The Amazon API Gateway Management API allows you to directly manage
 #' runtime aspects of your deployed APIs. To use it, you must explicitly
-#' set the SDK\'s endpoint to point to the endpoint of your deployed API.
+#' set the SDK's endpoint to point to the endpoint of your deployed API.
 #' The endpoint will be of the form
 #' https://\{api-id\}.execute-api.\{region\}.amazonaws.com/\{stage\}, or will be
-#' the endpoint corresponding to your API\'s custom domain and base path,
-#' if applicable.
+#' the endpoint corresponding to your API's custom domain and base path, if
+#' applicable.
 #'
 #' @param
 #' config
@@ -4242,7 +4242,7 @@ elbv2 <- function(config = list()) {
 #' Global Accelerator assigns each accelerator a default Domain Name System
 #' (DNS) name, similar to `a1234567890abcdef.awsglobalaccelerator.com`,
 #' that points to your Global Accelerator static IP addresses. Depending on
-#' the use case, you can use your accelerator\'s static IP addresses or DNS
+#' the use case, you can use your accelerator's static IP addresses or DNS
 #' name to route traffic to your accelerator, or set up DNS records to
 #' route traffic using your own custom domain name.
 #' 
@@ -4540,7 +4540,7 @@ route53domains <- function(config = list()) {
 #' Amazon Route 53 Resolver
 #'
 #' @description
-#' Here\'s how you set up to query an Amazon Route 53 private hosted zone
+#' Here's how you set up to query an Amazon Route 53 private hosted zone
 #' from your network:
 #' 
 #' 1.  Connect your network to a VPC using AWS Direct Connect or a VPN.
@@ -4549,7 +4549,7 @@ route53domains <- function(config = list()) {
 #' 
 #'     `create-resolver-endpoint --name \\[endpoint_name\\] --direction INBOUND --creator-request-id \\[unique_string\\] --security-group-ids \\[security_group_with_inbound_rules\\] --ip-addresses SubnetId=\\[subnet_id\\] SubnetId=\\[subnet_id_in_different_AZ\\]`
 #' 
-#'     Note the resolver endpoint ID that appears in the response. You\'ll
+#'     Note the resolver endpoint ID that appears in the response. You'll
 #'     use it in step 3.
 #' 
 #' 3.  Get the IP addresses for the Resolver endpoints:
@@ -5120,7 +5120,7 @@ autoscalingplans <- function(config = list()) {
 #' 
 #' Amazon CloudFormation makes use of other AWS products. If you need
 #' additional technical information about a specific AWS product, you can
-#' find the product\'s technical documentation at
+#' find the product's technical documentation at
 #' [docs.aws.amazon.com](https://docs.aws.amazon.com/).
 #'
 #' @param
@@ -5179,8 +5179,8 @@ autoscalingplans <- function(config = list()) {
 #'  \link[=cloudformation_describe_stack_set_operation]{describe_stack_set_operation} \tab Returns the description of the specified stack set operation \cr
 #'  \link[=cloudformation_describe_type]{describe_type} \tab Returns detailed information about a type that has been registered \cr
 #'  \link[=cloudformation_describe_type_registration]{describe_type_registration} \tab Returns information about a type's registration, including its current status and type and version identifiers \cr
-#'  \link[=cloudformation_detect_stack_drift]{detect_stack_drift} \tab Detects whether a stack's actual configuration differs, or has _drifted_, from it's expected configuration, as defined in the stack template and any values specified as template parameters \cr
-#'  \link[=cloudformation_detect_stack_resource_drift]{detect_stack_resource_drift} \tab Returns information about whether a resource's actual configuration differs, or has _drifted_, from it's expected configuration, as defined in the stack template and any values specified as template parameters\cr
+#'  \link[=cloudformation_detect_stack_drift]{detect_stack_drift} \tab Detects whether a stack's actual configuration differs, or has drifted, from it's expected configuration, as defined in the stack template and any values specified as template parameters \cr
+#'  \link[=cloudformation_detect_stack_resource_drift]{detect_stack_resource_drift} \tab Returns information about whether a resource's actual configuration differs, or has drifted, from it's expected configuration, as defined in the stack template and any values specified as template parameters\cr
 #'  \link[=cloudformation_detect_stack_set_drift]{detect_stack_set_drift} \tab Detect drift on a stack set \cr
 #'  \link[=cloudformation_estimate_template_cost]{estimate_template_cost} \tab Returns the estimated monthly cost of a template \cr
 #'  \link[=cloudformation_execute_change_set]{execute_change_set} \tab Updates a stack using the input information that was provided when the specified change set was created \cr
@@ -5377,7 +5377,7 @@ cloudtrail <- function(config = list()) {
 #'  \link[=cloudwatch_list_metrics]{list_metrics} \tab List the specified metrics \cr
 #'  \link[=cloudwatch_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch resource \cr
 #'  \link[=cloudwatch_put_anomaly_detector]{put_anomaly_detector} \tab Creates an anomaly detection model for a CloudWatch metric \cr
-#'  \link[=cloudwatch_put_composite_alarm]{put_composite_alarm} \tab Creates or updates a _composite alarm_ \cr
+#'  \link[=cloudwatch_put_composite_alarm]{put_composite_alarm} \tab Creates or updates a composite alarm \cr
 #'  \link[=cloudwatch_put_dashboard]{put_dashboard} \tab Creates a dashboard if it does not already exist, or updates an existing dashboard \cr
 #'  \link[=cloudwatch_put_insight_rule]{put_insight_rule} \tab Creates a Contributor Insights rule \cr
 #'  \link[=cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric, metric math expression, or anomaly detection model \cr
@@ -5473,7 +5473,7 @@ cloudwatch <- function(config = list()) {
 #'  \link[=cloudwatchevents_list_targets_by_rule]{list_targets_by_rule} \tab Lists the targets assigned to the specified rule \cr
 #'  \link[=cloudwatchevents_put_events]{put_events} \tab Sends custom events to Amazon EventBridge so that they can be matched to rules \cr
 #'  \link[=cloudwatchevents_put_partner_events]{put_partner_events} \tab This is used by SaaS partners to write events to a customer's partner event bus \cr
-#'  \link[=cloudwatchevents_put_permission]{put_permission} \tab Running PutPermission permits the specified AWS account or AWS organization to put events to the specified _event bus_ \cr
+#'  \link[=cloudwatchevents_put_permission]{put_permission} \tab Running PutPermission permits the specified AWS account or AWS organization to put events to the specified event bus \cr
 #'  \link[=cloudwatchevents_put_rule]{put_rule} \tab Creates or updates the specified rule \cr
 #'  \link[=cloudwatchevents_put_targets]{put_targets} \tab Adds the specified targets to the specified rule, or updates the targets if they are already associated with the rule \cr
 #'  \link[=cloudwatchevents_remove_permission]{remove_permission} \tab Revokes the permission of another AWS account to be able to put events to the specified event bus \cr
@@ -5507,11 +5507,11 @@ cloudwatchevents <- function(config = list()) {
 #'     the rate of errors exceeds a threshold that you specify. CloudWatch
 #'     Logs uses your log data for monitoring; so, no code changes are
 #'     required. For example, you can monitor application logs for specific
-#'     literal terms (such as \"NullReferenceException\") or count the
-#'     number of occurrences of a literal term at a particular position in
-#'     log data (such as \"404\" status codes in an Apache access log).
-#'     When the term you are searching for is found, CloudWatch Logs
-#'     reports the data to a CloudWatch metric that you specify.
+#'     literal terms (such as "NullReferenceException") or count the number
+#'     of occurrences of a literal term at a particular position in log
+#'     data (such as "404" status codes in an Apache access log). When the
+#'     term you are searching for is found, CloudWatch Logs reports the
+#'     data to a CloudWatch metric that you specify.
 #' 
 #' -   **Monitor AWS CloudTrail logged events**: You can create alarms in
 #'     CloudWatch and receive notifications of particular API activity as
@@ -6174,13 +6174,13 @@ opsworks <- function(config = list()) {
 #' -   **Backup**: This is an application-level backup of the data that the
 #'     configuration manager stores. AWS OpsWorks CM creates an S3 bucket
 #'     for backups when you launch the first server. A backup maintains a
-#'     snapshot of a server\'s configuration-related attributes at the time
+#'     snapshot of a server's configuration-related attributes at the time
 #'     the backup starts.
 #' 
 #' -   **Events**: Events are always related to a server. Events are
 #'     written during server creation, when health checks run, when backups
 #'     are created, when system maintenance is performed, etc. When you
-#'     delete a server, the server\'s events are also deleted.
+#'     delete a server, the server's events are also deleted.
 #' 
 #' -   **Account attributes**: Every account has attributes that are
 #'     assigned in the AWS OpsWorks CM database. These attributes store
@@ -6545,9 +6545,9 @@ resourcegroups <- function(config = list()) {
 #' 
 #' A tag is a label that you assign to an AWS resource. A tag consists of a
 #' key and a value, both of which you define. For example, if you have two
-#' Amazon EC2 instances, you might assign both a tag key of \"Stack.\" But
-#' the value of \"Stack\" might be \"Testing\" for one and \"Production\"
-#' for the other.
+#' Amazon EC2 instances, you might assign both a tag key of "Stack." But
+#' the value of "Stack" might be "Testing" for one and "Production" for the
+#' other.
 #' 
 #' Tagging can help you organize your resources and enables you to simplify
 #' resource management, access management and cost allocation.
@@ -6580,7 +6580,7 @@ resourcegroups <- function(config = list()) {
 #' 
 #' -   `tag:GetTagValues`
 #' 
-#' You\'ll also need permissions to access the resources of individual
+#' You'll also need permissions to access the resources of individual
 #' services so that you can tag and untag those resources.
 #' 
 #' For more information on IAM policies, see [Managing IAM
@@ -6978,7 +6978,7 @@ servicecatalog <- function(config = list()) {
 #' 
 #' AWS provides SDKs that consist of libraries and sample code for
 #' programming languages and platforms (Java, Ruby, .NET, iOS, Android,
-#' etc\\...,). The SDKs provide a convenient way to create programmatic
+#' etc...,). The SDKs provide a convenient way to create programmatic
 #' access to Service Quotas and AWS. For information about the AWS SDKs,
 #' including how to download and install them, see the Tools for Amazon Web
 #' Services page.
@@ -7618,7 +7618,7 @@ lexmodelbuildingservice <- function(config = list()) {
 #' Amazon Lex provides both build and runtime endpoints. Each endpoint
 #' provides a set of operations (API). Your conversational bot uses the
 #' runtime API to understand user utterances (user input text or voice).
-#' For example, suppose a user says \"I want pizza\", your bot sends this
+#' For example, suppose a user says "I want pizza", your bot sends this
 #' input to Amazon Lex using the runtime API. Amazon Lex recognizes that
 #' the user request is for the OrderPizza intent (one of the intents
 #' defined in the bot). Then Amazon Lex engages in user conversation on
@@ -8038,7 +8038,7 @@ polly <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=rekognition_compare_faces]{compare_faces} \tab Compares a face in the _source_ input image with each of the 100 largest faces detected in the _target_ input image \cr
+#'  \link[=rekognition_compare_faces]{compare_faces} \tab Compares a face in the source input image with each of the 100 largest faces detected in the target input image \cr
 #'  \link[=rekognition_create_collection]{create_collection} \tab Creates a collection in an AWS Region \cr
 #'  \link[=rekognition_create_project]{create_project} \tab Creates a new Amazon Rekognition Custom Labels project \cr
 #'  \link[=rekognition_create_project_version]{create_project_version} \tab Creates a new version of a model and begins training \cr
@@ -8148,7 +8148,7 @@ rekognition <- function(config = list()) {
 #'  \link[=sagemaker_create_domain]{create_domain} \tab Creates a Domain used by SageMaker Studio \cr
 #'  \link[=sagemaker_create_endpoint]{create_endpoint} \tab Creates an endpoint using the endpoint configuration specified in the request \cr
 #'  \link[=sagemaker_create_endpoint_config]{create_endpoint_config} \tab Creates an endpoint configuration that Amazon SageMaker hosting services uses to deploy models \cr
-#'  \link[=sagemaker_create_experiment]{create_experiment} \tab Creates an Amazon SageMaker _experiment_ \cr
+#'  \link[=sagemaker_create_experiment]{create_experiment} \tab Creates an Amazon SageMaker experiment \cr
 #'  \link[=sagemaker_create_flow_definition]{create_flow_definition} \tab Creates a flow definition \cr
 #'  \link[=sagemaker_create_human_task_ui]{create_human_task_ui} \tab Defines the settings you will use for the human review workflow user interface \cr
 #'  \link[=sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job} \tab Starts a hyperparameter tuning job \cr
@@ -8163,8 +8163,8 @@ rekognition <- function(config = list()) {
 #'  \link[=sagemaker_create_processing_job]{create_processing_job} \tab Creates a processing job \cr
 #'  \link[=sagemaker_create_training_job]{create_training_job} \tab Starts a model training job \cr
 #'  \link[=sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job \cr
-#'  \link[=sagemaker_create_trial]{create_trial} \tab Creates an Amazon SageMaker _trial_ \cr
-#'  \link[=sagemaker_create_trial_component]{create_trial_component} \tab Creates a _trial component_, which is a stage of a machine learning _trial_ \cr
+#'  \link[=sagemaker_create_trial]{create_trial} \tab Creates an Amazon SageMaker trial \cr
+#'  \link[=sagemaker_create_trial_component]{create_trial_component} \tab Creates a trial component, which is a stage of a machine learning trial \cr
 #'  \link[=sagemaker_create_user_profile]{create_user_profile} \tab Creates a user profile \cr
 #'  \link[=sagemaker_create_workteam]{create_workteam} \tab Creates a new work team for labeling your data \cr
 #'  \link[=sagemaker_delete_algorithm]{delete_algorithm} \tab Removes the specified algorithm from your account \cr
@@ -8510,9 +8510,9 @@ translate <- function(config = list()) {
 #' data in Amazon S3 and run ad-hoc queries and get results in seconds.
 #' Athena is serverless, so there is no infrastructure to set up or manage.
 #' You pay only for the queries you run. Athena scales
-#' automatically---executing queries in parallel---so results are fast,
-#' even with large datasets and complex queries. For more information, see
-#' [What is Amazon
+#' automatically—executing queries in parallel—so results are fast, even
+#' with large datasets and complex queries. For more information, see [What
+#' is Amazon
 #' Athena](http://docs.aws.amazon.com/athena/latest/ug/what-is.html) in the
 #' *Amazon Athena User Guide*.
 #' 
@@ -9817,8 +9817,8 @@ acm <- function(config = list()) {
 #' 
 #' The documentation for each action shows the Query API request parameters
 #' and the XML response. Alternatively, you can use one of the AWS SDKs to
-#' access an API that\'s tailored to the programming language or platform
-#' that you\'re using. For more information, see [AWS
+#' access an API that's tailored to the programming language or platform
+#' that you're using. For more information, see [AWS
 #' SDKs](https://aws.amazon.com/tools/#SDKs).
 #' 
 #' Each ACM Private CA API action has a throttling limit which determines
@@ -10059,26 +10059,26 @@ clouddirectory <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=cloudhsm_add_tags_to_resource]{add_tags_to_resource} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_create_hapg]{create_hapg} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_create_hsm]{create_hsm} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_create_luna_client]{create_luna_client} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_delete_hapg]{delete_hapg} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_delete_hsm]{delete_hsm} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_delete_luna_client]{delete_luna_client} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_describe_hapg]{describe_hapg} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_describe_hsm]{describe_hsm} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_describe_luna_client]{describe_luna_client} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_get_config]{get_config} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_list_available_zones]{list_available_zones} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_list_hapgs]{list_hapgs} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_list_hsms]{list_hsms} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_list_luna_clients]{list_luna_clients} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_list_tags_for_resource]{list_tags_for_resource} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_modify_hapg]{modify_hapg} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_modify_hsm]{modify_hsm} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_modify_luna_client]{modify_luna_client} \tab This is documentation for AWS CLOUDHSM CLASSIC\cr
-#'  \link[=cloudhsm_remove_tags_from_resource]{remove_tags_from_resource} \tab This is documentation for AWS CLOUDHSM CLASSIC
+#'  \link[=cloudhsm_add_tags_to_resource]{add_tags_to_resource} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_create_hapg]{create_hapg} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_create_hsm]{create_hsm} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_create_luna_client]{create_luna_client} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_delete_hapg]{delete_hapg} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_delete_hsm]{delete_hsm} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_delete_luna_client]{delete_luna_client} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_describe_hapg]{describe_hapg} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_describe_hsm]{describe_hsm} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_describe_luna_client]{describe_luna_client} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_get_config]{get_config} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_list_available_zones]{list_available_zones} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_list_hapgs]{list_hapgs} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_list_hsms]{list_hsms} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_list_luna_clients]{list_luna_clients} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_list_tags_for_resource]{list_tags_for_resource} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_modify_hapg]{modify_hapg} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_modify_hsm]{modify_hsm} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_modify_luna_client]{modify_luna_client} \tab This is documentation for AWS CloudHSM Classic\cr
+#'  \link[=cloudhsm_remove_tags_from_resource]{remove_tags_from_resource} \tab This is documentation for AWS CloudHSM Classic
 #' }
 #'
 #' @rdname cloudhsm
@@ -10299,7 +10299,7 @@ cognitoidentity <- function(config = list()) {
 #'  \link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge} \tab Responds to an authentication challenge, as an administrator \cr
 #'  \link[=cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference} \tab Sets the user's multi-factor authentication (MFA) preference, including which MFA options are enabled and if any are preferred \cr
 #'  \link[=cognitoidentityprovider_admin_set_user_password]{admin_set_user_password} \tab Sets the specified user's password in a user pool as an administrator \cr
-#'  \link[=cognitoidentityprovider_admin_set_user_settings]{admin_set_user_settings} \tab _This action is no longer supported \cr
+#'  \link[=cognitoidentityprovider_admin_set_user_settings]{admin_set_user_settings} \tab This action is no longer supported \cr
 #'  \link[=cognitoidentityprovider_admin_update_auth_event_feedback]{admin_update_auth_event_feedback} \tab Provides feedback for an authentication event as to whether it was from a valid user \cr
 #'  \link[=cognitoidentityprovider_admin_update_device_status]{admin_update_device_status} \tab Updates the device status as an administrator \cr
 #'  \link[=cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes} \tab Updates the specified user's attributes, including developer attributes, as an administrator \cr
@@ -10360,7 +10360,7 @@ cognitoidentity <- function(config = list()) {
 #'  \link[=cognitoidentityprovider_set_ui_customization]{set_ui_customization} \tab Sets the UI customization information for a user pool's built-in app UI \cr
 #'  \link[=cognitoidentityprovider_set_user_mfa_preference]{set_user_mfa_preference} \tab Set the user's multi-factor authentication (MFA) method preference, including which MFA factors are enabled and if any are preferred \cr
 #'  \link[=cognitoidentityprovider_set_user_pool_mfa_config]{set_user_pool_mfa_config} \tab Set the user pool multi-factor authentication (MFA) configuration \cr
-#'  \link[=cognitoidentityprovider_set_user_settings]{set_user_settings} \tab _This action is no longer supported \cr
+#'  \link[=cognitoidentityprovider_set_user_settings]{set_user_settings} \tab This action is no longer supported \cr
 #'  \link[=cognitoidentityprovider_sign_up]{sign_up} \tab Registers the user in the specified user pool and creates a user name, password, and user attributes \cr
 #'  \link[=cognitoidentityprovider_start_user_import_job]{start_user_import_job} \tab Starts the user import \cr
 #'  \link[=cognitoidentityprovider_stop_user_import_job]{stop_user_import_job} \tab Stops the user import job \cr
@@ -10391,8 +10391,8 @@ cognitoidentityprovider <- function(config = list()) {
 #' Amazon Cognito Sync provides an AWS service and client library that
 #' enable cross-device syncing of application-related user data. High-level
 #' client libraries are available for both iOS and Android. You can use
-#' these libraries to persist data locally so that it\'s available even if
-#' the device is offline. Developer credentials don\'t need to be stored on
+#' these libraries to persist data locally so that it's available even if
+#' the device is offline. Developer credentials don't need to be stored on
 #' the mobile device to access the service. You can use Amazon Cognito to
 #' obtain a normalized user ID and credentials. User data is persisted in a
 #' dataset that can store up to 1 MB of key-value pairs, and you can have
@@ -11415,7 +11415,7 @@ ram <- function(config = list()) {
 #' in the *AWS Secrets Manager User Guide*.
 #' 
 #' Secrets Manager API supports GET and POST requests for all actions, and
-#' doesn\'t require you to use GET for some actions and POST for others.
+#' doesn't require you to use GET for some actions and POST for others.
 #' However, GET requests are subject to the limitation size of a URL.
 #' Therefore, for operations that require larger sizes, use a POST request.
 #' 
@@ -11443,11 +11443,11 @@ ram <- function(config = list()) {
 #' 
 #' AWS Secrets Manager supports AWS CloudTrail, a service that records AWS
 #' API calls for your AWS account and delivers log files to an Amazon S3
-#' bucket. By using information that\'s collected by AWS CloudTrail, you
-#' can determine the requests successfully made to Secrets Manager, who
-#' made the request, when it was made, and so on. For more about AWS
-#' Secrets Manager and support for AWS CloudTrail, see [Logging AWS Secrets
-#' Manager Events with AWS
+#' bucket. By using information that's collected by AWS CloudTrail, you can
+#' determine the requests successfully made to Secrets Manager, who made
+#' the request, when it was made, and so on. For more about AWS Secrets
+#' Manager and support for AWS CloudTrail, see [Logging AWS Secrets Manager
+#' Events with AWS
 #' CloudTrail](http://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail)
 #' in the *AWS Secrets Manager User Guide*. To learn more about CloudTrail,
 #' including enabling it and find your log files, see the [AWS CloudTrail
@@ -11736,9 +11736,9 @@ shield <- function(config = list()) {
 #' IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html)
 #' in the *IAM User Guide*.
 #' 
-#' If you\'re new to AWS and need additional technical information about a
-#' specific AWS product, you can find the product\'s technical
-#' documentation at <http://aws.amazon.com/documentation/>.
+#' If you're new to AWS and need additional technical information about a
+#' specific AWS product, you can find the product's technical documentation
+#' at <http://aws.amazon.com/documentation/>.
 #' 
 #' **Endpoints**
 #' 
@@ -11943,83 +11943,83 @@ sts <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=waf_create_byte_match_set]{create_byte_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_create_geo_match_set]{create_geo_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_create_ip_set]{create_ip_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_create_rate_based_rule]{create_rate_based_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_create_regex_match_set]{create_regex_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_create_regex_pattern_set]{create_regex_pattern_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_create_rule]{create_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_create_rule_group]{create_rule_group} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_create_size_constraint_set]{create_size_constraint_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_create_sql_injection_match_set]{create_sql_injection_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_create_web_acl]{create_web_acl} \tab This is AWS WAF CLASSIC documentation \cr
+#'  \link[=waf_create_byte_match_set]{create_byte_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_create_geo_match_set]{create_geo_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_create_ip_set]{create_ip_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_create_rate_based_rule]{create_rate_based_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_create_regex_match_set]{create_regex_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_create_regex_pattern_set]{create_regex_pattern_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_create_rule]{create_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_create_rule_group]{create_rule_group} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_create_size_constraint_set]{create_size_constraint_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_create_sql_injection_match_set]{create_sql_injection_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_create_web_acl]{create_web_acl} \tab This is AWS WAF Classic documentation \cr
 #'  \link[=waf_create_web_acl_migration_stack]{create_web_acl_migration_stack} \tab Creates an AWS CloudFormation WAFV2 template for the specified web ACL in the specified Amazon S3 bucket\cr
-#'  \link[=waf_create_xss_match_set]{create_xss_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_byte_match_set]{delete_byte_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_geo_match_set]{delete_geo_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_ip_set]{delete_ip_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_logging_configuration]{delete_logging_configuration} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_permission_policy]{delete_permission_policy} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_rate_based_rule]{delete_rate_based_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_regex_match_set]{delete_regex_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_regex_pattern_set]{delete_regex_pattern_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_rule]{delete_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_rule_group]{delete_rule_group} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_size_constraint_set]{delete_size_constraint_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_sql_injection_match_set]{delete_sql_injection_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_web_acl]{delete_web_acl} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_delete_xss_match_set]{delete_xss_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_byte_match_set]{get_byte_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_change_token]{get_change_token} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_change_token_status]{get_change_token_status} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_geo_match_set]{get_geo_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_ip_set]{get_ip_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_logging_configuration]{get_logging_configuration} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_permission_policy]{get_permission_policy} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_rate_based_rule]{get_rate_based_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_rate_based_rule_managed_keys]{get_rate_based_rule_managed_keys} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_regex_match_set]{get_regex_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_regex_pattern_set]{get_regex_pattern_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_rule]{get_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_rule_group]{get_rule_group} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_sampled_requests]{get_sampled_requests} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_size_constraint_set]{get_size_constraint_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_sql_injection_match_set]{get_sql_injection_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_web_acl]{get_web_acl} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_get_xss_match_set]{get_xss_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_activated_rules_in_rule_group]{list_activated_rules_in_rule_group} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_byte_match_sets]{list_byte_match_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_geo_match_sets]{list_geo_match_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_ip_sets]{list_ip_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_logging_configurations]{list_logging_configurations} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_rate_based_rules]{list_rate_based_rules} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_regex_match_sets]{list_regex_match_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_regex_pattern_sets]{list_regex_pattern_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_rule_groups]{list_rule_groups} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_rules]{list_rules} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_size_constraint_sets]{list_size_constraint_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_sql_injection_match_sets]{list_sql_injection_match_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_subscribed_rule_groups]{list_subscribed_rule_groups} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_tags_for_resource]{list_tags_for_resource} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_web_ac_ls]{list_web_ac_ls} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_list_xss_match_sets]{list_xss_match_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_put_logging_configuration]{put_logging_configuration} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_put_permission_policy]{put_permission_policy} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_tag_resource]{tag_resource} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_untag_resource]{untag_resource} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_update_byte_match_set]{update_byte_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_update_geo_match_set]{update_geo_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_update_ip_set]{update_ip_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_update_rate_based_rule]{update_rate_based_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_update_regex_match_set]{update_regex_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_update_regex_pattern_set]{update_regex_pattern_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_update_rule]{update_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_update_rule_group]{update_rule_group} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_update_size_constraint_set]{update_size_constraint_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_update_sql_injection_match_set]{update_sql_injection_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_update_web_acl]{update_web_acl} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=waf_update_xss_match_set]{update_xss_match_set} \tab This is AWS WAF CLASSIC documentation 
+#'  \link[=waf_create_xss_match_set]{create_xss_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_byte_match_set]{delete_byte_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_geo_match_set]{delete_geo_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_ip_set]{delete_ip_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_logging_configuration]{delete_logging_configuration} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_permission_policy]{delete_permission_policy} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_rate_based_rule]{delete_rate_based_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_regex_match_set]{delete_regex_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_regex_pattern_set]{delete_regex_pattern_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_rule]{delete_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_rule_group]{delete_rule_group} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_size_constraint_set]{delete_size_constraint_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_sql_injection_match_set]{delete_sql_injection_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_web_acl]{delete_web_acl} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_delete_xss_match_set]{delete_xss_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_byte_match_set]{get_byte_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_change_token]{get_change_token} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_change_token_status]{get_change_token_status} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_geo_match_set]{get_geo_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_ip_set]{get_ip_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_logging_configuration]{get_logging_configuration} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_permission_policy]{get_permission_policy} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_rate_based_rule]{get_rate_based_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_rate_based_rule_managed_keys]{get_rate_based_rule_managed_keys} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_regex_match_set]{get_regex_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_regex_pattern_set]{get_regex_pattern_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_rule]{get_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_rule_group]{get_rule_group} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_sampled_requests]{get_sampled_requests} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_size_constraint_set]{get_size_constraint_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_sql_injection_match_set]{get_sql_injection_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_web_acl]{get_web_acl} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_get_xss_match_set]{get_xss_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_activated_rules_in_rule_group]{list_activated_rules_in_rule_group} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_byte_match_sets]{list_byte_match_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_geo_match_sets]{list_geo_match_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_ip_sets]{list_ip_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_logging_configurations]{list_logging_configurations} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_rate_based_rules]{list_rate_based_rules} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_regex_match_sets]{list_regex_match_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_regex_pattern_sets]{list_regex_pattern_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_rule_groups]{list_rule_groups} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_rules]{list_rules} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_size_constraint_sets]{list_size_constraint_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_sql_injection_match_sets]{list_sql_injection_match_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_subscribed_rule_groups]{list_subscribed_rule_groups} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_tags_for_resource]{list_tags_for_resource} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_web_ac_ls]{list_web_ac_ls} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_list_xss_match_sets]{list_xss_match_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_put_logging_configuration]{put_logging_configuration} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_put_permission_policy]{put_permission_policy} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_tag_resource]{tag_resource} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_untag_resource]{untag_resource} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_update_byte_match_set]{update_byte_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_update_geo_match_set]{update_geo_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_update_ip_set]{update_ip_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_update_rate_based_rule]{update_rate_based_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_update_regex_match_set]{update_regex_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_update_regex_pattern_set]{update_regex_pattern_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_update_rule]{update_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_update_rule_group]{update_rule_group} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_update_size_constraint_set]{update_size_constraint_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_update_sql_injection_match_set]{update_sql_injection_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_update_web_acl]{update_web_acl} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=waf_update_xss_match_set]{update_xss_match_set} \tab This is AWS WAF Classic documentation 
 #' }
 #'
 #' @rdname waf
@@ -12091,87 +12091,87 @@ waf <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=wafregional_associate_web_acl]{associate_web_acl} \tab This is AWS WAF CLASSIC REGIONAL documentation \cr
-#'  \link[=wafregional_create_byte_match_set]{create_byte_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_create_geo_match_set]{create_geo_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_create_ip_set]{create_ip_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_create_rate_based_rule]{create_rate_based_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_create_regex_match_set]{create_regex_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_create_regex_pattern_set]{create_regex_pattern_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_create_rule]{create_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_create_rule_group]{create_rule_group} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_create_size_constraint_set]{create_size_constraint_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_create_sql_injection_match_set]{create_sql_injection_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_create_web_acl]{create_web_acl} \tab This is AWS WAF CLASSIC documentation \cr
+#'  \link[=wafregional_associate_web_acl]{associate_web_acl} \tab This is AWS WAF Classic Regional documentation \cr
+#'  \link[=wafregional_create_byte_match_set]{create_byte_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_create_geo_match_set]{create_geo_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_create_ip_set]{create_ip_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_create_rate_based_rule]{create_rate_based_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_create_regex_match_set]{create_regex_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_create_regex_pattern_set]{create_regex_pattern_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_create_rule]{create_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_create_rule_group]{create_rule_group} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_create_size_constraint_set]{create_size_constraint_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_create_sql_injection_match_set]{create_sql_injection_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_create_web_acl]{create_web_acl} \tab This is AWS WAF Classic documentation \cr
 #'  \link[=wafregional_create_web_acl_migration_stack]{create_web_acl_migration_stack} \tab Creates an AWS CloudFormation WAFV2 template for the specified web ACL in the specified Amazon S3 bucket\cr
-#'  \link[=wafregional_create_xss_match_set]{create_xss_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_byte_match_set]{delete_byte_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_geo_match_set]{delete_geo_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_ip_set]{delete_ip_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_logging_configuration]{delete_logging_configuration} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_permission_policy]{delete_permission_policy} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_rate_based_rule]{delete_rate_based_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_regex_match_set]{delete_regex_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_regex_pattern_set]{delete_regex_pattern_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_rule]{delete_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_rule_group]{delete_rule_group} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_size_constraint_set]{delete_size_constraint_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_sql_injection_match_set]{delete_sql_injection_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_web_acl]{delete_web_acl} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_delete_xss_match_set]{delete_xss_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_disassociate_web_acl]{disassociate_web_acl} \tab This is AWS WAF CLASSIC REGIONAL documentation \cr
-#'  \link[=wafregional_get_byte_match_set]{get_byte_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_change_token]{get_change_token} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_change_token_status]{get_change_token_status} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_geo_match_set]{get_geo_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_ip_set]{get_ip_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_logging_configuration]{get_logging_configuration} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_permission_policy]{get_permission_policy} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_rate_based_rule]{get_rate_based_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_rate_based_rule_managed_keys]{get_rate_based_rule_managed_keys} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_regex_match_set]{get_regex_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_regex_pattern_set]{get_regex_pattern_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_rule]{get_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_rule_group]{get_rule_group} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_sampled_requests]{get_sampled_requests} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_size_constraint_set]{get_size_constraint_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_sql_injection_match_set]{get_sql_injection_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_web_acl]{get_web_acl} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_get_web_acl_for_resource]{get_web_acl_for_resource} \tab This is AWS WAF CLASSIC REGIONAL documentation \cr
-#'  \link[=wafregional_get_xss_match_set]{get_xss_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_activated_rules_in_rule_group]{list_activated_rules_in_rule_group} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_byte_match_sets]{list_byte_match_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_geo_match_sets]{list_geo_match_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_ip_sets]{list_ip_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_logging_configurations]{list_logging_configurations} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_rate_based_rules]{list_rate_based_rules} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_regex_match_sets]{list_regex_match_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_regex_pattern_sets]{list_regex_pattern_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_resources_for_web_acl]{list_resources_for_web_acl} \tab This is AWS WAF CLASSIC REGIONAL documentation \cr
-#'  \link[=wafregional_list_rule_groups]{list_rule_groups} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_rules]{list_rules} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_size_constraint_sets]{list_size_constraint_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_sql_injection_match_sets]{list_sql_injection_match_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_subscribed_rule_groups]{list_subscribed_rule_groups} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_tags_for_resource]{list_tags_for_resource} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_web_ac_ls]{list_web_ac_ls} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_list_xss_match_sets]{list_xss_match_sets} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_put_logging_configuration]{put_logging_configuration} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_put_permission_policy]{put_permission_policy} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_tag_resource]{tag_resource} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_untag_resource]{untag_resource} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_update_byte_match_set]{update_byte_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_update_geo_match_set]{update_geo_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_update_ip_set]{update_ip_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_update_rate_based_rule]{update_rate_based_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_update_regex_match_set]{update_regex_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_update_regex_pattern_set]{update_regex_pattern_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_update_rule]{update_rule} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_update_rule_group]{update_rule_group} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_update_size_constraint_set]{update_size_constraint_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_update_sql_injection_match_set]{update_sql_injection_match_set} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_update_web_acl]{update_web_acl} \tab This is AWS WAF CLASSIC documentation \cr
-#'  \link[=wafregional_update_xss_match_set]{update_xss_match_set} \tab This is AWS WAF CLASSIC documentation 
+#'  \link[=wafregional_create_xss_match_set]{create_xss_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_byte_match_set]{delete_byte_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_geo_match_set]{delete_geo_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_ip_set]{delete_ip_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_logging_configuration]{delete_logging_configuration} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_permission_policy]{delete_permission_policy} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_rate_based_rule]{delete_rate_based_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_regex_match_set]{delete_regex_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_regex_pattern_set]{delete_regex_pattern_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_rule]{delete_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_rule_group]{delete_rule_group} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_size_constraint_set]{delete_size_constraint_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_sql_injection_match_set]{delete_sql_injection_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_web_acl]{delete_web_acl} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_delete_xss_match_set]{delete_xss_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_disassociate_web_acl]{disassociate_web_acl} \tab This is AWS WAF Classic Regional documentation \cr
+#'  \link[=wafregional_get_byte_match_set]{get_byte_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_change_token]{get_change_token} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_change_token_status]{get_change_token_status} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_geo_match_set]{get_geo_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_ip_set]{get_ip_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_logging_configuration]{get_logging_configuration} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_permission_policy]{get_permission_policy} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_rate_based_rule]{get_rate_based_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_rate_based_rule_managed_keys]{get_rate_based_rule_managed_keys} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_regex_match_set]{get_regex_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_regex_pattern_set]{get_regex_pattern_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_rule]{get_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_rule_group]{get_rule_group} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_sampled_requests]{get_sampled_requests} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_size_constraint_set]{get_size_constraint_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_sql_injection_match_set]{get_sql_injection_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_web_acl]{get_web_acl} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_get_web_acl_for_resource]{get_web_acl_for_resource} \tab This is AWS WAF Classic Regional documentation \cr
+#'  \link[=wafregional_get_xss_match_set]{get_xss_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_activated_rules_in_rule_group]{list_activated_rules_in_rule_group} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_byte_match_sets]{list_byte_match_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_geo_match_sets]{list_geo_match_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_ip_sets]{list_ip_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_logging_configurations]{list_logging_configurations} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_rate_based_rules]{list_rate_based_rules} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_regex_match_sets]{list_regex_match_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_regex_pattern_sets]{list_regex_pattern_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_resources_for_web_acl]{list_resources_for_web_acl} \tab This is AWS WAF Classic Regional documentation \cr
+#'  \link[=wafregional_list_rule_groups]{list_rule_groups} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_rules]{list_rules} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_size_constraint_sets]{list_size_constraint_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_sql_injection_match_sets]{list_sql_injection_match_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_subscribed_rule_groups]{list_subscribed_rule_groups} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_tags_for_resource]{list_tags_for_resource} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_web_ac_ls]{list_web_ac_ls} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_list_xss_match_sets]{list_xss_match_sets} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_put_logging_configuration]{put_logging_configuration} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_put_permission_policy]{put_permission_policy} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_tag_resource]{tag_resource} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_untag_resource]{untag_resource} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_update_byte_match_set]{update_byte_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_update_geo_match_set]{update_geo_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_update_ip_set]{update_ip_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_update_rate_based_rule]{update_rate_based_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_update_regex_match_set]{update_regex_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_update_regex_pattern_set]{update_regex_pattern_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_update_rule]{update_rule} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_update_rule_group]{update_rule_group} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_update_size_constraint_set]{update_size_constraint_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_update_sql_injection_match_set]{update_sql_injection_match_set} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_update_web_acl]{update_web_acl} \tab This is AWS WAF Classic documentation \cr
+#'  \link[=wafregional_update_xss_match_set]{update_xss_match_set} \tab This is AWS WAF Classic documentation 
 #' }
 #'
 #' @rdname wafregional
@@ -12260,7 +12260,7 @@ wafregional <- function(config = list()) {
 #'  \link[=eventbridge_list_targets_by_rule]{list_targets_by_rule} \tab Lists the targets assigned to the specified rule \cr
 #'  \link[=eventbridge_put_events]{put_events} \tab Sends custom events to Amazon EventBridge so that they can be matched to rules \cr
 #'  \link[=eventbridge_put_partner_events]{put_partner_events} \tab This is used by SaaS partners to write events to a customer's partner event bus \cr
-#'  \link[=eventbridge_put_permission]{put_permission} \tab Running PutPermission permits the specified AWS account or AWS organization to put events to the specified _event bus_ \cr
+#'  \link[=eventbridge_put_permission]{put_permission} \tab Running PutPermission permits the specified AWS account or AWS organization to put events to the specified event bus \cr
 #'  \link[=eventbridge_put_rule]{put_rule} \tab Creates or updates the specified rule \cr
 #'  \link[=eventbridge_put_targets]{put_targets} \tab Adds the specified targets to the specified rule, or updates the targets if they are already associated with the rule \cr
 #'  \link[=eventbridge_remove_permission]{remove_permission} \tab Revokes the permission of another AWS account to be able to put events to the specified event bus \cr
@@ -12630,7 +12630,7 @@ sqs <- function(config = list()) {
 #'
 #' @description
 #' The Amazon Simple Workflow Service (Amazon SWF) makes it easy to build
-#' applications that use Amazon\'s cloud to coordinate work across
+#' applications that use Amazon's cloud to coordinate work across
 #' distributed components. In Amazon SWF, a *task* represents a logical
 #' unit of work that is performed by a component of your workflow.
 #' Coordinating tasks in a workflow involves managing intertask
@@ -12681,13 +12681,13 @@ sqs <- function(config = list()) {
 #'  \link[=swf_count_open_workflow_executions]{count_open_workflow_executions} \tab Returns the number of open workflow executions within the given domain that meet the specified filtering criteria \cr
 #'  \link[=swf_count_pending_activity_tasks]{count_pending_activity_tasks} \tab Returns the estimated number of activity tasks in the specified task list \cr
 #'  \link[=swf_count_pending_decision_tasks]{count_pending_decision_tasks} \tab Returns the estimated number of decision tasks in the specified task list \cr
-#'  \link[=swf_deprecate_activity_type]{deprecate_activity_type} \tab Deprecates the specified _activity type_ \cr
+#'  \link[=swf_deprecate_activity_type]{deprecate_activity_type} \tab Deprecates the specified activity type \cr
 #'  \link[=swf_deprecate_domain]{deprecate_domain} \tab Deprecates the specified domain \cr
-#'  \link[=swf_deprecate_workflow_type]{deprecate_workflow_type} \tab Deprecates the specified _workflow type_ \cr
+#'  \link[=swf_deprecate_workflow_type]{deprecate_workflow_type} \tab Deprecates the specified workflow type \cr
 #'  \link[=swf_describe_activity_type]{describe_activity_type} \tab Returns information about the specified activity type \cr
 #'  \link[=swf_describe_domain]{describe_domain} \tab Returns information about the specified domain, including description and status \cr
 #'  \link[=swf_describe_workflow_execution]{describe_workflow_execution} \tab Returns information about the specified workflow execution including its type and some statistics \cr
-#'  \link[=swf_describe_workflow_type]{describe_workflow_type} \tab Returns information about the specified _workflow type_ \cr
+#'  \link[=swf_describe_workflow_type]{describe_workflow_type} \tab Returns information about the specified workflow type \cr
 #'  \link[=swf_get_workflow_execution_history]{get_workflow_execution_history} \tab Returns the history of the specified workflow execution \cr
 #'  \link[=swf_list_activity_types]{list_activity_types} \tab Returns information about all activities registered in the specified domain that match the specified name and registration status \cr
 #'  \link[=swf_list_closed_workflow_executions]{list_closed_workflow_executions} \tab Returns a list of closed workflow executions in the specified domain that meet the filtering criteria \cr
@@ -12698,9 +12698,9 @@ sqs <- function(config = list()) {
 #'  \link[=swf_poll_for_activity_task]{poll_for_activity_task} \tab Used by workers to get an ActivityTask from the specified activity taskList \cr
 #'  \link[=swf_poll_for_decision_task]{poll_for_decision_task} \tab Used by deciders to get a DecisionTask from the specified decision taskList \cr
 #'  \link[=swf_record_activity_task_heartbeat]{record_activity_task_heartbeat} \tab Used by activity workers to report to the service that the ActivityTask represented by the specified taskToken is still making progress \cr
-#'  \link[=swf_register_activity_type]{register_activity_type} \tab Registers a new _activity type_ along with its configuration settings in the specified domain \cr
+#'  \link[=swf_register_activity_type]{register_activity_type} \tab Registers a new activity type along with its configuration settings in the specified domain \cr
 #'  \link[=swf_register_domain]{register_domain} \tab Registers a new domain \cr
-#'  \link[=swf_register_workflow_type]{register_workflow_type} \tab Registers a new _workflow type_ and its configuration settings in the specified domain \cr
+#'  \link[=swf_register_workflow_type]{register_workflow_type} \tab Registers a new workflow type and its configuration settings in the specified domain \cr
 #'  \link[=swf_request_cancel_workflow_execution]{request_cancel_workflow_execution} \tab Records a WorkflowExecutionCancelRequested event in the currently running workflow execution identified by the given domain, workflowId, and runId \cr
 #'  \link[=swf_respond_activity_task_canceled]{respond_activity_task_canceled} \tab Used by workers to tell the service that the ActivityTask identified by the taskToken was successfully canceled \cr
 #'  \link[=swf_respond_activity_task_completed]{respond_activity_task_completed} \tab Used by workers to tell the service that the ActivityTask identified by the taskToken completed successfully with a result (if provided) \cr
@@ -12710,9 +12710,9 @@ sqs <- function(config = list()) {
 #'  \link[=swf_start_workflow_execution]{start_workflow_execution} \tab Starts an execution of the workflow type in the specified domain using the provided workflowId and input data \cr
 #'  \link[=swf_tag_resource]{tag_resource} \tab Add a tag to a Amazon SWF domain \cr
 #'  \link[=swf_terminate_workflow_execution]{terminate_workflow_execution} \tab Records a WorkflowExecutionTerminated event and forces closure of the workflow execution identified by the given domain, runId, and workflowId \cr
-#'  \link[=swf_undeprecate_activity_type]{undeprecate_activity_type} \tab Undeprecates a previously deprecated _activity type_ \cr
+#'  \link[=swf_undeprecate_activity_type]{undeprecate_activity_type} \tab Undeprecates a previously deprecated activity type \cr
 #'  \link[=swf_undeprecate_domain]{undeprecate_domain} \tab Undeprecates a previously deprecated domain \cr
-#'  \link[=swf_undeprecate_workflow_type]{undeprecate_workflow_type} \tab Undeprecates a previously deprecated _workflow type_ \cr
+#'  \link[=swf_undeprecate_workflow_type]{undeprecate_workflow_type} \tab Undeprecates a previously deprecated workflow type \cr
 #'  \link[=swf_untag_resource]{untag_resource} \tab Remove a tag from a Amazon SWF domain 
 #' }
 #'
@@ -12735,7 +12735,7 @@ swf <- function(config = list()) {
 #' -   How close your plan is to your budgeted amount or to the free tier
 #'     limits
 #' 
-#' -   Your usage-to-date, including how much you\'ve used of your Reserved
+#' -   Your usage-to-date, including how much you've used of your Reserved
 #'     Instances (RIs)
 #' 
 #' -   Your current estimated charges from AWS, and how much your predicted
@@ -13110,7 +13110,7 @@ marketplaceentitlementservice <- function(config = list()) {
 #' -   Paid container software products sold through AWS Marketplace must
 #'     integrate with the AWS Marketplace Metering Service and call the
 #'     RegisterUsage operation for software entitlement and metering. Free
-#'     and BYOL products for Amazon ECS or Amazon EKS aren\'t required to
+#'     and BYOL products for Amazon ECS or Amazon EKS aren't required to
 #'     call RegisterUsage, but you can do so if you want to receive usage
 #'     data in your seller reports. For more information on using the
 #'     RegisterUsage operation, see [Container-Based
@@ -13187,7 +13187,7 @@ marketplacemetering <- function(config = list()) {
 #' and attribute names, you can use `GetAttributeValues` to see what values
 #' are available for an attribute. With the service code and an attribute
 #' name and value, you can use `GetProducts` to find specific products that
-#' you\'re interested in, such as an `AmazonEC2` instance, with a
+#' you're interested in, such as an `AmazonEC2` instance, with a
 #' `Provisioned IOPS` `volumeType`.
 #' 
 #' Service Endpoint
@@ -13479,7 +13479,7 @@ connect <- function(config = list()) {
 #'  \link[=pinpoint_update_segment]{update_segment} \tab Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application\cr
 #'  \link[=pinpoint_update_sms_channel]{update_sms_channel} \tab Enables the SMS channel for an application or updates the status and settings of the SMS channel for an application \cr
 #'  \link[=pinpoint_update_sms_template]{update_sms_template} \tab Updates an existing message template for messages that are sent through the SMS channel \cr
-#'  \link[=pinpoint_update_template_active_version]{update_template_active_version} \tab Changes the status of a specific version of a message template to _active_ \cr
+#'  \link[=pinpoint_update_template_active_version]{update_template_active_version} \tab Changes the status of a specific version of a message template to active \cr
 #'  \link[=pinpoint_update_voice_channel]{update_voice_channel} \tab Enables the voice channel for an application or updates the status and settings of the voice channel for an application \cr
 #'  \link[=pinpoint_update_voice_template]{update_voice_template} \tab Updates an existing message template for messages that are sent through the voice channel 
 #' }
@@ -13504,7 +13504,7 @@ pinpoint <- function(config = list()) {
 #' provides programmatic access to options that are unique to the email
 #' channel and supplement the options provided by the Amazon Pinpoint API.
 #' 
-#' If you\'re new to Amazon Pinpoint, you might find it helpful to also
+#' If you're new to Amazon Pinpoint, you might find it helpful to also
 #' review the [Amazon Pinpoint Developer
 #' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
 #' The *Amazon Pinpoint Developer Guide* provides tutorials, code samples,

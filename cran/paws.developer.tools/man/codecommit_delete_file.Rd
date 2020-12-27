@@ -34,7 +34,7 @@ Commit messages are limited to 256 KB. If no message is specified, a
 default message is used.}
 
 \item{name}{The name of the author of the commit that deletes the file. If no name
-is specified, the user\'s ARN is used as the author name and committer
+is specified, the user's ARN is used as the author name and committer
 name.}
 
 \item{email}{The email address for the commit that deletes the file. If no email

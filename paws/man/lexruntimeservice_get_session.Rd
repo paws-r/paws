@@ -13,7 +13,7 @@ lexruntimeservice_get_session(botName, botAlias, userId,
 \item{botAlias}{[required] The alias in use for the bot that contains the session data.}
 
 \item{userId}{[required] The ID of the client application user. Amazon Lex uses this to identify
-a user\'s conversation with your bot.}
+a user's conversation with your bot.}
 
 \item{checkpointLabelFilter}{A string used to filter the intents returned in the
 \code{recentIntentSummaryView} structure.

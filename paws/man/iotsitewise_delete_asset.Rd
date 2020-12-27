@@ -10,16 +10,16 @@ iotsitewise_delete_asset(assetId, clientToken)
 \item{assetId}{[required] The ID of the asset to delete.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{
-Deletes an asset. This action can\'t be undone. For more information,
-see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html}{Deleting Assets and Models}
+Deletes an asset. This action can't be undone. For more information, see
+\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html}{Deleting Assets and Models}
 in the \emph{AWS IoT SiteWise User Guide}.
 }
 \details{
-You can\'t delete an asset that\'s associated to another asset. For more
+You can't delete an asset that's associated to another asset. For more
 information, see
 \href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DisassociateAssets.html}{DisassociateAssets}.
 }

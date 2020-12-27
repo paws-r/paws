@@ -42,7 +42,7 @@ data, using a period of 5 seconds, you receive data timestamped between
 15:02:15 and 15:07:15.
 
 For better performance, specify \code{StartTime} and \code{EndTime} values that
-align with the value of the metric\'s \code{Period} and sync up with the
+align with the value of the metric's \code{Period} and sync up with the
 beginning and end of an hour. For example, if the \code{Period} of a metric
 is 5 minutes, specifying 12:05 or 12:30 as \code{StartTime} can get a faster
 response from CloudWatch than setting 12:07 or 12:29 as the \code{StartTime}.}
@@ -53,7 +53,7 @@ The value specified is exclusive; results include data points up to the
 specified time stamp.
 
 For better performance, specify \code{StartTime} and \code{EndTime} values that
-align with the value of the metric\'s \code{Period} and sync up with the
+align with the value of the metric's \code{Period} and sync up with the
 beginning and end of an hour. For example, if the \code{Period} of a metric
 is 5 minutes, specifying 12:05 or 12:30 as \code{EndTime} can get a faster
 response from CloudWatch than setting 12:07 or 12:29 as the \code{EndTime}.}

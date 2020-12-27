@@ -39,7 +39,7 @@ If a volume has an AWS Marketplace product code:
 instance.
 \item You must be subscribed to the product.
 \item The instance type and operating system of the instance must support
-the product. For example, you can\'t detach a volume from a Windows
+the product. For example, you can't detach a volume from a Windows
 instance and attach it to a Linux instance.
 }
 

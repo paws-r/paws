@@ -16,7 +16,7 @@ iam_simulate_custom_policy(PolicyInputList,
 is specified as a string containing the complete, valid JSON text of an
 IAM policy. Do not include any resource-based policies in this
 parameter. Any resource-based policy must be submitted with the
-\code{ResourcePolicy} parameter. The policies cannot be \"scope-down\"
+\code{ResourcePolicy} parameter. The policies cannot be "scope-down"
 policies, such as you could include in a call to
 \href{https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html}{GetFederationToken}
 or one of the
@@ -111,8 +111,8 @@ account with the 112233445566 ID, use the following ARN:
 
 \item{CallerArn}{The ARN of the IAM user that you want to use as the simulated caller of
 the API operations. \code{CallerArn} is required if you include a
-\code{ResourcePolicy} so that the policy\'s \code{Principal} element has a value
-to use in evaluating the policy.
+\code{ResourcePolicy} so that the policy's \code{Principal} element has a value to
+use in evaluating the policy.
 
 You can specify only the ARN of an IAM user. You cannot specify the ARN
 of an assumed role, federated user, or a service principal.}
@@ -176,8 +176,8 @@ indicate where the next call should start.}
 \description{
 Simulate how a set of IAM policies and optionally a resource-based
 policy works with a list of API operations and AWS resources to
-determine the policies\' effective permissions. The policies are
-provided as strings.
+determine the policies' effective permissions. The policies are provided
+as strings.
 }
 \details{
 The simulation does not perform the API operations; it only checks the

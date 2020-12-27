@@ -15,8 +15,8 @@ ec2_modify_capacity_reservation(CapacityReservationId, InstanceCount,
 
 \item{EndDate}{The date and time at which the Capacity Reservation expires. When a
 Capacity Reservation expires, the reserved capacity is released and you
-can no longer launch instances into it. The Capacity Reservation\'s
-state changes to \code{expired} when it reaches its end date and time.
+can no longer launch instances into it. The Capacity Reservation's state
+changes to \code{expired} when it reaches its end date and time.
 
 The Capacity Reservation is cancelled within an hour from the specified
 time. For example, if you specify 5/31/2019, 13:30:55, the Capacity
@@ -43,8 +43,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Modifies a Capacity Reservation\'s capacity and the conditions under
-which it is to be released. You cannot change a Capacity Reservation\'s
+Modifies a Capacity Reservation's capacity and the conditions under
+which it is to be released. You cannot change a Capacity Reservation's
 instance type, EBS optimization, instance store settings, platform,
 Availability Zone, or instance eligibility. If you need to modify any of
 these attributes, we recommend that you cancel the Capacity Reservation,

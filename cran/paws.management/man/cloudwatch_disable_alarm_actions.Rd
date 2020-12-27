@@ -10,7 +10,7 @@ cloudwatch_disable_alarm_actions(AlarmNames)
 \item{AlarmNames}{[required] The names of the alarms.}
 }
 \description{
-Disables the actions for the specified alarms. When an alarm\'s actions
+Disables the actions for the specified alarms. When an alarm's actions
 are disabled, the alarm actions do not execute when the alarm state
 changes.
 }

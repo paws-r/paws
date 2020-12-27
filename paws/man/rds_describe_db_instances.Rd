@@ -10,7 +10,7 @@ rds_describe_db_instances(DBInstanceIdentifier, Filters, MaxRecords,
 \arguments{
 \item{DBInstanceIdentifier}{The user-supplied instance identifier. If this parameter is specified,
 information from only the specific DB instance is returned. This
-parameter isn\'t case-sensitive.
+parameter isn't case-sensitive.
 
 Constraints:
 \itemize{

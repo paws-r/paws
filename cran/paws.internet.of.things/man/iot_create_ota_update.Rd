@@ -26,7 +26,7 @@ update (SNAPSHOT). If continuous, the update may also be run on a thing
 when a change is detected in a target. For example, an update will run
 on a thing when the thing is added to a target group, even after the
 update was completed by all things originally in the group. Valid
-values: CONTINUOUS \\| SNAPSHOT.}
+values: CONTINUOUS | SNAPSHOT.}
 
 \item{awsJobExecutionsRolloutConfig}{Configuration for the rollout of OTA updates.}
 

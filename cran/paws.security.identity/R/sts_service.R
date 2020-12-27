@@ -24,9 +24,9 @@ NULL
 #' IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html)
 #' in the *IAM User Guide*.
 #' 
-#' If you\'re new to AWS and need additional technical information about a
-#' specific AWS product, you can find the product\'s technical
-#' documentation at <http://aws.amazon.com/documentation/>.
+#' If you're new to AWS and need additional technical information about a
+#' specific AWS product, you can find the product's technical documentation
+#' at <http://aws.amazon.com/documentation/>.
 #' 
 #' **Endpoints**
 #' 

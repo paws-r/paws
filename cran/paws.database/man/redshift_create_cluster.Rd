@@ -55,7 +55,7 @@ Example: \code{myexamplecluster}}
 \item \code{multi-node}, the \strong{NumberOfNodes} parameter is required.
 }
 
-Valid Values: \code{multi-node} \\| \code{single-node}
+Valid Values: \code{multi-node} | \code{single-node}
 
 Default: \code{multi-node}}
 
@@ -63,16 +63,15 @@ Default: \code{multi-node}}
 node types, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes}{Working with Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
-Valid Values: \code{ds2.xlarge} \\| \code{ds2.8xlarge} \\| \code{dc1.large} \\|
-\code{dc1.8xlarge} \\| \code{dc2.large} \\| \code{dc2.8xlarge} \\| \code{ra3.4xlarge} \\|
-\code{ra3.16xlarge}}
+Valid Values: \code{ds2.xlarge} | \code{ds2.8xlarge} | \code{dc1.large} | \code{dc1.8xlarge}
+| \code{dc2.large} | \code{dc2.8xlarge} | \code{ra3.4xlarge} | \code{ra3.16xlarge}}
 
 \item{MasterUsername}{[required] The user name associated with the master user account for the cluster
 that is being created.
 
 Constraints:
 \itemize{
-\item Must be 1 - 128 alphanumeric characters. The user name can\'t be
+\item Must be 1 - 128 alphanumeric characters. The user name can't be
 \code{PUBLIC}.
 \item First character must be a letter.
 \item Cannot be a reserved word. A list of reserved words can be found in
@@ -89,8 +88,8 @@ Constraints:
 \item Must contain at least one uppercase letter.
 \item Must contain at least one lowercase letter.
 \item Must contain one number.
-\item Can be any printable ASCII character (ASCII code 33 to 126) except
-\' (single quote), \" (double quote), \\, /, @, or space.
+\item Can be any printable ASCII character (ASCII code 33 to 126) except '
+(single quote), " (double quote), \\, /, @, or space.
 }}
 
 \item{ClusterSecurityGroups}{A list of security groups to be associated with this cluster.
@@ -130,7 +129,7 @@ time per region, occurring on a random day of the week. For more
 information about the time blocks for each region, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows}{Maintenance Windows}
 in Amazon Redshift Cluster Management Guide.
 
-Valid Days: Mon \\| Tue \\| Wed \\| Thu \\| Fri \\| Sat \\| Sun
+Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 
 Constraints: Minimum 30-minute window.}
 
@@ -156,7 +155,7 @@ Default: \code{1}
 Constraints: Must be a value from 0 to 35.}
 
 \item{ManualSnapshotRetentionPeriod}{The default number of days to retain a manual snapshot. If the value is
--1, the snapshot is retained indefinitely. This setting doesn\'t change
+-1, the snapshot is retained indefinitely. This setting doesn't change
 the retention period of existing snapshots.
 
 The value must be either -1 or an integer between 1 and 3,653.}
@@ -197,9 +196,9 @@ For information about determining how many nodes you need, go to
 \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes}{Working with Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
-If you don\'t specify this parameter, you get a single-node cluster.
-When requesting a multi-node cluster, you must specify the number of
-nodes that you want in the cluster.
+If you don't specify this parameter, you get a single-node cluster. When
+requesting a multi-node cluster, you must specify the number of nodes
+that you want in the cluster.
 
 Default: \code{1}
 
@@ -249,7 +248,7 @@ to 10 IAM roles in a single request.
 A cluster can have up to 10 IAM roles associated with it at any time.}
 
 \item{MaintenanceTrackName}{An optional parameter for the name of the maintenance track for the
-cluster. If you don\'t provide a maintenance track name, the cluster is
+cluster. If you don't provide a maintenance track name, the cluster is
 assigned to the \code{current} track.}
 
 \item{SnapshotScheduleIdentifier}{A unique identifier for the snapshot schedule.}

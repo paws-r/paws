@@ -743,13 +743,13 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
 #' remount the disk to ensure a consistent and complete snapshot. You may
 #' remount and use your disk while the snapshot status is pending.
 #' 
-#' You can also use this operation to create a snapshot of an instance\'s
+#' You can also use this operation to create a snapshot of an instance's
 #' system volume. You might want to do this, for example, to recover data
 #' from the system volume of a botched instance or to create a backup of
 #' the system volume like you would for a block storage disk. To create a
 #' snapshot of a system volume, just define the `instance name` parameter
 #' when issuing the snapshot command, and a snapshot of the defined
-#' instance\'s system volume will be created. After the snapshot is
+#' instance's system volume will be created. After the snapshot is
 #' available, you can create a block storage disk from the snapshot and
 #' attach it to a running instance to access the data on the disk.
 #' 
@@ -770,7 +770,7 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
 #' based on the source disk.
 #' @param instanceName The unique name of the source instance (e.g.,
 #' `Amazon_Linux-512MB-Virginia-1`). When this is defined, a snapshot of
-#' the instance\'s system volume is created.
+#' the instance's system volume is created.
 #' 
 #' This parameter cannot be defined together with the `disk name`
 #' parameter. The `instance name` and `disk name` parameters are mutually
@@ -928,7 +928,7 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
 }
 .lightsail$operations$create_domain_entry <- lightsail_create_domain_entry
 
-#' Creates a snapshot of a specific virtual private server, or _instance_
+#' Creates a snapshot of a specific virtual private server, or instance
 #'
 #' Creates a snapshot of a specific virtual private server, or *instance*.
 #' You can use a snapshot to create a new instance that is based on that
@@ -1309,10 +1309,10 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #'   certificateAlternativeNames, tags)
 #'
 #' @param loadBalancerName &#91;required&#93; The name of your load balancer.
-#' @param instancePort &#91;required&#93; The instance port where you\'re creating your load balancer.
+#' @param instancePort &#91;required&#93; The instance port where you're creating your load balancer.
 #' @param healthCheckPath The path you provided to perform the load balancer health check. If you
-#' didn\'t specify a health check path, Lightsail uses the root path of
-#' your website (e.g., `"/"`).
+#' didn't specify a health check path, Lightsail uses the root path of your
+#' website (e.g., `"/"`).
 #' 
 #' You may want to specify a custom health check path other than the root
 #' of your application if your home page loads slowly or has a lot of media
@@ -1513,7 +1513,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #'     [MySQL 5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html)
 #'     respectively.
 #' @param masterUserPassword The password for the master user of your new database. The password can
-#' include any printable ASCII character except \"/\", \"\"\", or \"@@\".
+#' include any printable ASCII character except "/", """, or "@@".
 #' 
 #' Constraints: Must contain 8 to 41 characters.
 #' @param preferredBackupWindow The daily time range during which automated backups are created for your
@@ -2160,7 +2160,7 @@ lightsail_delete_instance <- function(instanceName, forceDeleteAddOns = NULL) {
 }
 .lightsail$operations$delete_instance <- lightsail_delete_instance
 
-#' Deletes a specific snapshot of a virtual private server (or _instance_)
+#' Deletes a specific snapshot of a virtual private server (or instance)
 #'
 #' Deletes a specific snapshot of a virtual private server (or *instance*).
 #' 
@@ -2667,7 +2667,7 @@ lightsail_disable_add_on <- function(addOnType, resourceName) {
 
 #' Downloads the default SSH key pair from the user's account
 #'
-#' Downloads the default SSH key pair from the user\'s account.
+#' Downloads the default SSH key pair from the user's account.
 #'
 #' @usage
 #' lightsail_download_default_key_pair()
@@ -2936,7 +2936,7 @@ lightsail_get_auto_snapshots <- function(resourceName) {
 }
 .lightsail$operations$get_auto_snapshots <- lightsail_get_auto_snapshots
 
-#' Returns the list of available instance images, or _blueprints_
+#' Returns the list of available instance images, or blueprints
 #'
 #' Returns the list of available instance images, or *blueprints*. You can
 #' use a blueprint to create a new instance already running a specific
@@ -3325,7 +3325,7 @@ lightsail_get_domain <- function(domainName) {
 
 #' Returns a list of all domains in the user's account
 #'
-#' Returns a list of all domains in the user\'s account.
+#' Returns a list of all domains in the user's account.
 #'
 #' @usage
 #' lightsail_get_domains(pageToken)
@@ -3449,7 +3449,7 @@ lightsail_get_instance <- function(instanceName) {
 .lightsail$operations$get_instance <- lightsail_get_instance
 
 #' Returns temporary SSH keys you can use to connect to a specific virtual
-#' private server, or _instance_
+#' private server, or instance
 #'
 #' Returns temporary SSH keys you can use to connect to a specific virtual
 #' private server, or *instance*.
@@ -3516,7 +3516,7 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #' -   **`BurstCapacityPercentage`** - The percentage of CPU performance
 #'     available for your instance to burst above its baseline. Your
 #'     instance continuously accrues and consumes burst capacity. Burst
-#'     capacity stops accruing when your instance\'s
+#'     capacity stops accruing when your instance's
 #'     `BurstCapacityPercentage` reaches 100%. For more information, see
 #'     [Viewing instance burst capacity in Amazon
 #'     Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-viewing-instance-burst-capacity).
@@ -3529,7 +3529,7 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #' -   **`BurstCapacityTime`** - The available amount of time for your
 #'     instance to burst at 100% CPU utilization. Your instance
 #'     continuously accrues and consumes burst capacity. Burst capacity
-#'     time stops accruing when your instance\'s `BurstCapacityPercentage`
+#'     time stops accruing when your instance's `BurstCapacityPercentage`
 #'     metric reaches 100%.
 #' 
 #'     Burst capacity time is consumed at the full rate only when your
@@ -3759,7 +3759,7 @@ lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
 
 #' Returns all instance snapshots for the user's account
 #'
-#' Returns all instance snapshots for the user\'s account.
+#' Returns all instance snapshots for the user's account.
 #'
 #' @usage
 #' lightsail_get_instance_snapshots(pageToken)
@@ -3835,7 +3835,7 @@ lightsail_get_instance_state <- function(instanceName) {
 .lightsail$operations$get_instance_state <- lightsail_get_instance_state
 
 #' Returns information about all Amazon Lightsail virtual private servers,
-#' or _instances_
+#' or instances
 #'
 #' Returns information about all Amazon Lightsail virtual private servers,
 #' or *instances*.
@@ -3914,7 +3914,7 @@ lightsail_get_key_pair <- function(keyPairName) {
 
 #' Returns information about all key pairs in the user's account
 #'
-#' Returns information about all key pairs in the user\'s account.
+#' Returns information about all key pairs in the user's account.
 #'
 #' @usage
 #' lightsail_get_key_pairs(pageToken)
@@ -4413,8 +4413,8 @@ lightsail_get_operations_for_resource <- function(resourceName, pageToken = NULL
 #' @param includeAvailabilityZones A Boolean value indicating whether to also include Availability Zones in
 #' your get regions request. Availability Zones are indicated with a
 #' letter: e.g., `us-east-2a`.
-#' @param includeRelationalDatabaseAvailabilityZones \\>A Boolean value indicating whether to also include Availability Zones
-#' for databases in your get regions request. Availability Zones are
+#' @param includeRelationalDatabaseAvailabilityZones &gt;A Boolean value indicating whether to also include Availability
+#' Zones for databases in your get regions request. Availability Zones are
 #' indicated with a letter (e.g., `us-east-2a`).
 #'
 #' @section Request syntax:
@@ -5165,7 +5165,7 @@ lightsail_get_static_ip <- function(staticIpName) {
 
 #' Returns information about all static IPs in the user's account
 #'
-#' Returns information about all static IPs in the user\'s account.
+#' Returns information about all static IPs in the user's account.
 #'
 #' @usage
 #' lightsail_get_static_ips(pageToken)
@@ -5332,7 +5332,7 @@ lightsail_open_instance_public_ports <- function(portInfo, instanceName) {
 
 #' Tries to peer the Lightsail VPC with the user's default VPC
 #'
-#' Tries to peer the Lightsail VPC with the user\'s default VPC.
+#' Tries to peer the Lightsail VPC with the user's default VPC.
 #'
 #' @usage
 #' lightsail_peer_vpc()
@@ -5422,7 +5422,7 @@ lightsail_peer_vpc <- function() {
 #' operand.
 #' @param threshold &#91;required&#93; The value against which the specified statistic is compared.
 #' @param evaluationPeriods &#91;required&#93; The number of most recent periods over which data is compared to the
-#' specified threshold. If you are setting an \"M out of N\" alarm, this
+#' specified threshold. If you are setting an "M out of N" alarm, this
 #' value (`evaluationPeriods`) is the N.
 #' 
 #' If you are setting an alarm that requires that a number of consecutive
@@ -5436,7 +5436,7 @@ lightsail_peer_vpc <- function() {
 #' You can specify a minimum valuation period of 1 (5 minutes), and a
 #' maximum evaluation period of 288 (24 hours).
 #' @param datapointsToAlarm The number of data points that must be not within the specified
-#' threshold to trigger the alarm. If you are setting an \"M out of N\"
+#' threshold to trigger the alarm. If you are setting an "M out of N"
 #' alarm, this value (`datapointsToAlarm`) is the M.
 #' @param treatMissingData Sets how this alarm will handle missing data points.
 #' 
@@ -5496,11 +5496,11 @@ lightsail_peer_vpc <- function() {
 #'     notification is sent when the alarm switches from an `OK` or `ALARM`
 #'     alarm state to an `INSUFFICIENT_DATA` state.
 #' 
-#' The notification trigger defaults to `ALARM` if you don\'t specify this
+#' The notification trigger defaults to `ALARM` if you don't specify this
 #' parameter.
 #' @param notificationEnabled Indicates whether the alarm is enabled.
 #' 
-#' Notifications are enabled by default if you don\'t specify this
+#' Notifications are enabled by default if you don't specify this
 #' parameter.
 #'
 #' @section Request syntax:
@@ -5729,8 +5729,8 @@ lightsail_release_static_ip <- function(staticIpName) {
 #' Sends a verification request to an email contact method to ensure it's
 #' owned by the requester
 #'
-#' Sends a verification request to an email contact method to ensure it\'s
-#' owned by the requester. SMS contact methods don\'t need to be verified.
+#' Sends a verification request to an email contact method to ensure it's
+#' owned by the requester. SMS contact methods don't need to be verified.
 #' 
 #' A contact method is used to send you notifications about your Amazon
 #' Lightsail resources. You can add one email address and one mobile phone
@@ -6082,7 +6082,7 @@ lightsail_test_alarm <- function(alarmName, state) {
 
 #' Attempts to unpeer the Lightsail VPC from the user's default VPC
 #'
-#' Attempts to unpeer the Lightsail VPC from the user\'s default VPC.
+#' Attempts to unpeer the Lightsail VPC from the user's default VPC.
 #'
 #' @usage
 #' lightsail_unpeer_vpc()
@@ -6270,7 +6270,7 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #' Lightsail.
 #' 
 #' Updates are applied immediately, or in cases where the updates could
-#' result in an outage, are applied during the database\'s predefined
+#' result in an outage, are applied during the database's predefined
 #' maintenance window.
 #' 
 #' The `update relational database` operation supports tag-based access
@@ -6287,7 +6287,7 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database to update.
 #' @param masterUserPassword The password for the master user of your database. The password can
-#' include any printable ASCII character except \"/\", \"\"\", or \"@@\".
+#' include any printable ASCII character except "/", """, or "@@".
 #' 
 #' Constraints: Must contain 8 to 41 characters.
 #' @param rotateMasterUserPassword When `true`, the master user password is changed to a new strong
@@ -6393,7 +6393,7 @@ lightsail_update_relational_database <- function(relationalDatabaseName, masterU
 #' Allows the update of one or more parameters of a database in Amazon
 #' Lightsail.
 #' 
-#' Parameter updates don\'t cause outages; therefore, their application is
+#' Parameter updates don't cause outages; therefore, their application is
 #' not subject to the preferred maintenance window. However, there are two
 #' ways in which parameter updates are applied: `dynamic` or
 #' `pending-reboot`. Parameters marked with a `dynamic` apply type are

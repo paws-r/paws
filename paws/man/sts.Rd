@@ -24,9 +24,9 @@ in \emph{Using IAM}. For information about using security tokens with other
 AWS products, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html}{AWS Services That Work with IAM}
 in the \emph{IAM User Guide}.
 
-If you\'re new to AWS and need additional technical information about a
-specific AWS product, you can find the product\'s technical
-documentation at \url{http://aws.amazon.com/documentation/}.
+If you're new to AWS and need additional technical information about a
+specific AWS product, you can find the product's technical documentation
+at \url{http://aws.amazon.com/documentation/}.
 
 \strong{Endpoints}
 

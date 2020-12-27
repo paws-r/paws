@@ -13,20 +13,20 @@ Default: Describes all your customer gateways.}
 
 \item{Filters}{One or more filters.
 \itemize{
-\item \code{bgp-asn} - The customer gateway\'s Border Gateway Protocol (BGP)
+\item \code{bgp-asn} - The customer gateway's Border Gateway Protocol (BGP)
 Autonomous System Number (ASN).
 \item \code{customer-gateway-id} - The ID of the customer gateway.
-\item \code{ip-address} - The IP address of the customer gateway\'s
+\item \code{ip-address} - The IP address of the customer gateway's
 Internet-routable external interface.
-\item \code{state} - The state of the customer gateway (\code{pending} \\|
-\code{available} \\| \code{deleting} \\| \code{deleted}).
+\item \code{state} - The state of the customer gateway (\code{pending} | \code{available}
+| \code{deleting} | \code{deleted}).
 \item \code{type} - The type of customer gateway. Currently, the only supported
 type is \code{ipsec.1}.
-\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:<key> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value
+as the filter value. For example, to find all resources that have a
+tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
+for the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.

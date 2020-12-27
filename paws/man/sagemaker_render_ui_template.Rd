@@ -21,8 +21,7 @@ See a list of available Human Ui Amazon Resource Names (ARNs) in
 UiConfig.}
 }
 \description{
-Renders the UI template so that you can preview the worker\'s
-experience.
+Renders the UI template so that you can preview the worker's experience.
 }
 \section{Request syntax}{
 \preformatted{svc$render_ui_template(

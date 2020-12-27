@@ -13,7 +13,7 @@ codebuild_update_project(name, description, source, secondarySources,
 \arguments{
 \item{name}{[required] The name of the build project.
 
-You cannot change a build project\'s name.}
+You cannot change a build project's name.}
 
 \item{description}{A new or replacement description of the build project.}
 
@@ -30,12 +30,12 @@ specified, the latest version is used. If specified, it must be one of:
 that corresponds to the version of the source code you want to
 build. If a pull request ID is specified, it must use the format
 \code{pr/pull-request-ID} (for example \code{pr/25}). If a branch name is
-specified, the branch\'s HEAD commit ID is used. If not specified,
-the default branch\'s HEAD commit ID is used.
+specified, the branch's HEAD commit ID is used. If not specified,
+the default branch's HEAD commit ID is used.
 \item For Bitbucket: the commit ID, branch name, or tag name that
 corresponds to the version of the source code you want to build. If
-a branch name is specified, the branch\'s HEAD commit ID is used. If
-not specified, the default branch\'s HEAD commit ID is used.
+a branch name is specified, the branch's HEAD commit ID is used. If
+not specified, the default branch's HEAD commit ID is used.
 \item For Amazon Simple Storage Service (Amazon S3): the version ID of the
 object that represents the build input ZIP file to use.
 }
@@ -79,7 +79,7 @@ You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
 
 You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-available, the CMK\'s alias (using the format
+available, the CMK's alias (using the format
 \verb{alias/<i>alias-name</i> }).}
 
 \item{tags}{An updated list of tag key and value pairs associated with this build
@@ -91,7 +91,7 @@ CodeBuild build project tags.}
 \item{vpcConfig}{VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.}
 
 \item{badgeEnabled}{Set this to true to generate a publicly accessible URL for your
-project\'s build badge.}
+project's build badge.}
 
 \item{logsConfig}{Information about logs for the build project. A project can create logs
 in Amazon CloudWatch Logs, logs in an S3 bucket, or both.}

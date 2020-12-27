@@ -24,7 +24,7 @@ response to continue listing data.}
 want in the response. The default value is 100. The maximum value is
 500.}
 
-\item{locale}{The locale into which you want to translate the exclusion\'s title,
+\item{locale}{The locale into which you want to translate the exclusion's title,
 description, and recommendation.}
 }
 \description{

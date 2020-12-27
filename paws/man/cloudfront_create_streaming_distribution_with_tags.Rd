@@ -8,7 +8,7 @@ cloudfront_create_streaming_distribution_with_tags(
   StreamingDistributionConfigWithTags)
 }
 \arguments{
-\item{StreamingDistributionConfigWithTags}{[required] The streaming distribution\'s configuration information.}
+\item{StreamingDistributionConfigWithTags}{[required] The streaming distribution's configuration information.}
 }
 \description{
 Create a new streaming distribution with tags.

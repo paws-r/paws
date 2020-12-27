@@ -35,10 +35,10 @@ full certificate chain.
 \item The certificate must be a valid X509 certificate, or a certificate
 chain in PEM format.
 \item The certificate must be valid at the time of upload. A certificate
-can\'t be used before its validity period begins (the certificate\'s
-\code{NotBefore} date), or after it expires (the certificate\'s
-\code{NotAfter} date).
-\item The certificate's common name or subject alternative names (SANs),
+can't be used before its validity period begins (the certificate's
+\code{NotBefore} date), or after it expires (the certificate's \code{NotAfter}
+date).
+\item The certificate’s common name or subject alternative names (SANs),
 if present, must match the value of \code{CustomDomain}.
 \item The certificate must match the value of \code{CustomPrivateKey}.
 }}
@@ -73,7 +73,7 @@ and returned in the response.
 user in the Chef Automate web-based dashboard. The password length
 is a minimum of eight characters, and a maximum of 32. The password
 can contain letters, numbers, and special characters
-(!/@\\#\\$\%\\^&+=\\_). The password must contain at least one lower case
+(!/@\\#$\%^&+=\\_). The password must contain at least one lower case
 letter, one upper case letter, one number, and one special
 character. When no CHEF\\_AUTOMATE\\_ADMIN\\_PASSWORD is set, one is
 generated and returned in the response.
@@ -85,7 +85,7 @@ generated and returned in the response.
 a password must use ASCII characters.
 \item \code{PUPPET_R10K_REMOTE}: The r10k remote is the URL of your control
 repository (for example,
-ssh://git\\@your.git-repo.com:user/control-repo.git). Specifying an
+ssh://git@your.git-repo.com:user/control-repo.git). Specifying an
 r10k remote opens TCP port 8170.
 \item \code{PUPPET_R10K_PRIVATE_KEY}: If you are using a private Git
 repository, add PUPPET\\_R10K\\_PRIVATE\\_KEY to specify a PEM-encoded
@@ -161,12 +161,12 @@ role and instance profile that you need.}
 \item{SubnetIds}{The IDs of subnets in which to launch the server EC2 instance.
 
 Amazon EC2-Classic customers: This field is required. All servers must
-run within a VPC. The VPC must have \"Auto Assign Public IP\" enabled.
+run within a VPC. The VPC must have "Auto Assign Public IP" enabled.
 
 EC2-VPC customers: This field is optional. If you do not specify subnet
 IDs, your EC2 instances are created in a default subnet that is selected
-by Amazon EC2. If you specify subnet IDs, the VPC must have \"Auto
-Assign Public IP\" enabled.
+by Amazon EC2. If you specify subnet IDs, the VPC must have "Auto Assign
+Public IP" enabled.
 
 For more information about supported Amazon EC2 platforms, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}.}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_untag_resource}
 \alias{waf_untag_resource}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_untag_resource(ResourceARN, TagKeys)
 }

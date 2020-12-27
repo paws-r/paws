@@ -11,7 +11,7 @@ iot_describe_job_execution(jobId, thingName, executionNumber)
 
 \item{thingName}{[required] The name of the thing on which the job execution is running.}
 
-\item{executionNumber}{A string (consisting of the digits \"0\" through \"9\" which is used to
+\item{executionNumber}{A string (consisting of the digits "0" through "9" which is used to
 specify a particular job execution on a particular device.}
 }
 \description{

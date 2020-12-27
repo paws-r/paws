@@ -10,7 +10,7 @@ acmpca_delete_permission(CertificateAuthorityArn, Principal,
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Number (ARN) of the private CA that issued the
-permissions. You can find the CA\'s ARN by calling the
+permissions. You can find the CA's ARN by calling the
 ListCertificateAuthorities action. This must have the following form:
 
 \verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}

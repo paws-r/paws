@@ -13,8 +13,8 @@ rekognition_describe_project_versions(ProjectArn, VersionNames,
 you want to describe.}
 
 \item{VersionNames}{A list of model version names that you want to describe. You can add up
-to 10 model version names to the list. If you don\'t specify a value,
-all model descriptions are returned. A version name is part of a model
+to 10 model version names to the list. If you don't specify a value, all
+model descriptions are returned. A version name is part of a model
 (ProjectVersion) ARN. For example, \verb{my-model.2020-01-21T09.10.15} is the
 version name in the following ARN.
 \verb{arn:aws:rekognition:us-east-1:123456789012:project/getting-started/version/<i>my-model.2020-01-21T09.10.15</i>/1234567890123}.}
@@ -31,8 +31,8 @@ ValidationException error occurs. The default value is 100.}
 \description{
 Lists and describes the models in an Amazon Rekognition Custom Labels
 project. You can specify up to 10 model versions in
-\code{ProjectVersionArns}. If you don\'t specify a value, descriptions for
-all models are returned.
+\code{ProjectVersionArns}. If you don't specify a value, descriptions for all
+models are returned.
 }
 \details{
 This operation requires permissions to perform the

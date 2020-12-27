@@ -20,10 +20,10 @@ version before uploading the new \code{DefinitionDocument}. If set to \code{true
 the upload will create a new namespace version.}
 }
 \description{
-Asynchronously uploads one or more entity definitions to the user\'s
+Asynchronously uploads one or more entity definitions to the user's
 namespace. The \code{document} parameter is required if
 \code{syncWithPublicNamespace} and \code{deleteExistingEntites} are false. If the
-\code{syncWithPublicNamespace} parameter is set to \code{true}, the user\'s
+\code{syncWithPublicNamespace} parameter is set to \code{true}, the user's
 namespace will synchronize with the latest version of the public
 namespace. If \code{deprecateExistingEntities} is set to true, all entities
 in the latest version will be deleted before the new
@@ -39,7 +39,7 @@ that are backwards-incompatible and whenever a user sets the
 parameter to \code{true}.
 
 The IDs for all of the entities should be in URN format. Each entity
-must be in the user\'s namespace. Users can\'t create entities in the
+must be in the user's namespace. Users can't create entities in the
 public namespace, but entity definitions can refer to entities in the
 public namespace.
 

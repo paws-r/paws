@@ -24,7 +24,7 @@ have been deleted.}
 \item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own AWS
 KMS key, or \code{false} to use a key managed by Amazon S3. Optional.
 
-Valid Values: \code{true} \\| \code{false}}
+Valid Values: \code{true} | \code{false}}
 
 \item{KMSKey}{The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
 used for Amazon S3 server-side encryption. Storage Gateway does not
@@ -37,15 +37,15 @@ with the pool. When you use your backup application to eject the tape,
 the tape is archived directly into the storage class (S3 Glacier or S3
 Deep Archive) that corresponds to the pool.
 
-Valid Values: \code{GLACIER} \\| \code{DEEP_ARCHIVE}}
+Valid Values: \code{GLACIER} | \code{DEEP_ARCHIVE}}
 
 \item{Tags}{A list of up to 50 tags that can be assigned to a virtual tape that has
 a barcode. Each tag is a key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: + -
-= . \\_ : / @. The maximum length of a tag\'s key is 128 characters, and
-the maximum length for a tag\'s value is 256.}
+= . \\_ : / @. The maximum length of a tag's key is 128 characters, and
+the maximum length for a tag's value is 256.}
 }
 \description{
 Creates a virtual tape by using your own barcode. You write data to the

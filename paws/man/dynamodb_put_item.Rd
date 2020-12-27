@@ -23,7 +23,7 @@ for both the partition key and the sort key.
 
 If you specify any attributes that are part of an index key, then the
 data types for those attributes must match those of the schema in the
-table\'s attribute definition.
+table's attribute definition.
 
 Empty String and Binary attribute values are allowed. Attribute values
 of type String and Binary must have a length greater than zero if the
@@ -145,9 +145,9 @@ Creates a new item, or replaces an old item with a new item. If an item
 that has the same primary key as the new item already exists in the
 specified table, the new item completely replaces the existing item. You
 can perform a conditional put operation (add a new item if one with the
-specified primary key doesn\'t exist), or replace an existing item if it
-has certain attribute values. You can return the item\'s attribute
-values in the same operation, using the \code{ReturnValues} parameter.
+specified primary key doesn't exist), or replace an existing item if it
+has certain attribute values. You can return the item's attribute values
+in the same operation, using the \code{ReturnValues} parameter.
 }
 \details{
 This topic provides general information about the \code{PutItem} API.

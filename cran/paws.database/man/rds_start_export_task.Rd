@@ -8,7 +8,7 @@ rds_start_export_task(ExportTaskIdentifier, SourceArn, S3BucketName,
   IamRoleArn, KmsKeyId, S3Prefix, ExportOnly)
 }
 \arguments{
-\item{ExportTaskIdentifier}{[required] A unique identifier for the snapshot export task. This ID isn\'t an
+\item{ExportTaskIdentifier}{[required] A unique identifier for the snapshot export task. This ID isn't an
 identifier for the Amazon S3 bucket where the snapshot is to be exported
 to.}
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_update_rate_based_rule}
 \alias{wafregional_update_rate_based_rule}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_update_rate_based_rule(RuleId, ChangeToken, Updates,
   RateLimit)

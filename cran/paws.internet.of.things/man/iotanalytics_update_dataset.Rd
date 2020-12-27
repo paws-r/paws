@@ -10,10 +10,10 @@ iotanalytics_update_dataset(datasetName, actions, triggers,
 \arguments{
 \item{datasetName}{[required] The name of the data set to update.}
 
-\item{actions}{[required] A list of \"DatasetAction\" objects.}
+\item{actions}{[required] A list of "DatasetAction" objects.}
 
-\item{triggers}{A list of \"DatasetTrigger\" objects. The list can be empty or can
-contain up to five \strong{DataSetTrigger} objects.}
+\item{triggers}{A list of "DatasetTrigger" objects. The list can be empty or can contain
+up to five \strong{DataSetTrigger} objects.}
 
 \item{contentDeliveryRules}{When data set contents are created they are delivered to destinations
 specified here.}
@@ -23,8 +23,7 @@ specified here.}
 \item{versioningConfiguration}{[Optional] How many versions of data set contents are kept. If not
 specified or set to null, only the latest version plus the latest
 succeeded version (if they are different) are kept for the time period
-specified by the \"retentionPeriod\" parameter. (For more information,
-see
+specified by the "retentionPeriod" parameter. (For more information, see
 https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html\\#aws-iot-analytics-dataset-versions)}
 }
 \description{

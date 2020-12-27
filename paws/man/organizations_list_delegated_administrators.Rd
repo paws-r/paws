@@ -12,14 +12,14 @@ organizations_list_delegated_administrators(ServicePrincipal, NextToken,
 \item{ServicePrincipal}{Specifies a service principal name. If specified, then the operation
 lists the delegated administrators only for the specified service.
 
-If you don\'t specify a service principal, the operation lists all
+If you don't specify a service principal, the operation lists all
 delegated administrators for all services in your organization.}
 
 \item{NextToken}{The parameter for receiving additional results if you receive a
 \code{NextToken} response in a previous request. A \code{NextToken} response
 indicates that more output is available. Set this parameter to the value
-of the previous call\'s \code{NextToken} response to indicate where the
-output should continue from.}
+of the previous call's \code{NextToken} response to indicate where the output
+should continue from.}
 
 \item{MaxResults}{The total number of results that you want included on each page of the
 response. If you do not include this parameter, it defaults to a value
@@ -37,9 +37,9 @@ Lists the AWS accounts that are designated as delegated administrators
 in this organization.
 }
 \details{
-This operation can be called only from the organization\'s master
-account or by a member account that is a delegated administrator for an
-AWS service.
+This operation can be called only from the organization's master account
+or by a member account that is a delegated administrator for an AWS
+service.
 }
 \section{Request syntax}{
 \preformatted{svc$list_delegated_administrators(

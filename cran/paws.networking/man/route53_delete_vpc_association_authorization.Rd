@@ -27,7 +27,7 @@ to submit a \code{DeleteVPCAssociationAuthorization} request.
 Sending this request only prevents the AWS account that created the VPC
 from associating the VPC with the Amazon Route 53 hosted zone in the
 future. If the VPC is already associated with the hosted zone,
-\code{DeleteVPCAssociationAuthorization} won\'t disassociate the VPC from the
+\code{DeleteVPCAssociationAuthorization} won't disassociate the VPC from the
 hosted zone. If you want to delete an existing association, use
 \code{DisassociateVPCFromHostedZone}.
 }

@@ -17,7 +17,7 @@ attempt to access an AWS service.}
 you want to generate information about the last attempt to access
 services or actions. If you specify service-level granularity, this
 operation generates only service data. If you specify action-level
-granularity, it generates service and action data. If you don\'t include
+granularity, it generates service and action data. If you don't include
 this optional parameter, the operation generates service data.}
 }
 \description{
@@ -28,7 +28,7 @@ activity for the last 365 days, or less if your Region began supporting
 this feature within the last year. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period}{Regions Where Data Is Tracked}.
 }
 \details{
-The service last accessed data includesÂ allÂ attempts to access an AWS
+The service last accessed data includes all attempts to access an AWS
 API, not just the successful ones. This includes all attempts that were
 made using the AWS Management Console, the AWS API through any of the
 SDKs, or any of the command line tools. An unexpected entry in the
@@ -36,14 +36,14 @@ service last accessed data does not mean that your account has been
 compromised, because the request might have been denied. Refer to your
 CloudTrail logs as the authoritative source for information about all
 API calls and whether they were successful or denied access. For more
-information, seeÂ \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html}{Logging IAM Events with CloudTrail}
+information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html}{Logging IAM Events with CloudTrail}
 in the \emph{IAM User Guide}.
 
 The \code{GenerateServiceLastAccessedDetails} operation returns a \code{JobId}.
 Use this parameter in the following operations to retrieve the following
 details from your report:
 \itemize{
-\item GetServiceLastAccessedDetails -- Use this operation for users,
+\item GetServiceLastAccessedDetails – Use this operation for users,
 groups, roles, or policies to list every AWS service that the
 resource could access using permissions policies. For each service,
 the response includes information about the most recent access
@@ -52,7 +52,7 @@ attempt.
 The \code{JobId} returned by \code{GenerateServiceLastAccessedDetail} must be
 used by the same role within a session, or by the same user when
 used to call \code{GetServiceLastAccessedDetail}.
-\item GetServiceLastAccessedDetailsWithEntities -- Use this operation for
+\item GetServiceLastAccessedDetailsWithEntities – Use this operation for
 groups and policies to list information about the associated
 entities (users or roles) that attempted to access a specific AWS
 service.

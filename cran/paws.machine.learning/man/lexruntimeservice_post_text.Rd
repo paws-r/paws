@@ -13,7 +13,7 @@ lexruntimeservice_post_text(botName, botAlias, userId,
 \item{botAlias}{[required] The alias of the Amazon Lex bot.}
 
 \item{userId}{[required] The ID of the client application user. Amazon Lex uses this to identify
-a user\'s conversation with your bot. At runtime, each request must
+a user's conversation with your bot. At runtime, each request must
 contain the \code{userID} field.
 
 To decide the user ID to use for your application, consider the
@@ -27,8 +27,8 @@ continue on another device, use a user-specific identifier.
 \item If you want the same user to be able to have two independent
 conversations on two different devices, choose a device-specific
 identifier.
-\item A user can\'t have two independent conversations with two different
-versions of the same bot. For example, a user can\'t have a
+\item A user can't have two independent conversations with two different
+versions of the same bot. For example, a user can't have a
 conversation with the PROD and BETA versions of the same bot. If you
 anticipate that a user will need to have conversation with two
 different versions, for example, while testing, include the bot
@@ -43,7 +43,7 @@ For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/contex
 \item{requestAttributes}{Request-specific information passed between Amazon Lex and a client
 application.
 
-The namespace \verb{x-amz-lex:} is reserved for special attributes. Don\'t
+The namespace \verb{x-amz-lex:} is reserved for special attributes. Don't
 create any request attributes with the prefix \verb{x-amz-lex:}.
 
 For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs}{Setting Request Attributes}.}
@@ -60,23 +60,23 @@ In response, Amazon Lex returns the next \code{message} to convey to the user
 an optional \code{responseCard} to display. Consider the following example
 messages:
 \itemize{
-\item For a user input \"I would like a pizza\", Amazon Lex might return a
+\item For a user input "I would like a pizza", Amazon Lex might return a
 response with a message eliciting slot data (for example,
-PizzaSize): \"What size pizza would you like?\"
+PizzaSize): "What size pizza would you like?"
 \item After the user provides all of the pizza order information, Amazon
 Lex might return a response with a message to obtain user
-confirmation \"Proceed with the pizza order?\".
-\item After the user replies to a confirmation prompt with a \"yes\",
-Amazon Lex might return a conclusion statement: \"Thank you, your
-cheese pizza has been ordered.\".
+confirmation "Proceed with the pizza order?".
+\item After the user replies to a confirmation prompt with a "yes", Amazon
+Lex might return a conclusion statement: "Thank you, your cheese
+pizza has been ordered.".
 }
 
 Not all Amazon Lex messages require a user response. For example, a
 conclusion statement does not require a response. Some messages require
-only a \"yes\" or \"no\" user response. In addition to the \code{message},
-Amazon Lex provides additional context about the message in the response
-that you might use to enhance client behavior, for example, to display
-the appropriate client user interface. These are the \code{slotToElicit},
+only a "yes" or "no" user response. In addition to the \code{message}, Amazon
+Lex provides additional context about the message in the response that
+you might use to enhance client behavior, for example, to display the
+appropriate client user interface. These are the \code{slotToElicit},
 \code{dialogState}, \code{intentName}, and \code{slots} fields in the response.
 Consider the following examples:
 \itemize{

@@ -34,14 +34,14 @@ protocol 1 (ICMP) or protocol 58 (ICMPv6) with an IPv6 CIDR block.}
 \item{PortRange}{TCP or UDP protocols: The range of ports the rule applies to. Required
 if specifying protocol 6 (TCP) or 17 (UDP).}
 
-\item{Protocol}{[required] The protocol number. A value of \"-1\" means all protocols. If you
-specify \"-1\" or a protocol number other than \"6\" (TCP), \"17\"
-(UDP), or \"1\" (ICMP), traffic on all ports is allowed, regardless of
-any ports or ICMP types or codes that you specify. If you specify
-protocol \"58\" (ICMPv6) and specify an IPv4 CIDR block, traffic for all
-ICMP types and codes allowed, regardless of any that you specify. If you
-specify protocol \"58\" (ICMPv6) and specify an IPv6 CIDR block, you
-must specify an ICMP type and code.}
+\item{Protocol}{[required] The protocol number. A value of "-1" means all protocols. If you specify
+"-1" or a protocol number other than "6" (TCP), "17" (UDP), or "1"
+(ICMP), traffic on all ports is allowed, regardless of any ports or ICMP
+types or codes that you specify. If you specify protocol "58" (ICMPv6)
+and specify an IPv4 CIDR block, traffic for all ICMP types and codes
+allowed, regardless of any that you specify. If you specify protocol
+"58" (ICMPv6) and specify an IPv6 CIDR block, you must specify an ICMP
+type and code.}
 
 \item{RuleAction}{[required] Indicates whether to allow or deny the traffic that matches the rule.}
 
@@ -62,12 +62,12 @@ separate set of egress rules.
 }
 \details{
 We recommend that you leave room between the rule numbers (for example,
-100, 110, 120, \\...), and not number them one right after the other (for
-example, 101, 102, 103, \\...). This makes it easier to add a rule
-between existing ones without having to renumber the rules.
+100, 110, 120, ...), and not number them one right after the other (for
+example, 101, 102, 103, ...). This makes it easier to add a rule between
+existing ones without having to renumber the rules.
 
-After you add an entry, you can\'t modify it; you must either replace
-it, or create an entry and delete the old one.
+After you add an entry, you can't modify it; you must either replace it,
+or create an entry and delete the old one.
 
 For more information about network ACLs, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html}{Network ACLs} in
 the \emph{Amazon Virtual Private Cloud User Guide}.

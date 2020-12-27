@@ -866,15 +866,15 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
 #'     to get the `LastSuccessfulInvocationTime` and
 #'     `LastFailedInvocationTime`.
 #' 
-#' -   The rule\'s AWS Lambda function is failing to send evaluation
-#'     results to AWS Config. Verify that the role you assigned to your
+#' -   The rule's AWS Lambda function is failing to send evaluation results
+#'     to AWS Config. Verify that the role you assigned to your
 #'     configuration recorder includes the `config:PutEvaluations`
 #'     permission. If the rule is a custom rule, verify that the AWS Lambda
 #'     execution role includes the `config:PutEvaluations` permission.
 #' 
-#' -   The rule\'s AWS Lambda function has returned `NOT_APPLICABLE` for
-#'     all evaluation results. This can occur if the resources were deleted
-#'     or removed from the rule\'s scope.
+#' -   The rule's AWS Lambda function has returned `NOT_APPLICABLE` for all
+#'     evaluation results. This can occur if the resources were deleted or
+#'     removed from the rule's scope.
 #'
 #' @usage
 #' configservice_describe_compliance_by_config_rule(ConfigRuleNames,
@@ -939,15 +939,15 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
 #'     to get the `LastSuccessfulInvocationTime` and
 #'     `LastFailedInvocationTime`.
 #' 
-#' -   The rule\'s AWS Lambda function is failing to send evaluation
-#'     results to AWS Config. Verify that the role that you assigned to
-#'     your configuration recorder includes the `config:PutEvaluations`
+#' -   The rule's AWS Lambda function is failing to send evaluation results
+#'     to AWS Config. Verify that the role that you assigned to your
+#'     configuration recorder includes the `config:PutEvaluations`
 #'     permission. If the rule is a custom rule, verify that the AWS Lambda
 #'     execution role includes the `config:PutEvaluations` permission.
 #' 
-#' -   The rule\'s AWS Lambda function has returned `NOT_APPLICABLE` for
-#'     all evaluation results. This can occur if the resources were deleted
-#'     or removed from the rule\'s scope.
+#' -   The rule's AWS Lambda function has returned `NOT_APPLICABLE` for all
+#'     evaluation results. This can occur if the resources were deleted or
+#'     removed from the rule's scope.
 #'
 #' @usage
 #' configservice_describe_compliance_by_resource(ResourceType, ResourceId,
@@ -3054,7 +3054,7 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #' `SourceIdentifier` key. This key is part of the `Source` object, which
 #' is part of the `ConfigRule` object.
 #' 
-#' If you are adding an AWS managed Config rule, specify the rule\'s
+#' If you are adding an AWS managed Config rule, specify the rule's
 #' identifier for the `SourceIdentifier` key. To reference AWS managed
 #' Config rule identifiers, see [About AWS Managed Config
 #' Rules](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
@@ -3435,7 +3435,7 @@ configservice_put_delivery_channel <- function(DeliveryChannel) {
 #' to AWS Config. No updates occur to your existing evaluations, and
 #' evaluation results are not sent to AWS Config.
 #' 
-#' When `TestMode` is `true`, `PutEvaluations` doesn\'t require a valid
+#' When `TestMode` is `true`, `PutEvaluations` doesn't require a valid
 #' value for the `ResultToken` parameter, but the value cannot be null.
 #'
 #' @section Request syntax:
@@ -3500,7 +3500,7 @@ configservice_put_evaluations <- function(Evaluations = NULL, ResultToken, TestM
 #' `PutOrganizationConfigRule` action to add the rule to AWS Config, you
 #' must specify the Amazon Resource Name (ARN) that AWS Lambda assigns to
 #' the function. If you are adding an AWS managed Config rule, specify the
-#' rule\'s identifier for the `RuleIdentifier` key.
+#' rule's identifier for the `RuleIdentifier` key.
 #' 
 #' The maximum number of organization config rules that AWS Config supports
 #' is 150.
@@ -3618,7 +3618,7 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' conformance pack template.
 #' 
 #' The delivery bucket name should start with awsconfigconforms. For
-#' example: \"Resource\": \"arn:aws:s3:::your\\_bucket\\_name/*\". For more
+#' example: "Resource": "arn:aws:s3:::your\\_bucket\\_name/*". For more
 #' information, see [Permissions for cross account bucket
 #' access](https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html).
 #' @param DeliveryS3KeyPrefix The prefix for the Amazon S3 bucket.
@@ -3819,8 +3819,8 @@ configservice_put_remediation_exceptions <- function(ConfigRuleName, ResourceKey
 #' @param ResourceType &#91;required&#93; The type of the resource. The custom resource type must be registered
 #' with AWS CloudFormation.
 #' 
-#' You cannot use the organization names "aws", "amzn", "amazon", "alexa",
-#' "custom" with custom resource types. It is the first part of the
+#' You cannot use the organization names “aws”, “amzn”, “amazon”, “alexa”,
+#' “custom” with custom resource types. It is the first part of the
 #' ResourceType up to the first ::.
 #' @param SchemaVersionId &#91;required&#93; Version of the schema registered for the ResourceType in AWS
 #' CloudFormation.
@@ -4036,7 +4036,7 @@ configservice_select_resource_config <- function(Expression, Limit = NULL, NextT
 #' AWS Config stream to an Amazon SNS topic, you will receive a
 #' `ConfigRuleEvaluationStarted` notification when the evaluation starts.
 #' 
-#' You don\'t need to call the `StartConfigRulesEvaluation` API to run an
+#' You don't need to call the `StartConfigRulesEvaluation` API to run an
 #' evaluation for a new rule. When you create a rule, AWS Config evaluates
 #' your resources against the rule automatically.
 #' 

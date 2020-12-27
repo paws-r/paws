@@ -9,13 +9,13 @@ quicksight_update_template(AwsAccountId, TemplateId, SourceEntity,
   VersionDescription, Name)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the template that you\'re
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the template that you're
 updating.}
 
 \item{TemplateId}{[required] The ID for the template.}
 
 \item{SourceEntity}{[required] The entity that you are using as a source when you update the template.
-In \code{SourceEntity}, you specify the type of object you\'re using as
+In \code{SourceEntity}, you specify the type of object you're using as
 source: \code{SourceTemplate} for a template or \code{SourceAnalysis} for an
 analysis. Both of these require an Amazon Resource Name (ARN). For
 \code{SourceTemplate}, specify the ARN of the source template. For

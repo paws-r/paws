@@ -10,7 +10,7 @@ docdb_describe_db_cluster_snapshots(DBClusterIdentifier,
 }
 \arguments{
 \item{DBClusterIdentifier}{The ID of the cluster to retrieve the list of cluster snapshots for.
-This parameter can\'t be used with the \code{DBClusterSnapshotIdentifier}
+This parameter can't be used with the \code{DBClusterSnapshotIdentifier}
 parameter. This parameter is not case sensitive.
 
 Constraints:
@@ -18,9 +18,9 @@ Constraints:
 \item If provided, must match the identifier of an existing \code{DBCluster}.
 }}
 
-\item{DBClusterSnapshotIdentifier}{A specific cluster snapshot identifier to describe. This parameter
-can\'t be used with the \code{DBClusterIdentifier} parameter. This value is
-stored as a lowercase string.
+\item{DBClusterSnapshotIdentifier}{A specific cluster snapshot identifier to describe. This parameter can't
+be used with the \code{DBClusterIdentifier} parameter. This value is stored
+as a lowercase string.
 
 Constraints:
 \itemize{
@@ -43,16 +43,16 @@ to your AWS account.
 public.
 }
 
-If you don\'t specify a \code{SnapshotType} value, then both automated and
+If you don't specify a \code{SnapshotType} value, then both automated and
 manual cluster snapshots are returned. You can include shared cluster
 snapshots with these results by setting the \code{IncludeShared} parameter to
 \code{true}. You can include public cluster snapshots with these results by
 setting the \code{IncludePublic} parameter to \code{true}.
 
-The \code{IncludeShared} and \code{IncludePublic} parameters don\'t apply for
+The \code{IncludeShared} and \code{IncludePublic} parameters don't apply for
 \code{SnapshotType} values of \code{manual} or \code{automated}. The \code{IncludePublic}
-parameter doesn\'t apply when \code{SnapshotType} is set to \code{shared}. The
-\code{IncludeShared} parameter doesn\'t apply when \code{SnapshotType} is set to
+parameter doesn't apply when \code{SnapshotType} is set to \code{shared}. The
+\code{IncludeShared} parameter doesn't apply when \code{SnapshotType} is set to
 \code{public}.}
 
 \item{Filters}{This parameter is not currently supported.}

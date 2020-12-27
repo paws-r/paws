@@ -8,11 +8,11 @@ ec2_create_customer_gateway(BgpAsn, PublicIp, CertificateArn, Type,
   DeviceName, DryRun)
 }
 \arguments{
-\item{BgpAsn}{[required] For devices that support BGP, the customer gateway\'s BGP ASN.
+\item{BgpAsn}{[required] For devices that support BGP, the customer gateway's BGP ASN.
 
 Default: 65000}
 
-\item{PublicIp}{The Internet-routable IP address for the customer gateway\'s outside
+\item{PublicIp}{The Internet-routable IP address for the customer gateway's outside
 interface. The address must be static.}
 
 \item{CertificateArn}{The Amazon Resource Name (ARN) for the customer gateway certificate.}
@@ -34,14 +34,14 @@ Provides information to AWS about your VPN customer gateway device. The
 customer gateway is the appliance at your end of the VPN connection.
 (The device on the AWS side of the VPN connection is the virtual private
 gateway.) You must provide the Internet-routable IP address of the
-customer gateway\'s external interface. The IP address must be static
-and can be behind a device performing network address translation (NAT).
+customer gateway's external interface. The IP address must be static and
+can be behind a device performing network address translation (NAT).
 }
 \details{
 For devices that use Border Gateway Protocol (BGP), you can also provide
-the device\'s BGP Autonomous System Number (ASN). You can use an
-existing ASN assigned to your network. If you don\'t have an ASN
-already, you can use a private ASN (in the 64512 - 65534 range).
+the device's BGP Autonomous System Number (ASN). You can use an existing
+ASN assigned to your network. If you don't have an ASN already, you can
+use a private ASN (in the 64512 - 65534 range).
 
 Amazon EC2 supports all 2-byte ASN numbers in the range of 1 - 65534,
 with the exception of 7224, which is reserved in the \code{us-east-1} Region,

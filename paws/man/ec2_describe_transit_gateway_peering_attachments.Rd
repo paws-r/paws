@@ -17,9 +17,9 @@ attachment.
 \item \code{local-owner-id} - The ID of your AWS account.
 \item \code{remote-owner-id} - The ID of the AWS account in the remote Region
 that owns the transit gateway.
-\item \code{state} - The state of the peering attachment (\code{available} \\|
-\code{deleted} \\| \code{deleting} \\| \code{failed} \\| \code{modifying} \\|
-\code{pendingAcceptance} \\| \code{pending} \\| \code{rollingBack} \\| \code{rejected} \\|
+\item \code{state} - The state of the peering attachment (\code{available} |
+\code{deleted} | \code{deleting} | \code{failed} | \code{modifying} |
+\code{pendingAcceptance} | \code{pending} | \code{rollingBack} | \code{rejected} |
 \code{rejecting}).
 \item \code{transit-gateway-id} - The ID of the transit gateway.
 }}

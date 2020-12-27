@@ -19,10 +19,10 @@ accidently started more than once.}
 Video to publish the completion status of the segment detection
 operation.}
 
-\item{JobTag}{An identifier you specify that\'s returned in the completion
-notification that\'s published to your Amazon Simple Notification
-Service topic. For example, you can use \code{JobTag} to group related jobs
-and identify them in the completion notification.}
+\item{JobTag}{An identifier you specify that's returned in the completion notification
+that's published to your Amazon Simple Notification Service topic. For
+example, you can use \code{JobTag} to group related jobs and identify them in
+the completion notification.}
 
 \item{Filters}{Filters for technical cue or shot detection.}
 

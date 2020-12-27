@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_delete_logging_configuration}
 \alias{waf_delete_logging_configuration}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_delete_logging_configuration(ResourceArn)
 }

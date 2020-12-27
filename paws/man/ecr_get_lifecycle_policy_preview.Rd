@@ -17,23 +17,23 @@ assumed.}
 
 \item{imageIds}{The list of imageIDs to be included.}
 
-\item{nextToken}{The \code{nextToken} value returned from a previous paginatedâ€¨
+\item{nextToken}{The \code{nextToken} value returned from a previous paginated 
 \code{GetLifecyclePolicyPreviewRequest} request where \code{maxResults} was used
-and theâ€¨ results exceeded the value of that parameter. Pagination
-continues from the end of theâ€¨ previous results that returned the
-\code{nextToken} value. This value isâ€¨ \code{null} when there are no more results
+and the  results exceeded the value of that parameter. Pagination
+continues from the end of the  previous results that returned the
+\code{nextToken} value. This value is  \code{null} when there are no more results
 to return. This option cannot be used when you specify images with
 \code{imageIds}.}
 
 \item{maxResults}{The maximum number of repository results returned by
-\code{GetLifecyclePolicyPreviewRequest} inâ€¨ paginated output. When this
-parameter is used, \code{GetLifecyclePolicyPreviewRequest} only returnsâ€¨
-\code{maxResults} results in a single page along with a \code{nextToken}â€¨ response
+\code{GetLifecyclePolicyPreviewRequest} in  paginated output. When this
+parameter is used, \code{GetLifecyclePolicyPreviewRequest} only returns 
+\code{maxResults} results in a single page along with a \code{nextToken}  response
 element. The remaining results of the initial request can be seen by
-sendingâ€¨ another \code{GetLifecyclePolicyPreviewRequest} request with the
-returned \code{nextToken}â€¨ value. This value can be between 1 and 1000. If
-thisâ€¨ parameter is not used, then \code{GetLifecyclePolicyPreviewRequest}
-returns up toâ€¨ 100 results and a \code{nextToken} value, ifâ€¨ applicable. This
+sending  another \code{GetLifecyclePolicyPreviewRequest} request with the
+returned \code{nextToken}  value. This value can be between 1 and 1000. If
+this  parameter is not used, then \code{GetLifecyclePolicyPreviewRequest}
+returns up to  100 results and a \code{nextToken} value, if  applicable. This
 option cannot be used when you specify images with \code{imageIds}.}
 
 \item{filter}{An optional parameter that filters results based on image tag status and

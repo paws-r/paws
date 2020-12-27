@@ -7,7 +7,7 @@
 opsworks_deregister_rds_db_instance(RdsDbInstanceArn)
 }
 \arguments{
-\item{RdsDbInstanceArn}{[required] The Amazon RDS instance\'s ARN.}
+\item{RdsDbInstanceArn}{[required] The Amazon RDS instance's ARN.}
 }
 \description{
 Deregisters an Amazon RDS instance.

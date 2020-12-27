@@ -19,8 +19,8 @@ in Universal Coordinated Time (UTC). For example: \verb{2019-06-13T21:36:34Z}
 
 The \code{InclusiveStartTime} must be before \code{ExclusiveEndTime}.
 
-If you provide an \code{InclusiveStartTime} that is before the ledger\'s
-\code{CreationDateTime}, Amazon QLDB defaults it to the ledger\'s
+If you provide an \code{InclusiveStartTime} that is before the ledger's
+\code{CreationDateTime}, Amazon QLDB defaults it to the ledger's
 \code{CreationDateTime}.}
 
 \item{ExclusiveEndTime}{[required] The exclusive end date and time for the range of journal contents that
@@ -50,7 +50,7 @@ a specified Amazon Simple Storage Service (Amazon S3) bucket. The data
 is written as files in Amazon Ion format.
 }
 \details{
-If the ledger with the given \code{Name} doesn\'t exist, then throws
+If the ledger with the given \code{Name} doesn't exist, then throws
 \code{ResourceNotFoundException}.
 
 If the ledger with the given \code{Name} is in \code{CREATING} status, then throws

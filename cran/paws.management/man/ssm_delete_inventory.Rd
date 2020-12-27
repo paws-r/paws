@@ -12,7 +12,7 @@ ssm_delete_inventory(TypeName, SchemaDeleteOption, DryRun, ClientToken)
 either all previously collected data, or the inventory type itself.}
 
 \item{SchemaDeleteOption}{Use the \code{SchemaDeleteOption} to delete a custom inventory type (schema).
-If you don\'t choose this option, the system only deletes existing
+If you don't choose this option, the system only deletes existing
 inventory data associated with the custom inventory type. Choose one of
 the following options:
 

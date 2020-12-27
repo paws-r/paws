@@ -10,7 +10,7 @@ kms_import_key_material(KeyId, ImportToken, EncryptedKeyMaterial,
 }
 \arguments{
 \item{KeyId}{[required] The identifier of the symmetric CMK that receives the imported key
-material. The CMK\'s \code{Origin} must be \code{EXTERNAL}. This must be the same
+material. The CMK's \code{Origin} must be \code{EXTERNAL}. This must be the same
 CMK specified in the \code{KeyID} parameter of the corresponding
 GetParametersForImport request.
 

@@ -33,7 +33,7 @@ temporarily changing the alarm state to \code{ALARM} sends an SNS message.
 \details{
 Metric alarms returns to their actual state quickly, often within
 seconds. Because the metric alarm state change happens quickly, it is
-typically only visible in the alarm\'s \strong{History} tab in the Amazon
+typically only visible in the alarm's \strong{History} tab in the Amazon
 CloudWatch console or through
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarmHistory.html}{DescribeAlarmHistory}.
 

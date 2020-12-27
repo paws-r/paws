@@ -7,7 +7,7 @@
 devicefarm_list_suites(arn, nextToken)
 }
 \arguments{
-\item{arn}{[required] The job\'s Amazon Resource Name (ARN).}
+\item{arn}{[required] The job's Amazon Resource Name (ARN).}
 
 \item{nextToken}{An identifier that was returned from the previous call to this
 operation, which can be used to return the next set of items in the

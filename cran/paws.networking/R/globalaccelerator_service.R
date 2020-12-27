@@ -75,7 +75,7 @@ NULL
 #' Global Accelerator assigns each accelerator a default Domain Name System
 #' (DNS) name, similar to `a1234567890abcdef.awsglobalaccelerator.com`,
 #' that points to your Global Accelerator static IP addresses. Depending on
-#' the use case, you can use your accelerator\'s static IP addresses or DNS
+#' the use case, you can use your accelerator's static IP addresses or DNS
 #' name to route traffic to your accelerator, or set up DNS records to
 #' route traffic using your own custom domain name.
 #' 

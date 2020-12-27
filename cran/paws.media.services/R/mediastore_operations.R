@@ -14,15 +14,15 @@ NULL
 #' @param ContainerName &#91;required&#93; The name for the container. The name must be from 1 to 255 characters.
 #' Container names must be unique to your AWS account within a specific
 #' region. As an example, you could create a container named `movies` in
-#' every region, as long as you don't have an existing container with that
+#' every region, as long as you don’t have an existing container with that
 #' name.
 #' @param Tags An array of key:value pairs that you define. These values can be
 #' anything that you want. Typically, the tag key represents a category
-#' (such as \"environment\") and the tag value represents a specific value
-#' within that category (such as \"test,\" \"development,\" or
-#' \"production\"). You can add up to 50 tags to each container. For more
-#' information about tagging, including naming and usage conventions, see
-#' [Tagging Resources in
+#' (such as "environment") and the tag value represents a specific value
+#' within that category (such as "test," "development," or "production").
+#' You can add up to 50 tags to each container. For more information about
+#' tagging, including naming and usage conventions, see [Tagging Resources
+#' in
 #' MediaStore](https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html).
 #'
 #' @section Request syntax:
@@ -218,7 +218,7 @@ mediastore_delete_lifecycle_policy <- function(ContainerName) {
 #'
 #' Deletes the metric policy that is associated with the specified
 #' container. If there is no metric policy associated with the container,
-#' MediaStore doesn\'t send metrics to CloudWatch.
+#' MediaStore doesn't send metrics to CloudWatch.
 #'
 #' @usage
 #' mediastore_delete_metric_policy(ContainerName)
@@ -258,7 +258,7 @@ mediastore_delete_metric_policy <- function(ContainerName) {
 #' Retrieves the properties of the requested container. This request is
 #' commonly used to retrieve the endpoint of a container. An endpoint is a
 #' value assigned by the service when a new container is created. A
-#' container\'s endpoint does not change after it has been assigned. The
+#' container's endpoint does not change after it has been assigned. The
 #' `DescribeContainer` request returns a single `Container` object based on
 #' `ContainerName`. To return all `Container` objects that are associated
 #' with a specified AWS account, use ListContainers.
@@ -594,7 +594,7 @@ mediastore_put_container_policy <- function(ContainerName, Policy) {
 #' container so that the container can service cross-origin requests. For
 #' example, you might want to enable a request whose origin is
 #' http://www.example.com to access your AWS Elemental MediaStore container
-#' at my.example.container.com by using the browser\'s XMLHttpRequest
+#' at my.example.container.com by using the browser's XMLHttpRequest
 #' capability.
 #' 
 #' To enable CORS on a container, you attach a CORS policy to the
@@ -722,14 +722,14 @@ mediastore_put_lifecycle_policy <- function(ContainerName, LifecyclePolicy) {
 #' of the following:
 #' 
 #' -   An object group that defines which objects to include in the group.
-#'     The definition can be a path or a file name, but it can\'t have more
+#'     The definition can be a path or a file name, but it can't have more
 #'     than 900 characters. Valid characters are: a-z, A-Z, 0-9, \\_
-#'     (underscore), = (equal), : (colon), . (period), - (hyphen), \~
+#'     (underscore), = (equal), : (colon), . (period), - (hyphen), ~
 #'     (tilde), / (forward slash), and * (asterisk). Wildcards (*) are
 #'     acceptable.
 #' 
 #' -   An object group name that allows you to refer to the object group.
-#'     The name can\'t have more than 30 characters. Valid characters are:
+#'     The name can't have more than 30 characters. Valid characters are:
 #'     a-z, A-Z, 0-9, and \\_ (underscore).
 #'
 #' @section Request syntax:
@@ -849,11 +849,10 @@ mediastore_stop_access_logging <- function(ContainerName) {
 #'
 #' Adds tags to the specified AWS Elemental MediaStore container. Tags are
 #' key:value pairs that you can associate with AWS resources. For example,
-#' the tag key might be \"customer\" and the tag value might be
-#' \"companyA.\" You can specify one or more tags to add to each container.
-#' You can add up to 50 tags to each container. For more information about
-#' tagging, including naming and usage conventions, see [Tagging Resources
-#' in
+#' the tag key might be "customer" and the tag value might be "companyA."
+#' You can specify one or more tags to add to each container. You can add
+#' up to 50 tags to each container. For more information about tagging,
+#' including naming and usage conventions, see [Tagging Resources in
 #' MediaStore](https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html).
 #'
 #' @usage

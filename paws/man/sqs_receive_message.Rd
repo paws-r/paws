@@ -16,12 +16,12 @@ Queue URLs and names are case-sensitive.}
 \item{AttributeNames}{A list of attributes that need to be returned along with each message.
 These attributes include:
 \itemize{
-\item \code{All} -- Returns all values.
-\item \code{ApproximateFirstReceiveTimestamp} -- Returns the time the message
+\item \code{All} – Returns all values.
+\item \code{ApproximateFirstReceiveTimestamp} – Returns the time the message
 was first received from the queue (\href{http://en.wikipedia.org/wiki/Unix_time}{epoch time} in milliseconds).
-\item \code{ApproximateReceiveCount} -- Returns the number of times a message
+\item \code{ApproximateReceiveCount} – Returns the number of times a message
 has been received across all queues but not deleted.
-\item \code{AWSTraceHeader} -- Returns the AWS X-Ray trace header string.
+\item \code{AWSTraceHeader} – Returns the AWS X-Ray trace header string.
 \item \code{SenderId}
 \itemize{
 \item For an IAM user, returns the IAM user ID, for example
@@ -29,15 +29,15 @@ has been received across all queues but not deleted.
 \item For an IAM role, returns the IAM role ID, for example
 \code{ABCDE1F2GH3I4JK5LMNOP:i-a123b456}.
 }
-\item \code{SentTimestamp} -- Returns the time the message was sent to the
-queue (\href{http://en.wikipedia.org/wiki/Unix_time}{epoch time} in
+\item \code{SentTimestamp} – Returns the time the message was sent to the queue
+(\href{http://en.wikipedia.org/wiki/Unix_time}{epoch time} in
 milliseconds).
-\item \code{MessageDeduplicationId} -- Returns the value provided by the
+\item \code{MessageDeduplicationId} – Returns the value provided by the
 producer that calls the \verb{<a>SendMessage</a>} action.
-\item \code{MessageGroupId} -- Returns the value provided by the producer that
+\item \code{MessageGroupId} – Returns the value provided by the producer that
 calls the \verb{<a>SendMessage</a>} action. Messages with the same
 \code{MessageGroupId} are returned in sequence.
-\item \code{SequenceNumber} -- Returns the value provided by Amazon SQS.
+\item \code{SequenceNumber} – Returns the value provided by Amazon SQS.
 }}
 
 \item{MessageAttributeNames}{The name of the message attribute, where \emph{N} is the index.
@@ -93,7 +93,7 @@ set of messages, even if their visibility timeout has not yet expired.
 \code{ReceiveMessage} action.
 \item When you set \code{FifoQueue}, a caller of the \code{ReceiveMessage} action
 can provide a \code{ReceiveRequestAttemptId} explicitly.
-\item If a caller of the \code{ReceiveMessage} action doesn\'t provide a
+\item If a caller of the \code{ReceiveMessage} action doesn't provide a
 \code{ReceiveRequestAttemptId}, Amazon SQS generates a
 \code{ReceiveRequestAttemptId}.
 \item It is possible to retry the \code{ReceiveMessage} action with the same
@@ -119,7 +119,7 @@ visibility timeout as necessary.
 more messages belonging to the same \code{MessageGroupId} are returned
 until the visibility timeout expires. You can still receive messages
 with another \code{MessageGroupId} as long as it is also visible.
-\item If a caller of \code{ReceiveMessage} can\'t track the
+\item If a caller of \code{ReceiveMessage} can't track the
 \code{ReceiveRequestAttemptId}, no retries work until the original
 visibility timeout expires. As a result, delays might occur but the
 messages in the queue remain in a strict order.
@@ -166,12 +166,12 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 You can provide the \code{VisibilityTimeout} parameter in your request. The
 parameter is applied to the messages that Amazon SQS returns in the
-response. If you don\'t include the parameter, the overall visibility
+response. If you don't include the parameter, the overall visibility
 timeout for the queue is used for the returned messages. For more
 information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
-A message that isn\'t deleted or a message whose visibility isn\'t
+A message that isn't deleted or a message whose visibility isn't
 extended before the visibility timeout expires counts as a failed
 receive. Depending on the configuration of the queue, the message might
 be sent to the dead-letter queue.

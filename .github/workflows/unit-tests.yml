@@ -32,6 +32,8 @@ jobs:
           r-version: ${{ matrix.config.R }}
 
       - uses: r-lib/actions/setup-pandoc@v1
+        with:
+          pandoc-version: '2.11.3.1'
 
       - name: Install system dependencies
         if: runner.os == 'Linux'

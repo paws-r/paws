@@ -29,7 +29,7 @@ administrators can see ownership history of the provisioned product
 using the \code{ListRecordHistory} API. The new owner can describe all past
 records for the provisioned product using the \code{DescribeRecord} API. The
 previous owner can no longer use \code{DescribeRecord}, but can still see the
-product\'s history from when he was an owner using \code{ListRecordHistory}.
+product's history from when he was an owner using \code{ListRecordHistory}.
 
 If a provisioned product ownership is assigned to an end user, they can
 see and perform any action through the API or Service Catalog console

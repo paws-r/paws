@@ -10,7 +10,7 @@ datasync_create_task(SourceLocationArn, DestinationLocationArn,
 \arguments{
 \item{SourceLocationArn}{[required] The Amazon Resource Name (ARN) of the source location for the task.}
 
-\item{DestinationLocationArn}{[required] The Amazon Resource Name (ARN) of an AWS storage resource\'s location.}
+\item{DestinationLocationArn}{[required] The Amazon Resource Name (ARN) of an AWS storage resource's location.}
 
 \item{CloudWatchLogGroupArn}{The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
 is used to monitor and log events in the task.
@@ -36,8 +36,8 @@ For more information, see the operation.}
 
 \item{Excludes}{A list of filter rules that determines which files to exclude from a
 task. The list should contain a single filter string that consists of
-the patterns to exclude. The patterns are delimited by \"\\|\" (that is,
-a pipe), for example, \code{"/folder1|/folder2"}}
+the patterns to exclude. The patterns are delimited by "|" (that is, a
+pipe), for example, \code{"/folder1|/folder2"}}
 
 \item{Schedule}{Specifies a schedule used to periodically transfer files from a source
 to a destination location. The schedule should be specified in UTC time.
@@ -49,7 +49,7 @@ resource. The value can be an empty string.}
 \description{
 Creates a task. A task is a set of two locations (source and
 destination) and a set of Options that you use to control the behavior
-of a task. If you don\'t specify Options when you create a task, AWS
+of a task. If you don't specify Options when you create a task, AWS
 DataSync populates them with service defaults.
 }
 \details{
@@ -63,7 +63,7 @@ If an agent that is associated with a source (NFS) location goes
 offline, the task transitions to the UNAVAILABLE status. If the status
 of the task remains in the CREATING status for more than a few minutes,
 it means that your agent might be having trouble mounting the source NFS
-file system. Check the task\'s ErrorCode and ErrorDetail. Mount issues
+file system. Check the task's ErrorCode and ErrorDetail. Mount issues
 are often caused by either a misconfigured firewall or a mistyped NFS
 server host name.
 }

@@ -10,9 +10,9 @@ storagegateway_list_local_disks(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \description{
-Returns a list of the gateway\'s local disks. To specify which gateway
-to describe, you use the Amazon Resource Name (ARN) of the gateway in
-the body of the request.
+Returns a list of the gateway's local disks. To specify which gateway to
+describe, you use the Amazon Resource Name (ARN) of the gateway in the
+body of the request.
 }
 \details{
 The request returns a list of all disks, specifying which are configured

@@ -11,9 +11,8 @@ support_describe_services(serviceCodeList, language)
 \item{serviceCodeList}{A JSON-formatted list of service codes available for AWS services.}
 
 \item{language}{The ISO 639-1 code for the language in which AWS provides support. AWS
-Support currently supports English (\"en\") and Japanese (\"ja\").
-Language parameters must be passed explicitly for operations that take
-them.}
+Support currently supports English ("en") and Japanese ("ja"). Language
+parameters must be passed explicitly for operations that take them.}
 }
 \description{
 Returns the current list of AWS services and a list of service
@@ -25,9 +24,9 @@ categories.
 The service codes and category codes correspond to the values that
 appear in the \strong{Service} and \strong{Category} lists on the AWS Support
 Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case} page.
-The values in those fields don\'t necessarily match the service codes
-and categories returned by the \code{DescribeServices} operation. Always use
-the service codes and categories that the \code{DescribeServices} operation
+The values in those fields don't necessarily match the service codes and
+categories returned by the \code{DescribeServices} operation. Always use the
+service codes and categories that the \code{DescribeServices} operation
 returns, so that you have the most recent set of service and category
 codes.
 \itemize{

@@ -133,7 +133,7 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #'
 #' @param taskName The name of the export task.
 #' @param logGroupName &#91;required&#93; The name of the log group.
-#' @param logStreamNamePrefix Export only log streams that match the provided prefix. If you don\'t
+#' @param logStreamNamePrefix Export only log streams that match the provided prefix. If you don't
 #' specify a value, no prefix filter is applied.
 #' @param from &#91;required&#93; The start time of the range for the request, expressed as the number of
 #' milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp
@@ -144,7 +144,7 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' @param destination &#91;required&#93; The name of S3 bucket for the exported log data. The bucket must be in
 #' the same AWS region.
 #' @param destinationPrefix The prefix used as the start of the key for every object exported. If
-#' you don\'t specify a value, the default is `exportedlogs`.
+#' you don't specify a value, the default is `exportedlogs`.
 #'
 #' @section Request syntax:
 #' ```
@@ -192,8 +192,8 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' -   Log group names can be between 1 and 512 characters long.
 #' 
 #' -   Log group names consist of the following characters: a-z, A-Z, 0-9,
-#'     \'\\_\' (underscore), \'-\' (hyphen), \'/\' (forward slash), \'.\'
-#'     (period), and \'\\#\' (number sign)
+#'     '\\_' (underscore), '-' (hyphen), '/' (forward slash), '.' (period),
+#'     and '\\#' (number sign)
 #' 
 #' If you associate a AWS Key Management Service (AWS KMS) customer master
 #' key (CMK) with the log group, ingested data is encrypted using the CMK.
@@ -265,7 +265,7 @@ cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags 
 #' 
 #' -   Log stream names can be between 1 and 512 characters long.
 #' 
-#' -   The \':\' (colon) and \'*\' (asterisk) characters are not allowed.
+#' -   The ':' (colon) and '*' (asterisk) characters are not allowed.
 #'
 #' @usage
 #' cloudwatchlogs_create_log_stream(logGroupName, logStreamName)
@@ -615,11 +615,11 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
 #' cloudwatchlogs_describe_destinations(DestinationNamePrefix, nextToken,
 #'   limit)
 #'
-#' @param DestinationNamePrefix The prefix to match. If you don\'t specify a value, no prefix filter is
+#' @param DestinationNamePrefix The prefix to match. If you don't specify a value, no prefix filter is
 #' applied.
 #' @param nextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#' @param limit The maximum number of items returned. If you don\'t specify a value, the
+#' @param limit The maximum number of items returned. If you don't specify a value, the
 #' default is up to 50 items.
 #'
 #' @section Request syntax:
@@ -666,7 +666,7 @@ cloudwatchlogs_describe_destinations <- function(DestinationNamePrefix = NULL, n
 #' results to zero or more export tasks.
 #' @param nextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#' @param limit The maximum number of items returned. If you don\'t specify a value, the
+#' @param limit The maximum number of items returned. If you don't specify a value, the
 #' default is up to 50 items.
 #'
 #' @section Request syntax:
@@ -711,7 +711,7 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #' @param logGroupNamePrefix The prefix to match.
 #' @param nextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#' @param limit The maximum number of items returned. If you don\'t specify a value, the
+#' @param limit The maximum number of items returned. If you don't specify a value, the
 #' default is up to 50 items.
 #'
 #' @section Request syntax:
@@ -778,7 +778,7 @@ cloudwatchlogs_describe_log_groups <- function(logGroupNamePrefix = NULL, nextTo
 #' value is false.
 #' @param nextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#' @param limit The maximum number of items returned. If you don\'t specify a value, the
+#' @param limit The maximum number of items returned. If you don't specify a value, the
 #' default is up to 50 items.
 #'
 #' @section Request syntax:
@@ -827,7 +827,7 @@ cloudwatchlogs_describe_log_streams <- function(logGroupName, logStreamNamePrefi
 #' @param filterNamePrefix The prefix to match.
 #' @param nextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#' @param limit The maximum number of items returned. If you don\'t specify a value, the
+#' @param limit The maximum number of items returned. If you don't specify a value, the
 #' default is up to 50 items.
 #' @param metricName Filters results to include only those with the specified metric name. If
 #' you include this parameter in your request, you must also include the
@@ -1008,11 +1008,11 @@ cloudwatchlogs_describe_resource_policies <- function(nextToken = NULL, limit = 
 #'   filterNamePrefix, nextToken, limit)
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
-#' @param filterNamePrefix The prefix to match. If you don\'t specify a value, no prefix filter is
+#' @param filterNamePrefix The prefix to match. If you don't specify a value, no prefix filter is
 #' applied.
 #' @param nextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
-#' @param limit The maximum number of items returned. If you don\'t specify a value, the
+#' @param limit The maximum number of items returned. If you don't specify a value, the
 #' default is up to 50 items.
 #'
 #' @section Request syntax:
@@ -1208,9 +1208,9 @@ cloudwatchlogs_filter_log_events <- function(logGroupName, logStreamNames = NULL
 #' from a previous call.)
 #' 
 #' Using this token works only when you specify `true` for `startFromHead`.
-#' @param limit The maximum number of log events returned. If you don\'t specify a
-#' value, the maximum is as many log events as can fit in a response size
-#' of 1 MB, up to 10,000 log events.
+#' @param limit The maximum number of log events returned. If you don't specify a value,
+#' the maximum is as many log events as can fit in a response size of 1 MB,
+#' up to 10,000 log events.
 #' @param startFromHead If the value is true, the earliest log events are returned first. If the
 #' value is false, the latest log events are returned first. The default
 #' value is false.
@@ -1577,10 +1577,10 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy)
 #' -   The maximum number of log events in a batch is 10,000.
 #' 
 #' -   There is a quota of 5 requests per second per log stream. Additional
-#'     requests are throttled. This quota can\'t be changed.
+#'     requests are throttled. This quota can't be changed.
 #' 
-#' If a call to PutLogEvents returns \"UnrecognizedClientException\" the
-#' most likely cause is an invalid AWS access key ID or secret key.
+#' If a call to PutLogEvents returns "UnrecognizedClientException" the most
+#' likely cause is an invalid AWS access key ID or secret key.
 #'
 #' @usage
 #' cloudwatchlogs_put_log_events(logGroupName, logStreamName, logEvents,
@@ -1751,7 +1751,7 @@ cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, 
 #' 
 #' The following example creates a resource policy enabling the Route 53
 #' service to put DNS query logs in to the specified log group. Replace
-#' \"logArn\" with the ARN of your CloudWatch Logs resource, such as a log
+#' "logArn" with the ARN of your CloudWatch Logs resource, such as a log
 #' group or log stream.
 #' 
 #' `\{ "Version": "2012-10-17", "Statement": \\[ \{ "Sid": "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": \{ "Service": \\[ "route53.amazonaws.com" \\] \}, "Action":"logs:PutLogEvents", "Resource": "logArn" \} \\] \} `
@@ -1878,8 +1878,8 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' -   An AWS Lambda function belonging to the same account as the
 #'     subscription filter, for same-account delivery.
 #' @param roleArn The ARN of an IAM role that grants CloudWatch Logs permissions to
-#' deliver ingested log events to the destination stream. You don\'t need
-#' to provide the ARN when you are working with a logical destination for
+#' deliver ingested log events to the destination stream. You don't need to
+#' provide the ARN when you are working with a logical destination for
 #' cross-account delivery.
 #' @param distribution The method used to distribute log data to the destination. By default
 #' log data is grouped by log stream, but the grouping can be set to random

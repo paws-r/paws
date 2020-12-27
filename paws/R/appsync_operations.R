@@ -351,7 +351,7 @@ appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationTyp
 #' Creates a `Resolver` object.
 #' 
 #' A resolver converts incoming requests into a format that a data source
-#' can understand and converts the data source\'s responses into GraphQL.
+#' can understand and converts the data source's responses into GraphQL.
 #'
 #' @usage
 #' appsync_create_resolver(apiId, typeName, fieldName, dataSourceName,
@@ -1088,7 +1088,7 @@ appsync_get_type <- function(apiId, typeName, format) {
 #' API keys are deleted automatically sometime after they expire. However,
 #' they may still be included in the response until they have actually been
 #' deleted. You can safely call `DeleteApiKey` to manually delete a key
-#' before it\'s automatically deleted.
+#' before it's automatically deleted.
 #'
 #' @usage
 #' appsync_list_api_keys(apiId, nextToken, maxResults)

@@ -15,7 +15,7 @@ set the permissions boundary.}
 the user.}
 }
 \description{
-Adds or updates the policy that is specified as the IAM user\'s
+Adds or updates the policy that is specified as the IAM user's
 permissions boundary. You can use an AWS managed policy or a customer
 managed policy to set the boundary for a user. Use the boundary to
 control the maximum permissions that the user can have. Setting a

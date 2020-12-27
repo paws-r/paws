@@ -11,7 +11,7 @@ snowball_create_job(JobType, Resources, Description, AddressId,
   TaxDocuments, DeviceConfiguration)
 }
 \arguments{
-\item{JobType}{Defines the type of job that you\'re creating.}
+\item{JobType}{Defines the type of job that you're creating.}
 
 \item{Resources}{Defines the Amazon S3 buckets associated with this job.
 
@@ -41,11 +41,11 @@ created using the
 AWS Identity and Access Management (IAM) API action.}
 
 \item{SnowballCapacityPreference}{If your job is being created in one of the US regions, you have the
-option of specifying what size Snowball you\'d like for this job. In all
+option of specifying what size Snowball you'd like for this job. In all
 other regions, Snowballs come with 80 TB in storage capacity.}
 
-\item{ShippingOption}{The shipping speed for this job. This speed doesn\'t dictate how soon
-you\'ll get the Snowball, rather it represents how quickly the Snowball
+\item{ShippingOption}{The shipping speed for this job. This speed doesn't dictate how soon
+you'll get the Snowball, rather it represents how quickly the Snowball
 moves to its destination while in transit. Regional shipping speeds are
 as follows:
 \itemize{
@@ -62,7 +62,7 @@ shipping, which typically takes less than a week, one way.
 \item{Notification}{Defines the Amazon Simple Notification Service (Amazon SNS) notification
 settings for this job.}
 
-\item{ClusterId}{The ID of a cluster. If you\'re creating a job for a node in a cluster,
+\item{ClusterId}{The ID of a cluster. If you're creating a job for a node in a cluster,
 you need to provide only this \code{clusterId} value. The other job
 attributes are inherited from the cluster.}
 
@@ -88,7 +88,7 @@ regions.}
 Creates a job to import or export data between Amazon S3 and your
 on-premises data center. Your AWS account must have the right trust
 policies and permissions in place to create a job for Snowball. If
-you\'re creating a job for a node in a cluster, you only need to provide
+you're creating a job for a node in a cluster, you only need to provide
 the \code{clusterId} value; the other job attributes are inherited from the
 cluster.
 }

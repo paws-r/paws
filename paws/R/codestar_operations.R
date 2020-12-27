@@ -154,7 +154,7 @@ codestar_create_project <- function(name, id, description = NULL, clientRequestT
 #' Creates a profile for a user that includes user preferences, such as the
 #' display name and email address assocciated with the user, in AWS
 #' CodeStar. The user profile is not project-specific. Information in the
-#' user profile is displayed wherever the user\'s information appears to
+#' user profile is displayed wherever the user's information appears to
 #' other users in AWS CodeStar.
 #'
 #' @usage
@@ -164,11 +164,11 @@ codestar_create_project <- function(name, id, description = NULL, clientRequestT
 #' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) of the user in IAM.
 #' @param displayName &#91;required&#93; The name that will be displayed as the friendly name for the user in AWS
 #' CodeStar.
-#' @param emailAddress &#91;required&#93; The email address that will be displayed as part of the user\'s profile
+#' @param emailAddress &#91;required&#93; The email address that will be displayed as part of the user's profile
 #' in AWS CodeStar.
 #' @param sshPublicKey The SSH public key associated with the user in AWS CodeStar. If a
 #' project owner allows the user remote access to project resources, this
-#' public key will be used along with the user\'s private key for SSH
+#' public key will be used along with the user's private key for SSH
 #' access.
 #'
 #' @section Request syntax:
@@ -369,7 +369,7 @@ codestar_describe_user_profile <- function(userArn) {
 #' Removes a user from a project. Removing a user from a project also
 #' removes the IAM policies from that user that allowed access to the
 #' project and its resources. Disassociating a team member does not remove
-#' that user\'s profile from AWS CodeStar. It does not remove the user from
+#' that user's profile from AWS CodeStar. It does not remove the user from
 #' IAM.
 #'
 #' @usage
@@ -734,8 +734,8 @@ codestar_update_project <- function(id, name = NULL, description = NULL) {
 
 #' Updates a team member's attributes in an AWS CodeStar project
 #'
-#' Updates a team member\'s attributes in an AWS CodeStar project. For
-#' example, you can change a team member\'s role in the project, or change
+#' Updates a team member's attributes in an AWS CodeStar project. For
+#' example, you can change a team member's role in the project, or change
 #' whether they have remote access to project resources.
 #'
 #' @usage
@@ -750,7 +750,7 @@ codestar_update_project <- function(id, name = NULL, description = NULL) {
 #' Teams](http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html)
 #' in the *AWS CodeStar User Guide*.
 #' @param remoteAccessAllowed Whether a team member is allowed to remotely access project resources
-#' using the SSH public key associated with the user\'s profile. Even if
+#' using the SSH public key associated with the user's profile. Even if
 #' this is set to True, the user must associate a public key with their
 #' profile before the user can access resources.
 #'
@@ -786,9 +786,9 @@ codestar_update_team_member <- function(projectId, userArn, projectRole = NULL, 
 
 #' Updates a user's profile in AWS CodeStar
 #'
-#' Updates a user\'s profile in AWS CodeStar. The user profile is not
+#' Updates a user's profile in AWS CodeStar. The user profile is not
 #' project-specific. Information in the user profile is displayed wherever
-#' the user\'s information appears to other users in AWS CodeStar.
+#' the user's information appears to other users in AWS CodeStar.
 #'
 #' @usage
 #' codestar_update_user_profile(userArn, displayName, emailAddress,
@@ -798,11 +798,11 @@ codestar_update_team_member <- function(projectId, userArn, projectRole = NULL, 
 #' CodeStar.
 #' @param displayName The name that is displayed as the friendly name for the user in AWS
 #' CodeStar.
-#' @param emailAddress The email address that is displayed as part of the user\'s profile in
-#' AWS CodeStar.
+#' @param emailAddress The email address that is displayed as part of the user's profile in AWS
+#' CodeStar.
 #' @param sshPublicKey The SSH public key associated with the user in AWS CodeStar. If a
 #' project owner allows the user remote access to project resources, this
-#' public key will be used along with the user\'s private key for SSH
+#' public key will be used along with the user's private key for SSH
 #' access.
 #'
 #' @section Request syntax:

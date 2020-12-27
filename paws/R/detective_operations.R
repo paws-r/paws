@@ -173,7 +173,7 @@ detective_create_members <- function(GraphArn, Message = NULL, Accounts) {
 #' Disables the specified behavior graph and queues it to be deleted
 #'
 #' Disables the specified behavior graph and queues it to be deleted. This
-#' operation removes the graph from each member account\'s list of behavior
+#' operation removes the graph from each member account's list of behavior
 #' graphs.
 #' 
 #' `DeleteGraph` can only be called by the master account for a behavior
@@ -268,7 +268,7 @@ detective_delete_members <- function(GraphArn, AccountIds) {
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph to remove the member account from.
 #' 
-#' The member account\'s member status in the behavior graph must be
+#' The member account's member status in the behavior graph must be
 #' `ENABLED`.
 #'
 #' @section Request syntax:
@@ -500,8 +500,8 @@ detective_list_members <- function(GraphArn, NextToken = NULL, MaxResults = NULL
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph to reject the invitation to.
 #' 
-#' The member account\'s current member status in the behavior graph must
-#' be `INVITED`.
+#' The member account's current member status in the behavior graph must be
+#' `INVITED`.
 #'
 #' @section Request syntax:
 #' ```

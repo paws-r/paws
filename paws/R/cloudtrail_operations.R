@@ -6,7 +6,7 @@ NULL
 #' Adds one or more tags to a trail, up to a limit of 50
 #'
 #' Adds one or more tags to a trail, up to a limit of 50. Overwrites an
-#' existing tag\'s value when a new value is specified for an existing tag
+#' existing tag's value when a new value is specified for an existing tag
 #' key. Tag key names must be unique for a trail; you cannot have two keys
 #' with the same name but different values. If you specify a key without a
 #' value, the tag will be created with the specified key and a value of
@@ -113,11 +113,11 @@ cloudtrail_add_tags <- function(ResourceId, TagsList = NULL) {
 #' identifier that represents the log group to which CloudTrail logs will
 #' be delivered. Not required unless you specify CloudWatchLogsRoleArn.
 #' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write
-#' to a user\'s log group.
+#' to a user's log group.
 #' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs delivered by
-#' CloudTrail. The value can be an alias name prefixed by \"alias/\", a
-#' fully specified ARN to an alias, a fully specified ARN to a key, or a
-#' globally unique identifier.
+#' CloudTrail. The value can be an alias name prefixed by "alias/", a fully
+#' specified ARN to an alias, a fully specified ARN to a key, or a globally
+#' unique identifier.
 #' 
 #' Examples:
 #' 
@@ -608,8 +608,8 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
 #' @param NextToken The token to use to get the next page of results after a previous API
 #' call. This token must be passed in with the same parameters that were
 #' specified in the the original call. For example, if the original call
-#' specified an AttributeKey of \'Username\' with a value of \'root\', the
-#' call with NextToken should include those same parameters.
+#' specified an AttributeKey of 'Username' with a value of 'root', the call
+#' with NextToken should include those same parameters.
 #'
 #' @section Request syntax:
 #' ```
@@ -701,8 +701,8 @@ cloudtrail_list_trails <- function(NextToken = NULL) {
 #' @param NextToken The token to use to get the next page of results after a previous API
 #' call. This token must be passed in with the same parameters that were
 #' specified in the the original call. For example, if the original call
-#' specified an AttributeKey of \'Username\' with a value of \'root\', the
-#' call with NextToken should include those same parameters.
+#' specified an AttributeKey of 'Username' with a value of 'root', the call
+#' with NextToken should include those same parameters.
 #'
 #' @section Request syntax:
 #' ```
@@ -755,8 +755,8 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' 
 #' When an event occurs in your account, CloudTrail evaluates the event
 #' selectors in all trails. For each trail, if the event matches any event
-#' selector, the trail processes and logs the event. If the event doesn\'t
-#' match any event selector, the trail doesn\'t log the event.
+#' selector, the trail processes and logs the event. If the event doesn't
+#' match any event selector, the trail doesn't log the event.
 #' 
 #' Example
 #' 
@@ -771,8 +771,8 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' 4.  The `RunInstances` is a write-only event and it matches your event
 #'     selector. The trail logs the event.
 #' 
-#' 5.  The `GetConsoleOutput` is a read-only event but it doesn\'t match
-#'     your event selector. The trail doesn\'t log the event.
+#' 5.  The `GetConsoleOutput` is a read-only event but it doesn't match
+#'     your event selector. The trail doesn't log the event.
 #' 
 #' The `PutEventSelectors` operation must be called from the region in
 #' which the trail was created; otherwise, an `InvalidHomeRegionException`
@@ -1109,11 +1109,11 @@ cloudtrail_stop_logging <- function(Name) {
 #' identifier that represents the log group to which CloudTrail logs will
 #' be delivered. Not required unless you specify CloudWatchLogsRoleArn.
 #' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write
-#' to a user\'s log group.
+#' to a user's log group.
 #' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs delivered by
-#' CloudTrail. The value can be an alias name prefixed by \"alias/\", a
-#' fully specified ARN to an alias, a fully specified ARN to a key, or a
-#' globally unique identifier.
+#' CloudTrail. The value can be an alias name prefixed by "alias/", a fully
+#' specified ARN to an alias, a fully specified ARN to a key, or a globally
+#' unique identifier.
 #' 
 #' Examples:
 #' 

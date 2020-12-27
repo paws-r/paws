@@ -20,8 +20,8 @@ input data. For more information, see \href{https://docs.aws.amazon.com/comprehe
 
 \item{JobName}{The identifier of the job.}
 
-\item{ClientRequestToken}{A unique identifier for the request. If you don\'t set the client
-request token, Amazon Comprehend Medical generates one.}
+\item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request
+token, Amazon Comprehend Medical generates one.}
 
 \item{KMSKey}{An AWS Key Management Service key to encrypt your output files. If you
 do not specify a key, the files are written in plain text.}

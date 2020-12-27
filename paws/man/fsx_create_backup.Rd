@@ -39,9 +39,9 @@ For more information, see
 If a backup with the specified client request token exists, and the
 parameters match, this operation returns the description of the existing
 backup. If a backup specified client request token exists, and the
-parameters don\'t match, this operation returns
+parameters don't match, this operation returns
 \code{IncompatibleParameterError}. If a backup with the specified client
-request token doesn\'t exist, \code{CreateBackup} does the following:
+request token doesn't exist, \code{CreateBackup} does the following:
 \itemize{
 \item Creates a new Amazon FSx backup with an assigned ID, and an initial
 lifecycle state of \code{CREATING}.
@@ -55,7 +55,7 @@ whether a backup was created. If you use the same client request token
 and the initial call created a backup, the operation returns a
 successful result because all the parameters are the same.
 
-The \code{CreateBackup} operation returns while the backup\'s lifecycle state
+The \code{CreateBackup} operation returns while the backup's lifecycle state
 is still \code{CREATING}. You can check the backup creation status by calling
 the DescribeBackups operation, which returns the backup state along with
 other information.

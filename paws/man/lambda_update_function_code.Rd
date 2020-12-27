@@ -38,15 +38,15 @@ code. This has the same effect as calling PublishVersion separately.}
 \item{DryRun}{Set to true to validate the request parameters and access permissions
 without modifying the function code.}
 
-\item{RevisionId}{Only update the function if the revision ID matches the ID that\'s
+\item{RevisionId}{Only update the function if the revision ID matches the ID that's
 specified. Use this option to avoid modifying a function that has
 changed since you last read it.}
 }
 \description{
-Updates a Lambda function\'s code.
+Updates a Lambda function's code.
 }
 \details{
-The function\'s code is locked when you publish a version. You can\'t
+The function's code is locked when you publish a version. You can't
 modify the code of a published version, only the unpublished version.
 }
 \section{Request syntax}{

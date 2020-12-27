@@ -22,7 +22,7 @@ lambda_list_provisioned_concurrency_configs(FunctionName, Marker,
 The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 
-\item{Marker}{Specify the pagination token that\'s returned by a previous request to
+\item{Marker}{Specify the pagination token that's returned by a previous request to
 retrieve the next page of results.}
 
 \item{MaxItems}{Specify a number to limit the number of configurations returned.}

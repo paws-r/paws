@@ -14,7 +14,7 @@ s3_get_bucket_metrics_configuration(Bucket, Id)
 }
 \description{
 Gets a metrics configuration (specified by the metrics configuration ID)
-from the bucket. Note that this doesn\'t include the daily storage
+from the bucket. Note that this doesn't include the daily storage
 metrics.
 }
 \details{

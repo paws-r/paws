@@ -11,7 +11,7 @@ organizations_accept_handshake(HandshakeId)
 \item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want to accept.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for handshake ID
-string requires \"h-\" followed by from 8 to 32 lowercase letters or
+string requires "h-" followed by from 8 to 32 lowercase letters or
 digits.}
 }
 \description{
@@ -42,7 +42,7 @@ in the \emph{AWS Organizations User Guide.}
 }
 
 After you accept a handshake, it continues to appear in the results of
-relevant APIs for only 30 days. After that, it\'s deleted.
+relevant APIs for only 30 days. After that, it's deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$accept_handshake(

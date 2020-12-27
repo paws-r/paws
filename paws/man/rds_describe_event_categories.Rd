@@ -10,10 +10,10 @@ rds_describe_event_categories(SourceType, Filters)
 \arguments{
 \item{SourceType}{The type of source that is generating the events.
 
-Valid values: db-instance \\| db-parameter-group \\| db-security-group \\|
+Valid values: db-instance | db-parameter-group | db-security-group |
 db-snapshot}
 
-\item{Filters}{This parameter isn\'t currently supported.}
+\item{Filters}{This parameter isn't currently supported.}
 }
 \description{
 Displays a list of categories for all event source types, or, if

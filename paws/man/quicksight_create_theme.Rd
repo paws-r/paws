@@ -20,7 +20,7 @@ inherit from one of the starting themes defined by Amazon QuickSight.
 For a list of the starting themes, use \code{ListThemes} or choose \strong{Themes}
 from within a QuickSight analysis.}
 
-\item{VersionDescription}{A description of the first version of the theme that you\'re creating.
+\item{VersionDescription}{A description of the first version of the theme that you're creating.
 Every time \code{UpdateTheme} is called, a new version is created. Each
 version of the theme has a description of the version in the
 \code{VersionDescription} field.}

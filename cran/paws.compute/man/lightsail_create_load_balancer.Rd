@@ -11,11 +11,11 @@ lightsail_create_load_balancer(loadBalancerName, instancePort,
 \arguments{
 \item{loadBalancerName}{[required] The name of your load balancer.}
 
-\item{instancePort}{[required] The instance port where you\'re creating your load balancer.}
+\item{instancePort}{[required] The instance port where you're creating your load balancer.}
 
 \item{healthCheckPath}{The path you provided to perform the load balancer health check. If you
-didn\'t specify a health check path, Lightsail uses the root path of
-your website (e.g., \code{"/"}).
+didn't specify a health check path, Lightsail uses the root path of your
+website (e.g., \code{"/"}).
 
 You may want to specify a custom health check path other than the root
 of your application if your home page loads slowly or has a lot of media

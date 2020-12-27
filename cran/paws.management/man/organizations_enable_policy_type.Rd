@@ -11,7 +11,7 @@ organizations_enable_policy_type(RootId, PolicyType)
 policy type. You can get the ID from the ListRoots operation.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a root ID
-string requires \"r-\" followed by from 4 to 32 lowercase letters or
+string requires "r-" followed by from 4 to 32 lowercase letters or
 digits.}
 
 \item{PolicyType}{[required] The policy type that you want to enable. You can specify one of the
@@ -34,7 +34,7 @@ This is an asynchronous request that AWS performs in the background. AWS
 recommends that you first use ListRoots to see the status of policy
 types for a specified root, and then use this operation.
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's master
 account.
 
 You can enable a policy type in a root only if that policy type is

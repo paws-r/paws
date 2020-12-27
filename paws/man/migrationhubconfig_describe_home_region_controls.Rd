@@ -11,7 +11,7 @@ migrationhubconfig_describe_home_region_controls(ControlId, HomeRegion,
 \item{ControlId}{The \code{ControlID} is a unique identifier string of your
 \code{HomeRegionControl} object.}
 
-\item{HomeRegion}{The name of the home region you\'d like to view.}
+\item{HomeRegion}{The name of the home region you'd like to view.}
 
 \item{Target}{The target parameter specifies the identifier to which the home region
 is applied, which is always of type \code{ACCOUNT}. It applies the home

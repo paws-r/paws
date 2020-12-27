@@ -30,7 +30,7 @@ Constraints:
 \itemize{
 \item Must contain from 1 to 63 letters, numbers, or hyphens.
 \item First character must be a letter.
-\item Can\'t end with a hyphen or contain two consecutive hyphens.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{mydbinstance}}
@@ -48,7 +48,7 @@ Regions, or for all database engines. For the full list of DB instance
 classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
 in the \emph{Amazon RDS User Guide.}
 
-Importing from Amazon S3 isn\'t supported on the db.t2.micro DB instance
+Importing from Amazon S3 isn't supported on the db.t2.micro DB instance
 class.}
 
 \item{Engine}{[required] The name of the database engine to be used for this instance.
@@ -61,11 +61,11 @@ Constraints:
 \itemize{
 \item Must be 1 to 16 letters or numbers.
 \item First character must be a letter.
-\item Can\'t be a reserved word for the chosen database engine.
+\item Can't be a reserved word for the chosen database engine.
 }}
 
 \item{MasterUserPassword}{The password for the master user. The password can include any printable
-ASCII character except \"/\", \"\"\", or \"@\".
+ASCII character except "/", """, or "@".
 
 Constraints: Must contain from 8 to 41 characters.}
 
@@ -79,12 +79,12 @@ Default: The default DB security group for the database engine.}
 information about AWS Regions and Availability Zones, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html}{Regions and Availability Zones}
 in the \emph{Amazon RDS User Guide.}
 
-Default: A random, system-chosen Availability Zone in the endpoint\'s
-AWS Region.
+Default: A random, system-chosen Availability Zone in the endpoint's AWS
+Region.
 
 Example: \verb{us-east-1d}
 
-Constraint: The \code{AvailabilityZone} parameter can\'t be specified if the
+Constraint: The \code{AvailabilityZone} parameter can't be specified if the
 DB instance is a Multi-AZ deployment. The specified Availability Zone
 must be in the same AWS Region as the current endpoint.}
 
@@ -133,7 +133,7 @@ Valid Values: \code{1150}-\code{65535}
 Default: \code{3306}}
 
 \item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
-If the DB instance is a Multi-AZ deployment, you can\'t set the
+If the DB instance is a Multi-AZ deployment, you can't set the
 \code{AvailabilityZone} parameter.}
 
 \item{EngineVersion}{The version number of the database engine to use. Choose the latest
@@ -158,13 +158,13 @@ is used.}
 \item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
 
 When the DB instance is publicly accessible, its DNS endpoint resolves
-to the private IP address from within the DB instance\'s VPC, and to the
-public IP address from outside of the DB instance\'s VPC. Access to the
+to the private IP address from within the DB instance's VPC, and to the
+public IP address from outside of the DB instance's VPC. Access to the
 DB instance is ultimately controlled by the security group it uses, and
 that public access is not permitted if the security group assigned to
-the DB instance doesn\'t permit it.
+the DB instance doesn't permit it.
 
-When the DB instance isn\'t publicly accessible, it is an internal DB
+When the DB instance isn't publicly accessible, it is an internal DB
 instance with a DNS name that resolves to a private IP address.
 
 For more information, see CreateDBInstance.}
@@ -175,7 +175,7 @@ in the \emph{Amazon RDS User Guide.}}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB instance.
 
-Valid values: \code{standard} \\| \code{gp2} \\| \code{io1}
+Valid values: \code{standard} | \code{gp2} | \code{io1}
 
 If you specify \code{io1}, you must also include a value for the \code{Iops}
 parameter.
@@ -277,7 +277,7 @@ instance class of the DB instance.}
 uses its default processor features.}
 
 \item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
-enabled. The database can\'t be deleted when deletion protection is
+enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 }

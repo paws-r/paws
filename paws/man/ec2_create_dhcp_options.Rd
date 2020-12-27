@@ -32,9 +32,9 @@ specify the IP addresses in a single parameter, separated by commas.
 To have your instance receive a custom DNS hostname as specified in
 \code{domain-name}, you must set \code{domain-name-servers} to a custom DNS
 server.
-\item \code{domain-name} - If you\'re using AmazonProvidedDNS in \code{us-east-1},
-specify \code{ec2.internal}. If you\'re using AmazonProvidedDNS in
-another Region, specify \code{region.compute.internal} (for example,
+\item \code{domain-name} - If you're using AmazonProvidedDNS in \code{us-east-1},
+specify \code{ec2.internal}. If you're using AmazonProvidedDNS in another
+Region, specify \code{region.compute.internal} (for example,
 \verb{ap-northeast-1.compute.internal}). Otherwise, specify a domain name
 (for example, \code{ExampleCompany.com}). This value is used to complete
 unqualified DNS hostnames. \strong{Important}: Some Linux operating

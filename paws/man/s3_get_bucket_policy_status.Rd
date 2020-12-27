@@ -19,7 +19,7 @@ S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-
 }
 \details{
 For more information about when Amazon S3 considers a bucket public, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of \"Public\"}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of "Public"}.
 
 The following operations are related to \code{GetBucketPolicyStatus}:
 \itemize{

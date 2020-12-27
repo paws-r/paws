@@ -15,7 +15,7 @@ share is not deleted until all data is uploaded to AWS. This process
 aborts the data upload process, and the file share enters the
 \code{FORCE_DELETING} status.
 
-Valid Values: \code{true} \\| \code{false}}
+Valid Values: \code{true} | \code{false}}
 }
 \description{
 Deletes a file share from a file gateway. This operation is only

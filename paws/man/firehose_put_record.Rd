@@ -51,7 +51,7 @@ the time they are added to a delivery stream as it tries to send the
 records to the destination. If the destination is unreachable for more
 than 24 hours, the data is no longer available.
 
-Don\'t concatenate two or more base64 strings to form the data fields of
+Don't concatenate two or more base64 strings to form the data fields of
 your records. Instead, concatenate the raw data, then perform base64
 encoding.
 }

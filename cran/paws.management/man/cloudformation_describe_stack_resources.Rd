@@ -11,7 +11,7 @@ cloudformation_describe_stack_resources(StackName, LogicalResourceId,
 \item{StackName}{The name or the unique stack ID that is associated with the stack, which
 are not always interchangeable:
 \itemize{
-\item Running stacks: You can specify either the stack\'s name or its
+\item Running stacks: You can specify either the stack's name or its
 unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
 }

@@ -17,9 +17,8 @@ in the \emph{AWS General Reference}.}
 \item{VersionId}{[required] Identifies the policy version to retrieve.
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that
-consists of the lowercase letter \'v\' followed by one or two digits,
-and optionally followed by a period \'.\' and a string of letters and
-digits.}
+consists of the lowercase letter 'v' followed by one or two digits, and
+optionally followed by a period '.' and a string of letters and digits.}
 }
 \description{
 Retrieves information about the specified version of the specified

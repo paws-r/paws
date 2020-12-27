@@ -727,7 +727,7 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
 #' imagebuilder_get_component(componentBuildVersionArn)
 #'
 #' @param componentBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the component that you want to
-#' retrieve. Regex requires \"/`\\d`+\\$\" suffix.
+#' retrieve. Regex requires "/`\\d`+$" suffix.
 #'
 #' @section Request syntax:
 #' ```

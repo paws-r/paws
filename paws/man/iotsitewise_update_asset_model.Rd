@@ -36,28 +36,28 @@ information, see
 in the \emph{AWS IoT SiteWise User Guide}.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{
 Updates an asset model and all of the assets that were created from the
 model. Each asset created from the model inherits the updated asset
-model\'s property and hierarchy definitions. For more information, see
+model's property and hierarchy definitions. For more information, see
 \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html}{Updating Assets and Models}
 in the \emph{AWS IoT SiteWise User Guide}.
 }
 \details{
 This operation overwrites the existing model with the provided model. To
-avoid deleting your asset model\'s properties or hierarchies, you must
+avoid deleting your asset model's properties or hierarchies, you must
 include their IDs and definitions in the updated asset model payload.
 For more information, see
 \href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModel.html}{DescribeAssetModel}.
 
-If you remove a property from an asset model or update a property\'s
+If you remove a property from an asset model or update a property's
 formula expression, AWS IoT SiteWise deletes all previous data for that
 property. If you remove a hierarchy definition from an asset model, AWS
 IoT SiteWise disassociates every asset associated with that hierarchy.
-You can\'t change the type or data type of an existing property.
+You can't change the type or data type of an existing property.
 }
 \section{Request syntax}{
 \preformatted{svc$update_asset_model(

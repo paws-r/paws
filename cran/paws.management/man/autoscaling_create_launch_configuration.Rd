@@ -127,7 +127,7 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.
 The default value is \code{false}.}
 
 \item{AssociatePublicIpAddress}{For Auto Scaling groups that are running in a virtual private cloud
-(VPC), specifies whether to assign a public IP address to the group\'s
+(VPC), specifies whether to assign a public IP address to the group's
 instances. If you specify \code{true}, each instance in the Auto Scaling
 group receives a unique public IP address. For more information, see
 \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html}{Launching Auto Scaling Instances in a VPC}
@@ -156,7 +156,7 @@ for \code{VPCZoneIdentifier} when you create your group.
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-tenancy}{Instance Placement Tenancy}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
-Valid Values: \code{default} \\| \code{dedicated}}
+Valid Values: \code{default} | \code{dedicated}}
 }
 \description{
 Creates a launch configuration.

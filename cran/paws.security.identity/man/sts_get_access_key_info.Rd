@@ -37,7 +37,7 @@ in the \emph{IAM User Guide}.
 This operation does not indicate the state of the access key. The key
 might be active, inactive, or deleted. Active keys might not have
 permissions to perform an operation. Providing a deleted access key
-might return an error that the key doesn\'t exist.
+might return an error that the key doesn't exist.
 }
 \section{Request syntax}{
 \preformatted{svc$get_access_key_info(

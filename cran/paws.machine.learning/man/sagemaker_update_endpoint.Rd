@@ -23,10 +23,10 @@ specified in a new \code{EndpointConfig} call when updating an endpoint, set
 \code{RetainAllVariantProperties} to \code{false}.}
 
 \item{ExcludeRetainedVariantProperties}{When you are updating endpoint resources with
-UpdateEndpointInput\\$RetainAllVariantProperties, whose value is set to
+UpdateEndpointInput$RetainAllVariantProperties, whose value is set to
 \code{true}, \code{ExcludeRetainedVariantProperties} specifies the list of type
 VariantProperty to override with the values provided by
-\code{EndpointConfig}. If you don\'t specify a value for
+\code{EndpointConfig}. If you don't specify a value for
 \code{ExcludeAllVariantProperties}, no variant properties are overridden.}
 }
 \description{

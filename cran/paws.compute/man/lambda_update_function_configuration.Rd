@@ -23,7 +23,7 @@ lambda_update_function_configuration(FunctionName, Role, Handler,
 The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 
-\item{Role}{The Amazon Resource Name (ARN) of the function\'s execution role.}
+\item{Role}{The Amazon Resource Name (ARN) of the function's execution role.}
 
 \item{Handler}{The name of the method within your code that Lambda calls to execute
 your function. The format includes the file name. It can also include
@@ -36,7 +36,7 @@ information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/programming-
 it. The default is 3 seconds. The maximum allowed value is 900 seconds.}
 
 \item{MemorySize}{The amount of memory that your function has access to. Increasing the
-function\'s memory also increases its CPU allocation. The default value
+function's memory also increases its CPU allocation. The default value
 is 128 MB. The value must be a multiple of 64 MB.}
 
 \item{VpcConfig}{For network connectivity to AWS resources in a VPC, specify a list of
@@ -47,26 +47,26 @@ more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/configu
 \item{Environment}{Environment variables that are accessible from function code during
 execution.}
 
-\item{Runtime}{The identifier of the function\'s
+\item{Runtime}{The identifier of the function's
 \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime}.}
 
 \item{DeadLetterConfig}{A dead letter queue configuration that specifies the queue or topic
 where Lambda sends asynchronous events when they fail processing. For
 more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq}{Dead Letter Queues}.}
 
-\item{KMSKeyArn}{The ARN of the AWS Key Management Service (AWS KMS) key that\'s used to
-encrypt your function\'s environment variables. If it\'s not provided,
-AWS Lambda uses a default service key.}
+\item{KMSKeyArn}{The ARN of the AWS Key Management Service (AWS KMS) key that's used to
+encrypt your function's environment variables. If it's not provided, AWS
+Lambda uses a default service key.}
 
 \item{TracingConfig}{Set \code{Mode} to \code{Active} to sample and trace a subset of incoming requests
 with AWS X-Ray.}
 
-\item{RevisionId}{Only update the function if the revision ID matches the ID that\'s
+\item{RevisionId}{Only update the function if the revision ID matches the ID that's
 specified. Use this option to avoid modifying a function that has
 changed since you last read it.}
 
 \item{Layers}{A list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{function layers}
-to add to the function\'s execution environment. Specify each layer by
+to add to the function's execution environment. Specify each layer by
 its ARN, including the version.}
 
 \item{FileSystemConfigs}{Connection settings for an Amazon EFS file system.}
@@ -77,7 +77,7 @@ Modify the version-specific settings of a Lambda function.
 \details{
 When you update a function, Lambda provisions an instance of the
 function and its supporting resources. If your function connects to a
-VPC, this process can take a minute. During this time, you can\'t modify
+VPC, this process can take a minute. During this time, you can't modify
 the function, but you can still invoke it. The \code{LastUpdateStatus},
 \code{LastUpdateStatusReason}, and \code{LastUpdateStatusReasonCode} fields in the
 response from GetFunctionConfiguration indicate when the update is
@@ -85,7 +85,7 @@ complete and the function is processing events with the new
 configuration. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html}{Function States}.
 
 These settings can vary between versions of a function and are locked
-when you publish a version. You can\'t modify the configuration of a
+when you publish a version. You can't modify the configuration of a
 published version, only the unpublished version.
 
 To configure function concurrency, use PutFunctionConcurrency. To grant

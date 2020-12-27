@@ -23,15 +23,15 @@ hard limit blocks the launch of new instances.}
 \item{LicenseRules}{License rules. The syntax is \\#name=value (for example,
 \\#allowedTenancy=EC2-DedicatedHost). Available rules vary by dimension.
 \itemize{
-\item \code{Cores} dimension: \code{allowedTenancy} \\| \code{maximumCores} \\|
+\item \code{Cores} dimension: \code{allowedTenancy} | \code{maximumCores} |
 \code{minimumCores}
-\item \code{Instances} dimension: \code{allowedTenancy} \\| \code{maximumCores} \\|
-\code{minimumCores} \\| \code{maximumSockets} \\| \code{minimumSockets} \\|
-\code{maximumVcpus} \\| \code{minimumVcpus}
-\item \code{Sockets} dimension: \code{allowedTenancy} \\| \code{maximumSockets} \\|
+\item \code{Instances} dimension: \code{allowedTenancy} | \code{maximumCores} |
+\code{minimumCores} | \code{maximumSockets} | \code{minimumSockets} |
+\code{maximumVcpus} | \code{minimumVcpus}
+\item \code{Sockets} dimension: \code{allowedTenancy} | \code{maximumSockets} |
 \code{minimumSockets}
-\item \code{vCPUs} dimension: \code{allowedTenancy} \\| \code{honorVcpuOptimization} \\|
-\code{maximumVcpus} \\| \code{minimumVcpus}
+\item \code{vCPUs} dimension: \code{allowedTenancy} | \code{honorVcpuOptimization} |
+\code{maximumVcpus} | \code{minimumVcpus}
 }}
 
 \item{Tags}{Tags to add to the license configuration.}

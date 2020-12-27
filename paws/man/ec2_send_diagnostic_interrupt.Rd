@@ -3,8 +3,8 @@
 \name{ec2_send_diagnostic_interrupt}
 \alias{ec2_send_diagnostic_interrupt}
 \title{Sends a diagnostic interrupt to the specified Amazon EC2 instance to
-trigger a \emph{kernel panic} (on Linux instances), or a \emph{blue screen}/\emph{stop
-error} (on Windows instances)}
+trigger a kernel panic (on Linux instances), or a blue screen/stop error
+(on Windows instances)}
 \usage{
 ec2_send_diagnostic_interrupt(InstanceId, DryRun)
 }

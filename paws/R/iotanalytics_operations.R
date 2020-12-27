@@ -11,8 +11,8 @@ NULL
 #' iotanalytics_batch_put_message(channelName, messages)
 #'
 #' @param channelName &#91;required&#93; The name of the channel where the messages are sent.
-#' @param messages &#91;required&#93; The list of messages to be sent. Each message has format: \'\{
-#' \"messageId\": \"string\", \"payload\": \"string\"\}\'.
+#' @param messages &#91;required&#93; The list of messages to be sent. Each message has format: '\{
+#' "messageId": "string", "payload": "string"\}'.
 #' 
 #' Note that the field names of message payloads (data) that you send to
 #' AWS IoT Analytics:
@@ -25,16 +25,16 @@ NULL
 #' -   Cannot contain hyphens (-).
 #' 
 #' -   In regular expression terms:
-#'     \"\\^\[A-Za-z\\_\](\[A-Za-z0-9\]*\\|\[A-Za-z0-9\]\[A-Za-z0-9\\_\]*)\\$\".
+#'     "^\[A-Za-z\\_\](\[A-Za-z0-9\]*|\[A-Za-z0-9\]\[A-Za-z0-9\\_\]*)$".
 #' 
 #' -   Cannot be greater than 255 characters.
 #' 
-#' -   Are case-insensitive. (Fields named \"foo\" and \"FOO\" in the same
+#' -   Are case-insensitive. (Fields named "foo" and "FOO" in the same
 #'     payload are considered duplicates.)
 #' 
-#' For example, \{\"temp\\_01\": 29\} or \{\"\\_temp\\_01\": 29\} are valid, but
-#' \{\"temp-01\": 29\}, \{\"01\\_temp\": 29\} or \{\"\\_\\_temp\\_01\": 29\} are
-#' invalid in message payloads.
+#' For example, \{"temp\\_01": 29\} or \{"\\_temp\\_01": 29\} are valid, but
+#' \{"temp-01": 29\}, \{"01\\_temp": 29\} or \{"\\_\\_temp\\_01": 29\} are invalid in
+#' message payloads.
 #'
 #' @section Request syntax:
 #' ```
@@ -78,7 +78,7 @@ iotanalytics_batch_put_message <- function(channelName, messages) {
 #'
 #' @param pipelineName &#91;required&#93; The name of pipeline for which data reprocessing is canceled.
 #' @param reprocessingId &#91;required&#93; The ID of the reprocessing task (returned by
-#' \"StartPipelineReprocessing\").
+#' "StartPipelineReprocessing").
 #'
 #' @section Request syntax:
 #' ```
@@ -119,12 +119,12 @@ iotanalytics_cancel_pipeline_reprocessing <- function(pipelineName, reprocessing
 #'   retentionPeriod, tags)
 #'
 #' @param channelName &#91;required&#93; The name of the channel.
-#' @param channelStorage Where channel data is stored. You may choose one of \"serviceManagedS3\"
-#' or \"customerManagedS3\" storage. If not specified, the default is
-#' \"serviceManagedS3\". This cannot be changed after creation of the
+#' @param channelStorage Where channel data is stored. You may choose one of "serviceManagedS3"
+#' or "customerManagedS3" storage. If not specified, the default is
+#' "serviceManagedS3". This cannot be changed after creation of the
 #' channel.
 #' @param retentionPeriod How long, in days, message data is kept for the channel. When
-#' \"customerManagedS3\" storage is selected, this parameter is ignored.
+#' "customerManagedS3" storage is selected, this parameter is ignored.
 #' @param tags Metadata which can be used to manage the channel.
 #'
 #' @section Request syntax:
@@ -175,11 +175,11 @@ iotanalytics_create_channel <- function(channelName, channelStorage = NULL, rete
 #' Creates a data set
 #'
 #' Creates a data set. A data set stores data retrieved from a data store
-#' by applying a \"queryAction\" (a SQL query) or a \"containerAction\"
+#' by applying a "queryAction" (a SQL query) or a "containerAction"
 #' (executing a containerized application). This operation creates the
 #' skeleton of a data set. The data set can be populated manually by
-#' calling \"CreateDatasetContent\" or automatically according to a
-#' \"trigger\" you specify.
+#' calling "CreateDatasetContent" or automatically according to a "trigger"
+#' you specify.
 #'
 #' @usage
 #' iotanalytics_create_dataset(datasetName, actions, triggers,
@@ -188,7 +188,7 @@ iotanalytics_create_channel <- function(channelName, channelStorage = NULL, rete
 #' @param datasetName &#91;required&#93; The name of the data set.
 #' @param actions &#91;required&#93; A list of actions that create the data set contents.
 #' @param triggers A list of triggers. A trigger causes data set contents to be populated
-#' at a specified time interval or when another data set\'s contents are
+#' at a specified time interval or when another data set's contents are
 #' created. The list of triggers can be empty or contain up to five
 #' **DataSetTrigger** objects.
 #' @param contentDeliveryRules When data set contents are created they are delivered to destinations
@@ -202,8 +202,7 @@ iotanalytics_create_channel <- function(channelName, channelStorage = NULL, rete
 #' @param versioningConfiguration \[Optional\] How many versions of data set contents are kept. If not
 #' specified or set to null, only the latest version plus the latest
 #' succeeded version (if they are different) are kept for the time period
-#' specified by the \"retentionPeriod\" parameter. (For more information,
-#' see
+#' specified by the "retentionPeriod" parameter. (For more information, see
 #' https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html\\#aws-iot-analytics-dataset-versions)
 #' @param tags Metadata which can be used to manage the data set.
 #'
@@ -318,8 +317,8 @@ iotanalytics_create_dataset <- function(datasetName, actions, triggers = NULL, c
 #' Creates the content of a data set by applying a "queryAction" (a SQL
 #' query) or a "containerAction" (executing a containerized application)
 #'
-#' Creates the content of a data set by applying a \"queryAction\" (a SQL
-#' query) or a \"containerAction\" (executing a containerized application).
+#' Creates the content of a data set by applying a "queryAction" (a SQL
+#' query) or a "containerAction" (executing a containerized application).
 #'
 #' @usage
 #' iotanalytics_create_dataset_content(datasetName)
@@ -363,11 +362,11 @@ iotanalytics_create_dataset_content <- function(datasetName) {
 #'
 #' @param datastoreName &#91;required&#93; The name of the data store.
 #' @param datastoreStorage Where data store data is stored. You may choose one of
-#' \"serviceManagedS3\" or \"customerManagedS3\" storage. If not specified,
-#' the default is \"serviceManagedS3\". This cannot be changed after the
-#' data store is created.
+#' "serviceManagedS3" or "customerManagedS3" storage. If not specified, the
+#' default is "serviceManagedS3". This cannot be changed after the data
+#' store is created.
 #' @param retentionPeriod How long, in days, message data is kept for the data store. When
-#' \"customerManagedS3\" storage is selected, this parameter is ignored.
+#' "customerManagedS3" storage is selected, this parameter is ignored.
 #' @param tags Metadata which can be used to manage the data store.
 #'
 #' @section Request syntax:
@@ -427,11 +426,11 @@ iotanalytics_create_datastore <- function(datastoreName, datastoreStorage = NULL
 #' iotanalytics_create_pipeline(pipelineName, pipelineActivities, tags)
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline.
-#' @param pipelineActivities &#91;required&#93; A list of \"PipelineActivity\" objects. Activities perform
-#' transformations on your messages, such as removing, renaming or adding
-#' message attributes; filtering messages based on attribute values;
-#' invoking your Lambda functions on messages for advanced processing; or
-#' performing mathematical transformations to normalize device data.
+#' @param pipelineActivities &#91;required&#93; A list of "PipelineActivity" objects. Activities perform transformations
+#' on your messages, such as removing, renaming or adding message
+#' attributes; filtering messages based on attribute values; invoking your
+#' Lambda functions on messages for advanced processing; or performing
+#' mathematical transformations to normalize device data.
 #' 
 #' The list can be 2-25 **PipelineActivity** objects and must contain both
 #' a `channel` and a `datastore` activity. Each entry in the list must
@@ -622,9 +621,9 @@ iotanalytics_delete_dataset <- function(datasetName) {
 #'
 #' @param datasetName &#91;required&#93; The name of the data set whose content is deleted.
 #' @param versionId The version of the data set whose content is deleted. You can also use
-#' the strings \"\\$LATEST\" or \"\\$LATEST\\_SUCCEEDED\" to delete the latest
-#' or latest successfully completed data set. If not specified,
-#' \"\\$LATEST\\_SUCCEEDED\" is the default.
+#' the strings "$LATEST" or "$LATEST\\_SUCCEEDED" to delete the latest or
+#' latest successfully completed data set. If not specified,
+#' "$LATEST\\_SUCCEEDED" is the default.
 #'
 #' @section Request syntax:
 #' ```
@@ -919,9 +918,9 @@ iotanalytics_describe_pipeline <- function(pipelineName) {
 #'
 #' @param datasetName &#91;required&#93; The name of the data set whose contents are retrieved.
 #' @param versionId The version of the data set whose contents are retrieved. You can also
-#' use the strings \"\\$LATEST\" or \"\\$LATEST\\_SUCCEEDED\" to retrieve the
+#' use the strings "$LATEST" or "$LATEST\\_SUCCEEDED" to retrieve the
 #' contents of the latest or latest successfully completed data set. If not
-#' specified, \"\\$LATEST\\_SUCCEEDED\" is the default.
+#' specified, "$LATEST\\_SUCCEEDED" is the default.
 #'
 #' @section Request syntax:
 #' ```
@@ -1255,12 +1254,12 @@ iotanalytics_put_logging_options <- function(loggingOptions) {
 #' @usage
 #' iotanalytics_run_pipeline_activity(pipelineActivity, payloads)
 #'
-#' @param pipelineActivity &#91;required&#93; The pipeline activity that is run. This must not be a \'channel\'
-#' activity or a \'datastore\' activity because these activities are used
-#' in a pipeline only to load the original message and to store the
-#' (possibly) transformed message. If a \'lambda\' activity is specified,
-#' only short-running Lambda functions (those with a timeout of less than
-#' 30 seconds or less) can be used.
+#' @param pipelineActivity &#91;required&#93; The pipeline activity that is run. This must not be a 'channel' activity
+#' or a 'datastore' activity because these activities are used in a
+#' pipeline only to load the original message and to store the (possibly)
+#' transformed message. If a 'lambda' activity is specified, only
+#' short-running Lambda functions (those with a timeout of less than 30
+#' seconds or less) can be used.
 #' @param payloads &#91;required&#93; The sample message payloads on which the pipeline activity is run.
 #'
 #' @section Request syntax:
@@ -1543,12 +1542,12 @@ iotanalytics_untag_resource <- function(resourceArn, tagKeys) {
 #'   retentionPeriod)
 #'
 #' @param channelName &#91;required&#93; The name of the channel to be updated.
-#' @param channelStorage Where channel data is stored. You may choose one of \"serviceManagedS3\"
-#' or \"customerManagedS3\" storage. If not specified, the default is
-#' \"serviceManagedS3\". This cannot be changed after creation of the
+#' @param channelStorage Where channel data is stored. You may choose one of "serviceManagedS3"
+#' or "customerManagedS3" storage. If not specified, the default is
+#' "serviceManagedS3". This cannot be changed after creation of the
 #' channel.
 #' @param retentionPeriod How long, in days, message data is kept for the channel. The retention
-#' period cannot be updated if the channel\'s S3 storage is
+#' period cannot be updated if the channel's S3 storage is
 #' customer-managed.
 #'
 #' @section Request syntax:
@@ -1599,17 +1598,16 @@ iotanalytics_update_channel <- function(channelName, channelStorage = NULL, rete
 #'   contentDeliveryRules, retentionPeriod, versioningConfiguration)
 #'
 #' @param datasetName &#91;required&#93; The name of the data set to update.
-#' @param actions &#91;required&#93; A list of \"DatasetAction\" objects.
-#' @param triggers A list of \"DatasetTrigger\" objects. The list can be empty or can
-#' contain up to five **DataSetTrigger** objects.
+#' @param actions &#91;required&#93; A list of "DatasetAction" objects.
+#' @param triggers A list of "DatasetTrigger" objects. The list can be empty or can contain
+#' up to five **DataSetTrigger** objects.
 #' @param contentDeliveryRules When data set contents are created they are delivered to destinations
 #' specified here.
 #' @param retentionPeriod How long, in days, data set contents are kept for the data set.
 #' @param versioningConfiguration \[Optional\] How many versions of data set contents are kept. If not
 #' specified or set to null, only the latest version plus the latest
 #' succeeded version (if they are different) are kept for the time period
-#' specified by the \"retentionPeriod\" parameter. (For more information,
-#' see
+#' specified by the "retentionPeriod" parameter. (For more information, see
 #' https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html\\#aws-iot-analytics-dataset-versions)
 #'
 #' @section Request syntax:
@@ -1724,12 +1722,12 @@ iotanalytics_update_dataset <- function(datasetName, actions, triggers = NULL, c
 #'
 #' @param datastoreName &#91;required&#93; The name of the data store to be updated.
 #' @param retentionPeriod How long, in days, message data is kept for the data store. The
-#' retention period cannot be updated if the data store\'s S3 storage is
+#' retention period cannot be updated if the data store's S3 storage is
 #' customer-managed.
 #' @param datastoreStorage Where data store data is stored. You may choose one of
-#' \"serviceManagedS3\" or \"customerManagedS3\" storage. If not specified,
-#' the default is \"serviceManagedS3\". This cannot be changed after the
-#' data store is created.
+#' "serviceManagedS3" or "customerManagedS3" storage. If not specified, the
+#' default is "serviceManagedS3". This cannot be changed after the data
+#' store is created.
 #'
 #' @section Request syntax:
 #' ```
@@ -1780,11 +1778,11 @@ iotanalytics_update_datastore <- function(datastoreName, retentionPeriod = NULL,
 #' iotanalytics_update_pipeline(pipelineName, pipelineActivities)
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline to update.
-#' @param pipelineActivities &#91;required&#93; A list of \"PipelineActivity\" objects. Activities perform
-#' transformations on your messages, such as removing, renaming or adding
-#' message attributes; filtering messages based on attribute values;
-#' invoking your Lambda functions on messages for advanced processing; or
-#' performing mathematical transformations to normalize device data.
+#' @param pipelineActivities &#91;required&#93; A list of "PipelineActivity" objects. Activities perform transformations
+#' on your messages, such as removing, renaming or adding message
+#' attributes; filtering messages based on attribute values; invoking your
+#' Lambda functions on messages for advanced processing; or performing
+#' mathematical transformations to normalize device data.
 #' 
 #' The list can be 2-25 **PipelineActivity** objects and must contain both
 #' a `channel` and a `datastore` activity. Each entry in the list must

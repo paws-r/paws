@@ -20,7 +20,7 @@ associated with the first interaction with the contact center.}
 \description{
 This API starts recording the contact when the agent joins the call.
 StartContactRecording is a one-time action. For example, if you use
-StopContactRecording to stop recording an ongoing call, you can\'t use
+StopContactRecording to stop recording an ongoing call, you can't use
 StartContactRecording to restart it. For scenarios where the recording
 has started and you want to suspend and resume it, such as when
 collecting sensitive information (for example, a credit card number),

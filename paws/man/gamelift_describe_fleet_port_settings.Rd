@@ -11,14 +11,14 @@ gamelift_describe_fleet_port_settings(FleetId)
 use either the fleet ID or ARN value.}
 }
 \description{
-Retrieves a fleet\'s inbound connection permissions. Connection
+Retrieves a fleet's inbound connection permissions. Connection
 permissions specify the range of IP addresses and port settings that
 incoming traffic can use to access server processes in the fleet. Game
 sessions that are running on instances in the fleet use connections that
 fall in this range.
 }
 \details{
-To get a fleet\'s inbound connection permissions, specify the fleet\'s
+To get a fleet's inbound connection permissions, specify the fleet's
 unique identifier. If successful, a collection of IpPermission objects
 is returned for the requested fleet ID. If the requested fleet has been
 deleted, the result set is empty.

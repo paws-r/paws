@@ -322,7 +322,7 @@ acm_get_certificate <- function(CertificateArn) {
 #' 
 #' -   When you import a certificate by using an SDK, you must specify the
 #'     certificate, the certificate chain, and the private key files in the
-#'     manner required by the programming language you\'re using.
+#'     manner required by the programming language you're using.
 #' 
 #' -   The cryptographic algorithm of an imported certificate must match
 #'     the algorithm of the signing CA. For example, if the signing CA key
@@ -451,7 +451,7 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
 #' Lists the tags that have been applied to the ACM certificate
 #'
 #' Lists the tags that have been applied to the ACM certificate. Use the
-#' certificate\'s Amazon Resource Name (ARN) to specify the certificate. To
+#' certificate's Amazon Resource Name (ARN) to specify the certificate. To
 #' add a tag to an ACM certificate, use the AddTagsToCertificate action. To
 #' delete a tag, use the RemoveTagsFromCertificate action.
 #'
@@ -774,15 +774,15 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #' the domain registrant, technical contact, and administrative contact in
 #' WHOIS and the following five addresses:
 #' 
-#' -   admin\\@@subdomain.example.com
+#' -   admin@@subdomain.example.com
 #' 
-#' -   administrator\\@@subdomain.example.com
+#' -   administrator@@subdomain.example.com
 #' 
-#' -   hostmaster\\@@subdomain.example.com
+#' -   hostmaster@@subdomain.example.com
 #' 
-#' -   postmaster\\@@subdomain.example.com
+#' -   postmaster@@subdomain.example.com
 #' 
-#' -   webmaster\\@@subdomain.example.com
+#' -   webmaster@@subdomain.example.com
 #'
 #' @section Request syntax:
 #' ```

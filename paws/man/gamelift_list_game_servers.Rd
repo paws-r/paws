@@ -2,8 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_list_game_servers}
 \alias{gamelift_list_game_servers}
-\title{THIS ACTION IS PART OF AMAZON GAMELIFT FLEETIQ WITH GAME SERVER GROUPS,
-WHICH IS IN PREVIEW RELEASE AND IS SUBJECT TO CHANGE}
+\title{This action is part of Amazon GameLift FleetIQ with game server groups,
+which is in preview release and is subject to change}
 \usage{
 gamelift_list_game_servers(GameServerGroupName, SortOrder, Limit,
   NextToken)
@@ -12,7 +12,7 @@ gamelift_list_game_servers(GameServerGroupName, SortOrder, Limit,
 \item{GameServerGroupName}{[required] An identifier for the game server group for the game server you want to
 list. Use either the GameServerGroup name or ARN value.}
 
-\item{SortOrder}{Indicates how to sort the returned data based on the game servers\'
+\item{SortOrder}{Indicates how to sort the returned data based on the game servers'
 custom key sort value. If this parameter is left empty, the list of game
 servers is returned in no particular order.}
 

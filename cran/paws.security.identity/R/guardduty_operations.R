@@ -11,7 +11,7 @@ NULL
 #' guardduty_accept_invitation(DetectorId, MasterId, InvitationId)
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
-#' @param MasterId &#91;required&#93; The account ID of the master GuardDuty account whose invitation you\'re
+#' @param MasterId &#91;required&#93; The account ID of the master GuardDuty account whose invitation you're
 #' accepting.
 #' @param InvitationId &#91;required&#93; The value that is used to validate the master account to the member
 #' account.
@@ -51,8 +51,8 @@ guardduty_accept_invitation <- function(DetectorId, MasterId, InvitationId) {
 #' Archives GuardDuty findings that are specified by the list of finding
 #' IDs.
 #' 
-#' Only the master account can archive findings. Member accounts don\'t
-#' have permission to archive findings from their accounts.
+#' Only the master account can archive findings. Member accounts don't have
+#' permission to archive findings from their accounts.
 #'
 #' @usage
 #' guardduty_archive_findings(DetectorId, FindingIds)
@@ -254,9 +254,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   service.archived
 #' 
 #'     When this attribute is set to TRUE, only archived findings are
-#'     listed. When it\'s set to FALSE, only unarchived findings are
-#'     listed. When this attribute is not set, all existing findings are
-#'     listed.
+#'     listed. When it's set to FALSE, only unarchived findings are listed.
+#'     When this attribute is not set, all existing findings are listed.
 #' 
 #' -   service.resourceRole
 #' 
@@ -339,7 +338,7 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' Creates a new IPSet, which is called a trusted IP list in the console
 #' user interface. An IPSet is a list of IP addresses that are trusted for
 #' secure communication with AWS infrastructure and applications. GuardDuty
-#' doesn\'t generate findings for IP addresses that are included in IPSets.
+#' doesn't generate findings for IP addresses that are included in IPSets.
 #' Only users from the master account can use this operation.
 #'
 #' @usage
@@ -497,7 +496,7 @@ guardduty_create_publishing_destination <- function(DetectorId, DestinationType,
 #' types
 #'
 #' Generates example findings of types specified by the list of finding
-#' types. If \'NULL\' is specified for `findingTypes`, the API generates
+#' types. If 'NULL' is specified for `findingTypes`, the API generates
 #' example findings of all supported finding types.
 #'
 #' @usage
@@ -1283,7 +1282,7 @@ guardduty_get_findings <- function(DetectorId, FindingIds, SortCriteria = NULL) 
 #'   FindingCriteria)
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose
-#' findings\' statistics you want to retrieve.
+#' findings' statistics you want to retrieve.
 #' @param FindingStatisticTypes &#91;required&#93; The types of finding statistics to retrieve.
 #' @param FindingCriteria Represents the criteria that is used for querying findings.
 #'
@@ -1543,7 +1542,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #'
 #' Invites other AWS accounts (created as members of the current AWS
 #' account by CreateMembers) to enable GuardDuty, and allow the current AWS
-#' account to view and manage these accounts\' GuardDuty findings on their
+#' account to view and manage these accounts' GuardDuty findings on their
 #' behalf as the master account.
 #'
 #' @usage
@@ -1555,9 +1554,9 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' @param AccountIds &#91;required&#93; A list of account IDs of the accounts that you want to invite to
 #' GuardDuty as members.
 #' @param DisableEmailNotification A Boolean value that specifies whether you want to disable email
-#' notification to the accounts that you're inviting to GuardDuty as
+#' notification to the accounts that you’re inviting to GuardDuty as
 #' members.
-#' @param Message The invitation message that you want to send to the accounts that you're
+#' @param Message The invitation message that you want to send to the accounts that you’re
 #' inviting to GuardDuty as members.
 #'
 #' @section Request syntax:
@@ -1785,8 +1784,8 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' 
 #' -   service.archived
 #' 
-#'     When this attribute is set to \'true\', only archived findings are
-#'     listed. When it\'s set to \'false\', only unarchived findings are
+#'     When this attribute is set to 'true', only archived findings are
+#'     listed. When it's set to 'false', only unarchived findings are
 #'     listed. When this attribute is not set, all existing findings are
 #'     listed.
 #' 
@@ -1975,7 +1974,7 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' subsequent calls to the action, fill nextToken in the request with the
 #' value of NextToken from the previous response to continue listing data.
 #' @param OnlyAssociated Specifies whether to only return associated members or to return all
-#' members (including members who haven\'t been invited yet or have been
+#' members (including members who haven't been invited yet or have been
 #' disassociated).
 #'
 #' @section Request syntax:

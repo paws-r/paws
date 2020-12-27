@@ -19,8 +19,8 @@ NULL
 #'
 #' @param name &#91;required&#93; The name of the capacity provider. Up to 255 characters are allowed,
 #' including letters (upper and lowercase), numbers, underscores, and
-#' hyphens. The name cannot be prefixed with \"`aws`\", \"`ecs`\", or
-#' \"`fargate`\".
+#' hyphens. The name cannot be prefixed with "`aws`", "`ecs`", or
+#' "`fargate`".
 #' @param autoScalingGroupProvider &#91;required&#93; The details of the Auto Scaling group for the capacity provider.
 #' @param tags The metadata that you apply to the capacity provider to help you
 #' categorize and organize them. Each tag consists of a key and an optional
@@ -265,9 +265,9 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' Tasks for services that *do not* use a load balancer are considered
-#' healthy if they\'re in the `RUNNING` state. Tasks for services that *do*
-#' use a load balancer are considered healthy if they\'re in the `RUNNING`
-#' state and the container instance that they\'re hosted on is reported as
+#' healthy if they're in the `RUNNING` state. Tasks for services that *do*
+#' use a load balancer are considered healthy if they're in the `RUNNING`
+#' state and the container instance that they're hosted on is reported as
 #' healthy by the load balancer.
 #' 
 #' There are two service scheduler strategies available:
@@ -285,7 +285,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'     placement constraints that you specify in your cluster. The service
 #'     scheduler also evaluates the task placement constraints for running
 #'     tasks and will stop tasks that do not meet the placement
-#'     constraints. When using this strategy, you don\'t need to specify a
+#'     constraints. When using this strategy, you don't need to specify a
 #'     desired number of tasks, a task placement strategy, or use Service
 #'     Auto Scaling policies. For more information, see [Service Scheduler
 #'     Concepts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
@@ -309,9 +309,9 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' minimum healthy percent of 50%, the scheduler might stop two existing
 #' tasks to free up cluster capacity before starting two new tasks. Tasks
 #' for services that *do not* use a load balancer are considered healthy if
-#' they\'re in the `RUNNING` state. Tasks for services that *do* use a load
-#' balancer are considered healthy if they\'re in the `RUNNING` state and
-#' they\'re reported as healthy by the load balancer. The default value for
+#' they're in the `RUNNING` state. Tasks for services that *do* use a load
+#' balancer are considered healthy if they're in the `RUNNING` state and
+#' they're reported as healthy by the load balancer. The default value for
 #' minimum healthy percent is 100%.
 #' 
 #' If a service is using the `ECS` deployment controller, the **maximum
@@ -333,11 +333,11 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' the lower and upper limit on the number of the tasks in the service that
 #' remain in the `RUNNING` state while the container instances are in the
 #' `DRAINING` state. If the tasks in the service use the Fargate launch
-#' type, the minimum healthy percent and maximum percent values aren\'t
-#' used, although they\'re currently visible when describing your service.
+#' type, the minimum healthy percent and maximum percent values aren't
+#' used, although they're currently visible when describing your service.
 #' 
 #' When creating a service that uses the `EXTERNAL` deployment controller,
-#' you can specify only parameters that aren\'t controlled at the task set
+#' you can specify only parameters that aren't controlled at the task set
 #' level. The only required parameter is the service name. You control your
 #' services using the CreateTaskSet operation. For more information, see
 #' [Amazon ECS Deployment
@@ -348,7 +348,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' placement in your cluster using the following logic:
 #' 
 #' -   Determine which of the container instances in your cluster can
-#'     support your service\'s task definition (for example, they have the
+#'     support your service's task definition (for example, they have the
 #'     required CPU, memory, ports, and container instance attributes).
 #' 
 #' -   By default, the service scheduler attempts to balance tasks across
@@ -492,7 +492,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' created.
 #' @param platformVersion The platform version that your tasks in the service are running on. A
 #' platform version is specified only for tasks using the Fargate launch
-#' type. If one isn\'t specified, the `LATEST` platform version is used by
+#' type. If one isn't specified, the `LATEST` platform version is used by
 #' default. For more information, see [AWS Fargate Platform
 #' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
@@ -539,10 +539,10 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' should ignore unhealthy Elastic Load Balancing target health checks
 #' after a task has first started. This is only used when your service is
 #' configured to use a load balancer. If your service has a load balancer
-#' defined and you don\'t specify a health check grace period value, the
+#' defined and you don't specify a health check grace period value, the
 #' default value of `0` is used.
 #' 
-#' If your service\'s tasks take a while to start and respond to Elastic
+#' If your service's tasks take a while to start and respond to Elastic
 #' Load Balancing health checks, you can specify a health check grace
 #' period of up to 2,147,483,647 seconds. During that time, the Amazon ECS
 #' service scheduler ignores health check status. This grace period can
@@ -566,12 +566,12 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'     constraints that you specify in your cluster. The service scheduler
 #'     also evaluates the task placement constraints for running tasks and
 #'     will stop tasks that do not meet the placement constraints. When
-#'     you\'re using this strategy, you don\'t need to specify a desired
+#'     you're using this strategy, you don't need to specify a desired
 #'     number of tasks, a task placement strategy, or use Service Auto
 #'     Scaling policies.
 #' 
 #'     Tasks using the Fargate launch type or the `CODE_DEPLOY` or
-#'     `EXTERNAL` deployment controller types don\'t support the `DAEMON`
+#'     `EXTERNAL` deployment controller types don't support the `DAEMON`
 #'     scheduling strategy.
 #' @param deploymentController The deployment controller to use for the service.
 #' @param tags The metadata that you apply to the service to help you categorize and
@@ -805,7 +805,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' created.
 #' @param platformVersion The platform version that the tasks in the task set should use. A
 #' platform version is specified only for tasks using the Fargate launch
-#' type. If one isn\'t specified, the `LATEST` platform version is used by
+#' type. If one isn't specified, the `LATEST` platform version is used by
 #' default.
 #' @param scale 
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
@@ -1046,7 +1046,7 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #' Prior to a capacity provider being deleted, the capacity provider must
 #' be removed from the capacity provider strategy from all services. The
 #' UpdateService API can be used to remove a capacity provider from a
-#' service\'s capacity provider strategy. When updating a service, the
+#' service's capacity provider strategy. When updating a service, the
 #' `forceNewDeployment` option can be used to ensure that any tasks using
 #' the Amazon EC2 instance capacity provided by the capacity provider are
 #' transitioned to use the capacity from the remaining capacity providers.
@@ -1229,7 +1229,7 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
 #' hosts the task set to delete.
 #' @param taskSet &#91;required&#93; The task set ID or full Amazon Resource Name (ARN) of the task set to
 #' delete.
-#' @param force If `true`, this allows you to delete a task set even if it hasn\'t been
+#' @param force If `true`, this allows you to delete a task set even if it hasn't been
 #' scaled down to zero.
 #'
 #' @section Request syntax:
@@ -1357,7 +1357,7 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
 #' tasks and services that reference an `INACTIVE` task definition continue
 #' to run without disruption. Existing services that reference an
 #' `INACTIVE` task definition can still scale up or down by modifying the
-#' service\'s desired count.
+#' service's desired count.
 #' 
 #' You cannot use an `INACTIVE` task definition to run new tasks or create
 #' new services, and you cannot update an existing service to reference an
@@ -2544,7 +2544,7 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 #' 
 #' Although you can filter results based on a desired status of `PENDING`,
 #' this does not return any results. Amazon ECS never sets the desired
-#' status of a task to that value (only a task\'s `lastStatus` may have a
+#' status of a task to that value (only a task's `lastStatus` may have a
 #' value of `PENDING`).
 #' @param launchType The launch type for services to list.
 #'
@@ -2839,11 +2839,11 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' Any existing capacity providers associated with a cluster that are
 #' omitted from a PutClusterCapacityProviders API call will be
 #' disassociated with the cluster. You can only disassociate an existing
-#' capacity provider from a cluster if it\'s not being used by any existing
+#' capacity provider from a cluster if it's not being used by any existing
 #' tasks.
 #' 
 #' When creating a service or running a task on a cluster, if no capacity
-#' provider or launch type is specified, then the cluster\'s default
+#' provider or launch type is specified, then the cluster's default
 #' capacity provider strategy is used. It is recommended to define a
 #' default capacity provider strategy for your cluster, however you may
 #' specify an empty array (`\\[\\]`) to bypass defining a default strategy.
@@ -4572,7 +4572,7 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #' immediately.
 #' 
 #' Service tasks on the container instance that are in the `RUNNING` state
-#' are stopped and replaced according to the service\'s deployment
+#' are stopped and replaced according to the service's deployment
 #' configuration parameters, `minimumHealthyPercent` and `maximumPercent`.
 #' You can change the deployment configuration of your service using
 #' UpdateService.
@@ -4581,7 +4581,7 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #'     `desiredCount` temporarily during task replacement. For example,
 #'     `desiredCount` is four tasks, a minimum of 50% allows the scheduler
 #'     to stop two existing tasks before starting two new tasks. If the
-#'     minimum is 100%, the service scheduler can\'t remove existing tasks
+#'     minimum is 100%, the service scheduler can't remove existing tasks
 #'     until the replacement tasks are considered healthy. Tasks for
 #'     services that do not use a load balancer are considered healthy if
 #'     they are in the `RUNNING` state. Tasks for services that use a load
@@ -4595,7 +4595,7 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #'     is four tasks, a maximum of 200% starts four new tasks before
 #'     stopping the four tasks to be drained, provided that the cluster
 #'     resources required to do this are available. If the maximum is 100%,
-#'     then replacement tasks can\'t start until the draining tasks have
+#'     then replacement tasks can't start until the draining tasks have
 #'     stopped.
 #' 
 #' Any `PENDING` or `RUNNING` tasks that do not belong to a service are not
@@ -4663,8 +4663,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' Updating the task placement strategies and constraints on an Amazon ECS
 #' service remains in preview and is a Beta Service as defined by and
 #' subject to the Beta Service Participation Service Terms located at
-#' <https://aws.amazon.com/service-terms> (\"Beta Terms\"). These Beta
-#' Terms apply to your participation in this preview.
+#' <https://aws.amazon.com/service-terms> ("Beta Terms"). These Beta Terms
+#' apply to your participation in this preview.
 #' 
 #' Modifies the parameters of a service.
 #' 
@@ -4696,7 +4696,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' If you have updated the Docker image of your application, you can create
 #' a new task definition with that image and deploy it to your service. The
 #' service scheduler uses the minimum healthy percent and maximum percent
-#' parameters (in the service\'s deployment configuration) to determine the
+#' parameters (in the service's deployment configuration) to determine the
 #' deployment strategy.
 #' 
 #' If your updated Docker image uses the same tag as what is in the
@@ -4741,7 +4741,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' placement in your cluster with the following logic:
 #' 
 #' -   Determine which of the container instances in your cluster can
-#'     support your service\'s task definition (for example, they have the
+#'     support your service's task definition (for example, they have the
 #'     required CPU, memory, ports, and container instance attributes).
 #' 
 #' -   By default, the service scheduler attempts to balance tasks across
@@ -4798,7 +4798,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' providers as opposed to the default capacity provider strategy. However,
 #' when a service is using a capacity provider strategy that is not the
 #' default capacity provider strategy, the service cannot be updated to use
-#' the cluster\'s default capacity provider strategy.
+#' the cluster's default capacity provider strategy.
 #' 
 #' A capacity provider strategy consists of one or more capacity providers
 #' along with the `base` and `weight` to assign to them. A capacity
@@ -4848,13 +4848,13 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' @param forceNewDeployment Whether to force a new deployment of the service. Deployments are not
 #' forced by default. You can use this option to trigger a new deployment
 #' with no service definition changes. For example, you can update a
-#' service\'s tasks to use a newer Docker image with the same image/tag
+#' service's tasks to use a newer Docker image with the same image/tag
 #' combination (`my_image:latest`) or to roll Fargate tasks onto a newer
 #' platform version.
 #' @param healthCheckGracePeriodSeconds The period of time, in seconds, that the Amazon ECS service scheduler
 #' should ignore unhealthy Elastic Load Balancing target health checks
 #' after a task has first started. This is only valid if your service is
-#' configured to use a load balancer. If your service\'s tasks take a while
+#' configured to use a load balancer. If your service's tasks take a while
 #' to start and respond to Elastic Load Balancing health checks, you can
 #' specify a health check grace period of up to 2,147,483,647 seconds.
 #' During that time, the Amazon ECS service scheduler ignores the Elastic

@@ -19,7 +19,7 @@ data types, parameters, and schemas.
 \href{https://aws.amazon.com/pinpoint}{Amazon SES} is an AWS service that you
 can use to send email messages to your customers.
 
-If you\'re new to Amazon SES API v2, you might find it helpful to also
+If you're new to Amazon SES API v2, you might find it helpful to also
 review the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/}{Amazon Simple Email Service Developer Guide}. The
 \emph{Amazon SES Developer Guide} provides information and code samples that
 demonstrate how to use Amazon SES API v2 features programmatically.

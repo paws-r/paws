@@ -48,7 +48,7 @@ specified as strings. If you want to include \emph{only} a list of policies
 by string, use GetContextKeysForCustomPolicy instead.
 
 \strong{Note:} This API discloses information about the permissions granted
-to other users. If you do not want users to see other user\'s
+to other users. If you do not want users to see other user's
 permissions, then consider allowing them to use
 GetContextKeysForCustomPolicy instead.
 

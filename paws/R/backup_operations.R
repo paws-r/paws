@@ -112,10 +112,10 @@ backup_create_backup_plan <- function(BackupPlan, BackupPlanTags = NULL, Creator
 #' volume Id.
 #' 
 #' Resources and conditions are additive in that all resources that match
-#' the pattern are selected. This shouldn\'t be confused with a logical
-#' AND, where all conditions must match. The matching patterns are
-#' logically \'put together using the OR operator. In other words, all
-#' patterns that match are selected for backup.
+#' the pattern are selected. This shouldn't be confused with a logical AND,
+#' where all conditions must match. The matching patterns are logically
+#' 'put together using the OR operator. In other words, all patterns that
+#' match are selected for backup.
 #'
 #' @usage
 #' backup_create_backup_selection(BackupPlanId, BackupSelection,
@@ -669,10 +669,10 @@ backup_describe_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
 #'
 #' Returns the current service opt-in settings for the Region. If the
 #' service has a value set to `true`, AWS Backup attempts to protect that
-#' service\'s resources in this Region, when included in an on-demand
-#' backup or scheduled backup plan. If the value is set to `false` for a
-#' service, AWS Backup does not attempt to protect that service\'s
-#' resources in this Region.
+#' service's resources in this Region, when included in an on-demand backup
+#' or scheduled backup plan. If the value is set to `false` for a service,
+#' AWS Backup does not attempt to protect that service's resources in this
+#' Region.
 #'
 #' @usage
 #' backup_describe_region_settings()
@@ -1794,7 +1794,7 @@ backup_put_backup_vault_access_policy <- function(BackupVaultName, Policy = NULL
 #' them and the AWS Region where they are created. They consist of
 #' lowercase letters, numbers, and hyphens.
 #' @param SNSTopicArn &#91;required&#93; The Amazon Resource Name (ARN) that specifies the topic for a backup
-#' vault's events; for example,
+#' vault’s events; for example,
 #' `arn:aws:sns:us-west-2:111122223333:MyVaultTopic`.
 #' @param BackupVaultEvents &#91;required&#93; An array of events that indicate the status of jobs to back up resources
 #' to the backup vault.
@@ -1850,7 +1850,7 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 #' @param IdempotencyToken A customer chosen string that can be used to distinguish between calls
 #' to `StartBackupJob`.
 #' @param StartWindowMinutes A value in minutes after a backup is scheduled before a job will be
-#' canceled if it doesn\'t start successfully. This value is optional.
+#' canceled if it doesn't start successfully. This value is optional.
 #' @param CompleteWindowMinutes A value in minutes after a backup job is successfully started before it
 #' must be completed or it will be canceled by AWS Backup. This value is
 #' optional.
@@ -1859,9 +1859,9 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 #' backups automatically according to the lifecycle that you define.
 #' 
 #' Backups transitioned to cold storage must be stored in cold storage for
-#' a minimum of 90 days. Therefore, the "expire after days" setting must be
-#' 90 days greater than the "transition to cold after days" setting. The
-#' "transition to cold after days" setting cannot be changed after a backup
+#' a minimum of 90 days. Therefore, the “expire after days” setting must be
+#' 90 days greater than the “transition to cold after days” setting. The
+#' “transition to cold after days” setting cannot be changed after a backup
 #' has been transitioned to cold.
 #' @param RecoveryPointTags To help organize your resources, you can assign your own metadata to the
 #' resources that you create. Each tag is a key-value pair.
@@ -2262,9 +2262,9 @@ backup_update_backup_plan <- function(BackupPlanId, BackupPlan) {
 #' automatically according to the lifecycle that you define.
 #' 
 #' Backups transitioned to cold storage must be stored in cold storage for
-#' a minimum of 90 days. Therefore, the "expire after days" setting must be
-#' 90 days greater than the "transition to cold after days" setting. The
-#' "transition to cold after days" setting cannot be changed after a backup
+#' a minimum of 90 days. Therefore, the “expire after days” setting must be
+#' 90 days greater than the “transition to cold after days” setting. The
+#' “transition to cold after days” setting cannot be changed after a backup
 #' has been transitioned to cold.
 #'
 #' @usage
@@ -2283,9 +2283,9 @@ backup_update_backup_plan <- function(BackupPlanId, BackupPlan) {
 #' automatically according to the lifecycle that you define.
 #' 
 #' Backups transitioned to cold storage must be stored in cold storage for
-#' a minimum of 90 days. Therefore, the "expire after days" setting must be
-#' 90 days greater than the "transition to cold after days" setting. The
-#' "transition to cold after days" setting cannot be changed after a backup
+#' a minimum of 90 days. Therefore, the “expire after days” setting must be
+#' 90 days greater than the “transition to cold after days” setting. The
+#' “transition to cold after days” setting cannot be changed after a backup
 #' has been transitioned to cold.
 #'
 #' @section Request syntax:
@@ -2324,10 +2324,10 @@ backup_update_recovery_point_lifecycle <- function(BackupVaultName, RecoveryPoin
 #'
 #' Updates the current service opt-in settings for the Region. If the
 #' service has a value set to `true`, AWS Backup attempts to protect that
-#' service\'s resources in this Region, when included in an on-demand
-#' backup or scheduled backup plan. If the value is set to `false` for a
-#' service, AWS Backup does not attempt to protect that service\'s
-#' resources in this Region.
+#' service's resources in this Region, when included in an on-demand backup
+#' or scheduled backup plan. If the value is set to `false` for a service,
+#' AWS Backup does not attempt to protect that service's resources in this
+#' Region.
 #'
 #' @usage
 #' backup_update_region_settings(ResourceTypeOptInPreference)

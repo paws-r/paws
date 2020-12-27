@@ -14,7 +14,7 @@ include:
 \item \code{CREATED_TIME}: List based on when each build project was created.
 \item \code{LAST_MODIFIED_TIME}: List based on when information about each
 build project was last changed.
-\item \code{NAME}: List based on each build project\'s name.
+\item \code{NAME}: List based on each build project's name.
 }
 
 Use \code{sortOrder} to specify in what order to list the build project names

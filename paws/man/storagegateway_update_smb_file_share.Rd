@@ -17,7 +17,7 @@ update.}
 \item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own AWS
 KMS key, or \code{false} to use a key managed by Amazon S3. Optional.
 
-Valid Values: \code{true} \\| \code{false}}
+Valid Values: \code{true} | \code{false}}
 
 \item{KMSKey}{The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
 used for Amazon S3 server-side encryption. Storage Gateway does not
@@ -28,8 +28,8 @@ is \code{true}. Optional.}
 the file gateway. The default value is \code{S3_INTELLIGENT_TIERING}.
 Optional.
 
-Valid Values: \code{S3_STANDARD} \\| \code{S3_INTELLIGENT_TIERING} \\|
-\code{S3_STANDARD_IA} \\| \code{S3_ONEZONE_IA}}
+Valid Values: \code{S3_STANDARD} | \code{S3_INTELLIGENT_TIERING} |
+\code{S3_STANDARD_IA} | \code{S3_ONEZONE_IA}}
 
 \item{ObjectACL}{A value that sets the access control list (ACL) permission for objects
 in the S3 bucket that a file gateway puts objects into. The default
@@ -38,13 +38,13 @@ value is \code{private}.}
 \item{ReadOnly}{A value that sets the write status of a file share. Set this value to
 \code{true} to set write status to read-only, otherwise set to \code{false}.
 
-Valid Values: \code{true} \\| \code{false}}
+Valid Values: \code{true} | \code{false}}
 
 \item{GuessMIMETypeEnabled}{A value that enables guessing of the MIME type for uploaded objects
 based on file extensions. Set this value to \code{true} to enable MIME type
 guessing, otherwise set to \code{false}. The default value is \code{true}.
 
-Valid Values: \code{true} \\| \code{false}}
+Valid Values: \code{true} | \code{false}}
 
 \item{RequesterPays}{A value that sets who pays the cost of the request and the cost
 associated with data download from the S3 bucket. If this value is set
@@ -55,7 +55,7 @@ pays. However, the S3 bucket owner always pays the cost of storing data.
 share, so make sure that the configuration on the file share is the same
 as the S3 bucket configuration.
 
-Valid Values: \code{true} \\| \code{false}}
+Valid Values: \code{true} | \code{false}}
 
 \item{SMBACLEnabled}{Set this value to \code{true} to enable access control list (ACL) on the SMB
 file share. Set it to \code{false} to map file and directory permissions to
@@ -64,7 +64,7 @@ the POSIX permissions.
 For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html}{Using Microsoft Windows ACLs to control access to an SMB file share}
 in the \emph{AWS Storage Gateway User Guide}.
 
-Valid Values: \code{true} \\| \code{false}}
+Valid Values: \code{true} | \code{false}}
 
 \item{AdminUserList}{A list of users or groups in the Active Directory that have
 administrator rights to the file share. A group must be prefixed with
@@ -112,7 +112,7 @@ AWS STS is not activated in this AWS Region, activate it. For
 information about how to activate AWS STS, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and deactivating AWS STS in an AWS Region}
 in the \emph{AWS Identity and Access Management User Guide}.
 
-File gateways don\'t support creating hard or symbolic links on a file
+File gateways don't support creating hard or symbolic links on a file
 share.
 }
 \section{Request syntax}{

@@ -15,16 +15,16 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{Resources}{The type of resource: \code{bundle} \\| \code{conversion-task} \\|
-\code{customer-gateway} \\| \code{dhcp-options} \\| \code{elastic-ip-allocation} \\|
-\code{elastic-ip-association} \\| \code{export-task} \\| \code{flow-log} \\| \code{image} \\|
-\code{import-task} \\| \code{instance} \\| \code{internet-gateway} \\| \code{network-acl} \\|
-\code{network-acl-association} \\| \code{network-interface} \\|
-\code{network-interface-attachment} \\| \code{prefix-list} \\| \code{reservation} \\|
-\code{route-table} \\| \code{route-table-association} \\| \code{security-group} \\|
-\code{snapshot} \\| \code{subnet} \\| \code{subnet-cidr-block-association} \\| \code{volume} \\|
-\code{vpc} \\| \code{vpc-cidr-block-association} \\| \code{vpc-endpoint} \\|
-\code{vpc-peering-connection} \\| \code{vpn-connection} \\| \code{vpn-gateway}}
+\item{Resources}{The type of resource: \code{bundle} | \code{conversion-task} | \code{customer-gateway}
+| \code{dhcp-options} | \code{elastic-ip-allocation} | \code{elastic-ip-association} |
+\code{export-task} | \code{flow-log} | \code{image} | \code{import-task} | \code{instance} |
+\code{internet-gateway} | \code{network-acl} | \code{network-acl-association} |
+\code{network-interface} | \code{network-interface-attachment} | \code{prefix-list} |
+\code{reservation} | \code{route-table} | \code{route-table-association} |
+\code{security-group} | \code{snapshot} | \code{subnet} |
+\code{subnet-cidr-block-association} | \code{volume} | \code{vpc} |
+\code{vpc-cidr-block-association} | \code{vpc-endpoint} | \code{vpc-peering-connection}
+| \code{vpn-connection} | \code{vpn-gateway}}
 
 \item{MaxResults}{The maximum number of results to return in a single call. To retrieve
 the remaining results, make another call with the returned NextToken
@@ -43,17 +43,16 @@ as the root user, unless they explicitly override the settings. This
 request is useful for identifying those IAM users and IAM roles that
 have overridden the default ID settings.
 
-The following resource types support longer IDs: \code{bundle} \\|
-\code{conversion-task} \\| \code{customer-gateway} \\| \code{dhcp-options} \\|
-\code{elastic-ip-allocation} \\| \code{elastic-ip-association} \\| \code{export-task} \\|
-\code{flow-log} \\| \code{image} \\| \code{import-task} \\| \code{instance} \\|
-\code{internet-gateway} \\| \code{network-acl} \\| \code{network-acl-association} \\|
-\code{network-interface} \\| \code{network-interface-attachment} \\| \code{prefix-list}
-\\| \code{reservation} \\| \code{route-table} \\| \code{route-table-association} \\|
-\code{security-group} \\| \code{snapshot} \\| \code{subnet} \\|
-\code{subnet-cidr-block-association} \\| \code{volume} \\| \code{vpc} \\|
-\code{vpc-cidr-block-association} \\| \code{vpc-endpoint} \\|
-\code{vpc-peering-connection} \\| \code{vpn-connection} \\| \code{vpn-gateway}.
+The following resource types support longer IDs: \code{bundle} |
+\code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} |
+\code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} |
+\code{flow-log} | \code{image} | \code{import-task} | \code{instance} | \code{internet-gateway} |
+\code{network-acl} | \code{network-acl-association} | \code{network-interface} |
+\code{network-interface-attachment} | \code{prefix-list} | \code{reservation} |
+\code{route-table} | \code{route-table-association} | \code{security-group} |
+\code{snapshot} | \code{subnet} | \code{subnet-cidr-block-association} | \code{volume} |
+\code{vpc} | \code{vpc-cidr-block-association} | \code{vpc-endpoint} |
+\code{vpc-peering-connection} | \code{vpn-connection} | \code{vpn-gateway}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_principal_id_format(

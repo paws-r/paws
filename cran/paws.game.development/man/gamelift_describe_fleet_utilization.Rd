@@ -10,7 +10,7 @@ gamelift_describe_fleet_utilization(FleetIds, Limit, NextToken)
 \item{FleetIds}{A unique identifier for a fleet(s) to retrieve utilization data for. You
 can use either the fleet ID or ARN value. To retrieve attributes for all
 current fleets, do not include this parameter. If the list of fleet
-identifiers includes fleets that don\'t currently exist, the request
+identifiers includes fleets that don't currently exist, the request
 succeeds but no attributes for that fleet are returned.}
 
 \item{Limit}{The maximum number of results to return. Use this parameter with

@@ -14,7 +14,7 @@ NULL
 #' [Amazon SES](https://aws.amazon.com/pinpoint) is an AWS service that you
 #' can use to send email messages to your customers.
 #' 
-#' If you\'re new to Amazon SES API v2, you might find it helpful to also
+#' If you're new to Amazon SES API v2, you might find it helpful to also
 #' review the [Amazon Simple Email Service Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/). The
 #' *Amazon SES Developer Guide* provides information and code samples that

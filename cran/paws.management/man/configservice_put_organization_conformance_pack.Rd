@@ -26,7 +26,7 @@ results. AWS Config stores intermediate files while processing
 conformance pack template.
 
 The delivery bucket name should start with awsconfigconforms. For
-example: \"Resource\": \"arn:aws:s3:::your\\_bucket\\_name/*\". For more
+example: "Resource": "arn:aws:s3:::your\\_bucket\\_name/*". For more
 information, see \href{https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html}{Permissions for cross account bucket access}.}
 
 \item{DeliveryS3KeyPrefix}{The prefix for the Amazon S3 bucket.}

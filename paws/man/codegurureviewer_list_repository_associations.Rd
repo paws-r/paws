@@ -29,7 +29,7 @@ of code in your repository cannot be triggered.
 Reviewer to securely clone code in your repository.
 }
 \item \strong{Failed}: The repository failed to associate or disassociate.
-\item \strong{Disassociating}: CodeGuru Reviewer is removing the repository\'s
+\item \strong{Disassociating}: CodeGuru Reviewer is removing the repository's
 pull request notifications and source code access.
 }}
 

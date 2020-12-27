@@ -37,7 +37,7 @@ outage and are applied on the next reboot.
 Default: \code{false}}
 
 \item{PreferredMaintenanceWindow}{The weekly time range (in UTC) during which system maintenance can
-occur, which might result in an outage. Changing this parameter doesn\'t
+occur, which might result in an outage. Changing this parameter doesn't
 result in an outage except in the following situation, and the change is
 asynchronously applied as soon as possible. If there are pending actions
 that cause a reboot, and the maintenance window is changed to include
@@ -55,7 +55,7 @@ Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 Constraints: Must be at least 30 minutes.}
 
 \item{AutoMinorVersionUpgrade}{Indicates that minor version upgrades are applied automatically to the
-instance during the maintenance window. Changing this parameter doesn\'t
+instance during the maintenance window. Changing this parameter doesn't
 result in an outage except in the following case, and the change is
 asynchronously applied as soon as possible. An outage results if this
 parameter is set to \code{true} during the maintenance window, and a newer

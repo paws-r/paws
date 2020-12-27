@@ -17,7 +17,7 @@ can include one or multiple player IDs.}
 \item{AcceptanceType}{[required] Player response to the proposed match.}
 }
 \description{
-Registers a player\'s acceptance or rejection of a proposed FlexMatch
+Registers a player's acceptance or rejection of a proposed FlexMatch
 match. A matchmaking configuration may require player acceptance; if so,
 then matches built with that configuration cannot be completed unless
 all players accept the proposed match within a specified time limit.

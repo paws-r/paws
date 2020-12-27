@@ -9,15 +9,14 @@ support_describe_trusted_advisor_checks(language)
 }
 \arguments{
 \item{language}{[required] The ISO 639-1 code for the language in which AWS provides support. AWS
-Support currently supports English (\"en\") and Japanese (\"ja\").
-Language parameters must be passed explicitly for operations that take
-them.}
+Support currently supports English ("en") and Japanese ("ja"). Language
+parameters must be passed explicitly for operations that take them.}
 }
 \description{
 Returns information about all available AWS Trusted Advisor checks,
 including the name, ID, category, description, and metadata. You must
 specify a language code. The AWS Support API currently supports English
-(\"en\") and Japanese (\"ja\"). The response contains a
+("en") and Japanese ("ja"). The response contains a
 TrustedAdvisorCheckDescription object for each check. You must set the
 AWS Region to us-east-1.
 }

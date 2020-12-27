@@ -10,9 +10,9 @@ glacier_upload_multipart_part(accountId, vaultName, uploadId, checksum,
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
 vault. You can either specify an AWS account ID or optionally a single
-\'\code{-}\' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-ID associated with the credentials used to sign the request. If you use
-an account ID, do not include any hyphens (\'-\') in the ID.}
+'\code{-}' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID
+associated with the credentials used to sign the request. If you use an
+account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 
@@ -40,7 +40,7 @@ conditions is true:
 corrupted in transmission, you compute a SHA256 tree hash of the
 part and include it in your request. Upon receiving the part data,
 Amazon S3 Glacier also computes a SHA256 tree hash. If these hash
-values don\'t match, the operation fails. For information about
+values don't match, the operation fails. For information about
 computing a SHA256 tree hash, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html}{Computing Checksums}.
 \item \strong{Part size does not match}The size of each part except the last
 must match the size specified in the corresponding
@@ -65,7 +65,7 @@ times, the data included in the most recent request overwrites the
 previously uploaded data.
 
 An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don\'t have any
+However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html}{Access Control Using AWS Identity and Access Management (IAM)}.
 

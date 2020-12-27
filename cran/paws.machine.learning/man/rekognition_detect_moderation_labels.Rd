@@ -17,10 +17,10 @@ need to base64-encode image bytes passed using the \code{Bytes} field. For
 more information, see Images in the Amazon Rekognition developer guide.}
 
 \item{MinConfidence}{Specifies the minimum confidence level for the labels to return. Amazon
-Rekognition doesn\'t return any labels with a confidence level lower
-than this specified value.
+Rekognition doesn't return any labels with a confidence level lower than
+this specified value.
 
-If you don\'t specify \code{MinConfidence}, the operation returns labels with
+If you don't specify \code{MinConfidence}, the operation returns labels with
 confidence values greater than or equal to 50 percent.}
 
 \item{HumanLoopConfig}{Sets up the configuration for human evaluation, including the

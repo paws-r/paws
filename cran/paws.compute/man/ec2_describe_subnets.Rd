@@ -16,7 +16,7 @@ subnet. You can also use \code{availabilityZoneId} as the filter name.
 \item \code{available-ip-address-count} - The number of IPv4 addresses in the
 subnet that are available.
 \item \code{cidr-block} - The IPv4 CIDR block of the subnet. The CIDR block you
-specify must exactly match the subnet\'s CIDR block for information
+specify must exactly match the subnet's CIDR block for information
 to be returned for the subnet. You can also use \code{cidr} or
 \code{cidrBlock} as the filter names.
 \item \verb{default-for-az} - Indicates whether this is the default subnet for
@@ -29,14 +29,14 @@ an IPv6 CIDR block associated with the subnet.
 \item \code{ipv6-cidr-block-association.state} - The state of an IPv6 CIDR
 block associated with the subnet.
 \item \code{owner-id} - The ID of the AWS account that owns the subnet.
-\item \code{state} - The state of the subnet (\code{pending} \\| \code{available}).
+\item \code{state} - The state of the subnet (\code{pending} | \code{available}).
 \item \code{subnet-arn} - The Amazon Resource Name (ARN) of the subnet.
 \item \code{subnet-id} - The ID of the subnet.
-\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:<key> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value
+as the filter value. For example, to find all resources that have a
+tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
+for the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.

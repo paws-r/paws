@@ -21,7 +21,7 @@ you specify.
 \details{
 No response returns from this operation.
 
-When you delete a user from a server, the user\'s information is lost.
+When you delete a user from a server, the user's information is lost.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_user(

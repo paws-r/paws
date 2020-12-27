@@ -13,7 +13,7 @@ pinpointemail_get_email_identity(EmailIdentity)
 }
 \description{
 Provides information about a specific identity associated with your
-Amazon Pinpoint account, including the identity\'s verification status,
+Amazon Pinpoint account, including the identity's verification status,
 its DKIM authentication status, and its custom Mail-From settings.
 }
 \section{Request syntax}{

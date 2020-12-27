@@ -10,14 +10,14 @@ costexplorer_get_savings_plans_coverage(TimePeriod, GroupBy,
 \arguments{
 \item{TimePeriod}{[required] The time period that you want the usage and costs for. The \code{Start} date
 must be within 13 months. The \code{End} date must be after the \code{Start} date,
-and before the current date. Future dates can\'t be used as an \code{End}
+and before the current date. Future dates can't be used as an \code{End}
 date.}
 
 \item{GroupBy}{You can group the data using the attributes \code{INSTANCE_FAMILY}, \code{REGION},
 or \code{SERVICE}.}
 
 \item{Granularity}{The granularity of the Amazon Web Services cost data for your Savings
-Plans. \code{Granularity} can\'t be set if \code{GroupBy} is set.
+Plans. \code{Granularity} can't be set if \code{GroupBy} is set.
 
 The \code{GetSavingsPlansCoverage} operation supports only \code{DAILY} and
 \code{MONTHLY} granularities.}
@@ -34,7 +34,7 @@ for Savings Plans usage with the following dimensions:
 \code{GetSavingsPlansCoverage} uses the same
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}
 object as the other operations, but only \code{AND} is supported among each
-dimension. If there are multiple values for a dimension, they are OR\'d
+dimension. If there are multiple values for a dimension, they are OR'd
 together.
 
 Cost category is also supported.}
@@ -52,7 +52,7 @@ with a minimum value of \code{1}.}
 \description{
 Retrieves the Savings Plans covered for your account. This enables you
 to see how much of your cost is covered by a Savings Plan. An
-organization's master account can see the coverage of the associated
+organization’s master account can see the coverage of the associated
 member accounts. This supports dimensions, Cost Categories, and nested
 expressions. For any time period, you can filter data for Savings Plans
 usage with the following dimensions:

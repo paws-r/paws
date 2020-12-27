@@ -60,8 +60,7 @@ copied to.
 
 Amazon EBS does not support asymmetric CMKs.}
 
-\item{RoleName}{The name of the role to use when not using the default role,
-\'vmimport\'.}
+\item{RoleName}{The name of the role to use when not using the default role, 'vmimport'.}
 
 \item{TagSpecifications}{The tags to apply to the snapshot being imported.}
 }

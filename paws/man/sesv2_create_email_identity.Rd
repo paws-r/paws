@@ -23,8 +23,8 @@ opposed to an address.}
 Starts the process of verifying an email identity. An \emph{identity} is an
 email address or domain that you use when you send email. Before you can
 use an identity to send email, you first have to verify it. By verifying
-an identity, you demonstrate that you\'re the owner of the identity, and
-that you\'ve given Amazon SES API v2 permission to send email from the
+an identity, you demonstrate that you're the owner of the identity, and
+that you've given Amazon SES API v2 permission to send email from the
 identity.
 }
 \details{

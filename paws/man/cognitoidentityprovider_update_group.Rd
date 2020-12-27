@@ -26,7 +26,7 @@ Updates the specified group with the specified attributes.
 \details{
 Calling this action requires developer credentials.
 
-If you don\'t provide a value for an attribute, it will be set to the
+If you don't provide a value for an attribute, it will be set to the
 default value.
 }
 \section{Request syntax}{

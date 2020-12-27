@@ -14,7 +14,7 @@ you want to delete.}
 \description{
 Deletes the metric policy that is associated with the specified
 container. If there is no metric policy associated with the container,
-MediaStore doesn\'t send metrics to CloudWatch.
+MediaStore doesn't send metrics to CloudWatch.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_metric_policy(

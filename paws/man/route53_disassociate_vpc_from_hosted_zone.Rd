@@ -11,7 +11,7 @@ route53_disassociate_vpc_from_hosted_zone(HostedZoneId, VPC, Comment)
 \item{HostedZoneId}{[required] The ID of the private hosted zone that you want to disassociate a VPC
 from.}
 
-\item{VPC}{[required] A complex type that contains information about the VPC that you\'re
+\item{VPC}{[required] A complex type that contains information about the VPC that you're
 disassociating from the specified hosted zone.}
 
 \item{Comment}{\emph{Optional:} A comment about the disassociation request.}
@@ -22,9 +22,9 @@ Amazon Route 53 private hosted zone. Note the following:
 }
 \details{
 \itemize{
-\item You can\'t disassociate the last Amazon VPC from a private hosted
+\item You can't disassociate the last Amazon VPC from a private hosted
 zone.
-\item You can\'t convert a private hosted zone into a public hosted zone.
+\item You can't convert a private hosted zone into a public hosted zone.
 \item You can submit a \code{DisassociateVPCFromHostedZone} request using
 either the account that created the hosted zone or the account that
 created the Amazon VPC.
@@ -39,7 +39,7 @@ When you run
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListHostedZonesByVPC.html}{DisassociateVPCFromHostedZone},
 if the hosted zone has a value for \code{OwningAccount}, you can use
 \code{DisassociateVPCFromHostedZone}. If the hosted zone has a value for
-\code{OwningService}, you can\'t use \code{DisassociateVPCFromHostedZone}.
+\code{OwningService}, you can't use \code{DisassociateVPCFromHostedZone}.
 }
 }
 \section{Request syntax}{

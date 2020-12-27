@@ -23,8 +23,8 @@ The value you specify has to be at least 0, and can be no more than
 Returns a list of all of the email identities that are associated with
 your AWS account. An identity can be either an email address or a
 domain. This operation returns identities that are verified as well as
-those that aren\'t. This operation returns identities that are
-associated with Amazon SES and Amazon Pinpoint.
+those that aren't. This operation returns identities that are associated
+with Amazon SES and Amazon Pinpoint.
 }
 \section{Request syntax}{
 \preformatted{svc$list_email_identities(

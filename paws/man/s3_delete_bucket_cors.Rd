@@ -23,9 +23,7 @@ the \emph{Amazon Simple Storage Service Developer Guide}.
 \strong{Related Resources:}
 \itemize{
 \item 
-\itemize{
 \item RESTOPTIONSobject
-}
 }
 }
 \section{Request syntax}{

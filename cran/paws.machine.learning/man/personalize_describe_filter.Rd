@@ -10,7 +10,7 @@ personalize_describe_filter(filterArn)
 \item{filterArn}{[required] The ARN of the filter to describe.}
 }
 \description{
-Describes a filter\'s properties.
+Describes a filter's properties.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_filter(

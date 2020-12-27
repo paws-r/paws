@@ -20,14 +20,14 @@ an alert.}
 \item{alertTargets}{Where the alerts are sent. (Alerts are always sent to the console.)}
 
 \item{additionalMetricsToRetain}{A list of metrics whose data is retained (stored). By default, data is
-retained for any metric used in the profile\'s \code{behaviors}, but it is
+retained for any metric used in the profile's \code{behaviors}, but it is
 also retained for any metric specified here.
 
 \strong{Note:} This API field is deprecated. Please use
-UpdateSecurityProfileRequest\\$additionalMetricsToRetainV2 instead.}
+UpdateSecurityProfileRequest$additionalMetricsToRetainV2 instead.}
 
 \item{additionalMetricsToRetainV2}{A list of metrics whose data is retained (stored). By default, data is
-retained for any metric used in the profile\'s behaviors, but it is also
+retained for any metric used in the profile's behaviors, but it is also
 retained for any metric specified here.}
 
 \item{deleteBehaviors}{If true, delete all \code{behaviors} defined for this security profile. If

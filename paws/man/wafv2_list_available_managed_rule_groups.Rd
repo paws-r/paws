@@ -39,7 +39,7 @@ resources from the prior release, see the \href{https://docs.aws.amazon.com/waf/
 \details{
 Retrieves an array of managed rule groups that are available for you to
 use. This list includes all AWS Managed Rules rule groups and the AWS
-Marketplace managed rule groups that you\'re subscribed to.
+Marketplace managed rule groups that you're subscribed to.
 }
 \section{Request syntax}{
 \preformatted{svc$list_available_managed_rule_groups(

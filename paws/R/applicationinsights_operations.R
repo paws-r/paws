@@ -831,7 +831,7 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #'   MaxResults, NextToken)
 #'
 #' @param ResourceGroupName The name of the resource group.
-#' @param StartTime The time when the problem was detected, in epoch seconds. If you don\'t
+#' @param StartTime The time when the problem was detected, in epoch seconds. If you don't
 #' specify a time frame for the request, problems within the past seven
 #' days are returned.
 #' @param EndTime The time when the problem ended, in epoch seconds. If not specified,

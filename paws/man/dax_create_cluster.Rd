@@ -66,7 +66,7 @@ is a 60 minute period. Valid values for \code{ddd} are:
 
 Example: \code{sun:05:00-sun:09:00}
 
-If you don\'t specify a preferred maintenance window when you create or
+If you don't specify a preferred maintenance window when you create or
 modify a cache cluster, DAX assigns a 60-minute maintenance window on a
 randomly selected day of the week.}
 
@@ -76,7 +76,7 @@ notifications will be sent.
 The Amazon SNS topic owner must be same as the DAX cluster owner.}
 
 \item{IamRoleArn}{[required] A valid Amazon Resource Name (ARN) that identifies an IAM role. At
-runtime, DAX will assume this role and use the role\'s permissions to
+runtime, DAX will assume this role and use the role's permissions to
 access DynamoDB on your behalf.}
 
 \item{ParameterGroupName}{The parameter group to be associated with the DAX cluster.}

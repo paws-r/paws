@@ -25,7 +25,7 @@ adjustment to use. For example, if the breach threshold is 50 and you
 want to use a step adjustment with a lower bound of 0 and an upper bound
 of 10, you can set the metric value to 59.
 
-If you specify a metric value that doesn\'t correspond to a step
+If you specify a metric value that doesn't correspond to a step
 adjustment for the policy, the call returns an error.
 
 Required if the policy type is \code{StepScaling} and not supported

@@ -131,7 +131,7 @@ created.}
 
 \item{platformVersion}{The platform version that your tasks in the service are running on. A
 platform version is specified only for tasks using the Fargate launch
-type. If one isn\'t specified, the \code{LATEST} platform version is used by
+type. If one isn't specified, the \code{LATEST} platform version is used by
 default. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{AWS Fargate Platform Versions}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
@@ -179,10 +179,10 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 should ignore unhealthy Elastic Load Balancing target health checks
 after a task has first started. This is only used when your service is
 configured to use a load balancer. If your service has a load balancer
-defined and you don\'t specify a health check grace period value, the
+defined and you don't specify a health check grace period value, the
 default value of \code{0} is used.
 
-If your service\'s tasks take a while to start and respond to Elastic
+If your service's tasks take a while to start and respond to Elastic
 Load Balancing health checks, you can specify a health check grace
 period of up to 2,147,483,647 seconds. During that time, the Amazon ECS
 service scheduler ignores health check status. This grace period can
@@ -206,12 +206,12 @@ each active container instance that meets all of the task placement
 constraints that you specify in your cluster. The service scheduler
 also evaluates the task placement constraints for running tasks and
 will stop tasks that do not meet the placement constraints. When
-you\'re using this strategy, you don\'t need to specify a desired
+you're using this strategy, you don't need to specify a desired
 number of tasks, a task placement strategy, or use Service Auto
 Scaling policies.
 
 Tasks using the Fargate launch type or the \code{CODE_DEPLOY} or
-\code{EXTERNAL} deployment controller types don\'t support the \code{DAEMON}
+\code{EXTERNAL} deployment controller types don't support the \code{DAEMON}
 scheduling strategy.
 }}
 
@@ -267,9 +267,9 @@ associated with the service. For more information, see \href{https://docs.aws.am
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 Tasks for services that \emph{do not} use a load balancer are considered
-healthy if they\'re in the \code{RUNNING} state. Tasks for services that \emph{do}
-use a load balancer are considered healthy if they\'re in the \code{RUNNING}
-state and the container instance that they\'re hosted on is reported as
+healthy if they're in the \code{RUNNING} state. Tasks for services that \emph{do}
+use a load balancer are considered healthy if they're in the \code{RUNNING}
+state and the container instance that they're hosted on is reported as
 healthy by the load balancer.
 
 There are two service scheduler strategies available:
@@ -285,7 +285,7 @@ on each active container instance that meets all of the task
 placement constraints that you specify in your cluster. The service
 scheduler also evaluates the task placement constraints for running
 tasks and will stop tasks that do not meet the placement
-constraints. When using this strategy, you don\'t need to specify a
+constraints. When using this strategy, you don't need to specify a
 desired number of tasks, a task placement strategy, or use Service
 Auto Scaling policies. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html}{Service Scheduler Concepts}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
@@ -309,9 +309,9 @@ example, if your service has a desired number of four tasks and a
 minimum healthy percent of 50\%, the scheduler might stop two existing
 tasks to free up cluster capacity before starting two new tasks. Tasks
 for services that \emph{do not} use a load balancer are considered healthy if
-they\'re in the \code{RUNNING} state. Tasks for services that \emph{do} use a load
-balancer are considered healthy if they\'re in the \code{RUNNING} state and
-they\'re reported as healthy by the load balancer. The default value for
+they're in the \code{RUNNING} state. Tasks for services that \emph{do} use a load
+balancer are considered healthy if they're in the \code{RUNNING} state and
+they're reported as healthy by the load balancer. The default value for
 minimum healthy percent is 100\%.
 
 If a service is using the \code{ECS} deployment controller, the \strong{maximum
@@ -333,11 +333,11 @@ healthy percent} and \strong{maximum percent} values are used only to define
 the lower and upper limit on the number of the tasks in the service that
 remain in the \code{RUNNING} state while the container instances are in the
 \code{DRAINING} state. If the tasks in the service use the Fargate launch
-type, the minimum healthy percent and maximum percent values aren\'t
-used, although they\'re currently visible when describing your service.
+type, the minimum healthy percent and maximum percent values aren't
+used, although they're currently visible when describing your service.
 
 When creating a service that uses the \code{EXTERNAL} deployment controller,
-you can specify only parameters that aren\'t controlled at the task set
+you can specify only parameters that aren't controlled at the task set
 level. The only required parameter is the service name. You control your
 services using the CreateTaskSet operation. For more information, see
 \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types}
@@ -347,7 +347,7 @@ When the service scheduler launches new tasks, it determines task
 placement in your cluster using the following logic:
 \itemize{
 \item Determine which of the container instances in your cluster can
-support your service\'s task definition (for example, they have the
+support your service's task definition (for example, they have the
 required CPU, memory, ports, and container instance attributes).
 \item By default, the service scheduler attempts to balance tasks across
 Availability Zones in this manner (although you can choose a

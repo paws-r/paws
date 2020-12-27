@@ -53,7 +53,7 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=rekognition_compare_faces]{compare_faces} \tab Compares a face in the _source_ input image with each of the 100 largest faces detected in the _target_ input image \cr
+#'  \link[=rekognition_compare_faces]{compare_faces} \tab Compares a face in the source input image with each of the 100 largest faces detected in the target input image \cr
 #'  \link[=rekognition_create_collection]{create_collection} \tab Creates a collection in an AWS Region \cr
 #'  \link[=rekognition_create_project]{create_project} \tab Creates a new Amazon Rekognition Custom Labels project \cr
 #'  \link[=rekognition_create_project_version]{create_project_version} \tab Creates a new version of a model and begins training \cr

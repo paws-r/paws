@@ -22,7 +22,7 @@ Submits a request to perform the following operations:
 \item Update the TTL setting for existing \code{DnsRecords} configurations
 \item Add, update, or delete \code{HealthCheckConfig} for a specified service
 
-You can\'t add, update, or delete a \code{HealthCheckCustomConfig}
+You can't add, update, or delete a \code{HealthCheckCustomConfig}
 configuration.
 }
 

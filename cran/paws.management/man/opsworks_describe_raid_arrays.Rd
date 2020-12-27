@@ -17,7 +17,7 @@ descriptions of the RAID arrays associated with the specified instance.}
 Otherwise, it returns a description of every array.}
 }
 \description{
-Describe an instance\'s RAID arrays.
+Describe an instance's RAID arrays.
 }
 \details{
 This call accepts only one resource-identifying parameter.

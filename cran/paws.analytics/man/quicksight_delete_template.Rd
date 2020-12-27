@@ -7,14 +7,14 @@
 quicksight_delete_template(AwsAccountId, TemplateId, VersionNumber)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the template that you\'re
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the template that you're
 deleting.}
 
 \item{TemplateId}{[required] An ID for the template you want to delete.}
 
 \item{VersionNumber}{Specifies the version of the template that you want to delete. If you
-don\'t provide a version number, \code{DeleteTemplate} deletes all versions
-of the template.}
+don't provide a version number, \code{DeleteTemplate} deletes all versions of
+the template.}
 }
 \description{
 Deletes a template.

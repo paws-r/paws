@@ -101,10 +101,10 @@ scaling policy.
 
 The following policy types are supported:
 
-\code{TargetTrackingScaling}---Not supported for Amazon EMR
+\code{TargetTrackingScaling}—Not supported for Amazon EMR
 
-\code{StepScaling}---Not supported for DynamoDB, Amazon Comprehend, Lambda,
-or Amazon Keyspaces (for Apache Cassandra).
+\code{StepScaling}—Not supported for DynamoDB, Amazon Comprehend, Lambda, or
+Amazon Keyspaces (for Apache Cassandra).
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target Tracking Scaling Policies}
 and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step Scaling Policies}

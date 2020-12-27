@@ -12,7 +12,7 @@ ec2_disable_vpc_classic_link_dns_support(VpcId)
 \description{
 Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames
 resolve to public IP addresses when addressed between a linked
-EC2-Classic instance and instances in the VPC to which it\'s linked. For
+EC2-Classic instance and instances in the VPC to which it's linked. For
 more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html}{ClassicLink}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

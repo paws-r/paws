@@ -18,9 +18,7 @@ can be deleted.
 \strong{Related Resources}
 \itemize{
 \item 
-\itemize{
 \item 
-}
 }
 }
 \section{Request syntax}{

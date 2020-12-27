@@ -221,13 +221,13 @@ groundstation_create_dataflow_endpoint_group <- function(endpointDetails, tags =
 #'   contactPrePassDurationSeconds, dataflowEdges,
 #'   minimumViableContactDurationSeconds, name, tags, trackingConfigArn)
 #'
-#' @param contactPostPassDurationSeconds Amount of time after a contact ends that you'd like to receive a
+#' @param contactPostPassDurationSeconds Amount of time after a contact ends that you’d like to receive a
 #' CloudWatch event indicating the pass has finished.
-#' @param contactPrePassDurationSeconds Amount of time prior to contact start you'd like to receive a CloudWatch
+#' @param contactPrePassDurationSeconds Amount of time prior to contact start you’d like to receive a CloudWatch
 #' event indicating an upcoming pass.
 #' @param dataflowEdges &#91;required&#93; A list of lists of ARNs. Each list of ARNs is an edge, with a *from*
 #' `Config` and a *to* `Config`.
-#' @param minimumViableContactDurationSeconds &#91;required&#93; Smallest amount of time in seconds that you'd like to see for an
+#' @param minimumViableContactDurationSeconds &#91;required&#93; Smallest amount of time in seconds that you’d like to see for an
 #' available contact. AWS Ground Station will not present you with contacts
 #' shorter than this duration.
 #' @param name &#91;required&#93; Name of a mission profile.
@@ -1147,13 +1147,13 @@ groundstation_update_config <- function(configData, configId, configType, name) 
 #'   minimumViableContactDurationSeconds, missionProfileId, name,
 #'   trackingConfigArn)
 #'
-#' @param contactPostPassDurationSeconds Amount of time after a contact ends that you'd like to receive a
+#' @param contactPostPassDurationSeconds Amount of time after a contact ends that you’d like to receive a
 #' CloudWatch event indicating the pass has finished.
-#' @param contactPrePassDurationSeconds Amount of time after a contact ends that you'd like to receive a
+#' @param contactPrePassDurationSeconds Amount of time after a contact ends that you’d like to receive a
 #' CloudWatch event indicating the pass has finished.
 #' @param dataflowEdges A list of lists of ARNs. Each list of ARNs is an edge, with a *from*
 #' `Config` and a *to* `Config`.
-#' @param minimumViableContactDurationSeconds Smallest amount of time in seconds that you'd like to see for an
+#' @param minimumViableContactDurationSeconds Smallest amount of time in seconds that you’d like to see for an
 #' available contact. AWS Ground Station will not present you with contacts
 #' shorter than this duration.
 #' @param missionProfileId &#91;required&#93; UUID of a mission profile.

@@ -26,7 +26,7 @@ response.
 
 AWS AppConfig uses the value of the \code{ClientConfigurationVersion}
 parameter to identify the configuration version on your clients. If you
-don't send \code{ClientConfigurationVersion} with each call to
+don’t send \code{ClientConfigurationVersion} with each call to
 \code{GetConfiguration}, your clients receive the current configuration. You
 are charged each time your clients receive a configuration.
 
@@ -45,7 +45,7 @@ Receive information about a configuration.
 \details{
 AWS AppConfig uses the value of the \code{ClientConfigurationVersion}
 parameter to identify the configuration version on your clients. If you
-don't send \code{ClientConfigurationVersion} with each call to
+don’t send \code{ClientConfigurationVersion} with each call to
 \code{GetConfiguration}, your clients receive the current configuration. You
 are charged each time your clients receive a configuration.
 

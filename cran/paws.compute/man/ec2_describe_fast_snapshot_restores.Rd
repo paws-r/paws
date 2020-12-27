@@ -15,8 +15,7 @@ ec2_describe_fast_snapshot_restores(Filters, MaxResults, NextToken,
 restore on the snapshot.
 \item \code{snapshot-id}: The ID of the snapshot.
 \item \code{state}: The state of fast snapshot restores for the snapshot
-(\code{enabling} \\| \code{optimizing} \\| \code{enabled} \\| \code{disabling} \\|
-\code{disabled}).
+(\code{enabling} | \code{optimizing} | \code{enabled} | \code{disabling} | \code{disabled}).
 }}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve

@@ -21,7 +21,7 @@ voice messages, and push notifications. The Amazon Pinpoint Email API
 provides programmatic access to options that are unique to the email
 channel and supplement the options provided by the Amazon Pinpoint API.
 
-If you\'re new to Amazon Pinpoint, you might find it helpful to also
+If you're new to Amazon Pinpoint, you might find it helpful to also
 review the \href{https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html}{Amazon Pinpoint Developer Guide}.
 The \emph{Amazon Pinpoint Developer Guide} provides tutorials, code samples,
 and procedures that demonstrate how to use Amazon Pinpoint features

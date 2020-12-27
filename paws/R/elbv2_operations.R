@@ -417,7 +417,7 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #' This name must be unique per region per account, can have a maximum of
 #' 32 characters, must contain only alphanumeric characters or hyphens,
 #' must not begin or end with a hyphen, and must not begin with
-#' \"internal-\".
+#' "internal-".
 #' @param Subnets The IDs of the public subnets. You can specify only one subnet per
 #' Availability Zone. You must specify either subnets or subnet mappings.
 #' 
@@ -557,7 +557,7 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' conditions: `http-request-method`, `host-header`, `path-pattern`, and
 #' `source-ip`, and zero or more of the following conditions: `http-header`
 #' and `query-string`.
-#' @param Priority &#91;required&#93; The rule priority. A listener can\'t have multiple rules with the same
+#' @param Priority &#91;required&#93; The rule priority. A listener can't have multiple rules with the same
 #' priority.
 #' @param Actions &#91;required&#93; The actions. Each rule must include exactly one of the following types
 #' of actions: `forward`, `fixed-response`, or `redirect`, and it must be
@@ -799,7 +799,7 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions) {
 #' @param HealthCheckPath \[HTTP/HTTPS health checks\] The ping path that is the destination on
 #' the targets for health checks. The default is /.
 #' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an
-#' individual target. For HTTP and HTTPS health checks, the range is 5--300
+#' individual target. For HTTP and HTTPS health checks, the range is 5–300
 #' seconds. For TCP health checks, the supported values are 10 and 30
 #' seconds. If the target type is `instance` or `ip`, the default is 30
 #' seconds. If the target type is `lambda`, the default is 35 seconds.
@@ -822,7 +822,7 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions) {
 #' @param Matcher \[HTTP/HTTPS health checks\] The HTTP codes to use when checking for a
 #' successful response from a target.
 #' @param TargetType The type of target that you must specify when registering targets with
-#' this target group. You can\'t specify targets for a target group using
+#' this target group. You can't specify targets for a target group using
 #' more than one target type.
 #' 
 #' -   `instance` - Targets are specified by instance ID. This is the
@@ -832,7 +832,7 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions) {
 #' -   `ip` - Targets are specified by IP address. You can specify IP
 #'     addresses from the subnets of the virtual private cloud (VPC) for
 #'     the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and
-#'     192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can\'t
+#'     192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't
 #'     specify publicly routable IP addresses.
 #' 
 #' -   `lambda` - The target groups contains a single Lambda function.
@@ -945,7 +945,7 @@ elbv2_delete_listener <- function(ListenerArn) {
 #' Deletes the specified Application Load Balancer or Network Load Balancer
 #' and its attached listeners.
 #' 
-#' You can\'t delete a load balancer if deletion protection is enabled. If
+#' You can't delete a load balancer if deletion protection is enabled. If
 #' the load balancer does not exist or has already been deleted, the call
 #' succeeds.
 #' 
@@ -1996,7 +1996,7 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 #' Modifies the specified attributes of the specified Application Load
 #' Balancer or Network Load Balancer.
 #' 
-#' If any of the specified attributes can\'t be modified as requested, the
+#' If any of the specified attributes can't be modified as requested, the
 #' call fails. Any existing attributes that you do not modify retain their
 #' current values.
 #'
@@ -2294,7 +2294,7 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' protocol of the target group is TCP, TLS, UDP, or TCP\\_UDP. The TLS,
 #' UDP, and TCP\\_UDP protocols are not supported for health checks.
 #' 
-#' With Network Load Balancers, you can\'t modify this setting.
+#' With Network Load Balancers, you can't modify this setting.
 #' @param HealthCheckPort The port the load balancer uses when performing health checks on
 #' targets.
 #' @param HealthCheckPath \[HTTP/HTTPS health checks\] The ping path that is the destination for
@@ -2305,11 +2305,11 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' seconds. For Network Load Balancers, the supported values are 10 or 30
 #' seconds.
 #' 
-#' With Network Load Balancers, you can\'t modify this setting.
+#' With Network Load Balancers, you can't modify this setting.
 #' @param HealthCheckTimeoutSeconds \[HTTP/HTTPS health checks\] The amount of time, in seconds, during
 #' which no response means a failed health check.
 #' 
-#' With Network Load Balancers, you can\'t modify this setting.
+#' With Network Load Balancers, you can't modify this setting.
 #' @param HealthyThresholdCount The number of consecutive health checks successes required before
 #' considering an unhealthy target healthy.
 #' @param UnhealthyThresholdCount The number of consecutive health check failures required before
@@ -2318,7 +2318,7 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' @param Matcher \[HTTP/HTTPS health checks\] The HTTP codes to use when checking for a
 #' successful response from a target.
 #' 
-#' With Network Load Balancers, you can\'t modify this setting.
+#' With Network Load Balancers, you can't modify this setting.
 #'
 #' @section Request syntax:
 #' ```
@@ -2531,7 +2531,7 @@ elbv2_register_targets <- function(TargetGroupArn, Targets) {
 #' Removes the specified certificate from the certificate list for the
 #' specified HTTPS or TLS listener.
 #' 
-#' You can\'t remove the default certificate for a listener. To replace the
+#' You can't remove the default certificate for a listener. To replace the
 #' default certificate, call ModifyListener.
 #' 
 #' To list the certificates for your listener, use
@@ -2745,7 +2745,7 @@ elbv2_set_rule_priorities <- function(RulePriorities) {
 #' Load Balancer. The specified security groups override the previously
 #' associated security groups.
 #' 
-#' You can\'t specify a security group for a Network Load Balancer.
+#' You can't specify a security group for a Network Load Balancer.
 #'
 #' @usage
 #' elbv2_set_security_groups(LoadBalancerArn, SecurityGroups)

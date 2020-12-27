@@ -13,8 +13,8 @@ NULL
 #' to abort a given multipart upload multiple times in order to completely
 #' free all storage consumed by all parts.
 #' 
-#' To verify that all parts have been removed, so you don\'t get charged
-#' for the part storage, you should call the ListParts operation and ensure
+#' To verify that all parts have been removed, so you don't get charged for
+#' the part storage, you should call the ListParts operation and ensure
 #' that the parts list is empty.
 #' 
 #' For information about permissions required to use the multipart upload
@@ -141,7 +141,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' 
 #'     -   Description: One or more of the specified parts could not be
 #'         found. The part might not have been uploaded, or the specified
-#'         entity tag might not have matched the part\'s entity tag.
+#'         entity tag might not have matched the part's entity tag.
 #' 
 #'     -   400 Bad Request
 #' 
@@ -395,9 +395,9 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' If you do not enable versioning or suspend it on the target bucket, the
 #' version ID that Amazon S3 generates is always null.
 #' 
-#' If the source object\'s storage class is GLACIER, you must restore a
-#' copy of this object before you can use it as a source object for the
-#' copy operation. For more information, see .
+#' If the source object's storage class is GLACIER, you must restore a copy
+#' of this object before you can use it as a source object for the copy
+#' operation. For more information, see .
 #' 
 #' The following operations are related to `CopyObject`:
 #' 
@@ -436,7 +436,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @param CopySourceIfModifiedSince Copies the object if it has been modified since the specified time.
 #' @param CopySourceIfNoneMatch Copies the object if its entity tag (ETag) is different than the
 #' specified ETag.
-#' @param CopySourceIfUnmodifiedSince Copies the object if it hasn\'t been modified since the specified time.
+#' @param CopySourceIfUnmodifiedSince Copies the object if it hasn't been modified since the specified time.
 #' @param Expires The date and time at which the object is no longer cacheable.
 #' @param GrantFullControl Gives the grantee READ, READ\\_ACP, and WRITE\\_ACP permissions on the
 #' object.
@@ -451,7 +451,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' or replaced with tag-set provided in the request.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
 #' Amazon S3 (for example, AES256, aws:kms).
-#' @param StorageClass The type of storage to use for the object. Defaults to \'STANDARD\'.
+#' @param StorageClass The type of storage to use for the object. Defaults to 'STANDARD'.
 #' @param WebsiteRedirectLocation If the bucket is configured as a website, redirects requests for this
 #' object to another object in the same bucket or to an external URL.
 #' Amazon S3 stores the value of this header in the object metadata.
@@ -461,7 +461,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' encrypting data. This value is used to store the object and then it is
 #' discarded; Amazon S3 does not store the encryption key. The key must be
 #' appropriate for use with the algorithm specified in the
-#' `x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm` header.
+#' `x-amz-server-side​-encryption​-customer-algorithm` header.
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
@@ -488,7 +488,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' conjunction with the `TaggingDirective`. The tag-set must be encoded as
 #' URL Query parameters.
 #' @param ObjectLockMode The Object Lock mode that you want to apply to the copied object.
-#' @param ObjectLockRetainUntilDate The date and time when you want the copied object\'s Object Lock to
+#' @param ObjectLockRetainUntilDate The date and time when you want the copied object's Object Lock to
 #' expire.
 #' @param ObjectLockLegalHoldStatus Specifies whether you want to apply a Legal Hold to the copied object.
 #'
@@ -624,12 +624,12 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDispo
 #'     You specify each grantee as a type=value pair, where the type is one
 #'     of the following:
 #' 
-#'     -   `id` -- if the value specified is the canonical user ID of an
-#'         AWS account
+#'     -   `id` – if the value specified is the canonical user ID of an AWS
+#'         account
 #' 
-#'     -   `uri` -- if you are granting permissions to a predefined group
+#'     -   `uri` – if you are granting permissions to a predefined group
 #' 
-#'     -   `emailAddress` -- if the value specified is the email address of
+#'     -   `emailAddress` – if the value specified is the email address of
 #'         an AWS account
 #' 
 #'         Using email addresses to specify a grantee is only supported in
@@ -649,7 +649,7 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDispo
 #' 
 #'         -   Europe (Ireland)
 #' 
-#'         -   South America (SÃ£o Paulo)
+#'         -   South America (São Paulo)
 #' 
 #'         For a list of all the Amazon S3 supported Regions and endpoints,
 #'         see [Regions and
@@ -836,37 +836,37 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' own encryption key.
 #' 
 #' -   Use encryption keys managed by Amazon S3 or customer master keys
-#'     (CMKs) stored in AWS Key Management Service (AWS KMS) -- If you want
+#'     (CMKs) stored in AWS Key Management Service (AWS KMS) – If you want
 #'     AWS to manage the keys used to encrypt data, specify the following
 #'     headers in the request.
 #' 
-#'     -   x-amz-server-sideâ€‹-encryption
+#'     -   x-amz-server-side​-encryption
 #' 
 #'     -   x-amz-server-side-encryption-aws-kms-key-id
 #' 
 #'     -   x-amz-server-side-encryption-context
 #' 
-#'     If you specify `x-amz-server-side-encryption:aws:kms`, but don\'t
+#'     If you specify `x-amz-server-side-encryption:aws:kms`, but don't
 #'     provide `x-amz-server-side-encryption-aws-kms-key-id`, Amazon S3
 #'     uses the AWS managed CMK in AWS KMS to protect the data.
 #' 
 #'     All GET and PUT requests for an object protected by AWS KMS fail if
-#'     you don\'t make them with SSL or by using SigV4.
+#'     you don't make them with SSL or by using SigV4.
 #' 
 #'     For more information about server-side encryption with CMKs stored
 #'     in AWS KMS (SSE-KMS), see [Protecting Data Using Server-Side
 #'     Encryption with CMKs stored in AWS
 #'     KMS](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html).
 #' 
-#' -   Use customer-provided encryption keys -- If you want to manage your
+#' -   Use customer-provided encryption keys – If you want to manage your
 #'     own encryption keys, provide all the following headers in the
 #'     request.
 #' 
-#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+#'     -   x-amz-server-side​-encryption​-customer-algorithm
 #' 
-#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+#'     -   x-amz-server-side​-encryption​-customer-key
 #' 
-#'     -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+#'     -   x-amz-server-side​-encryption​-customer-key-MD5
 #' 
 #'     For more information about server-side encryption with CMKs stored
 #'     in AWS KMS (SSE-KMS), see [Protecting Data Using Server-Side
@@ -875,7 +875,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' 
 #' ### Access-Control-List (ACL)-Specific Request Headers
 #' 
-#' You also can use the following access control--related headers with this
+#' You also can use the following access control–related headers with this
 #' operation. By default, all objects are private. Only the owner has full
 #' access control. When adding a new object, you can grant permissions to
 #' individual AWS accounts or to predefined groups defined by Amazon S3.
@@ -885,13 +885,13 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' With this operation, you can grant access permissions using one of the
 #' following two methods:
 #' 
-#' -   Specify a canned ACL (`x-amz-acl`) --- Amazon S3 supports a set of
+#' -   Specify a canned ACL (`x-amz-acl`) — Amazon S3 supports a set of
 #'     predefined ACLs, known as *canned ACLs*. Each canned ACL has a
 #'     predefined set of grantees and permissions. For more information,
 #'     see [Canned
 #'     ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL).
 #' 
-#' -   Specify access permissions explicitly --- To explicitly grant access
+#' -   Specify access permissions explicitly — To explicitly grant access
 #'     permissions to specific AWS accounts or groups, use the following
 #'     headers. Each header maps to specific permissions that Amazon S3
 #'     supports in an ACL. For more information, see [Access Control List
@@ -913,12 +913,12 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #'     You specify each grantee as a type=value pair, where the type is one
 #'     of the following:
 #' 
-#'     -   `id` -- if the value specified is the canonical user ID of an
-#'         AWS account
+#'     -   `id` – if the value specified is the canonical user ID of an AWS
+#'         account
 #' 
-#'     -   `uri` -- if you are granting permissions to a predefined group
+#'     -   `uri` – if you are granting permissions to a predefined group
 #' 
-#'     -   `emailAddress` -- if the value specified is the email address of
+#'     -   `emailAddress` – if the value specified is the email address of
 #'         an AWS account
 #' 
 #'         Using email addresses to specify a grantee is only supported in
@@ -938,7 +938,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' 
 #'         -   Europe (Ireland)
 #' 
-#'         -   South America (SÃ£o Paulo)
+#'         -   South America (São Paulo)
 #' 
 #'         For a list of all the Amazon S3 supported Regions and endpoints,
 #'         see [Regions and
@@ -991,7 +991,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
 #' Amazon S3 (for example, AES256, aws:kms).
-#' @param StorageClass The type of storage to use for the object. Defaults to \'STANDARD\'.
+#' @param StorageClass The type of storage to use for the object. Defaults to 'STANDARD'.
 #' @param WebsiteRedirectLocation If the bucket is configured as a website, redirects requests for this
 #' object to another object in the same bucket or to an external URL.
 #' Amazon S3 stores the value of this header in the object metadata.
@@ -1001,7 +1001,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' encrypting data. This value is used to store the object and then it is
 #' discarded; Amazon S3 does not store the encryption key. The key must be
 #' appropriate for use with the algorithm specified in the
-#' `x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm` header.
+#' `x-amz-server-side​-encryption​-customer-algorithm` header.
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
@@ -1098,7 +1098,8 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' 
 #' **Related Resources**
 #' 
-#' -   -   
+#' -   
+#' -   
 #'
 #' @usage
 #' s3_delete_bucket(Bucket)
@@ -1156,13 +1157,15 @@ s3_delete_bucket <- function(Bucket) {
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html).
 #' 
 #' For information about the Amazon S3 analytics feature, see [Amazon S3
-#' Analytics -- Storage Class
+#' Analytics – Storage Class
 #' Analysis](https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html).
 #' 
 #' The following operations are related to
 #' `DeleteBucketAnalyticsConfiguration`:
 #' 
-#' -   -   -   
+#' -   
+#' -   
+#' -   
 #'
 #' @usage
 #' s3_delete_bucket_analytics_configuration(Bucket, Id)
@@ -1212,7 +1215,9 @@ s3_delete_bucket_analytics_configuration <- function(Bucket, Id) {
 #' 
 #' **Related Resources:**
 #' 
-#' -   -   RESTOPTIONSobject
+#' -   
+#' 
+#' -   RESTOPTIONSobject
 #'
 #' @usage
 #' s3_delete_bucket_cors(Bucket)
@@ -1443,7 +1448,7 @@ s3_delete_bucket_lifecycle <- function(Bucket) {
 #'
 #' Deletes a metrics configuration for the Amazon CloudWatch request
 #' metrics (specified by the metrics configuration ID) from the bucket.
-#' Note that this doesn\'t include the daily storage metrics.
+#' Note that this doesn't include the daily storage metrics.
 #' 
 #' To use this operation, you must have permissions to perform the
 #' `s3:PutMetricsConfiguration` action. The bucket owner has this
@@ -1511,13 +1516,13 @@ s3_delete_bucket_metrics_configuration <- function(Bucket, Id) {
 #' to delete the policy of a specified bucket. If you are using an identity
 #' other than the root user of the AWS account that owns the bucket, the
 #' calling identity must have the `DeleteBucketPolicy` permissions on the
-#' specified bucket and belong to the bucket owner\'s account to use this
+#' specified bucket and belong to the bucket owner's account to use this
 #' operation.
 #' 
-#' If you don\'t have `DeleteBucketPolicy` permissions, Amazon S3 returns a
+#' If you don't have `DeleteBucketPolicy` permissions, Amazon S3 returns a
 #' `403 Access Denied` error. If you have the correct permissions, but
-#' you\'re not using an identity that belongs to the bucket owner\'s
-#' account, Amazon S3 returns a `405 Method Not Allowed` error.
+#' you're not using an identity that belongs to the bucket owner's account,
+#' Amazon S3 returns a `405 Method Not Allowed` error.
 #' 
 #' As a security precaution, the root user of the AWS account that owns a
 #' bucket can always use this operation, even if the policy explicitly
@@ -1760,7 +1765,7 @@ s3_delete_bucket_website <- function(Bucket) {
 #'
 #' Removes the null version (if there is one) of an object and inserts a
 #' delete marker, which becomes the latest version of the object. If there
-#' isn\'t a null version, Amazon S3 does not remove any objects.
+#' isn't a null version, Amazon S3 does not remove any objects.
 #' 
 #' To remove a specific version, you must be the bucket owner and you must
 #' use the version Id subresource. Using this subresource permanently
@@ -1803,10 +1808,10 @@ s3_delete_bucket_website <- function(Bucket) {
 #' Points](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
 #' in the *Amazon Simple Storage Service Developer Guide*.
 #' @param Key &#91;required&#93; Key name of the object to delete.
-#' @param MFA The concatenation of the authentication device\'s serial number, a
-#' space, and the value that is displayed on your authentication device.
-#' Required to permanently delete a versioned object if versioning is
-#' configured with MFA delete enabled.
+#' @param MFA The concatenation of the authentication device's serial number, a space,
+#' and the value that is displayed on your authentication device. Required
+#' to permanently delete a versioned object if versioning is configured
+#' with MFA delete enabled.
 #' @param VersionId VersionId used to reference a specific version of the object.
 #' @param RequestPayer 
 #' @param BypassGovernanceRetention Indicates whether S3 Object Lock should bypass Governance-mode
@@ -2007,10 +2012,10 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL) {
 #' Points](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
 #' in the *Amazon Simple Storage Service Developer Guide*.
 #' @param Delete &#91;required&#93; Container for the request.
-#' @param MFA The concatenation of the authentication device\'s serial number, a
-#' space, and the value that is displayed on your authentication device.
-#' Required to permanently delete a versioned object if versioning is
-#' configured with MFA delete enabled.
+#' @param MFA The concatenation of the authentication device's serial number, a space,
+#' and the value that is displayed on your authentication device. Required
+#' to permanently delete a versioned object if versioning is configured
+#' with MFA delete enabled.
 #' @param RequestPayer 
 #' @param BypassGovernanceRetention Specifies whether you want to delete this object even if it has a
 #' Governance-type Object Lock in place. You must have sufficient
@@ -2283,13 +2288,15 @@ s3_get_bucket_acl <- function(Bucket) {
 #' in the *Amazon Simple Storage Service Developer Guide*.
 #' 
 #' For information about Amazon S3 analytics feature, see [Amazon S3
-#' Analytics -- Storage Class
+#' Analytics – Storage Class
 #' Analysis](https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html)
 #' in the *Amazon Simple Storage Service Developer Guide*.
 #' 
 #' **Related Resources**
 #' 
-#' -   -   -   
+#' -   
+#' -   
+#' -   
 #'
 #' @usage
 #' s3_get_bucket_analytics_configuration(Bucket, Id)
@@ -2667,7 +2674,7 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket) {
 
 #' Returns the Region the bucket resides in
 #'
-#' Returns the Region the bucket resides in. You set the bucket\'s Region
+#' Returns the Region the bucket resides in. You set the bucket's Region
 #' using the `LocationConstraint` request parameter in a `CreateBucket`
 #' request. For more information, see CreateBucket.
 #' 
@@ -2768,7 +2775,7 @@ s3_get_bucket_logging <- function(Bucket) {
 #' from the bucket
 #'
 #' Gets a metrics configuration (specified by the metrics configuration ID)
-#' from the bucket. Note that this doesn\'t include the daily storage
+#' from the bucket. Note that this doesn't include the daily storage
 #' metrics.
 #' 
 #' To use this operation, you must have permissions to perform the
@@ -2939,13 +2946,13 @@ s3_get_bucket_notification_configuration <- function(Bucket) {
 #' Returns the policy of a specified bucket. If you are using an identity
 #' other than the root user of the AWS account that owns the bucket, the
 #' calling identity must have the `GetBucketPolicy` permissions on the
-#' specified bucket and belong to the bucket owner\'s account in order to
+#' specified bucket and belong to the bucket owner's account in order to
 #' use this operation.
 #' 
-#' If you don\'t have `GetBucketPolicy` permissions, Amazon S3 returns a
+#' If you don't have `GetBucketPolicy` permissions, Amazon S3 returns a
 #' `403 Access Denied` error. If you have the correct permissions, but
-#' you\'re not using an identity that belongs to the bucket owner\'s
-#' account, Amazon S3 returns a `405 Method Not Allowed` error.
+#' you're not using an identity that belongs to the bucket owner's account,
+#' Amazon S3 returns a `405 Method Not Allowed` error.
 #' 
 #' As a security precaution, the root user of the AWS account that owns a
 #' bucket can always use this operation, even if the policy explicitly
@@ -3010,7 +3017,7 @@ s3_get_bucket_policy <- function(Bucket) {
 #' 
 #' For more information about when Amazon S3 considers a bucket public, see
 #' [The Meaning of
-#' \"Public\"](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status).
+#' "Public"](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status).
 #' 
 #' The following operations are related to `GetBucketPolicyStatus`:
 #' 
@@ -3396,19 +3403,19 @@ s3_get_bucket_website <- function(Bucket) {
 #' Encryption request headers, like `x-amz-server-side-encryption`, should
 #' not be sent for GET requests if your object uses server-side encryption
 #' with CMKs stored in AWS KMS (SSE-KMS) or server-side encryption with
-#' Amazon S3--managed encryption keys (SSE-S3). If your object does use
-#' these types of keys, you'll get an HTTP 400 BadRequest error.
+#' Amazon S3–managed encryption keys (SSE-S3). If your object does use
+#' these types of keys, you’ll get an HTTP 400 BadRequest error.
 #' 
 #' If you encrypt an object by using server-side encryption with
 #' customer-provided encryption keys (SSE-C) when you store the object in
 #' Amazon S3, then when you GET the object, you must use the following
 #' headers:
 #' 
-#' -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+#' -   x-amz-server-side​-encryption​-customer-algorithm
 #' 
-#' -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+#' -   x-amz-server-side​-encryption​-customer-key
 #' 
-#' -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+#' -   x-amz-server-side​-encryption​-customer-key-MD5
 #' 
 #' For more information about SSE-C, see [Server-Side Encryption (Using
 #' Customer-Provided Encryption
@@ -3429,10 +3436,10 @@ s3_get_bucket_website <- function(Bucket) {
 #' depends on whether you also have the `s3:ListBucket` permission.
 #' 
 #' -   If you have the `s3:ListBucket` permission on the bucket, Amazon S3
-#'     will return an HTTP status code 404 (\"no such key\") error.
+#'     will return an HTTP status code 404 ("no such key") error.
 #' 
-#' -   If you don't have the `s3:ListBucket` permission, Amazon S3 will
-#'     return an HTTP status code 403 (\"access denied\") error.
+#' -   If you don’t have the `s3:ListBucket` permission, Amazon S3 will
+#'     return an HTTP status code 403 ("access denied") error.
 #' 
 #' **Versioning**
 #' 
@@ -3529,7 +3536,7 @@ s3_get_bucket_website <- function(Bucket) {
 #' about the HTTP Range header, see
 #' <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35>.
 #' 
-#' Amazon S3 doesn\'t support retrieving multiple ranges of data per `GET`
+#' Amazon S3 doesn't support retrieving multiple ranges of data per `GET`
 #' request.
 #' @param ResponseCacheControl Sets the `Cache-Control` header of the response.
 #' @param ResponseContentDisposition Sets the `Content-Disposition` header of the response
@@ -3544,13 +3551,13 @@ s3_get_bucket_website <- function(Bucket) {
 #' encrypting data. This value is used to store the object and then it is
 #' discarded; Amazon S3 does not store the encryption key. The key must be
 #' appropriate for use with the algorithm specified in the
-#' `x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm` header.
+#' `x-amz-server-side​-encryption​-customer-algorithm` header.
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
 #' @param RequestPayer 
 #' @param PartNumber Part number of the object being read. This is a positive integer between
-#' 1 and 10,000. Effectively performs a \'ranged\' GET request for the part
+#' 1 and 10,000. Effectively performs a 'ranged' GET request for the part
 #' specified. Useful for downloading just a part of an object.
 #'
 #' @section Request syntax:
@@ -3699,7 +3706,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 
 #' Gets an object's current Legal Hold status
 #'
-#' Gets an object\'s current Legal Hold status. For more information, see
+#' Gets an object's current Legal Hold status. For more information, see
 #' [Locking
 #' Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html).
 #'
@@ -3795,7 +3802,7 @@ s3_get_object_lock_configuration <- function(Bucket) {
 
 #' Retrieves an object's retention settings
 #'
-#' Retrieves an object\'s retention settings. For more information, see
+#' Retrieves an object's retention settings. For more information, see
 #' [Locking
 #' Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html).
 #'
@@ -3937,7 +3944,7 @@ s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL) {
 #' Return torrent files from a bucket
 #'
 #' Return torrent files from a bucket. BitTorrent can save you bandwidth
-#' when you\'re distributing large files. For more information about
+#' when you're distributing large files. For more information about
 #' BitTorrent, see [Amazon S3
 #' Torrent](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3Torrent.html).
 #' 
@@ -4008,13 +4015,13 @@ s3_get_object_torrent <- function(Bucket, Key, RequestPayer = NULL) {
 #' When Amazon S3 evaluates the `PublicAccessBlock` configuration for a
 #' bucket or an object, it checks the `PublicAccessBlock` configuration for
 #' both the bucket (or the bucket that contains the object) and the bucket
-#' owner\'s account. If the `PublicAccessBlock` settings are different
+#' owner's account. If the `PublicAccessBlock` settings are different
 #' between the bucket and the account, Amazon S3 uses the most restrictive
 #' combination of the bucket-level and account-level settings.
 #' 
 #' For more information about when Amazon S3 considers a bucket or an
 #' object public, see [The Meaning of
-#' \"Public\"](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status).
+#' "Public"](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status).
 #' 
 #' The following operations are related to `GetPublicAccessBlock`:
 #' 
@@ -4120,8 +4127,8 @@ s3_head_bucket <- function(Bucket) {
 #' the object itself
 #'
 #' The HEAD operation retrieves metadata from an object without returning
-#' the object itself. This operation is useful if you\'re only interested
-#' in an object\'s metadata. To use HEAD, you must have READ access to the
+#' the object itself. This operation is useful if you're only interested in
+#' an object's metadata. To use HEAD, you must have READ access to the
 #' object.
 #' 
 #' A `HEAD` request has the same options as a `GET` operation on an object.
@@ -4133,11 +4140,11 @@ s3_head_bucket <- function(Bucket) {
 #' Amazon S3, then when you retrieve the metadata from the object, you must
 #' use the following headers:
 #' 
-#' -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+#' -   x-amz-server-side​-encryption​-customer-algorithm
 #' 
-#' -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+#' -   x-amz-server-side​-encryption​-customer-key
 #' 
-#' -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+#' -   x-amz-server-side​-encryption​-customer-key-MD5
 #' 
 #' For more information about SSE-C, see [Server-Side Encryption (Using
 #' Customer-Provided Encryption
@@ -4146,8 +4153,8 @@ s3_head_bucket <- function(Bucket) {
 #' Encryption request headers, like `x-amz-server-side-encryption`, should
 #' not be sent for GET requests if your object uses server-side encryption
 #' with CMKs stored in AWS KMS (SSE-KMS) or server-side encryption with
-#' Amazon S3--managed encryption keys (SSE-S3). If your object does use
-#' these types of keys, you'll get an HTTP 400 BadRequest error.
+#' Amazon S3–managed encryption keys (SSE-S3). If your object does use
+#' these types of keys, you’ll get an HTTP 400 BadRequest error.
 #' 
 #' Request headers are limited to 8 KB in size. For more information, see
 #' [Common Request
@@ -4155,7 +4162,7 @@ s3_head_bucket <- function(Bucket) {
 #' 
 #' Consider the following when using request headers:
 #' 
-#' -   Consideration 1 -- If both of the `If-Match` and
+#' -   Consideration 1 – If both of the `If-Match` and
 #'     `If-Unmodified-Since` headers are present in the request as follows:
 #' 
 #'     -   `If-Match` condition evaluates to `true`, and;
@@ -4164,7 +4171,7 @@ s3_head_bucket <- function(Bucket) {
 #' 
 #'     Then Amazon S3 returns `200 OK` and the data requested.
 #' 
-#' -   Consideration 2 -- If both of the `If-None-Match` and
+#' -   Consideration 2 – If both of the `If-None-Match` and
 #'     `If-Modified-Since` headers are present in the request as follows:
 #' 
 #'     -   `If-None-Match` condition evaluates to `false`, and;
@@ -4185,10 +4192,10 @@ s3_head_bucket <- function(Bucket) {
 #' depends on whether you also have the s3:ListBucket permission.
 #' 
 #' -   If you have the `s3:ListBucket` permission on the bucket, Amazon S3
-#'     returns an HTTP status code 404 (\"no such key\") error.
+#'     returns an HTTP status code 404 ("no such key") error.
 #' 
-#' -   If you don't have the `s3:ListBucket` permission, Amazon S3 returns
-#'     an HTTP status code 403 (\"access denied\") error.
+#' -   If you don’t have the `s3:ListBucket` permission, Amazon S3 returns
+#'     an HTTP status code 403 ("access denied") error.
 #' 
 #' The following operation is related to `HeadObject`:
 #' 
@@ -4213,7 +4220,7 @@ s3_head_bucket <- function(Bucket) {
 #' about the HTTP Range header, see
 #' http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html\\#sec14.35.
 #' 
-#' Amazon S3 doesn\'t support retrieving multiple ranges of data per `GET`
+#' Amazon S3 doesn't support retrieving multiple ranges of data per `GET`
 #' request.
 #' @param VersionId VersionId used to reference a specific version of the object.
 #' @param SSECustomerAlgorithm Specifies the algorithm to use to when encrypting the object (for
@@ -4222,15 +4229,15 @@ s3_head_bucket <- function(Bucket) {
 #' encrypting data. This value is used to store the object and then it is
 #' discarded; Amazon S3 does not store the encryption key. The key must be
 #' appropriate for use with the algorithm specified in the
-#' `x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm` header.
+#' `x-amz-server-side​-encryption​-customer-algorithm` header.
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
 #' @param RequestPayer 
 #' @param PartNumber Part number of the object being read. This is a positive integer between
-#' 1 and 10,000. Effectively performs a \'ranged\' HEAD request for the
-#' part specified. Useful querying about the size of the part and the
-#' number of parts in this object.
+#' 1 and 10,000. Effectively performs a 'ranged' HEAD request for the part
+#' specified. Useful querying about the size of the part and the number of
+#' parts in this object.
 #'
 #' @section Request syntax:
 #' ```
@@ -4308,7 +4315,7 @@ s3_head_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNon
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html).
 #' 
 #' For information about Amazon S3 analytics feature, see [Amazon S3
-#' Analytics -- Storage Class
+#' Analytics – Storage Class
 #' Analysis](https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html).
 #' 
 #' The following operations are related to
@@ -4608,7 +4615,7 @@ s3_list_buckets <- function() {
 #' 
 #' All keys that contain the same string between the prefix, if specified,
 #' and the first occurrence of the delimiter after the prefix are grouped
-#' under a single result element, `CommonPrefixes`. If you don\'t specify
+#' under a single result element, `CommonPrefixes`. If you don't specify
 #' the prefix parameter, then the substring starts at the beginning of the
 #' key. The keys that are grouped under `CommonPrefixes` result element are
 #' not returned elsewhere in the response.
@@ -4629,7 +4636,7 @@ s3_list_buckets <- function() {
 #' @param Prefix Lists in-progress uploads only for those keys that begin with the
 #' specified prefix. You can use prefixes to separate a bucket into
 #' different grouping of keys. (You can think of using prefix to make
-#' groups in the same way you\'d use a folder in a file system.)
+#' groups in the same way you'd use a folder in a file system.)
 #' @param UploadIdMarker Together with key-marker, specifies the multipart upload after which
 #' listing should begin. If key-marker is not specified, the
 #' upload-id-marker parameter is ignored. Otherwise, any multipart uploads
@@ -4736,14 +4743,14 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #' API returns up to 1,000 key names. The response might contain fewer keys
 #' but will never contain more. If additional keys satisfy the search
 #' criteria, but were not returned because max-keys was exceeded, the
-#' response contains \\<isTruncated\\>true\\</isTruncated\\>. To return the
-#' additional keys, see key-marker and version-id-marker.
+#' response contains &lt;isTruncated&gt;true&lt;/isTruncated&gt;. To return
+#' the additional keys, see key-marker and version-id-marker.
 #' @param Prefix Use this parameter to select only those keys that begin with the
 #' specified prefix. You can use prefixes to separate a bucket into
 #' different groupings of keys. (You can think of using prefix to make
-#' groups in the same way you\'d use a folder in a file system.) You can
-#' use prefix with delimiter to roll up numerous objects into a single
-#' result under CommonPrefixes.
+#' groups in the same way you'd use a folder in a file system.) You can use
+#' prefix with delimiter to roll up numerous objects into a single result
+#' under CommonPrefixes.
 #' @param VersionIdMarker Specifies the object version you want to start listing from.
 #'
 #' @section Request syntax:
@@ -5103,9 +5110,9 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 #' The Transfer Acceleration state of a bucket can be set to one of the
 #' following two values:
 #' 
-#' -   Enabled -- Enables accelerated data transfers to the bucket.
+#' -   Enabled – Enables accelerated data transfers to the bucket.
 #' 
-#' -   Suspended -- Disables accelerated data transfers to the bucket.
+#' -   Suspended – Disables accelerated data transfers to the bucket.
 #' 
 #' The GetBucketAccelerateConfiguration operation returns the transfer
 #' acceleration state of a bucket.
@@ -5115,7 +5122,7 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 #' bucket increase.
 #' 
 #' The name of the bucket used for Transfer Acceleration must be
-#' DNS-compliant and must not contain periods (\".\").
+#' DNS-compliant and must not contain periods (".").
 #' 
 #' For more information about transfer acceleration, see [Transfer
 #' Acceleration](https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html).
@@ -5171,8 +5178,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
 #' To set the ACL of a bucket, you must have `WRITE_ACP` permission.
 #' 
-#' You can use one of the following two ways to set a bucket\'s
-#' permissions:
+#' You can use one of the following two ways to set a bucket's permissions:
 #' 
 #' -   Specify the ACL in the request body
 #' 
@@ -5212,12 +5218,12 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #'     You specify each grantee as a type=value pair, where the type is one
 #'     of the following:
 #' 
-#'     -   `id` -- if the value specified is the canonical user ID of an
-#'         AWS account
+#'     -   `id` – if the value specified is the canonical user ID of an AWS
+#'         account
 #' 
-#'     -   `uri` -- if you are granting permissions to a predefined group
+#'     -   `uri` – if you are granting permissions to a predefined group
 #' 
-#'     -   `emailAddress` -- if the value specified is the email address of
+#'     -   `emailAddress` – if the value specified is the email address of
 #'         an AWS account
 #' 
 #'         Using email addresses to specify a grantee is only supported in
@@ -5237,7 +5243,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' 
 #'         -   Europe (Ireland)
 #' 
-#'         -   South America (SÃ£o Paulo)
+#'         -   South America (São Paulo)
 #' 
 #'         For a list of all the Amazon S3 supported Regions and endpoints,
 #'         see [Regions and
@@ -5256,10 +5262,10 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' 
 #' **Grantee Values**
 #' 
-#' You can specify the person (grantee) to whom you\'re assigning access
+#' You can specify the person (grantee) to whom you're assigning access
 #' rights (using request elements) in the following ways:
 #' 
-#' -   By the person\'s ID:
+#' -   By the person's ID:
 #' 
 #'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;`
 #' 
@@ -5293,7 +5299,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' 
 #'     -   Europe (Ireland)
 #' 
-#'     -   South America (SÃ£o Paulo)
+#'     -   South America (São Paulo)
 #' 
 #'     For a list of all the Amazon S3 supported Regions and endpoints, see
 #'     [Regions and
@@ -5409,7 +5415,7 @@ s3_put_bucket_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' written. You can export the data to a destination bucket in a different
 #' account. However, the destination bucket must be in the same Region as
 #' the bucket that you are making the PUT analytics configuration to. For
-#' more information, see [Amazon S3 Analytics -- Storage Class
+#' more information, see [Amazon S3 Analytics – Storage Class
 #' Analysis](https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html).
 #' 
 #' You must create a bucket policy on the destination bucket where the
@@ -5452,7 +5458,9 @@ s3_put_bucket_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' 
 #' **Related Resources**
 #' 
-#' -   -   -   
+#' -   
+#' -   
+#' -   
 #'
 #' @usage
 #' s3_put_bucket_analytics_configuration(Bucket, Id,
@@ -5534,7 +5542,7 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #' You set this configuration on a bucket so that the bucket can service
 #' cross-origin requests. For example, you might want to enable a request
 #' whose origin is `http://www.example.com` to access your Amazon S3 bucket
-#' at `my.example.bucket.com` by using the browser\'s `XMLHttpRequest`
+#' at `my.example.bucket.com` by using the browser's `XMLHttpRequest`
 #' capability.
 #' 
 #' To enable cross-origin resource sharing (CORS) on a bucket, you add the
@@ -5549,7 +5557,7 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #' browser request to enable a cross-origin request. For a rule to match,
 #' the following conditions must be met:
 #' 
-#' -   The request\'s `Origin` header must match `AllowedOrigin` elements.
+#' -   The request's `Origin` header must match `AllowedOrigin` elements.
 #' 
 #' -   The request method (for example, GET, PUT, HEAD, and so on) or the
 #'     `Access-Control-Request-Method` header in case of a pre-flight
@@ -5938,10 +5946,12 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #' 
 #' -   GetBucketLifecycleConfiguration
 #' 
-#' -   -   By default, a resource owner---in this case, a bucket owner,
-#'     which is the AWS account that created the bucket---can perform any
-#'     of the operations. A resource owner can also grant others permission
-#'     to perform the operation. For more information, see the following
+#' -   
+#' 
+#' -   By default, a resource owner—in this case, a bucket owner, which is
+#'     the AWS account that created the bucket—can perform any of the
+#'     operations. A resource owner can also grant others permission to
+#'     perform the operation. For more information, see the following
 #'     topics in the Amazon Simple Storage Service Developer Guide:
 #' 
 #'     -   [Specifying Permissions in a
@@ -6222,10 +6232,10 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, LifecycleConfiguration
 #' 
 #' **Grantee Values**
 #' 
-#' You can specify the person (grantee) to whom you\'re assigning access
+#' You can specify the person (grantee) to whom you're assigning access
 #' rights (using request elements) in the following ways:
 #' 
-#' -   By the person\'s ID:
+#' -   By the person's ID:
 #' 
 #'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;`
 #' 
@@ -6348,9 +6358,9 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 #'
 #' Sets a metrics configuration (specified by the metrics configuration ID)
 #' for the bucket. You can have up to 1,000 metrics configurations per
-#' bucket. If you\'re updating an existing metrics configuration, note that
+#' bucket. If you're updating an existing metrics configuration, note that
 #' this is a full replacement of the existing metrics configuration. If you
-#' don\'t include the elements you want to keep, they are erased.
+#' don't include the elements you want to keep, they are erased.
 #' 
 #' To use this operation, you must have permissions to perform the
 #' `s3:PutMetricsConfiguration` action. The bucket owner has this
@@ -6681,13 +6691,13 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #' Applies an Amazon S3 bucket policy to an Amazon S3 bucket. If you are
 #' using an identity other than the root user of the AWS account that owns
 #' the bucket, the calling identity must have the `PutBucketPolicy`
-#' permissions on the specified bucket and belong to the bucket owner\'s
+#' permissions on the specified bucket and belong to the bucket owner's
 #' account in order to use this operation.
 #' 
-#' If you don\'t have `PutBucketPolicy` permissions, Amazon S3 returns a
+#' If you don't have `PutBucketPolicy` permissions, Amazon S3 returns a
 #' `403 Access Denied` error. If you have the correct permissions, but
-#' you\'re not using an identity that belongs to the bucket owner\'s
-#' account, Amazon S3 returns a `405 Method Not Allowed` error.
+#' you're not using an identity that belongs to the bucket owner's account,
+#' Amazon S3 returns a `405 Method Not Allowed` error.
 #' 
 #' As a security precaution, the root user of the AWS account that owns a
 #' bucket can always use this operation, even if the policy explicitly
@@ -6796,7 +6806,7 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ConfirmRemoveSelfBuc
 #' 
 #' **Handling Replication of Encrypted Objects**
 #' 
-#' By default, Amazon S3 doesn\'t replicate objects that are stored at rest
+#' By default, Amazon S3 doesn't replicate objects that are stored at rest
 #' using server-side encryption with CMKs stored in AWS KMS. To replicate
 #' AWS KMS-encrypted objects, add the following: `SourceSelectionCriteria`,
 #' `SseKmsEncryptedObjects`, `Status`, `EncryptionConfiguration`, and
@@ -6956,7 +6966,7 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ReplicationConf
 #'   RequestPaymentConfiguration)
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ContentMD5 \\>The base64-encoded 128-bit MD5 digest of the data. You must use this
+#' @param ContentMD5 &gt;The base64-encoded 128-bit MD5 digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, see [RFC
 #' 1864](http://www.ietf.org/rfc/rfc1864.txt).
@@ -7137,10 +7147,10 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, Tagging) {
 #' 
 #' You can set the versioning state with one of the following values:
 #' 
-#' **Enabled**---Enables versioning for the objects in the bucket. All
+#' **Enabled**—Enables versioning for the objects in the bucket. All
 #' objects added to the bucket receive a unique version ID.
 #' 
-#' **Suspended**---Disables versioning for the objects in the bucket. All
+#' **Suspended**—Disables versioning for the objects in the bucket. All
 #' objects added to the bucket receive the version ID null.
 #' 
 #' If the versioning state has never been set on a bucket, it has no
@@ -7174,12 +7184,12 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, Tagging) {
 #'   VersioningConfiguration)
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ContentMD5 \\>The base64-encoded 128-bit MD5 digest of the data. You must use this
+#' @param ContentMD5 &gt;The base64-encoded 128-bit MD5 digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, see [RFC
 #' 1864](http://www.ietf.org/rfc/rfc1864.txt).
-#' @param MFA The concatenation of the authentication device\'s serial number, a
-#' space, and the value that is displayed on your authentication device.
+#' @param MFA The concatenation of the authentication device's serial number, a space,
+#' and the value that is displayed on your authentication device.
 #' @param VersioningConfiguration &#91;required&#93; Container for setting the versioning state.
 #'
 #' @section Request syntax:
@@ -7244,9 +7254,9 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, MFA = NULL, Vers
 #' configuration by writing a bucket policy that grants them the
 #' `S3:PutBucketWebsite` permission.
 #' 
-#' To redirect all website requests sent to the bucket\'s website endpoint,
+#' To redirect all website requests sent to the bucket's website endpoint,
 #' you add a website configuration with the following elements. Because all
-#' requests are sent to another website, you don\'t need to provide index
+#' requests are sent to another website, you don't need to provide index
 #' document name for the bucket.
 #' 
 #' -   `WebsiteConfiguration`
@@ -7519,7 +7529,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
 #' Amazon S3 (for example, AES256, aws:kms).
-#' @param StorageClass If you don\'t specify, S3 Standard is the default storage class. Amazon
+#' @param StorageClass If you don't specify, S3 Standard is the default storage class. Amazon
 #' S3 supports other storage classes.
 #' @param WebsiteRedirectLocation If the bucket is configured as a website, redirects requests for this
 #' object to another object in the same bucket or to an external URL.
@@ -7548,7 +7558,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' encrypting data. This value is used to store the object and then it is
 #' discarded; Amazon S3 does not store the encryption key. The key must be
 #' appropriate for use with the algorithm specified in the
-#' `x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm` header.
+#' `x-amz-server-side​-encryption​-customer-algorithm` header.
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
@@ -7568,9 +7578,9 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 #' with the encryption context key-value pairs.
 #' @param RequestPayer 
 #' @param Tagging The tag-set for the object. The tag-set must be encoded as URL Query
-#' parameters. (For example, \"Key1=Value1\")
+#' parameters. (For example, "Key1=Value1")
 #' @param ObjectLockMode The Object Lock mode that you want to apply to this object.
-#' @param ObjectLockRetainUntilDate The date and time when you want this object\'s Object Lock to expire.
+#' @param ObjectLockRetainUntilDate The date and time when you want this object's Object Lock to expire.
 #' @param ObjectLockLegalHoldStatus Specifies whether a legal hold will be applied to this object. For more
 #' information about S3 Object Lock, see [Object
 #' Lock](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html).
@@ -7755,12 +7765,12 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #'     You specify each grantee as a type=value pair, where the type is one
 #'     of the following:
 #' 
-#'     -   `id` -- if the value specified is the canonical user ID of an
-#'         AWS account
+#'     -   `id` – if the value specified is the canonical user ID of an AWS
+#'         account
 #' 
-#'     -   `uri` -- if you are granting permissions to a predefined group
+#'     -   `uri` – if you are granting permissions to a predefined group
 #' 
-#'     -   `emailAddress` -- if the value specified is the email address of
+#'     -   `emailAddress` – if the value specified is the email address of
 #'         an AWS account
 #' 
 #'         Using email addresses to specify a grantee is only supported in
@@ -7780,7 +7790,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' 
 #'         -   Europe (Ireland)
 #' 
-#'         -   South America (SÃ£o Paulo)
+#'         -   South America (São Paulo)
 #' 
 #'         For a list of all the Amazon S3 supported Regions and endpoints,
 #'         see [Regions and
@@ -7798,10 +7808,10 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' 
 #' **Grantee Values**
 #' 
-#' You can specify the person (grantee) to whom you\'re assigning access
+#' You can specify the person (grantee) to whom you're assigning access
 #' rights (using request elements) in the following ways:
 #' 
-#' -   By the person\'s ID:
+#' -   By the person's ID:
 #' 
 #'     `&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;`
 #' 
@@ -7835,7 +7845,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' 
 #'     -   Europe (Ireland)
 #' 
-#'     -   South America (SÃ£o Paulo)
+#'     -   South America (São Paulo)
 #' 
 #'     For a list of all the Amazon S3 supported Regions and endpoints, see
 #'     [Regions and
@@ -7877,7 +7887,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. This header must be
 #' used as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, go to [RFC
-#' 1864.\\>](http://www.ietf.org/rfc/rfc1864.txt)
+#' 1864.&gt;](http://www.ietf.org/rfc/rfc1864.txt)
 #' @param GrantFullControl Allows grantee the read, write, read ACP, and write ACP permissions on
 #' the bucket.
 #' @param GrantRead Allows grantee to list the objects in the bucket.
@@ -8034,8 +8044,8 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 #' specified in the Object Lock configuration will be applied by default to
 #' every new object placed in the specified bucket.
 #' 
-#' `DefaultRetention` requires either Days or Years. You can\'t specify
-#' both at the same time.
+#' `DefaultRetention` requires either Days or Years. You can't specify both
+#' at the same time.
 #' 
 #' **Related Resources**
 #' 
@@ -8311,13 +8321,13 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' When Amazon S3 evaluates the `PublicAccessBlock` configuration for a
 #' bucket or an object, it checks the `PublicAccessBlock` configuration for
 #' both the bucket (or the bucket that contains the object) and the bucket
-#' owner\'s account. If the `PublicAccessBlock` configurations are
-#' different between the bucket and the account, Amazon S3 uses the most
-#' restrictive combination of the bucket-level and account-level settings.
+#' owner's account. If the `PublicAccessBlock` configurations are different
+#' between the bucket and the account, Amazon S3 uses the most restrictive
+#' combination of the bucket-level and account-level settings.
 #' 
 #' For more information about when Amazon S3 considers a bucket or an
 #' object public, see [The Meaning of
-#' \"Public\"](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status).
+#' "Public"](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status).
 #' 
 #' **Related Resources**
 #' 
@@ -8341,7 +8351,7 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' Amazon S3 bucket. You can enable the configuration options in any
 #' combination. For more information about when Amazon S3 considers a
 #' bucket or object public, see [The Meaning of
-#' \"Public\"](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status)
+#' "Public"](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status)
 #' in the *Amazon Simple Storage Service Developer Guide*.
 #'
 #' @section Request syntax:
@@ -8414,7 +8424,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #' 
 #' When making a select request, do the following:
 #' 
-#' -   Define an output location for the select query\'s output. This must
+#' -   Define an output location for the select query's output. This must
 #'     be an Amazon S3 bucket in the same AWS Region as the bucket that
 #'     contains the archive object that is being queried. The AWS account
 #'     that initiates the job must have permissions to write to the S3
@@ -8438,7 +8448,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #'         in the *Amazon Simple Storage Service Developer Guide*
 #' 
 #' -   Define the SQL expression for the `SELECT` type of restoration for
-#'     your query in the request body\'s `SelectParameters` structure. You
+#'     your query in the request body's `SelectParameters` structure. You
 #'     can use expressions like the following examples.
 #' 
 #'     -   The following expression returns all records from the specified
@@ -8467,7 +8477,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #' When making a select request, you can also do the following:
 #' 
 #' -   To expedite your queries, specify the `Expedited` tier. For more
-#'     information about tiers, see \"Restoring Archives,\" later in this
+#'     information about tiers, see "Restoring Archives," later in this
 #'     topic.
 #' 
 #' -   Specify details about the data serialization format of both the
@@ -8481,11 +8491,11 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #'     through a lifecycle policy.
 #' 
 #' -   You can issue more than one select request on the same Amazon S3
-#'     object. Amazon S3 doesn\'t deduplicate requests, so avoid issuing
+#'     object. Amazon S3 doesn't deduplicate requests, so avoid issuing
 #'     duplicate requests.
 #' 
 #' -   Amazon S3 accepts a select request even if the object has already
-#'     been restored. A select request doesn't return error response `409`.
+#'     been restored. A select request doesn’t return error response `409`.
 #' 
 #' **Restoring Archives**
 #' 
@@ -8498,7 +8508,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #' storage class that object was restored from.
 #' 
 #' To restore a specific object version, you can provide a version ID. If
-#' you don\'t provide a version ID, Amazon S3 restores the current version.
+#' you don't provide a version ID, Amazon S3 restores the current version.
 #' 
 #' The time it takes restore jobs to finish depends on which storage class
 #' the object is being restored from and which data access tier you
@@ -8512,7 +8522,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #'     your data stored in the GLACIER storage class when occasional urgent
 #'     requests for a subset of archives are required. For all but the
 #'     largest archived objects (250 MB+), data accessed using Expedited
-#'     retrievals are typically made available within 1--5 minutes.
+#'     retrievals are typically made available within 1–5 minutes.
 #'     Provisioned capacity ensures that retrieval capacity for Expedited
 #'     retrievals is available when you need it. Expedited retrievals and
 #'     provisioned capacity are not available for the DEEP\\_ARCHIVE storage
@@ -8526,7 +8536,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #'     typically complete within 12 hours from the DEEP\\_ARCHIVE storage
 #'     class.
 #' 
-#' -   **`Bulk`** - Bulk retrievals are Amazon S3 Glacier's lowest-cost
+#' -   **`Bulk`** - Bulk retrievals are Amazon S3 Glacier’s lowest-cost
 #'     retrieval option, enabling you to retrieve large amounts, even
 #'     petabytes, of data inexpensively in a day. Bulk retrievals typically
 #'     complete within 5-12 hours from the GLACIER storage class and
@@ -8788,7 +8798,7 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' 
 #' **Permissions**
 #' 
-#' You must have `s3:GetObject` permission for this operation.Â Amazon S3
+#' You must have `s3:GetObject` permission for this operation. Amazon S3
 #' Select does not support anonymous access. For more information about
 #' permissions, see [Specifying Permissions in a
 #' Policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)
@@ -8824,7 +8834,7 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #'     For objects that are encrypted with Amazon S3 managed encryption
 #'     keys (SSE-S3) and customer master keys (CMKs) stored in AWS Key
 #'     Management Service (SSE-KMS), server-side encryption is handled
-#'     transparently, so you don\'t need to specify anything. For more
+#'     transparently, so you don't need to specify anything. For more
 #'     information about server-side encryption, including SSE-S3 and
 #'     SSE-KMS, see [Protecting Data Using Server-Side
 #'     Encryption](https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html)
@@ -8843,7 +8853,7 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' `GetObject` functionality. For more information, see GetObject.
 #' 
 #' -   `Range`: Although you can specify a scan range for an Amazon S3
-#'     Select request (see SelectObjectContentRequest\\$ScanRange in the
+#'     Select request (see SelectObjectContentRequest$ScanRange in the
 #'     request parameters), you cannot specify the range of bytes of an
 #'     object to return.
 #' 
@@ -9028,7 +9038,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' in the *Amazon Simple Storage Service Developer Guide*.
 #' 
 #' Server-side encryption is supported by the S3 Multipart Upload actions.
-#' Unless you are using a customer-provided encryption key, you don\'t need
+#' Unless you are using a customer-provided encryption key, you don't need
 #' to specify the encryption parameters in each UploadPart request.
 #' Instead, you only need to specify the server-side encryption parameters
 #' in the initial Initiate Multipart request. For more information, see
@@ -9039,11 +9049,11 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' provide identical encryption information in each part upload using the
 #' following headers.
 #' 
-#' -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
+#' -   x-amz-server-side​-encryption​-customer-algorithm
 #' 
-#' -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
+#' -   x-amz-server-side​-encryption​-customer-key
 #' 
-#' -   x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+#' -   x-amz-server-side​-encryption​-customer-key-MD5
 #' 
 #' **Special Errors**
 #' 
@@ -9093,7 +9103,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' encrypting data. This value is used to store the object and then it is
 #' discarded; Amazon S3 does not store the encryption key. The key must be
 #' appropriate for use with the algorithm specified in the
-#' `x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm header`. This must be
+#' `x-amz-server-side​-encryption​-customer-algorithm header`. This must be
 #' the same encryption key specified in the initiate multipart upload
 #' request.
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
@@ -9227,7 +9237,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' If your bucket has versioning enabled, you could have multiple versions
 #' of the same object. By default, `x-amz-copy-source` identifies the
 #' current version of the object to copy. If the current version is a
-#' delete marker and you don\'t specify a versionId in the
+#' delete marker and you don't specify a versionId in the
 #' `x-amz-copy-source`, Amazon S3 returns a 404 error, because the object
 #' does not exist. If you specify versionId in the `x-amz-copy-source` and
 #' the versionId is a delete marker, Amazon S3 returns an HTTP 400 error,
@@ -9290,7 +9300,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' @param CopySourceIfModifiedSince Copies the object if it has been modified since the specified time.
 #' @param CopySourceIfNoneMatch Copies the object if its entity tag (ETag) is different than the
 #' specified ETag.
-#' @param CopySourceIfUnmodifiedSince Copies the object if it hasn\'t been modified since the specified time.
+#' @param CopySourceIfUnmodifiedSince Copies the object if it hasn't been modified since the specified time.
 #' @param CopySourceRange The range of bytes to copy from the source object. The range value must
 #' use the form bytes=first-last, where the first and last are the
 #' zero-based byte offsets to copy. For example, bytes=0-9 indicates that
@@ -9306,7 +9316,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' encrypting data. This value is used to store the object and then it is
 #' discarded; Amazon S3 does not store the encryption key. The key must be
 #' appropriate for use with the algorithm specified in the
-#' `x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm` header. This must be
+#' `x-amz-server-side​-encryption​-customer-algorithm` header. This must be
 #' the same encryption key specified in the initiate multipart upload
 #' request.
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC

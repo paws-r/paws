@@ -160,7 +160,7 @@ synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRo
 #' -   The CloudWatch alarms created for this canary. These alarms have a
 #'     name of `Synthetics-SharpDrop-Alarm-<i>MyCanaryName</i> `.
 #' 
-#' -   Amazon S3 objects and buckets, such as the canary\'s artifact
+#' -   Amazon S3 objects and buckets, such as the canary's artifact
 #'     location.
 #' 
 #' -   IAM roles created for the canary. If they were created in the
@@ -471,8 +471,8 @@ synthetics_list_tags_for_resource <- function(ResourceArn) {
 #' Use this operation to run a canary that has already been created
 #'
 #' Use this operation to run a canary that has already been created. The
-#' frequency of the canary runs is determined by the value of the canary\'s
-#' `Schedule`. To see a canary\'s schedule, use
+#' frequency of the canary runs is determined by the value of the canary's
+#' `Schedule`. To see a canary's schedule, use
 #' [GetCanary](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_GetCanary.html).
 #'
 #' @usage
@@ -516,7 +516,7 @@ synthetics_start_canary <- function(Name) {
 #' publishes metrics, and uploads artifacts, but it is not recorded in
 #' Synthetics as a completed run.
 #' 
-#' You can use `StartCanary` to start it running again with the canary's
+#' You can use `StartCanary` to start it running again with the canary’s
 #' current schedule at any point in the future.
 #'
 #' @usage
@@ -561,8 +561,8 @@ synthetics_stop_canary <- function(Name) {
 #' use them to scope user permissions, by granting a user permission to
 #' access or change only resources with certain tag values.
 #' 
-#' Tags don\'t have any semantic meaning to AWS and are interpreted
-#' strictly as strings of characters.
+#' Tags don't have any semantic meaning to AWS and are interpreted strictly
+#' as strings of characters.
 #' 
 #' You can use the `TagResource` action with a canary that already has
 #' tags. If you specify a new tag key for the alarm, this tag is appended
@@ -575,7 +575,7 @@ synthetics_stop_canary <- function(Name) {
 #' @usage
 #' synthetics_tag_resource(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; The ARN of the canary that you\'re adding tags to.
+#' @param ResourceArn &#91;required&#93; The ARN of the canary that you're adding tags to.
 #' 
 #' The ARN format of a canary is
 #' `arn:aws:synthetics:<i>Region</i>:<i>account-id</i>:canary:<i>canary-name</i> `.
@@ -618,7 +618,7 @@ synthetics_tag_resource <- function(ResourceArn, Tags) {
 #' @usage
 #' synthetics_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The ARN of the canary that you\'re removing tags from.
+#' @param ResourceArn &#91;required&#93; The ARN of the canary that you're removing tags from.
 #' 
 #' The ARN format of a canary is
 #' `arn:aws:synthetics:<i>Region</i>:<i>account-id</i>:canary:<i>canary-name</i> `.
@@ -660,7 +660,7 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' Use this operation to change the settings of a canary that has already
 #' been created.
 #' 
-#' You can\'t use this operation to update the tags of an existing canary.
+#' You can't use this operation to update the tags of an existing canary.
 #' To change the tags of an existing canary, use
 #' [TagResource](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_TagResource.html).
 #'

@@ -14,7 +14,7 @@ The ID should be in the following format.
 \verb{urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME}}
 }
 \description{
-Deletes a system. New deployments can\'t contain the system after its
+Deletes a system. New deployments can't contain the system after its
 deletion. Existing deployments that contain the system will continue to
 work because they use a snapshot of the system that is taken when it is
 deployed.

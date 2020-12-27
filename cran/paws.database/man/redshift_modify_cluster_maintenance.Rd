@@ -19,11 +19,11 @@ redshift_modify_cluster_maintenance(ClusterIdentifier, DeferMaintenance,
 window.}
 
 \item{DeferMaintenanceEndTime}{A timestamp indicating end time for the deferred maintenance window. If
-you specify an end time, you can\'t specify a duration.}
+you specify an end time, you can't specify a duration.}
 
 \item{DeferMaintenanceDuration}{An integer indicating the duration of the maintenance window in days. If
-you specify a duration, you can\'t specify an end time. The duration
-must be 45 days or less.}
+you specify a duration, you can't specify an end time. The duration must
+be 45 days or less.}
 }
 \description{
 Modifies the maintenance settings of a cluster.

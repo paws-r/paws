@@ -25,7 +25,7 @@ lowercased letters.}
 
 IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
-create resources named both \"MyResource\" and \"myresource\".}
+create resources named both "MyResource" and "myresource".}
 
 \item{AssumeRolePolicyDocument}{[required] The trust relationship policy document that grants an entity permission
 to assume the role.
@@ -60,7 +60,7 @@ Anyone who assumes the role from the AWS CLI or API can use the
 \code{DurationSeconds} API parameter or the \code{duration-seconds} CLI parameter
 to request a longer session. The \code{MaxSessionDuration} setting determines
 the maximum duration that can be requested using the \code{DurationSeconds}
-parameter. If users don\'t specify a value for the \code{DurationSeconds}
+parameter. If users don't specify a value for the \code{DurationSeconds}
 parameter, their security credentials are valid for one hour by default.
 This applies when you use the \verb{AssumeRole*} API operations or the
 \verb{assume-role*} CLI operations but does not apply when you use those

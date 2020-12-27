@@ -11,7 +11,7 @@ opsworks_update_instance(InstanceId, LayerIds, InstanceType,
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
 
-\item{LayerIds}{The instance\'s layer IDs.}
+\item{LayerIds}{The instance's layer IDs.}
 
 \item{InstanceType}{The instance type, such as \code{t2.micro}. For a list of supported instance
 types, open the stack in the console, choose \strong{Instances}, and choose
@@ -25,7 +25,7 @@ only time-based instances.}
 
 \item{Hostname}{The instance host name.}
 
-\item{Os}{The instance\'s operating system, which must be set to one of the
+\item{Os}{The instance's operating system, which must be set to one of the
 following. You cannot update an instance that is using a custom AMI.
 \itemize{
 \item A supported Linux operating system: An Amazon Linux version, such as
@@ -62,7 +62,7 @@ using. You cannot apply a new AMI to an instance by running
 UpdateInstance. UpdateInstance does not work on instances that are using
 custom AMIs.}
 
-\item{SshKeyName}{The instance\'s Amazon EC2 key name.}
+\item{SshKeyName}{The instance's Amazon EC2 key name.}
 
 \item{Architecture}{The instance architecture. Instance types do not necessarily support
 both architectures. For a list of the architectures that are supported
@@ -83,9 +83,9 @@ your instances have the latest security updates.}
 \item{AgentVersion}{The default AWS OpsWorks Stacks agent version. You have the following
 options:
 \itemize{
-\item \code{INHERIT} - Use the stack\'s default agent version setting.
+\item \code{INHERIT} - Use the stack's default agent version setting.
 \item \emph{version\\_number} - Use the specified agent version. This value
-overrides the stack\'s default setting. To update the agent version,
+overrides the stack's default setting. To update the agent version,
 you must edit the instance configuration and specify a new version.
 AWS OpsWorks Stacks then automatically installs that version on the
 instance.

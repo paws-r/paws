@@ -15,7 +15,7 @@ cognitoidentity_merge_developer_identities(SourceUserIdentifier,
 \item{DestinationUserIdentifier}{[required] User identifier for the destination user. The value should be a
 \code{DeveloperUserIdentifier}.}
 
-\item{DeveloperProviderName}{[required] The \"domain\" by which Cognito will refer to your users. This is a
+\item{DeveloperProviderName}{[required] The "domain" by which Cognito will refer to your users. This is a
 (pseudo) domain name that you provide while creating an identity pool.
 This name acts as a placeholder that allows your backend and the Cognito
 service to communicate about the developer provider. For the

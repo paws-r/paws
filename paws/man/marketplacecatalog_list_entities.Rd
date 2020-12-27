@@ -21,7 +21,7 @@ marketplacecatalog_list_entities(Catalog, EntityType, FilterList, Sort,
 results.}
 
 \item{MaxResults}{Specifies the upper limit of the elements on a single page. If a value
-isn\'t provided, the default value is 20.}
+isn't provided, the default value is 20.}
 }
 \description{
 Provides the list of entities of a given type.

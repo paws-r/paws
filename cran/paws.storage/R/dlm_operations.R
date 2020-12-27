@@ -14,8 +14,8 @@ NULL
 #'
 #' @param ExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role used to run the
 #' operations specified by the lifecycle policy.
-#' @param Description &#91;required&#93; A description of the lifecycle policy. The characters \\^\[0-9A-Za-z
-#' \\_-\]+\\$ are supported.
+#' @param Description &#91;required&#93; A description of the lifecycle policy. The characters ^\[0-9A-Za-z
+#' \\_-\]+$ are supported.
 #' @param State &#91;required&#93; The desired activation state of the lifecycle policy after creation.
 #' @param PolicyDetails &#91;required&#93; The configuration details of the lifecycle policy.
 #' @param Tags The tags to apply to the lifecycle policy during creation.

@@ -69,7 +69,7 @@ NULL
 #' 
 #' Example: `sun:05:00-sun:09:00`
 #' 
-#' If you don\'t specify a preferred maintenance window when you create or
+#' If you don't specify a preferred maintenance window when you create or
 #' modify a cache cluster, DAX assigns a 60-minute maintenance window on a
 #' randomly selected day of the week.
 #' @param NotificationTopicArn The Amazon Resource Name (ARN) of the Amazon SNS topic to which
@@ -77,7 +77,7 @@ NULL
 #' 
 #' The Amazon SNS topic owner must be same as the DAX cluster owner.
 #' @param IamRoleArn &#91;required&#93; A valid Amazon Resource Name (ARN) that identifies an IAM role. At
-#' runtime, DAX will assume this role and use the role\'s permissions to
+#' runtime, DAX will assume this role and use the role's permissions to
 #' access DynamoDB on your behalf.
 #' @param ParameterGroupName The parameter group to be associated with the DAX cluster.
 #' @param Tags A set of tags to associate with the DAX cluster.
@@ -502,7 +502,7 @@ dax_describe_default_parameters <- function(MaxResults = NULL, NextToken = NULL)
 #' providing the name as a parameter.
 #' 
 #' By default, only the events occurring within the last 24 hours are
-#' returned; however, you can retrieve up to 14 days\' worth of events if
+#' returned; however, you can retrieve up to 14 days' worth of events if
 #' necessary.
 #'
 #' @usage
@@ -517,7 +517,7 @@ dax_describe_default_parameters <- function(MaxResults = NULL, NextToken = NULL)
 #' ISO 8601 format.
 #' @param EndTime The end of the time interval for which to retrieve events, specified in
 #' ISO 8601 format.
-#' @param Duration The number of minutes\' worth of events to retrieve.
+#' @param Duration The number of minutes' worth of events to retrieve.
 #' @param MaxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
 #' in the response so that the remaining results can be retrieved.

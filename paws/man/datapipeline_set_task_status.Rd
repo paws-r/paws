@@ -18,7 +18,7 @@ ended unsuccessfully. Preconditions use false.}
 \item{errorId}{If an error occurred during the task, this value specifies the error
 code. This value is set on the physical attempt object. It is used to
 display error information to the user. It should not start with string
-\"Service\\_\" which is reserved by the system.}
+"Service\\_" which is reserved by the system.}
 
 \item{errorMessage}{If an error occurred during the task, this value specifies a text
 description of the error. This value is set on the physical attempt

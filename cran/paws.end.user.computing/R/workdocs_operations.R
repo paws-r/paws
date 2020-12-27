@@ -388,7 +388,7 @@ workdocs_create_notification_subscription <- function(OrganizationId, Endpoint, 
 #' Creates a user in a Simple AD or Microsoft AD directory
 #'
 #' Creates a user in a Simple AD or Microsoft AD directory. The status of a
-#' newly created user is \"ACTIVE\". New users can access Amazon WorkDocs.
+#' newly created user is "ACTIVE". New users can access Amazon WorkDocs.
 #'
 #' @usage
 #' workdocs_create_user(OrganizationId, Username, EmailAddress, GivenName,
@@ -446,7 +446,7 @@ workdocs_create_user <- function(OrganizationId = NULL, Username, EmailAddress =
 #' Deactivates the specified user, which revokes the user's access to
 #' Amazon WorkDocs
 #'
-#' Deactivates the specified user, which revokes the user\'s access to
+#' Deactivates the specified user, which revokes the user's access to
 #' Amazon WorkDocs.
 #'
 #' @usage
@@ -955,9 +955,9 @@ workdocs_describe_comments <- function(AuthenticationToken = NULL, DocumentId, V
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param Limit The maximum number of versions to return with this call.
-#' @param Include A comma-separated list of values. Specify \"INITIALIZED\" to include
+#' @param Include A comma-separated list of values. Specify "INITIALIZED" to include
 #' incomplete versions.
-#' @param Fields Specify \"SOURCE\" to include initialized versions and a URL for the
+#' @param Fields Specify "SOURCE" to include initialized versions and a URL for the
 #' source document.
 #'
 #' @section Request syntax:
@@ -1016,7 +1016,7 @@ workdocs_describe_document_versions <- function(AuthenticationToken = NULL, Docu
 #' @param Marker The marker for the next set of results. This marker was received from a
 #' previous call.
 #' @param Type The type of items.
-#' @param Include The contents to include. Specify \"INITIALIZED\" to include initialized
+#' @param Include The contents to include. Specify "INITIALIZED" to include initialized
 #' documents.
 #'
 #' @section Request syntax:
@@ -1193,8 +1193,8 @@ workdocs_describe_resource_permissions <- function(AuthenticationToken = NULL, R
 #' Describes the current user's special folders; the RootFolder and the
 #' RecycleBin
 #'
-#' Describes the current user\'s special folders; the `RootFolder` and the
-#' `RecycleBin`. `RootFolder` is the root of user\'s files and folders and
+#' Describes the current user's special folders; the `RootFolder` and the
+#' `RecycleBin`. `RootFolder` is the root of user's files and folders and
 #' `RecycleBin` is the root of recycled items. This is not a valid action
 #' for SigV4 (administrative API) clients.
 #' 
@@ -1259,14 +1259,14 @@ workdocs_describe_root_folders <- function(AuthenticationToken, Limit = NULL, Ma
 #' @param OrganizationId The ID of the organization.
 #' @param UserIds The IDs of the users.
 #' @param Query A query to filter users by user name.
-#' @param Include The state of the users. Specify \"ALL\" to include inactive users.
+#' @param Include The state of the users. Specify "ALL" to include inactive users.
 #' @param Order The order for the results.
 #' @param Sort The sorting criteria.
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
 #' @param Limit The maximum number of items to return.
-#' @param Fields A comma-separated list of values. Specify \"STORAGE\\_METADATA\" to
-#' include the user storage quota and utilization information.
+#' @param Fields A comma-separated list of values. Specify "STORAGE\\_METADATA" to include
+#' the user storage quota and utilization information.
 #'
 #' @section Request syntax:
 #' ```
@@ -1457,8 +1457,8 @@ workdocs_get_document_path <- function(AuthenticationToken = NULL, DocumentId, L
 #' administrator credentials to access the API.
 #' @param DocumentId &#91;required&#93; The ID of the document.
 #' @param VersionId &#91;required&#93; The version ID of the document.
-#' @param Fields A comma-separated list of values. Specify \"SOURCE\" to include a URL
-#' for the source document.
+#' @param Fields A comma-separated list of values. Specify "SOURCE" to include a URL for
+#' the source document.
 #' @param IncludeCustomMetadata Set this to TRUE to include custom metadata in the response.
 #'
 #' @section Request syntax:
@@ -1553,8 +1553,8 @@ workdocs_get_folder <- function(AuthenticationToken = NULL, FolderId, IncludeCus
 #' administrator credentials to access the API.
 #' @param FolderId &#91;required&#93; The ID of the folder.
 #' @param Limit The maximum number of levels in the hierarchy to return.
-#' @param Fields A comma-separated list of values. Specify \"NAME\" to include the names
-#' of the parent folders.
+#' @param Fields A comma-separated list of values. Specify "NAME" to include the names of
+#' the parent folders.
 #' @param Marker This value is not supported.
 #'
 #' @section Request syntax:

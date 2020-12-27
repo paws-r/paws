@@ -9,10 +9,10 @@ glacier_list_vaults(accountId, marker, limit)
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID. This value must match the
 AWS account ID associated with the credentials used to sign the request.
-You can either specify an AWS account ID or optionally a single \'\code{-}\'
+You can either specify an AWS account ID or optionally a single '\code{-}'
 (hyphen), in which case Amazon Glacier uses the AWS account ID
 associated with the credentials used to sign the request. If you specify
-your account ID, do not include any hyphens (\'-\') in the ID.}
+your account ID, do not include any hyphens ('-') in the ID.}
 
 \item{marker}{A string used for pagination. The marker specifies the vault ARN after
 which the listing of vaults should begin.}
@@ -22,8 +22,8 @@ The number of vaults returned might be fewer than the specified limit,
 but the number of returned vaults never exceeds the limit.}
 }
 \description{
-This operation lists all vaults owned by the calling user\'s account.
-The list returned in the response is ASCII-sorted by vault name.
+This operation lists all vaults owned by the calling user's account. The
+list returned in the response is ASCII-sorted by vault name.
 }
 \details{
 By default, this operation returns up to 10 items. If there are more
@@ -36,7 +36,7 @@ request. You can also limit the number of vaults returned in the
 response by specifying the \code{limit} parameter in the request.
 
 An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don\'t have any
+However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to
 perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html}{Access Control Using AWS Identity and Access Management (IAM)}.
 

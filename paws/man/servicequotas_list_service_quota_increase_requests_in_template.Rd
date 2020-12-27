@@ -14,16 +14,16 @@ servicequotas_list_service_quota_increase_requests_in_template(
 \item{AwsRegion}{Specifies the AWS Region for the quota that you want to use.}
 
 \item{NextToken}{(Optional) Use this parameter in a request if you receive a \code{NextToken}
-response in a previous request that indicates that there\'s more output
+response in a previous request that indicates that there's more output
 available. In a subsequent call, set it to the value of the previous
-call\'s \code{NextToken} response to indicate where the output should
-continue from.}
+call's \code{NextToken} response to indicate where the output should continue
+from.}
 
 \item{MaxResults}{(Optional) Limits the number of results that you want to include in the
-response. If you don\'t include this parameter, the response defaults to
-a value that\'s specific to the operation. If additional items exist
+response. If you don't include this parameter, the response defaults to
+a value that's specific to the operation. If additional items exist
 beyond the specified maximum, the \code{NextToken} element is present and has
-a value (isn\'t null). Include that value as the \code{NextToken} request
+a value (isn't null). Include that value as the \code{NextToken} request
 parameter in the call to the operation to get the next part of the
 results. You should check \code{NextToken} after every operation to ensure
 that you receive all of the results.}

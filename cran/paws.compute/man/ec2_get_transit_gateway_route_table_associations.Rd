@@ -14,7 +14,7 @@ ec2_get_transit_gateway_route_table_associations(
 \item{Filters}{One or more filters. The possible values are:
 \itemize{
 \item \code{resource-id} - The ID of the resource.
-\item \code{resource-type} - The resource type (\code{vpc} \\| \code{vpn}).
+\item \code{resource-type} - The resource type (\code{vpc} | \code{vpn}).
 \item \code{transit-gateway-attachment-id} - The ID of the attachment.
 }}
 

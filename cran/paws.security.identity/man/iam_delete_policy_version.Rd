@@ -16,9 +16,8 @@ in the \emph{AWS General Reference}.}
 \item{VersionId}{[required] The policy version to delete.
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that
-consists of the lowercase letter \'v\' followed by one or two digits,
-and optionally followed by a period \'.\' and a string of letters and
-digits.
+consists of the lowercase letter 'v' followed by one or two digits, and
+optionally followed by a period '.' and a string of letters and digits.
 
 For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.}

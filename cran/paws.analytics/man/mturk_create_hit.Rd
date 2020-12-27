@@ -59,7 +59,7 @@ Either a Question parameter or a HITLayoutId parameter must be provided.}
 \item{RequesterAnnotation}{An arbitrary data field. The RequesterAnnotation parameter lets your
 application attach arbitrary data to the HIT for tracking purposes. For
 example, this parameter could be an identifier internal to the
-Requester\'s application that corresponds with the HIT.
+Requester's application that corresponds with the HIT.
 
 The RequesterAnnotation parameter for a HIT is only visible to the
 Requester who created the HIT. It is not shown to the Worker, or any
@@ -68,7 +68,7 @@ other Requester.
 The RequesterAnnotation parameter may be different for each HIT you
 submit. It does not affect how your HITs are grouped.}
 
-\item{QualificationRequirements}{Conditions that a Worker\'s Qualifications must meet in order to accept
+\item{QualificationRequirements}{Conditions that a Worker's Qualifications must meet in order to accept
 the HIT. A HIT can have between zero and ten Qualification requirements.
 All requirements must be met in order for a Worker to accept the HIT.
 Additionally, other actions can be restricted using the \code{ActionsGuarded}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_delete_instance_snapshot}
 \alias{lightsail_delete_instance_snapshot}
-\title{Deletes a specific snapshot of a virtual private server (or \emph{instance})}
+\title{Deletes a specific snapshot of a virtual private server (or instance)}
 \usage{
 lightsail_delete_instance_snapshot(instanceSnapshotName)
 }

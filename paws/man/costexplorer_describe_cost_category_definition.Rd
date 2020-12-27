@@ -15,12 +15,12 @@ costexplorer_describe_cost_category_definition(CostCategoryArn,
 }
 \description{
 Returns the name, ARN, rules, definition, and effective dates of a Cost
-Category that\'s defined in the account.
+Category that's defined in the account.
 }
 \details{
 You have the option to use \code{EffectiveOn} to return a Cost Category that
 is active on a specific date. If there is no \code{EffectiveOn} specified,
-you'll see a Cost Category that is effective on the current date. If
+you’ll see a Cost Category that is effective on the current date. If
 Cost Category is still effective, \code{EffectiveEnd} is omitted in the
 response.
 }

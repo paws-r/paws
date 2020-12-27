@@ -21,7 +21,7 @@ arguments unchanged.}
 \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html}{\code{CodeReview}}
 object.}
 
-\item{UserIds}{An AWS user\'s account ID or Amazon Resource Name (ARN). Use this ID to
+\item{UserIds}{An AWS user's account ID or Amazon Resource Name (ARN). Use this ID to
 query the recommendation feedback for a code review from that user.
 
 The \code{UserId} is an IAM principal that can be specified as an AWS account

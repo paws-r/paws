@@ -18,7 +18,7 @@ nodes.}
 operation. For Redis (cluster mode disabled) replication groups, this is
 the number of replica nodes in the replication group. For Redis (cluster
 mode enabled) replication groups, this is the number of replica nodes in
-each of the replication group\'s node groups.
+each of the replication group's node groups.
 
 The minimum number of replicas in a shard or replication group is:
 \itemize{

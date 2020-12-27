@@ -7,7 +7,7 @@
 sqs_change_message_visibility_batch(QueueUrl, Entries)
 }
 \arguments{
-\item{QueueUrl}{[required] The URL of the Amazon SQS queue whose messages\' visibility is changed.
+\item{QueueUrl}{[required] The URL of the Amazon SQS queue whose messages' visibility is changed.
 
 Queue URLs and names are case-sensitive.}
 

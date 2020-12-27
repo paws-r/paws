@@ -17,7 +17,7 @@ associated with the first interaction with the contact center.}
 \description{
 When a contact is being recorded, this API stops recording the call.
 StopContactRecording is a one-time action. If you use
-StopContactRecording to stop recording an ongoing call, you can\'t use
+StopContactRecording to stop recording an ongoing call, you can't use
 StartContactRecording to restart it. For scenarios where the recording
 has started and you want to suspend it for sensitive information (for
 example, to collect a credit card number), and then restart it, use

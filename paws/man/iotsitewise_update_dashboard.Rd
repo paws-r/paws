@@ -19,7 +19,7 @@ detailed information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/
 in the \emph{AWS IoT SiteWise User Guide}.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{

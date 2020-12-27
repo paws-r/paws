@@ -7,7 +7,7 @@ NULL
 #' defined in the parent asset's model
 #'
 #' Associates a child asset with the given parent asset through a hierarchy
-#' defined in the parent asset\'s model. For more information, see
+#' defined in the parent asset's model. For more information, see
 #' [Associating
 #' Assets](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/add-associated-assets.html)
 #' in the *AWS IoT SiteWise User Guide*.
@@ -17,14 +17,14 @@ NULL
 #'   clientToken)
 #'
 #' @param assetId &#91;required&#93; The ID of the parent asset.
-#' @param hierarchyId &#91;required&#93; The ID of a hierarchy in the parent asset\'s model. Hierarchies allow
+#' @param hierarchyId &#91;required&#93; The ID of a hierarchy in the parent asset's model. Hierarchies allow
 #' different groupings of assets to be formed that all come from the same
 #' asset model. For more information, see [Asset
 #' Hierarchies](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' @param childAssetId &#91;required&#93; The ID of the child asset to be associated.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -70,7 +70,7 @@ iotsitewise_associate_assets <- function(assetId, hierarchyId, childAssetId, cli
 #' @param projectId &#91;required&#93; The ID of the project to which to associate the assets.
 #' @param assetIds &#91;required&#93; The IDs of the assets to be associated to the project.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -117,7 +117,7 @@ iotsitewise_batch_associate_project_assets <- function(projectId, assetIds, clie
 #' @param projectId &#91;required&#93; The ID of the project from which to disassociate the assets.
 #' @param assetIds &#91;required&#93; The IDs of the assets to be disassociated from the project.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -165,7 +165,7 @@ iotsitewise_batch_disassociate_project_assets <- function(projectId, assetIds, c
 #' 
 #' -   A `propertyAlias`, which is a data stream alias (for example,
 #'     `/company/windfarm/3/turbine/7/temperature`). To define an asset
-#'     property\'s alias, see
+#'     property's alias, see
 #'     [UpdateAssetProperty](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html).
 #' 
 #' With respect to Unix epoch time, AWS IoT SiteWise accepts only TQVs that
@@ -253,7 +253,7 @@ iotsitewise_batch_put_asset_property_value <- function(entries) {
 #' @param accessPolicyPermission &#91;required&#93; The permission level for this access policy. Note that a project
 #' `ADMINISTRATOR` is also known as a project owner.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #' @param tags A list of key-value pairs that contain metadata for the access policy.
 #' For more information, see [Tagging your AWS IoT SiteWise
@@ -320,7 +320,7 @@ iotsitewise_create_access_policy <- function(accessPolicyIdentity, accessPolicyR
 #' @param assetName &#91;required&#93; A unique, friendly name for the asset.
 #' @param assetModelId &#91;required&#93; The ID of the asset model from which to create the asset.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #' @param tags A list of key-value pairs that contain metadata for the asset. For more
 #' information, see [Tagging your AWS IoT SiteWise
@@ -364,7 +364,7 @@ iotsitewise_create_asset <- function(assetName, assetModelId, clientToken = NULL
 #' Creates an asset model from specified property and hierarchy
 #' definitions. You create assets from asset models. With asset models, you
 #' can easily create assets of the same type that have standardized
-#' definitions. Each asset created from a model inherits the asset model\'s
+#' definitions. Each asset created from a model inherits the asset model's
 #' property and hierarchy definitions. For more information, see [Defining
 #' Asset
 #' Models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/define-models.html)
@@ -396,7 +396,7 @@ iotsitewise_create_asset <- function(assetName, assetModelId, clientToken = NULL
 #' [Quotas](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/quotas.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #' @param tags A list of key-value pairs that contain metadata for the asset model. For
 #' more information, see [Tagging your AWS IoT SiteWise
@@ -499,7 +499,7 @@ iotsitewise_create_asset_model <- function(assetModelName, assetModelDescription
 #' (CLI)](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #' @param tags A list of key-value pairs that contain metadata for the dashboard. For
 #' more information, see [Tagging your AWS IoT SiteWise
@@ -553,7 +553,7 @@ iotsitewise_create_dashboard <- function(projectId, dashboardName, dashboardDesc
 #' iotsitewise_create_gateway(gatewayName, gatewayPlatform, tags)
 #'
 #' @param gatewayName &#91;required&#93; A unique, friendly name for the gateway.
-#' @param gatewayPlatform &#91;required&#93; The gateway\'s platform. You can only specify one platform in a gateway.
+#' @param gatewayPlatform &#91;required&#93; The gateway's platform. You can only specify one platform in a gateway.
 #' @param tags A list of key-value pairs that contain metadata for the gateway. For
 #' more information, see [Tagging your AWS IoT SiteWise
 #' resources](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html)
@@ -615,15 +615,15 @@ iotsitewise_create_gateway <- function(gatewayName, gatewayPlatform, tags = NULL
 #'
 #' @param portalName &#91;required&#93; A friendly name for the portal.
 #' @param portalDescription A description for the portal.
-#' @param portalContactEmail &#91;required&#93; The AWS administrator\'s contact email address.
+#' @param portalContactEmail &#91;required&#93; The AWS administrator's contact email address.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #' @param portalLogoImageFile A logo image to display in the portal. Upload a square, high-resolution
 #' image. The image is displayed on a dark background.
 #' @param roleArn &#91;required&#93; The
 #' [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
-#' of a service role that allows the portal\'s users to access your AWS IoT
+#' of a service role that allows the portal's users to access your AWS IoT
 #' SiteWise resources on your behalf. For more information, see [Using
 #' service roles for AWS IoT SiteWise
 #' Monitor](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/monitor-service-role.html)
@@ -683,7 +683,7 @@ iotsitewise_create_portal <- function(portalName, portalDescription = NULL, port
 #' @param projectName &#91;required&#93; A friendly name for the project.
 #' @param projectDescription A description for the project.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #' @param tags A list of key-value pairs that contain metadata for the project. For
 #' more information, see [Tagging your AWS IoT SiteWise
@@ -736,7 +736,7 @@ iotsitewise_create_project <- function(portalId, projectName, projectDescription
 #'
 #' @param accessPolicyId &#91;required&#93; The ID of the access policy to be deleted.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -769,12 +769,12 @@ iotsitewise_delete_access_policy <- function(accessPolicyId, clientToken = NULL)
 
 #' Deletes an asset
 #'
-#' Deletes an asset. This action can\'t be undone. For more information,
-#' see [Deleting Assets and
+#' Deletes an asset. This action can't be undone. For more information, see
+#' [Deleting Assets and
 #' Models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
-#' You can\'t delete an asset that\'s associated to another asset. For more
+#' You can't delete an asset that's associated to another asset. For more
 #' information, see
 #' [DisassociateAssets](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DisassociateAssets.html).
 #'
@@ -783,7 +783,7 @@ iotsitewise_delete_access_policy <- function(accessPolicyId, clientToken = NULL)
 #'
 #' @param assetId &#91;required&#93; The ID of the asset to delete.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -816,9 +816,9 @@ iotsitewise_delete_asset <- function(assetId, clientToken = NULL) {
 
 #' Deletes an asset model
 #'
-#' Deletes an asset model. This action can\'t be undone. You must delete
-#' all assets created from an asset model before you can delete the model.
-#' Also, you can\'t delete an asset model if a parent asset model exists
+#' Deletes an asset model. This action can't be undone. You must delete all
+#' assets created from an asset model before you can delete the model.
+#' Also, you can't delete an asset model if a parent asset model exists
 #' that contains a property formula expression that depends on the asset
 #' model that you want to delete. For more information, see [Deleting
 #' Assets and
@@ -830,7 +830,7 @@ iotsitewise_delete_asset <- function(assetId, clientToken = NULL) {
 #'
 #' @param assetModelId &#91;required&#93; The ID of the asset model to delete.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -870,7 +870,7 @@ iotsitewise_delete_asset_model <- function(assetModelId, clientToken = NULL) {
 #'
 #' @param dashboardId &#91;required&#93; The ID of the dashboard to delete.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -904,7 +904,7 @@ iotsitewise_delete_dashboard <- function(dashboardId, clientToken = NULL) {
 #' Deletes a gateway from AWS IoT SiteWise
 #'
 #' Deletes a gateway from AWS IoT SiteWise. When you delete a gateway, some
-#' of the gateway\'s files remain in your gateway\'s file system. For more
+#' of the gateway's files remain in your gateway's file system. For more
 #' information, see [Data
 #' retention](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/data-retention.html)
 #' in the *AWS IoT SiteWise User Guide*.
@@ -950,7 +950,7 @@ iotsitewise_delete_gateway <- function(gatewayId) {
 #'
 #' @param portalId &#91;required&#93; The ID of the portal to delete.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -990,7 +990,7 @@ iotsitewise_delete_portal <- function(portalId, clientToken = NULL) {
 #'
 #' @param projectId &#91;required&#93; The ID of the project.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -1024,7 +1024,7 @@ iotsitewise_delete_project <- function(projectId, clientToken = NULL) {
 #' Describes an access policy, which specifies an AWS SSO user or group's
 #' access to an AWS IoT SiteWise Monitor portal or project
 #'
-#' Describes an access policy, which specifies an AWS SSO user or group\'s
+#' Describes an access policy, which specifies an AWS SSO user or group's
 #' access to an AWS IoT SiteWise Monitor portal or project.
 #'
 #' @usage
@@ -1133,7 +1133,7 @@ iotsitewise_describe_asset_model <- function(assetModelId) {
 
 #' Retrieves information about an asset's property
 #'
-#' Retrieves information about an asset\'s property.
+#' Retrieves information about an asset's property.
 #'
 #' @usage
 #' iotsitewise_describe_asset_property(assetId, propertyId)
@@ -1398,14 +1398,14 @@ iotsitewise_describe_project <- function(projectId) {
 #' hierarchy defined in the parent asset's model
 #'
 #' Disassociates a child asset from the given parent asset through a
-#' hierarchy defined in the parent asset\'s model.
+#' hierarchy defined in the parent asset's model.
 #'
 #' @usage
 #' iotsitewise_disassociate_assets(assetId, hierarchyId, childAssetId,
 #'   clientToken)
 #'
 #' @param assetId &#91;required&#93; The ID of the parent asset from which to disassociate the child asset.
-#' @param hierarchyId &#91;required&#93; The ID of a hierarchy in the parent asset\'s model. Hierarchies allow
+#' @param hierarchyId &#91;required&#93; The ID of a hierarchy in the parent asset's model. Hierarchies allow
 #' different groupings of assets to be formed that all come from the same
 #' asset model. You can use the hierarchy ID to identify the correct asset
 #' to disassociate. For more information, see [Asset
@@ -1413,7 +1413,7 @@ iotsitewise_describe_project <- function(projectId) {
 #' in the *AWS IoT SiteWise User Guide*.
 #' @param childAssetId &#91;required&#93; The ID of the child asset to disassociate.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -1459,7 +1459,7 @@ iotsitewise_disassociate_assets <- function(assetId, hierarchyId, childAssetId, 
 #' 
 #' -   A `propertyAlias`, which is a data stream alias (for example,
 #'     `/company/windfarm/3/turbine/7/temperature`). To define an asset
-#'     property\'s alias, see
+#'     property's alias, see
 #'     [UpdateAssetProperty](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html).
 #'
 #' @usage
@@ -1533,7 +1533,7 @@ iotsitewise_get_asset_property_aggregates <- function(assetId = NULL, propertyId
 
 #' Gets an asset property's current value
 #'
-#' Gets an asset property\'s current value. For more information, see
+#' Gets an asset property's current value. For more information, see
 #' [Querying Current Property
 #' Values](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#current-values)
 #' in the *AWS IoT SiteWise User Guide*.
@@ -1544,7 +1544,7 @@ iotsitewise_get_asset_property_aggregates <- function(assetId = NULL, propertyId
 #' 
 #' -   A `propertyAlias`, which is a data stream alias (for example,
 #'     `/company/windfarm/3/turbine/7/temperature`). To define an asset
-#'     property\'s alias, see
+#'     property's alias, see
 #'     [UpdateAssetProperty](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html).
 #'
 #' @usage
@@ -1590,7 +1590,7 @@ iotsitewise_get_asset_property_value <- function(assetId = NULL, propertyId = NU
 
 #' Gets the history of an asset property's values
 #'
-#' Gets the history of an asset property\'s values. For more information,
+#' Gets the history of an asset property's values. For more information,
 #' see [Querying Historical Property
 #' Values](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#historical-values)
 #' in the *AWS IoT SiteWise User Guide*.
@@ -1601,7 +1601,7 @@ iotsitewise_get_asset_property_value <- function(assetId = NULL, propertyId = NU
 #' 
 #' -   A `propertyAlias`, which is a data stream alias (for example,
 #'     `/company/windfarm/3/turbine/7/temperature`). To define an asset
-#'     property\'s alias, see
+#'     property's alias, see
 #'     [UpdateAssetProperty](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html).
 #'
 #' @usage
@@ -1770,7 +1770,7 @@ iotsitewise_list_asset_models <- function(nextToken = NULL, maxResults = NULL) {
 #' 
 #' -   List top-level assets.
 #' 
-#' You can\'t use this operation to list all assets. To retrieve summaries
+#' You can't use this operation to list all assets. To retrieve summaries
 #' for all of your assets, use
 #' [ListAssetModels](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_ListAssetModels.html)
 #' to get all of your asset model IDs. Then, use ListAssets to get all
@@ -1786,10 +1786,10 @@ iotsitewise_list_asset_models <- function(nextToken = NULL, maxResults = NULL) {
 #' @param filter The filter for the requested list of assets. Choose one of the following
 #' options. Defaults to `ALL`.
 #' 
-#' -   `ALL` -- The list includes all assets for a given asset model ID.
-#'     The `assetModelId` parameter is required if you filter by `ALL`.
+#' -   `ALL` – The list includes all assets for a given asset model ID. The
+#'     `assetModelId` parameter is required if you filter by `ALL`.
 #' 
-#' -   `TOP_LEVEL` -- The list includes only top-level assets in the asset
+#' -   `TOP_LEVEL` – The list includes only top-level assets in the asset
 #'     hierarchy tree.
 #'
 #' @section Request syntax:
@@ -2157,7 +2157,7 @@ iotsitewise_put_logging_options <- function(loggingOptions) {
 #' Adds tags to an AWS IoT SiteWise resource
 #'
 #' Adds tags to an AWS IoT SiteWise resource. If a tag already exists for
-#' the resource, this operation updates the tag\'s value.
+#' the resource, this operation updates the tag's value.
 #'
 #' @usage
 #' iotsitewise_tag_resource(resourceArn, tags)
@@ -2246,7 +2246,7 @@ iotsitewise_untag_resource <- function(resourceArn, tagKeys) {
 #' group's access to an AWS IoT SiteWise Monitor portal or project resource
 #'
 #' Updates an existing access policy that specifies an AWS SSO user or
-#' group\'s access to an AWS IoT SiteWise Monitor portal or project
+#' group's access to an AWS IoT SiteWise Monitor portal or project
 #' resource.
 #'
 #' @usage
@@ -2261,7 +2261,7 @@ iotsitewise_untag_resource <- function(resourceArn, tagKeys) {
 #' @param accessPolicyPermission &#91;required&#93; The permission level for this access policy. Note that a project
 #' `ADMINISTRATOR` is also known as a project owner.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -2311,7 +2311,7 @@ iotsitewise_update_access_policy <- function(accessPolicyId, accessPolicyIdentit
 
 #' Updates an asset's name
 #'
-#' Updates an asset\'s name. For more information, see [Updating Assets and
+#' Updates an asset's name. For more information, see [Updating Assets and
 #' Models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
@@ -2321,7 +2321,7 @@ iotsitewise_update_access_policy <- function(accessPolicyId, accessPolicyIdentit
 #' @param assetId &#91;required&#93; The ID of the asset to update.
 #' @param assetName &#91;required&#93; A unique, friendly name for the asset.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -2358,22 +2358,22 @@ iotsitewise_update_asset <- function(assetId, assetName, clientToken = NULL) {
 #'
 #' Updates an asset model and all of the assets that were created from the
 #' model. Each asset created from the model inherits the updated asset
-#' model\'s property and hierarchy definitions. For more information, see
+#' model's property and hierarchy definitions. For more information, see
 #' [Updating Assets and
 #' Models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
 #' This operation overwrites the existing model with the provided model. To
-#' avoid deleting your asset model\'s properties or hierarchies, you must
+#' avoid deleting your asset model's properties or hierarchies, you must
 #' include their IDs and definitions in the updated asset model payload.
 #' For more information, see
 #' [DescribeAssetModel](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModel.html).
 #' 
-#' If you remove a property from an asset model or update a property\'s
+#' If you remove a property from an asset model or update a property's
 #' formula expression, AWS IoT SiteWise deletes all previous data for that
 #' property. If you remove a hierarchy definition from an asset model, AWS
 #' IoT SiteWise disassociates every asset associated with that hierarchy.
-#' You can\'t change the type or data type of an existing property.
+#' You can't change the type or data type of an existing property.
 #'
 #' @usage
 #' iotsitewise_update_asset_model(assetModelId, assetModelName,
@@ -2403,7 +2403,7 @@ iotsitewise_update_asset <- function(assetId, assetName, clientToken = NULL) {
 #' [Quotas](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/quotas.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -2488,12 +2488,12 @@ iotsitewise_update_asset_model <- function(assetModelId, assetModelName, assetMo
 
 #' Updates an asset property's alias and notification state
 #'
-#' Updates an asset property\'s alias and notification state.
+#' Updates an asset property's alias and notification state.
 #' 
-#' This operation overwrites the property\'s existing alias and
-#' notification state. To keep your existing property\'s alias or
-#' notification state, you must include the existing values in the
-#' UpdateAssetProperty request. For more information, see
+#' This operation overwrites the property's existing alias and notification
+#' state. To keep your existing property's alias or notification state, you
+#' must include the existing values in the UpdateAssetProperty request. For
+#' more information, see
 #' [DescribeAssetProperty](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetProperty.html).
 #'
 #' @usage
@@ -2519,7 +2519,7 @@ iotsitewise_update_asset_model <- function(assetModelId, assetModelName, assetMo
 #' 
 #' If you omit this parameter, the notification state is set to `DISABLED`.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -2569,7 +2569,7 @@ iotsitewise_update_asset_property <- function(assetId, propertyId, propertyAlias
 #' (CLI)](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -2605,7 +2605,7 @@ iotsitewise_update_dashboard <- function(dashboardId, dashboardName, dashboardDe
 
 #' Updates a gateway's name
 #'
-#' Updates a gateway\'s name.
+#' Updates a gateway's name.
 #'
 #' @usage
 #' iotsitewise_update_gateway(gatewayId, gatewayName)
@@ -2708,17 +2708,17 @@ iotsitewise_update_gateway_capability_configuration <- function(gatewayId, capab
 #' @param portalId &#91;required&#93; The ID of the portal to update.
 #' @param portalName &#91;required&#93; A new friendly name for the portal.
 #' @param portalDescription A new description for the portal.
-#' @param portalContactEmail &#91;required&#93; The AWS administrator\'s contact email address.
+#' @param portalContactEmail &#91;required&#93; The AWS administrator's contact email address.
 #' @param portalLogoImage 
 #' @param roleArn &#91;required&#93; The
 #' [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
-#' of a service role that allows the portal\'s users to access your AWS IoT
+#' of a service role that allows the portal's users to access your AWS IoT
 #' SiteWise resources on your behalf. For more information, see [Using
 #' service roles for AWS IoT SiteWise
 #' Monitor](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/monitor-service-role.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:
@@ -2772,7 +2772,7 @@ iotsitewise_update_portal <- function(portalId, portalName, portalDescription = 
 #' @param projectName &#91;required&#93; A new friendly name for the project.
 #' @param projectDescription A new description for the project.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
-#' idempotency of the request. Don\'t reuse this client token if a new
+#' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
 #'
 #' @section Request syntax:

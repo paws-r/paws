@@ -34,8 +34,8 @@ a document.}
 
 \item{Name}{[required] A name for the Systems Manager document.
 
-You can\'t use the following strings as document name prefixes. These
-are reserved by AWS for use as document name prefixes:
+You can't use the following strings as document name prefixes. These are
+reserved by AWS for use as document name prefixes:
 \itemize{
 \item \verb{aws-}
 \item \code{amazon}
@@ -43,7 +43,7 @@ are reserved by AWS for use as document name prefixes:
 }}
 
 \item{VersionName}{An optional field specifying the version of the artifact you are
-creating with the document. For example, \"Release 12, Update 6\". This
+creating with the document. For example, "Release 12, Update 6". This
 value is unique across all versions of a document, and cannot be
 changed.}
 
@@ -54,9 +54,9 @@ JSON, YAML, or TEXT. JSON is the default format.}
 
 \item{TargetType}{Specify a target type to define the kinds of resources the document can
 run on. For example, to run a document on EC2 instances, specify the
-following value: /AWS::EC2::Instance. If you specify a value of \'/\'
-the document can run on all types of resources. If you don\'t specify a
-value, the document can\'t run on any resources. For a list of valid
+following value: /AWS::EC2::Instance. If you specify a value of '/' the
+document can run on all types of resources. If you don't specify a
+value, the document can't run on any resources. For a list of valid
 resource types, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html}{AWS resource and property types reference}
 in the \emph{AWS CloudFormation User Guide}.}
 

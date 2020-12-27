@@ -10,7 +10,7 @@ cloudfront_list_distributions(Marker, MaxItems)
 \item{Marker}{Use this when paginating results to indicate where to begin in your list
 of distributions. The results include distributions in the list that
 occur after the marker. To get the next page of results, set the
-\code{Marker} to the value of the \code{NextMarker} from the current page\'s
+\code{Marker} to the value of the \code{NextMarker} from the current page's
 response (which is also the ID of the last distribution on that page).}
 
 \item{MaxItems}{The maximum number of distributions you want in the response body.}

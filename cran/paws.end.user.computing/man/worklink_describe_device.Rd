@@ -9,10 +9,10 @@ worklink_describe_device(FleetArn, DeviceId)
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
 
-\item{DeviceId}{[required] A unique identifier for a registered user\'s device.}
+\item{DeviceId}{[required] A unique identifier for a registered user's device.}
 }
 \description{
-Provides information about a user\'s device.
+Provides information about a user's device.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_device(

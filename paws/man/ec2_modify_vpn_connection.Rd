@@ -61,10 +61,10 @@ VPN connection. Use CreateTransitGatewayRoute to add the routes.
 If you deleted VPN static routes, you must add the static routes to the
 transit gateway route table.
 
-After you perform this operation, the AWS VPN endpoint\'s IP addresses
-on the AWS side and the tunnel options remain intact. Your AWS
-Site-to-Site VPN connection will be temporarily unavailable for a brief
-period while we provision the new endpoints.
+After you perform this operation, the AWS VPN endpoint's IP addresses on
+the AWS side and the tunnel options remain intact. Your AWS Site-to-Site
+VPN connection will be temporarily unavailable for a brief period while
+we provision the new endpoints.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_vpn_connection(

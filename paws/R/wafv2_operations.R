@@ -15,7 +15,7 @@ NULL
 #' the resource. A regional application can be an Application Load Balancer
 #' (ALB) or an API Gateway stage.
 #' 
-#' For AWS CloudFront, don\'t use this call. Instead, use your CloudFront
+#' For AWS CloudFront, don't use this call. Instead, use your CloudFront
 #' distribution configuration. To associate a Web ACL, in the CloudFront
 #' call `UpdateDistribution`, set the web ACL ID to the Amazon Resource
 #' Name (ARN) of the Web ACL. For information, see
@@ -100,7 +100,7 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Rules &#91;required&#93; An array of Rule that you\'re configuring to use in a rule group or web
+#' @param Rules &#91;required&#93; An array of Rule that you're configuring to use in a rule group or web
 #' ACL.
 #'
 #' @section Request syntax:
@@ -328,7 +328,7 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #' 
 #' Creates an IPSet, which you use to identify web requests that originate
 #' from specific IP addresses or ranges of IP addresses. For example, if
-#' you\'re receiving a lot of requests from a ranges of IP addresses, you
+#' you're receiving a lot of requests from a ranges of IP addresses, you
 #' can configure AWS WAF to block them using an IPSet that lists those IP
 #' addresses.
 #'
@@ -1542,7 +1542,7 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope) {
 #' application can be an Application Load Balancer (ALB) or an API Gateway
 #' stage.
 #' 
-#' For AWS CloudFront, don\'t use this call. Instead, use your CloudFront
+#' For AWS CloudFront, don't use this call. Instead, use your CloudFront
 #' distribution configuration. To disassociate a Web ACL, provide an empty
 #' web ACL ID in the CloudFront call `UpdateDistribution`. For information,
 #' see
@@ -1921,8 +1921,8 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 #' resources from the prior release, see the [AWS WAF Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #' 
-#' Gets detailed information about a specified number of requests\\--a
-#' sample\\--that AWS WAF randomly selects from among the first 5,000
+#' Gets detailed information about a specified number of requests--a
+#' sample--that AWS WAF randomly selects from among the first 5,000
 #' requests that your AWS resource received during a time range that you
 #' choose. You can specify a sample size of up to 500 requests, and you can
 #' specify any time range in the previous three hours.
@@ -2113,7 +2113,7 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #' 
 #' Retrieves an array of managed rule groups that are available for you to
 #' use. This list includes all AWS Managed Rules rule groups and the AWS
-#' Marketplace managed rule groups that you\'re subscribed to.
+#' Marketplace managed rule groups that you're subscribed to.
 #'
 #' @usage
 #' wafv2_list_available_managed_rule_groups(Scope, NextMarker, Limit)
@@ -2483,12 +2483,12 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' Retrieves the TagInfoForResource for the specified resource. Tags are
 #' key:value pairs that you can use to categorize and manage your
 #' resources, for purposes like billing. For example, you might set the tag
-#' key to \"customer\" and the value to the customer name or ID. You can
+#' key to "customer" and the value to the customer name or ID. You can
 #' specify one or more tags to add to each AWS resource, up to 50 tags for
 #' a resource.
 #' 
 #' You can tag the AWS resources that you manage through AWS WAF: web ACLs,
-#' rule groups, IP sets, and regex pattern sets. You can\'t manage or view
+#' rule groups, IP sets, and regex pattern sets. You can't manage or view
 #' tags through the AWS WAF console.
 #'
 #' @usage
@@ -2768,12 +2768,11 @@ wafv2_put_permission_policy <- function(ResourceArn, Policy) {
 #' Associates tags with the specified AWS resource. Tags are key:value
 #' pairs that you can use to categorize and manage your resources, for
 #' purposes like billing. For example, you might set the tag key to
-#' \"customer\" and the value to the customer name or ID. You can specify
-#' one or more tags to add to each AWS resource, up to 50 tags for a
-#' resource.
+#' "customer" and the value to the customer name or ID. You can specify one
+#' or more tags to add to each AWS resource, up to 50 tags for a resource.
 #' 
 #' You can tag the AWS resources that you manage through AWS WAF: web ACLs,
-#' rule groups, IP sets, and regex pattern sets. You can\'t manage or view
+#' rule groups, IP sets, and regex pattern sets. You can't manage or view
 #' tags through the AWS WAF console.
 #'
 #' @usage
@@ -2825,9 +2824,9 @@ wafv2_tag_resource <- function(ResourceARN, Tags) {
 #' 
 #' Disassociates tags from an AWS resource. Tags are key:value pairs that
 #' you can associate with AWS resources. For example, the tag key might be
-#' \"customer\" and the tag value might be \"companyA.\" You can specify
-#' one or more tags to add to each container. You can add up to 50 tags to
-#' each AWS resource.
+#' "customer" and the tag value might be "companyA." You can specify one or
+#' more tags to add to each container. You can add up to 50 tags to each
+#' AWS resource.
 #'
 #' @usage
 #' wafv2_untag_resource(ResourceARN, TagKeys)

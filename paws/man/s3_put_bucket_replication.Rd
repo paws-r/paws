@@ -59,7 +59,7 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 
 \strong{Handling Replication of Encrypted Objects}
 
-By default, Amazon S3 doesn\'t replicate objects that are stored at rest
+By default, Amazon S3 doesn't replicate objects that are stored at rest
 using server-side encryption with CMKs stored in AWS KMS. To replicate
 AWS KMS-encrypted objects, add the following: \code{SourceSelectionCriteria},
 \code{SseKmsEncryptedObjects}, \code{Status}, \code{EncryptionConfiguration}, and

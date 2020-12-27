@@ -11,16 +11,16 @@ iot_list_audit_tasks(startTime, endTime, taskType, taskStatus,
 \arguments{
 \item{startTime}{[required] The beginning of the time period. Audit information is retained for a
 limited time (180 days). Requesting a start time prior to what is
-retained results in an \"InvalidRequestException\".}
+retained results in an "InvalidRequestException".}
 
 \item{endTime}{[required] The end of the time period.}
 
 \item{taskType}{A filter to limit the output to the specified type of audit: can be one
-of \"ON\\_DEMAND\\_AUDIT\\\emph{TASK\" or \"SCHEDULED\\}\\_AUDIT\\_TASK\".}
+of "ON\\_DEMAND\\_AUDIT\\\emph{TASK" or "SCHEDULED\\}\\_AUDIT\\_TASK".}
 
 \item{taskStatus}{A filter to limit the output to audits with the specified completion
-status: can be one of \"IN\\_PROGRESS\", \"COMPLETED\", \"FAILED\", or
-\"CANCELED\".}
+status: can be one of "IN\\_PROGRESS", "COMPLETED", "FAILED", or
+"CANCELED".}
 
 \item{nextToken}{The token for the next set of results.}
 

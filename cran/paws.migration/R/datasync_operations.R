@@ -98,8 +98,8 @@ datasync_cancel_task_execution <- function(TaskExecutionArn) {
 #' = . \\_ : / @@.
 #' @param VpcEndpointId The ID of the VPC (Virtual Private Cloud) endpoint that the agent has
 #' access to. This is the client-side VPC endpoint, also called a
-#' PrivateLink. If you don\'t have a PrivateLink VPC endpoint, see
-#' [Creating a VPC Endpoint Service
+#' PrivateLink. If you don't have a PrivateLink VPC endpoint, see [Creating
+#' a VPC Endpoint Service
 #' Configuration](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html#create-endpoint-service)
 #' in the AWS VPC User Guide.
 #' 
@@ -113,7 +113,7 @@ datasync_cancel_task_execution <- function(TaskExecutionArn) {
 #' For a data transfer to work, the agent must be able to route to all
 #' these four network interfaces.
 #' @param SecurityGroupArns The ARNs of the security groups used to protect your data transfer task
-#' subnets. See CreateAgentRequest\\$SubnetArns.
+#' subnets. See CreateAgentRequest$SubnetArns.
 #'
 #' @section Request syntax:
 #' ```
@@ -164,7 +164,7 @@ datasync_create_agent <- function(ActivationKey, AgentName = NULL, Tags = NULL, 
 #' datasync_create_location_efs(Subdirectory, EfsFilesystemArn, Ec2Config,
 #'   Tags)
 #'
-#' @param Subdirectory A subdirectory in the location's path. This subdirectory in the EFS file
+#' @param Subdirectory A subdirectory in the location’s path. This subdirectory in the EFS file
 #' system is used to read data from the EFS source location or write data
 #' to the EFS destination. By default, AWS DataSync uses the root
 #' directory.
@@ -187,7 +187,7 @@ datasync_create_agent <- function(ActivationKey, AgentName = NULL, Tags = NULL, 
 #' 
 #' -   Security group S (provided to DataSync to access EFS) should have a
 #'     rule that enables outbound connections to the NFS port on one of the
-#'     file system's mount targets. You can enable outbound connections
+#'     file system’s mount targets. You can enable outbound connections
 #'     either by IP address (CIDR range) or security group.
 #' 
 #'     For information about security groups and mount targets, see
@@ -246,7 +246,7 @@ datasync_create_location_efs <- function(Subdirectory = NULL, EfsFilesystemArn, 
 #' datasync_create_location_fsx_windows(Subdirectory, FsxFilesystemArn,
 #'   SecurityGroupArns, Tags, User, Domain, Password)
 #'
-#' @param Subdirectory A subdirectory in the location's path. This subdirectory in the Amazon
+#' @param Subdirectory A subdirectory in the location’s path. This subdirectory in the Amazon
 #' FSx for Windows file system is used to read data from the Amazon FSx for
 #' Windows source location or write data to the FSx for Windows
 #' destination.
@@ -316,12 +316,12 @@ datasync_create_location_fsx_windows <- function(Subdirectory = NULL, FsxFilesys
 #'
 #' @param Subdirectory &#91;required&#93; The subdirectory in the NFS file system that is used to read data from
 #' the NFS source location or write data to the NFS destination. The NFS
-#' path should be a path that\'s exported by the NFS server, or a
+#' path should be a path that's exported by the NFS server, or a
 #' subdirectory of that path. The path should be such that it can be
 #' mounted by other NFS clients in your network.
 #' 
 #' To see all the paths exported by your NFS server. run
-#' \"`showmount -e nfs-server-name`\" from an NFS client that has access to
+#' "`showmount -e nfs-server-name`" from an NFS client that has access to
 #' your server. You can specify any directory that appears in the results,
 #' and any subdirectory of that directory. Ensure that the NFS export is
 #' accessible without Kerberos authentication.
@@ -475,7 +475,7 @@ datasync_create_location_s3 <- function(Subdirectory = NULL, S3BucketArn, S3Stor
 #'
 #' @param Subdirectory &#91;required&#93; The subdirectory in the SMB file system that is used to read data from
 #' the SMB source location or write data to the SMB destination. The SMB
-#' path should be a path that\'s exported by the SMB server, or a
+#' path should be a path that's exported by the SMB server, or a
 #' subdirectory of that path. The path should be such that it can be
 #' mounted by other SMB clients in your network.
 #' 
@@ -556,7 +556,7 @@ datasync_create_location_smb <- function(Subdirectory, ServerHostname, User, Dom
 #'
 #' Creates a task. A task is a set of two locations (source and
 #' destination) and a set of Options that you use to control the behavior
-#' of a task. If you don\'t specify Options when you create a task, AWS
+#' of a task. If you don't specify Options when you create a task, AWS
 #' DataSync populates them with service defaults.
 #' 
 #' When you create a task, it first enters the CREATING state. During
@@ -569,7 +569,7 @@ datasync_create_location_smb <- function(Subdirectory, ServerHostname, User, Dom
 #' offline, the task transitions to the UNAVAILABLE status. If the status
 #' of the task remains in the CREATING status for more than a few minutes,
 #' it means that your agent might be having trouble mounting the source NFS
-#' file system. Check the task\'s ErrorCode and ErrorDetail. Mount issues
+#' file system. Check the task's ErrorCode and ErrorDetail. Mount issues
 #' are often caused by either a misconfigured firewall or a mistyped NFS
 #' server host name.
 #'
@@ -578,7 +578,7 @@ datasync_create_location_smb <- function(Subdirectory, ServerHostname, User, Dom
 #'   CloudWatchLogGroupArn, Name, Options, Excludes, Schedule, Tags)
 #'
 #' @param SourceLocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the source location for the task.
-#' @param DestinationLocationArn &#91;required&#93; The Amazon Resource Name (ARN) of an AWS storage resource\'s location.
+#' @param DestinationLocationArn &#91;required&#93; The Amazon Resource Name (ARN) of an AWS storage resource's location.
 #' @param CloudWatchLogGroupArn The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
 #' is used to monitor and log events in the task.
 #' 
@@ -600,8 +600,8 @@ datasync_create_location_smb <- function(Subdirectory, ServerHostname, User, Dom
 #' For more information, see the operation.
 #' @param Excludes A list of filter rules that determines which files to exclude from a
 #' task. The list should contain a single filter string that consists of
-#' the patterns to exclude. The patterns are delimited by \"\\|\" (that is,
-#' a pipe), for example, `"/folder1|/folder2"`
+#' the patterns to exclude. The patterns are delimited by "|" (that is, a
+#' pipe), for example, `"/folder1|/folder2"`
 #' @param Schedule Specifies a schedule used to periodically transfer files from a source
 #' to a destination location. The schedule should be specified in UTC time.
 #' For more information, see task-scheduling.
@@ -671,7 +671,7 @@ datasync_create_task <- function(SourceLocationArn, DestinationLocationArn, Clou
 #'
 #' Deletes an agent. To specify which agent to delete, use the Amazon
 #' Resource Name (ARN) of the agent in your request. The operation
-#' disassociates the agent from your AWS account. However, it doesn\'t
+#' disassociates the agent from your AWS account. However, it doesn't
 #' delete the agent virtual machine (VM) from your on-premises environment.
 #'
 #' @usage
@@ -1304,8 +1304,8 @@ datasync_list_tasks <- function(MaxResults = NULL, NextToken = NULL) {
 #' represents an individual run of a task. Each task can have at most one
 #' `TaskExecution` at a time.
 #' 
-#' `TaskExecution` has the following transition phases: INITIALIZING \\|
-#' PREPARING \\| TRANSFERRING \\| VERIFYING \\| SUCCESS/FAILURE.
+#' `TaskExecution` has the following transition phases: INITIALIZING |
+#' PREPARING | TRANSFERRING | VERIFYING | SUCCESS/FAILURE.
 #' 
 #' For detailed information, see the Task Execution section in the
 #' Components and Terminology topic in the *AWS DataSync User Guide*.
@@ -1317,8 +1317,8 @@ datasync_list_tasks <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param OverrideOptions 
 #' @param Includes A list of filter rules that determines which files to include when
 #' running a task. The pattern should contain a single filter string that
-#' consists of the patterns to include. The patterns are delimited by
-#' \"\\|\" (that is, a pipe). For example: `"/folder1|/folder2"`
+#' consists of the patterns to include. The patterns are delimited by "|"
+#' (that is, a pipe). For example: `"/folder1|/folder2"`
 #'
 #' @section Request syntax:
 #' ```
@@ -1501,8 +1501,8 @@ datasync_update_agent <- function(AgentArn, Name = NULL) {
 #' @param Options 
 #' @param Excludes A list of filter rules that determines which files to exclude from a
 #' task. The list should contain a single filter string that consists of
-#' the patterns to exclude. The patterns are delimited by \"\\|\" (that is,
-#' a pipe), for example: `"/folder1|/folder2"`
+#' the patterns to exclude. The patterns are delimited by "|" (that is, a
+#' pipe), for example: `"/folder1|/folder2"`
 #' @param Schedule Specifies a schedule used to periodically transfer files from a source
 #' to a destination location. You can configure your task to execute
 #' hourly, daily, weekly or on specific days of the week. You control when

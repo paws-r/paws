@@ -26,7 +26,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \details{
 You can also use this operation to change which table is the main route
-table in the VPC. Specify the main route table\'s association ID and the
+table in the VPC. Specify the main route table's association ID and the
 route table ID of the new main route table.
 }
 \section{Request syntax}{

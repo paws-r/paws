@@ -11,7 +11,7 @@ apigateway_get_vpc_link(vpcLinkId)
 to reference this VpcLink.}
 }
 \description{
-Gets a specified VPC link under the caller\'s account in a region.
+Gets a specified VPC link under the caller's account in a region.
 }
 \section{Request syntax}{
 \preformatted{svc$get_vpc_link(

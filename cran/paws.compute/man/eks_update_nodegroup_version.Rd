@@ -17,14 +17,14 @@ node group to update.}
 \item{version}{The Kubernetes version to update to. If no version is specified, then
 the Kubernetes version of the node group does not change. You can
 specify the Kubernetes version of the cluster to update the node group
-to the latest AMI version of the cluster\'s Kubernetes version.}
+to the latest AMI version of the cluster's Kubernetes version.}
 
 \item{releaseVersion}{The AMI version of the Amazon EKS-optimized AMI to use for the update.
-By default, the latest available AMI version for the node group\'s
+By default, the latest available AMI version for the node group's
 Kubernetes version is used. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html}{Amazon EKS-Optimized Linux AMI Versions}
 in the \emph{Amazon EKS User Guide}.}
 
-\item{force}{Force the update if the existing node group\'s pods are unable to be
+\item{force}{Force the update if the existing node group's pods are unable to be
 drained due to a pod disruption budget issue. If an update fails because
 pods could not be drained, you can force the update after it fails to
 terminate the old node whether or not any pods are running on the node.}
@@ -37,10 +37,10 @@ Updates the Kubernetes version or AMI version of an Amazon EKS managed
 node group.
 }
 \details{
-You can update to the latest available AMI version of a node group\'s
+You can update to the latest available AMI version of a node group's
 current Kubernetes version by not specifying a Kubernetes version in the
-request. You can update to the latest AMI version of your cluster\'s
-current Kubernetes version by specifying your cluster\'s Kubernetes
+request. You can update to the latest AMI version of your cluster's
+current Kubernetes version by specifying your cluster's Kubernetes
 version in the request. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html}{Amazon EKS-Optimized Linux AMI Versions}
 in the \emph{Amazon EKS User Guide}.
 

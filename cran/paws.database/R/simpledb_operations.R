@@ -14,7 +14,7 @@ NULL
 #' the attributes for the item are deleted.
 #' 
 #' BatchDeleteAttributes is an idempotent operation; running it multiple
-#' times on the same item or attribute doesn\'t result in an error.
+#' times on the same item or attribute doesn't result in an error.
 #' 
 #' The BatchDeleteAttributes operation succeeds or fails in its entirety.
 #' There are no partial deletes. You can execute multiple
@@ -108,7 +108,7 @@ simpledb_batch_delete_attributes <- function(DomainName, Items) {
 #' `\{ 'b', '3' \}` and the requester does a BatchPutAttributes of
 #' `\{'I', 'b', '4' \}` with the Replace parameter set to true, the final
 #' attributes of the item will be `\{ 'a', '1' \}` and `\{ 'b', '4' \}`,
-#' replacing the previous values of the \'b\' attribute with the new value.
+#' replacing the previous values of the 'b' attribute with the new value.
 #' 
 #' You cannot specify an empty string as an item or as an attribute name.
 #' The `BatchPutAttributes` operation succeeds or fails in its entirety.
@@ -491,8 +491,8 @@ simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
 #' `\{ 'b', '3' \}` and the requestor calls `PutAttributes` using the
 #' attributes `\{ 'b', '4' \}` with the `Replace` parameter set to true, the
 #' final attributes of the item are changed to `\{ 'a', '1' \}` and
-#' `\{ 'b', '4' \}`, which replaces the previous values of the \'b\'
-#' attribute with the new value.
+#' `\{ 'b', '4' \}`, which replaces the previous values of the 'b' attribute
+#' with the new value.
 #' 
 #' Using `PutAttributes` to replace attribute values that do not exist will
 #' not result in an error response.

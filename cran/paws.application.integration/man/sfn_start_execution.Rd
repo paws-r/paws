@@ -31,8 +31,8 @@ example:
 
 \verb{"input": "\\\{\\"first_name\\" : \\"test\\"\\\}"}
 
-If you don\'t include any JSON input data, you still must include the
-two braces, for example: \code{"input": "\\{\\}"}}
+If you don't include any JSON input data, you still must include the two
+braces, for example: \code{"input": "\\{\\}"}}
 }
 \description{
 Starts a state machine execution.

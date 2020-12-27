@@ -40,7 +40,7 @@ information, refer to the AWS Key Management Service section \href{https://docs.
 
 Certain Nitro-based instances include local storage, dependent on the
 instance type. Local storage volumes are encrypted using a hardware
-module on the instance. You can\'t request a \code{KmsKeyId} when using an
+module on the instance. You can't request a \code{KmsKeyId} when using an
 instance type with local storage. If any of the models that you specify
 in the \code{ProductionVariants} parameter use nitro-based instances with
 local storage, do not specify a value for the \code{KmsKeyId} parameter. If

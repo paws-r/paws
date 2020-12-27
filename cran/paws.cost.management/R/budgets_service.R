@@ -15,7 +15,7 @@ NULL
 #' -   How close your plan is to your budgeted amount or to the free tier
 #'     limits
 #' 
-#' -   Your usage-to-date, including how much you\'ve used of your Reserved
+#' -   Your usage-to-date, including how much you've used of your Reserved
 #'     Instances (RIs)
 #' 
 #' -   Your current estimated charges from AWS, and how much your predicted

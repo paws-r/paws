@@ -39,12 +39,12 @@ will be json.}
 
 \item{SampleRate}{The audio frequency specified in Hz.
 
-The valid values for mp3 and ogg\\_vorbis are \"8000\", \"16000\",
-\"22050\", and \"24000\". The default value for standard voices is
-\"22050\". The default value for neural voices is \"24000\".
+The valid values for mp3 and ogg\\_vorbis are "8000", "16000", "22050",
+and "24000". The default value for standard voices is "22050". The
+default value for neural voices is "24000".
 
-Valid values for pcm are \"8000\" and \"16000\" The default value is
-\"16000\".}
+Valid values for pcm are "8000" and "16000" The default value is
+"16000".}
 
 \item{SnsTopicArn}{ARN for the SNS topic optionally used for providing status notification
 for a speech synthesis task.}

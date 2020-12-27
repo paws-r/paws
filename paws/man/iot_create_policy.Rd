@@ -15,13 +15,13 @@ whitespace.}
 
 \item{tags}{Metadata which can be used to manage the policy.
 
-For URI Request parameters use format: \\...key1=value1&key2=value2\\...
+For URI Request parameters use format: ...key1=value1&key2=value2...
 
 For the CLI command-line parameter use format: &&tags
-\"key1=value1&key2=value2\\...\"
+"key1=value1&key2=value2..."
 
-For the cli-input-json file use format: \"tags\":
-\"key1=value1&key2=value2\\...\"}
+For the cli-input-json file use format: "tags":
+"key1=value1&key2=value2..."}
 }
 \description{
 Creates an AWS IoT policy.
@@ -29,7 +29,7 @@ Creates an AWS IoT policy.
 \details{
 The created policy is the default version for the policy. This operation
 creates a policy version with a version identifier of \strong{1} and sets
-\strong{1} as the policy\'s default version.
+\strong{1} as the policy's default version.
 }
 \section{Request syntax}{
 \preformatted{svc$create_policy(

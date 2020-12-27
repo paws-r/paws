@@ -58,7 +58,7 @@ The per-table limits apply only when you are creating a new table. They
 restrict the sum of the provisioned capacity of the new table itself and
 all its global secondary indexes.
 
-For existing tables and their GSIs, DynamoDB doesn\'t let you increase
+For existing tables and their GSIs, DynamoDB doesn't let you increase
 provisioned capacity extremely rapidly. But the only upper limit that
 applies is that the aggregate provisioned capacity over all your tables
 and GSIs cannot exceed either of the per-account limits.

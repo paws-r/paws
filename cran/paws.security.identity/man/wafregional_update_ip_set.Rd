@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_update_ip_set}
 \alias{wafregional_update_ip_set}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_update_ip_set(IPSetId, ChangeToken, Updates)
 }
@@ -59,7 +59,7 @@ IPv6 addresses can be represented using any of the following formats:
 
 You use an \code{IPSet} to specify which web requests you want to allow or
 block based on the IP addresses that the requests originated from. For
-example, if you\'re receiving a lot of requests from one or a small
+example, if you're receiving a lot of requests from one or a small
 number of IP addresses and you want to block the requests, you can
 create an \code{IPSet} that specifies those IP addresses, and then configure
 AWS WAF to block the requests.

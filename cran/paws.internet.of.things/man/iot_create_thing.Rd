@@ -10,9 +10,9 @@ iot_create_thing(thingName, thingTypeName, attributePayload,
 \arguments{
 \item{thingName}{[required] The name of the thing to create.
 
-You can\'t change a thing\'s name after you create it. To change a
-thing\'s name, you must create a new thing, give it the new name, and
-then delete the old thing.}
+You can't change a thing's name after you create it. To change a thing's
+name, you must create a new thing, give it the new name, and then delete
+the old thing.}
 
 \item{thingTypeName}{The name of the thing type associated with the new thing.}
 

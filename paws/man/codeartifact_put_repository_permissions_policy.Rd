@@ -19,7 +19,7 @@ does not include dashes or spaces.}
 
 \item{policyRevision}{Sets the revision of the resource policy that specifies permissions to
 access the repository. This revision is used for optimistic locking,
-which prevents others from overwriting your changes to the repository\'s
+which prevents others from overwriting your changes to the repository's
 resource policy.}
 
 \item{policyDocument}{[required] A valid displayable JSON Aspen policy string to be set as the access

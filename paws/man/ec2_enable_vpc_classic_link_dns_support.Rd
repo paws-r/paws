@@ -13,7 +13,7 @@ ec2_enable_vpc_classic_link_dns_support(VpcId)
 Enables a VPC to support DNS hostname resolution for ClassicLink. If
 enabled, the DNS hostname of a linked EC2-Classic instance resolves to
 its private IP address when addressed from an instance in the VPC to
-which it\'s linked. Similarly, the DNS hostname of an instance in a VPC
+which it's linked. Similarly, the DNS hostname of an instance in a VPC
 resolves to its private IP address when addressed from a linked
 EC2-Classic instance. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html}{ClassicLink}

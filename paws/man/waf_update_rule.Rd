@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_update_rule}
 \alias{waf_update_rule}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_update_rule(RuleId, ChangeToken, Updates)
 }

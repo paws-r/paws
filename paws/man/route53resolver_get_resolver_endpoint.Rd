@@ -13,8 +13,8 @@ route53resolver_get_resolver_endpoint(ResolverEndpointId)
 }
 \description{
 Gets information about a specified resolver endpoint, such as whether
-it\'s an inbound or an outbound resolver endpoint, and the current
-status of the endpoint.
+it's an inbound or an outbound resolver endpoint, and the current status
+of the endpoint.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resolver_endpoint(

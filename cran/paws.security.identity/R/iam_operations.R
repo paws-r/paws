@@ -269,11 +269,11 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 #'
 #' Attaches the specified managed policy to the specified IAM role. When
 #' you attach a managed policy to a role, the managed policy becomes part
-#' of the role\'s permission (access) policy.
+#' of the role's permission (access) policy.
 #' 
-#' You cannot use a managed policy as the role\'s trust policy. The role\'s
+#' You cannot use a managed policy as the role's trust policy. The role's
 #' trust policy is created at the same time as the role, using CreateRole.
-#' You can update a role\'s trust policy using UpdateAssumeRolePolicy.
+#' You can update a role's trust policy using UpdateAssumeRolePolicy.
 #' 
 #' Use this API to attach a *managed* policy to a role. To embed an inline
 #' policy in a role, use PutRolePolicy. For more information about
@@ -414,8 +414,8 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
 #' @usage
 #' iam_change_password(OldPassword, NewPassword)
 #'
-#' @param OldPassword &#91;required&#93; The IAM user\'s current password.
-#' @param NewPassword &#91;required&#93; The new password. The new password must conform to the AWS account\'s
+#' @param OldPassword &#91;required&#93; The IAM user's current password.
+#' @param NewPassword &#91;required&#93; The new password. The new password must conform to the AWS account's
 #' password policy, if one exists.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) that is used to
@@ -617,7 +617,7 @@ iam_create_account_alias <- function(AccountAlias) {
 #' 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
-#' create resources named both \"MyResource\" and \"myresource\".
+#' create resources named both "MyResource" and "myresource".
 #'
 #' @section Request syntax:
 #' ```
@@ -809,7 +809,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' supports [OpenID Connect (OIDC)](http://openid.net/connect/).
 #' 
 #' The OIDC provider that you create with this operation can be used as a
-#' principal in a role\'s trust policy. Such a policy establishes a trust
+#' principal in a role's trust policy. Such a policy establishes a trust
 #' relationship between AWS and the OIDC provider.
 #' 
 #' When you create the IAM OIDC provider, you specify the following:
@@ -834,8 +834,8 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' iam_create_open_id_connect_provider(Url, ClientIDList, ThumbprintList)
 #'
 #' @param Url &#91;required&#93; The URL of the identity provider. The URL must begin with `https://` and
-#' should correspond to the `iss` claim in the provider\'s OpenID Connect
-#' ID tokens. Per the OIDC standard, path components are allowed but query
+#' should correspond to the `iss` claim in the provider's OpenID Connect ID
+#' tokens. Per the OIDC standard, path components are allowed but query
 #' parameters are not. Typically the URL consists of only a hostname, like
 #' `https://server.example.org` or `https://example.com`.
 #' 
@@ -844,7 +844,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' OpenID Connect provider in the AWS account, you will get an error.
 #' @param ClientIDList A list of client IDs (also known as audiences). When a mobile or web app
 #' registers with an OpenID Connect provider, they establish a value that
-#' identifies the application. (This is the value that\'s sent as the
+#' identifies the application. (This is the value that's sent as the
 #' `client_id` parameter on OAuth requests.)
 #' 
 #' You can register multiple client IDs with the same provider. For
@@ -856,7 +856,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' `CreateOpenIDConnectProviderRequest` operation accepts client IDs up to
 #' 255 characters long.
 #' @param ThumbprintList &#91;required&#93; A list of server certificate thumbprints for the OpenID Connect (OIDC)
-#' identity provider\'s server certificates. Typically this list includes
+#' identity provider's server certificates. Typically this list includes
 #' only one entry. However, IAM lets you have up to five thumbprints for an
 #' OIDC provider. This lets you maintain multiple thumbprints if the
 #' identity provider is rotating certificates.
@@ -872,8 +872,8 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' thumbprint string would be the hex-encoded SHA-1 hash value of the
 #' certificate used by https://keys.server.example.com.
 #' 
-#' For more information about obtaining the OIDC provider\'s thumbprint,
-#' see [Obtaining the Thumbprint for an OpenID Connect
+#' For more information about obtaining the OIDC provider's thumbprint, see
+#' [Obtaining the Thumbprint for an OpenID Connect
 #' Provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html)
 #' in the *IAM User Guide*.
 #'
@@ -931,7 +931,7 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #' Creates a new managed policy for your AWS account.
 #' 
 #' This operation creates a policy version with a version identifier of
-#' `v1` and sets v1 as the policy\'s default version. For more information
+#' `v1` and sets v1 as the policy's default version. For more information
 #' about policy versions, see [Versioning for Managed
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
 #' in the *IAM User Guide*.
@@ -948,7 +948,7 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #' 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
-#' create resources named both \"MyResource\" and \"myresource\".
+#' create resources named both "MyResource" and "myresource".
 #' @param Path The path for the policy.
 #' 
 #' For more information about paths, see [IAM
@@ -987,7 +987,7 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #' @param Description A friendly description of the policy.
 #' 
 #' Typically used to store information about the permissions defined in the
-#' policy. For example, \"Grants access to production DynamoDB tables.\"
+#' policy. For example, "Grants access to production DynamoDB tables."
 #' 
 #' The policy description is immutable. After a value is assigned, it
 #' cannot be changed.
@@ -1030,9 +1030,9 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #' delete an existing version using DeletePolicyVersion before you create a
 #' new version.
 #' 
-#' Optionally, you can set the new version as the policy\'s default
-#' version. The default version is the version that is in effect for the
-#' IAM users, groups, and roles to which the policy is attached.
+#' Optionally, you can set the new version as the policy's default version.
+#' The default version is the version that is in effect for the IAM users,
+#' groups, and roles to which the policy is attached.
 #' 
 #' For more information about managed policy versions, see [Versioning for
 #' Managed
@@ -1068,7 +1068,7 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #' 
 #' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
 #'     carriage return (``U+000D``)
-#' @param SetAsDefault Specifies whether to set this version as the policy\'s default version.
+#' @param SetAsDefault Specifies whether to set this version as the policy's default version.
 #' 
 #' When this parameter is `true`, the new policy version becomes the
 #' operative version. That is, it becomes the version that is in effect for
@@ -1140,7 +1140,7 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
-#' create resources named both \"MyResource\" and \"myresource\".
+#' create resources named both "MyResource" and "myresource".
 #' @param AssumeRolePolicyDocument &#91;required&#93; The trust relationship policy document that grants an entity permission
 #' to assume the role.
 #' 
@@ -1173,7 +1173,7 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' `DurationSeconds` API parameter or the `duration-seconds` CLI parameter
 #' to request a longer session. The `MaxSessionDuration` setting determines
 #' the maximum duration that can be requested using the `DurationSeconds`
-#' parameter. If users don\'t specify a value for the `DurationSeconds`
+#' parameter. If users don't specify a value for the `DurationSeconds`
 #' parameter, their security credentials are valid for one hour by default.
 #' This applies when you use the `AssumeRole*` API operations or the
 #' `assume-role*` CLI operations but does not apply when you use those
@@ -1249,18 +1249,18 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' supports SAML 2.0.
 #' 
 #' The SAML provider resource that you create with this operation can be
-#' used as a principal in an IAM role\'s trust policy. Such a policy can
+#' used as a principal in an IAM role's trust policy. Such a policy can
 #' enable federated users who sign in using the SAML IdP to assume the
 #' role. You can create an IAM role that supports Web-based single sign-on
 #' (SSO) to the AWS Management Console or one that supports API access to
 #' AWS.
 #' 
 #' When you create the SAML provider resource, you upload a SAML metadata
-#' document that you get from your IdP. That document includes the
-#' issuer\'s name, expiration information, and keys that can be used to
-#' validate the SAML authentication response (assertions) that the IdP
-#' sends. You must generate the metadata document using the identity
-#' management software that is used as your organization\'s IdP.
+#' document that you get from your IdP. That document includes the issuer's
+#' name, expiration information, and keys that can be used to validate the
+#' SAML authentication response (assertions) that the IdP sends. You must
+#' generate the metadata document using the identity management software
+#' that is used as your organization's IdP.
 #' 
 #' This operation requires [Signature Version
 #' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
@@ -1276,11 +1276,11 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' iam_create_saml_provider(SAMLMetadataDocument, Name)
 #'
 #' @param SAMLMetadataDocument &#91;required&#93; An XML document generated by an identity provider (IdP) that supports
-#' SAML 2.0. The document includes the issuer\'s name, expiration
+#' SAML 2.0. The document includes the issuer's name, expiration
 #' information, and keys that can be used to validate the SAML
 #' authentication response (assertions) that are received from the IdP. You
 #' must generate the metadata document using the identity management
-#' software that is used as your organization\'s IdP.
+#' software that is used as your organization's IdP.
 #' 
 #' For more information, see [About SAML 2.0-based
 #' Federation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html)
@@ -1485,7 +1485,7 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
 #' 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
-#' create resources named both \"MyResource\" and \"myresource\".
+#' create resources named both "MyResource" and "myresource".
 #' @param PermissionsBoundary The ARN of the policy that is used to set the permissions boundary for
 #' the user.
 #' @param Tags A list of tags that you want to attach to the newly created user. Each
@@ -2000,10 +2000,10 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 #' user's ability to access AWS services through the AWS Management Console
 #'
 #' Deletes the password for the specified IAM user, which terminates the
-#' user\'s ability to access AWS services through the AWS Management
+#' user's ability to access AWS services through the AWS Management
 #' Console.
 #' 
-#' Deleting a user\'s password does not prevent a user from accessing AWS
+#' Deleting a user's password does not prevent a user from accessing AWS
 #' through the command line interface or the API. To prevent all user
 #' access, you must also either make any access keys inactive or delete
 #' them. For more information about making keys inactive or deleting them,
@@ -2106,7 +2106,7 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' 
 #' Before you can delete a managed policy, you must first detach the policy
 #' from all users, groups, and roles that it is attached to. In addition,
-#' you must delete all the policy\'s versions. The following steps describe
+#' you must delete all the policy's versions. The following steps describe
 #' the process for deleting a managed policy:
 #' 
 #' -   Detach the policy from all users, groups, and roles that the policy
@@ -2115,12 +2115,12 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #'     roles that a policy is attached to, use ListEntitiesForPolicy.
 #' 
 #' -   Delete all versions of the policy using DeletePolicyVersion. To list
-#'     the policy\'s versions, use ListPolicyVersions. You cannot use
+#'     the policy's versions, use ListPolicyVersions. You cannot use
 #'     DeletePolicyVersion to delete the version that is marked as the
-#'     default version. You delete the policy\'s default version in the
-#'     next step of the process.
+#'     default version. You delete the policy's default version in the next
+#'     step of the process.
 #' 
-#' -   Delete the policy (this automatically deletes the policy\'s default
+#' -   Delete the policy (this automatically deletes the policy's default
 #'     version) using this API.
 #' 
 #' For information about managed policies, see [Managed Policies and Inline
@@ -2192,9 +2192,8 @@ iam_delete_policy <- function(PolicyArn) {
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' consists of the lowercase letter \'v\' followed by one or two digits,
-#' and optionally followed by a period \'.\' and a string of letters and
-#' digits.
+#' consists of the lowercase letter 'v' followed by one or two digits, and
+#' optionally followed by a period '.' and a string of letters and digits.
 #' 
 #' For more information about managed policy versions, see [Versioning for
 #' Managed
@@ -2398,9 +2397,9 @@ iam_delete_role_policy <- function(RoleName, PolicyName) {
 #' Deletes a SAML provider resource in IAM.
 #' 
 #' Deleting the provider resource from IAM does not update any roles that
-#' reference the SAML provider resource\'s ARN as a principal in their
-#' trust policies. Any attempt to assume a role that references a
-#' non-existent provider resource ARN fails.
+#' reference the SAML provider resource's ARN as a principal in their trust
+#' policies. Any attempt to assume a role that references a non-existent
+#' provider resource ARN fails.
 #' 
 #' This operation requires [Signature Version
 #' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
@@ -2503,7 +2502,7 @@ iam_delete_ssh_public_key <- function(UserName, SSHPublicKeyId) {
 #' 
 #' If you are using a server certificate with Elastic Load Balancing,
 #' deleting the certificate could have implications for your application.
-#' If Elastic Load Balancing doesn\'t detect the deletion of bound
+#' If Elastic Load Balancing doesn't detect the deletion of bound
 #' certificates, it may continue to use the certificates. This could cause
 #' Elastic Load Balancing to stop accepting traffic. We recommend that you
 #' remove the reference to the certificate from Elastic Load Balancing
@@ -2907,7 +2906,7 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
 #'
 #' Deletes a virtual MFA device.
 #' 
-#' You must deactivate a user\'s virtual MFA device before you can delete
+#' You must deactivate a user's virtual MFA device before you can delete
 #' it. For information about deactivating MFA devices, see
 #' DeactivateMFADevice.
 #'
@@ -3250,31 +3249,31 @@ iam_generate_credential_report <- function() {
 #' in the *IAM User Guide*.
 #' 
 #' You can generate a service last accessed data report for entities by
-#' specifying only the entity\'s path. This data includes a list of
-#' services that are allowed by any service control policies (SCPs) that
-#' apply to the entity.
+#' specifying only the entity's path. This data includes a list of services
+#' that are allowed by any service control policies (SCPs) that apply to
+#' the entity.
 #' 
 #' You can generate a service last accessed data report for a policy by
-#' specifying an entity\'s path and an optional AWS Organizations policy
-#' ID. This data includes a list of services that are allowed by the
-#' specified SCP.
+#' specifying an entity's path and an optional AWS Organizations policy ID.
+#' This data includes a list of services that are allowed by the specified
+#' SCP.
 #' 
 #' For each service in both report types, the data includes the most recent
 #' account activity that the policy allows to account principals in the
-#' entity or the entity\'s children. For important information about the
+#' entity or the entity's children. For important information about the
 #' data, reporting period, permissions required, troubleshooting, and
 #' supported Regions see [Reducing Permissions Using Service Last Accessed
 #' Data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
 #' in the *IAM User Guide*.
 #' 
-#' The data includesÂ allÂ attempts to access AWS, not just the successful
+#' The data includes all attempts to access AWS, not just the successful
 #' ones. This includes all attempts that were made using the AWS Management
 #' Console, the AWS API through any of the SDKs, or any of the command line
 #' tools. An unexpected entry in the service last accessed data does not
 #' mean that an account has been compromised, because the request might
 #' have been denied. Refer to your CloudTrail logs as the authoritative
 #' source for information about all API calls and whether they were
-#' successful or denied access. For more information, seeÂ [Logging IAM
+#' successful or denied access. For more information, see [Logging IAM
 #' Events with
 #' CloudTrail](https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html)
 #' in the *IAM User Guide*.
@@ -3291,25 +3290,25 @@ iam_generate_credential_report <- function() {
 #' The type of entity that you specify determines the data returned in the
 #' report.
 #' 
-#' -   **Root** -- When you specify the organizations root as the entity,
+#' -   **Root** – When you specify the organizations root as the entity,
 #'     the resulting report lists all of the services allowed by SCPs that
 #'     are attached to your root. For each service, the report includes
 #'     data for all accounts in your organization except the master
 #'     account, because the master account is not limited by SCPs.
 #' 
-#' -   **OU** -- When you specify an organizational unit (OU) as the
-#'     entity, the resulting report lists all of the services allowed by
-#'     SCPs that are attached to the OU and its parents. For each service,
-#'     the report includes data for all accounts in the OU or its children.
-#'     This data excludes the master account, because the master account is
-#'     not limited by SCPs.
+#' -   **OU** – When you specify an organizational unit (OU) as the entity,
+#'     the resulting report lists all of the services allowed by SCPs that
+#'     are attached to the OU and its parents. For each service, the report
+#'     includes data for all accounts in the OU or its children. This data
+#'     excludes the master account, because the master account is not
+#'     limited by SCPs.
 #' 
-#' -   **Master account** -- When you specify the master account, the
+#' -   **Master account** – When you specify the master account, the
 #'     resulting report lists all AWS services, because the master account
 #'     is not limited by SCPs. For each service, the report includes data
 #'     for only the master account.
 #' 
-#' -   **Account** -- When you specify another account as the entity, the
+#' -   **Account** – When you specify another account as the entity, the
 #'     resulting report lists all of the services allowed by SCPs that are
 #'     attached to the account and its parents. For each service, the
 #'     report includes data for only the specified account.
@@ -3318,7 +3317,7 @@ iam_generate_credential_report <- function() {
 #' entity path and the optional AWS Organizations policy ID. The type of
 #' entity that you specify determines the data returned for each service.
 #' 
-#' -   **Root** -- When you specify the root entity and a policy ID, the
+#' -   **Root** – When you specify the root entity and a policy ID, the
 #'     resulting report lists all of the services that are allowed by the
 #'     specified SCP. For each service, the report includes data for all
 #'     accounts in your organization to which the SCP applies. This data
@@ -3327,7 +3326,7 @@ iam_generate_credential_report <- function() {
 #'     organization, then the report will return a list of services with no
 #'     data.
 #' 
-#' -   **OU** -- When you specify an OU entity and a policy ID, the
+#' -   **OU** – When you specify an OU entity and a policy ID, the
 #'     resulting report lists all of the services that are allowed by the
 #'     specified SCP. For each service, the report includes data for all
 #'     accounts in the OU or its children to which the SCP applies. This
@@ -3337,13 +3336,13 @@ iam_generate_credential_report <- function() {
 #'     SCP is not attached to the OU or one of its children, the report
 #'     will return a list of services with no data.
 #' 
-#' -   **Master account** -- When you specify the master account, the
+#' -   **Master account** – When you specify the master account, the
 #'     resulting report lists all AWS services, because the master account
 #'     is not limited by SCPs. If you specify a policy ID in the CLI or
 #'     API, the policy is ignored. For each service, the report includes
 #'     data for only the master account.
 #' 
-#' -   **Account** -- When you specify another account entity and a policy
+#' -   **Account** – When you specify another account entity and a policy
 #'     ID, the resulting report lists all of the services that are allowed
 #'     by the specified SCP. For each service, the report includes data for
 #'     only the specified account. This means that other accounts in the
@@ -3431,7 +3430,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' Where Data Is
 #' Tracked](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period).
 #' 
-#' The service last accessed data includesÂ allÂ attempts to access an AWS
+#' The service last accessed data includes all attempts to access an AWS
 #' API, not just the successful ones. This includes all attempts that were
 #' made using the AWS Management Console, the AWS API through any of the
 #' SDKs, or any of the command line tools. An unexpected entry in the
@@ -3439,7 +3438,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' compromised, because the request might have been denied. Refer to your
 #' CloudTrail logs as the authoritative source for information about all
 #' API calls and whether they were successful or denied access. For more
-#' information, seeÂ [Logging IAM Events with
+#' information, see [Logging IAM Events with
 #' CloudTrail](https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html)
 #' in the *IAM User Guide*.
 #' 
@@ -3447,7 +3446,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' Use this parameter in the following operations to retrieve the following
 #' details from your report:
 #' 
-#' -   GetServiceLastAccessedDetails -- Use this operation for users,
+#' -   GetServiceLastAccessedDetails – Use this operation for users,
 #'     groups, roles, or policies to list every AWS service that the
 #'     resource could access using permissions policies. For each service,
 #'     the response includes information about the most recent access
@@ -3457,7 +3456,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #'     used by the same role within a session, or by the same user when
 #'     used to call `GetServiceLastAccessedDetail`.
 #' 
-#' -   GetServiceLastAccessedDetailsWithEntities -- Use this operation for
+#' -   GetServiceLastAccessedDetailsWithEntities – Use this operation for
 #'     groups and policies to list information about the associated
 #'     entities (users or roles) that attempted to access a specific AWS
 #'     service.
@@ -3494,7 +3493,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' you want to generate information about the last attempt to access
 #' services or actions. If you specify service-level granularity, this
 #' operation generates only service data. If you specify action-level
-#' granularity, it generates service and action data. If you don\'t include
+#' granularity, it generates service and action data. If you don't include
 #' this optional parameter, the operation generates service data.
 #'
 #' @section Request syntax:
@@ -3812,7 +3811,7 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
 #' by string, use GetContextKeysForCustomPolicy instead.
 #' 
 #' **Note:** This API discloses information about the permissions granted
-#' to other users. If you do not want users to see other user\'s
+#' to other users. If you do not want users to see other user's
 #' permissions, then consider allowing them to use
 #' GetContextKeysForCustomPolicy instead.
 #' 
@@ -3990,7 +3989,7 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' 
 #' An IAM group can also have managed policies attached to it. To retrieve
 #' a managed policy document that is attached to a group, use GetPolicy to
-#' determine the policy\'s default version, then use GetPolicyVersion to
+#' determine the policy's default version, then use GetPolicyVersion to
 #' retrieve the policy document.
 #' 
 #' For more information about policies, see [Managed Policies and Inline
@@ -4045,7 +4044,7 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
 #' the instance profile's path, GUID, ARN, and role
 #'
 #' Retrieves information about the specified instance profile, including
-#' the instance profile\'s path, GUID, ARN, and role. For more information
+#' the instance profile's path, GUID, ARN, and role. For more information
 #' about instance profiles, see [About Instance
 #' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html)
 #' in the *IAM User Guide*.
@@ -4289,7 +4288,7 @@ iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker =
 #' roles to which the policy is attached
 #'
 #' Retrieves information about the specified managed policy, including the
-#' policy\'s default version and the total number of IAM users, groups, and
+#' policy's default version and the total number of IAM users, groups, and
 #' roles to which the policy is attached. To retrieve the list of the
 #' specific users, groups, and roles that the policy is attached to, use
 #' the ListEntitiesForPolicy API. This API returns metadata about the
@@ -4386,9 +4385,8 @@ iam_get_policy <- function(PolicyArn) {
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters that
-#' consists of the lowercase letter \'v\' followed by one or two digits,
-#' and optionally followed by a period \'.\' and a string of letters and
-#' digits.
+#' consists of the lowercase letter 'v' followed by one or two digits, and
+#' optionally followed by a period '.' and a string of letters and digits.
 #'
 #' @section Request syntax:
 #' ```
@@ -4422,8 +4420,8 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
 #' path, GUID, ARN, and the role's trust policy that grants permission to
 #' assume the role
 #'
-#' Retrieves information about the specified role, including the role\'s
-#' path, GUID, ARN, and the role\'s trust policy that grants permission to
+#' Retrieves information about the specified role, including the role's
+#' path, GUID, ARN, and the role's trust policy that grants permission to
 #' assume the role. For more information about roles, see [Working with
 #' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html).
 #' 
@@ -4494,7 +4492,7 @@ iam_get_role <- function(RoleName) {
 #' 
 #' An IAM role can also have managed policies attached to it. To retrieve a
 #' managed policy document that is attached to a role, use GetPolicy to
-#' determine the policy\'s default version, then use GetPolicyVersion to
+#' determine the policy's default version, then use GetPolicyVersion to
 #' retrieve the policy document.
 #' 
 #' For more information about policies, see [Managed Policies and Inline
@@ -4737,16 +4735,14 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #' returns the ARN of the following entity, depending on the resource ARN
 #' that you used to generate the report:
 #' 
-#' -   **User** -- Returns the user ARN that you used to generate the
-#'     report
+#' -   **User** – Returns the user ARN that you used to generate the report
 #' 
-#' -   **Group** -- Returns the ARN of the group member (user) that last
+#' -   **Group** – Returns the ARN of the group member (user) that last
 #'     attempted to access the service
 #' 
-#' -   **Role** -- Returns the role ARN that you used to generate the
-#'     report
+#' -   **Role** – Returns the role ARN that you used to generate the report
 #' 
-#' -   **Policy** -- Returns the ARN of the user or role that last used the
+#' -   **Policy** – Returns the ARN of the user or role that last used the
 #'     policy to attempt to access the service
 #' 
 #' By default, the list is sorted by service namespace.
@@ -4832,11 +4828,11 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' could have used group or policy permissions to access the specified
 #' service.
 #' 
-#' -   **Group** -- For a group report, this operation returns a list of
-#'     users in the group that could have used the group's policies in an
+#' -   **Group** – For a group report, this operation returns a list of
+#'     users in the group that could have used the group’s policies in an
 #'     attempt to access the service.
 #' 
-#' -   **Policy** -- For a policy report, this operation returns a list of
+#' -   **Policy** – For a policy report, this operation returns a list of
 #'     entities (users or roles) that could have used the policy in an
 #'     attempt to access the service.
 #' 
@@ -4867,7 +4863,7 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' example, `(service prefix: a4b)`. For more information about service
 #' namespaces, see [AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in theÂ *AWS General Reference*.
+#' in the *AWS General Reference*.
 #' @param MaxItems Use this only when paginating results to indicate the maximum number of
 #' items you want in the response. If additional items exist beyond the
 #' maximum you specify, the `IsTruncated` response element is `true`.
@@ -4968,8 +4964,8 @@ iam_get_service_linked_role_deletion_status <- function(DeletionTaskId) {
 #' Retrieves information about the specified IAM user, including the user's
 #' creation date, path, unique ID, and ARN
 #'
-#' Retrieves information about the specified IAM user, including the
-#' user\'s creation date, path, unique ID, and ARN.
+#' Retrieves information about the specified IAM user, including the user's
+#' creation date, path, unique ID, and ARN.
 #' 
 #' If you do not specify a user name, IAM determines the user name
 #' implicitly based on the AWS access key ID used to sign the request to
@@ -5036,7 +5032,7 @@ iam_get_user <- function(UserName = NULL) {
 #' 
 #' An IAM user can also have managed policies attached to it. To retrieve a
 #' managed policy document that is attached to a user, use GetPolicy to
-#' determine the policy\'s default version. Then use GetPolicyVersion to
+#' determine the policy's default version. Then use GetPolicyVersion to
 #' retrieve the policy document.
 #' 
 #' For more information about policies, see [Managed Policies and Inline
@@ -5513,9 +5509,9 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 #' @param PolicyUsageFilter The policy usage method to use for filtering the results.
 #' 
 #' To list only permissions policies,
-#' setÂ `PolicyUsageFilter`Â toÂ `PermissionsPolicy`. To list only the
-#' policies used to set permissions boundaries, setÂ the value
-#' toÂ `PermissionsBoundary`.
+#' set `PolicyUsageFilter` to `PermissionsPolicy`. To list only the
+#' policies used to set permissions boundaries, set the value
+#' to `PermissionsBoundary`.
 #' 
 #' This parameter is optional. If it is not included, all policies are
 #' returned.
@@ -6060,9 +6056,9 @@ iam_list_open_id_connect_providers <- function() {
 #' @param PolicyUsageFilter The policy usage method to use for filtering the results.
 #' 
 #' To list only permissions policies,
-#' setÂ `PolicyUsageFilter`Â toÂ `PermissionsPolicy`. To list only the
-#' policies used to set permissions boundaries, setÂ the value
-#' toÂ `PermissionsBoundary`.
+#' set `PolicyUsageFilter` to `PermissionsPolicy`. To list only the
+#' policies used to set permissions boundaries, set the value
+#' to `PermissionsBoundary`.
 #' 
 #' This parameter is optional. If it is not included, all policies are
 #' returned.
@@ -6130,17 +6126,17 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' The list of policies returned by the operation depends on the ARN of the
 #' identity that you provide.
 #' 
-#' -   **User** -- The list of policies includes the managed and inline
+#' -   **User** – The list of policies includes the managed and inline
 #'     policies that are attached to the user directly. The list also
 #'     includes any additional managed and inline policies that are
 #'     attached to the group to which the user belongs.
 #' 
-#' -   **Group** -- The list of policies includes only the managed and
+#' -   **Group** – The list of policies includes only the managed and
 #'     inline policies that are attached to the group directly. Policies
-#'     that are attached to the group's user are not included.
+#'     that are attached to the group’s user are not included.
 #' 
-#' -   **Role** -- The list of policies includes only the managed and
-#'     inline policies that are attached to the role.
+#' -   **Role** – The list of policies includes only the managed and inline
+#'     policies that are attached to the role.
 #' 
 #' For each managed policy, this operation returns the ARN and policy name.
 #' For each inline policy, it returns the policy name and the entity to
@@ -6175,7 +6171,7 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' example, `(service prefix: a4b)`. For more information about service
 #' namespaces, see [AWS Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-#' in theÂ *AWS General Reference*.
+#' in the *AWS General Reference*.
 #'
 #' @section Request syntax:
 #' ```
@@ -6226,7 +6222,7 @@ iam_list_policies_granting_service_access <- function(Marker = NULL, Arn, Servic
 #' version
 #'
 #' Lists information about the versions of the specified managed policy,
-#' including the version that is currently set as the policy\'s default
+#' including the version that is currently set as the policy's default
 #' version.
 #' 
 #' For more information about managed policies, see [Managed Policies and
@@ -7182,7 +7178,7 @@ iam_put_group_policy <- function(GroupName, PolicyName, PolicyDocument) {
 #' Adds or updates the policy that is specified as the IAM role's
 #' permissions boundary
 #'
-#' Adds or updates the policy that is specified as the IAM role\'s
+#' Adds or updates the policy that is specified as the IAM role's
 #' permissions boundary. You can use an AWS managed policy or a customer
 #' managed policy to set the boundary for a role. Use the boundary to
 #' control the maximum permissions that the role can have. Setting a
@@ -7241,9 +7237,9 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' specified IAM role.
 #' 
 #' When you embed an inline policy in a role, the inline policy is used as
-#' part of the role\'s access (permissions) policy. The role\'s trust
-#' policy is created at the same time as the role, using CreateRole. You
-#' can update a role\'s trust policy using UpdateAssumeRolePolicy. For more
+#' part of the role's access (permissions) policy. The role's trust policy
+#' is created at the same time as the role, using CreateRole. You can
+#' update a role's trust policy using UpdateAssumeRolePolicy. For more
 #' information about IAM roles, go to [Using Roles to Delegate Permissions
 #' and Federate
 #' Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html).
@@ -7343,7 +7339,7 @@ iam_put_role_policy <- function(RoleName, PolicyName, PolicyDocument) {
 #' Adds or updates the policy that is specified as the IAM user's
 #' permissions boundary
 #'
-#' Adds or updates the policy that is specified as the IAM user\'s
+#' Adds or updates the policy that is specified as the IAM user's
 #' permissions boundary. You can use an AWS managed policy or a customer
 #' managed policy to set the boundary for a user. Use the boundary to
 #' control the maximum permissions that the user can have. Setting a
@@ -7791,7 +7787,7 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #' Sets the specified version of the specified policy as the policy's
 #' default (operative) version
 #'
-#' Sets the specified version of the specified policy as the policy\'s
+#' Sets the specified version of the specified policy as the policy's
 #' default (operative) version.
 #' 
 #' This operation affects all users, groups, and roles that the policy is
@@ -7932,8 +7928,8 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #'
 #' Simulate how a set of IAM policies and optionally a resource-based
 #' policy works with a list of API operations and AWS resources to
-#' determine the policies\' effective permissions. The policies are
-#' provided as strings.
+#' determine the policies' effective permissions. The policies are provided
+#' as strings.
 #' 
 #' The simulation does not perform the API operations; it only checks the
 #' authorization to determine if the simulated policies allow or deny the
@@ -7961,7 +7957,7 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' is specified as a string containing the complete, valid JSON text of an
 #' IAM policy. Do not include any resource-based policies in this
 #' parameter. Any resource-based policy must be submitted with the
-#' `ResourcePolicy` parameter. The policies cannot be \"scope-down\"
+#' `ResourcePolicy` parameter. The policies cannot be "scope-down"
 #' policies, such as you could include in a call to
 #' [GetFederationToken](https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html)
 #' or one of the
@@ -8056,8 +8052,8 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' `arn:aws:iam::112233445566-ID:root`.
 #' @param CallerArn The ARN of the IAM user that you want to use as the simulated caller of
 #' the API operations. `CallerArn` is required if you include a
-#' `ResourcePolicy` so that the policy\'s `Principal` element has a value
-#' to use in evaluating the policy.
+#' `ResourcePolicy` so that the policy's `Principal` element has a value to
+#' use in evaluating the policy.
 #' 
 #' You can specify only the ARN of an IAM user. You cannot specify the ARN
 #' of an assumed role, federated user, or a service principal.
@@ -8177,7 +8173,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' effective permissions
 #'
 #' Simulate how a set of IAM policies attached to an IAM entity works with
-#' a list of API operations and AWS resources to determine the policies\'
+#' a list of API operations and AWS resources to determine the policies'
 #' effective permissions. The entity can be an IAM user, group, or role. If
 #' you specify a user, then the simulation also includes all of the
 #' policies that are attached to groups that the user belongs to.
@@ -8195,7 +8191,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' operations.
 #' 
 #' **Note:** This API discloses information about the permissions granted
-#' to other users. If you do not want users to see other user\'s
+#' to other users. If you do not want users to see other user's
 #' permissions, then consider allowing them to use SimulateCustomPolicy
 #' instead.
 #' 
@@ -8314,14 +8310,14 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' specified a user. If you include both a `PolicySourceArn` (for example,
 #' `arn:aws:iam::123456789012:user/David`) and a `CallerArn` (for example,
 #' `arn:aws:iam::123456789012:user/Bob`), the result is that you simulate
-#' calling the API operations as Bob, as if Bob had David\'s policies.
+#' calling the API operations as Bob, as if Bob had David's policies.
 #' 
 #' You can specify only the ARN of an IAM user. You cannot specify the ARN
 #' of an assumed role, federated user, or a service principal.
 #' 
 #' `CallerArn` is required if you include a `ResourcePolicy` and the
 #' `PolicySourceArn` is not the ARN for an IAM user. This is required so
-#' that the resource-based policy\'s `Principal` element has a value to use
+#' that the resource-based policy's `Principal` element has a value to use
 #' in evaluating the policy.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
@@ -8774,7 +8770,7 @@ iam_untag_user <- function(UserName, TagKeys) {
 #' or vice versa
 #'
 #' Changes the status of the specified access key from Active to Inactive,
-#' or vice versa. This operation can be used to disable a user\'s key as
+#' or vice versa. This operation can be used to disable a user's key as
 #' part of a key rotation workflow.
 #' 
 #' If the `UserName` is not specified, the user name is determined
@@ -8850,9 +8846,9 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' Updates the password policy settings for the AWS account.
 #' 
 #' -   This operation does not support partial updates. No parameters are
-#'     required, but if you do not specify a parameter, that parameter\'s
+#'     required, but if you do not specify a parameter, that parameter's
 #'     value reverts to its default value. See the **Request Parameters**
-#'     section for each parameter\'s default value. Also note that some
+#'     section for each parameter's default value. Also note that some
 #'     parameters do not allow the default parameter to be explicitly set.
 #'     Instead, to invoke the default value, do not include that parameter
 #'     when you invoke the operation.
@@ -8875,7 +8871,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' @param RequireSymbols Specifies whether IAM user passwords must contain at least one of the
 #' following non-alphanumeric characters:
 #' 
-#' ! @@ \\# \\$ % \\^ & * ( ) \\_ + - = \[ \] \{ \} \\| \'
+#' ! @@ \\# $ % ^ & * ( ) \\_ + - = \[ \] \{ \} | '
 #' 
 #' If you do not specify a value for this parameter, then the operation
 #' uses the default value of `false`. The result is that passwords do not
@@ -8977,9 +8973,9 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #' Updates the policy that grants an IAM entity permission to assume a role
 #'
 #' Updates the policy that grants an IAM entity permission to assume a
-#' role. This is typically referred to as the \"role trust policy\". For
-#' more information about roles, go to [Using Roles to Delegate Permissions
-#' and Federate
+#' role. This is typically referred to as the "role trust policy". For more
+#' information about roles, go to [Using Roles to Delegate Permissions and
+#' Federate
 #' Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html).
 #'
 #' @usage
@@ -9052,7 +9048,7 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #'
 #' Updates the name and/or the path of the specified IAM group.
 #' 
-#' You should understand the implications of changing a group\'s path or
+#' You should understand the implications of changing a group's path or
 #' name. For more information, see [Renaming Users and
 #' Groups](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html)
 #' in the *IAM User Guide*.
@@ -9069,14 +9065,14 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #' @usage
 #' iam_update_group(GroupName, NewPath, NewGroupName)
 #'
-#' @param GroupName &#91;required&#93; Name of the IAM group to update. If you\'re changing the name of the
+#' @param GroupName &#91;required&#93; Name of the IAM group to update. If you're changing the name of the
 #' group, this is the original name.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
-#' @param NewPath New path for the IAM group. Only include this if changing the group\'s
+#' @param NewPath New path for the IAM group. Only include this if changing the group's
 #' path.
 #' 
 #' This parameter allows (through its [regex
@@ -9086,12 +9082,12 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #' ASCII character from the ! (``U+0021``) through the DEL character
 #' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
-#' @param NewGroupName New name for the IAM group. Only include this if changing the group\'s
+#' @param NewGroupName New name for the IAM group. Only include this if changing the group's
 #' name.
 #' 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
-#' create resources named both \"MyResource\" and \"myresource\".
+#' create resources named both "MyResource" and "myresource".
 #'
 #' @section Request syntax:
 #' ```
@@ -9220,12 +9216,12 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #' existing list of thumbprints. (The lists are not merged.)
 #' 
 #' Typically, you need to update a thumbprint only when the identity
-#' provider\'s certificate changes, which occurs rarely. However, if the
-#' provider\'s certificate *does* change, any attempt to assume an IAM role
+#' provider's certificate changes, which occurs rarely. However, if the
+#' provider's certificate *does* change, any attempt to assume an IAM role
 #' that specifies the OIDC provider as a principal fails until the
 #' certificate thumbprint is updated.
 #' 
-#' Trust for the OIDC provider is derived from the provider\'s certificate
+#' Trust for the OIDC provider is derived from the provider's certificate
 #' and is validated by the thumbprint. Therefore, it is best to limit
 #' access to the `UpdateOpenIDConnectProviderThumbprint` operation to
 #' highly privileged users.
@@ -9294,7 +9290,7 @@ iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProvider
 #' `DurationSeconds` API parameter or the `duration-seconds` CLI parameter
 #' to request a longer session. The `MaxSessionDuration` setting determines
 #' the maximum duration that can be requested using the `DurationSeconds`
-#' parameter. If users don\'t specify a value for the `DurationSeconds`
+#' parameter. If users don't specify a value for the `DurationSeconds`
 #' parameter, their security credentials are valid for one hour by default.
 #' This applies when you use the `AssumeRole*` API operations or the
 #' `assume-role*` CLI operations but does not apply when you use those
@@ -9386,11 +9382,11 @@ iam_update_role_description <- function(RoleName, Description) {
 #' iam_update_saml_provider(SAMLMetadataDocument, SAMLProviderArn)
 #'
 #' @param SAMLMetadataDocument &#91;required&#93; An XML document generated by an identity provider (IdP) that supports
-#' SAML 2.0. The document includes the issuer\'s name, expiration
+#' SAML 2.0. The document includes the issuer's name, expiration
 #' information, and keys that can be used to validate the SAML
 #' authentication response (assertions) that are received from the IdP. You
 #' must generate the metadata document using the identity management
-#' software that is used as your organization\'s IdP.
+#' software that is used as your organization's IdP.
 #' @param SAMLProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the SAML provider to update.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
@@ -9428,10 +9424,10 @@ iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
 
 #' Sets the status of an IAM user's SSH public key to active or inactive
 #'
-#' Sets the status of an IAM user\'s SSH public key to active or inactive.
+#' Sets the status of an IAM user's SSH public key to active or inactive.
 #' SSH public keys that are inactive cannot be used for authentication.
-#' This operation can be used to disable a user\'s SSH public key as part
-#' of a key rotation work flow.
+#' This operation can be used to disable a user's SSH public key as part of
+#' a key rotation work flow.
 #' 
 #' The SSH public key affected by this operation is used only for
 #' authenticating the associated IAM user to an AWS CodeCommit repository.
@@ -9500,8 +9496,7 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' that can use the server certificates that you manage with IAM.
 #' 
 #' You should understand the implications of changing a server
-#' certificate\'s path or name. For more information, see [Renaming a
-#' Server
+#' certificate's path or name. For more information, see [Renaming a Server
 #' Certificate](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs_manage.html#RenamingServerCerts)
 #' in the *IAM User Guide*.
 #' 
@@ -9526,7 +9521,7 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
 #' @param NewPath The new path for the server certificate. Include this only if you are
-#' updating the server certificate\'s path.
+#' updating the server certificate's path.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
@@ -9536,7 +9531,7 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
 #' @param NewServerCertificateName The new name for the server certificate. Include this only if you are
-#' updating the server certificate\'s name. The name of the certificate
+#' updating the server certificate's name. The name of the certificate
 #' cannot contain any spaces.
 #' 
 #' This parameter allows (through its [regex
@@ -9578,7 +9573,7 @@ iam_update_server_certificate <- function(ServerCertificateName, NewPath = NULL,
 #' Sets the status of a service-specific credential to `Active` or
 #' `Inactive`. Service-specific credentials that are inactive cannot be
 #' used for authentication to the service. This operation can be used to
-#' disable a user\'s service-specific credential as part of a credential
+#' disable a user's service-specific credential as part of a credential
 #' rotation work flow.
 #'
 #' @usage
@@ -9634,7 +9629,7 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #'
 #' Changes the status of the specified user signing certificate from active
 #' to disabled, or vice versa. This operation can be used to disable an IAM
-#' user\'s signing certificate as part of a certificate rotation work flow.
+#' user's signing certificate as part of a certificate rotation work flow.
 #' 
 #' If the `UserName` field is not specified, the user name is determined
 #' implicitly based on the AWS access key ID used to sign the request. This
@@ -9704,8 +9699,8 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #'
 #' Updates the name and/or the path of the specified IAM user.
 #' 
-#' You should understand the implications of changing an IAM user\'s path
-#' or name. For more information, see [Renaming an IAM
+#' You should understand the implications of changing an IAM user's path or
+#' name. For more information, see [Renaming an IAM
 #' User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_renaming)
 #' and [Renaming an IAM
 #' Group](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_manage_rename.html)
@@ -9721,15 +9716,15 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' @usage
 #' iam_update_user(UserName, NewPath, NewUserName)
 #'
-#' @param UserName &#91;required&#93; Name of the user to update. If you\'re changing the name of the user,
+#' @param UserName &#91;required&#93; Name of the user to update. If you're changing the name of the user,
 #' this is the original user name.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: \\_+=,.@@-
-#' @param NewPath New path for the IAM user. Include this parameter only if you\'re
-#' changing the user\'s path.
+#' @param NewPath New path for the IAM user. Include this parameter only if you're
+#' changing the user's path.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](http://wikipedia.org/wiki/regex)) a string of characters
@@ -9738,12 +9733,12 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' ASCII character from the ! (``U+0021``) through the DEL character
 #' (``U+007F``), including most punctuation characters, digits, and upper and
 #' lowercased letters.
-#' @param NewUserName New name for the user. Include this parameter only if you\'re changing
-#' the user\'s name.
+#' @param NewUserName New name for the user. Include this parameter only if you're changing
+#' the user's name.
 #' 
 #' IAM user, group, role, and policy names must be unique within the
 #' account. Names are not distinguished by case. For example, you cannot
-#' create resources named both \"MyResource\" and \"myresource\".
+#' create resources named both "MyResource" and "myresource".
 #'
 #' @section Request syntax:
 #' ```

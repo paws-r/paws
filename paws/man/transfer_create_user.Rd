@@ -15,7 +15,7 @@ transfer protocol-enabled server using the client.
 
 An example is \emph{\verb{your-Amazon-S3-bucket-name&gt;/home/username}} .}
 
-\item{HomeDirectoryType}{The type of landing directory (folder) you want your users\' home
+\item{HomeDirectoryType}{The type of landing directory (folder) you want your users' home
 directory to be when they log into the file transfer protocol-enabled
 server. If you set it to \code{PATH}, the user will see the absolute Amazon
 S3 bucket paths as is in their file transfer protocol clients. If you
@@ -25,7 +25,7 @@ to your users.}
 
 \item{HomeDirectoryMappings}{Logical directory mappings that specify what Amazon S3 paths and keys
 should be visible to your user and how you want to make them visible.
-You will need to specify the \"\code{Entry}\" and \"\code{Target}\" pair, where
+You will need to specify the "\code{Entry}" and "\code{Target}" pair, where
 \code{Entry} shows how the path is made visible and \code{Target} is the actual
 Amazon S3 path. If you only specify a target, it will be displayed as
 is. You will need to also make sure that your IAM role provides access
@@ -34,8 +34,8 @@ to paths in \code{Target}. The following is an example.
 \verb{'\\\[ "/bucket2/documentation", \\\{ "Entry": "your-personal-report.pdf", "Target": "/bucket3/customized-reports/$\\\{transfer:UserName\\\}.pdf" \\\} \\\]'}
 
 In most cases, you can use this value instead of the scope-down policy
-to lock your user down to the designated home directory (\"chroot\"). To
-do this, you can set \code{Entry} to \'/\' and set \code{Target} to the
+to lock your user down to the designated home directory ("chroot"). To
+do this, you can set \code{Entry} to '/' and set \code{Target} to the
 HomeDirectory parameter value.
 
 If the target of a logical directory entry does not exist in Amazon S3,
@@ -44,8 +44,8 @@ api to create 0 byte objects as place holders for your directory. If
 using the CLI, use the \code{s3api} call instead of \code{s3} so you can use the
 put-object operation. For example, you use the following:
 \verb{aws s3api put-object --bucket bucketname --key path/to/folder/}. Make
-sure that the end of the key name ends in a \'/\' for it to be
-considered a folder.}
+sure that the end of the key name ends in a '/' for it to be considered
+a folder.}
 
 \item{Policy}{A scope-down policy for your user so you can use the same IAM role
 across multiple users. This policy scopes down user access to portions
@@ -63,12 +63,12 @@ For more information, see
 \href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html}{AssumeRole}
 in the \emph{AWS Security Token Service API Reference}.}
 
-\item{Role}{[required] The IAM role that controls your users\' access to your Amazon S3 bucket.
+\item{Role}{[required] The IAM role that controls your users' access to your Amazon S3 bucket.
 The policies attached to this role will determine the level of access
 you want to provide your users when transferring files into and out of
 your Amazon S3 bucket or buckets. The IAM role should also contain a
 trust relationship that allows the file transfer protocol-enabled server
-to access your resources when servicing your users\' transfer requests.}
+to access your resources when servicing your users' transfer requests.}
 
 \item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
 server instance. This is the specific server that you added your user
@@ -84,14 +84,14 @@ metadata attached to users for any purpose.}
 transfer protocol-enabled server as specified by the \code{ServerId}. This
 user name must be a minimum of 3 and a maximum of 32 characters long.
 The following are valid characters: a-z, A-Z, 0-9, underscore, and
-hyphen. The user name can\'t start with a hyphen.}
+hyphen. The user name can't start with a hyphen.}
 }
 \description{
 Creates a user and associates them with an existing file transfer
 protocol-enabled server. You can only create and associate users with
 servers that have the \code{IdentityProviderType} set to \code{SERVICE_MANAGED}.
 Using parameters for \code{CreateUser}, you can specify the user name, set
-the home directory, store the user\'s public key, and assign the user\'s
+the home directory, store the user's public key, and assign the user's
 AWS Identity and Access Management (IAM) role. You can also optionally
 add a scope-down policy, and assign metadata with tags that can be used
 to group and search for users.

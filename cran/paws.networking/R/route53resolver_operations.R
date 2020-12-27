@@ -67,7 +67,7 @@ route53resolver_associate_resolver_endpoint_ip_address <- function(ResolverEndpo
 #'
 #' @param ResolverRuleId &#91;required&#93; The ID of the resolver rule that you want to associate with the VPC. To
 #' list the existing resolver rules, use ListResolverRules.
-#' @param Name A name for the association that you\'re creating between a resolver rule
+#' @param Name A name for the association that you're creating between a resolver rule
 #' and a VPC.
 #' @param VPCId &#91;required&#93; The ID of the VPC that you want to associate the resolver rule with.
 #'
@@ -203,7 +203,7 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
 #' date/time stamp.
 #' @param Name A friendly name that lets you easily find a rule in the Resolver
 #' dashboard in the Route 53 console.
-#' @param RuleType &#91;required&#93; Specify `FORWARD`. Other resolver rule types aren\'t supported.
+#' @param RuleType &#91;required&#93; Specify `FORWARD`. Other resolver rule types aren't supported.
 #' @param DomainName &#91;required&#93; DNS queries for this domain name are forwarded to the IP addresses that
 #' you specify in `TargetIps`. If a query matches multiple resolver rules
 #' (example.com and www.example.com), outbound DNS queries are routed using
@@ -262,7 +262,7 @@ route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, 
 #' Deletes a resolver endpoint
 #'
 #' Deletes a resolver endpoint. The effect of deleting a resolver endpoint
-#' depends on whether it\'s an inbound or an outbound resolver endpoint:
+#' depends on whether it's an inbound or an outbound resolver endpoint:
 #' 
 #' -   **Inbound**: DNS queries from your network or another VPC are no
 #'     longer routed to the DNS service for the specified VPC.
@@ -439,8 +439,8 @@ route53resolver_disassociate_resolver_rule <- function(VPCId, ResolverRuleId) {
 #' of the endpoint
 #'
 #' Gets information about a specified resolver endpoint, such as whether
-#' it\'s an inbound or an outbound resolver endpoint, and the current
-#' status of the endpoint.
+#' it's an inbound or an outbound resolver endpoint, and the current status
+#' of the endpoint.
 #'
 #' @usage
 #' route53resolver_get_resolver_endpoint(ResolverEndpointId)
@@ -603,7 +603,7 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the resolver endpoint that you want to get IP addresses for.
 #' @param MaxResults The maximum number of IP addresses that you want to return in the
-#' response to a `ListResolverEndpointIpAddresses` request. If you don\'t
+#' response to a `ListResolverEndpointIpAddresses` request. If you don't
 #' specify a value for `MaxResults`, Resolver returns up to 100 IP
 #' addresses.
 #' @param NextToken For the first `ListResolverEndpointIpAddresses` request, omit this
@@ -653,7 +653,7 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
 #' route53resolver_list_resolver_endpoints(MaxResults, NextToken, Filters)
 #'
 #' @param MaxResults The maximum number of resolver endpoints that you want to return in the
-#' response to a `ListResolverEndpoints` request. If you don\'t specify a
+#' response to a `ListResolverEndpoints` request. If you don't specify a
 #' value for `MaxResults`, Resolver returns up to 100 resolver endpoints.
 #' @param NextToken For the first `ListResolverEndpoints` request, omit this value.
 #' 
@@ -715,7 +715,7 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
 #'   Filters)
 #'
 #' @param MaxResults The maximum number of rule associations that you want to return in the
-#' response to a `ListResolverRuleAssociations` request. If you don\'t
+#' response to a `ListResolverRuleAssociations` request. If you don't
 #' specify a value for `MaxResults`, Resolver returns up to 100 rule
 #' associations.
 #' @param NextToken For the first `ListResolverRuleAssociation` request, omit this value.
@@ -776,7 +776,7 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
 #' route53resolver_list_resolver_rules(MaxResults, NextToken, Filters)
 #'
 #' @param MaxResults The maximum number of resolver rules that you want to return in the
-#' response to a `ListResolverRules` request. If you don\'t specify a value
+#' response to a `ListResolverRules` request. If you don't specify a value
 #' for `MaxResults`, Resolver returns up to 100 resolver rules.
 #' @param NextToken For the first `ListResolverRules` request, omit this value.
 #' 
@@ -838,7 +838,7 @@ route53resolver_list_resolver_rules <- function(MaxResults = NULL, NextToken = N
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource that you want to list
 #' tags for.
 #' @param MaxResults The maximum number of tags that you want to return in the response to a
-#' `ListTagsForResource` request. If you don\'t specify a value for
+#' `ListTagsForResource` request. If you don't specify a value for
 #' `MaxResults`, Resolver returns up to 100 tags.
 #' @param NextToken For the first `ListTagsForResource` request, omit this value.
 #' 
@@ -1070,7 +1070,7 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
 #' Updates settings for a specified resolver rule
 #'
 #' Updates settings for a specified resolver rule. `ResolverRuleId` is
-#' required, and all other parameters are optional. If you don\'t specify a
+#' required, and all other parameters are optional. If you don't specify a
 #' parameter, it retains its current value.
 #'
 #' @usage

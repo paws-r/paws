@@ -31,13 +31,13 @@ messages) are both 256 KB (262,144 bytes).
 A message can include only XML, JSON, and unformatted text. The
 following Unicode characters are allowed:
 
-\verb{#x9} \\| \verb{#xA} \\| \verb{#xD} \\| \verb{#x20} to \verb{#xD7FF} \\| \verb{#xE000} to \verb{#xFFFD} \\|
+\verb{#x9} | \verb{#xA} | \verb{#xD} | \verb{#x20} to \verb{#xD7FF} | \verb{#xE000} to \verb{#xFFFD} |
 \verb{#x10000} to \verb{#x10FFFF}
 
 Any characters not included in this list will be rejected. For more
 information, see the \href{http://www.w3.org/TR/REC-xml/#charsets}{W3C specification for characters}.
 
-If you don\'t specify the \code{DelaySeconds} parameter for an entry, Amazon
+If you don't specify the \code{DelaySeconds} parameter for an entry, Amazon
 SQS uses the default value for the queue.
 
 Some actions take lists of parameters. These lists are specified using

@@ -17,7 +17,7 @@ Disables the integration of an AWS service (the service that is
 specified by \code{ServicePrincipal}) with AWS Organizations. When you
 disable integration, the specified service no longer can create a
 \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{service-linked role}
-in \emph{new} accounts in your organization. This means the service can\'t
+in \emph{new} accounts in your organization. This means the service can't
 perform operations on your behalf on any new accounts in your
 organization. The service can still perform operations in older accounts
 until the service completes its clean-up from AWS Organizations.
@@ -28,20 +28,20 @@ the specified AWS service by using the console or commands that are
 provided by the specified service. Doing so ensures that the other
 service is aware that it can clean up any resources that are required
 only for the integration. How the service cleans up its resources in the
-organization\'s accounts depends on that service. For more information,
+organization's accounts depends on that service. For more information,
 see the documentation for the other AWS service.
 
 After you perform the \code{DisableAWSServiceAccess} operation, the specified
-service can no longer perform operations in your organization\'s
-accounts unless the operations are explicitly permitted by the IAM
-policies that are attached to your roles.
+service can no longer perform operations in your organization's accounts
+unless the operations are explicitly permitted by the IAM policies that
+are attached to your roles.
 
 For more information about integrating other services with AWS
 Organizations, including the list of services that work with
 Organizations, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
 in the \emph{AWS Organizations User Guide.}
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{

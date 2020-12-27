@@ -47,7 +47,7 @@ Creates a \code{Resolver} object.
 }
 \details{
 A resolver converts incoming requests into a format that a data source
-can understand and converts the data source\'s responses into GraphQL.
+can understand and converts the data source's responses into GraphQL.
 }
 \section{Request syntax}{
 \preformatted{svc$create_resolver(

@@ -9,8 +9,8 @@ sagemaker_update_trial(TrialName, DisplayName)
 \arguments{
 \item{TrialName}{[required] The name of the trial to update.}
 
-\item{DisplayName}{The name of the trial as displayed. The name doesn\'t need to be unique.
-If \code{DisplayName} isn\'t specified, \code{TrialName} is displayed.}
+\item{DisplayName}{The name of the trial as displayed. The name doesn't need to be unique.
+If \code{DisplayName} isn't specified, \code{TrialName} is displayed.}
 }
 \description{
 Updates the display name of a trial.

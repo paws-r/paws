@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_delete_regex_pattern_set}
 \alias{waf_delete_regex_pattern_set}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_delete_regex_pattern_set(RegexPatternSetId, ChangeToken)
 }
@@ -24,8 +24,8 @@ in the developer guide.
 With the latest version, AWS WAF has a single set of endpoints for
 regional and global use.
 
-Permanently deletes a RegexPatternSet. You can\'t delete a
-\code{RegexPatternSet} if it\'s still used in any \code{RegexMatchSet} or if the
+Permanently deletes a RegexPatternSet. You can't delete a
+\code{RegexPatternSet} if it's still used in any \code{RegexMatchSet} or if the
 \code{RegexPatternSet} is not empty.
 }
 \section{Request syntax}{

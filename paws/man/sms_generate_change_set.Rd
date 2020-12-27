@@ -3,7 +3,7 @@
 \name{sms_generate_change_set}
 \alias{sms_generate_change_set}
 \title{Generates a target change set for a currently launched stack and writes
-it to an Amazon S3 object in the customerâ€™s Amazon S3 bucket}
+it to an Amazon S3 object in the customer’s Amazon S3 bucket}
 \usage{
 sms_generate_change_set(appId, changesetFormat)
 }
@@ -14,7 +14,7 @@ sms_generate_change_set(appId, changesetFormat)
 }
 \description{
 Generates a target change set for a currently launched stack and writes
-it to an Amazon S3 object in the customer's Amazon S3 bucket.
+it to an Amazon S3 object in the customer’s Amazon S3 bucket.
 }
 \section{Request syntax}{
 \preformatted{svc$generate_change_set(

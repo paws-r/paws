@@ -29,7 +29,7 @@ Constraints: Minimum 20, maximum 100.}
 response includes only records beyond the marker, up to the value
 specified by \code{MaxRecords}.}
 
-\item{Filters}{This parameter isn\'t currently supported.}
+\item{Filters}{This parameter isn't currently supported.}
 }
 \description{
 Returns a list of the source AWS Regions where the current AWS Region

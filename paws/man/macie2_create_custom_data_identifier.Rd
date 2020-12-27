@@ -17,8 +17,8 @@ contain as many as 512 characters.
 
 We strongly recommend that you avoid including any sensitive data in the
 description of a custom data identifier. Other users of your account
-might be able to see the identifier\'s description, depending on the
-actions that they\'re allowed to perform in Amazon Macie.}
+might be able to see the identifier's description, depending on the
+actions that they're allowed to perform in Amazon Macie.}
 
 \item{ignoreWords}{An array that lists specific character sequences (ignore words) to
 exclude from the results. If the text matched by the regular expression
@@ -42,8 +42,8 @@ many as 128 characters.
 
 We strongly recommend that you avoid including any sensitive data in the
 name of a custom data identifier. Other users of your account might be
-able to see the identifier\'s name, depending on the actions that
-they\'re allowed to perform in Amazon Macie.}
+able to see the identifier's name, depending on the actions that they're
+allowed to perform in Amazon Macie.}
 
 \item{regex}{The regular expression (\emph{regex}) that defines the pattern to match. The
 expression can contain as many as 512 characters.}

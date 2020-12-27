@@ -136,7 +136,7 @@ search instance can result in 5xx (internal server) errors. When you
 enable partial results, Amazon CloudSearch returns whatever results are
 available and includes the percentage of documents searched in the
 search results (percent-searched). This enables you to more gracefully
-degrade your users\' search experience. For example, rather than
+degrade your users' search experience. For example, rather than
 displaying no results, you could display the partial results and a
 message indicating that the results might be incomplete due to a
 temporary system outage.}
@@ -189,9 +189,9 @@ string. Similarly, disabling \code{prefix} disables the wildcard operator
 (\code{*}) and disabling \code{phrase} disables the ability to search for
 phrases by enclosing phrases in double quotes. Disabling precedence
 disables the ability to control order of precedence using
-parentheses. Disabling \code{near} disables the ability to use the \~
+parentheses. Disabling \code{near} disables the ability to use the ~
 operator to perform a sloppy phrase search. Disabling the \code{fuzzy}
-operator disables the ability to use the \~ operator to perform a
+operator disables the ability to use the ~ operator to perform a
 fuzzy search. \code{escape} disables the ability to use a backslash (\verb{\\\\})
 to escape special characters within the search string. Disabling
 whitespace is an advanced option that prevents the parser from
@@ -214,7 +214,7 @@ example, to boost phrase matches in the \code{title} field over the
 \code{abstract} field, you could specify:
 \verb{"phraseFields":\\\["title^3", "plot"\\\]} Valid values: The name of
 any \code{text} or \code{text-array} field and an optional numeric value
-greater than zero. Default: No fields. If you don\'t specify any
+greater than zero. Default: No fields. If you don't specify any
 fields with \code{phraseFields}, proximity scoring is disabled even if
 \code{phraseSlop} is specified. Valid for: \code{dismax}.
 \item \code{phraseSlop}: An integer value that specifies how much matches can
@@ -231,12 +231,12 @@ specify a slop of three for dismax phrase queries, you would specify
 \code{"explicitPhraseSlop":3}. Valid values: positive integers.
 Default: 0. Valid for: \code{dismax}.
 \item \code{tieBreaker}: When a term in the search string is found in a
-document\'s field, a score is calculated for that field based on how
+document's field, a score is calculated for that field based on how
 common the word is in that field compared to other documents. If the
 term occurs in multiple fields within a document, by default only
-the highest scoring field contributes to the document\'s overall
+the highest scoring field contributes to the document's overall
 score. You can specify a \code{tieBreaker} value to enable the matches in
-lower-scoring fields to contribute to the document\'s score. That
+lower-scoring fields to contribute to the document's score. That
 way, if two documents have the same max field score for a particular
 term, the score for the document that has matches in more fields
 will be higher. The formula for calculating the score with a
@@ -342,9 +342,9 @@ For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/de
 in the \emph{Amazon CloudSearch Developer Guide}.
 
 The endpoint for submitting \code{Search} requests is domain-specific. You
-submit search requests to a domain\'s search endpoint. To get the search
+submit search requests to a domain's search endpoint. To get the search
 endpoint for your domain, use the Amazon CloudSearch configuration
-service \code{DescribeDomains} action. A domain\'s endpoints are also
+service \code{DescribeDomains} action. A domain's endpoints are also
 displayed on the domain dashboard in the Amazon CloudSearch console.
 }
 \section{Request syntax}{

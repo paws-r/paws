@@ -7,14 +7,14 @@
 quicksight_delete_theme(AwsAccountId, ThemeId, VersionNumber)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme that you\'re deleting.}
+\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme that you're deleting.}
 
 \item{ThemeId}{[required] An ID for the theme that you want to delete.}
 
 \item{VersionNumber}{The version of the theme that you want to delete.
 
-\strong{Note:} If you don\'t provide a version number, you\'re using this
-call to \code{DeleteTheme} to delete all versions of the theme.}
+\strong{Note:} If you don't provide a version number, you're using this call
+to \code{DeleteTheme} to delete all versions of the theme.}
 }
 \description{
 Deletes a theme.

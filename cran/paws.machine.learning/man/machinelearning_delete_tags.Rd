@@ -15,10 +15,10 @@ machinelearning_delete_tags(TagKeys, ResourceId, ResourceType)
 }
 \description{
 Deletes the specified tags associated with an ML object. After this
-operation is complete, you can\'t recover deleted tags.
+operation is complete, you can't recover deleted tags.
 }
 \details{
-If you specify a tag that doesn\'t exist, Amazon ML ignores it.
+If you specify a tag that doesn't exist, Amazon ML ignores it.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_tags(

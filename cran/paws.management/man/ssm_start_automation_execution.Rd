@@ -17,7 +17,7 @@ ssm_start_automation_execution(DocumentName, DocumentVersion,
 parameters in the Automation document.}
 
 \item{ClientToken}{User-provided idempotency token. The token must be unique, is case
-insensitive, enforces the UUID format, and can\'t be reused.}
+insensitive, enforces the UUID format, and can't be reused.}
 
 \item{Mode}{The execution mode of the automation. Valid modes include the following:
 Auto and Interactive. The default mode is Auto.}
@@ -47,7 +47,7 @@ on additional targets when the sixth error is received.
 
 Executions that are already running an automation when max-errors is
 reached are allowed to complete, but some of these executions may fail
-as well. If you need to ensure that there won\'t be more than max-errors
+as well. If you need to ensure that there won't be more than max-errors
 failed executions, set max-concurrency to 1 so the executions proceed
 one at a time.}
 

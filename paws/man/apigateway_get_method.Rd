@@ -11,7 +11,7 @@ apigateway_get_method(restApiId, resourceId, httpMethod)
 
 \item{resourceId}{[required] [Required] The Resource identifier for the Method resource.}
 
-\item{httpMethod}{[required] [Required] Specifies the method request\'s HTTP method type.}
+\item{httpMethod}{[required] [Required] Specifies the method request's HTTP method type.}
 }
 \description{
 Describe an existing Method resource.

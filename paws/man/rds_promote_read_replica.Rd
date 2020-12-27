@@ -26,7 +26,7 @@ Default: 1
 Constraints:
 \itemize{
 \item Must be a value from 0 to 35.
-\item Can\'t be set to 0 if the DB instance is a source to read replicas.
+\item Can't be set to 0 if the DB instance is a source to read replicas.
 }}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
@@ -59,7 +59,7 @@ addition, a read replica cannot be promoted to a standalone instance
 when it is in the \code{backing-up} status. If you have enabled backups
 on your read replica, configure the automated backup window so that
 daily backups do not interfere with read replica promotion.
-\item This command doesn\'t apply to Aurora MySQL and Aurora PostgreSQL.
+\item This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
 }
 }
 \section{Request syntax}{

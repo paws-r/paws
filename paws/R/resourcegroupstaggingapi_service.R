@@ -11,9 +11,9 @@ NULL
 #' 
 #' A tag is a label that you assign to an AWS resource. A tag consists of a
 #' key and a value, both of which you define. For example, if you have two
-#' Amazon EC2 instances, you might assign both a tag key of \"Stack.\" But
-#' the value of \"Stack\" might be \"Testing\" for one and \"Production\"
-#' for the other.
+#' Amazon EC2 instances, you might assign both a tag key of "Stack." But
+#' the value of "Stack" might be "Testing" for one and "Production" for the
+#' other.
 #' 
 #' Tagging can help you organize your resources and enables you to simplify
 #' resource management, access management and cost allocation.
@@ -46,7 +46,7 @@ NULL
 #' 
 #' -   `tag:GetTagValues`
 #' 
-#' You\'ll also need permissions to access the resources of individual
+#' You'll also need permissions to access the resources of individual
 #' services so that you can tag and untag those resources.
 #' 
 #' For more information on IAM policies, see [Managing IAM

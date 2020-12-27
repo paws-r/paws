@@ -9,7 +9,7 @@ guardduty_accept_invitation(DetectorId, MasterId, InvitationId)
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 
-\item{MasterId}{[required] The account ID of the master GuardDuty account whose invitation you\'re
+\item{MasterId}{[required] The account ID of the master GuardDuty account whose invitation you're
 accepting.}
 
 \item{InvitationId}{[required] The value that is used to validate the master account to the member

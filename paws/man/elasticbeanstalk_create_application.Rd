@@ -19,7 +19,7 @@ your application from accumulating too many versions.}
 \item{Tags}{Specifies the tags applied to the application.
 
 Elastic Beanstalk applies these tags only to the application.
-Environments that you create in the application don\'t inherit the tags.}
+Environments that you create in the application don't inherit the tags.}
 }
 \description{
 Creates an application that has one configuration template named

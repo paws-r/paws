@@ -22,7 +22,7 @@ metric alarms or composite alarms. If you omit this parameter, only
 metric alarms are returned.}
 
 \item{ChildrenOfAlarmName}{If you use this parameter and specify the name of a composite alarm, the
-operation returns information about the \"children\" alarms of the alarm
+operation returns information about the "children" alarms of the alarm
 you specify. These are the metric alarms and composite alarms referenced
 in the \code{AlarmRule} field of the composite alarm that you specify in
 \code{ChildrenOfAlarmName}. Information about the composite alarm that you
@@ -40,7 +40,7 @@ complete information about these alarms, perform another
 \code{AlarmNames} parameter.}
 
 \item{ParentsOfAlarmName}{If you use this parameter and specify the name of a metric or composite
-alarm, the operation returns information about the \"parent\" alarms of
+alarm, the operation returns information about the "parent" alarms of
 the alarm you specify. These are the composite alarms that have
 \code{AlarmRule} parameters that reference the alarm named in
 \code{ParentsOfAlarmName}. Information about the alarm that you specify in

@@ -12,16 +12,16 @@ You can get the ID from the ListPolicies or ListPoliciesForTarget
 operations.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
-string requires \"p-\" followed by from 8 to 128 lowercase or uppercase
+string requires "p-" followed by from 8 to 128 lowercase or uppercase
 letters, digits, or the underscore character (\\_).}
 }
 \description{
 Retrieves information about a policy.
 }
 \details{
-This operation can be called only from the organization\'s master
-account or by a member account that is a delegated administrator for an
-AWS service.
+This operation can be called only from the organization's master account
+or by a member account that is a delegated administrator for an AWS
+service.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_policy(

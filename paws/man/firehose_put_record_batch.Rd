@@ -48,7 +48,7 @@ The PutRecordBatch response includes a count of failed records,
 \code{FailedPutCount}, and an array of responses, \code{RequestResponses}. Even if
 the PutRecordBatch call succeeds, the value of \code{FailedPutCount} may be
 greater than 0, indicating that there are records for which the
-operation didn\'t succeed. Each entry in the \code{RequestResponses} array
+operation didn't succeed. Each entry in the \code{RequestResponses} array
 provides additional information about the processed record. It directly
 correlates with a record in the request array using the same ordering,
 from the top to the bottom. The response array always includes the same
@@ -80,7 +80,7 @@ the time they are added to a delivery stream as it attempts to send the
 records to the destination. If the destination is unreachable for more
 than 24 hours, the data is no longer available.
 
-Don\'t concatenate two or more base64 strings to form the data fields of
+Don't concatenate two or more base64 strings to form the data fields of
 your records. Instead, concatenate the raw data, then perform base64
 encoding.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/clouddirectory_operations.R
 \name{clouddirectory_update_link_attributes}
 \alias{clouddirectory_update_link_attributes}
-\title{Updates a given typed linkâ€™s attributes}
+\title{Updates a given typed link’s attributes}
 \usage{
 clouddirectory_update_link_attributes(DirectoryArn, TypedLinkSpecifier,
   AttributeUpdates)
@@ -17,8 +17,8 @@ where the updated typed link resides. For more information, see arns or
 \item{AttributeUpdates}{[required] The attributes update structure.}
 }
 \description{
-Updates a given typed link's attributes. Attributes to be updated must
-not contribute to the typed link's identity, as defined by its
+Updates a given typed link’s attributes. Attributes to be updated must
+not contribute to the typed link’s identity, as defined by its
 \code{IdentityAttributeOrder}.
 }
 \section{Request syntax}{

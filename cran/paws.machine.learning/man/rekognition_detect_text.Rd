@@ -9,7 +9,7 @@ rekognition_detect_text(Image, Filters)
 }
 \arguments{
 \item{Image}{[required] The input image as base64-encoded bytes or an Amazon S3 object. If you
-use the AWS CLI to call Amazon Rekognition operations, you can\'t pass
+use the AWS CLI to call Amazon Rekognition operations, you can't pass
 image bytes.
 
 If you are using an AWS SDK to call Amazon Rekognition, you might not
@@ -38,13 +38,13 @@ image.
 A word is one or more ISO basic latin script characters that are not
 separated by spaces. \code{DetectText} can detect up to 50 words in an image.
 
-A line is a string of equally spaced words. A line isn\'t necessarily a
-complete sentence. For example, a driver\'s license number is detected
-as a line. A line ends when there is no aligned text after it. Also, a
-line ends when there is a large gap between words, relative to the
-length of the words. This means, depending on the gap between words,
-Amazon Rekognition may detect multiple lines in text aligned in the same
-direction. Periods don\'t represent the end of a line. If a sentence
+A line is a string of equally spaced words. A line isn't necessarily a
+complete sentence. For example, a driver's license number is detected as
+a line. A line ends when there is no aligned text after it. Also, a line
+ends when there is a large gap between words, relative to the length of
+the words. This means, depending on the gap between words, Amazon
+Rekognition may detect multiple lines in text aligned in the same
+direction. Periods don't represent the end of a line. If a sentence
 spans multiple lines, the \code{DetectText} operation returns multiple lines.
 
 To determine whether a \code{TextDetection} element is a line of text or a

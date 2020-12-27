@@ -10,12 +10,12 @@ s3_put_bucket_versioning(Bucket, ContentMD5, MFA,
 \arguments{
 \item{Bucket}{[required] The bucket name.}
 
-\item{ContentMD5}{\\>The base64-encoded 128-bit MD5 digest of the data. You must use this
+\item{ContentMD5}{>The base64-encoded 128-bit MD5 digest of the data. You must use this
 header as a message integrity check to verify that the request body was
 not corrupted in transit. For more information, see \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.}
 
-\item{MFA}{The concatenation of the authentication device\'s serial number, a
-space, and the value that is displayed on your authentication device.}
+\item{MFA}{The concatenation of the authentication device's serial number, a space,
+and the value that is displayed on your authentication device.}
 
 \item{VersioningConfiguration}{[required] Container for setting the versioning state.}
 }
@@ -26,10 +26,10 @@ state, you must be the bucket owner.
 \details{
 You can set the versioning state with one of the following values:
 
-\strong{Enabled}---Enables versioning for the objects in the bucket. All
+\strong{Enabled}—Enables versioning for the objects in the bucket. All
 objects added to the bucket receive a unique version ID.
 
-\strong{Suspended}---Disables versioning for the objects in the bucket. All
+\strong{Suspended}—Disables versioning for the objects in the bucket. All
 objects added to the bucket receive the version ID null.
 
 If the versioning state has never been set on a bucket, it has no

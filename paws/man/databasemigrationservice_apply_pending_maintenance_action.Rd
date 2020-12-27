@@ -15,7 +15,7 @@ maintenance action applies to.}
 \item{ApplyAction}{[required] The pending maintenance action to apply to this resource.}
 
 \item{OptInType}{[required] A value that specifies the type of opt-in request, or undoes an opt-in
-request. You can\'t undo an opt-in request of type \code{immediate}.
+request. You can't undo an opt-in request of type \code{immediate}.
 
 Valid values:
 \itemize{

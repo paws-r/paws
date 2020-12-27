@@ -24,11 +24,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{S3ExportLocation}{[required] Information about the destination Amazon S3 bucket. The bucket must
 exist and grant WRITE and READ\\_ACP permissions to the AWS account
-vm-import-export\\@amazon.com.}
+vm-import-export@amazon.com.}
 
 \item{RoleName}{The name of the role that grants VM Import/Export permission to export
 images to your Amazon S3 bucket. If this parameter is not specified, the
-default role is named \'vmimport\'.}
+default role is named 'vmimport'.}
 
 \item{TagSpecifications}{The tags to apply to the image being exported.}
 }

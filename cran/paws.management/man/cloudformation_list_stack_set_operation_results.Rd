@@ -13,12 +13,12 @@ results for.}
 
 \item{OperationId}{[required] The ID of the stack set operation.}
 
-\item{NextToken}{If the previous request didn\'t return all of the remaining results, the
-response object\'s \code{NextToken} parameter value is set to a token. To
+\item{NextToken}{If the previous request didn't return all of the remaining results, the
+response object's \code{NextToken} parameter value is set to a token. To
 retrieve the next set of results, call \code{ListStackSetOperationResults}
-again and assign that token to the request object\'s \code{NextToken}
+again and assign that token to the request object's \code{NextToken}
 parameter. If there are no remaining results, the previous response
-object\'s \code{NextToken} parameter is set to \code{null}.}
+object's \code{NextToken} parameter is set to \code{null}.}
 
 \item{MaxResults}{The maximum number of results to be returned with a single call. If the
 number of available results exceeds this maximum, the response includes

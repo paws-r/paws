@@ -47,9 +47,9 @@ The response metadata for your new virtual node contains the \code{arn} that
 is associated with the virtual node. Set this value (either the full ARN
 or the truncated resource name: for example,
 \code{mesh/default/virtualNode/simpleapp}) as the \code{APPMESH_VIRTUAL_NODE_NAME}
-environment variable for your task group\'s Envoy proxy container in
-your task definition or pod spec. This is then mapped to the \code{node.id}
-and \code{node.cluster} Envoy parameters.
+environment variable for your task group's Envoy proxy container in your
+task definition or pod spec. This is then mapped to the \code{node.id} and
+\code{node.cluster} Envoy parameters.
 
 If you require your Envoy stats or tracing to use a different name, you
 can override the \code{node.cluster} value that is set by

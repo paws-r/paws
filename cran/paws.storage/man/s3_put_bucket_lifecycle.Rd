@@ -53,12 +53,12 @@ STANDARD\\_IA or ONEZONE\\_IA, see \href{https://docs.aws.amazon.com/AmazonS3/la
 \item GetBucketLifecycle(Deprecated)
 \item GetBucketLifecycleConfiguration
 \item 
-\itemize{
-\item By default, a resource owner---in this case, a bucket owner,
-which is the AWS account that created the bucket---can perform any
-of the operations. A resource owner can also grant others permission
-to perform the operation. For more information, see the following
+\item By default, a resource owner—in this case, a bucket owner, which is
+the AWS account that created the bucket—can perform any of the
+operations. A resource owner can also grant others permission to
+perform the operation. For more information, see the following
 topics in the Amazon Simple Storage Service Developer Guide:
+\itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html}{Specifying Permissions in a Policy}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
 }

@@ -18,7 +18,7 @@ certificate in the case of a root CA, or it may be signed by another CA
 that you control.}
 
 \item{CertificateChain}{A PEM-encoded file that contains all of your certificates, other than
-the certificate you\'re importing, chaining up to your root CA. Your ACM
+the certificate you're importing, chaining up to your root CA. Your ACM
 Private CA-hosted or on-premises root certificate is the last in the
 chain, and each certificate in the chain signs the one preceding.
 

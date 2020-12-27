@@ -582,9 +582,9 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #' is associated with the virtual node. Set this value (either the full ARN
 #' or the truncated resource name: for example,
 #' `mesh/default/virtualNode/simpleapp`) as the `APPMESH_VIRTUAL_NODE_NAME`
-#' environment variable for your task group\'s Envoy proxy container in
-#' your task definition or pod spec. This is then mapped to the `node.id`
-#' and `node.cluster` Envoy parameters.
+#' environment variable for your task group's Envoy proxy container in your
+#' task definition or pod spec. This is then mapped to the `node.id` and
+#' `node.cluster` Envoy parameters.
 #' 
 #' If you require your Envoy stats or tracing to use a different name, you
 #' can override the `node.cluster` value that is set by
@@ -964,7 +964,7 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #' @param gatewayRouteName &#91;required&#93; The name of the gateway route to delete.
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the gateway route from.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1049,7 +1049,7 @@ appmesh_delete_mesh <- function(meshName) {
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the route in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1096,7 +1096,7 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual gateway from.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1143,7 +1143,7 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual node in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1190,7 +1190,7 @@ appmesh_delete_virtual_node <- function(meshName, meshOwner = NULL, virtualNodeN
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual router in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1234,7 +1234,7 @@ appmesh_delete_virtual_router <- function(meshName, meshOwner = NULL, virtualRou
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual service in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1280,7 +1280,7 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #' @param gatewayRouteName &#91;required&#93; The name of the gateway route to describe.
 #' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1326,7 +1326,7 @@ appmesh_describe_gateway_route <- function(gatewayRouteName, meshName, meshOwner
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to describe.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1369,7 +1369,7 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the route resides in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1416,7 +1416,7 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1460,7 +1460,7 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual node resides in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1504,7 +1504,7 @@ appmesh_describe_virtual_node <- function(meshName, meshOwner = NULL, virtualNod
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual router resides in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1549,7 +1549,7 @@ appmesh_describe_virtual_router <- function(meshName, meshOwner = NULL, virtualR
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual service resides in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1599,12 +1599,12 @@ appmesh_describe_virtual_service <- function(meshName, meshOwner = NULL, virtual
 #' returns only `limit` results in a single page along with a `nextToken`
 #' response element. You can see the remaining results of the initial
 #' request by sending another `ListGatewayRoutes` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If you don\'t
-#' use this parameter, `ListGatewayRoutes` returns up to 100 results and a
+#' `nextToken` value. This value can be between 1 and 100. If you don't use
+#' this parameter, `ListGatewayRoutes` returns up to 100 results and a
 #' `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list gateway routes in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1657,7 +1657,7 @@ appmesh_list_gateway_routes <- function(limit = NULL, meshName, meshOwner = NULL
 #' results in a single page along with a `nextToken` response element. You
 #' can see the remaining results of the initial request by sending another
 #' `ListMeshes` request with the returned `nextToken` value. This value can
-#' be between 1 and 100. If you don\'t use this parameter, `ListMeshes`
+#' be between 1 and 100. If you don't use this parameter, `ListMeshes`
 #' returns up to 100 results and a `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated `ListMeshes`
 #' request where `limit` was used and the results exceeded the value of
@@ -1709,11 +1709,11 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 #' results in a single page along with a `nextToken` response element. You
 #' can see the remaining results of the initial request by sending another
 #' `ListRoutes` request with the returned `nextToken` value. This value can
-#' be between 1 and 100. If you don\'t use this parameter, `ListRoutes`
+#' be between 1 and 100. If you don't use this parameter, `ListRoutes`
 #' returns up to 100 results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list routes in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1767,7 +1767,7 @@ appmesh_list_routes <- function(limit = NULL, meshName, meshOwner = NULL, nextTo
 #' response element. You can see the remaining results of the initial
 #' request by sending another `ListTagsForResource` request with the
 #' returned `nextToken` value. This value can be between 1 and 100. If you
-#' don\'t use this parameter, `ListTagsForResource` returns up to 100
+#' don't use this parameter, `ListTagsForResource` returns up to 100
 #' results and a `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `ListTagsForResource` request where `limit` was used and the results
@@ -1818,11 +1818,11 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
 #' response element. You can see the remaining results of the initial
 #' request by sending another `ListVirtualGateways` request with the
 #' returned `nextToken` value. This value can be between 1 and 100. If you
-#' don\'t use this parameter, `ListVirtualGateways` returns up to 100
+#' don't use this parameter, `ListVirtualGateways` returns up to 100
 #' results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual gateways in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1873,12 +1873,12 @@ appmesh_list_virtual_gateways <- function(limit = NULL, meshName, meshOwner = NU
 #' returns only `limit` results in a single page along with a `nextToken`
 #' response element. You can see the remaining results of the initial
 #' request by sending another `ListVirtualNodes` request with the returned
-#' `nextToken` value. This value can be between 1 and 100. If you don\'t
-#' use this parameter, `ListVirtualNodes` returns up to 100 results and a
+#' `nextToken` value. This value can be between 1 and 100. If you don't use
+#' this parameter, `ListVirtualNodes` returns up to 100 results and a
 #' `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual nodes in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1930,11 +1930,11 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, meshOwner = NULL,
 #' response element. You can see the remaining results of the initial
 #' request by sending another `ListVirtualRouters` request with the
 #' returned `nextToken` value. This value can be between 1 and 100. If you
-#' don\'t use this parameter, `ListVirtualRouters` returns up to 100
-#' results and a `nextToken` value if applicable.
+#' don't use this parameter, `ListVirtualRouters` returns up to 100 results
+#' and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual routers in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -1986,11 +1986,11 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, meshOwner = NUL
 #' response element. You can see the remaining results of the initial
 #' request by sending another `ListVirtualServices` request with the
 #' returned `nextToken` value. This value can be between 1 and 100. If you
-#' don\'t use this parameter, `ListVirtualServices` returns up to 100
+#' don't use this parameter, `ListVirtualServices` returns up to 100
 #' results and a `nextToken` value if applicable.
 #' @param meshName &#91;required&#93; The name of the service mesh to list virtual services in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -2033,9 +2033,9 @@ appmesh_list_virtual_services <- function(limit = NULL, meshName, meshOwner = NU
 #' resourceArn
 #'
 #' Associates the specified tags to a resource with the specified
-#' `resourceArn`. If existing tags on a resource aren\'t specified in the
-#' request parameters, they aren\'t changed. When a resource is deleted,
-#' the tags associated with that resource are also deleted.
+#' `resourceArn`. If existing tags on a resource aren't specified in the
+#' request parameters, they aren't changed. When a resource is deleted, the
+#' tags associated with that resource are also deleted.
 #'
 #' @usage
 #' appmesh_tag_resource(resourceArn, tags)
@@ -2134,7 +2134,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #' @param gatewayRouteName &#91;required&#93; The name of the gateway route to update.
 #' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -2273,7 +2273,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the route resides in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -2508,7 +2508,7 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual gateway resides in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -2619,7 +2619,7 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual node resides in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -2810,7 +2810,7 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual router resides in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
@@ -2871,7 +2871,7 @@ appmesh_update_virtual_router <- function(clientToken = NULL, meshName, meshOwne
 #' underscores are allowed.
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual service resides in.
 #' @param meshOwner The AWS IAM account ID of the service mesh owner. If the account ID is
-#' not your own, then it\'s the ID of the account that shared the mesh with
+#' not your own, then it's the ID of the account that shared the mesh with
 #' your account. For more information about mesh sharing, see [Working with
 #' shared
 #' meshes](https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).

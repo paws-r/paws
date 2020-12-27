@@ -12,7 +12,7 @@ iotsitewise_describe_asset_property(assetId, propertyId)
 \item{propertyId}{[required] The ID of the asset property.}
 }
 \description{
-Retrieves information about an asset\'s property.
+Retrieves information about an asset's property.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_asset_property(

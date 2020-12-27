@@ -19,8 +19,8 @@ edge-optimized endpoint for this domain name.}
 edge-optimized endpoint for this domain name provided by your
 certificate authority.}
 
-\item{certificatePrivateKey}{[Deprecated] Your edge-optimized endpoint\'s domain name
-certificate\'s private key.}
+\item{certificatePrivateKey}{[Deprecated] Your edge-optimized endpoint's domain name certificate's
+private key.}
 
 \item{certificateChain}{[Deprecated] The intermediate certificates and optionally the root
 certificate, one after the other without any blank lines, used by an

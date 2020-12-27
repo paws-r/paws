@@ -17,7 +17,7 @@ remove from the project.}
 Removes a user from a project. Removing a user from a project also
 removes the IAM policies from that user that allowed access to the
 project and its resources. Disassociating a team member does not remove
-that user\'s profile from AWS CodeStar. It does not remove the user from
+that user's profile from AWS CodeStar. It does not remove the user from
 IAM.
 }
 \section{Request syntax}{

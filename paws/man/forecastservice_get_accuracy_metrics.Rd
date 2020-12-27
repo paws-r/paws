@@ -21,7 +21,7 @@ This operation generates metrics for each backtest window that was
 evaluated. The number of backtest windows (\code{NumberOfBacktestWindows}) is
 specified using the EvaluationParameters object, which is optionally
 included in the \code{CreatePredictor} request. If \code{NumberOfBacktestWindows}
-isn\'t specified, the number defaults to one.
+isn't specified, the number defaults to one.
 
 The parameters of the \code{filling} method determine which items contribute
 to the metrics. If you want all items to contribute, specify \code{zero}. If

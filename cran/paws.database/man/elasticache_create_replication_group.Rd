@@ -62,7 +62,7 @@ to a value between 2 and 6.
 The maximum permitted value for \code{NumCacheClusters} is 6 (1 primary plus
 5 replicas).}
 
-\item{PreferredCacheClusterAZs}{A list of EC2 Availability Zones in which the replication group\'s
+\item{PreferredCacheClusterAZs}{A list of EC2 Availability Zones in which the replication group's
 clusters are created. The order of the Availability Zones in the list is
 the order in which clusters are allocated. The primary cluster is
 created in the first AZ in the list.
@@ -93,7 +93,7 @@ node group (shard). Valid values are 0 to 5.}
 \code{PrimaryAvailabilityZone}, \code{ReplicaAvailabilityZones}, \code{ReplicaCount},
 and \code{Slots}.
 
-If you\'re creating a Redis (cluster mode disabled) or a Redis (cluster
+If you're creating a Redis (cluster mode disabled) or a Redis (cluster
 mode enabled) replication group, you can use this parameter to
 individually configure each node group (shard), or you can omit this
 parameter. However, it is required when seeding a Redis (cluster mode
@@ -206,7 +206,7 @@ you specify the parameter group by name.
 
 \item{CacheSubnetGroupName}{The name of the cache subnet group to be used for the replication group.
 
-If you\'re going to launch your cluster in an Amazon VPC, you need to
+If you're going to launch your cluster in an Amazon VPC, you need to
 create a subnet group before you start creating a cluster. For more
 information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html}{Subnets and Subnet Groups}.}
 
@@ -301,8 +301,8 @@ Password constraints:
 \item Must be only printable ASCII characters.
 \item Must be at least 16 characters and no more than 128 characters in
 length.
-\item The only permitted printable special characters are !, &, \\#, \\$,
-\\^, \\<, \\>, and -. Other printable special characters cannot be used
+\item The only permitted printable special characters are !, &, \\#, $, ^,
+<, >, and -. Other printable special characters cannot be used
 in the AUTH token.
 }
 
@@ -368,7 +368,7 @@ When a Redis (cluster mode disabled) replication group has been
 successfully created, you can add one or more read replicas to it, up to
 a total of 5 read replicas. If you need to increase or decrease the
 number of node groups (console: shards), you can avail yourself of
-ElastiCache for Redis\' scaling. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.html}{Scaling ElastiCache for Redis Clusters}
+ElastiCache for Redis' scaling. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.html}{Scaling ElastiCache for Redis Clusters}
 in the \emph{ElastiCache User Guide}.
 
 This operation is valid for Redis only.

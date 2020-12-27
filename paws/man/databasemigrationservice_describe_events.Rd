@@ -13,7 +13,7 @@ databasemigrationservice_describe_events(SourceIdentifier, SourceType,
 
 \item{SourceType}{The type of AWS DMS resource that generates events.
 
-Valid values: replication-instance \\| replication-task}
+Valid values: replication-instance | replication-task}
 
 \item{StartTime}{The start time for the events to be listed.}
 
@@ -21,7 +21,7 @@ Valid values: replication-instance \\| replication-task}
 
 \item{Duration}{The duration of the events to be listed.}
 
-\item{EventCategories}{A list of event categories for the source type that you\'ve chosen.}
+\item{EventCategories}{A list of event categories for the source type that you've chosen.}
 
 \item{Filters}{Filters applied to the action.}
 

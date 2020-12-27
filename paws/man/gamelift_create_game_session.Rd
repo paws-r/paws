@@ -36,13 +36,13 @@ have.}
 \item{GameSessionId}{\emph{This parameter is no longer preferred. Please use \code{IdempotencyToken}
 instead.} Custom string that uniquely identifies a request for a new
 game session. Maximum token length is 48 characters. If provided, this
-string is included in the new game session\'s ID. (A game session ARN
-has the following format:
+string is included in the new game session's ID. (A game session ARN has
+the following format:
 \verb{arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;}.)}
 
 \item{IdempotencyToken}{Custom string that uniquely identifies a request for a new game session.
 Maximum token length is 48 characters. If provided, this string is
-included in the new game session\'s ID. (A game session ARN has the
+included in the new game session's ID. (A game session ARN has the
 following format:
 \verb{arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;}.)
 Idempotency tokens remain in use for 30 days after a game session has
@@ -80,7 +80,7 @@ evaluate the policy for this new game session request.
 
 \strong{Player acceptance policy.} By default, newly created game sessions
 are open to new players. You can restrict new player access by using
-UpdateGameSession to change the game session\'s player session creation
+UpdateGameSession to change the game session's player session creation
 policy.
 
 \strong{Game session logs.} Logs are retained for all active game sessions

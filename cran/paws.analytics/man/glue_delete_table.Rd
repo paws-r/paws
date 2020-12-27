@@ -22,8 +22,8 @@ Removes a table definition from the Data Catalog.
 \details{
 After completing this operation, you no longer have access to the table
 versions and partitions that belong to the deleted table. AWS Glue
-deletes these \"orphaned\" resources asynchronously in a timely manner,
-at the discretion of the service.
+deletes these "orphaned" resources asynchronously in a timely manner, at
+the discretion of the service.
 
 To ensure the immediate deletion of all related resources, before
 calling \code{DeleteTable}, use \code{DeleteTableVersion} or

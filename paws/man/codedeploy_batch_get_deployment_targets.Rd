@@ -35,7 +35,7 @@ the deprecated \code{BatchGetDeploymentInstances}. The maximum number of
 targets that can be returned is 25.
 }
 \details{
-The type of targets returned depends on the deployment\'s compute
+The type of targets returned depends on the deployment's compute
 platform or deployment method:
 \itemize{
 \item \strong{EC2/On-premises}: Information about EC2 instance targets.

@@ -10,7 +10,7 @@ ec2_describe_vpcs(Filters, VpcIds, DryRun, NextToken, MaxResults)
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{cidr} - The primary IPv4 CIDR block of the VPC. The CIDR block you
-specify must exactly match the VPC\'s CIDR block for information to
+specify must exactly match the VPC's CIDR block for information to
 be returned for the VPC. Must contain the slash followed by one or
 two digits (for example, \verb{/28}).
 \item \code{cidr-block-association.cidr-block} - An IPv4 CIDR block associated
@@ -30,12 +30,12 @@ for an IPv6 CIDR block associated with the VPC.
 block associated with the VPC.
 \item \code{isDefault} - Indicates whether the VPC is the default VPC.
 \item \code{owner-id} - The ID of the AWS account that owns the VPC.
-\item \code{state} - The state of the VPC (\code{pending} \\| \code{available}).
-\item \code{tag}:\\<key\\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
+\item \code{state} - The state of the VPC (\code{pending} | \code{available}).
+\item \code{tag}:<key> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value
+as the filter value. For example, to find all resources that have a
+tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
+for the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.

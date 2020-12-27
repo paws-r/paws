@@ -210,8 +210,8 @@ glue_batch_delete_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #' 
 #' After completing this operation, you no longer have access to the table
 #' versions and partitions that belong to the deleted table. AWS Glue
-#' deletes these \"orphaned\" resources asynchronously in a timely manner,
-#' at the discretion of the service.
+#' deletes these "orphaned" resources asynchronously in a timely manner, at
+#' the discretion of the service.
 #' 
 #' To ensure the immediate deletion of all related resources, before
 #' calling `BatchDeleteTable`, use `DeleteTableVersion` or
@@ -449,7 +449,7 @@ glue_batch_get_jobs <- function(JobNames) {
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the AWS account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
-#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param PartitionsToGet &#91;required&#93; A list of partition values identifying the partitions to retrieve.
 #'
 #' @section Request syntax:
@@ -623,8 +623,8 @@ glue_batch_stop_job_run <- function(JobName, JobRunIds) {
 #' Cancels (stops) a task run. Machine learning task runs are asynchronous
 #' tasks that AWS Glue runs on your behalf as part of various machine
 #' learning workflows. You can cancel a machine learning task run at any
-#' time by calling `CancelMLTaskRun` with a task run\'s parent transform\'s
-#' `TransformID` and the task run\'s `TaskRunId`.
+#' time by calling `CancelMLTaskRun` with a task run's parent transform's
+#' `TransformID` and the task run's `TaskRunId`.
 #'
 #' @usage
 #' glue_cancel_ml_task_run(TransformId, TaskRunId)
@@ -662,7 +662,7 @@ glue_cancel_ml_task_run <- function(TransformId, TaskRunId) {
 
 #' Creates a classifier in the user's account
 #'
-#' Creates a classifier in the user\'s account. This can be a
+#' Creates a classifier in the user's account. This can be a
 #' `GrokClassifier`, an `XMLClassifier`, a `JsonClassifier`, or a
 #' `CsvClassifier`, depending on which field of the request is present.
 #'
@@ -813,9 +813,9 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #' classifiers always override the default classifiers for a given
 #' classification.
 #' @param TablePrefix The table prefix used for catalog tables that are created.
-#' @param SchemaChangePolicy The policy for the crawler\'s update and deletion behavior.
+#' @param SchemaChangePolicy The policy for the crawler's update and deletion behavior.
 #' @param Configuration Crawler configuration information. This versioned JSON string allows
-#' users to specify aspects of a crawler\'s behavior. For more information,
+#' users to specify aspects of a crawler's behavior. For more information,
 #' see [Configuring a
 #' Crawler](https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
 #' @param CrawlerSecurityConfiguration The name of the `SecurityConfiguration` structure to be used by this
@@ -1159,13 +1159,13 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' are running a Python shell job or an Apache Spark ETL job:
 #' 
 #' -   When you specify a Python shell job
-#'     (`JobCommand.Name`=\"pythonshell\"), you can allocate either 0.0625
-#'     or 1 DPU. The default is 0.0625 DPU.
+#'     (`JobCommand.Name`="pythonshell"), you can allocate either 0.0625 or
+#'     1 DPU. The default is 0.0625 DPU.
 #' 
 #' -   When you specify an Apache Spark ETL job
-#'     (`JobCommand.Name`=\"glueetl\"), you can allocate from 2 to 100
-#'     DPUs. The default is 10 DPUs. This job type cannot have a fractional
-#'     DPU allocation.
+#'     (`JobCommand.Name`="glueetl"), you can allocate from 2 to 100 DPUs.
+#'     The default is 10 DPUs. This job type cannot have a fractional DPU
+#'     allocation.
 #' @param SecurityConfiguration The name of the `SecurityConfiguration` structure to be used with this
 #' job.
 #' @param Tags The tags to use with this job. You may use tags to limit access to the
@@ -2023,7 +2023,7 @@ glue_delete_classifier <- function(Name) {
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the AWS account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
-#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param PartitionValues &#91;required&#93; A list of partition values identifying the partition.
 #' @param ColumnName &#91;required&#93; Name of the column.
 #'
@@ -2071,7 +2071,7 @@ glue_delete_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the AWS account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
-#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param ColumnName &#91;required&#93; The name of the column.
 #'
 #' @section Request syntax:
@@ -2188,7 +2188,7 @@ glue_delete_crawler <- function(Name) {
 #' After completing this operation, you no longer have access to the tables
 #' (and all table versions and partitions that might belong to the tables)
 #' and the user-defined functions in the deleted database. AWS Glue deletes
-#' these \"orphaned\" resources asynchronously in a timely manner, at the
+#' these "orphaned" resources asynchronously in a timely manner, at the
 #' discretion of the service.
 #' 
 #' To ensure the immediate deletion of all related resources, before
@@ -2474,8 +2474,8 @@ glue_delete_security_configuration <- function(Name) {
 #' 
 #' After completing this operation, you no longer have access to the table
 #' versions and partitions that belong to the deleted table. AWS Glue
-#' deletes these \"orphaned\" resources asynchronously in a timely manner,
-#' at the discretion of the service.
+#' deletes these "orphaned" resources asynchronously in a timely manner, at
+#' the discretion of the service.
 #' 
 #' To ensure the immediate deletion of all related resources, before
 #' calling `DeleteTable`, use `DeleteTableVersion` or
@@ -2804,7 +2804,7 @@ glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the AWS account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
-#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param PartitionValues &#91;required&#93; A list of partition values identifying the partition.
 #' @param ColumnNames &#91;required&#93; A list of the column names.
 #'
@@ -2854,7 +2854,7 @@ glue_get_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseN
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the AWS account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
-#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param ColumnNames &#91;required&#93; A list of the column names.
 #'
 #' @section Request syntax:
@@ -3552,7 +3552,7 @@ glue_get_jobs <- function(NextToken = NULL, MaxResults = NULL) {
 #' Machine learning task runs are asynchronous tasks that AWS Glue runs on
 #' your behalf as part of various machine learning workflows. You can check
 #' the stats of any task run by calling `GetMLTaskRun` with the `TaskRunID`
-#' and its parent transform\'s `TransformID`.
+#' and its parent transform's `TransformID`.
 #'
 #' @usage
 #' glue_get_ml_task_run(TransformId, TaskRunId)
@@ -3594,7 +3594,7 @@ glue_get_ml_task_run <- function(TransformId, TaskRunId) {
 #' task runs are asynchronous tasks that AWS Glue runs on your behalf as
 #' part of various machine learning workflows. You can get a sortable,
 #' filterable list of machine learning task runs by calling `GetMLTaskRuns`
-#' with their parent transform\'s `TransformID` and other optional
+#' with their parent transform's `TransformID` and other optional
 #' parameters as documented in this section.
 #' 
 #' This operation returns a list of historic runs and must be paginated.
@@ -3850,7 +3850,7 @@ glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
 #' @param CatalogId The ID of the Data Catalog where the partition in question resides. If
 #' none is provided, the AWS account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partition resides.
-#' @param TableName &#91;required&#93; The name of the partition\'s table.
+#' @param TableName &#91;required&#93; The name of the partition's table.
 #' @param PartitionValues &#91;required&#93; The values that define the partition.
 #'
 #' @section Request syntax:
@@ -3896,13 +3896,11 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is provided, the AWS account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
-#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param Expression An expression that filters the partitions to be returned.
 #' 
 #' The expression uses SQL syntax similar to the SQL `WHERE` filter clause.
-#' The SQL statement parser
-#' [JSQLParser](http://jsqlparser.sourceforge.net/home.php) parses the
-#' expression.
+#' The SQL statement parser JSQLParser parses the expression.
 #' 
 #' *Operators*: The following are the operators that you can use in the
 #' `Expression` API call:
@@ -3912,44 +3910,44 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
 #' Checks whether the values of the two operands are equal; if yes, then
 #' the condition becomes true.
 #' 
-#' Example: Assume \'variable a\' holds 10 and \'variable b\' holds 20.
+#' Example: Assume 'variable a' holds 10 and 'variable b' holds 20.
 #' 
 #' (a = b) is not true.
 #' 
-#' ### \\< \\>
+#' ### &lt; &gt;
 #' 
 #' Checks whether the values of two operands are equal; if the values are
 #' not equal, then the condition becomes true.
 #' 
-#' Example: (a \\< \\> b) is true.
+#' Example: (a &lt; &gt; b) is true.
 #' 
-#' ### \\>
+#' ### &gt;
 #' 
 #' Checks whether the value of the left operand is greater than the value
 #' of the right operand; if yes, then the condition becomes true.
 #' 
-#' Example: (a \\> b) is not true.
+#' Example: (a &gt; b) is not true.
 #' 
-#' ### \\<
+#' ### &lt;
 #' 
 #' Checks whether the value of the left operand is less than the value of
 #' the right operand; if yes, then the condition becomes true.
 #' 
-#' Example: (a \\< b) is true.
+#' Example: (a &lt; b) is true.
 #' 
-#' ### \\>=
+#' ### &gt;=
 #' 
 #' Checks whether the value of the left operand is greater than or equal to
 #' the value of the right operand; if yes, then the condition becomes true.
 #' 
-#' Example: (a \\>= b) is not true.
+#' Example: (a &gt;= b) is not true.
 #' 
-#' ### \\<=
+#' ### &lt;=
 #' 
 #' Checks whether the value of the left operand is less than or equal to
 #' the value of the right operand; if yes, then the condition becomes true.
 #' 
-#' Example: (a \\<= b) is true.
+#' Example: (a &lt;= b) is true.
 #' 
 #' ### AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL
 #' 
@@ -3985,7 +3983,7 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
 #' *Sample API Call*:
 #' @param NextToken A continuation token, if this is not the first call to retrieve these
 #' partitions.
-#' @param Segment The segment of the table\'s partitions to scan in this request.
+#' @param Segment The segment of the table's partitions to scan in this request.
 #' @param MaxResults The maximum number of partitions to return in a single response.
 #'
 #' @section Request syntax:
@@ -5590,10 +5588,10 @@ glue_start_export_labels_task_run <- function(TransformId, OutputS3Path) {
 #' 
 #' After the `StartMLLabelingSetGenerationTaskRun` finishes, AWS Glue
 #' machine learning will have generated a series of questions for humans to
-#' answer. (Answering these questions is often called \'labeling\' in the
+#' answer. (Answering these questions is often called 'labeling' in the
 #' machine learning workflows). In the case of the `FindMatches` transform,
-#' these questions are of the form, "What is the correct way to group these
-#' rows together into groups composed entirely of matching records?" After
+#' these questions are of the form, “What is the correct way to group these
+#' rows together into groups composed entirely of matching records?” After
 #' the labeling process is finished, users upload their answers/labels with
 #' a call to `StartImportLabelsTaskRun`. After `StartImportLabelsTaskRun`
 #' finishes, all future runs of the machine learning transform use the new
@@ -5696,13 +5694,13 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' are running a Python shell job, or an Apache Spark ETL job:
 #' 
 #' -   When you specify a Python shell job
-#'     (`JobCommand.Name`=\"pythonshell\"), you can allocate either 0.0625
-#'     or 1 DPU. The default is 0.0625 DPU.
+#'     (`JobCommand.Name`="pythonshell"), you can allocate either 0.0625 or
+#'     1 DPU. The default is 0.0625 DPU.
 #' 
 #' -   When you specify an Apache Spark ETL job
-#'     (`JobCommand.Name`=\"glueetl\"), you can allocate from 2 to 100
-#'     DPUs. The default is 10 DPUs. This job type cannot have a fractional
-#'     DPU allocation.
+#'     (`JobCommand.Name`="glueetl"), you can allocate from 2 to 100 DPUs.
+#'     The default is 10 DPUs. This job type cannot have a fractional DPU
+#'     allocation.
 #' @param SecurityConfiguration The name of the `SecurityConfiguration` structure to be used with this
 #' job run.
 #' @param NotificationProperty Specifies configuration properties of a job run notification.
@@ -5811,16 +5809,16 @@ glue_start_ml_evaluation_task_run <- function(TransformId) {
 #' labels
 #'
 #' Starts the active learning workflow for your machine learning transform
-#' to improve the transform\'s quality by generating label sets and adding
+#' to improve the transform's quality by generating label sets and adding
 #' labels.
 #' 
 #' When the `StartMLLabelingSetGenerationTaskRun` finishes, AWS Glue will
-#' have generated a \"labeling set\" or a set of questions for humans to
+#' have generated a "labeling set" or a set of questions for humans to
 #' answer.
 #' 
 #' In the case of the `FindMatches` transform, these questions are of the
-#' form, "What is the correct way to group these rows together into groups
-#' composed entirely of matching records?"
+#' form, “What is the correct way to group these rows together into groups
+#' composed entirely of matching records?”
 #' 
 #' After the labeling process is finished, you can upload your labels with
 #' a call to `StartImportLabelsTaskRun`. After `StartImportLabelsTaskRun`
@@ -6250,7 +6248,7 @@ glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the AWS account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
-#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param PartitionValues &#91;required&#93; A list of partition values identifying the partition.
 #' @param ColumnStatisticsList &#91;required&#93; A list of the column statistics.
 #'
@@ -6359,7 +6357,7 @@ glue_update_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 #' @param CatalogId The ID of the Data Catalog where the partitions in question reside. If
 #' none is supplied, the AWS account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database where the partitions reside.
-#' @param TableName &#91;required&#93; The name of the partitions\' table.
+#' @param TableName &#91;required&#93; The name of the partitions' table.
 #' @param ColumnStatisticsList &#91;required&#93; A list of the column statistics.
 #'
 #' @section Request syntax:
@@ -6538,9 +6536,9 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #' classifiers always override the default classifiers for a given
 #' classification.
 #' @param TablePrefix The table prefix used for catalog tables that are created.
-#' @param SchemaChangePolicy The policy for the crawler\'s update and deletion behavior.
+#' @param SchemaChangePolicy The policy for the crawler's update and deletion behavior.
 #' @param Configuration Crawler configuration information. This versioned JSON string allows
-#' users to specify aspects of a crawler\'s behavior. For more information,
+#' users to specify aspects of a crawler's behavior. For more information,
 #' see [Configuring a
 #' Crawler](https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
 #' @param CrawlerSecurityConfiguration The name of the `SecurityConfiguration` structure to be used by this

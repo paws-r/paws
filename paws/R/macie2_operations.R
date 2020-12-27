@@ -96,10 +96,10 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #' @param customDataIdentifierIds The custom data identifiers to use for data analysis and classification.
 #' @param description A custom description of the job. The description can contain as many as
 #' 200 characters.
-#' @param initialRun Specifies whether to run the job immediately, after it\'s created.
+#' @param initialRun Specifies whether to run the job immediately, after it's created.
 #' @param jobType &#91;required&#93; The schedule for running the job. Valid values are:
 #' 
-#' -   ONE\\_TIME - Run the job only once. If you specify this value, don\'t
+#' -   ONE\\_TIME - Run the job only once. If you specify this value, don't
 #'     specify a value for the scheduleFrequency property.
 #' 
 #' -   SCHEDULED - Run the job on a daily, weekly, or monthly basis. If you
@@ -114,8 +114,8 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #' analyzes. If the value is less than 100, Amazon Macie randomly selects
 #' the objects to analyze, up to the specified percentage.
 #' @param scheduleFrequency The recurrence pattern for running the job. To run the job only once,
-#' don\'t specify a value for this property and set the value of the
-#' jobType property to ONE\\_TIME.
+#' don't specify a value for this property and set the value of the jobType
+#' property to ONE\\_TIME.
 #' @param tags A map of key-value pairs that specifies the tags to associate with the
 #' job.
 #' 
@@ -247,8 +247,8 @@ macie2_create_classification_job <- function(clientToken, customDataIdentifierId
 #' 
 #' We strongly recommend that you avoid including any sensitive data in the
 #' description of a custom data identifier. Other users of your account
-#' might be able to see the identifier\'s description, depending on the
-#' actions that they\'re allowed to perform in Amazon Macie.
+#' might be able to see the identifier's description, depending on the
+#' actions that they're allowed to perform in Amazon Macie.
 #' @param ignoreWords An array that lists specific character sequences (ignore words) to
 #' exclude from the results. If the text matched by the regular expression
 #' is the same as any string in this array, Amazon Macie ignores it. The
@@ -268,8 +268,8 @@ macie2_create_classification_job <- function(clientToken, customDataIdentifierId
 #' 
 #' We strongly recommend that you avoid including any sensitive data in the
 #' name of a custom data identifier. Other users of your account might be
-#' able to see the identifier\'s name, depending on the actions that
-#' they\'re allowed to perform in Amazon Macie.
+#' able to see the identifier's name, depending on the actions that they're
+#' allowed to perform in Amazon Macie.
 #' @param regex The regular expression (*regex*) that defines the pattern to match. The
 #' expression can contain as many as 512 characters.
 #' @param tags A map of key-value pairs that specifies the tags to associate with the
@@ -332,7 +332,7 @@ macie2_create_custom_data_identifier <- function(clientToken = NULL, description
 #'
 #' @param action &#91;required&#93; The action to perform on findings that meet the filter criteria
 #' (findingCriteria). Valid values are: ARCHIVE, suppress (automatically
-#' archive) the findings; and, NOOP, don\'t perform any action on the
+#' archive) the findings; and, NOOP, don't perform any action on the
 #' findings.
 #' @param clientToken A unique, case-sensitive token that you provide to ensure the
 #' idempotency of the request.
@@ -341,7 +341,7 @@ macie2_create_custom_data_identifier <- function(clientToken = NULL, description
 #' 
 #' We strongly recommend that you avoid including any sensitive data in the
 #' description of a filter. Other users of your account might be able to
-#' see the filter\'s description, depending on the actions that they\'re
+#' see the filter's description, depending on the actions that they're
 #' allowed to perform in Amazon Macie.
 #' @param findingCriteria &#91;required&#93; The criteria to use to filter findings.
 #' @param name &#91;required&#93; A custom name for the filter. The name must contain at least 3
@@ -349,8 +349,8 @@ macie2_create_custom_data_identifier <- function(clientToken = NULL, description
 #' 
 #' We strongly recommend that you avoid including any sensitive data in the
 #' name of a filter. Other users of your account might be able to see the
-#' filter\'s name, depending on the actions that they\'re allowed to
-#' perform in Amazon Macie.
+#' filter's name, depending on the actions that they're allowed to perform
+#' in Amazon Macie.
 #' @param position The position of the filter in the list of saved filters on the Amazon
 #' Macie console. This value also determines the order in which the filter
 #' is applied to findings, relative to other filters that are also applied
@@ -1477,7 +1477,7 @@ macie2_get_master_account <- function() {
 #' Retrieves information about a member account that's associated with an
 #' Amazon Macie master account
 #'
-#' Retrieves information about a member account that\'s associated with an
+#' Retrieves information about a member account that's associated with an
 #' Amazon Macie master account.
 #'
 #' @usage
@@ -1867,7 +1867,7 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
 #' @param onlyAssociated Specifies which accounts to include in the response, based on the status
-#' of an account\'s relationship with the master account. By default, the
+#' of an account's relationship with the master account. By default, the
 #' response includes only current member accounts. To include all accounts,
 #' set the value for this parameter to false.
 #'
@@ -1903,7 +1903,7 @@ macie2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssocia
 #' Retrieves information about the account that's designated as the
 #' delegated administrator of Amazon Macie for an AWS organization
 #'
-#' Retrieves information about the account that\'s designated as the
+#' Retrieves information about the account that's designated as the
 #' delegated administrator of Amazon Macie for an AWS organization.
 #'
 #' @usage
@@ -2194,7 +2194,7 @@ macie2_untag_resource <- function(resourceArn, tagKeys) {
 #' macie2_update_classification_job(jobId, jobStatus)
 #'
 #' @param jobId &#91;required&#93; The unique identifier for the classification job.
-#' @param jobStatus &#91;required&#93; The status to change the job\'s status to. The only supported value is
+#' @param jobStatus &#91;required&#93; The status to change the job's status to. The only supported value is
 #' CANCELLED, which cancels the job completely.
 #'
 #' @section Request syntax:
@@ -2235,15 +2235,15 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
 #'
 #' @param action The action to perform on findings that meet the filter criteria
 #' (findingCriteria). Valid values are: ARCHIVE, suppress (automatically
-#' archive) the findings; and, NOOP, don\'t perform any action on the
+#' archive) the findings; and, NOOP, don't perform any action on the
 #' findings.
 #' @param description A custom description of the filter. The description can contain as many
 #' as 512 characters.
 #' 
 #' We strongly recommend that you avoid including any sensitive data in the
-#' description of a filter. Other users might be able to see the filter\'s
-#' description, depending on the actions that they\'re allowed to perform
-#' in Amazon Macie.
+#' description of a filter. Other users might be able to see the filter's
+#' description, depending on the actions that they're allowed to perform in
+#' Amazon Macie.
 #' @param findingCriteria The criteria to use to filter findings.
 #' @param id &#91;required&#93; The unique identifier for the Amazon Macie resource or account that the
 #' request applies to.
@@ -2251,8 +2251,8 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
 #' characters and can contain as many as 64 characters.
 #' 
 #' We strongly recommend that you avoid including any sensitive data in the
-#' name of a filter. Other users might be able to see the filter\'s name,
-#' depending on the actions that they\'re allowed to perform in Amazon
+#' name of a filter. Other users might be able to see the filter's name,
+#' depending on the actions that they're allowed to perform in Amazon
 #' Macie.
 #' @param position The position of the filter in the list of saved filters on the Amazon
 #' Macie console. This value also determines the order in which the filter

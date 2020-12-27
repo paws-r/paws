@@ -10,7 +10,7 @@ databasemigrationservice_describe_endpoints(Filters, MaxRecords, Marker)
 \arguments{
 \item{Filters}{Filters applied to the describe action.
 
-Valid filter names: endpoint-arn \\| endpoint-type \\| endpoint-id \\|
+Valid filter names: endpoint-arn | endpoint-type | endpoint-id |
 engine-name}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more

@@ -9,7 +9,7 @@ globalaccelerator_advertise_byoip_cidr(Cidr)
 }
 \arguments{
 \item{Cidr}{[required] The address range, in CIDR notation. This must be the exact range that
-you provisioned. You can\'t advertise only a portion of the provisioned
+you provisioned. You can't advertise only a portion of the provisioned
 range.}
 }
 \description{

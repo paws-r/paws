@@ -79,7 +79,7 @@ format. If you specify this parameter, you must specify at least one
 field.
 
 Specify the fields using the \verb{$\\\{field-id\\\}} format, separated by spaces.
-For the AWS CLI, use single quotation marks (\' \') to surround the
+For the AWS CLI, use single quotation marks (' ') to surround the
 parameter value.}
 
 \item{TagSpecifications}{The tags to apply to the flow logs.}

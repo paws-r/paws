@@ -18,7 +18,7 @@ lambda_list_layers(CompatibleRuntime, Marker, MaxItems)
 Lists \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layers}
 and shows information about the latest version of each. Specify a
 \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier}
-to list only layers that indicate that they\'re compatible with that
+to list only layers that indicate that they're compatible with that
 runtime.
 }
 \section{Request syntax}{

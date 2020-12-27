@@ -17,9 +17,9 @@ does not include dashes or spaces.}
 \item{repository}{[required] The name of the repository that is associated with the resource policy
 to be deleted}
 
-\item{policyRevision}{The revision of the repository\'s resource policy to be deleted. This
+\item{policyRevision}{The revision of the repository's resource policy to be deleted. This
 revision is used for optimistic locking, which prevents others from
-accidentally overwriting your changes to the repository\'s resource
+accidentally overwriting your changes to the repository's resource
 policy.}
 }
 \description{

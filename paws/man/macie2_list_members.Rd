@@ -15,7 +15,7 @@ response.}
 paginated response.}
 
 \item{onlyAssociated}{Specifies which accounts to include in the response, based on the status
-of an account\'s relationship with the master account. By default, the
+of an account's relationship with the master account. By default, the
 response includes only current member accounts. To include all accounts,
 set the value for this parameter to false.}
 }

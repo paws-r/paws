@@ -17,7 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Cancels the specified Capacity Reservation, releases the reserved
-capacity, and changes the Capacity Reservation\'s state to \code{cancelled}.
+capacity, and changes the Capacity Reservation's state to \code{cancelled}.
 }
 \details{
 Instances running in the reserved capacity continue running until you

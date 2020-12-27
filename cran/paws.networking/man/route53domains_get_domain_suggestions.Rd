@@ -18,7 +18,7 @@ The domain name can contain only the following characters:
 \itemize{
 \item Letters a through z. Domain names are not case sensitive.
 \item Numbers 0 through 9.
-\item Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+\item Hyphen (-). You can't specify a hyphen at the beginning or end of a
 label.
 \item Period (.) to separate the labels in the name, such as the \code{.} in
 \code{example.com}.
@@ -33,7 +33,7 @@ Specify a value between 1 and 50.}
 
 \item{OnlyAvailable}{[required] If \code{OnlyAvailable} is \code{true}, Route 53 returns only domain names that
 are available. If \code{OnlyAvailable} is \code{false}, Route 53 returns domain
-names without checking whether they\'re available to be registered. To
+names without checking whether they're available to be registered. To
 determine whether the domain is available, you can call
 \code{checkDomainAvailability} for each suggestion.}
 }

@@ -18,7 +18,7 @@ days after the value of the \code{StartDate} parameter.}
 
 \item{SubscribedDomain}{[required] The domain to obtain deliverability data for.}
 
-\item{NextToken}{A token that's returned from a previous call to the
+\item{NextToken}{A token that’s returned from a previous call to the
 \code{ListDomainDeliverabilityCampaigns} operation. This token indicates the
 position of a campaign in the list of campaigns.}
 

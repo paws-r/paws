@@ -68,7 +68,7 @@ created.}
 
 \item{platformVersion}{The platform version that the tasks in the task set should use. A
 platform version is specified only for tasks using the Fargate launch
-type. If one isn\'t specified, the \code{LATEST} platform version is used by
+type. If one isn't specified, the \code{LATEST} platform version is used by
 default.}
 
 \item{scale}{}

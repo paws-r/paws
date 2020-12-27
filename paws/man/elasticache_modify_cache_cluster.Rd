@@ -35,7 +35,7 @@ as a pending operation (see \code{ApplyImmediately}).
 A pending operation to modify the number of cache nodes in a cluster
 during its maintenance window, whether by adding or removing nodes in
 accordance with the scale out architecture, is not queued. The
-customer\'s latest request to add or remove nodes to the cluster
+customer's latest request to add or remove nodes to the cluster
 overrides any previous pending operations to modify the number of cache
 nodes in the cluster. For example, a request to remove 2 nodes would
 override a previous pending operation to remove 3 nodes. Similarly, a
@@ -66,7 +66,7 @@ you must list 2 (7 - 5) cache node IDs to remove.}
 created in a single Availability Zone or created across multiple
 Availability Zones.
 
-Valid values: \code{single-az} \\| \code{cross-az}.
+Valid values: \code{single-az} | \code{cross-az}.
 
 This option is only supported for Memcached clusters.
 
@@ -153,7 +153,7 @@ You can use this parameter only with clusters that are created outside
 of an Amazon Virtual Private Cloud (Amazon VPC).
 
 Constraints: Must contain no more than 255 alphanumeric characters. Must
-not be \"Default\".}
+not be "Default".}
 
 \item{SecurityGroupIds}{Specifies the VPC Security Groups associated with the cluster.
 
@@ -191,7 +191,7 @@ request.}
 \item{NotificationTopicStatus}{The status of the Amazon SNS notification topic. Notifications are sent
 only if the status is \code{active}.
 
-Valid values: \code{active} \\| \code{inactive}}
+Valid values: \code{active} | \code{inactive}}
 
 \item{ApplyImmediately}{If \code{true}, this parameter causes the modifications in this request and
 any pending modifications to be applied, asynchronously and as soon as
@@ -204,7 +204,7 @@ reboot, or the next failure reboot, whichever occurs first.
 If you perform a \code{ModifyCacheCluster} before a pending modification is
 applied, the pending modification is replaced by the newer modification.
 
-Valid values: \code{true} \\| \code{false}
+Valid values: \code{true} | \code{false}
 
 Default: \code{false}}
 
@@ -237,8 +237,8 @@ parameter. Password constraints:
 \item Must be only printable ASCII characters
 \item Must be at least 16 characters and no more than 128 characters in
 length
-\item Cannot contain any of the following characters: \'/\', \'\"\', or
-\'@\', \'\%\'
+\item Cannot contain any of the following characters: '/', '"', or '@',
+'\%'
 }
 
 For more information, see AUTH password at

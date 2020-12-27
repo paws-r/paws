@@ -10,7 +10,7 @@ NULL
 #' connected datasets. The core of Amazon Neptune is a purpose-built,
 #' high-performance graph database engine optimized for storing billions of
 #' relationships and querying the graph with milliseconds latency. Amazon
-#' Neptune supports popular graph models Property Graph and W3C\'s RDF, and
+#' Neptune supports popular graph models Property Graph and W3C's RDF, and
 #' their respective query languages Apache TinkerPop Gremlin and SPARQL,
 #' allowing you to easily build queries that efficiently navigate highly
 #' connected datasets. Neptune powers graph use cases such as

@@ -12,7 +12,7 @@ elasticache_create_cache_security_group(CacheSecurityGroupName,
 string.
 
 Constraints: Must contain no more than 255 alphanumeric characters.
-Cannot be the word \"Default\".
+Cannot be the word "Default".
 
 Example: \code{mysecuritygroup}}
 

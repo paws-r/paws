@@ -23,7 +23,7 @@ Performance Insights metric, and can optionally specify aggregation and
 filtering criteria.}
 
 \item{StartTime}{[required] The date and time specifying the beginning of the requested time series
-data. You can\'t specify a \code{StartTime} that\'s earlier than 7 days ago.
+data. You can't specify a \code{StartTime} that's earlier than 7 days ago.
 The value specified is \emph{inclusive} - data points equal to or greater
 than \code{StartTime} will be returned.
 
@@ -46,7 +46,7 @@ as one day (86400 seconds). Valid values are:
 \item \code{86400} (twenty-four hours)
 }
 
-If you don\'t specify \code{PeriodInSeconds}, then Performance Insights will
+If you don't specify \code{PeriodInSeconds}, then Performance Insights will
 choose a value for you, with a goal of returning roughly 100-200 data
 points in the response.}
 

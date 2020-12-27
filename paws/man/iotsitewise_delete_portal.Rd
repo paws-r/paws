@@ -10,7 +10,7 @@ iotsitewise_delete_portal(portalId, clientToken)
 \item{portalId}{[required] The ID of the portal to delete.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{

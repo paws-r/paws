@@ -10,7 +10,7 @@ s3_put_bucket_request_payment(Bucket, ContentMD5,
 \arguments{
 \item{Bucket}{[required] The bucket name.}
 
-\item{ContentMD5}{\\>The base64-encoded 128-bit MD5 digest of the data. You must use this
+\item{ContentMD5}{>The base64-encoded 128-bit MD5 digest of the data. You must use this
 header as a message integrity check to verify that the request body was
 not corrupted in transit. For more information, see \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.}
 

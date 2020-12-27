@@ -1322,10 +1322,10 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' 
 #' The following policy types are supported:
 #' 
-#' `TargetTrackingScaling`---Not supported for Amazon EMR
+#' `TargetTrackingScaling`—Not supported for Amazon EMR
 #' 
-#' `StepScaling`---Not supported for DynamoDB, Amazon Comprehend, Lambda,
-#' or Amazon Keyspaces (for Apache Cassandra).
+#' `StepScaling`—Not supported for DynamoDB, Amazon Comprehend, Lambda, or
+#' Amazon Keyspaces (for Apache Cassandra).
 #' 
 #' For more information, see [Target Tracking Scaling
 #' Policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
@@ -1449,7 +1449,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' action starts and stops.
 #' 
 #' To update a scheduled action, specify the parameters that you want to
-#' change. If you don\'t specify start and end times, the old values are
+#' change. If you don't specify start and end times, the old values are
 #' deleted.
 #' 
 #' For more information, see [Scheduled
@@ -1471,17 +1471,17 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' @param Schedule The schedule for this action. The following formats are supported:
 #' 
 #' -   At expressions -
-#'     \"`at(<i>yyyy</i>-<i>mm</i>-<i>dd</i>T<i>hh</i>:<i>mm</i>:<i>ss</i>)`\"
+#'     "`at(<i>yyyy</i>-<i>mm</i>-<i>dd</i>T<i>hh</i>:<i>mm</i>:<i>ss</i>)`"
 #' 
-#' -   Rate expressions - \"`rate(<i>value</i> <i>unit</i>)`\"
+#' -   Rate expressions - "`rate(<i>value</i> <i>unit</i>)`"
 #' 
-#' -   Cron expressions - \"`cron(<i>fields</i>)`\"
+#' -   Cron expressions - "`cron(<i>fields</i>)`"
 #' 
 #' At expressions are useful for one-time schedules. Specify the time in
 #' UTC.
 #' 
 #' For rate expressions, *value* is a positive integer and *unit* is
-#' `minute` \\| `minutes` \\| `hour` \\| `hours` \\| `day` \\| `days`.
+#' `minute` | `minutes` | `hour` | `hours` | `day` | `days`.
 #' 
 #' For more information about cron expressions, see [Cron
 #' Expressions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions)
@@ -1666,7 +1666,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' To update a scalable target, specify the parameters that you want to
 #' change. Include the parameters that identify the scalable target:
 #' resource ID, scalable dimension, and namespace. Any parameters that you
-#' don\'t specify are not changed by this update request.
+#' don't specify are not changed by this update request.
 #'
 #' @usage
 #' applicationautoscaling_register_scalable_target(ServiceNamespace,

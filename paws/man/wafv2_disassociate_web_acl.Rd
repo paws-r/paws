@@ -29,7 +29,7 @@ Disassociates a Web ACL from a regional application resource. A regional
 application can be an Application Load Balancer (ALB) or an API Gateway
 stage.
 
-For AWS CloudFront, don\'t use this call. Instead, use your CloudFront
+For AWS CloudFront, don't use this call. Instead, use your CloudFront
 distribution configuration. To disassociate a Web ACL, provide an empty
 web ACL ID in the CloudFront call \code{UpdateDistribution}. For information,
 see

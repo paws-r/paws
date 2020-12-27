@@ -1089,7 +1089,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #' with an application
 #'
 #' Creates a new segment for an application or updates the configuration,
-#' dimension, and other settings for an existing segment that\'s associated
+#' dimension, and other settings for an existing segment that's associated
 #' with an application.
 #'
 #' @usage
@@ -1788,9 +1788,9 @@ pinpoint_delete_email_channel <- function(ApplicationId) {
 #' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
 #' match the identifier for the latest existing version of the template.
-#' This restriction helps ensure that race conditions don\'t occur.
+#' This restriction helps ensure that race conditions don't occur.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
 #' the following:
 #' 
 #' -   For a get operation, retrieves information about the active version
@@ -1798,7 +1798,7 @@ pinpoint_delete_email_channel <- function(ApplicationId) {
 #' 
 #' -   For an update operation, saves the updates to (overwrites) the
 #'     latest existing version of the template, if the create-new-version
-#'     parameter isn\'t used or is set to false.
+#'     parameter isn't used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -2006,9 +2006,9 @@ pinpoint_delete_journey <- function(ApplicationId, JourneyId) {
 #' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
 #' match the identifier for the latest existing version of the template.
-#' This restriction helps ensure that race conditions don\'t occur.
+#' This restriction helps ensure that race conditions don't occur.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
 #' the following:
 #' 
 #' -   For a get operation, retrieves information about the active version
@@ -2016,7 +2016,7 @@ pinpoint_delete_journey <- function(ApplicationId, JourneyId) {
 #' 
 #' -   For an update operation, saves the updates to (overwrites) the
 #'     latest existing version of the template, if the create-new-version
-#'     parameter isn\'t used or is set to false.
+#'     parameter isn't used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -2186,9 +2186,9 @@ pinpoint_delete_sms_channel <- function(ApplicationId) {
 #' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
 #' match the identifier for the latest existing version of the template.
-#' This restriction helps ensure that race conditions don\'t occur.
+#' This restriction helps ensure that race conditions don't occur.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
 #' the following:
 #' 
 #' -   For a get operation, retrieves information about the active version
@@ -2196,7 +2196,7 @@ pinpoint_delete_sms_channel <- function(ApplicationId) {
 #' 
 #' -   For an update operation, saves the updates to (overwrites) the
 #'     latest existing version of the template, if the create-new-version
-#'     parameter isn\'t used or is set to false.
+#'     parameter isn't used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -2328,9 +2328,9 @@ pinpoint_delete_voice_channel <- function(ApplicationId) {
 #' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
 #' match the identifier for the latest existing version of the template.
-#' This restriction helps ensure that race conditions don\'t occur.
+#' This restriction helps ensure that race conditions don't occur.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
 #' the following:
 #' 
 #' -   For a get operation, retrieves information about the active version
@@ -2338,7 +2338,7 @@ pinpoint_delete_voice_channel <- function(ApplicationId) {
 #' 
 #' -   For an update operation, saves the updates to (overwrites) the
 #'     latest existing version of the template, if the create-new-version
-#'     parameter isn\'t used or is set to false.
+#'     parameter isn't used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -3191,9 +3191,9 @@ pinpoint_get_email_channel <- function(ApplicationId) {
 #' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
 #' match the identifier for the latest existing version of the template.
-#' This restriction helps ensure that race conditions don\'t occur.
+#' This restriction helps ensure that race conditions don't occur.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
 #' the following:
 #' 
 #' -   For a get operation, retrieves information about the active version
@@ -3201,7 +3201,7 @@ pinpoint_get_email_channel <- function(ApplicationId) {
 #' 
 #' -   For an update operation, saves the updates to (overwrites) the
 #'     latest existing version of the template, if the create-new-version
-#'     parameter isn\'t used or is set to false.
+#'     parameter isn't used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -3763,9 +3763,9 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
 #' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
 #' match the identifier for the latest existing version of the template.
-#' This restriction helps ensure that race conditions don\'t occur.
+#' This restriction helps ensure that race conditions don't occur.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
 #' the following:
 #' 
 #' -   For a get operation, retrieves information about the active version
@@ -3773,7 +3773,7 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
 #' 
 #' -   For an update operation, saves the updates to (overwrites) the
 #'     latest existing version of the template, if the create-new-version
-#'     parameter isn\'t used or is set to false.
+#'     parameter isn't used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -3893,7 +3893,7 @@ pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NUL
 #' settings for a specific segment that's associated with an application
 #'
 #' Retrieves information about the configuration, dimension, and other
-#' settings for a specific segment that\'s associated with an application.
+#' settings for a specific segment that's associated with an application.
 #'
 #' @usage
 #' pinpoint_get_segment(ApplicationId, SegmentId)
@@ -4033,7 +4033,7 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #' application
 #'
 #' Retrieves information about the configuration, dimension, and other
-#' settings for a specific version of a segment that\'s associated with an
+#' settings for a specific version of a segment that's associated with an
 #' application.
 #'
 #' @usage
@@ -4078,7 +4078,7 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #' with an application
 #'
 #' Retrieves information about the configuration, dimension, and other
-#' settings for all the versions of a specific segment that\'s associated
+#' settings for all the versions of a specific segment that's associated
 #' with an application.
 #'
 #' @usage
@@ -4229,9 +4229,9 @@ pinpoint_get_sms_channel <- function(ApplicationId) {
 #' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
 #' match the identifier for the latest existing version of the template.
-#' This restriction helps ensure that race conditions don\'t occur.
+#' This restriction helps ensure that race conditions don't occur.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
 #' the following:
 #' 
 #' -   For a get operation, retrieves information about the active version
@@ -4239,7 +4239,7 @@ pinpoint_get_sms_channel <- function(ApplicationId) {
 #' 
 #' -   For an update operation, saves the updates to (overwrites) the
 #'     latest existing version of the template, if the create-new-version
-#'     parameter isn\'t used or is set to false.
+#'     parameter isn't used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -4373,9 +4373,9 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
 #' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
 #' match the identifier for the latest existing version of the template.
-#' This restriction helps ensure that race conditions don\'t occur.
+#' This restriction helps ensure that race conditions don't occur.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
 #' the following:
 #' 
 #' -   For a get operation, retrieves information about the active version
@@ -4383,7 +4383,7 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
 #' 
 #' -   For an update operation, saves the updates to (overwrites) the
 #'     latest existing version of the template, if the create-new-version
-#'     parameter isn\'t used or is set to false.
+#'     parameter isn't used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -4573,7 +4573,7 @@ pinpoint_list_template_versions <- function(NextToken = NULL, PageSize = NULL, T
 #' those templates whose names begin with the value that you specify.
 #' @param TemplateType The type of message template to include in the results. Valid values
 #' are: EMAIL, PUSH, SMS, and VOICE. To include all types of templates in
-#' the results, don\'t include this parameter in your request.
+#' the results, don't include this parameter in your request.
 #'
 #' @section Request syntax:
 #' ```
@@ -6232,10 +6232,10 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #' and, false, save the updates to (overwrite) the latest existing version
 #' of the template.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint saves
+#' If you don't specify a value for this parameter, Amazon Pinpoint saves
 #' the updates to (overwrites) the latest existing version of the template.
-#' If you specify a value of true for this parameter, don\'t specify a
-#' value for the version parameter. Otherwise, an error will occur.
+#' If you specify a value of true for this parameter, don't specify a value
+#' for the version parameter. Otherwise, an error will occur.
 #' @param EmailTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -6249,9 +6249,9 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
 #' match the identifier for the latest existing version of the template.
-#' This restriction helps ensure that race conditions don\'t occur.
+#' This restriction helps ensure that race conditions don't occur.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
 #' the following:
 #' 
 #' -   For a get operation, retrieves information about the active version
@@ -6259,7 +6259,7 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #' 
 #' -   For an update operation, saves the updates to (overwrites) the
 #'     latest existing version of the template, if the create-new-version
-#'     parameter isn\'t used or is set to false.
+#'     parameter isn't used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -6971,10 +6971,10 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
 #' and, false, save the updates to (overwrite) the latest existing version
 #' of the template.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint saves
+#' If you don't specify a value for this parameter, Amazon Pinpoint saves
 #' the updates to (overwrites) the latest existing version of the template.
-#' If you specify a value of true for this parameter, don\'t specify a
-#' value for the version parameter. Otherwise, an error will occur.
+#' If you specify a value of true for this parameter, don't specify a value
+#' for the version parameter. Otherwise, an error will occur.
 #' @param PushNotificationTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -6988,9 +6988,9 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
 #' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
 #' match the identifier for the latest existing version of the template.
-#' This restriction helps ensure that race conditions don\'t occur.
+#' This restriction helps ensure that race conditions don't occur.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
 #' the following:
 #' 
 #' -   For a get operation, retrieves information about the active version
@@ -6998,7 +6998,7 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
 #' 
 #' -   For an update operation, saves the updates to (overwrites) the
 #'     latest existing version of the template, if the create-new-version
-#'     parameter isn\'t used or is set to false.
+#'     parameter isn't used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -7147,7 +7147,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #' with an application
 #'
 #' Creates a new segment for an application or updates the configuration,
-#' dimension, and other settings for an existing segment that\'s associated
+#' dimension, and other settings for an existing segment that's associated
 #' with an application.
 #'
 #' @usage
@@ -7435,10 +7435,10 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 #' and, false, save the updates to (overwrite) the latest existing version
 #' of the template.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint saves
+#' If you don't specify a value for this parameter, Amazon Pinpoint saves
 #' the updates to (overwrites) the latest existing version of the template.
-#' If you specify a value of true for this parameter, don\'t specify a
-#' value for the version parameter. Otherwise, an error will occur.
+#' If you specify a value of true for this parameter, don't specify a value
+#' for the version parameter. Otherwise, an error will occur.
 #' @param SMSTemplateRequest &#91;required&#93; 
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
@@ -7452,9 +7452,9 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 #' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
 #' match the identifier for the latest existing version of the template.
-#' This restriction helps ensure that race conditions don\'t occur.
+#' This restriction helps ensure that race conditions don't occur.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
 #' the following:
 #' 
 #' -   For a get operation, retrieves information about the active version
@@ -7462,7 +7462,7 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 #' 
 #' -   For an update operation, saves the updates to (overwrites) the
 #'     latest existing version of the template, if the create-new-version
-#'     parameter isn\'t used or is set to false.
+#'     parameter isn't used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.
@@ -7505,8 +7505,7 @@ pinpoint_update_sms_template <- function(CreateNewVersion = NULL, SMSTemplateReq
 }
 .pinpoint$operations$update_sms_template <- pinpoint_update_sms_template
 
-#' Changes the status of a specific version of a message template to
-#' _active_
+#' Changes the status of a specific version of a message template to active
 #'
 #' Changes the status of a specific version of a message template to
 #' *active*.
@@ -7612,10 +7611,10 @@ pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
 #' and, false, save the updates to (overwrite) the latest existing version
 #' of the template.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint saves
+#' If you don't specify a value for this parameter, Amazon Pinpoint saves
 #' the updates to (overwrites) the latest existing version of the template.
-#' If you specify a value of true for this parameter, don\'t specify a
-#' value for the version parameter. Otherwise, an error will occur.
+#' If you specify a value of true for this parameter, don't specify a value
+#' for the version parameter. Otherwise, an error will occur.
 #' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
 #' alphanumeric character and can contain a maximum of 128 characters. The
 #' characters can be alphanumeric characters, underscores (\\_), or hyphens
@@ -7628,9 +7627,9 @@ pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
 #' If specified, this value must match the identifier for an existing
 #' template version. If specified for an update operation, this value must
 #' match the identifier for the latest existing version of the template.
-#' This restriction helps ensure that race conditions don\'t occur.
+#' This restriction helps ensure that race conditions don't occur.
 #' 
-#' If you don\'t specify a value for this parameter, Amazon Pinpoint does
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
 #' the following:
 #' 
 #' -   For a get operation, retrieves information about the active version
@@ -7638,7 +7637,7 @@ pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
 #' 
 #' -   For an update operation, saves the updates to (overwrites) the
 #'     latest existing version of the template, if the create-new-version
-#'     parameter isn\'t used or is set to false.
+#'     parameter isn't used or is set to false.
 #' 
 #' -   For a delete operation, deletes the template, including all versions
 #'     of the template.

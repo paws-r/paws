@@ -12,7 +12,7 @@ NULL
 #' 
 #' -   Any files that FSx has already exported are not reverted.
 #' 
-#' -   FSx continues to export any files that are \"in-flight\" when the
+#' -   FSx continues to export any files that are "in-flight" when the
 #'     cancel operation is received.
 #' 
 #' -   FSx does not export any files that have not yet been exported.
@@ -69,9 +69,9 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #' If a backup with the specified client request token exists, and the
 #' parameters match, this operation returns the description of the existing
 #' backup. If a backup specified client request token exists, and the
-#' parameters don\'t match, this operation returns
+#' parameters don't match, this operation returns
 #' `IncompatibleParameterError`. If a backup with the specified client
-#' request token doesn\'t exist, `CreateBackup` does the following:
+#' request token doesn't exist, `CreateBackup` does the following:
 #' 
 #' -   Creates a new Amazon FSx backup with an assigned ID, and an initial
 #'     lifecycle state of `CREATING`.
@@ -85,7 +85,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #' and the initial call created a backup, the operation returns a
 #' successful result because all the parameters are the same.
 #' 
-#' The `CreateBackup` operation returns while the backup\'s lifecycle state
+#' The `CreateBackup` operation returns while the backup's lifecycle state
 #' is still `CREATING`. You can check the backup creation status by calling
 #' the DescribeBackups operation, which returns the backup state along with
 #' other information.
@@ -178,7 +178,7 @@ fsx_create_backup <- function(FileSystemId, ClientRequestToken = NULL, Tags = NU
 #' mount point of the file system. If the mount point is `/mnt/fsx` and
 #' `/mnt/fsx/path1` is a directory or file on the file system you want to
 #' export, then the path to provide is `path1`. If a path that you provide
-#' isn\'t valid, the task fails.
+#' isn't valid, the task fails.
 #' @param FileSystemId &#91;required&#93; 
 #' @param Report &#91;required&#93; Defines whether or not Amazon FSx provides a CompletionReport once the
 #' task has completed. A CompletionReport provides a detailed report on the
@@ -240,9 +240,9 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' If a file system with the specified client request token exists and the
 #' parameters match, `CreateFileSystem` returns the description of the
 #' existing file system. If a file system specified client request token
-#' exists and the parameters don\'t match, this call returns
+#' exists and the parameters don't match, this call returns
 #' `IncompatibleParameterError`. If a file system with the specified client
-#' request token doesn\'t exist, `CreateFileSystem` does the following:
+#' request token doesn't exist, `CreateFileSystem` does the following:
 #' 
 #' -   Creates a new, empty Amazon FSx file system with an assigned ID, and
 #'     an initial lifecycle state of `CREATING`.
@@ -261,7 +261,7 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' system, the client receives success as long as the parameters are the
 #' same.
 #' 
-#' The `CreateFileSystem` call returns while the file system\'s lifecycle
+#' The `CreateFileSystem` call returns while the file system's lifecycle
 #' state is still `CREATING`. You can check the file-system creation status
 #' by calling the DescribeFileSystems operation, which returns the file
 #' system state along with other information.
@@ -276,7 +276,7 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
 #' @param FileSystemType &#91;required&#93; The type of Amazon FSx file system to create, either `WINDOWS` or
 #' `LUSTRE`.
-#' @param StorageCapacity &#91;required&#93; Sets the storage capacity of the file system that you\'re creating.
+#' @param StorageCapacity &#91;required&#93; Sets the storage capacity of the file system that you're creating.
 #' 
 #' For Lustre file systems:
 #' 
@@ -292,7 +292,7 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' 
 #' -   If `StorageType=HDD`, valid values are 2000 GiB - 65,536 GiB (64
 #'     TiB).
-#' @param StorageType Sets the storage type for the Amazon FSx for Windows file system you\'re
+#' @param StorageType Sets the storage type for the Amazon FSx for Windows file system you're
 #' creating. Valid values are `SSD` and `HDD`.
 #' 
 #' -   Set to `SSD` to use solid state drive storage. SSD is supported on
@@ -313,9 +313,9 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' 
 #' For Windows `SINGLE_AZ_1` and `SINGLE_AZ_2` file system deployment types
 #' and Lustre file systems, provide exactly one subnet ID. The file server
-#' is launched in that subnet\'s Availability Zone.
+#' is launched in that subnet's Availability Zone.
 #' @param SecurityGroupIds A list of IDs specifying the security groups to apply to all network
-#' interfaces created for file system access. This list isn\'t returned in
+#' interfaces created for file system access. This list isn't returned in
 #' later requests to describe the file system.
 #' @param Tags The tags to apply to the file system being created. The key value of the
 #' `Name` tag appears in the console as the file system name.
@@ -434,9 +434,9 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' If a file system with the specified client request token exists and the
 #' parameters match, this operation returns the description of the file
 #' system. If a client request token specified by the file system exists
-#' and the parameters don\'t match, this call returns
+#' and the parameters don't match, this call returns
 #' `IncompatibleParameterError`. If a file system with the specified client
-#' request token doesn\'t exist, this operation does the following:
+#' request token doesn't exist, this operation does the following:
 #' 
 #' -   Creates a new Amazon FSx file system from backup with an assigned
 #'     ID, and an initial lifecycle state of `CREATING`.
@@ -457,7 +457,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' file system, the client receives success as long as the parameters are
 #' the same.
 #' 
-#' The `CreateFileSystemFromBackup` call returns while the file system\'s
+#' The `CreateFileSystemFromBackup` call returns while the file system's
 #' lifecycle state is still `CREATING`. You can check the file-system
 #' creation status by calling the DescribeFileSystems operation, which
 #' returns the file system state along with other information.
@@ -480,18 +480,18 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' 
 #' For Windows `SINGLE_AZ_1` and `SINGLE_AZ_2` deployment types and Lustre
 #' file systems, provide exactly one subnet ID. The file server is launched
-#' in that subnet\'s Availability Zone.
+#' in that subnet's Availability Zone.
 #' @param SecurityGroupIds A list of IDs for the security groups that apply to the specified
 #' network interfaces created for file system access. These security groups
-#' apply to all network interfaces. This value isn\'t returned in later
+#' apply to all network interfaces. This value isn't returned in later
 #' DescribeFileSystem requests.
 #' @param Tags The tags to be applied to the file system at file system creation. The
 #' key value of the `Name` tag appears in the console as the file system
 #' name.
 #' @param WindowsConfiguration The configuration for this Microsoft Windows file system.
 #' @param LustreConfiguration 
-#' @param StorageType Sets the storage type for the Windows file system you\'re creating from
-#' a backup. Valid values are `SSD` and `HDD`.
+#' @param StorageType Sets the storage type for the Windows file system you're creating from a
+#' backup. Valid values are `SSD` and `HDD`.
 #' 
 #' -   Set to `SSD` to use solid state drive storage. Supported on all
 #'     Windows deployment types.
@@ -502,7 +502,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' Default value is `SSD`.
 #' 
 #' HDD and SSD storage types have different minimum storage capacity
-#' requirements. A restored file system\'s storage capacity is tied to the
+#' requirements. A restored file system's storage capacity is tied to the
 #' file system that was backed up. You can create a file system that uses
 #' HDD storage from a backup of a file system that used SSD storage only if
 #' the original SSD file system had a storage capacity of at least 2000
@@ -612,7 +612,7 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #' The `DeleteBackup` call returns instantly. The backup will not show up
 #' in later `DescribeBackups` calls.
 #' 
-#' The data in a deleted backup is also deleted and can\'t be recovered by
+#' The data in a deleted backup is also deleted and can't be recovered by
 #' any means.
 #'
 #' @usage
@@ -667,7 +667,7 @@ fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
 #' 
 #' By default, when you delete an Amazon FSx for Windows File Server file
 #' system, a final backup is created upon deletion. This final backup is
-#' not subject to the file system\'s retention policy, and must be manually
+#' not subject to the file system's retention policy, and must be manually
 #' deleted.
 #' 
 #' The `DeleteFileSystem` action returns while the file system has the
@@ -681,8 +681,8 @@ fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
 #' BadRequest if a data repository task is in a `PENDING` or `EXECUTING`
 #' state.
 #' 
-#' The data in a deleted file system is also deleted and can\'t be
-#' recovered by any means.
+#' The data in a deleted file system is also deleted and can't be recovered
+#' by any means.
 #'
 #' @usage
 #' fsx_delete_file_system(FileSystemId, ClientRequestToken,
@@ -754,7 +754,7 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 #'
 #' Returns the description of specific Amazon FSx backups, if a `BackupIds`
 #' value is provided for that backup. Otherwise, it returns all backups
-#' owned by your AWS account in the AWS Region of the endpoint that you\'re
+#' owned by your AWS account in the AWS Region of the endpoint that you're
 #' calling.
 #' 
 #' When retrieving all backups, you can optionally specify the `MaxResults`
@@ -787,8 +787,7 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 #' @param MaxResults Maximum number of backups to return in the response (integer). This
 #' parameter value must be greater than 0. The number of items that Amazon
 #' FSx returns is the minimum of the `MaxResults` parameter specified in
-#' the request and the service\'s internal maximum number of items per
-#' page.
+#' the request and the service's internal maximum number of items per page.
 #' @param NextToken Opaque pagination token returned from a previous `DescribeBackups`
 #' operation (String). If a token present, the action continues the list
 #' from where the returning call left off.
@@ -848,7 +847,7 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
 #' narrow the response to include just tasks for specific file systems, or
 #' tasks in a specific lifecycle state. Otherwise, it returns all data
 #' repository tasks owned by your AWS account in the AWS Region of the
-#' endpoint that you\'re calling.
+#' endpoint that you're calling.
 #' 
 #' When retrieving all tasks, you can paginate the response by using the
 #' optional `MaxResults` parameter to limit the number of tasks returned in
@@ -914,7 +913,7 @@ fsx_describe_data_repository_tasks <- function(TaskIds = NULL, Filters = NULL, M
 #' Returns the description of specific Amazon FSx file systems, if a
 #' `FileSystemIds` value is provided for that file system. Otherwise, it
 #' returns descriptions of all file systems owned by your AWS account in
-#' the AWS Region of the endpoint that you\'re calling.
+#' the AWS Region of the endpoint that you're calling.
 #' 
 #' When retrieving all file system descriptions, you can optionally specify
 #' the `MaxResults` parameter to limit the number of descriptions in a
@@ -946,8 +945,7 @@ fsx_describe_data_repository_tasks <- function(TaskIds = NULL, Filters = NULL, M
 #' @param MaxResults Maximum number of file systems to return in the response (integer). This
 #' parameter value must be greater than 0. The number of items that Amazon
 #' FSx returns is the minimum of the `MaxResults` parameter specified in
-#' the request and the service\'s internal maximum number of items per
-#' page.
+#' the request and the service's internal maximum number of items per page.
 #' @param NextToken Opaque pagination token returned from a previous `DescribeFileSystems`
 #' operation (String). If a token present, the action continues the list
 #' from where the returning call left off.
@@ -1024,8 +1022,7 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #' @param MaxResults Maximum number of tags to return in the response (integer). This
 #' parameter value must be greater than 0. The number of items that Amazon
 #' FSx returns is the minimum of the `MaxResults` parameter specified in
-#' the request and the service\'s internal maximum number of items per
-#' page.
+#' the request and the service's internal maximum number of items per page.
 #' @param NextToken Opaque pagination token returned from a previous `ListTagsForResource`
 #' operation (String). If a token present, the action continues the list
 #' from where the returning call left off.
@@ -1135,7 +1132,7 @@ fsx_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the Amazon FSx resource to untag.
 #' @param TagKeys &#91;required&#93; A list of keys of tags on the resource to untag. In case the tag key
-#' doesn\'t exist, the call will still succeed to be idempotent.
+#' doesn't exist, the call will still succeed to be idempotent.
 #'
 #' @section Request syntax:
 #' ```
@@ -1210,7 +1207,7 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #' when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
 #' @param StorageCapacity Use this parameter to increase the storage capacity of an Amazon FSx for
 #' Windows File Server file system. Specifies the storage capacity target
-#' value, GiB, for the file system you\'re updating. The storage capacity
+#' value, GiB, for the file system you're updating. The storage capacity
 #' target value must be at least 10 percent (%) greater than the current
 #' storage capacity value. In order to increase storage capacity, the file
 #' system needs to have at least 16 MB/s of throughput capacity. You cannot

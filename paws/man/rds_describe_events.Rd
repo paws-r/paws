@@ -23,7 +23,7 @@ must be supplied.
 must be supplied.
 \item If the source type is \code{DBSnapshot}, a \code{DBSnapshotIdentifier} must be
 supplied.
-\item Can\'t end with a hyphen or contain two consecutive hyphens.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
 \item{SourceType}{The event source to retrieve events for. If no value is specified, all
@@ -46,7 +46,7 @@ Default: 60}
 \item{EventCategories}{A list of event categories that trigger notifications for a event
 notification subscription.}
 
-\item{Filters}{This parameter isn\'t currently supported.}
+\item{Filters}{This parameter isn't currently supported.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token

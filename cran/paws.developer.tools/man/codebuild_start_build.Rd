@@ -23,7 +23,7 @@ codebuild_start_build(projectName, secondarySourcesOverride,
 \item{secondarySourcesOverride}{An array of \code{ProjectSource} objects.}
 
 \item{secondarySourcesVersionOverride}{An array of \code{ProjectSourceVersion} objects that specify one or more
-versions of the project\'s secondary sources to be used for this build
+versions of the project's secondary sources to be used for this build
 only.}
 
 \item{sourceVersion}{A version of the build input to be built, for this build only. If not
@@ -34,12 +34,12 @@ specified, the latest version is used. If specified, must be one of:
 that corresponds to the version of the source code you want to
 build. If a pull request ID is specified, it must use the format
 \code{pr/pull-request-ID} (for example \code{pr/25}). If a branch name is
-specified, the branch\'s HEAD commit ID is used. If not specified,
-the default branch\'s HEAD commit ID is used.
+specified, the branch's HEAD commit ID is used. If not specified,
+the default branch's HEAD commit ID is used.
 \item For Bitbucket: the commit ID, branch name, or tag name that
 corresponds to the version of the source code you want to build. If
-a branch name is specified, the branch\'s HEAD commit ID is used. If
-not specified, the default branch\'s HEAD commit ID is used.
+a branch name is specified, the branch's HEAD commit ID is used. If
+not specified, the default branch's HEAD commit ID is used.
 \item For Amazon Simple Storage Service (Amazon S3): the version ID of the
 object that represents the build input ZIP file to use.
 }
@@ -65,7 +65,7 @@ defined in the build project.}
 one defined in the build project.}
 
 \item{sourceAuthOverride}{An authorization type for this build that overrides the one defined in
-the build project. This override applies only if the build project\'s
+the build project. This override applies only if the build project's
 source is BitBucket or GitHub.}
 
 \item{gitCloneDepthOverride}{The user-defined depth of history, with a minimum value of 0, that
@@ -91,9 +91,9 @@ buildspec file in its root directory. For more information, see
 \item{insecureSslOverride}{Enable this flag to override the insecure SSL setting that is specified
 in the build project. The insecure SSL setting determines whether to
 ignore SSL warnings while connecting to the project source code. This
-override applies only if the build\'s source is GitHub Enterprise.}
+override applies only if the build's source is GitHub Enterprise.}
 
-\item{reportBuildStatusOverride}{Set to true to report to your source provider the status of a build\'s
+\item{reportBuildStatusOverride}{Set to true to report to your source provider the status of a build's
 start and completion. If you use this option with a source provider
 other than GitHub, GitHub Enterprise, or Bitbucket, an
 invalidInputException is thrown.
@@ -140,7 +140,7 @@ You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
 
 You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-available, the CMK\'s alias (using the format
+available, the CMK's alias (using the format
 \verb{alias/<i>alias-name</i> }).}
 
 \item{idempotencyToken}{A unique, case sensitive identifier you provide to ensure the
@@ -159,9 +159,9 @@ There are two valid values:
 \itemize{
 \item \code{CODEBUILD} specifies that AWS CodeBuild uses its own credentials.
 This requires that you modify your ECR repository policy to trust
-AWS CodeBuild\'s service principal.
+AWS CodeBuild's service principal.
 \item \code{SERVICE_ROLE} specifies that AWS CodeBuild uses your build
-project\'s service role.
+project's service role.
 }
 
 When using a cross-account or private registry image, you must use

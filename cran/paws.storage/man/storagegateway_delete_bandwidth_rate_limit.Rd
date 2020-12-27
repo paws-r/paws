@@ -12,7 +12,7 @@ storagegateway_delete_bandwidth_rate_limit(GatewayARN, BandwidthType)
 \item{BandwidthType}{[required] One of the BandwidthType values that indicates the gateway bandwidth
 rate limit to delete.
 
-Valid Values: \code{Upload} \\| \code{Download} \\| \code{All}}
+Valid Values: \code{Upload} | \code{Download} | \code{All}}
 }
 \description{
 Deletes the bandwidth rate limits of a gateway. You can delete either

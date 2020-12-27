@@ -12,7 +12,7 @@ NULL
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
 #' EnableHealthServiceAccessForOrganization operation from your
-#' organization\'s master account.
+#' organization's master account.
 #'
 #' @usage
 #' health_describe_affected_accounts_for_organization(eventArn, nextToken,
@@ -161,7 +161,7 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
 #' EnableHealthServiceAccessForOrganization operation from your
-#' organization\'s master account.
+#' organization's master account.
 #'
 #' @usage
 #' health_describe_affected_entities_for_organization(
@@ -433,7 +433,7 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 #' Before you can call this operation, you must first enable AWS Health to
 #' work with AWS Organizations. To do this, call the
 #' EnableHealthServiceAccessForOrganization operation from your
-#' organization\'s master account.
+#' organization's master account.
 #'
 #' @usage
 #' health_describe_event_details_for_organization(
@@ -674,7 +674,7 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' Before you can call this operation, you must first enable Health to work
 #' with AWS Organizations. To do this, call the
 #' EnableHealthServiceAccessForOrganization operation from your
-#' organization\'s master account.
+#' organization's master account.
 #'
 #' @usage
 #' health_describe_events_for_organization(filter, nextToken, maxResults,
@@ -776,7 +776,7 @@ health_describe_events_for_organization <- function(filter = NULL, nextToken = N
 #' This operation provides status information on enabling or disabling AWS
 #' Health to work with your organization. To call this operation, you must
 #' sign in as an IAM user, assume an IAM role, or sign in as the root user
-#' (not recommended) in the organization\'s master account.
+#' (not recommended) in the organization's master account.
 #'
 #' @usage
 #' health_describe_health_service_status_for_organization()
@@ -813,7 +813,7 @@ health_describe_health_service_status_for_organization <- function() {
 #' the the master account in your organization. Use the IAM console, API,
 #' or AWS CLI to remove the SLR if desired. To call this operation, you
 #' must sign in as an IAM user, assume an IAM role, or sign in as the root
-#' user (not recommended) in the organization\'s master account.
+#' user (not recommended) in the organization's master account.
 #'
 #' @usage
 #' health_disable_health_service_access_for_organization()
@@ -850,7 +850,7 @@ health_disable_health_service_access_for_organization <- function() {
 #' process, visit enabling service access for AWS Health in AWS
 #' Organizations. To call this operation, you must sign in as an IAM user,
 #' assume an IAM role, or sign in as the root user (not recommended) in the
-#' organization\'s master account.
+#' organization's master account.
 #'
 #' @usage
 #' health_enable_health_service_access_for_organization()

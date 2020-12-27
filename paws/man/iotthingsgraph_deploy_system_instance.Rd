@@ -2,7 +2,7 @@
 % Please edit documentation in R/iotthingsgraph_operations.R
 \name{iotthingsgraph_deploy_system_instance}
 \alias{iotthingsgraph_deploy_system_instance}
-\title{GREENGRASS AND CLOUD DEPLOYMENTS Deploys the system instance to the
+\title{Greengrass and Cloud Deployments Deploys the system instance to the
 target specified in CreateSystemInstance}
 \usage{
 iotthingsgraph_deploy_system_instance(id)
@@ -28,7 +28,7 @@ If the system or any workflows and entities have been updated before
 this action is called, then the deployment will create a new Amazon
 Simple Storage Service resource file and then deploy it.
 
-Since this action creates a Greengrass deployment on the caller\'s
+Since this action creates a Greengrass deployment on the caller's
 behalf, the calling identity must have write permissions to the
 specified Greengrass group. Otherwise, the call will fail with an
 authorization error.

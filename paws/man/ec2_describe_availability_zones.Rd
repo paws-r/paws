@@ -16,13 +16,13 @@ Local Zones, use the name of the group associated with the Local
 Zone (for example, \code{us-west-2-lax-1}).
 \item \code{message} - The Zone message.
 \item \verb{opt-in-status} - The opt in status (\verb{opted-in}, and \verb{not-opted-in}
-\\| \verb{opt-in-not-required}).
+| \verb{opt-in-not-required}).
 \item The ID of the zone that handles some of the Local Zone control plane
 operations, such as API calls.
 \item \code{region-name} - The name of the Region for the Zone (for example,
 \code{us-east-1}).
 \item \code{state} - The state of the Availability Zone or Local Zone
-(\code{available} \\| \code{information} \\| \code{impaired} \\| \code{unavailable}).
+(\code{available} | \code{information} | \code{impaired} | \code{unavailable}).
 \item \code{zone-id} - The ID of the Availability Zone (for example,
 \code{use1-az1}) or the Local Zone (for example, use \code{usw2-lax1-az1}).
 \item \code{zone-type} - The type of zone, for example, \code{local-zone}.

@@ -10,7 +10,7 @@ organizations_enable_all_features()
 Enables all features in an organization. This enables the use of
 organization policies that can restrict the services and actions that
 can be called in each account. Until you enable all features, you have
-access only to consolidated billing, and you can\'t use any of the
+access only to consolidated billing, and you can't use any of the
 advanced account administration features that AWS Organizations
 supports. For more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{Enabling All Features in Your Organization}
 in the \emph{AWS Organizations User Guide.}
@@ -39,7 +39,7 @@ accounts can do. The master account can apply policies that prevent
 accounts from leaving the organization. Ensure that your account
 administrators are aware of this.
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{

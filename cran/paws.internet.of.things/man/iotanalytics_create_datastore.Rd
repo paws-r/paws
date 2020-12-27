@@ -11,12 +11,12 @@ iotanalytics_create_datastore(datastoreName, datastoreStorage,
 \item{datastoreName}{[required] The name of the data store.}
 
 \item{datastoreStorage}{Where data store data is stored. You may choose one of
-\"serviceManagedS3\" or \"customerManagedS3\" storage. If not specified,
-the default is \"serviceManagedS3\". This cannot be changed after the
-data store is created.}
+"serviceManagedS3" or "customerManagedS3" storage. If not specified, the
+default is "serviceManagedS3". This cannot be changed after the data
+store is created.}
 
 \item{retentionPeriod}{How long, in days, message data is kept for the data store. When
-\"customerManagedS3\" storage is selected, this parameter is ignored.}
+"customerManagedS3" storage is selected, this parameter is ignored.}
 
 \item{tags}{Metadata which can be used to manage the data store.}
 }

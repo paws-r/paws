@@ -29,7 +29,7 @@ analyzes text in a document.
 You start asynchronous text analysis by calling StartDocumentAnalysis,
 which returns a job identifier (\code{JobId}). When the text analysis
 operation finishes, Amazon Textract publishes a completion status to the
-Amazon Simple Notification Service (Amazon SNS) topic that\'s registered
+Amazon Simple Notification Service (Amazon SNS) topic that's registered
 in the initial call to \code{StartDocumentAnalysis}. To get the results of
 the text-detection operation, first check that the status value
 published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call
@@ -49,7 +49,7 @@ information about a detected table. A CELL \code{Block} object is
 returned for each cell in a table.
 \item Lines and words of text. A LINE \code{Block} object contains one or more
 WORD \code{Block} objects. All lines and words that are detected in the
-document are returned (including text that doesn\'t have a
+document are returned (including text that doesn't have a
 relationship with the value of the \code{StartDocumentAnalysis}
 \code{FeatureTypes} input parameter).
 }
@@ -64,8 +64,8 @@ returned. If there are more results than specified in \code{MaxResults}, the
 value of \code{NextToken} in the operation response contains a pagination
 token for getting the next set of results. To get the next page of
 results, call \code{GetDocumentAnalysis}, and populate the \code{NextToken}
-request parameter with the token value that\'s returned from the
-previous call to \code{GetDocumentAnalysis}.
+request parameter with the token value that's returned from the previous
+call to \code{GetDocumentAnalysis}.
 
 For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html}{Document Text Analysis}.
 }

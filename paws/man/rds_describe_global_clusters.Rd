@@ -10,7 +10,7 @@ rds_describe_global_clusters(GlobalClusterIdentifier, Filters,
 \arguments{
 \item{GlobalClusterIdentifier}{The user-supplied DB cluster identifier. If this parameter is specified,
 information from only the specific DB cluster is returned. This
-parameter isn\'t case-sensitive.
+parameter isn't case-sensitive.
 
 Constraints:
 \itemize{

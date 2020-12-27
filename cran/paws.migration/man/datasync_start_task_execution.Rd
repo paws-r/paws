@@ -13,8 +13,8 @@ datasync_start_task_execution(TaskArn, OverrideOptions, Includes)
 
 \item{Includes}{A list of filter rules that determines which files to include when
 running a task. The pattern should contain a single filter string that
-consists of the patterns to include. The patterns are delimited by
-\"\\|\" (that is, a pipe). For example: \code{"/folder1|/folder2"}}
+consists of the patterns to include. The patterns are delimited by "|"
+(that is, a pipe). For example: \code{"/folder1|/folder2"}}
 }
 \description{
 Starts a specific invocation of a task. A \code{TaskExecution} value
@@ -22,8 +22,8 @@ represents an individual run of a task. Each task can have at most one
 \code{TaskExecution} at a time.
 }
 \details{
-\code{TaskExecution} has the following transition phases: INITIALIZING \\|
-PREPARING \\| TRANSFERRING \\| VERIFYING \\| SUCCESS/FAILURE.
+\code{TaskExecution} has the following transition phases: INITIALIZING |
+PREPARING | TRANSFERRING | VERIFYING | SUCCESS/FAILURE.
 
 For detailed information, see the Task Execution section in the
 Components and Terminology topic in the \emph{AWS DataSync User Guide}.

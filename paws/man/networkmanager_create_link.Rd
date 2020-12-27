@@ -16,7 +16,7 @@ Length Constraints: Maximum length of 256 characters.}
 
 \item{Type}{The type of the link.
 
-Constraints: Cannot include the following characters: \\| \\ \\^
+Constraints: Cannot include the following characters: | \\ ^
 
 Length Constraints: Maximum length of 128 characters.}
 
@@ -24,7 +24,7 @@ Length Constraints: Maximum length of 128 characters.}
 
 \item{Provider}{The provider of the link.
 
-Constraints: Cannot include the following characters: \\| \\ \\^
+Constraints: Cannot include the following characters: | \\ ^
 
 Length Constraints: Maximum length of 128 characters.}
 

@@ -12,13 +12,13 @@ neptune_delete_db_parameter_group(DBParameterGroupName)
 Constraints:
 \itemize{
 \item Must be the name of an existing DB parameter group
-\item You can\'t delete a default DB parameter group
+\item You can't delete a default DB parameter group
 \item Cannot be associated with any DB instances
 }}
 }
 \description{
 Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted
-can\'t be associated with any DB instances.
+can't be associated with any DB instances.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_db_parameter_group(

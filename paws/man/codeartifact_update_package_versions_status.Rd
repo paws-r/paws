@@ -44,8 +44,8 @@ statuses to update.}
 is the package version (for example, \verb{3.5.2}), and the map \code{value} is
 the package version revision.}
 
-\item{expectedStatus}{The package version's expected status before it is updated. If
-\code{expectedStatus} is provided, the package version\'s status is updated
+\item{expectedStatus}{The package version’s expected status before it is updated. If
+\code{expectedStatus} is provided, the package version's status is updated
 only if its status at the time \code{UpdatePackageVersionsStatus} is called
 matches \code{expectedStatus}.}
 

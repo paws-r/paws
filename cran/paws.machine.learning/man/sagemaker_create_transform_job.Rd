@@ -23,7 +23,7 @@ or left unset, Amazon SageMaker checks the optional execution-parameters
 to determine the settings for your chosen algorithm. If the
 execution-parameters endpoint is not enabled, the default value is \code{1}.
 For more information on execution-parameters, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests}{How Containers Serve Requests}.
-For built-in algorithms, you don\'t need to set a value for
+For built-in algorithms, you don't need to set a value for
 \code{MaxConcurrentTransforms}.}
 
 \item{ModelClientConfig}{Configures the timeout and maximum number of retries for processing a

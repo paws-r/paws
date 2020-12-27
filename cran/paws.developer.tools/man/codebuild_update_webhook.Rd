@@ -18,7 +18,7 @@ all branches are built.
 It is recommended that you use \code{filterGroups} instead of \code{branchFilter}.}
 
 \item{rotateSecret}{A boolean value that specifies whether the associated GitHub
-repository\'s secret token should be updated. If you use Bitbucket for
+repository's secret token should be updated. If you use Bitbucket for
 your repository, \code{rotateSecret} is ignored.}
 
 \item{filterGroups}{An array of arrays of \code{WebhookFilter} objects used to determine if a

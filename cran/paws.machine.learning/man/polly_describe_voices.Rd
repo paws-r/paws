@@ -14,7 +14,7 @@ processing input text for speech synthesis.}
 
 \item{LanguageCode}{The language identification tag (ISO 639 code for the language name-ISO
 3166 country code) for filtering the list of voices returned. If you
-don\'t specify this optional parameter, all available voices are
+don't specify this optional parameter, all available voices are
 returned.}
 
 \item{IncludeAdditionalLanguageCodes}{Boolean value indicating whether to return any bilingual voices that use

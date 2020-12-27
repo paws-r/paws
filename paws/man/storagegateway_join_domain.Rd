@@ -19,7 +19,7 @@ specifies the OU that the gateway will join within the AD domain.}
 
 \item{DomainControllers}{List of IPv4 addresses, NetBIOS names, or host names of your domain
 server. If you need to specify the port number include it after the
-colon (":"). For example, \code{mydc.mydomain.com:389}.}
+colon (“:”). For example, \code{mydc.mydomain.com:389}.}
 
 \item{TimeoutInSeconds}{Specifies the time in seconds, in which the \code{JoinDomain} operation must
 complete. The default is 20 seconds.}

@@ -13,18 +13,18 @@ apigatewayv2_create_authorizer(ApiId, AuthorizerCredentialsArn,
 
 \item{AuthorizerCredentialsArn}{Specifies the required credentials as an IAM role for API Gateway to
 invoke the authorizer. To specify an IAM role for API Gateway to assume,
-use the role\'s Amazon Resource Name (ARN). To use resource-based
+use the role's Amazon Resource Name (ARN). To use resource-based
 permissions on the Lambda function, specify null. Supported only for
 REQUEST authorizers.}
 
-\item{AuthorizerResultTtlInSeconds}{Authorizer caching is not currently supported. Don\'t specify this value
+\item{AuthorizerResultTtlInSeconds}{Authorizer caching is not currently supported. Don't specify this value
 for authorizers.}
 
 \item{AuthorizerType}{[required] The authorizer type. For WebSocket APIs, specify REQUEST for a Lambda
 function using incoming request parameters. For HTTP APIs, specify JWT
 to use JSON Web Tokens.}
 
-\item{AuthorizerUri}{The authorizer\'s Uniform Resource Identifier (URI). For REQUEST
+\item{AuthorizerUri}{The authorizer's Uniform Resource Identifier (URI). For REQUEST
 authorizers, this must be a well-formed Lambda function URI, for
 example,
 arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account\\_id\}:function:\{lambda\\_function\\_name\}/invocations.
@@ -54,7 +54,7 @@ Lambda function.
 For JWT, a single entry that specifies where to extract the JSON Web
 Token (JWT )from inbound requests. Currently only header-based and query
 parameter-based selections are supported, for example
-\"\\$request.header.Authorization\".}
+"$request.header.Authorization".}
 
 \item{IdentityValidationExpression}{This parameter is not used.}
 

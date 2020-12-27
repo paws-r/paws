@@ -21,8 +21,8 @@ need to be signed up for this service.}
 Valid values: Any Amazon SNS action name, for example \code{Publish}.}
 }
 \description{
-Adds a statement to a topic\'s access control policy, granting access
-for the specified AWS accounts to the specified actions.
+Adds a statement to a topic's access control policy, granting access for
+the specified AWS accounts to the specified actions.
 }
 \section{Request syntax}{
 \preformatted{svc$add_permission(

@@ -14,7 +14,7 @@ workdocs_deactivate_user(UserId, AuthenticationToken)
 administrator credentials to access the API.}
 }
 \description{
-Deactivates the specified user, which revokes the user\'s access to
+Deactivates the specified user, which revokes the user's access to
 Amazon WorkDocs.
 }
 \section{Request syntax}{

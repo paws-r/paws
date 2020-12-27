@@ -44,9 +44,9 @@ following values: (1) The ID of the fleet you want to be enable a VPC
 peering connection for; (2) The AWS account with the VPC that you want
 to peer with; and (3) The ID of the VPC you want to peer with. This
 operation is asynchronous. If successful, a VpcPeeringConnection request
-is created. You can use continuous polling to track the request\'s
-status using DescribeVpcPeeringConnections, or by monitoring fleet
-events for success or failure using DescribeFleetEvents.
+is created. You can use continuous polling to track the request's status
+using DescribeVpcPeeringConnections, or by monitoring fleet events for
+success or failure using DescribeFleetEvents.
 \itemize{
 \item CreateVpcPeeringAuthorization
 \item DescribeVpcPeeringAuthorizations

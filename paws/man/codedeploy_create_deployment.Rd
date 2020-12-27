@@ -65,8 +65,8 @@ deployment is created.}
 are not running the latest application revision.}
 
 \item{fileExistsBehavior}{Information about how AWS CodeDeploy handles files that already exist in
-a deployment target location but weren\'t part of the previous
-successful deployment.
+a deployment target location but weren't part of the previous successful
+deployment.
 
 The \code{fileExistsBehavior} parameter takes any of the following values:
 \itemize{

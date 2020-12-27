@@ -8,11 +8,11 @@ kinesisvideomedia_get_media(StreamName, StreamARN, StartSelector)
 }
 \arguments{
 \item{StreamName}{The Kinesis video stream name from where you want to get the media
-content. If you don\'t specify the \code{streamName}, you must specify the
+content. If you don't specify the \code{streamName}, you must specify the
 \code{streamARN}.}
 
 \item{StreamARN}{The ARN of the stream from where you want to get the media content. If
-you don\'t specify the \code{streamARN}, you must specify the \code{streamName}.}
+you don't specify the \code{streamARN}, you must specify the \code{streamName}.}
 
 \item{StartSelector}{[required] Identifies the starting chunk to get from the specified stream.}
 }
@@ -24,11 +24,11 @@ stream of chunks in order by fragment number.
 }
 \details{
 You must first call the \code{GetDataEndpoint} API to get an endpoint. Then
-send the \code{GetMedia} requests to this endpoint using the \href{https://docs.aws.amazon.com/cli/latest/reference/}{\\--endpoint-url parameter}.
+send the \code{GetMedia} requests to this endpoint using the \href{https://docs.aws.amazon.com/cli/latest/reference/}{--endpoint-url parameter}.
 
 When you put media data (fragments) on a stream, Kinesis Video Streams
 stores each incoming fragment and related metadata in what is called a
-\"chunk.\" For more information, see
+"chunk." For more information, see
 \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_dataplane_PutMedia.html}{PutMedia}.
 The \code{GetMedia} API returns a stream of these chunks starting from the
 chunk that you specify in the request.
@@ -45,9 +45,9 @@ If an error is thrown after invoking a Kinesis Video Streams media API,
 in addition to the HTTP status code and the response body, it includes
 the following pieces of information:
 \itemize{
-\item \code{x-amz-ErrorType} HTTP header -- contains a more specific error type
+\item \code{x-amz-ErrorType} HTTP header – contains a more specific error type
 in addition to what the HTTP status code provides.
-\item \code{x-amz-RequestId} HTTP header -- if you want to report an issue to
+\item \code{x-amz-RequestId} HTTP header – if you want to report an issue to
 AWS, the support team can better diagnose the problem if given the
 Request Id.
 }

@@ -10,7 +10,7 @@ docdb_describe_db_instances(DBInstanceIdentifier, Filters, MaxRecords,
 \arguments{
 \item{DBInstanceIdentifier}{The user-provided instance identifier. If this parameter is specified,
 information from only the specific instance is returned. This parameter
-isn\'t case sensitive.
+isn't case sensitive.
 
 Constraints:
 \itemize{

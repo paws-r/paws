@@ -42,9 +42,9 @@ inference.
 }}
 
 \item{ValidationSpecification}{Specifies configurations for one or more training jobs and that Amazon
-SageMaker runs to test the algorithm\'s training code and, optionally,
+SageMaker runs to test the algorithm's training code and, optionally,
 one or more batch transform jobs that Amazon SageMaker runs to test the
-algorithm\'s inference code.}
+algorithm's inference code.}
 
 \item{CertifyForMarketplace}{Whether to certify the algorithm so that it can be listed in AWS
 Marketplace.}

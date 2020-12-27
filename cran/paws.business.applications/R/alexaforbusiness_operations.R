@@ -6,7 +6,7 @@ NULL
 #' Associates a skill with the organization under the customer's AWS
 #' account
 #'
-#' Associates a skill with the organization under the customer\'s AWS
+#' Associates a skill with the organization under the customer's AWS
 #' account. If a skill is private, the user implicitly accepts access to
 #' this skill during enablement.
 #'
@@ -331,14 +331,14 @@ alexaforbusiness_create_address_book <- function(Name, Description = NULL, Clien
 #'   ClientRequestToken, Tags)
 #'
 #' @param ScheduleName The name identifier of the schedule.
-#' @param S3BucketName The S3 bucket name of the output reports. If this isn\'t specified, the
+#' @param S3BucketName The S3 bucket name of the output reports. If this isn't specified, the
 #' report can be retrieved from a download link by calling
 #' ListBusinessReportSchedule.
 #' @param S3KeyPrefix The S3 key where the report is delivered.
 #' @param Format &#91;required&#93; The format of the generated report (individual CSV files or zipped files
 #' of individual files).
 #' @param ContentRange &#91;required&#93; The content range of the reports.
-#' @param Recurrence The recurrence of the reports. If this isn\'t specified, the report will
+#' @param Recurrence The recurrence of the reports. If this isn't specified, the report will
 #' only be delivered one time when the API is called.
 #' @param ClientRequestToken The client request token.
 #' @param Tags The tags for the business report schedule.
@@ -388,7 +388,7 @@ alexaforbusiness_create_business_report_schedule <- function(ScheduleName = NULL
 
 #' Adds a new conference provider under the user's AWS account
 #'
-#' Adds a new conference provider under the user\'s AWS account.
+#' Adds a new conference provider under the user's AWS account.
 #'
 #' @usage
 #' alexaforbusiness_create_conference_provider(ConferenceProviderName,
@@ -561,7 +561,7 @@ alexaforbusiness_create_gateway_group <- function(Name, Description = NULL, Clie
 #'   CertificateAuthorityArn, TrustAnchors, ClientRequestToken)
 #'
 #' @param NetworkProfileName &#91;required&#93; The name of the network profile associated with a device.
-#' @param Description Detailed information about a device\'s network profile.
+#' @param Description Detailed information about a device's network profile.
 #' @param Ssid &#91;required&#93; The SSID of the Wi-Fi network.
 #' @param SecurityType &#91;required&#93; The security type of the Wi-Fi network. This can be WPA2\\_ENTERPRISE,
 #' WPA2\\_PSK, WPA\\_PSK, WEP, or OPEN.
@@ -1045,9 +1045,9 @@ alexaforbusiness_delete_device <- function(DeviceArn) {
 #' input data and associated response data
 #'
 #' When this action is called for a specified shared device, it allows
-#' authorized users to delete the device\'s entire previous history of
-#' voice input data and associated response data. This action can be called
-#' once every 24 hours for a specific shared device.
+#' authorized users to delete the device's entire previous history of voice
+#' input data and associated response data. This action can be called once
+#' every 24 hours for a specific shared device.
 #'
 #' @usage
 #' alexaforbusiness_delete_device_usage_data(DeviceArn, DeviceUsageType)
@@ -1354,7 +1354,7 @@ alexaforbusiness_delete_skill_group <- function(SkillGroupArn = NULL) {
 #' alexaforbusiness_delete_user(UserArn, EnrollmentId)
 #'
 #' @param UserArn The ARN of the user to delete in the organization. Required.
-#' @param EnrollmentId &#91;required&#93; The ARN of the user\'s enrollment in the organization. Required.
+#' @param EnrollmentId &#91;required&#93; The ARN of the user's enrollment in the organization. Required.
 #'
 #' @section Request syntax:
 #' ```
@@ -2175,7 +2175,7 @@ alexaforbusiness_list_conference_providers <- function(NextToken = NULL, MaxResu
 #'   MaxResults)
 #'
 #' @param DeviceArn &#91;required&#93; The ARN of a device.
-#' @param EventType The event type to filter device events. If EventType isn\'t specified,
+#' @param EventType The event type to filter device events. If EventType isn't specified,
 #' this returns a list of all device events in reverse chronological order.
 #' If EventType is specified, this returns a list of device events for that
 #' EventType in reverse chronological order.
@@ -2312,7 +2312,7 @@ alexaforbusiness_list_gateways <- function(GatewayGroupArn = NULL, NextToken = N
 #'   NextToken, MaxResults)
 #'
 #' @param SkillGroupArn The ARN of the skill group for which to list enabled skills.
-#' @param EnablementType Whether the skill is enabled under the user\'s account.
+#' @param EnablementType Whether the skill is enabled under the user's account.
 #' @param SkillType Whether the skill is publicly available or is a private skill.
 #' @param NextToken An optional token returned from a prior request. Use this token for
 #' pagination of results from this action. If this parameter is specified,
@@ -2654,7 +2654,7 @@ alexaforbusiness_put_room_skill_parameter <- function(RoomArn = NULL, SkillId, R
 
 #' Links a user's account to a third-party skill provider
 #'
-#' Links a user\'s account to a third-party skill provider. If this API
+#' Links a user's account to a third-party skill provider. If this API
 #' operation is called by an assumed IAM role, the skill being linked must
 #' be a private skill. Also, the skill must be owned by the AWS account
 #' that assumed the IAM role.
@@ -2663,7 +2663,7 @@ alexaforbusiness_put_room_skill_parameter <- function(RoomArn = NULL, SkillId, R
 #' alexaforbusiness_put_skill_authorization(AuthorizationResult, SkillId,
 #'   RoomArn)
 #'
-#' @param AuthorizationResult &#91;required&#93; The authorization result specific to OAUTH code grant output. \"Code"
+#' @param AuthorizationResult &#91;required&#93; The authorization result specific to OAUTH code grant output. "Code”
 #' must be populated in the AuthorizationResult map to establish the
 #' authorization.
 #' @param SkillId &#91;required&#93; The unique identifier of a skill.
@@ -2719,7 +2719,7 @@ alexaforbusiness_put_skill_authorization <- function(AuthorizationResult, SkillI
 #' @param DeviceSerialNumber The key generated by the OEM that uniquely identifies a specified
 #' instance of your AVS device.
 #' @param AmazonId &#91;required&#93; The device type ID for your AVS device generated by Amazon when the OEM
-#' creates a new product on Amazon\'s Developer Console.
+#' creates a new product on Amazon's Developer Console.
 #' @param RoomArn The ARN of the room with which to associate your AVS device.
 #'
 #' @section Request syntax:
@@ -2756,7 +2756,7 @@ alexaforbusiness_register_avs_device <- function(ClientId, UserCode, ProductId, 
 
 #' Disassociates a skill from the organization under a user's AWS account
 #'
-#' Disassociates a skill from the organization under a user\'s AWS account.
+#' Disassociates a skill from the organization under a user's AWS account.
 #' If the skill is a private skill, it moves to an AcceptStatus of PENDING.
 #' Any private or public skill that is rejected can be added later by
 #' calling the ApproveSkill API.
@@ -3407,7 +3407,7 @@ alexaforbusiness_search_users <- function(NextToken = NULL, MaxResults = NULL, F
 #' @param Content &#91;required&#93; The announcement content. This can contain only one of the three
 #' possible announcement types (text, SSML or audio).
 #' @param TimeToLiveInSeconds The time to live for an announcement. Default is 300. If delivery
-#' doesn\'t occur within this time, the announcement is not delivered.
+#' doesn't occur within this time, the announcement is not delivered.
 #' @param ClientRequestToken &#91;required&#93; The unique, user-specified identifier for the request that ensures
 #' idempotency.
 #'
@@ -3514,13 +3514,13 @@ alexaforbusiness_send_invitation <- function(UserArn = NULL) {
 #' -   Bluetooth - This unpairs all bluetooth devices paired with your echo
 #'     device.
 #' 
-#' -   Volume - This resets the echo device\'s volume to the default value.
+#' -   Volume - This resets the echo device's volume to the default value.
 #' 
 #' -   Notifications - This clears all notifications from your echo device.
 #' 
 #' -   Lists - This clears all to-do items from your echo device.
 #' 
-#' -   Settings - This internally syncs the room\'s profile (if the device
+#' -   Settings - This internally syncs the room's profile (if the device
 #'     is assigned to a room), contacts, address books, delegation access
 #'     for account linking, and communications (if enabled on the room
 #'     profile).
@@ -3781,7 +3781,7 @@ alexaforbusiness_update_business_report_schedule <- function(ScheduleArn, S3Buck
 
 #' Updates an existing conference provider's settings
 #'
-#' Updates an existing conference provider\'s settings.
+#' Updates an existing conference provider's settings.
 #'
 #' @usage
 #' alexaforbusiness_update_conference_provider(ConferenceProviderArn,
@@ -4032,7 +4032,7 @@ alexaforbusiness_update_gateway_group <- function(GatewayGroupArn, Name = NULL, 
 #'
 #' @param NetworkProfileArn &#91;required&#93; The ARN of the network profile associated with a device.
 #' @param NetworkProfileName The name of the network profile associated with a device.
-#' @param Description Detailed information about a device\'s network profile.
+#' @param Description Detailed information about a device's network profile.
 #' @param CurrentPassword The current password of the Wi-Fi network.
 #' @param NextPassword The next, or subsequent, password of the Wi-Fi network. This password is
 #' asynchronously transmitted to the device and is used when the password

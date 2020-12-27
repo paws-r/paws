@@ -9,10 +9,9 @@ snowball_describe_addresses(MaxResults, NextToken)
 \arguments{
 \item{MaxResults}{The number of \code{ADDRESS} objects to return.}
 
-\item{NextToken}{HTTP requests are stateless. To identify what object comes \"next\" in
-the list of \code{ADDRESS} objects, you have the option of specifying a value
-for \code{NextToken} as the starting point for your list of returned
-addresses.}
+\item{NextToken}{HTTP requests are stateless. To identify what object comes "next" in the
+list of \code{ADDRESS} objects, you have the option of specifying a value for
+\code{NextToken} as the starting point for your list of returned addresses.}
 }
 \description{
 Returns a specified number of \code{ADDRESS} objects. Calling this API in one

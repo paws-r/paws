@@ -8,7 +8,8 @@ mediastoredata_get_object(Path, Range)
 }
 \arguments{
 \item{Path}{[required] The path (including the file name) where the object is stored in the
-container. Format: \\<folder name\\>/\\<folder name\\>/\\<file name\\>
+container. Format: <folder name>/<folder name>/<file
+name>
 
 For example, to upload the file \code{mlaw.avi} to the folder path
 \verb{premium\\\\canada} in the container \code{movies}, enter the path
@@ -16,7 +17,7 @@ For example, to upload the file \code{mlaw.avi} to the folder path
 
 Do not include the container name in this path.
 
-If the path includes any folders that don\'t exist yet, the service
+If the path includes any folders that don't exist yet, the service
 creates them. For example, suppose you have an existing \code{premium/usa}
 subfolder. If you specify \code{premium/canada}, the service creates a
 \code{canada} subfolder in the \code{premium} folder. You then have two
@@ -40,9 +41,9 @@ Elemental MediaStore ignores this header for partially uploaded objects
 that have streaming upload availability.}
 }
 \description{
-Downloads the object at the specified path. If the object's upload
+Downloads the object at the specified path. If the object’s upload
 availability is set to \code{streaming}, AWS Elemental MediaStore downloads
-the object even if it's still uploading the object.
+the object even if it’s still uploading the object.
 }
 \section{Request syntax}{
 \preformatted{svc$get_object(

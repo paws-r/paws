@@ -34,7 +34,7 @@ list of available terminologies, use the ListTerminologies operation.}
 \item{ClientToken}{[required] The client token of the EC2 instance calling the request. This token is
 auto-generated when using the Amazon Translate SDK. Otherwise, use the
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html}{DescribeInstances}
-EC2 operation to retreive an instance\'s client token. For more
+EC2 operation to retreive an instance's client token. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html#client-tokens}{Client Tokens}
 in the EC2 User Guide.}
 }

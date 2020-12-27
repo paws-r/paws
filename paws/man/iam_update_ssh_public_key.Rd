@@ -23,10 +23,10 @@ can be used for authentication with an AWS CodeCommit repository.
 \code{Inactive} means that the key cannot be used.}
 }
 \description{
-Sets the status of an IAM user\'s SSH public key to active or inactive.
+Sets the status of an IAM user's SSH public key to active or inactive.
 SSH public keys that are inactive cannot be used for authentication.
-This operation can be used to disable a user\'s SSH public key as part
-of a key rotation work flow.
+This operation can be used to disable a user's SSH public key as part of
+a key rotation work flow.
 }
 \details{
 The SSH public key affected by this operation is used only for

@@ -8,10 +8,10 @@ textract_analyze_document(Document, FeatureTypes, HumanLoopConfig)
 }
 \arguments{
 \item{Document}{[required] The input document as base64-encoded bytes or an Amazon S3 object. If
-you use the AWS CLI to call Amazon Textract operations, you can\'t pass
+you use the AWS CLI to call Amazon Textract operations, you can't pass
 image bytes. The document must be an image in JPEG or PNG format.
 
-If you\'re using an AWS SDK to call Amazon Textract, you might not need
+If you're using an AWS SDK to call Amazon Textract, you might not need
 to base64-encode image bytes that are passed using the \code{Bytes} field.}
 
 \item{FeatureTypes}{[required] A list of the types of analysis to perform. Add TABLES to the list to
@@ -19,7 +19,7 @@ return information about the tables that are detected in the input
 document. Add FORMS to return detected form data. To perform both types
 of analysis, add TABLES and FORMS to \code{FeatureTypes}. All lines and words
 detected in the document are included in the response (including text
-that isn\'t related to the value of \code{FeatureTypes}).}
+that isn't related to the value of \code{FeatureTypes}).}
 
 \item{HumanLoopConfig}{Sets the configuration for the human in the loop workflow for analyzing
 documents.}
@@ -40,7 +40,7 @@ information about a detected table. A CELL \code{Block} object is
 returned for each cell in a table.
 \item Lines and words of text. A LINE \code{Block} object contains one or more
 WORD \code{Block} objects. All lines and words that are detected in the
-document are returned (including text that doesn\'t have a
+document are returned (including text that doesn't have a
 relationship with the value of \code{FeatureTypes}).
 }
 

@@ -31,7 +31,7 @@ pricing.
 }
 \details{
 Use DescribeReservedInstancesOfferings to get a list of Reserved
-Instance offerings that match your specifications. After you\'ve
+Instance offerings that match your specifications. After you've
 purchased a Reserved Instance, you can check for your new Reserved
 Instance with DescribeReservedInstances.
 

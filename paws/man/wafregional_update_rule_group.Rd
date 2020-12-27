@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_update_rule_group}
 \alias{wafregional_update_rule_group}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_update_rule_group(RuleGroupId, Updates, ChangeToken)
 }

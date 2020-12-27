@@ -16,9 +16,9 @@ values can have a maximum length of 256 characters.}
 }
 \description{
 Associates the specified tags to a resource with the specified
-\code{resourceArn}. If existing tags on a resource aren\'t specified in the
-request parameters, they aren\'t changed. When a resource is deleted,
-the tags associated with that resource are also deleted.
+\code{resourceArn}. If existing tags on a resource aren't specified in the
+request parameters, they aren't changed. When a resource is deleted, the
+tags associated with that resource are also deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

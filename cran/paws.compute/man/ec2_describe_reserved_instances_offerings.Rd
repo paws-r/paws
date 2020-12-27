@@ -18,7 +18,7 @@ ec2_describe_reserved_instances_offerings(AvailabilityZone, Filters,
 \item \code{availability-zone} - The Availability Zone where the Reserved
 Instance can be used.
 \item \code{duration} - The duration of the Reserved Instance (for example, one
-year or three years), in seconds (\code{31536000} \\| \code{94608000}).
+year or three years), in seconds (\code{31536000} | \code{94608000}).
 \item \code{fixed-price} - The purchase price of the Reserved Instance (for
 example, 9800.0).
 \item \code{instance-type} - The instance type that is covered by the
@@ -30,15 +30,15 @@ Instance Marketplace are listed.
 \item \code{product-description} - The Reserved Instance product platform
 description. Instances that include \verb{(Amazon VPC)} in the product
 platform description will only be displayed to EC2-Classic account
-holders and are for use with Amazon VPC. (\code{Linux/UNIX} \\|
-\verb{Linux/UNIX (Amazon VPC)} \\| \verb{SUSE Linux} \\|
-\verb{SUSE Linux (Amazon VPC)} \\| \verb{Red Hat Enterprise Linux} \\|
-\verb{Red Hat Enterprise Linux (Amazon VPC)} \\| \code{Windows} \\|
-\verb{Windows (Amazon VPC)} \\| \verb{Windows with SQL Server Standard} \\|
-\verb{Windows with SQL Server Standard (Amazon VPC)} \\|
-\verb{Windows with SQL Server Web} \\|
-\verb{ Windows with SQL Server Web (Amazon VPC)} \\|
-\verb{Windows with SQL Server Enterprise} \\|
+holders and are for use with Amazon VPC. (\code{Linux/UNIX} |
+\verb{Linux/UNIX (Amazon VPC)} | \verb{SUSE Linux} | \verb{SUSE Linux (Amazon VPC)}
+| \verb{Red Hat Enterprise Linux} |
+\verb{Red Hat Enterprise Linux (Amazon VPC)} | \code{Windows} |
+\verb{Windows (Amazon VPC)} | \verb{Windows with SQL Server Standard} |
+\verb{Windows with SQL Server Standard (Amazon VPC)} |
+\verb{Windows with SQL Server Web} |
+\verb{ Windows with SQL Server Web (Amazon VPC)} |
+\verb{Windows with SQL Server Enterprise} |
 \verb{Windows with SQL Server Enterprise (Amazon VPC)})
 \item \code{reserved-instances-offering-id} - The Reserved Instances offering
 ID.

@@ -15,7 +15,7 @@ lightsail_update_relational_database(relationalDatabaseName,
 \item{relationalDatabaseName}{[required] The name of your database to update.}
 
 \item{masterUserPassword}{The password for the master user of your database. The password can
-include any printable ASCII character except \"/\", \"\"\", or \"@\".
+include any printable ASCII character except "/", """, or "@".
 
 Constraints: Must contain 8 to 41 characters.}
 
@@ -88,7 +88,7 @@ Lightsail.
 }
 \details{
 Updates are applied immediately, or in cases where the updates could
-result in an outage, are applied during the database\'s predefined
+result in an outage, are applied during the database's predefined
 maintenance window.
 
 The \verb{update relational database} operation supports tag-based access

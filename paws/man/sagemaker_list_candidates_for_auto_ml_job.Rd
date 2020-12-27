@@ -8,7 +8,7 @@ sagemaker_list_candidates_for_auto_ml_job(AutoMLJobName, StatusEquals,
   CandidateNameEquals, SortOrder, SortBy, MaxResults, NextToken)
 }
 \arguments{
-\item{AutoMLJobName}{[required] List the Candidates created for the job by providing the job\'s name.}
+\item{AutoMLJobName}{[required] List the Candidates created for the job by providing the job's name.}
 
 \item{StatusEquals}{List the Candidates for the job and filter by status.}
 
@@ -18,7 +18,7 @@ sagemaker_list_candidates_for_auto_ml_job(AutoMLJobName, StatusEquals,
 
 \item{SortBy}{The parameter by which to sort the results. The default is Descending.}
 
-\item{MaxResults}{List the job\'s Candidates up to a specified limit.}
+\item{MaxResults}{List the job's Candidates up to a specified limit.}
 
 \item{NextToken}{If the previous response was truncated, you will receive this token. Use
 it in your next request to receive the next set of results.}

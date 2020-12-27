@@ -2,8 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_trial_component}
 \alias{sagemaker_create_trial_component}
-\title{Creates a \emph{trial component}, which is a stage of a machine learning
-\emph{trial}}
+\title{Creates a trial component, which is a stage of a machine learning trial}
 \usage{
 sagemaker_create_trial_component(TrialComponentName, DisplayName,
   Status, StartTime, EndTime, Parameters, InputArtifacts, OutputArtifacts,
@@ -13,8 +12,8 @@ sagemaker_create_trial_component(TrialComponentName, DisplayName,
 \item{TrialComponentName}{[required] The name of the component. The name must be unique in your AWS account
 and is not case-sensitive.}
 
-\item{DisplayName}{The name of the component as displayed. The name doesn\'t need to be
-unique. If \code{DisplayName} isn\'t specified, \code{TrialComponentName} is
+\item{DisplayName}{The name of the component as displayed. The name doesn't need to be
+unique. If \code{DisplayName} isn't specified, \code{TrialComponentName} is
 displayed.}
 
 \item{Status}{The status of the component. States include:

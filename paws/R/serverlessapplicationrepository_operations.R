@@ -19,7 +19,7 @@ NULL
 #' 
 #' Minimum length=1. Maximum length=127.
 #' 
-#' Pattern \"\\^\[a-z0-9\]((\[a-z0-9\]\\|-(?!-))*\[a-z0-9\])?\\$\";
+#' Pattern "^\[a-z0-9\]((\[a-z0-9\]|-(?!-))*\[a-z0-9\])?$";
 #' @param Description &#91;required&#93; The description of the application.
 #' 
 #' Minimum length=1. Maximum length=256
@@ -29,10 +29,10 @@ NULL
 #' 
 #' Minimum length=1. Maximum length=127. Maximum number of labels: 10
 #' 
-#' Pattern: \"\\^\[a-zA-Z0-9+\\\\-\\_:\\\\/@@\]+\\$\";
+#' Pattern: "^\[a-zA-Z0-9+\\\\-\\_:\\\\/@@\]+$";
 #' @param LicenseBody A local text file that contains the license of the app that matches the
 #' spdxLicenseID value of your application. The file has the format
-#' file://\\<path\\>/\\<filename\\>.
+#' file://&lt;path&gt;/&lt;filename&gt;.
 #' 
 #' Maximum size 5 MB
 #' 
@@ -49,10 +49,10 @@ NULL
 #' 
 #' Minimum length=1. Maximum length=140
 #' 
-#' Pattern: \"\[a-zA-Z0-9\\\\-\]+\";
+#' Pattern: "\[a-zA-Z0-9\\\\-\]+";
 #' @param ReadmeBody A local text readme file in Markdown language that contains a more
 #' detailed description of the application and how it works. The file has
-#' the format file://\\<path\\>/\\<filename\\>.
+#' the format file://&lt;path&gt;/&lt;filename&gt;.
 #' 
 #' Maximum size 5 MB
 #' 
@@ -76,7 +76,7 @@ NULL
 #' for example the URL of a specific GitHub commit.
 #' @param SpdxLicenseId A valid identifier from <https://spdx.org/licenses/>.
 #' @param TemplateBody The local raw packaged AWS SAM template file of your application. The
-#' file has the format file://\\<path\\>/\\<filename\\>.
+#' file has the format file://&lt;path&gt;/&lt;filename&gt;.
 #' 
 #' You can specify only one of templateBody and templateUrl; otherwise an
 #' error results.
@@ -229,8 +229,8 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' 
 #' If your application template contains any of the above resources, we
 #' recommend that you review all permissions associated with the
-#' application before deploying. If you don\'t specify this parameter for
-#' an application that requires capabilities, the call will fail.
+#' application before deploying. If you don't specify this parameter for an
+#' application that requires capabilities, the call will fail.
 #' @param ChangeSetName This property corresponds to the parameter of the same name for the *AWS
 #' CloudFormation
 #' [CreateChangeSet](https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet)*
@@ -710,7 +710,7 @@ serverlessapplicationrepository_put_application_policy <- function(ApplicationId
 #'
 #' Unshares an application from an AWS Organization.
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -761,7 +761,7 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
 #' 
 #' Minimum length=1. Maximum length=127.
 #' 
-#' Pattern \"\\^\[a-z0-9\]((\[a-z0-9\]\\|-(?!-))*\[a-z0-9\])?\\$\";
+#' Pattern "^\[a-z0-9\]((\[a-z0-9\]|-(?!-))*\[a-z0-9\])?$";
 #' @param Description The description of the application.
 #' 
 #' Minimum length=1. Maximum length=256
@@ -771,7 +771,7 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
 #' 
 #' Minimum length=1. Maximum length=127. Maximum number of labels: 10
 #' 
-#' Pattern: \"\\^\[a-zA-Z0-9+\\\\-\\_:\\\\/@@\]+\\$\";
+#' Pattern: "^\[a-zA-Z0-9+\\\\-\\_:\\\\/@@\]+$";
 #' @param ReadmeBody A text readme file in Markdown language that contains a more detailed
 #' description of the application and how it works.
 #' 

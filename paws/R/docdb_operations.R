@@ -66,7 +66,7 @@ docdb_add_tags_to_resource <- function(ResourceName, Tags) {
 #' 
 #' Valid values: `system-update`, `db-upgrade`
 #' @param OptInType &#91;required&#93; A value that specifies the type of opt-in request or undoes an opt-in
-#' request. An opt-in request of type `immediate` can\'t be undone.
+#' request. An opt-in request of type `immediate` can't be undone.
 #' 
 #' Valid values:
 #' 
@@ -202,12 +202,12 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' @param SourceDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the cluster snapshot to copy. This parameter is not
 #' case sensitive.
 #' 
-#' You can\'t copy an encrypted, shared cluster snapshot from one AWS
-#' Region to another.
+#' You can't copy an encrypted, shared cluster snapshot from one AWS Region
+#' to another.
 #' 
 #' Constraints:
 #' 
-#' -   Must specify a valid system snapshot in the \"available\" state.
+#' -   Must specify a valid system snapshot in the "available" state.
 #' 
 #' -   If the source snapshot is in the same AWS Region as the copy,
 #'     specify a valid snapshot identifier.
@@ -234,7 +234,7 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' 
 #' If you copy an encrypted cluster snapshot from your AWS account, you can
 #' specify a value for `KmsKeyId` to encrypt the copy with a new AWS KMS
-#' encryption key. If you don\'t specify a value for `KmsKeyId`, then the
+#' encryption key. If you don't specify a value for `KmsKeyId`, then the
 #' copy of the cluster snapshot is encrypted with the same AWS KMS key as
 #' the source cluster snapshot.
 #' 
@@ -245,7 +245,7 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' `KmsKeyId` to the AWS KMS key ID that you want to use to encrypt the
 #' copy of the cluster snapshot in the destination Region. AWS KMS
 #' encryption keys are specific to the AWS Region that they are created in,
-#' and you can\'t use encryption keys from one Region in another Region.
+#' and you can't use encryption keys from one Region in another Region.
 #' 
 #' If you copy an unencrypted cluster snapshot and specify a value for the
 #' `KmsKeyId` parameter, an error is returned.
@@ -375,8 +375,8 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' 
 #' -   Cannot be a reserved word for the chosen database engine.
 #' @param MasterUserPassword &#91;required&#93; The password for the master database user. This password can contain any
-#' printable ASCII character except forward slash (/), double quote (\"),
-#' or the \"at\" symbol (@@).
+#' printable ASCII character except forward slash (/), double quote ("), or
+#' the "at" symbol (@@).
 #' 
 #' Constraints: Must contain from 8 to 100 characters.
 #' @param PreferredBackupWindow The daily time range during which automated backups are created if
@@ -661,12 +661,12 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' Valid value: `docdb`
 #' @param AvailabilityZone The Amazon EC2 Availability Zone that the instance is created in.
 #' 
-#' Default: A random, system-chosen Availability Zone in the endpoint\'s
-#' AWS Region.
+#' Default: A random, system-chosen Availability Zone in the endpoint's AWS
+#' Region.
 #' 
 #' Example: `us-east-1d`
 #' 
-#' Constraint: The `AvailabilityZone` parameter can\'t be specified if the
+#' Constraint: The `AvailabilityZone` parameter can't be specified if the
 #' `MultiAZ` parameter is set to `true`. The specified Availability Zone
 #' must be in the same AWS Region as the current endpoint.
 #' @param PreferredMaintenanceWindow The time range each week during which system maintenance can occur, in
@@ -796,7 +796,7 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #' Deletes a previously provisioned cluster
 #'
 #' Deletes a previously provisioned cluster. When you delete a cluster, all
-#' automated backups for that cluster are deleted and can\'t be recovered.
+#' automated backups for that cluster are deleted and can't be recovered.
 #' Manual DB cluster snapshots of the specified cluster are not deleted.
 #'
 #' @usage
@@ -804,7 +804,7 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #'   FinalDBSnapshotIdentifier)
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The cluster identifier for the cluster to be deleted. This parameter
-#' isn\'t case sensitive.
+#' isn't case sensitive.
 #' 
 #' Constraints:
 #' 
@@ -864,7 +864,7 @@ docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NUL
 #' Deletes a specified cluster parameter group
 #'
 #' Deletes a specified cluster parameter group. The cluster parameter group
-#' to be deleted can\'t be associated with any clusters.
+#' to be deleted can't be associated with any clusters.
 #'
 #' @usage
 #' docdb_delete_db_cluster_parameter_group(DBClusterParameterGroupName)
@@ -875,7 +875,7 @@ docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NUL
 #' 
 #' -   Must be the name of an existing cluster parameter group.
 #' 
-#' -   You can\'t delete a default cluster parameter group.
+#' -   You can't delete a default cluster parameter group.
 #' 
 #' -   Cannot be associated with any clusters.
 #'
@@ -956,7 +956,7 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' docdb_delete_db_instance(DBInstanceIdentifier)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The instance identifier for the instance to be deleted. This parameter
-#' isn\'t case sensitive.
+#' isn't case sensitive.
 #' 
 #' Constraints:
 #' 
@@ -1001,7 +1001,7 @@ docdb_delete_db_instance <- function(DBInstanceIdentifier) {
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name of the database subnet group to delete.
 #' 
-#' You can\'t delete the default subnet group.
+#' You can't delete the default subnet group.
 #' 
 #' Constraints:
 #' 
@@ -1302,15 +1302,15 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #'   IncludeShared, IncludePublic)
 #'
 #' @param DBClusterIdentifier The ID of the cluster to retrieve the list of cluster snapshots for.
-#' This parameter can\'t be used with the `DBClusterSnapshotIdentifier`
+#' This parameter can't be used with the `DBClusterSnapshotIdentifier`
 #' parameter. This parameter is not case sensitive.
 #' 
 #' Constraints:
 #' 
 #' -   If provided, must match the identifier of an existing `DBCluster`.
-#' @param DBClusterSnapshotIdentifier A specific cluster snapshot identifier to describe. This parameter
-#' can\'t be used with the `DBClusterIdentifier` parameter. This value is
-#' stored as a lowercase string.
+#' @param DBClusterSnapshotIdentifier A specific cluster snapshot identifier to describe. This parameter can't
+#' be used with the `DBClusterIdentifier` parameter. This value is stored
+#' as a lowercase string.
 #' 
 #' Constraints:
 #' 
@@ -1334,16 +1334,16 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #' -   `public` - Return all cluster snapshots that have been marked as
 #'     public.
 #' 
-#' If you don\'t specify a `SnapshotType` value, then both automated and
+#' If you don't specify a `SnapshotType` value, then both automated and
 #' manual cluster snapshots are returned. You can include shared cluster
 #' snapshots with these results by setting the `IncludeShared` parameter to
 #' `true`. You can include public cluster snapshots with these results by
 #' setting the `IncludePublic` parameter to `true`.
 #' 
-#' The `IncludeShared` and `IncludePublic` parameters don\'t apply for
+#' The `IncludeShared` and `IncludePublic` parameters don't apply for
 #' `SnapshotType` values of `manual` or `automated`. The `IncludePublic`
-#' parameter doesn\'t apply when `SnapshotType` is set to `shared`. The
-#' `IncludeShared` parameter doesn\'t apply when `SnapshotType` is set to
+#' parameter doesn't apply when `SnapshotType` is set to `shared`. The
+#' `IncludeShared` parameter doesn't apply when `SnapshotType` is set to
 #' `public`.
 #' @param Filters This parameter is not currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more
@@ -1420,7 +1420,7 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 #'
 #' @param DBClusterIdentifier The user-provided cluster identifier. If this parameter is specified,
 #' information from only the specific cluster is returned. This parameter
-#' isn\'t case sensitive.
+#' isn't case sensitive.
 #' 
 #' Constraints:
 #' 
@@ -1573,7 +1573,7 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
 #'
 #' @param DBInstanceIdentifier The user-provided instance identifier. If this parameter is specified,
 #' information from only the specific instance is returned. This parameter
-#' isn\'t case sensitive.
+#' isn't case sensitive.
 #' 
 #' Constraints:
 #' 
@@ -2230,8 +2230,8 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' 
 #' Default: The same port as the original cluster.
 #' @param MasterUserPassword The password for the master database user. This password can contain any
-#' printable ASCII character except forward slash (/), double quote (\"),
-#' or the \"at\" symbol (@@).
+#' printable ASCII character except forward slash (/), double quote ("), or
+#' the "at" symbol (@@).
 #' 
 #' Constraints: Must contain from 8 to 100 characters.
 #' @param PreferredBackupWindow The daily time range during which automated backups are created if
@@ -2403,11 +2403,11 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' manual cluster snapshot. Use the value `all` to make the manual cluster
 #' snapshot public, which means that it can be copied or restored by all
 #' AWS accounts. Do not add the `all` value for any manual DB cluster
-#' snapshots that contain private information that you don\'t want
-#' available to all AWS accounts. If a manual cluster snapshot is
-#' encrypted, it can be shared, but only by specifying a list of authorized
-#' AWS account IDs for the `ValuesToAdd` parameter. You can\'t use `all` as
-#' a value for that parameter in this case.
+#' snapshots that contain private information that you don't want available
+#' to all AWS accounts. If a manual cluster snapshot is encrypted, it can
+#' be shared, but only by specifying a list of authorized AWS account IDs
+#' for the `ValuesToAdd` parameter. You can't use `all` as a value for that
+#' parameter in this case.
 #'
 #' @usage
 #' docdb_modify_db_cluster_snapshot_attribute(DBClusterSnapshotIdentifier,
@@ -2425,7 +2425,7 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' snapshot, set this list to include one or more AWS account IDs. To make
 #' the manual cluster snapshot restorable by any AWS account, set it to
 #' `all`. Do not add the `all` value for any manual cluster snapshots that
-#' contain private information that you don\'t want to be available to all
+#' contain private information that you don't want to be available to all
 #' AWS accounts.
 #' @param ValuesToRemove A list of cluster snapshot attributes to remove from the attribute
 #' specified by `AttributeName`.
@@ -2506,7 +2506,7 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' 
 #' Default: `false`
 #' @param PreferredMaintenanceWindow The weekly time range (in UTC) during which system maintenance can
-#' occur, which might result in an outage. Changing this parameter doesn\'t
+#' occur, which might result in an outage. Changing this parameter doesn't
 #' result in an outage except in the following situation, and the change is
 #' asynchronously applied as soon as possible. If there are pending actions
 #' that cause a reboot, and the maintenance window is changed to include
@@ -2523,7 +2523,7 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' 
 #' Constraints: Must be at least 30 minutes.
 #' @param AutoMinorVersionUpgrade Indicates that minor version upgrades are applied automatically to the
-#' instance during the maintenance window. Changing this parameter doesn\'t
+#' instance during the maintenance window. Changing this parameter doesn't
 #' result in an outage except in the following case, and the change is
 #' asynchronously applied as soon as possible. An outage results if this
 #' parameter is set to `true` during the maintenance window, and a newer
@@ -2597,7 +2597,7 @@ docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NUL
 #'   DBSubnetGroupDescription, SubnetIds)
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name for the subnet group. This value is stored as a lowercase
-#' string. You can\'t modify the default subnet group.
+#' string. You can't modify the default subnet group.
 #' 
 #' Constraints: Must match the name of an existing `DBSubnetGroup`. Must
 #' not be default.
@@ -2658,7 +2658,7 @@ docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #' -   Must match the identifier of an existing `DBInstance`.
 #' @param ForceFailover When `true`, the reboot is conducted through a Multi-AZ failover.
 #' 
-#' Constraint: You can\'t specify `true` if the instance is not configured
+#' Constraint: You can't specify `true` if the instance is not configured
 #' for Multi-AZ.
 #'
 #' @section Request syntax:
@@ -2750,11 +2750,11 @@ docdb_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the cluster parameter group to reset.
 #' @param ResetAllParameters A value that is set to `true` to reset all parameters in the cluster
 #' parameter group to their default values, and `false` otherwise. You
-#' can\'t use this parameter if there is a list of parameter names
-#' specified for the `Parameters` parameter.
+#' can't use this parameter if there is a list of parameter names specified
+#' for the `Parameters` parameter.
 #' @param Parameters A list of parameter names in the cluster parameter group to reset to the
-#' default values. You can\'t use this parameter if the
-#' `ResetAllParameters` parameter is set to `true`.
+#' default values. You can't use this parameter if the `ResetAllParameters`
+#' parameter is set to `true`.
 #'
 #' @section Request syntax:
 #' ```
@@ -2820,7 +2820,7 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' @param AvailabilityZones Provides the list of Amazon EC2 Availability Zones that instances in the
 #' restored DB cluster can be created in.
 #' @param DBClusterIdentifier &#91;required&#93; The name of the cluster to create from the snapshot or cluster snapshot.
-#' This parameter isn\'t case sensitive.
+#' This parameter isn't case sensitive.
 #' 
 #' Constraints:
 #' 

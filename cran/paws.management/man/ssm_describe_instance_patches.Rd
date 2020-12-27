@@ -14,7 +14,7 @@ retrieved.}
 
 \item{Filters}{An array of structures. Each entry in the array is a structure
 containing a Key, Value combination. Valid values for Key are
-\code{Classification} \\| \code{KBId} \\| \code{Severity} \\| \code{State}.}
+\code{Classification} | \code{KBId} | \code{Severity} | \code{State}.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}

@@ -432,7 +432,7 @@ budgets_describe_budget <- function(AccountId, BudgetName) {
 #' Describes the history for DAILY, MONTHLY, and QUARTERLY budgets
 #'
 #' Describes the history for `DAILY`, `MONTHLY`, and `QUARTERLY` budgets.
-#' Budget history isn\'t available for `ANNUAL` budgets.
+#' Budget history isn't available for `ANNUAL` budgets.
 #'
 #' @usage
 #' budgets_describe_budget_performance_history(AccountId, BudgetName,

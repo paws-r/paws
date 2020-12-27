@@ -11,12 +11,12 @@ gamelift_describe_runtime_configuration(FleetId)
 You can use either the fleet ID or ARN value.}
 }
 \description{
-Retrieves a fleet\'s runtime configuration settings. The runtime
+Retrieves a fleet's runtime configuration settings. The runtime
 configuration tells Amazon GameLift which server processes to run (and
 how) on each instance in the fleet.
 }
 \details{
-To get a runtime configuration, specify the fleet\'s unique identifier.
+To get a runtime configuration, specify the fleet's unique identifier.
 If successful, a RuntimeConfiguration object is returned for the
 requested fleet. If the requested fleet has been deleted, the result set
 is empty.

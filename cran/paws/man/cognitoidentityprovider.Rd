@@ -62,7 +62,7 @@ For more information, see the Amazon Cognito Documentation.
 \link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge} \tab Responds to an authentication challenge, as an administrator \cr
 \link[=cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference} \tab Sets the user's multi-factor authentication (MFA) preference, including which MFA options are enabled and if any are preferred \cr
 \link[=cognitoidentityprovider_admin_set_user_password]{admin_set_user_password} \tab Sets the specified user's password in a user pool as an administrator \cr
-\link[=cognitoidentityprovider_admin_set_user_settings]{admin_set_user_settings} \tab _This action is no longer supported \cr
+\link[=cognitoidentityprovider_admin_set_user_settings]{admin_set_user_settings} \tab This action is no longer supported \cr
 \link[=cognitoidentityprovider_admin_update_auth_event_feedback]{admin_update_auth_event_feedback} \tab Provides feedback for an authentication event as to whether it was from a valid user \cr
 \link[=cognitoidentityprovider_admin_update_device_status]{admin_update_device_status} \tab Updates the device status as an administrator \cr
 \link[=cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes} \tab Updates the specified user's attributes, including developer attributes, as an administrator \cr
@@ -123,7 +123,7 @@ For more information, see the Amazon Cognito Documentation.
 \link[=cognitoidentityprovider_set_ui_customization]{set_ui_customization} \tab Sets the UI customization information for a user pool's built-in app UI \cr
 \link[=cognitoidentityprovider_set_user_mfa_preference]{set_user_mfa_preference} \tab Set the user's multi-factor authentication (MFA) method preference, including which MFA factors are enabled and if any are preferred \cr
 \link[=cognitoidentityprovider_set_user_pool_mfa_config]{set_user_pool_mfa_config} \tab Set the user pool multi-factor authentication (MFA) configuration \cr
-\link[=cognitoidentityprovider_set_user_settings]{set_user_settings} \tab _This action is no longer supported \cr
+\link[=cognitoidentityprovider_set_user_settings]{set_user_settings} \tab This action is no longer supported \cr
 \link[=cognitoidentityprovider_sign_up]{sign_up} \tab Registers the user in the specified user pool and creates a user name, password, and user attributes \cr
 \link[=cognitoidentityprovider_start_user_import_job]{start_user_import_job} \tab Starts the user import \cr
 \link[=cognitoidentityprovider_stop_user_import_job]{stop_user_import_job} \tab Stops the user import job \cr

@@ -18,8 +18,8 @@ for more information.}
 \item{CredentialsArn}{This property is part of quick create. It specifies the credentials
 required for the integration, if any. For a Lambda integration, three
 options are available. To specify an IAM Role for API Gateway to assume,
-use the role\'s Amazon Resource Name (ARN). To require that the
-caller\'s identity be passed through from the request, specify
+use the role's Amazon Resource Name (ARN). To require that the caller's
+identity be passed through from the request, specify
 arn:aws:iam::\emph{:user/}. To use resource-based permissions on supported
 AWS services, specify null. Currently, this property is not used for
 HTTP integrations. Supported only for HTTP APIs.}
@@ -33,15 +33,15 @@ WebSocket APIs.}
 
 \item{ProtocolType}{[required] The API protocol.}
 
-\item{RouteKey}{This property is part of quick create. If you don\'t specify a routeKey,
-a default route of \\$default is created. The \\$default route acts as a
+\item{RouteKey}{This property is part of quick create. If you don't specify a routeKey,
+a default route of $default is created. The $default route acts as a
 catch-all for any request made to your API, for a particular stage. The
-\\$default route key can\'t be modified. You can add routes after
-creating the API, and you can update the route keys of additional
-routes. Supported only for HTTP APIs.}
+$default route key can't be modified. You can add routes after creating
+the API, and you can update the route keys of additional routes.
+Supported only for HTTP APIs.}
 
 \item{RouteSelectionExpression}{The route selection expression for the API. For HTTP APIs, the
-routeSelectionExpression must be \\$\{request.method\} \\$\{request.path\}. If
+routeSelectionExpression must be $\{request.method\} $\{request.path\}. If
 not provided, this will be the default for HTTP APIs. This property is
 required for WebSocket APIs.}
 

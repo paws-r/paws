@@ -15,7 +15,7 @@ workmail_associate_delegate_to_resource(OrganizationId, ResourceId,
 \item{EntityId}{[required] The member (user or group) to associate to the resource.}
 }
 \description{
-Adds a member (user or group) to the resource\'s set of delegates.
+Adds a member (user or group) to the resource's set of delegates.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_delegate_to_resource(

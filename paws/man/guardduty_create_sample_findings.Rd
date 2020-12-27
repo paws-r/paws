@@ -14,7 +14,7 @@ guardduty_create_sample_findings(DetectorId, FindingTypes)
 }
 \description{
 Generates example findings of types specified by the list of finding
-types. If \'NULL\' is specified for \code{findingTypes}, the API generates
+types. If 'NULL' is specified for \code{findingTypes}, the API generates
 example findings of all supported finding types.
 }
 \section{Request syntax}{

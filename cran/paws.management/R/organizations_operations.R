@@ -38,7 +38,7 @@ NULL
 #'     in the *AWS Organizations User Guide.*
 #' 
 #' After you accept a handshake, it continues to appear in the results of
-#' relevant APIs for only 30 days. After that, it\'s deleted.
+#' relevant APIs for only 30 days. After that, it's deleted.
 #'
 #' @usage
 #' organizations_accept_handshake(HandshakeId)
@@ -46,7 +46,7 @@ NULL
 #' @param HandshakeId &#91;required&#93; The unique identifier (ID) of the handshake that you want to accept.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for handshake ID
-#' string requires \"h-\" followed by from 8 to 32 lowercase letters or
+#' string requires "h-" followed by from 8 to 32 lowercase letters or
 #' digits.
 #'
 #' @section Request syntax:
@@ -103,7 +103,7 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' 
 #' -   [TAG\\_POLICY](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -114,7 +114,7 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' operation.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID
-#' string requires \"p-\" followed by from 8 to 128 lowercase or uppercase
+#' string requires "p-" followed by from 8 to 128 lowercase or uppercase
 #' letters, digits, or the underscore character (\\_).
 #' @param TargetId &#91;required&#93; The unique identifier (ID) of the root, OU, or account that you want to
 #' attach the policy to. You can get the ID by calling the ListRoots,
@@ -123,14 +123,14 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a target ID
 #' string requires one of the following:
 #' 
-#' -   **Root** - A string that begins with \"r-\" followed by from 4 to 32
+#' -   **Root** - A string that begins with "r-" followed by from 4 to 32
 #'     lowercase letters or digits.
 #' 
 #' -   **Account** - A string that consists of exactly 12 digits.
 #' 
-#' -   **Organizational unit (OU)** - A string that begins with \"ou-\"
+#' -   **Organizational unit (OU)** - A string that begins with "ou-"
 #'     followed by from 4 to 32 lowercase letters or digits (the ID of the
-#'     root that the OU is in). This string is followed by a second \"-\"
+#'     root that the OU is in). This string is followed by a second "-"
 #'     dash and from 8 to 32 additional lowercase letters or digits.
 #'
 #' @section Request syntax:
@@ -186,12 +186,12 @@ organizations_attach_policy <- function(PolicyId, TargetId) {
 #' `CANCELED`.
 #' 
 #' This operation can be called only from the account that originated the
-#' handshake. The recipient of the handshake can\'t cancel it, but can use
+#' handshake. The recipient of the handshake can't cancel it, but can use
 #' DeclineHandshake instead. After a handshake is canceled, the recipient
 #' can no longer respond to that handshake.
 #' 
 #' After you cancel a handshake, it continues to appear in the results of
-#' relevant APIs for only 30 days. After that, it\'s deleted.
+#' relevant APIs for only 30 days. After that, it's deleted.
 #'
 #' @usage
 #' organizations_cancel_handshake(HandshakeId)
@@ -200,7 +200,7 @@ organizations_attach_policy <- function(PolicyId, TargetId) {
 #' can get the ID from the ListHandshakesForOrganization operation.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for handshake ID
-#' string requires \"h-\" followed by from 8 to 32 lowercase letters or
+#' string requires "h-" followed by from 8 to 32 lowercase letters or
 #' digits.
 #'
 #' @section Request syntax:
@@ -275,9 +275,9 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' the master account administrator permissions in the new member account.
 #' Principals in the master account can assume the role. AWS Organizations
 #' clones the company name and address information for the new account from
-#' the organization\'s master account.
+#' the organization's master account.
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #' 
 #' For more information about creating accounts, see [Creating an AWS
@@ -305,7 +305,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'     then try again. If the error persists, contact [AWS
 #'     Support](https://console.aws.amazon.com/support/home#/).
 #' 
-#' -   Using `CreateAccount` to create multiple temporary accounts isn\'t
+#' -   Using `CreateAccount` to create multiple temporary accounts isn't
 #'     recommended. You can only close an account from the Billing and Cost
 #'     Management Console, and you must be signed in as the root user. For
 #'     information on the requirements and process for closing an account,
@@ -329,7 +329,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' @param Email &#91;required&#93; The email address of the owner to assign to the new member account. This
 #' email address must not already be associated with another AWS account.
 #' You must use a valid email address to complete account creation. You
-#' can\'t access the root user of the account or remove an account that was
+#' can't access the root user of the account or remove an account that was
 #' created with an invalid email address.
 #' @param AccountName &#91;required&#93; The friendly name of the member account.
 #' @param RoleName (Optional)
@@ -340,7 +340,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' permitted by the master account administrator. The role has
 #' administrator permissions in the new member account.
 #' 
-#' If you don\'t specify this parameter, the role name defaults to
+#' If you don't specify this parameter, the role name defaults to
 #' `OrganizationAccountAccessRole`.
 #' 
 #' For more information about how to use this role to access the member
@@ -367,7 +367,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' Console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
 #' in the *AWS Billing and Cost Management User Guide*.
 #' 
-#' If you don\'t specify this parameter, the value defaults to `ALLOW`, and
+#' If you don't specify this parameter, the value defaults to `ALLOW`, and
 #' IAM users and roles with the required permissions can access billing
 #' information for the new account.
 #'
@@ -423,7 +423,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #'
 #' This action is available if all of the following are true:
 #' 
-#' -   You\'re authorized to create accounts in the AWS GovCloud (US)
+#' -   You're authorized to create accounts in the AWS GovCloud (US)
 #'     Region. For more information on the AWS GovCloud (US) Region, see
 #'     the [*AWS GovCloud User
 #'     Guide*.](http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/welcome.html)
@@ -521,7 +521,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #'     Support](https://console.aws.amazon.com/support/home#/).
 #' 
 #' -   Using `CreateGovCloudAccount` to create multiple temporary accounts
-#'     isn\'t recommended. You can only close an account from the AWS
+#'     isn't recommended. You can only close an account from the AWS
 #'     Billing and Cost Management console, and you must be signed in as
 #'     the root user. For information on the requirements and process for
 #'     closing an account, see [Closing an AWS
@@ -544,7 +544,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' @param Email &#91;required&#93; The email address of the owner to assign to the new member account in
 #' the commercial Region. This email address must not already be associated
 #' with another AWS account. You must use a valid email address to complete
-#' account creation. You can\'t access the root user of the account or
+#' account creation. You can't access the root user of the account or
 #' remove an account that was created with an invalid email address. Like
 #' all request parameters for `CreateGovCloudAccount`, the request for the
 #' email address for the AWS GovCloud (US) account originates from the
@@ -559,7 +559,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' permitted by the master account administrator. The role has
 #' administrator permissions in the new member account.
 #' 
-#' If you don\'t specify this parameter, the role name defaults to
+#' If you don't specify this parameter, the role name defaults to
 #' `OrganizationAccountAccessRole`.
 #' 
 #' For more information about how to use this role to access the member
@@ -582,7 +582,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' Console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
 #' in the *AWS Billing and Cost Management User Guide.*
 #' 
-#' If you don\'t specify this parameter, the value defaults to `ALLOW`, and
+#' If you don't specify this parameter, the value defaults to `ALLOW`, and
 #' IAM users and roles with the required permissions can access billing
 #' information for the new account.
 #'
@@ -624,8 +624,8 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #' of the new organization.
 #' 
 #' This operation must be called using credentials from the account that is
-#' to become the new organization\'s master account. The principal must
-#' also have the relevant IAM permissions.
+#' to become the new organization's master account. The principal must also
+#' have the relevant IAM permissions.
 #' 
 #' By default (or if you set the `FeatureSet` parameter to `ALL`), the new
 #' organization is created with all features enabled and service control
@@ -633,7 +633,7 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #' create the organization supporting only the consolidated billing
 #' features by setting the `FeatureSet` parameter to
 #' `CONSOLIDATED_BILLING\"`, no policy types are enabled by default, and
-#' you can\'t use organization policies
+#' you can't use organization policies
 #'
 #' @usage
 #' organizations_create_organization(FeatureSet)
@@ -647,7 +647,7 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #'     billing](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only)
 #'     in the *AWS Organizations User Guide.*
 #' 
-#'     The consolidated billing feature subset isn\'t available for
+#'     The consolidated billing feature subset isn't available for
 #'     organizations in the AWS GovCloud (US) Region.
 #' 
 #' -   `ALL`: In addition to all the features supported by the consolidated
@@ -717,7 +717,7 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #' Units](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html)
 #' in the *AWS Organizations User Guide.*
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -729,12 +729,12 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a parent ID
 #' string requires one of the following:
 #' 
-#' -   **Root** - A string that begins with \"r-\" followed by from 4 to 32
+#' -   **Root** - A string that begins with "r-" followed by from 4 to 32
 #'     lowercase letters or digits.
 #' 
-#' -   **Organizational unit (OU)** - A string that begins with \"ou-\"
+#' -   **Organizational unit (OU)** - A string that begins with "ou-"
 #'     followed by from 4 to 32 lowercase letters or digits (the ID of the
-#'     root that the OU is in). This string is followed by a second \"-\"
+#'     root that the OU is in). This string is followed by a second "-"
 #'     dash and from 8 to 32 additional lowercase letters or digits.
 #' @param Name &#91;required&#93; The friendly name to assign to the new OU.
 #'
@@ -788,7 +788,7 @@ organizations_create_organizational_unit <- function(ParentId, Name) {
 #' Organization
 #' Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html).
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -869,11 +869,11 @@ organizations_create_policy <- function(Content, Description, Name, Type) {
 #' 
 #' This operation can be called only from the account that received the
 #' handshake. The originator of the handshake can use CancelHandshake
-#' instead. The originator can\'t reactivate a declined request, but can
+#' instead. The originator can't reactivate a declined request, but can
 #' reinitiate the process with a new handshake request.
 #' 
 #' After you decline a handshake, it continues to appear in the results of
-#' relevant APIs for only 30 days. After that, it\'s deleted.
+#' relevant APIs for only 30 days. After that, it's deleted.
 #'
 #' @usage
 #' organizations_decline_handshake(HandshakeId)
@@ -882,7 +882,7 @@ organizations_create_policy <- function(Content, Description, Name, Type) {
 #' You can get the ID from the ListHandshakesForAccount operation.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for handshake ID
-#' string requires \"h-\" followed by from 8 to 32 lowercase letters or
+#' string requires "h-" followed by from 8 to 32 lowercase letters or
 #' digits.
 #'
 #' @section Request syntax:
@@ -961,7 +961,7 @@ organizations_delete_organization <- function() {
 #' first remove all accounts and child OUs from the OU that you want to
 #' delete.
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -972,10 +972,10 @@ organizations_delete_organization <- function() {
 #' operation.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for an
-#' organizational unit ID string requires \"ou-\" followed by from 4 to 32
+#' organizational unit ID string requires "ou-" followed by from 4 to 32
 #' lowercase letters or digits (the ID of the root that contains the OU).
-#' This string is followed by a second \"-\" dash and from 8 to 32
-#' additional lowercase letters or digits.
+#' This string is followed by a second "-" dash and from 8 to 32 additional
+#' lowercase letters or digits.
 #'
 #' @section Request syntax:
 #' ```
@@ -1021,7 +1021,7 @@ organizations_delete_organizational_unit <- function(OrganizationalUnitId) {
 #' this operation, you must first detach the policy from all organizational
 #' units (OUs), roots, and accounts.
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -1032,7 +1032,7 @@ organizations_delete_organizational_unit <- function(OrganizationalUnitId) {
 #' operations.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID
-#' string requires \"p-\" followed by from 8 to 128 lowercase or uppercase
+#' string requires "p-" followed by from 8 to 128 lowercase or uppercase
 #' letters, digits, or the underscore character (\\_).
 #'
 #' @section Request syntax:
@@ -1087,7 +1087,7 @@ organizations_delete_policy <- function(PolicyId) {
 #' Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrated-services-list.html)
 #' in the *AWS Organizations User Guide.*
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -1138,9 +1138,9 @@ organizations_deregister_delegated_administrator <- function(AccountId, ServiceP
 #' Retrieves AWS Organizations-related information about the specified
 #' account.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_describe_account(AccountId)
@@ -1194,9 +1194,9 @@ organizations_describe_account <- function(AccountId) {
 #' Retrieves the current status of an asynchronous request to create an
 #' account.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_describe_create_account_status(CreateAccountRequestId)
@@ -1206,7 +1206,7 @@ organizations_describe_account <- function(AccountId) {
 #' from the ListCreateAccountStatus operation.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a create
-#' account request ID string requires \"car-\" followed by from 8 to 32
+#' account request ID string requires "car-" followed by from 8 to 32
 #' lowercase letters or digits.
 #'
 #' @section Request syntax:
@@ -1264,9 +1264,9 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' Works](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies-inheritance.html)
 #' in the *AWS Organizations User Guide*.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_describe_effective_policy(PolicyType, TargetId)
@@ -1279,7 +1279,7 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' -   [BACKUP\\_POLICY](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
 #' -   [TAG\\_POLICY](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
-#' @param TargetId When you\'re signed in as the master account, specify the ID of the
+#' @param TargetId When you're signed in as the master account, specify the ID of the
 #' account that you want details about. Specifying an organization root or
 #' organizational unit (OU) as the target is not supported.
 #'
@@ -1318,7 +1318,7 @@ organizations_describe_effective_policy <- function(PolicyType, TargetId = NULL)
 #' InviteAccountToOrganization operation that generated the handshake.
 #' 
 #' You can access handshakes that are `ACCEPTED`, `DECLINED`, or `CANCELED`
-#' for only 30 days after they change to that state. They\'re then deleted
+#' for only 30 days after they change to that state. They're then deleted
 #' and no longer accessible.
 #' 
 #' This operation can be called from any account in the organization.
@@ -1332,7 +1332,7 @@ organizations_describe_effective_policy <- function(PolicyType, TargetId = NULL)
 #' or ListHandshakesForOrganization.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for handshake ID
-#' string requires \"h-\" followed by from 8 to 32 lowercase letters or
+#' string requires "h-" followed by from 8 to 32 lowercase letters or
 #' digits.
 #'
 #' @section Request syntax:
@@ -1376,7 +1376,7 @@ organizations_describe_handshake <- function(HandshakeId) {
 #' Retrieves information about the organization that the user's account
 #' belongs to
 #'
-#' Retrieves information about the organization that the user\'s account
+#' Retrieves information about the organization that the user's account
 #' belongs to.
 #' 
 #' This operation can be called from any account in the organization.
@@ -1423,9 +1423,9 @@ organizations_describe_organization <- function() {
 #'
 #' Retrieves information about an organizational unit (OU).
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_describe_organizational_unit(OrganizationalUnitId)
@@ -1435,10 +1435,10 @@ organizations_describe_organization <- function() {
 #' ListOrganizationalUnitsForParent operation.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for an
-#' organizational unit ID string requires \"ou-\" followed by from 4 to 32
+#' organizational unit ID string requires "ou-" followed by from 4 to 32
 #' lowercase letters or digits (the ID of the root that contains the OU).
-#' This string is followed by a second \"-\" dash and from 8 to 32
-#' additional lowercase letters or digits.
+#' This string is followed by a second "-" dash and from 8 to 32 additional
+#' lowercase letters or digits.
 #'
 #' @section Request syntax:
 #' ```
@@ -1479,9 +1479,9 @@ organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
 #'
 #' Retrieves information about a policy.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_describe_policy(PolicyId)
@@ -1491,7 +1491,7 @@ organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
 #' operations.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID
-#' string requires \"p-\" followed by from 8 to 128 lowercase or uppercase
+#' string requires "p-" followed by from 8 to 128 lowercase or uppercase
 #' letters, digits, or the underscore character (\\_).
 #'
 #' @section Request syntax:
@@ -1544,16 +1544,15 @@ organizations_describe_policy <- function(PolicyId) {
 #' want to replace the default `FullAWSAccess` policy with an SCP that
 #' limits the permissions that can be delegated, you must attach the
 #' replacement SCP before you can remove the default SCP. This is the
-#' authorization strategy of an \"[allow
-#' list](https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_allowlist)\".
+#' authorization strategy of an "[allow
+#' list](https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_allowlist)".
 #' If you instead attach a second SCP and leave the `FullAWSAccess` SCP
 #' still attached, and specify `"Effect": "Deny"` in the second SCP to
 #' override the `"Effect": "Allow"` in the `FullAWSAccess` policy (or any
-#' other attached SCP), you\'re using the authorization strategy of a
-#' \"[deny
-#' list](https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_denylist)\".
+#' other attached SCP), you're using the authorization strategy of a "[deny
+#' list](https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_denylist)".
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -1563,7 +1562,7 @@ organizations_describe_policy <- function(PolicyId) {
 #' the ID from the ListPolicies or ListPoliciesForTarget operations.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID
-#' string requires \"p-\" followed by from 8 to 128 lowercase or uppercase
+#' string requires "p-" followed by from 8 to 128 lowercase or uppercase
 #' letters, digits, or the underscore character (\\_).
 #' @param TargetId &#91;required&#93; The unique identifier (ID) of the root, OU, or account that you want to
 #' detach the policy from. You can get the ID from the ListRoots,
@@ -1572,14 +1571,14 @@ organizations_describe_policy <- function(PolicyId) {
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a target ID
 #' string requires one of the following:
 #' 
-#' -   **Root** - A string that begins with \"r-\" followed by from 4 to 32
+#' -   **Root** - A string that begins with "r-" followed by from 4 to 32
 #'     lowercase letters or digits.
 #' 
 #' -   **Account** - A string that consists of exactly 12 digits.
 #' 
-#' -   **Organizational unit (OU)** - A string that begins with \"ou-\"
+#' -   **Organizational unit (OU)** - A string that begins with "ou-"
 #'     followed by from 4 to 32 lowercase letters or digits (the ID of the
-#'     root that the OU is in). This string is followed by a second \"-\"
+#'     root that the OU is in). This string is followed by a second "-"
 #'     dash and from 8 to 32 additional lowercase letters or digits.
 #'
 #' @section Request syntax:
@@ -1627,7 +1626,7 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #' disable integration, the specified service no longer can create a
 #' [service-linked
 #' role](http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html)
-#' in *new* accounts in your organization. This means the service can\'t
+#' in *new* accounts in your organization. This means the service can't
 #' perform operations on your behalf on any new accounts in your
 #' organization. The service can still perform operations in older accounts
 #' until the service completes its clean-up from AWS Organizations.
@@ -1637,13 +1636,13 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #' provided by the specified service. Doing so ensures that the other
 #' service is aware that it can clean up any resources that are required
 #' only for the integration. How the service cleans up its resources in the
-#' organization\'s accounts depends on that service. For more information,
+#' organization's accounts depends on that service. For more information,
 #' see the documentation for the other AWS service.
 #' 
 #' After you perform the `DisableAWSServiceAccess` operation, the specified
-#' service can no longer perform operations in your organization\'s
-#' accounts unless the operations are explicitly permitted by the IAM
-#' policies that are attached to your roles.
+#' service can no longer perform operations in your organization's accounts
+#' unless the operations are explicitly permitted by the IAM policies that
+#' are attached to your roles.
 #' 
 #' For more information about integrating other services with AWS
 #' Organizations, including the list of services that work with
@@ -1651,7 +1650,7 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #' Services](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
 #' in the *AWS Organizations User Guide.*
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -1705,7 +1704,7 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' ListRoots to see the status of policy types for a specified root, and
 #' then use this operation.
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #' 
 #' To view the status of available policy types in the organization, use
@@ -1718,7 +1717,7 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' policy type. You can get the ID from the ListRoots operation.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a root ID
-#' string requires \"r-\" followed by from 4 to 32 lowercase letters or
+#' string requires "r-" followed by from 4 to 32 lowercase letters or
 #' digits.
 #' @param PolicyType &#91;required&#93; The policy type that you want to disable in this root. You can specify
 #' one of the following values:
@@ -1785,7 +1784,7 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 #' provided by the specified service. Doing so ensures that the service is
 #' aware that it can create the resources that are required for the
 #' integration. How the service creates those resources in the
-#' organization\'s accounts depends on that service. For more information,
+#' organization's accounts depends on that service. For more information,
 #' see the documentation for the other AWS service.
 #' 
 #' For more information about enabling services to integrate with AWS
@@ -1793,8 +1792,8 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 #' Services](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
 #' in the *AWS Organizations User Guide.*
 #' 
-#' This operation can be called only from the organization\'s master
-#' account and only if the organization has [enabled all
+#' This operation can be called only from the organization's master account
+#' and only if the organization has [enabled all
 #' features](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html).
 #'
 #' @usage
@@ -1836,7 +1835,7 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #' Enables all features in an organization. This enables the use of
 #' organization policies that can restrict the services and actions that
 #' can be called in each account. Until you enable all features, you have
-#' access only to consolidated billing, and you can\'t use any of the
+#' access only to consolidated billing, and you can't use any of the
 #' advanced account administration features that AWS Organizations
 #' supports. For more information, see [Enabling All Features in Your
 #' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
@@ -1865,7 +1864,7 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #' accounts from leaving the organization. Ensure that your account
 #' administrators are aware of this.
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -1920,7 +1919,7 @@ organizations_enable_all_features <- function() {
 #' recommends that you first use ListRoots to see the status of policy
 #' types for a specified root, and then use this operation.
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #' 
 #' You can enable a policy type in a root only if that policy type is
@@ -1934,7 +1933,7 @@ organizations_enable_all_features <- function() {
 #' policy type. You can get the ID from the ListRoots operation.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a root ID
-#' string requires \"r-\" followed by from 4 to 32 lowercase letters or
+#' string requires "r-" followed by from 4 to 32 lowercase letters or
 #' digits.
 #' @param PolicyType &#91;required&#93; The policy type that you want to enable. You can specify one of the
 #' following values:
@@ -1991,15 +1990,15 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #'
 #' Sends an invitation to another account to join your organization as a
 #' member account. AWS Organizations sends email on your behalf to the
-#' email address that is associated with the other account\'s owner. The
+#' email address that is associated with the other account's owner. The
 #' invitation is implemented as a Handshake whose details are in the
 #' response.
 #' 
 #' -   You can invite AWS accounts only from the same seller as the master
-#'     account. For example, if your organization\'s master account was
+#'     account. For example, if your organization's master account was
 #'     created by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller
 #'     in India, you can invite only other AISPL accounts to your
-#'     organization. You can\'t combine accounts from AISPL and AWS or from
+#'     organization. You can't combine accounts from AISPL and AWS or from
 #'     any other AWS seller. For more information, see [Consolidated
 #'     Billing in
 #'     India](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html).
@@ -2010,7 +2009,7 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #'     then try again. If the error persists after an hour, contact [AWS
 #'     Support](https://console.aws.amazon.com/support/home#/).
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -2113,7 +2112,7 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL) {
 #'     -   Provide a current payment method
 #' 
 #'     AWS uses the payment method to charge for any billable (not free
-#'     tier) AWS activity that occurs while the account isn\'t attached to
+#'     tier) AWS activity that occurs while the account isn't attached to
 #'     an organization. Follow the steps at [To leave an organization when
 #'     all required account information has not yet been
 #'     provided](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
@@ -2173,9 +2172,9 @@ organizations_leave_organization <- function() {
 #' Services](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
 #' in the *AWS Organizations User Guide.*
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_aws_service_access_for_organization(NextToken,
@@ -2184,8 +2183,8 @@ organizations_leave_organization <- function() {
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -2237,9 +2236,9 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
 #' `NextToken` response parameter value is `null` *only* when there are no
 #' more results to display.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_accounts(NextToken, MaxResults)
@@ -2247,8 +2246,8 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -2300,7 +2299,7 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #'
 #' Lists the accounts in an organization that are contained by the
 #' specified target root or organizational unit (OU). If you specify the
-#' root, you get a list of all the accounts that aren\'t in any OU. If you
+#' root, you get a list of all the accounts that aren't in any OU. If you
 #' specify an OU, you get a list of all the accounts in only that OU and
 #' not in any child OUs. To get a list of all accounts in the organization,
 #' use the ListAccounts operation.
@@ -2311,9 +2310,9 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #' `NextToken` response parameter value is `null` *only* when there are no
 #' more results to display.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_accounts_for_parent(ParentId, NextToken, MaxResults)
@@ -2323,8 +2322,8 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -2388,9 +2387,9 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #' `NextToken` response parameter value is `null` *only* when there are no
 #' more results to display.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_children(ParentId, ChildType, NextToken, MaxResults)
@@ -2401,19 +2400,19 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a parent ID
 #' string requires one of the following:
 #' 
-#' -   **Root** - A string that begins with \"r-\" followed by from 4 to 32
+#' -   **Root** - A string that begins with "r-" followed by from 4 to 32
 #'     lowercase letters or digits.
 #' 
-#' -   **Organizational unit (OU)** - A string that begins with \"ou-\"
+#' -   **Organizational unit (OU)** - A string that begins with "ou-"
 #'     followed by from 4 to 32 lowercase letters or digits (the ID of the
-#'     root that the OU is in). This string is followed by a second \"-\"
+#'     root that the OU is in). This string is followed by a second "-"
 #'     dash and from 8 to 32 additional lowercase letters or digits.
 #' @param ChildType &#91;required&#93; Filters the output to include only the specified child type.
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -2477,21 +2476,20 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
 #' `NextToken` response parameter value is `null` *only* when there are no
 #' more results to display.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_create_account_status(States, NextToken, MaxResults)
 #'
 #' @param States A list of one or more states that you want included in the response. If
-#' this parameter isn\'t present, all requests are included in the
-#' response.
+#' this parameter isn't present, all requests are included in the response.
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -2559,9 +2557,9 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
 #' Lists the AWS accounts that are designated as delegated administrators
 #' in this organization.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_delegated_administrators(ServicePrincipal, NextToken,
@@ -2570,13 +2568,13 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
 #' @param ServicePrincipal Specifies a service principal name. If specified, then the operation
 #' lists the delegated administrators only for the specified service.
 #' 
-#' If you don\'t specify a service principal, the operation lists all
+#' If you don't specify a service principal, the operation lists all
 #' delegated administrators for all services in your organization.
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -2623,9 +2621,9 @@ organizations_list_delegated_administrators <- function(ServicePrincipal = NULL,
 #' List the AWS services for which the specified account is a delegated
 #' administrator.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_delegated_services_for_account(AccountId, NextToken,
@@ -2636,8 +2634,8 @@ organizations_list_delegated_administrators <- function(ServicePrincipal = NULL,
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -2686,7 +2684,7 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
 #' 
 #' Handshakes that are `ACCEPTED`, `DECLINED`, or `CANCELED` appear in the
 #' results of this API for only 30 days after changing to that state. After
-#' that, they\'re deleted and no longer accessible.
+#' that, they're deleted and no longer accessible.
 #' 
 #' Always check the `NextToken` response parameter for a `null` value when
 #' calling a `List*` operation. These operations can occasionally return an
@@ -2694,9 +2692,9 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
 #' `NextToken` response parameter value is `null` *only* when there are no
 #' more results to display.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_handshakes_for_account(Filter, NextToken, MaxResults)
@@ -2711,8 +2709,8 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -2774,7 +2772,7 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
 #' 
 #' Handshakes that are `ACCEPTED`, `DECLINED`, or `CANCELED` appear in the
 #' results of this API for only 30 days after changing to that state. After
-#' that, they\'re deleted and no longer accessible.
+#' that, they're deleted and no longer accessible.
 #' 
 #' Always check the `NextToken` response parameter for a `null` value when
 #' calling a `List*` operation. These operations can occasionally return an
@@ -2782,9 +2780,9 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
 #' `NextToken` response parameter value is `null` *only* when there are no
 #' more results to display.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_handshakes_for_organization(Filter, NextToken,
@@ -2800,8 +2798,8 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -2864,9 +2862,9 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
 #' `NextToken` response parameter value is `null` *only* when there are no
 #' more results to display.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_organizational_units_for_parent(ParentId, NextToken,
@@ -2878,18 +2876,18 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a parent ID
 #' string requires one of the following:
 #' 
-#' -   **Root** - A string that begins with \"r-\" followed by from 4 to 32
+#' -   **Root** - A string that begins with "r-" followed by from 4 to 32
 #'     lowercase letters or digits.
 #' 
-#' -   **Organizational unit (OU)** - A string that begins with \"ou-\"
+#' -   **Organizational unit (OU)** - A string that begins with "ou-"
 #'     followed by from 4 to 32 lowercase letters or digits (the ID of the
-#'     root that the OU is in). This string is followed by a second \"-\"
+#'     root that the OU is in). This string is followed by a second "-"
 #'     dash and from 8 to 32 additional lowercase letters or digits.
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -2953,9 +2951,9 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
 #' `NextToken` response parameter value is `null` *only* when there are no
 #' more results to display.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #' 
 #' In the current release, a child can have only a single parent.
 #'
@@ -2963,22 +2961,22 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
 #' organizations_list_parents(ChildId, NextToken, MaxResults)
 #'
 #' @param ChildId &#91;required&#93; The unique identifier (ID) of the OU or account whose parent containers
-#' you want to list. Don\'t specify a root.
+#' you want to list. Don't specify a root.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a child ID
 #' string requires one of the following:
 #' 
 #' -   **Account** - A string that consists of exactly 12 digits.
 #' 
-#' -   **Organizational unit (OU)** - A string that begins with \"ou-\"
+#' -   **Organizational unit (OU)** - A string that begins with "ou-"
 #'     followed by from 4 to 32 lowercase letters or digits (the ID of the
-#'     root that contains the OU). This string is followed by a second
-#'     \"-\" dash and from 8 to 32 additional lowercase letters or digits.
+#'     root that contains the OU). This string is followed by a second "-"
+#'     dash and from 8 to 32 additional lowercase letters or digits.
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -3040,9 +3038,9 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' `NextToken` response parameter value is `null` *only* when there are no
 #' more results to display.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_policies(Filter, NextToken, MaxResults)
@@ -3060,8 +3058,8 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -3124,9 +3122,9 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' `NextToken` response parameter value is `null` *only* when there are no
 #' more results to display.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_policies_for_target(TargetId, Filter, NextToken,
@@ -3138,14 +3136,14 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a target ID
 #' string requires one of the following:
 #' 
-#' -   **Root** - A string that begins with \"r-\" followed by from 4 to 32
+#' -   **Root** - A string that begins with "r-" followed by from 4 to 32
 #'     lowercase letters or digits.
 #' 
 #' -   **Account** - A string that consists of exactly 12 digits.
 #' 
-#' -   **Organizational unit (OU)** - A string that begins with \"ou-\"
+#' -   **Organizational unit (OU)** - A string that begins with "ou-"
 #'     followed by from 4 to 32 lowercase letters or digits (the ID of the
-#'     root that the OU is in). This string is followed by a second \"-\"
+#'     root that the OU is in). This string is followed by a second "-"
 #'     dash and from 8 to 32 additional lowercase letters or digits.
 #' @param Filter &#91;required&#93; The type of policy that you want to include in the returned list. You
 #' must specify one of the following values:
@@ -3160,8 +3158,8 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -3226,12 +3224,12 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
 #' `NextToken` response parameter value is `null` *only* when there are no
 #' more results to display.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #' 
 #' Policy types can be enabled and disabled in roots. This is distinct from
-#' whether they\'re available in the organization. When you enable all
+#' whether they're available in the organization. When you enable all
 #' features, you make policy types available for use in that organization.
 #' Individual policy types can then be enabled and disabled in a root. To
 #' see the availability of a policy type in an organization, use
@@ -3243,8 +3241,8 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -3297,9 +3295,9 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
 #' 
 #' Currently, you can list tags on an account in AWS Organizations.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_tags_for_resource(ResourceId, NextToken)
@@ -3308,8 +3306,8 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #'
 #' @section Request syntax:
 #' ```
@@ -3351,9 +3349,9 @@ organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
 #' `NextToken` response parameter value is `null` *only* when there are no
 #' more results to display.
 #' 
-#' This operation can be called only from the organization\'s master
-#' account or by a member account that is a delegated administrator for an
-#' AWS service.
+#' This operation can be called only from the organization's master account
+#' or by a member account that is a delegated administrator for an AWS
+#' service.
 #'
 #' @usage
 #' organizations_list_targets_for_policy(PolicyId, NextToken, MaxResults)
@@ -3362,13 +3360,13 @@ organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
 #' know.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID
-#' string requires \"p-\" followed by from 8 to 128 lowercase or uppercase
+#' string requires "p-" followed by from 8 to 128 lowercase or uppercase
 #' letters, digits, or the underscore character (\\_).
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
-#' of the previous call\'s `NextToken` response to indicate where the
-#' output should continue from.
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -3424,7 +3422,7 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
 #' Moves an account from its current source parent root or organizational
 #' unit (OU) to the specified destination parent root or OU.
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -3441,12 +3439,12 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a parent ID
 #' string requires one of the following:
 #' 
-#' -   **Root** - A string that begins with \"r-\" followed by from 4 to 32
+#' -   **Root** - A string that begins with "r-" followed by from 4 to 32
 #'     lowercase letters or digits.
 #' 
-#' -   **Organizational unit (OU)** - A string that begins with \"ou-\"
+#' -   **Organizational unit (OU)** - A string that begins with "ou-"
 #'     followed by from 4 to 32 lowercase letters or digits (the ID of the
-#'     root that the OU is in). This string is followed by a second \"-\"
+#'     root that the OU is in). This string is followed by a second "-"
 #'     dash and from 8 to 32 additional lowercase letters or digits.
 #' @param DestinationParentId &#91;required&#93; The unique identifier (ID) of the root or organizational unit that you
 #' want to move the account to.
@@ -3454,12 +3452,12 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a parent ID
 #' string requires one of the following:
 #' 
-#' -   **Root** - A string that begins with \"r-\" followed by from 4 to 32
+#' -   **Root** - A string that begins with "r-" followed by from 4 to 32
 #'     lowercase letters or digits.
 #' 
-#' -   **Organizational unit (OU)** - A string that begins with \"ou-\"
+#' -   **Organizational unit (OU)** - A string that begins with "ou-"
 #'     followed by from 4 to 32 lowercase letters or digits (the ID of the
-#'     root that the OU is in). This string is followed by a second \"-\"
+#'     root that the OU is in). This string is followed by a second "-"
 #'     dash and from 8 to 32 additional lowercase letters or digits.
 #'
 #' @section Request syntax:
@@ -3517,7 +3515,7 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
 #' Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrated-services-list.html)
 #' in the *AWS Organizations User Guide.*
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -3561,13 +3559,13 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
 #'
 #' Removes the specified account from the organization.
 #' 
-#' The removed account becomes a standalone account that isn\'t a member of
-#' any organization. It\'s no longer subject to any policies and is
-#' responsible for its own bill payments. The organization\'s master
-#' account is no longer charged for any expenses accrued by the member
-#' account after it\'s removed from the organization.
+#' The removed account becomes a standalone account that isn't a member of
+#' any organization. It's no longer subject to any policies and is
+#' responsible for its own bill payments. The organization's master account
+#' is no longer charged for any expenses accrued by the member account
+#' after it's removed from the organization.
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account. Member accounts can remove themselves with LeaveOrganization
 #' instead.
 #' 
@@ -3580,8 +3578,8 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
 #' agreement (EULA), choose a support plan, provide and verify the required
 #' contact information, and provide a current payment method. AWS uses the
 #' payment method to charge for any billable (not free tier) AWS activity
-#' that occurs while the account isn\'t attached to an organization. To
-#' remove an account that doesn\'t yet have this information, you must sign
+#' that occurs while the account isn't attached to an organization. To
+#' remove an account that doesn't yet have this information, you must sign
 #' in as the member account and follow the steps at [To leave an
 #' organization when all required account information has not yet been
 #' provided](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
@@ -3638,7 +3636,7 @@ organizations_remove_account_from_organization <- function(AccountId) {
 #' 
 #' Currently, you can tag and untag accounts in AWS Organizations.
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -3647,7 +3645,7 @@ organizations_remove_account_from_organization <- function(AccountId) {
 #' @param ResourceId &#91;required&#93; The ID of the resource to add a tag to.
 #' @param Tags &#91;required&#93; The tag to add to the specified resource. You must specify both a tag
 #' key and value. You can set the value of a tag to an empty string, but
-#' you can\'t set it to null.
+#' you can't set it to null.
 #'
 #' @section Request syntax:
 #' ```
@@ -3688,7 +3686,7 @@ organizations_tag_resource <- function(ResourceId, Tags) {
 #' 
 #' Currently, you can tag and untag accounts in AWS Organizations.
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -3729,11 +3727,11 @@ organizations_untag_resource <- function(ResourceId, TagKeys) {
 
 #' Renames the specified organizational unit (OU)
 #'
-#' Renames the specified organizational unit (OU). The ID and ARN don\'t
+#' Renames the specified organizational unit (OU). The ID and ARN don't
 #' change. The child OUs and accounts remain in place, and any attached
 #' policies of the OU remain attached.
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -3743,10 +3741,10 @@ organizations_untag_resource <- function(ResourceId, TagKeys) {
 #' get the ID from the ListOrganizationalUnitsForParent operation.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for an
-#' organizational unit ID string requires \"ou-\" followed by from 4 to 32
+#' organizational unit ID string requires "ou-" followed by from 4 to 32
 #' lowercase letters or digits (the ID of the root that contains the OU).
-#' This string is followed by a second \"-\" dash and from 8 to 32
-#' additional lowercase letters or digits.
+#' This string is followed by a second "-" dash and from 8 to 32 additional
+#' lowercase letters or digits.
 #' @param Name The new name that you want to assign to the OU.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) that is used to
@@ -3794,10 +3792,10 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' Updates an existing policy with a new name, description, or content
 #'
 #' Updates an existing policy with a new name, description, or content. If
-#' you don\'t supply any parameter, that value remains unchanged. You
-#' can\'t change a policy\'s type.
+#' you don't supply any parameter, that value remains unchanged. You can't
+#' change a policy's type.
 #' 
-#' This operation can be called only from the organization\'s master
+#' This operation can be called only from the organization's master
 #' account.
 #'
 #' @usage
@@ -3806,7 +3804,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' @param PolicyId &#91;required&#93; The unique identifier (ID) of the policy that you want to update.
 #' 
 #' The [regex pattern](http://wikipedia.org/wiki/regex) for a policy ID
-#' string requires \"p-\" followed by from 8 to 128 lowercase or uppercase
+#' string requires "p-" followed by from 8 to 128 lowercase or uppercase
 #' letters, digits, or the underscore character (\\_).
 #' @param Name If provided, the new name for the policy.
 #' 
@@ -3815,7 +3813,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' ASCII character range.
 #' @param Description If provided, the new description for the policy.
 #' @param Content If provided, the new content for the policy. The text must be correctly
-#' formatted JSON that complies with the syntax for the policy\'s type. For
+#' formatted JSON that complies with the syntax for the policy's type. For
 #' more information, see [Service Control Policy
 #' Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html)
 #' in the *AWS Organizations User Guide.*

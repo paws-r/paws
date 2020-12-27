@@ -9,13 +9,13 @@ devicefarm_create_upload(projectArn, name, type, contentType)
 \arguments{
 \item{projectArn}{[required] The ARN of the project for the upload.}
 
-\item{name}{[required] The upload\'s file name. The name should not contain any forward slashes
+\item{name}{[required] The upload's file name. The name should not contain any forward slashes
 (\code{/}). If you are uploading an iOS app, the file name must end with the
 \code{.ipa} extension. If you are uploading an Android app, the file name
 must end with the \code{.apk} extension. For all others, the file name must
 end with the \code{.zip} file extension.}
 
-\item{type}{[required] The upload\'s upload type.
+\item{type}{[required] The upload's upload type.
 
 Must be one of the following values:
 \itemize{
@@ -56,7 +56,7 @@ Must be one of the following values:
 If you call \code{CreateUpload} with \code{WEB_APP} specified, AWS Device Farm
 throws an \code{ArgumentException} error.}
 
-\item{contentType}{The upload\'s content type (for example, \code{application/octet-stream}).}
+\item{contentType}{The upload's content type (for example, \code{application/octet-stream}).}
 }
 \description{
 Uploads an app or test scripts.

@@ -16,7 +16,7 @@ torrent files.}
 }
 \description{
 Return torrent files from a bucket. BitTorrent can save you bandwidth
-when you\'re distributing large files. For more information about
+when you're distributing large files. For more information about
 BitTorrent, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3Torrent.html}{Amazon S3 Torrent}.
 }
 \details{

@@ -21,7 +21,7 @@ Transfers the specified certificate to the specified AWS account.
 \details{
 You can cancel the transfer until it is acknowledged by the recipient.
 
-No notification is sent to the transfer destination\'s account. It is up
+No notification is sent to the transfer destination's account. It is up
 to the caller to notify the transfer target.
 
 The certificate being transferred must not be in the ACTIVE state. You

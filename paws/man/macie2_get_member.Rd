@@ -12,7 +12,7 @@ macie2_get_member(id)
 request applies to.}
 }
 \description{
-Retrieves information about a member account that\'s associated with an
+Retrieves information about a member account that's associated with an
 Amazon Macie master account.
 }
 \section{Request syntax}{

@@ -5,9 +5,9 @@ NULL
 
 #' Cancels a cluster job
 #'
-#' Cancels a cluster job. You can only cancel a cluster job while it\'s in
-#' the `AwaitingQuorum` status. You\'ll have at least an hour after
-#' creating a cluster job to cancel it.
+#' Cancels a cluster job. You can only cancel a cluster job while it's in
+#' the `AwaitingQuorum` status. You'll have at least an hour after creating
+#' a cluster job to cancel it.
 #'
 #' @usage
 #' snowball_cancel_cluster(ClusterId)
@@ -55,8 +55,8 @@ snowball_cancel_cluster <- function(ClusterId) {
 #'
 #' Cancels the specified job. You can only cancel a job before its
 #' `JobState` value changes to `PreparingAppliance`. Requesting the
-#' `ListJobs` or `DescribeJob` action returns a job\'s `JobState` as part
-#' of the response element data returned.
+#' `ListJobs` or `DescribeJob` action returns a job's `JobState` as part of
+#' the response element data returned.
 #'
 #' @usage
 #' snowball_cancel_job(JobId)
@@ -205,8 +205,8 @@ snowball_create_address <- function(Address) {
 #' 
 #' For cluster jobs, AWS Snowball currently supports only the `EDGE` device
 #' type.
-#' @param ShippingOption &#91;required&#93; The shipping speed for each node in this cluster. This speed doesn\'t
-#' dictate how soon you\'ll get each Snowball Edge device, rather it
+#' @param ShippingOption &#91;required&#93; The shipping speed for each node in this cluster. This speed doesn't
+#' dictate how soon you'll get each Snowball Edge device, rather it
 #' represents how quickly each device moves to its destination while in
 #' transit. Regional shipping speeds are as follows:
 #' 
@@ -354,7 +354,7 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' Creates a job to import or export data between Amazon S3 and your
 #' on-premises data center. Your AWS account must have the right trust
 #' policies and permissions in place to create a job for Snowball. If
-#' you\'re creating a job for a node in a cluster, you only need to provide
+#' you're creating a job for a node in a cluster, you only need to provide
 #' the `clusterId` value; the other job attributes are inherited from the
 #' cluster.
 #'
@@ -364,7 +364,7 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #'   Notification, ClusterId, SnowballType, ForwardingAddressId,
 #'   TaxDocuments, DeviceConfiguration)
 #'
-#' @param JobType Defines the type of job that you\'re creating.
+#' @param JobType Defines the type of job that you're creating.
 #' @param Resources Defines the Amazon S3 buckets associated with this job.
 #' 
 #' With `IMPORT` jobs, you specify the bucket or buckets that your
@@ -388,10 +388,10 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' [CreateRole](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
 #' AWS Identity and Access Management (IAM) API action.
 #' @param SnowballCapacityPreference If your job is being created in one of the US regions, you have the
-#' option of specifying what size Snowball you\'d like for this job. In all
+#' option of specifying what size Snowball you'd like for this job. In all
 #' other regions, Snowballs come with 80 TB in storage capacity.
-#' @param ShippingOption The shipping speed for this job. This speed doesn\'t dictate how soon
-#' you\'ll get the Snowball, rather it represents how quickly the Snowball
+#' @param ShippingOption The shipping speed for this job. This speed doesn't dictate how soon
+#' you'll get the Snowball, rather it represents how quickly the Snowball
 #' moves to its destination while in transit. Regional shipping speeds are
 #' as follows:
 #' 
@@ -408,7 +408,7 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' -   In the US, you have access to one-day shipping and two-day shipping.
 #' @param Notification Defines the Amazon Simple Notification Service (Amazon SNS) notification
 #' settings for this job.
-#' @param ClusterId The ID of a cluster. If you\'re creating a job for a node in a cluster,
+#' @param ClusterId The ID of a cluster. If you're creating a job for a node in a cluster,
 #' you need to provide only this `clusterId` value. The other job
 #' attributes are inherited from the cluster.
 #' @param SnowballType The type of AWS Snowball device to use for this job.
@@ -602,10 +602,9 @@ snowball_describe_address <- function(AddressId) {
 #' snowball_describe_addresses(MaxResults, NextToken)
 #'
 #' @param MaxResults The number of `ADDRESS` objects to return.
-#' @param NextToken HTTP requests are stateless. To identify what object comes \"next\" in
-#' the list of `ADDRESS` objects, you have the option of specifying a value
-#' for `NextToken` as the starting point for your list of returned
-#' addresses.
+#' @param NextToken HTTP requests are stateless. To identify what object comes "next" in the
+#' list of `ADDRESS` objects, you have the option of specifying a value for
+#' `NextToken` as the starting point for your list of returned addresses.
 #'
 #' @section Request syntax:
 #' ```
@@ -744,7 +743,7 @@ snowball_describe_job <- function(JobId) {
 #' Returns a link to an Amazon S3 presigned URL for the manifest file
 #' associated with the specified `JobId` value. You can access the manifest
 #' file for up to 60 minutes after this request has been made. To access
-#' the manifest file after 60 minutes have passed, you\'ll have to make
+#' the manifest file after 60 minutes have passed, you'll have to make
 #' another call to the `GetJobManifest` action.
 #' 
 #' The manifest is an encrypted file that you can download after your job
@@ -753,7 +752,7 @@ snowball_describe_job <- function(JobId) {
 #' through the Snowball client when the client is started for the first
 #' time.
 #' 
-#' As a best practice, we recommend that you don\'t save a copy of an
+#' As a best practice, we recommend that you don't save a copy of an
 #' `UnlockCode` value in the same location as the manifest file for that
 #' job. Saving these separately helps prevent unauthorized parties from
 #' gaining access to the Snowball associated with that job.
@@ -832,7 +831,7 @@ snowball_get_job_manifest <- function(JobId) {
 #' when it is passed along with the manifest to the Snowball through the
 #' Snowball client when the client is started for the first time.
 #' 
-#' As a best practice, we recommend that you don\'t save a copy of the
+#' As a best practice, we recommend that you don't save a copy of the
 #' `UnlockCode` in the same location as the manifest file for that job.
 #' Saving these separately helps prevent unauthorized parties from gaining
 #' access to the Snowball associated with that job.
@@ -983,7 +982,7 @@ snowball_get_software_updates <- function(JobId) {
 #'
 #' Returns an array of `JobListEntry` objects of the specified length. Each
 #' `JobListEntry` object is for a job in the specified cluster and contains
-#' a job\'s state, a job\'s ID, and other information.
+#' a job's state, a job's ID, and other information.
 #'
 #' @usage
 #' snowball_list_cluster_jobs(ClusterId, MaxResults, NextToken)
@@ -991,8 +990,8 @@ snowball_get_software_updates <- function(JobId) {
 #' @param ClusterId &#91;required&#93; The 39-character ID for the cluster that you want to list, for example
 #' `CID123e4567-e89b-12d3-a456-426655440000`.
 #' @param MaxResults The number of `JobListEntry` objects to return.
-#' @param NextToken HTTP requests are stateless. To identify what object comes \"next\" in
-#' the list of `JobListEntry` objects, you have the option of specifying
+#' @param NextToken HTTP requests are stateless. To identify what object comes "next" in the
+#' list of `JobListEntry` objects, you have the option of specifying
 #' `NextToken` as the starting point for your returned list.
 #'
 #' @section Request syntax:
@@ -1037,16 +1036,16 @@ snowball_list_cluster_jobs <- function(ClusterId, MaxResults = NULL, NextToken =
 #' Returns an array of ClusterListEntry objects of the specified length
 #'
 #' Returns an array of `ClusterListEntry` objects of the specified length.
-#' Each `ClusterListEntry` object contains a cluster\'s state, a cluster\'s
+#' Each `ClusterListEntry` object contains a cluster's state, a cluster's
 #' ID, and other important status information.
 #'
 #' @usage
 #' snowball_list_clusters(MaxResults, NextToken)
 #'
 #' @param MaxResults The number of `ClusterListEntry` objects to return.
-#' @param NextToken HTTP requests are stateless. To identify what object comes \"next\" in
-#' the list of `ClusterListEntry` objects, you have the option of
-#' specifying `NextToken` as the starting point for your returned list.
+#' @param NextToken HTTP requests are stateless. To identify what object comes "next" in the
+#' list of `ClusterListEntry` objects, you have the option of specifying
+#' `NextToken` as the starting point for your returned list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1100,9 +1099,9 @@ snowball_list_clusters <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @param MaxResults The maximum number of results for the list of compatible images.
 #' Currently, a Snowball Edge device can store 10 AMIs.
-#' @param NextToken HTTP requests are stateless. To identify what object comes \"next\" in
-#' the list of compatible images, you can specify a value for `NextToken`
-#' as the starting point for your list of returned images.
+#' @param NextToken HTTP requests are stateless. To identify what object comes "next" in the
+#' list of compatible images, you can specify a value for `NextToken` as
+#' the starting point for your list of returned images.
 #'
 #' @section Request syntax:
 #' ```
@@ -1135,7 +1134,7 @@ snowball_list_compatible_images <- function(MaxResults = NULL, NextToken = NULL)
 #' Returns an array of JobListEntry objects of the specified length
 #'
 #' Returns an array of `JobListEntry` objects of the specified length. Each
-#' `JobListEntry` object contains a job\'s state, a job\'s ID, and a value
+#' `JobListEntry` object contains a job's state, a job's ID, and a value
 #' that indicates whether the job is a job part, in the case of export
 #' jobs. Calling this API action in one of the US regions will return jobs
 #' from the list of all jobs associated with this account in all US
@@ -1145,8 +1144,8 @@ snowball_list_compatible_images <- function(MaxResults = NULL, NextToken = NULL)
 #' snowball_list_jobs(MaxResults, NextToken)
 #'
 #' @param MaxResults The number of `JobListEntry` objects to return.
-#' @param NextToken HTTP requests are stateless. To identify what object comes \"next\" in
-#' the list of `JobListEntry` objects, you have the option of specifying
+#' @param NextToken HTTP requests are stateless. To identify what object comes "next" in the
+#' list of `JobListEntry` objects, you have the option of specifying
 #' `NextToken` as the starting point for your returned list.
 #'
 #' @section Request syntax:
@@ -1190,10 +1189,10 @@ snowball_list_jobs <- function(MaxResults = NULL, NextToken = NULL) {
 #' While a cluster's ClusterState value is in the AwaitingQuorum state, you
 #' can update some of the information associated with a cluster
 #'
-#' While a cluster\'s `ClusterState` value is in the `AwaitingQuorum`
-#' state, you can update some of the information associated with a cluster.
-#' Once the cluster changes to a different job state, usually 60 minutes
-#' after the cluster being created, this action is no longer available.
+#' While a cluster's `ClusterState` value is in the `AwaitingQuorum` state,
+#' you can update some of the information associated with a cluster. Once
+#' the cluster changes to a different job state, usually 60 minutes after
+#' the cluster being created, this action is no longer available.
 #'
 #' @usage
 #' snowball_update_cluster(ClusterId, RoleARN, Description, Resources,
@@ -1209,7 +1208,7 @@ snowball_list_jobs <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param Resources The updated arrays of JobResource objects that can include updated
 #' S3Resource objects or LambdaResource objects.
 #' @param AddressId The ID of the updated Address object.
-#' @param ShippingOption The updated shipping option value of this cluster\'s ShippingDetails
+#' @param ShippingOption The updated shipping option value of this cluster's ShippingDetails
 #' object.
 #' @param Notification The new or updated Notification object.
 #' @param ForwardingAddressId The updated ID for the forwarding address for a cluster. This field is
@@ -1296,7 +1295,7 @@ snowball_update_cluster <- function(ClusterId, RoleARN = NULL, Description = NUL
 #' While a job's JobState value is New, you can update some of the
 #' information associated with a job
 #'
-#' While a job\'s `JobState` value is `New`, you can update some of the
+#' While a job's `JobState` value is `New`, you can update some of the
 #' information associated with a job. Once the job changes to a different
 #' job state, usually within 60 minutes of the job being created, this
 #' action is no longer available.
@@ -1315,9 +1314,9 @@ snowball_update_cluster <- function(ClusterId, RoleARN = NULL, Description = NUL
 #' @param Notification The new or updated Notification object.
 #' @param Resources The updated `JobResource` object, or the updated JobResource object.
 #' @param AddressId The ID of the updated Address object.
-#' @param ShippingOption The updated shipping option value of this job\'s ShippingDetails object.
-#' @param Description The updated description of this job\'s JobMetadata object.
-#' @param SnowballCapacityPreference The updated `SnowballCapacityPreference` of this job\'s JobMetadata
+#' @param ShippingOption The updated shipping option value of this job's ShippingDetails object.
+#' @param Description The updated description of this job's JobMetadata object.
+#' @param SnowballCapacityPreference The updated `SnowballCapacityPreference` of this job's JobMetadata
 #' object. The 50 TB Snowballs are only available in the US regions.
 #' @param ForwardingAddressId The updated ID for the forwarding address for a job. This field is not
 #' supported in most regions.

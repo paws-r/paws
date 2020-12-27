@@ -13,7 +13,7 @@ ec2_provision_byoip_cidr(Cidr, CidrAuthorizationContext,
 \item{Cidr}{[required] The public IPv4 or IPv6 address range, in CIDR notation. The most
 specific IPv4 prefix that you can specify is /24. The most specific IPv6
 prefix you can specify is /56. The address range cannot overlap with
-another address range that you\'ve brought to this or another Region.}
+another address range that you've brought to this or another Region.}
 
 \item{CidrAuthorizationContext}{A signed document that proves that you are authorized to bring the
 specified IP address range to Amazon using BYOIP.}

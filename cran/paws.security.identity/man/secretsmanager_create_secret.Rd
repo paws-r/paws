@@ -25,7 +25,7 @@ specifies a unique identifier for the new version.
 If you use the AWS CLI or one of the AWS SDK to call this operation,
 then you can leave this parameter empty. The CLI or SDK generates a
 random UUID for you and includes it as the value for this parameter in
-the request. If you don\'t use the SDK and instead generate a raw HTTP
+the request. If you don't use the SDK and instead generate a raw HTTP
 request to the Secrets Manager service endpoint, then you must generate
 a \code{ClientRequestToken} yourself for the new version and include the
 value in the request.
@@ -36,12 +36,12 @@ failures and retries during a rotation. We recommend that you generate a
 \href{https://wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
 value to ensure uniqueness of your versions within the specified secret.
 \itemize{
-\item If the \code{ClientRequestToken} value isn\'t already associated with a
+\item If the \code{ClientRequestToken} value isn't already associated with a
 version of the secret then a new version of the secret is created.
 \item If a version with this value already exists and the version
 \code{SecretString} and \code{SecretBinary} values are the same as those in
 the request, then the request is ignored.
-\item If a version with this value already exists and that version\'s
+\item If a version with this value already exists and that version's
 \code{SecretString} and \code{SecretBinary} values are different from those in
 the request then the request fails because you cannot modify an
 existing version. Instead, use PutSecretValue to create a new
@@ -60,11 +60,11 @@ You can specify any of the supported ways to identify a AWS KMS key ID.
 If you need to reference a CMK in a different account, you can use only
 the key ARN or the alias ARN.
 
-If you don\'t specify this value, then Secrets Manager defaults to using
-the AWS account\'s default CMK (the one named \code{aws/secretsmanager}). If
-a AWS KMS CMK with that name doesn\'t yet exist, then Secrets Manager
+If you don't specify this value, then Secrets Manager defaults to using
+the AWS account's default CMK (the one named \code{aws/secretsmanager}). If a
+AWS KMS CMK with that name doesn't yet exist, then Secrets Manager
 creates it for you automatically the first time it needs to encrypt a
-version\'s \code{SecretString} or \code{SecretBinary} fields.
+version's \code{SecretString} or \code{SecretBinary} fields.
 
 You can use the account default CMK to encrypt and decrypt only if you
 call this operation using credentials from the same account that owns
@@ -108,12 +108,12 @@ parameter, you should use single quotes to avoid confusion with the
 double quotes required in the JSON text.}
 
 \item{Tags}{(Optional) Specifies a list of user-defined tags that are attached to
-the secret. Each tag is a \"Key\" and \"Value\" pair of strings. This
+the secret. Each tag is a "Key" and "Value" pair of strings. This
 operation only appends tags to the existing list of tags. To remove
 tags, you must use UntagResource.
 \itemize{
 \item Secrets Manager tag key names are case sensitive. A tag with the key
-\"ABC\" is a different tag from one with key \"abc\".
+"ABC" is a different tag from one with key "abc".
 \item If you check tags in IAM policy \code{Condition} elements as part of your
 security strategy, then adding or removing a tag can change
 permissions. If the successful completion of this operation would
@@ -134,12 +134,12 @@ double quotes required in the JSON text.
 
 The following basic restrictions apply to tags:
 \itemize{
-\item Maximum number of tags per secret---50
-\item Maximum key length---127 Unicode characters in UTF-8
-\item Maximum value length---255 Unicode characters in UTF-8
+\item Maximum number of tags per secret—50
+\item Maximum key length—127 Unicode characters in UTF-8
+\item Maximum value length—255 Unicode characters in UTF-8
 \item Tag keys and values are case sensitive.
 \item Do not use the \verb{aws:} prefix in your tag names or values because AWS
-reserves it for AWS use. You can\'t edit or delete tag names or
+reserves it for AWS use. You can't edit or delete tag names or
 values with this prefix. Tags with this prefix do not count against
 your tags per secret limit.
 \item If you use your tagging schema across multiple services and
@@ -156,13 +156,13 @@ secret.
 }
 \details{
 Secrets Manager stores the encrypted secret data in one of a collection
-of \"versions\" associated with the secret. Each version contains a copy
+of "versions" associated with the secret. Each version contains a copy
 of the encrypted secret data. Each version is associated with one or
-more \"staging labels\" that identify where the version is in the
-rotation cycle. The \code{SecretVersionsToStages} field of the secret
-contains the mapping of staging labels to the active versions of the
-secret. Versions without a staging label are considered deprecated and
-not included in the list.
+more "staging labels" that identify where the version is in the rotation
+cycle. The \code{SecretVersionsToStages} field of the secret contains the
+mapping of staging labels to the active versions of the secret. Versions
+without a staging label are considered deprecated and not included in
+the list.
 
 You provide the secret data to be encrypted by putting text in either
 the \code{SecretString} parameter or binary data in the \code{SecretBinary}
@@ -173,25 +173,25 @@ version.
 \itemize{
 \item If you call an operation to encrypt or decrypt the \code{SecretString} or
 \code{SecretBinary} for a secret in the same account as the calling user
-and that secret doesn\'t specify a AWS KMS encryption key, Secrets
-Manager uses the account\'s default AWS managed customer master key
-(CMK) with the alias \code{aws/secretsmanager}. If this key doesn\'t
+and that secret doesn't specify a AWS KMS encryption key, Secrets
+Manager uses the account's default AWS managed customer master key
+(CMK) with the alias \code{aws/secretsmanager}. If this key doesn't
 already exist in your account then Secrets Manager creates it for
 you automatically. All users and roles in the same AWS account
 automatically have access to use the default CMK. Note that if an
-Secrets Manager API call results in AWS creating the account\'s
+Secrets Manager API call results in AWS creating the account's
 AWS-managed CMK, it can result in a one-time significant delay in
 returning the result.
 \item If the secret resides in a different AWS account from the
 credentials calling an API that requires encryption or decryption of
 the secret value then you must create and use a custom AWS KMS CMK
-because you can\'t access the default CMK for the account using
+because you can't access the default CMK for the account using
 credentials from a different AWS account. Store the ARN of the CMK
 in the secret when you create the secret or when you update it by
 including it in the \code{KMSKeyId}. If you call an API that must encrypt
 or decrypt \code{SecretString} or \code{SecretBinary} using credentials from a
 different account then the AWS KMS key policy must grant
-cross-account access to that other account\'s user or role for both
+cross-account access to that other account's user or role for both
 the kms:GenerateDataKey and kms:Decrypt operations.
 }
 

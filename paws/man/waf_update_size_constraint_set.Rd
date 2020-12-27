@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_update_size_constraint_set}
 \alias{waf_update_size_constraint_set}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_update_size_constraint_set(SizeConstraintSetId, ChangeToken,
   Updates)

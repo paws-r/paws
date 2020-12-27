@@ -12,16 +12,16 @@ sns_publish(TopicArn, TargetArn, PhoneNumber, Message, Subject,
 \arguments{
 \item{TopicArn}{The topic you want to publish to.
 
-If you don\'t specify a value for the \code{TopicArn} parameter, you must
+If you don't specify a value for the \code{TopicArn} parameter, you must
 specify a value for the \code{PhoneNumber} or \code{TargetArn} parameters.}
 
-\item{TargetArn}{If you don\'t specify a value for the \code{TargetArn} parameter, you must
+\item{TargetArn}{If you don't specify a value for the \code{TargetArn} parameter, you must
 specify a value for the \code{PhoneNumber} or \code{TopicArn} parameters.}
 
 \item{PhoneNumber}{The phone number to which you want to deliver an SMS message. Use E.164
 format.
 
-If you don\'t specify a value for the \code{PhoneNumber} parameter, you must
+If you don't specify a value for the \code{PhoneNumber} parameter, you must
 specify a value for the \code{TargetArn} or \code{TopicArn} parameters.}
 
 \item{Message}{[required] The message you want to send.
@@ -43,7 +43,7 @@ UCS-2 characters.
 
 If you publish a message that exceeds this size limit, Amazon SNS
 sends the message as multiple messages, each fitting within the size
-limit. Messages aren\'t truncated mid-word but are cut off at
+limit. Messages aren't truncated mid-word but are cut off at
 whole-word boundaries.
 
 The total size limit for a single SMS \code{Publish} action is 1,600
@@ -58,7 +58,7 @@ protocols must have simple JSON string values.
 outgoing messages.
 \item Outbound notifications are JSON encoded (meaning that the characters
 will be reescaped for sending).
-\item Values have a minimum length of 0 (the empty string, \"\", is
+\item Values have a minimum length of 0 (the empty string, "", is
 allowed).
 \item Values have a maximum length bounded by the overall message size
 (so, including multiple protocols may limit message sizes).
@@ -70,8 +70,8 @@ ignored.
 cause the \code{Publish} call to return an error (no partial delivery).
 }}
 
-\item{Subject}{Optional parameter to be used as the \"Subject\" line when the message
-is delivered to email endpoints. This field will also be included, if
+\item{Subject}{Optional parameter to be used as the "Subject" line when the message is
+delivered to email endpoints. This field will also be included, if
 present, in the standard JSON messages delivered to other endpoints.
 
 Constraints: Subjects must be ASCII text that begins with a letter,
@@ -85,12 +85,12 @@ subscribers. If you set \code{MessageStructure} to \code{json}, the value of the
 \code{Message} parameter must:
 \itemize{
 \item be a syntactically valid JSON object; and
-\item contain at least a top-level JSON key of \"default\" with a value
-that is a string.
+\item contain at least a top-level JSON key of "default" with a value that
+is a string.
 }
 
 You can define other top-level keys that define the message you want to
-send to a specific transport protocol (e.g., \"http\").
+send to a specific transport protocol (e.g., "http").
 
 Valid value: \code{json}}
 

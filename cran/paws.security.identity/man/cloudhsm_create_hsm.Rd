@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsm_operations.R
 \name{cloudhsm_create_hsm}
 \alias{cloudhsm_create_hsm}
-\title{This is documentation for AWS CLOUDHSM CLASSIC}
+\title{This is documentation for AWS CloudHSM Classic}
 \usage{
 cloudhsm_create_hsm(SubnetId, SshKey, EniIp, IamRoleArn, ExternalId,
   SubscriptionType, ClientToken, SyslogIp)
@@ -12,7 +12,7 @@ cloudhsm_create_hsm(SubnetId, SshKey, EniIp, IamRoleArn, ExternalId,
 
 \item{SshKey}{[required] The SSH public key to install on the HSM.}
 
-\item{EniIp}{The IP address to assign to the HSM\'s ENI.
+\item{EniIp}{The IP address to assign to the HSM's ENI.
 
 If an IP address is not specified, an IP address will be randomly chosen
 from the CIDR range of the subnet.}

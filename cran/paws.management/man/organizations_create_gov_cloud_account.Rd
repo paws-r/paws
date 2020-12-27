@@ -12,7 +12,7 @@ organizations_create_gov_cloud_account(Email, AccountName, RoleName,
 \item{Email}{[required] The email address of the owner to assign to the new member account in
 the commercial Region. This email address must not already be associated
 with another AWS account. You must use a valid email address to complete
-account creation. You can\'t access the root user of the account or
+account creation. You can't access the root user of the account or
 remove an account that was created with an invalid email address. Like
 all request parameters for \code{CreateGovCloudAccount}, the request for the
 email address for the AWS GovCloud (US) account originates from the
@@ -29,7 +29,7 @@ account, allowing users in the master account to assume the role, as
 permitted by the master account administrator. The role has
 administrator permissions in the new member account.
 
-If you don\'t specify this parameter, the role name defaults to
+If you don't specify this parameter, the role name defaults to
 \code{OrganizationAccountAccessRole}.
 
 For more information about how to use this role to access the member
@@ -49,7 +49,7 @@ new account can access account billing information. For more
 information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate}{Activating Access to the Billing and Cost Management Console}
 in the \emph{AWS Billing and Cost Management User Guide.}
 
-If you don\'t specify this parameter, the value defaults to \code{ALLOW}, and
+If you don't specify this parameter, the value defaults to \code{ALLOW}, and
 IAM users and roles with the required permissions can access billing
 information for the new account.}
 }
@@ -58,7 +58,7 @@ This action is available if all of the following are true:
 }
 \details{
 \itemize{
-\item You\'re authorized to create accounts in the AWS GovCloud (US)
+\item You're authorized to create accounts in the AWS GovCloud (US)
 Region. For more information on the AWS GovCloud (US) Region, see
 the \href{http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/welcome.html}{\emph{AWS GovCloud User Guide}.}
 \item You already have an account in the AWS GovCloud (US) Region that is
@@ -138,7 +138,7 @@ account limits for the organization, contact \href{https://console.aws.amazon.co
 because your organization is still initializing, wait one hour and
 then try again. If the error persists, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
 \item Using \code{CreateGovCloudAccount} to create multiple temporary accounts
-isn\'t recommended. You can only close an account from the AWS
+isn't recommended. You can only close an account from the AWS
 Billing and Cost Management console, and you must be signed in as
 the root user. For information on the requirements and process for
 closing an account, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html}{Closing an AWS Account}

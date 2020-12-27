@@ -15,7 +15,7 @@ dedicated IP pool.}
 to use Transport Layer Security (TLS). If the value is \code{Require},
 messages are only delivered if a TLS connection can be established. If
 the value is \code{Optional}, messages can be delivered in plain text if a
-TLS connection can\'t be established.}
+TLS connection can't be established.}
 
 \item{SendingPoolName}{The name of the dedicated IP pool that you want to associate with the
 configuration set.}

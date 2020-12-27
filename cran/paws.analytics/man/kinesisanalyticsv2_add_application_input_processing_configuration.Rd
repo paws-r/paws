@@ -27,7 +27,7 @@ using the DescribeApplication operation.}
 \description{
 Adds an InputProcessingConfiguration to an SQL-based Kinesis Data
 Analytics application. An input processor pre-processes records on the
-input stream before the application\'s SQL code executes. Currently, the
+input stream before the application's SQL code executes. Currently, the
 only input processor available is \href{https://aws.amazon.com/documentation/lambda/}{AWS Lambda}.
 }
 \section{Request syntax}{

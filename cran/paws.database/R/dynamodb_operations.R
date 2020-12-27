@@ -11,15 +11,15 @@ NULL
 #' 
 #' A single operation can retrieve up to 16 MB of data, which can contain
 #' as many as 100 items. `BatchGetItem` returns a partial result if the
-#' response size limit is exceeded, the table\'s provisioned throughput is
+#' response size limit is exceeded, the table's provisioned throughput is
 #' exceeded, or an internal processing failure occurs. If a partial result
 #' is returned, the operation returns a value for `UnprocessedKeys`. You
 #' can use this value to retry the operation starting with the next item to
 #' get.
 #' 
 #' If you request more than 100 items, `BatchGetItem` returns a
-#' `ValidationException` with the message \"Too many items requested for
-#' the BatchGetItem call.\"
+#' `ValidationException` with the message "Too many items requested for the
+#' BatchGetItem call."
 #' 
 #' For example, if you ask to retrieve 100 items, but each individual item
 #' is 300 KB in size, the system returns 52 items (so as not to exceed the
@@ -259,7 +259,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' 
 #' The individual `PutItem` and `DeleteItem` operations specified in
 #' `BatchWriteItem` are atomic; however `BatchWriteItem` as a whole is not.
-#' If any requested operations fail because the table\'s provisioned
+#' If any requested operations fail because the table's provisioned
 #' throughput is exceeded or an internal processing failure occurs, the
 #' failed operations are returned in the `UnprocessedItems` response
 #' parameter. You can investigate and optionally resend the requests.
@@ -294,12 +294,11 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' 
 #' If you use a programming language that supports concurrency, you can use
 #' threads to write items in parallel. Your application must include the
-#' necessary logic to manage the threads. With languages that don\'t
-#' support threading, you must update or delete the specified items one at
-#' a time. In both situations, `BatchWriteItem` performs the specified put
-#' and delete operations in parallel, giving you the power of the thread
-#' pool approach without having to introduce complexity into your
-#' application.
+#' necessary logic to manage the threads. With languages that don't support
+#' threading, you must update or delete the specified items one at a time.
+#' In both situations, `BatchWriteItem` performs the specified put and
+#' delete operations in parallel, giving you the power of the thread pool
+#' approach without having to introduce complexity into your application.
 #' 
 #' Parallel processing reduces latency, but each specified put and delete
 #' request consumes the same number of write capacity units whether it is
@@ -313,7 +312,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #'     not exist.
 #' 
 #' -   Primary key attributes specified on an item in the request do not
-#'     match those in the corresponding table\'s primary key schema.
+#'     match those in the corresponding table's primary key schema.
 #' 
 #' -   You try to perform multiple operations on the same item in the same
 #'     `BatchWriteItem` request. For example, you cannot put and delete the
@@ -359,7 +358,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' 
 #'         If you specify any attributes that are part of an index key,
 #'         then the data types for those attributes must match those of the
-#'         schema in the table\'s attribute definition.
+#'         schema in the table's attribute definition.
 #' @param ReturnConsumedCapacity 
 #' @param ReturnItemCollectionMetrics Determines whether item collection metrics are returned. If set to
 #' `SIZE`, the response includes statistics about item collections, if any,
@@ -711,12 +710,12 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'     -   `RANGE` - sort key
 #' 
 #' The partition key of an item is also known as its *hash attribute*. The
-#' term \"hash attribute\" derives from the DynamoDB usage of an internal
+#' term "hash attribute" derives from the DynamoDB usage of an internal
 #' hash function to evenly distribute data items across partitions, based
 #' on their partition key values.
 #' 
 #' The sort key of an item is also known as its *range attribute*. The term
-#' \"range attribute\" derives from the way DynamoDB stores items with the
+#' "range attribute" derives from the way DynamoDB stores items with the
 #' same partition key physically close together, in sorted order by the
 #' sort key value.
 #' 
@@ -834,7 +833,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' 
 #' -   `StreamViewType` - When an item in the table is modified,
 #'     `StreamViewType` determines what information is written to the
-#'     table\'s stream. Valid values for `StreamViewType` are:
+#'     table's stream. Valid values for `StreamViewType` are:
 #' 
 #'     -   `KEYS_ONLY` - Only the key attributes of the modified item are
 #'         written to the stream.
@@ -1025,7 +1024,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' conditional delete operation that deletes the item if it exists, or if
 #' it has an expected attribute value.
 #' 
-#' In addition to deleting an item, you can also return the item\'s
+#' In addition to deleting an item, you can also return the item's
 #' attribute values in the same operation, using the `ReturnValues`
 #' parameter.
 #' 
@@ -1669,7 +1668,7 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #' restrict the sum of the provisioned capacity of the new table itself and
 #' all its global secondary indexes.
 #' 
-#' For existing tables and their GSIs, DynamoDB doesn\'t let you increase
+#' For existing tables and their GSIs, DynamoDB doesn't let you increase
 #' provisioned capacity extremely rapidly. But the only upper limit that
 #' applies is that the aggregate provisioned capacity over all your tables
 #' and GSIs cannot exceed either of the per-account limits.
@@ -2278,9 +2277,9 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' that has the same primary key as the new item already exists in the
 #' specified table, the new item completely replaces the existing item. You
 #' can perform a conditional put operation (add a new item if one with the
-#' specified primary key doesn\'t exist), or replace an existing item if it
-#' has certain attribute values. You can return the item\'s attribute
-#' values in the same operation, using the `ReturnValues` parameter.
+#' specified primary key doesn't exist), or replace an existing item if it
+#' has certain attribute values. You can return the item's attribute values
+#' in the same operation, using the `ReturnValues` parameter.
 #' 
 #' This topic provides general information about the `PutItem` API.
 #' 
@@ -2354,7 +2353,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' 
 #' If you specify any attributes that are part of an index key, then the
 #' data types for those attributes must match those of the schema in the
-#' table\'s attribute definition.
+#' table's attribute definition.
 #' 
 #' Empty String and Binary attribute values are allowed. Attribute values
 #' of type String and Binary must have a length greater than zero if the
@@ -3936,34 +3935,34 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #' The actions are completed atomically so that either all of them succeed,
 #' or all of them fail. They are defined by the following objects:
 #' 
-#' -   `Put` Â --- Â  Initiates a `PutItem` operation to write a new item.
-#'     This structure specifies the primary key of the item to be written,
-#'     the name of the table to write it in, an optional condition
-#'     expression that must be satisfied for the write to succeed, a list
-#'     of the item\'s attributes, and a field indicating whether to
-#'     retrieve the item\'s attributes if the condition is not met.
+#' -   `Put`  —   Initiates a `PutItem` operation to write a new item. This
+#'     structure specifies the primary key of the item to be written, the
+#'     name of the table to write it in, an optional condition expression
+#'     that must be satisfied for the write to succeed, a list of the
+#'     item's attributes, and a field indicating whether to retrieve the
+#'     item's attributes if the condition is not met.
 #' 
-#' -   `Update` Â --- Â  Initiates an `UpdateItem` operation to update an
+#' -   `Update`  —   Initiates an `UpdateItem` operation to update an
 #'     existing item. This structure specifies the primary key of the item
 #'     to be updated, the name of the table where it resides, an optional
 #'     condition expression that must be satisfied for the update to
 #'     succeed, an expression that defines one or more attributes to be
-#'     updated, and a field indicating whether to retrieve the item\'s
+#'     updated, and a field indicating whether to retrieve the item's
 #'     attributes if the condition is not met.
 #' 
-#' -   `Delete` Â --- Â  Initiates a `DeleteItem` operation to delete an
+#' -   `Delete`  —   Initiates a `DeleteItem` operation to delete an
 #'     existing item. This structure specifies the primary key of the item
 #'     to be deleted, the name of the table where it resides, an optional
 #'     condition expression that must be satisfied for the deletion to
-#'     succeed, and a field indicating whether to retrieve the item\'s
+#'     succeed, and a field indicating whether to retrieve the item's
 #'     attributes if the condition is not met.
 #' 
-#' -   `ConditionCheck` Â --- Â  Applies a condition to an item that is not
+#' -   `ConditionCheck`  —   Applies a condition to an item that is not
 #'     being modified by the transaction. This structure specifies the
 #'     primary key of the item to be checked, the name of the table where
 #'     it resides, a condition expression that must be satisfied for the
 #'     transaction to succeed, and a field indicating whether to retrieve
-#'     the item\'s attributes if the condition is not met.
+#'     the item's attributes if the condition is not met.
 #' 
 #' DynamoDB rejects the entire `TransactWriteItems` request if any of the
 #' following is true:
@@ -4629,14 +4628,14 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' Edits an existing item's attributes, or adds a new item to the table if
 #' it does not already exist
 #'
-#' Edits an existing item\'s attributes, or adds a new item to the table if
+#' Edits an existing item's attributes, or adds a new item to the table if
 #' it does not already exist. You can put, delete, or add attribute values.
 #' You can also perform a conditional update on an existing item (insert a
-#' new attribute name-value pair if it doesn\'t exist, or replace an
+#' new attribute name-value pair if it doesn't exist, or replace an
 #' existing name-value pair if it has certain expected attribute values).
 #' 
-#' You can also return the item\'s attribute values in the same
-#' `UpdateItem` operation using the `ReturnValues` parameter.
+#' You can also return the item's attribute values in the same `UpdateItem`
+#' operation using the `ReturnValues` parameter.
 #'
 #' @usage
 #' dynamodb_update_item(TableName, Key, AttributeUpdates, Expected,
@@ -4731,13 +4730,13 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #'         subtracted from the existing attribute.
 #' 
 #'         If you use `ADD` to increment or decrement a number value for an
-#'         item that doesn\'t exist before the update, DynamoDB uses `0` as
+#'         item that doesn't exist before the update, DynamoDB uses `0` as
 #'         the initial value.
 #' 
 #'         Similarly, if you use `ADD` for an existing item to increment or
-#'         decrement an attribute value that doesn\'t exist before the
+#'         decrement an attribute value that doesn't exist before the
 #'         update, DynamoDB uses `0` as the initial value. For example,
-#'         suppose that the item you want to update doesn\'t have an
+#'         suppose that the item you want to update doesn't have an
 #'         attribute named `itemcount`, but you decide to `ADD` the number
 #'         `3` to this attribute anyway. DynamoDB will create the
 #'         `itemcount` attribute, set its initial value to `0`, and finally
@@ -5119,7 +5118,7 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' 
 #' You receive a `ResourceInUseException` if you try to enable a stream on
 #' a table that already has a stream, or if you try to disable a stream on
-#' a table that doesn\'t have a stream.
+#' a table that doesn't have a stream.
 #' @param SSESpecification The new server-side encryption settings for the specified table.
 #' @param ReplicaUpdates A list of replica update actions (create, delete, or update) for the
 #' table.

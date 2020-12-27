@@ -37,14 +37,14 @@ response without modification.}
 
 \item{CredentialsArn}{Specifies the credentials required for the integration, if any. For AWS
 integrations, three options are available. To specify an IAM Role for
-API Gateway to assume, use the role\'s Amazon Resource Name (ARN). To
-require that the caller\'s identity be passed through from the request,
+API Gateway to assume, use the role's Amazon Resource Name (ARN). To
+require that the caller's identity be passed through from the request,
 specify the string arn:aws:iam::\emph{:user/}. To use resource-based
 permissions on supported AWS services, specify null.}
 
 \item{Description}{The description of the integration.}
 
-\item{IntegrationMethod}{Specifies the integration\'s HTTP method type.}
+\item{IntegrationMethod}{Specifies the integration's HTTP method type.}
 
 \item{IntegrationType}{[required] The integration type of an integration. One of the following:
 
@@ -68,7 +68,7 @@ referred to as HTTP proxy integration. For HTTP API private
 integrations, use an HTTP\\_PROXY integration.
 
 MOCK: for integrating the route or method request with API Gateway as a
-\"loopback\" endpoint without invoking any backend. Supported only for
+"loopback" endpoint without invoking any backend. Supported only for
 WebSocket APIs.}
 
 \item{IntegrationUri}{For a Lambda integration, specify the URI of a Lambda function.

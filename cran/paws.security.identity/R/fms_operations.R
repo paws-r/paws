@@ -114,7 +114,7 @@ fms_delete_notification_channel <- function() {
 #' -   Disassociates the security group from in-scope resources
 #' 
 #' -   Deletes the security group if it was created through Firewall
-#'     Manager and if it\'s no longer associated with any resources through
+#'     Manager and if it's no longer associated with any resources through
 #'     another policy
 #' 
 #' After the cleanup, in-scope resources are no longer protected by web
@@ -123,7 +123,7 @@ fms_delete_notification_channel <- function() {
 #' you associate with the policy. When creating the policy, if you specify
 #' that only resources in specific accounts or with specific tags are in
 #' scope of the policy, those accounts and resources are handled by the
-#' policy. All others are out of scope. If you don\'t specify tags or
+#' policy. All others are out of scope. If you don't specify tags or
 #' accounts, all resources are in scope.
 #'
 #' @section Request syntax:
@@ -466,7 +466,7 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
 #' administrator's AWS organization
 #'
 #' Returns a `MemberAccounts` object that lists the member accounts in the
-#' administrator\'s AWS organization.
+#' administrator's AWS organization.
 #' 
 #' The `ListMemberAccounts` must be submitted by the account that is set as
 #' the AWS Firewall Manager administrator.

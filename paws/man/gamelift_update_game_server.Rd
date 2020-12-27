@@ -2,8 +2,8 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_update_game_server}
 \alias{gamelift_update_game_server}
-\title{THIS ACTION IS PART OF AMAZON GAMELIFT FLEETIQ WITH GAME SERVER GROUPS,
-WHICH IS IN PREVIEW RELEASE AND IS SUBJECT TO CHANGE}
+\title{This action is part of Amazon GameLift FleetIQ with game server groups,
+which is in preview release and is subject to change}
 \usage{
 gamelift_update_game_server(GameServerGroupName, GameServerId,
   GameServerData, CustomSortKey, UtilizationStatus, HealthCheck)
@@ -27,7 +27,7 @@ based on how you want to organize the retrieved game server information.}
 gameplay.}
 
 \item{HealthCheck}{Indicates health status of the game server. An update that explicitly
-includes this parameter updates the game server\'s \emph{LastHealthCheckTime}
+includes this parameter updates the game server's \emph{LastHealthCheckTime}
 time stamp.}
 }
 \description{
@@ -45,7 +45,7 @@ utilization status when it is supporting gameplay so that GameLift
 FleetIQ can accurately track game server availability. You can make all
 three types of updates in the same request.
 \itemize{
-\item To update the game server\'s utilization status, identify the game
+\item To update the game server's utilization status, identify the game
 server and game server group and specify the current utilization
 status. Use this status to identify when game servers are currently
 hosting games and when they are available to be claimed.

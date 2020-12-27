@@ -25,11 +25,11 @@ to be sent to it.
 }
 \details{
 If the status of a delivery stream is \code{CREATING_FAILED}, this status
-doesn\'t change, and you can\'t invoke CreateDeliveryStream again on it.
+doesn't change, and you can't invoke CreateDeliveryStream again on it.
 However, you can invoke the DeleteDeliveryStream operation to delete it.
 If the status is \code{DELETING_FAILED}, you can force deletion by invoking
 DeleteDeliveryStream again but with
-DeleteDeliveryStreamInput\\$AllowForceDelete set to true.
+DeleteDeliveryStreamInput$AllowForceDelete set to true.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_delivery_stream(

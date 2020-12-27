@@ -17,7 +17,7 @@ maintenance action applies to.}
 Valid values: \code{system-update}, \code{db-upgrade}}
 
 \item{OptInType}{[required] A value that specifies the type of opt-in request or undoes an opt-in
-request. An opt-in request of type \code{immediate} can\'t be undone.
+request. An opt-in request of type \code{immediate} can't be undone.
 
 Valid values:
 \itemize{

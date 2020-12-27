@@ -87,15 +87,15 @@ from one or more tables. You identify requested items by primary key.
 \details{
 A single operation can retrieve up to 16 MB of data, which can contain
 as many as 100 items. \code{BatchGetItem} returns a partial result if the
-response size limit is exceeded, the table\'s provisioned throughput is
+response size limit is exceeded, the table's provisioned throughput is
 exceeded, or an internal processing failure occurs. If a partial result
 is returned, the operation returns a value for \code{UnprocessedKeys}. You
 can use this value to retry the operation starting with the next item to
 get.
 
 If you request more than 100 items, \code{BatchGetItem} returns a
-\code{ValidationException} with the message \"Too many items requested for
-the BatchGetItem call.\"
+\code{ValidationException} with the message "Too many items requested for the
+BatchGetItem call."
 
 For example, if you ask to retrieve 100 items, but each individual item
 is 300 KB in size, the system returns 52 items (so as not to exceed the

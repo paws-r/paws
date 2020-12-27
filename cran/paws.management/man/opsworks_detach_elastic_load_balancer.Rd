@@ -7,7 +7,7 @@
 opsworks_detach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
 }
 \arguments{
-\item{ElasticLoadBalancerName}{[required] The Elastic Load Balancing instance\'s name.}
+\item{ElasticLoadBalancerName}{[required] The Elastic Load Balancing instance's name.}
 
 \item{LayerId}{[required] The ID of the layer that the Elastic Load Balancing instance is attached
 to.}

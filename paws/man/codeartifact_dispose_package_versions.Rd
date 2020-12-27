@@ -50,7 +50,7 @@ Python packages do not have a namespace.
 }}
 }
 \description{
-Deletes the assets in package versions and sets the package versions\'
+Deletes the assets in package versions and sets the package versions'
 status to \code{Disposed}. A disposed package version cannot be restored in
 your repository because its assets are deleted.
 }

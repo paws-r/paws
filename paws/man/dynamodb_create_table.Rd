@@ -30,12 +30,12 @@ Each \code{KeySchemaElement} in the array is composed of:
 }
 
 The partition key of an item is also known as its \emph{hash attribute}. The
-term \"hash attribute\" derives from the DynamoDB usage of an internal
+term "hash attribute" derives from the DynamoDB usage of an internal
 hash function to evenly distribute data items across partitions, based
 on their partition key values.
 
 The sort key of an item is also known as its \emph{range attribute}. The term
-\"range attribute\" derives from the way DynamoDB stores items with the
+"range attribute" derives from the way DynamoDB stores items with the
 same partition key physically close together, in sorted order by the
 sort key value.
 
@@ -149,7 +149,7 @@ of:
 enabled (true) or disabled (false).
 \item \code{StreamViewType} - When an item in the table is modified,
 \code{StreamViewType} determines what information is written to the
-table\'s stream. Valid values for \code{StreamViewType} are:
+table's stream. Valid values for \code{StreamViewType} are:
 \itemize{
 \item \code{KEYS_ONLY} - Only the key attributes of the modified item are
 written to the stream.

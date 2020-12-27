@@ -9,10 +9,10 @@ appstream_enable_user(UserName, AuthenticationType)
 \arguments{
 \item{UserName}{[required] The email address of the user.
 
-Users\' email addresses are case-sensitive. During login, if they
-specify an email address that doesn\'t use the same capitalization as
-the email address specified when their user pool account was created, a
-\"user does not exist\" error message displays.}
+Users' email addresses are case-sensitive. During login, if they specify
+an email address that doesn't use the same capitalization as the email
+address specified when their user pool account was created, a "user does
+not exist" error message displays.}
 
 \item{AuthenticationType}{[required] The authentication type for the user. You must specify USERPOOL.}
 }

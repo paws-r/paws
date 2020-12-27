@@ -18,8 +18,8 @@ data types for the AWS Sever Migration Service (AWS SMS). The topic for
 each action shows the Query API request parameters and the XML response.
 You can also view the XML request elements in the WSDL.
 
-Alternatively, you can use one of the AWS SDKs to access an API that\'s
-tailored to the programming language or platform that you\'re using. For
+Alternatively, you can use one of the AWS SDKs to access an API that's
+tailored to the programming language or platform that you're using. For
 more information, see \href{http://aws.amazon.com/tools/#SDKs}{AWS SDKs}.
 
 To learn more about the Server Migration Service, see the following

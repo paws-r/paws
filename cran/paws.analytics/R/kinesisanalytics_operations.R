@@ -179,7 +179,7 @@ kinesisanalytics_add_application_input <- function(ApplicationName, CurrentAppli
 #' Adds an
 #' [InputProcessingConfiguration](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html)
 #' to an application. An input processor preprocesses records on the input
-#' stream before the application\'s SQL code executes. Currently, the only
+#' stream before the application's SQL code executes. Currently, the only
 #' input processor available is [AWS
 #' Lambda](https://docs.aws.amazon.com/lambda/).
 #'
@@ -1107,10 +1107,9 @@ kinesisanalytics_discover_input_schema <- function(ResourceARN = NULL, RoleARN =
 #'
 #' @param Limit Maximum number of applications to list.
 #' @param ExclusiveStartApplicationName Name of the application to start the list with. When using pagination to
-#' retrieve the list, you don\'t need to specify this parameter in the
-#' first request. However, in subsequent requests, you add the last
-#' application name from the previous response to get the next page of
-#' applications.
+#' retrieve the list, you don't need to specify this parameter in the first
+#' request. However, in subsequent requests, you add the last application
+#' name from the previous response to get the next page of applications.
 #'
 #' @section Request syntax:
 #' ```

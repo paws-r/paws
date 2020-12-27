@@ -14,8 +14,8 @@ delete.}
 Deletes an Amazon Rekognition Custom Labels model.
 }
 \details{
-You can\'t delete a model if it is running or if it is training. To
-check the status of a model, use the \code{Status} field returned from
+You can't delete a model if it is running or if it is training. To check
+the status of a model, use the \code{Status} field returned from
 DescribeProjectVersions. To stop a running model call
 StopProjectVersion. If the model is training, wait until it finishes.
 

@@ -15,7 +15,7 @@ Constraints: Up to 255 characters in length
 Constraints for EC2-Classic: ASCII characters
 
 Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-.\\_-:/()\\#,@[]+=&;\{\}!\\$*}
+.\\_-:/()\\#,@[]+=&;\{\}!$*}
 
 \item{GroupName}{[required] The name of the security group.
 
@@ -24,7 +24,7 @@ Constraints: Up to 255 characters in length. Cannot start with \verb{sg-}.
 Constraints for EC2-Classic: ASCII characters
 
 Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
-.\\_-:/()\\#,@[]+=&;\{\}!\\$*}
+.\\_-:/()\\#,@[]+=&;\{\}!$*}
 
 \item{VpcId}{[EC2-VPC] The ID of the VPC. Required for EC2-VPC.}
 
@@ -46,12 +46,12 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 When you create a security group, you specify a friendly name of your
 choice. You can have a security group for use in EC2-Classic with the
-same name as a security group for use in a VPC. However, you can\'t have
+same name as a security group for use in a VPC. However, you can't have
 two security groups for use in EC2-Classic with the same name or two
 security groups for use in a VPC with the same name.
 
 You have a default security group for use in EC2-Classic and a default
-security group for use in your VPC. If you don\'t specify a security
+security group for use in your VPC. If you don't specify a security
 group when you launch an instance, the instance is launched into the
 appropriate default security group. A default security group includes a
 default rule that grants instances unrestricted network access to each

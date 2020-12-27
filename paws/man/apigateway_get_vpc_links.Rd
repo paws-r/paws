@@ -14,7 +14,7 @@ apigateway_get_vpc_links(position, limit)
 and the maximum value is 500.}
 }
 \description{
-Gets the VpcLinks collection under the caller\'s account in a selected
+Gets the VpcLinks collection under the caller's account in a selected
 region.
 }
 \section{Request syntax}{

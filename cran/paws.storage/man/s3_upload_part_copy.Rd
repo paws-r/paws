@@ -24,7 +24,7 @@ separated by a slash (/). Must be URL-encoded.}
 \item{CopySourceIfNoneMatch}{Copies the object if its entity tag (ETag) is different than the
 specified ETag.}
 
-\item{CopySourceIfUnmodifiedSince}{Copies the object if it hasn\'t been modified since the specified time.}
+\item{CopySourceIfUnmodifiedSince}{Copies the object if it hasn't been modified since the specified time.}
 
 \item{CopySourceRange}{The range of bytes to copy from the source object. The range value must
 use the form bytes=first-last, where the first and last are the
@@ -46,7 +46,7 @@ example, AES256).}
 encrypting data. This value is used to store the object and then it is
 discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-\verb{x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm} header. This must be
+\code{x-amz-server-side​-encryption​-customer-algorithm} header. This must be
 the same encryption key specified in the initiate multipart upload
 request.}
 
@@ -135,7 +135,7 @@ Amazon S3 returns \verb{412 Precondition Failed} response code.
 If your bucket has versioning enabled, you could have multiple versions
 of the same object. By default, \code{x-amz-copy-source} identifies the
 current version of the object to copy. If the current version is a
-delete marker and you don\'t specify a versionId in the
+delete marker and you don't specify a versionId in the
 \code{x-amz-copy-source}, Amazon S3 returns a 404 error, because the object
 does not exist. If you specify versionId in the \code{x-amz-copy-source} and
 the versionId is a delete marker, Amazon S3 returns an HTTP 400 error,

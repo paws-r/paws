@@ -12,8 +12,8 @@ directoryservice_create_microsoft_ad(Name, ShortName, Password,
 directory, such as \code{corp.example.com}. This name will resolve inside
 your VPC only. It does not need to be publicly resolvable.}
 
-\item{ShortName}{The NetBIOS name for your domain, such as \code{CORP}. If you don\'t specify
-a NetBIOS name, it will default to the first part of your directory DNS.
+\item{ShortName}{The NetBIOS name for your domain, such as \code{CORP}. If you don't specify a
+NetBIOS name, it will default to the first part of your directory DNS.
 For example, \code{CORP} for the directory DNS \code{corp.example.com}.}
 
 \item{Password}{[required] The password for the default administrative user named \code{Admin}.

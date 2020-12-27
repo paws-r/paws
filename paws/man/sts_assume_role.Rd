@@ -34,7 +34,7 @@ same account as the role.
 
 This parameter is optional. You can provide up to 10 managed policy
 ARNs. However, the plain text that you use for both inline and managed
-session policies can\'t exceed 2,048 characters. For more information
+session policies can't exceed 2,048 characters. For more information
 about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the AWS General Reference.
 
@@ -46,8 +46,8 @@ percentage how close the policies and tags for your request are to the
 upper size limit.
 
 Passing policies to this operation returns new temporary credentials.
-The resulting session\'s permissions are the intersection of the role\'s
-identity-based policy and the session policies. You can use the role\'s
+The resulting session's permissions are the intersection of the role's
+identity-based policy and the session policies. You can use the role's
 temporary credentials in subsequent AWS API calls to access resources in
 the account that owns the role. You cannot use session policies to grant
 more permissions than those allowed by the identity-based policy of the
@@ -58,17 +58,17 @@ in the \emph{IAM User Guide}.}
 policy.
 
 This parameter is optional. Passing policies to this operation returns
-new temporary credentials. The resulting session\'s permissions are the
-intersection of the role\'s identity-based policy and the session
-policies. You can use the role\'s temporary credentials in subsequent
-AWS API calls to access resources in the account that owns the role. You
+new temporary credentials. The resulting session's permissions are the
+intersection of the role's identity-based policy and the session
+policies. You can use the role's temporary credentials in subsequent AWS
+API calls to access resources in the account that owns the role. You
 cannot use session policies to grant more permissions than those allowed
 by the identity-based policy of the role that is being assumed. For more
 information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{Session Policies}
 in the \emph{IAM User Guide}.
 
 The plain text that you use for both inline and managed session policies
-can\'t exceed 2,048 characters. The JSON policy characters can be any
+can't exceed 2,048 characters. The JSON policy characters can be any
 ASCII character from the space character to the end of the valid
 character list (\code{U+0020} through \verb{U+00FF}). It can also include the tab
 (\code{U+0009}), linefeed (\verb{U+000A}), and carriage return (\verb{U+000D}) characters.
@@ -105,8 +105,8 @@ session tags, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_sess
 in the \emph{IAM User Guide}.
 
 This parameter is optional. You can pass up to 50 session tags. The
-plain text session tag keys can't exceed 128 characters, and the values
-can't exceed 256 characters. For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
+plain text session tag keys can’t exceed 128 characters, and the values
+can’t exceed 256 characters. For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
 in the \emph{IAM User Guide}.
 
 An AWS conversion compresses the passed session policies and session
@@ -120,7 +120,7 @@ You can pass a session tag with the same key as a tag that is already
 attached to the role. When you do, session tags override a role tag with
 the same key.
 
-Tag key--value pairs are not case sensitive, but case is preserved. This
+Tag key–value pairs are not case sensitive, but case is preserved. This
 means that you cannot have separate \code{Department} and \code{department} tag
 keys. Assume that the role has the \code{Department}=\code{Marketing} tag and you
 pass the \code{department}=\code{engineering} session tag. \code{Department} and
@@ -180,7 +180,7 @@ characters: =,.@-}
 being assumed requires MFA (that is, if the policy includes a condition
 that tests for MFA). If the role being assumed requires MFA and if the
 \code{TokenCode} value is missing or expired, the \code{AssumeRole} call returns
-an \"access denied\" error.
+an "access denied" error.
 
 The format for this parameter, as described by its regex pattern, is a
 sequence of six numeric digits.}
@@ -236,10 +236,10 @@ operations.
 to this operation. You can pass a single JSON policy document to use as
 an inline session policy. You can also specify up to 10 managed policies
 to use as managed session policies. The plain text that you use for both
-inline and managed session policies can\'t exceed 2,048 characters.
+inline and managed session policies can't exceed 2,048 characters.
 Passing policies to this operation returns new temporary credentials.
-The resulting session\'s permissions are the intersection of the role\'s
-identity-based policy and the session policies. You can use the role\'s
+The resulting session's permissions are the intersection of the role's
+identity-based policy and the session policies. You can use the role's
 temporary credentials in subsequent AWS API calls to access resources in
 the account that owns the role. You cannot use session policies to grant
 more permissions than those allowed by the identity-based policy of the
@@ -247,7 +247,7 @@ role that is being assumed. For more information, see \href{https://docs.aws.ama
 in the \emph{IAM User Guide}.
 
 To assume a role from a different account, your AWS account must be
-trusted by the role. The trust relationship is defined in the role\'s
+trusted by the role. The trust relationship is defined in the role's
 trust policy when the role is created. That trust policy states which
 accounts are allowed to delegate that access to users in the account.
 
@@ -260,7 +260,7 @@ following:
 \itemize{
 \item Attach a policy to the user (identical to the previous user in a
 different account).
-\item Add the user as a principal directly in the role\'s trust policy.
+\item Add the user as a principal directly in the role's trust policy.
 }
 
 In this case, the trust policy acts as an IAM resource-based policy.
@@ -303,7 +303,7 @@ For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 in the \emph{IAM User Guide} guide.
 
 To use MFA with \code{AssumeRole}, you pass values for the \code{SerialNumber} and
-\code{TokenCode} parameters. The \code{SerialNumber} value identifies the user\'s
+\code{TokenCode} parameters. The \code{SerialNumber} value identifies the user's
 hardware or virtual MFA device. The \code{TokenCode} is the time-based
 one-time password (TOTP) that the MFA device produces.
 }

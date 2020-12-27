@@ -11,13 +11,13 @@ iotanalytics_update_datastore(datastoreName, retentionPeriod,
 \item{datastoreName}{[required] The name of the data store to be updated.}
 
 \item{retentionPeriod}{How long, in days, message data is kept for the data store. The
-retention period cannot be updated if the data store\'s S3 storage is
+retention period cannot be updated if the data store's S3 storage is
 customer-managed.}
 
 \item{datastoreStorage}{Where data store data is stored. You may choose one of
-\"serviceManagedS3\" or \"customerManagedS3\" storage. If not specified,
-the default is \"serviceManagedS3\". This cannot be changed after the
-data store is created.}
+"serviceManagedS3" or "customerManagedS3" storage. If not specified, the
+default is "serviceManagedS3". This cannot be changed after the data
+store is created.}
 }
 \description{
 Updates the settings of a data store.

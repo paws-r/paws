@@ -19,7 +19,7 @@ the nextToken value.}
 \item{Filters}{One or more filters. Filter names and values are case-sensitive.
 \itemize{
 \item \code{endpoint-id} - The ID of the Client VPN endpoint.
-\item \code{transport-protocol} - The transport protocol (\code{tcp} \\| \code{udp}).
+\item \code{transport-protocol} - The transport protocol (\code{tcp} | \code{udp}).
 }}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without

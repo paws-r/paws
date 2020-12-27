@@ -13,7 +13,7 @@ inspector_list_findings(assessmentRunArns, filter, nextToken,
 to list.}
 
 \item{filter}{You can use this parameter to specify a subset of data to be included in
-the action\'s response.
+the action's response.
 
 For a record to match a filter, all specified filter attributes must
 match. When multiple values are specified for a filter attribute, any of

@@ -32,7 +32,7 @@ Associates a Web ACL with a regional application resource, to protect
 the resource. A regional application can be an Application Load Balancer
 (ALB) or an API Gateway stage.
 
-For AWS CloudFront, don\'t use this call. Instead, use your CloudFront
+For AWS CloudFront, don't use this call. Instead, use your CloudFront
 distribution configuration. To associate a Web ACL, in the CloudFront
 call \code{UpdateDistribution}, set the web ACL ID to the Amazon Resource
 Name (ARN) of the Web ACL. For information, see

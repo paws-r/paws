@@ -19,7 +19,7 @@ The domain name can contain only the following characters:
 \itemize{
 \item Letters a through z. Domain names are not case sensitive.
 \item Numbers 0 through 9.
-\item Hyphen (-). You can\'t specify a hyphen at the beginning or end of a
+\item Hyphen (-). You can't specify a hyphen at the beginning or end of a
 label.
 \item Period (.) to separate the labels in the name, such as the \code{.} in
 \code{example.com}.
@@ -50,29 +50,29 @@ Default: true}
 \item{TechContact}{[required] Provides detailed contact information.}
 
 \item{PrivacyProtectAdminContact}{Whether you want to conceal contact information from WHOIS queries. If
-you specify \code{true}, WHOIS (\"who is\") queries return contact
-information either for Amazon Registrar (for .com, .net, and .org
-domains) or for our registrar associate, Gandi (for all other TLDs). If
-you specify \code{false}, WHOIS queries return the information that you
-entered for the admin contact.
+you specify \code{true}, WHOIS ("who is") queries return contact information
+either for Amazon Registrar (for .com, .net, and .org domains) or for
+our registrar associate, Gandi (for all other TLDs). If you specify
+\code{false}, WHOIS queries return the information that you entered for the
+admin contact.
 
 Default: \code{true}}
 
 \item{PrivacyProtectRegistrantContact}{Whether you want to conceal contact information from WHOIS queries. If
-you specify \code{true}, WHOIS (\"who is\") queries return contact
-information either for Amazon Registrar (for .com, .net, and .org
-domains) or for our registrar associate, Gandi (for all other TLDs). If
-you specify \code{false}, WHOIS queries return the information that you
-entered for the registrant contact (domain owner).
+you specify \code{true}, WHOIS ("who is") queries return contact information
+either for Amazon Registrar (for .com, .net, and .org domains) or for
+our registrar associate, Gandi (for all other TLDs). If you specify
+\code{false}, WHOIS queries return the information that you entered for the
+registrant contact (domain owner).
 
 Default: \code{true}}
 
 \item{PrivacyProtectTechContact}{Whether you want to conceal contact information from WHOIS queries. If
-you specify \code{true}, WHOIS (\"who is\") queries return contact
-information either for Amazon Registrar (for .com, .net, and .org
-domains) or for our registrar associate, Gandi (for all other TLDs). If
-you specify \code{false}, WHOIS queries return the information that you
-entered for the technical contact.
+you specify \code{true}, WHOIS ("who is") queries return contact information
+either for Amazon Registrar (for .com, .net, and .org domains) or for
+our registrar associate, Gandi (for all other TLDs). If you specify
+\code{false}, WHOIS queries return the information that you entered for the
+technical contact.
 
 Default: \code{true}}
 }
@@ -87,7 +87,7 @@ For more information about transferring domains, see the following
 topics:
 \itemize{
 \item For transfer requirements, a detailed procedure, and information
-about viewing the status of a domain that you\'re transferring to
+about viewing the status of a domain that you're transferring to
 Route 53, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html}{Transferring Registration for a Domain to Amazon Route 53}
 in the \emph{Amazon Route 53 Developer Guide}.
 \item For information about how to transfer a domain from one AWS account
@@ -107,13 +107,13 @@ registrar will not renew your domain registration and could end your DNS
 service at any time.
 
 If the registrar for your domain is also the DNS service provider for
-the domain and you don\'t transfer DNS service to another provider, your
+the domain and you don't transfer DNS service to another provider, your
 website, email, and the web applications associated with the domain
 might become unavailable.
 
 If the transfer is successful, this method returns an operation ID that
 you can use to track the progress and completion of the action. If the
-transfer doesn\'t complete successfully, the domain registrant will be
+transfer doesn't complete successfully, the domain registrant will be
 notified by email.
 }
 \section{Request syntax}{

@@ -12,7 +12,7 @@ frauddetector_update_rule_metadata(rule, description)
 \item{description}{[required] The rule description.}
 }
 \description{
-Updates a rule\'s metadata.
+Updates a rule's metadata.
 }
 \section{Request syntax}{
 \preformatted{svc$update_rule_metadata(

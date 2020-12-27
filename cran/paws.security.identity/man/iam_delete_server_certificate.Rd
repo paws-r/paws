@@ -24,7 +24,7 @@ that can use the server certificates that you manage with IAM.
 
 If you are using a server certificate with Elastic Load Balancing,
 deleting the certificate could have implications for your application.
-If Elastic Load Balancing doesn\'t detect the deletion of bound
+If Elastic Load Balancing doesn't detect the deletion of bound
 certificates, it may continue to use the certificates. This could cause
 Elastic Load Balancing to stop accepting traffic. We recommend that you
 remove the reference to the certificate from Elastic Load Balancing

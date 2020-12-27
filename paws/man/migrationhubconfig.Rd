@@ -22,7 +22,7 @@ or a \code{HomeRegionNotSetException} error is returned.
 permitted outside of your home region.
 \item If you call a write API outside the home region, an
 \code{InvalidInputException} is returned.
-\item You can call \code{GetHomeRegion} action to obtain the account\'s
+\item You can call \code{GetHomeRegion} action to obtain the account's
 Migration Hub home region.
 }
 

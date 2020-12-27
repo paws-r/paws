@@ -15,7 +15,7 @@ consolidated to and paid by the master account. For more
 information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only}{Consolidated billing}
 in the \emph{AWS Organizations User Guide.}
 
-The consolidated billing feature subset isn\'t available for
+The consolidated billing feature subset isn't available for
 organizations in the AWS GovCloud (US) Region.
 \item \code{ALL}: In addition to all the features supported by the consolidated
 billing feature set, the master account can also apply any policy
@@ -31,8 +31,8 @@ of the new organization.
 }
 \details{
 This operation must be called using credentials from the account that is
-to become the new organization\'s master account. The principal must
-also have the relevant IAM permissions.
+to become the new organization's master account. The principal must also
+have the relevant IAM permissions.
 
 By default (or if you set the \code{FeatureSet} parameter to \code{ALL}), the new
 organization is created with all features enabled and service control
@@ -40,7 +40,7 @@ policies automatically enabled in the root. If you instead choose to
 create the organization supporting only the consolidated billing
 features by setting the \code{FeatureSet} parameter to
 \verb{CONSOLIDATED_BILLING\\"}, no policy types are enabled by default, and
-you can\'t use organization policies
+you can't use organization policies
 }
 \section{Request syntax}{
 \preformatted{svc$create_organization(

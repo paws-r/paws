@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_list_ip_sets}
 \alias{waf_list_ip_sets}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_list_ip_sets(NextMarker, Limit)
 }

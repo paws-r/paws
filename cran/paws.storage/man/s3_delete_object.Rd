@@ -21,10 +21,10 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Key}{[required] Key name of the object to delete.}
 
-\item{MFA}{The concatenation of the authentication device\'s serial number, a
-space, and the value that is displayed on your authentication device.
-Required to permanently delete a versioned object if versioning is
-configured with MFA delete enabled.}
+\item{MFA}{The concatenation of the authentication device's serial number, a space,
+and the value that is displayed on your authentication device. Required
+to permanently delete a versioned object if versioning is configured
+with MFA delete enabled.}
 
 \item{VersionId}{VersionId used to reference a specific version of the object.}
 
@@ -36,7 +36,7 @@ restrictions to process this operation.}
 \description{
 Removes the null version (if there is one) of an object and inserts a
 delete marker, which becomes the latest version of the object. If there
-isn\'t a null version, Amazon S3 does not remove any objects.
+isn't a null version, Amazon S3 does not remove any objects.
 }
 \details{
 To remove a specific version, you must be the bucket owner and you must

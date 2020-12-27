@@ -64,7 +64,7 @@ pair, such as an RSA or ECC pair that is represented by an asymmetric
 customer master key (CMK). The key owner (or an authorized user) uses
 their private key to sign a message. Anyone with the public key can
 verify that the message was signed with that particular private key and
-that the message hasn\'t changed since it was signed.
+that the message hasn't changed since it was signed.
 
 To use the \code{Sign} operation, provide the following information:
 \itemize{

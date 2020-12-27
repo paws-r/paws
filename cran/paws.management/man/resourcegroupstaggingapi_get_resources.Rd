@@ -23,9 +23,9 @@ Note the following when deciding how to use TagFilters:
 \itemize{
 \item If you \emph{do} specify a TagFilter, the response returns only those
 resources that are currently associated with the specified tag.
-\item If you \emph{don\'t} specify a TagFilter, the response includes all
+\item If you \emph{don't} specify a TagFilter, the response includes all
 resources that were ever associated with tags. Resources that
-currently don\'t have associated tags are shown with an empty tag
+currently don't have associated tags are shown with an empty tag
 set, like this: \verb{"Tags": \\\[\\\]}.
 \item If you specify more than one filter in a single request, the
 response returns only those resources that satisfy all specified
@@ -33,7 +33,7 @@ filters.
 \item If you specify a filter that contains more than one value for a key,
 the response returns resources that match any of the specified
 values for that key.
-\item If you don\'t specify any values for a key, the response returns
+\item If you don't specify any values for a key, the response returns
 resources that are tagged with that key irrespective of the value.
 
 For example, for filters: filter1 = \{key1, \{value1\}\}, filter2 =
@@ -82,7 +82,7 @@ specifying a resource type of \code{ec2} returns all Amazon EC2 resources
 \code{ec2:instance} returns only EC2 instances.
 
 The string for each service name and resource type is the same as that
-embedded in a resource\'s Amazon Resource Name (ARN). Consult the \emph{AWS
+embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{AWS
 General Reference} for the following:
 \itemize{
 \item For a list of service name strings, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}.
@@ -116,7 +116,7 @@ the following:
 \item \emph{Filters} that specify what tags and resource types you want
 returned. The response includes all tags that are associated with
 the requested resources.
-\item Information about compliance with the account\'s effective tag
+\item Information about compliance with the account's effective tag
 policy. For more information on tag policies, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{Tag Policies}
 in the \emph{AWS Organizations User Guide.}
 }

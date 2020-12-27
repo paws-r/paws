@@ -10,7 +10,7 @@ docdb_describe_db_clusters(DBClusterIdentifier, Filters, MaxRecords,
 \arguments{
 \item{DBClusterIdentifier}{The user-provided cluster identifier. If this parameter is specified,
 information from only the specific cluster is returned. This parameter
-isn\'t case sensitive.
+isn't case sensitive.
 
 Constraints:
 \itemize{

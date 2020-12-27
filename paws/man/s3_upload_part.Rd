@@ -34,7 +34,7 @@ example, AES256).}
 encrypting data. This value is used to store the object and then it is
 discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-\verb{x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm header}. This must be
+\verb{x-amz-server-side​-encryption​-customer-algorithm header}. This must be
 the same encryption key specified in the initiate multipart upload
 request.}
 
@@ -94,7 +94,7 @@ information, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingSe
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Server-side encryption is supported by the S3 Multipart Upload actions.
-Unless you are using a customer-provided encryption key, you don\'t need
+Unless you are using a customer-provided encryption key, you don't need
 to specify the encryption parameters in each UploadPart request.
 Instead, you only need to specify the server-side encryption parameters
 in the initial Initiate Multipart request. For more information, see
@@ -105,9 +105,9 @@ encryption key in your initiate multipart upload request, you must
 provide identical encryption information in each part upload using the
 following headers.
 \itemize{
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key
-\item x-amz-server-sideâ€‹-encryptionâ€‹-customer-key-MD5
+\item x-amz-server-side​-encryption​-customer-algorithm
+\item x-amz-server-side​-encryption​-customer-key
+\item x-amz-server-side​-encryption​-customer-key-MD5
 }
 
 \strong{Special Errors}

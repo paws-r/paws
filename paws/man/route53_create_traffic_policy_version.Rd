@@ -25,7 +25,7 @@ describes the new version. You use traffic policies to create multiple
 DNS resource record sets for one domain name (such as example.com) or
 one subdomain name (such as www.example.com). You can create a maximum
 of 1000 versions of a traffic policy. If you reach the limit and need to
-create another version, you\'ll need to start a new traffic policy.
+create another version, you'll need to start a new traffic policy.
 }
 \section{Request syntax}{
 \preformatted{svc$create_traffic_policy_version(

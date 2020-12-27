@@ -19,8 +19,8 @@ see
 }
 \description{
 Updates an existing Cost Category. Changes made to the Cost Category
-rules will be used to categorize the current month's expenses and future
-expenses. This won't change categorization for the previous months.
+rules will be used to categorize the current month’s expenses and future
+expenses. This won’t change categorization for the previous months.
 }
 \section{Request syntax}{
 \preformatted{svc$update_cost_category_definition(

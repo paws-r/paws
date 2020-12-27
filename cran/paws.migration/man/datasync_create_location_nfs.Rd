@@ -11,12 +11,12 @@ datasync_create_location_nfs(Subdirectory, ServerHostname, OnPremConfig,
 \arguments{
 \item{Subdirectory}{[required] The subdirectory in the NFS file system that is used to read data from
 the NFS source location or write data to the NFS destination. The NFS
-path should be a path that\'s exported by the NFS server, or a
+path should be a path that's exported by the NFS server, or a
 subdirectory of that path. The path should be such that it can be
 mounted by other NFS clients in your network.
 
 To see all the paths exported by your NFS server. run
-\"\verb{showmount -e nfs-server-name}\" from an NFS client that has access to
+"\verb{showmount -e nfs-server-name}" from an NFS client that has access to
 your server. You can specify any directory that appears in the results,
 and any subdirectory of that directory. Ensure that the NFS export is
 accessible without Kerberos authentication.

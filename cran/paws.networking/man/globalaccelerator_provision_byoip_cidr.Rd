@@ -11,7 +11,7 @@ globalaccelerator_provision_byoip_cidr(Cidr, CidrAuthorizationContext)
 \arguments{
 \item{Cidr}{[required] The public IPv4 address range, in CIDR notation. The most specific IP
 prefix that you can specify is /24. The address range cannot overlap
-with another address range that you\'ve brought to this or another
+with another address range that you've brought to this or another
 Region.}
 
 \item{CidrAuthorizationContext}{[required] A signed document that proves that you are authorized to bring the

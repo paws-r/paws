@@ -7,7 +7,7 @@
 cloudwatch_untag_resource(ResourceARN, TagKeys)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the CloudWatch resource that you\'re removing tags from.
+\item{ResourceARN}{[required] The ARN of the CloudWatch resource that you're removing tags from.
 
 The ARN format of an alarm is
 \verb{arn:aws:cloudwatch:<i>Region</i>:<i>account-id</i>:alarm:<i>alarm-name</i> }

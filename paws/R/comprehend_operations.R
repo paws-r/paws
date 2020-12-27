@@ -199,9 +199,9 @@ comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
 #' a maximum of 25 documents. Each document must contain fewer that 5,000
 #' bytes of UTF-8 encoded characters.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the
-#' following languages supported by Amazon Comprehend: German (\"de\"),
-#' English (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"),
-#' or Portuguese (\"pt\"). All documents must be in the same language.
+#' following languages supported by Amazon Comprehend: German ("de"),
+#' English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
+#' Portuguese ("pt"). All documents must be in the same language.
 #'
 #' @section Request syntax:
 #' ```
@@ -295,17 +295,17 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #' role that grants Amazon Comprehend read access to your input data.
 #' @param Tags Tags to be associated with the document classifier being created. A tag
 #' is a key-value pair that adds as a metadata to a resource used by Amazon
-#' Comprehend. For example, a tag with \"Sales\" as the key might be added
-#' to a resource to indicate its use by the sales department.
+#' Comprehend. For example, a tag with "Sales" as the key might be added to
+#' a resource to indicate its use by the sales department.
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig Enables the addition of output results configuration parameters for
 #' custom classifier jobs.
-#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
-#' request token, Amazon Comprehend generates one.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend generates one.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the
-#' following languages supported by Amazon Comprehend: German (\"de\"),
-#' English (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"),
-#' or Portuguese (\"pt\"). All documents must be in the same language.
+#' following languages supported by Amazon Comprehend: German ("de"),
+#' English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
+#' Portuguese ("pt"). All documents must be in the same language.
 #' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
 #' uses to encrypt data on the storage volume attached to the ML compute
 #' instance(s) that process the analysis job. The VolumeKmsKeyId can be
@@ -324,7 +324,7 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #' only one class for each document, or multi-label mode, which identifies
 #' one or more labels for each document. In multi-label mode, multiple
 #' labels for an individual document are separated by a delimiter. The
-#' default delimiter between labels is a pipe (\\|).
+#' default delimiter between labels is a pipe (|).
 #'
 #' @section Request syntax:
 #' ```
@@ -401,9 +401,9 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #' previous endpoint creation request, Amazon Comprehend will not return a
 #' `ResourceInUseException`.
 #' @param Tags Tags associated with the endpoint being created. A tag is a key-value
-#' pair that adds metadata to the endpoint. For example, a tag with
-#' \"Sales\" as the key might be added to an endpoint to indicate its use
-#' by the sales department.
+#' pair that adds metadata to the endpoint. For example, a tag with "Sales"
+#' as the key might be added to an endpoint to indicate its use by the
+#' sales department.
 #'
 #' @section Request syntax:
 #' ```
@@ -460,15 +460,15 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceU
 #' role that grants Amazon Comprehend read access to your input data.
 #' @param Tags Tags to be associated with the entity recognizer being created. A tag is
 #' a key-value pair that adds as a metadata to a resource used by Amazon
-#' Comprehend. For example, a tag with \"Sales\" as the key might be added
-#' to a resource to indicate its use by the sales department.
+#' Comprehend. For example, a tag with "Sales" as the key might be added to
+#' a resource to indicate its use by the sales department.
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data. The S3 bucket
 #' containing the input data must be located in the same region as the
 #' entity recognizer being created.
-#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
-#' request token, Amazon Comprehend generates one.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend generates one.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
-#' language. Only English (\"en\") is currently supported.
+#' language. Only English ("en") is currently supported.
 #' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
 #' uses to encrypt data on the storage volume attached to the ML compute
 #' instance(s) that process the analysis job. The VolumeKmsKeyId can be
@@ -1201,9 +1201,9 @@ comprehend_detect_sentiment <- function(Text, LanguageCode) {
 #' @param Text &#91;required&#93; A UTF-8 string. Each string must contain fewer that 5,000 bytes of UTF
 #' encoded characters.
 #' @param LanguageCode &#91;required&#93; The language code of the input documents. You can specify any of the
-#' following languages supported by Amazon Comprehend: German (\"de\"),
-#' English (\"en\"), Spanish (\"es\"), French (\"fr\"), Italian (\"it\"),
-#' or Portuguese (\"pt\").
+#' following languages supported by Amazon Comprehend: German ("de"),
+#' English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
+#' Portuguese ("pt").
 #'
 #' @section Request syntax:
 #' ```
@@ -1396,7 +1396,7 @@ comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, Next
 
 #' Gets a list of all existing endpoints that you've created
 #'
-#' Gets a list of all existing endpoints that you\'ve created.
+#' Gets a list of all existing endpoints that you've created.
 #'
 #' @usage
 #' comprehend_list_endpoints(Filter, NextToken, MaxResults)
@@ -1941,8 +1941,8 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' language. You can specify any of the languages supported by Amazon
 #' Comprehend. If custom entities recognition is used, this parameter is
 #' ignored and the language used for training the model is used instead.
-#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
-#' request token, Amazon Comprehend generates one.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend generates one.
 #' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
 #' uses to encrypt data on the storage volume attached to the ML compute
 #' instance(s) that process the analysis job. The VolumeKmsKeyId can be
@@ -2026,8 +2026,8 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
-#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
-#' request token, Amazon Comprehend generates one.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend generates one.
 #' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
 #' uses to encrypt data on the storage volume attached to the ML compute
 #' instance(s) that process the analysis job. The VolumeKmsKeyId can be
@@ -2110,8 +2110,8 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
-#' @param ClientRequestToken A unique identifier for the request. If you don\'t set the client
-#' request token, Amazon Comprehend generates one.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend generates one.
 #' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
 #' uses to encrypt data on the storage volume attached to the ML compute
 #' instance(s) that process the analysis job. The VolumeKmsKeyId can be
@@ -2540,8 +2540,8 @@ comprehend_stop_training_entity_recognizer <- function(EntityRecognizerArn) {
 #'
 #' Associates a specific tag with an Amazon Comprehend resource. A tag is a
 #' key-value pair that adds as a metadata to a resource used by Amazon
-#' Comprehend. For example, a tag with \"Sales\" as the key might be added
-#' to a resource to indicate its use by the sales department.
+#' Comprehend. For example, a tag with "Sales" as the key might be added to
+#' a resource to indicate its use by the sales department.
 #'
 #' @usage
 #' comprehend_tag_resource(ResourceArn, Tags)
@@ -2595,7 +2595,7 @@ comprehend_tag_resource <- function(ResourceArn, Tags) {
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Comprehend resource
 #' from which you want to remove the tags.
 #' @param TagKeys &#91;required&#93; The initial part of a key-value pair that forms a tag being removed from
-#' a given resource. For example, a tag with \"Sales\" as the key might be
+#' a given resource. For example, a tag with "Sales" as the key might be
 #' added to a resource to indicate its use by the sales department. Keys
 #' must be unique and cannot be duplicated for a particular resource.
 #'

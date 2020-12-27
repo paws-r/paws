@@ -45,8 +45,8 @@ replica, specify a valid DB instance identifier.
 \item If the source DB instance is in a different AWS Region from the read
 replica, specify a valid DB instance ARN. For more information, see
 \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
-in the \emph{Amazon RDS User Guide}. This doesn\'t apply to SQL Server,
-which doesn\'t support cross-region replicas.
+in the \emph{Amazon RDS User Guide}. This doesn't apply to SQL Server,
+which doesn't support cross-region replicas.
 }}
 
 \item{DBInstanceClass}{The compute and memory capacity of the read replica, for example,
@@ -59,8 +59,8 @@ Default: Inherits from the source DB instance.}
 
 \item{AvailabilityZone}{The Availability Zone (AZ) where the read replica will be created.
 
-Default: A random, system-chosen Availability Zone in the endpoint\'s
-AWS Region.
+Default: A random, system-chosen Availability Zone in the endpoint's AWS
+Region.
 
 Example: \verb{us-east-1d}}
 
@@ -107,19 +107,19 @@ Constraints:
 \itemize{
 \item Must be 1 to 255 letters, numbers, or hyphens.
 \item First character must be a letter
-\item Can\'t end with a hyphen or contain two consecutive hyphens
+\item Can't end with a hyphen or contain two consecutive hyphens
 }}
 
 \item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
 
 When the DB instance is publicly accessible, its DNS endpoint resolves
-to the private IP address from within the DB instance\'s VPC, and to the
-public IP address from outside of the DB instance\'s VPC. Access to the
+to the private IP address from within the DB instance's VPC, and to the
+public IP address from outside of the DB instance's VPC. Access to the
 DB instance is ultimately controlled by the security group it uses, and
 that public access is not permitted if the security group assigned to
-the DB instance doesn\'t permit it.
+the DB instance doesn't permit it.
 
-When the DB instance isn\'t publicly accessible, it is an internal DB
+When the DB instance isn't publicly accessible, it is an internal DB
 instance with a DNS name that resolves to a private IP address.
 
 For more information, see CreateDBInstance.}
@@ -128,7 +128,7 @@ For more information, see CreateDBInstance.}
 
 \item{DBSubnetGroupName}{Specifies a DB subnet group for the DB instance. The new DB instance is
 created in the VPC associated with the DB subnet group. If no DB subnet
-group is specified, then the new DB instance isn\'t created in a VPC.
+group is specified, then the new DB instance isn't created in a VPC.
 
 Constraints:
 \itemize{
@@ -138,7 +138,7 @@ a DB instance in another AWS Region.
 \item The specified DB subnet group must be in the same AWS Region in
 which the operation is running.
 \item All read replicas in one AWS Region that are created from the same
-source DB instance must either:\\>
+source DB instance must either:>
 \itemize{
 \item Specify DB subnet groups from the same VPC. All these read
 replicas are created in the same VPC.
@@ -151,7 +151,7 @@ Example: \code{mySubnetgroup}}
 
 \item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with the read replica.
 
-Default: The default EC2 VPC security group for the DB subnet group\'s
+Default: The default EC2 VPC security group for the DB subnet group's
 VPC.}
 
 \item{StorageType}{Specifies the storage type to be associated with the read replica.
@@ -196,10 +196,10 @@ source DB instance.
 If you create an encrypted read replica in a different AWS Region, then
 you must specify a KMS key for the destination AWS Region. KMS
 encryption keys are specific to the AWS Region that they are created in,
-and you can\'t use encryption keys from one AWS Region in another AWS
+and you can't use encryption keys from one AWS Region in another AWS
 Region.
 
-You can\'t create an encrypted read replica from an unencrypted DB
+You can't create an encrypted read replica from an unencrypted DB
 instance.}
 
 \item{PreSignedUrl}{The URL that contains a Signature Version 4 signed request for the
@@ -207,7 +207,7 @@ instance.}
 contains the source DB instance.
 
 You must specify this parameter when you create an encrypted read
-replica from another AWS Region by using the Amazon RDS API. Don\'t
+replica from another AWS Region by using the Amazon RDS API. Don't
 specify \code{PreSignedUrl} when you are creating an encrypted read replica
 in the same AWS Region.
 
@@ -252,10 +252,10 @@ specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion}
 autogenerates a presigned URL that is a valid request for the operation
 that can be executed in the source AWS Region.
 
-\code{SourceRegion} isn\'t supported for SQL Server, because SQL Server on
-Amazon RDS doesn\'t support cross-region read replicas.
+\code{SourceRegion} isn't supported for SQL Server, because SQL Server on
+Amazon RDS doesn't support cross-region read replicas.
 
-If you supply a value for this operation\'s \code{SourceRegion} parameter, a
+If you supply a value for this operation's \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
@@ -296,7 +296,7 @@ instance class of the DB instance.}
 uses its default processor features.}
 
 \item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
-enabled. The database can\'t be deleted when deletion protection is
+enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
@@ -325,7 +325,7 @@ information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/US
 in the \emph{Amazon RDS User Guide}.
 }
 \details{
-Amazon Aurora doesn\'t support this action. Call the \code{CreateDBInstance}
+Amazon Aurora doesn't support this action. Call the \code{CreateDBInstance}
 action to create a DB instance for an Aurora DB cluster.
 
 All read replica DB instances are created with backups disabled. All

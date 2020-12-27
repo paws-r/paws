@@ -7,7 +7,7 @@
 synthetics_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] The ARN of the canary that you\'re adding tags to.
+\item{ResourceArn}{[required] The ARN of the canary that you're adding tags to.
 
 The ARN format of a canary is
 \verb{arn:aws:synthetics:<i>Region</i>:<i>account-id</i>:canary:<i>canary-name</i> }.}
@@ -22,8 +22,8 @@ Tags can help you organize and categorize your resources. You can also
 use them to scope user permissions, by granting a user permission to
 access or change only resources with certain tag values.
 
-Tags don\'t have any semantic meaning to AWS and are interpreted
-strictly as strings of characters.
+Tags don't have any semantic meaning to AWS and are interpreted strictly
+as strings of characters.
 
 You can use the \code{TagResource} action with a canary that already has
 tags. If you specify a new tag key for the alarm, this tag is appended

@@ -17,7 +17,7 @@ The API server endpoint and certificate authority data returned by this
 operation are required for \code{kubelet} and \code{kubectl} to communicate with
 your Kubernetes API server. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html}{Create a kubeconfig for Amazon EKS}.
 
-The API server endpoint and certificate authority data aren\'t available
+The API server endpoint and certificate authority data aren't available
 until the cluster reaches the \code{ACTIVE} state.
 }
 \section{Request syntax}{

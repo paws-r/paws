@@ -18,7 +18,7 @@ frauddetector_put_external_model(modelEndpoint, modelSource, role,
 
 \item{outputConfiguration}{[required] The model endpoint output configuration.}
 
-\item{modelEndpointStatus}{[required] The model endpoint's status in Amazon Fraud Detector.}
+\item{modelEndpointStatus}{[required] The model endpoint’s status in Amazon Fraud Detector.}
 }
 \description{
 Creates or updates an Amazon SageMaker model endpoint. You can also use

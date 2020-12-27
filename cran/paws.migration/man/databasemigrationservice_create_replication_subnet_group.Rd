@@ -14,7 +14,7 @@ databasemigrationservice_create_replication_subnet_group(
 lowercase string.
 
 Constraints: Must contain no more than 255 alphanumeric characters,
-periods, spaces, underscores, or hyphens. Must not be \"default\".
+periods, spaces, underscores, or hyphens. Must not be "default".
 
 Example: \code{mySubnetgroup}}
 

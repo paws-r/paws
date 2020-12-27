@@ -927,7 +927,7 @@ xray_update_group <- function(GroupName = NULL, GroupARN = NULL, FilterExpressio
 
 #' Modifies a sampling rule's configuration
 #'
-#' Modifies a sampling rule\'s configuration.
+#' Modifies a sampling rule's configuration.
 #'
 #' @usage
 #' xray_update_sampling_rule(SamplingRuleUpdate)

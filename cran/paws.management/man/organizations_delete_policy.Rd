@@ -12,7 +12,7 @@ can get the ID from the ListPolicies or ListPoliciesForTarget
 operations.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
-string requires \"p-\" followed by from 8 to 128 lowercase or uppercase
+string requires "p-" followed by from 8 to 128 lowercase or uppercase
 letters, digits, or the underscore character (\\_).}
 }
 \description{
@@ -21,7 +21,7 @@ this operation, you must first detach the policy from all organizational
 units (OUs), roots, and accounts.
 }
 \details{
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{

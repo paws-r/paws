@@ -62,12 +62,12 @@ ecr_batch_check_layer_availability <- function(registryId = NULL, repositoryName
 #' Deletes a list of specified images within a repository. Images are
 #' specified with either an `imageTag` or `imageDigest`.
 #' 
-#' You can remove a tag from an image by specifying the image\'s tag in
-#' your request. When you remove the last tag from an image, the image is
+#' You can remove a tag from an image by specifying the image's tag in your
+#' request. When you remove the last tag from an image, the image is
 #' deleted from your repository.
 #' 
 #' You can completely delete an image (and all of its tags) by specifying
-#' the image\'s digest in your request.
+#' the image's digest in your request.
 #'
 #' @usage
 #' ecr_batch_delete_image(registryId, repositoryName, imageIds)
@@ -149,8 +149,8 @@ ecr_batch_delete_image <- function(registryId = NULL, repositoryName, imageIds) 
 #' `imageDigest=digest`.
 #' @param acceptedMediaTypes The accepted media types for the request.
 #' 
-#' Valid values: `application/vnd.docker.distribution.manifest.v1+json` \\|
-#' `application/vnd.docker.distribution.manifest.v2+json` \\|
+#' Valid values: `application/vnd.docker.distribution.manifest.v1+json` |
+#' `application/vnd.docker.distribution.manifest.v2+json` |
 #' `application/vnd.oci.image.manifest.v1+json`
 #'
 #' @section Request syntax:
@@ -857,22 +857,22 @@ ecr_get_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #' assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository.
 #' @param imageIds The list of imageIDs to be included.
-#' @param nextToken The `nextToken` value returned from a previous paginatedâ€¨
+#' @param nextToken The `nextToken` value returned from a previous paginated 
 #' `GetLifecyclePolicyPreviewRequest` request where `maxResults` was used
-#' and theâ€¨ results exceeded the value of that parameter. Pagination
-#' continues from the end of theâ€¨ previous results that returned the
-#' `nextToken` value. This value isâ€¨ `null` when there are no more results
+#' and the  results exceeded the value of that parameter. Pagination
+#' continues from the end of the  previous results that returned the
+#' `nextToken` value. This value is  `null` when there are no more results
 #' to return. This option cannot be used when you specify images with
 #' `imageIds`.
 #' @param maxResults The maximum number of repository results returned by
-#' `GetLifecyclePolicyPreviewRequest` inâ€¨ paginated output. When this
-#' parameter is used, `GetLifecyclePolicyPreviewRequest` only returnsâ€¨
-#' `maxResults` results in a single page along with a `nextToken`â€¨ response
+#' `GetLifecyclePolicyPreviewRequest` in  paginated output. When this
+#' parameter is used, `GetLifecyclePolicyPreviewRequest` only returns 
+#' `maxResults` results in a single page along with a `nextToken`  response
 #' element. The remaining results of the initial request can be seen by
-#' sendingâ€¨ another `GetLifecyclePolicyPreviewRequest` request with the
-#' returned `nextToken`â€¨ value. This value can be between 1 and 1000. If
-#' thisâ€¨ parameter is not used, then `GetLifecyclePolicyPreviewRequest`
-#' returns up toâ€¨ 100 results and a `nextToken` value, ifâ€¨ applicable. This
+#' sending  another `GetLifecyclePolicyPreviewRequest` request with the
+#' returned `nextToken`  value. This value can be between 1 and 1000. If
+#' this  parameter is not used, then `GetLifecyclePolicyPreviewRequest`
+#' returns up to  100 results and a `nextToken` value, if  applicable. This
 #' option cannot be used when you specify images with `imageIds`.
 #' @param filter An optional parameter that filters results based on image tag status and
 #' all tags, if tagged.
@@ -1301,7 +1301,7 @@ ecr_put_image_tag_mutability <- function(registryId = NULL, repositoryName, imag
 #'   lifecyclePolicyText)
 #'
 #' @param registryId The AWS account ID associated with the registry that contains the
-#' repository. If you doâ€¨ not specify a registry, the default registry is
+#' repository. If you do  not specify a registry, the default registry is
 #' assumed.
 #' @param repositoryName &#91;required&#93; The name of the repository to receive the policy.
 #' @param lifecyclePolicyText &#91;required&#93; The JSON repository policy text to apply to the repository.

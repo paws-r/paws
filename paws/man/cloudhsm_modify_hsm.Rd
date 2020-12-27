@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudhsm_operations.R
 \name{cloudhsm_modify_hsm}
 \alias{cloudhsm_modify_hsm}
-\title{This is documentation for AWS CLOUDHSM CLASSIC}
+\title{This is documentation for AWS CloudHSM Classic}
 \usage{
 cloudhsm_modify_hsm(HsmArn, SubnetId, EniIp, IamRoleArn, ExternalId,
   SyslogIp)

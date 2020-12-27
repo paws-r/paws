@@ -7,15 +7,15 @@
 iam_update_user(UserName, NewPath, NewUserName)
 }
 \arguments{
-\item{UserName}{[required] Name of the user to update. If you\'re changing the name of the user,
+\item{UserName}{[required] Name of the user to update. If you're changing the name of the user,
 this is the original user name.
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
-\item{NewPath}{New path for the IAM user. Include this parameter only if you\'re
-changing the user\'s path.
+\item{NewPath}{New path for the IAM user. Include this parameter only if you're
+changing the user's path.
 
 This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
@@ -24,19 +24,19 @@ ASCII character from the ! (\code{U+0021}) through the DEL character
 (\verb{U+007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
-\item{NewUserName}{New name for the user. Include this parameter only if you\'re changing
-the user\'s name.
+\item{NewUserName}{New name for the user. Include this parameter only if you're changing
+the user's name.
 
 IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
-create resources named both \"MyResource\" and \"myresource\".}
+create resources named both "MyResource" and "myresource".}
 }
 \description{
 Updates the name and/or the path of the specified IAM user.
 }
 \details{
-You should understand the implications of changing an IAM user\'s path
-or name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_renaming}{Renaming an IAM User}
+You should understand the implications of changing an IAM user's path or
+name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_renaming}{Renaming an IAM User}
 and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_manage_rename.html}{Renaming an IAM Group}
 in the \emph{IAM User Guide}.
 

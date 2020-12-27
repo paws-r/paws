@@ -13,7 +13,7 @@ ssm_put_inventory(InstanceId, Items)
 }
 \description{
 Bulk update custom inventory items on one more instance. The request
-adds an inventory item, if it doesn\'t already exist, or updates an
+adds an inventory item, if it doesn't already exist, or updates an
 inventory item, if it does exist.
 }
 \section{Request syntax}{

@@ -64,7 +64,7 @@ respectively.
 }}
 
 \item{masterUserPassword}{The password for the master user of your new database. The password can
-include any printable ASCII character except \"/\", \"\"\", or \"@\".
+include any printable ASCII character except "/", """, or "@".
 
 Constraints: Must contain 8 to 41 characters.}
 

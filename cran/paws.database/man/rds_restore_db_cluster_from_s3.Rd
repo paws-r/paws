@@ -35,13 +35,13 @@ with the specified CharacterSet.}
 \item{DatabaseName}{The database name for the restored DB cluster.}
 
 \item{DBClusterIdentifier}{[required] The name of the DB cluster to create from the source data in the Amazon
-S3 bucket. This parameter isn\'t case-sensitive.
+S3 bucket. This parameter isn't case-sensitive.
 
 Constraints:
 \itemize{
 \item Must contain from 1 to 63 letters, numbers, or hyphens.
 \item First character must be a letter.
-\item Can\'t end with a hyphen or contain two consecutive hyphens.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{my-cluster1}}
@@ -107,20 +107,20 @@ Constraints:
 \itemize{
 \item Must be 1 to 16 letters or numbers.
 \item First character must be a letter.
-\item Can\'t be a reserved word for the chosen database engine.
+\item Can't be a reserved word for the chosen database engine.
 }}
 
 \item{MasterUserPassword}{[required] The password for the master database user. This password can contain any
-printable ASCII character except \"/\", \"\"\", or \"@\".
+printable ASCII character except "/", """, or "@".
 
 Constraints: Must contain from 8 to 41 characters.}
 
 \item{OptionGroupName}{A value that indicates that the restored DB cluster should be associated
 with the specified option group.
 
-Permanent options can\'t be removed from an option group. An option
-group can\'t be removed from a DB cluster once it is associated with a
-DB cluster.}
+Permanent options can't be removed from an option group. An option group
+can't be removed from a DB cluster once it is associated with a DB
+cluster.}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
 automated backups are enabled using the \code{BackupRetentionPeriod}
@@ -220,7 +220,7 @@ more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraU
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can\'t be deleted when deletion protection is
+enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB

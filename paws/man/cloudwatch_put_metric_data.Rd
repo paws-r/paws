@@ -37,7 +37,7 @@ also limited to no more than 20 different metrics.
 
 Although the \code{Value} parameter accepts numbers of type \code{Double},
 CloudWatch rejects values that are either too small or too large. Values
-must be in the range of -2\\^360 to 2\\^360. In addition, special values
+must be in the range of -2^360 to 2^360. In addition, special values
 (for example, NaN, +Infinity, -Infinity) are not supported.
 
 You can use up to 10 dimensions per metric to further clarify what data

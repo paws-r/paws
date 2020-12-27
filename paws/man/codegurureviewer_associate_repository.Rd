@@ -19,7 +19,7 @@ idempotency.
 
 If you use the AWS CLI or one of the AWS SDKs to call this operation,
 you can leave this parameter empty. The CLI or SDK generates a random
-UUID for you and includes that in the request. If you don\'t use the SDK
+UUID for you and includes that in the request. If you don't use the SDK
 and instead generate a raw HTTP request to the Secrets Manager service
 endpoint, you must generate a ClientRequestToken yourself for new
 versions and include that value in the request.
@@ -37,7 +37,7 @@ retries.}
 Use to associate an AWS CodeCommit repository or a repostory managed by
 AWS CodeStar Connections with Amazon CodeGuru Reviewer. When you
 associate a repository, CodeGuru Reviewer reviews source code changes in
-the repository\'s pull requests and provides automatic recommendations.
+the repository's pull requests and provides automatic recommendations.
 You can view recommendations using the CodeGuru Reviewer console. For
 more information, see \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/recommendations.html}{Recommendations in Amazon CodeGuru Reviewer}
 in the \emph{Amazon CodeGuru Reviewer User Guide.}

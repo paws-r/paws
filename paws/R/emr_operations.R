@@ -1599,38 +1599,38 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' Guide](https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
 #' Currently supported values are:
 #' 
-#' -   \"mapr-m3\" - launch the job flow using MapR M3 Edition.
+#' -   "mapr-m3" - launch the job flow using MapR M3 Edition.
 #' 
-#' -   \"mapr-m5\" - launch the job flow using MapR M5 Edition.
+#' -   "mapr-m5" - launch the job flow using MapR M5 Edition.
 #' @param NewSupportedProducts For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
 #' later, use Applications.
 #' 
 #' A list of strings that indicates third-party software to use with the
 #' job flow that accepts a user argument list. EMR accepts and forwards the
 #' argument list to the corresponding installation script as bootstrap
-#' action arguments. For more information, see \"Launch a Job Flow on the
-#' MapR Distribution for Hadoop\" in the [Amazon EMR Developer
+#' action arguments. For more information, see "Launch a Job Flow on the
+#' MapR Distribution for Hadoop" in the [Amazon EMR Developer
 #' Guide](https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf).
 #' Supported values are:
 #' 
-#' -   \"mapr-m3\" - launch the cluster using MapR M3 Edition.
+#' -   "mapr-m3" - launch the cluster using MapR M3 Edition.
 #' 
-#' -   \"mapr-m5\" - launch the cluster using MapR M5 Edition.
+#' -   "mapr-m5" - launch the cluster using MapR M5 Edition.
 #' 
-#' -   \"mapr\" with the user arguments specifying \"\\--edition,m3\" or
-#'     \"\\--edition,m5\" - launch the job flow using MapR M3 or M5 Edition
+#' -   "mapr" with the user arguments specifying "--edition,m3" or
+#'     "--edition,m5" - launch the job flow using MapR M3 or M5 Edition
 #'     respectively.
 #' 
-#' -   \"mapr-m7\" - launch the cluster using MapR M7 Edition.
+#' -   "mapr-m7" - launch the cluster using MapR M7 Edition.
 #' 
-#' -   \"hunk\" - launch the cluster with the Hunk Big Data Analtics
+#' -   "hunk" - launch the cluster with the Hunk Big Data Analtics
 #'     Platform.
 #' 
-#' -   \"hue\"- launch the cluster with Hue installed.
+#' -   "hue"- launch the cluster with Hue installed.
 #' 
-#' -   \"spark\" - launch the cluster with Apache Spark installed.
+#' -   "spark" - launch the cluster with Apache Spark installed.
 #' 
-#' -   \"ganglia\" - launch the cluster with the Ganglia Monitoring System
+#' -   "ganglia" - launch the cluster with the Ganglia Monitoring System
 #'     installed.
 #' @param Applications Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of
 #' applications for Amazon EMR to install and configure when launching the
@@ -2045,7 +2045,7 @@ emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
 #' cluster is visible to all IAM users of the AWS account associated with
 #' the cluster
 #'
-#' Sets the Cluster\\$VisibleToAllUsers value, which determines whether the
+#' Sets the Cluster$VisibleToAllUsers value, which determines whether the
 #' cluster is visible to all IAM users of the AWS account associated with
 #' the cluster. Only the IAM user who created the cluster or the AWS
 #' account root user can call this action. The default value, `true`,

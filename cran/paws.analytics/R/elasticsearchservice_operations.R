@@ -186,7 +186,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' Domain names must start with a lowercase letter and can contain the
 #' following characters: a-z (lowercase), 0-9, and - (hyphen).
 #' @param ElasticsearchVersion String of format X.Y to specify version for the Elasticsearch domain eg.
-#' \"1.5\" or \"2.3\". For more information, see [Creating Elasticsearch
+#' "1.5" or "2.3". For more information, see [Creating Elasticsearch
 #' Domains](http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains)
 #' in the *Amazon Elasticsearch Service Developer Guide*.
 #' @param ElasticsearchClusterConfig Configuration options for an Elasticsearch domain. Specifies the
@@ -1197,7 +1197,7 @@ elasticsearchservice_get_upgrade_status <- function(DomainName) {
 #' user's account
 #'
 #' Returns the name of all Elasticsearch domains owned by the current
-#' user\'s account.
+#' user's account.
 #'
 #' @usage
 #' elasticsearchservice_list_domain_names()

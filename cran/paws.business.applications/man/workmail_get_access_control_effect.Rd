@@ -19,8 +19,8 @@ workmail_get_access_control_effect(OrganizationId, IpAddress, Action,
 \item{UserId}{[required] The user ID.}
 }
 \description{
-Gets the effects of an organization\'s access control rules as they
-apply to a specified IPv4 address, access protocol action, or user ID.
+Gets the effects of an organization's access control rules as they apply
+to a specified IPv4 address, access protocol action, or user ID.
 }
 \section{Request syntax}{
 \preformatted{svc$get_access_control_effect(

@@ -48,10 +48,10 @@ backfill a match anytime after a game session has been created.
 }
 \details{
 To request a match backfill, specify a unique ticket ID, the existing
-game session\'s ARN, a matchmaking configuration, and a set of data that
+game session's ARN, a matchmaking configuration, and a set of data that
 describes all current players in the game session. If successful, a
 match backfill ticket is created and returned with status set to QUEUED.
-The ticket is placed in the matchmaker\'s ticket pool and processed.
+The ticket is placed in the matchmaker's ticket pool and processed.
 Track the status of the ticket to respond as needed.
 
 The process of finding backfill matches is essentially identical to the
@@ -59,7 +59,7 @@ initial matchmaking process. The matchmaker searches the pool and groups
 tickets together to form potential matches, allowing only one backfill
 ticket per potential match. Once the a match is formed, the matchmaker
 creates player sessions for the new players. All tickets in the match
-are updated with the game session\'s connection information, and the
+are updated with the game session's connection information, and the
 GameSession object is updated to include matchmaker data on the new
 players. For more detail on how match backfill requests are processed,
 see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html}{How Amazon GameLift FlexMatch Works}.

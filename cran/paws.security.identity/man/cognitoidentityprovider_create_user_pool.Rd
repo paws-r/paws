@@ -50,7 +50,7 @@ usernames when a user signs up.}
 \item{EmailVerificationSubject}{A string representing the email verification subject.}
 
 \item{VerificationMessageTemplate}{The template for the verification message that the user sees when the
-app requests permission to access the user\'s information.}
+app requests permission to access the user's information.}
 
 \item{SmsAuthenticationMessage}{A string representing the SMS authentication message.}
 
@@ -72,11 +72,11 @@ such as by purpose, owner, environment, or other criteria.}
 can be standard or custom attributes.}
 
 \item{UserPoolAddOns}{Used to enable advanced security risk detection. Set the key
-\code{AdvancedSecurityMode} to the value \"AUDIT\".}
+\code{AdvancedSecurityMode} to the value "AUDIT".}
 
 \item{UsernameConfiguration}{You can choose to set case sensitivity on the username input for the
 selected sign-in option. For example, when this is set to \code{False}, users
-will be able to sign in using either \"username\" or \"Username\". This
+will be able to sign in using either "username" or "Username". This
 configuration is immutable once it has been set. For more information,
 see .}
 

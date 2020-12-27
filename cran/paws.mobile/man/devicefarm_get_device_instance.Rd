@@ -8,7 +8,7 @@ device fleet}
 devicefarm_get_device_instance(arn)
 }
 \arguments{
-\item{arn}{[required] The Amazon Resource Name (ARN) of the instance you\'re requesting
+\item{arn}{[required] The Amazon Resource Name (ARN) of the instance you're requesting
 information about.}
 }
 \description{

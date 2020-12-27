@@ -58,7 +58,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 When making a select request, do the following:
 \itemize{
-\item Define an output location for the select query\'s output. This must
+\item Define an output location for the select query's output. This must
 be an Amazon S3 bucket in the same AWS Region as the bucket that
 contains the archive object that is being queried. The AWS account
 that initiates the job must have permissions to write to the S3
@@ -77,7 +77,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}
 in the \emph{Amazon Simple Storage Service Developer Guide}
 }
 \item Define the SQL expression for the \code{SELECT} type of restoration for
-your query in the request body\'s \code{SelectParameters} structure. You
+your query in the request body's \code{SelectParameters} structure. You
 can use expressions like the following examples.
 \itemize{
 \item The following expression returns all records from the specified
@@ -105,7 +105,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 When making a select request, you can also do the following:
 \itemize{
 \item To expedite your queries, specify the \code{Expedited} tier. For more
-information about tiers, see \"Restoring Archives,\" later in this
+information about tiers, see "Restoring Archives," later in this
 topic.
 \item Specify details about the data serialization format of both the
 input object that is being queried and the serialization of the
@@ -118,10 +118,10 @@ The following are additional important facts about the select feature:
 retrievals, they are stored until explicitly deleted-manually or
 through a lifecycle policy.
 \item You can issue more than one select request on the same Amazon S3
-object. Amazon S3 doesn\'t deduplicate requests, so avoid issuing
+object. Amazon S3 doesn't deduplicate requests, so avoid issuing
 duplicate requests.
 \item Amazon S3 accepts a select request even if the object has already
-been restored. A select request doesn't return error response \code{409}.
+been restored. A select request doesn’t return error response \code{409}.
 }
 
 \strong{Restoring Archives}
@@ -135,7 +135,7 @@ copy but the object remains archived in the GLACIER or DEEP\\_ARCHIVE
 storage class that object was restored from.
 
 To restore a specific object version, you can provide a version ID. If
-you don\'t provide a version ID, Amazon S3 restores the current version.
+you don't provide a version ID, Amazon S3 restores the current version.
 
 The time it takes restore jobs to finish depends on which storage class
 the object is being restored from and which data access tier you
@@ -149,7 +149,7 @@ element of the request body:
 your data stored in the GLACIER storage class when occasional urgent
 requests for a subset of archives are required. For all but the
 largest archived objects (250 MB+), data accessed using Expedited
-retrievals are typically made available within 1--5 minutes.
+retrievals are typically made available within 1–5 minutes.
 Provisioned capacity ensures that retrieval capacity for Expedited
 retrievals is available when you need it. Expedited retrievals and
 provisioned capacity are not available for the DEEP\\_ARCHIVE storage
@@ -161,7 +161,7 @@ not specify the retrieval option. S3 Standard retrievals typically
 complete within 3-5 hours from the GLACIER storage class and
 typically complete within 12 hours from the DEEP\\_ARCHIVE storage
 class.
-\item \strong{\code{Bulk}} - Bulk retrievals are Amazon S3 Glacier's lowest-cost
+\item \strong{\code{Bulk}} - Bulk retrievals are Amazon S3 Glacier’s lowest-cost
 retrieval option, enabling you to retrieve large amounts, even
 petabytes, of data inexpensively in a day. Bulk retrievals typically
 complete within 5-12 hours from the GLACIER storage class and

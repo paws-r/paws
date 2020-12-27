@@ -17,7 +17,7 @@ format:
 
 \verb{EXCLUDE itemId WHERE INTERACTIONS.event_type in ("EVENT_TYPE")}
 
-Where \"EVENT\\_TYPE\" is the type of event to filter out. To filter out
+Where "EVENT\\_TYPE" is the type of event to filter out. To filter out
 all items with any interactions history, set \code{"*"} as the EVENT\\_TYPE.
 For more information, see Using Filters with Amazon Personalize.}
 }

@@ -27,7 +27,7 @@ The generated report is saved to the following location:
 
 \verb{s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv}
 
-You can call this operation only from the organization\'s master account
+You can call this operation only from the organization's master account
 and from the us-east-1 Region.
 }
 \section{Request syntax}{

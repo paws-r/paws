@@ -14,7 +14,7 @@ Constraints:
 \itemize{
 \item Must be 1 to 255 letters, numbers, or hyphens
 \item First character must be a letter
-\item Can\'t end with a hyphen or contain two consecutive hyphens
+\item Can't end with a hyphen or contain two consecutive hyphens
 }
 
 Example: \code{myoptiongroup}}

@@ -19,9 +19,9 @@ that is IN\\_PROGRESS, and you do not set \code{force} to \code{true}, then an
 \code{InvalidStateTransitionException} will be thrown. The default is
 \code{false}.
 
-Canceling a job execution which is \"IN\\_PROGRESS\", will cause the
-device to be unable to update the job execution status. Use caution and
-ensure that the device is able to recover to a valid state.}
+Canceling a job execution which is "IN\\_PROGRESS", will cause the device
+to be unable to update the job execution status. Use caution and ensure
+that the device is able to recover to a valid state.}
 
 \item{expectedVersion}{(Optional) The expected current version of the job execution. Each time
 you update the job execution, its version is incremented. If the version

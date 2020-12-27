@@ -30,7 +30,7 @@ NULL
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to tag.
 #' @param Tags &#91;required&#93; An array of `Tag` objects. Each tag is a key-value pair. Only the `key`
-#' parameter is required. If you don\'t specify a value, Amazon SageMaker
+#' parameter is required. If you don't specify a value, Amazon SageMaker
 #' sets the value to an empty string.
 #'
 #' @section Request syntax:
@@ -151,9 +151,9 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #' -   The input and output content formats that the algorithm supports for
 #'     inference.
 #' @param ValidationSpecification Specifies configurations for one or more training jobs and that Amazon
-#' SageMaker runs to test the algorithm\'s training code and, optionally,
+#' SageMaker runs to test the algorithm's training code and, optionally,
 #' one or more batch transform jobs that Amazon SageMaker runs to test the
-#' algorithm\'s inference code.
+#' algorithm's inference code.
 #' @param CertifyForMarketplace Whether to certify the algorithm so that it can be listed in AWS
 #' Marketplace.
 #'
@@ -444,7 +444,7 @@ sagemaker_create_app <- function(DomainId, UserProfileName, AppType, AppName, Ta
 #' @param ProblemType Defines the kind of preprocessing and algorithms intended for the
 #' candidates. Options include: BinaryClassification,
 #' MulticlassClassification, and Regression.
-#' @param AutoMLJobObjective Defines the job\'s objective. You provide a MetricName and AutoML will
+#' @param AutoMLJobObjective Defines the job's objective. You provide a MetricName and AutoML will
 #' infer minimize or maximize. If this is not provided, the most commonly
 #' used ObjectiveMetric for problem type will be selected.
 #' @param AutoMLJobConfig Contains CompletionCriteria and SecurityConfig.
@@ -605,7 +605,7 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig) {
 #' 
 #' -   `The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker assumes to perform the model compilation job`
 #' 
-#' You can also provide a `Tag` to track the model compilation job\'s
+#' You can also provide a `Tag` to track the model compilation job's
 #' resource use and costs. The response body contains the
 #' `CompilationJobArn` for the compiled job.
 #' 
@@ -975,7 +975,7 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Tags = N
 #' 
 #' Certain Nitro-based instances include local storage, dependent on the
 #' instance type. Local storage volumes are encrypted using a hardware
-#' module on the instance. You can\'t request a `KmsKeyId` when using an
+#' module on the instance. You can't request a `KmsKeyId` when using an
 #' instance type with local storage. If any of the models that you specify
 #' in the `ProductionVariants` parameter use nitro-based instances with
 #' local storage, do not specify a value for the `KmsKeyId` parameter. If
@@ -1053,7 +1053,7 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
 }
 .sagemaker$operations$create_endpoint_config <- sagemaker_create_endpoint_config
 
-#' Creates an Amazon SageMaker _experiment_
+#' Creates an Amazon SageMaker experiment
 #'
 #' Creates an Amazon SageMaker *experiment*. An experiment is a collection
 #' of *trials* that are observed, compared and evaluated as a group. A
@@ -1078,8 +1078,8 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
 #' description, call the UpdateExperiment API.
 #' 
 #' To get a list of all your experiments, call the ListExperiments API. To
-#' view an experiment\'s properties, call the DescribeExperiment API. To
-#' get a list of all the trials associated with an experiment, call the
+#' view an experiment's properties, call the DescribeExperiment API. To get
+#' a list of all the trials associated with an experiment, call the
 #' ListTrials API. To create a trial call the CreateTrial API.
 #'
 #' @usage
@@ -1088,8 +1088,8 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
 #'
 #' @param ExperimentName &#91;required&#93; The name of the experiment. The name must be unique in your AWS account
 #' and is not case-sensitive.
-#' @param DisplayName The name of the experiment as displayed. The name doesn\'t need to be
-#' unique. If you don\'t specify `DisplayName`, the value in
+#' @param DisplayName The name of the experiment as displayed. The name doesn't need to be
+#' unique. If you don't specify `DisplayName`, the value in
 #' `ExperimentName` is displayed.
 #' @param Description The description of the experiment.
 #' @param Tags A list of tags to associate with the experiment. You can use Search API
@@ -1665,10 +1665,10 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #' list of labeling jobs.
 #' @param LabelAttributeName &#91;required&#93; The attribute name to use for the label in the output manifest file.
 #' This is the key for the key/value pair formed with the label that a
-#' worker assigns to the object. The name can\'t end with \"-metadata\". If
+#' worker assigns to the object. The name can't end with "-metadata". If
 #' you are running a semantic segmentation labeling job, the attribute name
-#' must end with \"-ref\". If you are running any other kind of labeling
-#' job, the attribute name must not end with \"-ref\".
+#' must end with "-ref". If you are running any other kind of labeling job,
+#' the attribute name must not end with "-ref".
 #' @param InputConfig &#91;required&#93; Input data for the labeling job, such as the Amazon S3 location of the
 #' data objects and the location of the manifest file that describes the
 #' data objects.
@@ -2253,7 +2253,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #'     notebook instance, assuming that the security groups allow it.
 #' 
 #' After creating the notebook instance, Amazon SageMaker returns its
-#' Amazon Resource Name (ARN). You can\'t change the name of a notebook
+#' Amazon Resource Name (ARN). You can't change the name of a notebook
 #' instance after you create it.
 #' 
 #' After Amazon SageMaker creates the notebook instance, you can connect to
@@ -2471,7 +2471,7 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' Creates a URL for a specified UserProfile in a Domain. When accessed in
 #' a web browser, the user will be automatically signed in to Amazon
 #' SageMaker Studio, and granted access to all of the Apps and files
-#' associated with the Domain\'s Amazon Elastic File System (EFS) volume.
+#' associated with the Domain's Amazon Elastic File System (EFS) volume.
 #' This operation can only be called when the authentication mode equals
 #' IAM.
 #'
@@ -2586,7 +2586,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #'   RoleArn, Tags, ExperimentConfig)
 #'
 #' @param ProcessingInputs For each input, data is downloaded from S3 into the processing container
-#' before the processing job begins running if \"S3InputMode\" is set to
+#' before the processing job begins running if "S3InputMode" is set to
 #' `File`.
 #' @param ProcessingOutputConfig Output configuration for the processing job.
 #' @param ProcessingJobName &#91;required&#93; The name of the processing job. The name must be unique within an AWS
@@ -3064,7 +3064,7 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' execution-parameters endpoint is not enabled, the default value is `1`.
 #' For more information on execution-parameters, see [How Containers Serve
 #' Requests](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests).
-#' For built-in algorithms, you don\'t need to set a value for
+#' For built-in algorithms, you don't need to set a value for
 #' `MaxConcurrentTransforms`.
 #' @param ModelClientConfig Configures the timeout and maximum number of retries for processing a
 #' transform job invocation.
@@ -3192,7 +3192,7 @@ sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcu
 }
 .sagemaker$operations$create_transform_job <- sagemaker_create_transform_job
 
-#' Creates an Amazon SageMaker _trial_
+#' Creates an Amazon SageMaker trial
 #'
 #' Creates an Amazon SageMaker *trial*. A trial is a set of steps called
 #' *trial components* that produce a machine learning model. A trial is
@@ -3207,7 +3207,7 @@ sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcu
 #' the tags.
 #' 
 #' To get a list of all your trials, call the ListTrials API. To view a
-#' trial\'s properties, call the DescribeTrial API. To create a trial
+#' trial's properties, call the DescribeTrial API. To create a trial
 #' component, call the CreateTrialComponent API.
 #'
 #' @usage
@@ -3215,8 +3215,8 @@ sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcu
 #'
 #' @param TrialName &#91;required&#93; The name of the trial. The name must be unique in your AWS account and
 #' is not case-sensitive.
-#' @param DisplayName The name of the trial as displayed. The name doesn\'t need to be unique.
-#' If `DisplayName` isn\'t specified, `TrialName` is displayed.
+#' @param DisplayName The name of the trial as displayed. The name doesn't need to be unique.
+#' If `DisplayName` isn't specified, `TrialName` is displayed.
 #' @param ExperimentName &#91;required&#93; The name of the experiment to associate the trial with.
 #' @param Tags A list of tags to associate with the trial. You can use Search API to
 #' search on the tags.
@@ -3256,8 +3256,7 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 }
 .sagemaker$operations$create_trial <- sagemaker_create_trial
 
-#' Creates a _trial component_, which is a stage of a machine learning
-#' _trial_
+#' Creates a trial component, which is a stage of a machine learning trial
 #'
 #' Creates a *trial component*, which is a stage of a machine learning
 #' *trial*. A trial is composed of one or more trial components. A trial
@@ -3287,8 +3286,8 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 #'
 #' @param TrialComponentName &#91;required&#93; The name of the component. The name must be unique in your AWS account
 #' and is not case-sensitive.
-#' @param DisplayName The name of the component as displayed. The name doesn\'t need to be
-#' unique. If `DisplayName` isn\'t specified, `TrialComponentName` is
+#' @param DisplayName The name of the component as displayed. The name doesn't need to be
+#' unique. If `DisplayName` isn't specified, `TrialComponentName` is
 #' displayed.
 #' @param Status The status of the component. States include:
 #' 
@@ -3372,12 +3371,12 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #' Creates a user profile
 #'
 #' Creates a user profile. A user profile represents a single user within a
-#' domain, and is the main way to reference a \"person\" for the purposes
-#' of sharing, reporting, and other user-oriented features. This entity is
+#' domain, and is the main way to reference a "person" for the purposes of
+#' sharing, reporting, and other user-oriented features. This entity is
 #' created when a user onboards to Amazon SageMaker Studio. If an
 #' administrator invites a person by email or imports them from SSO, a user
 #' profile is automatically created. A user profile is the primary holder
-#' of settings for an individual user and has a reference to the user\'s
+#' of settings for an individual user and has a reference to the user's
 #' private Amazon Elastic File System (EFS) home directory.
 #'
 #' @usage
@@ -3387,13 +3386,13 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #' @param DomainId &#91;required&#93; The ID of the associated Domain.
 #' @param UserProfileName &#91;required&#93; A name for the UserProfile.
 #' @param SingleSignOnUserIdentifier A specifier for the type of value specified in SingleSignOnUserValue.
-#' Currently, the only supported value is \"UserName\". If the Domain\'s
-#' AuthMode is SSO, this field is required. If the Domain\'s AuthMode is
-#' not SSO, this field cannot be specified.
+#' Currently, the only supported value is "UserName". If the Domain's
+#' AuthMode is SSO, this field is required. If the Domain's AuthMode is not
+#' SSO, this field cannot be specified.
 #' @param SingleSignOnUserValue The username of the associated AWS Single Sign-On User for this
-#' UserProfile. If the Domain\'s AuthMode is SSO, this field is required,
+#' UserProfile. If the Domain's AuthMode is SSO, this field is required,
 #' and must match a valid username of a user in your directory. If the
-#' Domain\'s AuthMode is not SSO, this field cannot be specified.
+#' Domain's AuthMode is not SSO, this field cannot be specified.
 #' @param Tags Each tag consists of a key and an optional value. Tag keys must be
 #' unique per resource.
 #' @param UserSettings A collection of settings.
@@ -3705,7 +3704,7 @@ sagemaker_delete_domain <- function(DomainId, RetentionPolicy = NULL) {
 #' were deployed when the endpoint was created.
 #' 
 #' Amazon SageMaker retires any custom KMS key grants associated with the
-#' endpoint, meaning you don\'t need to use the
+#' endpoint, meaning you don't need to use the
 #' [RevokeGrant](http://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html)
 #' API call.
 #'
@@ -4101,7 +4100,7 @@ sagemaker_delete_notebook_instance_lifecycle_config <- function(NotebookInstance
 #'
 #' Deletes the specified tags from an Amazon SageMaker resource.
 #' 
-#' To list a resource\'s tags, use the `ListTags` API.
+#' To list a resource's tags, use the `ListTags` API.
 #' 
 #' When you call this API to delete tags from a hyperparameter tuning job,
 #' the deleted tags are not removed from training jobs that the
@@ -4263,7 +4262,7 @@ sagemaker_delete_user_profile <- function(DomainId, UserProfileName) {
 
 #' Deletes an existing work team
 #'
-#' Deletes an existing work team. This operation can\'t be undone.
+#' Deletes an existing work team. This operation can't be undone.
 #'
 #' @usage
 #' sagemaker_delete_workteam(WorkteamName)
@@ -4383,7 +4382,7 @@ sagemaker_describe_app <- function(DomainId, UserProfileName, AppType, AppName) 
 #' @usage
 #' sagemaker_describe_auto_ml_job(AutoMLJobName)
 #'
-#' @param AutoMLJobName &#91;required&#93; Request information about a job using that job\'s unique name.
+#' @param AutoMLJobName &#91;required&#93; Request information about a job using that job's unique name.
 #'
 #' @section Request syntax:
 #' ```
@@ -4600,7 +4599,7 @@ sagemaker_describe_endpoint_config <- function(EndpointConfigName) {
 
 #' Provides a list of an experiment's properties
 #'
-#' Provides a list of an experiment\'s properties.
+#' Provides a list of an experiment's properties.
 #'
 #' @usage
 #' sagemaker_describe_experiment(ExperimentName)
@@ -5120,7 +5119,7 @@ sagemaker_describe_transform_job <- function(TransformJobName) {
 
 #' Provides a list of a trial's properties
 #'
-#' Provides a list of a trial\'s properties.
+#' Provides a list of a trial's properties.
 #'
 #' @usage
 #' sagemaker_describe_trial(TrialName)
@@ -5156,7 +5155,7 @@ sagemaker_describe_trial <- function(TrialName) {
 
 #' Provides a list of a trials component's properties
 #'
-#' Provides a list of a trials component\'s properties.
+#' Provides a list of a trials component's properties.
 #'
 #' @usage
 #' sagemaker_describe_trial_component(TrialComponentName)
@@ -5278,7 +5277,7 @@ sagemaker_describe_workforce <- function(WorkforceName) {
 #'
 #' Gets information about a specific work team. You can see information
 #' such as the create date, the last updated date, membership information,
-#' and the work team\'s Amazon Resource Name (ARN).
+#' and the work team's Amazon Resource Name (ARN).
 #'
 #' @usage
 #' sagemaker_describe_workteam(WorkteamName)
@@ -5314,7 +5313,7 @@ sagemaker_describe_workteam <- function(WorkteamName) {
 
 #' Disassociates a trial component from a trial
 #'
-#' Disassociates a trial component from a trial. This doesn\'t effect other
+#' Disassociates a trial component from a trial. This doesn't effect other
 #' trials the component is associated with. Before you can delete a
 #' component, you must disassociate the component from all trials it is
 #' associated with. To associate a trial component with a trial, call the
@@ -5586,12 +5585,12 @@ sagemaker_list_auto_ml_jobs <- function(CreationTimeAfter = NULL, CreationTimeBe
 #' sagemaker_list_candidates_for_auto_ml_job(AutoMLJobName, StatusEquals,
 #'   CandidateNameEquals, SortOrder, SortBy, MaxResults, NextToken)
 #'
-#' @param AutoMLJobName &#91;required&#93; List the Candidates created for the job by providing the job\'s name.
+#' @param AutoMLJobName &#91;required&#93; List the Candidates created for the job by providing the job's name.
 #' @param StatusEquals List the Candidates for the job and filter by status.
 #' @param CandidateNameEquals List the Candidates for the job and filter by candidate name.
 #' @param SortOrder The sort order for the results. The default is Ascending.
 #' @param SortBy The parameter by which to sort the results. The default is Descending.
-#' @param MaxResults List the job\'s Candidates up to a specified limit.
+#' @param MaxResults List the job's Candidates up to a specified limit.
 #' @param NextToken If the previous response was truncated, you will receive this token. Use
 #' it in your next request to receive the next set of results.
 #'
@@ -5725,7 +5724,7 @@ sagemaker_list_code_repositories <- function(CreationTimeAfter = NULL, CreationT
 #' @param NameContains A filter that returns the model compilation jobs whose name contains a
 #' specified string.
 #' @param StatusEquals A filter that retrieves model compilation jobs with a specific
-#' DescribeCompilationJobResponse\\$CompilationJobStatus status.
+#' DescribeCompilationJobResponse$CompilationJobStatus status.
 #' @param SortBy The field by which to sort results. The default is `CreationTime`.
 #' @param SortOrder The sort order for results. The default is `Ascending`.
 #'
@@ -5956,7 +5955,7 @@ sagemaker_list_endpoints <- function(SortBy = NULL, SortOrder = NULL, NextToken 
 #' time.
 #' @param SortBy The property used to sort results. The default value is `CreationTime`.
 #' @param SortOrder The sort order. The default value is `Descending`.
-#' @param NextToken If the previous call to `ListExperiments` didn\'t return the full set of
+#' @param NextToken If the previous call to `ListExperiments` didn't return the full set of
 #' experiments, the call returns a token for getting the next set of
 #' experiments.
 #' @param MaxResults The maximum number of experiments to return in the response. The default
@@ -6666,7 +6665,7 @@ sagemaker_list_notebook_instance_lifecycle_configs <- function(NextToken = NULL,
 #' requester's account in an AWS Region
 #'
 #' Returns a list of the Amazon SageMaker notebook instances in the
-#' requester\'s account in an AWS Region.
+#' requester's account in an AWS Region.
 #'
 #' @usage
 #' sagemaker_list_notebook_instances(NextToken, MaxResults, SortBy,
@@ -6686,7 +6685,7 @@ sagemaker_list_notebook_instance_lifecycle_configs <- function(NextToken = NULL,
 #' @param MaxResults The maximum number of notebook instances to return.
 #' @param SortBy The field to sort results by. The default is `Name`.
 #' @param SortOrder The sort order for results.
-#' @param NameContains A string in the notebook instances\' name. This filter returns only
+#' @param NameContains A string in the notebook instances' name. This filter returns only
 #' notebook instances whose name contains the specified string.
 #' @param CreationTimeBefore A filter that returns only notebook instances that were created before
 #' the specified time (timestamp).
@@ -7132,22 +7131,22 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
 #'   CreatedAfter, CreatedBefore, SortBy, SortOrder, MaxResults, NextToken)
 #'
 #' @param ExperimentName A filter that returns only components that are part of the specified
-#' experiment. If you specify `ExperimentName`, you can\'t filter by
+#' experiment. If you specify `ExperimentName`, you can't filter by
 #' `SourceArn` or `TrialName`.
 #' @param TrialName A filter that returns only components that are part of the specified
-#' trial. If you specify `TrialName`, you can\'t filter by `ExperimentName`
+#' trial. If you specify `TrialName`, you can't filter by `ExperimentName`
 #' or `SourceArn`.
 #' @param SourceArn A filter that returns only components that have the specified source
-#' Amazon Resource Name (ARN). If you specify `SourceArn`, you can\'t
-#' filter by `ExperimentName` or `TrialName`.
+#' Amazon Resource Name (ARN). If you specify `SourceArn`, you can't filter
+#' by `ExperimentName` or `TrialName`.
 #' @param CreatedAfter A filter that returns only components created after the specified time.
 #' @param CreatedBefore A filter that returns only components created before the specified time.
 #' @param SortBy The property used to sort results. The default value is `CreationTime`.
 #' @param SortOrder The sort order. The default value is `Descending`.
 #' @param MaxResults The maximum number of components to return in the response. The default
 #' value is 10.
-#' @param NextToken If the previous call to `ListTrialComponents` didn\'t return the full
-#' set of components, the call returns a token for getting the next set of
+#' @param NextToken If the previous call to `ListTrialComponents` didn't return the full set
+#' of components, the call returns a token for getting the next set of
 #' components.
 #'
 #' @section Request syntax:
@@ -7212,7 +7211,7 @@ sagemaker_list_trial_components <- function(ExperimentName = NULL, TrialName = N
 #' @param SortOrder The sort order. The default value is `Descending`.
 #' @param MaxResults The maximum number of trials to return in the response. The default
 #' value is 10.
-#' @param NextToken If the previous call to `ListTrials` didn\'t return the full set of
+#' @param NextToken If the previous call to `ListTrials` didn't return the full set of
 #' trials, the call returns a token for getting the next set of trials.
 #'
 #' @section Request syntax:
@@ -7313,7 +7312,7 @@ sagemaker_list_user_profiles <- function(NextToken = NULL, MaxResults = NULL, So
 #'
 #' @param SortBy The field to sort results by. The default is `CreationTime`.
 #' @param SortOrder The sort order for results. The default is `Ascending`.
-#' @param NameContains A string in the work team\'s name. This filter returns only work teams
+#' @param NameContains A string in the work team's name. This filter returns only work teams
 #' whose name contains the specified string.
 #' @param NextToken If the result of the previous `ListWorkteams` request was truncated, the
 #' response includes a `NextToken`. To retrieve the next set of labeling
@@ -7353,8 +7352,7 @@ sagemaker_list_workteams <- function(SortBy = NULL, SortOrder = NULL, NameContai
 
 #' Renders the UI template so that you can preview the worker's experience
 #'
-#' Renders the UI template so that you can preview the worker\'s
-#' experience.
+#' Renders the UI template so that you can preview the worker's experience.
 #'
 #' @usage
 #' sagemaker_render_ui_template(UiTemplate, Task, RoleArn, HumanTaskUiArn)
@@ -7533,8 +7531,8 @@ sagemaker_start_monitoring_schedule <- function(MonitoringScheduleName) {
 #' Launches an ML compute instance with the latest version of the libraries
 #' and attaches your ML storage volume. After configuring the notebook
 #' instance, Amazon SageMaker sets the notebook instance status to
-#' `InService`. A notebook instance\'s status must be `InService` before
-#' you can connect to your Jupyter notebook.
+#' `InService`. A notebook instance's status must be `InService` before you
+#' can connect to your Jupyter notebook.
 #'
 #' @usage
 #' sagemaker_start_notebook_instance(NotebookInstanceName)
@@ -7609,13 +7607,13 @@ sagemaker_stop_auto_ml_job <- function(AutoMLJobName) {
 #' Stops a model compilation job.
 #' 
 #' To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal.
-#' This gracefully shuts the job down. If the job hasn\'t stopped, it sends
+#' This gracefully shuts the job down. If the job hasn't stopped, it sends
 #' the SIGKILL signal.
 #' 
 #' When it receives a `StopCompilationJob` request, Amazon SageMaker
-#' changes the CompilationJobSummary\\$CompilationJobStatus of the job to
+#' changes the CompilationJobSummary$CompilationJobStatus of the job to
 #' `Stopping`. After Amazon SageMaker stops the job, it sets the
-#' CompilationJobSummary\\$CompilationJobStatus to `Stopped`.
+#' CompilationJobSummary$CompilationJobStatus to `Stopped`.
 #'
 #' @usage
 #' sagemaker_stop_compilation_job(CompilationJobName)
@@ -7899,8 +7897,8 @@ sagemaker_stop_training_job <- function(TrainingJobName) {
 #' When Amazon SageMaker receives a `StopTransformJob` request, the status
 #' of the job changes to `Stopping`. After Amazon SageMaker stops the job,
 #' the status is set to `Stopped`. When you stop a transform job before it
-#' is completed, Amazon SageMaker doesn\'t store the job\'s output in
-#' Amazon S3.
+#' is completed, Amazon SageMaker doesn't store the job's output in Amazon
+#' S3.
 #'
 #' @usage
 #' sagemaker_stop_transform_job(TransformJobName)
@@ -8084,10 +8082,10 @@ sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL) {
 #' specified in a new `EndpointConfig` call when updating an endpoint, set
 #' `RetainAllVariantProperties` to `false`.
 #' @param ExcludeRetainedVariantProperties When you are updating endpoint resources with
-#' UpdateEndpointInput\\$RetainAllVariantProperties, whose value is set to
+#' UpdateEndpointInput$RetainAllVariantProperties, whose value is set to
 #' `true`, `ExcludeRetainedVariantProperties` specifies the list of type
 #' VariantProperty to override with the values provided by
-#' `EndpointConfig`. If you don\'t specify a value for
+#' `EndpointConfig`. If you don't specify a value for
 #' `ExcludeAllVariantProperties`, no variant properties are overridden.
 #'
 #' @section Request syntax:
@@ -8185,9 +8183,8 @@ sagemaker_update_endpoint_weights_and_capacities <- function(EndpointName, Desir
 #' sagemaker_update_experiment(ExperimentName, DisplayName, Description)
 #'
 #' @param ExperimentName &#91;required&#93; The name of the experiment to update.
-#' @param DisplayName The name of the experiment as displayed. The name doesn\'t need to be
-#' unique. If `DisplayName` isn\'t specified, `ExperimentName` is
-#' displayed.
+#' @param DisplayName The name of the experiment as displayed. The name doesn't need to be
+#' unique. If `DisplayName` isn't specified, `ExperimentName` is displayed.
 #' @param Description The description of the experiment.
 #'
 #' @section Request syntax:
@@ -8368,9 +8365,9 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' not throw an error.
 #' @param VolumeSizeInGB The size, in GB, of the ML storage volume to attach to the notebook
 #' instance. The default value is 5 GB. ML storage volumes are encrypted,
-#' so Amazon SageMaker can\'t determine the amount of available free space
+#' so Amazon SageMaker can't determine the amount of available free space
 #' on the volume. Because of this, you can increase the volume size when
-#' you update a notebook instance, but you can\'t decrease the volume size.
+#' you update a notebook instance, but you can't decrease the volume size.
 #' If you want to decrease the size of the ML storage volume in use, create
 #' a new notebook instance with the desired size.
 #' @param DefaultCodeRepository The Git repository to associate with the notebook instance as its
@@ -8412,7 +8409,7 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' @param RootAccess Whether root access is enabled or disabled for users of the notebook
 #' instance. The default value is `Enabled`.
 #' 
-#' If you set this to `Disabled`, users don\'t have root access on the
+#' If you set this to `Disabled`, users don't have root access on the
 #' notebook instance, but lifecycle configuration scripts still run with
 #' root permissions.
 #'
@@ -8521,8 +8518,8 @@ sagemaker_update_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' sagemaker_update_trial(TrialName, DisplayName)
 #'
 #' @param TrialName &#91;required&#93; The name of the trial to update.
-#' @param DisplayName The name of the trial as displayed. The name doesn\'t need to be unique.
-#' If `DisplayName` isn\'t specified, `TrialName` is displayed.
+#' @param DisplayName The name of the trial as displayed. The name doesn't need to be unique.
+#' If `DisplayName` isn't specified, `TrialName` is displayed.
 #'
 #' @section Request syntax:
 #' ```
@@ -8563,19 +8560,19 @@ sagemaker_update_trial <- function(TrialName, DisplayName = NULL) {
 #'   OutputArtifactsToRemove)
 #'
 #' @param TrialComponentName &#91;required&#93; The name of the component to update.
-#' @param DisplayName The name of the component as displayed. The name doesn\'t need to be
-#' unique. If `DisplayName` isn\'t specified, `TrialComponentName` is
+#' @param DisplayName The name of the component as displayed. The name doesn't need to be
+#' unique. If `DisplayName` isn't specified, `TrialComponentName` is
 #' displayed.
 #' @param Status The new status of the component.
 #' @param StartTime When the component started.
 #' @param EndTime When the component ended.
-#' @param Parameters Replaces all of the component\'s hyperparameters with the specified
+#' @param Parameters Replaces all of the component's hyperparameters with the specified
 #' hyperparameters.
 #' @param ParametersToRemove The hyperparameters to remove from the component.
-#' @param InputArtifacts Replaces all of the component\'s input artifacts with the specified
+#' @param InputArtifacts Replaces all of the component's input artifacts with the specified
 #' artifacts.
 #' @param InputArtifactsToRemove The input artifacts to remove from the component.
-#' @param OutputArtifacts Replaces all of the component\'s output artifacts with the specified
+#' @param OutputArtifacts Replaces all of the component's output artifacts with the specified
 #' artifacts.
 #' @param OutputArtifactsToRemove The output artifacts to remove from the component.
 #'
@@ -8720,7 +8717,7 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 #' addresses by creating a list of up to ten
 #' [CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html).
 #' 
-#' By default, a workforce isn\'t restricted to specific IP addresses. If
+#' By default, a workforce isn't restricted to specific IP addresses. If
 #' you specify a range of IP addresses, workers who attempt to access tasks
 #' using any IP address outside the specified range are denied access and
 #' get a `Not Found` error message on the worker portal. After restricting

@@ -22,7 +22,7 @@ cloudformation_update_stack_set(StackSetName, Description, TemplateBody,
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
-\code{TemplateBody} or \code{TemplateURL}---or set \code{UsePreviousTemplate} to true.}
+\code{TemplateBody} or \code{TemplateURL}—or set \code{UsePreviousTemplate} to true.}
 
 \item{TemplateURL}{The location of the file that contains the template body. The URL must
 point to a template (maximum size: 460,800 bytes) that is located in an
@@ -30,13 +30,13 @@ Amazon S3 bucket. For more information, see \href{https://docs.aws.amazon.com/AW
 in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
-\code{TemplateBody} or \code{TemplateURL}---or set \code{UsePreviousTemplate} to true.}
+\code{TemplateBody} or \code{TemplateURL}—or set \code{UsePreviousTemplate} to true.}
 
-\item{UsePreviousTemplate}{Use the existing template that\'s associated with the stack set that
-you\'re updating.
+\item{UsePreviousTemplate}{Use the existing template that's associated with the stack set that
+you're updating.
 
 Conditional: You must specify only one of the following parameters:
-\code{TemplateBody} or \code{TemplateURL}---or set \code{UsePreviousTemplate} to true.}
+\code{TemplateBody} or \code{TemplateURL}—or set \code{UsePreviousTemplate} to true.}
 
 \item{Parameters}{A list of input parameters for the stack set template.}
 
@@ -58,7 +58,7 @@ The following IAM resources require you to specify either the
 \item If you have IAM resources, you can specify either capability.
 \item If you have IAM resources with custom names, you \emph{must} specify
 \code{CAPABILITY_NAMED_IAM}.
-\item If you don\'t specify either of these capabilities, AWS
+\item If you don't specify either of these capabilities, AWS
 CloudFormation returns an \code{InsufficientCapabilities} error.
 }
 
@@ -102,13 +102,13 @@ maximum number of 50 tags.
 If you specify tags for this parameter, those tags replace any list of
 tags that are currently associated with this stack set. This means:
 \itemize{
-\item If you don\'t specify this parameter, AWS CloudFormation doesn\'t
-modify the stack\'s tags.
+\item If you don't specify this parameter, AWS CloudFormation doesn't
+modify the stack's tags.
 \item If you specify \emph{any} tags using this parameter, you must specify
 \emph{all} the tags that you want associated with this stack set, even
-tags you\'ve specifed before (for example, when creating the stack
+tags you've specifed before (for example, when creating the stack
 set or during a previous update of the stack set.). Any tags that
-you don\'t include in the updated list of tags are removed from the
+you don't include in the updated list of tags are removed from the
 stack set, and therefore from the stacks and resources as well.
 \item If you specify an empty value, AWS CloudFormation removes all
 currently associated tags.
@@ -119,7 +119,7 @@ CloudFormation checks to see if you have the required IAM permission to
 tag resources. If you omit tags that are currently associated with the
 stack set from the list of tags you specify, AWS CloudFormation assumes
 that you want to remove those tags from the stack set, and checks to see
-if you have permission to untag resources. If you don\'t have the
+if you have permission to untag resources. If you don't have the
 necessary permission(s), the entire \code{UpdateStackSet} action fails with
 an \verb{access denied} error, and the stack set is not updated.}
 
@@ -196,7 +196,7 @@ you retry the request multiple times. You might retry stack set
 operation requests to ensure that AWS CloudFormation successfully
 received them.
 
-If you don\'t specify an operation ID, AWS CloudFormation generates one
+If you don't specify an operation ID, AWS CloudFormation generates one
 automatically.
 
 Repeating this stack set operation with a new operation ID retries all

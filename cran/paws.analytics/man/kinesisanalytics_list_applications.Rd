@@ -11,10 +11,9 @@ kinesisanalytics_list_applications(Limit, ExclusiveStartApplicationName)
 \item{Limit}{Maximum number of applications to list.}
 
 \item{ExclusiveStartApplicationName}{Name of the application to start the list with. When using pagination to
-retrieve the list, you don\'t need to specify this parameter in the
-first request. However, in subsequent requests, you add the last
-application name from the previous response to get the next page of
-applications.}
+retrieve the list, you don't need to specify this parameter in the first
+request. However, in subsequent requests, you add the last application
+name from the previous response to get the next page of applications.}
 }
 \description{
 This documentation is for version 1 of the Amazon Kinesis Data Analytics

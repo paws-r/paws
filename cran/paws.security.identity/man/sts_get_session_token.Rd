@@ -20,7 +20,7 @@ the IAM user has a policy that requires MFA authentication. The value is
 either the serial number for a hardware device (such as \code{GAHT12345678})
 or an Amazon Resource Name (ARN) for a virtual device (such as
 \verb{arn:aws:iam::123456789012:mfa/user}). You can find the device for an
-IAM user by going to the AWS Management Console and viewing the user\'s
+IAM user by going to the AWS Management Console and viewing the user's
 security credentials.
 
 The regex used to validate this parameter is a string of characters
@@ -32,8 +32,8 @@ characters: =,.@:/-}
 requires the IAM user to submit an MFA code, specify this value. If MFA
 authentication is required, the user must provide a code when requesting
 a set of temporary security credentials. A user who fails to provide the
-code receives an \"access denied\" response when requesting resources
-that require MFA authentication.
+code receives an "access denied" response when requesting resources that
+require MFA authentication.
 
 The format for this parameter, as described by its regex pattern, is a
 sequence of six numeric digits.}

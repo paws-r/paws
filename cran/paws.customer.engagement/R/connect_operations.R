@@ -128,7 +128,7 @@ connect_delete_user <- function(InstanceId, UserId) {
 #' Describes the specified user account
 #'
 #' Describes the specified user account. You can find the instance ID in
-#' the console (it's the final part of the ARN). The console does not
+#' the console (it’s the final part of the ARN). The console does not
 #' display the user IDs. Instead, list the users and note the IDs provided
 #' in the output.
 #'
@@ -652,7 +652,7 @@ connect_get_federation_token <- function(InstanceId) {
 #' 
 #' Statistic: AVG
 #' 
-#' Threshold: Only \"Less than\" comparisons are supported, with the
+#' Threshold: Only "Less than" comparisons are supported, with the
 #' following service level thresholds: 15, 20, 25, 30, 45, 60, 90, 120,
 #' 180, 240, 300, 600
 #' @param NextToken The token for the next set of results. Use the value returned in the
@@ -1177,7 +1177,7 @@ connect_resume_contact_recording <- function(InstanceId, ContactId, InitialConta
 #' API in the Amazon Connect Participant Service.
 #' 
 #' When a new chat contact is successfully created, clients need to
-#' subscribe to the participant's connection for the created chat within 5
+#' subscribe to the participant’s connection for the created chat within 5
 #' minutes. This is achieved by invoking
 #' [CreateParticipantConnection](https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html)
 #' with WEBSOCKET and CONNECTION\\_CREDENTIALS.
@@ -1243,7 +1243,7 @@ connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = N
 #'
 #' This API starts recording the contact when the agent joins the call.
 #' StartContactRecording is a one-time action. For example, if you use
-#' StopContactRecording to stop recording an ongoing call, you can\'t use
+#' StopContactRecording to stop recording an ongoing call, you can't use
 #' StartContactRecording to restart it. For scenarios where the recording
 #' has started and you want to suspend and resume it, such as when
 #' collecting sensitive information (for example, a credit card number),
@@ -1302,12 +1302,12 @@ connect_start_contact_recording <- function(InstanceId, ContactId, InitialContac
 #' contact flow
 #'
 #' This API places an outbound call to a contact, and then initiates the
-#' contact flow. It performs the actions in the contact flow that\'s
+#' contact flow. It performs the actions in the contact flow that's
 #' specified (in `ContactFlowId`).
 #' 
 #' Agents are not involved in initiating the outbound API (that is, dialing
 #' the contact). If the contact flow places an outbound call to a contact,
-#' and then puts the contact in queue, that\'s when the call is routed to
+#' and then puts the contact in queue, that's when the call is routed to
 #' the agent, like any other inbound case.
 #' 
 #' There is a 60 second dialing timeout for this operation. If the call is
@@ -1417,7 +1417,7 @@ connect_stop_contact <- function(ContactId, InstanceId) {
 #'
 #' When a contact is being recorded, this API stops recording the call.
 #' StopContactRecording is a one-time action. If you use
-#' StopContactRecording to stop recording an ongoing call, you can\'t use
+#' StopContactRecording to stop recording an ongoing call, you can't use
 #' StartContactRecording to restart it. For scenarios where the recording
 #' has started and you want to suspend it for sensitive information (for
 #' example, to collect a credit card number), and then restart it, use
@@ -1522,8 +1522,8 @@ connect_suspend_contact_recording <- function(InstanceId, ContactId, InitialCont
 #' connect_tag_resource(resourceArn, tags)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#' @param tags &#91;required&#93; One or more tags. For example, \{ \"tags\": \{\"key1\":\"value1\",
-#' \"key2\":\"value2\"\} \}.
+#' @param tags &#91;required&#93; One or more tags. For example, \{ "tags": \{"key1":"value1",
+#' "key2":"value2"\} \}.
 #'
 #' @section Request syntax:
 #' ```
@@ -1602,7 +1602,7 @@ connect_untag_resource <- function(resourceArn, tagKeys) {
 #' contact.
 #' 
 #' You can add or update attributes for both ongoing and completed
-#' contacts. For example, you can update the customer\'s name or the reason
+#' contacts. For example, you can update the customer's name or the reason
 #' the customer called while the call is active, or add notes about steps
 #' that the agent took during the call that are displayed to the next agent
 #' that takes the call. You can also update attributes for a contact using

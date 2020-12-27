@@ -13,11 +13,11 @@ neptune_reset_db_cluster_parameter_group(DBClusterParameterGroupName,
 
 \item{ResetAllParameters}{A value that is set to \code{true} to reset all parameters in the DB cluster
 parameter group to their default values, and \code{false} otherwise. You
-can\'t use this parameter if there is a list of parameter names
-specified for the \code{Parameters} parameter.}
+can't use this parameter if there is a list of parameter names specified
+for the \code{Parameters} parameter.}
 
 \item{Parameters}{A list of parameter names in the DB cluster parameter group to reset to
-the default values. You can\'t use this parameter if the
+the default values. You can't use this parameter if the
 \code{ResetAllParameters} parameter is set to \code{true}.}
 }
 \description{

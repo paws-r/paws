@@ -19,7 +19,7 @@ Constraints:
 \itemize{
 \item Must contain 1-63 alphanumeric characters or hyphens.
 \item First character must be a letter.
-\item Can\'t end with a hyphen or contain two consecutive hyphens.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{myrepinstance}}
@@ -40,7 +40,7 @@ replication instance.}
 
 \item{AvailabilityZone}{The Availability Zone where the replication instance will be created.
 The default value is a random, system-chosen Availability Zone in the
-endpoint\'s AWS Region, for example: \verb{us-east-1d}}
+endpoint's AWS Region, for example: \verb{us-east-1d}}
 
 \item{ReplicationSubnetGroupIdentifier}{A subnet group to associate with the replication instance.}
 
@@ -57,7 +57,7 @@ Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 Constraints: Minimum 30-minute window.}
 
 \item{MultiAZ}{Specifies whether the replication instance is a Multi-AZ deployment. You
-can\'t set the \code{AvailabilityZone} parameter if the Multi-AZ parameter is
+can't set the \code{AvailabilityZone} parameter if the Multi-AZ parameter is
 set to \code{true}.}
 
 \item{EngineVersion}{The engine version number of the replication instance.}
@@ -73,7 +73,7 @@ Default: \code{true}}
 \item{KmsKeyId}{An AWS KMS key identifier that is used to encrypt the data on the
 replication instance.
 
-If you don\'t specify a value for the \code{KmsKeyId} parameter, then AWS DMS
+If you don't specify a value for the \code{KmsKeyId} parameter, then AWS DMS
 uses your default encryption key.
 
 AWS KMS creates the default encryption key for your AWS account. Your

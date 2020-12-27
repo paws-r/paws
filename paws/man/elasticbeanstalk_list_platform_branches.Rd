@@ -17,23 +17,23 @@ The following list shows valid attribute values for each of the
 \itemize{
 \item \code{Attribute = BranchName}:
 \itemize{
-\item \code{Operator}: \code{=} \\| \code{!=} \\| \code{begins_with} \\| \code{ends_with} \\|
-\code{contains} \\| \verb{in} \\| \code{not_in}
+\item \code{Operator}: \code{=} | \code{!=} | \code{begins_with} | \code{ends_with} |
+\code{contains} | \verb{in} | \code{not_in}
 }
 \item \code{Attribute = LifecycleState}:
 \itemize{
-\item \code{Operator}: \code{=} \\| \code{!=} \\| \verb{in} \\| \code{not_in}
-\item \code{Values}: \code{beta} \\| \code{supported} \\| \code{deprecated} \\| \code{retired}
+\item \code{Operator}: \code{=} | \code{!=} | \verb{in} | \code{not_in}
+\item \code{Values}: \code{beta} | \code{supported} | \code{deprecated} | \code{retired}
 }
 \item \code{Attribute = PlatformName}:
 \itemize{
-\item \code{Operator}: \code{=} \\| \code{!=} \\| \code{begins_with} \\| \code{ends_with} \\|
-\code{contains} \\| \verb{in} \\| \code{not_in}
+\item \code{Operator}: \code{=} | \code{!=} | \code{begins_with} | \code{ends_with} |
+\code{contains} | \verb{in} | \code{not_in}
 }
 \item \code{Attribute = TierType}:
 \itemize{
-\item \code{Operator}: \code{=} \\| \code{!=}
-\item \code{Values}: \code{WebServer/Standard} \\| \code{Worker/SQS/HTTP}
+\item \code{Operator}: \code{=} | \code{!=}
+\item \code{Values}: \code{WebServer/Standard} | \code{Worker/SQS/HTTP}
 }
 }
 

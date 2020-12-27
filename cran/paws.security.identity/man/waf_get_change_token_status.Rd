@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_get_change_token_status}
 \alias{waf_get_change_token_status}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_get_change_token_status(ChangeToken)
 }
@@ -25,7 +25,7 @@ Returns the status of a \code{ChangeToken} that you got by calling
 GetChangeToken. \code{ChangeTokenStatus} is one of the following values:
 \itemize{
 \item \code{PROVISIONED}: You requested the change token by calling
-\code{GetChangeToken}, but you haven\'t used it yet in a call to create,
+\code{GetChangeToken}, but you haven't used it yet in a call to create,
 update, or delete an AWS WAF object.
 \item \code{PENDING}: AWS WAF is propagating the create, update, or delete
 request to all AWS WAF servers.

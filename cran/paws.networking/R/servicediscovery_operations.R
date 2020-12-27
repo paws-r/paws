@@ -7,7 +7,7 @@ NULL
 #'
 #' Creates an HTTP namespace. Service instances that you register using an
 #' HTTP namespace can be discovered using a `DiscoverInstances` request but
-#' can\'t be discovered using DNS.
+#' can't be discovered using DNS.
 #' 
 #' For the current limit on the number of namespaces that you can create
 #' using the same AWS account, see [AWS Cloud Map
@@ -265,7 +265,7 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #' @param Name &#91;required&#93; The name that you want to assign to the service.
 #' 
 #' If you want AWS Cloud Map to create an SRV record when you register an
-#' instance, and if you\'re using a system that requires a specific SRV
+#' instance, and if you're using a system that requires a specific SRV
 #' format, such as [HAProxy](http://www.haproxy.org/), specify the
 #' following for `Name`:
 #' 
@@ -303,7 +303,7 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #' If you specify a health check configuration, you can specify either
 #' `HealthCheckCustomConfig` or `HealthCheckConfig` but not both.
 #' 
-#' You can\'t add, update, or delete a `HealthCheckCustomConfig`
+#' You can't add, update, or delete a `HealthCheckCustomConfig`
 #' configuration from an existing service.
 #' @param Tags The tags to add to the service. Each tag consists of a key and an
 #' optional value, both of which you define. Tag keys can have a maximum
@@ -541,7 +541,7 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 #' @param ServiceName &#91;required&#93; The name of the service that you specified when you registered the
 #' instance.
 #' @param MaxResults The maximum number of instances that you want AWS Cloud Map to return in
-#' the response to a `DiscoverInstances` request. If you don\'t specify a
+#' the response to a `DiscoverInstances` request. If you don't specify a
 #' value for `MaxResults`, AWS Cloud Map returns up to 100 instances.
 #' @param QueryParameters A string map that contains attributes with values that you can use to
 #' filter instances by any custom attribute that you specified when you
@@ -660,12 +660,12 @@ servicediscovery_get_instance <- function(ServiceId, InstanceId) {
 #' If you omit `Instances`, AWS Cloud Map returns the health status for all
 #' the instances that are associated with the specified service.
 #' 
-#' To get the IDs for the instances that you\'ve registered by using a
+#' To get the IDs for the instances that you've registered by using a
 #' specified service, submit a
 #' [ListInstances](https://docs.aws.amazon.com/cloud-map/latest/api/API_ListInstances.html)
 #' request.
 #' @param MaxResults The maximum number of instances that you want AWS Cloud Map to return in
-#' the response to a `GetInstancesHealthStatus` request. If you don\'t
+#' the response to a `GetInstancesHealthStatus` request. If you don't
 #' specify a value for `MaxResults`, AWS Cloud Map returns up to 100
 #' instances.
 #' @param NextToken For the first `GetInstancesHealthStatus` request, omit this value.
@@ -870,7 +870,7 @@ servicediscovery_get_service <- function(Id) {
 #' results. Specify the value of `NextToken` from the previous response in
 #' the next request.
 #' @param MaxResults The maximum number of instances that you want AWS Cloud Map to return in
-#' the response to a `ListInstances` request. If you don\'t specify a value
+#' the response to a `ListInstances` request. If you don't specify a value
 #' for `MaxResults`, AWS Cloud Map returns up to 100 instances.
 #'
 #' @section Request syntax:
@@ -926,12 +926,12 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
 #' `NextToken` from the previous response in the next request.
 #' 
 #' AWS Cloud Map gets `MaxResults` namespaces and then filters them based
-#' on the specified criteria. It\'s possible that no namespaces in the
-#' first `MaxResults` namespaces matched the specified criteria but that
+#' on the specified criteria. It's possible that no namespaces in the first
+#' `MaxResults` namespaces matched the specified criteria but that
 #' subsequent groups of `MaxResults` namespaces do contain namespaces that
 #' match the criteria.
 #' @param MaxResults The maximum number of namespaces that you want AWS Cloud Map to return
-#' in the response to a `ListNamespaces` request. If you don\'t specify a
+#' in the response to a `ListNamespaces` request. If you don't specify a
 #' value for `MaxResults`, AWS Cloud Map returns up to 100 namespaces.
 #' @param Filters A complex type that contains specifications for the namespaces that you
 #' want to list.
@@ -996,13 +996,13 @@ servicediscovery_list_namespaces <- function(NextToken = NULL, MaxResults = NULL
 #' `NextToken` from the previous response in the next request.
 #' 
 #' AWS Cloud Map gets `MaxResults` operations and then filters them based
-#' on the specified criteria. It\'s possible that no operations in the
-#' first `MaxResults` operations matched the specified criteria but that
+#' on the specified criteria. It's possible that no operations in the first
+#' `MaxResults` operations matched the specified criteria but that
 #' subsequent groups of `MaxResults` operations do contain operations that
 #' match the criteria.
 #' @param MaxResults The maximum number of items that you want AWS Cloud Map to return in the
-#' response to a `ListOperations` request. If you don\'t specify a value
-#' for `MaxResults`, AWS Cloud Map returns up to 100 operations.
+#' response to a `ListOperations` request. If you don't specify a value for
+#' `MaxResults`, AWS Cloud Map returns up to 100 operations.
 #' @param Filters A complex type that contains specifications for the operations that you
 #' want to list, for example, operations that you started between a
 #' specified start date and end date.
@@ -1081,12 +1081,12 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
 #' `NextToken` from the previous response in the next request.
 #' 
 #' AWS Cloud Map gets `MaxResults` services and then filters them based on
-#' the specified criteria. It\'s possible that no services in the first
+#' the specified criteria. It's possible that no services in the first
 #' `MaxResults` services matched the specified criteria but that subsequent
 #' groups of `MaxResults` services do contain services that match the
 #' criteria.
 #' @param MaxResults The maximum number of services that you want AWS Cloud Map to return in
-#' the response to a `ListServices` request. If you don\'t specify a value
+#' the response to a `ListServices` request. If you don't specify a value
 #' for `MaxResults`, AWS Cloud Map returns up to 100 services.
 #' @param Filters A complex type that contains specifications for the namespaces that you
 #' want to list services for.
@@ -1213,7 +1213,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' -   **If the health check is unhealthy**: returns the applicable value
 #'     for the last healthy instance
 #' 
-#' -   **If you didn\'t specify a health check configuration**: returns all
+#' -   **If you didn't specify a health check configuration**: returns all
 #'     the records
 #' 
 #' For the current limit on the number of instances that you can register
@@ -1233,7 +1233,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' -   If the service that is specified by `ServiceId` includes settings
 #'     for an SRV record, the value of `InstanceId` is automatically
 #'     included as part of the value for the SRV record. For more
-#'     information, see [DnsRecord \\>
+#'     information, see [DnsRecord &gt;
 #'     Type](https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html#cloudmap-Type-DnsRecord-Type).
 #' 
 #' -   You can use this value to update an existing instance.
@@ -1242,17 +1242,17 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #'     among instances that you register by using the same service.
 #' 
 #' -   If you specify an existing `InstanceId` and `ServiceId`, AWS Cloud
-#'     Map updates the existing DNS records, if any. If there\'s also an
+#'     Map updates the existing DNS records, if any. If there's also an
 #'     existing health check, AWS Cloud Map deletes the old health check
 #'     and creates a new one.
 #' 
-#'     The health check isn\'t deleted immediately, so it will still appear
+#'     The health check isn't deleted immediately, so it will still appear
 #'     for a while if you submit a `ListHealthChecks` request, for example.
 #' @param CreatorRequestId A unique string that identifies the request and that allows failed
 #' `RegisterInstance` requests to be retried without the risk of executing
 #' the operation twice. You must use a unique `CreatorRequestId` string
-#' every time you submit a `RegisterInstance` request if you\'re
-#' registering additional instances for the same namespace and service.
+#' every time you submit a `RegisterInstance` request if you're registering
+#' additional instances for the same namespace and service.
 #' `CreatorRequestId` can be any unique string, for example, a date/time
 #' stamp.
 #' @param Attributes &#91;required&#93; A string map that contains the following information for the service
@@ -1270,7 +1270,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' If you want AWS Cloud Map to create an Amazon Route 53 alias record that
 #' routes traffic to an Elastic Load Balancing load balancer, specify the
 #' DNS name that is associated with the load balancer. For information
-#' about how to get the DNS name, see \"DNSName\" in the topic
+#' about how to get the DNS name, see "DNSName" in the topic
 #' [AliasTarget](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html)
 #' in the *Route 53 API Reference*.
 #' 
@@ -1284,20 +1284,20 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #' -   If the service that is specified by `ServiceId` includes
 #'     `HealthCheckConfig` settings, AWS Cloud Map will create the Route 53
-#'     health check, but it won\'t associate the health check with the
-#'     alias record.
+#'     health check, but it won't associate the health check with the alias
+#'     record.
 #' 
-#' -   Auto naming currently doesn\'t support creating alias records that
+#' -   Auto naming currently doesn't support creating alias records that
 #'     route traffic to AWS resources other than ELB load balancers.
 #' 
-#' -   If you specify a value for `AWS_ALIAS_DNS_NAME`, don\'t specify
+#' -   If you specify a value for `AWS_ALIAS_DNS_NAME`, don't specify
 #'     values for any of the `AWS_INSTANCE` attributes.
 #' 
 #' **AWS\\_INIT\\_HEALTH\\_STATUS**
 #' 
 #' If the service configuration includes `HealthCheckCustomConfig`, you can
 #' optionally use `AWS_INIT_HEALTH_STATUS` to specify the initial status of
-#' the custom health check, `HEALTHY` or `UNHEALTHY`. If you don\'t specify
+#' the custom health check, `HEALTHY` or `UNHEALTHY`. If you don't specify
 #' a value for `AWS_INIT_HEALTH_STATUS`, the initial status is `HEALTHY`.
 #' 
 #' **AWS\\_INSTANCE\\_CNAME**
@@ -1407,7 +1407,7 @@ servicediscovery_register_instance <- function(ServiceId, InstanceId, CreatorReq
 #' tags for.
 #' @param Tags &#91;required&#93; The tags to add to the specified resource. Specifying the tag key is
 #' required. You can set the value of a tag to an empty string, but you
-#' can\'t set the value of a tag to null.
+#' can't set the value of a tag to null.
 #'
 #' @section Request syntax:
 #' ```
@@ -1522,8 +1522,8 @@ servicediscovery_untag_resource <- function(ResourceARN, TagKeys) {
 #' 
 #' You can use `UpdateInstanceCustomHealthStatus` to change the status only
 #' for custom health checks, which you define using
-#' `HealthCheckCustomConfig` when you create a service. You can\'t use it
-#' to change the status for Route 53 health checks, which you define using
+#' `HealthCheckCustomConfig` when you create a service. You can't use it to
+#' change the status for Route 53 health checks, which you define using
 #' `HealthCheckConfig`.
 #' 
 #' For more information, see
@@ -1590,7 +1590,7 @@ servicediscovery_update_instance_custom_health_status <- function(ServiceId, Ins
 #' 
 #' -   Add, update, or delete `HealthCheckConfig` for a specified service
 #' 
-#'     You can\'t add, update, or delete a `HealthCheckCustomConfig`
+#'     You can't add, update, or delete a `HealthCheckCustomConfig`
 #'     configuration.
 #' 
 #' For public and private DNS namespaces, note the following:

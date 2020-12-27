@@ -11,7 +11,7 @@ iot_get_statistics(indexName, queryString, aggregationField,
 \arguments{
 \item{indexName}{The name of the index to search. The default value is \code{AWS_Things}.}
 
-\item{queryString}{[required] The query used to search. You can specify \"*\" for the query string to
+\item{queryString}{[required] The query used to search. You can specify "*" for the query string to
 get the count of all indexed things in your AWS account.}
 
 \item{aggregationField}{The aggregation field name.}

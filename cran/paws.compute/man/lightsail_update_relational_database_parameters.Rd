@@ -18,7 +18,7 @@ Allows the update of one or more parameters of a database in Amazon
 Lightsail.
 }
 \details{
-Parameter updates don\'t cause outages; therefore, their application is
+Parameter updates don't cause outages; therefore, their application is
 not subject to the preferred maintenance window. However, there are two
 ways in which parameter updates are applied: \code{dynamic} or
 \code{pending-reboot}. Parameters marked with a \code{dynamic} apply type are

@@ -17,7 +17,7 @@ lambda_publish_layer_version(LayerName, Description, Content,
 \item{CompatibleRuntimes}{A list of compatible \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{function runtimes}.
 Used for filtering with ListLayers and ListLayerVersions.}
 
-\item{LicenseInfo}{The layer\'s software license. It can be any of the following:
+\item{LicenseInfo}{The layer's software license. It can be any of the following:
 \itemize{
 \item An \href{https://spdx.org/licenses/}{SPDX license identifier}. For
 example, \code{MIT}.

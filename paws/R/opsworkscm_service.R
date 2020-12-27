@@ -29,13 +29,13 @@ NULL
 #' -   **Backup**: This is an application-level backup of the data that the
 #'     configuration manager stores. AWS OpsWorks CM creates an S3 bucket
 #'     for backups when you launch the first server. A backup maintains a
-#'     snapshot of a server\'s configuration-related attributes at the time
+#'     snapshot of a server's configuration-related attributes at the time
 #'     the backup starts.
 #' 
 #' -   **Events**: Events are always related to a server. Events are
 #'     written during server creation, when health checks run, when backups
 #'     are created, when system maintenance is performed, etc. When you
-#'     delete a server, the server\'s events are also deleted.
+#'     delete a server, the server's events are also deleted.
 #' 
 #' -   **Account attributes**: Every account has attributes that are
 #'     assigned in the AWS OpsWorks CM database. These attributes store

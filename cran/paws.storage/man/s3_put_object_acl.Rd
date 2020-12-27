@@ -28,7 +28,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be
 used as a message integrity check to verify that the request body was
-not corrupted in transit. For more information, go to \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.\\>}}
+not corrupted in transit. For more information, go to \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.>}}
 
 \item{GrantFullControl}{Allows grantee the read, write, read ACP, and write ACP permissions on
 the bucket.}
@@ -83,10 +83,10 @@ Amazon S3 supports in an ACL. For more information, see \href{https://docs.aws.a
 You specify each grantee as a type=value pair, where the type is one
 of the following:
 \itemize{
-\item \code{id} -- if the value specified is the canonical user ID of an
-AWS account
-\item \code{uri} -- if you are granting permissions to a predefined group
-\item \code{emailAddress} -- if the value specified is the email address of
+\item \code{id} – if the value specified is the canonical user ID of an AWS
+account
+\item \code{uri} – if you are granting permissions to a predefined group
+\item \code{emailAddress} – if the value specified is the email address of
 an AWS account
 
 Using email addresses to specify a grantee is only supported in
@@ -99,7 +99,7 @@ the following AWS Regions:
 \item Asia Pacific (Sydney)
 \item Asia Pacific (Tokyo)
 \item Europe (Ireland)
-\item South America (SÃ£o Paulo)
+\item South America (São Paulo)
 }
 
 For a list of all the Amazon S3 supported Regions and endpoints,
@@ -119,10 +119,10 @@ explicitly. You cannot do both.
 
 \strong{Grantee Values}
 
-You can specify the person (grantee) to whom you\'re assigning access
+You can specify the person (grantee) to whom you're assigning access
 rights (using request elements) in the following ways:
 \itemize{
-\item By the person\'s ID:
+\item By the person's ID:
 
 \verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;}
 
@@ -147,7 +147,7 @@ following AWS Regions:
 \item Asia Pacific (Sydney)
 \item Asia Pacific (Tokyo)
 \item Europe (Ireland)
-\item South America (SÃ£o Paulo)
+\item South America (São Paulo)
 }
 
 For a list of all the Amazon S3 supported Regions and endpoints, see

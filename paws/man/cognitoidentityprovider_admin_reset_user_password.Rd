@@ -8,7 +8,7 @@ cognitoidentityprovider_admin_reset_user_password(UserPoolId, Username,
   ClientMetadata)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool where you want to reset the user\'s
+\item{UserPoolId}{[required] The user pool ID for the user pool where you want to reset the user's
 password.}
 
 \item{Username}{[required] The user name of the user whose password you wish to reset.}
@@ -39,12 +39,12 @@ does not include triggers, the ClientMetadata parameter serves no
 purpose.
 \item Amazon Cognito does not validate the ClientMetadata value.
 \item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don\'t use it to provide sensitive information.
+don't use it to provide sensitive information.
 }}
 }
 \description{
-Resets the specified user\'s password in a user pool as an
-administrator. Works on any user.
+Resets the specified user's password in a user pool as an administrator.
+Works on any user.
 }
 \details{
 When a developer calls this API, the current password is invalidated, so

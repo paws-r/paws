@@ -14,8 +14,8 @@ opsworks_create_stack(Name, Region, VpcId, Attributes, ServiceRoleArn,
 \arguments{
 \item{Name}{[required] The stack name.}
 
-\item{Region}{[required] The stack\'s AWS region, such as \code{ap-south-1}. For more information
-about Amazon regions, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.
+\item{Region}{[required] The stack's AWS region, such as \code{ap-south-1}. For more information about
+Amazon regions, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.
 
 In the AWS CLI, this API maps to the \code{--stack-region} parameter. If the
 \code{--stack-region} parameter and the AWS CLI common parameter \code{--region}
@@ -35,7 +35,7 @@ that you use regional endpoints for new stacks. The AWS CLI common
 be used to specify a classic AWS OpsWorks Stacks region.}
 
 \item{VpcId}{The ID of the VPC that the stack is to be launched into. The VPC must be
-in the stack\'s region. All instances are launched into this VPC. You
+in the stack's region. All instances are launched into this VPC. You
 cannot change the ID later.
 \itemize{
 \item If your account supports EC2-Classic, the default value is \verb{no VPC}.
@@ -64,16 +64,16 @@ For more information about default VPC and EC2-Classic, see \href{https://docs.a
 \item{Attributes}{One or more user-defined key-value pairs to be added to the stack
 attributes.}
 
-\item{ServiceRoleArn}{[required] The stack\'s AWS Identity and Access Management (IAM) role, which allows
+\item{ServiceRoleArn}{[required] The stack's AWS Identity and Access Management (IAM) role, which allows
 AWS OpsWorks Stacks to work with AWS resources on your behalf. You must
 set this parameter to the Amazon Resource Name (ARN) for an existing IAM
 role. For more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
 
 \item{DefaultInstanceProfileArn}{[required] The Amazon Resource Name (ARN) of an IAM profile that is the default
-profile for all of the stack\'s EC2 instances. For more information
-about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+profile for all of the stack's EC2 instances. For more information about
+IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
 
-\item{DefaultOs}{The stack\'s default operating system, which is installed on every
+\item{DefaultOs}{The stack's default operating system, which is installed on every
 instance unless you specify a different operating system when you create
 the instance. You can specify one of the following.
 \itemize{
@@ -98,10 +98,10 @@ when you create instances. For more information, see \href{https://docs.aws.amaz
 The default option is the current Amazon Linux version. For more
 information about supported operating systems, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html}{AWS OpsWorks Stacks Operating Systems}.}
 
-\item{HostnameTheme}{The stack\'s host name theme, with spaces replaced by underscores. The
-theme is used to generate host names for the stack\'s instances. By
+\item{HostnameTheme}{The stack's host name theme, with spaces replaced by underscores. The
+theme is used to generate host names for the stack's instances. By
 default, \code{HostnameTheme} is set to \code{Layer_Dependent}, which creates host
-names by appending integers to the layer\'s short name. The other themes
+names by appending integers to the layer's short name. The other themes
 are:
 \itemize{
 \item \code{Baked_Goods}
@@ -120,13 +120,13 @@ are:
 To obtain a generated host name, call \code{GetHostNameSuggestion}, which
 returns a host name based on the current theme.}
 
-\item{DefaultAvailabilityZone}{The stack\'s default Availability Zone, which must be in the specified
+\item{DefaultAvailabilityZone}{The stack's default Availability Zone, which must be in the specified
 region. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}. If
 you also specify a value for \code{DefaultSubnetId}, the subnet must be in
 the same zone. For more information, see the \code{VpcId} parameter
 description.}
 
-\item{DefaultSubnetId}{The stack\'s default VPC subnet ID. This parameter is required if you
+\item{DefaultSubnetId}{The stack's default VPC subnet ID. This parameter is required if you
 specify a value for the \code{VpcId} parameter. All instances are launched
 into this subnet unless you specify otherwise when you create the
 instance. If you also specify a value for \code{DefaultAvailabilityZone}, the
@@ -154,7 +154,7 @@ see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cr
 \item{UseCustomCookbooks}{Whether the stack uses custom cookbooks.}
 
 \item{UseOpsworksSecurityGroups}{Whether to associate the AWS OpsWorks Stacks built-in security groups
-with the stack\'s layers.
+with the stack's layers.
 
 AWS OpsWorks Stacks provides a standard set of built-in security groups,
 one for each layer, which are associated with layers by default. With
@@ -196,12 +196,12 @@ see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.htm
 options:
 \itemize{
 \item Auto-update - Set this parameter to \code{LATEST}. AWS OpsWorks Stacks
-automatically installs new agent versions on the stack\'s instances
+automatically installs new agent versions on the stack's instances
 as soon as they are available.
 \item Fixed version - Set this parameter to your preferred agent version.
 To update the agent version, you must edit the stack configuration
 and specify a new version. AWS OpsWorks Stacks then automatically
-installs that version on the stack\'s instances.
+installs that version on the stack's instances.
 }
 
 The default setting is the most recent release of the agent. To specify
@@ -211,7 +211,7 @@ version numbers, call DescribeAgentVersions. AgentVersion cannot be set
 to Chef 12.2.
 
 You can also specify an agent version when you create or update an
-instance, which overrides the stack\'s default setting.}
+instance, which overrides the stack's default setting.}
 }
 \description{
 Creates a new stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html}{Create a New Stack}.

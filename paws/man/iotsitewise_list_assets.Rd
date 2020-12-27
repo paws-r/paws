@@ -17,9 +17,9 @@ parameter is required if you choose \code{ALL} for \code{filter}.}
 \item{filter}{The filter for the requested list of assets. Choose one of the following
 options. Defaults to \code{ALL}.
 \itemize{
-\item \code{ALL} -- The list includes all assets for a given asset model ID.
-The \code{assetModelId} parameter is required if you filter by \code{ALL}.
-\item \code{TOP_LEVEL} -- The list includes only top-level assets in the asset
+\item \code{ALL} – The list includes all assets for a given asset model ID. The
+\code{assetModelId} parameter is required if you filter by \code{ALL}.
+\item \code{TOP_LEVEL} – The list includes only top-level assets in the asset
 hierarchy tree.
 }}
 }
@@ -33,7 +33,7 @@ You can use this operation to do the following:
 \item List top-level assets.
 }
 
-You can\'t use this operation to list all assets. To retrieve summaries
+You can't use this operation to list all assets. To retrieve summaries
 for all of your assets, use
 \href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_ListAssetModels.html}{ListAssetModels}
 to get all of your asset model IDs. Then, use ListAssets to get all

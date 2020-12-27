@@ -21,7 +21,7 @@ in the \emph{Amazon Cognito Developer Guide}.}
 
 \item{SupportedLoginProviders}{Optional key:value pairs mapping provider names to provider app IDs.}
 
-\item{DeveloperProviderName}{The \"domain\" by which Cognito will refer to your users. This name acts
+\item{DeveloperProviderName}{The "domain" by which Cognito will refer to your users. This name acts
 as a placeholder that allows your backend and the Cognito service to
 communicate about the developer provider. For the
 \code{DeveloperProviderName}, you can use letters as well as period (\code{.}),

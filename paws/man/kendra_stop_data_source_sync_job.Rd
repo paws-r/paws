@@ -13,7 +13,7 @@ jobs.}
 \item{IndexId}{[required] The identifier of the index that contains the data source.}
 }
 \description{
-Stops a running synchronization job. You can\'t stop a scheduled
+Stops a running synchronization job. You can't stop a scheduled
 synchronization job.
 }
 \section{Request syntax}{

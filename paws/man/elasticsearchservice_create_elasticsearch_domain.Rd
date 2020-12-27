@@ -17,7 +17,7 @@ Domain names must start with a lowercase letter and can contain the
 following characters: a-z (lowercase), 0-9, and - (hyphen).}
 
 \item{ElasticsearchVersion}{String of format X.Y to specify version for the Elasticsearch domain eg.
-\"1.5\" or \"2.3\". For more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains}{Creating Elasticsearch Domains}
+"1.5" or "2.3". For more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains}{Creating Elasticsearch Domains}
 in the \emph{Amazon Elasticsearch Service Developer Guide}.}
 
 \item{ElasticsearchClusterConfig}{Configuration options for an Elasticsearch domain. Specifies the

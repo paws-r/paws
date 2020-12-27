@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_delete_rate_based_rule}
 \alias{wafregional_delete_rate_based_rule}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_delete_rate_based_rule(RuleId, ChangeToken)
 }
@@ -23,7 +23,7 @@ in the developer guide.
 With the latest version, AWS WAF has a single set of endpoints for
 regional and global use.
 
-Permanently deletes a RateBasedRule. You can\'t delete a rule if it\'s
+Permanently deletes a RateBasedRule. You can't delete a rule if it's
 still used in any \code{WebACL} objects or if it still includes any
 predicates, such as \code{ByteMatchSet} objects.
 

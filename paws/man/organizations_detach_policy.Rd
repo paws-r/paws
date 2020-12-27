@@ -12,7 +12,7 @@ organizations_detach_policy(PolicyId, TargetId)
 the ID from the ListPolicies or ListPoliciesForTarget operations.
 
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
-string requires \"p-\" followed by from 8 to 128 lowercase or uppercase
+string requires "p-" followed by from 8 to 128 lowercase or uppercase
 letters, digits, or the underscore character (\\_).}
 
 \item{TargetId}{[required] The unique identifier (ID) of the root, OU, or account that you want to
@@ -22,12 +22,12 @@ ListOrganizationalUnitsForParent, or ListAccounts operations.
 The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a target ID
 string requires one of the following:
 \itemize{
-\item \strong{Root} - A string that begins with \"r-\" followed by from 4 to 32
+\item \strong{Root} - A string that begins with "r-" followed by from 4 to 32
 lowercase letters or digits.
 \item \strong{Account} - A string that consists of exactly 12 digits.
-\item \strong{Organizational unit (OU)} - A string that begins with \"ou-\"
+\item \strong{Organizational unit (OU)} - A string that begins with "ou-"
 followed by from 4 to 32 lowercase letters or digits (the ID of the
-root that the OU is in). This string is followed by a second \"-\"
+root that the OU is in). This string is followed by a second "-"
 dash and from 8 to 32 additional lowercase letters or digits.
 }}
 }
@@ -44,14 +44,13 @@ Every root, OU, and account must have at least one SCP attached. If you
 want to replace the default \code{FullAWSAccess} policy with an SCP that
 limits the permissions that can be delegated, you must attach the
 replacement SCP before you can remove the default SCP. This is the
-authorization strategy of an \"\href{https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_allowlist}{allow list}\".
+authorization strategy of an "\href{https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_allowlist}{allow list}".
 If you instead attach a second SCP and leave the \code{FullAWSAccess} SCP
 still attached, and specify \code{"Effect": "Deny"} in the second SCP to
 override the \code{"Effect": "Allow"} in the \code{FullAWSAccess} policy (or any
-other attached SCP), you\'re using the authorization strategy of a
-\"\href{https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_denylist}{deny list}\".
+other attached SCP), you're using the authorization strategy of a "\href{https://docs.aws.amazon.com/organizations/latest/userguide/SCP_strategies.html#orgs_policies_denylist}{deny list}".
 
-This operation can be called only from the organization\'s master
+This operation can be called only from the organization's master
 account.
 }
 \section{Request syntax}{

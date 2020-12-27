@@ -23,7 +23,7 @@ Required for \code{USER_PERSONALIZATION} recipe type.}
 
 \item{context}{The contextual metadata to use when getting recommendations. Contextual
 metadata includes any interaction information that might be relevant
-when getting a user\'s recommendations, such as the user\'s current
+when getting a user's recommendations, such as the user's current
 location or device type.}
 
 \item{filterArn}{The ARN of the filter to apply to the returned recommendations. For more

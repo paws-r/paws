@@ -23,7 +23,7 @@ NULL
 #' available for Amazon Transcribe Medical.
 #' @param VocabularyFileUri &#91;required&#93; The Amazon S3 location of the text file you use to define your custom
 #' vocabulary. The URI must be in the same AWS region as the API endpoint
-#' you\'re calling. Enter information about your `VocabularyFileUri` in the
+#' you're calling. Enter information about your `VocabularyFileUri` in the
 #' following format:
 #' 
 #' ` https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt; `
@@ -149,7 +149,7 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' sets, see [Character Sets for Custom
 #' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html#charsets).
 #' 
-#' If you provide a list of words in the `Words` parameter, you can\'t use
+#' If you provide a list of words in the `Words` parameter, you can't use
 #' the `VocabularyFilterFileUri` parameter.
 #' @param VocabularyFilterFileUri The Amazon S3 location of a text file used as input to create the
 #' vocabulary filter. Only use characters from the character set defined
@@ -160,7 +160,7 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' The specified file must be less than 50 KB of UTF-8 characters.
 #' 
 #' If you provide the location of a list of words in the
-#' `VocabularyFilterFileUri` parameter, you can\'t use the `Words`
+#' `VocabularyFilterFileUri` parameter, you can't use the `Words`
 #' parameter.
 #'
 #' @section Request syntax:
@@ -586,7 +586,7 @@ transcribeservice_get_vocabulary_filter <- function(VocabularyFilterName) {
 #'
 #' @param Status When specified, returns only medical transcription jobs with the
 #' specified status. Jobs are ordered by creation date, with the newest
-#' jobs returned first. If you don\'t specify a status, Amazon Transcribe
+#' jobs returned first. If you don't specify a status, Amazon Transcribe
 #' Medical returns all transcription jobs ordered by creation date.
 #' @param JobNameContains When specified, the jobs returned in the list are limited to jobs whose
 #' name contains the specified string.
@@ -630,8 +630,8 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
 #' Returns a list of vocabularies that match the specified criteria
 #'
 #' Returns a list of vocabularies that match the specified criteria. You
-#' get the entire list of vocabularies if you don\'t enter a value in any
-#' of the request parameters.
+#' get the entire list of vocabularies if you don't enter a value in any of
+#' the request parameters.
 #'
 #' @usage
 #' transcribeservice_list_medical_vocabularies(NextToken, MaxResults,
@@ -644,8 +644,7 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
 #' equal to the specified vocabulary state.
 #' @param NameContains Returns vocabularies in the list whose name contains the specified
 #' string. The search is case-insensitive, `ListMedicalVocabularies`
-#' returns both \"vocabularyname\" and \"VocabularyName\" in the response
-#' list.
+#' returns both "vocabularyname" and "VocabularyName" in the response list.
 #'
 #' @section Request syntax:
 #' ```
@@ -687,7 +686,7 @@ transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxRes
 #'
 #' @param Status When specified, returns only transcription jobs with the specified
 #' status. Jobs are ordered by creation date, with the newest jobs returned
-#' first. If you don't specify a status, Amazon Transcribe returns all
+#' first. If you don’t specify a status, Amazon Transcribe returns all
 #' transcription jobs ordered by creation date.
 #' @param JobNameContains When specified, the jobs returned in the list are limited to jobs whose
 #' name contains the specified string.
@@ -744,8 +743,8 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
 #' field equal to the specified state.
 #' @param NameContains When specified, the vocabularies returned in the list are limited to
 #' vocabularies whose name contains the specified string. The search is
-#' case-insensitive, `ListVocabularies` returns both \"vocabularyname\" and
-#' \"VocabularyName\" in the response list.
+#' case-insensitive, `ListVocabularies` returns both "vocabularyname" and
+#' "VocabularyName" in the response list.
 #'
 #' @section Request syntax:
 #' ```
@@ -832,11 +831,11 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #'   MediaFormat, Media, OutputBucketName, OutputEncryptionKMSKeyId,
 #'   Settings, Specialty, Type)
 #'
-#' @param MedicalTranscriptionJobName &#91;required&#93; The name of the medical transcription job. You can\'t use the strings
-#' \".\" or \"..\" by themselves as the job name. The name must also be
-#' unique within an AWS account. If you try to create a medical
-#' transcription job with the same name as a previous medical transcription
-#' job you will receive a `ConflictException` error.
+#' @param MedicalTranscriptionJobName &#91;required&#93; The name of the medical transcription job. You can't use the strings "."
+#' or ".." by themselves as the job name. The name must also be unique
+#' within an AWS account. If you try to create a medical transcription job
+#' with the same name as a previous medical transcription job you will
+#' receive a `ConflictException` error.
 #' @param LanguageCode &#91;required&#93; The language code for the language spoken in the input media file. US
 #' English (en-US) is the valid value for medical transcription jobs. Any
 #' other value you enter for language code results in a
@@ -863,7 +862,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' 
 #' You can specify an AWS Key Management Service (KMS) key to encrypt the
 #' output of your transcription using the `OutputEncryptionKMSKeyId`
-#' parameter. If you don\'t specify a KMS key, Amazon Transcribe Medical
+#' parameter. If you don't specify a KMS key, Amazon Transcribe Medical
 #' uses the default Amazon S3 key for server-side encryption of transcripts
 #' that are placed in your S3 bucket.
 #' @param OutputEncryptionKMSKeyId The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS)
@@ -874,21 +873,21 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' You use either of the following to identify a KMS key in the current
 #' account:
 #' 
-#' -   KMS Key ID: \"1234abcd-12ab-34cd-56ef-1234567890ab\"
+#' -   KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' 
-#' -   KMS Key Alias: \"alias/ExampleAlias\"
+#' -   KMS Key Alias: "alias/ExampleAlias"
 #' 
 #' You can use either of the following to identify a KMS key in the current
 #' account or another account:
 #' 
 #' -   Amazon Resource Name (ARN) of a KMS key in the current account or
-#'     another account: \"arn:aws:kms:region:account
-#'     ID:key/1234abcd-12ab-34cd-56ef-1234567890ab\"
+#'     another account: "arn:aws:kms:region:account
+#'     ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
 #' 
-#' -   ARN of a KMS Key Alias: \"arn:aws:kms:region:account
-#'     ID:alias/ExampleAlias\"
+#' -   ARN of a KMS Key Alias: "arn:aws:kms:region:account
+#'     ID:alias/ExampleAlias"
 #' 
-#' If you don\'t specify an encryption key, the output of the medical
+#' If you don't specify an encryption key, the output of the medical
 #' transcription job is encrypted with the default Amazon S3 key (SSE-S3).
 #' 
 #' If you specify a KMS key to encrypt your output, you must also specify
@@ -955,11 +954,11 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'   OutputBucketName, OutputEncryptionKMSKeyId, Settings,
 #'   JobExecutionSettings, ContentRedaction)
 #'
-#' @param TranscriptionJobName &#91;required&#93; The name of the job. Note that you can\'t use the strings \".\" or
-#' \"..\" by themselves as the job name. The name must also be unique
-#' within an AWS account. If you try to create a transcription job with the
-#' same name as a previous transcription job you will receive a
-#' `ConflictException` error.
+#' @param TranscriptionJobName &#91;required&#93; The name of the job. Note that you can't use the strings "." or ".." by
+#' themselves as the job name. The name must also be unique within an AWS
+#' account. If you try to create a transcription job with the same name as
+#' a previous transcription job you will receive a `ConflictException`
+#' error.
 #' @param LanguageCode &#91;required&#93; The language code for the language used in the input media file.
 #' @param MediaSampleRateHertz The sample rate, in Hertz, of the audio track in the input media file.
 #' 
@@ -978,7 +977,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' `TranscriptFileUri` field. If you enable content redaction, the redacted
 #' transcript appears in `RedactedTranscriptFileUri`. If you enable content
 #' redaction and choose to output an unredacted transcript, that
-#' transcript\'s location still appears in the `TranscriptFileUri`. The S3
+#' transcript's location still appears in the `TranscriptFileUri`. The S3
 #' bucket must have permissions that allow Amazon Transcribe to put files
 #' in the bucket. For more information, see [Permissions Required for IAM
 #' User
@@ -986,11 +985,11 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' 
 #' You can specify an AWS Key Management Service (KMS) key to encrypt the
 #' output of your transcription using the `OutputEncryptionKMSKeyId`
-#' parameter. If you don\'t specify a KMS key, Amazon Transcribe uses the
+#' parameter. If you don't specify a KMS key, Amazon Transcribe uses the
 #' default Amazon S3 key for server-side encryption of transcripts that are
 #' placed in your S3 bucket.
 #' 
-#' If you don\'t set the `OutputBucketName`, Amazon Transcribe generates a
+#' If you don't set the `OutputBucketName`, Amazon Transcribe generates a
 #' pre-signed URL, a shareable URL that provides secure access to your
 #' transcription, and returns it in the `TranscriptFileUri` field. Use this
 #' URL to download the transcription.
@@ -1002,21 +1001,20 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' You can use either of the following to identify a KMS key in the current
 #' account:
 #' 
-#' -   KMS Key ID: \"1234abcd-12ab-34cd-56ef-1234567890ab\"
+#' -   KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' 
-#' -   KMS Key Alias: \"alias/ExampleAlias\"
+#' -   KMS Key Alias: "alias/ExampleAlias"
 #' 
 #' You can use either of the following to identify a KMS key in the current
 #' account or another account:
 #' 
-#' -   Amazon Resource Name (ARN) of a KMS Key:
-#'     \"arn:aws:kms:region:account
-#'     ID:key/1234abcd-12ab-34cd-56ef-1234567890ab\"
+#' -   Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:region:account
+#'     ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
 #' 
-#' -   ARN of a KMS Key Alias: \"arn:aws:kms:region:account
-#'     ID:alias/ExampleAlias\"
+#' -   ARN of a KMS Key Alias: "arn:aws:kms:region:account
+#'     ID:alias/ExampleAlias"
 #' 
-#' If you don\'t specify an encryption key, the output of the transcription
+#' If you don't specify an encryption key, the output of the transcription
 #' job is encrypted with the default Amazon S3 key (SSE-S3).
 #' 
 #' If you specify a KMS key to encrypt your output, you must also specify
@@ -1221,7 +1219,7 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' sets, see [Character Sets for Custom
 #' Vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/how-vocabulary.html#charsets).
 #' 
-#' If you provide a list of words in the `Words` parameter, you can\'t use
+#' If you provide a list of words in the `Words` parameter, you can't use
 #' the `VocabularyFilterFileUri` parameter.
 #' @param VocabularyFilterFileUri The Amazon S3 location of a text file used as input to create the
 #' vocabulary filter. Only use characters from the character set defined
@@ -1232,7 +1230,7 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' The specified file must be less than 50 KB of UTF-8 characters.
 #' 
 #' If you provide the location of a list of words in the
-#' `VocabularyFilterFileUri` parameter, you can\'t use the `Words`
+#' `VocabularyFilterFileUri` parameter, you can't use the `Words`
 #' parameter.
 #'
 #' @section Request syntax:

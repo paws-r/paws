@@ -9,7 +9,7 @@ iotthingsgraph_tag_resource(resourceArn, tags)
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource whose tags are returned.}
 
-\item{tags}{[required] A list of tags to add to the resource.\\>}
+\item{tags}{[required] A list of tags to add to the resource.>}
 }
 \description{
 Creates a tag for the specified resource.

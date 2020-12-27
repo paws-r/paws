@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_delete_rule_group}
 \alias{wafregional_delete_rule_group}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_delete_rule_group(RuleGroupId, ChangeToken)
 }
@@ -23,9 +23,8 @@ in the developer guide.
 With the latest version, AWS WAF has a single set of endpoints for
 regional and global use.
 
-Permanently deletes a RuleGroup. You can\'t delete a \code{RuleGroup} if
-it\'s still used in any \code{WebACL} objects or if it still includes any
-rules.
+Permanently deletes a RuleGroup. You can't delete a \code{RuleGroup} if it's
+still used in any \code{WebACL} objects or if it still includes any rules.
 
 If you just want to remove a \code{RuleGroup} from a \code{WebACL}, use
 UpdateWebACL.

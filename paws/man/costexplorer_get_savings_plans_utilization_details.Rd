@@ -11,7 +11,7 @@ costexplorer_get_savings_plans_utilization_details(TimePeriod, Filter,
 \arguments{
 \item{TimePeriod}{[required] The time period that you want the usage and costs for. The \code{Start} date
 must be within 13 months. The \code{End} date must be after the \code{Start} date,
-and before the current date. Future dates can\'t be used as an \code{End}
+and before the current date. Future dates can't be used as an \code{End}
 date.}
 
 \item{Filter}{Filters Savings Plans utilization coverage data for active Savings Plans
@@ -38,8 +38,8 @@ with a minimum value of \code{1}.}
 }
 \description{
 Retrieves attribute data along with aggregate utilization and savings
-data for a given time period. This doesn\'t support granular or grouped
-data (daily/monthly) in response. You can\'t retrieve data by dates in a
+data for a given time period. This doesn't support granular or grouped
+data (daily/monthly) in response. You can't retrieve data by dates in a
 single response similar to \code{GetSavingsPlanUtilization}, but you have the
 option to make multiple calls to \code{GetSavingsPlanUtilizationDetails} by
 providing individual dates. You can use \code{GetDimensionValues} in

@@ -24,7 +24,7 @@ html_to <- function(html, to) {
 
 # Convert HTML to markdown
 html_to_markdown <- function(html) {
-  html_to(html, "markdown")
+  html_to(html, "commonmark")
 }
 
 html_to_text <- function(html) {

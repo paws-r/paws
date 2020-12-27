@@ -13,7 +13,7 @@ ssm_describe_maintenance_window_schedule(WindowId, Targets,
 \item{Targets}{The instance ID or key/value pair to retrieve information about.}
 
 \item{ResourceType}{The type of resource you want to retrieve information about. For
-example, \"INSTANCE\".}
+example, "INSTANCE".}
 
 \item{Filters}{Filters used to limit the range of results. For example, you can limit
 maintenance window executions to only those scheduled before or after a

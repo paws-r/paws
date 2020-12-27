@@ -16,7 +16,7 @@ Ends a given Amazon QLDB journal stream. Before a stream can be
 canceled, its current status must be \code{ACTIVE}.
 }
 \details{
-You can\'t restart a stream after you cancel it. Canceled QLDB stream
+You can't restart a stream after you cancel it. Canceled QLDB stream
 resources are subject to a 7-day retention period, so they are
 automatically deleted after this limit expires.
 }

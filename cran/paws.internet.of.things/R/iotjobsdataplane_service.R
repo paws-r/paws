@@ -5,7 +5,7 @@ NULL
 #' AWS IoT Jobs Data Plane
 #'
 #' @description
-#' AWS IoT Jobs is a service that allows you to define a set of jobs ---
+#' AWS IoT Jobs is a service that allows you to define a set of jobs —
 #' remote operations that are sent to and executed on one or more devices
 #' connected to AWS IoT. For example, you can define a job that instructs a
 #' set of devices to download and install application or firmware updates,

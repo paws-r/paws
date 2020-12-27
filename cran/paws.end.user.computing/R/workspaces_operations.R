@@ -154,7 +154,7 @@ workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImag
 #' rules when you create the group or at any time using AuthorizeIpRules.
 #' 
 #' There is a default IP access control group associated with your
-#' directory. If you don\'t associate an IP access control group with your
+#' directory. If you don't associate an IP access control group with your
 #' directory, the default group is used. The default group includes a
 #' default rule that allows users to access their WorkSpaces from anywhere.
 #' You cannot modify the default IP access control group for your
@@ -1824,7 +1824,7 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
 #' Terminates the specified WorkSpaces.
 #' 
 #' Terminating a WorkSpace is a permanent action and cannot be undone. The
-#' user\'s data is destroyed. If you need to archive any user data, contact
+#' user's data is destroyed. If you need to archive any user data, contact
 #' Amazon Web Services before terminating the WorkSpace.
 #' 
 #' You can terminate a WorkSpace that is in any state except `SUSPENDED`.

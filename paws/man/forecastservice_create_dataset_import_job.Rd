@@ -28,17 +28,17 @@ in the \code{EncryptionConfig} parameter of the CreateDataset operation.}
 depends on the \code{DataFrequency} specified when the dataset was created.
 The following formats are supported
 \itemize{
-\item \"yyyy-MM-dd\"
+\item "yyyy-MM-dd"
 
 For the following data frequencies: Y, M, W, and D
-\item \"yyyy-MM-dd HH:mm:ss\"
+\item "yyyy-MM-dd HH:mm:ss"
 
 For the following data frequencies: H, 30min, 15min, and 1min; and
 optionally, for: Y, M, W, and D
 }
 
-If the format isn\'t specified, Amazon Forecast expects the format to be
-\"yyyy-MM-dd HH:mm:ss\".}
+If the format isn't specified, Amazon Forecast expects the format to be
+"yyyy-MM-dd HH:mm:ss".}
 
 \item{Tags}{The optional metadata that you apply to the dataset import job to help
 you categorize and organize them. Each tag consists of a key and an

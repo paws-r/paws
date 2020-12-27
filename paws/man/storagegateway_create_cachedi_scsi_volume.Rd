@@ -13,10 +13,10 @@ storagegateway_create_cachedi_scsi_volume(GatewayARN, VolumeSizeInBytes,
 
 \item{VolumeSizeInBytes}{[required] The size of the volume in bytes.}
 
-\item{SnapshotId}{The snapshot ID (e.g. \"snap-1122aabb\") of the snapshot to restore as
-the new cached volume. Specify this field if you want to create the
-iSCSI storage volume from a snapshot; otherwise, do not include this
-field. To list snapshots for your account use
+\item{SnapshotId}{The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the
+new cached volume. Specify this field if you want to create the iSCSI
+storage volume from a snapshot; otherwise, do not include this field. To
+list snapshots for your account use
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html}{DescribeSnapshots}
 in the \emph{Amazon Elastic Compute Cloud API Reference}.}
 
@@ -26,11 +26,11 @@ and used as a suffix for the target ARN. For example, specifying
 \verb{arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume}.
 The target name must be unique across all volumes on a gateway.
 
-If you don\'t specify a value, Storage Gateway uses the value that was
+If you don't specify a value, Storage Gateway uses the value that was
 previously used for this volume as the new target name.}
 
 \item{SourceVolumeARN}{The ARN for an existing volume. Specifying this ARN makes the new volume
-into an exact copy of the specified existing volume\'s latest recovery
+into an exact copy of the specified existing volume's latest recovery
 point. The \code{VolumeSizeInBytes} value for this new volume must be equal
 to or larger than the size of the existing volume, in bytes.}
 
@@ -47,7 +47,7 @@ request.}
 \item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own AWS
 KMS key, or \code{false} to use a key managed by Amazon S3. Optional.
 
-Valid Values: \code{true} \\| \code{false}}
+Valid Values: \code{true} | \code{false}}
 
 \item{KMSKey}{The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
 used for Amazon S3 server-side encryption. Storage Gateway does not
@@ -62,8 +62,8 @@ you can represent in UTF-8 format, and the following special characters:
 \itemize{
 \item 
 \itemize{
-\item = . \\_ : / @. The maximum length of a tag\'s key is 128 characters,
-and the maximum length for a tag\'s value is 256 characters.
+\item = . \\_ : / @. The maximum length of a tag's key is 128 characters,
+and the maximum length for a tag's value is 256 characters.
 }
 }}
 }
@@ -85,7 +85,7 @@ that initiators can use to connect to the volume target.
 
 Optionally, you can provide the ARN for an existing volume as the
 \code{SourceVolumeARN} for this cached volume, which creates an exact copy of
-the existing volume's latest recovery point. The \code{VolumeSizeInBytes}
+the existing volume’s latest recovery point. The \code{VolumeSizeInBytes}
 value must be equal to or larger than the size of the copied volume, in
 bytes.
 }

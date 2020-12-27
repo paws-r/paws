@@ -18,8 +18,8 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 }
 \description{
 Deletes the Amazon QuickSight user that is associated with the identity
-of the AWS Identity and Access Management (IAM) user or role that\'s
-making the call. The IAM user isn\'t deleted as a result of this call.
+of the AWS Identity and Access Management (IAM) user or role that's
+making the call. The IAM user isn't deleted as a result of this call.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_user(

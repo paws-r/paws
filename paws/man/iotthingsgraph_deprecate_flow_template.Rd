@@ -15,7 +15,7 @@ The ID should be in the following format.
 }
 \description{
 Deprecates the specified workflow. This action marks the workflow for
-deletion. Deprecated flows can\'t be deployed, but existing deployments
+deletion. Deprecated flows can't be deployed, but existing deployments
 will continue to run.
 }
 \section{Request syntax}{

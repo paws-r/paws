@@ -10,7 +10,7 @@ codeguruprofiler_remove_permission(actionGroup, profilingGroupName,
 }
 \arguments{
 \item{actionGroup}{[required] Specifies an action group that contains the permissions to remove from a
-profiling group\'s resource-based policy. One action group is supported,
+profiling group's resource-based policy. One action group is supported,
 \code{agentPermissions}, which grants \code{ConfigureAgent} and \code{PostAgentProfile}
 permissions.}
 
@@ -20,7 +20,7 @@ permissions.}
 resource-based policy from which you want to remove permissions.}
 }
 \description{
-Removes permissions from a profiling group\'s resource-based policy that
+Removes permissions from a profiling group's resource-based policy that
 are provided using an action group. The one supported action group that
 can be removed is \code{agentPermission} which grants \code{ConfigureAgent} and
 \code{PostAgent} permissions. For more information, see \href{https://docs.aws.amazon.com/codeguru/latest/profiler-ug/resource-based-policies.html}{Resource-based policies in CodeGuru Profiler}

@@ -12,7 +12,7 @@ apigateway_put_rest_api(restApiId, mode, failOnWarnings, parameters,
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
 \item{mode}{The \code{mode} query parameter to specify the update mode. Valid values are
-\"merge\" and \"overwrite\". By default, the update mode is \"merge\".}
+"merge" and "overwrite". By default, the update mode is "merge".}
 
 \item{failOnWarnings}{A query parameter to indicate whether to rollback the API update
 (\code{true}) or not (\code{false}) when a warning is encountered. The default

@@ -118,13 +118,13 @@ cloudhsmv2_create_cluster <- function(SubnetIds, HsmType, SourceBackupId = NULL,
 #' @usage
 #' cloudhsmv2_create_hsm(ClusterId, AvailabilityZone, IpAddress)
 #'
-#' @param ClusterId &#91;required&#93; The identifier (ID) of the HSM\'s cluster. To find the cluster ID, use
+#' @param ClusterId &#91;required&#93; The identifier (ID) of the HSM's cluster. To find the cluster ID, use
 #' DescribeClusters.
 #' @param AvailabilityZone &#91;required&#93; The Availability Zone where you are creating the HSM. To find the
-#' cluster\'s Availability Zones, use DescribeClusters.
-#' @param IpAddress The HSM\'s IP address. If you specify an IP address, use an available
+#' cluster's Availability Zones, use DescribeClusters.
+#' @param IpAddress The HSM's IP address. If you specify an IP address, use an available
 #' address from the subnet that maps to the Availability Zone where you are
-#' creating the HSM. If you don\'t specify an IP address, one is chosen for
+#' creating the HSM. If you don't specify an IP address, one is chosen for
 #' you from that subnet.
 #'
 #' @section Request syntax:
@@ -238,8 +238,8 @@ cloudhsmv2_delete_cluster <- function(ClusterId) {
 #' Deletes the specified HSM
 #'
 #' Deletes the specified HSM. To specify an HSM, you can use its identifier
-#' (ID), the IP address of the HSM\'s elastic network interface (ENI), or
-#' the ID of the HSM\'s ENI. You need to specify only one of these values.
+#' (ID), the IP address of the HSM's elastic network interface (ENI), or
+#' the ID of the HSM's ENI. You need to specify only one of these values.
 #' To find these values, use DescribeClusters.
 #'
 #' @usage
@@ -423,10 +423,10 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
 #' certificate
 #'
 #' Claims an AWS CloudHSM cluster by submitting the cluster certificate
-#' issued by your issuing certificate authority (CA) and the CA\'s root
-#' certificate. Before you can claim a cluster, you must sign the
-#' cluster\'s certificate signing request (CSR) with your issuing CA. To
-#' get the cluster\'s CSR, use DescribeClusters.
+#' issued by your issuing certificate authority (CA) and the CA's root
+#' certificate. Before you can claim a cluster, you must sign the cluster's
+#' certificate signing request (CSR) with your issuing CA. To get the
+#' cluster's CSR, use DescribeClusters.
 #'
 #' @usage
 #' cloudhsmv2_initialize_cluster(ClusterId, SignedCert, TrustAnchor)

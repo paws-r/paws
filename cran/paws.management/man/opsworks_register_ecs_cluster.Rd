@@ -7,7 +7,7 @@
 opsworks_register_ecs_cluster(EcsClusterArn, StackId)
 }
 \arguments{
-\item{EcsClusterArn}{[required] The cluster\'s ARN.}
+\item{EcsClusterArn}{[required] The cluster's ARN.}
 
 \item{StackId}{[required] The stack ID.}
 }

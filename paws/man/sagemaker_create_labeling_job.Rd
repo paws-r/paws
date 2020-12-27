@@ -15,10 +15,10 @@ list of labeling jobs.}
 
 \item{LabelAttributeName}{[required] The attribute name to use for the label in the output manifest file.
 This is the key for the key/value pair formed with the label that a
-worker assigns to the object. The name can\'t end with \"-metadata\". If
+worker assigns to the object. The name can't end with "-metadata". If
 you are running a semantic segmentation labeling job, the attribute name
-must end with \"-ref\". If you are running any other kind of labeling
-job, the attribute name must not end with \"-ref\".}
+must end with "-ref". If you are running any other kind of labeling job,
+the attribute name must not end with "-ref".}
 
 \item{InputConfig}{[required] Input data for the labeling job, such as the Amazon S3 location of the
 data objects and the location of the manifest file that describes the

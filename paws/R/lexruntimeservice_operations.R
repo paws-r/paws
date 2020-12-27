@@ -54,7 +54,7 @@ lexruntimeservice_delete_session <- function(botName, botAlias, userId) {
 #' @param botName &#91;required&#93; The name of the bot that contains the session data.
 #' @param botAlias &#91;required&#93; The alias in use for the bot that contains the session data.
 #' @param userId &#91;required&#93; The ID of the client application user. Amazon Lex uses this to identify
-#' a user\'s conversation with your bot.
+#' a user's conversation with your bot.
 #' @param checkpointLabelFilter A string used to filter the intents returned in the
 #' `recentIntentSummaryView` structure.
 #' 
@@ -105,17 +105,17 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' In response, Amazon Lex returns the next message to convey to the user.
 #' Consider the following example messages:
 #' 
-#' -   For a user input \"I would like a pizza,\" Amazon Lex might return a
+#' -   For a user input "I would like a pizza," Amazon Lex might return a
 #'     response with a message eliciting slot data (for example,
-#'     `PizzaSize`): \"What size pizza would you like?\".
+#'     `PizzaSize`): "What size pizza would you like?".
 #' 
 #' -   After the user provides all of the pizza order information, Amazon
 #'     Lex might return a response with a message to get user confirmation:
-#'     \"Order the pizza?\".
+#'     "Order the pizza?".
 #' 
-#' -   After the user replies \"Yes\" to the confirmation prompt, Amazon
-#'     Lex might return a conclusion statement: \"Thank you, your cheese
-#'     pizza has been ordered.\".
+#' -   After the user replies "Yes" to the confirmation prompt, Amazon Lex
+#'     might return a conclusion statement: "Thank you, your cheese pizza
+#'     has been ordered.".
 #' 
 #' Not all Amazon Lex messages require a response from the user. For
 #' example, conclusion statements do not require a response. Some messages
@@ -158,7 +158,7 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' @param botName &#91;required&#93; Name of the Amazon Lex bot.
 #' @param botAlias &#91;required&#93; Alias of the Amazon Lex bot.
 #' @param userId &#91;required&#93; The ID of the client application user. Amazon Lex uses this to identify
-#' a user\'s conversation with your bot. At runtime, each request must
+#' a user's conversation with your bot. At runtime, each request must
 #' contain the `userID` field.
 #' 
 #' To decide the user ID to use for your application, consider the
@@ -175,8 +175,8 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #'     conversations on two different devices, choose a device-specific
 #'     identifier.
 #' 
-#' -   A user can\'t have two independent conversations with two different
-#'     versions of the same bot. For example, a user can\'t have a
+#' -   A user can't have two independent conversations with two different
+#'     versions of the same bot. For example, a user can't have a
 #'     conversation with the PROD and BETA versions of the same bot. If you
 #'     anticipate that a user will need to have conversation with two
 #'     different versions, for example, while testing, include the bot
@@ -197,7 +197,7 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' with string keys and values. The total size of the `requestAttributes`
 #' and `sessionAttributes` headers is limited to 12 KB.
 #' 
-#' The namespace `x-amz-lex:` is reserved for special attributes. Don\'t
+#' The namespace `x-amz-lex:` is reserved for special attributes. Don't
 #' create any request attributes with the prefix `x-amz-lex:`.
 #' 
 #' For more information, see [Setting Request
@@ -304,24 +304,24 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' an optional `responseCard` to display. Consider the following example
 #' messages:
 #' 
-#' -   For a user input \"I would like a pizza\", Amazon Lex might return a
+#' -   For a user input "I would like a pizza", Amazon Lex might return a
 #'     response with a message eliciting slot data (for example,
-#'     PizzaSize): \"What size pizza would you like?\"
+#'     PizzaSize): "What size pizza would you like?"
 #' 
 #' -   After the user provides all of the pizza order information, Amazon
 #'     Lex might return a response with a message to obtain user
-#'     confirmation \"Proceed with the pizza order?\".
+#'     confirmation "Proceed with the pizza order?".
 #' 
-#' -   After the user replies to a confirmation prompt with a \"yes\",
-#'     Amazon Lex might return a conclusion statement: \"Thank you, your
-#'     cheese pizza has been ordered.\".
+#' -   After the user replies to a confirmation prompt with a "yes", Amazon
+#'     Lex might return a conclusion statement: "Thank you, your cheese
+#'     pizza has been ordered.".
 #' 
 #' Not all Amazon Lex messages require a user response. For example, a
 #' conclusion statement does not require a response. Some messages require
-#' only a \"yes\" or \"no\" user response. In addition to the `message`,
-#' Amazon Lex provides additional context about the message in the response
-#' that you might use to enhance client behavior, for example, to display
-#' the appropriate client user interface. These are the `slotToElicit`,
+#' only a "yes" or "no" user response. In addition to the `message`, Amazon
+#' Lex provides additional context about the message in the response that
+#' you might use to enhance client behavior, for example, to display the
+#' appropriate client user interface. These are the `slotToElicit`,
 #' `dialogState`, `intentName`, and `slots` fields in the response.
 #' Consider the following examples:
 #' 
@@ -356,7 +356,7 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' @param botName &#91;required&#93; The name of the Amazon Lex bot.
 #' @param botAlias &#91;required&#93; The alias of the Amazon Lex bot.
 #' @param userId &#91;required&#93; The ID of the client application user. Amazon Lex uses this to identify
-#' a user\'s conversation with your bot. At runtime, each request must
+#' a user's conversation with your bot. At runtime, each request must
 #' contain the `userID` field.
 #' 
 #' To decide the user ID to use for your application, consider the
@@ -373,8 +373,8 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #'     conversations on two different devices, choose a device-specific
 #'     identifier.
 #' 
-#' -   A user can\'t have two independent conversations with two different
-#'     versions of the same bot. For example, a user can\'t have a
+#' -   A user can't have two independent conversations with two different
+#'     versions of the same bot. For example, a user can't have a
 #'     conversation with the PROD and BETA versions of the same bot. If you
 #'     anticipate that a user will need to have conversation with two
 #'     different versions, for example, while testing, include the bot
@@ -387,7 +387,7 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' @param requestAttributes Request-specific information passed between Amazon Lex and a client
 #' application.
 #' 
-#' The namespace `x-amz-lex:` is reserved for special attributes. Don\'t
+#' The namespace `x-amz-lex:` is reserved for special attributes. Don't
 #' create any request attributes with the prefix `x-amz-lex:`.
 #' 
 #' For more information, see [Setting Request
@@ -447,7 +447,7 @@ lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttrib
 #' @param botName &#91;required&#93; The name of the bot that contains the session data.
 #' @param botAlias &#91;required&#93; The alias in use for the bot that contains the session data.
 #' @param userId &#91;required&#93; The ID of the client application user. Amazon Lex uses this to identify
-#' a user\'s conversation with your bot.
+#' a user's conversation with your bot.
 #' @param sessionAttributes Map of key/value pairs representing the session-specific context
 #' information. It contains application information passed between Amazon
 #' Lex and a client application.

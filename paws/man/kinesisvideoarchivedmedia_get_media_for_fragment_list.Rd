@@ -21,7 +21,7 @@ the archived data in an Amazon Kinesis video stream.
 \details{
 You must first call the \code{GetDataEndpoint} API to get an endpoint. Then
 send the \code{GetMediaForFragmentList} requests to this endpoint using the
-\href{https://docs.aws.amazon.com/cli/latest/reference/}{\\--endpoint-url parameter}.
+\href{https://docs.aws.amazon.com/cli/latest/reference/}{--endpoint-url parameter}.
 
 The following limits apply when using the \code{GetMediaForFragmentList} API:
 \itemize{
@@ -36,9 +36,9 @@ If an error is thrown after invoking a Kinesis Video Streams archived
 media API, in addition to the HTTP status code and the response body, it
 includes the following pieces of information:
 \itemize{
-\item \code{x-amz-ErrorType} HTTP header -- contains a more specific error type
+\item \code{x-amz-ErrorType} HTTP header – contains a more specific error type
 in addition to what the HTTP status code provides.
-\item \code{x-amz-RequestId} HTTP header -- if you want to report an issue to
+\item \code{x-amz-RequestId} HTTP header – if you want to report an issue to
 AWS, the support team can better diagnose the problem if given the
 Request Id.
 }

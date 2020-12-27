@@ -23,8 +23,8 @@ and YAML.}
 \item{Specification}{[required] The version of the API specification to use. OAS30, for OpenAPI 3.0, is
 the only supported value.}
 
-\item{StageName}{The name of the API stage to export. If you don\'t specify this
-property, a representation of the latest API configuration is exported.}
+\item{StageName}{The name of the API stage to export. If you don't specify this property,
+a representation of the latest API configuration is exported.}
 }
 \description{
 Export api

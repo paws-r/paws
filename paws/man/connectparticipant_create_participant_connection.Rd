@@ -14,11 +14,11 @@ connectparticipant_create_participant_connection(Type, ParticipantToken)
 API response.}
 }
 \description{
-Creates the participant\'s connection. Note that ParticipantToken is
-used for invoking this API instead of ConnectionToken.
+Creates the participant's connection. Note that ParticipantToken is used
+for invoking this API instead of ConnectionToken.
 }
 \details{
-The participant token is valid for the lifetime of the participant --
+The participant token is valid for the lifetime of the participant –
 until the they are part of a contact.
 
 The response URL for \code{WEBSOCKET} Type has a connect expiry timeout of

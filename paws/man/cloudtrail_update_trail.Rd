@@ -66,12 +66,12 @@ identifier that represents the log group to which CloudTrail logs will
 be delivered. Not required unless you specify CloudWatchLogsRoleArn.}
 
 \item{CloudWatchLogsRoleArn}{Specifies the role for the CloudWatch Logs endpoint to assume to write
-to a user\'s log group.}
+to a user's log group.}
 
 \item{KmsKeyId}{Specifies the KMS key ID to use to encrypt the logs delivered by
-CloudTrail. The value can be an alias name prefixed by \"alias/\", a
-fully specified ARN to an alias, a fully specified ARN to a key, or a
-globally unique identifier.
+CloudTrail. The value can be an alias name prefixed by "alias/", a fully
+specified ARN to an alias, a fully specified ARN to a key, or a globally
+unique identifier.
 
 Examples:
 \itemize{

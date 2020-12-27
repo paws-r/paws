@@ -38,8 +38,8 @@ if an item has the attributes \verb{\\\{ 'a', '1' \\\}}, \verb{\\\{ 'b', '2'\\\}
 \verb{\\\{ 'b', '3' \\\}} and the requestor calls \code{PutAttributes} using the
 attributes \verb{\\\{ 'b', '4' \\\}} with the \code{Replace} parameter set to true, the
 final attributes of the item are changed to \verb{\\\{ 'a', '1' \\\}} and
-\verb{\\\{ 'b', '4' \\\}}, which replaces the previous values of the \'b\'
-attribute with the new value.
+\verb{\\\{ 'b', '4' \\\}}, which replaces the previous values of the 'b' attribute
+with the new value.
 
 Using \code{PutAttributes} to replace attribute values that do not exist will
 not result in an error response.

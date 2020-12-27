@@ -20,11 +20,11 @@ NULL
 #'     the rate of errors exceeds a threshold that you specify. CloudWatch
 #'     Logs uses your log data for monitoring; so, no code changes are
 #'     required. For example, you can monitor application logs for specific
-#'     literal terms (such as \"NullReferenceException\") or count the
-#'     number of occurrences of a literal term at a particular position in
-#'     log data (such as \"404\" status codes in an Apache access log).
-#'     When the term you are searching for is found, CloudWatch Logs
-#'     reports the data to a CloudWatch metric that you specify.
+#'     literal terms (such as "NullReferenceException") or count the number
+#'     of occurrences of a literal term at a particular position in log
+#'     data (such as "404" status codes in an Apache access log). When the
+#'     term you are searching for is found, CloudWatch Logs reports the
+#'     data to a CloudWatch metric that you specify.
 #' 
 #' -   **Monitor AWS CloudTrail logged events**: You can create alarms in
 #'     CloudWatch and receive notifications of particular API activity as

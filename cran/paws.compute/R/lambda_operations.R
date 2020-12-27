@@ -137,7 +137,7 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' invoker.
 #' @param Qualifier Specify a version or alias to add permissions to a published version of
 #' the function.
-#' @param RevisionId Only update the policy if the revision ID matches the ID that\'s
+#' @param RevisionId Only update the policy if the revision ID matches the ID that's
 #' specified. Use this option to avoid modifying a policy that has changed
 #' since you last read it.
 #'
@@ -346,7 +346,7 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' -   **Partial ARN** - `123456789012:function:MyFunction`.
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
-#' the function name, it\'s limited to 64 characters in length.
+#' the function name, it's limited to 64 characters in length.
 #' @param Enabled Disables the event source mapping to pause polling and invocation.
 #' @param BatchSize The maximum number of items to retrieve in a single batch.
 #' 
@@ -442,7 +442,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' 
 #' When you create a function, Lambda provisions an instance of the
 #' function and its supporting resources. If your function connects to a
-#' VPC, this process can take a minute or so. During this time, you can\'t
+#' VPC, this process can take a minute or so. During this time, you can't
 #' invoke or modify the function. The `State`, `StateReason`, and
 #' `StateReasonCode` fields in the response from GetFunctionConfiguration
 #' indicate when the function is ready to invoke. For more information, see
@@ -451,8 +451,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' 
 #' A function has an unpublished version, and can have published versions
 #' and aliases. The unpublished version changes when you update your
-#' function\'s code and configuration. A published version is a snapshot of
-#' your function code and configuration that can\'t be changed. An alias is
+#' function's code and configuration. A published version is a snapshot of
+#' your function code and configuration that can't be changed. An alias is
 #' a named resource that maps to a version, and can be changed to map to a
 #' different version. Use the `Publish` parameter to create version `1` of
 #' your function from its initial configuration.
@@ -493,9 +493,9 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
-#' @param Runtime &#91;required&#93; The identifier of the function\'s
+#' @param Runtime &#91;required&#93; The identifier of the function's
 #' [runtime](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
-#' @param Role &#91;required&#93; The Amazon Resource Name (ARN) of the function\'s execution role.
+#' @param Role &#91;required&#93; The Amazon Resource Name (ARN) of the function's execution role.
 #' @param Handler &#91;required&#93; The name of the method within your code that Lambda calls to execute
 #' your function. The format includes the file name. It can also include
 #' namespaces and other qualifiers, depending on the runtime. For more
@@ -506,7 +506,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' @param Timeout The amount of time that Lambda allows a function to run before stopping
 #' it. The default is 3 seconds. The maximum allowed value is 900 seconds.
 #' @param MemorySize The amount of memory that your function has access to. Increasing the
-#' function\'s memory also increases its CPU allocation. The default value
+#' function's memory also increases its CPU allocation. The default value
 #' is 128 MB. The value must be a multiple of 64 MB.
 #' @param Publish Set to true to publish the first version of the function during
 #' creation.
@@ -521,9 +521,9 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' Queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq).
 #' @param Environment Environment variables that are accessible from function code during
 #' execution.
-#' @param KMSKeyArn The ARN of the AWS Key Management Service (AWS KMS) key that\'s used to
-#' encrypt your function\'s environment variables. If it\'s not provided,
-#' AWS Lambda uses a default service key.
+#' @param KMSKeyArn The ARN of the AWS Key Management Service (AWS KMS) key that's used to
+#' encrypt your function's environment variables. If it's not provided, AWS
+#' Lambda uses a default service key.
 #' @param TracingConfig Set `Mode` to `Active` to sample and trace a subset of incoming requests
 #' with AWS X-Ray.
 #' @param Tags A list of
@@ -531,7 +531,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' apply to the function.
 #' @param Layers A list of [function
 #' layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
-#' to add to the function\'s execution environment. Specify each layer by
+#' to add to the function's execution environment. Specify each layer by
 #' its ARN, including the version.
 #' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
 #'
@@ -781,7 +781,7 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #' You can append a version number or alias to any of the formats. The
 #' length constraint applies only to the full ARN. If you specify only the
 #' function name, it is limited to 64 characters in length.
-#' @param Qualifier Specify a version to delete. You can\'t delete a version that\'s
+#' @param Qualifier Specify a version to delete. You can't delete a version that's
 #' referenced by an alias.
 #'
 #' @section Request syntax:
@@ -1059,7 +1059,7 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
 
 #' Retrieves details about your account's limits and usage in an AWS Region
 #'
-#' Retrieves details about your account\'s
+#' Retrieves details about your account's
 #' [limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) and
 #' usage in an AWS Region.
 #'
@@ -1209,7 +1209,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #' to download the deployment package that's valid for 10 minutes
 #'
 #' Returns information about the function or function version, with a link
-#' to download the deployment package that\'s valid for 10 minutes. If you
+#' to download the deployment package that's valid for 10 minutes. If you
 #' specify a function version, only details that are specific to that
 #' version are returned.
 #'
@@ -1338,7 +1338,7 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' The output includes only options that can vary between versions of a
 #' function. To modify these settings, use UpdateFunctionConfiguration.
 #' 
-#' To get all of a function\'s details, including function-level settings,
+#' To get all of a function's details, including function-level settings,
 #' use GetFunction.
 #'
 #' @usage
@@ -1472,7 +1472,7 @@ lambda_get_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #'
 #' Returns information about a version of an [AWS Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html),
-#' with a link to download the layer archive that\'s valid for 10 minutes.
+#' with a link to download the layer archive that's valid for 10 minutes.
 #'
 #' @usage
 #' lambda_get_layer_version(LayerName, VersionNumber)
@@ -1523,7 +1523,7 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 #'
 #' Returns information about a version of an [AWS Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html),
-#' with a link to download the layer archive that\'s valid for 10 minutes.
+#' with a link to download the layer archive that's valid for 10 minutes.
 #'
 #' @usage
 #' lambda_get_layer_version_by_arn(Arn)
@@ -1673,7 +1673,7 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 #' Retrieves the provisioned concurrency configuration for a function's
 #' alias or version
 #'
-#' Retrieves the provisioned concurrency configuration for a function\'s
+#' Retrieves the provisioned concurrency configuration for a function's
 #' alias or version.
 #'
 #' @usage
@@ -1770,11 +1770,11 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #' were not processed, configure your function with a [dead-letter
 #' queue](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq).
 #' 
-#' The status code in the API response doesn\'t reflect function errors.
+#' The status code in the API response doesn't reflect function errors.
 #' Error codes are reserved for errors that prevent your function from
 #' executing, such as permissions errors, [limit
 #' errors](https://docs.aws.amazon.com/lambda/latest/dg/limits.html), or
-#' issues with your function\'s code and configuration. For example, Lambda
+#' issues with your function's code and configuration. For example, Lambda
 #' returns `TooManyRequestsException` if executing the function would cause
 #' you to exceed a concurrency limit at either the account level
 #' (`ConcurrentInvocationLimitExceeded`) or function level
@@ -1816,7 +1816,7 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #'     additional data.
 #' 
 #' -   `Event` - Invoke the function asynchronously. Send events that fail
-#'     multiple times to the function\'s dead-letter queue (if it\'s
+#'     multiple times to the function's dead-letter queue (if it's
 #'     configured). The API response only includes a status code.
 #' 
 #' -   `DryRun` - Validate parameter values and verify that the user or
@@ -1965,7 +1965,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' the function name, it is limited to 64 characters in length.
 #' @param FunctionVersion Specify a function version to only list aliases that invoke that
 #' version.
-#' @param Marker Specify the pagination token that\'s returned by a previous request to
+#' @param Marker Specify the pagination token that's returned by a previous request to
 #' retrieve the next page of results.
 #' @param MaxItems Limit the number of aliases returned.
 #'
@@ -2040,7 +2040,7 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
 #' -   **Partial ARN** - `123456789012:function:MyFunction`.
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
-#' the function name, it\'s limited to 64 characters in length.
+#' the function name, it's limited to 64 characters in length.
 #' @param Marker A pagination token returned by a previous call.
 #' @param MaxItems The maximum number of event source mappings to return.
 #'
@@ -2109,7 +2109,7 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
-#' @param Marker Specify the pagination token that\'s returned by a previous request to
+#' @param Marker Specify the pagination token that's returned by a previous request to
 #' retrieve the next page of results.
 #' @param MaxItems The maximum number of configurations to return.
 #'
@@ -2164,13 +2164,13 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
 #' @usage
 #' lambda_list_functions(MasterRegion, FunctionVersion, Marker, MaxItems)
 #'
-#' @param MasterRegion For Lambda\\@@Edge functions, the AWS Region of the master function. For
+#' @param MasterRegion For Lambda@@Edge functions, the AWS Region of the master function. For
 #' example, `us-east-1` filters the list of functions to only include
-#' Lambda\\@@Edge functions replicated from a master function in US East (N.
+#' Lambda@@Edge functions replicated from a master function in US East (N.
 #' Virginia). If specified, you must set `FunctionVersion` to `ALL`.
 #' @param FunctionVersion Set to `ALL` to include entries for all published versions of each
 #' function.
-#' @param Marker Specify the pagination token that\'s returned by a previous request to
+#' @param Marker Specify the pagination token that's returned by a previous request to
 #' retrieve the next page of results.
 #' @param MaxItems The maximum number of functions to return.
 #'
@@ -2214,9 +2214,9 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
 #'
 #' Lists the versions of an [AWS Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
-#' Versions that have been deleted aren\'t listed. Specify a [runtime
+#' Versions that have been deleted aren't listed. Specify a [runtime
 #' identifier](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html)
-#' to list only versions that indicate that they\'re compatible with that
+#' to list only versions that indicate that they're compatible with that
 #' runtime.
 #'
 #' @usage
@@ -2275,7 +2275,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' and shows information about the latest version of each. Specify a
 #' [runtime
 #' identifier](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html)
-#' to list only layers that indicate that they\'re compatible with that
+#' to list only layers that indicate that they're compatible with that
 #' runtime.
 #'
 #' @usage
@@ -2346,7 +2346,7 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
-#' @param Marker Specify the pagination token that\'s returned by a previous request to
+#' @param Marker Specify the pagination token that's returned by a previous request to
 #' retrieve the next page of results.
 #' @param MaxItems Specify a number to limit the number of configurations returned.
 #'
@@ -2390,14 +2390,14 @@ lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = N
 
 #' Returns a function's tags
 #'
-#' Returns a function\'s
+#' Returns a function's
 #' [tags](https://docs.aws.amazon.com/lambda/latest/dg/tagging.html). You
 #' can also view tags with GetFunction.
 #'
 #' @usage
 #' lambda_list_tags(Resource)
 #'
-#' @param Resource &#91;required&#93; The function\'s Amazon Resource Name (ARN).
+#' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN).
 #'
 #' @section Request syntax:
 #' ```
@@ -2459,7 +2459,7 @@ lambda_list_tags <- function(Resource) {
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
-#' @param Marker Specify the pagination token that\'s returned by a previous request to
+#' @param Marker Specify the pagination token that's returned by a previous request to
 #' retrieve the next page of results.
 #' @param MaxItems The maximum number of versions to return.
 #'
@@ -2521,7 +2521,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #' @param CompatibleRuntimes A list of compatible [function
 #' runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 #' Used for filtering with ListLayers and ListLayerVersions.
-#' @param LicenseInfo The layer\'s software license. It can be any of the following:
+#' @param LicenseInfo The layer's software license. It can be any of the following:
 #' 
 #' -   An [SPDX license identifier](https://spdx.org/licenses/). For
 #'     example, `MIT`.
@@ -2594,13 +2594,13 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' Creates a
 #' [version](https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
 #' from the current code and configuration of a function. Use versions to
-#' create a snapshot of your function code and configuration that doesn\'t
+#' create a snapshot of your function code and configuration that doesn't
 #' change.
 #' 
-#' AWS Lambda doesn\'t publish a version if the function\'s configuration
-#' and code haven\'t changed since the last version. Use UpdateFunctionCode
-#' or UpdateFunctionConfiguration to update the function before publishing
-#' a version.
+#' AWS Lambda doesn't publish a version if the function's configuration and
+#' code haven't changed since the last version. Use UpdateFunctionCode or
+#' UpdateFunctionConfiguration to update the function before publishing a
+#' version.
 #' 
 #' Clients can invoke versions directly or with an alias. To create an
 #' alias, use CreateAlias.
@@ -2622,13 +2622,13 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
-#' @param CodeSha256 Only publish a version if the hash value matches the value that\'s
+#' @param CodeSha256 Only publish a version if the hash value matches the value that's
 #' specified. Use this option to avoid publishing a version if the function
 #' code has changed since you last updated it. You can get the hash for the
 #' version that you uploaded from the output of UpdateFunctionCode.
 #' @param Description A description for the version to override the description in the
 #' function configuration.
-#' @param RevisionId Only update the function if the revision ID matches the ID that\'s
+#' @param RevisionId Only update the function if the revision ID matches the ID that's
 #' specified. Use this option to avoid publishing a version if the function
 #' configuration has changed since you last updated it.
 #'
@@ -2687,7 +2687,7 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
 #' Use GetAccountSettings to see your Regional concurrency limit. You can
 #' reserve concurrency for as many functions as you like, as long as you
 #' leave at least 100 simultaneous executions unreserved for functions that
-#' aren\'t configured with a per-function limit. For more information, see
+#' aren't configured with a per-function limit. For more information, see
 #' [Managing
 #' Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
 #'
@@ -2862,7 +2862,7 @@ lambda_put_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #' Adds a provisioned concurrency configuration to a function's alias or
 #' version
 #'
-#' Adds a provisioned concurrency configuration to a function\'s alias or
+#' Adds a provisioned concurrency configuration to a function's alias or
 #' version.
 #'
 #' @usage
@@ -3013,7 +3013,7 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 #' @param StatementId &#91;required&#93; Statement ID of the permission to remove.
 #' @param Qualifier Specify a version or alias to remove permissions from a published
 #' version of the function.
-#' @param RevisionId Only update the policy if the revision ID matches the ID that\'s
+#' @param RevisionId Only update the policy if the revision ID matches the ID that's
 #' specified. Use this option to avoid modifying a policy that has changed
 #' since you last read it.
 #'
@@ -3066,7 +3066,7 @@ lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL
 #' @usage
 #' lambda_tag_resource(Resource, Tags)
 #'
-#' @param Resource &#91;required&#93; The function\'s Amazon Resource Name (ARN).
+#' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN).
 #' @param Tags &#91;required&#93; A list of tags to apply to the function.
 #'
 #' @section Request syntax:
@@ -3120,7 +3120,7 @@ lambda_tag_resource <- function(Resource, Tags) {
 #' @usage
 #' lambda_untag_resource(Resource, TagKeys)
 #'
-#' @param Resource &#91;required&#93; The function\'s Amazon Resource Name (ARN).
+#' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN).
 #' @param TagKeys &#91;required&#93; A list of tag keys to remove from the function.
 #'
 #' @section Request syntax:
@@ -3193,7 +3193,7 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 #' @param RoutingConfig The [routing
 #' configuration](https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html#configuring-alias-routing)
 #' of the alias.
-#' @param RevisionId Only update the alias if the revision ID matches the ID that\'s
+#' @param RevisionId Only update the alias if the revision ID matches the ID that's
 #' specified. Use this option to avoid modifying an alias that has changed
 #' since you last read it.
 #'
@@ -3295,7 +3295,7 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #' -   **Partial ARN** - `123456789012:function:MyFunction`.
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
-#' the function name, it\'s limited to 64 characters in length.
+#' the function name, it's limited to 64 characters in length.
 #' @param Enabled Disables the event source mapping to pause polling and invocation.
 #' @param BatchSize The maximum number of items to retrieve in a single batch.
 #' 
@@ -3372,9 +3372,9 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 
 #' Updates a Lambda function's code
 #'
-#' Updates a Lambda function\'s code.
+#' Updates a Lambda function's code.
 #' 
-#' The function\'s code is locked when you publish a version. You can\'t
+#' The function's code is locked when you publish a version. You can't
 #' modify the code of a published version, only the unpublished version.
 #'
 #' @usage
@@ -3405,7 +3405,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' code. This has the same effect as calling PublishVersion separately.
 #' @param DryRun Set to true to validate the request parameters and access permissions
 #' without modifying the function code.
-#' @param RevisionId Only update the function if the revision ID matches the ID that\'s
+#' @param RevisionId Only update the function if the revision ID matches the ID that's
 #' specified. Use this option to avoid modifying a function that has
 #' changed since you last read it.
 #'
@@ -3461,7 +3461,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' 
 #' When you update a function, Lambda provisions an instance of the
 #' function and its supporting resources. If your function connects to a
-#' VPC, this process can take a minute. During this time, you can\'t modify
+#' VPC, this process can take a minute. During this time, you can't modify
 #' the function, but you can still invoke it. The `LastUpdateStatus`,
 #' `LastUpdateStatusReason`, and `LastUpdateStatusReasonCode` fields in the
 #' response from GetFunctionConfiguration indicate when the update is
@@ -3470,7 +3470,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' States](https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html).
 #' 
 #' These settings can vary between versions of a function and are locked
-#' when you publish a version. You can\'t modify the configuration of a
+#' when you publish a version. You can't modify the configuration of a
 #' published version, only the unpublished version.
 #' 
 #' To configure function concurrency, use PutFunctionConcurrency. To grant
@@ -3495,7 +3495,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
-#' @param Role The Amazon Resource Name (ARN) of the function\'s execution role.
+#' @param Role The Amazon Resource Name (ARN) of the function's execution role.
 #' @param Handler The name of the method within your code that Lambda calls to execute
 #' your function. The format includes the file name. It can also include
 #' namespaces and other qualifiers, depending on the runtime. For more
@@ -3505,7 +3505,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' @param Timeout The amount of time that Lambda allows a function to run before stopping
 #' it. The default is 3 seconds. The maximum allowed value is 900 seconds.
 #' @param MemorySize The amount of memory that your function has access to. Increasing the
-#' function\'s memory also increases its CPU allocation. The default value
+#' function's memory also increases its CPU allocation. The default value
 #' is 128 MB. The value must be a multiple of 64 MB.
 #' @param VpcConfig For network connectivity to AWS resources in a VPC, specify a list of
 #' security groups and subnets in the VPC. When you connect a function to a
@@ -3514,23 +3514,23 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' Settings](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
 #' @param Environment Environment variables that are accessible from function code during
 #' execution.
-#' @param Runtime The identifier of the function\'s
+#' @param Runtime The identifier of the function's
 #' [runtime](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 #' @param DeadLetterConfig A dead letter queue configuration that specifies the queue or topic
 #' where Lambda sends asynchronous events when they fail processing. For
 #' more information, see [Dead Letter
 #' Queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq).
-#' @param KMSKeyArn The ARN of the AWS Key Management Service (AWS KMS) key that\'s used to
-#' encrypt your function\'s environment variables. If it\'s not provided,
-#' AWS Lambda uses a default service key.
+#' @param KMSKeyArn The ARN of the AWS Key Management Service (AWS KMS) key that's used to
+#' encrypt your function's environment variables. If it's not provided, AWS
+#' Lambda uses a default service key.
 #' @param TracingConfig Set `Mode` to `Active` to sample and trace a subset of incoming requests
 #' with AWS X-Ray.
-#' @param RevisionId Only update the function if the revision ID matches the ID that\'s
+#' @param RevisionId Only update the function if the revision ID matches the ID that's
 #' specified. Use this option to avoid modifying a function that has
 #' changed since you last read it.
 #' @param Layers A list of [function
 #' layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
-#' to add to the function\'s execution environment. Specify each layer by
+#' to add to the function's execution environment. Specify each layer by
 #' its ARN, including the version.
 #' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
 #'

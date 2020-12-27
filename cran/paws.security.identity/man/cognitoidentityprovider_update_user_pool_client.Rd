@@ -151,7 +151,7 @@ attributes. You can get a list of the current user pool app client
 settings with .
 }
 \details{
-If you don\'t provide a value for an attribute, it will be set to the
+If you don't provide a value for an attribute, it will be set to the
 default value.
 }
 \section{Request syntax}{

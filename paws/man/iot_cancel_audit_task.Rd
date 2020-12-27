@@ -8,12 +8,12 @@ iot_cancel_audit_task(taskId)
 }
 \arguments{
 \item{taskId}{[required] The ID of the audit you want to cancel. You can only cancel an audit
-that is \"IN\\_PROGRESS\".}
+that is "IN\\_PROGRESS".}
 }
 \description{
 Cancels an audit that is in progress. The audit can be either scheduled
 or on-demand. If the audit is not in progress, an
-\"InvalidRequestException\" occurs.
+"InvalidRequestException" occurs.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_audit_task(

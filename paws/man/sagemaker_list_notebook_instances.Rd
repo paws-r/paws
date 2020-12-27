@@ -27,7 +27,7 @@ sort order in the next request.}
 
 \item{SortOrder}{The sort order for results.}
 
-\item{NameContains}{A string in the notebook instances\' name. This filter returns only
+\item{NameContains}{A string in the notebook instances' name. This filter returns only
 notebook instances whose name contains the specified string.}
 
 \item{CreationTimeBefore}{A filter that returns only notebook instances that were created before
@@ -59,7 +59,7 @@ specified git repository.}
 }
 \description{
 Returns a list of the Amazon SageMaker notebook instances in the
-requester\'s account in an AWS Region.
+requester's account in an AWS Region.
 }
 \section{Request syntax}{
 \preformatted{svc$list_notebook_instances(

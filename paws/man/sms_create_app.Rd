@@ -12,7 +12,7 @@ sms_create_app(name, description, roleName, clientToken, serverGroups,
 
 \item{description}{Description of the new application}
 
-\item{roleName}{Name of service role in customer\'s account to be used by AWS SMS.}
+\item{roleName}{Name of service role in customer's account to be used by AWS SMS.}
 
 \item{clientToken}{A unique, case-sensitive identifier you provide to ensure idempotency of
 application creation.}

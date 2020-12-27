@@ -49,7 +49,7 @@ parse_operation <- function(text) {
 
 # Returns a quoted string, e.g. "foo" -> '"foo"'.
 quoted <- function(string) {
-  return(shQuote(string))
+  return(shQuote(string, type = "cmd"))
 }
 
 # Find the path to files in R packages.

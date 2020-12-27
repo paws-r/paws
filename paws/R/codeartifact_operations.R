@@ -169,7 +169,7 @@ codeartifact_copy_package_versions <- function(domain, domainOwner = NULL, sourc
 #' Creates a domain. CodeArtifact *domains* make it easier to manage
 #' multiple repositories across an organization. You can use a domain to
 #' apply permissions across many repositories owned by different AWS
-#' accounts. An asset is stored only once in a domain, even if it\'s in
+#' accounts. An asset is stored only once in a domain, even if it's in
 #' multiple repositories.
 #' 
 #' Although you can have multiple domains, we recommend a single production
@@ -339,7 +339,7 @@ codeartifact_delete_domain <- function(domain, domainOwner = NULL) {
 #' does not include dashes or spaces.
 #' @param policyRevision The current revision of the resource policy to be deleted. This revision
 #' is used for optimistic locking, which prevents others from overwriting
-#' your changes to the domain\'s resource policy.
+#' your changes to the domain's resource policy.
 #'
 #' @section Request syntax:
 #' ```
@@ -376,7 +376,7 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' cannot be restored in your repository. If you want to remove a package
 #' version from your repository and be able to restore it later, set its
 #' status to `Archived`. Archived packages cannot be downloaded from a
-#' repository and don\'t show up with list package APIs (for example,
+#' repository and don't show up with list package APIs (for example,
 #' ` <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html">ListackageVersions</a> `),
 #' but you can restore them using
 #' ` <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_UpdatePackageVersionsStatus.html">UpdatePackageVersionsStatus</a> `.
@@ -517,9 +517,9 @@ codeartifact_delete_repository <- function(domain, domainOwner = NULL, repositor
 #' does not include dashes or spaces.
 #' @param repository &#91;required&#93; The name of the repository that is associated with the resource policy
 #' to be deleted
-#' @param policyRevision The revision of the repository\'s resource policy to be deleted. This
+#' @param policyRevision The revision of the repository's resource policy to be deleted. This
 #' revision is used for optimistic locking, which prevents others from
-#' accidentally overwriting your changes to the repository\'s resource
+#' accidentally overwriting your changes to the repository's resource
 #' policy.
 #'
 #' @section Request syntax:
@@ -755,7 +755,7 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #' Deletes the assets in package versions and sets the package versions'
 #' status to Disposed
 #'
-#' Deletes the assets in package versions and sets the package versions\'
+#' Deletes the assets in package versions and sets the package versions'
 #' status to `Disposed`. A disposed package version cannot be restored in
 #' your repository because its assets are deleted.
 #' 
@@ -1370,7 +1370,7 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' 
 #' -   A Python package does not contain a corresponding component, so
 #'     Python packages do not have a namespace.
-#' @param package &#91;required&#93; The name of the package versions\' package.
+#' @param package &#91;required&#93; The name of the package versions' package.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #' @param nextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
@@ -1692,7 +1692,7 @@ codeartifact_list_repositories_in_domain <- function(domain, domainOwner = NULL,
 #' does not include dashes or spaces.
 #' @param policyRevision The current revision of the resource policy to be set. This revision is
 #' used for optimistic locking, which prevents others from overwriting your
-#' changes to the domain\'s resource policy.
+#' changes to the domain's resource policy.
 #' @param policyDocument &#91;required&#93; A valid displayable JSON Aspen policy string to be set as the access
 #' control resource policy on the provided domain.
 #'
@@ -1743,7 +1743,7 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' @param repository &#91;required&#93; The name of the repository to set the resource policy on.
 #' @param policyRevision Sets the revision of the resource policy that specifies permissions to
 #' access the repository. This revision is used for optimistic locking,
-#' which prevents others from overwriting your changes to the repository\'s
+#' which prevents others from overwriting your changes to the repository's
 #' resource policy.
 #' @param policyDocument &#91;required&#93; A valid displayable JSON Aspen policy string to be set as the access
 #' control resource policy on the provided repository.
@@ -1817,8 +1817,8 @@ codeartifact_put_repository_permissions_policy <- function(domain, domainOwner =
 #' @param versionRevisions A map of package versions and package version revisions. The map `key`
 #' is the package version (for example, `3.5.2`), and the map `value` is
 #' the package version revision.
-#' @param expectedStatus The package version's expected status before it is updated. If
-#' `expectedStatus` is provided, the package version\'s status is updated
+#' @param expectedStatus The package version’s expected status before it is updated. If
+#' `expectedStatus` is provided, the package version's status is updated
 #' only if its status at the time `UpdatePackageVersionsStatus` is called
 #' matches `expectedStatus`.
 #' @param targetStatus &#91;required&#93; The status you want to change the package version status to.

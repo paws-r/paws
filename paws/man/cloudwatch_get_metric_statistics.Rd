@@ -15,7 +15,7 @@ cloudwatch_get_metric_statistics(Namespace, MetricName, Dimensions,
 \item{Dimensions}{The dimensions. If the metric contains multiple dimensions, you must
 include a value for each dimension. CloudWatch treats each unique
 combination of dimensions as a separate metric. If a specific
-combination of dimensions was not published, you can\'t retrieve
+combination of dimensions was not published, you can't retrieve
 statistics for it. You must specify the same dimensions that were used
 when the metrics were created. For an example, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations}{Dimension Combinations}
 in the \emph{Amazon CloudWatch User Guide}. For more information about

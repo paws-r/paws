@@ -9,7 +9,7 @@ route53_list_hosted_zones_by_name(DNSName, HostedZoneId, MaxItems)
 \arguments{
 \item{DNSName}{(Optional) For your first request to \code{ListHostedZonesByName}, include
 the \code{dnsname} parameter only if you want to specify the name of the
-first hosted zone in the response. If you don\'t include the \code{dnsname}
+first hosted zone in the response. If you don't include the \code{dnsname}
 parameter, Amazon Route 53 returns all of the hosted zones that were
 created by the current AWS account, in ASCII order. For subsequent
 requests, include both \code{dnsname} and \code{hostedzoneid} parameters. For
@@ -49,7 +49,7 @@ circumstances.
 If the domain name includes escape characters or Punycode,
 \code{ListHostedZonesByName} alphabetizes the domain name using the escaped
 or Punycoded value, which is the format that Amazon Route 53 saves in
-its database. For example, to create a hosted zone for exÃ¤mple.com, you
+its database. For example, to create a hosted zone for exämple.com, you
 specify ex\\344mple.com for the domain name. \code{ListHostedZonesByName}
 alphabetizes it as:
 

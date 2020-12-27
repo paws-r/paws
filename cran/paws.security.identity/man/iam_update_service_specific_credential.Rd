@@ -27,7 +27,7 @@ can consist of any upper or lowercased letter or digit.}
 Sets the status of a service-specific credential to \code{Active} or
 \code{Inactive}. Service-specific credentials that are inactive cannot be
 used for authentication to the service. This operation can be used to
-disable a user\'s service-specific credential as part of a credential
+disable a user's service-specific credential as part of a credential
 rotation work flow.
 }
 \section{Request syntax}{

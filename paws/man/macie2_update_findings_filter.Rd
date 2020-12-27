@@ -10,16 +10,16 @@ macie2_update_findings_filter(action, description, findingCriteria, id,
 \arguments{
 \item{action}{The action to perform on findings that meet the filter criteria
 (findingCriteria). Valid values are: ARCHIVE, suppress (automatically
-archive) the findings; and, NOOP, don\'t perform any action on the
+archive) the findings; and, NOOP, don't perform any action on the
 findings.}
 
 \item{description}{A custom description of the filter. The description can contain as many
 as 512 characters.
 
 We strongly recommend that you avoid including any sensitive data in the
-description of a filter. Other users might be able to see the filter\'s
-description, depending on the actions that they\'re allowed to perform
-in Amazon Macie.}
+description of a filter. Other users might be able to see the filter's
+description, depending on the actions that they're allowed to perform in
+Amazon Macie.}
 
 \item{findingCriteria}{The criteria to use to filter findings.}
 
@@ -30,8 +30,8 @@ request applies to.}
 characters and can contain as many as 64 characters.
 
 We strongly recommend that you avoid including any sensitive data in the
-name of a filter. Other users might be able to see the filter\'s name,
-depending on the actions that they\'re allowed to perform in Amazon
+name of a filter. Other users might be able to see the filter's name,
+depending on the actions that they're allowed to perform in Amazon
 Macie.}
 
 \item{position}{The position of the filter in the list of saved filters on the Amazon

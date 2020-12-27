@@ -10,9 +10,9 @@ kendra_update_data_source(Id, Name, IndexId, Configuration, Description,
 \arguments{
 \item{Id}{[required] The unique identifier of the data source to update.}
 
-\item{Name}{The name of the data source to update. The name of the data source
-can\'t be updated. To rename a data source you must delete the data
-source and re-create it.}
+\item{Name}{The name of the data source to update. The name of the data source can't
+be updated. To rename a data source you must delete the data source and
+re-create it.}
 
 \item{IndexId}{[required] The identifier of the index that contains the data source to update.}
 

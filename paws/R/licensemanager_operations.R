@@ -29,18 +29,18 @@ NULL
 #' @param LicenseRules License rules. The syntax is \\#name=value (for example,
 #' \\#allowedTenancy=EC2-DedicatedHost). Available rules vary by dimension.
 #' 
-#' -   `Cores` dimension: `allowedTenancy` \\| `maximumCores` \\|
+#' -   `Cores` dimension: `allowedTenancy` | `maximumCores` |
 #'     `minimumCores`
 #' 
-#' -   `Instances` dimension: `allowedTenancy` \\| `maximumCores` \\|
-#'     `minimumCores` \\| `maximumSockets` \\| `minimumSockets` \\|
-#'     `maximumVcpus` \\| `minimumVcpus`
+#' -   `Instances` dimension: `allowedTenancy` | `maximumCores` |
+#'     `minimumCores` | `maximumSockets` | `minimumSockets` |
+#'     `maximumVcpus` | `minimumVcpus`
 #' 
-#' -   `Sockets` dimension: `allowedTenancy` \\| `maximumSockets` \\|
+#' -   `Sockets` dimension: `allowedTenancy` | `maximumSockets` |
 #'     `minimumSockets`
 #' 
-#' -   `vCPUs` dimension: `allowedTenancy` \\| `honorVcpuOptimization` \\|
-#'     `maximumVcpus` \\| `minimumVcpus`
+#' -   `vCPUs` dimension: `allowedTenancy` | `honorVcpuOptimization` |
+#'     `maximumVcpus` | `minimumVcpus`
 #' @param Tags Tags to add to the license configuration.
 #' @param ProductInformationList Product information.
 #'
@@ -305,15 +305,15 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 #' operators are supported:
 #' 
 #' -   `licenseCountingType` - The dimension on which licenses are counted
-#'     (vCPU). Logical operators are `EQUALS` \\| `NOT_EQUALS`.
+#'     (vCPU). Logical operators are `EQUALS` | `NOT_EQUALS`.
 #' 
 #' -   `enforceLicenseCount` - A Boolean value that indicates whether hard
-#'     license enforcement is used. Logical operators are `EQUALS` \\|
+#'     license enforcement is used. Logical operators are `EQUALS` |
 #'     `NOT_EQUALS`.
 #' 
 #' -   `usagelimitExceeded` - A Boolean value that indicates whether the
 #'     available licenses have been exceeded. Logical operators are
-#'     `EQUALS` \\| `NOT_EQUALS`.
+#'     `EQUALS` | `NOT_EQUALS`.
 #'
 #' @section Request syntax:
 #' ```
@@ -409,21 +409,21 @@ licensemanager_list_license_specifications_for_resource <- function(ResourceArn,
 #' operators are supported:
 #' 
 #' -   `account_id` - The ID of the AWS account that owns the resource.
-#'     Logical operators are `EQUALS` \\| `NOT_EQUALS`.
+#'     Logical operators are `EQUALS` | `NOT_EQUALS`.
 #' 
 #' -   `application_name` - The name of the application. Logical operators
-#'     are `EQUALS` \\| `BEGINS_WITH`.
+#'     are `EQUALS` | `BEGINS_WITH`.
 #' 
 #' -   `license_included` - The type of license included. Logical operators
-#'     are `EQUALS` \\| `NOT_EQUALS`. Possible values are
-#'     `sql-server-enterprise` \\| `sql-server-standard` \\| `sql-server-web`
-#'     \\| `windows-server-datacenter`.
+#'     are `EQUALS` | `NOT_EQUALS`. Possible values are
+#'     `sql-server-enterprise` | `sql-server-standard` | `sql-server-web` |
+#'     `windows-server-datacenter`.
 #' 
 #' -   `platform` - The platform of the resource. Logical operators are
-#'     `EQUALS` \\| `BEGINS_WITH`.
+#'     `EQUALS` | `BEGINS_WITH`.
 #' 
 #' -   `resource_id` - The ID of the resource. Logical operators are
-#'     `EQUALS` \\| `NOT_EQUALS`.
+#'     `EQUALS` | `NOT_EQUALS`.
 #'
 #' @section Request syntax:
 #' ```
@@ -515,14 +515,14 @@ licensemanager_list_tags_for_resource <- function(ResourceArn) {
 #' operators are supported:
 #' 
 #' -   `resourceArn` - The ARN of the license configuration resource.
-#'     Logical operators are `EQUALS` \\| `NOT_EQUALS`.
+#'     Logical operators are `EQUALS` | `NOT_EQUALS`.
 #' 
-#' -   `resourceType` - The resource type (EC2\\_INSTANCE \\| EC2\\_HOST \\|
-#'     EC2\\_AMI \\| SYSTEMS\\_MANAGER\\_MANAGED\\_INSTANCE). Logical operators
-#'     are `EQUALS` \\| `NOT_EQUALS`.
+#' -   `resourceType` - The resource type (EC2\\_INSTANCE | EC2\\_HOST |
+#'     EC2\\_AMI | SYSTEMS\\_MANAGER\\_MANAGED\\_INSTANCE). Logical operators
+#'     are `EQUALS` | `NOT_EQUALS`.
 #' 
 #' -   `resourceAccount` - The ID of the account that owns the resource.
-#'     Logical operators are `EQUALS` \\| `NOT_EQUALS`.
+#'     Logical operators are `EQUALS` | `NOT_EQUALS`.
 #'
 #' @section Request syntax:
 #' ```

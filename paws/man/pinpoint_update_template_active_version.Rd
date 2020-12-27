@@ -2,8 +2,7 @@
 % Please edit documentation in R/pinpoint_operations.R
 \name{pinpoint_update_template_active_version}
 \alias{pinpoint_update_template_active_version}
-\title{Changes the status of a specific version of a message template to
-\emph{active}}
+\title{Changes the status of a specific version of a message template to active}
 \usage{
 pinpoint_update_template_active_version(TemplateActiveVersionRequest,
   TemplateName, TemplateType)

@@ -78,7 +78,7 @@ object.}
 \item{ServerSideEncryption}{The server-side encryption algorithm used when storing this object in
 Amazon S3 (for example, AES256, aws:kms).}
 
-\item{StorageClass}{If you don\'t specify, S3 Standard is the default storage class. Amazon
+\item{StorageClass}{If you don't specify, S3 Standard is the default storage class. Amazon
 S3 supports other storage classes.}
 
 \item{WebsiteRedirectLocation}{If the bucket is configured as a website, redirects requests for this
@@ -106,7 +106,7 @@ example, AES256).}
 encrypting data. This value is used to store the object and then it is
 discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-\verb{x-amz-server-sideâ€‹-encryptionâ€‹-customer-algorithm} header.}
+\code{x-amz-server-side​-encryption​-customer-algorithm} header.}
 
 \item{SSECustomerKeyMD5}{Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to ensure
@@ -131,11 +131,11 @@ with the encryption context key-value pairs.}
 \item{RequestPayer}{}
 
 \item{Tagging}{The tag-set for the object. The tag-set must be encoded as URL Query
-parameters. (For example, \"Key1=Value1\")}
+parameters. (For example, "Key1=Value1")}
 
 \item{ObjectLockMode}{The Object Lock mode that you want to apply to this object.}
 
-\item{ObjectLockRetainUntilDate}{The date and time when you want this object\'s Object Lock to expire.}
+\item{ObjectLockRetainUntilDate}{The date and time when you want this object's Object Lock to expire.}
 
 \item{ObjectLockLegalHoldStatus}{Specifies whether a legal hold will be applied to this object. For more
 information about S3 Object Lock, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html}{Object Lock}.}

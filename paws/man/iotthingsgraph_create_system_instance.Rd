@@ -22,7 +22,7 @@ deployed. This value is required if the value of the \code{target} parameter
 is \code{GREENGRASS}.}
 
 \item{s3BucketName}{The name of the Amazon Simple Storage Service bucket that will be used
-to store and deploy the system instance\'s resource file. This value is
+to store and deploy the system instance's resource file. This value is
 required if the value of the \code{target} parameter is \code{GREENGRASS}.}
 
 \item{metricsConfiguration}{}
@@ -45,16 +45,16 @@ parameter. It also adds a file to the S3 bucket specified by the
 running this action.
 
 For Greengrass deployments, since this action modifies and adds
-resources to a Greengrass group and an S3 bucket on the caller\'s
-behalf, the calling identity must have write permissions to both the
-specified Greengrass group and S3 bucket. Otherwise, the call will fail
-with an authorization error.
+resources to a Greengrass group and an S3 bucket on the caller's behalf,
+the calling identity must have write permissions to both the specified
+Greengrass group and S3 bucket. Otherwise, the call will fail with an
+authorization error.
 
 For cloud deployments, this action requires a \code{flowActionsRoleArn}
 value. This is an IAM role that has permissions to access AWS services,
 such as AWS Lambda and AWS IoT, that the flow uses when it executes.
 
-If the definition document doesn\'t specify a version of the user\'s
+If the definition document doesn't specify a version of the user's
 namespace, the latest version will be used by default.
 }
 \section{Request syntax}{

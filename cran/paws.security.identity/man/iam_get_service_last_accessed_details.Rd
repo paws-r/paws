@@ -59,13 +59,11 @@ to access the service and the date and time of the last attempt. It also
 returns the ARN of the following entity, depending on the resource ARN
 that you used to generate the report:
 \itemize{
-\item \strong{User} -- Returns the user ARN that you used to generate the
-report
-\item \strong{Group} -- Returns the ARN of the group member (user) that last
+\item \strong{User} – Returns the user ARN that you used to generate the report
+\item \strong{Group} – Returns the ARN of the group member (user) that last
 attempted to access the service
-\item \strong{Role} -- Returns the role ARN that you used to generate the
-report
-\item \strong{Policy} -- Returns the ARN of the user or role that last used the
+\item \strong{Role} – Returns the role ARN that you used to generate the report
+\item \strong{Policy} – Returns the ARN of the user or role that last used the
 policy to attempt to access the service
 }
 

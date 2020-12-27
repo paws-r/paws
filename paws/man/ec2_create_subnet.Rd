@@ -48,23 +48,23 @@ Creates a subnet in a specified VPC.
 }
 \details{
 You must specify an IPv4 CIDR block for the subnet. After you create a
-subnet, you can\'t change its CIDR block. The allowed block size is
+subnet, you can't change its CIDR block. The allowed block size is
 between a /16 netmask (65,536 IP addresses) and /28 netmask (16 IP
 addresses). The CIDR block must not overlap with the CIDR block of an
 existing subnet in the VPC.
 
-If you\'ve associated an IPv6 CIDR block with your VPC, you can create a
+If you've associated an IPv6 CIDR block with your VPC, you can create a
 subnet with an IPv6 CIDR block that uses a /64 prefix length.
 
 AWS reserves both the first four and the last IPv4 address in each
-subnet\'s CIDR block. They\'re not available for use.
+subnet's CIDR block. They're not available for use.
 
-If you add more than one subnet to a VPC, they\'re set up in a star
+If you add more than one subnet to a VPC, they're set up in a star
 topology with a logical router in the middle.
 
 When you stop an instance in a subnet, it retains its private IPv4
-address. It\'s therefore possible to have a subnet with no running
-instances (they\'re all stopped), but no remaining IP addresses
+address. It's therefore possible to have a subnet with no running
+instances (they're all stopped), but no remaining IP addresses
 available.
 
 For more information about subnets, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{Your VPC and Subnets}

@@ -5,7 +5,7 @@ NULL
 
 #' Associates a device with a concrete thing that is in the user's registry
 #'
-#' Associates a device with a concrete thing that is in the user\'s
+#' Associates a device with a concrete thing that is in the user's
 #' registry.
 #' 
 #' A thing can be associated with only one device at a time. If you
@@ -22,8 +22,8 @@ NULL
 #' The ID should be in the following format.
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:device:DEVICENAME`
-#' @param namespaceVersion The version of the user\'s namespace. Defaults to the latest version of
-#' the user\'s namespace.
+#' @param namespaceVersion The version of the user's namespace. Defaults to the latest version of
+#' the user's namespace.
 #'
 #' @section Request syntax:
 #' ```
@@ -56,12 +56,11 @@ iotthingsgraph_associate_entity_to_thing <- function(thingName, entityId, namesp
 
 #' Creates a workflow template
 #'
-#' Creates a workflow template. Workflows can be created only in the
-#' user\'s namespace. (The public namespace contains only entities.) The
-#' workflow can contain only entities in the specified namespace. The
-#' workflow is validated against the entities in the latest version of the
-#' user\'s namespace unless another namespace version is specified in the
-#' request.
+#' Creates a workflow template. Workflows can be created only in the user's
+#' namespace. (The public namespace contains only entities.) The workflow
+#' can contain only entities in the specified namespace. The workflow is
+#' validated against the entities in the latest version of the user's
+#' namespace unless another namespace version is specified in the request.
 #'
 #' @usage
 #' iotthingsgraph_create_flow_template(definition,
@@ -115,16 +114,16 @@ iotthingsgraph_create_flow_template <- function(definition, compatibleNamespaceV
 #' running this action.
 #' 
 #' For Greengrass deployments, since this action modifies and adds
-#' resources to a Greengrass group and an S3 bucket on the caller\'s
-#' behalf, the calling identity must have write permissions to both the
-#' specified Greengrass group and S3 bucket. Otherwise, the call will fail
-#' with an authorization error.
+#' resources to a Greengrass group and an S3 bucket on the caller's behalf,
+#' the calling identity must have write permissions to both the specified
+#' Greengrass group and S3 bucket. Otherwise, the call will fail with an
+#' authorization error.
 #' 
 #' For cloud deployments, this action requires a `flowActionsRoleArn`
 #' value. This is an IAM role that has permissions to access AWS services,
 #' such as AWS Lambda and AWS IoT, that the flow uses when it executes.
 #' 
-#' If the definition document doesn\'t specify a version of the user\'s
+#' If the definition document doesn't specify a version of the user's
 #' namespace, the latest version will be used by default.
 #'
 #' @usage
@@ -141,7 +140,7 @@ iotthingsgraph_create_flow_template <- function(definition, compatibleNamespaceV
 #' deployed. This value is required if the value of the `target` parameter
 #' is `GREENGRASS`.
 #' @param s3BucketName The name of the Amazon Simple Storage Service bucket that will be used
-#' to store and deploy the system instance\'s resource file. This value is
+#' to store and deploy the system instance's resource file. This value is
 #' required if the value of the `target` parameter is `GREENGRASS`.
 #' @param metricsConfiguration 
 #' @param flowActionsRoleArn The ARN of the IAM role that AWS IoT Things Graph will assume when it
@@ -197,7 +196,7 @@ iotthingsgraph_create_system_instance <- function(tags = NULL, definition, targe
 #' Creates a system
 #'
 #' Creates a system. The system is validated against the entities in the
-#' latest version of the user\'s namespace unless another namespace version
+#' latest version of the user's namespace unless another namespace version
 #' is specified in the request.
 #'
 #' @usage
@@ -359,7 +358,7 @@ iotthingsgraph_delete_system_instance <- function(id = NULL) {
 
 #' Deletes a system
 #'
-#' Deletes a system. New deployments can\'t contain the system after its
+#' Deletes a system. New deployments can't contain the system after its
 #' deletion. Existing deployments that contain the system will continue to
 #' work because they use a snapshot of the system that is taken when it is
 #' deployed.
@@ -400,7 +399,7 @@ iotthingsgraph_delete_system_template <- function(id) {
 }
 .iotthingsgraph$operations$delete_system_template <- iotthingsgraph_delete_system_template
 
-#' GREENGRASS AND CLOUD DEPLOYMENTS Deploys the system instance to the
+#' Greengrass and Cloud Deployments Deploys the system instance to the
 #' target specified in CreateSystemInstance
 #'
 #' **Greengrass and Cloud Deployments**
@@ -414,7 +413,7 @@ iotthingsgraph_delete_system_template <- function(id) {
 #' this action is called, then the deployment will create a new Amazon
 #' Simple Storage Service resource file and then deploy it.
 #' 
-#' Since this action creates a Greengrass deployment on the caller\'s
+#' Since this action creates a Greengrass deployment on the caller's
 #' behalf, the calling identity must have write permissions to the
 #' specified Greengrass group. Otherwise, the call will fail with an
 #' authorization error.
@@ -463,7 +462,7 @@ iotthingsgraph_deploy_system_instance <- function(id = NULL) {
 #' Deprecates the specified workflow
 #'
 #' Deprecates the specified workflow. This action marks the workflow for
-#' deletion. Deprecated flows can\'t be deployed, but existing deployments
+#' deletion. Deprecated flows can't be deployed, but existing deployments
 #' will continue to run.
 #'
 #' @usage
@@ -545,13 +544,13 @@ iotthingsgraph_deprecate_system_template <- function(id) {
 #' Gets the latest version of the user's namespace and the public version
 #' that it is tracking
 #'
-#' Gets the latest version of the user\'s namespace and the public version
+#' Gets the latest version of the user's namespace and the public version
 #' that it is tracking.
 #'
 #' @usage
 #' iotthingsgraph_describe_namespace(namespaceName)
 #'
-#' @param namespaceName The name of the user\'s namespace. Set this to `aws` to get the public
+#' @param namespaceName The name of the user's namespace. Set this to `aws` to get the public
 #' namespace.
 #'
 #' @section Request syntax:
@@ -624,7 +623,7 @@ iotthingsgraph_dissociate_entity_from_thing <- function(thingName, entityType) {
 #' Gets definitions of the specified entities
 #'
 #' Gets definitions of the specified entities. Uses the latest version of
-#' the user\'s namespace by default. This API returns the following TDM
+#' the user's namespace by default. This API returns the following TDM
 #' entities.
 #' 
 #' -   Properties
@@ -645,7 +644,7 @@ iotthingsgraph_dissociate_entity_from_thing <- function(thingName, entityType) {
 #' 
 #' -   Services
 #' 
-#' This action doesn\'t return definitions for systems, flows, and
+#' This action doesn't return definitions for systems, flows, and
 #' deployments.
 #'
 #' @usage
@@ -656,8 +655,8 @@ iotthingsgraph_dissociate_entity_from_thing <- function(thingName, entityType) {
 #' The IDs should be in the following format.
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:device:DEVICENAME`
-#' @param namespaceVersion The version of the user\'s namespace. Defaults to the latest version of
-#' the user\'s namespace.
+#' @param namespaceVersion The version of the user's namespace. Defaults to the latest version of
+#' the user's namespace.
 #'
 #' @section Request syntax:
 #' ```
@@ -737,7 +736,7 @@ iotthingsgraph_get_flow_template <- function(id, revisionNumber = NULL) {
 #'
 #' Gets revisions of the specified workflow. Only the last 100 revisions
 #' are stored. If the workflow has been deprecated, this action will return
-#' revisions that occurred before the deprecation. This action won\'t work
+#' revisions that occurred before the deprecation. This action won't work
 #' for workflows that have been deleted.
 #'
 #' @usage
@@ -748,8 +747,8 @@ iotthingsgraph_get_flow_template <- function(id, revisionNumber = NULL) {
 #' The ID should be in the following format.
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME`
-#' @param nextToken The string that specifies the next page of results. Use this when
-#' you\'re paginating results.
+#' @param nextToken The string that specifies the next page of results. Use this when you're
+#' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
 #'
 #' @section Request syntax:
@@ -861,7 +860,7 @@ iotthingsgraph_get_system_instance <- function(id) {
 #' @usage
 #' iotthingsgraph_get_system_template(id, revisionNumber)
 #'
-#' @param id &#91;required&#93; The ID of the system to get. This ID must be in the user\'s namespace.
+#' @param id &#91;required&#93; The ID of the system to get. This ID must be in the user's namespace.
 #' 
 #' The ID should be in the following format.
 #' 
@@ -901,7 +900,7 @@ iotthingsgraph_get_system_template <- function(id, revisionNumber = NULL) {
 #' Gets revisions made to the specified system template. Only the previous
 #' 100 revisions are stored. If the system has been deprecated, this action
 #' will return the revisions that occurred before its deprecation. This
-#' action won\'t work with systems that have been deleted.
+#' action won't work with systems that have been deleted.
 #'
 #' @usage
 #' iotthingsgraph_get_system_template_revisions(id, nextToken, maxResults)
@@ -911,8 +910,8 @@ iotthingsgraph_get_system_template <- function(id, revisionNumber = NULL) {
 #' The ID should be in the following format.
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME`
-#' @param nextToken The string that specifies the next page of results. Use this when
-#' you\'re paginating results.
+#' @param nextToken The string that specifies the next page of results. Use this when you're
+#' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
 #'
 #' @section Request syntax:
@@ -992,8 +991,8 @@ iotthingsgraph_get_upload_status <- function(uploadId) {
 #'   maxResults)
 #'
 #' @param flowExecutionId &#91;required&#93; The ID of the flow execution.
-#' @param nextToken The string that specifies the next page of results. Use this when
-#' you\'re paginating results.
+#' @param nextToken The string that specifies the next page of results. Use this when you're
+#' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
 #'
 #' @section Request syntax:
@@ -1070,7 +1069,7 @@ iotthingsgraph_list_tags_for_resource <- function(maxResults = NULL, resourceArn
 #' Searches for entities of the specified type
 #'
 #' Searches for entities of the specified type. You can search for entities
-#' in your namespace and the public namespace that you\'re tracking.
+#' in your namespace and the public namespace that you're tracking.
 #'
 #' @usage
 #' iotthingsgraph_search_entities(entityTypes, filters, nextToken,
@@ -1085,11 +1084,11 @@ iotthingsgraph_list_tags_for_resource <- function(maxResults = NULL, resourceArn
 #' 
 #' Multiple filters function as OR criteria in the query. Multiple values
 #' passed inside the filter function as AND criteria.
-#' @param nextToken The string that specifies the next page of results. Use this when
-#' you\'re paginating results.
+#' @param nextToken The string that specifies the next page of results. Use this when you're
+#' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
-#' @param namespaceVersion The version of the user\'s namespace. Defaults to the latest version of
-#' the user\'s namespace.
+#' @param namespaceVersion The version of the user's namespace. Defaults to the latest version of
+#' the user's namespace.
 #'
 #' @section Request syntax:
 #' ```
@@ -1143,8 +1142,8 @@ iotthingsgraph_search_entities <- function(entityTypes, filters = NULL, nextToke
 #' @param flowExecutionId The ID of a flow execution.
 #' @param startTime The date and time of the earliest flow execution to return.
 #' @param endTime The date and time of the latest flow execution to return.
-#' @param nextToken The string that specifies the next page of results. Use this when
-#' you\'re paginating results.
+#' @param nextToken The string that specifies the next page of results. Use this when you're
+#' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
 #'
 #' @section Request syntax:
@@ -1192,8 +1191,8 @@ iotthingsgraph_search_flow_executions <- function(systemInstanceId, flowExecutio
 #'
 #' @param filters An array of objects that limit the result set. The only valid filter is
 #' `DEVICE_MODEL_ID`.
-#' @param nextToken The string that specifies the next page of results. Use this when
-#' you\'re paginating results.
+#' @param nextToken The string that specifies the next page of results. Use this when you're
+#' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
 #'
 #' @section Request syntax:
@@ -1234,7 +1233,7 @@ iotthingsgraph_search_flow_templates <- function(filters = NULL, nextToken = NUL
 
 #' Searches for system instances in the user's account
 #'
-#' Searches for system instances in the user\'s account.
+#' Searches for system instances in the user's account.
 #'
 #' @usage
 #' iotthingsgraph_search_system_instances(filters, nextToken, maxResults)
@@ -1244,8 +1243,8 @@ iotthingsgraph_search_flow_templates <- function(filters = NULL, nextToken = NUL
 #' 
 #' Multiple filters function as OR criteria in the query. Multiple values
 #' passed inside the filter function as AND criteria.
-#' @param nextToken The string that specifies the next page of results. Use this when
-#' you\'re paginating results.
+#' @param nextToken The string that specifies the next page of results. Use this when you're
+#' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
 #'
 #' @section Request syntax:
@@ -1286,7 +1285,7 @@ iotthingsgraph_search_system_instances <- function(filters = NULL, nextToken = N
 
 #' Searches for summary information about systems in the user's account
 #'
-#' Searches for summary information about systems in the user\'s account.
+#' Searches for summary information about systems in the user's account.
 #' You can filter by the ID of a workflow to return only systems that use
 #' the specified workflow.
 #'
@@ -1295,8 +1294,8 @@ iotthingsgraph_search_system_instances <- function(filters = NULL, nextToken = N
 #'
 #' @param filters An array of filters that limit the result set. The only valid filter is
 #' `FLOW_TEMPLATE_ID`.
-#' @param nextToken The string that specifies the next page of results. Use this when
-#' you\'re paginating results.
+#' @param nextToken The string that specifies the next page of results. Use this when you're
+#' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
 #'
 #' @section Request syntax:
@@ -1345,7 +1344,7 @@ iotthingsgraph_search_system_templates <- function(filters = NULL, nextToken = N
 #' thing2 to camera2. `SearchThings(camera2)` will return only thing2, but
 #' `SearchThings(camera)` will return both thing1 and thing2.
 #' 
-#' This action searches for exact matches and doesn\'t perform partial text
+#' This action searches for exact matches and doesn't perform partial text
 #' matching.
 #'
 #' @usage
@@ -1357,11 +1356,11 @@ iotthingsgraph_search_system_templates <- function(filters = NULL, nextToken = N
 #' The IDs should be in the following format.
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:device:DEVICENAME`
-#' @param nextToken The string that specifies the next page of results. Use this when
-#' you\'re paginating results.
+#' @param nextToken The string that specifies the next page of results. Use this when you're
+#' paginating results.
 #' @param maxResults The maximum number of results to return in the response.
-#' @param namespaceVersion The version of the user\'s namespace. Defaults to the latest version of
-#' the user\'s namespace.
+#' @param namespaceVersion The version of the user's namespace. Defaults to the latest version of
+#' the user's namespace.
 #'
 #' @section Request syntax:
 #' ```
@@ -1401,7 +1400,7 @@ iotthingsgraph_search_things <- function(entityId, nextToken = NULL, maxResults 
 #' iotthingsgraph_tag_resource(resourceArn, tags)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags are returned.
-#' @param tags &#91;required&#93; A list of tags to add to the resource.\\>
+#' @param tags &#91;required&#93; A list of tags to add to the resource.&gt;
 #'
 #' @section Request syntax:
 #' ```
@@ -1481,7 +1480,7 @@ iotthingsgraph_undeploy_system_instance <- function(id = NULL) {
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags are to be
 #' removed.
-#' @param tagKeys &#91;required&#93; A list of tag key names to remove from the resource. You don\'t specify
+#' @param tagKeys &#91;required&#93; A list of tag key names to remove from the resource. You don't specify
 #' the value. Both the key and its associated value are removed.
 #' 
 #' This parameter to the API requires a JSON text string argument. For
@@ -1524,7 +1523,7 @@ iotthingsgraph_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' Updates the specified workflow. All deployed systems and system
 #' instances that use the workflow will see the changes in the flow when it
-#' is redeployed. If you don\'t want this behavior, copy the workflow
+#' is redeployed. If you don't want this behavior, copy the workflow
 #' (creating a new workflow with a different ID), and update the copy. The
 #' workflow can contain only entities in the specified namespace.
 #'
@@ -1538,7 +1537,7 @@ iotthingsgraph_untag_resource <- function(resourceArn, tagKeys) {
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:workflow:WORKFLOWNAME`
 #' @param definition &#91;required&#93; The `DefinitionDocument` that contains the updated workflow definition.
-#' @param compatibleNamespaceVersion The version of the user\'s namespace.
+#' @param compatibleNamespaceVersion The version of the user's namespace.
 #' 
 #' If no value is specified, the latest version is used by default. Use the
 #' `GetFlowTemplateRevisions` if you want to find earlier revisions of the
@@ -1578,7 +1577,7 @@ iotthingsgraph_update_flow_template <- function(id, definition, compatibleNamesp
 
 #' Updates the specified system
 #'
-#' Updates the specified system. You don\'t need to run this action after
+#' Updates the specified system. You don't need to run this action after
 #' updating a workflow. Any deployment that uses the system will see the
 #' changes in the system when it is redeployed.
 #'
@@ -1592,8 +1591,8 @@ iotthingsgraph_update_flow_template <- function(id, definition, compatibleNamesp
 #' 
 #' `urn:tdm:REGION/ACCOUNT ID/default:system:SYSTEMNAME`
 #' @param definition &#91;required&#93; The `DefinitionDocument` that contains the updated system definition.
-#' @param compatibleNamespaceVersion The version of the user\'s namespace. Defaults to the latest version of
-#' the user\'s namespace.
+#' @param compatibleNamespaceVersion The version of the user's namespace. Defaults to the latest version of
+#' the user's namespace.
 #' 
 #' If no value is specified, the latest version is used by default.
 #'
@@ -1632,10 +1631,10 @@ iotthingsgraph_update_system_template <- function(id, definition, compatibleName
 #' Asynchronously uploads one or more entity definitions to the user's
 #' namespace
 #'
-#' Asynchronously uploads one or more entity definitions to the user\'s
+#' Asynchronously uploads one or more entity definitions to the user's
 #' namespace. The `document` parameter is required if
 #' `syncWithPublicNamespace` and `deleteExistingEntites` are false. If the
-#' `syncWithPublicNamespace` parameter is set to `true`, the user\'s
+#' `syncWithPublicNamespace` parameter is set to `true`, the user's
 #' namespace will synchronize with the latest version of the public
 #' namespace. If `deprecateExistingEntities` is set to true, all entities
 #' in the latest version will be deleted before the new
@@ -1650,7 +1649,7 @@ iotthingsgraph_update_system_template <- function(id, definition, compatibleName
 #' parameter to `true`.
 #' 
 #' The IDs for all of the entities should be in URN format. Each entity
-#' must be in the user\'s namespace. Users can\'t create entities in the
+#' must be in the user's namespace. Users can't create entities in the
 #' public namespace, but entity definitions can refer to entities in the
 #' public namespace.
 #' 

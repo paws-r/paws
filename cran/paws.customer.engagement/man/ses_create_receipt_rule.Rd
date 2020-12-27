@@ -13,7 +13,7 @@ ses_create_receipt_rule(RuleSetName, After, Rule)
 this parameter is null, the new rule will be inserted at the beginning
 of the rule list.}
 
-\item{Rule}{[required] A data structure that contains the specified rule\'s name, actions,
+\item{Rule}{[required] A data structure that contains the specified rule's name, actions,
 recipients, domains, enabled status, scan status, and TLS policy.}
 }
 \description{

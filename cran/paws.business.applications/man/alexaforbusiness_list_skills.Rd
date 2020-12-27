@@ -10,7 +10,7 @@ alexaforbusiness_list_skills(SkillGroupArn, EnablementType, SkillType,
 \arguments{
 \item{SkillGroupArn}{The ARN of the skill group for which to list enabled skills.}
 
-\item{EnablementType}{Whether the skill is enabled under the user\'s account.}
+\item{EnablementType}{Whether the skill is enabled under the user's account.}
 
 \item{SkillType}{Whether the skill is publicly available or is a private skill.}
 

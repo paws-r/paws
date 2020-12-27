@@ -300,13 +300,13 @@ worklink_describe_company_network_configuration <- function(FleetArn) {
 
 #' Provides information about a user's device
 #'
-#' Provides information about a user\'s device.
+#' Provides information about a user's device.
 #'
 #' @usage
 #' worklink_describe_device(FleetArn, DeviceId)
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
-#' @param DeviceId &#91;required&#93; A unique identifier for a registered user\'s device.
+#' @param DeviceId &#91;required&#93; A unique identifier for a registered user's device.
 #'
 #' @section Request syntax:
 #' ```
@@ -564,7 +564,7 @@ worklink_disassociate_domain <- function(FleetArn, DomainName) {
 #' Disassociates a website authorization provider from a specified fleet
 #'
 #' Disassociates a website authorization provider from a specified fleet.
-#' After the disassociation, users can\'t load any associated websites that
+#' After the disassociation, users can't load any associated websites that
 #' require this authorization provider.
 #'
 #' @usage
@@ -1305,7 +1305,7 @@ worklink_update_fleet_metadata <- function(FleetArn, DisplayName = NULL, Optimiz
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param IdentityProviderType &#91;required&#93; The type of identity provider.
-#' @param IdentityProviderSamlMetadata The SAML metadata document provided by the customer's identity provider.
+#' @param IdentityProviderSamlMetadata The SAML metadata document provided by the customer’s identity provider.
 #' The existing IdentityProviderSamlMetadata is unset if null is passed.
 #'
 #' @section Request syntax:

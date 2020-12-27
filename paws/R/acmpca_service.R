@@ -12,8 +12,8 @@ NULL
 #' 
 #' The documentation for each action shows the Query API request parameters
 #' and the XML response. Alternatively, you can use one of the AWS SDKs to
-#' access an API that\'s tailored to the programming language or platform
-#' that you\'re using. For more information, see [AWS
+#' access an API that's tailored to the programming language or platform
+#' that you're using. For more information, see [AWS
 #' SDKs](https://aws.amazon.com/tools/#SDKs).
 #' 
 #' Each ACM Private CA API action has a throttling limit which determines

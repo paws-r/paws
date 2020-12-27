@@ -9,12 +9,12 @@ rds_describe_db_instance_automated_backups(DbiResourceId,
 }
 \arguments{
 \item{DbiResourceId}{The resource ID of the DB instance that is the source of the automated
-backup. This parameter isn\'t case-sensitive.}
+backup. This parameter isn't case-sensitive.}
 
 \item{DBInstanceIdentifier}{(Optional) The user-supplied instance identifier. If this parameter is
 specified, it must match the identifier of an existing DB instance. It
-returns information from the specific DB instance\' automated backup.
-This parameter isn\'t case-sensitive.}
+returns information from the specific DB instance' automated backup.
+This parameter isn't case-sensitive.}
 
 \item{Filters}{A filter that specifies which resources to return based on status.
 

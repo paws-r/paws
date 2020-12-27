@@ -17,7 +17,7 @@ you want to set.}
 \item{PublicAccessBlockConfiguration}{[required] The \code{PublicAccessBlock} configuration that you want to apply to this
 Amazon S3 bucket. You can enable the configuration options in any
 combination. For more information about when Amazon S3 considers a
-bucket or object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of \"Public\"}
+bucket or object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of "Public"}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 }
 \description{
@@ -30,12 +30,12 @@ Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev
 When Amazon S3 evaluates the \code{PublicAccessBlock} configuration for a
 bucket or an object, it checks the \code{PublicAccessBlock} configuration for
 both the bucket (or the bucket that contains the object) and the bucket
-owner\'s account. If the \code{PublicAccessBlock} configurations are
-different between the bucket and the account, Amazon S3 uses the most
-restrictive combination of the bucket-level and account-level settings.
+owner's account. If the \code{PublicAccessBlock} configurations are different
+between the bucket and the account, Amazon S3 uses the most restrictive
+combination of the bucket-level and account-level settings.
 
 For more information about when Amazon S3 considers a bucket or an
-object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of \"Public\"}.
+object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of "Public"}.
 
 \strong{Related Resources}
 \itemize{

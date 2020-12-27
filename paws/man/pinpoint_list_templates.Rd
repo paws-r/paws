@@ -22,7 +22,7 @@ those templates whose names begin with the value that you specify.}
 
 \item{TemplateType}{The type of message template to include in the results. Valid values
 are: EMAIL, PUSH, SMS, and VOICE. To include all types of templates in
-the results, don\'t include this parameter in your request.}
+the results, don't include this parameter in your request.}
 }
 \description{
 Retrieves information about all the message templates that are

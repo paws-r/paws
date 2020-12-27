@@ -206,7 +206,7 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' @param NextToken The value of the next token, if it exists. Null if there are no more
 #' results.
 #' @param MaxResults Specifies the upper limit of the elements on a single page. If a value
-#' isn\'t provided, the default value is 20.
+#' isn't provided, the default value is 20.
 #'
 #' @section Request syntax:
 #' ```

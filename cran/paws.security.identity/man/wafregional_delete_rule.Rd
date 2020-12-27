@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_delete_rule}
 \alias{wafregional_delete_rule}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_delete_rule(RuleId, ChangeToken)
 }
@@ -23,9 +23,9 @@ in the developer guide.
 With the latest version, AWS WAF has a single set of endpoints for
 regional and global use.
 
-Permanently deletes a Rule. You can\'t delete a \code{Rule} if it\'s still
-used in any \code{WebACL} objects or if it still includes any predicates,
-such as \code{ByteMatchSet} objects.
+Permanently deletes a Rule. You can't delete a \code{Rule} if it's still used
+in any \code{WebACL} objects or if it still includes any predicates, such as
+\code{ByteMatchSet} objects.
 
 If you just want to remove a \code{Rule} from a \code{WebACL}, use UpdateWebACL.
 

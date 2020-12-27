@@ -13,20 +13,20 @@ specify either the Amazon Resource Name (ARN) or the friendly name of
 the secret.
 
 If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too---for example, if you
-don't include the final hyphen and six random characters that Secrets
+complete ARN. You can specify a partial ARN too—for example, if you
+don’t include the final hyphen and six random characters that Secrets
 Manager adds at the end of the ARN when you created the secret. A
 partial ARN match can work as long as it uniquely matches only one
 secret. However, if your secret has a name that ends in a hyphen
 followed by six characters (before Secrets Manager adds the hyphen and
 six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you're
+then those characters cause Secrets Manager to assume that you’re
 specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don't create secret names
+To avoid this situation, we recommend that you don’t create secret names
 ending with a hyphen followed by six characters.
 
 If you specify an incomplete ARN without the random suffix, and instead
-provide the \'friendly name\', you \emph{must} not include the random suffix.
+provide the 'friendly name', you \emph{must} not include the random suffix.
 If you do include the random suffix added by Secrets Manager, you
 receive either a \emph{ResourceNotFoundException} or an
 \emph{AccessDeniedException} error, depending on your permissions.}
@@ -39,11 +39,11 @@ information on how to format a JSON parameter for the various command
 line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For the AWS CLI, you can also use the
 syntax:
-\verb{--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\\[,â€¦\\\]}}
+\verb{--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\\[,…\\\]}}
 }
 \description{
 Attaches one or more tags, each consisting of a key name and a value, to
-the specified secret. Tags are part of the secret\'s overall metadata,
+the specified secret. Tags are part of the secret's overall metadata,
 and are not associated with any specific version of the secret. This
 operation only appends tags to the existing list of tags. To remove
 tags, you must use UntagResource.
@@ -51,12 +51,12 @@ tags, you must use UntagResource.
 \details{
 The following basic restrictions apply to tags:
 \itemize{
-\item Maximum number of tags per secret---50
-\item Maximum key length---127 Unicode characters in UTF-8
-\item Maximum value length---255 Unicode characters in UTF-8
+\item Maximum number of tags per secret—50
+\item Maximum key length—127 Unicode characters in UTF-8
+\item Maximum value length—255 Unicode characters in UTF-8
 \item Tag keys and values are case sensitive.
 \item Do not use the \verb{aws:} prefix in your tag names or values because AWS
-reserves it for AWS use. You can\'t edit or delete tag names or
+reserves it for AWS use. You can't edit or delete tag names or
 values with this prefix. Tags with this prefix do not count against
 your tags per secret limit.
 \item If you use your tagging schema across multiple services and

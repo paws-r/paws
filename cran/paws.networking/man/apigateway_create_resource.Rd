@@ -9,7 +9,7 @@ apigateway_create_resource(restApiId, parentId, pathPart)
 \arguments{
 \item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
 
-\item{parentId}{[required] [Required] The parent resource\'s identifier.}
+\item{parentId}{[required] [Required] The parent resource's identifier.}
 
 \item{pathPart}{[required] The last path segment for this resource.}
 }

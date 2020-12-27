@@ -12,8 +12,8 @@ sagemaker_update_trial_component(TrialComponentName, DisplayName,
 \arguments{
 \item{TrialComponentName}{[required] The name of the component to update.}
 
-\item{DisplayName}{The name of the component as displayed. The name doesn\'t need to be
-unique. If \code{DisplayName} isn\'t specified, \code{TrialComponentName} is
+\item{DisplayName}{The name of the component as displayed. The name doesn't need to be
+unique. If \code{DisplayName} isn't specified, \code{TrialComponentName} is
 displayed.}
 
 \item{Status}{The new status of the component.}
@@ -22,17 +22,17 @@ displayed.}
 
 \item{EndTime}{When the component ended.}
 
-\item{Parameters}{Replaces all of the component\'s hyperparameters with the specified
+\item{Parameters}{Replaces all of the component's hyperparameters with the specified
 hyperparameters.}
 
 \item{ParametersToRemove}{The hyperparameters to remove from the component.}
 
-\item{InputArtifacts}{Replaces all of the component\'s input artifacts with the specified
+\item{InputArtifacts}{Replaces all of the component's input artifacts with the specified
 artifacts.}
 
 \item{InputArtifactsToRemove}{The input artifacts to remove from the component.}
 
-\item{OutputArtifacts}{Replaces all of the component\'s output artifacts with the specified
+\item{OutputArtifacts}{Replaces all of the component's output artifacts with the specified
 artifacts.}
 
 \item{OutputArtifactsToRemove}{The output artifacts to remove from the component.}

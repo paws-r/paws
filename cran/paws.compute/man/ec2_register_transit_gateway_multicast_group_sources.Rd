@@ -14,7 +14,7 @@ ec2_register_transit_gateway_multicast_group_sources(
 
 \item{GroupIpAddress}{The IP address assigned to the transit gateway multicast group.}
 
-\item{NetworkInterfaceIds}{The group sources\' network interface IDs to register with the transit
+\item{NetworkInterfaceIds}{The group sources' network interface IDs to register with the transit
 gateway multicast group.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without

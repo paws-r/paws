@@ -66,8 +66,8 @@ Constraints:
 }}
 
 \item{MasterUserPassword}{[required] The password for the master database user. This password can contain any
-printable ASCII character except forward slash (/), double quote (\"),
-or the \"at\" symbol (@).
+printable ASCII character except forward slash (/), double quote ("), or
+the "at" symbol (@).
 
 Constraints: Must contain from 8 to 100 characters.}
 

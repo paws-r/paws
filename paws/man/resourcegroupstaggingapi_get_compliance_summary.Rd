@@ -25,7 +25,7 @@ specifying a resource type of \code{ec2} returns all Amazon EC2 resources
 \code{ec2:instance} returns only EC2 instances.
 
 The string for each service name and resource type is the same as that
-embedded in a resource\'s Amazon Resource Name (ARN). Consult the \emph{AWS
+embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{AWS
 General Reference} for the following:
 \itemize{
 \item For a list of service name strings, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{AWS Service Namespaces}.
@@ -59,7 +59,7 @@ with their tag policies.
 For more information on tag policies, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{Tag Policies}
 in the \emph{AWS Organizations User Guide.}
 
-You can call this operation only from the organization\'s master account
+You can call this operation only from the organization's master account
 and from the us-east-1 Region.
 }
 \section{Request syntax}{

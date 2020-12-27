@@ -21,10 +21,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified attribute of the specified instance. You can
 specify only one attribute at a time. Valid attribute values are:
-\code{instanceType} \\| \code{kernel} \\| \code{ramdisk} \\| \code{userData} \\|
-\code{disableApiTermination} \\| \code{instanceInitiatedShutdownBehavior} \\|
-\code{rootDeviceName} \\| \code{blockDeviceMapping} \\| \code{productCodes} \\|
-\code{sourceDestCheck} \\| \code{groupSet} \\| \code{ebsOptimized} \\| \code{sriovNetSupport}
+\code{instanceType} | \code{kernel} | \code{ramdisk} | \code{userData} |
+\code{disableApiTermination} | \code{instanceInitiatedShutdownBehavior} |
+\code{rootDeviceName} | \code{blockDeviceMapping} | \code{productCodes} |
+\code{sourceDestCheck} | \code{groupSet} | \code{ebsOptimized} | \code{sriovNetSupport}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_instance_attribute(

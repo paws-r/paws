@@ -8,7 +8,7 @@ NULL
 #' Amazon Lex provides both build and runtime endpoints. Each endpoint
 #' provides a set of operations (API). Your conversational bot uses the
 #' runtime API to understand user utterances (user input text or voice).
-#' For example, suppose a user says \"I want pizza\", your bot sends this
+#' For example, suppose a user says "I want pizza", your bot sends this
 #' input to Amazon Lex using the runtime API. Amazon Lex recognizes that
 #' the user request is for the OrderPizza intent (one of the intents
 #' defined in the bot). Then Amazon Lex engages in user conversation on

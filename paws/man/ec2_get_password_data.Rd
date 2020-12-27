@@ -36,7 +36,7 @@ The password is encrypted using the key pair that you specified when you
 launched the instance. You must provide the corresponding key pair file.
 
 When you launch an instance, password generation and encryption may take
-a few minutes. If you try to retrieve the password before it\'s
+a few minutes. If you try to retrieve the password before it's
 available, the output returns an empty string. We recommend that you
 wait up to 15 minutes after launching an instance before trying to
 retrieve the generated password.

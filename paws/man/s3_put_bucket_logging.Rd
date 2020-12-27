@@ -28,10 +28,10 @@ has to the logs.
 
 \strong{Grantee Values}
 
-You can specify the person (grantee) to whom you\'re assigning access
+You can specify the person (grantee) to whom you're assigning access
 rights (using request elements) in the following ways:
 \itemize{
-\item By the person\'s ID:
+\item By the person's ID:
 
 \verb{&lt;Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt; &lt;/Grantee&gt;}
 

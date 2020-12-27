@@ -402,7 +402,7 @@ codecommit_create_approval_rule_template <- function(approvalRuleTemplateName, a
 #'
 #' Creates a branch in a repository and points the branch to a commit.
 #' 
-#' Calling the create branch operation does not set a repository\'s default
+#' Calling the create branch operation does not set a repository's default
 #' branch. To do this, call the update default branch operation.
 #'
 #' @usage
@@ -965,7 +965,7 @@ codecommit_delete_comment_content <- function(commentId) {
 #' Commit messages are limited to 256 KB. If no message is specified, a
 #' default message is used.
 #' @param name The name of the author of the commit that deletes the file. If no name
-#' is specified, the user\'s ARN is used as the author name and committer
+#' is specified, the user's ARN is used as the author name and committer
 #' name.
 #' @param email The email address for the commit that deletes the file. If no email
 #' address is specified, the email address is left blank.
@@ -1783,7 +1783,7 @@ codecommit_get_file <- function(repositoryName, commitSpecifier = NULL, filePath
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository.
 #' @param commitSpecifier A fully qualified reference used to identify a commit that contains the
-#' version of the folder\'s content to return. A fully qualified reference
+#' version of the folder's content to return. A fully qualified reference
 #' can be a commit ID, branch name, tag, or reference such as HEAD. If no
 #' specifier is provided, the folder content is returned as it exists in
 #' the HEAD commit.
@@ -3808,7 +3808,7 @@ codecommit_update_pull_request_approval_rule_content <- function(pullRequestId, 
 
 #' Updates the state of a user's approval on a pull request
 #'
-#' Updates the state of a user\'s approval on a pull request. The user is
+#' Updates the state of a user's approval on a pull request. The user is
 #' derived from the signed-in account when the request is made.
 #'
 #' @usage

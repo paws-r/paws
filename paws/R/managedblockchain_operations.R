@@ -245,7 +245,7 @@ managedblockchain_create_node <- function(ClientRequestToken, NetworkId, MemberI
 #' example, a proposal with `Invitations` actions cannot also contain
 #' `Removals` actions.
 #' @param Description A description for the proposal that is visible to voting members, for
-#' example, \"Proposal to add Example Corp. as member.\"
+#' example, "Proposal to add Example Corp. as member."
 #'
 #' @section Request syntax:
 #' ```

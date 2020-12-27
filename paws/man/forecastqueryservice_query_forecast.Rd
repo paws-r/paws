@@ -12,11 +12,11 @@ forecastqueryservice_query_forecast(ForecastArn, StartDate, EndDate,
 \item{ForecastArn}{[required] The Amazon Resource Name (ARN) of the forecast to query.}
 
 \item{StartDate}{The start date for the forecast. Specify the date using this format:
-yyyy-MM-dd\'T\'HH:mm:ss (ISO 8601 format). For example,
+yyyy-MM-dd'T'HH:mm:ss (ISO 8601 format). For example,
 2015-01-01T08:00:00.}
 
 \item{EndDate}{The end date for the forecast. Specify the date using this format:
-yyyy-MM-dd\'T\'HH:mm:ss (ISO 8601 format). For example,
+yyyy-MM-dd'T'HH:mm:ss (ISO 8601 format). For example,
 2015-01-01T20:00:00.}
 
 \item{Filters}{[required] The filtering criteria to apply when retrieving the forecast. For

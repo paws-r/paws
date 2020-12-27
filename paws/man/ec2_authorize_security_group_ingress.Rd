@@ -9,9 +9,9 @@ ec2_authorize_security_group_ingress(CidrIp, FromPort, GroupId,
   SourceSecurityGroupOwnerId, ToPort, DryRun)
 }
 \arguments{
-\item{CidrIp}{The IPv4 address range, in CIDR format. You can\'t specify this
-parameter when specifying a source security group. To specify an IPv6
-address range, use a set of IP permissions.
+\item{CidrIp}{The IPv4 address range, in CIDR format. You can't specify this parameter
+when specifying a source security group. To specify an IPv6 address
+range, use a set of IP permissions.
 
 Alternatively, use a set of IP permissions to specify multiple rules and
 a description for the rule.}
@@ -44,7 +44,7 @@ Alternatively, use a set of IP permissions to specify multiple rules and
 a description for the rule.}
 
 \item{SourceSecurityGroupName}{[EC2-Classic, default VPC] The name of the source security group. You
-can\'t specify this parameter in combination with the following
+can't specify this parameter in combination with the following
 parameters: the CIDR IP address range, the start of the port range, the
 IP protocol, and the end of the port range. Creates rules that grant
 full ICMP, UDP, and TCP access. To create a rule with a specific IP
@@ -52,7 +52,7 @@ protocol and port range, use a set of IP permissions instead. For
 EC2-VPC, the source security group must be in the same VPC.}
 
 \item{SourceSecurityGroupOwnerId}{[nondefault VPC] The AWS account ID for the source security group, if
-the source security group is in a different account. You can\'t specify
+the source security group is in a different account. You can't specify
 this parameter in combination with the following parameters: the CIDR IP
 address range, the IP protocol, the start of the port range, and the end
 of the port range. Creates rules that grant full ICMP, UDP, and TCP

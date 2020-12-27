@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_get_regex_pattern_set}
 \alias{wafregional_get_regex_pattern_set}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_get_regex_pattern_set(RegexPatternSetId)
 }

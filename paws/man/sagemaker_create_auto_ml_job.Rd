@@ -22,7 +22,7 @@ CSV.}
 candidates. Options include: BinaryClassification,
 MulticlassClassification, and Regression.}
 
-\item{AutoMLJobObjective}{Defines the job\'s objective. You provide a MetricName and AutoML will
+\item{AutoMLJobObjective}{Defines the job's objective. You provide a MetricName and AutoML will
 infer minimize or maximize. If this is not provided, the most commonly
 used ObjectiveMetric for problem type will be selected.}
 

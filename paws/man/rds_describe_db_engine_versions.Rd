@@ -22,7 +22,7 @@ Constraints:
 \item If supplied, must match an existing DBParameterGroupFamily.
 }}
 
-\item{Filters}{This parameter isn\'t currently supported.}
+\item{Filters}{This parameter isn't currently supported.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more than
 the \code{MaxRecords} value is available, a pagination token called a marker
@@ -53,7 +53,7 @@ If this parameter is enabled and the requested engine supports the
 \code{TimeZone} parameter for \code{CreateDBInstance}, the response includes a
 list of supported time zones for each engine version.}
 
-\item{IncludeAll}{A value that indicates whether to include engine versions that aren\'t
+\item{IncludeAll}{A value that indicates whether to include engine versions that aren't
 available in the list. The default is to list only available engine
 versions.}
 }

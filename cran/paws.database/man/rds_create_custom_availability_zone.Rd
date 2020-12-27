@@ -16,12 +16,12 @@ RDS website and the VMware vSphere cluster.}
 \item{NewVpnTunnelName}{The name of a new VPN tunnel between the Amazon RDS website and the
 VMware vSphere cluster.
 
-Specify this parameter only if \code{ExistingVpnId} isn\'t specified.}
+Specify this parameter only if \code{ExistingVpnId} isn't specified.}
 
 \item{VpnTunnelOriginatorIP}{The IP address of network traffic from your on-premises data center. A
 custom AZ receives the network traffic.
 
-Specify this parameter only if \code{ExistingVpnId} isn\'t specified.}
+Specify this parameter only if \code{ExistingVpnId} isn't specified.}
 }
 \description{
 Creates a custom Availability Zone (AZ).

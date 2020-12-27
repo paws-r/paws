@@ -37,7 +37,7 @@ Beanstalk uses a sample application.}
 \item{BuildConfiguration}{Settings for an AWS CodeBuild build.}
 
 \item{AutoCreateApplication}{Set to \code{true} to create an application with the specified name if it
-doesn\'t already exist.}
+doesn't already exist.}
 
 \item{Process}{Pre-processes and validates the environment manifest (\code{env.yaml}) and
 configuration files (\verb{*.config} files in the \code{.ebextensions} folder) in
@@ -49,13 +49,13 @@ using AWS CodeBuild or AWS CodeCommit. For application versions built
 from a source bundle in Amazon S3, processing is optional.
 
 The \code{Process} option validates Elastic Beanstalk configuration files. It
-doesn\'t validate your application\'s configuration files, like proxy
+doesn't validate your application's configuration files, like proxy
 server or Docker configuration.}
 
 \item{Tags}{Specifies the tags applied to the application version.
 
 Elastic Beanstalk applies these tags only to the application version.
-Environments that use the application version don\'t inherit the tags.}
+Environments that use the application version don't inherit the tags.}
 }
 \description{
 Creates an application version for the specified application. You can
@@ -76,7 +76,7 @@ Omit both \code{SourceBuildInformation} and \code{SourceBundle} to use the defau
 sample application.
 
 After you create an application version with a specified Amazon S3
-bucket and key location, you can\'t change that Amazon S3 location. If
+bucket and key location, you can't change that Amazon S3 location. If
 you change the Amazon S3 location, you receive an exception when you
 attempt to launch an environment from the application version.
 }

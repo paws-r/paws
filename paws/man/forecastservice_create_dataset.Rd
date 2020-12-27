@@ -28,8 +28,8 @@ RELATED\\_TIME\\_SERIES datasets.
 
 Valid intervals are Y (Year), M (Month), W (Week), D (Day), H (Hour),
 30min (30 minutes), 15min (15 minutes), 10min (10 minutes), 5min (5
-minutes), and 1min (1 minute). For example, \"D\" indicates every day
-and \"15min\" indicates every 15 minutes.}
+minutes), and 1min (1 minute). For example, "D" indicates every day and
+"15min" indicates every 15 minutes.}
 
 \item{Schema}{[required] The schema for the dataset. The schema attributes and their order must
 match the fields in your data. The dataset \code{Domain} and \code{DatasetType}

@@ -17,7 +17,7 @@ in the \emph{AWS IoT SiteWise User Guide}.}
 }
 \description{
 Adds tags to an AWS IoT SiteWise resource. If a tag already exists for
-the resource, this operation updates the tag\'s value.
+the resource, this operation updates the tag's value.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

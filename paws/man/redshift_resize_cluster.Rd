@@ -13,16 +13,16 @@ redshift_resize_cluster(ClusterIdentifier, ClusterType, NodeType,
 \item{ClusterType}{The new cluster type for the specified cluster.}
 
 \item{NodeType}{The new node type for the nodes you are adding. If not specified, the
-cluster\'s current node type is used.}
+cluster's current node type is used.}
 
 \item{NumberOfNodes}{The new number of nodes for the cluster.}
 
 \item{Classic}{A boolean value indicating whether the resize operation is using the
-classic resize process. If you don\'t provide this parameter or set the
+classic resize process. If you don't provide this parameter or set the
 value to \code{false}, the resize type is elastic.}
 }
 \description{
-Changes the size of the cluster. You can change the cluster\'s type, or
+Changes the size of the cluster. You can change the cluster's type, or
 change the number or type of nodes. The default behavior is to use the
 elastic resize method. With an elastic resize, your cluster is available
 for read and write operations more quickly than with the classic resize

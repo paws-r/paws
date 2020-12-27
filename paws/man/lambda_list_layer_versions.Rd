@@ -18,8 +18,8 @@ lambda_list_layer_versions(CompatibleRuntime, LayerName, Marker,
 }
 \description{
 Lists the versions of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
-Versions that have been deleted aren\'t listed. Specify a \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier}
-to list only versions that indicate that they\'re compatible with that
+Versions that have been deleted aren't listed. Specify a \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier}
+to list only versions that indicate that they're compatible with that
 runtime.
 }
 \section{Request syntax}{

@@ -9,7 +9,7 @@ devicefarm_list_device_pools(arn, type, nextToken)
 \arguments{
 \item{arn}{[required] The project ARN.}
 
-\item{type}{The device pools\' type.
+\item{type}{The device pools' type.
 
 Allowed values include:
 \itemize{

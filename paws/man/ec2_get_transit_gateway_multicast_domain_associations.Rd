@@ -16,8 +16,7 @@ ec2_get_transit_gateway_multicast_domain_associations(
 \item \code{resource-id} - The ID of the resource.
 \item \code{resource-type} - The type of resource. The valid value is: \code{vpc}.
 \item \code{state} - The state of the subnet association. Valid values are
-\code{associated} \\| \code{associating} \\| \code{disassociated} \\|
-\code{disassociating}.
+\code{associated} | \code{associating} | \code{disassociated} | \code{disassociating}.
 \item \code{subnet-id} - The ID of the subnet.
 \item \code{transit-gateway-attachment-id} - The id of the transit gateway
 attachment.

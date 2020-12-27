@@ -13,6 +13,6 @@ Organizations. This does not remove the Service Linked Role (SLR) from
 the the master account in your organization. Use the IAM console, API,
 or AWS CLI to remove the SLR if desired. To call this operation, you
 must sign in as an IAM user, assume an IAM role, or sign in as the root
-user (not recommended) in the organization\'s master account.
+user (not recommended) in the organization's master account.
 }
 \keyword{internal}

@@ -10,7 +10,7 @@ applicationdiscoveryservice_stop_continuous_export(exportId)
 \item{exportId}{[required] The unique ID assigned to this export.}
 }
 \description{
-Stop the continuous flow of agent\'s discovered data into Amazon Athena.
+Stop the continuous flow of agent's discovered data into Amazon Athena.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_continuous_export(

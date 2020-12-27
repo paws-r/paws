@@ -14,9 +14,9 @@ apigateway_put_method(restApiId, resourceId, httpMethod,
 
 \item{resourceId}{[required] [Required] The Resource identifier for the new Method resource.}
 
-\item{httpMethod}{[required] [Required] Specifies the method request\'s HTTP method type.}
+\item{httpMethod}{[required] [Required] Specifies the method request's HTTP method type.}
 
-\item{authorizationType}{[required] [Required] The method\'s authorization type. Valid values are \code{NONE}
+\item{authorizationType}{[required] [Required] The method's authorization type. Valid values are \code{NONE}
 for open access, \code{AWS_IAM} for using AWS IAM permissions, \code{CUSTOM} for
 using a custom authorizer, or \code{COGNITO_USER_POOLS} for using a Cognito
 user pool.}
@@ -41,7 +41,7 @@ parameter is required (\code{true}) or optional (\code{false}). The method reque
 parameter names defined here are available in Integration to be mapped
 to integration request parameters or body-mapping templates.}
 
-\item{requestModels}{Specifies the Model resources used for the request\'s content type.
+\item{requestModels}{Specifies the Model resources used for the request's content type.
 Request models are represented as a key/value map, with a content type
 as the key and a Model name as the value.}
 

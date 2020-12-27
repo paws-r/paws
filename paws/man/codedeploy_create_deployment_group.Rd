@@ -23,7 +23,7 @@ deployment configuration that you create by calling the create
 deployment configuration operation.
 
 \code{CodeDeployDefault.OneAtATime} is the default deployment configuration.
-It is used if a configuration isn\'t specified for the deployment or
+It is used if a configuration isn't specified for the deployment or
 deployment group.
 
 For more information about the predefined deployment configurations in
@@ -41,7 +41,7 @@ used in the same call as \code{OnPremisesTagSet}.}
 \item{autoScalingGroups}{A list of associated Amazon EC2 Auto Scaling groups.}
 
 \item{serviceRoleArn}{[required] A service role Amazon Resource Name (ARN) that allows AWS CodeDeploy to
-act on the user\'s behalf when interacting with AWS services.}
+act on the user's behalf when interacting with AWS services.}
 
 \item{triggerConfigurations}{Information about triggers to create when the deployment group is
 created. For examples, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html}{Create a Trigger for an AWS CodeDeploy Event}

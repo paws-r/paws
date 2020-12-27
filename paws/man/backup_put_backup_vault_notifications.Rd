@@ -15,7 +15,7 @@ them and the AWS Region where they are created. They consist of
 lowercase letters, numbers, and hyphens.}
 
 \item{SNSTopicArn}{[required] The Amazon Resource Name (ARN) that specifies the topic for a backup
-vault's events; for example,
+vault’s events; for example,
 \code{arn:aws:sns:us-west-2:111122223333:MyVaultTopic}.}
 
 \item{BackupVaultEvents}{[required] An array of events that indicate the status of jobs to back up resources

@@ -14,14 +14,14 @@ NULL
 #' collecting data about your on-premises servers:
 #' 
 #' -   **Agentless discovery** is recommended for environments that use
-#'     VMware vCenter Server. This mode doesn\'t require you to install an
+#'     VMware vCenter Server. This mode doesn't require you to install an
 #'     agent on each host. It does not work in non-VMware environments.
 #' 
 #'     -   Agentless discovery gathers server information regardless of the
 #'         operating systems, which minimizes the time required for initial
 #'         on-premises infrastructure assessment.
 #' 
-#'     -   Agentless discovery doesn\'t collect information about network
+#'     -   Agentless discovery doesn't collect information about network
 #'         dependencies, only agent-based discovery collects that
 #'         information.
 #' 
@@ -69,8 +69,8 @@ NULL
 #' each of the actions and data types for Application Discovery Service.
 #' The topic for each action shows the API request parameters and the
 #' response. Alternatively, you can use one of the AWS SDKs to access an
-#' API that is tailored to the programming language or platform that
-#' you\'re using. For more information, see [AWS
+#' API that is tailored to the programming language or platform that you're
+#' using. For more information, see [AWS
 #' SDKs](http://aws.amazon.com/tools/#SDKs).
 #' 
 #' -   Remember that you must set your Migration Hub home region before you

@@ -25,7 +25,7 @@ Qualification type.}
 
 \item{QualificationTypeStatus}{[required] The initial status of the Qualification type.
 
-Constraints: Valid values are: Active \\| Inactive}
+Constraints: Valid values are: Active | Inactive}
 
 \item{RetryDelayInSeconds}{The number of seconds that a Worker must wait after requesting a
 Qualification of the Qualification type before the worker can retry the

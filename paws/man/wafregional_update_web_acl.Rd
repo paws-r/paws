@@ -2,7 +2,7 @@
 % Please edit documentation in R/wafregional_operations.R
 \name{wafregional_update_web_acl}
 \alias{wafregional_update_web_acl}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 wafregional_update_web_acl(WebACLId, ChangeToken, Updates,
   DefaultAction)
@@ -30,7 +30,7 @@ requests, \code{ActivatedRule|Action} is used instead of
 }}
 
 \item{DefaultAction}{A default action for the web ACL, either ALLOW or BLOCK. AWS WAF
-performs the default action if a request doesn\'t match the criteria in
+performs the default action if a request doesn't match the criteria in
 any of the rules in a web ACL.}
 }
 \description{
@@ -49,7 +49,7 @@ identifies web requests that you want to allow, block, or count. When
 you update a \code{WebACL}, you specify the following values:
 \itemize{
 \item A default action for the \code{WebACL}, either \code{ALLOW} or \code{BLOCK}. AWS
-WAF performs the default action if a request doesn\'t match the
+WAF performs the default action if a request doesn't match the
 criteria in any of the \code{Rules} in a \code{WebACL}.
 \item The \code{Rules} that you want to add or delete. If you want to replace
 one \code{Rule} with another, you delete the existing \code{Rule} and add the
@@ -63,7 +63,7 @@ value of \code{Priority}. (The \code{Rule} that has the lowest value for
 \code{Priority} is evaluated first.) When a web request matches all the
 predicates (such as \code{ByteMatchSets} and \code{IPSets}) in a \code{Rule}, AWS
 WAF immediately takes the corresponding action, allow or block, and
-doesn\'t evaluate the request against the remaining \code{Rules} in the
+doesn't evaluate the request against the remaining \code{Rules} in the
 \code{WebACL}, if any.
 }
 
@@ -90,7 +90,7 @@ If you already have a rule group associated with a web ACL and want
 to submit an \code{UpdateWebACL} request to exclude certain rules from
 that rule group, you must first remove the rule group from the web
 ACL, the re-insert it again, specifying the excluded rules. For
-details, see ActivatedRule\\$ExcludedRules .
+details, see ActivatedRule$ExcludedRules .
 }
 
 Be aware that if you try to add a RATE\\_BASED rule to a web ACL without

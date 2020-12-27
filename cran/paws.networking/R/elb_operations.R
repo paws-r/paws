@@ -1196,7 +1196,7 @@ elb_describe_load_balancer_attributes <- function(LoadBalancerName) {
 #' If you specify a load balancer name, the action returns the descriptions
 #' of all policies created for the load balancer. If you specify a policy
 #' name associated with your load balancer, the action returns the
-#' description of that policy. If you don\'t specify a load balancer name,
+#' description of that policy. If you don't specify a load balancer name,
 #' the action returns descriptions of the specified sample policies, or
 #' descriptions of all sample policies. The names of the sample policies
 #' have the `ELBSample-` prefix.
@@ -1859,7 +1859,7 @@ elb_remove_tags <- function(LoadBalancerNames, Tags) {
 #' Sets the certificate that terminates the specified listener's SSL
 #' connections
 #'
-#' Sets the certificate that terminates the specified listener\'s SSL
+#' Sets the certificate that terminates the specified listener's SSL
 #' connections. The specified certificate replaces any prior certificate
 #' that was used on the same load balancer and port.
 #' 

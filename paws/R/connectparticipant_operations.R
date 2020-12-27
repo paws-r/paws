@@ -5,10 +5,10 @@ NULL
 
 #' Creates the participant's connection
 #'
-#' Creates the participant\'s connection. Note that ParticipantToken is
-#' used for invoking this API instead of ConnectionToken.
+#' Creates the participant's connection. Note that ParticipantToken is used
+#' for invoking this API instead of ConnectionToken.
 #' 
-#' The participant token is valid for the lifetime of the participant --
+#' The participant token is valid for the lifetime of the participant –
 #' until the they are part of a contact.
 #' 
 #' The response URL for `WEBSOCKET` Type has a connect expiry timeout of
@@ -72,7 +72,7 @@ connectparticipant_create_participant_connection <- function(Type, ParticipantTo
 #'
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
-#' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant\'s connection.
+#' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
 #'
 #' @section Request syntax:
 #' ```
@@ -121,7 +121,7 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 #' StartPosition.
 #' @param SortOrder The sort order for the records. Default: DESCENDING.
 #' @param StartPosition A filtering option for where to start.
-#' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant\'s connection.
+#' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
 #'
 #' @section Request syntax:
 #' ```
@@ -178,7 +178,7 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' not yet supported.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
-#' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant\'s connection.
+#' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
 #'
 #' @section Request syntax:
 #' ```

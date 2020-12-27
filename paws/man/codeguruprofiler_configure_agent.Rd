@@ -11,7 +11,7 @@ codeguruprofiler_configure_agent(fleetInstanceId, metadata,
 \arguments{
 \item{fleetInstanceId}{A universally unique identifier (UUID) for a profiling instance. For
 example, if the profiling instance is an Amazon EC2 instance, it is the
-instance ID. If it is an AWS Fargate container, it is the container\'s
+instance ID. If it is an AWS Fargate container, it is the container's
 task ID.}
 
 \item{metadata}{Metadata captured about the compute platform the agent is running on. It

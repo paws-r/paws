@@ -15,7 +15,7 @@ iotsitewise_create_project(portalId, projectName, projectDescription,
 \item{projectDescription}{A description for the project.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
-idempotency of the request. Don\'t reuse this client token if a new
+idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 
 \item{tags}{A list of key-value pairs that contain metadata for the project. For

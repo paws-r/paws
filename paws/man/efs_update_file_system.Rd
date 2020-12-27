@@ -12,16 +12,16 @@ efs_update_file_system(FileSystemId, ThroughputMode,
 \item{FileSystemId}{[required] The ID of the file system that you want to update.}
 
 \item{ThroughputMode}{(Optional) The throughput mode that you want your file system to use. If
-you\'re not updating your throughput mode, you don\'t need to provide
-this value in your request. If you are changing the \code{ThroughputMode} to
+you're not updating your throughput mode, you don't need to provide this
+value in your request. If you are changing the \code{ThroughputMode} to
 \code{provisioned}, you must also set a value for
 \code{ProvisionedThroughputInMibps}.}
 
 \item{ProvisionedThroughputInMibps}{(Optional) The amount of throughput, in MiB/s, that you want to
 provision for your file system. Valid values are 1-1024. Required if
-\code{ThroughputMode} is changed to \code{provisioned} on update. If you\'re not
+\code{ThroughputMode} is changed to \code{provisioned} on update. If you're not
 updating the amount of provisioned throughput for your file system, you
-don\'t need to provide this value in your request.}
+don't need to provide this value in your request.}
 }
 \description{
 Updates the throughput mode or the amount of provisioned throughput of

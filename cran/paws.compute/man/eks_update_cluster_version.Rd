@@ -27,7 +27,7 @@ status transition is eventually consistent). When the update is complete
 (either \code{Failed} or \code{Successful}), the cluster status moves to \code{Active}.
 
 If your cluster has managed node groups attached to it, all of your node
-groups' Kubernetes versions must match the cluster's Kubernetes version
+groups’ Kubernetes versions must match the cluster’s Kubernetes version
 in order to update the cluster to a new Kubernetes version.
 }
 \section{Request syntax}{

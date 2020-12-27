@@ -47,7 +47,7 @@ operand.}
 \item{threshold}{[required] The value against which the specified statistic is compared.}
 
 \item{evaluationPeriods}{[required] The number of most recent periods over which data is compared to the
-specified threshold. If you are setting an \"M out of N\" alarm, this
+specified threshold. If you are setting an "M out of N" alarm, this
 value (\code{evaluationPeriods}) is the N.
 
 If you are setting an alarm that requires that a number of consecutive
@@ -62,7 +62,7 @@ You can specify a minimum valuation period of 1 (5 minutes), and a
 maximum evaluation period of 288 (24 hours).}
 
 \item{datapointsToAlarm}{The number of data points that must be not within the specified
-threshold to trigger the alarm. If you are setting an \"M out of N\"
+threshold to trigger the alarm. If you are setting an "M out of N"
 alarm, this value (\code{datapointsToAlarm}) is the M.}
 
 \item{treatMissingData}{Sets how this alarm will handle missing data points.
@@ -122,12 +122,12 @@ notification is sent when the alarm switches from an \code{OK} or \code{ALARM}
 alarm state to an \code{INSUFFICIENT_DATA} state.
 }
 
-The notification trigger defaults to \code{ALARM} if you don\'t specify this
+The notification trigger defaults to \code{ALARM} if you don't specify this
 parameter.}
 
 \item{notificationEnabled}{Indicates whether the alarm is enabled.
 
-Notifications are enabled by default if you don\'t specify this
+Notifications are enabled by default if you don't specify this
 parameter.}
 }
 \description{

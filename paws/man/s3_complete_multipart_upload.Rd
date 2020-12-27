@@ -63,7 +63,7 @@ except the last part.
 \itemize{
 \item Description: One or more of the specified parts could not be
 found. The part might not have been uploaded, or the specified
-entity tag might not have matched the part\'s entity tag.
+entity tag might not have matched the part's entity tag.
 \item 400 Bad Request
 }
 \item Error code: \code{InvalidPartOrder}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/waf_operations.R
 \name{waf_get_rate_based_rule_managed_keys}
 \alias{waf_get_rate_based_rule_managed_keys}
-\title{This is AWS WAF CLASSIC documentation}
+\title{This is AWS WAF Classic documentation}
 \usage{
 waf_get_rate_based_rule_managed_keys(RuleId, NextMarker)
 }

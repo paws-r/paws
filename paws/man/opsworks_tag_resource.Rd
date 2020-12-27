@@ -8,7 +8,7 @@ Stacks}
 opsworks_tag_resource(ResourceArn, Tags)
 }
 \arguments{
-\item{ResourceArn}{[required] The stack or layer\'s Amazon Resource Number (ARN).}
+\item{ResourceArn}{[required] The stack or layer's Amazon Resource Number (ARN).}
 
 \item{Tags}{[required] A map that contains tag keys and tag values that are attached to a stack
 or layer.

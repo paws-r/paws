@@ -40,13 +40,13 @@ underscore characters.}
 }
 \description{
 This API places an outbound call to a contact, and then initiates the
-contact flow. It performs the actions in the contact flow that\'s
+contact flow. It performs the actions in the contact flow that's
 specified (in \code{ContactFlowId}).
 }
 \details{
 Agents are not involved in initiating the outbound API (that is, dialing
 the contact). If the contact flow places an outbound call to a contact,
-and then puts the contact in queue, that\'s when the call is routed to
+and then puts the contact in queue, that's when the call is routed to
 the agent, like any other inbound case.
 
 There is a 60 second dialing timeout for this operation. If the call is

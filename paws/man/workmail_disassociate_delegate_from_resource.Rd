@@ -10,14 +10,14 @@ workmail_disassociate_delegate_from_resource(OrganizationId, ResourceId,
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the resource exists.}
 
-\item{ResourceId}{[required] The identifier of the resource from which delegates\' set members are
+\item{ResourceId}{[required] The identifier of the resource from which delegates' set members are
 removed.}
 
 \item{EntityId}{[required] The identifier for the member (user, group) to be removed from the
-resource\'s delegates.}
+resource's delegates.}
 }
 \description{
-Removes a member from the resource\'s set of delegates.
+Removes a member from the resource's set of delegates.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_delegate_from_resource(

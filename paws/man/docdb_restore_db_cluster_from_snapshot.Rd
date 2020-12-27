@@ -14,7 +14,7 @@ docdb_restore_db_cluster_from_snapshot(AvailabilityZones,
 restored DB cluster can be created in.}
 
 \item{DBClusterIdentifier}{[required] The name of the cluster to create from the snapshot or cluster snapshot.
-This parameter isn\'t case sensitive.
+This parameter isn't case sensitive.
 
 Constraints:
 \itemize{

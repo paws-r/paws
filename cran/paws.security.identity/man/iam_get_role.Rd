@@ -16,8 +16,8 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 }
 \description{
-Retrieves information about the specified role, including the role\'s
-path, GUID, ARN, and the role\'s trust policy that grants permission to
+Retrieves information about the specified role, including the role's
+path, GUID, ARN, and the role's trust policy that grants permission to
 assume the role. For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}.
 }
 \details{
