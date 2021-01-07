@@ -33,15 +33,15 @@ Amazon SimpleDB is a web service providing the core database functions of data i
 \section{Operations}{
 
 \tabular{ll}{
-\link[=simpledb_batch_delete_attributes]{batch_delete_attributes} \tab Performs multiple DeleteAttributes operations in a single call, which reduces round trips and latencies \cr
-\link[=simpledb_batch_put_attributes]{batch_put_attributes} \tab The BatchPutAttributes operation creates or replaces attributes within one or more items \cr
-\link[=simpledb_create_domain]{create_domain} \tab The CreateDomain operation creates a new domain \cr
-\link[=simpledb_delete_attributes]{delete_attributes} \tab Deletes one or more attributes associated with an item \cr
-\link[=simpledb_delete_domain]{delete_domain} \tab The DeleteDomain operation deletes a domain \cr
+\link[=simpledb_batch_delete_attributes]{batch_delete_attributes} \tab Performs multiple DeleteAttributes operations in a single call, which reduces round trips and latencies\cr
+\link[=simpledb_batch_put_attributes]{batch_put_attributes} \tab The BatchPutAttributes operation creates or replaces attributes within one or more items\cr
+\link[=simpledb_create_domain]{create_domain} \tab The CreateDomain operation creates a new domain\cr
+\link[=simpledb_delete_attributes]{delete_attributes} \tab Deletes one or more attributes associated with an item\cr
+\link[=simpledb_delete_domain]{delete_domain} \tab The DeleteDomain operation deletes a domain\cr
 \link[=simpledb_domain_metadata]{domain_metadata} \tab Returns information about the domain, including when the domain was created, the number of items and attributes in the domain, and the size of the attribute names and values\cr
-\link[=simpledb_get_attributes]{get_attributes} \tab Returns all of the attributes associated with the specified item \cr
-\link[=simpledb_list_domains]{list_domains} \tab The ListDomains operation lists all domains associated with the Access Key ID \cr
-\link[=simpledb_put_attributes]{put_attributes} \tab The PutAttributes operation creates or replaces attributes in an item \cr
+\link[=simpledb_get_attributes]{get_attributes} \tab Returns all of the attributes associated with the specified item\cr
+\link[=simpledb_list_domains]{list_domains} \tab The ListDomains operation lists all domains associated with the Access Key ID\cr
+\link[=simpledb_put_attributes]{put_attributes} \tab The PutAttributes operation creates or replaces attributes in an item\cr
 \link[=simpledb_select]{select} \tab The Select operation returns a set of attributes for ItemNames that match the select expression
 }
 }

@@ -35,22 +35,22 @@ The AWS Elastic Transcoder Service.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=elastictranscoder_cancel_job]{cancel_job} \tab The CancelJob operation cancels an unfinished job \cr
+\link[=elastictranscoder_cancel_job]{cancel_job} \tab The CancelJob operation cancels an unfinished job\cr
 \link[=elastictranscoder_create_job]{create_job} \tab When you create a job, Elastic Transcoder returns JSON data that includes the values that you specified plus information about the job that is created\cr
-\link[=elastictranscoder_create_pipeline]{create_pipeline} \tab The CreatePipeline operation creates a pipeline with settings that you specify \cr
-\link[=elastictranscoder_create_preset]{create_preset} \tab The CreatePreset operation creates a preset with settings that you specify \cr
-\link[=elastictranscoder_delete_pipeline]{delete_pipeline} \tab The DeletePipeline operation removes a pipeline \cr
-\link[=elastictranscoder_delete_preset]{delete_preset} \tab The DeletePreset operation removes a preset that you've added in an AWS region \cr
-\link[=elastictranscoder_list_jobs_by_pipeline]{list_jobs_by_pipeline} \tab The ListJobsByPipeline operation gets a list of the jobs currently in a pipeline \cr
-\link[=elastictranscoder_list_jobs_by_status]{list_jobs_by_status} \tab The ListJobsByStatus operation gets a list of jobs that have a specified status \cr
-\link[=elastictranscoder_list_pipelines]{list_pipelines} \tab The ListPipelines operation gets a list of the pipelines associated with the current AWS account \cr
-\link[=elastictranscoder_list_presets]{list_presets} \tab The ListPresets operation gets a list of the default presets included with Elastic Transcoder and the presets that you've added in an AWS region \cr
-\link[=elastictranscoder_read_job]{read_job} \tab The ReadJob operation returns detailed information about a job \cr
-\link[=elastictranscoder_read_pipeline]{read_pipeline} \tab The ReadPipeline operation gets detailed information about a pipeline \cr
-\link[=elastictranscoder_read_preset]{read_preset} \tab The ReadPreset operation gets detailed information about a preset \cr
-\link[=elastictranscoder_test_role]{test_role} \tab The TestRole operation tests the IAM role used to create the pipeline \cr
-\link[=elastictranscoder_update_pipeline]{update_pipeline} \tab Use the UpdatePipeline operation to update settings for a pipeline \cr
-\link[=elastictranscoder_update_pipeline_notifications]{update_pipeline_notifications} \tab With the UpdatePipelineNotifications operation, you can update Amazon Simple Notification Service (Amazon SNS) notifications for a pipeline \cr
+\link[=elastictranscoder_create_pipeline]{create_pipeline} \tab The CreatePipeline operation creates a pipeline with settings that you specify\cr
+\link[=elastictranscoder_create_preset]{create_preset} \tab The CreatePreset operation creates a preset with settings that you specify\cr
+\link[=elastictranscoder_delete_pipeline]{delete_pipeline} \tab The DeletePipeline operation removes a pipeline\cr
+\link[=elastictranscoder_delete_preset]{delete_preset} \tab The DeletePreset operation removes a preset that you've added in an AWS region\cr
+\link[=elastictranscoder_list_jobs_by_pipeline]{list_jobs_by_pipeline} \tab The ListJobsByPipeline operation gets a list of the jobs currently in a pipeline\cr
+\link[=elastictranscoder_list_jobs_by_status]{list_jobs_by_status} \tab The ListJobsByStatus operation gets a list of jobs that have a specified status\cr
+\link[=elastictranscoder_list_pipelines]{list_pipelines} \tab The ListPipelines operation gets a list of the pipelines associated with the current AWS account\cr
+\link[=elastictranscoder_list_presets]{list_presets} \tab The ListPresets operation gets a list of the default presets included with Elastic Transcoder and the presets that you've added in an AWS region\cr
+\link[=elastictranscoder_read_job]{read_job} \tab The ReadJob operation returns detailed information about a job\cr
+\link[=elastictranscoder_read_pipeline]{read_pipeline} \tab The ReadPipeline operation gets detailed information about a pipeline\cr
+\link[=elastictranscoder_read_preset]{read_preset} \tab The ReadPreset operation gets detailed information about a preset\cr
+\link[=elastictranscoder_test_role]{test_role} \tab The TestRole operation tests the IAM role used to create the pipeline\cr
+\link[=elastictranscoder_update_pipeline]{update_pipeline} \tab Use the UpdatePipeline operation to update settings for a pipeline\cr
+\link[=elastictranscoder_update_pipeline_notifications]{update_pipeline_notifications} \tab With the UpdatePipelineNotifications operation, you can update Amazon Simple Notification Service (Amazon SNS) notifications for a pipeline\cr
 \link[=elastictranscoder_update_pipeline_status]{update_pipeline_status} \tab The UpdatePipelineStatus operation pauses or reactivates a pipeline, so that the pipeline stops or restarts the processing of jobs
 }
 }

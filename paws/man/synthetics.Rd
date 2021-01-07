@@ -47,18 +47,18 @@ considerations. For more information, see \href{https://docs.aws.amazon.com/Amaz
 \section{Operations}{
 
 \tabular{ll}{
-\link[=synthetics_create_canary]{create_canary} \tab Creates a canary \cr
-\link[=synthetics_delete_canary]{delete_canary} \tab Permanently deletes the specified canary \cr
+\link[=synthetics_create_canary]{create_canary} \tab Creates a canary\cr
+\link[=synthetics_delete_canary]{delete_canary} \tab Permanently deletes the specified canary\cr
 \link[=synthetics_describe_canaries]{describe_canaries} \tab This operation returns a list of the canaries in your account, along with full details about each canary\cr
-\link[=synthetics_describe_canaries_last_run]{describe_canaries_last_run} \tab Use this operation to see information from the most recent run of each canary that you have created \cr
-\link[=synthetics_describe_runtime_versions]{describe_runtime_versions} \tab Returns a list of Synthetics canary runtime versions \cr
-\link[=synthetics_get_canary]{get_canary} \tab Retrieves complete information about one canary \cr
-\link[=synthetics_get_canary_runs]{get_canary_runs} \tab Retrieves a list of runs for a specified canary \cr
-\link[=synthetics_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a canary \cr
-\link[=synthetics_start_canary]{start_canary} \tab Use this operation to run a canary that has already been created \cr
-\link[=synthetics_stop_canary]{stop_canary} \tab Stops the canary to prevent all future runs \cr
-\link[=synthetics_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified canary \cr
-\link[=synthetics_untag_resource]{untag_resource} \tab Removes one or more tags from the specified canary \cr
+\link[=synthetics_describe_canaries_last_run]{describe_canaries_last_run} \tab Use this operation to see information from the most recent run of each canary that you have created\cr
+\link[=synthetics_describe_runtime_versions]{describe_runtime_versions} \tab Returns a list of Synthetics canary runtime versions\cr
+\link[=synthetics_get_canary]{get_canary} \tab Retrieves complete information about one canary\cr
+\link[=synthetics_get_canary_runs]{get_canary_runs} \tab Retrieves a list of runs for a specified canary\cr
+\link[=synthetics_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a canary\cr
+\link[=synthetics_start_canary]{start_canary} \tab Use this operation to run a canary that has already been created\cr
+\link[=synthetics_stop_canary]{stop_canary} \tab Stops the canary to prevent all future runs\cr
+\link[=synthetics_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified canary\cr
+\link[=synthetics_untag_resource]{untag_resource} \tab Removes one or more tags from the specified canary\cr
 \link[=synthetics_update_canary]{update_canary} \tab Use this operation to change the settings of a canary that has already been created
 }
 }

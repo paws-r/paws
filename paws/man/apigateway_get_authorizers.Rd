@@ -18,7 +18,10 @@ and the maximum value is 500.}
 Describe an existing Authorizers resource.
 }
 \details{
-\href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html}{AWS CLI}
+<div class="seeAlso">
+
+
+\href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html}{AWS CLI}</div>
 }
 \section{Request syntax}{
 \preformatted{svc$get_authorizers(

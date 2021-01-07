@@ -36,21 +36,21 @@ delete inputs and detector models, and to list their versions.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=iotevents_create_detector_model]{create_detector_model} \tab Creates a detector model \cr
-\link[=iotevents_create_input]{create_input} \tab Creates an input \cr
-\link[=iotevents_delete_detector_model]{delete_detector_model} \tab Deletes a detector model \cr
-\link[=iotevents_delete_input]{delete_input} \tab Deletes an input \cr
-\link[=iotevents_describe_detector_model]{describe_detector_model} \tab Describes a detector model \cr
-\link[=iotevents_describe_input]{describe_input} \tab Describes an input \cr
+\link[=iotevents_create_detector_model]{create_detector_model} \tab Creates a detector model\cr
+\link[=iotevents_create_input]{create_input} \tab Creates an input\cr
+\link[=iotevents_delete_detector_model]{delete_detector_model} \tab Deletes a detector model\cr
+\link[=iotevents_delete_input]{delete_input} \tab Deletes an input\cr
+\link[=iotevents_describe_detector_model]{describe_detector_model} \tab Describes a detector model\cr
+\link[=iotevents_describe_input]{describe_input} \tab Describes an input\cr
 \link[=iotevents_describe_logging_options]{describe_logging_options} \tab Retrieves the current settings of the AWS IoT Events logging options\cr
-\link[=iotevents_list_detector_models]{list_detector_models} \tab Lists the detector models you have created \cr
-\link[=iotevents_list_detector_model_versions]{list_detector_model_versions} \tab Lists all the versions of a detector model \cr
-\link[=iotevents_list_inputs]{list_inputs} \tab Lists the inputs you have created \cr
-\link[=iotevents_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags (metadata) you have assigned to the resource \cr
-\link[=iotevents_put_logging_options]{put_logging_options} \tab Sets or updates the AWS IoT Events logging options \cr
-\link[=iotevents_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource \cr
-\link[=iotevents_untag_resource]{untag_resource} \tab Removes the given tags (metadata) from the resource \cr
-\link[=iotevents_update_detector_model]{update_detector_model} \tab Updates a detector model \cr
+\link[=iotevents_list_detector_models]{list_detector_models} \tab Lists the detector models you have created\cr
+\link[=iotevents_list_detector_model_versions]{list_detector_model_versions} \tab Lists all the versions of a detector model\cr
+\link[=iotevents_list_inputs]{list_inputs} \tab Lists the inputs you have created\cr
+\link[=iotevents_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags (metadata) you have assigned to the resource\cr
+\link[=iotevents_put_logging_options]{put_logging_options} \tab Sets or updates the AWS IoT Events logging options\cr
+\link[=iotevents_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource\cr
+\link[=iotevents_untag_resource]{untag_resource} \tab Removes the given tags (metadata) from the resource\cr
+\link[=iotevents_update_detector_model]{update_detector_model} \tab Updates a detector model\cr
 \link[=iotevents_update_input]{update_input} \tab Updates an input
 }
 }

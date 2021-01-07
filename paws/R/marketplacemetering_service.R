@@ -87,10 +87,10 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=marketplacemetering_batch_meter_usage]{batch_meter_usage} \tab BatchMeterUsage is called from a SaaS application listed on the AWS Marketplace to post metering records for a set of customers \cr
-#'  \link[=marketplacemetering_meter_usage]{meter_usage} \tab API to emit metering records \cr
+#'  \link[=marketplacemetering_batch_meter_usage]{batch_meter_usage} \tab BatchMeterUsage is called from a SaaS application listed on the AWS Marketplace to post metering records for a set of customers\cr
+#'  \link[=marketplacemetering_meter_usage]{meter_usage} \tab API to emit metering records\cr
 #'  \link[=marketplacemetering_register_usage]{register_usage} \tab Paid container software products sold through AWS Marketplace must integrate with the AWS Marketplace Metering Service and call the RegisterUsage operation for software entitlement and metering\cr
-#'  \link[=marketplacemetering_resolve_customer]{resolve_customer} \tab ResolveCustomer is called by a SaaS application during the registration process 
+#'  \link[=marketplacemetering_resolve_customer]{resolve_customer} \tab ResolveCustomer is called by a SaaS application during the registration process
 #' }
 #'
 #' @rdname marketplacemetering

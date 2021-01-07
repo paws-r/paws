@@ -36,32 +36,32 @@ for real-time processing of streaming big data.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=kinesis_add_tags_to_stream]{add_tags_to_stream} \tab Adds or updates tags for the specified Kinesis data stream \cr
-\link[=kinesis_create_stream]{create_stream} \tab Creates a Kinesis data stream \cr
-\link[=kinesis_decrease_stream_retention_period]{decrease_stream_retention_period} \tab Decreases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream \cr
-\link[=kinesis_delete_stream]{delete_stream} \tab Deletes a Kinesis data stream and all its shards and data \cr
-\link[=kinesis_deregister_stream_consumer]{deregister_stream_consumer} \tab To deregister a consumer, provide its ARN \cr
-\link[=kinesis_describe_limits]{describe_limits} \tab Describes the shard limits and usage for the account \cr
-\link[=kinesis_describe_stream]{describe_stream} \tab Describes the specified Kinesis data stream \cr
-\link[=kinesis_describe_stream_consumer]{describe_stream_consumer} \tab To get the description of a registered consumer, provide the ARN of the consumer \cr
-\link[=kinesis_describe_stream_summary]{describe_stream_summary} \tab Provides a summarized description of the specified Kinesis data stream without the shard list \cr
-\link[=kinesis_disable_enhanced_monitoring]{disable_enhanced_monitoring} \tab Disables enhanced monitoring \cr
-\link[=kinesis_enable_enhanced_monitoring]{enable_enhanced_monitoring} \tab Enables enhanced Kinesis data stream monitoring for shard-level metrics \cr
-\link[=kinesis_get_records]{get_records} \tab Gets data records from a Kinesis data stream's shard \cr
-\link[=kinesis_get_shard_iterator]{get_shard_iterator} \tab Gets an Amazon Kinesis shard iterator \cr
-\link[=kinesis_increase_stream_retention_period]{increase_stream_retention_period} \tab Increases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream \cr
-\link[=kinesis_list_shards]{list_shards} \tab Lists the shards in a stream and provides information about each shard \cr
-\link[=kinesis_list_stream_consumers]{list_stream_consumers} \tab Lists the consumers registered to receive data from a stream using enhanced fan-out, and provides information about each consumer \cr
-\link[=kinesis_list_streams]{list_streams} \tab Lists your Kinesis data streams \cr
-\link[=kinesis_list_tags_for_stream]{list_tags_for_stream} \tab Lists the tags for the specified Kinesis data stream \cr
+\link[=kinesis_add_tags_to_stream]{add_tags_to_stream} \tab Adds or updates tags for the specified Kinesis data stream\cr
+\link[=kinesis_create_stream]{create_stream} \tab Creates a Kinesis data stream\cr
+\link[=kinesis_decrease_stream_retention_period]{decrease_stream_retention_period} \tab Decreases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream\cr
+\link[=kinesis_delete_stream]{delete_stream} \tab Deletes a Kinesis data stream and all its shards and data\cr
+\link[=kinesis_deregister_stream_consumer]{deregister_stream_consumer} \tab To deregister a consumer, provide its ARN\cr
+\link[=kinesis_describe_limits]{describe_limits} \tab Describes the shard limits and usage for the account\cr
+\link[=kinesis_describe_stream]{describe_stream} \tab Describes the specified Kinesis data stream\cr
+\link[=kinesis_describe_stream_consumer]{describe_stream_consumer} \tab To get the description of a registered consumer, provide the ARN of the consumer\cr
+\link[=kinesis_describe_stream_summary]{describe_stream_summary} \tab Provides a summarized description of the specified Kinesis data stream without the shard list\cr
+\link[=kinesis_disable_enhanced_monitoring]{disable_enhanced_monitoring} \tab Disables enhanced monitoring\cr
+\link[=kinesis_enable_enhanced_monitoring]{enable_enhanced_monitoring} \tab Enables enhanced Kinesis data stream monitoring for shard-level metrics\cr
+\link[=kinesis_get_records]{get_records} \tab Gets data records from a Kinesis data stream's shard\cr
+\link[=kinesis_get_shard_iterator]{get_shard_iterator} \tab Gets an Amazon Kinesis shard iterator\cr
+\link[=kinesis_increase_stream_retention_period]{increase_stream_retention_period} \tab Increases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream\cr
+\link[=kinesis_list_shards]{list_shards} \tab Lists the shards in a stream and provides information about each shard\cr
+\link[=kinesis_list_stream_consumers]{list_stream_consumers} \tab Lists the consumers registered to receive data from a stream using enhanced fan-out, and provides information about each consumer\cr
+\link[=kinesis_list_streams]{list_streams} \tab Lists your Kinesis data streams\cr
+\link[=kinesis_list_tags_for_stream]{list_tags_for_stream} \tab Lists the tags for the specified Kinesis data stream\cr
 \link[=kinesis_merge_shards]{merge_shards} \tab Merges two adjacent shards in a Kinesis data stream and combines them into a single shard to reduce the stream's capacity to ingest and transport data\cr
-\link[=kinesis_put_record]{put_record} \tab Writes a single data record into an Amazon Kinesis data stream \cr
-\link[=kinesis_put_records]{put_records} \tab Writes multiple data records into a Kinesis data stream in a single call (also referred to as a PutRecords request) \cr
-\link[=kinesis_register_stream_consumer]{register_stream_consumer} \tab Registers a consumer with a Kinesis data stream \cr
-\link[=kinesis_remove_tags_from_stream]{remove_tags_from_stream} \tab Removes tags from the specified Kinesis data stream \cr
-\link[=kinesis_split_shard]{split_shard} \tab Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data \cr
-\link[=kinesis_start_stream_encryption]{start_stream_encryption} \tab Enables or updates server-side encryption using an AWS KMS key for a specified stream \cr
-\link[=kinesis_stop_stream_encryption]{stop_stream_encryption} \tab Disables server-side encryption for a specified stream \cr
+\link[=kinesis_put_record]{put_record} \tab Writes a single data record into an Amazon Kinesis data stream\cr
+\link[=kinesis_put_records]{put_records} \tab Writes multiple data records into a Kinesis data stream in a single call (also referred to as a PutRecords request)\cr
+\link[=kinesis_register_stream_consumer]{register_stream_consumer} \tab Registers a consumer with a Kinesis data stream\cr
+\link[=kinesis_remove_tags_from_stream]{remove_tags_from_stream} \tab Removes tags from the specified Kinesis data stream\cr
+\link[=kinesis_split_shard]{split_shard} \tab Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data\cr
+\link[=kinesis_start_stream_encryption]{start_stream_encryption} \tab Enables or updates server-side encryption using an AWS KMS key for a specified stream\cr
+\link[=kinesis_stop_stream_encryption]{stop_stream_encryption} \tab Disables server-side encryption for a specified stream\cr
 \link[=kinesis_update_shard_count]{update_shard_count} \tab Updates the shard count of the specified stream to the specified number of shards
 }
 }

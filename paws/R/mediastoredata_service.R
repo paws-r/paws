@@ -41,11 +41,11 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=mediastoredata_delete_object]{delete_object} \tab Deletes an object at the specified path \cr
-#'  \link[=mediastoredata_describe_object]{describe_object} \tab Gets the headers for an object at the specified path \cr
-#'  \link[=mediastoredata_get_object]{get_object} \tab Downloads the object at the specified path \cr
+#'  \link[=mediastoredata_delete_object]{delete_object} \tab Deletes an object at the specified path\cr
+#'  \link[=mediastoredata_describe_object]{describe_object} \tab Gets the headers for an object at the specified path\cr
+#'  \link[=mediastoredata_get_object]{get_object} \tab Downloads the object at the specified path\cr
 #'  \link[=mediastoredata_list_items]{list_items} \tab Provides a list of metadata entries about folders and objects in the specified folder\cr
-#'  \link[=mediastoredata_put_object]{put_object} \tab Uploads an object to the specified path 
+#'  \link[=mediastoredata_put_object]{put_object} \tab Uploads an object to the specified path
 #' }
 #'
 #' @rdname mediastoredata

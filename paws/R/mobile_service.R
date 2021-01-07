@@ -42,15 +42,15 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=mobile_create_project]{create_project} \tab Creates an AWS Mobile Hub project \cr
-#'  \link[=mobile_delete_project]{delete_project} \tab Delets a project in AWS Mobile Hub \cr
-#'  \link[=mobile_describe_bundle]{describe_bundle} \tab Get the bundle details for the requested bundle id \cr
-#'  \link[=mobile_describe_project]{describe_project} \tab Gets details about a project in AWS Mobile Hub \cr
+#'  \link[=mobile_create_project]{create_project} \tab Creates an AWS Mobile Hub project\cr
+#'  \link[=mobile_delete_project]{delete_project} \tab Delets a project in AWS Mobile Hub\cr
+#'  \link[=mobile_describe_bundle]{describe_bundle} \tab Get the bundle details for the requested bundle id\cr
+#'  \link[=mobile_describe_project]{describe_project} \tab Gets details about a project in AWS Mobile Hub\cr
 #'  \link[=mobile_export_bundle]{export_bundle} \tab Generates customized software development kit (SDK) and or tool packages used to integrate mobile web or mobile app clients with backend AWS resources\cr
-#'  \link[=mobile_export_project]{export_project} \tab Exports project configuration to a snapshot which can be downloaded and shared \cr
-#'  \link[=mobile_list_bundles]{list_bundles} \tab List all available bundles \cr
-#'  \link[=mobile_list_projects]{list_projects} \tab Lists projects in AWS Mobile Hub \cr
-#'  \link[=mobile_update_project]{update_project} \tab Update an existing project 
+#'  \link[=mobile_export_project]{export_project} \tab Exports project configuration to a snapshot which can be downloaded and shared\cr
+#'  \link[=mobile_list_bundles]{list_bundles} \tab List all available bundles\cr
+#'  \link[=mobile_list_projects]{list_projects} \tab Lists projects in AWS Mobile Hub\cr
+#'  \link[=mobile_update_project]{update_project} \tab Update an existing project
 #' }
 #'
 #' @rdname mobile

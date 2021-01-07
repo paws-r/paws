@@ -36,9 +36,9 @@ list detectors, and view or update a detector's status.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=ioteventsdata_batch_put_message]{batch_put_message} \tab Sends a set of messages to the AWS IoT Events system \cr
+\link[=ioteventsdata_batch_put_message]{batch_put_message} \tab Sends a set of messages to the AWS IoT Events system\cr
 \link[=ioteventsdata_batch_update_detector]{batch_update_detector} \tab Updates the state, variable values, and timer settings of one or more detectors (instances) of a specified detector model\cr
-\link[=ioteventsdata_describe_detector]{describe_detector} \tab Returns information about the specified detector (instance) \cr
+\link[=ioteventsdata_describe_detector]{describe_detector} \tab Returns information about the specified detector (instance)\cr
 \link[=ioteventsdata_list_detectors]{list_detectors} \tab Lists detectors (the instances of a detector model)
 }
 }

@@ -46,11 +46,11 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=connectparticipant_create_participant_connection]{create_participant_connection} \tab Creates the participant's connection \cr
-#'  \link[=connectparticipant_disconnect_participant]{disconnect_participant} \tab Disconnects a participant \cr
+#'  \link[=connectparticipant_create_participant_connection]{create_participant_connection} \tab Creates the participant's connection\cr
+#'  \link[=connectparticipant_disconnect_participant]{disconnect_participant} \tab Disconnects a participant\cr
 #'  \link[=connectparticipant_get_transcript]{get_transcript} \tab Retrieves a transcript of the session\cr
-#'  \link[=connectparticipant_send_event]{send_event} \tab Sends an event \cr
-#'  \link[=connectparticipant_send_message]{send_message} \tab Sends a message 
+#'  \link[=connectparticipant_send_event]{send_event} \tab Sends an event\cr
+#'  \link[=connectparticipant_send_message]{send_message} \tab Sends a message
 #' }
 #'
 #' @rdname connectparticipant

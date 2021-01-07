@@ -107,25 +107,25 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=opsworkscm_associate_node]{associate_node} \tab Associates a new node with the server \cr
-#'  \link[=opsworkscm_create_backup]{create_backup} \tab Creates an application-level backup of a server \cr
-#'  \link[=opsworkscm_create_server]{create_server} \tab Creates and immedately starts a new server \cr
-#'  \link[=opsworkscm_delete_backup]{delete_backup} \tab Deletes a backup \cr
-#'  \link[=opsworkscm_delete_server]{delete_server} \tab Deletes the server and the underlying AWS CloudFormation stacks (including the server's EC2 instance) \cr
-#'  \link[=opsworkscm_describe_account_attributes]{describe_account_attributes} \tab Describes your OpsWorks-CM account attributes \cr
-#'  \link[=opsworkscm_describe_backups]{describe_backups} \tab Describes backups \cr
-#'  \link[=opsworkscm_describe_events]{describe_events} \tab Describes events for a specified server \cr
-#'  \link[=opsworkscm_describe_node_association_status]{describe_node_association_status} \tab Returns the current status of an existing association or disassociation request \cr
-#'  \link[=opsworkscm_describe_servers]{describe_servers} \tab Lists all configuration management servers that are identified with your account \cr
-#'  \link[=opsworkscm_disassociate_node]{disassociate_node} \tab Disassociates a node from an AWS OpsWorks CM server, and removes the node from the server's managed nodes \cr
-#'  \link[=opsworkscm_export_server_engine_attribute]{export_server_engine_attribute} \tab Exports a specified server engine attribute as a base64-encoded string \cr
+#'  \link[=opsworkscm_associate_node]{associate_node} \tab Associates a new node with the server\cr
+#'  \link[=opsworkscm_create_backup]{create_backup} \tab Creates an application-level backup of a server\cr
+#'  \link[=opsworkscm_create_server]{create_server} \tab Creates and immedately starts a new server\cr
+#'  \link[=opsworkscm_delete_backup]{delete_backup} \tab Deletes a backup\cr
+#'  \link[=opsworkscm_delete_server]{delete_server} \tab Deletes the server and the underlying AWS CloudFormation stacks (including the server's EC2 instance)\cr
+#'  \link[=opsworkscm_describe_account_attributes]{describe_account_attributes} \tab Describes your OpsWorks-CM account attributes\cr
+#'  \link[=opsworkscm_describe_backups]{describe_backups} \tab Describes backups\cr
+#'  \link[=opsworkscm_describe_events]{describe_events} \tab Describes events for a specified server\cr
+#'  \link[=opsworkscm_describe_node_association_status]{describe_node_association_status} \tab Returns the current status of an existing association or disassociation request\cr
+#'  \link[=opsworkscm_describe_servers]{describe_servers} \tab Lists all configuration management servers that are identified with your account\cr
+#'  \link[=opsworkscm_disassociate_node]{disassociate_node} \tab Disassociates a node from an AWS OpsWorks CM server, and removes the node from the server's managed nodes\cr
+#'  \link[=opsworkscm_export_server_engine_attribute]{export_server_engine_attribute} \tab Exports a specified server engine attribute as a base64-encoded string\cr
 #'  \link[=opsworkscm_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags that are applied to the specified AWS OpsWorks for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or backups\cr
-#'  \link[=opsworkscm_restore_server]{restore_server} \tab Restores a backup to a server that is in a CONNECTION_LOST, HEALTHY, RUNNING, UNHEALTHY, or TERMINATED state \cr
-#'  \link[=opsworkscm_start_maintenance]{start_maintenance} \tab Manually starts server maintenance \cr
-#'  \link[=opsworkscm_tag_resource]{tag_resource} \tab Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for Puppet Enterprise server, or to server backups \cr
-#'  \link[=opsworkscm_untag_resource]{untag_resource} \tab Removes specified tags from an AWS OpsWorks-CM server or backup \cr
-#'  \link[=opsworkscm_update_server]{update_server} \tab Updates settings for a server \cr
-#'  \link[=opsworkscm_update_server_engine_attributes]{update_server_engine_attributes} \tab Updates engine-specific attributes on a specified server 
+#'  \link[=opsworkscm_restore_server]{restore_server} \tab Restores a backup to a server that is in a CONNECTION_LOST, HEALTHY, RUNNING, UNHEALTHY, or TERMINATED state\cr
+#'  \link[=opsworkscm_start_maintenance]{start_maintenance} \tab Manually starts server maintenance\cr
+#'  \link[=opsworkscm_tag_resource]{tag_resource} \tab Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for Puppet Enterprise server, or to server backups\cr
+#'  \link[=opsworkscm_untag_resource]{untag_resource} \tab Removes specified tags from an AWS OpsWorks-CM server or backup\cr
+#'  \link[=opsworkscm_update_server]{update_server} \tab Updates settings for a server\cr
+#'  \link[=opsworkscm_update_server_engine_attributes]{update_server_engine_attributes} \tab Updates engine-specific attributes on a specified server
 #' }
 #'
 #' @rdname opsworkscm

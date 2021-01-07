@@ -50,8 +50,8 @@ job
 \section{Operations}{
 
 \tabular{ll}{
-\link[=iotjobsdataplane_describe_job_execution]{describe_job_execution} \tab Gets details of a job execution \cr
-\link[=iotjobsdataplane_get_pending_job_executions]{get_pending_job_executions} \tab Gets the list of all jobs for a thing that are not in a terminal status \cr
+\link[=iotjobsdataplane_describe_job_execution]{describe_job_execution} \tab Gets details of a job execution\cr
+\link[=iotjobsdataplane_get_pending_job_executions]{get_pending_job_executions} \tab Gets the list of all jobs for a thing that are not in a terminal status\cr
 \link[=iotjobsdataplane_start_next_pending_job_execution]{start_next_pending_job_execution} \tab Gets and starts the next pending (status IN_PROGRESS or QUEUED) job execution for a thing\cr
 \link[=iotjobsdataplane_update_job_execution]{update_job_execution} \tab Updates the status of a job execution
 }

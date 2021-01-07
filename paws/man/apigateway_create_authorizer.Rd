@@ -86,7 +86,10 @@ value is 300. The maximum value is 3600, or 1 hour.}
 Adds a new Authorizer resource to an existing RestApi resource.
 }
 \details{
-\href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html}{AWS CLI}
+<div class="seeAlso">
+
+
+\href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html}{AWS CLI}</div>
 }
 \section{Request syntax}{
 \preformatted{svc$create_authorizer(

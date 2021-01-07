@@ -51,8 +51,8 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=cloudsearchdomain_search]{search} \tab Retrieves a list of documents that match the specified search criteria\cr
-#'  \link[=cloudsearchdomain_suggest]{suggest} \tab Retrieves autocomplete suggestions for a partial query string \cr
-#'  \link[=cloudsearchdomain_upload_documents]{upload_documents} \tab Posts a batch of documents to a search domain for indexing 
+#'  \link[=cloudsearchdomain_suggest]{suggest} \tab Retrieves autocomplete suggestions for a partial query string\cr
+#'  \link[=cloudsearchdomain_upload_documents]{upload_documents} \tab Posts a batch of documents to a search domain for indexing
 #' }
 #'
 #' @rdname cloudsearchdomain

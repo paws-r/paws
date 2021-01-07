@@ -33,33 +33,33 @@ Definition of the public APIs exposed by Amazon Machine Learning
 \section{Operations}{
 
 \tabular{ll}{
-\link[=machinelearning_add_tags]{add_tags} \tab Adds one or more tags to an object, up to a limit of 10 \cr
-\link[=machinelearning_create_batch_prediction]{create_batch_prediction} \tab Generates predictions for a group of observations \cr
-\link[=machinelearning_create_data_source_from_rds]{create_data_source_from_rds} \tab Creates a DataSource object from an Amazon Relational Database Service (Amazon RDS) \cr
-\link[=machinelearning_create_data_source_from_redshift]{create_data_source_from_redshift} \tab Creates a DataSource from a database hosted on an Amazon Redshift cluster \cr
-\link[=machinelearning_create_data_source_from_s3]{create_data_source_from_s3} \tab Creates a DataSource object \cr
-\link[=machinelearning_create_evaluation]{create_evaluation} \tab Creates a new Evaluation of an MLModel \cr
-\link[=machinelearning_create_ml_model]{create_ml_model} \tab Creates a new MLModel using the DataSource and the recipe as information sources \cr
-\link[=machinelearning_create_realtime_endpoint]{create_realtime_endpoint} \tab Creates a real-time endpoint for the MLModel \cr
-\link[=machinelearning_delete_batch_prediction]{delete_batch_prediction} \tab Assigns the DELETED status to a BatchPrediction, rendering it unusable \cr
-\link[=machinelearning_delete_data_source]{delete_data_source} \tab Assigns the DELETED status to a DataSource, rendering it unusable \cr
-\link[=machinelearning_delete_evaluation]{delete_evaluation} \tab Assigns the DELETED status to an Evaluation, rendering it unusable \cr
-\link[=machinelearning_delete_ml_model]{delete_ml_model} \tab Assigns the DELETED status to an MLModel, rendering it unusable \cr
-\link[=machinelearning_delete_realtime_endpoint]{delete_realtime_endpoint} \tab Deletes a real time endpoint of an MLModel \cr
-\link[=machinelearning_delete_tags]{delete_tags} \tab Deletes the specified tags associated with an ML object \cr
-\link[=machinelearning_describe_batch_predictions]{describe_batch_predictions} \tab Returns a list of BatchPrediction operations that match the search criteria in the request \cr
-\link[=machinelearning_describe_data_sources]{describe_data_sources} \tab Returns a list of DataSource that match the search criteria in the request \cr
-\link[=machinelearning_describe_evaluations]{describe_evaluations} \tab Returns a list of DescribeEvaluations that match the search criteria in the request \cr
-\link[=machinelearning_describe_ml_models]{describe_ml_models} \tab Returns a list of MLModel that match the search criteria in the request \cr
-\link[=machinelearning_describe_tags]{describe_tags} \tab Describes one or more of the tags for your Amazon ML object \cr
+\link[=machinelearning_add_tags]{add_tags} \tab Adds one or more tags to an object, up to a limit of 10\cr
+\link[=machinelearning_create_batch_prediction]{create_batch_prediction} \tab Generates predictions for a group of observations\cr
+\link[=machinelearning_create_data_source_from_rds]{create_data_source_from_rds} \tab Creates a DataSource object from an Amazon Relational Database Service (Amazon RDS)\cr
+\link[=machinelearning_create_data_source_from_redshift]{create_data_source_from_redshift} \tab Creates a DataSource from a database hosted on an Amazon Redshift cluster\cr
+\link[=machinelearning_create_data_source_from_s3]{create_data_source_from_s3} \tab Creates a DataSource object\cr
+\link[=machinelearning_create_evaluation]{create_evaluation} \tab Creates a new Evaluation of an MLModel\cr
+\link[=machinelearning_create_ml_model]{create_ml_model} \tab Creates a new MLModel using the DataSource and the recipe as information sources\cr
+\link[=machinelearning_create_realtime_endpoint]{create_realtime_endpoint} \tab Creates a real-time endpoint for the MLModel\cr
+\link[=machinelearning_delete_batch_prediction]{delete_batch_prediction} \tab Assigns the DELETED status to a BatchPrediction, rendering it unusable\cr
+\link[=machinelearning_delete_data_source]{delete_data_source} \tab Assigns the DELETED status to a DataSource, rendering it unusable\cr
+\link[=machinelearning_delete_evaluation]{delete_evaluation} \tab Assigns the DELETED status to an Evaluation, rendering it unusable\cr
+\link[=machinelearning_delete_ml_model]{delete_ml_model} \tab Assigns the DELETED status to an MLModel, rendering it unusable\cr
+\link[=machinelearning_delete_realtime_endpoint]{delete_realtime_endpoint} \tab Deletes a real time endpoint of an MLModel\cr
+\link[=machinelearning_delete_tags]{delete_tags} \tab Deletes the specified tags associated with an ML object\cr
+\link[=machinelearning_describe_batch_predictions]{describe_batch_predictions} \tab Returns a list of BatchPrediction operations that match the search criteria in the request\cr
+\link[=machinelearning_describe_data_sources]{describe_data_sources} \tab Returns a list of DataSource that match the search criteria in the request\cr
+\link[=machinelearning_describe_evaluations]{describe_evaluations} \tab Returns a list of DescribeEvaluations that match the search criteria in the request\cr
+\link[=machinelearning_describe_ml_models]{describe_ml_models} \tab Returns a list of MLModel that match the search criteria in the request\cr
+\link[=machinelearning_describe_tags]{describe_tags} \tab Describes one or more of the tags for your Amazon ML object\cr
 \link[=machinelearning_get_batch_prediction]{get_batch_prediction} \tab Returns a BatchPrediction that includes detailed metadata, status, and data file information for a Batch Prediction request\cr
-\link[=machinelearning_get_data_source]{get_data_source} \tab Returns a DataSource that includes metadata and data file information, as well as the current status of the DataSource \cr
-\link[=machinelearning_get_evaluation]{get_evaluation} \tab Returns an Evaluation that includes metadata as well as the current status of the Evaluation \cr
-\link[=machinelearning_get_ml_model]{get_ml_model} \tab Returns an MLModel that includes detailed metadata, data source information, and the current status of the MLModel \cr
-\link[=machinelearning_predict]{predict} \tab Generates a prediction for the observation using the specified ML Model \cr
-\link[=machinelearning_update_batch_prediction]{update_batch_prediction} \tab Updates the BatchPredictionName of a BatchPrediction \cr
-\link[=machinelearning_update_data_source]{update_data_source} \tab Updates the DataSourceName of a DataSource \cr
-\link[=machinelearning_update_evaluation]{update_evaluation} \tab Updates the EvaluationName of an Evaluation \cr
+\link[=machinelearning_get_data_source]{get_data_source} \tab Returns a DataSource that includes metadata and data file information, as well as the current status of the DataSource\cr
+\link[=machinelearning_get_evaluation]{get_evaluation} \tab Returns an Evaluation that includes metadata as well as the current status of the Evaluation\cr
+\link[=machinelearning_get_ml_model]{get_ml_model} \tab Returns an MLModel that includes detailed metadata, data source information, and the current status of the MLModel\cr
+\link[=machinelearning_predict]{predict} \tab Generates a prediction for the observation using the specified ML Model\cr
+\link[=machinelearning_update_batch_prediction]{update_batch_prediction} \tab Updates the BatchPredictionName of a BatchPrediction\cr
+\link[=machinelearning_update_data_source]{update_data_source} \tab Updates the DataSourceName of a DataSource\cr
+\link[=machinelearning_update_evaluation]{update_evaluation} \tab Updates the EvaluationName of an Evaluation\cr
 \link[=machinelearning_update_ml_model]{update_ml_model} \tab Updates the MLModelName and the ScoreThreshold of an MLModel
 }
 }

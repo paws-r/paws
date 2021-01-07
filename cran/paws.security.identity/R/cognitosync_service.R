@@ -60,23 +60,23 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=cognitosync_bulk_publish]{bulk_publish} \tab Initiates a bulk publish of all existing datasets for an Identity Pool to the configured stream \cr
-#'  \link[=cognitosync_delete_dataset]{delete_dataset} \tab Deletes the specific dataset \cr
-#'  \link[=cognitosync_describe_dataset]{describe_dataset} \tab Gets meta data about a dataset by identity and dataset name \cr
-#'  \link[=cognitosync_describe_identity_pool_usage]{describe_identity_pool_usage} \tab Gets usage details (for example, data storage) about a particular identity pool \cr
-#'  \link[=cognitosync_describe_identity_usage]{describe_identity_usage} \tab Gets usage information for an identity, including number of datasets and data usage \cr
-#'  \link[=cognitosync_get_bulk_publish_details]{get_bulk_publish_details} \tab Get the status of the last BulkPublish operation for an identity pool \cr
-#'  \link[=cognitosync_get_cognito_events]{get_cognito_events} \tab Gets the events and the corresponding Lambda functions associated with an identity pool \cr
-#'  \link[=cognitosync_get_identity_pool_configuration]{get_identity_pool_configuration} \tab Gets the configuration settings of an identity pool \cr
-#'  \link[=cognitosync_list_datasets]{list_datasets} \tab Lists datasets for an identity \cr
-#'  \link[=cognitosync_list_identity_pool_usage]{list_identity_pool_usage} \tab Gets a list of identity pools registered with Cognito \cr
+#'  \link[=cognitosync_bulk_publish]{bulk_publish} \tab Initiates a bulk publish of all existing datasets for an Identity Pool to the configured stream\cr
+#'  \link[=cognitosync_delete_dataset]{delete_dataset} \tab Deletes the specific dataset\cr
+#'  \link[=cognitosync_describe_dataset]{describe_dataset} \tab Gets meta data about a dataset by identity and dataset name\cr
+#'  \link[=cognitosync_describe_identity_pool_usage]{describe_identity_pool_usage} \tab Gets usage details (for example, data storage) about a particular identity pool\cr
+#'  \link[=cognitosync_describe_identity_usage]{describe_identity_usage} \tab Gets usage information for an identity, including number of datasets and data usage\cr
+#'  \link[=cognitosync_get_bulk_publish_details]{get_bulk_publish_details} \tab Get the status of the last BulkPublish operation for an identity pool\cr
+#'  \link[=cognitosync_get_cognito_events]{get_cognito_events} \tab Gets the events and the corresponding Lambda functions associated with an identity pool\cr
+#'  \link[=cognitosync_get_identity_pool_configuration]{get_identity_pool_configuration} \tab Gets the configuration settings of an identity pool\cr
+#'  \link[=cognitosync_list_datasets]{list_datasets} \tab Lists datasets for an identity\cr
+#'  \link[=cognitosync_list_identity_pool_usage]{list_identity_pool_usage} \tab Gets a list of identity pools registered with Cognito\cr
 #'  \link[=cognitosync_list_records]{list_records} \tab Gets paginated records, optionally changed after a particular sync count for a dataset and identity\cr
-#'  \link[=cognitosync_register_device]{register_device} \tab Registers a device to receive push sync notifications \cr
-#'  \link[=cognitosync_set_cognito_events]{set_cognito_events} \tab Sets the AWS Lambda function for a given event type for an identity pool \cr
-#'  \link[=cognitosync_set_identity_pool_configuration]{set_identity_pool_configuration} \tab Sets the necessary configuration for push sync \cr
-#'  \link[=cognitosync_subscribe_to_dataset]{subscribe_to_dataset} \tab Subscribes to receive notifications when a dataset is modified by another device \cr
-#'  \link[=cognitosync_unsubscribe_from_dataset]{unsubscribe_from_dataset} \tab Unsubscribes from receiving notifications when a dataset is modified by another device \cr
-#'  \link[=cognitosync_update_records]{update_records} \tab Posts updates to records and adds and deletes records for a dataset and user 
+#'  \link[=cognitosync_register_device]{register_device} \tab Registers a device to receive push sync notifications\cr
+#'  \link[=cognitosync_set_cognito_events]{set_cognito_events} \tab Sets the AWS Lambda function for a given event type for an identity pool\cr
+#'  \link[=cognitosync_set_identity_pool_configuration]{set_identity_pool_configuration} \tab Sets the necessary configuration for push sync\cr
+#'  \link[=cognitosync_subscribe_to_dataset]{subscribe_to_dataset} \tab Subscribes to receive notifications when a dataset is modified by another device\cr
+#'  \link[=cognitosync_unsubscribe_from_dataset]{unsubscribe_from_dataset} \tab Unsubscribes from receiving notifications when a dataset is modified by another device\cr
+#'  \link[=cognitosync_update_records]{update_records} \tab Posts updates to records and adds and deletes records for a dataset and user
 #' }
 #'
 #' @rdname cognitosync

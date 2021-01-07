@@ -41,18 +41,18 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=iot1clickdevicesservice_claim_devices_by_claim_code]{claim_devices_by_claim_code} \tab Adds device(s) to your account (i \cr
-#'  \link[=iot1clickdevicesservice_describe_device]{describe_device} \tab Given a device ID, returns a DescribeDeviceResponse object describing the details of the device \cr
-#'  \link[=iot1clickdevicesservice_finalize_device_claim]{finalize_device_claim} \tab Given a device ID, finalizes the claim request for the associated device \cr
-#'  \link[=iot1clickdevicesservice_get_device_methods]{get_device_methods} \tab Given a device ID, returns the invokable methods associated with the device \cr
-#'  \link[=iot1clickdevicesservice_initiate_device_claim]{initiate_device_claim} \tab Given a device ID, initiates a claim request for the associated device \cr
-#'  \link[=iot1clickdevicesservice_invoke_device_method]{invoke_device_method} \tab Given a device ID, issues a request to invoke a named device method (with possible parameters) \cr
-#'  \link[=iot1clickdevicesservice_list_device_events]{list_device_events} \tab Using a device ID, returns a DeviceEventsResponse object containing an array of events for the device \cr
-#'  \link[=iot1clickdevicesservice_list_devices]{list_devices} \tab Lists the 1-Click compatible devices associated with your AWS account \cr
-#'  \link[=iot1clickdevicesservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags associated with the specified resource ARN \cr
-#'  \link[=iot1clickdevicesservice_tag_resource]{tag_resource} \tab Adds or updates the tags associated with the resource ARN \cr
-#'  \link[=iot1clickdevicesservice_unclaim_device]{unclaim_device} \tab Disassociates a device from your AWS account using its device ID \cr
-#'  \link[=iot1clickdevicesservice_untag_resource]{untag_resource} \tab Using tag keys, deletes the tags (key/value pairs) associated with the specified resource ARN \cr
+#'  \link[=iot1clickdevicesservice_claim_devices_by_claim_code]{claim_devices_by_claim_code} \tab Adds device(s) to your account (i\cr
+#'  \link[=iot1clickdevicesservice_describe_device]{describe_device} \tab Given a device ID, returns a DescribeDeviceResponse object describing the details of the device\cr
+#'  \link[=iot1clickdevicesservice_finalize_device_claim]{finalize_device_claim} \tab Given a device ID, finalizes the claim request for the associated device\cr
+#'  \link[=iot1clickdevicesservice_get_device_methods]{get_device_methods} \tab Given a device ID, returns the invokable methods associated with the device\cr
+#'  \link[=iot1clickdevicesservice_initiate_device_claim]{initiate_device_claim} \tab Given a device ID, initiates a claim request for the associated device\cr
+#'  \link[=iot1clickdevicesservice_invoke_device_method]{invoke_device_method} \tab Given a device ID, issues a request to invoke a named device method (with possible parameters)\cr
+#'  \link[=iot1clickdevicesservice_list_device_events]{list_device_events} \tab Using a device ID, returns a DeviceEventsResponse object containing an array of events for the device\cr
+#'  \link[=iot1clickdevicesservice_list_devices]{list_devices} \tab Lists the 1-Click compatible devices associated with your AWS account\cr
+#'  \link[=iot1clickdevicesservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags associated with the specified resource ARN\cr
+#'  \link[=iot1clickdevicesservice_tag_resource]{tag_resource} \tab Adds or updates the tags associated with the resource ARN\cr
+#'  \link[=iot1clickdevicesservice_unclaim_device]{unclaim_device} \tab Disassociates a device from your AWS account using its device ID\cr
+#'  \link[=iot1clickdevicesservice_untag_resource]{untag_resource} \tab Using tag keys, deletes the tags (key/value pairs) associated with the specified resource ARN\cr
 #'  \link[=iot1clickdevicesservice_update_device_state]{update_device_state} \tab Using a Boolean value (true or false), this operation enables or disables the device given a device ID
 #' }
 #'

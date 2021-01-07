@@ -3900,7 +3900,9 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
 #' @param Expression An expression that filters the partitions to be returned.
 #' 
 #' The expression uses SQL syntax similar to the SQL `WHERE` filter clause.
-#' The SQL statement parser JSQLParser parses the expression.
+#' The SQL statement parser
+#' [JSQLParser](http://jsqlparser.sourceforge.net/home.php) parses the
+#' expression.
 #' 
 #' *Operators*: The following are the operators that you can use in the
 #' `Expression` API call:

@@ -67,8 +67,8 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=pricing_describe_services]{describe_services} \tab Returns the metadata for one service or a list of the metadata for all services\cr
-#'  \link[=pricing_get_attribute_values]{get_attribute_values} \tab Returns a list of attribute values \cr
-#'  \link[=pricing_get_products]{get_products} \tab Returns a list of all products that match the filter criteria 
+#'  \link[=pricing_get_attribute_values]{get_attribute_values} \tab Returns a list of attribute values\cr
+#'  \link[=pricing_get_products]{get_products} \tab Returns a list of all products that match the filter criteria
 #' }
 #'
 #' @rdname pricing

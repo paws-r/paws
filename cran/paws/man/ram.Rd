@@ -40,29 +40,29 @@ For more information, see the \href{https://docs.aws.amazon.com/ram/latest/userg
 \section{Operations}{
 
 \tabular{ll}{
-\link[=ram_accept_resource_share_invitation]{accept_resource_share_invitation} \tab Accepts an invitation to a resource share from another AWS account \cr
-\link[=ram_associate_resource_share]{associate_resource_share} \tab Associates the specified resource share with the specified principals and resources \cr
-\link[=ram_associate_resource_share_permission]{associate_resource_share_permission} \tab Associates a permission with a resource share \cr
-\link[=ram_create_resource_share]{create_resource_share} \tab Creates a resource share \cr
-\link[=ram_delete_resource_share]{delete_resource_share} \tab Deletes the specified resource share \cr
-\link[=ram_disassociate_resource_share]{disassociate_resource_share} \tab Disassociates the specified principals or resources from the specified resource share \cr
-\link[=ram_disassociate_resource_share_permission]{disassociate_resource_share_permission} \tab Disassociates an AWS RAM permission from a resource share \cr
-\link[=ram_enable_sharing_with_aws_organization]{enable_sharing_with_aws_organization} \tab Enables resource sharing within your AWS Organization \cr
-\link[=ram_get_permission]{get_permission} \tab Gets the contents of an AWS RAM permission in JSON format \cr
-\link[=ram_get_resource_policies]{get_resource_policies} \tab Gets the policies for the specified resources that you own and have shared \cr
-\link[=ram_get_resource_share_associations]{get_resource_share_associations} \tab Gets the resources or principals for the resource shares that you own \cr
-\link[=ram_get_resource_share_invitations]{get_resource_share_invitations} \tab Gets the invitations for resource sharing that you've received \cr
-\link[=ram_get_resource_shares]{get_resource_shares} \tab Gets the resource shares that you own or the resource shares that are shared with you \cr
-\link[=ram_list_pending_invitation_resources]{list_pending_invitation_resources} \tab Lists the resources in a resource share that is shared with you but that the invitation is still pending for \cr
-\link[=ram_list_permissions]{list_permissions} \tab Lists the AWS RAM permissions \cr
-\link[=ram_list_principals]{list_principals} \tab Lists the principals that you have shared resources with or that have shared resources with you \cr
-\link[=ram_list_resources]{list_resources} \tab Lists the resources that you added to a resource shares or the resources that are shared with you \cr
-\link[=ram_list_resource_share_permissions]{list_resource_share_permissions} \tab Lists the AWS RAM permissions that are associated with a resource share \cr
-\link[=ram_list_resource_types]{list_resource_types} \tab Lists the shareable resource types supported by AWS RAM \cr
+\link[=ram_accept_resource_share_invitation]{accept_resource_share_invitation} \tab Accepts an invitation to a resource share from another AWS account\cr
+\link[=ram_associate_resource_share]{associate_resource_share} \tab Associates the specified resource share with the specified principals and resources\cr
+\link[=ram_associate_resource_share_permission]{associate_resource_share_permission} \tab Associates a permission with a resource share\cr
+\link[=ram_create_resource_share]{create_resource_share} \tab Creates a resource share\cr
+\link[=ram_delete_resource_share]{delete_resource_share} \tab Deletes the specified resource share\cr
+\link[=ram_disassociate_resource_share]{disassociate_resource_share} \tab Disassociates the specified principals or resources from the specified resource share\cr
+\link[=ram_disassociate_resource_share_permission]{disassociate_resource_share_permission} \tab Disassociates an AWS RAM permission from a resource share\cr
+\link[=ram_enable_sharing_with_aws_organization]{enable_sharing_with_aws_organization} \tab Enables resource sharing within your AWS Organization\cr
+\link[=ram_get_permission]{get_permission} \tab Gets the contents of an AWS RAM permission in JSON format\cr
+\link[=ram_get_resource_policies]{get_resource_policies} \tab Gets the policies for the specified resources that you own and have shared\cr
+\link[=ram_get_resource_share_associations]{get_resource_share_associations} \tab Gets the resources or principals for the resource shares that you own\cr
+\link[=ram_get_resource_share_invitations]{get_resource_share_invitations} \tab Gets the invitations for resource sharing that you've received\cr
+\link[=ram_get_resource_shares]{get_resource_shares} \tab Gets the resource shares that you own or the resource shares that are shared with you\cr
+\link[=ram_list_pending_invitation_resources]{list_pending_invitation_resources} \tab Lists the resources in a resource share that is shared with you but that the invitation is still pending for\cr
+\link[=ram_list_permissions]{list_permissions} \tab Lists the AWS RAM permissions\cr
+\link[=ram_list_principals]{list_principals} \tab Lists the principals that you have shared resources with or that have shared resources with you\cr
+\link[=ram_list_resources]{list_resources} \tab Lists the resources that you added to a resource shares or the resources that are shared with you\cr
+\link[=ram_list_resource_share_permissions]{list_resource_share_permissions} \tab Lists the AWS RAM permissions that are associated with a resource share\cr
+\link[=ram_list_resource_types]{list_resource_types} \tab Lists the shareable resource types supported by AWS RAM\cr
 \link[=ram_promote_resource_share_created_from_policy]{promote_resource_share_created_from_policy} \tab Resource shares that were created by attaching a policy to a resource are visible only to the resource share owner, and the resource share cannot be modified in AWS RAM\cr
-\link[=ram_reject_resource_share_invitation]{reject_resource_share_invitation} \tab Rejects an invitation to a resource share from another AWS account \cr
-\link[=ram_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource share that you own \cr
-\link[=ram_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource share that you own \cr
+\link[=ram_reject_resource_share_invitation]{reject_resource_share_invitation} \tab Rejects an invitation to a resource share from another AWS account\cr
+\link[=ram_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource share that you own\cr
+\link[=ram_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource share that you own\cr
 \link[=ram_update_resource_share]{update_resource_share} \tab Updates the specified resource share that you own
 }
 }

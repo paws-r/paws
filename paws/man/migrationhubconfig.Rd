@@ -50,7 +50,7 @@ Migration Hub Home Region API reference.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=migrationhubconfig_create_home_region_control]{create_home_region_control} \tab This API sets up the home region for the calling account only \cr
+\link[=migrationhubconfig_create_home_region_control]{create_home_region_control} \tab This API sets up the home region for the calling account only\cr
 \link[=migrationhubconfig_describe_home_region_controls]{describe_home_region_controls} \tab This API permits filtering on the ControlId and HomeRegion fields\cr
 \link[=migrationhubconfig_get_home_region]{get_home_region} \tab Returns the calling account’s home region, if configured
 }

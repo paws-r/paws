@@ -993,7 +993,9 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 #' lexmodelbuildingservice_get_builtin_intent(signature)
 #'
 #' @param signature &#91;required&#93; The unique identifier for a built-in intent. To find the signature for
-#' an intent, see Standard Built-in Intents in the *Alexa Skills Kit*.
+#' an intent, see [Standard Built-in
+#' Intents](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+#' in the *Alexa Skills Kit*.
 #'
 #' @section Request syntax:
 #' ```
@@ -1037,7 +1039,9 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #' @param signatureContains Substring to match in built-in intent signatures. An intent will be
 #' returned if any part of its signature matches the substring. For
 #' example, "xyz" matches both "xyzabc" and "abcxyz." To find the signature
-#' for an intent, see Standard Built-in Intents in the *Alexa Skills Kit*.
+#' for an intent, see [Standard Built-in
+#' Intents](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+#' in the *Alexa Skills Kit*.
 #' @param nextToken A pagination token that fetches the next page of intents. If this API
 #' call is truncated, Amazon Lex returns a pagination token in the
 #' response. To fetch the next page of intents, use the pagination token in
@@ -1079,8 +1083,9 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #'
 #' Gets a list of built-in slot types that meet the specified criteria.
 #' 
-#' For a list of built-in slot types, see Slot Type Reference in the *Alexa
-#' Skills Kit*.
+#' For a list of built-in slot types, see [Slot Type
+#' Reference](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference)
+#' in the *Alexa Skills Kit*.
 #' 
 #' This operation requires permission for the `lex:GetBuiltInSlotTypes`
 #' action.
@@ -2090,8 +2095,9 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' called `AMAZON.HelpIntent`, you can't create a custom intent called
 #' `HelpIntent`.
 #' 
-#' For a list of built-in intents, see Standard Built-in Intents in the
-#' *Alexa Skills Kit*.
+#' For a list of built-in intents, see [Standard Built-in
+#' Intents](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+#' in the *Alexa Skills Kit*.
 #' @param description A description of the intent.
 #' @param slots An array of intent slots. At runtime, Amazon Lex elicits required slot
 #' values from the user using prompts defined in the slots. For more
@@ -2167,8 +2173,9 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' to the client application, or direct it to invoke a Lambda function that
 #' can process the intent (for example, place an order with a pizzeria).
 #' @param parentIntentSignature A unique identifier for the built-in intent to base this intent on. To
-#' find the signature for an intent, see Standard Built-in Intents in the
-#' *Alexa Skills Kit*.
+#' find the signature for an intent, see [Standard Built-in
+#' Intents](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+#' in the *Alexa Skills Kit*.
 #' @param checksum Identifies a specific revision of the `$LATEST` version.
 #' 
 #' When you create a new intent, leave the `checksum` field blank. If you
@@ -2481,8 +2488,9 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' slot type called `AMAZON.DATE`, you can't create a custom slot type
 #' called `DATE`.
 #' 
-#' For a list of built-in slot types, see Slot Type Reference in the *Alexa
-#' Skills Kit*.
+#' For a list of built-in slot types, see [Slot Type
+#' Reference](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference)
+#' in the *Alexa Skills Kit*.
 #' @param description A description of the slot type.
 #' @param enumerationValues A list of `EnumerationValue` objects that defines the values that the
 #' slot type can take. Each value can have a list of `synonyms`, which are

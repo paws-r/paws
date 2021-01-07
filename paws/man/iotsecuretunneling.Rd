@@ -37,12 +37,12 @@ User Guide.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=iotsecuretunneling_close_tunnel]{close_tunnel} \tab Closes a tunnel identified by the unique tunnel id \cr
-\link[=iotsecuretunneling_describe_tunnel]{describe_tunnel} \tab Gets information about a tunnel identified by the unique tunnel id \cr
-\link[=iotsecuretunneling_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource \cr
-\link[=iotsecuretunneling_list_tunnels]{list_tunnels} \tab List all tunnels for an AWS account \cr
+\link[=iotsecuretunneling_close_tunnel]{close_tunnel} \tab Closes a tunnel identified by the unique tunnel id\cr
+\link[=iotsecuretunneling_describe_tunnel]{describe_tunnel} \tab Gets information about a tunnel identified by the unique tunnel id\cr
+\link[=iotsecuretunneling_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
+\link[=iotsecuretunneling_list_tunnels]{list_tunnels} \tab List all tunnels for an AWS account\cr
 \link[=iotsecuretunneling_open_tunnel]{open_tunnel} \tab Creates a new tunnel, and returns two client access tokens for clients to use to connect to the AWS IoT Secure Tunneling proxy server\cr
-\link[=iotsecuretunneling_tag_resource]{tag_resource} \tab A resource tag \cr
+\link[=iotsecuretunneling_tag_resource]{tag_resource} \tab A resource tag\cr
 \link[=iotsecuretunneling_untag_resource]{untag_resource} \tab Removes a tag from a resource
 }
 }

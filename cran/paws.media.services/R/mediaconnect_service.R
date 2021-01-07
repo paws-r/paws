@@ -39,28 +39,28 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=mediaconnect_add_flow_outputs]{add_flow_outputs} \tab Adds outputs to an existing flow \cr
-#'  \link[=mediaconnect_add_flow_sources]{add_flow_sources} \tab Adds Sources to flow \cr
-#'  \link[=mediaconnect_add_flow_vpc_interfaces]{add_flow_vpc_interfaces} \tab Adds VPC interfaces to flow \cr
-#'  \link[=mediaconnect_create_flow]{create_flow} \tab Creates a new flow \cr
-#'  \link[=mediaconnect_delete_flow]{delete_flow} \tab Deletes a flow \cr
-#'  \link[=mediaconnect_describe_flow]{describe_flow} \tab Displays the details of a flow \cr
-#'  \link[=mediaconnect_grant_flow_entitlements]{grant_flow_entitlements} \tab Grants entitlements to an existing flow \cr
+#'  \link[=mediaconnect_add_flow_outputs]{add_flow_outputs} \tab Adds outputs to an existing flow\cr
+#'  \link[=mediaconnect_add_flow_sources]{add_flow_sources} \tab Adds Sources to flow\cr
+#'  \link[=mediaconnect_add_flow_vpc_interfaces]{add_flow_vpc_interfaces} \tab Adds VPC interfaces to flow\cr
+#'  \link[=mediaconnect_create_flow]{create_flow} \tab Creates a new flow\cr
+#'  \link[=mediaconnect_delete_flow]{delete_flow} \tab Deletes a flow\cr
+#'  \link[=mediaconnect_describe_flow]{describe_flow} \tab Displays the details of a flow\cr
+#'  \link[=mediaconnect_grant_flow_entitlements]{grant_flow_entitlements} \tab Grants entitlements to an existing flow\cr
 #'  \link[=mediaconnect_list_entitlements]{list_entitlements} \tab Displays a list of all entitlements that have been granted to this account\cr
-#'  \link[=mediaconnect_list_flows]{list_flows} \tab Displays a list of flows that are associated with this account \cr
-#'  \link[=mediaconnect_list_tags_for_resource]{list_tags_for_resource} \tab List all tags on an AWS Elemental MediaConnect resource \cr
-#'  \link[=mediaconnect_remove_flow_output]{remove_flow_output} \tab Removes an output from an existing flow \cr
-#'  \link[=mediaconnect_remove_flow_source]{remove_flow_source} \tab Removes a source from an existing flow \cr
-#'  \link[=mediaconnect_remove_flow_vpc_interface]{remove_flow_vpc_interface} \tab Removes a VPC Interface from an existing flow \cr
-#'  \link[=mediaconnect_revoke_flow_entitlement]{revoke_flow_entitlement} \tab Revokes an entitlement from a flow \cr
-#'  \link[=mediaconnect_start_flow]{start_flow} \tab Starts a flow \cr
-#'  \link[=mediaconnect_stop_flow]{stop_flow} \tab Stops a flow \cr
+#'  \link[=mediaconnect_list_flows]{list_flows} \tab Displays a list of flows that are associated with this account\cr
+#'  \link[=mediaconnect_list_tags_for_resource]{list_tags_for_resource} \tab List all tags on an AWS Elemental MediaConnect resource\cr
+#'  \link[=mediaconnect_remove_flow_output]{remove_flow_output} \tab Removes an output from an existing flow\cr
+#'  \link[=mediaconnect_remove_flow_source]{remove_flow_source} \tab Removes a source from an existing flow\cr
+#'  \link[=mediaconnect_remove_flow_vpc_interface]{remove_flow_vpc_interface} \tab Removes a VPC Interface from an existing flow\cr
+#'  \link[=mediaconnect_revoke_flow_entitlement]{revoke_flow_entitlement} \tab Revokes an entitlement from a flow\cr
+#'  \link[=mediaconnect_start_flow]{start_flow} \tab Starts a flow\cr
+#'  \link[=mediaconnect_stop_flow]{stop_flow} \tab Stops a flow\cr
 #'  \link[=mediaconnect_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
-#'  \link[=mediaconnect_untag_resource]{untag_resource} \tab Deletes specified tags from a resource \cr
-#'  \link[=mediaconnect_update_flow]{update_flow} \tab Updates flow \cr
-#'  \link[=mediaconnect_update_flow_entitlement]{update_flow_entitlement} \tab You can change an entitlement's description, subscribers, and encryption \cr
-#'  \link[=mediaconnect_update_flow_output]{update_flow_output} \tab Updates an existing flow output \cr
-#'  \link[=mediaconnect_update_flow_source]{update_flow_source} \tab Updates the source of a flow 
+#'  \link[=mediaconnect_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
+#'  \link[=mediaconnect_update_flow]{update_flow} \tab Updates flow\cr
+#'  \link[=mediaconnect_update_flow_entitlement]{update_flow_entitlement} \tab You can change an entitlement's description, subscribers, and encryption\cr
+#'  \link[=mediaconnect_update_flow_output]{update_flow_output} \tab Updates an existing flow output\cr
+#'  \link[=mediaconnect_update_flow_source]{update_flow_source} \tab Updates the source of a flow
 #' }
 #'
 #' @rdname mediaconnect

@@ -51,18 +51,18 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=signer_cancel_signing_profile]{cancel_signing_profile} \tab Changes the state of an ACTIVE signing profile to CANCELED \cr
-#'  \link[=signer_describe_signing_job]{describe_signing_job} \tab Returns information about a specific code signing job \cr
-#'  \link[=signer_get_signing_platform]{get_signing_platform} \tab Returns information on a specific signing platform \cr
-#'  \link[=signer_get_signing_profile]{get_signing_profile} \tab Returns information on a specific signing profile \cr
-#'  \link[=signer_list_signing_jobs]{list_signing_jobs} \tab Lists all your signing jobs \cr
+#'  \link[=signer_cancel_signing_profile]{cancel_signing_profile} \tab Changes the state of an ACTIVE signing profile to CANCELED\cr
+#'  \link[=signer_describe_signing_job]{describe_signing_job} \tab Returns information about a specific code signing job\cr
+#'  \link[=signer_get_signing_platform]{get_signing_platform} \tab Returns information on a specific signing platform\cr
+#'  \link[=signer_get_signing_profile]{get_signing_profile} \tab Returns information on a specific signing profile\cr
+#'  \link[=signer_list_signing_jobs]{list_signing_jobs} \tab Lists all your signing jobs\cr
 #'  \link[=signer_list_signing_platforms]{list_signing_platforms} \tab Lists all signing platforms available in code signing that match the request parameters\cr
-#'  \link[=signer_list_signing_profiles]{list_signing_profiles} \tab Lists all available signing profiles in your AWS account \cr
-#'  \link[=signer_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with a signing profile resource \cr
-#'  \link[=signer_put_signing_profile]{put_signing_profile} \tab Creates a signing profile \cr
-#'  \link[=signer_start_signing_job]{start_signing_job} \tab Initiates a signing job to be performed on the code provided \cr
-#'  \link[=signer_tag_resource]{tag_resource} \tab Adds one or more tags to a signing profile \cr
-#'  \link[=signer_untag_resource]{untag_resource} \tab Removes one or more tags from a signing profile 
+#'  \link[=signer_list_signing_profiles]{list_signing_profiles} \tab Lists all available signing profiles in your AWS account\cr
+#'  \link[=signer_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with a signing profile resource\cr
+#'  \link[=signer_put_signing_profile]{put_signing_profile} \tab Creates a signing profile\cr
+#'  \link[=signer_start_signing_job]{start_signing_job} \tab Initiates a signing job to be performed on the code provided\cr
+#'  \link[=signer_tag_resource]{tag_resource} \tab Adds one or more tags to a signing profile\cr
+#'  \link[=signer_untag_resource]{untag_resource} \tab Removes one or more tags from a signing profile
 #' }
 #'
 #' @rdname signer

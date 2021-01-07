@@ -56,33 +56,33 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=applicationinsights_create_application]{create_application} \tab Adds an application that is created from a resource group \cr
-#'  \link[=applicationinsights_create_component]{create_component} \tab Creates a custom component by grouping similar standalone instances to monitor \cr
-#'  \link[=applicationinsights_create_log_pattern]{create_log_pattern} \tab Adds an log pattern to a LogPatternSet \cr
-#'  \link[=applicationinsights_delete_application]{delete_application} \tab Removes the specified application from monitoring \cr
-#'  \link[=applicationinsights_delete_component]{delete_component} \tab Ungroups a custom component \cr
-#'  \link[=applicationinsights_delete_log_pattern]{delete_log_pattern} \tab Removes the specified log pattern from a LogPatternSet \cr
-#'  \link[=applicationinsights_describe_application]{describe_application} \tab Describes the application \cr
-#'  \link[=applicationinsights_describe_component]{describe_component} \tab Describes a component and lists the resources that are grouped together in a component \cr
-#'  \link[=applicationinsights_describe_component_configuration]{describe_component_configuration} \tab Describes the monitoring configuration of the component \cr
-#'  \link[=applicationinsights_describe_component_configuration_recommendation]{describe_component_configuration_recommendation} \tab Describes the recommended monitoring configuration of the component \cr
-#'  \link[=applicationinsights_describe_log_pattern]{describe_log_pattern} \tab Describe a specific log pattern from a LogPatternSet \cr
-#'  \link[=applicationinsights_describe_observation]{describe_observation} \tab Describes an anomaly or error with the application \cr
-#'  \link[=applicationinsights_describe_problem]{describe_problem} \tab Describes an application problem \cr
-#'  \link[=applicationinsights_describe_problem_observations]{describe_problem_observations} \tab Describes the anomalies or errors associated with the problem \cr
-#'  \link[=applicationinsights_list_applications]{list_applications} \tab Lists the IDs of the applications that you are monitoring \cr
-#'  \link[=applicationinsights_list_components]{list_components} \tab Lists the auto-grouped, standalone, and custom components of the application \cr
+#'  \link[=applicationinsights_create_application]{create_application} \tab Adds an application that is created from a resource group\cr
+#'  \link[=applicationinsights_create_component]{create_component} \tab Creates a custom component by grouping similar standalone instances to monitor\cr
+#'  \link[=applicationinsights_create_log_pattern]{create_log_pattern} \tab Adds an log pattern to a LogPatternSet\cr
+#'  \link[=applicationinsights_delete_application]{delete_application} \tab Removes the specified application from monitoring\cr
+#'  \link[=applicationinsights_delete_component]{delete_component} \tab Ungroups a custom component\cr
+#'  \link[=applicationinsights_delete_log_pattern]{delete_log_pattern} \tab Removes the specified log pattern from a LogPatternSet\cr
+#'  \link[=applicationinsights_describe_application]{describe_application} \tab Describes the application\cr
+#'  \link[=applicationinsights_describe_component]{describe_component} \tab Describes a component and lists the resources that are grouped together in a component\cr
+#'  \link[=applicationinsights_describe_component_configuration]{describe_component_configuration} \tab Describes the monitoring configuration of the component\cr
+#'  \link[=applicationinsights_describe_component_configuration_recommendation]{describe_component_configuration_recommendation} \tab Describes the recommended monitoring configuration of the component\cr
+#'  \link[=applicationinsights_describe_log_pattern]{describe_log_pattern} \tab Describe a specific log pattern from a LogPatternSet\cr
+#'  \link[=applicationinsights_describe_observation]{describe_observation} \tab Describes an anomaly or error with the application\cr
+#'  \link[=applicationinsights_describe_problem]{describe_problem} \tab Describes an application problem\cr
+#'  \link[=applicationinsights_describe_problem_observations]{describe_problem_observations} \tab Describes the anomalies or errors associated with the problem\cr
+#'  \link[=applicationinsights_list_applications]{list_applications} \tab Lists the IDs of the applications that you are monitoring\cr
+#'  \link[=applicationinsights_list_components]{list_components} \tab Lists the auto-grouped, standalone, and custom components of the application\cr
 #'  \link[=applicationinsights_list_configuration_history]{list_configuration_history} \tab Lists the INFO, WARN, and ERROR events for periodic configuration updates performed by Application Insights\cr
-#'  \link[=applicationinsights_list_log_patterns]{list_log_patterns} \tab Lists the log patterns in the specific log LogPatternSet \cr
-#'  \link[=applicationinsights_list_log_pattern_sets]{list_log_pattern_sets} \tab Lists the log pattern sets in the specific application \cr
-#'  \link[=applicationinsights_list_problems]{list_problems} \tab Lists the problems with your application \cr
-#'  \link[=applicationinsights_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified application \cr
-#'  \link[=applicationinsights_tag_resource]{tag_resource} \tab Add one or more tags (keys and values) to a specified application \cr
-#'  \link[=applicationinsights_untag_resource]{untag_resource} \tab Remove one or more tags (keys and values) from a specified application \cr
-#'  \link[=applicationinsights_update_application]{update_application} \tab Updates the application \cr
-#'  \link[=applicationinsights_update_component]{update_component} \tab Updates the custom component name and/or the list of resources that make up the component \cr
-#'  \link[=applicationinsights_update_component_configuration]{update_component_configuration} \tab Updates the monitoring configurations for the component \cr
-#'  \link[=applicationinsights_update_log_pattern]{update_log_pattern} \tab Adds a log pattern to a LogPatternSet 
+#'  \link[=applicationinsights_list_log_patterns]{list_log_patterns} \tab Lists the log patterns in the specific log LogPatternSet\cr
+#'  \link[=applicationinsights_list_log_pattern_sets]{list_log_pattern_sets} \tab Lists the log pattern sets in the specific application\cr
+#'  \link[=applicationinsights_list_problems]{list_problems} \tab Lists the problems with your application\cr
+#'  \link[=applicationinsights_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified application\cr
+#'  \link[=applicationinsights_tag_resource]{tag_resource} \tab Add one or more tags (keys and values) to a specified application\cr
+#'  \link[=applicationinsights_untag_resource]{untag_resource} \tab Remove one or more tags (keys and values) from a specified application\cr
+#'  \link[=applicationinsights_update_application]{update_application} \tab Updates the application\cr
+#'  \link[=applicationinsights_update_component]{update_component} \tab Updates the custom component name and/or the list of resources that make up the component\cr
+#'  \link[=applicationinsights_update_component_configuration]{update_component_configuration} \tab Updates the monitoring configurations for the component\cr
+#'  \link[=applicationinsights_update_log_pattern]{update_log_pattern} \tab Adds a log pattern to a LogPatternSet
 #' }
 #'
 #' @rdname applicationinsights

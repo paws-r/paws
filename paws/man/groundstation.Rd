@@ -37,30 +37,30 @@ build or manage your own ground station infrastructure.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=groundstation_cancel_contact]{cancel_contact} \tab Cancels a contact with a specified contact ID \cr
-\link[=groundstation_create_config]{create_config} \tab Creates a Config with the specified configData parameters \cr
+\link[=groundstation_cancel_contact]{cancel_contact} \tab Cancels a contact with a specified contact ID\cr
+\link[=groundstation_create_config]{create_config} \tab Creates a Config with the specified configData parameters\cr
 \link[=groundstation_create_dataflow_endpoint_group]{create_dataflow_endpoint_group} \tab Creates a DataflowEndpoint group containing the specified list of DataflowEndpoint objects\cr
-\link[=groundstation_create_mission_profile]{create_mission_profile} \tab Creates a mission profile \cr
-\link[=groundstation_delete_config]{delete_config} \tab Deletes a Config \cr
-\link[=groundstation_delete_dataflow_endpoint_group]{delete_dataflow_endpoint_group} \tab Deletes a dataflow endpoint group \cr
-\link[=groundstation_delete_mission_profile]{delete_mission_profile} \tab Deletes a mission profile \cr
-\link[=groundstation_describe_contact]{describe_contact} \tab Describes an existing contact \cr
-\link[=groundstation_get_config]{get_config} \tab Returns Config information \cr
-\link[=groundstation_get_dataflow_endpoint_group]{get_dataflow_endpoint_group} \tab Returns the dataflow endpoint group \cr
-\link[=groundstation_get_minute_usage]{get_minute_usage} \tab Returns the number of minutes used by account \cr
-\link[=groundstation_get_mission_profile]{get_mission_profile} \tab Returns a mission profile \cr
-\link[=groundstation_get_satellite]{get_satellite} \tab Returns a satellite \cr
-\link[=groundstation_list_configs]{list_configs} \tab Returns a list of Config objects \cr
-\link[=groundstation_list_contacts]{list_contacts} \tab Returns a list of contacts \cr
-\link[=groundstation_list_dataflow_endpoint_groups]{list_dataflow_endpoint_groups} \tab Returns a list of DataflowEndpoint groups \cr
-\link[=groundstation_list_ground_stations]{list_ground_stations} \tab Returns a list of ground stations \cr
-\link[=groundstation_list_mission_profiles]{list_mission_profiles} \tab Returns a list of mission profiles \cr
-\link[=groundstation_list_satellites]{list_satellites} \tab Returns a list of satellites \cr
-\link[=groundstation_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for a specified resource \cr
-\link[=groundstation_reserve_contact]{reserve_contact} \tab Reserves a contact using specified parameters \cr
-\link[=groundstation_tag_resource]{tag_resource} \tab Assigns a tag to a resource \cr
-\link[=groundstation_untag_resource]{untag_resource} \tab Deassigns a resource tag \cr
-\link[=groundstation_update_config]{update_config} \tab Updates the Config used when scheduling contacts \cr
+\link[=groundstation_create_mission_profile]{create_mission_profile} \tab Creates a mission profile\cr
+\link[=groundstation_delete_config]{delete_config} \tab Deletes a Config\cr
+\link[=groundstation_delete_dataflow_endpoint_group]{delete_dataflow_endpoint_group} \tab Deletes a dataflow endpoint group\cr
+\link[=groundstation_delete_mission_profile]{delete_mission_profile} \tab Deletes a mission profile\cr
+\link[=groundstation_describe_contact]{describe_contact} \tab Describes an existing contact\cr
+\link[=groundstation_get_config]{get_config} \tab Returns Config information\cr
+\link[=groundstation_get_dataflow_endpoint_group]{get_dataflow_endpoint_group} \tab Returns the dataflow endpoint group\cr
+\link[=groundstation_get_minute_usage]{get_minute_usage} \tab Returns the number of minutes used by account\cr
+\link[=groundstation_get_mission_profile]{get_mission_profile} \tab Returns a mission profile\cr
+\link[=groundstation_get_satellite]{get_satellite} \tab Returns a satellite\cr
+\link[=groundstation_list_configs]{list_configs} \tab Returns a list of Config objects\cr
+\link[=groundstation_list_contacts]{list_contacts} \tab Returns a list of contacts\cr
+\link[=groundstation_list_dataflow_endpoint_groups]{list_dataflow_endpoint_groups} \tab Returns a list of DataflowEndpoint groups\cr
+\link[=groundstation_list_ground_stations]{list_ground_stations} \tab Returns a list of ground stations\cr
+\link[=groundstation_list_mission_profiles]{list_mission_profiles} \tab Returns a list of mission profiles\cr
+\link[=groundstation_list_satellites]{list_satellites} \tab Returns a list of satellites\cr
+\link[=groundstation_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for a specified resource\cr
+\link[=groundstation_reserve_contact]{reserve_contact} \tab Reserves a contact using specified parameters\cr
+\link[=groundstation_tag_resource]{tag_resource} \tab Assigns a tag to a resource\cr
+\link[=groundstation_untag_resource]{untag_resource} \tab Deassigns a resource tag\cr
+\link[=groundstation_update_config]{update_config} \tab Updates the Config used when scheduling contacts\cr
 \link[=groundstation_update_mission_profile]{update_mission_profile} \tab Updates a mission profile
 }
 }

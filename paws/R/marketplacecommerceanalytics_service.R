@@ -40,7 +40,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=marketplacecommerceanalytics_generate_data_set]{generate_data_set} \tab Given a data set type and data set publication date, asynchronously publishes the requested data set to the specified S3 bucket and notifies the specified SNS topic once the data is available\cr
-#'  \link[=marketplacecommerceanalytics_start_support_data_export]{start_support_data_export} \tab Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available 
+#'  \link[=marketplacecommerceanalytics_start_support_data_export]{start_support_data_export} \tab Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available
 #' }
 #'
 #' @rdname marketplacecommerceanalytics

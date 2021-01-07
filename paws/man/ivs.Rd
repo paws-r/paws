@@ -138,23 +138,23 @@ specified ARN.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=ivs_batch_get_channel]{batch_get_channel} \tab Performs GetChannel on multiple ARNs simultaneously \cr
-\link[=ivs_batch_get_stream_key]{batch_get_stream_key} \tab Performs GetStreamKey on multiple ARNs simultaneously \cr
-\link[=ivs_create_channel]{create_channel} \tab Creates a new channel and an associated stream key to start streaming \cr
-\link[=ivs_create_stream_key]{create_stream_key} \tab Creates a stream key, used to initiate a stream, for a specified channel ARN \cr
-\link[=ivs_delete_channel]{delete_channel} \tab Deletes a specified channel and its associated stream keys \cr
+\link[=ivs_batch_get_channel]{batch_get_channel} \tab Performs GetChannel on multiple ARNs simultaneously\cr
+\link[=ivs_batch_get_stream_key]{batch_get_stream_key} \tab Performs GetStreamKey on multiple ARNs simultaneously\cr
+\link[=ivs_create_channel]{create_channel} \tab Creates a new channel and an associated stream key to start streaming\cr
+\link[=ivs_create_stream_key]{create_stream_key} \tab Creates a stream key, used to initiate a stream, for a specified channel ARN\cr
+\link[=ivs_delete_channel]{delete_channel} \tab Deletes a specified channel and its associated stream keys\cr
 \link[=ivs_delete_stream_key]{delete_stream_key} \tab Deletes the stream key for a specified ARN, so it can no longer be used to stream\cr
-\link[=ivs_get_channel]{get_channel} \tab Gets the channel configuration for a specified channel ARN \cr
-\link[=ivs_get_stream]{get_stream} \tab Gets information about the active (live) stream on a specified channel \cr
-\link[=ivs_get_stream_key]{get_stream_key} \tab Gets stream-key information for a specified ARN \cr
-\link[=ivs_list_channels]{list_channels} \tab Gets summary information about channels \cr
-\link[=ivs_list_stream_keys]{list_stream_keys} \tab Gets summary information about stream keys \cr
-\link[=ivs_list_streams]{list_streams} \tab Gets summary information about live streams \cr
-\link[=ivs_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about the tags for a specified ARN \cr
-\link[=ivs_put_metadata]{put_metadata} \tab Inserts metadata into an RTMP stream for a specified channel \cr
-\link[=ivs_stop_stream]{stop_stream} \tab Disconnects the stream for the specified channel \cr
-\link[=ivs_tag_resource]{tag_resource} \tab Adds or updates tags for a resource with a specified ARN \cr
-\link[=ivs_untag_resource]{untag_resource} \tab Removes tags for a resource with a specified ARN \cr
+\link[=ivs_get_channel]{get_channel} \tab Gets the channel configuration for a specified channel ARN\cr
+\link[=ivs_get_stream]{get_stream} \tab Gets information about the active (live) stream on a specified channel\cr
+\link[=ivs_get_stream_key]{get_stream_key} \tab Gets stream-key information for a specified ARN\cr
+\link[=ivs_list_channels]{list_channels} \tab Gets summary information about channels\cr
+\link[=ivs_list_stream_keys]{list_stream_keys} \tab Gets summary information about stream keys\cr
+\link[=ivs_list_streams]{list_streams} \tab Gets summary information about live streams\cr
+\link[=ivs_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about the tags for a specified ARN\cr
+\link[=ivs_put_metadata]{put_metadata} \tab Inserts metadata into an RTMP stream for a specified channel\cr
+\link[=ivs_stop_stream]{stop_stream} \tab Disconnects the stream for the specified channel\cr
+\link[=ivs_tag_resource]{tag_resource} \tab Adds or updates tags for a resource with a specified ARN\cr
+\link[=ivs_untag_resource]{untag_resource} \tab Removes tags for a resource with a specified ARN\cr
 \link[=ivs_update_channel]{update_channel} \tab Updates a channel's configuration
 }
 }

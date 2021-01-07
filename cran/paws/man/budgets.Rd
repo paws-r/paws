@@ -74,18 +74,18 @@ API, see \href{https://aws.amazon.com/aws-cost-management/pricing/}{AWS Cost Man
 
 \tabular{ll}{
 \link[=budgets_create_budget]{create_budget} \tab Creates a budget and, if included, notifications and subscribers\cr
-\link[=budgets_create_notification]{create_notification} \tab Creates a notification \cr
-\link[=budgets_create_subscriber]{create_subscriber} \tab Creates a subscriber \cr
-\link[=budgets_delete_budget]{delete_budget} \tab Deletes a budget \cr
-\link[=budgets_delete_notification]{delete_notification} \tab Deletes a notification \cr
-\link[=budgets_delete_subscriber]{delete_subscriber} \tab Deletes a subscriber \cr
-\link[=budgets_describe_budget]{describe_budget} \tab Describes a budget \cr
-\link[=budgets_describe_budget_performance_history]{describe_budget_performance_history} \tab Describes the history for DAILY, MONTHLY, and QUARTERLY budgets \cr
-\link[=budgets_describe_budgets]{describe_budgets} \tab Lists the budgets that are associated with an account \cr
-\link[=budgets_describe_notifications_for_budget]{describe_notifications_for_budget} \tab Lists the notifications that are associated with a budget \cr
-\link[=budgets_describe_subscribers_for_notification]{describe_subscribers_for_notification} \tab Lists the subscribers that are associated with a notification \cr
-\link[=budgets_update_budget]{update_budget} \tab Updates a budget \cr
-\link[=budgets_update_notification]{update_notification} \tab Updates a notification \cr
+\link[=budgets_create_notification]{create_notification} \tab Creates a notification\cr
+\link[=budgets_create_subscriber]{create_subscriber} \tab Creates a subscriber\cr
+\link[=budgets_delete_budget]{delete_budget} \tab Deletes a budget\cr
+\link[=budgets_delete_notification]{delete_notification} \tab Deletes a notification\cr
+\link[=budgets_delete_subscriber]{delete_subscriber} \tab Deletes a subscriber\cr
+\link[=budgets_describe_budget]{describe_budget} \tab Describes a budget\cr
+\link[=budgets_describe_budget_performance_history]{describe_budget_performance_history} \tab Describes the history for DAILY, MONTHLY, and QUARTERLY budgets\cr
+\link[=budgets_describe_budgets]{describe_budgets} \tab Lists the budgets that are associated with an account\cr
+\link[=budgets_describe_notifications_for_budget]{describe_notifications_for_budget} \tab Lists the notifications that are associated with a budget\cr
+\link[=budgets_describe_subscribers_for_notification]{describe_subscribers_for_notification} \tab Lists the subscribers that are associated with a notification\cr
+\link[=budgets_update_budget]{update_budget} \tab Updates a budget\cr
+\link[=budgets_update_notification]{update_notification} \tab Updates a notification\cr
 \link[=budgets_update_subscriber]{update_subscriber} \tab Updates a subscriber
 }
 }

@@ -56,9 +56,9 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=iotdataplane_delete_thing_shadow]{delete_thing_shadow} \tab Deletes the shadow for the specified thing\cr
-#'  \link[=iotdataplane_get_thing_shadow]{get_thing_shadow} \tab Gets the shadow for the specified thing \cr
-#'  \link[=iotdataplane_list_named_shadows_for_thing]{list_named_shadows_for_thing} \tab Lists the shadows for the specified thing \cr
-#'  \link[=iotdataplane_publish]{publish} \tab Publishes state information \cr
+#'  \link[=iotdataplane_get_thing_shadow]{get_thing_shadow} \tab Gets the shadow for the specified thing\cr
+#'  \link[=iotdataplane_list_named_shadows_for_thing]{list_named_shadows_for_thing} \tab Lists the shadows for the specified thing\cr
+#'  \link[=iotdataplane_publish]{publish} \tab Publishes state information\cr
 #'  \link[=iotdataplane_update_thing_shadow]{update_thing_shadow} \tab Updates the shadow for the specified thing
 #' }
 #'

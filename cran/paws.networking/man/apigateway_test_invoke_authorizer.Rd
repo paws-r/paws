@@ -39,8 +39,11 @@ Simulate the execution of an Authorizer in your RestApi with headers,
 parameters, and an incoming request body.
 }
 \details{
+<div class="seeAlso">
+
+
 \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html}{Use Lambda Function as Authorizer}
-\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html}{Use Cognito User Pool as Authorizer}
+\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html}{Use Cognito User Pool as Authorizer}</div>
 }
 \section{Request syntax}{
 \preformatted{svc$test_invoke_authorizer(

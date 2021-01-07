@@ -46,12 +46,12 @@ the new Amazon Macie, see \href{https://aws.amazon.com/macie/}{Amazon Macie}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=macie_associate_member_account]{associate_member_account} \tab Associates a specified AWS account with Amazon Macie Classic as a member account \cr
+\link[=macie_associate_member_account]{associate_member_account} \tab Associates a specified AWS account with Amazon Macie Classic as a member account\cr
 \link[=macie_associate_s3_resources]{associate_s3_resources} \tab Associates specified S3 resources with Amazon Macie Classic for monitoring and data classification\cr
-\link[=macie_disassociate_member_account]{disassociate_member_account} \tab Removes the specified member account from Amazon Macie Classic \cr
-\link[=macie_disassociate_s3_resources]{disassociate_s3_resources} \tab Removes specified S3 resources from being monitored by Amazon Macie Classic \cr
+\link[=macie_disassociate_member_account]{disassociate_member_account} \tab Removes the specified member account from Amazon Macie Classic\cr
+\link[=macie_disassociate_s3_resources]{disassociate_s3_resources} \tab Removes specified S3 resources from being monitored by Amazon Macie Classic\cr
 \link[=macie_list_member_accounts]{list_member_accounts} \tab Lists all Amazon Macie Classic member accounts for the current Amazon Macie Classic master account\cr
-\link[=macie_list_s3_resources]{list_s3_resources} \tab Lists all the S3 resources associated with Amazon Macie Classic \cr
+\link[=macie_list_s3_resources]{list_s3_resources} \tab Lists all the S3 resources associated with Amazon Macie Classic\cr
 \link[=macie_update_s3_resources]{update_s3_resources} \tab Updates the classification types for the specified S3 resources
 }
 }

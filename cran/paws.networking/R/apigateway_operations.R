@@ -7,8 +7,12 @@ NULL
 #'
 #' Create an ApiKey resource.
 #' 
+#' <div class="seeAlso">
+#' 
 #' [AWS
 #' CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html)
+#' 
+#' </div>
 #'
 #' @usage
 #' apigateway_create_api_key(name, description, enabled,
@@ -74,8 +78,12 @@ apigateway_create_api_key <- function(name = NULL, description = NULL, enabled =
 #'
 #' Adds a new Authorizer resource to an existing RestApi resource.
 #' 
+#' <div class="seeAlso">
+#' 
 #' [AWS
 #' CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html)
+#' 
+#' </div>
 #'
 #' @usage
 #' apigateway_create_authorizer(restApiId, name, type, providerARNs,
@@ -982,8 +990,12 @@ apigateway_delete_api_key <- function(apiKey) {
 #'
 #' Deletes an existing Authorizer resource.
 #' 
+#' <div class="seeAlso">
+#' 
 #' [AWS
 #' CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway/delete-authorizer.html)
+#' 
+#' </div>
 #'
 #' @usage
 #' apigateway_delete_authorizer(restApiId, authorizerId)
@@ -2026,8 +2038,12 @@ apigateway_get_api_keys <- function(position = NULL, limit = NULL, nameQuery = N
 #'
 #' Describe an existing Authorizer resource.
 #' 
+#' <div class="seeAlso">
+#' 
 #' [AWS
 #' CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html)
+#' 
+#' </div>
 #'
 #' @usage
 #' apigateway_get_authorizer(restApiId, authorizerId)
@@ -2067,8 +2083,12 @@ apigateway_get_authorizer <- function(restApiId, authorizerId) {
 #'
 #' Describe an existing Authorizers resource.
 #' 
+#' <div class="seeAlso">
+#' 
 #' [AWS
 #' CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html)
+#' 
+#' </div>
 #'
 #' @usage
 #' apigateway_get_authorizers(restApiId, position, limit)
@@ -4591,10 +4611,14 @@ apigateway_tag_resource <- function(resourceArn, tags) {
 #' Simulate the execution of an Authorizer in your RestApi with headers,
 #' parameters, and an incoming request body.
 #' 
+#' <div class="seeAlso">
+#' 
 #' [Use Lambda Function as
 #' Authorizer](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html)
 #' [Use Cognito User Pool as
 #' Authorizer](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html)
+#' 
+#' </div>
 #'
 #' @usage
 #' apigateway_test_invoke_authorizer(restApiId, authorizerId, headers,
@@ -4866,8 +4890,12 @@ apigateway_update_api_key <- function(apiKey, patchOperations = NULL) {
 #'
 #' Updates an existing Authorizer resource.
 #' 
+#' <div class="seeAlso">
+#' 
 #' [AWS
 #' CLI](https://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html)
+#' 
+#' </div>
 #'
 #' @usage
 #' apigateway_update_authorizer(restApiId, authorizerId, patchOperations)

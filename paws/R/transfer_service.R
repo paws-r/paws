@@ -49,24 +49,24 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=transfer_create_server]{create_server} \tab Instantiates an autoscaling virtual server based on the selected file transfer protocol in AWS \cr
-#'  \link[=transfer_create_user]{create_user} \tab Creates a user and associates them with an existing file transfer protocol-enabled server \cr
-#'  \link[=transfer_delete_server]{delete_server} \tab Deletes the file transfer protocol-enabled server that you specify \cr
-#'  \link[=transfer_delete_ssh_public_key]{delete_ssh_public_key} \tab Deletes a user's Secure Shell (SSH) public key \cr
-#'  \link[=transfer_delete_user]{delete_user} \tab Deletes the user belonging to a file transfer protocol-enabled server you specify \cr
-#'  \link[=transfer_describe_server]{describe_server} \tab Describes a file transfer protocol-enabled server that you specify by passing the ServerId parameter \cr
-#'  \link[=transfer_describe_user]{describe_user} \tab Describes the user assigned to the specific file transfer protocol-enabled server, as identified by its ServerId property \cr
+#'  \link[=transfer_create_server]{create_server} \tab Instantiates an autoscaling virtual server based on the selected file transfer protocol in AWS\cr
+#'  \link[=transfer_create_user]{create_user} \tab Creates a user and associates them with an existing file transfer protocol-enabled server\cr
+#'  \link[=transfer_delete_server]{delete_server} \tab Deletes the file transfer protocol-enabled server that you specify\cr
+#'  \link[=transfer_delete_ssh_public_key]{delete_ssh_public_key} \tab Deletes a user's Secure Shell (SSH) public key\cr
+#'  \link[=transfer_delete_user]{delete_user} \tab Deletes the user belonging to a file transfer protocol-enabled server you specify\cr
+#'  \link[=transfer_describe_server]{describe_server} \tab Describes a file transfer protocol-enabled server that you specify by passing the ServerId parameter\cr
+#'  \link[=transfer_describe_user]{describe_user} \tab Describes the user assigned to the specific file transfer protocol-enabled server, as identified by its ServerId property\cr
 #'  \link[=transfer_import_ssh_public_key]{import_ssh_public_key} \tab Adds a Secure Shell (SSH) public key to a user account identified by a UserName value assigned to the specific file transfer protocol-enabled server, identified by ServerId\cr
-#'  \link[=transfer_list_servers]{list_servers} \tab Lists the file transfer protocol-enabled servers that are associated with your AWS account \cr
-#'  \link[=transfer_list_tags_for_resource]{list_tags_for_resource} \tab Lists all of the tags associated with the Amazon Resource Number (ARN) you specify \cr
-#'  \link[=transfer_list_users]{list_users} \tab Lists the users for a file transfer protocol-enabled server that you specify by passing the ServerId parameter \cr
-#'  \link[=transfer_start_server]{start_server} \tab Changes the state of a file transfer protocol-enabled server from OFFLINE to ONLINE \cr
-#'  \link[=transfer_stop_server]{stop_server} \tab Changes the state of a file transfer protocol-enabled server from ONLINE to OFFLINE \cr
-#'  \link[=transfer_tag_resource]{tag_resource} \tab Attaches a key-value pair to a resource, as identified by its Amazon Resource Name (ARN) \cr
-#'  \link[=transfer_test_identity_provider]{test_identity_provider} \tab If the IdentityProviderType of a file transfer protocol-enabled server is API_Gateway, tests whether your API Gateway is set up successfully \cr
-#'  \link[=transfer_untag_resource]{untag_resource} \tab Detaches a key-value pair from a resource, as identified by its Amazon Resource Name (ARN) \cr
-#'  \link[=transfer_update_server]{update_server} \tab Updates the file transfer protocol-enabled server's properties after that server has been created \cr
-#'  \link[=transfer_update_user]{update_user} \tab Assigns new properties to a user 
+#'  \link[=transfer_list_servers]{list_servers} \tab Lists the file transfer protocol-enabled servers that are associated with your AWS account\cr
+#'  \link[=transfer_list_tags_for_resource]{list_tags_for_resource} \tab Lists all of the tags associated with the Amazon Resource Number (ARN) you specify\cr
+#'  \link[=transfer_list_users]{list_users} \tab Lists the users for a file transfer protocol-enabled server that you specify by passing the ServerId parameter\cr
+#'  \link[=transfer_start_server]{start_server} \tab Changes the state of a file transfer protocol-enabled server from OFFLINE to ONLINE\cr
+#'  \link[=transfer_stop_server]{stop_server} \tab Changes the state of a file transfer protocol-enabled server from ONLINE to OFFLINE\cr
+#'  \link[=transfer_tag_resource]{tag_resource} \tab Attaches a key-value pair to a resource, as identified by its Amazon Resource Name (ARN)\cr
+#'  \link[=transfer_test_identity_provider]{test_identity_provider} \tab If the IdentityProviderType of a file transfer protocol-enabled server is API_Gateway, tests whether your API Gateway is set up successfully\cr
+#'  \link[=transfer_untag_resource]{untag_resource} \tab Detaches a key-value pair from a resource, as identified by its Amazon Resource Name (ARN)\cr
+#'  \link[=transfer_update_server]{update_server} \tab Updates the file transfer protocol-enabled server's properties after that server has been created\cr
+#'  \link[=transfer_update_user]{update_user} \tab Assigns new properties to a user
 #' }
 #'
 #' @rdname transfer

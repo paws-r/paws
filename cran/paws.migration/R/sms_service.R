@@ -58,34 +58,34 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=sms_create_app]{create_app} \tab Creates an application \cr
-#'  \link[=sms_create_replication_job]{create_replication_job} \tab Creates a replication job \cr
-#'  \link[=sms_delete_app]{delete_app} \tab Deletes an existing application \cr
-#'  \link[=sms_delete_app_launch_configuration]{delete_app_launch_configuration} \tab Deletes existing launch configuration for an application \cr
-#'  \link[=sms_delete_app_replication_configuration]{delete_app_replication_configuration} \tab Deletes existing replication configuration for an application \cr
-#'  \link[=sms_delete_replication_job]{delete_replication_job} \tab Deletes the specified replication job \cr
-#'  \link[=sms_delete_server_catalog]{delete_server_catalog} \tab Deletes all servers from your server catalog \cr
-#'  \link[=sms_disassociate_connector]{disassociate_connector} \tab Disassociates the specified connector from AWS SMS \cr
-#'  \link[=sms_generate_change_set]{generate_change_set} \tab Generates a target change set for a currently launched stack and writes it to an Amazon S3 object in the customer’s Amazon S3 bucket \cr
+#'  \link[=sms_create_app]{create_app} \tab Creates an application\cr
+#'  \link[=sms_create_replication_job]{create_replication_job} \tab Creates a replication job\cr
+#'  \link[=sms_delete_app]{delete_app} \tab Deletes an existing application\cr
+#'  \link[=sms_delete_app_launch_configuration]{delete_app_launch_configuration} \tab Deletes existing launch configuration for an application\cr
+#'  \link[=sms_delete_app_replication_configuration]{delete_app_replication_configuration} \tab Deletes existing replication configuration for an application\cr
+#'  \link[=sms_delete_replication_job]{delete_replication_job} \tab Deletes the specified replication job\cr
+#'  \link[=sms_delete_server_catalog]{delete_server_catalog} \tab Deletes all servers from your server catalog\cr
+#'  \link[=sms_disassociate_connector]{disassociate_connector} \tab Disassociates the specified connector from AWS SMS\cr
+#'  \link[=sms_generate_change_set]{generate_change_set} \tab Generates a target change set for a currently launched stack and writes it to an Amazon S3 object in the customer’s Amazon S3 bucket\cr
 #'  \link[=sms_generate_template]{generate_template} \tab Generates an Amazon CloudFormation template based on the current launch configuration and writes it to an Amazon S3 object in the customer’s Amazon S3 bucket\cr
-#'  \link[=sms_get_app]{get_app} \tab Retrieve information about an application \cr
-#'  \link[=sms_get_app_launch_configuration]{get_app_launch_configuration} \tab Retrieves the application launch configuration associated with an application \cr
-#'  \link[=sms_get_app_replication_configuration]{get_app_replication_configuration} \tab Retrieves an application replication configuration associatd with an application \cr
-#'  \link[=sms_get_connectors]{get_connectors} \tab Describes the connectors registered with the AWS SMS \cr
-#'  \link[=sms_get_replication_jobs]{get_replication_jobs} \tab Describes the specified replication job or all of your replication jobs \cr
-#'  \link[=sms_get_replication_runs]{get_replication_runs} \tab Describes the replication runs for the specified replication job \cr
-#'  \link[=sms_get_servers]{get_servers} \tab Describes the servers in your server catalog \cr
-#'  \link[=sms_import_server_catalog]{import_server_catalog} \tab Gathers a complete list of on-premises servers \cr
-#'  \link[=sms_launch_app]{launch_app} \tab Launches an application stack \cr
-#'  \link[=sms_list_apps]{list_apps} \tab Returns a list of summaries for all applications \cr
-#'  \link[=sms_put_app_launch_configuration]{put_app_launch_configuration} \tab Creates a launch configuration for an application \cr
-#'  \link[=sms_put_app_replication_configuration]{put_app_replication_configuration} \tab Creates or updates a replication configuration for an application \cr
-#'  \link[=sms_start_app_replication]{start_app_replication} \tab Starts replicating an application \cr
-#'  \link[=sms_start_on_demand_replication_run]{start_on_demand_replication_run} \tab Starts an on-demand replication run for the specified replication job \cr
-#'  \link[=sms_stop_app_replication]{stop_app_replication} \tab Stops replicating an application \cr
-#'  \link[=sms_terminate_app]{terminate_app} \tab Terminates the stack for an application \cr
-#'  \link[=sms_update_app]{update_app} \tab Updates an application \cr
-#'  \link[=sms_update_replication_job]{update_replication_job} \tab Updates the specified settings for the specified replication job 
+#'  \link[=sms_get_app]{get_app} \tab Retrieve information about an application\cr
+#'  \link[=sms_get_app_launch_configuration]{get_app_launch_configuration} \tab Retrieves the application launch configuration associated with an application\cr
+#'  \link[=sms_get_app_replication_configuration]{get_app_replication_configuration} \tab Retrieves an application replication configuration associatd with an application\cr
+#'  \link[=sms_get_connectors]{get_connectors} \tab Describes the connectors registered with the AWS SMS\cr
+#'  \link[=sms_get_replication_jobs]{get_replication_jobs} \tab Describes the specified replication job or all of your replication jobs\cr
+#'  \link[=sms_get_replication_runs]{get_replication_runs} \tab Describes the replication runs for the specified replication job\cr
+#'  \link[=sms_get_servers]{get_servers} \tab Describes the servers in your server catalog\cr
+#'  \link[=sms_import_server_catalog]{import_server_catalog} \tab Gathers a complete list of on-premises servers\cr
+#'  \link[=sms_launch_app]{launch_app} \tab Launches an application stack\cr
+#'  \link[=sms_list_apps]{list_apps} \tab Returns a list of summaries for all applications\cr
+#'  \link[=sms_put_app_launch_configuration]{put_app_launch_configuration} \tab Creates a launch configuration for an application\cr
+#'  \link[=sms_put_app_replication_configuration]{put_app_replication_configuration} \tab Creates or updates a replication configuration for an application\cr
+#'  \link[=sms_start_app_replication]{start_app_replication} \tab Starts replicating an application\cr
+#'  \link[=sms_start_on_demand_replication_run]{start_on_demand_replication_run} \tab Starts an on-demand replication run for the specified replication job\cr
+#'  \link[=sms_stop_app_replication]{stop_app_replication} \tab Stops replicating an application\cr
+#'  \link[=sms_terminate_app]{terminate_app} \tab Terminates the stack for an application\cr
+#'  \link[=sms_update_app]{update_app} \tab Updates an application\cr
+#'  \link[=sms_update_replication_job]{update_replication_job} \tab Updates the specified settings for the specified replication job
 #' }
 #'
 #' @rdname sms

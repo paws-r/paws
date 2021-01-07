@@ -83,39 +83,39 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=appconfig_create_application]{create_application} \tab An application in AppConfig is a logical unit of code that provides capabilities for your customers \cr
-#'  \link[=appconfig_create_configuration_profile]{create_configuration_profile} \tab Information that enables AppConfig to access the configuration source \cr
+#'  \link[=appconfig_create_application]{create_application} \tab An application in AppConfig is a logical unit of code that provides capabilities for your customers\cr
+#'  \link[=appconfig_create_configuration_profile]{create_configuration_profile} \tab Information that enables AppConfig to access the configuration source\cr
 #'  \link[=appconfig_create_deployment_strategy]{create_deployment_strategy} \tab A deployment strategy defines important criteria for rolling out your configuration to the designated targets\cr
-#'  \link[=appconfig_create_environment]{create_environment} \tab For each application, you define one or more environments \cr
-#'  \link[=appconfig_create_hosted_configuration_version]{create_hosted_configuration_version} \tab Create a new configuration in the AppConfig configuration store \cr
-#'  \link[=appconfig_delete_application]{delete_application} \tab Delete an application \cr
-#'  \link[=appconfig_delete_configuration_profile]{delete_configuration_profile} \tab Delete a configuration profile \cr
-#'  \link[=appconfig_delete_deployment_strategy]{delete_deployment_strategy} \tab Delete a deployment strategy \cr
-#'  \link[=appconfig_delete_environment]{delete_environment} \tab Delete an environment \cr
-#'  \link[=appconfig_delete_hosted_configuration_version]{delete_hosted_configuration_version} \tab Delete a version of a configuration from the AppConfig configuration store \cr
-#'  \link[=appconfig_get_application]{get_application} \tab Retrieve information about an application \cr
-#'  \link[=appconfig_get_configuration]{get_configuration} \tab Receive information about a configuration \cr
-#'  \link[=appconfig_get_configuration_profile]{get_configuration_profile} \tab Retrieve information about a configuration profile \cr
-#'  \link[=appconfig_get_deployment]{get_deployment} \tab Retrieve information about a configuration deployment \cr
-#'  \link[=appconfig_get_deployment_strategy]{get_deployment_strategy} \tab Retrieve information about a deployment strategy \cr
-#'  \link[=appconfig_get_environment]{get_environment} \tab Retrieve information about an environment \cr
-#'  \link[=appconfig_get_hosted_configuration_version]{get_hosted_configuration_version} \tab Get information about a specific configuration version \cr
-#'  \link[=appconfig_list_applications]{list_applications} \tab List all applications in your AWS account \cr
-#'  \link[=appconfig_list_configuration_profiles]{list_configuration_profiles} \tab Lists the configuration profiles for an application \cr
-#'  \link[=appconfig_list_deployments]{list_deployments} \tab Lists the deployments for an environment \cr
-#'  \link[=appconfig_list_deployment_strategies]{list_deployment_strategies} \tab List deployment strategies \cr
-#'  \link[=appconfig_list_environments]{list_environments} \tab List the environments for an application \cr
-#'  \link[=appconfig_list_hosted_configuration_versions]{list_hosted_configuration_versions} \tab View a list of configurations stored in the AppConfig configuration store by version \cr
-#'  \link[=appconfig_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of key-value tags assigned to the resource \cr
-#'  \link[=appconfig_start_deployment]{start_deployment} \tab Starts a deployment \cr
-#'  \link[=appconfig_stop_deployment]{stop_deployment} \tab Stops a deployment \cr
-#'  \link[=appconfig_tag_resource]{tag_resource} \tab Metadata to assign to an AppConfig resource \cr
-#'  \link[=appconfig_untag_resource]{untag_resource} \tab Deletes a tag key and value from an AppConfig resource \cr
-#'  \link[=appconfig_update_application]{update_application} \tab Updates an application \cr
-#'  \link[=appconfig_update_configuration_profile]{update_configuration_profile} \tab Updates a configuration profile \cr
-#'  \link[=appconfig_update_deployment_strategy]{update_deployment_strategy} \tab Updates a deployment strategy \cr
-#'  \link[=appconfig_update_environment]{update_environment} \tab Updates an environment \cr
-#'  \link[=appconfig_validate_configuration]{validate_configuration} \tab Uses the validators in a configuration profile to validate a configuration 
+#'  \link[=appconfig_create_environment]{create_environment} \tab For each application, you define one or more environments\cr
+#'  \link[=appconfig_create_hosted_configuration_version]{create_hosted_configuration_version} \tab Create a new configuration in the AppConfig configuration store\cr
+#'  \link[=appconfig_delete_application]{delete_application} \tab Delete an application\cr
+#'  \link[=appconfig_delete_configuration_profile]{delete_configuration_profile} \tab Delete a configuration profile\cr
+#'  \link[=appconfig_delete_deployment_strategy]{delete_deployment_strategy} \tab Delete a deployment strategy\cr
+#'  \link[=appconfig_delete_environment]{delete_environment} \tab Delete an environment\cr
+#'  \link[=appconfig_delete_hosted_configuration_version]{delete_hosted_configuration_version} \tab Delete a version of a configuration from the AppConfig configuration store\cr
+#'  \link[=appconfig_get_application]{get_application} \tab Retrieve information about an application\cr
+#'  \link[=appconfig_get_configuration]{get_configuration} \tab Receive information about a configuration\cr
+#'  \link[=appconfig_get_configuration_profile]{get_configuration_profile} \tab Retrieve information about a configuration profile\cr
+#'  \link[=appconfig_get_deployment]{get_deployment} \tab Retrieve information about a configuration deployment\cr
+#'  \link[=appconfig_get_deployment_strategy]{get_deployment_strategy} \tab Retrieve information about a deployment strategy\cr
+#'  \link[=appconfig_get_environment]{get_environment} \tab Retrieve information about an environment\cr
+#'  \link[=appconfig_get_hosted_configuration_version]{get_hosted_configuration_version} \tab Get information about a specific configuration version\cr
+#'  \link[=appconfig_list_applications]{list_applications} \tab List all applications in your AWS account\cr
+#'  \link[=appconfig_list_configuration_profiles]{list_configuration_profiles} \tab Lists the configuration profiles for an application\cr
+#'  \link[=appconfig_list_deployments]{list_deployments} \tab Lists the deployments for an environment\cr
+#'  \link[=appconfig_list_deployment_strategies]{list_deployment_strategies} \tab List deployment strategies\cr
+#'  \link[=appconfig_list_environments]{list_environments} \tab List the environments for an application\cr
+#'  \link[=appconfig_list_hosted_configuration_versions]{list_hosted_configuration_versions} \tab View a list of configurations stored in the AppConfig configuration store by version\cr
+#'  \link[=appconfig_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of key-value tags assigned to the resource\cr
+#'  \link[=appconfig_start_deployment]{start_deployment} \tab Starts a deployment\cr
+#'  \link[=appconfig_stop_deployment]{stop_deployment} \tab Stops a deployment\cr
+#'  \link[=appconfig_tag_resource]{tag_resource} \tab Metadata to assign to an AppConfig resource\cr
+#'  \link[=appconfig_untag_resource]{untag_resource} \tab Deletes a tag key and value from an AppConfig resource\cr
+#'  \link[=appconfig_update_application]{update_application} \tab Updates an application\cr
+#'  \link[=appconfig_update_configuration_profile]{update_configuration_profile} \tab Updates a configuration profile\cr
+#'  \link[=appconfig_update_deployment_strategy]{update_deployment_strategy} \tab Updates a deployment strategy\cr
+#'  \link[=appconfig_update_environment]{update_environment} \tab Updates an environment\cr
+#'  \link[=appconfig_validate_configuration]{validate_configuration} \tab Uses the validators in a configuration profile to validate a configuration
 #' }
 #'
 #' @rdname appconfig

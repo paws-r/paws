@@ -131,31 +131,31 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=applicationdiscoveryservice_associate_configuration_items_to_application]{associate_configuration_items_to_application} \tab Associates one or more configuration items with an application \cr
-#'  \link[=applicationdiscoveryservice_batch_delete_import_data]{batch_delete_import_data} \tab Deletes one or more import tasks, each identified by their import ID \cr
-#'  \link[=applicationdiscoveryservice_create_application]{create_application} \tab Creates an application with the given name and description \cr
-#'  \link[=applicationdiscoveryservice_create_tags]{create_tags} \tab Creates one or more tags for configuration items \cr
-#'  \link[=applicationdiscoveryservice_delete_applications]{delete_applications} \tab Deletes a list of applications and their associations with configuration items \cr
-#'  \link[=applicationdiscoveryservice_delete_tags]{delete_tags} \tab Deletes the association between configuration items and one or more tags \cr
-#'  \link[=applicationdiscoveryservice_describe_agents]{describe_agents} \tab Lists agents or connectors as specified by ID or other filters \cr
-#'  \link[=applicationdiscoveryservice_describe_configurations]{describe_configurations} \tab Retrieves attributes for a list of configuration item IDs \cr
-#'  \link[=applicationdiscoveryservice_describe_continuous_exports]{describe_continuous_exports} \tab Lists exports as specified by ID \cr
-#'  \link[=applicationdiscoveryservice_describe_export_configurations]{describe_export_configurations} \tab DescribeExportConfigurations is deprecated \cr
-#'  \link[=applicationdiscoveryservice_describe_export_tasks]{describe_export_tasks} \tab Retrieve status of one or more export tasks \cr
-#'  \link[=applicationdiscoveryservice_describe_import_tasks]{describe_import_tasks} \tab Returns an array of import tasks for your account, including status information, times, IDs, the Amazon S3 Object URL for the import file, and more \cr
-#'  \link[=applicationdiscoveryservice_describe_tags]{describe_tags} \tab Retrieves a list of configuration items that have tags as specified by the key-value pairs, name and value, passed to the optional parameter filters \cr
-#'  \link[=applicationdiscoveryservice_disassociate_configuration_items_from_application]{disassociate_configuration_items_from_application} \tab Disassociates one or more configuration items from an application \cr
-#'  \link[=applicationdiscoveryservice_export_configurations]{export_configurations} \tab Deprecated \cr
-#'  \link[=applicationdiscoveryservice_get_discovery_summary]{get_discovery_summary} \tab Retrieves a short summary of discovered assets \cr
-#'  \link[=applicationdiscoveryservice_list_configurations]{list_configurations} \tab Retrieves a list of configuration items as specified by the value passed to the required parameter configurationType \cr
-#'  \link[=applicationdiscoveryservice_list_server_neighbors]{list_server_neighbors} \tab Retrieves a list of servers that are one network hop away from a specified server \cr
-#'  \link[=applicationdiscoveryservice_start_continuous_export]{start_continuous_export} \tab Start the continuous flow of agent's discovered data into Amazon Athena \cr
-#'  \link[=applicationdiscoveryservice_start_data_collection_by_agent_ids]{start_data_collection_by_agent_ids} \tab Instructs the specified agents or connectors to start collecting data \cr
-#'  \link[=applicationdiscoveryservice_start_export_task]{start_export_task} \tab Begins the export of discovered data to an S3 bucket \cr
+#'  \link[=applicationdiscoveryservice_associate_configuration_items_to_application]{associate_configuration_items_to_application} \tab Associates one or more configuration items with an application\cr
+#'  \link[=applicationdiscoveryservice_batch_delete_import_data]{batch_delete_import_data} \tab Deletes one or more import tasks, each identified by their import ID\cr
+#'  \link[=applicationdiscoveryservice_create_application]{create_application} \tab Creates an application with the given name and description\cr
+#'  \link[=applicationdiscoveryservice_create_tags]{create_tags} \tab Creates one or more tags for configuration items\cr
+#'  \link[=applicationdiscoveryservice_delete_applications]{delete_applications} \tab Deletes a list of applications and their associations with configuration items\cr
+#'  \link[=applicationdiscoveryservice_delete_tags]{delete_tags} \tab Deletes the association between configuration items and one or more tags\cr
+#'  \link[=applicationdiscoveryservice_describe_agents]{describe_agents} \tab Lists agents or connectors as specified by ID or other filters\cr
+#'  \link[=applicationdiscoveryservice_describe_configurations]{describe_configurations} \tab Retrieves attributes for a list of configuration item IDs\cr
+#'  \link[=applicationdiscoveryservice_describe_continuous_exports]{describe_continuous_exports} \tab Lists exports as specified by ID\cr
+#'  \link[=applicationdiscoveryservice_describe_export_configurations]{describe_export_configurations} \tab DescribeExportConfigurations is deprecated\cr
+#'  \link[=applicationdiscoveryservice_describe_export_tasks]{describe_export_tasks} \tab Retrieve status of one or more export tasks\cr
+#'  \link[=applicationdiscoveryservice_describe_import_tasks]{describe_import_tasks} \tab Returns an array of import tasks for your account, including status information, times, IDs, the Amazon S3 Object URL for the import file, and more\cr
+#'  \link[=applicationdiscoveryservice_describe_tags]{describe_tags} \tab Retrieves a list of configuration items that have tags as specified by the key-value pairs, name and value, passed to the optional parameter filters\cr
+#'  \link[=applicationdiscoveryservice_disassociate_configuration_items_from_application]{disassociate_configuration_items_from_application} \tab Disassociates one or more configuration items from an application\cr
+#'  \link[=applicationdiscoveryservice_export_configurations]{export_configurations} \tab Deprecated\cr
+#'  \link[=applicationdiscoveryservice_get_discovery_summary]{get_discovery_summary} \tab Retrieves a short summary of discovered assets\cr
+#'  \link[=applicationdiscoveryservice_list_configurations]{list_configurations} \tab Retrieves a list of configuration items as specified by the value passed to the required parameter configurationType\cr
+#'  \link[=applicationdiscoveryservice_list_server_neighbors]{list_server_neighbors} \tab Retrieves a list of servers that are one network hop away from a specified server\cr
+#'  \link[=applicationdiscoveryservice_start_continuous_export]{start_continuous_export} \tab Start the continuous flow of agent's discovered data into Amazon Athena\cr
+#'  \link[=applicationdiscoveryservice_start_data_collection_by_agent_ids]{start_data_collection_by_agent_ids} \tab Instructs the specified agents or connectors to start collecting data\cr
+#'  \link[=applicationdiscoveryservice_start_export_task]{start_export_task} \tab Begins the export of discovered data to an S3 bucket\cr
 #'  \link[=applicationdiscoveryservice_start_import_task]{start_import_task} \tab Starts an import task, which allows you to import details of your on-premises environment directly into AWS Migration Hub without having to use the Application Discovery Service (ADS) tools such as the Discovery Connector or Discovery Agent\cr
-#'  \link[=applicationdiscoveryservice_stop_continuous_export]{stop_continuous_export} \tab Stop the continuous flow of agent's discovered data into Amazon Athena \cr
-#'  \link[=applicationdiscoveryservice_stop_data_collection_by_agent_ids]{stop_data_collection_by_agent_ids} \tab Instructs the specified agents or connectors to stop collecting data \cr
-#'  \link[=applicationdiscoveryservice_update_application]{update_application} \tab Updates metadata about an application 
+#'  \link[=applicationdiscoveryservice_stop_continuous_export]{stop_continuous_export} \tab Stop the continuous flow of agent's discovered data into Amazon Athena\cr
+#'  \link[=applicationdiscoveryservice_stop_data_collection_by_agent_ids]{stop_data_collection_by_agent_ids} \tab Instructs the specified agents or connectors to stop collecting data\cr
+#'  \link[=applicationdiscoveryservice_update_application]{update_application} \tab Updates metadata about an application
 #' }
 #'
 #' @rdname applicationdiscoveryservice

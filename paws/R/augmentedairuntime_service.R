@@ -77,11 +77,11 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=augmentedairuntime_delete_human_loop]{delete_human_loop} \tab Deletes the specified human loop for a flow definition \cr
-#'  \link[=augmentedairuntime_describe_human_loop]{describe_human_loop} \tab Returns information about the specified human loop \cr
-#'  \link[=augmentedairuntime_list_human_loops]{list_human_loops} \tab Returns information about human loops, given the specified parameters \cr
+#'  \link[=augmentedairuntime_delete_human_loop]{delete_human_loop} \tab Deletes the specified human loop for a flow definition\cr
+#'  \link[=augmentedairuntime_describe_human_loop]{describe_human_loop} \tab Returns information about the specified human loop\cr
+#'  \link[=augmentedairuntime_list_human_loops]{list_human_loops} \tab Returns information about human loops, given the specified parameters\cr
 #'  \link[=augmentedairuntime_start_human_loop]{start_human_loop} \tab Starts a human loop, provided that at least one activation condition is met\cr
-#'  \link[=augmentedairuntime_stop_human_loop]{stop_human_loop} \tab Stops the specified human loop 
+#'  \link[=augmentedairuntime_stop_human_loop]{stop_human_loop} \tab Stops the specified human loop
 #' }
 #'
 #' @rdname augmentedairuntime

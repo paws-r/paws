@@ -34,7 +34,10 @@ start with \verb{aws:}. The tag value can be up to 256 characters.}
 Create an ApiKey resource.
 }
 \details{
-\href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html}{AWS CLI}
+<div class="seeAlso">
+
+
+\href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html}{AWS CLI}</div>
 }
 \section{Request syntax}{
 \preformatted{svc$create_api_key(

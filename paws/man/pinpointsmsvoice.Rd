@@ -33,13 +33,13 @@ Pinpoint SMS and Voice Messaging public facing APIs
 \section{Operations}{
 
 \tabular{ll}{
-\link[=pinpointsmsvoice_create_configuration_set]{create_configuration_set} \tab Create a new configuration set \cr
-\link[=pinpointsmsvoice_create_configuration_set_event_destination]{create_configuration_set_event_destination} \tab Create a new event destination in a configuration set \cr
-\link[=pinpointsmsvoice_delete_configuration_set]{delete_configuration_set} \tab Deletes an existing configuration set \cr
-\link[=pinpointsmsvoice_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Deletes an event destination in a configuration set \cr
+\link[=pinpointsmsvoice_create_configuration_set]{create_configuration_set} \tab Create a new configuration set\cr
+\link[=pinpointsmsvoice_create_configuration_set_event_destination]{create_configuration_set_event_destination} \tab Create a new event destination in a configuration set\cr
+\link[=pinpointsmsvoice_delete_configuration_set]{delete_configuration_set} \tab Deletes an existing configuration set\cr
+\link[=pinpointsmsvoice_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Deletes an event destination in a configuration set\cr
 \link[=pinpointsmsvoice_get_configuration_set_event_destinations]{get_configuration_set_event_destinations} \tab Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination\cr
-\link[=pinpointsmsvoice_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your Amazon Pinpoint account in the current region \cr
-\link[=pinpointsmsvoice_send_voice_message]{send_voice_message} \tab Create a new voice message and send it to a recipient's phone number \cr
+\link[=pinpointsmsvoice_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your Amazon Pinpoint account in the current region\cr
+\link[=pinpointsmsvoice_send_voice_message]{send_voice_message} \tab Create a new voice message and send it to a recipient's phone number\cr
 \link[=pinpointsmsvoice_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Update an event destination in a configuration set
 }
 }
