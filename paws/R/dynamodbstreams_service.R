@@ -47,9 +47,9 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=dynamodbstreams_describe_stream]{describe_stream} \tab Returns information about a stream, including the current status of the stream, its Amazon Resource Name (ARN), the composition of its shards, and its corresponding DynamoDB table\cr
-#'  \link[=dynamodbstreams_get_records]{get_records} \tab Retrieves the stream records from a given shard \cr
-#'  \link[=dynamodbstreams_get_shard_iterator]{get_shard_iterator} \tab Returns a shard iterator \cr
-#'  \link[=dynamodbstreams_list_streams]{list_streams} \tab Returns an array of stream ARNs associated with the current account and endpoint 
+#'  \link[=dynamodbstreams_get_records]{get_records} \tab Retrieves the stream records from a given shard\cr
+#'  \link[=dynamodbstreams_get_shard_iterator]{get_shard_iterator} \tab Returns a shard iterator\cr
+#'  \link[=dynamodbstreams_list_streams]{list_streams} \tab Returns an array of stream ARNs associated with the current account and endpoint
 #' }
 #'
 #' @rdname dynamodbstreams

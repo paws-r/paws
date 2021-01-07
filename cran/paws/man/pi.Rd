@@ -50,7 +50,7 @@ point.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=pi_describe_dimension_keys]{describe_dimension_keys} \tab For a specific time period, retrieve the top N dimension keys for a metric \cr
+\link[=pi_describe_dimension_keys]{describe_dimension_keys} \tab For a specific time period, retrieve the top N dimension keys for a metric\cr
 \link[=pi_get_resource_metrics]{get_resource_metrics} \tab Retrieve Performance Insights metrics for a set of data sources, over a time period
 }
 }

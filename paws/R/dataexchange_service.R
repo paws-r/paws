@@ -59,28 +59,28 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=dataexchange_cancel_job]{cancel_job} \tab This operation cancels a job \cr
-#'  \link[=dataexchange_create_data_set]{create_data_set} \tab This operation creates a data set \cr
-#'  \link[=dataexchange_create_job]{create_job} \tab This operation creates a job \cr
-#'  \link[=dataexchange_create_revision]{create_revision} \tab This operation creates a revision for a data set \cr
-#'  \link[=dataexchange_delete_asset]{delete_asset} \tab This operation deletes an asset \cr
-#'  \link[=dataexchange_delete_data_set]{delete_data_set} \tab This operation deletes a data set \cr
-#'  \link[=dataexchange_delete_revision]{delete_revision} \tab This operation deletes a revision \cr
-#'  \link[=dataexchange_get_asset]{get_asset} \tab This operation returns information about an asset \cr
-#'  \link[=dataexchange_get_data_set]{get_data_set} \tab This operation returns information about a data set \cr
-#'  \link[=dataexchange_get_job]{get_job} \tab This operation returns information about a job \cr
-#'  \link[=dataexchange_get_revision]{get_revision} \tab This operation returns information about a revision \cr
+#'  \link[=dataexchange_cancel_job]{cancel_job} \tab This operation cancels a job\cr
+#'  \link[=dataexchange_create_data_set]{create_data_set} \tab This operation creates a data set\cr
+#'  \link[=dataexchange_create_job]{create_job} \tab This operation creates a job\cr
+#'  \link[=dataexchange_create_revision]{create_revision} \tab This operation creates a revision for a data set\cr
+#'  \link[=dataexchange_delete_asset]{delete_asset} \tab This operation deletes an asset\cr
+#'  \link[=dataexchange_delete_data_set]{delete_data_set} \tab This operation deletes a data set\cr
+#'  \link[=dataexchange_delete_revision]{delete_revision} \tab This operation deletes a revision\cr
+#'  \link[=dataexchange_get_asset]{get_asset} \tab This operation returns information about an asset\cr
+#'  \link[=dataexchange_get_data_set]{get_data_set} \tab This operation returns information about a data set\cr
+#'  \link[=dataexchange_get_job]{get_job} \tab This operation returns information about a job\cr
+#'  \link[=dataexchange_get_revision]{get_revision} \tab This operation returns information about a revision\cr
 #'  \link[=dataexchange_list_data_set_revisions]{list_data_set_revisions} \tab This operation lists a data set's revisions sorted by CreatedAt in descending order\cr
-#'  \link[=dataexchange_list_data_sets]{list_data_sets} \tab This operation lists your data sets \cr
-#'  \link[=dataexchange_list_jobs]{list_jobs} \tab This operation lists your jobs sorted by CreatedAt in descending order \cr
-#'  \link[=dataexchange_list_revision_assets]{list_revision_assets} \tab This operation lists a revision's assets sorted alphabetically in descending order \cr
-#'  \link[=dataexchange_list_tags_for_resource]{list_tags_for_resource} \tab This operation lists the tags on the resource \cr
-#'  \link[=dataexchange_start_job]{start_job} \tab This operation starts a job \cr
-#'  \link[=dataexchange_tag_resource]{tag_resource} \tab This operation tags a resource \cr
-#'  \link[=dataexchange_untag_resource]{untag_resource} \tab This operation removes one or more tags from a resource \cr
-#'  \link[=dataexchange_update_asset]{update_asset} \tab This operation updates an asset \cr
-#'  \link[=dataexchange_update_data_set]{update_data_set} \tab This operation updates a data set \cr
-#'  \link[=dataexchange_update_revision]{update_revision} \tab This operation updates a revision 
+#'  \link[=dataexchange_list_data_sets]{list_data_sets} \tab This operation lists your data sets\cr
+#'  \link[=dataexchange_list_jobs]{list_jobs} \tab This operation lists your jobs sorted by CreatedAt in descending order\cr
+#'  \link[=dataexchange_list_revision_assets]{list_revision_assets} \tab This operation lists a revision's assets sorted alphabetically in descending order\cr
+#'  \link[=dataexchange_list_tags_for_resource]{list_tags_for_resource} \tab This operation lists the tags on the resource\cr
+#'  \link[=dataexchange_start_job]{start_job} \tab This operation starts a job\cr
+#'  \link[=dataexchange_tag_resource]{tag_resource} \tab This operation tags a resource\cr
+#'  \link[=dataexchange_untag_resource]{untag_resource} \tab This operation removes one or more tags from a resource\cr
+#'  \link[=dataexchange_update_asset]{update_asset} \tab This operation updates an asset\cr
+#'  \link[=dataexchange_update_data_set]{update_data_set} \tab This operation updates a data set\cr
+#'  \link[=dataexchange_update_revision]{update_revision} \tab This operation updates a revision
 #' }
 #'
 #' @rdname dataexchange

@@ -33,34 +33,34 @@ Provides APIs for creating and managing Amazon Forecast resources.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=forecastservice_create_dataset]{create_dataset} \tab Creates an Amazon Forecast dataset \cr
-\link[=forecastservice_create_dataset_group]{create_dataset_group} \tab Creates a dataset group, which holds a collection of related datasets \cr
-\link[=forecastservice_create_dataset_import_job]{create_dataset_import_job} \tab Imports your training data to an Amazon Forecast dataset \cr
-\link[=forecastservice_create_forecast]{create_forecast} \tab Creates a forecast for each item in the TARGET_TIME_SERIES dataset that was used to train the predictor \cr
+\link[=forecastservice_create_dataset]{create_dataset} \tab Creates an Amazon Forecast dataset\cr
+\link[=forecastservice_create_dataset_group]{create_dataset_group} \tab Creates a dataset group, which holds a collection of related datasets\cr
+\link[=forecastservice_create_dataset_import_job]{create_dataset_import_job} \tab Imports your training data to an Amazon Forecast dataset\cr
+\link[=forecastservice_create_forecast]{create_forecast} \tab Creates a forecast for each item in the TARGET_TIME_SERIES dataset that was used to train the predictor\cr
 \link[=forecastservice_create_forecast_export_job]{create_forecast_export_job} \tab Exports a forecast created by the CreateForecast operation to your Amazon Simple Storage Service (Amazon S3) bucket\cr
-\link[=forecastservice_create_predictor]{create_predictor} \tab Creates an Amazon Forecast predictor \cr
-\link[=forecastservice_delete_dataset]{delete_dataset} \tab Deletes an Amazon Forecast dataset that was created using the CreateDataset operation \cr
-\link[=forecastservice_delete_dataset_group]{delete_dataset_group} \tab Deletes a dataset group created using the CreateDatasetGroup operation \cr
-\link[=forecastservice_delete_dataset_import_job]{delete_dataset_import_job} \tab Deletes a dataset import job created using the CreateDatasetImportJob operation \cr
-\link[=forecastservice_delete_forecast]{delete_forecast} \tab Deletes a forecast created using the CreateForecast operation \cr
-\link[=forecastservice_delete_forecast_export_job]{delete_forecast_export_job} \tab Deletes a forecast export job created using the CreateForecastExportJob operation \cr
-\link[=forecastservice_delete_predictor]{delete_predictor} \tab Deletes a predictor created using the CreatePredictor operation \cr
-\link[=forecastservice_describe_dataset]{describe_dataset} \tab Describes an Amazon Forecast dataset created using the CreateDataset operation \cr
-\link[=forecastservice_describe_dataset_group]{describe_dataset_group} \tab Describes a dataset group created using the CreateDatasetGroup operation \cr
-\link[=forecastservice_describe_dataset_import_job]{describe_dataset_import_job} \tab Describes a dataset import job created using the CreateDatasetImportJob operation \cr
-\link[=forecastservice_describe_forecast]{describe_forecast} \tab Describes a forecast created using the CreateForecast operation \cr
-\link[=forecastservice_describe_forecast_export_job]{describe_forecast_export_job} \tab Describes a forecast export job created using the CreateForecastExportJob operation \cr
-\link[=forecastservice_describe_predictor]{describe_predictor} \tab Describes a predictor created using the CreatePredictor operation \cr
-\link[=forecastservice_get_accuracy_metrics]{get_accuracy_metrics} \tab Provides metrics on the accuracy of the models that were trained by the CreatePredictor operation \cr
-\link[=forecastservice_list_dataset_groups]{list_dataset_groups} \tab Returns a list of dataset groups created using the CreateDatasetGroup operation \cr
-\link[=forecastservice_list_dataset_import_jobs]{list_dataset_import_jobs} \tab Returns a list of dataset import jobs created using the CreateDatasetImportJob operation \cr
-\link[=forecastservice_list_datasets]{list_datasets} \tab Returns a list of datasets created using the CreateDataset operation \cr
-\link[=forecastservice_list_forecast_export_jobs]{list_forecast_export_jobs} \tab Returns a list of forecast export jobs created using the CreateForecastExportJob operation \cr
-\link[=forecastservice_list_forecasts]{list_forecasts} \tab Returns a list of forecasts created using the CreateForecast operation \cr
-\link[=forecastservice_list_predictors]{list_predictors} \tab Returns a list of predictors created using the CreatePredictor operation \cr
-\link[=forecastservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for an Amazon Forecast resource \cr
-\link[=forecastservice_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn \cr
-\link[=forecastservice_untag_resource]{untag_resource} \tab Deletes the specified tags from a resource \cr
+\link[=forecastservice_create_predictor]{create_predictor} \tab Creates an Amazon Forecast predictor\cr
+\link[=forecastservice_delete_dataset]{delete_dataset} \tab Deletes an Amazon Forecast dataset that was created using the CreateDataset operation\cr
+\link[=forecastservice_delete_dataset_group]{delete_dataset_group} \tab Deletes a dataset group created using the CreateDatasetGroup operation\cr
+\link[=forecastservice_delete_dataset_import_job]{delete_dataset_import_job} \tab Deletes a dataset import job created using the CreateDatasetImportJob operation\cr
+\link[=forecastservice_delete_forecast]{delete_forecast} \tab Deletes a forecast created using the CreateForecast operation\cr
+\link[=forecastservice_delete_forecast_export_job]{delete_forecast_export_job} \tab Deletes a forecast export job created using the CreateForecastExportJob operation\cr
+\link[=forecastservice_delete_predictor]{delete_predictor} \tab Deletes a predictor created using the CreatePredictor operation\cr
+\link[=forecastservice_describe_dataset]{describe_dataset} \tab Describes an Amazon Forecast dataset created using the CreateDataset operation\cr
+\link[=forecastservice_describe_dataset_group]{describe_dataset_group} \tab Describes a dataset group created using the CreateDatasetGroup operation\cr
+\link[=forecastservice_describe_dataset_import_job]{describe_dataset_import_job} \tab Describes a dataset import job created using the CreateDatasetImportJob operation\cr
+\link[=forecastservice_describe_forecast]{describe_forecast} \tab Describes a forecast created using the CreateForecast operation\cr
+\link[=forecastservice_describe_forecast_export_job]{describe_forecast_export_job} \tab Describes a forecast export job created using the CreateForecastExportJob operation\cr
+\link[=forecastservice_describe_predictor]{describe_predictor} \tab Describes a predictor created using the CreatePredictor operation\cr
+\link[=forecastservice_get_accuracy_metrics]{get_accuracy_metrics} \tab Provides metrics on the accuracy of the models that were trained by the CreatePredictor operation\cr
+\link[=forecastservice_list_dataset_groups]{list_dataset_groups} \tab Returns a list of dataset groups created using the CreateDatasetGroup operation\cr
+\link[=forecastservice_list_dataset_import_jobs]{list_dataset_import_jobs} \tab Returns a list of dataset import jobs created using the CreateDatasetImportJob operation\cr
+\link[=forecastservice_list_datasets]{list_datasets} \tab Returns a list of datasets created using the CreateDataset operation\cr
+\link[=forecastservice_list_forecast_export_jobs]{list_forecast_export_jobs} \tab Returns a list of forecast export jobs created using the CreateForecastExportJob operation\cr
+\link[=forecastservice_list_forecasts]{list_forecasts} \tab Returns a list of forecasts created using the CreateForecast operation\cr
+\link[=forecastservice_list_predictors]{list_predictors} \tab Returns a list of predictors created using the CreatePredictor operation\cr
+\link[=forecastservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for an Amazon Forecast resource\cr
+\link[=forecastservice_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
+\link[=forecastservice_untag_resource]{untag_resource} \tab Deletes the specified tags from a resource\cr
 \link[=forecastservice_update_dataset_group]{update_dataset_group} \tab Replaces the datasets in a dataset group with the specified datasets
 }
 }

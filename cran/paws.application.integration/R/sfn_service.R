@@ -59,28 +59,28 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=sfn_create_activity]{create_activity} \tab Creates an activity \cr
-#'  \link[=sfn_create_state_machine]{create_state_machine} \tab Creates a state machine \cr
-#'  \link[=sfn_delete_activity]{delete_activity} \tab Deletes an activity \cr
-#'  \link[=sfn_delete_state_machine]{delete_state_machine} \tab Deletes a state machine \cr
-#'  \link[=sfn_describe_activity]{describe_activity} \tab Describes an activity \cr
-#'  \link[=sfn_describe_execution]{describe_execution} \tab Describes an execution \cr
-#'  \link[=sfn_describe_state_machine]{describe_state_machine} \tab Describes a state machine \cr
-#'  \link[=sfn_describe_state_machine_for_execution]{describe_state_machine_for_execution} \tab Describes the state machine associated with a specific execution \cr
-#'  \link[=sfn_get_activity_task]{get_activity_task} \tab Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine \cr
-#'  \link[=sfn_get_execution_history]{get_execution_history} \tab Returns the history of the specified execution as a list of events \cr
-#'  \link[=sfn_list_activities]{list_activities} \tab Lists the existing activities \cr
-#'  \link[=sfn_list_executions]{list_executions} \tab Lists the executions of a state machine that meet the filtering criteria \cr
-#'  \link[=sfn_list_state_machines]{list_state_machines} \tab Lists the existing state machines \cr
-#'  \link[=sfn_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a given resource \cr
-#'  \link[=sfn_send_task_failure]{send_task_failure} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken failed \cr
+#'  \link[=sfn_create_activity]{create_activity} \tab Creates an activity\cr
+#'  \link[=sfn_create_state_machine]{create_state_machine} \tab Creates a state machine\cr
+#'  \link[=sfn_delete_activity]{delete_activity} \tab Deletes an activity\cr
+#'  \link[=sfn_delete_state_machine]{delete_state_machine} \tab Deletes a state machine\cr
+#'  \link[=sfn_describe_activity]{describe_activity} \tab Describes an activity\cr
+#'  \link[=sfn_describe_execution]{describe_execution} \tab Describes an execution\cr
+#'  \link[=sfn_describe_state_machine]{describe_state_machine} \tab Describes a state machine\cr
+#'  \link[=sfn_describe_state_machine_for_execution]{describe_state_machine_for_execution} \tab Describes the state machine associated with a specific execution\cr
+#'  \link[=sfn_get_activity_task]{get_activity_task} \tab Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine\cr
+#'  \link[=sfn_get_execution_history]{get_execution_history} \tab Returns the history of the specified execution as a list of events\cr
+#'  \link[=sfn_list_activities]{list_activities} \tab Lists the existing activities\cr
+#'  \link[=sfn_list_executions]{list_executions} \tab Lists the executions of a state machine that meet the filtering criteria\cr
+#'  \link[=sfn_list_state_machines]{list_state_machines} \tab Lists the existing state machines\cr
+#'  \link[=sfn_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a given resource\cr
+#'  \link[=sfn_send_task_failure]{send_task_failure} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken failed\cr
 #'  \link[=sfn_send_task_heartbeat]{send_task_heartbeat} \tab Used by activity workers and task states using the callback pattern to report to Step Functions that the task represented by the specified taskToken is still making progress\cr
-#'  \link[=sfn_send_task_success]{send_task_success} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken completed successfully \cr
-#'  \link[=sfn_start_execution]{start_execution} \tab Starts a state machine execution \cr
-#'  \link[=sfn_stop_execution]{stop_execution} \tab Stops an execution \cr
-#'  \link[=sfn_tag_resource]{tag_resource} \tab Add a tag to a Step Functions resource \cr
-#'  \link[=sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource \cr
-#'  \link[=sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration 
+#'  \link[=sfn_send_task_success]{send_task_success} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken completed successfully\cr
+#'  \link[=sfn_start_execution]{start_execution} \tab Starts a state machine execution\cr
+#'  \link[=sfn_stop_execution]{stop_execution} \tab Stops an execution\cr
+#'  \link[=sfn_tag_resource]{tag_resource} \tab Add a tag to a Step Functions resource\cr
+#'  \link[=sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource\cr
+#'  \link[=sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration
 #' }
 #'
 #' @rdname sfn

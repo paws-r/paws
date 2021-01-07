@@ -39,10 +39,10 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=kinesisvideoarchivedmedia_get_clip]{get_clip} \tab Downloads an MP4 file (clip) containing the archived, on-demand media from the specified video stream over the specified time range\cr
-#'  \link[=kinesisvideoarchivedmedia_get_dash_streaming_session_url]{get_dash_streaming_session_url} \tab Retrieves an MPEG Dynamic Adaptive Streaming over HTTP (DASH) URL for the stream \cr
-#'  \link[=kinesisvideoarchivedmedia_get_hls_streaming_session_url]{get_hls_streaming_session_url} \tab Retrieves an HTTP Live Streaming (HLS) URL for the stream \cr
-#'  \link[=kinesisvideoarchivedmedia_get_media_for_fragment_list]{get_media_for_fragment_list} \tab Gets media for a list of fragments (specified by fragment number) from the archived data in an Amazon Kinesis video stream \cr
-#'  \link[=kinesisvideoarchivedmedia_list_fragments]{list_fragments} \tab Returns a list of Fragment objects from the specified stream and timestamp range within the archived data 
+#'  \link[=kinesisvideoarchivedmedia_get_dash_streaming_session_url]{get_dash_streaming_session_url} \tab Retrieves an MPEG Dynamic Adaptive Streaming over HTTP (DASH) URL for the stream\cr
+#'  \link[=kinesisvideoarchivedmedia_get_hls_streaming_session_url]{get_hls_streaming_session_url} \tab Retrieves an HTTP Live Streaming (HLS) URL for the stream\cr
+#'  \link[=kinesisvideoarchivedmedia_get_media_for_fragment_list]{get_media_for_fragment_list} \tab Gets media for a list of fragments (specified by fragment number) from the archived data in an Amazon Kinesis video stream\cr
+#'  \link[=kinesisvideoarchivedmedia_list_fragments]{list_fragments} \tab Returns a list of Fragment objects from the specified stream and timestamp range within the archived data
 #' }
 #'
 #' @rdname kinesisvideoarchivedmedia

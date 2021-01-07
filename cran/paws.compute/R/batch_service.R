@@ -58,22 +58,22 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=batch_cancel_job]{cancel_job} \tab Cancels a job in an AWS Batch job queue \cr
-#'  \link[=batch_create_compute_environment]{create_compute_environment} \tab Creates an AWS Batch compute environment \cr
-#'  \link[=batch_create_job_queue]{create_job_queue} \tab Creates an AWS Batch job queue \cr
-#'  \link[=batch_delete_compute_environment]{delete_compute_environment} \tab Deletes an AWS Batch compute environment \cr
-#'  \link[=batch_delete_job_queue]{delete_job_queue} \tab Deletes the specified job queue \cr
-#'  \link[=batch_deregister_job_definition]{deregister_job_definition} \tab Deregisters an AWS Batch job definition \cr
+#'  \link[=batch_cancel_job]{cancel_job} \tab Cancels a job in an AWS Batch job queue\cr
+#'  \link[=batch_create_compute_environment]{create_compute_environment} \tab Creates an AWS Batch compute environment\cr
+#'  \link[=batch_create_job_queue]{create_job_queue} \tab Creates an AWS Batch job queue\cr
+#'  \link[=batch_delete_compute_environment]{delete_compute_environment} \tab Deletes an AWS Batch compute environment\cr
+#'  \link[=batch_delete_job_queue]{delete_job_queue} \tab Deletes the specified job queue\cr
+#'  \link[=batch_deregister_job_definition]{deregister_job_definition} \tab Deregisters an AWS Batch job definition\cr
 #'  \link[=batch_describe_compute_environments]{describe_compute_environments} \tab Describes one or more of your compute environments\cr
-#'  \link[=batch_describe_job_definitions]{describe_job_definitions} \tab Describes a list of job definitions \cr
-#'  \link[=batch_describe_job_queues]{describe_job_queues} \tab Describes one or more of your job queues \cr
-#'  \link[=batch_describe_jobs]{describe_jobs} \tab Describes a list of AWS Batch jobs \cr
-#'  \link[=batch_list_jobs]{list_jobs} \tab Returns a list of AWS Batch jobs \cr
-#'  \link[=batch_register_job_definition]{register_job_definition} \tab Registers an AWS Batch job definition \cr
-#'  \link[=batch_submit_job]{submit_job} \tab Submits an AWS Batch job from a job definition \cr
-#'  \link[=batch_terminate_job]{terminate_job} \tab Terminates a job in a job queue \cr
-#'  \link[=batch_update_compute_environment]{update_compute_environment} \tab Updates an AWS Batch compute environment \cr
-#'  \link[=batch_update_job_queue]{update_job_queue} \tab Updates a job queue 
+#'  \link[=batch_describe_job_definitions]{describe_job_definitions} \tab Describes a list of job definitions\cr
+#'  \link[=batch_describe_job_queues]{describe_job_queues} \tab Describes one or more of your job queues\cr
+#'  \link[=batch_describe_jobs]{describe_jobs} \tab Describes a list of AWS Batch jobs\cr
+#'  \link[=batch_list_jobs]{list_jobs} \tab Returns a list of AWS Batch jobs\cr
+#'  \link[=batch_register_job_definition]{register_job_definition} \tab Registers an AWS Batch job definition\cr
+#'  \link[=batch_submit_job]{submit_job} \tab Submits an AWS Batch job from a job definition\cr
+#'  \link[=batch_terminate_job]{terminate_job} \tab Terminates a job in a job queue\cr
+#'  \link[=batch_update_compute_environment]{update_compute_environment} \tab Updates an AWS Batch compute environment\cr
+#'  \link[=batch_update_job_queue]{update_job_queue} \tab Updates a job queue
 #' }
 #'
 #' @rdname batch

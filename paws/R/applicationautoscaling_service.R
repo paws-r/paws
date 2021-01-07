@@ -97,16 +97,16 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=applicationautoscaling_delete_scaling_policy]{delete_scaling_policy} \tab Deletes the specified scaling policy for an Application Auto Scaling scalable target \cr
-#'  \link[=applicationautoscaling_delete_scheduled_action]{delete_scheduled_action} \tab Deletes the specified scheduled action for an Application Auto Scaling scalable target \cr
-#'  \link[=applicationautoscaling_deregister_scalable_target]{deregister_scalable_target} \tab Deregisters an Application Auto Scaling scalable target when you have finished using it \cr
-#'  \link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets} \tab Gets information about the scalable targets in the specified namespace \cr
+#'  \link[=applicationautoscaling_delete_scaling_policy]{delete_scaling_policy} \tab Deletes the specified scaling policy for an Application Auto Scaling scalable target\cr
+#'  \link[=applicationautoscaling_delete_scheduled_action]{delete_scheduled_action} \tab Deletes the specified scheduled action for an Application Auto Scaling scalable target\cr
+#'  \link[=applicationautoscaling_deregister_scalable_target]{deregister_scalable_target} \tab Deregisters an Application Auto Scaling scalable target when you have finished using it\cr
+#'  \link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets} \tab Gets information about the scalable targets in the specified namespace\cr
 #'  \link[=applicationautoscaling_describe_scaling_activities]{describe_scaling_activities} \tab Provides descriptive information about the scaling activities in the specified namespace from the previous six weeks\cr
-#'  \link[=applicationautoscaling_describe_scaling_policies]{describe_scaling_policies} \tab Describes the Application Auto Scaling scaling policies for the specified service namespace \cr
-#'  \link[=applicationautoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the Application Auto Scaling scheduled actions for the specified service namespace \cr
-#'  \link[=applicationautoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for an Application Auto Scaling scalable target \cr
-#'  \link[=applicationautoscaling_put_scheduled_action]{put_scheduled_action} \tab Creates or updates a scheduled action for an Application Auto Scaling scalable target \cr
-#'  \link[=applicationautoscaling_register_scalable_target]{register_scalable_target} \tab Registers or updates a scalable target 
+#'  \link[=applicationautoscaling_describe_scaling_policies]{describe_scaling_policies} \tab Describes the Application Auto Scaling scaling policies for the specified service namespace\cr
+#'  \link[=applicationautoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the Application Auto Scaling scheduled actions for the specified service namespace\cr
+#'  \link[=applicationautoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for an Application Auto Scaling scalable target\cr
+#'  \link[=applicationautoscaling_put_scheduled_action]{put_scheduled_action} \tab Creates or updates a scheduled action for an Application Auto Scaling scalable target\cr
+#'  \link[=applicationautoscaling_register_scalable_target]{register_scalable_target} \tab Registers or updates a scalable target
 #' }
 #'
 #' @rdname applicationautoscaling

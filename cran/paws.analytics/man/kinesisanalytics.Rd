@@ -55,11 +55,11 @@ Kinesis Analytics Developer Guide provides additional information.
 \link[=kinesisanalytics_describe_application]{describe_application} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
 \link[=kinesisanalytics_discover_input_schema]{discover_input_schema} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
 \link[=kinesisanalytics_list_applications]{list_applications} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
-\link[=kinesisanalytics_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of key-value tags assigned to the application \cr
+\link[=kinesisanalytics_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the list of key-value tags assigned to the application\cr
 \link[=kinesisanalytics_start_application]{start_application} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
 \link[=kinesisanalytics_stop_application]{stop_application} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications\cr
-\link[=kinesisanalytics_tag_resource]{tag_resource} \tab Adds one or more key-value tags to a Kinesis Analytics application \cr
-\link[=kinesisanalytics_untag_resource]{untag_resource} \tab Removes one or more tags from a Kinesis Analytics application \cr
+\link[=kinesisanalytics_tag_resource]{tag_resource} \tab Adds one or more key-value tags to a Kinesis Analytics application\cr
+\link[=kinesisanalytics_untag_resource]{untag_resource} \tab Removes one or more tags from a Kinesis Analytics application\cr
 \link[=kinesisanalytics_update_application]{update_application} \tab This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications
 }
 }

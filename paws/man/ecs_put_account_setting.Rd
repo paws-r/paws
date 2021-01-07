@@ -74,7 +74,7 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 \examples{
 \dontrun{
 # This example modifies your account settings to opt in to the new ARN and
-# resource ID format for Amazon ECS services. If you’re using this command
+# resource ID format for Amazon ECS services. If youâ€™re using this command
 # as the root user, then changes apply to the entire AWS account, unless
 # an IAM user or role explicitly overrides these settings for themselves.
 svc$put_account_setting(
@@ -84,7 +84,7 @@ svc$put_account_setting(
 
 # This example modifies the account setting for a specific IAM user or IAM
 # role to opt in to the new ARN and resource ID format for Amazon ECS
-# container instances. If you’re using this command as the root user, then
+# container instances. If youâ€™re using this command as the root user, then
 # changes apply to the entire AWS account, unless an IAM user or role
 # explicitly overrides these settings for themselves.
 svc$put_account_setting(

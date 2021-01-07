@@ -34,21 +34,21 @@ vendors across multiple AWS accounts and on-premises servers.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=licensemanager_create_license_configuration]{create_license_configuration} \tab Creates a license configuration \cr
-\link[=licensemanager_delete_license_configuration]{delete_license_configuration} \tab Deletes the specified license configuration \cr
-\link[=licensemanager_get_license_configuration]{get_license_configuration} \tab Gets detailed information about the specified license configuration \cr
-\link[=licensemanager_get_service_settings]{get_service_settings} \tab Gets the License Manager settings for the current Region \cr
-\link[=licensemanager_list_associations_for_license_configuration]{list_associations_for_license_configuration} \tab Lists the resource associations for the specified license configuration \cr
-\link[=licensemanager_list_failures_for_license_configuration_operations]{list_failures_for_license_configuration_operations} \tab Lists the license configuration operations that failed \cr
-\link[=licensemanager_list_license_configurations]{list_license_configurations} \tab Lists the license configurations for your account \cr
-\link[=licensemanager_list_license_specifications_for_resource]{list_license_specifications_for_resource} \tab Describes the license configurations for the specified resource \cr
-\link[=licensemanager_list_resource_inventory]{list_resource_inventory} \tab Lists resources managed using Systems Manager inventory \cr
-\link[=licensemanager_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified license configuration \cr
+\link[=licensemanager_create_license_configuration]{create_license_configuration} \tab Creates a license configuration\cr
+\link[=licensemanager_delete_license_configuration]{delete_license_configuration} \tab Deletes the specified license configuration\cr
+\link[=licensemanager_get_license_configuration]{get_license_configuration} \tab Gets detailed information about the specified license configuration\cr
+\link[=licensemanager_get_service_settings]{get_service_settings} \tab Gets the License Manager settings for the current Region\cr
+\link[=licensemanager_list_associations_for_license_configuration]{list_associations_for_license_configuration} \tab Lists the resource associations for the specified license configuration\cr
+\link[=licensemanager_list_failures_for_license_configuration_operations]{list_failures_for_license_configuration_operations} \tab Lists the license configuration operations that failed\cr
+\link[=licensemanager_list_license_configurations]{list_license_configurations} \tab Lists the license configurations for your account\cr
+\link[=licensemanager_list_license_specifications_for_resource]{list_license_specifications_for_resource} \tab Describes the license configurations for the specified resource\cr
+\link[=licensemanager_list_resource_inventory]{list_resource_inventory} \tab Lists resources managed using Systems Manager inventory\cr
+\link[=licensemanager_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified license configuration\cr
 \link[=licensemanager_list_usage_for_license_configuration]{list_usage_for_license_configuration} \tab Lists all license usage records for a license configuration, displaying license consumption details by resource at a selected point in time\cr
-\link[=licensemanager_tag_resource]{tag_resource} \tab Adds the specified tags to the specified license configuration \cr
-\link[=licensemanager_untag_resource]{untag_resource} \tab Removes the specified tags from the specified license configuration \cr
-\link[=licensemanager_update_license_configuration]{update_license_configuration} \tab Modifies the attributes of an existing license configuration \cr
-\link[=licensemanager_update_license_specifications_for_resource]{update_license_specifications_for_resource} \tab Adds or removes the specified license configurations for the specified AWS resource \cr
+\link[=licensemanager_tag_resource]{tag_resource} \tab Adds the specified tags to the specified license configuration\cr
+\link[=licensemanager_untag_resource]{untag_resource} \tab Removes the specified tags from the specified license configuration\cr
+\link[=licensemanager_update_license_configuration]{update_license_configuration} \tab Modifies the attributes of an existing license configuration\cr
+\link[=licensemanager_update_license_specifications_for_resource]{update_license_specifications_for_resource} \tab Adds or removes the specified license configurations for the specified AWS resource\cr
 \link[=licensemanager_update_service_settings]{update_service_settings} \tab Updates License Manager settings for the current Region
 }
 }

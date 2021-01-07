@@ -42,26 +42,26 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=codeguruprofiler_add_notification_channels]{add_notification_channels} \tab Add up to 2 anomaly notifications channels for a profiling group \cr
-#'  \link[=codeguruprofiler_batch_get_frame_metric_data]{batch_get_frame_metric_data} \tab Returns the time series of values for a requested list of frame metrics from a time period \cr
-#'  \link[=codeguruprofiler_configure_agent]{configure_agent} \tab Used by profiler agents to report their current state and to receive remote configuration updates \cr
-#'  \link[=codeguruprofiler_create_profiling_group]{create_profiling_group} \tab Creates a profiling group \cr
-#'  \link[=codeguruprofiler_delete_profiling_group]{delete_profiling_group} \tab Deletes a profiling group \cr
-#'  \link[=codeguruprofiler_describe_profiling_group]{describe_profiling_group} \tab Returns a ProfilingGroupDescription object that contains information about the requested profiling group \cr
-#'  \link[=codeguruprofiler_get_findings_report_account_summary]{get_findings_report_account_summary} \tab Returns a list of FindingsReportSummary objects that contain analysis results for all profiling groups in your AWS account \cr
-#'  \link[=codeguruprofiler_get_notification_configuration]{get_notification_configuration} \tab Get the current configuration for anomaly notifications for a profiling group \cr
-#'  \link[=codeguruprofiler_get_policy]{get_policy} \tab Returns the JSON-formatted resource-based policy on a profiling group \cr
-#'  \link[=codeguruprofiler_get_profile]{get_profile} \tab Gets the aggregated profile of a profiling group for a specified time range \cr
-#'  \link[=codeguruprofiler_get_recommendations]{get_recommendations} \tab Returns a list of Recommendation objects that contain recommendations for a profiling group for a given time period \cr
-#'  \link[=codeguruprofiler_list_findings_reports]{list_findings_reports} \tab List the available reports for a given profiling group and time range \cr
+#'  \link[=codeguruprofiler_add_notification_channels]{add_notification_channels} \tab Add up to 2 anomaly notifications channels for a profiling group\cr
+#'  \link[=codeguruprofiler_batch_get_frame_metric_data]{batch_get_frame_metric_data} \tab Returns the time series of values for a requested list of frame metrics from a time period\cr
+#'  \link[=codeguruprofiler_configure_agent]{configure_agent} \tab Used by profiler agents to report their current state and to receive remote configuration updates\cr
+#'  \link[=codeguruprofiler_create_profiling_group]{create_profiling_group} \tab Creates a profiling group\cr
+#'  \link[=codeguruprofiler_delete_profiling_group]{delete_profiling_group} \tab Deletes a profiling group\cr
+#'  \link[=codeguruprofiler_describe_profiling_group]{describe_profiling_group} \tab Returns a ProfilingGroupDescription object that contains information about the requested profiling group\cr
+#'  \link[=codeguruprofiler_get_findings_report_account_summary]{get_findings_report_account_summary} \tab Returns a list of FindingsReportSummary objects that contain analysis results for all profiling groups in your AWS account\cr
+#'  \link[=codeguruprofiler_get_notification_configuration]{get_notification_configuration} \tab Get the current configuration for anomaly notifications for a profiling group\cr
+#'  \link[=codeguruprofiler_get_policy]{get_policy} \tab Returns the JSON-formatted resource-based policy on a profiling group\cr
+#'  \link[=codeguruprofiler_get_profile]{get_profile} \tab Gets the aggregated profile of a profiling group for a specified time range\cr
+#'  \link[=codeguruprofiler_get_recommendations]{get_recommendations} \tab Returns a list of Recommendation objects that contain recommendations for a profiling group for a given time period\cr
+#'  \link[=codeguruprofiler_list_findings_reports]{list_findings_reports} \tab List the available reports for a given profiling group and time range\cr
 #'  \link[=codeguruprofiler_list_profile_times]{list_profile_times} \tab Lists the start times of the available aggregated profiles of a profiling group for an aggregation period within the specified time range\cr
-#'  \link[=codeguruprofiler_list_profiling_groups]{list_profiling_groups} \tab Returns a list of profiling groups \cr
-#'  \link[=codeguruprofiler_post_agent_profile]{post_agent_profile} \tab Submits profiling data to an aggregated profile of a profiling group \cr
-#'  \link[=codeguruprofiler_put_permission]{put_permission} \tab Adds permissions to a profiling group's resource-based policy that are provided using an action group \cr
-#'  \link[=codeguruprofiler_remove_notification_channel]{remove_notification_channel} \tab Remove one anomaly notifications channel for a profiling group \cr
-#'  \link[=codeguruprofiler_remove_permission]{remove_permission} \tab Removes permissions from a profiling group's resource-based policy that are provided using an action group \cr
-#'  \link[=codeguruprofiler_submit_feedback]{submit_feedback} \tab Sends feedback to CodeGuru Profiler about whether the anomaly detected by the analysis is useful or not \cr
-#'  \link[=codeguruprofiler_update_profiling_group]{update_profiling_group} \tab Updates a profiling group 
+#'  \link[=codeguruprofiler_list_profiling_groups]{list_profiling_groups} \tab Returns a list of profiling groups\cr
+#'  \link[=codeguruprofiler_post_agent_profile]{post_agent_profile} \tab Submits profiling data to an aggregated profile of a profiling group\cr
+#'  \link[=codeguruprofiler_put_permission]{put_permission} \tab Adds permissions to a profiling group's resource-based policy that are provided using an action group\cr
+#'  \link[=codeguruprofiler_remove_notification_channel]{remove_notification_channel} \tab Remove one anomaly notifications channel for a profiling group\cr
+#'  \link[=codeguruprofiler_remove_permission]{remove_permission} \tab Removes permissions from a profiling group's resource-based policy that are provided using an action group\cr
+#'  \link[=codeguruprofiler_submit_feedback]{submit_feedback} \tab Sends feedback to CodeGuru Profiler about whether the anomaly detected by the analysis is useful or not\cr
+#'  \link[=codeguruprofiler_update_profiling_group]{update_profiling_group} \tab Updates a profiling group
 #' }
 #'
 #' @rdname codeguruprofiler

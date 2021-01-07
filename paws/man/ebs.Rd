@@ -50,11 +50,11 @@ in the \emph{AWS General Reference}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=ebs_complete_snapshot]{complete_snapshot} \tab Seals and completes the snapshot after all of the required blocks of data have been written to it \cr
-\link[=ebs_get_snapshot_block]{get_snapshot_block} \tab Returns the data in a block in an Amazon Elastic Block Store snapshot \cr
+\link[=ebs_complete_snapshot]{complete_snapshot} \tab Seals and completes the snapshot after all of the required blocks of data have been written to it\cr
+\link[=ebs_get_snapshot_block]{get_snapshot_block} \tab Returns the data in a block in an Amazon Elastic Block Store snapshot\cr
 \link[=ebs_list_changed_blocks]{list_changed_blocks} \tab Returns the block indexes and block tokens for blocks that are different between two Amazon Elastic Block Store snapshots of the same volume/snapshot lineage\cr
-\link[=ebs_list_snapshot_blocks]{list_snapshot_blocks} \tab Returns the block indexes and block tokens for blocks in an Amazon Elastic Block Store snapshot \cr
-\link[=ebs_put_snapshot_block]{put_snapshot_block} \tab Writes a block of data to a block in the snapshot \cr
+\link[=ebs_list_snapshot_blocks]{list_snapshot_blocks} \tab Returns the block indexes and block tokens for blocks in an Amazon Elastic Block Store snapshot\cr
+\link[=ebs_put_snapshot_block]{put_snapshot_block} \tab Writes a block of data to a block in the snapshot\cr
 \link[=ebs_start_snapshot]{start_snapshot} \tab Creates a new Amazon EBS snapshot
 }
 }

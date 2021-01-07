@@ -46,12 +46,12 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=marketplacecatalog_cancel_change_set]{cancel_change_set} \tab Used to cancel an open change request \cr
-#'  \link[=marketplacecatalog_describe_change_set]{describe_change_set} \tab Provides information about a given change set \cr
-#'  \link[=marketplacecatalog_describe_entity]{describe_entity} \tab Returns the metadata and content of the entity \cr
+#'  \link[=marketplacecatalog_cancel_change_set]{cancel_change_set} \tab Used to cancel an open change request\cr
+#'  \link[=marketplacecatalog_describe_change_set]{describe_change_set} \tab Provides information about a given change set\cr
+#'  \link[=marketplacecatalog_describe_entity]{describe_entity} \tab Returns the metadata and content of the entity\cr
 #'  \link[=marketplacecatalog_list_change_sets]{list_change_sets} \tab Returns the list of change sets owned by the account being used to make the call\cr
-#'  \link[=marketplacecatalog_list_entities]{list_entities} \tab Provides the list of entities of a given type \cr
-#'  \link[=marketplacecatalog_start_change_set]{start_change_set} \tab This operation allows you to request changes for your entities 
+#'  \link[=marketplacecatalog_list_entities]{list_entities} \tab Provides the list of entities of a given type\cr
+#'  \link[=marketplacecatalog_start_change_set]{start_change_set} \tab This operation allows you to request changes for your entities
 #' }
 #'
 #' @rdname marketplacecatalog

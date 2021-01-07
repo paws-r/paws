@@ -92,24 +92,24 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=codestar_associate_team_member]{associate_team_member} \tab Adds an IAM user to the team for an AWS CodeStar project \cr
-#'  \link[=codestar_create_project]{create_project} \tab Creates a project, including project resources \cr
-#'  \link[=codestar_create_user_profile]{create_user_profile} \tab Creates a profile for a user that includes user preferences, such as the display name and email address assocciated with the user, in AWS CodeStar \cr
-#'  \link[=codestar_delete_project]{delete_project} \tab Deletes a project, including project resources \cr
+#'  \link[=codestar_associate_team_member]{associate_team_member} \tab Adds an IAM user to the team for an AWS CodeStar project\cr
+#'  \link[=codestar_create_project]{create_project} \tab Creates a project, including project resources\cr
+#'  \link[=codestar_create_user_profile]{create_user_profile} \tab Creates a profile for a user that includes user preferences, such as the display name and email address assocciated with the user, in AWS CodeStar\cr
+#'  \link[=codestar_delete_project]{delete_project} \tab Deletes a project, including project resources\cr
 #'  \link[=codestar_delete_user_profile]{delete_user_profile} \tab Deletes a user profile in AWS CodeStar, including all personal preference data associated with that profile, such as display name and email address\cr
-#'  \link[=codestar_describe_project]{describe_project} \tab Describes a project and its resources \cr
-#'  \link[=codestar_describe_user_profile]{describe_user_profile} \tab Describes a user in AWS CodeStar and the user attributes across all projects \cr
-#'  \link[=codestar_disassociate_team_member]{disassociate_team_member} \tab Removes a user from a project \cr
-#'  \link[=codestar_list_projects]{list_projects} \tab Lists all projects in AWS CodeStar associated with your AWS account \cr
-#'  \link[=codestar_list_resources]{list_resources} \tab Lists resources associated with a project in AWS CodeStar \cr
-#'  \link[=codestar_list_tags_for_project]{list_tags_for_project} \tab Gets the tags for a project \cr
-#'  \link[=codestar_list_team_members]{list_team_members} \tab Lists all team members associated with a project \cr
-#'  \link[=codestar_list_user_profiles]{list_user_profiles} \tab Lists all the user profiles configured for your AWS account in AWS CodeStar \cr
-#'  \link[=codestar_tag_project]{tag_project} \tab Adds tags to a project \cr
-#'  \link[=codestar_untag_project]{untag_project} \tab Removes tags from a project \cr
-#'  \link[=codestar_update_project]{update_project} \tab Updates a project in AWS CodeStar \cr
-#'  \link[=codestar_update_team_member]{update_team_member} \tab Updates a team member's attributes in an AWS CodeStar project \cr
-#'  \link[=codestar_update_user_profile]{update_user_profile} \tab Updates a user's profile in AWS CodeStar 
+#'  \link[=codestar_describe_project]{describe_project} \tab Describes a project and its resources\cr
+#'  \link[=codestar_describe_user_profile]{describe_user_profile} \tab Describes a user in AWS CodeStar and the user attributes across all projects\cr
+#'  \link[=codestar_disassociate_team_member]{disassociate_team_member} \tab Removes a user from a project\cr
+#'  \link[=codestar_list_projects]{list_projects} \tab Lists all projects in AWS CodeStar associated with your AWS account\cr
+#'  \link[=codestar_list_resources]{list_resources} \tab Lists resources associated with a project in AWS CodeStar\cr
+#'  \link[=codestar_list_tags_for_project]{list_tags_for_project} \tab Gets the tags for a project\cr
+#'  \link[=codestar_list_team_members]{list_team_members} \tab Lists all team members associated with a project\cr
+#'  \link[=codestar_list_user_profiles]{list_user_profiles} \tab Lists all the user profiles configured for your AWS account in AWS CodeStar\cr
+#'  \link[=codestar_tag_project]{tag_project} \tab Adds tags to a project\cr
+#'  \link[=codestar_untag_project]{untag_project} \tab Removes tags from a project\cr
+#'  \link[=codestar_update_project]{update_project} \tab Updates a project in AWS CodeStar\cr
+#'  \link[=codestar_update_team_member]{update_team_member} \tab Updates a team member's attributes in an AWS CodeStar project\cr
+#'  \link[=codestar_update_user_profile]{update_user_profile} \tab Updates a user's profile in AWS CodeStar
 #' }
 #'
 #' @rdname codestar

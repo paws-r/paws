@@ -45,12 +45,12 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=importexport_cancel_job]{cancel_job} \tab This operation cancels a specified job \cr
-#'  \link[=importexport_create_job]{create_job} \tab This operation initiates the process of scheduling an upload or download of your data \cr
-#'  \link[=importexport_get_shipping_label]{get_shipping_label} \tab This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for processing \cr
+#'  \link[=importexport_cancel_job]{cancel_job} \tab This operation cancels a specified job\cr
+#'  \link[=importexport_create_job]{create_job} \tab This operation initiates the process of scheduling an upload or download of your data\cr
+#'  \link[=importexport_get_shipping_label]{get_shipping_label} \tab This operation generates a pre-paid UPS shipping label that you will use to ship your device to AWS for processing\cr
 #'  \link[=importexport_get_status]{get_status} \tab This operation returns information about a job, including where the job is in the processing pipeline, the status of the results, and the signature value associated with the job\cr
-#'  \link[=importexport_list_jobs]{list_jobs} \tab This operation returns the jobs associated with the requester \cr
-#'  \link[=importexport_update_job]{update_job} \tab You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file 
+#'  \link[=importexport_list_jobs]{list_jobs} \tab This operation returns the jobs associated with the requester\cr
+#'  \link[=importexport_update_job]{update_job} \tab You use this operation to change the parameters specified in the original manifest file by supplying a new manifest file
 #' }
 #'
 #' @rdname importexport

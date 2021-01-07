@@ -106,16 +106,16 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=codestarconnections_create_connection]{create_connection} \tab Creates a connection that can then be given to other AWS services like CodePipeline so that it can access third-party code repositories\cr
-#'  \link[=codestarconnections_create_host]{create_host} \tab Creates a resource that represents the infrastructure where a third-party provider is installed \cr
-#'  \link[=codestarconnections_delete_connection]{delete_connection} \tab The connection to be deleted \cr
-#'  \link[=codestarconnections_delete_host]{delete_host} \tab The host to be deleted \cr
-#'  \link[=codestarconnections_get_connection]{get_connection} \tab Returns the connection ARN and details such as status, owner, and provider type \cr
-#'  \link[=codestarconnections_get_host]{get_host} \tab Returns the host ARN and details such as status, provider type, endpoint, and, if applicable, the VPC configuration \cr
-#'  \link[=codestarconnections_list_connections]{list_connections} \tab Lists the connections associated with your account \cr
-#'  \link[=codestarconnections_list_hosts]{list_hosts} \tab Lists the hosts associated with your account \cr
-#'  \link[=codestarconnections_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key-value pairs (metadata) that are used to manage the resource \cr
-#'  \link[=codestarconnections_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource \cr
-#'  \link[=codestarconnections_untag_resource]{untag_resource} \tab Removes tags from an AWS resource 
+#'  \link[=codestarconnections_create_host]{create_host} \tab Creates a resource that represents the infrastructure where a third-party provider is installed\cr
+#'  \link[=codestarconnections_delete_connection]{delete_connection} \tab The connection to be deleted\cr
+#'  \link[=codestarconnections_delete_host]{delete_host} \tab The host to be deleted\cr
+#'  \link[=codestarconnections_get_connection]{get_connection} \tab Returns the connection ARN and details such as status, owner, and provider type\cr
+#'  \link[=codestarconnections_get_host]{get_host} \tab Returns the host ARN and details such as status, provider type, endpoint, and, if applicable, the VPC configuration\cr
+#'  \link[=codestarconnections_list_connections]{list_connections} \tab Lists the connections associated with your account\cr
+#'  \link[=codestarconnections_list_hosts]{list_hosts} \tab Lists the hosts associated with your account\cr
+#'  \link[=codestarconnections_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key-value pairs (metadata) that are used to manage the resource\cr
+#'  \link[=codestarconnections_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource\cr
+#'  \link[=codestarconnections_untag_resource]{untag_resource} \tab Removes tags from an AWS resource
 #' }
 #'
 #' @rdname codestarconnections

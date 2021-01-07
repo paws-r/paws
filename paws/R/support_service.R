@@ -105,20 +105,20 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=support_add_attachments_to_set]{add_attachments_to_set} \tab Adds one or more attachments to an attachment set \cr
-#'  \link[=support_add_communication_to_case]{add_communication_to_case} \tab Adds additional customer communication to an AWS Support case \cr
-#'  \link[=support_create_case]{create_case} \tab Creates a case in the AWS Support Center \cr
-#'  \link[=support_describe_attachment]{describe_attachment} \tab Returns the attachment that has the specified ID \cr
-#'  \link[=support_describe_cases]{describe_cases} \tab Returns a list of cases that you specify by passing one or more case IDs \cr
-#'  \link[=support_describe_communications]{describe_communications} \tab Returns communications and attachments for one or more support cases \cr
-#'  \link[=support_describe_services]{describe_services} \tab Returns the current list of AWS services and a list of service categories for each service \cr
-#'  \link[=support_describe_severity_levels]{describe_severity_levels} \tab Returns the list of severity levels that you can assign to an AWS Support case \cr
-#'  \link[=support_describe_trusted_advisor_check_refresh_statuses]{describe_trusted_advisor_check_refresh_statuses} \tab Returns the refresh status of the AWS Trusted Advisor checks that have the specified check IDs \cr
-#'  \link[=support_describe_trusted_advisor_check_result]{describe_trusted_advisor_check_result} \tab Returns the results of the AWS Trusted Advisor check that has the specified check ID \cr
+#'  \link[=support_add_attachments_to_set]{add_attachments_to_set} \tab Adds one or more attachments to an attachment set\cr
+#'  \link[=support_add_communication_to_case]{add_communication_to_case} \tab Adds additional customer communication to an AWS Support case\cr
+#'  \link[=support_create_case]{create_case} \tab Creates a case in the AWS Support Center\cr
+#'  \link[=support_describe_attachment]{describe_attachment} \tab Returns the attachment that has the specified ID\cr
+#'  \link[=support_describe_cases]{describe_cases} \tab Returns a list of cases that you specify by passing one or more case IDs\cr
+#'  \link[=support_describe_communications]{describe_communications} \tab Returns communications and attachments for one or more support cases\cr
+#'  \link[=support_describe_services]{describe_services} \tab Returns the current list of AWS services and a list of service categories for each service\cr
+#'  \link[=support_describe_severity_levels]{describe_severity_levels} \tab Returns the list of severity levels that you can assign to an AWS Support case\cr
+#'  \link[=support_describe_trusted_advisor_check_refresh_statuses]{describe_trusted_advisor_check_refresh_statuses} \tab Returns the refresh status of the AWS Trusted Advisor checks that have the specified check IDs\cr
+#'  \link[=support_describe_trusted_advisor_check_result]{describe_trusted_advisor_check_result} \tab Returns the results of the AWS Trusted Advisor check that has the specified check ID\cr
 #'  \link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks} \tab Returns information about all available AWS Trusted Advisor checks, including the name, ID, category, description, and metadata\cr
-#'  \link[=support_describe_trusted_advisor_check_summaries]{describe_trusted_advisor_check_summaries} \tab Returns the results for the AWS Trusted Advisor check summaries for the check IDs that you specified \cr
-#'  \link[=support_refresh_trusted_advisor_check]{refresh_trusted_advisor_check} \tab Refreshes the AWS Trusted Advisor check that you specify using the check ID \cr
-#'  \link[=support_resolve_case]{resolve_case} \tab Resolves a support case 
+#'  \link[=support_describe_trusted_advisor_check_summaries]{describe_trusted_advisor_check_summaries} \tab Returns the results for the AWS Trusted Advisor check summaries for the check IDs that you specified\cr
+#'  \link[=support_refresh_trusted_advisor_check]{refresh_trusted_advisor_check} \tab Refreshes the AWS Trusted Advisor check that you specify using the check ID\cr
+#'  \link[=support_resolve_case]{resolve_case} \tab Resolves a support case
 #' }
 #'
 #' @rdname support

@@ -43,7 +43,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=kinesisvideosignalingchannels_get_ice_server_config]{get_ice_server_config} \tab Gets the Interactive Connectivity Establishment (ICE) server configuration information, including URIs, username, and password which can be used to configure the WebRTC connection\cr
-#'  \link[=kinesisvideosignalingchannels_send_alexa_offer_to_master]{send_alexa_offer_to_master} \tab This API allows you to connect WebRTC-enabled devices with Alexa display devices 
+#'  \link[=kinesisvideosignalingchannels_send_alexa_offer_to_master]{send_alexa_offer_to_master} \tab This API allows you to connect WebRTC-enabled devices with Alexa display devices
 #' }
 #'
 #' @rdname kinesisvideosignalingchannels

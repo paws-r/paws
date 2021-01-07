@@ -60,8 +60,8 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=ssooidc_create_token]{create_token} \tab Creates and returns an access token for the authorized client \cr
-#'  \link[=ssooidc_register_client]{register_client} \tab Registers a client with AWS SSO \cr
+#'  \link[=ssooidc_create_token]{create_token} \tab Creates and returns an access token for the authorized client\cr
+#'  \link[=ssooidc_register_client]{register_client} \tab Registers a client with AWS SSO\cr
 #'  \link[=ssooidc_start_device_authorization]{start_device_authorization} \tab Initiates device authorization by requesting a pair of verification codes from the authorization service
 #' }
 #'

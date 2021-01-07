@@ -36,7 +36,7 @@ approvals, resources, and even your team.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=honeycode_get_screen_data]{get_screen_data} \tab The GetScreenData API allows retrieval of data from a screen in a Honeycode app \cr
+\link[=honeycode_get_screen_data]{get_screen_data} \tab The GetScreenData API allows retrieval of data from a screen in a Honeycode app\cr
 \link[=honeycode_invoke_screen_automation]{invoke_screen_automation} \tab The InvokeScreenAutomation API allows invoking an action defined in a screen in a Honeycode app
 }
 }

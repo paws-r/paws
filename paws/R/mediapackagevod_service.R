@@ -39,22 +39,22 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=mediapackagevod_create_asset]{create_asset} \tab Creates a new MediaPackage VOD Asset resource \cr
-#'  \link[=mediapackagevod_create_packaging_configuration]{create_packaging_configuration} \tab Creates a new MediaPackage VOD PackagingConfiguration resource \cr
-#'  \link[=mediapackagevod_create_packaging_group]{create_packaging_group} \tab Creates a new MediaPackage VOD PackagingGroup resource \cr
-#'  \link[=mediapackagevod_delete_asset]{delete_asset} \tab Deletes an existing MediaPackage VOD Asset resource \cr
-#'  \link[=mediapackagevod_delete_packaging_configuration]{delete_packaging_configuration} \tab Deletes a MediaPackage VOD PackagingConfiguration resource \cr
-#'  \link[=mediapackagevod_delete_packaging_group]{delete_packaging_group} \tab Deletes a MediaPackage VOD PackagingGroup resource \cr
-#'  \link[=mediapackagevod_describe_asset]{describe_asset} \tab Returns a description of a MediaPackage VOD Asset resource \cr
+#'  \link[=mediapackagevod_create_asset]{create_asset} \tab Creates a new MediaPackage VOD Asset resource\cr
+#'  \link[=mediapackagevod_create_packaging_configuration]{create_packaging_configuration} \tab Creates a new MediaPackage VOD PackagingConfiguration resource\cr
+#'  \link[=mediapackagevod_create_packaging_group]{create_packaging_group} \tab Creates a new MediaPackage VOD PackagingGroup resource\cr
+#'  \link[=mediapackagevod_delete_asset]{delete_asset} \tab Deletes an existing MediaPackage VOD Asset resource\cr
+#'  \link[=mediapackagevod_delete_packaging_configuration]{delete_packaging_configuration} \tab Deletes a MediaPackage VOD PackagingConfiguration resource\cr
+#'  \link[=mediapackagevod_delete_packaging_group]{delete_packaging_group} \tab Deletes a MediaPackage VOD PackagingGroup resource\cr
+#'  \link[=mediapackagevod_describe_asset]{describe_asset} \tab Returns a description of a MediaPackage VOD Asset resource\cr
 #'  \link[=mediapackagevod_describe_packaging_configuration]{describe_packaging_configuration} \tab Returns a description of a MediaPackage VOD PackagingConfiguration resource\cr
-#'  \link[=mediapackagevod_describe_packaging_group]{describe_packaging_group} \tab Returns a description of a MediaPackage VOD PackagingGroup resource \cr
-#'  \link[=mediapackagevod_list_assets]{list_assets} \tab Returns a collection of MediaPackage VOD Asset resources \cr
-#'  \link[=mediapackagevod_list_packaging_configurations]{list_packaging_configurations} \tab Returns a collection of MediaPackage VOD PackagingConfiguration resources \cr
-#'  \link[=mediapackagevod_list_packaging_groups]{list_packaging_groups} \tab Returns a collection of MediaPackage VOD PackagingGroup resources \cr
-#'  \link[=mediapackagevod_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags assigned to the specified resource \cr
-#'  \link[=mediapackagevod_tag_resource]{tag_resource} \tab Adds tags to the specified resource \cr
-#'  \link[=mediapackagevod_untag_resource]{untag_resource} \tab Removes tags from the specified resource \cr
-#'  \link[=mediapackagevod_update_packaging_group]{update_packaging_group} \tab Updates a specific packaging group 
+#'  \link[=mediapackagevod_describe_packaging_group]{describe_packaging_group} \tab Returns a description of a MediaPackage VOD PackagingGroup resource\cr
+#'  \link[=mediapackagevod_list_assets]{list_assets} \tab Returns a collection of MediaPackage VOD Asset resources\cr
+#'  \link[=mediapackagevod_list_packaging_configurations]{list_packaging_configurations} \tab Returns a collection of MediaPackage VOD PackagingConfiguration resources\cr
+#'  \link[=mediapackagevod_list_packaging_groups]{list_packaging_groups} \tab Returns a collection of MediaPackage VOD PackagingGroup resources\cr
+#'  \link[=mediapackagevod_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags assigned to the specified resource\cr
+#'  \link[=mediapackagevod_tag_resource]{tag_resource} \tab Adds tags to the specified resource\cr
+#'  \link[=mediapackagevod_untag_resource]{untag_resource} \tab Removes tags from the specified resource\cr
+#'  \link[=mediapackagevod_update_packaging_group]{update_packaging_group} \tab Updates a specific packaging group
 #' }
 #'
 #' @rdname mediapackagevod

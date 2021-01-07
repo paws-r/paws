@@ -58,9 +58,9 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=sso_get_role_credentials]{get_role_credentials} \tab Returns the STS short-term credentials for a given role name that is assigned to the user\cr
-#'  \link[=sso_list_account_roles]{list_account_roles} \tab Lists all roles that are assigned to the user for a given AWS account \cr
-#'  \link[=sso_list_accounts]{list_accounts} \tab Lists all AWS accounts assigned to the user \cr
-#'  \link[=sso_logout]{logout} \tab Removes the client- and server-side session that is associated with the user 
+#'  \link[=sso_list_account_roles]{list_account_roles} \tab Lists all roles that are assigned to the user for a given AWS account\cr
+#'  \link[=sso_list_accounts]{list_accounts} \tab Lists all AWS accounts assigned to the user\cr
+#'  \link[=sso_logout]{logout} \tab Removes the client- and server-side session that is associated with the user
 #' }
 #'
 #' @rdname sso

@@ -43,38 +43,38 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=frauddetector_batch_create_variable]{batch_create_variable} \tab Creates a batch of variables \cr
-#'  \link[=frauddetector_batch_get_variable]{batch_get_variable} \tab Gets a batch of variables \cr
-#'  \link[=frauddetector_create_detector_version]{create_detector_version} \tab Creates a detector version \cr
-#'  \link[=frauddetector_create_model_version]{create_model_version} \tab Creates a version of the model using the specified model type \cr
-#'  \link[=frauddetector_create_rule]{create_rule} \tab Creates a rule for use with the specified detector \cr
-#'  \link[=frauddetector_create_variable]{create_variable} \tab Creates a variable \cr
-#'  \link[=frauddetector_delete_detector]{delete_detector} \tab Deletes the detector \cr
-#'  \link[=frauddetector_delete_detector_version]{delete_detector_version} \tab Deletes the detector version \cr
-#'  \link[=frauddetector_delete_event]{delete_event} \tab Deletes the specified event \cr
-#'  \link[=frauddetector_delete_rule_version]{delete_rule_version} \tab Deletes the rule version \cr
-#'  \link[=frauddetector_describe_detector]{describe_detector} \tab Gets all versions for a specified detector \cr
-#'  \link[=frauddetector_describe_model_versions]{describe_model_versions} \tab Gets all of the model versions for the specified model type or for the specified model type and model ID \cr
-#'  \link[=frauddetector_get_detectors]{get_detectors} \tab Gets all of detectors \cr
-#'  \link[=frauddetector_get_detector_version]{get_detector_version} \tab Gets a particular detector version \cr
-#'  \link[=frauddetector_get_external_models]{get_external_models} \tab Gets the details for one or more Amazon SageMaker models that have been imported into the service \cr
+#'  \link[=frauddetector_batch_create_variable]{batch_create_variable} \tab Creates a batch of variables\cr
+#'  \link[=frauddetector_batch_get_variable]{batch_get_variable} \tab Gets a batch of variables\cr
+#'  \link[=frauddetector_create_detector_version]{create_detector_version} \tab Creates a detector version\cr
+#'  \link[=frauddetector_create_model_version]{create_model_version} \tab Creates a version of the model using the specified model type\cr
+#'  \link[=frauddetector_create_rule]{create_rule} \tab Creates a rule for use with the specified detector\cr
+#'  \link[=frauddetector_create_variable]{create_variable} \tab Creates a variable\cr
+#'  \link[=frauddetector_delete_detector]{delete_detector} \tab Deletes the detector\cr
+#'  \link[=frauddetector_delete_detector_version]{delete_detector_version} \tab Deletes the detector version\cr
+#'  \link[=frauddetector_delete_event]{delete_event} \tab Deletes the specified event\cr
+#'  \link[=frauddetector_delete_rule_version]{delete_rule_version} \tab Deletes the rule version\cr
+#'  \link[=frauddetector_describe_detector]{describe_detector} \tab Gets all versions for a specified detector\cr
+#'  \link[=frauddetector_describe_model_versions]{describe_model_versions} \tab Gets all of the model versions for the specified model type or for the specified model type and model ID\cr
+#'  \link[=frauddetector_get_detectors]{get_detectors} \tab Gets all of detectors\cr
+#'  \link[=frauddetector_get_detector_version]{get_detector_version} \tab Gets a particular detector version\cr
+#'  \link[=frauddetector_get_external_models]{get_external_models} \tab Gets the details for one or more Amazon SageMaker models that have been imported into the service\cr
 #'  \link[=frauddetector_get_models]{get_models} \tab Gets all of the models for the AWS account, or the specified model type, or gets a single model for the specified model type, model ID combination\cr
-#'  \link[=frauddetector_get_model_version]{get_model_version} \tab Gets a model version \cr
-#'  \link[=frauddetector_get_outcomes]{get_outcomes} \tab Gets one or more outcomes \cr
-#'  \link[=frauddetector_get_prediction]{get_prediction} \tab Evaluates an event against a detector version \cr
-#'  \link[=frauddetector_get_rules]{get_rules} \tab Gets all rules available for the specified detector \cr
-#'  \link[=frauddetector_get_variables]{get_variables} \tab Gets all of the variables or the specific variable \cr
-#'  \link[=frauddetector_put_detector]{put_detector} \tab Creates or updates a detector \cr
-#'  \link[=frauddetector_put_external_model]{put_external_model} \tab Creates or updates an Amazon SageMaker model endpoint \cr
-#'  \link[=frauddetector_put_model]{put_model} \tab Creates or updates a model \cr
-#'  \link[=frauddetector_put_outcome]{put_outcome} \tab Creates or updates an outcome \cr
-#'  \link[=frauddetector_update_detector_version]{update_detector_version} \tab Updates a detector version \cr
-#'  \link[=frauddetector_update_detector_version_metadata]{update_detector_version_metadata} \tab Updates the detector version's description \cr
-#'  \link[=frauddetector_update_detector_version_status]{update_detector_version_status} \tab Updates the detector version’s status \cr
-#'  \link[=frauddetector_update_model_version]{update_model_version} \tab Updates a model version \cr
-#'  \link[=frauddetector_update_rule_metadata]{update_rule_metadata} \tab Updates a rule's metadata \cr
-#'  \link[=frauddetector_update_rule_version]{update_rule_version} \tab Updates a rule version resulting in a new rule version \cr
-#'  \link[=frauddetector_update_variable]{update_variable} \tab Updates a variable 
+#'  \link[=frauddetector_get_model_version]{get_model_version} \tab Gets a model version\cr
+#'  \link[=frauddetector_get_outcomes]{get_outcomes} \tab Gets one or more outcomes\cr
+#'  \link[=frauddetector_get_prediction]{get_prediction} \tab Evaluates an event against a detector version\cr
+#'  \link[=frauddetector_get_rules]{get_rules} \tab Gets all rules available for the specified detector\cr
+#'  \link[=frauddetector_get_variables]{get_variables} \tab Gets all of the variables or the specific variable\cr
+#'  \link[=frauddetector_put_detector]{put_detector} \tab Creates or updates a detector\cr
+#'  \link[=frauddetector_put_external_model]{put_external_model} \tab Creates or updates an Amazon SageMaker model endpoint\cr
+#'  \link[=frauddetector_put_model]{put_model} \tab Creates or updates a model\cr
+#'  \link[=frauddetector_put_outcome]{put_outcome} \tab Creates or updates an outcome\cr
+#'  \link[=frauddetector_update_detector_version]{update_detector_version} \tab Updates a detector version\cr
+#'  \link[=frauddetector_update_detector_version_metadata]{update_detector_version_metadata} \tab Updates the detector version's description\cr
+#'  \link[=frauddetector_update_detector_version_status]{update_detector_version_status} \tab Updates the detector version’s status\cr
+#'  \link[=frauddetector_update_model_version]{update_model_version} \tab Updates a model version\cr
+#'  \link[=frauddetector_update_rule_metadata]{update_rule_metadata} \tab Updates a rule's metadata\cr
+#'  \link[=frauddetector_update_rule_version]{update_rule_version} \tab Updates a rule version resulting in a new rule version\cr
+#'  \link[=frauddetector_update_variable]{update_variable} \tab Updates a variable
 #' }
 #'
 #' @rdname frauddetector

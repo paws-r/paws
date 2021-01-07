@@ -39,26 +39,26 @@ realize significant improvements in read performance.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=dax_create_cluster]{create_cluster} \tab Creates a DAX cluster \cr
-\link[=dax_create_parameter_group]{create_parameter_group} \tab Creates a new parameter group \cr
-\link[=dax_create_subnet_group]{create_subnet_group} \tab Creates a new subnet group \cr
-\link[=dax_decrease_replication_factor]{decrease_replication_factor} \tab Removes one or more nodes from a DAX cluster \cr
-\link[=dax_delete_cluster]{delete_cluster} \tab Deletes a previously provisioned DAX cluster \cr
-\link[=dax_delete_parameter_group]{delete_parameter_group} \tab Deletes the specified parameter group \cr
-\link[=dax_delete_subnet_group]{delete_subnet_group} \tab Deletes a subnet group \cr
+\link[=dax_create_cluster]{create_cluster} \tab Creates a DAX cluster\cr
+\link[=dax_create_parameter_group]{create_parameter_group} \tab Creates a new parameter group\cr
+\link[=dax_create_subnet_group]{create_subnet_group} \tab Creates a new subnet group\cr
+\link[=dax_decrease_replication_factor]{decrease_replication_factor} \tab Removes one or more nodes from a DAX cluster\cr
+\link[=dax_delete_cluster]{delete_cluster} \tab Deletes a previously provisioned DAX cluster\cr
+\link[=dax_delete_parameter_group]{delete_parameter_group} \tab Deletes the specified parameter group\cr
+\link[=dax_delete_subnet_group]{delete_subnet_group} \tab Deletes a subnet group\cr
 \link[=dax_describe_clusters]{describe_clusters} \tab Returns information about all provisioned DAX clusters if no cluster identifier is specified, or about a specific DAX cluster if a cluster identifier is supplied\cr
-\link[=dax_describe_default_parameters]{describe_default_parameters} \tab Returns the default system parameter information for the DAX caching software \cr
-\link[=dax_describe_events]{describe_events} \tab Returns events related to DAX clusters and parameter groups \cr
-\link[=dax_describe_parameter_groups]{describe_parameter_groups} \tab Returns a list of parameter group descriptions \cr
-\link[=dax_describe_parameters]{describe_parameters} \tab Returns the detailed parameter list for a particular parameter group \cr
-\link[=dax_describe_subnet_groups]{describe_subnet_groups} \tab Returns a list of subnet group descriptions \cr
-\link[=dax_increase_replication_factor]{increase_replication_factor} \tab Adds one or more nodes to a DAX cluster \cr
-\link[=dax_list_tags]{list_tags} \tab List all of the tags for a DAX cluster \cr
-\link[=dax_reboot_node]{reboot_node} \tab Reboots a single node of a DAX cluster \cr
-\link[=dax_tag_resource]{tag_resource} \tab Associates a set of tags with a DAX resource \cr
-\link[=dax_untag_resource]{untag_resource} \tab Removes the association of tags from a DAX resource \cr
-\link[=dax_update_cluster]{update_cluster} \tab Modifies the settings for a DAX cluster \cr
-\link[=dax_update_parameter_group]{update_parameter_group} \tab Modifies the parameters of a parameter group \cr
+\link[=dax_describe_default_parameters]{describe_default_parameters} \tab Returns the default system parameter information for the DAX caching software\cr
+\link[=dax_describe_events]{describe_events} \tab Returns events related to DAX clusters and parameter groups\cr
+\link[=dax_describe_parameter_groups]{describe_parameter_groups} \tab Returns a list of parameter group descriptions\cr
+\link[=dax_describe_parameters]{describe_parameters} \tab Returns the detailed parameter list for a particular parameter group\cr
+\link[=dax_describe_subnet_groups]{describe_subnet_groups} \tab Returns a list of subnet group descriptions\cr
+\link[=dax_increase_replication_factor]{increase_replication_factor} \tab Adds one or more nodes to a DAX cluster\cr
+\link[=dax_list_tags]{list_tags} \tab List all of the tags for a DAX cluster\cr
+\link[=dax_reboot_node]{reboot_node} \tab Reboots a single node of a DAX cluster\cr
+\link[=dax_tag_resource]{tag_resource} \tab Associates a set of tags with a DAX resource\cr
+\link[=dax_untag_resource]{untag_resource} \tab Removes the association of tags from a DAX resource\cr
+\link[=dax_update_cluster]{update_cluster} \tab Modifies the settings for a DAX cluster\cr
+\link[=dax_update_parameter_group]{update_parameter_group} \tab Modifies the parameters of a parameter group\cr
 \link[=dax_update_subnet_group]{update_subnet_group} \tab Modifies an existing subnet group
 }
 }

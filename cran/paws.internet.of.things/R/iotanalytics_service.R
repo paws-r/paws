@@ -64,40 +64,40 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=iotanalytics_batch_put_message]{batch_put_message} \tab Sends messages to a channel \cr
-#'  \link[=iotanalytics_cancel_pipeline_reprocessing]{cancel_pipeline_reprocessing} \tab Cancels the reprocessing of data through the pipeline \cr
-#'  \link[=iotanalytics_create_channel]{create_channel} \tab Creates a channel \cr
-#'  \link[=iotanalytics_create_dataset]{create_dataset} \tab Creates a data set \cr
+#'  \link[=iotanalytics_batch_put_message]{batch_put_message} \tab Sends messages to a channel\cr
+#'  \link[=iotanalytics_cancel_pipeline_reprocessing]{cancel_pipeline_reprocessing} \tab Cancels the reprocessing of data through the pipeline\cr
+#'  \link[=iotanalytics_create_channel]{create_channel} \tab Creates a channel\cr
+#'  \link[=iotanalytics_create_dataset]{create_dataset} \tab Creates a data set\cr
 #'  \link[=iotanalytics_create_dataset_content]{create_dataset_content} \tab Creates the content of a data set by applying a "queryAction" (a SQL query) or a "containerAction" (executing a containerized application)\cr
-#'  \link[=iotanalytics_create_datastore]{create_datastore} \tab Creates a data store, which is a repository for messages \cr
-#'  \link[=iotanalytics_create_pipeline]{create_pipeline} \tab Creates a pipeline \cr
-#'  \link[=iotanalytics_delete_channel]{delete_channel} \tab Deletes the specified channel \cr
-#'  \link[=iotanalytics_delete_dataset]{delete_dataset} \tab Deletes the specified data set \cr
-#'  \link[=iotanalytics_delete_dataset_content]{delete_dataset_content} \tab Deletes the content of the specified data set \cr
-#'  \link[=iotanalytics_delete_datastore]{delete_datastore} \tab Deletes the specified data store \cr
-#'  \link[=iotanalytics_delete_pipeline]{delete_pipeline} \tab Deletes the specified pipeline \cr
-#'  \link[=iotanalytics_describe_channel]{describe_channel} \tab Retrieves information about a channel \cr
-#'  \link[=iotanalytics_describe_dataset]{describe_dataset} \tab Retrieves information about a data set \cr
-#'  \link[=iotanalytics_describe_datastore]{describe_datastore} \tab Retrieves information about a data store \cr
-#'  \link[=iotanalytics_describe_logging_options]{describe_logging_options} \tab Retrieves the current settings of the AWS IoT Analytics logging options \cr
-#'  \link[=iotanalytics_describe_pipeline]{describe_pipeline} \tab Retrieves information about a pipeline \cr
-#'  \link[=iotanalytics_get_dataset_content]{get_dataset_content} \tab Retrieves the contents of a data set as pre-signed URIs \cr
-#'  \link[=iotanalytics_list_channels]{list_channels} \tab Retrieves a list of channels \cr
-#'  \link[=iotanalytics_list_dataset_contents]{list_dataset_contents} \tab Lists information about data set contents that have been created \cr
-#'  \link[=iotanalytics_list_datasets]{list_datasets} \tab Retrieves information about data sets \cr
-#'  \link[=iotanalytics_list_datastores]{list_datastores} \tab Retrieves a list of data stores \cr
-#'  \link[=iotanalytics_list_pipelines]{list_pipelines} \tab Retrieves a list of pipelines \cr
-#'  \link[=iotanalytics_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags (metadata) which you have assigned to the resource \cr
-#'  \link[=iotanalytics_put_logging_options]{put_logging_options} \tab Sets or updates the AWS IoT Analytics logging options \cr
-#'  \link[=iotanalytics_run_pipeline_activity]{run_pipeline_activity} \tab Simulates the results of running a pipeline activity on a message payload \cr
-#'  \link[=iotanalytics_sample_channel_data]{sample_channel_data} \tab Retrieves a sample of messages from the specified channel ingested during the specified timeframe \cr
-#'  \link[=iotanalytics_start_pipeline_reprocessing]{start_pipeline_reprocessing} \tab Starts the reprocessing of raw message data through the pipeline \cr
-#'  \link[=iotanalytics_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource \cr
-#'  \link[=iotanalytics_untag_resource]{untag_resource} \tab Removes the given tags (metadata) from the resource \cr
-#'  \link[=iotanalytics_update_channel]{update_channel} \tab Updates the settings of a channel \cr
-#'  \link[=iotanalytics_update_dataset]{update_dataset} \tab Updates the settings of a data set \cr
-#'  \link[=iotanalytics_update_datastore]{update_datastore} \tab Updates the settings of a data store \cr
-#'  \link[=iotanalytics_update_pipeline]{update_pipeline} \tab Updates the settings of a pipeline 
+#'  \link[=iotanalytics_create_datastore]{create_datastore} \tab Creates a data store, which is a repository for messages\cr
+#'  \link[=iotanalytics_create_pipeline]{create_pipeline} \tab Creates a pipeline\cr
+#'  \link[=iotanalytics_delete_channel]{delete_channel} \tab Deletes the specified channel\cr
+#'  \link[=iotanalytics_delete_dataset]{delete_dataset} \tab Deletes the specified data set\cr
+#'  \link[=iotanalytics_delete_dataset_content]{delete_dataset_content} \tab Deletes the content of the specified data set\cr
+#'  \link[=iotanalytics_delete_datastore]{delete_datastore} \tab Deletes the specified data store\cr
+#'  \link[=iotanalytics_delete_pipeline]{delete_pipeline} \tab Deletes the specified pipeline\cr
+#'  \link[=iotanalytics_describe_channel]{describe_channel} \tab Retrieves information about a channel\cr
+#'  \link[=iotanalytics_describe_dataset]{describe_dataset} \tab Retrieves information about a data set\cr
+#'  \link[=iotanalytics_describe_datastore]{describe_datastore} \tab Retrieves information about a data store\cr
+#'  \link[=iotanalytics_describe_logging_options]{describe_logging_options} \tab Retrieves the current settings of the AWS IoT Analytics logging options\cr
+#'  \link[=iotanalytics_describe_pipeline]{describe_pipeline} \tab Retrieves information about a pipeline\cr
+#'  \link[=iotanalytics_get_dataset_content]{get_dataset_content} \tab Retrieves the contents of a data set as pre-signed URIs\cr
+#'  \link[=iotanalytics_list_channels]{list_channels} \tab Retrieves a list of channels\cr
+#'  \link[=iotanalytics_list_dataset_contents]{list_dataset_contents} \tab Lists information about data set contents that have been created\cr
+#'  \link[=iotanalytics_list_datasets]{list_datasets} \tab Retrieves information about data sets\cr
+#'  \link[=iotanalytics_list_datastores]{list_datastores} \tab Retrieves a list of data stores\cr
+#'  \link[=iotanalytics_list_pipelines]{list_pipelines} \tab Retrieves a list of pipelines\cr
+#'  \link[=iotanalytics_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags (metadata) which you have assigned to the resource\cr
+#'  \link[=iotanalytics_put_logging_options]{put_logging_options} \tab Sets or updates the AWS IoT Analytics logging options\cr
+#'  \link[=iotanalytics_run_pipeline_activity]{run_pipeline_activity} \tab Simulates the results of running a pipeline activity on a message payload\cr
+#'  \link[=iotanalytics_sample_channel_data]{sample_channel_data} \tab Retrieves a sample of messages from the specified channel ingested during the specified timeframe\cr
+#'  \link[=iotanalytics_start_pipeline_reprocessing]{start_pipeline_reprocessing} \tab Starts the reprocessing of raw message data through the pipeline\cr
+#'  \link[=iotanalytics_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource\cr
+#'  \link[=iotanalytics_untag_resource]{untag_resource} \tab Removes the given tags (metadata) from the resource\cr
+#'  \link[=iotanalytics_update_channel]{update_channel} \tab Updates the settings of a channel\cr
+#'  \link[=iotanalytics_update_dataset]{update_dataset} \tab Updates the settings of a data set\cr
+#'  \link[=iotanalytics_update_datastore]{update_datastore} \tab Updates the settings of a data store\cr
+#'  \link[=iotanalytics_update_pipeline]{update_pipeline} \tab Updates the settings of a pipeline
 #' }
 #'
 #' @rdname iotanalytics

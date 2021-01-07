@@ -39,13 +39,13 @@ get the best results for your application domain.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=polly_delete_lexicon]{delete_lexicon} \tab Deletes the specified pronunciation lexicon stored in an AWS Region \cr
-\link[=polly_describe_voices]{describe_voices} \tab Returns the list of voices that are available for use when requesting speech synthesis \cr
-\link[=polly_get_lexicon]{get_lexicon} \tab Returns the content of the specified pronunciation lexicon stored in an AWS Region \cr
-\link[=polly_get_speech_synthesis_task]{get_speech_synthesis_task} \tab Retrieves a specific SpeechSynthesisTask object based on its TaskID \cr
-\link[=polly_list_lexicons]{list_lexicons} \tab Returns a list of pronunciation lexicons stored in an AWS Region \cr
-\link[=polly_list_speech_synthesis_tasks]{list_speech_synthesis_tasks} \tab Returns a list of SpeechSynthesisTask objects ordered by their creation date \cr
-\link[=polly_put_lexicon]{put_lexicon} \tab Stores a pronunciation lexicon in an AWS Region \cr
+\link[=polly_delete_lexicon]{delete_lexicon} \tab Deletes the specified pronunciation lexicon stored in an AWS Region\cr
+\link[=polly_describe_voices]{describe_voices} \tab Returns the list of voices that are available for use when requesting speech synthesis\cr
+\link[=polly_get_lexicon]{get_lexicon} \tab Returns the content of the specified pronunciation lexicon stored in an AWS Region\cr
+\link[=polly_get_speech_synthesis_task]{get_speech_synthesis_task} \tab Retrieves a specific SpeechSynthesisTask object based on its TaskID\cr
+\link[=polly_list_lexicons]{list_lexicons} \tab Returns a list of pronunciation lexicons stored in an AWS Region\cr
+\link[=polly_list_speech_synthesis_tasks]{list_speech_synthesis_tasks} \tab Returns a list of SpeechSynthesisTask objects ordered by their creation date\cr
+\link[=polly_put_lexicon]{put_lexicon} \tab Stores a pronunciation lexicon in an AWS Region\cr
 \link[=polly_start_speech_synthesis_task]{start_speech_synthesis_task} \tab Allows the creation of an asynchronous synthesis task, by starting a new SpeechSynthesisTask\cr
 \link[=polly_synthesize_speech]{synthesize_speech} \tab Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes
 }

@@ -46,11 +46,11 @@ see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aw
 \section{Operations}{
 
 \tabular{ll}{
-\link[=autoscalingplans_create_scaling_plan]{create_scaling_plan} \tab Creates a scaling plan \cr
-\link[=autoscalingplans_delete_scaling_plan]{delete_scaling_plan} \tab Deletes the specified scaling plan \cr
+\link[=autoscalingplans_create_scaling_plan]{create_scaling_plan} \tab Creates a scaling plan\cr
+\link[=autoscalingplans_delete_scaling_plan]{delete_scaling_plan} \tab Deletes the specified scaling plan\cr
 \link[=autoscalingplans_describe_scaling_plan_resources]{describe_scaling_plan_resources} \tab Describes the scalable resources in the specified scaling plan\cr
-\link[=autoscalingplans_describe_scaling_plans]{describe_scaling_plans} \tab Describes one or more of your scaling plans \cr
-\link[=autoscalingplans_get_scaling_plan_resource_forecast_data]{get_scaling_plan_resource_forecast_data} \tab Retrieves the forecast data for a scalable resource \cr
+\link[=autoscalingplans_describe_scaling_plans]{describe_scaling_plans} \tab Describes one or more of your scaling plans\cr
+\link[=autoscalingplans_get_scaling_plan_resource_forecast_data]{get_scaling_plan_resource_forecast_data} \tab Retrieves the forecast data for a scalable resource\cr
 \link[=autoscalingplans_update_scaling_plan]{update_scaling_plan} \tab Updates the specified scaling plan
 }
 }
