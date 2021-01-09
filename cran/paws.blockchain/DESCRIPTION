@@ -1,6 +1,6 @@
 Package: paws.blockchain
 Title: Amazon Web Services Blockchain Services
-Version: 0.1.9
+Version: 0.1.10
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",
