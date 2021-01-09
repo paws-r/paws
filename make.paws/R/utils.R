@@ -84,22 +84,23 @@ quietly <- function(expr) {
   )
 }
 
-# Returns whether a URL points to a page that still exists -- not 404.
-url_ok <- function(url, tries = 3) {
+# Return the given URL if valid. Return NULL if invalid.
+# Return the new URL if redirected.
+get_url <- function(url, tries = 3) {
   if (url == "") {
     return(FALSE)
   }
 
-  cached_expr(list("url_ok", url = url), function() {
+  cached_expr(list("get_url", url = url), function() {
     try <- 0
     while (try < tries) {
       resp <- tryCatch(
-        httr::status_code(httr::HEAD(url, httr::timeout(1))),
+        httr::HEAD(url, httr::timeout(1)),
         error = function(e) NA
       )
-      if (!is.na(resp) && resp != 404) return(TRUE)
+      if (!is.na(resp) && resp$status_code < 400) return(resp$url)
       try <- try + 1
     }
-    return(FALSE)
+    return(NULL)
   })
 }
