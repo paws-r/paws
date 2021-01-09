@@ -5,11 +5,14 @@ CACHE_DIR := ./cache
 
 # Make R use the user's package library by setting the R user home path (R_USER)
 # to the folder containing their package library. On Windows, it is in
-# ~/Documents/R, whereas in Linux/macOS it is in ~/R.
-ifdef OS
-	R_USER := ${HOME}/Documents
-else
-	R_USER := ${HOME}
+# ~/Documents/R, whereas in Linux/macOS it is in ~/R. You can set R_USER
+# manually by running `make <recipe> R_USER=<foo>`.
+ifndef R_USER
+	ifdef OS
+		R_USER := ${HOME}/Documents
+	else
+		R_USER := ${HOME}
+	endif
 endif
 export R_USER
 
