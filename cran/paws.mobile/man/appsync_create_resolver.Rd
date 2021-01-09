@@ -17,11 +17,15 @@ appsync_create_resolver(apiId, typeName, fieldName, dataSourceName,
 
 \item{dataSourceName}{The name of the data source for which the resolver is being created.}
 
-\item{requestMappingTemplate}{[required] The mapping template to be used for requests.
+\item{requestMappingTemplate}{The mapping template to be used for requests.
 
 A resolver uses a request mapping template to convert a GraphQL
 expression into a format that a data source can understand. Mapping
-templates are written in Apache Velocity Template Language (VTL).}
+templates are written in Apache Velocity Template Language (VTL).
+
+VTL request mapping templates are optional when using a Lambda data
+source. For all other data sources, VTL request and response mapping
+templates are required.}
 
 \item{responseMappingTemplate}{The mapping template to be used for responses from the data source.}
 

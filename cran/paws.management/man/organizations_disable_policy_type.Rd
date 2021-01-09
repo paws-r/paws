@@ -10,17 +10,17 @@ organizations_disable_policy_type(RootId, PolicyType)
 \item{RootId}{[required] The unique identifier (ID) of the root in which you want to disable a
 policy type. You can get the ID from the ListRoots operation.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a root ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a root ID
 string requires "r-" followed by from 4 to 32 lowercase letters or
 digits.}
 
 \item{PolicyType}{[required] The policy type that you want to disable in this root. You can specify
 one of the following values:
 \itemize{
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{SERVICE\\_CONTROL\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE\\_CONTROL\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
 }}
 }
 \description{
@@ -39,7 +39,7 @@ are enabled for the organization. AWS recommends that you first use
 ListRoots to see the status of policy types for a specified root, and
 then use this operation.
 
-This operation can be called only from the organization's master
+This operation can be called only from the organization's management
 account.
 
 To view the status of available policy types in the organization, use

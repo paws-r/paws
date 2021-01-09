@@ -132,7 +132,7 @@ NULL
 #' `"Condition": \{"Bool": \{"aws:MultiFactorAuthPresent": true\}\}`
 #' 
 #' For more information, see [Configuring MFA-Protected API
-#' Access](https://docs.aws.amazon.com/IAM/latest/UserGuide/MFAProtectedAPI.html)
+#' Access](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_configure-api-require.html)
 #' in the *IAM User Guide* guide.
 #' 
 #' To use MFA with `AssumeRole`, you pass values for the `SerialNumber` and
@@ -245,7 +245,7 @@ NULL
 #' plain text session tag keys can’t exceed 128 characters, and the values
 #' can’t exceed 256 characters. For these and additional limits, see [IAM
 #' and STS Character
-#' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length)
+#' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html)
 #' in the *IAM User Guide*.
 #' 
 #' An AWS conversion compresses the passed session policies and session
@@ -272,8 +272,8 @@ NULL
 #' inherited tag, the operation fails. To view the inherited tags for a
 #' session, see the AWS CloudTrail logs. For more information, see [Viewing
 #' Session Tags in
-#' CloudTrail](https://docs.aws.amazon.com/IAM/latest/UserGuide/session-tags.html#id_session-tags_ctlogs)
-#' in the *IAM User Guide*.
+#' CloudTrail](https://docs.aws.amazon.com/IAM/latest/UserGuide/) in the
+#' *IAM User Guide*.
 #' @param TransitiveTagKeys A list of keys for session tags that you want to set as transitive. If
 #' you set a tag key as transitive, the corresponding key and value passes
 #' to subsequent sessions in a role chain. For more information, see
@@ -488,7 +488,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' You can pass up to 50 session tags. The plain text session tag keys
 #' can’t exceed 128 characters and the values can’t exceed 256 characters.
 #' For these and additional limits, see [IAM and STS Character
-#' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length)
+#' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html)
 #' in the *IAM User Guide*.
 #' 
 #' An AWS conversion compresses the passed session policies and session
@@ -552,7 +552,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' @param SAMLAssertion &#91;required&#93; The base-64 encoded SAML authentication response provided by the IdP.
 #' 
 #' For more information, see [Configuring a Relying Party and Adding
-#' Claims](https://docs.aws.amazon.com/IAM/latest/UserGuide/create-role-saml-IdP-tasks.html)
+#' Claims](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml_relying-party.html)
 #' in the *IAM User Guide*.
 #' @param PolicyArns The Amazon Resource Names (ARNs) of the IAM managed policies that you
 #' want to use as managed session policies. The policies must exist in the
@@ -691,15 +691,15 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' 
 #' For mobile applications, we recommend that you use Amazon Cognito. You
 #' can use Amazon Cognito with the [AWS SDK for iOS Developer
-#' Guide](http://aws.amazon.com/sdkforios/) and the [AWS SDK for Android
-#' Developer Guide](http://aws.amazon.com/sdkforandroid/) to uniquely
-#' identify a user. You can also supply the user with a consistent identity
-#' throughout the lifetime of an application.
+#' Guide](https://aws.amazon.com/amplify/) and the [AWS SDK for Android
+#' Developer Guide](https://aws.amazon.com/amplify/) to uniquely identify a
+#' user. You can also supply the user with a consistent identity throughout
+#' the lifetime of an application.
 #' 
 #' To learn more about Amazon Cognito, see [Amazon Cognito
-#' Overview](https://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/cognito-auth.html#d0e840)
-#' in *AWS SDK for Android Developer Guide* and [Amazon Cognito
-#' Overview](https://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-auth.html#d0e664)
+#' Overview](https://aws-amplify.github.io/docs/android/authentication) in
+#' *AWS SDK for Android Developer Guide* and [Amazon Cognito
+#' Overview](https://docs.aws.amazon.com/mobile/sdkforios/developerguide/)
 #' in the *AWS SDK for iOS Developer Guide*.
 #' 
 #' Calling `AssumeRoleWithWebIdentity` does not require the use of AWS
@@ -773,7 +773,7 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' You can pass up to 50 session tags. The plain text session tag keys
 #' can’t exceed 128 characters and the values can’t exceed 256 characters.
 #' For these and additional limits, see [IAM and STS Character
-#' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length)
+#' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html)
 #' in the *IAM User Guide*.
 #' 
 #' An AWS conversion compresses the passed session policies and session
@@ -811,12 +811,12 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' 
 #' Calling `AssumeRoleWithWebIdentity` can result in an entry in your AWS
 #' CloudTrail logs. The entry includes the
-#' [Subject](http://openid.net/specs/openid-connect-core-1_0.html#Claims)
-#' of the provided Web Identity Token. We recommend that you avoid using
-#' any personally identifiable information (PII) in this field. For
-#' example, you could instead use a GUID or a pairwise identifier, as
-#' [suggested in the OIDC
-#' specification](http://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes).
+#' [Subject](https://openid.net/specs/openid-connect-core-1_0.html) of the
+#' provided Web Identity Token. We recommend that you avoid using any
+#' personally identifiable information (PII) in this field. For example,
+#' you could instead use a GUID or a pairwise identifier, as [suggested in
+#' the OIDC
+#' specification](https://openid.net/specs/openid-connect-core-1_0.html).
 #' 
 #' For more information about how to use web identity federation and the
 #' `AssumeRoleWithWebIdentity` API, see the following resources:
@@ -827,20 +827,20 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #'     Provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity).
 #' 
 #' -   [Web Identity Federation
-#'     Playground](https://web-identity-federation-playground.s3.amazonaws.com/index.html).
+#'     Playground](https://aws.amazon.com/blogs/aws/the-aws-web-identity-federation-playground/).
 #'     Walk through the process of authenticating through Login with
 #'     Amazon, Facebook, or Google, getting temporary security credentials,
 #'     and then using those credentials to make a request to AWS.
 #' 
-#' -   [AWS SDK for iOS Developer Guide](http://aws.amazon.com/sdkforios/)
+#' -   [AWS SDK for iOS Developer Guide](https://aws.amazon.com/amplify/)
 #'     and [AWS SDK for Android Developer
-#'     Guide](http://aws.amazon.com/sdkforandroid/). These toolkits contain
+#'     Guide](https://aws.amazon.com/amplify/). These toolkits contain
 #'     sample apps that show how to invoke the identity providers. The
 #'     toolkits then show how to use the information from these providers
 #'     to get and use temporary security credentials.
 #' 
 #' -   [Web Identity Federation with Mobile
-#'     Applications](http://aws.amazon.com/articles/web-identity-federation-with-mobile-applications).
+#'     Applications](https://aws.amazon.com/articles/web-identity-federation-with-mobile-applications/).
 #'     This article discusses web identity federation and shows an example
 #'     of how to use web identity federation to get access to content in
 #'     Amazon S3.
@@ -1226,8 +1226,9 @@ sts_get_caller_identity <- function() {
 #' users using a web identity provider like Login with Amazon, Facebook,
 #' Google, or an OpenID Connect-compatible identity provider. In this case,
 #' we recommend that you use [Amazon
-#' Cognito](http://aws.amazon.com/cognito/) or `AssumeRoleWithWebIdentity`.
-#' For more information, see [Federation Through a Web-based Identity
+#' Cognito](https://aws.amazon.com/cognito/) or
+#' `AssumeRoleWithWebIdentity`. For more information, see [Federation
+#' Through a Web-based Identity
 #' Provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity)
 #' in the *IAM User Guide*.
 #' 
@@ -1417,7 +1418,7 @@ sts_get_caller_identity <- function() {
 #' plain text session tag keys can’t exceed 128 characters and the values
 #' can’t exceed 256 characters. For these and additional limits, see [IAM
 #' and STS Character
-#' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length)
+#' Limits](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html)
 #' in the *IAM User Guide*.
 #' 
 #' An AWS conversion compresses the passed session policies and session

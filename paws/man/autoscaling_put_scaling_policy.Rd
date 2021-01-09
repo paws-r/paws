@@ -21,12 +21,12 @@ autoscaling_put_scaling_policy(AutoScalingGroupName, PolicyName,
 \item \code{SimpleScaling} (default)
 }}
 
-\item{AdjustmentType}{Specifies how the scaling adjustment is interpreted (either an absolute
-number or a percentage). The valid values are \code{ChangeInCapacity},
-\code{ExactCapacity}, and \code{PercentChangeInCapacity}.
+\item{AdjustmentType}{Specifies how the scaling adjustment is interpreted (for example, an
+absolute number or a percentage). The valid values are
+\code{ChangeInCapacity}, \code{ExactCapacity}, and \code{PercentChangeInCapacity}.
 
 Required if the policy type is \code{StepScaling} or \code{SimpleScaling}. For
-more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html#as-scaling-adjustment}{Scaling Adjustment Types}
+more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html#as-scaling-adjustment}{Scaling adjustment types}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MinAdjustmentStep}{Available for backward compatibility. Use \code{MinAdjustmentMagnitude}
@@ -41,7 +41,7 @@ because you specified a \code{MinAdjustmentMagnitude} of 2, Amazon EC2 Auto
 Scaling scales out the group by 2 instances.
 
 Valid only if the policy type is \code{StepScaling} or \code{SimpleScaling}. For
-more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html#as-scaling-adjustment}{Scaling Adjustment Types}
+more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html#as-scaling-adjustment}{Scaling adjustment types}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 Some Auto Scaling groups use instance weights. In this case, set the
@@ -61,7 +61,7 @@ cooldown period is specified here, it overrides the default cooldown
 period defined for the Auto Scaling group.
 
 Valid only if the policy type is \code{SimpleScaling}. For more information,
-see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns for Amazon EC2 Auto Scaling}
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MetricAggregationType}{The aggregation type for the CloudWatch metrics. The valid values are
@@ -106,7 +106,7 @@ in the \emph{Amazon EC2 Auto Scaling API Reference}.
 Required if the policy type is \code{TargetTrackingScaling}.}
 
 \item{Enabled}{Indicates whether the scaling policy is enabled or disabled. The default
-is enabled. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enable-disable-scaling-policy.html}{Disabling a Scaling Policy for an Auto Scaling Group}
+is enabled. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enable-disable-scaling-policy.html}{Disabling a scaling policy for an Auto Scaling group}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
@@ -114,8 +114,8 @@ Creates or updates a scaling policy for an Auto Scaling group.
 }
 \details{
 For more information about using scaling policies to scale your Auto
-Scaling group, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-target-tracking.html}{Target Tracking Scaling Policies}
-and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html}{Step and Simple Scaling Policies}
+Scaling group, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-target-tracking.html}{Target tracking scaling policies}
+and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html}{Step and simple scaling policies}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

@@ -5,17 +5,24 @@
 \title{Applies an Amazon S3 bucket policy to an Amazon S3 bucket}
 \usage{
 s3_put_bucket_policy(Bucket, ContentMD5, ConfirmRemoveSelfBucketAccess,
-  Policy)
+  Policy, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket.}
 
-\item{ContentMD5}{The MD5 hash of the request body.}
+\item{ContentMD5}{The MD5 hash of the request body.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.}
 
 \item{ConfirmRemoveSelfBucketAccess}{Set this parameter to true to confirm that you want to remove your
 permissions to change this bucket policy in the future.}
 
 \item{Policy}{[required] The bucket policy as a JSON document.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Applies an Amazon S3 bucket policy to an Amazon S3 bucket. If you are
@@ -38,8 +45,8 @@ For more information about bucket policies, see \href{https://docs.aws.amazon.co
 
 The following operations are related to \code{PutBucketPolicy}:
 \itemize{
-\item CreateBucket
-\item DeleteBucket
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html}{DeleteBucket}
 }
 }
 \section{Request syntax}{
@@ -47,7 +54,8 @@ The following operations are related to \code{PutBucketPolicy}:
   Bucket = "string",
   ContentMD5 = "string",
   ConfirmRemoveSelfBucketAccess = TRUE|FALSE,
-  Policy = "string"
+  Policy = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

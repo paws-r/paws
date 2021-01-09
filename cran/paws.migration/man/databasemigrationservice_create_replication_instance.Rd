@@ -9,7 +9,7 @@ databasemigrationservice_create_replication_instance(
   ReplicationInstanceClass, VpcSecurityGroupIds, AvailabilityZone,
   ReplicationSubnetGroupIdentifier, PreferredMaintenanceWindow, MultiAZ,
   EngineVersion, AutoMinorVersionUpgrade, Tags, KmsKeyId,
-  PubliclyAccessible, DnsNameServers)
+  PubliclyAccessible, DnsNameServers, ResourceIdentifier)
 }
 \arguments{
 \item{ReplicationInstanceIdentifier}{[required] The replication instance identifier. This parameter is stored as a
@@ -60,7 +60,10 @@ Constraints: Minimum 30-minute window.}
 can't set the \code{AvailabilityZone} parameter if the Multi-AZ parameter is
 set to \code{true}.}
 
-\item{EngineVersion}{The engine version number of the replication instance.}
+\item{EngineVersion}{The engine version number of the replication instance.
+
+If an engine version number is not specified when a replication instance
+is created, the default is the latest engine version available.}
 
 \item{AutoMinorVersionUpgrade}{A value that indicates whether minor engine upgrades are applied
 automatically to the replication instance during the maintenance window.
@@ -90,6 +93,17 @@ the default name servers supported by the replication instance. You can
 specify a comma-separated list of internet addresses for up to four
 on-premise DNS name servers. For example:
 \code{"1.1.1.1,2.2.2.2,3.3.3.3,4.4.4.4"}}
+
+\item{ResourceIdentifier}{A friendly name for the resource identifier at the end of the
+\code{EndpointArn} response parameter that is returned in the created
+\code{Endpoint} object. The value for this parameter can have up to 31
+characters. It can contain only ASCII letters, digits, and hyphen ('-').
+Also, it can't end with a hyphen or contain two consecutive hyphens, and
+can only begin with a letter, such as \code{Example-App-ARN1}. For example,
+this value might result in the \code{EndpointArn} value
+\code{arn:aws:dms:eu-west-1:012345678901:rep:Example-App-ARN1}. If you don't
+specify a \code{ResourceIdentifier} value, AWS DMS generates a default
+identifier value for the end of \code{EndpointArn}.}
 }
 \description{
 Creates the replication instance using the specified parameters.
@@ -97,8 +111,8 @@ Creates the replication instance using the specified parameters.
 \details{
 AWS DMS requires that your account have certain roles with appropriate
 permissions before you can create a replication instance. For
-information on the required roles, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.APIRole.html}{Creating the IAM Roles to Use With the AWS CLI and AWS DMS API}.
-For information on the required permissions, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.IAMPermissions.html}{IAM Permissions Needed to Use AWS DMS}.
+information on the required roles, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.APIRole}{Creating the IAM Roles to Use With the AWS CLI and AWS DMS API}.
+For information on the required permissions, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.IAMPermissions}{IAM Permissions Needed to Use AWS DMS}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_replication_instance(
@@ -122,7 +136,8 @@ For information on the required permissions, see \href{https://docs.aws.amazon.c
   ),
   KmsKeyId = "string",
   PubliclyAccessible = TRUE|FALSE,
-  DnsNameServers = "string"
+  DnsNameServers = "string",
+  ResourceIdentifier = "string"
 )
 }
 }

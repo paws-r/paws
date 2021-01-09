@@ -20,9 +20,7 @@ cloudwatch_put_anomaly_detector(Namespace, MetricName, Dimensions, Stat,
 model is to be trained, including time ranges to exclude when training
 and updating the model. You can specify as many as 10 time ranges.
 
-The configuration can also include the time zone to use for the metric.
-
-You can in}
+The configuration can also include the time zone to use for the metric.}
 }
 \description{
 Creates an anomaly detection model for a CloudWatch metric. You can use

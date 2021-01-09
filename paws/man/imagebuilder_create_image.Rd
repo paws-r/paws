@@ -4,13 +4,17 @@
 \alias{imagebuilder_create_image}
 \title{Creates a new image}
 \usage{
-imagebuilder_create_image(imageRecipeArn, distributionConfigurationArn,
-  infrastructureConfigurationArn, imageTestsConfiguration,
-  enhancedImageMetadataEnabled, tags, clientToken)
+imagebuilder_create_image(imageRecipeArn, containerRecipeArn,
+  distributionConfigurationArn, infrastructureConfigurationArn,
+  imageTestsConfiguration, enhancedImageMetadataEnabled, tags,
+  clientToken)
 }
 \arguments{
-\item{imageRecipeArn}{[required] The Amazon Resource Name (ARN) of the image recipe that defines how
+\item{imageRecipeArn}{The Amazon Resource Name (ARN) of the image recipe that defines how
 images are configured, tested, and assessed.}
+
+\item{containerRecipeArn}{The Amazon Resource Name (ARN) of the container recipe that defines how
+images are configured and tested.}
 
 \item{distributionConfigurationArn}{The Amazon Resource Name (ARN) of the distribution configuration that
 defines and configures the outputs of your pipeline.}
@@ -37,6 +41,7 @@ configuration.
 \section{Request syntax}{
 \preformatted{svc$create_image(
   imageRecipeArn = "string",
+  containerRecipeArn = "string",
   distributionConfigurationArn = "string",
   infrastructureConfigurationArn = "string",
   imageTestsConfiguration = list(

@@ -10,37 +10,43 @@ route53resolver(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-Here's how you set up to query an Amazon Route 53 private hosted zone
-from your network:
-\enumerate{
-\item Connect your network to a VPC using AWS Direct Connect or a VPN.
-\item Run the following AWS CLI command to create a Resolver endpoint:
+When you create a VPC using Amazon VPC, you automatically get DNS
+resolution within the VPC from Route 53 Resolver. By default, Resolver
+answers DNS queries for VPC domain names such as domain names for EC2
+instances or ELB load balancers. Resolver performs recursive lookups
+against public name servers for all other domain names.
 
-\verb{create-resolver-endpoint --name \\\[endpoint_name\\\] --direction INBOUND --creator-request-id \\\[unique_string\\\] --security-group-ids \\\[security_group_with_inbound_rules\\\] --ip-addresses SubnetId=\\\[subnet_id\\\] SubnetId=\\\[subnet_id_in_different_AZ\\\]}
+You can also configure DNS resolution between your VPC and your network
+over a Direct Connect or VPN connection:
 
-Note the resolver endpoint ID that appears in the response. You'll
-use it in step 3.
-\item Get the IP addresses for the Resolver endpoints:
+\strong{Forward DNS queries from resolvers on your network to Route 53
+Resolver}
 
-\verb{get-resolver-endpoint --resolver-endpoint-id \\\[resolver_endpoint_id\\\]}
-\item In your network configuration, define the IP addresses that you got
-in step 3 as DNS servers.
+DNS resolvers on your network can forward DNS queries to Resolver in a
+specified VPC. This allows your DNS resolvers to easily resolve domain
+names for AWS resources such as EC2 instances or records in a Route 53
+private hosted zone. For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-network-to-vpc}{How DNS Resolvers on Your Network Forward DNS Queries to Route 53 Resolver}
+in the \emph{Amazon Route 53 Developer Guide}.
 
-You can now query instance names in your VPCs and the names of
-records in your private hosted zone.
-}
+\strong{Conditionally forward queries from a VPC to resolvers on your
+network}
 
-You can also perform the following operations using the AWS CLI:
-\itemize{
-\item \code{list-resolver-endpoints}: List all endpoints. The syntax includes
-options for pagination and filtering.
-\item \code{update-resolver-endpoints}: Add IP addresses to an endpoint or
-remove IP addresses from an endpoint.
-}
+You can configure Resolver to forward queries that it receives from EC2
+instances in your VPCs to DNS resolvers on your network. To forward
+selected queries, you create Resolver rules that specify the domain
+names for the DNS queries that you want to forward (such as
+example.com), and the IP addresses of the DNS resolvers on your network
+that you want to forward the queries to. If a query matches multiple
+rules (example.com, acme.example.com), Resolver chooses the rule with
+the most specific match (acme.example.com) and forwards the query to the
+IP addresses that you specified in that rule. For more information, see
+\href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-vpc-to-network}{How Route 53 Resolver Forwards DNS Queries from Your VPCs to Your Network}
+in the \emph{Amazon Route 53 Developer Guide}.
 
-To delete an endpoint, use the following AWS CLI command:
-
-\verb{delete-resolver-endpoint --resolver-endpoint-id \\\[resolver_endpoint_id\\\]}
+Like Amazon VPC, Resolver is regional. In each region where you have
+VPCs, you can choose whether to forward queries from your VPCs to your
+network (outbound queries), from your network to your VPCs (inbound
+queries), or both.
 }
 \section{Service syntax}{
 \preformatted{svc <- route53resolver(
@@ -63,28 +69,41 @@ To delete an endpoint, use the following AWS CLI command:
 \section{Operations}{
 
 \tabular{ll}{
-\link[=route53resolver_associate_resolver_endpoint_ip_address]{associate_resolver_endpoint_ip_address} \tab Adds IP addresses to an inbound or an outbound resolver endpoint\cr
-\link[=route53resolver_associate_resolver_rule]{associate_resolver_rule} \tab Associates a resolver rule with a VPC\cr
-\link[=route53resolver_create_resolver_endpoint]{create_resolver_endpoint} \tab Creates a resolver endpoint\cr
-\link[=route53resolver_create_resolver_rule]{create_resolver_rule} \tab For DNS queries that originate in your VPCs, specifies which resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network\cr
-\link[=route53resolver_delete_resolver_endpoint]{delete_resolver_endpoint} \tab Deletes a resolver endpoint\cr
-\link[=route53resolver_delete_resolver_rule]{delete_resolver_rule} \tab Deletes a resolver rule\cr
-\link[=route53resolver_disassociate_resolver_endpoint_ip_address]{disassociate_resolver_endpoint_ip_address} \tab Removes IP addresses from an inbound or an outbound resolver endpoint\cr
-\link[=route53resolver_disassociate_resolver_rule]{disassociate_resolver_rule} \tab Removes the association between a specified resolver rule and a specified VPC\cr
-\link[=route53resolver_get_resolver_endpoint]{get_resolver_endpoint} \tab Gets information about a specified resolver endpoint, such as whether it's an inbound or an outbound resolver endpoint, and the current status of the endpoint\cr
-\link[=route53resolver_get_resolver_rule]{get_resolver_rule} \tab Gets information about a specified resolver rule, such as the domain name that the rule forwards DNS queries for and the ID of the outbound resolver endpoint that the rule is associated with\cr
-\link[=route53resolver_get_resolver_rule_association]{get_resolver_rule_association} \tab Gets information about an association between a specified resolver rule and a VPC\cr
-\link[=route53resolver_get_resolver_rule_policy]{get_resolver_rule_policy} \tab Gets information about a resolver rule policy\cr
-\link[=route53resolver_list_resolver_endpoint_ip_addresses]{list_resolver_endpoint_ip_addresses} \tab Gets the IP addresses for a specified resolver endpoint\cr
-\link[=route53resolver_list_resolver_endpoints]{list_resolver_endpoints} \tab Lists all the resolver endpoints that were created using the current AWS account\cr
-\link[=route53resolver_list_resolver_rule_associations]{list_resolver_rule_associations} \tab Lists the associations that were created between resolver rules and VPCs using the current AWS account\cr
-\link[=route53resolver_list_resolver_rules]{list_resolver_rules} \tab Lists the resolver rules that were created using the current AWS account\cr
+\link[=route53resolver_associate_resolver_endpoint_ip_address]{associate_resolver_endpoint_ip_address} \tab Adds IP addresses to an inbound or an outbound Resolver endpoint\cr
+\link[=route53resolver_associate_resolver_query_log_config]{associate_resolver_query_log_config} \tab Associates an Amazon VPC with a specified query logging configuration\cr
+\link[=route53resolver_associate_resolver_rule]{associate_resolver_rule} \tab Associates a Resolver rule with a VPC\cr
+\link[=route53resolver_create_resolver_endpoint]{create_resolver_endpoint} \tab Creates a Resolver endpoint\cr
+\link[=route53resolver_create_resolver_query_log_config]{create_resolver_query_log_config} \tab Creates a Resolver query logging configuration, which defines where you want Resolver to save DNS query logs that originate in your VPCs\cr
+\link[=route53resolver_create_resolver_rule]{create_resolver_rule} \tab For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network\cr
+\link[=route53resolver_delete_resolver_endpoint]{delete_resolver_endpoint} \tab Deletes a Resolver endpoint\cr
+\link[=route53resolver_delete_resolver_query_log_config]{delete_resolver_query_log_config} \tab Deletes a query logging configuration\cr
+\link[=route53resolver_delete_resolver_rule]{delete_resolver_rule} \tab Deletes a Resolver rule\cr
+\link[=route53resolver_disassociate_resolver_endpoint_ip_address]{disassociate_resolver_endpoint_ip_address} \tab Removes IP addresses from an inbound or an outbound Resolver endpoint\cr
+\link[=route53resolver_disassociate_resolver_query_log_config]{disassociate_resolver_query_log_config} \tab Disassociates a VPC from a query logging configuration\cr
+\link[=route53resolver_disassociate_resolver_rule]{disassociate_resolver_rule} \tab Removes the association between a specified Resolver rule and a specified VPC\cr
+\link[=route53resolver_get_resolver_dnssec_config]{get_resolver_dnssec_config} \tab Gets DNSSEC validation information for a specified resource\cr
+\link[=route53resolver_get_resolver_endpoint]{get_resolver_endpoint} \tab Gets information about a specified Resolver endpoint, such as whether it's an inbound or an outbound Resolver endpoint, and the current status of the endpoint\cr
+\link[=route53resolver_get_resolver_query_log_config]{get_resolver_query_log_config} \tab Gets information about a specified Resolver query logging configuration, such as the number of VPCs that the configuration is logging queries for and the location that logs are sent to\cr
+\link[=route53resolver_get_resolver_query_log_config_association]{get_resolver_query_log_config_association} \tab Gets information about a specified association between a Resolver query logging configuration and an Amazon VPC\cr
+\link[=route53resolver_get_resolver_query_log_config_policy]{get_resolver_query_log_config_policy} \tab Gets information about a query logging policy\cr
+\link[=route53resolver_get_resolver_rule]{get_resolver_rule} \tab Gets information about a specified Resolver rule, such as the domain name that the rule forwards DNS queries for and the ID of the outbound Resolver endpoint that the rule is associated with\cr
+\link[=route53resolver_get_resolver_rule_association]{get_resolver_rule_association} \tab Gets information about an association between a specified Resolver rule and a VPC\cr
+\link[=route53resolver_get_resolver_rule_policy]{get_resolver_rule_policy} \tab Gets information about the Resolver rule policy for a specified rule\cr
+\link[=route53resolver_list_resolver_dnssec_configs]{list_resolver_dnssec_configs} \tab Lists the configurations for DNSSEC validation that are associated with the current AWS account\cr
+\link[=route53resolver_list_resolver_endpoint_ip_addresses]{list_resolver_endpoint_ip_addresses} \tab Gets the IP addresses for a specified Resolver endpoint\cr
+\link[=route53resolver_list_resolver_endpoints]{list_resolver_endpoints} \tab Lists all the Resolver endpoints that were created using the current AWS account\cr
+\link[=route53resolver_list_resolver_query_log_config_associations]{list_resolver_query_log_config_associations} \tab Lists information about associations between Amazon VPCs and query logging configurations\cr
+\link[=route53resolver_list_resolver_query_log_configs]{list_resolver_query_log_configs} \tab Lists information about the specified query logging configurations\cr
+\link[=route53resolver_list_resolver_rule_associations]{list_resolver_rule_associations} \tab Lists the associations that were created between Resolver rules and VPCs using the current AWS account\cr
+\link[=route53resolver_list_resolver_rules]{list_resolver_rules} \tab Lists the Resolver rules that were created using the current AWS account\cr
 \link[=route53resolver_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that you associated with the specified resource\cr
-\link[=route53resolver_put_resolver_rule_policy]{put_resolver_rule_policy} \tab Specifies the Resolver operations and resources that you want to allow another AWS account to be able to use\cr
+\link[=route53resolver_put_resolver_query_log_config_policy]{put_resolver_query_log_config_policy} \tab Specifies an AWS account that you want to share a query logging configuration with, the query logging configuration that you want to share, and the operations that you want the account to be able to perform on the configuration\cr
+\link[=route53resolver_put_resolver_rule_policy]{put_resolver_rule_policy} \tab Specifies an AWS rule that you want to share with another account, the account that you want to share the rule with, and the operations that you want the account to be able to perform on the rule\cr
 \link[=route53resolver_tag_resource]{tag_resource} \tab Adds one or more tags to a specified resource\cr
 \link[=route53resolver_untag_resource]{untag_resource} \tab Removes one or more tags from a specified resource\cr
-\link[=route53resolver_update_resolver_endpoint]{update_resolver_endpoint} \tab Updates the name of an inbound or an outbound resolver endpoint\cr
-\link[=route53resolver_update_resolver_rule]{update_resolver_rule} \tab Updates settings for a specified resolver rule
+\link[=route53resolver_update_resolver_dnssec_config]{update_resolver_dnssec_config} \tab Updates an existing DNSSEC validation configuration\cr
+\link[=route53resolver_update_resolver_endpoint]{update_resolver_endpoint} \tab Updates the name of an inbound or an outbound Resolver endpoint\cr
+\link[=route53resolver_update_resolver_rule]{update_resolver_rule} \tab Updates settings for a specified Resolver rule
 }
 }
 

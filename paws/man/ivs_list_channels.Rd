@@ -2,7 +2,8 @@
 % Please edit documentation in R/ivs_operations.R
 \name{ivs_list_channels}
 \alias{ivs_list_channels}
-\title{Gets summary information about channels}
+\title{Gets summary information about all channels in your account, in the AWS
+region where the API request is processed}
 \usage{
 ivs_list_channels(filterByName, nextToken, maxResults)
 }
@@ -15,7 +16,8 @@ ivs_list_channels(filterByName, nextToken, maxResults)
 \item{maxResults}{Maximum number of channels to return.}
 }
 \description{
-Gets summary information about channels. This list can be filtered to
+Gets summary information about all channels in your account, in the AWS
+region where the API request is processed. This list can be filtered to
 match a specified string.
 }
 \section{Request syntax}{

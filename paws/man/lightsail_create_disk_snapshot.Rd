@@ -27,8 +27,7 @@ exclusive.}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \verb{tag resource}
-operation.}
+Use the \code{TagResource} action to tag a resource after it's created.}
 }
 \description{
 Creates a snapshot of a block storage disk. You can use snapshots for
@@ -58,7 +57,7 @@ available, you can create a block storage disk from the snapshot and
 attach it to a running instance to access the data on the disk.
 
 The \verb{create disk snapshot} operation supports tag-based access control
-via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+via request tags. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_disk_snapshot(

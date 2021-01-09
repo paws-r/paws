@@ -15,13 +15,12 @@ that you specified when you provisioned the address range.}
 \description{
 Releases the specified address range that you provisioned to use with
 your AWS resources through bring your own IP addresses (BYOIP) and
-deletes the corresponding address pool. To see an AWS CLI example of
-deprovisioning an address range, scroll down to \strong{Example}.
+deletes the corresponding address pool.
 }
 \details{
 Before you can release an address range, you must stop advertising it by
 using
-\href{https://docs.aws.amazon.com/global-accelerator/latest/api/WithdrawByoipCidr.html}{WithdrawByoipCidr}
+\href{https://docs.aws.amazon.com/global-accelerator/latest/api/}{WithdrawByoipCidr}
 and you must not have any accelerators that are using static IP
 addresses allocated from its address range.
 

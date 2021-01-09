@@ -5,7 +5,7 @@
 \title{Creates a rule for use with the specified detector}
 \usage{
 frauddetector_create_rule(ruleId, detectorId, description, expression,
-  language, outcomes)
+  language, outcomes, tags)
 }
 \arguments{
 \item{ruleId}{[required] The rule ID.}
@@ -19,6 +19,8 @@ frauddetector_create_rule(ruleId, detectorId, description, expression,
 \item{language}{[required] The language of the rule.}
 
 \item{outcomes}{[required] The outcome or outcomes returned when the rule expression matches.}
+
+\item{tags}{A collection of key and value pairs.}
 }
 \description{
 Creates a rule for use with the specified detector.
@@ -32,6 +34,12 @@ Creates a rule for use with the specified detector.
   language = "DETECTORPL",
   outcomes = list(
     "string"
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
   )
 )
 }

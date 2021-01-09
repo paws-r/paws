@@ -126,7 +126,10 @@ returns the file system state along with other information.
     WeeklyMaintenanceStartTime = "string",
     DailyAutomaticBackupStartTime = "string",
     AutomaticBackupRetentionDays = 123,
-    CopyTagsToBackups = TRUE|FALSE
+    CopyTagsToBackups = TRUE|FALSE,
+    Aliases = list(
+      "string"
+    )
   ),
   LustreConfiguration = list(
     WeeklyMaintenanceStartTime = "string",
@@ -134,10 +137,12 @@ returns the file system state along with other information.
     ExportPath = "string",
     ImportedFileChunkSize = 123,
     DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
+    AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
     PerUnitStorageThroughput = 123,
     DailyAutomaticBackupStartTime = "string",
     AutomaticBackupRetentionDays = 123,
-    CopyTagsToBackups = TRUE|FALSE
+    CopyTagsToBackups = TRUE|FALSE,
+    DriveCacheType = "NONE"|"READ"
   ),
   StorageType = "SSD"|"HDD"
 )

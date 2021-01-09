@@ -4,17 +4,20 @@
 \alias{signer_get_signing_profile}
 \title{Returns information on a specific signing profile}
 \usage{
-signer_get_signing_profile(profileName)
+signer_get_signing_profile(profileName, profileOwner)
 }
 \arguments{
 \item{profileName}{[required] The name of the target signing profile.}
+
+\item{profileOwner}{The AWS account ID of the profile owner.}
 }
 \description{
 Returns information on a specific signing profile.
 }
 \section{Request syntax}{
 \preformatted{svc$get_signing_profile(
-  profileName = "string"
+  profileName = "string",
+  profileOwner = "string"
 )
 }
 }

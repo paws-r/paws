@@ -18,9 +18,12 @@ Describes the current Elastic Load Balancing resource limits for your
 AWS account.
 }
 \details{
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html}{Limits for Your Application Load Balancers}
-in the \emph{Application Load Balancer Guide} or \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html}{Limits for Your Network Load Balancers}
-in the \emph{Network Load Balancers Guide}.
+For more information, see the following:
+\itemize{
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html}{Quotas for your Application Load Balancers}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html}{Quotas for your Network Load Balancers}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/quotas-limits.html}{Quotas for your Gateway Load Balancers}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_account_limits(

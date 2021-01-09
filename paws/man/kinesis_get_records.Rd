@@ -13,7 +13,7 @@ sequence number of a data record in the shard.}
 
 \item{Limit}{The maximum number of records to return. Specify a value of up to
 10,000. If you specify a value that is greater than 10,000, GetRecords
-throws \code{InvalidArgumentException}.}
+throws \code{InvalidArgumentException}. The default value is 10,000.}
 }
 \description{
 Gets data records from a Kinesis data stream's shard.
@@ -27,7 +27,7 @@ GetRecords returns an empty list. It might take multiple calls to get to
 a portion of the shard that contains records.
 
 You can scale by provisioning multiple shards per stream while
-considering service limits (for more information, see \href{http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html}{Amazon Kinesis Data Streams Limits}
+considering service limits (for more information, see \href{https://docs.aws.amazon.com/streams/latest/dev/service-sizes-and-limits.html}{Amazon Kinesis Data Streams Limits}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}). Your application
 should have one thread per shard, each reading continuously from its
 stream. To read from a stream continually, call GetRecords in a loop.
@@ -63,7 +63,7 @@ second.
 To detect whether the application is falling behind in processing, you
 can use the \code{MillisBehindLatest} response attribute. You can also
 monitor the stream using CloudWatch metrics and other mechanisms (see
-\href{http://docs.aws.amazon.com/kinesis/latest/dev/monitoring.html}{Monitoring}
+\href{https://docs.aws.amazon.com/streams/latest/dev/monitoring.html}{Monitoring}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}).
 
 Each Amazon Kinesis record includes a value,
@@ -77,7 +77,7 @@ guarantees about the time stamp accuracy, or that the time stamp is
 always increasing. For example, records in a shard or across a stream
 might have time stamps that are out of order.
 
-This operation has a limit of five transactions per second per account.
+This operation has a limit of five transactions per second per shard.
 }
 \section{Request syntax}{
 \preformatted{svc$get_records(

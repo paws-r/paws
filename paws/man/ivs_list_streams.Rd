@@ -2,7 +2,8 @@
 % Please edit documentation in R/ivs_operations.R
 \name{ivs_list_streams}
 \alias{ivs_list_streams}
-\title{Gets summary information about live streams}
+\title{Gets summary information about live streams in your account, in the AWS
+region where the API request is processed}
 \usage{
 ivs_list_streams(nextToken, maxResults)
 }
@@ -13,7 +14,8 @@ ivs_list_streams(nextToken, maxResults)
 \item{maxResults}{Maximum number of streams to return.}
 }
 \description{
-Gets summary information about live streams.
+Gets summary information about live streams in your account, in the AWS
+region where the API request is processed.
 }
 \section{Request syntax}{
 \preformatted{svc$list_streams(

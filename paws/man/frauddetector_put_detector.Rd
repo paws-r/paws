@@ -4,12 +4,16 @@
 \alias{frauddetector_put_detector}
 \title{Creates or updates a detector}
 \usage{
-frauddetector_put_detector(detectorId, description)
+frauddetector_put_detector(detectorId, description, eventTypeName, tags)
 }
 \arguments{
 \item{detectorId}{[required] The detector ID.}
 
 \item{description}{The description of the detector.}
+
+\item{eventTypeName}{[required] The name of the event type.}
+
+\item{tags}{A collection of key and value pairs.}
 }
 \description{
 Creates or updates a detector.
@@ -17,7 +21,14 @@ Creates or updates a detector.
 \section{Request syntax}{
 \preformatted{svc$put_detector(
   detectorId = "string",
-  description = "string"
+  description = "string",
+  eventTypeName = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

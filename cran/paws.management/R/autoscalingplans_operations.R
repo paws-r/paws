@@ -15,7 +15,15 @@ NULL
 #' colons, or forward slashes.
 #' @param ApplicationSource &#91;required&#93; A CloudFormation stack or set of tags. You can create one scaling plan
 #' per application source.
+#' 
+#' For more information, see
+#' [ApplicationSource](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ApplicationSource.html)
+#' in the *AWS Auto Scaling API Reference*.
 #' @param ScalingInstructions &#91;required&#93; The scaling instructions.
+#' 
+#' For more information, see
+#' [ScalingInstruction](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html)
+#' in the *AWS Auto Scaling API Reference*.
 #'
 #' @section Request syntax:
 #' ```
@@ -126,7 +134,8 @@ autoscalingplans_create_scaling_plan <- function(ScalingPlanName, ApplicationSou
 #'   ScalingPlanVersion)
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
-#' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan.
+#' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan. Currently, the only valid value
+#' is `1`.
 #'
 #' @section Request syntax:
 #' ```
@@ -165,7 +174,8 @@ autoscalingplans_delete_scaling_plan <- function(ScalingPlanName, ScalingPlanVer
 #'   ScalingPlanVersion, MaxResults, NextToken)
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
-#' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan.
+#' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan. Currently, the only valid value
+#' is `1`.
 #' @param MaxResults The maximum number of scalable resources to return. The value must be
 #' between 1 and 50. The default value is 50.
 #' @param NextToken The token for the next set of results.
@@ -210,8 +220,11 @@ autoscalingplans_describe_scaling_plan_resources <- function(ScalingPlanName, Sc
 #'
 #' @param ScalingPlanNames The names of the scaling plans (up to 10). If you specify application
 #' sources, you cannot specify scaling plan names.
-#' @param ScalingPlanVersion The version number of the scaling plan. If you specify a scaling plan
-#' version, you must also specify a scaling plan name.
+#' @param ScalingPlanVersion The version number of the scaling plan. Currently, the only valid value
+#' is `1`.
+#' 
+#' If you specify a scaling plan version, you must also specify a scaling
+#' plan name.
 #' @param ApplicationSources The sources for the applications (up to 10). If you specify scaling plan
 #' names, you cannot specify application sources.
 #' @param MaxResults The maximum number of scalable resources to return. This value can be
@@ -277,33 +290,14 @@ autoscalingplans_describe_scaling_plans <- function(ScalingPlanNames = NULL, Sca
 #'   ScalableDimension, ForecastDataType, StartTime, EndTime)
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
-#' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan.
-#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service.
-#' @param ResourceId &#91;required&#93; The ID of the resource. This string consists of the resource type and
-#' unique identifier.
-#' 
-#' -   Auto Scaling group - The resource type is `autoScalingGroup` and the
-#'     unique identifier is the name of the Auto Scaling group. Example:
-#'     `autoScalingGroup/my-asg`.
-#' 
-#' -   ECS service - The resource type is `service` and the unique
-#'     identifier is the cluster name and service name. Example:
-#'     `service/default/sample-webapp`.
-#' 
-#' -   Spot Fleet request - The resource type is `spot-fleet-request` and
-#'     the unique identifier is the Spot Fleet request ID. Example:
-#'     `spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE`.
-#' 
-#' -   DynamoDB table - The resource type is `table` and the unique
-#'     identifier is the resource ID. Example: `table/my-table`.
-#' 
-#' -   DynamoDB global secondary index - The resource type is `index` and
-#'     the unique identifier is the resource ID. Example:
-#'     `table/my-table/index/my-table-index`.
-#' 
-#' -   Aurora DB cluster - The resource type is `cluster` and the unique
-#'     identifier is the cluster name. Example: `cluster:my-db-cluster`.
-#' @param ScalableDimension &#91;required&#93; The scalable dimension for the resource.
+#' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan. Currently, the only valid value
+#' is `1`.
+#' @param ServiceNamespace &#91;required&#93; The namespace of the AWS service. The only valid value is `autoscaling`.
+#' @param ResourceId &#91;required&#93; The ID of the resource. This string consists of a prefix
+#' (`autoScalingGroup`) followed by the name of a specified Auto Scaling
+#' group (`my-asg`). Example: `autoScalingGroup/my-asg`.
+#' @param ScalableDimension &#91;required&#93; The scalable dimension for the resource. The only valid value is
+#' `autoscaling:autoScalingGroup:DesiredCapacity`.
 #' @param ForecastDataType &#91;required&#93; The type of forecast data to get.
 #' 
 #' -   `LoadForecast`: The load metric forecast.
@@ -379,9 +373,18 @@ autoscalingplans_get_scaling_plan_resource_forecast_data <- function(ScalingPlan
 #'   ScalingPlanVersion, ApplicationSource, ScalingInstructions)
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
-#' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan.
+#' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan. The only valid value is `1`.
+#' Currently, you cannot have multiple scaling plan versions.
 #' @param ApplicationSource A CloudFormation stack or set of tags.
+#' 
+#' For more information, see
+#' [ApplicationSource](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ApplicationSource.html)
+#' in the *AWS Auto Scaling API Reference*.
 #' @param ScalingInstructions The scaling instructions.
+#' 
+#' For more information, see
+#' [ScalingInstruction](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html)
+#' in the *AWS Auto Scaling API Reference*.
 #'
 #' @section Request syntax:
 #' ```

@@ -9,12 +9,22 @@ glue_search_tables(CatalogId, NextToken, Filters, SearchText,
   SortCriteria, MaxResults, ResourceShareType)
 }
 \arguments{
-\item{CatalogId}{A unique identifier, consisting of \verb{ <i>account_id</i>/datalake}.}
+\item{CatalogId}{A unique identifier, consisting of \verb{<i>account_id</i>}.}
 
 \item{NextToken}{A continuation token, included if this is a continuation call.}
 
 \item{Filters}{A list of key-value pairs, and a comparator used to filter the search
-results. Returns all entities matching the predicate.}
+results. Returns all entities matching the predicate.
+
+The \code{Comparator} member of the \code{PropertyPredicate} struct is used only
+for time fields, and can be omitted for other field types. Also, when
+comparing string values, such as when \code{Key=Name}, a fuzzy match
+algorithm is used. The \code{Key} field (for example, the value of the \code{Name}
+field) is split on certain punctuation characters, for example, -, :,
+\\#, etc. into tokens. Then each token is exact-match compared with the
+\code{Value} member of \code{PropertyPredicate}. For example, if \code{Key=Name} and
+\code{Value=link}, tables named \code{customer-link} and \code{xx-link-yy} are
+returned, but \code{xxlinkyy} is not returned.}
 
 \item{SearchText}{A string used for a text search.
 

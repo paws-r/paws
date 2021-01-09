@@ -43,7 +43,7 @@ Returns a list of registration tokens for the specified type(s).
 }
 \section{Request syntax}{
 \preformatted{svc$list_type_registrations(
-  Type = "RESOURCE",
+  Type = "RESOURCE"|"MODULE",
   TypeName = "string",
   TypeArn = "string",
   RegistrationStatusFilter = "COMPLETE"|"IN_PROGRESS"|"FAILED",

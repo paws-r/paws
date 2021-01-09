@@ -31,7 +31,7 @@ Connector group.
 \preformatted{svc$list_phone_numbers(
   Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
   ProductType = "BusinessCalling"|"VoiceConnector",
-  FilterName = "AccountId"|"UserId"|"VoiceConnectorId"|"VoiceConnectorGroupId",
+  FilterName = "AccountId"|"UserId"|"VoiceConnectorId"|"VoiceConnectorGroupId"|"SipRuleId",
   FilterValue = "string",
   MaxResults = 123,
   NextToken = "string"

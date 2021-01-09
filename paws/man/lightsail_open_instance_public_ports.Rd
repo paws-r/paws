@@ -21,7 +21,7 @@ the protocol.
 \details{
 The \code{OpenInstancePublicPorts} action supports tag-based access control
 via resource tags applied to the resource identified by \code{instanceName}.
-For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$open_instance_public_ports(

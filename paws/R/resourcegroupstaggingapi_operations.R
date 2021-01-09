@@ -45,7 +45,7 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' with their tag policies.
 #' 
 #' For more information on tag policies, see [Tag
-#' Policies](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
 #' in the *AWS Organizations User Guide.*
 #' 
 #' You can call this operation only from the organization's master account
@@ -73,14 +73,14 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' General Reference* for the following:
 #' 
 #' -   For a list of service name strings, see [AWS Service
-#'     Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces).
+#'     Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' 
 #' -   For resource type strings, see [Example
-#'     ARNs](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax).
+#'     ARNs](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' 
 #' -   For more information about ARNs, see [Amazon Resource Names (ARNs)
 #'     and AWS Service
-#'     Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#'     Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' 
 #' You can specify multiple resource types by using an array. The array can
 #' include up to 100 items. Note that the length constraint requirement
@@ -154,7 +154,7 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' 
 #' -   Information about compliance with the account's effective tag
 #'     policy. For more information on tag policies, see [Tag
-#'     Policies](http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#'     Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
 #'     in the *AWS Organizations User Guide.*
 #' 
 #' You can check the `PaginationToken` response parameter to determine if a
@@ -244,14 +244,14 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' General Reference* for the following:
 #' 
 #' -   For a list of service name strings, see [AWS Service
-#'     Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces).
+#'     Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' 
 #' -   For resource type strings, see [Example
-#'     ARNs](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax).
+#'     ARNs](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' 
 #' -   For more information about ARNs, see [Amazon Resource Names (ARNs)
 #'     and AWS Service
-#'     Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#'     Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' 
 #' You can specify multiple resource types by using an array. The array can
 #' include up to 100 items. Note that the length constraint requirement
@@ -450,11 +450,11 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' 
 #' -   Not all resources can have tags. For a list of services that support
 #'     tagging, see [this
-#'     list](http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
+#'     list](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
 #' 
 #' -   Each resource can have up to 50 tags. For other limits, see [Tag
 #'     Naming and Usage
-#'     Conventions](http://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions)
+#'     Conventions](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
 #'     in the *AWS General Reference.*
 #' 
 #' -   You can only tag resources that are located in the specified Region
@@ -463,7 +463,12 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' -   To add tags to a resource, you need the necessary permissions for
 #'     the service that the resource belongs to as well as permissions for
 #'     adding tags. For more information, see [this
-#'     list](http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
+#'     list](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
+#' 
+#' Do not store personally identifiable information (PII) or other
+#' confidential or sensitive information in tags. We use tags to provide
+#' you with billing and administration services. Tags are not intended to
+#' be used for private or sensitive data.
 #'
 #' @usage
 #' resourcegroupstaggingapi_tag_resources(ResourceARNList, Tags)
@@ -471,7 +476,7 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' @param ResourceARNList &#91;required&#93; A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a
 #' resource. For more information, see [Amazon Resource Names (ARNs) and
 #' AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
 #' @param Tags &#91;required&#93; The tags that you want to add to the specified resources. A tag consists
 #' of a key and a value that you define.
@@ -518,7 +523,7 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #' -   To remove tags from a resource, you need the necessary permissions
 #'     for the service that the resource belongs to as well as permissions
 #'     for removing tags. For more information, see [this
-#'     list](http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
+#'     list](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
 #' 
 #' -   You can only tag resources that are located in the specified Region
 #'     for the AWS account.
@@ -529,7 +534,7 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #' @param ResourceARNList &#91;required&#93; A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a
 #' resource. For more information, see [Amazon Resource Names (ARNs) and
 #' AWS Service
-#' Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' in the *AWS General Reference*.
 #' @param TagKeys &#91;required&#93; A list of the tag keys that you want to remove from the specified
 #' resources.

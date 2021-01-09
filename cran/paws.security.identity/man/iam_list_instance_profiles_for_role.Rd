@@ -9,7 +9,7 @@ iam_list_instance_profiles_for_role(RoleName, Marker, MaxItems)
 \arguments{
 \item{RoleName}{[required] The name of the role to list instance profiles for.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
@@ -31,7 +31,7 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the instance profiles that have the specified associated IAM role.
 If there are none, the operation returns an empty list. For more
-information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
+information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}.
 }
 \details{
 You can paginate the results using the \code{MaxItems} and \code{Marker}

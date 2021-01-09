@@ -11,8 +11,10 @@ iot_detach_principal_policy(policyName, principal)
 
 \item{principal}{[required] The principal.
 
-If the principal is a certificate, specify the certificate ARN. If the
-principal is an Amazon Cognito identity, specify the identity ID.}
+Valid principals are CertificateArn
+(arn:aws:iot:\emph{region}:\emph{accountId}:cert/\emph{certificateId}), thingGroupArn
+(arn:aws:iot:\emph{region}:\emph{accountId}:thinggroup/\emph{groupName}) and CognitoId
+(\emph{region}:\emph{id}).}
 }
 \description{
 Removes the specified policy from the specified certificate.

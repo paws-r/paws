@@ -21,7 +21,7 @@ in the \emph{Amazon Chime Administration Guide}.
 \details{
 To turn off existing retention settings, remove the number of days from
 the corresponding \strong{RetentionDays} field in the \strong{RetentionSettings}
-object. For more information about retention settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html}{Managing Chat Retention Policies}
+object. For more information about retention settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/}{Managing Chat Retention Policies}
 in the \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{

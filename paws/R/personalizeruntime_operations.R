@@ -14,19 +14,37 @@ NULL
 #'
 #' @usage
 #' personalizeruntime_get_personalized_ranking(campaignArn, inputList,
-#'   userId, context)
+#'   userId, context, filterArn, filterValues)
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign to use for generating the
 #' personalized ranking.
-#' @param inputList &#91;required&#93; A list of items (itemId's) to rank. If an item was not included in the
-#' training dataset, the item is appended to the end of the reranked list.
-#' The maximum is 500.
+#' @param inputList &#91;required&#93; A list of items (by `itemId`) to rank. If an item was not included in
+#' the training dataset, the item is appended to the end of the reranked
+#' list. The maximum is 500.
 #' @param userId &#91;required&#93; The user for which you want the campaign to provide a personalized
 #' ranking.
 #' @param context The contextual metadata to use when getting recommendations. Contextual
 #' metadata includes any interaction information that might be relevant
 #' when getting a user's recommendations, such as the user's current
 #' location or device type.
+#' @param filterArn The Amazon Resource Name (ARN) of a filter you created to include items
+#' or exclude items from recommendations for a given user. For more
+#' information, see [Filtering
+#' Recommendations](https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
+#' @param filterValues The values to use when filtering recommendations. For each placeholder
+#' parameter in your filter expression, provide the parameter name (in
+#' matching case) as a key and the filter value(s) as the corresponding
+#' value. Separate multiple values for one parameter with a comma.
+#' 
+#' For filter expressions that use an `INCLUDE` element to include items,
+#' you must provide values for all parameters that are defined in the
+#' expression. For filters with expressions that use an `EXCLUDE` element
+#' to exclude items, you can omit the `filter-values`.In this case, Amazon
+#' Personalize doesn't use that portion of the expression to filter
+#' recommendations.
+#' 
+#' For more information, see [Filtering
+#' Recommendations](https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -38,6 +56,10 @@ NULL
 #'   userId = "string",
 #'   context = list(
 #'     "string"
+#'   ),
+#'   filterArn = "string",
+#'   filterValues = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -45,14 +67,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname personalizeruntime_get_personalized_ranking
-personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, userId, context = NULL) {
+personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, userId, context = NULL, filterArn = NULL, filterValues = NULL) {
   op <- new_operation(
     name = "GetPersonalizedRanking",
     http_method = "POST",
     http_path = "/personalize-ranking",
     paginator = list()
   )
-  input <- .personalizeruntime$get_personalized_ranking_input(campaignArn = campaignArn, inputList = inputList, userId = userId, context = context)
+  input <- .personalizeruntime$get_personalized_ranking_input(campaignArn = campaignArn, inputList = inputList, userId = userId, context = context, filterArn = filterArn, filterValues = filterValues)
   output <- .personalizeruntime$get_personalized_ranking_output()
   config <- get_config()
   svc <- .personalizeruntime$service(config)
@@ -77,7 +99,7 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #'
 #' @usage
 #' personalizeruntime_get_recommendations(campaignArn, itemId, userId,
-#'   numResults, context, filterArn)
+#'   numResults, context, filterArn, filterValues)
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign to use for getting
 #' recommendations.
@@ -93,7 +115,24 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' when getting a user's recommendations, such as the user's current
 #' location or device type.
 #' @param filterArn The ARN of the filter to apply to the returned recommendations. For more
-#' information, see Using Filters with Amazon Personalize.
+#' information, see [Filtering
+#' Recommendations](https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
+#' 
+#' When using this parameter, be sure the filter resource is `ACTIVE`.
+#' @param filterValues The values to use when filtering recommendations. For each placeholder
+#' parameter in your filter expression, provide the parameter name (in
+#' matching case) as a key and the filter value(s) as the corresponding
+#' value. Separate multiple values for one parameter with a comma.
+#' 
+#' For filter expressions that use an `INCLUDE` element to include items,
+#' you must provide values for all parameters that are defined in the
+#' expression. For filters with expressions that use an `EXCLUDE` element
+#' to exclude items, you can omit the `filter-values`.In this case, Amazon
+#' Personalize doesn't use that portion of the expression to filter
+#' recommendations.
+#' 
+#' For more information, see [Filtering
+#' Recommendations](https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -105,21 +144,24 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #'   context = list(
 #'     "string"
 #'   ),
-#'   filterArn = "string"
+#'   filterArn = "string",
+#'   filterValues = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname personalizeruntime_get_recommendations
-personalizeruntime_get_recommendations <- function(campaignArn, itemId = NULL, userId = NULL, numResults = NULL, context = NULL, filterArn = NULL) {
+personalizeruntime_get_recommendations <- function(campaignArn, itemId = NULL, userId = NULL, numResults = NULL, context = NULL, filterArn = NULL, filterValues = NULL) {
   op <- new_operation(
     name = "GetRecommendations",
     http_method = "POST",
     http_path = "/recommendations",
     paginator = list()
   )
-  input <- .personalizeruntime$get_recommendations_input(campaignArn = campaignArn, itemId = itemId, userId = userId, numResults = numResults, context = context, filterArn = filterArn)
+  input <- .personalizeruntime$get_recommendations_input(campaignArn = campaignArn, itemId = itemId, userId = userId, numResults = numResults, context = context, filterArn = filterArn, filterValues = filterValues)
   output <- .personalizeruntime$get_recommendations_output()
   config <- get_config()
   svc <- .personalizeruntime$service(config)

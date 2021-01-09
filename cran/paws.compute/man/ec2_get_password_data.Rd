@@ -24,7 +24,7 @@ The Windows password is generated at boot by the \code{EC2Config} service or
 \code{EC2Launch} scripts (Windows Server 2016 and later). This usually only
 happens the first time an instance is launched. For more information,
 see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_WinAMI.html}{EC2Config}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-service.html}{EC2Config}
 and
 \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html}{EC2Launch}
 in the Amazon Elastic Compute Cloud User Guide.

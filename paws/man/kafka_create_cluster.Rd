@@ -21,7 +21,7 @@ kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
 
 \item{EncryptionInfo}{<p>Includes all encryption-related information.</p>}
 
-\item{EnhancedMonitoring}{<p>Specifies the level of monitoring for the MSK cluster. The possible values are DEFAULT, PER_BROKER, and PER_TOPIC_PER_BROKER.</p>}
+\item{EnhancedMonitoring}{<p>Specifies the level of monitoring for the MSK cluster. The possible values are DEFAULT, PER_BROKER, PER_TOPIC_PER_BROKER, and PER_TOPIC_PER_PARTITION.</p>}
 
 \item{OpenMonitoring}{<p>The settings for open monitoring.</p>}
 
@@ -57,6 +57,11 @@ kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
     )
   ),
   ClientAuthentication = list(
+    Sasl = list(
+      Scram = list(
+        Enabled = TRUE|FALSE
+      )
+    ),
     Tls = list(
       CertificateAuthorityArnList = list(
         "string"
@@ -77,7 +82,7 @@ kafka_create_cluster(BrokerNodeGroupInfo, ClientAuthentication,
       InCluster = TRUE|FALSE
     )
   ),
-  EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER",
+  EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER"|"PER_TOPIC_PER_PARTITION",
   OpenMonitoring = list(
     Prometheus = list(
       JmxExporter = list(

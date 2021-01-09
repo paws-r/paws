@@ -13,7 +13,7 @@ lightsail_disable_add_on(addOnType, resourceName)
 }
 \description{
 Disables an add-on for an Amazon Lightsail resource. For more
-information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$disable_add_on(

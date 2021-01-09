@@ -6,9 +6,9 @@
 product}
 \usage{
 servicecatalog_update_provisioned_product(AcceptLanguage,
-  ProvisionedProductName, ProvisionedProductId, ProductId,
-  ProvisioningArtifactId, PathId, ProvisioningParameters,
-  ProvisioningPreferences, Tags, UpdateToken)
+  ProvisionedProductName, ProvisionedProductId, ProductId, ProductName,
+  ProvisioningArtifactId, ProvisioningArtifactName, PathId, PathName,
+  ProvisioningParameters, ProvisioningPreferences, Tags, UpdateToken)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -21,15 +21,24 @@ servicecatalog_update_provisioned_product(AcceptLanguage,
 \item{ProvisionedProductName}{The name of the provisioned product. You cannot specify both
 \code{ProvisionedProductName} and \code{ProvisionedProductId}.}
 
-\item{ProvisionedProductId}{The identifier of the provisioned product. You cannot specify both
-\code{ProvisionedProductName} and \code{ProvisionedProductId}.}
+\item{ProvisionedProductId}{The identifier of the provisioned product. You must provide the name or
+ID, but not both.}
 
-\item{ProductId}{The identifier of the product.}
+\item{ProductId}{The identifier of the product. You must provide the name or ID, but not
+both.}
+
+\item{ProductName}{The name of the product. You must provide the name or ID, but not both.}
 
 \item{ProvisioningArtifactId}{The identifier of the provisioning artifact.}
 
-\item{PathId}{The new path identifier. This value is optional if the product has a
-default path, and required if the product has more than one path.}
+\item{ProvisioningArtifactName}{The name of the provisioning artifact. You must provide the name or ID,
+but not both.}
+
+\item{PathId}{The path identifier. This value is optional if the product has a default
+path, and required if the product has more than one path. You must
+provide the name or ID, but not both.}
+
+\item{PathName}{The name of the path. You must provide the name or ID, but not both.}
 
 \item{ProvisioningParameters}{The new parameters.}
 
@@ -61,8 +70,11 @@ You can check the status of this request using DescribeRecord.
   ProvisionedProductName = "string",
   ProvisionedProductId = "string",
   ProductId = "string",
+  ProductName = "string",
   ProvisioningArtifactId = "string",
+  ProvisioningArtifactName = "string",
   PathId = "string",
+  PathName = "string",
   ProvisioningParameters = list(
     list(
       Key = "string",

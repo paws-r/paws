@@ -30,8 +30,8 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 Creates a connection notification for a specified VPC endpoint or VPC
 endpoint service. A connection notification notifies you of specific
 endpoint events. You must create an SNS topic to receive notifications.
-For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html}{Create a Topic} in
-the \emph{Amazon Simple Notification Service Developer Guide}.
+For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html}{Create a Topic}
+in the \emph{Amazon Simple Notification Service Developer Guide}.
 }
 \details{
 You can create a connection notification for interface endpoints only.

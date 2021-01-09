@@ -16,7 +16,7 @@ snapshots for a resource.}
 }
 \description{
 Deletes an automatic snapshot of an instance or disk. For more
-information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_auto_snapshot(

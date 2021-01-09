@@ -7,9 +7,9 @@
 cloudfront_update_public_key(PublicKeyConfig, Id, IfMatch)
 }
 \arguments{
-\item{PublicKeyConfig}{[required] Request to update public key information.}
+\item{PublicKeyConfig}{[required] A public key configuration.}
 
-\item{Id}{[required] ID of the public key to be updated.}
+\item{Id}{[required] The identifier of the public key that you are updating.}
 
 \item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the
 public key to update. For example: \code{E2QWRUHAPOMQZL}.}

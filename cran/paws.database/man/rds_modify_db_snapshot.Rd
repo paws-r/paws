@@ -36,7 +36,7 @@ snapshot, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_
 
 You can specify this parameter when you upgrade an Oracle DB snapshot.
 The same option group considerations apply when upgrading a DB snapshot
-as when upgrading a DB instance. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Oracle.html#USER_UpgradeDBInstance.Oracle.OGPG.OG}{Option Group Considerations}
+as when upgrading a DB instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Oracle.html#USER_UpgradeDBInstance.Oracle.OGPG.OG}{Option group considerations}
 in the \emph{Amazon RDS User Guide.}}
 }
 \description{

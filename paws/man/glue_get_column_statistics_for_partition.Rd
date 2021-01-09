@@ -22,6 +22,10 @@ none is supplied, the AWS account ID is used by default.}
 \description{
 Retrieves partition statistics of columns.
 }
+\details{
+The Identity and Access Management (IAM) permission required for this
+operation is \code{GetPartition}.
+}
 \section{Request syntax}{
 \preformatted{svc$get_column_statistics_for_partition(
   CatalogId = "string",

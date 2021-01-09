@@ -3,6 +3,18 @@
 #' @include connectparticipant_service.R
 NULL
 
+.connectparticipant$complete_attachment_upload_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AttachmentIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connectparticipant$complete_attachment_upload_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connectparticipant$create_participant_connection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Type = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ParticipantToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
@@ -27,6 +39,18 @@ NULL
   return(populate(args, shape))
 }
 
+.connectparticipant$get_attachment_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connectparticipant$get_attachment_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Url = structure(logical(0), tags = list(type = "string")), UrlExpiry = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connectparticipant$get_transcript_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ContactId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), ScanDirection = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string")), StartPosition = structure(list(Id = structure(logical(0), tags = list(type = "string")), AbsoluteTime = structure(logical(0), tags = list(type = "string")), MostRecent = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
@@ -35,7 +59,7 @@ NULL
 
 .connectparticipant$get_transcript_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InitialContactId = structure(logical(0), tags = list(type = "string")), Transcript = structure(list(structure(list(AbsoluteTime = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ParticipantId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), ParticipantRole = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InitialContactId = structure(logical(0), tags = list(type = "string")), Transcript = structure(list(structure(list(AbsoluteTime = structure(logical(0), tags = list(type = "string")), Content = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ParticipantId = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), ParticipantRole = structure(logical(0), tags = list(type = "string")), Attachments = structure(list(structure(list(ContentType = structure(logical(0), tags = list(type = "string")), AttachmentId = structure(logical(0), tags = list(type = "string")), AttachmentName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -60,5 +84,17 @@ NULL
 .connectparticipant$send_message_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), AbsoluteTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connectparticipant$start_attachment_upload_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContentType = structure(logical(0), tags = list(type = "string")), AttachmentSizeInBytes = structure(logical(0), tags = list(type = "long")), AttachmentName = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connectparticipant$start_attachment_upload_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AttachmentId = structure(logical(0), tags = list(type = "string")), UploadMetadata = structure(list(Url = structure(logical(0), tags = list(type = "string")), UrlExpiry = structure(logical(0), tags = list(type = "string")), HeadersToInclude = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

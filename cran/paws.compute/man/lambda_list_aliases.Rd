@@ -30,7 +30,7 @@ retrieve the next page of results.}
 }
 \description{
 Returns a list of
-\href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{aliases}
+\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{aliases}
 for a Lambda function.
 }
 \section{Request syntax}{

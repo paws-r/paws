@@ -6,10 +6,14 @@
 using an object key name prefix, one or more object tags, or a
 combination of both}
 \usage{
-s3_get_bucket_lifecycle_configuration(Bucket)
+s3_get_bucket_lifecycle_configuration(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which to get the lifecycle information.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Bucket lifecycle configuration now supports specifying a lifecycle rule
@@ -17,9 +21,9 @@ using an object key name prefix, one or more object tags, or a
 combination of both. Accordingly, this section describes the latest API.
 The response describes the new filter element that you can use to
 specify a filter to select a subset of objects to which the rule
-applies. If you are still using previous version of the lifecycle
-configuration, it works. For the earlier API description, see
-GetBucketLifecycle.
+applies. If you are using a previous version of the lifecycle
+configuration, it still works. For the earlier API description, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycle.html}{GetBucketLifecycle}.
 }
 \details{
 Returns the lifecycle configuration information set on the bucket. For
@@ -44,14 +48,15 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 The following operations are related to
 \code{GetBucketLifecycleConfiguration}:
 \itemize{
-\item GetBucketLifecycle
-\item PutBucketLifecycle
-\item DeleteBucketLifecycle
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycle.html}{GetBucketLifecycle}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html}{PutBucketLifecycle}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html}{DeleteBucketLifecycle}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_lifecycle_configuration(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

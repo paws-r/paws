@@ -23,19 +23,18 @@ categories.
 \details{
 The service codes and category codes correspond to the values that
 appear in the \strong{Service} and \strong{Category} lists on the AWS Support
-Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case} page.
-The values in those fields don't necessarily match the service codes and
-categories returned by the \code{DescribeServices} operation. Always use the
-service codes and categories that the \code{DescribeServices} operation
-returns, so that you have the most recent set of service and category
-codes.
+Center Create Case page. The values in those fields don't necessarily
+match the service codes and categories returned by the
+\code{DescribeServices} operation. Always use the service codes and
+categories that the \code{DescribeServices} operation returns, so that you
+have the most recent set of service and category codes.
 \itemize{
 \item You must have a Business or Enterprise support plan to use the AWS
 Support API.
 \item If you call the AWS Support API from an account that does not have a
 Business or Enterprise support plan, the
 \code{SubscriptionRequiredException} error message appears. For
-information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{AWS Support}.
 }
 }
 \section{Request syntax}{

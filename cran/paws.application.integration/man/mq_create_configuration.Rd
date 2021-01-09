@@ -4,10 +4,13 @@
 \alias{mq_create_configuration}
 \title{Creates a new configuration for the specified configuration name}
 \usage{
-mq_create_configuration(EngineType, EngineVersion, Name, Tags)
+mq_create_configuration(AuthenticationStrategy, EngineType,
+  EngineVersion, Name, Tags)
 }
 \arguments{
-\item{EngineType}{Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.}
+\item{AuthenticationStrategy}{The authentication strategy associated with the configuration.}
+
+\item{EngineType}{Required. The type of broker engine. Note: Currently, Amazon MQ supports ACTIVEMQ and RABBITMQ.}
 
 \item{EngineVersion}{Required. The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
 
@@ -20,7 +23,8 @@ Creates a new configuration for the specified configuration name. Amazon MQ uses
 }
 \section{Request syntax}{
 \preformatted{svc$create_configuration(
-  EngineType = "ACTIVEMQ",
+  AuthenticationStrategy = "SIMPLE"|"LDAP",
+  EngineType = "ACTIVEMQ"|"RABBITMQ",
   EngineVersion = "string",
   Name = "string",
   Tags = list(

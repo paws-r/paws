@@ -9,19 +9,23 @@ iotsitewise_list_assets(nextToken, maxResults, assetModelId, filter)
 \arguments{
 \item{nextToken}{The token to be used for the next set of paginated results.}
 
-\item{maxResults}{The maximum number of results to be returned per paginated request.}
+\item{maxResults}{The maximum number of results to be returned per paginated request.
+
+Default: 50}
 
 \item{assetModelId}{The ID of the asset model by which to filter the list of assets. This
 parameter is required if you choose \code{ALL} for \code{filter}.}
 
 \item{filter}{The filter for the requested list of assets. Choose one of the following
-options. Defaults to \code{ALL}.
+options:
 \itemize{
 \item \code{ALL} – The list includes all assets for a given asset model ID. The
 \code{assetModelId} parameter is required if you filter by \code{ALL}.
 \item \code{TOP_LEVEL} – The list includes only top-level assets in the asset
 hierarchy tree.
-}}
+}
+
+Default: \code{ALL}}
 }
 \description{
 Retrieves a paginated list of asset summaries.

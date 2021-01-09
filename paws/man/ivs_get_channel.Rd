@@ -2,7 +2,7 @@
 % Please edit documentation in R/ivs_operations.R
 \name{ivs_get_channel}
 \alias{ivs_get_channel}
-\title{Gets the channel configuration for a specified channel ARN}
+\title{Gets the channel configuration for the specified channel ARN}
 \usage{
 ivs_get_channel(arn)
 }
@@ -10,7 +10,7 @@ ivs_get_channel(arn)
 \item{arn}{[required] ARN of the channel for which the configuration is to be retrieved.}
 }
 \description{
-Gets the channel configuration for a specified channel ARN. See also
+Gets the channel configuration for the specified channel ARN. See also
 BatchGetChannel.
 }
 \section{Request syntax}{

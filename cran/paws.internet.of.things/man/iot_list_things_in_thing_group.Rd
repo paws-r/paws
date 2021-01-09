@@ -13,7 +13,9 @@ iot_list_things_in_thing_group(thingGroupName, recursive, nextToken,
 \item{recursive}{When true, list things in this thing group and in all child groups as
 well.}
 
-\item{nextToken}{The token to retrieve the next set of results.}
+\item{nextToken}{To retrieve the next set of results, the \code{nextToken} value from a
+previous response; otherwise \strong{null} to receive the first set of
+results.}
 
 \item{maxResults}{The maximum number of results to return at one time.}
 }

@@ -9,6 +9,9 @@ NULL
 #' Accepts the invitation to be a member account and be monitored by the
 #' Security Hub master account that the invitation was sent from.
 #' 
+#' This operation is only used by member accounts that are not added
+#' through Organizations.
+#' 
 #' When the member account accepts the invitation, permission is granted to
 #' the master account to view findings generated in the member account.
 #'
@@ -154,23 +157,29 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #' update the following finding fields and objects, which Security Hub
 #' customers use to manage their investigation workflow.
 #' 
-#' -   `Confidence`
-#' 
-#' -   `Criticality`
-#' 
 #' -   `Note`
-#' 
-#' -   `RelatedFindings`
-#' 
-#' -   `Severity`
-#' 
-#' -   `Types`
 #' 
 #' -   `UserDefinedFields`
 #' 
 #' -   `VerificationState`
 #' 
 #' -   `Workflow`
+#' 
+#' `BatchImportFindings` can be used to update the following finding fields
+#' and objects only if they have not been updated using
+#' `BatchUpdateFindings`. After they are updated using
+#' `BatchUpdateFindings`, these fields cannot be updated using
+#' `BatchImportFindings`.
+#' 
+#' -   `Confidence`
+#' 
+#' -   `Criticality`
+#' 
+#' -   `RelatedFindings`
+#' 
+#' -   `Severity`
+#' 
+#' -   `Types`
 #'
 #' @usage
 #' securityhub_batch_import_findings(Findings)
@@ -325,6 +334,7 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'           Id = "string",
 #'           Partition = "aws"|"aws-cn"|"aws-us-gov",
 #'           Region = "string",
+#'           ResourceRole = "string",
 #'           Tags = list(
 #'             "string"
 #'           ),
@@ -368,6 +378,17 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               )
 #'             ),
 #'             AwsCloudFrontDistribution = list(
+#'               CacheBehaviors = list(
+#'                 Items = list(
+#'                   list(
+#'                     ViewerProtocolPolicy = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               DefaultCacheBehavior = list(
+#'                 ViewerProtocolPolicy = "string"
+#'               ),
+#'               DefaultRootObject = "string",
 #'               DomainName = "string",
 #'               ETag = "string",
 #'               LastModifiedTime = "string",
@@ -382,7 +403,24 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                   list(
 #'                     DomainName = "string",
 #'                     Id = "string",
-#'                     OriginPath = "string"
+#'                     OriginPath = "string",
+#'                     S3OriginConfig = list(
+#'                       OriginAccessIdentity = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               OriginGroups = list(
+#'                 Items = list(
+#'                   list(
+#'                     FailoverCriteria = list(
+#'                       StatusCodes = list(
+#'                         Items = list(
+#'                           123
+#'                         ),
+#'                         Quantity = 123
+#'                       )
+#'                     )
 #'                   )
 #'                 )
 #'               ),
@@ -527,6 +565,18 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               DhcpOptionsId = "string",
 #'               State = "string"
 #'             ),
+#'             AwsEc2Eip = list(
+#'               InstanceId = "string",
+#'               PublicIp = "string",
+#'               AllocationId = "string",
+#'               AssociationId = "string",
+#'               Domain = "string",
+#'               PublicIpv4Pool = "string",
+#'               NetworkBorderGroup = "string",
+#'               NetworkInterfaceId = "string",
+#'               NetworkInterfaceOwnerId = "string",
+#'               PrivateIpAddress = "string"
+#'             ),
 #'             AwsElbv2LoadBalancer = list(
 #'               AvailabilityZones = list(
 #'                 list(
@@ -605,19 +655,682 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               ServerSideEncryption = "string",
 #'               SSEKMSKeyId = "string"
 #'             ),
+#'             AwsSecretsManagerSecret = list(
+#'               RotationRules = list(
+#'                 AutomaticallyAfterDays = 123
+#'               ),
+#'               RotationOccurredWithinFrequency = TRUE|FALSE,
+#'               KmsKeyId = "string",
+#'               RotationEnabled = TRUE|FALSE,
+#'               RotationLambdaArn = "string",
+#'               Deleted = TRUE|FALSE,
+#'               Name = "string",
+#'               Description = "string"
+#'             ),
 #'             AwsIamAccessKey = list(
 #'               UserName = "string",
 #'               Status = "Active"|"Inactive",
 #'               CreatedAt = "string",
 #'               PrincipalId = "string",
 #'               PrincipalType = "string",
-#'               PrincipalName = "string"
+#'               PrincipalName = "string",
+#'               AccountId = "string",
+#'               AccessKeyId = "string",
+#'               SessionContext = list(
+#'                 Attributes = list(
+#'                   MfaAuthenticated = TRUE|FALSE,
+#'                   CreationDate = "string"
+#'                 ),
+#'                 SessionIssuer = list(
+#'                   Type = "string",
+#'                   PrincipalId = "string",
+#'                   Arn = "string",
+#'                   AccountId = "string",
+#'                   UserName = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsIamUser = list(
+#'               AttachedManagedPolicies = list(
+#'                 list(
+#'                   PolicyName = "string",
+#'                   PolicyArn = "string"
+#'                 )
+#'               ),
+#'               CreateDate = "string",
+#'               GroupList = list(
+#'                 "string"
+#'               ),
+#'               Path = "string",
+#'               PermissionsBoundary = list(
+#'                 PermissionsBoundaryArn = "string",
+#'                 PermissionsBoundaryType = "string"
+#'               ),
+#'               UserId = "string",
+#'               UserName = "string",
+#'               UserPolicyList = list(
+#'                 list(
+#'                   PolicyName = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsIamPolicy = list(
+#'               AttachmentCount = 123,
+#'               CreateDate = "string",
+#'               DefaultVersionId = "string",
+#'               Description = "string",
+#'               IsAttachable = TRUE|FALSE,
+#'               Path = "string",
+#'               PermissionsBoundaryUsageCount = 123,
+#'               PolicyId = "string",
+#'               PolicyName = "string",
+#'               PolicyVersionList = list(
+#'                 list(
+#'                   VersionId = "string",
+#'                   IsDefaultVersion = TRUE|FALSE,
+#'                   CreateDate = "string"
+#'                 )
+#'               ),
+#'               UpdateDate = "string"
+#'             ),
+#'             AwsApiGatewayV2Stage = list(
+#'               CreatedDate = "string",
+#'               Description = "string",
+#'               DefaultRouteSettings = list(
+#'                 DetailedMetricsEnabled = TRUE|FALSE,
+#'                 LoggingLevel = "string",
+#'                 DataTraceEnabled = TRUE|FALSE,
+#'                 ThrottlingBurstLimit = 123,
+#'                 ThrottlingRateLimit = 123.0
+#'               ),
+#'               DeploymentId = "string",
+#'               LastUpdatedDate = "string",
+#'               RouteSettings = list(
+#'                 DetailedMetricsEnabled = TRUE|FALSE,
+#'                 LoggingLevel = "string",
+#'                 DataTraceEnabled = TRUE|FALSE,
+#'                 ThrottlingBurstLimit = 123,
+#'                 ThrottlingRateLimit = 123.0
+#'               ),
+#'               StageName = "string",
+#'               StageVariables = list(
+#'                 "string"
+#'               ),
+#'               AccessLogSettings = list(
+#'                 Format = "string",
+#'                 DestinationArn = "string"
+#'               ),
+#'               AutoDeploy = TRUE|FALSE,
+#'               LastDeploymentStatusMessage = "string",
+#'               ApiGatewayManaged = TRUE|FALSE
+#'             ),
+#'             AwsApiGatewayV2Api = list(
+#'               ApiEndpoint = "string",
+#'               ApiId = "string",
+#'               ApiKeySelectionExpression = "string",
+#'               CreatedDate = "string",
+#'               Description = "string",
+#'               Version = "string",
+#'               Name = "string",
+#'               ProtocolType = "string",
+#'               RouteSelectionExpression = "string",
+#'               CorsConfiguration = list(
+#'                 AllowOrigins = list(
+#'                   "string"
+#'                 ),
+#'                 AllowCredentials = TRUE|FALSE,
+#'                 ExposeHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 MaxAge = 123,
+#'                 AllowMethods = list(
+#'                   "string"
+#'                 ),
+#'                 AllowHeaders = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsDynamoDbTable = list(
+#'               AttributeDefinitions = list(
+#'                 list(
+#'                   AttributeName = "string",
+#'                   AttributeType = "string"
+#'                 )
+#'               ),
+#'               BillingModeSummary = list(
+#'                 BillingMode = "string",
+#'                 LastUpdateToPayPerRequestDateTime = "string"
+#'               ),
+#'               CreationDateTime = "string",
+#'               GlobalSecondaryIndexes = list(
+#'                 list(
+#'                   Backfilling = TRUE|FALSE,
+#'                   IndexArn = "string",
+#'                   IndexName = "string",
+#'                   IndexSizeBytes = 123,
+#'                   IndexStatus = "string",
+#'                   ItemCount = 123,
+#'                   KeySchema = list(
+#'                     list(
+#'                       AttributeName = "string",
+#'                       KeyType = "string"
+#'                     )
+#'                   ),
+#'                   Projection = list(
+#'                     NonKeyAttributes = list(
+#'                       "string"
+#'                     ),
+#'                     ProjectionType = "string"
+#'                   ),
+#'                   ProvisionedThroughput = list(
+#'                     LastDecreaseDateTime = "string",
+#'                     LastIncreaseDateTime = "string",
+#'                     NumberOfDecreasesToday = 123,
+#'                     ReadCapacityUnits = 123,
+#'                     WriteCapacityUnits = 123
+#'                   )
+#'                 )
+#'               ),
+#'               GlobalTableVersion = "string",
+#'               ItemCount = 123,
+#'               KeySchema = list(
+#'                 list(
+#'                   AttributeName = "string",
+#'                   KeyType = "string"
+#'                 )
+#'               ),
+#'               LatestStreamArn = "string",
+#'               LatestStreamLabel = "string",
+#'               LocalSecondaryIndexes = list(
+#'                 list(
+#'                   IndexArn = "string",
+#'                   IndexName = "string",
+#'                   KeySchema = list(
+#'                     list(
+#'                       AttributeName = "string",
+#'                       KeyType = "string"
+#'                     )
+#'                   ),
+#'                   Projection = list(
+#'                     NonKeyAttributes = list(
+#'                       "string"
+#'                     ),
+#'                     ProjectionType = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               ProvisionedThroughput = list(
+#'                 LastDecreaseDateTime = "string",
+#'                 LastIncreaseDateTime = "string",
+#'                 NumberOfDecreasesToday = 123,
+#'                 ReadCapacityUnits = 123,
+#'                 WriteCapacityUnits = 123
+#'               ),
+#'               Replicas = list(
+#'                 list(
+#'                   GlobalSecondaryIndexes = list(
+#'                     list(
+#'                       IndexName = "string",
+#'                       ProvisionedThroughputOverride = list(
+#'                         ReadCapacityUnits = 123
+#'                       )
+#'                     )
+#'                   ),
+#'                   KmsMasterKeyId = "string",
+#'                   ProvisionedThroughputOverride = list(
+#'                     ReadCapacityUnits = 123
+#'                   ),
+#'                   RegionName = "string",
+#'                   ReplicaStatus = "string",
+#'                   ReplicaStatusDescription = "string"
+#'                 )
+#'               ),
+#'               RestoreSummary = list(
+#'                 SourceBackupArn = "string",
+#'                 SourceTableArn = "string",
+#'                 RestoreDateTime = "string",
+#'                 RestoreInProgress = TRUE|FALSE
+#'               ),
+#'               SseDescription = list(
+#'                 InaccessibleEncryptionDateTime = "string",
+#'                 Status = "string",
+#'                 SseType = "string",
+#'                 KmsMasterKeyArn = "string"
+#'               ),
+#'               StreamSpecification = list(
+#'                 StreamEnabled = TRUE|FALSE,
+#'                 StreamViewType = "string"
+#'               ),
+#'               TableId = "string",
+#'               TableName = "string",
+#'               TableSizeBytes = 123,
+#'               TableStatus = "string"
+#'             ),
+#'             AwsApiGatewayStage = list(
+#'               DeploymentId = "string",
+#'               ClientCertificateId = "string",
+#'               StageName = "string",
+#'               Description = "string",
+#'               CacheClusterEnabled = TRUE|FALSE,
+#'               CacheClusterSize = "string",
+#'               CacheClusterStatus = "string",
+#'               MethodSettings = list(
+#'                 list(
+#'                   MetricsEnabled = TRUE|FALSE,
+#'                   LoggingLevel = "string",
+#'                   DataTraceEnabled = TRUE|FALSE,
+#'                   ThrottlingBurstLimit = 123,
+#'                   ThrottlingRateLimit = 123.0,
+#'                   CachingEnabled = TRUE|FALSE,
+#'                   CacheTtlInSeconds = 123,
+#'                   CacheDataEncrypted = TRUE|FALSE,
+#'                   RequireAuthorizationForCacheControl = TRUE|FALSE,
+#'                   UnauthorizedCacheControlHeaderStrategy = "string",
+#'                   HttpMethod = "string",
+#'                   ResourcePath = "string"
+#'                 )
+#'               ),
+#'               Variables = list(
+#'                 "string"
+#'               ),
+#'               DocumentationVersion = "string",
+#'               AccessLogSettings = list(
+#'                 Format = "string",
+#'                 DestinationArn = "string"
+#'               ),
+#'               CanarySettings = list(
+#'                 PercentTraffic = 123.0,
+#'                 DeploymentId = "string",
+#'                 StageVariableOverrides = list(
+#'                   "string"
+#'                 ),
+#'                 UseStageCache = TRUE|FALSE
+#'               ),
+#'               TracingEnabled = TRUE|FALSE,
+#'               CreatedDate = "string",
+#'               LastUpdatedDate = "string",
+#'               WebAclArn = "string"
+#'             ),
+#'             AwsApiGatewayRestApi = list(
+#'               Id = "string",
+#'               Name = "string",
+#'               Description = "string",
+#'               CreatedDate = "string",
+#'               Version = "string",
+#'               BinaryMediaTypes = list(
+#'                 "string"
+#'               ),
+#'               MinimumCompressionSize = 123,
+#'               ApiKeySource = "string",
+#'               EndpointConfiguration = list(
+#'                 Types = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsCloudTrailTrail = list(
+#'               CloudWatchLogsLogGroupArn = "string",
+#'               CloudWatchLogsRoleArn = "string",
+#'               HasCustomEventSelectors = TRUE|FALSE,
+#'               HomeRegion = "string",
+#'               IncludeGlobalServiceEvents = TRUE|FALSE,
+#'               IsMultiRegionTrail = TRUE|FALSE,
+#'               IsOrganizationTrail = TRUE|FALSE,
+#'               KmsKeyId = "string",
+#'               LogFileValidationEnabled = TRUE|FALSE,
+#'               Name = "string",
+#'               S3BucketName = "string",
+#'               S3KeyPrefix = "string",
+#'               SnsTopicArn = "string",
+#'               SnsTopicName = "string",
+#'               TrailArn = "string"
+#'             ),
+#'             AwsCertificateManagerCertificate = list(
+#'               CertificateAuthorityArn = "string",
+#'               CreatedAt = "string",
+#'               DomainName = "string",
+#'               DomainValidationOptions = list(
+#'                 list(
+#'                   DomainName = "string",
+#'                   ResourceRecord = list(
+#'                     Name = "string",
+#'                     Type = "string",
+#'                     Value = "string"
+#'                   ),
+#'                   ValidationDomain = "string",
+#'                   ValidationEmails = list(
+#'                     "string"
+#'                   ),
+#'                   ValidationMethod = "string",
+#'                   ValidationStatus = "string"
+#'                 )
+#'               ),
+#'               ExtendedKeyUsages = list(
+#'                 list(
+#'                   Name = "string",
+#'                   OId = "string"
+#'                 )
+#'               ),
+#'               FailureReason = "string",
+#'               ImportedAt = "string",
+#'               InUseBy = list(
+#'                 "string"
+#'               ),
+#'               IssuedAt = "string",
+#'               Issuer = "string",
+#'               KeyAlgorithm = "string",
+#'               KeyUsages = list(
+#'                 list(
+#'                   Name = "string"
+#'                 )
+#'               ),
+#'               NotAfter = "string",
+#'               NotBefore = "string",
+#'               Options = list(
+#'                 CertificateTransparencyLoggingPreference = "string"
+#'               ),
+#'               RenewalEligibility = "string",
+#'               RenewalSummary = list(
+#'                 DomainValidationOptions = list(
+#'                   list(
+#'                     DomainName = "string",
+#'                     ResourceRecord = list(
+#'                       Name = "string",
+#'                       Type = "string",
+#'                       Value = "string"
+#'                     ),
+#'                     ValidationDomain = "string",
+#'                     ValidationEmails = list(
+#'                       "string"
+#'                     ),
+#'                     ValidationMethod = "string",
+#'                     ValidationStatus = "string"
+#'                   )
+#'                 ),
+#'                 RenewalStatus = "string",
+#'                 RenewalStatusReason = "string",
+#'                 UpdatedAt = "string"
+#'               ),
+#'               Serial = "string",
+#'               SignatureAlgorithm = "string",
+#'               Status = "string",
+#'               Subject = "string",
+#'               SubjectAlternativeNames = list(
+#'                 "string"
+#'               ),
+#'               Type = "string"
+#'             ),
+#'             AwsRedshiftCluster = list(
+#'               AllowVersionUpgrade = TRUE|FALSE,
+#'               AutomatedSnapshotRetentionPeriod = 123,
+#'               AvailabilityZone = "string",
+#'               ClusterAvailabilityStatus = "string",
+#'               ClusterCreateTime = "string",
+#'               ClusterIdentifier = "string",
+#'               ClusterNodes = list(
+#'                 list(
+#'                   NodeRole = "string",
+#'                   PrivateIpAddress = "string",
+#'                   PublicIpAddress = "string"
+#'                 )
+#'               ),
+#'               ClusterParameterGroups = list(
+#'                 list(
+#'                   ClusterParameterStatusList = list(
+#'                     list(
+#'                       ParameterName = "string",
+#'                       ParameterApplyStatus = "string",
+#'                       ParameterApplyErrorDescription = "string"
+#'                     )
+#'                   ),
+#'                   ParameterApplyStatus = "string",
+#'                   ParameterGroupName = "string"
+#'                 )
+#'               ),
+#'               ClusterPublicKey = "string",
+#'               ClusterRevisionNumber = "string",
+#'               ClusterSecurityGroups = list(
+#'                 list(
+#'                   ClusterSecurityGroupName = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               ClusterSnapshotCopyStatus = list(
+#'                 DestinationRegion = "string",
+#'                 ManualSnapshotRetentionPeriod = 123,
+#'                 RetentionPeriod = 123,
+#'                 SnapshotCopyGrantName = "string"
+#'               ),
+#'               ClusterStatus = "string",
+#'               ClusterSubnetGroupName = "string",
+#'               ClusterVersion = "string",
+#'               DBName = "string",
+#'               DeferredMaintenanceWindows = list(
+#'                 list(
+#'                   DeferMaintenanceEndTime = "string",
+#'                   DeferMaintenanceIdentifier = "string",
+#'                   DeferMaintenanceStartTime = "string"
+#'                 )
+#'               ),
+#'               ElasticIpStatus = list(
+#'                 ElasticIp = "string",
+#'                 Status = "string"
+#'               ),
+#'               ElasticResizeNumberOfNodeOptions = "string",
+#'               Encrypted = TRUE|FALSE,
+#'               Endpoint = list(
+#'                 Address = "string",
+#'                 Port = 123
+#'               ),
+#'               EnhancedVpcRouting = TRUE|FALSE,
+#'               ExpectedNextSnapshotScheduleTime = "string",
+#'               ExpectedNextSnapshotScheduleTimeStatus = "string",
+#'               HsmStatus = list(
+#'                 HsmClientCertificateIdentifier = "string",
+#'                 HsmConfigurationIdentifier = "string",
+#'                 Status = "string"
+#'               ),
+#'               IamRoles = list(
+#'                 list(
+#'                   ApplyStatus = "string",
+#'                   IamRoleArn = "string"
+#'                 )
+#'               ),
+#'               KmsKeyId = "string",
+#'               MaintenanceTrackName = "string",
+#'               ManualSnapshotRetentionPeriod = 123,
+#'               MasterUsername = "string",
+#'               NextMaintenanceWindowStartTime = "string",
+#'               NodeType = "string",
+#'               NumberOfNodes = 123,
+#'               PendingActions = list(
+#'                 "string"
+#'               ),
+#'               PendingModifiedValues = list(
+#'                 AutomatedSnapshotRetentionPeriod = 123,
+#'                 ClusterIdentifier = "string",
+#'                 ClusterType = "string",
+#'                 ClusterVersion = "string",
+#'                 EncryptionType = "string",
+#'                 EnhancedVpcRouting = TRUE|FALSE,
+#'                 MaintenanceTrackName = "string",
+#'                 MasterUserPassword = "string",
+#'                 NodeType = "string",
+#'                 NumberOfNodes = 123,
+#'                 PubliclyAccessible = TRUE|FALSE
+#'               ),
+#'               PreferredMaintenanceWindow = "string",
+#'               PubliclyAccessible = TRUE|FALSE,
+#'               ResizeInfo = list(
+#'                 AllowCancelResize = TRUE|FALSE,
+#'                 ResizeType = "string"
+#'               ),
+#'               RestoreStatus = list(
+#'                 CurrentRestoreRateInMegaBytesPerSecond = 123.0,
+#'                 ElapsedTimeInSeconds = 123,
+#'                 EstimatedTimeToCompletionInSeconds = 123,
+#'                 ProgressInMegaBytes = 123,
+#'                 SnapshotSizeInMegaBytes = 123,
+#'                 Status = "string"
+#'               ),
+#'               SnapshotScheduleIdentifier = "string",
+#'               SnapshotScheduleState = "string",
+#'               VpcId = "string",
+#'               VpcSecurityGroups = list(
+#'                 list(
+#'                   Status = "string",
+#'                   VpcSecurityGroupId = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsElbLoadBalancer = list(
+#'               AvailabilityZones = list(
+#'                 "string"
+#'               ),
+#'               BackendServerDescriptions = list(
+#'                 list(
+#'                   InstancePort = 123,
+#'                   PolicyNames = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               CanonicalHostedZoneName = "string",
+#'               CanonicalHostedZoneNameID = "string",
+#'               CreatedTime = "string",
+#'               DnsName = "string",
+#'               HealthCheck = list(
+#'                 HealthyThreshold = 123,
+#'                 Interval = 123,
+#'                 Target = "string",
+#'                 Timeout = 123,
+#'                 UnhealthyThreshold = 123
+#'               ),
+#'               Instances = list(
+#'                 list(
+#'                   InstanceId = "string"
+#'                 )
+#'               ),
+#'               ListenerDescriptions = list(
+#'                 list(
+#'                   Listener = list(
+#'                     InstancePort = 123,
+#'                     InstanceProtocol = "string",
+#'                     LoadBalancerPort = 123,
+#'                     Protocol = "string",
+#'                     SslCertificateId = "string"
+#'                   ),
+#'                   PolicyNames = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               LoadBalancerAttributes = list(
+#'                 AccessLog = list(
+#'                   EmitInterval = 123,
+#'                   Enabled = TRUE|FALSE,
+#'                   S3BucketName = "string",
+#'                   S3BucketPrefix = "string"
+#'                 ),
+#'                 ConnectionDraining = list(
+#'                   Enabled = TRUE|FALSE,
+#'                   Timeout = 123
+#'                 ),
+#'                 ConnectionSettings = list(
+#'                   IdleTimeout = 123
+#'                 ),
+#'                 CrossZoneLoadBalancing = list(
+#'                   Enabled = TRUE|FALSE
+#'                 )
+#'               ),
+#'               LoadBalancerName = "string",
+#'               Policies = list(
+#'                 AppCookieStickinessPolicies = list(
+#'                   list(
+#'                     CookieName = "string",
+#'                     PolicyName = "string"
+#'                   )
+#'                 ),
+#'                 LbCookieStickinessPolicies = list(
+#'                   list(
+#'                     CookieExpirationPeriod = 123,
+#'                     PolicyName = "string"
+#'                   )
+#'                 ),
+#'                 OtherPolicies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               Scheme = "string",
+#'               SecurityGroups = list(
+#'                 "string"
+#'               ),
+#'               SourceSecurityGroup = list(
+#'                 GroupName = "string",
+#'                 OwnerAlias = "string"
+#'               ),
+#'               Subnets = list(
+#'                 "string"
+#'               ),
+#'               VpcId = "string"
+#'             ),
+#'             AwsIamGroup = list(
+#'               AttachedManagedPolicies = list(
+#'                 list(
+#'                   PolicyName = "string",
+#'                   PolicyArn = "string"
+#'                 )
+#'               ),
+#'               CreateDate = "string",
+#'               GroupId = "string",
+#'               GroupName = "string",
+#'               GroupPolicyList = list(
+#'                 list(
+#'                   PolicyName = "string"
+#'                 )
+#'               ),
+#'               Path = "string"
 #'             ),
 #'             AwsIamRole = list(
 #'               AssumeRolePolicyDocument = "string",
+#'               AttachedManagedPolicies = list(
+#'                 list(
+#'                   PolicyName = "string",
+#'                   PolicyArn = "string"
+#'                 )
+#'               ),
 #'               CreateDate = "string",
+#'               InstanceProfileList = list(
+#'                 list(
+#'                   Arn = "string",
+#'                   CreateDate = "string",
+#'                   InstanceProfileId = "string",
+#'                   InstanceProfileName = "string",
+#'                   Path = "string",
+#'                   Roles = list(
+#'                     list(
+#'                       Arn = "string",
+#'                       AssumeRolePolicyDocument = "string",
+#'                       CreateDate = "string",
+#'                       Path = "string",
+#'                       RoleId = "string",
+#'                       RoleName = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               PermissionsBoundary = list(
+#'                 PermissionsBoundaryArn = "string",
+#'                 PermissionsBoundaryType = "string"
+#'               ),
 #'               RoleId = "string",
 #'               RoleName = "string",
+#'               RolePolicyList = list(
+#'                 list(
+#'                   PolicyName = "string"
+#'                 )
+#'               ),
 #'               MaxSessionDuration = 123,
 #'               Path = "string"
 #'             ),
@@ -627,7 +1340,8 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               KeyId = "string",
 #'               KeyManager = "string",
 #'               KeyState = "string",
-#'               Origin = "string"
+#'               Origin = "string",
+#'               Description = "string"
 #'             ),
 #'             AwsLambdaFunction = list(
 #'               Code = list(
@@ -720,7 +1434,129 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                   VpcSecurityGroupId = "string",
 #'                   Status = "string"
 #'                 )
-#'               )
+#'               ),
+#'               MultiAz = TRUE|FALSE,
+#'               EnhancedMonitoringResourceArn = "string",
+#'               DbInstanceStatus = "string",
+#'               MasterUsername = "string",
+#'               AllocatedStorage = 123,
+#'               PreferredBackupWindow = "string",
+#'               BackupRetentionPeriod = 123,
+#'               DbSecurityGroups = list(
+#'                 "string"
+#'               ),
+#'               DbParameterGroups = list(
+#'                 list(
+#'                   DbParameterGroupName = "string",
+#'                   ParameterApplyStatus = "string"
+#'                 )
+#'               ),
+#'               AvailabilityZone = "string",
+#'               DbSubnetGroup = list(
+#'                 DbSubnetGroupName = "string",
+#'                 DbSubnetGroupDescription = "string",
+#'                 VpcId = "string",
+#'                 SubnetGroupStatus = "string",
+#'                 Subnets = list(
+#'                   list(
+#'                     SubnetIdentifier = "string",
+#'                     SubnetAvailabilityZone = list(
+#'                       Name = "string"
+#'                     ),
+#'                     SubnetStatus = "string"
+#'                   )
+#'                 ),
+#'                 DbSubnetGroupArn = "string"
+#'               ),
+#'               PreferredMaintenanceWindow = "string",
+#'               PendingModifiedValues = list(
+#'                 DbInstanceClass = "string",
+#'                 AllocatedStorage = 123,
+#'                 MasterUserPassword = "string",
+#'                 Port = 123,
+#'                 BackupRetentionPeriod = 123,
+#'                 MultiAZ = TRUE|FALSE,
+#'                 EngineVersion = "string",
+#'                 LicenseModel = "string",
+#'                 Iops = 123,
+#'                 DbInstanceIdentifier = "string",
+#'                 StorageType = "string",
+#'                 CaCertificateIdentifier = "string",
+#'                 DbSubnetGroupName = "string",
+#'                 PendingCloudWatchLogsExports = list(
+#'                   LogTypesToEnable = list(
+#'                     "string"
+#'                   ),
+#'                   LogTypesToDisable = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 ProcessorFeatures = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Value = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               LatestRestorableTime = "string",
+#'               AutoMinorVersionUpgrade = TRUE|FALSE,
+#'               ReadReplicaSourceDBInstanceIdentifier = "string",
+#'               ReadReplicaDBInstanceIdentifiers = list(
+#'                 "string"
+#'               ),
+#'               ReadReplicaDBClusterIdentifiers = list(
+#'                 "string"
+#'               ),
+#'               LicenseModel = "string",
+#'               Iops = 123,
+#'               OptionGroupMemberships = list(
+#'                 list(
+#'                   OptionGroupName = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               CharacterSetName = "string",
+#'               SecondaryAvailabilityZone = "string",
+#'               StatusInfos = list(
+#'                 list(
+#'                   StatusType = "string",
+#'                   Normal = TRUE|FALSE,
+#'                   Status = "string",
+#'                   Message = "string"
+#'                 )
+#'               ),
+#'               StorageType = "string",
+#'               DomainMemberships = list(
+#'                 list(
+#'                   Domain = "string",
+#'                   Status = "string",
+#'                   Fqdn = "string",
+#'                   IamRoleName = "string"
+#'                 )
+#'               ),
+#'               CopyTagsToSnapshot = TRUE|FALSE,
+#'               MonitoringInterval = 123,
+#'               MonitoringRoleArn = "string",
+#'               PromotionTier = 123,
+#'               Timezone = "string",
+#'               PerformanceInsightsEnabled = TRUE|FALSE,
+#'               PerformanceInsightsKmsKeyId = "string",
+#'               PerformanceInsightsRetentionPeriod = 123,
+#'               EnabledCloudWatchLogsExports = list(
+#'                 "string"
+#'               ),
+#'               ProcessorFeatures = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               ListenerEndpoint = list(
+#'                 Address = "string",
+#'                 Port = 123,
+#'                 HostedZoneId = "string"
+#'               ),
+#'               MaxAllocatedStorage = 123
 #'             ),
 #'             AwsSnsTopic = list(
 #'               KmsMasterKeyId = "string",
@@ -761,6 +1597,138 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                 )
 #'               ),
 #'               WebAclId = "string"
+#'             ),
+#'             AwsRdsDbSnapshot = list(
+#'               DbSnapshotIdentifier = "string",
+#'               DbInstanceIdentifier = "string",
+#'               SnapshotCreateTime = "string",
+#'               Engine = "string",
+#'               AllocatedStorage = 123,
+#'               Status = "string",
+#'               Port = 123,
+#'               AvailabilityZone = "string",
+#'               VpcId = "string",
+#'               InstanceCreateTime = "string",
+#'               MasterUsername = "string",
+#'               EngineVersion = "string",
+#'               LicenseModel = "string",
+#'               SnapshotType = "string",
+#'               Iops = 123,
+#'               OptionGroupName = "string",
+#'               PercentProgress = 123,
+#'               SourceRegion = "string",
+#'               SourceDbSnapshotIdentifier = "string",
+#'               StorageType = "string",
+#'               TdeCredentialArn = "string",
+#'               Encrypted = TRUE|FALSE,
+#'               KmsKeyId = "string",
+#'               Timezone = "string",
+#'               IamDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'               ProcessorFeatures = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               ),
+#'               DbiResourceId = "string"
+#'             ),
+#'             AwsRdsDbClusterSnapshot = list(
+#'               AvailabilityZones = list(
+#'                 "string"
+#'               ),
+#'               SnapshotCreateTime = "string",
+#'               Engine = "string",
+#'               AllocatedStorage = 123,
+#'               Status = "string",
+#'               Port = 123,
+#'               VpcId = "string",
+#'               ClusterCreateTime = "string",
+#'               MasterUsername = "string",
+#'               EngineVersion = "string",
+#'               LicenseModel = "string",
+#'               SnapshotType = "string",
+#'               PercentProgress = 123,
+#'               StorageEncrypted = TRUE|FALSE,
+#'               KmsKeyId = "string",
+#'               DbClusterIdentifier = "string",
+#'               DbClusterSnapshotIdentifier = "string",
+#'               IamDatabaseAuthenticationEnabled = TRUE|FALSE
+#'             ),
+#'             AwsRdsDbCluster = list(
+#'               AllocatedStorage = 123,
+#'               AvailabilityZones = list(
+#'                 "string"
+#'               ),
+#'               BackupRetentionPeriod = 123,
+#'               DatabaseName = "string",
+#'               Status = "string",
+#'               Endpoint = "string",
+#'               ReaderEndpoint = "string",
+#'               CustomEndpoints = list(
+#'                 "string"
+#'               ),
+#'               MultiAz = TRUE|FALSE,
+#'               Engine = "string",
+#'               EngineVersion = "string",
+#'               Port = 123,
+#'               MasterUsername = "string",
+#'               PreferredBackupWindow = "string",
+#'               PreferredMaintenanceWindow = "string",
+#'               ReadReplicaIdentifiers = list(
+#'                 "string"
+#'               ),
+#'               VpcSecurityGroups = list(
+#'                 list(
+#'                   VpcSecurityGroupId = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               HostedZoneId = "string",
+#'               StorageEncrypted = TRUE|FALSE,
+#'               KmsKeyId = "string",
+#'               DbClusterResourceId = "string",
+#'               AssociatedRoles = list(
+#'                 list(
+#'                   RoleArn = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               ClusterCreateTime = "string",
+#'               EnabledCloudWatchLogsExports = list(
+#'                 "string"
+#'               ),
+#'               EngineMode = "string",
+#'               DeletionProtection = TRUE|FALSE,
+#'               HttpEndpointEnabled = TRUE|FALSE,
+#'               ActivityStreamStatus = "string",
+#'               CopyTagsToSnapshot = TRUE|FALSE,
+#'               CrossAccountClone = TRUE|FALSE,
+#'               DomainMemberships = list(
+#'                 list(
+#'                   Domain = "string",
+#'                   Status = "string",
+#'                   Fqdn = "string",
+#'                   IamRoleName = "string"
+#'                 )
+#'               ),
+#'               DbClusterParameterGroup = "string",
+#'               DbSubnetGroup = "string",
+#'               DbClusterOptionGroupMemberships = list(
+#'                 list(
+#'                   DbClusterOptionGroupName = "string",
+#'                   Status = "string"
+#'                 )
+#'               ),
+#'               DbClusterIdentifier = "string",
+#'               DbClusterMembers = list(
+#'                 list(
+#'                   IsClusterWriter = TRUE|FALSE,
+#'                   PromotionTier = 123,
+#'                   DbInstanceIdentifier = "string",
+#'                   DbClusterParameterGroupStatus = "string"
+#'                 )
+#'               ),
+#'               IamDatabaseAuthenticationEnabled = TRUE|FALSE
 #'             ),
 #'             Container = list(
 #'               Name = "string",
@@ -836,6 +1804,19 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       PatchSummary = list(
+#'         Id = "string",
+#'         InstalledCount = 123,
+#'         MissingCount = 123,
+#'         FailedCount = 123,
+#'         InstalledOtherCount = 123,
+#'         InstalledRejectedCount = 123,
+#'         InstalledPendingReboot = 123,
+#'         OperationStartTime = "string",
+#'         OperationEndTime = "string",
+#'         RebootOption = "string",
+#'         Operation = "string"
 #'       )
 #'     )
 #'   )
@@ -874,8 +1855,8 @@ securityhub_batch_import_findings <- function(Findings) {
 #' Updates from `BatchUpdateFindings` do not affect the value of
 #' `UpdatedAt` for a finding.
 #' 
-#' Master accounts can use `BatchUpdateFindings` to update the following
-#' finding fields and objects.
+#' Master and member accounts can use `BatchUpdateFindings` to update the
+#' following finding fields and objects.
 #' 
 #' -   `Confidence`
 #' 
@@ -895,8 +1876,12 @@ securityhub_batch_import_findings <- function(Findings) {
 #' 
 #' -   `Workflow`
 #' 
-#' Member accounts can only use `BatchUpdateFindings` to update the Note
-#' object.
+#' You can configure IAM policies to restrict access to fields and field
+#' values. For example, you might not want member accounts to be able to
+#' suppress findings or change the finding severity. See [Configuring
+#' access to
+#' BatchUpdateFindings](https://docs.aws.amazon.com/securityhub/latest/userguide/finding-update-batchupdatefindings.html#batchupdatefindings-configure-access)
+#' in the *AWS Security Hub User Guide*.
 #'
 #' @usage
 #' securityhub_batch_update_findings(FindingIdentifiers, Note, Severity,
@@ -1087,31 +2072,31 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     ProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     AwsAccountId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Id = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     GeneratorId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Type = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     FirstObservedAt = list(
@@ -1171,7 +2156,7 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     SeverityLabel = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Confidence = list(
@@ -1191,87 +2176,87 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     Title = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Description = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RecommendationText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     SourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProductFields = list(
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProductName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     CompanyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     UserDefinedFields = list(
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwareName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwareType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwarePath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwareState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkDirection = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkProtocol = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkSourceIpV4 = list(
@@ -1294,13 +2279,13 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     NetworkSourceDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkSourceMac = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkDestinationIpV4 = list(
@@ -1323,19 +2308,19 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     NetworkDestinationDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProcessName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProcessPath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProcessPid = list(
@@ -1375,19 +2360,19 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     ThreatIntelIndicatorType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorValue = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorCategory = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorLastObservedAt = list(
@@ -1403,56 +2388,56 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     ThreatIntelIndicatorSource = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorSourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourcePartition = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceRegion = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceTags = list(
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIpV4Addresses = list(
@@ -1468,25 +2453,25 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     ResourceAwsEc2InstanceKeyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIamInstanceProfileArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceVpcId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceSubnetId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceLaunchedAt = list(
@@ -1502,25 +2487,25 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     ResourceAwsS3BucketOwnerId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsS3BucketOwnerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyUserName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyCreatedAt = list(
@@ -1536,19 +2521,19 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     ResourceContainerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerImageName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerLaunchedAt = list(
@@ -1565,55 +2550,55 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     ComplianceStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     VerificationState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     WorkflowState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     WorkflowStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RecordState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RelatedFindingsProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RelatedFindingsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NoteText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NoteUpdatedAt = list(
@@ -1629,7 +2614,7 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     NoteUpdatedBy = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Keyword = list(
@@ -1668,20 +2653,38 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #'
 #' Creates a member association in Security Hub between the specified
 #' accounts and the account used to make the request, which is the master
-#' account. To successfully create a member, you must use this action from
-#' an account that already has Security Hub enabled. To enable Security
-#' Hub, you can use the ` <a>EnableSecurityHub</a> ` operation.
+#' account. If you are integrated with Organizations, then the master
+#' account is the Security Hub administrator account that is designated by
+#' the organization management account.
 #' 
-#' After you use `CreateMembers` to create member account associations in
-#' Security Hub, you must use the ` <a>InviteMembers</a> ` operation to
-#' invite the accounts to enable Security Hub and become member accounts in
-#' Security Hub.
+#' `CreateMembers` is always used to add accounts that are not organization
+#' members.
 #' 
-#' If the account owner accepts the invitation, the account becomes a
-#' member account in Security Hub. A permissions policy is added that
-#' permits the master account to view the findings generated in the member
-#' account. When Security Hub is enabled in the invited account, findings
-#' start to be sent to both the member and master accounts.
+#' For accounts that are part of an organization, `CreateMembers` is only
+#' used in the following cases:
+#' 
+#' -   Security Hub is not configured to automatically add new accounts in
+#'     an organization.
+#' 
+#' -   The account was disassociated or deleted in Security Hub.
+#' 
+#' This action can only be used by an account that has Security Hub
+#' enabled. To enable Security Hub, you can use the
+#' ` <a>EnableSecurityHub</a> ` operation.
+#' 
+#' For accounts that are not organization members, you create the account
+#' association and then send an invitation to the member account. To send
+#' the invitation, you use the ` <a>InviteMembers</a> ` operation. If the
+#' account owner accepts the invitation, the account becomes a member
+#' account in Security Hub.
+#' 
+#' Accounts that are part of an organization do not receive an invitation.
+#' They automatically become a member account in Security Hub.
+#' 
+#' A permissions policy is added that permits the master account to view
+#' the findings generated in the member account. When Security Hub is
+#' enabled in a member account, findings are sent to both the member and
+#' master accounts.
 #' 
 #' To remove the association between the master and member accounts, use
 #' the ` <a>DisassociateFromMasterAccount</a> ` or
@@ -1690,9 +2693,9 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #' @usage
 #' securityhub_create_members(AccountDetails)
 #'
-#' @param AccountDetails The list of accounts to associate with the Security Hub master account.
-#' For each account, the list includes the account ID and the email
-#' address.
+#' @param AccountDetails &#91;required&#93; The list of accounts to associate with the Security Hub master account.
+#' For each account, the list includes the account ID and optionally the
+#' email address.
 #'
 #' @section Request syntax:
 #' ```
@@ -1709,7 +2712,7 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #' @keywords internal
 #'
 #' @rdname securityhub_create_members
-securityhub_create_members <- function(AccountDetails = NULL) {
+securityhub_create_members <- function(AccountDetails) {
   op <- new_operation(
     name = "CreateMembers",
     http_method = "POST",
@@ -1729,6 +2732,9 @@ securityhub_create_members <- function(AccountDetails = NULL) {
 #' Declines invitations to become a member account
 #'
 #' Declines invitations to become a member account.
+#' 
+#' This operation is only used by accounts that are not part of an
+#' organization. Organization accounts do not receive invitations.
 #'
 #' @usage
 #' securityhub_decline_invitations(AccountIds)
@@ -1846,6 +2852,9 @@ securityhub_delete_insight <- function(InsightArn) {
 #'
 #' Deletes invitations received by the AWS account to become a member
 #' account.
+#' 
+#' This operation is only used by accounts that are not part of an
+#' organization. Organization accounts do not receive invitations.
 #'
 #' @usage
 #' securityhub_delete_invitations(AccountIds)
@@ -1884,11 +2893,14 @@ securityhub_delete_invitations <- function(AccountIds) {
 #' Deletes the specified member accounts from Security Hub
 #'
 #' Deletes the specified member accounts from Security Hub.
+#' 
+#' Can be used to delete member accounts that belong to an organization as
+#' well as member accounts that were invited manually.
 #'
 #' @usage
 #' securityhub_delete_members(AccountIds)
 #'
-#' @param AccountIds The list of account IDs for the member accounts to delete.
+#' @param AccountIds &#91;required&#93; The list of account IDs for the member accounts to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -1902,7 +2914,7 @@ securityhub_delete_invitations <- function(AccountIds) {
 #' @keywords internal
 #'
 #' @rdname securityhub_delete_members
-securityhub_delete_members <- function(AccountIds = NULL) {
+securityhub_delete_members <- function(AccountIds) {
   op <- new_operation(
     name = "DeleteMembers",
     http_method = "POST",
@@ -2009,6 +3021,40 @@ securityhub_describe_hub <- function(HubArn = NULL) {
 }
 .securityhub$operations$describe_hub <- securityhub_describe_hub
 
+#' Returns information about the Organizations configuration for Security
+#' Hub
+#'
+#' Returns information about the Organizations configuration for Security
+#' Hub. Can only be called from a Security Hub administrator account.
+#'
+#' @usage
+#' securityhub_describe_organization_configuration()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_organization_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_describe_organization_configuration
+securityhub_describe_organization_configuration <- function() {
+  op <- new_operation(
+    name = "DescribeOrganizationConfiguration",
+    http_method = "GET",
+    http_path = "/organization/configuration",
+    paginator = list()
+  )
+  input <- .securityhub$describe_organization_configuration_input()
+  output <- .securityhub$describe_organization_configuration_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$describe_organization_configuration <- securityhub_describe_organization_configuration
+
 #' Returns information about the available products that you can subscribe
 #' to and integrate with Security Hub in order to consolidate findings
 #'
@@ -2113,7 +3159,8 @@ securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) 
 #'   NextToken, MaxResults)
 #'
 #' @param StandardsSubscriptionArn &#91;required&#93; The ARN of a resource that represents your subscription to a supported
-#' standard.
+#' standard. To get the subscription ARNs of the standards you have
+#' enabled, use the ` <a>GetEnabledStandards</a> ` operation.
 #' @param NextToken The token that is required for pagination. On your first call to the
 #' `DescribeStandardsControls` operation, set the value of this parameter
 #' to `NULL`.
@@ -2190,6 +3237,43 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 }
 .securityhub$operations$disable_import_findings_for_product <- securityhub_disable_import_findings_for_product
 
+#' Disables a Security Hub administrator account
+#'
+#' Disables a Security Hub administrator account. Can only be called by the
+#' organization management account.
+#'
+#' @usage
+#' securityhub_disable_organization_admin_account(AdminAccountId)
+#'
+#' @param AdminAccountId &#91;required&#93; The AWS account identifier of the Security Hub administrator account.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_organization_admin_account(
+#'   AdminAccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_disable_organization_admin_account
+securityhub_disable_organization_admin_account <- function(AdminAccountId) {
+  op <- new_operation(
+    name = "DisableOrganizationAdminAccount",
+    http_method = "POST",
+    http_path = "/organization/admin/disable",
+    paginator = list()
+  )
+  input <- .securityhub$disable_organization_admin_account_input(AdminAccountId = AdminAccountId)
+  output <- .securityhub$disable_organization_admin_account_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$disable_organization_admin_account <- securityhub_disable_organization_admin_account
+
 #' Disables Security Hub in your account only in the current Region
 #'
 #' Disables Security Hub in your account only in the current Region. To
@@ -2240,6 +3324,11 @@ securityhub_disable_security_hub <- function() {
 #'
 #' Disassociates the current Security Hub member account from the
 #' associated master account.
+#' 
+#' This operation is only used by accounts that are not part of an
+#' organization. For organization accounts, only the master account (the
+#' designated Security Hub administrator) can disassociate a member
+#' account.
 #'
 #' @usage
 #' securityhub_disassociate_from_master_account()
@@ -2274,11 +3363,14 @@ securityhub_disassociate_from_master_account <- function() {
 #'
 #' Disassociates the specified member accounts from the associated master
 #' account.
+#' 
+#' Can be used to disassociate both accounts that are in an organization
+#' and accounts that were invited manually.
 #'
 #' @usage
 #' securityhub_disassociate_members(AccountIds)
 #'
-#' @param AccountIds The account IDs of the member accounts to disassociate from the master
+#' @param AccountIds &#91;required&#93; The account IDs of the member accounts to disassociate from the master
 #' account.
 #'
 #' @section Request syntax:
@@ -2293,7 +3385,7 @@ securityhub_disassociate_from_master_account <- function() {
 #' @keywords internal
 #'
 #' @rdname securityhub_disassociate_members
-securityhub_disassociate_members <- function(AccountIds = NULL) {
+securityhub_disassociate_members <- function(AccountIds) {
   op <- new_operation(
     name = "DisassociateMembers",
     http_method = "POST",
@@ -2349,6 +3441,44 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
   return(response)
 }
 .securityhub$operations$enable_import_findings_for_product <- securityhub_enable_import_findings_for_product
+
+#' Designates the Security Hub administrator account for an organization
+#'
+#' Designates the Security Hub administrator account for an organization.
+#' Can only be called by the organization management account.
+#'
+#' @usage
+#' securityhub_enable_organization_admin_account(AdminAccountId)
+#'
+#' @param AdminAccountId &#91;required&#93; The AWS account identifier of the account to designate as the Security
+#' Hub administrator account.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_organization_admin_account(
+#'   AdminAccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_enable_organization_admin_account
+securityhub_enable_organization_admin_account <- function(AdminAccountId) {
+  op <- new_operation(
+    name = "EnableOrganizationAdminAccount",
+    http_method = "POST",
+    http_path = "/organization/admin/enable",
+    paginator = list()
+  )
+  input <- .securityhub$enable_organization_admin_account_input(AdminAccountId = AdminAccountId)
+  output <- .securityhub$enable_organization_admin_account_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$enable_organization_admin_account <- securityhub_enable_organization_admin_account
 
 #' Enables Security Hub for your account in the current Region or the
 #' Region you specify in the request
@@ -2480,6 +3610,13 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'
 #' @param Filters The finding attributes used to define a condition to filter the returned
 #' findings.
+#' 
+#' You can filter by up to 10 finding attributes. For each attribute, you
+#' can provide up to 20 filter values.
+#' 
+#' Note that in the available filter fields, `WorkflowState` is deprecated.
+#' To search for a finding based on its workflow status, use
+#' `WorkflowStatus`.
 #' @param SortCriteria The finding attributes used to sort the list of returned findings.
 #' @param NextToken The token that is required for pagination. On your first call to the
 #' `GetFindings` operation, set the value of this parameter to `NULL`.
@@ -2496,31 +3633,31 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'     ProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     AwsAccountId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Id = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     GeneratorId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Type = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     FirstObservedAt = list(
@@ -2580,7 +3717,7 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'     SeverityLabel = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Confidence = list(
@@ -2600,87 +3737,87 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'     Title = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Description = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RecommendationText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     SourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProductFields = list(
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProductName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     CompanyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     UserDefinedFields = list(
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwareName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwareType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwarePath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwareState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkDirection = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkProtocol = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkSourceIpV4 = list(
@@ -2703,13 +3840,13 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'     NetworkSourceDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkSourceMac = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkDestinationIpV4 = list(
@@ -2732,19 +3869,19 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'     NetworkDestinationDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProcessName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProcessPath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProcessPid = list(
@@ -2784,19 +3921,19 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'     ThreatIntelIndicatorType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorValue = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorCategory = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorLastObservedAt = list(
@@ -2812,56 +3949,56 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'     ThreatIntelIndicatorSource = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorSourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourcePartition = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceRegion = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceTags = list(
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIpV4Addresses = list(
@@ -2877,25 +4014,25 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'     ResourceAwsEc2InstanceKeyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIamInstanceProfileArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceVpcId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceSubnetId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceLaunchedAt = list(
@@ -2911,25 +4048,25 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'     ResourceAwsS3BucketOwnerId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsS3BucketOwnerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyUserName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyCreatedAt = list(
@@ -2945,19 +4082,19 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'     ResourceContainerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerImageName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerLaunchedAt = list(
@@ -2974,55 +4111,55 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     ComplianceStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     VerificationState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     WorkflowState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     WorkflowStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RecordState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RelatedFindingsProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RelatedFindingsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NoteText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NoteUpdatedAt = list(
@@ -3038,7 +4175,7 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'     NoteUpdatedBy = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Keyword = list(
@@ -3206,6 +4343,9 @@ securityhub_get_invitations_count <- function() {
 #'
 #' Provides the details for the Security Hub master account for the current
 #' member account.
+#' 
+#' Can be used by both member accounts that are in an organization and
+#' accounts that were invited manually.
 #'
 #' @usage
 #' securityhub_get_master_account()
@@ -3240,6 +4380,13 @@ securityhub_get_master_account <- function() {
 #'
 #' Returns the details for the Security Hub member accounts for the
 #' specified account IDs.
+#' 
+#' A master account can be either a delegated Security Hub administrator
+#' account for an organization or a master account that enabled Security
+#' Hub manually.
+#' 
+#' The results include both member accounts that are in an organization and
+#' accounts that were invited manually.
 #'
 #' @usage
 #' securityhub_get_members(AccountIds)
@@ -3282,18 +4429,21 @@ securityhub_get_members <- function(AccountIds) {
 #' Invites other AWS accounts to become member accounts for the Security
 #' Hub master account that the invitation is sent from.
 #' 
+#' This operation is only used to invite accounts that do not belong to an
+#' organization. Organization accounts do not receive invitations.
+#' 
 #' Before you can use this action to invite a member, you must first use
 #' the ` <a>CreateMembers</a> ` action to create the member account in
 #' Security Hub.
 #' 
-#' When the account owner accepts the invitation to become a member account
-#' and enables Security Hub, the master account can view the findings
+#' When the account owner enables Security Hub and accepts the invitation
+#' to become a member account, the master account can view the findings
 #' generated from the member account.
 #'
 #' @usage
 #' securityhub_invite_members(AccountIds)
 #'
-#' @param AccountIds The list of account IDs of the AWS accounts to invite to Security Hub as
+#' @param AccountIds &#91;required&#93; The list of account IDs of the AWS accounts to invite to Security Hub as
 #' members.
 #'
 #' @section Request syntax:
@@ -3308,7 +4458,7 @@ securityhub_get_members <- function(AccountIds) {
 #' @keywords internal
 #'
 #' @rdname securityhub_invite_members
-securityhub_invite_members <- function(AccountIds = NULL) {
+securityhub_invite_members <- function(AccountIds) {
   op <- new_operation(
     name = "InviteMembers",
     http_method = "POST",
@@ -3376,6 +4526,9 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
 #'
 #' Lists all Security Hub membership invitations that were sent to the
 #' current AWS account.
+#' 
+#' This operation is only used by accounts that do not belong to an
+#' organization. Organization accounts do not receive invitations.
 #'
 #' @usage
 #' securityhub_list_invitations(MaxResults, NextToken)
@@ -3421,6 +4574,9 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' Lists details about all member accounts for the current Security Hub
 #' master account.
+#' 
+#' The results include both member accounts that belong to an organization
+#' and member accounts that were invited manually.
 #'
 #' @usage
 #' securityhub_list_members(OnlyAssociated, MaxResults, NextToken)
@@ -3430,8 +4586,7 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' `TRUE`.
 #' 
 #' If `OnlyAssociated` is set to `TRUE`, the response includes member
-#' accounts whose relationship status with the master is set to `ENABLED`
-#' or `DISABLED`.
+#' accounts whose relationship status with the master is set to `ENABLED`.
 #' 
 #' If `OnlyAssociated` is set to `FALSE`, the response includes all
 #' existing member accounts.
@@ -3471,6 +4626,49 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
   return(response)
 }
 .securityhub$operations$list_members <- securityhub_list_members
+
+#' Lists the Security Hub administrator accounts
+#'
+#' Lists the Security Hub administrator accounts. Can only be called by the
+#' organization management account.
+#'
+#' @usage
+#' securityhub_list_organization_admin_accounts(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of items to return in the response.
+#' @param NextToken The token that is required for pagination. On your first call to the
+#' `ListOrganizationAdminAccounts` operation, set the value of this
+#' parameter to `NULL`. For subsequent calls to the operation, to continue
+#' listing data, set the value of this parameter to the value returned from
+#' the previous response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_organization_admin_accounts(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_organization_admin_accounts
+securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListOrganizationAdminAccounts",
+    http_method = "GET",
+    http_path = "/organization/admin",
+    paginator = list()
+  )
+  input <- .securityhub$list_organization_admin_accounts_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .securityhub$list_organization_admin_accounts_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_organization_admin_accounts <- securityhub_list_organization_admin_accounts
 
 #' Returns a list of tags associated with a resource
 #'
@@ -3654,31 +4852,31 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'     ProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     AwsAccountId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Id = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     GeneratorId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Type = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     FirstObservedAt = list(
@@ -3738,7 +4936,7 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'     SeverityLabel = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Confidence = list(
@@ -3758,87 +4956,87 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'     Title = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Description = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RecommendationText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     SourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProductFields = list(
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProductName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     CompanyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     UserDefinedFields = list(
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwareName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwareType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwarePath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwareState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkDirection = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkProtocol = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkSourceIpV4 = list(
@@ -3861,13 +5059,13 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'     NetworkSourceDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkSourceMac = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkDestinationIpV4 = list(
@@ -3890,19 +5088,19 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'     NetworkDestinationDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProcessName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProcessPath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProcessPid = list(
@@ -3942,19 +5140,19 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'     ThreatIntelIndicatorType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorValue = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorCategory = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorLastObservedAt = list(
@@ -3970,56 +5168,56 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'     ThreatIntelIndicatorSource = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorSourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourcePartition = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceRegion = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceTags = list(
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIpV4Addresses = list(
@@ -4035,25 +5233,25 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'     ResourceAwsEc2InstanceKeyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIamInstanceProfileArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceVpcId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceSubnetId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceLaunchedAt = list(
@@ -4069,25 +5267,25 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'     ResourceAwsS3BucketOwnerId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsS3BucketOwnerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyUserName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyCreatedAt = list(
@@ -4103,19 +5301,19 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'     ResourceContainerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerImageName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerLaunchedAt = list(
@@ -4132,55 +5330,55 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     ComplianceStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     VerificationState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     WorkflowState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     WorkflowStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RecordState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RelatedFindingsProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RelatedFindingsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NoteText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NoteUpdatedAt = list(
@@ -4196,7 +5394,7 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'     NoteUpdatedBy = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Keyword = list(
@@ -4255,31 +5453,31 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     AwsAccountId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Id = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     GeneratorId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Type = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     FirstObservedAt = list(
@@ -4339,7 +5537,7 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     SeverityLabel = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Confidence = list(
@@ -4359,87 +5557,87 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     Title = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Description = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RecommendationText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     SourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProductFields = list(
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProductName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     CompanyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     UserDefinedFields = list(
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwareName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwareType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwarePath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     MalwareState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkDirection = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkProtocol = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkSourceIpV4 = list(
@@ -4462,13 +5660,13 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     NetworkSourceDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkSourceMac = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NetworkDestinationIpV4 = list(
@@ -4491,19 +5689,19 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     NetworkDestinationDomain = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProcessName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProcessPath = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ProcessPid = list(
@@ -4543,19 +5741,19 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ThreatIntelIndicatorType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorValue = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorCategory = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorLastObservedAt = list(
@@ -4571,56 +5769,56 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ThreatIntelIndicatorSource = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ThreatIntelIndicatorSourceUrl = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourcePartition = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceRegion = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceTags = list(
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceType = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIpV4Addresses = list(
@@ -4636,25 +5834,25 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ResourceAwsEc2InstanceKeyName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceIamInstanceProfileArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceVpcId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceSubnetId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsEc2InstanceLaunchedAt = list(
@@ -4670,25 +5868,25 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ResourceAwsS3BucketOwnerId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsS3BucketOwnerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyUserName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceAwsIamAccessKeyCreatedAt = list(
@@ -4704,19 +5902,19 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     ResourceContainerName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerImageId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerImageName = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     ResourceContainerLaunchedAt = list(
@@ -4733,55 +5931,55 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Key = "string",
 #'         Value = "string",
-#'         Comparison = "EQUALS"
+#'         Comparison = "EQUALS"|"NOT_EQUALS"
 #'       )
 #'     ),
 #'     ComplianceStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     VerificationState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     WorkflowState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     WorkflowStatus = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RecordState = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RelatedFindingsProductArn = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     RelatedFindingsId = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NoteText = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     NoteUpdatedAt = list(
@@ -4797,7 +5995,7 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'     NoteUpdatedBy = list(
 #'       list(
 #'         Value = "string",
-#'         Comparison = "EQUALS"|"PREFIX"
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     ),
 #'     Keyword = list(
@@ -4829,6 +6027,91 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
   return(response)
 }
 .securityhub$operations$update_insight <- securityhub_update_insight
+
+#' Used to update the configuration related to Organizations
+#'
+#' Used to update the configuration related to Organizations. Can only be
+#' called from a Security Hub administrator account.
+#'
+#' @usage
+#' securityhub_update_organization_configuration(AutoEnable)
+#'
+#' @param AutoEnable &#91;required&#93; Whether to automatically enable Security Hub for new accounts in the
+#' organization.
+#' 
+#' By default, this is `false`, and new accounts are not added
+#' automatically.
+#' 
+#' To automatically enable Security Hub for new accounts, set this to
+#' `true`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_organization_configuration(
+#'   AutoEnable = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_organization_configuration
+securityhub_update_organization_configuration <- function(AutoEnable) {
+  op <- new_operation(
+    name = "UpdateOrganizationConfiguration",
+    http_method = "POST",
+    http_path = "/organization/configuration",
+    paginator = list()
+  )
+  input <- .securityhub$update_organization_configuration_input(AutoEnable = AutoEnable)
+  output <- .securityhub$update_organization_configuration_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_organization_configuration <- securityhub_update_organization_configuration
+
+#' Updates configuration options for Security Hub
+#'
+#' Updates configuration options for Security Hub.
+#'
+#' @usage
+#' securityhub_update_security_hub_configuration(AutoEnableControls)
+#'
+#' @param AutoEnableControls Whether to automatically enable new controls when they are added to
+#' standards that are enabled.
+#' 
+#' By default, this is set to `true`, and new controls are enabled
+#' automatically. To not automatically enable new controls, set this to
+#' `false`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_security_hub_configuration(
+#'   AutoEnableControls = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_update_security_hub_configuration
+securityhub_update_security_hub_configuration <- function(AutoEnableControls = NULL) {
+  op <- new_operation(
+    name = "UpdateSecurityHubConfiguration",
+    http_method = "PATCH",
+    http_path = "/accounts",
+    paginator = list()
+  )
+  input <- .securityhub$update_security_hub_configuration_input(AutoEnableControls = AutoEnableControls)
+  output <- .securityhub$update_security_hub_configuration_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$update_security_hub_configuration <- securityhub_update_security_hub_configuration
 
 #' Used to control whether an individual security standard control is
 #' enabled or disabled

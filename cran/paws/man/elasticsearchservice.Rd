@@ -20,7 +20,7 @@ The guide also contains \href{https://docs.aws.amazon.com/elasticsearch-service/
 
 The endpoint for configuration service requests is region-specific:
 es.\emph{region}.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
-a current list of supported regions and endpoints, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticsearch-service-regions}{Regions and Endpoints}.
+a current list of supported regions and endpoints, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.
 }
 \section{Service syntax}{
 \preformatted{svc <- elasticsearchservice(
@@ -66,6 +66,7 @@ a current list of supported regions and endpoints, see \href{http://docs.aws.ama
 \link[=elasticsearchservice_describe_reserved_elasticsearch_instances]{describe_reserved_elasticsearch_instances} \tab Returns information about reserved Elasticsearch instances for this account\cr
 \link[=elasticsearchservice_dissociate_package]{dissociate_package} \tab Dissociates a package from the Amazon ES domain\cr
 \link[=elasticsearchservice_get_compatible_elasticsearch_versions]{get_compatible_elasticsearch_versions} \tab Returns a list of upgrade compatible Elastisearch versions\cr
+\link[=elasticsearchservice_get_package_version_history]{get_package_version_history} \tab Returns a list of versions of the package, along with their creation time and commit message\cr
 \link[=elasticsearchservice_get_upgrade_history]{get_upgrade_history} \tab Retrieves the complete history of the last 10 upgrades that were performed on the domain\cr
 \link[=elasticsearchservice_get_upgrade_status]{get_upgrade_status} \tab Retrieves the latest status of the last upgrade or upgrade eligibility check that was performed on the domain\cr
 \link[=elasticsearchservice_list_domain_names]{list_domain_names} \tab Returns the name of all Elasticsearch domains owned by the current user's account\cr
@@ -79,6 +80,7 @@ a current list of supported regions and endpoints, see \href{http://docs.aws.ama
 \link[=elasticsearchservice_remove_tags]{remove_tags} \tab Removes the specified set of tags from the specified Elasticsearch domain\cr
 \link[=elasticsearchservice_start_elasticsearch_service_software_update]{start_elasticsearch_service_software_update} \tab Schedules a service software update for an Amazon ES domain\cr
 \link[=elasticsearchservice_update_elasticsearch_domain_config]{update_elasticsearch_domain_config} \tab Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the instance type and the number of instances\cr
+\link[=elasticsearchservice_update_package]{update_package} \tab Updates a package for use with Amazon ES domains\cr
 \link[=elasticsearchservice_upgrade_elasticsearch_domain]{upgrade_elasticsearch_domain} \tab Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version
 }
 }

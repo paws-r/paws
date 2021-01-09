@@ -5,8 +5,9 @@
 \title{Replaces an existing route within a route table in a VPC}
 \usage{
 ec2_replace_route(DestinationCidrBlock, DestinationIpv6CidrBlock,
-  DestinationPrefixListId, DryRun, EgressOnlyInternetGatewayId, GatewayId,
-  InstanceId, LocalTarget, NatGatewayId, TransitGatewayId, LocalGatewayId,
+  DestinationPrefixListId, DryRun, VpcEndpointId,
+  EgressOnlyInternetGatewayId, GatewayId, InstanceId, LocalTarget,
+  NatGatewayId, TransitGatewayId, LocalGatewayId, CarrierGatewayId,
   NetworkInterfaceId, RouteTableId, VpcPeeringConnectionId)
 }
 \arguments{
@@ -23,6 +24,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
+\item{VpcEndpointId}{The ID of a VPC endpoint. Supported for Gateway Load Balancer endpoints
+only.}
+
 \item{EgressOnlyInternetGatewayId}{[IPv6 traffic only] The ID of an egress-only internet gateway.}
 
 \item{GatewayId}{The ID of an internet gateway or virtual private gateway.}
@@ -37,6 +41,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TransitGatewayId}{The ID of a transit gateway.}
 
 \item{LocalGatewayId}{The ID of the local gateway.}
+
+\item{CarrierGatewayId}{[IPv4 traffic only] The ID of a carrier gateway.}
 
 \item{NetworkInterfaceId}{The ID of a network interface.}
 
@@ -60,6 +66,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   DestinationIpv6CidrBlock = "string",
   DestinationPrefixListId = "string",
   DryRun = TRUE|FALSE,
+  VpcEndpointId = "string",
   EgressOnlyInternetGatewayId = "string",
   GatewayId = "string",
   InstanceId = "string",
@@ -67,6 +74,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   NatGatewayId = "string",
   TransitGatewayId = "string",
   LocalGatewayId = "string",
+  CarrierGatewayId = "string",
   NetworkInterfaceId = "string",
   RouteTableId = "string",
   VpcPeeringConnectionId = "string"

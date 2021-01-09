@@ -9,15 +9,16 @@ fsx_create_backup(FileSystemId, ClientRequestToken, Tags)
 \arguments{
 \item{FileSystemId}{[required] The ID of the file system to back up.}
 
-\item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
-idempotent creation. This string is automatically filled on your behalf
-when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.}
+\item{ClientRequestToken}{(Optional) A string of up to 64 ASCII characters that Amazon FSx uses to
+ensure idempotent creation. This string is automatically filled on your
+behalf when you use the AWS Command Line Interface (AWS CLI) or an AWS
+SDK.}
 
-\item{Tags}{The tags to apply to the backup at backup creation. The key value of the
-\code{Name} tag appears in the console as the backup name. If you have set
-\code{CopyTagsToBackups} to true, and you specify one or more tags using the
-\code{CreateBackup} action, no existing tags on the file system are copied
-from the file system to the backup.}
+\item{Tags}{(Optional) The tags to apply to the backup at backup creation. The key
+value of the \code{Name} tag appears in the console as the backup name. If
+you have set \code{CopyTagsToBackups} to true, and you specify one or more
+tags using the \code{CreateBackup} action, no existing file system tags are
+copied from the file system to the backup.}
 }
 \description{
 Creates a backup of an existing Amazon FSx file system. Creating regular
@@ -30,11 +31,14 @@ For Amazon FSx for Lustre file systems, you can create a backup only for
 file systems with the following configuration:
 \itemize{
 \item a Persistent deployment type
-\item is \emph{not} linked to an Amazon S3 data respository.
+\item is \emph{not} linked to a data respository.
 }
 
-For more information, see
-\url{https://docs.aws.amazon.com/fsx/latest/LustreGuide/lustre-backups.html}.
+For more information about backing up Amazon FSx for Lustre file
+systems, see \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html}{Working with FSx for Lustre backups}.
+
+For more information about backing up Amazon FSx for Windows file
+systems, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html}{Working with FSx for Windows backups}.
 
 If a backup with the specified client request token exists, and the
 parameters match, this operation returns the description of the existing

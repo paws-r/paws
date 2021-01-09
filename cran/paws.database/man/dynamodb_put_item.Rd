@@ -80,7 +80,7 @@ These function names are case-sensitive.
 \item Logical operators: \code{AND | OR | NOT}
 }
 
-For more information on condition expressions, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Condition Expressions}
+For more information on condition expressions, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeNames}{One or more substitution tokens for attribute names in an expression.
@@ -118,7 +118,7 @@ example:
 Tokens that begin with the \strong{:} character are \emph{expression attribute
 values}, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Specifying Item Attributes}
+For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html}{Specifying Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeValues}{One or more values that can be substituted in an expression.
@@ -137,7 +137,7 @@ You could then use these values in an expression, such as this:
 
 \verb{ProductStatus IN (:avail, :back, :disc)}
 
-For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Condition Expressions}
+For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \description{
@@ -155,15 +155,15 @@ This topic provides general information about the \code{PutItem} API.
 For information on how to call the \code{PutItem} API using the AWS SDK in
 specific languages, see the following:
 \itemize{
-\item \href{http://docs.aws.amazon.com/goto/aws-cli/dynamodb-2012-08-10/PutItem}{PutItem in the AWS Command Line Interface}
-\item \href{http://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for .NET}
-\item \href{http://docs.aws.amazon.com/goto/SdkForCpp/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for C++}
-\item \href{http://docs.aws.amazon.com/goto/SdkForGoV1/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for Go}
-\item \href{http://docs.aws.amazon.com/goto/SdkForJava/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for Java}
-\item \href{http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for JavaScript}
-\item \href{http://docs.aws.amazon.com/goto/SdkForPHPV3/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for PHP V3}
-\item \href{http://docs.aws.amazon.com/goto/boto3/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for Python}
-\item \href{http://docs.aws.amazon.com/goto/SdkForRubyV2/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for Ruby V2}
+\item \href{https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html}{PutItem in the AWS Command Line Interface}
+\item \href{https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=DynamoDBv2/MDynamoDBPutItemPutItemRequest.html}{PutItem in the AWS SDK for .NET}
+\item \href{https://sdk.amazonaws.com/cpp/api/crosslink_redirect.html?uid=dynamodb-2012-08-10&type=PutItem}{PutItem in the AWS SDK for C++}
+\item \href{https://docs.aws.amazon.com/sdk-for-go/api/service/dynamodb/#DynamoDB.PutItem}{PutItem in the AWS SDK for Go}
+\item \href{https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDB.html#putItem-com.amazonaws.services.dynamodbv2.model.PutItemRequest-}{PutItem in the AWS SDK for Java}
+\item \href{https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#putItem-property}{PutItem in the AWS SDK for JavaScript}
+\item \href{https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-dynamodb-2012-08-10.html#putitem}{PutItem in the AWS SDK for PHP V3}
+\item \href{https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html}{PutItem in the AWS SDK for Python}
+\item \href{https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/DynamoDB/Client.html#put_item-instance_method}{PutItem in the AWS SDK for Ruby V2}
 }
 
 When you add an item, the primary key attributes are the only required

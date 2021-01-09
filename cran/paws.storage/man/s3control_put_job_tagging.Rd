@@ -2,39 +2,39 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_put_job_tagging}
 \alias{s3control_put_job_tagging}
-\title{Set the supplied tag-set on an Amazon S3 Batch Operations job}
+\title{Sets the supplied tag-set on an S3 Batch Operations job}
 \usage{
 s3control_put_job_tagging(AccountId, JobId, Tags)
 }
 \arguments{
-\item{AccountId}{[required] The AWS account ID associated with the Amazon S3 Batch Operations job.}
+\item{AccountId}{[required] The AWS account ID associated with the S3 Batch Operations job.}
 
-\item{JobId}{[required] The ID for the Amazon S3 Batch Operations job whose tags you want to
-replace.}
+\item{JobId}{[required] The ID for the S3 Batch Operations job whose tags you want to replace.}
 
-\item{Tags}{[required] The set of tags to associate with the Amazon S3 Batch Operations job.}
+\item{Tags}{[required] The set of tags to associate with the S3 Batch Operations job.}
 }
 \description{
-Set the supplied tag-set on an Amazon S3 Batch Operations job.
+Sets the supplied tag-set on an S3 Batch Operations job.
 }
 \details{
-A tag is a key-value pair. You can associate Amazon S3 Batch Operations
-tags with any job by sending a PUT request against the tagging
-subresource that is associated with the job. To modify the existing tag
-set, you can either replace the existing tag set entirely, or make
-changes within the existing tag set by retrieving the existing tag set
-using GetJobTagging, modify that tag set, and use this API action to
-replace the tag set with the one you have modified.. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags}{Using Job Tags}
-in the Amazon Simple Storage Service Developer Guide.
+A tag is a key-value pair. You can associate S3 Batch Operations tags
+with any job by sending a PUT request against the tagging subresource
+that is associated with the job. To modify the existing tag set, you can
+either replace the existing tag set entirely, or make changes within the
+existing tag set by retrieving the existing tag set using
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetJobTagging.html}{GetJobTagging},
+modify that tag set, and use this action to replace the tag set with the
+one you modified. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
 \itemize{
 \item If you send this request with an empty tag set, Amazon S3 deletes
 the existing tag set on the Batch Operations job. If you use this
-method, you will be charged for a Tier 1 Request (PUT). For more
-information, see \href{http://aws.amazon.com/s3/pricing/}{Amazon S3 pricing}.
-\item For deleting existing tags for your batch operations job,
-DeleteJobTagging request is preferred because it achieves the same
-result without incurring charges.
+method, you are charged for a Tier 1 Request (PUT). For more
+information, see \href{https://aws.amazon.com/s3/pricing/}{Amazon S3 pricing}.
+\item For deleting existing tags for your Batch Operations job, a
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html}{DeleteJobTagging}
+request is preferred because it achieves the same result without
+incurring charges.
 \item A few things to consider about using tags:
 \itemize{
 \item Amazon S3 limits the maximum number of tags to 50 tags per job.
@@ -44,7 +44,8 @@ unique tag keys.
 values can be up to 256 Unicode characters in length.
 \item The key and values are case sensitive.
 \item For tagging-related restrictions related to characters and
-encodings, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html}{User-Defined Tag Restrictions}.
+encodings, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html}{User-Defined Tag Restrictions}
+in the \emph{AWS Billing and Cost Management User Guide}.
 }
 }
 
@@ -53,9 +54,9 @@ To use this operation, you must have permission to perform the
 
 Related actions include:
 \itemize{
-\item CreateJob
-\item GetJobTagging
-\item DeleteJobTagging
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html}{CreatJob}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetJobTagging.html}{GetJobTagging}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html}{DeleteJobTagging}
 }
 }
 \section{Request syntax}{

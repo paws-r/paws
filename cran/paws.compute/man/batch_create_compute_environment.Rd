@@ -5,41 +5,70 @@
 \title{Creates an AWS Batch compute environment}
 \usage{
 batch_create_compute_environment(computeEnvironmentName, type, state,
-  computeResources, serviceRole)
+  computeResources, serviceRole, tags)
 }
 \arguments{
 \item{computeEnvironmentName}{[required] The name for your compute environment. Up to 128 letters (uppercase and
 lowercase), numbers, hyphens, and underscores are allowed.}
 
-\item{type}{[required] The type of the compute environment. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html}{Compute Environments}
+\item{type}{[required] The type of the compute environment: \code{MANAGED} or \code{UNMANAGED}. For more
+information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html}{Compute Environments}
 in the \emph{AWS Batch User Guide}.}
 
 \item{state}{The state of the compute environment. If the state is \code{ENABLED}, then
 the compute environment accepts jobs from a queue and can scale out
-automatically based on queues.}
+automatically based on queues.
 
-\item{computeResources}{Details of the compute resources managed by the compute environment.
+If the state is \code{ENABLED}, then the AWS Batch scheduler can attempt to
+place jobs from an associated job queue on the compute resources within
+the environment. If the compute environment is managed, then it can
+scale its instances out or in automatically, based on the job queue
+demand.
+
+If the state is \code{DISABLED}, then the AWS Batch scheduler doesn't attempt
+to place jobs within the environment. Jobs in a \code{STARTING} or \code{RUNNING}
+state continue to progress normally. Managed compute environments in the
+\code{DISABLED} state don't scale out. However, they scale in to \code{minvCpus}
+value after instances become idle.}
+
+\item{computeResources}{Details about the compute resources managed by the compute environment.
 This parameter is required for managed compute environments. For more
 information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html}{Compute Environments}
 in the \emph{AWS Batch User Guide}.}
 
 \item{serviceRole}{[required] The full Amazon Resource Name (ARN) of the IAM role that allows AWS
-Batch to make calls to other AWS services on your behalf.
+Batch to make calls to other AWS services on your behalf. For more
+information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html}{AWS Batch service IAM role}
+in the \emph{AWS Batch User Guide}.
 
 If your specified role has a path other than \code{/}, then you must either
 specify the full role ARN (this is recommended) or prefix the role name
 with the path.
 
-Depending on how you created your AWS Batch service role, its ARN may
+Depending on how you created your AWS Batch service role, its ARN might
 contain the \code{service-role} path prefix. When you only specify the name
-of the service role, AWS Batch assumes that your ARN does not use the
+of the service role, AWS Batch assumes that your ARN doesn't use the
 \code{service-role} path prefix. Because of this, we recommend that you
 specify the full ARN of your service role when you create compute
 environments.}
+
+\item{tags}{The tags that you apply to the compute environment to help you
+categorize and organize your resources. Each tag consists of a key and
+an optional value. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
+in \emph{AWS General Reference}.
+
+These tags can be updated or removed using the
+\href{https://docs.aws.amazon.com/batch/latest/APIReference/API_TagResource.html}{TagResource}
+and
+\href{https://docs.aws.amazon.com/batch/latest/APIReference/API_UntagResource.html}{UntagResource}
+API operations. These tags don't propagate to the underlying compute
+resources.}
 }
 \description{
 Creates an AWS Batch compute environment. You can create \code{MANAGED} or
-\code{UNMANAGED} compute environments.
+\code{UNMANAGED} compute environments. \code{MANAGED} compute environments can use
+Amazon EC2 or AWS Fargate resources. \code{UNMANAGED} compute environments
+can only use EC2 resources.
 }
 \details{
 In a managed compute environment, AWS Batch manages the capacity and
@@ -47,37 +76,39 @@ instance types of the compute resources within the environment. This is
 based on the compute resource specification that you define or the
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html}{launch template}
 that you specify when you create the compute environment. You can choose
-to use Amazon EC2 On-Demand Instances or Spot Instances in your managed
-compute environment. You can optionally set a maximum price so that Spot
-Instances only launch when the Spot Instance price is below a specified
-percentage of the On-Demand price.
+either to use EC2 On-Demand Instances and EC2 Spot Instances, or to use
+Fargate and Fargate Spot capacity in your managed compute environment.
+You can optionally set a maximum price so that Spot Instances only
+launch when the Spot Instance price is less than a specified percentage
+of the On-Demand price.
 
 Multi-node parallel jobs are not supported on Spot Instances.
 
-In an unmanaged compute environment, you can manage your own compute
-resources. This provides more compute resource configuration options,
-such as using a custom AMI, but you must ensure that your AMI meets the
-Amazon ECS container instance AMI specification. For more information,
-see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html}{Container Instance AMIs}
-in the \emph{Amazon Elastic Container Service Developer Guide}. After you
-have created your unmanaged compute environment, you can use the
+In an unmanaged compute environment, you can manage your own EC2 compute
+resources and have a lot of flexibility with how you configure your
+compute resources. For example, you can use custom AMI. However, you
+need to verify that your AMI meets the Amazon ECS container instance AMI
+specification. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{container instance AMIs} in
+the \emph{Amazon Elastic Container Service Developer Guide}. After you have
+created your unmanaged compute environment, you can use the
 DescribeComputeEnvironments operation to find the Amazon ECS cluster
-that is associated with it. Then, manually launch your container
+that's associated with it. Then, manually launch your container
 instances into that Amazon ECS cluster. For more information, see
-\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html}{Launching an Amazon ECS Container Instance}
+\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html}{Launching an Amazon ECS container instance}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-AWS Batch does not upgrade the AMIs in a compute environment after it is
-created (for example, when a newer version of the Amazon ECS-optimized
-AMI is available). You are responsible for the management of the guest
-operating system (including updates and security patches) and any
-additional application software or utilities that you install on the
-compute resources. To use a new AMI for your AWS Batch jobs:
+AWS Batch doesn't upgrade the AMIs in a compute environment after it's
+created. For example, it doesn't update the AMIs when a newer version of
+the Amazon ECS-optimized AMI is available. Therefore, you're responsible
+for the management of the guest operating system (including updates and
+security patches) and any additional application software or utilities
+that you install on the compute resources. To use a new AMI for your AWS
+Batch jobs, complete these steps:
 \enumerate{
 \item Create a new compute environment with the new AMI.
 \item Add the compute environment to an existing job queue.
-\item Remove the old compute environment from your job queue.
-\item Delete the old compute environment.
+\item Remove the earlier compute environment from your job queue.
+\item Delete the earlier compute environment.
 }
 }
 \section{Request syntax}{
@@ -86,7 +117,7 @@ compute resources. To use a new AMI for your AWS Batch jobs:
   type = "MANAGED"|"UNMANAGED",
   state = "ENABLED"|"DISABLED",
   computeResources = list(
-    type = "EC2"|"SPOT",
+    type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT",
     allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED",
     minvCpus = 123,
     maxvCpus = 123,
@@ -113,9 +144,18 @@ compute resources. To use a new AMI for your AWS Batch jobs:
       launchTemplateId = "string",
       launchTemplateName = "string",
       version = "string"
+    ),
+    ec2Configuration = list(
+      list(
+        imageType = "string",
+        imageIdOverride = "string"
+      )
     )
   ),
-  serviceRole = "string"
+  serviceRole = "string",
+  tags = list(
+    "string"
+  )
 )
 }
 }

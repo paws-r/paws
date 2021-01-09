@@ -347,7 +347,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' 
 #' For more information about supported Amazon EC2 platforms, see
 #' [Supported
-#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html).
 #' @param Tags A map that contains tag keys and tag values to attach to an AWS OpsWorks
 #' for Chef Automate or AWS OpsWorks for Puppet Enterprise server.
 #' 

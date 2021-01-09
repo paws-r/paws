@@ -53,7 +53,7 @@ days.
   RepositoryNames = list(
     "string"
   ),
-  Type = "PullRequest",
+  Type = "PullRequest"|"RepositoryAnalysis",
   MaxResults = 123,
   NextToken = "string"
 )

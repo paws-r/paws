@@ -82,8 +82,8 @@ environment's operations role. If specified, Elastic Beanstalk uses the
 operations role for permissions to downstream services during this call
 and during subsequent calls acting on this environment. To specify an
 operations role, you must have the \code{iam:PassRole} permission for the
-role. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html}{Operations roles}
-in the \emph{AWS Elastic Beanstalk Developer Guide}.}
+role. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/}{Operations roles} in the
+\emph{AWS Elastic Beanstalk Developer Guide}.}
 }
 \description{
 Launches an AWS Elastic Beanstalk environment for the specified

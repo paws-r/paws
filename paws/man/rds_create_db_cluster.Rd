@@ -167,29 +167,27 @@ if this DB cluster is created as a read replica.}
 
 \item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB cluster.
 
-The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are creating a DB cluster with the same AWS
-account that owns the KMS encryption key used to encrypt the new DB
-cluster, then you can use the KMS key alias instead of the ARN for the
-KMS encryption key.
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK). To use a CMK in a
+different AWS account, specify the key ARN or alias ARN.
 
-If an encryption key isn't specified in \code{KmsKeyId}:
+When a CMK isn't specified in \code{KmsKeyId}:
 \itemize{
 \item If \code{ReplicationSourceIdentifier} identifies an encrypted source,
-then Amazon RDS will use the encryption key used to encrypt the
-source. Otherwise, Amazon RDS will use your default encryption key.
+then Amazon RDS will use the CMK used to encrypt the source.
+Otherwise, Amazon RDS will use your default CMK.
 \item If the \code{StorageEncrypted} parameter is enabled and
 \code{ReplicationSourceIdentifier} isn't specified, then Amazon RDS will
-use your default encryption key.
+use your default CMK.
 }
 
-AWS KMS creates the default encryption key for your AWS account. Your
-AWS account has a different default encryption key for each AWS Region.
+There is a default CMK for your AWS account. Your AWS account has a
+different default CMK for each AWS Region.
 
 If you create a read replica of an encrypted DB cluster in another AWS
-Region, you must set \code{KmsKeyId} to a KMS key ID that is valid in the
-destination AWS Region. This key is used to encrypt the read replica in
-that AWS Region.}
+Region, you must set \code{KmsKeyId} to a AWS KMS key identifier that is
+valid in the destination AWS Region. This CMK is used to encrypt the
+read replica in that AWS Region.}
 
 \item{PreSignedUrl}{A URL that contains a Signature Version 4 signed request for the
 \code{CreateDBCluster} action to be called in the source AWS Region where the
@@ -205,9 +203,9 @@ The pre-signed URL request must contain the following parameter values:
 \itemize{
 \item \code{KmsKeyId} - The AWS KMS key identifier for the key to use to
 encrypt the copy of the DB cluster in the destination AWS Region.
-This should refer to the same KMS key for both the \code{CreateDBCluster}
-action that is called in the destination AWS Region, and the action
-contained in the pre-signed URL.
+This should refer to the same AWS KMS CMK for both the
+\code{CreateDBCluster} action that is called in the destination AWS
+Region, and the action contained in the pre-signed URL.
 \item \code{DestinationRegion} - The name of the AWS Region that Aurora read
 replica will be created in.
 \item \code{ReplicationSourceIdentifier} - The DB cluster identifier for the
@@ -255,14 +253,32 @@ Constraints:
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
 CloudWatch Logs. The values in the list depend on the DB engine being
 used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
-in the \emph{Amazon Aurora User Guide}.}
+in the \emph{Amazon Aurora User Guide}.
 
-\item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned},
-\code{serverless}, \code{parallelquery}, \code{global}, or \code{multimaster}.
+\strong{Aurora MySQL}
 
-\code{global} engine mode only applies for global database clusters created
-with Aurora MySQL version 5.6.10a. For higher Aurora MySQL versions, the
-clusters in a global database use \code{provisioned} engine mode.
+Possible values are \code{audit}, \code{error}, \code{general}, and \code{slowquery}.
+
+\strong{Aurora PostgreSQL}
+
+Possible values are \code{postgresql} and \code{upgrade}.}
+
+\item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned} \code{serverless},
+\code{parallelquery}, \code{global}, or \code{multimaster}.
+
+The \code{parallelquery} engine mode isn't required for Aurora MySQL version
+1.23 and higher 1.x versions, and version 2.09 and higher 2.x versions.
+
+The \code{global} engine mode isn't required for Aurora MySQL version 1.22
+and higher 1.x versions, and \code{global} engine mode isn't required for any
+2.x versions.
+
+The \code{multimaster} engine mode only applies for DB clusters created with
+Aurora MySQL version 5.6.10a.
+
+For Aurora PostgreSQL, the \code{global} engine mode isn't required, and both
+the \code{parallelquery} and the \code{multimaster} engine modes currently aren't
+supported.
 
 Limitations and requirements apply to some DB engine modes. For more
 information, see the following sections in the \emph{Amazon Aurora User
@@ -270,7 +286,7 @@ Guide}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html#aurora-serverless.limitations}{Limitations of Aurora Serverless}
 \item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-mysql-parallel-query.html#aurora-mysql-parallel-query-limitations}{Limitations of Parallel Query}
-\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations}{Requirements for Aurora Global Databases}
+\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations}{Limitations of Aurora Global Databases}
 \item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-limitations}{Limitations of Multi-Master Clusters}
 }}
 
@@ -302,7 +318,7 @@ snapshots of the DB cluster. The default is not to copy them.}
 
 For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
 Authentication to authenticate users that connect to the DB cluster. For
-more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/kerberos-authentication.html}{Kerberos Authentication}
+more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/database-authentication.html}{Kerberos Authentication}
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the

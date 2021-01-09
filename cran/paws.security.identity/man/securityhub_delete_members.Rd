@@ -7,10 +7,14 @@
 securityhub_delete_members(AccountIds)
 }
 \arguments{
-\item{AccountIds}{The list of account IDs for the member accounts to delete.}
+\item{AccountIds}{[required] The list of account IDs for the member accounts to delete.}
 }
 \description{
 Deletes the specified member accounts from Security Hub.
+}
+\details{
+Can be used to delete member accounts that belong to an organization as
+well as member accounts that were invited manually.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_members(

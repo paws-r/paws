@@ -13,8 +13,8 @@ chime_get_account_settings(AccountId)
 \description{
 Retrieves account settings for the specified Amazon Chime account ID,
 such as remote control and dial out settings. For more information about
-these settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/policies.html}{Use the Policies Page} in the
-\emph{Amazon Chime Administration Guide}.
+these settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/mtg-settings.html}{Use the Policies Page} in
+the \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_account_settings(

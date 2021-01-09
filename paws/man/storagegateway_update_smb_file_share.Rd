@@ -6,9 +6,9 @@
 \usage{
 storagegateway_update_smb_file_share(FileShareARN, KMSEncrypted, KMSKey,
   DefaultStorageClass, ObjectACL, ReadOnly, GuessMIMETypeEnabled,
-  RequesterPays, SMBACLEnabled, AdminUserList, ValidUserList,
-  InvalidUserList, AuditDestinationARN, CaseSensitivity, FileShareName,
-  CacheAttributes)
+  RequesterPays, SMBACLEnabled, AccessBasedEnumeration, AdminUserList,
+  ValidUserList, InvalidUserList, AuditDestinationARN, CaseSensitivity,
+  FileShareName, CacheAttributes, NotificationPolicy)
 }
 \arguments{
 \item{FileShareARN}{[required] The Amazon Resource Name (ARN) of the SMB file share that you want to
@@ -66,6 +66,9 @@ in the \emph{AWS Storage Gateway User Guide}.
 
 Valid Values: \code{true} | \code{false}}
 
+\item{AccessBasedEnumeration}{The files and folders on this share will only be visible to users with
+read access.}
+
 \item{AdminUserList}{A list of users or groups in the Active Directory that have
 administrator rights to the file share. A group must be prefixed with
 the @ character. Acceptable formats include: \verb{DOMAIN\\\\User1}, \code{user1},
@@ -97,13 +100,16 @@ default value is \code{ClientSpecified}.}
 \code{LocationARN}.}
 
 \item{CacheAttributes}{Refresh cache information.}
+
+\item{NotificationPolicy}{The notification policy of the file share.}
 }
 \description{
-Updates a Server Message Block (SMB) file share.
+Updates a Server Message Block (SMB) file share. This operation is only
+supported for file gateways.
 }
 \details{
 To leave a file share field unchanged, set the corresponding input field
-to null. This operation is only supported for file gateways.
+to null.
 
 File gateways require AWS Security Token Service (AWS STS) to be
 activated to enable you to create a file share. Make sure that AWS STS
@@ -126,6 +132,7 @@ share.
   GuessMIMETypeEnabled = TRUE|FALSE,
   RequesterPays = TRUE|FALSE,
   SMBACLEnabled = TRUE|FALSE,
+  AccessBasedEnumeration = TRUE|FALSE,
   AdminUserList = list(
     "string"
   ),
@@ -140,7 +147,8 @@ share.
   FileShareName = "string",
   CacheAttributes = list(
     CacheStaleTimeoutInSeconds = 123
-  )
+  ),
+  NotificationPolicy = "string"
 )
 }
 }

@@ -120,6 +120,11 @@ longer be accessible.
           )
         ),
         streamUI = TRUE|FALSE
+      ),
+      worldConfigs = list(
+        list(
+          world = "string"
+        )
       )
     )
   ),

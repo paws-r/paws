@@ -27,9 +27,9 @@ for the EBS volume.
 \item \code{launch.block-device-mapping.volume-size} - The size of the EBS
 volume, in GiB.
 \item \code{launch.block-device-mapping.volume-type} - The type of EBS volume:
-\code{gp2} for General Purpose SSD, \code{io1} for Provisioned IOPS SSD, \code{st1}
-for Throughput Optimized HDD, \code{sc1}for Cold HDD, or \code{standard} for
-Magnetic.
+\code{gp2} for General Purpose SSD, \code{io1} or \code{io2} for Provisioned IOPS
+SSD, \code{st1} for Throughput Optimized HDD, \code{sc1}for Cold HDD, or
+\code{standard} for Magnetic.
 \item \code{launch.group-id} - The ID of the security group for the instance.
 \item \code{launch.group-name} - The name of the security group for the
 instance.
@@ -68,7 +68,7 @@ launched to fulfill the request.
 \item \code{state} - The state of the Spot Instance request (\code{open} | \code{active}
 | \code{closed} | \code{cancelled} | \code{failed}). Spot request status
 information can help you track your Amazon EC2 Spot Instance
-requests. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html}{Spot request status}
+requests. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-request-status.html}{Spot request status}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 \item \code{status-code} - The short code describing the most recent evaluation
 of your Spot Instance request.
@@ -110,7 +110,7 @@ You can use \code{DescribeSpotInstanceRequests} to find a running Spot
 Instance by examining the response. If the status of the Spot Instance
 is \code{fulfilled}, the instance ID appears in the response and contains the
 identifier of the instance. Alternatively, you can use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances}{DescribeInstances}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html}{DescribeInstances}
 with a filter to look for instances where the instance lifecycle is
 \code{spot}.
 

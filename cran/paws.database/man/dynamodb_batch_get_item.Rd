@@ -53,7 +53,7 @@ Tokens that begin with the \strong{:} character are \emph{expression attribute
 values}, which are placeholders for the actual value at runtime.
 
 For more information about expression attribute names, see
-\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html}{Accessing Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.
 \item \code{Keys} - An array of primary key attribute values that define
 specific items in the table. For each primary key, you must provide
@@ -70,7 +70,7 @@ If no attribute names are specified, then all attributes are
 returned. If any of the requested attributes are not found, they do
 not appear in the result.
 
-For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Accessing Item Attributes}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html}{Accessing Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.
 \item \code{AttributesToGet} - This is a legacy parameter. Use
 \code{ProjectionExpression} instead. For more information, see
@@ -118,7 +118,7 @@ throttling on the individual tables. If you delay the batch operation
 using exponential backoff, the individual requests in the batch are much
 more likely to succeed.
 
-For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations}{Batch Operations and Error Handling}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html}{Batch Operations and Error Handling}
 in the \emph{Amazon DynamoDB Developer Guide}.
 
 By default, \code{BatchGetItem} performs eventually consistent reads on every

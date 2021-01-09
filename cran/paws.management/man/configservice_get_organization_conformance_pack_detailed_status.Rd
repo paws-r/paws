@@ -25,9 +25,6 @@ next page of results in a paginated response.}
 Returns detailed status for each member account within an organization
 for a given organization conformance pack.
 }
-\details{
-Only a master account can call this API.
-}
 \section{Request syntax}{
 \preformatted{svc$get_organization_conformance_pack_detailed_status(
   OrganizationConformancePackName = "string",

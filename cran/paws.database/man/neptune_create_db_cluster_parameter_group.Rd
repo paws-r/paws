@@ -52,8 +52,8 @@ parameter group is used as the default for a new DB cluster. This is
 especially important for parameters that are critical when creating the
 default database for a DB cluster, such as the character set for the
 default database defined by the \code{character_set_database} parameter. You
-can use the \emph{Parameter Groups} option of the \href{https://console.aws.amazon.com/rds/}{Amazon Neptune console} or the
-DescribeDBClusterParameters command to verify that your DB cluster
+can use the \emph{Parameter Groups} option of the Amazon Neptune console or
+the DescribeDBClusterParameters command to verify that your DB cluster
 parameter group has been created or modified.
 }
 \section{Request syntax}{

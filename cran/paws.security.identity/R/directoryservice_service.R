@@ -13,14 +13,14 @@ NULL
 #' AWS Directory Services features, see [AWS Directory
 #' Service](https://aws.amazon.com/directoryservice/) and the [AWS
 #' Directory Service Administration
-#' Guide](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html).
+#' Guide](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html).
 #' 
 #' AWS provides SDKs that consist of libraries and sample code for various
 #' programming languages and platforms (Java, Ruby, .Net, iOS, Android,
 #' etc.). The SDKs provide a convenient way to create programmatic access
 #' to AWS Directory Service and other AWS services. For more information
 #' about the AWS SDKs, including how to download and install them, see
-#' [Tools for Amazon Web Services](http://aws.amazon.com/tools/).
+#' [Tools for Amazon Web Services](https://aws.amazon.com/tools/).
 #'
 #' @param
 #' config
@@ -56,11 +56,12 @@ NULL
 #' \tabular{ll}{
 #'  \link[=directoryservice_accept_shared_directory]{accept_shared_directory} \tab Accepts a directory sharing request that was sent from the directory owner account\cr
 #'  \link[=directoryservice_add_ip_routes]{add_ip_routes} \tab If the DNS server for your on-premises domain uses a publicly addressable IP address, you must add a CIDR address block to correctly route traffic to and from your Microsoft AD on Amazon Web Services\cr
+#'  \link[=directoryservice_add_region]{add_region} \tab Adds two domain controllers in the specified Region for the specified directory\cr
 #'  \link[=directoryservice_add_tags_to_resource]{add_tags_to_resource} \tab Adds or overwrites one or more tags for the specified directory\cr
 #'  \link[=directoryservice_cancel_schema_extension]{cancel_schema_extension} \tab Cancels an in-progress schema extension to a Microsoft AD directory\cr
 #'  \link[=directoryservice_connect_directory]{connect_directory} \tab Creates an AD Connector to connect to an on-premises directory\cr
 #'  \link[=directoryservice_create_alias]{create_alias} \tab Creates an alias for a directory and assigns the alias to the directory\cr
-#'  \link[=directoryservice_create_computer]{create_computer} \tab Creates a computer account in the specified directory, and joins the computer to the directory\cr
+#'  \link[=directoryservice_create_computer]{create_computer} \tab Creates an Active Directory computer object in the specified directory\cr
 #'  \link[=directoryservice_create_conditional_forwarder]{create_conditional_forwarder} \tab Creates a conditional forwarder associated with your AWS directory\cr
 #'  \link[=directoryservice_create_directory]{create_directory} \tab Creates a Simple AD directory\cr
 #'  \link[=directoryservice_create_log_subscription]{create_log_subscription} \tab Creates a subscription to forward real-time Directory Service domain controller security logs to the specified Amazon CloudWatch log group in your AWS account\cr
@@ -72,34 +73,38 @@ NULL
 #'  \link[=directoryservice_delete_log_subscription]{delete_log_subscription} \tab Deletes the specified log subscription\cr
 #'  \link[=directoryservice_delete_snapshot]{delete_snapshot} \tab Deletes a directory snapshot\cr
 #'  \link[=directoryservice_delete_trust]{delete_trust} \tab Deletes an existing trust relationship between your AWS Managed Microsoft AD directory and an external domain\cr
-#'  \link[=directoryservice_deregister_certificate]{deregister_certificate} \tab Deletes from the system the certificate that was registered for a secured LDAP connection\cr
+#'  \link[=directoryservice_deregister_certificate]{deregister_certificate} \tab Deletes from the system the certificate that was registered for secure LDAP or client certificate authentication\cr
 #'  \link[=directoryservice_deregister_event_topic]{deregister_event_topic} \tab Removes the specified directory as a publisher to the specified SNS topic\cr
-#'  \link[=directoryservice_describe_certificate]{describe_certificate} \tab Displays information about the certificate registered for a secured LDAP connection\cr
+#'  \link[=directoryservice_describe_certificate]{describe_certificate} \tab Displays information about the certificate registered for secure LDAP or client certificate authentication\cr
 #'  \link[=directoryservice_describe_conditional_forwarders]{describe_conditional_forwarders} \tab Obtains information about the conditional forwarders for this account\cr
 #'  \link[=directoryservice_describe_directories]{describe_directories} \tab Obtains information about the directories that belong to this account\cr
 #'  \link[=directoryservice_describe_domain_controllers]{describe_domain_controllers} \tab Provides information about any domain controllers in your directory\cr
 #'  \link[=directoryservice_describe_event_topics]{describe_event_topics} \tab Obtains information about which SNS topics receive status messages from the specified directory\cr
 #'  \link[=directoryservice_describe_ldaps_settings]{describe_ldaps_settings} \tab Describes the status of LDAP security for the specified directory\cr
+#'  \link[=directoryservice_describe_regions]{describe_regions} \tab Provides information about the Regions that are configured for multi-Region replication\cr
 #'  \link[=directoryservice_describe_shared_directories]{describe_shared_directories} \tab Returns the shared directories in your account\cr
 #'  \link[=directoryservice_describe_snapshots]{describe_snapshots} \tab Obtains information about the directory snapshots that belong to this account\cr
 #'  \link[=directoryservice_describe_trusts]{describe_trusts} \tab Obtains information about the trust relationships for this account\cr
+#'  \link[=directoryservice_disable_client_authentication]{disable_client_authentication} \tab Disables alternative client authentication methods for the specified directory\cr
 #'  \link[=directoryservice_disable_ldaps]{disable_ldaps} \tab Deactivates LDAP secure calls for the specified directory\cr
 #'  \link[=directoryservice_disable_radius]{disable_radius} \tab Disables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory\cr
 #'  \link[=directoryservice_disable_sso]{disable_sso} \tab Disables single-sign on for a directory\cr
+#'  \link[=directoryservice_enable_client_authentication]{enable_client_authentication} \tab Enables alternative client authentication methods for the specified directory\cr
 #'  \link[=directoryservice_enable_ldaps]{enable_ldaps} \tab Activates the switch for the specific directory to always use LDAP secure calls\cr
 #'  \link[=directoryservice_enable_radius]{enable_radius} \tab Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory\cr
 #'  \link[=directoryservice_enable_sso]{enable_sso} \tab Enables single sign-on for a directory\cr
 #'  \link[=directoryservice_get_directory_limits]{get_directory_limits} \tab Obtains directory limit information for the current Region\cr
 #'  \link[=directoryservice_get_snapshot_limits]{get_snapshot_limits} \tab Obtains the manual snapshot limits for a directory\cr
-#'  \link[=directoryservice_list_certificates]{list_certificates} \tab For the specified directory, lists all the certificates registered for a secured LDAP connection\cr
+#'  \link[=directoryservice_list_certificates]{list_certificates} \tab For the specified directory, lists all the certificates registered for a secure LDAP or client certificate authentication\cr
 #'  \link[=directoryservice_list_ip_routes]{list_ip_routes} \tab Lists the address blocks that you have added to a directory\cr
 #'  \link[=directoryservice_list_log_subscriptions]{list_log_subscriptions} \tab Lists the active log subscriptions for the AWS account\cr
 #'  \link[=directoryservice_list_schema_extensions]{list_schema_extensions} \tab Lists all schema extensions applied to a Microsoft AD Directory\cr
 #'  \link[=directoryservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on a directory\cr
-#'  \link[=directoryservice_register_certificate]{register_certificate} \tab Registers a certificate for secured LDAP connection\cr
+#'  \link[=directoryservice_register_certificate]{register_certificate} \tab Registers a certificate for a secure LDAP or client certificate authentication\cr
 #'  \link[=directoryservice_register_event_topic]{register_event_topic} \tab Associates a directory with an SNS topic\cr
 #'  \link[=directoryservice_reject_shared_directory]{reject_shared_directory} \tab Rejects a directory sharing request that was sent from the directory owner account\cr
 #'  \link[=directoryservice_remove_ip_routes]{remove_ip_routes} \tab Removes IP address blocks from a directory\cr
+#'  \link[=directoryservice_remove_region]{remove_region} \tab Stops all replication and removes the domain controllers from the specified Region\cr
 #'  \link[=directoryservice_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes tags from a directory\cr
 #'  \link[=directoryservice_reset_user_password]{reset_user_password} \tab Resets the password for any user in your AWS Managed Microsoft AD or Simple AD directory\cr
 #'  \link[=directoryservice_restore_from_snapshot]{restore_from_snapshot} \tab Restores a directory using an existing directory snapshot\cr

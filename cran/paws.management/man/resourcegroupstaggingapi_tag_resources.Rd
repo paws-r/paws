@@ -8,7 +8,7 @@ resourcegroupstaggingapi_tag_resources(ResourceARNList, Tags)
 }
 \arguments{
 \item{ResourceARNList}{[required] A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a
-resource. For more information, see \href{http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
+resource. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
 in the \emph{AWS General Reference}.}
 
 \item{Tags}{[required] The tags that you want to add to the specified resources. A tag consists
@@ -20,15 +20,20 @@ Applies one or more tags to the specified resources. Note the following:
 \details{
 \itemize{
 \item Not all resources can have tags. For a list of services that support
-tagging, see \href{http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html}{this list}.
-\item Each resource can have up to 50 tags. For other limits, see \href{http://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions}{Tag Naming and Usage Conventions}
+tagging, see \href{https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html}{this list}.
+\item Each resource can have up to 50 tags. For other limits, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tag Naming and Usage Conventions}
 in the \emph{AWS General Reference.}
 \item You can only tag resources that are located in the specified Region
 for the AWS account.
 \item To add tags to a resource, you need the necessary permissions for
 the service that the resource belongs to as well as permissions for
-adding tags. For more information, see \href{http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html}{this list}.
+adding tags. For more information, see \href{https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html}{this list}.
 }
+
+Do not store personally identifiable information (PII) or other
+confidential or sensitive information in tags. We use tags to provide
+you with billing and administration services. Tags are not intended to
+be used for private or sensitive data.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resources(

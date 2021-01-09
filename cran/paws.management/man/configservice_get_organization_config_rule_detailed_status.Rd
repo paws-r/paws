@@ -25,9 +25,6 @@ the next page of results in a paginated response.}
 Returns detailed status for each member account within an organization
 for a given organization config rule.
 }
-\details{
-Only a master account can call this API.
-}
 \section{Request syntax}{
 \preformatted{svc$get_organization_config_rule_detailed_status(
   OrganizationConfigRuleName = "string",

@@ -17,7 +17,8 @@ rds_restore_db_instance_from_s3(DBName, DBInstanceIdentifier,
   SourceEngineVersion, S3BucketName, S3Prefix, S3IngestionRoleArn,
   EnablePerformanceInsights, PerformanceInsightsKMSKeyId,
   PerformanceInsightsRetentionPeriod, EnableCloudwatchLogsExports,
-  ProcessorFeatures, UseDefaultProcessorFeatures, DeletionProtection)
+  ProcessorFeatures, UseDefaultProcessorFeatures, DeletionProtection,
+  MaxAllocatedStorage)
 }
 \arguments{
 \item{DBName}{The name of the database to create when the DB instance is created.
@@ -186,17 +187,14 @@ Default: \code{io1} if the \code{Iops} parameter is specified; otherwise \code{g
 
 \item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB instance.
 
-The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are creating a DB instance with the same AWS
-account that owns the KMS encryption key used to encrypt the new DB
-instance, then you can use the KMS key alias instead of the ARN for the
-KM encryption key.
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK). To use a CMK in a
+different AWS account, specify the key ARN or alias ARN.
 
 If the \code{StorageEncrypted} parameter is enabled, and you do not specify a
 value for the \code{KmsKeyId} parameter, then Amazon RDS will use your
-default encryption key. AWS KMS creates the default encryption key for
-your AWS account. Your AWS account has a different default encryption
-key for each AWS Region.}
+default CMK. There is a default CMK for your AWS account. Your AWS
+account has a different default CMK for each AWS Region.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB instance to
 snapshots of the DB instance. By default, tags are not copied.}
@@ -223,8 +221,7 @@ supply a \code{MonitoringRoleArn} value.}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled. For information about the supported DB engines, see
-CreateDBInstance.
+mapping is disabled.
 
 For more information about IAM database authentication, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
 in the \emph{Amazon RDS User Guide.}}
@@ -254,13 +251,14 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Use
 in the \emph{Amazon Relational Database Service User Guide}.}
 
 \item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
-The KMS key ID is the Amazon Resource Name (ARN), the KMS key
-identifier, or the KMS key alias for the KMS encryption key.
+
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK).
 
 If you do not specify a value for \code{PerformanceInsightsKMSKeyId}, then
-Amazon RDS uses your default encryption key. AWS KMS creates the default
-encryption key for your AWS account. Your AWS account has a different
-default encryption key for each AWS Region.}
+Amazon RDS uses your default CMK. There is a default CMK for your AWS
+account. Your AWS account has a different default CMK for each AWS
+Region.}
 
 \item{PerformanceInsightsRetentionPeriod}{The amount of time, in days, to retain Performance Insights data. Valid
 values are 7 or 731 (2 years).}
@@ -280,6 +278,9 @@ uses its default processor features.}
 enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+
+\item{MaxAllocatedStorage}{The upper limit to which Amazon RDS can automatically scale the storage
+of the DB instance.}
 }
 \description{
 Amazon Relational Database Service (Amazon RDS) supports importing MySQL
@@ -349,7 +350,8 @@ in the \emph{Amazon RDS User Guide.}
     )
   ),
   UseDefaultProcessorFeatures = TRUE|FALSE,
-  DeletionProtection = TRUE|FALSE
+  DeletionProtection = TRUE|FALSE,
+  MaxAllocatedStorage = 123
 )
 }
 }

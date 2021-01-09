@@ -75,13 +75,13 @@ AWS Organizations
 \link[=organizations_list_policies]{list_policies} \tab Retrieves the list of all policies in an organization of a specified type\cr
 \link[=organizations_list_policies_for_target]{list_policies_for_target} \tab Lists the policies that are directly attached to the specified target root, organizational unit (OU), or account\cr
 \link[=organizations_list_roots]{list_roots} \tab Lists the roots that are defined in the current organization\cr
-\link[=organizations_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for the specified resource\cr
+\link[=organizations_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags that are attached to the specified resource\cr
 \link[=organizations_list_targets_for_policy]{list_targets_for_policy} \tab Lists all the roots, organizational units (OUs), and accounts that the specified policy is attached to\cr
 \link[=organizations_move_account]{move_account} \tab Moves an account from its current source parent root or organizational unit (OU) to the specified destination parent root or OU\cr
 \link[=organizations_register_delegated_administrator]{register_delegated_administrator} \tab Enables the specified member account to administer the Organizations features of the specified AWS service\cr
 \link[=organizations_remove_account_from_organization]{remove_account_from_organization} \tab Removes the specified account from the organization\cr
 \link[=organizations_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
-\link[=organizations_untag_resource]{untag_resource} \tab Removes a tag from the specified resource\cr
+\link[=organizations_untag_resource]{untag_resource} \tab Removes any tags with the specified keys from the specified resource\cr
 \link[=organizations_update_organizational_unit]{update_organizational_unit} \tab Renames the specified organizational unit (OU)\cr
 \link[=organizations_update_policy]{update_policy} \tab Updates an existing policy with a new name, description, or content
 }

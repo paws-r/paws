@@ -20,8 +20,8 @@ Scaling group.
 }
 \details{
 This operation detaches only Classic Load Balancers. If you have
-Application Load Balancers or Network Load Balancers, use the
-DetachLoadBalancerTargetGroups API instead.
+Application Load Balancers, Network Load Balancers, or Gateway Load
+Balancers, use the DetachLoadBalancerTargetGroups API instead.
 
 When you detach a load balancer, it enters the \code{Removing} state while
 deregistering the instances in the group. When all instances are

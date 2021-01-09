@@ -2,7 +2,7 @@
 % Please edit documentation in R/frauddetector_operations.R
 \name{frauddetector_get_detectors}
 \alias{frauddetector_get_detectors}
-\title{Gets all of detectors}
+\title{Gets all detectors or a single detector if a detectorId is specified}
 \usage{
 frauddetector_get_detectors(detectorId, nextToken, maxResults)
 }
@@ -14,12 +14,13 @@ frauddetector_get_detectors(detectorId, nextToken, maxResults)
 \item{maxResults}{The maximum number of objects to return for the request.}
 }
 \description{
-Gets all of detectors. This is a paginated API. If you provide a null
-\code{maxSizePerPage}, this actions retrieves a maximum of 10 records per
-page. If you provide a \code{maxSizePerPage}, the value must be between 5 and
-10. To get the next page results, provide the pagination token from the
-\code{GetEventTypesResponse} as part of your request. A null pagination token
-fetches the records from the beginning.
+Gets all detectors or a single detector if a \code{detectorId} is specified.
+This is a paginated API. If you provide a null \code{maxResults}, this action
+retrieves a maximum of 10 records per page. If you provide a
+\code{maxResults}, the value must be between 5 and 10. To get the next page
+results, provide the pagination token from the \code{GetDetectorsResponse} as
+part of your request. A null pagination token fetches the records from
+the beginning.
 }
 \section{Request syntax}{
 \preformatted{svc$get_detectors(

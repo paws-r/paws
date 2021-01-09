@@ -38,7 +38,7 @@ Instance with DescribeReservedInstances.
 To queue a purchase for a future date and time, specify a purchase time.
 If you do not specify a purchase time, the default is the current time.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html}{Reserved Instances}
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html}{Reserved Instances}
 and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }

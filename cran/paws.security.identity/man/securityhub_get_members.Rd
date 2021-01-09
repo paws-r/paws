@@ -15,6 +15,14 @@ the details for.}
 Returns the details for the Security Hub member accounts for the
 specified account IDs.
 }
+\details{
+A master account can be either a delegated Security Hub administrator
+account for an organization or a master account that enabled Security
+Hub manually.
+
+The results include both member accounts that are in an organization and
+accounts that were invited manually.
+}
 \section{Request syntax}{
 \preformatted{svc$get_members(
   AccountIds = list(

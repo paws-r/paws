@@ -11,7 +11,9 @@ iot_list_topic_rules(topic, maxResults, nextToken, ruleDisabled)
 
 \item{maxResults}{The maximum number of results to return.}
 
-\item{nextToken}{A token used to retrieve the next value.}
+\item{nextToken}{To retrieve the next set of results, the \code{nextToken} value from a
+previous response; otherwise \strong{null} to receive the first set of
+results.}
 
 \item{ruleDisabled}{Specifies whether the rule is disabled.}
 }

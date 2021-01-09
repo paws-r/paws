@@ -16,6 +16,12 @@ glue_get_resource_policies(NextToken, MaxResults)
 Retrieves the security configurations for the resource policies set on
 individual resources, and also the account-level policy.
 }
+\details{
+This operation also returns the Data Catalog resource policy. However,
+if you enabled metadata encryption in Data Catalog settings, and you do
+not have permission on the AWS KMS key, the operation can't return the
+Data Catalog resource policy.
+}
 \section{Request syntax}{
 \preformatted{svc$get_resource_policies(
   NextToken = "string",

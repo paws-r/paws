@@ -11,7 +11,7 @@ medialive_list_reservations(ChannelClass, Codec, MaxResults,
 \arguments{
 \item{ChannelClass}{Filter by channel class, 'STANDARD' or 'SINGLE_PIPELINE'}
 
-\item{Codec}{Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'}
+\item{Codec}{Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'}
 
 \item{MaxResults}{}
 

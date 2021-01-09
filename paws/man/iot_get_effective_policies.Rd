@@ -9,7 +9,10 @@ gateway}
 iot_get_effective_policies(principal, cognitoIdentityPoolId, thingName)
 }
 \arguments{
-\item{principal}{The principal.}
+\item{principal}{The principal. Valid principals are CertificateArn
+(arn:aws:iot:\emph{region}:\emph{accountId}:cert/\emph{certificateId}), thingGroupArn
+(arn:aws:iot:\emph{region}:\emph{accountId}:thinggroup/\emph{groupName}) and CognitoId
+(\emph{region}:\emph{id}).}
 
 \item{cognitoIdentityPoolId}{The Cognito identity pool ID.}
 

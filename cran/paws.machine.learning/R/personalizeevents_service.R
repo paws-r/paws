@@ -4,7 +4,11 @@ NULL
 
 #' Amazon Personalize Events
 #'
-#' 
+#' @description
+#' Amazon Personalize can consume real-time user event data, such as
+#' *stream* or *click* data, and use it for model training either alone or
+#' combined with historical data. For more information see
+#' recording-events.
 #'
 #' @param
 #' config
@@ -38,7 +42,9 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=personalizeevents_put_events]{put_events} \tab Records user interaction event data
+#'  \link[=personalizeevents_put_events]{put_events} \tab Records user interaction event data\cr
+#'  \link[=personalizeevents_put_items]{put_items} \tab Adds one or more items to an Items dataset\cr
+#'  \link[=personalizeevents_put_users]{put_users} \tab Adds one or more users to a Users dataset
 #' }
 #'
 #' @rdname personalizeevents

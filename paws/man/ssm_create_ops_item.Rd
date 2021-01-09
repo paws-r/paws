@@ -4,11 +4,16 @@
 \alias{ssm_create_ops_item}
 \title{Creates a new OpsItem}
 \usage{
-ssm_create_ops_item(Description, OperationalData, Notifications,
-  Priority, RelatedOpsItems, Source, Title, Tags, Category, Severity)
+ssm_create_ops_item(Description, OpsItemType, OperationalData,
+  Notifications, Priority, RelatedOpsItems, Source, Title, Tags, Category,
+  Severity, ActualStartTime, ActualEndTime, PlannedStartTime,
+  PlannedEndTime)
 }
 \arguments{
 \item{Description}{[required] Information about the OpsItem.}
+
+\item{OpsItemType}{The type of OpsItem to create. Currently, the only valid values are
+\verb{/aws/changerequest} and \verb{/aws/issue}.}
 
 \item{OperationalData}{Operational data is custom data that provides useful reference details
 about the OpsItem. For example, you can specify log files, error
@@ -65,6 +70,18 @@ To add tags to an existing OpsItem, use the AddTagsToResource action.}
 \item{Category}{Specify a category to assign to an OpsItem.}
 
 \item{Severity}{Specify a severity to assign to an OpsItem.}
+
+\item{ActualStartTime}{The time a runbook workflow started. Currently reported only for the
+OpsItem type \verb{/aws/changerequest}.}
+
+\item{ActualEndTime}{The time a runbook workflow ended. Currently reported only for the
+OpsItem type \verb{/aws/changerequest}.}
+
+\item{PlannedStartTime}{The time specified in a change request for a runbook workflow to start.
+Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
+
+\item{PlannedEndTime}{The time specified in a change request for a runbook workflow to end.
+Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 }
 \description{
 Creates a new OpsItem. You must have permission in AWS Identity and
@@ -81,6 +98,7 @@ in the \emph{AWS Systems Manager User Guide}.
 \section{Request syntax}{
 \preformatted{svc$create_ops_item(
   Description = "string",
+  OpsItemType = "string",
   OperationalData = list(
     list(
       Value = "string",
@@ -107,7 +125,19 @@ in the \emph{AWS Systems Manager User Guide}.
     )
   ),
   Category = "string",
-  Severity = "string"
+  Severity = "string",
+  ActualStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  ActualEndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  PlannedStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  PlannedEndTime = as.POSIXct(
+    "2015-01-01"
+  )
 )
 }
 }

@@ -9,7 +9,8 @@ sagemaker_create_training_job(TrainingJobName, HyperParameters,
   ResourceConfig, VpcConfig, StoppingCondition, Tags,
   EnableNetworkIsolation, EnableInterContainerTrafficEncryption,
   EnableManagedSpotTraining, CheckpointConfig, DebugHookConfig,
-  DebugRuleConfigurations, TensorBoardOutputConfig, ExperimentConfig)
+  DebugRuleConfigurations, TensorBoardOutputConfig, ExperimentConfig,
+  ProfilerConfig, ProfilerRuleConfigurations)
 }
 \arguments{
 \item{TrainingJobName}{[required] The name of the training job. The name must be unique within an AWS
@@ -29,7 +30,7 @@ specified by the \verb{Length Constraint}.}
 algorithm and algorithm-specific metadata, including the input mode. For
 more information about algorithms provided by Amazon SageMaker, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
-For information about providing your own algorithms, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html}{Using Your Own Algorithms with Amazon SageMaker}.}
+For information about providing your own algorithms, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html}{Using Your Own Algorithms with Amazon SageMaker}.}
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
 assume to perform tasks on your behalf.
@@ -87,8 +88,9 @@ signal, which delays job termination for 120 seconds. Algorithms can use
 this 120-second window to save the model artifacts, so the results of
 training are not lost.}
 
-\item{Tags}{An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
-in the \emph{AWS Billing and Cost Management User Guide}.}
+\item{Tags}{An array of key-value pairs. You can use tags to categorize your AWS
+resources in different ways, for example, by purpose, owner, or
+environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 
 \item{EnableNetworkIsolation}{Isolates the training container. No inbound or outbound network calls
 can be made, except for calls between peers within a training cluster
@@ -121,11 +123,17 @@ checkpoint data.}
 
 \item{DebugHookConfig}{}
 
-\item{DebugRuleConfigurations}{Configuration information for debugging rules.}
+\item{DebugRuleConfigurations}{Configuration information for Debugger rules for debugging output
+tensors.}
 
 \item{TensorBoardOutputConfig}{}
 
 \item{ExperimentConfig}{}
+
+\item{ProfilerConfig}{}
+
+\item{ProfilerRuleConfigurations}{Configuration information for Debugger rules for profiling system and
+framework metrics.}
 }
 \description{
 Starts a model training job. After training completes, Amazon SageMaker
@@ -137,7 +145,7 @@ If you choose to host your model using Amazon SageMaker hosting
 services, you can use the resulting model artifacts as part of the
 model. You can also use the artifacts in a machine learning service
 other than Amazon SageMaker, provided that you know how to use them for
-inferences.
+inference.
 
 In the request body, you provide the following:
 \itemize{
@@ -158,7 +166,7 @@ training, you specify more than one instance.
 \item \code{EnableManagedSpotTraining} - Optimize the cost of training machine
 learning models by up to 80\% by using Amazon EC2 Spot instances. For
 more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html}{Managed Spot Training}.
-\item \code{RoleARN} - The Amazon Resource Number (ARN) that Amazon SageMaker
+\item \code{RoleArn} - The Amazon Resource Number (ARN) that Amazon SageMaker
 assumes to perform tasks on your behalf during model training. You
 must grant this role the necessary permissions so that Amazon
 SageMaker can successfully complete model training.
@@ -168,7 +176,7 @@ SageMaker can successfully complete model training.
 for a managed spot training job to complete.
 }
 
-For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html}{How It Works}.
+For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{How It Works}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_training_job(
@@ -222,7 +230,7 @@ For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.c
     S3OutputPath = "string"
   ),
   ResourceConfig = list(
-    InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
+    InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
     InstanceCount = 123,
     VolumeSizeInGB = 123,
     VolumeKmsKeyId = "string"
@@ -288,6 +296,26 @@ For more information about Amazon SageMaker, see \href{https://docs.aws.amazon.c
     ExperimentName = "string",
     TrialName = "string",
     TrialComponentDisplayName = "string"
+  ),
+  ProfilerConfig = list(
+    S3OutputPath = "string",
+    ProfilingIntervalInMilliseconds = 123,
+    ProfilingParameters = list(
+      "string"
+    )
+  ),
+  ProfilerRuleConfigurations = list(
+    list(
+      RuleConfigurationName = "string",
+      LocalPath = "string",
+      S3OutputPath = "string",
+      RuleEvaluatorImage = "string",
+      InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+      VolumeSizeInGB = 123,
+      RuleParameters = list(
+        "string"
+      )
+    )
   )
 )
 }

@@ -16,11 +16,11 @@ iotanalytics_list_dataset_contents(datasetName, nextToken, maxResults,
 
 \item{scheduledOnOrAfter}{A filter to limit results to those data set contents whose creation is
 scheduled on or after the given time. See the field \code{triggers.schedule}
-in the CreateDataset request. (timestamp)}
+in the \code{CreateDataset} request. (timestamp)}
 
 \item{scheduledBefore}{A filter to limit results to those data set contents whose creation is
 scheduled before the given time. See the field \code{triggers.schedule} in
-the CreateDataset request. (timestamp)}
+the \code{CreateDataset} request. (timestamp)}
 }
 \description{
 Lists information about data set contents that have been created.

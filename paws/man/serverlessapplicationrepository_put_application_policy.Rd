@@ -14,7 +14,7 @@ serverlessapplicationrepository_put_application_policy(ApplicationId,
 }
 \description{
 Sets the permission policy for an application. For the list of actions
-supported for this operation, see \href{https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions}{Application Permissions}
+supported for this operation, see \href{https://docs.aws.amazon.com/serverlessrepo/latest/devguide/security_iam_resource-based-policy-examples.html}{Application Permissions}
 .
 }
 \section{Request syntax}{

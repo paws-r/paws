@@ -40,7 +40,7 @@ from the same user to that server. The validity of the cookie is based
 on the cookie expiration time, which is specified in the policy
 configuration.
 
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration}{Duration-Based Session Stickiness}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration}{Duration-Based Session Stickiness}
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{

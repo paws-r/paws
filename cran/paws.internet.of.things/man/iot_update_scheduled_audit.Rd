@@ -9,19 +9,20 @@ iot_update_scheduled_audit(frequency, dayOfMonth, dayOfWeek,
   targetCheckNames, scheduledAuditName)
 }
 \arguments{
-\item{frequency}{How often the scheduled audit takes place. Can be one of "DAILY",
-"WEEKLY", "BIWEEKLY", or "MONTHLY". The start time of each audit is
-determined by the system.}
+\item{frequency}{How often the scheduled audit takes place, either \code{DAILY}, \code{WEEKLY},
+\code{BIWEEKLY}, or \code{MONTHLY}. The start time of each audit is determined by
+the system.}
 
-\item{dayOfMonth}{The day of the month on which the scheduled audit takes place. Can be
-"1" through "31" or "LAST". This field is required if the "frequency"
-parameter is set to "MONTHLY". If days 29-31 are specified, and the
+\item{dayOfMonth}{The day of the month on which the scheduled audit takes place. This can
+be \code{1} through \code{31} or \code{LAST}. This field is required if the \code{frequency}
+parameter is set to \code{MONTHLY}. If days 29-31 are specified, and the
 month does not have that many days, the audit takes place on the "LAST"
 day of the month.}
 
-\item{dayOfWeek}{The day of the week on which the scheduled audit takes place. Can be one
-of "SUN", "MON", "TUE", "WED", "THU", "FRI", or "SAT". This field is
-required if the "frequency" parameter is set to "WEEKLY" or "BIWEEKLY".}
+\item{dayOfWeek}{The day of the week on which the scheduled audit takes place. This can
+be one of \code{SUN}, \code{MON}, \code{TUE}, \code{WED}, \code{THU}, \code{FRI}, or \code{SAT}. This field
+is required if the "frequency" parameter is set to \code{WEEKLY} or
+\code{BIWEEKLY}.}
 
 \item{targetCheckNames}{Which checks are performed during the scheduled audit. Checks must be
 enabled for your account. (Use \code{DescribeAccountAuditConfiguration} to

@@ -2,17 +2,17 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_get_app_replication_configuration}
 \alias{sms_get_app_replication_configuration}
-\title{Retrieves an application replication configuration associatd with an
-application}
+\title{Retrieves the application replication configuration associated with the
+specified application}
 \usage{
 sms_get_app_replication_configuration(appId)
 }
 \arguments{
-\item{appId}{ID of the application associated with the replication configuration.}
+\item{appId}{The ID of the application.}
 }
 \description{
-Retrieves an application replication configuration associatd with an
-application.
+Retrieves the application replication configuration associated with the
+specified application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_app_replication_configuration(

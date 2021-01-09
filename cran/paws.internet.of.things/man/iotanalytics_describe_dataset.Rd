@@ -2,7 +2,7 @@
 % Please edit documentation in R/iotanalytics_operations.R
 \name{iotanalytics_describe_dataset}
 \alias{iotanalytics_describe_dataset}
-\title{Retrieves information about a data set}
+\title{Retrieves information about a dataset}
 \usage{
 iotanalytics_describe_dataset(datasetName)
 }
@@ -10,7 +10,7 @@ iotanalytics_describe_dataset(datasetName)
 \item{datasetName}{[required] The name of the data set whose information is retrieved.}
 }
 \description{
-Retrieves information about a data set.
+Retrieves information about a dataset.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_dataset(

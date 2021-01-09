@@ -4,10 +4,14 @@
 \alias{s3_delete_bucket_replication}
 \title{Deletes the replication configuration from the bucket}
 \usage{
-s3_delete_bucket_replication(Bucket)
+s3_delete_bucket_replication(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Deletes the replication configuration from the bucket.
@@ -27,13 +31,14 @@ For information about replication configuration, see Replication in the
 
 The following operations are related to \code{DeleteBucketReplication}:
 \itemize{
-\item PutBucketReplication
-\item GetBucketReplication
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketReplication.html}{PutBucketReplication}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketReplication.html}{GetBucketReplication}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_replication(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

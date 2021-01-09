@@ -28,7 +28,7 @@ Amazon SQS retains a message. Valid values: An integer representing
 seconds, from 60 (1 minute) to 1,209,600 (14 days). Default: 345,600
 (4 days).
 \item \code{Policy} – The queue's policy. A valid AWS policy. For more
-information about policy structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html}{Overview of AWS IAM Policies}
+information about policy structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html}{Overview of AWS IAM Policies}
 in the \emph{Amazon IAM User Guide}.
 \item \code{ReceiveMessageWaitTimeSeconds} – The length of time, in seconds,
 for which a \verb{<a>ReceiveMessage</a>} action waits for a message to
@@ -83,9 +83,10 @@ The following attribute applies only to \href{https://docs.aws.amazon.com/AWSSim
 \itemize{
 \item \code{ContentBasedDeduplication} – Enables content-based deduplication.
 For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing}{Exactly-Once Processing}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+in the \emph{Amazon Simple Queue Service Developer Guide}. Note the
+following:
 \itemize{
-\item Every message must have a unique \code{MessageDeduplicationId},
+\item Every message must have a unique \code{MessageDeduplicationId}.
 \itemize{
 \item You may provide a \code{MessageDeduplicationId} explicitly.
 \item If you aren't able to provide a \code{MessageDeduplicationId} and
@@ -109,7 +110,49 @@ the same as the one generated for the first
 \code{MessageDeduplicationId}, the two messages are treated as
 duplicates and only one copy of the message is delivered.
 }
-}}
+}
+
+\strong{Preview: High throughput for FIFO queues}
+
+\strong{High throughput for Amazon SQS FIFO queues is in preview release and
+is subject to change.} This feature provides a high number of
+transactions per second (TPS) for messages in FIFO queues. For
+information on throughput quotas, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html}{Quotas related to messages}
+in the \emph{Amazon Simple Queue Service Developer Guide}.
+
+This preview includes two new attributes:
+\itemize{
+\item \code{DeduplicationScope} – Specifies whether message deduplication
+occurs at the message group or queue level. Valid values are
+\code{messageGroup} and \code{queue}.
+\item \code{FifoThroughputLimit} – Specifies whether the FIFO queue throughput
+quota applies to the entire queue or per message group. Valid values
+are \code{perQueue} and \code{perMessageGroupId}. The \code{perMessageGroupId}
+value is allowed only when the value for \code{DeduplicationScope} is
+\code{messageGroup}.
+}
+
+To enable high throughput for FIFO queues, do the following:
+\itemize{
+\item Set \code{DeduplicationScope} to \code{messageGroup}.
+\item Set \code{FifoThroughputLimit} to \code{perMessageGroupId}.
+}
+
+If you set these attributes to anything other than the values shown for
+enabling high throughput, standard throughput is in effect and
+deduplication occurs as specified.
+
+This preview is available in the following AWS Regions:
+\itemize{
+\item US East (Ohio); us-east-2
+\item US East (N. Virginia); us-east-1
+\item US West (Oregon); us-west-2
+\item Europe (Ireland); eu-west-1
+}
+
+For more information about high throughput for FIFO queues, see
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html}{Preview: High throughput for FIFO queues}
+in the \emph{Amazon Simple Queue Service Developer Guide}.}
 }
 \description{
 Sets the value of one or more queue attributes. When you change a
@@ -123,7 +166,7 @@ to the \code{MessageRetentionPeriod} attribute can take up to 15 minutes.
 calls this action, we recommend that you structure your code so that
 it can handle new attributes gracefully.
 \item Cross-account permissions don't apply to this action. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
+information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html}{Grant cross-account permissions to a role and a user name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \item To remove the ability to change queue permissions, you must deny
 permission to the \code{AddPermission}, \code{RemovePermission}, and

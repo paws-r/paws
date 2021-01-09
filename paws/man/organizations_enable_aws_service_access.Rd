@@ -15,7 +15,7 @@ of a URL, such as \verb{ <i>service-abbreviation</i>.amazonaws.com}.}
 \description{
 Enables the integration of an AWS service (the service that is specified
 by \code{ServicePrincipal}) with AWS Organizations. When you enable
-integration, you allow the specified service to create a \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{service-linked role}
+integration, you allow the specified service to create a \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{service-linked role}
 in all the accounts in your organization. This allows the service to
 perform operations on your behalf in your organization and its accounts.
 }
@@ -29,11 +29,11 @@ organization's accounts depends on that service. For more information,
 see the documentation for the other AWS service.
 
 For more information about enabling services to integrate with AWS
-Organizations, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
+Organizations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
 in the \emph{AWS Organizations User Guide.}
 
-This operation can be called only from the organization's master account
-and only if the organization has \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{enabled all features}.
+This operation can be called only from the organization's management
+account and only if the organization has \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{enabled all features}.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_aws_service_access(

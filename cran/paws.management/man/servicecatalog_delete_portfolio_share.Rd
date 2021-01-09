@@ -25,7 +25,8 @@ servicecatalog_delete_portfolio_share(AcceptLanguage, PortfolioId,
 \description{
 Stops sharing the specified portfolio with the specified account or
 organization node. Shares to an organization node can only be deleted by
-the master account of an organization or by a delegated administrator.
+the management account of an organization or by a delegated
+administrator.
 }
 \details{
 Note that if a delegated admin is de-registered, portfolio shares

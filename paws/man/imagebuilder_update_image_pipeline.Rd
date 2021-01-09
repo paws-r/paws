@@ -5,7 +5,7 @@
 \title{Updates a new image pipeline}
 \usage{
 imagebuilder_update_image_pipeline(imagePipelineArn, description,
-  imageRecipeArn, infrastructureConfigurationArn,
+  imageRecipeArn, containerRecipeArn, infrastructureConfigurationArn,
   distributionConfigurationArn, imageTestsConfiguration,
   enhancedImageMetadataEnabled, schedule, status, clientToken)
 }
@@ -15,8 +15,10 @@ update.}
 
 \item{description}{The description of the image pipeline.}
 
-\item{imageRecipeArn}{[required] The Amazon Resource Name (ARN) of the image recipe that will be used to
+\item{imageRecipeArn}{The Amazon Resource Name (ARN) of the image recipe that will be used to
 configure images updated by this image pipeline.}
+
+\item{containerRecipeArn}{The Amazon Resource Name (ARN) of the container pipeline to update.}
 
 \item{infrastructureConfigurationArn}{[required] The Amazon Resource Name (ARN) of the infrastructure configuration that
 will be used to build images updated by this image pipeline.}
@@ -47,6 +49,7 @@ creation and distribution of images.
   imagePipelineArn = "string",
   description = "string",
   imageRecipeArn = "string",
+  containerRecipeArn = "string",
   infrastructureConfigurationArn = "string",
   distributionConfigurationArn = "string",
   imageTestsConfiguration = list(

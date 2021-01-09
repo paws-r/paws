@@ -16,7 +16,7 @@ of resources.}
 plan.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and allows failed requests
-to be retried without the risk of executing the operation twice.}
+to be retried without the risk of running the operation twice.}
 }
 \description{
 Creates a JSON document that specifies a set of resources to assign to a
@@ -31,24 +31,24 @@ For example, consider the following patterns:
 
 \code{ConditionValue:"finance"}
 
-\code{ConditionType:"STRINGEQUALS"}
+\code{ConditionType:"StringEquals"}
 \item \code{ConditionKey:"importance"}
 
 \code{ConditionValue:"critical"}
 
-\code{ConditionType:"STRINGEQUALS"}
+\code{ConditionType:"StringEquals"}
 }
 
 Using these patterns would back up all Amazon Elastic Block Store
 (Amazon EBS) volumes that are tagged as \code{"department=finance"},
 \code{"importance=critical"}, in addition to an EBS volume with the specified
-volume Id.
+volume ID.
 
 Resources and conditions are additive in that all resources that match
 the pattern are selected. This shouldn't be confused with a logical AND,
-where all conditions must match. The matching patterns are logically
-'put together using the OR operator. In other words, all patterns that
-match are selected for backup.
+where all conditions must match. The matching patterns are logically put
+together using the OR operator. In other words, all patterns that match
+are selected for backup.
 }
 \section{Request syntax}{
 \preformatted{svc$create_backup_selection(

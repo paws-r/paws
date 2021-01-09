@@ -2,8 +2,8 @@
 % Please edit documentation in R/ivs_operations.R
 \name{ivs_delete_stream_key}
 \alias{ivs_delete_stream_key}
-\title{Deletes the stream key for a specified ARN, so it can no longer be used
-to stream}
+\title{Deletes the stream key for the specified ARN, so it can no longer be
+used to stream}
 \usage{
 ivs_delete_stream_key(arn)
 }
@@ -11,8 +11,8 @@ ivs_delete_stream_key(arn)
 \item{arn}{[required] ARN of the stream key to be deleted.}
 }
 \description{
-Deletes the stream key for a specified ARN, so it can no longer be used
-to stream.
+Deletes the stream key for the specified ARN, so it can no longer be
+used to stream.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_stream_key(

@@ -2,8 +2,8 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_describe_certificate}
 \alias{directoryservice_describe_certificate}
-\title{Displays information about the certificate registered for a secured LDAP
-connection}
+\title{Displays information about the certificate registered for secure LDAP or
+client certificate authentication}
 \usage{
 directoryservice_describe_certificate(DirectoryId, CertificateId)
 }
@@ -13,8 +13,8 @@ directoryservice_describe_certificate(DirectoryId, CertificateId)
 \item{CertificateId}{[required] The identifier of the certificate.}
 }
 \description{
-Displays information about the certificate registered for a secured LDAP
-connection.
+Displays information about the certificate registered for secure LDAP or
+client certificate authentication.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_certificate(

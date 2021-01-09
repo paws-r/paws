@@ -18,7 +18,7 @@ Lightsail load balancer can have up to 2 certificates associated with it
 at one time. There is also an overall limit to the number of
 certificates that can be issue in a 365-day period. For more
 information, see
-\href{http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html}{Limits}.}
+\href{https://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html}{Limits}.}
 
 \item{certificateDomainName}{[required] The domain name (e.g., \code{example.com}) for your SSL/TLS certificate.}
 
@@ -29,8 +29,7 @@ domain). We do not support wildcards (e.g., \verb{*.example.com}).}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \verb{tag resource}
-operation.}
+Use the \code{TagResource} action to tag a resource after it's created.}
 }
 \description{
 Creates a Lightsail load balancer TLS certificate.
@@ -41,7 +40,7 @@ TLS is just an updated, more secure version of Secure Socket Layer
 
 The \code{CreateLoadBalancerTlsCertificate} operation supports tag-based
 access control via resource tags applied to the resource identified by
-\verb{load balancer name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{load balancer name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_load_balancer_tls_certificate(

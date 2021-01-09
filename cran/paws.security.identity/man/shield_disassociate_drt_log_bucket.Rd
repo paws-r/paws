@@ -16,11 +16,11 @@ bucket containing your AWS WAF logs.
 }
 \details{
 To make a \code{DisassociateDRTLogBucket} request, you must be subscribed to
-the \href{https://aws.amazon.com/premiumsupport/business-support/}{Business Support plan} or the
-\href{https://aws.amazon.com/premiumsupport/enterprise-support/}{Enterprise Support plan}.
-However, if you are not subscribed to one of these support plans, but
-had been previously and had granted the DRT access to your account, you
-can submit a \code{DisassociateDRTLogBucket} request to remove this access.
+the \href{https://aws.amazon.com/premiumsupport/plans/business/}{Business Support plan} or the
+\href{https://aws.amazon.com/premiumsupport/plans/enterprise/}{Enterprise Support plan}. However,
+if you are not subscribed to one of these support plans, but had been
+previously and had granted the DRT access to your account, you can
+submit a \code{DisassociateDRTLogBucket} request to remove this access.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_drt_log_bucket(

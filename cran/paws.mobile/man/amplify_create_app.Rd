@@ -7,12 +7,12 @@
 amplify_create_app(name, description, repository, platform,
   iamServiceRoleArn, oauthToken, accessToken, environmentVariables,
   enableBranchAutoBuild, enableBranchAutoDeletion, enableBasicAuth,
-  basicAuthCredentials, customRules, tags, buildSpec,
+  basicAuthCredentials, customRules, tags, buildSpec, customHeaders,
   enableAutoBranchCreation, autoBranchCreationPatterns,
   autoBranchCreationConfig)
 }
 \arguments{
-\item{name}{[required] The name for the Amplify app.}
+\item{name}{[required] The name for an Amplify app.}
 
 \item{description}{The description for an Amplify app.}
 
@@ -49,11 +49,13 @@ branches that are part of this app.}
 
 \item{buildSpec}{The build specification (build spec) for an Amplify app.}
 
-\item{enableAutoBranchCreation}{Enables automated branch creation for the Amplify app.}
+\item{customHeaders}{The custom HTTP headers for an Amplify app.}
 
-\item{autoBranchCreationPatterns}{The automated branch creation glob patterns for the Amplify app.}
+\item{enableAutoBranchCreation}{Enables automated branch creation for an Amplify app.}
 
-\item{autoBranchCreationConfig}{The automated branch creation configuration for the Amplify app.}
+\item{autoBranchCreationPatterns}{The automated branch creation glob patterns for an Amplify app.}
+
+\item{autoBranchCreationConfig}{The automated branch creation configuration for an Amplify app.}
 }
 \description{
 Creates a new Amplify app.
@@ -86,6 +88,7 @@ Creates a new Amplify app.
     "string"
   ),
   buildSpec = "string",
+  customHeaders = "string",
   enableAutoBranchCreation = TRUE|FALSE,
   autoBranchCreationPatterns = list(
     "string"
@@ -99,6 +102,7 @@ Creates a new Amplify app.
     ),
     basicAuthCredentials = "string",
     enableBasicAuth = TRUE|FALSE,
+    enablePerformanceMode = TRUE|FALSE,
     buildSpec = "string",
     enablePullRequestPreview = TRUE|FALSE,
     pullRequestEnvironmentName = "string"

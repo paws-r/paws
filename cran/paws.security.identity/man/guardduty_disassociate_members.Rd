@@ -2,21 +2,21 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_disassociate_members}
 \alias{guardduty_disassociate_members}
-\title{Disassociates GuardDuty member accounts (to the current GuardDuty master
-account) specified by the account IDs}
+\title{Disassociates GuardDuty member accounts (to the current GuardDuty
+administrator account) specified by the account IDs}
 \usage{
 guardduty_disassociate_members(DetectorId, AccountIds)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account whose members you
-want to disassociate from the master account.}
+want to disassociate from the administrator account.}
 
 \item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to
-disassociate from the master account.}
+disassociate from the administrator account.}
 }
 \description{
-Disassociates GuardDuty member accounts (to the current GuardDuty master
-account) specified by the account IDs.
+Disassociates GuardDuty member accounts (to the current GuardDuty
+administrator account) specified by the account IDs.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_members(

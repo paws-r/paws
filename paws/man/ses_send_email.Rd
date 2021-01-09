@@ -115,7 +115,7 @@ For every message that you send, the total number of recipients
 (including each recipient in the To:, CC: and BCC: fields) is counted
 against the maximum number of emails you can send in a 24-hour period
 (your \emph{sending quota}). For more information about sending quotas in
-Amazon SES, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html}{Managing Your Amazon SES Sending Limits}
+Amazon SES, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-quotas.html}{Managing Your Amazon SES Sending Limits}
 in the \emph{Amazon SES Developer Guide.}
 }
 \section{Request syntax}{

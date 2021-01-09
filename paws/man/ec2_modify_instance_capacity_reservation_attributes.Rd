@@ -29,7 +29,8 @@ attributes, or run On-Demand Instance capacity.
   CapacityReservationSpecification = list(
     CapacityReservationPreference = "open"|"none",
     CapacityReservationTarget = list(
-      CapacityReservationId = "string"
+      CapacityReservationId = "string",
+      CapacityReservationResourceGroupArn = "string"
     )
   ),
   DryRun = TRUE|FALSE

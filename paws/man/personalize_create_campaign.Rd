@@ -4,7 +4,8 @@
 \alias{personalize_create_campaign}
 \title{Creates a campaign by deploying a solution version}
 \usage{
-personalize_create_campaign(name, solutionVersionArn, minProvisionedTPS)
+personalize_create_campaign(name, solutionVersionArn, minProvisionedTPS,
+  campaignConfig)
 }
 \arguments{
 \item{name}{[required] A name for the new campaign. The campaign name must be unique within
@@ -14,6 +15,8 @@ your account.}
 
 \item{minProvisionedTPS}{[required] Specifies the requested minimum provisioned transactions
 (recommendations) per second that Amazon Personalize will support.}
+
+\item{campaignConfig}{The configuration details of a campaign.}
 }
 \description{
 Creates a campaign by deploying a solution version. When a client calls
@@ -65,7 +68,12 @@ campaign for recommendations.
 \preformatted{svc$create_campaign(
   name = "string",
   solutionVersionArn = "string",
-  minProvisionedTPS = 123
+  minProvisionedTPS = 123,
+  campaignConfig = list(
+    itemExplorationConfig = list(
+      "string"
+    )
+  )
 )
 }
 }

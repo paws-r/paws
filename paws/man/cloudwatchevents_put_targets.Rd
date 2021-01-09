@@ -10,8 +10,8 @@ cloudwatchevents_put_targets(Rule, EventBusName, Targets)
 \arguments{
 \item{Rule}{[required] The name of the rule.}
 
-\item{EventBusName}{The name of the event bus associated with the rule. If you omit this,
-the default event bus is used.}
+\item{EventBusName}{The name or ARN of the event bus associated with the rule. If you omit
+this, the default event bus is used.}
 
 \item{Targets}{[required] The targets to update or add to the rule.}
 }
@@ -40,6 +40,7 @@ You can configure the following as targets for Events:
 \item Amazon SQS queues, including FIFO queues
 \item The default event bus of another AWS account
 \item Amazon API Gateway REST APIs
+\item Redshift Clusters to invoke Data API ExecuteStatement on
 }
 
 Creating rules with built-in targets is supported only in the AWS
@@ -187,6 +188,21 @@ and the error code.
         QueryStringParameters = list(
           "string"
         )
+      ),
+      RedshiftDataParameters = list(
+        SecretManagerArn = "string",
+        Database = "string",
+        DbUser = "string",
+        Sql = "string",
+        StatementName = "string",
+        WithEvent = TRUE|FALSE
+      ),
+      DeadLetterConfig = list(
+        Arn = "string"
+      ),
+      RetryPolicy = list(
+        MaximumRetryAttempts = 123,
+        MaximumEventAgeInSeconds = 123
       )
     )
   )

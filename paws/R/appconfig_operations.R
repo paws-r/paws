@@ -68,7 +68,7 @@ appconfig_create_application <- function(Name, Description = NULL, Tags = NULL) 
 #'     either a JSON Schema or an AWS Lambda function.
 #' 
 #' For more information, see [Create a Configuration and a Configuration
-#' Profile](http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-creating-configuration-and-profile.html)
+#' Profile](https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-configuration-and-profile.html)
 #' in the *AWS AppConfig User Guide*.
 #'
 #' @usage
@@ -617,7 +617,7 @@ appconfig_get_application <- function(ApplicationId) {
 #' 
 #' For more information about working with configurations, see [Retrieving
 #' the
-#' Configuration](https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-retrieving-the-configuration.html)
+#' Configuration](https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-retrieving-the-configuration.html)
 #' in the *AWS AppConfig User Guide*.
 #'
 #' @section Request syntax:

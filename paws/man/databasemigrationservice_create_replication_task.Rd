@@ -8,7 +8,7 @@ databasemigrationservice_create_replication_task(
   ReplicationTaskIdentifier, SourceEndpointArn, TargetEndpointArn,
   ReplicationInstanceArn, MigrationType, TableMappings,
   ReplicationTaskSettings, CdcStartTime, CdcStartPosition,
-  CdcStopPosition, Tags, TaskData)
+  CdcStopPosition, Tags, TaskData, ResourceIdentifier)
 }
 \arguments{
 \item{ReplicationTaskIdentifier}{[required] An identifier for the replication task.
@@ -68,10 +68,10 @@ more information, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHA
 The value can be either server time or commit time.
 
 Server time example: --cdc-stop-position
-“server\\_time:3018-02-09T12:12:12”
+“server\\_time:2018-02-09T12:12:12”
 
 Commit time example: --cdc-stop-position “commit\\_time:
-3018-02-09T12:12:12 “}
+2018-02-09T12:12:12 “}
 
 \item{Tags}{One or more tags to be assigned to the replication task.}
 
@@ -79,6 +79,17 @@ Commit time example: --cdc-stop-position “commit\\_time:
 certain source and target endpoints. For more information, see
 \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.TaskData.html}{Specifying Supplemental Data for Task Settings}
 in the \emph{AWS Database Migration Service User Guide.}}
+
+\item{ResourceIdentifier}{A friendly name for the resource identifier at the end of the
+\code{EndpointArn} response parameter that is returned in the created
+\code{Endpoint} object. The value for this parameter can have up to 31
+characters. It can contain only ASCII letters, digits, and hyphen ('-').
+Also, it can't end with a hyphen or contain two consecutive hyphens, and
+can only begin with a letter, such as \code{Example-App-ARN1}. For example,
+this value might result in the \code{EndpointArn} value
+\code{arn:aws:dms:eu-west-1:012345678901:rep:Example-App-ARN1}. If you don't
+specify a \code{ResourceIdentifier} value, AWS DMS generates a default
+identifier value for the end of \code{EndpointArn}.}
 }
 \description{
 Creates a replication task using the specified parameters.
@@ -103,7 +114,8 @@ Creates a replication task using the specified parameters.
       Value = "string"
     )
   ),
-  TaskData = "string"
+  TaskData = "string",
+  ResourceIdentifier = "string"
 )
 }
 }

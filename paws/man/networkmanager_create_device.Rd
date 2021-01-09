@@ -4,11 +4,13 @@
 \alias{networkmanager_create_device}
 \title{Creates a new device in a global network}
 \usage{
-networkmanager_create_device(GlobalNetworkId, Description, Type, Vendor,
-  Model, SerialNumber, Location, SiteId, Tags)
+networkmanager_create_device(GlobalNetworkId, AWSLocation, Description,
+  Type, Vendor, Model, SerialNumber, Location, SiteId, Tags)
 }
 \arguments{
 \item{GlobalNetworkId}{[required] The ID of the global network.}
+
+\item{AWSLocation}{The AWS location of the device.}
 
 \item{Description}{A description of the device.
 
@@ -42,6 +44,10 @@ the Network Manager console.
 \section{Request syntax}{
 \preformatted{svc$create_device(
   GlobalNetworkId = "string",
+  AWSLocation = list(
+    Zone = "string",
+    SubnetArn = "string"
+  ),
   Description = "string",
   Type = "string",
   Vendor = "string",

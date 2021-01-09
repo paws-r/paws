@@ -43,6 +43,9 @@ group. This operation is performed with no cluster down time.
       NewReplicaCount = 123,
       PreferredAvailabilityZones = list(
         "string"
+      ),
+      PreferredOutpostArns = list(
+        "string"
       )
     )
   ),

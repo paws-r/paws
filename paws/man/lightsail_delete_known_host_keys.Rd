@@ -20,7 +20,9 @@ connect to the instance after a host key mismatch.
 \details{
 Perform this operation only if you were expecting the host key or
 certificate mismatch or if you are familiar with the new host key or
-certificate on the instance. For more information, see \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-troubleshooting-browser-based-ssh-rdp-client-connection}{Troubleshooting connection issues when using the Amazon Lightsail browser-based SSH or RDP client}.
+certificate on the instance. For more information, see Troubleshooting
+connection issues when using the Amazon Lightsail browser-based SSH or
+RDP client.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_known_host_keys(

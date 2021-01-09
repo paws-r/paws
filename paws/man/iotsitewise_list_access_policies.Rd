@@ -2,19 +2,19 @@
 % Please edit documentation in R/iotsitewise_operations.R
 \name{iotsitewise_list_access_policies}
 \alias{iotsitewise_list_access_policies}
-\title{Retrieves a paginated list of access policies for an AWS SSO identity (a
-user or group) or an AWS IoT SiteWise Monitor resource (a portal or
-project)}
+\title{Retrieves a paginated list of access policies for an identity (an AWS
+SSO user, an AWS SSO group, or an IAM user) or an AWS IoT SiteWise
+Monitor resource (a portal or project)}
 \usage{
 iotsitewise_list_access_policies(identityType, identityId, resourceType,
-  resourceId, nextToken, maxResults)
+  resourceId, iamArn, nextToken, maxResults)
 }
 \arguments{
-\item{identityType}{The type of identity (user or group). This parameter is required if you
-specify \code{identityId}.}
+\item{identityType}{The type of identity (AWS SSO user, AWS SSO group, or IAM user). This
+parameter is required if you specify \code{identityId}.}
 
-\item{identityId}{The ID of the identity. This parameter is required if you specify
-\code{identityType}.}
+\item{identityId}{The ID of the identity. This parameter is required if you specify \code{USER}
+or \code{GROUP} for \code{identityType}.}
 
 \item{resourceType}{The type of resource (portal or project). This parameter is required if
 you specify \code{resourceId}.}
@@ -22,21 +22,28 @@ you specify \code{resourceId}.}
 \item{resourceId}{The ID of the resource. This parameter is required if you specify
 \code{resourceType}.}
 
+\item{iamArn}{The ARN of the IAM user. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM ARNs}
+in the \emph{IAM User Guide}. This parameter is required if you specify \code{IAM}
+for \code{identityType}.}
+
 \item{nextToken}{The token to be used for the next set of paginated results.}
 
-\item{maxResults}{The maximum number of results to be returned per paginated request.}
+\item{maxResults}{The maximum number of results to be returned per paginated request.
+
+Default: 50}
 }
 \description{
-Retrieves a paginated list of access policies for an AWS SSO identity (a
-user or group) or an AWS IoT SiteWise Monitor resource (a portal or
-project).
+Retrieves a paginated list of access policies for an identity (an AWS
+SSO user, an AWS SSO group, or an IAM user) or an AWS IoT SiteWise
+Monitor resource (a portal or project).
 }
 \section{Request syntax}{
 \preformatted{svc$list_access_policies(
-  identityType = "USER"|"GROUP",
+  identityType = "USER"|"GROUP"|"IAM",
   identityId = "string",
   resourceType = "PORTAL"|"PROJECT",
   resourceId = "string",
+  iamArn = "string",
   nextToken = "string",
   maxResults = 123
 )

@@ -5,9 +5,9 @@
 \title{Instantiates an autoscaling virtual server based on the selected file
 transfer protocol in AWS}
 \usage{
-transfer_create_server(Certificate, EndpointDetails, EndpointType,
-  HostKey, IdentityProviderDetails, IdentityProviderType, LoggingRole,
-  Protocols, Tags)
+transfer_create_server(Certificate, Domain, EndpointDetails,
+  EndpointType, HostKey, IdentityProviderDetails, IdentityProviderType,
+  LoggingRole, Protocols, SecurityPolicyName, Tags)
 }
 \arguments{
 \item{Certificate}{The Amazon Resource Name (ARN) of the AWS Certificate Manager (ACM)
@@ -36,17 +36,19 @@ are supported:
 The certificate must be a valid SSL/TLS X.509 version 3 certificate with
 FQDN or IP address specified and information about the issuer.}
 
-\item{EndpointDetails}{The virtual private cloud (VPC) endpoint settings that are configured
-for your file transfer protocol-enabled server. When you host your
-endpoint within your VPC, you can make it accessible only to resources
-within your VPC, or you can attach Elastic IPs and make it accessible to
-clients over the internet. Your VPC's default security groups are
-automatically assigned to your endpoint.}
+\item{Domain}{}
 
-\item{EndpointType}{The type of VPC endpoint that you want your file transfer
-protocol-enabled server to connect to. You can choose to connect to the
-public internet or a VPC endpoint. With a VPC endpoint, you can restrict
-access to your server and resources only within your VPC.
+\item{EndpointDetails}{The virtual private cloud (VPC) endpoint settings that are configured
+for your server. When you host your endpoint within your VPC, you can
+make it accessible only to resources within your VPC, or you can attach
+Elastic IPs and make it accessible to clients over the internet. Your
+VPC's default security groups are automatically assigned to your
+endpoint.}
+
+\item{EndpointType}{The type of VPC endpoint that you want your server to connect to. You
+can choose to connect to the public internet or a VPC endpoint. With a
+VPC endpoint, you can restrict access to your server and resources only
+within your VPC.
 
 It is recommended that you use \code{VPC} as the \code{EndpointType}. With this
 endpoint type, you have the option to directly associate up to three
@@ -69,13 +71,12 @@ array containing all of the information required to call a
 customer-supplied authentication API, including the API Gateway URL. Not
 required when \code{IdentityProviderType} is set to \code{SERVICE_MANAGED}.}
 
-\item{IdentityProviderType}{Specifies the mode of authentication for a file transfer
-protocol-enabled server. The default value is \code{SERVICE_MANAGED}, which
-allows you to store and access user credentials within the AWS Transfer
-Family service. Use the \code{API_GATEWAY} value to integrate with an
-identity provider of your choosing. The \code{API_GATEWAY} setting requires
-you to provide an API Gateway endpoint URL to call for authentication
-using the \code{IdentityProviderDetails} parameter.}
+\item{IdentityProviderType}{Specifies the mode of authentication for a server. The default value is
+\code{SERVICE_MANAGED}, which allows you to store and access user credentials
+within the AWS Transfer Family service. Use the \code{API_GATEWAY} value to
+integrate with an identity provider of your choosing. The \code{API_GATEWAY}
+setting requires you to provide an API Gateway endpoint URL to call for
+authentication using the \code{IdentityProviderDetails} parameter.}
 
 \item{LoggingRole}{Allows the service to write your users' activity to your Amazon
 CloudWatch logs for monitoring and auditing purposes.}
@@ -104,8 +105,10 @@ associated.
 If \code{Protocol} is set only to \code{SFTP}, the \code{EndpointType} can be set to
 \code{PUBLIC} and the \code{IdentityProviderType} can be set to \code{SERVICE_MANAGED}.}
 
-\item{Tags}{Key-value pairs that can be used to group and search for file transfer
-protocol-enabled servers.}
+\item{SecurityPolicyName}{Specifies the name of the security policy that is attached to the
+server.}
+
+\item{Tags}{Key-value pairs that can be used to group and search for servers.}
 }
 \description{
 Instantiates an autoscaling virtual server based on the selected file
@@ -117,6 +120,7 @@ created server.
 \section{Request syntax}{
 \preformatted{svc$create_server(
   Certificate = "string",
+  Domain = "S3"|"EFS",
   EndpointDetails = list(
     AddressAllocationIds = list(
       "string"
@@ -125,7 +129,10 @@ created server.
       "string"
     ),
     VpcEndpointId = "string",
-    VpcId = "string"
+    VpcId = "string",
+    SecurityGroupIds = list(
+      "string"
+    )
   ),
   EndpointType = "PUBLIC"|"VPC"|"VPC_ENDPOINT",
   HostKey = "string",
@@ -138,6 +145,7 @@ created server.
   Protocols = list(
     "SFTP"|"FTP"|"FTPS"
   ),
+  SecurityPolicyName = "string",
   Tags = list(
     list(
       Key = "string",

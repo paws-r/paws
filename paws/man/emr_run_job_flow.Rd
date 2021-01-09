@@ -10,7 +10,7 @@ emr_run_job_flow(Name, LogUri, LogEncryptionKmsKeyId, AdditionalInfo,
   VisibleToAllUsers, JobFlowRole, ServiceRole, Tags,
   SecurityConfiguration, AutoScalingRole, ScaleDownBehavior, CustomAmiId,
   EbsRootVolumeSize, RepoUpgradeOnBoot, KerberosAttributes,
-  StepConcurrencyLevel, ManagedScalingPolicy)
+  StepConcurrencyLevel, ManagedScalingPolicy, PlacementGroupConfigs)
 }
 \arguments{
 \item{Name}{[required] The name of the job flow.}
@@ -19,9 +19,9 @@ emr_run_job_flow(Name, LogUri, LogEncryptionKmsKeyId, AdditionalInfo,
 value is not provided, logs are not created.}
 
 \item{LogEncryptionKmsKeyId}{The AWS KMS customer master key (CMK) used for encrypting log files. If
-a value is not provided, the logs will remain encrypted by AES-256. This
-attribute is only available with EMR version 5.30.0 and later, excluding
-EMR 6.0.0.}
+a value is not provided, the logs remain encrypted by AES-256. This
+attribute is only available with Amazon EMR version 5.30.0 and later,
+excluding Amazon EMR 6.0.0.}
 
 \item{AdditionalInfo}{A JSON string for selecting additional features.}
 
@@ -49,7 +49,7 @@ nodes.}
 later, use Applications.
 
 A list of strings that indicates third-party software to use. For more
-information, see the \href{https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf}{Amazon EMR Developer Guide}.
+information, see the \href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-3x.html}{Amazon EMR Developer Guide}.
 Currently supported values are:
 \itemize{
 \item "mapr-m3" - launch the job flow using MapR M3 Edition.
@@ -63,7 +63,7 @@ A list of strings that indicates third-party software to use with the
 job flow that accepts a user argument list. EMR accepts and forwards the
 argument list to the corresponding installation script as bootstrap
 action arguments. For more information, see "Launch a Job Flow on the
-MapR Distribution for Hadoop" in the \href{https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf}{Amazon EMR Developer Guide}.
+MapR Distribution for Hadoop" in the \href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-3x.html}{Amazon EMR Developer Guide}.
 Supported values are:
 \itemize{
 \item "mapr-m3" - launch the cluster using MapR M3 Edition.
@@ -118,10 +118,10 @@ at the instance-hour boundary, regardless of when the request to
 terminate the instance was submitted. This option is only available with
 Amazon EMR 5.1.0 and later and is the default for clusters created using
 that version. \code{TERMINATE_AT_TASK_COMPLETION} indicates that Amazon EMR
-blacklists and drains tasks from nodes before terminating the Amazon EC2
-instances, regardless of the instance-hour boundary. With either
-behavior, Amazon EMR removes the least active nodes first and blocks
-instance termination if it could lead to HDFS corruption.
+adds nodes to a deny list and drains tasks from nodes before terminating
+the Amazon EC2 instances, regardless of the instance-hour boundary. With
+either behavior, Amazon EMR removes the least active nodes first and
+blocks instance termination if it could lead to HDFS corruption.
 \code{TERMINATE_AT_TASK_COMPLETION} available only in Amazon EMR version
 4.1.0 and later, and is the default for versions of Amazon EMR earlier
 than 5.1.0.}
@@ -138,9 +138,9 @@ For information about creating a custom AMI, see \href{https://docs.aws.amazon.c
 in the \emph{Amazon Elastic Compute Cloud User Guide for Linux Instances}.
 For information about finding an AMI ID, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html}{Finding a Linux AMI}.}
 
-\item{EbsRootVolumeSize}{The size, in GiB, of the EBS root device volume of the Linux AMI that is
-used for each EC2 instance. Available in Amazon EMR version 4.x and
-later.}
+\item{EbsRootVolumeSize}{The size, in GiB, of the Amazon EBS root device volume of the Linux AMI
+that is used for each EC2 instance. Available in Amazon EMR version 4.x
+and later.}
 
 \item{RepoUpgradeOnBoot}{Applies only when \code{CustomAmiID} is used. Specifies which updates from
 the Amazon Linux AMI package repositories to apply automatically when
@@ -151,12 +151,14 @@ manually.}
 
 \item{KerberosAttributes}{Attributes for Kerberos configuration when Kerberos authentication is
 enabled using a security configuration. For more information see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html}{Use Kerberos Authentication}
-in the \emph{EMR Management Guide}.}
+in the \emph{Amazon EMR Management Guide}.}
 
 \item{StepConcurrencyLevel}{Specifies the number of steps that can be executed concurrently. The
 default value is \code{1}. The maximum value is \code{256}.}
 
 \item{ManagedScalingPolicy}{The specified managed scaling policy for an Amazon EMR cluster.}
+
+\item{PlacementGroupConfigs}{The specified placement group configuration for an Amazon EMR cluster.}
 }
 \description{
 RunJobFlow creates and starts running a new cluster (job flow). The
@@ -438,6 +440,12 @@ parameters, but not both.
       MaximumCapacityUnits = 123,
       MaximumOnDemandCapacityUnits = 123,
       MaximumCoreCapacityUnits = 123
+    )
+  ),
+  PlacementGroupConfigs = list(
+    list(
+      InstanceRole = "MASTER"|"CORE"|"TASK",
+      PlacementStrategy = "SPREAD"|"PARTITION"|"CLUSTER"|"NONE"
     )
   )
 )

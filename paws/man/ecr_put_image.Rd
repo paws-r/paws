@@ -21,7 +21,8 @@ does not contain the \code{mediaType} field, you must specify the
 \code{imageManifestMediaType} in the request.}
 
 \item{imageTag}{The tag to associate with the image. This parameter is required for
-images that use the Docker Image Manifest V2 Schema 2 or OCI formats.}
+images that use the Docker Image Manifest V2 Schema 2 or Open Container
+Initiative (OCI) formats.}
 
 \item{imageDigest}{The image digest of the image manifest corresponding to the image.}
 }

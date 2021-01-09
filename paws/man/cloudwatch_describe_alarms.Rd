@@ -30,7 +30,7 @@ name in \code{ChildrenOfAlarmName} is not returned.
 
 If you specify \code{ChildrenOfAlarmName}, you cannot specify any other
 parameters in the request except for \code{MaxRecords} and \code{NextToken}. If
-you do so, you will receive a validation error.
+you do so, you receive a validation error.
 
 Only the \verb{Alarm Name}, \code{ARN}, \code{StateValue}
 (OK/ALARM/INSUFFICIENT\\_DATA), and \code{StateUpdatedTimestamp} information
@@ -48,7 +48,7 @@ the alarm you specify. These are the composite alarms that have
 
 If you specify \code{ParentsOfAlarmName}, you cannot specify any other
 parameters in the request except for \code{MaxRecords} and \code{NextToken}. If
-you do so, you will receive a validation error.
+you do so, you receive a validation error.
 
 Only the Alarm Name and ARN are returned by this operation when you use
 this parameter. To get complete information about these alarms, perform
@@ -70,7 +70,7 @@ data available.}
 }
 \description{
 Retrieves the specified alarms. You can filter the results by specifying
-a a prefix for the alarm name, the alarm state, or a prefix for any
+a prefix for the alarm name, the alarm state, or a prefix for any
 action.
 }
 \section{Request syntax}{

@@ -11,7 +11,7 @@ gamelift_delete_script(ScriptId)
 the script ID or ARN value.}
 }
 \description{
-Deletes a Realtime script. This action permanently deletes the script
+Deletes a Realtime script. This operation permanently deletes the script
 record. If script files were uploaded, they are also deleted (files
 stored in an S3 bucket are not deleted).
 }

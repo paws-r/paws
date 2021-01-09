@@ -79,7 +79,16 @@ NULL
 #'             "string"
 #'           )
 #'         ),
-#'         StoredAsSubDirectories = TRUE|FALSE
+#'         StoredAsSubDirectories = TRUE|FALSE,
+#'         SchemaReference = list(
+#'           SchemaId = list(
+#'             SchemaArn = "string",
+#'             SchemaName = "string",
+#'             RegistryName = "string"
+#'           ),
+#'           SchemaVersionId = "string",
+#'           SchemaVersionNumber = 123
+#'         )
 #'       ),
 #'       Parameters = list(
 #'         "string"
@@ -618,6 +627,128 @@ glue_batch_stop_job_run <- function(JobName, JobRunIds) {
 }
 .glue$operations$batch_stop_job_run <- glue_batch_stop_job_run
 
+#' Updates one or more partitions in a batch operation
+#'
+#' Updates one or more partitions in a batch operation.
+#'
+#' @usage
+#' glue_batch_update_partition(CatalogId, DatabaseName, TableName, Entries)
+#'
+#' @param CatalogId The ID of the catalog in which the partition is to be updated.
+#' Currently, this should be the AWS account ID.
+#' @param DatabaseName &#91;required&#93; The name of the metadata database in which the partition is to be
+#' updated.
+#' @param TableName &#91;required&#93; The name of the metadata table in which the partition is to be updated.
+#' @param Entries &#91;required&#93; A list of up to 100 `BatchUpdatePartitionRequestEntry` objects to
+#' update.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_update_partition(
+#'   CatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   Entries = list(
+#'     list(
+#'       PartitionValueList = list(
+#'         "string"
+#'       ),
+#'       PartitionInput = list(
+#'         Values = list(
+#'           "string"
+#'         ),
+#'         LastAccessTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         StorageDescriptor = list(
+#'           Columns = list(
+#'             list(
+#'               Name = "string",
+#'               Type = "string",
+#'               Comment = "string",
+#'               Parameters = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           Location = "string",
+#'           InputFormat = "string",
+#'           OutputFormat = "string",
+#'           Compressed = TRUE|FALSE,
+#'           NumberOfBuckets = 123,
+#'           SerdeInfo = list(
+#'             Name = "string",
+#'             SerializationLibrary = "string",
+#'             Parameters = list(
+#'               "string"
+#'             )
+#'           ),
+#'           BucketColumns = list(
+#'             "string"
+#'           ),
+#'           SortColumns = list(
+#'             list(
+#'               Column = "string",
+#'               SortOrder = 123
+#'             )
+#'           ),
+#'           Parameters = list(
+#'             "string"
+#'           ),
+#'           SkewedInfo = list(
+#'             SkewedColumnNames = list(
+#'               "string"
+#'             ),
+#'             SkewedColumnValues = list(
+#'               "string"
+#'             ),
+#'             SkewedColumnValueLocationMaps = list(
+#'               "string"
+#'             )
+#'           ),
+#'           StoredAsSubDirectories = TRUE|FALSE,
+#'           SchemaReference = list(
+#'             SchemaId = list(
+#'               SchemaArn = "string",
+#'               SchemaName = "string",
+#'               RegistryName = "string"
+#'             ),
+#'             SchemaVersionId = "string",
+#'             SchemaVersionNumber = 123
+#'           )
+#'         ),
+#'         Parameters = list(
+#'           "string"
+#'         ),
+#'         LastAnalyzedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_batch_update_partition
+glue_batch_update_partition <- function(CatalogId = NULL, DatabaseName, TableName, Entries) {
+  op <- new_operation(
+    name = "BatchUpdatePartition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$batch_update_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Entries = Entries)
+  output <- .glue$batch_update_partition_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$batch_update_partition <- glue_batch_update_partition
+
 #' Cancels (stops) a task run
 #'
 #' Cancels (stops) a task run. Machine learning task runs are asynchronous
@@ -659,6 +790,48 @@ glue_cancel_ml_task_run <- function(TransformId, TaskRunId) {
   return(response)
 }
 .glue$operations$cancel_ml_task_run <- glue_cancel_ml_task_run
+
+#' Validates the supplied schema
+#'
+#' Validates the supplied schema. This call has no side effects, it simply
+#' validates using the supplied schema using `DataFormat` as the format.
+#' Since it does not take a schema set name, no compatibility checks are
+#' performed.
+#'
+#' @usage
+#' glue_check_schema_version_validity(DataFormat, SchemaDefinition)
+#'
+#' @param DataFormat &#91;required&#93; The data format of the schema definition. Currently only `AVRO` is
+#' supported.
+#' @param SchemaDefinition &#91;required&#93; The definition of the schema that has to be validated.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$check_schema_version_validity(
+#'   DataFormat = "AVRO",
+#'   SchemaDefinition = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_check_schema_version_validity
+glue_check_schema_version_validity <- function(DataFormat, SchemaDefinition) {
+  op <- new_operation(
+    name = "CheckSchemaVersionValidity",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$check_schema_version_validity_input(DataFormat = DataFormat, SchemaDefinition = SchemaDefinition)
+  output <- .glue$check_schema_version_validity_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$check_schema_version_validity <- glue_check_schema_version_validity
 
 #' Creates a classifier in the user's account
 #'
@@ -745,7 +918,7 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #'   ConnectionInput = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
@@ -793,8 +966,8 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #'
 #' @usage
 #' glue_create_crawler(Name, Role, DatabaseName, Description, Targets,
-#'   Schedule, Classifiers, TablePrefix, SchemaChangePolicy, Configuration,
-#'   CrawlerSecurityConfiguration, Tags)
+#'   Schedule, Classifiers, TablePrefix, SchemaChangePolicy, RecrawlPolicy,
+#'   LineageConfiguration, Configuration, CrawlerSecurityConfiguration, Tags)
 #'
 #' @param Name &#91;required&#93; Name of the new crawler.
 #' @param Role &#91;required&#93; The IAM role or Amazon Resource Name (ARN) of an IAM role used by the
@@ -814,6 +987,9 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #' classification.
 #' @param TablePrefix The table prefix used for catalog tables that are created.
 #' @param SchemaChangePolicy The policy for the crawler's update and deletion behavior.
+#' @param RecrawlPolicy A policy that specifies whether to crawl the entire dataset again, or to
+#' crawl only folders that were added since the last crawler run.
+#' @param LineageConfiguration Specifies data lineage configuration settings for the crawler.
 #' @param Configuration Crawler configuration information. This versioned JSON string allows
 #' users to specify aspects of a crawler's behavior. For more information,
 #' see [Configuring a
@@ -839,7 +1015,8 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #'         Path = "string",
 #'         Exclusions = list(
 #'           "string"
-#'         )
+#'         ),
+#'         ConnectionName = "string"
 #'       )
 #'     ),
 #'     JdbcTargets = list(
@@ -849,6 +1026,13 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #'         Exclusions = list(
 #'           "string"
 #'         )
+#'       )
+#'     ),
+#'     MongoDBTargets = list(
+#'       list(
+#'         ConnectionName = "string",
+#'         Path = "string",
+#'         ScanAll = TRUE|FALSE
 #'       )
 #'     ),
 #'     DynamoDBTargets = list(
@@ -876,6 +1060,12 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #'     UpdateBehavior = "LOG"|"UPDATE_IN_DATABASE",
 #'     DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
 #'   ),
+#'   RecrawlPolicy = list(
+#'     RecrawlBehavior = "CRAWL_EVERYTHING"|"CRAWL_NEW_FOLDERS_ONLY"
+#'   ),
+#'   LineageConfiguration = list(
+#'     CrawlerLineageSettings = "ENABLE"|"DISABLE"
+#'   ),
 #'   Configuration = "string",
 #'   CrawlerSecurityConfiguration = "string",
 #'   Tags = list(
@@ -887,14 +1077,14 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #' @keywords internal
 #'
 #' @rdname glue_create_crawler
-glue_create_crawler <- function(Name, Role, DatabaseName = NULL, Description = NULL, Targets, Schedule = NULL, Classifiers = NULL, TablePrefix = NULL, SchemaChangePolicy = NULL, Configuration = NULL, CrawlerSecurityConfiguration = NULL, Tags = NULL) {
+glue_create_crawler <- function(Name, Role, DatabaseName = NULL, Description = NULL, Targets, Schedule = NULL, Classifiers = NULL, TablePrefix = NULL, SchemaChangePolicy = NULL, RecrawlPolicy = NULL, LineageConfiguration = NULL, Configuration = NULL, CrawlerSecurityConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCrawler",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration, Tags = Tags)
+  input <- .glue$create_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, RecrawlPolicy = RecrawlPolicy, LineageConfiguration = LineageConfiguration, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration, Tags = Tags)
   output <- .glue$create_crawler_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -1038,7 +1228,7 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput) {
 #' 
 #' You can only use pure Python libraries with a `DevEndpoint`. Libraries
 #' that rely on C extensions, such as the
-#' [pandas](http://pandas.pydata.org/) Python data analysis library, are
+#' [pandas](https://pandas.pydata.org/) Python data analysis library, are
 #' not yet supported.
 #' @param ExtraJarsS3Path The path to one or more Java `.jar` files in an S3 bucket that should be
 #' loaded in your `DevEndpoint`.
@@ -1163,9 +1353,10 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'     1 DPU. The default is 0.0625 DPU.
 #' 
 #' -   When you specify an Apache Spark ETL job
-#'     (`JobCommand.Name`="glueetl"), you can allocate from 2 to 100 DPUs.
-#'     The default is 10 DPUs. This job type cannot have a fractional DPU
-#'     allocation.
+#'     (`JobCommand.Name`="glueetl") or Apache Spark streaming ETL job
+#'     (`JobCommand.Name`="gluestreaming"), you can allocate from 2 to 100
+#'     DPUs. The default is 10 DPUs. This job type cannot have a fractional
+#'     DPU allocation.
 #' @param SecurityConfiguration The name of the `SecurityConfiguration` structure to be used with this
 #' job.
 #' @param Tags The tags to use with this job. You may use tags to limit access to the
@@ -1286,7 +1477,7 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 #' @usage
 #' glue_create_ml_transform(Name, Description, InputRecordTables,
 #'   Parameters, Role, GlueVersion, MaxCapacity, WorkerType, NumberOfWorkers,
-#'   Timeout, MaxRetries, Tags)
+#'   Timeout, MaxRetries, Tags, TransformEncryption)
 #'
 #' @param Name &#91;required&#93; The unique name that you give the transform when you create it.
 #' @param Description A description of the machine learning transform that is being defined.
@@ -1380,6 +1571,9 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 #' about tags in AWS Glue, see [AWS Tags in AWS
 #' Glue](https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in
 #' the developer guide.
+#' @param TransformEncryption The encryption-at-rest settings of the transform that apply to accessing
+#' user data. Machine learning transforms can access user data encrypted in
+#' Amazon S3 using KMS.
 #'
 #' @section Request syntax:
 #' ```
@@ -1412,6 +1606,13 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 #'   MaxRetries = 123,
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   TransformEncryption = list(
+#'     MlUserDataEncryption = list(
+#'       MlUserDataEncryptionMode = "DISABLED"|"SSE-KMS",
+#'       KmsKeyId = "string"
+#'     ),
+#'     TaskRunSecurityConfigurationName = "string"
 #'   )
 #' )
 #' ```
@@ -1419,14 +1620,14 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 #' @keywords internal
 #'
 #' @rdname glue_create_ml_transform
-glue_create_ml_transform <- function(Name, Description = NULL, InputRecordTables, Parameters, Role, GlueVersion = NULL, MaxCapacity = NULL, WorkerType = NULL, NumberOfWorkers = NULL, Timeout = NULL, MaxRetries = NULL, Tags = NULL) {
+glue_create_ml_transform <- function(Name, Description = NULL, InputRecordTables, Parameters, Role, GlueVersion = NULL, MaxCapacity = NULL, WorkerType = NULL, NumberOfWorkers = NULL, Timeout = NULL, MaxRetries = NULL, Tags = NULL, TransformEncryption = NULL) {
   op <- new_operation(
     name = "CreateMLTransform",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_ml_transform_input(Name = Name, Description = Description, InputRecordTables = InputRecordTables, Parameters = Parameters, Role = Role, GlueVersion = GlueVersion, MaxCapacity = MaxCapacity, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, MaxRetries = MaxRetries, Tags = Tags)
+  input <- .glue$create_ml_transform_input(Name = Name, Description = Description, InputRecordTables = InputRecordTables, Parameters = Parameters, Role = Role, GlueVersion = GlueVersion, MaxCapacity = MaxCapacity, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, MaxRetries = MaxRetries, Tags = Tags, TransformEncryption = TransformEncryption)
   output <- .glue$create_ml_transform_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -1510,7 +1711,16 @@ glue_create_ml_transform <- function(Name, Description = NULL, InputRecordTables
 #'           "string"
 #'         )
 #'       ),
-#'       StoredAsSubDirectories = TRUE|FALSE
+#'       StoredAsSubDirectories = TRUE|FALSE,
+#'       SchemaReference = list(
+#'         SchemaId = list(
+#'           SchemaArn = "string",
+#'           SchemaName = "string",
+#'           RegistryName = "string"
+#'         ),
+#'         SchemaVersionId = "string",
+#'         SchemaVersionNumber = 123
+#'       )
 #'     ),
 #'     Parameters = list(
 #'       "string"
@@ -1541,6 +1751,222 @@ glue_create_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
   return(response)
 }
 .glue$operations$create_partition <- glue_create_partition
+
+#' Creates a specified partition index in an existing table
+#'
+#' Creates a specified partition index in an existing table.
+#'
+#' @usage
+#' glue_create_partition_index(CatalogId, DatabaseName, TableName,
+#'   PartitionIndex)
+#'
+#' @param CatalogId The catalog ID where the table resides.
+#' @param DatabaseName &#91;required&#93; Specifies the name of a database in which you want to create a partition
+#' index.
+#' @param TableName &#91;required&#93; Specifies the name of a table in which you want to create a partition
+#' index.
+#' @param PartitionIndex &#91;required&#93; Specifies a `PartitionIndex` structure to create a partition index in an
+#' existing table.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_partition_index(
+#'   CatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   PartitionIndex = list(
+#'     Keys = list(
+#'       "string"
+#'     ),
+#'     IndexName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_partition_index
+glue_create_partition_index <- function(CatalogId = NULL, DatabaseName, TableName, PartitionIndex) {
+  op <- new_operation(
+    name = "CreatePartitionIndex",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$create_partition_index_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionIndex = PartitionIndex)
+  output <- .glue$create_partition_index_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_partition_index <- glue_create_partition_index
+
+#' Creates a new registry which may be used to hold a collection of schemas
+#'
+#' Creates a new registry which may be used to hold a collection of
+#' schemas.
+#'
+#' @usage
+#' glue_create_registry(RegistryName, Description, Tags)
+#'
+#' @param RegistryName &#91;required&#93; Name of the registry to be created of max length of 255, and may only
+#' contain letters, numbers, hyphen, underscore, dollar sign, or hash mark.
+#' No whitespace.
+#' @param Description A description of the registry. If description is not provided, there
+#' will not be any default value for this.
+#' @param Tags AWS tags that contain a key value pair and may be searched by console,
+#' command line, or API.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_registry(
+#'   RegistryName = "string",
+#'   Description = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_registry
+glue_create_registry <- function(RegistryName, Description = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateRegistry",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$create_registry_input(RegistryName = RegistryName, Description = Description, Tags = Tags)
+  output <- .glue$create_registry_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_registry <- glue_create_registry
+
+#' Creates a new schema set and registers the schema definition
+#'
+#' Creates a new schema set and registers the schema definition. Returns an
+#' error if the schema set already exists without actually registering the
+#' version.
+#' 
+#' When the schema set is created, a version checkpoint will be set to the
+#' first version. Compatibility mode "DISABLED" restricts any additional
+#' schema versions from being added after the first schema version. For all
+#' other compatibility modes, validation of compatibility settings will be
+#' applied only from the second version onwards when the
+#' `RegisterSchemaVersion` API is used.
+#' 
+#' When this API is called without a `RegistryId`, this will create an
+#' entry for a "default-registry" in the registry database tables, if it is
+#' not already present.
+#'
+#' @usage
+#' glue_create_schema(RegistryId, SchemaName, DataFormat, Compatibility,
+#'   Description, Tags, SchemaDefinition)
+#'
+#' @param RegistryId This is a wrapper shape to contain the registry identity fields. If this
+#' is not provided, the default registry will be used. The ARN format for
+#' the same will be:
+#' `arn:aws:glue:us-east-2:&lt;customer id&gt;:registry/default-registry:random-5-letter-id`.
+#' @param SchemaName &#91;required&#93; Name of the schema to be created of max length of 255, and may only
+#' contain letters, numbers, hyphen, underscore, dollar sign, or hash mark.
+#' No whitespace.
+#' @param DataFormat &#91;required&#93; The data format of the schema definition. Currently only `AVRO` is
+#' supported.
+#' @param Compatibility The compatibility mode of the schema. The possible values are:
+#' 
+#' -   *NONE*: No compatibility mode applies. You can use this choice in
+#'     development scenarios or if you do not know the compatibility mode
+#'     that you want to apply to schemas. Any new version added will be
+#'     accepted without undergoing a compatibility check.
+#' 
+#' -   *DISABLED*: This compatibility choice prevents versioning for a
+#'     particular schema. You can use this choice to prevent future
+#'     versioning of a schema.
+#' 
+#' -   *BACKWARD*: This compatibility choice is recommended as it allows
+#'     data receivers to read both the current and one previous schema
+#'     version. This means that for instance, a new schema version cannot
+#'     drop data fields or change the type of these fields, so they can't
+#'     be read by readers using the previous version.
+#' 
+#' -   *BACKWARD\\_ALL*: This compatibility choice allows data receivers to
+#'     read both the current and all previous schema versions. You can use
+#'     this choice when you need to delete fields or add optional fields,
+#'     and check compatibility against all previous schema versions.
+#' 
+#' -   *FORWARD*: This compatibility choice allows data receivers to read
+#'     both the current and one next schema version, but not necessarily
+#'     later versions. You can use this choice when you need to add fields
+#'     or delete optional fields, but only check compatibility against the
+#'     last schema version.
+#' 
+#' -   *FORWARD\\_ALL*: This compatibility choice allows data receivers to
+#'     read written by producers of any new registered schema. You can use
+#'     this choice when you need to add fields or delete optional fields,
+#'     and check compatibility against all previous schema versions.
+#' 
+#' -   *FULL*: This compatibility choice allows data receivers to read data
+#'     written by producers using the previous or next version of the
+#'     schema, but not necessarily earlier or later versions. You can use
+#'     this choice when you need to add or remove optional fields, but only
+#'     check compatibility against the last schema version.
+#' 
+#' -   *FULL\\_ALL*: This compatibility choice allows data receivers to read
+#'     data written by producers using all previous schema versions. You
+#'     can use this choice when you need to add or remove optional fields,
+#'     and check compatibility against all previous schema versions.
+#' @param Description An optional description of the schema. If description is not provided,
+#' there will not be any automatic default value for this.
+#' @param Tags AWS tags that contain a key value pair and may be searched by console,
+#' command line, or API. If specified, follows the AWS tags-on-create
+#' pattern.
+#' @param SchemaDefinition The schema definition using the `DataFormat` setting for `SchemaName`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_schema(
+#'   RegistryId = list(
+#'     RegistryName = "string",
+#'     RegistryArn = "string"
+#'   ),
+#'   SchemaName = "string",
+#'   DataFormat = "AVRO",
+#'   Compatibility = "NONE"|"DISABLED"|"BACKWARD"|"BACKWARD_ALL"|"FORWARD"|"FORWARD_ALL"|"FULL"|"FULL_ALL",
+#'   Description = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   SchemaDefinition = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_schema
+glue_create_schema <- function(RegistryId = NULL, SchemaName, DataFormat, Compatibility = NULL, Description = NULL, Tags = NULL, SchemaDefinition = NULL) {
+  op <- new_operation(
+    name = "CreateSchema",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$create_schema_input(RegistryId = RegistryId, SchemaName = SchemaName, DataFormat = DataFormat, Compatibility = Compatibility, Description = Description, Tags = Tags, SchemaDefinition = SchemaDefinition)
+  output <- .glue$create_schema_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_schema <- glue_create_schema
 
 #' Transforms a directed acyclic graph (DAG) into code
 #'
@@ -1664,7 +2090,7 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #' Creates a new table definition in the Data Catalog.
 #'
 #' @usage
-#' glue_create_table(CatalogId, DatabaseName, TableInput)
+#' glue_create_table(CatalogId, DatabaseName, TableInput, PartitionIndexes)
 #'
 #' @param CatalogId The ID of the Data Catalog in which to create the `Table`. If none is
 #' supplied, the AWS account ID is used by default.
@@ -1672,6 +2098,8 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #' compatibility, this name is entirely lowercase.
 #' @param TableInput &#91;required&#93; The `TableInput` object that defines the metadata table to create in the
 #' catalog.
+#' @param PartitionIndexes A list of partition indexes, `PartitionIndex` structures, to create in
+#' the table.
 #'
 #' @section Request syntax:
 #' ```
@@ -1735,7 +2163,16 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #'           "string"
 #'         )
 #'       ),
-#'       StoredAsSubDirectories = TRUE|FALSE
+#'       StoredAsSubDirectories = TRUE|FALSE,
+#'       SchemaReference = list(
+#'         SchemaId = list(
+#'           SchemaArn = "string",
+#'           SchemaName = "string",
+#'           RegistryName = "string"
+#'         ),
+#'         SchemaVersionId = "string",
+#'         SchemaVersionNumber = 123
+#'       )
 #'     ),
 #'     PartitionKeys = list(
 #'       list(
@@ -1758,6 +2195,14 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #'       DatabaseName = "string",
 #'       Name = "string"
 #'     )
+#'   ),
+#'   PartitionIndexes = list(
+#'     list(
+#'       Keys = list(
+#'         "string"
+#'       ),
+#'       IndexName = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1765,14 +2210,14 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #' @keywords internal
 #'
 #' @rdname glue_create_table
-glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput) {
+glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, PartitionIndexes = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput)
+  input <- .glue$create_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, PartitionIndexes = PartitionIndexes)
   output <- .glue$create_table_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -1933,7 +2378,8 @@ glue_create_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' Creates a new workflow.
 #'
 #' @usage
-#' glue_create_workflow(Name, Description, DefaultRunProperties, Tags)
+#' glue_create_workflow(Name, Description, DefaultRunProperties, Tags,
+#'   MaxConcurrentRuns)
 #'
 #' @param Name &#91;required&#93; The name to be assigned to the workflow. It should be unique within your
 #' account.
@@ -1941,6 +2387,11 @@ glue_create_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' @param DefaultRunProperties A collection of properties to be used as part of each execution of the
 #' workflow.
 #' @param Tags The tags to be used with this workflow.
+#' @param MaxConcurrentRuns You can use this parameter to prevent unwanted multiple updates to data,
+#' to control costs, or in some cases, to prevent exceeding the maximum
+#' number of concurrent runs of any of the component jobs. If you leave
+#' this parameter blank, there is no limit to the number of concurrent
+#' workflow runs.
 #'
 #' @section Request syntax:
 #' ```
@@ -1952,21 +2403,22 @@ glue_create_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #'   ),
 #'   Tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   MaxConcurrentRuns = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_create_workflow
-glue_create_workflow <- function(Name, Description = NULL, DefaultRunProperties = NULL, Tags = NULL) {
+glue_create_workflow <- function(Name, Description = NULL, DefaultRunProperties = NULL, Tags = NULL, MaxConcurrentRuns = NULL) {
   op <- new_operation(
     name = "CreateWorkflow",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$create_workflow_input(Name = Name, Description = Description, DefaultRunProperties = DefaultRunProperties, Tags = Tags)
+  input <- .glue$create_workflow_input(Name = Name, Description = Description, DefaultRunProperties = DefaultRunProperties, Tags = Tags, MaxConcurrentRuns = MaxConcurrentRuns)
   output <- .glue$create_workflow_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -2015,6 +2467,9 @@ glue_delete_classifier <- function(Name) {
 #' Delete the partition column statistics of a column
 #'
 #' Delete the partition column statistics of a column.
+#' 
+#' The Identity and Access Management (IAM) permission required for this
+#' operation is `DeletePartition`.
 #'
 #' @usage
 #' glue_delete_column_statistics_for_partition(CatalogId, DatabaseName,
@@ -2063,6 +2518,9 @@ glue_delete_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 #' Retrieves table statistics of columns
 #'
 #' Retrieves table statistics of columns.
+#' 
+#' The Identity and Access Management (IAM) permission required for this
+#' operation is `DeleteTable`.
 #'
 #' @usage
 #' glue_delete_column_statistics_for_table(CatalogId, DatabaseName,
@@ -2394,6 +2852,95 @@ glue_delete_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 }
 .glue$operations$delete_partition <- glue_delete_partition
 
+#' Deletes a specified partition index from an existing table
+#'
+#' Deletes a specified partition index from an existing table.
+#'
+#' @usage
+#' glue_delete_partition_index(CatalogId, DatabaseName, TableName,
+#'   IndexName)
+#'
+#' @param CatalogId The catalog ID where the table resides.
+#' @param DatabaseName &#91;required&#93; Specifies the name of a database from which you want to delete a
+#' partition index.
+#' @param TableName &#91;required&#93; Specifies the name of a table from which you want to delete a partition
+#' index.
+#' @param IndexName &#91;required&#93; The name of the partition index to be deleted.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_partition_index(
+#'   CatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   IndexName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_partition_index
+glue_delete_partition_index <- function(CatalogId = NULL, DatabaseName, TableName, IndexName) {
+  op <- new_operation(
+    name = "DeletePartitionIndex",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$delete_partition_index_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, IndexName = IndexName)
+  output <- .glue$delete_partition_index_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_partition_index <- glue_delete_partition_index
+
+#' Delete the entire registry including schema and all of its versions
+#'
+#' Delete the entire registry including schema and all of its versions. To
+#' get the status of the delete operation, you can call the `GetRegistry`
+#' API after the asynchronous call. Deleting a registry will disable all
+#' online operations for the registry such as the `UpdateRegistry`,
+#' `CreateSchema`, `UpdateSchema`, and `RegisterSchemaVersion` APIs.
+#'
+#' @usage
+#' glue_delete_registry(RegistryId)
+#'
+#' @param RegistryId &#91;required&#93; This is a wrapper structure that may contain the registry name and
+#' Amazon Resource Name (ARN).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_registry(
+#'   RegistryId = list(
+#'     RegistryName = "string",
+#'     RegistryArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_registry
+glue_delete_registry <- function(RegistryId) {
+  op <- new_operation(
+    name = "DeleteRegistry",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$delete_registry_input(RegistryId = RegistryId)
+  output <- .glue$delete_registry_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_registry <- glue_delete_registry
+
 #' Deletes a specified policy
 #'
 #' Deletes a specified policy.
@@ -2431,6 +2978,117 @@ glue_delete_resource_policy <- function(PolicyHashCondition = NULL, ResourceArn 
   return(response)
 }
 .glue$operations$delete_resource_policy <- glue_delete_resource_policy
+
+#' Deletes the entire schema set, including the schema set and all of its
+#' versions
+#'
+#' Deletes the entire schema set, including the schema set and all of its
+#' versions. To get the status of the delete operation, you can call
+#' `GetSchema` API after the asynchronous call. Deleting a registry will
+#' disable all online operations for the schema, such as the
+#' `GetSchemaByDefinition`, and `RegisterSchemaVersion` APIs.
+#'
+#' @usage
+#' glue_delete_schema(SchemaId)
+#'
+#' @param SchemaId &#91;required&#93; This is a wrapper structure that may contain the schema name and Amazon
+#' Resource Name (ARN).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_schema(
+#'   SchemaId = list(
+#'     SchemaArn = "string",
+#'     SchemaName = "string",
+#'     RegistryName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_schema
+glue_delete_schema <- function(SchemaId) {
+  op <- new_operation(
+    name = "DeleteSchema",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$delete_schema_input(SchemaId = SchemaId)
+  output <- .glue$delete_schema_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_schema <- glue_delete_schema
+
+#' Remove versions from the specified schema
+#'
+#' Remove versions from the specified schema. A version number or range may
+#' be supplied. If the compatibility mode forbids deleting of a version
+#' that is necessary, such as BACKWARDS\\_FULL, an error is returned.
+#' Calling the `GetSchemaVersions` API after this call will list the status
+#' of the deleted versions.
+#' 
+#' When the range of version numbers contain check pointed version, the API
+#' will return a 409 conflict and will not proceed with the deletion. You
+#' have to remove the checkpoint first using the `DeleteSchemaCheckpoint`
+#' API before using this API.
+#' 
+#' You cannot use the `DeleteSchemaVersions` API to delete the first schema
+#' version in the schema set. The first schema version can only be deleted
+#' by the `DeleteSchema` API. This operation will also delete the attached
+#' `SchemaVersionMetadata` under the schema versions. Hard deletes will be
+#' enforced on the database.
+#' 
+#' If the compatibility mode forbids deleting of a version that is
+#' necessary, such as BACKWARDS\\_FULL, an error is returned.
+#'
+#' @usage
+#' glue_delete_schema_versions(SchemaId, Versions)
+#'
+#' @param SchemaId &#91;required&#93; This is a wrapper structure that may contain the schema name and Amazon
+#' Resource Name (ARN).
+#' @param Versions &#91;required&#93; A version range may be supplied which may be of the format:
+#' 
+#' -   a single version number, 5
+#' 
+#' -   a range, 5-8 : deletes versions 5, 6, 7, 8
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_schema_versions(
+#'   SchemaId = list(
+#'     SchemaArn = "string",
+#'     SchemaName = "string",
+#'     RegistryName = "string"
+#'   ),
+#'   Versions = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_schema_versions
+glue_delete_schema_versions <- function(SchemaId, Versions) {
+  op <- new_operation(
+    name = "DeleteSchemaVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$delete_schema_versions_input(SchemaId = SchemaId, Versions = Versions)
+  output <- .glue$delete_schema_versions_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_schema_versions <- glue_delete_schema_versions
 
 #' Deletes a specified security configuration
 #'
@@ -2796,6 +3454,9 @@ glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
 #' Retrieves partition statistics of columns
 #'
 #' Retrieves partition statistics of columns.
+#' 
+#' The Identity and Access Management (IAM) permission required for this
+#' operation is `GetPartition`.
 #'
 #' @usage
 #' glue_get_column_statistics_for_partition(CatalogId, DatabaseName,
@@ -2846,6 +3507,9 @@ glue_get_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseN
 #' Retrieves table statistics of columns
 #'
 #' Retrieves table statistics of columns.
+#' 
+#' The Identity and Access Management (IAM) permission required for this
+#' operation is `GetTable`.
 #'
 #' @usage
 #' glue_get_column_statistics_for_table(CatalogId, DatabaseName, TableName,
@@ -2963,7 +3627,7 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"
 #'   ),
 #'   HidePassword = TRUE|FALSE,
 #'   NextToken = "string",
@@ -3885,6 +4549,51 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
 }
 .glue$operations$get_partition <- glue_get_partition
 
+#' Retrieves the partition indexes associated with a table
+#'
+#' Retrieves the partition indexes associated with a table.
+#'
+#' @usage
+#' glue_get_partition_indexes(CatalogId, DatabaseName, TableName,
+#'   NextToken)
+#'
+#' @param CatalogId The catalog ID where the table resides.
+#' @param DatabaseName &#91;required&#93; Specifies the name of a database from which you want to retrieve
+#' partition indexes.
+#' @param TableName &#91;required&#93; Specifies the name of a table for which you want to retrieve the
+#' partition indexes.
+#' @param NextToken A continuation token, included if this is a continuation call.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_partition_indexes(
+#'   CatalogId = "string",
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_partition_indexes
+glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetPartitionIndexes",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_partition_indexes_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, NextToken = NextToken)
+  output <- .glue$get_partition_indexes_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_partition_indexes <- glue_get_partition_indexes
+
 #' Retrieves information about the partitions in a table
 #'
 #' Retrieves information about the partitions in a table.
@@ -4029,13 +4738,24 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
 #' Gets code to perform a specified mapping.
 #'
 #' @usage
-#' glue_get_plan(Mapping, Source, Sinks, Location, Language)
+#' glue_get_plan(Mapping, Source, Sinks, Location, Language,
+#'   AdditionalPlanOptionsMap)
 #'
 #' @param Mapping &#91;required&#93; The list of mappings from a source table to target tables.
 #' @param Source &#91;required&#93; The source table.
 #' @param Sinks The target tables.
 #' @param Location The parameters for the mapping.
 #' @param Language The programming language of the code to perform the mapping.
+#' @param AdditionalPlanOptionsMap A map to hold additional optional key-value parameters.
+#' 
+#' Currently, these key-value pairs are supported:
+#' 
+#' -   `inferSchema`  —  Specifies whether to set `inferSchema` to true or
+#'     false for the default script generated by an AWS Glue job. For
+#'     example, to set `inferSchema` to true, pass the following key value
+#'     pair:
+#' 
+#'     `--additional-plan-options-map '\{"inferSchema":"true"\}'`
 #'
 #' @section Request syntax:
 #' ```
@@ -4083,21 +4803,24 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
 #'       )
 #'     )
 #'   ),
-#'   Language = "PYTHON"|"SCALA"
+#'   Language = "PYTHON"|"SCALA",
+#'   AdditionalPlanOptionsMap = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_plan
-glue_get_plan <- function(Mapping, Source, Sinks = NULL, Location = NULL, Language = NULL) {
+glue_get_plan <- function(Mapping, Source, Sinks = NULL, Location = NULL, Language = NULL, AdditionalPlanOptionsMap = NULL) {
   op <- new_operation(
     name = "GetPlan",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$get_plan_input(Mapping = Mapping, Source = Source, Sinks = Sinks, Location = Location, Language = Language)
+  input <- .glue$get_plan_input(Mapping = Mapping, Source = Source, Sinks = Sinks, Location = Location, Language = Language, AdditionalPlanOptionsMap = AdditionalPlanOptionsMap)
   output <- .glue$get_plan_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -4107,11 +4830,56 @@ glue_get_plan <- function(Mapping, Source, Sinks = NULL, Location = NULL, Langua
 }
 .glue$operations$get_plan <- glue_get_plan
 
+#' Describes the specified registry in detail
+#'
+#' Describes the specified registry in detail.
+#'
+#' @usage
+#' glue_get_registry(RegistryId)
+#'
+#' @param RegistryId &#91;required&#93; This is a wrapper structure that may contain the registry name and
+#' Amazon Resource Name (ARN).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_registry(
+#'   RegistryId = list(
+#'     RegistryName = "string",
+#'     RegistryArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_registry
+glue_get_registry <- function(RegistryId) {
+  op <- new_operation(
+    name = "GetRegistry",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_registry_input(RegistryId = RegistryId)
+  output <- .glue$get_registry_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_registry <- glue_get_registry
+
 #' Retrieves the security configurations for the resource policies set on
 #' individual resources, and also the account-level policy
 #'
 #' Retrieves the security configurations for the resource policies set on
 #' individual resources, and also the account-level policy.
+#' 
+#' This operation also returns the Data Catalog resource policy. However,
+#' if you enabled metadata encryption in Data Catalog settings, and you do
+#' not have permission on the AWS KMS key, the operation can't return the
+#' Data Catalog resource policy.
 #'
 #' @usage
 #' glue_get_resource_policies(NextToken, MaxResults)
@@ -4185,6 +4953,233 @@ glue_get_resource_policy <- function(ResourceArn = NULL) {
   return(response)
 }
 .glue$operations$get_resource_policy <- glue_get_resource_policy
+
+#' Describes the specified schema in detail
+#'
+#' Describes the specified schema in detail.
+#'
+#' @usage
+#' glue_get_schema(SchemaId)
+#'
+#' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
+#' structure contains:
+#' 
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     Either `SchemaArn` or `SchemaName` and `RegistryName` has to be
+#'     provided.
+#' 
+#' -   SchemaId$SchemaName: The name of the schema. Either `SchemaArn` or
+#'     `SchemaName` and `RegistryName` has to be provided.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_schema(
+#'   SchemaId = list(
+#'     SchemaArn = "string",
+#'     SchemaName = "string",
+#'     RegistryName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_schema
+glue_get_schema <- function(SchemaId) {
+  op <- new_operation(
+    name = "GetSchema",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_schema_input(SchemaId = SchemaId)
+  output <- .glue$get_schema_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_schema <- glue_get_schema
+
+#' Retrieves a schema by the SchemaDefinition
+#'
+#' Retrieves a schema by the `SchemaDefinition`. The schema definition is
+#' sent to the Schema Registry, canonicalized, and hashed. If the hash is
+#' matched within the scope of the `SchemaName` or ARN (or the default
+#' registry, if none is supplied), that schema’s metadata is returned.
+#' Otherwise, a 404 or NotFound error is returned. Schema versions in
+#' `Deleted` statuses will not be included in the results.
+#'
+#' @usage
+#' glue_get_schema_by_definition(SchemaId, SchemaDefinition)
+#'
+#' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
+#' structure contains:
+#' 
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     One of `SchemaArn` or `SchemaName` has to be provided.
+#' 
+#' -   SchemaId$SchemaName: The name of the schema. One of `SchemaArn` or
+#'     `SchemaName` has to be provided.
+#' @param SchemaDefinition &#91;required&#93; The definition of the schema for which schema details are required.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_schema_by_definition(
+#'   SchemaId = list(
+#'     SchemaArn = "string",
+#'     SchemaName = "string",
+#'     RegistryName = "string"
+#'   ),
+#'   SchemaDefinition = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_schema_by_definition
+glue_get_schema_by_definition <- function(SchemaId, SchemaDefinition) {
+  op <- new_operation(
+    name = "GetSchemaByDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_schema_by_definition_input(SchemaId = SchemaId, SchemaDefinition = SchemaDefinition)
+  output <- .glue$get_schema_by_definition_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_schema_by_definition <- glue_get_schema_by_definition
+
+#' Get the specified schema by its unique ID assigned when a version of the
+#' schema is created or registered
+#'
+#' Get the specified schema by its unique ID assigned when a version of the
+#' schema is created or registered. Schema versions in Deleted status will
+#' not be included in the results.
+#'
+#' @usage
+#' glue_get_schema_version(SchemaId, SchemaVersionId, SchemaVersionNumber)
+#'
+#' @param SchemaId This is a wrapper structure to contain schema identity fields. The
+#' structure contains:
+#' 
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     Either `SchemaArn` or `SchemaName` and `RegistryName` has to be
+#'     provided.
+#' 
+#' -   SchemaId$SchemaName: The name of the schema. Either `SchemaArn` or
+#'     `SchemaName` and `RegistryName` has to be provided.
+#' @param SchemaVersionId The `SchemaVersionId` of the schema version. This field is required for
+#' fetching by schema ID. Either this or the `SchemaId` wrapper has to be
+#' provided.
+#' @param SchemaVersionNumber The version number of the schema.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_schema_version(
+#'   SchemaId = list(
+#'     SchemaArn = "string",
+#'     SchemaName = "string",
+#'     RegistryName = "string"
+#'   ),
+#'   SchemaVersionId = "string",
+#'   SchemaVersionNumber = list(
+#'     LatestVersion = TRUE|FALSE,
+#'     VersionNumber = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_schema_version
+glue_get_schema_version <- function(SchemaId = NULL, SchemaVersionId = NULL, SchemaVersionNumber = NULL) {
+  op <- new_operation(
+    name = "GetSchemaVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_schema_version_input(SchemaId = SchemaId, SchemaVersionId = SchemaVersionId, SchemaVersionNumber = SchemaVersionNumber)
+  output <- .glue$get_schema_version_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_schema_version <- glue_get_schema_version
+
+#' Fetches the schema version difference in the specified difference type
+#' between two stored schema versions in the Schema Registry
+#'
+#' Fetches the schema version difference in the specified difference type
+#' between two stored schema versions in the Schema Registry.
+#' 
+#' This API allows you to compare two schema versions between two schema
+#' definitions under the same schema.
+#'
+#' @usage
+#' glue_get_schema_versions_diff(SchemaId, FirstSchemaVersionNumber,
+#'   SecondSchemaVersionNumber, SchemaDiffType)
+#'
+#' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
+#' structure contains:
+#' 
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     One of `SchemaArn` or `SchemaName` has to be provided.
+#' 
+#' -   SchemaId$SchemaName: The name of the schema. One of `SchemaArn` or
+#'     `SchemaName` has to be provided.
+#' @param FirstSchemaVersionNumber &#91;required&#93; The first of the two schema versions to be compared.
+#' @param SecondSchemaVersionNumber &#91;required&#93; The second of the two schema versions to be compared.
+#' @param SchemaDiffType &#91;required&#93; Refers to `SYNTAX_DIFF`, which is the currently supported diff type.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_schema_versions_diff(
+#'   SchemaId = list(
+#'     SchemaArn = "string",
+#'     SchemaName = "string",
+#'     RegistryName = "string"
+#'   ),
+#'   FirstSchemaVersionNumber = list(
+#'     LatestVersion = TRUE|FALSE,
+#'     VersionNumber = 123
+#'   ),
+#'   SecondSchemaVersionNumber = list(
+#'     LatestVersion = TRUE|FALSE,
+#'     VersionNumber = 123
+#'   ),
+#'   SchemaDiffType = "SYNTAX_DIFF"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_schema_versions_diff
+glue_get_schema_versions_diff <- function(SchemaId, FirstSchemaVersionNumber, SecondSchemaVersionNumber, SchemaDiffType) {
+  op <- new_operation(
+    name = "GetSchemaVersionsDiff",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$get_schema_versions_diff_input(SchemaId = SchemaId, FirstSchemaVersionNumber = FirstSchemaVersionNumber, SecondSchemaVersionNumber = SecondSchemaVersionNumber, SchemaDiffType = SchemaDiffType)
+  output <- .glue$get_schema_versions_diff_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_schema_versions_diff <- glue_get_schema_versions_diff
 
 #' Retrieves a specified security configuration
 #'
@@ -5081,6 +6076,156 @@ glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter 
 }
 .glue$operations$list_ml_transforms <- glue_list_ml_transforms
 
+#' Returns a list of registries that you have created, with minimal
+#' registry information
+#'
+#' Returns a list of registries that you have created, with minimal
+#' registry information. Registries in the `Deleting` status will not be
+#' included in the results. Empty results will be returned if there are no
+#' registries available.
+#'
+#' @usage
+#' glue_list_registries(MaxResults, NextToken)
+#'
+#' @param MaxResults Maximum number of results required per page. If the value is not
+#' supplied, this will be defaulted to 25 per page.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_registries(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_registries
+glue_list_registries <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRegistries",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$list_registries_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_registries_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_registries <- glue_list_registries
+
+#' Returns a list of schema versions that you have created, with minimal
+#' information
+#'
+#' Returns a list of schema versions that you have created, with minimal
+#' information. Schema versions in Deleted status will not be included in
+#' the results. Empty results will be returned if there are no schema
+#' versions available.
+#'
+#' @usage
+#' glue_list_schema_versions(SchemaId, MaxResults, NextToken)
+#'
+#' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
+#' structure contains:
+#' 
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     Either `SchemaArn` or `SchemaName` and `RegistryName` has to be
+#'     provided.
+#' 
+#' -   SchemaId$SchemaName: The name of the schema. Either `SchemaArn` or
+#'     `SchemaName` and `RegistryName` has to be provided.
+#' @param MaxResults Maximum number of results required per page. If the value is not
+#' supplied, this will be defaulted to 25 per page.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_schema_versions(
+#'   SchemaId = list(
+#'     SchemaArn = "string",
+#'     SchemaName = "string",
+#'     RegistryName = "string"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_schema_versions
+glue_list_schema_versions <- function(SchemaId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListSchemaVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$list_schema_versions_input(SchemaId = SchemaId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_schema_versions_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_schema_versions <- glue_list_schema_versions
+
+#' Returns a list of schemas with minimal details
+#'
+#' Returns a list of schemas with minimal details. Schemas in Deleting
+#' status will not be included in the results. Empty results will be
+#' returned if there are no schemas available.
+#' 
+#' When the `RegistryId` is not provided, all the schemas across registries
+#' will be part of the API response.
+#'
+#' @usage
+#' glue_list_schemas(RegistryId, MaxResults, NextToken)
+#'
+#' @param RegistryId A wrapper structure that may contain the registry name and Amazon
+#' Resource Name (ARN).
+#' @param MaxResults Maximum number of results required per page. If the value is not
+#' supplied, this will be defaulted to 25 per page.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_schemas(
+#'   RegistryId = list(
+#'     RegistryName = "string",
+#'     RegistryArn = "string"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_schemas
+glue_list_schemas <- function(RegistryId = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListSchemas",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$list_schemas_input(RegistryId = RegistryId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_schemas_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_schemas <- glue_list_schemas
+
 #' Retrieves the names of all trigger resources in this AWS account, or the
 #' resources with the specified tag
 #'
@@ -5285,6 +6430,61 @@ glue_put_resource_policy <- function(PolicyInJson, ResourceArn = NULL, PolicyHas
 }
 .glue$operations$put_resource_policy <- glue_put_resource_policy
 
+#' Puts the metadata key value pair for a specified schema version ID
+#'
+#' Puts the metadata key value pair for a specified schema version ID. A
+#' maximum of 10 key value pairs will be allowed per schema version. They
+#' can be added over one or more calls.
+#'
+#' @usage
+#' glue_put_schema_version_metadata(SchemaId, SchemaVersionNumber,
+#'   SchemaVersionId, MetadataKeyValue)
+#'
+#' @param SchemaId The unique ID for the schema.
+#' @param SchemaVersionNumber The version number of the schema.
+#' @param SchemaVersionId The unique version ID of the schema version.
+#' @param MetadataKeyValue &#91;required&#93; The metadata key's corresponding value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_schema_version_metadata(
+#'   SchemaId = list(
+#'     SchemaArn = "string",
+#'     SchemaName = "string",
+#'     RegistryName = "string"
+#'   ),
+#'   SchemaVersionNumber = list(
+#'     LatestVersion = TRUE|FALSE,
+#'     VersionNumber = 123
+#'   ),
+#'   SchemaVersionId = "string",
+#'   MetadataKeyValue = list(
+#'     MetadataKey = "string",
+#'     MetadataValue = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_put_schema_version_metadata
+glue_put_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNumber = NULL, SchemaVersionId = NULL, MetadataKeyValue) {
+  op <- new_operation(
+    name = "PutSchemaVersionMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$put_schema_version_metadata_input(SchemaId = SchemaId, SchemaVersionNumber = SchemaVersionNumber, SchemaVersionId = SchemaVersionId, MetadataKeyValue = MetadataKeyValue)
+  output <- .glue$put_schema_version_metadata_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$put_schema_version_metadata <- glue_put_schema_version_metadata
+
 #' Puts the specified workflow run properties for the given workflow run
 #'
 #' Puts the specified workflow run properties for the given workflow run.
@@ -5330,6 +6530,189 @@ glue_put_workflow_run_properties <- function(Name, RunId, RunProperties) {
 }
 .glue$operations$put_workflow_run_properties <- glue_put_workflow_run_properties
 
+#' Queries for the schema version metadata information
+#'
+#' Queries for the schema version metadata information.
+#'
+#' @usage
+#' glue_query_schema_version_metadata(SchemaId, SchemaVersionNumber,
+#'   SchemaVersionId, MetadataList, MaxResults, NextToken)
+#'
+#' @param SchemaId A wrapper structure that may contain the schema name and Amazon Resource
+#' Name (ARN).
+#' @param SchemaVersionNumber The version number of the schema.
+#' @param SchemaVersionId The unique version ID of the schema version.
+#' @param MetadataList Search key-value pairs for metadata, if they are not provided all the
+#' metadata information will be fetched.
+#' @param MaxResults Maximum number of results required per page. If the value is not
+#' supplied, this will be defaulted to 25 per page.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$query_schema_version_metadata(
+#'   SchemaId = list(
+#'     SchemaArn = "string",
+#'     SchemaName = "string",
+#'     RegistryName = "string"
+#'   ),
+#'   SchemaVersionNumber = list(
+#'     LatestVersion = TRUE|FALSE,
+#'     VersionNumber = 123
+#'   ),
+#'   SchemaVersionId = "string",
+#'   MetadataList = list(
+#'     list(
+#'       MetadataKey = "string",
+#'       MetadataValue = "string"
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_query_schema_version_metadata
+glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNumber = NULL, SchemaVersionId = NULL, MetadataList = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "QuerySchemaVersionMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$query_schema_version_metadata_input(SchemaId = SchemaId, SchemaVersionNumber = SchemaVersionNumber, SchemaVersionId = SchemaVersionId, MetadataList = MetadataList, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$query_schema_version_metadata_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$query_schema_version_metadata <- glue_query_schema_version_metadata
+
+#' Adds a new version to the existing schema
+#'
+#' Adds a new version to the existing schema. Returns an error if new
+#' version of schema does not meet the compatibility requirements of the
+#' schema set. This API will not create a new schema set and will return a
+#' 404 error if the schema set is not already present in the Schema
+#' Registry.
+#' 
+#' If this is the first schema definition to be registered in the Schema
+#' Registry, this API will store the schema version and return immediately.
+#' Otherwise, this call has the potential to run longer than other
+#' operations due to compatibility modes. You can call the
+#' `GetSchemaVersion` API with the `SchemaVersionId` to check compatibility
+#' modes.
+#' 
+#' If the same schema definition is already stored in Schema Registry as a
+#' version, the schema ID of the existing schema is returned to the caller.
+#'
+#' @usage
+#' glue_register_schema_version(SchemaId, SchemaDefinition)
+#'
+#' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
+#' structure contains:
+#' 
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     Either `SchemaArn` or `SchemaName` and `RegistryName` has to be
+#'     provided.
+#' 
+#' -   SchemaId$SchemaName: The name of the schema. Either `SchemaArn` or
+#'     `SchemaName` and `RegistryName` has to be provided.
+#' @param SchemaDefinition &#91;required&#93; The schema definition using the `DataFormat` setting for the
+#' `SchemaName`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$register_schema_version(
+#'   SchemaId = list(
+#'     SchemaArn = "string",
+#'     SchemaName = "string",
+#'     RegistryName = "string"
+#'   ),
+#'   SchemaDefinition = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_register_schema_version
+glue_register_schema_version <- function(SchemaId, SchemaDefinition) {
+  op <- new_operation(
+    name = "RegisterSchemaVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$register_schema_version_input(SchemaId = SchemaId, SchemaDefinition = SchemaDefinition)
+  output <- .glue$register_schema_version_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$register_schema_version <- glue_register_schema_version
+
+#' Removes a key value pair from the schema version metadata for the
+#' specified schema version ID
+#'
+#' Removes a key value pair from the schema version metadata for the
+#' specified schema version ID.
+#'
+#' @usage
+#' glue_remove_schema_version_metadata(SchemaId, SchemaVersionNumber,
+#'   SchemaVersionId, MetadataKeyValue)
+#'
+#' @param SchemaId A wrapper structure that may contain the schema name and Amazon Resource
+#' Name (ARN).
+#' @param SchemaVersionNumber The version number of the schema.
+#' @param SchemaVersionId The unique version ID of the schema version.
+#' @param MetadataKeyValue &#91;required&#93; The value of the metadata key.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_schema_version_metadata(
+#'   SchemaId = list(
+#'     SchemaArn = "string",
+#'     SchemaName = "string",
+#'     RegistryName = "string"
+#'   ),
+#'   SchemaVersionNumber = list(
+#'     LatestVersion = TRUE|FALSE,
+#'     VersionNumber = 123
+#'   ),
+#'   SchemaVersionId = "string",
+#'   MetadataKeyValue = list(
+#'     MetadataKey = "string",
+#'     MetadataValue = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_remove_schema_version_metadata
+glue_remove_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNumber = NULL, SchemaVersionId = NULL, MetadataKeyValue) {
+  op <- new_operation(
+    name = "RemoveSchemaVersionMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$remove_schema_version_metadata_input(SchemaId = SchemaId, SchemaVersionNumber = SchemaVersionNumber, SchemaVersionId = SchemaVersionId, MetadataKeyValue = MetadataKeyValue)
+  output <- .glue$remove_schema_version_metadata_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$remove_schema_version_metadata <- glue_remove_schema_version_metadata
+
 #' Resets a bookmark entry
 #'
 #' Resets a bookmark entry.
@@ -5368,6 +6751,52 @@ glue_reset_job_bookmark <- function(JobName, RunId = NULL) {
 }
 .glue$operations$reset_job_bookmark <- glue_reset_job_bookmark
 
+#' Restarts selected nodes of a previous partially completed workflow run
+#' and resumes the workflow run
+#'
+#' Restarts selected nodes of a previous partially completed workflow run
+#' and resumes the workflow run. The selected nodes and all nodes that are
+#' downstream from the selected nodes are run.
+#'
+#' @usage
+#' glue_resume_workflow_run(Name, RunId, NodeIds)
+#'
+#' @param Name &#91;required&#93; The name of the workflow to resume.
+#' @param RunId &#91;required&#93; The ID of the workflow run to resume.
+#' @param NodeIds &#91;required&#93; A list of the node IDs for the nodes you want to restart. The nodes that
+#' are to be restarted must have a run attempt in the original run.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$resume_workflow_run(
+#'   Name = "string",
+#'   RunId = "string",
+#'   NodeIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_resume_workflow_run
+glue_resume_workflow_run <- function(Name, RunId, NodeIds) {
+  op <- new_operation(
+    name = "ResumeWorkflowRun",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$resume_workflow_run_input(Name = Name, RunId = RunId, NodeIds = NodeIds)
+  output <- .glue$resume_workflow_run_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$resume_workflow_run <- glue_resume_workflow_run
+
 #' Searches a set of tables based on properties in the table metadata as
 #' well as on the parent database
 #'
@@ -5387,10 +6816,20 @@ glue_reset_job_bookmark <- function(JobName, RunId = NULL) {
 #' glue_search_tables(CatalogId, NextToken, Filters, SearchText,
 #'   SortCriteria, MaxResults, ResourceShareType)
 #'
-#' @param CatalogId A unique identifier, consisting of ` <i>account_id</i>/datalake`.
+#' @param CatalogId A unique identifier, consisting of ` <i>account_id</i> `.
 #' @param NextToken A continuation token, included if this is a continuation call.
 #' @param Filters A list of key-value pairs, and a comparator used to filter the search
 #' results. Returns all entities matching the predicate.
+#' 
+#' The `Comparator` member of the `PropertyPredicate` struct is used only
+#' for time fields, and can be omitted for other field types. Also, when
+#' comparing string values, such as when `Key=Name`, a fuzzy match
+#' algorithm is used. The `Key` field (for example, the value of the `Name`
+#' field) is split on certain punctuation characters, for example, -, :,
+#' \\#, etc. into tokens. Then each token is exact-match compared with the
+#' `Value` member of `PropertyPredicate`. For example, if `Key=Name` and
+#' `Value=link`, tables named `customer-link` and `xx-link-yy` are
+#' returned, but `xxlinkyy` is not returned.
 #' @param SearchText A string used for a text search.
 #' 
 #' Specifying a value in quotes filters based on an exact match to the
@@ -6242,6 +7681,9 @@ glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #' Creates or updates partition statistics of columns
 #'
 #' Creates or updates partition statistics of columns.
+#' 
+#' The Identity and Access Management (IAM) permission required for this
+#' operation is `UpdatePartition`.
 #'
 #' @usage
 #' glue_update_column_statistics_for_partition(CatalogId, DatabaseName,
@@ -6351,6 +7793,9 @@ glue_update_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 #' Creates or updates table statistics of columns
 #'
 #' Creates or updates table statistics of columns.
+#' 
+#' The Identity and Access Management (IAM) permission required for this
+#' operation is `UpdateTable`.
 #'
 #' @usage
 #' glue_update_column_statistics_for_table(CatalogId, DatabaseName,
@@ -6473,7 +7918,7 @@ glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 #'   ConnectionInput = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
@@ -6518,8 +7963,8 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #'
 #' @usage
 #' glue_update_crawler(Name, Role, DatabaseName, Description, Targets,
-#'   Schedule, Classifiers, TablePrefix, SchemaChangePolicy, Configuration,
-#'   CrawlerSecurityConfiguration)
+#'   Schedule, Classifiers, TablePrefix, SchemaChangePolicy, RecrawlPolicy,
+#'   LineageConfiguration, Configuration, CrawlerSecurityConfiguration)
 #'
 #' @param Name &#91;required&#93; Name of the new crawler.
 #' @param Role The IAM role or Amazon Resource Name (ARN) of an IAM role that is used
@@ -6539,6 +7984,9 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #' classification.
 #' @param TablePrefix The table prefix used for catalog tables that are created.
 #' @param SchemaChangePolicy The policy for the crawler's update and deletion behavior.
+#' @param RecrawlPolicy A policy that specifies whether to crawl the entire dataset again, or to
+#' crawl only folders that were added since the last crawler run.
+#' @param LineageConfiguration Specifies data lineage configuration settings for the crawler.
 #' @param Configuration Crawler configuration information. This versioned JSON string allows
 #' users to specify aspects of a crawler's behavior. For more information,
 #' see [Configuring a
@@ -6559,7 +8007,8 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #'         Path = "string",
 #'         Exclusions = list(
 #'           "string"
-#'         )
+#'         ),
+#'         ConnectionName = "string"
 #'       )
 #'     ),
 #'     JdbcTargets = list(
@@ -6569,6 +8018,13 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #'         Exclusions = list(
 #'           "string"
 #'         )
+#'       )
+#'     ),
+#'     MongoDBTargets = list(
+#'       list(
+#'         ConnectionName = "string",
+#'         Path = "string",
+#'         ScanAll = TRUE|FALSE
 #'       )
 #'     ),
 #'     DynamoDBTargets = list(
@@ -6596,6 +8052,12 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #'     UpdateBehavior = "LOG"|"UPDATE_IN_DATABASE",
 #'     DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
 #'   ),
+#'   RecrawlPolicy = list(
+#'     RecrawlBehavior = "CRAWL_EVERYTHING"|"CRAWL_NEW_FOLDERS_ONLY"
+#'   ),
+#'   LineageConfiguration = list(
+#'     CrawlerLineageSettings = "ENABLE"|"DISABLE"
+#'   ),
 #'   Configuration = "string",
 #'   CrawlerSecurityConfiguration = "string"
 #' )
@@ -6604,14 +8066,14 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #' @keywords internal
 #'
 #' @rdname glue_update_crawler
-glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Description = NULL, Targets = NULL, Schedule = NULL, Classifiers = NULL, TablePrefix = NULL, SchemaChangePolicy = NULL, Configuration = NULL, CrawlerSecurityConfiguration = NULL) {
+glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Description = NULL, Targets = NULL, Schedule = NULL, Classifiers = NULL, TablePrefix = NULL, SchemaChangePolicy = NULL, RecrawlPolicy = NULL, LineageConfiguration = NULL, Configuration = NULL, CrawlerSecurityConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateCrawler",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$update_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration)
+  input <- .glue$update_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, RecrawlPolicy = RecrawlPolicy, LineageConfiguration = LineageConfiguration, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration)
   output <- .glue$update_crawler_output()
   config <- get_config()
   svc <- .glue$service(config)
@@ -6992,8 +8454,11 @@ glue_update_ml_transform <- function(TransformId, Name = NULL, Description = NUL
 #' none is provided, the AWS account ID is used by default.
 #' @param DatabaseName &#91;required&#93; The name of the catalog database in which the table in question resides.
 #' @param TableName &#91;required&#93; The name of the table in which the partition to be updated is located.
-#' @param PartitionValueList &#91;required&#93; A list of the values defining the partition.
+#' @param PartitionValueList &#91;required&#93; List of partition key values that define the partition to update.
 #' @param PartitionInput &#91;required&#93; The new partition object to update the partition to.
+#' 
+#' The `Values` property can't be changed. If you want to change the
+#' partition key values for a partition, delete and recreate the partition.
 #'
 #' @section Request syntax:
 #' ```
@@ -7057,7 +8522,16 @@ glue_update_ml_transform <- function(TransformId, Name = NULL, Description = NUL
 #'           "string"
 #'         )
 #'       ),
-#'       StoredAsSubDirectories = TRUE|FALSE
+#'       StoredAsSubDirectories = TRUE|FALSE,
+#'       SchemaReference = list(
+#'         SchemaId = list(
+#'           SchemaArn = "string",
+#'           SchemaName = "string",
+#'           RegistryName = "string"
+#'         ),
+#'         SchemaVersionId = "string",
+#'         SchemaVersionNumber = 123
+#'       )
 #'     ),
 #'     Parameters = list(
 #'       "string"
@@ -7088,6 +8562,124 @@ glue_update_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
   return(response)
 }
 .glue$operations$update_partition <- glue_update_partition
+
+#' Updates an existing registry which is used to hold a collection of
+#' schemas
+#'
+#' Updates an existing registry which is used to hold a collection of
+#' schemas. The updated properties relate to the registry, and do not
+#' modify any of the schemas within the registry.
+#'
+#' @usage
+#' glue_update_registry(RegistryId, Description)
+#'
+#' @param RegistryId &#91;required&#93; This is a wrapper structure that may contain the registry name and
+#' Amazon Resource Name (ARN).
+#' @param Description &#91;required&#93; A description of the registry. If description is not provided, this
+#' field will not be updated.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_registry(
+#'   RegistryId = list(
+#'     RegistryName = "string",
+#'     RegistryArn = "string"
+#'   ),
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_registry
+glue_update_registry <- function(RegistryId, Description) {
+  op <- new_operation(
+    name = "UpdateRegistry",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$update_registry_input(RegistryId = RegistryId, Description = Description)
+  output <- .glue$update_registry_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_registry <- glue_update_registry
+
+#' Updates the description, compatibility setting, or version checkpoint
+#' for a schema set
+#'
+#' Updates the description, compatibility setting, or version checkpoint
+#' for a schema set.
+#' 
+#' For updating the compatibility setting, the call will not validate
+#' compatibility for the entire set of schema versions with the new
+#' compatibility setting. If the value for `Compatibility` is provided, the
+#' `VersionNumber` (a checkpoint) is also required. The API will validate
+#' the checkpoint version number for consistency.
+#' 
+#' If the value for the `VersionNumber` (checkpoint) is provided,
+#' `Compatibility` is optional and this can be used to set/reset a
+#' checkpoint for the schema.
+#' 
+#' This update will happen only if the schema is in the AVAILABLE state.
+#'
+#' @usage
+#' glue_update_schema(SchemaId, SchemaVersionNumber, Compatibility,
+#'   Description)
+#'
+#' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
+#' structure contains:
+#' 
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     One of `SchemaArn` or `SchemaName` has to be provided.
+#' 
+#' -   SchemaId$SchemaName: The name of the schema. One of `SchemaArn` or
+#'     `SchemaName` has to be provided.
+#' @param SchemaVersionNumber Version number required for check pointing. One of `VersionNumber` or
+#' `Compatibility` has to be provided.
+#' @param Compatibility The new compatibility setting for the schema.
+#' @param Description The new description for the schema.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_schema(
+#'   SchemaId = list(
+#'     SchemaArn = "string",
+#'     SchemaName = "string",
+#'     RegistryName = "string"
+#'   ),
+#'   SchemaVersionNumber = list(
+#'     LatestVersion = TRUE|FALSE,
+#'     VersionNumber = 123
+#'   ),
+#'   Compatibility = "NONE"|"DISABLED"|"BACKWARD"|"BACKWARD_ALL"|"FORWARD"|"FORWARD_ALL"|"FULL"|"FULL_ALL",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_schema
+glue_update_schema <- function(SchemaId, SchemaVersionNumber = NULL, Compatibility = NULL, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateSchema",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .glue$update_schema_input(SchemaId = SchemaId, SchemaVersionNumber = SchemaVersionNumber, Compatibility = Compatibility, Description = Description)
+  output <- .glue$update_schema_output()
+  config <- get_config()
+  svc <- .glue$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_schema <- glue_update_schema
 
 #' Updates a metadata table in the Data Catalog
 #'
@@ -7168,7 +8760,16 @@ glue_update_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #'           "string"
 #'         )
 #'       ),
-#'       StoredAsSubDirectories = TRUE|FALSE
+#'       StoredAsSubDirectories = TRUE|FALSE,
+#'       SchemaReference = list(
+#'         SchemaId = list(
+#'           SchemaArn = "string",
+#'           SchemaName = "string",
+#'           RegistryName = "string"
+#'         ),
+#'         SchemaVersionId = "string",
+#'         SchemaVersionNumber = 123
+#'       )
 #'     ),
 #'     PartitionKeys = list(
 #'       list(
@@ -7346,12 +8947,18 @@ glue_update_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' Updates an existing workflow.
 #'
 #' @usage
-#' glue_update_workflow(Name, Description, DefaultRunProperties)
+#' glue_update_workflow(Name, Description, DefaultRunProperties,
+#'   MaxConcurrentRuns)
 #'
 #' @param Name &#91;required&#93; Name of the workflow to be updated.
 #' @param Description The description of the workflow.
 #' @param DefaultRunProperties A collection of properties to be used as part of each execution of the
 #' workflow.
+#' @param MaxConcurrentRuns You can use this parameter to prevent unwanted multiple updates to data,
+#' to control costs, or in some cases, to prevent exceeding the maximum
+#' number of concurrent runs of any of the component jobs. If you leave
+#' this parameter blank, there is no limit to the number of concurrent
+#' workflow runs.
 #'
 #' @section Request syntax:
 #' ```
@@ -7360,21 +8967,22 @@ glue_update_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #'   Description = "string",
 #'   DefaultRunProperties = list(
 #'     "string"
-#'   )
+#'   ),
+#'   MaxConcurrentRuns = 123
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname glue_update_workflow
-glue_update_workflow <- function(Name, Description = NULL, DefaultRunProperties = NULL) {
+glue_update_workflow <- function(Name, Description = NULL, DefaultRunProperties = NULL, MaxConcurrentRuns = NULL) {
   op <- new_operation(
     name = "UpdateWorkflow",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .glue$update_workflow_input(Name = Name, Description = Description, DefaultRunProperties = DefaultRunProperties)
+  input <- .glue$update_workflow_input(Name = Name, Description = Description, DefaultRunProperties = DefaultRunProperties, MaxConcurrentRuns = MaxConcurrentRuns)
   output <- .glue$update_workflow_output()
   config <- get_config()
   svc <- .glue$service(config)

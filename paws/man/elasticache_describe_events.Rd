@@ -53,7 +53,7 @@ however, you can retrieve up to 14 days' worth of events if necessary.
 \section{Request syntax}{
 \preformatted{svc$describe_events(
   SourceIdentifier = "string",
-  SourceType = "cache-cluster"|"cache-parameter-group"|"cache-security-group"|"cache-subnet-group"|"replication-group",
+  SourceType = "cache-cluster"|"cache-parameter-group"|"cache-security-group"|"cache-subnet-group"|"replication-group"|"user"|"user-group",
   StartTime = as.POSIXct(
     "2015-01-01"
   ),

@@ -17,7 +17,7 @@ Specifies the health check settings to use when evaluating the health
 state of your EC2 instances.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html}{Configure Health Checks for Your Load Balancer}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html}{Configure Health Checks for Your Load Balancer}
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{

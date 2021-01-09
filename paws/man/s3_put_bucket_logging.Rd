@@ -5,14 +5,22 @@
 \title{Set the logging parameters for a bucket and to specify permissions for
 who can view and modify the logging parameters}
 \usage{
-s3_put_bucket_logging(Bucket, BucketLoggingStatus, ContentMD5)
+s3_put_bucket_logging(Bucket, BucketLoggingStatus, ContentMD5,
+  ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which to set the logging parameters.}
 
 \item{BucketLoggingStatus}{[required] Container for logging status information.}
 
-\item{ContentMD5}{The MD5 hash of the \code{PutBucketLogging} request body.}
+\item{ContentMD5}{The MD5 hash of the \code{PutBucketLogging} request body.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Set the logging parameters for a bucket and to specify permissions for
@@ -55,16 +63,17 @@ request element:
 
 For more information about server access logging, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html}{Server Access Logging}.
 
-For more information about creating a bucket, see CreateBucket. For more
-information about returning the logging status of a bucket, see
-GetBucketLogging.
+For more information about creating a bucket, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}.
+For more information about returning the logging status of a bucket, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLogging.html}{GetBucketLogging}.
 
 The following operations are related to \code{PutBucketLogging}:
 \itemize{
-\item PutObject
-\item DeleteBucket
-\item CreateBucket
-\item GetBucketLogging
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html}{DeleteBucket}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLogging.html}{GetBucketLogging}
 }
 }
 \section{Request syntax}{
@@ -88,7 +97,8 @@ The following operations are related to \code{PutBucketLogging}:
       TargetPrefix = "string"
     )
   ),
-  ContentMD5 = "string"
+  ContentMD5 = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

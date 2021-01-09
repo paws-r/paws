@@ -16,7 +16,7 @@ and data types, including common parameters and error codes.
 
 AWS OpsWorks Stacks is an application management service that provides
 an integrated experience for overseeing the complete application
-lifecycle. For information about this product, go to the \href{http://aws.amazon.com/opsworks/}{AWS OpsWorks} details page.
+lifecycle. For information about this product, go to the \href{https://aws.amazon.com/opsworks/}{AWS OpsWorks} details page.
 
 \strong{SDKs and CLI}
 
@@ -27,10 +27,10 @@ see:
 \itemize{
 \item \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html}{AWS CLI}
 \item \href{https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html}{AWS SDK for Java}
-\item \href{https://docs.aws.amazon.com/sdkfornet/latest/apidocs/html/N_Amazon_OpsWorks.htm}{AWS SDK for .NET}
-\item \href{https://docs.aws.amazon.com/aws-sdk-php-2/latest/class-Aws.OpsWorks.OpsWorksClient.html}{AWS SDK for PHP 2}
-\item \href{http://docs.aws.amazon.com/sdkforruby/api/}{AWS SDK for Ruby}
-\item \href{http://aws.amazon.com/documentation/sdkforjavascript/}{AWS SDK for Node.js}
+\item \href{https://docs.aws.amazon.com/sdkfornet/latest/apidocs/Index.html}{AWS SDK for .NET}
+\item \href{https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.OpsWorks.OpsWorksClient.html}{AWS SDK for PHP 2}
+\item \href{https://docs.aws.amazon.com/sdk-for-ruby/v2/api/}{AWS SDK for Ruby}
+\item \href{https://docs.aws.amazon.com/sdk-for-javascript/index.html}{AWS SDK for Node.js}
 \item \href{http://docs.pythonboto.org/en/latest/ref/opsworks.html}{AWS SDK for Python(Boto)}
 }
 

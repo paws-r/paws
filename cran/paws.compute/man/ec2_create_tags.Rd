@@ -33,7 +33,7 @@ unique per resource.
 For more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources}
 in the \emph{Amazon Elastic Compute Cloud User Guide}. For more information
 about creating IAM policies that control users' access to resources
-based on tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html}{Supported Resource-Level Permissions for Amazon EC2 API Actions}
+based on tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-policy-structure.html#ec2-supported-iam-actions-resources}{Supported Resource-Level Permissions for Amazon EC2 API Actions}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

@@ -2,25 +2,25 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_update_app}
 \alias{sms_update_app}
-\title{Updates an application}
+\title{Updates the specified application}
 \usage{
 sms_update_app(appId, name, description, roleName, serverGroups, tags)
 }
 \arguments{
-\item{appId}{ID of the application to update.}
+\item{appId}{The ID of the application.}
 
-\item{name}{New name of the application.}
+\item{name}{The new name of the application.}
 
-\item{description}{New description of the application.}
+\item{description}{The new description of the application.}
 
-\item{roleName}{Name of the service role in the customer's account used by AWS SMS.}
+\item{roleName}{The name of the service role in the customer's account used by AWS SMS.}
 
-\item{serverGroups}{List of server groups in the application to update.}
+\item{serverGroups}{The server groups in the application to update.}
 
-\item{tags}{List of tags to associate with the application.}
+\item{tags}{The tags to associate with the application.}
 }
 \description{
-Updates an application.
+Updates the specified application.
 }
 \section{Request syntax}{
 \preformatted{svc$update_app(

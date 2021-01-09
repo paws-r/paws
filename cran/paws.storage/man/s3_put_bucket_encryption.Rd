@@ -2,11 +2,11 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_encryption}
 \alias{s3_put_bucket_encryption}
-\title{This implementation of the PUT operation uses the encryption subresource
-to set the default encryption state of an existing bucket}
+\title{This operation uses the encryption subresource to configure default
+encryption and Amazon S3 Bucket Key for an existing bucket}
 \usage{
 s3_put_bucket_encryption(Bucket, ContentMD5,
-  ServerSideEncryptionConfiguration)
+  ServerSideEncryptionConfiguration, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] Specifies default encryption for a bucket using server-side encryption
@@ -16,20 +16,30 @@ encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bu
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the server-side encryption
-configuration. This parameter is auto-populated when using the command
-from the CLI.}
+configuration.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.}
 
 \item{ServerSideEncryptionConfiguration}{[required]}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
-This implementation of the \code{PUT} operation uses the \code{encryption}
-subresource to set the default encryption state of an existing bucket.
+This operation uses the \code{encryption} subresource to configure default
+encryption and Amazon S3 Bucket Key for an existing bucket.
 }
 \details{
-This implementation of the \code{PUT} operation sets default encryption for a
-bucket using server-side encryption with Amazon S3-managed keys SSE-S3
-or AWS KMS customer master keys (CMKs) (SSE-KMS). For information about
-the Amazon S3 default encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}.
+Default encryption for a bucket can use server-side encryption with
+Amazon S3-managed keys (SSE-S3) or AWS KMS customer master keys
+(SSE-KMS). If you specify default encryption using SSE-KMS, you can also
+configure Amazon S3 Bucket Key. For information about default
+encryption, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html}{Amazon S3 default bucket encryption}
+in the \emph{Amazon Simple Storage Service Developer Guide}. For more
+information about S3 Bucket Keys, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html}{Amazon S3 Bucket Keys}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 This operation requires AWS Signature Version 4. For more information,
 see Authenticating Requests (AWS Signature Version 4).
@@ -43,8 +53,8 @@ in the Amazon Simple Storage Service Developer Guide.
 
 \strong{Related Resources}
 \itemize{
-\item GetBucketEncryption
-\item DeleteBucketEncryption
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html}{GetBucketEncryption}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html}{DeleteBucketEncryption}
 }
 }
 \section{Request syntax}{
@@ -57,10 +67,12 @@ in the Amazon Simple Storage Service Developer Guide.
         ApplyServerSideEncryptionByDefault = list(
           SSEAlgorithm = "AES256"|"aws:kms",
           KMSMasterKeyID = "string"
-        )
+        ),
+        BucketKeyEnabled = TRUE|FALSE
       )
     )
-  )
+  ),
+  ExpectedBucketOwner = "string"
 )
 }
 }

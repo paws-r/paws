@@ -32,6 +32,7 @@ Jobs to monitor the data captured for an Amazon SageMaker Endoint.
     ),
     MonitoringJobDefinition = list(
       BaselineConfig = list(
+        BaseliningJobName = "string",
         ConstraintsResource = list(
           S3Uri = "string"
         ),
@@ -45,7 +46,13 @@ Jobs to monitor the data captured for an Amazon SageMaker Endoint.
             EndpointName = "string",
             LocalPath = "string",
             S3InputMode = "Pipe"|"File",
-            S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key"
+            S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+            FeaturesAttribute = "string",
+            InferenceAttribute = "string",
+            ProbabilityAttribute = "string",
+            ProbabilityThresholdAttribute = 123.0,
+            StartTimeOffset = "string",
+            EndTimeOffset = "string"
           )
         )
       ),
@@ -99,7 +106,9 @@ Jobs to monitor the data captured for an Amazon SageMaker Endoint.
         )
       ),
       RoleArn = "string"
-    )
+    ),
+    MonitoringJobDefinitionName = "string",
+    MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
   ),
   Tags = list(
     list(

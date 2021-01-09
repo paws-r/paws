@@ -20,7 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item \code{location} - This depends on the location type. For example, if the
 location type is \code{region} (default), the location is the Region code
 (for example, \code{us-east-2}.)
-\item \code{instance-type} - The instance type.
+\item \code{instance-type} - The instance type. For example, \code{c5.2xlarge}.
 }}
 
 \item{MaxResults}{The maximum number of results to return for the request in a single

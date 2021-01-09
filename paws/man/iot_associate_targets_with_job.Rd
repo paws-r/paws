@@ -4,7 +4,7 @@
 \alias{iot_associate_targets_with_job}
 \title{Associates a group with a continuous job}
 \usage{
-iot_associate_targets_with_job(targets, jobId, comment)
+iot_associate_targets_with_job(targets, jobId, comment, namespaceId)
 }
 \arguments{
 \item{targets}{[required] A list of thing group ARNs that define the targets of the job.}
@@ -13,6 +13,16 @@ iot_associate_targets_with_job(targets, jobId, comment)
 
 \item{comment}{An optional comment string describing why the job was associated with
 the targets.}
+
+\item{namespaceId}{The namespace used to indicate that a job is a customer-managed job.
+
+When you specify a value for this parameter, AWS IoT Core sends jobs
+notifications to MQTT topics that contain the value in the following
+format.
+
+\verb{$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/}
+
+The \code{namespaceId} feature is in public preview.}
 }
 \description{
 Associates a group with a continuous job. The following criteria must be
@@ -33,7 +43,8 @@ exceed 100.
     "string"
   ),
   jobId = "string",
-  comment = "string"
+  comment = "string",
+  namespaceId = "string"
 )
 }
 }

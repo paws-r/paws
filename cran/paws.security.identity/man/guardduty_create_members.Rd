@@ -12,12 +12,24 @@ guardduty_create_members(DetectorId, AccountDetails)
 associate member accounts with.}
 
 \item{AccountDetails}{[required] A list of account ID and email address pairs of the accounts that you
-want to associate with the master GuardDuty account.}
+want to associate with the GuardDuty administrator account.}
 }
 \description{
 Creates member accounts of the current AWS account by specifying a list
-of AWS account IDs. The current AWS account can then invite these
-members to manage GuardDuty in their accounts.
+of AWS account IDs. This step is a prerequisite for managing the
+associated member accounts either by invitation or through an
+organization.
+}
+\details{
+When using \verb{Create Members} as an organizations delegated administrator
+this action will enable GuardDuty in the added member accounts, with the
+exception of the organization delegated administrator account, which
+must enable GuardDuty prior to being added as a member.
+
+If you are adding accounts by invitation use this action after GuardDuty
+has been enabled in potential member accounts and before using
+\href{https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html}{\verb{Invite Members}}
+.
 }
 \section{Request syntax}{
 \preformatted{svc$create_members(

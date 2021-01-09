@@ -6,7 +6,8 @@
 range}
 \usage{
 xray_get_time_series_service_statistics(StartTime, EndTime, GroupName,
-  GroupARN, EntitySelectorExpression, Period, NextToken)
+  GroupARN, EntitySelectorExpression, Period, ForecastStatistics,
+  NextToken)
 }
 \arguments{
 \item{StartTime}{[required] The start of the time frame for which to aggregate statistics.}
@@ -15,13 +16,17 @@ xray_get_time_series_service_statistics(StartTime, EndTime, GroupName,
 
 \item{GroupName}{The case-sensitive name of the group for which to pull statistics from.}
 
-\item{GroupARN}{The ARN of the group for which to pull statistics from.}
+\item{GroupARN}{The Amazon Resource Name (ARN) of the group for which to pull statistics
+from.}
 
 \item{EntitySelectorExpression}{A filter expression defining entities that will be aggregated for
 statistics. Supports ID, service, and edge functions. If no selector
 expression is specified, edge statistics are returned.}
 
 \item{Period}{Aggregation period in seconds.}
+
+\item{ForecastStatistics}{The forecasted high and low fault count values. Forecast enabled
+requests require the EntitySelectorExpression ID be provided.}
 
 \item{NextToken}{Pagination token.}
 }
@@ -41,6 +46,7 @@ range.
   GroupARN = "string",
   EntitySelectorExpression = "string",
   Period = 123,
+  ForecastStatistics = TRUE|FALSE,
   NextToken = "string"
 )
 }

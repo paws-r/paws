@@ -2,8 +2,7 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_create_backup_plan}
 \alias{backup_create_backup_plan}
-\title{Backup plans are documents that contain information that AWS Backup uses
-to schedule tasks that create recovery points of resources}
+\title{Creates a backup plan using a backup plan name and backup rules}
 \usage{
 backup_create_backup_plan(BackupPlan, BackupPlanTags, CreatorRequestId)
 }
@@ -16,13 +15,14 @@ resources that you create. Each tag is a key-value pair. The specified
 tags are assigned to all backups created with this plan.}
 
 \item{CreatorRequestId}{Identifies the request and allows failed requests to be retried without
-the risk of executing the operation twice. If the request includes a
+the risk of running the operation twice. If the request includes a
 \code{CreatorRequestId} that matches an existing backup plan, that plan is
 returned. This parameter is optional.}
 }
 \description{
-Backup plans are documents that contain information that AWS Backup uses
-to schedule tasks that create recovery points of resources.
+Creates a backup plan using a backup plan name and backup rules. A
+backup plan is a document that contains information that AWS Backup uses
+to schedule tasks that create recovery points for resources.
 }
 \details{
 If you call \code{CreateBackupPlan} with a plan that already exists, an
@@ -54,6 +54,14 @@ If you call \code{CreateBackupPlan} with a plan that already exists, an
             ),
             DestinationBackupVaultArn = "string"
           )
+        )
+      )
+    ),
+    AdvancedBackupSettings = list(
+      list(
+        ResourceType = "string",
+        BackupOptions = list(
+          "string"
         )
       )
     )

@@ -35,7 +35,7 @@ Describes the specified Savings Plans.
   nextToken = "string",
   maxResults = 123,
   states = list(
-    "payment-pending"|"payment-failed"|"active"|"retired"
+    "payment-pending"|"payment-failed"|"active"|"retired"|"queued"|"queued-deleted"
   ),
   filters = list(
     list(

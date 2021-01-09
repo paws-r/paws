@@ -5,13 +5,25 @@ NULL
 
 .savingsplans$create_savings_plan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(savingsPlanOfferingId = structure(logical(0), tags = list(type = "string")), commitment = structure(logical(0), tags = list(type = "string")), upfrontPaymentAmount = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(savingsPlanOfferingId = structure(logical(0), tags = list(type = "string")), commitment = structure(logical(0), tags = list(type = "string")), upfrontPaymentAmount = structure(logical(0), tags = list(type = "string")), purchaseTime = structure(logical(0), tags = list(type = "timestamp")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .savingsplans$create_savings_plan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(savingsPlanId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.savingsplans$delete_queued_savings_plan_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(savingsPlanId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.savingsplans$delete_queued_savings_plan_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

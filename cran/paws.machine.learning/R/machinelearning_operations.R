@@ -90,7 +90,7 @@ machinelearning_add_tags <- function(Tags, ResourceId, ResourceType) {
 #' Amazon ML needs permissions to store and retrieve the logs on your
 #' behalf. For information about how to set permissions, see the [Amazon
 #' Machine Learning Developer
-#' Guide](http://docs.aws.amazon.com/machine-learning/latest/dg).
+#' Guide](https://docs.aws.amazon.com/machine-learning/latest/dg/).
 #'
 #' @section Request syntax:
 #' ```
@@ -127,7 +127,7 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' (Amazon RDS)
 #'
 #' Creates a `DataSource` object from an [Amazon Relational Database
-#' Service](http://aws.amazon.com/rds/) (Amazon RDS). A `DataSource`
+#' Service](https://aws.amazon.com/rds/) (Amazon RDS). A `DataSource`
 #' references data that can be used to perform `CreateMLModel`,
 #' `CreateEvaluation`, or `CreateBatchPrediction` operations.
 #' 
@@ -164,13 +164,13 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' -   ResourceRole - A role (DataPipelineDefaultResourceRole) assumed by
 #'     an EC2 instance to carry out the copy task from Amazon RDS to Amazon
 #'     Simple Storage Service (Amazon S3). For more information, see [Role
-#'     templates](http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+#'     templates](https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
 #'     for data pipelines.
 #' 
 #' -   ServiceRole - A role (DataPipelineDefaultRole) assumed by the AWS
 #'     Data Pipeline service to monitor the progress of the copy task from
 #'     Amazon RDS to Amazon S3. For more information, see [Role
-#'     templates](http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+#'     templates](https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
 #'     for data pipelines.
 #' 
 #' -   SecurityInfo - The security information to use to access an RDS DB
@@ -593,7 +593,7 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
 #'     values.
 #' 
 #' For more information, see the [Amazon Machine Learning Developer
-#' Guide](http://docs.aws.amazon.com/machine-learning/latest/dg).
+#' Guide](https://docs.aws.amazon.com/machine-learning/latest/dg/).
 #' @param Parameters A list of the training parameters in the `MLModel`. The list is
 #' implemented as a map of key-value pairs.
 #' 

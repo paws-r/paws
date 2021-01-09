@@ -14,12 +14,12 @@ AWS Elastic Beanstalk makes it easy for you to create, deploy, and
 manage scalable, fault-tolerant applications running on the Amazon Web
 Services cloud.
 
-For more information about this product, go to the \href{http://aws.amazon.com/elasticbeanstalk/}{AWS Elastic Beanstalk} details page. The
+For more information about this product, go to the \href{https://aws.amazon.com/elasticbeanstalk/}{AWS Elastic Beanstalk} details page. The
 location of the latest AWS Elastic Beanstalk WSDL is
 \url{https://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl}.
 To install the Software Development Kits (SDKs), Integrated Development
 Environment (IDE) Toolkits, and command line tools that enable you to
-access the API, go to \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
+access the API, go to \href{https://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
 
 \strong{Endpoints}
 

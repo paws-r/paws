@@ -20,6 +20,12 @@ code defects and implementing best practices, CodeGuru Reviewer improves
 the overall quality and maintainability of your code base during the
 code review stage. For more information about CodeGuru Reviewer, see the
 \emph{\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html}{Amazon CodeGuru Reviewer User Guide}.}
+
+To improve the security of your CodeGuru Reviewer API calls, you can
+establish a private connection between your VPC and CodeGuru Reviewer by
+creating an \emph{interface VPC endpoint}. For more information, see
+\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/vpc-interface-endpoints.html}{CodeGuru Reviewer and interface VPC endpoints (AWS PrivateLink)}
+in the \emph{Amazon CodeGuru Reviewer User Guide}.
 }
 \section{Service syntax}{
 \preformatted{svc <- codegurureviewer(
@@ -43,6 +49,7 @@ code review stage. For more information about CodeGuru Reviewer, see the
 
 \tabular{ll}{
 \link[=codegurureviewer_associate_repository]{associate_repository} \tab Use to associate an AWS CodeCommit repository or a repostory managed by AWS CodeStar Connections with Amazon CodeGuru Reviewer\cr
+\link[=codegurureviewer_create_code_review]{create_code_review} \tab Use to create a code review with a CodeReviewType of RepositoryAnalysis\cr
 \link[=codegurureviewer_describe_code_review]{describe_code_review} \tab Returns the metadata associated with the code review along with its status\cr
 \link[=codegurureviewer_describe_recommendation_feedback]{describe_recommendation_feedback} \tab Describes the customer feedback for a CodeGuru Reviewer recommendation\cr
 \link[=codegurureviewer_describe_repository_association]{describe_repository_association} \tab Returns a RepositoryAssociation object that contains information about the requested repository association\cr
@@ -51,7 +58,10 @@ code review stage. For more information about CodeGuru Reviewer, see the
 \link[=codegurureviewer_list_recommendation_feedback]{list_recommendation_feedback} \tab Returns a list of RecommendationFeedbackSummary objects that contain customer recommendation feedback for all CodeGuru Reviewer users\cr
 \link[=codegurureviewer_list_recommendations]{list_recommendations} \tab Returns the list of all recommendations for a completed code review\cr
 \link[=codegurureviewer_list_repository_associations]{list_repository_associations} \tab Returns a list of RepositoryAssociationSummary objects that contain summary information about a repository association\cr
-\link[=codegurureviewer_put_recommendation_feedback]{put_recommendation_feedback} \tab Stores customer feedback for a CodeGuru Reviewer recommendation
+\link[=codegurureviewer_list_tags_for_resource]{list_tags_for_resource} \tab Returns the list of tags associated with an associated repository resource\cr
+\link[=codegurureviewer_put_recommendation_feedback]{put_recommendation_feedback} \tab Stores customer feedback for a CodeGuru Reviewer recommendation\cr
+\link[=codegurureviewer_tag_resource]{tag_resource} \tab Adds one or more tags to an associated repository\cr
+\link[=codegurureviewer_untag_resource]{untag_resource} \tab Removes a tag from an associated repository
 }
 }
 

@@ -2,8 +2,8 @@
 % Please edit documentation in R/iotsitewise_operations.R
 \name{iotsitewise_describe_access_policy}
 \alias{iotsitewise_describe_access_policy}
-\title{Describes an access policy, which specifies an AWS SSO user or group's
-access to an AWS IoT SiteWise Monitor portal or project}
+\title{Describes an access policy, which specifies an identity's access to an
+AWS IoT SiteWise Monitor portal or project}
 \usage{
 iotsitewise_describe_access_policy(accessPolicyId)
 }
@@ -11,8 +11,8 @@ iotsitewise_describe_access_policy(accessPolicyId)
 \item{accessPolicyId}{[required] The ID of the access policy.}
 }
 \description{
-Describes an access policy, which specifies an AWS SSO user or group's
-access to an AWS IoT SiteWise Monitor portal or project.
+Describes an access policy, which specifies an identity's access to an
+AWS IoT SiteWise Monitor portal or project.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_access_policy(

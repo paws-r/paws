@@ -71,6 +71,7 @@ NULL
 #'  \link[=rekognition_detect_faces]{detect_faces} \tab Detects faces within an image that is provided as input\cr
 #'  \link[=rekognition_detect_labels]{detect_labels} \tab Detects instances of real-world entities within an image (JPEG or PNG) provided as input\cr
 #'  \link[=rekognition_detect_moderation_labels]{detect_moderation_labels} \tab Detects unsafe content in a specified JPEG or PNG format image\cr
+#'  \link[=rekognition_detect_protective_equipment]{detect_protective_equipment} \tab Detects Personal Protective Equipment (PPE) worn by people detected in an image\cr
 #'  \link[=rekognition_detect_text]{detect_text} \tab Detects text in the input image and converts it into machine-readable text\cr
 #'  \link[=rekognition_get_celebrity_info]{get_celebrity_info} \tab Gets the name and additional information about a celebrity based on his or her Amazon Rekognition ID\cr
 #'  \link[=rekognition_get_celebrity_recognition]{get_celebrity_recognition} \tab Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by StartCelebrityRecognition\cr

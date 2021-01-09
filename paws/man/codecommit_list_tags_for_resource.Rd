@@ -17,8 +17,8 @@ batch of the results.}
 \description{
 Gets information about AWS tags for a specified Amazon Resource Name
 (ARN) in AWS CodeCommit. For a list of valid resources in AWS
-CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats}{CodeCommit Resources and Operations}
-in the \emph{AWS CodeCommit User Guide}.
+CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/}{CodeCommit Resources and Operations} in
+the \emph{AWS CodeCommit User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

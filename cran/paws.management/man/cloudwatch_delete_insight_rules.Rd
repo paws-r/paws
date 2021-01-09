@@ -16,8 +16,8 @@ Permanently deletes the specified Contributor Insights rules.
 }
 \details{
 If you create a rule, delete it, and then re-create it with the same
-name, historical data from the first time the rule was created may or
-may not be available.
+name, historical data from the first time the rule was created might not
+be available.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_insight_rules(

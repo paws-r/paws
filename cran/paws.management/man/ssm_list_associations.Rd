@@ -9,7 +9,12 @@ ssm_list_associations(AssociationFilterList, MaxResults, NextToken)
 }
 \arguments{
 \item{AssociationFilterList}{One or more filters. Use a filter to return a more specific list of
-results.}
+results.
+
+Filtering associations using the \code{InstanceID} attribute only returns
+legacy associations created using the \code{InstanceID} attribute.
+Associations targeting the instance that are part of the Target
+Attributes \code{ResourceGroup} or \code{Tags} are not returned.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the

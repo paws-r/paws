@@ -16,7 +16,7 @@ describes the IdP.}
 
 \item{SAMLAssertion}{[required] The base-64 encoded SAML authentication response provided by the IdP.
 
-For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/create-role-saml-IdP-tasks.html}{Configuring a Relying Party and Adding Claims}
+For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml_relying-party.html}{Configuring a Relying Party and Adding Claims}
 in the \emph{IAM User Guide}.}
 
 \item{PolicyArns}{The Amazon Resource Names (ARNs) of the IAM managed policies that you
@@ -170,7 +170,7 @@ in the \emph{IAM User Guide}.
 
 You can pass up to 50 session tags. The plain text session tag keys
 can’t exceed 128 characters and the values can’t exceed 256 characters.
-For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
+For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Character Limits}
 in the \emph{IAM User Guide}.
 
 An AWS conversion compresses the passed session policies and session

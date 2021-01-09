@@ -3,7 +3,8 @@
 \name{elbv2_describe_listeners}
 \alias{elbv2_describe_listeners}
 \title{Describes the specified listeners or the listeners for the specified
-Application Load Balancer or Network Load Balancer}
+Application Load Balancer, Network Load Balancer, or Gateway Load
+Balancer}
 \usage{
 elbv2_describe_listeners(LoadBalancerArn, ListenerArns, Marker,
   PageSize)
@@ -20,13 +21,9 @@ previous call.)}
 }
 \description{
 Describes the specified listeners or the listeners for the specified
-Application Load Balancer or Network Load Balancer. You must specify
-either a load balancer or one or more listeners.
-}
-\details{
-For an HTTPS or TLS listener, the output includes the default
-certificate for the listener. To describe the certificate list for the
-listener, use DescribeListenerCertificates.
+Application Load Balancer, Network Load Balancer, or Gateway Load
+Balancer. You must specify either a load balancer or one or more
+listeners.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_listeners(

@@ -6,10 +6,10 @@ NULL
 #' Cancels a job in an AWS Batch job queue
 #'
 #' Cancels a job in an AWS Batch job queue. Jobs that are in the
-#' `SUBMITTED`, `PENDING`, or `RUNNABLE` state are cancelled. Jobs that
-#' have progressed to `STARTING` or `RUNNING` are not cancelled (but the
-#' API operation still succeeds, even if no job is cancelled); these jobs
-#' must be terminated with the TerminateJob operation.
+#' `SUBMITTED`, `PENDING`, or `RUNNABLE` state are canceled. Jobs that have
+#' progressed to `STARTING` or `RUNNING` are not canceled (but the API
+#' operation still succeeds, even if no job is canceled); these jobs must
+#' be terminated with the TerminateJob operation.
 #'
 #' @usage
 #' batch_cancel_job(jobId, reason)
@@ -59,7 +59,9 @@ batch_cancel_job <- function(jobId, reason) {
 #' Creates an AWS Batch compute environment
 #'
 #' Creates an AWS Batch compute environment. You can create `MANAGED` or
-#' `UNMANAGED` compute environments.
+#' `UNMANAGED` compute environments. `MANAGED` compute environments can use
+#' Amazon EC2 or AWS Fargate resources. `UNMANAGED` compute environments
+#' can only use EC2 resources.
 #' 
 #' In a managed compute environment, AWS Batch manages the capacity and
 #' instance types of the compute resources within the environment. This is
@@ -67,73 +69,103 @@ batch_cancel_job <- function(jobId, reason) {
 #' [launch
 #' template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
 #' that you specify when you create the compute environment. You can choose
-#' to use Amazon EC2 On-Demand Instances or Spot Instances in your managed
-#' compute environment. You can optionally set a maximum price so that Spot
-#' Instances only launch when the Spot Instance price is below a specified
-#' percentage of the On-Demand price.
+#' either to use EC2 On-Demand Instances and EC2 Spot Instances, or to use
+#' Fargate and Fargate Spot capacity in your managed compute environment.
+#' You can optionally set a maximum price so that Spot Instances only
+#' launch when the Spot Instance price is less than a specified percentage
+#' of the On-Demand price.
 #' 
 #' Multi-node parallel jobs are not supported on Spot Instances.
 #' 
-#' In an unmanaged compute environment, you can manage your own compute
-#' resources. This provides more compute resource configuration options,
-#' such as using a custom AMI, but you must ensure that your AMI meets the
-#' Amazon ECS container instance AMI specification. For more information,
-#' see [Container Instance
-#' AMIs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html)
-#' in the *Amazon Elastic Container Service Developer Guide*. After you
-#' have created your unmanaged compute environment, you can use the
+#' In an unmanaged compute environment, you can manage your own EC2 compute
+#' resources and have a lot of flexibility with how you configure your
+#' compute resources. For example, you can use custom AMI. However, you
+#' need to verify that your AMI meets the Amazon ECS container instance AMI
+#' specification. For more information, see [container instance
+#' AMIs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
+#' the *Amazon Elastic Container Service Developer Guide*. After you have
+#' created your unmanaged compute environment, you can use the
 #' DescribeComputeEnvironments operation to find the Amazon ECS cluster
-#' that is associated with it. Then, manually launch your container
+#' that's associated with it. Then, manually launch your container
 #' instances into that Amazon ECS cluster. For more information, see
-#' [Launching an Amazon ECS Container
-#' Instance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
+#' [Launching an Amazon ECS container
+#' instance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' AWS Batch does not upgrade the AMIs in a compute environment after it is
-#' created (for example, when a newer version of the Amazon ECS-optimized
-#' AMI is available). You are responsible for the management of the guest
-#' operating system (including updates and security patches) and any
-#' additional application software or utilities that you install on the
-#' compute resources. To use a new AMI for your AWS Batch jobs:
+#' AWS Batch doesn't upgrade the AMIs in a compute environment after it's
+#' created. For example, it doesn't update the AMIs when a newer version of
+#' the Amazon ECS-optimized AMI is available. Therefore, you're responsible
+#' for the management of the guest operating system (including updates and
+#' security patches) and any additional application software or utilities
+#' that you install on the compute resources. To use a new AMI for your AWS
+#' Batch jobs, complete these steps:
 #' 
 #' 1.  Create a new compute environment with the new AMI.
 #' 
 #' 2.  Add the compute environment to an existing job queue.
 #' 
-#' 3.  Remove the old compute environment from your job queue.
+#' 3.  Remove the earlier compute environment from your job queue.
 #' 
-#' 4.  Delete the old compute environment.
+#' 4.  Delete the earlier compute environment.
 #'
 #' @usage
 #' batch_create_compute_environment(computeEnvironmentName, type, state,
-#'   computeResources, serviceRole)
+#'   computeResources, serviceRole, tags)
 #'
 #' @param computeEnvironmentName &#91;required&#93; The name for your compute environment. Up to 128 letters (uppercase and
 #' lowercase), numbers, hyphens, and underscores are allowed.
-#' @param type &#91;required&#93; The type of the compute environment. For more information, see [Compute
+#' @param type &#91;required&#93; The type of the compute environment: `MANAGED` or `UNMANAGED`. For more
+#' information, see [Compute
 #' Environments](https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
 #' in the *AWS Batch User Guide*.
 #' @param state The state of the compute environment. If the state is `ENABLED`, then
 #' the compute environment accepts jobs from a queue and can scale out
 #' automatically based on queues.
-#' @param computeResources Details of the compute resources managed by the compute environment.
+#' 
+#' If the state is `ENABLED`, then the AWS Batch scheduler can attempt to
+#' place jobs from an associated job queue on the compute resources within
+#' the environment. If the compute environment is managed, then it can
+#' scale its instances out or in automatically, based on the job queue
+#' demand.
+#' 
+#' If the state is `DISABLED`, then the AWS Batch scheduler doesn't attempt
+#' to place jobs within the environment. Jobs in a `STARTING` or `RUNNING`
+#' state continue to progress normally. Managed compute environments in the
+#' `DISABLED` state don't scale out. However, they scale in to `minvCpus`
+#' value after instances become idle.
+#' @param computeResources Details about the compute resources managed by the compute environment.
 #' This parameter is required for managed compute environments. For more
 #' information, see [Compute
 #' Environments](https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
 #' in the *AWS Batch User Guide*.
 #' @param serviceRole &#91;required&#93; The full Amazon Resource Name (ARN) of the IAM role that allows AWS
-#' Batch to make calls to other AWS services on your behalf.
+#' Batch to make calls to other AWS services on your behalf. For more
+#' information, see [AWS Batch service IAM
+#' role](https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html)
+#' in the *AWS Batch User Guide*.
 #' 
 #' If your specified role has a path other than `/`, then you must either
 #' specify the full role ARN (this is recommended) or prefix the role name
 #' with the path.
 #' 
-#' Depending on how you created your AWS Batch service role, its ARN may
+#' Depending on how you created your AWS Batch service role, its ARN might
 #' contain the `service-role` path prefix. When you only specify the name
-#' of the service role, AWS Batch assumes that your ARN does not use the
+#' of the service role, AWS Batch assumes that your ARN doesn't use the
 #' `service-role` path prefix. Because of this, we recommend that you
 #' specify the full ARN of your service role when you create compute
 #' environments.
+#' @param tags The tags that you apply to the compute environment to help you
+#' categorize and organize your resources. Each tag consists of a key and
+#' an optional value. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in *AWS General Reference*.
+#' 
+#' These tags can be updated or removed using the
+#' [TagResource](https://docs.aws.amazon.com/batch/latest/APIReference/API_TagResource.html)
+#' and
+#' [UntagResource](https://docs.aws.amazon.com/batch/latest/APIReference/API_UntagResource.html)
+#' API operations. These tags don't propagate to the underlying compute
+#' resources.
 #'
 #' @section Request syntax:
 #' ```
@@ -142,7 +174,7 @@ batch_cancel_job <- function(jobId, reason) {
 #'   type = "MANAGED"|"UNMANAGED",
 #'   state = "ENABLED"|"DISABLED",
 #'   computeResources = list(
-#'     type = "EC2"|"SPOT",
+#'     type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT",
 #'     allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED",
 #'     minvCpus = 123,
 #'     maxvCpus = 123,
@@ -169,9 +201,18 @@ batch_cancel_job <- function(jobId, reason) {
 #'       launchTemplateId = "string",
 #'       launchTemplateName = "string",
 #'       version = "string"
+#'     ),
+#'     ec2Configuration = list(
+#'       list(
+#'         imageType = "string",
+#'         imageIdOverride = "string"
+#'       )
 #'     )
 #'   ),
-#'   serviceRole = "string"
+#'   serviceRole = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -252,14 +293,14 @@ batch_cancel_job <- function(jobId, reason) {
 #' @keywords internal
 #'
 #' @rdname batch_create_compute_environment
-batch_create_compute_environment <- function(computeEnvironmentName, type, state = NULL, computeResources = NULL, serviceRole) {
+batch_create_compute_environment <- function(computeEnvironmentName, type, state = NULL, computeResources = NULL, serviceRole, tags = NULL) {
   op <- new_operation(
     name = "CreateComputeEnvironment",
     http_method = "POST",
     http_path = "/v1/createcomputeenvironment",
     paginator = list()
   )
-  input <- .batch$create_compute_environment_input(computeEnvironmentName = computeEnvironmentName, type = type, state = state, computeResources = computeResources, serviceRole = serviceRole)
+  input <- .batch$create_compute_environment_input(computeEnvironmentName = computeEnvironmentName, type = type, state = state, computeResources = computeResources, serviceRole = serviceRole, tags = tags)
   output <- .batch$create_compute_environment_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -283,23 +324,38 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #'
 #' @usage
 #' batch_create_job_queue(jobQueueName, state, priority,
-#'   computeEnvironmentOrder)
+#'   computeEnvironmentOrder, tags)
 #'
-#' @param jobQueueName &#91;required&#93; The name of the job queue.
+#' @param jobQueueName &#91;required&#93; The name of the job queue. Up to 128 letters (uppercase and lowercase),
+#' numbers, and underscores are allowed.
 #' @param state The state of the job queue. If the job queue state is `ENABLED`, it is
-#' able to accept jobs.
+#' able to accept jobs. If the job queue state is `DISABLED`, new jobs
+#' can't be added to the queue, but jobs already in the queue can finish.
 #' @param priority &#91;required&#93; The priority of the job queue. Job queues with a higher priority (or a
 #' higher integer value for the `priority` parameter) are evaluated first
 #' when associated with the same compute environment. Priority is
-#' determined in descending order, for example, a job queue with a priority
+#' determined in descending order. For example, a job queue with a priority
 #' value of `10` is given scheduling preference over a job queue with a
-#' priority value of `1`.
+#' priority value of `1`. All of the compute environments must be either
+#' EC2 (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`); EC2 and
+#' Fargate compute environments cannot be mixed.
 #' @param computeEnvironmentOrder &#91;required&#93; The set of compute environments mapped to a job queue and their order
 #' relative to each other. The job scheduler uses this parameter to
-#' determine which compute environment should execute a given job. Compute
+#' determine which compute environment should run a specific job. Compute
 #' environments must be in the `VALID` state before you can associate them
 #' with a job queue. You can associate up to three compute environments
-#' with a job queue.
+#' with a job queue. All of the compute environments must be either EC2
+#' (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`); EC2 and
+#' Fargate compute environments can't be mixed.
+#' 
+#' All compute environments that are associated with a job queue must share
+#' the same architecture. AWS Batch doesn't support mixing compute
+#' environment architecture types in a single job queue.
+#' @param tags The tags that you apply to the job queue to help you categorize and
+#' organize your resources. Each tag consists of a key and an optional
+#' value. For more information, see [Tagging your AWS Batch
+#' resources](https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html)
+#' in *AWS Batch User Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -312,6 +368,9 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #'       order = 123,
 #'       computeEnvironment = "string"
 #'     )
+#'   ),
+#'   tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -355,14 +414,14 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #' @keywords internal
 #'
 #' @rdname batch_create_job_queue
-batch_create_job_queue <- function(jobQueueName, state = NULL, priority, computeEnvironmentOrder) {
+batch_create_job_queue <- function(jobQueueName, state = NULL, priority, computeEnvironmentOrder, tags = NULL) {
   op <- new_operation(
     name = "CreateJobQueue",
     http_method = "POST",
     http_path = "/v1/createjobqueue",
     paginator = list()
   )
-  input <- .batch$create_job_queue_input(jobQueueName = jobQueueName, state = state, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder)
+  input <- .batch$create_job_queue_input(jobQueueName = jobQueueName, state = state, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, tags = tags)
   output <- .batch$create_job_queue_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -379,7 +438,10 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, priority, compute
 #' Before you can delete a compute environment, you must set its state to
 #' `DISABLED` with the UpdateComputeEnvironment API operation and
 #' disassociate it from any job queues with the UpdateJobQueue API
-#' operation.
+#' operation. Compute environments that use AWS Fargate resources must
+#' terminate all active jobs on that compute environment before deleting
+#' the compute environment. If this isn't done, the compute environment
+#' will end up in an invalid state.
 #'
 #' @usage
 #' batch_delete_compute_environment(computeEnvironment)
@@ -426,9 +488,10 @@ batch_delete_compute_environment <- function(computeEnvironment) {
 #'
 #' Deletes the specified job queue. You must first disable submissions for
 #' a queue with the UpdateJobQueue operation. All jobs in the queue are
-#' terminated when you delete a job queue.
+#' eventually terminated when you delete a job queue. The jobs are
+#' terminated at a rate of about 16 jobs each second.
 #' 
-#' It is not necessary to disassociate compute environments from a queue
+#' It's not necessary to disassociate compute environments from a queue
 #' before submitting a `DeleteJobQueue` request.
 #'
 #' @usage
@@ -474,8 +537,8 @@ batch_delete_job_queue <- function(jobQueue) {
 
 #' Deregisters an AWS Batch job definition
 #'
-#' Deregisters an AWS Batch job definition. Job definitions will be
-#' permanently deleted after 180 days.
+#' Deregisters an AWS Batch job definition. Job definitions are permanently
+#' deleted after 180 days.
 #'
 #' @usage
 #' batch_deregister_job_definition(jobDefinition)
@@ -522,7 +585,7 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #'
 #' Describes one or more of your compute environments.
 #' 
-#' If you are using an unmanaged compute environment, you can use the
+#' If you're using an unmanaged compute environment, you can use the
 #' `DescribeComputeEnvironment` operation to determine the `ecsClusterArn`
 #' that you should launch your Amazon ECS container instances into.
 #'
@@ -538,7 +601,7 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #' in a single page along with a `nextToken` response element. The
 #' remaining results of the initial request can be seen by sending another
 #' `DescribeComputeEnvironments` request with the returned `nextToken`
-#' value. This value can be between 1 and 100. If this parameter is not
+#' value. This value can be between 1 and 100. If this parameter isn't
 #' used, then `DescribeComputeEnvironments` returns up to 100 results and a
 #' `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated
@@ -547,8 +610,8 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #' from the end of the previous results that returned the `nextToken`
 #' value. This value is `null` when there are no more results to return.
 #' 
-#' This token should be treated as an opaque identifier that is only used
-#' to retrieve the next items in a list and not for other programmatic
+#' This token should be treated as an opaque identifier that's only used to
+#' retrieve the next items in a list and not for other programmatic
 #' purposes.
 #'
 #' @section Request syntax:
@@ -609,18 +672,18 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #' `nextToken` response element. The remaining results of the initial
 #' request can be seen by sending another `DescribeJobDefinitions` request
 #' with the returned `nextToken` value. This value can be between 1 and
-#' 100. If this parameter is not used, then `DescribeJobDefinitions`
-#' returns up to 100 results and a `nextToken` value if applicable.
+#' 100. If this parameter isn't used, then `DescribeJobDefinitions` returns
+#' up to 100 results and a `nextToken` value if applicable.
 #' @param jobDefinitionName The name of the job definition to describe.
-#' @param status The status with which to filter job definitions.
+#' @param status The status used to filter job definitions.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `DescribeJobDefinitions` request where `maxResults` was used and the
 #' results exceeded the value of that parameter. Pagination continues from
 #' the end of the previous results that returned the `nextToken` value.
 #' This value is `null` when there are no more results to return.
 #' 
-#' This token should be treated as an opaque identifier that is only used
-#' to retrieve the next items in a list and not for other programmatic
+#' This token should be treated as an opaque identifier that's only used to
+#' retrieve the next items in a list and not for other programmatic
 #' purposes.
 #'
 #' @section Request syntax:
@@ -679,16 +742,16 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
 #' response element. The remaining results of the initial request can be
 #' seen by sending another `DescribeJobQueues` request with the returned
 #' `nextToken` value. This value can be between 1 and 100. If this
-#' parameter is not used, then `DescribeJobQueues` returns up to 100
-#' results and a `nextToken` value if applicable.
+#' parameter isn't used, then `DescribeJobQueues` returns up to 100 results
+#' and a `nextToken` value if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' `DescribeJobQueues` request where `maxResults` was used and the results
 #' exceeded the value of that parameter. Pagination continues from the end
 #' of the previous results that returned the `nextToken` value. This value
 #' is `null` when there are no more results to return.
 #' 
-#' This token should be treated as an opaque identifier that is only used
-#' to retrieve the next items in a list and not for other programmatic
+#' This token should be treated as an opaque identifier that's only used to
+#' retrieve the next items in a list and not for other programmatic
 #' purposes.
 #'
 #' @section Request syntax:
@@ -784,36 +847,36 @@ batch_describe_jobs <- function(jobs) {
 #'
 #' Returns a list of AWS Batch jobs.
 #' 
-#' You must specify only one of the following:
+#' You must specify only one of the following items:
 #' 
-#' -   a job queue ID to return a list of jobs in that job queue
+#' -   A job queue ID to return a list of jobs in that job queue
 #' 
-#' -   a multi-node parallel job ID to return a list of that job's nodes
+#' -   A multi-node parallel job ID to return a list of that job's nodes
 #' 
-#' -   an array job ID to return a list of that job's children
+#' -   An array job ID to return a list of that job's children
 #' 
 #' You can filter the results by job status with the `jobStatus` parameter.
-#' If you do not specify a status, only `RUNNING` jobs are returned.
+#' If you don't specify a status, only `RUNNING` jobs are returned.
 #'
 #' @usage
 #' batch_list_jobs(jobQueue, arrayJobId, multiNodeJobId, jobStatus,
 #'   maxResults, nextToken)
 #'
-#' @param jobQueue The name or full Amazon Resource Name (ARN) of the job queue with which
-#' to list jobs.
+#' @param jobQueue The name or full Amazon Resource Name (ARN) of the job queue used to
+#' list jobs.
 #' @param arrayJobId The job ID for an array job. Specifying an array job ID with this
 #' parameter lists all child jobs from within the specified array.
 #' @param multiNodeJobId The job ID for a multi-node parallel job. Specifying a multi-node
 #' parallel job ID with this parameter lists all nodes that are associated
 #' with the specified job.
-#' @param jobStatus The job status with which to filter jobs in the specified queue. If you
-#' do not specify a status, only `RUNNING` jobs are returned.
+#' @param jobStatus The job status used to filter jobs in the specified queue. If you don't
+#' specify a status, only `RUNNING` jobs are returned.
 #' @param maxResults The maximum number of results returned by `ListJobs` in paginated
 #' output. When this parameter is used, `ListJobs` only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
 #' sending another `ListJobs` request with the returned `nextToken` value.
-#' This value can be between 1 and 100. If this parameter is not used, then
+#' This value can be between 1 and 100. If this parameter isn't used, then
 #' `ListJobs` returns up to 100 results and a `nextToken` value if
 #' applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated `ListJobs`
@@ -822,8 +885,8 @@ batch_describe_jobs <- function(jobs) {
 #' results that returned the `nextToken` value. This value is `null` when
 #' there are no more results to return.
 #' 
-#' This token should be treated as an opaque identifier that is only used
-#' to retrieve the next items in a list and not for other programmatic
+#' This token should be treated as an opaque identifier that's only used to
+#' retrieve the next items in a list and not for other programmatic
 #' purposes.
 #'
 #' @section Request syntax:
@@ -873,17 +936,74 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 }
 .batch$operations$list_jobs <- batch_list_jobs
 
+#' Lists the tags for an AWS Batch resource
+#'
+#' Lists the tags for an AWS Batch resource. AWS Batch resources that
+#' support tags are compute environments, jobs, job definitions, and job
+#' queues. ARNs for child jobs of array and multi-node parallel (MNP) jobs
+#' are not supported.
+#'
+#' @usage
+#' batch_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource that tags
+#' are listed for. AWS Batch resources that support tags are compute
+#' environments, jobs, job definitions, and job queues. ARNs for child jobs
+#' of array and multi-node parallel (MNP) jobs are not supported.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This demonstrates calling the ListTagsForResource action.
+#' svc$list_tags_for_resource(
+#'   resourceArn = "arn:aws:batch:us-east-1:123456789012:job-definition/sleep30:1"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname batch_list_tags_for_resource
+batch_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/v1/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .batch$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .batch$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .batch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$list_tags_for_resource <- batch_list_tags_for_resource
+
 #' Registers an AWS Batch job definition
 #'
 #' Registers an AWS Batch job definition.
 #'
 #' @usage
 #' batch_register_job_definition(jobDefinitionName, type, parameters,
-#'   containerProperties, nodeProperties, retryStrategy, timeout)
+#'   containerProperties, nodeProperties, retryStrategy, propagateTags,
+#'   timeout, tags, platformCapabilities)
 #'
 #' @param jobDefinitionName &#91;required&#93; The name of the job definition to register. Up to 128 letters (uppercase
 #' and lowercase), numbers, hyphens, and underscores are allowed.
-#' @param type &#91;required&#93; The type of job definition.
+#' @param type &#91;required&#93; The type of job definition. For more information about multi-node
+#' parallel jobs, see [Creating a multi-node parallel job
+#' definition](https://docs.aws.amazon.com/batch/latest/userguide/multi-node-job-def.html)
+#' in the *AWS Batch User Guide*.
+#' 
+#' If the job is run on Fargate resources, then `multinode` isn't
+#' supported.
 #' @param parameters Default parameter substitution placeholders to set in the job
 #' definition. Parameters are specified as a key-value pair mapping.
 #' Parameters in a `SubmitJob` request override any corresponding parameter
@@ -892,6 +1012,9 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #' container-based jobs. If the job definition's `type` parameter is
 #' `container`, then you must specify either `containerProperties` or
 #' `nodeProperties`.
+#' 
+#' If the job runs on Fargate resources, then you must not specify
+#' `nodeProperties`; use only `containerProperties`.
 #' @param nodeProperties An object with various properties specific to multi-node parallel jobs.
 #' If you specify node properties for a job, it becomes a multi-node
 #' parallel job. For more information, see [Multi-node Parallel
@@ -899,18 +1022,35 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #' in the *AWS Batch User Guide*. If the job definition's `type` parameter
 #' is `container`, then you must specify either `containerProperties` or
 #' `nodeProperties`.
+#' 
+#' If the job runs on Fargate resources, then you must not specify
+#' `nodeProperties`; use `containerProperties` instead.
 #' @param retryStrategy The retry strategy to use for failed jobs that are submitted with this
-#' job definition. Any retry strategy that is specified during a SubmitJob
+#' job definition. Any retry strategy that's specified during a SubmitJob
 #' operation overrides the retry strategy defined here. If a job is
-#' terminated due to a timeout, it is not retried.
+#' terminated due to a timeout, it isn't retried.
+#' @param propagateTags Specifies whether to propagate the tags from the job or job definition
+#' to the corresponding Amazon ECS task. If no value is specified, the tags
+#' are not propagated. Tags can only be propagated to the tasks during task
+#' creation. For tags with the same name, job tags are given priority over
+#' job definitions tags. If the total number of combined tags from the job
+#' and job definition is over 50, the job is moved to the `FAILED` state.
 #' @param timeout The timeout configuration for jobs that are submitted with this job
 #' definition, after which AWS Batch terminates your jobs if they have not
-#' finished. If a job is terminated due to a timeout, it is not retried.
-#' The minimum value for the timeout is 60 seconds. Any timeout
-#' configuration that is specified during a SubmitJob operation overrides
-#' the timeout configuration defined here. For more information, see [Job
-#' Timeouts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' finished. If a job is terminated due to a timeout, it isn't retried. The
+#' minimum value for the timeout is 60 seconds. Any timeout configuration
+#' that's specified during a SubmitJob operation overrides the timeout
+#' configuration defined here. For more information, see [Job
+#' Timeouts](https://docs.aws.amazon.com/batch/latest/userguide/job_timeouts.html)
+#' in the *AWS Batch User Guide*.
+#' @param tags The tags that you apply to the job definition to help you categorize and
+#' organize your resources. Each tag consists of a key and an optional
+#' value. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html)
+#' in *AWS Batch User Guide*.
+#' @param platformCapabilities The platform capabilities required by the job definition. If no value is
+#' specified, it defaults to `EC2`. To run the job on Fargate resources,
+#' specify `FARGATE`.
 #'
 #' @section Request syntax:
 #' ```
@@ -928,6 +1068,7 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #'       "string"
 #'     ),
 #'     jobRoleArn = "string",
+#'     executionRoleArn = "string",
 #'     volumes = list(
 #'       list(
 #'         host = list(
@@ -963,7 +1104,7 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #'     resourceRequirements = list(
 #'       list(
 #'         value = "string",
-#'         type = "GPU"
+#'         type = "GPU"|"VCPU"|"MEMORY"
 #'       )
 #'     ),
 #'     linuxParameters = list(
@@ -975,7 +1116,44 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #'             "READ"|"WRITE"|"MKNOD"
 #'           )
 #'         )
+#'       ),
+#'       initProcessEnabled = TRUE|FALSE,
+#'       sharedMemorySize = 123,
+#'       tmpfs = list(
+#'         list(
+#'           containerPath = "string",
+#'           size = 123,
+#'           mountOptions = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       maxSwap = 123,
+#'       swappiness = 123
+#'     ),
+#'     logConfiguration = list(
+#'       logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
+#'       options = list(
+#'         "string"
+#'       ),
+#'       secretOptions = list(
+#'         list(
+#'           name = "string",
+#'           valueFrom = "string"
+#'         )
 #'       )
+#'     ),
+#'     secrets = list(
+#'       list(
+#'         name = "string",
+#'         valueFrom = "string"
+#'       )
+#'     ),
+#'     networkConfiguration = list(
+#'       assignPublicIp = "ENABLED"|"DISABLED"
+#'     ),
+#'     fargatePlatformConfiguration = list(
+#'       platformVersion = "string"
 #'     )
 #'   ),
 #'   nodeProperties = list(
@@ -992,6 +1170,7 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #'             "string"
 #'           ),
 #'           jobRoleArn = "string",
+#'           executionRoleArn = "string",
 #'           volumes = list(
 #'             list(
 #'               host = list(
@@ -1027,7 +1206,7 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #'           resourceRequirements = list(
 #'             list(
 #'               value = "string",
-#'               type = "GPU"
+#'               type = "GPU"|"VCPU"|"MEMORY"
 #'             )
 #'           ),
 #'           linuxParameters = list(
@@ -1039,17 +1218,69 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #'                   "READ"|"WRITE"|"MKNOD"
 #'                 )
 #'               )
+#'             ),
+#'             initProcessEnabled = TRUE|FALSE,
+#'             sharedMemorySize = 123,
+#'             tmpfs = list(
+#'               list(
+#'                 containerPath = "string",
+#'                 size = 123,
+#'                 mountOptions = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             maxSwap = 123,
+#'             swappiness = 123
+#'           ),
+#'           logConfiguration = list(
+#'             logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
+#'             options = list(
+#'               "string"
+#'             ),
+#'             secretOptions = list(
+#'               list(
+#'                 name = "string",
+#'                 valueFrom = "string"
+#'               )
 #'             )
+#'           ),
+#'           secrets = list(
+#'             list(
+#'               name = "string",
+#'               valueFrom = "string"
+#'             )
+#'           ),
+#'           networkConfiguration = list(
+#'             assignPublicIp = "ENABLED"|"DISABLED"
+#'           ),
+#'           fargatePlatformConfiguration = list(
+#'             platformVersion = "string"
 #'           )
 #'         )
 #'       )
 #'     )
 #'   ),
 #'   retryStrategy = list(
-#'     attempts = 123
+#'     attempts = 123,
+#'     evaluateOnExit = list(
+#'       list(
+#'         onStatusReason = "string",
+#'         onReason = "string",
+#'         onExitCode = "string",
+#'         action = "RETRY"|"EXIT"
+#'       )
+#'     )
 #'   ),
+#'   propagateTags = TRUE|FALSE,
 #'   timeout = list(
 #'     attemptDurationSeconds = 123
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   platformCapabilities = list(
+#'     "EC2"|"FARGATE"
 #'   )
 #' )
 #' ```
@@ -1070,19 +1301,39 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #'   ),
 #'   jobDefinitionName = "sleep10"
 #' )
+#' 
+#' # This demonstrates calling the RegisterJobDefinition action, including
+#' # tags.
+#' svc$register_job_definition(
+#'   type = "container",
+#'   containerProperties = list(
+#'     command = list(
+#'       "sleep",
+#'       "30"
+#'     ),
+#'     image = "busybox",
+#'     memory = 128L,
+#'     vcpus = 1L
+#'   ),
+#'   jobDefinitionName = "sleep30",
+#'   tags = list(
+#'     Department = "Engineering",
+#'     User = "JaneDoe"
+#'   )
+#' )
 #' }
 #'
 #' @keywords internal
 #'
 #' @rdname batch_register_job_definition
-batch_register_job_definition <- function(jobDefinitionName, type, parameters = NULL, containerProperties = NULL, nodeProperties = NULL, retryStrategy = NULL, timeout = NULL) {
+batch_register_job_definition <- function(jobDefinitionName, type, parameters = NULL, containerProperties = NULL, nodeProperties = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL, platformCapabilities = NULL) {
   op <- new_operation(
     name = "RegisterJobDefinition",
     http_method = "POST",
     http_path = "/v1/registerjobdefinition",
     paginator = list()
   )
-  input <- .batch$register_job_definition_input(jobDefinitionName = jobDefinitionName, type = type, parameters = parameters, containerProperties = containerProperties, nodeProperties = nodeProperties, retryStrategy = retryStrategy, timeout = timeout)
+  input <- .batch$register_job_definition_input(jobDefinitionName = jobDefinitionName, type = type, parameters = parameters, containerProperties = containerProperties, nodeProperties = nodeProperties, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, platformCapabilities = platformCapabilities)
   output <- .batch$register_job_definition_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -1096,11 +1347,15 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #'
 #' Submits an AWS Batch job from a job definition. Parameters specified
 #' during SubmitJob override parameters defined in the job definition.
+#' 
+#' Jobs run on Fargate resources don't run for more than 14 days. After 14
+#' days, the Fargate resources might no longer be available and the job is
+#' terminated.
 #'
 #' @usage
 #' batch_submit_job(jobName, jobQueue, arrayProperties, dependsOn,
 #'   jobDefinition, parameters, containerOverrides, nodeOverrides,
-#'   retryStrategy, timeout)
+#'   retryStrategy, propagateTags, timeout, tags)
 #'
 #' @param jobName &#91;required&#93; The name of the job. The first character must be alphanumeric, and up to
 #' 128 letters (uppercase and lowercase), numbers, hyphens, and underscores
@@ -1131,25 +1386,41 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' the job definition.
 #' @param containerOverrides A list of container overrides in JSON format that specify the name of a
 #' container in the specified job definition and the overrides it should
-#' receive. You can override the default command for a container (that is
+#' receive. You can override the default command for a container (that's
 #' specified in the job definition or the Docker image) with a `command`
 #' override. You can also override existing environment variables (that are
 #' specified in the job definition or Docker image) on a container or add
 #' new environment variables to it with an `environment` override.
 #' @param nodeOverrides A list of node overrides in JSON format that specify the node range to
 #' target and the container overrides for that node range.
+#' 
+#' This parameter isn't applicable to jobs running on Fargate resources;
+#' use `containerOverrides` instead.
 #' @param retryStrategy The retry strategy to use for failed jobs from this SubmitJob operation.
 #' When a retry strategy is specified here, it overrides the retry strategy
 #' defined in the job definition.
+#' @param propagateTags Specifies whether to propagate the tags from the job or job definition
+#' to the corresponding Amazon ECS task. If no value is specified, the tags
+#' aren't propagated. Tags can only be propagated to the tasks during task
+#' creation. For tags with the same name, job tags are given priority over
+#' job definitions tags. If the total number of combined tags from the job
+#' and job definition is over 50, the job is moved to the `FAILED` state.
+#' When specified, this overrides the tag propagation setting in the job
+#' definition.
 #' @param timeout The timeout configuration for this SubmitJob operation. You can specify
 #' a timeout duration after which AWS Batch terminates your jobs if they
-#' have not finished. If a job is terminated due to a timeout, it is not
+#' haven't finished. If a job is terminated due to a timeout, it isn't
 #' retried. The minimum value for the timeout is 60 seconds. This
 #' configuration overrides any timeout configuration specified in the job
 #' definition. For array jobs, child jobs have the same timeout
 #' configuration as the parent job. For more information, see [Job
-#' Timeouts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
+#' Timeouts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)
 #' in the *Amazon Elastic Container Service Developer Guide*.
+#' @param tags The tags that you apply to the job request to help you categorize and
+#' organize your resources. Each tag consists of a key and an optional
+#' value. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in *AWS General Reference*.
 #'
 #' @section Request syntax:
 #' ```
@@ -1185,7 +1456,7 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #'     resourceRequirements = list(
 #'       list(
 #'         value = "string",
-#'         type = "GPU"
+#'         type = "GPU"|"VCPU"|"MEMORY"
 #'       )
 #'     )
 #'   ),
@@ -1210,7 +1481,7 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #'           resourceRequirements = list(
 #'             list(
 #'               value = "string",
-#'               type = "GPU"
+#'               type = "GPU"|"VCPU"|"MEMORY"
 #'             )
 #'           )
 #'         )
@@ -1218,10 +1489,22 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #'     )
 #'   ),
 #'   retryStrategy = list(
-#'     attempts = 123
+#'     attempts = 123,
+#'     evaluateOnExit = list(
+#'       list(
+#'         onStatusReason = "string",
+#'         onReason = "string",
+#'         onExitCode = "string",
+#'         action = "RETRY"|"EXIT"
+#'       )
+#'     )
 #'   ),
+#'   propagateTags = TRUE|FALSE,
 #'   timeout = list(
 #'     attemptDurationSeconds = 123
+#'   ),
+#'   tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -1240,14 +1523,14 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' @keywords internal
 #'
 #' @rdname batch_submit_job
-batch_submit_job <- function(jobName, jobQueue, arrayProperties = NULL, dependsOn = NULL, jobDefinition, parameters = NULL, containerOverrides = NULL, nodeOverrides = NULL, retryStrategy = NULL, timeout = NULL) {
+batch_submit_job <- function(jobName, jobQueue, arrayProperties = NULL, dependsOn = NULL, jobDefinition, parameters = NULL, containerOverrides = NULL, nodeOverrides = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL) {
   op <- new_operation(
     name = "SubmitJob",
     http_method = "POST",
     http_path = "/v1/submitjob",
     paginator = list()
   )
-  input <- .batch$submit_job_input(jobName = jobName, jobQueue = jobQueue, arrayProperties = arrayProperties, dependsOn = dependsOn, jobDefinition = jobDefinition, parameters = parameters, containerOverrides = containerOverrides, nodeOverrides = nodeOverrides, retryStrategy = retryStrategy, timeout = timeout)
+  input <- .batch$submit_job_input(jobName = jobName, jobQueue = jobQueue, arrayProperties = arrayProperties, dependsOn = dependsOn, jobDefinition = jobDefinition, parameters = parameters, containerOverrides = containerOverrides, nodeOverrides = nodeOverrides, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags)
   output <- .batch$submit_job_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -1256,6 +1539,71 @@ batch_submit_job <- function(jobName, jobQueue, arrayProperties = NULL, dependsO
   return(response)
 }
 .batch$operations$submit_job <- batch_submit_job
+
+#' Associates the specified tags to a resource with the specified
+#' resourceArn
+#'
+#' Associates the specified tags to a resource with the specified
+#' `resourceArn`. If existing tags on a resource aren't specified in the
+#' request parameters, they aren't changed. When a resource is deleted, the
+#' tags associated with that resource are deleted as well. AWS Batch
+#' resources that support tags are compute environments, jobs, job
+#' definitions, and job queues. ARNs for child jobs of array and multi-node
+#' parallel (MNP) jobs are not supported.
+#'
+#' @usage
+#' batch_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that tags are added to.
+#' AWS Batch resources that support tags are compute environments, jobs,
+#' job definitions, and job queues. ARNs for child jobs of array and
+#' multi-node parallel (MNP) jobs are not supported.
+#' @param tags &#91;required&#93; The tags that you apply to the resource to help you categorize and
+#' organize your resources. Each tag consists of a key and an optional
+#' value. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in *AWS General Reference*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This demonstrates calling the TagResource action.
+#' svc$tag_resource(
+#'   resourceArn = "arn:aws:batch:us-east-1:123456789012:job-definition/sleep30:1",
+#'   tags = list(
+#'     Stage = "Alpha"
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname batch_tag_resource
+batch_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/v1/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .batch$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .batch$tag_resource_output()
+  config <- get_config()
+  svc <- .batch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$tag_resource <- batch_tag_resource
 
 #' Terminates a job in a job queue
 #'
@@ -1309,6 +1657,60 @@ batch_terminate_job <- function(jobId, reason) {
 }
 .batch$operations$terminate_job <- batch_terminate_job
 
+#' Deletes specified tags from an AWS Batch resource
+#'
+#' Deletes specified tags from an AWS Batch resource.
+#'
+#' @usage
+#' batch_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to delete
+#' tags. AWS Batch resources that support tags are compute environments,
+#' jobs, job definitions, and job queues. ARNs for child jobs of array and
+#' multi-node parallel (MNP) jobs are not supported.
+#' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This demonstrates calling the UntagResource action.
+#' svc$untag_resource(
+#'   resourceArn = "arn:aws:batch:us-east-1:123456789012:job-definition/sleep30:1",
+#'   tagKeys = list(
+#'     "Stage"
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname batch_untag_resource
+batch_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/v1/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .batch$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .batch$untag_resource_output()
+  config <- get_config()
+  svc <- .batch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$untag_resource <- batch_untag_resource
+
 #' Updates an AWS Batch compute environment
 #'
 #' Updates an AWS Batch compute environment.
@@ -1322,16 +1724,34 @@ batch_terminate_job <- function(jobId, reason) {
 #' @param state The state of the compute environment. Compute environments in the
 #' `ENABLED` state can accept jobs from a queue and scale in or out
 #' automatically based on the workload demand of its associated queues.
+#' 
+#' If the state is `ENABLED`, then the AWS Batch scheduler can attempt to
+#' place jobs from an associated job queue on the compute resources within
+#' the environment. If the compute environment is managed, then it can
+#' scale its instances out or in automatically, based on the job queue
+#' demand.
+#' 
+#' If the state is `DISABLED`, then the AWS Batch scheduler doesn't attempt
+#' to place jobs within the environment. Jobs in a `STARTING` or `RUNNING`
+#' state continue to progress normally. Managed compute environments in the
+#' `DISABLED` state don't scale out. However, they scale in to `minvCpus`
+#' value after instances become idle.
 #' @param computeResources Details of the compute resources managed by the compute environment.
-#' Required for a managed compute environment.
+#' Required for a managed compute environment. For more information, see
+#' [Compute
+#' Environments](https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+#' in the *AWS Batch User Guide*.
 #' @param serviceRole The full Amazon Resource Name (ARN) of the IAM role that allows AWS
-#' Batch to make calls to other AWS services on your behalf.
+#' Batch to make calls to other AWS services on your behalf. For more
+#' information, see [AWS Batch service IAM
+#' role](https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html)
+#' in the *AWS Batch User Guide*.
 #' 
 #' If your specified role has a path other than `/`, then you must either
 #' specify the full role ARN (this is recommended) or prefix the role name
 #' with the path.
 #' 
-#' Depending on how you created your AWS Batch service role, its ARN may
+#' Depending on how you created your AWS Batch service role, its ARN might
 #' contain the `service-role` path prefix. When you only specify the name
 #' of the service role, AWS Batch assumes that your ARN does not use the
 #' `service-role` path prefix. Because of this, we recommend that you
@@ -1346,7 +1766,13 @@ batch_terminate_job <- function(jobId, reason) {
 #'   computeResources = list(
 #'     minvCpus = 123,
 #'     maxvCpus = 123,
-#'     desiredvCpus = 123
+#'     desiredvCpus = 123,
+#'     subnets = list(
+#'       "string"
+#'     ),
+#'     securityGroupIds = list(
+#'       "string"
+#'     )
 #'   ),
 #'   serviceRole = "string"
 #' )
@@ -1391,17 +1817,29 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, c
 #'   computeEnvironmentOrder)
 #'
 #' @param jobQueue &#91;required&#93; The name or the Amazon Resource Name (ARN) of the job queue.
-#' @param state Describes the queue's ability to accept new jobs.
+#' @param state Describes the queue's ability to accept new jobs. If the job queue state
+#' is `ENABLED`, it is able to accept jobs. If the job queue state is
+#' `DISABLED`, new jobs cannot be added to the queue, but jobs already in
+#' the queue can finish.
 #' @param priority The priority of the job queue. Job queues with a higher priority (or a
 #' higher integer value for the `priority` parameter) are evaluated first
 #' when associated with the same compute environment. Priority is
 #' determined in descending order, for example, a job queue with a priority
 #' value of `10` is given scheduling preference over a job queue with a
-#' priority value of `1`.
+#' priority value of `1`. All of the compute environments must be either
+#' EC2 (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`); EC2 and
+#' Fargate compute environments cannot be mixed.
 #' @param computeEnvironmentOrder Details the set of compute environments mapped to a job queue and their
 #' order relative to each other. This is one of the parameters used by the
-#' job scheduler to determine which compute environment should execute a
-#' given job.
+#' job scheduler to determine which compute environment should run a given
+#' job. Compute environments must be in the `VALID` state before you can
+#' associate them with a job queue. All of the compute environments must be
+#' either EC2 (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`);
+#' EC2 and Fargate compute environments can't be mixed.
+#' 
+#' All compute environments that are associated with a job queue must share
+#' the same architecture. AWS Batch doesn't support mixing compute
+#' environment architecture types in a single job queue.
 #'
 #' @section Request syntax:
 #' ```

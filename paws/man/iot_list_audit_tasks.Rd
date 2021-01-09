@@ -10,7 +10,7 @@ iot_list_audit_tasks(startTime, endTime, taskType, taskStatus,
 }
 \arguments{
 \item{startTime}{[required] The beginning of the time period. Audit information is retained for a
-limited time (180 days). Requesting a start time prior to what is
+limited time (90 days). Requesting a start time prior to what is
 retained results in an "InvalidRequestException".}
 
 \item{endTime}{[required] The end of the time period.}

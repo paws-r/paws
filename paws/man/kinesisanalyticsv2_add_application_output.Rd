@@ -2,8 +2,8 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_add_application_output}
 \alias{kinesisanalyticsv2_add_application_output}
-\title{Adds an external destination to your SQL-based Amazon Kinesis Data
-Analytics application}
+\title{Adds an external destination to your SQL-based Kinesis Data Analytics
+application}
 \usage{
 kinesisanalyticsv2_add_application_output(ApplicationName,
   CurrentApplicationVersionId, Output)
@@ -24,8 +24,8 @@ delivery stream, or an AWS Lambda function), and record the formation to
 use when writing to the destination.}
 }
 \description{
-Adds an external destination to your SQL-based Amazon Kinesis Data
-Analytics application.
+Adds an external destination to your SQL-based Kinesis Data Analytics
+application.
 }
 \details{
 If you want Kinesis Data Analytics to deliver data from an

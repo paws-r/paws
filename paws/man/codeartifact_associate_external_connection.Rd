@@ -24,6 +24,7 @@ following values are supported:
 \item \code{public:maven-googleandroid} - for the Google Android repository.
 \item \code{public:maven-gradleplugins} - for the Gradle plugins repository.
 \item \code{public:maven-commonsware} - for the CommonsWare Android repository.
+\item \code{public:nuget-org} - for the NuGet Gallery.
 }}
 }
 \description{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/iotanalytics_operations.R
 \name{iotanalytics_list_tags_for_resource}
 \alias{iotanalytics_list_tags_for_resource}
-\title{Lists the tags (metadata) which you have assigned to the resource}
+\title{Lists the tags (metadata) that you have assigned to the resource}
 \usage{
 iotanalytics_list_tags_for_resource(resourceArn)
 }
@@ -10,7 +10,7 @@ iotanalytics_list_tags_for_resource(resourceArn)
 \item{resourceArn}{[required] The ARN of the resource whose tags you want to list.}
 }
 \description{
-Lists the tags (metadata) which you have assigned to the resource.
+Lists the tags (metadata) that you have assigned to the resource.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

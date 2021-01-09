@@ -191,7 +191,7 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
 #' corp.example.com).
 #' @param OrganizationalUnitDistinguishedNames &#91;required&#93; The distinguished names of the organizational units for computer
 #' accounts.
-#' @param ServiceAccountCredentials &#91;required&#93; The credentials for the service account used by the fleet or image
+#' @param ServiceAccountCredentials The credentials for the service account used by the fleet or image
 #' builder to connect to the directory.
 #'
 #' @section Request syntax:
@@ -211,7 +211,7 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
 #' @keywords internal
 #'
 #' @rdname appstream_create_directory_config
-appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitDistinguishedNames, ServiceAccountCredentials) {
+appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = NULL) {
   op <- new_operation(
     name = "CreateDirectoryConfig",
     http_method = "POST",
@@ -238,7 +238,7 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #'   FleetType, ComputeCapacity, VpcConfig, MaxUserDurationInSeconds,
 #'   DisconnectTimeoutInSeconds, Description, DisplayName,
 #'   EnableDefaultInternetAccess, DomainJoinInfo, Tags,
-#'   IdleDisconnectTimeoutInSeconds, IamRoleArn)
+#'   IdleDisconnectTimeoutInSeconds, IamRoleArn, StreamView)
 #'
 #' @param Name &#91;required&#93; A unique name for the fleet.
 #' @param ImageName The name of the image used to create the fleet.
@@ -270,6 +270,18 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' 
 #' -   stream.memory.8xlarge
 #' 
+#' -   stream.memory.z1d.large
+#' 
+#' -   stream.memory.z1d.xlarge
+#' 
+#' -   stream.memory.z1d.2xlarge
+#' 
+#' -   stream.memory.z1d.3xlarge
+#' 
+#' -   stream.memory.z1d.6xlarge
+#' 
+#' -   stream.memory.z1d.12xlarge
+#' 
 #' -   stream.graphics-design.large
 #' 
 #' -   stream.graphics-design.xlarge
@@ -279,6 +291,18 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' -   stream.graphics-design.4xlarge
 #' 
 #' -   stream.graphics-desktop.2xlarge
+#' 
+#' -   stream.graphics.g4dn.xlarge
+#' 
+#' -   stream.graphics.g4dn.2xlarge
+#' 
+#' -   stream.graphics.g4dn.4xlarge
+#' 
+#' -   stream.graphics.g4dn.8xlarge
+#' 
+#' -   stream.graphics.g4dn.12xlarge
+#' 
+#' -   stream.graphics.g4dn.16xlarge
 #' 
 #' -   stream.graphics-pro.4xlarge
 #' 
@@ -363,12 +387,18 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' (STS) `AssumeRole` API operation and passes the ARN of the role to use.
 #' The operation creates a new session with temporary credentials.
 #' AppStream 2.0 retrieves the temporary credentials and creates the
-#' **AppStream\\_Machine\\_Role** credential profile on the instance.
+#' **appstream\\_machine\\_role** credential profile on the instance.
 #' 
 #' For more information, see [Using an IAM Role to Grant Permissions to
 #' Applications and Scripts Running on AppStream 2.0 Streaming
 #' Instances](https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
 #' in the *Amazon AppStream 2.0 Administration Guide*.
+#' @param StreamView The AppStream 2.0 view that is displayed to your users when they stream
+#' from the fleet. When `APP` is specified, only the windows of
+#' applications opened by users display. When `DESKTOP` is specified, the
+#' standard desktop that is provided by the operating system displays.
+#' 
+#' The default value is `APP`.
 #'
 #' @section Request syntax:
 #' ```
@@ -402,21 +432,22 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #'     "string"
 #'   ),
 #'   IdleDisconnectTimeoutInSeconds = 123,
-#'   IamRoleArn = "string"
+#'   IamRoleArn = "string",
+#'   StreamView = "APP"|"DESKTOP"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_create_fleet
-appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL, IamRoleArn = NULL) {
+appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL, IamRoleArn = NULL, StreamView = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn)
+  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn, StreamView = StreamView)
   output <- .appstream$create_fleet_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -470,6 +501,18 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' 
 #' -   stream.memory.8xlarge
 #' 
+#' -   stream.memory.z1d.large
+#' 
+#' -   stream.memory.z1d.xlarge
+#' 
+#' -   stream.memory.z1d.2xlarge
+#' 
+#' -   stream.memory.z1d.3xlarge
+#' 
+#' -   stream.memory.z1d.6xlarge
+#' 
+#' -   stream.memory.z1d.12xlarge
+#' 
 #' -   stream.graphics-design.large
 #' 
 #' -   stream.graphics-design.xlarge
@@ -479,6 +522,18 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' -   stream.graphics-design.4xlarge
 #' 
 #' -   stream.graphics-desktop.2xlarge
+#' 
+#' -   stream.graphics.g4dn.xlarge
+#' 
+#' -   stream.graphics.g4dn.2xlarge
+#' 
+#' -   stream.graphics.g4dn.4xlarge
+#' 
+#' -   stream.graphics.g4dn.8xlarge
+#' 
+#' -   stream.graphics.g4dn.12xlarge
+#' 
+#' -   stream.graphics.g4dn.16xlarge
 #' 
 #' -   stream.graphics-pro.4xlarge
 #' 
@@ -494,7 +549,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' Token Service (STS) `AssumeRole` API operation and passes the ARN of the
 #' role to use. The operation creates a new session with temporary
 #' credentials. AppStream 2.0 retrieves the temporary credentials and
-#' creates the **AppStream\\_Machine\\_Role** credential profile on the
+#' creates the **appstream\\_machine\\_role** credential profile on the
 #' instance.
 #' 
 #' For more information, see [Using an IAM Role to Grant Permissions to
@@ -1427,7 +1482,8 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #'
 #' @param StackName &#91;required&#93; The name of the stack. This value is case-sensitive.
 #' @param FleetName &#91;required&#93; The name of the fleet. This value is case-sensitive.
-#' @param UserId The user identifier.
+#' @param UserId The user identifier (ID). If you specify a user ID, you must also
+#' specify the authentication type.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #' @param Limit The size of each page of results. The default value is 20 and the
@@ -2255,7 +2311,8 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #'   ComputeCapacity, VpcConfig, MaxUserDurationInSeconds,
 #'   DisconnectTimeoutInSeconds, DeleteVpcConfig, Description, DisplayName,
 #'   EnableDefaultInternetAccess, DomainJoinInfo,
-#'   IdleDisconnectTimeoutInSeconds, AttributesToDelete, IamRoleArn)
+#'   IdleDisconnectTimeoutInSeconds, AttributesToDelete, IamRoleArn,
+#'   StreamView)
 #'
 #' @param ImageName The name of the image used to create the fleet.
 #' @param ImageArn The ARN of the public, private, or shared image to use.
@@ -2287,6 +2344,18 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' 
 #' -   stream.memory.8xlarge
 #' 
+#' -   stream.memory.z1d.large
+#' 
+#' -   stream.memory.z1d.xlarge
+#' 
+#' -   stream.memory.z1d.2xlarge
+#' 
+#' -   stream.memory.z1d.3xlarge
+#' 
+#' -   stream.memory.z1d.6xlarge
+#' 
+#' -   stream.memory.z1d.12xlarge
+#' 
 #' -   stream.graphics-design.large
 #' 
 #' -   stream.graphics-design.xlarge
@@ -2296,6 +2365,18 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' -   stream.graphics-design.4xlarge
 #' 
 #' -   stream.graphics-desktop.2xlarge
+#' 
+#' -   stream.graphics.g4dn.xlarge
+#' 
+#' -   stream.graphics.g4dn.2xlarge
+#' 
+#' -   stream.graphics.g4dn.4xlarge
+#' 
+#' -   stream.graphics.g4dn.8xlarge
+#' 
+#' -   stream.graphics.g4dn.12xlarge
+#' 
+#' -   stream.graphics.g4dn.16xlarge
 #' 
 #' -   stream.graphics-pro.4xlarge
 #' 
@@ -2354,12 +2435,18 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' (STS) `AssumeRole` API operation and passes the ARN of the role to use.
 #' The operation creates a new session with temporary credentials.
 #' AppStream 2.0 retrieves the temporary credentials and creates the
-#' **AppStream\\_Machine\\_Role** credential profile on the instance.
+#' **appstream\\_machine\\_role** credential profile on the instance.
 #' 
 #' For more information, see [Using an IAM Role to Grant Permissions to
 #' Applications and Scripts Running on AppStream 2.0 Streaming
 #' Instances](https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
 #' in the *Amazon AppStream 2.0 Administration Guide*.
+#' @param StreamView The AppStream 2.0 view that is displayed to your users when they stream
+#' from the fleet. When `APP` is specified, only the windows of
+#' applications opened by users display. When `DESKTOP` is specified, the
+#' standard desktop that is provided by the operating system displays.
+#' 
+#' The default value is `APP`.
 #'
 #' @section Request syntax:
 #' ```
@@ -2393,21 +2480,22 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #'   AttributesToDelete = list(
 #'     "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"|"IAM_ROLE_ARN"
 #'   ),
-#'   IamRoleArn = "string"
+#'   IamRoleArn = "string",
+#'   StreamView = "APP"|"DESKTOP"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_update_fleet
-appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL, IamRoleArn = NULL) {
+appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL, IamRoleArn = NULL, StreamView = NULL) {
   op <- new_operation(
     name = "UpdateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn)
+  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn, StreamView = StreamView)
   output <- .appstream$update_fleet_output()
   config <- get_config()
   svc <- .appstream$service(config)

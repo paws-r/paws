@@ -2,19 +2,32 @@
 % Please edit documentation in R/resourcegroups_operations.R
 \name{resourcegroups_get_group_query}
 \alias{resourcegroups_get_group_query}
-\title{Returns the resource query associated with the specified resource group}
+\title{Retrieves the resource query associated with the specified resource
+group}
 \usage{
-resourcegroups_get_group_query(GroupName)
+resourcegroups_get_group_query(GroupName, Group)
 }
 \arguments{
-\item{GroupName}{[required] The name of the resource group.}
+\item{GroupName}{Don't use this parameter. Use \code{Group} instead.}
+
+\item{Group}{The name or the ARN of the resource group to query.}
 }
 \description{
-Returns the resource query associated with the specified resource group.
+Retrieves the resource query associated with the specified resource
+group. For more information about resource queries, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}.
+}
+\details{
+\strong{Minimum permissions}
+
+To run this command, you must have the following permissions:
+\itemize{
+\item \code{resource-groups:GetGroupQuery}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_group_query(
-  GroupName = "string"
+  GroupName = "string",
+  Group = "string"
 )
 }
 }

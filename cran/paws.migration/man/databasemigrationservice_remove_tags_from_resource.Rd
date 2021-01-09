@@ -2,7 +2,8 @@
 % Please edit documentation in R/databasemigrationservice_operations.R
 \name{databasemigrationservice_remove_tags_from_resource}
 \alias{databasemigrationservice_remove_tags_from_resource}
-\title{Removes metadata tags from a DMS resource}
+\title{Removes metadata tags from an AWS DMS resource, including replication
+instance, endpoint, security group, and migration task}
 \usage{
 databasemigrationservice_remove_tags_from_resource(ResourceArn, TagKeys)
 }
@@ -13,7 +14,11 @@ this parameter is an Amazon Resource Name (ARN).}
 \item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
 }
 \description{
-Removes metadata tags from a DMS resource.
+Removes metadata tags from an AWS DMS resource, including replication
+instance, endpoint, security group, and migration task. For more
+information, see
+\href{https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html}{\code{Tag}}
+data type description.
 }
 \section{Request syntax}{
 \preformatted{svc$remove_tags_from_resource(

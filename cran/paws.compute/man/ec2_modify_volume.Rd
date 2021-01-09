@@ -5,7 +5,8 @@
 \title{You can modify several parameters of an existing EBS volume, including
 volume size, volume type, and IOPS capacity}
 \usage{
-ec2_modify_volume(DryRun, VolumeId, Size, VolumeType, Iops)
+ec2_modify_volume(DryRun, VolumeId, Size, VolumeType, Iops, Throughput,
+  MultiAttachEnabled)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -16,49 +17,78 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VolumeId}{[required] The ID of the volume.}
 
 \item{Size}{The target size of the volume, in GiB. The target volume size must be
-greater than or equal to than the existing size of the volume. For
-information about available EBS volume sizes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html}{Amazon EBS Volume Types}.
+greater than or equal to the existing size of the volume.
+
+The following are the supported volumes sizes for each volume type:
+\itemize{
+\item \code{gp2} and \code{gp3}: 1-16,384
+\item \code{io1} and \code{io2}: 4-16,384
+\item \code{st1} and \code{sc1}: 125-16,384
+\item \code{standard}: 1-1,024
+}
 
 Default: If no size is specified, the existing size is retained.}
 
-\item{VolumeType}{The target EBS volume type of the volume.
+\item{VolumeType}{The target EBS volume type of the volume. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html}{Amazon EBS volume types}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 Default: If no type is specified, the existing type is retained.}
 
-\item{Iops}{The target IOPS rate of the volume.
+\item{Iops}{The target IOPS rate of the volume. This parameter is valid only for
+\code{gp3}, \code{io1}, and \code{io2} volumes.
 
-This is only valid for Provisioned IOPS SSD (\code{io1}) volumes. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html#EBSVolumeTypes_piops}{Provisioned IOPS SSD (io1) Volumes}.
+The following are the supported values for each volume type:
+\itemize{
+\item \code{gp3}: 3,000-16,000 IOPS
+\item \code{io1}: 100-64,000 IOPS
+\item \code{io2}: 100-64,000 IOPS
+}
 
 Default: If no IOPS value is specified, the existing value is retained.}
+
+\item{Throughput}{The target throughput of the volume, in MiB/s. This parameter is valid
+only for \code{gp3} volumes. The maximum value is 1,000.
+
+Default: If no throughput value is specified, the existing value is
+retained.
+
+Valid Range: Minimum value of 125. Maximum value of 1000.}
+
+\item{MultiAttachEnabled}{Specifies whether to enable Amazon EBS Multi-Attach. If you enable
+Multi-Attach, you can attach the volume to up to 16 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Nitro-based instances}
+in the same Availability Zone. This parameter is supported with \code{io1}
+and \code{io2} volumes only. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html}{Amazon EBS Multi-Attach}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 }
 \description{
 You can modify several parameters of an existing EBS volume, including
 volume size, volume type, and IOPS capacity. If your EBS volume is
-attached to a current-generation EC2 instance type, you may be able to
+attached to a current-generation EC2 instance type, you might be able to
 apply these changes without stopping the instance or detaching the
 volume from it. For more information about modifying an EBS volume
-running Linux, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html}{Modifying the Size, IOPS, or Type of an EBS Volume on Linux}.
+running Linux, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html}{Modifying the size, IOPS, or type of an EBS volume on Linux}.
 For more information about modifying an EBS volume running Windows, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html}{Modifying the Size, IOPS, or Type of an EBS Volume on Windows}.
+\href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html}{Modifying the size, IOPS, or type of an EBS volume on Windows}.
 }
 \details{
 When you complete a resize operation on your volume, you need to extend
 the volume's file-system size to take advantage of the new storage
 capacity. For information about extending a Linux file system, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux}{Extending a Linux File System}.
-For information about extending a Windows file system, see \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows}{Extending a Windows File System}.
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html}{Extending a Linux file system}.
+For information about extending a Windows file system, see \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html}{Extending a Windows file system}.
 
 You can use CloudWatch Events to check the status of a modification to
 an EBS volume. For information about CloudWatch Events, see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/}{Amazon CloudWatch Events User Guide}. You
 can also track the status of a modification using
 DescribeVolumesModifications. For information about tracking status
-changes using either method, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods}{Monitoring Volume Modifications}.
+changes using either method, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html}{Monitoring volume modifications}.
 
-With previous-generation instance types, resizing an EBS volume may
+With previous-generation instance types, resizing an EBS volume might
 require detaching and reattaching the volume or stopping and restarting
-the instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html}{Modifying the Size, IOPS, or Type of an EBS Volume on Linux}
-and \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html}{Modifying the Size, IOPS, or Type of an EBS Volume on Windows}.
+the instance. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html}{Amazon EBS Elastic Volumes}
+(Linux) or \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html}{Amazon EBS Elastic Volumes}
+(Windows).
 
 If you reach the maximum volume modification rate per volume limit, you
 will need to wait at least six hours before applying further
@@ -69,8 +99,10 @@ modifications to the affected EBS volume.
   DryRun = TRUE|FALSE,
   VolumeId = "string",
   Size = 123,
-  VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
-  Iops = 123
+  VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
+  Iops = 123,
+  Throughput = 123,
+  MultiAttachEnabled = TRUE|FALSE
 )
 }
 }

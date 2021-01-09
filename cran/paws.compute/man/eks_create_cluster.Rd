@@ -4,8 +4,9 @@
 \alias{eks_create_cluster}
 \title{Creates an Amazon EKS control plane}
 \usage{
-eks_create_cluster(name, version, roleArn, resourcesVpcConfig, logging,
-  clientRequestToken, tags, encryptionConfig)
+eks_create_cluster(name, version, roleArn, resourcesVpcConfig,
+  kubernetesNetworkConfig, logging, clientRequestToken, tags,
+  encryptionConfig)
 }
 \arguments{
 \item{name}{[required] The unique name to give to your cluster.}
@@ -14,8 +15,8 @@ eks_create_cluster(name, version, roleArn, resourcesVpcConfig, logging,
 value here, the latest version available in Amazon EKS is used.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that provides permissions
-for Amazon EKS to make calls to other AWS API operations on your behalf.
-For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html}{Amazon EKS Service IAM Role}
+for the Kubernetes control plane to make calls to AWS API operations on
+your behalf. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html}{Amazon EKS Service IAM Role}
 in the \strong{Amazon EKS User Guide} .}
 
 \item{resourcesVpcConfig}{[required] The VPC configuration used by the cluster control plane. Amazon EKS VPC
@@ -26,13 +27,15 @@ in the \emph{Amazon EKS User Guide}. You must specify at least two subnets.
 You can specify up to five security groups, but we recommend that you
 use a dedicated security group for your cluster control plane.}
 
+\item{kubernetesNetworkConfig}{The Kubernetes network configuration for the cluster.}
+
 \item{logging}{Enable or disable exporting the Kubernetes control plane logs for your
 cluster to CloudWatch Logs. By default, cluster control plane logs
 aren't exported to CloudWatch Logs. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html}{Amazon EKS Cluster Control Plane Logs}
 in the \strong{Amazon EKS User Guide} .
 
 CloudWatch Logs ingestion, archive storage, and data scanning rates
-apply to exported control plane logs. For more information, see \href{http://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.}
+apply to exported control plane logs. For more information, see \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.}
 
 \item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
@@ -79,7 +82,7 @@ For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide
 in the \strong{Amazon EKS User Guide} .
 
 CloudWatch Logs ingestion, archive storage, and data scanning rates
-apply to exported control plane logs. For more information, see \href{http://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
+apply to exported control plane logs. For more information, see \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
 
 Cluster creation typically takes between 10 and 15 minutes. After you
 create an Amazon EKS cluster, you must configure your Kubernetes tooling
@@ -105,6 +108,9 @@ in the \emph{Amazon EKS User Guide}.
     publicAccessCidrs = list(
       "string"
     )
+  ),
+  kubernetesNetworkConfig = list(
+    serviceIpv4Cidr = "string"
   ),
   logging = list(
     clusterLogging = list(

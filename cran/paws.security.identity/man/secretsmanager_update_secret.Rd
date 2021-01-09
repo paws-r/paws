@@ -45,7 +45,7 @@ for new versions and include that value in the request.
 You typically only need to interact with this value if you implement
 your own retry logic and want to ensure that a given secret is not
 created twice. We recommend that you generate a
-\href{https://wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
+\href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
 value to ensure uniqueness within the specified secret.
 
 Secrets Manager uses this value to prevent the accidental creation of
@@ -103,7 +103,7 @@ Lambda rotation function knows how to parse.
 For storing multiple values, we recommend that you use a JSON text
 string argument and specify key/value pairs. For information on how to
 format a JSON parameter for the various command line tool environments,
-see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
+see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For example:
 
 \verb{\\\[\\\{"username":"bob"\\\},\\\{"password":"abc123xyz456"\\\}\\\]}

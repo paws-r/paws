@@ -6,7 +6,7 @@
 \usage{
 translate_start_text_translation_job(JobName, InputDataConfig,
   OutputDataConfig, DataAccessRoleArn, SourceLanguageCode,
-  TargetLanguageCodes, TerminologyNames, ClientToken)
+  TargetLanguageCodes, TerminologyNames, ParallelDataNames, ClientToken)
 }
 \arguments{
 \item{JobName}{The name of the batch translation job to be performed.}
@@ -31,12 +31,12 @@ batch translation jobs.}
 \item{TerminologyNames}{The name of the terminology to use in the batch translation job. For a
 list of available terminologies, use the ListTerminologies operation.}
 
-\item{ClientToken}{[required] The client token of the EC2 instance calling the request. This token is
-auto-generated when using the Amazon Translate SDK. Otherwise, use the
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html}{DescribeInstances}
-EC2 operation to retreive an instance's client token. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html#client-tokens}{Client Tokens}
-in the EC2 User Guide.}
+\item{ParallelDataNames}{The names of the parallel data resources to use in the batch translation
+job. For a list of available parallel data resources, use the
+ListParallelData operation.}
+
+\item{ClientToken}{[required] A unique identifier for the request. This token is auto-generated when
+using the Amazon Translate SDK.}
 }
 \description{
 Starts an asynchronous batch translation job. Batch translation jobs can
@@ -68,6 +68,9 @@ languages at once.
     "string"
   ),
   TerminologyNames = list(
+    "string"
+  ),
+  ParallelDataNames = list(
     "string"
   ),
   ClientToken = "string"

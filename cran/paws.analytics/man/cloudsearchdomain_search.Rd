@@ -16,7 +16,7 @@ in a request; they are mutually exclusive. To get the first cursor, set
 the cursor value to \code{initial}. In subsequent requests, specify the
 cursor value returned in the hits section of the response.
 
-For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/paginating-results.html}{Paginating Results}
+For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/paginating-results.html}{Paginating Results}
 in the \emph{Amazon CloudSearch Developer Guide}.}
 
 \item{expr}{Defines one or more numeric expressions that can be used to sort results
@@ -30,7 +30,7 @@ expressions in a search request. For example:
 \verb{\\\{"expression1":"_score*rating", "expression2":"(1/rank)*year"\\\}}
 
 For information about the variables, operators, and functions you can
-use in expressions, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html#writing-expressions}{Writing Expressions}
+use in expressions, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html}{Writing Expressions}
 in the \emph{Amazon CloudSearch Developer Guide}.}
 
 \item{facet}{Specifies one or more fields for which to get facet information, and
@@ -43,7 +43,7 @@ You can specify the following faceting options:
 \itemize{
 \item \code{buckets} specifies an array of the facet values or ranges to count.
 Ranges are specified using the same syntax that you use to search
-for a range of values. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-ranges.html}{Searching for a Range of Values}
+for a range of values. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-ranges.html}{Searching for a Range of Values}
 in the \emph{Amazon CloudSearch Developer Guide}. Buckets are returned in
 the order they are specified in the request. The \code{sort} and \code{size}
 options are not valid if you specify \code{buckets}.
@@ -83,7 +83,7 @@ values numerically by year, with earliest year listed first.
 
 \verb{\\\{"year":\\\{"sort":"bucket"\\\}\\\}}
 
-For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/faceting.html}{Getting and Using Facet Information}
+For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/faceting.html}{Getting and Using Facet Information}
 in the \emph{Amazon CloudSearch Developer Guide}.}
 
 \item{filterQuery}{Specifies a structured query that filters the results of a search
@@ -94,7 +94,7 @@ Specifying a filter controls only which matching documents are included
 in the results, it has no effect on how they are scored and sorted. The
 \code{filterQuery} parameter supports the full structured query syntax.
 
-For more information about using filters, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/filtering-results.html}{Filtering Matching Documents}
+For more information about using filters, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/filtering-results.html}{Filtering Matching Documents}
 in the \emph{Amazon CloudSearch Developer Guide}.}
 
 \item{highlight}{Retrieves highlights for matches in the specified \code{text} or \code{text-array}
@@ -148,7 +148,7 @@ the \code{simple} query parser is used to process requests. To use the
 \code{structured}, \code{lucene}, or \code{dismax} query parser, you must also specify
 the \code{queryParser} parameter.
 
-For more information about specifying search criteria, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html}{Searching Your Data}
+For more information about specifying search criteria, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html}{Searching Your Data}
 in the \emph{Amazon CloudSearch Developer Guide}.}
 
 \item{queryOptions}{Configures options for the query parser specified in the \code{queryParser}
@@ -265,19 +265,19 @@ operator with the \code{queryOptions} parameter.) You can use the \code{-}
 terms, find results that match any of the specified terms, or search
 for a prefix. To search for a phrase rather than individual terms,
 enclose the phrase in double quotes. For more information, see
-\href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-text.html}{Searching for Text}
+\href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-text.html}{Searching for Text}
 in the \emph{Amazon CloudSearch Developer Guide}.
 \item \code{structured}: perform advanced searches by combining multiple
 expressions to define the search criteria. You can also search
 within particular fields, search for values and ranges of values,
 and use advanced options such as term boosting, \code{matchall}, and
-\code{near}. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-compound-queries.html}{Constructing Compound Queries}
+\code{near}. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-compound-queries.html}{Constructing Compound Queries}
 in the \emph{Amazon CloudSearch Developer Guide}.
 \item \code{lucene}: search using the Apache Lucene query parser syntax. For
-more information, see \href{http://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description}{Apache Lucene Query Parser Syntax}.
+more information, see \href{https://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html}{Apache Lucene Query Parser Syntax}.
 \item \code{dismax}: search using the simplified subset of the Apache Lucene
 query parser syntax defined by the DisMax query parser. For more
-information, see \href{http://wiki.apache.org/solr/DisMaxQParserPlugin#Query_Syntax}{DisMax Query Parser Syntax}.
+information, see \href{https://cwiki.apache.org/confluence/display/solr/DisMaxQParserPlugin}{DisMax Query Parser Syntax}.
 }}
 
 \item{return}{Specifies the field and expression values to include in the response.
@@ -299,7 +299,7 @@ configuration. Array type fields cannot be used for sorting. If no
 relevance scores in descending order: \verb{_score desc}. You can also sort
 by document ID (\verb{_id asc}) and version (\verb{_version desc}).
 
-For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/sorting-results.html}{Sorting Results}
+For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/sorting-results.html}{Sorting Results}
 in the \emph{Amazon CloudSearch Developer Guide}.}
 
 \item{start}{Specifies the offset of the first search hit you want to return. Note
@@ -307,7 +307,7 @@ that the result set is zero-based; the first result is at index 0. You
 can specify either the \code{start} or \code{cursor} parameter in a request, they
 are mutually exclusive.
 
-For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/paginating-results.html}{Paginating Results}
+For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/paginating-results.html}{Paginating Results}
 in the \emph{Amazon CloudSearch Developer Guide}.}
 
 \item{stats}{Specifies one or more fields for which to get statistics information.
@@ -338,7 +338,7 @@ Apache Lucene query parser syntax defined by the DisMax query
 parser.
 }
 
-For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html}{Searching Your Data}
+For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html}{Searching Your Data}
 in the \emph{Amazon CloudSearch Developer Guide}.
 
 The endpoint for submitting \code{Search} requests is domain-specific. You

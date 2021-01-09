@@ -2,21 +2,36 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_put_resolver_rule_policy}
 \alias{route53resolver_put_resolver_rule_policy}
-\title{Specifies the Resolver operations and resources that you want to allow
-another AWS account to be able to use}
+\title{Specifies an AWS rule that you want to share with another account, the
+account that you want to share the rule with, and the operations that
+you want the account to be able to perform on the rule}
 \usage{
 route53resolver_put_resolver_rule_policy(Arn, ResolverRulePolicy)
 }
 \arguments{
-\item{Arn}{[required] The Amazon Resource Name (ARN) of the account that you want to grant
-permissions to.}
+\item{Arn}{[required] The Amazon Resource Name (ARN) of the rule that you want to share with
+another account.}
 
 \item{ResolverRulePolicy}{[required] An AWS Identity and Access Management policy statement that lists the
-permissions that you want to grant to another AWS account.}
+rules that you want to share with another AWS account and the operations
+that you want the account to be able to perform. You can specify the
+following operations in the \code{Action} section of the statement:
+\itemize{
+\item \code{route53resolver:GetResolverRule}
+\item \code{route53resolver:AssociateResolverRule}
+\item \code{route53resolver:DisassociateResolverRule}
+\item \code{route53resolver:ListResolverRules}
+\item \code{route53resolver:ListResolverRuleAssociations}
+}
+
+In the \code{Resource} section of the statement, specify the ARN for the rule
+that you want to share with another account. Specify the same ARN that
+you specified in \code{Arn}.}
 }
 \description{
-Specifies the Resolver operations and resources that you want to allow
-another AWS account to be able to use.
+Specifies an AWS rule that you want to share with another account, the
+account that you want to share the rule with, and the operations that
+you want the account to be able to perform on the rule.
 }
 \section{Request syntax}{
 \preformatted{svc$put_resolver_rule_policy(

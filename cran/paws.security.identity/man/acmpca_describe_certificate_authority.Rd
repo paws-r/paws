@@ -2,20 +2,23 @@
 % Please edit documentation in R/acmpca_operations.R
 \name{acmpca_describe_certificate_authority}
 \alias{acmpca_describe_certificate_authority}
-\title{Lists information about your private certificate authority (CA)}
+\title{Lists information about your private certificate authority (CA) or one
+that has been shared with you}
 \usage{
 acmpca_describe_certificate_authority(CertificateAuthorityArn)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-CreateCertificateAuthority. This must be of the form:
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}.
+This must be of the form:
 
 \verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
 }
 \description{
-Lists information about your private certificate authority (CA). You
-specify the private CA on input by its ARN (Amazon Resource Name). The
-output contains the status of your CA. This can be any of the following:
+Lists information about your private certificate authority (CA) or one
+that has been shared with you. You specify the private CA on input by
+its ARN (Amazon Resource Name). The output contains the status of your
+CA. This can be any of the following:
 }
 \details{
 \itemize{

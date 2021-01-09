@@ -2,15 +2,15 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_launch_app}
 \alias{sms_launch_app}
-\title{Launches an application stack}
+\title{Launches the specified application as a stack in AWS CloudFormation}
 \usage{
 sms_launch_app(appId)
 }
 \arguments{
-\item{appId}{ID of the application to launch.}
+\item{appId}{The ID of the application.}
 }
 \description{
-Launches an application stack.
+Launches the specified application as a stack in AWS CloudFormation.
 }
 \section{Request syntax}{
 \preformatted{svc$launch_app(

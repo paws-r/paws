@@ -4,17 +4,25 @@
 \alias{frauddetector_delete_event}
 \title{Deletes the specified event}
 \usage{
-frauddetector_delete_event(eventId)
+frauddetector_delete_event(eventId, eventTypeName)
 }
 \arguments{
 \item{eventId}{[required] The ID of the event to delete.}
+
+\item{eventTypeName}{[required] The name of the event type.}
 }
 \description{
 Deletes the specified event.
 }
+\details{
+When you delete an event, Amazon Fraud Detector permanently deletes that
+event from the evaluation history, and the event data is no longer
+stored in Amazon Fraud Detector.
+}
 \section{Request syntax}{
 \preformatted{svc$delete_event(
-  eventId = "string"
+  eventId = "string",
+  eventTypeName = "string"
 )
 }
 }

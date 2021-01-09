@@ -6,7 +6,7 @@
 organization node}
 \usage{
 servicecatalog_create_portfolio_share(AcceptLanguage, PortfolioId,
-  AccountId, OrganizationNode)
+  AccountId, OrganizationNode, ShareTagOptions)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,16 +22,20 @@ servicecatalog_create_portfolio_share(AcceptLanguage, PortfolioId,
 
 \item{OrganizationNode}{The organization node to whom you are going to share. If
 \code{OrganizationNode} is passed in, \code{PortfolioShare} will be created for
-the node and its children (when applies), and a \code{PortfolioShareToken}
-will be returned in the output in order for the administrator to monitor
-the status of the \code{PortfolioShare} creation process.}
+the node an ListOrganizationPortfolioAccessd its children (when
+applies), and a \code{PortfolioShareToken} will be returned in the output in
+order for the administrator to monitor the status of the
+\code{PortfolioShare} creation process.}
+
+\item{ShareTagOptions}{Enables or disables \code{TagOptions } sharing when creating the portfolio
+share. If this flag is not provided, TagOptions sharing is disabled.}
 }
 \description{
 Shares the specified portfolio with the specified account or
 organization node. Shares to an organization node can only be created by
-the master account of an organization or by a delegated administrator.
-You can share portfolios to an organization, an organizational unit, or
-a specific account.
+the management account of an organization or by a delegated
+administrator. You can share portfolios to an organization, an
+organizational unit, or a specific account.
 }
 \details{
 Note that if a delegated admin is de-registered, they can no longer
@@ -39,6 +43,14 @@ create portfolio shares.
 
 \code{AWSOrganizationsAccess} must be enabled in order to create a portfolio
 share to an organization node.
+
+You can't share a shared resource, including portfolios that contain a
+shared product.
+
+If the portfolio share with the specified account or organization node
+already exists, this action will have no effect and will not return an
+error. To update an existing share, you must use the
+\code{ UpdatePortfolioShare} API instead.
 }
 \section{Request syntax}{
 \preformatted{svc$create_portfolio_share(
@@ -48,7 +60,8 @@ share to an organization node.
   OrganizationNode = list(
     Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
     Value = "string"
-  )
+  ),
+  ShareTagOptions = TRUE|FALSE
 )
 }
 }

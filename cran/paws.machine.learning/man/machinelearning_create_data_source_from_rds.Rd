@@ -26,11 +26,11 @@ database instance.
 credentials that are used to connect to the Amazon RDS database.
 \item ResourceRole - A role (DataPipelineDefaultResourceRole) assumed by
 an EC2 instance to carry out the copy task from Amazon RDS to Amazon
-Simple Storage Service (Amazon S3). For more information, see \href{http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html}{Role templates}
+Simple Storage Service (Amazon S3). For more information, see \href{https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html}{Role templates}
 for data pipelines.
 \item ServiceRole - A role (DataPipelineDefaultRole) assumed by the AWS
 Data Pipeline service to monitor the progress of the copy task from
-Amazon RDS to Amazon S3. For more information, see \href{http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html}{Role templates}
+Amazon RDS to Amazon S3. For more information, see \href{https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html}{Role templates}
 for data pipelines.
 \item SecurityInfo - The security information to use to access an RDS DB
 instance. You need to set up appropriate ingress rules for the
@@ -63,7 +63,7 @@ be set to \code{true} if the \code{DataSource} needs to be used for \code{MLMode
 training.}
 }
 \description{
-Creates a \code{DataSource} object from an \href{http://aws.amazon.com/rds/}{Amazon Relational Database Service} (Amazon RDS). A \code{DataSource}
+Creates a \code{DataSource} object from an \href{https://aws.amazon.com/rds/}{Amazon Relational Database Service} (Amazon RDS). A \code{DataSource}
 references data that can be used to perform \code{CreateMLModel},
 \code{CreateEvaluation}, or \code{CreateBatchPrediction} operations.
 }

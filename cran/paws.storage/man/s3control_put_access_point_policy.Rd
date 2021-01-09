@@ -11,16 +11,44 @@ s3control_put_access_point_policy(AccountId, Name, Policy)
 access point.}
 
 \item{Name}{[required] The name of the access point that you want to associate with the
-specified policy.}
+specified policy.
+
+For using this parameter with Amazon S3 on Outposts with the REST API,
+you must specify the name and the x-amz-outpost-id as well.
+
+For using this parameter with S3 on Outposts with the AWS SDK and CLI,
+you must specify the ARN of the access point accessed in the format
+\verb{arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/accesspoint/&lt;my-accesspoint-name&gt;}.
+For example, to access the access point \code{reports-ap} through outpost
+\code{my-outpost} owned by account \code{123456789012} in Region \code{us-west-2}, use
+the URL encoding of
+\code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap}.
+The value must be URL encoded.}
 
 \item{Policy}{[required] The policy that you want to apply to the specified access point. For
-more information about access point policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html}{Managing Data Access with Amazon S3 Access Points}
+more information about access point policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html}{Managing data access with Amazon S3 Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 }
 \description{
 Associates an access policy with the specified access point. Each access
 point can have only one policy, so a request made to this API replaces
 any existing policy associated with the specified access point.
+}
+\details{
+All Amazon S3 on Outposts REST API requests for this action require an
+additional parameter of \code{x-amz-outpost-id} to be passed with the request
+and an S3 on Outposts endpoint hostname prefix instead of \code{s3-control}.
+For an example of the request syntax for Amazon S3 on Outposts that uses
+the S3 on Outposts endpoint hostname prefix and the \code{x-amz-outpost-id}
+derived using the access point ARN, see the
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicy.html#API_control_PutAccessPointPolicy_Examples}{Examples}
+section.
+
+The following actions are related to \code{PutAccessPointPolicy}:
+\itemize{
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicy.html}{GetAccessPointPolicy}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicy.html}{DeleteAccessPointPolicy}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_access_point_policy(

@@ -6,7 +6,8 @@
 bot}
 \usage{
 lexruntimeservice_put_session(botName, botAlias, userId,
-  sessionAttributes, dialogAction, recentIntentSummaryView, accept)
+  sessionAttributes, dialogAction, recentIntentSummaryView, accept,
+  activeContexts)
 }
 \arguments{
 \item{botName}{[required] The name of the bot that contains the session data.}
@@ -64,6 +65,14 @@ in 16-bit, little endian format.
 \item \verb{text/plain; charset=utf-8}
 }
 }}
+
+\item{activeContexts}{A list of contexts active for the request. A context can be activated
+when a previous intent is fulfilled, or by including the context in the
+request,
+
+If you don't specify a list of contexts, Amazon Lex will use the current
+list of contexts for the session. If you specify an empty list, all
+contexts for the session are cleared.}
 }
 \description{
 Creates a new session or modifies an existing session with an Amazon Lex
@@ -105,7 +114,19 @@ For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/how-se
       slotToElicit = "string"
     )
   ),
-  accept = "string"
+  accept = "string",
+  activeContexts = list(
+    list(
+      name = "string",
+      timeToLive = list(
+        timeToLiveInSeconds = 123,
+        turnsToLive = 123
+      ),
+      parameters = list(
+        "string"
+      )
+    )
+  )
 )
 }
 }

@@ -2,8 +2,8 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_update_backup_plan}
 \alias{backup_update_backup_plan}
-\title{Replaces the body of a saved backup plan identified by its backupPlanId
-with the input document in JSON format}
+\title{Updates an existing backup plan identified by its backupPlanId with the
+input document in JSON format}
 \usage{
 backup_update_backup_plan(BackupPlanId, BackupPlan)
 }
@@ -14,9 +14,9 @@ backup_update_backup_plan(BackupPlanId, BackupPlan)
 or more sets of \code{Rules}.}
 }
 \description{
-Replaces the body of a saved backup plan identified by its
-\code{backupPlanId} with the input document in JSON format. The new version
-is uniquely identified by a \code{VersionId}.
+Updates an existing backup plan identified by its \code{backupPlanId} with
+the input document in JSON format. The new version is uniquely
+identified by a \code{VersionId}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_backup_plan(
@@ -45,6 +45,14 @@ is uniquely identified by a \code{VersionId}.
             ),
             DestinationBackupVaultArn = "string"
           )
+        )
+      )
+    ),
+    AdvancedBackupSettings = list(
+      list(
+        ResourceType = "string",
+        BackupOptions = list(
+          "string"
         )
       )
     )

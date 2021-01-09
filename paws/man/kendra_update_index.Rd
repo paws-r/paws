@@ -5,7 +5,8 @@
 \title{Updates an existing Amazon Kendra index}
 \usage{
 kendra_update_index(Id, Name, RoleArn, Description,
-  DocumentMetadataConfigurationUpdates, CapacityUnits)
+  DocumentMetadataConfigurationUpdates, CapacityUnits,
+  UserTokenConfigurations, UserContextPolicy)
 }
 \arguments{
 \item{Id}{[required] The identifier of the index to update.}
@@ -25,6 +26,10 @@ to 5 times per day.
 
 If you are using extra storage units, you can't reduce the storage
 capacity below that required to meet the storage needs for your index.}
+
+\item{UserTokenConfigurations}{The user token configuration.}
+
+\item{UserContextPolicy}{The user user token context policy.}
 }
 \description{
 Updates an existing Amazon Kendra index.
@@ -51,14 +56,33 @@ Updates an existing Amazon Kendra index.
       Search = list(
         Facetable = TRUE|FALSE,
         Searchable = TRUE|FALSE,
-        Displayable = TRUE|FALSE
+        Displayable = TRUE|FALSE,
+        Sortable = TRUE|FALSE
       )
     )
   ),
   CapacityUnits = list(
     StorageCapacityUnits = 123,
     QueryCapacityUnits = 123
-  )
+  ),
+  UserTokenConfigurations = list(
+    list(
+      JwtTokenTypeConfiguration = list(
+        KeyLocation = "URL"|"SECRET_MANAGER",
+        URL = "string",
+        SecretManagerArn = "string",
+        UserNameAttributeField = "string",
+        GroupAttributeField = "string",
+        Issuer = "string",
+        ClaimRegex = "string"
+      ),
+      JsonTokenTypeConfiguration = list(
+        UserNameAttributeField = "string",
+        GroupAttributeField = "string"
+      )
+    )
+  ),
+  UserContextPolicy = "ATTRIBUTE_FILTER"|"USER_TOKEN"
 )
 }
 }

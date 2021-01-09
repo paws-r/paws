@@ -28,6 +28,17 @@ previous generation counterparts.
 \itemize{
 \item Current generation:
 
+\strong{M6g node types} (available only for Redis engine version
+5.0.6 onward and for Memcached engine version 1.5.16 onward).
+
+\code{cache.m6g.large}, \code{cache.m6g.xlarge}, \code{cache.m6g.2xlarge},
+\code{cache.m6g.4xlarge}, \code{cache.m6g.8xlarge}, \code{cache.m6g.12xlarge},
+\code{cache.m6g.16xlarge}
+
+At this time, M6g node types are available in the following
+regions: us-east-1, us-west-2, us-east-2, eu-central-1,
+eu-west-1 and ap-northeast-1.
+
 \strong{M5 node types:} \code{cache.m5.large}, \code{cache.m5.xlarge},
 \code{cache.m5.2xlarge}, \code{cache.m5.4xlarge}, \code{cache.m5.12xlarge},
 \code{cache.m5.24xlarge}
@@ -59,6 +70,17 @@ previous generation counterparts.
 \item Memory optimized:
 \itemize{
 \item Current generation:
+
+\strong{R6g node types} (available only for Redis engine version
+5.0.6 onward and for Memcached engine version 1.5.16 onward).
+
+\code{cache.r6g.large}, \code{cache.r6g.xlarge}, \code{cache.r6g.2xlarge},
+\code{cache.r6g.4xlarge}, \code{cache.r6g.8xlarge}, \code{cache.r6g.12xlarge},
+\code{cache.r6g.16xlarge}
+
+At this time, R6g node types are available in the following
+regions: us-east-1, us-west-2, us-east-2, eu-central-1,
+eu-west-1 and ap-northeast-1.
 
 \strong{R5 node types:} \code{cache.r5.large}, \code{cache.r5.xlarge},
 \code{cache.r5.2xlarge}, \code{cache.r5.4xlarge}, \code{cache.r5.12xlarge},
@@ -101,7 +123,7 @@ those reservations matching the specified product description.}
 available offerings matching the specified offering type.
 
 Valid values:
-\code{"Light Utilization"|"Medium Utilization"|"Heavy Utilization"}}
+\code{"Light Utilization"|"Medium Utilization"|"Heavy Utilization"|"All Upfront"|"Partial Upfront"| "No Upfront"}}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a marker is

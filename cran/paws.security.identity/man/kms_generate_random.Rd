@@ -26,6 +26,10 @@ specify the custom key store ID.
 For more information about entropy and random number generation, see the
 \href{https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf}{AWS Key Management Service Cryptographic Details}
 whitepaper.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GenerateRandom}
+(IAM policy)
 }
 \section{Request syntax}{
 \preformatted{svc$generate_random(

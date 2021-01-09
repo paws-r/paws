@@ -49,11 +49,14 @@ operations.\preformatted{ &lt;p&gt;Amazon CodeGuru Profiler collects runtime per
 \link[=codeguruprofiler_list_findings_reports]{list_findings_reports} \tab List the available reports for a given profiling group and time range\cr
 \link[=codeguruprofiler_list_profile_times]{list_profile_times} \tab Lists the start times of the available aggregated profiles of a profiling group for an aggregation period within the specified time range\cr
 \link[=codeguruprofiler_list_profiling_groups]{list_profiling_groups} \tab Returns a list of profiling groups\cr
+\link[=codeguruprofiler_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags that are assigned to a specified resource\cr
 \link[=codeguruprofiler_post_agent_profile]{post_agent_profile} \tab Submits profiling data to an aggregated profile of a profiling group\cr
 \link[=codeguruprofiler_put_permission]{put_permission} \tab Adds permissions to a profiling group's resource-based policy that are provided using an action group\cr
 \link[=codeguruprofiler_remove_notification_channel]{remove_notification_channel} \tab Remove one anomaly notifications channel for a profiling group\cr
 \link[=codeguruprofiler_remove_permission]{remove_permission} \tab Removes permissions from a profiling group's resource-based policy that are provided using an action group\cr
 \link[=codeguruprofiler_submit_feedback]{submit_feedback} \tab Sends feedback to CodeGuru Profiler about whether the anomaly detected by the analysis is useful or not\cr
+\link[=codeguruprofiler_tag_resource]{tag_resource} \tab Use to assign one or more tags to a resource\cr
+\link[=codeguruprofiler_untag_resource]{untag_resource} \tab Use to remove one or more tags from a resource\cr
 \link[=codeguruprofiler_update_profiling_group]{update_profiling_group} \tab Updates a profiling group
 }
 }

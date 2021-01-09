@@ -6,16 +6,16 @@
 organization to put events to the specified event bus}
 \usage{
 cloudwatchevents_put_permission(EventBusName, Action, Principal,
-  StatementId, Condition)
+  StatementId, Condition, Policy)
 }
 \arguments{
-\item{EventBusName}{The event bus associated with the rule. If you omit this, the default
-event bus is used.}
+\item{EventBusName}{The name of the event bus associated with the rule. If you omit this,
+the default event bus is used.}
 
-\item{Action}{[required] The action that you are enabling the other account to perform.
+\item{Action}{The action that you are enabling the other account to perform.
 Currently, this must be \code{events:PutEvents}.}
 
-\item{Principal}{[required] The 12-digit AWS account ID that you are permitting to put events to
+\item{Principal}{The 12-digit AWS account ID that you are permitting to put events to
 your default event bus. Specify "*" to permit any account to put events
 to your default event bus.
 
@@ -25,7 +25,7 @@ sure that the event pattern for each rule contains an \code{account} field
 with a specific account ID from which to receive events. Rules with an
 account field do not match any events sent from other accounts.}
 
-\item{StatementId}{[required] An identifier string for the external account that you are granting
+\item{StatementId}{An identifier string for the external account that you are granting
 permissions to. If you later want to revoke the permission for this
 external account, specify this \code{StatementId} when you run
 RemovePermission.}
@@ -41,6 +41,10 @@ in the named organization.
 
 The \code{Condition} is a JSON string which must contain \code{Type}, \code{Key}, and
 \code{Value} fields.}
+
+\item{Policy}{A JSON string that describes the permission policy statement. You can
+include a \code{Policy} parameter in the request instead of using the
+\code{StatementId}, \code{Action}, \code{Principal}, or \code{Condition} parameters.}
 }
 \description{
 Running \code{PutPermission} permits the specified AWS account or AWS
@@ -79,7 +83,8 @@ size.
     Type = "string",
     Key = "string",
     Value = "string"
-  )
+  ),
+  Policy = "string"
 )
 }
 }

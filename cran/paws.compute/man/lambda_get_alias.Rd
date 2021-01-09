@@ -24,7 +24,7 @@ the function name, it is limited to 64 characters in length.}
 }
 \description{
 Returns details about a Lambda function
-\href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}.
+\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_alias(

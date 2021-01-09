@@ -4,13 +4,38 @@
 \alias{xray_create_group}
 \title{Creates a group resource with a name and a filter expression}
 \usage{
-xray_create_group(GroupName, FilterExpression)
+xray_create_group(GroupName, FilterExpression, InsightsConfiguration,
+  Tags)
 }
 \arguments{
 \item{GroupName}{[required] The case-sensitive name of the new group. Default is a reserved name and
 names must be unique.}
 
 \item{FilterExpression}{The filter expression defining criteria by which to group traces.}
+
+\item{InsightsConfiguration}{The structure containing configurations related to insights.
+\itemize{
+\item The InsightsEnabled boolean can be set to true to enable insights
+for the new group or false to disable insights for the new group.
+\item The NotifcationsEnabled boolean can be set to true to enable
+insights notifications for the new group. Notifications may only be
+enabled on a group with InsightsEnabled set to true.
+}}
+
+\item{Tags}{A map that contains one or more tag keys and tag values to attach to an
+X-Ray group. For more information about ways to use tags, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
+in the \emph{AWS General Reference}.
+
+The following restrictions apply to tags:
+\itemize{
+\item Maximum number of user-applied tags per resource: 50
+\item Maximum tag key length: 128 Unicode characters
+\item Maximum tag value length: 256 Unicode characters
+\item Valid values for key and value: a-z, A-Z, 0-9, space, and the
+following characters: \\_ . : / = + - and @
+\item Tag keys and values are case sensitive.
+\item Don't use \verb{aws:} as a prefix for keys; it's reserved for AWS use.
+}}
 }
 \description{
 Creates a group resource with a name and a filter expression.
@@ -18,7 +43,17 @@ Creates a group resource with a name and a filter expression.
 \section{Request syntax}{
 \preformatted{svc$create_group(
   GroupName = "string",
-  FilterExpression = "string"
+  FilterExpression = "string",
+  InsightsConfiguration = list(
+    InsightsEnabled = TRUE|FALSE,
+    NotificationsEnabled = TRUE|FALSE
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

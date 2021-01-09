@@ -9,7 +9,7 @@ firehose_create_delivery_stream(DeliveryStreamName, DeliveryStreamType,
   DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration,
   ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration,
   ElasticsearchDestinationConfiguration, SplunkDestinationConfiguration,
-  Tags)
+  HttpEndpointDestinationConfiguration, Tags)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream. This name must be unique per AWS
@@ -45,6 +45,9 @@ destination.}
 \item{ElasticsearchDestinationConfiguration}{The destination in Amazon ES. You can specify only one destination.}
 
 \item{SplunkDestinationConfiguration}{The destination in Splunk. You can specify only one destination.}
+
+\item{HttpEndpointDestinationConfiguration}{Enables configuring Kinesis Firehose to deliver data to any HTTP
+endpoint destination. You can specify only one destination.}
 
 \item{Tags}{A set of tags to assign to the delivery stream. A tag is a key-value
 pair that you can define and assign to AWS resources. Tags are metadata.
@@ -466,6 +469,72 @@ in the \emph{Amazon Kinesis Data Firehose Developer Guide}.
       Enabled = TRUE|FALSE,
       LogGroupName = "string",
       LogStreamName = "string"
+    )
+  ),
+  HttpEndpointDestinationConfiguration = list(
+    EndpointConfiguration = list(
+      Url = "string",
+      Name = "string",
+      AccessKey = "string"
+    ),
+    BufferingHints = list(
+      SizeInMBs = 123,
+      IntervalInSeconds = 123
+    ),
+    CloudWatchLoggingOptions = list(
+      Enabled = TRUE|FALSE,
+      LogGroupName = "string",
+      LogStreamName = "string"
+    ),
+    RequestConfiguration = list(
+      ContentEncoding = "NONE"|"GZIP",
+      CommonAttributes = list(
+        list(
+          AttributeName = "string",
+          AttributeValue = "string"
+        )
+      )
+    ),
+    ProcessingConfiguration = list(
+      Enabled = TRUE|FALSE,
+      Processors = list(
+        list(
+          Type = "Lambda",
+          Parameters = list(
+            list(
+              ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+              ParameterValue = "string"
+            )
+          )
+        )
+      )
+    ),
+    RoleARN = "string",
+    RetryOptions = list(
+      DurationInSeconds = 123
+    ),
+    S3BackupMode = "FailedDataOnly"|"AllData",
+    S3Configuration = list(
+      RoleARN = "string",
+      BucketARN = "string",
+      Prefix = "string",
+      ErrorOutputPrefix = "string",
+      BufferingHints = list(
+        SizeInMBs = 123,
+        IntervalInSeconds = 123
+      ),
+      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+      EncryptionConfiguration = list(
+        NoEncryptionConfig = "NoEncryption",
+        KMSEncryptionConfig = list(
+          AWSKMSKeyARN = "string"
+        )
+      ),
+      CloudWatchLoggingOptions = list(
+        Enabled = TRUE|FALSE,
+        LogGroupName = "string",
+        LogStreamName = "string"
+      )
     )
   ),
   Tags = list(

@@ -8,18 +8,19 @@ sms_create_app(name, description, roleName, clientToken, serverGroups,
   tags)
 }
 \arguments{
-\item{name}{Name of the new application.}
+\item{name}{The name of the new application.}
 
-\item{description}{Description of the new application}
+\item{description}{The description of the new application}
 
-\item{roleName}{Name of service role in customer's account to be used by AWS SMS.}
+\item{roleName}{The name of the service role in the customer's account to be used by AWS
+SMS.}
 
-\item{clientToken}{A unique, case-sensitive identifier you provide to ensure idempotency of
-application creation.}
+\item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
+idempotency of application creation.}
 
-\item{serverGroups}{List of server groups to include in the application.}
+\item{serverGroups}{The server groups to include in the application.}
 
-\item{tags}{List of tags to be associated with the application.}
+\item{tags}{The tags to be associated with the application.}
 }
 \description{
 Creates an application. An application consists of one or more server

@@ -60,7 +60,7 @@ artifact through the pipeline. You can call GetPipelineState, which
 displays the status of a pipeline, including the status of stages in the
 pipeline, or GetPipeline, which returns the entire structure of the
 pipeline, including the stages of that pipeline. For more information
-about the structure of stages and actions, see \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html}{AWS CodePipeline Pipeline Structure Reference}.
+about the structure of stages and actions, see \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html}{AWS CodePipeline Pipeline Structure Reference}.
 
 Pipeline stages include \emph{actions} that are categorized into categories
 such as source or build actions performed in a stage of a pipeline. For

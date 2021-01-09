@@ -118,6 +118,87 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 }
 .imagebuilder$operations$create_component <- imagebuilder_create_component
 
+#' Creates a new container recipe
+#'
+#' Creates a new container recipe. Container recipes define how images are
+#' configured, tested, and assessed.
+#'
+#' @usage
+#' imagebuilder_create_container_recipe(containerType, name, description,
+#'   semanticVersion, components, dockerfileTemplateData,
+#'   dockerfileTemplateUri, platformOverride, imageOsVersionOverride,
+#'   parentImage, tags, workingDirectory, targetRepository, kmsKeyId,
+#'   clientToken)
+#'
+#' @param containerType &#91;required&#93; The type of container to create.
+#' @param name &#91;required&#93; The name of the container recipe.
+#' @param description The description of the container recipe.
+#' @param semanticVersion &#91;required&#93; The semantic version of the container recipe
+#' (&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;).
+#' @param components &#91;required&#93; Components for build and test that are included in the container recipe.
+#' @param dockerfileTemplateData &#91;required&#93; The Dockerfile template used to build your image as an inline data blob.
+#' @param dockerfileTemplateUri The S3 URI for the Dockerfile that will be used to build your container
+#' image.
+#' @param platformOverride Specifies the operating system platform when you use a custom source
+#' image.
+#' @param imageOsVersionOverride Specifies the operating system version for the source image.
+#' @param parentImage &#91;required&#93; The source image for the container recipe.
+#' @param tags Tags that are attached to the container recipe.
+#' @param workingDirectory The working directory for use during build and test workflows.
+#' @param targetRepository &#91;required&#93; The destination repository for the container image.
+#' @param kmsKeyId Identifies which KMS key is used to encrypt the container image.
+#' @param clientToken &#91;required&#93; The client token used to make this request idempotent.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_container_recipe(
+#'   containerType = "DOCKER",
+#'   name = "string",
+#'   description = "string",
+#'   semanticVersion = "string",
+#'   components = list(
+#'     list(
+#'       componentArn = "string"
+#'     )
+#'   ),
+#'   dockerfileTemplateData = "string",
+#'   dockerfileTemplateUri = "string",
+#'   platformOverride = "Windows"|"Linux",
+#'   imageOsVersionOverride = "string",
+#'   parentImage = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   workingDirectory = "string",
+#'   targetRepository = list(
+#'     service = "ECR",
+#'     repositoryName = "string"
+#'   ),
+#'   kmsKeyId = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_create_container_recipe
+imagebuilder_create_container_recipe <- function(containerType, name, description = NULL, semanticVersion, components, dockerfileTemplateData, dockerfileTemplateUri = NULL, platformOverride = NULL, imageOsVersionOverride = NULL, parentImage, tags = NULL, workingDirectory = NULL, targetRepository, kmsKeyId = NULL, clientToken) {
+  op <- new_operation(
+    name = "CreateContainerRecipe",
+    http_method = "PUT",
+    http_path = "/CreateContainerRecipe",
+    paginator = list()
+  )
+  input <- .imagebuilder$create_container_recipe_input(containerType = containerType, name = name, description = description, semanticVersion = semanticVersion, components = components, dockerfileTemplateData = dockerfileTemplateData, dockerfileTemplateUri = dockerfileTemplateUri, platformOverride = platformOverride, imageOsVersionOverride = imageOsVersionOverride, parentImage = parentImage, tags = tags, workingDirectory = workingDirectory, targetRepository = targetRepository, kmsKeyId = kmsKeyId, clientToken = clientToken)
+  output <- .imagebuilder$create_container_recipe_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$create_container_recipe <- imagebuilder_create_container_recipe
+
 #' Creates a new distribution configuration
 #'
 #' Creates a new distribution configuration. Distribution configurations
@@ -144,6 +225,9 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #'       amiDistributionConfiguration = list(
 #'         name = "string",
 #'         description = "string",
+#'         targetAccountIds = list(
+#'           "string"
+#'         ),
 #'         amiTags = list(
 #'           "string"
 #'         ),
@@ -155,6 +239,16 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #'           userGroups = list(
 #'             "string"
 #'           )
+#'         )
+#'       ),
+#'       containerDistributionConfiguration = list(
+#'         description = "string",
+#'         containerTags = list(
+#'           "string"
+#'         ),
+#'         targetRepository = list(
+#'           service = "ECR",
+#'           repositoryName = "string"
 #'         )
 #'       ),
 #'       licenseConfigurationArns = list(
@@ -196,12 +290,15 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' configuration.
 #'
 #' @usage
-#' imagebuilder_create_image(imageRecipeArn, distributionConfigurationArn,
-#'   infrastructureConfigurationArn, imageTestsConfiguration,
-#'   enhancedImageMetadataEnabled, tags, clientToken)
+#' imagebuilder_create_image(imageRecipeArn, containerRecipeArn,
+#'   distributionConfigurationArn, infrastructureConfigurationArn,
+#'   imageTestsConfiguration, enhancedImageMetadataEnabled, tags,
+#'   clientToken)
 #'
-#' @param imageRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the image recipe that defines how
+#' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that defines how
 #' images are configured, tested, and assessed.
+#' @param containerRecipeArn The Amazon Resource Name (ARN) of the container recipe that defines how
+#' images are configured and tested.
 #' @param distributionConfigurationArn The Amazon Resource Name (ARN) of the distribution configuration that
 #' defines and configures the outputs of your pipeline.
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that
@@ -218,6 +315,7 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' ```
 #' svc$create_image(
 #'   imageRecipeArn = "string",
+#'   containerRecipeArn = "string",
 #'   distributionConfigurationArn = "string",
 #'   infrastructureConfigurationArn = "string",
 #'   imageTestsConfiguration = list(
@@ -235,14 +333,14 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_image
-imagebuilder_create_image <- function(imageRecipeArn, distributionConfigurationArn = NULL, infrastructureConfigurationArn, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, tags = NULL, clientToken) {
+imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn = NULL, distributionConfigurationArn = NULL, infrastructureConfigurationArn, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, tags = NULL, clientToken) {
   op <- new_operation(
     name = "CreateImage",
     http_method = "PUT",
     http_path = "/CreateImage",
     paginator = list()
   )
-  input <- .imagebuilder$create_image_input(imageRecipeArn = imageRecipeArn, distributionConfigurationArn = distributionConfigurationArn, infrastructureConfigurationArn = infrastructureConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, tags = tags, clientToken = clientToken)
+  input <- .imagebuilder$create_image_input(imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, distributionConfigurationArn = distributionConfigurationArn, infrastructureConfigurationArn = infrastructureConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$create_image_output()
   config <- get_config()
   svc <- .imagebuilder$service(config)
@@ -259,14 +357,16 @@ imagebuilder_create_image <- function(imageRecipeArn, distributionConfigurationA
 #'
 #' @usage
 #' imagebuilder_create_image_pipeline(name, description, imageRecipeArn,
-#'   infrastructureConfigurationArn, distributionConfigurationArn,
-#'   imageTestsConfiguration, enhancedImageMetadataEnabled, schedule, status,
-#'   tags, clientToken)
+#'   containerRecipeArn, infrastructureConfigurationArn,
+#'   distributionConfigurationArn, imageTestsConfiguration,
+#'   enhancedImageMetadataEnabled, schedule, status, tags, clientToken)
 #'
 #' @param name &#91;required&#93; The name of the image pipeline.
 #' @param description The description of the image pipeline.
-#' @param imageRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the image recipe that will be used to
+#' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that will be used to
 #' configure images created by this image pipeline.
+#' @param containerRecipeArn The Amazon Resource Name (ARN) of the container recipe that is used to
+#' configure images created by this container pipeline.
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that
 #' will be used to build images created by this image pipeline.
 #' @param distributionConfigurationArn The Amazon Resource Name (ARN) of the distribution configuration that
@@ -288,6 +388,7 @@ imagebuilder_create_image <- function(imageRecipeArn, distributionConfigurationA
 #'   name = "string",
 #'   description = "string",
 #'   imageRecipeArn = "string",
+#'   containerRecipeArn = "string",
 #'   infrastructureConfigurationArn = "string",
 #'   distributionConfigurationArn = "string",
 #'   imageTestsConfiguration = list(
@@ -310,14 +411,14 @@ imagebuilder_create_image <- function(imageRecipeArn, distributionConfigurationA
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_image_pipeline
-imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRecipeArn, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, tags = NULL, clientToken) {
+imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, tags = NULL, clientToken) {
   op <- new_operation(
     name = "CreateImagePipeline",
     http_method = "PUT",
     http_path = "/CreateImagePipeline",
     paginator = list()
   )
-  input <- .imagebuilder$create_image_pipeline_input(name = name, description = description, imageRecipeArn = imageRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, tags = tags, clientToken = clientToken)
+  input <- .imagebuilder$create_image_pipeline_input(name = name, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$create_image_pipeline_output()
   config <- get_config()
   svc <- .imagebuilder$service(config)
@@ -344,13 +445,11 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' @param parentImage &#91;required&#93; The parent image of the image recipe. The value of the string can be the
 #' ARN of the parent image or an AMI ID. The format for the ARN follows
 #' this example:
-#' `arn:aws:imagebuilder:us-west-2:aws:image/windows-server-2016-english-full-base-x86/2019.x.x`.
-#' The ARN ends with `/20xx.x.x`, which communicates to EC2 Image Builder
-#' that you want to use the latest AMI created in 20xx (year). You can
-#' provide the specific version that you want to use, or you can use a
-#' wildcard in all of the fields. If you enter an AMI ID for the string
-#' value, you must have access to the AMI, and the AMI must be in the same
-#' Region in which you are using Image Builder.
+#' `arn:aws:imagebuilder:us-west-2:aws:image/windows-server-2016-english-full-base-x86/xxxx.x.x`.
+#' You can provide the specific version that you want to use, or you can
+#' use a wildcard in all of the fields. If you enter an AMI ID for the
+#' string value, you must have access to the AMI, and the AMI must be in
+#' the same Region in which you are using Image Builder.
 #' @param blockDeviceMappings The block device mappings of the image recipe.
 #' @param tags The tags of the image recipe.
 #' @param workingDirectory The working directory to be used during build and test workflows.
@@ -378,7 +477,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #'         kmsKeyId = "string",
 #'         snapshotId = "string",
 #'         volumeSize = 123,
-#'         volumeType = "standard"|"io1"|"gp2"|"sc1"|"st1"
+#'         volumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"
 #'       ),
 #'       virtualName = "string",
 #'       noDevice = "string"
@@ -534,6 +633,42 @@ imagebuilder_delete_component <- function(componentBuildVersionArn) {
   return(response)
 }
 .imagebuilder$operations$delete_component <- imagebuilder_delete_component
+
+#' Deletes a container recipe
+#'
+#' Deletes a container recipe.
+#'
+#' @usage
+#' imagebuilder_delete_container_recipe(containerRecipeArn)
+#'
+#' @param containerRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the container recipe to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_container_recipe(
+#'   containerRecipeArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_delete_container_recipe
+imagebuilder_delete_container_recipe <- function(containerRecipeArn) {
+  op <- new_operation(
+    name = "DeleteContainerRecipe",
+    http_method = "DELETE",
+    http_path = "/DeleteContainerRecipe",
+    paginator = list()
+  )
+  input <- .imagebuilder$delete_container_recipe_input(containerRecipeArn = containerRecipeArn)
+  output <- .imagebuilder$delete_container_recipe_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$delete_container_recipe <- imagebuilder_delete_container_recipe
 
 #' Deletes a distribution configuration
 #'
@@ -792,6 +927,79 @@ imagebuilder_get_component_policy <- function(componentArn) {
   return(response)
 }
 .imagebuilder$operations$get_component_policy <- imagebuilder_get_component_policy
+
+#' Retrieves a container recipe
+#'
+#' Retrieves a container recipe.
+#'
+#' @usage
+#' imagebuilder_get_container_recipe(containerRecipeArn)
+#'
+#' @param containerRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the container recipe to retrieve.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_container_recipe(
+#'   containerRecipeArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_get_container_recipe
+imagebuilder_get_container_recipe <- function(containerRecipeArn) {
+  op <- new_operation(
+    name = "GetContainerRecipe",
+    http_method = "GET",
+    http_path = "/GetContainerRecipe",
+    paginator = list()
+  )
+  input <- .imagebuilder$get_container_recipe_input(containerRecipeArn = containerRecipeArn)
+  output <- .imagebuilder$get_container_recipe_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$get_container_recipe <- imagebuilder_get_container_recipe
+
+#' Retrieves the policy for a container recipe
+#'
+#' Retrieves the policy for a container recipe.
+#'
+#' @usage
+#' imagebuilder_get_container_recipe_policy(containerRecipeArn)
+#'
+#' @param containerRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the container recipe for the policy
+#' being requested.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_container_recipe_policy(
+#'   containerRecipeArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_get_container_recipe_policy
+imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
+  op <- new_operation(
+    name = "GetContainerRecipePolicy",
+    http_method = "GET",
+    http_path = "/GetContainerRecipePolicy",
+    paginator = list()
+  )
+  input <- .imagebuilder$get_container_recipe_policy_input(containerRecipeArn = containerRecipeArn)
+  output <- .imagebuilder$get_container_recipe_policy_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$get_container_recipe_policy <- imagebuilder_get_container_recipe_policy
 
 #' Gets a distribution configuration
 #'
@@ -1177,7 +1385,8 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' version.
 #'
 #' @usage
-#' imagebuilder_list_components(owner, filters, maxResults, nextToken)
+#' imagebuilder_list_components(owner, filters, byName, maxResults,
+#'   nextToken)
 #'
 #' @param owner The owner defines which components you want to list. By default, this
 #' request will only show components owned by your account. You can use
@@ -1185,6 +1394,8 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' by Amazon, or those components that have been shared with you by other
 #' customers.
 #' @param filters The filters.
+#' @param byName Returns the list of component build versions for the specified semantic
+#' version.
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
@@ -1201,6 +1412,7 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #'       )
 #'     )
 #'   ),
+#'   byName = TRUE|FALSE,
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -1209,14 +1421,14 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_components
-imagebuilder_list_components <- function(owner = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
+imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListComponents",
     http_method = "POST",
     http_path = "/ListComponents",
     paginator = list()
   )
-  input <- .imagebuilder$list_components_input(owner = owner, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  input <- .imagebuilder$list_components_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_components_output()
   config <- get_config()
   svc <- .imagebuilder$service(config)
@@ -1225,6 +1437,61 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, maxResult
   return(response)
 }
 .imagebuilder$operations$list_components <- imagebuilder_list_components
+
+#' Returns a list of container recipes
+#'
+#' Returns a list of container recipes.
+#'
+#' @usage
+#' imagebuilder_list_container_recipes(owner, filters, maxResults,
+#'   nextToken)
+#'
+#' @param owner Returns container recipes belonging to the specified owner, that have
+#' been shared with you. You can omit this field to return container
+#' recipes belonging to your account.
+#' @param filters Request filters that are used to narrow the list of container images
+#' that are returned.
+#' @param maxResults The maximum number of results to return in the list.
+#' @param nextToken Provides a token for pagination, which determines where to begin the
+#' next set of results when the current set reaches the maximum for one
+#' request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_container_recipes(
+#'   owner = "Self"|"Shared"|"Amazon",
+#'   filters = list(
+#'     list(
+#'       name = "string",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_list_container_recipes
+imagebuilder_list_container_recipes <- function(owner = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListContainerRecipes",
+    http_method = "POST",
+    http_path = "/ListContainerRecipes",
+    paginator = list()
+  )
+  input <- .imagebuilder$list_container_recipes_input(owner = owner, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .imagebuilder$list_container_recipes_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$list_container_recipes <- imagebuilder_list_container_recipes
 
 #' Returns a list of distribution configurations
 #'
@@ -1235,6 +1502,8 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, maxResult
 #'   nextToken)
 #'
 #' @param filters The filters.
+#' 
+#' -   `name` - The name of this distribution configuration.
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
@@ -1486,7 +1755,8 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 #' Returns the list of images that you have access to.
 #'
 #' @usage
-#' imagebuilder_list_images(owner, filters, maxResults, nextToken)
+#' imagebuilder_list_images(owner, filters, byName, maxResults, nextToken,
+#'   includeDeprecated)
 #'
 #' @param owner The owner defines which images you want to list. By default, this
 #' request will only show images owned by your account. You can use this
@@ -1494,9 +1764,11 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 #' Amazon, or those images that have been shared with you by other
 #' customers.
 #' @param filters The filters.
+#' @param byName Requests a list of images with a specific recipe name.
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
+#' @param includeDeprecated Includes deprecated images in the response list.
 #'
 #' @section Request syntax:
 #' ```
@@ -1510,22 +1782,24 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 #'       )
 #'     )
 #'   ),
+#'   byName = TRUE|FALSE,
 #'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   includeDeprecated = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_images
-imagebuilder_list_images <- function(owner = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
+imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL, maxResults = NULL, nextToken = NULL, includeDeprecated = NULL) {
   op <- new_operation(
     name = "ListImages",
     http_method = "POST",
     http_path = "/ListImages",
     paginator = list()
   )
-  input <- .imagebuilder$list_images_input(owner = owner, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  input <- .imagebuilder$list_images_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken, includeDeprecated = includeDeprecated)
   output <- .imagebuilder$list_images_output()
   config <- get_config()
   svc <- .imagebuilder$service(config)
@@ -1665,6 +1939,53 @@ imagebuilder_put_component_policy <- function(componentArn, policy) {
   return(response)
 }
 .imagebuilder$operations$put_component_policy <- imagebuilder_put_component_policy
+
+#' Applies a policy to a container image
+#'
+#' Applies a policy to a container image. We recommend that you call the
+#' RAM API CreateResourceShare
+#' (https://docs.aws.amazon.com/ram/latest/APIReference/API\\_CreateResourceShare.html)
+#' to share resources. If you call the Image Builder API
+#' `PutContainerImagePolicy`, you must also call the RAM API
+#' PromoteResourceShareCreatedFromPolicy
+#' (https://docs.aws.amazon.com/ram/latest/APIReference/API\\_PromoteResourceShareCreatedFromPolicy.html)
+#' in order for the resource to be visible to all principals with whom the
+#' resource is shared.
+#'
+#' @usage
+#' imagebuilder_put_container_recipe_policy(containerRecipeArn, policy)
+#'
+#' @param containerRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the container recipe that this policy
+#' should be applied to.
+#' @param policy &#91;required&#93; The policy to apply to the container recipe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_container_recipe_policy(
+#'   containerRecipeArn = "string",
+#'   policy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_put_container_recipe_policy
+imagebuilder_put_container_recipe_policy <- function(containerRecipeArn, policy) {
+  op <- new_operation(
+    name = "PutContainerRecipePolicy",
+    http_method = "PUT",
+    http_path = "/PutContainerRecipePolicy",
+    paginator = list()
+  )
+  input <- .imagebuilder$put_container_recipe_policy_input(containerRecipeArn = containerRecipeArn, policy = policy)
+  output <- .imagebuilder$put_container_recipe_policy_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$put_container_recipe_policy <- imagebuilder_put_container_recipe_policy
 
 #' Applies a policy to an image
 #'
@@ -1903,6 +2224,9 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 #'       amiDistributionConfiguration = list(
 #'         name = "string",
 #'         description = "string",
+#'         targetAccountIds = list(
+#'           "string"
+#'         ),
 #'         amiTags = list(
 #'           "string"
 #'         ),
@@ -1914,6 +2238,16 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 #'           userGroups = list(
 #'             "string"
 #'           )
+#'         )
+#'       ),
+#'       containerDistributionConfiguration = list(
+#'         description = "string",
+#'         containerTags = list(
+#'           "string"
+#'         ),
+#'         targetRepository = list(
+#'           service = "ECR",
+#'           repositoryName = "string"
 #'         )
 #'       ),
 #'       licenseConfigurationArns = list(
@@ -1952,15 +2286,16 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #'
 #' @usage
 #' imagebuilder_update_image_pipeline(imagePipelineArn, description,
-#'   imageRecipeArn, infrastructureConfigurationArn,
+#'   imageRecipeArn, containerRecipeArn, infrastructureConfigurationArn,
 #'   distributionConfigurationArn, imageTestsConfiguration,
 #'   enhancedImageMetadataEnabled, schedule, status, clientToken)
 #'
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline that you want to
 #' update.
 #' @param description The description of the image pipeline.
-#' @param imageRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the image recipe that will be used to
+#' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that will be used to
 #' configure images updated by this image pipeline.
+#' @param containerRecipeArn The Amazon Resource Name (ARN) of the container pipeline to update.
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that
 #' will be used to build images updated by this image pipeline.
 #' @param distributionConfigurationArn The Amazon Resource Name (ARN) of the distribution configuration that
@@ -1981,6 +2316,7 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #'   imagePipelineArn = "string",
 #'   description = "string",
 #'   imageRecipeArn = "string",
+#'   containerRecipeArn = "string",
 #'   infrastructureConfigurationArn = "string",
 #'   distributionConfigurationArn = "string",
 #'   imageTestsConfiguration = list(
@@ -2000,14 +2336,14 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #' @keywords internal
 #'
 #' @rdname imagebuilder_update_image_pipeline
-imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = NULL, imageRecipeArn, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, clientToken) {
+imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, clientToken) {
   op <- new_operation(
     name = "UpdateImagePipeline",
     http_method = "PUT",
     http_path = "/UpdateImagePipeline",
     paginator = list()
   )
-  input <- .imagebuilder$update_image_pipeline_input(imagePipelineArn = imagePipelineArn, description = description, imageRecipeArn = imageRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, clientToken = clientToken)
+  input <- .imagebuilder$update_image_pipeline_input(imagePipelineArn = imagePipelineArn, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, clientToken = clientToken)
   output <- .imagebuilder$update_image_pipeline_output()
   config <- get_config()
   svc <- .imagebuilder$service(config)

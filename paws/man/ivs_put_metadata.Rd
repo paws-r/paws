@@ -2,7 +2,7 @@
 % Please edit documentation in R/ivs_operations.R
 \name{ivs_put_metadata}
 \alias{ivs_put_metadata}
-\title{Inserts metadata into an RTMP stream for a specified channel}
+\title{Inserts metadata into an RTMPS stream for the specified channel}
 \usage{
 ivs_put_metadata(channelArn, metadata)
 }
@@ -13,9 +13,9 @@ have an active stream.}
 \item{metadata}{[required] Metadata to insert into the stream. Maximum: 1 KB per request.}
 }
 \description{
-Inserts metadata into an RTMP stream for a specified channel. A maximum
-of 5 requests per second per channel is allowed, each with a maximum 1KB
-payload.
+Inserts metadata into an RTMPS stream for the specified channel. A
+maximum of 5 requests per second per channel is allowed, each with a
+maximum 1KB payload.
 }
 \section{Request syntax}{
 \preformatted{svc$put_metadata(

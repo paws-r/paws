@@ -9,8 +9,27 @@ polly_synthesize_speech(Engine, LanguageCode, LexiconNames,
 }
 \arguments{
 \item{Engine}{Specifies the engine (\code{standard} or \code{neural}) for Amazon Polly to use
-when processing input text for speech synthesis. Using a voice that is
-not supported for the engine selected will result in an error.}
+when processing input text for speech synthesis. For information on
+Amazon Polly voices and which voices are available in standard-only,
+NTTS-only, and both standard and NTTS formats, see \href{https://docs.aws.amazon.com/polly/latest/dg/voicelist.html}{Available Voices}.
+
+\strong{NTTS-only voices}
+
+When using NTTS-only voices such as Kevin (en-US), this parameter is
+required and must be set to \code{neural}. If the engine is not specified, or
+is set to \code{standard}, this will result in an error.
+
+Type: String
+
+Valid Values: \code{standard} | \code{neural}
+
+Required: Yes
+
+\strong{Standard voices}
+
+For standard voices, this is not required; the engine parameter defaults
+to \code{standard}. If the engine is not specified, or is set to \code{standard}
+and an NTTS-only voice is selected, this will result in an error.}
 
 \item{LanguageCode}{Optional language code for the Synthesize Speech request. This is only
 necessary if using a bilingual voice, such as Aditi, which can be used
@@ -79,7 +98,7 @@ information, see \href{https://docs.aws.amazon.com/polly/latest/dg/how-text-to-s
   ),
   Text = "string",
   TextType = "ssml"|"text",
-  VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu"
+  VoiceId = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Olivia"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu"
 )
 }
 }

@@ -30,12 +30,14 @@ operation that creates the resource.
   ResourceArn = "string",
   AddLicenseSpecifications = list(
     list(
-      LicenseConfigurationArn = "string"
+      LicenseConfigurationArn = "string",
+      AmiAssociationScope = "string"
     )
   ),
   RemoveLicenseSpecifications = list(
     list(
-      LicenseConfigurationArn = "string"
+      LicenseConfigurationArn = "string",
+      AmiAssociationScope = "string"
     )
   )
 )

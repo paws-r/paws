@@ -11,8 +11,7 @@ globalaccelerator_list_tags_for_resource(ResourceArn)
 ARN uniquely identifies an accelerator.}
 }
 \description{
-List all tags for an accelerator. To see an AWS CLI example of listing
-tags for an accelerator, scroll down to \strong{Example}.
+List all tags for an accelerator.
 }
 \details{
 For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html}{Tagging in AWS Global Accelerator}

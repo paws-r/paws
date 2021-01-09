@@ -6,7 +6,8 @@
 \usage{
 ec2_modify_client_vpn_endpoint(ClientVpnEndpointId,
   ServerCertificateArn, ConnectionLogOptions, DnsServers, VpnPort,
-  Description, SplitTunnel, DryRun, SecurityGroupIds, VpcId)
+  Description, SplitTunnel, DryRun, SecurityGroupIds, VpcId,
+  SelfServicePortal, ClientConnectOptions)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint to modify.}
@@ -51,6 +52,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{SecurityGroupIds}{The IDs of one or more security groups to apply to the target network.}
 
 \item{VpcId}{The ID of the VPC to associate with the Client VPN endpoint.}
+
+\item{SelfServicePortal}{Specify whether to enable the self-service portal for the Client VPN
+endpoint.}
+
+\item{ClientConnectOptions}{The options for managing connection authorization for new client
+connections.}
 }
 \description{
 Modifies the specified Client VPN endpoint. Modifying the DNS server
@@ -78,7 +85,12 @@ resets existing client connections.
   SecurityGroupIds = list(
     "string"
   ),
-  VpcId = "string"
+  VpcId = "string",
+  SelfServicePortal = "enabled"|"disabled",
+  ClientConnectOptions = list(
+    Enabled = TRUE|FALSE,
+    LambdaFunctionArn = "string"
+  )
 )
 }
 }

@@ -14,7 +14,7 @@ to associate with the email identity.}
 
 \item{DkimSigningAttributes}{If your request includes this object, Amazon SES configures the identity
 to use Bring Your Own DKIM (BYODKIM) for DKIM authentication purposes,
-as opposed to the default method, \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html}{Easy DKIM}.
+as opposed to the default method, \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html}{Easy DKIM}.
 
 You can only specify this object if the email identity is a domain, as
 opposed to an address.}
@@ -37,7 +37,7 @@ object, this operation provides a set of DKIM tokens. You can convert
 these tokens into CNAME records, which you then add to the DNS
 configuration for your domain. Your domain is verified when Amazon SES
 detects these records in the DNS configuration for your domain. This
-verification method is known as \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html}{Easy DKIM}.
+verification method is known as \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html}{Easy DKIM}.
 
 Alternatively, you can perform the verification process by providing
 your own public-private key pair. This verification method is known as

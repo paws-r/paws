@@ -18,7 +18,7 @@ is changed. This parameter is returned by the \verb{<a>ReceiveMessage</a>}
 action.}
 
 \item{VisibilityTimeout}{[required] The new value for the message's visibility timeout (in seconds). Values
-values: \code{0} to \code{43200}. Maximum: 12 hours.}
+range: \code{0} to \code{43200}. Maximum: 12 hours.}
 }
 \description{
 Changes the visibility timeout of a specified message in a queue to a
@@ -59,7 +59,7 @@ the queue). If you reach this limit, Amazon SQS returns the \code{OverLimit}
 error message. To avoid reaching the limit, you should delete messages
 from the queue after they're processed. You can also increase the number
 of queues you use to process your messages. To request a limit increase,
-\href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sqs}{file a support request}.
+file a support request.
 
 For FIFO queues, there can be a maximum of 20,000 inflight messages
 (received from a queue by a consumer, but not yet deleted from the

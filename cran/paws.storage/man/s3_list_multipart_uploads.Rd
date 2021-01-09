@@ -5,17 +5,26 @@
 \title{This operation lists in-progress multipart uploads}
 \usage{
 s3_list_multipart_uploads(Bucket, Delimiter, EncodingType, KeyMarker,
-  MaxUploads, Prefix, UploadIdMarker)
+  MaxUploads, Prefix, UploadIdMarker, ExpectedBucketOwner)
 }
 \arguments{
-\item{Bucket}{[required] Name of the bucket to which the multipart upload was initiated.
+\item{Bucket}{[required] The name of the bucket to which the multipart upload was initiated.
 
 When using this API with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
+When using this operation with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+When using this API with Amazon S3 on Outposts, you must direct requests
+to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
+form
+\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
+When using this operation using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Delimiter}{Character you use to group keys.
@@ -55,6 +64,10 @@ upload-id-marker parameter is ignored. Otherwise, any multipart uploads
 for a key equal to the key-marker might be included in the list only if
 they have an upload ID lexicographically greater than the specified
 \code{upload-id-marker}.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 This operation lists in-progress multipart uploads. An in-progress
@@ -85,11 +98,11 @@ see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html
 
 The following operations are related to \code{ListMultipartUploads}:
 \itemize{
-\item CreateMultipartUpload
-\item UploadPart
-\item CompleteMultipartUpload
-\item ListParts
-\item AbortMultipartUpload
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html}{CompleteMultipartUpload}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html}{ListParts}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html}{AbortMultipartUpload}
 }
 }
 \section{Request syntax}{
@@ -100,7 +113,8 @@ The following operations are related to \code{ListMultipartUploads}:
   KeyMarker = "string",
   MaxUploads = 123,
   Prefix = "string",
-  UploadIdMarker = "string"
+  UploadIdMarker = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

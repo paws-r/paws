@@ -3,6 +3,18 @@
 #' @include globalaccelerator_service.R
 NULL
 
+.globalaccelerator$add_custom_routing_endpoints_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointConfigurations = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EndpointGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$add_custom_routing_endpoints_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointDescriptions = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EndpointGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .globalaccelerator$advertise_byoip_cidr_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -13,6 +25,16 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ByoipCidr = structure(list(Cidr = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Events = structure(list(structure(list(Message = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.globalaccelerator$allow_custom_routing_traffic_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), DestinationAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DestinationPorts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "list")), AllowAllTrafficToEndpoint = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$allow_custom_routing_traffic_output <- function(...) {
+  list()
 }
 
 .globalaccelerator$create_accelerator_input <- function(...) {
@@ -27,15 +49,51 @@ NULL
   return(populate(args, shape))
 }
 
+.globalaccelerator$create_custom_routing_accelerator_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$create_custom_routing_accelerator_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Accelerator = structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), IpSets = structure(list(structure(list(IpFamily = structure(logical(0), tags = list(type = "string")), IpAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), DnsName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$create_custom_routing_endpoint_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), DestinationConfigurations = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$create_custom_routing_endpoint_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointGroup = structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), DestinationDescriptions = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), EndpointDescriptions = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$create_custom_routing_listener_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), PortRanges = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$create_custom_routing_listener_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Listener = structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), PortRanges = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .globalaccelerator$create_endpoint_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), EndpointConfigurations = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), EndpointConfigurations = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer")), IdempotencyToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), PortOverrides = structure(list(structure(list(ListenerPort = structure(logical(0), tags = list(type = "integer")), EndpointPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .globalaccelerator$create_endpoint_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointGroup = structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), EndpointDescriptions = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), HealthState = structure(logical(0), tags = list(type = "string")), HealthReason = structure(logical(0), tags = list(type = "string")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(EndpointGroup = structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), EndpointDescriptions = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), HealthState = structure(logical(0), tags = list(type = "string")), HealthReason = structure(logical(0), tags = list(type = "string")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer")), PortOverrides = structure(list(structure(list(ListenerPort = structure(logical(0), tags = list(type = "integer")), EndpointPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -61,6 +119,36 @@ NULL
   list()
 }
 
+.globalaccelerator$delete_custom_routing_accelerator_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$delete_custom_routing_accelerator_output <- function(...) {
+  list()
+}
+
+.globalaccelerator$delete_custom_routing_endpoint_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$delete_custom_routing_endpoint_group_output <- function(...) {
+  list()
+}
+
+.globalaccelerator$delete_custom_routing_listener_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$delete_custom_routing_listener_output <- function(...) {
+  list()
+}
+
 .globalaccelerator$delete_endpoint_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -78,6 +166,16 @@ NULL
 }
 
 .globalaccelerator$delete_listener_output <- function(...) {
+  list()
+}
+
+.globalaccelerator$deny_custom_routing_traffic_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), DestinationAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DestinationPorts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "list")), DenyAllTrafficToEndpoint = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$deny_custom_routing_traffic_output <- function(...) {
   list()
 }
 
@@ -117,6 +215,54 @@ NULL
   return(populate(args, shape))
 }
 
+.globalaccelerator$describe_custom_routing_accelerator_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$describe_custom_routing_accelerator_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Accelerator = structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), IpSets = structure(list(structure(list(IpFamily = structure(logical(0), tags = list(type = "string")), IpAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), DnsName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$describe_custom_routing_accelerator_attributes_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$describe_custom_routing_accelerator_attributes_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcceleratorAttributes = structure(list(FlowLogsEnabled = structure(logical(0), tags = list(type = "boolean")), FlowLogsS3Bucket = structure(logical(0), tags = list(type = "string")), FlowLogsS3Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$describe_custom_routing_endpoint_group_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$describe_custom_routing_endpoint_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointGroup = structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), DestinationDescriptions = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), EndpointDescriptions = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$describe_custom_routing_listener_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$describe_custom_routing_listener_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Listener = structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), PortRanges = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .globalaccelerator$describe_endpoint_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -125,7 +271,7 @@ NULL
 
 .globalaccelerator$describe_endpoint_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointGroup = structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), EndpointDescriptions = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), HealthState = structure(logical(0), tags = list(type = "string")), HealthReason = structure(logical(0), tags = list(type = "string")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(EndpointGroup = structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), EndpointDescriptions = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), HealthState = structure(logical(0), tags = list(type = "string")), HealthReason = structure(logical(0), tags = list(type = "string")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer")), PortOverrides = structure(list(structure(list(ListenerPort = structure(logical(0), tags = list(type = "integer")), EndpointPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -165,6 +311,66 @@ NULL
   return(populate(args, shape))
 }
 
+.globalaccelerator$list_custom_routing_accelerators_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$list_custom_routing_accelerators_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Accelerators = structure(list(structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), IpSets = structure(list(structure(list(IpFamily = structure(logical(0), tags = list(type = "string")), IpAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), DnsName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$list_custom_routing_endpoint_groups_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$list_custom_routing_endpoint_groups_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointGroups = structure(list(structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), DestinationDescriptions = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), EndpointDescriptions = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$list_custom_routing_listeners_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$list_custom_routing_listeners_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Listeners = structure(list(structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), PortRanges = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$list_custom_routing_port_mappings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), EndpointGroupArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$list_custom_routing_port_mappings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PortMappings = structure(list(structure(list(AcceleratorPort = structure(logical(0), tags = list(type = "integer")), EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), DestinationSocketAddress = structure(list(IpAddress = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DestinationTrafficState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$list_custom_routing_port_mappings_by_destination_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), DestinationAddress = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$list_custom_routing_port_mappings_by_destination_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DestinationPortMappings = structure(list(structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), AcceleratorSocketAddresses = structure(list(structure(list(IpAddress = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointId = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), DestinationSocketAddress = structure(list(IpAddress = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), IpAddressType = structure(logical(0), tags = list(type = "string")), DestinationTrafficState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .globalaccelerator$list_endpoint_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -173,7 +379,7 @@ NULL
 
 .globalaccelerator$list_endpoint_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointGroups = structure(list(structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), EndpointDescriptions = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), HealthState = structure(logical(0), tags = list(type = "string")), HealthReason = structure(logical(0), tags = list(type = "string")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(EndpointGroups = structure(list(structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), EndpointDescriptions = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), HealthState = structure(logical(0), tags = list(type = "string")), HealthReason = structure(logical(0), tags = list(type = "string")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer")), PortOverrides = structure(list(structure(list(ListenerPort = structure(logical(0), tags = list(type = "integer")), EndpointPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -211,6 +417,16 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ByoipCidr = structure(list(Cidr = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Events = structure(list(structure(list(Message = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.globalaccelerator$remove_custom_routing_endpoints_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EndpointGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$remove_custom_routing_endpoints_output <- function(...) {
+  list()
 }
 
 .globalaccelerator$tag_resource_input <- function(...) {
@@ -261,15 +477,51 @@ NULL
   return(populate(args, shape))
 }
 
+.globalaccelerator$update_custom_routing_accelerator_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$update_custom_routing_accelerator_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Accelerator = structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), IpAddressType = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), IpSets = structure(list(structure(list(IpFamily = structure(logical(0), tags = list(type = "string")), IpAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), DnsName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$update_custom_routing_accelerator_attributes_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcceleratorArn = structure(logical(0), tags = list(type = "string")), FlowLogsEnabled = structure(logical(0), tags = list(type = "boolean")), FlowLogsS3Bucket = structure(logical(0), tags = list(type = "string")), FlowLogsS3Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$update_custom_routing_accelerator_attributes_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AcceleratorAttributes = structure(list(FlowLogsEnabled = structure(logical(0), tags = list(type = "boolean")), FlowLogsS3Bucket = structure(logical(0), tags = list(type = "string")), FlowLogsS3Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$update_custom_routing_listener_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), PortRanges = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$update_custom_routing_listener_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Listener = structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), PortRanges = structure(list(structure(list(FromPort = structure(logical(0), tags = list(type = "integer")), ToPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .globalaccelerator$update_endpoint_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointConfigurations = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointConfigurations = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer")), PortOverrides = structure(list(structure(list(ListenerPort = structure(logical(0), tags = list(type = "integer")), EndpointPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .globalaccelerator$update_endpoint_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EndpointGroup = structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), EndpointDescriptions = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), HealthState = structure(logical(0), tags = list(type = "string")), HealthReason = structure(logical(0), tags = list(type = "string")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(EndpointGroup = structure(list(EndpointGroupArn = structure(logical(0), tags = list(type = "string")), EndpointGroupRegion = structure(logical(0), tags = list(type = "string")), EndpointDescriptions = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), HealthState = structure(logical(0), tags = list(type = "string")), HealthReason = structure(logical(0), tags = list(type = "string")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), TrafficDialPercentage = structure(logical(0), tags = list(type = "float")), HealthCheckPort = structure(logical(0), tags = list(type = "integer")), HealthCheckProtocol = structure(logical(0), tags = list(type = "string")), HealthCheckPath = structure(logical(0), tags = list(type = "string")), HealthCheckIntervalSeconds = structure(logical(0), tags = list(type = "integer")), ThresholdCount = structure(logical(0), tags = list(type = "integer")), PortOverrides = structure(list(structure(list(ListenerPort = structure(logical(0), tags = list(type = "integer")), EndpointPort = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

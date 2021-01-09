@@ -9,17 +9,41 @@ organizations_tag_resource(ResourceId, Tags)
 \arguments{
 \item{ResourceId}{[required] The ID of the resource to add a tag to.}
 
-\item{Tags}{[required] The tag to add to the specified resource. You must specify both a tag
-key and value. You can set the value of a tag to an empty string, but
-you can't set it to null.}
+\item{Tags}{[required] A list of tags to add to the specified resource.
+
+You can specify any of the following taggable resources.
+\itemize{
+\item AWS account – specify the account ID number.
+\item Organizational unit – specify the OU ID that begins with \verb{ou-} and
+looks similar to: \verb{ou-<i>1a2b-34uvwxyz</i> }
+\item Root – specify the root ID that begins with \verb{r-} and looks similar
+to: \verb{r-<i>1a2b</i> }
+\item Policy – specify the policy ID that begins with \verb{p-} andlooks
+similar to: \verb{p-<i>12abcdefg3</i> }
+}
+
+For each tag in the list, you must specify both a tag key and a value.
+You can set the value to an empty string, but you can't set it to
+\code{null}.
+
+If any one of the tags is invalid or if you exceed the allowed number of
+tags for an account user, then the entire request fails and the account
+is not created.}
 }
 \description{
 Adds one or more tags to the specified resource.
 }
 \details{
-Currently, you can tag and untag accounts in AWS Organizations.
+Currently, you can attach tags to the following resources in AWS
+Organizations.
+\itemize{
+\item AWS account
+\item Organization root
+\item Organizational unit (OU)
+\item Policy (any type)
+}
 
-This operation can be called only from the organization's master
+This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{

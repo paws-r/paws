@@ -35,7 +35,7 @@ receive either a \emph{ResourceNotFoundException} or an
 syntax for an AWS resource-based policy. The policy in the string
 identifies who can access or manage this secret and its versions. For
 information on how to format a JSON parameter for the various command
-line tool environments, see \href{http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
+line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}.}
 
 \item{BlockPublicPolicy}{Makes an optional API call to Zelkova to validate the Resource Policy to
@@ -49,7 +49,7 @@ Resource Name (ARN) in the policy statement's \code{Resources} element. You
 can also use a combination of both identity-based and resource-based
 policies. The affected users and roles receive the permissions that are
 permitted by all of the relevant policies. For more information, see
-\href{http://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html}{Using Resource-Based Policies for AWS Secrets Manager}.
+\href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html}{Using Resource-Based Policies for AWS Secrets Manager}.
 For the complete description of the AWS policy syntax and grammar, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON Policy Reference}
 in the \emph{IAM User Guide}.

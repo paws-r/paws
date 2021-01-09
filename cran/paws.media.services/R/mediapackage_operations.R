@@ -3,6 +3,50 @@
 #' @include mediapackage_service.R
 NULL
 
+#' Changes the Channel's properities to configure log subscription
+#'
+#' Changes the Channel's properities to configure log subscription
+#'
+#' @usage
+#' mediapackage_configure_logs(EgressAccessLogs, Id, IngressAccessLogs)
+#'
+#' @param EgressAccessLogs 
+#' @param Id &#91;required&#93; The ID of the channel to log subscription.
+#' @param IngressAccessLogs 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$configure_logs(
+#'   EgressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   ),
+#'   Id = "string",
+#'   IngressAccessLogs = list(
+#'     LogGroupName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediapackage_configure_logs
+mediapackage_configure_logs <- function(EgressAccessLogs = NULL, Id, IngressAccessLogs = NULL) {
+  op <- new_operation(
+    name = "ConfigureLogs",
+    http_method = "PUT",
+    http_path = "/channels/{id}/configure_logs",
+    paginator = list()
+  )
+  input <- .mediapackage$configure_logs_input(EgressAccessLogs = EgressAccessLogs, Id = Id, IngressAccessLogs = IngressAccessLogs)
+  output <- .mediapackage$configure_logs_output()
+  config <- get_config()
+  svc <- .mediapackage$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediapackage$operations$configure_logs <- mediapackage_configure_logs
+
 #' Creates a new Channel
 #'
 #' Creates a new Channel.
@@ -151,7 +195,7 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #'     ),
 #'     HlsManifests = list(
 #'       list(
-#'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
 #'         AdTriggers = list(
 #'           "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
 #'         ),
@@ -204,11 +248,13 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 #'       MinVideoBitsPerSecond = 123,
 #'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
 #'     ),
-#'     SuggestedPresentationDelaySeconds = 123
+#'     SuggestedPresentationDelaySeconds = 123,
+#'     UtcTiming = "NONE"|"HTTP-HEAD"|"HTTP-ISO",
+#'     UtcTimingUri = "string"
 #'   ),
 #'   Description = "string",
 #'   HlsPackage = list(
-#'     AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'     AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
 #'     AdTriggers = list(
 #'       "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
 #'     ),
@@ -872,7 +918,7 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'     ),
 #'     HlsManifests = list(
 #'       list(
-#'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'         AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
 #'         AdTriggers = list(
 #'           "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
 #'         ),
@@ -925,11 +971,13 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 #'       MinVideoBitsPerSecond = 123,
 #'       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
 #'     ),
-#'     SuggestedPresentationDelaySeconds = 123
+#'     SuggestedPresentationDelaySeconds = 123,
+#'     UtcTiming = "NONE"|"HTTP-HEAD"|"HTTP-ISO",
+#'     UtcTimingUri = "string"
 #'   ),
 #'   Description = "string",
 #'   HlsPackage = list(
-#'     AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+#'     AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
 #'     AdTriggers = list(
 #'       "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
 #'     ),

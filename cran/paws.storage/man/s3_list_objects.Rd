@@ -5,10 +5,27 @@
 \title{Returns some or all (up to 1,000) of the objects in a bucket}
 \usage{
 s3_list_objects(Bucket, Delimiter, EncodingType, Marker, MaxKeys,
-  Prefix, RequestPayer)
+  Prefix, RequestPayer, ExpectedBucketOwner)
 }
 \arguments{
-\item{Bucket}{[required] The name of the bucket containing the objects.}
+\item{Bucket}{[required] The name of the bucket containing the objects.
+
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
+When using this operation with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+When using this API with Amazon S3 on Outposts, you must direct requests
+to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
+form
+\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
+When using this operation using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
+in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Delimiter}{A delimiter is a character you use to group keys.}
 
@@ -25,6 +42,10 @@ but will never contain more.}
 \item{RequestPayer}{Confirms that the requester knows that she or he will be charged for the
 list objects request. Bucket owners need not specify this parameter in
 their requests.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Returns some or all (up to 1,000) of the objects in a bucket. You can
@@ -35,16 +56,17 @@ response and handle it appropriately.
 }
 \details{
 This API has been revised. We recommend that you use the newer version,
-ListObjectsV2, when developing applications. For backward compatibility,
-Amazon S3 continues to support \code{ListObjects}.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html}{ListObjectsV2},
+when developing applications. For backward compatibility, Amazon S3
+continues to support \code{ListObjects}.
 
 The following operations are related to \code{ListObjects}:
 \itemize{
-\item ListObjectsV2
-\item GetObject
-\item PutObject
-\item CreateBucket
-\item ListBuckets
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html}{ListObjectsV2}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html}{ListBuckets}
 }
 }
 \section{Request syntax}{
@@ -55,7 +77,8 @@ The following operations are related to \code{ListObjects}:
   Marker = "string",
   MaxKeys = 123,
   Prefix = "string",
-  RequestPayer = "requester"
+  RequestPayer = "requester",
+  ExpectedBucketOwner = "string"
 )
 }
 }

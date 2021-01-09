@@ -5,7 +5,7 @@
 \title{API to emit metering records}
 \usage{
 marketplacemetering_meter_usage(ProductCode, Timestamp, UsageDimension,
-  UsageQuantity, DryRun)
+  UsageQuantity, DryRun, UsageAllocations)
 }
 \arguments{
 \item{ProductCode}{[required] Product code is used to uniquely identify a product in AWS Marketplace.
@@ -25,6 +25,12 @@ of the product.}
 does not make the request. If you have the permissions, the request
 returns DryRunOperation; otherwise, it returns UnauthorizedException.
 Defaults to \code{false} if not specified.}
+
+\item{UsageAllocations}{The set of UsageAllocations to submit.
+
+The sum of all UsageAllocation quantities must equal the UsageQuantity
+of the MeterUsage request, and each UsageAllocation must have a unique
+set of tags (include no tags).}
 }
 \description{
 API to emit metering records. For identical requests, the API is
@@ -33,6 +39,10 @@ idempotent. It simply returns the metering record ID.
 \details{
 MeterUsage is authenticated on the buyer's AWS account using credentials
 from the EC2 instance, ECS task, or EKS pod.
+
+MeterUsage can optionally include multiple usage allocations, to provide
+customers with usage data split into buckets by tags that you define (or
+allow the customer to define).
 }
 \section{Request syntax}{
 \preformatted{svc$meter_usage(
@@ -42,7 +52,18 @@ from the EC2 instance, ECS task, or EKS pod.
   ),
   UsageDimension = "string",
   UsageQuantity = 123,
-  DryRun = TRUE|FALSE
+  DryRun = TRUE|FALSE,
+  UsageAllocations = list(
+    list(
+      AllocatedUsageQuantity = 123,
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

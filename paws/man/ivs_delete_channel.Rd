@@ -2,7 +2,7 @@
 % Please edit documentation in R/ivs_operations.R
 \name{ivs_delete_channel}
 \alias{ivs_delete_channel}
-\title{Deletes a specified channel and its associated stream keys}
+\title{Deletes the specified channel and its associated stream keys}
 \usage{
 ivs_delete_channel(arn)
 }
@@ -10,7 +10,7 @@ ivs_delete_channel(arn)
 \item{arn}{[required] ARN of the channel to be deleted.}
 }
 \description{
-Deletes a specified channel and its associated stream keys.
+Deletes the specified channel and its associated stream keys.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_channel(

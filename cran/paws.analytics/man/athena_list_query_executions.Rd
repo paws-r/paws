@@ -26,7 +26,7 @@ query execution IDs for the primary workgroup. Requires you to have
 access to the workgroup in which the queries ran.
 }
 \details{
-For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
+For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{

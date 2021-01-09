@@ -216,7 +216,7 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = 
 #'
 #' @usage
 #' codeguruprofiler_create_profiling_group(agentOrchestrationConfig,
-#'   clientToken, computePlatform, profilingGroupName)
+#'   clientToken, computePlatform, profilingGroupName, tags)
 #'
 #' @param agentOrchestrationConfig Specifies whether profiling is enabled or disabled for the created
 #' profiling group.
@@ -229,6 +229,7 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = 
 #' instance, an on-premises server, or a different platform. If not
 #' specified, `Default` is used.
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group to create.
+#' @param tags A list of tags to add to the created profiling group.
 #'
 #' @section Request syntax:
 #' ```
@@ -238,21 +239,24 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = 
 #'   ),
 #'   clientToken = "string",
 #'   computePlatform = "AWSLambda"|"Default",
-#'   profilingGroupName = "string"
+#'   profilingGroupName = "string",
+#'   tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_create_profiling_group
-codeguruprofiler_create_profiling_group <- function(agentOrchestrationConfig = NULL, clientToken, computePlatform = NULL, profilingGroupName) {
+codeguruprofiler_create_profiling_group <- function(agentOrchestrationConfig = NULL, clientToken, computePlatform = NULL, profilingGroupName, tags = NULL) {
   op <- new_operation(
     name = "CreateProfilingGroup",
     http_method = "POST",
     http_path = "/profilingGroups",
     paginator = list()
   )
-  input <- .codeguruprofiler$create_profiling_group_input(agentOrchestrationConfig = agentOrchestrationConfig, clientToken = clientToken, computePlatform = computePlatform, profilingGroupName = profilingGroupName)
+  input <- .codeguruprofiler$create_profiling_group_input(agentOrchestrationConfig = agentOrchestrationConfig, clientToken = clientToken, computePlatform = computePlatform, profilingGroupName = profilingGroupName, tags = tags)
   output <- .codeguruprofiler$create_profiling_group_output()
   config <- get_config()
   svc <- .codeguruprofiler$service(config)
@@ -843,6 +847,43 @@ codeguruprofiler_list_profiling_groups <- function(includeDescription = NULL, ma
 }
 .codeguruprofiler$operations$list_profiling_groups <- codeguruprofiler_list_profiling_groups
 
+#' Returns a list of the tags that are assigned to a specified resource
+#'
+#' Returns a list of the tags that are assigned to a specified resource.
+#'
+#' @usage
+#' codeguruprofiler_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that contains the tags to
+#' return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_list_tags_for_resource
+codeguruprofiler_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .codeguruprofiler$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$list_tags_for_resource <- codeguruprofiler_list_tags_for_resource
+
 #' Submits profiling data to an aggregated profile of a profiling group
 #'
 #' Submits profiling data to an aggregated profile of a profiling group. To
@@ -1098,6 +1139,89 @@ codeguruprofiler_submit_feedback <- function(anomalyInstanceId, comment = NULL, 
   return(response)
 }
 .codeguruprofiler$operations$submit_feedback <- codeguruprofiler_submit_feedback
+
+#' Use to assign one or more tags to a resource
+#'
+#' Use to assign one or more tags to a resource.
+#'
+#' @usage
+#' codeguruprofiler_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that the tags are added
+#' to.
+#' @param tags &#91;required&#93; The list of tags that are added to the specified resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_tag_resource
+codeguruprofiler_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .codeguruprofiler$tag_resource_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$tag_resource <- codeguruprofiler_tag_resource
+
+#' Use to remove one or more tags from a resource
+#'
+#' Use to remove one or more tags from a resource.
+#'
+#' @usage
+#' codeguruprofiler_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that contains the tags to
+#' remove.
+#' @param tagKeys &#91;required&#93; A list of tag keys. Existing tags of resources with keys in this list
+#' are removed from the specified resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeguruprofiler_untag_resource
+codeguruprofiler_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .codeguruprofiler$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .codeguruprofiler$untag_resource_output()
+  config <- get_config()
+  svc <- .codeguruprofiler$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeguruprofiler$operations$untag_resource <- codeguruprofiler_untag_resource
 
 #' Updates a profiling group
 #'

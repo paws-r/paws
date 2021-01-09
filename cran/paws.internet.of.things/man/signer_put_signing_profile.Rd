@@ -4,14 +4,17 @@
 \alias{signer_put_signing_profile}
 \title{Creates a signing profile}
 \usage{
-signer_put_signing_profile(profileName, signingMaterial, platformId,
-  overrides, signingParameters, tags)
+signer_put_signing_profile(profileName, signingMaterial,
+  signatureValidityPeriod, platformId, overrides, signingParameters, tags)
 }
 \arguments{
 \item{profileName}{[required] The name of the signing profile to be created.}
 
-\item{signingMaterial}{[required] The AWS Certificate Manager certificate that will be used to sign code
+\item{signingMaterial}{The AWS Certificate Manager certificate that will be used to sign code
 with the new signing profile.}
+
+\item{signatureValidityPeriod}{The default validity period override for any signature generated using
+this signing profile. If unspecified, the default is 135 months.}
 
 \item{platformId}{[required] The ID of the signing platform to be created.}
 
@@ -28,13 +31,17 @@ that you want to use during signing.}
 Creates a signing profile. A signing profile is a code signing template
 that can be used to carry out a pre-defined signing job. For more
 information, see
-\url{http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html}
+\href{https://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html}{http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html}
 }
 \section{Request syntax}{
 \preformatted{svc$put_signing_profile(
   profileName = "string",
   signingMaterial = list(
     certificateArn = "string"
+  ),
+  signatureValidityPeriod = list(
+    value = 123,
+    type = "DAYS"|"MONTHS"|"YEARS"
   ),
   platformId = "string",
   overrides = list(

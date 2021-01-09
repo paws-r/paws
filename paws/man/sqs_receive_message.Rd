@@ -18,7 +18,7 @@ These attributes include:
 \itemize{
 \item \code{All} – Returns all values.
 \item \code{ApproximateFirstReceiveTimestamp} – Returns the time the message
-was first received from the queue (\href{http://en.wikipedia.org/wiki/Unix_time}{epoch time} in milliseconds).
+was first received from the queue (\href{https://en.wikipedia.org/wiki/Unix_time}{epoch time} in milliseconds).
 \item \code{ApproximateReceiveCount} – Returns the number of times a message
 has been received across all queues but not deleted.
 \item \code{AWSTraceHeader} – Returns the AWS X-Ray trace header string.
@@ -30,7 +30,7 @@ has been received across all queues but not deleted.
 \code{ABCDE1F2GH3I4JK5LMNOP:i-a123b456}.
 }
 \item \code{SentTimestamp} – Returns the time the message was sent to the queue
-(\href{http://en.wikipedia.org/wiki/Unix_time}{epoch time} in
+(\href{https://en.wikipedia.org/wiki/Unix_time}{epoch time} in
 milliseconds).
 \item \code{MessageDeduplicationId} – Returns the value provided by the
 producer that calls the \verb{<a>SendMessage</a>} action.
@@ -136,7 +136,7 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.}
 \description{
 Retrieves one or more messages (up to 10), from the specified queue.
 Using the \code{WaitTimeSeconds} parameter enables long-poll support. For
-more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html}{Amazon SQS Long Polling}
+more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html#sqs-long-polling}{Amazon SQS Long Polling}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \details{
@@ -184,7 +184,7 @@ can handle new attributes gracefully.
 \preformatted{svc$receive_message(
   QueueUrl = "string",
   AttributeNames = list(
-    "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"
+    "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"|"DeduplicationScope"|"FifoThroughputLimit"
   ),
   MessageAttributeNames = list(
     "string"

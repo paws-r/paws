@@ -25,6 +25,12 @@ control resource policy on the provided domain.}
 Sets a resource policy on a domain that specifies permissions to access
 it.
 }
+\details{
+When you call \code{PutDomainPermissionsPolicy}, the resource policy on the
+domain is ignored when evaluting permissions. This ensures that the
+owner of a domain cannot lock themselves out of the domain, which would
+prevent them from being able to update the resource policy.
+}
 \section{Request syntax}{
 \preformatted{svc$put_domain_permissions_policy(
   domain = "string",

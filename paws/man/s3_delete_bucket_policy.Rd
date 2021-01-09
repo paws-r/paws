@@ -5,10 +5,14 @@
 \title{This implementation of the DELETE operation uses the policy subresource
 to delete the policy of a specified bucket}
 \usage{
-s3_delete_bucket_policy(Bucket)
+s3_delete_bucket_policy(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 This implementation of the DELETE operation uses the policy subresource
@@ -33,13 +37,14 @@ and UserPolicies.
 
 The following operations are related to \code{DeleteBucketPolicy}
 \itemize{
-\item CreateBucket
-\item DeleteObject
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html}{DeleteObject}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_policy(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

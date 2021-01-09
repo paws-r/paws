@@ -9,7 +9,7 @@ sms_update_replication_job(replicationJobId, frequency,
   numberOfRecentAmisToKeep, encrypted, kmsKeyId)
 }
 \arguments{
-\item{replicationJobId}{[required] The identifier of the replication job.}
+\item{replicationJobId}{[required] The ID of the replication job.}
 
 \item{frequency}{The time between consecutive replication runs, in hours.}
 
@@ -22,23 +22,23 @@ replication run.}
 
 \item{description}{The description of the replication job.}
 
-\item{numberOfRecentAmisToKeep}{The maximum number of SMS-created AMIs to retain. The oldest will be
-deleted once the maximum number is reached and a new AMI is created.}
+\item{numberOfRecentAmisToKeep}{The maximum number of SMS-created AMIs to retain. The oldest is deleted
+after the maximum number is reached and a new AMI is created.}
 
-\item{encrypted}{When true, the replication job produces encrypted AMIs . See also
-\code{KmsKeyId} below.}
+\item{encrypted}{When true, the replication job produces encrypted AMIs. For more
+information, \code{KmsKeyId}.}
 
-\item{kmsKeyId}{KMS key ID for replication jobs that produce encrypted AMIs. Can be any
-of the following:
+\item{kmsKeyId}{The ID of the KMS key for replication jobs that produce encrypted AMIs.
+This value can be any of the following:
 \itemize{
 \item KMS key ID
 \item KMS key alias
-\item ARN referring to KMS key ID
-\item ARN referring to KMS key alias
+\item ARN referring to the KMS key ID
+\item ARN referring to the KMS key alias
 }
 
-If encrypted is \emph{true} but a KMS key id is not specified, the customer's
-default KMS key for EBS is used.}
+If encrypted is enabled but a KMS key ID is not specified, the
+customer's default KMS key for Amazon EBS is used.}
 }
 \description{
 Updates the specified settings for the specified replication job.

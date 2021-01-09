@@ -6,7 +6,8 @@
 \usage{
 ec2_modify_vpc_endpoint_service_configuration(DryRun, ServiceId,
   PrivateDnsName, RemovePrivateDnsName, AcceptanceRequired,
-  AddNetworkLoadBalancerArns, RemoveNetworkLoadBalancerArns)
+  AddNetworkLoadBalancerArns, RemoveNetworkLoadBalancerArns,
+  AddGatewayLoadBalancerArns, RemoveGatewayLoadBalancerArns)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -16,9 +17,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ServiceId}{[required] The ID of the service.}
 
-\item{PrivateDnsName}{The private DNS name to assign to the endpoint service.}
+\item{PrivateDnsName}{(Interface endpoint configuration) The private DNS name to assign to the
+endpoint service.}
 
-\item{RemovePrivateDnsName}{Removes the private DNS name of the endpoint service.}
+\item{RemovePrivateDnsName}{(Interface endpoint configuration) Removes the private DNS name of the
+endpoint service.}
 
 \item{AcceptanceRequired}{Indicates whether requests to create an endpoint to your service must be
 accepted.}
@@ -28,12 +31,18 @@ your service configuration.}
 
 \item{RemoveNetworkLoadBalancerArns}{The Amazon Resource Names (ARNs) of Network Load Balancers to remove
 from your service configuration.}
+
+\item{AddGatewayLoadBalancerArns}{The Amazon Resource Names (ARNs) of Gateway Load Balancers to add to
+your service configuration.}
+
+\item{RemoveGatewayLoadBalancerArns}{The Amazon Resource Names (ARNs) of Gateway Load Balancers to remove
+from your service configuration.}
 }
 \description{
 Modifies the attributes of your VPC endpoint service configuration. You
-can change the Network Load Balancers for your service, and you can
-specify whether acceptance is required for requests to connect to your
-endpoint service through an interface VPC endpoint.
+can change the Network Load Balancers or Gateway Load Balancers for your
+service, and you can specify whether acceptance is required for requests
+to connect to your endpoint service through an interface VPC endpoint.
 }
 \details{
 If you set or modify the private DNS name, you must prove that you own
@@ -51,6 +60,12 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
     "string"
   ),
   RemoveNetworkLoadBalancerArns = list(
+    "string"
+  ),
+  AddGatewayLoadBalancerArns = list(
+    "string"
+  ),
+  RemoveGatewayLoadBalancerArns = list(
     "string"
   )
 )

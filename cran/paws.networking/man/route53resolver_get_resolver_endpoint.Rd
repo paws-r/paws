@@ -2,18 +2,18 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_get_resolver_endpoint}
 \alias{route53resolver_get_resolver_endpoint}
-\title{Gets information about a specified resolver endpoint, such as whether
-it's an inbound or an outbound resolver endpoint, and the current status
+\title{Gets information about a specified Resolver endpoint, such as whether
+it's an inbound or an outbound Resolver endpoint, and the current status
 of the endpoint}
 \usage{
 route53resolver_get_resolver_endpoint(ResolverEndpointId)
 }
 \arguments{
-\item{ResolverEndpointId}{[required] The ID of the resolver endpoint that you want to get information about.}
+\item{ResolverEndpointId}{[required] The ID of the Resolver endpoint that you want to get information about.}
 }
 \description{
-Gets information about a specified resolver endpoint, such as whether
-it's an inbound or an outbound resolver endpoint, and the current status
+Gets information about a specified Resolver endpoint, such as whether
+it's an inbound or an outbound Resolver endpoint, and the current status
 of the endpoint.
 }
 \section{Request syntax}{

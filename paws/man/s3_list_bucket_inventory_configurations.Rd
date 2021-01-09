@@ -4,7 +4,8 @@
 \alias{s3_list_bucket_inventory_configurations}
 \title{Returns a list of inventory configurations for the bucket}
 \usage{
-s3_list_bucket_inventory_configurations(Bucket, ContinuationToken)
+s3_list_bucket_inventory_configurations(Bucket, ContinuationToken,
+  ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the inventory configurations to
@@ -14,6 +15,10 @@ retrieve.}
 been truncated. Use the NextContinuationToken from a previously
 truncated list response to continue the listing. The continuation token
 is an opaque value that Amazon S3 understands.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Returns a list of inventory configurations for the bucket. You can have
@@ -40,15 +45,16 @@ For information about the Amazon S3 inventory feature, see \href{https://docs.aw
 The following operations are related to
 \code{ListBucketInventoryConfigurations}:
 \itemize{
-\item GetBucketInventoryConfiguration
-\item DeleteBucketInventoryConfiguration
-\item PutBucketInventoryConfiguration
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketInventoryConfiguration.html}{GetBucketInventoryConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketInventoryConfiguration.html}{DeleteBucketInventoryConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html}{PutBucketInventoryConfiguration}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$list_bucket_inventory_configurations(
   Bucket = "string",
-  ContinuationToken = "string"
+  ContinuationToken = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

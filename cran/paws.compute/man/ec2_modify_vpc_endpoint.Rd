@@ -20,8 +20,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ResetPolicy}{(Gateway endpoint) Specify \code{true} to reset the policy document to the
 default policy. The default policy allows full access to the service.}
 
-\item{PolicyDocument}{A policy to attach to the endpoint that controls access to the service.
-The policy must be in valid JSON format.}
+\item{PolicyDocument}{(Interface and gateway endpoints) A policy to attach to the endpoint
+that controls access to the service. The policy must be in valid JSON
+format.}
 
 \item{AddRouteTableIds}{(Gateway endpoint) One or more route tables IDs to associate with the
 endpoint.}
@@ -29,8 +30,9 @@ endpoint.}
 \item{RemoveRouteTableIds}{(Gateway endpoint) One or more route table IDs to disassociate from the
 endpoint.}
 
-\item{AddSubnetIds}{(Interface endpoint) One or more subnet IDs in which to serve the
-endpoint.}
+\item{AddSubnetIds}{(Interface and Gateway Load Balancer endpoints) One or more subnet IDs
+in which to serve the endpoint. For a Gateway Load Balancer endpoint,
+you can specify only one subnet.}
 
 \item{RemoveSubnetIds}{(Interface endpoint) One or more subnets IDs in which to remove the
 endpoint.}
@@ -46,8 +48,8 @@ associated with the VPC.}
 }
 \description{
 Modifies attributes of a specified VPC endpoint. The attributes that you
-can modify depend on the type of VPC endpoint (interface or gateway).
-For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html}{VPC Endpoints}
+can modify depend on the type of VPC endpoint (interface, gateway, or
+Gateway Load Balancer). For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html}{VPC Endpoints}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{

@@ -44,9 +44,9 @@ as the default for a new DB instance. This is especially important for
 parameters that are critical when creating the default database for a DB
 instance, such as the character set for the default database defined by
 the \code{character_set_database} parameter. You can use the \emph{Parameter
-Groups} option of the \href{https://console.aws.amazon.com/rds/}{Amazon RDS console} or the
-\emph{DescribeDBParameters} command to verify that your DB parameter group
-has been created or modified.
+Groups} option of the Amazon RDS console or the \emph{DescribeDBParameters}
+command to verify that your DB parameter group has been created or
+modified.
 }
 \section{Request syntax}{
 \preformatted{svc$modify_db_parameter_group(

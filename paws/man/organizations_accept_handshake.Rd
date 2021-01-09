@@ -10,8 +10,8 @@ organizations_accept_handshake(HandshakeId)
 \arguments{
 \item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want to accept.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for handshake ID
-string requires "h-" followed by from 8 to 32 lowercase letters or
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for handshake
+ID string requires "h-" followed by from 8 to 32 lowercase letters or
 digits.}
 }
 \description{
@@ -30,10 +30,10 @@ The user who calls the API for an invitation to join must have the
 features in the organization, the user must also have the
 \code{iam:CreateServiceLinkedRole} permission so that AWS Organizations
 can create the required service-linked role named
-\code{AWSServiceRoleForOrganizations}. For more information, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles}{AWS Organizations and Service-Linked Roles}
+\code{AWSServiceRoleForOrganizations}. For more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/}{AWS Organizations and Service-Linked Roles}
 in the \emph{AWS Organizations User Guide}.
 \item \strong{Enable all features final confirmation} handshake: only a
-principal from the master account.
+principal from the management account.
 
 For more information about invitations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html}{Inviting an AWS Account to Join Your Organization}
 in the \emph{AWS Organizations User Guide.} For more information about

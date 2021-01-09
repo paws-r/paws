@@ -18,13 +18,13 @@ associated job has been created.
 \details{
 The \code{UnlockCode} value is a 29-character code with 25 alphanumeric
 characters and 4 hyphens. This code is used to decrypt the manifest file
-when it is passed along with the manifest to the Snowball through the
+when it is passed along with the manifest to the Snow device through the
 Snowball client when the client is started for the first time.
 
 As a best practice, we recommend that you don't save a copy of the
 \code{UnlockCode} in the same location as the manifest file for that job.
 Saving these separately helps prevent unauthorized parties from gaining
-access to the Snowball associated with that job.
+access to the Snow device associated with that job.
 }
 \section{Request syntax}{
 \preformatted{svc$get_job_unlock_code(

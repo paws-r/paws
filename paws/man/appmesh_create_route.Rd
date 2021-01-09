@@ -88,7 +88,7 @@ For more information about routes, see
         ),
         maxRetries = 123,
         perRetryTimeout = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         ),
         tcpRetryEvents = list(
@@ -97,11 +97,11 @@ For more information about routes, see
       ),
       timeout = list(
         idle = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         ),
         perRequest = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         )
       )
@@ -132,7 +132,7 @@ For more information about routes, see
             name = "string"
           )
         ),
-        method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+        method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
         prefix = "string",
         scheme = "http"|"https"
       ),
@@ -142,7 +142,7 @@ For more information about routes, see
         ),
         maxRetries = 123,
         perRetryTimeout = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         ),
         tcpRetryEvents = list(
@@ -151,11 +151,11 @@ For more information about routes, see
       ),
       timeout = list(
         idle = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         ),
         perRequest = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         )
       )
@@ -186,7 +186,7 @@ For more information about routes, see
             name = "string"
           )
         ),
-        method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+        method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
         prefix = "string",
         scheme = "http"|"https"
       ),
@@ -196,7 +196,7 @@ For more information about routes, see
         ),
         maxRetries = 123,
         perRetryTimeout = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         ),
         tcpRetryEvents = list(
@@ -205,11 +205,11 @@ For more information about routes, see
       ),
       timeout = list(
         idle = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         ),
         perRequest = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         )
       )
@@ -226,7 +226,7 @@ For more information about routes, see
       ),
       timeout = list(
         idle = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         )
       )

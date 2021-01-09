@@ -5,7 +5,8 @@
 \title{Lists the private certificate authorities that you created by using the
 CreateCertificateAuthority action}
 \usage{
-acmpca_list_certificate_authorities(NextToken, MaxResults)
+acmpca_list_certificate_authorities(NextToken, MaxResults,
+  ResourceOwner)
 }
 \arguments{
 \item{NextToken}{Use this parameter when paginating results in a subsequent request after
@@ -17,15 +18,20 @@ of items to return in the response on each page. If additional items
 exist beyond the number you specify, the \code{NextToken} element is sent in
 the response. Use this \code{NextToken} value in a subsequent request to
 retrieve additional items.}
+
+\item{ResourceOwner}{Use this parameter to filter the returned set of certificate authorities
+based on their owner. The default is SELF.}
 }
 \description{
 Lists the private certificate authorities that you created by using the
-CreateCertificateAuthority action.
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}
+action.
 }
 \section{Request syntax}{
 \preformatted{svc$list_certificate_authorities(
   NextToken = "string",
-  MaxResults = 123
+  MaxResults = 123,
+  ResourceOwner = "SELF"|"OTHER_ACCOUNTS"
 )
 }
 }

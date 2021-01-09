@@ -21,7 +21,7 @@ available for your instance to burst above its baseline. Your
 instance continuously accrues and consumes burst capacity. Burst
 capacity stops accruing when your instance's
 \code{BurstCapacityPercentage} reaches 100\%. For more information, see
-\href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-viewing-instance-burst-capacity}{Viewing instance burst capacity in Amazon Lightsail}.
+Viewing instance burst capacity in Amazon Lightsail.
 
 \code{Statistics}: The most useful statistics are \code{Maximum} and
 \code{Average}.
@@ -39,7 +39,8 @@ instance operates at 50\% CPU utilization in the burstable zone for a
 5-minute period, then it consumes CPU burst capacity minutes at a
 50\% rate in that period. Your instance consumed 2 minutes and 30
 seconds of CPU burst capacity minutes in the 5-minute period. For
-more information, see \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-viewing-instance-burst-capacity}{Viewing instance burst capacity in Amazon Lightsail}.
+more information, see Viewing instance burst capacity in Amazon
+Lightsail.
 
 \code{Statistics}: The most useful statistics are \code{Maximum} and
 \code{Average}.

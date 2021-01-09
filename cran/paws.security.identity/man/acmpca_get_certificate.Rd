@@ -2,13 +2,15 @@
 % Please edit documentation in R/acmpca_operations.R
 \name{acmpca_get_certificate}
 \alias{acmpca_get_certificate}
-\title{Retrieves a certificate from your private CA}
+\title{Retrieves a certificate from your private CA or one that has been shared
+with you}
 \usage{
 acmpca_get_certificate(CertificateAuthorityArn, CertificateArn)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-CreateCertificateAuthority. This must be of the form:
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}.
+This must be of the form:
 
 \verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
 
@@ -18,14 +20,16 @@ serial number and must be in the following form:
 \verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i>/certificate/<i>286535153982981100925020015808220737245</i> }}
 }
 \description{
-Retrieves a certificate from your private CA. The ARN of the certificate
-is returned when you call the IssueCertificate action. You must specify
-both the ARN of your private CA and the ARN of the issued certificate
-when calling the \strong{GetCertificate} action. You can retrieve the
-certificate if it is in the \strong{ISSUED} state. You can call the
-CreateCertificateAuthorityAuditReport action to create a report that
-contains information about all of the certificates issued and revoked by
-your private CA.
+Retrieves a certificate from your private CA or one that has been shared
+with you. The ARN of the certificate is returned when you call the
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_IssueCertificate.html}{IssueCertificate}
+action. You must specify both the ARN of your private CA and the ARN of
+the issued certificate when calling the \strong{GetCertificate} action. You
+can retrieve the certificate if it is in the \strong{ISSUED} state. You can
+call the
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html}{CreateCertificateAuthorityAuditReport}
+action to create a report that contains information about all of the
+certificates issued and revoked by your private CA.
 }
 \section{Request syntax}{
 \preformatted{svc$get_certificate(

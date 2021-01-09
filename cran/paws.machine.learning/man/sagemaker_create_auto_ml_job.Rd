@@ -2,18 +2,18 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_auto_ml_job}
 \alias{sagemaker_create_auto_ml_job}
-\title{Creates an AutoPilot job}
+\title{Creates an Autopilot job}
 \usage{
 sagemaker_create_auto_ml_job(AutoMLJobName, InputDataConfig,
   OutputDataConfig, ProblemType, AutoMLJobObjective, AutoMLJobConfig,
   RoleArn, GenerateCandidateDefinitionsOnly, Tags)
 }
 \arguments{
-\item{AutoMLJobName}{[required] Identifies an AutoPilot job. Must be unique to your account and is
+\item{AutoMLJobName}{[required] Identifies an Autopilot job. Must be unique to your account and is
 case-insensitive.}
 
 \item{InputDataConfig}{[required] Similar to InputDataConfig supported by Tuning. Format(s) supported:
-CSV. Minimum of 1000 rows.}
+CSV. Minimum of 500 rows.}
 
 \item{OutputDataConfig}{[required] Similar to OutputDataConfig supported by Tuning. Format(s) supported:
 CSV.}
@@ -22,30 +22,30 @@ CSV.}
 candidates. Options include: BinaryClassification,
 MulticlassClassification, and Regression.}
 
-\item{AutoMLJobObjective}{Defines the job's objective. You provide a MetricName and AutoML will
-infer minimize or maximize. If this is not provided, the most commonly
-used ObjectiveMetric for problem type will be selected.}
+\item{AutoMLJobObjective}{Defines the objective of a an AutoML job. You provide a
+AutoMLJobObjective$MetricName and Autopilot infers whether to minimize
+or maximize it. If a metric is not specified, the most commonly used
+ObjectiveMetric for problem type is automaically selected.}
 
 \item{AutoMLJobConfig}{Contains CompletionCriteria and SecurityConfig.}
 
-\item{RoleArn}{[required] The ARN of the role that will be used to access the data.}
+\item{RoleArn}{[required] The ARN of the role that is used to access the data.}
 
-\item{GenerateCandidateDefinitionsOnly}{This will generate possible candidates without training a model. A
-candidate is a combination of data preprocessors, algorithms, and
-algorithm parameter settings.}
+\item{GenerateCandidateDefinitionsOnly}{Generates possible candidates without training a model. A candidate is a
+combination of data preprocessors, algorithms, and algorithm parameter
+settings.}
 
 \item{Tags}{Each tag consists of a key and an optional value. Tag keys must be
 unique per resource.}
 }
 \description{
-Creates an AutoPilot job.
+Creates an Autopilot job.
 }
 \details{
-After you run an AutoPilot job, you can find the best performing model
-by calling , and then deploy that model by following the steps described
-in \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html}{Step 6.1: Deploy the Model to Amazon SageMaker Hosting Services}.
+Find the best performing model after you run an Autopilot job by calling
+. Deploy that model by following the steps described in \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html}{Step 6.1: Deploy the Model to Amazon SageMaker Hosting Services}.
 
-For information about how to use AutoPilot, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html}{Use AutoPilot to Automate Model Development}.
+For information about how to use Autopilot, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html}{Automate Model Development with Amazon SageMaker Autopilot}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_auto_ml_job(
@@ -68,7 +68,7 @@ For information about how to use AutoPilot, see \href{https://docs.aws.amazon.co
   ),
   ProblemType = "BinaryClassification"|"MulticlassClassification"|"Regression",
   AutoMLJobObjective = list(
-    MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"
+    MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"
   ),
   AutoMLJobConfig = list(
     CompletionCriteria = list(

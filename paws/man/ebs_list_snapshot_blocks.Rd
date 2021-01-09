@@ -2,8 +2,8 @@
 % Please edit documentation in R/ebs_operations.R
 \name{ebs_list_snapshot_blocks}
 \alias{ebs_list_snapshot_blocks}
-\title{Returns the block indexes and block tokens for blocks in an Amazon
-Elastic Block Store snapshot}
+\title{Returns information about the blocks in an Amazon Elastic Block Store
+snapshot}
 \usage{
 ebs_list_snapshot_blocks(SnapshotId, NextToken, MaxResults,
   StartingBlockIndex)
@@ -20,8 +20,8 @@ response will start from this block index or the next valid block index
 in the snapshot.}
 }
 \description{
-Returns the block indexes and block tokens for blocks in an Amazon
-Elastic Block Store snapshot.
+Returns information about the blocks in an Amazon Elastic Block Store
+snapshot.
 }
 \section{Request syntax}{
 \preformatted{svc$list_snapshot_blocks(

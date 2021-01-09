@@ -12,7 +12,7 @@ neptune_copy_db_cluster_parameter_group(
 \arguments{
 \item{SourceDBClusterParameterGroupIdentifier}{[required] The identifier or Amazon Resource Name (ARN) for the source DB cluster
 parameter group. For information about creating an ARN, see
-\href{https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.
+\href{https://docs.aws.amazon.com/neptune/latest/userguide/}{Constructing an Amazon Resource Name (ARN)}.
 
 Constraints:
 \itemize{

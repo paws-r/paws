@@ -224,7 +224,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' This value helps ensure idempotency. Secrets Manager uses this value to
 #' prevent the accidental creation of duplicate versions if there are
 #' failures and retries during a rotation. We recommend that you generate a
-#' [UUID-type](https://wikipedia.org/wiki/Universally_unique_identifier)
+#' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness of your versions within the specified secret.
 #' 
 #' -   If the `ClientRequestToken` value isn't already associated with a
@@ -287,7 +287,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' string argument and specify key/value pairs. For information on how to
 #' format a JSON parameter for the various command line tool environments,
 #' see [Using JSON for
-#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html)
 #' in the *AWS CLI User Guide*. For example:
 #' 
 #' `\{"username":"bob","password":"abc123xyz456"\}`
@@ -312,7 +312,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' This parameter requires a JSON text string argument. For information on
 #' how to format a JSON parameter for the various command line tool
 #' environments, see [Using JSON for
-#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html)
 #' in the *AWS CLI User Guide*. For example:
 #' 
 #' `\\[\{"Key":"CostCenter","Value":"12345"\},\{"Key":"environment","Value":"production"\}\\]`
@@ -927,7 +927,7 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' with the `VersionStage` value of `AWSCURRENT`.
 #' 
 #' This value is typically a
-#' [UUID-type](https://wikipedia.org/wiki/Universally_unique_identifier)
+#' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 #' value with 32 hexadecimal digits.
 #' @param VersionStage Specifies the secret version that you want to retrieve by the staging
 #' label attached to the version.
@@ -1190,7 +1190,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' policies. The affected users and roles receive the permissions that are
 #' permitted by all of the relevant policies. For more information, see
 #' [Using Resource-Based Policies for AWS Secrets
-#' Manager](http://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html).
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html).
 #' For the complete description of the AWS policy syntax and grammar, see
 #' [IAM JSON Policy
 #' Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
@@ -1242,7 +1242,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' identifies who can access or manage this secret and its versions. For
 #' information on how to format a JSON parameter for the various command
 #' line tool environments, see [Using JSON for
-#' Parameters](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html)
 #' in the *AWS CLI User Guide*.
 #' @param BlockPublicPolicy Makes an optional API call to Zelkova to validate the Resource Policy to
 #' prevent broad access to your secret.
@@ -1406,7 +1406,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' prevent the accidental creation of duplicate versions if there are
 #' failures and retries during the Lambda rotation function's processing.
 #' We recommend that you generate a
-#' [UUID-type](https://wikipedia.org/wiki/Universally_unique_identifier)
+#' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness within the specified secret.
 #' 
 #' -   If the `ClientRequestToken` value isn't already associated with a
@@ -1446,7 +1446,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' string argument and specify key/value pairs. For information on how to
 #' format a JSON parameter for the various command line tool environments,
 #' see [Using JSON for
-#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html)
 #' in the *AWS CLI User Guide*.
 #' 
 #' For example:
@@ -1693,7 +1693,7 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' You only need to specify your own value if you implement your own retry
 #' logic and want to ensure that a given secret is not created twice. We
 #' recommend that you generate a
-#' [UUID-type](https://wikipedia.org/wiki/Universally_unique_identifier)
+#' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness within the specified secret.
 #' 
 #' Secrets Manager uses this value to prevent the accidental creation of
@@ -1839,7 +1839,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' This parameter to the API requires a JSON text string argument. For
 #' information on how to format a JSON parameter for the various command
 #' line tool environments, see [Using JSON for
-#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html)
 #' in the *AWS CLI User Guide*. For the AWS CLI, you can also use the
 #' syntax:
 #' `--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\[,…\\]`
@@ -1953,7 +1953,7 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #' This parameter to the API requires a JSON text string argument. For
 #' information on how to format a JSON parameter for the various command
 #' line tool environments, see [Using JSON for
-#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html)
 #' in the *AWS CLI User Guide*.
 #'
 #' @section Request syntax:
@@ -2115,7 +2115,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' You typically only need to interact with this value if you implement
 #' your own retry logic and want to ensure that a given secret is not
 #' created twice. We recommend that you generate a
-#' [UUID-type](https://wikipedia.org/wiki/Universally_unique_identifier)
+#' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness within the specified secret.
 #' 
 #' Secrets Manager uses this value to prevent the accidental creation of
@@ -2171,7 +2171,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' string argument and specify key/value pairs. For information on how to
 #' format a JSON parameter for the various command line tool environments,
 #' see [Using JSON for
-#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+#' Parameters](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html)
 #' in the *AWS CLI User Guide*. For example:
 #' 
 #' `\\[\{"username":"bob"\},\{"password":"abc123xyz456"\}\\]`

@@ -2,12 +2,12 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_untag_resource}
 \alias{kms_untag_resource}
-\title{Removes the specified tags from the specified customer master key (CMK)}
+\title{Deletes tags from a customer managed CMK}
 \usage{
 kms_untag_resource(KeyId, TagKeys)
 }
 \arguments{
-\item{KeyId}{[required] A unique identifier for the CMK from which you are removing tags.
+\item{KeyId}{[required] Identifies the CMK from which you are removing tags.
 
 Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
 
@@ -23,16 +23,36 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 \item{TagKeys}{[required] One or more tag keys. Specify only the tag keys, not the tag values.}
 }
 \description{
-Removes the specified tags from the specified customer master key (CMK).
-You cannot perform this operation on a CMK in a different AWS account.
+Deletes tags from a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed CMK}.
+To delete a tag, specify the tag key and the CMK.
 }
 \details{
-To remove a tag, specify the tag key. To change the tag value of an
-existing tag key, use TagResource.
+When it succeeds, the \code{UntagResource} operation doesn't return any
+output. Also, if the specified tag key isn't found on the CMK, it
+doesn't throw an exception or return a response. To confirm that the
+operation worked, use the ListResourceTags operation.
+
+For general information about tags, including the format and syntax, see
+\href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
+in the \emph{Amazon Web Services General Reference}. For information about
+using tags in AWS KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html}{Tagging keys}.
 
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
+a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:UntagResource}
+(key policy)
+
+\strong{Related operations}
+\itemize{
+\item TagResource
+\item ListResourceTags
+}
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

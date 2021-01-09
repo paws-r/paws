@@ -3,7 +3,7 @@
 \name{directoryservice_list_certificates}
 \alias{directoryservice_list_certificates}
 \title{For the specified directory, lists all the certificates registered for a
-secured LDAP connection}
+secure LDAP or client certificate authentication}
 \usage{
 directoryservice_list_certificates(DirectoryId, NextToken, Limit)
 }
@@ -19,7 +19,7 @@ token comes back as \code{null}. Pass \code{null} if this is the first call.}
 }
 \description{
 For the specified directory, lists all the certificates registered for a
-secured LDAP connection.
+secure LDAP or client certificate authentication.
 }
 \section{Request syntax}{
 \preformatted{svc$list_certificates(

@@ -5,17 +5,26 @@
 \title{No longer used, see the PutBucketNotificationConfiguration operation}
 \usage{
 s3_put_bucket_notification(Bucket, ContentMD5,
-  NotificationConfiguration)
+  NotificationConfiguration, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket.}
 
-\item{ContentMD5}{The MD5 hash of the \code{PutPublicAccessBlock} request body.}
+\item{ContentMD5}{The MD5 hash of the \code{PutPublicAccessBlock} request body.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.}
 
 \item{NotificationConfiguration}{[required] The container for the configuration.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
-No longer used, see the PutBucketNotificationConfiguration operation.
+No longer used, see the
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotificationConfiguration.html}{PutBucketNotificationConfiguration}
+operation.
 }
 \section{Request syntax}{
 \preformatted{svc$put_bucket_notification(
@@ -47,7 +56,8 @@ No longer used, see the PutBucketNotificationConfiguration operation.
       CloudFunction = "string",
       InvocationRole = "string"
     )
-  )
+  ),
+  ExpectedBucketOwner = "string"
 )
 }
 }

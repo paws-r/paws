@@ -5,7 +5,7 @@
 \title{Updates a rule version resulting in a new rule version}
 \usage{
 frauddetector_update_rule_version(rule, description, expression,
-  language, outcomes)
+  language, outcomes, tags)
 }
 \arguments{
 \item{rule}{[required] The rule to update.}
@@ -17,9 +17,12 @@ frauddetector_update_rule_version(rule, description, expression,
 \item{language}{[required] The language.}
 
 \item{outcomes}{[required] The outcomes.}
+
+\item{tags}{The tags to assign to the rule version.}
 }
 \description{
-Updates a rule version resulting in a new rule version.
+Updates a rule version resulting in a new rule version. Updates a rule
+version resulting in a new rule version (version 1, 2, 3 ...).
 }
 \section{Request syntax}{
 \preformatted{svc$update_rule_version(
@@ -33,6 +36,12 @@ Updates a rule version resulting in a new rule version.
   language = "DETECTORPL",
   outcomes = list(
     "string"
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
   )
 )
 }

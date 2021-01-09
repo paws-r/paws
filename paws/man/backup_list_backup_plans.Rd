@@ -2,9 +2,7 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_list_backup_plans}
 \alias{backup_list_backup_plans}
-\title{Returns metadata of your saved backup plans, including Amazon Resource
-Names (ARNs), plan IDs, creation and deletion dates, version IDs, plan
-names, and creator request IDs}
+\title{Returns a list of existing backup plans for an authenticated account}
 \usage{
 backup_list_backup_plans(NextToken, MaxResults, IncludeDeleted)
 }
@@ -20,9 +18,11 @@ pointed to by the next token.}
 backup plans when set to \code{TRUE}.}
 }
 \description{
-Returns metadata of your saved backup plans, including Amazon Resource
-Names (ARNs), plan IDs, creation and deletion dates, version IDs, plan
-names, and creator request IDs.
+Returns a list of existing backup plans for an authenticated account.
+The list is populated only if the advanced option is set for the backup
+plan. The list contains information such as Amazon Resource Names
+(ARNs), plan IDs, creation and deletion dates, version IDs, plan names,
+and creator request IDs.
 }
 \section{Request syntax}{
 \preformatted{svc$list_backup_plans(

@@ -1,0 +1,65 @@
+Package: paws.identity
+Title: Amazon Web Services Identity Services
+Version: 0.1.9
+Authors@R: 
+    c(person(given = "David",
+             family = "Kretch",
+             role = c("aut", "cre"),
+             email = "david.kretch@gmail.com"),
+      person(given = "Adam",
+             family = "Banker",
+             role = "aut",
+             email = "adam.banker39@gmail.com"),
+      person(given = "Amazon.com, Inc.",
+             role = "cph"))
+Description: Interface to Amazon Web Services identity services, including
+    the 'Identity & Access Management' ('IAM') service for managing access
+    to services and resources, and more <https://aws.amazon.com/>.
+License: Apache License (>= 2.0)
+URL: https://github.com/paws-r/paws
+BugReports: https://github.com/paws-r/paws/issues
+Imports: 
+    paws.common (>= 0.3.0)
+Suggests: 
+    testthat
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
+RoxygenNote: 7.1.1
+Collate: 
+    'clouddirectory_service.R'
+    'clouddirectory_interfaces.R'
+    'clouddirectory_operations.R'
+    'cognitoidentity_service.R'
+    'cognitoidentity_interfaces.R'
+    'cognitoidentity_operations.R'
+    'cognitoidentityprovider_service.R'
+    'cognitoidentityprovider_interfaces.R'
+    'cognitoidentityprovider_operations.R'
+    'cognitosync_service.R'
+    'cognitosync_interfaces.R'
+    'cognitosync_operations.R'
+    'directoryservice_service.R'
+    'directoryservice_interfaces.R'
+    'directoryservice_operations.R'
+    'iam_service.R'
+    'iam_interfaces.R'
+    'iam_operations.R'
+    'identitystore_service.R'
+    'identitystore_interfaces.R'
+    'identitystore_operations.R'
+    'secretsmanager_service.R'
+    'secretsmanager_interfaces.R'
+    'secretsmanager_operations.R'
+    'sso_service.R'
+    'sso_interfaces.R'
+    'sso_operations.R'
+    'ssoadmin_service.R'
+    'ssoadmin_interfaces.R'
+    'ssoadmin_operations.R'
+    'ssooidc_service.R'
+    'ssooidc_interfaces.R'
+    'ssooidc_operations.R'
+    'sts_service.R'
+    'sts_interfaces.R'
+    'sts_operations.R'

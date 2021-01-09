@@ -56,6 +56,7 @@ test.
       Data = raw
     ),
     Template = list(
+      TemplateName = "string",
       TemplateArn = "string",
       TemplateData = "string"
     )

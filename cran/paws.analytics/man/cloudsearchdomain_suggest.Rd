@@ -24,7 +24,7 @@ must match the query string to be considered a match.
 }
 \details{
 For more information about configuring suggesters and retrieving
-suggestions, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Suggestions}
+suggestions, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Suggestions}
 in the \emph{Amazon CloudSearch Developer Guide}.
 
 The endpoint for submitting \code{Suggest} requests is domain-specific. You

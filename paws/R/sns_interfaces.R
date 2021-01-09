@@ -261,13 +261,13 @@ NULL
 
 .sns$publish_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string")), TargetArn = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), MessageStructure = structure(logical(0), tags = list(type = "string")), MessageAttributes = structure(list(structure(list(DataType = structure(logical(0), tags = list(type = "string")), StringValue = structure(logical(0), tags = list(type = "string")), BinaryValue = structure(logical(0), tags = list(type = "blob"))), tags = list(locationName = "Value", type = "structure"))), tags = list(locationNameKey = "Name", locationNameValue = "Value", type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(TopicArn = structure(logical(0), tags = list(type = "string")), TargetArn = structure(logical(0), tags = list(type = "string")), PhoneNumber = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), Subject = structure(logical(0), tags = list(type = "string")), MessageStructure = structure(logical(0), tags = list(type = "string")), MessageAttributes = structure(list(structure(list(DataType = structure(logical(0), tags = list(type = "string")), StringValue = structure(logical(0), tags = list(type = "string")), BinaryValue = structure(logical(0), tags = list(type = "blob"))), tags = list(locationName = "Value", type = "structure"))), tags = list(locationNameKey = "Name", locationNameValue = "Value", type = "map")), MessageDeduplicationId = structure(logical(0), tags = list(type = "string")), MessageGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .sns$publish_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MessageId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "PublishResult"))
+  shape <- structure(list(MessageId = structure(logical(0), tags = list(type = "string")), SequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "PublishResult"))
   return(populate(args, shape))
 }
 

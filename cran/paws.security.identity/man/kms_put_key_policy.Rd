@@ -63,12 +63,24 @@ the CMK.
 The default value is false.}
 }
 \description{
-Attaches a key policy to the specified customer master key (CMK). You
-cannot perform this operation on a CMK in a different AWS account.
+Attaches a key policy to the specified customer master key (CMK).
 }
 \details{
 For more information about key policies, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html}{Key Policies}
+in the \emph{AWS Key Management Service Developer Guide}. For help writing
+and formatting a JSON policy document, see the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON Policy Reference}
+in the \strong{IAM User Guide} . For examples of adding a key policy in
+multiple programming languages, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/programming-key-policies.html#put-policy}{Setting a key policy}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
+a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:PutKeyPolicy}
+(key policy)
+
+\strong{Related operations}: GetKeyPolicy
 }
 \section{Request syntax}{
 \preformatted{svc$put_key_policy(

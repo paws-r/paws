@@ -16,8 +16,8 @@ returns \code{maxResults} results in a single page along with a \code{nextToken}
 response element. The remaining results of the initial request can be
 seen by sending another \code{DescribeJobQueues} request with the returned
 \code{nextToken} value. This value can be between 1 and 100. If this
-parameter is not used, then \code{DescribeJobQueues} returns up to 100
-results and a \code{nextToken} value if applicable.}
+parameter isn't used, then \code{DescribeJobQueues} returns up to 100 results
+and a \code{nextToken} value if applicable.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
 \code{DescribeJobQueues} request where \code{maxResults} was used and the results
@@ -25,8 +25,8 @@ exceeded the value of that parameter. Pagination continues from the end
 of the previous results that returned the \code{nextToken} value. This value
 is \code{null} when there are no more results to return.
 
-This token should be treated as an opaque identifier that is only used
-to retrieve the next items in a list and not for other programmatic
+This token should be treated as an opaque identifier that's only used to
+retrieve the next items in a list and not for other programmatic
 purposes.}
 }
 \description{

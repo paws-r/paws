@@ -7,7 +7,7 @@
 storagegateway_update_nfs_file_share(FileShareARN, KMSEncrypted, KMSKey,
   NFSFileShareDefaults, DefaultStorageClass, ObjectACL, ClientList,
   Squash, ReadOnly, GuessMIMETypeEnabled, RequesterPays, FileShareName,
-  CacheAttributes)
+  CacheAttributes, NotificationPolicy)
 }
 \arguments{
 \item{FileShareARN}{[required] The Amazon Resource Name (ARN) of the file share to be updated.}
@@ -75,6 +75,8 @@ Valid Values: \code{true} | \code{false}}
 \code{LocationARN}.}
 
 \item{CacheAttributes}{Refresh cache information.}
+
+\item{NotificationPolicy}{The notification policy of the file share.}
 }
 \description{
 Updates a Network File System (NFS) file share. This operation is only
@@ -84,7 +86,7 @@ supported in the file gateway type.
 To leave a file share field unchanged, set the corresponding input field
 to null.
 
-Updates the following file share setting:
+Updates the following file share settings:
 \itemize{
 \item Default storage class for your S3 bucket
 \item Metadata defaults for your S3 bucket
@@ -92,9 +94,6 @@ Updates the following file share setting:
 \item Squash settings
 \item Write status of your file share
 }
-
-To leave a file share field unchanged, set the corresponding input field
-to null. This operation is only supported in file gateways.
 }
 \section{Request syntax}{
 \preformatted{svc$update_nfs_file_share(
@@ -119,7 +118,8 @@ to null. This operation is only supported in file gateways.
   FileShareName = "string",
   CacheAttributes = list(
     CacheStaleTimeoutInSeconds = 123
-  )
+  ),
+  NotificationPolicy = "string"
 )
 }
 }

@@ -114,7 +114,7 @@ schemas_create_registry <- function(Description = NULL, RegistryName, Tags = NUL
 #'   Tags = list(
 #'     "string"
 #'   ),
-#'   Type = "OpenApi3"
+#'   Type = "OpenApi3"|"JSONSchemaDraft4"
 #' )
 #' ```
 #'
@@ -479,6 +479,48 @@ schemas_describe_schema <- function(RegistryName, SchemaName, SchemaVersion = NU
 }
 .schemas$operations$describe_schema <- schemas_describe_schema
 
+#' Export schema
+#'
+#' 
+#'
+#' @usage
+#' schemas_export_schema(RegistryName, SchemaName, SchemaVersion, Type)
+#'
+#' @param RegistryName &#91;required&#93; The name of the registry.
+#' @param SchemaName &#91;required&#93; The name of the schema.
+#' @param SchemaVersion Specifying this limits the results to only this schema version.
+#' @param Type &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$export_schema(
+#'   RegistryName = "string",
+#'   SchemaName = "string",
+#'   SchemaVersion = "string",
+#'   Type = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname schemas_export_schema
+schemas_export_schema <- function(RegistryName, SchemaName, SchemaVersion = NULL, Type) {
+  op <- new_operation(
+    name = "ExportSchema",
+    http_method = "GET",
+    http_path = "/v1/registries/name/{registryName}/schemas/name/{schemaName}/export",
+    paginator = list()
+  )
+  input <- .schemas$export_schema_input(RegistryName = RegistryName, SchemaName = SchemaName, SchemaVersion = SchemaVersion, Type = Type)
+  output <- .schemas$export_schema_output()
+  config <- get_config()
+  svc <- .schemas$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.schemas$operations$export_schema <- schemas_export_schema
+
 #' Get the code binding source URI
 #'
 #' Get the code binding source URI.
@@ -540,7 +582,7 @@ schemas_get_code_binding_source <- function(Language, RegistryName, SchemaName, 
 #'   Events = list(
 #'     "string"
 #'   ),
-#'   Type = "OpenApi3"
+#'   Type = "OpenApi3"|"JSONSchemaDraft4"
 #' )
 #' ```
 #'
@@ -1200,7 +1242,7 @@ schemas_update_registry <- function(Description = NULL, RegistryName) {
 #'   Description = "string",
 #'   RegistryName = "string",
 #'   SchemaName = "string",
-#'   Type = "OpenApi3"
+#'   Type = "OpenApi3"|"JSONSchemaDraft4"
 #' )
 #' ```
 #'

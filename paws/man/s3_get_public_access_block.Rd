@@ -4,11 +4,15 @@
 \alias{s3_get_public_access_block}
 \title{Retrieves the PublicAccessBlock configuration for an Amazon S3 bucket}
 \usage{
-s3_get_public_access_block(Bucket)
+s3_get_public_access_block(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the Amazon S3 bucket whose \code{PublicAccessBlock} configuration
 you want to retrieve.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Retrieves the \code{PublicAccessBlock} configuration for an Amazon S3 bucket.
@@ -30,14 +34,15 @@ object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-
 The following operations are related to \code{GetPublicAccessBlock}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html}{Using Amazon S3 Block Public Access}
-\item PutPublicAccessBlock
-\item GetPublicAccessBlock
-\item DeletePublicAccessBlock
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutPublicAccessBlock.html}{PutPublicAccessBlock}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html}{GetPublicAccessBlock}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html}{DeletePublicAccessBlock}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$get_public_access_block(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

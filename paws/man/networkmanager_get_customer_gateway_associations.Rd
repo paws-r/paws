@@ -12,7 +12,7 @@ networkmanager_get_customer_gateway_associations(GlobalNetworkId,
 \item{GlobalNetworkId}{[required] The ID of the global network.}
 
 \item{CustomerGatewayArns}{One or more customer gateway Amazon Resource Names (ARNs). For more
-information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies}{Resources Defined by Amazon EC2}.
+information, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html}{Resources Defined by Amazon EC2}.
 The maximum is 10.}
 
 \item{MaxResults}{The maximum number of results to return.}

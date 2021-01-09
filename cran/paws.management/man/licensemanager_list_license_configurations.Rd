@@ -17,8 +17,9 @@ licensemanager_list_license_configurations(LicenseConfigurationArns,
 \item{Filters}{Filters to scope the results. The following filters and logical
 operators are supported:
 \itemize{
-\item \code{licenseCountingType} - The dimension on which licenses are counted
-(vCPU). Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.
+\item \code{licenseCountingType} - The dimension on which licenses are counted.
+Possible values are \code{vCPU} | \code{Instance} | \code{Core} | \code{Socket}. Logical
+operators are \code{EQUALS} | \code{NOT_EQUALS}.
 \item \code{enforceLicenseCount} - A Boolean value that indicates whether hard
 license enforcement is used. Logical operators are \code{EQUALS} |
 \code{NOT_EQUALS}.

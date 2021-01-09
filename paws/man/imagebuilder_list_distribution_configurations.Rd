@@ -8,7 +8,10 @@ imagebuilder_list_distribution_configurations(filters, maxResults,
   nextToken)
 }
 \arguments{
-\item{filters}{The filters.}
+\item{filters}{The filters.
+\itemize{
+\item \code{name} - The name of this distribution configuration.
+}}
 
 \item{maxResults}{The maximum items to return in a request.}
 

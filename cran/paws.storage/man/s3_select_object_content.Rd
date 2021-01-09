@@ -7,7 +7,8 @@ simple structured query language (SQL) statement}
 \usage{
 s3_select_object_content(Bucket, Key, SSECustomerAlgorithm,
   SSECustomerKey, SSECustomerKeyMD5, Expression, ExpressionType,
-  RequestProgress, InputSerialization, OutputSerialization, ScanRange)
+  RequestProgress, InputSerialization, OutputSerialization, ScanRange,
+  ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The S3 bucket.}
@@ -48,6 +49,10 @@ process only the records starting after the byte 50
 \item \verb{&lt;scanrange&gt;&lt;end&gt;50&lt;/end&gt;&lt;/scanrange&gt;} -
 process only the records within the last 50 bytes of the file.
 }}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 This operation filters the contents of an Amazon S3 object based on a
@@ -59,6 +64,8 @@ match the specified SQL expression. You must also specify the data
 serialization format for the response.
 }
 \details{
+This action is not supported by Amazon S3 on Outposts.
+
 For more information about Amazon S3 Select, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/selecting-content-from-objects.html}{Selecting Content from Objects}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
@@ -91,8 +98,9 @@ objects that are protected with server-side encryption.
 
 For objects that are encrypted with customer-provided encryption
 keys (SSE-C), you must use HTTPS, and you must use the headers that
-are documented in the GetObject. For more information about SSE-C,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}
+are documented in the
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}.
+For more information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 For objects that are encrypted with Amazon S3 managed encryption
@@ -109,17 +117,19 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 Given the response size is unknown, Amazon S3 Select streams the
 response as a series of messages and includes a \code{Transfer-Encoding}
 header with \code{chunked} as its value in the response. For more
-information, see RESTSelectObjectAppendix .
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/RESTSelectObjectAppendix.html}{Appendix: SelectObjectContent Response}
+.
 
 \strong{GetObject Support}
 
 The \code{SelectObjectContent} operation does not support the following
-\code{GetObject} functionality. For more information, see GetObject.
+\code{GetObject} functionality. For more information, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}.
 \itemize{
 \item \code{Range}: Although you can specify a scan range for an Amazon S3
-Select request (see SelectObjectContentRequest$ScanRange in the
-request parameters), you cannot specify the range of bytes of an
-object to return.
+Select request (see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_SelectObjectContent.html#AmazonS3-SelectObjectContent-request-ScanRange}{SelectObjectContentRequest - ScanRange}
+in the request parameters), you cannot specify the range of bytes of
+an object to return.
 \item GLACIER, DEEP\\_ARCHIVE and REDUCED\\_REDUNDANCY storage classes: You
 cannot specify the GLACIER, DEEP\\_ARCHIVE, or \code{REDUCED_REDUNDANCY}
 storage classes. For more information, about storage classes see
@@ -129,14 +139,13 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Special Errors}
 
-For a list of special errors for this operation, see
-SelectObjectContentErrorCodeList
+For a list of special errors for this operation, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#SelectObjectContentErrorCodeList}{List of SELECT Object Content Error Codes}
 
 \strong{Related Resources}
 \itemize{
-\item GetObject
-\item GetBucketLifecycleConfiguration
-\item PutBucketLifecycleConfiguration
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html}{GetBucketLifecycleConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html}{PutBucketLifecycleConfiguration}
 }
 }
 \section{Request syntax}{
@@ -182,7 +191,8 @@ SelectObjectContentErrorCodeList
   ScanRange = list(
     Start = 123,
     End = 123
-  )
+  ),
+  ExpectedBucketOwner = "string"
 )
 }
 }

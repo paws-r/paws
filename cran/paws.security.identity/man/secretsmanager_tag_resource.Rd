@@ -36,7 +36,7 @@ receive either a \emph{ResourceNotFoundException} or an
 
 This parameter to the API requires a JSON text string argument. For
 information on how to format a JSON parameter for the various command
-line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
+line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For the AWS CLI, you can also use the
 syntax:
 \verb{--Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"\\\[,…\\\]}}

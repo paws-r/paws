@@ -2,7 +2,7 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_describe_job_flows}
 \alias{emr_describe_job_flows}
-\title{This API is deprecated and will eventually be removed}
+\title{This API is no longer supported and will eventually be removed}
 \usage{
 emr_describe_job_flows(CreatedAfter, CreatedBefore, JobFlowIds,
   JobFlowStates)
@@ -17,9 +17,9 @@ emr_describe_job_flows(CreatedAfter, CreatedBefore, JobFlowIds,
 \item{JobFlowStates}{Return only job flows whose state is contained in this list.}
 }
 \description{
-This API is deprecated and will eventually be removed. We recommend you
-use ListClusters, DescribeCluster, ListSteps, ListInstanceGroups and
-ListBootstrapActions instead.
+This API is no longer supported and will eventually be removed. We
+recommend you use ListClusters, DescribeCluster, ListSteps,
+ListInstanceGroups and ListBootstrapActions instead.
 }
 \details{
 DescribeJobFlows returns a list of job flows that match all of the

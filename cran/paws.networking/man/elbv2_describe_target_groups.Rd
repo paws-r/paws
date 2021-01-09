@@ -26,11 +26,6 @@ one of the following to filter the results: the ARN of the load
 balancer, the names of one or more target groups, or the ARNs of one or
 more target groups.
 }
-\details{
-To describe the targets for a target group, use DescribeTargetHealth. To
-describe the attributes of a target group, use
-DescribeTargetGroupAttributes.
-}
 \section{Request syntax}{
 \preformatted{svc$describe_target_groups(
   LoadBalancerArn = "string",

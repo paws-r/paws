@@ -13,6 +13,30 @@ NULL
   list()
 }
 
+.eventbridge$cancel_replay_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$cancel_replay_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReplayArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$create_archive_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ArchiveName = structure(logical(0), tags = list(type = "string")), EventSourceArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), EventPattern = structure(logical(0), tags = list(type = "string")), RetentionDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$create_archive_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ArchiveArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .eventbridge$create_event_bus_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), EventSourceName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -47,6 +71,18 @@ NULL
   list()
 }
 
+.eventbridge$delete_archive_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ArchiveName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$delete_archive_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .eventbridge$delete_event_bus_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -75,6 +111,18 @@ NULL
 
 .eventbridge$delete_rule_output <- function(...) {
   list()
+}
+
+.eventbridge$describe_archive_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ArchiveName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$describe_archive_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ArchiveArn = structure(logical(0), tags = list(type = "string")), ArchiveName = structure(logical(0), tags = list(type = "string")), EventSourceArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), EventPattern = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), RetentionDays = structure(logical(0), tags = list(type = "integer")), SizeBytes = structure(logical(0), tags = list(type = "long")), EventCount = structure(logical(0), tags = list(type = "long")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .eventbridge$describe_event_bus_input <- function(...) {
@@ -113,6 +161,18 @@ NULL
   return(populate(args, shape))
 }
 
+.eventbridge$describe_replay_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReplayName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$describe_replay_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReplayName = structure(logical(0), tags = list(type = "string")), ReplayArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), EventSourceArn = structure(logical(0), tags = list(type = "string")), Destination = structure(list(Arn = structure(logical(0), tags = list(type = "string")), FilterArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), EventStartTime = structure(logical(0), tags = list(type = "timestamp")), EventEndTime = structure(logical(0), tags = list(type = "timestamp")), EventLastReplayedTime = structure(logical(0), tags = list(type = "timestamp")), ReplayStartTime = structure(logical(0), tags = list(type = "timestamp")), ReplayEndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .eventbridge$describe_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -121,7 +181,7 @@ NULL
 
 .eventbridge$describe_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), EventPattern = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ManagedBy = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), EventPattern = structure(logical(0), tags = list(type = "string")), ScheduleExpression = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ManagedBy = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string")), CreatedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -143,6 +203,18 @@ NULL
 
 .eventbridge$enable_rule_output <- function(...) {
   list()
+}
+
+.eventbridge$list_archives_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NamePrefix = structure(logical(0), tags = list(type = "string")), EventSourceArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$list_archives_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Archives = structure(list(structure(list(ArchiveName = structure(logical(0), tags = list(type = "string")), EventSourceArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), RetentionDays = structure(logical(0), tags = list(type = "integer")), SizeBytes = structure(logical(0), tags = list(type = "long")), EventCount = structure(logical(0), tags = list(type = "long")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .eventbridge$list_event_buses_input <- function(...) {
@@ -193,6 +265,18 @@ NULL
   return(populate(args, shape))
 }
 
+.eventbridge$list_replays_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NamePrefix = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EventSourceArn = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$list_replays_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Replays = structure(list(structure(list(ReplayName = structure(logical(0), tags = list(type = "string")), EventSourceArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), EventStartTime = structure(logical(0), tags = list(type = "timestamp")), EventEndTime = structure(logical(0), tags = list(type = "timestamp")), EventLastReplayedTime = structure(logical(0), tags = list(type = "timestamp")), ReplayStartTime = structure(logical(0), tags = list(type = "timestamp")), ReplayEndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .eventbridge$list_rule_names_by_target_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(TargetArn = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -237,7 +321,7 @@ NULL
 
 .eventbridge$list_targets_by_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Targets = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Input = structure(logical(0), tags = list(type = "string")), InputPath = structure(logical(0), tags = list(type = "string")), InputTransformer = structure(list(InputPathsMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), InputTemplate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisParameters = structure(list(PartitionKeyPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RunCommandParameters = structure(list(RunCommandTargets = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EcsParameters = structure(list(TaskDefinitionArn = structure(logical(0), tags = list(type = "string")), TaskCount = structure(logical(0), tags = list(type = "integer")), LaunchType = structure(logical(0), tags = list(type = "string")), NetworkConfiguration = structure(list(awsvpcConfiguration = structure(list(Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AssignPublicIp = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), PlatformVersion = structure(logical(0), tags = list(type = "string")), Group = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), BatchParameters = structure(list(JobDefinition = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), ArrayProperties = structure(list(Size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), RetryStrategy = structure(list(Attempts = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), SqsParameters = structure(list(MessageGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpParameters = structure(list(PathParameterValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HeaderParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), QueryStringParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Targets = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Input = structure(logical(0), tags = list(type = "string")), InputPath = structure(logical(0), tags = list(type = "string")), InputTransformer = structure(list(InputPathsMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), InputTemplate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisParameters = structure(list(PartitionKeyPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RunCommandParameters = structure(list(RunCommandTargets = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EcsParameters = structure(list(TaskDefinitionArn = structure(logical(0), tags = list(type = "string")), TaskCount = structure(logical(0), tags = list(type = "integer")), LaunchType = structure(logical(0), tags = list(type = "string")), NetworkConfiguration = structure(list(awsvpcConfiguration = structure(list(Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AssignPublicIp = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), PlatformVersion = structure(logical(0), tags = list(type = "string")), Group = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), BatchParameters = structure(list(JobDefinition = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), ArrayProperties = structure(list(Size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), RetryStrategy = structure(list(Attempts = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), SqsParameters = structure(list(MessageGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpParameters = structure(list(PathParameterValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HeaderParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), QueryStringParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), RedshiftDataParameters = structure(list(SecretManagerArn = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), Sql = structure(logical(0), tags = list(type = "string")), StatementName = structure(logical(0), tags = list(type = "string")), WithEvent = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DeadLetterConfig = structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RetryPolicy = structure(list(MaximumRetryAttempts = structure(logical(0), tags = list(type = "integer")), MaximumEventAgeInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -267,7 +351,7 @@ NULL
 
 .eventbridge$put_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EventBusName = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Principal = structure(logical(0), tags = list(type = "string")), StatementId = structure(logical(0), tags = list(type = "string")), Condition = structure(list(Type = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(EventBusName = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Principal = structure(logical(0), tags = list(type = "string")), StatementId = structure(logical(0), tags = list(type = "string")), Condition = structure(list(Type = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -289,7 +373,7 @@ NULL
 
 .eventbridge$put_targets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rule = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string")), Targets = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Input = structure(logical(0), tags = list(type = "string")), InputPath = structure(logical(0), tags = list(type = "string")), InputTransformer = structure(list(InputPathsMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), InputTemplate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisParameters = structure(list(PartitionKeyPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RunCommandParameters = structure(list(RunCommandTargets = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EcsParameters = structure(list(TaskDefinitionArn = structure(logical(0), tags = list(type = "string")), TaskCount = structure(logical(0), tags = list(type = "integer")), LaunchType = structure(logical(0), tags = list(type = "string")), NetworkConfiguration = structure(list(awsvpcConfiguration = structure(list(Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AssignPublicIp = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), PlatformVersion = structure(logical(0), tags = list(type = "string")), Group = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), BatchParameters = structure(list(JobDefinition = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), ArrayProperties = structure(list(Size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), RetryStrategy = structure(list(Attempts = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), SqsParameters = structure(list(MessageGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpParameters = structure(list(PathParameterValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HeaderParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), QueryStringParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Rule = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string")), Targets = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Input = structure(logical(0), tags = list(type = "string")), InputPath = structure(logical(0), tags = list(type = "string")), InputTransformer = structure(list(InputPathsMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), InputTemplate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisParameters = structure(list(PartitionKeyPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RunCommandParameters = structure(list(RunCommandTargets = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EcsParameters = structure(list(TaskDefinitionArn = structure(logical(0), tags = list(type = "string")), TaskCount = structure(logical(0), tags = list(type = "integer")), LaunchType = structure(logical(0), tags = list(type = "string")), NetworkConfiguration = structure(list(awsvpcConfiguration = structure(list(Subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroups = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AssignPublicIp = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), PlatformVersion = structure(logical(0), tags = list(type = "string")), Group = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), BatchParameters = structure(list(JobDefinition = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), ArrayProperties = structure(list(Size = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), RetryStrategy = structure(list(Attempts = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), SqsParameters = structure(list(MessageGroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), HttpParameters = structure(list(PathParameterValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HeaderParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), QueryStringParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), RedshiftDataParameters = structure(list(SecretManagerArn = structure(logical(0), tags = list(type = "string")), Database = structure(logical(0), tags = list(type = "string")), DbUser = structure(logical(0), tags = list(type = "string")), Sql = structure(logical(0), tags = list(type = "string")), StatementName = structure(logical(0), tags = list(type = "string")), WithEvent = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DeadLetterConfig = structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RetryPolicy = structure(list(MaximumRetryAttempts = structure(logical(0), tags = list(type = "integer")), MaximumEventAgeInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -301,7 +385,7 @@ NULL
 
 .eventbridge$remove_permission_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StatementId = structure(logical(0), tags = list(type = "string")), EventBusName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(StatementId = structure(logical(0), tags = list(type = "string")), RemoveAllPermissions = structure(logical(0), tags = list(type = "boolean")), EventBusName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -318,6 +402,18 @@ NULL
 .eventbridge$remove_targets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(FailedEntryCount = structure(logical(0), tags = list(type = "integer")), FailedEntries = structure(list(structure(list(TargetId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$start_replay_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), EventSourceArn = structure(logical(0), tags = list(type = "string")), EventStartTime = structure(logical(0), tags = list(type = "timestamp")), EventEndTime = structure(logical(0), tags = list(type = "timestamp")), Destination = structure(list(Arn = structure(logical(0), tags = list(type = "string")), FilterArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$start_replay_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReplayArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), ReplayStartTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -354,5 +450,17 @@ NULL
 .eventbridge$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$update_archive_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ArchiveName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), EventPattern = structure(logical(0), tags = list(type = "string")), RetentionDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eventbridge$update_archive_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ArchiveArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

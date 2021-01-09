@@ -159,7 +159,7 @@ AAC) or A\\_MS/ACM (for G.711).
 \item The video track of each fragment must contain codec private data in
 the Advanced Video Coding (AVC) for H.264 format and HEVC for H.265
 format. For more information, see \href{https://www.iso.org/standard/55980.html}{MPEG-4 specification ISO/IEC 14496-15}. For information
-about adapting stream data to a given format, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
+about adapting stream data to a given format, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
 \item The audio track (if present) of each fragment must contain codec
 private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{AAC specification ISO/IEC 13818-7}) or the \href{http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html}{MS Wave format}.
 }
@@ -168,7 +168,7 @@ The following procedure shows how to use MPEG-DASH with Kinesis Video
 Streams:
 \enumerate{
 \item Get an endpoint using
-\href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_GetDataEndpoint.html}{GetDataEndpoint},
+\href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_GetDataEndpoint.html}{GetDataEndpoint},
 specifying \code{GET_DASH_STREAMING_SESSION_URL} for the \code{APIName}
 parameter.
 \item Retrieve the MPEG-DASH URL using \code{GetDASHStreamingSessionURL}.
@@ -234,7 +234,7 @@ The following restrictions apply to MPEG-DASH sessions:
 \itemize{
 \item A streaming session URL should not be shared between players. The
 service might throttle a session if multiple media players are
-sharing it. For connection limits, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html}{Kinesis Video Streams Limits}.
+sharing it. For connection limits, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html}{Kinesis Video Streams Limits}.
 \item A Kinesis video stream can have a maximum of ten active MPEG-DASH
 streaming sessions. If a new session is created when the maximum
 number of sessions is already active, the oldest (earliest created)
@@ -250,7 +250,7 @@ are independent of each other.
 You can monitor the amount of data that the media player consumes by
 monitoring the \code{GetMP4MediaFragment.OutgoingBytes} Amazon CloudWatch
 metric. For information about using CloudWatch to monitor Kinesis Video
-Streams, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html}{Monitoring Kinesis Video Streams}.
+Streams, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html}{Monitoring Kinesis Video Streams}.
 For pricing information, see \href{https://aws.amazon.com/kinesis/video-streams/pricing/}{Amazon Kinesis Video Streams Pricing} and \href{https://aws.amazon.com/pricing/}{AWS Pricing}. Charges for both HLS sessions
 and outgoing AWS data apply.
 

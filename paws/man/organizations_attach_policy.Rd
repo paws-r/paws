@@ -12,7 +12,7 @@ organizations_attach_policy(PolicyId, TargetId)
 target. You can get the ID for the policy by calling the ListPolicies
 operation.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase
 letters, digits, or the underscore character (\\_).}
 
@@ -20,7 +20,7 @@ letters, digits, or the underscore character (\\_).}
 attach the policy to. You can get the ID by calling the ListRoots,
 ListOrganizationalUnitsForParent, or ListAccounts operations.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a target ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a target ID
 string requires one of the following:
 \itemize{
 \item \strong{Root} - A string that begins with "r-" followed by from 4 to 32
@@ -40,13 +40,13 @@ about each policy type:
 }
 \details{
 \itemize{
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{SERVICE\\_CONTROL\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE\\_CONTROL\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
 }
 
-This operation can be called only from the organization's master
+This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{

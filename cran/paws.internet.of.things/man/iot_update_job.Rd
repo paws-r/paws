@@ -5,7 +5,7 @@
 \title{Updates supported fields of the specified job}
 \usage{
 iot_update_job(jobId, description, presignedUrlConfig,
-  jobExecutionsRolloutConfig, abortConfig, timeoutConfig)
+  jobExecutionsRolloutConfig, abortConfig, timeoutConfig, namespaceId)
 }
 \arguments{
 \item{jobId}{[required] The ID of the job to be updated.}
@@ -23,6 +23,16 @@ the job. The timer is started when the job execution status is set to
 \code{IN_PROGRESS}. If the job execution status is not set to another
 terminal state before the time expires, it will be automatically set to
 \code{TIMED_OUT}.}
+
+\item{namespaceId}{The namespace used to indicate that a job is a customer-managed job.
+
+When you specify a value for this parameter, AWS IoT Core sends jobs
+notifications to MQTT topics that contain the value in the following
+format.
+
+\verb{$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/}
+
+The \code{namespaceId} feature is in public preview.}
 }
 \description{
 Updates supported fields of the specified job.
@@ -58,7 +68,8 @@ Updates supported fields of the specified job.
   ),
   timeoutConfig = list(
     inProgressTimeoutInMinutes = 123
-  )
+  ),
+  namespaceId = "string"
 )
 }
 }

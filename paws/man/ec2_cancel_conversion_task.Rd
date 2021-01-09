@@ -24,7 +24,7 @@ complete or is in the process of transferring the final disk image, the
 command fails and returns an exception.
 }
 \details{
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html}{Importing a Virtual Machine Using the Amazon EC2 CLI}.
+For more information, see \href{http://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf}{Importing a Virtual Machine Using the Amazon EC2 CLI}.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_conversion_task(

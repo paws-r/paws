@@ -12,7 +12,9 @@ iotsitewise_list_projects(portalId, nextToken, maxResults)
 
 \item{nextToken}{The token to be used for the next set of paginated results.}
 
-\item{maxResults}{The maximum number of results to be returned per paginated request.}
+\item{maxResults}{The maximum number of results to be returned per paginated request.
+
+Default: 50}
 }
 \description{
 Retrieves a paginated list of projects for an AWS IoT SiteWise Monitor

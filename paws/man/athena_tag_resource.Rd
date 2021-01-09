@@ -21,7 +21,7 @@ you define. For example, you can use tags to categorize Athena
 workgroups or data catalogs by purpose, owner, or environment. Use a
 consistent set of tag keys to make it easier to search and filter
 workgroups or data catalogs in your account. For best practices, see
-\href{https://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{Tagging Best Practices}.
+\href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{Tagging Best Practices}.
 Tag keys can be from 1 to 128 UTF-8 Unicode characters, and tag values
 can be from 0 to 256 UTF-8 Unicode characters. Tags can use letters and
 numbers representable in UTF-8, and the following characters: + - = . \\_

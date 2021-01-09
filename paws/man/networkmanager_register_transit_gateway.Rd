@@ -11,7 +11,7 @@ networkmanager_register_transit_gateway(GlobalNetworkId,
 \item{GlobalNetworkId}{[required] The ID of the global network.}
 
 \item{TransitGatewayArn}{[required] The Amazon Resource Name (ARN) of the transit gateway. For more
-information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies}{Resources Defined by Amazon EC2}.}
+information, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html}{Resources Defined by Amazon EC2}.}
 }
 \description{
 Registers a transit gateway in your global network. The transit gateway

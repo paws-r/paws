@@ -12,8 +12,8 @@ lightsail_get_regions(includeAvailabilityZones,
 your get regions request. Availability Zones are indicated with a
 letter: e.g., \verb{us-east-2a}.}
 
-\item{includeRelationalDatabaseAvailabilityZones}{>A Boolean value indicating whether to also include Availability
-Zones for databases in your get regions request. Availability Zones are
+\item{includeRelationalDatabaseAvailabilityZones}{A Boolean value indicating whether to also include Availability Zones
+for databases in your get regions request. Availability Zones are
 indicated with a letter (e.g., \verb{us-east-2a}).}
 }
 \description{

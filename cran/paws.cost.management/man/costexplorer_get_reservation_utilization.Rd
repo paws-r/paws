@@ -5,7 +5,7 @@
 \title{Retrieves the reservation utilization for your account}
 \usage{
 costexplorer_get_reservation_utilization(TimePeriod, GroupBy,
-  Granularity, Filter, NextPageToken)
+  Granularity, Filter, SortBy, NextPageToken, MaxResults)
 }
 \arguments{
 \item{TimePeriod}{[required] Sets the start and end dates for retrieving RI utilization. The start
@@ -46,16 +46,46 @@ object as the other operations, but only \code{AND} is supported among each
 dimension, and nesting is supported up to only one level deep. If there
 are multiple values for a dimension, they are OR'd together.}
 
+\item{SortBy}{The value by which you want to sort the data.
+
+The following values are supported for \code{Key}:
+\itemize{
+\item \code{UtilizationPercentage}
+\item \code{UtilizationPercentageInUnits}
+\item \code{PurchasedHours}
+\item \code{PurchasedUnits}
+\item \code{TotalActualHours}
+\item \code{TotalActualUnits}
+\item \code{UnusedHours}
+\item \code{UnusedUnits}
+\item \code{OnDemandCostOfRIHoursUsed}
+\item \code{NetRISavings}
+\item \code{TotalPotentialRISavings}
+\item \code{AmortizedUpfrontFee}
+\item \code{AmortizedRecurringFee}
+\item \code{TotalAmortizedFee}
+\item \code{RICostForUnusedHours}
+\item \code{RealizedSavings}
+\item \code{UnrealizedSavings}
+}
+
+Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
+
 \item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
 when the response from a previous call has more results than the maximum
 page size.}
+
+\item{MaxResults}{The maximum number of objects that you returned for this request. If
+more objects are available, in the response, AWS provides a
+NextPageToken value that you can use in a subsequent call to get the
+next batch of objects.}
 }
 \description{
-Retrieves the reservation utilization for your account. Master accounts
-in an organization have access to member accounts. You can filter data
-by dimensions in a time period. You can use \code{GetDimensionValues} to
-determine the possible dimension values. Currently, you can group only
-by \code{SUBSCRIPTION_ID}.
+Retrieves the reservation utilization for your account. Management
+account in an organization have access to member accounts. You can
+filter data by dimensions in a time period. You can use
+\code{GetDimensionValues} to determine the possible dimension values.
+Currently, you can group only by \code{SUBSCRIPTION_ID}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_reservation_utilization(
@@ -79,12 +109,12 @@ by \code{SUBSCRIPTION_ID}.
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
       Values = list(
         "string"
       ),
       MatchOptions = list(
-        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     Tags = list(
@@ -93,17 +123,25 @@ by \code{SUBSCRIPTION_ID}.
         "string"
       ),
       MatchOptions = list(
-        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     CostCategories = list(
       Key = "string",
       Values = list(
         "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     )
   ),
-  NextPageToken = "string"
+  SortBy = list(
+    Key = "string",
+    SortOrder = "ASCENDING"|"DESCENDING"
+  ),
+  NextPageToken = "string",
+  MaxResults = 123
 )
 }
 }

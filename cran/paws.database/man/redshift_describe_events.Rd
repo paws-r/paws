@@ -43,12 +43,12 @@ snapshot identifier.
 }}
 
 \item{StartTime}{The beginning of the time interval to retrieve events for, specified in
-ISO 8601 format. For more information about ISO 8601, go to the \href{http://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
+ISO 8601 format. For more information about ISO 8601, go to the \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
 
 Example: \verb{2009-07-08T18:00Z}}
 
 \item{EndTime}{The end of the time interval for which to retrieve events, specified in
-ISO 8601 format. For more information about ISO 8601, go to the \href{http://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
+ISO 8601 format. For more information about ISO 8601, go to the \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
 
 Example: \verb{2009-07-08T18:00Z}}
 

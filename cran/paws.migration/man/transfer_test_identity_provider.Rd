@@ -9,9 +9,8 @@ transfer_test_identity_provider(ServerId, ServerProtocol, SourceIp,
   UserName, UserPassword)
 }
 \arguments{
-\item{ServerId}{[required] A system-assigned identifier for a specific file transfer
-protocol-enabled server. That server's user authentication method is
-tested with a user name and password.}
+\item{ServerId}{[required] A system-assigned identifier for a specific server. That server's user
+authentication method is tested with a user name and password.}
 
 \item{ServerProtocol}{The type of file transfer protocol to be tested.
 

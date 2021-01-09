@@ -5,7 +5,8 @@
 \title{Creates an asset model from specified property and hierarchy definitions}
 \usage{
 iotsitewise_create_asset_model(assetModelName, assetModelDescription,
-  assetModelProperties, assetModelHierarchies, clientToken, tags)
+  assetModelProperties, assetModelHierarchies, assetModelCompositeModels,
+  clientToken, tags)
 }
 \arguments{
 \item{assetModelName}{[required] A unique, friendly name for the asset model.}
@@ -13,7 +14,7 @@ iotsitewise_create_asset_model(assetModelName, assetModelDescription,
 \item{assetModelDescription}{A description for the asset model.}
 
 \item{assetModelProperties}{The property definitions of the asset model. For more information, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-properties.html}{Asset Properties}
+\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-properties.html}{Asset properties}
 in the \emph{AWS IoT SiteWise User Guide}.
 
 You can specify up to 200 properties per asset model. For more
@@ -23,13 +24,19 @@ in the \emph{AWS IoT SiteWise User Guide}.}
 
 \item{assetModelHierarchies}{The hierarchy definitions of the asset model. Each hierarchy specifies
 an asset model whose assets can be children of any other assets created
-from this asset model. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html}{Asset Hierarchies}
+from this asset model. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html}{Asset hierarchies}
 in the \emph{AWS IoT SiteWise User Guide}.
 
 You can specify up to 10 hierarchies per asset model. For more
 information, see
 \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/quotas.html}{Quotas}
 in the \emph{AWS IoT SiteWise User Guide}.}
+
+\item{assetModelCompositeModels}{The composite asset models that are part of this asset model. Composite
+asset models are asset models that contain specific properties. Each
+composite model has a type that defines the properties that the
+composite model supports. Use composite asset models to define alarms on
+this asset model.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
 idempotency of the request. Don't reuse this client token if a new
@@ -44,7 +51,7 @@ Creates an asset model from specified property and hierarchy
 definitions. You create assets from asset models. With asset models, you
 can easily create assets of the same type that have standardized
 definitions. Each asset created from a model inherits the asset model's
-property and hierarchy definitions. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/define-models.html}{Defining Asset Models}
+property and hierarchy definitions. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-asset-models.html}{Defining asset models}
 in the \emph{AWS IoT SiteWise User Guide}.
 }
 \section{Request syntax}{
@@ -54,7 +61,8 @@ in the \emph{AWS IoT SiteWise User Guide}.
   assetModelProperties = list(
     list(
       name = "string",
-      dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN",
+      dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+      dataTypeSpec = "string",
       unit = "string",
       type = list(
         attribute = list(
@@ -97,6 +105,56 @@ in the \emph{AWS IoT SiteWise User Guide}.
     list(
       name = "string",
       childAssetModelId = "string"
+    )
+  ),
+  assetModelCompositeModels = list(
+    list(
+      name = "string",
+      description = "string",
+      type = "string",
+      properties = list(
+        list(
+          name = "string",
+          dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+          dataTypeSpec = "string",
+          unit = "string",
+          type = list(
+            attribute = list(
+              defaultValue = "string"
+            ),
+            measurement = list(),
+            transform = list(
+              expression = "string",
+              variables = list(
+                list(
+                  name = "string",
+                  value = list(
+                    propertyId = "string",
+                    hierarchyId = "string"
+                  )
+                )
+              )
+            ),
+            metric = list(
+              expression = "string",
+              variables = list(
+                list(
+                  name = "string",
+                  value = list(
+                    propertyId = "string",
+                    hierarchyId = "string"
+                  )
+                )
+              ),
+              window = list(
+                tumbling = list(
+                  interval = "string"
+                )
+              )
+            )
+          )
+        )
+      )
     )
   ),
   clientToken = "string",

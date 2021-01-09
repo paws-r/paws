@@ -12,7 +12,7 @@ chime_get_retention_settings(AccountId)
 }
 \description{
 Gets the retention settings for the specified Amazon Chime Enterprise
-account. For more information about retention settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html}{Managing Chat Retention Policies}
+account. For more information about retention settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/}{Managing Chat Retention Policies}
 in the \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{

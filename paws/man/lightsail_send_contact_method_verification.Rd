@@ -19,7 +19,8 @@ A contact method is used to send you notifications about your Amazon
 Lightsail resources. You can add one email address and one mobile phone
 number contact method in each AWS Region. However, SMS text messaging is
 not supported in some AWS Regions, and SMS text messages cannot be sent
-to some countries/regions. For more information, see \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications}{Notifications in Amazon Lightsail}.
+to some countries/regions. For more information, see Notifications in
+Amazon Lightsail.
 
 A verification request is sent to the contact method when you initially
 create it. Use this action to send another verification request if a

@@ -8,8 +8,8 @@ servicecatalog_get_aws_organizations_access_status()
 }
 \description{
 Get the Access Status for AWS Organization portfolio share feature. This
-API can only be called by the master account in the organization or by a
-delegated admin.
+API can only be called by the management account in the organization or
+by a delegated admin.
 }
 \section{Request syntax}{
 \preformatted{svc$get_aws_organizations_access_status()

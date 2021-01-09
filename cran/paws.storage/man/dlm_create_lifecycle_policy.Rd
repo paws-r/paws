@@ -30,7 +30,7 @@ You can create up to 100 lifecycle policies.
   Description = "string",
   State = "ENABLED"|"DISABLED",
   PolicyDetails = list(
-    PolicyType = "EBS_SNAPSHOT_MANAGEMENT",
+    PolicyType = "EBS_SNAPSHOT_MANAGEMENT"|"IMAGE_MANAGEMENT"|"EVENT_BASED_POLICY",
     ResourceTypes = list(
       "VOLUME"|"INSTANCE"
     ),
@@ -88,11 +88,49 @@ You can create up to 100 lifecycle policies.
               IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
             )
           )
+        ),
+        ShareRules = list(
+          list(
+            TargetAccounts = list(
+              "string"
+            ),
+            UnshareInterval = 123,
+            UnshareIntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+          )
         )
       )
     ),
     Parameters = list(
-      ExcludeBootVolume = TRUE|FALSE
+      ExcludeBootVolume = TRUE|FALSE,
+      NoReboot = TRUE|FALSE
+    ),
+    EventSource = list(
+      Type = "MANAGED_CWE",
+      Parameters = list(
+        EventType = "shareSnapshot",
+        SnapshotOwner = list(
+          "string"
+        ),
+        DescriptionRegex = "string"
+      )
+    ),
+    Actions = list(
+      list(
+        Name = "string",
+        CrossRegionCopy = list(
+          list(
+            Target = "string",
+            EncryptionConfiguration = list(
+              Encrypted = TRUE|FALSE,
+              CmkArn = "string"
+            ),
+            RetainRule = list(
+              Interval = 123,
+              IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
+            )
+          )
+        )
+      )
     )
   ),
   Tags = list(

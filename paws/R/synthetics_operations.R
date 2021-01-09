@@ -19,7 +19,7 @@ NULL
 #' policy. If you are creating a new IAM role for the canary, you also need
 #' the the `iam:CreateRole`, `iam:CreatePolicy` and `iam:AttachRolePolicy`
 #' permissions. For more information, see [Necessary Roles and
-#' Permissions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Roles).
+#' Permissions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Roles.html).
 #' 
 #' Do not include secrets or proprietary information in your canary names.
 #' The canary name makes up part of the Amazon Resource Name (ARN) for the
@@ -62,7 +62,7 @@ NULL
 #' 
 #' -   `logs:CreateLogStream`
 #' 
-#' -   `logs:CreateLogStream`
+#' -   `logs:PutLogEvents`
 #' @param Schedule &#91;required&#93; A structure that contains information about how often the canary is to
 #' run and when these test runs are to stop.
 #' @param RunConfig A structure that contains the configuration for individual canary runs,
@@ -73,9 +73,9 @@ NULL
 #' @param FailureRetentionPeriodInDays The number of days to retain data about failed runs of this canary. If
 #' you omit this field, the default of 31 days is used. The valid range is
 #' 1 to 455 days.
-#' @param RuntimeVersion &#91;required&#93; Specifies the runtime version to use for the canary. Currently, the only
-#' valid value is `syn-1.0`. For more information about runtime versions,
-#' see [Canary Runtime
+#' @param RuntimeVersion &#91;required&#93; Specifies the runtime version to use for the canary. For a list of valid
+#' runtime versions and more information about runtime versions, see
+#' [Canary Runtime
 #' Versions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html).
 #' @param VpcConfig If this canary is to test an endpoint in a VPC, this structure contains
 #' information about the subnet and security groups of the VPC endpoint.
@@ -107,7 +107,11 @@ NULL
 #'   ),
 #'   RunConfig = list(
 #'     TimeoutInSeconds = 123,
-#'     MemoryInMB = 123
+#'     MemoryInMB = 123,
+#'     ActiveTracing = TRUE|FALSE,
+#'     EnvironmentVariables = list(
+#'       "string"
+#'     )
 #'   ),
 #'   SuccessRetentionPeriodInDays = 123,
 #'   FailureRetentionPeriodInDays = 123,
@@ -694,9 +698,9 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' -   `logs:CreateLogStream`
 #' 
 #' -   `logs:CreateLogStream`
-#' @param RuntimeVersion Specifies the runtime version to use for the canary. Currently, the only
-#' valid value is `syn-1.0`. For more information about runtime versions,
-#' see [Canary Runtime
+#' @param RuntimeVersion Specifies the runtime version to use for the canary. For a list of valid
+#' runtime versions and for more information about runtime versions, see
+#' [Canary Runtime
 #' Versions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html).
 #' @param Schedule A structure that contains information about how often the canary is to
 #' run, and when these runs are to stop.
@@ -728,7 +732,11 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #'   ),
 #'   RunConfig = list(
 #'     TimeoutInSeconds = 123,
-#'     MemoryInMB = 123
+#'     MemoryInMB = 123,
+#'     ActiveTracing = TRUE|FALSE,
+#'     EnvironmentVariables = list(
+#'       "string"
+#'     )
 #'   ),
 #'   SuccessRetentionPeriodInDays = 123,
 #'   FailureRetentionPeriodInDays = 123,

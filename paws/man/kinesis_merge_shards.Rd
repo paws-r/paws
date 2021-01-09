@@ -31,7 +31,7 @@ data for all hash key values covered by the two parent shards.
 \code{MergeShards} is called when there is a need to reduce the overall
 capacity of a stream because of excess capacity that is not being used.
 You must specify the shard to be merged and the adjacent shard for a
-stream. For more information about merging shards, see \href{http://docs.aws.amazon.com/kinesis/latest/dev/kinesis-using-sdk-java-resharding-merge.html}{Merge Two Shards}
+stream. For more information about merging shards, see \href{https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-resharding-merge.html}{Merge Two Shards}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.
 
 If the stream is in the \code{ACTIVE} state, you can call \code{MergeShards}. If a

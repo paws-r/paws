@@ -83,53 +83,80 @@ Updates an existing virtual node in a specified service mesh.
     ),
     listeners = list(
       list(
+        connectionPool = list(
+          grpc = list(
+            maxRequests = 123
+          ),
+          http = list(
+            maxConnections = 123,
+            maxPendingRequests = 123
+          ),
+          http2 = list(
+            maxRequests = 123
+          ),
+          tcp = list(
+            maxConnections = 123
+          )
+        ),
         healthCheck = list(
           healthyThreshold = 123,
           intervalMillis = 123,
           path = "string",
           port = 123,
-          protocol = "grpc"|"http"|"http2"|"tcp",
+          protocol = "http"|"tcp"|"http2"|"grpc",
           timeoutMillis = 123,
           unhealthyThreshold = 123
         ),
+        outlierDetection = list(
+          baseEjectionDuration = list(
+            unit = "s"|"ms",
+            value = 123
+          ),
+          interval = list(
+            unit = "s"|"ms",
+            value = 123
+          ),
+          maxEjectionPercent = 123,
+          maxServerErrors = 123
+        ),
         portMapping = list(
           port = 123,
-          protocol = "grpc"|"http"|"http2"|"tcp"
+          protocol = "http"|"tcp"|"http2"|"grpc"
         ),
         timeout = list(
           grpc = list(
             idle = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             ),
             perRequest = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             )
           ),
           http = list(
             idle = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             ),
             perRequest = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             )
           ),
           http2 = list(
             idle = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             ),
             perRequest = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             )
           ),
           tcp = list(
             idle = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             )
           )
@@ -144,7 +171,7 @@ Updates an existing virtual node in a specified service mesh.
               privateKey = "string"
             )
           ),
-          mode = "DISABLED"|"PERMISSIVE"|"STRICT"
+          mode = "STRICT"|"PERMISSIVE"|"DISABLED"
         )
       )
     ),

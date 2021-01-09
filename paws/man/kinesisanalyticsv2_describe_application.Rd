@@ -2,8 +2,7 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_describe_application}
 \alias{kinesisanalyticsv2_describe_application}
-\title{Returns information about a specific Amazon Kinesis Data Analytics
-application}
+\title{Returns information about a specific Kinesis Data Analytics application}
 \usage{
 kinesisanalyticsv2_describe_application(ApplicationName,
   IncludeAdditionalDetails)
@@ -15,8 +14,7 @@ kinesisanalyticsv2_describe_application(ApplicationName,
 including the application's job plan.}
 }
 \description{
-Returns information about a specific Amazon Kinesis Data Analytics
-application.
+Returns information about a specific Kinesis Data Analytics application.
 }
 \details{
 If you want to retrieve a list of all applications in your account, use

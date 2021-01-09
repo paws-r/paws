@@ -9,7 +9,7 @@ neptune_list_tags_for_resource(ResourceName, Filters)
 \arguments{
 \item{ResourceName}{[required] The Amazon Neptune resource with tags to be listed. This value is an
 Amazon Resource Name (ARN). For information about creating an ARN, see
-\href{https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.}
+\href{https://docs.aws.amazon.com/neptune/latest/userguide/}{Constructing an Amazon Resource Name (ARN)}.}
 
 \item{Filters}{This parameter is not currently supported.}
 }

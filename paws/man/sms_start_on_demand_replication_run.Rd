@@ -7,7 +7,7 @@
 sms_start_on_demand_replication_run(replicationJobId, description)
 }
 \arguments{
-\item{replicationJobId}{[required] The identifier of the replication job.}
+\item{replicationJobId}{[required] The ID of the replication job.}
 
 \item{description}{The description of the replication run.}
 }
@@ -17,8 +17,8 @@ This replication run starts immediately. This replication run is in
 addition to the ones already scheduled.
 }
 \details{
-There is a limit on the number of on-demand replications runs you can
-request in a 24-hour period.
+There is a limit on the number of on-demand replications runs that you
+can request in a 24-hour period.
 }
 \section{Request syntax}{
 \preformatted{svc$start_on_demand_replication_run(

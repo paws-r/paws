@@ -84,16 +84,26 @@ ivs_batch_get_stream_key <- function(arns) {
 #' Creates a new channel and an associated stream key to start streaming.
 #'
 #' @usage
-#' ivs_create_channel(name, latencyMode, type, tags)
+#' ivs_create_channel(name, latencyMode, type, authorized, tags)
 #'
 #' @param name Channel name.
 #' @param latencyMode Channel latency mode. Default: `LOW`.
-#' @param type Channel type, which determines the allowable resolution and bitrate.
-#' `STANDARD`: The stream is transcoded; resolution (width, in landscape
-#' orientation) can be up to 1080p or the input source resolution,
-#' whichever is lower; and bitrate can be up to 8.5 Mbps. `BASIC`: The
-#' stream is transfixed; resolution can be up to 480p; and bitrate can be
-#' up to 1.5 Mbps. Default: `STANDARD`.
+#' @param type Channel type, which determines the allowable resolution and bitrate. *If
+#' you exceed the allowable resolution or bitrate, the stream probably will
+#' disconnect immediately.* Valid values:
+#' 
+#' -   `STANDARD`: Multiple qualities are generated from the original
+#'     input, to automatically give viewers the best experience for their
+#'     devices and network conditions. Vertical resolution can be up to
+#'     1080 and bitrate can be up to 8.5 Mbps.
+#' 
+#' -   `BASIC`: Amazon IVS delivers the original input to viewers. The
+#'     viewer’s video-quality choice is limited to the original input.
+#'     Vertical resolution can be up to 480 and bitrate can be up to 1.5
+#'     Mbps.
+#' 
+#' Default: `STANDARD`.
+#' @param authorized Whether the channel is authorized. Default: `false`.
 #' @param tags See Channel$tags.
 #'
 #' @section Request syntax:
@@ -102,6 +112,7 @@ ivs_batch_get_stream_key <- function(arns) {
 #'   name = "string",
 #'   latencyMode = "NORMAL"|"LOW",
 #'   type = "BASIC"|"STANDARD",
+#'   authorized = TRUE|FALSE,
 #'   tags = list(
 #'     "string"
 #'   )
@@ -111,14 +122,14 @@ ivs_batch_get_stream_key <- function(arns) {
 #' @keywords internal
 #'
 #' @rdname ivs_create_channel
-ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, tags = NULL) {
+ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, authorized = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateChannel",
     http_method = "POST",
     http_path = "/CreateChannel",
     paginator = list()
   )
-  input <- .ivs$create_channel_input(name = name, latencyMode = latencyMode, type = type, tags = tags)
+  input <- .ivs$create_channel_input(name = name, latencyMode = latencyMode, type = type, authorized = authorized, tags = tags)
   output <- .ivs$create_channel_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -128,11 +139,11 @@ ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, tag
 }
 .ivs$operations$create_channel <- ivs_create_channel
 
-#' Creates a stream key, used to initiate a stream, for a specified channel
-#' ARN
+#' Creates a stream key, used to initiate a stream, for the specified
+#' channel ARN
 #'
-#' Creates a stream key, used to initiate a stream, for a specified channel
-#' ARN.
+#' Creates a stream key, used to initiate a stream, for the specified
+#' channel ARN.
 #' 
 #' Note that CreateChannel creates a stream key. If you subsequently use
 #' CreateStreamKey on the same channel, it will fail because a stream key
@@ -176,9 +187,9 @@ ivs_create_stream_key <- function(channelArn, tags = NULL) {
 }
 .ivs$operations$create_stream_key <- ivs_create_stream_key
 
-#' Deletes a specified channel and its associated stream keys
+#' Deletes the specified channel and its associated stream keys
 #'
-#' Deletes a specified channel and its associated stream keys.
+#' Deletes the specified channel and its associated stream keys.
 #'
 #' @usage
 #' ivs_delete_channel(arn)
@@ -212,11 +223,48 @@ ivs_delete_channel <- function(arn) {
 }
 .ivs$operations$delete_channel <- ivs_delete_channel
 
-#' Deletes the stream key for a specified ARN, so it can no longer be used
-#' to stream
+#' Deletes a specified authorization key pair
 #'
-#' Deletes the stream key for a specified ARN, so it can no longer be used
-#' to stream.
+#' Deletes a specified authorization key pair. This invalidates future
+#' viewer tokens generated using the key pair’s `privateKey`.
+#'
+#' @usage
+#' ivs_delete_playback_key_pair(arn)
+#'
+#' @param arn &#91;required&#93; ARN of the key pair to be deleted.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_playback_key_pair(
+#'   arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_delete_playback_key_pair
+ivs_delete_playback_key_pair <- function(arn) {
+  op <- new_operation(
+    name = "DeletePlaybackKeyPair",
+    http_method = "POST",
+    http_path = "/DeletePlaybackKeyPair",
+    paginator = list()
+  )
+  input <- .ivs$delete_playback_key_pair_input(arn = arn)
+  output <- .ivs$delete_playback_key_pair_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$delete_playback_key_pair <- ivs_delete_playback_key_pair
+
+#' Deletes the stream key for the specified ARN, so it can no longer be
+#' used to stream
+#'
+#' Deletes the stream key for the specified ARN, so it can no longer be
+#' used to stream.
 #'
 #' @usage
 #' ivs_delete_stream_key(arn)
@@ -250,9 +298,9 @@ ivs_delete_stream_key <- function(arn) {
 }
 .ivs$operations$delete_stream_key <- ivs_delete_stream_key
 
-#' Gets the channel configuration for a specified channel ARN
+#' Gets the channel configuration for the specified channel ARN
 #'
-#' Gets the channel configuration for a specified channel ARN. See also
+#' Gets the channel configuration for the specified channel ARN. See also
 #' BatchGetChannel.
 #'
 #' @usage
@@ -286,6 +334,46 @@ ivs_get_channel <- function(arn) {
   return(response)
 }
 .ivs$operations$get_channel <- ivs_get_channel
+
+#' Gets a specified playback authorization key pair and returns the arn and
+#' fingerprint
+#'
+#' Gets a specified playback authorization key pair and returns the `arn`
+#' and `fingerprint`. The `privateKey` held by the caller can be used to
+#' generate viewer authorization tokens, to grant viewers access to
+#' authorized channels.
+#'
+#' @usage
+#' ivs_get_playback_key_pair(arn)
+#'
+#' @param arn &#91;required&#93; ARN of the key pair to be returned.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_playback_key_pair(
+#'   arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_get_playback_key_pair
+ivs_get_playback_key_pair <- function(arn) {
+  op <- new_operation(
+    name = "GetPlaybackKeyPair",
+    http_method = "POST",
+    http_path = "/GetPlaybackKeyPair",
+    paginator = list()
+  )
+  input <- .ivs$get_playback_key_pair_input(arn = arn)
+  output <- .ivs$get_playback_key_pair_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$get_playback_key_pair <- ivs_get_playback_key_pair
 
 #' Gets information about the active (live) stream on a specified channel
 #'
@@ -359,9 +447,59 @@ ivs_get_stream_key <- function(arn) {
 }
 .ivs$operations$get_stream_key <- ivs_get_stream_key
 
-#' Gets summary information about channels
+#' Imports the public portion of a new key pair and returns its arn and
+#' fingerprint
 #'
-#' Gets summary information about channels. This list can be filtered to
+#' Imports the public portion of a new key pair and returns its `arn` and
+#' `fingerprint`. The `privateKey` can then be used to generate viewer
+#' authorization tokens, to grant viewers access to authorized channels.
+#'
+#' @usage
+#' ivs_import_playback_key_pair(publicKeyMaterial, name, tags)
+#'
+#' @param publicKeyMaterial &#91;required&#93; The public portion of a customer-generated key pair.
+#' @param name An arbitrary string (a nickname) assigned to a playback key pair that
+#' helps the customer identify that resource. The value does not need to be
+#' unique.
+#' @param tags Any tags provided with the request are added to the playback key pair
+#' tags.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$import_playback_key_pair(
+#'   publicKeyMaterial = "string",
+#'   name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_import_playback_key_pair
+ivs_import_playback_key_pair <- function(publicKeyMaterial, name = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "ImportPlaybackKeyPair",
+    http_method = "POST",
+    http_path = "/ImportPlaybackKeyPair",
+    paginator = list()
+  )
+  input <- .ivs$import_playback_key_pair_input(publicKeyMaterial = publicKeyMaterial, name = name, tags = tags)
+  output <- .ivs$import_playback_key_pair_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$import_playback_key_pair <- ivs_import_playback_key_pair
+
+#' Gets summary information about all channels in your account, in the AWS
+#' region where the API request is processed
+#'
+#' Gets summary information about all channels in your account, in the AWS
+#' region where the API request is processed. This list can be filtered to
 #' match a specified string.
 #'
 #' @usage
@@ -401,10 +539,48 @@ ivs_list_channels <- function(filterByName = NULL, nextToken = NULL, maxResults 
 }
 .ivs$operations$list_channels <- ivs_list_channels
 
-#' Gets summary information about stream keys
+#' Gets summary information about playback key pairs
 #'
-#' Gets summary information about stream keys. The list can be filtered to
-#' a particular channel.
+#' Gets summary information about playback key pairs.
+#'
+#' @usage
+#' ivs_list_playback_key_pairs(nextToken, maxResults)
+#'
+#' @param nextToken Maximum number of key pairs to return.
+#' @param maxResults The first key pair to retrieve. This is used for pagination; see the
+#' `nextToken` response field.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_playback_key_pairs(
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_list_playback_key_pairs
+ivs_list_playback_key_pairs <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListPlaybackKeyPairs",
+    http_method = "POST",
+    http_path = "/ListPlaybackKeyPairs",
+    paginator = list()
+  )
+  input <- .ivs$list_playback_key_pairs_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .ivs$list_playback_key_pairs_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$list_playback_key_pairs <- ivs_list_playback_key_pairs
+
+#' Gets summary information about stream keys for the specified channel
+#'
+#' Gets summary information about stream keys for the specified channel.
 #'
 #' @usage
 #' ivs_list_stream_keys(channelArn, nextToken, maxResults)
@@ -443,9 +619,11 @@ ivs_list_stream_keys <- function(channelArn, nextToken = NULL, maxResults = NULL
 }
 .ivs$operations$list_stream_keys <- ivs_list_stream_keys
 
-#' Gets summary information about live streams
+#' Gets summary information about live streams in your account, in the AWS
+#' region where the API request is processed
 #'
-#' Gets summary information about live streams.
+#' Gets summary information about live streams in your account, in the AWS
+#' region where the API request is processed.
 #'
 #' @usage
 #' ivs_list_streams(nextToken, maxResults)
@@ -482,9 +660,9 @@ ivs_list_streams <- function(nextToken = NULL, maxResults = NULL) {
 }
 .ivs$operations$list_streams <- ivs_list_streams
 
-#' Gets information about the tags for a specified ARN
+#' Gets information about AWS tags for the specified ARN
 #'
-#' Gets information about the tags for a specified ARN.
+#' Gets information about AWS tags for the specified ARN.
 #'
 #' @usage
 #' ivs_list_tags_for_resource(resourceArn, nextToken, maxResults)
@@ -523,11 +701,11 @@ ivs_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxResults
 }
 .ivs$operations$list_tags_for_resource <- ivs_list_tags_for_resource
 
-#' Inserts metadata into an RTMP stream for a specified channel
+#' Inserts metadata into an RTMPS stream for the specified channel
 #'
-#' Inserts metadata into an RTMP stream for a specified channel. A maximum
-#' of 5 requests per second per channel is allowed, each with a maximum 1KB
-#' payload.
+#' Inserts metadata into an RTMPS stream for the specified channel. A
+#' maximum of 5 requests per second per channel is allowed, each with a
+#' maximum 1KB payload.
 #'
 #' @usage
 #' ivs_put_metadata(channelArn, metadata)
@@ -564,15 +742,15 @@ ivs_put_metadata <- function(channelArn, metadata) {
 }
 .ivs$operations$put_metadata <- ivs_put_metadata
 
-#' Disconnects the stream for the specified channel
+#' Disconnects the incoming RTMPS stream for the specified channel
 #'
-#' Disconnects the stream for the specified channel. This disconnects the
-#' incoming RTMP stream from the client. Can be used in conjunction with
-#' DeleteStreamKey to prevent further streaming to a channel.
+#' Disconnects the incoming RTMPS stream for the specified channel. Can be
+#' used in conjunction with DeleteStreamKey to prevent further streaming to
+#' a channel.
 #' 
 #' Many streaming client-software libraries automatically reconnect a
-#' dropped RTMP session, so to stop the stream permanently, you may want to
-#' first revoke the `streamKey` attached to the channel.
+#' dropped RTMPS session, so to stop the stream permanently, you may want
+#' to first revoke the `streamKey` attached to the channel.
 #'
 #' @usage
 #' ivs_stop_stream(channelArn)
@@ -606,9 +784,9 @@ ivs_stop_stream <- function(channelArn) {
 }
 .ivs$operations$stop_stream <- ivs_stop_stream
 
-#' Adds or updates tags for a resource with a specified ARN
+#' Adds or updates tags for the AWS resource with the specified ARN
 #'
-#' Adds or updates tags for a resource with a specified ARN.
+#' Adds or updates tags for the AWS resource with the specified ARN.
 #'
 #' @usage
 #' ivs_tag_resource(resourceArn, tags)
@@ -646,9 +824,9 @@ ivs_tag_resource <- function(resourceArn, tags) {
 }
 .ivs$operations$tag_resource <- ivs_tag_resource
 
-#' Removes tags for a resource with a specified ARN
+#' Removes tags from the resource with the specified ARN
 #'
-#' Removes tags for a resource with a specified ARN.
+#' Removes tags from the resource with the specified ARN.
 #'
 #' @usage
 #' ivs_untag_resource(resourceArn, tagKeys)
@@ -693,17 +871,27 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' changes to take effect.
 #'
 #' @usage
-#' ivs_update_channel(arn, name, latencyMode, type)
+#' ivs_update_channel(arn, name, latencyMode, type, authorized)
 #'
 #' @param arn &#91;required&#93; ARN of the channel to be updated.
 #' @param name Channel name.
 #' @param latencyMode Channel latency mode. Default: `LOW`.
-#' @param type Channel type, which determines the allowable resolution and bitrate.
-#' `STANDARD`: The stream is transcoded; resolution (width, in landscape
-#' orientation) can be up to 1080p or the input source resolution,
-#' whichever is lower; and bitrate can be up to 8.5 Mbps. `BASIC`: The
-#' stream is transfixed; resolution can be up to 480p; and bitrate can be
-#' up to 1.5 Mbps. Default `STANDARD`.
+#' @param type Channel type, which determines the allowable resolution and bitrate. *If
+#' you exceed the allowable resolution or bitrate, the stream probably will
+#' disconnect immediately.* Valid values:
+#' 
+#' -   `STANDARD`: Multiple qualities are generated from the original
+#'     input, to automatically give viewers the best experience for their
+#'     devices and network conditions. Vertical resolution can be up to
+#'     1080 and bitrate can be up to 8.5 Mbps.
+#' 
+#' -   `BASIC`: Amazon IVS delivers the original input to viewers. The
+#'     viewer’s video-quality choice is limited to the original input.
+#'     Vertical resolution can be up to 480 and bitrate can be up to 1.5
+#'     Mbps.
+#' 
+#' Default: `STANDARD`.
+#' @param authorized Whether the channel is authorized. Default: `false`.
 #'
 #' @section Request syntax:
 #' ```
@@ -711,21 +899,22 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #'   arn = "string",
 #'   name = "string",
 #'   latencyMode = "NORMAL"|"LOW",
-#'   type = "BASIC"|"STANDARD"
+#'   type = "BASIC"|"STANDARD",
+#'   authorized = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_update_channel
-ivs_update_channel <- function(arn, name = NULL, latencyMode = NULL, type = NULL) {
+ivs_update_channel <- function(arn, name = NULL, latencyMode = NULL, type = NULL, authorized = NULL) {
   op <- new_operation(
     name = "UpdateChannel",
     http_method = "POST",
     http_path = "/UpdateChannel",
     paginator = list()
   )
-  input <- .ivs$update_channel_input(arn = arn, name = name, latencyMode = latencyMode, type = type)
+  input <- .ivs$update_channel_input(arn = arn, name = name, latencyMode = latencyMode, type = type, authorized = authorized)
   output <- .ivs$update_channel_output()
   config <- get_config()
   svc <- .ivs$service(config)

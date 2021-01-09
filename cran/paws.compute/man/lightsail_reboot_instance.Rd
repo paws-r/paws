@@ -15,7 +15,7 @@ Restarts a specific instance.
 \details{
 The \verb{reboot instance} operation supports tag-based access control via
 resource tags applied to the resource identified by \verb{instance name}. For
-more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$reboot_instance(

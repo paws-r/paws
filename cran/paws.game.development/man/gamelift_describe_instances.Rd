@@ -17,12 +17,12 @@ or leave blank to retrieve all instances in the fleet.}
 \code{NextToken} to get results as a set of sequential pages.}
 
 \item{NextToken}{Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.}
+Use the token that is returned with a previous call to this operation.
+To start at the beginning of the result set, do not specify a value.}
 }
 \description{
 Retrieves information about a fleet's instances, including instance IDs.
-Use this action to get details on all instances in the fleet or get
+Use this operation to get details on all instances in the fleet or get
 details on one specific instance.
 }
 \details{

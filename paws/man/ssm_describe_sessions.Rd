@@ -32,7 +32,7 @@ disconnected) or terminated sessions from the past 30 days.
   NextToken = "string",
   Filters = list(
     list(
-      key = "InvokedAfter"|"InvokedBefore"|"Target"|"Owner"|"Status",
+      key = "InvokedAfter"|"InvokedBefore"|"Target"|"Owner"|"Status"|"SessionId",
       value = "string"
     )
   )

@@ -9,13 +9,13 @@ iam_delete_role(RoleName)
 \arguments{
 \item{RoleName}{[required] The name of the role to delete.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 }
 \description{
 Deletes the specified role. The role must not have any policies
-attached. For more information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}.
+attached. For more information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with Roles}.
 }
 \details{
 Make sure that you do not have any Amazon EC2 instances running with the

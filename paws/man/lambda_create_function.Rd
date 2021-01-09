@@ -5,8 +5,9 @@
 \title{Creates a Lambda function}
 \usage{
 lambda_create_function(FunctionName, Runtime, Role, Handler, Code,
-  Description, Timeout, MemorySize, Publish, VpcConfig, DeadLetterConfig,
-  Environment, KMSKeyArn, TracingConfig, Tags, Layers, FileSystemConfigs)
+  Description, Timeout, MemorySize, Publish, VpcConfig, PackageType,
+  DeadLetterConfig, Environment, KMSKeyArn, TracingConfig, Tags, Layers,
+  FileSystemConfigs, ImageConfig, CodeSigningConfigArn)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -22,15 +23,15 @@ lambda_create_function(FunctionName, Runtime, Role, Handler, Code,
 The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 
-\item{Runtime}{[required] The identifier of the function's
+\item{Runtime}{The identifier of the function's
 \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime}.}
 
 \item{Role}{[required] The Amazon Resource Name (ARN) of the function's execution role.}
 
-\item{Handler}{[required] The name of the method within your code that Lambda calls to execute
+\item{Handler}{The name of the method within your code that Lambda calls to execute
 your function. The format includes the file name. It can also include
 namespaces and other qualifiers, depending on the runtime. For more
-information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/programming-model-v2.html}{Programming Model}.}
+information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-features.html}{Programming Model}.}
 
 \item{Code}{[required] The code for the function.}
 
@@ -39,9 +40,9 @@ information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/programming-
 \item{Timeout}{The amount of time that Lambda allows a function to run before stopping
 it. The default is 3 seconds. The maximum allowed value is 900 seconds.}
 
-\item{MemorySize}{The amount of memory that your function has access to. Increasing the
-function's memory also increases its CPU allocation. The default value
-is 128 MB. The value must be a multiple of 64 MB.}
+\item{MemorySize}{The amount of memory available to the function at runtime. Increasing
+the function's memory also increases its CPU allocation. The default
+value is 128 MB. The value can be any multiple of 1 MB.}
 
 \item{Publish}{Set to true to publish the first version of the function during
 creation.}
@@ -50,6 +51,9 @@ creation.}
 security groups and subnets in the VPC. When you connect a function to a
 VPC, it can only access resources and the internet through that VPC. For
 more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html}{VPC Settings}.}
+
+\item{PackageType}{The type of deployment package. Set to \code{Image} for container image and
+set \code{Zip} for ZIP archive.}
 
 \item{DeadLetterConfig}{A dead letter queue configuration that specifies the queue or topic
 where Lambda sends asynchronous events when they fail processing. For
@@ -66,21 +70,29 @@ Lambda uses a default service key.}
 with AWS X-Ray.}
 
 \item{Tags}{A list of
-\href{https://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{tags} to
-apply to the function.}
+\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}
+to apply to the function.}
 
 \item{Layers}{A list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{function layers}
 to add to the function's execution environment. Specify each layer by
 its ARN, including the version.}
 
 \item{FileSystemConfigs}{Connection settings for an Amazon EFS file system.}
+
+\item{ImageConfig}{Configuration values that override the container image Dockerfile.}
+
+\item{CodeSigningConfigArn}{To enable code signing for this function, specify the ARN of a
+code-signing configuration. A code-signing configuration includes a set
+of signing profiles, which define the trusted publishers for this
+function.}
 }
 \description{
-Creates a Lambda function. To create a function, you need a \href{https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html}{deployment package}
-and an \href{https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role}{execution role}.
-The deployment package contains your function code. The execution role
-grants the function permission to use AWS services, such as Amazon
-CloudWatch Logs for log streaming and AWS X-Ray for request tracing.
+Creates a Lambda function. To create a function, you need a \href{https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html}{deployment package}
+and an \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html}{execution role}.
+The deployment package is a .zip file archive or container image that
+contains your function code. The execution role grants the function
+permission to use AWS services, such as Amazon CloudWatch Logs for log
+streaming and AWS X-Ray for request tracing.
 }
 \details{
 When you create a function, Lambda provisions an instance of the
@@ -106,6 +118,14 @@ the unpublished and published versions of the function, and include tags
 (TagResource) and per-function concurrency limits
 (PutFunctionConcurrency).
 
+You can use code signing if your deployment package is a .zip file
+archive. To enable code signing for this function, specify the ARN of a
+code-signing configuration. When a user attempts to deploy a code
+package with UpdateFunctionCode, Lambda checks that the code package has
+a valid signature from a trusted publisher. The code-signing
+configuration includes set set of signing profiles, which define the
+trusted publishers for this function.
+
 If another account or an AWS service invokes your function, use
 AddPermission to grant permission by creating a resource-based IAM
 policy. You can grant permissions at the function level, on a version,
@@ -119,14 +139,15 @@ service. For more information, see \href{https://docs.aws.amazon.com/lambda/late
 \section{Request syntax}{
 \preformatted{svc$create_function(
   FunctionName = "string",
-  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided",
+  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
   Role = "string",
   Handler = "string",
   Code = list(
     ZipFile = raw,
     S3Bucket = "string",
     S3Key = "string",
-    S3ObjectVersion = "string"
+    S3ObjectVersion = "string",
+    ImageUri = "string"
   ),
   Description = "string",
   Timeout = 123,
@@ -140,6 +161,7 @@ service. For more information, see \href{https://docs.aws.amazon.com/lambda/late
       "string"
     )
   ),
+  PackageType = "Zip"|"Image",
   DeadLetterConfig = list(
     TargetArn = "string"
   ),
@@ -163,7 +185,17 @@ service. For more information, see \href{https://docs.aws.amazon.com/lambda/late
       Arn = "string",
       LocalMountPath = "string"
     )
-  )
+  ),
+  ImageConfig = list(
+    EntryPoint = list(
+      "string"
+    ),
+    Command = list(
+      "string"
+    ),
+    WorkingDirectory = "string"
+  ),
+  CodeSigningConfigArn = "string"
 )
 }
 }

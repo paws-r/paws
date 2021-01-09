@@ -38,17 +38,21 @@ Amazon Kendra is a service for indexing large document sets.
 \link[=kendra_create_data_source]{create_data_source} \tab Creates a data source that you use to with an Amazon Kendra index\cr
 \link[=kendra_create_faq]{create_faq} \tab Creates an new set of frequently asked question (FAQ) questions and answers\cr
 \link[=kendra_create_index]{create_index} \tab Creates a new Amazon Kendra index\cr
+\link[=kendra_create_thesaurus]{create_thesaurus} \tab Creates a thesaurus for an index\cr
 \link[=kendra_delete_data_source]{delete_data_source} \tab Deletes an Amazon Kendra data source\cr
 \link[=kendra_delete_faq]{delete_faq} \tab Removes an FAQ from an index\cr
 \link[=kendra_delete_index]{delete_index} \tab Deletes an existing Amazon Kendra index\cr
+\link[=kendra_delete_thesaurus]{delete_thesaurus} \tab Deletes an existing Amazon Kendra thesaurus\cr
 \link[=kendra_describe_data_source]{describe_data_source} \tab Gets information about a Amazon Kendra data source\cr
 \link[=kendra_describe_faq]{describe_faq} \tab Gets information about an FAQ list\cr
 \link[=kendra_describe_index]{describe_index} \tab Describes an existing Amazon Kendra index\cr
+\link[=kendra_describe_thesaurus]{describe_thesaurus} \tab Describes an existing Amazon Kendra thesaurus\cr
 \link[=kendra_list_data_sources]{list_data_sources} \tab Lists the data sources that you have created\cr
 \link[=kendra_list_data_source_sync_jobs]{list_data_source_sync_jobs} \tab Gets statistics about synchronizing Amazon Kendra with a data source\cr
 \link[=kendra_list_faqs]{list_faqs} \tab Gets a list of FAQ lists associated with an index\cr
 \link[=kendra_list_indices]{list_indices} \tab Lists the Amazon Kendra indexes that you have created\cr
 \link[=kendra_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of tags associated with a specified resource\cr
+\link[=kendra_list_thesauri]{list_thesauri} \tab Lists the Amazon Kendra thesauri associated with an index\cr
 \link[=kendra_query]{query} \tab Searches an active index\cr
 \link[=kendra_start_data_source_sync_job]{start_data_source_sync_job} \tab Starts a synchronization job for a data source\cr
 \link[=kendra_stop_data_source_sync_job]{stop_data_source_sync_job} \tab Stops a running synchronization job\cr
@@ -56,7 +60,8 @@ Amazon Kendra is a service for indexing large document sets.
 \link[=kendra_tag_resource]{tag_resource} \tab Adds the specified tag to the specified index, FAQ, or data source resource\cr
 \link[=kendra_untag_resource]{untag_resource} \tab Removes a tag from an index, FAQ, or a data source\cr
 \link[=kendra_update_data_source]{update_data_source} \tab Updates an existing Amazon Kendra data source\cr
-\link[=kendra_update_index]{update_index} \tab Updates an existing Amazon Kendra index
+\link[=kendra_update_index]{update_index} \tab Updates an existing Amazon Kendra index\cr
+\link[=kendra_update_thesaurus]{update_thesaurus} \tab Updates a thesaurus file associated with an index
 }
 }
 

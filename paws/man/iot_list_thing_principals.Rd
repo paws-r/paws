@@ -4,9 +4,15 @@
 \alias{iot_list_thing_principals}
 \title{Lists the principals associated with the specified thing}
 \usage{
-iot_list_thing_principals(thingName)
+iot_list_thing_principals(nextToken, maxResults, thingName)
 }
 \arguments{
+\item{nextToken}{To retrieve the next set of results, the \code{nextToken} value from a
+previous response; otherwise \strong{null} to receive the first set of
+results.}
+
+\item{maxResults}{The maximum number of results to return in this operation.}
+
 \item{thingName}{[required] The name of the thing.}
 }
 \description{
@@ -16,6 +22,8 @@ identities or federated identities.
 }
 \section{Request syntax}{
 \preformatted{svc$list_thing_principals(
+  nextToken = "string",
+  maxResults = 123,
   thingName = "string"
 )
 }

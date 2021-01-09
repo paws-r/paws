@@ -4,15 +4,20 @@
 \alias{s3_get_bucket_location}
 \title{Returns the Region the bucket resides in}
 \usage{
-s3_get_bucket_location(Bucket)
+s3_get_bucket_location(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which to get the location.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Returns the Region the bucket resides in. You set the bucket's Region
 using the \code{LocationConstraint} request parameter in a \code{CreateBucket}
-request. For more information, see CreateBucket.
+request. For more information, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}.
 }
 \details{
 To use this implementation of the operation, you must be the bucket
@@ -20,13 +25,14 @@ owner.
 
 The following operations are related to \code{GetBucketLocation}:
 \itemize{
-\item GetObject
-\item CreateBucket
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_location(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

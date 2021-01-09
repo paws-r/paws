@@ -2,10 +2,11 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_domain}
 \alias{sagemaker_create_domain}
-\title{Creates a Domain used by SageMaker Studio}
+\title{Creates a Domain used by Amazon SageMaker Studio}
 \usage{
 sagemaker_create_domain(DomainName, AuthMode, DefaultUserSettings,
-  SubnetIds, VpcId, Tags, HomeEfsFileSystemKmsKeyId)
+  SubnetIds, VpcId, Tags, AppNetworkAccessType, HomeEfsFileSystemKmsKeyId,
+  KmsKeyId)
 }
 \arguments{
 \item{DomainName}{[required] A name for the domain.}
@@ -14,40 +15,72 @@ sagemaker_create_domain(DomainName, AuthMode, DefaultUserSettings,
 
 \item{DefaultUserSettings}{[required] The default user settings.}
 
-\item{SubnetIds}{[required] The VPC subnets to use for communication with the EFS volume.}
+\item{SubnetIds}{[required] The VPC subnets that Studio uses for communication.}
 
-\item{VpcId}{[required] The ID of the Amazon Virtual Private Cloud (VPC) to use for
-communication with the EFS volume.}
+\item{VpcId}{[required] The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for
+communication.}
 
 \item{Tags}{Tags to associated with the Domain. Each tag consists of a key and an
 optional value. Tag keys must be unique per resource. Tags are
 searchable using the Search API.}
 
-\item{HomeEfsFileSystemKmsKeyId}{The AWS Key Management Service (KMS) encryption key ID. Encryption with
-a customer master key (CMK) is not supported.}
+\item{AppNetworkAccessType}{Specifies the VPC used for non-EFS traffic. The default value is
+\code{PublicInternetOnly}.
+\itemize{
+\item \code{PublicInternetOnly} - Non-EFS traffic is through a VPC managed by
+Amazon SageMaker, which allows direct internet access
+\item \code{VpcOnly} - All Studio traffic is through the specified VPC and
+subnets
+}}
+
+\item{HomeEfsFileSystemKmsKeyId}{This member is deprecated and replaced with \code{KmsKeyId}.}
+
+\item{KmsKeyId}{SageMaker uses AWS KMS to encrypt the EFS volume attached to the domain
+with an AWS managed customer master key (CMK) by default. For more
+control, specify a customer managed CMK.}
 }
 \description{
-Creates a \code{Domain} used by SageMaker Studio. A domain consists of an
-associated directory, a list of authorized users, and a variety of
-security, application, policy, and Amazon Virtual Private Cloud (VPC)
-configurations. An AWS account is limited to one domain per region.
-Users within a domain can share notebook files and other artifacts with
-each other.
+Creates a \code{Domain} used by Amazon SageMaker Studio. A domain consists of
+an associated Amazon Elastic File System (EFS) volume, a list of
+authorized users, and a variety of security, application, policy, and
+Amazon Virtual Private Cloud (VPC) configurations. An AWS account is
+limited to one domain per region. Users within a domain can share
+notebook files and other artifacts with each other.
 }
 \details{
-When a domain is created, an Amazon Elastic File System (EFS) volume is
-also created for use by all of the users within the domain. Each user
-receives a private home directory within the EFS for notebooks, Git
-repositories, and data files.
+\strong{EFS storage}
 
-All traffic between the domain and the EFS volume is communicated
-through the specified subnet IDs. All other traffic goes over the
-Internet through an Amazon SageMaker system VPC. The EFS traffic uses
-the NFS/TCP protocol over port 2049.
+When a domain is created, an EFS volume is created for use by all of the
+users within the domain. Each user receives a private home directory
+within the EFS volume for notebooks, Git repositories, and data files.
 
-NFS traffic over TCP on port 2049 needs to be allowed in both inbound
-and outbound rules in order to launch a SageMaker Studio app
-successfully.
+SageMaker uses the AWS Key Management Service (AWS KMS) to encrypt the
+EFS volume attached to the domain with an AWS managed customer master
+key (CMK) by default. For more control, you can specify a customer
+managed CMK. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html}{Protect Data at Rest Using Encryption}.
+
+\strong{VPC configuration}
+
+All SageMaker Studio traffic between the domain and the EFS volume is
+through the specified VPC and subnets. For other Studio traffic, you can
+specify the \code{AppNetworkAccessType} parameter. \code{AppNetworkAccessType}
+corresponds to the network access type that you choose when you onboard
+to Studio. The following options are available:
+\itemize{
+\item \code{PublicInternetOnly} - Non-EFS traffic goes through a VPC managed by
+Amazon SageMaker, which allows internet access. This is the default
+value.
+\item \code{VpcOnly} - All Studio traffic is through the specified VPC and
+subnets. Internet access is disabled by default. To allow internet
+access, you must specify a NAT gateway.
+
+When internet access is disabled, you won't be able to run a Studio
+notebook or to train or host models unless your VPC has an interface
+endpoint to the SageMaker API and runtime or a NAT gateway and your
+security groups allow outbound connections.
+}
+
+For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/studio-notebooks-and-internet-access.html}{Connect SageMaker Studio Notebooks to Resources in a VPC}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_domain(
@@ -66,18 +99,28 @@ successfully.
     JupyterServerAppSettings = list(
       DefaultResourceSpec = list(
         SageMakerImageArn = "string",
+        SageMakerImageVersionArn = "string",
         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
       )
     ),
     KernelGatewayAppSettings = list(
       DefaultResourceSpec = list(
         SageMakerImageArn = "string",
+        SageMakerImageVersionArn = "string",
         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
+      ),
+      CustomImages = list(
+        list(
+          ImageName = "string",
+          ImageVersionNumber = 123,
+          AppImageConfigName = "string"
+        )
       )
     ),
     TensorBoardAppSettings = list(
       DefaultResourceSpec = list(
         SageMakerImageArn = "string",
+        SageMakerImageVersionArn = "string",
         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
       )
     )
@@ -92,7 +135,9 @@ successfully.
       Value = "string"
     )
   ),
-  HomeEfsFileSystemKmsKeyId = "string"
+  AppNetworkAccessType = "PublicInternetOnly"|"VpcOnly",
+  HomeEfsFileSystemKmsKeyId = "string",
+  KmsKeyId = "string"
 )
 }
 }

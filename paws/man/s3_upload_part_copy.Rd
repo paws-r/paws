@@ -9,13 +9,67 @@ s3_upload_part_copy(Bucket, CopySource, CopySourceIfMatch,
   CopySourceIfUnmodifiedSince, CopySourceRange, Key, PartNumber, UploadId,
   SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5,
   CopySourceSSECustomerAlgorithm, CopySourceSSECustomerKey,
-  CopySourceSSECustomerKeyMD5, RequestPayer)
+  CopySourceSSECustomerKeyMD5, RequestPayer, ExpectedBucketOwner,
+  ExpectedSourceBucketOwner)
 }
 \arguments{
-\item{Bucket}{[required] The bucket name.}
+\item{Bucket}{[required] The bucket name.
 
-\item{CopySource}{[required] The name of the source bucket and key name of the source object,
-separated by a slash (/). Must be URL-encoded.}
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
+When using this operation with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+When using this API with Amazon S3 on Outposts, you must direct requests
+to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
+form
+\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
+When using this operation using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
+in the \emph{Amazon Simple Storage Service Developer Guide}.}
+
+\item{CopySource}{[required] Specifies the source object for the copy operation. You specify the
+value in one of two formats, depending on whether you want to access the
+source object through an \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html}{access point}:
+\itemize{
+\item For objects not accessed through an access point, specify the name
+of the source bucket and key of the source object, separated by a
+slash (/). For example, to copy the object \code{reports/january.pdf}
+from the bucket \code{awsexamplebucket}, use
+\code{awsexamplebucket/reports/january.pdf}. The value must be URL
+encoded.
+\item For objects accessed through access points, specify the Amazon
+Resource Name (ARN) of the object as accessed through the access
+point, in the format
+\verb{arn:aws:s3:&lt;Region&gt;:&lt;account-id&gt;:accesspoint/&lt;access-point-name&gt;/object/&lt;key&gt;}.
+For example, to copy the object \code{reports/january.pdf} through access
+point \code{my-access-point} owned by account \code{123456789012} in Region
+\code{us-west-2}, use the URL encoding of
+\code{arn:aws:s3:us-west-2:123456789012:accesspoint/my-access-point/object/reports/january.pdf}.
+The value must be URL encoded.
+
+Amazon S3 supports copy operations using access points only when the
+source and destination buckets are in the same AWS Region.
+
+Alternatively, for objects accessed through Amazon S3 on Outposts,
+specify the ARN of the object as accessed in the format
+\verb{arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/object/&lt;key&gt;}.
+For example, to copy the object \code{reports/january.pdf} through
+outpost \code{my-outpost} owned by account \code{123456789012} in Region
+\code{us-west-2}, use the URL encoding of
+\code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/object/reports/january.pdf}.
+The value must be URL encoded.
+}
+
+To copy a specific version of an object, append
+\verb{?versionId=&lt;version-id&gt;} to the value (for example,
+\code{awsexamplebucket/reports/january.pdf?versionId=QUpfdndhfd8438MNFDN93jdnJFkdmqnh893}).
+If you don't specify a version ID, Amazon S3 copies the latest version
+of the source object.}
 
 \item{CopySourceIfMatch}{Copies the object if its entity tag (ETag) matches the specified tag.}
 
@@ -46,7 +100,7 @@ example, AES256).}
 encrypting data. This value is used to store the object and then it is
 discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-\verb{x-amz-server-side​-encryption​-customer-algorithm} header. This must be
+\code{x-amz-server-side-encryption-customer-algorithm} header. This must be
 the same encryption key specified in the initiate multipart upload
 request.}
 
@@ -66,6 +120,14 @@ must be one that was used when the source object was created.}
 that the encryption key was transmitted without error.}
 
 \item{RequestPayer}{}
+
+\item{ExpectedBucketOwner}{The account id of the expected destination bucket owner. If the
+destination bucket is owned by a different account, the request will
+fail with an HTTP \verb{403 (Access Denied)} error.}
+
+\item{ExpectedSourceBucketOwner}{The account id of the expected source bucket owner. If the source bucket
+is owned by a different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Uploads a part by copying data from an existing object as data source.
@@ -79,7 +141,8 @@ information about multipart upload limits, go to \href{https://docs.aws.amazon.c
 the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Instead of using an existing object as part data, you might use the
-UploadPart operation and provide data in your request.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
+operation and provide data in your request.
 
 You must initiate a multipart upload before you can upload any part. In
 response to your initiate request. Amazon S3 returns a unique
@@ -99,7 +162,10 @@ operation vs. the multipart upload, see \href{https://docs.aws.amazon.com/Amazon
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 \item For information about using server-side encryption with
 customer-provided encryption keys with the UploadPartCopy operation,
-see CopyObject and UploadPart.
+see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html}{CopyObject}
+and
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}.
 }
 
 Note the following additional considerations about the request headers
@@ -151,32 +217,30 @@ example:
 \strong{Special Errors}
 \itemize{
 \item 
-}\preformatted{-   *Code: NoSuchUpload*
-
--   *Cause: The specified multipart upload does not exist. The
-    upload ID might be invalid, or the multipart upload might have
-    been aborted or completed.*
-
--   *HTTP Status Code: 404 Not Found*
-}
 \itemize{
+\item \emph{Code: NoSuchUpload}
+\item \emph{Cause: The specified multipart upload does not exist. The
+upload ID might be invalid, or the multipart upload might have
+been aborted or completed.}
+\item \emph{HTTP Status Code: 404 Not Found}
+}
 \item 
-}\preformatted{-   *Code: InvalidRequest*
-
--   *Cause: The specified copy source is not supported as a
-    byte-range copy source.*
-
--   *HTTP Status Code: 400 Bad Request*
+\itemize{
+\item \emph{Code: InvalidRequest}
+\item \emph{Cause: The specified copy source is not supported as a
+byte-range copy source.}
+\item \emph{HTTP Status Code: 400 Bad Request}
+}
 }
 
 \strong{Related Resources}
 \itemize{
-\item CreateMultipartUpload
-\item UploadPart
-\item CompleteMultipartUpload
-\item AbortMultipartUpload
-\item ListParts
-\item ListMultipartUploads
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html}{CompleteMultipartUpload}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html}{AbortMultipartUpload}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html}{ListParts}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html}{ListMultipartUploads}
 }
 }
 \section{Request syntax}{
@@ -201,7 +265,9 @@ example:
   CopySourceSSECustomerAlgorithm = "string",
   CopySourceSSECustomerKey = raw,
   CopySourceSSECustomerKeyMD5 = "string",
-  RequestPayer = "requester"
+  RequestPayer = "requester",
+  ExpectedBucketOwner = "string",
+  ExpectedSourceBucketOwner = "string"
 )
 }
 }

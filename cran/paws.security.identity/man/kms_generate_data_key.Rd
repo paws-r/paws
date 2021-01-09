@@ -121,6 +121,23 @@ operation returns a plaintext copy of the data key.
 \item Use the plaintext data key to decrypt data outside of AWS KMS, then
 erase the plaintext data key from memory.
 }
+
+\strong{Cross-account use}: Yes. To perform this operation with a CMK in a
+different AWS account, specify the key ARN or alias ARN in the value of
+the \code{KeyId} parameter.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GenerateDataKey}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item Decrypt
+\item Encrypt
+\item GenerateDataKeyPair
+\item GenerateDataKeyPairWithoutPlaintext
+\item GenerateDataKeyWithoutPlaintext
+}
 }
 \section{Request syntax}{
 \preformatted{svc$generate_data_key(

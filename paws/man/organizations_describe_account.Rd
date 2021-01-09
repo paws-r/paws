@@ -12,17 +12,17 @@ organizations_describe_account(AccountId)
 about. You can get the ID from the ListAccounts or ListAccountsForParent
 operations.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for an account ID
-string requires exactly 12 digits.}
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an account
+ID string requires exactly 12 digits.}
 }
 \description{
 Retrieves AWS Organizations-related information about the specified
 account.
 }
 \details{
-This operation can be called only from the organization's master account
-or by a member account that is a delegated administrator for an AWS
-service.
+This operation can be called only from the organization's management
+account or by a member account that is a delegated administrator for an
+AWS service.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_account(

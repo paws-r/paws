@@ -2,10 +2,11 @@
 % Please edit documentation in R/iotanalytics_operations.R
 \name{iotanalytics_create_dataset}
 \alias{iotanalytics_create_dataset}
-\title{Creates a data set}
+\title{Creates a dataset}
 \usage{
 iotanalytics_create_dataset(datasetName, actions, triggers,
-  contentDeliveryRules, retentionPeriod, versioningConfiguration, tags)
+  contentDeliveryRules, retentionPeriod, versioningConfiguration, tags,
+  lateDataRules)
 }
 \arguments{
 \item{datasetName}{[required] The name of the data set.}
@@ -15,33 +16,39 @@ iotanalytics_create_dataset(datasetName, actions, triggers,
 \item{triggers}{A list of triggers. A trigger causes data set contents to be populated
 at a specified time interval or when another data set's contents are
 created. The list of triggers can be empty or contain up to five
-\strong{DataSetTrigger} objects.}
+\code{DataSetTrigger} objects.}
 
-\item{contentDeliveryRules}{When data set contents are created they are delivered to destinations
+\item{contentDeliveryRules}{When dataset contents are created, they are delivered to destinations
 specified here.}
 
-\item{retentionPeriod}{[Optional] How long, in days, versions of data set contents are kept
-for the data set. If not specified or set to null, versions of data set
+\item{retentionPeriod}{Optional. How long, in days, versions of dataset contents are kept for
+the dataset. If not specified or set to \code{null}, versions of dataset
 contents are retained for at most 90 days. The number of versions of
-data set contents retained is determined by the
-\code{versioningConfiguration} parameter. (For more information, see
-https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html\\#aws-iot-analytics-dataset-versions)}
+dataset contents retained is determined by the \code{versioningConfiguration}
+parameter. For more information, see \href{https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions}{Keeping Multiple Versions of AWS IoT Analytics Data Sets}
+in the \emph{AWS IoT Analytics User Guide}.}
 
-\item{versioningConfiguration}{[Optional] How many versions of data set contents are kept. If not
+\item{versioningConfiguration}{Optional. How many versions of dataset contents are kept. If not
 specified or set to null, only the latest version plus the latest
 succeeded version (if they are different) are kept for the time period
-specified by the "retentionPeriod" parameter. (For more information, see
-https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html\\#aws-iot-analytics-dataset-versions)}
+specified by the \code{retentionPeriod} parameter. For more information, see
+\href{https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions}{Keeping Multiple Versions of AWS IoT Analytics Data Sets}
+in the \emph{AWS IoT Analytics User Guide}.}
 
 \item{tags}{Metadata which can be used to manage the data set.}
+
+\item{lateDataRules}{A list of data rules that send notifications to Amazon CloudWatch, when
+data arrives late. To specify \code{lateDataRules}, the dataset must use a
+\href{https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_DeltaTime.html}{DeltaTimer}
+filter.}
 }
 \description{
-Creates a data set. A data set stores data retrieved from a data store
-by applying a "queryAction" (a SQL query) or a "containerAction"
-(executing a containerized application). This operation creates the
-skeleton of a data set. The data set can be populated manually by
-calling "CreateDatasetContent" or automatically according to a "trigger"
-you specify.
+Creates a dataset. A dataset stores data retrieved from a data store by
+applying a \code{queryAction} (a SQL query) or a \code{containerAction} (executing
+a containerized application). This operation creates the skeleton of a
+dataset. The dataset can be populated manually by calling
+\code{CreateDatasetContent} or automatically according to a trigger you
+specify.
 }
 \section{Request syntax}{
 \preformatted{svc$create_dataset(
@@ -125,6 +132,16 @@ you specify.
     list(
       key = "string",
       value = "string"
+    )
+  ),
+  lateDataRules = list(
+    list(
+      ruleName = "string",
+      ruleConfiguration = list(
+        deltaTimeSessionWindowConfiguration = list(
+          timeoutInMinutes = 123
+        )
+      )
     )
   )
 )

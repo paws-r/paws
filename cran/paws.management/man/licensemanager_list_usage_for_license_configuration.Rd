@@ -20,8 +20,8 @@ operators are supported:
 \itemize{
 \item \code{resourceArn} - The ARN of the license configuration resource.
 Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.
-\item \code{resourceType} - The resource type (EC2\\_INSTANCE | EC2\\_HOST |
-EC2\\_AMI | SYSTEMS\\_MANAGER\\_MANAGED\\_INSTANCE). Logical operators
+\item \code{resourceType} - The resource type (\code{EC2_INSTANCE} | \code{EC2_HOST} |
+\code{EC2_AMI} | \code{SYSTEMS_MANAGER_MANAGED_INSTANCE}). Logical operators
 are \code{EQUALS} | \code{NOT_EQUALS}.
 \item \code{resourceAccount} - The ID of the account that owns the resource.
 Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.

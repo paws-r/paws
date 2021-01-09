@@ -9,8 +9,10 @@ chime_create_attendee(MeetingId, ExternalUserId, Tags)
 \arguments{
 \item{MeetingId}{[required] The Amazon Chime SDK meeting ID.}
 
-\item{ExternalUserId}{[required] The Amazon Chime SDK external user ID. Links the attendee to an identity
-managed by a builder application.}
+\item{ExternalUserId}{[required] The Amazon Chime SDK external user ID. An idempotency token. Links the
+attendee to an identity managed by a builder application. If you create
+an attendee with the same external user id, the service returns the
+existing record.}
 
 \item{Tags}{The tag key-value pairs.}
 }

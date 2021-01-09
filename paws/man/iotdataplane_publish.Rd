@@ -17,7 +17,7 @@ iotdataplane_publish(topic, qos, payload)
 Publishes state information.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#http}{HTTP Protocol}
+For more information, see \href{https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html}{HTTP Protocol}
 in the AWS IoT Developer Guide.
 }
 \section{Request syntax}{

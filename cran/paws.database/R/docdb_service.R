@@ -40,7 +40,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=docdb_add_tags_to_resource]{add_tags_to_resource} \tab Adds metadata tags to an Amazon DocumentDB resource\cr
-#'  \link[=docdb_apply_pending_maintenance_action]{apply_pending_maintenance_action} \tab Applies a pending maintenance action to a resource (for example, to a DB instance)\cr
+#'  \link[=docdb_apply_pending_maintenance_action]{apply_pending_maintenance_action} \tab Applies a pending maintenance action to a resource (for example, to an Amazon DocumentDB instance)\cr
 #'  \link[=docdb_copy_db_cluster_parameter_group]{copy_db_cluster_parameter_group} \tab Copies the specified cluster parameter group\cr
 #'  \link[=docdb_copy_db_cluster_snapshot]{copy_db_cluster_snapshot} \tab Copies a snapshot of a cluster\cr
 #'  \link[=docdb_create_db_cluster]{create_db_cluster} \tab Creates a new Amazon DocumentDB cluster\cr

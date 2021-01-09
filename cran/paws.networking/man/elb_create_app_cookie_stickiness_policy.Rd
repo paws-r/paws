@@ -33,7 +33,7 @@ response includes a new application cookie.
 If the application cookie is explicitly removed or expires, the session
 stops being sticky until a new application cookie is issued.
 
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application}{Application-Controlled Session Stickiness}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application}{Application-Controlled Session Stickiness}
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{

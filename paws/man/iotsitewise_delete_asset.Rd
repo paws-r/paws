@@ -15,7 +15,7 @@ idempotent request is required.}
 }
 \description{
 Deletes an asset. This action can't be undone. For more information, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html}{Deleting Assets and Models}
+\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html}{Deleting assets and models}
 in the \emph{AWS IoT SiteWise User Guide}.
 }
 \details{

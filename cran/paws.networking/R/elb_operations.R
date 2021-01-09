@@ -13,7 +13,7 @@ NULL
 #' value.
 #' 
 #' For more information, see [Tag Your Classic Load
-#' Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html)
+#' Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -85,7 +85,7 @@ elb_add_tags <- function(LoadBalancerNames, Tags) {
 #' previously associated security groups.
 #' 
 #' For more information, see [Security Groups for Load Balancers in a
-#' VPC](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups)
+#' VPC](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -147,7 +147,7 @@ elb_apply_security_groups_to_load_balancer <- function(LoadBalancerName, Securit
 #' The load balancer evenly distributes requests across all registered
 #' subnets. For more information, see [Add or Remove Subnets for Your Load
 #' Balancer in a
-#' VPC](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html)
+#' VPC](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -206,7 +206,7 @@ elb_attach_load_balancer_to_subnets <- function(LoadBalancerName, Subnets) {
 #' state of your EC2 instances.
 #' 
 #' For more information, see [Configure Health Checks for Your Load
-#' Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html)
+#' Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -283,7 +283,7 @@ elb_configure_health_check <- function(LoadBalancerName, HealthCheck) {
 #' stops being sticky until a new application cookie is issued.
 #' 
 #' For more information, see [Application-Controlled Session
-#' Stickiness](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
+#' Stickiness](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -358,7 +358,7 @@ elb_create_app_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName
 #' configuration.
 #' 
 #' For more information, see [Duration-Based Session
-#' Stickiness](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration)
+#' Stickiness](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -430,7 +430,7 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
 #' You can create up to 20 load balancers per region per account. You can
 #' request an increase for the number of load balancers for your account.
 #' For more information, see [Limits for Your Classic Load
-#' Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
+#' Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -446,7 +446,7 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
 #' @param Listeners &#91;required&#93; The listeners.
 #' 
 #' For more information, see [Listeners for Your Classic Load
-#' Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
+#' Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
 #' in the *Classic Load Balancers Guide*.
 #' @param AvailabilityZones One or more Availability Zones from the same region as the load
 #' balancer.
@@ -465,7 +465,7 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
 #' balancer with a DNS name that resolves to public IP addresses. For more
 #' information about Internet-facing and Internal load balancers, see [Load
 #' Balancer
-#' Scheme](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#load-balancer-scheme)
+#' Scheme](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#load-balancer-scheme)
 #' in the *Elastic Load Balancing User Guide*.
 #' 
 #' Specify `internal` to create a load balancer with a DNS name that
@@ -474,7 +474,7 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
 #' 
 #' For more information about tagging your load balancer, see [Tag Your
 #' Classic Load
-#' Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html)
+#' Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @section Request syntax:
@@ -647,7 +647,7 @@ elb_create_load_balancer <- function(LoadBalancerName, Listeners, AvailabilityZo
 #' of the existing listener.
 #' 
 #' For more information, see [Listeners for Your Classic Load
-#' Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
+#' Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -988,7 +988,7 @@ elb_delete_load_balancer_policy <- function(LoadBalancerName, PolicyName) {
 #' deregistered from the load balancer.
 #' 
 #' For more information, see [Register or De-Register EC2
-#' Instances](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
+#' Instances](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -1050,7 +1050,7 @@ elb_deregister_instances_from_load_balancer <- function(LoadBalancerName, Instan
 #' AWS account.
 #' 
 #' For more information, see [Limits for Your Classic Load
-#' Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
+#' Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -1489,7 +1489,7 @@ elb_detach_load_balancer_from_subnets <- function(LoadBalancerName, Subnets) {
 #' Availability Zones.
 #' 
 #' For more information, see [Add or Remove Availability
-#' Zones](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
+#' Zones](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -1553,7 +1553,7 @@ elb_disable_availability_zones_for_load_balancer <- function(LoadBalancerName, A
 #' The load balancer evenly distributes requests across all its registered
 #' Availability Zones that contain instances. For more information, see
 #' [Add or Remove Availability
-#' Zones](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
+#' Zones](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -1620,16 +1620,16 @@ elb_enable_availability_zones_for_load_balancer <- function(LoadBalancerName, Av
 #' Guide*:
 #' 
 #' -   [Cross-Zone Load
-#'     Balancing](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html)
+#'     Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html)
 #' 
 #' -   [Connection
-#'     Draining](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html)
+#'     Draining](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html)
 #' 
 #' -   [Access
-#'     Logs](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/access-log-collection.html)
+#'     Logs](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/access-log-collection.html)
 #' 
 #' -   [Idle Connection
-#'     Timeout](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html)
+#'     Timeout](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html)
 #'
 #' @usage
 #' elb_modify_load_balancer_attributes(LoadBalancerName,
@@ -1741,7 +1741,7 @@ elb_modify_load_balancer_attributes <- function(LoadBalancerName, LoadBalancerAt
 #' DeregisterInstancesFromLoadBalancer.
 #' 
 #' For more information, see [Register or De-Register EC2
-#' Instances](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
+#' Instances](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -1865,7 +1865,7 @@ elb_remove_tags <- function(LoadBalancerNames, Tags) {
 #' 
 #' For more information about updating your SSL certificate, see [Replace
 #' the SSL Certificate for Your Load
-#' Balancer](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-update-ssl-cert.html)
+#' Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-update-ssl-cert.html)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -1934,10 +1934,10 @@ elb_set_load_balancer_listener_ssl_certificate <- function(LoadBalancerName, Loa
 #' 
 #' For more information about enabling back-end instance authentication,
 #' see [Configure Back-end Instance
-#' Authentication](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html#configure_backendauth_clt)
+#' Authentication](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html#configure_backendauth_clt)
 #' in the *Classic Load Balancers Guide*. For more information about Proxy
 #' Protocol, see [Configure Proxy Protocol
-#' Support](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-proxy-protocol.html)
+#' Support](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-proxy-protocol.html)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -2004,11 +2004,11 @@ elb_set_load_balancer_policies_for_backend_server <- function(LoadBalancerName, 
 #' 
 #' For more information about setting policies, see [Update the SSL
 #' Negotiation
-#' Configuration](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ssl-config-update.html),
+#' Configuration](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/ssl-config-update.html),
 #' [Duration-Based Session
-#' Stickiness](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration),
+#' Stickiness](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration),
 #' and [Application-Controlled Session
-#' Stickiness](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
+#' Stickiness](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage

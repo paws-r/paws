@@ -72,8 +72,7 @@ provided.}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \verb{tag resource}
-operation.}
+Use the \code{TagResource} action to tag a resource after it's created.}
 }
 \description{
 Creates a new database from an existing database snapshot in Amazon
@@ -87,7 +86,7 @@ as a high availability or standard plan.
 The \verb{create relational database from snapshot} operation supports
 tag-based access control via request tags and resource tags applied to
 the resource identified by relationalDatabaseSnapshotName. For more
-information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_relational_database_from_snapshot(

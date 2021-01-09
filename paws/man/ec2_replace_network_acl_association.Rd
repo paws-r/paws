@@ -20,8 +20,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Changes which network ACL a subnet is associated with. By default when
 you create a subnet, it's automatically associated with the default
-network ACL. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html}{Network ACLs} in
-the \emph{Amazon Virtual Private Cloud User Guide}.
+network ACL. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the \emph{Amazon
+Virtual Private Cloud User Guide}.
 }
 \details{
 This is an idempotent operation.

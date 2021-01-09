@@ -32,7 +32,7 @@ specified, the list will contain only the descriptions of the specified
 DBSubnetGroup.
 }
 \details{
-For an overview of CIDR ranges, go to the \href{http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Wikipedia Tutorial}.
+For an overview of CIDR ranges, go to the \href{https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Wikipedia Tutorial}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_db_subnet_groups(

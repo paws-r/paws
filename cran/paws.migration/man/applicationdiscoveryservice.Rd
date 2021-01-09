@@ -13,7 +13,7 @@ applicationdiscoveryservice(config = list())
 AWS Application Discovery Service helps you plan application migration
 projects. It automatically identifies servers, virtual machines (VMs),
 and network dependencies in your on-premises data centers. For more
-information, see the \href{http://aws.amazon.com/application-discovery/faqs/}{AWS Application Discovery Service FAQ}. Application
+information, see the \href{https://aws.amazon.com/application-discovery/faqs/}{AWS Application Discovery Service FAQ}. Application
 Discovery Service offers three ways of performing discovery and
 collecting data about your on-premises servers:
 \itemize{
@@ -75,7 +75,7 @@ each of the actions and data types for Application Discovery Service.
 The topic for each action shows the API request parameters and the
 response. Alternatively, you can use one of the AWS SDKs to access an
 API that is tailored to the programming language or platform that you're
-using. For more information, see \href{http://aws.amazon.com/tools/#SDKs}{AWS SDKs}.
+using. For more information, see \href{https://aws.amazon.com/tools/}{AWS SDKs}.
 \itemize{
 \item Remember that you must set your Migration Hub home region before you
 call any of these APIs.
@@ -91,9 +91,9 @@ is returned.
 home region.
 }
 
-This guide is intended for use with the \href{http://docs.aws.amazon.com/application-discovery/latest/userguide/}{AWS Application Discovery Service User Guide}.
+This guide is intended for use with the \href{https://docs.aws.amazon.com/application-discovery/latest/userguide/}{AWS Application Discovery Service User Guide}.
 
-All data is handled according to the \href{http://aws.amazon.com/privacy/}{AWS Privacy Policy}. You can operate Application
+All data is handled according to the \href{https://aws.amazon.com/privacy/}{AWS Privacy Policy}. You can operate Application
 Discovery Service offline to inspect collected data before it is shared
 with the service.
 }

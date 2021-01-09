@@ -3,13 +3,59 @@
 #' @include connectparticipant_service.R
 NULL
 
+#' Allows you to confirm that the attachment has been uploaded using the
+#' pre-signed URL provided in StartAttachmentUpload API
+#'
+#' Allows you to confirm that the attachment has been uploaded using the
+#' pre-signed URL provided in StartAttachmentUpload API.
+#'
+#' @usage
+#' connectparticipant_complete_attachment_upload(AttachmentIds,
+#'   ClientToken, ConnectionToken)
+#'
+#' @param AttachmentIds &#91;required&#93; A list of unique identifiers for the attachments.
+#' @param ClientToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$complete_attachment_upload(
+#'   AttachmentIds = list(
+#'     "string"
+#'   ),
+#'   ClientToken = "string",
+#'   ConnectionToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectparticipant_complete_attachment_upload
+connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientToken, ConnectionToken) {
+  op <- new_operation(
+    name = "CompleteAttachmentUpload",
+    http_method = "POST",
+    http_path = "/participant/complete-attachment-upload",
+    paginator = list()
+  )
+  input <- .connectparticipant$complete_attachment_upload_input(AttachmentIds = AttachmentIds, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
+  output <- .connectparticipant$complete_attachment_upload_output()
+  config <- get_config()
+  svc <- .connectparticipant$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectparticipant$operations$complete_attachment_upload <- connectparticipant_complete_attachment_upload
+
 #' Creates the participant's connection
 #'
 #' Creates the participant's connection. Note that ParticipantToken is used
 #' for invoking this API instead of ConnectionToken.
 #' 
 #' The participant token is valid for the lifetime of the participant –
-#' until the they are part of a contact.
+#' until they are part of a contact.
 #' 
 #' The response URL for `WEBSOCKET` Type has a connect expiry timeout of
 #' 100s. Clients must manually connect to the returned websocket URL and
@@ -23,13 +69,19 @@ NULL
 #' Upon websocket URL expiry, as specified in the response ConnectionExpiry
 #' parameter, clients need to call this API again to obtain a new websocket
 #' URL and perform the same steps as before.
+#' 
+#' The Amazon Connect Participant Service APIs do not use [Signature
+#' Version 4
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 #'
 #' @usage
 #' connectparticipant_create_participant_connection(Type, ParticipantToken)
 #'
 #' @param Type &#91;required&#93; Type of connection information required.
-#' @param ParticipantToken &#91;required&#93; Participant Token as obtained from
-#' [StartChatContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContactResponse.html)
+#' @param ParticipantToken &#91;required&#93; This is a header parameter.
+#' 
+#' The Participant Token as obtained from
+#' [StartChatContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContact.html)
 #' API response.
 #'
 #' @section Request syntax:
@@ -66,6 +118,10 @@ connectparticipant_create_participant_connection <- function(Type, ParticipantTo
 #'
 #' Disconnects a participant. Note that ConnectionToken is used for
 #' invoking this API instead of ParticipantToken.
+#' 
+#' The Amazon Connect Participant Service APIs do not use [Signature
+#' Version 4
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 #'
 #' @usage
 #' connectparticipant_disconnect_participant(ClientToken, ConnectionToken)
@@ -102,10 +158,55 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 }
 .connectparticipant$operations$disconnect_participant <- connectparticipant_disconnect_participant
 
-#' Retrieves a transcript of the session
+#' Provides a pre-signed URL for download of a completed attachment
 #'
-#' Retrieves a transcript of the session. Note that ConnectionToken is used
-#' for invoking this API instead of ParticipantToken.
+#' Provides a pre-signed URL for download of a completed attachment. This
+#' is an asynchronous API for use with active contacts.
+#'
+#' @usage
+#' connectparticipant_get_attachment(AttachmentId, ConnectionToken)
+#'
+#' @param AttachmentId &#91;required&#93; A unique identifier for the attachment.
+#' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_attachment(
+#'   AttachmentId = "string",
+#'   ConnectionToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectparticipant_get_attachment
+connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
+  op <- new_operation(
+    name = "GetAttachment",
+    http_method = "POST",
+    http_path = "/participant/attachment",
+    paginator = list()
+  )
+  input <- .connectparticipant$get_attachment_input(AttachmentId = AttachmentId, ConnectionToken = ConnectionToken)
+  output <- .connectparticipant$get_attachment_output()
+  config <- get_config()
+  svc <- .connectparticipant$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectparticipant$operations$get_attachment <- connectparticipant_get_attachment
+
+#' Retrieves a transcript of the session, including details about any
+#' attachments
+#'
+#' Retrieves a transcript of the session, including details about any
+#' attachments. Note that ConnectionToken is used for invoking this API
+#' instead of ParticipantToken.
+#' 
+#' The Amazon Connect Participant Service APIs do not use [Signature
+#' Version 4
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 #'
 #' @usage
 #' connectparticipant_get_transcript(ContactId, MaxResults, NextToken,
@@ -164,6 +265,10 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #'
 #' Sends an event. Note that ConnectionToken is used for invoking this API
 #' instead of ParticipantToken.
+#' 
+#' The Amazon Connect Participant Service APIs do not use [Signature
+#' Version 4
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 #'
 #' @usage
 #' connectparticipant_send_event(ContentType, Content, ClientToken,
@@ -214,6 +319,10 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 #'
 #' Sends a message. Note that ConnectionToken is used for invoking this API
 #' instead of ParticipantToken.
+#' 
+#' The Amazon Connect Participant Service APIs do not use [Signature
+#' Version 4
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 #'
 #' @usage
 #' connectparticipant_send_message(ContentType, Content, ClientToken,
@@ -254,3 +363,53 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
   return(response)
 }
 .connectparticipant$operations$send_message <- connectparticipant_send_message
+
+#' Provides a pre-signed Amazon S3 URL in response for uploading the file
+#' directly to S3
+#'
+#' Provides a pre-signed Amazon S3 URL in response for uploading the file
+#' directly to S3.
+#'
+#' @usage
+#' connectparticipant_start_attachment_upload(ContentType,
+#'   AttachmentSizeInBytes, AttachmentName, ClientToken, ConnectionToken)
+#'
+#' @param ContentType &#91;required&#93; Describes the MIME file type of the attachment. For a list of supported
+#' file types, see [Feature
+#' specifications](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits)
+#' in the *Amazon Connect Administrator Guide*.
+#' @param AttachmentSizeInBytes &#91;required&#93; The size of the attachment in bytes.
+#' @param AttachmentName &#91;required&#93; A case-sensitive name of the attachment being uploaded.
+#' @param ClientToken &#91;required&#93; A unique case sensitive identifier to support idempotency of request.
+#' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_attachment_upload(
+#'   ContentType = "string",
+#'   AttachmentSizeInBytes = 123,
+#'   AttachmentName = "string",
+#'   ClientToken = "string",
+#'   ConnectionToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectparticipant_start_attachment_upload
+connectparticipant_start_attachment_upload <- function(ContentType, AttachmentSizeInBytes, AttachmentName, ClientToken, ConnectionToken) {
+  op <- new_operation(
+    name = "StartAttachmentUpload",
+    http_method = "POST",
+    http_path = "/participant/start-attachment-upload",
+    paginator = list()
+  )
+  input <- .connectparticipant$start_attachment_upload_input(ContentType = ContentType, AttachmentSizeInBytes = AttachmentSizeInBytes, AttachmentName = AttachmentName, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
+  output <- .connectparticipant$start_attachment_upload_output()
+  config <- get_config()
+  svc <- .connectparticipant$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectparticipant$operations$start_attachment_upload <- connectparticipant_start_attachment_upload

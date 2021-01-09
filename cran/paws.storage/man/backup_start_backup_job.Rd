@@ -2,11 +2,11 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_start_backup_job}
 \alias{backup_start_backup_job}
-\title{Starts a job to create a one-time backup of the specified resource}
+\title{Starts an on-demand backup job for the specified resource}
 \usage{
 backup_start_backup_job(BackupVaultName, ResourceArn, IamRoleArn,
   IdempotencyToken, StartWindowMinutes, CompleteWindowMinutes, Lifecycle,
-  RecoveryPointTags)
+  RecoveryPointTags, BackupOptions)
 }
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
@@ -42,9 +42,17 @@ has been transitioned to cold.}
 
 \item{RecoveryPointTags}{To help organize your resources, you can assign your own metadata to the
 resources that you create. Each tag is a key-value pair.}
+
+\item{BackupOptions}{Specifies the backup option for a selected resource. This option is only
+available for Windows VSS backup jobs.
+
+Valid values: Set to \code{"WindowsVSS”:“enabled"} to enable WindowsVSS
+backup option and create a VSS Windows backup. Set to
+“WindowsVSS”:”disabled” to create a regular backup. The WindowsVSS
+option is not enabled by default.}
 }
 \description{
-Starts a job to create a one-time backup of the specified resource.
+Starts an on-demand backup job for the specified resource.
 }
 \section{Request syntax}{
 \preformatted{svc$start_backup_job(
@@ -59,6 +67,9 @@ Starts a job to create a one-time backup of the specified resource.
     DeleteAfterDays = 123
   ),
   RecoveryPointTags = list(
+    "string"
+  ),
+  BackupOptions = list(
     "string"
   )
 )

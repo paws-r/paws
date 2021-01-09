@@ -3,6 +3,54 @@
 #' @include signer_service.R
 NULL
 
+#' Adds cross-account permissions to a signing profile
+#'
+#' Adds cross-account permissions to a signing profile.
+#'
+#' @usage
+#' signer_add_profile_permission(profileName, profileVersion, action,
+#'   principal, revisionId, statementId)
+#'
+#' @param profileName &#91;required&#93; The human-readable name of the signing profile.
+#' @param profileVersion The version of the signing profile.
+#' @param action &#91;required&#93; The AWS Signer action permitted as part of cross-account permissions.
+#' @param principal &#91;required&#93; The AWS principal receiving cross-account permissions. This may be an
+#' IAM role or another AWS account ID.
+#' @param revisionId A unique identifier for the current profile revision.
+#' @param statementId &#91;required&#93; A unique identifier for the cross-account permission statement.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_profile_permission(
+#'   profileName = "string",
+#'   profileVersion = "string",
+#'   action = "string",
+#'   principal = "string",
+#'   revisionId = "string",
+#'   statementId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname signer_add_profile_permission
+signer_add_profile_permission <- function(profileName, profileVersion = NULL, action, principal, revisionId = NULL, statementId) {
+  op <- new_operation(
+    name = "AddProfilePermission",
+    http_method = "POST",
+    http_path = "/signing-profiles/{profileName}/permissions",
+    paginator = list()
+  )
+  input <- .signer$add_profile_permission_input(profileName = profileName, profileVersion = profileVersion, action = action, principal = principal, revisionId = revisionId, statementId = statementId)
+  output <- .signer$add_profile_permission_output()
+  config <- get_config()
+  svc <- .signer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.signer$operations$add_profile_permission <- signer_add_profile_permission
+
 #' Changes the state of an ACTIVE signing profile to CANCELED
 #'
 #' Changes the state of an `ACTIVE` signing profile to `CANCELED`. A
@@ -121,28 +169,30 @@ signer_get_signing_platform <- function(platformId) {
 #' Returns information on a specific signing profile.
 #'
 #' @usage
-#' signer_get_signing_profile(profileName)
+#' signer_get_signing_profile(profileName, profileOwner)
 #'
 #' @param profileName &#91;required&#93; The name of the target signing profile.
+#' @param profileOwner The AWS account ID of the profile owner.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_signing_profile(
-#'   profileName = "string"
+#'   profileName = "string",
+#'   profileOwner = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname signer_get_signing_profile
-signer_get_signing_profile <- function(profileName) {
+signer_get_signing_profile <- function(profileName, profileOwner = NULL) {
   op <- new_operation(
     name = "GetSigningProfile",
     http_method = "GET",
     http_path = "/signing-profiles/{profileName}",
     paginator = list()
   )
-  input <- .signer$get_signing_profile_input(profileName = profileName)
+  input <- .signer$get_signing_profile_input(profileName = profileName, profileOwner = profileOwner)
   output <- .signer$get_signing_profile_output()
   config <- get_config()
   svc <- .signer$service(config)
@@ -151,6 +201,44 @@ signer_get_signing_profile <- function(profileName) {
   return(response)
 }
 .signer$operations$get_signing_profile <- signer_get_signing_profile
+
+#' Lists the cross-account permissions associated with a signing profile
+#'
+#' Lists the cross-account permissions associated with a signing profile.
+#'
+#' @usage
+#' signer_list_profile_permissions(profileName, nextToken)
+#'
+#' @param profileName &#91;required&#93; Name of the signing profile containing the cross-account permissions.
+#' @param nextToken String for specifying the next set of paginated results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_profile_permissions(
+#'   profileName = "string",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname signer_list_profile_permissions
+signer_list_profile_permissions <- function(profileName, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListProfilePermissions",
+    http_method = "GET",
+    http_path = "/signing-profiles/{profileName}/permissions",
+    paginator = list()
+  )
+  input <- .signer$list_profile_permissions_input(profileName = profileName, nextToken = nextToken)
+  output <- .signer$list_profile_permissions_output()
+  config <- get_config()
+  svc <- .signer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.signer$operations$list_profile_permissions <- signer_list_profile_permissions
 
 #' Lists all your signing jobs
 #'
@@ -165,7 +253,8 @@ signer_get_signing_profile <- function(profileName) {
 #'
 #' @usage
 #' signer_list_signing_jobs(status, platformId, requestedBy, maxResults,
-#'   nextToken)
+#'   nextToken, isRevoked, signatureExpiresBefore, signatureExpiresAfter,
+#'   jobInvoker)
 #'
 #' @param status A status value with which to filter your results.
 #' @param platformId The ID of microcontroller platform that you specified for the
@@ -180,6 +269,13 @@ signer_get_signing_profile <- function(profileName) {
 #' you receive a response with truncated results, use this parameter in a
 #' subsequent request. Set it to the value of `nextToken` from the response
 #' that you just received.
+#' @param isRevoked Filters results to return only signing jobs with revoked signatures.
+#' @param signatureExpiresBefore Filters results to return only signing jobs with signatures expiring
+#' before a specified timestamp.
+#' @param signatureExpiresAfter Filters results to return only signing jobs with signatures expiring
+#' after a specified timestamp.
+#' @param jobInvoker Filters results to return only signing jobs initiated by a specified IAM
+#' entity.
 #'
 #' @section Request syntax:
 #' ```
@@ -188,21 +284,29 @@ signer_get_signing_profile <- function(profileName) {
 #'   platformId = "string",
 #'   requestedBy = "string",
 #'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   isRevoked = TRUE|FALSE,
+#'   signatureExpiresBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   signatureExpiresAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   jobInvoker = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname signer_list_signing_jobs
-signer_list_signing_jobs <- function(status = NULL, platformId = NULL, requestedBy = NULL, maxResults = NULL, nextToken = NULL) {
+signer_list_signing_jobs <- function(status = NULL, platformId = NULL, requestedBy = NULL, maxResults = NULL, nextToken = NULL, isRevoked = NULL, signatureExpiresBefore = NULL, signatureExpiresAfter = NULL, jobInvoker = NULL) {
   op <- new_operation(
     name = "ListSigningJobs",
     http_method = "GET",
     http_path = "/signing-jobs",
     paginator = list()
   )
-  input <- .signer$list_signing_jobs_input(status = status, platformId = platformId, requestedBy = requestedBy, maxResults = maxResults, nextToken = nextToken)
+  input <- .signer$list_signing_jobs_input(status = status, platformId = platformId, requestedBy = requestedBy, maxResults = maxResults, nextToken = nextToken, isRevoked = isRevoked, signatureExpiresBefore = signatureExpiresBefore, signatureExpiresAfter = signatureExpiresAfter, jobInvoker = jobInvoker)
   output <- .signer$list_signing_jobs_output()
   config <- get_config()
   svc <- .signer$service(config)
@@ -279,7 +383,8 @@ signer_list_signing_platforms <- function(category = NULL, partner = NULL, targe
 #' of your signing jobs have been returned.
 #'
 #' @usage
-#' signer_list_signing_profiles(includeCanceled, maxResults, nextToken)
+#' signer_list_signing_profiles(includeCanceled, maxResults, nextToken,
+#'   platformId, statuses)
 #'
 #' @param includeCanceled Designates whether to include profiles with the status of `CANCELED`.
 #' @param maxResults The maximum number of profiles to be returned.
@@ -287,27 +392,35 @@ signer_list_signing_platforms <- function(category = NULL, partner = NULL, targe
 #' you receive a response with truncated results, use this parameter in a
 #' subsequent request. Set it to the value of `nextToken` from the response
 #' that you just received.
+#' @param platformId Filters results to return only signing jobs initiated for a specified
+#' signing platform.
+#' @param statuses Filters results to return only signing jobs with statuses in the
+#' specified list.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_signing_profiles(
 #'   includeCanceled = TRUE|FALSE,
 #'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   platformId = "string",
+#'   statuses = list(
+#'     "Active"|"Canceled"|"Revoked"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname signer_list_signing_profiles
-signer_list_signing_profiles <- function(includeCanceled = NULL, maxResults = NULL, nextToken = NULL) {
+signer_list_signing_profiles <- function(includeCanceled = NULL, maxResults = NULL, nextToken = NULL, platformId = NULL, statuses = NULL) {
   op <- new_operation(
     name = "ListSigningProfiles",
     http_method = "GET",
     http_path = "/signing-profiles",
     paginator = list()
   )
-  input <- .signer$list_signing_profiles_input(includeCanceled = includeCanceled, maxResults = maxResults, nextToken = nextToken)
+  input <- .signer$list_signing_profiles_input(includeCanceled = includeCanceled, maxResults = maxResults, nextToken = nextToken, platformId = platformId, statuses = statuses)
   output <- .signer$list_signing_profiles_output()
   config <- get_config()
   svc <- .signer$service(config)
@@ -358,15 +471,17 @@ signer_list_tags_for_resource <- function(resourceArn) {
 #' Creates a signing profile. A signing profile is a code signing template
 #' that can be used to carry out a pre-defined signing job. For more
 #' information, see
-#' <http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html>
+#' [http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html](https://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html)
 #'
 #' @usage
-#' signer_put_signing_profile(profileName, signingMaterial, platformId,
-#'   overrides, signingParameters, tags)
+#' signer_put_signing_profile(profileName, signingMaterial,
+#'   signatureValidityPeriod, platformId, overrides, signingParameters, tags)
 #'
 #' @param profileName &#91;required&#93; The name of the signing profile to be created.
-#' @param signingMaterial &#91;required&#93; The AWS Certificate Manager certificate that will be used to sign code
+#' @param signingMaterial The AWS Certificate Manager certificate that will be used to sign code
 #' with the new signing profile.
+#' @param signatureValidityPeriod The default validity period override for any signature generated using
+#' this signing profile. If unspecified, the default is 135 months.
 #' @param platformId &#91;required&#93; The ID of the signing platform to be created.
 #' @param overrides A subfield of `platform`. This specifies any different configuration
 #' options that you want to apply to the chosen platform (such as a
@@ -381,6 +496,10 @@ signer_list_tags_for_resource <- function(resourceArn) {
 #'   profileName = "string",
 #'   signingMaterial = list(
 #'     certificateArn = "string"
+#'   ),
+#'   signatureValidityPeriod = list(
+#'     value = 123,
+#'     type = "DAYS"|"MONTHS"|"YEARS"
 #'   ),
 #'   platformId = "string",
 #'   overrides = list(
@@ -402,14 +521,14 @@ signer_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname signer_put_signing_profile
-signer_put_signing_profile <- function(profileName, signingMaterial, platformId, overrides = NULL, signingParameters = NULL, tags = NULL) {
+signer_put_signing_profile <- function(profileName, signingMaterial = NULL, signatureValidityPeriod = NULL, platformId, overrides = NULL, signingParameters = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutSigningProfile",
     http_method = "PUT",
     http_path = "/signing-profiles/{profileName}",
     paginator = list()
   )
-  input <- .signer$put_signing_profile_input(profileName = profileName, signingMaterial = signingMaterial, platformId = platformId, overrides = overrides, signingParameters = signingParameters, tags = tags)
+  input <- .signer$put_signing_profile_input(profileName = profileName, signingMaterial = signingMaterial, signatureValidityPeriod = signatureValidityPeriod, platformId = platformId, overrides = overrides, signingParameters = signingParameters, tags = tags)
   output <- .signer$put_signing_profile_output()
   config <- get_config()
   svc <- .signer$service(config)
@@ -419,6 +538,138 @@ signer_put_signing_profile <- function(profileName, signingMaterial, platformId,
 }
 .signer$operations$put_signing_profile <- signer_put_signing_profile
 
+#' Removes cross-account permissions from a signing profile
+#'
+#' Removes cross-account permissions from a signing profile.
+#'
+#' @usage
+#' signer_remove_profile_permission(profileName, revisionId, statementId)
+#'
+#' @param profileName &#91;required&#93; A human-readable name for the signing profile with permissions to be
+#' removed.
+#' @param revisionId &#91;required&#93; An identifier for the current revision of the signing profile
+#' permissions.
+#' @param statementId &#91;required&#93; A unique identifier for the cross-account permissions statement.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_profile_permission(
+#'   profileName = "string",
+#'   revisionId = "string",
+#'   statementId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname signer_remove_profile_permission
+signer_remove_profile_permission <- function(profileName, revisionId, statementId) {
+  op <- new_operation(
+    name = "RemoveProfilePermission",
+    http_method = "DELETE",
+    http_path = "/signing-profiles/{profileName}/permissions/{statementId}",
+    paginator = list()
+  )
+  input <- .signer$remove_profile_permission_input(profileName = profileName, revisionId = revisionId, statementId = statementId)
+  output <- .signer$remove_profile_permission_output()
+  config <- get_config()
+  svc <- .signer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.signer$operations$remove_profile_permission <- signer_remove_profile_permission
+
+#' Changes the state of a signing job to REVOKED
+#'
+#' Changes the state of a signing job to REVOKED. This indicates that the
+#' signature is no longer valid.
+#'
+#' @usage
+#' signer_revoke_signature(jobId, jobOwner, reason)
+#'
+#' @param jobId &#91;required&#93; ID of the signing job to be revoked.
+#' @param jobOwner AWS account ID of the job owner.
+#' @param reason &#91;required&#93; The reason for revoking the signing job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$revoke_signature(
+#'   jobId = "string",
+#'   jobOwner = "string",
+#'   reason = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname signer_revoke_signature
+signer_revoke_signature <- function(jobId, jobOwner = NULL, reason) {
+  op <- new_operation(
+    name = "RevokeSignature",
+    http_method = "PUT",
+    http_path = "/signing-jobs/{jobId}/revoke",
+    paginator = list()
+  )
+  input <- .signer$revoke_signature_input(jobId = jobId, jobOwner = jobOwner, reason = reason)
+  output <- .signer$revoke_signature_output()
+  config <- get_config()
+  svc <- .signer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.signer$operations$revoke_signature <- signer_revoke_signature
+
+#' Changes the state of a signing profile to REVOKED
+#'
+#' Changes the state of a signing profile to REVOKED. This indicates that
+#' signatures generated using the signing profile after an effective start
+#' date are no longer valid.
+#'
+#' @usage
+#' signer_revoke_signing_profile(profileName, profileVersion, reason,
+#'   effectiveTime)
+#'
+#' @param profileName &#91;required&#93; The name of the signing profile to be revoked.
+#' @param profileVersion &#91;required&#93; The version of the signing profile to be revoked.
+#' @param reason &#91;required&#93; The reason for revoking a signing profile.
+#' @param effectiveTime &#91;required&#93; A timestamp for when revocation of a Signing Profile should become
+#' effective. Signatures generated using the signing profile after this
+#' timestamp are not trusted.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$revoke_signing_profile(
+#'   profileName = "string",
+#'   profileVersion = "string",
+#'   reason = "string",
+#'   effectiveTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname signer_revoke_signing_profile
+signer_revoke_signing_profile <- function(profileName, profileVersion, reason, effectiveTime) {
+  op <- new_operation(
+    name = "RevokeSigningProfile",
+    http_method = "PUT",
+    http_path = "/signing-profiles/{profileName}/revoke",
+    paginator = list()
+  )
+  input <- .signer$revoke_signing_profile_input(profileName = profileName, profileVersion = profileVersion, reason = reason, effectiveTime = effectiveTime)
+  output <- .signer$revoke_signing_profile_output()
+  config <- get_config()
+  svc <- .signer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.signer$operations$revoke_signing_profile <- signer_revoke_signing_profile
+
 #' Initiates a signing job to be performed on the code provided
 #'
 #' Initiates a signing job to be performed on the code provided. Signing
@@ -427,7 +678,7 @@ signer_put_signing_profile <- function(profileName, signingMaterial, platformId,
 #' 
 #' -   You must create an Amazon S3 source bucket. For more information,
 #'     see [Create a
-#'     Bucket](http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
+#'     Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
 #'     in the *Amazon S3 Getting Started Guide*.
 #' 
 #' -   Your S3 source bucket must be version enabled.
@@ -445,19 +696,20 @@ signer_put_signing_profile <- function(profileName, signingMaterial, platformId,
 #' after you call `StartSigningJob`.
 #' 
 #' For a Java example that shows how to use this action, see
-#' <http://docs.aws.amazon.com/acm/latest/userguide/>
+#' [http://docs.aws.amazon.com/acm/latest/userguide/](https://docs.aws.amazon.com/acm/latest/userguide/)
 #'
 #' @usage
 #' signer_start_signing_job(source, destination, profileName,
-#'   clientRequestToken)
+#'   clientRequestToken, profileOwner)
 #'
 #' @param source &#91;required&#93; The S3 bucket that contains the object to sign or a BLOB that contains
 #' your raw code.
 #' @param destination &#91;required&#93; The S3 bucket in which to save your signed object. The destination
 #' contains the name of your bucket and an optional prefix.
-#' @param profileName The name of the signing profile.
+#' @param profileName &#91;required&#93; The name of the signing profile.
 #' @param clientRequestToken &#91;required&#93; String that identifies the signing request. All calls after the first
 #' that use this token return the same response as the first call.
+#' @param profileOwner The AWS account ID of the signing profile owner.
 #'
 #' @section Request syntax:
 #' ```
@@ -476,21 +728,22 @@ signer_put_signing_profile <- function(profileName, signingMaterial, platformId,
 #'     )
 #'   ),
 #'   profileName = "string",
-#'   clientRequestToken = "string"
+#'   clientRequestToken = "string",
+#'   profileOwner = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname signer_start_signing_job
-signer_start_signing_job <- function(source, destination, profileName = NULL, clientRequestToken) {
+signer_start_signing_job <- function(source, destination, profileName, clientRequestToken, profileOwner = NULL) {
   op <- new_operation(
     name = "StartSigningJob",
     http_method = "POST",
     http_path = "/signing-jobs",
     paginator = list()
   )
-  input <- .signer$start_signing_job_input(source = source, destination = destination, profileName = profileName, clientRequestToken = clientRequestToken)
+  input <- .signer$start_signing_job_input(source = source, destination = destination, profileName = profileName, clientRequestToken = clientRequestToken, profileOwner = profileOwner)
   output <- .signer$start_signing_job_output()
   config <- get_config()
   svc <- .signer$service(config)

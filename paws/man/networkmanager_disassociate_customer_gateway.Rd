@@ -11,7 +11,7 @@ networkmanager_disassociate_customer_gateway(GlobalNetworkId,
 \item{GlobalNetworkId}{[required] The ID of the global network.}
 
 \item{CustomerGatewayArn}{[required] The Amazon Resource Name (ARN) of the customer gateway. For more
-information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies}{Resources Defined by Amazon EC2}.}
+information, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html}{Resources Defined by Amazon EC2}.}
 }
 \description{
 Disassociates a customer gateway from a device and a link.

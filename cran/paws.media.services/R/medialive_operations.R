@@ -3,6 +3,177 @@
 #' @include medialive_service.R
 NULL
 
+#' Accept an incoming input device transfer
+#'
+#' Accept an incoming input device transfer. The ownership of the device will transfer to your AWS account.
+#'
+#' @usage
+#' medialive_accept_input_device_transfer(InputDeviceId)
+#'
+#' @param InputDeviceId &#91;required&#93; The unique ID of the input device to accept. For example, hd-123456789abcdef.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$accept_input_device_transfer(
+#'   InputDeviceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_accept_input_device_transfer
+medialive_accept_input_device_transfer <- function(InputDeviceId) {
+  op <- new_operation(
+    name = "AcceptInputDeviceTransfer",
+    http_method = "POST",
+    http_path = "/prod/inputDevices/{inputDeviceId}/accept",
+    paginator = list()
+  )
+  input <- .medialive$accept_input_device_transfer_input(InputDeviceId = InputDeviceId)
+  output <- .medialive$accept_input_device_transfer_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$accept_input_device_transfer <- medialive_accept_input_device_transfer
+
+#' Starts delete of resources
+#'
+#' Starts delete of resources.
+#'
+#' @usage
+#' medialive_batch_delete(ChannelIds, InputIds, InputSecurityGroupIds,
+#'   MultiplexIds)
+#'
+#' @param ChannelIds List of channel IDs
+#' @param InputIds List of input IDs
+#' @param InputSecurityGroupIds List of input security group IDs
+#' @param MultiplexIds List of multiplex IDs
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_delete(
+#'   ChannelIds = list(
+#'     "string"
+#'   ),
+#'   InputIds = list(
+#'     "string"
+#'   ),
+#'   InputSecurityGroupIds = list(
+#'     "string"
+#'   ),
+#'   MultiplexIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_batch_delete
+medialive_batch_delete <- function(ChannelIds = NULL, InputIds = NULL, InputSecurityGroupIds = NULL, MultiplexIds = NULL) {
+  op <- new_operation(
+    name = "BatchDelete",
+    http_method = "POST",
+    http_path = "/prod/batch/delete",
+    paginator = list()
+  )
+  input <- .medialive$batch_delete_input(ChannelIds = ChannelIds, InputIds = InputIds, InputSecurityGroupIds = InputSecurityGroupIds, MultiplexIds = MultiplexIds)
+  output <- .medialive$batch_delete_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$batch_delete <- medialive_batch_delete
+
+#' Starts existing resources
+#'
+#' Starts existing resources
+#'
+#' @usage
+#' medialive_batch_start(ChannelIds, MultiplexIds)
+#'
+#' @param ChannelIds List of channel IDs
+#' @param MultiplexIds List of multiplex IDs
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_start(
+#'   ChannelIds = list(
+#'     "string"
+#'   ),
+#'   MultiplexIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_batch_start
+medialive_batch_start <- function(ChannelIds = NULL, MultiplexIds = NULL) {
+  op <- new_operation(
+    name = "BatchStart",
+    http_method = "POST",
+    http_path = "/prod/batch/start",
+    paginator = list()
+  )
+  input <- .medialive$batch_start_input(ChannelIds = ChannelIds, MultiplexIds = MultiplexIds)
+  output <- .medialive$batch_start_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$batch_start <- medialive_batch_start
+
+#' Stops running resources
+#'
+#' Stops running resources
+#'
+#' @usage
+#' medialive_batch_stop(ChannelIds, MultiplexIds)
+#'
+#' @param ChannelIds List of channel IDs
+#' @param MultiplexIds List of multiplex IDs
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_stop(
+#'   ChannelIds = list(
+#'     "string"
+#'   ),
+#'   MultiplexIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_batch_stop
+medialive_batch_stop <- function(ChannelIds = NULL, MultiplexIds = NULL) {
+  op <- new_operation(
+    name = "BatchStop",
+    http_method = "POST",
+    http_path = "/prod/batch/stop",
+    paginator = list()
+  )
+  input <- .medialive$batch_stop_input(ChannelIds = ChannelIds, MultiplexIds = MultiplexIds)
+  output <- .medialive$batch_stop_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$batch_stop <- medialive_batch_stop
+
 #' Update a channel schedule
 #'
 #' Update a channel schedule
@@ -163,20 +334,57 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 }
 .medialive$operations$batch_update_schedule <- medialive_batch_update_schedule
 
+#' Cancel an input device transfer that you have requested
+#'
+#' Cancel an input device transfer that you have requested.
+#'
+#' @usage
+#' medialive_cancel_input_device_transfer(InputDeviceId)
+#'
+#' @param InputDeviceId &#91;required&#93; The unique ID of the input device to cancel. For example, hd-123456789abcdef.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_input_device_transfer(
+#'   InputDeviceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_cancel_input_device_transfer
+medialive_cancel_input_device_transfer <- function(InputDeviceId) {
+  op <- new_operation(
+    name = "CancelInputDeviceTransfer",
+    http_method = "POST",
+    http_path = "/prod/inputDevices/{inputDeviceId}/cancel",
+    paginator = list()
+  )
+  input <- .medialive$cancel_input_device_transfer_input(InputDeviceId = InputDeviceId)
+  output <- .medialive$cancel_input_device_transfer_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$cancel_input_device_transfer <- medialive_cancel_input_device_transfer
+
 #' Creates a new channel
 #'
 #' Creates a new channel
 #'
 #' @usage
-#' medialive_create_channel(ChannelClass, Destinations, EncoderSettings,
-#'   InputAttachments, InputSpecification, LogLevel, Name, RequestId,
-#'   Reserved, RoleArn, Tags)
+#' medialive_create_channel(CdiInputSpecification, ChannelClass,
+#'   Destinations, EncoderSettings, InputAttachments, InputSpecification,
+#'   LogLevel, Name, RequestId, Reserved, RoleArn, Tags)
 #'
+#' @param CdiInputSpecification Specification of CDI inputs for this channel
 #' @param ChannelClass The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel with one pipeline.
 #' @param Destinations 
 #' @param EncoderSettings 
 #' @param InputAttachments List of input attachments for channel.
-#' @param InputSpecification Specification of input for this channel (max. bitrate, resolution, codec, etc.)
+#' @param InputSpecification Specification of network and file inputs for this channel
 #' @param LogLevel The log level to write to CloudWatch Logs.
 #' @param Name Name of channel.
 #' @param RequestId Unique request ID to be specified. This is needed to prevent retries from
@@ -188,6 +396,9 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #' @section Request syntax:
 #' ```
 #' svc$create_channel(
+#'   CdiInputSpecification = list(
+#'     Resolution = "SD"|"HD"|"FHD"|"UHD"
+#'   ),
 #'   ChannelClass = "STANDARD"|"SINGLE_PIPELINE",
 #'   Destinations = list(
 #'     list(
@@ -270,7 +481,12 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'             CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0",
 #'             SampleRate = 123.0
 #'           ),
-#'           PassThroughSettings = list()
+#'           PassThroughSettings = list(),
+#'           WavSettings = list(
+#'             BitDepth = 123.0,
+#'             CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_4_0"|"CODING_MODE_8_0",
+#'             SampleRate = 123.0
+#'           )
 #'         ),
 #'         LanguageCode = "string",
 #'         LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
@@ -381,6 +597,11 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'             XPosition = 123,
 #'             YPosition = 123
 #'           ),
+#'           EbuTtDDestinationSettings = list(
+#'             FillLineGap = "DISABLED"|"ENABLED",
+#'             FontFamily = "string",
+#'             StyleControl = "EXCLUDE"|"INCLUDE"
+#'           ),
 #'           EmbeddedDestinationSettings = list(),
 #'           EmbeddedPlusScte20DestinationSettings = list(),
 #'           RtmpCaptionInfoDestinationSettings = list(),
@@ -461,6 +682,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'               DestinationRefId = "string"
 #'             ),
 #'             DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
+#'             DiscontinuityTags = "INSERT"|"NEVER_INSERT",
 #'             EncryptionType = "AES128"|"SAMPLE_AES",
 #'             HlsCdnSettings = list(
 #'               HlsAkamaiSettings = list(
@@ -495,6 +717,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'             ),
 #'             HlsId3SegmentTagging = "DISABLED"|"ENABLED",
 #'             IFrameOnlyPlaylists = "DISABLED"|"STANDARD",
+#'             IncompleteSegmentBehavior = "AUTO"|"SUPPRESS",
 #'             IndexNSegments = 123,
 #'             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
 #'             IvInManifest = "EXCLUDE"|"INCLUDE",
@@ -516,7 +739,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'             ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
 #'             MinSegmentLength = 123,
 #'             Mode = "LIVE"|"VOD",
-#'             OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
+#'             OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY"|"VARIANT_MANIFESTS_AND_SEGMENTS",
 #'             ProgramDateTime = "EXCLUDE"|"INCLUDE",
 #'             ProgramDateTimePeriod = 123,
 #'             RedundantManifest = "DISABLED"|"ENABLED",
@@ -559,6 +782,9 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'           ),
 #'           MultiplexGroupSettings = list(),
 #'           RtmpGroupSettings = list(
+#'             AdMarkers = list(
+#'               "ON_CUE_POINT_SCTE35"
+#'             ),
 #'             AuthenticationScheme = "AKAMAI"|"COMMON",
 #'             CacheFullBehavior = "DISCONNECT_IMMEDIATELY"|"WAIT_FOR_SERVER",
 #'             CacheLength = 123,
@@ -643,7 +869,8 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'                     TimedMetadataPid = "string",
 #'                     TransportStreamId = 123,
 #'                     VideoPid = "string"
-#'                   )
+#'                   ),
+#'                   RawSettings = list()
 #'                 ),
 #'                 Extension = "string",
 #'                 NameModifier = "string"
@@ -871,6 +1098,12 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'               Rec601Settings = list(),
 #'               Rec709Settings = list()
 #'             ),
+#'             FilterSettings = list(
+#'               TemporalFilterSettings = list(
+#'                 PostFilterSharpening = "AUTO"|"DISABLED"|"ENABLED",
+#'                 Strength = "AUTO"|"STRENGTH_1"|"STRENGTH_2"|"STRENGTH_3"|"STRENGTH_4"|"STRENGTH_5"|"STRENGTH_6"|"STRENGTH_7"|"STRENGTH_8"|"STRENGTH_9"|"STRENGTH_10"|"STRENGTH_11"|"STRENGTH_12"|"STRENGTH_13"|"STRENGTH_14"|"STRENGTH_15"|"STRENGTH_16"
+#'               )
+#'             ),
 #'             FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
 #'             FlickerAq = "DISABLED"|"ENABLED",
 #'             FramerateDenominator = 123,
@@ -887,11 +1120,34 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'             Profile = "MAIN"|"MAIN_10BIT",
 #'             QvbrQualityLevel = 123,
 #'             RateControlMode = "CBR"|"MULTIPLEX"|"QVBR",
-#'             ScanType = "PROGRESSIVE",
+#'             ScanType = "INTERLACED"|"PROGRESSIVE",
 #'             SceneChangeDetect = "DISABLED"|"ENABLED",
 #'             Slices = 123,
 #'             Tier = "HIGH"|"MAIN",
 #'             TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
+#'           ),
+#'           Mpeg2Settings = list(
+#'             AdaptiveQuantization = "AUTO"|"HIGH"|"LOW"|"MEDIUM"|"OFF",
+#'             AfdSignaling = "AUTO"|"FIXED"|"NONE",
+#'             ColorMetadata = "IGNORE"|"INSERT",
+#'             ColorSpace = "AUTO"|"PASSTHROUGH",
+#'             DisplayAspectRatio = "DISPLAYRATIO16X9"|"DISPLAYRATIO4X3",
+#'             FilterSettings = list(
+#'               TemporalFilterSettings = list(
+#'                 PostFilterSharpening = "AUTO"|"DISABLED"|"ENABLED",
+#'                 Strength = "AUTO"|"STRENGTH_1"|"STRENGTH_2"|"STRENGTH_3"|"STRENGTH_4"|"STRENGTH_5"|"STRENGTH_6"|"STRENGTH_7"|"STRENGTH_8"|"STRENGTH_9"|"STRENGTH_10"|"STRENGTH_11"|"STRENGTH_12"|"STRENGTH_13"|"STRENGTH_14"|"STRENGTH_15"|"STRENGTH_16"
+#'               )
+#'             ),
+#'             FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopClosedCadence = 123,
+#'             GopNumBFrames = 123,
+#'             GopSize = 123.0,
+#'             GopSizeUnits = "FRAMES"|"SECONDS",
+#'             ScanType = "INTERLACED"|"PROGRESSIVE",
+#'             SubgopLength = "DYNAMIC"|"FIXED",
+#'             TimecodeInsertion = "DISABLED"|"GOP_TIMECODE"
 #'           )
 #'         ),
 #'         Height = 123,
@@ -906,6 +1162,24 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'   InputAttachments = list(
 #'     list(
 #'       AutomaticInputFailoverSettings = list(
+#'         ErrorClearTimeMsec = 123,
+#'         FailoverConditions = list(
+#'           list(
+#'             FailoverConditionSettings = list(
+#'               AudioSilenceSettings = list(
+#'                 AudioSelectorName = "string",
+#'                 AudioSilenceThresholdMsec = 123
+#'               ),
+#'               InputLossSettings = list(
+#'                 InputLossThresholdMsec = 123
+#'               ),
+#'               VideoBlackSettings = list(
+#'                 BlackDetectThreshold = 123.0,
+#'                 VideoBlackThresholdMsec = 123
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         InputPreference = "EQUAL_INPUT_PREFERENCE"|"PRIMARY_INPUT_PREFERRED",
 #'         SecondaryInputId = "string"
 #'       ),
@@ -938,6 +1212,9 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #'             LanguageCode = "string",
 #'             Name = "string",
 #'             SelectorSettings = list(
+#'               AncillarySourceSettings = list(
+#'                 SourceAncillaryChannelNumber = 123
+#'               ),
 #'               AribSourceSettings = list(),
 #'               DvbSubSourceSettings = list(
 #'                 Pid = 123
@@ -1010,14 +1287,14 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 #' @keywords internal
 #'
 #' @rdname medialive_create_channel
-medialive_create_channel <- function(ChannelClass = NULL, Destinations = NULL, EncoderSettings = NULL, InputAttachments = NULL, InputSpecification = NULL, LogLevel = NULL, Name = NULL, RequestId = NULL, Reserved = NULL, RoleArn = NULL, Tags = NULL) {
+medialive_create_channel <- function(CdiInputSpecification = NULL, ChannelClass = NULL, Destinations = NULL, EncoderSettings = NULL, InputAttachments = NULL, InputSpecification = NULL, LogLevel = NULL, Name = NULL, RequestId = NULL, Reserved = NULL, RoleArn = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateChannel",
     http_method = "POST",
     http_path = "/prod/channels",
     paginator = list()
   )
-  input <- .medialive$create_channel_input(ChannelClass = ChannelClass, Destinations = Destinations, EncoderSettings = EncoderSettings, InputAttachments = InputAttachments, InputSpecification = InputSpecification, LogLevel = LogLevel, Name = Name, RequestId = RequestId, Reserved = Reserved, RoleArn = RoleArn, Tags = Tags)
+  input <- .medialive$create_channel_input(CdiInputSpecification = CdiInputSpecification, ChannelClass = ChannelClass, Destinations = Destinations, EncoderSettings = EncoderSettings, InputAttachments = InputAttachments, InputSpecification = InputSpecification, LogLevel = LogLevel, Name = Name, RequestId = RequestId, Reserved = Reserved, RoleArn = RoleArn, Tags = Tags)
   output <- .medialive$create_channel_output()
   config <- get_config()
   svc <- .medialive$service(config)
@@ -1086,7 +1363,7 @@ medialive_create_channel <- function(ChannelClass = NULL, Destinations = NULL, E
 #'   Tags = list(
 #'     "string"
 #'   ),
-#'   Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"|"INPUT_DEVICE",
+#'   Type = "UDP_PUSH"|"RTP_PUSH"|"RTMP_PUSH"|"RTMP_PULL"|"URL_PULL"|"MP4_FILE"|"MEDIACONNECT"|"INPUT_DEVICE"|"AWS_CDI",
 #'   Vpc = list(
 #'     SecurityGroupIds = list(
 #'       "string"
@@ -1246,7 +1523,8 @@ medialive_create_multiplex <- function(AvailabilityZones, MultiplexSettings, Nam
 #'       ConstantBitrate = 123,
 #'       StatmuxSettings = list(
 #'         MaximumBitrate = 123,
-#'         MinimumBitrate = 123
+#'         MinimumBitrate = 123,
+#'         Priority = 123
 #'       )
 #'     )
 #'   ),
@@ -1717,6 +1995,44 @@ medialive_describe_input_device <- function(InputDeviceId) {
 }
 .medialive$operations$describe_input_device <- medialive_describe_input_device
 
+#' Get the latest thumbnail data for the input device
+#'
+#' Get the latest thumbnail data for the input device.
+#'
+#' @usage
+#' medialive_describe_input_device_thumbnail(InputDeviceId, Accept)
+#'
+#' @param InputDeviceId &#91;required&#93; The unique ID of this input device. For example, hd-123456789abcdef.
+#' @param Accept &#91;required&#93; The HTTP Accept header. Indicates the requested type for the thumbnail.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_input_device_thumbnail(
+#'   InputDeviceId = "string",
+#'   Accept = "image/jpeg"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_describe_input_device_thumbnail
+medialive_describe_input_device_thumbnail <- function(InputDeviceId, Accept) {
+  op <- new_operation(
+    name = "DescribeInputDeviceThumbnail",
+    http_method = "GET",
+    http_path = "/prod/inputDevices/{inputDeviceId}/thumbnailData",
+    paginator = list()
+  )
+  input <- .medialive$describe_input_device_thumbnail_input(InputDeviceId = InputDeviceId, Accept = Accept)
+  output <- .medialive$describe_input_device_thumbnail_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$describe_input_device_thumbnail <- medialive_describe_input_device_thumbnail
+
 #' Produces a summary of an Input Security Group
 #'
 #' Produces a summary of an Input Security Group
@@ -1977,6 +2293,47 @@ medialive_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .medialive$operations$list_channels <- medialive_list_channels
 
+#' List input devices that are currently being transferred
+#'
+#' List input devices that are currently being transferred. List input devices that you are transferring from your AWS account or input devices that another AWS account is transferring to you.
+#'
+#' @usage
+#' medialive_list_input_device_transfers(MaxResults, NextToken,
+#'   TransferType)
+#'
+#' @param MaxResults 
+#' @param NextToken 
+#' @param TransferType &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_input_device_transfers(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   TransferType = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_list_input_device_transfers
+medialive_list_input_device_transfers <- function(MaxResults = NULL, NextToken = NULL, TransferType) {
+  op <- new_operation(
+    name = "ListInputDeviceTransfers",
+    http_method = "GET",
+    http_path = "/prod/inputDeviceTransfers",
+    paginator = list()
+  )
+  input <- .medialive$list_input_device_transfers_input(MaxResults = MaxResults, NextToken = NextToken, TransferType = TransferType)
+  output <- .medialive$list_input_device_transfers_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$list_input_device_transfers <- medialive_list_input_device_transfers
+
 #' List input devices
 #'
 #' List input devices
@@ -2180,7 +2537,7 @@ medialive_list_multiplexes <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @param ChannelClass Filter by channel class, 'STANDARD' or 'SINGLE_PIPELINE'
 #' @param ChannelConfiguration Filter to offerings that match the configuration of an existing channel, e.g. '2345678' (a channel ID)
-#' @param Codec Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
+#' @param Codec Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'
 #' @param Duration Filter by offering duration, e.g. '12'
 #' @param MaxResults 
 #' @param MaximumBitrate Filter by bitrate, 'MAX_10_MBPS', 'MAX_20_MBPS', or 'MAX_50_MBPS'
@@ -2239,7 +2596,7 @@ medialive_list_offerings <- function(ChannelClass = NULL, ChannelConfiguration =
 #'   SpecialFeature, VideoQuality)
 #'
 #' @param ChannelClass Filter by channel class, 'STANDARD' or 'SINGLE_PIPELINE'
-#' @param Codec Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
+#' @param Codec Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'
 #' @param MaxResults 
 #' @param MaximumBitrate Filter by bitrate, 'MAX_10_MBPS', 'MAX_20_MBPS', or 'MAX_50_MBPS'
 #' @param MaximumFramerate Filter by framerate, 'MAX_30_FPS' or 'MAX_60_FPS'
@@ -2369,6 +2726,42 @@ medialive_purchase_offering <- function(Count, Name = NULL, OfferingId, RequestI
   return(response)
 }
 .medialive$operations$purchase_offering <- medialive_purchase_offering
+
+#' Reject the transfer of the specified input device to your AWS account
+#'
+#' Reject the transfer of the specified input device to your AWS account.
+#'
+#' @usage
+#' medialive_reject_input_device_transfer(InputDeviceId)
+#'
+#' @param InputDeviceId &#91;required&#93; The unique ID of the input device to reject. For example, hd-123456789abcdef.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$reject_input_device_transfer(
+#'   InputDeviceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_reject_input_device_transfer
+medialive_reject_input_device_transfer <- function(InputDeviceId) {
+  op <- new_operation(
+    name = "RejectInputDeviceTransfer",
+    http_method = "POST",
+    http_path = "/prod/inputDevices/{inputDeviceId}/reject",
+    paginator = list()
+  )
+  input <- .medialive$reject_input_device_transfer_input(InputDeviceId = InputDeviceId)
+  output <- .medialive$reject_input_device_transfer_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$reject_input_device_transfer <- medialive_reject_input_device_transfer
 
 #' Starts an existing channel
 #'
@@ -2514,19 +2907,62 @@ medialive_stop_multiplex <- function(MultiplexId) {
 }
 .medialive$operations$stop_multiplex <- medialive_stop_multiplex
 
+#' Start an input device transfer to another AWS account
+#'
+#' Start an input device transfer to another AWS account. After you make the request, the other account must accept or reject the transfer.
+#'
+#' @usage
+#' medialive_transfer_input_device(InputDeviceId, TargetCustomerId,
+#'   TransferMessage)
+#'
+#' @param InputDeviceId &#91;required&#93; The unique ID of this input device. For example, hd-123456789abcdef.
+#' @param TargetCustomerId The AWS account ID (12 digits) for the recipient of the device transfer.
+#' @param TransferMessage An optional message for the recipient. Maximum 280 characters.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$transfer_input_device(
+#'   InputDeviceId = "string",
+#'   TargetCustomerId = "string",
+#'   TransferMessage = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname medialive_transfer_input_device
+medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NULL, TransferMessage = NULL) {
+  op <- new_operation(
+    name = "TransferInputDevice",
+    http_method = "POST",
+    http_path = "/prod/inputDevices/{inputDeviceId}/transfer",
+    paginator = list()
+  )
+  input <- .medialive$transfer_input_device_input(InputDeviceId = InputDeviceId, TargetCustomerId = TargetCustomerId, TransferMessage = TransferMessage)
+  output <- .medialive$transfer_input_device_output()
+  config <- get_config()
+  svc <- .medialive$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.medialive$operations$transfer_input_device <- medialive_transfer_input_device
+
 #' Updates a channel
 #'
 #' Updates a channel.
 #'
 #' @usage
-#' medialive_update_channel(ChannelId, Destinations, EncoderSettings,
-#'   InputAttachments, InputSpecification, LogLevel, Name, RoleArn)
+#' medialive_update_channel(CdiInputSpecification, ChannelId, Destinations,
+#'   EncoderSettings, InputAttachments, InputSpecification, LogLevel, Name,
+#'   RoleArn)
 #'
+#' @param CdiInputSpecification Specification of CDI inputs for this channel
 #' @param ChannelId &#91;required&#93; channel ID
 #' @param Destinations A list of output destinations for this channel.
 #' @param EncoderSettings The encoder settings for this channel.
 #' @param InputAttachments 
-#' @param InputSpecification Specification of input for this channel (max. bitrate, resolution, codec, etc.)
+#' @param InputSpecification Specification of network and file inputs for this channel
 #' @param LogLevel The log level to write to CloudWatch Logs.
 #' @param Name The name of the channel.
 #' @param RoleArn An optional Amazon Resource Name (ARN) of the role to assume when running the Channel. If you do not specify this on an update call but the role was previously set that role will be removed.
@@ -2534,6 +2970,9 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #' @section Request syntax:
 #' ```
 #' svc$update_channel(
+#'   CdiInputSpecification = list(
+#'     Resolution = "SD"|"HD"|"FHD"|"UHD"
+#'   ),
 #'   ChannelId = "string",
 #'   Destinations = list(
 #'     list(
@@ -2616,7 +3055,12 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'             CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0",
 #'             SampleRate = 123.0
 #'           ),
-#'           PassThroughSettings = list()
+#'           PassThroughSettings = list(),
+#'           WavSettings = list(
+#'             BitDepth = 123.0,
+#'             CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_4_0"|"CODING_MODE_8_0",
+#'             SampleRate = 123.0
+#'           )
 #'         ),
 #'         LanguageCode = "string",
 #'         LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
@@ -2727,6 +3171,11 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'             XPosition = 123,
 #'             YPosition = 123
 #'           ),
+#'           EbuTtDDestinationSettings = list(
+#'             FillLineGap = "DISABLED"|"ENABLED",
+#'             FontFamily = "string",
+#'             StyleControl = "EXCLUDE"|"INCLUDE"
+#'           ),
 #'           EmbeddedDestinationSettings = list(),
 #'           EmbeddedPlusScte20DestinationSettings = list(),
 #'           RtmpCaptionInfoDestinationSettings = list(),
@@ -2807,6 +3256,7 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'               DestinationRefId = "string"
 #'             ),
 #'             DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
+#'             DiscontinuityTags = "INSERT"|"NEVER_INSERT",
 #'             EncryptionType = "AES128"|"SAMPLE_AES",
 #'             HlsCdnSettings = list(
 #'               HlsAkamaiSettings = list(
@@ -2841,6 +3291,7 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'             ),
 #'             HlsId3SegmentTagging = "DISABLED"|"ENABLED",
 #'             IFrameOnlyPlaylists = "DISABLED"|"STANDARD",
+#'             IncompleteSegmentBehavior = "AUTO"|"SUPPRESS",
 #'             IndexNSegments = 123,
 #'             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
 #'             IvInManifest = "EXCLUDE"|"INCLUDE",
@@ -2862,7 +3313,7 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'             ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
 #'             MinSegmentLength = 123,
 #'             Mode = "LIVE"|"VOD",
-#'             OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
+#'             OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY"|"VARIANT_MANIFESTS_AND_SEGMENTS",
 #'             ProgramDateTime = "EXCLUDE"|"INCLUDE",
 #'             ProgramDateTimePeriod = 123,
 #'             RedundantManifest = "DISABLED"|"ENABLED",
@@ -2905,6 +3356,9 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'           ),
 #'           MultiplexGroupSettings = list(),
 #'           RtmpGroupSettings = list(
+#'             AdMarkers = list(
+#'               "ON_CUE_POINT_SCTE35"
+#'             ),
 #'             AuthenticationScheme = "AKAMAI"|"COMMON",
 #'             CacheFullBehavior = "DISCONNECT_IMMEDIATELY"|"WAIT_FOR_SERVER",
 #'             CacheLength = 123,
@@ -2989,7 +3443,8 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'                     TimedMetadataPid = "string",
 #'                     TransportStreamId = 123,
 #'                     VideoPid = "string"
-#'                   )
+#'                   ),
+#'                   RawSettings = list()
 #'                 ),
 #'                 Extension = "string",
 #'                 NameModifier = "string"
@@ -3217,6 +3672,12 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'               Rec601Settings = list(),
 #'               Rec709Settings = list()
 #'             ),
+#'             FilterSettings = list(
+#'               TemporalFilterSettings = list(
+#'                 PostFilterSharpening = "AUTO"|"DISABLED"|"ENABLED",
+#'                 Strength = "AUTO"|"STRENGTH_1"|"STRENGTH_2"|"STRENGTH_3"|"STRENGTH_4"|"STRENGTH_5"|"STRENGTH_6"|"STRENGTH_7"|"STRENGTH_8"|"STRENGTH_9"|"STRENGTH_10"|"STRENGTH_11"|"STRENGTH_12"|"STRENGTH_13"|"STRENGTH_14"|"STRENGTH_15"|"STRENGTH_16"
+#'               )
+#'             ),
 #'             FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
 #'             FlickerAq = "DISABLED"|"ENABLED",
 #'             FramerateDenominator = 123,
@@ -3233,11 +3694,34 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'             Profile = "MAIN"|"MAIN_10BIT",
 #'             QvbrQualityLevel = 123,
 #'             RateControlMode = "CBR"|"MULTIPLEX"|"QVBR",
-#'             ScanType = "PROGRESSIVE",
+#'             ScanType = "INTERLACED"|"PROGRESSIVE",
 #'             SceneChangeDetect = "DISABLED"|"ENABLED",
 #'             Slices = 123,
 #'             Tier = "HIGH"|"MAIN",
 #'             TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
+#'           ),
+#'           Mpeg2Settings = list(
+#'             AdaptiveQuantization = "AUTO"|"HIGH"|"LOW"|"MEDIUM"|"OFF",
+#'             AfdSignaling = "AUTO"|"FIXED"|"NONE",
+#'             ColorMetadata = "IGNORE"|"INSERT",
+#'             ColorSpace = "AUTO"|"PASSTHROUGH",
+#'             DisplayAspectRatio = "DISPLAYRATIO16X9"|"DISPLAYRATIO4X3",
+#'             FilterSettings = list(
+#'               TemporalFilterSettings = list(
+#'                 PostFilterSharpening = "AUTO"|"DISABLED"|"ENABLED",
+#'                 Strength = "AUTO"|"STRENGTH_1"|"STRENGTH_2"|"STRENGTH_3"|"STRENGTH_4"|"STRENGTH_5"|"STRENGTH_6"|"STRENGTH_7"|"STRENGTH_8"|"STRENGTH_9"|"STRENGTH_10"|"STRENGTH_11"|"STRENGTH_12"|"STRENGTH_13"|"STRENGTH_14"|"STRENGTH_15"|"STRENGTH_16"
+#'               )
+#'             ),
+#'             FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
+#'             FramerateDenominator = 123,
+#'             FramerateNumerator = 123,
+#'             GopClosedCadence = 123,
+#'             GopNumBFrames = 123,
+#'             GopSize = 123.0,
+#'             GopSizeUnits = "FRAMES"|"SECONDS",
+#'             ScanType = "INTERLACED"|"PROGRESSIVE",
+#'             SubgopLength = "DYNAMIC"|"FIXED",
+#'             TimecodeInsertion = "DISABLED"|"GOP_TIMECODE"
 #'           )
 #'         ),
 #'         Height = 123,
@@ -3252,6 +3736,24 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'   InputAttachments = list(
 #'     list(
 #'       AutomaticInputFailoverSettings = list(
+#'         ErrorClearTimeMsec = 123,
+#'         FailoverConditions = list(
+#'           list(
+#'             FailoverConditionSettings = list(
+#'               AudioSilenceSettings = list(
+#'                 AudioSelectorName = "string",
+#'                 AudioSilenceThresholdMsec = 123
+#'               ),
+#'               InputLossSettings = list(
+#'                 InputLossThresholdMsec = 123
+#'               ),
+#'               VideoBlackSettings = list(
+#'                 BlackDetectThreshold = 123.0,
+#'                 VideoBlackThresholdMsec = 123
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         InputPreference = "EQUAL_INPUT_PREFERENCE"|"PRIMARY_INPUT_PREFERRED",
 #'         SecondaryInputId = "string"
 #'       ),
@@ -3284,6 +3786,9 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #'             LanguageCode = "string",
 #'             Name = "string",
 #'             SelectorSettings = list(
+#'               AncillarySourceSettings = list(
+#'                 SourceAncillaryChannelNumber = 123
+#'               ),
 #'               AribSourceSettings = list(),
 #'               DvbSubSourceSettings = list(
 #'                 Pid = 123
@@ -3351,14 +3856,14 @@ medialive_stop_multiplex <- function(MultiplexId) {
 #' @keywords internal
 #'
 #' @rdname medialive_update_channel
-medialive_update_channel <- function(ChannelId, Destinations = NULL, EncoderSettings = NULL, InputAttachments = NULL, InputSpecification = NULL, LogLevel = NULL, Name = NULL, RoleArn = NULL) {
+medialive_update_channel <- function(CdiInputSpecification = NULL, ChannelId, Destinations = NULL, EncoderSettings = NULL, InputAttachments = NULL, InputSpecification = NULL, LogLevel = NULL, Name = NULL, RoleArn = NULL) {
   op <- new_operation(
     name = "UpdateChannel",
     http_method = "PUT",
     http_path = "/prod/channels/{channelId}",
     paginator = list()
   )
-  input <- .medialive$update_channel_input(ChannelId = ChannelId, Destinations = Destinations, EncoderSettings = EncoderSettings, InputAttachments = InputAttachments, InputSpecification = InputSpecification, LogLevel = LogLevel, Name = Name, RoleArn = RoleArn)
+  input <- .medialive$update_channel_input(CdiInputSpecification = CdiInputSpecification, ChannelId = ChannelId, Destinations = Destinations, EncoderSettings = EncoderSettings, InputAttachments = InputAttachments, InputSpecification = InputSpecification, LogLevel = LogLevel, Name = Name, RoleArn = RoleArn)
   output <- .medialive$update_channel_output()
   config <- get_config()
   svc <- .medialive$service(config)
@@ -3509,11 +4014,13 @@ medialive_update_input <- function(Destinations = NULL, InputDevices = NULL, Inp
 #' Updates the parameters for the input device.
 #'
 #' @usage
-#' medialive_update_input_device(HdDeviceSettings, InputDeviceId, Name)
+#' medialive_update_input_device(HdDeviceSettings, InputDeviceId, Name,
+#'   UhdDeviceSettings)
 #'
-#' @param HdDeviceSettings The settings that you want to apply to the input device.
+#' @param HdDeviceSettings The settings that you want to apply to the HD input device.
 #' @param InputDeviceId &#91;required&#93; The unique ID of the input device. For example, hd-123456789abcdef.
 #' @param Name The name that you assigned to this input device (not the unique ID).
+#' @param UhdDeviceSettings The settings that you want to apply to the UHD input device.
 #'
 #' @section Request syntax:
 #' ```
@@ -3523,21 +4030,25 @@ medialive_update_input <- function(Destinations = NULL, InputDevices = NULL, Inp
 #'     MaxBitrate = 123
 #'   ),
 #'   InputDeviceId = "string",
-#'   Name = "string"
+#'   Name = "string",
+#'   UhdDeviceSettings = list(
+#'     ConfiguredInput = "AUTO"|"HDMI"|"SDI",
+#'     MaxBitrate = 123
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname medialive_update_input_device
-medialive_update_input_device <- function(HdDeviceSettings = NULL, InputDeviceId, Name = NULL) {
+medialive_update_input_device <- function(HdDeviceSettings = NULL, InputDeviceId, Name = NULL, UhdDeviceSettings = NULL) {
   op <- new_operation(
     name = "UpdateInputDevice",
     http_method = "PUT",
     http_path = "/prod/inputDevices/{inputDeviceId}",
     paginator = list()
   )
-  input <- .medialive$update_input_device_input(HdDeviceSettings = HdDeviceSettings, InputDeviceId = InputDeviceId, Name = Name)
+  input <- .medialive$update_input_device_input(HdDeviceSettings = HdDeviceSettings, InputDeviceId = InputDeviceId, Name = Name, UhdDeviceSettings = UhdDeviceSettings)
   output <- .medialive$update_input_device_output()
   config <- get_config()
   svc <- .medialive$service(config)
@@ -3666,7 +4177,8 @@ medialive_update_multiplex <- function(MultiplexId, MultiplexSettings = NULL, Na
 #'       ConstantBitrate = 123,
 #'       StatmuxSettings = list(
 #'         MaximumBitrate = 123,
-#'         MinimumBitrate = 123
+#'         MinimumBitrate = 123,
+#'         Priority = 123
 #'       )
 #'     )
 #'   ),

@@ -20,7 +20,7 @@ account in this Region to the AWS managed CMK for EBS.
 \details{
 After resetting the default CMK to the AWS managed CMK, you can continue
 to encrypt by a customer managed CMK by specifying it when you create
-the volume. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption}
+the volume. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

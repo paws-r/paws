@@ -8,7 +8,7 @@ autoscaling_set_instance_protection(InstanceIds, AutoScalingGroupName,
   ProtectedFromScaleIn)
 }
 \arguments{
-\item{InstanceIds}{[required] One or more instance IDs.}
+\item{InstanceIds}{[required] One or more instance IDs. You can specify up to 50 instances.}
 
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
@@ -20,8 +20,11 @@ Updates the instance protection settings of the specified instances.
 }
 \details{
 For more information about preventing instances that are part of an Auto
-Scaling group from terminating on scale in, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection}{Instance Protection}
+Scaling group from terminating on scale in, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection}{Instance scale-in protection}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
+
+If you exceed your maximum limit of instance IDs, which is 50 per Auto
+Scaling group, the call fails.
 }
 \section{Request syntax}{
 \preformatted{svc$set_instance_protection(

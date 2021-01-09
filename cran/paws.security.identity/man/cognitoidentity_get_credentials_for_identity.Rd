@@ -19,7 +19,7 @@ unauthenticated identity.
 
 The Logins parameter is required when using identities associated with
 external identity providers such as FaceBook. For examples of \code{Logins}
-maps, see the code examples in the \href{http://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html}{External Identity Providers}
+maps, see the code examples in the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html}{External Identity Providers}
 section of the Amazon Cognito Developer Guide.}
 
 \item{CustomRoleArn}{The Amazon Resource Name (ARN) of the role to be assumed when multiple

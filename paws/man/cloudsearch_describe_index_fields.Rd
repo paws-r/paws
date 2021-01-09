@@ -20,7 +20,7 @@ Gets information about the index fields configured for the search
 domain. Can be limited to specific fields by name. By default, shows all
 fields and includes any pending changes to the configuration. Set the
 \code{Deployed} option to \code{true} to show the active configuration and exclude
-pending changes. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html}{Getting Domain Information}
+pending changes. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html}{Getting Domain Information}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{

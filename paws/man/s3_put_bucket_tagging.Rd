@@ -4,16 +4,23 @@
 \alias{s3_put_bucket_tagging}
 \title{Sets the tags for a bucket}
 \usage{
-s3_put_bucket_tagging(Bucket, ContentMD5, Tagging)
+s3_put_bucket_tagging(Bucket, ContentMD5, Tagging, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. You must use this
 header as a message integrity check to verify that the request body was
-not corrupted in transit. For more information, see \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.}
+not corrupted in transit. For more information, see \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.}
 
 \item{Tagging}{[required] Container for the \code{TagSet} and \code{Tag} elements.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Sets the tags for a bucket.
@@ -65,8 +72,8 @@ the bucket.
 
 The following operations are related to \code{PutBucketTagging}:
 \itemize{
-\item GetBucketTagging
-\item DeleteBucketTagging
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html}{GetBucketTagging}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html}{DeleteBucketTagging}
 }
 }
 \section{Request syntax}{
@@ -80,7 +87,8 @@ The following operations are related to \code{PutBucketTagging}:
         Value = "string"
       )
     )
-  )
+  ),
+  ExpectedBucketOwner = "string"
 )
 }
 }

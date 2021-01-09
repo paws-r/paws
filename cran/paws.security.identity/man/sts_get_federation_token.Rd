@@ -110,7 +110,7 @@ in the \emph{IAM User Guide}.
 
 This parameter is optional. You can pass up to 50 session tags. The
 plain text session tag keys can’t exceed 128 characters and the values
-can’t exceed 256 characters. For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
+can’t exceed 256 characters. For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Character Limits}
 in the \emph{IAM User Guide}.
 
 An AWS conversion compresses the passed session policies and session
@@ -149,8 +149,8 @@ in the \emph{IAM User Guide}.
 You can create a mobile-based or browser-based app that can authenticate
 users using a web identity provider like Login with Amazon, Facebook,
 Google, or an OpenID Connect-compatible identity provider. In this case,
-we recommend that you use \href{http://aws.amazon.com/cognito/}{Amazon Cognito} or \code{AssumeRoleWithWebIdentity}.
-For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity}{Federation Through a Web-based Identity Provider}
+we recommend that you use \href{https://aws.amazon.com/cognito/}{Amazon Cognito} or
+\code{AssumeRoleWithWebIdentity}. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity}{Federation Through a Web-based Identity Provider}
 in the \emph{IAM User Guide}.
 
 You can also call \code{GetFederationToken} using the security credentials of

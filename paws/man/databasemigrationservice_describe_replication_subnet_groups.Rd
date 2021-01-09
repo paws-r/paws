@@ -8,7 +8,7 @@ databasemigrationservice_describe_replication_subnet_groups(Filters,
   MaxRecords, Marker)
 }
 \arguments{
-\item{Filters}{Filters applied to the describe action.
+\item{Filters}{Filters applied to replication subnet groups.
 
 Valid filter names: replication-subnet-group-id}
 

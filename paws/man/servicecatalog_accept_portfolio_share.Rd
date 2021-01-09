@@ -20,8 +20,8 @@ servicecatalog_accept_portfolio_share(AcceptLanguage, PortfolioId,
 \item{PortfolioShareType}{The type of shared portfolios to accept. The default is to accept
 imported portfolios.
 \itemize{
-\item \code{AWS_ORGANIZATIONS} - Accept portfolios shared by the master account
-of your organization.
+\item \code{AWS_ORGANIZATIONS} - Accept portfolios shared by the management
+account of your organization.
 \item \code{IMPORTED} - Accept imported portfolios.
 \item \code{AWS_SERVICECATALOG} - Not supported. (Throws
 ResourceNotFoundException.)

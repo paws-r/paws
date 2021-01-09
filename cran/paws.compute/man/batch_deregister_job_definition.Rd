@@ -11,8 +11,8 @@ batch_deregister_job_definition(jobDefinition)
 (ARN) of the job definition to deregister.}
 }
 \description{
-Deregisters an AWS Batch job definition. Job definitions will be
-permanently deleted after 180 days.
+Deregisters an AWS Batch job definition. Job definitions are permanently
+deleted after 180 days.
 }
 \section{Request syntax}{
 \preformatted{svc$deregister_job_definition(

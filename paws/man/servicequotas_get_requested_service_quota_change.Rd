@@ -2,15 +2,15 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_get_requested_service_quota_change}
 \alias{servicequotas_get_requested_service_quota_change}
-\title{Retrieves the details for a particular increase request}
+\title{Retrieves information about the specified quota increase request}
 \usage{
 servicequotas_get_requested_service_quota_change(RequestId)
 }
 \arguments{
-\item{RequestId}{[required] Identifies the quota increase request.}
+\item{RequestId}{[required] The ID of the quota increase request.}
 }
 \description{
-Retrieves the details for a particular increase request.
+Retrieves information about the specified quota increase request.
 }
 \section{Request syntax}{
 \preformatted{svc$get_requested_service_quota_change(

@@ -4,7 +4,7 @@
 \alias{glue_create_table}
 \title{Creates a new table definition in the Data Catalog}
 \usage{
-glue_create_table(CatalogId, DatabaseName, TableInput)
+glue_create_table(CatalogId, DatabaseName, TableInput, PartitionIndexes)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which to create the \code{Table}. If none is
@@ -15,6 +15,9 @@ compatibility, this name is entirely lowercase.}
 
 \item{TableInput}{[required] The \code{TableInput} object that defines the metadata table to create in the
 catalog.}
+
+\item{PartitionIndexes}{A list of partition indexes, \code{PartitionIndex} structures, to create in
+the table.}
 }
 \description{
 Creates a new table definition in the Data Catalog.
@@ -80,7 +83,16 @@ Creates a new table definition in the Data Catalog.
           "string"
         )
       ),
-      StoredAsSubDirectories = TRUE|FALSE
+      StoredAsSubDirectories = TRUE|FALSE,
+      SchemaReference = list(
+        SchemaId = list(
+          SchemaArn = "string",
+          SchemaName = "string",
+          RegistryName = "string"
+        ),
+        SchemaVersionId = "string",
+        SchemaVersionNumber = 123
+      )
     ),
     PartitionKeys = list(
       list(
@@ -102,6 +114,14 @@ Creates a new table definition in the Data Catalog.
       CatalogId = "string",
       DatabaseName = "string",
       Name = "string"
+    )
+  ),
+  PartitionIndexes = list(
+    list(
+      Keys = list(
+        "string"
+      ),
+      IndexName = "string"
     )
   )
 )

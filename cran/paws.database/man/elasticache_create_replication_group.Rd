@@ -14,7 +14,8 @@ elasticache_create_replication_group(ReplicationGroupId,
   SecurityGroupIds, Tags, SnapshotArns, SnapshotName,
   PreferredMaintenanceWindow, Port, NotificationTopicArn,
   AutoMinorVersionUpgrade, SnapshotRetentionLimit, SnapshotWindow,
-  AuthToken, TransitEncryptionEnabled, AtRestEncryptionEnabled, KmsKeyId)
+  AuthToken, TransitEncryptionEnabled, AtRestEncryptionEnabled, KmsKeyId,
+  UserGroupIds)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The replication group identifier. This parameter is stored as a
@@ -47,7 +48,7 @@ enabled) replication groups.
 Default: false}
 
 \item{MultiAZEnabled}{A flag indicating if you have Multi-AZ enabled to enhance fault
-tolerance. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html}{Minimizing Downtime: Multi-AZ}.}
+tolerance. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html}{Minimizing Downtime: Multi-AZ}.}
 
 \item{NumCacheClusters}{The number of clusters this replication group initially has.
 
@@ -112,6 +113,17 @@ previous generation counterparts.
 \itemize{
 \item Current generation:
 
+\strong{M6g node types} (available only for Redis engine version
+5.0.6 onward and for Memcached engine version 1.5.16 onward).
+
+\code{cache.m6g.large}, \code{cache.m6g.xlarge}, \code{cache.m6g.2xlarge},
+\code{cache.m6g.4xlarge}, \code{cache.m6g.8xlarge}, \code{cache.m6g.12xlarge},
+\code{cache.m6g.16xlarge}
+
+At this time, M6g node types are available in the following
+regions: us-east-1, us-west-2, us-east-2, eu-central-1,
+eu-west-1 and ap-northeast-1.
+
 \strong{M5 node types:} \code{cache.m5.large}, \code{cache.m5.xlarge},
 \code{cache.m5.2xlarge}, \code{cache.m5.4xlarge}, \code{cache.m5.12xlarge},
 \code{cache.m5.24xlarge}
@@ -143,6 +155,17 @@ previous generation counterparts.
 \item Memory optimized:
 \itemize{
 \item Current generation:
+
+\strong{R6g node types} (available only for Redis engine version
+5.0.6 onward and for Memcached engine version 1.5.16 onward).
+
+\code{cache.r6g.large}, \code{cache.r6g.xlarge}, \code{cache.r6g.2xlarge},
+\code{cache.r6g.4xlarge}, \code{cache.r6g.8xlarge}, \code{cache.r6g.12xlarge},
+\code{cache.r6g.16xlarge}
+
+At this time, R6g node types are available in the following
+regions: us-east-1, us-west-2, us-east-2, eu-central-1,
+eu-west-1 and ap-northeast-1.
 
 \strong{R5 node types:} \code{cache.r5.large}, \code{cache.r5.xlarge},
 \code{cache.r5.2xlarge}, \code{cache.r5.4xlarge}, \code{cache.r5.12xlarge},
@@ -306,8 +329,8 @@ length.
 in the AUTH token.
 }
 
-For more information, see \href{http://redis.io/commands/AUTH}{AUTH password}
-at http://redis.io/commands/AUTH.}
+For more information, see AUTH password at
+http://redis.io/commands/AUTH.}
 
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to \code{true}.
 
@@ -343,6 +366,8 @@ Amazon VPC using redis version \verb{3.2.6}, \verb{4.x} or later.
 Default: \code{false}}
 
 \item{KmsKeyId}{The ID of the KMS key used to encrypt the disk in the cluster.}
+
+\item{UserGroupIds}{The list of user groups to associate with the replication group.}
 }
 \description{
 Creates a Redis (cluster mode disabled) or a Redis (cluster mode
@@ -395,6 +420,10 @@ This operation is valid for Redis only.
       PrimaryAvailabilityZone = "string",
       ReplicaAvailabilityZones = list(
         "string"
+      ),
+      PrimaryOutpostArn = "string",
+      ReplicaOutpostArns = list(
+        "string"
       )
     )
   ),
@@ -428,7 +457,10 @@ This operation is valid for Redis only.
   AuthToken = "string",
   TransitEncryptionEnabled = TRUE|FALSE,
   AtRestEncryptionEnabled = TRUE|FALSE,
-  KmsKeyId = "string"
+  KmsKeyId = "string",
+  UserGroupIds = list(
+    "string"
+  )
 )
 }
 }

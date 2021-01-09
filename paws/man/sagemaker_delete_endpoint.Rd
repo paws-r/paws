@@ -16,7 +16,7 @@ were deployed when the endpoint was created.
 \details{
 Amazon SageMaker retires any custom KMS key grants associated with the
 endpoint, meaning you don't need to use the
-\href{http://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html}{RevokeGrant}
+\href{https://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html}{RevokeGrant}
 API call.
 }
 \section{Request syntax}{

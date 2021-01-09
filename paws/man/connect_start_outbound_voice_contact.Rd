@@ -12,7 +12,14 @@ connect_start_outbound_voice_contact(DestinationPhoneNumber,
 \arguments{
 \item{DestinationPhoneNumber}{[required] The phone number of the customer, in E.164 format.}
 
-\item{ContactFlowId}{[required] The identifier of the contact flow for the outbound call.}
+\item{ContactFlowId}{[required] The identifier of the contact flow for the outbound call. To see the
+ContactFlowId in the Amazon Connect console user interface, on the
+navigation menu go to \strong{Routing}, \strong{Contact Flows}. Choose the contact
+flow. On the contact flow page, under the name of the contact flow,
+choose \strong{Show additional flow information}. The ContactFlowId is the
+last part of the ARN, shown here in bold:
+
+arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/\strong{846ec553-a005-41c0-8341-xxxxxxxxxxxx}}
 
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 
@@ -51,6 +58,11 @@ the agent, like any other inbound case.
 
 There is a 60 second dialing timeout for this operation. If the call is
 not connected after 60 seconds, it fails.
+
+UK numbers with a 447 prefix are not allowed by default. Before you can
+dial these UK mobile numbers, you must submit a service quota increase
+request. For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html}{Amazon Connect Service Quotas}
+in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$start_outbound_voice_contact(

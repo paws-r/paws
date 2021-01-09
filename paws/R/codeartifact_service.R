@@ -7,7 +7,7 @@ NULL
 #' @description
 #' AWS CodeArtifact is a fully managed artifact repository compatible with
 #' language-native package managers and build tools such as npm, Apache
-#' Maven, and pip. You can use CodeArtifact to share packages with
+#' Maven, NuGet, and pip. You can use CodeArtifact to share packages with
 #' development teams and pull packages. Packages can be pulled from both
 #' public and CodeArtifact repositories. You can also create an upstream
 #' relationship between a CodeArtifact repository and another repository,
@@ -24,9 +24,8 @@ NULL
 #'     each of which maps to a set of assets, or files. Repositories are
 #'     polyglot, so a single repository can contain packages of any
 #'     supported type. Each repository exposes endpoints for fetching and
-#'     publishing packages using tools like the **`npm`** CLI, the Maven
-#'     CLI ( **`mvn`** ), and **`pip`** . You can create up to 100
-#'     repositories per AWS account.
+#'     publishing packages using tools like the **`npm`** CLI, the
+#'     **`NuGet`** CLI, the Maven CLI ( **`mvn`** ), and **`pip`** .
 #' 
 #' -   **Domain**: Repositories are aggregated into a higher-level entity
 #'     known as a *domain*. All package assets and metadata are stored in
@@ -53,8 +52,9 @@ NULL
 #'     CodeArtifact supports
 #'     [npm](https://docs.aws.amazon.com/codeartifact/latest/ug/using-npm.html),
 #'     [PyPI](https://docs.aws.amazon.com/codeartifact/latest/ug/using-python.html),
+#'     [Maven](https://docs.aws.amazon.com/codeartifact/latest/ug/using-maven.html),
 #'     and
-#'     [Maven](https://docs.aws.amazon.com/codeartifact/latest/ug/using-maven)
+#'     [NuGet](https://docs.aws.amazon.com/codeartifact/latest/ug/using-nuget.html)
 #'     package formats.
 #' 
 #'     In CodeArtifact, a package consists of:
@@ -157,6 +157,8 @@ NULL
 #' 
 #'     -   `maven`
 #' 
+#'     -   `nuget`
+#' 
 #' -   `GetRepositoryPermissionsPolicy`: Returns the resource policy that
 #'     is set on a repository.
 #' 
@@ -180,11 +182,18 @@ NULL
 #' -   `ListRepositoriesInDomain`: Returns a list of the repositories in a
 #'     domain.
 #' 
+#' -   `ListTagsForResource`: Returns a list of the tags associated with a
+#'     resource.
+#' 
 #' -   `PutDomainPermissionsPolicy`: Attaches a resource policy to a
 #'     domain.
 #' 
 #' -   `PutRepositoryPermissionsPolicy`: Sets the resource policy on a
 #'     repository that specifies permissions to access it.
+#' 
+#' -   `TagResource`: Adds or updates tags for a resource.
+#' 
+#' -   `UntagResource`: Removes a tag from a resource.
 #' 
 #' -   `UpdatePackageVersionsStatus`: Updates the status of one or more
 #'     versions of a package.
@@ -237,7 +246,7 @@ NULL
 #'  \link[=codeartifact_describe_repository]{describe_repository} \tab Returns a RepositoryDescription object that contains detailed information about the requested repository\cr
 #'  \link[=codeartifact_disassociate_external_connection]{disassociate_external_connection} \tab Removes an existing external connection from a repository\cr
 #'  \link[=codeartifact_dispose_package_versions]{dispose_package_versions} \tab Deletes the assets in package versions and sets the package versions' status to Disposed\cr
-#'  \link[=codeartifact_get_authorization_token]{get_authorization_token} \tab Generates a temporary authentication token for accessing repositories in the domain\cr
+#'  \link[=codeartifact_get_authorization_token]{get_authorization_token} \tab Generates a temporary authorization token for accessing repositories in the domain\cr
 #'  \link[=codeartifact_get_domain_permissions_policy]{get_domain_permissions_policy} \tab Returns the resource policy attached to the specified domain\cr
 #'  \link[=codeartifact_get_package_version_asset]{get_package_version_asset} \tab Returns an asset (or file) that is in a package\cr
 #'  \link[=codeartifact_get_package_version_readme]{get_package_version_readme} \tab Gets the readme file or descriptive text for a package version\cr
@@ -250,8 +259,11 @@ NULL
 #'  \link[=codeartifact_list_package_versions]{list_package_versions} \tab Returns a list of PackageVersionSummary objects for package versions in a repository that match the request parameters\cr
 #'  \link[=codeartifact_list_repositories]{list_repositories} \tab Returns a list of RepositorySummary objects\cr
 #'  \link[=codeartifact_list_repositories_in_domain]{list_repositories_in_domain} \tab Returns a list of RepositorySummary objects\cr
+#'  \link[=codeartifact_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS CodeArtifact\cr
 #'  \link[=codeartifact_put_domain_permissions_policy]{put_domain_permissions_policy} \tab Sets a resource policy on a domain that specifies permissions to access it\cr
 #'  \link[=codeartifact_put_repository_permissions_policy]{put_repository_permissions_policy} \tab Sets the resource policy on a repository that specifies permissions to access it\cr
+#'  \link[=codeartifact_tag_resource]{tag_resource} \tab Adds or updates tags for a resource in AWS CodeArtifact\cr
+#'  \link[=codeartifact_untag_resource]{untag_resource} \tab Removes tags from a resource in AWS CodeArtifact\cr
 #'  \link[=codeartifact_update_package_versions_status]{update_package_versions_status} \tab Updates the status of one or more versions of a package\cr
 #'  \link[=codeartifact_update_repository]{update_repository} \tab Update the properties of a repository
 #' }

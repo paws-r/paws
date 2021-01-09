@@ -18,7 +18,7 @@ aren't exported to CloudWatch Logs. For more information, see \href{https://docs
 in the \strong{Amazon EKS User Guide} .
 
 CloudWatch Logs ingestion, archive storage, and data scanning rates
-apply to exported control plane logs. For more information, see \href{http://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.}
+apply to exported control plane logs. For more information, see \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.}
 
 \item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
@@ -37,7 +37,7 @@ For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide
 in the \strong{Amazon EKS User Guide} .
 
 CloudWatch Logs ingestion, archive storage, and data scanning rates
-apply to exported control plane logs. For more information, see \href{http://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
+apply to exported control plane logs. For more information, see \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
 
 You can also use this API operation to enable or disable public and
 private access to your cluster's Kubernetes API server endpoint. By

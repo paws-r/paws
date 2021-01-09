@@ -27,7 +27,7 @@ character strings.
 the existing tag.
 \item Tagging actions are limited to 10 TPS per AWS account, per AWS
 region. If your application requires a higher throughput, file a
-\href{https://console.aws.amazon.com/support/home#/case/create?issueType=technical}{technical support request}.
+technical support request.
 }
 }
 \section{Request syntax}{

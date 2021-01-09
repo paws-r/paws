@@ -26,8 +26,8 @@ in the \emph{Amazon AppStream 2.0 Administration Guide}.
 
 To learn more about AppStream 2.0, see the following resources:
 \itemize{
-\item \href{http://aws.amazon.com/appstream2}{Amazon AppStream 2.0 product page}
-\item \href{http://aws.amazon.com/documentation/appstream2}{Amazon AppStream 2.0 documentation}
+\item \href{https://aws.amazon.com/appstream2/}{Amazon AppStream 2.0 product page}
+\item \href{https://docs.aws.amazon.com/appstream2/index.html}{Amazon AppStream 2.0 documentation}
 }
 }
 \section{Service syntax}{

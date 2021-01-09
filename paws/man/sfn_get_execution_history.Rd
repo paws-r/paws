@@ -5,7 +5,7 @@
 \title{Returns the history of the specified execution as a list of events}
 \usage{
 sfn_get_execution_history(executionArn, maxResults, reverseOrder,
-  nextToken)
+  nextToken, includeExecutionData)
 }
 \arguments{
 \item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution.}
@@ -25,6 +25,9 @@ again using the returned token to retrieve the next page. Keep all other
 arguments unchanged. Each pagination token expires after 24 hours. Using
 an expired pagination token will return an \emph{HTTP 400 InvalidToken}
 error.}
+
+\item{includeExecutionData}{You can select whether execution data (input or output of a history
+event) is returned. The default is \code{true}.}
 }
 \description{
 Returns the history of the specified execution as a list of events. By
@@ -47,7 +50,8 @@ This API action is not supported by \code{EXPRESS} state machines.
   executionArn = "string",
   maxResults = 123,
   reverseOrder = TRUE|FALSE,
-  nextToken = "string"
+  nextToken = "string",
+  includeExecutionData = TRUE|FALSE
 )
 }
 }

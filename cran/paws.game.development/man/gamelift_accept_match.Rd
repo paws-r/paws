@@ -45,9 +45,9 @@ players can be submitted as needed.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html}{Add FlexMatch to a Game Client}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html}{Add FlexMatch to a Game Client}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-events.html}{FlexMatch Events Reference}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html}{FlexMatch Events Reference}
 
 \strong{Related operations}
 \itemize{

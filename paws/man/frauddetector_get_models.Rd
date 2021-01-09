@@ -2,30 +2,36 @@
 % Please edit documentation in R/frauddetector_operations.R
 \name{frauddetector_get_models}
 \alias{frauddetector_get_models}
-\title{Gets all of the models for the AWS account, or the specified model type,
-or gets a single model for the specified model type, model ID
-combination}
+\title{Gets one or more models}
 \usage{
-frauddetector_get_models(modelType, modelId, nextToken, maxResults)
+frauddetector_get_models(modelId, modelType, nextToken, maxResults)
 }
 \arguments{
-\item{modelType}{The model type.}
-
 \item{modelId}{The model ID.}
 
-\item{nextToken}{The next token for the request.}
+\item{modelType}{The model type.}
 
-\item{maxResults}{The maximum results to return for the request.}
+\item{nextToken}{The next token for the subsequent request.}
+
+\item{maxResults}{The maximum number of objects to return for the request.}
 }
 \description{
-Gets all of the models for the AWS account, or the specified model type,
-or gets a single model for the specified model type, model ID
-combination.
+Gets one or more models. Gets all models for the AWS account if no model
+type and no model id provided. Gets all models for the AWS account and
+model type, if the model type is specified but model id is not provided.
+Gets a specific model if (model type, model id) tuple is specified.
+}
+\details{
+This is a paginated API. If you provide a null \code{maxResults}, this action
+retrieves a maximum of 10 records per page. If you provide a
+\code{maxResults}, the value must be between 1 and 10. To get the next page
+results, provide the pagination token from the response as part of your
+request. A null pagination token fetches the records from the beginning.
 }
 \section{Request syntax}{
 \preformatted{svc$get_models(
-  modelType = "ONLINE_FRAUD_INSIGHTS",
   modelId = "string",
+  modelType = "ONLINE_FRAUD_INSIGHTS",
   nextToken = "string",
   maxResults = 123
 )

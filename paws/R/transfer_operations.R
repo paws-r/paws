@@ -13,9 +13,9 @@ NULL
 #' created server.
 #'
 #' @usage
-#' transfer_create_server(Certificate, EndpointDetails, EndpointType,
-#'   HostKey, IdentityProviderDetails, IdentityProviderType, LoggingRole,
-#'   Protocols, Tags)
+#' transfer_create_server(Certificate, Domain, EndpointDetails,
+#'   EndpointType, HostKey, IdentityProviderDetails, IdentityProviderType,
+#'   LoggingRole, Protocols, SecurityPolicyName, Tags)
 #'
 #' @param Certificate The Amazon Resource Name (ARN) of the AWS Certificate Manager (ACM)
 #' certificate. Required when `Protocols` is set to `FTPS`.
@@ -49,16 +49,17 @@ NULL
 #' 
 #' The certificate must be a valid SSL/TLS X.509 version 3 certificate with
 #' FQDN or IP address specified and information about the issuer.
+#' @param Domain 
 #' @param EndpointDetails The virtual private cloud (VPC) endpoint settings that are configured
-#' for your file transfer protocol-enabled server. When you host your
-#' endpoint within your VPC, you can make it accessible only to resources
-#' within your VPC, or you can attach Elastic IPs and make it accessible to
-#' clients over the internet. Your VPC's default security groups are
-#' automatically assigned to your endpoint.
-#' @param EndpointType The type of VPC endpoint that you want your file transfer
-#' protocol-enabled server to connect to. You can choose to connect to the
-#' public internet or a VPC endpoint. With a VPC endpoint, you can restrict
-#' access to your server and resources only within your VPC.
+#' for your server. When you host your endpoint within your VPC, you can
+#' make it accessible only to resources within your VPC, or you can attach
+#' Elastic IPs and make it accessible to clients over the internet. Your
+#' VPC's default security groups are automatically assigned to your
+#' endpoint.
+#' @param EndpointType The type of VPC endpoint that you want your server to connect to. You
+#' can choose to connect to the public internet or a VPC endpoint. With a
+#' VPC endpoint, you can restrict access to your server and resources only
+#' within your VPC.
 #' 
 #' It is recommended that you use `VPC` as the `EndpointType`. With this
 #' endpoint type, you have the option to directly associate up to three
@@ -79,13 +80,12 @@ NULL
 #' array containing all of the information required to call a
 #' customer-supplied authentication API, including the API Gateway URL. Not
 #' required when `IdentityProviderType` is set to `SERVICE_MANAGED`.
-#' @param IdentityProviderType Specifies the mode of authentication for a file transfer
-#' protocol-enabled server. The default value is `SERVICE_MANAGED`, which
-#' allows you to store and access user credentials within the AWS Transfer
-#' Family service. Use the `API_GATEWAY` value to integrate with an
-#' identity provider of your choosing. The `API_GATEWAY` setting requires
-#' you to provide an API Gateway endpoint URL to call for authentication
-#' using the `IdentityProviderDetails` parameter.
+#' @param IdentityProviderType Specifies the mode of authentication for a server. The default value is
+#' `SERVICE_MANAGED`, which allows you to store and access user credentials
+#' within the AWS Transfer Family service. Use the `API_GATEWAY` value to
+#' integrate with an identity provider of your choosing. The `API_GATEWAY`
+#' setting requires you to provide an API Gateway endpoint URL to call for
+#' authentication using the `IdentityProviderDetails` parameter.
 #' @param LoggingRole Allows the service to write your users' activity to your Amazon
 #' CloudWatch logs for monitoring and auditing purposes.
 #' @param Protocols Specifies the file transfer protocol or protocols over which your file
@@ -112,13 +112,15 @@ NULL
 #' 
 #' If `Protocol` is set only to `SFTP`, the `EndpointType` can be set to
 #' `PUBLIC` and the `IdentityProviderType` can be set to `SERVICE_MANAGED`.
-#' @param Tags Key-value pairs that can be used to group and search for file transfer
-#' protocol-enabled servers.
+#' @param SecurityPolicyName Specifies the name of the security policy that is attached to the
+#' server.
+#' @param Tags Key-value pairs that can be used to group and search for servers.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_server(
 #'   Certificate = "string",
+#'   Domain = "S3"|"EFS",
 #'   EndpointDetails = list(
 #'     AddressAllocationIds = list(
 #'       "string"
@@ -127,7 +129,10 @@ NULL
 #'       "string"
 #'     ),
 #'     VpcEndpointId = "string",
-#'     VpcId = "string"
+#'     VpcId = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     )
 #'   ),
 #'   EndpointType = "PUBLIC"|"VPC"|"VPC_ENDPOINT",
 #'   HostKey = "string",
@@ -140,6 +145,7 @@ NULL
 #'   Protocols = list(
 #'     "SFTP"|"FTP"|"FTPS"
 #'   ),
+#'   SecurityPolicyName = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -152,14 +158,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname transfer_create_server
-transfer_create_server <- function(Certificate = NULL, EndpointDetails = NULL, EndpointType = NULL, HostKey = NULL, IdentityProviderDetails = NULL, IdentityProviderType = NULL, LoggingRole = NULL, Protocols = NULL, Tags = NULL) {
+transfer_create_server <- function(Certificate = NULL, Domain = NULL, EndpointDetails = NULL, EndpointType = NULL, HostKey = NULL, IdentityProviderDetails = NULL, IdentityProviderType = NULL, LoggingRole = NULL, Protocols = NULL, SecurityPolicyName = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateServer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transfer$create_server_input(Certificate = Certificate, EndpointDetails = EndpointDetails, EndpointType = EndpointType, HostKey = HostKey, IdentityProviderDetails = IdentityProviderDetails, IdentityProviderType = IdentityProviderType, LoggingRole = LoggingRole, Protocols = Protocols, Tags = Tags)
+  input <- .transfer$create_server_input(Certificate = Certificate, Domain = Domain, EndpointDetails = EndpointDetails, EndpointType = EndpointType, HostKey = HostKey, IdentityProviderDetails = IdentityProviderDetails, IdentityProviderType = IdentityProviderType, LoggingRole = LoggingRole, Protocols = Protocols, SecurityPolicyName = SecurityPolicyName, Tags = Tags)
   output <- .transfer$create_server_output()
   config <- get_config()
   svc <- .transfer$service(config)
@@ -183,20 +189,19 @@ transfer_create_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #'
 #' @usage
 #' transfer_create_user(HomeDirectory, HomeDirectoryType,
-#'   HomeDirectoryMappings, Policy, Role, ServerId, SshPublicKeyBody, Tags,
-#'   UserName)
+#'   HomeDirectoryMappings, Policy, PosixProfile, Role, ServerId,
+#'   SshPublicKeyBody, Tags, UserName)
 #'
-#' @param HomeDirectory The landing directory (folder) for a user when they log in to the file
-#' transfer protocol-enabled server using the client.
+#' @param HomeDirectory The landing directory (folder) for a user when they log in to the server
+#' using the client.
 #' 
 #' An example is *`your-Amazon-S3-bucket-name&gt;/home/username`* .
 #' @param HomeDirectoryType The type of landing directory (folder) you want your users' home
-#' directory to be when they log into the file transfer protocol-enabled
-#' server. If you set it to `PATH`, the user will see the absolute Amazon
-#' S3 bucket paths as is in their file transfer protocol clients. If you
-#' set it `LOGICAL`, you will need to provide mappings in the
-#' `HomeDirectoryMappings` for how you want to make Amazon S3 paths visible
-#' to your users.
+#' directory to be when they log into the server. If you set it to `PATH`,
+#' the user will see the absolute Amazon S3 bucket paths as is in their
+#' file transfer protocol clients. If you set it `LOGICAL`, you will need
+#' to provide mappings in the `HomeDirectoryMappings` for how you want to
+#' make Amazon S3 paths visible to your users.
 #' @param HomeDirectoryMappings Logical directory mappings that specify what Amazon S3 paths and keys
 #' should be visible to your user and how you want to make them visible.
 #' You will need to specify the "`Entry`" and "`Target`" pair, where
@@ -214,7 +219,7 @@ transfer_create_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #' 
 #' If the target of a logical directory entry does not exist in Amazon S3,
 #' the entry will be ignored. As a workaround, you can use the Amazon S3
-#' api to create 0 byte objects as place holders for your directory. If
+#' API to create 0 byte objects as place holders for your directory. If
 #' using the CLI, use the `s3api` call instead of `s3` so you can use the
 #' put-object operation. For example, you use the following:
 #' `aws s3api put-object --bucket bucketname --key path/to/folder/`. Make
@@ -236,24 +241,24 @@ transfer_create_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #' For more information, see
 #' [AssumeRole](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html)
 #' in the *AWS Security Token Service API Reference*.
+#' @param PosixProfile 
 #' @param Role &#91;required&#93; The IAM role that controls your users' access to your Amazon S3 bucket.
 #' The policies attached to this role will determine the level of access
 #' you want to provide your users when transferring files into and out of
 #' your Amazon S3 bucket or buckets. The IAM role should also contain a
-#' trust relationship that allows the file transfer protocol-enabled server
-#' to access your resources when servicing your users' transfer requests.
-#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a file transfer protocol-enabled
-#' server instance. This is the specific server that you added your user
-#' to.
+#' trust relationship that allows the server to access your resources when
+#' servicing your users' transfer requests.
+#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server instance. This is the
+#' specific server that you added your user to.
 #' @param SshPublicKeyBody The public portion of the Secure Shell (SSH) key used to authenticate
-#' the user to the file transfer protocol-enabled server.
+#' the user to the server.
 #' @param Tags Key-value pairs that can be used to group and search for users. Tags are
 #' metadata attached to users for any purpose.
-#' @param UserName &#91;required&#93; A unique string that identifies a user and is associated with a file
-#' transfer protocol-enabled server as specified by the `ServerId`. This
-#' user name must be a minimum of 3 and a maximum of 32 characters long.
-#' The following are valid characters: a-z, A-Z, 0-9, underscore, and
-#' hyphen. The user name can't start with a hyphen.
+#' @param UserName &#91;required&#93; A unique string that identifies a user and is associated with a as
+#' specified by the `ServerId`. This user name must be a minimum of 3 and a
+#' maximum of 100 characters long. The following are valid characters: a-z,
+#' A-Z, 0-9, underscore '\\_', hyphen '-', period '.', and at sign '@@'. The
+#' user name can't start with a hyphen, period, or at sign.
 #'
 #' @section Request syntax:
 #' ```
@@ -267,6 +272,13 @@ transfer_create_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #'     )
 #'   ),
 #'   Policy = "string",
+#'   PosixProfile = list(
+#'     Uid = 123,
+#'     Gid = 123,
+#'     SecondaryGids = list(
+#'       123
+#'     )
+#'   ),
 #'   Role = "string",
 #'   ServerId = "string",
 #'   SshPublicKeyBody = "string",
@@ -283,14 +295,14 @@ transfer_create_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #' @keywords internal
 #'
 #' @rdname transfer_create_user
-transfer_create_user <- function(HomeDirectory = NULL, HomeDirectoryType = NULL, HomeDirectoryMappings = NULL, Policy = NULL, Role, ServerId, SshPublicKeyBody = NULL, Tags = NULL, UserName) {
+transfer_create_user <- function(HomeDirectory = NULL, HomeDirectoryType = NULL, HomeDirectoryMappings = NULL, Policy = NULL, PosixProfile = NULL, Role, ServerId, SshPublicKeyBody = NULL, Tags = NULL, UserName) {
   op <- new_operation(
     name = "CreateUser",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transfer$create_user_input(HomeDirectory = HomeDirectory, HomeDirectoryType = HomeDirectoryType, HomeDirectoryMappings = HomeDirectoryMappings, Policy = Policy, Role = Role, ServerId = ServerId, SshPublicKeyBody = SshPublicKeyBody, Tags = Tags, UserName = UserName)
+  input <- .transfer$create_user_input(HomeDirectory = HomeDirectory, HomeDirectoryType = HomeDirectoryType, HomeDirectoryMappings = HomeDirectoryMappings, Policy = Policy, PosixProfile = PosixProfile, Role = Role, ServerId = ServerId, SshPublicKeyBody = SshPublicKeyBody, Tags = Tags, UserName = UserName)
   output <- .transfer$create_user_output()
   config <- get_config()
   svc <- .transfer$service(config)
@@ -309,8 +321,7 @@ transfer_create_user <- function(HomeDirectory = NULL, HomeDirectoryType = NULL,
 #' @usage
 #' transfer_delete_server(ServerId)
 #'
-#' @param ServerId &#91;required&#93; A unique system-assigned identifier for a file transfer protocol-enabled
-#' server instance.
+#' @param ServerId &#91;required&#93; A unique system-assigned identifier for a server instance.
 #'
 #' @section Request syntax:
 #' ```
@@ -396,10 +407,10 @@ transfer_delete_ssh_public_key <- function(ServerId, SshPublicKeyId, UserName) {
 #' @usage
 #' transfer_delete_user(ServerId, UserName)
 #'
-#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a file transfer protocol-enabled
-#' server instance that has the user assigned to it.
-#' @param UserName &#91;required&#93; A unique string that identifies a user that is being deleted from a file
-#' transfer protocol-enabled server.
+#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server instance that has the
+#' user assigned to it.
+#' @param UserName &#91;required&#93; A unique string that identifies a user that is being deleted from a
+#' server.
 #'
 #' @section Request syntax:
 #' ```
@@ -429,6 +440,48 @@ transfer_delete_user <- function(ServerId, UserName) {
 }
 .transfer$operations$delete_user <- transfer_delete_user
 
+#' Describes the security policy that is attached to your file transfer
+#' protocol-enabled server
+#'
+#' Describes the security policy that is attached to your file transfer
+#' protocol-enabled server. The response contains a description of the
+#' security policy's properties. For more information about security
+#' policies, see [Working with security
+#' policies](https://docs.aws.amazon.com/transfer/latest/userguide/security-policies.html).
+#'
+#' @usage
+#' transfer_describe_security_policy(SecurityPolicyName)
+#'
+#' @param SecurityPolicyName &#91;required&#93; Specifies the name of the security policy that is attached to the
+#' server.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_security_policy(
+#'   SecurityPolicyName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname transfer_describe_security_policy
+transfer_describe_security_policy <- function(SecurityPolicyName) {
+  op <- new_operation(
+    name = "DescribeSecurityPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transfer$describe_security_policy_input(SecurityPolicyName = SecurityPolicyName)
+  output <- .transfer$describe_security_policy_output()
+  config <- get_config()
+  svc <- .transfer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transfer$operations$describe_security_policy <- transfer_describe_security_policy
+
 #' Describes a file transfer protocol-enabled server that you specify by
 #' passing the ServerId parameter
 #'
@@ -442,8 +495,7 @@ transfer_delete_user <- function(ServerId, UserName) {
 #' @usage
 #' transfer_describe_server(ServerId)
 #'
-#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a file transfer protocol-enabled
-#' server.
+#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server.
 #'
 #' @section Request syntax:
 #' ```
@@ -484,11 +536,11 @@ transfer_describe_server <- function(ServerId) {
 #' @usage
 #' transfer_describe_user(ServerId, UserName)
 #'
-#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a file transfer protocol-enabled
-#' server that has this user assigned.
-#' @param UserName &#91;required&#93; The name of the user assigned to one or more file transfer
-#' protocol-enabled servers. User names are part of the sign-in credentials
-#' to use the AWS Transfer Family service and perform file transfer tasks.
+#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server that has this user
+#' assigned.
+#' @param UserName &#91;required&#93; The name of the user assigned to one or more servers. User names are
+#' part of the sign-in credentials to use the AWS Transfer Family service
+#' and perform file transfer tasks.
 #'
 #' @section Request syntax:
 #' ```
@@ -532,11 +584,9 @@ transfer_describe_user <- function(ServerId, UserName) {
 #' @usage
 #' transfer_import_ssh_public_key(ServerId, SshPublicKeyBody, UserName)
 #'
-#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a file transfer protocol-enabled
-#' server.
+#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server.
 #' @param SshPublicKeyBody &#91;required&#93; The public key portion of an SSH key pair.
-#' @param UserName &#91;required&#93; The name of the user account that is assigned to one or more file
-#' transfer protocol-enabled servers.
+#' @param UserName &#91;required&#93; The name of the user account that is assigned to one or more servers.
 #'
 #' @section Request syntax:
 #' ```
@@ -567,6 +617,50 @@ transfer_import_ssh_public_key <- function(ServerId, SshPublicKeyBody, UserName)
 }
 .transfer$operations$import_ssh_public_key <- transfer_import_ssh_public_key
 
+#' Lists the security policies that are attached to your file transfer
+#' protocol-enabled servers
+#'
+#' Lists the security policies that are attached to your file transfer
+#' protocol-enabled servers.
+#'
+#' @usage
+#' transfer_list_security_policies(MaxResults, NextToken)
+#'
+#' @param MaxResults Specifies the number of security policies to return as a response to the
+#' `ListSecurityPolicies` query.
+#' @param NextToken When additional results are obtained from the `ListSecurityPolicies`
+#' command, a `NextToken` parameter is returned in the output. You can then
+#' pass the `NextToken` parameter in a subsequent command to continue
+#' listing additional security policies.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_security_policies(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname transfer_list_security_policies
+transfer_list_security_policies <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListSecurityPolicies",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .transfer$list_security_policies_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .transfer$list_security_policies_output()
+  config <- get_config()
+  svc <- .transfer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.transfer$operations$list_security_policies <- transfer_list_security_policies
+
 #' Lists the file transfer protocol-enabled servers that are associated
 #' with your AWS account
 #'
@@ -576,12 +670,12 @@ transfer_import_ssh_public_key <- function(ServerId, SshPublicKeyBody, UserName)
 #' @usage
 #' transfer_list_servers(MaxResults, NextToken)
 #'
-#' @param MaxResults Specifies the number of file transfer protocol-enabled servers to return
-#' as a response to the `ListServers` query.
-#' @param NextToken When additional results are obtained from the`ListServers` command, a
+#' @param MaxResults Specifies the number of servers to return as a response to the
+#' `ListServers` query.
+#' @param NextToken When additional results are obtained from the `ListServers` command, a
 #' `NextToken` parameter is returned in the output. You can then pass the
 #' `NextToken` parameter in a subsequent command to continue listing
-#' additional file transfer protocol-enabled servers.
+#' additional servers.
 #'
 #' @section Request syntax:
 #' ```
@@ -674,8 +768,8 @@ transfer_list_tags_for_resource <- function(Arn, MaxResults = NULL, NextToken = 
 #' `NextToken` parameter is returned in the output. You can then pass in a
 #' subsequent command to the `NextToken` parameter to continue listing
 #' additional users.
-#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a file transfer protocol-enabled
-#' server that has users assigned to it.
+#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server that has users assigned
+#' to it.
 #'
 #' @section Request syntax:
 #' ```
@@ -722,8 +816,7 @@ transfer_list_users <- function(MaxResults = NULL, NextToken = NULL, ServerId) {
 #' @usage
 #' transfer_start_server(ServerId)
 #'
-#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a file transfer protocol-enabled
-#' server that you start.
+#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server that you start.
 #'
 #' @section Request syntax:
 #' ```
@@ -758,9 +851,11 @@ transfer_start_server <- function(ServerId) {
 #' Changes the state of a file transfer protocol-enabled server from
 #' `ONLINE` to `OFFLINE`. An `OFFLINE` server cannot accept and process
 #' file transfer jobs. Information tied to your server, such as server and
-#' user properties, are not affected by stopping your server. Stopping the
-#' server will not reduce or impact your file transfer protocol endpoint
-#' billing.
+#' user properties, are not affected by stopping your server.
+#' 
+#' Stopping the server will not reduce or impact your file transfer
+#' protocol endpoint billing; you must delete the server to stop being
+#' billed.
 #' 
 #' The state of `STOPPING` indicates that the server is in an intermediate
 #' state, either not fully able to respond, or not fully offline. The
@@ -771,8 +866,7 @@ transfer_start_server <- function(ServerId) {
 #' @usage
 #' transfer_stop_server(ServerId)
 #'
-#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a file transfer protocol-enabled
-#' server that you stopped.
+#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server that you stopped.
 #'
 #' @section Request syntax:
 #' ```
@@ -866,9 +960,8 @@ transfer_tag_resource <- function(Arn, Tags) {
 #' transfer_test_identity_provider(ServerId, ServerProtocol, SourceIp,
 #'   UserName, UserPassword)
 #'
-#' @param ServerId &#91;required&#93; A system-assigned identifier for a specific file transfer
-#' protocol-enabled server. That server's user authentication method is
-#' tested with a user name and password.
+#' @param ServerId &#91;required&#93; A system-assigned identifier for a specific server. That server's user
+#' authentication method is tested with a user name and password.
 #' @param ServerProtocol The type of file transfer protocol to be tested.
 #' 
 #' The available protocols are:
@@ -973,7 +1066,8 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #'
 #' @usage
 #' transfer_update_server(Certificate, EndpointDetails, EndpointType,
-#'   HostKey, IdentityProviderDetails, LoggingRole, Protocols, ServerId)
+#'   HostKey, IdentityProviderDetails, LoggingRole, Protocols,
+#'   SecurityPolicyName, ServerId)
 #'
 #' @param Certificate The Amazon Resource Name (ARN) of the AWS Certificate Manager (ACM)
 #' certificate. Required when `Protocols` is set to `FTPS`.
@@ -1008,14 +1102,14 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #' The certificate must be a valid SSL/TLS X.509 version 3 certificate with
 #' FQDN or IP address specified and information about the issuer.
 #' @param EndpointDetails The virtual private cloud (VPC) endpoint settings that are configured
-#' for your file transfer protocol-enabled server. With a VPC endpoint, you
-#' can restrict access to your server to resources only within your VPC. To
-#' control incoming internet traffic, you will need to associate one or
-#' more Elastic IP addresses with your server's endpoint.
-#' @param EndpointType The type of endpoint that you want your file transfer protocol-enabled
-#' server to connect to. You can choose to connect to the public internet
-#' or a VPC endpoint. With a VPC endpoint, you can restrict access to your
-#' server and resources only within your VPC.
+#' for your server. With a VPC endpoint, you can restrict access to your
+#' server to resources only within your VPC. To control incoming internet
+#' traffic, you will need to associate one or more Elastic IP addresses
+#' with your server's endpoint.
+#' @param EndpointType The type of endpoint that you want your server to connect to. You can
+#' choose to connect to the public internet or a VPC endpoint. With a VPC
+#' endpoint, you can restrict access to your server and resources only
+#' within your VPC.
 #' 
 #' It is recommended that you use `VPC` as the `EndpointType`. With this
 #' endpoint type, you have the option to directly associate up to three
@@ -1025,9 +1119,9 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #' @param HostKey The RSA private key as generated by
 #' `ssh-keygen -N "" -m PEM -f my-new-server-key`.
 #' 
-#' If you aren't planning to migrate existing users from an existing file
-#' transfer protocol-enabled server to a new server, don't update the host
-#' key. Accidentally changing a server's host key can be disruptive.
+#' If you aren't planning to migrate existing users from an existing server
+#' to a new server, don't update the host key. Accidentally changing a
+#' server's host key can be disruptive.
 #' 
 #' For more information, see [Change the host key for your SFTP-enabled
 #' server](https://docs.aws.amazon.com/transfer/latest/userguide/edit-server-config.html#configuring-servers-change-host-key)
@@ -1061,8 +1155,10 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #' 
 #' If `Protocol` is set only to `SFTP`, the `EndpointType` can be set to
 #' `PUBLIC` and the `IdentityProviderType` can be set to `SERVICE_MANAGED`.
-#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a file transfer protocol-enabled
-#' server instance that the user account is assigned to.
+#' @param SecurityPolicyName Specifies the name of the security policy that is attached to the
+#' server.
+#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server instance that the user
+#' account is assigned to.
 #'
 #' @section Request syntax:
 #' ```
@@ -1076,7 +1172,10 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #'       "string"
 #'     ),
 #'     VpcEndpointId = "string",
-#'     VpcId = "string"
+#'     VpcId = "string",
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     )
 #'   ),
 #'   EndpointType = "PUBLIC"|"VPC"|"VPC_ENDPOINT",
 #'   HostKey = "string",
@@ -1088,6 +1187,7 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #'   Protocols = list(
 #'     "SFTP"|"FTP"|"FTPS"
 #'   ),
+#'   SecurityPolicyName = "string",
 #'   ServerId = "string"
 #' )
 #' ```
@@ -1095,14 +1195,14 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname transfer_update_server
-transfer_update_server <- function(Certificate = NULL, EndpointDetails = NULL, EndpointType = NULL, HostKey = NULL, IdentityProviderDetails = NULL, LoggingRole = NULL, Protocols = NULL, ServerId) {
+transfer_update_server <- function(Certificate = NULL, EndpointDetails = NULL, EndpointType = NULL, HostKey = NULL, IdentityProviderDetails = NULL, LoggingRole = NULL, Protocols = NULL, SecurityPolicyName = NULL, ServerId) {
   op <- new_operation(
     name = "UpdateServer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transfer$update_server_input(Certificate = Certificate, EndpointDetails = EndpointDetails, EndpointType = EndpointType, HostKey = HostKey, IdentityProviderDetails = IdentityProviderDetails, LoggingRole = LoggingRole, Protocols = Protocols, ServerId = ServerId)
+  input <- .transfer$update_server_input(Certificate = Certificate, EndpointDetails = EndpointDetails, EndpointType = EndpointType, HostKey = HostKey, IdentityProviderDetails = IdentityProviderDetails, LoggingRole = LoggingRole, Protocols = Protocols, SecurityPolicyName = SecurityPolicyName, ServerId = ServerId)
   output <- .transfer$update_server_output()
   config <- get_config()
   svc <- .transfer$service(config)
@@ -1123,20 +1223,18 @@ transfer_update_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #'
 #' @usage
 #' transfer_update_user(HomeDirectory, HomeDirectoryType,
-#'   HomeDirectoryMappings, Policy, Role, ServerId, UserName)
+#'   HomeDirectoryMappings, Policy, PosixProfile, Role, ServerId, UserName)
 #'
 #' @param HomeDirectory Specifies the landing directory (folder) for a user when they log in to
-#' the file transfer protocol-enabled server using their file transfer
-#' protocol client.
+#' the server using their file transfer protocol client.
 #' 
 #' An example is `your-Amazon-S3-bucket-name&gt;/home/username`.
 #' @param HomeDirectoryType The type of landing directory (folder) you want your users' home
-#' directory to be when they log into the file transfer protocol-enabled
-#' server. If you set it to `PATH`, the user will see the absolute Amazon
-#' S3 bucket paths as is in their file transfer protocol clients. If you
-#' set it `LOGICAL`, you will need to provide mappings in the
-#' `HomeDirectoryMappings` for how you want to make Amazon S3 paths visible
-#' to your users.
+#' directory to be when they log into the server. If you set it to `PATH`,
+#' the user will see the absolute Amazon S3 bucket paths as is in their
+#' file transfer protocol clients. If you set it `LOGICAL`, you will need
+#' to provide mappings in the `HomeDirectoryMappings` for how you want to
+#' make Amazon S3 paths visible to your users.
 #' @param HomeDirectoryMappings Logical directory mappings that specify what Amazon S3 paths and keys
 #' should be visible to your user and how you want to make them visible.
 #' You will need to specify the "`Entry`" and "`Target`" pair, where
@@ -1154,7 +1252,7 @@ transfer_update_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #' 
 #' If the target of a logical directory entry does not exist in Amazon S3,
 #' the entry will be ignored. As a workaround, you can use the Amazon S3
-#' api to create 0 byte objects as place holders for your directory. If
+#' API to create 0 byte objects as place holders for your directory. If
 #' using the CLI, use the `s3api` call instead of `s3` so you can use the
 #' put-object operation. For example, you use the following:
 #' `aws s3api put-object --bucket bucketname --key path/to/folder/`. Make
@@ -1176,20 +1274,21 @@ transfer_update_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #' For more information, see
 #' [AssumeRole](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html)
 #' in the *AWS Security Token Service API Reference*.
+#' @param PosixProfile 
 #' @param Role The IAM role that controls your users' access to your Amazon S3 bucket.
 #' The policies attached to this role will determine the level of access
 #' you want to provide your users when transferring files into and out of
 #' your Amazon S3 bucket or buckets. The IAM role should also contain a
-#' trust relationship that allows the file transfer protocol-enabled server
-#' to access your resources when servicing your users' transfer requests.
-#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a file transfer protocol-enabled
-#' server instance that the user account is assigned to.
-#' @param UserName &#91;required&#93; A unique string that identifies a user and is associated with a file
-#' transfer protocol-enabled server as specified by the `ServerId`. This is
-#' the string that will be used by your user when they log in to your
-#' server. This user name is a minimum of 3 and a maximum of 32 characters
-#' long. The following are valid characters: a-z, A-Z, 0-9, underscore, and
-#' hyphen. The user name can't start with a hyphen.
+#' trust relationship that allows the server to access your resources when
+#' servicing your users' transfer requests.
+#' @param ServerId &#91;required&#93; A system-assigned unique identifier for a server instance that the user
+#' account is assigned to.
+#' @param UserName &#91;required&#93; A unique string that identifies a user and is associated with a server
+#' as specified by the `ServerId`. This user name must be a minimum of 3
+#' and a maximum of 100 characters long. The following are valid
+#' characters: a-z, A-Z, 0-9, underscore '\\_', hyphen '-', period '.', and
+#' at sign '@@'. The user name can't start with a hyphen, period, or at
+#' sign.
 #'
 #' @section Request syntax:
 #' ```
@@ -1203,6 +1302,13 @@ transfer_update_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #'     )
 #'   ),
 #'   Policy = "string",
+#'   PosixProfile = list(
+#'     Uid = 123,
+#'     Gid = 123,
+#'     SecondaryGids = list(
+#'       123
+#'     )
+#'   ),
 #'   Role = "string",
 #'   ServerId = "string",
 #'   UserName = "string"
@@ -1212,14 +1318,14 @@ transfer_update_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 #' @keywords internal
 #'
 #' @rdname transfer_update_user
-transfer_update_user <- function(HomeDirectory = NULL, HomeDirectoryType = NULL, HomeDirectoryMappings = NULL, Policy = NULL, Role = NULL, ServerId, UserName) {
+transfer_update_user <- function(HomeDirectory = NULL, HomeDirectoryType = NULL, HomeDirectoryMappings = NULL, Policy = NULL, PosixProfile = NULL, Role = NULL, ServerId, UserName) {
   op <- new_operation(
     name = "UpdateUser",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transfer$update_user_input(HomeDirectory = HomeDirectory, HomeDirectoryType = HomeDirectoryType, HomeDirectoryMappings = HomeDirectoryMappings, Policy = Policy, Role = Role, ServerId = ServerId, UserName = UserName)
+  input <- .transfer$update_user_input(HomeDirectory = HomeDirectory, HomeDirectoryType = HomeDirectoryType, HomeDirectoryMappings = HomeDirectoryMappings, Policy = Policy, PosixProfile = PosixProfile, Role = Role, ServerId = ServerId, UserName = UserName)
   output <- .transfer$update_user_output()
   config <- get_config()
   svc <- .transfer$service(config)

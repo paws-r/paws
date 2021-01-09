@@ -5,7 +5,7 @@
 \title{Creates a profiling group}
 \usage{
 codeguruprofiler_create_profiling_group(agentOrchestrationConfig,
-  clientToken, computePlatform, profilingGroupName)
+  clientToken, computePlatform, profilingGroupName, tags)
 }
 \arguments{
 \item{agentOrchestrationConfig}{Specifies whether profiling is enabled or disabled for the created
@@ -22,6 +22,8 @@ instance, an on-premises server, or a different platform. If not
 specified, \code{Default} is used.}
 
 \item{profilingGroupName}{[required] The name of the profiling group to create.}
+
+\item{tags}{A list of tags to add to the created profiling group.}
 }
 \description{
 Creates a profiling group.
@@ -33,7 +35,10 @@ Creates a profiling group.
   ),
   clientToken = "string",
   computePlatform = "AWSLambda"|"Default",
-  profilingGroupName = "string"
+  profilingGroupName = "string",
+  tags = list(
+    "string"
+  )
 )
 }
 }

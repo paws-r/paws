@@ -80,7 +80,7 @@ throttling on the individual tables. If you delay the batch operation
 using exponential backoff, the individual requests in the batch are much
 more likely to succeed.
 
-For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#Programming.Errors.BatchOperations}{Batch Operations and Error Handling}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html}{Batch Operations and Error Handling}
 in the \emph{Amazon DynamoDB Developer Guide}.
 
 With \code{BatchWriteItem}, you can efficiently write or delete large amounts

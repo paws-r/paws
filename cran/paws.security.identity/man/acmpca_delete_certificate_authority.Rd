@@ -9,7 +9,8 @@ acmpca_delete_certificate_authority(CertificateAuthorityArn,
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-CreateCertificateAuthority. This must have the following form:
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}.
+This must have the following form:
 
 \verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }.}
 
@@ -19,15 +20,19 @@ This can be anywhere from 7 to 30 days, with 30 being the default.}
 \description{
 Deletes a private certificate authority (CA). You must provide the
 Amazon Resource Name (ARN) of the private CA that you want to delete.
-You can find the ARN by calling the ListCertificateAuthorities action.
+You can find the ARN by calling the
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html}{ListCertificateAuthorities}
+action.
 }
 \details{
 Deleting a CA will invalidate other CAs and certificates below it in
 your CA hierarchy.
 
 Before you can delete a CA that you have created and activated, you must
-disable it. To do this, call the UpdateCertificateAuthority action and
-set the \strong{CertificateAuthorityStatus} parameter to \code{DISABLED}.
+disable it. To do this, call the
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UpdateCertificateAuthority.html}{UpdateCertificateAuthority}
+action and set the \strong{CertificateAuthorityStatus} parameter to
+\code{DISABLED}.
 
 Additionally, you can delete a CA if you are waiting for it to be
 created (that is, the status of the CA is \code{CREATING}). You can also
@@ -35,14 +40,18 @@ delete it if the CA has been created but you haven't yet imported the
 signed certificate into ACM Private CA (that is, the status of the CA is
 \code{PENDING_CERTIFICATE}).
 
-When you successfully call DeleteCertificateAuthority, the CA's status
-changes to \code{DELETED}. However, the CA won't be permanently deleted until
-the restoration period has passed. By default, if you do not set the
-\code{PermanentDeletionTimeInDays} parameter, the CA remains restorable for
-30 days. You can set the parameter from 7 to 30 days. The
-DescribeCertificateAuthority action returns the time remaining in the
-restoration window of a private CA in the \code{DELETED} state. To restore an
-eligible CA, call the RestoreCertificateAuthority action.
+When you successfully call
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeleteCertificateAuthority.html}{DeleteCertificateAuthority},
+the CA's status changes to \code{DELETED}. However, the CA won't be
+permanently deleted until the restoration period has passed. By default,
+if you do not set the \code{PermanentDeletionTimeInDays} parameter, the CA
+remains restorable for 30 days. You can set the parameter from 7 to 30
+days. The
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DescribeCertificateAuthority.html}{DescribeCertificateAuthority}
+action returns the time remaining in the restoration window of a private
+CA in the \code{DELETED} state. To restore an eligible CA, call the
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_RestoreCertificateAuthority.html}{RestoreCertificateAuthority}
+action.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_certificate_authority(

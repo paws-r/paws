@@ -24,8 +24,9 @@ If the default certificate is also in the certificate list, it appears
 twice in the results (once with \code{IsDefault} set to true and once with
 \code{IsDefault} set to false).
 
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates}{SSL Certificates}
-in the \emph{Application Load Balancers Guide}.
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates}{SSL certificates}
+in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#tls-listener-certificate}{Server certificates}
+in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_listener_certificates(

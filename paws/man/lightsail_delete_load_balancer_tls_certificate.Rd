@@ -26,7 +26,7 @@ balancer.
 \details{
 The \code{DeleteLoadBalancerTlsCertificate} operation supports tag-based
 access control via resource tags applied to the resource identified by
-\verb{load balancer name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{load balancer name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_load_balancer_tls_certificate(

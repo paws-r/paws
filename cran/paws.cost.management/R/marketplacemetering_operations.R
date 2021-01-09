@@ -17,6 +17,12 @@ NULL
 #' BatchMeterUsage.
 #' 
 #' BatchMeterUsage can process up to 25 UsageRecords at a time.
+#' 
+#' A UsageRecord can optionally include multiple usage allocations, to
+#' provide customers with usagedata split into buckets by tags that you
+#' define (or allow the customer to define).
+#' 
+#' BatchMeterUsage requests must be less than 1MB in size.
 #'
 #' @usage
 #' marketplacemetering_batch_meter_usage(UsageRecords, ProductCode)
@@ -37,7 +43,18 @@ NULL
 #'       ),
 #'       CustomerIdentifier = "string",
 #'       Dimension = "string",
-#'       Quantity = 123
+#'       Quantity = 123,
+#'       UsageAllocations = list(
+#'         list(
+#'           AllocatedUsageQuantity = 123,
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   ProductCode = "string"
@@ -71,10 +88,14 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' 
 #' MeterUsage is authenticated on the buyer's AWS account using credentials
 #' from the EC2 instance, ECS task, or EKS pod.
+#' 
+#' MeterUsage can optionally include multiple usage allocations, to provide
+#' customers with usage data split into buckets by tags that you define (or
+#' allow the customer to define).
 #'
 #' @usage
 #' marketplacemetering_meter_usage(ProductCode, Timestamp, UsageDimension,
-#'   UsageQuantity, DryRun)
+#'   UsageQuantity, DryRun, UsageAllocations)
 #'
 #' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in AWS Marketplace.
 #' The product code should be the same as the one used during the
@@ -89,6 +110,11 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' does not make the request. If you have the permissions, the request
 #' returns DryRunOperation; otherwise, it returns UnauthorizedException.
 #' Defaults to `false` if not specified.
+#' @param UsageAllocations The set of UsageAllocations to submit.
+#' 
+#' The sum of all UsageAllocation quantities must equal the UsageQuantity
+#' of the MeterUsage request, and each UsageAllocation must have a unique
+#' set of tags (include no tags).
 #'
 #' @section Request syntax:
 #' ```
@@ -99,21 +125,32 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #'   ),
 #'   UsageDimension = "string",
 #'   UsageQuantity = 123,
-#'   DryRun = TRUE|FALSE
+#'   DryRun = TRUE|FALSE,
+#'   UsageAllocations = list(
+#'     list(
+#'       AllocatedUsageQuantity = 123,
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname marketplacemetering_meter_usage
-marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimension, UsageQuantity = NULL, DryRun = NULL) {
+marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimension, UsageQuantity = NULL, DryRun = NULL, UsageAllocations = NULL) {
   op <- new_operation(
     name = "MeterUsage",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .marketplacemetering$meter_usage_input(ProductCode = ProductCode, Timestamp = Timestamp, UsageDimension = UsageDimension, UsageQuantity = UsageQuantity, DryRun = DryRun)
+  input <- .marketplacemetering$meter_usage_input(ProductCode = ProductCode, Timestamp = Timestamp, UsageDimension = UsageDimension, UsageQuantity = UsageQuantity, DryRun = DryRun, UsageAllocations = UsageAllocations)
   output <- .marketplacemetering$meter_usage_output()
   config <- get_config()
   svc <- .marketplacemetering$service(config)

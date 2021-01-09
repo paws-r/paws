@@ -26,7 +26,7 @@ NULL
 #'
 #' @param CustomerGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the customer gateway. For more
 #' information, see [Resources Defined by Amazon
-#' EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies).
+#' EC2](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html).
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param DeviceId &#91;required&#93; The ID of the device.
 #' @param LinkId The ID of the link.
@@ -103,6 +103,117 @@ networkmanager_associate_link <- function(GlobalNetworkId, DeviceId, LinkId) {
 }
 .networkmanager$operations$associate_link <- networkmanager_associate_link
 
+#' Associates a transit gateway Connect peer with a device, and optionally,
+#' with a link
+#'
+#' Associates a transit gateway Connect peer with a device, and optionally,
+#' with a link. If you specify a link, it must be associated with the
+#' specified device.
+#' 
+#' You can only associate transit gateway Connect peers that have been
+#' created on a transit gateway that's registered in your global network.
+#' 
+#' You cannot associate a transit gateway Connect peer with more than one
+#' device and link.
+#'
+#' @usage
+#' networkmanager_associate_transit_gateway_connect_peer(GlobalNetworkId,
+#'   TransitGatewayConnectPeerArn, DeviceId, LinkId)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param TransitGatewayConnectPeerArn &#91;required&#93; The Amazon Resource Name (ARN) of the Connect peer.
+#' @param DeviceId &#91;required&#93; The ID of the device.
+#' @param LinkId The ID of the link.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_transit_gateway_connect_peer(
+#'   GlobalNetworkId = "string",
+#'   TransitGatewayConnectPeerArn = "string",
+#'   DeviceId = "string",
+#'   LinkId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_associate_transit_gateway_connect_peer
+networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkId, TransitGatewayConnectPeerArn, DeviceId, LinkId = NULL) {
+  op <- new_operation(
+    name = "AssociateTransitGatewayConnectPeer",
+    http_method = "POST",
+    http_path = "/global-networks/{globalNetworkId}/transit-gateway-connect-peer-associations",
+    paginator = list()
+  )
+  input <- .networkmanager$associate_transit_gateway_connect_peer_input(GlobalNetworkId = GlobalNetworkId, TransitGatewayConnectPeerArn = TransitGatewayConnectPeerArn, DeviceId = DeviceId, LinkId = LinkId)
+  output <- .networkmanager$associate_transit_gateway_connect_peer_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$associate_transit_gateway_connect_peer <- networkmanager_associate_transit_gateway_connect_peer
+
+#' Creates a connection between two devices
+#'
+#' Creates a connection between two devices. The devices can be a physical
+#' or virtual appliance that connects to a third-party appliance in a VPC,
+#' or a physical appliance that connects to another physical appliance in
+#' an on-premises network.
+#'
+#' @usage
+#' networkmanager_create_connection(GlobalNetworkId, DeviceId,
+#'   ConnectedDeviceId, LinkId, ConnectedLinkId, Description, Tags)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param DeviceId &#91;required&#93; The ID of the first device in the connection.
+#' @param ConnectedDeviceId &#91;required&#93; The ID of the second device in the connection.
+#' @param LinkId The ID of the link for the first device.
+#' @param ConnectedLinkId The ID of the link for the second device.
+#' @param Description A description of the connection.
+#' 
+#' Length Constraints: Maximum length of 256 characters.
+#' @param Tags The tags to apply to the resource during creation.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connection(
+#'   GlobalNetworkId = "string",
+#'   DeviceId = "string",
+#'   ConnectedDeviceId = "string",
+#'   LinkId = "string",
+#'   ConnectedLinkId = "string",
+#'   Description = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_create_connection
+networkmanager_create_connection <- function(GlobalNetworkId, DeviceId, ConnectedDeviceId, LinkId = NULL, ConnectedLinkId = NULL, Description = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateConnection",
+    http_method = "POST",
+    http_path = "/global-networks/{globalNetworkId}/connections",
+    paginator = list()
+  )
+  input <- .networkmanager$create_connection_input(GlobalNetworkId = GlobalNetworkId, DeviceId = DeviceId, ConnectedDeviceId = ConnectedDeviceId, LinkId = LinkId, ConnectedLinkId = ConnectedLinkId, Description = Description, Tags = Tags)
+  output <- .networkmanager$create_connection_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$create_connection <- networkmanager_create_connection
+
 #' Creates a new device in a global network
 #'
 #' Creates a new device in a global network. If you specify both a site ID
@@ -110,10 +221,11 @@ networkmanager_associate_link <- function(GlobalNetworkId, DeviceId, LinkId) {
 #' the Network Manager console.
 #'
 #' @usage
-#' networkmanager_create_device(GlobalNetworkId, Description, Type, Vendor,
-#'   Model, SerialNumber, Location, SiteId, Tags)
+#' networkmanager_create_device(GlobalNetworkId, AWSLocation, Description,
+#'   Type, Vendor, Model, SerialNumber, Location, SiteId, Tags)
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param AWSLocation The AWS location of the device.
 #' @param Description A description of the device.
 #' 
 #' Length Constraints: Maximum length of 256 characters.
@@ -135,6 +247,10 @@ networkmanager_associate_link <- function(GlobalNetworkId, DeviceId, LinkId) {
 #' ```
 #' svc$create_device(
 #'   GlobalNetworkId = "string",
+#'   AWSLocation = list(
+#'     Zone = "string",
+#'     SubnetArn = "string"
+#'   ),
 #'   Description = "string",
 #'   Type = "string",
 #'   Vendor = "string",
@@ -158,14 +274,14 @@ networkmanager_associate_link <- function(GlobalNetworkId, DeviceId, LinkId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_device
-networkmanager_create_device <- function(GlobalNetworkId, Description = NULL, Type = NULL, Vendor = NULL, Model = NULL, SerialNumber = NULL, Location = NULL, SiteId = NULL, Tags = NULL) {
+networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, Description = NULL, Type = NULL, Vendor = NULL, Model = NULL, SerialNumber = NULL, Location = NULL, SiteId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDevice",
     http_method = "POST",
     http_path = "/global-networks/{globalNetworkId}/devices",
     paginator = list()
   )
-  input <- .networkmanager$create_device_input(GlobalNetworkId = GlobalNetworkId, Description = Description, Type = Type, Vendor = Vendor, Model = Model, SerialNumber = SerialNumber, Location = Location, SiteId = SiteId, Tags = Tags)
+  input <- .networkmanager$create_device_input(GlobalNetworkId = GlobalNetworkId, AWSLocation = AWSLocation, Description = Description, Type = Type, Vendor = Vendor, Model = Model, SerialNumber = SerialNumber, Location = Location, SiteId = SiteId, Tags = Tags)
   output <- .networkmanager$create_device_output()
   config <- get_config()
   svc <- .networkmanager$service(config)
@@ -347,6 +463,44 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
   return(response)
 }
 .networkmanager$operations$create_site <- networkmanager_create_site
+
+#' Deletes the specified connection in your global network
+#'
+#' Deletes the specified connection in your global network.
+#'
+#' @usage
+#' networkmanager_delete_connection(GlobalNetworkId, ConnectionId)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param ConnectionId &#91;required&#93; The ID of the connection.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connection(
+#'   GlobalNetworkId = "string",
+#'   ConnectionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_delete_connection
+networkmanager_delete_connection <- function(GlobalNetworkId, ConnectionId) {
+  op <- new_operation(
+    name = "DeleteConnection",
+    http_method = "DELETE",
+    http_path = "/global-networks/{globalNetworkId}/connections/{connectionId}",
+    paginator = list()
+  )
+  input <- .networkmanager$delete_connection_input(GlobalNetworkId = GlobalNetworkId, ConnectionId = ConnectionId)
+  output <- .networkmanager$delete_connection_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$delete_connection <- networkmanager_delete_connection
 
 #' Deletes an existing device
 #'
@@ -601,7 +755,7 @@ networkmanager_describe_global_networks <- function(GlobalNetworkIds = NULL, Max
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param CustomerGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the customer gateway. For more
 #' information, see [Resources Defined by Amazon
-#' EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies).
+#' EC2](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -672,6 +826,94 @@ networkmanager_disassociate_link <- function(GlobalNetworkId, DeviceId, LinkId) 
 }
 .networkmanager$operations$disassociate_link <- networkmanager_disassociate_link
 
+#' Disassociates a transit gateway Connect peer from a device and link
+#'
+#' Disassociates a transit gateway Connect peer from a device and link.
+#'
+#' @usage
+#' networkmanager_disassociate_transit_gateway_connect_peer(
+#'   GlobalNetworkId, TransitGatewayConnectPeerArn)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param TransitGatewayConnectPeerArn &#91;required&#93; The Amazon Resource Name (ARN) of the transit gateway Connect peer.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_transit_gateway_connect_peer(
+#'   GlobalNetworkId = "string",
+#'   TransitGatewayConnectPeerArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_disassociate_transit_gateway_connect_peer
+networkmanager_disassociate_transit_gateway_connect_peer <- function(GlobalNetworkId, TransitGatewayConnectPeerArn) {
+  op <- new_operation(
+    name = "DisassociateTransitGatewayConnectPeer",
+    http_method = "DELETE",
+    http_path = "/global-networks/{globalNetworkId}/transit-gateway-connect-peer-associations/{transitGatewayConnectPeerArn}",
+    paginator = list()
+  )
+  input <- .networkmanager$disassociate_transit_gateway_connect_peer_input(GlobalNetworkId = GlobalNetworkId, TransitGatewayConnectPeerArn = TransitGatewayConnectPeerArn)
+  output <- .networkmanager$disassociate_transit_gateway_connect_peer_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$disassociate_transit_gateway_connect_peer <- networkmanager_disassociate_transit_gateway_connect_peer
+
+#' Gets information about one or more of your connections in a global
+#' network
+#'
+#' Gets information about one or more of your connections in a global
+#' network.
+#'
+#' @usage
+#' networkmanager_get_connections(GlobalNetworkId, ConnectionIds, DeviceId,
+#'   MaxResults, NextToken)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param ConnectionIds One or more connection IDs.
+#' @param DeviceId The ID of the device.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_connections(
+#'   GlobalNetworkId = "string",
+#'   ConnectionIds = list(
+#'     "string"
+#'   ),
+#'   DeviceId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_connections
+networkmanager_get_connections <- function(GlobalNetworkId, ConnectionIds = NULL, DeviceId = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetConnections",
+    http_method = "GET",
+    http_path = "/global-networks/{globalNetworkId}/connections",
+    paginator = list()
+  )
+  input <- .networkmanager$get_connections_input(GlobalNetworkId = GlobalNetworkId, ConnectionIds = ConnectionIds, DeviceId = DeviceId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$get_connections_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_connections <- networkmanager_get_connections
+
 #' Gets the association information for customer gateways that are
 #' associated with devices and links in your global network
 #'
@@ -685,7 +927,7 @@ networkmanager_disassociate_link <- function(GlobalNetworkId, DeviceId, LinkId) 
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param CustomerGatewayArns One or more customer gateway Amazon Resource Names (ARNs). For more
 #' information, see [Resources Defined by Amazon
-#' EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies).
+#' EC2](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html).
 #' The maximum is 10.
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
@@ -915,6 +1157,53 @@ networkmanager_get_sites <- function(GlobalNetworkId, SiteIds = NULL, MaxResults
 }
 .networkmanager$operations$get_sites <- networkmanager_get_sites
 
+#' Gets information about one or more of your transit gateway Connect peer
+#' associations in a global network
+#'
+#' Gets information about one or more of your transit gateway Connect peer
+#' associations in a global network.
+#'
+#' @usage
+#' networkmanager_get_transit_gateway_connect_peer_associations(
+#'   GlobalNetworkId, TransitGatewayConnectPeerArns, MaxResults, NextToken)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param TransitGatewayConnectPeerArns One or more transit gateway Connect peer Amazon Resource Names (ARNs).
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_transit_gateway_connect_peer_associations(
+#'   GlobalNetworkId = "string",
+#'   TransitGatewayConnectPeerArns = list(
+#'     "string"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_transit_gateway_connect_peer_associations
+networkmanager_get_transit_gateway_connect_peer_associations <- function(GlobalNetworkId, TransitGatewayConnectPeerArns = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetTransitGatewayConnectPeerAssociations",
+    http_method = "GET",
+    http_path = "/global-networks/{globalNetworkId}/transit-gateway-connect-peer-associations",
+    paginator = list()
+  )
+  input <- .networkmanager$get_transit_gateway_connect_peer_associations_input(GlobalNetworkId = GlobalNetworkId, TransitGatewayConnectPeerArns = TransitGatewayConnectPeerArns, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .networkmanager$get_transit_gateway_connect_peer_associations_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_transit_gateway_connect_peer_associations <- networkmanager_get_transit_gateway_connect_peer_associations
+
 #' Gets information about the transit gateway registrations in a specified
 #' global network
 #'
@@ -1013,7 +1302,7 @@ networkmanager_list_tags_for_resource <- function(ResourceArn) {
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param TransitGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the transit gateway. For more
 #' information, see [Resources Defined by Amazon
-#' EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html#amazonec2-resources-for-iam-policies).
+#' EC2](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonec2.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -1126,17 +1415,66 @@ networkmanager_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .networkmanager$operations$untag_resource <- networkmanager_untag_resource
 
+#' Updates the information for an existing connection
+#'
+#' Updates the information for an existing connection. To remove
+#' information for any of the parameters, specify an empty string.
+#'
+#' @usage
+#' networkmanager_update_connection(GlobalNetworkId, ConnectionId, LinkId,
+#'   ConnectedLinkId, Description)
+#'
+#' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
+#' @param ConnectionId &#91;required&#93; The ID of the connection.
+#' @param LinkId The ID of the link for the first device in the connection.
+#' @param ConnectedLinkId The ID of the link for the second device in the connection.
+#' @param Description A description of the connection.
+#' 
+#' Length Constraints: Maximum length of 256 characters.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connection(
+#'   GlobalNetworkId = "string",
+#'   ConnectionId = "string",
+#'   LinkId = "string",
+#'   ConnectedLinkId = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_update_connection
+networkmanager_update_connection <- function(GlobalNetworkId, ConnectionId, LinkId = NULL, ConnectedLinkId = NULL, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateConnection",
+    http_method = "PATCH",
+    http_path = "/global-networks/{globalNetworkId}/connections/{connectionId}",
+    paginator = list()
+  )
+  input <- .networkmanager$update_connection_input(GlobalNetworkId = GlobalNetworkId, ConnectionId = ConnectionId, LinkId = LinkId, ConnectedLinkId = ConnectedLinkId, Description = Description)
+  output <- .networkmanager$update_connection_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$update_connection <- networkmanager_update_connection
+
 #' Updates the details for an existing device
 #'
 #' Updates the details for an existing device. To remove information for
 #' any of the parameters, specify an empty string.
 #'
 #' @usage
-#' networkmanager_update_device(GlobalNetworkId, DeviceId, Description,
-#'   Type, Vendor, Model, SerialNumber, Location, SiteId)
+#' networkmanager_update_device(GlobalNetworkId, DeviceId, AWSLocation,
+#'   Description, Type, Vendor, Model, SerialNumber, Location, SiteId)
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param DeviceId &#91;required&#93; The ID of the device.
+#' @param AWSLocation The AWS location of the device.
 #' @param Description A description of the device.
 #' 
 #' Length Constraints: Maximum length of 256 characters.
@@ -1158,6 +1496,10 @@ networkmanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' svc$update_device(
 #'   GlobalNetworkId = "string",
 #'   DeviceId = "string",
+#'   AWSLocation = list(
+#'     Zone = "string",
+#'     SubnetArn = "string"
+#'   ),
 #'   Description = "string",
 #'   Type = "string",
 #'   Vendor = "string",
@@ -1175,14 +1517,14 @@ networkmanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_update_device
-networkmanager_update_device <- function(GlobalNetworkId, DeviceId, Description = NULL, Type = NULL, Vendor = NULL, Model = NULL, SerialNumber = NULL, Location = NULL, SiteId = NULL) {
+networkmanager_update_device <- function(GlobalNetworkId, DeviceId, AWSLocation = NULL, Description = NULL, Type = NULL, Vendor = NULL, Model = NULL, SerialNumber = NULL, Location = NULL, SiteId = NULL) {
   op <- new_operation(
     name = "UpdateDevice",
     http_method = "PATCH",
     http_path = "/global-networks/{globalNetworkId}/devices/{deviceId}",
     paginator = list()
   )
-  input <- .networkmanager$update_device_input(GlobalNetworkId = GlobalNetworkId, DeviceId = DeviceId, Description = Description, Type = Type, Vendor = Vendor, Model = Model, SerialNumber = SerialNumber, Location = Location, SiteId = SiteId)
+  input <- .networkmanager$update_device_input(GlobalNetworkId = GlobalNetworkId, DeviceId = DeviceId, AWSLocation = AWSLocation, Description = Description, Type = Type, Vendor = Vendor, Model = Model, SerialNumber = SerialNumber, Location = Location, SiteId = SiteId)
   output <- .networkmanager$update_device_output()
   config <- get_config()
   svc <- .networkmanager$service(config)

@@ -106,7 +106,7 @@ in the \emph{IAM User Guide}.
 
 This parameter is optional. You can pass up to 50 session tags. The
 plain text session tag keys can’t exceed 128 characters, and the values
-can’t exceed 256 characters. For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
+can’t exceed 256 characters. For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Character Limits}
 in the \emph{IAM User Guide}.
 
 An AWS conversion compresses the passed session policies and session
@@ -131,8 +131,8 @@ Additionally, if you used temporary credentials to perform this
 operation, the new session inherits any transitive session tags from the
 calling session. If you pass a session tag with the same key as an
 inherited tag, the operation fails. To view the inherited tags for a
-session, see the AWS CloudTrail logs. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/session-tags.html#id_session-tags_ctlogs}{Viewing Session Tags in CloudTrail}
-in the \emph{IAM User Guide}.}
+session, see the AWS CloudTrail logs. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/}{Viewing Session Tags in CloudTrail} in the
+\emph{IAM User Guide}.}
 
 \item{TransitiveTagKeys}{A list of keys for session tags that you want to set as transitive. If
 you set a tag key as transitive, the corresponding key and value passes
@@ -299,7 +299,7 @@ authentication might look like the following example.
 
 \verb{"Condition": \\\{"Bool": \\\{"aws:MultiFactorAuthPresent": true\\\}\\\}}
 
-For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/MFAProtectedAPI.html}{Configuring MFA-Protected API Access}
+For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_configure-api-require.html}{Configuring MFA-Protected API Access}
 in the \emph{IAM User Guide} guide.
 
 To use MFA with \code{AssumeRole}, you pass values for the \code{SerialNumber} and

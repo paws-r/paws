@@ -24,7 +24,7 @@ resources as a single unit called a stack. AWS CloudFormation creates
 and deletes all member resources of the stack together and manages all
 dependencies between the resources for you.
 
-For more information about AWS CloudFormation, see the \href{http://aws.amazon.com/cloudformation/}{AWS CloudFormation Product Page}.
+For more information about AWS CloudFormation, see the \href{https://aws.amazon.com/cloudformation/}{AWS CloudFormation Product Page}.
 
 Amazon CloudFormation makes use of other AWS products. If you need
 additional technical information about a specific AWS product, you can

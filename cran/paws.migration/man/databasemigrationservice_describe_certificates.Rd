@@ -8,7 +8,7 @@ databasemigrationservice_describe_certificates(Filters, MaxRecords,
   Marker)
 }
 \arguments{
-\item{Filters}{Filters applied to the certificate described in the form of key-value
+\item{Filters}{Filters applied to the certificates described in the form of key-value
 pairs.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more

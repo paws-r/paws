@@ -33,8 +33,7 @@ Lightsail is currently available.}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \verb{tag resource}
-operation.}
+Use the \code{TagResource} action to tag a resource after it's created.}
 
 \item{addOns}{An array of objects that represent the add-ons to enable for the new
 disk.}
@@ -48,7 +47,8 @@ Constraints:
 \verb{disk snapshot name} parameter. The \verb{source disk name} and
 \verb{disk snapshot name} parameters are mutually exclusive.
 \item Define this parameter only when creating a new disk from an
-automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+automatic snapshot. For more information, see the Lightsail Dev
+Guide.
 }}
 
 \item{restoreDate}{The date of the automatic snapshot to use for the new disk. Use the
@@ -63,7 +63,8 @@ Constraints:
 and \verb{use latest restorable auto snapshot} parameters are mutually
 exclusive.
 \item Define this parameter only when creating a new disk from an
-automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+automatic snapshot. For more information, see the Lightsail Dev
+Guide.
 }}
 
 \item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
@@ -75,7 +76,8 @@ Constraints:
 parameter. The \verb{use latest restorable auto snapshot} and
 \verb{restore date} parameters are mutually exclusive.
 \item Define this parameter only when creating a new disk from an
-automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+automatic snapshot. For more information, see the Lightsail Dev
+Guide.
 }}
 }
 \description{
@@ -87,7 +89,7 @@ in the same Availability Zone (e.g., \verb{us-east-2a}).
 The \verb{create disk from snapshot} operation supports tag-based access
 control via request tags and resource tags applied to the resource
 identified by \verb{disk snapshot name}. For more information, see the
-\href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_disk_from_snapshot(

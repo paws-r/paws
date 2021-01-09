@@ -16,7 +16,7 @@ NULL
 #'   Tags, HostArn)
 #'
 #' @param ProviderType The name of the external provider where your third-party code repository
-#' is configured. The valid provider type is Bitbucket.
+#' is configured.
 #' @param ConnectionName &#91;required&#93; The name of the connection to be created. The name must be unique in the
 #' calling AWS account.
 #' @param Tags The key-value pair to use when tagging the resource.
@@ -26,7 +26,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$create_connection(
-#'   ProviderType = "Bitbucket"|"GitHubEnterpriseServer",
+#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
 #'   ConnectionName = "string",
 #'   Tags = list(
 #'     list(
@@ -91,7 +91,7 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #' ```
 #' svc$create_host(
 #'   Name = "string",
-#'   ProviderType = "Bitbucket"|"GitHubEnterpriseServer",
+#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
 #'   ProviderEndpoint = "string",
 #'   VpcConfiguration = list(
 #'     VpcId = "string",
@@ -301,7 +301,7 @@ codestarconnections_get_host <- function(HostArn) {
 #' @section Request syntax:
 #' ```
 #' svc$list_connections(
-#'   ProviderTypeFilter = "Bitbucket"|"GitHubEnterpriseServer",
+#'   ProviderTypeFilter = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
 #'   HostArnFilter = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -492,3 +492,55 @@ codestarconnections_untag_resource <- function(ResourceArn, TagKeys) {
   return(response)
 }
 .codestarconnections$operations$untag_resource <- codestarconnections_untag_resource
+
+#' Updates a specified host with the provided configurations
+#'
+#' Updates a specified host with the provided configurations.
+#'
+#' @usage
+#' codestarconnections_update_host(HostArn, ProviderEndpoint,
+#'   VpcConfiguration)
+#'
+#' @param HostArn &#91;required&#93; The Amazon Resource Name (ARN) of the host to be updated.
+#' @param ProviderEndpoint The URL or endpoint of the host to be updated.
+#' @param VpcConfiguration The VPC configuration of the host to be updated. A VPC must be
+#' configured and the infrastructure to be represented by the host must
+#' already be connected to the VPC.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_host(
+#'   HostArn = "string",
+#'   ProviderEndpoint = "string",
+#'   VpcConfiguration = list(
+#'     VpcId = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupIds = list(
+#'       "string"
+#'     ),
+#'     TlsCertificate = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codestarconnections_update_host
+codestarconnections_update_host <- function(HostArn, ProviderEndpoint = NULL, VpcConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateHost",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codestarconnections$update_host_input(HostArn = HostArn, ProviderEndpoint = ProviderEndpoint, VpcConfiguration = VpcConfiguration)
+  output <- .codestarconnections$update_host_output()
+  config <- get_config()
+  svc <- .codestarconnections$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codestarconnections$operations$update_host <- codestarconnections_update_host

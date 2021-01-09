@@ -44,6 +44,7 @@ in the \emph{AWS Database Migration User Guide.}
 \tabular{ll}{
 \link[=databasemigrationservice_add_tags_to_resource]{add_tags_to_resource} \tab Adds metadata tags to an AWS DMS resource, including replication instance, endpoint, security group, and migration task\cr
 \link[=databasemigrationservice_apply_pending_maintenance_action]{apply_pending_maintenance_action} \tab Applies a pending maintenance action to a resource (for example, to a replication instance)\cr
+\link[=databasemigrationservice_cancel_replication_task_assessment_run]{cancel_replication_task_assessment_run} \tab Cancels a single premigration assessment run\cr
 \link[=databasemigrationservice_create_endpoint]{create_endpoint} \tab Creates an endpoint using the provided settings\cr
 \link[=databasemigrationservice_create_event_subscription]{create_event_subscription} \tab Creates an AWS DMS event notification subscription\cr
 \link[=databasemigrationservice_create_replication_instance]{create_replication_instance} \tab Creates the replication instance using the specified parameters\cr
@@ -56,7 +57,9 @@ in the \emph{AWS Database Migration User Guide.}
 \link[=databasemigrationservice_delete_replication_instance]{delete_replication_instance} \tab Deletes the specified replication instance\cr
 \link[=databasemigrationservice_delete_replication_subnet_group]{delete_replication_subnet_group} \tab Deletes a subnet group\cr
 \link[=databasemigrationservice_delete_replication_task]{delete_replication_task} \tab Deletes the specified replication task\cr
+\link[=databasemigrationservice_delete_replication_task_assessment_run]{delete_replication_task_assessment_run} \tab Deletes the record of a single premigration assessment run\cr
 \link[=databasemigrationservice_describe_account_attributes]{describe_account_attributes} \tab Lists all of the AWS DMS attributes for a customer account\cr
+\link[=databasemigrationservice_describe_applicable_individual_assessments]{describe_applicable_individual_assessments} \tab Provides a list of individual assessments that you can specify for a new premigration assessment run, given one or more parameters\cr
 \link[=databasemigrationservice_describe_certificates]{describe_certificates} \tab Provides a description of the certificate\cr
 \link[=databasemigrationservice_describe_connections]{describe_connections} \tab Describes the status of the connections that have been made between the replication instance and an endpoint\cr
 \link[=databasemigrationservice_describe_endpoints]{describe_endpoints} \tab Returns information about the endpoints for your account in the current region\cr
@@ -71,22 +74,26 @@ in the \emph{AWS Database Migration User Guide.}
 \link[=databasemigrationservice_describe_replication_instance_task_logs]{describe_replication_instance_task_logs} \tab Returns information about the task logs for the specified task\cr
 \link[=databasemigrationservice_describe_replication_subnet_groups]{describe_replication_subnet_groups} \tab Returns information about the replication subnet groups\cr
 \link[=databasemigrationservice_describe_replication_task_assessment_results]{describe_replication_task_assessment_results} \tab Returns the task assessment results from Amazon S3\cr
+\link[=databasemigrationservice_describe_replication_task_assessment_runs]{describe_replication_task_assessment_runs} \tab Returns a paginated list of premigration assessment runs based on filter settings\cr
+\link[=databasemigrationservice_describe_replication_task_individual_assessments]{describe_replication_task_individual_assessments} \tab Returns a paginated list of individual assessments based on filter settings\cr
 \link[=databasemigrationservice_describe_replication_tasks]{describe_replication_tasks} \tab Returns information about replication tasks for your account in the current region\cr
 \link[=databasemigrationservice_describe_schemas]{describe_schemas} \tab Returns information about the schema for the specified endpoint\cr
 \link[=databasemigrationservice_describe_table_statistics]{describe_table_statistics} \tab Returns table statistics on the database migration task, including table name, rows inserted, rows updated, and rows deleted\cr
 \link[=databasemigrationservice_import_certificate]{import_certificate} \tab Uploads the specified certificate\cr
-\link[=databasemigrationservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags for an AWS DMS resource\cr
+\link[=databasemigrationservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists all metadata tags attached to an AWS DMS resource, including replication instance, endpoint, security group, and migration task\cr
 \link[=databasemigrationservice_modify_endpoint]{modify_endpoint} \tab Modifies the specified endpoint\cr
 \link[=databasemigrationservice_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing AWS DMS event notification subscription\cr
 \link[=databasemigrationservice_modify_replication_instance]{modify_replication_instance} \tab Modifies the replication instance to apply new settings\cr
 \link[=databasemigrationservice_modify_replication_subnet_group]{modify_replication_subnet_group} \tab Modifies the settings for the specified replication subnet group\cr
 \link[=databasemigrationservice_modify_replication_task]{modify_replication_task} \tab Modifies the specified replication task\cr
+\link[=databasemigrationservice_move_replication_task]{move_replication_task} \tab Moves a replication task from its current replication instance to a different target replication instance using the specified parameters\cr
 \link[=databasemigrationservice_reboot_replication_instance]{reboot_replication_instance} \tab Reboots a replication instance\cr
 \link[=databasemigrationservice_refresh_schemas]{refresh_schemas} \tab Populates the schema for the specified endpoint\cr
 \link[=databasemigrationservice_reload_tables]{reload_tables} \tab Reloads the target database table with the source data\cr
-\link[=databasemigrationservice_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes metadata tags from a DMS resource\cr
+\link[=databasemigrationservice_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes metadata tags from an AWS DMS resource, including replication instance, endpoint, security group, and migration task\cr
 \link[=databasemigrationservice_start_replication_task]{start_replication_task} \tab Starts the replication task\cr
 \link[=databasemigrationservice_start_replication_task_assessment]{start_replication_task_assessment} \tab Starts the replication task assessment for unsupported data types in the source database\cr
+\link[=databasemigrationservice_start_replication_task_assessment_run]{start_replication_task_assessment_run} \tab Starts a new premigration assessment run for one or more individual assessments of a migration task\cr
 \link[=databasemigrationservice_stop_replication_task]{stop_replication_task} \tab Stops the replication task\cr
 \link[=databasemigrationservice_test_connection]{test_connection} \tab Tests the connection between the replication instance and the endpoint
 }

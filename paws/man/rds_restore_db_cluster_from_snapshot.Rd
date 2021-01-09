@@ -99,18 +99,17 @@ Example: \code{mySubnetgroup}}
 \item{KmsKeyId}{The AWS KMS key identifier to use when restoring an encrypted DB cluster
 from a DB snapshot or DB cluster snapshot.
 
-The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are restoring a DB cluster with the same AWS
-account that owns the KMS encryption key used to encrypt the new DB
-cluster, then you can use the KMS key alias instead of the ARN for the
-KMS encryption key.
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK). To use a CMK in a
+different AWS account, specify the key ARN or alias ARN.
 
-If you don't specify a value for the \code{KmsKeyId} parameter, then the
+When you don't specify a value for the \code{KmsKeyId} parameter, then the
 following occurs:
 \itemize{
 \item If the DB snapshot or DB cluster snapshot in \code{SnapshotIdentifier} is
-encrypted, then the restored DB cluster is encrypted using the KMS
-key that was used to encrypt the DB snapshot or DB cluster snapshot.
+encrypted, then the restored DB cluster is encrypted using the AWS
+KMS CMK that was used to encrypt the DB snapshot or DB cluster
+snapshot.
 \item If the DB snapshot or DB cluster snapshot in \code{SnapshotIdentifier}
 isn't encrypted, then the restored DB cluster isn't encrypted.
 }}
@@ -141,7 +140,10 @@ used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/late
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned},
-\code{serverless}, \code{parallelquery}, \code{global}, or \code{multimaster}.}
+\code{serverless}, \code{parallelquery}, \code{global}, or \code{multimaster}.
+
+For more information, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBCluster.html}{CreateDBCluster}.}
 
 \item{ScalingConfiguration}{For DB clusters in \code{serverless} DB engine mode, the scaling properties
 of the DB cluster.}
@@ -168,7 +170,12 @@ cluster to snapshots of the restored DB cluster. The default is not to
 copy them.}
 
 \item{Domain}{Specify the Active Directory directory ID to restore the DB cluster in.
-The domain must be created prior to this operation.}
+The domain must be created prior to this operation. Currently, only
+MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be
+created in an Active Directory Domain.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication}
+in the \emph{Amazon RDS User Guide}.}
 
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
 Directory Service.}

@@ -49,7 +49,7 @@ NULL
 #'     system.
 #' 
 #' This reference is intended to be used with the [AWS AppConfig User
-#' Guide](http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html).
+#' Guide](https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html).
 #'
 #' @param
 #' config

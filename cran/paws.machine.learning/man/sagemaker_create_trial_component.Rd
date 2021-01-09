@@ -6,7 +6,7 @@
 \usage{
 sagemaker_create_trial_component(TrialComponentName, DisplayName,
   Status, StartTime, EndTime, Parameters, InputArtifacts, OutputArtifacts,
-  Tags)
+  MetadataProperties, Tags)
 }
 \arguments{
 \item{TrialComponentName}{[required] The name of the component. The name must be unique in your AWS account
@@ -34,6 +34,8 @@ datasets, algorithms, hyperparameters, source code, and instance types.}
 
 \item{OutputArtifacts}{The output artifacts for the component. Examples of output artifacts are
 metrics, snapshots, logs, and images.}
+
+\item{MetadataProperties}{}
 
 \item{Tags}{A list of tags to associate with the component. You can use Search API
 to search on the tags.}
@@ -92,6 +94,12 @@ results in an error.
       MediaType = "string",
       Value = "string"
     )
+  ),
+  MetadataProperties = list(
+    CommitId = "string",
+    Repository = "string",
+    GeneratedBy = "string",
+    ProjectId = "string"
   ),
   Tags = list(
     list(

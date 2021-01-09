@@ -18,7 +18,7 @@ rds_modify_db_instance(DBInstanceIdentifier, AllocatedStorage,
   PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod,
   CloudwatchLogsExportConfiguration, ProcessorFeatures,
   UseDefaultProcessorFeatures, DeletionProtection, MaxAllocatedStorage,
-  CertificateRotationRestart)
+  CertificateRotationRestart, ReplicaMode, EnableCustomerOwnedIp)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier. This value is stored as a lowercase string.
@@ -54,7 +54,7 @@ Default: Uses existing setting}
 \item{DBSubnetGroupName}{The new DB subnet group for the DB instance. You can use this parameter
 to move your DB instance to a different VPC. If your DB instance isn't
 in a VPC, you can also use this parameter to move your DB instance into
-a VPC. For more information, see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC}{Updating the VPC for a DB Instance}
+a VPC. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC}{Working with a DB instance in a VPC}
 in the \emph{Amazon RDS User Guide.}
 
 Changing the subnet group causes an outage during the change. The change
@@ -226,7 +226,7 @@ parameter is enabled for this request.}
 
 \item{EngineVersion}{The version number of the database engine to upgrade to. Changing this
 parameter results in an outage and the change is applied during the next
-maintenance window unless the \code{ApplyImmediately} parameter is eanbled
+maintenance window unless the \code{ApplyImmediately} parameter is enabled
 for this request.
 
 For major version upgrades, if a nondefault DB parameter group is
@@ -352,17 +352,11 @@ device.}
 
 \item{Domain}{The Active Directory directory ID to move the DB instance to. Specify
 \code{none} to remove the instance from its current domain. The domain must
-be created prior to this operation. Currently, only Microsoft SQL Server
-and Oracle DB instances can be created in an Active Directory Domain.
+be created prior to this operation. Currently, only MySQL, Microsoft SQL
+Server, Oracle, and PostgreSQL DB instances can be created in an Active
+Directory Domain.
 
-For Microsoft SQL Server DB instances, Amazon RDS can use Windows
-Authentication to authenticate users that connect to the DB instance.
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html}{Using Windows Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server}
-in the \emph{Amazon RDS User Guide}.
-
-For Oracle DB instances, Amazon RDS can use Kerberos authentication to
-authenticate users that connect to the DB instance. For more
-information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html}{Using Kerberos Authentication with Amazon RDS for Oracle}
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication}
 in the \emph{Amazon RDS User Guide}.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB instance to
@@ -452,7 +446,7 @@ regardless of the value of the \code{ApplyImmediately} parameter.}
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 \code{arn:aws:iam:123456789012:role/emaccess}. For information on creating a
-monitoring role, go to \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole}{To create an IAM role for Amazon RDS Enhanced Monitoring}
+monitoring role, go to \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Monitoring.html#USER_Monitoring}{To create an IAM role for Amazon RDS Enhanced Monitoring}
 in the \emph{Amazon RDS User Guide.}
 
 If \code{MonitoringInterval} is set to a value other than 0, then you must
@@ -472,8 +466,10 @@ Valid Values: 0 - 15}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled. For information about the supported DB engines, see
-CreateDBInstance.
+mapping is disabled.
+
+This setting doesn't apply to Amazon Aurora. Mapping AWS IAM accounts to
+database accounts is managed by the DB cluster.
 
 For more information about IAM database authentication, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
 in the \emph{Amazon RDS User Guide.}}
@@ -485,13 +481,14 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Use
 in the \emph{Amazon Relational Database Service User Guide}.}
 
 \item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
-The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
-the KMS key alias for the KMS encryption key.
+
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK).
 
 If you do not specify a value for \code{PerformanceInsightsKMSKeyId}, then
-Amazon RDS uses your default encryption key. AWS KMS creates the default
-encryption key for your AWS account. Your AWS account has a different
-default encryption key for each AWS Region.}
+Amazon RDS uses your default CMK. There is a default CMK for your AWS
+account. Your AWS account has a different default CMK for each AWS
+Region.}
 
 \item{PerformanceInsightsRetentionPeriod}{The amount of time, in days, to retain Performance Insights data. Valid
 values are 7 or 731 (2 years).}
@@ -538,6 +535,33 @@ in the \emph{Amazon RDS User Guide.}
 Aurora DB engines, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html}{Rotating Your SSL/TLS Certificate}
 in the \emph{Amazon Aurora User Guide.}
 }}
+
+\item{ReplicaMode}{A value that sets the open mode of a replica database to either mounted
+or read-only.
+
+Currently, this parameter is only supported for Oracle DB instances.
+
+Mounted DB replicas are included in Oracle Enterprise Edition. The main
+use case for mounted replicas is cross-Region disaster recovery. The
+primary database doesn't use Active Data Guard to transmit information
+to the mounted replica. Because it doesn't accept user connections, a
+mounted replica can't serve a read-only workload. For more information,
+see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html}{Working with Oracle Read Replicas for Amazon RDS}
+in the \emph{Amazon RDS User Guide}.}
+
+\item{EnableCustomerOwnedIp}{A value that indicates whether to enable a customer-owned IP address
+(CoIP) for an RDS on Outposts DB instance.
+
+A \emph{CoIP} provides local or external connectivity to resources in your
+Outpost subnets through your on-premises network. For some use cases, a
+CoIP can provide lower latency for connections to the DB instance from
+outside of its virtual private cloud (VPC) on your local network.
+
+For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on AWS Outposts}
+in the \emph{Amazon RDS User Guide}.
+
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing}{Customer-owned IP addresses}
+in the \emph{AWS Outposts User Guide}.}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database
@@ -605,7 +629,9 @@ DB instance, call \code{DescribeValidDBInstanceModifications} before you call
   UseDefaultProcessorFeatures = TRUE|FALSE,
   DeletionProtection = TRUE|FALSE,
   MaxAllocatedStorage = 123,
-  CertificateRotationRestart = TRUE|FALSE
+  CertificateRotationRestart = TRUE|FALSE,
+  ReplicaMode = "open-read-only"|"mounted",
+  EnableCustomerOwnedIp = TRUE|FALSE
 )
 }
 }

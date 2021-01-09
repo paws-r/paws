@@ -4,14 +4,18 @@
 \alias{iot_list_active_violations}
 \title{Lists the active violations for a given Device Defender security profile}
 \usage{
-iot_list_active_violations(thingName, securityProfileName, nextToken,
-  maxResults)
+iot_list_active_violations(thingName, securityProfileName,
+  behaviorCriteriaType, listSuppressedAlerts, nextToken, maxResults)
 }
 \arguments{
 \item{thingName}{The name of the thing whose active violations are listed.}
 
 \item{securityProfileName}{The name of the Device Defender security profile for which violations
 are listed.}
+
+\item{behaviorCriteriaType}{The criteria for a behavior.}
+
+\item{listSuppressedAlerts}{A list of all suppressed alerts.}
 
 \item{nextToken}{The token for the next set of results.}
 
@@ -25,6 +29,8 @@ profile.
 \preformatted{svc$list_active_violations(
   thingName = "string",
   securityProfileName = "string",
+  behaviorCriteriaType = "STATIC"|"STATISTICAL"|"MACHINE_LEARNING",
+  listSuppressedAlerts = TRUE|FALSE,
   nextToken = "string",
   maxResults = 123
 )

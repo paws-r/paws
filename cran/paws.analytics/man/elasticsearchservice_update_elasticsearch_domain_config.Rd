@@ -21,15 +21,15 @@ elasticsearchservice_update_elasticsearch_domain_config(DomainName,
 Default value is \code{0} hours.}
 
 \item{VPCOptions}{Options to specify the subnets and security groups for VPC endpoint. For
-more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc}{Creating a VPC}
+more information, see \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html}{Creating a VPC}
 in \emph{VPC Endpoints for Amazon Elasticsearch Service Domains}}
 
 \item{CognitoOptions}{Options to specify the Cognito user and identity pools for Kibana
-authentication. For more information, see \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html}{Amazon Cognito Authentication for Kibana}.}
+authentication. For more information, see \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html}{Amazon Cognito Authentication for Kibana}.}
 
 \item{AdvancedOptions}{Modifies the advanced option to allow references to indices in an HTTP
 request body. Must be \code{false} when configuring access to individual
-sub-resources. By default, the value is \code{true}. See \href{http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options}{Configuration Advanced Options}
+sub-resources. By default, the value is \code{true}. See \href{https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html}{Configuration Advanced Options}
 for more information.}
 
 \item{AccessPolicies}{IAM access policy as a JSON-formatted string.}
@@ -99,7 +99,10 @@ instances.
   ),
   DomainEndpointOptions = list(
     EnforceHTTPS = TRUE|FALSE,
-    TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"
+    TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07",
+    CustomEndpointEnabled = TRUE|FALSE,
+    CustomEndpoint = "string",
+    CustomEndpointCertificateArn = "string"
   ),
   AdvancedSecurityOptions = list(
     Enabled = TRUE|FALSE,
@@ -108,6 +111,18 @@ instances.
       MasterUserARN = "string",
       MasterUserName = "string",
       MasterUserPassword = "string"
+    ),
+    SAMLOptions = list(
+      Enabled = TRUE|FALSE,
+      Idp = list(
+        MetadataContent = "string",
+        EntityId = "string"
+      ),
+      MasterUserName = "string",
+      MasterBackendRole = "string",
+      SubjectKey = "string",
+      RolesKey = "string",
+      SessionTimeoutMinutes = 123
     )
   )
 )

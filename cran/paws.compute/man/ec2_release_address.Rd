@@ -11,7 +11,8 @@ ec2_release_address(AllocationId, PublicIp, NetworkBorderGroup, DryRun)
 
 \item{PublicIp}{[EC2-Classic] The Elastic IP address. Required for EC2-Classic.}
 
-\item{NetworkBorderGroup}{The location that the IP address is released from.
+\item{NetworkBorderGroup}{The set of Availability Zones, Local Zones, or Wavelength Zones from
+which AWS advertises IP addresses.
 
 If you provide an incorrect network border group, you will receive an
 \code{InvalidAddress.NotFound} error. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html}{Error Codes}.

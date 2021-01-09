@@ -13,7 +13,7 @@ medialive_list_offerings(ChannelClass, ChannelConfiguration, Codec,
 
 \item{ChannelConfiguration}{Filter to offerings that match the configuration of an existing channel, e.g. '2345678' (a channel ID)}
 
-\item{Codec}{Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'}
+\item{Codec}{Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'}
 
 \item{Duration}{Filter by offering duration, e.g. '12'}
 

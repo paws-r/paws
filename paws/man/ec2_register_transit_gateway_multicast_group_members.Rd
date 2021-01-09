@@ -26,7 +26,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Registers members (network interfaces) with the transit gateway
 multicast group. A member is a network interface associated with a
 supported EC2 instance that receives multicast traffic. For information
-about supported instances, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-limits.html#multicast-limits}{Multicast Consideration}
+about supported instances, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-quotas.html}{Multicast Consideration}
 in \emph{Amazon VPC Transit Gateways}.
 }
 \details{

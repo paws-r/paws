@@ -5,26 +5,33 @@
 \title{Updates the settings of a data set}
 \usage{
 iotanalytics_update_dataset(datasetName, actions, triggers,
-  contentDeliveryRules, retentionPeriod, versioningConfiguration)
+  contentDeliveryRules, retentionPeriod, versioningConfiguration,
+  lateDataRules)
 }
 \arguments{
 \item{datasetName}{[required] The name of the data set to update.}
 
-\item{actions}{[required] A list of "DatasetAction" objects.}
+\item{actions}{[required] A list of \code{DatasetAction} objects.}
 
-\item{triggers}{A list of "DatasetTrigger" objects. The list can be empty or can contain
-up to five \strong{DataSetTrigger} objects.}
+\item{triggers}{A list of \code{DatasetTrigger} objects. The list can be empty or can contain
+up to five \code{DatasetTrigger} objects.}
 
-\item{contentDeliveryRules}{When data set contents are created they are delivered to destinations
+\item{contentDeliveryRules}{When dataset contents are created, they are delivered to destinations
 specified here.}
 
-\item{retentionPeriod}{How long, in days, data set contents are kept for the data set.}
+\item{retentionPeriod}{How long, in days, dataset contents are kept for the dataset.}
 
-\item{versioningConfiguration}{[Optional] How many versions of data set contents are kept. If not
+\item{versioningConfiguration}{Optional. How many versions of dataset contents are kept. If not
 specified or set to null, only the latest version plus the latest
 succeeded version (if they are different) are kept for the time period
-specified by the "retentionPeriod" parameter. (For more information, see
-https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html\\#aws-iot-analytics-dataset-versions)}
+specified by the \code{retentionPeriod} parameter. For more information, see
+\href{https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions}{Keeping Multiple Versions of AWS IoT Analytics Data Sets}
+in the \emph{AWS IoT Analytics User Guide}.}
+
+\item{lateDataRules}{A list of data rules that send notifications to Amazon CloudWatch, when
+data arrives late. To specify \code{lateDataRules}, the dataset must use a
+\href{https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_DeltaTime.html}{DeltaTimer}
+filter.}
 }
 \description{
 Updates the settings of a data set.
@@ -106,6 +113,16 @@ Updates the settings of a data set.
   versioningConfiguration = list(
     unlimited = TRUE|FALSE,
     maxVersions = 123
+  ),
+  lateDataRules = list(
+    list(
+      ruleName = "string",
+      ruleConfiguration = list(
+        deltaTimeSessionWindowConfiguration = list(
+          timeoutInMinutes = 123
+        )
+      )
+    )
   )
 )
 }

@@ -7,7 +7,8 @@ directly to a phone number, or a message to a mobile platform endpoint
 (when you specify the TargetArn)}
 \usage{
 sns_publish(TopicArn, TargetArn, PhoneNumber, Message, Subject,
-  MessageStructure, MessageAttributes)
+  MessageStructure, MessageAttributes, MessageDeduplicationId,
+  MessageGroupId)
 }
 \arguments{
 \item{TopicArn}{The topic you want to publish to.
@@ -95,6 +96,32 @@ send to a specific transport protocol (e.g., "http").
 Valid value: \code{json}}
 
 \item{MessageAttributes}{Message attributes for Publish action.}
+
+\item{MessageDeduplicationId}{This parameter applies only to FIFO (first-in-first-out) topics. The
+\code{MessageDeduplicationId} can contain up to 128 alphanumeric characters
+(a-z, A-Z, 0-9) and punctuation
+\verb{(!\\"#$\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
+
+Every message must have a unique \code{MessageDeduplicationId}, which is a
+token used for deduplication of sent messages. If a message with a
+particular \code{MessageDeduplicationId} is sent successfully, any message
+sent with the same \code{MessageDeduplicationId} during the 5-minute
+deduplication interval is treated as a duplicate.
+
+If the topic has \code{ContentBasedDeduplication} set, the system generates a
+\code{MessageDeduplicationId} based on the contents of the message. Your
+\code{MessageDeduplicationId} overrides the generated one.}
+
+\item{MessageGroupId}{This parameter applies only to FIFO (first-in-first-out) topics. The
+\code{MessageGroupId} can contain up to 128 alphanumeric characters (a-z,
+A-Z, 0-9) and punctuation
+\verb{(!\\"#$\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
+
+The \code{MessageGroupId} is a tag that specifies that a message belongs to a
+specific message group. Messages that belong to the same message group
+are processed in a FIFO manner (however, messages in different message
+groups might be processed out of order). Every message must include a
+\code{MessageGroupId}.}
 }
 \description{
 Sends a message to an Amazon SNS topic, a text message (SMS message)
@@ -114,7 +141,7 @@ such as an app on a Kindle device or mobile phone, you must specify the
 EndpointArn for the TargetArn parameter. The EndpointArn is returned
 when making a call with the \code{CreatePlatformEndpoint} action.
 
-For more information about formatting messages, see \href{https://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html}{Send Custom Platform-Specific Payloads in Messages to Mobile Devices}.
+For more information about formatting messages, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-send-custom-platform-specific-payloads-mobile-devices.html}{Send Custom Platform-Specific Payloads in Messages to Mobile Devices}.
 
 You can publish messages only to topics and endpoints in the same AWS
 Region.
@@ -133,7 +160,9 @@ Region.
       StringValue = "string",
       BinaryValue = raw
     )
-  )
+  ),
+  MessageDeduplicationId = "string",
+  MessageGroupId = "string"
 )
 }
 }

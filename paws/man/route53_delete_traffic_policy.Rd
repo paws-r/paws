@@ -14,6 +14,19 @@ route53_delete_traffic_policy(Id, Version)
 \description{
 Deletes a traffic policy.
 }
+\details{
+When you delete a traffic policy, Route 53 sets a flag on the policy to
+indicate that it has been deleted. However, Route 53 never fully deletes
+the traffic policy. Note the following:
+\itemize{
+\item Deleted traffic policies aren't listed if you run
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListTrafficPolicies.html}{ListTrafficPolicies}.
+\item There's no way to get a list of deleted policies.
+\item If you retain the ID of the policy, you can get information about
+the policy, including the traffic policy document, by running
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetTrafficPolicy.html}{GetTrafficPolicy}.
+}
+}
 \section{Request syntax}{
 \preformatted{svc$delete_traffic_policy(
   Id = "string",

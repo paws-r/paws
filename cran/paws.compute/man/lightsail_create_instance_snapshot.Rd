@@ -14,8 +14,7 @@ lightsail_create_instance_snapshot(instanceSnapshotName, instanceName,
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \verb{tag resource}
-operation.}
+Use the \code{TagResource} action to tag a resource after it's created.}
 }
 \description{
 Creates a snapshot of a specific virtual private server, or \emph{instance}.
@@ -24,7 +23,8 @@ snapshot.
 }
 \details{
 The \verb{create instance snapshot} operation supports tag-based access
-control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+control via request tags. For more information, see the Lightsail Dev
+Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_instance_snapshot(

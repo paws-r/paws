@@ -19,7 +19,7 @@ NULL
 #' 
 #' For information about costs associated with the Cost Explorer API, see
 #' [AWS Cost Management
-#' Pricing](http://aws.amazon.com/aws-cost-management/pricing/).
+#' Pricing](https://aws.amazon.com/aws-cost-management/pricing/).
 #'
 #' @param
 #' config
@@ -46,18 +46,26 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- costexplorer()
-#' svc$create_cost_category_definition(
+#' svc$create_anomaly_monitor(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=costexplorer_create_anomaly_monitor]{create_anomaly_monitor} \tab Creates a new cost anomaly detection monitor with the requested type and monitor specification\cr
+#'  \link[=costexplorer_create_anomaly_subscription]{create_anomaly_subscription} \tab Adds a subscription to a cost anomaly detection monitor\cr
 #'  \link[=costexplorer_create_cost_category_definition]{create_cost_category_definition} \tab Creates a new Cost Category with the requested name and rules\cr
+#'  \link[=costexplorer_delete_anomaly_monitor]{delete_anomaly_monitor} \tab Deletes a cost anomaly monitor\cr
+#'  \link[=costexplorer_delete_anomaly_subscription]{delete_anomaly_subscription} \tab Deletes a cost anomaly subscription\cr
 #'  \link[=costexplorer_delete_cost_category_definition]{delete_cost_category_definition} \tab Deletes a Cost Category\cr
 #'  \link[=costexplorer_describe_cost_category_definition]{describe_cost_category_definition} \tab Returns the name, ARN, rules, definition, and effective dates of a Cost Category that's defined in the account\cr
+#'  \link[=costexplorer_get_anomalies]{get_anomalies} \tab Retrieves all of the cost anomalies detected on your account, during the time period specified by the DateInterval object\cr
+#'  \link[=costexplorer_get_anomaly_monitors]{get_anomaly_monitors} \tab Retrieves the cost anomaly monitor definitions for your account\cr
+#'  \link[=costexplorer_get_anomaly_subscriptions]{get_anomaly_subscriptions} \tab Retrieves the cost anomaly subscription objects for your account\cr
 #'  \link[=costexplorer_get_cost_and_usage]{get_cost_and_usage} \tab Retrieves cost and usage metrics for your account\cr
 #'  \link[=costexplorer_get_cost_and_usage_with_resources]{get_cost_and_usage_with_resources} \tab Retrieves cost and usage metrics with resources for your account\cr
+#'  \link[=costexplorer_get_cost_categories]{get_cost_categories} \tab Retrieves an array of Cost Category names and values incurred cost\cr
 #'  \link[=costexplorer_get_cost_forecast]{get_cost_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs\cr
 #'  \link[=costexplorer_get_dimension_values]{get_dimension_values} \tab Retrieves all available filter values for a specified filter over a period of time\cr
 #'  \link[=costexplorer_get_reservation_coverage]{get_reservation_coverage} \tab Retrieves the reservation coverage for your account\cr
@@ -71,6 +79,9 @@ NULL
 #'  \link[=costexplorer_get_tags]{get_tags} \tab Queries for available tag keys and tag values for a specified period\cr
 #'  \link[=costexplorer_get_usage_forecast]{get_usage_forecast} \tab Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage\cr
 #'  \link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions} \tab Returns the name, ARN, NumberOfRules and effective dates of all Cost Categories defined in the account\cr
+#'  \link[=costexplorer_provide_anomaly_feedback]{provide_anomaly_feedback} \tab Modifies the feedback property of a given cost anomaly\cr
+#'  \link[=costexplorer_update_anomaly_monitor]{update_anomaly_monitor} \tab Updates an existing cost anomaly monitor\cr
+#'  \link[=costexplorer_update_anomaly_subscription]{update_anomaly_subscription} \tab Updates an existing cost anomaly monitor subscription\cr
 #'  \link[=costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab Updates an existing Cost Category
 #' }
 #'

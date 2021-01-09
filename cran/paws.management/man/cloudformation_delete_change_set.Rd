@@ -20,6 +20,11 @@ one executes the wrong change set.
 \details{
 If the call successfully completes, AWS CloudFormation successfully
 deleted the change set.
+
+If \code{IncludeNestedStacks} specifies \code{True} during the creation of the
+nested change set, then \code{DeleteChangeSet} will delete all change sets
+that belong to the stacks hierarchy and will also delete all change sets
+for nested stacks with the status of \code{REVIEW_IN_PROGRESS}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_change_set(

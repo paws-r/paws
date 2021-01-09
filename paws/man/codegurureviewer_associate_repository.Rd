@@ -5,33 +5,26 @@
 \title{Use to associate an AWS CodeCommit repository or a repostory managed by
 AWS CodeStar Connections with Amazon CodeGuru Reviewer}
 \usage{
-codegurureviewer_associate_repository(Repository, ClientRequestToken)
+codegurureviewer_associate_repository(Repository, ClientRequestToken,
+  Tags)
 }
 \arguments{
 \item{Repository}{[required] The repository to associate.}
 
-\item{ClientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.
-
-To add a new repository association, this parameter specifies a unique
-identifier for the new repository association that helps ensure
-idempotency.
-
-If you use the AWS CLI or one of the AWS SDKs to call this operation,
-you can leave this parameter empty. The CLI or SDK generates a random
-UUID for you and includes that in the request. If you don't use the SDK
-and instead generate a raw HTTP request to the Secrets Manager service
-endpoint, you must generate a ClientRequestToken yourself for new
-versions and include that value in the request.
-
-You typically interact with this value if you implement your own retry
-logic and want to ensure that a given repository association is not
-created twice. We recommend that you generate a UUID-type value to
-ensure uniqueness within the specified repository association.
-
-Amazon CodeGuru Reviewer uses this value to prevent the accidental
+\item{ClientRequestToken}{Amazon CodeGuru Reviewer uses this value to prevent the accidental
 creation of duplicate repository associations if there are failures and
 retries.}
+
+\item{Tags}{An array of key-value pairs used to tag an associated repository. A tag
+is a custom attribute label with two parts:
+\itemize{
+\item A \emph{tag key} (for example, \code{CostCenter}, \code{Environment}, \code{Project}, or
+\code{Secret}). Tag keys are case sensitive.
+\item An optional field known as a \emph{tag value} (for example,
+\code{111122223333}, \code{Production}, or a team name). Omitting the tag
+value is the same as using an empty string. Like tag keys, tag
+values are case sensitive.
+}}
 }
 \description{
 Use to associate an AWS CodeCommit repository or a repostory managed by
@@ -74,7 +67,10 @@ in the \emph{CodeGuru Reviewer User Guide.}
       Owner = "string"
     )
   ),
-  ClientRequestToken = "string"
+  ClientRequestToken = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

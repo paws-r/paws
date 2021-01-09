@@ -4,7 +4,7 @@
 \alias{servicediscovery_create_service}
 \title{Creates a service, which defines the configuration for the following
 entities: - For public and private DNS namespaces, one of the following
-combinations of DNS records in Amazon Route 53: - A - AAAA - A and AAAA
+combinations of DNS records in Amazon Route 53: - A - AAAA - A and AAAA
 \itemize{
 \item SRV - CNAME - Optionally, a health check After you create the service,
 you can submit a RegisterInstance request, and AWS Cloud Map uses the
@@ -18,8 +18,8 @@ servicediscovery_create_service(Name, NamespaceId, CreatorRequestId,
 \arguments{
 \item{Name}{[required] The name that you want to assign to the service.
 
-If you want AWS Cloud Map to create an SRV record when you register an
-instance, and if you're using a system that requires a specific SRV
+If you want AWS Cloud Map to create an \code{SRV} record when you register an
+instance, and if you're using a system that requires a specific \code{SRV}
 format, such as \href{http://www.haproxy.org/}{HAProxy}, specify the
 following for \code{Name}:
 \itemize{
@@ -27,7 +27,7 @@ following for \code{Name}:
 \item End the name with \emph{.\\_protocol}, such as \code{._tcp}
 }
 
-When you register an instance, AWS Cloud Map creates an SRV record and
+When you register an instance, AWS Cloud Map creates an \code{SRV} record and
 assigns a name to the record by concatenating the service name and the
 namespace name, for example:
 
@@ -42,19 +42,19 @@ example, a date/time stamp.}
 
 \item{Description}{A description for the service.}
 
-\item{DnsConfig}{A complex type that contains information about the Amazon Route 53
+\item{DnsConfig}{A complex type that contains information about the Amazon Route 53
 records that you want AWS Cloud Map to create when you register an
 instance.}
 
 \item{HealthCheckConfig}{\emph{Public DNS and HTTP namespaces only.} A complex type that contains
-settings for an optional Route 53 health check. If you specify settings
+settings for an optional Route 53 health check. If you specify settings
 for a health check, AWS Cloud Map associates the health check with all
-the Route 53 DNS records that you specify in \code{DnsConfig}.
+the Route 53 DNS records that you specify in \code{DnsConfig}.
 
 If you specify a health check configuration, you can specify either
 \code{HealthCheckCustomConfig} or \code{HealthCheckConfig} but not both.
 
-For information about the charges for health checks, see \href{http://aws.amazon.com/cloud-map/pricing/}{AWS Cloud Map Pricing}.}
+For information about the charges for health checks, see \href{https://aws.amazon.com/cloud-map/pricing/}{AWS Cloud Map Pricing}.}
 
 \item{HealthCheckCustomConfig}{A complex type that contains information about an optional custom health
 check.
@@ -77,13 +77,13 @@ entities:
 \details{
 \itemize{
 \item For public and private DNS namespaces, one of the following
-combinations of DNS records in Amazon Route 53:
+combinations of DNS records in Amazon Route 53:
 \itemize{
-\item A
-\item AAAA
-\item A and AAAA
-\item SRV
-\item CNAME
+\item \code{A}
+\item \code{AAAA}
+\item \code{A} and \code{AAAA}
+\item \code{SRV}
+\item \code{CNAME}
 }
 \item Optionally, a health check
 }
@@ -93,7 +93,7 @@ After you create the service, you can submit a
 request, and AWS Cloud Map uses the values in the configuration to
 create the specified entities.
 
-For the current limit on the number of instances that you can register
+For the current quota on the number of instances that you can register
 using the same namespace and using the same service, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
 in the \emph{AWS Cloud Map Developer Guide}.
 }

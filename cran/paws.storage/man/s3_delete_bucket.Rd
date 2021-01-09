@@ -2,28 +2,33 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket}
 \alias{s3_delete_bucket}
-\title{Deletes the bucket}
+\title{Deletes the S3 bucket}
 \usage{
-s3_delete_bucket(Bucket)
+s3_delete_bucket(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] Specifies the bucket being deleted.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
-Deletes the bucket. All objects (including all object versions and
+Deletes the S3 bucket. All objects (including all object versions and
 delete markers) in the bucket must be deleted before the bucket itself
 can be deleted.
 }
 \details{
 \strong{Related Resources}
 \itemize{
-\item 
-\item 
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html}{DeleteObject}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

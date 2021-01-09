@@ -4,11 +4,15 @@
 \alias{s3_delete_public_access_block}
 \title{Removes the PublicAccessBlock configuration for an Amazon S3 bucket}
 \usage{
-s3_delete_public_access_block(Bucket)
+s3_delete_public_access_block(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The Amazon S3 bucket whose \code{PublicAccessBlock} configuration you want to
 delete.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Removes the \code{PublicAccessBlock} configuration for an Amazon S3 bucket.
@@ -20,14 +24,15 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 The following operations are related to \code{DeletePublicAccessBlock}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html}{Using Amazon S3 Block Public Access}
-\item GetPublicAccessBlock
-\item PutPublicAccessBlock
-\item GetBucketPolicyStatus
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html}{GetPublicAccessBlock}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutPublicAccessBlock.html}{PutPublicAccessBlock}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicyStatus.html}{GetBucketPolicyStatus}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$delete_public_access_block(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

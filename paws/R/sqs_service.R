@@ -12,9 +12,14 @@ NULL
 #' microservices. Amazon SQS moves data between distributed application
 #' components and helps you decouple these components.
 #' 
-#' You can use [AWS SDKs](http://aws.amazon.com/tools/#sdk) to access
-#' Amazon SQS using your favorite programming language. The SDKs perform
-#' tasks such as the following automatically:
+#' For information on the permissions you need to use this API, see
+#' [Identity and access
+#' management](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.html)
+#' in the *Amazon Simple Queue Service Developer Guide.*
+#' 
+#' You can use [AWS SDKs](https://aws.amazon.com/tools/) to access Amazon
+#' SQS using your favorite programming language. The SDKs perform tasks
+#' such as the following automatically:
 #' 
 #' -   Cryptographically sign your service requests
 #' 
@@ -24,7 +29,7 @@ NULL
 #' 
 #' **Additional Information**
 #' 
-#' -   [Amazon SQS Product Page](http://aws.amazon.com/sqs/)
+#' -   [Amazon SQS Product Page](https://aws.amazon.com/sqs/)
 #' 
 #' -   *Amazon Simple Queue Service Developer Guide*
 #' 
@@ -32,13 +37,13 @@ NULL
 #'         Requests](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html)
 #' 
 #'     -   [Amazon SQS Message
-#'         Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
+#'         Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)
 #' 
 #'     -   [Amazon SQS Dead-Letter
 #'         Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #' 
 #' -   [Amazon SQS in the *AWS CLI Command
-#'     Reference*](http://docs.aws.amazon.com/cli/latest/reference/sqs/index.html)
+#'     Reference*](https://docs.aws.amazon.com/cli/latest/reference/sqs/index.html)
 #' 
 #' -   *Amazon Web Services General Reference*
 #' 
@@ -87,7 +92,7 @@ NULL
 #'  \link[=sqs_get_queue_attributes]{get_queue_attributes} \tab Gets attributes for the specified queue\cr
 #'  \link[=sqs_get_queue_url]{get_queue_url} \tab Returns the URL of an existing Amazon SQS queue\cr
 #'  \link[=sqs_list_dead_letter_source_queues]{list_dead_letter_source_queues} \tab Returns a list of your queues that have the RedrivePolicy queue attribute configured with a dead-letter queue\cr
-#'  \link[=sqs_list_queues]{list_queues} \tab Returns a list of your queues\cr
+#'  \link[=sqs_list_queues]{list_queues} \tab Returns a list of your queues in the current region\cr
 #'  \link[=sqs_list_queue_tags]{list_queue_tags} \tab List all cost allocation tags added to the specified Amazon SQS queue\cr
 #'  \link[=sqs_purge_queue]{purge_queue} \tab Deletes the messages in a queue specified by the QueueURL parameter\cr
 #'  \link[=sqs_receive_message]{receive_message} \tab Retrieves one or more messages (up to 10), from the specified queue\cr

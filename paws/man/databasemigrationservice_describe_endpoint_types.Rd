@@ -8,7 +8,7 @@ databasemigrationservice_describe_endpoint_types(Filters, MaxRecords,
   Marker)
 }
 \arguments{
-\item{Filters}{Filters applied to the describe action.
+\item{Filters}{Filters applied to the endpoint types.
 
 Valid filter names: engine-name | endpoint-type}
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_describe_tags}
 \alias{elbv2_describe_tags}
-\title{Describes the tags for the specified resources}
+\title{Describes the tags for the specified Elastic Load Balancing resources}
 \usage{
 elbv2_describe_tags(ResourceArns)
 }
@@ -11,9 +11,10 @@ elbv2_describe_tags(ResourceArns)
 20 resources in a single call.}
 }
 \description{
-Describes the tags for the specified resources. You can describe the
-tags for one or more Application Load Balancers, Network Load Balancers,
-and target groups.
+Describes the tags for the specified Elastic Load Balancing resources.
+You can describe the tags for one or more Application Load Balancers,
+Network Load Balancers, Gateway Load Balancers, target groups,
+listeners, or rules.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_tags(

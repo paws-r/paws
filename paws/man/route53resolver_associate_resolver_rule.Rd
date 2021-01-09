@@ -2,25 +2,27 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_associate_resolver_rule}
 \alias{route53resolver_associate_resolver_rule}
-\title{Associates a resolver rule with a VPC}
+\title{Associates a Resolver rule with a VPC}
 \usage{
 route53resolver_associate_resolver_rule(ResolverRuleId, Name, VPCId)
 }
 \arguments{
-\item{ResolverRuleId}{[required] The ID of the resolver rule that you want to associate with the VPC. To
-list the existing resolver rules, use ListResolverRules.}
+\item{ResolverRuleId}{[required] The ID of the Resolver rule that you want to associate with the VPC. To
+list the existing Resolver rules, use
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRules.html}{ListResolverRules}.}
 
-\item{Name}{A name for the association that you're creating between a resolver rule
+\item{Name}{A name for the association that you're creating between a Resolver rule
 and a VPC.}
 
-\item{VPCId}{[required] The ID of the VPC that you want to associate the resolver rule with.}
+\item{VPCId}{[required] The ID of the VPC that you want to associate the Resolver rule with.}
 }
 \description{
-Associates a resolver rule with a VPC. When you associate a rule with a
+Associates a Resolver rule with a VPC. When you associate a rule with a
 VPC, Resolver forwards all DNS queries for the domain name that is
 specified in the rule and that originate in the VPC. The queries are
 forwarded to the IP addresses for the DNS resolvers that are specified
-in the rule. For more information about rules, see CreateResolverRule.
+in the rule. For more information about rules, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_CreateResolverRule.html}{CreateResolverRule}.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_resolver_rule(

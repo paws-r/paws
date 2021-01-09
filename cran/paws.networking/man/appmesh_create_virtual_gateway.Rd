@@ -72,18 +72,30 @@ For more information about virtual gateways, see \href{https://docs.aws.amazon.c
     ),
     listeners = list(
       list(
+        connectionPool = list(
+          grpc = list(
+            maxRequests = 123
+          ),
+          http = list(
+            maxConnections = 123,
+            maxPendingRequests = 123
+          ),
+          http2 = list(
+            maxRequests = 123
+          )
+        ),
         healthCheck = list(
           healthyThreshold = 123,
           intervalMillis = 123,
           path = "string",
           port = 123,
-          protocol = "grpc"|"http"|"http2",
+          protocol = "http"|"http2"|"grpc",
           timeoutMillis = 123,
           unhealthyThreshold = 123
         ),
         portMapping = list(
           port = 123,
-          protocol = "grpc"|"http"|"http2"
+          protocol = "http"|"http2"|"grpc"
         ),
         tls = list(
           certificate = list(
@@ -95,7 +107,7 @@ For more information about virtual gateways, see \href{https://docs.aws.amazon.c
               privateKey = "string"
             )
           ),
-          mode = "DISABLED"|"PERMISSIVE"|"STRICT"
+          mode = "STRICT"|"PERMISSIVE"|"DISABLED"
         )
       )
     ),

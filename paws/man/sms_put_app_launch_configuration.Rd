@@ -2,26 +2,33 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_put_app_launch_configuration}
 \alias{sms_put_app_launch_configuration}
-\title{Creates a launch configuration for an application}
+\title{Creates or updates the launch configuration for the specified
+application}
 \usage{
-sms_put_app_launch_configuration(appId, roleName,
+sms_put_app_launch_configuration(appId, roleName, autoLaunch,
   serverGroupLaunchConfigurations)
 }
 \arguments{
-\item{appId}{ID of the application associated with the launch configuration.}
+\item{appId}{The ID of the application.}
 
-\item{roleName}{Name of service role in the customer's account that Amazon
+\item{roleName}{The name of service role in the customer's account that AWS
 CloudFormation uses to launch the application.}
 
-\item{serverGroupLaunchConfigurations}{Launch configurations for server groups in the application.}
+\item{autoLaunch}{Indicates whether the application is configured to launch automatically
+after replication is complete.}
+
+\item{serverGroupLaunchConfigurations}{Information about the launch configurations for server groups in the
+application.}
 }
 \description{
-Creates a launch configuration for an application.
+Creates or updates the launch configuration for the specified
+application.
 }
 \section{Request syntax}{
 \preformatted{svc$put_app_launch_configuration(
   appId = "string",
   roleName = "string",
+  autoLaunch = TRUE|FALSE,
   serverGroupLaunchConfigurations = list(
     list(
       serverGroupId = "string",
@@ -56,7 +63,13 @@ Creates a launch configuration for an application.
             )
           ),
           instanceType = "string",
-          associatePublicIpAddress = TRUE|FALSE
+          associatePublicIpAddress = TRUE|FALSE,
+          iamInstanceProfileName = "string",
+          configureScript = list(
+            bucket = "string",
+            key = "string"
+          ),
+          configureScriptType = "SHELL_SCRIPT"|"POWERSHELL_SCRIPT"
         )
       )
     )

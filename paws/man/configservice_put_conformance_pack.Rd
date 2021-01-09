@@ -25,7 +25,7 @@ maximum length of 51,200 bytes.
 You can only use a YAML template with one resource type, that is, config
 rule and a remediation action.}
 
-\item{DeliveryS3Bucket}{[required] AWS Config stores intermediate files while processing conformance pack
+\item{DeliveryS3Bucket}{AWS Config stores intermediate files while processing conformance pack
 template.}
 
 \item{DeliveryS3KeyPrefix}{The prefix for the Amazon S3 bucket.}
@@ -40,8 +40,7 @@ and a region and across AWS Organization.
 \details{
 This API creates a service linked role \code{AWSServiceRoleForConfigConforms}
 in your account. The service linked role is created only when the role
-does not exist in your account. AWS Config verifies the existence of
-role with \code{GetRole} action.
+does not exist in your account.
 
 You must specify either the \code{TemplateS3Uri} or the \code{TemplateBody}
 parameter, but not both. If you provide both AWS Config uses the

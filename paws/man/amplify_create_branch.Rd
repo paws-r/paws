@@ -6,9 +6,9 @@
 \usage{
 amplify_create_branch(appId, branchName, description, stage, framework,
   enableNotification, enableAutoBuild, environmentVariables,
-  basicAuthCredentials, enableBasicAuth, tags, buildSpec, ttl,
-  displayName, enablePullRequestPreview, pullRequestEnvironmentName,
-  backendEnvironmentArn)
+  basicAuthCredentials, enableBasicAuth, enablePerformanceMode, tags,
+  buildSpec, ttl, displayName, enablePullRequestPreview,
+  pullRequestEnvironmentName, backendEnvironmentArn)
 }
 \arguments{
 \item{appId}{[required] The unique ID for an Amplify app.}
@@ -31,6 +31,13 @@ amplify_create_branch(appId, branchName, description, stage, framework,
 
 \item{enableBasicAuth}{Enables basic authorization for the branch.}
 
+\item{enablePerformanceMode}{Enables performance mode for the branch.
+
+Performance mode optimizes for faster hosting performance by keeping
+content cached at the edge for a longer interval. When performance mode
+is enabled, hosting configuration or code changes can take up to 10
+minutes to roll out.}
+
 \item{tags}{The tag for the branch.}
 
 \item{buildSpec}{The build specification (build spec) for the branch.}
@@ -40,7 +47,7 @@ amplify_create_branch(appId, branchName, description, stage, framework,
 \item{displayName}{The display name for a branch. This is used as the default domain
 prefix.}
 
-\item{enablePullRequestPreview}{Enables pull request preview for this branch.}
+\item{enablePullRequestPreview}{Enables pull request previews for this branch.}
 
 \item{pullRequestEnvironmentName}{The Amplify environment name for the pull request.}
 
@@ -64,6 +71,7 @@ Creates a new branch for an Amplify app.
   ),
   basicAuthCredentials = "string",
   enableBasicAuth = TRUE|FALSE,
+  enablePerformanceMode = TRUE|FALSE,
   tags = list(
     "string"
   ),

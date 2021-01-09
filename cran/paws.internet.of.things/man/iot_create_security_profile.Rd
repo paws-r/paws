@@ -20,16 +20,18 @@ an alert.}
 sent to the console.) Alerts are generated when a device (thing)
 violates a behavior.}
 
-\item{additionalMetricsToRetain}{A list of metrics whose data is retained (stored). By default, data is
-retained for any metric used in the profile's \code{behaviors}, but it is
-also retained for any metric specified here.
+\item{additionalMetricsToRetain}{\emph{Please use CreateSecurityProfileRequest$additionalMetricsToRetainV2
+instead.}
 
-\strong{Note:} This API field is deprecated. Please use
-CreateSecurityProfileRequest$additionalMetricsToRetainV2 instead.}
+A list of metrics whose data is retained (stored). By default, data is
+retained for any metric used in the profile's \code{behaviors}, but it is
+also retained for any metric specified here. Can be used with custom
+metrics; cannot be used with dimensions.}
 
 \item{additionalMetricsToRetainV2}{A list of metrics whose data is retained (stored). By default, data is
 retained for any metric used in the profile's \code{behaviors}, but it is
-also retained for any metric specified here.}
+also retained for any metric specified here. Can be used with custom
+metrics; cannot be used with dimensions.}
 
 \item{tags}{Metadata that can be used to manage the security profile.}
 }
@@ -49,7 +51,7 @@ Creates a Device Defender security profile.
         operator = "IN"|"NOT_IN"
       ),
       criteria = list(
-        comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
+        comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set"|"in-set"|"not-in-set",
         value = list(
           count = 123,
           cidrs = list(
@@ -57,6 +59,13 @@ Creates a Device Defender security profile.
           ),
           ports = list(
             123
+          ),
+          number = 123.0,
+          numbers = list(
+            123.0
+          ),
+          strings = list(
+            "string"
           )
         ),
         durationSeconds = 123,
@@ -64,8 +73,12 @@ Creates a Device Defender security profile.
         consecutiveDatapointsToClear = 123,
         statisticalThreshold = list(
           statistic = "string"
+        ),
+        mlDetectionConfig = list(
+          confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
         )
-      )
+      ),
+      suppressAlerts = TRUE|FALSE
     )
   ),
   alertTargets = list(

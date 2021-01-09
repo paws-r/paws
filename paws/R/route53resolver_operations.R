@@ -3,22 +3,22 @@
 #' @include route53resolver_service.R
 NULL
 
-#' Adds IP addresses to an inbound or an outbound resolver endpoint
+#' Adds IP addresses to an inbound or an outbound Resolver endpoint
 #'
-#' Adds IP addresses to an inbound or an outbound resolver endpoint. If you
-#' want to adding more than one IP address, submit one
+#' Adds IP addresses to an inbound or an outbound Resolver endpoint. If you
+#' want to add more than one IP address, submit one
 #' `AssociateResolverEndpointIpAddress` request for each IP address.
 #' 
 #' To remove an IP address from an endpoint, see
-#' DisassociateResolverEndpointIpAddress.
+#' [DisassociateResolverEndpointIpAddress](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverEndpointIpAddress.html).
 #'
 #' @usage
 #' route53resolver_associate_resolver_endpoint_ip_address(
 #'   ResolverEndpointId, IpAddress)
 #'
-#' @param ResolverEndpointId &#91;required&#93; The ID of the resolver endpoint that you want to associate IP addresses
+#' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to associate IP addresses
 #' with.
-#' @param IpAddress &#91;required&#93; Either the IPv4 address that you want to add to a resolver endpoint or a
+#' @param IpAddress &#91;required&#93; Either the IPv4 address that you want to add to a Resolver endpoint or a
 #' subnet ID. If you specify a subnet ID, Resolver chooses an IP address
 #' for you from the available IPs in the specified subnet.
 #'
@@ -54,22 +54,77 @@ route53resolver_associate_resolver_endpoint_ip_address <- function(ResolverEndpo
 }
 .route53resolver$operations$associate_resolver_endpoint_ip_address <- route53resolver_associate_resolver_endpoint_ip_address
 
-#' Associates a resolver rule with a VPC
+#' Associates an Amazon VPC with a specified query logging configuration
 #'
-#' Associates a resolver rule with a VPC. When you associate a rule with a
+#' Associates an Amazon VPC with a specified query logging configuration.
+#' Route 53 Resolver logs DNS queries that originate in all of the Amazon
+#' VPCs that are associated with a specified query logging configuration.
+#' To associate more than one VPC with a configuration, submit one
+#' `AssociateResolverQueryLogConfig` request for each VPC.
+#' 
+#' The VPCs that you associate with a query logging configuration must be
+#' in the same Region as the configuration.
+#' 
+#' To remove a VPC from a query logging configuration, see
+#' [DisassociateResolverQueryLogConfig](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverQueryLogConfig.html).
+#'
+#' @usage
+#' route53resolver_associate_resolver_query_log_config(
+#'   ResolverQueryLogConfigId, ResourceId)
+#'
+#' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the query logging configuration that you want to associate a
+#' VPC with.
+#' @param ResourceId &#91;required&#93; The ID of an Amazon VPC that you want this query logging configuration
+#' to log queries for.
+#' 
+#' The VPCs and the query logging configuration must be in the same Region.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_resolver_query_log_config(
+#'   ResolverQueryLogConfigId = "string",
+#'   ResourceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_associate_resolver_query_log_config
+route53resolver_associate_resolver_query_log_config <- function(ResolverQueryLogConfigId, ResourceId) {
+  op <- new_operation(
+    name = "AssociateResolverQueryLogConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$associate_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId, ResourceId = ResourceId)
+  output <- .route53resolver$associate_resolver_query_log_config_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$associate_resolver_query_log_config <- route53resolver_associate_resolver_query_log_config
+
+#' Associates a Resolver rule with a VPC
+#'
+#' Associates a Resolver rule with a VPC. When you associate a rule with a
 #' VPC, Resolver forwards all DNS queries for the domain name that is
 #' specified in the rule and that originate in the VPC. The queries are
 #' forwarded to the IP addresses for the DNS resolvers that are specified
-#' in the rule. For more information about rules, see CreateResolverRule.
+#' in the rule. For more information about rules, see
+#' [CreateResolverRule](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_CreateResolverRule.html).
 #'
 #' @usage
 #' route53resolver_associate_resolver_rule(ResolverRuleId, Name, VPCId)
 #'
-#' @param ResolverRuleId &#91;required&#93; The ID of the resolver rule that you want to associate with the VPC. To
-#' list the existing resolver rules, use ListResolverRules.
-#' @param Name A name for the association that you're creating between a resolver rule
+#' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to associate with the VPC. To
+#' list the existing Resolver rules, use
+#' [ListResolverRules](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRules.html).
+#' @param Name A name for the association that you're creating between a Resolver rule
 #' and a VPC.
-#' @param VPCId &#91;required&#93; The ID of the VPC that you want to associate the resolver rule with.
+#' @param VPCId &#91;required&#93; The ID of the VPC that you want to associate the Resolver rule with.
 #'
 #' @section Request syntax:
 #' ```
@@ -100,16 +155,16 @@ route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL,
 }
 .route53resolver$operations$associate_resolver_rule <- route53resolver_associate_resolver_rule
 
-#' Creates a resolver endpoint
+#' Creates a Resolver endpoint
 #'
-#' Creates a resolver endpoint. There are two types of resolver endpoints,
+#' Creates a Resolver endpoint. There are two types of Resolver endpoints,
 #' inbound and outbound:
 #' 
-#' -   An *inbound resolver endpoint* forwards DNS queries to the DNS
-#'     service for a VPC from your network or another VPC.
+#' -   An *inbound Resolver endpoint* forwards DNS queries to the DNS
+#'     service for a VPC from your network.
 #' 
-#' -   An *outbound resolver endpoint* forwards DNS queries from the DNS
-#'     service for a VPC to your network or another VPC.
+#' -   An *outbound Resolver endpoint* forwards DNS queries from the DNS
+#'     service for a VPC to your network.
 #'
 #' @usage
 #' route53resolver_create_resolver_endpoint(CreatorRequestId, Name,
@@ -123,19 +178,20 @@ route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL,
 #' Resolver dashboard in the Route 53 console.
 #' @param SecurityGroupIds &#91;required&#93; The ID of one or more security groups that you want to use to control
 #' access to this VPC. The security group that you specify must include one
-#' or more inbound rules (for inbound resolver endpoints) or outbound rules
-#' (for outbound resolver endpoints).
+#' or more inbound rules (for inbound Resolver endpoints) or outbound rules
+#' (for outbound Resolver endpoints). Inbound and outbound rules must allow
+#' TCP and UDP access. For inbound access, open port 53. For outbound
+#' access, open the port that you're using for DNS queries on your network.
 #' @param Direction &#91;required&#93; Specify the applicable value:
 #' 
 #' -   `INBOUND`: Resolver forwards DNS queries to the DNS service for a
-#'     VPC from your network or another VPC
+#'     VPC from your network
 #' 
 #' -   `OUTBOUND`: Resolver forwards DNS queries from the DNS service for a
-#'     VPC to your network or another VPC
-#' @param IpAddresses &#91;required&#93; The subnets and IP addresses in your VPC that you want DNS queries to
-#' pass through on the way from your VPCs to your network (for outbound
-#' endpoints) or on the way from your network to your VPCs (for inbound
-#' resolver endpoints).
+#'     VPC to your network
+#' @param IpAddresses &#91;required&#93; The subnets and IP addresses in your VPC that DNS queries originate from
+#' (for outbound endpoints) or that you forward DNS queries to (for inbound
+#' endpoints). The subnet ID uniquely identifies a VPC.
 #' @param Tags A list of the tag keys and values that you want to associate with the
 #' endpoint.
 #'
@@ -183,12 +239,97 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
 }
 .route53resolver$operations$create_resolver_endpoint <- route53resolver_create_resolver_endpoint
 
-#' For DNS queries that originate in your VPCs, specifies which resolver
+#' Creates a Resolver query logging configuration, which defines where you
+#' want Resolver to save DNS query logs that originate in your VPCs
+#'
+#' Creates a Resolver query logging configuration, which defines where you
+#' want Resolver to save DNS query logs that originate in your VPCs.
+#' Resolver can log queries only for VPCs that are in the same Region as
+#' the query logging configuration.
+#' 
+#' To specify which VPCs you want to log queries for, you use
+#' `AssociateResolverQueryLogConfig`. For more information, see
+#' [AssociateResolverQueryLogConfig](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverQueryLogConfig.html).
+#' 
+#' You can optionally use AWS Resource Access Manager (AWS RAM) to share a
+#' query logging configuration with other AWS accounts. The other accounts
+#' can then associate VPCs with the configuration. The query logs that
+#' Resolver creates for a configuration include all DNS queries that
+#' originate in all VPCs that are associated with the configuration.
+#'
+#' @usage
+#' route53resolver_create_resolver_query_log_config(Name, DestinationArn,
+#'   CreatorRequestId, Tags)
+#'
+#' @param Name &#91;required&#93; The name that you want to give the query logging configuration
+#' @param DestinationArn &#91;required&#93; The ARN of the resource that you want Resolver to send query logs. You
+#' can send query logs to an S3 bucket, a CloudWatch Logs log group, or a
+#' Kinesis Data Firehose delivery stream. Examples of valid values include
+#' the following:
+#' 
+#' -   **S3 bucket**:
+#' 
+#'     `arn:aws:s3:::examplebucket`
+#' 
+#'     You can optionally append a file prefix to the end of the ARN.
+#' 
+#'     `arn:aws:s3:::examplebucket/development/`
+#' 
+#' -   **CloudWatch Logs log group**:
+#' 
+#'     `arn:aws:logs:us-west-1:123456789012:log-group:/mystack-testgroup-12ABC1AB12A1:*`
+#' 
+#' -   **Kinesis Data Firehose delivery stream**:
+#' 
+#'     `arn:aws:kinesis:us-east-2:0123456789:stream/my_stream_name`
+#' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows failed
+#' requests to be retried without the risk of executing the operation
+#' twice. `CreatorRequestId` can be any unique string, for example, a
+#' date/time stamp.
+#' @param Tags A list of the tag keys and values that you want to associate with the
+#' query logging configuration.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_resolver_query_log_config(
+#'   Name = "string",
+#'   DestinationArn = "string",
+#'   CreatorRequestId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_create_resolver_query_log_config
+route53resolver_create_resolver_query_log_config <- function(Name, DestinationArn, CreatorRequestId, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateResolverQueryLogConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$create_resolver_query_log_config_input(Name = Name, DestinationArn = DestinationArn, CreatorRequestId = CreatorRequestId, Tags = Tags)
+  output <- .route53resolver$create_resolver_query_log_config_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$create_resolver_query_log_config <- route53resolver_create_resolver_query_log_config
+
+#' For DNS queries that originate in your VPCs, specifies which Resolver
 #' endpoint the queries pass through, one domain name that you want to
 #' forward to your network, and the IP addresses of the DNS resolvers in
 #' your network
 #'
-#' For DNS queries that originate in your VPCs, specifies which resolver
+#' For DNS queries that originate in your VPCs, specifies which Resolver
 #' endpoint the queries pass through, one domain name that you want to
 #' forward to your network, and the IP addresses of the DNS resolvers in
 #' your network.
@@ -203,15 +344,31 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
 #' date/time stamp.
 #' @param Name A friendly name that lets you easily find a rule in the Resolver
 #' dashboard in the Route 53 console.
-#' @param RuleType &#91;required&#93; Specify `FORWARD`. Other resolver rule types aren't supported.
+#' @param RuleType &#91;required&#93; When you want to forward DNS queries for specified domain name to
+#' resolvers on your network, specify `FORWARD`.
+#' 
+#' When you have a forwarding rule to forward DNS queries for a domain to
+#' your network and you want Resolver to process queries for a subdomain of
+#' that domain, specify `SYSTEM`.
+#' 
+#' For example, to forward DNS queries for example.com to resolvers on your
+#' network, you create a rule and specify `FORWARD` for `RuleType`. To then
+#' have Resolver process queries for apex.example.com, you create a rule
+#' and specify `SYSTEM` for `RuleType`.
+#' 
+#' Currently, only Resolver can create rules that have a value of
+#' `RECURSIVE` for `RuleType`.
 #' @param DomainName &#91;required&#93; DNS queries for this domain name are forwarded to the IP addresses that
-#' you specify in `TargetIps`. If a query matches multiple resolver rules
+#' you specify in `TargetIps`. If a query matches multiple Resolver rules
 #' (example.com and www.example.com), outbound DNS queries are routed using
-#' the resolver rule that contains the most specific domain name
+#' the Resolver rule that contains the most specific domain name
 #' (www.example.com).
 #' @param TargetIps The IPs that you want Resolver to forward DNS queries to. You can
 #' specify only IPv4 addresses. Separate IP addresses with a comma.
-#' @param ResolverEndpointId The ID of the outbound resolver endpoint that you want to use to route
+#' 
+#' `TargetIps` is available only when the value of `Rule type` is
+#' `FORWARD`.
+#' @param ResolverEndpointId The ID of the outbound Resolver endpoint that you want to use to route
 #' DNS queries to the IP addresses that you specify in `TargetIps`.
 #' @param Tags A list of the tag keys and values that you want to associate with the
 #' endpoint.
@@ -259,21 +416,21 @@ route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, 
 }
 .route53resolver$operations$create_resolver_rule <- route53resolver_create_resolver_rule
 
-#' Deletes a resolver endpoint
+#' Deletes a Resolver endpoint
 #'
-#' Deletes a resolver endpoint. The effect of deleting a resolver endpoint
-#' depends on whether it's an inbound or an outbound resolver endpoint:
+#' Deletes a Resolver endpoint. The effect of deleting a Resolver endpoint
+#' depends on whether it's an inbound or an outbound Resolver endpoint:
 #' 
-#' -   **Inbound**: DNS queries from your network or another VPC are no
-#'     longer routed to the DNS service for the specified VPC.
+#' -   **Inbound**: DNS queries from your network are no longer routed to
+#'     the DNS service for the specified VPC.
 #' 
 #' -   **Outbound**: DNS queries from a VPC are no longer routed to your
-#'     network or to another VPC.
+#'     network.
 #'
 #' @usage
 #' route53resolver_delete_resolver_endpoint(ResolverEndpointId)
 #'
-#' @param ResolverEndpointId &#91;required&#93; The ID of the resolver endpoint that you want to delete.
+#' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -302,16 +459,70 @@ route53resolver_delete_resolver_endpoint <- function(ResolverEndpointId) {
 }
 .route53resolver$operations$delete_resolver_endpoint <- route53resolver_delete_resolver_endpoint
 
-#' Deletes a resolver rule
+#' Deletes a query logging configuration
 #'
-#' Deletes a resolver rule. Before you can delete a resolver rule, you must
-#' disassociate it from all the VPCs that you associated the resolver rule
-#' with. For more infomation, see DisassociateResolverRule.
+#' Deletes a query logging configuration. When you delete a configuration,
+#' Resolver stops logging DNS queries for all of the Amazon VPCs that are
+#' associated with the configuration. This also applies if the query
+#' logging configuration is shared with other AWS accounts, and the other
+#' accounts have associated VPCs with the shared configuration.
+#' 
+#' Before you can delete a query logging configuration, you must first
+#' disassociate all VPCs from the configuration. See
+#' [DisassociateResolverQueryLogConfig](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverQueryLogConfig.html).
+#' 
+#' If you used Resource Access Manager (RAM) to share a query logging
+#' configuration with other accounts, you must stop sharing the
+#' configuration before you can delete a configuration. The accounts that
+#' you shared the configuration with can first disassociate VPCs that they
+#' associated with the configuration, but that's not necessary. If you stop
+#' sharing the configuration, those VPCs are automatically disassociated
+#' from the configuration.
+#'
+#' @usage
+#' route53resolver_delete_resolver_query_log_config(
+#'   ResolverQueryLogConfigId)
+#'
+#' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the query logging configuration that you want to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resolver_query_log_config(
+#'   ResolverQueryLogConfigId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_delete_resolver_query_log_config
+route53resolver_delete_resolver_query_log_config <- function(ResolverQueryLogConfigId) {
+  op <- new_operation(
+    name = "DeleteResolverQueryLogConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$delete_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId)
+  output <- .route53resolver$delete_resolver_query_log_config_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$delete_resolver_query_log_config <- route53resolver_delete_resolver_query_log_config
+
+#' Deletes a Resolver rule
+#'
+#' Deletes a Resolver rule. Before you can delete a Resolver rule, you must
+#' disassociate it from all the VPCs that you associated the Resolver rule
+#' with. For more information, see
+#' [DisassociateResolverRule](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverRule.html).
 #'
 #' @usage
 #' route53resolver_delete_resolver_rule(ResolverRuleId)
 #'
-#' @param ResolverRuleId &#91;required&#93; The ID of the resolver rule that you want to delete.
+#' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to delete.
 #'
 #' @section Request syntax:
 #' ```
@@ -340,22 +551,22 @@ route53resolver_delete_resolver_rule <- function(ResolverRuleId) {
 }
 .route53resolver$operations$delete_resolver_rule <- route53resolver_delete_resolver_rule
 
-#' Removes IP addresses from an inbound or an outbound resolver endpoint
+#' Removes IP addresses from an inbound or an outbound Resolver endpoint
 #'
-#' Removes IP addresses from an inbound or an outbound resolver endpoint.
+#' Removes IP addresses from an inbound or an outbound Resolver endpoint.
 #' If you want to remove more than one IP address, submit one
 #' `DisassociateResolverEndpointIpAddress` request for each IP address.
 #' 
 #' To add an IP address to an endpoint, see
-#' AssociateResolverEndpointIpAddress.
+#' [AssociateResolverEndpointIpAddress](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverEndpointIpAddress.html).
 #'
 #' @usage
 #' route53resolver_disassociate_resolver_endpoint_ip_address(
 #'   ResolverEndpointId, IpAddress)
 #'
-#' @param ResolverEndpointId &#91;required&#93; The ID of the resolver endpoint that you want to disassociate an IP
+#' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to disassociate an IP
 #' address from.
-#' @param IpAddress &#91;required&#93; The IPv4 address that you want to remove from a resolver endpoint.
+#' @param IpAddress &#91;required&#93; The IPv4 address that you want to remove from a Resolver endpoint.
 #'
 #' @section Request syntax:
 #' ```
@@ -389,21 +600,73 @@ route53resolver_disassociate_resolver_endpoint_ip_address <- function(ResolverEn
 }
 .route53resolver$operations$disassociate_resolver_endpoint_ip_address <- route53resolver_disassociate_resolver_endpoint_ip_address
 
-#' Removes the association between a specified resolver rule and a
+#' Disassociates a VPC from a query logging configuration
+#'
+#' Disassociates a VPC from a query logging configuration.
+#' 
+#' Before you can delete a query logging configuration, you must first
+#' disassociate all VPCs from the configuration. If you used Resource
+#' Access Manager (RAM) to share a query logging configuration with other
+#' accounts, VPCs can be disassociated from the configuration in the
+#' following ways:
+#' 
+#' -   The accounts that you shared the configuration with can disassociate
+#'     VPCs from the configuration.
+#' 
+#' -   You can stop sharing the configuration.
+#'
+#' @usage
+#' route53resolver_disassociate_resolver_query_log_config(
+#'   ResolverQueryLogConfigId, ResourceId)
+#'
+#' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the query logging configuration that you want to disassociate
+#' a specified VPC from.
+#' @param ResourceId &#91;required&#93; The ID of the Amazon VPC that you want to disassociate from a specified
+#' query logging configuration.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_resolver_query_log_config(
+#'   ResolverQueryLogConfigId = "string",
+#'   ResourceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_disassociate_resolver_query_log_config
+route53resolver_disassociate_resolver_query_log_config <- function(ResolverQueryLogConfigId, ResourceId) {
+  op <- new_operation(
+    name = "DisassociateResolverQueryLogConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$disassociate_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId, ResourceId = ResourceId)
+  output <- .route53resolver$disassociate_resolver_query_log_config_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$disassociate_resolver_query_log_config <- route53resolver_disassociate_resolver_query_log_config
+
+#' Removes the association between a specified Resolver rule and a
 #' specified VPC
 #'
-#' Removes the association between a specified resolver rule and a
+#' Removes the association between a specified Resolver rule and a
 #' specified VPC.
 #' 
-#' If you disassociate a resolver rule from a VPC, Resolver stops
+#' If you disassociate a Resolver rule from a VPC, Resolver stops
 #' forwarding DNS queries for the domain name that you specified in the
-#' resolver rule.
+#' Resolver rule.
 #'
 #' @usage
 #' route53resolver_disassociate_resolver_rule(VPCId, ResolverRuleId)
 #'
-#' @param VPCId &#91;required&#93; The ID of the VPC that you want to disassociate the resolver rule from.
-#' @param ResolverRuleId &#91;required&#93; The ID of the resolver rule that you want to disassociate from the
+#' @param VPCId &#91;required&#93; The ID of the VPC that you want to disassociate the Resolver rule from.
+#' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to disassociate from the
 #' specified VPC.
 #'
 #' @section Request syntax:
@@ -434,18 +697,55 @@ route53resolver_disassociate_resolver_rule <- function(VPCId, ResolverRuleId) {
 }
 .route53resolver$operations$disassociate_resolver_rule <- route53resolver_disassociate_resolver_rule
 
-#' Gets information about a specified resolver endpoint, such as whether
-#' it's an inbound or an outbound resolver endpoint, and the current status
+#' Gets DNSSEC validation information for a specified resource
+#'
+#' Gets DNSSEC validation information for a specified resource.
+#'
+#' @usage
+#' route53resolver_get_resolver_dnssec_config(ResourceId)
+#'
+#' @param ResourceId &#91;required&#93; The ID of the virtual private cloud (VPC) for the DNSSEC validation
+#' status.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resolver_dnssec_config(
+#'   ResourceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_get_resolver_dnssec_config
+route53resolver_get_resolver_dnssec_config <- function(ResourceId) {
+  op <- new_operation(
+    name = "GetResolverDnssecConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$get_resolver_dnssec_config_input(ResourceId = ResourceId)
+  output <- .route53resolver$get_resolver_dnssec_config_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$get_resolver_dnssec_config <- route53resolver_get_resolver_dnssec_config
+
+#' Gets information about a specified Resolver endpoint, such as whether
+#' it's an inbound or an outbound Resolver endpoint, and the current status
 #' of the endpoint
 #'
-#' Gets information about a specified resolver endpoint, such as whether
-#' it's an inbound or an outbound resolver endpoint, and the current status
+#' Gets information about a specified Resolver endpoint, such as whether
+#' it's an inbound or an outbound Resolver endpoint, and the current status
 #' of the endpoint.
 #'
 #' @usage
 #' route53resolver_get_resolver_endpoint(ResolverEndpointId)
 #'
-#' @param ResolverEndpointId &#91;required&#93; The ID of the resolver endpoint that you want to get information about.
+#' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to get information about.
 #'
 #' @section Request syntax:
 #' ```
@@ -474,18 +774,140 @@ route53resolver_get_resolver_endpoint <- function(ResolverEndpointId) {
 }
 .route53resolver$operations$get_resolver_endpoint <- route53resolver_get_resolver_endpoint
 
-#' Gets information about a specified resolver rule, such as the domain
-#' name that the rule forwards DNS queries for and the ID of the outbound
-#' resolver endpoint that the rule is associated with
+#' Gets information about a specified Resolver query logging configuration,
+#' such as the number of VPCs that the configuration is logging queries for
+#' and the location that logs are sent to
 #'
-#' Gets information about a specified resolver rule, such as the domain
+#' Gets information about a specified Resolver query logging configuration,
+#' such as the number of VPCs that the configuration is logging queries for
+#' and the location that logs are sent to.
+#'
+#' @usage
+#' route53resolver_get_resolver_query_log_config(ResolverQueryLogConfigId)
+#'
+#' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the Resolver query logging configuration that you want to get
+#' information about.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resolver_query_log_config(
+#'   ResolverQueryLogConfigId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_get_resolver_query_log_config
+route53resolver_get_resolver_query_log_config <- function(ResolverQueryLogConfigId) {
+  op <- new_operation(
+    name = "GetResolverQueryLogConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$get_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId)
+  output <- .route53resolver$get_resolver_query_log_config_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$get_resolver_query_log_config <- route53resolver_get_resolver_query_log_config
+
+#' Gets information about a specified association between a Resolver query
+#' logging configuration and an Amazon VPC
+#'
+#' Gets information about a specified association between a Resolver query
+#' logging configuration and an Amazon VPC. When you associate a VPC with a
+#' query logging configuration, Resolver logs DNS queries that originate in
+#' that VPC.
+#'
+#' @usage
+#' route53resolver_get_resolver_query_log_config_association(
+#'   ResolverQueryLogConfigAssociationId)
+#'
+#' @param ResolverQueryLogConfigAssociationId &#91;required&#93; The ID of the Resolver query logging configuration association that you
+#' want to get information about.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resolver_query_log_config_association(
+#'   ResolverQueryLogConfigAssociationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_get_resolver_query_log_config_association
+route53resolver_get_resolver_query_log_config_association <- function(ResolverQueryLogConfigAssociationId) {
+  op <- new_operation(
+    name = "GetResolverQueryLogConfigAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$get_resolver_query_log_config_association_input(ResolverQueryLogConfigAssociationId = ResolverQueryLogConfigAssociationId)
+  output <- .route53resolver$get_resolver_query_log_config_association_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$get_resolver_query_log_config_association <- route53resolver_get_resolver_query_log_config_association
+
+#' Gets information about a query logging policy
+#'
+#' Gets information about a query logging policy. A query logging policy
+#' specifies the Resolver query logging operations and resources that you
+#' want to allow another AWS account to be able to use.
+#'
+#' @usage
+#' route53resolver_get_resolver_query_log_config_policy(Arn)
+#'
+#' @param Arn &#91;required&#93; The ARN of the query logging configuration that you want to get the
+#' query logging policy for.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resolver_query_log_config_policy(
+#'   Arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_get_resolver_query_log_config_policy
+route53resolver_get_resolver_query_log_config_policy <- function(Arn) {
+  op <- new_operation(
+    name = "GetResolverQueryLogConfigPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$get_resolver_query_log_config_policy_input(Arn = Arn)
+  output <- .route53resolver$get_resolver_query_log_config_policy_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$get_resolver_query_log_config_policy <- route53resolver_get_resolver_query_log_config_policy
+
+#' Gets information about a specified Resolver rule, such as the domain
 #' name that the rule forwards DNS queries for and the ID of the outbound
-#' resolver endpoint that the rule is associated with.
+#' Resolver endpoint that the rule is associated with
+#'
+#' Gets information about a specified Resolver rule, such as the domain
+#' name that the rule forwards DNS queries for and the ID of the outbound
+#' Resolver endpoint that the rule is associated with.
 #'
 #' @usage
 #' route53resolver_get_resolver_rule(ResolverRuleId)
 #'
-#' @param ResolverRuleId &#91;required&#93; The ID of the resolver rule that you want to get information about.
+#' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to get information about.
 #'
 #' @section Request syntax:
 #' ```
@@ -514,17 +936,17 @@ route53resolver_get_resolver_rule <- function(ResolverRuleId) {
 }
 .route53resolver$operations$get_resolver_rule <- route53resolver_get_resolver_rule
 
-#' Gets information about an association between a specified resolver rule
+#' Gets information about an association between a specified Resolver rule
 #' and a VPC
 #'
-#' Gets information about an association between a specified resolver rule
-#' and a VPC. You associate a resolver rule and a VPC using
-#' AssociateResolverRule.
+#' Gets information about an association between a specified Resolver rule
+#' and a VPC. You associate a Resolver rule and a VPC using
+#' [AssociateResolverRule](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverRule.html).
 #'
 #' @usage
 #' route53resolver_get_resolver_rule_association(ResolverRuleAssociationId)
 #'
-#' @param ResolverRuleAssociationId &#91;required&#93; The ID of the resolver rule association that you want to get information
+#' @param ResolverRuleAssociationId &#91;required&#93; The ID of the Resolver rule association that you want to get information
 #' about.
 #'
 #' @section Request syntax:
@@ -554,17 +976,18 @@ route53resolver_get_resolver_rule_association <- function(ResolverRuleAssociatio
 }
 .route53resolver$operations$get_resolver_rule_association <- route53resolver_get_resolver_rule_association
 
-#' Gets information about a resolver rule policy
+#' Gets information about the Resolver rule policy for a specified rule
 #'
-#' Gets information about a resolver rule policy. A resolver rule policy
-#' specifies the Resolver operations and resources that you want to allow
-#' another AWS account to be able to use.
+#' Gets information about the Resolver rule policy for a specified rule. A
+#' Resolver rule policy includes the rule that you want to share with
+#' another account, the account that you want to share the rule with, and
+#' the Resolver operations that you want to allow the account to use.
 #'
 #' @usage
 #' route53resolver_get_resolver_rule_policy(Arn)
 #'
-#' @param Arn &#91;required&#93; The ID of the resolver rule policy that you want to get information
-#' about.
+#' @param Arn &#91;required&#93; The ID of the Resolver rule that you want to get the Resolver rule
+#' policy for.
 #'
 #' @section Request syntax:
 #' ```
@@ -593,15 +1016,76 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
 }
 .route53resolver$operations$get_resolver_rule_policy <- route53resolver_get_resolver_rule_policy
 
-#' Gets the IP addresses for a specified resolver endpoint
+#' Lists the configurations for DNSSEC validation that are associated with
+#' the current AWS account
 #'
-#' Gets the IP addresses for a specified resolver endpoint.
+#' Lists the configurations for DNSSEC validation that are associated with
+#' the current AWS account.
+#'
+#' @usage
+#' route53resolver_list_resolver_dnssec_configs(MaxResults, NextToken,
+#'   Filters)
+#'
+#' @param MaxResults *Optional*: An integer that specifies the maximum number of DNSSEC
+#' configuration results that you want Amazon Route 53 to return. If you
+#' don't specify a value for `MaxResults`, Route 53 returns up to 100
+#' configuration per page.
+#' @param NextToken (Optional) If the current AWS account has more than `MaxResults` DNSSEC
+#' configurations, use `NextToken` to get the second and subsequent pages
+#' of results.
+#' 
+#' For the first `ListResolverDnssecConfigs` request, omit this value.
+#' 
+#' For the second and subsequent requests, get the value of `NextToken`
+#' from the previous response and specify that value for `NextToken` in the
+#' request.
+#' @param Filters An optional specification to return a subset of objects.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resolver_dnssec_configs(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_list_resolver_dnssec_configs
+route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListResolverDnssecConfigs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$list_resolver_dnssec_configs_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
+  output <- .route53resolver$list_resolver_dnssec_configs_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$list_resolver_dnssec_configs <- route53resolver_list_resolver_dnssec_configs
+
+#' Gets the IP addresses for a specified Resolver endpoint
+#'
+#' Gets the IP addresses for a specified Resolver endpoint.
 #'
 #' @usage
 #' route53resolver_list_resolver_endpoint_ip_addresses(ResolverEndpointId,
 #'   MaxResults, NextToken)
 #'
-#' @param ResolverEndpointId &#91;required&#93; The ID of the resolver endpoint that you want to get IP addresses for.
+#' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to get IP addresses for.
 #' @param MaxResults The maximum number of IP addresses that you want to return in the
 #' response to a `ListResolverEndpointIpAddresses` request. If you don't
 #' specify a value for `MaxResults`, Resolver returns up to 100 IP
@@ -609,7 +1093,7 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
 #' @param NextToken For the first `ListResolverEndpointIpAddresses` request, omit this
 #' value.
 #' 
-#' If the specified resolver endpoint has more than `MaxResults` IP
+#' If the specified Resolver endpoint has more than `MaxResults` IP
 #' addresses, you can submit another `ListResolverEndpointIpAddresses`
 #' request to get the next group of IP addresses. In the next request,
 #' specify the value of `NextToken` from the previous response.
@@ -643,26 +1127,26 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
 }
 .route53resolver$operations$list_resolver_endpoint_ip_addresses <- route53resolver_list_resolver_endpoint_ip_addresses
 
-#' Lists all the resolver endpoints that were created using the current AWS
+#' Lists all the Resolver endpoints that were created using the current AWS
 #' account
 #'
-#' Lists all the resolver endpoints that were created using the current AWS
+#' Lists all the Resolver endpoints that were created using the current AWS
 #' account.
 #'
 #' @usage
 #' route53resolver_list_resolver_endpoints(MaxResults, NextToken, Filters)
 #'
-#' @param MaxResults The maximum number of resolver endpoints that you want to return in the
+#' @param MaxResults The maximum number of Resolver endpoints that you want to return in the
 #' response to a `ListResolverEndpoints` request. If you don't specify a
-#' value for `MaxResults`, Resolver returns up to 100 resolver endpoints.
+#' value for `MaxResults`, Resolver returns up to 100 Resolver endpoints.
 #' @param NextToken For the first `ListResolverEndpoints` request, omit this value.
 #' 
-#' If you have more than `MaxResults` resolver endpoints, you can submit
+#' If you have more than `MaxResults` Resolver endpoints, you can submit
 #' another `ListResolverEndpoints` request to get the next group of
-#' resolver endpoints. In the next request, specify the value of
+#' Resolver endpoints. In the next request, specify the value of
 #' `NextToken` from the previous response.
-#' @param Filters An optional specification to return a subset of resolver endpoints, such
-#' as all inbound resolver endpoints.
+#' @param Filters An optional specification to return a subset of Resolver endpoints, such
+#' as all inbound Resolver endpoints.
 #' 
 #' If you submit a second or subsequent `ListResolverEndpoints` request and
 #' specify the `NextToken` parameter, you must use the same values for
@@ -704,10 +1188,260 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
 }
 .route53resolver$operations$list_resolver_endpoints <- route53resolver_list_resolver_endpoints
 
-#' Lists the associations that were created between resolver rules and VPCs
+#' Lists information about associations between Amazon VPCs and query
+#' logging configurations
+#'
+#' Lists information about associations between Amazon VPCs and query
+#' logging configurations.
+#'
+#' @usage
+#' route53resolver_list_resolver_query_log_config_associations(MaxResults,
+#'   NextToken, Filters, SortBy, SortOrder)
+#'
+#' @param MaxResults The maximum number of query logging associations that you want to return
+#' in the response to a `ListResolverQueryLogConfigAssociations` request.
+#' If you don't specify a value for `MaxResults`, Resolver returns up to
+#' 100 query logging associations.
+#' @param NextToken For the first `ListResolverQueryLogConfigAssociations` request, omit
+#' this value.
+#' 
+#' If there are more than `MaxResults` query logging associations that
+#' match the values that you specify for `Filters`, you can submit another
+#' `ListResolverQueryLogConfigAssociations` request to get the next group
+#' of associations. In the next request, specify the value of `NextToken`
+#' from the previous response.
+#' @param Filters An optional specification to return a subset of query logging
+#' associations.
+#' 
+#' If you submit a second or subsequent
+#' `ListResolverQueryLogConfigAssociations` request and specify the
+#' `NextToken` parameter, you must use the same values for `Filters`, if
+#' any, as in the previous request.
+#' @param SortBy The element that you want Resolver to sort query logging associations
+#' by.
+#' 
+#' If you submit a second or subsequent
+#' `ListResolverQueryLogConfigAssociations` request and specify the
+#' `NextToken` parameter, you must use the same value for `SortBy`, if any,
+#' as in the previous request.
+#' 
+#' Valid values include the following elements:
+#' 
+#' -   `CreationTime`: The ID of the query logging association.
+#' 
+#' -   `Error`: If the value of `Status` is `FAILED`, the value of `Error`
+#'     indicates the cause:
+#' 
+#'     -   `DESTINATION_NOT_FOUND`: The specified destination (for example,
+#'         an Amazon S3 bucket) was deleted.
+#' 
+#'     -   `ACCESS_DENIED`: Permissions don't allow sending logs to the
+#'         destination.
+#' 
+#'     If `Status` is a value other than `FAILED`, `ERROR` is null.
+#' 
+#' -   `Id`: The ID of the query logging association
+#' 
+#' -   `ResolverQueryLogConfigId`: The ID of the query logging
+#'     configuration
+#' 
+#' -   `ResourceId`: The ID of the VPC that is associated with the query
+#'     logging configuration
+#' 
+#' -   `Status`: The current status of the configuration. Valid values
+#'     include the following:
+#' 
+#'     -   `CREATING`: Resolver is creating an association between an
+#'         Amazon VPC and a query logging configuration.
+#' 
+#'     -   `CREATED`: The association between an Amazon VPC and a query
+#'         logging configuration was successfully created. Resolver is
+#'         logging queries that originate in the specified VPC.
+#' 
+#'     -   `DELETING`: Resolver is deleting this query logging association.
+#' 
+#'     -   `FAILED`: Resolver either couldn't create or couldn't delete the
+#'         query logging association. Here are two common causes:
+#' 
+#'         -   The specified destination (for example, an Amazon S3 bucket)
+#'             was deleted.
+#' 
+#'         -   Permissions don't allow sending logs to the destination.
+#' @param SortOrder If you specified a value for `SortBy`, the order that you want query
+#' logging associations to be listed in, `ASCENDING` or `DESCENDING`.
+#' 
+#' If you submit a second or subsequent
+#' `ListResolverQueryLogConfigAssociations` request and specify the
+#' `NextToken` parameter, you must use the same value for `SortOrder`, if
+#' any, as in the previous request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resolver_query_log_config_associations(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   SortBy = "string",
+#'   SortOrder = "ASCENDING"|"DESCENDING"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_list_resolver_query_log_config_associations
+route53resolver_list_resolver_query_log_config_associations <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListResolverQueryLogConfigAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$list_resolver_query_log_config_associations_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .route53resolver$list_resolver_query_log_config_associations_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$list_resolver_query_log_config_associations <- route53resolver_list_resolver_query_log_config_associations
+
+#' Lists information about the specified query logging configurations
+#'
+#' Lists information about the specified query logging configurations. Each
+#' configuration defines where you want Resolver to save DNS query logs and
+#' specifies the VPCs that you want to log queries for.
+#'
+#' @usage
+#' route53resolver_list_resolver_query_log_configs(MaxResults, NextToken,
+#'   Filters, SortBy, SortOrder)
+#'
+#' @param MaxResults The maximum number of query logging configurations that you want to
+#' return in the response to a `ListResolverQueryLogConfigs` request. If
+#' you don't specify a value for `MaxResults`, Resolver returns up to 100
+#' query logging configurations.
+#' @param NextToken For the first `ListResolverQueryLogConfigs` request, omit this value.
+#' 
+#' If there are more than `MaxResults` query logging configurations that
+#' match the values that you specify for `Filters`, you can submit another
+#' `ListResolverQueryLogConfigs` request to get the next group of
+#' configurations. In the next request, specify the value of `NextToken`
+#' from the previous response.
+#' @param Filters An optional specification to return a subset of query logging
+#' configurations.
+#' 
+#' If you submit a second or subsequent `ListResolverQueryLogConfigs`
+#' request and specify the `NextToken` parameter, you must use the same
+#' values for `Filters`, if any, as in the previous request.
+#' @param SortBy The element that you want Resolver to sort query logging configurations
+#' by.
+#' 
+#' If you submit a second or subsequent `ListResolverQueryLogConfigs`
+#' request and specify the `NextToken` parameter, you must use the same
+#' value for `SortBy`, if any, as in the previous request.
+#' 
+#' Valid values include the following elements:
+#' 
+#' -   `Arn`: The ARN of the query logging configuration
+#' 
+#' -   `AssociationCount`: The number of VPCs that are associated with the
+#'     specified configuration
+#' 
+#' -   `CreationTime`: The date and time that Resolver returned when the
+#'     configuration was created
+#' 
+#' -   `CreatorRequestId`: The value that was specified for
+#'     `CreatorRequestId` when the configuration was created
+#' 
+#' -   `DestinationArn`: The location that logs are sent to
+#' 
+#' -   `Id`: The ID of the configuration
+#' 
+#' -   `Name`: The name of the configuration
+#' 
+#' -   `OwnerId`: The AWS account number of the account that created the
+#'     configuration
+#' 
+#' -   `ShareStatus`: Whether the configuration is shared with other AWS
+#'     accounts or shared with the current account by another AWS account.
+#'     Sharing is configured through AWS Resource Access Manager (AWS RAM).
+#' 
+#' -   `Status`: The current status of the configuration. Valid values
+#'     include the following:
+#' 
+#'     -   `CREATING`: Resolver is creating the query logging
+#'         configuration.
+#' 
+#'     -   `CREATED`: The query logging configuration was successfully
+#'         created. Resolver is logging queries that originate in the
+#'         specified VPC.
+#' 
+#'     -   `DELETING`: Resolver is deleting this query logging
+#'         configuration.
+#' 
+#'     -   `FAILED`: Resolver either couldn't create or couldn't delete the
+#'         query logging configuration. Here are two common causes:
+#' 
+#'         -   The specified destination (for example, an Amazon S3 bucket)
+#'             was deleted.
+#' 
+#'         -   Permissions don't allow sending logs to the destination.
+#' @param SortOrder If you specified a value for `SortBy`, the order that you want query
+#' logging configurations to be listed in, `ASCENDING` or `DESCENDING`.
+#' 
+#' If you submit a second or subsequent `ListResolverQueryLogConfigs`
+#' request and specify the `NextToken` parameter, you must use the same
+#' value for `SortOrder`, if any, as in the previous request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resolver_query_log_configs(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   SortBy = "string",
+#'   SortOrder = "ASCENDING"|"DESCENDING"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_list_resolver_query_log_configs
+route53resolver_list_resolver_query_log_configs <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListResolverQueryLogConfigs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$list_resolver_query_log_configs_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .route53resolver$list_resolver_query_log_configs_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$list_resolver_query_log_configs <- route53resolver_list_resolver_query_log_configs
+
+#' Lists the associations that were created between Resolver rules and VPCs
 #' using the current AWS account
 #'
-#' Lists the associations that were created between resolver rules and VPCs
+#' Lists the associations that were created between Resolver rules and VPCs
 #' using the current AWS account.
 #'
 #' @usage
@@ -724,8 +1458,8 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
 #' another `ListResolverRuleAssociation` request to get the next group of
 #' rule associations. In the next request, specify the value of `NextToken`
 #' from the previous response.
-#' @param Filters An optional specification to return a subset of resolver rules, such as
-#' resolver rules that are associated with the same VPC ID.
+#' @param Filters An optional specification to return a subset of Resolver rules, such as
+#' Resolver rules that are associated with the same VPC ID.
 #' 
 #' If you submit a second or subsequent `ListResolverRuleAssociations`
 #' request and specify the `NextToken` parameter, you must use the same
@@ -767,25 +1501,25 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
 }
 .route53resolver$operations$list_resolver_rule_associations <- route53resolver_list_resolver_rule_associations
 
-#' Lists the resolver rules that were created using the current AWS account
+#' Lists the Resolver rules that were created using the current AWS account
 #'
-#' Lists the resolver rules that were created using the current AWS
+#' Lists the Resolver rules that were created using the current AWS
 #' account.
 #'
 #' @usage
 #' route53resolver_list_resolver_rules(MaxResults, NextToken, Filters)
 #'
-#' @param MaxResults The maximum number of resolver rules that you want to return in the
+#' @param MaxResults The maximum number of Resolver rules that you want to return in the
 #' response to a `ListResolverRules` request. If you don't specify a value
-#' for `MaxResults`, Resolver returns up to 100 resolver rules.
+#' for `MaxResults`, Resolver returns up to 100 Resolver rules.
 #' @param NextToken For the first `ListResolverRules` request, omit this value.
 #' 
-#' If you have more than `MaxResults` resolver rules, you can submit
-#' another `ListResolverRules` request to get the next group of resolver
+#' If you have more than `MaxResults` Resolver rules, you can submit
+#' another `ListResolverRules` request to get the next group of Resolver
 #' rules. In the next request, specify the value of `NextToken` from the
 #' previous response.
-#' @param Filters An optional specification to return a subset of resolver rules, such as
-#' all resolver rules that are associated with the same resolver endpoint.
+#' @param Filters An optional specification to return a subset of Resolver rules, such as
+#' all Resolver rules that are associated with the same Resolver endpoint.
 #' 
 #' If you submit a second or subsequent `ListResolverRules` request and
 #' specify the `NextToken` parameter, you must use the same values for
@@ -876,19 +1610,99 @@ route53resolver_list_tags_for_resource <- function(ResourceArn, MaxResults = NUL
 }
 .route53resolver$operations$list_tags_for_resource <- route53resolver_list_tags_for_resource
 
-#' Specifies the Resolver operations and resources that you want to allow
-#' another AWS account to be able to use
+#' Specifies an AWS account that you want to share a query logging
+#' configuration with, the query logging configuration that you want to
+#' share, and the operations that you want the account to be able to
+#' perform on the configuration
 #'
-#' Specifies the Resolver operations and resources that you want to allow
-#' another AWS account to be able to use.
+#' Specifies an AWS account that you want to share a query logging
+#' configuration with, the query logging configuration that you want to
+#' share, and the operations that you want the account to be able to
+#' perform on the configuration.
+#'
+#' @usage
+#' route53resolver_put_resolver_query_log_config_policy(Arn,
+#'   ResolverQueryLogConfigPolicy)
+#'
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the account that you want to share
+#' rules with.
+#' @param ResolverQueryLogConfigPolicy &#91;required&#93; An AWS Identity and Access Management policy statement that lists the
+#' query logging configurations that you want to share with another AWS
+#' account and the operations that you want the account to be able to
+#' perform. You can specify the following operations in the `Actions`
+#' section of the statement:
+#' 
+#' -   `route53resolver:AssociateResolverQueryLogConfig`
+#' 
+#' -   `route53resolver:DisassociateResolverQueryLogConfig`
+#' 
+#' -   `route53resolver:ListResolverQueryLogConfigAssociations`
+#' 
+#' -   `route53resolver:ListResolverQueryLogConfigs`
+#' 
+#' In the `Resource` section of the statement, you specify the ARNs for the
+#' query logging configurations that you want to share with the account
+#' that you specified in `Arn`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resolver_query_log_config_policy(
+#'   Arn = "string",
+#'   ResolverQueryLogConfigPolicy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_put_resolver_query_log_config_policy
+route53resolver_put_resolver_query_log_config_policy <- function(Arn, ResolverQueryLogConfigPolicy) {
+  op <- new_operation(
+    name = "PutResolverQueryLogConfigPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$put_resolver_query_log_config_policy_input(Arn = Arn, ResolverQueryLogConfigPolicy = ResolverQueryLogConfigPolicy)
+  output <- .route53resolver$put_resolver_query_log_config_policy_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$put_resolver_query_log_config_policy <- route53resolver_put_resolver_query_log_config_policy
+
+#' Specifies an AWS rule that you want to share with another account, the
+#' account that you want to share the rule with, and the operations that
+#' you want the account to be able to perform on the rule
+#'
+#' Specifies an AWS rule that you want to share with another account, the
+#' account that you want to share the rule with, and the operations that
+#' you want the account to be able to perform on the rule.
 #'
 #' @usage
 #' route53resolver_put_resolver_rule_policy(Arn, ResolverRulePolicy)
 #'
-#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the account that you want to grant
-#' permissions to.
+#' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the rule that you want to share with
+#' another account.
 #' @param ResolverRulePolicy &#91;required&#93; An AWS Identity and Access Management policy statement that lists the
-#' permissions that you want to grant to another AWS account.
+#' rules that you want to share with another AWS account and the operations
+#' that you want the account to be able to perform. You can specify the
+#' following operations in the `Action` section of the statement:
+#' 
+#' -   `route53resolver:GetResolverRule`
+#' 
+#' -   `route53resolver:AssociateResolverRule`
+#' 
+#' -   `route53resolver:DisassociateResolverRule`
+#' 
+#' -   `route53resolver:ListResolverRules`
+#' 
+#' -   `route53resolver:ListResolverRuleAssociations`
+#' 
+#' In the `Resource` section of the statement, specify the ARN for the rule
+#' that you want to share with another account. Specify the same ARN that
+#' you specified in `Arn`.
 #'
 #' @section Request syntax:
 #' ```
@@ -929,17 +1743,17 @@ route53resolver_put_resolver_rule_policy <- function(Arn, ResolverRulePolicy) {
 #' tags to. To get the ARN for a resource, use the applicable `Get` or
 #' `List` command:
 #' 
-#' -   GetResolverEndpoint
+#' -   [GetResolverEndpoint](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverEndpoint.html)
 #' 
-#' -   GetResolverRule
+#' -   [GetResolverRule](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverRule.html)
 #' 
-#' -   GetResolverRuleAssociation
+#' -   [GetResolverRuleAssociation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverRuleAssociation.html)
 #' 
-#' -   ListResolverEndpoints
+#' -   [ListResolverEndpoints](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverEndpoints.html)
 #' 
-#' -   ListResolverRuleAssociations
+#' -   [ListResolverRuleAssociations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRuleAssociations.html)
 #' 
-#' -   ListResolverRules
+#' -   [ListResolverRules](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRules.html)
 #' @param Tags &#91;required&#93; The tags that you want to add to the specified resource.
 #'
 #' @section Request syntax:
@@ -986,17 +1800,17 @@ route53resolver_tag_resource <- function(ResourceArn, Tags) {
 #' tags from. To get the ARN for a resource, use the applicable `Get` or
 #' `List` command:
 #' 
-#' -   GetResolverEndpoint
+#' -   [GetResolverEndpoint](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverEndpoint.html)
 #' 
-#' -   GetResolverRule
+#' -   [GetResolverRule](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverRule.html)
 #' 
-#' -   GetResolverRuleAssociation
+#' -   [GetResolverRuleAssociation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverRuleAssociation.html)
 #' 
-#' -   ListResolverEndpoints
+#' -   [ListResolverEndpoints](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverEndpoints.html)
 #' 
-#' -   ListResolverRuleAssociations
+#' -   [ListResolverRuleAssociations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRuleAssociations.html)
 #' 
-#' -   ListResolverRules
+#' -   [ListResolverRules](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRules.html)
 #' @param TagKeys &#91;required&#93; The tags that you want to remove to the specified resource.
 #'
 #' @section Request syntax:
@@ -1029,15 +1843,57 @@ route53resolver_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .route53resolver$operations$untag_resource <- route53resolver_untag_resource
 
-#' Updates the name of an inbound or an outbound resolver endpoint
+#' Updates an existing DNSSEC validation configuration
 #'
-#' Updates the name of an inbound or an outbound resolver endpoint.
+#' Updates an existing DNSSEC validation configuration. If there is no
+#' existing DNSSEC validation configuration, one is created.
+#'
+#' @usage
+#' route53resolver_update_resolver_dnssec_config(ResourceId, Validation)
+#'
+#' @param ResourceId &#91;required&#93; The ID of the virtual private cloud (VPC) that you're updating the
+#' DNSSEC validation status for.
+#' @param Validation &#91;required&#93; The new value that you are specifying for DNSSEC validation for the VPC.
+#' The value can be `ENABLE` or `DISABLE`. Be aware that it can take time
+#' for a validation status change to be completed.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_resolver_dnssec_config(
+#'   ResourceId = "string",
+#'   Validation = "ENABLE"|"DISABLE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_update_resolver_dnssec_config
+route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation) {
+  op <- new_operation(
+    name = "UpdateResolverDnssecConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$update_resolver_dnssec_config_input(ResourceId = ResourceId, Validation = Validation)
+  output <- .route53resolver$update_resolver_dnssec_config_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$update_resolver_dnssec_config <- route53resolver_update_resolver_dnssec_config
+
+#' Updates the name of an inbound or an outbound Resolver endpoint
+#'
+#' Updates the name of an inbound or an outbound Resolver endpoint.
 #'
 #' @usage
 #' route53resolver_update_resolver_endpoint(ResolverEndpointId, Name)
 #'
-#' @param ResolverEndpointId &#91;required&#93; The ID of the resolver endpoint that you want to update.
-#' @param Name The name of the resolver endpoint that you want to update.
+#' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to update.
+#' @param Name The name of the Resolver endpoint that you want to update.
 #'
 #' @section Request syntax:
 #' ```
@@ -1067,17 +1923,17 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
 }
 .route53resolver$operations$update_resolver_endpoint <- route53resolver_update_resolver_endpoint
 
-#' Updates settings for a specified resolver rule
+#' Updates settings for a specified Resolver rule
 #'
-#' Updates settings for a specified resolver rule. `ResolverRuleId` is
+#' Updates settings for a specified Resolver rule. `ResolverRuleId` is
 #' required, and all other parameters are optional. If you don't specify a
 #' parameter, it retains its current value.
 #'
 #' @usage
 #' route53resolver_update_resolver_rule(ResolverRuleId, Config)
 #'
-#' @param ResolverRuleId &#91;required&#93; The ID of the resolver rule that you want to update.
-#' @param Config &#91;required&#93; The new settings for the resolver rule.
+#' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to update.
+#' @param Config &#91;required&#93; The new settings for the Resolver rule.
 #'
 #' @section Request syntax:
 #' ```

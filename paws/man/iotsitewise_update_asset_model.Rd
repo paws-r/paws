@@ -7,7 +7,7 @@ model}
 \usage{
 iotsitewise_update_asset_model(assetModelId, assetModelName,
   assetModelDescription, assetModelProperties, assetModelHierarchies,
-  clientToken)
+  assetModelCompositeModels, clientToken)
 }
 \arguments{
 \item{assetModelId}{[required] The ID of the asset model to update.}
@@ -17,7 +17,7 @@ iotsitewise_update_asset_model(assetModelId, assetModelName,
 \item{assetModelDescription}{A description for the asset model.}
 
 \item{assetModelProperties}{The updated property definitions of the asset model. For more
-information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-properties.html}{Asset Properties}
+information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-properties.html}{Asset properties}
 in the \emph{AWS IoT SiteWise User Guide}.
 
 You can specify up to 200 properties per asset model. For more
@@ -27,13 +27,19 @@ in the \emph{AWS IoT SiteWise User Guide}.}
 
 \item{assetModelHierarchies}{The updated hierarchy definitions of the asset model. Each hierarchy
 specifies an asset model whose assets can be children of any other
-assets created from this asset model. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html}{Asset Hierarchies}
+assets created from this asset model. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html}{Asset hierarchies}
 in the \emph{AWS IoT SiteWise User Guide}.
 
 You can specify up to 10 hierarchies per asset model. For more
 information, see
 \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/quotas.html}{Quotas}
 in the \emph{AWS IoT SiteWise User Guide}.}
+
+\item{assetModelCompositeModels}{The composite asset models that are part of this asset model. Composite
+asset models are asset models that contain specific properties. Each
+composite model has a type that defines the properties that the
+composite model supports. Use composite asset models to define alarms on
+this asset model.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the
 idempotency of the request. Don't reuse this client token if a new
@@ -43,7 +49,7 @@ idempotent request is required.}
 Updates an asset model and all of the assets that were created from the
 model. Each asset created from the model inherits the updated asset
 model's property and hierarchy definitions. For more information, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html}{Updating Assets and Models}
+\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html}{Updating assets and models}
 in the \emph{AWS IoT SiteWise User Guide}.
 }
 \details{
@@ -53,11 +59,11 @@ include their IDs and definitions in the updated asset model payload.
 For more information, see
 \href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModel.html}{DescribeAssetModel}.
 
-If you remove a property from an asset model or update a property's
-formula expression, AWS IoT SiteWise deletes all previous data for that
-property. If you remove a hierarchy definition from an asset model, AWS
-IoT SiteWise disassociates every asset associated with that hierarchy.
-You can't change the type or data type of an existing property.
+If you remove a property from an asset model, AWS IoT SiteWise deletes
+all previous data for that property. If you remove a hierarchy
+definition from an asset model, AWS IoT SiteWise disassociates every
+asset associated with that hierarchy. You can't change the type or data
+type of an existing property.
 }
 \section{Request syntax}{
 \preformatted{svc$update_asset_model(
@@ -68,7 +74,8 @@ You can't change the type or data type of an existing property.
     list(
       id = "string",
       name = "string",
-      dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN",
+      dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+      dataTypeSpec = "string",
       unit = "string",
       type = list(
         attribute = list(
@@ -112,6 +119,57 @@ You can't change the type or data type of an existing property.
       id = "string",
       name = "string",
       childAssetModelId = "string"
+    )
+  ),
+  assetModelCompositeModels = list(
+    list(
+      name = "string",
+      description = "string",
+      type = "string",
+      properties = list(
+        list(
+          id = "string",
+          name = "string",
+          dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+          dataTypeSpec = "string",
+          unit = "string",
+          type = list(
+            attribute = list(
+              defaultValue = "string"
+            ),
+            measurement = list(),
+            transform = list(
+              expression = "string",
+              variables = list(
+                list(
+                  name = "string",
+                  value = list(
+                    propertyId = "string",
+                    hierarchyId = "string"
+                  )
+                )
+              )
+            ),
+            metric = list(
+              expression = "string",
+              variables = list(
+                list(
+                  name = "string",
+                  value = list(
+                    propertyId = "string",
+                    hierarchyId = "string"
+                  )
+                )
+              ),
+              window = list(
+                tumbling = list(
+                  interval = "string"
+                )
+              )
+            )
+          )
+        )
+      )
     )
   ),
   clientToken = "string"

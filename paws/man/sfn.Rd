@@ -69,6 +69,7 @@ HTTP API. For more information about Step Functions, see the \emph{\href{https:/
 \link[=sfn_send_task_heartbeat]{send_task_heartbeat} \tab Used by activity workers and task states using the callback pattern to report to Step Functions that the task represented by the specified taskToken is still making progress\cr
 \link[=sfn_send_task_success]{send_task_success} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken completed successfully\cr
 \link[=sfn_start_execution]{start_execution} \tab Starts a state machine execution\cr
+\link[=sfn_start_sync_execution]{start_sync_execution} \tab Starts a Synchronous Express state machine execution\cr
 \link[=sfn_stop_execution]{stop_execution} \tab Stops an execution\cr
 \link[=sfn_tag_resource]{tag_resource} \tab Add a tag to a Step Functions resource\cr
 \link[=sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource\cr

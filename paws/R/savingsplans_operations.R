@@ -9,7 +9,7 @@ NULL
 #'
 #' @usage
 #' savingsplans_create_savings_plan(savingsPlanOfferingId, commitment,
-#'   upfrontPaymentAmount, clientToken, tags)
+#'   upfrontPaymentAmount, purchaseTime, clientToken, tags)
 #'
 #' @param savingsPlanOfferingId &#91;required&#93; The ID of the offering.
 #' @param commitment &#91;required&#93; The hourly commitment, in USD. This is a value between 0.001 and 1
@@ -18,6 +18,8 @@ NULL
 #' @param upfrontPaymentAmount The up-front payment amount. This is a whole number between 50 and 99
 #' percent of the total value of the Savings Plan. This parameter is
 #' supported only if the payment option is `Partial Upfront`.
+#' @param purchaseTime The time at which to purchase the Savings Plan, in UTC format
+#' (YYYY-MM-DDTHH:MM:SSZ).
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param tags One or more tags.
@@ -28,6 +30,9 @@ NULL
 #'   savingsPlanOfferingId = "string",
 #'   commitment = "string",
 #'   upfrontPaymentAmount = "string",
+#'   purchaseTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
 #'   clientToken = "string",
 #'   tags = list(
 #'     "string"
@@ -38,14 +43,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname savingsplans_create_savings_plan
-savingsplans_create_savings_plan <- function(savingsPlanOfferingId, commitment, upfrontPaymentAmount = NULL, clientToken = NULL, tags = NULL) {
+savingsplans_create_savings_plan <- function(savingsPlanOfferingId, commitment, upfrontPaymentAmount = NULL, purchaseTime = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSavingsPlan",
     http_method = "POST",
     http_path = "/CreateSavingsPlan",
     paginator = list()
   )
-  input <- .savingsplans$create_savings_plan_input(savingsPlanOfferingId = savingsPlanOfferingId, commitment = commitment, upfrontPaymentAmount = upfrontPaymentAmount, clientToken = clientToken, tags = tags)
+  input <- .savingsplans$create_savings_plan_input(savingsPlanOfferingId = savingsPlanOfferingId, commitment = commitment, upfrontPaymentAmount = upfrontPaymentAmount, purchaseTime = purchaseTime, clientToken = clientToken, tags = tags)
   output <- .savingsplans$create_savings_plan_output()
   config <- get_config()
   svc <- .savingsplans$service(config)
@@ -54,6 +59,42 @@ savingsplans_create_savings_plan <- function(savingsPlanOfferingId, commitment, 
   return(response)
 }
 .savingsplans$operations$create_savings_plan <- savingsplans_create_savings_plan
+
+#' Deletes the queued purchase for the specified Savings Plan
+#'
+#' Deletes the queued purchase for the specified Savings Plan.
+#'
+#' @usage
+#' savingsplans_delete_queued_savings_plan(savingsPlanId)
+#'
+#' @param savingsPlanId &#91;required&#93; The ID of the Savings Plan.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_queued_savings_plan(
+#'   savingsPlanId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname savingsplans_delete_queued_savings_plan
+savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
+  op <- new_operation(
+    name = "DeleteQueuedSavingsPlan",
+    http_method = "POST",
+    http_path = "/DeleteQueuedSavingsPlan",
+    paginator = list()
+  )
+  input <- .savingsplans$delete_queued_savings_plan_input(savingsPlanId = savingsPlanId)
+  output <- .savingsplans$delete_queued_savings_plan_output()
+  config <- get_config()
+  svc <- .savingsplans$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.savingsplans$operations$delete_queued_savings_plan <- savingsplans_delete_queued_savings_plan
 
 #' Describes the specified Savings Plans rates
 #'
@@ -134,7 +175,7 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
 #'   nextToken = "string",
 #'   maxResults = 123,
 #'   states = list(
-#'     "payment-pending"|"payment-failed"|"active"|"retired"
+#'     "payment-pending"|"payment-failed"|"active"|"retired"|"queued"|"queued-deleted"
 #'   ),
 #'   filters = list(
 #'     list(

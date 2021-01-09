@@ -19,8 +19,8 @@ results.}
 field equal to the specified state.}
 
 \item{NameContains}{When specified, the vocabularies returned in the list are limited to
-vocabularies whose name contains the specified string. The search is
-case-insensitive, \code{ListVocabularies} returns both "vocabularyname" and
+vocabularies whose name contains the specified string. The search is not
+case sensitive, \code{ListVocabularies} returns both "vocabularyname" and
 "VocabularyName" in the response list.}
 }
 \description{

@@ -2,19 +2,19 @@
 % Please edit documentation in R/iotsitewise_operations.R
 \name{iotsitewise_create_access_policy}
 \alias{iotsitewise_create_access_policy}
-\title{Creates an access policy that grants the specified AWS Single Sign-On
-user or group access to the specified AWS IoT SiteWise Monitor portal or
-project resource}
+\title{Creates an access policy that grants the specified identity (AWS SSO
+user, AWS SSO group, or IAM user) access to the specified AWS IoT
+SiteWise Monitor portal or project resource}
 \usage{
 iotsitewise_create_access_policy(accessPolicyIdentity,
   accessPolicyResource, accessPolicyPermission, clientToken, tags)
 }
 \arguments{
-\item{accessPolicyIdentity}{[required] The identity for this access policy. Choose either a \code{user} or a \code{group}
-but not both.}
+\item{accessPolicyIdentity}{[required] The identity for this access policy. Choose an AWS SSO user, an AWS SSO
+group, or an IAM user.}
 
 \item{accessPolicyResource}{[required] The AWS IoT SiteWise Monitor resource for this access policy. Choose
-either \code{portal} or \code{project} but not both.}
+either a portal or a project.}
 
 \item{accessPolicyPermission}{[required] The permission level for this access policy. Note that a project
 \code{ADMINISTRATOR} is also known as a project owner.}
@@ -28,9 +28,9 @@ For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/
 in the \emph{AWS IoT SiteWise User Guide}.}
 }
 \description{
-Creates an access policy that grants the specified AWS Single Sign-On
-user or group access to the specified AWS IoT SiteWise Monitor portal or
-project resource.
+Creates an access policy that grants the specified identity (AWS SSO
+user, AWS SSO group, or IAM user) access to the specified AWS IoT
+SiteWise Monitor portal or project resource.
 }
 \section{Request syntax}{
 \preformatted{svc$create_access_policy(
@@ -40,6 +40,9 @@ project resource.
     ),
     group = list(
       id = "string"
+    ),
+    iamUser = list(
+      arn = "string"
     )
   ),
   accessPolicyResource = list(

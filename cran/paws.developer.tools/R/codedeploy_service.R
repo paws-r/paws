@@ -74,7 +74,7 @@ NULL
 #' **AWS CodeDeploy Information Resources**
 #' 
 #' -   [AWS CodeDeploy User
-#'     Guide](https://docs.aws.amazon.com/codedeploy/latest/userguide)
+#'     Guide](https://docs.aws.amazon.com/codedeploy/latest/userguide/)
 #' 
 #' -   [AWS CodeDeploy API Reference
 #'     Guide](https://docs.aws.amazon.com/codedeploy/latest/APIReference/)

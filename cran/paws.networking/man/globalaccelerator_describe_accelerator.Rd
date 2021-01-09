@@ -10,8 +10,7 @@ globalaccelerator_describe_accelerator(AcceleratorArn)
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator to describe.}
 }
 \description{
-Describe an accelerator. To see an AWS CLI example of describing an
-accelerator, scroll down to \strong{Example}.
+Describe an accelerator.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_accelerator(

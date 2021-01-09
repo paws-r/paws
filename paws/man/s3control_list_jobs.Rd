@@ -2,8 +2,8 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_list_jobs}
 \alias{s3control_list_jobs}
-\title{Lists current Amazon S3 Batch Operations jobs and jobs that have ended
-within the last 30 days for the AWS account making the request}
+\title{Lists current S3 Batch Operations jobs and jobs that have ended within
+the last 30 days for the AWS account making the request}
 \usage{
 s3control_list_jobs(AccountId, JobStatuses, NextToken, MaxResults)
 }
@@ -23,18 +23,18 @@ response will include a pagination token in the \code{NextToken} field to
 enable you to retrieve the next page of results.}
 }
 \description{
-Lists current Amazon S3 Batch Operations jobs and jobs that have ended
-within the last 30 days for the AWS account making the request. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html}{Amazon S3 Batch Operations}
+Lists current S3 Batch Operations jobs and jobs that have ended within
+the last 30 days for the AWS account making the request. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html}{S3 Batch Operations}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \details{
 Related actions include:
 \itemize{
-\item CreateJob
-\item DescribeJob
-\item UpdateJobPriority
-\item UpdateJobStatus
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html}{CreateJob}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeJob.html}{DescribeJob}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobPriority.html}{UpdateJobPriority}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html}{UpdateJobStatus}
 }
 }
 \section{Request syntax}{

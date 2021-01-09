@@ -7,14 +7,14 @@
 cloudwatch_describe_insight_rules(NextToken, MaxResults)
 }
 \arguments{
-\item{NextToken}{Reserved for future use.}
+\item{NextToken}{Include this value, if it was returned by the previous operation, to get
+the next set of rules.}
 
-\item{MaxResults}{This parameter is not currently used. Reserved for future use. If it is
-used in the future, the maximum value may be different.}
+\item{MaxResults}{The maximum number of results to return in one operation. If you omit
+this parameter, the default of 500 is used.}
 }
 \description{
 Returns a list of all the Contributor Insights rules in your account.
-All rules in your account are returned with a single operation.
 }
 \details{
 For more information about Contributor Insights, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html}{Using Contributor Insights to Analyze High-Cardinality Data}.

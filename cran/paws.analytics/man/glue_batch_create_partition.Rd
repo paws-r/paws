@@ -81,7 +81,16 @@ Creates one or more partitions in a batch operation.
             "string"
           )
         ),
-        StoredAsSubDirectories = TRUE|FALSE
+        StoredAsSubDirectories = TRUE|FALSE,
+        SchemaReference = list(
+          SchemaId = list(
+            SchemaArn = "string",
+            SchemaName = "string",
+            RegistryName = "string"
+          ),
+          SchemaVersionId = "string",
+          SchemaVersionNumber = 123
+        )
       ),
       Parameters = list(
         "string"

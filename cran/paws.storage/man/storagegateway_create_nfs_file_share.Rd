@@ -9,7 +9,7 @@ storagegateway_create_nfs_file_share(ClientToken, NFSFileShareDefaults,
   GatewayARN, KMSEncrypted, KMSKey, Role, LocationARN,
   DefaultStorageClass, ObjectACL, ClientList, Squash, ReadOnly,
   GuessMIMETypeEnabled, RequesterPays, Tags, FileShareName,
-  CacheAttributes)
+  CacheAttributes, NotificationPolicy)
 }
 \arguments{
 \item{ClientToken}{[required] A unique string value that you supply that is used by file gateway to
@@ -95,6 +95,8 @@ the maximum length for a tag's value is 256.}
 \code{LocationARN}.}
 
 \item{CacheAttributes}{Refresh cache information.}
+
+\item{NotificationPolicy}{The notification policy of the file share.}
 }
 \description{
 Creates a Network File System (NFS) file share on an existing file
@@ -146,7 +148,8 @@ share.
   FileShareName = "string",
   CacheAttributes = list(
     CacheStaleTimeoutInSeconds = 123
-  )
+  ),
+  NotificationPolicy = "string"
 )
 }
 }

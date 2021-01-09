@@ -14,7 +14,7 @@ add-on.}
 }
 \description{
 Enables or modifies an add-on for an Amazon Lightsail resource. For more
-information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_add_on(

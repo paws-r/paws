@@ -13,8 +13,8 @@ quicksight_delete_data_source(AwsAccountId, DataSourceId)
 account.}
 }
 \description{
-Deletes the data source permanently. This action breaks all the datasets
-that reference the deleted data source.
+Deletes the data source permanently. This operation breaks all the
+datasets that reference the deleted data source.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_data_source(

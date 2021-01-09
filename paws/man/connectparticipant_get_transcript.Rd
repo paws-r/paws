@@ -2,7 +2,8 @@
 % Please edit documentation in R/connectparticipant_operations.R
 \name{connectparticipant_get_transcript}
 \alias{connectparticipant_get_transcript}
-\title{Retrieves a transcript of the session}
+\title{Retrieves a transcript of the session, including details about any
+attachments}
 \usage{
 connectparticipant_get_transcript(ContactId, MaxResults, NextToken,
   ScanDirection, SortOrder, StartPosition, ConnectionToken)
@@ -27,8 +28,12 @@ StartPosition.}
 \item{ConnectionToken}{[required] The authentication token associated with the participant's connection.}
 }
 \description{
-Retrieves a transcript of the session. Note that ConnectionToken is used
-for invoking this API instead of ParticipantToken.
+Retrieves a transcript of the session, including details about any
+attachments. Note that ConnectionToken is used for invoking this API
+instead of ParticipantToken.
+}
+\details{
+The Amazon Connect Participant Service APIs do not use \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 authentication}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_transcript(

@@ -3,7 +3,7 @@
 \name{kinesisanalyticsv2_delete_application_reference_data_source}
 \alias{kinesisanalyticsv2_delete_application_reference_data_source}
 \title{Deletes a reference data source configuration from the specified
-SQL-based Amazon Kinesis Data Analytics application's configuration}
+SQL-based Kinesis Data Analytics application's configuration}
 \usage{
 kinesisanalyticsv2_delete_application_reference_data_source(
   ApplicationName, CurrentApplicationVersionId, ReferenceId)
@@ -23,7 +23,7 @@ DescribeApplication operation to get the reference ID.}
 }
 \description{
 Deletes a reference data source configuration from the specified
-SQL-based Amazon Kinesis Data Analytics application's configuration.
+SQL-based Kinesis Data Analytics application's configuration.
 }
 \details{
 If the application is running, Kinesis Data Analytics immediately

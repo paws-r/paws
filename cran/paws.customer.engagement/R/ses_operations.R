@@ -242,7 +242,7 @@ ses_create_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #' 
 #' For more information about custom verification email templates, see
 #' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
 #' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
@@ -259,7 +259,7 @@ ses_create_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #' email must be less than 10 MB. The message body may contain HTML, with
 #' some limitations. For more information, see [Custom Verification Email
 #' Frequently Asked
-#' Questions](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq)
+#' Questions](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
 #' in the *Amazon SES Developer Guide*.
 #' @param SuccessRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
 #' or her address is successfully verified.
@@ -726,7 +726,7 @@ ses_delete_configuration_set_tracking_options <- function(ConfigurationSetName) 
 #' 
 #' For more information about custom verification email templates, see
 #' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
 #' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
@@ -1368,7 +1368,7 @@ ses_get_account_sending_enabled <- function() {
 #' 
 #' For more information about custom verification email templates, see
 #' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
 #' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
@@ -1430,7 +1430,7 @@ ses_get_custom_verification_email_template <- function(TemplateName) {
 #' 
 #' For more information about creating DNS records using DKIM tokens, go to
 #' the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/).
 #'
 #' @usage
 #' ses_get_identity_dkim_attributes(Identities)
@@ -1544,7 +1544,7 @@ ses_get_identity_mail_from_domain_attributes <- function(Identities) {
 #' 
 #' For more information about using notifications with Amazon SES, see the
 #' [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/).
 #'
 #' @usage
 #' ses_get_identity_notification_attributes(Identities)
@@ -1924,7 +1924,7 @@ ses_list_configuration_sets <- function(NextToken = NULL, MaxItems = NULL) {
 #' 
 #' For more information about custom verification email templates, see
 #' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
 #' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
@@ -2768,7 +2768,7 @@ ses_send_bulk_templated_email <- function(Source, SourceArn = NULL, ReplyToAddre
 #' To use this operation, you must first create a custom verification email
 #' template. For more information about creating and using custom
 #' verification email templates, see [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
 #' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
@@ -2848,7 +2848,7 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' against the maximum number of emails you can send in a 24-hour period
 #' (your *sending quota*). For more information about sending quotas in
 #' Amazon SES, see [Managing Your Amazon SES Sending
-#' Limits](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html)
+#' Limits](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-quotas.html)
 #' in the *Amazon SES Developer Guide.*
 #'
 #' @usage
@@ -3055,7 +3055,7 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #'     sandbox](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html),
 #'     you can only send email to other verified addresses in your account,
 #'     or to addresses that are associated with the [Amazon SES mailbox
-#'     simulator](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mailbox-simulator.html).
+#'     simulator](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-simulator.html).
 #' 
 #' -   The maximum message size, including attachments, is 10 MB.
 #' 
@@ -3123,7 +3123,7 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #'     counted against the maximum number of emails you can send in a
 #'     24-hour period (your *sending quota*). For more information about
 #'     sending quotas in Amazon SES, see [Managing Your Amazon SES Sending
-#'     Limits](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html)
+#'     Limits](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-quotas.html)
 #'     in the *Amazon SES Developer Guide.*
 #'
 #' @usage
@@ -3166,7 +3166,7 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' 
 #' -   Attachments must be of a content type that Amazon SES supports. For
 #'     a list on unsupported content types, see [Unsupported Attachment
-#'     Types](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html)
+#'     Types](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html#send-email-raw-mime)
 #'     in the *Amazon SES Developer Guide*.
 #' 
 #' -   The entire message must be base64-encoded.
@@ -3561,7 +3561,7 @@ ses_set_active_receipt_rule_set <- function(RuleSetName = NULL) {
 #' 
 #' For more information about Easy DKIM signing, go to the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html).
 #'
 #' @usage
 #' ses_set_identity_dkim_enabled(Identity, DkimEnabled)
@@ -3624,7 +3624,7 @@ ses_set_identity_dkim_enabled <- function(Identity, DkimEnabled) {
 #' 
 #' For more information about using notifications with Amazon SES, see the
 #' [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/).
 #'
 #' @usage
 #' ses_set_identity_feedback_forwarding_enabled(Identity,
@@ -3690,7 +3690,7 @@ ses_set_identity_feedback_forwarding_enabled <- function(Identity, ForwardingEna
 #' 
 #' For more information about using notifications with Amazon SES, see the
 #' [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/).
 #'
 #' @usage
 #' ses_set_identity_headers_in_notifications_enabled(Identity,
@@ -3760,7 +3760,7 @@ ses_set_identity_headers_in_notifications_enabled <- function(Identity, Notifica
 #' to pass Sender Policy Framework (SPF) checks, you must also add or
 #' update an SPF record. For more information, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/).
 #' 
 #' You can execute this operation no more than once per second.
 #'
@@ -3843,7 +3843,7 @@ ses_set_identity_mail_from_domain <- function(Identity, MailFromDomain = NULL, B
 #' 
 #' For more information about feedback notification, see the [Amazon SES
 #' Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/).
 #'
 #' @usage
 #' ses_set_identity_notification_topic(Identity, NotificationType,
@@ -4306,7 +4306,7 @@ ses_update_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #' 
 #' For more information about custom verification email templates, see
 #' [Using Custom Verification Email
-#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html)
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
 #' in the *Amazon SES Developer Guide*.
 #' 
 #' You can execute this operation no more than once per second.
@@ -4324,7 +4324,7 @@ ses_update_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #' email must be less than 10 MB. The message body may contain HTML, with
 #' some limitations. For more information, see [Custom Verification Email
 #' Frequently Asked
-#' Questions](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq)
+#' Questions](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
 #' in the *Amazon SES Developer Guide*.
 #' @param SuccessRedirectionURL The URL that the recipient of the verification email is sent to if his
 #' or her address is successfully verified.
@@ -4533,7 +4533,7 @@ ses_update_template <- function(Template) {
 #' successfully [verify
 #' it](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.html)
 #' or you successfully [set up DKIM for
-#' it](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
+#' it](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html).
 #' 
 #' You use the tokens that are generated by this operation to create CNAME
 #' records. When Amazon SES detects that you've added these records to the

@@ -8,8 +8,8 @@ docdb_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
   DBClusterIdentifier, DBClusterParameterGroupName, VpcSecurityGroupIds,
   DBSubnetGroupName, Engine, EngineVersion, Port, MasterUsername,
   MasterUserPassword, PreferredBackupWindow, PreferredMaintenanceWindow,
-  Tags, StorageEncrypted, KmsKeyId, EnableCloudwatchLogsExports,
-  DeletionProtection)
+  Tags, StorageEncrypted, KmsKeyId, PreSignedUrl,
+  EnableCloudwatchLogsExports, DeletionProtection)
 }
 \arguments{
 \item{AvailabilityZones}{A list of Amazon EC2 Availability Zones that instances in the cluster
@@ -51,7 +51,10 @@ Example: \code{mySubnetgroup}}
 
 Valid values: \code{docdb}}
 
-\item{EngineVersion}{The version number of the database engine to use.}
+\item{EngineVersion}{The version number of the database engine to use. The --engine-version
+will default to the latest major engine version. For production
+workloads, we recommend explicitly declaring this parameter with the
+intended major engine version.}
 
 \item{Port}{The port number on which the instances in the cluster accept
 connections.}
@@ -113,24 +116,19 @@ the AWS KMS encryption key.
 
 If an encryption key is not specified in \code{KmsKeyId}:
 \itemize{
-\item If \code{ReplicationSourceIdentifier} identifies an encrypted source,
-then Amazon DocumentDB uses the encryption key that is used to
-encrypt the source. Otherwise, Amazon DocumentDB uses your default
-encryption key.
-\item If the \code{StorageEncrypted} parameter is \code{true} and
-\code{ReplicationSourceIdentifier} is not specified, Amazon DocumentDB
+\item If the \code{StorageEncrypted} parameter is \code{true}, Amazon DocumentDB
 uses your default encryption key.
 }
 
 AWS KMS creates the default encryption key for your AWS account. Your
-AWS account has a different default encryption key for each AWS Region.
+AWS account has a different default encryption key for each AWS Region.}
 
-If you create a replica of an encrypted cluster in another AWS Region,
-you must set \code{KmsKeyId} to a KMS key ID that is valid in the destination
-AWS Region. This key is used to encrypt the replica in that AWS Region.}
+\item{PreSignedUrl}{Not currently supported.}
 
 \item{EnableCloudwatchLogsExports}{A list of log types that need to be enabled for exporting to Amazon
-CloudWatch Logs.}
+CloudWatch Logs. You can enable audit logs or profiler logs. For more
+information, see \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/event-auditing.html}{Auditing Amazon DocumentDB Events}
+and \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/profiling.html}{Profiling Amazon DocumentDB Operations}.}
 
 \item{DeletionProtection}{Specifies whether this cluster can be deleted. If \code{DeletionProtection}
 is enabled, the cluster cannot be deleted unless it is modified and
@@ -167,6 +165,7 @@ Creates a new Amazon DocumentDB cluster.
   ),
   StorageEncrypted = TRUE|FALSE,
   KmsKeyId = "string",
+  PreSignedUrl = "string",
   EnableCloudwatchLogsExports = list(
     "string"
   ),

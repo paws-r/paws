@@ -12,7 +12,7 @@ workspaces_delete_workspace_image(ImageId)
 \description{
 Deletes the specified image from your account. To delete an image, you
 must first delete any bundles that are associated with the image and
-un-share the image if it is shared with other accounts.
+unshare the image if it is shared with other accounts.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_workspace_image(

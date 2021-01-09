@@ -53,7 +53,7 @@ If you leave a parameter unspecified when updating a scheduled scaling
 action, the corresponding value remains unchanged.
 }
 \details{
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html}{Scheduled Scaling}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html}{Scheduled scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

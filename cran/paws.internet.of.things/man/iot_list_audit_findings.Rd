@@ -6,7 +6,7 @@
 performed during a specified time period}
 \usage{
 iot_list_audit_findings(taskId, checkName, resourceIdentifier,
-  maxResults, nextToken, startTime, endTime)
+  maxResults, nextToken, startTime, endTime, listSuppressedFindings)
 }
 \arguments{
 \item{taskId}{A filter to limit results to the audit with the specified ID. You must
@@ -27,10 +27,15 @@ both.}
 \item{endTime}{A filter to limit results to those found before the specified time. You
 must specify either the startTime and endTime or the taskId, but not
 both.}
+
+\item{listSuppressedFindings}{Boolean flag indicating whether only the suppressed findings or the
+unsuppressed findings should be listed. If this parameter isn't
+provided, the response will list both suppressed and unsuppressed
+findings.}
 }
 \description{
 Lists the findings (results) of a Device Defender audit or of the audits
-performed during a specified time period. (Findings are retained for 180
+performed during a specified time period. (Findings are retained for 90
 days.)
 }
 \section{Request syntax}{
@@ -57,7 +62,8 @@ days.)
   ),
   endTime = as.POSIXct(
     "2015-01-01"
-  )
+  ),
+  listSuppressedFindings = TRUE|FALSE
 )
 }
 }

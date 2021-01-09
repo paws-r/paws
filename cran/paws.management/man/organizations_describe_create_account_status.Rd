@@ -8,11 +8,12 @@ account}
 organizations_describe_create_account_status(CreateAccountRequestId)
 }
 \arguments{
-\item{CreateAccountRequestId}{[required] Specifies the \code{operationId} that uniquely identifies the request. You
-can get the ID from the response to an earlier CreateAccount request, or
-from the ListCreateAccountStatus operation.
+\item{CreateAccountRequestId}{[required] Specifies the \code{Id} value that uniquely identifies the \code{CreateAccount}
+request. You can get the value from the \code{CreateAccountStatus.Id}
+response in an earlier CreateAccount request, or from the
+ListCreateAccountStatus operation.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a create
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a create
 account request ID string requires "car-" followed by from 8 to 32
 lowercase letters or digits.}
 }
@@ -21,9 +22,9 @@ Retrieves the current status of an asynchronous request to create an
 account.
 }
 \details{
-This operation can be called only from the organization's master account
-or by a member account that is a delegated administrator for an AWS
-service.
+This operation can be called only from the organization's management
+account or by a member account that is a delegated administrator for an
+AWS service.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_create_account_status(

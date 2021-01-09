@@ -8,7 +8,7 @@ NULL
 #' Deletes the shadow for the specified thing.
 #' 
 #' For more information, see
-#' [DeleteThingShadow](http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html)
+#' [DeleteThingShadow](https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-rest-api.html#API_DeleteThingShadow)
 #' in the AWS IoT Developer Guide.
 #'
 #' @usage
@@ -50,7 +50,7 @@ iotdataplane_delete_thing_shadow <- function(thingName, shadowName = NULL) {
 #' Gets the shadow for the specified thing.
 #' 
 #' For more information, see
-#' [GetThingShadow](http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html)
+#' [GetThingShadow](https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-rest-api.html#API_GetThingShadow)
 #' in the AWS IoT Developer Guide.
 #'
 #' @usage
@@ -133,7 +133,7 @@ iotdataplane_list_named_shadows_for_thing <- function(thingName, nextToken = NUL
 #' Publishes state information.
 #' 
 #' For more information, see [HTTP
-#' Protocol](http://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#http)
+#' Protocol](https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html)
 #' in the AWS IoT Developer Guide.
 #'
 #' @usage
@@ -177,7 +177,7 @@ iotdataplane_publish <- function(topic, qos = NULL, payload = NULL) {
 #' Updates the shadow for the specified thing.
 #' 
 #' For more information, see
-#' [UpdateThingShadow](http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html)
+#' [UpdateThingShadow](https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-rest-api.html#API_UpdateThingShadow)
 #' in the AWS IoT Developer Guide.
 #'
 #' @usage

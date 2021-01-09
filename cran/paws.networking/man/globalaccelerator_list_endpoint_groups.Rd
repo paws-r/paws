@@ -17,9 +17,7 @@ call. The default value is 10.}
 previous call.}
 }
 \description{
-List the endpoint groups that are associated with a listener. To see an
-AWS CLI example of listing the endpoint groups for listener, scroll down
-to \strong{Example}.
+List the endpoint groups that are associated with a listener.
 }
 \section{Request syntax}{
 \preformatted{svc$list_endpoint_groups(

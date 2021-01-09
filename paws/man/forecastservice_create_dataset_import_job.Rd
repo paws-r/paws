@@ -5,7 +5,8 @@
 \title{Imports your training data to an Amazon Forecast dataset}
 \usage{
 forecastservice_create_dataset_import_job(DatasetImportJobName,
-  DatasetArn, DataSource, TimestampFormat, Tags)
+  DatasetArn, DataSource, TimestampFormat, TimeZone,
+  UseGeolocationForTimeZone, GeolocationFormat, Tags)
 }
 \arguments{
 \item{DatasetImportJobName}{[required] The name for the dataset import job. We recommend including the current
@@ -39,6 +40,26 @@ optionally, for: Y, M, W, and D
 
 If the format isn't specified, Amazon Forecast expects the format to be
 "yyyy-MM-dd HH:mm:ss".}
+
+\item{TimeZone}{A single time zone for every item in your dataset. This option is ideal
+for datasets with all timestamps within a single time zone, or if all
+timestamps are normalized to a single time zone.
+
+Refer to the \href{http://joda-time.sourceforge.net/timezones.html}{Joda-Time API} for a complete
+list of valid time zone names.}
+
+\item{UseGeolocationForTimeZone}{Automatically derive time zone information from the geolocation
+attribute. This option is ideal for datasets that contain timestamps in
+multiple time zones and those timestamps are expressed in local time.}
+
+\item{GeolocationFormat}{The format of the geolocation attribute. The geolocation attribute can
+be formatted in one of two ways:
+\itemize{
+\item \code{LAT_LONG} - the latitude and longitude in decimal format (Example:
+47.61\\_-122.33).
+\item \code{CC_POSTALCODE} (US Only) - the country code (US), followed by the
+5-digit ZIP code (Example: US\\_98121).
+}}
 
 \item{Tags}{The optional metadata that you apply to the dataset import job to help
 you categorize and organize them. Each tag consists of a key and an
@@ -107,6 +128,9 @@ criteria, use the ListDatasetImportJobs operation.
     )
   ),
   TimestampFormat = "string",
+  TimeZone = "string",
+  UseGeolocationForTimeZone = TRUE|FALSE,
+  GeolocationFormat = "string",
   Tags = list(
     list(
       Key = "string",

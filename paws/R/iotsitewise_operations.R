@@ -9,7 +9,7 @@ NULL
 #' Associates a child asset with the given parent asset through a hierarchy
 #' defined in the parent asset's model. For more information, see
 #' [Associating
-#' Assets](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/add-associated-assets.html)
+#' assets](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/add-associated-assets.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
 #' @usage
@@ -20,7 +20,7 @@ NULL
 #' @param hierarchyId &#91;required&#93; The ID of a hierarchy in the parent asset's model. Hierarchies allow
 #' different groupings of assets to be formed that all come from the same
 #' asset model. For more information, see [Asset
-#' Hierarchies](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html)
+#' hierarchies](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' @param childAssetId &#91;required&#93; The ID of the child asset to be associated.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
@@ -155,7 +155,7 @@ iotsitewise_batch_disassociate_project_assets <- function(projectId, assetIds, c
 #'
 #' Sends a list of asset property values to AWS IoT SiteWise. Each value is
 #' a timestamp-quality-value (TQV) data point. For more information, see
-#' [Ingesting Data Using the
+#' [Ingesting data using the
 #' API](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/ingest-api.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
@@ -169,15 +169,21 @@ iotsitewise_batch_disassociate_project_assets <- function(projectId, assetIds, c
 #'     [UpdateAssetProperty](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html).
 #' 
 #' With respect to Unix epoch time, AWS IoT SiteWise accepts only TQVs that
-#' have a timestamp of no more than 15 minutes in the past and no more than
-#' 5 minutes in the future. AWS IoT SiteWise rejects timestamps outside of
-#' the inclusive range of \[-15, +5\] minutes and returns a
+#' have a timestamp of no more than 7 days in the past and no more than 5
+#' minutes in the future. AWS IoT SiteWise rejects timestamps outside of
+#' the inclusive range of \[-7 days, +5 minutes\] and returns a
 #' `TimestampOutOfRangeException` error.
 #' 
 #' For each asset property, AWS IoT SiteWise overwrites TQVs with duplicate
 #' timestamps unless the newer TQV has a different quality. For example, if
 #' you store a TQV `\{T1, GOOD, V1\}`, then storing `\{T1, GOOD, V2\}` replaces
 #' the existing TQV.
+#' 
+#' AWS IoT SiteWise authorizes access to each `BatchPutAssetPropertyValue`
+#' entry individually. For more information, see
+#' [BatchPutAssetPropertyValue
+#' authorization](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-batchputassetpropertyvalue-action)
+#' in the *AWS IoT SiteWise User Guide*.
 #'
 #' @usage
 #' iotsitewise_batch_put_asset_property_value(entries)
@@ -234,22 +240,22 @@ iotsitewise_batch_put_asset_property_value <- function(entries) {
 }
 .iotsitewise$operations$batch_put_asset_property_value <- iotsitewise_batch_put_asset_property_value
 
-#' Creates an access policy that grants the specified AWS Single Sign-On
-#' user or group access to the specified AWS IoT SiteWise Monitor portal or
-#' project resource
+#' Creates an access policy that grants the specified identity (AWS SSO
+#' user, AWS SSO group, or IAM user) access to the specified AWS IoT
+#' SiteWise Monitor portal or project resource
 #'
-#' Creates an access policy that grants the specified AWS Single Sign-On
-#' user or group access to the specified AWS IoT SiteWise Monitor portal or
-#' project resource.
+#' Creates an access policy that grants the specified identity (AWS SSO
+#' user, AWS SSO group, or IAM user) access to the specified AWS IoT
+#' SiteWise Monitor portal or project resource.
 #'
 #' @usage
 #' iotsitewise_create_access_policy(accessPolicyIdentity,
 #'   accessPolicyResource, accessPolicyPermission, clientToken, tags)
 #'
-#' @param accessPolicyIdentity &#91;required&#93; The identity for this access policy. Choose either a `user` or a `group`
-#' but not both.
+#' @param accessPolicyIdentity &#91;required&#93; The identity for this access policy. Choose an AWS SSO user, an AWS SSO
+#' group, or an IAM user.
 #' @param accessPolicyResource &#91;required&#93; The AWS IoT SiteWise Monitor resource for this access policy. Choose
-#' either `portal` or `project` but not both.
+#' either a portal or a project.
 #' @param accessPolicyPermission &#91;required&#93; The permission level for this access policy. Note that a project
 #' `ADMINISTRATOR` is also known as a project owner.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
@@ -269,6 +275,9 @@ iotsitewise_batch_put_asset_property_value <- function(entries) {
 #'     ),
 #'     group = list(
 #'       id = "string"
+#'     ),
+#'     iamUser = list(
+#'       arn = "string"
 #'     )
 #'   ),
 #'   accessPolicyResource = list(
@@ -311,7 +320,7 @@ iotsitewise_create_access_policy <- function(accessPolicyIdentity, accessPolicyR
 #'
 #' Creates an asset from an existing asset model. For more information, see
 #' [Creating
-#' Assets](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-assets.html)
+#' assets](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-assets.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
 #' @usage
@@ -366,19 +375,20 @@ iotsitewise_create_asset <- function(assetName, assetModelId, clientToken = NULL
 #' can easily create assets of the same type that have standardized
 #' definitions. Each asset created from a model inherits the asset model's
 #' property and hierarchy definitions. For more information, see [Defining
-#' Asset
-#' Models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/define-models.html)
+#' asset
+#' models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-asset-models.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
 #' @usage
 #' iotsitewise_create_asset_model(assetModelName, assetModelDescription,
-#'   assetModelProperties, assetModelHierarchies, clientToken, tags)
+#'   assetModelProperties, assetModelHierarchies, assetModelCompositeModels,
+#'   clientToken, tags)
 #'
 #' @param assetModelName &#91;required&#93; A unique, friendly name for the asset model.
 #' @param assetModelDescription A description for the asset model.
 #' @param assetModelProperties The property definitions of the asset model. For more information, see
 #' [Asset
-#' Properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-properties.html)
+#' properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-properties.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
 #' You can specify up to 200 properties per asset model. For more
@@ -388,13 +398,18 @@ iotsitewise_create_asset <- function(assetName, assetModelId, clientToken = NULL
 #' @param assetModelHierarchies The hierarchy definitions of the asset model. Each hierarchy specifies
 #' an asset model whose assets can be children of any other assets created
 #' from this asset model. For more information, see [Asset
-#' Hierarchies](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html)
+#' hierarchies](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
 #' You can specify up to 10 hierarchies per asset model. For more
 #' information, see
 #' [Quotas](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/quotas.html)
 #' in the *AWS IoT SiteWise User Guide*.
+#' @param assetModelCompositeModels The composite asset models that are part of this asset model. Composite
+#' asset models are asset models that contain specific properties. Each
+#' composite model has a type that defines the properties that the
+#' composite model supports. Use composite asset models to define alarms on
+#' this asset model.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
@@ -411,7 +426,8 @@ iotsitewise_create_asset <- function(assetName, assetModelId, clientToken = NULL
 #'   assetModelProperties = list(
 #'     list(
 #'       name = "string",
-#'       dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN",
+#'       dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+#'       dataTypeSpec = "string",
 #'       unit = "string",
 #'       type = list(
 #'         attribute = list(
@@ -456,6 +472,56 @@ iotsitewise_create_asset <- function(assetName, assetModelId, clientToken = NULL
 #'       childAssetModelId = "string"
 #'     )
 #'   ),
+#'   assetModelCompositeModels = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       type = "string",
+#'       properties = list(
+#'         list(
+#'           name = "string",
+#'           dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+#'           dataTypeSpec = "string",
+#'           unit = "string",
+#'           type = list(
+#'             attribute = list(
+#'               defaultValue = "string"
+#'             ),
+#'             measurement = list(),
+#'             transform = list(
+#'               expression = "string",
+#'               variables = list(
+#'                 list(
+#'                   name = "string",
+#'                   value = list(
+#'                     propertyId = "string",
+#'                     hierarchyId = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             metric = list(
+#'               expression = "string",
+#'               variables = list(
+#'                 list(
+#'                   name = "string",
+#'                   value = list(
+#'                     propertyId = "string",
+#'                     hierarchyId = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               window = list(
+#'                 tumbling = list(
+#'                   interval = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   clientToken = "string",
 #'   tags = list(
 #'     "string"
@@ -466,14 +532,14 @@ iotsitewise_create_asset <- function(assetName, assetModelId, clientToken = NULL
 #' @keywords internal
 #'
 #' @rdname iotsitewise_create_asset_model
-iotsitewise_create_asset_model <- function(assetModelName, assetModelDescription = NULL, assetModelProperties = NULL, assetModelHierarchies = NULL, clientToken = NULL, tags = NULL) {
+iotsitewise_create_asset_model <- function(assetModelName, assetModelDescription = NULL, assetModelProperties = NULL, assetModelHierarchies = NULL, assetModelCompositeModels = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateAssetModel",
     http_method = "POST",
     http_path = "/asset-models",
     paginator = list()
   )
-  input <- .iotsitewise$create_asset_model_input(assetModelName = assetModelName, assetModelDescription = assetModelDescription, assetModelProperties = assetModelProperties, assetModelHierarchies = assetModelHierarchies, clientToken = clientToken, tags = tags)
+  input <- .iotsitewise$create_asset_model_input(assetModelName = assetModelName, assetModelDescription = assetModelDescription, assetModelProperties = assetModelProperties, assetModelHierarchies = assetModelHierarchies, assetModelCompositeModels = assetModelCompositeModels, clientToken = clientToken, tags = tags)
   output <- .iotsitewise$create_asset_model_output()
   config <- get_config()
   svc <- .iotsitewise$service(config)
@@ -495,7 +561,7 @@ iotsitewise_create_asset_model <- function(assetModelName, assetModelDescription
 #' @param dashboardName &#91;required&#93; A friendly name for the dashboard.
 #' @param dashboardDescription A description for the dashboard.
 #' @param dashboardDefinition &#91;required&#93; The dashboard definition specified in a JSON literal. For detailed
-#' information, see [Creating Dashboards
+#' information, see [Creating dashboards
 #' (CLI)](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
@@ -546,7 +612,7 @@ iotsitewise_create_dashboard <- function(projectId, dashboardName, dashboardDesc
 #' Creates a gateway, which is a virtual or edge device that delivers
 #' industrial data streams from local servers to AWS IoT SiteWise. For more
 #' information, see [Ingesting data using a
-#' gateway](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/gateway-connector.html)
+#' gateway](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/gateways.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
 #' @usage
@@ -596,22 +662,20 @@ iotsitewise_create_gateway <- function(gatewayName, gatewayPlatform, tags = NULL
 
 #' Creates a portal, which can contain projects and dashboards
 #'
-#' Creates a portal, which can contain projects and dashboards. Before you
-#' can create a portal, you must configure AWS Single Sign-On in the
-#' current Region. AWS IoT SiteWise Monitor uses AWS SSO to manage user
-#' permissions. For more information, see [Enabling AWS
-#' SSO](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/monitor-get-started.html#mon-gs-sso)
-#' in the *AWS IoT SiteWise User Guide*.
+#' Creates a portal, which can contain projects and dashboards. AWS IoT
+#' SiteWise Monitor uses AWS SSO or IAM to authenticate portal users and
+#' manage user permissions.
 #' 
-#' Before you can sign in to a new portal, you must add at least one AWS
-#' SSO user or group to that portal. For more information, see [Adding or
-#' Removing Portal
-#' Administrators](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/administer-portals.html#portal-change-admins)
+#' Before you can sign in to a new portal, you must add at least one
+#' identity to that portal. For more information, see [Adding or removing
+#' portal
+#' administrators](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/administer-portals.html#portal-change-admins)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
 #' @usage
 #' iotsitewise_create_portal(portalName, portalDescription,
-#'   portalContactEmail, clientToken, portalLogoImageFile, roleArn, tags)
+#'   portalContactEmail, clientToken, portalLogoImageFile, roleArn, tags,
+#'   portalAuthMode)
 #'
 #' @param portalName &#91;required&#93; A friendly name for the portal.
 #' @param portalDescription A description for the portal.
@@ -632,6 +696,24 @@ iotsitewise_create_gateway <- function(gatewayName, gatewayPlatform, tags = NULL
 #' information, see [Tagging your AWS IoT SiteWise
 #' resources](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html)
 #' in the *AWS IoT SiteWise User Guide*.
+#' @param portalAuthMode The service to use to authenticate users to the portal. Choose from the
+#' following options:
+#' 
+#' -   `SSO` – The portal uses AWS Single Sign-On to authenticate users and
+#'     manage user permissions. Before you can create a portal that uses
+#'     AWS SSO, you must enable AWS SSO. For more information, see
+#'     [Enabling AWS
+#'     SSO](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/monitor-getting-started.html)
+#'     in the *AWS IoT SiteWise User Guide*. This option is only available
+#'     in AWS Regions other than the China Regions.
+#' 
+#' -   `IAM` – The portal uses AWS Identity and Access Management (IAM) to
+#'     authenticate users and manage user permissions. This option is only
+#'     available in the China Regions.
+#' 
+#' You can't change this value after you create a portal.
+#' 
+#' Default: `SSO`
 #'
 #' @section Request syntax:
 #' ```
@@ -647,21 +729,22 @@ iotsitewise_create_gateway <- function(gatewayName, gatewayPlatform, tags = NULL
 #'   roleArn = "string",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   portalAuthMode = "IAM"|"SSO"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iotsitewise_create_portal
-iotsitewise_create_portal <- function(portalName, portalDescription = NULL, portalContactEmail, clientToken = NULL, portalLogoImageFile = NULL, roleArn, tags = NULL) {
+iotsitewise_create_portal <- function(portalName, portalDescription = NULL, portalContactEmail, clientToken = NULL, portalLogoImageFile = NULL, roleArn, tags = NULL, portalAuthMode = NULL) {
   op <- new_operation(
     name = "CreatePortal",
     http_method = "POST",
     http_path = "/portals",
     paginator = list()
   )
-  input <- .iotsitewise$create_portal_input(portalName = portalName, portalDescription = portalDescription, portalContactEmail = portalContactEmail, clientToken = clientToken, portalLogoImageFile = portalLogoImageFile, roleArn = roleArn, tags = tags)
+  input <- .iotsitewise$create_portal_input(portalName = portalName, portalDescription = portalDescription, portalContactEmail = portalContactEmail, clientToken = clientToken, portalLogoImageFile = portalLogoImageFile, roleArn = roleArn, tags = tags, portalAuthMode = portalAuthMode)
   output <- .iotsitewise$create_portal_output()
   config <- get_config()
   svc <- .iotsitewise$service(config)
@@ -723,13 +806,12 @@ iotsitewise_create_project <- function(portalId, projectName, projectDescription
 }
 .iotsitewise$operations$create_project <- iotsitewise_create_project
 
-#' Deletes an access policy that grants the specified AWS Single Sign-On
-#' identity access to the specified AWS IoT SiteWise Monitor resource
+#' Deletes an access policy that grants the specified identity access to
+#' the specified AWS IoT SiteWise Monitor resource
 #'
-#' Deletes an access policy that grants the specified AWS Single Sign-On
-#' identity access to the specified AWS IoT SiteWise Monitor resource. You
-#' can use this operation to revoke access to an AWS IoT SiteWise Monitor
-#' resource.
+#' Deletes an access policy that grants the specified identity access to
+#' the specified AWS IoT SiteWise Monitor resource. You can use this
+#' operation to revoke access to an AWS IoT SiteWise Monitor resource.
 #'
 #' @usage
 #' iotsitewise_delete_access_policy(accessPolicyId, clientToken)
@@ -770,8 +852,8 @@ iotsitewise_delete_access_policy <- function(accessPolicyId, clientToken = NULL)
 #' Deletes an asset
 #'
 #' Deletes an asset. This action can't be undone. For more information, see
-#' [Deleting Assets and
-#' Models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html)
+#' [Deleting assets and
+#' models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
 #' You can't delete an asset that's associated to another asset. For more
@@ -821,8 +903,8 @@ iotsitewise_delete_asset <- function(assetId, clientToken = NULL) {
 #' Also, you can't delete an asset model if a parent asset model exists
 #' that contains a property formula expression that depends on the asset
 #' model that you want to delete. For more information, see [Deleting
-#' Assets and
-#' Models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html)
+#' assets and
+#' models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
 #' @usage
@@ -904,10 +986,7 @@ iotsitewise_delete_dashboard <- function(dashboardId, clientToken = NULL) {
 #' Deletes a gateway from AWS IoT SiteWise
 #'
 #' Deletes a gateway from AWS IoT SiteWise. When you delete a gateway, some
-#' of the gateway's files remain in your gateway's file system. For more
-#' information, see [Data
-#' retention](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/data-retention.html)
-#' in the *AWS IoT SiteWise User Guide*.
+#' of the gateway's files remain in your gateway's file system.
 #'
 #' @usage
 #' iotsitewise_delete_gateway(gatewayId)
@@ -1021,11 +1100,11 @@ iotsitewise_delete_project <- function(projectId, clientToken = NULL) {
 }
 .iotsitewise$operations$delete_project <- iotsitewise_delete_project
 
-#' Describes an access policy, which specifies an AWS SSO user or group's
-#' access to an AWS IoT SiteWise Monitor portal or project
+#' Describes an access policy, which specifies an identity's access to an
+#' AWS IoT SiteWise Monitor portal or project
 #'
-#' Describes an access policy, which specifies an AWS SSO user or group's
-#' access to an AWS IoT SiteWise Monitor portal or project.
+#' Describes an access policy, which specifies an identity's access to an
+#' AWS IoT SiteWise Monitor portal or project.
 #'
 #' @usage
 #' iotsitewise_describe_access_policy(accessPolicyId)
@@ -1131,9 +1210,18 @@ iotsitewise_describe_asset_model <- function(assetModelId) {
 }
 .iotsitewise$operations$describe_asset_model <- iotsitewise_describe_asset_model
 
-#' Retrieves information about an asset's property
+#' Retrieves information about an asset property
 #'
-#' Retrieves information about an asset's property.
+#' Retrieves information about an asset property.
+#' 
+#' When you call this operation for an attribute property, this response
+#' includes the default attribute value that you define in the asset model.
+#' If you update the default value in the model, this operation's response
+#' includes the new default value.
+#' 
+#' This operation doesn't return the value of the asset property. To get
+#' the value of an asset property, use
+#' [GetAssetPropertyValue](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_GetAssetPropertyValue.html).
 #'
 #' @usage
 #' iotsitewise_describe_asset_property(assetId, propertyId)
@@ -1204,6 +1292,43 @@ iotsitewise_describe_dashboard <- function(dashboardId) {
   return(response)
 }
 .iotsitewise$operations$describe_dashboard <- iotsitewise_describe_dashboard
+
+#' Retrieves information about the default encryption configuration for the
+#' AWS account in the default or specified region
+#'
+#' Retrieves information about the default encryption configuration for the
+#' AWS account in the default or specified region. For more information,
+#' see [Key
+#' management](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/key-management.html)
+#' in the *AWS IoT SiteWise User Guide*.
+#'
+#' @usage
+#' iotsitewise_describe_default_encryption_configuration()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_default_encryption_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iotsitewise_describe_default_encryption_configuration
+iotsitewise_describe_default_encryption_configuration <- function() {
+  op <- new_operation(
+    name = "DescribeDefaultEncryptionConfiguration",
+    http_method = "GET",
+    http_path = "/configuration/account/encryption",
+    paginator = list()
+  )
+  input <- .iotsitewise$describe_default_encryption_configuration_input()
+  output <- .iotsitewise$describe_default_encryption_configuration_output()
+  config <- get_config()
+  svc <- .iotsitewise$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iotsitewise$operations$describe_default_encryption_configuration <- iotsitewise_describe_default_encryption_configuration
 
 #' Retrieves information about a gateway
 #'
@@ -1409,7 +1534,7 @@ iotsitewise_describe_project <- function(projectId) {
 #' different groupings of assets to be formed that all come from the same
 #' asset model. You can use the hierarchy ID to identify the correct asset
 #' to disassociate. For more information, see [Asset
-#' Hierarchies](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html)
+#' hierarchies](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' @param childAssetId &#91;required&#93; The ID of the child asset to disassociate.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
@@ -1449,8 +1574,8 @@ iotsitewise_disassociate_assets <- function(assetId, hierarchyId, childAssetId, 
 #' Gets aggregated values for an asset property
 #'
 #' Gets aggregated values for an asset property. For more information, see
-#' [Querying Aggregated Property
-#' Values](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#aggregates)
+#' [Querying
+#' aggregates](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#aggregates)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
 #' To identify an asset property, you must specify one of the following:
@@ -1472,8 +1597,8 @@ iotsitewise_disassociate_assets <- function(assetId, hierarchyId, childAssetId, 
 #' @param propertyAlias The property alias that identifies the property, such as an OPC-UA
 #' server data stream path (for example,
 #' `/company/windfarm/3/turbine/7/temperature`). For more information, see
-#' [Mapping Industrial Data Streams to Asset
-#' Properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html)
+#' [Mapping industrial data streams to asset
+#' properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' @param aggregateTypes &#91;required&#93; The data aggregating function.
 #' @param resolution &#91;required&#93; The time interval over which to aggregate data.
@@ -1483,8 +1608,12 @@ iotsitewise_disassociate_assets <- function(assetId, hierarchyId, childAssetId, 
 #' @param endDate &#91;required&#93; The inclusive end of the range from which to query historical data,
 #' expressed in seconds in Unix epoch time.
 #' @param timeOrdering The chronological sorting order of the requested information.
+#' 
+#' Default: `ASCENDING`
 #' @param nextToken The token to be used for the next set of paginated results.
 #' @param maxResults The maximum number of results to be returned per paginated request.
+#' 
+#' Default: 100
 #'
 #' @section Request syntax:
 #' ```
@@ -1534,8 +1663,8 @@ iotsitewise_get_asset_property_aggregates <- function(assetId = NULL, propertyId
 #' Gets an asset property's current value
 #'
 #' Gets an asset property's current value. For more information, see
-#' [Querying Current Property
-#' Values](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#current-values)
+#' [Querying current
+#' values](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#current-values)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
 #' To identify an asset property, you must specify one of the following:
@@ -1555,8 +1684,8 @@ iotsitewise_get_asset_property_aggregates <- function(assetId = NULL, propertyId
 #' @param propertyAlias The property alias that identifies the property, such as an OPC-UA
 #' server data stream path (for example,
 #' `/company/windfarm/3/turbine/7/temperature`). For more information, see
-#' [Mapping Industrial Data Streams to Asset
-#' Properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html)
+#' [Mapping industrial data streams to asset
+#' properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
 #' @section Request syntax:
@@ -1591,8 +1720,8 @@ iotsitewise_get_asset_property_value <- function(assetId = NULL, propertyId = NU
 #' Gets the history of an asset property's values
 #'
 #' Gets the history of an asset property's values. For more information,
-#' see [Querying Historical Property
-#' Values](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#historical-values)
+#' see [Querying historical
+#' values](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#historical-values)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
 #' To identify an asset property, you must specify one of the following:
@@ -1614,8 +1743,8 @@ iotsitewise_get_asset_property_value <- function(assetId = NULL, propertyId = NU
 #' @param propertyAlias The property alias that identifies the property, such as an OPC-UA
 #' server data stream path (for example,
 #' `/company/windfarm/3/turbine/7/temperature`). For more information, see
-#' [Mapping Industrial Data Streams to Asset
-#' Properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html)
+#' [Mapping industrial data streams to asset
+#' properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' @param startDate The exclusive start of the range from which to query historical data,
 #' expressed in seconds in Unix epoch time.
@@ -1623,8 +1752,12 @@ iotsitewise_get_asset_property_value <- function(assetId = NULL, propertyId = NU
 #' expressed in seconds in Unix epoch time.
 #' @param qualities The quality by which to filter asset data.
 #' @param timeOrdering The chronological sorting order of the requested information.
+#' 
+#' Default: `ASCENDING`
 #' @param nextToken The token to be used for the next set of paginated results.
 #' @param maxResults The maximum number of results to be returned per paginated request.
+#' 
+#' Default: 100
 #'
 #' @section Request syntax:
 #' ```
@@ -1667,36 +1800,43 @@ iotsitewise_get_asset_property_value_history <- function(assetId = NULL, propert
 }
 .iotsitewise$operations$get_asset_property_value_history <- iotsitewise_get_asset_property_value_history
 
-#' Retrieves a paginated list of access policies for an AWS SSO identity (a
-#' user or group) or an AWS IoT SiteWise Monitor resource (a portal or
-#' project)
+#' Retrieves a paginated list of access policies for an identity (an AWS
+#' SSO user, an AWS SSO group, or an IAM user) or an AWS IoT SiteWise
+#' Monitor resource (a portal or project)
 #'
-#' Retrieves a paginated list of access policies for an AWS SSO identity (a
-#' user or group) or an AWS IoT SiteWise Monitor resource (a portal or
-#' project).
+#' Retrieves a paginated list of access policies for an identity (an AWS
+#' SSO user, an AWS SSO group, or an IAM user) or an AWS IoT SiteWise
+#' Monitor resource (a portal or project).
 #'
 #' @usage
 #' iotsitewise_list_access_policies(identityType, identityId, resourceType,
-#'   resourceId, nextToken, maxResults)
+#'   resourceId, iamArn, nextToken, maxResults)
 #'
-#' @param identityType The type of identity (user or group). This parameter is required if you
-#' specify `identityId`.
-#' @param identityId The ID of the identity. This parameter is required if you specify
-#' `identityType`.
+#' @param identityType The type of identity (AWS SSO user, AWS SSO group, or IAM user). This
+#' parameter is required if you specify `identityId`.
+#' @param identityId The ID of the identity. This parameter is required if you specify `USER`
+#' or `GROUP` for `identityType`.
 #' @param resourceType The type of resource (portal or project). This parameter is required if
 #' you specify `resourceId`.
 #' @param resourceId The ID of the resource. This parameter is required if you specify
 #' `resourceType`.
+#' @param iamArn The ARN of the IAM user. For more information, see [IAM
+#' ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
+#' in the *IAM User Guide*. This parameter is required if you specify `IAM`
+#' for `identityType`.
 #' @param nextToken The token to be used for the next set of paginated results.
 #' @param maxResults The maximum number of results to be returned per paginated request.
+#' 
+#' Default: 50
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_access_policies(
-#'   identityType = "USER"|"GROUP",
+#'   identityType = "USER"|"GROUP"|"IAM",
 #'   identityId = "string",
 #'   resourceType = "PORTAL"|"PROJECT",
 #'   resourceId = "string",
+#'   iamArn = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -1705,14 +1845,14 @@ iotsitewise_get_asset_property_value_history <- function(assetId = NULL, propert
 #' @keywords internal
 #'
 #' @rdname iotsitewise_list_access_policies
-iotsitewise_list_access_policies <- function(identityType = NULL, identityId = NULL, resourceType = NULL, resourceId = NULL, nextToken = NULL, maxResults = NULL) {
+iotsitewise_list_access_policies <- function(identityType = NULL, identityId = NULL, resourceType = NULL, resourceId = NULL, iamArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAccessPolicies",
     http_method = "GET",
     http_path = "/access-policies",
     paginator = list()
   )
-  input <- .iotsitewise$list_access_policies_input(identityType = identityType, identityId = identityId, resourceType = resourceType, resourceId = resourceId, nextToken = nextToken, maxResults = maxResults)
+  input <- .iotsitewise$list_access_policies_input(identityType = identityType, identityId = identityId, resourceType = resourceType, resourceId = resourceId, iamArn = iamArn, nextToken = nextToken, maxResults = maxResults)
   output <- .iotsitewise$list_access_policies_output()
   config <- get_config()
   svc <- .iotsitewise$service(config)
@@ -1731,6 +1871,8 @@ iotsitewise_list_access_policies <- function(identityType = NULL, identityId = N
 #'
 #' @param nextToken The token to be used for the next set of paginated results.
 #' @param maxResults The maximum number of results to be returned per paginated request.
+#' 
+#' Default: 50
 #'
 #' @section Request syntax:
 #' ```
@@ -1760,6 +1902,57 @@ iotsitewise_list_asset_models <- function(nextToken = NULL, maxResults = NULL) {
 }
 .iotsitewise$operations$list_asset_models <- iotsitewise_list_asset_models
 
+#' Retrieves a paginated list of asset relationships for an asset
+#'
+#' Retrieves a paginated list of asset relationships for an asset. You can
+#' use this operation to identify an asset's root asset and all associated
+#' assets between that asset and its root.
+#'
+#' @usage
+#' iotsitewise_list_asset_relationships(assetId, traversalType, nextToken,
+#'   maxResults)
+#'
+#' @param assetId &#91;required&#93; The ID of the asset.
+#' @param traversalType &#91;required&#93; The type of traversal to use to identify asset relationships. Choose the
+#' following option:
+#' 
+#' -   `PATH_TO_ROOT` – Identify the asset's parent assets up to the root
+#'     asset. The asset that you specify in `assetId` is the first result
+#'     in the list of `assetRelationshipSummaries`, and the root asset is
+#'     the last result.
+#' @param nextToken The token to be used for the next set of paginated results.
+#' @param maxResults The maximum number of results to be returned per paginated request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_asset_relationships(
+#'   assetId = "string",
+#'   traversalType = "PATH_TO_ROOT",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iotsitewise_list_asset_relationships
+iotsitewise_list_asset_relationships <- function(assetId, traversalType, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListAssetRelationships",
+    http_method = "GET",
+    http_path = "/assets/{assetId}/assetRelationships",
+    paginator = list()
+  )
+  input <- .iotsitewise$list_asset_relationships_input(assetId = assetId, traversalType = traversalType, nextToken = nextToken, maxResults = maxResults)
+  output <- .iotsitewise$list_asset_relationships_output()
+  config <- get_config()
+  svc <- .iotsitewise$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iotsitewise$operations$list_asset_relationships <- iotsitewise_list_asset_relationships
+
 #' Retrieves a paginated list of asset summaries
 #'
 #' Retrieves a paginated list of asset summaries.
@@ -1781,16 +1974,20 @@ iotsitewise_list_asset_models <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @param nextToken The token to be used for the next set of paginated results.
 #' @param maxResults The maximum number of results to be returned per paginated request.
+#' 
+#' Default: 50
 #' @param assetModelId The ID of the asset model by which to filter the list of assets. This
 #' parameter is required if you choose `ALL` for `filter`.
 #' @param filter The filter for the requested list of assets. Choose one of the following
-#' options. Defaults to `ALL`.
+#' options:
 #' 
 #' -   `ALL` – The list includes all assets for a given asset model ID. The
 #'     `assetModelId` parameter is required if you filter by `ALL`.
 #' 
 #' -   `TOP_LEVEL` – The list includes only top-level assets in the asset
 #'     hierarchy tree.
+#' 
+#' Default: `ALL`
 #'
 #' @section Request syntax:
 #' ```
@@ -1822,35 +2019,54 @@ iotsitewise_list_assets <- function(nextToken = NULL, maxResults = NULL, assetMo
 }
 .iotsitewise$operations$list_assets <- iotsitewise_list_assets
 
-#' Retrieves a paginated list of the assets associated to a parent asset
-#' (assetId) by a given hierarchy (hierarchyId)
+#' Retrieves a paginated list of associated assets
 #'
-#' Retrieves a paginated list of the assets associated to a parent asset
-#' (`assetId`) by a given hierarchy (`hierarchyId`).
+#' Retrieves a paginated list of associated assets.
+#' 
+#' You can use this operation to do the following:
+#' 
+#' -   List child assets associated to a parent asset by a hierarchy that
+#'     you specify.
+#' 
+#' -   List an asset's parent asset.
 #'
 #' @usage
-#' iotsitewise_list_associated_assets(assetId, hierarchyId, nextToken,
-#'   maxResults)
+#' iotsitewise_list_associated_assets(assetId, hierarchyId,
+#'   traversalDirection, nextToken, maxResults)
 #'
-#' @param assetId &#91;required&#93; The ID of the parent asset.
-#' @param hierarchyId &#91;required&#93; The hierarchy ID (of the parent asset model) whose associated assets are
-#' returned. To find a hierarchy ID, use the
+#' @param assetId &#91;required&#93; The ID of the asset to query.
+#' @param hierarchyId The ID of the hierarchy by which child assets are associated to the
+#' asset. To find a hierarchy ID, use the
 #' [DescribeAsset](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAsset.html)
 #' or
 #' [DescribeAssetModel](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModel.html)
-#' actions.
+#' operations. This parameter is required if you choose `CHILD` for
+#' `traversalDirection`.
 #' 
 #' For more information, see [Asset
-#' Hierarchies](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html)
+#' hierarchies](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html)
 #' in the *AWS IoT SiteWise User Guide*.
+#' @param traversalDirection The direction to list associated assets. Choose one of the following
+#' options:
+#' 
+#' -   `CHILD` – The list includes all child assets associated to the
+#'     asset. The `hierarchyId` parameter is required if you choose
+#'     `CHILD`.
+#' 
+#' -   `PARENT` – The list includes the asset's parent asset.
+#' 
+#' Default: `CHILD`
 #' @param nextToken The token to be used for the next set of paginated results.
 #' @param maxResults The maximum number of results to be returned per paginated request.
+#' 
+#' Default: 50
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_associated_assets(
 #'   assetId = "string",
 #'   hierarchyId = "string",
+#'   traversalDirection = "PARENT"|"CHILD",
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -1859,14 +2075,14 @@ iotsitewise_list_assets <- function(nextToken = NULL, maxResults = NULL, assetMo
 #' @keywords internal
 #'
 #' @rdname iotsitewise_list_associated_assets
-iotsitewise_list_associated_assets <- function(assetId, hierarchyId, nextToken = NULL, maxResults = NULL) {
+iotsitewise_list_associated_assets <- function(assetId, hierarchyId = NULL, traversalDirection = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssociatedAssets",
     http_method = "GET",
     http_path = "/assets/{assetId}/hierarchies",
     paginator = list()
   )
-  input <- .iotsitewise$list_associated_assets_input(assetId = assetId, hierarchyId = hierarchyId, nextToken = nextToken, maxResults = maxResults)
+  input <- .iotsitewise$list_associated_assets_input(assetId = assetId, hierarchyId = hierarchyId, traversalDirection = traversalDirection, nextToken = nextToken, maxResults = maxResults)
   output <- .iotsitewise$list_associated_assets_output()
   config <- get_config()
   svc <- .iotsitewise$service(config)
@@ -1888,6 +2104,8 @@ iotsitewise_list_associated_assets <- function(assetId, hierarchyId, nextToken =
 #' @param projectId &#91;required&#93; The ID of the project.
 #' @param nextToken The token to be used for the next set of paginated results.
 #' @param maxResults The maximum number of results to be returned per paginated request.
+#' 
+#' Default: 50
 #'
 #' @section Request syntax:
 #' ```
@@ -1927,6 +2145,8 @@ iotsitewise_list_dashboards <- function(projectId, nextToken = NULL, maxResults 
 #'
 #' @param nextToken The token to be used for the next set of paginated results.
 #' @param maxResults The maximum number of results to be returned per paginated request.
+#' 
+#' Default: 50
 #'
 #' @section Request syntax:
 #' ```
@@ -1965,6 +2185,8 @@ iotsitewise_list_gateways <- function(nextToken = NULL, maxResults = NULL) {
 #'
 #' @param nextToken The token to be used for the next set of paginated results.
 #' @param maxResults The maximum number of results to be returned per paginated request.
+#' 
+#' Default: 50
 #'
 #' @section Request syntax:
 #' ```
@@ -2006,6 +2228,8 @@ iotsitewise_list_portals <- function(nextToken = NULL, maxResults = NULL) {
 #' @param projectId &#91;required&#93; The ID of the project.
 #' @param nextToken The token to be used for the next set of paginated results.
 #' @param maxResults The maximum number of results to be returned per paginated request.
+#' 
+#' Default: 50
 #'
 #' @section Request syntax:
 #' ```
@@ -2048,6 +2272,8 @@ iotsitewise_list_project_assets <- function(projectId, nextToken = NULL, maxResu
 #' @param portalId &#91;required&#93; The ID of the portal.
 #' @param nextToken The token to be used for the next set of paginated results.
 #' @param maxResults The maximum number of results to be returned per paginated request.
+#' 
+#' Default: 50
 #'
 #' @section Request syntax:
 #' ```
@@ -2115,6 +2341,49 @@ iotsitewise_list_tags_for_resource <- function(resourceArn) {
   return(response)
 }
 .iotsitewise$operations$list_tags_for_resource <- iotsitewise_list_tags_for_resource
+
+#' Sets the default encryption configuration for the AWS account
+#'
+#' Sets the default encryption configuration for the AWS account. For more
+#' information, see [Key
+#' management](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/key-management.html)
+#' in the *AWS IoT SiteWise User Guide*.
+#'
+#' @usage
+#' iotsitewise_put_default_encryption_configuration(encryptionType,
+#'   kmsKeyId)
+#'
+#' @param encryptionType &#91;required&#93; The type of encryption used for the encryption configuration.
+#' @param kmsKeyId The Key ID of the customer managed customer master key (CMK) used for
+#' AWS KMS encryption. This is required if you use `KMS_BASED_ENCRYPTION`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_default_encryption_configuration(
+#'   encryptionType = "SITEWISE_DEFAULT_ENCRYPTION"|"KMS_BASED_ENCRYPTION",
+#'   kmsKeyId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iotsitewise_put_default_encryption_configuration
+iotsitewise_put_default_encryption_configuration <- function(encryptionType, kmsKeyId = NULL) {
+  op <- new_operation(
+    name = "PutDefaultEncryptionConfiguration",
+    http_method = "POST",
+    http_path = "/configuration/account/encryption",
+    paginator = list()
+  )
+  input <- .iotsitewise$put_default_encryption_configuration_input(encryptionType = encryptionType, kmsKeyId = kmsKeyId)
+  output <- .iotsitewise$put_default_encryption_configuration_output()
+  config <- get_config()
+  svc <- .iotsitewise$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iotsitewise$operations$put_default_encryption_configuration <- iotsitewise_put_default_encryption_configuration
 
 #' Sets logging options for AWS IoT SiteWise
 #'
@@ -2242,22 +2511,21 @@ iotsitewise_untag_resource <- function(resourceArn, tagKeys) {
 }
 .iotsitewise$operations$untag_resource <- iotsitewise_untag_resource
 
-#' Updates an existing access policy that specifies an AWS SSO user or
-#' group's access to an AWS IoT SiteWise Monitor portal or project resource
+#' Updates an existing access policy that specifies an identity's access to
+#' an AWS IoT SiteWise Monitor portal or project resource
 #'
-#' Updates an existing access policy that specifies an AWS SSO user or
-#' group's access to an AWS IoT SiteWise Monitor portal or project
-#' resource.
+#' Updates an existing access policy that specifies an identity's access to
+#' an AWS IoT SiteWise Monitor portal or project resource.
 #'
 #' @usage
 #' iotsitewise_update_access_policy(accessPolicyId, accessPolicyIdentity,
 #'   accessPolicyResource, accessPolicyPermission, clientToken)
 #'
 #' @param accessPolicyId &#91;required&#93; The ID of the access policy.
-#' @param accessPolicyIdentity &#91;required&#93; The identity for this access policy. Choose either a `user` or a `group`
-#' but not both.
+#' @param accessPolicyIdentity &#91;required&#93; The identity for this access policy. Choose an AWS SSO user, an AWS SSO
+#' group, or an IAM user.
 #' @param accessPolicyResource &#91;required&#93; The AWS IoT SiteWise Monitor resource for this access policy. Choose
-#' either `portal` or `project` but not both.
+#' either a portal or a project.
 #' @param accessPolicyPermission &#91;required&#93; The permission level for this access policy. Note that a project
 #' `ADMINISTRATOR` is also known as a project owner.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
@@ -2274,6 +2542,9 @@ iotsitewise_untag_resource <- function(resourceArn, tagKeys) {
 #'     ),
 #'     group = list(
 #'       id = "string"
+#'     ),
+#'     iamUser = list(
+#'       arn = "string"
 #'     )
 #'   ),
 #'   accessPolicyResource = list(
@@ -2311,8 +2582,8 @@ iotsitewise_update_access_policy <- function(accessPolicyId, accessPolicyIdentit
 
 #' Updates an asset's name
 #'
-#' Updates an asset's name. For more information, see [Updating Assets and
-#' Models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html)
+#' Updates an asset's name. For more information, see [Updating assets and
+#' models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #'
 #' @usage
@@ -2359,8 +2630,8 @@ iotsitewise_update_asset <- function(assetId, assetName, clientToken = NULL) {
 #' Updates an asset model and all of the assets that were created from the
 #' model. Each asset created from the model inherits the updated asset
 #' model's property and hierarchy definitions. For more information, see
-#' [Updating Assets and
-#' Models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html)
+#' [Updating assets and
+#' models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
 #' This operation overwrites the existing model with the provided model. To
@@ -2369,23 +2640,23 @@ iotsitewise_update_asset <- function(assetId, assetName, clientToken = NULL) {
 #' For more information, see
 #' [DescribeAssetModel](https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeAssetModel.html).
 #' 
-#' If you remove a property from an asset model or update a property's
-#' formula expression, AWS IoT SiteWise deletes all previous data for that
-#' property. If you remove a hierarchy definition from an asset model, AWS
-#' IoT SiteWise disassociates every asset associated with that hierarchy.
-#' You can't change the type or data type of an existing property.
+#' If you remove a property from an asset model, AWS IoT SiteWise deletes
+#' all previous data for that property. If you remove a hierarchy
+#' definition from an asset model, AWS IoT SiteWise disassociates every
+#' asset associated with that hierarchy. You can't change the type or data
+#' type of an existing property.
 #'
 #' @usage
 #' iotsitewise_update_asset_model(assetModelId, assetModelName,
 #'   assetModelDescription, assetModelProperties, assetModelHierarchies,
-#'   clientToken)
+#'   assetModelCompositeModels, clientToken)
 #'
 #' @param assetModelId &#91;required&#93; The ID of the asset model to update.
 #' @param assetModelName &#91;required&#93; A unique, friendly name for the asset model.
 #' @param assetModelDescription A description for the asset model.
 #' @param assetModelProperties The updated property definitions of the asset model. For more
 #' information, see [Asset
-#' Properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-properties.html)
+#' properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-properties.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
 #' You can specify up to 200 properties per asset model. For more
@@ -2395,13 +2666,18 @@ iotsitewise_update_asset <- function(assetId, assetName, clientToken = NULL) {
 #' @param assetModelHierarchies The updated hierarchy definitions of the asset model. Each hierarchy
 #' specifies an asset model whose assets can be children of any other
 #' assets created from this asset model. For more information, see [Asset
-#' Hierarchies](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html)
+#' hierarchies](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
 #' You can specify up to 10 hierarchies per asset model. For more
 #' information, see
 #' [Quotas](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/quotas.html)
 #' in the *AWS IoT SiteWise User Guide*.
+#' @param assetModelCompositeModels The composite asset models that are part of this asset model. Composite
+#' asset models are asset models that contain specific properties. Each
+#' composite model has a type that defines the properties that the
+#' composite model supports. Use composite asset models to define alarms on
+#' this asset model.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the
 #' idempotency of the request. Don't reuse this client token if a new
 #' idempotent request is required.
@@ -2416,7 +2692,8 @@ iotsitewise_update_asset <- function(assetId, assetName, clientToken = NULL) {
 #'     list(
 #'       id = "string",
 #'       name = "string",
-#'       dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN",
+#'       dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+#'       dataTypeSpec = "string",
 #'       unit = "string",
 #'       type = list(
 #'         attribute = list(
@@ -2462,6 +2739,57 @@ iotsitewise_update_asset <- function(assetId, assetName, clientToken = NULL) {
 #'       childAssetModelId = "string"
 #'     )
 #'   ),
+#'   assetModelCompositeModels = list(
+#'     list(
+#'       name = "string",
+#'       description = "string",
+#'       type = "string",
+#'       properties = list(
+#'         list(
+#'           id = "string",
+#'           name = "string",
+#'           dataType = "STRING"|"INTEGER"|"DOUBLE"|"BOOLEAN"|"STRUCT",
+#'           dataTypeSpec = "string",
+#'           unit = "string",
+#'           type = list(
+#'             attribute = list(
+#'               defaultValue = "string"
+#'             ),
+#'             measurement = list(),
+#'             transform = list(
+#'               expression = "string",
+#'               variables = list(
+#'                 list(
+#'                   name = "string",
+#'                   value = list(
+#'                     propertyId = "string",
+#'                     hierarchyId = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             metric = list(
+#'               expression = "string",
+#'               variables = list(
+#'                 list(
+#'                   name = "string",
+#'                   value = list(
+#'                     propertyId = "string",
+#'                     hierarchyId = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               window = list(
+#'                 tumbling = list(
+#'                   interval = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   clientToken = "string"
 #' )
 #' ```
@@ -2469,14 +2797,14 @@ iotsitewise_update_asset <- function(assetId, assetName, clientToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname iotsitewise_update_asset_model
-iotsitewise_update_asset_model <- function(assetModelId, assetModelName, assetModelDescription = NULL, assetModelProperties = NULL, assetModelHierarchies = NULL, clientToken = NULL) {
+iotsitewise_update_asset_model <- function(assetModelId, assetModelName, assetModelDescription = NULL, assetModelProperties = NULL, assetModelHierarchies = NULL, assetModelCompositeModels = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateAssetModel",
     http_method = "PUT",
     http_path = "/asset-models/{assetModelId}",
     paginator = list()
   )
-  input <- .iotsitewise$update_asset_model_input(assetModelId = assetModelId, assetModelName = assetModelName, assetModelDescription = assetModelDescription, assetModelProperties = assetModelProperties, assetModelHierarchies = assetModelHierarchies, clientToken = clientToken)
+  input <- .iotsitewise$update_asset_model_input(assetModelId = assetModelId, assetModelName = assetModelName, assetModelDescription = assetModelDescription, assetModelProperties = assetModelProperties, assetModelHierarchies = assetModelHierarchies, assetModelCompositeModels = assetModelCompositeModels, clientToken = clientToken)
   output <- .iotsitewise$update_asset_model_output()
   config <- get_config()
   svc <- .iotsitewise$service(config)
@@ -2505,16 +2833,16 @@ iotsitewise_update_asset_model <- function(assetModelId, assetModelName, assetMo
 #' @param propertyAlias The property alias that identifies the property, such as an OPC-UA
 #' server data stream path (for example,
 #' `/company/windfarm/3/turbine/7/temperature`). For more information, see
-#' [Mapping Industrial Data Streams to Asset
-#' Properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html)
+#' [Mapping industrial data streams to asset
+#' properties](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
 #' If you omit this parameter, the alias is removed from the property.
 #' @param propertyNotificationState The MQTT notification state (enabled or disabled) for this asset
 #' property. When the notification state is enabled, AWS IoT SiteWise
 #' publishes property value updates to a unique MQTT topic. For more
-#' information, see [Interacting with Other
-#' Services](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/interact-with-other-services.html)
+#' information, see [Interacting with other
+#' services](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/interact-with-other-services.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' 
 #' If you omit this parameter, the notification state is set to `DISABLED`.
@@ -2565,7 +2893,7 @@ iotsitewise_update_asset_property <- function(assetId, propertyId, propertyAlias
 #' @param dashboardName &#91;required&#93; A new friendly name for the dashboard.
 #' @param dashboardDescription A new description for the dashboard.
 #' @param dashboardDefinition &#91;required&#93; The new dashboard definition, as specified in a JSON literal. For
-#' detailed information, see [Creating Dashboards
+#' detailed information, see [Creating dashboards
 #' (CLI)](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html)
 #' in the *AWS IoT SiteWise User Guide*.
 #' @param clientToken A unique case-sensitive identifier that you can provide to ensure the

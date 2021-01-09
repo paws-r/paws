@@ -29,21 +29,27 @@ requirements of your task. For more information, see \href{https://docs.aws.amaz
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{networkMode}{The Docker networking mode to use for the containers in the task. The
-valid values are \code{none}, \code{bridge}, \code{awsvpc}, and \code{host}. The default
-Docker network mode is \code{bridge}. If you are using the Fargate launch
-type, the \code{awsvpc} network mode is required. If you are using the EC2
-launch type, any network mode can be used. If the network mode is set to
-\code{none}, you cannot specify port mappings in your container definitions,
-and the tasks containers do not have external connectivity. The \code{host}
-and \code{awsvpc} network modes offer the highest networking performance for
-containers because they use the EC2 network stack instead of the
-virtualized network stack provided by the \code{bridge} mode.
+valid values are \code{none}, \code{bridge}, \code{awsvpc}, and \code{host}. If no network
+mode is specified, the default is \code{bridge}.
+
+For Amazon ECS tasks on Fargate, the \code{awsvpc} network mode is required.
+For Amazon ECS tasks on Amazon EC2 instances, any network mode can be
+used. If the network mode is set to \code{none}, you cannot specify port
+mappings in your container definitions, and the tasks containers do not
+have external connectivity. The \code{host} and \code{awsvpc} network modes offer
+the highest networking performance for containers because they use the
+EC2 network stack instead of the virtualized network stack provided by
+the \code{bridge} mode.
 
 With the \code{host} and \code{awsvpc} network modes, exposed container ports are
 mapped directly to the corresponding host port (for the \code{host} network
 mode) or the attached elastic network interface port (for the \code{awsvpc}
 network mode), so you cannot take advantage of dynamic host port
 mappings.
+
+When using the \code{host} network mode, you should not run containers using
+the root user (UID 0). It is considered best practice to use a non-root
+user.
 
 If the network mode is \code{awsvpc}, the task is allocated an elastic
 network interface, and you must specify a NetworkConfiguration value
@@ -78,8 +84,10 @@ may use.}
 specify a maximum of 10 constraints per task (this limit includes
 constraints in the task definition and those specified at runtime).}
 
-\item{requiresCompatibilities}{The launch type required by the task. If no value is specified, it
-defaults to \code{EC2}.}
+\item{requiresCompatibilities}{The task launch type that Amazon ECS should validate the task definition
+against. This ensures that the task definition parameters are compatible
+with the specified launch type. If no value is specified, it defaults to
+\code{EC2}.}
 
 \item{cpu}{The number of CPU units used by the task. It can be expressed as an
 integer using CPU units, for example \code{1024}, or as a string using vCPUs,
@@ -218,7 +226,7 @@ task.}
 Registers a new task definition from the supplied \code{family} and
 \code{containerDefinitions}. Optionally, you can add data volumes to your
 containers with the \code{volumes} parameter. For more information about task
-definition parameters and defaults, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html}{Amazon ECS Task Definitions}
+definition parameters and defaults, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html}{Amazon ECS Task Definitions}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 }
 \details{
@@ -441,6 +449,14 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
         authorizationConfig = list(
           accessPointId = "string",
           iam = "ENABLED"|"DISABLED"
+        )
+      ),
+      fsxWindowsFileServerVolumeConfiguration = list(
+        fileSystemId = "string",
+        rootDirectory = "string",
+        authorizationConfig = list(
+          credentialsParameter = "string",
+          domain = "string"
         )
       )
     )

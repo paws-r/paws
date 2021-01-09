@@ -18,7 +18,7 @@ NULL
 #' tasks such as signing requests (see below), managing errors, and
 #' retrying requests automatically. For more information about the AWS
 #' SDKs, including how to download and install them, see [Tools for Amazon
-#' Web Services](http://aws.amazon.com/tools/).
+#' Web Services](https://aws.amazon.com/tools/).
 #' 
 #' We recommend that you use the AWS SDKs to make programmatic API calls to
 #' AWS KMS.
@@ -122,7 +122,7 @@ NULL
 #' \tabular{ll}{
 #'  \link[=kms_cancel_key_deletion]{cancel_key_deletion} \tab Cancels the deletion of a customer master key (CMK)\cr
 #'  \link[=kms_connect_custom_key_store]{connect_custom_key_store} \tab Connects or reconnects a custom key store to its associated AWS CloudHSM cluster\cr
-#'  \link[=kms_create_alias]{create_alias} \tab Creates a display name for a customer managed customer master key (CMK)\cr
+#'  \link[=kms_create_alias]{create_alias} \tab Creates a friendly name for a customer master key (CMK)\cr
 #'  \link[=kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store that is associated with an AWS CloudHSM cluster that you own and manage\cr
 #'  \link[=kms_create_grant]{create_grant} \tab Adds a grant to a customer master key (CMK)\cr
 #'  \link[=kms_create_key]{create_key} \tab Creates a unique customer managed customer master key (CMK) in your AWS account and Region\cr
@@ -132,7 +132,7 @@ NULL
 #'  \link[=kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that you previously imported\cr
 #'  \link[=kms_describe_custom_key_stores]{describe_custom_key_stores} \tab Gets information about custom key stores in the account and region\cr
 #'  \link[=kms_describe_key]{describe_key} \tab Provides detailed information about a customer master key (CMK)\cr
-#'  \link[=kms_disable_key]{disable_key} \tab Sets the state of a customer master key (CMK) to disabled, thereby preventing its use for cryptographic operations\cr
+#'  \link[=kms_disable_key]{disable_key} \tab Sets the state of a customer master key (CMK) to disabled\cr
 #'  \link[=kms_disable_key_rotation]{disable_key_rotation} \tab Disables automatic rotation of the key material for the specified symmetric customer master key (CMK)\cr
 #'  \link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store} \tab Disconnects the custom key store from its associated AWS CloudHSM cluster\cr
 #'  \link[=kms_enable_key]{enable_key} \tab Sets the key state of a customer master key (CMK) to enabled\cr
@@ -152,16 +152,16 @@ NULL
 #'  \link[=kms_list_grants]{list_grants} \tab Gets a list of all grants for the specified customer master key (CMK)\cr
 #'  \link[=kms_list_key_policies]{list_key_policies} \tab Gets the names of the key policies that are attached to a customer master key (CMK)\cr
 #'  \link[=kms_list_keys]{list_keys} \tab Gets a list of all customer master keys (CMKs) in the caller's AWS account and Region\cr
-#'  \link[=kms_list_resource_tags]{list_resource_tags} \tab Returns a list of all tags for the specified customer master key (CMK)\cr
-#'  \link[=kms_list_retirable_grants]{list_retirable_grants} \tab Returns a list of all grants for which the grant's RetiringPrincipal matches the one specified\cr
+#'  \link[=kms_list_resource_tags]{list_resource_tags} \tab Returns all tags on the specified customer master key (CMK)\cr
+#'  \link[=kms_list_retirable_grants]{list_retirable_grants} \tab Returns all grants in which the specified principal is the RetiringPrincipal in the grant\cr
 #'  \link[=kms_put_key_policy]{put_key_policy} \tab Attaches a key policy to the specified customer master key (CMK)\cr
 #'  \link[=kms_re_encrypt]{re_encrypt} \tab Decrypts ciphertext and then reencrypts it entirely within AWS KMS\cr
 #'  \link[=kms_retire_grant]{retire_grant} \tab Retires a grant\cr
 #'  \link[=kms_revoke_grant]{revoke_grant} \tab Revokes the specified grant for the specified customer master key (CMK)\cr
 #'  \link[=kms_schedule_key_deletion]{schedule_key_deletion} \tab Schedules the deletion of a customer master key (CMK)\cr
 #'  \link[=kms_sign]{sign} \tab Creates a digital signature for a message or message digest by using the private key in an asymmetric CMK\cr
-#'  \link[=kms_tag_resource]{tag_resource} \tab Adds or edits tags for a customer master key (CMK)\cr
-#'  \link[=kms_untag_resource]{untag_resource} \tab Removes the specified tags from the specified customer master key (CMK)\cr
+#'  \link[=kms_tag_resource]{tag_resource} \tab Adds or edits tags on a customer managed CMK\cr
+#'  \link[=kms_untag_resource]{untag_resource} \tab Deletes tags from a customer managed CMK\cr
 #'  \link[=kms_update_alias]{update_alias} \tab Associates an existing AWS KMS alias with a different customer master key (CMK)\cr
 #'  \link[=kms_update_custom_key_store]{update_custom_key_store} \tab Changes the properties of a custom key store\cr
 #'  \link[=kms_update_key_description]{update_key_description} \tab Updates the description of a customer master key (CMK)\cr

@@ -5,8 +5,9 @@
 \title{Creates an Api resource}
 \usage{
 apigatewayv2_create_api(ApiKeySelectionExpression, CorsConfiguration,
-  CredentialsArn, Description, DisableSchemaValidation, Name,
-  ProtocolType, RouteKey, RouteSelectionExpression, Tags, Target, Version)
+  CredentialsArn, Description, DisableSchemaValidation,
+  DisableExecuteApiEndpoint, Name, ProtocolType, RouteKey,
+  RouteSelectionExpression, Tags, Target, Version)
 }
 \arguments{
 \item{ApiKeySelectionExpression}{An API key selection expression. Supported only for WebSocket APIs. See
@@ -28,6 +29,12 @@ HTTP integrations. Supported only for HTTP APIs.}
 
 \item{DisableSchemaValidation}{Avoid validating models when creating a deployment. Supported only for
 WebSocket APIs.}
+
+\item{DisableExecuteApiEndpoint}{Specifies whether clients can invoke your API by using the default
+execute-api endpoint. By default, clients can invoke your API with the
+default https://\{api\\_id\}.execute-api.\{region\}.amazonaws.com endpoint.
+To require that clients use a custom domain name to invoke your API,
+disable the default endpoint.}
 
 \item{Name}{[required] The name of the API.}
 
@@ -82,6 +89,7 @@ Creates an Api resource.
   CredentialsArn = "string",
   Description = "string",
   DisableSchemaValidation = TRUE|FALSE,
+  DisableExecuteApiEndpoint = TRUE|FALSE,
   Name = "string",
   ProtocolType = "WEBSOCKET"|"HTTP",
   RouteKey = "string",

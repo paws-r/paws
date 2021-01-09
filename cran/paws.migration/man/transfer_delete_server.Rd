@@ -7,8 +7,7 @@
 transfer_delete_server(ServerId)
 }
 \arguments{
-\item{ServerId}{[required] A unique system-assigned identifier for a file transfer protocol-enabled
-server instance.}
+\item{ServerId}{[required] A unique system-assigned identifier for a server instance.}
 }
 \description{
 Deletes the file transfer protocol-enabled server that you specify.

@@ -2,19 +2,19 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_get_resolver_rule}
 \alias{route53resolver_get_resolver_rule}
-\title{Gets information about a specified resolver rule, such as the domain
+\title{Gets information about a specified Resolver rule, such as the domain
 name that the rule forwards DNS queries for and the ID of the outbound
-resolver endpoint that the rule is associated with}
+Resolver endpoint that the rule is associated with}
 \usage{
 route53resolver_get_resolver_rule(ResolverRuleId)
 }
 \arguments{
-\item{ResolverRuleId}{[required] The ID of the resolver rule that you want to get information about.}
+\item{ResolverRuleId}{[required] The ID of the Resolver rule that you want to get information about.}
 }
 \description{
-Gets information about a specified resolver rule, such as the domain
+Gets information about a specified Resolver rule, such as the domain
 name that the rule forwards DNS queries for and the ID of the outbound
-resolver endpoint that the rule is associated with.
+Resolver endpoint that the rule is associated with.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resolver_rule(

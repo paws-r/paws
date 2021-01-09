@@ -409,7 +409,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' apigateway_create_domain_name(domainName, certificateName,
 #'   certificateBody, certificatePrivateKey, certificateChain,
 #'   certificateArn, regionalCertificateName, regionalCertificateArn,
-#'   endpointConfiguration, tags, securityPolicy)
+#'   endpointConfiguration, tags, securityPolicy, mutualTlsAuthentication)
 #'
 #' @param domainName &#91;required&#93; \[Required\] The name of the DomainName resource.
 #' @param certificateName The user-friendly name of the certificate that will be used by
@@ -441,6 +441,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' start with `aws:`. The tag value can be up to 256 characters.
 #' @param securityPolicy The Transport Layer Security (TLS) version + cipher suite for this
 #' DomainName. The valid values are `TLS_1_0` and `TLS_1_2`.
+#' @param mutualTlsAuthentication 
 #'
 #' @section Request syntax:
 #' ```
@@ -464,21 +465,25 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   securityPolicy = "TLS_1_0"|"TLS_1_2"
+#'   securityPolicy = "TLS_1_0"|"TLS_1_2",
+#'   mutualTlsAuthentication = list(
+#'     truststoreUri = "string",
+#'     truststoreVersion = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_create_domain_name
-apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL, securityPolicy = NULL) {
+apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL, securityPolicy = NULL, mutualTlsAuthentication = NULL) {
   op <- new_operation(
     name = "CreateDomainName",
     http_method = "POST",
     http_path = "/domainnames",
     paginator = list()
   )
-  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags, securityPolicy = securityPolicy)
+  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags, securityPolicy = securityPolicy, mutualTlsAuthentication = mutualTlsAuthentication)
   output <- .apigateway$create_domain_name_output()
   config <- get_config()
   svc <- .apigateway$service(config)
@@ -628,7 +633,7 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' @usage
 #' apigateway_create_rest_api(name, description, version, cloneFrom,
 #'   binaryMediaTypes, minimumCompressionSize, apiKeySource,
-#'   endpointConfiguration, policy, tags)
+#'   endpointConfiguration, policy, tags, disableExecuteApiEndpoint)
 #'
 #' @param name &#91;required&#93; \[Required\] The name of the RestApi.
 #' @param description The description of the RestApi.
@@ -655,6 +660,11 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' @param tags The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=.\\_:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
+#' @param disableExecuteApiEndpoint Specifies whether clients can invoke your API by using the default
+#' `execute-api` endpoint. By default, clients can invoke your API with the
+#' default https://\{api\\_id\}.execute-api.\{region\}.amazonaws.com endpoint.
+#' To require that clients use a custom domain name to invoke your API,
+#' disable the default endpoint.
 #'
 #' @section Request syntax:
 #' ```
@@ -679,21 +689,22 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #'   policy = "string",
 #'   tags = list(
 #'     "string"
-#'   )
+#'   ),
+#'   disableExecuteApiEndpoint = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_create_rest_api
-apigateway_create_rest_api <- function(name, description = NULL, version = NULL, cloneFrom = NULL, binaryMediaTypes = NULL, minimumCompressionSize = NULL, apiKeySource = NULL, endpointConfiguration = NULL, policy = NULL, tags = NULL) {
+apigateway_create_rest_api <- function(name, description = NULL, version = NULL, cloneFrom = NULL, binaryMediaTypes = NULL, minimumCompressionSize = NULL, apiKeySource = NULL, endpointConfiguration = NULL, policy = NULL, tags = NULL, disableExecuteApiEndpoint = NULL) {
   op <- new_operation(
     name = "CreateRestApi",
     http_method = "POST",
     http_path = "/restapis",
     paginator = list()
   )
-  input <- .apigateway$create_rest_api_input(name = name, description = description, version = version, cloneFrom = cloneFrom, binaryMediaTypes = binaryMediaTypes, minimumCompressionSize = minimumCompressionSize, apiKeySource = apiKeySource, endpointConfiguration = endpointConfiguration, policy = policy, tags = tags)
+  input <- .apigateway$create_rest_api_input(name = name, description = description, version = version, cloneFrom = cloneFrom, binaryMediaTypes = binaryMediaTypes, minimumCompressionSize = minimumCompressionSize, apiKeySource = apiKeySource, endpointConfiguration = endpointConfiguration, policy = policy, tags = tags, disableExecuteApiEndpoint = disableExecuteApiEndpoint)
   output <- .apigateway$create_rest_api_output()
   config <- get_config()
   svc <- .apigateway$service(config)

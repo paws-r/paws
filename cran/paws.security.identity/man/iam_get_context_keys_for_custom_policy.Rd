@@ -11,8 +11,9 @@ iam_get_context_keys_for_custom_policy(PolicyInputList)
 referenced in those policies. Each document is specified as a string
 containing the complete, valid JSON text of an IAM policy.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range

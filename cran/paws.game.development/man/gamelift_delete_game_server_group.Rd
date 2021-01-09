@@ -2,55 +2,59 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_delete_game_server_group}
 \alias{gamelift_delete_game_server_group}
-\title{This action is part of Amazon GameLift FleetIQ with game server groups,
-which is in preview release and is subject to change}
+\title{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups}
 \usage{
 gamelift_delete_game_server_group(GameServerGroupName, DeleteOption)
 }
 \arguments{
-\item{GameServerGroupName}{[required] The unique identifier of the game server group to delete. Use either the
+\item{GameServerGroupName}{[required] A unique identifier for the game server group. Use either the
 GameServerGroup name or ARN value.}
 
-\item{DeleteOption}{The type of delete to perform. Options include:
+\item{DeleteOption}{The type of delete to perform. Options include the following:
 \itemize{
-\item SAFE\\_DELETE – Terminates the game server group and EC2 Auto Scaling
-group only when it has no game servers that are in IN\\_USE status.
-\item FORCE\\_DELETE – Terminates the game server group, including all
+\item \code{SAFE_DELETE} – (default) Terminates the game server group and EC2
+Auto Scaling group only when it has no game servers that are in
+\code{UTILIZED} status.
+\item \code{FORCE_DELETE} – Terminates the game server group, including all
 active game servers regardless of their utilization status, and the
 EC2 Auto Scaling group.
-\item RETAIN – Does a safe delete of the game server group but retains the
-EC2 Auto Scaling group as is.
+\item \code{RETAIN} – Does a safe delete of the game server group but retains
+the EC2 Auto Scaling group as is.
 }}
 }
 \description{
-\strong{This action is part of Amazon GameLift FleetIQ with game server
-groups, which is in preview release and is subject to change.}
+\strong{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups.}
 }
 \details{
 Terminates a game server group and permanently deletes the game server
 group record. You have several options for how these resources are
 impacted when deleting the game server group. Depending on the type of
-delete action selected, this action may affect three types of resources:
-the game server group, the corresponding Auto Scaling group, and all
-game servers currently running in the group.
+delete operation selected, this operation might affect these resources:
+\itemize{
+\item The game server group
+\item The corresponding Auto Scaling group
+\item All game servers that are currently running in the group
+}
 
 To delete a game server group, identify the game server group to delete
-and specify the type of delete action to initiate. Game server groups
-can only be deleted if they are in ACTIVE or ERROR status.
+and specify the type of delete operation to initiate. Game server groups
+can only be deleted if they are in \code{ACTIVE} or \code{ERROR} status.
 
-If the delete request is successful, a series of actions are kicked off.
-The game server group status is changed to DELETE\\_SCHEDULED, which
-prevents new game servers from being registered and stops autoscaling
-activity. Once all game servers in the game server group are
-de-registered, GameLift FleetIQ can begin deleting resources. If any of
-the delete actions fail, the game server group is placed in ERROR
-status.
+If the delete request is successful, a series of operations are kicked
+off. The game server group status is changed to \code{DELETE_SCHEDULED},
+which prevents new game servers from being registered and stops
+automatic scaling activity. Once all game servers in the game server
+group are deregistered, GameLift FleetIQ can begin deleting resources.
+If any of the delete operations fail, the game server group is placed in
+\code{ERROR} status.
 
 GameLift FleetIQ emits delete events to Amazon CloudWatch.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html}{GameLift FleetIQ Guide}
+\href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
 \strong{Related operations}
 \itemize{
@@ -61,6 +65,7 @@ GameLift FleetIQ emits delete events to Amazon CloudWatch.
 \item DeleteGameServerGroup
 \item ResumeGameServerGroup
 \item SuspendGameServerGroup
+\item DescribeGameServerInstances
 }
 }
 \section{Request syntax}{

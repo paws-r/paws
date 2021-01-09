@@ -9,7 +9,7 @@ NULL
 #' projects. It automatically identifies servers, virtual machines (VMs),
 #' and network dependencies in your on-premises data centers. For more
 #' information, see the [AWS Application Discovery Service
-#' FAQ](http://aws.amazon.com/application-discovery/faqs/). Application
+#' FAQ](https://aws.amazon.com/application-discovery/faqs/). Application
 #' Discovery Service offers three ways of performing discovery and
 #' collecting data about your on-premises servers:
 #' 
@@ -71,7 +71,7 @@ NULL
 #' response. Alternatively, you can use one of the AWS SDKs to access an
 #' API that is tailored to the programming language or platform that you're
 #' using. For more information, see [AWS
-#' SDKs](http://aws.amazon.com/tools/#SDKs).
+#' SDKs](https://aws.amazon.com/tools/).
 #' 
 #' -   Remember that you must set your Migration Hub home region before you
 #'     call any of these APIs.
@@ -92,10 +92,10 @@ NULL
 #' 
 #' This guide is intended for use with the [AWS Application Discovery
 #' Service User
-#' Guide](http://docs.aws.amazon.com/application-discovery/latest/userguide/).
+#' Guide](https://docs.aws.amazon.com/application-discovery/latest/userguide/).
 #' 
 #' All data is handled according to the [AWS Privacy
-#' Policy](http://aws.amazon.com/privacy/). You can operate Application
+#' Policy](https://aws.amazon.com/privacy/). You can operate Application
 #' Discovery Service offline to inspect collected data before it is shared
 #' with the service.
 #'

@@ -12,7 +12,7 @@ quicksight_describe_iam_policy_assignment(AwsAccountId, AssignmentName,
 \item{AwsAccountId}{[required] The ID of the AWS account that contains the assignment that you want to
 describe.}
 
-\item{AssignmentName}{[required] The name of the assignment.}
+\item{AssignmentName}{[required] The name of the assignment, also called a rule.}
 
 \item{Namespace}{[required] The namespace that contains the assignment.}
 }

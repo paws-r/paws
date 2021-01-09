@@ -4,19 +4,30 @@
 \alias{ivs_create_channel}
 \title{Creates a new channel and an associated stream key to start streaming}
 \usage{
-ivs_create_channel(name, latencyMode, type, tags)
+ivs_create_channel(name, latencyMode, type, authorized, tags)
 }
 \arguments{
 \item{name}{Channel name.}
 
 \item{latencyMode}{Channel latency mode. Default: \code{LOW}.}
 
-\item{type}{Channel type, which determines the allowable resolution and bitrate.
-\code{STANDARD}: The stream is transcoded; resolution (width, in landscape
-orientation) can be up to 1080p or the input source resolution,
-whichever is lower; and bitrate can be up to 8.5 Mbps. \code{BASIC}: The
-stream is transfixed; resolution can be up to 480p; and bitrate can be
-up to 1.5 Mbps. Default: \code{STANDARD}.}
+\item{type}{Channel type, which determines the allowable resolution and bitrate. \emph{If
+you exceed the allowable resolution or bitrate, the stream probably will
+disconnect immediately.} Valid values:
+\itemize{
+\item \code{STANDARD}: Multiple qualities are generated from the original
+input, to automatically give viewers the best experience for their
+devices and network conditions. Vertical resolution can be up to
+1080 and bitrate can be up to 8.5 Mbps.
+\item \code{BASIC}: Amazon IVS delivers the original input to viewers. The
+viewer’s video-quality choice is limited to the original input.
+Vertical resolution can be up to 480 and bitrate can be up to 1.5
+Mbps.
+}
+
+Default: \code{STANDARD}.}
+
+\item{authorized}{Whether the channel is authorized. Default: \code{false}.}
 
 \item{tags}{See Channel$tags.}
 }
@@ -28,6 +39,7 @@ Creates a new channel and an associated stream key to start streaming.
   name = "string",
   latencyMode = "NORMAL"|"LOW",
   type = "BASIC"|"STANDARD",
+  authorized = TRUE|FALSE,
   tags = list(
     "string"
   )

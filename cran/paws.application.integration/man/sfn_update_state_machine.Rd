@@ -6,7 +6,7 @@
 or loggingConfiguration}
 \usage{
 sfn_update_state_machine(stateMachineArn, definition, roleArn,
-  loggingConfiguration)
+  loggingConfiguration, tracingConfiguration)
 }
 \arguments{
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine.}
@@ -17,6 +17,8 @@ sfn_update_state_machine(stateMachineArn, definition, roleArn,
 
 \item{loggingConfiguration}{The \code{LoggingConfiguration} data type is used to set CloudWatch Logs
 options.}
+
+\item{tracingConfiguration}{Selects whether AWS X-Ray tracing is enabled.}
 }
 \description{
 Updates an existing state machine by modifying its \code{definition},
@@ -46,6 +48,9 @@ All \code{StartExecution} calls within a few seconds will use the updated
         )
       )
     )
+  ),
+  tracingConfiguration = list(
+    enabled = TRUE|FALSE
   )
 )
 }

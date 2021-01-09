@@ -112,7 +112,7 @@ use to track the progress and completion of the action. If the
 request is not completed successfully, the domain registrant is
 notified by email.
 \item Charges your AWS account an amount based on the top-level domain.
-For more information, see \href{http://aws.amazon.com/route53/pricing/}{Amazon Route 53 Pricing}.
+For more information, see \href{https://aws.amazon.com/route53/pricing/}{Amazon Route 53 Pricing}.
 }
 }
 \section{Request syntax}{

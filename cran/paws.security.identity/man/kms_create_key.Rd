@@ -33,7 +33,10 @@ If you do not provide a key policy, AWS KMS attaches a default key
 policy to the CMK. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default}{Default Key Policy}
 in the \emph{AWS Key Management Service Developer Guide}.
 
-The key policy size quota is 32 kilobytes (32768 bytes).}
+The key policy size quota is 32 kilobytes (32768 bytes).
+
+For help writing and formatting a JSON policy document, see the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON Policy Reference}
+in the \strong{IAM User Guide} .}
 
 \item{Description}{A description of the CMK.
 
@@ -69,10 +72,9 @@ condition key in its key policy or IAM policy. For more information, see
 or \href{https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm}{kms:Signing Algorithm}
 in the \emph{AWS Key Management Service Developer Guide}.
 
-\href{http://aws.amazon.com/kms/features/#AWS_Service_Integration}{AWS services that are integrated with AWS KMS} use
-symmetric CMKs to protect your data. These services do not support
-asymmetric CMKs. For help determining whether a CMK is symmetric or
-asymmetric, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html}{Identifying Symmetric and Asymmetric CMKs}
+\href{https://aws.amazon.com/kms/features/}{AWS services that are integrated with AWS KMS} use symmetric CMKs to protect
+your data. These services do not support asymmetric CMKs. For help
+determining whether a CMK is symmetric or asymmetric, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html}{Identifying Symmetric and Asymmetric CMKs}
 in the \emph{AWS Key Management Service Developer Guide}.
 
 AWS KMS supports the following key specs for CMKs:
@@ -162,12 +164,15 @@ report with usage and costs aggregated by tags. For information about
 adding, changing, deleting and listing tags for CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html}{Tagging Keys}.
 
 Use this parameter to tag the CMK when it is created. To add tags to an
-existing CMK, use the TagResource operation.}
+existing CMK, use the TagResource operation.
+
+To use this parameter, you must have
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:TagResource}
+permission in an IAM policy.}
 }
 \description{
 Creates a unique customer managed \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master-keys}{customer master key}
-(CMK) in your AWS account and Region. You cannot use this operation to
-create a CMK in a different AWS account.
+(CMK) in your AWS account and Region.
 }
 \details{
 You can use the \code{CreateKey} operation to create symmetric or asymmetric
@@ -234,6 +239,24 @@ the AWS Region.
 You cannot create an asymmetric CMK in a custom key store. For
 information about custom key stores in AWS KMS see \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Using Custom Key Stores}
 in the \strong{AWS Key Management Service Developer Guide} .
+
+\strong{Cross-account use}: No. You cannot use this operation to create a CMK
+in a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:CreateKey}
+(IAM policy). To use the \code{Tags} parameter,
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:TagResource}
+(IAM policy). For examples and information about related permissions,
+see \href{https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html#iam-policy-example-create-key}{Allow a user to create CMKs}
+in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Related operations:}
+\itemize{
+\item DescribeKey
+\item ListKeys
+\item ScheduleKeyDeletion
+}
 }
 }
 \section{Request syntax}{

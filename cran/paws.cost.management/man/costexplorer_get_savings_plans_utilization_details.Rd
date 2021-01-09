@@ -6,7 +6,7 @@
 data for a given time period}
 \usage{
 costexplorer_get_savings_plans_utilization_details(TimePeriod, Filter,
-  NextToken, MaxResults)
+  DataType, NextToken, MaxResults, SortBy)
 }
 \arguments{
 \item{TimePeriod}{[required] The time period that you want the usage and costs for. The \code{Start} date
@@ -29,12 +29,29 @@ dimensions. You can filter data with the following dimensions:
 object as the other operations, but only \code{AND} is supported among each
 dimension.}
 
+\item{DataType}{The data type.}
+
 \item{NextToken}{The token to retrieve the next set of results. Amazon Web Services
 provides the token when the response from a previous call has more
 results than the maximum page size.}
 
 \item{MaxResults}{The number of items to be returned in a response. The default is \code{20},
 with a minimum value of \code{1}.}
+
+\item{SortBy}{The value by which you want to sort the data.
+
+The following values are supported for \code{Key}:
+\itemize{
+\item \code{UtilizationPercentage}
+\item \code{TotalCommitment}
+\item \code{UsedCommitment}
+\item \code{UnusedCommitment}
+\item \code{NetSavings}
+\item \code{AmortizedRecurringCommitment}
+\item \code{AmortizedUpfrontCommitment}
+}
+
+Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
 }
 \description{
 Retrieves attribute data along with aggregate utilization and savings
@@ -64,12 +81,12 @@ providing individual dates. You can use \code{GetDimensionValues} in
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
       Values = list(
         "string"
       ),
       MatchOptions = list(
-        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     Tags = list(
@@ -78,18 +95,28 @@ providing individual dates. You can use \code{GetDimensionValues} in
         "string"
       ),
       MatchOptions = list(
-        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     CostCategories = list(
       Key = "string",
       Values = list(
         "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     )
   ),
+  DataType = list(
+    "ATTRIBUTES"|"UTILIZATION"|"AMORTIZED_COMMITMENT"|"SAVINGS"
+  ),
   NextToken = "string",
-  MaxResults = 123
+  MaxResults = 123,
+  SortBy = list(
+    Key = "string",
+    SortOrder = "ASCENDING"|"DESCENDING"
+  )
 )
 }
 }

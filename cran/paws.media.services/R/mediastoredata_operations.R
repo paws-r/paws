@@ -109,7 +109,7 @@ mediastoredata_describe_object <- function(Path) {
 #' 
 #' For more information about folders and how they exist in a container,
 #' see the [AWS Elemental MediaStore User
-#' Guide](http://docs.aws.amazon.com/mediastore/latest/ug/).
+#' Guide](https://docs.aws.amazon.com/mediastore/latest/ug/).
 #' 
 #' The file name is the name that is assigned to the file that you upload.
 #' The file can have the same name inside and outside of AWS Elemental
@@ -238,7 +238,7 @@ mediastoredata_list_items <- function(Path = NULL, MaxResults = NULL, NextToken 
 #' 
 #' For more information about folders and how they exist in a container,
 #' see the [AWS Elemental MediaStore User
-#' Guide](http://docs.aws.amazon.com/mediastore/latest/ug/).
+#' Guide](https://docs.aws.amazon.com/mediastore/latest/ug/).
 #' 
 #' The file name is the name that is assigned to the file that you upload.
 #' The file can have the same name inside and outside of AWS Elemental

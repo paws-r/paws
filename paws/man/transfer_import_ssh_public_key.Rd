@@ -9,13 +9,11 @@ server, identified by ServerId}
 transfer_import_ssh_public_key(ServerId, SshPublicKeyBody, UserName)
 }
 \arguments{
-\item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
-server.}
+\item{ServerId}{[required] A system-assigned unique identifier for a server.}
 
 \item{SshPublicKeyBody}{[required] The public key portion of an SSH key pair.}
 
-\item{UserName}{[required] The name of the user account that is assigned to one or more file
-transfer protocol-enabled servers.}
+\item{UserName}{[required] The name of the user account that is assigned to one or more servers.}
 }
 \description{
 Adds a Secure Shell (SSH) public key to a user account identified by a

@@ -25,10 +25,10 @@ your load balancer.
 For more information, see the following in the \emph{Classic Load Balancers
 Guide}:
 \itemize{
-\item \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html}{Cross-Zone Load Balancing}
-\item \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html}{Connection Draining}
-\item \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/access-log-collection.html}{Access Logs}
-\item \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html}{Idle Connection Timeout}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html}{Cross-Zone Load Balancing}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html}{Connection Draining}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/access-log-collection.html}{Access Logs}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html}{Idle Connection Timeout}
 }
 }
 \section{Request syntax}{

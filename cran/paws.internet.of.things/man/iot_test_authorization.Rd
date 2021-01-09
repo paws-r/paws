@@ -9,7 +9,10 @@ iot_test_authorization(principal, cognitoIdentityPoolId, authInfos,
   clientId, policyNamesToAdd, policyNamesToSkip)
 }
 \arguments{
-\item{principal}{The principal.}
+\item{principal}{The principal. Valid principals are CertificateArn
+(arn:aws:iot:\emph{region}:\emph{accountId}:cert/\emph{certificateId}), thingGroupArn
+(arn:aws:iot:\emph{region}:\emph{accountId}:thinggroup/\emph{groupName}) and CognitoId
+(\emph{region}:\emph{id}).}
 
 \item{cognitoIdentityPoolId}{The Cognito identity pool ID.}
 

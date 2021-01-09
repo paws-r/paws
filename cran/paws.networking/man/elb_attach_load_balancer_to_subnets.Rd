@@ -19,7 +19,7 @@ specified load balancer.
 }
 \details{
 The load balancer evenly distributes requests across all registered
-subnets. For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html}{Add or Remove Subnets for Your Load Balancer in a VPC}
+subnets. For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-manage-subnets.html}{Add or Remove Subnets for Your Load Balancer in a VPC}
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{

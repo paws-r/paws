@@ -44,7 +44,7 @@ region.
 
 For more information about how to use AWS OpsWorks Stacks with a VPC,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html}{Running a Stack in a VPC}.
-For more information about default VPC and EC2 Classic, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}.}
+For more information about default VPC and EC2 Classic, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html}{Supported Platforms}.}
 
 \item{Attributes}{A list of stack attributes and values as key/value pairs to be added to
 the cloned stack.}
@@ -55,7 +55,7 @@ set this parameter to the Amazon Resource Name (ARN) for an existing IAM
 role. If you create a stack by using the AWS OpsWorks Stacks console, it
 creates the role for you. You can obtain an existing stack's IAM ARN
 programmatically by calling DescribePermissions. For more information
-about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.
+about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{Using Identifiers}.
 
 You must set this parameter to a valid service role ARN or the action
 will fail; there is no default value. You can specify the source stack's
@@ -63,7 +63,7 @@ service role ARN, if you prefer, but you must do so explicitly.}
 
 \item{DefaultInstanceProfileArn}{The Amazon Resource Name (ARN) of an IAM profile that is the default
 profile for all of the stack's EC2 instances. For more information about
-IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{Using Identifiers}.}
 
 \item{DefaultOs}{The stack's operating system, which must be set to one of the following.
 \itemize{

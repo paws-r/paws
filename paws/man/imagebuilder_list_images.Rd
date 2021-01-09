@@ -4,7 +4,8 @@
 \alias{imagebuilder_list_images}
 \title{Returns the list of images that you have access to}
 \usage{
-imagebuilder_list_images(owner, filters, maxResults, nextToken)
+imagebuilder_list_images(owner, filters, byName, maxResults, nextToken,
+  includeDeprecated)
 }
 \arguments{
 \item{owner}{The owner defines which images you want to list. By default, this
@@ -15,10 +16,14 @@ customers.}
 
 \item{filters}{The filters.}
 
+\item{byName}{Requests a list of images with a specific recipe name.}
+
 \item{maxResults}{The maximum items to return in a request.}
 
 \item{nextToken}{A token to specify where to start paginating. This is the NextToken from
 a previously truncated response.}
+
+\item{includeDeprecated}{Includes deprecated images in the response list.}
 }
 \description{
 Returns the list of images that you have access to.
@@ -34,8 +39,10 @@ Returns the list of images that you have access to.
       )
     )
   ),
+  byName = TRUE|FALSE,
   maxResults = 123,
-  nextToken = "string"
+  nextToken = "string",
+  includeDeprecated = TRUE|FALSE
 )
 }
 }

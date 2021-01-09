@@ -2,7 +2,7 @@
 % Please edit documentation in R/ivs_operations.R
 \name{ivs_untag_resource}
 \alias{ivs_untag_resource}
-\title{Removes tags for a resource with a specified ARN}
+\title{Removes tags from the resource with the specified ARN}
 \usage{
 ivs_untag_resource(resourceArn, tagKeys)
 }
@@ -12,7 +12,7 @@ ivs_untag_resource(resourceArn, tagKeys)
 \item{tagKeys}{[required] Array of tags to be removed.}
 }
 \description{
-Removes tags for a resource with a specified ARN.
+Removes tags from the resource with the specified ARN.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

@@ -30,7 +30,7 @@ There is no correlation between the path to the source and the path
 (folders) in the container in AWS Elemental MediaStore.
 
 For more information about folders and how they exist in a container,
-see the \href{http://docs.aws.amazon.com/mediastore/latest/ug/}{AWS Elemental MediaStore User Guide}.
+see the \href{https://docs.aws.amazon.com/mediastore/latest/ug/}{AWS Elemental MediaStore User Guide}.
 
 The file name is the name that is assigned to the file that you upload.
 The file can have the same name inside and outside of AWS Elemental

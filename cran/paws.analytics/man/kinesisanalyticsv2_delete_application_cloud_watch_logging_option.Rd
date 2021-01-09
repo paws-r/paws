@@ -2,8 +2,8 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_delete_application_cloud_watch_logging_option}
 \alias{kinesisanalyticsv2_delete_application_cloud_watch_logging_option}
-\title{Deletes an Amazon CloudWatch log stream from an Amazon Kinesis Data
-Analytics application}
+\title{Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics
+application}
 \usage{
 kinesisanalyticsv2_delete_application_cloud_watch_logging_option(
   ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOptionId)
@@ -19,8 +19,8 @@ to delete. You can get the \code{CloudWatchLoggingOptionId} by using the
 DescribeApplication operation.}
 }
 \description{
-Deletes an Amazon CloudWatch log stream from an Amazon Kinesis Data
-Analytics application.
+Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics
+application.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_application_cloud_watch_logging_option(

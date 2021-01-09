@@ -6,7 +6,8 @@
 (ACL)}
 \usage{
 s3_put_bucket_acl(ACL, AccessControlPolicy, Bucket, ContentMD5,
-  GrantFullControl, GrantRead, GrantReadACP, GrantWrite, GrantWriteACP)
+  GrantFullControl, GrantRead, GrantReadACP, GrantWrite, GrantWriteACP,
+  ExpectedBucketOwner)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the bucket.}
@@ -18,7 +19,10 @@ grantee.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be
 used as a message integrity check to verify that the request body was
-not corrupted in transit. For more information, go to \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.}}
+not corrupted in transit. For more information, go to \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.}
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.}
 
 \item{GrantFullControl}{Allows grantee the read, write, read ACP, and write ACP permissions on
 the bucket.}
@@ -31,6 +35,10 @@ the bucket.}
 bucket.}
 
 \item{GrantWriteACP}{Allows grantee to write the ACL for the applicable bucket.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Sets the permissions on an existing bucket using access control lists
@@ -149,9 +157,9 @@ in the AWS General Reference.
 
 \strong{Related Resources}
 \itemize{
-\item CreateBucket
-\item DeleteBucket
-\item GetObjectAcl
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html}{DeleteBucket}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html}{GetObjectAcl}
 }
 }
 \section{Request syntax}{
@@ -181,7 +189,8 @@ in the AWS General Reference.
   GrantRead = "string",
   GrantReadACP = "string",
   GrantWrite = "string",
-  GrantWriteACP = "string"
+  GrantWriteACP = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

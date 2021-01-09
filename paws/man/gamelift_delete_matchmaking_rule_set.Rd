@@ -19,7 +19,7 @@ currently being used by a matchmaking configuration.
 \details{
 \strong{Learn more}
 \itemize{
-\item \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html}{Build a Rule Set}
+\item \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html}{Build a Rule Set}
 }
 
 \strong{Related operations}

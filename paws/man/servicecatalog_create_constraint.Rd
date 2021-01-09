@@ -83,7 +83,7 @@ stack set.
 
 \subsection{TEMPLATE}{
 
-Specify the \code{Rules} property. For more information, see \href{http://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html}{Template Constraint Rules}.
+Specify the \code{Rules} property. For more information, see \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html}{Template Constraint Rules}.
 }}
 
 \item{Type}{[required] The type of constraint.

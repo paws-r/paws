@@ -21,7 +21,7 @@ in the \emph{AWS IoT SiteWise User Guide}.}
 }
 \description{
 Creates an asset from an existing asset model. For more information, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-assets.html}{Creating Assets}
+\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-assets.html}{Creating assets}
 in the \emph{AWS IoT SiteWise User Guide}.
 }
 \section{Request syntax}{

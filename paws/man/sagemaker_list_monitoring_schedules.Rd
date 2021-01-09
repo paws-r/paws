@@ -7,7 +7,7 @@
 sagemaker_list_monitoring_schedules(EndpointName, SortBy, SortOrder,
   NextToken, MaxResults, NameContains, CreationTimeBefore,
   CreationTimeAfter, LastModifiedTimeBefore, LastModifiedTimeAfter,
-  StatusEquals)
+  StatusEquals, MonitoringJobDefinitionName, MonitoringTypeEquals)
 }
 \arguments{
 \item{EndpointName}{Name of a specific endpoint to fetch schedules for.}
@@ -40,6 +40,12 @@ specified time.}
 
 \item{StatusEquals}{A filter that returns only monitoring schedules modified before a
 specified time.}
+
+\item{MonitoringJobDefinitionName}{Gets a list of the monitoring schedules for the specified monitoring job
+definition.}
+
+\item{MonitoringTypeEquals}{A filter that returns only the monitoring schedules for the specified
+monitoring type.}
 }
 \description{
 Returns list of all monitoring schedules.
@@ -64,7 +70,9 @@ Returns list of all monitoring schedules.
   LastModifiedTimeAfter = as.POSIXct(
     "2015-01-01"
   ),
-  StatusEquals = "Pending"|"Failed"|"Scheduled"|"Stopped"
+  StatusEquals = "Pending"|"Failed"|"Scheduled"|"Stopped",
+  MonitoringJobDefinitionName = "string",
+  MonitoringTypeEquals = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
 )
 }
 }

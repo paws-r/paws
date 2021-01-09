@@ -15,11 +15,12 @@ to be revoked. This must be of the form:
 
 \item{CertificateSerial}{[required] Serial number of the certificate to be revoked. This must be in
 hexadecimal format. You can retrieve the serial number by calling
-GetCertificate with the Amazon Resource Name (ARN) of the certificate
-you want and the ARN of your private CA. The \strong{GetCertificate} action
-retrieves the certificate in the PEM format. You can use the following
-OpenSSL command to list the certificate in text format and copy the
-hexadecimal serial number.
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificate.html}{GetCertificate}
+with the Amazon Resource Name (ARN) of the certificate you want and the
+ARN of your private CA. The \strong{GetCertificate} action retrieves the
+certificate in the PEM format. You can use the following OpenSSL command
+to list the certificate in text format and copy the hexadecimal serial
+number.
 
 \verb{openssl x509 -in <i>file_path</i> -text -noout}
 
@@ -34,12 +35,22 @@ Revokes a certificate that was issued inside ACM Private CA. If you
 enable a certificate revocation list (CRL) when you create or update
 your private CA, information about the revoked certificates will be
 included in the CRL. ACM Private CA writes the CRL to an S3 bucket that
-you specify. For more information about revocation, see the
-CrlConfiguration structure. ACM Private CA also writes revocation
-information to the audit report. For more information, see
-CreateCertificateAuthorityAuditReport.
+you specify. A CRL is typically updated approximately 30 minutes after a
+certificate is revoked. If for any reason the CRL update fails, ACM
+Private CA attempts makes further attempts every 15 minutes. With Amazon
+CloudWatch, you can create alarms for the metrics \code{CRLGenerated} and
+\code{MisconfiguredCRLBucket}. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCloudWatch.html}{Supported CloudWatch Metrics}.
 }
 \details{
+Both PCA and the IAM principal must have permission to write to the S3
+bucket that you specify. If the IAM principal making the call does not
+have permission to write to the bucket, then an exception is thrown. For
+more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/}{Configure Access to ACM Private CA}.
+
+ACM Private CA also writes revocation information to the audit report.
+For more information, see
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html}{CreateCertificateAuthorityAuditReport}.
+
 You cannot revoke a root CA self-signed certificate.
 }
 \section{Request syntax}{

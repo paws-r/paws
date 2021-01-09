@@ -14,7 +14,7 @@ sns_set_subscription_attributes(SubscriptionArn, AttributeName,
 \item{AttributeName}{[required] A map of attributes with their corresponding values.
 
 The following lists the names, descriptions, and values of the special
-request parameters that the \code{SetTopicAttributes} action uses:
+request parameters that this action uses:
 \itemize{
 \item \code{DeliveryPolicy} – The policy that defines how Amazon SNS retries
 failed deliveries to HTTP/S endpoints.

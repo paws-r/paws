@@ -14,8 +14,8 @@ or update tags.}
 }
 \description{
 Adds or updates tags for a resource in AWS CodeCommit. For a list of
-valid resources in AWS CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats}{CodeCommit Resources and Operations}
-in the \emph{AWS CodeCommit User Guide}.
+valid resources in AWS CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/}{CodeCommit Resources and Operations} in
+the \emph{AWS CodeCommit User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

@@ -2,19 +2,19 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_untag_resource}
 \alias{kinesisanalyticsv2_untag_resource}
-\title{Removes one or more tags from a Kinesis Analytics application}
+\title{Removes one or more tags from a Kinesis Data Analytics application}
 \usage{
 kinesisanalyticsv2_untag_resource(ResourceARN, TagKeys)
 }
 \arguments{
-\item{ResourceARN}{[required] The ARN of the Kinesis Analytics application from which to remove the
-tags.}
+\item{ResourceARN}{[required] The ARN of the Kinesis Data Analytics application from which to remove
+the tags.}
 
 \item{TagKeys}{[required] A list of keys of tags to remove from the specified application.}
 }
 \description{
-Removes one or more tags from a Kinesis Analytics application. For more
-information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.
+Removes one or more tags from a Kinesis Data Analytics application. For
+more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

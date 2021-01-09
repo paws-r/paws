@@ -6,6 +6,10 @@ test_that("describe_account_attributes", {
   expect_error(svc$describe_account_attributes(), NA)
 })
 
+test_that("describe_applicable_individual_assessments", {
+  expect_error(svc$describe_applicable_individual_assessments(), NA)
+})
+
 test_that("describe_certificates", {
   expect_error(svc$describe_certificates(), NA)
 })
@@ -48,6 +52,14 @@ test_that("describe_replication_instances", {
 
 test_that("describe_replication_subnet_groups", {
   expect_error(svc$describe_replication_subnet_groups(), NA)
+})
+
+test_that("describe_replication_task_assessment_runs", {
+  expect_error(svc$describe_replication_task_assessment_runs(), NA)
+})
+
+test_that("describe_replication_task_individual_assessments", {
+  expect_error(svc$describe_replication_task_individual_assessments(), NA)
 })
 
 test_that("describe_replication_tasks", {

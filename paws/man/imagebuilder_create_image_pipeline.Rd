@@ -5,17 +5,20 @@
 \title{Creates a new image pipeline}
 \usage{
 imagebuilder_create_image_pipeline(name, description, imageRecipeArn,
-  infrastructureConfigurationArn, distributionConfigurationArn,
-  imageTestsConfiguration, enhancedImageMetadataEnabled, schedule, status,
-  tags, clientToken)
+  containerRecipeArn, infrastructureConfigurationArn,
+  distributionConfigurationArn, imageTestsConfiguration,
+  enhancedImageMetadataEnabled, schedule, status, tags, clientToken)
 }
 \arguments{
 \item{name}{[required] The name of the image pipeline.}
 
 \item{description}{The description of the image pipeline.}
 
-\item{imageRecipeArn}{[required] The Amazon Resource Name (ARN) of the image recipe that will be used to
+\item{imageRecipeArn}{The Amazon Resource Name (ARN) of the image recipe that will be used to
 configure images created by this image pipeline.}
+
+\item{containerRecipeArn}{The Amazon Resource Name (ARN) of the container recipe that is used to
+configure images created by this container pipeline.}
 
 \item{infrastructureConfigurationArn}{[required] The Amazon Resource Name (ARN) of the infrastructure configuration that
 will be used to build images created by this image pipeline.}
@@ -48,6 +51,7 @@ creation and distribution of images.
   name = "string",
   description = "string",
   imageRecipeArn = "string",
+  containerRecipeArn = "string",
   infrastructureConfigurationArn = "string",
   distributionConfigurationArn = "string",
   imageTestsConfiguration = list(

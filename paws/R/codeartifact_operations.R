@@ -33,6 +33,8 @@ NULL
 #' -   `public:maven-gradleplugins` - for the Gradle plugins repository.
 #' 
 #' -   `public:maven-commonsware` - for the CommonsWare Android repository.
+#' 
+#' -   `public:nuget-org` - for the NuGet Gallery.
 #'
 #' @section Request syntax:
 #' ```
@@ -92,6 +94,8 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #' 
 #' -   `maven`: A Maven package that contains compiled code in a
 #'     distributable format, such as a JAR file.
+#' 
+#' -   `nuget`: A NuGet package.
 #' @param namespace The namespace of the package. The package component that specifies its
 #' namespace depends on its type. For example:
 #' 
@@ -101,6 +105,9 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #' 
 #' -   A Python package does not contain a corresponding component, so
 #'     Python packages do not have a namespace.
+#' 
+#' -   A NuGet package does not contain a corresponding component, so NuGet
+#'     packages do not have a namespace.
 #' @param package &#91;required&#93; The name of the package that is copied.
 #' @param versions The versions of the package to copy.
 #' 
@@ -130,7 +137,7 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #'   domainOwner = "string",
 #'   sourceRepository = "string",
 #'   destinationRepository = "string",
-#'   format = "npm"|"pypi"|"maven",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -178,7 +185,7 @@ codeartifact_copy_package_versions <- function(domain, domainOwner = NULL, sourc
 #' domain to test changes to the production domain configuration.
 #'
 #' @usage
-#' codeartifact_create_domain(domain, encryptionKey)
+#' codeartifact_create_domain(domain, encryptionKey, tags)
 #'
 #' @param domain &#91;required&#93; The name of the domain to create. All domain names in an AWS Region that
 #' are in the same AWS account must be unique. The domain name is used as
@@ -201,26 +208,33 @@ codeartifact_copy_package_versions <- function(domain, domainOwner = NULL, sourc
 #' symmetric and asymmetric
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
 #' in the *AWS Key Management Service Developer Guide*.
+#' @param tags One or more tag key-value pairs for the domain.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_domain(
 #'   domain = "string",
-#'   encryptionKey = "string"
+#'   encryptionKey = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codeartifact_create_domain
-codeartifact_create_domain <- function(domain, encryptionKey = NULL) {
+codeartifact_create_domain <- function(domain, encryptionKey = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/v1/domain",
     paginator = list()
   )
-  input <- .codeartifact$create_domain_input(domain = domain, encryptionKey = encryptionKey)
+  input <- .codeartifact$create_domain_input(domain = domain, encryptionKey = encryptionKey, tags = tags)
   output <- .codeartifact$create_domain_output()
   config <- get_config()
   svc <- .codeartifact$service(config)
@@ -236,7 +250,7 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL) {
 #'
 #' @usage
 #' codeartifact_create_repository(domain, domainOwner, repository,
-#'   description, upstreams)
+#'   description, upstreams, tags)
 #'
 #' @param domain &#91;required&#93; The domain that contains the created repository.
 #' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
@@ -248,6 +262,7 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL) {
 #' order when AWS CodeArtifact looks for a requested package version. For
 #' more information, see [Working with upstream
 #' repositories](https://docs.aws.amazon.com/codeartifact/latest/ug/repos-upstream.html).
+#' @param tags One or more tag key-value pairs for the repository.
 #'
 #' @section Request syntax:
 #' ```
@@ -260,6 +275,12 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL) {
 #'     list(
 #'       repositoryName = "string"
 #'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -267,14 +288,14 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL) {
 #' @keywords internal
 #'
 #' @rdname codeartifact_create_repository
-codeartifact_create_repository <- function(domain, domainOwner = NULL, repository, description = NULL, upstreams = NULL) {
+codeartifact_create_repository <- function(domain, domainOwner = NULL, repository, description = NULL, upstreams = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRepository",
     http_method = "POST",
     http_path = "/v1/repository",
     paginator = list()
   )
-  input <- .codeartifact$create_repository_input(domain = domain, domainOwner = domainOwner, repository = repository, description = description, upstreams = upstreams)
+  input <- .codeartifact$create_repository_input(domain = domain, domainOwner = domainOwner, repository = repository, description = description, upstreams = upstreams, tags = tags)
   output <- .codeartifact$create_repository_output()
   config <- get_config()
   svc <- .codeartifact$service(config)
@@ -396,6 +417,8 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' -   `pypi`
 #' 
 #' -   `maven`
+#' 
+#' -   `nuget`
 #' @param namespace The namespace of the package. The package component that specifies its
 #' namespace depends on its type. For example:
 #' 
@@ -405,6 +428,9 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' 
 #' -   A Python package does not contain a corresponding component, so
 #'     Python packages do not have a namespace.
+#' 
+#' -   A NuGet package does not contain a corresponding component, so NuGet
+#'     packages do not have a namespace.
 #' @param package &#91;required&#93; The name of the package with the versions to delete.
 #' @param versions &#91;required&#93; An array of strings that specify the versions of the package to delete.
 #' @param expectedStatus The expected status of the package version to delete. Valid values are:
@@ -425,7 +451,7 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -618,6 +644,8 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #' -   `pypi`
 #' 
 #' -   `maven`
+#' 
+#' -   `nuget`
 #' @param namespace The namespace of the package. The package component that specifies its
 #' namespace depends on its type. For example:
 #' 
@@ -627,6 +655,9 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #' 
 #' -   A Python package does not contain a corresponding component, so
 #'     Python packages do not have a namespace.
+#' 
+#' -   A NuGet package does not contain a corresponding component, so NuGet
+#'     packages do not have a namespace.
 #' @param package &#91;required&#93; The name of the requested package version.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #'
@@ -636,7 +667,7 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string"
@@ -760,16 +791,14 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #' your repository because its assets are deleted.
 #' 
 #' To view all disposed package versions in a repository, use
-#' ` <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html">ListackageVersions</a> `
+#' [`ListPackageVersions`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html)
 #' and set the
-#' ` <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html#API_ListPackageVersions_RequestSyntax">status</a> `
+#' [`status`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html#API_ListPackageVersions_RequestSyntax)
 #' parameter to `Disposed`.
 #' 
 #' To view information about a disposed package version, use
-#' ` <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html">ListPackageVersions</a> `
-#' and set the
-#' ` <a href="https://docs.aws.amazon.com/API_ListPackageVersions.html#codeartifact-ListPackageVersions-response-status">status</a> `
-#' parameter to `Disposed`.
+#' [`DescribePackageVersion`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DescribePackageVersion.html)
+#' ..
 #'
 #' @usage
 #' codeartifact_dispose_package_versions(domain, domainOwner, repository,
@@ -788,6 +817,8 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #' -   `pypi`
 #' 
 #' -   `maven`
+#' 
+#' -   `nuget`
 #' @param namespace The namespace of the package. The package component that specifies its
 #' namespace depends on its type. For example:
 #' 
@@ -797,6 +828,9 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #' 
 #' -   A Python package does not contain a corresponding component, so
 #'     Python packages do not have a namespace.
+#' 
+#' -   A NuGet package does not contain a corresponding component, so NuGet
+#'     packages do not have a namespace.
 #' @param package &#91;required&#93; The name of the package with the versions you want to dispose.
 #' @param versions &#91;required&#93; The versions of the package you want to dispose.
 #' @param versionRevisions The revisions of the package versions you want to dispose.
@@ -818,7 +852,7 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -851,12 +885,14 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
 }
 .codeartifact$operations$dispose_package_versions <- codeartifact_dispose_package_versions
 
-#' Generates a temporary authentication token for accessing repositories in
+#' Generates a temporary authorization token for accessing repositories in
 #' the domain
 #'
-#' Generates a temporary authentication token for accessing repositories in
+#' Generates a temporary authorization token for accessing repositories in
 #' the domain. This API requires the `codeartifact:GetAuthorizationToken`
-#' and `sts:GetServiceBearerToken` permissions.
+#' and `sts:GetServiceBearerToken` permissions. For more information about
+#' authorization tokens, see [AWS CodeArtifact authentication and
+#' tokens](https://docs.aws.amazon.com/codeartifact/latest/ug/tokens-authentication.html).
 #' 
 #' CodeArtifact authorization tokens are valid for a period of 12 hours
 #' when created with the `login` command. You can call `login` periodically
@@ -886,6 +922,10 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
 #' @param domainOwner The 12-digit account number of the AWS account that owns the domain. It
 #' does not include dashes or spaces.
 #' @param durationSeconds The time, in seconds, that the generated authorization token is valid.
+#' Valid values are `0` and any number between `900` (15 minutes) and
+#' `43200` (12 hours). A value of `0` will set the expiration of the
+#' authorization token to the same expiration of the user's role's
+#' temporary credentials.
 #'
 #' @section Request syntax:
 #' ```
@@ -985,6 +1025,8 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' -   `pypi`
 #' 
 #' -   `maven`
+#' 
+#' -   `nuget`
 #' @param namespace The namespace of the package. The package component that specifies its
 #' namespace depends on its type. For example:
 #' 
@@ -994,6 +1036,9 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' 
 #' -   A Python package does not contain a corresponding component, so
 #'     Python packages do not have a namespace.
+#' 
+#' -   A NuGet package does not contain a corresponding component, so NuGet
+#'     packages do not have a namespace.
 #' @param package &#91;required&#93; The name of the package that contains the requested asset.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #' @param asset &#91;required&#93; The name of the requested asset.
@@ -1006,7 +1051,7 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -1062,6 +1107,8 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #' -   `pypi`
 #' 
 #' -   `maven`
+#' 
+#' -   `nuget`
 #' @param namespace The namespace of the package. The package component that specifies its
 #' namespace depends on its type. For example:
 #' 
@@ -1071,6 +1118,9 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #' 
 #' -   A Python package does not contain a corresponding component, so
 #'     Python packages do not have a namespace.
+#' 
+#' -   A NuGet package does not contain a corresponding component, so NuGet
+#'     packages do not have a namespace.
 #' @param package &#91;required&#93; The name of the package version that contains the requested readme file.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #'
@@ -1080,7 +1130,7 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string"
@@ -1117,6 +1167,8 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #' -   `pypi`
 #' 
 #' -   `maven`
+#' 
+#' -   `nuget`
 #'
 #' @usage
 #' codeartifact_get_repository_endpoint(domain, domainOwner, repository,
@@ -1134,6 +1186,8 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #' -   `pypi`
 #' 
 #' -   `maven`
+#' 
+#' -   `nuget`
 #'
 #' @section Request syntax:
 #' ```
@@ -1141,7 +1195,7 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"
+#'   format = "npm"|"pypi"|"maven"|"nuget"
 #' )
 #' ```
 #'
@@ -1280,6 +1334,8 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #' 
 #' -   `maven`: A Maven package that contains compiled code in a
 #'     distributable format, such as a JAR file.
+#' 
+#' -   `nuget`: A NuGet package.
 #' @param namespace The namespace of the package. The package component that specifies its
 #' namespace depends on its type. For example:
 #' 
@@ -1289,6 +1345,9 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #' 
 #' -   A Python package does not contain a corresponding component, so
 #'     Python packages do not have a namespace.
+#' 
+#' -   A NuGet package does not contain a corresponding component, so NuGet
+#'     packages do not have a namespace.
 #' @param package &#91;required&#93; The name of the package that contains the returned package version
 #' assets.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
@@ -1303,7 +1362,7 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -1361,6 +1420,8 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' 
 #' -   `maven`: A Maven package that contains compiled code in a
 #'     distributable format, such as a JAR file.
+#' 
+#' -   `nuget`: A NuGet package.
 #' @param namespace The namespace of the package. The package component that specifies its
 #' namespace depends on its type. For example:
 #' 
@@ -1370,6 +1431,9 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' 
 #' -   A Python package does not contain a corresponding component, so
 #'     Python packages do not have a namespace.
+#' 
+#' -   A NuGet package does not contain a corresponding component, so NuGet
+#'     packages do not have a namespace.
 #' @param package &#91;required&#93; The name of the package versions' package.
 #' @param packageVersion &#91;required&#93; A string that contains the package version (for example, `3.5.2`).
 #' @param nextToken The token for the next set of results. Use the value returned in the
@@ -1382,7 +1446,7 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -1435,6 +1499,8 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' 
 #' -   `maven`: A Maven package that contains compiled code in a
 #'     distributable format, such as a JAR file.
+#' 
+#' -   `nuget`: A NuGet package.
 #' @param namespace The namespace of the package. The package component that specifies its
 #' namespace depends on its type. For example:
 #' 
@@ -1444,6 +1510,9 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' 
 #' -   A Python package does not contain a corresponding component, so
 #'     Python packages do not have a namespace.
+#' 
+#' -   A NuGet package does not contain a corresponding component, so NuGet
+#'     packages do not have a namespace.
 #' @param package &#91;required&#93; The name of the package for which you want to return a list of package
 #' versions.
 #' @param status A string that specifies the status of the package versions to include in
@@ -1470,7 +1539,7 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
 #'   namespace = "string",
 #'   package = "string",
 #'   status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted",
@@ -1524,6 +1593,8 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #' 
 #' -   `maven`: A Maven package that contains compiled code in a
 #'     distributable format, such as a JAR file.
+#' 
+#' -   `nuget`: A NuGet package.
 #' @param namespace The namespace of the package. The package component that specifies its
 #' namespace depends on its type. For example:
 #' 
@@ -1533,8 +1604,11 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #' 
 #' -   A Python package does not contain a corresponding component, so
 #'     Python packages do not have a namespace.
-#' @param packagePrefix A prefix used to filter returned repositories. Only repositories with
-#' names that start with `repositoryPrefix` are returned.
+#' 
+#' -   A NuGet package does not contain a corresponding component, so NuGet
+#'     packages do not have a namespace.
+#' @param packagePrefix A prefix used to filter returned packages. Only packages with names that
+#' start with `packagePrefix` are returned.
 #' @param maxResults The maximum number of results to return per page.
 #' @param nextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
@@ -1546,7 +1620,7 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
 #'   namespace = "string",
 #'   packagePrefix = "string",
 #'   maxResults = 123,
@@ -1677,11 +1751,54 @@ codeartifact_list_repositories_in_domain <- function(domain, domainOwner = NULL,
 }
 .codeartifact$operations$list_repositories_in_domain <- codeartifact_list_repositories_in_domain
 
+#' Gets information about AWS tags for a specified Amazon Resource Name
+#' (ARN) in AWS CodeArtifact
+#'
+#' Gets information about AWS tags for a specified Amazon Resource Name
+#' (ARN) in AWS CodeArtifact.
+#'
+#' @usage
+#' codeartifact_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get tags for.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_list_tags_for_resource
+codeartifact_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/v1/tags",
+    paginator = list()
+  )
+  input <- .codeartifact$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .codeartifact$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$list_tags_for_resource <- codeartifact_list_tags_for_resource
+
 #' Sets a resource policy on a domain that specifies permissions to access
 #' it
 #'
 #' Sets a resource policy on a domain that specifies permissions to access
 #' it.
+#' 
+#' When you call `PutDomainPermissionsPolicy`, the resource policy on the
+#' domain is ignored when evaluting permissions. This ensures that the
+#' owner of a domain cannot lock themselves out of the domain, which would
+#' prevent them from being able to update the resource policy.
 #'
 #' @usage
 #' codeartifact_put_domain_permissions_policy(domain, domainOwner,
@@ -1731,6 +1848,11 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #'
 #' Sets the resource policy on a repository that specifies permissions to
 #' access it.
+#' 
+#' When you call `PutRepositoryPermissionsPolicy`, the resource policy on
+#' the repository is ignored when evaluting permissions. This ensures that
+#' the owner of a repository cannot lock themselves out of the repository,
+#' which would prevent them from being able to update the resource policy.
 #'
 #' @usage
 #' codeartifact_put_repository_permissions_policy(domain, domainOwner,
@@ -1779,6 +1901,91 @@ codeartifact_put_repository_permissions_policy <- function(domain, domainOwner =
 }
 .codeartifact$operations$put_repository_permissions_policy <- codeartifact_put_repository_permissions_policy
 
+#' Adds or updates tags for a resource in AWS CodeArtifact
+#'
+#' Adds or updates tags for a resource in AWS CodeArtifact.
+#'
+#' @usage
+#' codeartifact_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to add or
+#' update tags for.
+#' @param tags &#91;required&#93; The tags you want to modify or add to the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_tag_resource
+codeartifact_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/v1/tag",
+    paginator = list()
+  )
+  input <- .codeartifact$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .codeartifact$tag_resource_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$tag_resource <- codeartifact_tag_resource
+
+#' Removes tags from a resource in AWS CodeArtifact
+#'
+#' Removes tags from a resource in AWS CodeArtifact.
+#'
+#' @usage
+#' codeartifact_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove
+#' tags from.
+#' @param tagKeys &#91;required&#93; The tag key for each tag that you want to remove from the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codeartifact_untag_resource
+codeartifact_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/v1/untag",
+    paginator = list()
+  )
+  input <- .codeartifact$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .codeartifact$untag_resource_output()
+  config <- get_config()
+  svc <- .codeartifact$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codeartifact$operations$untag_resource <- codeartifact_untag_resource
+
 #' Updates the status of one or more versions of a package
 #'
 #' Updates the status of one or more versions of a package.
@@ -1802,6 +2009,8 @@ codeartifact_put_repository_permissions_policy <- function(domain, domainOwner =
 #' -   `pypi`
 #' 
 #' -   `maven`
+#' 
+#' -   `nuget`
 #' @param namespace The namespace of the package. The package component that specifies its
 #' namespace depends on its type. For example:
 #' 
@@ -1811,6 +2020,9 @@ codeartifact_put_repository_permissions_policy <- function(domain, domainOwner =
 #' 
 #' -   A Python package does not contain a corresponding component, so
 #'     Python packages do not have a namespace.
+#' 
+#' -   A NuGet package does not contain a corresponding component, so NuGet
+#'     packages do not have a namespace.
 #' @param package &#91;required&#93; The name of the package with the version statuses to update.
 #' @param versions &#91;required&#93; An array of strings that specify the versions of the package with the
 #' statuses to update.
@@ -1829,7 +2041,7 @@ codeartifact_put_repository_permissions_policy <- function(domain, domainOwner =
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven",
+#'   format = "npm"|"pypi"|"maven"|"nuget",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(

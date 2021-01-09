@@ -4,21 +4,24 @@
 \alias{frauddetector_put_external_model}
 \title{Creates or updates an Amazon SageMaker model endpoint}
 \usage{
-frauddetector_put_external_model(modelEndpoint, modelSource, role,
-  inputConfiguration, outputConfiguration, modelEndpointStatus)
+frauddetector_put_external_model(modelEndpoint, modelSource,
+  invokeModelEndpointRoleArn, inputConfiguration, outputConfiguration,
+  modelEndpointStatus, tags)
 }
 \arguments{
 \item{modelEndpoint}{[required] The model endpoints name.}
 
 \item{modelSource}{[required] The source of the model.}
 
-\item{role}{[required] The IAM role used to invoke the model endpoint.}
+\item{invokeModelEndpointRoleArn}{[required] The IAM role used to invoke the model endpoint.}
 
 \item{inputConfiguration}{[required] The model endpoint input configuration.}
 
 \item{outputConfiguration}{[required] The model endpoint output configuration.}
 
 \item{modelEndpointStatus}{[required] The model endpoint’s status in Amazon Fraud Detector.}
+
+\item{tags}{A collection of key and value pairs.}
 }
 \description{
 Creates or updates an Amazon SageMaker model endpoint. You can also use
@@ -29,13 +32,11 @@ the IAM role and/or the mapped variables.
 \preformatted{svc$put_external_model(
   modelEndpoint = "string",
   modelSource = "SAGEMAKER",
-  role = list(
-    arn = "string",
-    name = "string"
-  ),
+  invokeModelEndpointRoleArn = "string",
   inputConfiguration = list(
+    eventTypeName = "string",
     format = "TEXT_CSV"|"APPLICATION_JSON",
-    isOpaque = TRUE|FALSE,
+    useEventVariables = TRUE|FALSE,
     jsonInputTemplate = "string",
     csvInputTemplate = "string"
   ),
@@ -48,7 +49,13 @@ the IAM role and/or the mapped variables.
       "string"
     )
   ),
-  modelEndpointStatus = "ASSOCIATED"|"DISSOCIATED"
+  modelEndpointStatus = "ASSOCIATED"|"DISSOCIATED",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

@@ -16,7 +16,11 @@ connect_tag_resource(resourceArn, tags)
 Adds the specified tags to the specified resource.
 }
 \details{
-The supported resource type is users.
+The supported resource types are users, routing profiles, quick
+connects, and contact flows.
+
+For sample policies that use tags, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html}{Amazon Connect Identity-Based Policy Examples}
+in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

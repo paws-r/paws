@@ -6,14 +6,16 @@
 \usage{
 licensemanager_update_license_configuration(LicenseConfigurationArn,
   LicenseConfigurationStatus, LicenseRules, LicenseCount,
-  LicenseCountHardLimit, Name, Description, ProductInformationList)
+  LicenseCountHardLimit, Name, Description, ProductInformationList,
+  DisassociateWhenNotFound)
 }
 \arguments{
 \item{LicenseConfigurationArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
 
 \item{LicenseConfigurationStatus}{New status of the license configuration.}
 
-\item{LicenseRules}{New license rules.}
+\item{LicenseRules}{New license rule. The only rule that you can add after you create a
+license configuration is licenseAffinityToHost.}
 
 \item{LicenseCount}{New number of licenses managed by the license configuration.}
 
@@ -24,18 +26,11 @@ licensemanager_update_license_configuration(LicenseConfigurationArn,
 \item{Description}{New description of the license configuration.}
 
 \item{ProductInformationList}{New product information.}
+
+\item{DisassociateWhenNotFound}{When true, disassociates a resource when software is uninstalled.}
 }
 \description{
 Modifies the attributes of an existing license configuration.
-}
-\details{
-A license configuration is an abstraction of a customer license
-agreement that can be consumed and enforced by License Manager.
-Components include specifications for the license type (licensing by
-instance, socket, CPU, or vCPU), allowed tenancy (shared tenancy,
-Dedicated Instance, Dedicated Host, or all of these), host affinity (how
-long a VM must be associated with a host), and the number of licenses
-purchased and used.
 }
 \section{Request syntax}{
 \preformatted{svc$update_license_configuration(
@@ -61,7 +56,8 @@ purchased and used.
         )
       )
     )
-  )
+  ),
+  DisassociateWhenNotFound = TRUE|FALSE
 )
 }
 }

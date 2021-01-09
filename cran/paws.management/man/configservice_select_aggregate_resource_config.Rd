@@ -17,7 +17,8 @@ configservice_select_aggregate_resource_config(Expression,
 
 \item{Limit}{The maximum number of query results returned on each page.}
 
-\item{MaxResults}{}
+\item{MaxResults}{The maximum number of query results returned on each page. AWS Config
+also allows the Limit request parameter.}
 
 \item{NextToken}{The nextToken string returned in a previous request that you use to
 request the next page of results in a paginated response.}

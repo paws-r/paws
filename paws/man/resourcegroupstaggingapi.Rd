@@ -20,6 +20,11 @@ Amazon EC2 instances, you might assign both a tag key of "Stack." But
 the value of "Stack" might be "Testing" for one and "Production" for the
 other.
 
+Do not store personally identifiable information (PII) or other
+confidential or sensitive information in tags. We use tags to provide
+you with billing and administration services. Tags are not intended to
+be used for private or sensitive data.
+
 Tagging can help you organize your resources and enables you to simplify
 resource management, access management and cost allocation.
 
@@ -49,109 +54,138 @@ following permissions to your IAM policy:
 You'll also need permissions to access the resources of individual
 services so that you can tag and untag those resources.
 
-For more information on IAM policies, see \href{http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html}{Managing IAM Policies}
+For more information on IAM policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html}{Managing IAM Policies}
 in the \emph{IAM User Guide}.
+
+\emph{\strong{Services that support the Resource Groups Tagging API}}
 
 You can use the Resource Groups Tagging API to tag resources for the
 following AWS services.
 \itemize{
-\item Alexa for Business (a4b)
-\item API Gateway
-\item Amazon AppStream
-\item AWS AppSync
-\item AWS App Mesh
-\item Amazon Athena
-\item Amazon Aurora
-\item AWS Backup
-\item AWS Certificate Manager
-\item AWS Certificate Manager Private CA
-\item Amazon Cloud Directory
-\item AWS CloudFormation
-\item Amazon CloudFront
-\item AWS CloudHSM
-\item AWS CloudTrail
-\item Amazon CloudWatch (alarms only)
-\item Amazon CloudWatch Events
-\item Amazon CloudWatch Logs
-\item AWS CodeBuild
-\item AWS CodeCommit
-\item AWS CodePipeline
-\item AWS CodeStar
-\item Amazon Cognito Identity
-\item Amazon Cognito User Pools
-\item Amazon Comprehend
-\item AWS Config
-\item AWS Data Exchange
-\item AWS Data Pipeline
-\item AWS Database Migration Service
-\item AWS DataSync
-\item AWS Device Farm
-\item AWS Direct Connect
-\item AWS Directory Service
-\item Amazon DynamoDB
-\item Amazon EBS
-\item Amazon EC2
-\item Amazon ECR
-\item Amazon ECS
-\item Amazon EKS
-\item AWS Elastic Beanstalk
-\item Amazon Elastic File System
-\item Elastic Load Balancing
-\item Amazon ElastiCache
-\item Amazon Elasticsearch Service
-\item AWS Elemental MediaLive
-\item AWS Elemental MediaPackage
-\item AWS Elemental MediaTailor
-\item Amazon EMR
-\item Amazon FSx
-\item Amazon S3 Glacier
-\item AWS Glue
-\item Amazon GuardDuty
-\item Amazon Inspector
-\item AWS IoT Analytics
-\item AWS IoT Core
-\item AWS IoT Device Defender
-\item AWS IoT Device Management
-\item AWS IoT Events
-\item AWS IoT Greengrass
-\item AWS IoT 1-Click
-\item AWS IoT Things Graph
-\item AWS Key Management Service
-\item Amazon Kinesis
-\item Amazon Kinesis Data Analytics
-\item Amazon Kinesis Data Firehose
-\item AWS Lambda
-\item AWS License Manager
-\item Amazon Machine Learning
-\item Amazon MQ
-\item Amazon MSK
-\item Amazon Neptune
-\item AWS OpsWorks
-\item AWS Organizations
-\item Amazon Quantum Ledger Database (QLDB)
-\item Amazon RDS
-\item Amazon Redshift
-\item AWS Resource Access Manager
-\item AWS Resource Groups
-\item AWS RoboMaker
-\item Amazon Route 53
-\item Amazon Route 53 Resolver
-\item Amazon S3 (buckets only)
-\item Amazon SageMaker
-\item AWS Secrets Manager
-\item AWS Security Hub
-\item AWS Service Catalog
-\item Amazon Simple Email Service (SES)
-\item Amazon Simple Notification Service (SNS)
-\item Amazon Simple Queue Service (SQS)
-\item Amazon Simple Workflow Service
-\item AWS Step Functions
-\item AWS Storage Gateway
-\item AWS Systems Manager
-\item AWS Transfer for SFTP
-\item AWS WAF Regional
-\item Amazon VPC
-\item Amazon WorkSpaces
+\item \href{https://docs.aws.amazon.com/a4b/}{Alexa for Business (a4b)}
+\item \href{https://docs.aws.amazon.com/apigateway/}{API Gateway}
+\item \href{https://docs.aws.amazon.com/appstream2/}{Amazon AppStream}
+\item \href{https://docs.aws.amazon.com/appsync/}{AWS AppSync}
+\item \href{https://docs.aws.amazon.com/app-mesh/}{AWS App Mesh}
+\item \href{https://docs.aws.amazon.com/athena/}{Amazon Athena}
+\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/}{Amazon Aurora}
+\item \href{https://docs.aws.amazon.com/aws-backup/}{AWS Backup}
+\item \href{https://docs.aws.amazon.com/acm/}{AWS Certificate Manager}
+\item \href{https://docs.aws.amazon.com/acm/}{AWS Certificate Manager Private CA}
+\item \href{https://docs.aws.amazon.com/clouddirectory/}{Amazon Cloud Directory}
+\item \href{https://docs.aws.amazon.com/cloud-map/}{AWS Cloud Map}
+\item \href{https://docs.aws.amazon.com/cloudformation/}{AWS CloudFormation}
+\item \href{https://docs.aws.amazon.com/cloudfront/}{Amazon CloudFront}
+\item \href{https://docs.aws.amazon.com/cloudhsm/}{AWS CloudHSM}
+\item \href{https://docs.aws.amazon.com/cloudtrail/}{AWS CloudTrail}
+\item \href{https://docs.aws.amazon.com/cloudwatch/}{Amazon CloudWatch (alarms only)}
+\item \href{https://docs.aws.amazon.com/cloudwatch/?id=docs_gateway#amazon-cloudwatch-events}{Amazon CloudWatch Events}
+\item \href{https://docs.aws.amazon.com/cloudwatch/?id=docs_gateway#amazon-cloudwatch-logs}{Amazon CloudWatch Logs}
+\item \href{https://docs.aws.amazon.com/cloudwatch/}{Amazon Cloudwatch Synthetics}
+\item \href{https://docs.aws.amazon.com/codebuild/}{AWS CodeBuild}
+\item \href{https://docs.aws.amazon.com/codecommit/}{AWS CodeCommit}
+\item \href{https://docs.aws.amazon.com/codeguru/latest/profiler-ug/}{AWS CodeGuru Profiler}
+\item \href{https://docs.aws.amazon.com/codepipeline/}{AWS CodePipeline}
+\item \href{https://docs.aws.amazon.com/codestar/}{AWS CodeStar}
+\item \href{https://docs.aws.amazon.com/codestar-connections/latest/APIReference/}{AWS CodeStar Connections}
+\item \href{https://docs.aws.amazon.com/cognito/}{Amazon Cognito Identity}
+\item \href{https://docs.aws.amazon.com/cognito/}{Amazon Cognito User Pools}
+\item \href{https://docs.aws.amazon.com/comprehend/}{Amazon Comprehend}
+\item \href{https://docs.aws.amazon.com/config/}{AWS Config}
+\item \href{https://aws.amazon.com/connect/resources/?whats-new-cards}{Amazon Connect}
+\item \href{https://docs.aws.amazon.com/data-exchange/}{AWS Data Exchange}
+\item \href{https://docs.aws.amazon.com/data-pipeline/}{AWS Data Pipeline}
+\item \href{https://docs.aws.amazon.com/dms/}{AWS Database Migration Service}
+\item \href{https://docs.aws.amazon.com/datasync/}{AWS DataSync}
+\item \href{https://docs.aws.amazon.com/devicefarm/}{AWS Device Farm}
+\item \href{https://docs.aws.amazon.com/directconnect/}{AWS Direct Connect}
+\item \href{https://docs.aws.amazon.com/directory-service/}{AWS Directory Service}
+\item \href{https://docs.aws.amazon.com/dynamodb/}{Amazon DynamoDB}
+\item \href{https://docs.aws.amazon.com/ebs/}{Amazon EBS}
+\item \href{https://docs.aws.amazon.com/ec2/}{Amazon EC2}
+\item \href{https://docs.aws.amazon.com/imagebuilder/}{EC2 Image Builder}
+\item \href{https://docs.aws.amazon.com/ecr/}{Amazon ECR}
+\item \href{https://docs.aws.amazon.com/ecs/}{Amazon ECS}
+\item \href{https://docs.aws.amazon.com/eks/}{Amazon EKS}
+\item \href{https://docs.aws.amazon.com/elastic-beanstalk/}{AWS Elastic Beanstalk}
+\item \href{https://docs.aws.amazon.com/efs/}{Amazon Elastic File System}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/}{Elastic Load Balancing}
+\item \href{https://docs.aws.amazon.com/elastic-inference/}{Amazon Elastic Inference}
+\item \href{https://docs.aws.amazon.com/elasticache/}{Amazon ElastiCache}
+\item \href{https://docs.aws.amazon.com/elasticsearch-service/}{Amazon Elasticsearch Service}
+\item \href{https://docs.aws.amazon.com/medialive/}{AWS Elemental MediaLive}
+\item \href{https://docs.aws.amazon.com/mediapackage/}{AWS Elemental MediaPackage}
+\item \href{https://docs.aws.amazon.com/mediapackage/}{AWS Elemental MediaPackage VoD}
+\item \href{https://docs.aws.amazon.com/mediatailor/}{AWS Elemental MediaTailor}
+\item \href{https://docs.aws.amazon.com/emr/}{Amazon EMR}
+\item \href{https://docs.aws.amazon.com/eventbridge/}{Amazon EventBridge Schema}
+\item \href{https://docs.aws.amazon.com/firewall-manager/}{AWS Firewall Manager}
+\item \href{https://docs.aws.amazon.com/forecast/}{Amazon Forecast}
+\item \href{https://docs.aws.amazon.com/frauddetector/}{Amazon Fraud Detector}
+\item \href{https://docs.aws.amazon.com/fsx/}{Amazon FSx}
+\item \href{https://docs.aws.amazon.com/s3/?id=docs_gateway#amazon-s3-glacier}{Amazon S3 Glacier}
+\item \href{https://docs.aws.amazon.com/global-accelerator/}{AWS Global Accelerator}
+\item \href{https://docs.aws.amazon.com/ground-station/}{AWS Ground Station}
+\item \href{https://docs.aws.amazon.com/glue/}{AWS Glue}
+\item \href{https://docs.aws.amazon.com/guardduty/}{Amazon GuardDuty}
+\item \href{https://docs.aws.amazon.com/inspector/}{Amazon Inspector}
+\item \href{https://docs.aws.amazon.com/ivs/}{Amazon Interactive Video Service}
+\item \href{https://docs.aws.amazon.com/iotanalytics/}{AWS IoT Analytics}
+\item \href{https://docs.aws.amazon.com/iot/}{AWS IoT Core}
+\item \href{https://docs.aws.amazon.com/iot-device-defender/}{AWS IoT Device Defender}
+\item \href{https://docs.aws.amazon.com/iot-device-management/}{AWS IoT Device Management}
+\item \href{https://docs.aws.amazon.com/iotevents/}{AWS IoT Events}
+\item \href{https://docs.aws.amazon.com/greengrass/}{AWS IoT Greengrass}
+\item \href{https://docs.aws.amazon.com/iot-1-click/}{AWS IoT 1-Click}
+\item \href{https://docs.aws.amazon.com/iot-sitewise/}{AWS IoT Sitewise}
+\item \href{https://docs.aws.amazon.com/thingsgraph/}{AWS IoT Things Graph}
+\item \href{https://docs.aws.amazon.com/kendra/}{Amazon Kendra}
+\item \href{https://docs.aws.amazon.com/kms/}{AWS Key Management Service}
+\item \href{https://docs.aws.amazon.com/kinesis/}{Amazon Kinesis}
+\item \href{https://docs.aws.amazon.com/kinesis/?id=docs_gateway#amazon-kinesis-data-analytics}{Amazon Kinesis Data Analytics}
+\item \href{https://docs.aws.amazon.com/kinesis/?id=docs_gateway#amazon-kinesis-data-firehose}{Amazon Kinesis Data Firehose}
+\item \href{https://docs.aws.amazon.com/lambda/}{AWS Lambda}
+\item \href{https://docs.aws.amazon.com/lex/}{Amazon Lex}
+\item \href{https://docs.aws.amazon.com/license-manager/}{AWS License Manager}
+\item \href{https://docs.aws.amazon.com/lightsail/}{Amazon Lightsail}
+\item \href{https://docs.aws.amazon.com/macie/}{Amazon Macie}
+\item \href{https://docs.aws.amazon.com/machine-learning/}{Amazon Machine Learning}
+\item \href{https://docs.aws.amazon.com/amazon-mq/}{Amazon MQ}
+\item \href{https://docs.aws.amazon.com/msk/}{Amazon MSK}
+\item \href{https://docs.aws.amazon.com/msk/}{Amazon MSK}
+\item \href{https://docs.aws.amazon.com/neptune/}{Amazon Neptune}
+\item \href{https://docs.aws.amazon.com/vpc/latest/tgw/what-is-network-manager.html}{AWS Network Manager}
+\item \href{https://docs.aws.amazon.com/opsworks/}{AWS OpsWorks}
+\item \href{https://docs.aws.amazon.com/opsworks/}{AWS OpsWorks CM}
+\item \href{https://docs.aws.amazon.com/organizations/}{AWS Organizations}
+\item \href{https://docs.aws.amazon.com/pinpoint/}{Amazon Pinpoint}
+\item \href{https://docs.aws.amazon.com/qldb/}{Amazon Quantum Ledger Database (QLDB)}
+\item \href{https://docs.aws.amazon.com/rds/}{Amazon RDS}
+\item \href{https://docs.aws.amazon.com/redshift/}{Amazon Redshift}
+\item \href{https://docs.aws.amazon.com/ram/}{AWS Resource Access Manager}
+\item \href{https://docs.aws.amazon.com/ARG/}{AWS Resource Groups}
+\item \href{https://docs.aws.amazon.com/robomaker/}{AWS RoboMaker}
+\item \href{https://docs.aws.amazon.com/route53/}{Amazon Route 53}
+\item \href{https://docs.aws.amazon.com/route53/}{Amazon Route 53 Resolver}
+\item \href{https://docs.aws.amazon.com/s3/}{Amazon S3 (buckets only)}
+\item \href{https://docs.aws.amazon.com/sagemaker/}{Amazon SageMaker}
+\item \href{https://docs.aws.amazon.com/savingsplans/}{Savings Plans}
+\item \href{https://docs.aws.amazon.com/secretsmanager/}{AWS Secrets Manager}
+\item \href{https://docs.aws.amazon.com/securityhub/}{AWS Security Hub}
+\item \href{https://docs.aws.amazon.com/servicecatalog/}{AWS Service Catalog}
+\item \href{https://docs.aws.amazon.com/ses/}{Amazon Simple Email Service (SES)}
+\item \href{https://docs.aws.amazon.com/sns/}{Amazon Simple Notification Service (SNS)}
+\item \href{https://docs.aws.amazon.com/sqs/}{Amazon Simple Queue Service (SQS)}
+\item \href{https://docs.aws.amazon.com/swf/}{Amazon Simple Workflow Service}
+\item \href{https://docs.aws.amazon.com/step-functions/}{AWS Step Functions}
+\item \href{https://docs.aws.amazon.com/storagegateway/}{AWS Storage Gateway}
+\item \href{https://docs.aws.amazon.com/systems-manager/}{AWS Systems Manager}
+\item \href{https://docs.aws.amazon.com/transfer/}{AWS Transfer for SFTP}
+\item \href{https://docs.aws.amazon.com/vpc/}{Amazon VPC}
+\item \href{https://docs.aws.amazon.com/waf/}{AWS WAF}
+\item \href{https://docs.aws.amazon.com/waf/}{AWS WAF Regional}
+\item \href{https://docs.aws.amazon.com/worklink/}{Amazon WorkLink}
+\item \href{https://docs.aws.amazon.com/workspaces/}{Amazon WorkSpaces}
 }
 }
 \section{Service syntax}{

@@ -10,9 +10,7 @@ sagemaker_create_processing_job(ProcessingInputs,
   RoleArn, Tags, ExperimentConfig)
 }
 \arguments{
-\item{ProcessingInputs}{For each input, data is downloaded from S3 into the processing container
-before the processing job begins running if "S3InputMode" is set to
-\code{File}.}
+\item{ProcessingInputs}{List of input configurations for the processing job.}
 
 \item{ProcessingOutputConfig}{Output configuration for the processing job.}
 
@@ -47,6 +45,7 @@ Creates a processing job.
   ProcessingInputs = list(
     list(
       InputName = "string",
+      AppManaged = TRUE|FALSE,
       S3Input = list(
         S3Uri = "string",
         LocalPath = "string",
@@ -54,6 +53,32 @@ Creates a processing job.
         S3InputMode = "Pipe"|"File",
         S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
         S3CompressionType = "None"|"Gzip"
+      ),
+      DatasetDefinition = list(
+        AthenaDatasetDefinition = list(
+          Catalog = "string",
+          Database = "string",
+          QueryString = "string",
+          WorkGroup = "string",
+          OutputS3Uri = "string",
+          KmsKeyId = "string",
+          OutputFormat = "PARQUET"|"ORC"|"AVRO"|"JSON"|"TEXTFILE",
+          OutputCompression = "GZIP"|"SNAPPY"|"ZLIB"
+        ),
+        RedshiftDatasetDefinition = list(
+          ClusterId = "string",
+          Database = "string",
+          DbUser = "string",
+          QueryString = "string",
+          ClusterRoleArn = "string",
+          OutputS3Uri = "string",
+          KmsKeyId = "string",
+          OutputFormat = "PARQUET"|"CSV",
+          OutputCompression = "None"|"GZIP"|"BZIP2"|"ZSTD"|"SNAPPY"
+        ),
+        LocalPath = "string",
+        DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+        InputMode = "Pipe"|"File"
       )
     )
   ),
@@ -65,7 +90,11 @@ Creates a processing job.
           S3Uri = "string",
           LocalPath = "string",
           S3UploadMode = "Continuous"|"EndOfJob"
-        )
+        ),
+        FeatureStoreOutput = list(
+          FeatureGroupName = "string"
+        ),
+        AppManaged = TRUE|FALSE
       )
     ),
     KmsKeyId = "string"

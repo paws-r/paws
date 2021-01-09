@@ -5,7 +5,7 @@
 \title{Gets recommendations for which reservations to purchase}
 \usage{
 costexplorer_get_reservation_purchase_recommendation(AccountId, Service,
-  AccountScope, LookbackPeriodInDays, TermInYears, PaymentOption,
+  Filter, AccountScope, LookbackPeriodInDays, TermInYears, PaymentOption,
   ServiceSpecification, PageSize, NextPageToken)
 }
 \arguments{
@@ -13,10 +13,12 @@ costexplorer_get_reservation_purchase_recommendation(AccountId, Service,
 
 \item{Service}{[required] The specific service that you want recommendations for.}
 
+\item{Filter}{}
+
 \item{AccountScope}{The account scope that you want your recommendations for. Amazon Web
-Services calculates recommendations including the payer account and
-linked accounts if the value is set to \code{PAYER}. If the value is
-\code{LINKED}, recommendations are calculated for individual linked accounts
+Services calculates recommendations including the management account and
+member accounts if the value is set to \code{PAYER}. If the value is
+\code{LINKED}, recommendations are calculated for individual member accounts
 only.}
 
 \item{LookbackPeriodInDays}{The number of previous days that you want AWS to consider when it
@@ -63,6 +65,42 @@ instance in the c4 instance family.
 \preformatted{svc$get_reservation_purchase_recommendation(
   AccountId = "string",
   Service = "string",
+  Filter = list(
+    Or = list(
+      list()
+    ),
+    And = list(
+      list()
+    ),
+    Not = list(),
+    Dimensions = list(
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
+      Values = list(
+        "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+      )
+    ),
+    Tags = list(
+      Key = "string",
+      Values = list(
+        "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+      )
+    ),
+    CostCategories = list(
+      Key = "string",
+      Values = list(
+        "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+      )
+    )
+  ),
   AccountScope = "PAYER"|"LINKED",
   LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
   TermInYears = "ONE_YEAR"|"THREE_YEARS",

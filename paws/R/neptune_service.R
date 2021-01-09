@@ -67,6 +67,7 @@ NULL
 #'  \link[=neptune_copy_db_cluster_snapshot]{copy_db_cluster_snapshot} \tab Copies a snapshot of a DB cluster\cr
 #'  \link[=neptune_copy_db_parameter_group]{copy_db_parameter_group} \tab Copies the specified DB parameter group\cr
 #'  \link[=neptune_create_db_cluster]{create_db_cluster} \tab Creates a new Amazon Neptune DB cluster\cr
+#'  \link[=neptune_create_db_cluster_endpoint]{create_db_cluster_endpoint} \tab Creates a new custom endpoint and associates it with an Amazon Neptune DB cluster\cr
 #'  \link[=neptune_create_db_cluster_parameter_group]{create_db_cluster_parameter_group} \tab Creates a new DB cluster parameter group\cr
 #'  \link[=neptune_create_db_cluster_snapshot]{create_db_cluster_snapshot} \tab Creates a snapshot of a DB cluster\cr
 #'  \link[=neptune_create_db_instance]{create_db_instance} \tab Creates a new DB instance\cr
@@ -74,12 +75,14 @@ NULL
 #'  \link[=neptune_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new DB subnet group\cr
 #'  \link[=neptune_create_event_subscription]{create_event_subscription} \tab Creates an event notification subscription\cr
 #'  \link[=neptune_delete_db_cluster]{delete_db_cluster} \tab The DeleteDBCluster action deletes a previously provisioned DB cluster\cr
+#'  \link[=neptune_delete_db_cluster_endpoint]{delete_db_cluster_endpoint} \tab Deletes a custom endpoint and removes it from an Amazon Neptune DB cluster\cr
 #'  \link[=neptune_delete_db_cluster_parameter_group]{delete_db_cluster_parameter_group} \tab Deletes a specified DB cluster parameter group\cr
 #'  \link[=neptune_delete_db_cluster_snapshot]{delete_db_cluster_snapshot} \tab Deletes a DB cluster snapshot\cr
 #'  \link[=neptune_delete_db_instance]{delete_db_instance} \tab The DeleteDBInstance action deletes a previously provisioned DB instance\cr
 #'  \link[=neptune_delete_db_parameter_group]{delete_db_parameter_group} \tab Deletes a specified DBParameterGroup\cr
 #'  \link[=neptune_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a DB subnet group\cr
 #'  \link[=neptune_delete_event_subscription]{delete_event_subscription} \tab Deletes an event notification subscription\cr
+#'  \link[=neptune_describe_db_cluster_endpoints]{describe_db_cluster_endpoints} \tab Returns information about endpoints for an Amazon Neptune DB cluster\cr
 #'  \link[=neptune_describe_db_cluster_parameter_groups]{describe_db_cluster_parameter_groups} \tab Returns a list of DBClusterParameterGroup descriptions\cr
 #'  \link[=neptune_describe_db_cluster_parameters]{describe_db_cluster_parameters} \tab Returns the detailed parameter list for a particular DB cluster parameter group\cr
 #'  \link[=neptune_describe_db_clusters]{describe_db_clusters} \tab Returns information about provisioned DB clusters, and supports pagination\cr
@@ -101,6 +104,7 @@ NULL
 #'  \link[=neptune_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster\cr
 #'  \link[=neptune_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon Neptune resource\cr
 #'  \link[=neptune_modify_db_cluster]{modify_db_cluster} \tab Modify a setting for a DB cluster\cr
+#'  \link[=neptune_modify_db_cluster_endpoint]{modify_db_cluster_endpoint} \tab Modifies the properties of an endpoint in an Amazon Neptune DB cluster\cr
 #'  \link[=neptune_modify_db_cluster_parameter_group]{modify_db_cluster_parameter_group} \tab Modifies the parameters of a DB cluster parameter group\cr
 #'  \link[=neptune_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot\cr
 #'  \link[=neptune_modify_db_instance]{modify_db_instance} \tab Modifies settings for a DB instance\cr

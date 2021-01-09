@@ -25,7 +25,7 @@ snapshot was created.
 Constraint:
 \itemize{
 \item Define this parameter only when copying an automatic snapshot as a
-manual snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-keeping-automatic-snapshots}{Lightsail Dev Guide}.
+manual snapshot. For more information, see the Lightsail Dev Guide.
 }}
 
 \item{restoreDate}{The date of the source automatic snapshot to copy. Use the
@@ -40,7 +40,7 @@ Constraints:
 and \verb{use latest restorable auto snapshot} parameters are mutually
 exclusive.
 \item Define this parameter only when copying an automatic snapshot as a
-manual snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-keeping-automatic-snapshots}{Lightsail Dev Guide}.
+manual snapshot. For more information, see the Lightsail Dev Guide.
 }}
 
 \item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
@@ -52,7 +52,7 @@ Constraints:
 parameter. The \verb{use latest restorable auto snapshot} and
 \verb{restore date} parameters are mutually exclusive.
 \item Define this parameter only when copying an automatic snapshot as a
-manual snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-keeping-automatic-snapshots}{Lightsail Dev Guide}.
+manual snapshot. For more information, see the Lightsail Dev Guide.
 }}
 
 \item{targetSnapshotName}{[required] The name of the new manual snapshot to be created as a copy.}

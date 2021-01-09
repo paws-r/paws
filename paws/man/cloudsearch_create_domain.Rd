@@ -13,7 +13,7 @@ a letter or number and be at least 3 and no more than 28 characters
 long.}
 }
 \description{
-Creates a new search domain. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html}{Creating a Search Domain}
+Creates a new search domain. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html}{Creating a Search Domain}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{

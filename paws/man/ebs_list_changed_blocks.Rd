@@ -2,9 +2,8 @@
 % Please edit documentation in R/ebs_operations.R
 \name{ebs_list_changed_blocks}
 \alias{ebs_list_changed_blocks}
-\title{Returns the block indexes and block tokens for blocks that are different
-between two Amazon Elastic Block Store snapshots of the same
-volume/snapshot lineage}
+\title{Returns information about the blocks that are different between two
+Amazon Elastic Block Store snapshots of the same volume/snapshot lineage}
 \usage{
 ebs_list_changed_blocks(FirstSnapshotId, SecondSnapshotId, NextToken,
   MaxResults, StartingBlockIndex)
@@ -30,9 +29,9 @@ The list in the response will start from this block index or the next
 valid block index in the snapshots.}
 }
 \description{
-Returns the block indexes and block tokens for blocks that are different
-between two Amazon Elastic Block Store snapshots of the same
-volume/snapshot lineage.
+Returns information about the blocks that are different between two
+Amazon Elastic Block Store snapshots of the same volume/snapshot
+lineage.
 }
 \section{Request syntax}{
 \preformatted{svc$list_changed_blocks(

@@ -27,7 +27,8 @@ snapshot.
 
 The \verb{export snapshot} operation supports tag-based access control via
 resource tags applied to the resource identified by
-\verb{source snapshot name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{source snapshot name}. For more information, see the Lightsail Dev
+Guide.
 
 Use the \verb{get instance snapshots} or \verb{get disk snapshots} operations to
 get a list of snapshots that you can export to Amazon EC2.

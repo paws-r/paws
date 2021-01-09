@@ -2,29 +2,27 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_delete_job_tagging}
 \alias{s3control_delete_job_tagging}
-\title{Removes the entire tag set from the specified Amazon S3 Batch Operations
-job}
+\title{Removes the entire tag set from the specified S3 Batch Operations job}
 \usage{
 s3control_delete_job_tagging(AccountId, JobId)
 }
 \arguments{
-\item{AccountId}{[required] The AWS account ID associated with the Amazon S3 Batch Operations job.}
+\item{AccountId}{[required] The AWS account ID associated with the S3 Batch Operations job.}
 
-\item{JobId}{[required] The ID for the Amazon S3 Batch Operations job whose tags you want to
-delete.}
+\item{JobId}{[required] The ID for the S3 Batch Operations job whose tags you want to delete.}
 }
 \description{
-Removes the entire tag set from the specified Amazon S3 Batch Operations
-job. To use this operation, you must have permission to perform the
-\code{s3:DeleteJobTagging} action. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags}{Using Job Tags}
-in the Amazon Simple Storage Service Developer Guide.
+Removes the entire tag set from the specified S3 Batch Operations job.
+To use this operation, you must have permission to perform the
+\code{s3:DeleteJobTagging} action. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \details{
 Related actions include:
 \itemize{
-\item CreateJob
-\item GetJobTagging
-\item PutJobTagging
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html}{CreateJob}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetJobTagging.html}{GetJobTagging}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutJobTagging.html}{PutJobTagging}
 }
 }
 \section{Request syntax}{

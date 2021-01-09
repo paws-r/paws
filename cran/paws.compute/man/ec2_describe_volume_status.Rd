@@ -37,8 +37,8 @@ in paginated output. When this parameter is used, the request only
 returns \code{MaxResults} results in a single page along with a \code{NextToken}
 response element. The remaining results of the initial request can be
 seen by sending another request with the returned \code{NextToken} value.
-This value can be between 5 and 1000; if \code{MaxResults} is given a value
-larger than 1000, only 1000 results are returned. If this parameter is
+This value can be between 5 and 1,000; if \code{MaxResults} is given a value
+larger than 1,000, only 1,000 results are returned. If this parameter is
 not used, then \code{DescribeVolumeStatus} returns all results. You cannot
 specify this parameter and the volume IDs parameter in the same request.}
 
@@ -75,18 +75,18 @@ about the specified volumes:
 are \code{ok}, \code{impaired} , \code{warning}, or \code{insufficient-data}. If all checks
 pass, the overall status of the volume is \code{ok}. If the check fails, the
 overall status is \code{impaired}. If the status is \code{insufficient-data}, then
-the checks may still be taking place on your volume at the time. We
+the checks might still be taking place on your volume at the time. We
 recommend that you retry the request. For more information about volume
-status, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html}{Monitoring the Status of Your Volumes}
+status, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html}{Monitoring the status of your volumes}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-\emph{Events}: Reflect the cause of a volume status and may require you to
+\emph{Events}: Reflect the cause of a volume status and might require you to
 take action. For example, if your volume returns an \code{impaired} status,
 then the volume event might be \code{potential-data-inconsistency}. This
 means that your volume has been affected by an issue with the underlying
-host, has all I/O operations disabled, and may have inconsistent data.
+host, has all I/O operations disabled, and might have inconsistent data.
 
-\emph{Actions}: Reflect the actions you may have to take in response to an
+\emph{Actions}: Reflect the actions you might have to take in response to an
 event. For example, if the status of the volume is \code{impaired} and the
 volume event shows \code{potential-data-inconsistency}, then the action shows
 \code{enable-volume-io}. This means that you may want to enable the I/O

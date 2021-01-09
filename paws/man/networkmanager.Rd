@@ -13,6 +13,10 @@ networkmanager(config = list())
 Transit Gateway Network Manager (Network Manager) enables you to create
 a global network, in which you can monitor your AWS and on-premises
 networks that are built around transit gateways.
+
+The Network Manager APIs are supported in the US West (Oregon) Region
+only. You must specify the \code{us-west-2} Region in all requests made to
+Network Manager.
 }
 \section{Service syntax}{
 \preformatted{svc <- networkmanager(
@@ -37,10 +41,13 @@ networks that are built around transit gateways.
 \tabular{ll}{
 \link[=networkmanager_associate_customer_gateway]{associate_customer_gateway} \tab Associates a customer gateway with a device and optionally, with a link\cr
 \link[=networkmanager_associate_link]{associate_link} \tab Associates a link to a device\cr
+\link[=networkmanager_associate_transit_gateway_connect_peer]{associate_transit_gateway_connect_peer} \tab Associates a transit gateway Connect peer with a device, and optionally, with a link\cr
+\link[=networkmanager_create_connection]{create_connection} \tab Creates a connection between two devices\cr
 \link[=networkmanager_create_device]{create_device} \tab Creates a new device in a global network\cr
 \link[=networkmanager_create_global_network]{create_global_network} \tab Creates a new, empty global network\cr
 \link[=networkmanager_create_link]{create_link} \tab Creates a new link for a specified site\cr
 \link[=networkmanager_create_site]{create_site} \tab Creates a new site in a global network\cr
+\link[=networkmanager_delete_connection]{delete_connection} \tab Deletes the specified connection in your global network\cr
 \link[=networkmanager_delete_device]{delete_device} \tab Deletes an existing device\cr
 \link[=networkmanager_delete_global_network]{delete_global_network} \tab Deletes an existing global network\cr
 \link[=networkmanager_delete_link]{delete_link} \tab Deletes an existing link\cr
@@ -49,16 +56,20 @@ networks that are built around transit gateways.
 \link[=networkmanager_describe_global_networks]{describe_global_networks} \tab Describes one or more global networks\cr
 \link[=networkmanager_disassociate_customer_gateway]{disassociate_customer_gateway} \tab Disassociates a customer gateway from a device and a link\cr
 \link[=networkmanager_disassociate_link]{disassociate_link} \tab Disassociates an existing device from a link\cr
+\link[=networkmanager_disassociate_transit_gateway_connect_peer]{disassociate_transit_gateway_connect_peer} \tab Disassociates a transit gateway Connect peer from a device and link\cr
+\link[=networkmanager_get_connections]{get_connections} \tab Gets information about one or more of your connections in a global network\cr
 \link[=networkmanager_get_customer_gateway_associations]{get_customer_gateway_associations} \tab Gets the association information for customer gateways that are associated with devices and links in your global network\cr
 \link[=networkmanager_get_devices]{get_devices} \tab Gets information about one or more of your devices in a global network\cr
 \link[=networkmanager_get_link_associations]{get_link_associations} \tab Gets the link associations for a device or a link\cr
 \link[=networkmanager_get_links]{get_links} \tab Gets information about one or more links in a specified global network\cr
 \link[=networkmanager_get_sites]{get_sites} \tab Gets information about one or more of your sites in a global network\cr
+\link[=networkmanager_get_transit_gateway_connect_peer_associations]{get_transit_gateway_connect_peer_associations} \tab Gets information about one or more of your transit gateway Connect peer associations in a global network\cr
 \link[=networkmanager_get_transit_gateway_registrations]{get_transit_gateway_registrations} \tab Gets information about the transit gateway registrations in a specified global network\cr
 \link[=networkmanager_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for a specified resource\cr
 \link[=networkmanager_register_transit_gateway]{register_transit_gateway} \tab Registers a transit gateway in your global network\cr
 \link[=networkmanager_tag_resource]{tag_resource} \tab Tags a specified resource\cr
 \link[=networkmanager_untag_resource]{untag_resource} \tab Removes tags from a specified resource\cr
+\link[=networkmanager_update_connection]{update_connection} \tab Updates the information for an existing connection\cr
 \link[=networkmanager_update_device]{update_device} \tab Updates the details for an existing device\cr
 \link[=networkmanager_update_global_network]{update_global_network} \tab Updates an existing global network\cr
 \link[=networkmanager_update_link]{update_link} \tab Updates the details for an existing link\cr

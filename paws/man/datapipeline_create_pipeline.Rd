@@ -27,7 +27,7 @@ the AWS account or IAM user credentials.}
 \item{description}{The description for the pipeline.}
 
 \item{tags}{A list of tags to associate with the pipeline at creation. Tags let you
-control access to pipelines. For more information, see \href{http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html}{Controlling User Access to Pipelines}
+control access to pipelines. For more information, see \href{https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html}{Controlling User Access to Pipelines}
 in the \emph{AWS Data Pipeline Developer Guide}.}
 }
 \description{

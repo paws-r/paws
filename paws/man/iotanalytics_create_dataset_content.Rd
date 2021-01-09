@@ -2,21 +2,27 @@
 % Please edit documentation in R/iotanalytics_operations.R
 \name{iotanalytics_create_dataset_content}
 \alias{iotanalytics_create_dataset_content}
-\title{Creates the content of a data set by applying a "queryAction" (a SQL
-query) or a "containerAction" (executing a containerized application)}
+\title{Creates the content of a data set by applying a queryAction (a SQL
+query) or a containerAction (executing a containerized application)}
 \usage{
-iotanalytics_create_dataset_content(datasetName)
+iotanalytics_create_dataset_content(datasetName, versionId)
 }
 \arguments{
-\item{datasetName}{[required] The name of the data set.}
+\item{datasetName}{[required] The name of the dataset.}
+
+\item{versionId}{The version ID of the dataset content. To specify \code{versionId} for a
+dataset content, the dataset must use a
+\href{https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_DeltaTime.html}{DeltaTimer}
+filter.}
 }
 \description{
-Creates the content of a data set by applying a "queryAction" (a SQL
-query) or a "containerAction" (executing a containerized application).
+Creates the content of a data set by applying a \code{queryAction} (a SQL
+query) or a \code{containerAction} (executing a containerized application).
 }
 \section{Request syntax}{
 \preformatted{svc$create_dataset_content(
-  datasetName = "string"
+  datasetName = "string",
+  versionId = "string"
 )
 }
 }

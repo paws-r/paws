@@ -26,7 +26,7 @@ to perform predictive inbox placement tests.
 When you use the Deliverability dashboard, you pay a monthly
 subscription charge, in addition to any other fees that you accrue by
 using Amazon Pinpoint. For more information about the features and cost
-of a Deliverability dashboard subscription, see \href{http://aws.amazon.com/pinpoint/pricing/}{Amazon Pinpoint Pricing}.
+of a Deliverability dashboard subscription, see \href{https://aws.amazon.com/pinpoint/pricing/}{Amazon Pinpoint Pricing}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_deliverability_dashboard_option(

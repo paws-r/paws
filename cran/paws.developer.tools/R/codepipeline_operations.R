@@ -104,9 +104,6 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #'
 #' @param category &#91;required&#93; The category of the custom action, such as a build action or a test
 #' action.
-#' 
-#' Although `Source` and `Approval` are listed as valid values, they are
-#' not currently functional. These values are reserved for future use.
 #' @param provider &#91;required&#93; The provider of the service used in the custom action, such as AWS
 #' CodeDeploy.
 #' @param version &#91;required&#93; The version identifier of the custom action.
@@ -117,7 +114,7 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' action within the URL templates by following the format of
 #' \{Config:name\}, as long as the configuration property is both required
 #' and not secret. For more information, see [Create a Custom Action for a
-#' Pipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html).
+#' Pipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-create-custom-action.html).
 #' @param inputArtifactDetails &#91;required&#93; The details of the input artifact for the action, such as its commit ID.
 #' @param outputArtifactDetails &#91;required&#93; The details of the output artifact of the action, such as its commit ID.
 #' @param tags The tags for the custom action.

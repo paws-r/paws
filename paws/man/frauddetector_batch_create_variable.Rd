@@ -4,10 +4,12 @@
 \alias{frauddetector_batch_create_variable}
 \title{Creates a batch of variables}
 \usage{
-frauddetector_batch_create_variable(variableEntries)
+frauddetector_batch_create_variable(variableEntries, tags)
 }
 \arguments{
 \item{variableEntries}{[required] The list of variables for the batch create variable request.}
+
+\item{tags}{A collection of key and value pairs.}
 }
 \description{
 Creates a batch of variables.
@@ -22,6 +24,12 @@ Creates a batch of variables.
       defaultValue = "string",
       description = "string",
       variableType = "string"
+    )
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
     )
   )
 )

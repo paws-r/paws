@@ -10,8 +10,8 @@ workmail_create_user(OrganizationId, Name, DisplayName, Password)
 \arguments{
 \item{OrganizationId}{[required] The identifier of the organization for which the user is created.}
 
-\item{Name}{[required] The name for the new user. Simple AD or AD Connector user names have a
-maximum length of 20. All others have a maximum length of 64.}
+\item{Name}{[required] The name for the new user. WorkMail directory user names have a maximum
+length of 64. All others have a maximum length of 20.}
 
 \item{DisplayName}{[required] The display name for the new user.}
 

@@ -20,7 +20,7 @@ the next page of results in a paginated response.}
 This parameter is required if the rule limit for your account is more
 than the default of 150 rules.
 
-For information about requesting a rule limit increase, see \href{http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config}{AWS Config Limits}
+For information about requesting a rule limit increase, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html}{AWS Config Limits}
 in the \emph{AWS General Reference Guide}.}
 }
 \description{

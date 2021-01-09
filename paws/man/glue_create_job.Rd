@@ -70,9 +70,10 @@ are running a Python shell job or an Apache Spark ETL job:
 (\code{JobCommand.Name}="pythonshell"), you can allocate either 0.0625 or
 1 DPU. The default is 0.0625 DPU.
 \item When you specify an Apache Spark ETL job
-(\code{JobCommand.Name}="glueetl"), you can allocate from 2 to 100 DPUs.
-The default is 10 DPUs. This job type cannot have a fractional DPU
-allocation.
+(\code{JobCommand.Name}="glueetl") or Apache Spark streaming ETL job
+(\code{JobCommand.Name}="gluestreaming"), you can allocate from 2 to 100
+DPUs. The default is 10 DPUs. This job type cannot have a fractional
+DPU allocation.
 }}
 
 \item{SecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used with this

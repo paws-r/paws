@@ -32,7 +32,7 @@ of the alias.}
 }
 \description{
 Creates an
-\href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}
+\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}
 for a Lambda function version. Use aliases to provide clients with a
 function identifier that you can update to invoke a different version.
 }

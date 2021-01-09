@@ -5,7 +5,7 @@
 \title{Updates a Lambda function's code}
 \usage{
 lambda_update_function_code(FunctionName, ZipFile, S3Bucket, S3Key,
-  S3ObjectVersion, Publish, DryRun, RevisionId)
+  S3ObjectVersion, ImageUri, Publish, DryRun, RevisionId)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -32,6 +32,8 @@ can be in a different AWS account.}
 \item{S3ObjectVersion}{For versioned objects, the version of the deployment package object to
 use.}
 
+\item{ImageUri}{URI of a container image in the Amazon ECR registry.}
+
 \item{Publish}{Set to true to publish a new version of the function after updating the
 code. This has the same effect as calling PublishVersion separately.}
 
@@ -43,11 +45,17 @@ specified. Use this option to avoid modifying a function that has
 changed since you last read it.}
 }
 \description{
-Updates a Lambda function's code.
+Updates a Lambda function's code. If code signing is enabled for the
+function, the code package must be signed by a trusted publisher. For
+more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/}{Configuring code signing}.
 }
 \details{
 The function's code is locked when you publish a version. You can't
 modify the code of a published version, only the unpublished version.
+
+For a function defined as a container image, Lambda resolves the image
+tag to an image digest. In Amazon ECR, if you update the image tag to a
+new image, Lambda does not automatically update the function.
 }
 \section{Request syntax}{
 \preformatted{svc$update_function_code(
@@ -56,6 +64,7 @@ modify the code of a published version, only the unpublished version.
   S3Bucket = "string",
   S3Key = "string",
   S3ObjectVersion = "string",
+  ImageUri = "string",
   Publish = TRUE|FALSE,
   DryRun = TRUE|FALSE,
   RevisionId = "string"

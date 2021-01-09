@@ -23,7 +23,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Creates an import volume task using metadata from the specified disk
-image.For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/importing-your-volumes-into-amazon-ebs.html}{Importing Disks to Amazon EBS}.
+image.For more information, see \href{http://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf}{Importing Disks to Amazon EBS}.
 }
 \details{
 For information about the import manifest referenced by this API action,

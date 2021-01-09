@@ -14,8 +14,8 @@ chime_update_account_settings(AccountId, AccountSettings)
 \description{
 Updates the settings for the specified Amazon Chime account. You can
 update settings for remote control of shared screens, or for the
-dial-out option. For more information about these settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/policies.html}{Use the Policies Page} in the
-\emph{Amazon Chime Administration Guide}.
+dial-out option. For more information about these settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/mtg-settings.html}{Use the Policies Page} in
+the \emph{Amazon Chime Administration Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_account_settings(

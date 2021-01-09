@@ -74,7 +74,7 @@ router.
         ),
         maxRetries = 123,
         perRetryTimeout = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         ),
         tcpRetryEvents = list(
@@ -83,11 +83,11 @@ router.
       ),
       timeout = list(
         idle = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         ),
         perRequest = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         )
       )
@@ -118,7 +118,7 @@ router.
             name = "string"
           )
         ),
-        method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+        method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
         prefix = "string",
         scheme = "http"|"https"
       ),
@@ -128,7 +128,7 @@ router.
         ),
         maxRetries = 123,
         perRetryTimeout = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         ),
         tcpRetryEvents = list(
@@ -137,11 +137,11 @@ router.
       ),
       timeout = list(
         idle = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         ),
         perRequest = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         )
       )
@@ -172,7 +172,7 @@ router.
             name = "string"
           )
         ),
-        method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+        method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
         prefix = "string",
         scheme = "http"|"https"
       ),
@@ -182,7 +182,7 @@ router.
         ),
         maxRetries = 123,
         perRetryTimeout = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         ),
         tcpRetryEvents = list(
@@ -191,11 +191,11 @@ router.
       ),
       timeout = list(
         idle = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         ),
         perRequest = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         )
       )
@@ -212,7 +212,7 @@ router.
       ),
       timeout = list(
         idle = list(
-          unit = "ms"|"s",
+          unit = "s"|"ms",
           value = 123
         )
       )

@@ -8,7 +8,7 @@ region}
 databasemigrationservice_describe_endpoints(Filters, MaxRecords, Marker)
 }
 \arguments{
-\item{Filters}{Filters applied to the describe action.
+\item{Filters}{Filters applied to the endpoints.
 
 Valid filter names: endpoint-arn | endpoint-type | endpoint-id |
 engine-name}

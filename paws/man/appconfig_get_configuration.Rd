@@ -36,7 +36,7 @@ To avoid excess charges, we recommend that you include the
 calls to \code{GetConfiguration} must pass this value by using the
 \code{ClientConfigurationVersion} parameter.
 
-For more information about working with configurations, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-retrieving-the-configuration.html}{Retrieving the Configuration}
+For more information about working with configurations, see \href{https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-retrieving-the-configuration.html}{Retrieving the Configuration}
 in the \emph{AWS AppConfig User Guide}.}
 }
 \description{

@@ -3,28 +3,60 @@
 #' @include route53_service.R
 NULL
 
+#' Activates a key signing key (KSK) so that it can be used for signing by
+#' DNSSEC
+#'
+#' Activates a key signing key (KSK) so that it can be used for signing by
+#' DNSSEC. This operation changes the KSK status to `ACTIVE`.
+#'
+#' @usage
+#' route53_activate_key_signing_key(HostedZoneId, Name)
+#'
+#' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
+#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$activate_key_signing_key(
+#'   HostedZoneId = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53_activate_key_signing_key
+route53_activate_key_signing_key <- function(HostedZoneId, Name) {
+  op <- new_operation(
+    name = "ActivateKeySigningKey",
+    http_method = "POST",
+    http_path = "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/activate",
+    paginator = list()
+  )
+  input <- .route53$activate_key_signing_key_input(HostedZoneId = HostedZoneId, Name = Name)
+  output <- .route53$activate_key_signing_key_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$activate_key_signing_key <- route53_activate_key_signing_key
+
 #' Associates an Amazon VPC with a private hosted zone
 #'
 #' Associates an Amazon VPC with a private hosted zone.
 #' 
 #' To perform the association, the VPC and the private hosted zone must
-#' already exist. Also, you can't convert a public hosted zone into a
-#' private hosted zone.
+#' already exist. You can't convert a public hosted zone into a private
+#' hosted zone.
 #' 
-#' If you want to associate a VPC that was created by one AWS account with
-#' a private hosted zone that was created by a different account, do one of
-#' the following:
-#' 
-#' -   Use the AWS account that created the private hosted zone to submit a
-#'     [CreateVPCAssociationAuthorization](https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateVPCAssociationAuthorization.html)
-#'     request. Then use the account that created the VPC to submit an
-#'     `AssociateVPCWithHostedZone` request.
-#' 
-#' -   If a subnet in the VPC was shared with another account, you can use
-#'     the account that the subnet was shared with to submit an
-#'     `AssociateVPCWithHostedZone` request. For more information about
-#'     sharing subnets, see [Working with Shared
-#'     VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html).
+#' If you want to associate a VPC that was created by using one AWS account
+#' with a private hosted zone that was created by using a different
+#' account, the AWS account that created the private hosted zone must first
+#' submit a `CreateVPCAssociationAuthorization` request. Then the account
+#' that created the VPC must submit an `AssociateVPCWithHostedZone`
+#' request.
 #'
 #' @usage
 #' route53_associate_vpc_with_hosted_zone(HostedZoneId, VPC, Comment)
@@ -198,7 +230,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'         Action = "CREATE"|"DELETE"|"UPSERT",
 #'         ResourceRecordSet = list(
 #'           Name = "string",
-#'           Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
+#'           Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
 #'           SetIdentifier = "string",
 #'           Weight = 123,
 #'           Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"me-south-1"|"ap-south-1"|"af-south-1"|"eu-south-1",
@@ -940,7 +972,7 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' create new resource record sets.
 #' 
 #' For more information about charges for hosted zones, see [Amazon Route
-#' 53 Pricing](http://aws.amazon.com/route53/pricing/).
+#' 53 Pricing](https://aws.amazon.com/route53/pricing/).
 #' 
 #' Note the following:
 #' 
@@ -1049,6 +1081,91 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 }
 .route53$operations$create_hosted_zone <- route53_create_hosted_zone
 
+#' Creates a new key signing key (KSK) associated with a hosted zone
+#'
+#' Creates a new key signing key (KSK) associated with a hosted zone. You
+#' can only have two KSKs per hosted zone.
+#'
+#' @usage
+#' route53_create_key_signing_key(CallerReference, HostedZoneId,
+#'   KeyManagementServiceArn, Name, Status)
+#'
+#' @param CallerReference &#91;required&#93; A unique string that identifies the request.
+#' @param HostedZoneId &#91;required&#93; The unique string (ID) used to identify a hosted zone.
+#' @param KeyManagementServiceArn &#91;required&#93; The Amazon resource name (ARN) for a customer managed key (CMK) in AWS
+#' Key Management Service (KMS). The `KeyManagementServiceArn` must be
+#' unique for each key signing key (KSK) in a single hosted zone. To see an
+#' example of `KeyManagementServiceArn` that grants the correct permissions
+#' for DNSSEC, scroll down to **Example**.
+#' 
+#' You must configure the CMK as follows:
+#' 
+#' ### Status
+#' 
+#' Enabled
+#' 
+#' ### Key spec
+#' 
+#' ECC\\_NIST\\_P256
+#' 
+#' ### Key usage
+#' 
+#' Sign and verify
+#' 
+#' ### Key policy
+#' 
+#' The key policy must give permission for the following actions:
+#' 
+#' -   DescribeKey
+#' 
+#' -   GetPublicKey
+#' 
+#' -   Sign
+#' 
+#' The key policy must also include the Amazon Route 53 service in the
+#' principal for your account. Specify the following:
+#' 
+#' -   `"Service": "api-service.dnssec.route53.aws.internal"`
+#' 
+#' For more information about working with CMK in KMS, see [AWS Key
+#' Management Service
+#' concepts](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html).
+#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK). `Name`
+#' must be unique for each key signing key in the same hosted zone.
+#' @param Status &#91;required&#93; A string specifying the initial status of the key signing key (KSK). You
+#' can set the value to `ACTIVE` or `INACTIVE`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_key_signing_key(
+#'   CallerReference = "string",
+#'   HostedZoneId = "string",
+#'   KeyManagementServiceArn = "string",
+#'   Name = "string",
+#'   Status = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53_create_key_signing_key
+route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyManagementServiceArn, Name, Status) {
+  op <- new_operation(
+    name = "CreateKeySigningKey",
+    http_method = "POST",
+    http_path = "/2013-04-01/keysigningkey",
+    paginator = list()
+  )
+  input <- .route53$create_key_signing_key_input(CallerReference = CallerReference, HostedZoneId = HostedZoneId, KeyManagementServiceArn = KeyManagementServiceArn, Name = Name, Status = Status)
+  output <- .route53$create_key_signing_key_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$create_key_signing_key <- route53_create_key_signing_key
+
 #' Creates a configuration for DNS query logging
 #'
 #' Creates a configuration for DNS query logging. After you create a query
@@ -1132,7 +1249,7 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' code for an airport near the edge location. (These abbreviations might
 #' change in the future.) For a list of edge locations, see "The Route 53
 #' Global Network" on the [Route 53 Product
-#' Details](http://aws.amazon.com/route53/details/) page.
+#' Details](https://aws.amazon.com/route53/features/) page.
 #' 
 #' ### Queries That Are Logged
 #' 
@@ -1160,7 +1277,7 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' ### Pricing
 #' 
 #' For information about charges for query logs, see [Amazon CloudWatch
-#' Pricing](http://aws.amazon.com/cloudwatch/pricing/).
+#' Pricing](https://aws.amazon.com/cloudwatch/pricing/).
 #' 
 #' ### How to Stop Logging
 #' 
@@ -1519,6 +1636,46 @@ route53_create_vpc_association_authorization <- function(HostedZoneId, VPC) {
 }
 .route53$operations$create_vpc_association_authorization <- route53_create_vpc_association_authorization
 
+#' Deactivates a key signing key (KSK) so that it will not be used for
+#' signing by DNSSEC
+#'
+#' Deactivates a key signing key (KSK) so that it will not be used for
+#' signing by DNSSEC. This operation changes the KSK status to `INACTIVE`.
+#'
+#' @usage
+#' route53_deactivate_key_signing_key(HostedZoneId, Name)
+#'
+#' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
+#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deactivate_key_signing_key(
+#'   HostedZoneId = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53_deactivate_key_signing_key
+route53_deactivate_key_signing_key <- function(HostedZoneId, Name) {
+  op <- new_operation(
+    name = "DeactivateKeySigningKey",
+    http_method = "POST",
+    http_path = "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/deactivate",
+    paginator = list()
+  )
+  input <- .route53$deactivate_key_signing_key_input(HostedZoneId = HostedZoneId, Name = Name)
+  output <- .route53$deactivate_key_signing_key_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$deactivate_key_signing_key <- route53_deactivate_key_signing_key
+
 #' Deletes a health check
 #'
 #' Deletes a health check.
@@ -1658,6 +1815,46 @@ route53_delete_hosted_zone <- function(Id) {
 }
 .route53$operations$delete_hosted_zone <- route53_delete_hosted_zone
 
+#' Deletes a key signing key (KSK)
+#'
+#' Deletes a key signing key (KSK). Before you can delete a KSK, you must
+#' deactivate it. The KSK must be deactived before you can delete it
+#' regardless of whether the hosted zone is enabled for DNSSEC signing.
+#'
+#' @usage
+#' route53_delete_key_signing_key(HostedZoneId, Name)
+#'
+#' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
+#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_key_signing_key(
+#'   HostedZoneId = "string",
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53_delete_key_signing_key
+route53_delete_key_signing_key <- function(HostedZoneId, Name) {
+  op <- new_operation(
+    name = "DeleteKeySigningKey",
+    http_method = "DELETE",
+    http_path = "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}",
+    paginator = list()
+  )
+  input <- .route53$delete_key_signing_key_input(HostedZoneId = HostedZoneId, Name = Name)
+  output <- .route53$delete_key_signing_key_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$delete_key_signing_key <- route53_delete_key_signing_key
+
 #' Deletes a configuration for DNS query logging
 #'
 #' Deletes a configuration for DNS query logging. If you delete a
@@ -1748,6 +1945,19 @@ route53_delete_reusable_delegation_set <- function(Id) {
 #' Deletes a traffic policy
 #'
 #' Deletes a traffic policy.
+#' 
+#' When you delete a traffic policy, Route 53 sets a flag on the policy to
+#' indicate that it has been deleted. However, Route 53 never fully deletes
+#' the traffic policy. Note the following:
+#' 
+#' -   Deleted traffic policies aren't listed if you run
+#'     [ListTrafficPolicies](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListTrafficPolicies.html).
+#' 
+#' -   There's no way to get a list of deleted policies.
+#' 
+#' -   If you retain the ID of the policy, you can get information about
+#'     the policy, including the traffic policy document, by running
+#'     [GetTrafficPolicy](https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetTrafficPolicy.html).
 #'
 #' @usage
 #' route53_delete_traffic_policy(Id, Version)
@@ -1885,6 +2095,44 @@ route53_delete_vpc_association_authorization <- function(HostedZoneId, VPC) {
 }
 .route53$operations$delete_vpc_association_authorization <- route53_delete_vpc_association_authorization
 
+#' Disables DNSSEC signing in a specific hosted zone
+#'
+#' Disables DNSSEC signing in a specific hosted zone. This action does not
+#' deactivate any key signing keys (KSKs) that are active in the hosted
+#' zone.
+#'
+#' @usage
+#' route53_disable_hosted_zone_dnssec(HostedZoneId)
+#'
+#' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_hosted_zone_dnssec(
+#'   HostedZoneId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53_disable_hosted_zone_dnssec
+route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
+  op <- new_operation(
+    name = "DisableHostedZoneDNSSEC",
+    http_method = "POST",
+    http_path = "/2013-04-01/hostedzone/{Id}/disable-dnssec",
+    paginator = list()
+  )
+  input <- .route53$disable_hosted_zone_dnssec_input(HostedZoneId = HostedZoneId)
+  output <- .route53$disable_hosted_zone_dnssec_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$disable_hosted_zone_dnssec <- route53_disable_hosted_zone_dnssec
+
 #' Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an
 #' Amazon Route 53 private hosted zone
 #'
@@ -1954,6 +2202,42 @@ route53_disassociate_vpc_from_hosted_zone <- function(HostedZoneId, VPC, Comment
 }
 .route53$operations$disassociate_vpc_from_hosted_zone <- route53_disassociate_vpc_from_hosted_zone
 
+#' Enables DNSSEC signing in a specific hosted zone
+#'
+#' Enables DNSSEC signing in a specific hosted zone.
+#'
+#' @usage
+#' route53_enable_hosted_zone_dnssec(HostedZoneId)
+#'
+#' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_hosted_zone_dnssec(
+#'   HostedZoneId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53_enable_hosted_zone_dnssec
+route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
+  op <- new_operation(
+    name = "EnableHostedZoneDNSSEC",
+    http_method = "POST",
+    http_path = "/2013-04-01/hostedzone/{Id}/enable-dnssec",
+    paginator = list()
+  )
+  input <- .route53$enable_hosted_zone_dnssec_input(HostedZoneId = HostedZoneId)
+  output <- .route53$enable_hosted_zone_dnssec_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$enable_hosted_zone_dnssec <- route53_enable_hosted_zone_dnssec
+
 #' Gets the specified limit for the current account, for example, the
 #' maximum number of health checks that you can create using the account
 #'
@@ -1963,13 +2247,12 @@ route53_disassociate_vpc_from_hosted_zone <- function(HostedZoneId, VPC, Comment
 #' For the default limit, see
 #' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 #' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
-#' [open a
-#' case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
+#' open a case.
 #' 
 #' You can also view account limits in AWS Trusted Advisor. Sign in to the
 #' AWS Management Console and open the Trusted Advisor console at
-#' [https://console.aws.amazon.com/trustedadvisor/](https://console.aws.amazon.com/trustedadvisor).
-#' Then choose **Service limits** in the navigation pane.
+#' https://console.aws.amazon.com/trustedadvisor/. Then choose **Service
+#' limits** in the navigation pane.
 #'
 #' @usage
 #' route53_get_account_limit(Type)
@@ -2103,6 +2386,46 @@ route53_get_checker_ip_ranges <- function() {
   return(response)
 }
 .route53$operations$get_checker_ip_ranges <- route53_get_checker_ip_ranges
+
+#' Returns information about DNSSEC for a specific hosted zone, including
+#' the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted
+#' zone
+#'
+#' Returns information about DNSSEC for a specific hosted zone, including
+#' the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted
+#' zone.
+#'
+#' @usage
+#' route53_get_dnssec(HostedZoneId)
+#'
+#' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_dnssec(
+#'   HostedZoneId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53_get_dnssec
+route53_get_dnssec <- function(HostedZoneId) {
+  op <- new_operation(
+    name = "GetDNSSEC",
+    http_method = "GET",
+    http_path = "/2013-04-01/hostedzone/{Id}/dnssec",
+    paginator = list()
+  )
+  input <- .route53$get_dnssec_input(HostedZoneId = HostedZoneId)
+  output <- .route53$get_dnssec_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$get_dnssec <- route53_get_dnssec
 
 #' Gets information about whether a specified geographic location is
 #' supported for Amazon Route 53 geolocation resource record sets
@@ -2433,8 +2756,7 @@ route53_get_hosted_zone_count <- function() {
 #' For the default limit, see
 #' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 #' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
-#' [open a
-#' case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
+#' open a case.
 #'
 #' @usage
 #' route53_get_hosted_zone_limit(Type, HostedZoneId)
@@ -2566,8 +2888,7 @@ route53_get_reusable_delegation_set <- function(Id) {
 #' For the default limit, see
 #' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 #' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
-#' [open a
-#' case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
+#' open a case.
 #'
 #' @usage
 #' route53_get_reusable_delegation_set_limit(Type, DelegationSetId)
@@ -2608,6 +2929,10 @@ route53_get_reusable_delegation_set_limit <- function(Type, DelegationSetId) {
 #' Gets information about a specific traffic policy version
 #'
 #' Gets information about a specific traffic policy version.
+#' 
+#' For information about how of deleting a traffic policy affects the
+#' response from `GetTrafficPolicy`, see
+#' [DeleteTrafficPolicy](https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html).
 #'
 #' @usage
 #' route53_get_traffic_policy(Id, Version)
@@ -3054,8 +3379,8 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #' @param MaxItems (Optional) The maximum number of hosted zones that you want Amazon Route
 #' 53 to return. If the specified VPC is associated with more than
 #' `MaxItems` hosted zones, the response includes a `NextToken` element.
-#' `NextToken` contains the hosted zone ID of the first hosted zone that
-#' Route 53 will return if you submit another request.
+#' `NextToken` contains an encrypted token that identifies the first hosted
+#' zone that Route 53 will return if you submit another request.
 #' @param NextToken If the previous response included a `NextToken` element, the specified
 #' VPC is associated with more hosted zones. To get more hosted zones,
 #' submit another `ListHostedZonesByVPC` request.
@@ -3295,7 +3620,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #' svc$list_resource_record_sets(
 #'   HostedZoneId = "string",
 #'   StartRecordName = "string",
-#'   StartRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
+#'   StartRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
 #'   StartRecordIdentifier = "string",
 #'   MaxItems = "string"
 #' )
@@ -3475,6 +3800,10 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
 #' Gets information about the latest version for every traffic policy that
 #' is associated with the current AWS account. Policies are listed in the
 #' order that they were created in.
+#' 
+#' For information about how of deleting a traffic policy affects the
+#' response from `ListTrafficPolicies`, see
+#' [DeleteTrafficPolicy](https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html).
 #'
 #' @usage
 #' route53_list_traffic_policies(TrafficPolicyIdMarker, MaxItems)
@@ -3585,7 +3914,7 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
 #' svc$list_traffic_policy_instances(
 #'   HostedZoneIdMarker = "string",
 #'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
+#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
 #'   MaxItems = "string"
 #' )
 #' ```
@@ -3666,7 +3995,7 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
 #' svc$list_traffic_policy_instances_by_hosted_zone(
 #'   HostedZoneId = "string",
 #'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
+#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
 #'   MaxItems = "string"
 #' )
 #' ```
@@ -3766,7 +4095,7 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #'   TrafficPolicyVersion = 123,
 #'   HostedZoneIdMarker = "string",
 #'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
+#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
 #'   MaxItems = "string"
 #' )
 #' ```
@@ -3950,7 +4279,7 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' svc$test_dns_answer(
 #'   HostedZoneId = "string",
 #'   RecordName = "string",
-#'   RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
+#'   RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
 #'   ResolverIP = "string",
 #'   EDNS0ClientSubnetIP = "string",
 #'   EDNS0ClientSubnetMask = "string"
@@ -4183,7 +4512,7 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' 
 #' Charges for a health check still apply when the health check is
 #' disabled. For more information, see [Amazon Route 53
-#' Pricing](http://aws.amazon.com/route53/pricing/).
+#' Pricing](https://aws.amazon.com/route53/pricing/).
 #' @param HealthThreshold The number of child health checks that are associated with a
 #' `CALCULATED` health that Amazon Route 53 must consider healthy for the
 #' `CALCULATED` health check to be considered healthy. To specify the child

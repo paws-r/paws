@@ -5,7 +5,7 @@
 \title{Updates the webhook associated with an AWS CodeBuild build project}
 \usage{
 codebuild_update_webhook(projectName, branchFilter, rotateSecret,
-  filterGroups)
+  filterGroups, buildType)
 }
 \arguments{
 \item{projectName}{[required] The name of the AWS CodeBuild project.}
@@ -24,6 +24,8 @@ your repository, \code{rotateSecret} is ignored.}
 \item{filterGroups}{An array of arrays of \code{WebhookFilter} objects used to determine if a
 webhook event can trigger a build. A filter group must contain at least
 one \code{EVENT} \code{WebhookFilter}.}
+
+\item{buildType}{Specifies the type of build this webhook will trigger.}
 }
 \description{
 Updates the webhook associated with an AWS CodeBuild build project.
@@ -44,7 +46,8 @@ If you use Bitbucket for your repository, \code{rotateSecret} is ignored.
         excludeMatchedPattern = TRUE|FALSE
       )
     )
-  )
+  ),
+  buildType = "BUILD"|"BUILD_BATCH"
 )
 }
 }

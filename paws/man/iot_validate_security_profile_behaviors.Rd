@@ -24,7 +24,7 @@ Validates a Device Defender security profile behaviors specification.
         operator = "IN"|"NOT_IN"
       ),
       criteria = list(
-        comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
+        comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set"|"in-set"|"not-in-set",
         value = list(
           count = 123,
           cidrs = list(
@@ -32,6 +32,13 @@ Validates a Device Defender security profile behaviors specification.
           ),
           ports = list(
             123
+          ),
+          number = 123.0,
+          numbers = list(
+            123.0
+          ),
+          strings = list(
+            "string"
           )
         ),
         durationSeconds = 123,
@@ -39,8 +46,12 @@ Validates a Device Defender security profile behaviors specification.
         consecutiveDatapointsToClear = 123,
         statisticalThreshold = list(
           statistic = "string"
+        ),
+        mlDetectionConfig = list(
+          confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
         )
-      )
+      ),
+      suppressAlerts = TRUE|FALSE
     )
   )
 )

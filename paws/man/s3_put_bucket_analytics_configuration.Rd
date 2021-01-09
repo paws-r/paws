@@ -6,7 +6,7 @@
 analytics configuration ID)}
 \usage{
 s3_put_bucket_analytics_configuration(Bucket, Id,
-  AnalyticsConfiguration)
+  AnalyticsConfiguration, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket to which an analytics configuration is stored.}
@@ -14,6 +14,10 @@ s3_put_bucket_analytics_configuration(Bucket, Id,
 \item{Id}{[required] The ID that identifies the analytics configuration.}
 
 \item{AnalyticsConfiguration}{[required] The configuration and any analyses for the analytics filter.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Sets an analytics configuration for the bucket (specified by the
@@ -68,9 +72,9 @@ set the configuration on the bucket.}
 
 \strong{Related Resources}
 \itemize{
-\item 
-\item 
-\item 
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAnalyticsConfiguration.html}{GetBucketAnalyticsConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketAnalyticsConfiguration.html}{DeleteBucketAnalyticsConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html}{ListBucketAnalyticsConfigurations}
 }
 }
 \section{Request syntax}{
@@ -108,7 +112,8 @@ set the configuration on the bucket.}
         )
       )
     )
-  )
+  ),
+  ExpectedBucketOwner = "string"
 )
 }
 }

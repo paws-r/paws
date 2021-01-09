@@ -10,7 +10,7 @@ codestarconnections_create_connection(ProviderType, ConnectionName,
 }
 \arguments{
 \item{ProviderType}{The name of the external provider where your third-party code repository
-is configured. The valid provider type is Bitbucket.}
+is configured.}
 
 \item{ConnectionName}{[required] The name of the connection to be created. The name must be unique in the
 calling AWS account.}
@@ -28,7 +28,7 @@ handshake is completed from the console.
 }
 \section{Request syntax}{
 \preformatted{svc$create_connection(
-  ProviderType = "Bitbucket"|"GitHubEnterpriseServer",
+  ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
   ConnectionName = "string",
   Tags = list(
     list(

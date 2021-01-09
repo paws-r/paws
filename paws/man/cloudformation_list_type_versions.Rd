@@ -54,7 +54,7 @@ Returns summary information about the versions of a type.
 }
 \section{Request syntax}{
 \preformatted{svc$list_type_versions(
-  Type = "RESOURCE",
+  Type = "RESOURCE"|"MODULE",
   TypeName = "string",
   Arn = "string",
   MaxResults = 123,

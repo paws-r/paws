@@ -26,7 +26,7 @@ the latest AWS Regions where SMS text messaging is supported, see
 in the \emph{Amazon SNS Developer Guide}.
 
 For more information about notifications in Amazon Lightsail, see
-\href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications}{Notifications in Amazon Lightsail}.}
+Notifications in Amazon Lightsail.}
 
 \item{contactEndpoint}{[required] The destination of the contact method, such as an email address or a
 mobile phone number.
@@ -47,7 +47,8 @@ A contact method is used to send you notifications about your Amazon
 Lightsail resources. You can add one email address and one mobile phone
 number contact method in each AWS Region. However, SMS text messaging is
 not supported in some AWS Regions, and SMS text messages cannot be sent
-to some countries/regions. For more information, see \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications}{Notifications in Amazon Lightsail}.
+to some countries/regions. For more information, see Notifications in
+Amazon Lightsail.
 }
 \section{Request syntax}{
 \preformatted{svc$create_contact_method(

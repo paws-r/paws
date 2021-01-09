@@ -2,17 +2,17 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_get_app_launch_configuration}
 \alias{sms_get_app_launch_configuration}
-\title{Retrieves the application launch configuration associated with an
-application}
+\title{Retrieves the application launch configuration associated with the
+specified application}
 \usage{
 sms_get_app_launch_configuration(appId)
 }
 \arguments{
-\item{appId}{ID of the application launch configuration.}
+\item{appId}{The ID of the application.}
 }
 \description{
-Retrieves the application launch configuration associated with an
-application.
+Retrieves the application launch configuration associated with the
+specified application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_app_launch_configuration(

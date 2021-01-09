@@ -5,7 +5,7 @@
 \title{Creates a policy of a specified type that you can attach to a root, an
 organizational unit (OU), or an individual AWS account}
 \usage{
-organizations_create_policy(Content, Description, Name, Type)
+organizations_create_policy(Content, Description, Name, Type, Tags)
 }
 \arguments{
 \item{Content}{[required] The policy text content to add to the new policy. The text that you
@@ -16,18 +16,28 @@ supply must adhere to the rules of the policy type you specify in the
 
 \item{Name}{[required] The friendly name to assign to the policy.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
 validate this parameter is a string of any of the characters in the
 ASCII character range.}
 
 \item{Type}{[required] The type of policy to create. You can specify one of the following
 values:
 \itemize{
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{SERVICE\\_CONTROL\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE\\_CONTROL\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
 }}
+
+\item{Tags}{A list of tags that you want to attach to the newly created policy. For
+each tag in the list, you must specify both a tag key and a value. You
+can set the value to an empty string, but you can't set it to \code{null}.
+For more information about tagging, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html}{Tagging AWS Organizations resources}
+in the AWS Organizations User Guide.
+
+If any one of the tags is invalid or if you exceed the allowed number of
+tags for a policy, then the entire request fails and the policy is not
+created.}
 }
 \description{
 Creates a policy of a specified type that you can attach to a root, an
@@ -36,7 +46,10 @@ organizational unit (OU), or an individual AWS account.
 \details{
 For more information about policies and their use, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html}{Managing Organization Policies}.
 
-This operation can be called only from the organization's master
+If the request includes tags, then the requester must have the
+\code{organizations:TagResource} permission.
+
+This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
@@ -44,7 +57,13 @@ account.
   Content = "string",
   Description = "string",
   Name = "string",
-  Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"
+  Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

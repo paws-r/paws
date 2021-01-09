@@ -11,7 +11,8 @@ NULL
 #'
 #' @usage
 #' personalize_create_batch_inference_job(jobName, solutionVersionArn,
-#'   filterArn, numResults, jobInput, jobOutput, roleArn)
+#'   filterArn, numResults, jobInput, jobOutput, roleArn,
+#'   batchInferenceJobConfig)
 #'
 #' @param jobName &#91;required&#93; The name of the batch inference job to create.
 #' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version that will be used
@@ -25,6 +26,7 @@ NULL
 #' @param roleArn &#91;required&#93; The ARN of the Amazon Identity and Access Management role that has
 #' permissions to read and write to your input and out Amazon S3 buckets
 #' respectively.
+#' @param batchInferenceJobConfig The configuration details of a batch inference job.
 #'
 #' @section Request syntax:
 #' ```
@@ -45,21 +47,26 @@ NULL
 #'       kmsKeyArn = "string"
 #'     )
 #'   ),
-#'   roleArn = "string"
+#'   roleArn = "string",
+#'   batchInferenceJobConfig = list(
+#'     itemExplorationConfig = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_batch_inference_job
-personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, filterArn = NULL, numResults = NULL, jobInput, jobOutput, roleArn) {
+personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, filterArn = NULL, numResults = NULL, jobInput, jobOutput, roleArn, batchInferenceJobConfig = NULL) {
   op <- new_operation(
     name = "CreateBatchInferenceJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_batch_inference_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn)
+  input <- .personalize$create_batch_inference_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn, batchInferenceJobConfig = batchInferenceJobConfig)
   output <- .personalize$create_batch_inference_job_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -118,34 +125,41 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
 #' -   DeleteCampaign
 #'
 #' @usage
-#' personalize_create_campaign(name, solutionVersionArn, minProvisionedTPS)
+#' personalize_create_campaign(name, solutionVersionArn, minProvisionedTPS,
+#'   campaignConfig)
 #'
 #' @param name &#91;required&#93; A name for the new campaign. The campaign name must be unique within
 #' your account.
 #' @param solutionVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution version to deploy.
 #' @param minProvisionedTPS &#91;required&#93; Specifies the requested minimum provisioned transactions
 #' (recommendations) per second that Amazon Personalize will support.
+#' @param campaignConfig The configuration details of a campaign.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_campaign(
 #'   name = "string",
 #'   solutionVersionArn = "string",
-#'   minProvisionedTPS = 123
+#'   minProvisionedTPS = 123,
+#'   campaignConfig = list(
+#'     itemExplorationConfig = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_create_campaign
-personalize_create_campaign <- function(name, solutionVersionArn, minProvisionedTPS) {
+personalize_create_campaign <- function(name, solutionVersionArn, minProvisionedTPS, campaignConfig = NULL) {
   op <- new_operation(
     name = "CreateCampaign",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_campaign_input(name = name, solutionVersionArn = solutionVersionArn, minProvisionedTPS = minProvisionedTPS)
+  input <- .personalize$create_campaign_input(name = name, solutionVersionArn = solutionVersionArn, minProvisionedTPS = minProvisionedTPS, campaignConfig = campaignConfig)
   output <- .personalize$create_campaign_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -336,7 +350,8 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' Amazon S3 bucket) to an Amazon Personalize dataset. To allow Amazon
 #' Personalize to import the training data, you must specify an AWS
 #' Identity and Access Management (IAM) role that has permission to read
-#' from the data source.
+#' from the data source, as Amazon Personalize makes a copy of your data
+#' and processes it in an internal AWS system.
 #' 
 #' The dataset import job replaces any previous data in the dataset.
 #' 
@@ -482,8 +497,9 @@ personalize_create_event_tracker <- function(name, datasetGroupArn) {
 
 #' Creates a recommendation filter
 #'
-#' Creates a recommendation filter. For more information, see Using Filters
-#' with Amazon Personalize.
+#' Creates a recommendation filter. For more information, see [Using
+#' Filters with Amazon
+#' Personalize](https://docs.aws.amazon.com/personalize/latest/dg/).
 #'
 #' @usage
 #' personalize_create_filter(name, datasetGroupArn, filterExpression)
@@ -498,7 +514,8 @@ personalize_create_event_tracker <- function(name, datasetGroupArn) {
 #' 
 #' Where "EVENT\\_TYPE" is the type of event to filter out. To filter out
 #' all items with any interactions history, set `"*"` as the EVENT\\_TYPE.
-#' For more information, see Using Filters with Amazon Personalize.
+#' For more information, see [Using Filters with Amazon
+#' Personalize](https://docs.aws.amazon.com/personalize/latest/dg/).
 #'
 #' @section Request syntax:
 #' ```
@@ -2146,33 +2163,39 @@ personalize_list_solutions <- function(datasetGroupArn = NULL, nextToken = NULL,
 #'
 #' @usage
 #' personalize_update_campaign(campaignArn, solutionVersionArn,
-#'   minProvisionedTPS)
+#'   minProvisionedTPS, campaignConfig)
 #'
 #' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign.
 #' @param solutionVersionArn The ARN of a new solution version to deploy.
 #' @param minProvisionedTPS Specifies the requested minimum provisioned transactions
 #' (recommendations) per second that Amazon Personalize will support.
+#' @param campaignConfig The configuration details of a campaign.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_campaign(
 #'   campaignArn = "string",
 #'   solutionVersionArn = "string",
-#'   minProvisionedTPS = 123
+#'   minProvisionedTPS = 123,
+#'   campaignConfig = list(
+#'     itemExplorationConfig = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname personalize_update_campaign
-personalize_update_campaign <- function(campaignArn, solutionVersionArn = NULL, minProvisionedTPS = NULL) {
+personalize_update_campaign <- function(campaignArn, solutionVersionArn = NULL, minProvisionedTPS = NULL, campaignConfig = NULL) {
   op <- new_operation(
     name = "UpdateCampaign",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$update_campaign_input(campaignArn = campaignArn, solutionVersionArn = solutionVersionArn, minProvisionedTPS = minProvisionedTPS)
+  input <- .personalize$update_campaign_input(campaignArn = campaignArn, solutionVersionArn = solutionVersionArn, minProvisionedTPS = minProvisionedTPS, campaignConfig = campaignConfig)
   output <- .personalize$update_campaign_output()
   config <- get_config()
   svc <- .personalize$service(config)

@@ -45,7 +45,7 @@ to an Amazon RDS DB instance in another. You can't authorize ingress
 from a VPC security group in one VPC to an Amazon RDS DB instance in
 another.
 
-For an overview of CIDR ranges, go to the \href{http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Wikipedia Tutorial}.
+For an overview of CIDR ranges, go to the \href{https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Wikipedia Tutorial}.
 }
 \section{Request syntax}{
 \preformatted{svc$authorize_db_security_group_ingress(

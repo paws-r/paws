@@ -12,7 +12,7 @@ Returns the enrollment (opt in) status of an account to the AWS Compute
 Optimizer service.
 }
 \details{
-If the account is the master account of an organization, this action
+If the account is the management account of an organization, this action
 also confirms the enrollment status of member accounts within the
 organization.
 }

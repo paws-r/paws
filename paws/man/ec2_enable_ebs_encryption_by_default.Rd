@@ -20,7 +20,7 @@ Region.
 After you enable encryption by default, the EBS volumes that you create
 are are always encrypted, either using the default CMK or the CMK that
 you specified when you created each volume. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 You can specify the default CMK for encryption by default using
@@ -31,7 +31,7 @@ your existing volumes.
 
 After you enable encryption by default, you can no longer launch
 instances using instance types that do not support encryption. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances}{Supported Instance Types}.
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances}{Supported instance types}.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_ebs_encryption_by_default(

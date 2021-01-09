@@ -14,7 +14,7 @@ globalaccelerator_update_accelerator(AcceleratorArn, Name,
 characters, must contain only alphanumeric characters or hyphens (-),
 and must not begin or end with a hyphen.}
 
-\item{IpAddressType}{The value for the address type must be IPv4.}
+\item{IpAddressType}{The IP address type, which must be IPv4.}
 
 \item{Enabled}{Indicates whether an accelerator is enabled. The value is true or false.
 The default value is true.
@@ -23,12 +23,12 @@ If the value is set to true, the accelerator cannot be deleted. If set
 to false, the accelerator can be deleted.}
 }
 \description{
-Update an accelerator. To see an AWS CLI example of updating an
-accelerator, scroll down to \strong{Example}.
+Update an accelerator.
 }
 \details{
-You must specify the US West (Oregon) Region to create or update
-accelerators.
+Global Accelerator is a global service that supports endpoints in
+multiple AWS Regions but you must specify the US West (Oregon) Region to
+create or update accelerators.
 }
 \section{Request syntax}{
 \preformatted{svc$update_accelerator(

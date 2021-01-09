@@ -161,7 +161,7 @@ iotsecuretunneling_list_tunnels <- function(thingName = NULL, maxResults = NULL,
 #' to use to connect to the AWS IoT Secure Tunneling proxy server
 #'
 #' Creates a new tunnel, and returns two client access tokens for clients
-#' to use to connect to the AWS IoT Secure Tunneling proxy server. .
+#' to use to connect to the AWS IoT Secure Tunneling proxy server.
 #'
 #' @usage
 #' iotsecuretunneling_open_tunnel(description, tags, destinationConfig,

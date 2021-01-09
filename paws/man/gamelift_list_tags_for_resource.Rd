@@ -12,12 +12,12 @@ gamelift_list_tags_for_resource(ResourceARN)
 that is assigned to and uniquely identifies the GameLift resource that
 you want to retrieve tags for. GameLift resource ARNs are included in
 the data object for the resource, which can be retrieved by calling a
-List or Describe action for the resource type.}
+List or Describe operation for the resource type.}
 }
 \description{
 Retrieves all tags that are assigned to a GameLift resource. Resource
 tags are used to organize AWS resources for a range of purposes. This
-action handles the permissions necessary to manage tags for the
+operation handles the permissions necessary to manage tags for the
 following GameLift resource types:
 }
 \details{
@@ -39,7 +39,7 @@ resource.
 \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
 in the \emph{AWS General Reference}
 
-\href{http://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{AWS Tagging Strategies}
+\href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{AWS Tagging Strategies}
 
 \strong{Related operations}
 \itemize{

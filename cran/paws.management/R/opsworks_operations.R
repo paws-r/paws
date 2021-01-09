@@ -167,7 +167,7 @@ opsworks_associate_elastic_ip <- function(ElasticIp, InstanceId = NULL) {
 #' You must create the Elastic Load Balancing instance separately, by using
 #' the Elastic Load Balancing console, API, or CLI. For more information,
 #' see [Elastic Load Balancing Developer
-#' Guide](https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/Welcome.html).
+#' Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack, or an attached policy that
@@ -262,7 +262,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' see [Running a Stack in a
 #' VPC](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html).
 #' For more information about default VPC and EC2 Classic, see [Supported
-#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html).
 #' @param Attributes A list of stack attributes and values as key/value pairs to be added to
 #' the cloned stack.
 #' @param ServiceRoleArn &#91;required&#93; The stack AWS Identity and Access Management (IAM) role, which allows
@@ -272,7 +272,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' creates the role for you. You can obtain an existing stack's IAM ARN
 #' programmatically by calling DescribePermissions. For more information
 #' about IAM ARNs, see [Using
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html).
 #' 
 #' You must set this parameter to a valid service role ARN or the action
 #' will fail; there is no default value. You can specify the source stack's
@@ -280,7 +280,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' @param DefaultInstanceProfileArn The Amazon Resource Name (ARN) of an IAM profile that is the default
 #' profile for all of the stack's EC2 instances. For more information about
 #' IAM ARNs, see [Using
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html).
 #' @param DefaultOs The stack's operating system, which must be set to one of the following.
 #' 
 #' -   A supported Linux operating system: An Amazon Linux version, such as
@@ -826,12 +826,12 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' tenancy options, we recommend that you research tenancy options before
 #' choosing them for your instances. For more information about dedicated
 #' hosts, see [Dedicated Hosts
-#' Overview](http://aws.amazon.com/ec2/dedicated-hosts/) and [Amazon EC2
-#' Dedicated Hosts](http://aws.amazon.com/ec2/dedicated-hosts/). For more
+#' Overview](https://aws.amazon.com/ec2/dedicated-hosts/) and [Amazon EC2
+#' Dedicated Hosts](https://aws.amazon.com/ec2/dedicated-hosts/). For more
 #' information about dedicated instances, see [Dedicated
-#' Instances](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html)
-#' and [Amazon EC2 Dedicated
-#' Instances](http://aws.amazon.com/ec2/purchasing-options/dedicated-instances/).
+#' Instances](https://docs.aws.amazon.com/vpc/latest/userguide/) and
+#' [Amazon EC2 Dedicated
+#' Instances](https://aws.amazon.com/ec2/pricing/dedicated-instances/).
 #'
 #' @section Request syntax:
 #' ```
@@ -941,7 +941,7 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' information, see CloudWatchLogsLogStream.
 #' @param CustomInstanceProfileArn The ARN of an IAM profile to be used for the layer's EC2 instances. For
 #' more information about IAM ARNs, see [Using
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html).
 #' @param CustomJson A JSON-formatted string containing custom stack configuration and
 #' deployment attributes to be installed on the layer's instances. For more
 #' information, see [Using Custom
@@ -1139,18 +1139,18 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' see [Running a Stack in a
 #' VPC](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html).
 #' For more information about default VPC and EC2-Classic, see [Supported
-#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html).
+#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html).
 #' @param Attributes One or more user-defined key-value pairs to be added to the stack
 #' attributes.
 #' @param ServiceRoleArn &#91;required&#93; The stack's AWS Identity and Access Management (IAM) role, which allows
 #' AWS OpsWorks Stacks to work with AWS resources on your behalf. You must
 #' set this parameter to the Amazon Resource Name (ARN) for an existing IAM
 #' role. For more information about IAM ARNs, see [Using
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html).
 #' @param DefaultInstanceProfileArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM profile that is the default
 #' profile for all of the stack's EC2 instances. For more information about
 #' IAM ARNs, see [Using
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html).
 #' @param DefaultOs The stack's default operating system, which is installed on every
 #' instance unless you specify a different operating system when you create
 #' the instance. You can specify one of the following.
@@ -2482,7 +2482,7 @@ opsworks_describe_operating_systems <- function() {
 #'
 #' @param IamUserArn The user's IAM ARN. This can also be a federated user's ARN. For more
 #' information about IAM ARNs, see [Using
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html).
 #' @param StackId The stack ID.
 #'
 #' @section Request syntax:
@@ -3327,7 +3327,7 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
 #' instances must be running a supported Linux-based operating system, and
 #' they must have a supported instance type. For more information about
 #' requirements for instances that you want to register, see [Preparing the
-#' Instance](https://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register-registering-preparer.html).
+#' Instance](https://docs.aws.amazon.com/opsworks/latest/userguide/).
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
 #' Manage permissions level for the stack or an attached policy that
@@ -4401,7 +4401,7 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #' information, see CloudWatchLogsLogStream.
 #' @param CustomInstanceProfileArn The ARN of an IAM profile to be used for all of the layer's EC2
 #' instances. For more information about IAM ARNs, see [Using
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html).
 #' @param CustomJson A JSON-formatted string containing custom stack configuration and
 #' deployment attributes to be installed on the layer's instances. For more
 #' information, see [Using Custom
@@ -4642,7 +4642,7 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' @param ServiceRoleArn Do not use this parameter. You cannot update a stack's service role.
 #' @param DefaultInstanceProfileArn The ARN of an IAM profile that is the default profile for all of the
 #' stack's EC2 instances. For more information about IAM ARNs, see [Using
-#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html).
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html).
 #' @param DefaultOs The stack's operating system, which must be set to one of the following:
 #' 
 #' -   A supported Linux operating system: An Amazon Linux version, such as

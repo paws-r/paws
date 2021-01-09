@@ -5,7 +5,7 @@
 \title{Provides information to AWS about your VPN customer gateway device}
 \usage{
 ec2_create_customer_gateway(BgpAsn, PublicIp, CertificateArn, Type,
-  DeviceName, DryRun)
+  TagSpecifications, DeviceName, DryRun)
 }
 \arguments{
 \item{BgpAsn}{[required] For devices that support BGP, the customer gateway's BGP ASN.
@@ -20,6 +20,8 @@ interface. The address must be static.}
 \item{Type}{[required] The type of VPN connection that this customer gateway supports
 (\code{ipsec.1}).}
 
+\item{TagSpecifications}{The tags to apply to the customer gateway.}
+
 \item{DeviceName}{A name for the customer gateway device.
 
 Length Constraints: Up to 255 characters.}
@@ -33,7 +35,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Provides information to AWS about your VPN customer gateway device. The
 customer gateway is the appliance at your end of the VPN connection.
 (The device on the AWS side of the VPN connection is the virtual private
-gateway.) You must provide the Internet-routable IP address of the
+gateway.) You must provide the internet-routable IP address of the
 customer gateway's external interface. The IP address must be static and
 can be behind a device performing network address translation (NAT).
 }
@@ -43,9 +45,14 @@ the device's BGP Autonomous System Number (ASN). You can use an existing
 ASN assigned to your network. If you don't have an ASN already, you can
 use a private ASN (in the 64512 - 65534 range).
 
-Amazon EC2 supports all 2-byte ASN numbers in the range of 1 - 65534,
-with the exception of 7224, which is reserved in the \code{us-east-1} Region,
-and 9059, which is reserved in the \code{eu-west-1} Region.
+Amazon EC2 supports all 4-byte ASN numbers in the range of 1 -
+2147483647, with the exception of the following:
+\itemize{
+\item 7224 - reserved in the \code{us-east-1} Region
+\item 9059 - reserved in the \code{eu-west-1} Region
+\item 17943 - reserved in the \code{ap-southeast-1} Region
+\item 10124 - reserved in the \code{ap-northeast-1} Region
+}
 
 For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
 \emph{AWS Site-to-Site VPN User Guide}.
@@ -61,6 +68,17 @@ customer gateway and do not create new customer gateways.
   PublicIp = "string",
   CertificateArn = "string",
   Type = "ipsec.1",
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  ),
   DeviceName = "string",
   DryRun = TRUE|FALSE
 )

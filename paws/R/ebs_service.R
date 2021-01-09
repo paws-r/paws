@@ -5,15 +5,23 @@ NULL
 #' Amazon Elastic Block Store
 #'
 #' @description
-#' You can use the Amazon Elastic Block Store (EBS) direct APIs to directly
-#' read the data on your EBS snapshots, and identify the difference between
-#' two snapshots. You can view the details of blocks in an EBS snapshot,
-#' compare the block difference between two snapshots, and directly access
-#' the data in a snapshot. If you're an independent software vendor (ISV)
-#' who offers backup services for EBS, the EBS direct APIs make it easier
-#' and more cost-effective to track incremental changes on your EBS volumes
-#' via EBS snapshots. This can be done without having to create new volumes
-#' from EBS snapshots.
+#' You can use the Amazon Elastic Block Store (Amazon EBS) direct APIs to
+#' create EBS snapshots, write data directly to your snapshots, read data
+#' on your snapshots, and identify the differences or changes between two
+#' snapshots. If you’re an independent software vendor (ISV) who offers
+#' backup services for Amazon EBS, the EBS direct APIs make it more
+#' efficient and cost-effective to track incremental changes on your EBS
+#' volumes through snapshots. This can be done without having to create new
+#' volumes from snapshots, and then use Amazon Elastic Compute Cloud
+#' (Amazon EC2) instances to compare the differences.
+#' 
+#' You can create incremental snapshots directly from data on-premises into
+#' EBS volumes and the cloud to use for quick disaster recovery. With the
+#' ability to write and read snapshots, you can write your on-premises data
+#' to an EBS snapshot during a disaster. Then after recovery, you can
+#' restore it back to AWS or on-premises from the snapshot. You no longer
+#' need to build and maintain complex mechanisms to copy data to and from
+#' Amazon EBS.
 #' 
 #' This API reference provides detailed information about the actions, data
 #' types, parameters, and errors of the EBS direct APIs. For more
@@ -61,9 +69,9 @@ NULL
 #' \tabular{ll}{
 #'  \link[=ebs_complete_snapshot]{complete_snapshot} \tab Seals and completes the snapshot after all of the required blocks of data have been written to it\cr
 #'  \link[=ebs_get_snapshot_block]{get_snapshot_block} \tab Returns the data in a block in an Amazon Elastic Block Store snapshot\cr
-#'  \link[=ebs_list_changed_blocks]{list_changed_blocks} \tab Returns the block indexes and block tokens for blocks that are different between two Amazon Elastic Block Store snapshots of the same volume/snapshot lineage\cr
-#'  \link[=ebs_list_snapshot_blocks]{list_snapshot_blocks} \tab Returns the block indexes and block tokens for blocks in an Amazon Elastic Block Store snapshot\cr
-#'  \link[=ebs_put_snapshot_block]{put_snapshot_block} \tab Writes a block of data to a block in the snapshot\cr
+#'  \link[=ebs_list_changed_blocks]{list_changed_blocks} \tab Returns information about the blocks that are different between two Amazon Elastic Block Store snapshots of the same volume/snapshot lineage\cr
+#'  \link[=ebs_list_snapshot_blocks]{list_snapshot_blocks} \tab Returns information about the blocks in an Amazon Elastic Block Store snapshot\cr
+#'  \link[=ebs_put_snapshot_block]{put_snapshot_block} \tab Writes a block of data to a snapshot\cr
 #'  \link[=ebs_start_snapshot]{start_snapshot} \tab Creates a new Amazon EBS snapshot
 #' }
 #'

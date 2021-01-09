@@ -22,8 +22,8 @@ want to retrieve.}
 \description{
 Returns a list of attribute values. Attibutes are similar to the details
 in a Price List API offer file. For a list of available attributes, see
-\href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs}{Offer File Definitions}
-in the \href{http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html}{AWS Billing and Cost Management User Guide}.
+\href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html}{Offer File Definitions}
+in the \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html}{AWS Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_attribute_values(

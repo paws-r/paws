@@ -11,29 +11,29 @@ transcribeservice_create_medical_vocabulary(VocabularyName,
 \arguments{
 \item{VocabularyName}{[required] The name of the custom vocabulary. This case-sensitive name must be
 unique within an AWS account. If you try to create a vocabulary with the
-same name as a previous vocabulary you will receive a
-\code{ConflictException} error.}
+same name as a previous vocabulary, you get a \code{ConflictException} error.}
 
-\item{LanguageCode}{[required] The language code used for the entries within your custom vocabulary.
-The language code of your custom vocabulary must match the language code
-of your transcription job. US English (en-US) is the only language code
-available for Amazon Transcribe Medical.}
+\item{LanguageCode}{[required] The language code for the language used for the entries in your custom
+vocabulary. The language code of your custom vocabulary must match the
+language code of your transcription job. US English (en-US) is the only
+language code available for Amazon Transcribe Medical.}
 
-\item{VocabularyFileUri}{[required] The Amazon S3 location of the text file you use to define your custom
-vocabulary. The URI must be in the same AWS region as the API endpoint
+\item{VocabularyFileUri}{[required] The location in Amazon S3 of the text file you use to define your custom
+vocabulary. The URI must be in the same AWS Region as the resource that
 you're calling. Enter information about your \code{VocabularyFileUri} in the
 following format:
 
 \verb{https://s3.&lt;aws-region&gt;.amazonaws.com/&lt;bucket-name&gt;/&lt;keyprefix&gt;/&lt;objectkey&gt;}
 
-This is an example of a vocabulary file uri location in Amazon S3:
+The following is an example URI for a vocabulary file that is stored in
+Amazon S3:
 
 \verb{https://s3.us-east-1.amazonaws.com/AWSDOC-EXAMPLE-BUCKET/vocab.txt}
 
-For more information about S3 object names, see \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys}{Object Keys}
+For more information about Amazon S3 object names, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html}{Object Keys}
 in the \emph{Amazon S3 Developer Guide}.
 
-For more information about custom vocabularies, see \href{http://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary-med}{Medical Custom Vocabularies}.}
+For more information about custom vocabularies, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html}{Medical Custom Vocabularies}.}
 }
 \description{
 Creates a new custom vocabulary that you can use to change how Amazon
@@ -42,7 +42,7 @@ Transcribe Medical transcribes your audio file.
 \section{Request syntax}{
 \preformatted{svc$create_medical_vocabulary(
   VocabularyName = "string",
-  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA"|"ru-RU"|"zh-CN"|"nl-NL"|"id-ID"|"ta-IN"|"fa-IR"|"en-IE"|"en-AB"|"en-WL"|"pt-PT"|"te-IN"|"tr-TR"|"de-CH"|"he-IL"|"ms-MY"|"ja-JP"|"ar-AE",
+  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
   VocabularyFileUri = "string"
 )
 }

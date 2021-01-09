@@ -63,7 +63,7 @@ this mode.
 app again. For public devices, Device Farm always signs your apps again.
 
 For more information on how Device Farm modifies your uploads during
-tests, see \href{https://aws.amazon.com/device-farm/faq/}{Do you modify my app?}}
+tests, see \href{https://aws.amazon.com/device-farm/faqs/}{Do you modify my app?}}
 }
 \description{
 Specifies and starts a remote access session.

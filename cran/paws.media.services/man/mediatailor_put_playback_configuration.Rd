@@ -6,8 +6,9 @@
 \usage{
 mediatailor_put_playback_configuration(AdDecisionServerUrl,
   AvailSuppression, Bumper, CdnConfiguration, DashConfiguration,
-  LivePreRollConfiguration, Name, PersonalizationThresholdSeconds,
-  SlateAdUrl, Tags, TranscodeProfileName, VideoContentSourceUrl)
+  LivePreRollConfiguration, ManifestProcessingRules, Name,
+  PersonalizationThresholdSeconds, SlateAdUrl, Tags, TranscodeProfileName,
+  VideoContentSourceUrl)
 }
 \arguments{
 \item{AdDecisionServerUrl}{The URL for the ad decision server (ADS). This includes the
@@ -30,6 +31,10 @@ Amazon CloudFront, for content and ad segment management.}
 \item{DashConfiguration}{The configuration for DASH content.}
 
 \item{LivePreRollConfiguration}{The configuration for pre-roll ad insertion.}
+
+\item{ManifestProcessingRules}{The configuration for manifest processing rules. Manifest processing
+rules enable customization of the personalized manifests created by
+MediaTailor.}
 
 \item{Name}{The identifier for the playback configuration.}
 
@@ -79,6 +84,11 @@ Adds a new playback configuration to AWS Elemental MediaTailor.
   LivePreRollConfiguration = list(
     AdDecisionServerUrl = "string",
     MaxDurationSeconds = 123
+  ),
+  ManifestProcessingRules = list(
+    AdMarkerPassthrough = list(
+      Enabled = TRUE|FALSE
+    )
   ),
   Name = "string",
   PersonalizationThresholdSeconds = 123,

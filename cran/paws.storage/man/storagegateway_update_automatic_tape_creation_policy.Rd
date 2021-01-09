@@ -31,7 +31,8 @@ A gateway can have only one automatic tape creation policy.
       TapeBarcodePrefix = "string",
       PoolId = "string",
       TapeSizeInBytes = 123,
-      MinimumNumTapes = 123
+      MinimumNumTapes = 123,
+      Worm = TRUE|FALSE
     )
   ),
   GatewayARN = "string"

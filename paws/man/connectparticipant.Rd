@@ -40,18 +40,21 @@ and customers.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=connectparticipant_complete_attachment_upload]{complete_attachment_upload} \tab Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API\cr
 \link[=connectparticipant_create_participant_connection]{create_participant_connection} \tab Creates the participant's connection\cr
 \link[=connectparticipant_disconnect_participant]{disconnect_participant} \tab Disconnects a participant\cr
-\link[=connectparticipant_get_transcript]{get_transcript} \tab Retrieves a transcript of the session\cr
+\link[=connectparticipant_get_attachment]{get_attachment} \tab Provides a pre-signed URL for download of a completed attachment\cr
+\link[=connectparticipant_get_transcript]{get_transcript} \tab Retrieves a transcript of the session, including details about any attachments\cr
 \link[=connectparticipant_send_event]{send_event} \tab Sends an event\cr
-\link[=connectparticipant_send_message]{send_message} \tab Sends a message
+\link[=connectparticipant_send_message]{send_message} \tab Sends a message\cr
+\link[=connectparticipant_start_attachment_upload]{start_attachment_upload} \tab Provides a pre-signed Amazon S3 URL in response for uploading the file directly to S3
 }
 }
 
 \examples{
 \dontrun{
 svc <- connectparticipant()
-svc$create_participant_connection(
+svc$complete_attachment_upload(
   Foo = 123
 )
 }

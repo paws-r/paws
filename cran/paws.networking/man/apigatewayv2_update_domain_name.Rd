@@ -4,12 +4,15 @@
 \alias{apigatewayv2_update_domain_name}
 \title{Updates a domain name}
 \usage{
-apigatewayv2_update_domain_name(DomainName, DomainNameConfigurations)
+apigatewayv2_update_domain_name(DomainName, DomainNameConfigurations,
+  MutualTlsAuthentication)
 }
 \arguments{
 \item{DomainName}{[required] The domain name.}
 
 \item{DomainNameConfigurations}{The domain name configurations.}
+
+\item{MutualTlsAuthentication}{The mutual TLS authentication configuration for a custom domain name.}
 }
 \description{
 Updates a domain name.
@@ -31,6 +34,10 @@ Updates a domain name.
       HostedZoneId = "string",
       SecurityPolicy = "TLS_1_0"|"TLS_1_2"
     )
+  ),
+  MutualTlsAuthentication = list(
+    TruststoreUri = "string",
+    TruststoreVersion = "string"
   )
 )
 }

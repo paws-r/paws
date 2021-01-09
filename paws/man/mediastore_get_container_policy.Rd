@@ -11,7 +11,7 @@ mediastore_get_container_policy(ContainerName)
 }
 \description{
 Retrieves the access policy for the specified container. For information
-about the data that is included in an access policy, see the \href{https://aws.amazon.com/documentation/iam/}{AWS Identity and Access Management User Guide}.
+about the data that is included in an access policy, see the \href{https://docs.aws.amazon.com/iam/index.html}{AWS Identity and Access Management User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_container_policy(

@@ -47,7 +47,7 @@ Creates a data source.
   AwsAccountId = "string",
   DataSourceId = "string",
   Name = "string",
-  Type = "ADOBE_ANALYTICS"|"AMAZON_ELASTICSEARCH"|"ATHENA"|"AURORA"|"AURORA_POSTGRESQL"|"AWS_IOT_ANALYTICS"|"GITHUB"|"JIRA"|"MARIADB"|"MYSQL"|"POSTGRESQL"|"PRESTO"|"REDSHIFT"|"S3"|"SALESFORCE"|"SERVICENOW"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"TWITTER",
+  Type = "ADOBE_ANALYTICS"|"AMAZON_ELASTICSEARCH"|"ATHENA"|"AURORA"|"AURORA_POSTGRESQL"|"AWS_IOT_ANALYTICS"|"GITHUB"|"JIRA"|"MARIADB"|"MYSQL"|"ORACLE"|"POSTGRESQL"|"PRESTO"|"REDSHIFT"|"S3"|"SALESFORCE"|"SERVICENOW"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"TWITTER"|"TIMESTREAM",
   DataSourceParameters = list(
     AmazonElasticsearchParameters = list(
       Domain = "string"
@@ -77,6 +77,11 @@ Creates a data source.
       Database = "string"
     ),
     MySqlParameters = list(
+      Host = "string",
+      Port = 123,
+      Database = "string"
+    ),
+    OracleParameters = list(
       Host = "string",
       Port = 123,
       Database = "string"
@@ -168,6 +173,11 @@ Creates a data source.
             Database = "string"
           ),
           MySqlParameters = list(
+            Host = "string",
+            Port = 123,
+            Database = "string"
+          ),
+          OracleParameters = list(
             Host = "string",
             Port = 123,
             Database = "string"

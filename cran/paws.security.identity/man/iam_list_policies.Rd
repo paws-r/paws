@@ -28,7 +28,7 @@ policies are returned.}
 
 \item{PathPrefix}{The path prefix for filtering the results. This parameter is optional.
 If it is not included, it defaults to a slash (/), listing all policies.
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
@@ -74,7 +74,7 @@ to \code{Local}. To list only AWS managed policies, set \code{Scope} to \code{AW
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 
-For more information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+For more information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

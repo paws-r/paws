@@ -13,7 +13,7 @@ kinesis_put_record(StreamName, Data, PartitionKey, ExplicitHashKey,
 \item{Data}{[required] The data blob to put into the record, which is base64-encoded when the
 blob is serialized. When the data blob (the payload before
 base64-encoding) is added to the partition key size, the total size must
-not exceed the maximum record size (1 MB).}
+not exceed the maximum record size (1 MiB).}
 
 \item{PartitionKey}{[required] Determines which shard in the stream the data record is assigned to.
 Partition keys are Unicode strings with a maximum length limit of 256
@@ -40,7 +40,7 @@ Writes a single data record into an Amazon Kinesis data stream. Call
 \code{PutRecord} to send data into the stream for real-time ingestion and
 subsequent processing, one record at a time. Each shard can support
 writes up to 1,000 records per second, up to a maximum data write total
-of 1 MB per second.
+of 1 MiB per second.
 }
 \details{
 You must specify the name of the stream that captures, stores, and
@@ -61,7 +61,7 @@ keys to 128-bit integer values and to map associated data records to
 shards using the hash key ranges of the shards. You can override hashing
 the partition key to determine the shard by explicitly specifying a hash
 value using the \code{ExplicitHashKey} parameter. For more information, see
-\href{http://docs.aws.amazon.com/kinesis/latest/dev/developing-producers-with-sdk.html#kinesis-using-sdk-java-add-data-to-stream}{Adding Data to a Stream}
+\href{https://docs.aws.amazon.com/streams/latest/dev/developing-producers-with-sdk.html}{Adding Data to a Stream}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.
 
 \code{PutRecord} returns the shard ID of where the data record was placed and
@@ -70,8 +70,11 @@ the sequence number that was assigned to the data record.
 Sequence numbers increase over time and are specific to a shard within a
 stream, not across all shards within a stream. To guarantee strictly
 increasing ordering, write serially to a shard and use the
-\code{SequenceNumberForOrdering} parameter. For more information, see \href{http://docs.aws.amazon.com/kinesis/latest/dev/developing-producers-with-sdk.html#kinesis-using-sdk-java-add-data-to-stream}{Adding Data to a Stream}
+\code{SequenceNumberForOrdering} parameter. For more information, see \href{https://docs.aws.amazon.com/streams/latest/dev/developing-producers-with-sdk.html}{Adding Data to a Stream}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.
+
+After you write a record to a stream, you cannot modify that record or
+its order within the stream.
 
 If a \code{PutRecord} request cannot be processed because of insufficient
 provisioned throughput on the shard involved in the request, \code{PutRecord}

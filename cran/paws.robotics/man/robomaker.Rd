@@ -34,10 +34,13 @@ operations.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=robomaker_batch_delete_worlds]{batch_delete_worlds} \tab Deletes one or more worlds in a batch operation\cr
 \link[=robomaker_batch_describe_simulation_job]{batch_describe_simulation_job} \tab Describes one or more simulation jobs\cr
 \link[=robomaker_cancel_deployment_job]{cancel_deployment_job} \tab Cancels the specified deployment job\cr
 \link[=robomaker_cancel_simulation_job]{cancel_simulation_job} \tab Cancels the specified simulation job\cr
 \link[=robomaker_cancel_simulation_job_batch]{cancel_simulation_job_batch} \tab Cancels a simulation job batch\cr
+\link[=robomaker_cancel_world_export_job]{cancel_world_export_job} \tab Cancels the specified export job\cr
+\link[=robomaker_cancel_world_generation_job]{cancel_world_generation_job} \tab Cancels the specified world generator job\cr
 \link[=robomaker_create_deployment_job]{create_deployment_job} \tab Deploys a specific version of a robot application to robots in a fleet\cr
 \link[=robomaker_create_fleet]{create_fleet} \tab Creates a fleet, a logical group of robots running the same robot application\cr
 \link[=robomaker_create_robot]{create_robot} \tab Creates a robot\cr
@@ -46,10 +49,14 @@ operations.
 \link[=robomaker_create_simulation_application]{create_simulation_application} \tab Creates a simulation application\cr
 \link[=robomaker_create_simulation_application_version]{create_simulation_application_version} \tab Creates a simulation application with a specific revision id\cr
 \link[=robomaker_create_simulation_job]{create_simulation_job} \tab Creates a simulation job\cr
+\link[=robomaker_create_world_export_job]{create_world_export_job} \tab Creates a world export job\cr
+\link[=robomaker_create_world_generation_job]{create_world_generation_job} \tab Creates worlds using the specified template\cr
+\link[=robomaker_create_world_template]{create_world_template} \tab Creates a world template\cr
 \link[=robomaker_delete_fleet]{delete_fleet} \tab Deletes a fleet\cr
 \link[=robomaker_delete_robot]{delete_robot} \tab Deletes a robot\cr
 \link[=robomaker_delete_robot_application]{delete_robot_application} \tab Deletes a robot application\cr
 \link[=robomaker_delete_simulation_application]{delete_simulation_application} \tab Deletes a simulation application\cr
+\link[=robomaker_delete_world_template]{delete_world_template} \tab Deletes a world template\cr
 \link[=robomaker_deregister_robot]{deregister_robot} \tab Deregisters a robot\cr
 \link[=robomaker_describe_deployment_job]{describe_deployment_job} \tab Describes a deployment job\cr
 \link[=robomaker_describe_fleet]{describe_fleet} \tab Describes a fleet\cr
@@ -58,6 +65,11 @@ operations.
 \link[=robomaker_describe_simulation_application]{describe_simulation_application} \tab Describes a simulation application\cr
 \link[=robomaker_describe_simulation_job]{describe_simulation_job} \tab Describes a simulation job\cr
 \link[=robomaker_describe_simulation_job_batch]{describe_simulation_job_batch} \tab Describes a simulation job batch\cr
+\link[=robomaker_describe_world]{describe_world} \tab Describes a world\cr
+\link[=robomaker_describe_world_export_job]{describe_world_export_job} \tab Describes a world export job\cr
+\link[=robomaker_describe_world_generation_job]{describe_world_generation_job} \tab Describes a world generation job\cr
+\link[=robomaker_describe_world_template]{describe_world_template} \tab Describes a world template\cr
+\link[=robomaker_get_world_template_body]{get_world_template_body} \tab Gets the world template body\cr
 \link[=robomaker_list_deployment_jobs]{list_deployment_jobs} \tab Returns a list of deployment jobs for a fleet\cr
 \link[=robomaker_list_fleets]{list_fleets} \tab Returns a list of fleets\cr
 \link[=robomaker_list_robot_applications]{list_robot_applications} \tab Returns a list of robot application\cr
@@ -66,6 +78,10 @@ operations.
 \link[=robomaker_list_simulation_job_batches]{list_simulation_job_batches} \tab Returns a list simulation job batches\cr
 \link[=robomaker_list_simulation_jobs]{list_simulation_jobs} \tab Returns a list of simulation jobs\cr
 \link[=robomaker_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on a AWS RoboMaker resource\cr
+\link[=robomaker_list_world_export_jobs]{list_world_export_jobs} \tab Lists world export jobs\cr
+\link[=robomaker_list_world_generation_jobs]{list_world_generation_jobs} \tab Lists world generator jobs\cr
+\link[=robomaker_list_worlds]{list_worlds} \tab Lists worlds\cr
+\link[=robomaker_list_world_templates]{list_world_templates} \tab Lists world templates\cr
 \link[=robomaker_register_robot]{register_robot} \tab Registers a robot with a fleet\cr
 \link[=robomaker_restart_simulation_job]{restart_simulation_job} \tab Restarts a running simulation job\cr
 \link[=robomaker_start_simulation_job_batch]{start_simulation_job_batch} \tab Starts a new simulation job batch\cr
@@ -73,14 +89,15 @@ operations.
 \link[=robomaker_tag_resource]{tag_resource} \tab Adds or edits tags for a AWS RoboMaker resource\cr
 \link[=robomaker_untag_resource]{untag_resource} \tab Removes the specified tags from the specified AWS RoboMaker resource\cr
 \link[=robomaker_update_robot_application]{update_robot_application} \tab Updates a robot application\cr
-\link[=robomaker_update_simulation_application]{update_simulation_application} \tab Updates a simulation application
+\link[=robomaker_update_simulation_application]{update_simulation_application} \tab Updates a simulation application\cr
+\link[=robomaker_update_world_template]{update_world_template} \tab Updates a world template
 }
 }
 
 \examples{
 \dontrun{
 svc <- robomaker()
-svc$batch_describe_simulation_job(
+svc$batch_delete_worlds(
   Foo = 123
 )
 }

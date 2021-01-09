@@ -5,7 +5,7 @@
 \title{Completes a multipart upload by assembling previously uploaded parts}
 \usage{
 s3_complete_multipart_upload(Bucket, Key, MultipartUpload, UploadId,
-  RequestPayer)
+  RequestPayer, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] Name of the bucket to which the multipart upload was initiated.}
@@ -17,21 +17,26 @@ s3_complete_multipart_upload(Bucket, Key, MultipartUpload, UploadId,
 \item{UploadId}{[required] ID for the initiated multipart upload.}
 
 \item{RequestPayer}{}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Completes a multipart upload by assembling previously uploaded parts.
 }
 \details{
 You first initiate the multipart upload and then upload all parts using
-the UploadPart operation. After successfully uploading all relevant
-parts of an upload, you call this operation to complete the upload. Upon
-receiving this request, Amazon S3 concatenates all the parts in
-ascending order by part number to create a new object. In the Complete
-Multipart Upload request, you must provide the parts list. You must
-ensure that the parts list is complete. This operation concatenates the
-parts that you provide in the list. For each part in the list, you must
-provide the part number and the \code{ETag} value, returned after that part
-was uploaded.
+the
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
+operation. After successfully uploading all relevant parts of an upload,
+you call this operation to complete the upload. Upon receiving this
+request, Amazon S3 concatenates all the parts in ascending order by part
+number to create a new object. In the Complete Multipart Upload request,
+you must provide the parts list. You must ensure that the parts list is
+complete. This operation concatenates the parts that you provide in the
+list. For each part in the list, you must provide the part number and
+the \code{ETag} value, returned after that part was uploaded.
 
 Processing of a Complete Multipart Upload request could take several
 minutes to complete. After Amazon S3 begins processing the request, it
@@ -50,7 +55,7 @@ For more information about multipart uploads, see \href{https://docs.aws.amazon.
 For information about permissions required to use the multipart upload
 API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html}{Multipart Upload API and Permissions}.
 
-\code{GetBucketLifecycle} has the following special errors:
+\code{CompleteMultipartUpload} has the following special errors:
 \itemize{
 \item Error code: \code{EntityTooSmall}
 \itemize{
@@ -83,11 +88,11 @@ been aborted or completed.
 
 The following operations are related to \code{CompleteMultipartUpload}:
 \itemize{
-\item CreateMultipartUpload
-\item UploadPart
-\item AbortMultipartUpload
-\item ListParts
-\item ListMultipartUploads
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html}{AbortMultipartUpload}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html}{ListParts}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html}{ListMultipartUploads}
 }
 }
 \section{Request syntax}{
@@ -103,7 +108,8 @@ The following operations are related to \code{CompleteMultipartUpload}:
     )
   ),
   UploadId = "string",
-  RequestPayer = "requester"
+  RequestPayer = "requester",
+  ExpectedBucketOwner = "string"
 )
 }
 }

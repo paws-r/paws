@@ -16,7 +16,7 @@ indexes.}
 
 \item{KeySchema}{[required] Specifies the attributes that make up the primary key for a table or an
 index. The attributes in \code{KeySchema} must also be defined in the
-\code{AttributeDefinitions} array. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html}{Data Model}
+\code{AttributeDefinitions} array. For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.html}{Data Model}
 in the \emph{Amazon DynamoDB Developer Guide}.
 
 Each \code{KeySchemaElement} in the array is composed of:
@@ -139,7 +139,7 @@ If you set BillingMode as \code{PAY_PER_REQUEST}, you cannot specify this
 property.
 
 For current minimum and maximum provisioned throughput values, see
-\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Limits}
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Service, Account, and Table Quotas}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{StreamSpecification}{The settings for DynamoDB Streams on the table. These settings consist

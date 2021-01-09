@@ -6,7 +6,7 @@
 \usage{
 rds_copy_db_snapshot(SourceDBSnapshotIdentifier,
   TargetDBSnapshotIdentifier, KmsKeyId, Tags, CopyTags, PreSignedUrl,
-  OptionGroupName, SourceRegion)
+  OptionGroupName, TargetCustomAvailabilityZone, SourceRegion)
 }
 \arguments{
 \item{SourceDBSnapshotIdentifier}{[required] The identifier for the source DB snapshot.
@@ -48,15 +48,15 @@ Constraints:
 
 Example: \code{my-db-snapshot}}
 
-\item{KmsKeyId}{The AWS KMS key ID for an encrypted DB snapshot. The KMS key ID is the
-Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for
-the KMS encryption key.
+\item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB snapshot. The AWS KMS key
+identifier is the key ARN, key ID, alias ARN, or alias name for the AWS
+KMS customer master key (CMK).
 
 If you copy an encrypted DB snapshot from your AWS account, you can
-specify a value for this parameter to encrypt the copy with a new KMS
-encryption key. If you don't specify a value for this parameter, then
-the copy of the DB snapshot is encrypted with the same KMS key as the
-source DB snapshot.
+specify a value for this parameter to encrypt the copy with a new AWS
+KMS CMK. If you don't specify a value for this parameter, then the copy
+of the DB snapshot is encrypted with the same AWS KMS key as the source
+DB snapshot.
 
 If you copy an encrypted DB snapshot that is shared from another AWS
 account, then you must specify a value for this parameter.
@@ -65,9 +65,9 @@ If you specify this parameter when you copy an unencrypted snapshot, the
 copy is encrypted.
 
 If you copy an encrypted snapshot to a different AWS Region, then you
-must specify a KMS key for the destination AWS Region. KMS encryption
-keys are specific to the AWS Region that they are created in, and you
-can't use encryption keys from one AWS Region in another AWS Region.}
+must specify a AWS KMS key identifier for the destination AWS Region.
+AWS KMS CMKs are specific to the AWS Region that they are created in,
+and you can't use CMKs from one AWS Region in another AWS Region.}
 
 \item{Tags}{}
 
@@ -98,11 +98,11 @@ AWS Region to the us-east-1 AWS Region, then you call the
 presigned URL that contains a call to the \code{CopyDBSnapshot} action in
 the us-west-2 AWS Region. For this example, the \code{DestinationRegion}
 in the presigned URL must be set to the us-east-1 AWS Region.
-\item \code{KmsKeyId} - The AWS KMS key identifier for the key to use to
-encrypt the copy of the DB snapshot in the destination AWS Region.
-This is the same identifier for both the \code{CopyDBSnapshot} action
-that is called in the destination AWS Region, and the action
-contained in the presigned URL.
+\item \code{KmsKeyId} - The AWS KMS key identifier for the customer master key
+(CMK) to use to encrypt the copy of the DB snapshot in the
+destination AWS Region. This is the same identifier for both the
+\code{CopyDBSnapshot} action that is called in the destination AWS
+Region, and the action contained in the presigned URL.
 \item \code{SourceDBSnapshotIdentifier} - The DB snapshot identifier for the
 encrypted snapshot to be copied. This identifier must be in the
 Amazon Resource Name (ARN) format for the source AWS Region. For
@@ -131,14 +131,19 @@ Specify this option if you are copying a snapshot from one AWS Region to
 another, and your DB instance uses a nondefault option group. If your
 source DB instance uses Transparent Data Encryption for Oracle or
 Microsoft SQL Server, you must specify this option when copying across
-AWS Regions. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options}{Option Group Considerations}
+AWS Regions. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopySnapshot.Options}{Option group considerations}
 in the \emph{Amazon RDS User Guide.}}
+
+\item{TargetCustomAvailabilityZone}{The external custom Availability Zone (CAZ) identifier for the target
+CAZ.
+
+Example: \code{rds-caz-aiqhTgQv}.}
 
 \item{SourceRegion}{The ID of the region that contains the snapshot to be copied.}
 }
 \description{
 Copies the specified DB snapshot. The source DB snapshot must be in the
-"available" state.
+\code{available} state.
 }
 \details{
 You can copy a snapshot from one AWS Region to another. In that case,
@@ -162,6 +167,7 @@ in the \emph{Amazon RDS User Guide.}
   CopyTags = TRUE|FALSE,
   PreSignedUrl = "string",
   OptionGroupName = "string",
+  TargetCustomAvailabilityZone = "string",
   SourceRegion = "string"
 )
 }

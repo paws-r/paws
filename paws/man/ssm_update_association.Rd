@@ -8,7 +8,7 @@ ssm_update_association(AssociationId, Parameters, DocumentVersion,
   ScheduleExpression, OutputLocation, Name, Targets, AssociationName,
   AssociationVersion, AutomationTargetParameterName, MaxErrors,
   MaxConcurrency, ComplianceSeverity, SyncCompliance,
-  ApplyOnlyAtCronInterval)
+  ApplyOnlyAtCronInterval, TargetLocations)
 }
 \arguments{
 \item{AssociationId}{[required] The ID of the association you want to update.}
@@ -102,13 +102,18 @@ By default, all associations use \code{AUTO} mode.}
 \item{ApplyOnlyAtCronInterval}{By default, when you update an association, the system runs it
 immediately after it is updated and then according to the schedule you
 specified. Specify this option if you don't want an association to run
-immediately after you update it.
+immediately after you update it. This parameter is not supported for
+rate expressions.
 
 Also, if you specified this option when you created the association, you
 can reset it. To do so, specify the \code{no-apply-only-at-cron-interval}
 parameter when you update the association from the command line. This
 parameter forces the association to run immediately after updating it
 and according to the interval specified.}
+
+\item{TargetLocations}{A location is a combination of AWS Regions and AWS accounts where you
+want to run the association. Use this action to update an association in
+multiple Regions and multiple accounts.}
 }
 \description{
 Updates an association. You can update the association name and version,
@@ -157,7 +162,20 @@ the specified targets.
   MaxConcurrency = "string",
   ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
   SyncCompliance = "AUTO"|"MANUAL",
-  ApplyOnlyAtCronInterval = TRUE|FALSE
+  ApplyOnlyAtCronInterval = TRUE|FALSE,
+  TargetLocations = list(
+    list(
+      Accounts = list(
+        "string"
+      ),
+      Regions = list(
+        "string"
+      ),
+      TargetLocationMaxConcurrency = "string",
+      TargetLocationMaxErrors = "string",
+      ExecutionRoleName = "string"
+    )
+  )
 )
 }
 }

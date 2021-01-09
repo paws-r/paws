@@ -42,10 +42,6 @@ NULL
 #' bar by specifying `LOW`, `MEDIUM`, or `HIGH`. If you do not want to
 #' filter detected faces, specify `NONE`. The default value is `NONE`.
 #' 
-#' To use quality filtering, you need a collection associated with version
-#' 3 of the face model or higher. To get the version of the face model
-#' associated with a collection, call DescribeCollection.
-#' 
 #' If the image doesn't contain Exif metadata, `CompareFaces` returns
 #' orientation information for the source and target images. Use these
 #' values to display the images with the correct image orientation.
@@ -1273,6 +1269,99 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
 }
 .rekognition$operations$detect_moderation_labels <- rekognition_detect_moderation_labels
 
+#' Detects Personal Protective Equipment (PPE) worn by people detected in
+#' an image
+#'
+#' Detects Personal Protective Equipment (PPE) worn by people detected in
+#' an image. Amazon Rekognition can detect the following types of PPE.
+#' 
+#' -   Face cover
+#' 
+#' -   Hand cover
+#' 
+#' -   Head cover
+#' 
+#' You pass the input image as base64-encoded image bytes or as a reference
+#' to an image in an Amazon S3 bucket. The image must be either a PNG or
+#' JPG formatted file.
+#' 
+#' `DetectProtectiveEquipment` detects PPE worn by up to 15 persons
+#' detected in an image.
+#' 
+#' For each person detected in the image the API returns an array of body
+#' parts (face, head, left-hand, right-hand). For each body part, an array
+#' of detected items of PPE is returned, including an indicator of whether
+#' or not the PPE covers the body part. The API returns the confidence it
+#' has in each detection (person, PPE, body part and body part coverage).
+#' It also returns a bounding box (BoundingBox) for each detected person
+#' and each detected item of PPE.
+#' 
+#' You can optionally request a summary of detected PPE items with the
+#' `SummarizationAttributes` input parameter. The summary provides the
+#' following information.
+#' 
+#' -   The persons detected as wearing all of the types of PPE that you
+#'     specify.
+#' 
+#' -   The persons detected as not wearing all of the types PPE that you
+#'     specify.
+#' 
+#' -   The persons detected where PPE adornment could not be determined.
+#' 
+#' This is a stateless API operation. That is, the operation does not
+#' persist any data.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:DetectProtectiveEquipment` action.
+#'
+#' @usage
+#' rekognition_detect_protective_equipment(Image, SummarizationAttributes)
+#'
+#' @param Image &#91;required&#93; The image in which you want to detect PPE on detected persons. The image
+#' can be passed as image bytes or you can reference an image stored in an
+#' Amazon S3 bucket.
+#' @param SummarizationAttributes An array of PPE types that you want to summarize.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$detect_protective_equipment(
+#'   Image = list(
+#'     Bytes = raw,
+#'     S3Object = list(
+#'       Bucket = "string",
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   SummarizationAttributes = list(
+#'     MinConfidence = 123.0,
+#'     RequiredEquipmentTypes = list(
+#'       "FACE_COVER"|"HAND_COVER"|"HEAD_COVER"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_detect_protective_equipment
+rekognition_detect_protective_equipment <- function(Image, SummarizationAttributes = NULL) {
+  op <- new_operation(
+    name = "DetectProtectiveEquipment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$detect_protective_equipment_input(Image = Image, SummarizationAttributes = SummarizationAttributes)
+  output <- .rekognition$detect_protective_equipment_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$detect_protective_equipment <- rekognition_detect_protective_equipment
+
 #' Detects text in the input image and converts it into machine-readable
 #' text
 #'
@@ -2461,11 +2550,11 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 #' information, see Recognizing Celebrities in the Amazon Rekognition
 #' Developer Guide.
 #' 
-#' `RecognizeCelebrities` returns the 100 largest faces in the image. It
+#' `RecognizeCelebrities` returns the 64 largest faces in the image. It
 #' lists recognized celebrities in the `CelebrityFaces` array and
 #' unrecognized faces in the `UnrecognizedFaces` array.
 #' `RecognizeCelebrities` doesn't return celebrities whose faces aren't
-#' among the largest 100 faces in the image.
+#' among the largest 64 faces in the image.
 #' 
 #' For each celebrity recognized, `RecognizeCelebrities` returns a
 #' `Celebrity` object. The `Celebrity` object contains the celebrity name,

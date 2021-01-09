@@ -2,7 +2,7 @@
 % Please edit documentation in R/datasync_operations.R
 \name{datasync_list_tags_for_resource}
 \alias{datasync_list_tags_for_resource}
-\title{Returns all the tags associated with a specified resources}
+\title{Returns all the tags associated with a specified resource}
 \usage{
 datasync_list_tags_for_resource(ResourceArn, MaxResults, NextToken)
 }
@@ -15,7 +15,7 @@ datasync_list_tags_for_resource(ResourceArn, MaxResults, NextToken)
 list of locations.}
 }
 \description{
-Returns all the tags associated with a specified resources.
+Returns all the tags associated with a specified resource.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

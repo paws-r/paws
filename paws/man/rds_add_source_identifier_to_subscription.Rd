@@ -16,14 +16,18 @@ source identifier to.}
 
 Constraints:
 \itemize{
-\item If the source type is a DB instance, then a \code{DBInstanceIdentifier}
+\item If the source type is a DB instance, a \code{DBInstanceIdentifier} value
 must be supplied.
-\item If the source type is a DB security group, a \code{DBSecurityGroupName}
+\item If the source type is a DB cluster, a \code{DBClusterIdentifier} value
 must be supplied.
 \item If the source type is a DB parameter group, a \code{DBParameterGroupName}
+value must be supplied.
+\item If the source type is a DB security group, a \code{DBSecurityGroupName}
+value must be supplied.
+\item If the source type is a DB snapshot, a \code{DBSnapshotIdentifier} value
 must be supplied.
-\item If the source type is a DB snapshot, a \code{DBSnapshotIdentifier} must
-be supplied.
+\item If the source type is a DB cluster snapshot, a
+\code{DBClusterSnapshotIdentifier} value must be supplied.
 }}
 }
 \description{

@@ -2,16 +2,16 @@
 % Please edit documentation in R/transcribeservice_operations.R
 \name{transcribeservice_get_medical_vocabulary}
 \alias{transcribeservice_get_medical_vocabulary}
-\title{Retrieve information about a medical vocabulary}
+\title{Retrieves information about a medical vocabulary}
 \usage{
 transcribeservice_get_medical_vocabulary(VocabularyName)
 }
 \arguments{
-\item{VocabularyName}{[required] The name of the vocabulary you are trying to get information about. The
-value you enter for this request is case-sensitive.}
+\item{VocabularyName}{[required] The name of the vocabulary that you want information about. The value is
+case sensitive.}
 }
 \description{
-Retrieve information about a medical vocabulary.
+Retrieves information about a medical vocabulary.
 }
 \section{Request syntax}{
 \preformatted{svc$get_medical_vocabulary(

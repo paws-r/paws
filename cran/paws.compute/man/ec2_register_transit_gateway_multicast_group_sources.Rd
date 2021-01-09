@@ -29,7 +29,7 @@ gateway multicast group.
 \details{
 A multicast source is a network interface attached to a supported
 instance that sends multicast traffic. For information about supported
-instances, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-limits.html#multicast-limits}{Multicast Considerations}
+instances, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-quotas.html}{Multicast Considerations}
 in \emph{Amazon VPC Transit Gateways}.
 
 After you add the source, use

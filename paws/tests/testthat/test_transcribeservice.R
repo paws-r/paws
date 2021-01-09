@@ -2,6 +2,14 @@ context("transcribeservice")
 
 svc <- paws::transcribeservice()
 
+test_that("list_language_models", {
+  expect_error(svc$list_language_models(), NA)
+})
+
+test_that("list_language_models", {
+  expect_error(svc$list_language_models(MaxResults = 20), NA)
+})
+
 test_that("list_medical_transcription_jobs", {
   expect_error(svc$list_medical_transcription_jobs(), NA)
 })

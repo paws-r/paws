@@ -2,32 +2,32 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_list_resolver_endpoints}
 \alias{route53resolver_list_resolver_endpoints}
-\title{Lists all the resolver endpoints that were created using the current AWS
+\title{Lists all the Resolver endpoints that were created using the current AWS
 account}
 \usage{
 route53resolver_list_resolver_endpoints(MaxResults, NextToken, Filters)
 }
 \arguments{
-\item{MaxResults}{The maximum number of resolver endpoints that you want to return in the
+\item{MaxResults}{The maximum number of Resolver endpoints that you want to return in the
 response to a \code{ListResolverEndpoints} request. If you don't specify a
-value for \code{MaxResults}, Resolver returns up to 100 resolver endpoints.}
+value for \code{MaxResults}, Resolver returns up to 100 Resolver endpoints.}
 
 \item{NextToken}{For the first \code{ListResolverEndpoints} request, omit this value.
 
-If you have more than \code{MaxResults} resolver endpoints, you can submit
+If you have more than \code{MaxResults} Resolver endpoints, you can submit
 another \code{ListResolverEndpoints} request to get the next group of
-resolver endpoints. In the next request, specify the value of
+Resolver endpoints. In the next request, specify the value of
 \code{NextToken} from the previous response.}
 
-\item{Filters}{An optional specification to return a subset of resolver endpoints, such
-as all inbound resolver endpoints.
+\item{Filters}{An optional specification to return a subset of Resolver endpoints, such
+as all inbound Resolver endpoints.
 
 If you submit a second or subsequent \code{ListResolverEndpoints} request and
 specify the \code{NextToken} parameter, you must use the same values for
 \code{Filters}, if any, as in the previous request.}
 }
 \description{
-Lists all the resolver endpoints that were created using the current AWS
+Lists all the Resolver endpoints that were created using the current AWS
 account.
 }
 \section{Request syntax}{

@@ -31,23 +31,23 @@ values are created by using the
 \href{https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html}{CreateRole}
 API action in AWS Identity and Access Management (IAM).}
 
-\item{SnowballType}{The type of AWS Snowball device to use for this cluster.
+\item{SnowballType}{The type of AWS Snow Family device to use for this cluster.
 
-For cluster jobs, AWS Snowball currently supports only the \code{EDGE} device
-type.}
+For cluster jobs, AWS Snow Family currently supports only the \code{EDGE}
+device type.}
 
 \item{ShippingOption}{[required] The shipping speed for each node in this cluster. This speed doesn't
 dictate how soon you'll get each Snowball Edge device, rather it
 represents how quickly each device moves to its destination while in
 transit. Regional shipping speeds are as follows:
 \itemize{
-\item In Australia, you have access to express shipping. Typically,
-Snowballs shipped express are delivered in about a day.
+\item In Australia, you have access to express shipping. Typically, Snow
+devices shipped express are delivered in about a day.
 \item In the European Union (EU), you have access to express shipping.
-Typically, Snowballs shipped express are delivered in about a day.
-In addition, most countries in the EU have access to standard
+Typically, Snow devices shipped express are delivered in about a
+day. In addition, most countries in the EU have access to standard
 shipping, which typically takes less than a week, one way.
-\item In India, Snowballs are delivered in one to seven days.
+\item In India, Snow device are delivered in one to seven days.
 \item In the United States of America (US), you have access to one-day
 shipping and two-day shipping.
 }<!-- -->
@@ -56,10 +56,10 @@ shipping and two-day shipping.
 \item In Australia, you have access to express shipping. Typically,
 devices shipped express are delivered in about a day.
 \item In the European Union (EU), you have access to express shipping.
-Typically, Snowball Edges shipped express are delivered in about a
+Typically, Snow devices shipped express are delivered in about a
 day. In addition, most countries in the EU have access to standard
 shipping, which typically takes less than a week, one way.
-\item In India, Snowball Edges are delivered in one to seven days.
+\item In India, Snow device are delivered in one to seven days.
 \item In the US, you have access to one-day shipping and two-day shipping.
 }}
 

@@ -2,8 +2,7 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_get_backup_plan}
 \alias{backup_get_backup_plan}
-\title{Returns the body of a backup plan in JSON format, in addition to plan
-metadata}
+\title{Returns BackupPlan details for the specified BackupPlanId}
 \usage{
 backup_get_backup_plan(BackupPlanId, VersionId)
 }
@@ -14,8 +13,8 @@ backup_get_backup_plan(BackupPlanId, VersionId)
 most 1,024 bytes long. Version IDs cannot be edited.}
 }
 \description{
-Returns the body of a backup plan in JSON format, in addition to plan
-metadata.
+Returns \code{BackupPlan} details for the specified \code{BackupPlanId}. Returns
+the body of a backup plan in JSON format, in addition to plan metadata.
 }
 \section{Request syntax}{
 \preformatted{svc$get_backup_plan(

@@ -70,6 +70,11 @@ Updates a data source.
       Port = 123,
       Database = "string"
     ),
+    OracleParameters = list(
+      Host = "string",
+      Port = 123,
+      Database = "string"
+    ),
     PostgreSqlParameters = list(
       Host = "string",
       Port = 123,
@@ -157,6 +162,11 @@ Updates a data source.
             Database = "string"
           ),
           MySqlParameters = list(
+            Host = "string",
+            Port = 123,
+            Database = "string"
+          ),
+          OracleParameters = list(
             Host = "string",
             Port = 123,
             Database = "string"

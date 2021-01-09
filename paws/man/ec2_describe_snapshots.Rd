@@ -43,9 +43,9 @@ in paginated output. When this parameter is used, \code{DescribeSnapshots}
 only returns \code{MaxResults} results in a single page along with a
 \code{NextToken} response element. The remaining results of the initial
 request can be seen by sending another \code{DescribeSnapshots} request with
-the returned \code{NextToken} value. This value can be between 5 and 1000; if
-\code{MaxResults} is given a value larger than 1000, only 1000 results are
-returned. If this parameter is not used, then \code{DescribeSnapshots}
+the returned \code{NextToken} value. This value can be between 5 and 1,000;
+if \code{MaxResults} is given a value larger than 1,000, only 1,000 results
+are returned. If this parameter is not used, then \code{DescribeSnapshots}
 returns all results. You cannot specify this parameter and the snapshot
 IDs parameter in the same request.}
 
@@ -122,7 +122,7 @@ results.
 To get the state of fast snapshot restores for a snapshot, use
 DescribeFastSnapshotRestores.
 
-For more information about EBS snapshots, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS Snapshots}
+For more information about EBS snapshots, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html}{Amazon EBS snapshots}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
