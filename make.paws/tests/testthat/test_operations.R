@@ -37,6 +37,7 @@ test_that("make_operation", {
   e <- gsub("\n {4}", "\n",
    "#' Foo
     #'
+    #' @description
     #' Foo.
     #'
     #' @usage

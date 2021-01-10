@@ -37,6 +37,7 @@ make_doc_desc <- function(operation) {
   docs <- convert(operation$documentation)
   description <- glue::glue("#' {docs}")
   description <- glue::glue_collapse(description, sep = "\n")
+  description <- paste("#' @description", description, sep = "\n")
   return(as.character(description))
 }
 
