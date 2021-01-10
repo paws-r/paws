@@ -483,7 +483,7 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 
   text <- "<a href='http://www.example.com'>foo</a>"
-  expected <- c("[foo](http://www.example.com)")
+  expected <- c("[foo](http://www.example.com/)")
   expect_equal(convert(text), expected)
 
   text <- "<a href='https://httpbin.org/invalid'>foo</a>"
@@ -511,7 +511,7 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 
   text <- "<a href='example.com'>foo</a>"
-  expected <- c("[foo](https://example.com)")
+  expected <- c("[foo](https://example.com/)")
   expect_equal(convert(text), expected)
 
   text <- "<a href='https://console.aws.amazon.com/support/home#/case/create%3FissueType=customer-service%26serviceCode=general-info%26getting-started%26categoryCode=using-aws%26services'>foo</a>"

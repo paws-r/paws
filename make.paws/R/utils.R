@@ -84,22 +84,42 @@ quietly <- function(expr) {
   )
 }
 
-# Returns whether a URL points to a page that still exists -- not 404.
-url_ok <- function(url, tries = 3) {
-  if (url == "") {
-    return(FALSE)
+# Returns the URL if valid. If invalid, returns NULL. If redirected, return
+# the new URL.
+get_url <- function(url, tries = 3) {
+  if (url == "" || tries <= 0) {
+    return(NULL)
   }
 
-  cached_expr(list("url_ok", url = url), function() {
+  update_url <- function(old, new) {
+    old_parsed <- httr::parse_url(old)
+    new_parsed <- httr::parse_url(new)
+    for (name in names(old_parsed)) {
+      if (!is.null(new_parsed[[name]])) {
+        old_parsed[[name]] <- new_parsed[[name]]
+      }
+    }
+    return(httr::build_url(old_parsed))
+  }
+
+  cached_expr(list("get_url", url = url), function() {
     try <- 0
     while (try < tries) {
       resp <- tryCatch(
-        httr::status_code(httr::HEAD(url, httr::timeout(1))),
-        error = function(e) NA
+        httr::HEAD(url, httr::timeout(1)),
+        error = function(e) NULL
       )
-      if (!is.na(resp) && resp != 404) return(TRUE)
+      if (!is.null(resp)) {
+        if (resp$status_code == 404) {
+          return(NULL)
+        } else if (300 <= resp$status_code && resp$status_code < 400) {
+          return(get_url(update_url(url, resp$url), tries = tries - 1))
+        } else {
+          return(update_url(url, resp$url))
+        }
+      }
       try <- try + 1
     }
-    return(FALSE)
+    return(NULL)
   })
 }

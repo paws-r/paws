@@ -295,10 +295,9 @@ clean_html_a <- function(node) {
     xml2::xml_attr(node, "href") <- url
   }
 
+  # Get the URL, if available.
   # Delete URLs when the page is unreachable or explicitly missing.
-  if (!url_ok(url)) {
-    xml2::xml_attr(node, "href") <- NULL
-  }
+  xml2::xml_attr(node, "href") <- get_url(url)
 }
 
 # Replace definition title nodes with header nodes.
